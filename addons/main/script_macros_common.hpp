@@ -61,9 +61,9 @@
 #define STR(var1) #var1
 #define INC(var) var = (var) + 1
 #define DEC(var) var = (var) - 1
-#define ADD(var1,var2) var1 = var1 + var2
-#define REM(var1,var2) var1 = var1 - var2
-#define PUSH(var1,var2) var1 set [count var1, var2]
+#define ADD(var1,var2) var1 = (var1) + (var2)
+#define REM(var1,var2) var1 = (var1) - (var2)
+#define PUSH(var1,var2) var1 set [count (var1), var2]
 #define ISNILS(var1,var2) if (isNil #var1) then { ##var1 = ##var2 }
 #define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPPLES(var1,var2,var3),var4)
 #define ISNILS3(var1,var2,var3) ISNILS(DOUBLES(var1,var2),var3)
@@ -156,6 +156,168 @@
 #define CALLMAIN(var1) CALLMAIN_GVAR(PREFIX,var1)
 #define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
 #define SPAWNMAIN(var1) SPAWNMAIN_GVAR(PREFIX,var1)
+
+// === Splitting an array into a number of variables ===
+#define EXPLODE_2(X,A,B) \
+	A = (X) select 0; B = (X) select 1
+	
+#define EXPLODE_3(X,A,B,C) \
+	A = (X) select 0; B = (X) select 1; C = (X) select 2
+	
+#define EXPLODE_4(X,A,B,C,D) \
+	A = (X) select 0; B = (X) select 1; C = (X) select 2; D = (X) select 3
+	
+#define EXPLODE_5(X,A,B,C,D,E) \
+	EXPLODE_4(X,A,B,C,D); E = (X) select 4
+	
+#define EXPLODE_6(X,A,B,C,D,E,F) \
+	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5
+	
+#define EXPLODE_7(X,A,B,C,D,E,F,G) \
+	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5; G = (X) select 6
+	
+#define EXPLODE_8(X,A,B,C,D,E,F,G,H) \
+	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5; G = (X) select 6; H = (X) select 7
+
+// === Getting parameters passed to a code block (function) ===
+#define PARAMS_1(A) \
+	private 'A'; A = _this select 0
+	
+#define PARAMS_2(A,B) \
+	private ['A', 'B']; EXPLODE_2(_this,A,B)
+	
+#define PARAMS_3(A,B,C) \
+	private ['A', 'B', 'C']; EXPLODE_3(_this,A,B,C)
+	
+#define PARAMS_4(A,B,C,D) \
+	private ['A', 'B', 'C', 'D']; EXPLODE_4(_this,A,B,C,D)
+	
+#define PARAMS_5(A,B,C,D,E) \
+	private ['A', 'B', 'C', 'D', 'E']; EXPLODE_5(_this,A,B,C,D,E)
+	
+#define PARAMS_6(A,B,C,D,E,F) \
+	private ['A', 'B', 'C', 'D', 'E', 'F']; EXPLODE_6(_this,A,B,C,D,E,F)
+	
+#define PARAMS_7(A,B,C,D,E,F,G) \
+	private ['A', 'B', 'C', 'D', 'E', 'F', 'G']; EXPLODE_7(_this,A,B,C,D,E,F,G)
+	
+#define PARAMS_8(A,B,C,D,E,F,G,H) \
+	private ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
+	
+#define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
+private #NAME; \
+NAME = if (isNil "_this") then \
+{ \
+	DEF_VALUE; \
+} \
+else \
+{ \
+	if ((count _this) > (INDEX)) then \
+	{ \
+		if (isNil {_this select (INDEX)}) then \
+		{ \
+			DEF_VALUE; \
+		} \
+		else \
+		{ \
+			_this select (INDEX); \
+		}; \
+	} \
+	else \
+	{ \
+		DEF_VALUE; \
+	}; \
+}
+
+// === Debugging ===
+
+#define DEBUG_ENABLED
+
+#ifdef THIS_FILE
+#define THIS_FILE_ 'THIS_FILE'
+#else
+#define THIS_FILE_ __FILE__
+#endif
+
+#define LOG(TEXT) [THIS_FILE_, __LINE__, TEXT] call CBA_fnc_log
+#define ERROR(TEXT) [THIS_FILE_, __LINE__, TEXT, TITLE] call CBA_fnc_error
+
+//#ifdef DEBUG_ENABLED
+
+// === TRACING ===
+// Trace with just a simple message.
+#define TRACE(TEXT) LOG(TEXT)
+
+// Trace with a message and 1-8 variables to show.
+#define TRACE_1(TEXT,A) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2', TEXT, A]] call CBA_fnc_log
+	
+#define TRACE_2(TEXT,A,B) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', TEXT, A, B]] call CBA_fnc_log
+	
+#define TRACE_3(TEXT,A,B,C) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', TEXT, A, B, C]] call CBA_fnc_log
+	
+#define TRACE_4(TEXT,A,B,C,D) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', TEXT, A, B, C, D]] call CBA_fnc_log
+	
+#define TRACE_5(TEXT,A,B,C,D,E) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', TEXT, A, B, C, D, E]] call CBA_fnc_log
+	
+#define TRACE_6(TEXT,A,B,C,D,E,F) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', TEXT, A, B, C, D, E, F]] call CBA_fnc_log
+	
+#define TRACE_7(TEXT,A,B,C,D,E,F,G) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', TEXT, A, B, C, D, E, F, G]] call CBA_fnc_log
+	
+#define TRACE_8(TEXT,A,B,C,D,E,F,G,H) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', TEXT, A, B, C, D, E, F, G, H]] call CBA_fnc_log
+
+/*
+#else // Debug mode off.
+#define TRACE(TEXT)
+#define TRACE_1(TEXT)
+#define TRACE_2(TEXT)
+#define TRACE_3(TEXT)
+#define TRACE_4(TEXT)
+#define TRACE_5(TEXT)
+#define TRACE_6(TEXT)
+#define TRACE_7(TEXT)
+#define TRACE_8(TEXT)
+
+#endif
+*/
+
+// === Assertion ===
+#define ASSERTION_FAILED_TITLE "Assertion failed!"
+
+// e.g ASSERT_TRUE(_frogIsDead,"The frog is alive");
+#define ASSERT_TRUE(CONDITION,MESSAGE) \
+if (not (CONDITION)) then \
+{ \
+	[THIS_FILE_, __LINE__, 'Assertion (CONDITION) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+}
+
+// e.g ASSERT_FALSE(_frogIsDead,"The frog died");
+#define ASSERT_FALSE(CONDITION,MESSAGE) \
+if (CONDITION) then \
+{ \
+	[THIS_FILE_, __LINE__, 'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+}
+
+// e.g ASSERT_OP(_fish,>,5,"Too few fish ;(");
+#define ASSERT_OP(A,OP,B,MESSAGE) \
+if (not ((A) OP (B))) then \
+{ \
+	[THIS_FILE_, __LINE__, 'Assertion (A OP B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+}
+
+// e.g ASSERT_DEFINED(_anUndefinedVar,"Too few fish ;(");
+#define ASSERT_DEFINED(VAR,MESSAGE) \
+if (isNil VAR) then \
+{ \
+	[THIS_FILE_, __LINE__, 'Assertion (VAR is defined) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+}
 
 #endif
 

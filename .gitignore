@@ -1,2 +1,3 @@
 *.pbo
 *.log
+/addons/*/CfgFunctionDeclarations.hpp
