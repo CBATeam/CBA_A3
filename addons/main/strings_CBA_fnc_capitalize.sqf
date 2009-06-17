@@ -1,17 +1,17 @@
-#define THIS_FILE CBA\main\capitalize
-scriptName 'THIS_FILE';
-// ----------------------------------------------------------------------------
-// @description Upper case the first letter of the string, lower case the rest.
-//
-// Parameters:
-//   0: _string - String to capitalize [String]
-//
-// Returns:
-//   Capitalized string.
-//
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Upper case the first letter of the string, lower case the rest.
+
+Parameters:
+  0: _string - String to capitalize [String]
+
+Returns:
+  Capitalized string.
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(capitalize);
 
 // ----------------------------------------------------------------------------
 

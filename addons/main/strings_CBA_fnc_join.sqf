@@ -1,23 +1,23 @@
-#define THIS_FILE CBA\main\join
-scriptName 'THIS_FILE';
-// ----------------------------------------------------------------------------
-// @description Joins an array of strings into a single string, joining each fragment around a separator string. Inverse of CBA_fnc_split.
-//
-// Example:
-//   _result = [["Fish", "Cheese", "frog.sqf"], "\"] call CBA_fnc_join;
-//   _result is "FISH\Cheese\frog.sqf"
-//
-// Parameters:
-//   0: _strings - Array of strings to join together [String]
-//   1: _separator - String to put between each element of _strings
-//     [String, defaults to ""]
-//
-// Returns:
-//   The joined string [String]
-//
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Joins an array of strings into a single string, joining each fragment around a separator string. Inverse of CBA_fnc_split.
+
+Example:
+  _result = [["Fish", "Cheese", "frog.sqf"], "\"] call CBA_fnc_join;
+  _result is "FISH\Cheese\frog.sqf"
+
+Parameters:
+  0: _strings - Array of strings to join together [String]
+  1: _separator - String to put between each element of _strings
+    [String, defaults to ""]
+
+Returns:
+  The joined string [String]
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(join);
 
 // ----------------------------------------------------------------------------
 

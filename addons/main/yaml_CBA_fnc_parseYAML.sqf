@@ -1,16 +1,14 @@
-#define THIS_FILE CBA\main\parseYAML
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-//
-// @description Parses a YAML file into a nexted array/Hash structure.
-// 
-// Parameters:
-//   0: Name of Yaml formatted file to parse [String].
-//
-// Returns:
-//   Data structure taken from the file, or nil if file had syntax errors.
-//
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+
+@description Parses a YAML file into a nexted array/Hash structure.
+
+Parameters:
+  0: Name of Yaml formatted file to parse [String].
+
+Returns:
+  Data structure taken from the file, or nil if file had syntax errors.
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 #include "strings.inc.sqf"
@@ -28,6 +26,8 @@ scriptName 'THIS_FILE';
 #define ASCII_YAML_COMMENT ASCII_HASH
 #define ASCII_YAML_ASSOC ASCII_COLON
 #define ASCII_YAML_ARRAY ASCII_MINUS
+
+SCRIPT(parseYAML);
 
 // -----------------------------------------------------------------------------
 

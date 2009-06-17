@@ -1,14 +1,19 @@
-#define THIS_FILE CBA\main\strLen
-scriptName 'THIS_FILE';
+/* ----------------------------------------------------------------------------
+@description Counts the number of characters in a string.
+
+Parameters:
+  0: _string - String to measure [String]
+
+Returns:
+  Number of characters in string [Number]
+
+---------------------------------------------------------------------------- */
+
+#include "script_component.hpp"
+
+SCRIPT(strLen);
+
 // ----------------------------------------------------------------------------
-// @description Counts the number of characters in a string.
-//
-// Parameters:
-//   0: _string - String to measure [String]
-//
-// Returns:
-//   Number of characters in string [Number]
-//
-// ----------------------------------------------------------------------------
+
 
 count (toArray (_this select 0)); // Return.

@@ -1,18 +1,18 @@
-#define THIS_FILE CBA\main\removeEventHandler
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Removes an event handler previously registered with CBA_fnc_addEventHandler.
-//
-// Parameters:
-//   0: _eventType - Type of event to handle [String].
-//   1: _handlerIndex - Index of the event handler to remove [Scalar].
-//
-// Returns:
-//   nil
-//
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Removes an event handler previously registered with CBA_fnc_addEventHandler.
+
+Parameters:
+  0: _eventType - Type of event to handle [String].
+  1: _handlerIndex - Index of the event handler to remove [Scalar].
+
+Returns:
+  nil
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(removeEventHandler);
 
 // -----------------------------------------------------------------------------
 

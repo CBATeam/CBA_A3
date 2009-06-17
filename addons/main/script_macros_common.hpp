@@ -319,5 +319,9 @@ if (isNil VAR) then \
 	[THIS_FILE_, __LINE__, 'Assertion (VAR is defined) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
 }
 
+#define SCRIPT(NAME) \
+#define THIS_FILE PREFIX\COMPONENT\NAME \
+scriptName = 'PREFIX\COMPONENT\NAME'
+
 #endif
 

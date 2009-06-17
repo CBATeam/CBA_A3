@@ -1,21 +1,21 @@
-#define THIS_FILE CBA\main\hashSet
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Sets a value for a given key in a Hash.
-//
-// Params:
-//   0: _hash - Hash to use [Hash]
-//   1: _key - Key to set in Hash [Any]
-//   2: _value - Value to set [Any]
-//
-// Returns:
-//   The hash [Hash]
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Sets a value for a given key in a Hash.
+
+Params:
+  0: _hash - Hash to use [Hash]
+  1: _key - Key to set in Hash [Any]
+  2: _value - Value to set [Any]
+
+Returns:
+  The hash [Hash]
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 #include "hash.inc.sqf"
 
-// -----------------------------------------------------------------------------
+SCRIPT(hashSet);
+
+// ----------------------------------------------------------------------------
 LOG(_this);
 PARAMS_3(_hash,_key,_value);
 TRACE_3("Before set",_hash,_key,_value);

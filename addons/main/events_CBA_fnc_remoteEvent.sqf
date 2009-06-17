@@ -1,18 +1,18 @@
-#define THIS_FILE CBA\main\remoteEvent
-scriptName 'THIS_FILE';
-// ----------------------------------------------------------------------------
-// @description Raises a CBA event on all machines EXCEPT the local one.
-//
-// Parameters:
-//   0: _eventType - Type of event to publish [String].
-//   1: _params - Parameters to pass to the event handlers [Array].
-//
-// Returns:
-//   nil
-//
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Raises a CBA event on all machines EXCEPT the local one.
+
+Parameters:
+  0: _eventType - Type of event to publish [String].
+  1: _params - Parameters to pass to the event handlers [Array].
+
+Returns:
+  nil
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(remoteEvent);
 
 // ----------------------------------------------------------------------------
 

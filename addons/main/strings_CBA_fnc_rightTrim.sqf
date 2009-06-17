@@ -1,17 +1,17 @@
-#define THIS_FILE CBA\main\rightTrim
-scriptName 'THIS_FILE';
-// ----------------------------------------------------------------------------
-// @description Trims white-space (space, tab, newline) from the right end of a string.
-//
-// Parameters:
-//   0: _string - String to trim [String]
-//
-// Returns:
-//   Trimmed string [String]
-//
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Trims white-space (space, tab, newline) from the right end of a string.
+
+Parameters:
+  0: _string - String to trim [String]
+
+Returns:
+  Trimmed string [String]
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(rightTrim);
 
 // ----------------------------------------------------------------------------
 

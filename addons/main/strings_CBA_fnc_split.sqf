@@ -1,27 +1,26 @@
-#define THIS_FILE CBA\main\split
-scriptName 'THIS_FILE';
+/* ----------------------------------------------------------------------------
+@description Splits a string into substrings using a separator. Inverse of CBA_fnc_join.
 
-// ----------------------------------------------------------------------------
-// @description Splits a string into substrings using a separator. Inverse of CBA_fnc_join.
-//
-// Examples:
-//   _result = ["FISH\Cheese\frog.sqf", "\"] call CBA_fnc_split;
-//   _result is ["Fish", "Cheese", "frog.sqf"]
-//
-//   _result = ["Peas", ""] call CBA_fnc_split;
-//   _result is ["P", "e", "a", "s"]
-//
-// Parameters:
-//   0: _string - String to split up [String]
-//   1: _separator - String to split around. If an empty string, "", then split
-//     every character into a separate string [String, defaults to ""]
-//
-// Returns:
-//   The split string [Array of Strings]
-//
-// ----------------------------------------------------------------------------
+Examples:
+  _result = ["FISH\Cheese\frog.sqf", "\"] call CBA_fnc_split;
+  _result is ["Fish", "Cheese", "frog.sqf"]
+
+  _result = ["Peas", ""] call CBA_fnc_split;
+  _result is ["P", "e", "a", "s"]
+
+Parameters:
+  0: _string - String to split up [String]
+  1: _separator - String to split around. If an empty string, "", then split
+    every character into a separate string [String, defaults to ""]
+
+Returns:
+  The split string [Array of Strings]
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(split);
 
 // ----------------------------------------------------------------------------
 

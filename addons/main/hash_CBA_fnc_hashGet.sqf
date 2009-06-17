@@ -1,18 +1,18 @@
-#define THIS_FILE CBA\main\hashGet
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Gets a value for a given key from a Hash.
-//
-// Params:
-//   0: _hash - Hash to look for key in [Array which is a Hash structure]
-//   1: _key - Key to search for in Hash [Any]
-//
-// Returns:
-//   Value associated with the key, or Hash default value if key missing [Any]
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Gets a value for a given key from a Hash.
+
+Params:
+  0: _hash - Hash to look for key in [Array which is a Hash structure]
+  1: _key - Key to search for in Hash [Any]
+
+Returns:
+  Value associated with the key, or Hash default value if key missing [Any]
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 #include "hash.inc.sqf"
+
+SCRIPT(hashGet);
 
 // -----------------------------------------------------------------------------
 

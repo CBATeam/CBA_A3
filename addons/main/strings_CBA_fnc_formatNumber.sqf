@@ -1,56 +1,55 @@
-#define THIS_FILE CBA\main\formatNumber
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Formats a number to a minimum integer width and to a specific number of decimal places (including padding with 0s and correct rounding). Numbers are always displayed fully, never being condensed using an exponent (e.g. the number 1.234e9 would be given as "1234000000").
-//
-//   Additionally, if required, it will separate the integer part of the number
-//   with the appropriate thousands seperators as, for example,
-//   "21,002" or "1,000,000".
-//
-// Limitations:
-//   Although the function works up to a point and will display the passed
-//   number correctly, due to the extremely limited accuracy of floating point
-//   values used within ArmA (presumably just single-precision / 32 bit), the
-//   output might not be as EXPECTED after about eight significant figures.
-//
-// Parameters:
-//   0: _number - Number to format [Number]
-//   1: _integerWidth - Minimum width of integer part of number, padded with 0s, 
-//        [Number: >= 0, defaults to 1]
-//   1: _decimalPlaces - Number of decimal places, padded with trailing 0s,
-//        if necessary [Number: >= 0, defaults to 0]
-//   2: _separateThousands - True to separate each three digits with a comma
-//        [Boolean, defaults to false]
-//
-// Returns:
-//   The number formatted into a string.
-//
-//   // Assumes English formatting.
-//   [0.0001, 1, 3] call CBA_fnc_formatNumber;               // => "0.000"
-//   [0.0005, 1, 3] call CBA_fnc_formatNumber;               // => "0.001"
-//
-//   [12345, 1, 0, true] call CBA_fnc_formatNumber;          // => "12,345"
-//   [1234567, 1, 0, true] call CBA_fnc_formatNumber;        // => "1,234,567"
-//
-//   [12345.67, 1, 1, true] call CBA_fnc_formatNumber;       // => "12,345.7"
-//   [1234, 1, 3, true] call CBA_fnc_formatNumber;           // => "1,234.000"
-//
-//   [0.1, 1] call CBA_fnc_formatNumber;                     // => "0"
-//   [0.1, 3, 1] call CBA_fnc_formatNumber;                  // => "000.1"
-//   [0.1, 0, 2] call CBA_fnc_formatNumber;                  // => ".10"
-//   [12, 0] call CBA_fnc_formatNumber;                      // => "12"
-//   [12, 3] call CBA_fnc_formatNumber;                      // => "012"
-//
-//   [-12] call CBA_fnc_formatNumber;                        // => "-12"
-//
-// -----------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
+@description Formats a number to a minimum integer width and to a specific number of decimal places (including padding with 0s and correct rounding). Numbers are always displayed fully, never being condensed using an exponent (e.g. the number 1.234e9 would be given as "1234000000").
 
+  Additionally, if required, it will separate the integer part of the number
+  with the appropriate thousands seperators as, for example,
+  "21,002" or "1,000,000".
+
+Limitations:
+  Although the function works up to a point and will display the passed
+  number correctly, due to the extremely limited accuracy of floating point
+  values used within ArmA (presumably just single-precision / 32 bit), the
+  output might not be as EXPECTED after about eight significant figures.
+
+Parameters:
+  0: _number - Number to format [Number]
+  1: _integerWidth - Minimum width of integer part of number, padded with 0s, 
+       [Number: >= 0, defaults to 1]
+  1: _decimalPlaces - Number of decimal places, padded with trailing 0s,
+       if necessary [Number: >= 0, defaults to 0]
+  2: _separateThousands - True to separate each three digits with a comma
+       [Boolean, defaults to false]
+
+Returns:
+  The number formatted into a string.
+
+  // Assumes English formatting.
+  [0.0001, 1, 3] call CBA_fnc_formatNumber;               // => "0.000"
+  [0.0005, 1, 3] call CBA_fnc_formatNumber;               // => "0.001"
+
+  [12345, 1, 0, true] call CBA_fnc_formatNumber;          // => "12,345"
+  [1234567, 1, 0, true] call CBA_fnc_formatNumber;        // => "1,234,567"
+
+  [12345.67, 1, 1, true] call CBA_fnc_formatNumber;       // => "12,345.7"
+  [1234, 1, 3, true] call CBA_fnc_formatNumber;           // => "1,234.000"
+
+  [0.1, 1] call CBA_fnc_formatNumber;                     // => "0"
+  [0.1, 3, 1] call CBA_fnc_formatNumber;                  // => "000.1"
+  [0.1, 0, 2] call CBA_fnc_formatNumber;                  // => ".10"
+  [12, 0] call CBA_fnc_formatNumber;                      // => "12"
+  [12, 3] call CBA_fnc_formatNumber;                      // => "012"
+
+  [-12] call CBA_fnc_formatNumber;                        // => "-12"
+
+---------------------------------------------------------------------------- */
 
 #include "script_macros_common.hpp"
 
 #define DEFAULT_INTEGER_WIDTH 1
 #define DEFAULT_DECIMAL_PLACES 0
 #define DEFAULT_SEPARATE_THOUSANDS false
+
+SCRIPT(formatNumber);
 
 // -----------------------------------------------------------------------------
 

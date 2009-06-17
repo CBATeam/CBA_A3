@@ -1,18 +1,18 @@
-#define THIS_FILE CBA\main\addEventHandler
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Registers an event handler for a specific CBA event.
-//
-// Parameters:
-//   0: _eventType - Type of event to handle [String].
-//   1: _handlerCode - Code to call when event is raised [Code].
-//
-// Returns:
-//   Index of the event handler (can be used with CBA_fnc_removeEventHandler).
-//
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Registers an event handler for a specific CBA event.
+
+Parameters:
+  0: _eventType - Type of event to handle [String].
+  1: _handlerCode - Code to call when event is raised [Code].
+
+Returns:
+  Index of the event handler (can be used with CBA_fnc_removeEventHandler).
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(addEventHandler);
 
 // -----------------------------------------------------------------------------
 

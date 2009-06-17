@@ -1,20 +1,20 @@
-#define THIS_FILE CBA\main\find
-scriptName 'THIS_FILE';
-// ----------------------------------------------------------------------------
-// @description Finds a string within another string.
-//
-// Parameters:
-//   0: _haystack - String in which to search [String or ASCII char array]
-//   1: _needle - String to search for [String or ASCII char array]
-//   2: _initialIndex - Initial character index within _haystack to start the
-//     search at [Number: 0+, defaults to 0].
-//
-// Returns:
-//   First position of string
-//
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Finds a string within another string.
+
+Parameters:
+  0: _haystack - String in which to search [String or ASCII char array]
+  1: _needle - String to search for [String or ASCII char array]
+  2: _initialIndex - Initial character index within _haystack to start the
+    search at [Number: 0+, defaults to 0].
+
+Returns:
+  First position of string
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
+SCRIPT(find);
 
 // ----------------------------------------------------------------------------
 
