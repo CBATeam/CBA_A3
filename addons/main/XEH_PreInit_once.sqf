@@ -12,6 +12,9 @@ SETVAR ["_actionList", false];
 ISNILMAIN(ActionList, []);
 GVAR(debug) = []; // TODO: Evaluate if this is useful... Logging to rpt and using a tail reader seems okay too!
 
+// Prepare BIS functions and precompile all functions we already have registered with it:
+"FunctionsManager" createVehicleLocal [0, 0];
+
 // Prepare all functions
 PREPMAIN(fAddMagazine);
 PREPMAIN(fAddMagazineCargo);
