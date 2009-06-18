@@ -1,108 +1,260 @@
-#define THIS_FILE test_strings
-scriptName 'THIS_FILE';
-
 // ----------------------------------------------------------------------------
 
 #include "script_component.hpp"
 
+SCRIPT(test_strings);
+
 // ----------------------------------------------------------------------------
 
-private ["_pos", "_str", "_array", "_expected", "_result"];
+private ["_pos", "_str", "_array", "_expected", "_result", "_fn"];
+
+LOG('----- STARTED PREFIX\COMPONENT\strings TESTS -----');
 
 // UNIT TESTS (stringFind)
-ASSERT_DEFINED("stringFind","");
+_fn = "CBA_fnc_find";
+ASSERT_DEFINED(_fn,"");
 
 _pos = ["frog", "f"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,0,"stringFind 3");
+ASSERT_OP(_pos,==,0,_fn);
 
 _pos = ["frog", "g"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,3,"stringFind 2");
+ASSERT_OP(_pos,==,3,_fn);
 
 _pos = ["frog", "z"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,-1,"stringFind 3");
+ASSERT_OP(_pos,==,-1,_fn);
 
 _pos = ["bullfrog", "frog"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,4,"stringFind 4");
+ASSERT_OP(_pos,==,4,_fn);
 
 _pos = ["bullfrog", "frogs"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,-1,"stringFind 5");
+ASSERT_OP(_pos,==,-1,_fn);
 
 _pos = ["frofrog", "frog"] call CBA_fnc_find;
-ASSERT_OP(_pos,==,3,"stringFind 6");
+ASSERT_OP(_pos,==,3,_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringJoin)
-ASSERT_DEFINED("stringJoin","");
+_fn = "CBA_fnc_join";
+
+ASSERT_DEFINED(_fn,"");
 
 _str = [[], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"","stringJoin 1");
+ASSERT_OP(_str,==,"",_fn);
 
 _str = [[""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"","stringJoin 2");
+ASSERT_OP(_str,==,"",_fn);
 
 _str = [["", ""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"x","stringJoin 3");
+ASSERT_OP(_str,==,"x",_fn);
 
 _str = [["a","b","c"], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"axbxc","stringJoin 4");
+ASSERT_OP(_str,==,"axbxc",_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringSplit)
-ASSERT_DEFINED("splitString","");
+_fn = "CBA_fnc_split";
+ASSERT_DEFINED(_fn,"");
 
 _array = ["", "\"] call CBA_fnc_split;
-ASSERT_OP(count _array, ==, 0, "stringSplit 1");
+_expected = [];
+ASSERT_OP(str _array, ==, str _expected, _fn);
 
 _array = ["\", "\"] call CBA_fnc_split;
 _expected = ["", ""];
-TRACE_1("stringSplit 2", _array);
-ASSERT_OP(str _array, ==, str _expected, "stringSplit 2");
+ASSERT_OP(str _array, ==, str _expected, _fn);
 
 _array = ["\frog", "\"] call CBA_fnc_split;
 _expected = ["", "frog"];
-TRACE_1("stringSplit 3", _array);
-ASSERT_OP(str _array, ==, str _expected, "stringSplit 3");
+ASSERT_OP(str _array, ==, str _expected, _fn);
 
 _array = ["\frog\", "\"] call CBA_fnc_split;
 _expected = ["", "frog", ""];
-TRACE_1("stringSplit 4",_array);
-ASSERT_OP(str _array, ==, str _expected, "stringSplit 4");
+ASSERT_OP(str _array, ==, str _expected, _fn);
 
 _array = ["cheese\frog\fish", "\"] call CBA_fnc_split;
 _expected = ["cheese", "frog", "fish"];
-TRACE_1("stringSplit 5",_array);
-ASSERT_OP(str _array, ==, str _expected, "stringSplit 5");
+ASSERT_OP(str _array, ==, str _expected, _fn);
 
 _array = ["peas", ""] call CBA_fnc_split;
 _expected = ["p", "e", "a", "s"];
-TRACE_1("stringSplit 6",_array);
-ASSERT_OP(str _array, ==, str _expected, "stringSplit 6");
+ASSERT_OP(str _array, ==, str _expected, _fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (stringReplace)
+_fn = "CBA_fnc_replace";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = ["", "", ""] call CBA_fnc_replace;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = ["", "frog", "fish"] call CBA_fnc_replace;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = ["frog", "fish", "cheese"] call CBA_fnc_replace;
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["frog", "o", "a"] call CBA_fnc_replace;
+ASSERT_OP(_str,==,"frag",_fn);
+
+_str = ["frodo", "o", "ai"] call CBA_fnc_replace;
+ASSERT_OP(_str,==,"fraidai",_fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (leftTrim)
+_fn = "CBA_fnc_leftTrim";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [""] call CBA_fnc_leftTrim;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = ["frog"] call CBA_fnc_leftTrim;
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = [" frog"] call CBA_fnc_leftTrim;
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["   frog"] call CBA_fnc_leftTrim; // spaces
+ASSERT_OP(_str,==,"frog",_fn);
+	
+_str = ["	frog"] call CBA_fnc_leftTrim; // tab
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["   "] call CBA_fnc_leftTrim;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = [" x "] call CBA_fnc_leftTrim;
+ASSERT_OP(_str,==,"x ",_fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (rightTrim)
+_fn = "CBA_fnc_rightTrim";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [""] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = ["frog"] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["frog "] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["frog   "] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==,"frog",_fn);
+	
+_str = ["frog 	"] call CBA_fnc_rightTrim; // including tabs
+ASSERT_OP(_str,==,"frog",_fn);
+
+_str = ["   "] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = [" 	"] call CBA_fnc_rightTrim; // including tabs
+ASSERT_OP(_str,==,"",_fn);
+
+_str = [" x	"] call CBA_fnc_rightTrim;
+ASSERT_OP(_str,==," x",_fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (trim)
+_fn = "CBA_fnc_trim";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [""] call CBA_fnc_trim;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = [" x "] call CBA_fnc_trim;
+ASSERT_OP(_str,==,"x",_fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (capitalize)
+_fn = "CBA_fnc_capitalize";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [""] call CBA_fnc_capitalize;
+ASSERT_OP(_str,==,"",_fn);
+
+_str = ["a"] call CBA_fnc_capitalize;
+ASSERT_OP(_str,==,"A",_fn);
+
+_str = ["frog"] call CBA_fnc_capitalize;
+ASSERT_OP(_str,==,"Frog",_fn);
+
+_str = ["Frog"] call CBA_fnc_capitalize;
+ASSERT_OP(_str,==,"Frog",_fn);
+
+// ----------------------------------------------------------------------------
+// UNIT TESTS (CBA_fnc_formatNumber)
+_fn = "CBA_fnc_formatNumber";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [0.0001, 1, 3] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"0.000",_fn);
+
+_str = [0.0005, 1, 3] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"0.001",_fn);
+
+_str = [12345, 1, 0, true] call CBA_fnc_formatNumber;
+_expected = "12,345";
+ASSERT_OP(_str,==,_expected,_fn);
+
+_str = [12345.67, 1, 1, true] call CBA_fnc_formatNumber;
+_expected = "12,345.7";
+ASSERT_OP(_str,==,_expected,_fn);
+	
+_str = [0.1, 1] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"0",_fn);
+
+_str = [0.1, 3, 1] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"000.1",_fn);
+
+_str = [0.1, 0, 2] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,".10",_fn);
+
+_str = [12, 0] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"12",_fn);
+
+_str = [12, 3] call CBA_fnc_formatNumber; 
+ASSERT_OP(_str,==,"012",_fn);
+
+_str = [-12] call CBA_fnc_formatNumber;
+ASSERT_OP(_str,==,"-12",_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (compareStrings)
+/* Function ISN'T implemented.
+_fn = "CBA_fnc_compare";
+ASSERT_DEFINED(_fn,"");
+
 _result = ["", ""] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, 0, "stringCompare 1");
+ASSERT_OP(_result, ==, 0, _fn);
 
 _result = ["", "a"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, -1, "stringCompare 2");
+ASSERT_OP(_result, ==, -1, _fn);
 
 _result = ["a", ""] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, +1, "stringCompare 3");
+ASSERT_OP(_result, ==, +1, _fn);
 
 _result = ["a", "a"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, 0, "stringCompare 4");
+ASSERT_OP(_result, ==, 0, _fn);
 
 _result = ["a", "b"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, -1, "stringCompare 5");
+ASSERT_OP(_result, ==, -1, _fn);
 
 _result = ["b", "a"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, +1, "stringCompare 6");
+ASSERT_OP(_result, ==, +1, _fn);
 
 _result = ["aardvark", "aardwolf"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, -1, "stringCompare 7");
+ASSERT_OP(_result, ==, -1, _fn);
 
 _result = ["aardwolf", "aardvark"] call CBA_fnc_compare;
-ASSERT_OP(_result, ==, +1, "stringCompare 8");
+ASSERT_OP(_result, ==, +1, _fn);
+*/
 
 // -----------------------------------------------------------------------------
-LOG("Tests complete");
+LOG('----- COMPLETED PREFIX\COMPONENT\strings TESTS -----');

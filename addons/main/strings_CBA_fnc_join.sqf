@@ -32,7 +32,7 @@ if ((count _strings) > 0) then
 
 	for "_i" from 1 to ((count _strings) - 1) do
 	{
-		_joined = _joined + _separator + str (_strings select _i);
+		_joined = _joined + _separator + (_strings select _i);
 	};
 }
 else

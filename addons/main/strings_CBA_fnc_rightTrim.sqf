@@ -10,12 +10,13 @@ Returns:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+#include "strings.inc.sqf"
 
 SCRIPT(rightTrim);
 
 // ----------------------------------------------------------------------------
 
-SPON_GET_PARAMS_1(_string);
+PARAMS_1(_string);
 
 private ["_chars", "_whiteSpace", "_pos"];
 
@@ -23,13 +24,14 @@ _chars = toArray _string;
 _whiteSpace = WHITE_SPACE;
 
 // Right trim.
-for [{ _pos = (count _chars) - 1 }, { _pos > 0 }, { _pos = _pos - 1 }] do
+
+_numWhiteSpaces = count _chars;
+
+for "_pos" from ((count _chars) - 1) to 0 step -1 do
 {
-	if (_pos < 0) exitWith {};
-	
-	if (not ((_chars select _pos) in _whiteSpace)) exitWith {};
+	if (not ((_chars select _pos) in _whiteSpace)) exitWith { _numWhiteSpaces = (count _chars) - _pos - 1 };
 };
 
-_chars resize (_pos + 1);
+_chars resize ((count _chars) - _numWhiteSpaces);
 
 toString _chars; // Return.

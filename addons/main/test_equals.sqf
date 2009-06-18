@@ -1,32 +1,34 @@
-#define THIS_FILE CBA\main\test_equals
-scriptName 'THIS_FILE';
 // -----------------------------------------------------------------------------
 
 #include "script_component.hpp"
 
+SCRIPT(test_CBA_fnc_equals);
+
 // -----------------------------------------------------------------------------
 
 #define TEST_EQ(A,B) \
-_result = [A, B] call equals; \
+_result = [A, B] call CBA_fnc_equals; \
 ASSERT_DEFINED("_result",_msg); \
-_msg = '[A, B] call equals'; \
-ASSERT(_result,_msg); \
-_result = [B, A] call equals; \
+_msg = '[A, B] call CBA_fnc_equals'; \
+ASSERT_TRUE(_result,_msg); \
+_result = [B, A] call CBA_fnc_equals; \
 ASSERT_DEFINED("_result",_msg); \
-_msg = '[B, A] call equals'; \
-ASSERT(_result,_msg);
+_msg = '[B, A] call CBA_fnc_equals'; \
+ASSERT_TRUE(_result,_msg);
 
 #define TEST_NEQ(A,B) \
-_result = [A, B] call equals; \
+_result = [A, B] call CBA_fnc_equals; \
 ASSERT_DEFINED("_result",_msg); \
-_msg = 'not [A, B] call equals'; \
+_msg = 'not [A, B] call CBA_fnc_equals'; \
 ASSERT_FALSE(_result,_msg); \
-_result = [B, A] call equals; \
+_result = [B, A] call CBA_fnc_equals; \
 ASSERT_DEFINED("_result",_msg); \
-_msg = 'not [B, A] call equals'; \
+_msg = 'not [B, A] call CBA_fnc_equals'; \
 ASSERT_FALSE(_result,_msg);
 
 private ["_a", "_b", "_result", "_msg"];
+
+LOG('----- STARTED PREFIX\COMPONENT\equals TESTS -----');
 
 // Simple numbers.
 TEST_EQ(1,1);
@@ -106,4 +108,4 @@ TEST_NEQ(_a,{ _x = 7 });
 TEST_NEQ(_a,12);
 
 // -----------------------------------------------------------------------------
-LOG("Tests complete");
+LOG('----- COMPLETED PREFIX\COMPONENT\equals TESTS -----');

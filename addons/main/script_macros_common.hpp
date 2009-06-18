@@ -245,9 +245,6 @@ else \
 //#ifdef DEBUG_ENABLED
 
 // === TRACING ===
-// Trace with just a simple message.
-#define TRACE(TEXT) LOG(TEXT)
-
 // Trace with a message and 1-8 variables to show.
 #define TRACE_1(TEXT,A) \
 	[THIS_FILE_, __LINE__, format ['%1: A=%2', TEXT, A]] call CBA_fnc_log
@@ -275,7 +272,6 @@ else \
 
 /*
 #else // Debug mode off.
-#define TRACE(TEXT)
 #define TRACE_1(TEXT)
 #define TRACE_2(TEXT)
 #define TRACE_3(TEXT)
@@ -312,7 +308,8 @@ if (not ((A) OP (B))) then \
 	[THIS_FILE_, __LINE__, 'Assertion (A OP B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
 }
 
-// e.g ASSERT_DEFINED(_anUndefinedVar,"Too few fish ;(");
+// e.g ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
+// e.g ASSERT_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
 #define ASSERT_DEFINED(VAR,MESSAGE) \
 if (isNil VAR) then \
 { \
@@ -320,8 +317,8 @@ if (isNil VAR) then \
 }
 
 #define SCRIPT(NAME) \
-#define THIS_FILE PREFIX\COMPONENT\NAME \
-scriptName = 'PREFIX\COMPONENT\NAME'
+scriptName 'PREFIX\COMPONENT\NAME'
+
 
 #endif
 

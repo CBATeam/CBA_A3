@@ -24,12 +24,12 @@ DEFAULT_PARAM(2,_initialIndex,0);
 private ["_haystackCount", "_needleCount", "_foundPos",
 	"_haystackIndex", "_needleIndex"];
 
-if (isString _haystack) then
+if ((typeName _haystack) == "STRING") then
 {
 	_haystack = toArray _haystack;
 };
 
-if (isString _needle) then
+if ((typeName _needle) == "STRING") then
 {
 	_needle = toArray _needle;
 };

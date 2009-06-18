@@ -10,6 +10,7 @@ Returns:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+#include "strings.inc.sqf"
 
 SCRIPT(leftTrim);
 
@@ -26,6 +27,7 @@ _whiteSpace = WHITE_SPACE;
 if ((count _chars) > 0) then
 {
 	private "_numWhiteSpaces";
+	_numWhiteSpaces = count _chars;
 	
 	for "_i" from 0 to ((count _chars) - 1) do
 	{

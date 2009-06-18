@@ -49,7 +49,7 @@ else
 	
 	while { _currentIndex < (count _stringArray) } do
 	{
-		_foundIndex = [_stringArray, _separatorArray, _currentIndex] call CBA_fnc_stringFind;
+		_foundIndex = [_stringArray, _separatorArray, _currentIndex] call CBA_fnc_find;
 		
 		// Not found, so use rest of string as final fragment.
 		if (_foundIndex < 0) exitWith

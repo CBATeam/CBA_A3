@@ -1,39 +1,46 @@
-#define THIS_FILE CBA\main\test_hash
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Check if a Hash has a value defined for a key.
-//
-// Params:
-//   0: _hash - Hash to look for key in [Array which is a Hash structure]
-//   1: _key - Key to search for in Hash [Any]
-//
-// Returns:
-//   True if key defined, false if not defined [Boolean]
 // -----------------------------------------------------------------------------
 
 #include "script_component.hpp"
-#include "hash.inc.sqf"
+
+SCRIPT(test_hash);
 
 // ----------------------------------------------------------------------------
+
+LOG('----- STARTED PREFIX\COMPONENT\hash TESTS -----');
+
+private ["_hash", "_result"];
 
 // UNIT TESTS (initStrings.sqf - stringJoin)
 ASSERT_DEFINED("CBA_fnc_hashCreate","");
 ASSERT_DEFINED("CBA_fnc_hashGet","");
 ASSERT_DEFINED("CBA_fnc_hashSet","");
 ASSERT_DEFINED("CBA_fnc_hashHasKey","");
+ASSERT_DEFINED("CBA_fnc_isHash","");
 
-ASSERT_FALSE(IS_HASH([]),"Testing IS_HASH()");
+ASSERT_FALSE([[]] call CBA_fnc_isHash,"CBA_fnc_isHash");
+_hash = [5, [4], [1], 2]; // Not a real hash.
+ASSERT_FALSE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
+ASSERT_FALSE([5] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
 // Putting in and retreiving values.
-_hash = [] call hashCreate;
-ASSERT_TRUE(IS_HASH(_hash),"Testing IS_HASH()");
+_hash = [] call CBA_fnc_hashCreate;
+ASSERT_DEFINED("_hash","hashSet/Get");
+ASSERT_TRUE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
-[_hash, "frog", 12] call hashSet;
-ASSERT_TRUE(IS_HASH(_hash),"IS_HASH()");
+_result = [_hash, "frog"] call CBA_fnc_hashHasKey;
+ASSERT_FALSE(_result,"hashHashKey");
+
+[_hash, "frog", 12] call CBA_fnc_hashSet;
+ASSERT_TRUE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
-ASSERT_DEFINED("_result","hashSet/Get");
 ASSERT_OP(_result,==,12,"hashSet/Get");
+
+_result = [_hash, "frog"] call CBA_fnc_hashHasKey;
+ASSERT_TRUE(_result,"hashHashKey");
+
+_result = [_hash, "fish"] call CBA_fnc_hashHasKey;
+ASSERT_FALSE(_result,"hashHashKey");
 
 // Unsetting a value
 [_hash, "frog", nil] call CBA_fnc_hashSet;
@@ -47,7 +54,7 @@ ASSERT_TRUE(isNil "_result","hashSet/Get");
 
 // Reading in from array
 _hash = [[["fish", 7], ["frog", 99]]] call CBA_fnc_hashCreate;
-ASSERT_TRUE(IS_HASH(_hash),"Testing IS_HASH()");
+ASSERT_TRUE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 ASSERT_DEFINED("_result","hashSet/Get");
@@ -55,7 +62,7 @@ ASSERT_OP(_result,==,99,"hashSet/Get");
 
 // Alternative defaults.
 _hash = [[["frog", -8]], 0] call CBA_fnc_hashCreate;
-ASSERT_TRUE(IS_HASH(_hash),"Testing IS_HASH()");
+ASSERT_TRUE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 ASSERT_DEFINED("_result","hashSet/Get");
@@ -75,4 +82,4 @@ _result = [_hash, "frog"] call CBA_fnc_hashGet;
 ASSERT_TRUE(isNil "_result","hashSet/Get");
 
 // -----------------------------------------------------------------------------
-LOG("Tests complete");
+LOG('----- COMPLETED PREFIX\COMPONENT\hash TESTS -----');

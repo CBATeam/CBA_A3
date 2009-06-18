@@ -63,7 +63,7 @@ private ["_integerPart", "_string", "_numIntegerDigits", "_decimalPoint",
 
 _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
 _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
-
+	
 // Start by working out how to display the integer part of the number.
 if (_decimalPlaces > 0) then
 {

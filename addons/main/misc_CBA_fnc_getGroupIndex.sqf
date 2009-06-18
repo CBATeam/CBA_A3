@@ -1,21 +1,21 @@
-#define THIS_FILE CBA\main\getGroupIndex
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu, not just the order within the units of his group (this order can change due to players joining and leaving the game, deaths or promotions).
-//
-//   Inspired by the OFP function, squadNumber.sqf, by General Barron
-//   (http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)
-//
-// Parameters:
-//   0: _man - Man to check [Object: "Man"]
-//
-// Returns:
-//   Number of person in his group [Number: 1+]
-//
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu, not just the order within the units of his group (this order can change due to players joining and leaving the game, deaths or promotions).
+
+  Inspired by the OFP function, squadNumber.sqf, by General Barron
+  (http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)
+
+Parameters:
+  0: _man - Man to check [Object: "Man"]
+
+Returns:
+  Number of person in his group [Number: 1+]
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 #include "strings.inc.sqf"
+
+SCRIPT(getGroupIndex);
 
 // ----------------------------------------------------------------------------
 

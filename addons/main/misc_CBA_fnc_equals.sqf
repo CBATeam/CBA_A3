@@ -1,32 +1,32 @@
-#define THIS_FILE CBA\main\equals
-scriptName 'THIS_FILE';
-// -----------------------------------------------------------------------------
-// @description Compares ANY two values, including nil, null, arrays or nested arrays, for equality
-//
-// Description:
-//   Compares ANY two values, including nil, null, arrays or nested arrays, for
-//   equality. For our purposes, nils and nulls are considered equal to each
-//   other, which is contrary to how this is done in ArmA (nil == nil,
-//   objNull == objNull, controlNull == controlNull, displayNull == displayNull).
-//
-// Examples:
-//   _same = [[1, nil, [3]], [1, nil, [3]]] call SPON_equals; // Returns true
-//   _same = [[1, nil, [3]], [1, [nil, 3]]] call SPON_equals; // Returns false
-//   _same = [objNull, objNull] call SPON_equals; // Returns true
-//
-// Parameters:
-//   0: _a - The first value [Any type]
-//   1: _b - The second value [Any type]
-//
-// Returns:
-//   True for equality, false otherwise.
-//
-// -----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+@description Compares ANY two values, including nil, null, arrays or nested arrays, for equality
+
+Description:
+  Compares ANY two values, including nil, null, arrays or nested arrays, for
+  equality. For our purposes, nils and nulls are considered equal to each
+  other, which is contrary to how this is done in ArmA (nil == nil,
+  objNull == objNull, controlNull == controlNull, displayNull == displayNull).
+
+Examples:
+  _same = [[1, nil, [3]], [1, nil, [3]]] call SPON_equals; // Returns true
+  _same = [[1, nil, [3]], [1, [nil, 3]]] call SPON_equals; // Returns false
+  _same = [objNull, objNull] call SPON_equals; // Returns true
+
+Parameters:
+  0: _a - The first value [Any type]
+  1: _b - The second value [Any type]
+
+Returns:
+  True for equality, false otherwise.
+
+---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 
 // Types that have a null value.
 #define NULLABLE_TYPES ["OBJECT", "CONTROL", "DISPLAY", "GROUP"]
+
+SCRIPT(equals);
 
 // -----------------------------------------------------------------------------
 

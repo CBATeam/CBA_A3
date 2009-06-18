@@ -16,17 +16,13 @@ Returns:
 SCRIPT(hashSet);
 
 // ----------------------------------------------------------------------------
-LOG(_this);
 PARAMS_3(_hash,_key,_value);
-TRACE_3("Before set",_hash,_key,_value);
 
 private ["_index", "_isDefault"];
 
 // Work out whether the new value is the default value for this assoc.
 _isDefault = [if (isNil "_value") then { nil } else { _value },
 	_hash select HASH_DEFAULT_VALUE] call CBA_fnc_equals;
-	
-TRACE_1("",_isDefault);
 	
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then
@@ -63,7 +59,5 @@ else
 		PUSH(_hash select HASH_VALUES,_value);
 	};
 };
-
-TRACE_1("After set",_hash);
 
 _hash; // Return.
