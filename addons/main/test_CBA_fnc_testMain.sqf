@@ -26,6 +26,7 @@ _a = 1; _b = 2;
 ASSERT_OP(_a,>,_b,"Checking ASSERT_OP() is output correctly");
 ASSERT_DEFINED("_imaginaryFox","Checking ASSERT_DEFINED() is output correctly");
 
+CALLFS(PREFIX,COMPONENT,arrays_test);
 CALLFS(PREFIX,COMPONENT,test_equals);
 CALLFS(PREFIX,COMPONENT,test_hash);
 CALLFS(PREFIX,COMPONENT,test_strings);
