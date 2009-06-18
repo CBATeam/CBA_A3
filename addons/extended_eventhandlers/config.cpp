@@ -125,6 +125,7 @@ class Extended_IncomingMissile_EventHandlers {};
 class Extended_Killed_EventHandlers {};
 class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LandedStopped_EventHandlers {};
+class Extended_HandleDamage_EventHandlers {};
 
 
 class DefaultEventhandlers; // external - BIS default event handlers in ArmA 2
