@@ -245,7 +245,7 @@ ASSERT_OP(_str,==,_expected,_fn);
 
 _str = [0, "M:SS.mmm"] call CBA_fnc_formatElapsedTime;
 _expected = "0:00.000";
-ASSERT_OP(_str,==,_expected",_fn);
+ASSERT_OP(_str,==,_expected,_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (compareStrings)
