@@ -90,7 +90,7 @@ class Extended_Init_EventHandlers
             replaceDEH = true;  // replace the BIS DefaultEventhandlers init
                                 // since this is what the stock BIS AAV does
         };
-    }
+    };
     class StaticCannon
     {
         SLX_BIS_StaticCannon_Init = "_scr = _this execVM'\ca\Data\ParticleEffects\SCRIPTS\init.sqf'";
