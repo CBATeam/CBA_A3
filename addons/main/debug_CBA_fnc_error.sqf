@@ -7,9 +7,19 @@
 SCRIPT(error);
 
 // -----------------------------------------------------------------------------
-PARAMS_4(_file,_line,_message,_title);
+PARAMS_4(_file,_lineNum,_title,_message);
 
-_message = [_message, "\n", " | "] call CBA_fnc_replace;
+private ["_time", "_lines"];
 
 // TODO: popup window with error message in it.
-diag_log text format ["%1 [%2:%3 ERROR %4] %5", [daytime, "HH:MM:SS:MM"] call BIS_fnc_timeToString, _file, _line + 1, _title, _message];
+_time = [daytime, "HH:MM:SS:MM"] call BIS_fnc_timeToString;
+
+diag_log text format ["%1 [%2:%3] -ERROR- %4", _time, _file, _lineNum + 1, _title];
+
+_lines = [_message, "\n"] call CBA_fnc_split;
+
+{
+	diag_log text format ["%1 [%2:%3]       - %4", _time, _file, _lineNum + 1, _x];
+} forEach _lines;
+
+nil;

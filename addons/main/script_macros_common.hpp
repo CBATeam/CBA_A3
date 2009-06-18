@@ -240,7 +240,7 @@ else \
 #endif
 
 #define LOG(TEXT) [THIS_FILE_, __LINE__, TEXT] call CBA_fnc_log
-#define ERROR(TEXT) [THIS_FILE_, __LINE__, TEXT, TITLE] call CBA_fnc_error
+#define ERROR(TITLE,MESSAGE) [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error
 
 //#ifdef DEBUG_ENABLED
 
@@ -291,21 +291,21 @@ else \
 #define ASSERT_TRUE(CONDITION,MESSAGE) \
 if (not (CONDITION)) then \
 { \
-	[THIS_FILE_, __LINE__, 'Assertion (CONDITION) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
 }
 
 // e.g ASSERT_FALSE(_frogIsDead,"The frog died");
 #define ASSERT_FALSE(CONDITION,MESSAGE) \
 if (CONDITION) then \
 { \
-	[THIS_FILE_, __LINE__, 'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
 }
 
 // e.g ASSERT_OP(_fish,>,5,"Too few fish ;(");
 #define ASSERT_OP(A,OP,B,MESSAGE) \
 if (not ((A) OP (B))) then \
 { \
-	[THIS_FILE_, __LINE__, 'Assertion (A OP B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (A OP B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
 }
 
 // e.g ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
@@ -313,7 +313,7 @@ if (not ((A) OP (B))) then \
 #define ASSERT_DEFINED(VAR,MESSAGE) \
 if (isNil VAR) then \
 { \
-	[THIS_FILE_, __LINE__, 'Assertion (VAR is defined) failed!\n\n' + (MESSAGE), ASSERTION_FAILED_TITLE] call CBA_fnc_error; \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (VAR is defined) failed!\n\n' + (MESSAGE)); \
 }
 
 #define SCRIPT(NAME) \
