@@ -226,6 +226,28 @@ _str = [-12] call CBA_fnc_formatNumber;
 ASSERT_OP(_str,==,"-12",_fn);
 
 // ----------------------------------------------------------------------------
+// UNIT TESTS (elaspsedTime)
+_fn = "CBA_fnc_formatElapsedTime";
+
+ASSERT_DEFINED(_fn,"");
+
+_str = [0, "H:MM:SS"] call CBA_fnc_formatElapsedTime;
+_expected = "0:00:00";
+ASSERT_OP(_str,==,_expected,_fn);
+
+_str = [0, "M:SS"] call CBA_fnc_formatElapsedTime;
+_expected = "0:00";
+ASSERT_OP(_str,==,_expected,_fn);
+
+_str = [0, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime;
+_expected = "0:00:00.000";
+ASSERT_OP(_str,==,_expected,_fn);
+
+_str = [0, "M:SS.mmm"] call CBA_fnc_formatElapsedTime;
+_expected = "0:00.000";
+ASSERT_OP(_str,==,_expected",_fn);
+
+// ----------------------------------------------------------------------------
 // UNIT TESTS (compareStrings)
 /* Function ISN'T implemented.
 _fn = "CBA_fnc_compare";
