@@ -62,14 +62,14 @@ _raiseError =
 	_errorBlock = "";
 	for [{ _i = 0 max ((count _lines) - 6) }, { _i < (count _lines)}, { _i = _i + 1 }] do
 	{
-		_errorBlock = _errorBlock + format ["\n%1: %2", _i + 1,
+		_errorBlock = _errorBlock + format ["\n%1: %2", [_i + 1, 3] call CBA_fnc_formatNumber,
 			toString (_lines select _i)];
 	};
 	
 	_message = format ["%1, in ""%2"" at line %3:\n%4", _message,
 		_file, count _lines, _errorBlock];
 	
-	[_message, "SPON Core YAML parse error"] call CBA_fnc_error;
+	ERROR("CBA YAML parser error",_message);
 };
 
 private "_parse";
@@ -129,7 +129,7 @@ _parse =
 						
 						// If remainder of line is blank, assume
 						// multi-line data.
-						if (([_value] call SPON_stringLength) == 0) then
+						if (([_value] call CBA_fnc_strLen) == 0) then
 						{
 							private ["_retVal"];
 							
@@ -182,7 +182,7 @@ _parse =
 						
 						// If remainder of line is blank, assume
 						// multi-line data.
-						if (([_value] call SPON_stringLength) == 0) then
+						if (([_value] call CBA_fnc_strLen) == 0) then
 						{
 							private ["_retVal"];
 							
@@ -193,7 +193,7 @@ _parse =
 						
 						if (not _error) then
 						{
-							TRACE_1("Added Assoc element",_value);
+							TRACE_1("Added Hash element",_value);
 							[_data, _key, _value] call CBA_fnc_hashSet;
 							_mode = YAML_MODE_STRING;
 						};
@@ -218,7 +218,13 @@ _parse =
 						case ASCII_SPACE:
 						{
 							_currentIndent = _currentIndent + 1;
-							TRACE_2("Indented",_indent,_currentIndent);
+							//TRACE_2("Indented",_indent,_currentIndent);
+						};
+						case ASCII_TAB:
+						{
+							["Tab character not allowed for indenting YAML; use spaces instead",
+									_yaml, _pos, _lines] call _raiseError;
+							_error = true;
 						};
 						case ASCII_YAML_ASSOC:
 						{
@@ -267,7 +273,7 @@ _parse =
 								}
 								else
 								{
-									TRACE_2("BLEH",_indent,_currentIndent);
+									TRACE_3("BLEHH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}; };
@@ -278,7 +284,7 @@ _parse =
 							{
 								if (_dataType == YAML_TYPE_UNKNOWN) then
 								{
-									TRACE_2("Starting new Assoc",count _lines,_indent);
+									TRACE_2("Starting new Hash",count _lines,_indent);
 									
 									_data = [] call CBA_fnc_hashCreate;
 									_dataType = YAML_TYPE_ASSOC;
@@ -291,14 +297,14 @@ _parse =
 								}
 								else
 								{
-									TRACE_2("BLAH",_indent,_currentIndent);
+									TRACE_3("BLAH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}
 							else{if (_currentIndent < _indent) then
 							{
 								// Ignore and pass down the stack.
-								TRACE_2("End of Assoc",count _lines,_indent);
+								TRACE_2("End of Hash",count _lines,_indent);
 								_pos = _pos - 1;
 								_return = true;
 							}
@@ -306,14 +312,14 @@ _parse =
 							{
 								if (_dataType == YAML_TYPE_ASSOC) then
 								{
-									TRACE_2("New element of Assoc",count _lines,_indent);
+									TRACE_2("New element of Hash",count _lines,_indent);
 									_key = [_char];
 									_value = [];
 									_mode = YAML_MODE_ASSOC_KEY;
 								}
 								else
 								{
-									TRACE_2("BLEH",_indent,_currentIndent);
+									TRACE_3("BLEH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}; };
@@ -352,6 +358,7 @@ _pos = -1;
 _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
 
 EXPLODE_3(_retVal,_pos,_data,_error);
+TRACE_2("Parsed",_pos,_error);
 
 if (_error) then
 {
