@@ -57,12 +57,17 @@
 //#define DEBUG_SETTINGS DEBUG_SETTINGSS(COMPONENT)
 //#define DEBUG DEBUGS(COMPONENT)
 #define DOUBLES(var1,var2) ##var1##_##var2
-#define TRIPPLES(var1,var2,var3) ##var1##_##var2##_##var3
-#define STR(var1) #var1
+#define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
+// DEPRECATED TRIPPLES() - mis-spelled
+#define TRIPPLES(var1,var2,var3) TRIPLES(var1,var2,var3)
+#define QUOTE(var1) #var1
+// DEPRECATED STR() - ambiguous with str command.
+#define STR(var1) QUOTE(var1)
 #define INC(var) var = (var) + 1
 #define DEC(var) var = (var) - 1
 #define ADD(var1,var2) var1 = (var1) + (var2)
-#define REM(var1,var2) var1 = (var1) - (var2)
+#define SUB(var1,var2) var1 = (var1) - (var2)
+#define REM(var1,var2) SUB(var1,var2)
 #define PUSH(var1,var2) var1 set [count (var1), var2]
 #define ISNILS(var1,var2) if (isNil #var1) then { ##var1 = ##var2 }
 #define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPPLES(var1,var2,var3),var4)
@@ -206,28 +211,7 @@
 	
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
 private #NAME; \
-NAME = if (isNil "_this") then \
-{ \
-	DEF_VALUE; \
-} \
-else \
-{ \
-	if ((count _this) > (INDEX)) then \
-	{ \
-		if (isNil {_this select (INDEX)}) then \
-		{ \
-			DEF_VALUE; \
-		} \
-		else \
-		{ \
-			_this select (INDEX); \
-		}; \
-	} \
-	else \
-	{ \
-		DEF_VALUE; \
-	}; \
-}
+NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 
 // === Debugging ===
 
