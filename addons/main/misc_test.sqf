@@ -2,7 +2,7 @@
 
 #include "script_component.hpp"
 
-SCRIPT(test_CBA_fnc_equals);
+SCRIPT(test_misc);
 
 // -----------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ ASSERT_FALSE(_result,_msg);
 
 private ["_a", "_b", "_result", "_msg"];
 
-LOG('----- STARTED PREFIX\COMPONENT\equals TESTS -----');
+LOG('----- STARTED PREFIX\COMPONENT\misc TESTS -----');
 
 // Simple numbers.
 TEST_EQ(1,1);
@@ -108,4 +108,4 @@ TEST_NEQ(_a,{ _x = 7 });
 TEST_NEQ(_a,12);
 
 // -----------------------------------------------------------------------------
-LOG('----- COMPLETED PREFIX\COMPONENT\equals TESTS -----');
+LOG('----- COMPLETED PREFIX\COMPONENT\misc TESTS -----');
