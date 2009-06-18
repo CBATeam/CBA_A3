@@ -26,7 +26,7 @@ _events = [
     "AnimChanged", "AnimDone", "Dammaged", "Engine", "Fired",
     "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit",
     "IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped",
-	"HandleDamage"
+    "HandleDamage"
 ];
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
