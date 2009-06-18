@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*  Extended event handlers by Solus
 *
 *  Get all inherited classes, then check if each inherited class has a counter-

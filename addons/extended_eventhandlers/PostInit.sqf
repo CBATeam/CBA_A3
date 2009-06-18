@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*  PostInit.sqf
 
     Compile code strings in the Extended_PostInit_EventHandlers class and call

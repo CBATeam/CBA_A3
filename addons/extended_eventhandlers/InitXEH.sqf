@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
 SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";

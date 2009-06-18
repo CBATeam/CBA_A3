@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*  PreInit.sqf
 
     Compile code strings in the Extended_PreInit_EventHandlers class and call
