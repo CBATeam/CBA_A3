@@ -19,7 +19,7 @@ diag_log text format ["%1 [%2:%3] -ERROR- %4", _time, _file, _lineNum + 1, _titl
 _lines = [_message, "\n"] call CBA_fnc_split;
 
 {
-	diag_log text format ["        %1", _x];
+	diag_log text format ["            %1", _x];
 } forEach _lines;
 
 nil;
