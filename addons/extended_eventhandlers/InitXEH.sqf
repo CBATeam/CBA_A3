@@ -1,8 +1,7 @@
-#include "script_component.hpp"
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
-SLX_XEH_init = compile preProcessFileLineNumbers "x\cba\addons\extended_eventhandlers\Init.sqf";
-SLX_XEH_initOthers = compile preProcessFileLineNumbers "x\cba\addons\extended_eventhandlers\InitOthers.sqf";
+SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
+SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
 SLX_XEH_MACHINE =
 [
 	!isDedicated, // 0 - isClient (and thus has player)
@@ -53,7 +52,7 @@ SLX_XEH_F_INIT = {
 };
 
 // Load and call any "pre-init", run-once event handlers
-call compile preprocessFileLineNumbers "x\cba\addons\extended_eventhandlers\PreInit.sqf";
+call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
 
 /*
 * Process the crews of vehicles. This "thread" will run just
@@ -79,5 +78,5 @@ _cinit = [] spawn
 		};
 	} forEach vehicles;
 	
-	call compile preProcessFileLineNumbers "x\cba\addons\extended_eventhandlers\PostInit.sqf";
+	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
 };

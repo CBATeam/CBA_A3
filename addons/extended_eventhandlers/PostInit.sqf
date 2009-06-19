@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*  PostInit.sqf
 
     Compile code strings in the Extended_PostInit_EventHandlers class and call
@@ -39,7 +38,7 @@ if !(isNull player) then
 		//             into game
 		waitUntil { !(isNull (group player)) };
 	};
-	SLX_XEH_rmon = execVM "x\cba\addons\extended_eventhandlers\RespawnMonitor.sqf";
+	SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
 };
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 

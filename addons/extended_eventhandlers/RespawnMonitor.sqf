@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*
    The respawn monitor is only useful for the two respawn types
    "INSTANT" (2) and "BASE" (3) where a completely new player
