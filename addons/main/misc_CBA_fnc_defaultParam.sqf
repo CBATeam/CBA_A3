@@ -1,21 +1,28 @@
 /* ----------------------------------------------------------------------------
-@description Gets a value from parameters list (usually _this) with a default.
+Function: CBA_fnc_defaultParam
+
+Description:
+	Gets a value from parameters list (usually _this) with a default.
 
 Example (direct use of function):
-  private "_frog";
-  _frog = [_this, 2, 12] call CBA_fnc_defaultParam;
+(begin code)
+	private "_frog";
+	_frog = [_this, 2, 12] call CBA_fnc_defaultParam;
+(end code)
   
 Example (macro):
-  #include "script_component.hpp"
-  DEFAULT_PARAM(2,_frog,12);
+(begin code)
+	#include "script_component.hpp"
+	DEFAULT_PARAM(2,_frog,12);
+(end code)
  
-Params:
-  0: _params - Array of parameters, usually _this [Array]
-  1: _index - Parameter index in the params array [Integer: >= 0]
-  2: _defaultValue - Value to use if the array is too short [Any]
+Parameters:
+	_params - Array of parameters, usually _this [Array]
+	_index - Parameter index in the params array [Integer: >= 0]
+	_defaultValue - Value to use if the array is too short [Any]
 
 Returns:
-  Value of parameter
+	Value of parameter [Any]
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

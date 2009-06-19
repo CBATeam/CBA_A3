@@ -1,17 +1,22 @@
 /* ----------------------------------------------------------------------------
-@description Joins an array of strings into a single string, joining each fragment around a separator string. Inverse of CBA_fnc_split.
+Function: CBA_fnc_join
+
+Description:
+	Joins an array of strings into a single string, joining each fragment around a separator string. Inverse of <CBA_fnc_split>.
 
 Example:
-  _result = [["Fish", "Cheese", "frog.sqf"], "\"] call CBA_fnc_join;
-  _result is "FISH\Cheese\frog.sqf"
+(begin code)
+	_result = [["Fish", "Cheese", "frog.sqf"], "\"] call CBA_fnc_join;
+	_result is "FISH\Cheese\frog.sqf"
+(end code)
 
 Parameters:
-  0: _strings - Array of strings to join together [String]
-  1: _separator - String to put between each element of _strings
-    [String, defaults to ""]
+	_strings - Array of strings to join together [String]
+	_separator - String to put between each element of _strings
+		[String, defaults to ""]
 
 Returns:
-  The joined string [String]
+	The joined string [String]
 
 ---------------------------------------------------------------------------- */
 

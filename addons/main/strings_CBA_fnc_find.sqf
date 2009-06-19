@@ -1,14 +1,17 @@
 /* ----------------------------------------------------------------------------
-@description Finds a string within another string.
+Function: CBA_fnc_find
+
+Description:
+	Finds a string within another string.
 
 Parameters:
-  0: _haystack - String in which to search [String or ASCII char array]
-  1: _needle - String to search for [String or ASCII char array]
-  2: _initialIndex - Initial character index within _haystack to start the
+	_haystack - String in which to search [String or ASCII char array]
+	_needle - String to search for [String or ASCII char array]
+	_initialIndex - Initial character index within _haystack to start the
     search at [Number: 0+, defaults to 0].
 
 Returns:
-  First position of string
+	First position of string
 
 ---------------------------------------------------------------------------- */
 

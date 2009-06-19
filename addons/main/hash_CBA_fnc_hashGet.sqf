@@ -1,12 +1,15 @@
 /* ----------------------------------------------------------------------------
-@description Gets a value for a given key from a Hash.
+Function: CBA_fnc_hashGet
 
-Params:
-  0: _hash - Hash to look for key in [Array which is a Hash structure]
-  1: _key - Key to search for in Hash [Any]
+Description:
+	Gets a value for a given key from a Hash.
+
+Parameters:
+	_hash - Hash to look for key in [Array which is a Hash structure]
+	_key - Key to search for in Hash [Any]
 
 Returns:
-  Value associated with the key, or Hash default value if key missing [Any]
+	Value associated with the key, or Hash default value if key missing [Any]
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

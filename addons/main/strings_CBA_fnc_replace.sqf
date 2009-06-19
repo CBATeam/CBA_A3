@@ -1,17 +1,22 @@
 /* ----------------------------------------------------------------------------
-@description Replaces substrings within a string. Case-dependent.
+Function: CBA_fnc_replace
+
+Description:
+	Replaces substrings within a string. Case-dependent.
 
 Example:
-  _str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
-  // => "Fish pig cheese pimage"
+(begin code)
+	_str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
+	// => "Fish pig cheese pimage"
+(end code)
 
 Parameters:
-  0: _string - String to trim [String]
-  1: _pattern - Substring to replace [String]
-  2: _replacement - String to replace with [String]
+	_string - String to trim [String]
+	_pattern - Substring to replace [String]
+	_replacement - String to replace with [String]
 
 Returns:
-  String with replacements made [String]
+	String with replacements made [String]
 
 --------------------------------------------------------------------------- */
 

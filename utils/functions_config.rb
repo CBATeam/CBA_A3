@@ -1,4 +1,8 @@
 USAGE = "USAGE: ruby #{File.basename(__FILE__)} PATH"
+OUTPUT = 'CfgFunctionDeclarations.hpp'
+DOC_MENU = "ndocs-project/Menu.txt"
+DOC_MENU_TEMPLATE = "ndocs-project/ndocs_menu_template.txt"
+
 
 unless ARGV.size == 1
     puts "Generate function declarations for Functions module."
@@ -6,7 +10,7 @@ unless ARGV.size == 1
 	exit
 end
 
-OUTPUT = 'CfgFunctionDeclarations.hpp'
+
 
 path = File.expand_path(ARGV[0])
 
@@ -36,9 +40,15 @@ Dir.new(path).each do |addon|
 				type, tag, name = $1, $2, $3
 				
 				type.capitalize!
+				source = File.read(File.join(addon_path, function_file))
 				
-				description = if File.read(File.join(addon_path, function_file)) =~ /@description +(.+) *$/
-					$1
+				unless source =~ /Function:\s*#{tag}_fnc_#{name}/
+					$stderr.puts ">>> ERROR >>> Incorrect/missing Function name documented in: #{function_file}"
+					exit false
+				end
+				
+				description = if source =~ /Description:\s*([^\b]*?)\n\s*\n/
+					$1.gsub(/\s*\n\s*/, ' ')
 				else
 					'<NO DESC>'
 				end
@@ -95,6 +105,30 @@ END_CONFIG
 				
 				file.puts "};\n\n#endif // FUNCTIONS_CONFIG";
 			end
+			
+			# Generate a menu for Ndocs.
+			menu_template = File.read(DOC_MENU_TEMPLATE)
+			menu = ""
+			
+			config.to_a.sort { |a, b| a[0] <=> b[0] }.each do |tag, types|
+				menu += "\tGroup: #{tag} {\n"
+				types.to_a.sort { |a, b| a[0] <=> b[0] }.each do |type, functions|
+					menu += "\t\tGroup: #{type} {\n"
+					functions.to_a.sort { |a, b| a[0] <=> b[0] }.each do |function, data|
+						data[:path] =~ /\\Addons\\(.*)$/
+						path = $1
+						data[:name] =~ /_fnc_(.*)$/
+						name = $1
+						menu += "\t\t\tFile: #{name}  (no auto-title, #{path})\n"
+					end
+					menu += "\t\t} # Group: #{type}\n\n"
+				end
+				menu += "\t} # Group: #{tag}\n\n"
+			end
+			menu_template.sub!(/\$FUNCTIONS\$/, menu)
+			
+			File.open(DOC_MENU, 'w') { |f| f.puts menu_template }
+			
 		end
 	end
 end

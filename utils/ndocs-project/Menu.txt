@@ -1,0 +1,133 @@
+Format: 1.4
+
+
+Title: CBA
+SubTitle: Community Base Addons
+
+Footer: Copyright (c) CBA team and contributers
+Timestamp: year
+#   m     - One or two digit month.  January is "1"
+#   mm    - Always two digit month.  January is "01"
+#   mon   - Short month word.  January is "Jan"
+#   month - Long month word.  January is "January"
+#   d     - One or two digit day.  1 is "1"
+#   dd    - Always two digit day.  1 is "01"
+#   day   - Day with letter extension.  1 is "1st"
+#   yy    - Two digit year.  2006 is "06"
+#   yyyy  - Four digit year.  2006 is "2006"
+#   year  - Four digit year.  2006 is "2006"
+
+# These are indexes you deleted, so Natural Docs will not add them again
+# unless you remove them from this line.
+
+Don't Index: General
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# --------------------------------------------------------------------------
+
+
+Group: Project  {
+
+   Link: Wiki  (http://dev-heaven.net/wiki/cca)
+   Link: Forums  (http://dev-heaven.net/projects/cca/boards)
+   Link: Issues  (http://dev-heaven.net/projects/cca/issues)
+   Link: Download  (http://dev-heaven.net/projects/list_files/cca)
+   }  # Group: Project
+
+Group: Functions  {
+
+   Function Index: Index
+
+   Group: CBA  {
+
+      Group: Arrays  {
+
+         File: filter  (no auto-title, main\arrays_CBA_fnc_filter.sqf)
+         File: inject  (no auto-title, main\arrays_CBA_fnc_inject.sqf)
+         }  # Group: Arrays
+
+      Group: Debug  {
+
+         File: error  (no auto-title, main\debug_CBA_fnc_error.sqf)
+         File: log  (no auto-title, main\debug_CBA_fnc_log.sqf)
+         }  # Group: Debug
+
+      Group: Events  {
+
+         File: addEventHandler  (no auto-title, main\events_CBA_fnc_addEventHandler.sqf)
+         File: globalEvent  (no auto-title, main\events_CBA_fnc_globalEvent.sqf)
+         File: localEvent  (no auto-title, main\events_CBA_fnc_localEvent.sqf)
+         File: remoteEvent  (no auto-title, main\events_CBA_fnc_remoteEvent.sqf)
+         File: removeEventHandler  (no auto-title, main\events_CBA_fnc_removeEventHandler.sqf)
+         }  # Group: Events
+
+      Group: Hash  {
+
+         File: hashCreate  (no auto-title, main\hash_CBA_fnc_hashCreate.sqf)
+         File: hashEachPair  (no auto-title, main\hash_CBA_fnc_hashEachPair.sqf)
+         File: hashGet  (no auto-title, main\hash_CBA_fnc_hashGet.sqf)
+         File: hashHasKey  (no auto-title, main\hash_CBA_fnc_hashHasKey.sqf)
+         File: hashSet  (no auto-title, main\hash_CBA_fnc_hashSet.sqf)
+         File: isHash  (no auto-title, main\hash_CBA_fnc_isHash.sqf)
+         }  # Group: Hash
+
+      Group: Internal  {
+
+         File: unitInitHandler  (no auto-title, main\internal_CBA_fnc_unitInitHandler.sqf)
+         File: vehicleInitHandler  (no auto-title, main\internal_CBA_fnc_vehicleInitHandler.sqf)
+         }  # Group: Internal
+
+      Group: Misc  {
+
+         File: dataPath  (no auto-title, main\misc_CBA_fnc_dataPath.sqf)
+         File: defaultParam  (no auto-title, main\misc_CBA_fnc_defaultParam.sqf)
+         File: equals  (no auto-title, main\misc_CBA_fnc_equals.sqf)
+         File: getGroupIndex  (no auto-title, main\misc_CBA_fnc_getGroupIndex.sqf)
+         }  # Group: Misc
+
+      Group: Strings  {
+
+         File: capitalize  (no auto-title, main\strings_CBA_fnc_capitalize.sqf)
+         File: find  (no auto-title, main\strings_CBA_fnc_find.sqf)
+         File: formatElapsedTime  (no auto-title, main\strings_CBA_fnc_formatElapsedTime.sqf)
+         File: formatNumber  (no auto-title, main\strings_CBA_fnc_formatNumber.sqf)
+         File: join  (no auto-title, main\strings_CBA_fnc_join.sqf)
+         File: leftTrim  (no auto-title, main\strings_CBA_fnc_leftTrim.sqf)
+         File: replace  (no auto-title, main\strings_CBA_fnc_replace.sqf)
+         File: rightTrim  (no auto-title, main\strings_CBA_fnc_rightTrim.sqf)
+         File: split  (no auto-title, main\strings_CBA_fnc_split.sqf)
+         File: strLen  (no auto-title, main\strings_CBA_fnc_strLen.sqf)
+         File: trim  (no auto-title, main\strings_CBA_fnc_trim.sqf)
+         }  # Group: Strings
+
+      Group: Test  {
+
+         File: testMain  (no auto-title, main\test_CBA_fnc_testMain.sqf)
+         }  # Group: Test
+
+      Group: Yaml  {
+
+         File: parseYAML  (no auto-title, main\yaml_CBA_fnc_parseYAML.sqf)
+         }  # Group: Yaml
+
+      }  # Group: CBA
+
+   }  # Group: Functions
+

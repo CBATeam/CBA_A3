@@ -1,5 +1,14 @@
 /* ----------------------------------------------------------------------------
-@description Logs an error message to the RPT log.
+Function: CBA_fnc_error
+
+Description:
+	Logs an error message to the RPT log.
+	
+Parameters:
+	_file - [String]
+	_lineNum - [Number]
+	_title - Title of the error [String]
+	_message - Error message [String, which may contain \n]
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

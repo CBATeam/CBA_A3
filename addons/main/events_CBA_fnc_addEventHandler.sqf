@@ -1,12 +1,15 @@
 /* ----------------------------------------------------------------------------
-@description Registers an event handler for a specific CBA event.
+Function: CBA_fnc_addEventHandler
+
+Description:
+	Registers an event handler for a specific CBA event.
 
 Parameters:
-  0: _eventType - Type of event to handle [String].
-  1: _handlerCode - Code to call when event is raised [Code].
+	_eventType - Type of event to handle [String].
+	_handlerCode - Code to call when event is raised [Code].
 
 Returns:
-  Index of the event handler (can be used with CBA_fnc_removeEventHandler).
+	Index of the event handler (can be used with <CBA_fnc_removeEventHandler>).
 
 ---------------------------------------------------------------------------- */
 

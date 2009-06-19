@@ -1,14 +1,17 @@
 /* -----------------------------------------------------------------------------
+Function: CBA_fnc_formatElapsedTime
 
-@description Formats time in seconds according to a format. Intended to show time elapsed, rather than time-of-day.
+Description:
+	Formats time in seconds according to a format. Intended to show time elapsed,
+	rather than time-of-day.
 
 Parameters:
-  0: _seconds - Number of seconds to format, for example from 'time' command [number]
-  1: _format - Format to put time into [String: "H:MM:SS", "M:SS",
-       "H:MM:SS.mmm" or "M:SS.mmm"; defaults to "H:MM:SS"]
+	_seconds - Number of seconds to format, for example from 'time' command [number]
+	_format - Format to put time into [String: "H:MM:SS", "M:SS",
+		"H:MM:SS.mmm" or "M:SS.mmm"; defaults to "H:MM:SS"]
 
- Returns:
-  Formatted time [String]
+Returns:
+	Formatted time [String]
 	
 ---------------------------------------------------------------------------- */
 

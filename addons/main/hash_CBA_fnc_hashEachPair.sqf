@@ -1,7 +1,11 @@
 /* ----------------------------------------------------------------------------
-@description Iterate through all keys and values in a Hash.
+Function: CBA_fnc_hashEachPair
+
+Description:
+	Iterate through all keys and values in a Hash.
 
 Example:
+(begin code)
   _dumpHash = {
     private ["_key", "_value"];
     _key = _this select 0;
@@ -11,13 +15,14 @@ Example:
   };
 
   [_hash, _dumpHash] call CBA_fnc_hashEachPair;
+(end code)
 
-Params:
-  0: _hash - Hash to iterate [Array which is a Hash structure]
-  1: _code - Function to call with each pair [Any]
+Parameters:
+	_hash - Hash to iterate [Array which is a Hash structure]
+	_code - Function to call with each pair [Any]
 
 Returns:
-  nil
+	nil
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

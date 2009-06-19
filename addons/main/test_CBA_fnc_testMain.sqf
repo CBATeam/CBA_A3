@@ -1,12 +1,14 @@
 /* ----------------------------------------------------------------------------
+Function: CBA_fnc_testMain
 
-@description Tests CBA main functions.
+Description:
+	Tests CBA main functions.
 
 Parameters:
-  None.
+	None.
 
 Returns:
-  nil
+	nil
 
 ---------------------------------------------------------------------------- */
 

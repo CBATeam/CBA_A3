@@ -1,12 +1,15 @@
 /* ----------------------------------------------------------------------------
-@description Removes an event handler previously registered with CBA_fnc_addEventHandler.
+Function: CBA_fnc_removeEventHandler
+
+Description:
+	Removes an event handler previously registered with CBA_fnc_addEventHandler.
 
 Parameters:
-  0: _eventType - Type of event to handle [String].
-  1: _handlerIndex - Index of the event handler to remove [Scalar].
+	_eventType - Type of event to remove [String].
+	_handlerIndex - Index of the event handler to remove [Number].
 
 Returns:
-  nil
+	nil
 
 ---------------------------------------------------------------------------- */
 

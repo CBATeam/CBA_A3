@@ -1,12 +1,15 @@
 /* ----------------------------------------------------------------------------
-@description Raises a CBA event on all machines, including the local one.
+Function: CBA_fnc_globalEvent
+
+Description:
+	Raises a CBA event on all machines, including the local one.
 
 Parameters:
-  0: _eventType - Type of event to publish [String].
-  1: _params - Parameters to pass to the event handlers [Array].
+	_eventType - Type of event to publish [String].
+	_params - Parameters to pass to the event handlers [Array].
 
 Returns:
-  nil
+	nil
 
 ---------------------------------------------------------------------------- */
 

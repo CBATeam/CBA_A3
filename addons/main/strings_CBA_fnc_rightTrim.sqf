@@ -1,11 +1,14 @@
 /* ----------------------------------------------------------------------------
-@description Trims white-space (space, tab, newline) from the right end of a string.
+Function: CBA_fnc_rightTrim
+
+Description:
+	Trims white-space (space, tab, newline) from the right end of a string.
 
 Parameters:
-  0: _string - String to trim [String]
+	_string - String to trim [String]
 
 Returns:
-  Trimmed string [String]
+	Trimmed string [String]
 
 ---------------------------------------------------------------------------- */
 

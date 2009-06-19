@@ -1,11 +1,14 @@
 /* ----------------------------------------------------------------------------
-@description Counts the number of characters in a string.
+Function: CBA_fnc_strLen
+
+Description:
+	Counts the number of characters in a string.
 
 Parameters:
-  0: _string - String to measure [String]
+	_string - String to measure [String]
 
 Returns:
-  Number of characters in string [Number]
+	Number of characters in string [Number]
 
 ---------------------------------------------------------------------------- */
 
@@ -14,6 +17,5 @@ Returns:
 SCRIPT(strLen);
 
 // ----------------------------------------------------------------------------
-
 
 count (toArray (_this select 0)); // Return.

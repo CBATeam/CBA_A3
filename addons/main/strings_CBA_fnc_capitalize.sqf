@@ -1,11 +1,14 @@
 /* ----------------------------------------------------------------------------
-@description Upper case the first letter of the string, lower case the rest.
+Function: CBA_fnc_capitalize
+
+Description:
+	Upper case the first letter of the string, lower case the rest.
 
 Parameters:
-  0: _string - String to capitalize [String]
+	_string - String to capitalize [String]
 
 Returns:
-  Capitalized string.
+	Capitalized string.
 
 ---------------------------------------------------------------------------- */
 

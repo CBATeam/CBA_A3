@@ -1,13 +1,16 @@
 /* ----------------------------------------------------------------------------
-@description Sets a value for a given key in a Hash.
+Function: CBA_fnc_hashSet
 
-Params:
-  0: _hash - Hash to use [Hash]
-  1: _key - Key to set in Hash [Any]
-  2: _value - Value to set [Any]
+Description:
+	Sets a value for a given key in a Hash.
+
+Parameters:
+	_hash - Hash to use [Hash]
+	_key - Key to set in Hash [Any]
+	_value - Value to set [Any]
 
 Returns:
-  The hash [Hash]
+	The hash [Hash]
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

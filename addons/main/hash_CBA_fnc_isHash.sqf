@@ -1,11 +1,14 @@
 /* ----------------------------------------------------------------------------
-@description Check if a value is a Hash data structure.
+Function: CBA_fnc_isHash
+
+Description:
+	Check if a value is a Hash data structure.
  
-Params:
-  0: _value - Data structure to check [Any]
+Parameters:
+	_value - Data structure to check [Any]
 
 Returns:
-  True if it is a Hash, otherwise false [Boolean]
+	True if it is a Hash, otherwise false [Boolean]
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

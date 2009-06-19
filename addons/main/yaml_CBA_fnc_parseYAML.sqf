@@ -1,12 +1,16 @@
 /* ----------------------------------------------------------------------------
+Function: CBA_fnc_parseYAML
 
-@description Parses a YAML file into a nexted array/Hash structure.
+Description:
+	Parses a YAML file into a nexted array/Hash structure.
+	
+	See also: <CBA_fnc_dataPath>
 
 Parameters:
-  0: Name of Yaml formatted file to parse [String].
+	_file - Name of Yaml formatted file to parse [String].
 
 Returns:
-  Data structure taken from the file, or nil if file had syntax errors.
+	Data structure taken from the file, or nil if file had syntax errors.
 
 ---------------------------------------------------------------------------- */
 
@@ -89,7 +93,7 @@ _parse =
 	_dataType = YAML_TYPE_UNKNOWN;
 	// _data is initially undefined.
 	
-	TRACE_3("Parsing YAML data item",_currentIndent,_pos,count _lines);
+	//TRACE_3("Parsing YAML data item",_currentIndent,_pos,count _lines);
 	
 	while { (_pos < ((count _yaml) - 1)) and (not _error) and (not _return) } do
 	{
@@ -140,7 +144,7 @@ _parse =
 						
 						if (not _error) then
 						{
-							TRACE_1("Added Array element",_value);
+							//TRACE_1("Added Array element",_value);
 							PUSH(_data,_value);
 							_mode = YAML_MODE_STRING;
 						};
@@ -193,7 +197,7 @@ _parse =
 						
 						if (not _error) then
 						{
-							TRACE_1("Added Hash element",_value);
+							//TRACE_1("Added Hash element",_value);
 							[_data, _key, _value] call CBA_fnc_hashSet;
 							_mode = YAML_MODE_STRING;
 						};
@@ -234,13 +238,13 @@ _parse =
 						};
 						case ASCII_YAML_ARRAY:
 						{
-							TRACE_2("Array element found",_indent,_currentIndent);
+							//TRACE_2("Array element found",_indent,_currentIndent);
 							
 							if (_currentIndent > _indent) then
 							{
 								if (_dataType == YAML_TYPE_UNKNOWN) then
 								{
-									TRACE_2("Starting new Array",count _lines,_indent);
+									//TRACE_2("Starting new Array",count _lines,_indent);
 									
 									_data = [];
 									_dataType = YAML_TYPE_ARRAY;
@@ -252,14 +256,14 @@ _parse =
 								}
 								else
 								{
-									TRACE_2("BLAH",_indent,_currentIndent);
+									//TRACE_2("BLAH",_indent,_currentIndent);
 									_error = true;
 								};
 							}
 							else{if (_currentIndent < _indent) then
 							{
 								// Ignore and pass down the stack.
-								TRACE_2("End of Array",count _lines,_indent);
+								//TRACE_2("End of Array",count _lines,_indent);
 								_pos = _pos - 1;
 								_return = true;
 							}
@@ -267,13 +271,13 @@ _parse =
 							{
 								if (_dataType == YAML_TYPE_ARRAY) then
 								{
-									TRACE_2("New element of Array",count _lines,_indent);
+									//TRACE_2("New element of Array",count _lines,_indent);
 									_value = [];
 									_mode = YAML_MODE_ARRAY;
 								}
 								else
 								{
-									TRACE_3("BLEHH",_dataType,_indent,_currentIndent);
+									//TRACE_3("BLEHH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}; };
@@ -284,7 +288,7 @@ _parse =
 							{
 								if (_dataType == YAML_TYPE_UNKNOWN) then
 								{
-									TRACE_2("Starting new Hash",count _lines,_indent);
+									//TRACE_2("Starting new Hash",count _lines,_indent);
 									
 									_data = [] call CBA_fnc_hashCreate;
 									_dataType = YAML_TYPE_ASSOC;
@@ -297,14 +301,14 @@ _parse =
 								}
 								else
 								{
-									TRACE_3("BLAH",_dataType,_indent,_currentIndent);
+									//TRACE_3("BLAH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}
 							else{if (_currentIndent < _indent) then
 							{
 								// Ignore and pass down the stack.
-								TRACE_2("End of Hash",count _lines,_indent);
+								//TRACE_2("End of Hash",count _lines,_indent);
 								_pos = _pos - 1;
 								_return = true;
 							}
@@ -312,14 +316,14 @@ _parse =
 							{
 								if (_dataType == YAML_TYPE_ASSOC) then
 								{
-									TRACE_2("New element of Hash",count _lines,_indent);
+									//TRACE_2("New element of Hash",count _lines,_indent);
 									_key = [_char];
 									_value = [];
 									_mode = YAML_MODE_ASSOC_KEY;
 								}
 								else
 								{
-									TRACE_3("BLEH",_dataType,_indent,_currentIndent);
+									//TRACE_3("BLEH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
 							}; };
@@ -330,7 +334,7 @@ _parse =
 		};
 	};
 	
-	TRACE_4("Parsed YAML data item",_indent,_pos,_error,count _lines);
+	//TRACE_4("Parsed YAML data item",_indent,_pos,_error,count _lines);
 	
 	[_pos, _data, _error]; // Return.
 };
@@ -345,7 +349,7 @@ _yaml = toArray _yamlString;
 
 _lineBreaks = [ASCII_NEWLINE, ASCII_CR];
 
-TRACE_2("Parsing YAML file",_file,count _yaml);
+//TRACE_2("Parsing YAML file",_file,count _yaml);
 
 // Ensure input ends with a newline.
 if (not ((_yaml select ((count _yaml) - 1)) in _lineBreaks)) then
@@ -358,7 +362,7 @@ _pos = -1;
 _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
 
 EXPLODE_3(_retVal,_pos,_data,_error);
-TRACE_2("Parsed",_pos,_error);
+//TRACE_2("Parsed",_pos,_error);
 
 if (_error) then
 {
