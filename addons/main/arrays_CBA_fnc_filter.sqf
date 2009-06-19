@@ -6,7 +6,7 @@ Description:
 
 Example:
 (begin code)
-	[[1, 2, 3], { (_this select 0) + 1 }] call CBA_fnc_collect;
+	[[1, 2, 3], { (_this select 0) + 1 }] call CBA_fnc_filter;
 	// ===> [2, 3, 4]
 (end code)
   
