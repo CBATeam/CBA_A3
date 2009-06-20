@@ -5,7 +5,7 @@ _action = _this select 1;
 if (isText(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	#ifdef DEBUG
-		[format["readActionFromConfig: %1, Found: %2", _this, getText(CFGSETTINGS >> _component >> _action)], STR(ADDON)] call CBA_fDebug;
+		[format["readActionFromConfig: %1, Found: %2", _this, getText(CFGSETTINGS >> _component >> _action)], QUOTE(ADDON)] call CBA_fDebug;
 	#endif
 	[getText(CFGSETTINGS >> _component >> _action)]
 };
@@ -13,7 +13,7 @@ if (isText(CFGSETTINGS >> _component >> _action)) exitWith
 if (isClass(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	#ifdef DEBUG
-		[format["readActionFromConfig: %1, Found: %2", _this, getText(CFGSETTINGS >> _component >> _action >> "action")], STR(ADDON)] call CBA_fDebug;
+		[format["readActionFromConfig: %1, Found: %2", _this, getText(CFGSETTINGS >> _component >> _action >> "action")], QUOTE(ADDON)] call CBA_fDebug;
 	#endif
 	[getText(CFGSETTINGS >> _component >> _action >> "action")]
 };

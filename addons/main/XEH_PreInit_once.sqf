@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 PREPMAIN(fDebug);
-["Initializing...", STR(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
 
 CREATELOGICLOCAL;
 

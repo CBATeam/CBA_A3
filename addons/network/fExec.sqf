@@ -29,7 +29,7 @@ if (GVAR(debug)) then
 	if (_ex) then { _msg = (_msg + ". Executing!") } else { _msg = (_msg + ". Not Executing!") };
 
 	// Output to Chat and local arma.rpt
-	[_msg, STR(ADDON)] call CBA_fDebug;
+	[_msg, QUOTE(ADDON)] call CBA_fDebug;
 };
 
 if (_ex) then

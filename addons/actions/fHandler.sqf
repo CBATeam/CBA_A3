@@ -21,8 +21,8 @@ _action = "moveRight"; // TODO: FindOutActionKey!
 #ifdef DEBUG
 	if (count _ar > 0) then
 	{
-		[format["ActionPressed: %1, Executing: %2", _this, _ar], STR(ADDON)] call CBA_fDebug;
+		[format["ActionPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fDebug;
 	} else {
-		[format["ActionPressed: %1, No Execution", _this], STR(ADDON)] call CBA_fDebug;
+		[format["ActionPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fDebug;
 	};
 #endif

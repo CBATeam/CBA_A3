@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 GVAR(say) = _this;
-publicVariable STR(GVAR(say));
+publicVariable QUOTE(GVAR(say));
 
 if (SLX_XEH_MACHINE select 0 && !ACE_DEAD) then
 {

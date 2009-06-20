@@ -6,7 +6,7 @@ _settings = [false, false, false];
 if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	#ifdef DEBUG
-		[format["readKeyFromConfig: %1, Found: %2", _this, getNumber(CFGSETTINGS >> _component >> _action)], STR(ADDON)] call CBA_fDebug;
+		[format["readKeyFromConfig: %1, Found: %2", _this, getNumber(CFGSETTINGS >> _component >> _action)], QUOTE(ADDON)] call CBA_fDebug;
 	#endif
 	[getNumber(CFGSETTINGS >> _component >> _action), _settings]
 };
@@ -14,7 +14,7 @@ if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith
 if (isClass(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	#ifdef DEBUG
-		[format["readKeyFromConfig: %1, Found: %2", _this, getNumber(CFGSETTINGS >> _component >> _action >> "key")], STR(ADDON)] call CBA_fDebug;
+		[format["readKeyFromConfig: %1, Found: %2", _this, getNumber(CFGSETTINGS >> _component >> _action >> "key")], QUOTE(ADDON)] call CBA_fDebug;
 	#endif
 	_i = 0;
 	{

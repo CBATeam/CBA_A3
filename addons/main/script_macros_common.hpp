@@ -58,11 +58,7 @@
 //#define DEBUG DEBUGS(COMPONENT)
 #define DOUBLES(var1,var2) ##var1##_##var2
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
-// DEPRECATED TRIPPLES() - mis-spelled
-#define TRIPPLES(var1,var2,var3) TRIPLES(var1,var2,var3)
 #define QUOTE(var1) #var1
-// DEPRECATED STR() - ambiguous with str command.
-#define STR(var1) QUOTE(var1)
 #define INC(var) var = (var) + 1
 #define DEC(var) var = (var) - 1
 #define ADD(var1,var2) var1 = (var1) + (var2)
@@ -70,15 +66,15 @@
 #define REM(var1,var2) SUB(var1,var2)
 #define PUSH(var1,var2) var1 set [count (var1), var2]
 #define ISNILS(var1,var2) if (isNil #var1) then { ##var1 = ##var2 }
-#define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPPLES(var1,var2,var3),var4)
+#define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPLES(var1,var2,var3),var4)
 #define ISNILS3(var1,var2,var3) ISNILS(DOUBLES(var1,var2),var3)
 #define ISNIL(var1,var2) ISNILS2(PREFIX,COMPONENT,var1,var2)
 #define ISNILMAIN(var1,var2) ISNILS3(PREFIX,var1,var2)
 // TODO: Evaluate using a single group for the logicCreation?
 #define CREATELOGICS(var1,var2) ##var1##_##var2## = (createGroup sideLogic) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]
 #define CREATELOGICLOCALS(var1,var2) ##var1##_##var2## = "LOGIC" createVehicleLocal [0, 0, 0]
-#define CREATELOGICGLOBALS(var1,var2) ##var1##_##var2## = (createGroup sideLogic) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable STR(DOUBLES(var1,var2))
-#define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = (createGroup sideLogic) createUnit [STR(TRIPPLES(PREFIX,COMPONENT,logic)), [0, 0, 0], [], 0, "NONE"];
+#define CREATELOGICGLOBALS(var1,var2) ##var1##_##var2## = (createGroup sideLogic) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable QUOTE(DOUBLES(var1,var2))
+#define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = (createGroup sideLogic) createUnit [QUOTE(TRIPLES(PREFIX,COMPONENT,logic)), [0, 0, 0], [], 0, "NONE"];
 #define GETVARS(var1,var2,var3) (##var1##_##var2 getVariable #var3)
 #define GETVARMAINS(var1,var2) GETVARS(var1,MAINLOGIC,var2)
 // TODO: Evaluate merging of different path functions...   .sqf  good to put in define?
