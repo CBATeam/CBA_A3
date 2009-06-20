@@ -30,7 +30,6 @@ ASSERT_DEFINED("_imaginaryFox","Checking ASSERT_DEFINED() is output correctly");
 
 CALLFS(PREFIX,COMPONENT,arrays_test);
 CALLFS(PREFIX,COMPONENT,hashes_test);
-CALLFS(PREFIX,COMPONENT,misc_test);
 CALLFS(PREFIX,COMPONENT,strings_test);
 CALLFS(PREFIX,COMPONENT,yaml_test);
 
