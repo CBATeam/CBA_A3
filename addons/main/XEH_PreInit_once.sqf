@@ -50,9 +50,9 @@ PREPMAIN(fSelectWeapon);
 PREPMAIN(fShuffle);
 PREPMAIN(fSwitchPlayer);
 
-// Execute scripts
-EXECF(sGauss_Init);
-EXECF(sKRON_Strings);
+// Initialize Components
+CALLF(init_gauss);
+CALLF(init_kront_strings);
 
 // Announce Initialization Complete
 SETVAR ["_init", true];
