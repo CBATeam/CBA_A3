@@ -13,7 +13,7 @@ Returns:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "hash.inc.sqf"
+#include "hashes.inc.sqf"
 
 SCRIPT(hashHasKey);
 
