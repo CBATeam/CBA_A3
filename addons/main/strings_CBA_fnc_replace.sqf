@@ -11,9 +11,9 @@ Example:
 (end code)
 
 Parameters:
-	_string - String to trim [String]
+	_string - String to make replacement in [String]
 	_pattern - Substring to replace [String]
-	_replacement - String to replace with [String]
+	_replacement - String to replace the _pattern with [String]
 
 Returns:
 	String with replacements made [String]
