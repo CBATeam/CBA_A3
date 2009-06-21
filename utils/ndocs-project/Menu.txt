@@ -78,27 +78,19 @@ Group: Functions  {
          File: removeEventHandler  (no auto-title, main\events_CBA_fnc_removeEventHandler.sqf)
          }  # Group: Events
 
-      Group: Hash  {
+      Group: Hashes  {
 
-         File: hashCreate  (no auto-title, main\hash_CBA_fnc_hashCreate.sqf)
-         File: hashEachPair  (no auto-title, main\hash_CBA_fnc_hashEachPair.sqf)
-         File: hashGet  (no auto-title, main\hash_CBA_fnc_hashGet.sqf)
-         File: hashHasKey  (no auto-title, main\hash_CBA_fnc_hashHasKey.sqf)
-         File: hashSet  (no auto-title, main\hash_CBA_fnc_hashSet.sqf)
-         File: isHash  (no auto-title, main\hash_CBA_fnc_isHash.sqf)
-         }  # Group: Hash
-
-      Group: Internal  {
-
-         File: unitInitHandler  (no auto-title, main\internal_CBA_fnc_unitInitHandler.sqf)
-         File: vehicleInitHandler  (no auto-title, main\internal_CBA_fnc_vehicleInitHandler.sqf)
-         }  # Group: Internal
+         File: hashCreate  (no auto-title, main\hashes_CBA_fnc_hashCreate.sqf)
+         File: hashEachPair  (no auto-title, main\hashes_CBA_fnc_hashEachPair.sqf)
+         File: hashGet  (no auto-title, main\hashes_CBA_fnc_hashGet.sqf)
+         File: hashHasKey  (no auto-title, main\hashes_CBA_fnc_hashHasKey.sqf)
+         File: hashSet  (no auto-title, main\hashes_CBA_fnc_hashSet.sqf)
+         File: isHash  (no auto-title, main\hashes_CBA_fnc_isHash.sqf)
+         }  # Group: Hashes
 
       Group: Misc  {
 
-         File: dataPath  (no auto-title, main\misc_CBA_fnc_dataPath.sqf)
          File: defaultParam  (no auto-title, main\misc_CBA_fnc_defaultParam.sqf)
-         File: equals  (no auto-title, main\misc_CBA_fnc_equals.sqf)
          File: getGroupIndex  (no auto-title, main\misc_CBA_fnc_getGroupIndex.sqf)
          }  # Group: Misc
 
