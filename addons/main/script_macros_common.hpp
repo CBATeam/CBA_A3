@@ -36,6 +36,9 @@
 #ifndef CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
 #define CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
 
+// TODO: Evaluate usefulness; idea is, everyone who uses cba, adds CBA_MAIN to their requiredAddons
+#define CBA_MAIN "cba_main", "cba_main_arrays", "cba_main_eventhandlers", "cba_main_hashes", "cba_main_network", "cba_main_strings"
+
 #ifndef MAINPREFIX
 	#define MAINPREFIX x
 #endif
