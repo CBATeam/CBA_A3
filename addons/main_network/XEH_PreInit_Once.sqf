@@ -10,17 +10,17 @@
  *
  * Examples:
  * - If you want a unit1,unit2, unit3 to say something on every computer:
- * [ [unit1, unit2, unit3], "TestSound" ] call CBA_fnc_RemoteSay;
+ * [ [unit1, unit2, unit3], "TestSound" ] call cba_network_fSay;
  * unit1, 2 and 3 would say "TestSound" (if it existed :p)
  *
  * - To execute sth on server:
- * [ 0, { superDebugMode = true } ] call CBA_fnc_RemoteExecute;
+ * [ 0, { superDebugMode = true } ] call cba_network_fSend;
  *
  * - To execute sth on all clients:
- * [ -1, { superDebugMode = true; player sideChat "Woah A.C.E!!" }] call CBA_fnc_RemoteExecute;
+ * [ -1, { superDebugMode = true; player sideChat "Woah A.C.E!!" }] call cba_network_fSend;
  *
  * - To execute sth on all clients, unit1, unit2, unit3 write something
- * [ -1, { superDebugMode = true; { _x sideChat "Woah A.C.E!!" } forEach _this }, [unit1, unit2, unit3]] call CBA_fnc_RemoteExecute;
+ * [ -1, { superDebugMode = true; { _x sideChat "Woah A.C.E!!" } forEach _this }, [unit1, unit2, unit3]] call cba_network_fSend;
  *
  * - To execute sth on all clients and server, use destination -2
  * - To execute sth on all clients and server, EXCEPT the sending node, use destination -3
@@ -39,10 +39,12 @@ ISNIL(debug,false);
 ISNIL(TimeSync_Disabled,false);
 ISNIL(WeatherSync_Disabled,false);
 
-PREP(fExec);
-PREP(fCV);
-PREP(fSay);
-PREP(fSend);
+PREPMAIN(fnc_RemoteSay);
+PREPMAIN(fnc_RemoteExecute);
+PREP(fnc_Exec);
+PREP(fnc_CV);
+
+// TODO: Add functions that add to opc/opd, instead of direct handling?
 
 GVAR(INIT) = false;
 
@@ -53,23 +55,17 @@ if (isServer) then
 	ISNIL(OPD,[]); // OnPlayerDisConnected Code array to execute after a player is recognized
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-	PREP(fOpc);
-	PREP(fOpd);
-	PREP(fSync);
+	PREP(fnc_Opc);
+	PREP(fnc_Opd);
+	PREP(fnc_Sync);
 	
-	GVAR(fId) = { "server" };
+	GVAR(fnc_Id) = { "server" };
 	
-	QUOTE(GVAR(join)) addPublicVariableEventHandler
-	{
-		_data = _this select 1;
-		_object = _data select 0;
-		_name = _data select 1;
-		[_name, _object] CALL(fOpc);
-	};
+	[GVAR(join), { _this CALL(fnc_Opc) }] CALLMAIN(addEventHandler);
 
-	// onPlayerConnected "[_name,_id] call cba_network_fOpc";
+	// onPlayerConnected '[_name,_id] CALL(fnc_Opc)';
 	// TODO: Handle OPD without actually using opd
-	onPlayerDisconnected "[_name,_id] call cba_network_fOpd";
+	onPlayerDisconnected '[_name,_id] CALL(fnc_Opd)';
 
 	// Weather and Time Sync
 	[] spawn
@@ -78,18 +74,19 @@ if (isServer) then
 		waitUntil { time > 0 };
 		GVAR(OPC) =
 		[
-			{ [] spawn { sleep 5; CALL(fSync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
+			{ [] spawn { sleep 5; CALL(fnc_Sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
 		] + GVAR(OPC);
 
 		// Every 60 Seconds date/weather sync
 		while { true } do
 		{
 			sleep 60;
-			CALL(fSync);
+			CALL(fnc_Sync);
 		};
 	};
 } else {
-	GVAR(fId) = {
+	GVAR(fnc_Id) =
+	{
 		private ["_id"];
 		if (player == player) then
 		{
@@ -101,8 +98,9 @@ if (isServer) then
 	};
 };
 
-QUOTE(GVAR(cmd)) addPublicVariableEventHandler { if (GVAR(init)) then { (_this select 1) SPAWN(fExec) } };
-QUOTE(GVAR(say)) addPublicVariableEventHandler { if (SLX_XEH_MACHINE select 0 && !ACE_DEAD) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
+[GVAR(cmd), { if (GVAR(init)) then { _this SPAWN(fnc_Exec) } }] CALLMAIN(addEventHandler);
+
+QUOTE(GVAR(say)) addPublicVariableEventHandler { if (!isDedicated) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
 QUOTE(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };
 QUOTE(GVAR(date)) addPublicVariableEventHandler { _date = _this select 1; setDate _date };
 

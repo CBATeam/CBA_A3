@@ -87,7 +87,7 @@ if (_c > 1) then
 
 if (_type select 2) exitWith
 {
-	[-2, { _this call CBA_fDebug }, [_message, _component], [_type select 0,_type select 1,false]] call cba_network_fSend;
+	[-2, { _this call CBA_fDebug }, [_message, _component], [_type select 0,_type select 1,false]] call CBA_fnc_RemoteExecute;
 };
 
 _msgAr = [];
