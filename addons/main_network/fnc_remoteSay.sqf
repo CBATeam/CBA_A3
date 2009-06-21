@@ -1,3 +1,6 @@
+/*
+Function: CBA_fnc_remoteSay
+*/
 #include "script_component.hpp"
 GVAR(say) = _this;
 publicVariable QUOTE(GVAR(say));

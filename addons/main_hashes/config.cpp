@@ -9,3 +9,5 @@ class CfgPatches
 		version = VERSION;
 	};
 };
+
+#include "CfgFunctionDeclarations.hpp"

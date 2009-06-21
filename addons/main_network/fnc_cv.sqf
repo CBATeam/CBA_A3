@@ -1,3 +1,6 @@
+/*
+Function: CBA_main_network_fnc_cv
+*/
 #include "script_component.hpp"
 #define __scriptname fCV
 private ["_veh", "_pos", "_c", "_dir", "_object", "_varName", "_init", "_valid"];

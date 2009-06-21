@@ -116,6 +116,6 @@ Format: 1.4
 Language: SQF
 
    Extensions: sqf sqs
-   Ignore Function Prefixes in Index: CBA_fnc_ CBA_main_network_fnc_
+   Ignore Function Prefixes in Index: $IGNORED_PREFIXES$
    Line Comment: //
    Block Comment: /* */

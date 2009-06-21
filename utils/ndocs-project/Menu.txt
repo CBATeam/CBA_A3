@@ -59,67 +59,78 @@ Group: Functions  {
 
       Group: Arrays  {
 
-         File: filter  (no auto-title, main\arrays_CBA_fnc_filter.sqf)
-         File: inject  (no auto-title, main\arrays_CBA_fnc_inject.sqf)
+         File: filter  (no auto-title, main_arrays\fnc_filter.sqf)
+         File: inject  (no auto-title, main_arrays\fnc_inject.sqf)
          }  # Group: Arrays
 
-      Group: Debug  {
+      Group: Diagnostic  {
 
-         File: error  (no auto-title, main\debug_CBA_fnc_error.sqf)
-         File: log  (no auto-title, main\debug_CBA_fnc_log.sqf)
-         }  # Group: Debug
+         File: error  (no auto-title, main_diagnostic\fnc_error.sqf)
+         File: log  (no auto-title, main_diagnostic\fnc_log.sqf)
+         }  # Group: Diagnostic
 
       Group: Events  {
 
-         File: addEventHandler  (no auto-title, main\events_CBA_fnc_addEventHandler.sqf)
-         File: globalEvent  (no auto-title, main\events_CBA_fnc_globalEvent.sqf)
-         File: localEvent  (no auto-title, main\events_CBA_fnc_localEvent.sqf)
-         File: remoteEvent  (no auto-title, main\events_CBA_fnc_remoteEvent.sqf)
-         File: removeEventHandler  (no auto-title, main\events_CBA_fnc_removeEventHandler.sqf)
+         File: addEventHandler  (no auto-title, main_events\fnc_addEventHandler.sqf)
+         File: globalEvent  (no auto-title, main_events\fnc_globalEvent.sqf)
+         File: localEvent  (no auto-title, main_events\fnc_localEvent.sqf)
+         File: remoteEvent  (no auto-title, main_events\fnc_remoteEvent.sqf)
+         File: removeEventHandler  (no auto-title, main_events\fnc_removeEventHandler.sqf)
          }  # Group: Events
 
       Group: Hashes  {
 
-         File: hashCreate  (no auto-title, main\hashes_CBA_fnc_hashCreate.sqf)
-         File: hashEachPair  (no auto-title, main\hashes_CBA_fnc_hashEachPair.sqf)
-         File: hashGet  (no auto-title, main\hashes_CBA_fnc_hashGet.sqf)
-         File: hashHasKey  (no auto-title, main\hashes_CBA_fnc_hashHasKey.sqf)
-         File: hashSet  (no auto-title, main\hashes_CBA_fnc_hashSet.sqf)
-         File: isHash  (no auto-title, main\hashes_CBA_fnc_isHash.sqf)
+         File: hashCreate  (no auto-title, main_hashes\fnc_hashCreate.sqf)
+         File: hashEachPair  (no auto-title, main_hashes\fnc_hashEachPair.sqf)
+         File: hashGet  (no auto-title, main_hashes\fnc_hashGet.sqf)
+         File: hashHasKey  (no auto-title, main_hashes\fnc_hashHasKey.sqf)
+         File: hashSet  (no auto-title, main_hashes\fnc_hashSet.sqf)
+         File: isHash  (no auto-title, main_hashes\fnc_isHash.sqf)
          }  # Group: Hashes
 
       Group: Misc  {
 
-         File: defaultParam  (no auto-title, main\misc_CBA_fnc_defaultParam.sqf)
-         File: getGroupIndex  (no auto-title, main\misc_CBA_fnc_getGroupIndex.sqf)
+         File: defaultParam  (no auto-title, main\fnc_defaultParam.sqf)
+         File: getGroupIndex  (no auto-title, main\fnc_getGroupIndex.sqf)
+         File: parseYAML  (no auto-title, main\fnc_parseYAML.sqf)
+         File: testMain  (no auto-title, main\fnc_testMain.sqf)
          }  # Group: Misc
+
+      Group: Network  {
+
+         File: remoteExecute  (no auto-title, main_network\fnc_remoteExecute.sqf)
+         File: remoteSay  (no auto-title, main_network\fnc_remoteSay.sqf)
+         }  # Group: Network
 
       Group: Strings  {
 
-         File: capitalize  (no auto-title, main\strings_CBA_fnc_capitalize.sqf)
-         File: find  (no auto-title, main\strings_CBA_fnc_find.sqf)
-         File: formatElapsedTime  (no auto-title, main\strings_CBA_fnc_formatElapsedTime.sqf)
-         File: formatNumber  (no auto-title, main\strings_CBA_fnc_formatNumber.sqf)
-         File: join  (no auto-title, main\strings_CBA_fnc_join.sqf)
-         File: leftTrim  (no auto-title, main\strings_CBA_fnc_leftTrim.sqf)
-         File: replace  (no auto-title, main\strings_CBA_fnc_replace.sqf)
-         File: rightTrim  (no auto-title, main\strings_CBA_fnc_rightTrim.sqf)
-         File: split  (no auto-title, main\strings_CBA_fnc_split.sqf)
-         File: strLen  (no auto-title, main\strings_CBA_fnc_strLen.sqf)
-         File: trim  (no auto-title, main\strings_CBA_fnc_trim.sqf)
+         File: capitalize  (no auto-title, main_strings\fnc_capitalize.sqf)
+         File: find  (no auto-title, main_strings\fnc_find.sqf)
+         File: formatElapsedTime  (no auto-title, main_strings\fnc_formatElapsedTime.sqf)
+         File: formatNumber  (no auto-title, main_strings\fnc_formatNumber.sqf)
+         File: join  (no auto-title, main_strings\fnc_join.sqf)
+         File: leftTrim  (no auto-title, main_strings\fnc_leftTrim.sqf)
+         File: replace  (no auto-title, main_strings\fnc_replace.sqf)
+         File: rightTrim  (no auto-title, main_strings\fnc_rightTrim.sqf)
+         File: split  (no auto-title, main_strings\fnc_split.sqf)
+         File: strLen  (no auto-title, main_strings\fnc_strLen.sqf)
+         File: trim  (no auto-title, main_strings\fnc_trim.sqf)
          }  # Group: Strings
 
-      Group: Test  {
-
-         File: testMain  (no auto-title, main\test_CBA_fnc_testMain.sqf)
-         }  # Group: Test
-
-      Group: Yaml  {
-
-         File: parseYAML  (no auto-title, main\yaml_CBA_fnc_parseYAML.sqf)
-         }  # Group: Yaml
-
       }  # Group: CBA
+
+   Group: CBA_main_network  {
+
+      Group: Network  {
+
+         File: cv  (no auto-title, main_network\fnc_cv.sqf)
+         File: exec  (no auto-title, main_network\fnc_exec.sqf)
+         File: opc  (no auto-title, main_network\fnc_opc.sqf)
+         File: opd  (no auto-title, main_network\fnc_opd.sqf)
+         File: sync  (no auto-title, main_network\fnc_sync.sqf)
+         }  # Group: Network
+
+      }  # Group: CBA_main_network
 
    }  # Group: Functions
 

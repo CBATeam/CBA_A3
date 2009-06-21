@@ -1,3 +1,6 @@
+/*
+Function: CBA_main_network_fnc_opc
+*/
 #include "script_component.hpp"
 #define __scriptname opc
 private["_name", "_id", "_uid", "_idx", "_dbg", "_handle", "_plName"];

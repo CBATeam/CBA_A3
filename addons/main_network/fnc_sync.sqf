@@ -1,3 +1,6 @@
+/*
+Function: CBA_main_network_fnc_sync
+*/
 #include "script_component.hpp"
 GVAR(weather) = [overCast, fog, rain];
 GVAR(date) = date;
