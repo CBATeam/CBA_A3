@@ -52,7 +52,7 @@ PREPMAIN(fSwitchPlayer);
 
 // Initialize Components
 CALLF(init_gauss);
-CALLF(init_kront_strings);
+CALLF(init_kron_strings);
 
 // Announce Initialization Complete
 SETVAR ["_init", true];
