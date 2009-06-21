@@ -25,7 +25,7 @@ private ["_index", "_isDefault"];
 
 // Work out whether the new value is the default value for this assoc.
 _isDefault = [if (isNil "_value") then { nil } else { _value },
-	_hash select HASH_DEFAULT_VALUE] call CBA_fnc_equals;
+	_hash select HASH_DEFAULT_VALUE] call BIS_fnc_areEqual;
 	
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then
