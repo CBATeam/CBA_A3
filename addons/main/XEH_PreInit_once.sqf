@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 PREPMAIN(fDebug);
-["Initializing...", STR(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
 
 CREATELOGICLOCAL;
 
@@ -50,9 +50,9 @@ PREPMAIN(fSelectWeapon);
 PREPMAIN(fShuffle);
 PREPMAIN(fSwitchPlayer);
 
-// Execute scripts
-EXECF(sGauss_Init);
-EXECF(sKRON_Strings);
+// Initialize Components
+CALLF(init_gauss);
+CALLF(init_kron_strings);
 
 // Announce Initialization Complete
 SETVAR ["_init", true];

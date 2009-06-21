@@ -44,8 +44,8 @@ hit             = "_this call((_this select 0)getVariable'Extended_HitEH')"; \
 incomingMissile = "_this call((_this select 0)getVariable'Extended_IncomingMissileEH')"; \
 killed          = "_this call((_this select 0)getVariable'Extended_KilledEH')"; \
 landedTouchDown = "_this call((_this select 0)getVariable'Extended_LandedTouchDownEH')"; \
-landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStoppedEH')"; \
-handleDamage   = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')";
+landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStoppedEH')"; // \
+// handleDamage   = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')";
 
 // We'll need this one for backwards compatibility with third-party addons
 // that expect the class to exist

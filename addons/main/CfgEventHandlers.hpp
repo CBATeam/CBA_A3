@@ -8,7 +8,7 @@ class Extended_PreInit_EventHandlers
 {
 	class ADDON
 	{
-		init = STR(CALLF(XEH_PreInit_Once));
+		init = QUOTE(CALLF(XEH_PreInit_Once));
 	};
 };
 
@@ -16,8 +16,8 @@ class Extended_PostInit_EventHandlers
 {
 	class ADDON
 	{
-		init = STR(CALLF(XEH_PostInit_Once));
-		clientInit = STR(CALLF(XEH_ClientInit_Once));
+		init = QUOTE(CALLF(XEH_PostInit_Once));
+		clientInit = QUOTE(CALLF(XEH_ClientInit_Once));
 	};
 };
 

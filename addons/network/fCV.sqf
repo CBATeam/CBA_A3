@@ -13,7 +13,7 @@ if !(isServer) then
 {
 	[0, { _this call GVAR(fCV) }, _this] CALL(fSend);
 	#ifdef DEBUG
-	[format["Sending Vehicle Create Request: %1 to server", _this], STR(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
+	[format["Sending Vehicle Create Request: %1 to server", _this], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
 	#endif
 } else {
 	_object = _veh createVehicle _pos;
@@ -42,6 +42,6 @@ if !(isServer) then
 		_name = _id;
 	};
 	#ifdef DEBUG
-	[format["Received Vehicle Create Request: %1 from %2 (%3), %4: %5", _this, _sid, _name, _object, _valid], STR(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
+	[format["Received Vehicle Create Request: %1 from %2 (%3), %4: %5", _this, _sid, _name, _object, _valid], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
 	#endif
 };

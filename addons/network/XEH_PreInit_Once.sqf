@@ -28,7 +28,7 @@
 */
 #define CHANGETIME 5
 
-["Initializing...", STR(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
 
 // Announce the initialization of the script
 ADDON = false;
@@ -59,7 +59,7 @@ if (isServer) then
 	
 	GVAR(fId) = { "server" };
 	
-	STR(GVAR(join)) addPublicVariableEventHandler
+	QUOTE(GVAR(join)) addPublicVariableEventHandler
 	{
 		_data = _this select 1;
 		_object = _data select 0;
@@ -101,10 +101,10 @@ if (isServer) then
 	};
 };
 
-STR(GVAR(cmd)) addPublicVariableEventHandler { if (GVAR(init)) then { (_this select 1) SPAWN(fExec) } };
-STR(GVAR(say)) addPublicVariableEventHandler { if (SLX_XEH_MACHINE select 0 && !ACE_DEAD) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
-STR(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };
-STR(GVAR(date)) addPublicVariableEventHandler { _date = _this select 1; setDate _date };
+QUOTE(GVAR(cmd)) addPublicVariableEventHandler { if (GVAR(init)) then { (_this select 1) SPAWN(fExec) } };
+QUOTE(GVAR(say)) addPublicVariableEventHandler { if (SLX_XEH_MACHINE select 0 && !ACE_DEAD) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
+QUOTE(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };
+QUOTE(GVAR(date)) addPublicVariableEventHandler { _date = _this select 1; setDate _date };
 
 GVAR(INIT) = true; // Deprecated
 

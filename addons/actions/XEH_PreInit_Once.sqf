@@ -7,10 +7,10 @@
 	class CfgSettings { class PREFIX { class COMPONENT { class sys_attachments { cqb = 33 }; }; }; };
 
 	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
-	[STR(COMPONENT), "cqb", { _this call GVAR(actionPressed) }] call CBA_keys_fAddHandlerFromConfig;
+	[QUOTE(COMPONENT), "cqb", { _this call GVAR(actionPressed) }] call CBA_keys_fAddHandlerFromConfig;
 */
 #define __cfg configFile >> "CfgDefaultKeysMapping"
-["Initializing...", STR(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
 
 private ["_count"];
 _count = (count (__cfg)) -1;

@@ -24,8 +24,8 @@ private ["_settings", "_code"];
 #ifdef DEBUG
 	if (count _ar > 0) then
 	{
-		[format["KeyPressed: %1, Executing: %2", _this, _ar], STR(ADDON)] call CBA_fDebug;
+		[format["KeyPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fDebug;
 	} else {
-		[format["KeyPressed: %1, No Execution", _this], STR(ADDON)] call CBA_fDebug;
+		[format["KeyPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fDebug;
 	};
 #endif
