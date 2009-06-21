@@ -20,7 +20,7 @@ private ["_settings", "_code"];
 		#endif
 		_this call _code;
 	};
-} forEach (GVAR(actions) select (_this select 1));
+} forEach (GVAR(keys) select (_this select 1));
 #ifdef DEBUG
 	if (count _ar > 0) then
 	{

@@ -6,7 +6,7 @@ _code = _this select 2;
 #ifdef DEBUG
 	[format["addHandler: %1", _this], QUOTE(ADDON)] call CBA_fDebug;
 #endif
-_ar = GVAR(actions) select _key;
+_ar = GVAR(keys) select _key;
 _entry = [_settings, _code];
 PUSH(_ar,_entry);
-GVAR(actions) set [_key, _ar];
+GVAR(keys) set [_key, _ar];
