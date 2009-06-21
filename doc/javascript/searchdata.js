@@ -1,0 +1,32 @@
+var indexSectionsWithContent = {
+   "Functions": {
+      "Symbols": false,
+      "Numbers": false,
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": true,
+      "E": true,
+      "F": true,
+      "G": true,
+      "H": true,
+      "I": true,
+      "J": true,
+      "K": false,
+      "L": true,
+      "M": false,
+      "N": false,
+      "O": true,
+      "P": true,
+      "Q": false,
+      "R": true,
+      "S": true,
+      "T": true,
+      "U": false,
+      "V": false,
+      "W": false,
+      "X": false,
+      "Y": false,
+      "Z": false
+      }
+   }
