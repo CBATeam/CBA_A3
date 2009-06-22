@@ -41,15 +41,18 @@ PREPMAIN(fRemoveWeapon);
 
 OBSOLETE(fSelectedWeapon,{ currentWeapon _this });
 
-PREPMAIN(fVectorSum3d);
+DEPRECATE_SYS(PREFIX,fVectorSum3d,BIS,fnc_vectorAdd);
+
 PREPMAIN(fAddMagazineVerified);
 PREPMAIN(fCreateMarker);
 PREPMAIN(fCreateTrigger);
 PREPMAIN(fGetArg);
 PREPMAIN(fInheritsFrom);
 PREPMAIN(fNearPlayer);
-PREPMAIN(fRndInt);
-PREPMAIN(fRndSelect);
+
+DEPRECATE_SYS(PREFIX,fRndInt,BIS,fnc_randomInt);
+DEPRECATE_SYS(PREFIX,fRndSelect,BIS,fnc_selectRandom);
+
 PREPMAIN(fSelectWeapon);
 PREPMAIN(fShuffle);
 PREPMAIN(fSwitchPlayer);
