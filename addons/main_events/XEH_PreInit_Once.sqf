@@ -38,3 +38,7 @@ PREPMAIN(fnc_AddActionHandlerFromConfig);
 PREPMAIN(fnc_AddKeyHandlerFromConfig);
 PREPMAIN(fnc_ReadActionFromConfig);
 PREPMAIN(fnc_ReadKeyFromConfig);
+
+// TODO: Temporary until BI Functions can be preloaded at a normal time!
+PREPMAIN(fnc_globalEvent);
+PREPMAIN(fnc_addEventHandler);
