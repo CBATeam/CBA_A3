@@ -1,1 +1,0 @@
-currentWeapon _this;

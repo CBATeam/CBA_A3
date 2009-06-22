@@ -30,13 +30,17 @@ PREPMAIN(fGetUnitAnim);
 PREPMAIN(fGetUnitDeathAnim);
 PREPMAIN(fGetVehicleAnim);
 PREPMAIN(fHeadDir);
-PREPMAIN(fMyWeapon);
+
+OBSOLETE(fMyWeapon,{ currentWeapon player });
+
 PREPMAIN(fObjectRandom);
 PREPMAIN(fPlayers);
 PREPMAIN(fRealHeight);
 PREPMAIN(fRemoveMagazine);
 PREPMAIN(fRemoveWeapon);
-PREPMAIN(fSelectedWeapon);
+
+OBSOLETE(fSelectedWeapon,{ currentWeapon _this });
+
 PREPMAIN(fVectorSum3d);
 PREPMAIN(fAddMagazineVerified);
 PREPMAIN(fCreateMarker);
