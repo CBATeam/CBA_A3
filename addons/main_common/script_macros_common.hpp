@@ -132,8 +132,28 @@
 // User Functions
 // Please define PREFIX and COMPONENT before including
 #define ADDON DOUBLES(PREFIX,COMPONENT)
-#define DEPRICATE_SYS(OLD_PREFIX,OLD_FUNCTION,NEW_PREFIX,NEW_FUNCTION) OLD_PREFIX##_##OLD_FUNCTION = { diag_log 'Warning, Depricated function used: OLD_PREFIX##_##OLD_FUNCTION (new: NEW_PREFIX##_##NEW_FUNCTION) in ADDON'; _this call NEW_PREFIX##_##NEW_FUNCTION }
+
+#define DEPRICATE_SYS(OLD_PREFIX,OLD_FUNCTION,NEW_PREFIX,NEW_FUNCTION) \
+	OLD_PREFIX##_##OLD_FUNCTION = { \
+		WARNING('Depricated function used: OLD_PREFIX_OLD_FUNCTION (new: NEW_PREFIX_NEW_FUNCTION) in ADDON'); \
+		if (isNil "_this") then {  call NEW_PREFIX##_##NEW_FUNCTION } else { _this call NEW_PREFIX##_##NEW_FUNCTION }
 #define DEPRICATE(OLD_FUNCTION,NEW_FUNCTION) DEPRICATES_SYS(PREFIX,OLD_FUNCTION,PREFIX,NEW_FUNCTION)
+
+// Macro: OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION)
+//	Replace an obsolete OLD_FUNCTION (which will have PREFIX_ prepended) with a simple
+//	COMMAND_FUNCTION, with the intention that it will be replaced ASAP.
+//	Shows a warning in RPT each time the obsolete function it is used.
+//
+// Example:
+// 	(begin example)
+//		OBSOLETE(fMyWeapon,{ currentWeapon player });
+//	(end)
+#define OBSOLETE_SYS(OLD_PREFIX,OLD_FUNCTION,COMMAND_FUNCTION) \
+	OLD_PREFIX##_##OLD_FUNCTION = { \
+		WARNING('Obsolete function used: OLD_PREFIX_OLD_FUNCTION (use: COMMAND_FUNCTION) in ADDON'); \
+		if (isNil "_this") then { call COMMAND_FUNCTION } else { _this call COMMAND_FUNCTION }}
+#define OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION) OBSOLETE_SYS(PREFIX,OLD_FUNCTION,COMMAND_FUNCTION)
+
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTOS(PREFIX,COMPONENT,var1)
 #define PATHTOF(var1) PATHTOFS(PREFIX,COMPONENT,var1)
@@ -288,7 +308,7 @@ NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 
 // Macro: WARNING(MESSAGE)
 //	Record a timestamped, non-critical error in the RPT log.
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, 'WARNING: ##MESSAGE'] call CBA_fnc_log
+#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
 
 // Macro: ERROR(TITLE,MESSAGE)
 //	Record a timestamped, critical error in the RPT log. Newlines (\n) in the MESSAGE will be put on separate lines.
