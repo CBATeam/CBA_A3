@@ -36,9 +36,6 @@
 #ifndef CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
 #define CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
 
-// TODO: Evaluate usefulness; idea is, everyone who uses cba, adds CBA_MAIN to their requiredAddons
-#define CBA_MAIN "cba_main", "cba_main_arrays", "cba_main_eventhandlers", "cba_main_hashes", "cba_main_network", "cba_main_strings"
-
 #ifndef MAINPREFIX
 	#define MAINPREFIX x
 #endif
@@ -91,6 +88,10 @@
 #define CFGSETTINGSS(var1,var2) configFile >> "CfgSettings" >> #var1 >> #var2
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
+
+// TODO: Evaluate usefulness; idea is, everyone who uses cba, adds CBA_MAIN to their requiredAddons
+#define MAIN(var1,var2) QUOTE(TRIPLES(var1,main,var2))
+#define CBA_MAIN "cba_main", MAIN(CBA,arrays), MAIN(CBA,events), MAIN(CBA,hashes), MAIN(CBA,network), MAIN(CBA,strings)
 
 // Direct file function
 #define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'

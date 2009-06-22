@@ -9,5 +9,5 @@ class CfgPatches
 		version = VERSION;
 	};
 };
-
+#include "CfgEventhandlers.hpp"
 #include "CfgFunctionDeclarations.hpp"

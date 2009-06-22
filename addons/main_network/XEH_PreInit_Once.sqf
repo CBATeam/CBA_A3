@@ -61,7 +61,7 @@ if (isServer) then
 	
 	GVAR(fnc_Id) = { "server" };
 	
-	[GVAR(join), { _this CALL(fnc_Opc) }] CALLMAIN(addEventHandler);
+	[QUOTE(GVAR(join)), { _this CALL(fnc_Opc) }] CALLMAIN(addEventHandler);
 
 	// onPlayerConnected '[_name,_id] CALL(fnc_Opc)';
 	// TODO: Handle OPD without actually using opd
