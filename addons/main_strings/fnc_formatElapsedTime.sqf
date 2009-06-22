@@ -15,7 +15,7 @@ Returns:
 	
 ---------------------------------------------------------------------------- */
 
-#include "script_macros_common.hpp"
+#include "script_component.hpp"
 
 SCRIPT(formatElapsedTime);
 

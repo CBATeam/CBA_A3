@@ -51,7 +51,7 @@ Examples:
 (end code)
 ---------------------------------------------------------------------------- */
 
-#include "script_macros_common.hpp"
+#include "script_component.hpp"
 
 #define DEFAULT_INTEGER_WIDTH 1
 #define DEFAULT_DECIMAL_PLACES 0
