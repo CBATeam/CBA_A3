@@ -65,6 +65,14 @@ Group: Functions  {
          File: inject  (no auto-title, main_arrays\fnc_inject.sqf)
          }  # Group: Arrays
 
+      Group: Common  {
+
+         File: defaultParam  (no auto-title, main_common\fnc_defaultParam.sqf)
+         File: getGroupIndex  (no auto-title, main_common\fnc_getGroupIndex.sqf)
+         File: parseYAML  (no auto-title, main_common\fnc_parseYAML.sqf)
+         File: testMain  (no auto-title, main_common\fnc_testMain.sqf)
+         }  # Group: Common
+
       Group: Diagnostic  {
 
          File: error  (no auto-title, main_diagnostic\fnc_error.sqf)
@@ -97,14 +105,6 @@ Group: Functions  {
          File: hashSet  (no auto-title, main_hashes\fnc_hashSet.sqf)
          File: isHash  (no auto-title, main_hashes\fnc_isHash.sqf)
          }  # Group: Hashes
-
-      Group: Misc  {
-
-         File: defaultParam  (no auto-title, main\fnc_defaultParam.sqf)
-         File: getGroupIndex  (no auto-title, main\fnc_getGroupIndex.sqf)
-         File: parseYAML  (no auto-title, main\fnc_parseYAML.sqf)
-         File: testMain  (no auto-title, main\fnc_testMain.sqf)
-         }  # Group: Misc
 
       Group: Network  {
 
@@ -147,6 +147,6 @@ Group: Functions  {
 Group: Macros  {
 
    Macro Index: Index
-   File: script_macros_common  (no auto-title, main\script_macros_common.hpp)
+   File: script_macros_common  (no auto-title, main_common\script_macros_common.hpp)
    }  # Group: Macros
 

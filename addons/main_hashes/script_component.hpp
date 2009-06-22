@@ -1,5 +1,5 @@
 #define COMPONENT main_hashes
-#include "\x\cba\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main_common\script_macros.hpp"
 
 #ifdef DEBUG_MAIN_HASHES
 	#define DEBUG

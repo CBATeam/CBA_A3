@@ -1,10 +1,5 @@
-#ifndef CBA_MAIN_SCRIPT_COMPONENT_INCLUDED
-#define CBA_MAIN_SCRIPT_COMPONENT_INCLUDED
-
 #define COMPONENT main
-#include "script_macros.hpp"
-
-#endif
+#include "\x\cba\addons\main_common\script_macros.hpp"
 
 #ifdef DEBUG_MAIN
 	#define DEBUG

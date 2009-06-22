@@ -1,130 +1,132 @@
 1.4
 SQF
-G:\Games\ArmA 2\x\cba\addons\main_diagnostic\script_component.hpp	1245601976	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\XEH_PostInit_Once.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\XEH_PostInit_Once.sqf
+G:\Games\ArmA 2\x\cba\addons\main_diagnostic\script_component.hpp	1245677410	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\script_component.hpp
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\PostInit.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\PostInit.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fShuffle.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fShuffle.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fDropMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fDropMagazine.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fRealHeight.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fRealHeight.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fRemoveMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fRemoveMagazine.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_remoteEvent.sqf	1245589481	1	CBA_fnc_remoteEvent
-G:\Games\ArmA 2\x\cba\addons\main\XEH_PostInit_Once.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\XEH_PostInit_Once.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fPlayers.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fPlayers.sqf
-G:\Games\ArmA 2\x\cba\addons\main_strings\config.cpp	1245592132	0	G:\Games\ArmA 2\x\cba\addons\main_strings\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fSelectWeapon.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fSelectWeapon.sqf
+G:\Games\ArmA 2\x\cba\addons\main_strings\config.cpp	1245679100	0	G:\Games\ArmA 2\x\cba\addons\main_strings\config.cpp
 G:\Games\ArmA 2\x\cba\addons\main_strings\strings.inc.sqf	1245284509	0	G:\Games\ArmA 2\x\cba\addons\main_strings\strings.inc.sqf
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\config.cpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\config.cpp
-G:\Games\ArmA 2\x\cba\addons\main_strings\script_component.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_strings\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_strings\script_component.hpp	1245677423	0	G:\Games\ArmA 2\x\cba\addons\main_strings\script_component.hpp
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\InitOthers.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\InitOthers.sqf
-G:\Games\ArmA 2\x\cba\addons\main_network\config.cpp	1245631710	0	G:\Games\ArmA 2\x\cba\addons\main_network\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_network\config.cpp	1245679100	0	G:\Games\ArmA 2\x\cba\addons\main_network\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fShuffle.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fShuffle.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fCreateTrigger.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fCreateTrigger.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_rightTrim.sqf	1245589264	1	CBA_fnc_rightTrim
-G:\Games\ArmA 2\x\cba\addons\main\fDropMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fDropMagazine.sqf
-G:\Games\ArmA 2\x\cba\addons\main_events\CfgFunctionDeclarations.hpp	1245675295	0	G:\Games\ArmA 2\x\cba\addons\main_events\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\init_gauss.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\init_gauss.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\XEH_ClientInit_once.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\XEH_ClientInit_once.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\yaml_test.sqf	1245589264	0	G:\Games\ArmA 2\x\cba\addons\main_common\yaml_test.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fAddWeaponCargo.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fAddWeaponCargo.sqf
+G:\Games\ArmA 2\x\cba\addons\main_events\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_events\CfgFunctionDeclarations.hpp
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_hashGet.sqf	1245589264	1	CBA_fnc_hashGet
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_sync.sqf	1245595222	1	CBA_main_network_fnc_sync
-G:\Games\ArmA 2\x\cba\addons\main\CfgFunctionDeclarations.hpp	1245675294	0	G:\Games\ArmA 2\x\cba\addons\main\CfgFunctionDeclarations.hpp
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_removeEventHandler.sqf	1245589481	1	CBA_fnc_removeEventHandler
+G:\Games\ArmA 2\x\cba\addons\main_common\fnc_defaultParam.sqf	1245589264	1	CBA_fnc_defaultParam
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_remoteExecute.sqf	1245594831	1	CBA_fnc_remoteExecute
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetConfigEntry.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetConfigEntry.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\init_kron_strings.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\init_kron_strings.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fPlayers.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fPlayers.sqf
 G:\Games\ArmA 2\x\cba\addons\main_arrays\fnc_filter.sqf	1245589482	1	CBA_fnc_filter
-G:\Games\ArmA 2\x\cba\addons\main\fSelectedWeapon.sqf	1245319926	0	G:\Games\ArmA 2\x\cba\addons\main\fSelectedWeapon.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fAddMagazineCargo.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fAddMagazineCargo.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fSwitchPlayer.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fSwitchPlayer.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fRndSelect.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fRndSelect.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_find.sqf	1245589264	1	CBA_fnc_find
-G:\Games\ArmA 2\x\cba\addons\main\fAddWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fAddWeapon.sqf
-G:\Games\ArmA 2\x\cba\addons\main\script_macros.hpp	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\script_macros.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fRemoveWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fRemoveWeapon.sqf
-G:\Games\ArmA 2\x\cba\addons\main_hashes\script_component.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\script_component.hpp
-G:\Games\ArmA 2\x\cba\addons\main_strings\CfgFunctionDeclarations.hpp	1245675295	0	G:\Games\ArmA 2\x\cba\addons\main_strings\CfgFunctionDeclarations.hpp
-G:\Games\ArmA 2\x\cba\addons\main_events\fnc_keyHandler.sqf	1245669501	1	CBA_fnc_keyHandler
-G:\Games\ArmA 2\x\cba\addons\main\fnc_parseYAML.sqf	1245589264	1	CBA_fnc_parseYAML
+G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazineVerified.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazineVerified.sqf
+G:\Games\ArmA 2\x\cba\addons\main_hashes\script_component.hpp	1245677422	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_strings\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_strings\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetVehicleAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetVehicleAnim.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fHeadDir.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fHeadDir.sqf
+G:\Games\ArmA 2\x\cba\addons\main_events\fnc_keyHandler.sqf	1245676955	1	CBA_fnc_keyHandler
+G:\Games\ArmA 2\x\cba\addons\main_common\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_common\CfgFunctionDeclarations.hpp
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_addActionHandlerFromConfig.sqf	1245669753	1	CBA_fnc_addActionHandlerFromConfig
 G:\Games\ArmA 2\x\cba\addons\main_arrays\fnc_inject.sqf	1245589482	1	CBA_fnc_inject
+G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazine.sqf
 G:\Games\ArmA 2\x\cba\addons\main_network\XEH_PreInit_Once.sqf	1245631585	0	G:\Games\ArmA 2\x\cba\addons\main_network\XEH_PreInit_Once.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\CfgEventHandlers.hpp	1245631585	0	G:\Games\ArmA 2\x\cba\addons\main_events\CfgEventHandlers.hpp
-G:\Games\ArmA 2\x\cba\addons\main_events\config.cpp	1245631655	0	G:\Games\ArmA 2\x\cba\addons\main_events\config.cpp
-G:\Games\ArmA 2\x\cba\addons\main_diagnostic\config.cpp	1245599659	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_events\config.cpp	1245679099	0	G:\Games\ArmA 2\x\cba\addons\main_events\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fCreateMarker.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fCreateMarker.sqf
+G:\Games\ArmA 2\x\cba\addons\main_diagnostic\config.cpp	1245679099	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\config.cpp
 G:\Games\ArmA 2\x\cba\addons\main_events\XEH_ClientInit_Once.sqf	1245631585	0	G:\Games\ArmA 2\x\cba\addons\main_events\XEH_ClientInit_Once.sqf
-G:\Games\ArmA 2\x\cba\addons\main\XEH_PreInit_once.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\XEH_PreInit_once.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_addKeyHandler.sqf	1245669476	1	CBA_fnc_addKeyHandler
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\RespawnMonitor.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\RespawnMonitor.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fAddWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fAddWeapon.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_globalEvent.sqf	1245589481	1	CBA_fnc_globalEvent
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\Init.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\Init.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fNearPlayer.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fNearPlayer.sqf
-G:\Games\ArmA 2\x\cba\addons\main_network\script_component.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_network\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fDropWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fDropWeapon.sqf
+G:\Games\ArmA 2\x\cba\addons\main_network\script_component.hpp	1245677422	0	G:\Games\ArmA 2\x\cba\addons\main_network\script_component.hpp
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_hashEachPair.sqf	1245589264	1	CBA_fnc_hashEachPair
-G:\Games\ArmA 2\x\cba\addons\main_events\script_component.hpp	1245602077	0	G:\Games\ArmA 2\x\cba\addons\main_events\script_component.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fVectorSum3d.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fVectorSum3d.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetVehicleAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetVehicleAnim.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetPistol.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetPistol.sqf
+G:\Games\ArmA 2\x\cba\addons\main_events\script_component.hpp	1245677422	0	G:\Games\ArmA 2\x\cba\addons\main_events\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\script_component.hpp	1245678867	0	G:\Games\ArmA 2\x\cba\addons\main_common\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetUnitDeathAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetUnitDeathAnim.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_replace.sqf	1245589264	1	CBA_fnc_replace
-G:\Games\ArmA 2\x\cba\addons\main\yaml_test.sqf	1245589264	0	G:\Games\ArmA 2\x\cba\addons\main\yaml_test.sqf
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_opd.sqf	1245595209	1	CBA_main_network_fnc_opd
-G:\Games\ArmA 2\x\cba\addons\main\fMyWeapon.sqf	1245319922	0	G:\Games\ArmA 2\x\cba\addons\main\fMyWeapon.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_localEvent.sqf	1245589481	1	CBA_fnc_localEvent
-G:\Games\ArmA 2\x\cba\addons\main\CfgEventHandlers.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\CfgEventHandlers.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fnc_testMain.sqf	1245589264	1	CBA_fnc_testMain
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_capitalize.sqf	1245589264	1	CBA_fnc_capitalize
-G:\Games\ArmA 2\x\cba\addons\main_diagnostic\CfgFunctionDeclarations.hpp	1245675294	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_diagnostic\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_diagnostic\CfgFunctionDeclarations.hpp
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_addActionHandler.sqf	1245669481	1	CBA_fnc_addActionHandler
+G:\Games\ArmA 2\x\cba\addons\main_common\fnc_getGroupIndex.sqf	1245589264	1	CBA_fnc_getGroupIndex
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetAnimType.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetAnimType.sqf
 G:\Games\ArmA 2\x\cba\addons\main_hashes\hashes_test.sqf	1245589264	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\hashes_test.sqf
-G:\Games\ArmA 2\x\cba\addons\main\init_gauss.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\init_gauss.sqf
-G:\Games\ArmA 2\x\cba\addons\main_arrays\config.cpp	1245592109	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fNearPlayer.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fNearPlayer.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fVectorSum3d.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fVectorSum3d.sqf
+G:\Games\ArmA 2\x\cba\addons\main_arrays\config.cpp	1245679080	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fInheritsFrom.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fInheritsFrom.sqf
 G:\Games\ArmA 2\x\cba\addons\main_network\XEH_ClientInit_Once.sqf	1245631585	0	G:\Games\ArmA 2\x\cba\addons\main_network\XEH_ClientInit_Once.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fCreateTrigger.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fCreateTrigger.sqf
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_cv.sqf	1245595217	1	CBA_main_network_fnc_cv
-G:\Games\ArmA 2\x\cba\addons\main\fDropWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fDropWeapon.sqf
-G:\Games\ArmA 2\x\cba\addons\main_network\CfgFunctionDeclarations.hpp	1245675295	0	G:\Games\ArmA 2\x\cba\addons\main_network\CfgFunctionDeclarations.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fRemoveMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fRemoveMagazine.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fnc_parseYAML.sqf	1245589264	1	CBA_fnc_parseYAML
+G:\Games\ArmA 2\x\cba\addons\main_network\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_network\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fRemoveWeapon.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fRemoveWeapon.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_addKeyHandlerFromConfig.sqf	1245669472	1	CBA_fnc_addKeyHandlerFromConfig
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_opc.sqf	1245595211	1	CBA_main_network_fnc_opc
-G:\Games\ArmA 2\x\cba\addons\main\fRealHeight.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fRealHeight.sqf
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\InitXEH.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\InitXEH.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_strLen.sqf	1245589264	1	CBA_fnc_strLen
+G:\Games\ArmA 2\x\cba\addons\main_common\config.cpp	1245002152	0	G:\Games\ArmA 2\x\cba\addons\main_common\config.cpp
 G:\Games\ArmA 2\x\cba\addons\main_diagnostic\fnc_error.sqf	1245589481	1	CBA_fnc_error
-G:\Games\ArmA 2\x\cba\addons\main\fDetermineMuzzles.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fDetermineMuzzles.sqf
-G:\Games\ArmA 2\x\cba\addons\main\script_component.hpp	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\script_component.hpp
-G:\Games\ArmA 2\x\cba\addons\main_arrays\CfgFunctionDeclarations.hpp	1245675294	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\CfgFunctionDeclarations.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fGetAnimType.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetAnimType.sqf
-G:\Games\ArmA 2\x\cba\addons\main\config.cpp	1245002152	0	G:\Games\ArmA 2\x\cba\addons\main\config.cpp
+G:\Games\ArmA 2\x\cba\addons\main\script_component.hpp	1245678790	0	G:\Games\ArmA 2\x\cba\addons\main\script_component.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fnc_testMain.sqf	1245589264	1	CBA_fnc_testMain
+G:\Games\ArmA 2\x\cba\addons\main_arrays\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fDebug.sqf	1245590463	0	G:\Games\ArmA 2\x\cba\addons\main_common\fDebug.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fObjectRandom.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fObjectRandom.sqf
+G:\Games\ArmA 2\x\cba\addons\main\config.cpp	1245678807	0	G:\Games\ArmA 2\x\cba\addons\main\config.cpp
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_readActionFromConfig.sqf	1245669528	1	CBA_fnc_readActionFromConfig
-G:\Games\ArmA 2\x\cba\addons\main_hashes\config.cpp	1245592120	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\config.cpp
-G:\Games\ArmA 2\x\cba\addons\main\fRndInt.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fRndInt.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\CfgEventHandlers.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\CfgEventHandlers.hpp
+G:\Games\ArmA 2\x\cba\addons\main_hashes\config.cpp	1245679100	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\config.cpp
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_remoteSay.sqf	1245594671	1	CBA_fnc_remoteSay
-G:\Games\ArmA 2\x\cba\addons\main_arrays\script_component.hpp	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\script_component.hpp
-G:\Games\ArmA 2\x\cba\addons\main\fObjectRandom.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fObjectRandom.sqf
+G:\Games\ArmA 2\x\cba\addons\main_arrays\script_component.hpp	1245677422	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\script_component.hpp
 G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\PreInit.sqf	1245426579	0	G:\Games\ArmA 2\x\cba\addons\extended_eventhandlers\PreInit.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetPistol.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetPistol.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\XEH_PreInit_Once.sqf	1245664217	0	G:\Games\ArmA 2\x\cba\addons\main_events\XEH_PreInit_Once.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetUnitDeathAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetUnitDeathAnim.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fSelectWeapon.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fSelectWeapon.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\script_macros_common.hpp	1245675566	1	script_macros_common.hpp
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_trim.sqf	1245589264	1	CBA_fnc_trim
-G:\Games\ArmA 2\x\cba\addons\main\fnc_defaultParam.sqf	1245589264	1	CBA_fnc_defaultParam
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_readKeyFromConfig.sqf	1245669526	1	CBA_fnc_readKeyFromConfig
-G:\Games\ArmA 2\x\cba\addons\main\fAddMagazineVerified.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fAddMagazineVerified.sqf
-G:\Games\ArmA 2\x\cba\addons\main\init_kron_strings.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\init_kron_strings.sqf
 G:\Games\ArmA 2\x\cba\addons\main_arrays\arrays_test.sqf	1245589482	0	G:\Games\ArmA 2\x\cba\addons\main_arrays\arrays_test.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetConfigEntry.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetConfigEntry.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazineCargo.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\fAddMagazineCargo.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fRndInt.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fRndInt.sqf
 G:\Games\ArmA 2\x\cba\addons\main_events\fnc_addEventHandler.sqf	1245589481	1	CBA_fnc_addEventHandler
-G:\Games\ArmA 2\x\cba\addons\main\fHeadDir.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fHeadDir.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fDetermineMuzzles.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fDetermineMuzzles.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fSwitchPlayer.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fSwitchPlayer.sqf
 G:\Games\ArmA 2\x\cba\addons\main_hashes\hashes.inc.sqf	1245589264	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\hashes.inc.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetUnitAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetUnitAnim.sqf
-G:\Games\ArmA 2\x\cba\addons\main\XEH_ClientInit_once.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\XEH_ClientInit_once.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fInheritsFrom.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fInheritsFrom.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fGetArg.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fGetArg.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\script_macros.hpp	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\script_macros.hpp
 G:\Games\ArmA 2\x\cba\addons\main_diagnostic\fnc_log.sqf	1245589481	1	CBA_fnc_log
 G:\Games\ArmA 2\x\cba\addons\main_network\fnc_exec.sqf	1245595214	1	CBA_main_network_fnc_exec
-G:\Games\ArmA 2\x\cba\addons\main_events\fnc_actionHandler.sqf	1245669444	1	CBA_fnc_actionHandler
+G:\Games\ArmA 2\x\cba\addons\main_events\fnc_actionHandler.sqf	1245676883	1	CBA_fnc_actionHandler
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_formatElapsedTime.sqf	1245589264	1	CBA_fnc_formatElapsedTime
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_split.sqf	1245589264	1	CBA_fnc_split
+G:\Games\ArmA 2\x\cba\addons\main_common\fMyWeapon.sqf	1245319922	0	G:\Games\ArmA 2\x\cba\addons\main_common\fMyWeapon.sqf
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_hashHasKey.sqf	1245589264	1	CBA_fnc_hashHasKey
-G:\Games\ArmA 2\x\cba\addons\main\script_macros_common.hpp	1245674483	1	script_macros_common.hpp
-G:\Games\ArmA 2\x\cba\addons\main\init_actionmonitor.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\init_actionmonitor.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\strings_test.sqf	1245589264	0	G:\Games\ArmA 2\x\cba\addons\main_strings\strings_test.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fCreateMarker.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main\fCreateMarker.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_join.sqf	1245589264	1	CBA_fnc_join
 G:\Games\ArmA 2\x\cba\addons\main_network\CfgEventHandlers.hpp	1245590463	0	G:\Games\ArmA 2\x\cba\addons\main_network\CfgEventHandlers.hpp
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_isHash.sqf	1245589264	1	CBA_fnc_isHash
+G:\Games\ArmA 2\x\cba\addons\main_common\XEH_PreInit_once.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\XEH_PreInit_once.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetArg.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetArg.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fRndSelect.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fRndSelect.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_leftTrim.sqf	1245589264	1	CBA_fnc_leftTrim
-G:\Games\ArmA 2\x\cba\addons\main_hashes\CfgFunctionDeclarations.hpp	1245675295	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_hashes\CfgFunctionDeclarations.hpp	1245680325	0	G:\Games\ArmA 2\x\cba\addons\main_hashes\CfgFunctionDeclarations.hpp
+G:\Games\ArmA 2\x\cba\addons\main_common\fSelectedWeapon.sqf	1245319926	0	G:\Games\ArmA 2\x\cba\addons\main_common\fSelectedWeapon.sqf
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_hashCreate.sqf	1245589264	1	CBA_fnc_hashCreate
-G:\Games\ArmA 2\x\cba\addons\main\fDebug.sqf	1245590463	0	G:\Games\ArmA 2\x\cba\addons\main\fDebug.sqf
 G:\Games\ArmA 2\x\cba\addons\main_strings\fnc_formatNumber.sqf	1245589264	1	CBA_fnc_formatNumber
-G:\Games\ArmA 2\x\cba\addons\main\fAddWeaponCargo.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fAddWeaponCargo.sqf
-G:\Games\ArmA 2\x\cba\addons\main\fAddMagazine.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main\fAddMagazine.sqf
+G:\Games\ArmA 2\x\cba\addons\main_common\fGetUnitAnim.sqf	1245001860	0	G:\Games\ArmA 2\x\cba\addons\main_common\fGetUnitAnim.sqf
 G:\Games\ArmA 2\x\cba\addons\main_hashes\fnc_hashSet.sqf	1245589264	1	CBA_fnc_hashSet
-G:\Games\ArmA 2\x\cba\addons\main\fnc_getGroupIndex.sqf	1245589264	1	CBA_fnc_getGroupIndex
+G:\Games\ArmA 2\x\cba\addons\main_common\init_actionmonitor.sqf	1245589613	0	G:\Games\ArmA 2\x\cba\addons\main_common\init_actionmonitor.sqf

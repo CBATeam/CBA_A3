@@ -4,10 +4,12 @@ class CfgPatches
 	class ADDON
 	{
 		units[] = {};
+		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "cba_main_common" };
+		requiredAddons[] = { "Extended_EventHandlers" };
 		version = VERSION;
 	};
 };
+#include "CfgEventHandlers.hpp"
 
 #include "CfgFunctionDeclarations.hpp"

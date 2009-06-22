@@ -1,5 +1,5 @@
 #define COMPONENT main_diagnostic
-#include "\x\cba\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main_common\script_macros.hpp"
 
 #ifdef DEBUG_MAIN_DIAGNOSTIC
 	#define DEBUG
