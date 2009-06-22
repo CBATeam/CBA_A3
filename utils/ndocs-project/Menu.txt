@@ -20,7 +20,7 @@ Timestamp: year
 # These are indexes you deleted, so Natural Docs will not add them again
 # unless you remove them from this line.
 
-Don't Index: General
+Don't Index: Files
 
 
 # --------------------------------------------------------------------------
@@ -42,6 +42,8 @@ Don't Index: General
 # 
 # --------------------------------------------------------------------------
 
+
+Index: Index (Everything)
 
 Group: Project  {
 
@@ -71,9 +73,17 @@ Group: Functions  {
 
       Group: Events  {
 
+         File: actionHandler  (no auto-title, main_events\fnc_actionHandler.sqf)
+         File: addActionHandler  (no auto-title, main_events\fnc_addActionHandler.sqf)
+         File: addActionHandlerFromConfig  (no auto-title, main_events\fnc_addActionHandlerFromConfig.sqf)
          File: addEventHandler  (no auto-title, main_events\fnc_addEventHandler.sqf)
+         File: addKeyHandler  (no auto-title, main_events\fnc_addKeyHandler.sqf)
+         File: addKeyHandlerFromConfig  (no auto-title, main_events\fnc_addKeyHandlerFromConfig.sqf)
          File: globalEvent  (no auto-title, main_events\fnc_globalEvent.sqf)
+         File: keyHandler  (no auto-title, main_events\fnc_keyHandler.sqf)
          File: localEvent  (no auto-title, main_events\fnc_localEvent.sqf)
+         File: readActionFromConfig  (no auto-title, main_events\fnc_readActionFromConfig.sqf)
+         File: readKeyFromConfig  (no auto-title, main_events\fnc_readKeyFromConfig.sqf)
          File: remoteEvent  (no auto-title, main_events\fnc_remoteEvent.sqf)
          File: removeEventHandler  (no auto-title, main_events\fnc_removeEventHandler.sqf)
          }  # Group: Events
@@ -133,4 +143,10 @@ Group: Functions  {
       }  # Group: CBA_main_network
 
    }  # Group: Functions
+
+Group: Macros  {
+
+   Macro Index: Index
+   File: script_macros_common  (no auto-title, main\script_macros_common.hpp)
+   }  # Group: Macros
 

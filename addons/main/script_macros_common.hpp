@@ -1,5 +1,17 @@
 /*
-	Macros - By Sickboy <sb_at_dev-heaven.net>
+	Header: script_macros_common.hpp
+	
+	Description:
+		A general set of useful macro functions for use by CBA itself or by any module that uses CBA.
+		
+	Usage:
+		These macros can be used in any SQF file by including this file at the top of the script:
+		(begin example)
+			#include "/x/cba/addons/main_common/script_macros_common.hpp"
+		(end)
+
+	Authors:
+		Sickboy <sb_at_dev-heaven.net> and Spooner
 */
 
 /* ****************************************************
@@ -164,55 +176,100 @@
 #define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
 #define SPAWNMAIN(var1) SPAWNMAIN_GVAR(PREFIX,var1)
 
-// === Splitting an array into a number of variables ===
-#define EXPLODE_2(X,A,B) \
-	A = (X) select 0; B = (X) select 1
+// Macros: EXPLODE_*
+//    Splitting an ARRAY into a number of variables.
+//
+//    EXPLODE_2(ARRAY,A,B) - Split a 2-element array into separate variables.
+//    EXPLODE_3(ARRAY,A,B,C) - Split a 3-element array into separate variables.
+//    EXPLODE_4(ARRAY,A,B,C,D) - Split a 4-element array into separate variables.
+//    EXPLODE_5(ARRAY,A,B,C,D,E) - Split a 5-element array into separate variables.
+//    EXPLODE_6(ARRAY,A,B,C,D,E,F) - Split a 6-element array into separate variables.
+//    EXPLODE_7(ARRAY,A,B,C,D,E,F,G) - Split a 7-element array into separate variables.
+//    EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) - Split a 8-element array into separate variables.
+#define EXPLODE_2(ARRAY,A,B) \
+	A = (ARRAY) select 0; B = (ARRAY) select 1
 	
-#define EXPLODE_3(X,A,B,C) \
-	A = (X) select 0; B = (X) select 1; C = (X) select 2
+#define EXPLODE_3(ARRAY,A,B,C) \
+	A = (ARRAY) select 0; B = (ARRAY) select 1; C = (ARRAY) select 2
 	
-#define EXPLODE_4(X,A,B,C,D) \
-	A = (X) select 0; B = (X) select 1; C = (X) select 2; D = (X) select 3
+#define EXPLODE_4(ARRAY,A,B,C,D) \
+	A = (ARRAY) select 0; B = (ARRAY) select 1; C = (ARRAY) select 2; D = (ARRAY) select 3
 	
-#define EXPLODE_5(X,A,B,C,D,E) \
-	EXPLODE_4(X,A,B,C,D); E = (X) select 4
+#define EXPLODE_5(ARRAY,A,B,C,D,E) \
+	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4
 	
-#define EXPLODE_6(X,A,B,C,D,E,F) \
-	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5
+#define EXPLODE_6(ARRAY,A,B,C,D,E,F) \
+	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5
 	
-#define EXPLODE_7(X,A,B,C,D,E,F,G) \
-	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5; G = (X) select 6
+#define EXPLODE_7(ARRAY,A,B,C,D,E,F,G) \
+	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5; G = (ARRAY) select 6
 	
-#define EXPLODE_8(X,A,B,C,D,E,F,G,H) \
-	EXPLODE_4(X,A,B,C,D); E = (X) select 4; F = (X) select 5; G = (X) select 6; H = (X) select 7
+#define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
+	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5; G = (ARRAY) select 6; H = (ARRAY) select 7
 
-// === Getting parameters passed to a code block (function) ===
+// Macros: PARAMS_*
+//   Setting variables based on parameters passed to a function.
+//
+//    PARAMS_1(A) - Get 1 parameter from the _this array.
+//    PARAMS_2(A,B) - Get 2 parameters from the _this array.
+//    PARAMS_3(A,B,C) - Get 3 parameters from the _this array.
+//    PARAMS_4(A,B,C,D) - Get 4 parameters from the _this array.
+//    PARAMS_5(A,B,C,D,E) - Get 5 parameters from the _this array.
+//    PARAMS_6(A,B,C,D,E,F) - Get 6 parameters from the _this array.
+//    PARAMS_7(A,B,C,D,E,F,G) - Get 7 parameters from the _this array.
+//    PARAMS_8(A,B,C,D,E,F,G,H) - Get 8 parameters from the _this array.
+//
+// Example:
+// 	A function called like this:
+// 	(begin example)
+//		[_name,_address_telephone] call recordPersonalDetails;
+//	 (end)
+//	 expects 3 parameters and those variables could be initialised at the start of the function definition with:
+//	 (begin example)
+//		recordPersonalDetails = {
+//			PARAMS_3(_name,_address,_telephone);
+//			// Rest of function follows...
+//		};
+//	 (end)
 #define PARAMS_1(A) \
-	private 'A'; A = _this select 0
+	private '##A'; A = _this select 0
 	
 #define PARAMS_2(A,B) \
-	private ['A', 'B']; EXPLODE_2(_this,A,B)
+	private ['##A', '##B']; EXPLODE_2(_this,A,B)
 	
 #define PARAMS_3(A,B,C) \
-	private ['A', 'B', 'C']; EXPLODE_3(_this,A,B,C)
+	private ['##A', '##B', '##C']; EXPLODE_3(_this,A,B,C)
 	
 #define PARAMS_4(A,B,C,D) \
-	private ['A', 'B', 'C', 'D']; EXPLODE_4(_this,A,B,C,D)
+	private ['##A', '##B', '##C', '##D']; EXPLODE_4(_this,A,B,C,D)
 	
 #define PARAMS_5(A,B,C,D,E) \
-	private ['A', 'B', 'C', 'D', 'E']; EXPLODE_5(_this,A,B,C,D,E)
+	private ['##A', '##B', '##C', '##D', '##E']; EXPLODE_5(_this,A,B,C,D,E)
 	
 #define PARAMS_6(A,B,C,D,E,F) \
-	private ['A', 'B', 'C', 'D', 'E', 'F']; EXPLODE_6(_this,A,B,C,D,E,F)
+	private ['##A', '##B', '##C', '##D', '##E', '##F']; EXPLODE_6(_this,A,B,C,D,E,F)
 	
 #define PARAMS_7(A,B,C,D,E,F,G) \
-	private ['A', 'B', 'C', 'D', 'E', 'F', 'G']; EXPLODE_7(_this,A,B,C,D,E,F,G)
+	private ['##A', '##B', '##C', '##D', '##E', '##F', '##G']; EXPLODE_7(_this,A,B,C,D,E,F,G)
 	
 #define PARAMS_8(A,B,C,D,E,F,G,H) \
-	private ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
+	private ['##A', '##B', '##C', '##D', '##E', '##F', '##G', '##H']; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
 	
+// Macro: DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) 
+//	Getting a default function parameter. This may be used together with <PARAMS_*> to have a mix of required and
+//     optional parameters.
+//
+// Example:
+// 	A function called like this:
+// 	( begin example)
+//		[_name,_address_telephone] call myFunction;
+// 	(end)
+// 	expects 3 parameters and those variables could be initialised at the start of the function definition with:
+// 	( begin example)
+//		PARAMS_3(_name,_address_telephone);
+// 	(end)
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
-private #NAME; \
+private '##NAME'; \
 NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 
 // === Debugging ===
@@ -225,47 +282,73 @@ NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 #define THIS_FILE_ __FILE__
 #endif
 
-#define LOG(TEXT) [THIS_FILE_, __LINE__, TEXT] call CBA_fnc_log
-#define ERROR(TITLE,MESSAGE) [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error
+// Macro: LOG(MESSAGE)
+//	Log a timestamped message into the RPT log.
+#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
+
+// Macro: WARNING(MESSAGE)
+//	Record a timestamped, non-critical error in the RPT log.
+#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, 'WARNING: ##MESSAGE'] call CBA_fnc_log
+
+// Macro: ERROR(TITLE,MESSAGE)
+//	Record a timestamped, critical error in the RPT log. Newlines (\n) in the MESSAGE will be put on separate lines.
+//
+//	TODO: Popup an error dialog & throw an exception.
+#define ERROR(TITLE,MESSAGE) \
+	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
 
 //#ifdef DEBUG_ENABLED
 
-// === TRACING ===
-// Trace with a message and 1-8 variables to show.
-#define TRACE_1(TEXT,A) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2', TEXT, A]] call CBA_fnc_log
+// Macros: TRACE_*
+//	Log a message and 1-8 variables to the RPT log.
+//
+//    TRACE_1(MESSAGE,A) - Log 1 variable.
+//    TRACE_2(MESSAGE,A,B) - Log 2 variables.
+//    TRACE_3(MESSAGE,A,B,C) - Log 3 variables.
+//    TRACE_4(MESSAGE,A,B,C,D) - Log 4 variables.
+//    TRACE_5(MESSAGE,A,B,C,D,E) - Log 5 variables.
+//    TRACE_6(MESSAGE,A,B,C,D,E,F) - Log 6 variables.
+//    TRACE_7(MESSAGE,A,B,C,D,E,F,G) - Log 7 variables.
+//    TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) - Log 8 variables.
+//
+// Example:
+//	 (begin example)
+//		TRACE_3("After takeoff",_vehicle player,getPos (_vehicle player), getPosASL (_vehicle player));
+//	 (end)
+#define TRACE_1(MESSAGE,A) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2', MESSAGE, A]] call CBA_fnc_log
 	
-#define TRACE_2(TEXT,A,B) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', TEXT, A, B]] call CBA_fnc_log
+#define TRACE_2(MESSAGE,A,B) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3', MESSAGE, A, B]] call CBA_fnc_log
 	
-#define TRACE_3(TEXT,A,B,C) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', TEXT, A, B, C]] call CBA_fnc_log
+#define TRACE_3(MESSAGE,A,B,C) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4', MESSAGE, A, B, C]] call CBA_fnc_log
 	
-#define TRACE_4(TEXT,A,B,C,D) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', TEXT, A, B, C, D]] call CBA_fnc_log
+#define TRACE_4(MESSAGE,A,B,C,D) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5', MESSAGE, A, B, C, D]] call CBA_fnc_log
 	
-#define TRACE_5(TEXT,A,B,C,D,E) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', TEXT, A, B, C, D, E]] call CBA_fnc_log
+#define TRACE_5(MESSAGE,A,B,C,D,E) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6', MESSAGE, A, B, C, D, E]] call CBA_fnc_log
 	
-#define TRACE_6(TEXT,A,B,C,D,E,F) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', TEXT, A, B, C, D, E, F]] call CBA_fnc_log
+#define TRACE_6(MESSAGE,A,B,C,D,E,F) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##F=%7', MESSAGE, A, B, C, D, E, F]] call CBA_fnc_log
 	
-#define TRACE_7(TEXT,A,B,C,D,E,F,G) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', TEXT, A, B, C, D, E, F, G]] call CBA_fnc_log
+#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##=%7, ##G=%8', MESSAGE, A, B, C, D, E, F, G]] call CBA_fnc_log
 	
-#define TRACE_8(TEXT,A,B,C,D,E,F,G,H) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', TEXT, A, B, C, D, E, F, G, H]] call CBA_fnc_log
+#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
+	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##F=%7, ##G=%8, ##H=%9', MESSAGE, A, B, C, D, E, F, G, H]] call CBA_fnc_log
 
 /*
 #else // Debug mode off.
-#define TRACE_1(TEXT)
-#define TRACE_2(TEXT)
-#define TRACE_3(TEXT)
-#define TRACE_4(TEXT)
-#define TRACE_5(TEXT)
-#define TRACE_6(TEXT)
-#define TRACE_7(TEXT)
-#define TRACE_8(TEXT)
+#define TRACE_1(MESSAGE)
+#define TRACE_2(MESSAGE)
+#define TRACE_3(MESSAGE)
+#define TRACE_4(MESSAGE)
+#define TRACE_5(MESSAGE)
+#define TRACE_6(MESSAGE)
+#define TRACE_7(MESSAGE)
+#define TRACE_8(MESSAGE)
 
 #endif
 */
@@ -273,35 +356,61 @@ NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 // === Assertion ===
 #define ASSERTION_FAILED_TITLE "Assertion failed!"
 
-// e.g ASSERT_TRUE(_frogIsDead,"The frog is alive");
+// Macro: ASSERT_TRUE(CONDITION,MESSAGE)
+//	Asserts that a CONDITION if true. When an assertion fails, an error is raised with the given MESSAGE.
+//
+// Example:
+// (begin example)
+// 	ASSERT_TRUE(_frogIsDead,"The frog is alive");
+// (end)
 #define ASSERT_TRUE(CONDITION,MESSAGE) \
 if (not (CONDITION)) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##CONDITION) failed!\n\n' + (MESSAGE)); \
 }
 
-// e.g ASSERT_FALSE(_frogIsDead,"The frog died");
+// Macro: ASSERT_FALSE(CONDITION,MESSAGE)
+//	Asserts that a CONDITION if false. When an assertion fails, an error is raised with the given MESSAGE.
+//
+// Example:
+// (begin example)
+//	 ASSERT_FALSE(_frogIsDead,"The frog died");
+// (end)
 #define ASSERT_FALSE(CONDITION,MESSAGE) \
 if (CONDITION) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (##CONDITION)) failed!\n\n' + (MESSAGE)) \
 }
 
-// e.g ASSERT_OP(_fish,>,5,"Too few fish ;(");
-#define ASSERT_OP(A,OP,B,MESSAGE) \
-if (not ((A) OP (B))) then \
+// Macro: ASSERT_OP(A,OPERATOR,B,MESSAGE)
+//	Asserts that (A OPERATOR B) is true. When an assertion fails, an error is raised with the given MESSAGE.
+//
+// Example:
+// (begin example)
+// 	ASSERT_OP(_fish,>,5,"Too few fish!");
+// (end)
+#define ASSERT_OP(A,OPERATOR,B,MESSAGE) \
+if (not ((A) OPERATOR (B))) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (A OP B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##A ##OPERATOR ##B) failed!\n' + '##A: ' + (str (A)) + '\n' + '##B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
 }
 
-// e.g ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
-// e.g ASSERT_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
+// Macro: ASSERT_DEFINED(VAR,MESSAGE)
+//	Asserts that a value is defined. When an assertion fails, an error is raised with the given MESSAGE..
+//
+// Examples:
+// (begin example)
+// 	ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
+// 	ASSERT_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
+// (end)
 #define ASSERT_DEFINED(VAR,MESSAGE) \
 if (isNil VAR) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (VAR is defined) failed!\n\n' + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##VAR is defined) failed!\n\n' + (MESSAGE)); \
 }
 
+// Macro: SCRIPT(NAME)
+//	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
 #define SCRIPT(NAME) \
 scriptName 'PREFIX\COMPONENT\NAME'
 

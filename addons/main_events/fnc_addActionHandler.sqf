@@ -1,4 +1,9 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_addActionHandler
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(addActionHandler);
+
 private ["_key", "_code", "_ar", "_entry"];
 _key = _this select 0;
 _code = _this select 1;

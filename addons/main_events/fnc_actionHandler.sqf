@@ -1,4 +1,10 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_actionHandler
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+
+SCRIPT(actionHandler);
 
 private ["_code", "_action"];
 #ifdef DEBUG

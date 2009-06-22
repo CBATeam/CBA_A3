@@ -1,4 +1,9 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_addKeyHandlerFromConfig
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(addKeyHandlerFromConfig);
+
 private ["_component", "_action", "_code", "_key"];
 _component = _this select 0;
 _action = _this select 1;

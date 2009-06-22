@@ -22,7 +22,7 @@ Timestamp: year
 # These are indexes you deleted, so Natural Docs will not add them again
 # unless you remove them from this line.
 
-Don't Index: General
+Don't Index: Files
 
 
 # --------------------------------------------------------------------------
@@ -44,23 +44,34 @@ Don't Index: General
 # 
 # --------------------------------------------------------------------------
 
-
+Index: Index (Everything)
+	
 Group: Project  {
-   Link: Wiki  (http://dev-heaven.net/wiki/cca)
-   Link: Forums  (http://dev-heaven.net/projects/cca/boards)
-   Link: Issues  (http://dev-heaven.net/projects/cca/issues)
-   Link: Download  (http://dev-heaven.net/projects/list_files/cca)
-   }  # Group: Project
+	Link: Wiki  (http://dev-heaven.net/wiki/cca)
+	Link: Forums  (http://dev-heaven.net/projects/cca/boards)
+	Link: Issues  (http://dev-heaven.net/projects/cca/issues)
+	Link: Download  (http://dev-heaven.net/projects/list_files/cca)
+	}  # Group: Project
    
-   File: Overview (doc_overview.txt)
+	File: Overview (doc_overview.txt)
+	  
 
+	
 Group: Functions  {
 
-   Function Index: Index
+	Function Index: Index
    
 $FUNCTIONS$
 
-   }  # Group: Functions
+	}  # Group: Functions
+
+Group: Macros  {
+
+	Macro Index: Index
+		
+	File: script_macros_common (main\script_macros_common.hpp)
+
+	}  # Group: Macros
    
  
 

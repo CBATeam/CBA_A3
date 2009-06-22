@@ -1,4 +1,9 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_readActionFromConfig
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(readActionFromConfig);
+
 private ["_component", "_action", "_i"];
 _component = _this select 0;
 _action = _this select 1;

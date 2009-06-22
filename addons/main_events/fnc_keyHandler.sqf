@@ -1,4 +1,9 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_keyHandler
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(keyHandler);
+
 private ["_settings", "_code"];
 #ifdef DEBUG
 	private ["_ar"];
