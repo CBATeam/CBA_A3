@@ -41,4 +41,6 @@ PREPMAIN(fnc_ReadKeyFromConfig);
 
 // TODO: Temporary until BI Functions can be preloaded at a normal time!
 PREPMAIN(fnc_globalEvent);
+PREPMAIN(fnc_remoteEvent);
+PREPMAIN(fnc_localEvent);
 PREPMAIN(fnc_addEventHandler);
