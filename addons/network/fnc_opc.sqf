@@ -31,11 +31,10 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 
 	GVAR(UPDATE) set [0, true]; GVAR(UPDATE) set [1, true]; // Initiate buffer for updating CLNAME and CLUID
 */
-	[_idx,_this] spawn
+	_this spawn
 	{
-		_params = _this select 1;
-		_name = _params select 0;
-		_id = _params select 1;
+		_name = _this select 0;
+		_id = _this select 1;
 		sleep 6;
 		//GVAR(CLSET) set [_this select 0, true];
 		{ _params call _x } forEach GVAR(OPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?
