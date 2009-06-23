@@ -1,5 +1,5 @@
-#ifndef CBA_MAIN_SCRIPT_MACROS_INCLUDED
-#define CBA_MAIN_SCRIPT_MACROS_INCLUDED
+#ifndef CBA_MAIN_COMMON_SCRIPT_MACROS_INCLUDED
+#define CBA_MAIN_COMMON_SCRIPT_MACROS_INCLUDED
 
 // COMPONET should be defined in the script_component.hpp and included BEFORE this hpp
 #define PREFIX cba

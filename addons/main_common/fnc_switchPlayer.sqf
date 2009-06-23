@@ -1,4 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_switchPlayer
+
+Description:
+	Switch player to another unit.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(switchPlayer);
+
 private ["_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
 _type = _this select 0;
 _oldUnit = player;

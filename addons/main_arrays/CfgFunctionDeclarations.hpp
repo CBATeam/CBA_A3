@@ -18,6 +18,12 @@ class CfgFunctions
 				description = "Filter each element of an array via a function.";
 				file = "\x\cba\Addons\main_arrays\fnc_filter.sqf";
 			};
+			// CBA_fnc_shuffle
+			class shuffle
+			{
+				description = "Shuffles an array's contents into random order, returning a new array.";
+				file = "\x\cba\Addons\main_arrays\fnc_shuffle.sqf";
+			};
 			// CBA_fnc_inject
 			class inject
 			{

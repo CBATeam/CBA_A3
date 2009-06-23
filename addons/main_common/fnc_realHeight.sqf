@@ -1,5 +1,24 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_realHeight
+
+Description:
+	Real z coordinate of an object, for placing stuff on roofs, etc.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-//real z coordinate of an object, for placing stuff on roofs etc
+SCRIPT(realHeight);
 
 private "_obj";
 _obj = _this select 0;

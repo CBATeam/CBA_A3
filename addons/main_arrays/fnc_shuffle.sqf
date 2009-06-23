@@ -1,19 +1,30 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_shuffle
+
+Description:
+	Shuffles an array's contents into random order, returning a new array.
+	
+Parameters:
+	Array of values.
+	
+Returns:
+	New array containing shuffled values from original array [Array]
+
+Examples:
+	(begin example)
+		[1, 2, 3, 4, 5] call CBA_fnc_shuffle;
+	(end)
+	
+Bugs:
+	* This will sort any array, unless it contains an element which is "".
+	* Expects the array to be sent *as* the parameter list, not as a parameter.
+
+Author:
+	toadlife (version 1.01) http://toadlife.net
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-//****************************************************
-//
-// Shuffle array function by toadlife (version 1.01)
-//
-// http://toadlife.net
-//
-// Function: Shuffles an array's contents into random order
-//
-// Returns: array
-//
-// Initialize this fuction in your init.sqs file with this line: shuffle = preProcessFileLineNumbers "shuffle.sqf"
-//
-// Call this function like so:  myarray call shuffle -- (Example: [1, 2, 3, 4, 5] call shuffle)
-//
-//***************************************
+SCRIPT(shuffle);
 
 private ["_newarray", "_temparray", "_acount", "_rand", "_moveitem"];
 _newarray = [];

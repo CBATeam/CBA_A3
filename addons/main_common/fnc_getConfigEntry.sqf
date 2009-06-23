@@ -1,11 +1,34 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_getConfigEntry
+
+Description:
+	Gets a configuration entry.
+	
+	Will check if _cfg exists, and will return either the config value, or 
+	supplied default value.
+	
+Parameters:
+	_configEntry - Entry to get value of [Config]
+	_entryType - "text", "number" or "array" [String]
+	_defaultValue - Value to return if config entry unavailable [Any]
+	
+Returns:
+	Value found [String, Number or Array]
+
+Examples:
+	(begin example)
+		[configFile >> "CfgJellies" >> "Wobbliness", "number", 0] call _f
+	(end)
+
+Author:
+	Sickboy (sb_at_dev-heaven.net)
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-/*
-	fGetConfigEntry - by Sickboy (sb_at_dev-heaven.net)
-	Will check if _cfg exists, and will return either the config value, or supplied default value
-*/
-// [configEntry, entryType, defaultValue] call _f
+SCRIPT(getConfigEntry);
+
 private ["_r"];
-switch (_this select 1) do
+switch (toLower(_this select 1)) do
 {
 	case "text":
 	{

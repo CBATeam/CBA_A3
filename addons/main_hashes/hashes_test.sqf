@@ -2,7 +2,7 @@
 
 #include "script_component.hpp"
 
-SCRIPT(test_hash);
+SCRIPT(hashes_test);
 
 // ----------------------------------------------------------------------------
 

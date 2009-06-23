@@ -21,7 +21,7 @@ Returns:
 
 #include "script_component.hpp"
 
-SCRIPT(collect);
+SCRIPT(filter);
 
 // -----------------------------------------------------------------------------
 

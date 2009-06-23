@@ -1,4 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_selectWeapon
+
+Description:
+	Selects a weapon, including correctly selecting a muzzle, if any.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(selectWeapon);
+
 private ["_unit", "_weap", "_cfg", "_muz", "_ar"];
 _unit = _this select 0;
 _weap = _this select 1;

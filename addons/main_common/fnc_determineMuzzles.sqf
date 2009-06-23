@@ -1,4 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_determineMuzzles
+
+Description:
+	Gets the list of possible muzzles for a weapon.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(determineMuzzles);
+
 #define __cfg configFile >> "CfgWeapons" >> _this
 
 private ["_r"];

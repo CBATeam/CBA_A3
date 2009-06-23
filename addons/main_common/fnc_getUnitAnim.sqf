@@ -1,4 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_getUnitAnim
+
+Description:
+	Get information about a unit's stance and speed.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(getUnitAnim);
+
 private ["_unit", "_anim", "_upos", "_umov", "_dthstr", "_posstr", "_movstr"];
 
 _unit = _this;

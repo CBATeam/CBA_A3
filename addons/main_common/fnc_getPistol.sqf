@@ -1,5 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_getPistol
+
+Description:
+	Returns first found Pistol in unit's weaponList.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-// Simple function that will return first found Pistol in unit's weaponList
+SCRIPT(getPistol);
+
 private ["_r"];
 _r = "";
 

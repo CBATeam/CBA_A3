@@ -1,9 +1,29 @@
-#include "script_component.hpp"
-/*
-	Function which verifies existence of _item and _unit, returns false incase of trouble, or when able to remove _item from _unit true incase of success
-*/
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_dropMagazine
 
-#define __scriptname fDropMagazine
+Description:
+	Drop a magazine.
+	
+	Function which verifies existence of _item and _unit, returns false in case
+	of trouble, or when able to remove _item from _unit true in case of success.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
+#include "script_component.hpp"
+SCRIPT(dropMagazine);
+
+#define __scriptname fnc_dropMagazine
 
 #define __cfg (configFile >> "CfgMagazines")
 #define __action "DROPMAGAZINE"

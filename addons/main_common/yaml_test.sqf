@@ -2,7 +2,7 @@
 
 #include "script_component.hpp"
 
-SCRIPT(test_strings);
+SCRIPT(yaml_test);
 
 // ----------------------------------------------------------------------------
 

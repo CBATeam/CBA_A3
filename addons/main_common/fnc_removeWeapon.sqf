@@ -1,7 +1,27 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_removeWeapon
+
+Description:
+	Remove a weapon.
+	
+	Function which verifies existence of _item and _unit, returns false in case
+	of trouble, or when able to remove _item from _unit true in case of success.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-/*
-	Function which verifies existence of _item and _unit, returns false incase of trouble, or when able to remove _item from _unit true incase of success
-*/
+SCRIPT(removeWeapon);
 
 #define __scriptname fRemoveWeapon
 

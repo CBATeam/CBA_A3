@@ -1,8 +1,29 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_getAnimType
+
+Description:
+	Used to determine which weapon unit is currently holding and return proper
+	animation type.
+
+	Main types are for pistol, rifle and no weapon.
+	
+	This script is called by onPlayerHit.sqf
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-//  This script is called by onPlayerHit.sqf
-//
-//  Used to determine which weapon unit is currently holding and return proper animation type.
-//  Main types are for pistol, rifle and no weapon.
+SCRIPT(getAnimType);
 
 private ["_man", "_array", "_anim", "_type", "_weapon", "_pos"];
 

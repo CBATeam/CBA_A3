@@ -1,5 +1,25 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_objectRandom
+
+Description:
+	Creates a "random" number 0-9 based on an object's velocity
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-//comment { Creates a "random" number 0-9 based on an object's velocity };
+SCRIPT(objectRandom);
+
 private["_o", "_r", "_v", "_s", "_a", "_b", "_c"];
 _o = _this select 0;
 _r = 0;

@@ -1,4 +1,26 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_addMagazineVerified
+
+Description:
+	Add a magazine, but verify that it was successful without over-burdening the
+	recipient.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(addMagazineVerified);
+
 #define __pistol 16
 #define __rifle 256
 #define __ruck 4096

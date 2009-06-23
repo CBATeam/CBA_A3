@@ -1,14 +1,37 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_createMarker
+
+Description:
+	Creates a marker all at once.
+	
+Parameters:
+	_markerName - Name of marker to create [String]
+	_position - [Array: [x, y]]
+	_shape - "Icon", "Rectangle" or "Elipse" [String]
+	_size - [Array: [width, height]]
+	
+Optional Parameters:
+	"BRUSH:" - e.g. "Solid"
+	"COLOR:" - e.g. "ColorRed"
+	"TEXT:" - e.g. "Objective Area"
+	"TYPE:" - e.g. "Pickup"
+	"GLOBAL" - Add for a global marker, but leave out for a local marker. 
+
+Returns:
+	Name of the marker [String]
+	
+Examples:
+	(begin example)
+		_marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fCreateMarker;
+	(end)
+
+Author:
+	Sickboy (sb_at_dev-heaven.net) 6thSense.eu Mod
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-// 6thSense.eu Mod - fCreateMarker - by Sickboy (sb_at_dev-heaven.net)
-// Usage:
-//		_marker = ["markername", [positionX,positionY], "Shape", [sizeX,sizeY]] call CBA_fCreateMarker;
-// Shape can be: Icon, Rectangle and Elipse
-// Optional Parameters:
-// "BRUSH:", "Solid"
-// "COLOR:", "ColorRed"
-// "TEXT:", "Objective Area"
-// "TYPE:", "Pickup"
-// "GLOBAL"
+SCRIPT(createMarker);
+
 private ["_m", "_br", "_ty", "_co", "_tx"];
 
 _br = ["BRUSH:", "brush:", "", _this] call CBA_fGetArg;

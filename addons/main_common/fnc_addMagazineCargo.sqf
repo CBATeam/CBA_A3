@@ -1,9 +1,29 @@
-#include "script_component.hpp"
-/*
-	Function which verifies existence of _item and _unit, returns false incase of trouble, or when able to add _item to _unit true incase of success
-*/
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_addMagazineCargo
 
-#define __scriptname fAddMagazineCargo
+Description:
+	Add magazine to a vehicle cargo.
+	
+	Function which verifies existence of _item and _unit, returns false in case
+	of trouble, or when able to add _item to _unit true in case of success.
+	
+Parameters:
+
+Returns:
+
+Examples:
+	(begin example)
+
+	(end)
+
+Author:
+
+---------------------------------------------------------------------------- */
+
+#include "script_component.hpp"
+SCRIPT(addMagazineCargo);
+
+#define __scriptname fnc_addMagazineCargo
 
 #define __cfg (configFile >> "CfgMagazines")
 #define __action addMagazineCargo

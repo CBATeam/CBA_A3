@@ -1,12 +1,38 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_createTrigger
+
+Description:
+	Create a trigger all at once.
+	
+Parameters:
+	_pos - Position [Array]
+	
+Optional Parameters:
+	"AREA:" - e.g. [5, 5, 0, false]
+	"ACT:" - e.g. ["CIV", "PRESENT", true]
+	"STATE:" - e.g. ["this", "hint 'Civilian near player'", "hint 'no civilian near'"]
+	"NAME:" - e.g. "VariableName"
+
+Returns:
+	Trigger and parameters given in an array: [_trigger, _parameters]
+
+Examples:
+	(begin example)
+		[_position] call createTrigger;
+		
+		[_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call createTrigger;
+	(end)
+
+Author:
+	Sickboy (sb_at_dev-heaven.net)
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
+SCRIPT(createTrigger);
+
 /*
-	createTrigger function by Sickboy (sb_at_dev-heaven.net)
-	Basic: [[position]] call createTrigger;
-	Optional:
-	"AREA:", [5, 5, 0,false]
-	"ACT:", ["CIV", "PRESENT", true]
-	"STATE:", ["this", "hint 'Civilian near player'", "hint 'no civilian near'"]
-	"NAME:", "VariableName"
+	createTrigger function by 
+
 */
 
 private
