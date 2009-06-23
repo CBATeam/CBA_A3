@@ -37,6 +37,6 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then {
 	}; // OnPlayerConnected
 
 	#ifdef DEBUG
-	[format["Player Connected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
+	[format["Player Connected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fDebug;
 	#endif
 };

@@ -14,7 +14,7 @@ if (isnil "RE") then
 };
 
 PREPMAIN(fDebug);
-["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fDebug;
 
 CREATELOGICLOCAL;
 

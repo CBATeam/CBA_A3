@@ -21,5 +21,5 @@ if (_idx > -1) then
 };
 */
 #ifdef DEBUG
-[format["Player Disconnected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fDebug;
+[format["Player Disconnected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fDebug;
 #endif

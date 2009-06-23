@@ -62,11 +62,11 @@
 
 // *************************************
 // Internal Functions
-#define DEFAULT_DEBUG_SETTINGS [false, true, false]
+#define DEFAULT_DEBUGSETTINGS [false, true, false]
 // TODO: Evaluate if you can use macros with #ifdef..
-//#define DEBUGSETTINGS_SETTINGSS(var1) DEBUG_##var1##
+//#define DEBUGSETTINGSS(var1) DEBUG_##var1##
 //#define DEBUGS(var1) DEBUG_##var1
-//#define DEBUGSETTINGS_SETTINGS DEBUGS(COMPONENT)
+//#define DEBUGSETTINGS DEBUGS(COMPONENT)
 //#define DEBUG DEBUGS(COMPONENT)
 #define DOUBLES(var1,var2) ##var1##_##var2
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
