@@ -6,12 +6,17 @@ Function: CBA_network_fnc_opc
 private["_name", "_id", "_uid", "_idx", "_dbg", "_handle", "_plName"];
 _dbg = 1;
 
-_name = _this select 0;
-_id = _this select 1;
+_obj = _this select 0;
+_name = _this select 1;
+_id = 1;
+//_name = _this select 0;
+//_id = _this select 1;
+
 _plName = if (isNull player) then { "" } else { name player };
 _this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPCB) }; // OnPlayerConnectedB, execute even without confirmation
 
-if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then {
+if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
+{
 /*
 	_uid = GVAR(UIDS); GVAR(UIDS) = GVAR(UIDS) + 1;
 	_idx = GVAR(CLNAME) find _name;
