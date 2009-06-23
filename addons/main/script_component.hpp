@@ -1,5 +1,5 @@
 #define COMPONENT main
-#include "\x\cba\addons\main_common\script_macros.hpp"
+#include "\x\cba\addons\common\script_macros.hpp"
 
 #ifdef DEBUG_MAIN
 	#define DEBUG
