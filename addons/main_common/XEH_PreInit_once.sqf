@@ -1,5 +1,17 @@
 #include "script_component.hpp"
 SCRIPT(XEH_PreInit_once);
+   
+// Prepare BIS functions/MP and precompile all functions we already have registered with it:
+// NOTE: This functions module is local rather than global, but there is no reason that this should
+//       affect anything adversely. Well, unless someone foolishly makes use of that assumption...
+_functionsModule = "FunctionsManager" createVehicleLocal [0, 0];
+[_functionsModule] CALLF(init_functionsModule);
+LOG("Initialising the Functions module early.");
+if (isnil "RE") then
+{
+	LOG("Initialising the MP module early.");
+	_this call compile preprocessFileLineNumbers ("\ca\Modules\MP\data\scripts\MPframework.sqf");
+};
 
 PREPMAIN(fDebug);
 ["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fDebug;
@@ -12,9 +24,6 @@ SETVAR ["_dead", false];
 SETVAR ["_actionList", false];
 ISNILMAIN(ActionList, []);
 GVAR(debug) = []; // TODO: Evaluate if this is useful... Logging to rpt and using a tail reader seems okay too!
-
-// Prepare BIS functions and precompile all functions we already have registered with it:
-"FunctionsManager" createVehicleLocal [0, 0];
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
