@@ -2,4 +2,4 @@
 Function: CBA_fnc_remoteExecute
 */
 #include "script_component.hpp"
-[GVAR(cmd), [CALL(Id), _this]] CALLMAIN(fnc_globalEvent);
+[GVAR(cmd), [CALL(Id), _this]] CALLMAIN(globalEvent);

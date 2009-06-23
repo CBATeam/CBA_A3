@@ -9,10 +9,10 @@ _component = _this select 0;
 _action = _this select 1;
 _code = _this select 2;
 
-_key = [_component, _action] CALLMAIN(fnc_ReadKeyFromConfig);
+_key = [_component, _action] CALLMAIN(ReadKeyFromConfig);
 if (_key select 0 > -1) exitWith
 {
-	 [_key select 0, _key select 1, _code] CALLMAIN(fnc_AddKeyHandler);
+	 [_key select 0, _key select 1, _code] CALLMAIN(AddKeyHandler);
 	 true
 };
 
