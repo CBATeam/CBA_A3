@@ -119,10 +119,10 @@
 // Using globalVariables
 #define PREP_GVAR(var1,var2,var3) ##var1##_##var2##_##var3 = COMPILEPREPROCESSS(var1,var2,var3)
 #define PREPMAIN_GVAR(var1,var2,var3) ##var1##_##var3 = COMPILEPREPROCESSS(var1,var2,var3)
-#define CALL_GVAR(var1,var2,var3) call ##var1##_##var2##_##var3
-#define CALLMAIN_GVAR(var1,var3) call ##var1##_##var3
-#define SPAWN_GVAR(var1,var2,var3) spawn ##var1##_##var2##_##var3
-#define SPAWNMAIN_GVAR(var1,var2) spawn ##var1##_##var2
+#define CALL_GVAR(var1,var2,var3) call ##var1##_fnc_##var2##_##var3
+#define CALLMAIN_GVAR(var1,var3) call ##var1##_fnc_##var3
+#define SPAWN_GVAR(var1,var2,var3) spawn ##var1##_fnc_##var2##_##var3
+#define SPAWNMAIN_GVAR(var1,var2) spawn ##var1##_fnc_##var2
 
 // *************************************
 // User Functions
