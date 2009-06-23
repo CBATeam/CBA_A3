@@ -4,21 +4,21 @@ scriptName "CBA\main_common\init_functionsModule";
 
 debugLog format ["PRELOAD_ Functions\init.sqf %1", _this];
 /*
-	File: init.sqf
-	Author: Karel Moricky
+	File- init.sqf
+	Author- Karel Moricky
 
-	Description:
+	Description-
 	Function library initialization.
 	All files have to start with 'fn_' prefix and they name have to be same as name of function.
 	Don't forget to exclude comma after last item in array!
 	
-	Caution:
+	Caution-
 	Do not execute this init directly - there is dependency with MPF and need to run on all machines.
 
-	Parameter(s):
+	Parameter(s)-
 	_this select 0: 'Function manager' logic
 
-	Returns:
+	Returns-
 	Nothing
 */
 

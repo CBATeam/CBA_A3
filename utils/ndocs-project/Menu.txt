@@ -63,6 +63,7 @@ Group: Functions  {
 
          File: filter  (no auto-title, main_arrays\fnc_filter.sqf)
          File: inject  (no auto-title, main_arrays\fnc_inject.sqf)
+         File: join  (no auto-title, main_arrays\fnc_join.sqf)
          File: shuffle  (no auto-title, main_arrays\fnc_shuffle.sqf)
          }  # Group: Arrays
 
@@ -146,7 +147,6 @@ Group: Functions  {
          File: find  (no auto-title, main_strings\fnc_find.sqf)
          File: formatElapsedTime  (no auto-title, main_strings\fnc_formatElapsedTime.sqf)
          File: formatNumber  (no auto-title, main_strings\fnc_formatNumber.sqf)
-         File: join  (no auto-title, main_strings\fnc_join.sqf)
          File: leftTrim  (no auto-title, main_strings\fnc_leftTrim.sqf)
          File: replace  (no auto-title, main_strings\fnc_replace.sqf)
          File: rightTrim  (no auto-title, main_strings\fnc_rightTrim.sqf)
