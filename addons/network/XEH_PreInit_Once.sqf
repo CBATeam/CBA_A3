@@ -28,7 +28,7 @@
 */
 #define CHANGETIME 5
 
-["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
 
 // Announce the initialization of the script
 ADDON = false;
@@ -39,10 +39,10 @@ ISNIL(debug,false);
 ISNIL(TimeSync_Disabled,false);
 ISNIL(WeatherSync_Disabled,false);
 
-PREPMAIN(fnc_RemoteSay);
-PREPMAIN(fnc_RemoteExecute);
-PREP(fnc_Exec);
-PREP(fnc_CV);
+PREPMAIN(RemoteSay);
+PREPMAIN(RemoteExecute);
+PREP(Exec);
+PREP(CV);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
@@ -55,9 +55,9 @@ if (isServer) then
 	ISNIL(OPD,[]); // OnPlayerDisConnected Code array to execute after a player is recognized
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-	PREP(fnc_Opc);
-	PREP(fnc_Opd);
-	PREP(fnc_Sync);
+	PREP(Opc);
+	PREP(Opd);
+	PREP(Sync);
 	
 	GVAR(fnc_Id) = { "server" };
 	

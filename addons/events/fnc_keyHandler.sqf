@@ -49,9 +49,9 @@ _result = false;
 #ifdef DEBUG
 	if (count _ar > 0) then
 	{
-		[format["KeyPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fDebug;
+		[format["KeyPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fnc_Debug;
 	} else {
-		[format["KeyPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fDebug;
+		[format["KeyPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fnc_Debug;
 	};
 #endif
 

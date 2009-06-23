@@ -8,7 +8,7 @@
 	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
 	[QUOTE(COMPONENT), "cqb", { _this call GVAR(keyPressed) }] call cba_keys_fAddHandlerFromConfig;
 */
-["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
 
 GVAR(keys) = [];
 for "_i" from 0 to 250 do
@@ -30,11 +30,11 @@ for "_i" from 0 to _count do
 };
 
 // TODO: Evaluate if functions should be loaded on servers!
-PREP(fnc_ActionHandler);
-PREP(fnc_KeyHandler);
-PREPMAIN(fnc_AddActionHandler);
-PREPMAIN(fnc_AddKeyHandler);
-PREPMAIN(fnc_AddActionHandlerFromConfig);
-PREPMAIN(fnc_AddKeyHandlerFromConfig);
-PREPMAIN(fnc_ReadActionFromConfig);
-PREPMAIN(fnc_ReadKeyFromConfig);
+PREP(ActionHandler);
+PREP(KeyHandler);
+PREPMAIN(AddActionHandler);
+PREPMAIN(AddKeyHandler);
+PREPMAIN(AddActionHandlerFromConfig);
+PREPMAIN(AddKeyHandlerFromConfig);
+PREPMAIN(ReadActionFromConfig);
+PREPMAIN(ReadKeyFromConfig);

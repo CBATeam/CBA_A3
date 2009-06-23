@@ -13,8 +13,8 @@ if (isnil "RE") then
 	_this call compile preprocessFileLineNumbers ("\ca\Modules\MP\data\scripts\MPframework.sqf");
 };
 
-PREPMAIN(fDebug);
-["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fDebug;
+PREPMAIN(Debug);
+["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
 
 CREATELOGICLOCAL;
 
