@@ -2,7 +2,7 @@
 #define CBA_COMMON_SCRIPT_COMPONENT_INCLUDED
 
 #define COMPONENT common
-#include "script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"
 
 #endif
 

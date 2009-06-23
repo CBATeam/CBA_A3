@@ -1,5 +1,5 @@
 #define COMPONENT events
-#include "\x\cba\addons\common\script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"
 
 #ifdef DEBUG_MAIN_EVENTS
 	#define DEBUG
