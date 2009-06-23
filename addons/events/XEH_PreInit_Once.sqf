@@ -29,12 +29,5 @@ for "_i" from 0 to _count do
 	};
 };
 
-// TODO: Evaluate if functions should be loaded on servers!
 PREP(ActionHandler);
 PREP(KeyHandler);
-PREPMAIN(AddActionHandler);
-PREPMAIN(AddKeyHandler);
-PREPMAIN(AddActionHandlerFromConfig);
-PREPMAIN(AddKeyHandlerFromConfig);
-PREPMAIN(ReadActionFromConfig);
-PREPMAIN(ReadKeyFromConfig);
