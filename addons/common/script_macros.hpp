@@ -12,8 +12,11 @@
 #endif
 
 // TODO: Evaluate location
+//#define DEBUG_arrays
+//#define DEBUG_common
+//#define DEBUG_diagnostic
+//#define DEBUG_events
+//#define DEBUG_hashes
 //#define DEBUG_main
-//#define DEBUG_actions
-//#define DEBUG_keys
 //#define DEBUG_network
-//#define DEBUG_xeh
+//#define DEBUG_string
