@@ -101,10 +101,6 @@
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
-// TODO: Evaluate usefulness; idea is, everyone who uses cba, adds CBA_MAIN to their requiredAddons
-#define MAIN(var1,var2) QUOTE(TRIPLES(var1,main,var2))
-#define CBA_MAIN "cba_main", MAIN(CBA,arrays), MAIN(CBA,events), MAIN(CBA,hashes), MAIN(CBA,network), MAIN(CBA,strings)
-
 // Direct file function
 #define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'
 #define EXECFSTEST(var1,var2,var3) (_this select 0) execVM 'PATHTOS(var1,var2,var3)'
