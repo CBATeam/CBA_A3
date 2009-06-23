@@ -72,12 +72,6 @@ class CfgFunctions
 				description = "Trims white-space (space, tab, newline) from the left end of a string.";
 				file = "\x\cba\Addons\main_strings\fnc_leftTrim.sqf";
 			};
-			// CBA_fnc_join
-			class join
-			{
-				description = "Joins an array of strings into a single string, joining each fragment around a separator string. Inverse of <CBA_fnc_split>.";
-				file = "\x\cba\Addons\main_strings\fnc_join.sqf";
-			};
 		};
 	};
 };
