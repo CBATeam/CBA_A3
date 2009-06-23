@@ -435,6 +435,46 @@ if (isNil VAR) then \
 	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##VAR is defined) failed!\n\n' + (MESSAGE)); \
 }
 
+// Macros: IS_*
+//	Checking the data types of variables.
+//
+//	IS_ARRAY(VAR) - Array
+//	IS_BOOL(VAR) - Boolean
+//	IS_BOOLEAN(VAR) - UI display handle(synonym for <IS_BOOL(VAR)>)
+//	IS_CODE(VAR) - Code block (i.e a compiled function)
+//	IS_CONFIG(VAR) - Configuration
+//	IS_CONTROL(VAR) - UI control handle.
+//	IS_DISPLAY(VAR) - UI display handle.
+//	IS_FUNCTION(VAR) - A compiled function (synonym for <IS_CODE(VAR)>)
+//	IS_GROUP(VAR) - Group.
+//	IS_INTEGER(VAR) - Is a number a whole number?
+//	IS_LOCATION(VAR) - World location.
+//	IS_NUMBER(VAR) - A floating point number (synonym for <IS_SCALAR(VAR)>)
+//	IS_OBJECT(VAR) - World object.
+//	IS_SCALAR(VAR) - Floating point number.
+//	IS_SCRIPT(VAR) - A script handle (as returned by execVM and spawn commands).
+//	IS_SIDE(VAR) - Game side.
+//	IS_STRING(VAR) - World object.
+//	IS_TEXT(VAR) - Structured text.
+#define IS_ARRAY(VAR)    ((typeName (VAR)) == "ARRAY")
+#define IS_BOOL(VAR)     ((typeName (VAR)) == "BOOL")
+#define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
+#define IS_CODE(VAR)     ((typeName (VAR)) == "CODE")
+#define IS_CONFIG(VAR)   ((typeName (VAR)) == "CONFIG")
+#define IS_CONTROL(VAR)  ((typeName (VAR)) == "CONTROL")
+#define IS_DISPLAY(VAR)  ((typeName (VAR)) == "DISPLAY")
+#define IS_FUNCTION(VAR) IS_CODE(VAR)
+#define IS_GROUP(VAR)    ((typeName (VAR)) == "GROUP")
+#define IS_INTEGER(VAR)  if { IS_SCALAR(VAR) } then { (floor(VAR) == (VAR)) } else { false }
+#define IS_NUMBER(VAR)   IS_SCALAR(VAR)
+#define IS_OBJECT(VAR)   ((typeName (VAR)) == "OBJECT")
+#define IS_SCALAR(VAR)   ((typeName (VAR)) == "SCALAR")
+#define IS_SCRIPT(VAR)   ((typeName (VAR)) == "SCRIPT")
+#define IS_SIDE(VAR)     ((typeName (VAR)) == "SIDE")
+#define IS_STRING(VAR)   ((typeName (VAR)) == "STRING")
+#define IS_TEXT(VAR)     ((typeName (VAR)) == "TEXT")
+#define IS_LOCATION(VAR) ((typeName (VAR)) == "LOCATION")
+
 // Macro: SCRIPT(NAME)
 //	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
 #define SCRIPT(NAME) \
