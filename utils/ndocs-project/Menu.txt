@@ -61,120 +61,116 @@ Group: Functions  {
 
       Group: Arrays  {
 
-         File: filter  (no auto-title, main_arrays\fnc_filter.sqf)
-         File: inject  (no auto-title, main_arrays\fnc_inject.sqf)
-         File: join  (no auto-title, main_arrays\fnc_join.sqf)
-         File: shuffle  (no auto-title, main_arrays\fnc_shuffle.sqf)
+         File: filter  (no auto-title, arrays\fnc_filter.sqf)
+         File: inject  (no auto-title, arrays\fnc_inject.sqf)
+         File: join  (no auto-title, arrays\fnc_join.sqf)
+         File: shuffle  (no auto-title, arrays\fnc_shuffle.sqf)
          }  # Group: Arrays
 
       Group: Common  {
 
-         File: addMagazine  (no auto-title, main_common\fnc_addMagazine.sqf)
-         File: addMagazineCargo  (no auto-title, main_common\fnc_addMagazineCargo.sqf)
-         File: addMagazineVerified  (no auto-title, main_common\fnc_addMagazineVerified.sqf)
-         File: addWeapon  (no auto-title, main_common\fnc_addWeapon.sqf)
-         File: addWeaponCargo  (no auto-title, main_common\fnc_addWeaponCargo.sqf)
-         File: createMarker  (no auto-title, main_common\fnc_createMarker.sqf)
-         File: createTrigger  (no auto-title, main_common\fnc_createTrigger.sqf)
-         File: defaultParam  (no auto-title, main_common\fnc_defaultParam.sqf)
-         File: determineMuzzles  (no auto-title, main_common\fnc_determineMuzzles.sqf)
-         File: dropMagazine  (no auto-title, main_common\fnc_dropMagazine.sqf)
-         File: dropWeapon  (no auto-title, main_common\fnc_dropWeapon.sqf)
-         File: getAnimType  (no auto-title, main_common\fnc_getAnimType.sqf)
-         File: getArg  (no auto-title, main_common\fnc_getArg.sqf)
-         File: getConfigEntry  (no auto-title, main_common\fnc_getConfigEntry.sqf)
-         File: getGroupIndex  (no auto-title, main_common\fnc_getGroupIndex.sqf)
-         File: getPistol  (no auto-title, main_common\fnc_getPistol.sqf)
-         File: getUnitAnim  (no auto-title, main_common\fnc_getUnitAnim.sqf)
-         File: getUnitDeathAnim  (no auto-title, main_common\fnc_getUnitDeathAnim.sqf)
-         File: headDir  (no auto-title, main_common\fnc_headDir.sqf)
-         File: inheritsFrom  (no auto-title, main_common\fnc_inheritsFrom.sqf)
-         File: isTurnedOut  (no auto-title, main_common\fnc_isTurnedOut.sqf)
-         File: nearPlayer  (no auto-title, main_common\fnc_nearPlayer.sqf)
-         File: objectRandom  (no auto-title, main_common\fnc_objectRandom.sqf)
-         File: parseYAML  (no auto-title, main_common\fnc_parseYAML.sqf)
-         File: players  (no auto-title, main_common\fnc_players.sqf)
-         File: realHeight  (no auto-title, main_common\fnc_realHeight.sqf)
-         File: removeMagazine  (no auto-title, main_common\fnc_removeMagazine.sqf)
-         File: removeWeapon  (no auto-title, main_common\fnc_removeWeapon.sqf)
-         File: selectWeapon  (no auto-title, main_common\fnc_selectWeapon.sqf)
-         File: switchPlayer  (no auto-title, main_common\fnc_switchPlayer.sqf)
-         File: testMain  (no auto-title, main_common\fnc_testMain.sqf)
+         File: addMagazine  (no auto-title, common\fnc_addMagazine.sqf)
+         File: addMagazineCargo  (no auto-title, common\fnc_addMagazineCargo.sqf)
+         File: addMagazineVerified  (no auto-title, common\fnc_addMagazineVerified.sqf)
+         File: addWeapon  (no auto-title, common\fnc_addWeapon.sqf)
+         File: addWeaponCargo  (no auto-title, common\fnc_addWeaponCargo.sqf)
+         File: createMarker  (no auto-title, common\fnc_createMarker.sqf)
+         File: createTrigger  (no auto-title, common\fnc_createTrigger.sqf)
+         File: defaultParam  (no auto-title, common\fnc_defaultParam.sqf)
+         File: determineMuzzles  (no auto-title, common\fnc_determineMuzzles.sqf)
+         File: dropMagazine  (no auto-title, common\fnc_dropMagazine.sqf)
+         File: dropWeapon  (no auto-title, common\fnc_dropWeapon.sqf)
+         File: getAnimType  (no auto-title, common\fnc_getAnimType.sqf)
+         File: getArg  (no auto-title, common\fnc_getArg.sqf)
+         File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
+         File: getGroupIndex  (no auto-title, common\fnc_getGroupIndex.sqf)
+         File: getPistol  (no auto-title, common\fnc_getPistol.sqf)
+         File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
+         File: getUnitDeathAnim  (no auto-title, common\fnc_getUnitDeathAnim.sqf)
+         File: headDir  (no auto-title, common\fnc_headDir.sqf)
+         File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
+         File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
+         File: nearPlayer  (no auto-title, common\fnc_nearPlayer.sqf)
+         File: objectRandom  (no auto-title, common\fnc_objectRandom.sqf)
+         File: parseYAML  (no auto-title, common\fnc_parseYAML.sqf)
+         File: players  (no auto-title, common\fnc_players.sqf)
+         File: realHeight  (no auto-title, common\fnc_realHeight.sqf)
+         File: removeMagazine  (no auto-title, common\fnc_removeMagazine.sqf)
+         File: removeWeapon  (no auto-title, common\fnc_removeWeapon.sqf)
+         File: selectWeapon  (no auto-title, common\fnc_selectWeapon.sqf)
+         File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
+         File: testMain  (no auto-title, common\fnc_testMain.sqf)
          }  # Group: Common
 
       Group: Diagnostic  {
 
-         File: error  (no auto-title, main_diagnostic\fnc_error.sqf)
-         File: log  (no auto-title, main_diagnostic\fnc_log.sqf)
+         File: error  (no auto-title, diagnostic\fnc_error.sqf)
+         File: log  (no auto-title, diagnostic\fnc_log.sqf)
          }  # Group: Diagnostic
 
       Group: Events  {
 
-         File: actionHandler  (no auto-title, main_events\fnc_actionHandler.sqf)
-         File: addActionHandler  (no auto-title, main_events\fnc_addActionHandler.sqf)
-         File: addActionHandlerFromConfig  (no auto-title, main_events\fnc_addActionHandlerFromConfig.sqf)
-         File: addEventHandler  (no auto-title, main_events\fnc_addEventHandler.sqf)
-         File: addKeyHandler  (no auto-title, main_events\fnc_addKeyHandler.sqf)
-         File: addKeyHandlerFromConfig  (no auto-title, main_events\fnc_addKeyHandlerFromConfig.sqf)
-         File: globalEvent  (no auto-title, main_events\fnc_globalEvent.sqf)
-         File: keyHandler  (no auto-title, main_events\fnc_keyHandler.sqf)
-         File: localEvent  (no auto-title, main_events\fnc_localEvent.sqf)
-         File: readActionFromConfig  (no auto-title, main_events\fnc_readActionFromConfig.sqf)
-         File: readKeyFromConfig  (no auto-title, main_events\fnc_readKeyFromConfig.sqf)
-         File: remoteEvent  (no auto-title, main_events\fnc_remoteEvent.sqf)
-         File: removeEventHandler  (no auto-title, main_events\fnc_removeEventHandler.sqf)
+         File: actionHandler  (no auto-title, events\fnc_actionHandler.sqf)
+         File: addActionHandler  (no auto-title, events\fnc_addActionHandler.sqf)
+         File: addActionHandlerFromConfig  (no auto-title, events\fnc_addActionHandlerFromConfig.sqf)
+         File: addEventHandler  (no auto-title, events\fnc_addEventHandler.sqf)
+         File: addKeyHandler  (no auto-title, events\fnc_addKeyHandler.sqf)
+         File: addKeyHandlerFromConfig  (no auto-title, events\fnc_addKeyHandlerFromConfig.sqf)
+         File: globalEvent  (no auto-title, events\fnc_globalEvent.sqf)
+         File: keyHandler  (no auto-title, events\fnc_keyHandler.sqf)
+         File: localEvent  (no auto-title, events\fnc_localEvent.sqf)
+         File: readActionFromConfig  (no auto-title, events\fnc_readActionFromConfig.sqf)
+         File: readKeyFromConfig  (no auto-title, events\fnc_readKeyFromConfig.sqf)
+         File: remoteEvent  (no auto-title, events\fnc_remoteEvent.sqf)
+         File: removeEventHandler  (no auto-title, events\fnc_removeEventHandler.sqf)
          }  # Group: Events
 
       Group: Hashes  {
 
-         File: hashCreate  (no auto-title, main_hashes\fnc_hashCreate.sqf)
-         File: hashEachPair  (no auto-title, main_hashes\fnc_hashEachPair.sqf)
-         File: hashGet  (no auto-title, main_hashes\fnc_hashGet.sqf)
-         File: hashHasKey  (no auto-title, main_hashes\fnc_hashHasKey.sqf)
-         File: hashSet  (no auto-title, main_hashes\fnc_hashSet.sqf)
-         File: isHash  (no auto-title, main_hashes\fnc_isHash.sqf)
+         File: hashCreate  (no auto-title, hashes\fnc_hashCreate.sqf)
+         File: hashEachPair  (no auto-title, hashes\fnc_hashEachPair.sqf)
+         File: hashGet  (no auto-title, hashes\fnc_hashGet.sqf)
+         File: hashHasKey  (no auto-title, hashes\fnc_hashHasKey.sqf)
+         File: hashSet  (no auto-title, hashes\fnc_hashSet.sqf)
+         File: isHash  (no auto-title, hashes\fnc_isHash.sqf)
          }  # Group: Hashes
 
       Group: Network  {
 
-         File: remoteExecute  (no auto-title, main_network\fnc_remoteExecute.sqf)
-         File: remoteSay  (no auto-title, main_network\fnc_remoteSay.sqf)
+         File: remoteExecute  (no auto-title, network\fnc_remoteExecute.sqf)
+         File: remoteSay  (no auto-title, network\fnc_remoteSay.sqf)
          }  # Group: Network
 
       Group: Strings  {
 
-         File: capitalize  (no auto-title, main_strings\fnc_capitalize.sqf)
-         File: find  (no auto-title, main_strings\fnc_find.sqf)
-         File: formatElapsedTime  (no auto-title, main_strings\fnc_formatElapsedTime.sqf)
-         File: formatNumber  (no auto-title, main_strings\fnc_formatNumber.sqf)
-         File: leftTrim  (no auto-title, main_strings\fnc_leftTrim.sqf)
-         File: replace  (no auto-title, main_strings\fnc_replace.sqf)
-         File: rightTrim  (no auto-title, main_strings\fnc_rightTrim.sqf)
-         File: split  (no auto-title, main_strings\fnc_split.sqf)
-         File: strLen  (no auto-title, main_strings\fnc_strLen.sqf)
-         File: trim  (no auto-title, main_strings\fnc_trim.sqf)
+         File: capitalize  (no auto-title, strings\fnc_capitalize.sqf)
+         File: find  (no auto-title, strings\fnc_find.sqf)
+         File: formatElapsedTime  (no auto-title, strings\fnc_formatElapsedTime.sqf)
+         File: formatNumber  (no auto-title, strings\fnc_formatNumber.sqf)
+         File: leftTrim  (no auto-title, strings\fnc_leftTrim.sqf)
+         File: replace  (no auto-title, strings\fnc_replace.sqf)
+         File: rightTrim  (no auto-title, strings\fnc_rightTrim.sqf)
+         File: split  (no auto-title, strings\fnc_split.sqf)
+         File: strLen  (no auto-title, strings\fnc_strLen.sqf)
+         File: trim  (no auto-title, strings\fnc_trim.sqf)
          }  # Group: Strings
 
       }  # Group: CBA
 
-   Group: CBA_main_network  {
+   Group: CBA_network  {
 
       Group: Network  {
 
-         File: cv  (no auto-title, main_network\fnc_cv.sqf)
-         File: exec  (no auto-title, main_network\fnc_exec.sqf)
-         File: opc  (no auto-title, main_network\fnc_opc.sqf)
-         File: opd  (no auto-title, main_network\fnc_opd.sqf)
-         File: sync  (no auto-title, main_network\fnc_sync.sqf)
+         File: cv  (no auto-title, network\fnc_cv.sqf)
+         File: exec  (no auto-title, network\fnc_exec.sqf)
+         File: opc  (no auto-title, network\fnc_opc.sqf)
+         File: opd  (no auto-title, network\fnc_opd.sqf)
+         File: sync  (no auto-title, network\fnc_sync.sqf)
          }  # Group: Network
 
-      }  # Group: CBA_main_network
+      }  # Group: CBA_network
 
    }  # Group: Functions
 
-Group: Macros  {
-
-   Macro Index: Index
-   File: script_macros_common  (no auto-title, main_common\script_macros_common.hpp)
-   }  # Group: Macros
-
+Macro Index: Index
+File: script_macros_common.hpp  (main\script_macros_common.hpp)
