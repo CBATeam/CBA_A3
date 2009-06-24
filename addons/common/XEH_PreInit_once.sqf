@@ -15,14 +15,9 @@ if (isnil "RE") then
 
 ["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
 
-CREATELOGICLOCAL;
+ADDON = false;
 
-// Possibly convert to the variable namespace thing, taste:
-SETVAR ["_init", false];
-SETVAR ["_dead", false];
-SETVAR ["_actionList", false];
 ISNILMAIN(ActionList, []);
-GVAR(debug) = []; // TODO: Evaluate if this is useful... Logging to rpt and using a tail reader seems okay too!
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
@@ -71,4 +66,4 @@ CALLF(init_gauss);
 CALLF(init_kron_strings);
 
 // Announce Initialization Complete
-SETVAR ["_init", true];
+ADDON = true;

@@ -30,6 +30,12 @@ Author:
 
 #include "script_component.hpp"
 
+if (isNil QUOTE(ADDON)) then
+{
+	CREATELOGICLOCAL;
+	// GVAR(debug) = []; // TODO: Evaluate if this is useful... Logging to rpt and using a tail reader seems okay too!
+};
+
 _ar2msg = {
 	private ["_ar", "_str", "_msg", "_orig", "_total", "_i"];
 	_ar = [];
@@ -111,7 +117,7 @@ if (_c > 1) then
 
 if (_type select 2) exitWith
 {
-	[-2, { _this call CBA_fnc_Debug }, [_message, _component], [_type select 0,_type select 1,false]] call CBA_fnc_remoteExecute;
+	[-2, { _this CALLMAIN(debug) }, [_message, _component], [_type select 0,_type select 1,false]] CALLMAIN(remoteExecute);
 };
 
 _msgAr = [];
@@ -123,4 +129,4 @@ switch (typeName _message) do
 
 if (_type select 0) then { if (SLX_XEH_MACHINE select 0) then { { ADDON globalChat _x } forEach _msgAr } };
 if (_type select 1) then { { if (_x != "") then { diag_log _x } } forEach _msgAr };
-PUSH(GVAR(debug),_msgAr); // TODO: Evaluate cleanup system?
+//PUSH(GVAR(debug),_msgAr); // TODO: Evaluate cleanup system?
