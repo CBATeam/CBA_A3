@@ -6,7 +6,7 @@ Description:
 
 Parameters:
 	_eventType - Type of event to publish [String].
-	_params - Parameters to pass to the event handlers [Array].
+	_params - Parameters to pass to the event handlers [Array, defaults to nil].
 
 Returns:
 	nil
@@ -19,23 +19,29 @@ SCRIPT(localEvent);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_2(_eventType,_params);
+PARAMS_1(_eventType);
+DEFAULT_PARAM(1,_params,nil);
 	
-private ["_handlerFunctionsName", "_handlerFunctions"];
+private "_handlers";
 
 // Run locally.
-_handlerFunctionsName = _eventType + "_handlers";
+_handlers = CBA_eventHandlers getVariable _eventType;
 
-if (not (isNil _handlerFunctionsName)) then
+if (not (isNil "_handlers")) then
 {
-	_handlerFunctions = call compile _handlerFunctionsName;
-	
 	{
 		if (not (isNil "_x")) then
 		{
-			_params call _x;
+			if (isNil "_params") then
+			{
+				call _x;
+			}
+			else
+			{
+				_params call _x;
+			};
 		};
-	} forEach _handlerFunctions;
+	} forEach _handlers;
 };
 
 nil; // Return.

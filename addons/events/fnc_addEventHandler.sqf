@@ -6,7 +6,7 @@ Description:
 
 Parameters:
 	_eventType - Type of event to handle [String].
-	_handlerCode - Code to call when event is raised [Code].
+	_handler - Function to call when event is raised [Code].
 
 Returns:
 	Index of the event handler (can be used with <CBA_fnc_removeEventHandler>).
@@ -19,30 +19,25 @@ SCRIPT(addEventHandler);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_2(_eventType,_handlerCode);
+PARAMS_2(_eventType,_handler);
 
-private ["_handlerFunctionsName", "_handlerFunctions", "_handlerIndex"];
+private ["_handlers", "_handlerIndex"];
 
-// Run locally.
-_handlerFunctionsName = _eventType + "_handlers";
+_handlers = CBA_eventHandlers getVariable _eventType;
 
-if (isNil _handlerFunctionsName) then
+if (isNil "_handlers") then
 {
 	// No handlers for this event already exist, so make a new event type.
-	call compile format ["%1 = [_handlerCode]", _handlerFunctionsName];
+	CBA_eventHandlers setVariable [_eventType, [_handler]];
 	_handlerIndex = 0;
-	
-	// Make sure that there is an event handler to catch global events.
-	_eventType addPublicVariableEventHandler CBA_fnc_localEvent;
 }
 else
 {
 	// Handlers already recorded, so add another one.
-	_handlerFunctions = call compile _handlerFunctionsName;
-	_handlerIndex = count _handlerFunctions;
-	PUSH(_handlerFunctions,_handlerCode);
+	_handlerIndex = count _handlers;
+	PUSH(_handlers,_handler);
 };
 
-TRACE_2("",_eventType,_handlerIndex);
+TRACE_2("Added",_eventType,_handlerIndex);
 
 _handlerIndex; // Return.

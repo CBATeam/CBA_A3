@@ -38,3 +38,22 @@ PREPMAIN(fnc_AddActionHandlerFromConfig);
 PREPMAIN(fnc_AddKeyHandlerFromConfig);
 PREPMAIN(fnc_ReadActionFromConfig);
 PREPMAIN(fnc_ReadKeyFromConfig);
+
+// Initialisation required by CBA events.
+CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
+if (isServer or (alive player)) then
+{
+	// We want all events, as soon as they start arriving.
+	"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
+}
+else
+{
+	// Ignore the last event that was sent out before we joined.
+	[] spawn
+	{
+		waitUntil { alive player };
+		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent};
+	};
+};
+
+nil;

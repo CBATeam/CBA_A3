@@ -10,6 +10,10 @@ Parameters:
 
 Returns:
 	nil
+	
+TODO:
+	Use Hash to store handlers as a sparse array, to save on lots of empty
+	elements in the array if lots of removes are made.
 
 ---------------------------------------------------------------------------- */
 
@@ -21,27 +25,32 @@ SCRIPT(removeEventHandler);
 
 PARAMS_2(_eventType,_handlerIndex);
 
-private ["_handlerFunctionsName", "_handlerFunctions"];
+private "_handlers";
 
-_handlerFunctionsName = _eventType + "_handlers";
+_handlers = CBA_eventHandlers getVariable _eventType;
 
-if (isNil _handlerFunctionsName) then
+if (isNil "_handlers") then
 {
-	// ERROR!
+	WARNING("Event type not registered: " + (str _eventType));
 }
 else
 {
-	_handlerFunctions = call compile _handlerFunctionsName;
-	if ((count _handlerFunctions) > _handlerIndex) then
+	if ((count _handlers) > _handlerIndex) then
 	{
-		_handlerFunctions set [_handlerIndex, nil];
+		if (isNil { _handlers select _handlerIndex } ) then
+		{
+			WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " already removed.");
+		}
+		else
+		{
+			_handlers set [_handlerIndex, nil];
+			TRACE_2("Removed",_eventType,_handlerIndex);
+		};
 	}
 	else
 	{
-		// ERROR!
+		WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " never set.");
 	};
 };
-
-TRACE_2("",_eventType,_handlerIndex);
 
 nil; // Return.

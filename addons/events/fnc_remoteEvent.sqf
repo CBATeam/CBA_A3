@@ -18,11 +18,8 @@ Returns:
 SCRIPT(remoteEvent);
 
 // ----------------------------------------------------------------------------
-
-PARAMS_2(_eventType,_params);
-
 // Run remotely.
-call compile format ["%1 = _params", _eventType];
-publicVariable _eventType;
+CBA_e = _this;
+publicVariable "CBA_e"; // Nasty short name to limit bandwidth.
 
 nil; // Return.
