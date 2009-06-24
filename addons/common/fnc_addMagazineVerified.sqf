@@ -121,7 +121,7 @@ if ((_k - _j) >= _num)  then
 {
 	for "_i" from 1 to ((_k - _j) / _num) do
 	{
-		_action = [player,_magazine] call CBA_fAddMagazine;
+		_action = [player,_magazine] call CBA_fnc_AddMagazine;
 	};
 };
 

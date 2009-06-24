@@ -28,7 +28,7 @@
 */
 #define CHANGETIME 5
 
-["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fDebug;
+["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
 
 // Announce the initialization of the script
 ADDON = false;
@@ -39,10 +39,10 @@ ISNIL(debug,false);
 ISNIL(TimeSync_Disabled,false);
 ISNIL(WeatherSync_Disabled,false);
 
-PREPMAIN(fnc_RemoteSay);
-PREPMAIN(fnc_RemoteExecute);
-PREP(fnc_Exec);
-PREP(fnc_CV);
+PREPMAIN(RemoteSay);
+PREPMAIN(RemoteExecute);
+PREP(Exec);
+PREP(CV);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
@@ -55,17 +55,17 @@ if (isServer) then
 	ISNIL(OPD,[]); // OnPlayerDisConnected Code array to execute after a player is recognized
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-	PREP(fnc_Opc);
-	PREP(fnc_Opd);
-	PREP(fnc_Sync);
+	PREP(Opc);
+	PREP(Opd);
+	PREP(Sync);
 	
 	GVAR(fnc_Id) = { "server" };
 	
-	[QUOTE(GVAR(join)), { _this CALL(fnc_Opc) }] CALLMAIN(addEventHandler);
+	[QUOTE(GVAR(join)), { _this CALL(Opc) }] CALLMAIN(addEventHandler);
 
-	// onPlayerConnected '[_name,_id] CALL(fnc_Opc)';
+	// onPlayerConnected '[_name,_id] CALL(Opc)';
 	// TODO: Handle OPD without actually using opd
-	onPlayerDisconnected '[_name,_id] CALL(fnc_Opd)';
+	onPlayerDisconnected '[_name,_id] CALL(Opd)';
 
 	// Weather and Time Sync
 	[] spawn
@@ -74,14 +74,14 @@ if (isServer) then
 		waitUntil { time > 0 };
 		GVAR(OPC) =
 		[
-			{ [] spawn { sleep 5; CALL(fnc_Sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
+			{ [] spawn { sleep 5; CALL(Sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
 		] + GVAR(OPC);
 
 		// Every 60 Seconds date/weather sync
 		while { true } do
 		{
 			sleep 60;
-			CALL(fnc_Sync);
+			CALL(Sync);
 		};
 	};
 } else {
@@ -98,7 +98,7 @@ if (isServer) then
 	};
 };
 
-[GVAR(cmd), { if (GVAR(init)) then { _this SPAWN(fnc_Exec) } }] CALLMAIN(addEventHandler);
+[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(Exec) } }] CALLMAIN(addEventHandler);
 
 QUOTE(GVAR(say)) addPublicVariableEventHandler { if (!isDedicated) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
 QUOTE(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };

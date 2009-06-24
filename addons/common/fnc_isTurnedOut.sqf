@@ -12,7 +12,7 @@ Returns:
 	
 Examples:
 	(begin example)
-		if ( [_unit] call CBA_fGetVehicleAnim ) then
+		if ( [_unit] call CBA_fnc_GetVehicleAnim ) then
 		{
 			player sidechat "I R turned out!";
 		}

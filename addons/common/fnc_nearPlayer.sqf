@@ -27,6 +27,6 @@ _ok = false;
 
 {
 	if ((_unit distance _x) < _distance) exitWith { _ok = true };
-} forEach CALLMAIN(fnc_Players);
+} forEach CALLMAIN(Players);
 
 _ok

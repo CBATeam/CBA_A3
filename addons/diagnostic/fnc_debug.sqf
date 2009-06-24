@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 /* General Purpose Debug Message Writer
- * [ Message (String), optional: component (String), optional: typeOfDebug (Array)] call CBA_fDebug;
+ * [ Message (String), optional: component (String), optional: typeOfDebug (Array)] call CBA_fnc_Debug;
  * typeOfDebug: [ globalChatMessage, local arma.rpt, local and remote arma.rpt]
- * e.g: [ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fDebug;
+ * e.g: [ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fnc_Debug;
  * (Would write the debug message in chatlog of local computer, and in local+remote arma.rpt
  *
 */
@@ -87,7 +87,7 @@ if (_c > 1) then
 
 if (_type select 2) exitWith
 {
-	[-2, { _this call CBA_fDebug }, [_message, _component], [_type select 0,_type select 1,false]] call CBA_fnc_RemoteExecute;
+	[-2, { _this call CBA_fnc_Debug }, [_message, _component], [_type select 0,_type select 1,false]] call CBA_fnc_remoteExecute;
 };
 
 _msgAr = [];
