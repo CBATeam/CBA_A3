@@ -39,8 +39,6 @@ ISNIL(debug,false);
 ISNIL(TimeSync_Disabled,false);
 ISNIL(WeatherSync_Disabled,false);
 
-PREPMAIN(RemoteSay);
-PREPMAIN(RemoteExecute);
 PREP(Exec);
 PREP(CV);
 
