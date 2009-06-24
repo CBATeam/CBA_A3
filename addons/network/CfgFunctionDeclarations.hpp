@@ -26,42 +26,6 @@ class CfgFunctions
 			};
 		};
 	};
-	class CBA_network
-	{
-		class Network
-		{
-			// CBA_network_fnc_opc
-			class opc
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_opc.sqf";
-			};
-			// CBA_network_fnc_opd
-			class opd
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_opd.sqf";
-			};
-			// CBA_network_fnc_sync
-			class sync
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_sync.sqf";
-			};
-			// CBA_network_fnc_cv
-			class cv
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_cv.sqf";
-			};
-			// CBA_network_fnc_exec
-			class exec
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_exec.sqf";
-			};
-		};
-	};
 };
 
 #endif // FUNCTIONS_CONFIG

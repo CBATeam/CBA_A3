@@ -24,6 +24,12 @@ class CfgFunctions
 				description = "Logs a message to the RPT log.";
 				file = "\x\cba\Addons\diagnostic\fnc_log.sqf";
 			};
+			// CBA_fnc_debug
+			class debug
+			{
+				description = "General Purpose Debug Message Writer";
+				file = "\x\cba\Addons\diagnostic\fnc_debug.sqf";
+			};
 		};
 	};
 };

@@ -63,9 +63,10 @@ Dir.new(path).each do |addon|
 				type.capitalize!
 				source = File.read(File.join(addon_path, function_file))
 				
-				unless source =~ /Function:\s*(\w+)_fnc_#{name}/i
-					$stderr.puts ">>> ERROR >>> Incorrect/missing Function name documented in: #{function_file}"
-					exit false
+				unless source =~ /^\s*Function:\s*(\w+)_fnc_#{name}/i
+					$stderr.puts ">>> ERROR >>> Incorrect/missing Function name documented in: #{function_file} (not adding to fns module)"
+					#exit false
+					next
 				end
 				
 				tag = $1

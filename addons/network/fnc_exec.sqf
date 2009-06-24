@@ -1,5 +1,5 @@
 /*
-Function: CBA_network_fnc_exec
+Internal Function: CBA_network_fnc_exec
 */
 #include "script_component.hpp"
 // Generic NET Execution Handler

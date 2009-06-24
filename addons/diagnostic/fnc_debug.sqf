@@ -1,11 +1,35 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_debug
+
+Description:
+	General Purpose Debug Message Writer
+
+	Handles very long messages without losing text or crashing the game.
+
+Parameters:
+	_message - Message to write or data structure to dump [String or Array].
+	_component - component [String, defaults to "CBA_DEBUG"]
+	_typeOfDebug - Type of message [3-element Array, as described below...]
+	... _useGlobalChat - Write to global chat [Boolean, defaults to true].
+	... _local - Log to local arma.rpt [Boolean, defaults to true]
+    ... _global - Log to local and remote arma.rpt [Boolean, defaults to false]
+
+Returns:
+	nil
+
+Examples:
+    (begin example)
+		// Write the debug message in chat-log of local computer, and in
+		// local and remote arma.rpt.
+		[ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fnc_Debug;
+    (end)
+
+Author:
+	Sickboy
+---------------------------------------------------------------------------- */
+
 #include "script_component.hpp"
-/* General Purpose Debug Message Writer
- * [ Message (String), optional: component (String), optional: typeOfDebug (Array)] call CBA_fnc_Debug;
- * typeOfDebug: [ globalChatMessage, local arma.rpt, local and remote arma.rpt]
- * e.g: [ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fnc_Debug;
- * (Would write the debug message in chatlog of local computer, and in local+remote arma.rpt
- *
-*/
+
 _ar2msg = {
 	private ["_ar", "_str", "_msg", "_orig", "_total", "_i"];
 	_ar = [];

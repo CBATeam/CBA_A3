@@ -1,5 +1,5 @@
 /*
-Function: CBA_network_fnc_opc
+Internal Function: CBA_network_fnc_opc
 */
 #include "script_component.hpp"
 #define __scriptname opc
