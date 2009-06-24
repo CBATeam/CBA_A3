@@ -7,7 +7,7 @@
 	Usage:
 		These macros can be used in any SQF file by including this file at the top of the script:
 		(begin example)
-			#include "/x/cba/addons/main_common/script_macros_common.hpp"
+			#include "/x/cba/addons/main/script_macros_common.hpp"
 		(end)
 
 	Authors:
