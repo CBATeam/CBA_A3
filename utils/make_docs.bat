@@ -8,6 +8,7 @@ echo.
 echo === Packaging documentation ===
 echo.
 cd "..\docs
+del "cba_function_library.7z"
 7z a "cba_function_library"
 
 pause

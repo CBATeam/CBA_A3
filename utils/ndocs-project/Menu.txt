@@ -104,6 +104,7 @@ Group: Functions  {
 
       Group: Diagnostic  {
 
+         File: debug  (no auto-title, diagnostic\fnc_debug.sqf)
          File: error  (no auto-title, diagnostic\fnc_error.sqf)
          File: log  (no auto-title, diagnostic\fnc_log.sqf)
          }  # Group: Diagnostic
@@ -156,19 +157,6 @@ Group: Functions  {
          }  # Group: Strings
 
       }  # Group: CBA
-
-   Group: CBA_network  {
-
-      Group: Network  {
-
-         File: cv  (no auto-title, network\fnc_cv.sqf)
-         File: exec  (no auto-title, network\fnc_exec.sqf)
-         File: opc  (no auto-title, network\fnc_opc.sqf)
-         File: opd  (no auto-title, network\fnc_opd.sqf)
-         File: sync  (no auto-title, network\fnc_sync.sqf)
-         }  # Group: Network
-
-      }  # Group: CBA_network
 
    }  # Group: Functions
 

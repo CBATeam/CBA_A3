@@ -1,5 +1,5 @@
 /*
-Function: CBA_network_fnc_cv
+Internal Function: CBA_network_fnc_cv
 */
 #include "script_component.hpp"
 #define __scriptname fCV
