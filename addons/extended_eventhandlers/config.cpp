@@ -11,9 +11,8 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = 1.00;
-		//requiredAddons[] = { "CACharacters", "CAWeapons", "CAWeapons3", "CAAir" };
-        requiredAddons[] = { "CAData", "CAAir", "CACharacters" };
-		SLX_XEH2_Version = 1.991;
+		requiredAddons[] = { "CAData", "CAAir", "CACharacters" };
+		SLX_XEH2_Version = 2.00;
 	};
 };
 
