@@ -4,8 +4,7 @@ Function: CBA_network_fnc_cv
 #include "script_component.hpp"
 #define __scriptname fCV
 private ["_veh", "_pos", "_c", "_dir", "_object", "_varName", "_init", "_valid"];
-_veh = _this select 0;
-_pos = _this select 1;
+PARAMS_2(_veh,_pos);
 _c = count _this;
 if (_c > 2) then { _dir = _this select 2 } else { _dir = 0 };
 if (_c > 3) then { _varName = _this select 3 } else { _varName = "" };

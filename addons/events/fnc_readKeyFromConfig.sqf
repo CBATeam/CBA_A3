@@ -5,8 +5,7 @@ Function: CBA_fnc_readKeyFromConfig
 SCRIPT(readKeyFromConfig);
 
 private ["_component", "_action", "_settings", "_i"];
-_component = _this select 0;
-_action = _this select 1;
+PARAMS_2(_component,_action);
 _settings = [false, false, false];
 if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith
 {

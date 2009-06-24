@@ -21,8 +21,7 @@ Author:
 SCRIPT(selectWeapon);
 
 private ["_unit", "_weap", "_cfg", "_muz", "_ar"];
-_unit = _this select 0;
-_weap = _this select 1;
+PARAMS_2(_unit,_weap);
 _cfg = (configFile >> "CfgWeapons" >> _weap >> "muzzles");
 if (isArray _cfg) then
 {

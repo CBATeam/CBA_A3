@@ -4,8 +4,7 @@ Function: CBA_network_fnc_exec
 #include "script_component.hpp"
 // Generic NET Execution Handler
 private ["_ar", "_id", "_chan", "_cmd", "_objAr", "_ex", "_msg"];
-_id = _this select 0;
-_ar = _this select 1;
+PARAMS_2(_id,_ar);
 if (count _ar < 2) exitWith {};
 _chan = _ar select 0;
 _cmd = _ar select 1;

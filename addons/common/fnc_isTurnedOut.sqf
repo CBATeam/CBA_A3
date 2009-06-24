@@ -30,7 +30,7 @@ Author:
 SCRIPT(isTurnedOut);
 
 private["_unit", "_anim", "_count", "_out", "_ret"];
-_unit = _this select 0;
+PARAMS_1(_unit);
 _anim = toArray(toLower(animationState _unit));
 _count = (count _anim)-1;
 _out = toString([_anim select (_count-2),_anim select (_count-1),_anim select _count]);

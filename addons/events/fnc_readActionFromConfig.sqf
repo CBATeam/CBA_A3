@@ -5,8 +5,7 @@ Function: CBA_fnc_readActionFromConfig
 SCRIPT(readActionFromConfig);
 
 private ["_component", "_action", "_i"];
-_component = _this select 0;
-_action = _this select 1;
+PARAMS_2(_component,_action);
 if (isText(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	#ifdef DEBUG

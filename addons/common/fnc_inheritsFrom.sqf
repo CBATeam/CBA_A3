@@ -23,8 +23,7 @@ Author:
 SCRIPT(inheritsFrom);
 
 private ["_class", "_baseClass", "_entry", "_valid"];
-_class = _this select 0;
-_baseClass = _this select 1;
+PARAMS_2(_class,_baseClass);
 _valid = false;
 
 _entry = inheritsFrom _entry;

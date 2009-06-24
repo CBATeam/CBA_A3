@@ -21,7 +21,7 @@ Author:
 SCRIPT(switchPlayer);
 
 private ["_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
-_type = _this select 0;
+PARAMS_1(_type);
 _oldUnit = player;
 
 _ar = [weapons _oldUnit, magazines _oldUnit, rank _oldUnit, score _oldUnit, group _oldUnit, getPos _oldUnit, (leader _oldUnit) == _oldUnit, vehicleVarName _oldUnit];
