@@ -56,7 +56,7 @@ SCRIPT(headDir);
 
 private["_unit", "_object", "_position", "_viewpos", "_vector", "_magnitude", "_azimuth", "_angle", "_dif", "_infov", "_threed"];
 
-_unit = _this select 0;
+PARAMS_1(_unit);
 _ai = false;
 _threed = false;
 if (_unit != player) then { _ai = true };

@@ -45,7 +45,7 @@ private
 	"_trg"
 ];
 
-_pos = _this select 0;
+PARAMS_1(_pos);
 _area = ["AREA:", "area:", [],_this] call CBA_fnc_GetArg;
 _activation = ["ACT:", "act:", [],_this] call CBA_fnc_GetArg;
 _statements = ["STATE:", "state:", [],_this] call CBA_fnc_GetArg;

@@ -5,9 +5,7 @@ Function: CBA_fnc_addKeyHandler
 SCRIPT(addKeyHandler);
 
 private ["_key", "_code", "_ar", "_settings", "_entry"];
-_key = _this select 0;
-_settings = _this select 1;
-_code = _this select 2;
+PARAMS_3(_key,_settings,_code);
 #ifdef DEBUG
 	[format["addHandler: %1", _this], QUOTE(ADDON)] call CBA_fnc_Debug;
 #endif

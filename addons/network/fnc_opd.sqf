@@ -5,8 +5,7 @@ Internal Function: CBA_network_fnc_opd
 #define __scriptname opd
 
 private["_id", "_idx", "_name", "_uid"];
-_name = _this select 0;
-_id = _this select 1;
+PARAMS_2(_name,_id);
 
 _this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPD) };
 /*

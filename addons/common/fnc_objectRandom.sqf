@@ -21,7 +21,7 @@ Author:
 SCRIPT(objectRandom);
 
 private["_o", "_r", "_v", "_s", "_a", "_b", "_c"];
-_o = _this select 0;
+PARAMS_1(_o);
 _r = 0;
 if!(isNull _o) then
 {

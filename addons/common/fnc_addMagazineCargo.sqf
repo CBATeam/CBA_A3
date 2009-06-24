@@ -29,7 +29,7 @@ SCRIPT(addMagazineCargo);
 #define __action addMagazineCargo
 
 private ["_unit", "_item"];
-_unit = _this select 0;
+PARAMS_1(_unit);
 if (typeName _unit != "OBJECT") exitWith
 {
 	#ifdef DEBUG

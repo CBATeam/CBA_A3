@@ -30,7 +30,7 @@ SCRIPT(removeWeapon);
 #define __ar (weapons _unit)
 
 private ["_unit", "_item"];
-_unit = _this select 0;
+PARAMS_1(_unit);
 if (typeName _unit != "OBJECT") exitWith
 {
 	#ifdef DEBUG

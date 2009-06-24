@@ -6,10 +6,9 @@ Internal Function: CBA_network_fnc_opc
 private["_name", "_id", "_uid", "_idx", "_dbg", "_handle", "_plName"];
 _dbg = 1;
 
-_obj = _this select 0;
-_name = _this select 1;
+PARAMS_2(_obj,_name);
 _id = 1;
-//_name = _this select 0;
+//PARAMS_1(_name);
 //_id = _this select 1;
 
 _plName = if (isNull player) then { "" } else { name player };
@@ -33,8 +32,7 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 */
 	_this spawn
 	{
-		_name = _this select 0;
-		_id = _this select 1;
+		PARAMS_2(_name,_id);
 		sleep 6;
 		//GVAR(CLSET) set [_this select 0, true];
 		{ _params call _x } forEach GVAR(OPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?

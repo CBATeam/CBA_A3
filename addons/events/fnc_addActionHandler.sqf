@@ -5,8 +5,7 @@ Function: CBA_fnc_addActionHandler
 SCRIPT(addActionHandler);
 
 private ["_key", "_code", "_ar", "_entry"];
-_key = _this select 0;
-_code = _this select 1;
+PARAMS_2(_key,_code);
 #ifdef DEBUG
 	[format["addHandler: %1", _this], QUOTE(ADDON)] call CBA_fnc_Debug;
 #endif

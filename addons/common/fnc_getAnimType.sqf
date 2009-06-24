@@ -27,8 +27,7 @@ SCRIPT(getAnimType);
 
 private ["_man", "_array", "_anim", "_type", "_weapon", "_pos"];
 
-_man = _this select 0;
-_array = _this select 1;
+PARAMS_2(_man,_array);
 _anim = "";
 _type = "";
 _weapon = format["%1", _man call CBA_fnc_SelectedWeapon];
