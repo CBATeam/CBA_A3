@@ -69,7 +69,7 @@ Group: Macros  {
 
 	Macro Index: Index
 		
-	File: script_macros_common (no auto-title, main_common\script_macros_common.hpp)
+	File: script_macros_common (no auto-title, main\script_macros_common.hpp)
 
 	}  # Group: Macros
    
