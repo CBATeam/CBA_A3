@@ -12,3 +12,5 @@ class CfgPatches
 		version = VERSION;
 	};
 };
+
+#include "CfgVehicles.hpp"
