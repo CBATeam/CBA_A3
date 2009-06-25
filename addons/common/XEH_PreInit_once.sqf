@@ -4,13 +4,16 @@ SCRIPT(XEH_PreInit_once);
 // Prepare BIS functions/MP and precompile all functions we already have registered with it:
 // NOTE: This functions module is local rather than global, but there is no reason that this should
 //       affect anything adversely. Well, unless someone foolishly makes use of that assumption...
-_functionsModule = "FunctionsManager" createVehicleLocal [0, 0];
-[_functionsModule] CALLF(init_functionsModule);
+if (isNil "BIS_functions_mainscope") then
+{
+	"FunctionsManager" createVehicleLocal [0, 0];
+};
+[BIS_functions_mainscope] CALLF(init_functionsModule);
 LOG("Initialising the Functions module early.");
 if (isnil "RE") then
 {
 	LOG("Initialising the MP module early.");
-	_this call compile preprocessFileLineNumbers ("\ca\Modules\MP\data\scripts\MPframework.sqf");
+	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
 
 ["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_Debug;
