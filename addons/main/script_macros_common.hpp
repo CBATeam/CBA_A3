@@ -591,15 +591,11 @@ Macros: IS_*
 */
 #define IS_ARRAY(VAR)    ((typeName (VAR)) == "ARRAY")
 #define IS_BOOL(VAR)     ((typeName (VAR)) == "BOOL")
-#define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
 #define IS_CODE(VAR)     ((typeName (VAR)) == "CODE")
 #define IS_CONFIG(VAR)   ((typeName (VAR)) == "CONFIG")
 #define IS_CONTROL(VAR)  ((typeName (VAR)) == "CONTROL")
 #define IS_DISPLAY(VAR)  ((typeName (VAR)) == "DISPLAY")
-#define IS_FUNCTION(VAR) IS_CODE(VAR)
 #define IS_GROUP(VAR)    ((typeName (VAR)) == "GROUP")
-#define IS_INTEGER(VAR)  if { IS_SCALAR(VAR) } then { (floor(VAR) == (VAR)) } else { false }
-#define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 #define IS_OBJECT(VAR)   ((typeName (VAR)) == "OBJECT")
 #define IS_SCALAR(VAR)   ((typeName (VAR)) == "SCALAR")
 #define IS_SCRIPT(VAR)   ((typeName (VAR)) == "SCRIPT")
@@ -607,6 +603,11 @@ Macros: IS_*
 #define IS_STRING(VAR)   ((typeName (VAR)) == "STRING")
 #define IS_TEXT(VAR)     ((typeName (VAR)) == "TEXT")
 #define IS_LOCATION(VAR) ((typeName (VAR)) == "LOCATION")
+
+#define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
+#define IS_FUNCTION(VAR) IS_CODE(VAR)
+#define IS_INTEGER(VAR)  if { IS_SCALAR(VAR) } then { (floor(VAR) == (VAR)) } else { false }
+#define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
 // Macro: SCRIPT(NAME)
 //	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
