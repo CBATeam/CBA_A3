@@ -1,3 +1,6 @@
+#ifndef CBA_MAIN_SCRIPT_COMPONENT_INCLUDED
+#define CBA_MAIN_SCRIPT_COMPONENT_INCLUDED
+
 #define COMPONENT main
 
 // Set a default debug mode for the component.
@@ -19,3 +22,5 @@
 #else
 	#define DEBUGSETTINGS DEFAULT_DEBUGSETTINGS
 #endif
+
+#endif // CBA_MAIN_SCRIPT_COMPONENT_INCLUDED

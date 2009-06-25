@@ -18,7 +18,7 @@
 
 #include "script_macros_common.hpp"
 
-#endif
+#endif // CBA_MAIN_SCRIPT_MACROS_INCLUDED
 
 // TODO: Evaluate location
 //#define DEBUG_arrays
