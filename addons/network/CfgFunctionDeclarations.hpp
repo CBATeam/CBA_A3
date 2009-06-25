@@ -3,9 +3,6 @@
 // DO NOT MANUALLY EDIT THIS FILE!
 // ----------------------------------------------------------------------------
 
-#ifndef FUNCTIONS_CONFIG
-#define FUNCTIONS_CONFIG
-
 class CfgFunctions
 {
 	class CBA
@@ -16,16 +13,14 @@ class CfgFunctions
 			class remoteSay
 			{
 				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_remoteSay.sqf";
+				file = "\x\cba\addons\network\fnc_remoteSay.sqf";
 			};
 			// CBA_fnc_remoteExecute
 			class remoteExecute
 			{
 				description = "<NO DESC>";
-				file = "\x\cba\Addons\network\fnc_remoteExecute.sqf";
+				file = "\x\cba\addons\network\fnc_remoteExecute.sqf";
 			};
 		};
 	};
 };
-
-#endif // FUNCTIONS_CONFIG

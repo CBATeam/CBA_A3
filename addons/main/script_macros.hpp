@@ -1,24 +1,20 @@
-#ifndef CBA_MAIN_SCRIPT_MACROS_INCLUDED
-#define CBA_MAIN_SCRIPT_MACROS_INCLUDED
-
 // COMPONET should be defined in the script_component.hpp and included BEFORE this hpp
-#define PREFIX CBA
+#define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define VERSION 0.01
 // MINIMAL required version for the Mod. Components can specify others..
 #define REQUIRED_VERSION 1.01
 
-// Set a default debug mode for the addon.
-#ifndef DEBUG_MODE_OFF
-#ifndef DEBUG_MODE_MINIMAL
-#undef DEBUG_MODE_NORMAL
-#define DEBUG_MODE_NORMAL
-#endif
-#endif
+// Set a default debug mode for the addon here (See documentation on how to default to each of the modes).
+// #ifndef DEBUG_MODE_OFF
+// #ifndef DEBUG_MODE_MINIMAL
+// #ifndef DEBUG_MODE_NORMAL
+// #define DEBUG_MODE_NORMAL
+// #endif
+// #endif
+// #endif
 
 #include "script_macros_common.hpp"
-
-#endif // CBA_MAIN_SCRIPT_MACROS_INCLUDED
 
 // TODO: Evaluate location
 //#define DEBUG_arrays

@@ -100,9 +100,6 @@ Dir.new(path).each do |addon|
 // DO NOT MANUALLY EDIT THIS FILE!
 // ----------------------------------------------------------------------------
 
-#ifndef FUNCTIONS_CONFIG
-#define FUNCTIONS_CONFIG
-
 class CfgFunctions
 {
 END_CONFIG
@@ -129,7 +126,7 @@ END_CONFIG
 					file.puts "\t};";
 				end
 				
-				file.puts "};\n\n#endif // FUNCTIONS_CONFIG";
+				file.puts "};";
 			end
 		end
 		
@@ -152,7 +149,7 @@ all_configs.to_a.sort { |a, b| a[0] <=> b[0] }.each do |tag, types|
 	types.to_a.sort { |a, b| a[0] <=> b[0] }.each do |type, functions|
 		menu += "\t\tGroup: #{type} {\n"
 		functions.to_a.sort { |a, b| a[0] <=> b[0] }.each do |function, data|
-			data[:path] =~ /\\Addons\\(.*)$/
+			data[:path] =~ /\\Addons\\(.*)$/i
 			folder = $1
 			data[:name] =~ /_fnc_(.*)$/
 			name = $1

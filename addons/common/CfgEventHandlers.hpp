@@ -1,8 +1,3 @@
-#ifndef CBA_COMMON_EVENT_HANDLERS_INCLUDED
-#define CBA_COMMON_EVENT_HANDLERS_INCLUDED
-
-#include "script_component.hpp"
-
 // TODO: Find better way to schedule which addon inits first, does not seem to be alphabetic, but when the addon loads (probably filename/prefixname/other loading order)
 class Extended_PreInit_EventHandlers
 {
@@ -20,5 +15,3 @@ class Extended_PostInit_EventHandlers
 		clientInit = QUOTE(CALLF(XEH_ClientInit_Once));
 	};
 };
-
-#endif

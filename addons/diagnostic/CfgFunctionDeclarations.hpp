@@ -3,35 +3,30 @@
 // DO NOT MANUALLY EDIT THIS FILE!
 // ----------------------------------------------------------------------------
 
-#ifndef FUNCTIONS_CONFIG
-#define FUNCTIONS_CONFIG
-
 class CfgFunctions
 {
 	class CBA
 	{
 		class Diagnostic
 		{
-			// CBA_fnc_error
-			class error
-			{
-				description = "Logs an error message to the RPT log.";
-				file = "\x\cba\Addons\diagnostic\fnc_error.sqf";
-			};
 			// CBA_fnc_log
 			class log
 			{
 				description = "Logs a message to the RPT log.";
-				file = "\x\cba\Addons\diagnostic\fnc_log.sqf";
+				file = "\x\cba\addons\diagnostic\fnc_log.sqf";
 			};
 			// CBA_fnc_debug
 			class debug
 			{
 				description = "General Purpose Debug Message Writer";
-				file = "\x\cba\Addons\diagnostic\fnc_debug.sqf";
+				file = "\x\cba\addons\diagnostic\fnc_debug.sqf";
+			};
+			// CBA_fnc_error
+			class error
+			{
+				description = "Logs an error message to the RPT log.";
+				file = "\x\cba\addons\diagnostic\fnc_error.sqf";
 			};
 		};
 	};
 };
-
-#endif // FUNCTIONS_CONFIG

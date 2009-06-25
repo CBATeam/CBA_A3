@@ -1,12 +1,13 @@
-#ifndef CBA_MAIN_CFG_VEHICLES_INCLUDED
-#define CBA_MAIN_CFG_VEHICLES_INCLUDED
-
 // Add a game logic which does nothing except requires the addon in the mission.
+
+#define VEHICLE_TYPE PREFIX##_logics
+#define LOGIC_CLASS ADDON##_main_require
+
 class CfgVehicleClasses
 {
-	class ADDON
+	class VEHICLE_TYPE
 	{
-		displayName = QUOTE(PREFIX);
+		displayName = "CBA";
 	};
 };
 
@@ -14,11 +15,9 @@ class CfgVehicles
 {
 	class Logic;
 	
-	class CBA_main_require : Logic
+	class LOGIC_CLASS : Logic
 	{
-		displayName = QUOTE(Require PREFIX);
-		vehicleClass = QUOTE(ADDON);
+		displayName = "Require CBA";
+		vehicleClass = VEHICLE_TYPE;
 	};
 };
-
-#endif // CBA_MAIN_CFG_VEHICLES_INCLUDED

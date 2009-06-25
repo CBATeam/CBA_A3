@@ -3,12 +3,6 @@
 	
 	Description:
 		A general set of useful macro functions for use by CBA itself or by any module that uses CBA.
-		
-	Usage:
-		These macros can be used in any SQF file by including this file at the top of the script:
-		(begin example)
-			#include "/x/cba/addons/main/script_macros_common.hpp"
-		(end)
 
 	Authors:
 		Sickboy <sb_at_dev-heaven.net> and Spooner
@@ -44,9 +38,6 @@
    - Also saw "Namespace" typeName, evaluate which we need :P
    - Single/Multi player gamelogics? (Incase of MP, you would want only 1 gamelogic per component, which is pv'ed from server, etc)
  */
- 
-#ifndef CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
-#define CBA_MAIN_SCRIPT_MACROS_COMMON_INCLUDED
 
 #ifndef MAINPREFIX
 	#define MAINPREFIX x
@@ -61,7 +52,7 @@
 #endif
 
 /*
-Macros: DEBUG_MODE_*
+UNDOCUMENTED Macros: DEBUG_MODE_*
 	Managing debugging based on debug level.
 
 	According to the *highest* level of debugging that has been defined *before* script_macros_common.hpp is included,
@@ -85,8 +76,9 @@ Examples:
 		#ifndef DEBUG_MODE_OFF
 		#ifndef DEBUG_MODE_MINIMAL
 		#ifndef DEBUG_MODE_NORMAL
-		#undef DEBUG_MODE_FULL
+		#ifndef DEBUG_MODE_FULL
 		#define DEBUG_MODE_FULL
+		#endif
 		#endif
 		#endif
 		#endif
@@ -97,8 +89,9 @@ Examples:
 		// Defaulting to normal debugging.
 		#ifndef DEBUG_MODE_OFF
 		#ifndef DEBUG_MODE_MINIMAL
-		#undef DEBUG_MODE_NORMAL
+		#ifndef DEBUG_MODE_NORMAL
 		#define DEBUG_MODE_NORMAL
+		#endif
 		#endif
 		#endif
 	(end)
@@ -106,50 +99,75 @@ Examples:
 	(begin example)
 		// Defaulting to minimal debugging.
 		#ifndef DEBUG_MODE_OFF
-		#undef DEBUG_MODE_MINIMAL
+		#ifndef DEBUG_MODE_MINIMAL
 		#define DEBUG_MODE_MINIMAL
+		#endif
 		#endif
 	(end)
 	
 	(begin example)
 		// Defaulting to no debugging.
-		#undef DEBUG_MODE_OFF
+		#ifndef DEBUG_MODE_OFF
 		#define DEBUG_MODE_OFF
+		#endif
 	(end)
 */
 
-#ifdef DEBUG_MODE_FULL
+//-------------------------------------------
+// FAILS on game load with error 6 (as above but with a setting defined)
+
+// #define DEBUG_MODE_FULL
+
+// #ifdef DEBUG_MODE_FULL
+// #define ERROR_ENABLED
+// #define WARNING_ENABLED
+// #define LOG_ENABLED
+// #define TRACE_ENABLED
+// #endif
+
+// #ifndef DEBUG_MODE_FULL
+// #ifdef DEBUG_MODE_NORMAL
+// #define ERROR_ENABLED
+// #define WARNING_ENABLED
+// #define LOG_ENABLED
+// #endif
+// #endif
+
+// #ifndef DEBUG_MODE_FULL
+// #ifndef DEBUG_MODE_NORMAL
+// #ifdef DEBUG_MODE_MINIMAL
+// #define ERROR_ENABLED
+// #endif
+// #endif
+// #endif
+
+//-------------------------------------------
+// Fails on mission-load with error 12
+// #define DEBUG_MODE_FULL
+
+// #ifdef DEBUG_MODE_FULL
+// #define ERROR_ENABLED
+// #define WARNING_ENABLED
+// #define LOG_ENABLED
+// #define TRACE_ENABLED
+// #else
+// #ifdef DEBUG_MODE_NORMAL
+// #define ERROR_ENABLED
+// #define WARNING_ENABLED
+// #define LOG_ENABLED
+// #else
+// #ifdef DEBUG_MODE_MINIMAL
+// #define ERROR_ENABLED
+// #endif
+// #endif
+// #endif
+
+//-------------------------------------------
+// Use a simple system since it seems erratic otherwise.
 #define ERROR_ENABLED
 #define WARNING_ENABLED
 #define LOG_ENABLED
-#define TRACE_ENABLED
-
-#undef DEBUG_MODE_NORMAL
-#undef DEBUG_MODE_MINIMAL
-#undef DEBUG_MODE_OFF
-#endif
-
-#ifdef DEBUG_MODE_NORMAL
-#define ERROR_ENABLED
-#define WARNING_ENABLED
-#define LOG_ENABLED
-#undef TRACE_ENABLED
-
-#undef DEBUG_MODE_FULL
-#undef DEBUG_MODE_MINIMAL
-#undef DEBUG_MODE_OFF
-#endif
-
-#ifdef DEBUG_MODE_MINIMAL
-#define ERROR_ENABLED
-#undef WARNING_ENABLED
-#undef LOG_ENABLED
-#undef TRACE_ENABLED
-
-#undef DEBUG_MODE_FULL
-#undef DEBUG_MODE_NORMAL
-#undef DEBUG_MODE_OFF
-#endif
+// #define TRACE_ENABLED
 
 // *************************************
 // Internal Functions
@@ -425,11 +443,11 @@ NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 //	Record a timestamped, non-critical error in the RPT log.
 //
 //	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
-// #ifdef WARNING_ENABLED
+#ifdef WARNING_ENABLED
 #define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
-// #else
-// #define WARNING(MESSAGE) /* disabled */
-// #endif
+#else
+#define WARNING(MESSAGE) /* disabled */
+#endif
 
 // Macro: ERROR(TITLE,MESSAGE)
 //	Record a timestamped, critical error in the RPT log. Newlines (\n) in the MESSAGE will be put on separate lines.
@@ -437,12 +455,12 @@ NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 //	Only run if <DEBUG_MODE_MINIMAL> or higher is defined.
 //
 //	TODO: Popup an error dialog & throw an exception.
-// #ifdef ERROR_ENABLED
+#ifdef ERROR_ENABLED
 #define ERROR(TITLE,MESSAGE) \
 	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
-// #else
-// #define ERROR(TITLE,MESSAGE) /* disabled */
-// #endif
+#else
+#define ERROR(TITLE,MESSAGE) /* disabled */
+#endif
 
 /*
 Macros: TRACE_*
@@ -613,6 +631,4 @@ Macros: IS_*
 //	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
 #define SCRIPT(NAME) \
 	scriptName 'PREFIX\COMPONENT\NAME'
-
-#endif
 
