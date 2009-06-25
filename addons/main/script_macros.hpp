@@ -2,7 +2,7 @@
 #define CBA_MAIN_SCRIPT_MACROS_INCLUDED
 
 // COMPONET should be defined in the script_component.hpp and included BEFORE this hpp
-#define PREFIX cba
+#define PREFIX CBA
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define VERSION 0.01
 // MINIMAL required version for the Mod. Components can specify others..
