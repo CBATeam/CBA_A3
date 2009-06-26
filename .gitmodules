@@ -1,0 +1,6 @@
+[submodule "C:/Etc/ArmaWork/cba/docs2"]
+	path = C:/Etc/ArmaWork/cba/docs2
+	url = git@git.dev-heaven.net:cba-doc
+[submodule "C:/Etc/ArmaWork/cba/docs/cba_function_library"]
+	path = C:/Etc/ArmaWork/cba/docs/cba_function_library
+	url = git@git.dev-heaven.net:cba-doc
