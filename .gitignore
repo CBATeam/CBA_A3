@@ -1,3 +1,4 @@
 *.pbo
 *.log
 /docs/cba_function_library/*
+/docs/cba_wiki/*
