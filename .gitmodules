@@ -1,0 +1,4 @@
+
+[submodule "docs/cba_function_library"]
+	path = docs/cba_function_library
+	url = git@git.dev-heaven.net:cba-doc
