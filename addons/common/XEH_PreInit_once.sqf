@@ -20,7 +20,7 @@ if (isnil "RE") then
 
 ADDON = false;
 
-ISNILMAIN(ActionList, []);
+ISNILMAIN(ActionList,[]);
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);

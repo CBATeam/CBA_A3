@@ -5,8 +5,6 @@
 ///////////////////////////////////////////////////////////
 private ["_actions", "_i", "_v"];
 
-CBA_ActionList = [];
-
 while { true } do
 {
 	_actions = []; _i = 0;
