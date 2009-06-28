@@ -30,14 +30,6 @@ _events = [
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
 
-if (SLX_XEH_MACHINE select 7) then
-{
-	[_unit, "Extended_InitPost_EventHandlers"] call SLX_XEH_init;
-} else {
-	// StartInit was not yet done, this unit is spawned in start of mission
-	SLX_XEH_objects = SLX_XEH_objects + [[_unit, "Extended_InitPost_EventHandlers"]];
-};
-
 // Iterate over the above event types and set up any extended event handlers
 // that might be defined.
 {

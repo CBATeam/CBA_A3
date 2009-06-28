@@ -28,7 +28,7 @@ class CfgAddons
 };
 
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then { call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'}; [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init"; \
+#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then { call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'}; _this call SLX_XEH_init;"; \
 fired = "_s = nearestObject[_this select 0,_this select 4]; [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_s]call((_this select 0)getVariable'Extended_FiredEH')"; \
 animChanged     = "_this call((_this select 0)getVariable'Extended_AnimChangedEH')"; \
 animDone        = "_this call((_this select 0)getVariable'Extended_AnimDoneEH')"; \
@@ -64,12 +64,8 @@ class Extended_PostInit_EventHandlers {};
 // Finally, "InitPost" handlers are run once on every unit in the mission.
 // Note the difference here - the PreInit and PostInit handlers above run once
 // per mission but InitPost handlers are called for each unit.
-class Extended_InitPost_EventHandlers {};
-
-// Extended EH classes, where new events are defined.
-class Extended_Init_EventHandlers
+class Extended_InitPost_EventHandlers
 {
-// Default Extended Event Handlers: Add extended event handlers to compile code.
 	class All
 	{
 		// Compile code for other EHs to run and put them in the setVariable.
@@ -78,9 +74,15 @@ class Extended_Init_EventHandlers
 		{
 			scope     = public;
 			onRespawn = true;   // Run this EH when a unit respawns
-			init      = "_this call SLX_XEH_initOthers";
+			init      = "[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_initPost;_this call SLX_XEH_initOthers";
 		};
 	};
+};
+
+// Extended EH classes, where new events are defined.
+class Extended_Init_EventHandlers
+{
+// Default Extended Event Handlers: Add extended event handlers to compile code.
     class AAV
     {
         class SLX_BIS_AAV_Init
