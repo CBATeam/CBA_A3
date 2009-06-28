@@ -2,6 +2,7 @@
 Function: CBA_fnc_remoteSay
 */
 #include "script_component.hpp"
+TRACE_1("",_this);
 GVAR(say) = _this;
 publicVariable QUOTE(GVAR(say));
 
