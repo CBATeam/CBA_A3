@@ -33,24 +33,6 @@ _pos = ["frofrog", "frog"] call CBA_fnc_find;
 ASSERT_OP(_pos,==,3,_fn);
 
 // ----------------------------------------------------------------------------
-// UNIT TESTS (stringJoin)
-_fn = "CBA_fnc_join";
-
-ASSERT_DEFINED(_fn,"");
-
-_str = [[], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"",_fn);
-
-_str = [[""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"",_fn);
-
-_str = [["", ""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"x",_fn);
-
-_str = [["a","b","c"], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"axbxc",_fn);
-
-// ----------------------------------------------------------------------------
 // UNIT TESTS (stringSplit)
 _fn = "CBA_fnc_split";
 ASSERT_DEFINED(_fn,"");
