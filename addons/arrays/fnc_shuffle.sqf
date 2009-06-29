@@ -5,38 +5,52 @@ Description:
 	Shuffles an array's contents into random order, returning a new array.
 	
 Parameters:
-	Array of values.
+	_array - Array of values to shuffle [Array, containing anything except nil]
 	
 Returns:
 	New array containing shuffled values from original array [Array]
 
-Examples:
+Example:
 	(begin example)
-		[1, 2, 3, 4, 5] call CBA_fnc_shuffle;
+		_result = [[1, 2, 3, 4, 5]] call CBA_fnc_shuffle;
+		// _result could be [4, 2, 5, 1, 3]
 	(end)
 	
-Bugs:
-	* This will sort any array, unless it contains an element which is "".
-	* Expects the array to be sent *as* the parameter list, not as a parameter.
+TODO:
+	Allow shuffling of elements in-place, using the original array.
 
 Author:
 	toadlife (version 1.01) http://toadlife.net
+	(rewritten by Spooner)
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 SCRIPT(shuffle);
 
-private ["_newarray", "_temparray", "_acount", "_rand", "_moveitem"];
-_newarray = [];
-_temparray = [] + _this;
-while { count _temparray > 0 } do
+private ["_shuffledArray", "_tempArray", "_indexToRemove"];
+_shuffledArray = [];
+
+// Support the deprecated parameter style: [1, 2, 3, 4, 5] call CBA_fnc_shuffle.
+_tempArray = if ((count _this) != 1) then
 {
-	_acount = (count _temparray);
-	_rand = random _acount;
-	_rand = _rand - (_rand mod 1);
-	_moveitem = _temparray select _rand;
-	_newarray = _newarray + [_moveitem];
-	_temparray set [_rand, ""];
-	_temparray = _temparray - [""];
+	WARNING("CBA_fnc_shuffle requires an array as first parameter, not just a direct array: " + str _this);
+	[] + _this;
+}
+else{if (IS_ARRAY(_this select 0)) then
+{
+	[] + (_this select 0); // Correct params passed.
+}
+else
+{
+	WARNING("CBA_fnc_shuffle requires an array as first parameter, not just a direct array: " + str _this);
+	[] + _this;
+}; };
+
+for "_size" from (count _tempArray) to 1 step -1 do
+{
+	_indexToRemove = floor random _size;
+	PUSH(_shuffledArray,_tempArray select _indexToRemove);
+	_tempArray = [_tempArray, _indexToRemove] call BIS_fnc_removeIndex;
 };
-_newarray
+
+_shuffledArray

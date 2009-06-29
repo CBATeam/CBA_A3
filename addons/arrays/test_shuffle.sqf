@@ -14,9 +14,25 @@ ASSERT_DEFINED(_fn,"");
 LOG("Testing " + _fn);
 
 _original = [1, 2, 3];
-_result = [_original, { _x + 1 }] call CBA_fnc_filter;
-_expected = [2, 3, 4];
-ASSERT_OP(str _result,==,str _expected,_fn);
-ASSERT_OP(str _original,!=,str _expected,_fn);
+_result = [_original] call CBA_fnc_shuffle;
+ASSERT_OP(count _result,==,count _original,_fn);
+
+{
+	ASSERT_OP(_x,in,_original,_fn);
+} forEach _result;
+
+// Test depecated version.
+_original = [1, 2, 3];
+_result = _original call CBA_fnc_shuffle;
+ASSERT_OP(count _result,==,count _original,_fn);
+
+{
+	ASSERT_OP(_x,in,_original,_fn);
+} forEach _result;
+
+// Test depecated version.
+_original = [];
+_result = _original call CBA_fnc_shuffle;
+ASSERT_OP(count _result,==,count _original,_fn);
 
 nil;

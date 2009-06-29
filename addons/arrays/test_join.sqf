@@ -13,19 +13,28 @@ ASSERT_DEFINED(_fn,"");
 
 LOG("Testing " + _fn);
 
-_str = [[], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"",_fn);
+_result = [[], "x"] call CBA_fnc_join;
+_expected = "";
+ASSERT_OP(_result,==,_expected,_fn);
 
-_str = [[""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"",_fn);
+_result = [[""], "x"] call CBA_fnc_join;
+_expected = "";
+ASSERT_OP(_result,==,_expected,_fn);
 
-_str = [["frog"], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"frog",_fn);
+_result = [["frog"], "x"] call CBA_fnc_join;
+_expected = "frog";
+ASSERT_OP(_result,==,_expected,_fn);
 
-_str = [["", ""], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"x",_fn);
+_result = [["", ""], "x"] call CBA_fnc_join;
+_expected = "x";
+ASSERT_OP(_result,==,_expected,_fn);
 
-_str = [["a","b","c"], "x"] call CBA_fnc_join;
-ASSERT_OP(_str,==,"axbxc",_fn);
+_result = [["a","b","c"], "x"] call CBA_fnc_join;
+_expected = "axbxc";
+ASSERT_OP(_result,==,_expected,_fn);
+
+_result = [["a",1,[objNull]], "x^x"] call CBA_fnc_join;
+_expected = "ax^x1x^x[<Null-Object>]";
+ASSERT_OP(_result,==,_expected,_fn);
 
 nil;

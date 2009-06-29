@@ -2,51 +2,52 @@
 
 #include "script_component.hpp"
 
-SCRIPT(arrays_test);
+SCRIPT(test_filter);
 
 // ----------------------------------------------------------------------------
 
-private ["_pos", "_str", "_array", "_expected", "_result", "_fn"];
+private ["_original", "_expected", "_result", "_fn"];
 
-LOG('----- STARTED PREFIX\COMPONENT\arrays TESTS -----');
-
-// ----------------------------------------------------------------------------
-// UNIT TESTS (filter)
 _fn = "CBA_fnc_filter";
 ASSERT_DEFINED(_fn,"");
 
+LOG("Testing " + _fn);
+
+// Filter to new array.
+_original = [];
 _result = [[], { _x * 10 }] call CBA_fnc_filter;
 _expected = [];
 ASSERT_OP(str _result,==,str _expected,_fn);
+ASSERT_OP(str _original,==,str _expected,_fn);
 
-_result = [[1, 2, 3], { _x + 1 }] call CBA_fnc_filter;
+_original = [1, 2, 3];
+_result = [_original, { _x + 1 }] call CBA_fnc_filter;
 _expected = [2, 3, 4];
 ASSERT_OP(str _result,==,str _expected,_fn);
+ASSERT_OP(str _original,!=,str _expected,_fn);
 
-_result = [[1, 2, 3], { _x }] call CBA_fnc_filter;
+_original = [1, 2, 3];
+_result = [_original, { _x }, false] call CBA_fnc_filter;
 _expected = [1, 2, 3];
 ASSERT_OP(str _result,==,str _expected,_fn);
 
-// ----------------------------------------------------------------------------
-// UNIT TESTS (inject)
-_fn = "CBA_fnc_inject";
-ASSERT_DEFINED(_fn,"");
-  
-_result = [[], "", { (_x select 0) + str (_x select 1) }] call CBA_fnc_inject;
-_expected = "";
-ASSERT_OP(_result,==,_expected,_fn);
+// Filter in place.
+_original = [];
+_result = [_original, { _x * 10 }, true] call CBA_fnc_filter;
+_expected = [];
+ASSERT_OP(str _original,==,str _expected,_fn);
+ASSERT_OP(str _result,==,str _expected,_fn);
 
-_result = [[1, 2, 3], "", { (_x select 0) + str (_x select 1) }] call CBA_fnc_inject;
-_expected = "123";
-ASSERT_OP(_result,==,_expected,_fn);
+_original = [1, 2, 3];
+_result = [_original, { _x + 1 }, true] call CBA_fnc_filter;
+_expected = [2, 3, 4];
+ASSERT_OP(str _original,==,str _expected,_fn);
+ASSERT_OP(str _result,==,str _expected,_fn);
 
-_result = [[1, 2, 3], " frogs", { (str (_x select 1)) + (_x select 0) }] call CBA_fnc_inject;
-_expected = "321 frogs";
-ASSERT_OP(_result,==,_expected,_fn);
+_original = [1, 2, 3];
+_result = [_original, { _x }, true] call CBA_fnc_filter;
+_expected = [1, 2, 3];
+ASSERT_OP(str _original,==,str _expected,_fn);
+ASSERT_OP(str _result,==,str _expected,_fn);
 
-_result = [[1, 2, 3], 0, { (_x select 0) + (_x select 1) }] call CBA_fnc_inject;
-_expected = 6;
-ASSERT_OP(_result,==,_expected,_fn);
-
-// -----------------------------------------------------------------------------
-LOG('----- COMPLETED PREFIX\COMPONENT\arrays TESTS -----');
+nil;
