@@ -15,7 +15,7 @@ Returns:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "strings.inc.sqf"
+#include "\x\cba\addons\strings\strings.inc.sqf"
 
 #define YAML_MODE_STRING 0
 #define YAML_MODE_ASSOC_KEY 1
@@ -352,9 +352,12 @@ _lineBreaks = [ASCII_NEWLINE, ASCII_CR];
 //TRACE_2("Parsing YAML file",_file,count _yaml);
 
 // Ensure input ends with a newline.
-if (not ((_yaml select ((count _yaml) - 1)) in _lineBreaks)) then
+if (count _yaml > 0) then
 {
-	PUSH(_yaml,ASCII_NEWLINE);
+	if (not ((_yaml select ((count _yaml) - 1)) in _lineBreaks)) then
+	{
+		PUSH(_yaml,ASCII_NEWLINE);
+	};
 };
 
 _pos = -1;

@@ -1,14 +1,14 @@
-// -----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 #include "script_component.hpp"
 
-SCRIPT(hashes_test);
+SCRIPT(test_hashes);
 
 // ----------------------------------------------------------------------------
 
-LOG('----- STARTED PREFIX\COMPONENT\hash TESTS -----');
+private ["_hash", "_expected", "_result"];
 
-private ["_hash", "_result"];
+LOG("Testing Hashes");
 
 // UNIT TESTS (initStrings.sqf - stringJoin)
 ASSERT_DEFINED("CBA_fnc_hashCreate","");
@@ -81,5 +81,4 @@ ASSERT_OP(_result,==,1,"hashSet/Get");
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 ASSERT_TRUE(isNil "_result","hashSet/Get");
 
-// -----------------------------------------------------------------------------
-LOG('----- COMPLETED PREFIX\COMPONENT\hash TESTS -----');
+nil;

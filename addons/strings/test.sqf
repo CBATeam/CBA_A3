@@ -5,16 +5,16 @@
 
 #include "script_component.hpp"
 
-#define TESTS ["filter", "inject", "join", "shuffle"]
+#define TESTS ["strings"]
 
-SCRIPT(test-arrays);
+SCRIPT(test-strings);
 
 // ----------------------------------------------------------------------------
 
-LOG("=== Testing Arrays ===");
+LOG("=== Testing Strings ===");
 
 {
-	call compile preprocessFileLineNumbers format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+	call compile preprocessFileLineNumbers format ["\x\cba\addons\strings\test_%1.sqf", _x];
 } forEach TESTS;
 
 nil;

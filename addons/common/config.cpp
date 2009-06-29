@@ -12,4 +12,4 @@ class CfgPatches
 };
 #include "CfgEventHandlers.hpp"
 
-#include "CfgFunctionDeclarations.hpp"
+#include "CfgFunctions.hpp"

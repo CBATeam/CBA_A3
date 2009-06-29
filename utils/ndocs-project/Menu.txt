@@ -67,41 +67,6 @@ Group: Functions  {
          File: shuffle  (no auto-title, arrays\fnc_shuffle.sqf)
          }  # Group: Arrays
 
-      Group: Common  {
-
-         File: addMagazine  (no auto-title, common\fnc_addMagazine.sqf)
-         File: addMagazineCargo  (no auto-title, common\fnc_addMagazineCargo.sqf)
-         File: addMagazineVerified  (no auto-title, common\fnc_addMagazineVerified.sqf)
-         File: addWeapon  (no auto-title, common\fnc_addWeapon.sqf)
-         File: addWeaponCargo  (no auto-title, common\fnc_addWeaponCargo.sqf)
-         File: createMarker  (no auto-title, common\fnc_createMarker.sqf)
-         File: createTrigger  (no auto-title, common\fnc_createTrigger.sqf)
-         File: defaultParam  (no auto-title, common\fnc_defaultParam.sqf)
-         File: determineMuzzles  (no auto-title, common\fnc_determineMuzzles.sqf)
-         File: dropMagazine  (no auto-title, common\fnc_dropMagazine.sqf)
-         File: dropWeapon  (no auto-title, common\fnc_dropWeapon.sqf)
-         File: getAnimType  (no auto-title, common\fnc_getAnimType.sqf)
-         File: getArg  (no auto-title, common\fnc_getArg.sqf)
-         File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
-         File: getGroupIndex  (no auto-title, common\fnc_getGroupIndex.sqf)
-         File: getPistol  (no auto-title, common\fnc_getPistol.sqf)
-         File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
-         File: getUnitDeathAnim  (no auto-title, common\fnc_getUnitDeathAnim.sqf)
-         File: headDir  (no auto-title, common\fnc_headDir.sqf)
-         File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
-         File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
-         File: nearPlayer  (no auto-title, common\fnc_nearPlayer.sqf)
-         File: objectRandom  (no auto-title, common\fnc_objectRandom.sqf)
-         File: parseYAML  (no auto-title, common\fnc_parseYAML.sqf)
-         File: players  (no auto-title, common\fnc_players.sqf)
-         File: realHeight  (no auto-title, common\fnc_realHeight.sqf)
-         File: removeMagazine  (no auto-title, common\fnc_removeMagazine.sqf)
-         File: removeWeapon  (no auto-title, common\fnc_removeWeapon.sqf)
-         File: selectWeapon  (no auto-title, common\fnc_selectWeapon.sqf)
-         File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
-         File: testMain  (no auto-title, common\fnc_testMain.sqf)
-         }  # Group: Common
-
       Group: Diagnostic  {
 
          File: debug  (no auto-title, diagnostic\fnc_debug.sqf)
@@ -135,6 +100,41 @@ Group: Functions  {
          File: hashSet  (no auto-title, hashes\fnc_hashSet.sqf)
          File: isHash  (no auto-title, hashes\fnc_isHash.sqf)
          }  # Group: Hashes
+
+      Group: Misc  {
+
+         File: addMagazine  (no auto-title, common\fnc_addMagazine.sqf)
+         File: addMagazineCargo  (no auto-title, common\fnc_addMagazineCargo.sqf)
+         File: addMagazineVerified  (no auto-title, common\fnc_addMagazineVerified.sqf)
+         File: addWeapon  (no auto-title, common\fnc_addWeapon.sqf)
+         File: addWeaponCargo  (no auto-title, common\fnc_addWeaponCargo.sqf)
+         File: createMarker  (no auto-title, common\fnc_createMarker.sqf)
+         File: createTrigger  (no auto-title, common\fnc_createTrigger.sqf)
+         File: defaultParam  (no auto-title, common\fnc_defaultParam.sqf)
+         File: determineMuzzles  (no auto-title, common\fnc_determineMuzzles.sqf)
+         File: dropMagazine  (no auto-title, common\fnc_dropMagazine.sqf)
+         File: dropWeapon  (no auto-title, common\fnc_dropWeapon.sqf)
+         File: getAnimType  (no auto-title, common\fnc_getAnimType.sqf)
+         File: getArg  (no auto-title, common\fnc_getArg.sqf)
+         File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
+         File: getGroupIndex  (no auto-title, common\fnc_getGroupIndex.sqf)
+         File: getPistol  (no auto-title, common\fnc_getPistol.sqf)
+         File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
+         File: getUnitDeathAnim  (no auto-title, common\fnc_getUnitDeathAnim.sqf)
+         File: headDir  (no auto-title, common\fnc_headDir.sqf)
+         File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
+         File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
+         File: nearPlayer  (no auto-title, common\fnc_nearPlayer.sqf)
+         File: objectRandom  (no auto-title, common\fnc_objectRandom.sqf)
+         File: parseYAML  (no auto-title, common\fnc_parseYAML.sqf)
+         File: players  (no auto-title, common\fnc_players.sqf)
+         File: realHeight  (no auto-title, common\fnc_realHeight.sqf)
+         File: removeMagazine  (no auto-title, common\fnc_removeMagazine.sqf)
+         File: removeWeapon  (no auto-title, common\fnc_removeWeapon.sqf)
+         File: selectWeapon  (no auto-title, common\fnc_selectWeapon.sqf)
+         File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
+         File: testMain  (no auto-title, common\fnc_testMain.sqf)
+         }  # Group: Misc
 
       Group: Network  {
 

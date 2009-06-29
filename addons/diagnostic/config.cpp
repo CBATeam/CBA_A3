@@ -10,4 +10,4 @@ class CfgPatches
 	};
 };
 
-#include "CfgFunctionDeclarations.hpp"
+#include "CfgFunctions.hpp"

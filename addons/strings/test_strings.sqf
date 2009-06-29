@@ -2,13 +2,13 @@
 
 #include "script_component.hpp"
 
-SCRIPT(strings_test);
+SCRIPT(test_strings);
 
 // ----------------------------------------------------------------------------
 
 private ["_pos", "_str", "_array", "_expected", "_result", "_fn"];
 
-LOG('----- STARTED PREFIX\COMPONENT\strings TESTS -----');
+LOG('Testing Strings');
 
 // UNIT TESTS (stringFind)
 _fn = "CBA_fnc_find";
@@ -260,5 +260,4 @@ _result = ["aardwolf", "aardvark"] call CBA_fnc_compare;
 ASSERT_OP(_result, ==, +1, _fn);
 */
 
-// -----------------------------------------------------------------------------
-LOG('----- COMPLETED PREFIX\COMPONENT\strings TESTS -----');
+nil;
