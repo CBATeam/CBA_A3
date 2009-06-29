@@ -371,28 +371,28 @@ Example:
 	(end)
 */
 #define PARAMS_1(A) \
-	private '##A'; A = _this select 0
+	private #A; A = _this select 0
 	
 #define PARAMS_2(A,B) \
-	private ['##A', '##B']; EXPLODE_2(_this,A,B)
+	private [#A, #B]; EXPLODE_2(_this,A,B)
 	
 #define PARAMS_3(A,B,C) \
-	private ['##A', '##B', '##C']; EXPLODE_3(_this,A,B,C)
+	private [#A, #B, #C]; EXPLODE_3(_this,A,B,C)
 	
 #define PARAMS_4(A,B,C,D) \
-	private ['##A', '##B', '##C', '##D']; EXPLODE_4(_this,A,B,C,D)
+	private [#A, #B, #C, #D]; EXPLODE_4(_this,A,B,C,D)
 	
 #define PARAMS_5(A,B,C,D,E) \
-	private ['##A', '##B', '##C', '##D', '##E']; EXPLODE_5(_this,A,B,C,D,E)
+	private [#A, #B, #C, #D, #E]; EXPLODE_5(_this,A,B,C,D,E)
 	
 #define PARAMS_6(A,B,C,D,E,F) \
-	private ['##A', '##B', '##C', '##D', '##E', '##F']; EXPLODE_6(_this,A,B,C,D,E,F)
+	private [#A, #B, #C, #D, #E, #F]; EXPLODE_6(_this,A,B,C,D,E,F)
 	
 #define PARAMS_7(A,B,C,D,E,F,G) \
-	private ['##A', '##B', '##C', '##D', '##E', '##F', '##G']; EXPLODE_7(_this,A,B,C,D,E,F,G)
+	private [#A, #B, #C, #D, #E, #F, #G]; EXPLODE_7(_this,A,B,C,D,E,F,G)
 	
 #define PARAMS_8(A,B,C,D,E,F,G,H) \
-	private ['##A', '##B', '##C', '##D', '##E', '##F', '##G', '##H']; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
+	private [#A, #B, #C, #D, #E, #F, #G, #H]; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
 	
 /*
 Macro: DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) 
@@ -418,7 +418,7 @@ Example:
 	(end)
 */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
-private '##NAME'; \
+private #NAME; \
 NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 
 // === Debugging ===
@@ -484,28 +484,28 @@ Example:
 */
 #ifdef TRACE_ENABLED
 #define TRACE_1(MESSAGE,A) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2', MESSAGE,str (A)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2', MESSAGE,str (A)]] call CBA_fnc_log
 	
 #define TRACE_2(MESSAGE,A,B) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3', MESSAGE,str (A),str (B)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', MESSAGE,str (A),str (B)]] call CBA_fnc_log
 	
 #define TRACE_3(MESSAGE,A,B,C) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4', MESSAGE,str (A),str (B),str (C)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', MESSAGE,str (A),str (B),str (C)]] call CBA_fnc_log
 	
 #define TRACE_4(MESSAGE,A,B,C,D) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5', MESSAGE,str (A),str (B),str (C),str (D)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', MESSAGE,str (A),str (B),str (C),str (D)]] call CBA_fnc_log
 	
 #define TRACE_5(MESSAGE,A,B,C,D,E) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6', MESSAGE,str (A),str (B),str (C),str (D),str (E)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', MESSAGE,str (A),str (B),str (C),str (D),str (E)]] call CBA_fnc_log
 	
 #define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##F=%7', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F)]] call CBA_fnc_log
 	
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##=%7, ##G=%8', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G)]] call CBA_fnc_log
 	
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-	[THIS_FILE_, __LINE__, format ['%1: ##A=%2, ##B=%3, ##C=%4, ##D=%5, ##E=%6, ##F=%7, ##G=%8, ##H=%9', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G),str (H)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G),str (H)]] call CBA_fnc_log
 
 #else
 
@@ -535,7 +535,7 @@ Example:
 #define ASSERT_TRUE(CONDITION,MESSAGE) \
 if (not (CONDITION)) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##CONDITION) failed!\n\n' + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
 }
 
 /*
@@ -550,7 +550,7 @@ Example:
 #define ASSERT_FALSE(CONDITION,MESSAGE) \
 if (CONDITION) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (##CONDITION)) failed!\n\n' + (MESSAGE)) \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
 }
 
 /*
@@ -565,7 +565,7 @@ Example:
 #define ASSERT_OP(A,OPERATOR,B,MESSAGE) \
 if (not ((A) OPERATOR (B))) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##A ##OPERATOR ##B) failed!\n' + '##A: ' + (str (A)) + '\n' + '##B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (A OPERATOR B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
 }
 
 /*
@@ -581,7 +581,7 @@ Examples:
 #define ASSERT_DEFINED(VAR,MESSAGE) \
 if (isNil VAR) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (##VAR is defined) failed!\n\n' + (MESSAGE)); \
+	ERROR(ASSERTION_FAILED_TITLE,'Assertion (VAR is defined) failed!\n\n' + (MESSAGE)); \
 }
 
 /*
