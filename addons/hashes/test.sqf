@@ -5,7 +5,7 @@
 
 #include "script_component.hpp"
 
-#define TESTS ["hashes"]
+#define TESTS ["hashEachPair", "hashes"]
 
 SCRIPT(test-hashes);
 

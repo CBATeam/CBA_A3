@@ -30,7 +30,7 @@ class CfgFunctions
 			// CBA_fnc_inject
 			class inject
 			{
-				description = "Accumulates a value by passing elements through a function.";
+				description = "Accumulates a value by passing elements of an array ""through"" a function.";
 				file = "\x\cba\addons\arrays\fnc_inject.sqf";
 			};
 		};

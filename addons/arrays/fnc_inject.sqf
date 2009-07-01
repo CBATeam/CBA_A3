@@ -2,27 +2,30 @@
 Function: CBA_fnc_inject
 
 Description:
-	Accumulates a value by passing elements through a function.
+	Accumulates a value by passing elements of an array "through" a function.
 
-	Data passed to the code on each iteration via _x: [_memoryValue, _element]
+	Data passed to the function on each iteration,
+	* _accumulator - Value passed from last iteration, set to _initial for the
+		first iteration.
+	* _x - Element of _array.
 	
 Parameters:
 	_array - Array of key-value pairs to create Hash from [Array]
-	_seed - Initial value to pass into the function [Any]
+	_initial - Initial value to pass into the function as _accumulator [Any]
 	_function - Code to pass values to [Function]
 
 Returns:
-	Last returned value [Any]
+	Accumlated value [Any]
 	
 Examples:
 	(begin example)
-		_result = [[1, 2, 3], "", { (_x select 0) + str (_x select 1) }] call CBA_fnc_inject;
+		_result = [[1, 2, 3], "", { _accumulator + (str _x) }] call CBA_fnc_inject;
 		// _result ==> "123"
 
-		_result = [[1, 2, 3], " frogs", { (str (_x select 1)) + (_x select 0) }] call CBA_fnc_inject;
+		_result = [[1, 2, 3], " frogs", { (str _x) + _accumulator }] call CBA_fnc_inject;
 		// _result ==> "321 frogs"
 
-		_result = [[1, 2, 3], 0, { (_x select 0) + (_x select 1) }] call CBA_fnc_inject;
+		_result = [[1, 2, 3], 0, { _accumulator + _x }] call CBA_fnc_inject;
 		// _result ==> 6
 	(end)
 	
@@ -36,27 +39,25 @@ SCRIPT(inject);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_3(_array,_seed,_function);
+PARAMS_3(_array,_initial,_function);
 
-private ["_result", "_x"]; 
+private "_accumulator";
 
-if (not isNil "_seed") then
+if (not isNil "_initial") then
 {
-	_result = _seed;
+	_accumulator = _initial;
 };
 
-for "_i" from 0 to ((count _array) - 1) do
-{
-	_x = if (isNil "_result") then
-	{
-		[nil, _array select _i];
-	}
-	else
-	{
-		[_result, _array select _i];
-	};
-	
-	_result = call _function;
-};
+{	
+	_accumulator = call _function;
+} forEach _array;
 
-_result;
+// Return.
+if (isNil "_accumulator") then
+{
+	nil;
+}
+else
+{
+	_accumulator;
+};

@@ -4,8 +4,9 @@ Function: CBA_fnc_filter
 Description:
 	Filter each element of an array via a function.
 	
-	Current value of element passed to the _filter on each iteration via _x.
-
+	Data passed to the function on each iteration,
+	* _x - Element of _array.
+	
 Parameters:
 	_array - Array of key-value pairs to create Hash from [Array, defaults to []]
 	_filter - Function to filter each element [Function]
