@@ -4,6 +4,13 @@ Function: CBA_fnc_hashCreate
 Description:
 	Check if a Hash has a value defined for a key.
 
+Parameters:
+	_array - Array of key-value pairs to create Hash from [Array, defaults to []]
+	_defaultValue - Hash to look for key in [Any, defaults to nil]
+
+Returns:
+	Newly created Hash [Hash]
+	
 Examples:
 (begin code)
 	_emptyHash = [] call hashCreate;
@@ -14,13 +21,9 @@ Examples:
 	[_animalCounts, "frog"] call CBA_fnc_hashGet; // => 12
 	[_animalCounts, "monkey"] call CBA_fnc_hashGet; // => 0
 (end code)
- 
-Parameters:
-	_array - Array of key-value pairs to create Hash from [Array, defaults to []]
-	_defaultValue - Hash to look for key in [Any, defaults to nil]
-
-Returns:
-	Newly created Hash [Hash]
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

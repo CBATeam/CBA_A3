@@ -11,6 +11,8 @@ Parameters:
 Returns:
 	Index of the event handler (can be used with <CBA_fnc_removeEventHandler>).
 
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

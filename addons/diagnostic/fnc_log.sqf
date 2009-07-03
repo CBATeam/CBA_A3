@@ -4,10 +4,20 @@ Function: CBA_fnc_log
 Description:
 	Logs a message to the RPT log.
 	
+	Should not be used directly, but rather via macro (<LOG(MESSAGE)>).
+	
+	This function is unaffected by the debug level (<DEBUG_MODE_*>).
+	
 Parameters:
 	_file - [String]
 	_lineNum - [Number]
 	_message - Message [String]
+	
+Returns:
+	nil
+	
+Author:
+	Spooner
 -----------------------------------------------------------------------------*/
 
 #include "script_component.hpp"

@@ -4,6 +4,8 @@ Function: CBA_fnc_hashSet
 Description:
 	Sets a value for a given key in a Hash.
 
+	See <CBA_fnc_hashCreate>.
+
 Parameters:
 	_hash - Hash to use [Hash]
 	_key - Key to set in Hash [Any]
@@ -11,6 +13,9 @@ Parameters:
 
 Returns:
 	The hash [Hash]
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

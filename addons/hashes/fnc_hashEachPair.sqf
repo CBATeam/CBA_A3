@@ -7,10 +7,15 @@ Description:
 	Data passed to the function on each iteration,
 	* _key - Key from the Hash.
 	* _value - The value from the Hash corresponding to _key.
+	
+	See <CBA_fnc_hashCreate>.
 
 Parameters:
 	_hash - Hash to iterate [Array which is a Hash structure]
 	_code - Function to call with each pair [Any]
+	
+Returns:
+	nil
 	
 Example:
 	(begin example)
@@ -20,9 +25,6 @@ Example:
 
 	  [_hash, _dumpHash] call CBA_fnc_hashEachPair;
 	(end)
-
-Returns:
-	nil
 	
 Author:
 	Spooner

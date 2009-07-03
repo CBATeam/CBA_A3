@@ -8,8 +8,19 @@ Parameters:
 	_string - String to capitalize [String]
 
 Returns:
-	Capitalized string.
+	Capitalized string [String].
+	
+Examples:
+	(begin example)
+		_result = ["FISH"] call CBA_fnc_capitalize;
+		// _result => "Fish"
+		
+		_result = ["frog-headed fish"] call CBA_fnc_capitalize;
+		// _result => "Frog-headed fish"
+	(end)
 
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

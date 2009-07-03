@@ -4,11 +4,20 @@ Function: CBA_fnc_error
 Description:
 	Logs an error message to the RPT log.
 	
+	Should not be used directly, but rather via macros (<ERROR(MESSAGE)>,
+		<ERROR_WITH_TITLE(TITLE,MESSAGE)> or the <Assertions>).
+	
 Parameters:
 	_file - [String]
 	_lineNum - [Number]
 	_title - Title of the error [String]
 	_message - Error message [String, which may contain \n]
+	
+Returns:
+	nil
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

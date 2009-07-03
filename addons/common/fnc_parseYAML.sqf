@@ -11,7 +11,9 @@ Parameters:
 
 Returns:
 	Data structure taken from the file, or nil if file had syntax errors.
-
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

@@ -3,6 +3,8 @@ Function: CBA_fnc_hashGet
 
 Description:
 	Gets a value for a given key from a Hash.
+	
+	See <CBA_fnc_hashCreate>.
 
 Parameters:
 	_hash - Hash to look for key in [Array which is a Hash structure]
@@ -10,6 +12,9 @@ Parameters:
 
 Returns:
 	Value associated with the key, or Hash default value if key missing [Any]
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

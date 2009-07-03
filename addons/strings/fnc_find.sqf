@@ -11,8 +11,22 @@ Parameters:
     search at [Number: 0+, defaults to 0].
 
 Returns:
-	First position of string
+	First position of string. Returns -1 if not found [Number]
+	
+Examples:
+	(begin example)
+		_result = ["frog-headed fish", "f"] call CBA_fnc_find;
+		// _result => 0
+		
+		_result = ["frog-headed fish", "f", 5] call CBA_fnc_find;
+		// _result => 12
+		
+		_result = ["frog-headed fish", "fish"] call CBA_fnc_find;
+		// _result => 12
+	(end)
 
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

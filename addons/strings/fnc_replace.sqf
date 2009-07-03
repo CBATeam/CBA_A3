@@ -4,12 +4,6 @@ Function: CBA_fnc_replace
 Description:
 	Replaces substrings within a string. Case-dependent.
 
-Example:
-(begin code)
-	_str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
-	// => "Fish pig cheese pimage"
-(end code)
-
 Parameters:
 	_string - String to make replacement in [String]
 	_pattern - Substring to replace [String]
@@ -18,6 +12,14 @@ Parameters:
 Returns:
 	String with replacements made [String]
 
+Example:
+	(begin example)
+		_str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
+		// => "Fish pig cheese pimage"
+	(end)
+
+Author:
+	Spooner
 --------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

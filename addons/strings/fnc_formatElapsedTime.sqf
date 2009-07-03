@@ -13,6 +13,8 @@ Parameters:
 Returns:
 	Formatted time [String]
 	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

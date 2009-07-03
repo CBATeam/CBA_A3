@@ -11,6 +11,8 @@ Parameters:
 Returns:
 	nil
 
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

@@ -3,6 +3,8 @@ Function: CBA_fnc_leftTrim
 
 Description:
 	Trims white-space (space, tab, newline) from the left end of a string.
+	
+	See <CBA_fnc_rightTrim> and <CBA_fnc_trim>.
 
 Parameters:
 	_string - String to trim [String]
@@ -10,6 +12,14 @@ Parameters:
 Returns:
 	Trimmed string [String]
 
+Example:
+	(begin example)
+		_result = [" frogs are fishy   "] call CBA_fnc_leftTrim;
+		// _result => "frogs are fishy   "
+	(end)
+	
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

@@ -15,6 +15,8 @@ TODO:
 	Use Hash to store handlers as a sparse array, to save on lots of empty
 	elements in the array if lots of removes are made.
 
+Author:
+	Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
