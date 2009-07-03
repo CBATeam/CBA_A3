@@ -99,7 +99,7 @@ Examples:
 		#include "\x\cba\addons\main\script_macros_common.hpp"
 	(end)
 ------------------------------------------- */
-#define DEBUG_MODE_MINIMAL
+
 // If DEBUG_MODE_FULL, then also enable DEBUG_MODE_NORMAL.
 #ifdef DEBUG_MODE_FULL
 #define DEBUG_MODE_NORMAL
