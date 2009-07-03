@@ -64,9 +64,9 @@ _elapsed = switch (_format) do
 	default
 	{
 		private "_msg";
-		_msg = "Unknown time format";
-		ERROR(_msg, _format);
-		format ["%1: %2", _msg, _format];
+		_msg = format ["%1: %2", _msg, _format];
+		ERROR(_msg);
+		_msg;
 	};
 };
 	

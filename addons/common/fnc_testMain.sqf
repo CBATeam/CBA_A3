@@ -19,7 +19,7 @@ Returns:
 LOG('----- STARTING PREFIX\COMPONENT TESTS -----');
 
 private ["_a", "_b"];
-ERROR("Error-check!","Testing that ERROR() is output correctly");
+ERROR("Testing that ERROR() is output correctly");
 _a = false;
 ASSERT_TRUE(_a,"Checking ASSERT_TRUE() is output correctly");
 _a = true;

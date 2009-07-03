@@ -43,6 +43,7 @@ Don't Index: Files
 # --------------------------------------------------------------------------
 
 
+File: Overview  (no auto-title, overview.txt)
 Index: Index (Everything)
 
 Group: Project  {

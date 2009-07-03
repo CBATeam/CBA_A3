@@ -73,7 +73,7 @@ _raiseError =
 	_message = format ["%1, in ""%2"" at line %3:\n%4", _message,
 		_file, count _lines, _errorBlock];
 	
-	ERROR("CBA YAML parser error",_message);
+	ERROR_WITH_TITLE("CBA YAML parser error",_message);
 };
 
 private "_parse";

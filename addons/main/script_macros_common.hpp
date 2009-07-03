@@ -51,123 +51,184 @@
 	#define MAINLOGIC main
 #endif
 
-/*
-UNDOCUMENTED Macros: DEBUG_MODE_*
+/* -------------------------------------------
+Group: Debugging
+------------------------------------------- */
+
+/* -------------------------------------------
+Macros: DEBUG_MODE_*
 	Managing debugging based on debug level.
 
 	According to the *highest* level of debugging that has been defined *before* script_macros_common.hpp is included,
 	only the appropriate debugging commands will be functional. With no level explicitely defined, assume DEBUG_MODE_NORMAL.
 	
 	DEBUG_MODE_FULL - Full debugging output.
-	DEBUG_MODE_NORMAL - All debugging except <TRACE_*> (Default setting).
-	DEBUG_MODE_MINIMAL - Only <ERROR(TITLE,MESSAGE)> enabled.
-	DEBUG_MODE_OFF - No debugging at all (not recommended!).
+	DEBUG_MODE_NORMAL - All debugging except <TRACE_*> (Default setting if none specified).
+	DEBUG_MODE_MINIMAL - Only <ERROR(MESSAGE)> and <ERROR_WITH_TITLE(TITLE,MESSAGE)> enabled.
 	
 Examples:
-	In order to turn on full debugging for the file:
+	In order to turn on full debugging for a single file,
 	(begin example)
+		// Top of individual script file.
 		#define DEBUG_MODE_FULL
-		#include "\x\cba\addons\main\script_macros_common.hpp"
+		#include "script_component.hpp"
 	(end)
 	
-	Defaults can be set at the addon or component level, to be applied only if no value is set at a lower level, e.g.
+	In order to force minimal debugging for a single component,
 	(begin example)
-		// Defaulting to full debugging.
-		#ifndef DEBUG_MODE_OFF
-		#ifndef DEBUG_MODE_MINIMAL
-		#ifndef DEBUG_MODE_NORMAL
-		#ifndef DEBUG_MODE_FULL
-		#define DEBUG_MODE_FULL
+		// Top of addons\<component>\script_component.hpp
+		// Ensure that any FULL and NORMAL setting from the individual files are undefined and MINIMAL is set.
+		#ifdef DEBUG_MODE_FULL
+		#undef DEBUG_MODE_FULL
 		#endif
+		#ifdef DEBUG_MODE_NORMAL
+		#undef DEBUG_MODE_NORMAL
 		#endif
-		#endif
-		#endif
-	(end)
-	
-	
-	(begin example)
-		// Defaulting to normal debugging.
-		#ifndef DEBUG_MODE_OFF
-		#ifndef DEBUG_MODE_MINIMAL
-		#ifndef DEBUG_MODE_NORMAL
-		#define DEBUG_MODE_NORMAL
-		#endif
-		#endif
-		#endif
-	(end)
-	
-	(begin example)
-		// Defaulting to minimal debugging.
-		#ifndef DEBUG_MODE_OFF
 		#ifndef DEBUG_MODE_MINIMAL
 		#define DEBUG_MODE_MINIMAL
 		#endif
-		#endif
+		#include "script_macros.hpp"
 	(end)
 	
+	In order to turn on full debugging for a whole addon,
 	(begin example)
-		// Defaulting to no debugging.
-		#ifndef DEBUG_MODE_OFF
-		#define DEBUG_MODE_OFF
+		// Top of addons\main\script_macros.hpp
+		#ifndef DEBUG_MODE_FULL
+		#define DEBUG_MODE_FULL
 		#endif
+		#include "\x\cba\addons\main\script_macros_common.hpp"
 	(end)
-*/
+------------------------------------------- */
+#define DEBUG_MODE_MINIMAL
+// If DEBUG_MODE_FULL, then also enable DEBUG_MODE_NORMAL.
+#ifdef DEBUG_MODE_FULL
+#define DEBUG_MODE_NORMAL
+#endif
 
-//-------------------------------------------
-// FAILS on game load with error 6 (as above but with a setting defined)
+// If DEBUG_MODE_NORMAL, then also enable DEBUG_MODE_MINIMAL.
+#ifdef DEBUG_MODE_NORMAL
+#define DEBUG_MODE_MINIMAL
+#endif
 
-// #define DEBUG_MODE_FULL
+// If no debug modes specified, use DEBUG_MODE_NORMAL (+ DEBUG_MODE_MINIMAL).
+#ifndef DEBUG_MODE_MINIMAL
+#define DEBUG_MODE_NORMAL
+#define DEBUG_MODE_MINIMAL
+#endif
 
-// #ifdef DEBUG_MODE_FULL
-// #define ERROR_ENABLED
-// #define WARNING_ENABLED
-// #define LOG_ENABLED
-// #define TRACE_ENABLED
-// #endif
+#ifdef THIS_FILE
+#define THIS_FILE_ 'THIS_FILE'
+#else
+#define THIS_FILE_ __FILE__
+#endif
 
-// #ifndef DEBUG_MODE_FULL
-// #ifdef DEBUG_MODE_NORMAL
-// #define ERROR_ENABLED
-// #define WARNING_ENABLED
-// #define LOG_ENABLED
-// #endif
-// #endif
+/* -------------------------------------------
+Macro: LOG(MESSAGE)
+	Log a timestamped message into the RPT log.
 
-// #ifndef DEBUG_MODE_FULL
-// #ifndef DEBUG_MODE_NORMAL
-// #ifdef DEBUG_MODE_MINIMAL
-// #define ERROR_ENABLED
-// #endif
-// #endif
-// #endif
+	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
+------------------------------------------- */
+#ifdef DEBUG_MODE_NORMAL
+#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
+#else
+#define LOG(MESSAGE) /* disabled */
+#endif
 
-//-------------------------------------------
-// Fails on mission-load with error 12
-// #define DEBUG_MODE_FULL
+/* -------------------------------------------
+Macro: WARNING(MESSAGE)
+	Record a timestamped, non-critical error in the RPT log.
 
-// #ifdef DEBUG_MODE_FULL
-// #define ERROR_ENABLED
-// #define WARNING_ENABLED
-// #define LOG_ENABLED
-// #define TRACE_ENABLED
-// #else
-// #ifdef DEBUG_MODE_NORMAL
-// #define ERROR_ENABLED
-// #define WARNING_ENABLED
-// #define LOG_ENABLED
-// #else
-// #ifdef DEBUG_MODE_MINIMAL
-// #define ERROR_ENABLED
-// #endif
-// #endif
-// #endif
+	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
+------------------------------------------- */
+#ifdef DEBUG_MODE_NORMAL
+#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
+#else
+#define WARNING(MESSAGE) /* disabled */
+#endif
 
-//-------------------------------------------
-// Use a simple system since it seems erratic otherwise.
-#define ERROR_ENABLED
-#define WARNING_ENABLED
-#define LOG_ENABLED
-// #define TRACE_ENABLED
+/* -------------------------------------------
+Macro: ERROR(MESSAGE)
+	Record a timestamped, critical error in the RPT log. 
+	The heading is ERROR (use <ERROR_WITH_TITLE(TITLE,MESSAGE)> for a specific title.
+	Newlines (\n) in the MESSAGE will be put on separate lines.
+
+	TODO: Popup an error dialog & throw an exception.
+------------------------------------------- */
+#define ERROR(MESSAGE) \
+	[THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
+	
+/* -------------------------------------------
+Macro: ERROR_WITH_TITLE(TITLE,MESSAGE)
+	Record a timestamped, critical error in the RPT log.
+	The title can be specified (in <ERROR(MESSAGE)> the heading is always just "ERROR")
+	Newlines (\n) in the MESSAGE will be put on separate lines.
+
+	TODO: Popup an error dialog & throw an exception.
+------------------------------------------- */
+#define ERROR_WITH_TITLE(TITLE,MESSAGE) \
+	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
+
+/* -------------------------------------------
+Macros: TRACE_*
+	Log a message and 1-8 variables to the RPT log.
+
+	Only run if <DEBUG_MODE_FULL> is defined.
+
+	TRACE_1(MESSAGE,A) - Log 1 variable.
+	TRACE_2(MESSAGE,A,B) - Log 2 variables.
+	TRACE_3(MESSAGE,A,B,C) - Log 3 variables.
+	TRACE_4(MESSAGE,A,B,C,D) - Log 4 variables.
+	TRACE_5(MESSAGE,A,B,C,D,E) - Log 5 variables.
+	TRACE_6(MESSAGE,A,B,C,D,E,F) - Log 6 variables.
+	TRACE_7(MESSAGE,A,B,C,D,E,F,G) - Log 7 variables.
+	TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) - Log 8 variables.
+
+Example:
+	(begin example)
+		TRACE_3("After takeoff",_vehicle player,getPos (_vehicle player), getPosASL (_vehicle player));
+	(end)
+------------------------------------------- */
+#ifdef DEBUG_MODE_FULL
+#define TRACE_1(MESSAGE,A) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2', MESSAGE,str (A)]] call CBA_fnc_log
+	
+#define TRACE_2(MESSAGE,A,B) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', MESSAGE,str (A),str (B)]] call CBA_fnc_log
+	
+#define TRACE_3(MESSAGE,A,B,C) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', MESSAGE,str (A),str (B),str (C)]] call CBA_fnc_log
+	
+#define TRACE_4(MESSAGE,A,B,C,D) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', MESSAGE,str (A),str (B),str (C),str (D)]] call CBA_fnc_log
+	
+#define TRACE_5(MESSAGE,A,B,C,D,E) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', MESSAGE,str (A),str (B),str (C),str (D),str (E)]] call CBA_fnc_log
+	
+#define TRACE_6(MESSAGE,A,B,C,D,E,F) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F)]] call CBA_fnc_log
+	
+#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G)]] call CBA_fnc_log
+	
+#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G),str (H)]] call CBA_fnc_log
+
+#else
+
+#define TRACE_1(MESSAGE,A) /* disabled */
+#define TRACE_2(MESSAGE,A,B) /* disabled */
+#define TRACE_3(MESSAGE,A,B,C) /* disabled */
+#define TRACE_4(MESSAGE,A,B,C,D) /* disabled */
+#define TRACE_5(MESSAGE,A,B,C,D,E) /* disabled */
+#define TRACE_6(MESSAGE,A,B,C,D,E,F) /* disabled */
+#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
+#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
+
+#endif
+
+/* -------------------------------------------
+Group: General
+------------------------------------------- */
 
 // *************************************
 // Internal Functions
@@ -245,15 +306,17 @@ Examples:
 		
 #define DEPRECATE(OLD_FUNCTION,NEW_FUNCTION) DEPRECATE_SYS(PREFIX,OLD_FUNCTION,PREFIX,NEW_FUNCTION)
 
-// Macro: OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION)
-//	Replace an obsolete OLD_FUNCTION (which will have PREFIX_ prepended) with a simple
-//	COMMAND_FUNCTION, with the intention that it will be replaced ASAP.
-//	Shows a warning in RPT each time the obsolete function it is used.
-//
-// Example:
-// 	(begin example)
-//		OBSOLETE(fMyWeapon,{ currentWeapon player });
-//	(end)
+/* -------------------------------------------
+Macro: OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION)
+	Replace an obsolete OLD_FUNCTION (which will have PREFIX_ prepended) with a simple
+	COMMAND_FUNCTION, with the intention that it will be replaced ASAP.
+	Shows a warning in RPT each time the obsolete function it is used.
+
+Example:
+	(begin example)
+		OBSOLETE(fMyWeapon,{ currentWeapon player });
+	(end)
+------------------------------------------- */
 #define OBSOLETE_SYS(OLD_PREFIX,OLD_FUNCTION,COMMAND_FUNCTION) \
 	DOUBLES(OLD_PREFIX,OLD_FUNCTION) = { \
 		WARNING('Obsolete function used: DOUBLES(OLD_PREFIX,OLD_FUNCTION) (use: COMMAND_FUNCTION) in ADDON'); \
@@ -303,7 +366,57 @@ Examples:
 #define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
 #define SPAWNMAIN(var1) SPAWNMAIN_GVAR(PREFIX,var1)
 
-/*
+/* -------------------------------------------
+Macros: IS_*
+	Checking the data types of variables.
+
+	IS_ARRAY(VAR) - Array
+	IS_BOOL(VAR) - Boolean
+	IS_BOOLEAN(VAR) - UI display handle(synonym for <IS_BOOL(VAR)>)
+	IS_CODE(VAR) - Code block (i.e a compiled function)
+	IS_CONFIG(VAR) - Configuration
+	IS_CONTROL(VAR) - UI control handle.
+	IS_DISPLAY(VAR) - UI display handle.
+	IS_FUNCTION(VAR) - A compiled function (synonym for <IS_CODE(VAR)>)
+	IS_GROUP(VAR) - Group.
+	IS_INTEGER(VAR) - Is a number a whole number?
+	IS_LOCATION(VAR) - World location.
+	IS_NUMBER(VAR) - A floating point number (synonym for <IS_SCALAR(VAR)>)
+	IS_OBJECT(VAR) - World object.
+	IS_SCALAR(VAR) - Floating point number.
+	IS_SCRIPT(VAR) - A script handle (as returned by execVM and spawn commands).
+	IS_SIDE(VAR) - Game side.
+	IS_STRING(VAR) - World object.
+	IS_TEXT(VAR) - Structured text.
+------------------------------------------- */
+#define IS_ARRAY(VAR)    ((typeName (VAR)) == "ARRAY")
+#define IS_BOOL(VAR)     ((typeName (VAR)) == "BOOL")
+#define IS_CODE(VAR)     ((typeName (VAR)) == "CODE")
+#define IS_CONFIG(VAR)   ((typeName (VAR)) == "CONFIG")
+#define IS_CONTROL(VAR)  ((typeName (VAR)) == "CONTROL")
+#define IS_DISPLAY(VAR)  ((typeName (VAR)) == "DISPLAY")
+#define IS_GROUP(VAR)    ((typeName (VAR)) == "GROUP")
+#define IS_OBJECT(VAR)   ((typeName (VAR)) == "OBJECT")
+#define IS_SCALAR(VAR)   ((typeName (VAR)) == "SCALAR")
+#define IS_SCRIPT(VAR)   ((typeName (VAR)) == "SCRIPT")
+#define IS_SIDE(VAR)     ((typeName (VAR)) == "SIDE")
+#define IS_STRING(VAR)   ((typeName (VAR)) == "STRING")
+#define IS_TEXT(VAR)     ((typeName (VAR)) == "TEXT")
+#define IS_LOCATION(VAR) ((typeName (VAR)) == "LOCATION")
+
+#define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
+#define IS_FUNCTION(VAR) IS_CODE(VAR)
+#define IS_INTEGER(VAR)  if { IS_SCALAR(VAR) } then { (floor(VAR) == (VAR)) } else { false }
+#define IS_NUMBER(VAR)   IS_SCALAR(VAR)
+
+/* -------------------------------------------
+Macro: SCRIPT(NAME)
+	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+------------------------------------------- */
+#define SCRIPT(NAME) \
+	scriptName 'PREFIX\COMPONENT\NAME'
+	
+/* -------------------------------------------
 Macros: EXPLODE_*
 	Splitting an ARRAY into a number of variables (A, B, C, etc).
 	
@@ -322,7 +435,7 @@ Example:
 		_array = ["fred", 156.8, 120.9];
 		EXPLODE_3(_array,_name_height,_weight);
 	(end)
-*/
+------------------------------------------- */
 #define EXPLODE_2(ARRAY,A,B) \
 	A = (ARRAY) select 0; B = (ARRAY) select 1
 	
@@ -344,7 +457,11 @@ Example:
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
 	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5; G = (ARRAY) select 6; H = (ARRAY) select 7
 
-/*
+/* -------------------------------------------
+Group: Managing Function Parameters
+------------------------------------------- */
+
+/* -------------------------------------------
 Macros: PARAMS_*
 	Setting variables based on parameters passed to a function.
 
@@ -369,7 +486,7 @@ Example:
 			// Rest of function follows...
 		};
 	(end)
-*/
+------------------------------------------- */
 #define PARAMS_1(A) \
 	private #A; A = _this select 0
 	
@@ -394,7 +511,7 @@ Example:
 #define PARAMS_8(A,B,C,D,E,F,G,H) \
 	private [#A, #B, #C, #D, #E, #F, #G, #H]; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
 	
-/*
+/* -------------------------------------------
 Macro: DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) 
 	Getting a default function parameter. This may be used together with <PARAMS_*> to have a mix of required and
 	optional parameters.
@@ -416,114 +533,18 @@ Example:
 			// Rest of function follows...
 		};
 	(end)
-*/
+------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
 private #NAME; \
 NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
 
-// === Debugging ===
+/* -------------------------------------------
+Group: Assertions
+------------------------------------------- */
 
-#ifdef THIS_FILE
-#define THIS_FILE_ 'THIS_FILE'
-#else
-#define THIS_FILE_ __FILE__
-#endif
+#define ASSERTION_ERROR(MESSAGE) ERROR_WITH_TITLE("Assertion failed!",MESSAGE)
 
-// Macro: LOG(MESSAGE)
-//	Log a timestamped message into the RPT log.
-//
-//	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
-#ifdef LOG_ENABLED
-#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
-#else
-#define LOG(MESSAGE) /* disabled */
-#endif
-
-// Macro: WARNING(MESSAGE)
-//	Record a timestamped, non-critical error in the RPT log.
-//
-//	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
-#ifdef WARNING_ENABLED
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
-#else
-#define WARNING(MESSAGE) /* disabled */
-#endif
-
-// Macro: ERROR(TITLE,MESSAGE)
-//	Record a timestamped, critical error in the RPT log. Newlines (\n) in the MESSAGE will be put on separate lines.
-//
-//	Only run if <DEBUG_MODE_MINIMAL> or higher is defined.
-//
-//	TODO: Popup an error dialog & throw an exception.
-#ifdef ERROR_ENABLED
-#define ERROR(TITLE,MESSAGE) \
-	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
-#else
-#define ERROR(TITLE,MESSAGE) /* disabled */
-#endif
-
-/*
-Macros: TRACE_*
-	Log a message and 1-8 variables to the RPT log.
-
-	Only run if <DEBUG_MODE_FULL> is defined.
-
-	TRACE_1(MESSAGE,A) - Log 1 variable.
-	TRACE_2(MESSAGE,A,B) - Log 2 variables.
-	TRACE_3(MESSAGE,A,B,C) - Log 3 variables.
-	TRACE_4(MESSAGE,A,B,C,D) - Log 4 variables.
-	TRACE_5(MESSAGE,A,B,C,D,E) - Log 5 variables.
-	TRACE_6(MESSAGE,A,B,C,D,E,F) - Log 6 variables.
-	TRACE_7(MESSAGE,A,B,C,D,E,F,G) - Log 7 variables.
-	TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) - Log 8 variables.
-
-Example:
-	(begin example)
-		TRACE_3("After takeoff",_vehicle player,getPos (_vehicle player), getPosASL (_vehicle player));
-	(end)
-*/
-#ifdef TRACE_ENABLED
-#define TRACE_1(MESSAGE,A) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2', MESSAGE,str (A)]] call CBA_fnc_log
-	
-#define TRACE_2(MESSAGE,A,B) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', MESSAGE,str (A),str (B)]] call CBA_fnc_log
-	
-#define TRACE_3(MESSAGE,A,B,C) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', MESSAGE,str (A),str (B),str (C)]] call CBA_fnc_log
-	
-#define TRACE_4(MESSAGE,A,B,C,D) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', MESSAGE,str (A),str (B),str (C),str (D)]] call CBA_fnc_log
-	
-#define TRACE_5(MESSAGE,A,B,C,D,E) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', MESSAGE,str (A),str (B),str (C),str (D),str (E)]] call CBA_fnc_log
-	
-#define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F)]] call CBA_fnc_log
-	
-#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G)]] call CBA_fnc_log
-	
-#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G),str (H)]] call CBA_fnc_log
-
-#else
-
-#define TRACE_1(MESSAGE,A) /* disabled */
-#define TRACE_2(MESSAGE,A,B) /* disabled */
-#define TRACE_3(MESSAGE,A,B,C) /* disabled */
-#define TRACE_4(MESSAGE,A,B,C,D) /* disabled */
-#define TRACE_5(MESSAGE,A,B,C,D,E) /* disabled */
-#define TRACE_6(MESSAGE,A,B,C,D,E,F) /* disabled */
-#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
-#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
-
-#endif
-
-// === Assertion ===
-#define ASSERTION_FAILED_TITLE "Assertion failed!"
-
-/*
+/* -------------------------------------------
 Macro: ASSERT_TRUE(CONDITION,MESSAGE)
 	Asserts that a CONDITION if true. When an assertion fails, an error is raised with the given MESSAGE.
 
@@ -531,14 +552,14 @@ Example:
 	(begin example)
 		ASSERT_TRUE(_frogIsDead,"The frog is alive");
 	(end)
-*/
+------------------------------------------- */
 #define ASSERT_TRUE(CONDITION,MESSAGE) \
 if (not (CONDITION)) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
+	ASSERTION_ERROR('Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
 }
 
-/*
+/* -------------------------------------------
 Macro: ASSERT_FALSE(CONDITION,MESSAGE)
 	Asserts that a CONDITION if false. When an assertion fails, an error is raised with the given MESSAGE.
 
@@ -546,14 +567,14 @@ Example:
 	(begin example)
 		 ASSERT_FALSE(_frogIsDead,"The frog died");
 	(end)
-*/
+------------------------------------------- */
 #define ASSERT_FALSE(CONDITION,MESSAGE) \
 if (CONDITION) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
+	ASSERTION_ERROR('Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
 }
 
-/*
+/* -------------------------------------------
 Macro: ASSERT_OP(A,OPERATOR,B,MESSAGE)
 	Asserts that (A OPERATOR B) is true. When an assertion fails, an error is raised with the given MESSAGE.
 
@@ -561,74 +582,26 @@ Example:
 	(begin example)
 		ASSERT_OP(_fish,>,5,"Too few fish!");
 	(end)
-*/
+------------------------------------------- */
 #define ASSERT_OP(A,OPERATOR,B,MESSAGE) \
 if (not ((A) OPERATOR (B))) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (A OPERATOR B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
+	ASSERTION_ERROR('Assertion (A OPERATOR B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
 }
 
-/*
-Macro: ASSERT_DEFINED(VAR,MESSAGE)
-	Asserts that a value is defined. When an assertion fails, an error is raised with the given MESSAGE..
+/* -------------------------------------------
+Macro: ASSERT_DEFINED(VARIABLE,MESSAGE)
+	Asserts that a VARIABLE is defined. When an assertion fails, an error is raised with the given MESSAGE..
 
 Examples:
 	(begin example)
 		ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
 		ASSERT_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
 	(end)
-*/
-#define ASSERT_DEFINED(VAR,MESSAGE) \
-if (isNil VAR) then \
+------------------------------------------- */
+#define ASSERT_DEFINED(VARIABLE,MESSAGE) \
+if (isNil VARIABLE) then \
 { \
-	ERROR(ASSERTION_FAILED_TITLE,'Assertion (VAR is defined) failed!\n\n' + (MESSAGE)); \
+	ASSERTION_ERROR('Assertion (VARIABLE is defined) failed!\n\n' + (MESSAGE)); \
 }
-
-/*
-Macros: IS_*
-	Checking the data types of variables.
-
-	IS_ARRAY(VAR) - Array
-	IS_BOOL(VAR) - Boolean
-	IS_BOOLEAN(VAR) - UI display handle(synonym for <IS_BOOL(VAR)>)
-	IS_CODE(VAR) - Code block (i.e a compiled function)
-	IS_CONFIG(VAR) - Configuration
-	IS_CONTROL(VAR) - UI control handle.
-	IS_DISPLAY(VAR) - UI display handle.
-	IS_FUNCTION(VAR) - A compiled function (synonym for <IS_CODE(VAR)>)
-	IS_GROUP(VAR) - Group.
-	IS_INTEGER(VAR) - Is a number a whole number?
-	IS_LOCATION(VAR) - World location.
-	IS_NUMBER(VAR) - A floating point number (synonym for <IS_SCALAR(VAR)>)
-	IS_OBJECT(VAR) - World object.
-	IS_SCALAR(VAR) - Floating point number.
-	IS_SCRIPT(VAR) - A script handle (as returned by execVM and spawn commands).
-	IS_SIDE(VAR) - Game side.
-	IS_STRING(VAR) - World object.
-	IS_TEXT(VAR) - Structured text.
-*/
-#define IS_ARRAY(VAR)    ((typeName (VAR)) == "ARRAY")
-#define IS_BOOL(VAR)     ((typeName (VAR)) == "BOOL")
-#define IS_CODE(VAR)     ((typeName (VAR)) == "CODE")
-#define IS_CONFIG(VAR)   ((typeName (VAR)) == "CONFIG")
-#define IS_CONTROL(VAR)  ((typeName (VAR)) == "CONTROL")
-#define IS_DISPLAY(VAR)  ((typeName (VAR)) == "DISPLAY")
-#define IS_GROUP(VAR)    ((typeName (VAR)) == "GROUP")
-#define IS_OBJECT(VAR)   ((typeName (VAR)) == "OBJECT")
-#define IS_SCALAR(VAR)   ((typeName (VAR)) == "SCALAR")
-#define IS_SCRIPT(VAR)   ((typeName (VAR)) == "SCRIPT")
-#define IS_SIDE(VAR)     ((typeName (VAR)) == "SIDE")
-#define IS_STRING(VAR)   ((typeName (VAR)) == "STRING")
-#define IS_TEXT(VAR)     ((typeName (VAR)) == "TEXT")
-#define IS_LOCATION(VAR) ((typeName (VAR)) == "LOCATION")
-
-#define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
-#define IS_FUNCTION(VAR) IS_CODE(VAR)
-#define IS_INTEGER(VAR)  if { IS_SCALAR(VAR) } then { (floor(VAR) == (VAR)) } else { false }
-#define IS_NUMBER(VAR)   IS_SCALAR(VAR)
-
-// Macro: SCRIPT(NAME)
-//	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
-#define SCRIPT(NAME) \
-	scriptName 'PREFIX\COMPONENT\NAME'
 
