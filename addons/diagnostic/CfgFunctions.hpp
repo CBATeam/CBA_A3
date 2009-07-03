@@ -21,6 +21,12 @@ class CfgFunctions
 				description = "General Purpose Debug Message Writer";
 				file = "\x\cba\addons\diagnostic\fnc_debug.sqf";
 			};
+			// CBA_fnc_test
+			class test
+			{
+				description = "Runs unit tests for an addon or component.";
+				file = "\x\cba\addons\diagnostic\fnc_test.sqf";
+			};
 			// CBA_fnc_error
 			class error
 			{

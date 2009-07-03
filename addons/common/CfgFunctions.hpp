@@ -45,12 +45,6 @@ class CfgFunctions
 				description = "Add magazine to a vehicle cargo.";
 				file = "\x\cba\addons\common\fnc_addMagazineCargo.sqf";
 			};
-			// CBA_fnc_testMain
-			class testMain
-			{
-				description = "Tests CBA main functions.";
-				file = "\x\cba\addons\common\fnc_testMain.sqf";
-			};
 			// CBA_fnc_removeMagazine
 			class removeMagazine
 			{

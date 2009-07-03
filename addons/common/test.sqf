@@ -5,7 +5,7 @@
 
 #include "script_component.hpp"
 
-#define TESTS ["parseYaml"]
+#define TESTS ["macros", "parseYaml"]
 
 SCRIPT(test-common);
 
