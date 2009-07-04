@@ -49,7 +49,7 @@ Index: Index (Everything)
 Group: Project  {
 
    Link: Wiki  (http://dev-heaven.net/wiki/cca)
-   Link: Reference  (http://dev-heaven.net/projects/docs/cca)
+   Link: Reference  (http://dev-heaven.net/docs/cba/)
    Link: Forums  (http://dev-heaven.net/projects/cca/boards)
    Link: Issues  (http://dev-heaven.net/projects/cca/issues)
    Link: Download  (http://dev-heaven.net/projects/list_files/cca)
