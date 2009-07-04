@@ -2,7 +2,7 @@
 Function: CBA_fnc_parseYAML
 
 Description:
-	Parses a YAML file into a nexted array/Hash structure.
+	Parses a YAML file into a nested array/Hash structure.
 	
 	See also: <CBA_fnc_dataPath>
 
