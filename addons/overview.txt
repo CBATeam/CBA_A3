@@ -9,4 +9,7 @@ macros to aid in development.
 
 Online:
 
-The latest documentation is available at http://dev-heaven.net/wiki/cca/
+The latest documentation can be,
+
+* Viewed at http://dev-heaven.net/docs/cba/
+* Downloaded from http://dev-heaven.net/list_files/cba/
