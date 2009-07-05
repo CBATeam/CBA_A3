@@ -132,7 +132,7 @@ class CfgFunctions
 			// CBA_fnc_parseYAML
 			class parseYAML
 			{
-				description = "Parses a YAML file into a nexted array/Hash structure.";
+				description = "Parses a YAML file into a nested array/Hash structure.";
 				file = "\x\cba\addons\common\fnc_parseYAML.sqf";
 			};
 			// CBA_fnc_objectRandom
