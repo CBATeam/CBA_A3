@@ -21,6 +21,12 @@ class CfgFunctions
 				description = "General Purpose Debug Message Writer";
 				file = "\x\cba\addons\diagnostic\fnc_debug.sqf";
 			};
+			// CBA_fnc_benchmarkFunction
+			class benchmarkFunction
+			{
+				description = "Benchmarks a function to see how long it will take to execute.";
+				file = "\x\cba\addons\diagnostic\fnc_benchmarkFunction.sqf";
+			};
 			// CBA_fnc_test
 			class test
 			{
