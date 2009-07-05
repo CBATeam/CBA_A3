@@ -63,6 +63,7 @@
 //
 // =========================================================================================================
 
+/*
 KRON_StrToArray = {
 	private["_in", "_i", "_arr", "_out"];
 	_in = _this select 0;
@@ -74,6 +75,7 @@ KRON_StrToArray = {
 	};
 	_out
 };
+*/
 
 KRON_StrLeft = {
 	private["_in", "_len", "_arr", "_out"];
@@ -93,6 +95,7 @@ KRON_StrLeft = {
 	_out
 };
 
+/*
 KRON_StrLen = {
 	private["_in", "_arr", "_len"];
 	_in = _this select 0;
@@ -100,6 +103,7 @@ KRON_StrLen = {
 	_len = count (_arr);
 	_len
 };
+*/
 
 KRON_StrRight = {
 	private["_in", "_len", "_arr", "_i", "_out"];
@@ -134,6 +138,7 @@ KRON_StrMid = {
 	_out
 };
 
+/*
 KRON_StrIndex = {
 	private["_hay", "_ndl", "_lh", "_ln", "_arr", "_tmp", "_i", "_j", "_out"];
 	_hay = _this select 0;
@@ -156,6 +161,7 @@ KRON_StrIndex = {
 	};
 	_out
 };
+*/
 
 KRON_StrInStr = {
 	private["_out"];
@@ -164,6 +170,7 @@ KRON_StrInStr = {
  	_out
 };
 
+/*
 KRON_Replace = {
 	private["_str", "_old", "_new", "_out", "_tmp", "_jm", "_la", "_lo", "_ln", "_i"];
 	_str = _this select 0;
@@ -195,20 +202,25 @@ KRON_Replace = {
 	};
 	_out
 };
+*/
 
+/*
 KRON_StrUpper = {
 	private["_in", "_out"];
 	_in = _this select 0;
 	_out = toUpper(_in);
 	_out
 };
+*/
 
+/*
 KRON_StrLower = {
 	private["_in", "_out"];
 	_in = _this select 0;
 	_out = toLower(_in);
 	_out
 };
+*/
 
 KRON_ArrayToUpper = {
 	private["_in", "_i", "_e", "_out"];

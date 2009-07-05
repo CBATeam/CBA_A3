@@ -68,5 +68,12 @@ DEPRECATE(fSwitchPlayer,fnc_switchPlayer);
 CALLF(init_gauss);
 CALLF(init_kron_strings);
 
+OBSOLETE_SYS(KRON,StrUpper,{ toUpper (_this select 0) });
+OBSOLETE_SYS(KRON,StrLower,{ toLower (_this select 0) });
+DEPRECATE_SYS(KRON,StrIndex,CBA,fnc_find); // CBA_fnc_find does the same and more.
+DEPRECATE_SYS(KRON,StrLen,CBA,fnc_strLen);
+DEPRECATE_SYS(KRON,StrToArray,CBA,fnc_split); // CBA_fnc_split does the same and more.
+DEPRECATE_SYS(KRON,Replace,CBA,fnc_replace); // KRON is faster, but CBA one is 1 line (reuses other functions).
+
 // Announce Initialization Complete
 ADDON = true;
