@@ -1,5 +1,7 @@
 File: Overview
 
+(see CBA_logo_large.png)
+
 The CBA functions library comprises a number of categories of functions, from
 Arrays to Strings, as well as ensuring that all the BIS Functions/MP modules'
 functions are precompiled during the pre-init phase.
