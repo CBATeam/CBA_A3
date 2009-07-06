@@ -28,7 +28,7 @@ class CfgAddons
 };
 
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then { call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'}; _this call SLX_XEH_init;"; \
+#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then { call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers'] call SLX_XEH_init;"; \
 fired = "_s = nearestObject[_this select 0,_this select 4]; [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_s]call((_this select 0)getVariable'Extended_FiredEH')"; \
 animChanged     = "_this call((_this select 0)getVariable'Extended_AnimChangedEH')"; \
 animDone        = "_this call((_this select 0)getVariable'Extended_AnimDoneEH')"; \
@@ -74,7 +74,7 @@ class Extended_InitPost_EventHandlers
 		{
 			scope     = public;
 			onRespawn = true;   // Run this EH when a unit respawns
-			init      = "[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_initPost;_this call SLX_XEH_initOthers";
+			init      = "_this call SLX_XEH_initOthers";
 		};
 	};
 };

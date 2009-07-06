@@ -1,7 +1,6 @@
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
 SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
-SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
 SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
 SLX_XEH_MACHINE =
 [

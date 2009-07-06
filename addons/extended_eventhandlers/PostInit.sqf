@@ -49,6 +49,6 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // we set this BEFORE executing the inits, so that any unit created in another
 // thread still gets their InitPost ran
 SLX_XEH_MACHINE set [7, true];
-{ _x call SLX_XEH_initPost } forEach SLX_XEH_OBJECTS; // Run InitPosts
+{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
 
 nil;

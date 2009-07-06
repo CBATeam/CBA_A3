@@ -30,5 +30,5 @@ while { true } do
 	waitUntil { !(alive player) };
 	waitUntil { player == player };
 	waitUntil { alive player };
-	[player, "Extended_Init_EventHandlers", true] call SLX_XEH_initPost;
+	[player, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
 };
