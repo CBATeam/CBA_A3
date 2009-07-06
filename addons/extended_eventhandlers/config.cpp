@@ -28,8 +28,8 @@ class CfgAddons
 };
 
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then { call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers'] call SLX_XEH_init;"; \
-fired = "_s = nearestObject[_this select 0,_this select 4]; [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_s]call((_this select 0)getVariable'Extended_FiredEH')"; \
+#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init;"; \
+fired = "_s=nearestObject[_this select 0,_this select 4]; [_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_s]call((_this select 0)getVariable'Extended_FiredEH')"; \
 animChanged     = "_this call((_this select 0)getVariable'Extended_AnimChangedEH')"; \
 animDone        = "_this call((_this select 0)getVariable'Extended_AnimDoneEH')"; \
 dammaged        = "_this call((_this select 0)getVariable'Extended_DammagedEH')"; \
@@ -39,12 +39,14 @@ fuel            = "_this call((_this select 0)getVariable'Extended_FuelEH')"; \
 gear            = "_this call((_this select 0)getVariable'Extended_GearEH')"; \
 getIn           = "_this call((_this select 0)getVariable'Extended_GetInEH')"; \
 getOut          = "_this call((_this select 0)getVariable'Extended_GetOutEH')"; \
+//handleDamage    = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')"; \
+//handleHealing   = "_this call((_this select 0)getVariable'Extended_HandleHealingEH')"; \
 hit             = "_this call((_this select 0)getVariable'Extended_HitEH')"; \
 incomingMissile = "_this call((_this select 0)getVariable'Extended_IncomingMissileEH')"; \
 killed          = "_this call((_this select 0)getVariable'Extended_KilledEH')"; \
 landedTouchDown = "_this call((_this select 0)getVariable'Extended_LandedTouchDownEH')"; \
-landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStoppedEH')"; // \
-// handleDamage   = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')";
+landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStoppedEH')";
+
 
 // We'll need this one for backwards compatibility with third-party addons
 // that expect the class to exist
