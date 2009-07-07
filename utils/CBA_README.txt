@@ -2,7 +2,7 @@ CBA: Community Base Addons
 ==========================
 
 Online wiki at http://dev-heaven.net/wiki/cca/
-Online function library reference at http://dev-heaven.net/docs/cca/
+Online function library reference at http://dev-heaven.net/docs/cba/
 
 @CBA                                  => Copy this directory to your Arma 2 game directory (see manual for more details).
 docs/cba_wiki/index.html              => The manual. This is a copy of the DevHeaven wiki at the time of release.
