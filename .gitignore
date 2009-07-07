@@ -1,4 +1,8 @@
 *.pbo
 *.log
+*.bisign
+*.biprivatekey
+*.bikey
 /docs/cba_function_library/*
 /docs/cba_wiki/*
+/utils/release/*
