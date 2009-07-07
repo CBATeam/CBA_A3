@@ -1,11 +1,8 @@
 // Add a game logic which does nothing except requires the addon in the mission.
 
-#define VEHICLE_TYPE PREFIX##_logics
-#define LOGIC_CLASS ADDON##_main_require
-
 class CfgVehicleClasses
 {
-	class VEHICLE_TYPE
+	class CBA_logics
 	{
 		displayName = "CBA";
 	};
@@ -15,9 +12,9 @@ class CfgVehicles
 {
 	class Logic;
 	
-	class LOGIC_CLASS : Logic
+	class CBA_main_require : Logic
 	{
 		displayName = "Require CBA";
-		vehicleClass = VEHICLE_TYPE;
+		vehicleClass = "CBA_logics";
 	};
 };
