@@ -84,7 +84,17 @@ class Extended_InitPost_EventHandlers
 // Extended EH classes, where new events are defined.
 class Extended_Init_EventHandlers
 {
-// Default Extended Event Handlers: Add extended event handlers to compile code.
+	// Default Extended Event Handlers: Add extended event handlers to compile code.
+	class All
+	{
+		class SLX_Init_Post_All
+		{
+				scope     = public;
+				onRespawn = true;   // Run this EH when a unit respawns
+				init      = "_this call SLX_XEH_initPost";
+		};
+	};
+
     class AAV
     {
         class SLX_BIS_AAV_Init
