@@ -39,13 +39,13 @@ fuel            = "_this call((_this select 0)getVariable'Extended_FuelEH')"; \
 gear            = "_this call((_this select 0)getVariable'Extended_GearEH')"; \
 getIn           = "_this call((_this select 0)getVariable'Extended_GetInEH')"; \
 getOut          = "_this call((_this select 0)getVariable'Extended_GetOutEH')"; \
+//handleDamage    = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')"; \
+//handleHealing   = "_this call((_this select 0)getVariable'Extended_HandleHealingEH')"; \
 hit             = "_this call((_this select 0)getVariable'Extended_HitEH')"; \
 incomingMissile = "_this call((_this select 0)getVariable'Extended_IncomingMissileEH')"; \
 killed          = "_this call((_this select 0)getVariable'Extended_KilledEH')"; \
 landedTouchDown = "_this call((_this select 0)getVariable'Extended_LandedTouchDownEH')"; \
 landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStoppedEH')";
-//handleDamage    = "_this call((_this select 0)getVariable'Extended_HandleDamageEH')"; \
-//handleHealing   = "_this call((_this select 0)getVariable'Extended_HandleHealingEH')"; \
 
 
 // We'll need this one for backwards compatibility with third-party addons
