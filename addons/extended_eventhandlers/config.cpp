@@ -426,6 +426,12 @@ class CfgVehicles
     };
     
     // Vehicles.
+    /*
+    class BIS_Steerable_Parachute : Plane
+    {
+        class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
+    */
     class AAV: Tracked_APC
     {
          class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
@@ -438,11 +444,13 @@ class CfgVehicles
     {
         class EventHandlers { EXTENDED_EVENTHANDLERS };
     };
+    /*
     class MQ9PredatorB;
     class CruiseMissile2 : MQ9PredatorB
     {
         class EventHandlers { EXTENDED_EVENTHANDLERS };
     };
+    */
     
     // Static weapons.
     class StaticMortar;
