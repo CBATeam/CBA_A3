@@ -21,9 +21,9 @@ _isRespawn = if (count _this>2) then { _this select 2 } else { false };
 // Get array of inherited classes of unit.
 _unitClass = typeOf _unit;
 _classes = [_unitClass];
-while {	!((_classes select 0) in ["", "All"]) } do
+while { !((_classes select 0) in ["", "All"]) } do
 {
-	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+    _classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };
 
 // Check each class to see if there is a counterpart in extended event handlers
@@ -66,80 +66,80 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 };
 
 {
-	if ((configName (configFile/_Extended_Init_Class/_x))!= "") then
-	{
-		_i = 0;
-		_t = count (configFile/_Extended_Init_Class/_x);
-		while { _i<_t } do
-		{
-			_cfgEntry = (configFile/_Extended_Init_Class/_x) select _i;
-			// Standard XEH init string
-			if (isText _cfgEntry) then
-			{
-				_inits = _inits+[compile(getText _cfgEntry)];
-			} else {
-				// Composite XEH init class
-				if (isClass _cfgEntry) then
-				{
-					_scopeEntry = _cfgEntry / "scope";
-					_initEntry = _cfgEntry / "init";
-					_excludeEntry = _cfgEntry / "exclude";
-					_respawnEntry = _cfgEntry / "onRespawn";
+    if ((configName (configFile/_Extended_Init_Class/_x))!= "") then
+    {
+        _i = 0;
+        _t = count (configFile/_Extended_Init_Class/_x);
+        while { _i<_t } do
+        {
+            _cfgEntry = (configFile/_Extended_Init_Class/_x) select _i;
+            // Standard XEH init string
+            if (isText _cfgEntry) then
+            {
+                _inits = _inits+[compile(getText _cfgEntry)];
+            } else {
+                // Composite XEH init class
+                if (isClass _cfgEntry) then
+                {
+                    _scopeEntry = _cfgEntry / "scope";
+                    _initEntry = _cfgEntry / "init";
+                    _excludeEntry = _cfgEntry / "exclude";
+                    _respawnEntry = _cfgEntry / "onRespawn";
                     _replaceEntry = _cfgEntry / "replaceDEH";
-					if (isText _excludeEntry) then
-					{
-						_excludeClass = (getText _excludeEntry);
-					} else {
-						if (isArray _excludeEntry) then
-						{
-							_excludeClasses = (getArray _excludeEntry);
-						};
-					};
-					_onRespawn = false;
-					if (isText _respawnEntry) then
-					{
-						_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
-					} else {
-						if (isNumber _respawnEntry) then
-						{
-							_onRespawn = ((getNumber _respawnEntry) == 1);
-						};
-					};
+                    if (isText _excludeEntry) then
+                    {
+                        _excludeClass = (getText _excludeEntry);
+                    } else {
+                        if (isArray _excludeEntry) then
+                        {
+                            _excludeClasses = (getArray _excludeEntry);
+                        };
+                    };
+                    _onRespawn = false;
+                    if (isText _respawnEntry) then
+                    {
+                        _onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
+                    } else {
+                        if (isNumber _respawnEntry) then
+                        {
+                            _onRespawn = ((getNumber _respawnEntry) == 1);
+                        };
+                    };
                     _replaceDEH = false;
                     if (isText _replaceEntry) then {
                         _replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
                     } else {
-						if (isNumber _replaceEntry) then
-						{
-							_replaceDEH = ((getNumber _replaceEntry) == 1);
-						};
-					};
-					if (isText _initEntry) then
-					{
-						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-						/*  If the init EH is private and vehicle is of the
-						*  "wrong" class, do nothing, ie don't add the EH.
-						*  Also, if we're called after a respawn and the
-						*  init EH shouldn't be used, then don't.
-						*/
-						if !(_scope == 0 && (_unitClass != _x)) then
-						{
-							if (!([] call _isExcluded) && [] call _useEH) then
-							{
-								_init = compile(getText _initEntry);
+                        if (isNumber _replaceEntry) then
+                        {
+                            _replaceDEH = ((getNumber _replaceEntry) == 1);
+                        };
+                    };
+                    if (isText _initEntry) then
+                    {
+                        _scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
+                        /*  If the init EH is private and vehicle is of the
+                        *  "wrong" class, do nothing, ie don't add the EH.
+                        *  Also, if we're called after a respawn and the
+                        *  init EH shouldn't be used, then don't.
+                        */
+                        if !(_scope == 0 && (_unitClass != _x)) then
+                        {
+                            if (!([] call _isExcluded) && [] call _useEH) then
+                            {
+                                _init = compile(getText _initEntry);
                                 if (_useDEHinit && _replaceDEH) then {
                                     _inits set [0, _init];
                                 } else {
                                     _inits = _inits+[_init];
                                 };
-							};
-						};
-					};
-				};
-			};
-			_i = _i+1;
-		};
-	};
+                            };
+                        };
+                    };
+                };
+            };
+            _i = _i+1;
+        };
+    };
 } forEach _classes;
 
 // Now call all the init EHs on the unit.

@@ -12,33 +12,33 @@
 
 if (isNull player) then
 {
-	if !(isServer) then
-	{
-		SLX_XEH_MACHINE set [1, true]; // set JIP
-		waitUntil { !(isNull player) };
-		waitUntil { local player };
-		/*
-		// For JIP players only: Usually we are now a few ms/seconds into
-		// the game. Test for JIP players
-		_i = 0;
-		while { _i < 20 } do
-		{
-			_i = _i + 1;
-			sleep 1;
-		};
-		*/
-	};
+    if !(isServer) then
+    {
+        SLX_XEH_MACHINE set [1, true]; // set JIP
+        waitUntil { !(isNull player) };
+        waitUntil { local player };
+        /*
+        // For JIP players only: Usually we are now a few ms/seconds into
+        // the game. Test for JIP players
+        _i = 0;
+        while { _i < 20 } do
+        {
+            _i = _i + 1;
+            sleep 1;
+        };
+        */
+    };
 };
 
 if !(isNull player) then
 {
-	if (isNull (group player)) then
-	{
-		// DEBUG TEST: Crashing due to JIP, or when going from briefing
-		//             into game
-		waitUntil { !(isNull (group player)) };
-	};
-	SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
+    if (isNull (group player)) then
+    {
+        // DEBUG TEST: Crashing due to JIP, or when going from briefing
+        //             into game
+        waitUntil { !(isNull (group player)) };
+    };
+    SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
 };
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 

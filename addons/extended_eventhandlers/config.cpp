@@ -7,24 +7,24 @@
 // Extended event handlers by Solus and Killswitch
 class CfgPatches
 {
-	class Extended_EventHandlers
-	{
-		units[] = {};
-		requiredVersion = 1.00;
-		requiredAddons[] = { "CAData", "CAAir", "CACharacters" };
-		SLX_XEH2_Version = 2.00;
-	};
+    class Extended_EventHandlers
+    {
+        units[] = {};
+        requiredVersion = 1.00;
+        requiredAddons[] = { "CAData", "CAAir", "CACharacters" };
+        SLX_XEH2_Version = 2.00;
+    };
 };
 
 class CfgAddons
 {
-	class PreloadAddons
-	{
-		class Extended_EventHandlers
-		{
-			list[] = { "Extended_EventHandlers" };
-		};
- 	};
+    class PreloadAddons
+    {
+        class Extended_EventHandlers
+        {
+            list[] = { "Extended_EventHandlers" };
+        };
+     };
 };
 
 // XEH uses all existing event handlers
@@ -52,7 +52,7 @@ landedStopped   = "_this call((_this select 0)getVariable'Extended_LandedStopped
 // that expect the class to exist
 class Extended_EventHandlers
 {
-	EXTENDED_EVENTHANDLERS
+    EXTENDED_EVENTHANDLERS
 };
 
 // Class for "pre-init", run-once event handlers. Code in here runs before any
@@ -68,32 +68,32 @@ class Extended_PostInit_EventHandlers {};
 // per mission but InitPost handlers are called for each unit.
 class Extended_InitPost_EventHandlers
 {
-	class All
-	{
-		// Compile code for other EHs to run and put them in the setVariable.
-		// Set up code for the remaining event handlers too...
-		class SLX_Init_Other_All
-		{
-			scope     = public;
-			onRespawn = true;   // Run this EH when a unit respawns
-			init      = "_this call SLX_XEH_initOthers";
-		};
-	};
+    class All
+    {
+        // Compile code for other EHs to run and put them in the setVariable.
+        // Set up code for the remaining event handlers too...
+        class SLX_Init_Other_All
+        {
+            scope     = public;
+            onRespawn = true;   // Run this EH when a unit respawns
+            init      = "_this call SLX_XEH_initOthers";
+        };
+    };
 };
 
 // Extended EH classes, where new events are defined.
 class Extended_Init_EventHandlers
 {
-	// Default Extended Event Handlers: Add extended event handlers to compile code.
-	class All
-	{
-		class SLX_Init_Post_All
-		{
-				scope     = public;
-				onRespawn = true;   // Run this EH when a unit respawns
-				init      = "_this call SLX_XEH_initPost";
-		};
-	};
+    // Default Extended Event Handlers: Add extended event handlers to compile code.
+    class All
+    {
+        class SLX_Init_Post_All
+        {
+                scope     = public;
+                onRespawn = true;   // Run this EH when a unit respawns
+                init      = "_this call SLX_XEH_initPost";
+        };
+    };
 
     class AAV
     {
@@ -146,56 +146,56 @@ class DefaultEventhandlers; // external - BIS default event handlers in ArmA 2
 // Make event handler classes have the extended event handlers.
 class CfgVehicles
 {
-	class All;
+    class All;
     class Air;
     class Animal;
     class LandVehicle;
-	class Man;
+    class Man;
     class Tracked_APC;
     class StaticWeapon;
     
     class AAV: Tracked_APC
-	{
-		 class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class AllVehicles: All
-	{
-		class EventHandlers { EXTENDED_EVENTHANDLERS };
-	};
+    {
+         class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+    };
+    class AllVehicles: All
+    {
+        class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
     class CAAnimalBase: Animal
-	{
-		 class EventHandlers { EXTENDED_EVENTHANDLERS };
-	};
+    {
+         class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
     class CAManBase: Man
-	{
-		class EventHandlers { EXTENDED_EVENTHANDLERS };
-	};
+    {
+        class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
     class Car: LandVehicle
-	{
-		class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class Helicopter: Air
-	{
-		class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class Plane: Air
-	{
-		class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
-	};
+    {
+        class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+    };
+    class Helicopter: Air
+    {
+        class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+    };
+    class Plane: Air
+    {
+        class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+    };
     /*
-	class ParachuteBase: Helicopter
-	{
-		class EventHandlers { EXTENDED_EVENTHANDLERS };
-	};
+    class ParachuteBase: Helicopter
+    {
+        class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
     */
-	class Ship: AllVehicles
-	{
-		class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
-	};
+    class Ship: AllVehicles
+    {
+        class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+    };
     class StaticCannon: StaticWeapon
-	{
-		 class EventHandlers { EXTENDED_EVENTHANDLERS };
-	};
+    {
+         class EventHandlers { EXTENDED_EVENTHANDLERS };
+    };
     class Tank: LandVehicle
     {
         class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
