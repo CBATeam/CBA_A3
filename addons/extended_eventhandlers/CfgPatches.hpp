@@ -232,6 +232,9 @@ class CfgPatches
     };
 };
 
+// Disabled preLoadAddons; These are not required since XEH only overrides the existing class tree, instead of extend or relink.
+// If preloadAddons is disabled, you should receive a message about missing XEH addon, ONLY when the requiredAddons list is incomplete, or class inheritance is broken
+/*
 class CfgAddons
 {
     class PreloadAddons
@@ -242,3 +245,4 @@ class CfgAddons
         };
      };
 };
+*/
