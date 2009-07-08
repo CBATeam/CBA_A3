@@ -63,7 +63,8 @@ if (isServer) then
 
 	// onPlayerConnected '[_name,_id] CALL(Opc)';
 	// TODO: Handle OPD without actually using opd
-	onPlayerDisconnected '[_name,_id] CALL(Opd)';
+	// Disabled for now, either not used, or annoying to mission makers
+	// onPlayerDisconnected '[_name,_id] CALL(Opd)';
 
 	// Weather and Time Sync
 	[] spawn
