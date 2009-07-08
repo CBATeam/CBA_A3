@@ -1,7 +1,7 @@
 require 'fileutils'
 include FileUtils
 
-version = 'v0.1.0'
+version = 'v0.1.1'
 versionSafe = version.gsub('.', '-')
 
 FOLDER = "CBA_#{versionSafe}"
