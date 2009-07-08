@@ -274,30 +274,30 @@ class CfgVehicles
     SLX_BIS_ForceRecon_EH;
 
     class FR_GL : FR_Base
-	{
-		class EventHandlers;
-	};
+    {
+        class EventHandlers;
+    };
     class FR_Cooper : FR_GL
     SLX_BIS_ForceRecon_EH;
 
     class FR_Marksman : FR_Base
-	{
-		class EventHandlers;
-	};
+    {
+        class EventHandlers;
+    };
     class FR_Sykes : FR_Marksman
     SLX_BIS_ForceRecon_EH;
 
     class FR_Corpsman : FR_Base
-	{ 
-		class EventHandlers;
-	};
+    { 
+        class EventHandlers;
+    };
     class FR_OHara : FR_Corpsman
     SLX_BIS_ForceRecon_EH;
 
     class FR_AR : FR_Base 
-	{ 
-		class EventHandlers;
-	};
+    { 
+        class EventHandlers;
+    };
     class FR_Rodriguez : FR_AR
     SLX_BIS_ForceRecon_EH;
 };
