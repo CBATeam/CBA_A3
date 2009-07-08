@@ -37,4 +37,4 @@ cp_r '../docs/cba_function_library', DOCS_DIR
 cp_r '../docs/cba_wiki', DOCS_DIR
 
 cd 'release'
-%x[7z a #{FOLDER}]
+%x[7z a #{FOLDER} #{FOLDER}/]
