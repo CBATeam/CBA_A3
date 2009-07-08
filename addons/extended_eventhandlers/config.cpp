@@ -124,12 +124,12 @@ class Extended_Init_EventHandlers
     
     class A10
     {
-        SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";"
+        SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
     };
     
     class Su34
     {
-        SLX_BIS_init = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";"
+        SLX_BIS_init = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
     };
     
     // Fires.
@@ -217,11 +217,11 @@ class Extended_Init_EventHandlers
     // Logics
     class BIS_ARTY_Logic
     {
-        SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\init.sqf'"
+        SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\init.sqf'";
     };
     class BIS_ARTY_Virtual_Artillery
     {
-        SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\ARTY_initVirtual.sqf'"
+        SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\ARTY_initVirtual.sqf'";
     };
     class Warfare
     {
@@ -270,7 +270,7 @@ class Extended_Init_EventHandlers
     };
     class GarbageCollector
     {
-        SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\garbage_collector\data\scripts\init.sqf"""
+        SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\garbage_collector\data\scripts\init.sqf""";
     };
     class HighCommand
     {
