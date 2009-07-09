@@ -6,3 +6,13 @@
 #define REQUIRED_VERSION 1.02
 
 #include "script_macros_common.hpp"
+
+/*
+	#define DEBUG_COMMON
+	#define DEBUG_DIAGNOSTIC
+	#define DEBUG_EVENTS
+	#define DEBUG_HASHES
+	#define DEBUG_MAIN
+	#define DEBUG_NETWORK
+	#define DEBUG_STRINGS
+*/
