@@ -104,7 +104,7 @@ _format = {
 private ["_c", "_type", "_component", "_message", "_msg", "_ar2", "_i", "_msgAr"];
 _c = count _this;
 _type = [true, true, false];
-_component = "CBA_DEBUG";
+_component = QUOTE(ADDON);
 _message = _this select 0;
 if (_c > 1) then
 {
@@ -113,11 +113,6 @@ if (_c > 1) then
 	{
 		_type = _this select 2;
 	};
-};
-
-if (_type select 2) exitWith
-{
-	[GVAR(debug), [_message, _component, [_type select 0,_type select 1,false]]] CALLMAIN(globalEvent);
 };
 
 _msgAr = [];
