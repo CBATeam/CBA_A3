@@ -10,6 +10,6 @@ class Extended_PostInit_EventHandlers
 {
 	class ADDON
 	{
-		clientInit = QUOTE(EXECF(XEH_ClientInit_Once));
+		clientInit = QUOTE(execVM COMPILE_FILE(XEH_ClientInit_Once));
 	};
 };

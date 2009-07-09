@@ -343,7 +343,7 @@ Example:
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
 // Deprecated, use call/spawn/execVM with COMPILE_FILE
-#define EXECF(var1) EXECFS(PREFIX,COMPONENT,var1)
+#define execVM COMPILE_FILE(var1) EXECFS(PREFIX,COMPONENT,var1)
 #define EXECFTEST(var1) EXECFSTEST(PREFIX,COMPONENT,var1)
 #define SPAWNF(var1) SPAWNFS(PREFIX,COMPONENT,var1)
 #define CALLF(var1) CALLFS(PREFIX,COMPONENT,var1)
