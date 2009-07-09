@@ -101,7 +101,7 @@ if (isServer) then
 	};
 };
 
-[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(Exec) } }] CALLMAIN(addEventHandler);
+[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(exec) } }] CALLMAIN(addEventHandler);
 
 [QUOTE(GVAR(say)), { if (!isDedicated) then { private ["_ar"]; _ar = _this select 0; { _x say (_ar select 1) } forEach (_ar select 0) } }] CALLMAIN(addEventHandler);
 [QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] CALLMAIN(addEventHandler);
