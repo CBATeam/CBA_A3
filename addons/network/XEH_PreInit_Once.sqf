@@ -33,7 +33,12 @@
 // Announce the initialization of the script
 ADDON = false;
 
-ISNIL(debug,false);
+#ifdef DEBUG_MODE_FULL
+	ISNIL(debug,true);
+#else
+	ISNIL(debug,false);
+#endif
+
 
 // COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast. 
 ISNIL(TimeSync_Disabled,false);
