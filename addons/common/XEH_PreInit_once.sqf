@@ -8,7 +8,7 @@ if (isNil "BIS_functions_mainscope") then
 {
 	"FunctionsManager" createVehicleLocal [0, 0];
 };
-[BIS_functions_mainscope] CALLF(init_functionsModule);
+[BIS_functions_mainscope] call COMPILE_FILE(init_functionsModule);
 LOG("Initialising the Functions module early.");
 if (isnil "RE") then
 {
@@ -65,8 +65,8 @@ DEPRECATE(fShuffle,fnc_shuffle);
 DEPRECATE(fSwitchPlayer,fnc_switchPlayer);
 
 // Initialize Components
-CALLF(init_gauss);
-CALLF(init_kron_strings);
+call COMPILE_FILE(init_gauss);
+call COMPILE_FILE(init_kron_strings);
 
 OBSOLETE_SYS(KRON,StrUpper,{ toUpper (_this select 0) });
 OBSOLETE_SYS(KRON,StrLower,{ toLower (_this select 0) });

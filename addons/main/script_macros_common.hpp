@@ -262,7 +262,7 @@ Group: General
 // TODO: Evaluate merging of different path functions...   .sqf  good to put in define?
 #define PATHTOS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
 #define PATHTOFS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
-#define COMPILEPREPROCESSS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTOS(var1,var2,var3)'
+#define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTOS(var1,var2,var3)'
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
 #define GVARS(var1,var2,var3) ##var1##_##var2##_##var3
@@ -274,21 +274,21 @@ Group: General
 // Direct file function
 #define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'
 #define EXECFSTEST(var1,var2,var3) (_this select 0) execVM 'PATHTOS(var1,var2,var3)'
-#define SPAWNFS(var1,var2,var3) spawn COMPILEPREPROCESSS(var1,var2,var3)
-#define CALLFS(var1,var2,var3) call COMPILEPREPROCESSS(var1,var2,var3)
-#define CALLFSTEST(var1,var2,var3) (_this select 0) call COMPILEPREPROCESSS(var1,var2,var3)
+#define SPAWNFS(var1,var2,var3) spawn COMPILE_FILE_SYS(var1,var2,var3)
+#define CALLFS(var1,var2,var3) call COMPILE_FILE_SYS(var1,var2,var3)
+#define CALLFSTEST(var1,var2,var3) (_this select 0) call COMPILE_FILE_SYS(var1,var2,var3)
 
 // Using a gameLogic
-#define PREP_LOGIC(var1,var2,var3) GLOBALVARMAINS(var1,var2) setVariable ['##var3', COMPILEPREPROCESSS(var1,var2,var3)]
-#define PREPMAIN_LOGIC(var1,var2,var3) ##var1##_MAINLOGIC setVariable ['##var3', COMPILEPREPROCESSS(var1,var2,var3)]
+#define PREP_LOGIC(var1,var2,var3) GLOBALVARMAINS(var1,var2) setVariable ['##var3', COMPILE_FILE_SYS(var1,var2,var3)]
+#define PREPMAIN_LOGIC(var1,var2,var3) ##var1##_MAINLOGIC setVariable ['##var3', COMPILE_FILE_SYS(var1,var2,var3)]
 #define CALL_LOGIC(var1,var2,var3) call GETVARS(var1,var2,var3)
 #define CALLMAIN_LOGIC(var1,var2) call GETVARMAINS(var1,var2)
 #define SPAWN_LOGIC(var1,var2,var3) spawn GETVARS(var1,var2,var3)
 #define SPAWNMAIN_LOGIC(var1,var2) spawn GETVARMAINS(var1,var2)
 
 // Using globalVariables
-#define PREP_GVAR(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILEPREPROCESSS(var1,var2,DOUBLES(fnc,var3))
-#define PREPMAIN_GVAR(var1,var2,var3) ##var1##_fnc_##var3 = COMPILEPREPROCESSS(var1,var2,DOUBLES(fnc,var3))
+#define PREP_GVAR(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
+#define PREPMAIN_GVAR(var1,var2,var3) ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
 #define CALL_GVAR(var1,var2,var3) call ##var1##_##var2##_fnc_##var3
 #define CALLMAIN_GVAR(var1,var3) call ##var1##_fnc_##var3
 #define SPAWN_GVAR(var1,var2,var3) spawn ##var1##_##var2##_fnc_##var3
@@ -327,7 +327,7 @@ Example:
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTOS(PREFIX,COMPONENT,var1)
 #define PATHTOF(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-#define COMPILEPREPROCESS(var1) COMPILEPREPROCESSS(PREFIX,COMPONENT,var1)
+#define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT,var1)
 #define GVAR(var1) GVARS(PREFIX,COMPONENT,var1)
 #define GVARMAIN(var1) GVARMAINS(PREFIX,var1)
 // TODO: What's this?
@@ -342,6 +342,7 @@ Example:
 #define SETVARMAIN SETVARMAINS(PREFIX)
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
+// Deprecated, use call/spawn/execVM with COMPILE_FILE
 #define EXECF(var1) EXECFS(PREFIX,COMPONENT,var1)
 #define EXECFTEST(var1) EXECFSTEST(PREFIX,COMPONENT,var1)
 #define SPAWNF(var1) SPAWNFS(PREFIX,COMPONENT,var1)
@@ -362,7 +363,7 @@ Example:
 #define PREP(var1) PREP_GVAR(PREFIX,COMPONENT,var1)
 #define PREPMAIN(var1) PREPMAIN_GVAR(PREFIX,COMPONENT,var1)
 
-// Deprecated
+// Deprecated use with call/spawn FUNC
 #define CALL(var1) CALL_GVAR(PREFIX,COMPONENT,var1)
 #define CALLMAIN(var1) CALLMAIN_GVAR(PREFIX,var1)
 #define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
