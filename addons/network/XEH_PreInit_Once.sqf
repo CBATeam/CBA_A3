@@ -73,13 +73,6 @@ if (isServer) then
 	// Weather and Time Sync
 	[] spawn
 	{
-		// Add Weather / Date sync to OPC
-		waitUntil { time > 0 };
-		GVAR(OPC) =
-		[
-			{ [] spawn { sleep 5; [QUOTE(GVAR(sync))] CALLMAIN(localEvent); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
-		] + GVAR(OPC);
-
 		// Every 60 Seconds date/weather sync
 		while { true } do
 		{
@@ -88,7 +81,7 @@ if (isServer) then
 		};
 	};
 } else {
-	GVAR(fnc_Id) =
+	GVAR(fnc_id) =
 	{
 		private ["_id"];
 		if (player == player) then
