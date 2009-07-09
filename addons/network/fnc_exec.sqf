@@ -28,7 +28,7 @@ if ((typeName _chan) == "OBJECT") then
 
 if (GVAR(debug)) then
 {
-	_msg = format["RCV: receiverID %1, senderID %2, destination %3, param %4, command %5", CALL(Id), _id, _chan, _objAr, _cmd];
+	_msg = format["RCV: receiverID %1, senderID %2, destination %3, param %4, command %5", call FUNC(Id), _id, _chan, _objAr, _cmd];
 
 	if (_ex) then { _msg = (_msg + ". Executing!") } else { _msg = (_msg + ". Not Executing!") };
 

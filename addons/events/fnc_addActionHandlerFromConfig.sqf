@@ -7,10 +7,10 @@ SCRIPT(addActionHandlerFromConfig);
 private ["_component", "_action", "_code", "_key"];
 PARAMS_3(_component,_action,_code);
 
-_key = [_component, _action] CALL(ReadActionFromConfig);
+_key = [_component, _action] call FUNC(ReadActionFromConfig);
 if (_key select 0 > -1) exitWith
 {
-	 [_key select 0, _code] CALL(AddHandler);
+	 [_key select 0, _code] call FUNC(AddHandler);
 	 true
 };
 

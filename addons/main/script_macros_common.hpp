@@ -353,7 +353,7 @@ Example:
 #define PREP(var1) PREP_LOGIC(PREFIX,COMPONENT,var1)
 #define PREPMAIN(var1) PREPMAIN_LOGIC(PREFIX,COMPONENT,var1)
 #define CALL(var1) CALL_LOGIC(PREFIX,COMPONENT,var1)
-#define call CBA_fnc_var1 CALL_LOGIC(PREFIX,var1)
+#define CALLMAIN(var1) CALL_LOGIC(PREFIX,var1)
 #define SPAWN(var1) SPAWN_LOGIC(PREFIX,COMPONENT,var1)
 #define SPAWNMAIN(var1) SPAWN_LOGIC(PREFIX,var1)
 */
@@ -361,10 +361,15 @@ Example:
 // Using GlobalVariables
 #define PREP(var1) PREP_GVAR(PREFIX,COMPONENT,var1)
 #define PREPMAIN(var1) PREPMAIN_GVAR(PREFIX,COMPONENT,var1)
+
+// Deprecated
 #define CALL(var1) CALL_GVAR(PREFIX,COMPONENT,var1)
-#define call CBA_fnc_var1 CALLMAIN_GVAR(PREFIX,var1)
+#define CALLMAIN(var1) CALLMAIN_GVAR(PREFIX,var1)
 #define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
 #define SPAWNMAIN(var1) SPAWNMAIN_GVAR(PREFIX,var1)
+
+// New
+#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 
 /* -------------------------------------------
 Macros: IS_*

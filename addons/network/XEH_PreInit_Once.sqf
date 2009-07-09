@@ -60,15 +60,15 @@ if (isServer) then
 	
 	GVAR(fnc_Id) = { "server" };
 	
-	[QUOTE(GVAR(opc)), { _this CALL(opc) }] call CBA_fnc_addEventHandler;
-	[QUOTE(GVAR(opd)), { _this CALL(opd) }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
-	[QUOTE(GVAR(sync)), { CALL(sync) }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(sync)), { call FUNC(sync) }] call CBA_fnc_addEventHandler;
 
-	// onPlayerConnected '[_name,_id] CALL(Opc)';
+	// onPlayerConnected '[_name,_id] call FUNC(Opc)';
 	// TODO: Handle OPD without actually using opd
 	// Disabled for now, either not used, or annoying to mission makers
-	// onPlayerDisconnected '[_name,_id] CALL(Opd)';
+	// onPlayerDisconnected '[_name,_id] call FUNC(Opd)';
 
 	// Weather and Time Sync
 	[] spawn
@@ -94,7 +94,7 @@ if (isServer) then
 	};
 };
 
-[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(exec) } }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call CBA_fnc_addEventHandler;
 
 [QUOTE(GVAR(say)), { if (!isDedicated) then { private ["_ar"]; _ar = _this select 0; { _x say (_ar select 1) } forEach (_ar select 0) } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
