@@ -117,7 +117,7 @@ if (_c > 1) then
 
 if (_type select 2) exitWith
 {
-	[-2, { _this CALLMAIN(debug) }, [_message, _component], [_type select 0,_type select 1,false]] CALLMAIN(remoteExecute);
+	[GVAR(debug), [_message, _component, [_type select 0,_type select 1,false]]] CALLMAIN(globalEvent);
 };
 
 _msgAr = [];
