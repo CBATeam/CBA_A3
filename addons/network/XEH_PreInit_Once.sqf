@@ -60,10 +60,10 @@ if (isServer) then
 	
 	GVAR(fnc_Id) = { "server" };
 	
-	[QUOTE(GVAR(opc)), { _this CALL(opc) }] CALLMAIN(addEventHandler);
-	[QUOTE(GVAR(opd)), { _this CALL(opd) }] CALLMAIN(addEventHandler);
-	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] CALLMAIN(localEvent) }] CALLMAIN(addEventHandler);
-	[QUOTE(GVAR(sync)), { CALL(sync) }] CALLMAIN(addEventHandler);
+	[QUOTE(GVAR(opc)), { _this CALL(opc) }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(opd)), { _this CALL(opd) }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
+	[QUOTE(GVAR(sync)), { CALL(sync) }] call CBA_fnc_addEventHandler;
 
 	// onPlayerConnected '[_name,_id] CALL(Opc)';
 	// TODO: Handle OPD without actually using opd
@@ -77,7 +77,7 @@ if (isServer) then
 		while { true } do
 		{
 			sleep 60;
-			[QUOTE(GVAR(sync))] CALLMAIN(localEvent);
+			[QUOTE(GVAR(sync))] call CBA_fnc_localEvent;
 		};
 	};
 } else {
@@ -94,11 +94,11 @@ if (isServer) then
 	};
 };
 
-[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(exec) } }] CALLMAIN(addEventHandler);
+[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this SPAWN(exec) } }] call CBA_fnc_addEventHandler;
 
-[QUOTE(GVAR(say)), { if (!isDedicated) then { private ["_ar"]; _ar = _this select 0; { _x say (_ar select 1) } forEach (_ar select 0) } }] CALLMAIN(addEventHandler);
-[QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] CALLMAIN(addEventHandler);
-[QUOTE(GVAR(date)), { _date = _this select 0; setDate _date }] CALLMAIN(addEventHandler);
+[QUOTE(GVAR(say)), { if (!isDedicated) then { private ["_ar"]; _ar = _this select 0; { _x say (_ar select 1) } forEach (_ar select 0) } }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(date)), { _date = _this select 0; setDate _date }] call CBA_fnc_addEventHandler;
 
 // Deprecated
 QUOTE(GVAR(say)) addPublicVariableEventHandler { if (!isDedicated) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };

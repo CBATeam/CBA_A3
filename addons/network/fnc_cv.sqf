@@ -13,7 +13,7 @@ _object = null;
 
 if !(isServer) then
 {
-	[0, { _this CALL(cv) }, _this] CALLMAIN(remoteExecute);
+	[0, { _this CALL(cv) }, _this] call CBA_fnc_remoteExecute;
 	#ifdef DEBUG
 	[format["Sending Vehicle Create Request: %1 to server", _this], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_Debug;
 	#endif

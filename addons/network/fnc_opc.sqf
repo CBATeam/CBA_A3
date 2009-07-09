@@ -24,7 +24,7 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 		// Deprecated
 		{ _params call _x } forEach GVAR(OPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?
 
-		if (time > 0 ) then { [] spawn { sleep 5; [QUOTE(GVAR(sync))] CALLMAIN(localEvent); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } };
+		if (time > 0 ) then { [] spawn { sleep 5; [QUOTE(GVAR(sync))] call CBA_fnc_localEvent; { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } };
 	};
 
 	#ifdef DEBUG
