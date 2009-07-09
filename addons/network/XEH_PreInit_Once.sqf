@@ -77,14 +77,14 @@ if (isServer) then
 		waitUntil { time > 0 };
 		GVAR(OPC) =
 		[
-			{ [] spawn { sleep 5; CALL(Sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
+			{ [] spawn { sleep 5; [QUOTE(GVAR(sync))] CALLMAIN(localEvent); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } }
 		] + GVAR(OPC);
 
 		// Every 60 Seconds date/weather sync
 		while { true } do
 		{
 			sleep 60;
-			[QUOTE(GVAR(sync))] CALLMAIN(localEvent)
+			[QUOTE(GVAR(sync))] CALLMAIN(localEvent);
 		};
 	};
 } else {

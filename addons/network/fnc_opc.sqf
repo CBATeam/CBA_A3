@@ -8,35 +8,24 @@ _dbg = 1;
 
 PARAMS_2(_obj,_name);
 _id = 1;
-//PARAMS_1(_name);
 //_id = _this select 1;
 
 _plName = if (isNull player) then { "" } else { name player };
+// Deprecated
 _this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPCB) }; // OnPlayerConnectedB, execute even without confirmation
 
 if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 {
-/*
-	_uid = GVAR(UIDS); GVAR(UIDS) = GVAR(UIDS) + 1;
-	_idx = GVAR(CLNAME) find _name;
-	if (_idx == -1) then
-	{
-		GVAR(CLNAME) = GVAR(CLNAME) + [_name];
-		_idx = GVAR(CLNAME) find _name;
-	};
-	GVAR(CLSET) set [_idx, false];
-	GVAR(CLUID) set [_idx, _uid];
-	GVAR(CLID) set [_idx, _this select 1];
-
-	GVAR(UPDATE) set [0, true]; GVAR(UPDATE) set [1, true]; // Initiate buffer for updating CLNAME and CLUID
-*/
 	_this spawn
 	{
 		PARAMS_2(_name,_id);
 		sleep 6;
 		//GVAR(CLSET) set [_this select 0, true];
+		// Deprecated
 		{ _params call _x } forEach GVAR(OPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?
-	}; // OnPlayerConnected
+
+		if (time > 0 ) then { [] spawn { sleep 5; [QUOTE(GVAR(sync))] CALLMAIN(localEvent); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } };
+	};
 
 	#ifdef DEBUG
 	[format["Player Connected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_Debug;
