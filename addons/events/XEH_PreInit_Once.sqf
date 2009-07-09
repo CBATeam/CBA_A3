@@ -29,8 +29,8 @@ for "_i" from 0 to _count do
 	};
 };
 
-PREP(ActionHandler);
-PREP(KeyHandler);
+PREP(actionHandler);
+PREP(keyHandler);
 
 
 // Initialisation required by CBA events.

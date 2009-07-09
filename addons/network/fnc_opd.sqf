@@ -8,16 +8,16 @@ private["_id", "_idx", "_name", "_uid"];
 PARAMS_2(_name,_id);
 
 // Deprecated
-_this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPD) };
+_this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(oPD) };
 /*
-_idx = GVAR(CLNAME) find _name;
+_idx = GVAR(cLNAME) find _name;
 if (_idx > -1) then
 {
-	_uid = format["%1", GVAR(CLUID) select _idx];
-	GVAR(CLSET) set [_idx, false]; // maybe unnececairy, depends if CLSET is going to be used for sth more
-	GVAR(CLUID) set [_idx, -9]; // maybe good substitute for GVAR(CLSET)?
+	_uid = format["%1", GVAR(cLUID) select _idx];
+	GVAR(cLSET) set [_idx, false]; // maybe unnececairy, depends if CLSET is going to be used for sth more
+	GVAR(cLUID) set [_idx, -9]; // maybe good substitute for GVAR(cLSET)?
 
-	GVAR(UPDATE) set [0, true]; // Initiate buffer for updating CLUID
+	GVAR(uPDATE) set [0, true]; // Initiate buffer for updating CLUID
 };
 */
 #ifdef DEBUG

@@ -39,12 +39,12 @@ ISNIL(debug,false);
 ISNIL(TimeSync_Disabled,false);
 ISNIL(WeatherSync_Disabled,false);
 
-PREP(Exec);
-PREP(CV);
+PREP(exec);
+PREP(cV);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
-GVAR(INIT) = false;
+GVAR(iNIT) = false;
 
 if (isServer) then
 {
@@ -54,9 +54,9 @@ if (isServer) then
 	ISNIL(OPD,[]); // OnPlayerDisConnected Code array to execute after a player is recognized
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-	PREP(Opc);
-	PREP(Opd);
-	PREP(Sync);
+	PREP(opc);
+	PREP(opd);
+	PREP(sync);
 	
 	GVAR(fnc_Id) = { "server" };
 	
@@ -65,10 +65,10 @@ if (isServer) then
 	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(sync)), { call FUNC(sync) }] call CBA_fnc_addEventHandler;
 
-	// onPlayerConnected '[_name,_id] call FUNC(Opc)';
+	// onPlayerConnected '[_name,_id] call FUNC(opc)';
 	// TODO: Handle OPD without actually using opd
 	// Disabled for now, either not used, or annoying to mission makers
-	// onPlayerDisconnected '[_name,_id] call FUNC(Opd)';
+	// onPlayerDisconnected '[_name,_id] call FUNC(opd)';
 
 	// Weather and Time Sync
 	[] spawn
@@ -105,7 +105,7 @@ QUOTE(GVAR(say)) addPublicVariableEventHandler { if (!isDedicated) then { privat
 QUOTE(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };
 QUOTE(GVAR(date)) addPublicVariableEventHandler { _date = _this select 1; setDate _date };
 
-GVAR(INIT) = true; // Deprecated
+GVAR(iNIT) = true; // Deprecated
 
 // Announce the completion of the initialization of the script
 ADDON = true;

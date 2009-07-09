@@ -21,14 +21,14 @@ if ((typeName _chan) == "OBJECT") then
 		case 0: { if (isServer) then { _ex = true } };
 		case -1: { if (SLX_XEH_MACHINE select 0) then { _ex = true } };
 		case -2: { _ex = true };
-		//case -3: { if (GVAR(UID) != _id) then { _ex = true } };
-		//default { if (GVAR(UID) == _chan) then { _ex = true } };
+		//case -3: { if (GVAR(uID) != _id) then { _ex = true } };
+		//default { if (GVAR(uID) == _chan) then { _ex = true } };
 	};
 };
 
 if (GVAR(debug)) then
 {
-	_msg = format["RCV: receiverID %1, senderID %2, destination %3, param %4, command %5", call FUNC(Id), _id, _chan, _objAr, _cmd];
+	_msg = format["RCV: receiverID %1, senderID %2, destination %3, param %4, command %5", call FUNC(id), _id, _chan, _objAr, _cmd];
 
 	if (_ex) then { _msg = (_msg + ". Executing!") } else { _msg = (_msg + ". Not Executing!") };
 

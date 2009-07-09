@@ -12,7 +12,7 @@ _id = 1;
 
 _plName = if (isNull player) then { "" } else { name player };
 // Deprecated
-_this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPCB) }; // OnPlayerConnectedB, execute even without confirmation
+_this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(oPCB) }; // OnPlayerConnectedB, execute even without confirmation
 
 if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 {
@@ -20,11 +20,11 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 	{
 		PARAMS_2(_name,_id);
 		sleep 6;
-		//GVAR(CLSET) set [_this select 0, true];
+		//GVAR(cLSET) set [_this select 0, true];
 		// Deprecated
-		{ _params call _x } forEach GVAR(OPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?
+		{ _params call _x } forEach GVAR(oPC); // OnPlayerConnected, execute after confirmation // Must still implement more means for verification?
 
-		if (time > 0 ) then { [] spawn { sleep 5; [QUOTE(GVAR(sync))] call CBA_fnc_localEvent; { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(MARKERS) } };
+		if (time > 0 ) then { [] spawn { sleep 5; [QUOTE(GVAR(sync))] call CBA_fnc_localEvent; { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(mARKERS) } };
 	};
 
 	#ifdef DEBUG
