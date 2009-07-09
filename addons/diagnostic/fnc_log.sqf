@@ -33,3 +33,4 @@ diag_log text format ["%1 [%2:%3] %4",
 	_file, _lineNum + 1, _message];
 
 nil;
+

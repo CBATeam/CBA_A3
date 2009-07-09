@@ -124,4 +124,3 @@ if ((_k - _j) >= _num)  then
 		_action = [player,_magazine] call CBA_fnc_AddMagazine;
 	};
 };
-

@@ -610,4 +610,3 @@ if (isNil VARIABLE) then \
 { \
 	ASSERTION_ERROR('Assertion (VARIABLE is defined) failed!\n\n' + (MESSAGE)); \
 }
-

@@ -102,4 +102,3 @@ if (_dif > 180) then { _dif = _dif - 360;};
 if (abs(_dif) < 43) then { _infov = true;} else { _infov = false;};
 
 [_azimuth,_dif,_infov,_threed]
-
