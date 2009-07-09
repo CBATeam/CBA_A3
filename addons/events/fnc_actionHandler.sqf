@@ -7,7 +7,7 @@ Function: CBA_fnc_actionHandler
 SCRIPT(actionHandler);
 
 private ["_code", "_action", "_handled", "_result"];
-#ifdef DEBUG
+#ifdef DEBUG_MODE_FULL
 	private ["_ar"];
 	_ar = [];
 #endif
@@ -18,7 +18,7 @@ _handled = false; // If true, suppress the default handling of the key.
 
 {
 	_code = _x select 0;
-	#ifdef DEBUG
+	#ifdef DEBUG_MODE_FULL
 		PUSH(_ar,_code);
 	#endif
 	_result = _this call _code;
@@ -38,7 +38,7 @@ _handled = false; // If true, suppress the default handling of the key.
 	if (_result) exitWith { _handled = true };
 	
 } forEach (GVAR(actions) getVariable _action);
-#ifdef DEBUG
+#ifdef DEBUG_MODE_FULL
 	if (count _ar > 0) then
 	{
 		[format["ActionPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fnc_Debug;

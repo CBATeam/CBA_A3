@@ -5,7 +5,7 @@
 #include "script_macros.hpp"
 
 #ifdef DEBUG_MAIN
-	#define DEBUG
+	#define DEBUG_MODE_FULL
 #endif
 
 #ifdef DEBUGSETTINGS_MAIN

@@ -20,6 +20,6 @@ if (_idx > -1) then
 	GVAR(uPDATE) set [0, true]; // Initiate buffer for updating CLUID
 };
 */
-#ifdef DEBUG
+#ifdef DEBUG_MODE_FULL
 [format["Player Disconnected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_Debug;
 #endif

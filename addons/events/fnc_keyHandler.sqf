@@ -5,7 +5,7 @@ Function: CBA_fnc_keyHandler
 SCRIPT(keyHandler);
 
 private ["_settings", "_code", "_handled", "_result"];
-#ifdef DEBUG
+#ifdef DEBUG_MODE_FULL
 	private ["_ar"];
 	_ar = [];
 #endif
@@ -24,7 +24,7 @@ _result = false;
 		if (!(_settings select 0) && _this select 2) exitWith {};
 		if (!(_settings select 1) && _this select 3) exitWith {};
 		if (!(_settings select 2) && _this select 4) exitWith {};
-		#ifdef DEBUG
+		#ifdef DEBUG_MODE_FULL
 			PUSH(_ar,_code);
 		#endif
 		_result = _this call _code;
@@ -46,7 +46,7 @@ _result = false;
 	if (_result) exitWith { _handled = true };
 	
 } forEach (GVAR(keys) select (_this select 1));
-#ifdef DEBUG
+#ifdef DEBUG_MODE_FULL
 	if (count _ar > 0) then
 	{
 		[format["KeyPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fnc_Debug;

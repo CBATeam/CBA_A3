@@ -2,7 +2,7 @@
 Internal Function: CBA_network_fnc_exec
 */
 #include "script_component.hpp"
-// #define DEBUG
+// #define DEBUG_MODE_FULL
 // Generic NET Execution Handler
 private ["_ar", "_id", "_chan", "_cmd", "_objAr", "_ex", "_msg"];
 PARAMS_2(_id,_ar);

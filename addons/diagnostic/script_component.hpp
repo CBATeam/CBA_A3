@@ -2,7 +2,7 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #ifdef DEBUG_DIAGNOSTIC
-	#define DEBUG
+	#define DEBUG_MODE_FULL
 #endif
 
 #ifdef DEBUGSETTINGS_DIAGNOSTIC

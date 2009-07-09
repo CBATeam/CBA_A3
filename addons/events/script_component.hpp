@@ -2,7 +2,7 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #ifdef DEBUG_EVENTS
-	#define DEBUG
+	#define DEBUG_MODE_FULL
 #endif
 
 #ifdef DEBUGSETTINGS_EVENTS
