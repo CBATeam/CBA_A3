@@ -7,6 +7,7 @@ Internal Function: CBA_network_fnc_opd
 private["_id", "_idx", "_name", "_uid"];
 PARAMS_2(_name,_id);
 
+// Deprecated
 _this spawn { _name = _this select 0; _id = _this select 1; { _this call _x } forEach GVAR(OPD) };
 /*
 _idx = GVAR(CLNAME) find _name;
