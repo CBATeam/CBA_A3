@@ -28,6 +28,6 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 	};
 
 	#ifdef DEBUG_MODE_FULL
-	[format["Player Connected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_Debug;
+	[format["Player Connected: %1", _name], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_debug;
 	#endif
 };

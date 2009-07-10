@@ -33,7 +33,7 @@ if (GVAR(debug)) then
 	if (_ex) then { _msg = (_msg + ". Executing!") } else { _msg = (_msg + ". Not Executing!") };
 
 	// Output to Chat and local arma.rpt
-	[_msg, QUOTE(ADDON)] call CBA_fnc_Debug;
+	[_msg, QUOTE(ADDON)] call CBA_fnc_debug;
 };
 
 if (_ex) then

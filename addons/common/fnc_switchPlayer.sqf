@@ -56,7 +56,7 @@ if ("LEAVEWEAPS" in _this) then
 	{ _newUnit addMagazine _x } forEach (_ar select 1);
 	{ _newUnit addWeapon _x } forEach (_ar select 0);
 };
-if ((primaryWeapon _newUnit) != "") then { [_newUnit, primaryWeapon _newUnit] call CBA_fnc_SelectWeapon };
+if ((primaryWeapon _newUnit) != "") then { [_newUnit, primaryWeapon _newUnit] call CBA_fnc_selectWeapon };
 
 hint "4.Weapons switched on new unit";
 sleep 1;

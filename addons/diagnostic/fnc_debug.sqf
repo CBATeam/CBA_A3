@@ -21,7 +21,7 @@ Examples:
     (begin example)
 		// Write the debug message in chat-log of local computer, and in
 		// local and remote arma.rpt.
-		[ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fnc_Debug;
+		[ "New Player Joined the Server!", "cba_network", [true, false, true] ] call CBA_fnc_debug;
     (end)
 
 Author:

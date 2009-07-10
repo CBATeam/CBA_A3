@@ -46,10 +46,10 @@ private
 ];
 
 PARAMS_1(_pos);
-_area = ["AREA:", "area:", [],_this] call CBA_fnc_GetArg;
-_activation = ["ACT:", "act:", [],_this] call CBA_fnc_GetArg;
-_statements = ["STATE:", "state:", [],_this] call CBA_fnc_GetArg;
-_name = ["NAME:", "name:", "", _this] call CBA_fnc_GetArg;
+_area = ["AREA:", "area:", [],_this] call CBA_fnc_getArg;
+_activation = ["ACT:", "act:", [],_this] call CBA_fnc_getArg;
+_statements = ["STATE:", "state:", [],_this] call CBA_fnc_getArg;
+_name = ["NAME:", "name:", "", _this] call CBA_fnc_getArg;
 
 _trg = createTrigger["EmptyDetector", _pos];
 if (count _area>0) then { _trg setTriggerArea _area };

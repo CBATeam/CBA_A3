@@ -22,7 +22,7 @@ Returns:
 	
 Examples:
 	(begin example)
-		_marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_CreateMarker;
+		_marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_createMarker;
 	(end)
 
 Author:
@@ -34,10 +34,10 @@ SCRIPT(createMarker);
 
 private ["_m", "_br", "_ty", "_co", "_tx"];
 
-_br = ["BRUSH:", "brush:", "", _this] call CBA_fnc_GetArg;
-_ty = ["TYPE:", "type:", "", _this] call CBA_fnc_GetArg;
-_co = ["COLOR:", "color:", "", _this] call CBA_fnc_GetArg;
-_tx = ["TEXT:", "text:", "", _this] call CBA_fnc_GetArg;
+_br = ["BRUSH:", "brush:", "", _this] call CBA_fnc_getArg;
+_ty = ["TYPE:", "type:", "", _this] call CBA_fnc_getArg;
+_co = ["COLOR:", "color:", "", _this] call CBA_fnc_getArg;
+_tx = ["TEXT:", "text:", "", _this] call CBA_fnc_getArg;
 
 if ("GLOBAL" in _this) then
 {
