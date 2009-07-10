@@ -38,13 +38,7 @@ _handled = false; // If true, suppress the default handling of the key.
 	if (_result) exitWith { _handled = true };
 	
 } forEach (GVAR(actions) getVariable _action);
-#ifdef DEBUG_MODE_FULL
-	if (count _ar > 0) then
-	{
-		[format["ActionPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fnc_debug;
-	} else {
-		[format["ActionPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fnc_debug;
-	};
-#endif
+
+TRACE_2("",_this,_ar);
 
 _handled;

@@ -14,9 +14,7 @@ _object = null;
 if !(isServer) then
 {
 	[0, { _this call FUNC(cv) }, _this] call CBA_fnc_remoteExecute;
-	#ifdef DEBUG_MODE_FULL
-	[format["Sending Vehicle Create Request: %1 to server", _this], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_1("Sending vehicle create request",_this);
 } else {
 	_object = _veh createVehicle _pos;
 	_valid = !(isNull _object);
@@ -43,7 +41,5 @@ if !(isServer) then
 	} else {
 		_name = _id;
 	};
-	#ifdef DEBUG_MODE_FULL
-	[format["Received Vehicle Create Request: %1 from %2 (%3), %4: %5", _this, _sid, _name, _object, _valid], QUOTE(GVAR(__scriptname)), DEBUGSETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_5("Received Vehicle Create Request",_this,_sid,_name,_object,_valid);
 };
