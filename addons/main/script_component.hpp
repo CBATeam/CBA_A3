@@ -2,14 +2,15 @@
 
 // Set a default debug mode for the component here (See documentation on how to default to each of the modes).
 
-#include "script_macros.hpp"
 
-#ifdef DEBUG_MAIN
+
+#ifdef DEBUG_ENABLED_MAIN
 	#define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUGSETTINGS_MAIN
-	#define DEBUGSETTINGS DEBUGSETTINGS_MAIN
-#else
-	#define DEBUGSETTINGS DEFAULT_DEBUGSETTINGS
+#ifdef DEBUG_SETTINGS_MAIN
+	#undef DEBUG_SETTINGS
+	#define DEBUG_SETTINGS DEBUG_SETTINGS_MAIN
 #endif
+
+#include "script_macros.hpp"

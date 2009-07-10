@@ -232,12 +232,7 @@ Group: General
 
 // *************************************
 // Internal Functions
-#define DEFAULT_DEBUGSETTINGS [false, true, false]
-// TODO: Evaluate if you can use macros with #ifdef..
-//#define DEBUGSETTINGSS(var1) DEBUG_##var1##
-//#define DEBUGS(var1) DEBUG_##var1
-//#define DEBUGSETTINGS DEBUGS(COMPONENT)
-//#define DEBUG DEBUGS(COMPONENT)
+#define DEBUG_SETTINGS [false, true, false]
 #define DOUBLES(var1,var2) ##var1##_##var2
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
 #define QUOTE(var1) #var1

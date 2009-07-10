@@ -16,7 +16,7 @@ if (isnil "RE") then
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
 
-["Initializing...", QUOTE(ADDON), DEBUGSETTINGS] call CBA_fnc_debug;
+["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fnc_debug;
 
 ADDON = false;
 

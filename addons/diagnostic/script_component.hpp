@@ -1,12 +1,13 @@
 #define COMPONENT diagnostic
-#include "\x\cba\addons\main\script_macros.hpp"
 
-#ifdef DEBUG_DIAGNOSTIC
+
+#ifdef DEBUG_ENABLED_DIAGNOSTIC
 	#define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUGSETTINGS_DIAGNOSTIC
-	#define DEBUGSETTINGS DEBUGSETTINGS_DIAGNOSTIC
-#else
-	#define DEBUGSETTINGS DEFAULT_DEBUGSETTINGS
+#ifdef DEBUG_SETTINGS_DIAGNOSTIC
+	#undef DEBUG_SETTINGS
+	#define DEBUG_SETTINGS DEBUG_SETTINGS_DIAGNOSTIC
 #endif
+
+#include "\x\cba\addons\main\script_macros.hpp"
