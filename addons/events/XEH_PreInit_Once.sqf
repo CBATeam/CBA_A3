@@ -35,6 +35,7 @@ PREP(keyHandler);
 
 // Initialisation required by CBA events.
 CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
+// TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
 if (isServer or (alive player)) then
 {
 	// We want all events, as soon as they start arriving.
