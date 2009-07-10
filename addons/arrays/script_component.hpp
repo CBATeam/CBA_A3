@@ -6,7 +6,6 @@
 #endif
 
 #ifdef DEBUG_SETTINGS_ARRAYS
-	#undef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_ARRAYS
 #endif
 

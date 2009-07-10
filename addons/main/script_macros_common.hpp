@@ -232,7 +232,6 @@ Group: General
 
 // *************************************
 // Internal Functions
-#define DEBUG_SETTINGS [false, true, false]
 #define DOUBLES(var1,var2) ##var1##_##var2
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
 #define QUOTE(var1) #var1
@@ -288,6 +287,10 @@ Group: General
 #define CALLMAIN_GVAR(var1,var3) call ##var1##_fnc_##var3
 #define SPAWN_GVAR(var1,var2,var3) spawn ##var1##_##var2##_fnc_##var3
 #define SPAWNMAIN_GVAR(var1,var2) spawn ##var1##_fnc_##var2
+
+#ifndef DEBUG_SETTINGS
+	#define DEBUG_SETTINGS [false, true, false]
+#endif
 
 // *************************************
 // User Functions

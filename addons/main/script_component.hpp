@@ -9,7 +9,6 @@
 #endif
 
 #ifdef DEBUG_SETTINGS_MAIN
-	#undef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_MAIN
 #endif
 
