@@ -49,7 +49,7 @@ PREP(cV);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
-GVAR(iNIT) = false;
+GVAR(init) = false;
 
 if (isServer) then
 {
@@ -63,7 +63,7 @@ if (isServer) then
 	PREP(opd);
 	PREP(sync);
 	
-	GVAR(fnc_Id) = { "server" };
+	FUNC(id) = { "server" };
 	
 	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call CBA_fnc_addEventHandler;
@@ -86,7 +86,7 @@ if (isServer) then
 		};
 	};
 } else {
-	GVAR(fnc_id) =
+	FUNC(id) =
 	{
 		private ["_id"];
 		if (player == player) then
@@ -105,12 +105,7 @@ if (isServer) then
 [QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(date)), { _date = _this select 0; setDate _date }] call CBA_fnc_addEventHandler;
 
-// Deprecated
-QUOTE(GVAR(say)) addPublicVariableEventHandler { if (!isDedicated) then { private ["_ar"]; _ar = _this select 1; { _x say (_ar select 1) } forEach (_ar select 0) } };
-QUOTE(GVAR(weather)) addPublicVariableEventHandler { _weather = _this select 1; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } };
-QUOTE(GVAR(date)) addPublicVariableEventHandler { _date = _this select 1; setDate _date };
-
-GVAR(iNIT) = true; // Deprecated
+GVAR(init) = true; // Deprecated
 
 // Announce the completion of the initialization of the script
 ADDON = true;
