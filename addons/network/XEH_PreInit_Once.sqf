@@ -41,11 +41,11 @@ ADDON = false;
 
 
 // COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast. 
-ISNIL(TimeSync_Disabled,false);
-ISNIL(WeatherSync_Disabled,false);
+ISNIL(timeSync_Disabled,false);
+ISNIL(weatherSync_Disabled,false);
 
 PREP(exec);
-PREP(cV);
+PREP(cv);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
@@ -53,10 +53,6 @@ GVAR(init) = false;
 
 if (isServer) then
 {
-	// Deprecated, instead, addEventHandler to GVAR(opc) and opd
-	ISNIL(OPC,[]); // OnPlayerConnected Code array to execute after player connected and had small delay
-	ISNIL(OPCB,[]); // onPlayerConnected Code Array to execute immediately on player connect
-	ISNIL(OPD,[]); // OnPlayerDisConnected Code array to execute after a player is recognized
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 
 	PREP(opc);
