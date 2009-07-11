@@ -22,10 +22,10 @@ _hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
 // All events except the init event
 //
 _events = [
-    "AnimChanged", "AnimDone", "Dammaged", "Engine", "Fired",
-    "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit",
+    "AnimChanged", "AnimStateChanged", "AnimDone", "Dammaged", "Engine",
+    "Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit",
     "IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped" //,
-    //"HandleDamage"
+    //"HandleDamage", "HandleHealing"
 ];
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };

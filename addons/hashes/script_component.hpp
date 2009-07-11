@@ -1,12 +1,13 @@
 #define COMPONENT hashes
-#include "\x\cba\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
-#ifdef DEBUG_HASHES
+
+#ifdef DEBUG_ENABLED_HASHES
 	#define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUGSETTINGS_HASHES
-	#define DEBUGSETTINGS DEBUGSETTINGS_HASHES
-#else
-	#define DEBUGSETTINGS DEFAULT_DEBUGSETTINGS
+#ifdef DEBUG_SETTINGS_HASHES
+	#define DEBUG_SETTINGS DEBUG_SETTINGS_HASHES
 #endif
+
+#include "\x\cba\addons\main\script_macros.hpp"

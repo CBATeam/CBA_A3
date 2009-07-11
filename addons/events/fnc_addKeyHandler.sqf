@@ -4,11 +4,10 @@ Function: CBA_fnc_addKeyHandler
 #include "script_component.hpp"
 SCRIPT(addKeyHandler);
 
-private ["_key", "_code", "_ar", "_settings", "_entry"];
+private ["_ar", "_entry"];
 PARAMS_3(_key,_settings,_code);
-#ifdef DEBUG_MODE_FULL
-	[format["addHandler: %1", _this], QUOTE(ADDON)] call CBA_fnc_debug;
-#endif
+TRACE_1("",_this);
+
 _ar = GVAR(keys) select _key;
 _entry = [_settings, _code];
 PUSH(_ar,_entry);

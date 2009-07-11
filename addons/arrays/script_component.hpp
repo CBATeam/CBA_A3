@@ -1,12 +1,13 @@
 #define COMPONENT arrays
-#include "\x\cba\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
-#ifdef DEBUG_ARRAYS
+
+#ifdef DEBUG_ENABLED_ARRAYS
 	#define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUGSETTINGS_ARRAYS
-	#define DEBUGSETTINGS DEBUGSETTINGS_ARRAYS
-#else
-	#define DEBUGSETTINGS DEFAULT_DEBUGSETTINGS
+#ifdef DEBUG_SETTINGS_ARRAYS
+	#define DEBUG_SETTINGS DEBUG_SETTINGS_ARRAYS
 #endif
+
+#include "\x\cba\addons\main\script_macros.hpp"
