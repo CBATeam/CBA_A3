@@ -4,7 +4,7 @@ Function: CBA_fnc_addKeyHandlerFromConfig
 #include "script_component.hpp"
 SCRIPT(addKeyHandlerFromConfig);
 
-private ["_component", "_action", "_code", "_key"];
+private ["_key"];
 PARAMS_3(_component,_action,_code);
 
 _key = [_component, _action] call CBA_fnc_readKeyFromConfig;
