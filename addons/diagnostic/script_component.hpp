@@ -1,4 +1,5 @@
 #define COMPONENT diagnostic
+#include "\x\cba\addons\main\script_mod.hpp"
 
 
 #ifdef DEBUG_ENABLED_DIAGNOSTIC

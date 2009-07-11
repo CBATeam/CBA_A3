@@ -1,8 +1,5 @@
 #define COMPONENT main
-
-// Set a default debug mode for the component here (See documentation on how to default to each of the modes).
-
-
+#include "script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_MAIN
 	#define DEBUG_MODE_FULL
