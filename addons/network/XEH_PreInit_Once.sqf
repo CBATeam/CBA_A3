@@ -47,6 +47,9 @@ ISNIL(weatherSync_Disabled,false);
 PREP(exec);
 PREP(cv);
 
+DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
+DEPRECATE(fnc_remoteSay,fnc_globalSay);
+
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
 GVAR(init) = false;

@@ -1,5 +1,5 @@
 /*
-Function: CBA_fnc_remoteExecute
+Function: CBA_fnc_globalExecute
 */
 #include "script_component.hpp"
 TRACE_1("",_this);

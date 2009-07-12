@@ -1,5 +1,5 @@
 /*
-Function: CBA_fnc_remoteSay
+Function: CBA_fnc_globalSay
 */
 // Deprecated, use now globalEvent
 #include "script_component.hpp"
