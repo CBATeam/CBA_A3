@@ -14,6 +14,7 @@ if (isNil "BIS_functions_mainscope") then
 {
 	if (isServer) then
 	{
+/*
 		CREATE_GROUP;
 		if (isNil "_group") then
 		{
@@ -22,6 +23,9 @@ if (isNil "BIS_functions_mainscope") then
 		} else {
 			if (isNull _group) then { CREATE_CENTER; CREATE_GROUP };
 		};
+*/
+		CREATE_CENTER;
+		CREATE_GROUP;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 	} else {
 		// TODO: Evaluate cleanup for this one

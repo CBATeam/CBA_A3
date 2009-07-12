@@ -6,14 +6,18 @@
 #define CREATE_GROUP _group = createGroup _x
 
 {
-		private ["_group", "_center"];
+	/*
+	private ["_group", "_center"];
+	CREATE_GROUP;
+	if (isNil "_group") then
+	{
+		CREATE_CENTER;
 		CREATE_GROUP;
-		if (isNil "_group") then
-		{
-			CREATE_CENTER;
-			CREATE_GROUP;
-		} else {
-			if (isNull _group) then { CREATE_CENTER; CREATE_GROUP };
-		};
-		deleteGroup _group;
+	} else {
+		if (isNull _group) then { CREATE_CENTER; CREATE_GROUP };
+	};
+	deleteGroup _group;
+	*/
+
+	CREATE_CENTER;
 } forEach [east, west, resistance, civilian, sideLogic];
