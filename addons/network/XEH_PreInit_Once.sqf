@@ -28,7 +28,7 @@
 */
 #define CHANGETIME 5
 
-["Initializing...", QUOTE(ADDON), DEBUG_SETTINGS] call CBA_fnc_debug;
+LOG("Initializing: " + QUOTE(ADDON));
 
 // Announce the initialization of the script
 ADDON = false;
