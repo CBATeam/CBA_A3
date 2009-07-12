@@ -100,9 +100,9 @@ if (isServer) then
 
 [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call CBA_fnc_addEventHandler;
 
-[QUOTE(GVAR(say)), { if (!isDedicated) then { private ["_ar"]; _ar = _this select 0; { _x say (_ar select 1) } forEach (_ar select 0) } }] call CBA_fnc_addEventHandler;
-[QUOTE(GVAR(weather)), { _weather = _this select 0; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
-[QUOTE(GVAR(date)), { _date = _this select 0; setDate _date }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(say)), { if (!isDedicated) then { private "_say"; _say = _this; { _x say (_say select 1) } forEach (_say select 0) } }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(weather)), { private "_weather"; _weather = _this; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(date)), { private "_date"; _date = _this; setDate _date }] call CBA_fnc_addEventHandler;
 
 GVAR(init) = true; // Deprecated
 
