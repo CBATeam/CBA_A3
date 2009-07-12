@@ -100,6 +100,7 @@ if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\module
 [] spawn
 {
 	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
+	waitUntil {!isNil "BIS_functions_mainscope"}; // functions cannot be fully init if the BIS_functions_mainscope is not available yet; requirement due to workaround for multiple function_mainscope logics incombination with changes to preInit
 	BIS_fnc_init = true;
 };
 

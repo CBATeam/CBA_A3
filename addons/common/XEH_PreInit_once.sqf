@@ -2,17 +2,27 @@
 SCRIPT(XEH_PreInit_once);
    
 // Prepare BIS functions/MP and precompile all functions we already have registered with it:
-// NOTE: This functions module is local rather than global, but there is no reason that this should
-//       affect anything adversely. Well, unless someone foolishly makes use of that assumption...
+// NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
+//       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
+//       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
+//		 In SP or as server (dedicated or clientServer), the logic is created with group and createUnit.
+private ["_center", "_group", "_logic"];
 if (isNil "BIS_functions_mainscope") then
 {
-	private ["_center", "_group", "_logic"];
-	_center = createCenter sideLogic;
-	_group = createGroup sideLogic;
-	_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
-	//"FunctionsManager" createVehicleLocal [0, 0];
+	if (isServer) then
+	{
+		_center = createCenter sideLogic;
+		_group = createGroup sideLogic;
+		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
+	} else {
+		// TODO: Evaluate cleanup for this one
+		_logic = "LOGIC" createVehicleLocal [0, 0];
+	};
+} else {
+	_logic = BIS_functions_mainscope;
 };
-[BIS_functions_mainscope] call COMPILE_FILE(init_functionsModule);
+
+[_logic] call COMPILE_FILE(init_functionsModule);
 LOG("Initialising the Functions module early.");
 if (isnil "RE") then
 {
