@@ -1,5 +1,8 @@
 /*
 Function: CBA_fnc_removePersistentMarker
+
+Description:
+	Removes the persistency of a global marker for JIP players.
 */
 #include "script_component.hpp"
 
