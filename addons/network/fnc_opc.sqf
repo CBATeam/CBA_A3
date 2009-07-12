@@ -18,6 +18,6 @@ if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 	TRACE_3("Player Connected",_name,_id,_obj);
 	if (time > 0) then 
 	{
-		[QUOTE(GVAR(sync))] call CBA_fnc_localEvent; { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(markers);
+		call FUNC(sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(markers);
 	};
 };

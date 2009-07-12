@@ -67,7 +67,6 @@ if (isServer) then
 	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
-	[QUOTE(GVAR(sync)), { call FUNC(sync) }] call CBA_fnc_addEventHandler;
 
 	// onPlayerConnected '[_name,_id] call FUNC(opc)';
 	// TODO: Handle OPD without actually using opd
@@ -81,7 +80,7 @@ if (isServer) then
 		while { true } do
 		{
 			sleep 60;
-			[QUOTE(GVAR(sync))] call CBA_fnc_localEvent;
+			call FUNC(sync);
 		};
 	};
 } else {
@@ -99,7 +98,6 @@ if (isServer) then
 };
 
 [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call CBA_fnc_addEventHandler;
-
 [QUOTE(GVAR(say)), { if (!isDedicated) then { private "_say"; _say = _this; { _x say (_say select 1) } forEach (_say select 0) } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(weather)), { private "_weather"; _weather = _this; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(date)), { private "_date"; _date = _this; setDate _date }] call CBA_fnc_addEventHandler;
