@@ -1,5 +1,5 @@
 /*
-Internal Function: CBA_fnc_removePersistentMarker
+Function: CBA_fnc_removePersistentMarker
 */
 #include "script_component.hpp"
 

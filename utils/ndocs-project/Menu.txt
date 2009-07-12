@@ -143,8 +143,10 @@ Group: Functions  {
 		} # Group: Misc
 
 		Group: Network {
+			File: addPersistentMarker  (no auto-title, network\fnc_addPersistentMarker.sqf)
 			File: globalExecute  (no auto-title, network\fnc_globalExecute.sqf)
 			File: globalSay  (no auto-title, network\fnc_globalSay.sqf)
+			File: removePersistentMarker  (no auto-title, network\fnc_removePersistentMarker.sqf)
 		} # Group: Network
 
 		Group: Strings {

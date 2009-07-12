@@ -1,5 +1,5 @@
 /*
-Internal Function: CBA_fnc_addPersistentMarker
+Function: CBA_fnc_addPersistentMarker
 */
 #include "script_component.hpp"
 

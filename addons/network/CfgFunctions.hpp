@@ -15,6 +15,18 @@ class CfgFunctions
 				description = "<NO DESC>";
 				file = "\x\cba\addons\network\fnc_globalExecute.sqf";
 			};
+			// CBA_fnc_addPersistentMarker
+			class addPersistentMarker
+			{
+				description = "<NO DESC>";
+				file = "\x\cba\addons\network\fnc_addPersistentMarker.sqf";
+			};
+			// CBA_fnc_removePersistentMarker
+			class removePersistentMarker
+			{
+				description = "<NO DESC>";
+				file = "\x\cba\addons\network\fnc_removePersistentMarker.sqf";
+			};
 			// CBA_fnc_globalSay
 			class globalSay
 			{
