@@ -27,12 +27,15 @@ if (isNil "BIS_functions_mainscope") then
 		CREATE_CENTER;
 		CREATE_GROUP;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
+		TRACE_2("Created FunctionsManager Logic",_group,_logic);
 	} else {
 		// TODO: Evaluate cleanup for this one
 		_logic = "LOGIC" createVehicleLocal [0, 0];
+		TRACE_1("Created FunctionsManager Logic (local)",_logic);
 	};
 } else {
 	_logic = BIS_functions_mainscope;
+	TRACE_1("Using already available BIS_functions_mainscope",_logic);
 };
 
 [_logic] call COMPILE_FILE(init_functionsModule);
