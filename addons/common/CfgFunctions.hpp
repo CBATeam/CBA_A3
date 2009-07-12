@@ -18,7 +18,7 @@ class CfgFunctions
 			// CBA_fnc_players
 			class players
 			{
-				description = "Get a list of current players.";
+				description = "Get a list of current player objects.";
 				file = "\x\cba\addons\common\fnc_players.sqf";
 			};
 			// CBA_fnc_determineMuzzles
@@ -84,7 +84,7 @@ class CfgFunctions
 			// CBA_fnc_selectWeapon
 			class selectWeapon
 			{
-				description = "Selects a weapon, including correctly selecting a muzzle, if any.";
+				description = "Selects weapon, if the player has the weapon, including correctly selecting a muzzle, if any.";
 				file = "\x\cba\addons\common\fnc_selectWeapon.sqf";
 			};
 			// CBA_fnc_inheritsFrom

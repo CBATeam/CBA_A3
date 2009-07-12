@@ -9,17 +9,17 @@ class CfgFunctions
 	{
 		class Network
 		{
-			// CBA_fnc_remoteSay
-			class remoteSay
+			// CBA_fnc_globalExecute
+			class globalExecute
 			{
 				description = "<NO DESC>";
-				file = "\x\cba\addons\network\fnc_remoteSay.sqf";
+				file = "\x\cba\addons\network\fnc_globalExecute.sqf";
 			};
-			// CBA_fnc_remoteExecute
-			class remoteExecute
+			// CBA_fnc_globalSay
+			class globalSay
 			{
 				description = "<NO DESC>";
-				file = "\x\cba\addons\network\fnc_remoteExecute.sqf";
+				file = "\x\cba\addons\network\fnc_globalSay.sqf";
 			};
 		};
 	};
