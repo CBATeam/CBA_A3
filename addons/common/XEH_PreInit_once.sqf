@@ -1,5 +1,8 @@
 #include "script_component.hpp"
 SCRIPT(XEH_PreInit_once);
+
+#define CREATE_CENTER _center = createCenter sideLogic
+#define CREATE_GROUP _group = createGroup sideLogic
    
 // Prepare BIS functions/MP and precompile all functions we already have registered with it:
 // NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
@@ -11,8 +14,14 @@ if (isNil "BIS_functions_mainscope") then
 {
 	if (isServer) then
 	{
-		_center = createCenter sideLogic;
-		_group = createGroup sideLogic;
+		CREATE_GROUP;
+		if (isNil "_group") then
+		{
+			CREATE_CENTER;
+			CREATE_GROUP;
+		} else {
+			if (isNull _group) then { CREATE_CENTER; CREATE_GROUP };
+		};
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 	} else {
 		// TODO: Evaluate cleanup for this one
