@@ -51,6 +51,10 @@
 	#define MAINLOGIC main
 #endif
 
+#ifndef VERSION
+	#define VERSION 0
+#endif
+
 /* -------------------------------------------
 Group: Debugging
 ------------------------------------------- */
@@ -291,6 +295,8 @@ Group: General
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
 #endif
+
+#define MSG_INIT QUOTE(Initializing: ADDON version: VERSION)
 
 // *************************************
 // User Functions
