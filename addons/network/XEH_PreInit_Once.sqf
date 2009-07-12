@@ -28,7 +28,7 @@
 */
 #define CHANGETIME 5
 
-LOG("Initializing: " + QUOTE(ADDON));
+LOG(MSG_INIT);
 
 // Announce the initialization of the script
 ADDON = false;

@@ -1,4 +1,4 @@
 #include "script_component.hpp"
-LOG("Initializing: " + QUOTE(ADDON));
+LOG(MSG_INIT);
 
 [GVAR(debug), { _this call CBA_fnc_debug }] call CBA_fnc_addEventHandler;

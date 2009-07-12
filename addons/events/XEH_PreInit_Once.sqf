@@ -8,7 +8,7 @@
 	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
 	[QUOTE(COMPONENT), "cqb", { _this call GVAR(keyPressed) }] call cba_keys_fAddHandlerFromConfig;
 */
-LOG("Initializing: " + QUOTE(ADDON));
+LOG(MSG_INIT);
 
 GVAR(keys) = [];
 for "_i" from 0 to 250 do

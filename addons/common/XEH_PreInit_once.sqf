@@ -46,7 +46,7 @@ if (isnil "RE") then
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
 
-LOG("Initializing: " + QUOTE(ADDON));
+LOG(MSG_INIT);
 
 ADDON = false;
 
