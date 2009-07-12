@@ -6,7 +6,11 @@ SCRIPT(XEH_PreInit_once);
 //       affect anything adversely. Well, unless someone foolishly makes use of that assumption...
 if (isNil "BIS_functions_mainscope") then
 {
-	"FunctionsManager" createVehicleLocal [0, 0];
+	private ["_center", "_group", "_logic"];
+	_center = createCenter sideLogic;
+	_group = createGroup sideLogic;
+	_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
+	//"FunctionsManager" createVehicleLocal [0, 0];
 };
 [BIS_functions_mainscope] call COMPILE_FILE(init_functionsModule);
 LOG("Initialising the Functions module early.");
