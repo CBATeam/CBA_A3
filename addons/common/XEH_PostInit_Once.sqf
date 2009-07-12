@@ -13,7 +13,7 @@
 			CREATE_CENTER;
 			CREATE_GROUP;
 		} else {
-			if (isNull _group) then { CREATE_CENTER };
+			if (isNull _group) then { CREATE_CENTER; CREATE_GROUP };
 		};
 		deleteGroup _group;
 } forEach [east, west, resistance, civilian, sideLogic];
