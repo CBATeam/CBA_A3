@@ -38,8 +38,10 @@ if !(isNull player) then
         //             into game
         waitUntil { !(isNull (group player)) };
     };
-    SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
 };
+// Monitor playable units (players and AI)
+SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
+
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 
 // General InitPosts
