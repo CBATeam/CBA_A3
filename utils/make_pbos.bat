@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL=ruby "P:\x\dh-arma-tools\lib\main.rb"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-1-1.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-1-2.biprivatekey"
 set SIGN="C:\Program Files (x86)\Bohemia Interactive\Tools\BinPBO Personal Edition\DSSignFile\DSSignFile.exe"
 
 REM set OPTS=-m
