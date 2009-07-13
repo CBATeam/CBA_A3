@@ -3,6 +3,7 @@ Function: CBA_fnc_addPlayerAction
 
 Description:
 	Adds persistent action to player (which will also be available in vehicles).
+
 */
 #include "script_component.hpp"
 

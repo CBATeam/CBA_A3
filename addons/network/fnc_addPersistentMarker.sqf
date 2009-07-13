@@ -3,6 +3,7 @@ Function: CBA_fnc_addPersistentMarker
 
 Description:
 	Makes a global marker persistent for JIP players.
+
 */
 #include "script_component.hpp"
 

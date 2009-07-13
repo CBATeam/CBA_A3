@@ -3,6 +3,7 @@ Function: CBA_fnc_removePlayerAction
 
 Description:
 	Removes player action.
+
 */
 #include "script_component.hpp"
 
