@@ -4,22 +4,48 @@ Function: CBA_fnc_removePlayerAction
 Description:
 	Removes player action previously added with <CBA_fnc_addPlayerAction>.
 
+Parameters:
+	_actionIndex - Index of action to remove [Number]
+	
+Returns:
+	True if removed. False if a dedicated server or where the action was not
+	defined [Boolean]
+	
+Example:
+	(begin example)
+		actionIndex = [["Teleport", "teleport.sqf"]] call CBA_fnc_addPlayerAction;
+		
+		// later
+		
+		[actionIndex] call CBA_fnc_removePlayerAction;
+	(end)
+	
+Author:
+	Sickboy
+
 */
 #include "script_component.hpp"
 
-PARAMS_1(_action);
+PARAMS_1(_actionIndex);
 TRACE_1(_this);
 
-if (isDedicated) then
+private "_return";
+
+_return = if (isDedicated) then
 {
-	WARNING("Function ran on a dedicated server. Function only usable on a client");
+	WARNING("Function ran on a dedicated server. Function only usable on a client. Index was: " + str _actionIndex);
 	false;
 } else {
-	if (_action in GVAR(actionlist)) then
+	if ([GVAR(actionList), _actionIndex] call CBA_fnc_hashHasKey) then
 	{
-		SUB(GVAR(actionlist),[_action]);
+		[GVAR(actionlist),_actionIndex, nil] call CBA_fnc_hashSet;
+		GVAR(actionListUpdated) = true;
+		true;
 	} else {
-		WARNING("Action was already not persistent " + str(_action));
+		WARNING("Action was not persistent: " + str _actionIndex);
+		false;
 	};
-	true;
 };
+
+_return;
+

@@ -1,3 +1,3 @@
 #include "script_component.hpp"
 
-execVM 'PATHTO(init_actionmonitor)';
+call COMPILE_FILE(init_actionmonitor);
