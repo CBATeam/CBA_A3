@@ -1,7 +1,12 @@
 require 'fileutils'
 include FileUtils
 
-version = 'v0.1.1'
+unless ARGV.size == 1
+	puts "Usage: #{$0} VERSION"
+	exit
+end
+
+version = ARGV[0]
 versionSafe = version.gsub('.', '-')
 
 FOLDER = "CBA_#{versionSafe}"
