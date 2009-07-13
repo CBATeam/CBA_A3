@@ -2,16 +2,17 @@
 Function: CBA_fnc_addPlayerAction
 
 Description:
-	Adds persistent action to player (which will also be available in vehicles and after respawn).
+	Adds persistent action to player (which will also be available in vehicles
+	and after respawn or teamswitch).
 	
-	Remove action with <CBA_fnc_removePlayerAction>. *Do not* use standard BIS removeAction
-    with these action indexes!
+	Remove action with <CBA_fnc_removePlayerAction>. *Do not* use standard
+	removeAction command with these player-action indices!
 	
 Parameters:
 	_actionArray - Array that defines the action, as used in addAction command [Array]
 	
 Returns:
-	Index of action if added. -1 if used on a dedicated server [Boolean]
+	Index of action if added. -1 if used on a dedicated server [Number]
 	
 Example:
 	(begin example)
