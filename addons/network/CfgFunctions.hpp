@@ -18,13 +18,13 @@ class CfgFunctions
 			// CBA_fnc_addPersistentMarker
 			class addPersistentMarker
 			{
-				description = "<NO DESC>";
+				description = "Makes a global marker persistent for JIP players.";
 				file = "\x\cba\addons\network\fnc_addPersistentMarker.sqf";
 			};
 			// CBA_fnc_removePersistentMarker
 			class removePersistentMarker
 			{
-				description = "<NO DESC>";
+				description = "Removes the persistency of a global marker for JIP players.";
 				file = "\x\cba\addons\network\fnc_removePersistentMarker.sqf";
 			};
 			// CBA_fnc_globalSay
