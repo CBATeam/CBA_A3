@@ -13,7 +13,7 @@ _object = null;
 
 if !(isServer) then
 {
-	[0, { _this call FUNC(cv) }, _this] call CBA_fnc_remoteExecute;
+	[0, { _this call FUNC(cv) }, _this] call CBA_fnc_globalExecute;
 	TRACE_1("Sending vehicle create request",_this);
 } else {
 	_object = _veh createVehicle _pos;

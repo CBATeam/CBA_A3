@@ -117,6 +117,12 @@ class CfgFunctions
 				description = "Drops a weapon.";
 				file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
 			};
+			// CBA_fnc_addPlayerAction
+			class addPlayerAction
+			{
+				description = "Adds persistent action to player (which will also be available in vehicles).";
+				file = "\x\cba\addons\common\fnc_addPlayerAction.sqf";
+			};
 			// CBA_fnc_getAnimType
 			class getAnimType
 			{
@@ -170,6 +176,12 @@ class CfgFunctions
 			{
 				description = "Create a trigger all at once.";
 				file = "\x\cba\addons\common\fnc_createTrigger.sqf";
+			};
+			// CBA_fnc_removePlayerAction
+			class removePlayerAction
+			{
+				description = "Removes player action previously added with <CBA_fnc_addPlayerAction>.";
+				file = "\x\cba\addons\common\fnc_removePlayerAction.sqf";
 			};
 			// CBA_fnc_nearPlayer
 			class nearPlayer
