@@ -50,6 +50,12 @@ PREP(cv);
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
 
+
+#define ADD_PERSISTENT_MARKER { [_this select 0, true] call CBA_fnc_setMarkerPersistent };
+OBSOLETE(fnc_addPersistentMarker,ADD_PERSISTENT_MARKER);
+#define REMOVE_PERSISTENT_MARKER { [_this select 0, false] call CBA_fnc_setMarkerPersistent };
+OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
+
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
 GVAR(init) = false;

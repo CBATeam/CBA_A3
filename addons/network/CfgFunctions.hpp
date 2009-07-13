@@ -9,23 +9,23 @@ class CfgFunctions
 	{
 		class Network
 		{
+			// CBA_fnc_setMarkerPersistent
+			class setMarkerPersistent
+			{
+				description = "Sets or unsets JIP persistency on a global marker.";
+				file = "\x\cba\addons\network\fnc_setMarkerPersistent.sqf";
+			};
 			// CBA_fnc_globalExecute
 			class globalExecute
 			{
 				description = "<NO DESC>";
 				file = "\x\cba\addons\network\fnc_globalExecute.sqf";
 			};
-			// CBA_fnc_addPersistentMarker
-			class addPersistentMarker
+			// CBA_fnc_getMarkerPersistent
+			class getMarkerPersistent
 			{
-				description = "<NO DESC>";
-				file = "\x\cba\addons\network\fnc_addPersistentMarker.sqf";
-			};
-			// CBA_fnc_removePersistentMarker
-			class removePersistentMarker
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\addons\network\fnc_removePersistentMarker.sqf";
+				description = "Checks if a global marker is persistent for JIP players.";
+				file = "\x\cba\addons\network\fnc_getMarkerPersistent.sqf";
 			};
 			// CBA_fnc_globalSay
 			class globalSay
