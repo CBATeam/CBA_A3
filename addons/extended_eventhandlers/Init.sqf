@@ -18,8 +18,6 @@ _unit = _this select 0;
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this>2) then { _this select 2 } else { false };
 
-diag_log text format["XEH_Init: %1",_this];
-
 // Get array of inherited classes of unit.
 _unitClass = typeOf _unit;
 _classes = [_unitClass];
@@ -144,10 +142,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 	};
 } forEach _classes;
 
-diag_log text format["XEH_Inits to run: %1", _inits];
-
 // Now call all the init EHs on the unit.
 { [_unit] call _x } forEach _inits;
-diag_log text format["XEH_Init END: %1",_this];
 
 nil;
