@@ -31,24 +31,34 @@ SLX_XEH_F_INIT = {
                 _entryServer = (_entry/"serverInit");
                 _entryClient = (_entry/"clientInit");
                 _entry = (_entry/"init");
-                if (isText _entryServer) then
-                {
-                    _InitsServer = _InitsServer+[compile(getText _entryServer)];
-                };
-                if (isText _entryClient) then
-                {
-                    _InitsClient = _InitsClient+[compile(getText _entryClient)];
-                };
-            };
-            if (isText _entry) then
-            {
-                _Inits = _Inits+[compile(getText _entry)];
-            };
+
+				if (isText _entry) then
+				{
+					_Inits = _Inits+[compile(getText _entry)];
+				};
+				if (isServer) then
+				{
+					if (isText _entryServer) then
+					{
+						_Inits = _Inits+[compile(getText _entryServer)];
+					};				
+				};
+				if (!isDedicated) then
+				{
+					if (isText _entryClient) then
+					{
+						_Inits = _Inits+[compile(getText _entryClient)];
+					};
+				};
+            } else {
+				if (isText _entry) then
+				{
+					_Inits = _Inits+[compile(getText _entry)];
+				};
+			};
             _i = _i+1;
         };
-        { call _x } forEach _Inits;
-        if (isServer) then { { call _x } forEach _InitsServer };
-        if (!isServer || !isDedicated) then { { call _x } forEach _InitsClient };
+        { call _x } forEach _Inits;       
     };
 };
 
