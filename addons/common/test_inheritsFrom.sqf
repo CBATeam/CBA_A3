@@ -24,7 +24,7 @@ _result = [_class, _base] call CBA_fnc_inheritsFrom;
 ASSERT_FALSE(_result,_fn);
 
 _class = configFile >> "CfgWeapons" >> "m16a4_acg_gl";
-_base = configFile >> "CfgWeapons" >> "PistolCore"
+_base = configFile >> "CfgWeapons" >> "PistolCore";
 _result = [_class, _base] call CBA_fnc_inheritsFrom;
 ASSERT_FALSE(_result,_fn);
 

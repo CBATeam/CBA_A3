@@ -8,18 +8,18 @@ Description:
 	For objects, it is probably simpler to use the *isKindOf* command.
 
 Parameters:
-	_class - Class to check if it is a descendent of _baseClass [Config]
-	_baseClass - Ancestor class [Config]
+	_config - Class to check if it is a descendent of _baseConfig [Config]
+	_baseConfig - Ancestor config class [Config]
 	
 Returns:
-	true if _class is a decendent of _baseClass [Boolean]
+	true if _config is a decendent of _baseConfig [Boolean]
 	
 Examples:
 	(begin example)
 		_rifle = configFile >> "CfgWeapons" >> "m16a4_acg_gl";
 		_baseRifle = configFile >> "CfgWeapons" >> "RifleCore";
 		_inherits = [_rifle, _baseRifle] call CBA_fnc_inheritsFrom;
-		// => true in this case, since that rifle is a descendent of RifleCore.
+		// => true in this case, since all rifles are descended from RifleCore.
 	(end)
 
 Author:
@@ -29,16 +29,15 @@ Author:
 #include "script_component.hpp"
 SCRIPT(inheritsFrom);
 
-PARAMS_2(_class,_baseClass);
+PARAMS_2(_config,_baseConfig);
 
 private "_valid";
 _valid = false;
 
-_class = inheritsFrom _class;
-while { _class != "" } do
+while { (configName _config) != "" } do
 {
-	if (_class == _baseClass) exitWith { _valid = true };
-	_class = inheritsFrom _class;
+	_config = inheritsFrom _config;
+	if (_config == _baseConfig) exitWith { _valid = true };
 };
 
-_valid
+_valid;
