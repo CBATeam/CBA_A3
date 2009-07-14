@@ -18,7 +18,7 @@ class CfgFunctions
 			// CBA_fnc_globalExecute
 			class globalExecute
 			{
-				description = "<NO DESC>";
+				description = "Executes code on given destinations";
 				file = "\x\cba\addons\network\fnc_globalExecute.sqf";
 			};
 			// CBA_fnc_getMarkerPersistent
@@ -30,7 +30,7 @@ class CfgFunctions
 			// CBA_fnc_globalSay
 			class globalSay
 			{
-				description = "<NO DESC>";
+				description = "Says sound on all client computer";
 				file = "\x\cba\addons\network\fnc_globalSay.sqf";
 			};
 		};

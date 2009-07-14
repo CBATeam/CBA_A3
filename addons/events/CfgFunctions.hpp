@@ -24,7 +24,7 @@ class CfgFunctions
 			// CBA_fnc_addActionHandler
 			class addActionHandler
 			{
-				description = "<NO DESC>";
+				description = "Adds an action to an actionHandler";
 				file = "\x\cba\addons\events\fnc_addActionHandler.sqf";
 			};
 			// CBA_fnc_remoteEvent
@@ -36,25 +36,25 @@ class CfgFunctions
 			// CBA_fnc_addKeyHandlerFromConfig
 			class addKeyHandlerFromConfig
 			{
-				description = "<NO DESC>";
+				description = "Adds an action to a keyhandler, read from config";
 				file = "\x\cba\addons\events\fnc_addKeyHandlerFromConfig.sqf";
 			};
 			// CBA_fnc_addActionHandlerFromConfig
 			class addActionHandlerFromConfig
 			{
-				description = "<NO DESC>";
+				description = "Adds an action to an actionHandler, read from config";
 				file = "\x\cba\addons\events\fnc_addActionHandlerFromConfig.sqf";
 			};
 			// CBA_fnc_readKeyFromConfig
 			class readKeyFromConfig
 			{
-				description = "<NO DESC>";
+				description = "Reads key setting from config";
 				file = "\x\cba\addons\events\fnc_readKeyFromConfig.sqf";
 			};
 			// CBA_fnc_readActionFromConfig
 			class readActionFromConfig
 			{
-				description = "<NO DESC>";
+				description = "Reads action setting from config";
 				file = "\x\cba\addons\events\fnc_readActionFromConfig.sqf";
 			};
 			// CBA_fnc_globalEvent
