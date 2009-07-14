@@ -1,5 +1,23 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeyHandlerFromConfig
+
+Description:
+	Adds an action to a keyhandler, read from config
+	
+Parameters:
+	_component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
+	_action - Action classname [String].
+	_code - Code to execute upon event [Code].
+
+Returns:
+
+Examples:
+	(begin example)
+		["cba_sys_nvg", "nvgon", { _this call myAction }] call CBA_fnc_addKeyHandlerFromConfig
+	(end)
+
+Author:
+	Sickboy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(addKeyHandlerFromConfig);

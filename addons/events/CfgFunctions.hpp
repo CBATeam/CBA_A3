@@ -15,16 +15,10 @@ class CfgFunctions
 				description = "Removes an event handler previously registered with CBA_fnc_addEventHandler.";
 				file = "\x\cba\addons\events\fnc_removeEventHandler.sqf";
 			};
-			// CBA_fnc_actionHandler
-			class actionHandler
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\addons\events\fnc_actionHandler.sqf";
-			};
 			// CBA_fnc_addKeyHandler
 			class addKeyHandler
 			{
-				description = "<NO DESC>";
+				description = "Adds an action to a keyhandler";
 				file = "\x\cba\addons\events\fnc_addKeyHandler.sqf";
 			};
 			// CBA_fnc_addActionHandler
@@ -38,12 +32,6 @@ class CfgFunctions
 			{
 				description = "Raises a CBA event on all machines EXCEPT the local one.";
 				file = "\x\cba\addons\events\fnc_remoteEvent.sqf";
-			};
-			// CBA_fnc_keyHandler
-			class keyHandler
-			{
-				description = "<NO DESC>";
-				file = "\x\cba\addons\events\fnc_keyHandler.sqf";
 			};
 			// CBA_fnc_addKeyHandlerFromConfig
 			class addKeyHandlerFromConfig
