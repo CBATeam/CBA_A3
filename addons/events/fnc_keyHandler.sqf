@@ -46,13 +46,7 @@ _result = false;
 	if (_result) exitWith { _handled = true };
 	
 } forEach (GVAR(keys) select (_this select 1));
-#ifdef DEBUG_MODE_FULL
-	if (count _ar > 0) then
-	{
-		[format["KeyPressed: %1, Executing: %2", _this, _ar], QUOTE(ADDON)] call CBA_fnc_debug;
-	} else {
-		[format["KeyPressed: %1, No Execution", _this], QUOTE(ADDON)] call CBA_fnc_debug;
-	};
-#endif
+
+TRACE_2("keyPressed",_this,_ar);
 
 _handled;

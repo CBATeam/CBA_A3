@@ -28,12 +28,7 @@ if ((typeName _chan) == "OBJECT") then
 
 if (GVAR(debug)) then
 {
-	_msg = format["RCV: receiverID %1, senderID %2, destination %3, param %4, command %5", call FUNC(id), _id, _chan, _objAr, _cmd];
-
-	if (_ex) then { _msg = (_msg + ". Executing!") } else { _msg = (_msg + ". Not Executing!") };
-
-	// Output to Chat and local arma.rpt
-	[_msg, QUOTE(ADDON)] call CBA_fnc_debug;
+	TRACE_6("",_ex,call FUNC(id),_id,_chan,_objAr,_cmd);
 };
 
 if (_ex) then
