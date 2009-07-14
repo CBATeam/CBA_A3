@@ -16,9 +16,9 @@ SLX_XEH_MACHINE =
 ];
 SLX_XEH_F_INIT = {
 	private [
-		"_i", "_c", "_entry", "_Inits"
+		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
 	];
-	_Inits = []; _initsServer = []; _initsClient = [];
+	_Inits = [];
 	if (isClass _this) then
 	{
 		_i = 0;
@@ -28,22 +28,26 @@ SLX_XEH_F_INIT = {
 			_entry = _this select _i;
 			if (isClass _entry) then
 			{
+				_entryServer = (_entry/"serverInit");
+				_entryClient = (_entry/"clientInit");
+				_entry = (_entry/"init");
+
 				if (isText _entry) then
 				{
-					_Inits = _Inits+[compile(getText (_entry/"init"))];
+					_Inits = _Inits+[compile(getText _entry)];
 				};
 				if (isServer) then
 				{
 					if (isText _entryServer) then
 					{
-						_Inits = _Inits+[compile(getText (_entry/"serverInit"))];
+						_Inits = _Inits+[compile(getText _entryServer)];
 					};				
 				};
 				if (!isDedicated) then
 				{
 					if (isText _entryClient) then
 					{
-						_Inits = _Inits+[compile(getText (_entry/"clientInit"))];
+						_Inits = _Inits+[compile(getText _entryClient)];
 					};
 				};
 			} else {
