@@ -120,7 +120,7 @@ class CfgFunctions
 			// CBA_fnc_addPlayerAction
 			class addPlayerAction
 			{
-				description = "Adds persistent action to player (which will also be available in vehicles and after respawn).";
+				description = "Adds persistent action to player (which will also be available in vehicles and after respawn or teamswitch).";
 				file = "\x\cba\addons\common\fnc_addPlayerAction.sqf";
 			};
 			// CBA_fnc_getAnimType
