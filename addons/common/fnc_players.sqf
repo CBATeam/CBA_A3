@@ -9,13 +9,18 @@ Description:
 	player objects for players who are waiting to respawn.
 
 	In single-player missions, just returns an array containing the current
-	player object. 
+	player object.
+	
+	This command is similar to BIS_fnc_listPlayers. In fact, it is the same in
+	MP, but in SP it returns a result which is consistent to prevent the need
+	to handle things differently in different types of game 
+	(BIS_fnc_listPlayers uses different criteria for the list in SP and MP).
 
 Parameters:
 	None.
 	
 Returns:
-	List of playable objects [Array].
+	List of player objects [Array of Objects].
 	
 Examples:
 	(begin example)
