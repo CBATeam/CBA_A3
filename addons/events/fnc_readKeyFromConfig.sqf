@@ -1,5 +1,22 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_readKeyFromConfig
+
+Description:
+	Reads key setting from config
+	
+Parameters:
+	_component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
+	_action - Action classname [String].
+
+Returns:
+
+Examples:
+	(begin example)
+		_keyConfig = ["cba_sys_nvg", "nvgon", { _this call myAction }] call CBA_fnc_readKeyFromConfig;
+	(end)
+
+Author:
+	Sickboy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(readKeyFromConfig);
