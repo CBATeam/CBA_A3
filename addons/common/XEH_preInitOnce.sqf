@@ -50,8 +50,6 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-ISNIL(actionlist,[]);
-
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
 DEPRECATE(fAddMagazineCargo,fnc_addMagazineCargo);
