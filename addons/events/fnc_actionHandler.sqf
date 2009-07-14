@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_actionHandler
+Internal Function: CBA_events_fnc_actionHandler
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_keyHandler
+Internal Function: CBA_events_fnc_keyHandler
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(keyHandler);
