@@ -1,5 +1,23 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeyHandler
+
+Description:
+	Adds an action to a keyhandler
+	
+Parameters:
+	_key - Numerical key to attach action to [Integer].
+	_settings - Shift, Ctrl, Alt required [Array].
+
+Returns:
+
+Examples:
+	(begin example)
+		[47, [true, false, false], { _this call myAction }]
+	(end)
+
+Author:
+	Sickboy
+
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(addKeyHandler);
