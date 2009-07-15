@@ -1,5 +1,12 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_actionHandler
+
+Description:
+	Executes the action's handler
+
+Author: 
+	Sickboy
+
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

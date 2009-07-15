@@ -1,5 +1,11 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandler
+
+Description:
+	Executes the key's handler
+
+Author: 
+	Sickboy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(keyHandler);
