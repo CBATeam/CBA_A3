@@ -6,10 +6,13 @@
 	code in such a post-init "EH" rather than in a normal XEH init EH which
 	 might be called several times.
 */
+#include "script_component.hpp"
 
 // On Server + Non JIP Client, we are now after all objects have inited
 // and at the briefing, still time == 0
-
+#ifdef DEBUG_MODE_FULL
+diag_log text format["(%1) XEH BEG: initPost", time];
+#endif
 if (isNull player) then
 {
 	if !(isServer) then
@@ -52,5 +55,7 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // thread still gets their InitPost ran
 SLX_XEH_MACHINE set [7, true];
 { _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+
+diag_log text format["(%1) XEH END: initPost", time];
 
 nil;

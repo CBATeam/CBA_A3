@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 private ["_unit"];
 _unit = _this select 0;
 
@@ -13,6 +15,10 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew"
 ];
+
+#ifdef DEBUG_MODE_FULL
+	diag_log text format["(%1) XEH BEG: %2", time, _this];
+#endif
 // Get unit.
 _unit = _this select 0;
 _Extended_Init_Class = _this select 1;
@@ -143,6 +149,14 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 } forEach _classes;
 
 // Now call all the init EHs on the unit.
+#ifdef DEBUG_MODE_FULL
+diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _inits];
+#endif
+
 { [_unit] call _x } forEach _inits;
+
+#ifdef DEBUG_MODE_FULL
+diag_log text format["(%1) XEH END: %2", time, _this];
+#endif
 
 nil;

@@ -5,6 +5,7 @@
 	types (where none is the default unless explicitly specified
 	in the description.ext file), we don't need to run this.
 */
+#include "script_component.hpp"
 private [
 	"_cfgRespawn", "_respawn", "_nomonitor", "_initEH", "_name",
 	"_playerIsNamed", "_getUnit"
@@ -45,14 +46,18 @@ _playerIsNamed=false;
 		{
 			_getUnit=compile _this;
 			_unit=call _getUnit;
-			//diag_log text format["XEH RMon: monitoring %1 (%2)",_this, _unit];
+			#ifdef DEBUG_MODE_FULL
+			diag_log text format["XEH RMon: monitoring %1 (%2)",_this, _unit];
+			#endif
 			while {true} do
 			{
 				waitUntil {!alive _unit};
 				//waitUntil {_unit == _unit}; // ??
 				waitUntil {alive (call _getUnit)};
 				_unit=call _getUnit;
-				//diag_log text format["XEH RMon: %1 respawned. Re-running SLX_XEH_init", _this];
+				#ifdef DEBUG_MODE_FULL
+				diag_log text format["XEH RMon: %1 respawned. Re-running SLX_XEH_init", _this];
+				#endif
 				if (!isNil "_unit" && !isNull _unit) then
 				{
 					[_unit, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
@@ -77,7 +82,9 @@ if (!_playerIsNamed) then
 		[player, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
 		sleep 0.5;
 	};
-	//diag_log text "XEH: 'legacy' player respawn monitor started";
+	#ifdef DEBUG_MODE_FULL
+	diag_log text "XEH: 'legacy' player respawn monitor started";
+	#endif
 };
 nil;
 

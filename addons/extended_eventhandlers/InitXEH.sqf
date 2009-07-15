@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
 SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
@@ -19,6 +21,10 @@ SLX_XEH_F_INIT = {
 		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
 	];
 	_Inits = [];
+	#ifdef DEBUG_MODE_FULL
+	diag_log text format["(%1) XEH BEG: Init %2", time, _this];
+	#endif
+
 	if (isClass _this) then
 	{
 		_i = 0;
@@ -60,6 +66,9 @@ SLX_XEH_F_INIT = {
 		};
 		{ call _x } forEach _Inits;	   
 	};
+	#ifdef DEBUG_MODE_FULL
+	diag_log text format["(%1) XEH END: Init %2", time, _this];
+	#endif
 };
 
 // Load and call any "pre-init", run-once event handlers
