@@ -532,7 +532,7 @@ Parameters:
 Example:
 	(begin example)
 		GVAR(frog) = 12;
-		// In SPON_FrogDancing, equivalent to SPON_FrogDancing_frog = 12
+		// In SPON_FrogDancing component, equivalent to SPON_FrogDancing_frog = 12
 	(end)
 
 Author:
@@ -545,12 +545,12 @@ Macro: GVARMAIN()
 	Get full variable identifier for a global variable owned by this addon.
 	
 Parameters:
-	VARIABLE - Partial name of global variable owned by this component [Any].
+	VARIABLE - Partial name of global variable owned by this addon [Any].
 
 Example:
 	(begin example)
-		GVAR(frog) = 12;
-		// In SPON_FrogDancing, equivalent to SPON_frog = 12
+		GVARMAIN(frog) = 12;
+		// In SPON_FrogDancing component, equivalent to SPON_frog = 12
 	(end)
 
 Author:
@@ -836,11 +836,11 @@ Group: Assertions
 
 /* -------------------------------------------
 Macro: ASSERT_TRUE()
-	Asserts that a CONDITION if true. When an assertion fails, an error is raised with the given MESSAGE.
+	Asserts that a CONDITION is true. When an assertion fails, an error is raised with the given MESSAGE.
 
 Parameters:
 	CONDITION - Condition to assert as true [Boolean]
-	MESSSAGE - Message to display if (A OPERATOR B)  is false [String]
+	MESSSAGE - Message to display if (A OPERATOR B) is false [String]
 	
 Example:
 	(begin example)
@@ -858,11 +858,11 @@ Author:
 
 /* -------------------------------------------
 Macro: ASSERT_FALSE()
-	Asserts that a CONDITION if false. When an assertion fails, an error is raised with the given MESSAGE.
+	Asserts that a CONDITION is false. When an assertion fails, an error is raised with the given MESSAGE.
 
 Parameters:
 	CONDITION - Condition to assert as false [Boolean]
-	MESSSAGE - Message to display if (A OPERATOR B)  is true [String]
+	MESSSAGE - Message to display if (A OPERATOR B) is true [String]
 	
 Example:
 	(begin example)
