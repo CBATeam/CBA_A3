@@ -14,6 +14,7 @@ private [
 _cfgRespawn = (missionConfigFile/"respawn");
 
 _nomonitor = true;
+SLX_XEH_killed={};
 if ( isNumber(_cfgRespawn) ) then
 {
 	_respawn = getNumber(_cfgRespawn);
@@ -24,67 +25,81 @@ if ( isText(_cfgRespawn) ) then
 	_respawn = getText(_cfgRespawn);
 	_nomonitor = { _respawn == _x }count["none", "bird", "group", "side"]>0;
 };
-if (_nomonitor) exitWith {};
-
-// waitUntil { SLX_XEH_MACHINE select 5 };
-// if !(SLX_XEH_MACHINE select 0) exitWith {};
-
-// Track all playable units (players and AI alike) and when they respawn,
-// re-run the Extended Init EH:s on the units that have a "composite" init
-// EH defined with the respawn property set to true
-_playerIsNamed=false;
+if (!_nomonitor) then
 {
-	_name=vehicleVarName _x;
-	
-	if (_name != "") then
+	// Set up the event handler that takes care of respawning playable units.
+	// (This replaces the old RespawnMonitor.sqf "thread")
+	if (!isNil"CBA_fnc_addEventHandler") then
 	{
-		if (local player && (player == call compile _name)) then
+		SLX_XEH_F_KILLED = compile preprocessFileLineNumbers "extended_eventhandlers\Killed.sqf";
+		SLX_XEH_killed={["slx_xeh_killed",_this]call CBA_fnc_globalEvent};
+		["slx_xeh_killed", {_this call SLX_XEH_F_KILLED}] call CBA_fnc_addEventHandler;
+		#ifdef DEBUG_MODE_FULL
+		diag_log text format["(%1) XEH killed event handler registered.", time];
+		#endif
+	}
+	else
+	{
+		// CBA not there? What gives? Ok, fall back to another solution...
+		
+		SLX_XEH_killed={};
+		// Track all playable units (players and AI) and when they respawn,
+		// re-run the Extended Init EH:s on the units that have a "composite"
+		// init EH defined with the respawn property set to true
+		_playerIsNamed=false;
 		{
-			_playerIsNamed=true;
-		};
-		_h=_name spawn
-		{
-			_getUnit=compile _this;
-			_unit=call _getUnit;
-			#ifdef DEBUG_MODE_FULL
-			diag_log text format["XEH RMon: monitoring %1 (%2)",_this, _unit];
-			#endif
-			while {true} do
+			_name=vehicleVarName _x;
+			
+			if (_name != "") then
 			{
-				waitUntil {!alive _unit};
-				//waitUntil {_unit == _unit}; // ??
-				waitUntil {alive (call _getUnit)};
-				_unit=call _getUnit;
-				#ifdef DEBUG_MODE_FULL
-				diag_log text format["XEH RMon: %1 respawned. Re-running SLX_XEH_init", _this];
-				#endif
-				if (!isNil "_unit" && !isNull _unit) then
+				if (local player && (player == call compile _name)) then
 				{
-					[_unit, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
+					_playerIsNamed=true;
 				};
+				_h=_name spawn
+				{
+					_getUnit=compile _this;
+					_unit=call _getUnit;
+					#ifdef DEBUG_MODE_FULL
+					diag_log text format["XEH RMon: monitoring %1 (%2)",_this, _unit];
+					#endif
+					while {true} do
+					{
+						waitUntil {!alive _unit};
+						waitUntil {alive (call _getUnit)};
+						_unit=call _getUnit;
+						#ifdef DEBUG_MODE_FULL
+						diag_log text format["XEH RMon: %1 respawned. Re-running SLX_XEH_init", _this];
+						#endif
+						if (!isNil "_unit" && !isNull _unit) then
+						{
+							[_unit, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
+						};
+						sleep 0.5;
+					};
+				};
+			};
+		} forEach playableUnits;
+		
+		// Fallback: playableUnits may contain unnamed units, ie units that
+		// have no name set in the mission editor. Such units are not monitored
+		// by the threads created above. If the unit the player on this machine 
+		// is controlling is not named, fall back to the old XEH way:
+		if (!_playerIsNamed) then
+		{
+			while { true } do
+			{
+				waitUntil { !(alive player) };
+				waitUntil { player == player };
+				waitUntil { alive player };
+				[player, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
 				sleep 0.5;
 			};
+			#ifdef DEBUG_MODE_FULL
+			diag_log text "XEH: 'legacy' player respawn monitor started";
+			#endif
 		};
 	};
-} forEach playableUnits;
-
-// Fallback: playableUnits may contain unnamed units, ie units that have no
-// name set in the mission editor. Such units are not monitored by the
-// threads created above. If the unit the player on this machine is controlling 
-// is not named, fall back to the old XEH way of tracking the player unit.
-if (!_playerIsNamed) then
-{
-	while { true } do
-	{
-		waitUntil { !(alive player) };
-		waitUntil { player == player };
-		waitUntil { alive player };
-		[player, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
-		sleep 0.5;
-	};
-	#ifdef DEBUG_MODE_FULL
-	diag_log text "XEH: 'legacy' player respawn monitor started";
-	#endif
 };
 nil;
 
