@@ -51,4 +51,30 @@ else
 	};
 };
 
+[QUOTE(GVAR(loadgame)), { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
+[] spawn
+{
+	private ["_history"];
+	waitUntil { time > 0 };
+	_history = [diag_tickTime];
+	
+	waitUntil
+	{
+		PUSH(_history,diag_tickTime);
+		_c = count _history;
+		if (_c > 1) then
+		{
+			if (diag_tickTime > (_history select (_c - 1)) + 5 || diag_tickTime > (_history select (_c - 2)) + 6) then
+			{
+				[QUOTE(GVAR(loadgame))] call CBA_fnc_localEvent;
+			};
+			if (_c > 3) then
+			{
+				REM(_history,[_history select 0]);
+			};
+		};
+		false
+	};
+};
+
 nil;
