@@ -6,7 +6,7 @@ Description:
 	
 	Should not be used directly, but rather via macro (<LOG()>).
 	
-	This function is unaffected by the debug level (<DEBUG_MODE_*>).
+	This function is unaffected by the debug level (<DEBUG_MODE_x>).
 	
 Parameters:
 	_file - File error occurred in [String]
