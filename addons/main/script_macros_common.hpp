@@ -60,15 +60,15 @@ Group: Debugging
 ------------------------------------------- */
 
 /* -------------------------------------------
-Macros: DEBUG_MODE_*
+Macros: DEBUG_MODE_x
 	Managing debugging based on debug level.
 
 	According to the *highest* level of debugging that has been defined *before* script_macros_common.hpp is included,
 	only the appropriate debugging commands will be functional. With no level explicitely defined, assume DEBUG_MODE_NORMAL.
 	
 	DEBUG_MODE_FULL - Full debugging output.
-	DEBUG_MODE_NORMAL - All debugging except <TRACE_*> (Default setting if none specified).
-	DEBUG_MODE_MINIMAL - Only <ERROR(MESSAGE)> and <ERROR_WITH_TITLE(TITLE,MESSAGE)> enabled.
+	DEBUG_MODE_NORMAL - All debugging except <TRACE_n()> (Default setting if none specified).
+	DEBUG_MODE_MINIMAL - Only <ERROR()> and <ERROR_WITH_TITLE()> enabled.
 	
 Examples:
 	In order to turn on full debugging for a single file,
@@ -102,6 +102,9 @@ Examples:
 		#endif
 		#include "\x\cba\addons\main\script_macros_common.hpp"
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 
 // If DEBUG_MODE_FULL, then also enable DEBUG_MODE_NORMAL.
@@ -127,10 +130,21 @@ Examples:
 #endif
 
 /* -------------------------------------------
-Macro: LOG(MESSAGE)
+Macro: LOG()
 	Log a timestamped message into the RPT log.
 
 	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
+	
+Parameters:
+	MESSAGE - Message to record [String]
+	
+Example:
+	(begin example)
+		LOG("Initiated clog-dancing simulator.");
+	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_NORMAL
 #define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
@@ -139,10 +153,21 @@ Macro: LOG(MESSAGE)
 #endif
 
 /* -------------------------------------------
-Macro: WARNING(MESSAGE)
+Macro: WARNING()
 	Record a timestamped, non-critical error in the RPT log.
 
 	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
+	
+Parameters:
+	MESSAGE - Message to record [String]
+	
+Example:
+	(begin example)
+		WARNING("This function has been deprecated. Please don't use it in future!");
+	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_NORMAL
 #define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
@@ -151,29 +176,53 @@ Macro: WARNING(MESSAGE)
 #endif
 
 /* -------------------------------------------
-Macro: ERROR(MESSAGE)
+Macro: ERROR()
 	Record a timestamped, critical error in the RPT log. 
-	The heading is ERROR (use <ERROR_WITH_TITLE(TITLE,MESSAGE)> for a specific title.
-	Newlines (\n) in the MESSAGE will be put on separate lines.
+	
+	The heading is "ERROR" (use <ERROR_WITH_TITLE()> for a specific title).
 
 	TODO: Popup an error dialog & throw an exception.
+	
+Parameters:
+	MESSAGE -  Message to record [String]
+	
+Example:
+	(begin example)
+		ERROR("Value not found","value of frog not found in config ...yada...yada...");
+	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ERROR(MESSAGE) \
 	[THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
 	
 /* -------------------------------------------
-Macro: ERROR_WITH_TITLE(TITLE,MESSAGE)
+Macro: ERROR_WITH_TITLE()
 	Record a timestamped, critical error in the RPT log.
-	The title can be specified (in <ERROR(MESSAGE)> the heading is always just "ERROR")
+	
+	The title can be specified (in <ERROR()> the heading is always just "ERROR")
 	Newlines (\n) in the MESSAGE will be put on separate lines.
 
 	TODO: Popup an error dialog & throw an exception.
+	
+Parameters:
+	TITLE - Title of error message [String]
+	MESSAGE -  Body of error message [String]
+	
+Example:
+	(begin example)
+		ERROR("Value not found","Value of frog not found in config ...yada...yada...");
+	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ERROR_WITH_TITLE(TITLE,MESSAGE) \
 	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
 
 /* -------------------------------------------
-Macros: TRACE_*
+Macros: TRACE_n()
 	Log a message and 1-8 variables to the RPT log.
 
 	Only run if <DEBUG_MODE_FULL> is defined.
@@ -187,10 +236,17 @@ Macros: TRACE_*
 	TRACE_7(MESSAGE,A,B,C,D,E,F,G) - Log 7 variables.
 	TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) - Log 8 variables.
 
+Parameters:
+	MESSAGE -  Message to add to the trace [String]
+	A..H - Variable names to log values of [Any]
+
 Example:
 	(begin example)
 		TRACE_3("After takeoff",_vehicle player,getPos (_vehicle player), getPosASL (_vehicle player));
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_FULL
 #define TRACE_1(MESSAGE,A) \
@@ -239,13 +295,171 @@ Group: General
 #define DOUBLES(var1,var2) ##var1##_##var2
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
 #define QUOTE(var1) #var1
+
+/* -------------------------------------------
+Macro: INC()
+
+Description:
+	Increase a number by one.
+	
+Parameters:
+	VAR - Variable to increment [Number]
+	
+Example:
+	(begin example)
+	_counter = 0;
+	INC(_counter);
+	// _counter => 1
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
 #define INC(var) var = (var) + 1
+
+/* -------------------------------------------
+Macro: DEC()
+
+Description:
+	Decrease a number by one.
+	
+Parameters:
+	VAR - Variable to decrement [Number]
+	
+Example:
+	(begin example)
+	_counter = 99;
+	DEC(_counter);
+	// _counter => 98
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
 #define DEC(var) var = (var) - 1
+
+/* -------------------------------------------
+Macro: ADD()
+
+Description:
+	Add a value to a variable. Variable and value should be both Numbers or both Strings.
+
+Parameters:
+	VAR - Variable to add to [Number or String]
+	VALUE - Value to add [Number or String]
+	
+Examples:
+	(begin example)
+		_counter = 2;
+		ADD(_counter,3);
+		// _counter => 5
+	(end)
+	(begin example)
+		_str = "hello";
+		ADD(_str," ");
+		ADD(_str,"Fred");
+		// _str => "hello Fred"
+	(end)
+	
+Author:
+	Sickboy
+------------------------------------------- */
 #define ADD(var1,var2) var1 = (var1) + (var2)
+
+/* -------------------------------------------
+Macro: SUB()
+
+Description:
+	Subtract a value from a number variable. VAR and VALUE should both be Numbers.
+
+Parameters:
+	VAR - Variable to subtract from [Number]
+	VALUE - Value to subtract [Number]
+	
+Examples:
+	(begin example)
+		_numChickens = 2;
+		SUB(_numChickens,3);
+		// _numChickens => -1
+	(end)
+------------------------------------------- */
 #define SUB(var1,var2) var1 = (var1) - (var2)
-#define REM(var1,var2) SUB(var1,var2)
+
+/* -------------------------------------------
+Macro: REM()
+
+Description:
+	Remove an element from an array each time it occurs.
+	
+	This recreates the entire array, so use BIS_fnc_removeIndex if modification of the original array is required
+	or if only one of the elements that matches ELEMENT needs to be removed.
+
+Parameters:
+	ARRAY - Array to modify [Array]
+	ELEMENT - Element to remove [Any]
+	
+Examples:
+	(begin example)
+		_array = [1, 2, 3, 4, 3, 8];
+		REM(_array,3);
+		// _array = [1, 2, 4, 8];
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
+#define REM(var1,var2) SUB(var1,[var2])
+
+/* -------------------------------------------
+Macro: PUSH()
+
+Description:
+	Appends a single value onto the end of an ARRAY. Change is made to the ARRAY itself, not creating a new array.
+
+Parameters:
+	ARRAY - Array to push element onto [Array]
+	ELEMENT - Element to push [Any]
+	
+Examples:
+	(begin example)
+		_fish = ["blue", "green", "smelly"];
+		PUSH(_fish,"monkey-flavoured");
+		// _fish => ["blue", "green", "smelly", "monkey-flavoured"]
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
 #define PUSH(var1,var2) var1 set [count (var1), var2]
-#define ISNILS(var1,var2) if (isNil #var1) then { ##var1 = ##var2 }
+
+/* -------------------------------------------
+Macro: ISNILS()
+
+Description:
+	Sets a variable with a value, but only if it is undefined.
+
+Parameters:
+	VARIABLE - Variable to set [Any, not nil]
+	DEFAULT_VALUE - Value to set VARIABLE to if it is undefined [Any, not nil]
+	
+Examples:
+	(begin example)
+		// _fish is undefined
+		ISNILS(_fish,0);
+		// _fish => 0
+	(end)
+	(begin example)
+		_fish = 12;
+		// ...later...
+		ISNILS(_fish,0);
+		// _fish => 12
+	(end)
+	
+Author:
+	Sickboy
+------------------------------------------- */
+#define ISNILS(VARIABLE,DEFAULT_VALUE) if (isNil #VARIABLE) then { ##VARIABLE = ##DEFAULT_VALUE }
+
 #define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPLES(var1,var2,var3),var4)
 #define ISNILS3(var1,var2,var3) ISNILS(DOUBLES(var1,var2),var3)
 #define ISNIL(var1,var2) ISNILS2(PREFIX,COMPONENT,var1,var2)
@@ -303,36 +517,45 @@ Group: General
 // Please define PREFIX and COMPONENT before including
 #define ADDON DOUBLES(PREFIX,COMPONENT)
 
-#define DEPRECATE_SYS(OLD_PREFIX,OLD_FUNCTION,NEW_PREFIX,NEW_FUNCTION) \
-	DOUBLES(OLD_PREFIX,OLD_FUNCTION) = { \
-		WARNING('Deprecated function used: DOUBLES(OLD_PREFIX,OLD_FUNCTION) (new: DOUBLES(NEW_PREFIX,NEW_FUNCTION)) in ADDON'); \
-		if (isNil "_this") then { call DOUBLES(NEW_PREFIX,NEW_FUNCTION) } else { _this call DOUBLES(NEW_PREFIX,NEW_FUNCTION) } }
-		
-#define DEPRECATE(OLD_FUNCTION,NEW_FUNCTION) DEPRECATE_SYS(PREFIX,OLD_FUNCTION,PREFIX,NEW_FUNCTION)
-
-/* -------------------------------------------
-Macro: OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION)
-	Replace an obsolete OLD_FUNCTION (which will have PREFIX_ prepended) with a simple
-	COMMAND_FUNCTION, with the intention that it will be replaced ASAP.
-	Shows a warning in RPT each time the obsolete function it is used.
-
-Example:
-	(begin example)
-		OBSOLETE(fMyWeapon,{ currentWeapon player });
-	(end)
-------------------------------------------- */
-#define OBSOLETE_SYS(OLD_PREFIX,OLD_FUNCTION,COMMAND_FUNCTION) \
-	DOUBLES(OLD_PREFIX,OLD_FUNCTION) = { \
-		WARNING('Obsolete function used: DOUBLES(OLD_PREFIX,OLD_FUNCTION) (use: COMMAND_FUNCTION) in ADDON'); \
-		if (isNil "_this") then { call COMMAND_FUNCTION } else { _this call COMMAND_FUNCTION } }
-		
-#define OBSOLETE(OLD_FUNCTION,COMMAND_FUNCTION) OBSOLETE_SYS(PREFIX,OLD_FUNCTION,COMMAND_FUNCTION)
-
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTOS(PREFIX,COMPONENT,var1)
 #define PATHTOF(var1) PATHTOFS(PREFIX,COMPONENT,var1)
 #define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT,var1)
+
+/* -------------------------------------------
+Macro: GVAR()
+	Get full variable identifier for a global variable owned by this component.
+	
+Parameters:
+	VARIABLE - Partial name of global variable owned by this component [Any].
+
+Example:
+	(begin example)
+		GVAR(frog) = 12;
+		// In SPON_FrogDancing, equivalent to SPON_FrogDancing_frog = 12
+	(end)
+
+Author:
+	Sickboy
+------------------------------------------- */
 #define GVAR(var1) GVARS(PREFIX,COMPONENT,var1)
+
+/* -------------------------------------------
+Macro: GVARMAIN()
+	Get full variable identifier for a global variable owned by this addon.
+	
+Parameters:
+	VARIABLE - Partial name of global variable owned by this component [Any].
+
+Example:
+	(begin example)
+		GVAR(frog) = 12;
+		// In SPON_FrogDancing, equivalent to SPON_frog = 12
+	(end)
+
+Author:
+	Sickboy
+------------------------------------------- */
 #define GVARMAIN(var1) GVARMAINS(PREFIX,var1)
 // TODO: What's this?
 #define SETTINGS DOUBLES(PREFIX,settings)
@@ -377,27 +600,33 @@ Example:
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 
 /* -------------------------------------------
-Macros: IS_*
+Macros: IS_x()
 	Checking the data types of variables.
 
-	IS_ARRAY(VAR) - Array
-	IS_BOOL(VAR) - Boolean
-	IS_BOOLEAN(VAR) - UI display handle(synonym for <IS_BOOL(VAR)>)
-	IS_CODE(VAR) - Code block (i.e a compiled function)
-	IS_CONFIG(VAR) - Configuration
-	IS_CONTROL(VAR) - UI control handle.
-	IS_DISPLAY(VAR) - UI display handle.
-	IS_FUNCTION(VAR) - A compiled function (synonym for <IS_CODE(VAR)>)
-	IS_GROUP(VAR) - Group.
-	IS_INTEGER(VAR) - Is a number a whole number?
-	IS_LOCATION(VAR) - World location.
-	IS_NUMBER(VAR) - A floating point number (synonym for <IS_SCALAR(VAR)>)
-	IS_OBJECT(VAR) - World object.
-	IS_SCALAR(VAR) - Floating point number.
-	IS_SCRIPT(VAR) - A script handle (as returned by execVM and spawn commands).
-	IS_SIDE(VAR) - Game side.
-	IS_STRING(VAR) - World object.
-	IS_TEXT(VAR) - Structured text.
+	IS_ARRAY() - Array
+	IS_BOOL() - Boolean
+	IS_BOOLEAN() - UI display handle(synonym for <IS_BOOL()>)
+	IS_CODE() - Code block (i.e a compiled function)
+	IS_CONFIG() - Configuration
+	IS_CONTROL() - UI control handle.
+	IS_DISPLAY() - UI display handle.
+	IS_FUNCTION() - A compiled function (synonym for <IS_CODE()>)
+	IS_GROUP() - Group.
+	IS_INTEGER() - Is a number a whole number?
+	IS_LOCATION() - World location.
+	IS_NUMBER() - A floating point number (synonym for <IS_SCALAR()>)
+	IS_OBJECT() - World object.
+	IS_SCALAR() - Floating point number.
+	IS_SCRIPT() - A script handle (as returned by execVM and spawn commands).
+	IS_SIDE() - Game side.
+	IS_STRING() - World object.
+	IS_TEXT() - Structured text.
+	
+Parameters:
+	VARIABLE - Variable to check if it is of a particular type [Any, not nil]
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define IS_ARRAY(VAR)    ((typeName (VAR)) == "ARRAY")
 #define IS_BOOL(VAR)     ((typeName (VAR)) == "BOOL")
@@ -420,14 +649,25 @@ Macros: IS_*
 #define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
 /* -------------------------------------------
-Macro: SCRIPT(NAME)
+Macro: SCRIPT()
 	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+	
+Parameters:
+	NAME - Name of script [Indentifier]
+	
+Example:
+	(begin example)
+		SCRIPT(eradicateMuppets);
+	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define SCRIPT(NAME) \
 	scriptName 'PREFIX\COMPONENT\NAME'
 	
 /* -------------------------------------------
-Macros: EXPLODE_*
+Macros: EXPLODE_n()
 	Splitting an ARRAY into a number of variables (A, B, C, etc).
 	
 	Note that this does not make the created variables private.
@@ -440,40 +680,49 @@ Macros: EXPLODE_*
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G) - Split a 7-element array into separate variables.
 	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) - Split a 8-element array into separate variables.
 	
+Parameters:
+	ARRAY - Array to read from [Array]
+	A..H - Names of variables to set from array [Identifier]
+	
 Example:
 	(begin example)
 		_array = ["fred", 156.8, 120.9];
 		EXPLODE_3(_array,_name_height,_weight);
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define EXPLODE_2(ARRAY,A,B) \
 	A = (ARRAY) select 0; B = (ARRAY) select 1
 	
 #define EXPLODE_3(ARRAY,A,B,C) \
-	A = (ARRAY) select 0; B = (ARRAY) select 1; C = (ARRAY) select 2
+	EXPLODE_2(ARRAY,A,B); C = (ARRAY) select 2
 	
 #define EXPLODE_4(ARRAY,A,B,C,D) \
-	A = (ARRAY) select 0; B = (ARRAY) select 1; C = (ARRAY) select 2; D = (ARRAY) select 3
+	EXPLODE_3(ARRAY,A,B,C); D = (ARRAY) select 3
 	
 #define EXPLODE_5(ARRAY,A,B,C,D,E) \
 	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4
 	
 #define EXPLODE_6(ARRAY,A,B,C,D,E,F) \
-	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5
+	EXPLODE_5(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
 	
 #define EXPLODE_7(ARRAY,A,B,C,D,E,F,G) \
-	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5; G = (ARRAY) select 6
+	EXPLODE_6(ARRAY,A,B,C,D,E,F); G = (ARRAY) select 6
 	
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
-	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4; F = (ARRAY) select 5; G = (ARRAY) select 6; H = (ARRAY) select 7
+	EXPLODE_7(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
 
 /* -------------------------------------------
 Group: Managing Function Parameters
 ------------------------------------------- */
 
 /* -------------------------------------------
-Macros: PARAMS_*
+Macros: PARAMS_n()
 	Setting variables based on parameters passed to a function.
+	
+	Each parameter is defines as private and set to the appropriate value from _this.
 
 	PARAMS_1(A) - Get 1 parameter from the _this array.
 	PARAMS_2(A,B) - Get 2 parameters from the _this array.
@@ -484,10 +733,13 @@ Macros: PARAMS_*
 	PARAMS_7(A,B,C,D,E,F,G) - Get 7 parameters from the _this array.
 	PARAMS_8(A,B,C,D,E,F,G,H) - Get 8 parameters from the _this array.
 
+Parameters:
+	A..H - Name of variable to read from _this [Identifier]
+	
 Example:
 	A function called like this:
 	(begin example)
-		[_name,_address_telephone] call recordPersonalDetails;
+		[_name,_address,_telephone] call recordPersonalDetails;
 	(end)
 	expects 3 parameters and those variables could be initialised at the start of the function definition with:
 	(begin example)
@@ -496,36 +748,60 @@ Example:
 			// Rest of function follows...
 		};
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define PARAMS_1(A) \
-	private #A; A = _this select 0
+	private #A; \
+	A = _this select 0; \
+	TRACE_1("PARAMS_1",A)
 	
 #define PARAMS_2(A,B) \
-	private [#A, #B]; EXPLODE_2(_this,A,B)
+	private [#A, #B]; \
+	EXPLODE_2(_this,A,B); \
+	TRACE_2("PARAMS_2",A,B)
 	
 #define PARAMS_3(A,B,C) \
-	private [#A, #B, #C]; EXPLODE_3(_this,A,B,C)
+	private [#A, #B, #C]; \
+	EXPLODE_3(_this,A,B,C); \
+	TRACE_3("PARAMS_3",A,B,C)
 	
 #define PARAMS_4(A,B,C,D) \
-	private [#A, #B, #C, #D]; EXPLODE_4(_this,A,B,C,D)
+	private [#A, #B, #C, #D]; \
+	EXPLODE_4(_this,A,B,C,D); \
+	TRACE_4("PARAMS_4",A,B,C,D)
 	
 #define PARAMS_5(A,B,C,D,E) \
-	private [#A, #B, #C, #D, #E]; EXPLODE_5(_this,A,B,C,D,E)
+	private [#A, #B, #C, #D, #E]; \
+	EXPLODE_5(_this,A,B,C,D,E); \
+	TRACE_5("PARAMS_5",A,B,C,D,E)
 	
 #define PARAMS_6(A,B,C,D,E,F) \
-	private [#A, #B, #C, #D, #E, #F]; EXPLODE_6(_this,A,B,C,D,E,F)
+	private [#A, #B, #C, #D, #E, #F]; \
+	EXPLODE_6(_this,A,B,C,D,E,F); \
+	TRACE_6("PARAMS_6",A,B,C,D,E,F)
 	
 #define PARAMS_7(A,B,C,D,E,F,G) \
-	private [#A, #B, #C, #D, #E, #F, #G]; EXPLODE_7(_this,A,B,C,D,E,F,G)
+	private [#A, #B, #C, #D, #E, #F, #G]; \
+	EXPLODE_7(_this,A,B,C,D,E,F,G); \
+	TRACE_7("PARAMS_7",A,B,C,D,E,F,G)
 	
 #define PARAMS_8(A,B,C,D,E,F,G,H) \
-	private [#A, #B, #C, #D, #E, #F, #G, #H]; EXPLODE_8(_this,A,B,C,D,E,F,G,H)
+	private [#A, #B, #C, #D, #E, #F, #G, #H]; \
+	EXPLODE_8(_this,A,B,C,D,E,F,G,H); \
+	TRACE_8("PARAMS_8",A,B,C,D,E,F,G,H)
 	
 /* -------------------------------------------
-Macro: DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) 
-	Getting a default function parameter. This may be used together with <PARAMS_*> to have a mix of required and
+Macro: DEFAULT_PARAM() 
+	Getting a default function parameter. This may be used together with <PARAMS_n()> to have a mix of required and
 	optional parameters.
 
+Parameters:
+	INDEX - Index of parameter in _this [Integer, 0+]
+	NAME - Name of the variable to set [Identifier]
+	DEF_VALUE - Default value to use in case the array is too short or the value at INDEX is nil [Any]
+	
 Example:
 	A function called with optional parameters:
 	(begin example)
@@ -543,10 +819,14 @@ Example:
 			// Rest of function follows...
 		};
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
-private #NAME; \
-NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam
+	private #NAME; \
+	NAME = [_this, INDEX, DEF_VALUE] call CBA_fnc_defaultParam; \
+	TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
 Group: Assertions
@@ -555,62 +835,203 @@ Group: Assertions
 #define ASSERTION_ERROR(MESSAGE) ERROR_WITH_TITLE("Assertion failed!",MESSAGE)
 
 /* -------------------------------------------
-Macro: ASSERT_TRUE(CONDITION,MESSAGE)
+Macro: ASSERT_TRUE()
 	Asserts that a CONDITION if true. When an assertion fails, an error is raised with the given MESSAGE.
 
+Parameters:
+	CONDITION - Condition to assert as true [Boolean]
+	MESSSAGE - Message to display if (A OPERATOR B)  is false [String]
+	
 Example:
 	(begin example)
 		ASSERT_TRUE(_frogIsDead,"The frog is alive");
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ASSERT_TRUE(CONDITION,MESSAGE) \
-if (not (CONDITION)) then \
-{ \
-	ASSERTION_ERROR('Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
-}
+	if (not (CONDITION)) then \
+	{ \
+		ASSERTION_ERROR('Assertion (CONDITION) failed!\n\n' + (MESSAGE)); \
+	}
 
 /* -------------------------------------------
-Macro: ASSERT_FALSE(CONDITION,MESSAGE)
+Macro: ASSERT_FALSE()
 	Asserts that a CONDITION if false. When an assertion fails, an error is raised with the given MESSAGE.
 
+Parameters:
+	CONDITION - Condition to assert as false [Boolean]
+	MESSSAGE - Message to display if (A OPERATOR B)  is true [String]
+	
 Example:
 	(begin example)
 		 ASSERT_FALSE(_frogIsDead,"The frog died");
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ASSERT_FALSE(CONDITION,MESSAGE) \
-if (CONDITION) then \
-{ \
-	ASSERTION_ERROR('Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
-}
+	if (CONDITION) then \
+	{ \
+		ASSERTION_ERROR('Assertion (not (CONDITION)) failed!\n\n' + (MESSAGE)) \
+	}
 
 /* -------------------------------------------
-Macro: ASSERT_OP(A,OPERATOR,B,MESSAGE)
+Macro: ASSERT_OP()
 	Asserts that (A OPERATOR B) is true. When an assertion fails, an error is raised with the given MESSAGE.
 
+Parameters:
+	A - First value [Any]
+	OPERATOR - Binary operator to use [Operator]
+	B - Second value [Any]
+	MESSSAGE - Message to display if (A OPERATOR B)  is false. [String]
+	
 Example:
 	(begin example)
 		ASSERT_OP(_fish,>,5,"Too few fish!");
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ASSERT_OP(A,OPERATOR,B,MESSAGE) \
-if (not ((A) OPERATOR (B))) then \
-{ \
-	ASSERTION_ERROR('Assertion (A OPERATOR B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
-}
+	if (not ((A) OPERATOR (B))) then \
+	{ \
+		ASSERTION_ERROR('Assertion (A OPERATOR B) failed!\n' + 'A: ' + (str (A)) + '\n' + 'B: ' + (str (B)) + "\n\n" + (MESSAGE)); \
+	}
 
 /* -------------------------------------------
-Macro: ASSERT_DEFINED(VARIABLE,MESSAGE)
+Macro: ASSERT_DEFINED()
 	Asserts that a VARIABLE is defined. When an assertion fails, an error is raised with the given MESSAGE..
 
+Parameters:
+	VARIABLE - Variable to test if defined [String or Function].
+	MESSAGE - Message to display if variable is undefined [String].
+	
 Examples:
 	(begin example)
 		ASSERT_DEFINED("_anUndefinedVar","Too few fish!");
 		ASSERT_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
 	(end)
+	
+Author:
+	Spooner
 ------------------------------------------- */
 #define ASSERT_DEFINED(VARIABLE,MESSAGE) \
-if (isNil VARIABLE) then \
-{ \
-	ASSERTION_ERROR('Assertion (VARIABLE is defined) failed!\n\n' + (MESSAGE)); \
-}
+	if (isNil VARIABLE) then \
+	{ \
+		ASSERTION_ERROR('Assertion (VARIABLE is defined) failed!\n\n' + (MESSAGE)); \
+	}
+
+/* -------------------------------------------
+Group: Managing Deprecation
+------------------------------------------- */
+
+/* -------------------------------------------
+Macro: DEPRECATE_SYS()
+	Allow deprecation of a function that has been renamed.
+	
+	Replaces an old OLD_FUNCTION (which will have PREFIX_ prepended) with a NEW_FUNCTION 
+	(PREFIX_ prepended) with the intention that the old function will be disabled in the future.
+	
+	Shows a warning in RPT each time the deprecated function is used, but runs the new function.
+	
+Parameters:
+	OLD_FUNCTION - Full name of old function [Identifier for function that does not exist any more]
+	NEW_FUNCTION - Full name of new function [Function]
+	
+Example:
+	(begin example)
+		// After renaming CBA_fnc_frog as CBA_fnc_fish
+		DEPRECATE_SYS(CBA_fnc_frog,CBA_fnc_fish);
+	(end)
+	
+Author:
+	Sickboy
+------------------------------------------- */
+#define DEPRECATE_SYS(OLD_FUNCTION,NEW_FUNCTION) \
+	OLD_FUNCTION = { \
+		WARNING('Deprecated function used: OLD_FUNCTION (new: NEW_FUNCTION) in ADDON'); \
+		if (isNil "_this") then { call NEW_FUNCTION } else { _this call NEW_FUNCTION }; \
+	}
+		
+/* -------------------------------------------
+Macro: DEPRECATE()
+	Allow deprecation of a function, in the current component, that has been renamed.
+	
+	Replaces an OLD_FUNCTION (which will have PREFIX_ prepended) with a NEW_FUNCTION 
+	(PREFIX_ prepended) with the intention that the old function will be disabled in the future.
+	
+	Shows a warning in RPT each time the deprecated function is used, but runs the new function.
+
+Parameters:
+	OLD_FUNCTION - Name of old function, assuming PREFIX [Identifier for function that does not exist any more]
+	NEW_FUNCTION - Name of new function, assuming PREFIX [Function]
+	
+Example:
+	(begin example)
+		// After renaming CBA_fnc_frog as CBA_fnc_fish
+		DEPRECATE(fnc_frog,fnc_fish);
+	(end)
+	
+Author:
+	Sickboy
+------------------------------------------- */
+#define DEPRECATE(OLD_FUNCTION,NEW_FUNCTION) \
+	DEPRECATE_SYS(DOUBLES(PREFIX,OLD_FUNCTION),DOUBLES(PREFIX,NEW_FUNCTION))
+
+/* -------------------------------------------
+Macro: OBSOLETE_SYS()
+	Replace a function that has become obsolete.
+	
+	Replace an obsolete OLD_FUNCTION with a simple COMMAND_FUNCTION, with the intention that anyone
+	using the function should replace it with the simple command, since the function will be disabled in the future.
+	
+	Shows a warning in RPT each time the deprecated function is used, and runs the command function.
+
+Parameters:
+	OLD_FUNCTION - Full name of old function [Identifier for function that does not exist any more]
+	COMMAND_CODE - Code to replace the old function [Function]
+	
+Example:
+	(begin example)
+		// In Arma2, currentWeapon command made the CBA_fMyWeapon function obsolete:
+		OBSOLETE_SYS(CBA_fMyWeapon,{ currentWeapon player });
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
+#define OBSOLETE_SYS(OLD_FUNCTION,COMMAND_CODE) \
+	OLD_FUNCTION = { \
+		WARNING('Obsolete function used: (use: OLD_FUNCTION) in ADDON'); \
+		if (isNil "_this") then { call COMMAND_CODE } else { _this call COMMAND_CODE }; \
+	}
+
+/* -------------------------------------------
+Macro: OBSOLETE()
+	Replace a function, in the current component, that has become obsolete.
+	
+	Replace an obsolete OLD_FUNCTION (which will have PREFIX_ prepended) with a simple
+	COMMAND_CODE, with the intention that anyone using the function should replace it with the simple
+	command.
+	
+	Shows a warning in RPT each time the deprecated function is used.
+
+Parameters:
+	OLD_FUNCTION - Name of old function, assuming PREFIX [Identifier for function that does not exist any more]
+	COMMAND_CODE - Code to replace the old function [Function]
+	
+Example:
+	(begin example)
+		// In Arma2, currentWeapon command made the CBA_fMyWeapon function obsolete:
+		OBSOLETE(fMyWeapon,{ currentWeapon player });
+	(end)
+	
+Author:
+	Spooner
+------------------------------------------- */
+#define OBSOLETE(OLD_FUNCTION,COMMAND_CODE) \
+	OBSOLETE_SYS(DOUBLES(PREFIX,OLD_FUNCTION),COMMAND_CODE)
