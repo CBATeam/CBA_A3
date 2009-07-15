@@ -98,8 +98,6 @@ else
 };
 
 // Debug
-#ifdef DEBUG_MODE_FULL
-	[format["fGetAnimType.sqf: _weapon = %1, _pos = %2, _anim = %3", _weapon,_pos,_anim]] call CBA_fnc_debug };
-#endif
+TRACE_3("",_weapon,_pos,_anim);
 
 _anim

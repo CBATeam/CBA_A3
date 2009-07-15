@@ -32,42 +32,30 @@ private ["_unit", "_item"];
 PARAMS_1(_unit);
 if (typeName _unit != "OBJECT") exitWith
 {
-	#ifdef DEBUG_MODE_FULL
-	[format["Unit: %1 - Item: %2 - Unit not Object", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_2("Unit not Object",_unit,_item);
 	false
 };
 _item = _this select 1;
 if (typeName _item != "STRING") exitWith
 {
-	#ifdef DEBUG_MODE_FULL
-	[format["Unit: %1 - Item: %2 - Item not String", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_2("Item not String",_unit,_item);
 	false
 };
 if (isNull _unit) exitWith
 {
-	#ifdef DEBUG_MODE_FULL
-	[format["Unit: %1 - Item: %2 - Unit isNull", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_2("Unit isNull",_unit,_item);
 	false
 };
 if (_item == "") exitWith
 {
-	#ifdef DEBUG_MODE_FULL
-	[format["Unit: %1 - Item: %2 - Empty Item", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_2("Empty Item",_unit,_item);
 	false
 };
 if !(isClass (__cfg >> _item)) exitWith
 {
-	#ifdef DEBUG_MODE_FULL
-	[format["Unit: %1 - Item: %2 - Item not exist in Config", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-	#endif
+	TRACE_2("Item not exist in Config",_unit,_item);
 	false
 };
 _unit __action _item;
-#ifdef DEBUG_MODE_FULL
-[format["Unit: %1 - Item: %2 - Success", _unit, _item], QUOTE(GVAR(__scriptname)), DEBUG_SETTINGS] call CBA_fnc_debug;
-#endif
+TRACE_2("Success",_unit,_item);
 true
