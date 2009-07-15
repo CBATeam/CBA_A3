@@ -76,7 +76,7 @@ DEPRECATE(fRemoveWeapon,fnc_removeWeapon);
 
 OBSOLETE(fSelectedWeapon,{ currentWeapon _this });
 
-DEPRECATE_SYS(PREFIX,fVectorSum3d,BIS,fnc_vectorAdd);
+DEPRECATE_SYS(DOUBLES(PREFIX,fVectorSum3d),BIS_fnc_vectorAdd);
 
 DEPRECATE(fAddMagazineVerified,fnc_addMagazineVerified);
 DEPRECATE(fCreateMarker,fnc_createMarker);
@@ -85,8 +85,8 @@ DEPRECATE(fGetArg,fnc_getArg);
 DEPRECATE(fInheritsFrom,fnc_inheritsFrom);
 DEPRECATE(fNearPlayer,fnc_nearPlayer);
 
-DEPRECATE_SYS(PREFIX,fRndInt,BIS,fnc_randomInt);
-DEPRECATE_SYS(PREFIX,fRndSelect,BIS,fnc_selectRandom);
+DEPRECATE_SYS(DOUBLES(PREFIX,fRndInt),BIS_fnc_randomInt);
+DEPRECATE_SYS(DOUBLES(PREFIX,fRndSelect),BIS_fnc_selectRandom);
 
 DEPRECATE(fSelectWeapon,fnc_selectWeapon);
 DEPRECATE(fShuffle,fnc_shuffle);
@@ -96,12 +96,12 @@ DEPRECATE(fSwitchPlayer,fnc_switchPlayer);
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_kron_strings);
 
-OBSOLETE_SYS(KRON,StrUpper,{ toUpper (_this select 0) });
-OBSOLETE_SYS(KRON,StrLower,{ toLower (_this select 0) });
-DEPRECATE_SYS(KRON,StrIndex,CBA,fnc_find); // CBA_fnc_find does the same and more.
-DEPRECATE_SYS(KRON,StrLen,CBA,fnc_strLen);
-DEPRECATE_SYS(KRON,StrToArray,CBA,fnc_split); // CBA_fnc_split does the same and more.
-DEPRECATE_SYS(KRON,Replace,CBA,fnc_replace); // KRON is faster, but CBA one is 1 line (reuses other functions).
+OBSOLETE_SYS(KRON_StrUpper,{ toUpper (_this select 0) });
+OBSOLETE_SYS(KRON_StrLower,{ toLower (_this select 0) });
+DEPRECATE_SYS(KRON_StrIndex,DOUBLES(PREFIX,fnc_find)); // CBA_fnc_find does the same and more.
+DEPRECATE_SYS(KRON_StrLen,DOUBLES(PREFIX,fnc_strLen));
+DEPRECATE_SYS(KRON_StrToArray,DOUBLES(PREFIX,fnc_split)); // CBA_fnc_split does the same and more.
+DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but CBA one is 1 line (reuses other functions).
 
 // Announce Initialization Complete
 ADDON = true;
