@@ -56,23 +56,16 @@ else
 {
 	private ["_history"];
 	waitUntil { time > 0 };
-	_history = [diag_tickTime];
+	_history = diag_frameNo;
 	
 	waitUntil
 	{
-		PUSH(_history,diag_tickTime);
-		_c = count _history;
-		if (_c > 1) then
+		if (_history + 100 < diag_frameNo) then
 		{
-			if (diag_tickTime > (_history select (_c - 1)) + 5 || diag_tickTime > (_history select (_c - 2)) + 6) then
-			{
 				["CBA_loadGame"] call CBA_fnc_localEvent;
-			};
-			if (_c > 3) then
-			{
-				REM(_history,_history select 0);
-			};
+				diag_log text format["%1",_history];
 		};
+		_history = diag_frameNo;
 		false
 	};
 };
