@@ -23,7 +23,7 @@ SCRIPT(determineMuzzles);
 #define __cfg configFile >> "CfgWeapons" >> _this
 
 private ["_r"];
-_r = [__cfg];
+_r = [_this];
 if (isArray(__cfg >> "muzzles")) then
 {
 	_ar = getArray(__cfg >> "muzzles");
@@ -31,4 +31,5 @@ if (isArray(__cfg >> "muzzles")) then
 	if ((_ar select 0) == "this") exitWith {};
 	_r = _ar;
 };
-_r
+
+_r;
