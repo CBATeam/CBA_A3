@@ -70,7 +70,7 @@ else
 			};
 			if (_c > 3) then
 			{
-				REM(_history,[_history select 0]);
+				REM(_history,_history select 0);
 			};
 		};
 		false
