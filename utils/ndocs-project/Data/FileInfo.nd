@@ -106,7 +106,7 @@ G:\Games\ArmA 2\x\cba\addons\common\fnc_selectWeapon.sqf	1247319386	1	CBA_fnc_se
 G:\Games\ArmA 2\x\cba\addons\network\fnc_sync.sqf	1247414740	0	CBA_network_fnc_sync
 G:\Games\ArmA 2\x\cba\addons\arrays\config.cpp	1247319386	0	G:\Games\ArmA 2\x\cba\addons\arrays\config.cpp
 G:\Games\ArmA 2\x\cba\addons\network\fnc_opc.sqf	1247414740	0	CBA_network_fnc_opc
-G:\Games\ArmA 2\x\cba\addons\diagnostic\fnc_error.sqf	1246645350	1	CBA_fnc_error
+G:\Games\ArmA 2\x\cba\addons\diagnostic\fnc_error.sqf	1247683130	1	CBA_fnc_error
 G:\Games\ArmA 2\x\cba\addons\main\config.cpp	1245892375	0	G:\Games\ArmA 2\x\cba\addons\main\config.cpp
 G:\Games\ArmA 2\x\cba\addons\common\fnc_getConfigEntry.sqf	1247319386	1	CBA_fnc_getConfigEntry
 G:\Games\ArmA 2\x\cba\addons\common\CfgFunctions.hpp	1247584386	0	G:\Games\ArmA 2\x\cba\addons\common\CfgFunctions.hpp
@@ -140,7 +140,7 @@ G:\Games\ArmA 2\x\cba\addons\hashes\fnc_hashCreate.sqf	1247319386	1	CBA_fnc_hash
 G:\Games\ArmA 2\x\cba\addons\common\fnc_defaultParam.sqf	1247319386	1	CBA_fnc_defaultParam
 G:\Games\ArmA 2\x\cba\addons\common\init_actionmonitor.sqf	1247499742	0	G:\Games\ArmA 2\x\cba\addons\common\init_actionmonitor.sqf
 G:\Games\ArmA 2\x\cba\addons\network\fnc_exec.sqf	1247584335	0	CBA_network_fnc_exec
-G:\Games\ArmA 2\x\cba\addons\diagnostic\fnc_log.sqf	1247319386	1	CBA_fnc_log
+G:\Games\ArmA 2\x\cba\addons\diagnostic\fnc_log.sqf	1247683190	1	CBA_fnc_log
 G:\Games\ArmA 2\x\cba\addons\diagnostic\XEH_PreInit_Once.sqf	1247414740	0	G:\Games\ArmA 2\x\cba\addons\diagnostic\XEH_PreInit_Once.sqf
 G:\Games\ArmA 2\x\cba\addons\common\fnc_dropMagazine.sqf	1247657503	1	CBA_fnc_dropMagazine
 G:\Games\ArmA 2\x\cba\addons\events\fnc_addActionHandler.sqf	1247584335	1	CBA_fnc_addActionHandler

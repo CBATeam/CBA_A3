@@ -4,13 +4,13 @@ Function: CBA_fnc_log
 Description:
 	Logs a message to the RPT log.
 	
-	Should not be used directly, but rather via macro (<LOG(MESSAGE)>).
+	Should not be used directly, but rather via macro (<LOG()>).
 	
 	This function is unaffected by the debug level (<DEBUG_MODE_*>).
 	
 Parameters:
-	_file - [String]
-	_lineNum - [Number]
+	_file - File error occurred in [String]
+	_lineNum - Line number error occurred on (starting from 0) [Number]
 	_message - Message [String]
 	
 Returns:
