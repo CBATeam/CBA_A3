@@ -2,11 +2,11 @@
 
 #include "script_component.hpp"
 
-SCRIPT(test_macros);
+SCRIPT(test_assertions);
 
 // ----------------------------------------------------------------------------
 
-LOG("Testing Macros");
+LOG("Testing assertions");
 
 private ["_a", "_b"];
 
@@ -18,5 +18,6 @@ ASSERT_FALSE(_a,"Checking ASSERT_FALSE() is output correctly");
 _a = 1; _b = 2;
 ASSERT_OP(_a,>,_b,"Checking ASSERT_OP() is output correctly");
 ASSERT_DEFINED("_imaginaryFox","Checking ASSERT_DEFINED() is output correctly");
+
 
 nil;

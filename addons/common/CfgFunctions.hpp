@@ -54,7 +54,7 @@ class CfgFunctions
 			// CBA_fnc_getPistol
 			class getPistol
 			{
-				description = "Returns first found Pistol in unit's weaponList.";
+				description = "Returns name of pistol in unit's inventory, if any.";
 				file = "\x\cba\addons\common\fnc_getPistol.sqf";
 			};
 			// CBA_fnc_getGroupIndex

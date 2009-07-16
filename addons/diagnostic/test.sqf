@@ -5,16 +5,16 @@
 
 #include "script_component.hpp"
 
-#define CATEGORIES ["arrays", "common", "diagnostic", "hashes", "strings"]
+#define TESTS ["assertions", "parameters"]
 
-SCRIPT(test);
+SCRIPT(test-diagnostic);
 
 // ----------------------------------------------------------------------------
 
-LOG("===--- Testing ---===");
+LOG("=== Testing Diagnostic ===");
 
 {
-	call compile preprocessFileLineNumbers format ["\x\cba\addons\%1\test.sqf", _x];
-} forEach CATEGORIES;
+	call compile preprocessFileLineNumbers format ["\x\cba\addons\diagnostic\test_%1.sqf", _x];
+} forEach TESTS;
 
 nil;
