@@ -31,7 +31,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "hashes.inc.sqf"
+#include "script_hashes.hpp"
 
 SCRIPT(hashEachPair);
 

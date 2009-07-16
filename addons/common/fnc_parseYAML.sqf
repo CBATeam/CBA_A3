@@ -17,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "\x\cba\addons\strings\strings.inc.sqf"
+#include "\x\cba\addons\strings\script_strings.hpp"
 
 #define YAML_MODE_STRING 0
 #define YAML_MODE_ASSOC_KEY 1

@@ -23,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "strings.inc.sqf"
+#include "script_strings.hpp"
 
 SCRIPT(rightTrim);
 
