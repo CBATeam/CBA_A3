@@ -51,19 +51,23 @@ else
 	};
 };
 
+// loadGame EventHandler
 ["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
+
 [] spawn
 {
+	// Based on the pretty much assumption that loadedGames are always back in time, not forward
 	private ["_history"];
 	waitUntil { time > 0 };
 	_history = diag_frameNo;
 	
 	waitUntil
 	{
-		if (_history + 100 < diag_frameNo) then
+		// Instead of + 1, using + 10, it seems script scheduling or something else can allow more than 1 frame skip per iteration
+		if (_history + 10 < diag_frameNo) then
 		{
 				["CBA_loadGame"] call CBA_fnc_localEvent;
-				diag_log text format["%1",_history];
+				diag_log text format["%1", _history];
 		};
 		_history = diag_frameNo;
 		false
