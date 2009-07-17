@@ -43,3 +43,5 @@ cp_r '../docs/cba_wiki', DOCS_DIR
 
 cd 'release'
 %x[7z a #{FOLDER} #{FOLDER}/]
+%x[7z a -tzip #{FOLDER} #{FOLDER}/]
+
