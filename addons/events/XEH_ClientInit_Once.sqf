@@ -21,7 +21,7 @@ waitUntil { format["%1", findDisplay 46] != "No display" };
 {
 	private ["_lastPlayer", "_newPlayer"];
 	waitUntil {player == player};
-	["CBA_playerSpawn", player] call CBA_fnc_localEvent;
+	["CBA_playerSpawn", [player, objNull]] call CBA_fnc_localEvent;
 	
 	_lastPlayer = objNull;
 	while {true} do
