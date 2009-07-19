@@ -13,7 +13,8 @@ private [
 	"_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass", "_classes",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
-	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew"
+	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
+	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -66,7 +67,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 		if (isText (configFile/"DefaultEventhandlers"/"init")) then {
 			_useDEHinit = true;
 			_DEHinit = getText(configFile/"DefaultEventhandlers"/"init");
-			_inits =[compile(_DEHinit)];
+			_inits = [compile(_DEHinit)];
 		};
 	};
 };
@@ -89,6 +90,8 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 				{
 					_scopeEntry = _cfgEntry / "scope";
 					_initEntry = _cfgEntry / "init";
+					_serverInitEntry = _cfgEntry / "serverInit";
+					_clientInitEntry = _cfgEntry / "clientInit";
 					_excludeEntry = _cfgEntry / "exclude";
 					_respawnEntry = _cfgEntry / "onRespawn";
 					_replaceEntry = _cfgEntry / "replaceDEH";
@@ -136,7 +139,23 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 								if (_useDEHinit && _replaceDEH) then {
 									_inits set [0, _init];
 								} else {
-									_inits = _inits+[_init];
+									_inits = _inits + [_init];
+								};
+								if (isServer) then
+								{
+									if (isText _serverInitEntry) then
+									{
+										_serverInit = compile(getText _serverInitEntry);
+										_inits = _inits + [_serverInit];
+									};
+								};
+								if !(isDedicated) then
+								{
+									if (isText _clientInitEntry) then
+									{
+										_clientInit = compile(getText _clientInitEntry);
+										_inits = _inits + [_clientInit];
+									};
 								};
 							};
 						};
