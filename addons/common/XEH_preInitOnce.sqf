@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-SCRIPT(XEH_PreInit_once);
+SCRIPT(XEH_preInit);
 
 #define CREATE_CENTER _center = createCenter sideLogic
 #define CREATE_GROUP _group = createGroup sideLogic

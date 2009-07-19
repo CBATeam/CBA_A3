@@ -1,8 +1,4 @@
 #include "script_component.hpp"
-waitUntil { format["%1", findDisplay 46] != "No display" };
-(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(keyHandler))];
-// Todo: Evaluate combination
-(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];
 
 ["CBA_loadGame",
 {
@@ -30,4 +26,12 @@ waitUntil { format["%1", findDisplay 46] != "No display" };
 		["CBA_playerSpawn", [_newPlayer, _lastPlayer]] call CBA_fnc_localEvent;
 		_lastPlayer = _newPlayer;
 	};
+};
+
+[] spawn
+{
+	waitUntil { format["%1", findDisplay 46] != "No display" };
+	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(keyHandler))];
+	// Todo: Evaluate combination
+	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];
 };
