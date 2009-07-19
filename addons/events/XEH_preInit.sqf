@@ -31,7 +31,8 @@ for "_i" from 0 to _count do
 
 PREP(actionHandler);
 PREP(keyHandler);
-
+PREP(globalHitEvent);
+PREP(globalKilledEvent);
 
 // Initialisation required by CBA events.
 CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
@@ -50,6 +51,11 @@ else
 		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent};
 	};
 };
+
+#ifdef DEBUG_MODE_FULL
+	["CBA_hitEvent", {TRACE_1("hitEvent", _this)}] call CBA_fnc_addEventHandler;
+	["CBA_killedEvent", {TRACE_1("killedEvent", _this)}] call CBA_fnc_addEventHandler;
+#endif
 
 // loadGame EventHandler
 ["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
