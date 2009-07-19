@@ -73,6 +73,8 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 					if (isClass _cfgEntry) then {
 						_scopeEntry = _cfgEntry / "scope";
 						_handlerEntry = _cfgEntry / _event;
+						_serverHandlerEntry = _cfgEntry / format["server%1", _event];
+						_clientHandlerEntry = _cfgEntry / format["client%1", _event];
 						_excludeEntry = _cfgEntry / "exclude";
 						_replaceEntry = _cfgEntry / "replaceDEH";
 						if (isText _excludeEntry) then {
@@ -98,21 +100,35 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 									if (_hasDefaultEH && _replaceDEH) then {
 										_handlers set [0, getText _handlerEntry];
 									} else {
-										_handlers = _handlers+[getText _handlerEntry];
+										_handlers = _handlers + [getText _handlerEntry];
+									};
+									if (isServer) then
+									{
+										if (isText _serverHandlerEntry) then
+										{
+											_handlers = _handlers + [getText _serverHandlerEntry];
+										};
+									};
+									if !(isDedicated) then
+									{
+										if (isText _clientHandlerEntry) then
+										{
+											_handlers = _handlers + [getText _clientHandlerEntry];
+										};									
 									};
 								};
 							};
 						};
 					};
 				};
-				_i = _i+1;
+				_i = _i + 1;
 			};
 		};
 	} forEach _classes;
 
 	// Now concatenate all the handlers into one string
 	_handler = "";
-	{ _handler = _handler+_x+";" } forEach _handlers;
+	{ _handler = _handler + _x + ";" } forEach _handlers;
 
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
