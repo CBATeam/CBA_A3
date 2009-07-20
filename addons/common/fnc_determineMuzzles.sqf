@@ -19,11 +19,11 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(determineMuzzles);
-
-#define __cfg configFile >> "CfgWeapons" >> _this
+PARAMS_1(_weap);
+#define __cfg configFile >> "CfgWeapons" >> _weap
 
 private ["_r"];
-_r = [_this];
+_r = [_weap];
 if (isArray(__cfg >> "muzzles")) then
 {
 	_ar = getArray(__cfg >> "muzzles");
