@@ -84,39 +84,39 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 								_excludeClasses = (getArray _excludeEntry);
 							};
 						};
-						if (isText _replaceEntry) then {
-							_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-						} else {
-							if (isNumber _replaceEntry) then {
-								_replaceDEH = ((getNumber _replaceEntry) == 1);
-							};
-						};
-						if (isText _handlerEntry) then {
-							_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-							// If the particular EH is private and vehicle is of the
-							// "wrong" class, do nothing, ie don't add the EH.
-							if !(_scope == 0 && (_unitClass != _x)) then {
+						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
+						// If the particular EH is private and vehicle is of the
+						// "wrong" class, do nothing, ie don't add the EH.
+						if !(_scope == 0 && (_unitClass != _x)) then {
+							if (isText _handlerEntry) then {
+								if (isText _replaceEntry) then {
+									_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
+								} else {
+									if (isNumber _replaceEntry) then {
+										_replaceDEH = ((getNumber _replaceEntry) == 1);
+									};
+								};
 								if !( [] call _isExcluded ) then {
 									if (_hasDefaultEH && _replaceDEH) then {
 										_handlers set [0, getText _handlerEntry];
 									} else {
 										_handlers = _handlers + [getText _handlerEntry];
 									};
-									if (isServer) then
-									{
-										if (isText _serverHandlerEntry) then
-										{
-											_handlers = _handlers + [getText _serverHandlerEntry];
-										};
-									};
-									if !(isDedicated) then
-									{
-										if (isText _clientHandlerEntry) then
-										{
-											_handlers = _handlers + [getText _clientHandlerEntry];
-										};									
-									};
 								};
+							};
+							if (isServer) then
+							{
+								if (isText _serverHandlerEntry) then
+								{
+									_handlers = _handlers + [getText _serverHandlerEntry];
+								};
+							};
+							if !(isDedicated) then
+							{
+								if (isText _clientHandlerEntry) then
+								{
+									_handlers = _handlers + [getText _clientHandlerEntry];
+								};									
 							};
 						};
 					};
