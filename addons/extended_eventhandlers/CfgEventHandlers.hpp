@@ -144,16 +144,6 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\structures\misc\armory\checkered_flag\data\checker_flag_co.paa""";
 	};
 	
-	// Popup targets
-	class TargetPopUpTarget
-	{
-		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
-	};
-	class TargetEpopup
-	{
-		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
-	};
-	
 	// Force recon specials.
 	class FR_Miles
 	{
@@ -321,7 +311,18 @@ class Extended_Fuel_EventHandlers {};
 class Extended_Gear_EventHandlers {};
 class Extended_GetIn_EventHandlers {};
 class Extended_GetOut_EventHandlers {};
-class Extended_Hit_EventHandlers {};
+class Extended_Hit_EventHandlers
+{
+	// Popup targets
+	class TargetPopUpTarget
+	{
+		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
+	};
+	class TargetEpopup
+	{
+		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
+	};
+};
 class Extended_IncomingMissile_EventHandlers {};
 class Extended_Killed_EventHandlers
 {
