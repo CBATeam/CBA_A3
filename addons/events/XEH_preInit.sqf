@@ -60,6 +60,8 @@ else
 // loadGame EventHandler
 ["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
 
+/*
+// Disabled - SB - 2009-07-22: Script scheduling seems to mess this up. Mostly spotted at dedicated server.
 [] spawn
 {
 	// Based on the pretty much assumption that loadedGames are always back in time, not forward
@@ -79,5 +81,6 @@ else
 		false
 	};
 };
+*/
 
 nil;
