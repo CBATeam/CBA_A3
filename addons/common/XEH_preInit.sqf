@@ -1,9 +1,6 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
-
-#define CREATE_CENTER _center = createCenter sideLogic
-#define CREATE_GROUP _group = createGroup sideLogic
-   
+ 
 // Prepare BIS functions/MP and precompile all functions we already have registered with it:
 private ["_logic"];
 _logic = "LOGIC" createVehicleLocal [0,0,0]; // TODO: Removal

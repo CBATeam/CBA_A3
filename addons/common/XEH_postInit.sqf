@@ -3,18 +3,17 @@
 // Create centers that do not exist yet
 // TODO: Evaluate handling this in some createGroup function instead of creating them all?
 #define CREATE_CENTER _center = createCenter
-#define CREATE_GROUP _group = createGroup
 
 {
 	/*
 	private ["_group", "_center"];
-	CREATE_GROUP _x;
+	[_x] call CBA_fnc_getSharedGroup;
 	if (isNil "_group") then
 	{
 		CREATE_CENTER _x;
-		CREATE_GROUP _x;
+		[_x] call CBA_fnc_getSharedGroup;
 	} else {
-		if (isNull _group) then { CREATE_CENTER _x; CREATE_GROUP _x };
+		if (isNull _group) then { CREATE_CENTER _x; [_x] call CBA_fnc_getSharedGroup };
 	};
 	deleteGroup _group;
 	*/
@@ -33,17 +32,17 @@ if (isNil "BIS_functions_mainscope") then
 	if (isServer) then
 	{
 /*
-		CREATE_GROUP sideLogic;
+		[sideLogic] call CBA_fnc_getSharedGroup;
 		if (isNil "_group") then
 		{
 			CREATE_CENTER sideLogic;
-			CREATE_GROUP sideLogic;
+			[sideLogic] call CBA_fnc_getSharedGroup;
 		} else {
-			if (isNull _group) then { CREATE_CENTER sideLogic; CREATE_GROUP sideLogic };
+			if (isNull _group) then { CREATE_CENTER sideLogic; [sideLogic] call CBA_fnc_getSharedGroup };
 		};
 */
 		// CREATE_CENTER sideLogic; // Handled above
-		CREATE_GROUP sideLogic;
+		[sideLogic] call CBA_fnc_getSharedGroup;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 		TRACE_2("Created FunctionsManager Logic",_group,_logic);
 	} else {
