@@ -17,6 +17,7 @@ Examples:
 Author:
 	Sickboy
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
 
 #define SIDES [east, west, resistance, civilian, sideLogic]
 
