@@ -153,6 +153,12 @@ class CfgFunctions
 				description = "Get the direction of a unit's head.";
 				file = "\x\cba\addons\common\fnc_headDir.sqf";
 			};
+			// CBA_fnc_getSharedGroup
+			class getSharedGroup
+			{
+				description = "Returns existing group on side, or newly created group when not existent.";
+				file = "\x\cba\addons\common\fnc_getSharedGroup.sqf";
+			};
 			// CBA_fnc_getConfigEntry
 			class getConfigEntry
 			{

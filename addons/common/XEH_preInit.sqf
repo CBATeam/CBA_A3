@@ -58,6 +58,7 @@ DEPRECATE(fShuffle,fnc_shuffle);
 DEPRECATE(fSwitchPlayer,fnc_switchPlayer);
 
 // Initialize Components
+GVAR(groups) = [grpNull, grpNull, grpNull, grpNull, grpNull];
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_kron_strings);
 
