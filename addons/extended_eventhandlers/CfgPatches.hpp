@@ -19,7 +19,7 @@ class CfgPatches
 			"CAData_ParticleEffects",
 			"CA_Dubbing",
 			"CA_Dubbing_Counterattack",
-			"CA_Editor",
+			// "CA_Editor", // 2009-07-23 - SB - Disabled since we don't use classes from it, nor does it seem that the Steam version has the addon :O
 			"CALanguage",
 			"CALanguage_missions",
 			"CA_HC_Sounds",
