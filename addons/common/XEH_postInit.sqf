@@ -7,13 +7,13 @@
 {
 	/*
 	private ["_group", "_center"];
-	[_x] call CBA_fnc_getSharedGroup;
+	_group = [_x] call CBA_fnc_getSharedGroup;
 	if (isNil "_group") then
 	{
 		CREATE_CENTER _x;
-		[_x] call CBA_fnc_getSharedGroup;
+		_group = [_x] call CBA_fnc_getSharedGroup;
 	} else {
-		if (isNull _group) then { CREATE_CENTER _x; [_x] call CBA_fnc_getSharedGroup };
+		if (isNull _group) then { CREATE_CENTER _x; _group = [_x] call CBA_fnc_getSharedGroup };
 	};
 	deleteGroup _group;
 	*/
@@ -32,17 +32,17 @@ if (isNil "BIS_functions_mainscope") then
 	if (isServer) then
 	{
 /*
-		[sideLogic] call CBA_fnc_getSharedGroup;
+		_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		if (isNil "_group") then
 		{
 			CREATE_CENTER sideLogic;
-			[sideLogic] call CBA_fnc_getSharedGroup;
+			_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		} else {
-			if (isNull _group) then { CREATE_CENTER sideLogic; [sideLogic] call CBA_fnc_getSharedGroup };
+			if (isNull _group) then { CREATE_CENTER sideLogic; _group = [sideLogic] call CBA_fnc_getSharedGroup };
 		};
 */
 		// CREATE_CENTER sideLogic; // Handled above
-		[sideLogic] call CBA_fnc_getSharedGroup;
+		_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 		TRACE_2("Created FunctionsManager Logic",_group,_logic);
 	} else {
