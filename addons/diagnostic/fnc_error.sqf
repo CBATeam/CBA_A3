@@ -32,7 +32,7 @@ private ["_time", "_lines"];
 // TODO: popup window with error message in it.
 _time = [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime;
 
-diag_log text format ["%1 [%2:%3] -ERROR- %4", _time, _file, _lineNum + 1, _title];
+diag_log text format ["%1 (%2) [%3:%4] -ERROR- %5", _time, time, _file, _lineNum + 1, _title];
 
 _lines = [_message, "\n"] call CBA_fnc_split;
 
