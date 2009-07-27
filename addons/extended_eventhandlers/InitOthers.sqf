@@ -12,6 +12,10 @@ private [
 	"_scope", "_i", "_t", "_xeh", "_event"
 ];
 
+#ifdef DEBUG_MODE_FULL
+	//diag_log text format["(%1) XEH BEG: %2", time, _this];
+#endif
+
 // Get unit.
 _unit = _this select 0;
 _unitClass = typeOf _unit;
@@ -133,7 +137,13 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
 	_unit setVariable [_xeh, compile _handler];
-
+	#ifdef DEBUG_MODE_FULL
+	diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _handler];
+	#endif
 } forEach _events;
+
+#ifdef DEBUG_MODE_FULL
+//diag_log text format["(%1) XEH END: %2", time, _this];
+#endif
 
 nil;
