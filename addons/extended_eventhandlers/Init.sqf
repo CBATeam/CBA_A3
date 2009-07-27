@@ -123,39 +123,39 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 							_replaceDEH = ((getNumber _replaceEntry) == 1);
 						};
 					};
-					if (isText _initEntry) then
+					_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
+					if !(_scope == 0 && (_unitClass != _x)) then
 					{
-						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-						/*  If the init EH is private and vehicle is of the
-						*  "wrong" class, do nothing, ie don't add the EH.
-						*  Also, if we're called after a respawn and the
-						*  init EH shouldn't be used, then don't.
-						*/
-						if !(_scope == 0 && (_unitClass != _x)) then
+						if (!([] call _isExcluded) && [] call _useEH) then
 						{
-							if (!([] call _isExcluded) && [] call _useEH) then
+							if (isText _initEntry) then
 							{
+								/*  If the init EH is private and vehicle is of the
+								*  "wrong" class, do nothing, ie don't add the EH.
+								*  Also, if we're called after a respawn and the
+								*  init EH shouldn't be used, then don't.
+								*/
 								_init = compile(getText _initEntry);
 								if (_useDEHinit && _replaceDEH) then {
 									_inits set [0, _init];
 								} else {
 									_inits = _inits + [_init];
 								};
-								if (isServer) then
+							};
+							if (isServer) then
+							{
+								if (isText _serverInitEntry) then
 								{
-									if (isText _serverInitEntry) then
-									{
-										_serverInit = compile(getText _serverInitEntry);
-										_inits = _inits + [_serverInit];
-									};
+									_serverInit = compile(getText _serverInitEntry);
+									_inits = _inits + [_serverInit];
 								};
-								if !(isDedicated) then
+							};
+							if !(isDedicated) then
+							{
+								if (isText _clientInitEntry) then
 								{
-									if (isText _clientInitEntry) then
-									{
-										_clientInit = compile(getText _clientInitEntry);
-										_inits = _inits + [_clientInit];
-									};
+									_clientInit = compile(getText _clientInitEntry);
+									_inits = _inits + [_clientInit];
 								};
 							};
 						};
