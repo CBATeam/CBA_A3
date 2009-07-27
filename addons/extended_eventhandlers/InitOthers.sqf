@@ -5,6 +5,7 @@
 * from each matching EH class and set things up.
 *
 */
+#include "script_component.hpp"
 private [
 	"_unit", "_events", "_isExcluded", "_event", "_Extended_EH_Class",
 	"_unitClass", "_classes", "_excludeClass", "_excludeClasses", "_handlers",
@@ -13,7 +14,7 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-	//diag_log text format["(%1) XEH BEG: %2", time, _this];
+	diag_log text format["(%1) XEH BEG: %2", time, _this];
 #endif
 
 // Get unit.
@@ -138,12 +139,12 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 	_xeh = format["Extended_%1EH", _event];
 	_unit setVariable [_xeh, compile _handler];
 	#ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _handler];
+	diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, _event, _handler != ""];
 	#endif
 } forEach _events;
 
 #ifdef DEBUG_MODE_FULL
-//diag_log text format["(%1) XEH END: %2", time, _this];
+diag_log text format["(%1) XEH END: %2", time, _this];
 #endif
 
 nil;
