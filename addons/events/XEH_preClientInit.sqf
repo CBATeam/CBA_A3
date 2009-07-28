@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+LOG(MSG_INIT);
+
 ["CBA_loadGame",
 {
 	[] spawn

@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
+
+LOG(MSG_INIT);
  
 // Prepare BIS functions/MP and precompile all functions we already have registered with it:
 private ["_logic"];
@@ -7,8 +9,6 @@ _logic = "LOGIC" createVehicleLocal [0,0,0]; // TODO: Removal
 
 [_logic] call COMPILE_FILE(init_functionsModule);
 LOG("Initialising the Functions module early.");
-
-LOG(MSG_INIT);
 
 ADDON = false;
 

@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+LOG(MSG_INIT);
+
 // Create centers that do not exist yet
 // TODO: Evaluate handling this in some createGroup function instead of creating them all?
 #define CREATE_CENTER _center = createCenter
