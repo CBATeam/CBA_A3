@@ -330,12 +330,12 @@ class Extended_Killed_EventHandlers
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";
 	};
-	
+	/* No longer used - see http://dev-heaven.net/issues/show/2993
 	class Man
 	{
 		SLX_XEH_Killed="_this call SLX_XEH_killed";
 	};
-	
+	*/
 	class Su34
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";
