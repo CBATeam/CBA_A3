@@ -44,8 +44,10 @@ if !(isNull player) then
 	};
 };
 // Monitor playable units (players and AI)
-SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
+// Killswitch: no longer needed - see http://dev-heaven.net/issues/show/2993
+//SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
 
+    
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 
 // General InitPosts
