@@ -18,7 +18,7 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-	//diag_log text format["(%1) XEH BEG: %2", time, _this];
+diag_log text format["(%1) XEH BEG: %2", time, _this];
 #endif
 // Get unit.
 _unit = _this select 0;
@@ -176,7 +176,7 @@ diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _inits];
 { [_unit] call _x } forEach _inits;
 
 #ifdef DEBUG_MODE_FULL
-//diag_log text format["(%1) XEH END: %2", time, _this];
+diag_log text format["(%1) XEH END: %2", time, _this];
 #endif
 
 nil;
