@@ -48,9 +48,11 @@ if !(isNull player) then
  * that are configured to be re-run on respawn. (By default, init EH:s are not
  * re-run when a unit respawns.
  */
-SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
+if (isMultiplayer) then
+{
+    SLX_XEH_rmon = [] execVM "extended_eventhandlers\RespawnMonitor.sqf";
+};
 
-    
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 
 // General InitPosts
