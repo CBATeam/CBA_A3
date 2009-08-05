@@ -46,6 +46,7 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 *  is to not call the XEH init EH, since the ArmA default behaviour is that
 *  "init" event handlers are not called when a unit respawns.
 */
+_onRespawn=false;
 _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 
 /*
@@ -81,7 +82,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 		{
 			_cfgEntry = (configFile/_Extended_Init_Class/_x) select _i;
 			// Standard XEH init string
-			if (isText _cfgEntry) then
+			if (isText _cfgEntry && [] call _useEH) then
 			{
 				_inits = _inits+[compile(getText _cfgEntry)];
 			} else {
