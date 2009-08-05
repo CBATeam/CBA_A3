@@ -47,7 +47,7 @@ class Extended_InitPost_EventHandlers
 		class SLX_Init_Other_All
 		{
 			scope	 = public;
-			onRespawn = true;   // Run this EH when a unit respawns
+			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
 			init	  = "_this call SLX_XEH_initOthers";
 		};
 	};
@@ -62,7 +62,7 @@ class Extended_Init_EventHandlers
 		class SLX_Init_Post_All
 		{
 				scope	 = public;
-				onRespawn = true;   // Run this EH when a unit respawns
+				onRespawn = false;   // A2 keeps object variables after respawn
 				init	  = "_this call SLX_XEH_initPost";
 		};
 	};
@@ -330,12 +330,10 @@ class Extended_Killed_EventHandlers
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";
 	};
-	/* No longer used - see http://dev-heaven.net/issues/show/2993
 	class Man
 	{
-		SLX_XEH_Killed="_this call SLX_XEH_killed";
+		SLX_XEH_Killed="_this call SLX_XEH_killed"; // Used by the respawn mon.
 	};
-	*/
 	class Su34
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";

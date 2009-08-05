@@ -43,9 +43,12 @@ if !(isNull player) then
 		waitUntil { !(isNull (group player)) };
 	};
 };
-// Monitor playable units (players and AI)
-// Killswitch: no longer needed - see http://dev-heaven.net/issues/show/2993
-//SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
+/* 
+ * Monitor playable units (players and AI) and re-run any XEH init handlers
+ * that are configured to be re-run on respawn. (By default, init EH:s are not
+ * re-run when a unit respawns.
+ */
+SLX_XEH_rmon = execVM "extended_eventhandlers\RespawnMonitor.sqf";
 
     
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
