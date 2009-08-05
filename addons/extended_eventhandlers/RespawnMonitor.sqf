@@ -45,7 +45,7 @@ if (!_nomonitor) then
 		SLX_XEH_killed={};
 		// Track all playable units (players and AI) and when they respawn,
 		// re-run the Extended Init EH:s on the units that have a "composite"
-		// init EH defined with the respawn property set to true
+		// init EH defined with the "onRespawn" property set to true
 		_playerIsNamed=false;
 		{
 			_name=vehicleVarName _x;
