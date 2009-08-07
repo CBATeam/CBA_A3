@@ -7,6 +7,7 @@ class Extended_PreInit_EventHandlers
 	};
 };
 
+/*
 class Extended_Hit_EventHandlers
 {
 	class All
@@ -22,3 +23,4 @@ class Extended_Killed_EventHandlers
 		GVAR(killed) = QUOTE(_this call FUNC(globalKilledEvent));
 	};
 };
+*/

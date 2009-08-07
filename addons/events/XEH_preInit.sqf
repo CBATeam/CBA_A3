@@ -31,8 +31,8 @@ for "_i" from 0 to _count do
 
 PREP(actionHandler);
 PREP(keyHandler);
-PREP(globalHitEvent);
-PREP(globalKilledEvent);
+//PREP(globalHitEvent);
+//PREP(globalKilledEvent);
 
 // Initialisation required by CBA events.
 CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
@@ -52,13 +52,8 @@ else
 	};
 };
 
-#ifdef DEBUG_MODE_FULL
-	["CBA_hitEvent", {TRACE_1("hitEvent", _this)}] call CBA_fnc_addEventHandler;
-	["CBA_killedEvent", {TRACE_1("killedEvent", _this)}] call CBA_fnc_addEventHandler;
-#endif
-
 // loadGame EventHandler
-["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
+//["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
 
 /*
 // Disabled - SB - 2009-07-22: Script scheduling seems to mess this up. Mostly spotted at dedicated server.
