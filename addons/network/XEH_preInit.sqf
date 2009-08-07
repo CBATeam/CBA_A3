@@ -80,6 +80,7 @@ if (isServer) then
 	// onPlayerDisconnected '[_name,_id] call FUNC(opd)';
 
 	// Weather and Time Sync
+	/*
 	[] spawn
 	{
 		// Every 60 Seconds date/weather sync
@@ -89,6 +90,7 @@ if (isServer) then
 			call FUNC(sync);
 		};
 	};
+	*/
 } else {
 	FUNC(id) =
 	{
