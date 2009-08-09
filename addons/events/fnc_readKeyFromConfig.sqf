@@ -12,7 +12,7 @@ Returns:
 
 Examples:
 	(begin example)
-		_keyConfig = ["cba_sys_nvg", "nvgon", { _this call myAction }] call CBA_fnc_readKeyFromConfig;
+		_keyConfig = ["cba_sys_nvg", "nvgon"] call CBA_fnc_readKeyFromConfig;
 	(end)
 
 Author:
