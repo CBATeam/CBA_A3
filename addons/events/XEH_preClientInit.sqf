@@ -7,7 +7,8 @@ LOG(MSG_INIT);
 	[] spawn
 	{
 		waitUntil { format["%1", findDisplay 46] != "No display" };
-		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(keyHandler))];
+		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))];
+		(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))];
 		// Todo: Evaluate combination
 		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];
 	};
@@ -33,7 +34,9 @@ LOG(MSG_INIT);
 [] spawn
 {
 	waitUntil { format["%1", findDisplay 46] != "No display" };
-	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(keyHandler))];
+	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))];
+	(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))];
+
 	// Todo: Evaluate combination
 	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];
 };

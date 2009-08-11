@@ -27,7 +27,7 @@ _settings = [false, false, false];
 if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith
 {
 	TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action));
-	[getNumber(CFGSETTINGS >> _component >> _action), _settings]
+	[getNumber(CFGSETTINGS >> _component >> _action), _settings];
 };
 
 if (isClass(CFGSETTINGS >> _component >> _action)) exitWith
@@ -38,7 +38,7 @@ if (isClass(CFGSETTINGS >> _component >> _action)) exitWith
 		if (getNumber(CFGSETTINGS >> _component >> _action >> _x) == 1) then { _settings set [_i, true] };
 		INC(_i);
 	} forEach ["shift", "ctrl", "alt"];
-	[getNumber(CFGSETTINGS >> _component >> _action >> "key"), _settings]
+	[getNumber(CFGSETTINGS >> _component >> _action >> "key"), _settings];
 };
 
-[-1, _settings]
+[-1, _settings];

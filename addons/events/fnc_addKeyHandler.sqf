@@ -8,6 +8,7 @@ Parameters:
 	_key - Numerical key to attach action to [Integer].
 	_settings - Shift, Ctrl, Alt required [Array].
 	_code - Code to execute upon event [Code].
+	_type - "DOWN" (default) = keyDown,  "UP" = keyUp [String].
 
 Returns:
 
@@ -23,13 +24,19 @@ Author:
 #include "script_component.hpp"
 SCRIPT(addKeyHandler);
 
-private ["_ar", "_entry"];
+private ["_ar", "_entry", "_type", "_handlers"];
 PARAMS_3(_key,_settings,_code);
-TRACE_1("",_this);
+_type = if (count _this > 3) then { _this select 3 } else { "DOWN" };
 
-_ar = GVAR(keys) select _key;
+_handlers = case _type do
+{
+	case "DOWN": { GVAR(keys_down); };
+	case "UP": { GVAR(keys_up); };
+};
+
+_ar = _handlers select _key;
 _entry = [_settings, _code];
 PUSH(_ar,_entry);
-GVAR(keys) set [_key, _ar];
+_handlers set [_key, _ar];
 
 true;

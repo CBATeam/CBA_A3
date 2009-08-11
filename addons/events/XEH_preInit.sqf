@@ -10,10 +10,11 @@
 */
 LOG(MSG_INIT);
 
-GVAR(keys) = [];
+GVAR(keys_down) = []; GVAR(keys_up) = [];
 for "_i" from 0 to 250 do
 {
-	GVAR(keys) set [_i, []];
+	GVAR(keys_down) set [_i, []];
+	GVAR(keys_up) set [_i, []];
 };
 
 private ["_count"];
