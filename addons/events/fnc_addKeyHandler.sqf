@@ -28,11 +28,7 @@ private ["_ar", "_entry", "_type", "_handlers"];
 PARAMS_3(_key,_settings,_code);
 _type = if (count _this > 3) then { _this select 3 } else { "DOWN" };
 
-_handlers = case _type do
-{
-	case "DOWN": { GVAR(keys_down); };
-	case "UP": { GVAR(keys_up); };
-};
+_handlers = if (_type == "UP") then { GVAR(keys_up) } else { GVAR(keys_down) };
 
 _ar = _handlers select _key;
 _entry = [_settings, _code];

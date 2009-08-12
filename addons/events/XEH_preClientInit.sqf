@@ -2,13 +2,16 @@
 
 LOG(MSG_INIT);
 
+#define DOWN [_this, 0]
+#define UP [_this, 1]
+
 ["CBA_loadGame",
 {
 	[] spawn
 	{
 		waitUntil { format["%1", findDisplay 46] != "No display" };
-		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))];
-		(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))];
+		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))];
+		(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE(UP call FUNC(keyHandler))];
 		// Todo: Evaluate combination
 		(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];
 	};
@@ -34,8 +37,8 @@ LOG(MSG_INIT);
 [] spawn
 {
 	waitUntil { format["%1", findDisplay 46] != "No display" };
-	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))];
-	(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))];
+	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))];
+	(findDisplay 46) displayAddEventHandler ["KeyUp", QUOTE(UP call FUNC(keyHandler))];
 
 	// Todo: Evaluate combination
 	(findDisplay 46) displayAddEventHandler ["KeyDown", QUOTE(_this call FUNC(actionHandler))];

@@ -27,10 +27,10 @@ private ["_key", "_type"];
 PARAMS_3(_component,_action,_code);
 _type = if (count _this > 3) then { _this select 3 } else { "DOWN" };
 
-_key = [_component, _action, _type] call CBA_fnc_readKeyFromConfig;
+_key = [_component, _action] call CBA_fnc_readKeyFromConfig;
 if (_key select 0 > -1) exitWith
 {
-	 [_key select 0, _key select 1, _code] call CBA_fnc_addKeyHandler;
+	 [_key select 0, _key select 1, _code, _type] call CBA_fnc_addKeyHandler;
 	 true;
 };
 
