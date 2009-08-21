@@ -492,8 +492,8 @@ Author:
 	#define PATHTO_T(var1) PATHTOFS(PREFIX,COMPONENT,var1)
 	#define PATHTO_M(var1) PATHTOFS(PREFIX,COMPONENT,var1)
 	#define PATHTO_S(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-	#define PATHTO_F(var1) PATHTOS(PREFIX,COMPONENT,var1)	
-#end
+	#define PATHTO_F(var1) PATHTOS(PREFIX,COMPONENT,var1)
+#endif
 
 // Direct file function
 #define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'
