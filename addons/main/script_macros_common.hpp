@@ -296,6 +296,18 @@ Group: General
 #define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
 #define QUOTE(var1) #var1
 
+#ifdef MODULAR
+	#define COMPONENT_T	DOUBLES(t,COMPONENT)
+	#define COMPONENT_M	DOUBLES(m,COMPONENT)
+	#define COMPONENT_S	DOUBLES(s,COMPONENT)
+	#define COMPONENT_F	DOUBLES(f,COMPONENT)
+#else
+	#define COMPONENT_T COMPONENT
+	#define COMPONENT_M COMPONENT
+	#define COMPONENT_S COMPONENT
+	#define COMPONENT_M COMPONENT
+#endif
+
 /* -------------------------------------------
 Macro: INC()
 
@@ -459,22 +471,29 @@ Author:
 	Sickboy
 ------------------------------------------- */
 #define ISNILS(VARIABLE,DEFAULT_VALUE) if (isNil #VARIABLE) then { ##VARIABLE = ##DEFAULT_VALUE }
-
 #define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPLES(var1,var2,var3),var4)
 #define ISNILS3(var1,var2,var3) ISNILS(DOUBLES(var1,var2),var3)
 #define ISNIL(var1,var2) ISNILS2(PREFIX,COMPONENT,var1,var2)
 #define ISNILMAIN(var1,var2) ISNILS3(PREFIX,var1,var2)
-// TODO: Evaluate using a single group for the logicCreation?
+
 #define CREATELOGICS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]
 #define CREATELOGICLOCALS(var1,var2) ##var1##_##var2## = "LOGIC" createVehicleLocal [0, 0, 0]
 #define CREATELOGICGLOBALS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable QUOTE(DOUBLES(var1,var2))
 #define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit [QUOTE(TRIPLES(PREFIX,COMPONENT,logic)), [0, 0, 0], [], 0, "NONE"]
+
 #define GETVARS(var1,var2,var3) (##var1##_##var2 getVariable #var3)
 #define GETVARMAINS(var1,var2) GETVARS(var1,MAINLOGIC,var2)
-// TODO: Evaluate merging of different path functions...   .sqf  good to put in define?
-#define PATHTOS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
-#define PATHTOFS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
-#define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTOS(var1,var2,var3)'
+
+#define PATHTO_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
+#define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+
+#define PATHTO_T(var1) PATHTOF_SYS(PREFIX,COMPONENT_T,var1)
+#define PATHTO_M(var1) PATHTOF_SYS(PREFIX,COMPONENT_M,var1)
+#define PATHTO_S(var1) PATHTOF_SYS(PREFIX,COMPONENT_S,var1)
+#define PATHTO_F(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
+
+#define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTO_SYS(var1,var2,var3)'
+
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
 #define GVARS(var1,var2,var3) ##var1##_##var2##_##var3
@@ -483,40 +502,12 @@ Author:
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
-#ifdef MODULAR
-	#define PATHTO_T(var1) PATHTOFS(PREFIX,DOUBLES(t,COMPONENT),var1)
-	#define PATHTO_M(var1) PATHTOFS(PREFIX,DOUBLES(m,COMPONENT),var1)
-	#define PATHTO_S(var1) PATHTOFS(PREFIX,DOUBLES(s,COMPONENT),var1)
-	#define PATHTO_F(var1) PATHTOS(PREFIX,DOUBLES(c,COMPONENT),var1)
-#else
-	#define PATHTO_T(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-	#define PATHTO_M(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-	#define PATHTO_S(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-	#define PATHTO_F(var1) PATHTOS(PREFIX,COMPONENT,var1)
-#endif
-
-// Direct file function
-#define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'
-#define EXECFSTEST(var1,var2,var3) (_this select 0) execVM 'PATHTOS(var1,var2,var3)'
-#define SPAWNFS(var1,var2,var3) spawn COMPILE_FILE_SYS(var1,var2,var3)
-#define CALLFS(var1,var2,var3) call COMPILE_FILE_SYS(var1,var2,var3)
-#define CALLFSTEST(var1,var2,var3) (_this select 0) call COMPILE_FILE_SYS(var1,var2,var3)
-
-// Using a gameLogic
-#define PREP_LOGIC(var1,var2,var3) GLOBALVARMAINS(var1,var2) setVariable ['##var3', COMPILE_FILE_SYS(var1,var2,var3)]
-#define PREPMAIN_LOGIC(var1,var2,var3) ##var1##_MAINLOGIC setVariable ['##var3', COMPILE_FILE_SYS(var1,var2,var3)]
-#define CALL_LOGIC(var1,var2,var3) call GETVARS(var1,var2,var3)
-#define CALLMAIN_LOGIC(var1,var2) call GETVARMAINS(var1,var2)
-#define SPAWN_LOGIC(var1,var2,var3) spawn GETVARS(var1,var2,var3)
-#define SPAWNMAIN_LOGIC(var1,var2) spawn GETVARMAINS(var1,var2)
-
-// Using globalVariables
-#define PREP_GVAR(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define PREPMAIN_GVAR(var1,var2,var3) ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define CALL_GVAR(var1,var2,var3) call ##var1##_##var2##_fnc_##var3
-#define CALLMAIN_GVAR(var1,var3) call ##var1##_fnc_##var3
-#define SPAWN_GVAR(var1,var2,var3) spawn ##var1##_##var2##_fnc_##var3
-#define SPAWNMAIN_GVAR(var1,var2) spawn ##var1##_fnc_##var2
+#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
+#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
+#define CALL_SYS(var1,var2,var3) call ##var1##_##var2##_fnc_##var3
+#define CALLMAIN_SYS(var1,var3) call ##var1##_fnc_##var3
+#define SPAWN_SYS(var1,var2,var3) spawn ##var1##_##var2##_fnc_##var3
+#define SPAWNMAIN_SYS(var1,var2) spawn ##var1##_fnc_##var2
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
@@ -530,9 +521,10 @@ Author:
 #define ADDON DOUBLES(PREFIX,COMPONENT)
 
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
-#define PATHTO(var1) PATHTOS(PREFIX,COMPONENT,var1)
-#define PATHTOF(var1) PATHTOFS(PREFIX,COMPONENT,var1)
-#define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT,var1)
+#define PATHTO(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
+#define PATHTOF(var1) PATHTOF_SYS(PREFIX,COMPONENT,var1)
+
+#define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT_F,var1)
 
 /* -------------------------------------------
 Macro: GVAR()
@@ -581,34 +573,8 @@ Author:
 #define SETVARMAIN SETVARMAINS(PREFIX)
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
-// Deprecated, use call/spawn/execVM with COMPILE_FILE
-#define EXECF(var1) EXECFS(PREFIX,COMPONENT,var1)
-#define EXECFTEST(var1) EXECFSTEST(PREFIX,COMPONENT,var1)
-#define SPAWNF(var1) SPAWNFS(PREFIX,COMPONENT,var1)
-#define CALLF(var1) CALLFS(PREFIX,COMPONENT,var1)
-#define CALLFTEST(var1) CALLFSTEST(PREFIX,COMPONENT,var1)
-
-/*
-// Using Gamelogic
-#define PREP(var1) PREP_LOGIC(PREFIX,COMPONENT,var1)
-#define PREPMAIN(var1) PREPMAIN_LOGIC(PREFIX,COMPONENT,var1)
-#define CALL(var1) CALL_LOGIC(PREFIX,COMPONENT,var1)
-#define CALLMAIN(var1) CALL_LOGIC(PREFIX,var1)
-#define SPAWN(var1) SPAWN_LOGIC(PREFIX,COMPONENT,var1)
-#define SPAWNMAIN(var1) SPAWN_LOGIC(PREFIX,var1)
-*/
-
-// Using GlobalVariables
-#define PREP(var1) PREP_GVAR(PREFIX,COMPONENT,var1)
-#define PREPMAIN(var1) PREPMAIN_GVAR(PREFIX,COMPONENT,var1)
-
-// Deprecated use with call/spawn FUNC
-#define CALL(var1) CALL_GVAR(PREFIX,COMPONENT,var1)
-#define CALLMAIN(var1) CALLMAIN_GVAR(PREFIX,var1)
-#define SPAWN(var1) SPAWN_GVAR(PREFIX,COMPONENT,var1)
-#define SPAWNMAIN(var1) SPAWNMAIN_GVAR(PREFIX,var1)
-
-// New
+#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
+#define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 
 /* -------------------------------------------
