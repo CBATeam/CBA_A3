@@ -305,7 +305,7 @@ Group: General
 	#define COMPONENT_T COMPONENT
 	#define COMPONENT_M COMPONENT
 	#define COMPONENT_S COMPONENT
-	#define COMPONENT_M COMPONENT
+	#define COMPONENT_F COMPONENT
 #endif
 
 /* -------------------------------------------
