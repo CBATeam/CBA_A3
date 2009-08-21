@@ -483,6 +483,18 @@ Author:
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
+#ifdef MODULAR
+	#define PATHTO_T(var1) PATHTOFS(PREFIX,DOUBLES(t,COMPONENT),var1)
+	#define PATHTO_M(var1) PATHTOFS(PREFIX,DOUBLES(m,COMPONENT),var1)
+	#define PATHTO_S(var1) PATHTOFS(PREFIX,DOUBLES(s,COMPONENT),var1)
+	#define PATHTO_F(var1) PATHTOS(PREFIX,DOUBLES(c,COMPONENT),var1)
+#else
+	#define PATHTO_T(var1) PATHTOFS(PREFIX,COMPONENT,var1)
+	#define PATHTO_M(var1) PATHTOFS(PREFIX,COMPONENT,var1)
+	#define PATHTO_S(var1) PATHTOFS(PREFIX,COMPONENT,var1)
+	#define PATHTO_F(var1) PATHTOS(PREFIX,COMPONENT,var1)	
+#end
+
 // Direct file function
 #define EXECFS(var1,var2,var3) execVM 'PATHTOS(var1,var2,var3)'
 #define EXECFSTEST(var1,var2,var3) (_this select 0) execVM 'PATHTOS(var1,var2,var3)'
