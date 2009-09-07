@@ -25,10 +25,11 @@ scriptName "fnc_vectElev.sqf";
 #include "script_component.hpp"
 SCRIPT(vectElev);
 
+
 private ["_dist2D"];
 
-_pos1 = _this select 0;
-_pos2 = _this select 1;
+PARAMS_2(_pos1,_pos2);
+
 _dist2D = (_this) call CBA_fnc_vectMag2D;
 
 (_this select 2) atan2 _dist2D;

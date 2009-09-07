@@ -24,9 +24,11 @@ scriptName "fnc_simplifyAngle180.sqf";
 #include "script_component.hpp"
 SCRIPT(simplifyAngle180);
 
-private ["_angle"];
 
-_angle = _this;
+ private ["_angle"];
+
+PARAMS_1(_angle);
+
 while {_angle <= -180} do
 {
       // Angle is too negative.

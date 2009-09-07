@@ -26,8 +26,10 @@ scriptName "fnc_simplifyAngle.sqf";
 SCRIPT(simplifyAngle);
 
 
-private ["_angle"];
-_angle = _this;
+ private ["_angle"];
+
+PARAMS_1(_angle);
+
 while {_angle < 0} do
 {
       // Angle is negative, so convert it to the equivalent positive angle.

@@ -23,10 +23,7 @@ SCRIPT(vect2Polar);
 
  private ["_mag", "_dir", "_elev", "_vx", "_vy", "_vz"];
 
-_vx = _this select 0;
-_vy = _this select 1;
-_vz = _this select 2;
-
+PARAMS_3(_vx,_vy,_vz);
 
 _mag = _this call CBA_fnc_vectMagn;
 _elev = asin (_vz / _mag);
