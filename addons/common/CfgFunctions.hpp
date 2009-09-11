@@ -51,6 +51,12 @@ class CfgFunctions
 				description = "Remove a magazine.";
 				file = "\x\cba\addons\common\fnc_removeMagazine.sqf";
 			};
+			// CBA_fnc_getUISize
+			class getUISize
+			{
+				description = "Used to determine the UI Size of the screen.";
+				file = "\x\cba\addons\common\fnc_getUISize.sqf";
+			};
 			// CBA_fnc_getPistol
 			class getPistol
 			{
@@ -194,6 +200,12 @@ class CfgFunctions
 			{
 				description = "Check whether these are any players within a certain distance of a unit.";
 				file = "\x\cba\addons\common\fnc_nearPlayer.sqf";
+			};
+			// CBA_fnc_getAspectRatio
+			class getAspectRatio
+			{
+				description = "Used to determine the Aspect ratio of the screen.";
+				file = "\x\cba\addons\common\fnc_getAspectRatio.sqf";
 			};
 			// CBA_fnc_addWeapon
 			class addWeapon
