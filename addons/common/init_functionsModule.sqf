@@ -4,21 +4,21 @@ scriptName "CBA\common\init_functionsModule";
 
 debugLog format ["PRELOAD_ Functions\init.sqf %1", _this];
 /*
-	File- init.sqf
-	Author- Karel Moricky
+	File: init.sqf
+	Author: Karel Moricky
 
-	Description-
+	Description:
 	Function library initialization.
 	All files have to start with 'fn_' prefix and they name have to be same as name of function.
 	Don't forget to exclude comma after last item in array!
 	
-	Caution-
+	Caution:
 	Do not execute this init directly - there is dependency with MPF and need to run on all machines.
 
-	Parameter(s)-
+	Parameter(s):
 	_this select 0: 'Function manager' logic
 
-	Returns-
+	Returns:
 	Nothing
 */
 
@@ -49,6 +49,8 @@ for "_t" from 0 to 2 do {
 		if (isclass _currentTag) then {
 
 			_tagName = configname _currentTag;
+			_itemPathTag = gettext (_currentTag >> "file");
+
 			for "_i" from 0 to (count _currentTag - 1) do {
 				_currentCategory = _currentTag select _i;
 
@@ -56,6 +58,8 @@ for "_t" from 0 to 2 do {
 				if (isclass _currentCategory) then {
 
 					_categoryName = configname _currentCategory;
+					_itemPathCat = gettext (_currentCategory >> "file");
+
 					for "_n" from 0 to (count _currentCategory - 1) do {
 						_currentItem = _currentCategory select _n;
 
@@ -63,7 +67,12 @@ for "_t" from 0 to 2 do {
 						if (isclass _currentItem) then {
 
 							_itemName = configname _currentItem;
-							_itemPath = gettext (_currentItem >> "file");
+							_itemPathItem = gettext (_currentItem >> "file");
+							_itemPath = if (_itemPathItem != "") then {_itemPathItem} else {
+								if (_itemPathCat != "") then {_itemPathCat + "\fn_" + _itemName + ".sqf"} else {
+									if (_itemPathTag != "") then {_itemPathTag + "\fn_" + _itemName + ".sqf"} else {""};
+								};
+							};
 							_itemPath = if (_itemPath == "") then {_pathFile + "\" + _categoryName + "\fn_" + _itemName + ".sqf"} else {_itemPath};
 							call compile format ["
 								if (isnil '%2_fnc_%3' || %4) then {
