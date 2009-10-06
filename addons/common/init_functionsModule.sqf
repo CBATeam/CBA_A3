@@ -47,7 +47,6 @@ for "_t" from 0 to 2 do {
 
 		//--- Is Tag
 		if (isclass _currentTag) then {
-
 			_tagName = configname _currentTag;
 			_itemPathTag = gettext (_currentTag >> "file");
 
