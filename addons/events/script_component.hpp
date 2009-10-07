@@ -4,6 +4,8 @@
 
 #ifdef DEBUG_ENABLED_EVENTS
 	#define DEBUG_MODE_FULL
+#else
+	#define DEBUG_MODE_MINIMAL
 #endif
 
 #ifdef DEBUG_SETTINGS_EVENTS
