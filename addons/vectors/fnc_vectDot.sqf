@@ -33,7 +33,7 @@ _size = count _u;
 _dot=0;
 for [{_i=0}, {_i<_size}, {_i=_i+1}] do
 {
-    _dot = _dot +   _u select _i * _v select _1;
+    _dot = _dot + (_u select _i) * (_v select _1);
 };
 
 _dot;

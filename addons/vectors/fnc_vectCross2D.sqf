@@ -29,4 +29,4 @@ SCRIPT(vectCross2D);
 
 PARAMS_2(_u,_v);
 
-(_u select 0 * _v select 1) - (_u select 1 * _v select 0);
+((_u select 0) * (_v select 1)) - ((_u select 1) * (_v select 0));
