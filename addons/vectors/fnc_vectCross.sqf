@@ -27,7 +27,7 @@ SCRIPT(vectCross);
 
  private ["_u","_v","_i","_k", "_j"];
 
-PARAMS_2(_u,_v)
+PARAMS_2(_u,_v);
 
 _i = ((_u select 1) * (_v select 2)) - ((_u select 2) * (_v select 1));
 _k = ((_u select 2) * (_v select 0)) - ((_u select 0) * (_v select 2));
