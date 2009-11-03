@@ -7,8 +7,6 @@ Description:
 
 	Main types are for pistol, rifle and no weapon.
 	
-	This script is called by onPlayerHit.sqf
-	
 Parameters:
 
 Returns:
