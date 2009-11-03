@@ -5,9 +5,9 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "CBA_common" };
+		requiredAddons[] = { "CBA_common", "Extended_EventHandlers" };
 		version = VERSION;
 	};
 };
-
+#include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
