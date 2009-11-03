@@ -3,11 +3,25 @@ SCRIPT(XEH_preInit);
 
 LOG(MSG_INIT);
  
-// Prepare BIS functions/MP and precompile all functions we already have registered with it:
+/*
+ * Prepare BIS functions/MP and precompile all functions we already have
+ * registered with it. In order to have the functions loaded early,
+ * we do so in the "init_functionsModule" script. However, to make sure
+ * everything is done properly, we also create a new BIS functions manager
+ * module so that the whole BIS MP and functions framework is initialised
+ * completely. (We need to do it this way since the BIS function manager
+ * defers initialisation by way of execVM:ing its init script.)
+ *
+ * Yes, there's some redundancy in that the functions will be
+ * loaded and preprocessed twice, but this should only occur once per mission
+ * and will hopefully ensure forward compatibility with future ArmA II patches.
+ */
 private ["_logic"];
-_logic = "LOGIC" createVehicleLocal [0,0,0]; // TODO: Removal
-
-[_logic] call COMPILE_FILE(init_functionsModule);
+[] call COMPILE_FILE(init_functionsModule);
+if (isServer) then
+{
+	_logic = "FunctionsManager" createVehicle [0,0,0];
+};
 LOG("Initialising the Functions module early.");
 
 ADDON = false;
