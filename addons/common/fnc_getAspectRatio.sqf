@@ -56,7 +56,7 @@ switch (_ratio) do
 			_aspectStr = "16:10";
 			_aspectArr = [16,10];
 	};
-	case 0.938:
+	case 0.937:
 	{
 			_aspectStr = "5:4";
 			_aspectArr = [5,4];
