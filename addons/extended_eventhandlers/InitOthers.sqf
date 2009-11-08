@@ -35,25 +35,25 @@ _events = [
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
 
+// Get array of inherited classes of unit.
+_classes = [_unitClass];
+while {
+	!((_classes select 0) in ["", "All"])
+} do {
+	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+};
+	
 // Iterate over the above event types and set up any extended event handlers
 // that might be defined.
 {
 	_event = _x;
 	_Extended_EH_Class = format["Extended_%1_EventHandlers", _event];
 
-	// Get array of inherited classes of unit.
-	_classes = [_unitClass];
-	_excludeClass = "";
-	_excludeClasses = [];
-	while {
-		!((_classes select 0) in ["", "All"])
-	} do {
-		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
-	};
-
 	// Check each class to see if there is a counterpart in the extended event
 	// handlers, add all lines from matching classes to an array, "_handlers"
 	_handlers = [];
+	_excludeClass = "";
+	_excludeClasses = [];
 	
 	// Does the vehicle's class EventHandlers inherit from the BIS
 	// DefaultEventhandlers? If so, include BIS own default handler for the
