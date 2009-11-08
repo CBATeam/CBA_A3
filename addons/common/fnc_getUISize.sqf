@@ -2,14 +2,20 @@
 Function: CBA_fnc_getUISize
 
 Description:
-	Used to determine the UI Size of the screen.
+	Used to determine the UI size of the screen.
 	
 Parameters:
-	_output - string with one of ["ARRAY","NUMBER","STRING"]
+	_output - the desired output format, either "NUMBER" or "STRING".
 	
 Returns:
-	index or size of UI as string ["verysmall","small","normal","large"]
+	If the desired output format is
 
+	"NUMBER" : an index into ["verysmall","small","normal","large"]
+	"STRING" : one of "verysmall", "small", "normal" or "large"
+	
+	If an error occurs, the function returns either the number -1 or
+	the string "error", depending on the desired output format.
+	
 Examples:
 	(begin example)
 		_uiSize = "STRING" call CBA_fnc_getUISize;
@@ -65,7 +71,7 @@ switch (_ratio) do
 if (!_error) then
 {
 	_index = _sizes find ((round (safeZoneW * 1000)) / 1000);
-	hint str _index;
+	//hint str _index;
 	if (_index == -1) exitWith
 	{
 		_error = true;
