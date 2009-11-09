@@ -6,8 +6,8 @@
 	in such a pre-init "EH" rather than in a normal XEH init EH which might be
 	called several times.
 */
-
-(configFile/"Extended_PreInit_EventHandlers") call SLX_XEH_F_INIT;
-
+{
+	(_x/"Extended_PreInit_EventHandlers") call SLX_XEH_F_INIT;
+} forEach [missionConfigFile, campaignConfigFile, configFile];
 
 nil;
