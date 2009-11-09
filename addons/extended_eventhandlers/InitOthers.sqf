@@ -37,12 +37,11 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 
 // Get array of inherited classes of unit.
 _classes = [_unitClass];
-while {
-	!((_classes select 0) in ["", "All"])
-} do {
+while {!((_classes select 0) in ["", "All"])} do
+{
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };
-	
+
 // Iterate over the above event types and set up any extended event handlers
 // that might be defined.
 {
@@ -59,52 +58,71 @@ while {
 	// DefaultEventhandlers? If so, include BIS own default handler for the
 	// event type currently being processed and make it the first
 	// EH to be called.
-	if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then {
+	if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
+	{
 		_handlers =[getText(configFile/"DefaultEventhandlers"/_event)];
 	};
 	{
-		if (
-			(configName (configFile/_Extended_EH_Class/_x))!= ""
-			) then {
+		if ((configName (configFile/_Extended_EH_Class/_x))!= "") then
+		{
 			_i = 0;
 			_t = count (configFile/_Extended_EH_Class/_x);
-			while { _i<_t } do {
+			while { _i<_t } do
+			{
 				_cfgEntry = (configFile/_Extended_EH_Class/_x) select _i;
 				// Standard XEH event handler string
-				if (isText _cfgEntry) then {
+				if (isText _cfgEntry) then
+				{
 					_handlers = _handlers+[getText _cfgEntry];
-				} else {
+				}
+				else
+				{
 					// Composite XEH event handler class
-					if (isClass _cfgEntry) then {
+					if (isClass _cfgEntry) then
+					{
 						_scopeEntry = _cfgEntry / "scope";
 						_handlerEntry = _cfgEntry / _event;
 						_serverHandlerEntry = _cfgEntry / format["server%1", _event];
 						_clientHandlerEntry = _cfgEntry / format["client%1", _event];
 						_excludeEntry = _cfgEntry / "exclude";
 						_replaceEntry = _cfgEntry / "replaceDEH";
-						if (isText _excludeEntry) then {
+						if (isText _excludeEntry) then
+						{
 							_excludeClass = (getText _excludeEntry);
-						} else {
-							if (isArray _excludeEntry) then {
+						}
+						else
+						{
+							if (isArray _excludeEntry) then
+							{
 								_excludeClasses = (getArray _excludeEntry);
 							};
 						};
 						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 						// If the particular EH is private and vehicle is of the
 						// "wrong" class, do nothing, ie don't add the EH.
-						if !(_scope == 0 && (_unitClass != _x)) then {
-							if (isText _handlerEntry) then {
-								if (isText _replaceEntry) then {
+						if !(_scope == 0 && (_unitClass != _x)) then
+						{
+							if (isText _handlerEntry) then
+							{
+								if (isText _replaceEntry) then
+								{
 									_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-								} else {
-									if (isNumber _replaceEntry) then {
+								}
+								else
+								{
+									if (isNumber _replaceEntry) then
+									{
 										_replaceDEH = ((getNumber _replaceEntry) == 1);
 									};
 								};
-								if !( [] call _isExcluded ) then {
-									if (_hasDefaultEH && _replaceDEH) then {
+								if !( [] call _isExcluded ) then
+								{
+									if (_hasDefaultEH && _replaceDEH) then
+									{
 										_handlers set [0, getText _handlerEntry];
-									} else {
+									}
+									else
+									{
 										_handlers = _handlers + [getText _handlerEntry];
 									};
 								};
