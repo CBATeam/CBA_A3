@@ -62,10 +62,13 @@ _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 *  class-specific BIS init EH for that vehicle.
 */
 _useDEHinit = false;
-if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
+if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
+{
 	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-	if (configName(_ehSuper)=="DefaultEventhandlers") then {
-		if (isText (configFile/"DefaultEventhandlers"/"init")) then {
+	if (configName(_ehSuper)=="DefaultEventhandlers") then
+	{
+		if (isText (configFile/"DefaultEventhandlers"/"init")) then
+		{
 			_useDEHinit = true;
 			_DEHinit = getText(configFile/"DefaultEventhandlers"/"init");
 			_inits = [compile(_DEHinit)];
@@ -85,7 +88,9 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 			if (isText _cfgEntry && [] call _useEH) then
 			{
 				_inits = _inits+[compile(getText _cfgEntry)];
-			} else {
+			}
+			else
+			{
 				// Composite XEH init class
 				if (isClass _cfgEntry) then
 				{
@@ -99,7 +104,9 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 					if (isText _excludeEntry) then
 					{
 						_excludeClass = (getText _excludeEntry);
-					} else {
+					}
+					else
+					{
 						if (isArray _excludeEntry) then
 						{
 							_excludeClasses = (getArray _excludeEntry);
@@ -109,16 +116,21 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 					if (isText _respawnEntry) then
 					{
 						_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
-					} else {
+					}
+					else
+					{
 						if (isNumber _respawnEntry) then
 						{
 							_onRespawn = ((getNumber _respawnEntry) == 1);
 						};
 					};
 					_replaceDEH = false;
-					if (isText _replaceEntry) then {
+					if (isText _replaceEntry) then
+					{
 						_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-					} else {
+					}
+					else
+					{
 						if (isNumber _replaceEntry) then
 						{
 							_replaceDEH = ((getNumber _replaceEntry) == 1);
@@ -137,9 +149,12 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then {
 								*  init EH shouldn't be used, then don't.
 								*/
 								_init = compile(getText _initEntry);
-								if (_useDEHinit && _replaceDEH) then {
+								if (_useDEHinit && _replaceDEH) then
+								{
 									_inits set [0, _init];
-								} else {
+								}
+								else
+								{
 									_inits = _inits + [_init];
 								};
 							};
