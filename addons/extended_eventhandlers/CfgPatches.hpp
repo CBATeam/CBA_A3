@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = 1.00;
-		SLX_XEH2_Version = 2.03;
+		SLX_XEH2_Version = 2.04;
 		requiredAddons[] =
 		{
 			//"CAData", "CAAir", "CACharacters"
@@ -232,8 +232,10 @@ class CfgPatches
 	};
 };
 
-// Disabled preLoadAddons; These are not required since XEH only overrides the existing class tree, instead of extend or relink.
-// If preloadAddons is disabled, you should receive a message about missing XEH addon, ONLY when the requiredAddons list is incomplete, or class inheritance is broken
+// Disabled preLoadAddons; These are not required since XEH only overrides the
+// existing class tree, instead of extend or relink. If preloadAddons is
+// disabled, you should receive a message about missing XEH addon, ONLY when
+// the requiredAddons list is incomplete, or class inheritance is broken
 /*
 class CfgAddons
 {
