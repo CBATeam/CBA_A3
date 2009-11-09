@@ -62,93 +62,100 @@ while {!((_classes select 0) in ["", "All"])} do
 	{
 		_handlers =[getText(configFile/"DefaultEventhandlers"/_event)];
 	};
+	
+	// Search the mission config file (description.ext), then campaign
+	// config file (description.ext) and finally addon config for
+	// extended event handlers to use.
 	{
-		if ((configName (configFile/_Extended_EH_Class/_x))!= "") then
+		_configFile=_x;
 		{
-			_i = 0;
-			_t = count (configFile/_Extended_EH_Class/_x);
-			while { _i<_t } do
+			if ((configName (_configFile/_Extended_EH_Class/_x))!= "") then
 			{
-				_cfgEntry = (configFile/_Extended_EH_Class/_x) select _i;
-				// Standard XEH event handler string
-				if (isText _cfgEntry) then
+				_i = 0;
+				_t = count (_configFile/_Extended_EH_Class/_x);
+				while { _i<_t } do
 				{
-					_handlers = _handlers+[getText _cfgEntry];
-				}
-				else
-				{
-					// Composite XEH event handler class
-					if (isClass _cfgEntry) then
+					_cfgEntry = (_configFile/_Extended_EH_Class/_x) select _i;
+					// Standard XEH event handler string
+					if (isText _cfgEntry) then
 					{
-						_scopeEntry = _cfgEntry / "scope";
-						_handlerEntry = _cfgEntry / _event;
-						_serverHandlerEntry = _cfgEntry / format["server%1", _event];
-						_clientHandlerEntry = _cfgEntry / format["client%1", _event];
-						_excludeEntry = _cfgEntry / "exclude";
-						_replaceEntry = _cfgEntry / "replaceDEH";
-						if (isText _excludeEntry) then
+						_handlers = _handlers+[getText _cfgEntry];
+					}
+					else
+					{
+						// Composite XEH event handler class
+						if (isClass _cfgEntry) then
 						{
-							_excludeClass = (getText _excludeEntry);
-						}
-						else
-						{
-							if (isArray _excludeEntry) then
+							_scopeEntry = _cfgEntry / "scope";
+							_handlerEntry = _cfgEntry / _event;
+							_serverHandlerEntry = _cfgEntry / format["server%1", _event];
+							_clientHandlerEntry = _cfgEntry / format["client%1", _event];
+							_excludeEntry = _cfgEntry / "exclude";
+							_replaceEntry = _cfgEntry / "replaceDEH";
+							if (isText _excludeEntry) then
 							{
-								_excludeClasses = (getArray _excludeEntry);
-							};
-						};
-						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-						// If the particular EH is private and vehicle is of the
-						// "wrong" class, do nothing, ie don't add the EH.
-						if !(_scope == 0 && (_unitClass != _x)) then
-						{
-							if (isText _handlerEntry) then
+								_excludeClass = (getText _excludeEntry);
+							}
+							else
 							{
-								if (isText _replaceEntry) then
+								if (isArray _excludeEntry) then
 								{
-									_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-								}
-								else
-								{
-									if (isNumber _replaceEntry) then
-									{
-										_replaceDEH = ((getNumber _replaceEntry) == 1);
-									};
+									_excludeClasses = (getArray _excludeEntry);
 								};
-								if !( [] call _isExcluded ) then
+							};
+							_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
+							// If the particular EH is private and vehicle is of the
+							// "wrong" class, do nothing, ie don't add the EH.
+							if !(_scope == 0 && (_unitClass != _x)) then
+							{
+								if (isText _handlerEntry) then
 								{
-									if (_hasDefaultEH && _replaceDEH) then
+									if (isText _replaceEntry) then
 									{
-										_handlers set [0, getText _handlerEntry];
+										_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
 									}
 									else
 									{
-										_handlers = _handlers + [getText _handlerEntry];
+										if (isNumber _replaceEntry) then
+										{
+											_replaceDEH = ((getNumber _replaceEntry) == 1);
+										};
+									};
+									if !( [] call _isExcluded ) then
+									{
+										if (_hasDefaultEH && _replaceDEH) then
+										{
+											_handlers set [0, getText _handlerEntry];
+										}
+										else
+										{
+											_handlers = _handlers + [getText _handlerEntry];
+										};
 									};
 								};
-							};
-							if (isServer) then
-							{
-								if (isText _serverHandlerEntry) then
+								if (isServer) then
 								{
-									_handlers = _handlers + [getText _serverHandlerEntry];
+									if (isText _serverHandlerEntry) then
+									{
+										_handlers = _handlers + [getText _serverHandlerEntry];
+									};
 								};
-							};
-							if !(isDedicated) then
-							{
-								if (isText _clientHandlerEntry) then
+								if !(isDedicated) then
 								{
-									_handlers = _handlers + [getText _clientHandlerEntry];
-								};									
+									if (isText _clientHandlerEntry) then
+									{
+										_handlers = _handlers + [getText _clientHandlerEntry];
+									};									
+								};
 							};
 						};
 					};
+					_i = _i + 1;
 				};
-				_i = _i + 1;
 			};
-		};
-	} forEach _classes;
-
+		} forEach _classes;
+	} forEach [missionConfigFile, campaignConfigFile, configFile];
+	
 	// Now concatenate all the handlers into one string
 	_handler = "";
 	{ _handler = _handler + _x + ";" } forEach _handlers;

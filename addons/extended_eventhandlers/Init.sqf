@@ -77,111 +77,114 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 };
 
 {
-	if ((configName (configFile/_Extended_Init_Class/_x))!= "") then
+	_configFile=_x;
 	{
-		_i = 0;
-		_t = count (configFile/_Extended_Init_Class/_x);
-		while { _i<_t } do
+		if ((configName (_configFile/_Extended_Init_Class/_x))!= "") then
 		{
-			_cfgEntry = (configFile/_Extended_Init_Class/_x) select _i;
-			// Standard XEH init string
-			if (isText _cfgEntry && [] call _useEH) then
+			_i = 0;
+			_t = count (_configFile/_Extended_Init_Class/_x);
+			while { _i<_t } do
 			{
-				_inits = _inits+[compile(getText _cfgEntry)];
-			}
-			else
-			{
-				// Composite XEH init class
-				if (isClass _cfgEntry) then
+				_cfgEntry = (_configFile/_Extended_Init_Class/_x) select _i;
+				// Standard XEH init string
+				if (isText _cfgEntry && [] call _useEH) then
 				{
-					_scopeEntry = _cfgEntry / "scope";
-					_initEntry = _cfgEntry / "init";
-					_serverInitEntry = _cfgEntry / "serverInit";
-					_clientInitEntry = _cfgEntry / "clientInit";
-					_excludeEntry = _cfgEntry / "exclude";
-					_respawnEntry = _cfgEntry / "onRespawn";
-					_replaceEntry = _cfgEntry / "replaceDEH";
-					if (isText _excludeEntry) then
+					_inits = _inits+[compile(getText _cfgEntry)];
+				}
+				else
+				{
+					// Composite XEH init class
+					if (isClass _cfgEntry) then
 					{
-						_excludeClass = (getText _excludeEntry);
-					}
-					else
-					{
-						if (isArray _excludeEntry) then
+						_scopeEntry = _cfgEntry / "scope";
+						_initEntry = _cfgEntry / "init";
+						_serverInitEntry = _cfgEntry / "serverInit";
+						_clientInitEntry = _cfgEntry / "clientInit";
+						_excludeEntry = _cfgEntry / "exclude";
+						_respawnEntry = _cfgEntry / "onRespawn";
+						_replaceEntry = _cfgEntry / "replaceDEH";
+						if (isText _excludeEntry) then
 						{
-							_excludeClasses = (getArray _excludeEntry);
-						};
-					};
-					_onRespawn = false;
-					if (isText _respawnEntry) then
-					{
-						_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
-					}
-					else
-					{
-						if (isNumber _respawnEntry) then
+							_excludeClass = (getText _excludeEntry);
+						}
+						else
 						{
-							_onRespawn = ((getNumber _respawnEntry) == 1);
-						};
-					};
-					_replaceDEH = false;
-					if (isText _replaceEntry) then
-					{
-						_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-					}
-					else
-					{
-						if (isNumber _replaceEntry) then
-						{
-							_replaceDEH = ((getNumber _replaceEntry) == 1);
-						};
-					};
-					_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-					if !(_scope == 0 && (_unitClass != _x)) then
-					{
-						if (!([] call _isExcluded) && [] call _useEH) then
-						{
-							if (isText _initEntry) then
+							if (isArray _excludeEntry) then
 							{
-								/*  If the init EH is private and vehicle is of the
-								*  "wrong" class, do nothing, ie don't add the EH.
-								*  Also, if we're called after a respawn and the
-								*  init EH shouldn't be used, then don't.
-								*/
-								_init = compile(getText _initEntry);
-								if (_useDEHinit && _replaceDEH) then
-								{
-									_inits set [0, _init];
-								}
-								else
-								{
-									_inits = _inits + [_init];
-								};
+								_excludeClasses = (getArray _excludeEntry);
 							};
-							if (isServer) then
+						};
+						_onRespawn = false;
+						if (isText _respawnEntry) then
+						{
+							_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
+						}
+						else
+						{
+							if (isNumber _respawnEntry) then
 							{
-								if (isText _serverInitEntry) then
-								{
-									_serverInit = compile(getText _serverInitEntry);
-									_inits = _inits + [_serverInit];
-								};
+								_onRespawn = ((getNumber _respawnEntry) == 1);
 							};
-							if !(isDedicated) then
+						};
+						_replaceDEH = false;
+						if (isText _replaceEntry) then
+						{
+							_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
+						}
+						else
+						{
+							if (isNumber _replaceEntry) then
 							{
-								if (isText _clientInitEntry) then
+								_replaceDEH = ((getNumber _replaceEntry) == 1);
+							};
+						};
+						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
+						if !(_scope == 0 && (_unitClass != _x)) then
+						{
+							if (!([] call _isExcluded) && [] call _useEH) then
+							{
+								if (isText _initEntry) then
 								{
-									_clientInit = compile(getText _clientInitEntry);
-									_inits = _inits + [_clientInit];
+									/*  If the init EH is private and vehicle is of the
+									*  "wrong" class, do nothing, ie don't add the EH.
+									*  Also, if we're called after a respawn and the
+									*  init EH shouldn't be used, then don't.
+									*/
+									_init = compile(getText _initEntry);
+									if (_useDEHinit && _replaceDEH) then
+									{
+										_inits set [0, _init];
+									}
+									else
+									{
+										_inits = _inits + [_init];
+									};
+								};
+								if (isServer) then
+								{
+									if (isText _serverInitEntry) then
+									{
+										_serverInit = compile(getText _serverInitEntry);
+										_inits = _inits + [_serverInit];
+									};
+								};
+								if !(isDedicated) then
+								{
+									if (isText _clientInitEntry) then
+									{
+										_clientInit = compile(getText _clientInitEntry);
+										_inits = _inits + [_clientInit];
+									};
 								};
 							};
 						};
 					};
 				};
+				_i = _i+1;
 			};
-			_i = _i+1;
 		};
-	};
-} forEach _classes;
+	} forEach _classes;
+} forEach [missionConfigFile, campaignConfigFile, configFile];
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
