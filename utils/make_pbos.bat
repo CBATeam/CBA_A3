@@ -26,6 +26,7 @@ cd "C:\tools"
 %TOOL% %OPTS% "%ADDONS%\hashes"
 %TOOL% %OPTS% "%ADDONS%\network"
 %TOOL% %OPTS% "%ADDONS%\strings"
+%TOOL% %OPTS% "%ADDONS%\vectors"
 
 echo.
 
@@ -41,5 +42,6 @@ rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 %SIGN% %KEY% "%ADDONS%\cba_hashes.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_network.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_strings.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_vectors.pbo"
 
 pause
