@@ -56,8 +56,9 @@ if (isMultiplayer) then
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 
 // General InitPosts
-(configFile/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
-
+{
+	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
+} forEach [missionConfigFile, campaignConfigFile, configFile];
 
 // we set this BEFORE executing the inits, so that any unit created in another
 // thread still gets their InitPost ran
