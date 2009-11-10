@@ -8,6 +8,6 @@
 */
 {
 	(_x/"Extended_PreInit_EventHandlers") call SLX_XEH_F_INIT;
-} forEach [missionConfigFile, campaignConfigFile, configFile];
+} forEach [configFile, campaignConfigFile, missionConfigFile];
 
 nil;
