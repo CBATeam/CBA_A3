@@ -184,7 +184,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 			};
 		};
 	} forEach _classes;
-} forEach [missionConfigFile, campaignConfigFile, configFile];
+} forEach [configFile, campaignConfigFile, missionConfigFile];
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL

@@ -154,7 +154,7 @@ while {!((_classes select 0) in ["", "All"])} do
 				};
 			};
 		} forEach _classes;
-	} forEach [missionConfigFile, campaignConfigFile, configFile];
+	} forEach [configFile, campaignConfigFile, missionConfigFile];
 	
 	// Now concatenate all the handlers into one string
 	_handler = "";
