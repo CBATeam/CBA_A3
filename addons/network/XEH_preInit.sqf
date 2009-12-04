@@ -41,7 +41,7 @@ ADDON = false;
 
 
 // COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast. 
-ISNIL(timeSync_Disabled,false);
+ISNIL(timeSync_Disabled,false); // deprecated
 ISNIL(weatherSync_Disabled,false);
 
 PREP(exec);
@@ -79,11 +79,11 @@ if (isServer) then
 	// Disabled for now, either not used, or annoying to mission makers
 	// onPlayerDisconnected '[_name,_id] call FUNC(opd)';
 
-	// Weather and Time Sync
+	// Looped Weather Sync
 	/*
 	[] spawn
 	{
-		// Every 60 Seconds date/weather sync
+		// Every 60 Seconds weather sync
 		while { true } do
 		{
 			sleep 60;

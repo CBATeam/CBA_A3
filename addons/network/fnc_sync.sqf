@@ -11,4 +11,4 @@ if !(isNil "_this") then
 
 // COMPATIBILITY Feature - Check Override variables before broadcasting the sync. 
 if !(GVAR(weatherSync_Disabled)) then { [_channel, {[QUOTE(GVAR(weather)), _this] call CBA_fnc_localEvent}, [overCast, fog, rain]] call CBA_fnc_globalExecute };
-if !(GVAR(timeSync_Disabled)) then { [_channel, {[QUOTE(GVAR(date)), _this] call CBA_fnc_localEvent}, date] call CBA_fnc_globalExecute };
+//if !(GVAR(timeSync_Disabled)) then { [_channel, {[QUOTE(GVAR(date)), _this] call CBA_fnc_localEvent}, date] call CBA_fnc_globalExecute };
