@@ -73,7 +73,7 @@ class Extended_Init_EventHandlers
 		class SLX_BIS_AAV_Init
 		{
 			scope = public;
-			init  = "_this execVM'\ca\tracked2\AAV\scripts\init.sqf'";
+			init  = "_scr=_this execVM'\ca\Data\ParticleEffects\SCRIPTS\init.sqf';_this execVM'\ca\tracked2\AAV\scripts\init.sqf'";
 			replaceDEH = true;  // replace the BIS DefaultEventhandlers init
 								// since this is what the stock BIS AAV does
 		};
