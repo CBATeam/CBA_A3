@@ -79,7 +79,7 @@ while {!((_classes select 0) in ["", "All"])} do
 					// Standard XEH event handler string
 					if (isText _cfgEntry) then
 					{
-						_handlers = _handlers+[getText _cfgEntry];
+						_handlers set [count _handlers, getText _cfgEntry];
 					}
 					else
 					{
@@ -129,7 +129,7 @@ while {!((_classes select 0) in ["", "All"])} do
 										}
 										else
 										{
-											_handlers = _handlers + [getText _handlerEntry];
+											_handlers set [count _handlers, getText _handlerEntry];
 										};
 									};
 								};
@@ -137,14 +137,14 @@ while {!((_classes select 0) in ["", "All"])} do
 								{
 									if (isText _serverHandlerEntry) then
 									{
-										_handlers = _handlers + [getText _serverHandlerEntry];
+										_handlers set [count _handlers, getText _serverHandlerEntry];
 									};
 								};
 								if !(isDedicated) then
 								{
 									if (isText _clientHandlerEntry) then
 									{
-										_handlers = _handlers + [getText _clientHandlerEntry];
+										_handlers set [count _handlers, getText _clientHandlerEntry];
 									};									
 								};
 							};

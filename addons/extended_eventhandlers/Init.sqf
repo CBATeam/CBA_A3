@@ -89,7 +89,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 				// Standard XEH init string
 				if (isText _cfgEntry && [] call _useEH) then
 				{
-					_inits = _inits+[compile(getText _cfgEntry)];
+					_inits set [count _inits, compile(getText _cfgEntry)];
 				}
 				else
 				{
@@ -157,7 +157,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 									}
 									else
 									{
-										_inits = _inits + [_init];
+										_inits set [count _inits, _init];
 									};
 								};
 								if (isServer) then
@@ -165,7 +165,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 									if (isText _serverInitEntry) then
 									{
 										_serverInit = compile(getText _serverInitEntry);
-										_inits = _inits + [_serverInit];
+										_inits set [count _inits, _serverInit];
 									};
 								};
 								if !(isDedicated) then
@@ -173,7 +173,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 									if (isText _clientInitEntry) then
 									{
 										_clientInit = compile(getText _clientInitEntry);
-										_inits = _inits + [_clientInit];
+										_inits set [count _inits, _clientInit];
 									};
 								};
 							};

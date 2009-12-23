@@ -40,26 +40,26 @@ SLX_XEH_F_INIT = {
 
 				if (isText _entry) then
 				{
-					_Inits = _Inits+[compile(getText _entry)];
+					_Inits set [count _Inits, compile(getText _entry)];
 				};
 				if (isServer) then
 				{
 					if (isText _entryServer) then
 					{
-						_Inits = _Inits+[compile(getText _entryServer)];
+						_Inits set [count _Inits, compile(getText _entryServer)];
 					};				
 				};
 				if (!isDedicated) then
 				{
 					if (isText _entryClient) then
 					{
-						_Inits = _Inits+[compile(getText _entryClient)];
+						_Inits set [count _Inits, compile(getText _entryClient)];
 					};
 				};
 			} else {
 				if (isText _entry) then
 				{
-					_Inits = _Inits+[compile(getText _entry)];
+					_Inits set [count _Inits, compile(getText _entry)];
 				};
 			};
 			_i = _i+1;
