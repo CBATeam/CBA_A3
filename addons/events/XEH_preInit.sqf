@@ -91,7 +91,7 @@ FUNC(attach_handler) =
 	GVAR(attaching) = true;
 
 	waitUntil { !(isNull (findDisplay 46)) };
-	[GVAR(handler_hash), FUNC(handle_retach)] call CBA_fnc_hashEachPair;
+	[GVAR(handler_hash), {_this call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
 	GVAR(attaching) = false;
 };
 
