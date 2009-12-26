@@ -24,15 +24,10 @@ LOG(MSG_INIT);
 	};
 };
 
-// Display Eventhandlers
-
-// Higher level API specially for keyDown/Up and Action events
-#define DOWN [_this, 0]
-#define UP [_this, 1]
-
+// Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
 waitUntil { format["%1", findDisplay 46] != "No display" };
-["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
 
 
