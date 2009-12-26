@@ -80,7 +80,7 @@ FUNC(handle_retach) =
 
 FUNC(attach_handler) =
 {
-	waitUntil { format["%1", findDisplay 46] != "No display" };
+	waitUntil { !(isNull (findDsplay 46)) };
 	[GVAR(handler_hash), FUNC(handle_retach)] call CBA_fnc_hashEachPair;
 };
 
