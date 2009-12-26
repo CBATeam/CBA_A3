@@ -46,7 +46,7 @@ CBA_fnc_addDisplayHandler =
 	_ar = [GVAR(handler_hash), _type] CBA_fnc_hashGet;
 	_id = (findDisplay 46) displayAddEventhandler [_type, _code];
 	_idx = count _ar;
-	_ar set [_idx, [_id, _code]]
+	_ar set [_idx, [_id, _code]];
 	[GVAR(handler_hash), _type, _ar] CBA_fnc_hashSet; // this actually required, since we're only referencing ?
 	_idx;
 };
