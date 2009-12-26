@@ -29,17 +29,16 @@ LOG(MSG_INIT);
 #define UP [_this, 1]
 #define DOWN [_this, 0]
 
-waitUntil { !(isNull (findDisplay 46)) };
-["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
-
-
-// Workaround for displayEventhandlers falling off at gameLoad
-// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
-GVAR(keypressed) = time;
 [] spawn
 {
+	waitUntil { !(isNull (findDisplay 46)) };
+	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+	["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
+
+	// Workaround for displayEventhandlers falling off at gameLoad
+	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
+	GVAR(keypressed) = time;
 	while {true} do
 	{
 		waitUntil {(time - GVAR(keypressed)) > 10};
