@@ -24,6 +24,8 @@ _handlers = switch _type do
 	case 1: { GVAR(keys_up) };
 };
 
+GVAR(keypressed) = time;
+
 _handled = false; // If true, suppress the default handling of the key.
 _result = false;
 
