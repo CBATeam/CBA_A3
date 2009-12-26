@@ -49,7 +49,7 @@ CBA_fnc_addDisplayHandler =
 	_idx = count _ar;
 	_ar set [_idx, [_id, _code]];
 	[GVAR(handler_hash), _type, _ar] CBA_fnc_hashSet; // this actually required, since we're only referencing ?
-	if (isNil "_id" && !isServer) then {[] spawn FUNC(attach_handler)}
+	if (isNil "_id" && !isServer) then { [] spawn FUNC(attach_handler) };
 	_idx;
 };
 
