@@ -36,7 +36,7 @@ PREP(keyHandler);
 //PREP(globalKilledEvent);
 
 // Display Eventhandlers - Abstraction layer
-GVAR(handler_hash) = [[], []] call CBA_fnc_hashCreate;
+GVAR(handler_hash) = [[], nil] call CBA_fnc_hashCreate;
 GVAR(attaching) = false;
 
 CBA_fnc_addDisplayHandler =
@@ -45,10 +45,10 @@ CBA_fnc_addDisplayHandler =
 	PARAMS_2(_type,_code);
 
 	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
+	if (isNil "_ar") then { _ar = []; [GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet };
 	_id = if (isDedicated || (isNull (findDisplay 46))) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
 	_idx = count _ar;
 	_ar set [_idx, [_id, _code]];
-	[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet; // this actually required, since we're only referencing ?
 	if (isNil "_id" && !isDedicated) then { [] spawn FUNC(attach_handler) };
 	_idx;
 };
@@ -59,9 +59,12 @@ CBA_fnc_removeDisplayHandler =
 	PARAMS_3(_type,_index);
 
 	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
-	if !(isDedicated) then { (findDisplay 46) displayRemoveEventhandler [_type, (_ar select _index) select 0] };
-	_ar set [_index, [nil]];
-	[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
+	if !(isNil "_ar") then
+	{
+		if !(isDedicated) then { (findDisplay 46) displayRemoveEventhandler [_type, (_ar select _index) select 0] };
+		_ar set [_index, [nil]];
+		//[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
+	};
 };
 
 FUNC(handle_retach) = 
