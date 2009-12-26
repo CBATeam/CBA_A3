@@ -65,9 +65,8 @@ CBA_fnc_removeDisplayHandler =
 
 FUNC(handle_retach) = 
 {
-	private ["_i", "_id", "_ar2"];
+	private ["_id", "_ar2"];
 	PARAMS_2(_type,_ar); // _key and _value
-	_i = 0;
 	{
 		_id = _x select 0;
 		if !(isNil "_id") then
@@ -76,7 +75,6 @@ FUNC(handle_retach) =
 			_id = (findDisplay 46) displayAddEventHandler [_type, _x select 1];
 			_x set [0, _id];
 		};
-		_i = _i + 1;
 	} forEach _ar;
 };
 
