@@ -25,7 +25,7 @@ LOG(MSG_INIT);
 };
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
-waitUntil { !(isNull (findDsplay 46)) };
+waitUntil { !(isNull (findDisplay 46)) };
 ["KeyUp", QUOTE([_this, 1] call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE([_this, 0] call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
