@@ -72,7 +72,7 @@ FUNC(handle_retach) =
 		_id = _x select 0;
 		if !(isNil "_id") then
 		{
-			(findDisplay 46) displayRemoveEventHandler [_type, _id]
+			(findDisplay 46) displayRemoveEventHandler [_type, _id];
 			_id = (findDisplay 46) displayAddEventHandler [_type, _x select 1];
 			_x set [0, _id];
 		};
