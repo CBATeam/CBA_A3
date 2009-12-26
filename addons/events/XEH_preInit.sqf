@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
 	MainDisplay KeyHandler, by Sickboy <sb_at_dev-heaven.net>
@@ -36,7 +37,7 @@ PREP(keyHandler);
 //PREP(globalKilledEvent);
 
 // Display Eventhandlers - Abstraction layer
-GVAR(handler_hash) = [] call CBA_fnc_hashCreate;
+GVAR(handler_hash) = [[], ""] call CBA_fnc_hashCreate;
 GVAR(attaching) = false;
 
 CBA_fnc_addDisplayHandler =
@@ -45,10 +46,11 @@ CBA_fnc_addDisplayHandler =
 	PARAMS_2(_type,_code);
 
 	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
-	if (typeName _ar != "ARRAY") then { _ar = []; [GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet };
+	if (typeName _ar != "ARRAY") then { _ar = [] };
 	_id = if (isDedicated || (isNull (findDisplay 46))) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
 	_idx = count _ar;
 	_ar set [_idx, [_id, _code]];
+	[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
 	if (isNil "_id" && !isDedicated) then { [] spawn FUNC(attach_handler) };
 	_idx;
 };
@@ -56,14 +58,14 @@ CBA_fnc_addDisplayHandler =
 CBA_fnc_removeDisplayHandler =
 {
 	private ["_ar"];
-	PARAMS_3(_type,_index);
+	PARAMS_2(_type,_index);
 
 	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 	if (typeName _ar == "ARRAY") then
 	{
 		if !(isDedicated) then { (findDisplay 46) displayRemoveEventhandler [_type, (_ar select _index) select 0] };
 		_ar set [_index, [nil]];
-		//[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
+		[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
 	};
 };
 
@@ -71,11 +73,15 @@ FUNC(handle_retach) =
 {
 	private ["_id", "_ar2"];
 	PARAMS_2(_type,_ar); // _key and _value
+	// Workaround for 'code' error, but why ?
+	if (typeName _ar == "ARRAY") then
 	{
-		_id = _x select 0;
-		if !(isNil "_id") then { (findDisplay 46) displayRemoveEventHandler [_type, _id] };
-		if (count _x != 1) then { _x set [0, (findDisplay 46) displayAddEventHandler [_type, _x select 1]] };
-	} forEach _ar;
+		{
+			_id = _x select 0;
+			if !(isNil "_id") then { (findDisplay 46) displayRemoveEventHandler [_type, _id] };
+			if (count _x != 1) then { _x set [0, (findDisplay 46) displayAddEventHandler [_type, _x select 1]] };
+		} forEach _ar;
+	};
 };
 
 // TODO: Change to FSM, to workaround 3ms limit ?
