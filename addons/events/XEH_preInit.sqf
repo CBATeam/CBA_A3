@@ -75,6 +75,7 @@ FUNC(handle_retach) =
 	} forEach _ar;
 };
 
+// TODO: Change to FSM, to workaround 3ms limit ?
 FUNC(attach_handler) =
 {
 	if (GVAR(attaching)) exitWith {}; // Already busy
