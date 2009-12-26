@@ -44,11 +44,11 @@ CBA_fnc_addDisplayHandler =
 	private ["_ar", "_id", "_idx"];
 	PARAMS_2(_type,_code);
 
-	_ar = [GVAR(handler_hash), _type] CBA_fnc_hashGet;
+	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 	_id = if (isServer || (isNull (findDisplay 46))) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
 	_idx = count _ar;
 	_ar set [_idx, [_id, _code]];
-	[GVAR(handler_hash), _type, _ar] CBA_fnc_hashSet; // this actually required, since we're only referencing ?
+	[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet; // this actually required, since we're only referencing ?
 	if (isNil "_id" && !isServer) then { [] spawn FUNC(attach_handler) };
 	_idx;
 };
@@ -58,10 +58,10 @@ CBA_fnc_removeDisplayHandler =
 	private ["_ar"];
 	PARAMS_3(_type,_index);
 
-	_ar = [GVAR(handler_hash), _type] CBA_fnc_hashGet;
+	_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 	if !(isServer) then { (findDisplay 46) displayRemoveEventhandler [_type, (_ar select _index) select 0] };
 	_ar set [_index, [nil]];
-	[GVAR(handler_hash), _type, _ar] CBA_fnc_hashSet;
+	[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
 };
 
 FUNC(handle_retach) = 
