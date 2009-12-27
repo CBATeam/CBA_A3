@@ -25,6 +25,7 @@ LOG(MSG_INIT);
 	};
 };
 
+
 // Display Eventhandlers - Abstraction layer
 GVAR(attaching) = false;
 
