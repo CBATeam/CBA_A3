@@ -44,7 +44,7 @@ FUNC(handle_retach) =
 	};
 };
 
-// TODO: Change to FSM, to workaround 3ms limit ?
+// TODO: Change to FSM, to workaround 3ms limit - or instead stack/multiplex into single events per type ?
 FUNC(attach_handler) =
 {
 	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
