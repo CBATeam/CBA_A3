@@ -25,7 +25,7 @@ else
 	[] spawn
 	{
 		waitUntil { alive player };
-		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent};
+		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
 	};
 };
 
