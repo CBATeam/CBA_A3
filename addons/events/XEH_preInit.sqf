@@ -11,30 +11,24 @@
 */
 LOG(MSG_INIT);
 
-GVAR(keys_down) = []; GVAR(keys_up) = [];
-for "_i" from 0 to 250 do
+// Initialisation required by CBA events.
+CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
+// TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
+if (isServer or (alive player)) then
 {
-	GVAR(keys_down) set [_i, []];
-	GVAR(keys_up) set [_i, []];
-};
-
-private ["_count"];
-_count = (count (__cfg)) -1;
-GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
-
-for "_i" from 0 to _count do
+	// We want all events, as soon as they start arriving.
+	"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
+}
+else
 {
-	_entry = (__cfg) select _i;
-	if (isArray(_entry)) then
+	// Ignore the last event that was sent out before we joined.
+	[] spawn
 	{
-		GVAR(actions) setVariable [configName _entry, []];
+		waitUntil { alive player };
+		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent};
 	};
 };
 
-PREP(actionHandler);
-PREP(keyHandler);
-//PREP(globalHitEvent);
-//PREP(globalKilledEvent);
 
 // Display Eventhandlers - Abstraction layer
 GVAR(handler_hash) = [[], ""] call CBA_fnc_hashCreate;
@@ -97,23 +91,32 @@ FUNC(attach_handler) =
 };
 
 
-// Initialisation required by CBA events.
-CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
-// TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
-if (isServer or (alive player)) then
+// Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
+GVAR(keys_down) = []; GVAR(keys_up) = [];
+for "_i" from 0 to 250 do
 {
-	// We want all events, as soon as they start arriving.
-	"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
-}
-else
+	GVAR(keys_down) set [_i, []];
+	GVAR(keys_up) set [_i, []];
+};
+
+private ["_count"];
+_count = (count (__cfg)) -1;
+GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
+
+for "_i" from 0 to _count do
 {
-	// Ignore the last event that was sent out before we joined.
-	[] spawn
+	_entry = (__cfg) select _i;
+	if (isArray(_entry)) then
 	{
-		waitUntil { alive player };
-		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent};
+		GVAR(actions) setVariable [configName _entry, []];
 	};
 };
+
+PREP(actionHandler);
+PREP(keyHandler);
+//PREP(globalHitEvent);
+//PREP(globalKilledEvent);
+
 
 // loadGame EventHandler
 //["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;

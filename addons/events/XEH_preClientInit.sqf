@@ -25,6 +25,7 @@ LOG(MSG_INIT);
 	};
 };
 
+
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
 // Workaround , in macros
 #define UP [_this, 1]
