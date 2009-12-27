@@ -1,13 +1,7 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
-	MainDisplay KeyHandler, by Sickboy <sb_at_dev-heaven.net>
-
-	Example:
-	class CfgSettings { class CBA { class Keys { class sys_attachments { cqb = 33 }; }; }; };
-
-	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
-	[QUOTE(COMPONENT), "cqb", { _this call GVAR(keyPressed) }] call cba_keys_fAddHandlerFromConfig;
+	Custom events
 */
 LOG(MSG_INIT);
 
@@ -18,9 +12,7 @@ if (isServer or (alive player)) then
 {
 	// We want all events, as soon as they start arriving.
 	"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
-}
-else
-{
+} else {
 	// Ignore the last event that was sent out before we joined.
 	[] spawn
 	{
@@ -64,6 +56,13 @@ CBA_fnc_removeDisplayHandler =
 
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
+/*
+	Example:
+	class CfgSettings { class CBA { class Keys { class sys_attachments { cqb = 33 }; }; }; };
+
+	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
+	[QUOTE(COMPONENT), "cqb", { _this call GVAR(keyPressed) }] call cba_fnc_AddKeyHandlerFromConfig;
+*/
 GVAR(keys_down) = []; GVAR(keys_up) = [];
 for "_i" from 0 to 250 do
 {
@@ -72,7 +71,7 @@ for "_i" from 0 to 250 do
 };
 
 private ["_count"];
-_count = (count (__cfg)) -1;
+_count = (count (__cfg)) - 1;
 GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
 
 for "_i" from 0 to _count do

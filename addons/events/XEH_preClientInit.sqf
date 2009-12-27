@@ -1,13 +1,11 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
-
+/*
+	Custom events
+*/
 LOG(MSG_INIT);
 
-["CBA_loadGame",
-{
-	[] spawn FUNC(attach_handler);
-}] call CBA_fnc_addEventHandler;
-
+["CBA_loadGame", { [] spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler;
 ["CBA_playerSpawn", { LOG("Player spawn detected!") }] call CBA_fnc_addEventHandler;
 
 [] spawn
