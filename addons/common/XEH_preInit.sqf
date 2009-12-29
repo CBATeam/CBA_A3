@@ -16,14 +16,7 @@ LOG(MSG_INIT);
  * loaded and preprocessed twice, but this should only occur once per mission
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
-private ["_logic","_grp","_side"];
 [objNull] call COMPILE_FILE(init_functionsModule);
-if (isServer) then
-{
-	_side = createCenter sideLogic;
-	_grp  = createGroup sideLogic;
-	_logic = _grp createUnit ["FunctionsManager", [0,0,0], [], 0, "NONE"];
-};
 LOG("Initialising the Functions module early.");
 
 ADDON = false;
