@@ -28,7 +28,7 @@ private ["_man", "_array", "_anim", "_type", "_weapon", "_pos"];
 PARAMS_2(_man,_array);
 _anim = "";
 _type = "";
-_weapon = format["%1", _man call CBA_fnc_selectedWeapon];
+_weapon = format["%1", currentWeapon _man];
 _pos = "";
 
 if (_weapon != "") then {
