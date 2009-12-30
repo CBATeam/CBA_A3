@@ -30,30 +30,26 @@ GVAR(attaching) = false;
 FUNC(handle_retach) = 
 {
 	private ["_id", "_ar2"];
-	PARAMS_2(_type,_ar); // _key and _value
-	// Workaround for 'code' error, but why ?
-	if (typeName _ar == "ARRAY") then
+	//PARAMS_2(_type,_ar); // _key and _value
+	TRACE_2("",_key,_value);
 	{
+		_id = _x select 0;
+		if !(isNil "_id") then
 		{
-			_id = _x select 0;
-			if !(isNil "_id") then
-			{
-				TRACE_2("Removing",_type,_id);
-				(findDisplay 46) displayRemoveEventHandler [_type, _id];
-			};
-			if (count _x != 1) then
-			{
-				TRACE_2("Adding",_type,_x select 1);
-				_x set [0, (findDisplay 46) displayAddEventHandler [_type, _x select 1]];
-			};
-		} forEach _ar;
-	};
+			TRACE_2("Removing",_key,_id);
+			(findDisplay 46) displayRemoveEventHandler [_key, _id];
+		};
+		if (count _x != 1) then
+		{
+			TRACE_2("Adding",_key,_x select 1);
+			_x set [0, (findDisplay 46) displayAddEventHandler [_key, _x select 1]];
+		};
+	} forEach _value;
 };
 
 // TODO: Change to FSM, to workaround 3ms limit - or instead stack/multiplex into single events per type ?
 FUNC(attach_handler) =
 {
-	TRACE_1("",_this);
 	if (GVAR(attaching)) exitWith {}; // Already busy
 	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
 	GVAR(attaching) = true;
