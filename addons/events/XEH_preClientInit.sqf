@@ -36,8 +36,16 @@ FUNC(handle_retach) =
 	{
 		{
 			_id = _x select 0;
-			if !(isNil "_id") then { (findDisplay 46) displayRemoveEventHandler [_type, _id] };
-			if (count _x != 1) then { _x set [0, (findDisplay 46) displayAddEventHandler [_type, _x select 1]] };
+			if !(isNil "_id") then
+			{
+				TRACE_2("Removing",_type,_id);
+				(findDisplay 46) displayRemoveEventHandler [_type, _id];
+			};
+			if (count _x != 1) then
+			{
+				TRACE_2("Adding",_type,_x select 1);
+				_x set [0, (findDisplay 46) displayAddEventHandler [_type, _x select 1]];
+			};
 		} forEach _ar;
 	};
 };
@@ -45,11 +53,13 @@ FUNC(handle_retach) =
 // TODO: Change to FSM, to workaround 3ms limit - or instead stack/multiplex into single events per type ?
 FUNC(attach_handler) =
 {
-	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
+	TRACE_1("",_this);
 	if (GVAR(attaching)) exitWith {}; // Already busy
+	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
 	GVAR(attaching) = true;
 
 	waitUntil { !(isNull (findDisplay 46)) };
+	TRACE_1("Display found!",time);
 	[GVAR(handler_hash), {_this call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
 	GVAR(attaching) = false;
 };
@@ -75,6 +85,7 @@ FUNC(attach_handler) =
 	while {true} do
 	{
 		waitUntil {(time - GVAR(keypressed)) > 10};
+		TRACE_1("Longer than 10 seconds ago",_this);
 		call FUNC(attach_handler);
 		GVAR(keypressed) = time;
 	};
