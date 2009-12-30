@@ -70,9 +70,9 @@ FUNC(attach_handler) =
 {
 	waitUntil { !(isNull (findDisplay 46)) };
 	// IMPORTANT: Case Sensitive Strings!
-	["keyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-	["keyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-	["keyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
+	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+	["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
 
 
 	// Workaround for displayEventhandlers falling off at gameLoad
