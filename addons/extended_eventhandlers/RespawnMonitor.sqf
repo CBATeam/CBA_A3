@@ -27,6 +27,11 @@ if ( isText(_cfgRespawn) ) then
 };
 if (!_nomonitor) then
 {
+	// Bug #7432 - tag the playable units so that SLX_XEH_Init can
+	//             detect them when they respawn and avoid running
+	//             the init EH again
+	{_x setVariable ["slx_xeh_playable", true];} forEach playableUnits;
+
 	// Set up the event handler that takes care of respawning playable units.
 	// (This replaces the old RespawnMonitor.sqf "thread")
 	if (!isNil"CBA_fnc_addEventHandler") then
@@ -87,6 +92,9 @@ if (!_nomonitor) then
 		// is controlling is not named, fall back to the old XEH way:
 		if (!_playerIsNamed) then
 		{
+			#ifdef DEBUG_MODE_FULL
+			diag_log text "XEH: 'legacy' player respawn monitor started";
+			#endif
 			while { true } do
 			{
 				waitUntil { !(alive player) };
@@ -95,11 +103,9 @@ if (!_nomonitor) then
 				[player, "Extended_Init_EventHandlers", true] call SLX_XEH_init;
 				sleep 0.5;
 			};
-			#ifdef DEBUG_MODE_FULL
-			diag_log text "XEH: 'legacy' player respawn monitor started";
-			#endif
 		};
 	};
 };
+
 nil;
 
