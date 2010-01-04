@@ -1,15 +1,13 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
-
-LOG(MSG_INIT);
-ADDON = false;
-
-#define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
 /*
 	Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 
 */
+LOG(MSG_INIT);
+ADDON = false;
+#define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
 
 GVAR(versions) = [[], "0.00"] call CBA_fnc_hashCreate;
 
