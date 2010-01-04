@@ -7,13 +7,14 @@ GVAR(versions) = [[], "0.00"] call CBA_fnc_hashCreate;
 
 #define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
 
+private ["_prefix", "_version"];
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 {
 	_prefix = (CFGSETTINGS) select _i;
 	if (isClass _prefix) then
 	{
-		if (isText(__version)) then { getText(__version) } else { "0.00" };
-		[GVAR(versions), configName _prefix, ] call CBA_fnc_hashSet;
+		_version = if (isText(__version)) then { getText(__version) } else { "0.00" };
+		[GVAR(versions), configName _prefix, _version] call CBA_fnc_hashSet;
 	};
 };
 
