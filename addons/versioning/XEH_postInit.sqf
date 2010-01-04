@@ -1,11 +1,13 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
-SCRIPT(XEH_preInit);
 
+#define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
+#define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
+
+SCRIPT(XEH_preInit);
 ADDON = false;
 
 GVAR(versions) = [[], "0.00"] call CBA_fnc_hashCreate;
-
-#define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
 
 private ["_prefix", "_version"];
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
@@ -17,8 +19,6 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 		[GVAR(versions), configName _prefix, _version] call CBA_fnc_hashSet;
 	};
 };
-
-#define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
 FUNC(version_check) =
 {
