@@ -57,7 +57,7 @@ FUNC(attach_handler) =
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);
 	_handle = { [GVAR(handler_hash), {_this call FUNC(handle_retach)}] call CBA_fnc_hashEachPair } execFSM CBA_common_delayLess;
-	waitUntil {scriptDone _handle};
+	waitUntil {completedFSM _handle};
 	GVAR(attaching) = false;
 };
 
