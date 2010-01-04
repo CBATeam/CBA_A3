@@ -7,7 +7,6 @@ SCRIPT(XEH_preInit);
 */
 LOG(MSG_INIT);
 ADDON = false;
-#define __version configFile >> "CfgPatches" >> QUOTE(DOUBLES(configName _prefix,main)) >> "versionstr"
 
 GVAR(versions) = [[], "0.00"] call CBA_fnc_hashCreate;
 
@@ -30,14 +29,14 @@ FUNC(version_check) =
 	};
 };
 
-
-private ["_prefix", "_version"];
+private ["_prefix", "_version", "_verCfg"];
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 {
 	_prefix = (CFGSETTINGS) select _i;
 	if (isClass _prefix) then
 	{
-		_version = if (isText(__version)) then { getText(__version) } else { "0.00" };
+		_verCfg = (configFile >> "CfgPatches" >> format["%1_main", configName _prefix] >> "versionstr");
+		_version = if (isText(_verCfg)) then { getText(_verCfg) } else { "0.00" };
 		[GVAR(versions), configName _prefix, _version] call CBA_fnc_hashSet;
 	};
 };
