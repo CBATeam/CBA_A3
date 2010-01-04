@@ -60,7 +60,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 		};
 		private ["_logic", "_str"];
 		_logic = "LOGIC" createVehicle [0,0,0];
-		_str = 'if (isServer) exitWith {}; _func = {cba_versioning_mismatch = [player,_this]; publicVariable "cba_versioning_mismatch"; _this spawn { _t = format["You are missing the following mod: %1", _this]; player globalChat _t; diag_log text _t } }';
+		_str = 'if (isServer) exitWith {}; _func = {cba_versioning_mismatch = [format["%1", player],_this]; publicVariable "cba_versioning_mismatch"; _this spawn { _t = format["You are missing the following mod: %1", _this]; player globalChat _t; diag_log text _t } }';
 		[GVAR(versions_srv), {_str = _str + 'if !(isClass (configFile >> "CfgPatches" >> format["%1_main", _prefix])) exitWith {format["%1_main", _prefix] call _func};'}] call CBA_fnc_hashEachPair;
 		_logic setVehicleInit _str;
 		processInitCommands;
