@@ -21,6 +21,8 @@ LOG("Initialising the Functions module early.");
 
 ADDON = false;
 
+GVAR(delayless) = QUOTE(PATHTO_F(delayless));
+
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
 DEPRECATE(fAddMagazineCargo,fnc_addMagazineCargo);
