@@ -19,12 +19,14 @@ FUNC(version_check) =
 	{
 		// Default version mismatch handling, broadcast to all!
 		[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(COMPONENT), [true, true, true]] call CBA_fnc_debug;
-		
+
 		// Allow custom handler
 		if (isText ((CFGSETTINGS) >> _key >> "handler")) then
 		{
 			[_value, _localVersion, player] spawn getText((CFGSETTINGS) >> _key >> "handler");
 		};
+		// Actually disconnect em? 
+		// endMission "END1"
 	};
 };
 
