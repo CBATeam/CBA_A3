@@ -26,7 +26,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 
 FUNC(version_check) =
 {
-	// _key, _value
+	private ["_localVersion"]; // _key, _value  are injected by the CBA_fnc_hashEachPair
 	_localVersion = [GVAR(versions), _key] call CBA_fnc_hashGet;
 	if (_localVersion != _value) then
 	{
