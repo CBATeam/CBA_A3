@@ -43,28 +43,33 @@ if !(isNull player) then
 		waitUntil { !(isNull (group player)) };
 	};
 };
-/* 
- * Monitor playable units (players and AI) and re-run any XEH init handlers
- * that are configured to be re-run on respawn. (By default, init EH:s are not
- * re-run when a unit respawns.
- */
-if (isMultiplayer) then
+
+_handle = 
 {
-    SLX_XEH_rmon = [] execVM "extended_eventhandlers\RespawnMonitor.sqf";
-};
+	/* 
+	 * Monitor playable units (players and AI) and re-run any XEH init handlers
+	 * that are configured to be re-run on respawn. (By default, init EH:s are not
+	 * re-run when a unit respawns.
+	 */
+	if (isMultiplayer) then
+	{
+		SLX_XEH_rmon = [] execVM "extended_eventhandlers\RespawnMonitor.sqf";
+	};
 
-SLX_XEH_MACHINE set [5, true]; // set player check = complete
-diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
+	SLX_XEH_MACHINE set [5, true]; // set player check = complete
+	diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
 
-// General InitPosts
-{
-	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
-} forEach [configFile, campaignConfigFile, missionConfigFile];
+	// General InitPosts
+	{
+		(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
+	} forEach [configFile, campaignConfigFile, missionConfigFile];
 
-// we set this BEFORE executing the inits, so that any unit created in another
-// thread still gets their InitPost ran
-SLX_XEH_MACHINE set [7, true];
-{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+	// we set this BEFORE executing the inits, so that any unit created in another
+	// thread still gets their InitPost ran
+	SLX_XEH_MACHINE set [7, true];
+	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+} execFSM "extended_eventhandlers\delayless.fsm";
+waitUntil {completedFSM _handle};
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];
