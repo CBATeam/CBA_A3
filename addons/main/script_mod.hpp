@@ -1,7 +1,7 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
-#define BUILD 205
+#define BUILD 42
 #define VERSION 0.2.BUILD
 // MINIMAL required version for the Mod. Components can specify others..
 #define REQUIRED_VERSION 1.02
