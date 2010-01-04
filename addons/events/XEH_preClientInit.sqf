@@ -47,7 +47,7 @@ FUNC(handle_retach) =
 	} forEach _value;
 };
 
-// TODO: Change to FSM, to workaround 3ms limit - or instead stack/multiplex into single events per type ?
+// TODO: Stack/multiplex into single events per type ?
 FUNC(attach_handler) =
 {
 	if (GVAR(attaching)) exitWith {}; // Already busy
