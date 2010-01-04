@@ -20,6 +20,16 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 
 #define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
+FUNC(version_check) =
+{
+	// _key, _value
+	_localVersion = [GVAR(versions), _key] call CBA_fnc_hashSet;
+	if (_localVersion != _value) then
+	{
+		[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(COMPONENT), [true, true, true]] call CBA_fnc_debug;
+	};
+};
+
 [] spawn
 {
 	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
@@ -30,6 +40,9 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 	{
 		GVAR(versions_srv) = GVAR(versions);
 		publicVariable QUOTE(GVAR(versions_srv));
+	} else {
+		waitUntil {!(isNil QUOTE(GVAR(versions_srv)))};
+		[GVAR(versions_srv), {_this call FUNC(version_check)}] call CBA_fnc_hashEachPair;
 	};
 };
 
