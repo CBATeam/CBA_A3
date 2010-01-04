@@ -14,11 +14,13 @@ LOG(MSG_INIT);
 	SLEEP(4); // Test workaround for JIP issue
 	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
 	
+	if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
+	
 	if (isServer) then
 	{
 		GVAR(versions_srv) = GVAR(versions);
 		publicVariable QUOTE(GVAR(versions_srv));
-		GVAR(mismatch) addPublicVariableEventHandler
+		QUOTE(GVAR(mismatch)) addPublicVariableEventHandler
 		{
 			private ["_params"];
 			_params = _this select 1;
