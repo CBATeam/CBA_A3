@@ -23,7 +23,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 FUNC(version_check) =
 {
 	// _key, _value
-	_localVersion = [GVAR(versions), _key] call CBA_fnc_hashSet;
+	_localVersion = [GVAR(versions), _key] call CBA_fnc_hashGet;
 	if (_localVersion != _value) then
 	{
 		[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(COMPONENT), [true, true, true]] call CBA_fnc_debug;
