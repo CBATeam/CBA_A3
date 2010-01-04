@@ -526,6 +526,22 @@ Author:
 
 #define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT_F,var1)
 
+
+#define VERSIONING_SYS(var1) class CfgSettings \
+{ \
+	class CBA \
+	{ \
+		class Versioning \
+		{ \
+			class var1 \
+			{ \
+			}; \
+		}; \
+	}; \
+};
+
+#define VERSIONING VERSIONING_SYS(PREFIX)
+
 /* -------------------------------------------
 Macro: GVAR()
 	Get full variable identifier for a global variable owned by this component.
