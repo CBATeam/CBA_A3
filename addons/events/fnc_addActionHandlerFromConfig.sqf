@@ -29,7 +29,7 @@ PARAMS_3(_component,_action,_code);
 _key = [_component, _action] call FUNC(readActionFromConfig);
 if (_key select 0 > -1) exitWith
 {
-	 [_key select 0, _code] call FUNC(addHandler);
+	 [_key select 0, _code] call CBA_fnc_addKeyHandler;
 	 true
 };
 
