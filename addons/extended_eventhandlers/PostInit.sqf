@@ -44,6 +44,18 @@ if !(isNull player) then
 	};
 };
 
+if !(isDedicated) then
+{
+	startLoadingScreen ["CBA Initialization started...", "RscDisplayLoadMission"];
+	[] spawn
+	{
+		private["_time2Wait"];
+		_time2Wait = diag_ticktime + 3;
+		waituntil {diag_ticktime > _time2Wait};
+		endLoadingScreen;
+	};
+};
+
 /* 
  * Monitor playable units (players and AI) and re-run any XEH init handlers
  * that are configured to be re-run on respawn. (By default, init EH:s are not
@@ -62,10 +74,17 @@ diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
 	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
-// we set this BEFORE executing the inits, so that any unit created in another
-// thread still gets their InitPost ran
-SLX_XEH_MACHINE set [7, true];
-{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+// Still using delayLess.fsm for this one as this can still increase init speed at briefing?
+_handle = 
+{
+	// we set this BEFORE executing the inits, so that any unit created in another
+	// thread still gets their InitPost ran
+	SLX_XEH_MACHINE set [7, true];
+	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+} execFSM "extended_eventhandlers\delayless.fsm";
+waitUntil {completedFSM _handle};
+
+if !(isDedicated) then {endLoadingScreen};
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];
