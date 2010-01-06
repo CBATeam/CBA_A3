@@ -22,7 +22,8 @@ FUNC(version_check) =
 		// Allow custom handler
 		if (isText ((CFGSETTINGS) >> _key >> "handler")) then
 		{
-			[_value, _localVersion, player] spawn getText((CFGSETTINGS) >> _key >> "handler");
+			// TODO: PreCompile and spawn from Hash or so?
+			[_value, _localVersion, player] spawn (call compile getText((CFGSETTINGS) >> _key >> "handler"));
 		};
 		// Actually disconnect em? 
 		// endMission "END1"
