@@ -9,10 +9,11 @@ Parameters:
 	_code - Code to execute upon event [Code].
 
 Returns:
+	the id of the attached handler
 
 Examples:
 	(begin example)
-		["keyDown", { _this call myKeyDownEH }] call CBA_fnc_addDisplayHandler;
+		_id = ["keyDown", { _this call myKeyDownEH }] call CBA_fnc_addDisplayHandler;
 	(end)
 
 Author:
