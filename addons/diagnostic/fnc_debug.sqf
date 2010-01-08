@@ -8,7 +8,7 @@ Description:
 
 Parameters:
 	_message - Message to write or data structure to dump [String or Array].
-	_component - component [String, defaults to "CBA_DEBUG"]
+	_component - component [String, defaults to "CBA_DIAGNOSTIC"]
 	_typeOfDebug - Type of message [3-element Array, as described below...]
 	... _useGlobalChat - Write to global chat [Boolean, defaults to true].
 	... _local - Log to local arma.rpt [Boolean, defaults to true]
