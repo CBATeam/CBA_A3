@@ -21,6 +21,12 @@ class CfgFunctions
 				description = "Adds an action to an actionHandler, read from config";
 				file = "\x\cba\addons\events\fnc_addActionHandlerFromConfig.sqf";
 			};
+			// CBA_fnc_addDisplayHandler
+			class addDisplayHandler
+			{
+				description = "Adds an action to a displayHandler";
+				file = "\x\cba\addons\events\fnc_addDisplayHandler.sqf";
+			};
 			// CBA_fnc_addEventHandler
 			class addEventHandler
 			{
@@ -68,6 +74,12 @@ class CfgFunctions
 			{
 				description = "Raises a CBA event on all machines EXCEPT the local one.";
 				file = "\x\cba\addons\events\fnc_remoteEvent.sqf";
+			};
+			// CBA_fnc_removeDisplayHandler
+			class removeDisplayHandler
+			{
+				description = "Removes an action to a displayHandler";
+				file = "\x\cba\addons\events\fnc_removeDisplayHandler.sqf";
 			};
 			// CBA_fnc_removeEventHandler
 			class removeEventHandler
