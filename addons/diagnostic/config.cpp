@@ -5,7 +5,7 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "CBA_common" };
+		requiredAddons[] = { "CBA_common", "CBA_events" };
 		version = VERSION;
 	};
 };
