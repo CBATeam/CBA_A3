@@ -10,8 +10,8 @@ LOG(MSG_INIT);
 
 [] spawn
 {
-	SLEEP(4); // Test workaround for JIP issue
 	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
+	SLEEP(4); // Test workaround for JIP issue
 	
 	if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
 	
