@@ -10,7 +10,6 @@ LOG(MSG_INIT);
 
 [] spawn
 {
-	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
 	SLEEP(4); // Test workaround for JIP issue
 	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
 	
@@ -36,6 +35,7 @@ LOG(MSG_INIT);
 		processInitCommands;
 	} else {
 		waitUntil {!(isNil QUOTE(GVAR(versions_srv)))};
+		TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
 		[GVAR(versions_srv), {call FUNC(version_check)}] call CBA_fnc_hashEachPair;
 	};
 };
