@@ -30,7 +30,7 @@ GVAR(attaching) = false;
 FUNC(handle_retach) = 
 {
 	private ["_id", "_ar2"];
-	//PARAMS_2(_type,_ar); // _key and _value
+	// _key and _value
 	TRACE_2("",_key,_value);
 	{
 		_id = _x select 0;
@@ -56,7 +56,7 @@ FUNC(attach_handler) =
 
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);
-	_handle = { [GVAR(handler_hash), {_this call FUNC(handle_retach)}] call CBA_fnc_hashEachPair } execFSM CBA_common_delayLess;
+	_handle = { [GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair } execFSM CBA_common_delayLess;
 	waitUntil {completedFSM _handle};
 	GVAR(attaching) = false;
 };

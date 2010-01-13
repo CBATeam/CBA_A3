@@ -36,6 +36,6 @@ LOG(MSG_INIT);
 		processInitCommands;
 	} else {
 		waitUntil {!(isNil QUOTE(GVAR(versions_srv)))};
-		[GVAR(versions_srv), {_this call FUNC(version_check)}] call CBA_fnc_hashEachPair;
+		[GVAR(versions_srv), {call FUNC(version_check)}] call CBA_fnc_hashEachPair;
 	};
 };

@@ -17,7 +17,7 @@ FUNC(version_check) =
 	if (_localVersion != _value) then
 	{
 		// Default version mismatch handling, broadcast to all!
-		[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(COMPONENT), [true, true, true]] call CBA_fnc_debug;
+		[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(ADDON), [true, true, true]] call CBA_fnc_debug;
 
 		// Allow custom handler
 		if (isText ((CFGSETTINGS) >> _key >> "handler")) then
