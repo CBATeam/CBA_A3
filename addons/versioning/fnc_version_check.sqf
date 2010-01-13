@@ -6,6 +6,9 @@ _localVersion = [GVAR(versions), _key] call CBA_fnc_hashGet;
 TRACE_3("Version Check",_key,_value,_localVersion);
 if (_localVersion != _value) then
 {
+	// Default version mismatch handling, broadcast to all!
+	[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(ADDON), [true, true, true]] call CBA_fnc_debug;
+
 	// Allow custom handler
 	if (isText ((CFGSETTINGS) >> _key >> "handler")) then
 	{
@@ -14,7 +17,4 @@ if (_localVersion != _value) then
 	};
 	// Actually disconnect em? 
 	// endMission "END1"
-
-	// Default version mismatch handling, broadcast to all!
-	[format["%1 - Version Mismatch! (Machine: %2, Server: %3, Local: %4)", _key, player, _value, _localVersion], QUOTE(ADDON), [true, true, true]] call CBA_fnc_debug;
 };
