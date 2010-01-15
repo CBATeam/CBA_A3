@@ -49,7 +49,7 @@ if (isDedicated && (time>0) && (_justCreated || _playable)) then
 		// Wait for the unit to be fully "ready"
 		_h=_unit spawn
 		{
-			waitUntil {((toArray str(_this))find 23) == -1};
+			waitUntil {((toArray str(_this))find 35) == -1};
 			#ifdef DEBUG_MODE_FULL
 			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _this];
 			#endif
