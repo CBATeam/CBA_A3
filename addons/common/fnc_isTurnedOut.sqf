@@ -22,13 +22,20 @@ Author:
 	(c) rocko 2008, 2009
 ---------------------------------------------------------------------------- */
 
-#include "script_component.hpp"
-SCRIPT(isTurnedOut);
-
-private["_unit", "_anim", "_count", "_out", "_ret"];
+#include "script_component.hpp" 
+SCRIPT(isUnitGetOutAnim);
 PARAMS_1(_unit);
-_anim = toArray(toLower(animationState _unit));
-_count = (count _anim)-1;
-_out = toString([_anim select (_count-2),_anim select (_count-1),_anim select _count]);
-if (_out == "out") then { _ret = true; } else { _ret = false; };
-_ret
+private [
+    "_animationState",
+    "_moves",
+    "_actions",
+    "_getOutAction",
+    "_getOutState" 
+];
+
+_animationState = animationState _unit;
+_moves = configFile >> getText ( configFile >> "CfgVehicles" >> typeof _unit >> "moves" );
+_actions = _moves >> "Actions" >> getText( _moves >> "States" >> _animationState >> "actions" );
+_getOutAction = getText( configFile >> "CfgVehicles" >> typeof vehicle _unit >> "getOutAction" );
+_getOutState = getText ( _actions >> _getOutAction );
+_animationState == _getOutState;
