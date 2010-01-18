@@ -23,7 +23,8 @@ Author:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp" 
-SCRIPT(isUnitGetOutAnim);
+//SCRIPT(isUnitGetOutAnim);
+SCRIPT(isTurnedOut);
 PARAMS_1(_unit);
 private [
     "_animationState",
