@@ -35,6 +35,7 @@ SCRIPT(hashCreate);
 
 DEFAULT_PARAM(0,_array,[]);
 DEFAULT_PARAM(1,_defaultValue,nil);
+private ["_keys", "_values"];
 
 _keys = [];
 _values = [];
