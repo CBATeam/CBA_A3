@@ -24,4 +24,4 @@ scriptName "fnc_vectDir.sqf";
 SCRIPT(vectDir);
 
 
-((_this select 0) atan2 (_this select 1)) call CBA_fnc_simplifyAngle;
+[((_this select 0) atan2 (_this select 1))] call CBA_fnc_simplifyAngle;
