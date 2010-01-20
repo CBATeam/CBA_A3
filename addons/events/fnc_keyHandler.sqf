@@ -34,12 +34,10 @@ _result = false;
 	_code = _x select 1;
 	if (true) then
 	{
-		if (_settings select 0 && !(_keyData select 2)) exitWith {};
-		if (_settings select 1 && !(_keyData select 3)) exitWith {};
-		if (_settings select 2 && !(_keyData select 4)) exitWith {};
-		if (!(_settings select 0) && _keyData select 2) exitWith {};
-		if (!(_settings select 1) && _keyData select 3) exitWith {};
-		if (!(_settings select 2) && _keyData select 4) exitWith {};
+		// Verify if the required modifier keys are present
+		_exit = false;
+		for "_i" from 0 to 2 do { if ((_settings select _i) != (_keyData select (_i + 2))) exitWith { _exit = true } };
+		if (_exit) exitWith {};
 		#ifdef DEBUG_MODE_FULL
 			PUSH(_ar,_code);
 		#endif
