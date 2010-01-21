@@ -67,7 +67,7 @@ Macros: DEBUG_MODE_x
 	only the appropriate debugging commands will be functional. With no level explicitely defined, assume DEBUG_MODE_NORMAL.
 	
 	DEBUG_MODE_FULL - Full debugging output.
-	DEBUG_MODE_NORMAL - All debugging except <TRACE_n()> (Default setting if none specified).
+	DEBUG_MODE_NORMAL - All debugging except <TRACE_n()> and <LOG()> (Default setting if none specified).
 	DEBUG_MODE_MINIMAL - Only <ERROR()> and <ERROR_WITH_TITLE()> enabled.
 	
 Examples:
@@ -133,7 +133,7 @@ Author:
 Macro: LOG()
 	Log a timestamped message into the RPT log.
 
-	Only run if <DEBUG_MODE_NORMAL> or higher is defined.
+	Only run if <DEBUG_MODE_FULL> or higher is defined.
 	
 Parameters:
 	MESSAGE - Message to record [String]
@@ -146,7 +146,7 @@ Example:
 Author:
 	Spooner
 ------------------------------------------- */
-#ifdef DEBUG_MODE_NORMAL
+#ifdef DEBUG_MODE_FULL
 #define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
 #else
 #define LOG(MESSAGE) /* disabled */
