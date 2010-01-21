@@ -15,7 +15,9 @@ SLX_XEH_MACHINE =
 	isDedicated, // 4 - isDedicatedServer (and thus not a Client-Server)
 	false, // 5 - Player Check Finished
 	!isMultiplayer, // 6 - SP?
-	false // 7 - StartInit Passed
+	false, // 7 - StartInit Passed
+	0      // 8 - counter used to assign a vehicleVarName to unnamed playable
+	       //     units so they can be tracked. See RespawnMonitor.sqf
 ];
 SLX_XEH_F_INIT = {
 	private [

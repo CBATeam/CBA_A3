@@ -8,7 +8,7 @@
 #include "script_component.hpp"
 private [
 	"_cfgRespawn", "_respawn", "_nomonitor", "_initEH", "_name",
-	"_playerIsNamed", "_getUnit"
+	"_playerIsNamed", "_getUnit", "_n", "_vvn"
 ];
 
 _cfgRespawn = (missionConfigFile/"respawn");
@@ -27,10 +27,23 @@ if ( isText(_cfgRespawn) ) then
 };
 if (!_nomonitor) then
 {
-	// Bug #7432 - tag the playable units so that SLX_XEH_Init can
-	//             detect them when they respawn and avoid running
-	//             the init EH again
-	{_x setVariable ["slx_xeh_playable", true];} forEach playableUnits;
+	{
+		// Bug #7432 - tag the playable units so that SLX_XEH_Init can
+		//             detect them when they respawn and avoid running
+		//             the init EH again
+		_x setVariable ["slx_xeh_playable", true];
+		
+		// Bug #8080 - tag any unnamed playable units with a dynamically
+		//             generated name so they can be tracked on respawn.
+		_vvn=vehicleVarName _x;
+		if (_vvn="") then
+		{
+			_n=SLX_XEH_MACHINE select 8;
+			SLX_XEH_MACHINE set [8, _n+1];
+			_vvn=format["slx_xeh_playable%1", _n];
+			_x setVehicleVarName _vvn; 
+		};
+	} forEach playableUnits;
 
 	// Set up the event handler that takes care of respawning playable units.
 	// (This replaces the old RespawnMonitor.sqf "thread")
