@@ -36,7 +36,8 @@ _result = false;
 	{
 		// Verify if the required modifier keys are present
 		_exit = false;
-		for "_i" from 0 to 2 do { if ((_settings select _i) != (_keyData select (_i + 2))) exitWith { _exit = true } };
+		// Cannot compare booleans, so must use ! && etc.
+		for "_i" from 0 to 2 do { if (((_settings select _i) && !(_keyData select (_i + 2))) || (!(_settings select _i) && (_keyData select (_i + 2)))) exitWith { _exit = true } };
 		if (_exit) exitWith {};
 		#ifdef DEBUG_MODE_FULL
 			PUSH(_ar,_code);
