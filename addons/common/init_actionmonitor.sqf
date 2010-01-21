@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////
 private ["_actionIndexes", "_veh"];
 
-GVAR(actionList) = call CBA_fnc_hashCreate;
+GVAR(actionList) = [] call CBA_fnc_hashCreate;
 GVAR(actionListUpdated) = false; // Set true to force recreation of actions.
 GVAR(nextActionIndex) = 0; // Next index that will be given out.
 
