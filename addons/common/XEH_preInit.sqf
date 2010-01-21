@@ -1,9 +1,6 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-LOG(MSG_INIT);
-call COMPILE_FILE(init);
- 
 /*
  * Prepare BIS functions/MP and precompile all functions we already have
  * registered with it. In order to have the functions loaded early,
@@ -18,9 +15,13 @@ call COMPILE_FILE(init);
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
 [objNull] call COMPILE_FILE(init_functionsModule);
+
+LOG(MSG_INIT);
+call COMPILE_FILE(init);
 LOG("Initialising the Functions module early.");
 
 ADDON = false;
+
 
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 
