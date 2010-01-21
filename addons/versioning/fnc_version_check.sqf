@@ -1,4 +1,3 @@
-#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 private ["_localVersion"]; // _key, _value  are injected by the CBA_fnc_hashEachPair
