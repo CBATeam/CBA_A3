@@ -2,6 +2,7 @@
 SCRIPT(XEH_preInit);
 
 LOG(MSG_INIT);
+call COMPILE_FILE(init);
  
 /*
  * Prepare BIS functions/MP and precompile all functions we already have
