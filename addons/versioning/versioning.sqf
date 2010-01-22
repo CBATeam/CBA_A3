@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 #define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
-TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
+TRACE_2("",GVAR(versions),GVAR(versions_srv));
 SLEEP(4); // Test workaround for JIP issue
 
 if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
@@ -27,6 +27,6 @@ if (isServer) then
 	processInitCommands;
 } else {
 	waitUntil {!(isNil QUOTE(GVAR(versions_srv)))};
-	TRACE_3("",isServer,GVAR(versions),GVAR(versions_srv));
+	TRACE_2("",GVAR(versions),GVAR(versions_srv));
 	[GVAR(versions_srv), {call FUNC(version_check)}] call CBA_fnc_hashEachPair;
 };
