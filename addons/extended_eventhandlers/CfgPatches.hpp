@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = 1.00;
-		SLX_XEH2_Version = 2.04;
+		SLX_XEH2_Version = 2.05;
 		requiredAddons[] =
 		{
 			//"CAData", "CAAir", "CACharacters"
