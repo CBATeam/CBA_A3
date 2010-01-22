@@ -123,8 +123,8 @@ if (_type select 2) exitWith
 _msgAr = [];
 switch (typeName _message) do
 {
-	case "ARRAY": { _msgAr = [format["%3 (%2) %1 -", _component, time, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime]]; _msgAr = _msgAr + (_message call _ar2msg) };
-	default { _msgAr = (format["%4 (%3) %1 - %2", _component, _message, time, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime] call _format) };
+	case "ARRAY": { _msgAr = [format["%3 (%2) %1 -", _component, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime]]; _msgAr = _msgAr + (_message call _ar2msg) };
+	default { _msgAr = (format["%4 (%3) %1 - %2", _component, _message, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime] call _format) };
 };
 
 if (_type select 0) then { if (SLX_XEH_MACHINE select 0) then { { ADDON globalChat _x } forEach _msgAr } };
