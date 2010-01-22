@@ -30,7 +30,7 @@ PARAMS_3(_file,_lineNum,_message);
 // TODO: Add log message to trace log
 diag_log text format ["%1 (%2) [%3:%4] %5",
 	[diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
-	time, _file, _lineNum + 1, _message];
+	[time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, _lineNum + 1, _message];
 
 nil;
 
