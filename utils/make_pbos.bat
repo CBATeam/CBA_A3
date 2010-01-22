@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-2-0.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-3-0.biprivatekey"
 set SIGN="C:\tools\dsutils\DSSignFile.exe"
 
 REM set OPTS=-m
@@ -27,6 +27,7 @@ cd "C:\tools"
 %TOOL% %OPTS% "%ADDONS%\network"
 %TOOL% %OPTS% "%ADDONS%\strings"
 %TOOL% %OPTS% "%ADDONS%\vectors"
+%TOOL% %OPTS% "%ADDONS%\versioning"
 
 echo.
 
@@ -43,5 +44,6 @@ rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 %SIGN% %KEY% "%ADDONS%\cba_network.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_strings.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_vectors.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_versioning.pbo"
 
 pause
