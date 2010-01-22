@@ -74,10 +74,11 @@ FUNC(attach_handler) =
 	// IMPORTANT: Case Sensitive Strings!
 	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-	["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
+
+	// ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
 
 
-	// Workaround for displayEventhandlers falling off at gameLoad
+	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
 	GVAR(keypressed) = time;
 	while {true} do

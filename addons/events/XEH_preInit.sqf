@@ -39,25 +39,23 @@ for "_i" from 0 to 250 do
 	GVAR(keys_down) set [_i, []];
 	GVAR(keys_up) set [_i, []];
 };
-
-private ["_count"];
-_count = (count (__cfg)) - 1;
-GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
-
-for "_i" from 0 to _count do
-{
-	_entry = (__cfg) select _i;
-	if (isArray(_entry)) then
-	{
-		GVAR(actions) setVariable [configName _entry, []];
-	};
-};
-
-PREP(actionHandler);
 PREP(keyHandler);
-//PREP(globalHitEvent);
-//PREP(globalKilledEvent);
 
+/*
+	// Disabled - SB - 2010-01-22: Bugged, and not working anyway.
+	// FIXME: #define __cfg ??
+	GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
+	for "_i" from 0 to ((count (__cfg)) - 1) do
+	{
+		_entry = (__cfg) select _i;
+		if (isArray(_entry)) then
+		{
+			GVAR(actions) setVariable [configName _entry, []];
+		};
+	};
+
+	PREP(actionHandler);
+*/
 
 // loadGame EventHandler
 //["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
