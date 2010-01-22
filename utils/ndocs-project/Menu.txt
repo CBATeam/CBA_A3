@@ -85,15 +85,12 @@ Group: Functions  {
 		} # Group: Diagnostic
 
 		Group: Events {
-			File: addActionHandler  (no auto-title, events\fnc_addActionHandler.sqf)
-			File: addActionHandlerFromConfig  (no auto-title, events\fnc_addActionHandlerFromConfig.sqf)
 			File: addDisplayHandler  (no auto-title, events\fnc_addDisplayHandler.sqf)
 			File: addEventHandler  (no auto-title, events\fnc_addEventHandler.sqf)
 			File: addKeyHandler  (no auto-title, events\fnc_addKeyHandler.sqf)
 			File: addKeyHandlerFromConfig  (no auto-title, events\fnc_addKeyHandlerFromConfig.sqf)
 			File: globalEvent  (no auto-title, events\fnc_globalEvent.sqf)
 			File: localEvent  (no auto-title, events\fnc_localEvent.sqf)
-			File: readActionFromConfig  (no auto-title, events\fnc_readActionFromConfig.sqf)
 			File: readKeyFromConfig  (no auto-title, events\fnc_readKeyFromConfig.sqf)
 			File: remoteEvent  (no auto-title, events\fnc_remoteEvent.sqf)
 			File: removeDisplayHandler  (no auto-title, events\fnc_removeDisplayHandler.sqf)
