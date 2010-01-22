@@ -1,5 +1,7 @@
 #include "script_component.hpp"
-diag_log [diag_ticktime, time, "XEH: PreInit Started"];
+_f = { diag_log text format ["%1 (%2) %3", diag_tickTime, time, _this] };
+
+"XEH: PreInit Started" call _f;
 
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
@@ -25,7 +27,7 @@ SLX_XEH_F_INIT = {
 	];
 	_Inits = [];
 	#ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH BEG: Init %2", time, _this];
+	format["XEH BEG: Init %1", _this] call _f;
 	#endif
 
 	if (isClass _this) then
@@ -70,13 +72,13 @@ SLX_XEH_F_INIT = {
 		{ call _x } forEach _Inits;	   
 	};
 	#ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH END: Init %2", time, _this];
+	format["XEH END: Init %1", _this] call _f;
 	#endif
 };
 
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
-diag_log [diag_ticktime, time, "XEH: PreInit Finished"];
+"XEH: PreInit Finished" call _f;
 
 /*
 * Process the crews of vehicles. This "thread" will run just
@@ -101,7 +103,7 @@ _cinit = [] spawn
 			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
 		};
 	} forEach vehicles;
-	diag_log [diag_ticktime, time, "XEH: PostInit Started"];
+	"XEH: PostInit Started" call _f;
 	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-	diag_log [diag_ticktime, time, "XEH: PostInit Finished"];
+	"XEH: PostInit Finished" call _f;
 };
