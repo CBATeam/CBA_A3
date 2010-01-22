@@ -11,4 +11,6 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
+#define LOG(MESSAGE) diag_log text format["%1 (%2) %3", diag_tickTime, time, MESSAGE]
+
 //#include "\x\cba\addons\main\script_macros.hpp"
