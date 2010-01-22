@@ -36,7 +36,7 @@ if (!_nomonitor) then
 		// Bug #8080 - tag any unnamed playable units with a dynamically
 		//             generated name so they can be tracked on respawn.
 		_vvn=vehicleVarName _x;
-		if (_vvn="") then
+		if (_vvn=="") then
 		{
 			_n=SLX_XEH_MACHINE select 8;
 			SLX_XEH_MACHINE set [8, _n+1];
