@@ -15,7 +15,7 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable"
+	"_justCreated", "_playable", "_isMan"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -35,8 +35,9 @@ _isRespawn = if (count _this>2) then { _this select 2 } else { false };
 _justCreated=(((toArray format["%1",_unit])find 35)>=0);
 _playable=_unit getVariable "slx_xeh_playable";
 if (isNil "_playable")then{_playable=false};
+_isMan = _unit isKindOf "Man";
 
-if (isDedicated && (time>0) && (_justCreated || _playable)) then
+if (_isMan && (isDedicated && (time>0) && (_justCreated || _playable))) then
 {
 	if (_justCreated) then
 	{
