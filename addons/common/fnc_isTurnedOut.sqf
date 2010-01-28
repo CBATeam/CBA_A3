@@ -24,7 +24,6 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(isTurnedOut);
-SCRIPT(isTurnedOut);
 
 private["_unit", "_anim", "_count", "_out", "_ret"];
 PARAMS_1(_unit);
