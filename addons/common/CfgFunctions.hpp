@@ -159,6 +159,12 @@ class CfgFunctions
 				description = "Checks whether a unit is turned out in a vehicle or not.";
 				file = "\x\cba\addons\common\fnc_isTurnedOut.sqf";
 			};
+			// CBA_fnc_isUnitGetOutAnim
+			class isUnitGetOutAnim
+			{
+				description = "Checks whether a unit is turned out in a vehicle or not.";
+				file = "\x\cba\addons\common\fnc_isUnitGetOutAnim.sqf";
+			};
 			// CBA_fnc_nearPlayer
 			class nearPlayer
 			{
