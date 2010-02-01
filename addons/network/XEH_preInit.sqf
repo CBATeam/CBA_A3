@@ -45,7 +45,7 @@ ISNIL(timeSync_Disabled,false); // deprecated
 ISNIL(weatherSync_Disabled,false);
 
 PREP(exec);
-PREP(cv);
+//PREP(cv);
 
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
