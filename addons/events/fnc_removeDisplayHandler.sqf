@@ -12,7 +12,7 @@ Returns:
 
 Examples:
 	(begin example)
-		["keyDown", _id] call CBA_fnc_removeDisplayHandler;
+		["KeyDown", _id] call CBA_fnc_removeDisplayHandler;
 	(end)
 
 Author:

@@ -13,7 +13,7 @@ Returns:
 
 Examples:
 	(begin example)
-		_id = ["keyDown", { _this call myKeyDownEH }] call CBA_fnc_addDisplayHandler;
+		_id = ["KeyDown", { _this call myKeyDownEH }] call CBA_fnc_addDisplayHandler;
 	(end)
 
 Author:
