@@ -6,14 +6,14 @@ Description:
 	
 Parameters:
 	_type - Displayhandler type to attach to [String].
-	_code - Code to execute upon event [Code].
+	_code - Code to execute upon event [String].
 
 Returns:
 	the id of the attached handler
 
 Examples:
 	(begin example)
-		_id = ["KeyDown", { _this call myKeyDownEH }] call CBA_fnc_addDisplayHandler;
+		_id = ["KeyDown", "_this call myKeyDownEH"] call CBA_fnc_addDisplayHandler;
 	(end)
 
 Author:
