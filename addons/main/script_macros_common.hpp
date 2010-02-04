@@ -222,6 +222,25 @@ Author:
 	[THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
 
 /* -------------------------------------------
+Macro: RETNIL()
+	If a variable is undefined, return the value nil. Otherwise, return the
+	variable itself.
+
+Parameters:
+	VARIABLE - the variable to check
+
+Example:
+	(begin example)
+		// _var is undefined
+		hintSilent format ["_var=%1", RETNIL(_var) ]; // "_var=any"
+	(end example)
+
+Author:
+	Alef (see CBA issue #8514)
+------------------------------------------- */
+#define RETNIL(VARIABLE) if(isNil{VARIABLE})then{nil}else{VARIABLE}
+
+/* -------------------------------------------
 Macros: TRACE_n()
 	Log a message and 1-8 variables to the RPT log.
 
@@ -250,28 +269,28 @@ Author:
 ------------------------------------------- */
 #ifdef DEBUG_MODE_FULL
 #define TRACE_1(MESSAGE,A) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2', MESSAGE,str (A)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2', MESSAGE, RETNIL(A)]] call CBA_fnc_log
 	
 #define TRACE_2(MESSAGE,A,B) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', MESSAGE,str (A),str (B)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3', MESSAGE, RETNIL(A), RETNIL(B)]] call CBA_fnc_log
 	
 #define TRACE_3(MESSAGE,A,B,C) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', MESSAGE,str (A),str (B),str (C)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C)]] call CBA_fnc_log
 	
 #define TRACE_4(MESSAGE,A,B,C,D) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', MESSAGE,str (A),str (B),str (C),str (D)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D)]] call CBA_fnc_log
 	
 #define TRACE_5(MESSAGE,A,B,C,D,E) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', MESSAGE,str (A),str (B),str (C),str (D),str (E)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E)]] call CBA_fnc_log
 	
 #define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F)]] call CBA_fnc_log
 	
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F), RETNIL(G)]] call CBA_fnc_log
 	
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE,str (A),str (B),str (C),str (D),str (E),str (F),str (G),str (H)]] call CBA_fnc_log
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F), RETNIL(G), RETNIL(H)]] call CBA_fnc_log
 
 #else
 
