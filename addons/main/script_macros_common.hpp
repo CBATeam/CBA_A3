@@ -238,7 +238,7 @@ Example:
 Author:
 	Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) if(isNil{VARIABLE})then{nil}else{VARIABLE}
+#define RETNIL(VARIABLE) if (isNil{VARIABLE}) then {nil} else {VARIABLE}
 
 /* -------------------------------------------
 Macros: TRACE_n()
@@ -737,7 +737,7 @@ Macros: PARAMS_n()
 	
 	Each parameter is defines as private and set to the appropriate value from _this.
 
-	PARAMS_1(A) - Get 1 parameter from the _this array.
+	PARAMS_1(A) - Get 1 parameter from the _this array (or _this if it's not an array).
 	PARAMS_2(A,B) - Get 2 parameters from the _this array.
 	PARAMS_3(A,B,C) - Get 3 parameters from the _this array.
 	PARAMS_4(A,B,C,D) - Get 4 parameters from the _this array.
@@ -767,7 +767,7 @@ Author:
 ------------------------------------------- */
 #define PARAMS_1(A) \
 	private #A; \
-	A = _this select 0; \
+	A = if (IS_ARRAY(_this)) then {_this select 0} else {_this}; \
 	TRACE_1("PARAMS_1",A)
 	
 #define PARAMS_2(A,B) \
