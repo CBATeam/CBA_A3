@@ -35,5 +35,5 @@ if (isArray _cfg) then
 	_muz = _weap;
 };
 
-sleep 1;
+if (vehicle player != player) exitWith { false };
 if (player hasWeapon _weap) then { _unit selectWeapon _muz; true } else { false };
