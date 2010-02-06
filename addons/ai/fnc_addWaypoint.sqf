@@ -38,24 +38,17 @@ private ["_count", "_waypoint"];
 _count = count _this;
 _waypoint = _group addWaypoint [_position, _radius];
 
-if (_count > 3) then {
-	_waypoint setWaypointType ARG(3);
-	if (_count > 4) then {
-		_waypoint setWaypointBehaviour ARG(4);
-		if (_count > 5) then {
-			_waypoint setWaypointCombatMode ARG(5);
-			if (_count > 6) then {
-				_waypoint setWaypointSpeed ARG(6);
-				if (_count > 7) then {
-					_waypoint setWaypointFormation ARG(7);
-					if (_count > 8) then {
-						_waypoint setWaypointStatements ["TRUE", ARG(8)];
-						if (_count > 9) then {
-							_waypoint setWaypointTimeout ARG(9);
-						};
-					};
-				};
-			};
-		};
-	};
-};
+if (_count < 4) exitWith {};
+_waypoint setWaypointType ARG(3);
+if (_count < 5) exitWith {};
+_waypoint setWaypointBehaviour ARG(4);
+if (_count < 6) exitWith {};
+_waypoint setWaypointCombatMode ARG(5);
+if (_count < 7) exitWith {};
+_waypoint setWaypointSpeed ARG(6);
+if (_count < 8) exitWith {};
+_waypoint setWaypointFormation ARG(7);
+if (_count < 9) exitWith {};
+_waypoint setWaypointStatements ["TRUE", ARG(8)];
+if (_count < 10) exitWith {};
+_waypoint setWaypointTimeout ARG(9);
