@@ -81,6 +81,12 @@ class CfgFunctions
 				description = "Drops a weapon.";
 				file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
 			};
+			// CBA_fnc_getAlive
+			class getAlive
+			{
+				description = "A function used to find out who is alive in an array or a group. Parameters: Array, Group or Unit Example: _alive = (Units player) call CBA_fnc_getAlive Returns: Array Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getAlive.sqf";
+			};
 			// CBA_fnc_getAnimType
 			class getAnimType
 			{
@@ -92,6 +98,18 @@ class CfgFunctions
 			{
 				description = "Get default named argument from list.";
 				file = "\x\cba\addons\common\fnc_getArg.sqf";
+			};
+			// CBA_fnc_getArrayDiff
+			class getArrayDiff
+			{
+				description = "A function used to return the differences between two arrays. Parameters: Two Arrays of strings (must not contain scalars) Example: _distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff Returns: Array Differences (for above example, return is [[1],[0]]) Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getArrayDiff.sqf";
+			};
+			// CBA_fnc_getArrayElements
+			class getArrayElements
+			{
+				description = "A function used to return the element counts in an array. Parameters: Array Example: _types = [0,0,1,1,1,1] call CBA_fnc_getArrayElements Returns: Array element counts (for above example, return would be [0,2,1,4]) Author: Rommel && sbsmac";
+				file = "\x\cba\addons\common\fnc_getArrayElements.sqf";
 			};
 			// CBA_fnc_getAspectRatio
 			class getAspectRatio
@@ -105,17 +123,47 @@ class CfgFunctions
 				description = "Gets a configuration entry.";
 				file = "\x\cba\addons\common\fnc_getConfigEntry.sqf";
 			};
+			// CBA_fnc_getDistance
+			class getDistance
+			{
+				description = "A function used to find out the distance between two positions. Parameters: Array containing two of [Marker, Object, Location, Group or Position] Example: _distance = [Player, [0,0,0]] call CBA_fnc_getDistance Returns: Number - Distance in meters Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getDistance.sqf";
+			};
+			// CBA_fnc_getGroup
+			class getGroup
+			{
+				description = "A function used to find out the group of an object. Parameters: Group or Unit Example: _group = player call CBA_fnc_getGroup Returns: Group Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getGroup.sqf";
+			};
 			// CBA_fnc_getGroupIndex
 			class getGroupIndex
 			{
 				description = "Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu, not just the order within the units of his group (this order can change due to players joining and leaving the game, deaths or promotions).";
 				file = "\x\cba\addons\common\fnc_getGroupIndex.sqf";
 			};
+			// CBA_fnc_getNearest
+			class getNearest
+			{
+				description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array. Parameters: _position - Marker, Object, Location, Group or Position _array - Array of [Marker, Object, Location, Group and or Positions] _radius - Maximum distance from _position _code - Condition to meet (Code) Example: _nearestVeh = [player, vehicles] call CBA_fnc_getNearest _nearestGroup = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest Returns: Nearest given entity or List of entities within given distance Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getNearest.sqf";
+			};
+			// CBA_fnc_getNearestBuilding
+			class getNearestBuilding
+			{
+				description = "A function used to find out the nearest building and appropriate building positions available. Parameters: Object Example: _array = player call CBA_fnc_getNearestBuilding Returns: Array with [building object, building positions (count)] Author: Rommel ---------------------------------------------------------------------------- */";
+				file = "\x\cba\addons\common\fnc_getNearestBuilding.sqf";
+			};
 			// CBA_fnc_getPistol
 			class getPistol
 			{
 				description = "Returns name of pistol in unit's inventory, if any.";
 				file = "\x\cba\addons\common\fnc_getPistol.sqf";
+			};
+			// CBA_fnc_getPosition
+			class getPosition
+			{
+				description = "A function used to position of an entity. Parameters: Marker, Object, Location, Group or Position Example: _position = (group player) call CBA_fnc_getPosition Returns: Position (ASL) - [X,Y,Z] Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getPosition.sqf";
 			};
 			// CBA_fnc_getSharedGroup
 			class getSharedGroup
@@ -152,6 +200,12 @@ class CfgFunctions
 			{
 				description = "Checks whether a config entry inherits, directly or indirectly, from another one.";
 				file = "\x\cba\addons\common\fnc_inheritsFrom.sqf";
+			};
+			// CBA_fnc_isAlive
+			class isAlive
+			{
+				description = "A function used to find out if the group or object is alive. Parameters: Array, Group or Unit Example: _alive = (Units player) call CBA_fnc_getAlive Returns: Boolean Author: Rommel";
+				file = "\x\cba\addons\common\fnc_isAlive.sqf";
 			};
 			// CBA_fnc_isTurnedOut
 			class isTurnedOut
@@ -218,6 +272,12 @@ class CfgFunctions
 			{
 				description = "Selects weapon, if the player has the weapon, including correctly selecting a muzzle, if any.";
 				file = "\x\cba\addons\common\fnc_selectWeapon.sqf";
+			};
+			// CBA_fnc_setHeight
+			class setHeight
+			{
+				description = "A function used to set the height of an object Parameters: _object - Object or Location _height - Height in metres _type - Optional parameter, 0 is getpos, 1 is getpos ASL, 2 is getposATL (Default: 1) Example: [this, 10] call CBA_fnc_setHeight Returns: Nothing Author: Rommel";
+				file = "\x\cba\addons\common\fnc_setHeight.sqf";
 			};
 			// CBA_fnc_switchPlayer
 			class switchPlayer

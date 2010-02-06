@@ -69,6 +69,13 @@ Group: Functions  {
 	Function Index: Index
    
 	Group: CBA {
+		Group: Ai {
+			File: searchNearby  (no auto-title, ai\fnc_searchNearby.sqf)
+			File: taskAttack  (no auto-title, ai\fnc_taskAttack.sqf)
+			File: taskDefend  (no auto-title, ai\fnc_taskDefend.sqf)
+			File: taskPatrol  (no auto-title, ai\fnc_taskPatrol.sqf)
+		} # Group: Ai
+
 		Group: Arrays {
 			File: filter  (no auto-title, arrays\fnc_filter.sqf)
 			File: inject  (no auto-title, arrays\fnc_inject.sqf)
@@ -119,18 +126,27 @@ Group: Functions  {
 			File: determineMuzzles  (no auto-title, common\fnc_determineMuzzles.sqf)
 			File: dropMagazine  (no auto-title, common\fnc_dropMagazine.sqf)
 			File: dropWeapon  (no auto-title, common\fnc_dropWeapon.sqf)
+			File: getAlive  (no auto-title, common\fnc_getAlive.sqf)
 			File: getAnimType  (no auto-title, common\fnc_getAnimType.sqf)
 			File: getArg  (no auto-title, common\fnc_getArg.sqf)
+			File: getArrayDiff  (no auto-title, common\fnc_getArrayDiff.sqf)
+			File: getArrayElements  (no auto-title, common\fnc_getArrayElements.sqf)
 			File: getAspectRatio  (no auto-title, common\fnc_getAspectRatio.sqf)
 			File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
+			File: getDistance  (no auto-title, common\fnc_getDistance.sqf)
+			File: getGroup  (no auto-title, common\fnc_getGroup.sqf)
 			File: getGroupIndex  (no auto-title, common\fnc_getGroupIndex.sqf)
+			File: getNearest  (no auto-title, common\fnc_getNearest.sqf)
+			File: getNearestBuilding  (no auto-title, common\fnc_getNearestBuilding.sqf)
 			File: getPistol  (no auto-title, common\fnc_getPistol.sqf)
+			File: getPosition  (no auto-title, common\fnc_getPosition.sqf)
 			File: getSharedGroup  (no auto-title, common\fnc_getSharedGroup.sqf)
 			File: getUISize  (no auto-title, common\fnc_getUISize.sqf)
 			File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
 			File: getUnitDeathAnim  (no auto-title, common\fnc_getUnitDeathAnim.sqf)
 			File: headDir  (no auto-title, common\fnc_headDir.sqf)
 			File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
+			File: isAlive  (no auto-title, common\fnc_isAlive.sqf)
 			File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
 			File: isUnitGetOutAnim  (no auto-title, common\fnc_isUnitGetOutAnim.sqf)
 			File: nearPlayer  (no auto-title, common\fnc_nearPlayer.sqf)
@@ -142,6 +158,7 @@ Group: Functions  {
 			File: removePlayerAction  (no auto-title, common\fnc_removePlayerAction.sqf)
 			File: removeWeapon  (no auto-title, common\fnc_removeWeapon.sqf)
 			File: selectWeapon  (no auto-title, common\fnc_selectWeapon.sqf)
+			File: setHeight  (no auto-title, common\fnc_setHeight.sqf)
 			File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
 		} # Group: Misc
 
