@@ -3,6 +3,8 @@
 
 // #define DEBUG_ENABLED_XEH
 
+#define PUSH(var1,var2) var1 set [count (var1), var2]
+
 #ifdef DEBUG_ENABLED_XEH
 	#define DEBUG_MODE_FULL
 #endif
