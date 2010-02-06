@@ -78,6 +78,8 @@ Group: Functions  {
 
 		Group: Arrays {
 			File: filter  (no auto-title, arrays\fnc_filter.sqf)
+			File: getArrayDiff  (no auto-title, arrays\fnc_getArrayDiff.sqf)
+			File: getArrayElements  (no auto-title, arrays\fnc_getArrayElements.sqf)
 			File: inject  (no auto-title, arrays\fnc_inject.sqf)
 			File: join  (no auto-title, arrays\fnc_join.sqf)
 			File: shuffle  (no auto-title, arrays\fnc_shuffle.sqf)
@@ -129,8 +131,6 @@ Group: Functions  {
 			File: getAlive  (no auto-title, common\fnc_getAlive.sqf)
 			File: getAnimType  (no auto-title, common\fnc_getAnimType.sqf)
 			File: getArg  (no auto-title, common\fnc_getArg.sqf)
-			File: getArrayDiff  (no auto-title, common\fnc_getArrayDiff.sqf)
-			File: getArrayElements  (no auto-title, common\fnc_getArrayElements.sqf)
 			File: getAspectRatio  (no auto-title, common\fnc_getAspectRatio.sqf)
 			File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
 			File: getDistance  (no auto-title, common\fnc_getDistance.sqf)

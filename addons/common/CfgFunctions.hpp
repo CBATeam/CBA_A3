@@ -99,18 +99,6 @@ class CfgFunctions
 				description = "Get default named argument from list.";
 				file = "\x\cba\addons\common\fnc_getArg.sqf";
 			};
-			// CBA_fnc_getArrayDiff
-			class getArrayDiff
-			{
-				description = "A function used to return the differences between two arrays. Parameters: Two Arrays of strings (must not contain scalars) Example: _distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff Returns: Array Differences (for above example, return is [[1],[0]]) Author: Rommel";
-				file = "\x\cba\addons\common\fnc_getArrayDiff.sqf";
-			};
-			// CBA_fnc_getArrayElements
-			class getArrayElements
-			{
-				description = "A function used to return the element counts in an array. Parameters: Array Example: _types = [0,0,1,1,1,1] call CBA_fnc_getArrayElements Returns: Array element counts (for above example, return would be [0,2,1,4]) Author: Rommel && sbsmac";
-				file = "\x\cba\addons\common\fnc_getArrayElements.sqf";
-			};
 			// CBA_fnc_getAspectRatio
 			class getAspectRatio
 			{
