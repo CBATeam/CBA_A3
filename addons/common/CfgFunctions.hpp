@@ -207,6 +207,24 @@ class CfgFunctions
 				description = "Checks whether a unit is turned out in a vehicle or not.";
 				file = "\x\cba\addons\common\fnc_isUnitGetOutAnim.sqf";
 			};
+			// CBA_fnc_mapDirTo
+			class mapDirTo
+			{
+				description = "Gets the direction between two map grid references.";
+				file = "\x\cba\addons\common\fnc_mapDirTo.sqf";
+			};
+			// CBA_fnc_mapGridToPos
+			class mapGridToPos
+			{
+				description = "Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.";
+				file = "\x\cba\addons\common\fnc_mapGridToPos.sqf";
+			};
+			// CBA_fnc_mapRelPos
+			class mapRelPos
+			{
+				description = "Find a position relative to a known position on the map. Passing strings in for the Northing and Easting is the preferred way.";
+				file = "\x\cba\addons\common\fnc_mapRelPos.sqf";
+			};
 			// CBA_fnc_nearPlayer
 			class nearPlayer
 			{
