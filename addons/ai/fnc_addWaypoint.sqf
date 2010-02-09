@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_AI_addWaypoint
+Function: CBA_fnc_addWaypoint
 
 Description:
 	A function used to add a waypoint to a group.
