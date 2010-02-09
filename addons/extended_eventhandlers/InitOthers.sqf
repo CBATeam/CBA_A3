@@ -10,7 +10,7 @@ private [
 	"_unit", "_events", "_isExcluded", "_event", "_Extended_EH_Class",
 	"_unitClass", "_classes", "_excludeClass", "_excludeClasses", "_handlers",
 	"_handler", "_cfgEntry", "_scopeEntry", "_handlerEntry", "_excludeEntry",
-	"_scope", "_i", "_t", "_xeh", "_event"
+	"_scope", "_i", "_t", "_xeh", "_event", "_replaceDEH"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -92,6 +92,8 @@ while {!((_classes select 0) in ["", "All"])} do
 							_clientHandlerEntry = _cfgEntry / format["client%1", _event];
 							_excludeEntry = _cfgEntry / "exclude";
 							_replaceEntry = _cfgEntry / "replaceDEH";
+							_replaceDEH = false;
+
 							if (isText _excludeEntry) then
 							{
 								_excludeClass = (getText _excludeEntry);
