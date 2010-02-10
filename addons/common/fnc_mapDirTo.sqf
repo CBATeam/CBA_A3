@@ -92,7 +92,7 @@ if(IS_STRING(_y2)) then {
     _y2 = parseNumber _y2;
 };
 
-player sideChat format["%1 %2 %3 %4", _x1, _x2, _y1, _y2];
+TRACE_4("",_x1,_x2,_y1,_y2);
 
 //get compass heading from _pos1 to _pos2
 _ret = abs (360 - ((((_x1 - _x2) atan2 (_y1 - _y2))) mod 360));
