@@ -522,7 +522,7 @@ Author:
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
 #define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); _this call ##var1##_##var2##_fnc_##var3 }
-#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)) }
+#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); _this call ##var1##_fnc_##var3 }
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
