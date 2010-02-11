@@ -147,11 +147,11 @@ class CfgFunctions
 				description = "Returns name of pistol in unit's inventory, if any.";
 				file = "\x\cba\addons\common\fnc_getPistol.sqf";
 			};
-			// CBA_fnc_getPosition
-			class getPosition
+			// CBA_fnc_getPos
+			class getPos
 			{
-				description = "A function used to get the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: _position = (group player) call CBA_fnc_getPosition Returns: Position (AGL) - [X,Y,Z] Author: Rommel";
-				file = "\x\cba\addons\common\fnc_getPosition.sqf";
+				description = "A function used to get the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: _position = (group player) call CBA_fnc_getPos Returns: Position (AGL) - [X,Y,Z] Author: Rommel";
+				file = "\x\cba\addons\common\fnc_getPos.sqf";
 			};
 			// CBA_fnc_getSharedGroup
 			class getSharedGroup
@@ -285,11 +285,11 @@ class CfgFunctions
 				description = "A function used to set the height of an object Parameters: _object - Object or Location _height - Height in metres _type - Optional parameter, 0 is getpos, 1 is getpos ASL, 2 is getposATL (Default: 1) Example: [this, 10] call CBA_fnc_setHeight Returns: Nothing Author: Rommel";
 				file = "\x\cba\addons\common\fnc_setHeight.sqf";
 			};
-			// CBA_fnc_setPosition
-			class setPosition
+			// CBA_fnc_setPos
+			class setPos
 			{
-				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west"" call CBA_fnc_getPosition] call CBA_fnc_setPosition Returns: Nil Author: Rommel";
-				file = "\x\cba\addons\common\fnc_setPosition.sqf";
+				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west"" call CBA_fnc_getPosition] call CBA_fnc_setPos Returns: Nil Author: Rommel";
+				file = "\x\cba\addons\common\fnc_setPos.sqf";
 			};
 			// CBA_fnc_switchPlayer
 			class switchPlayer

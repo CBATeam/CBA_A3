@@ -17,7 +17,6 @@ P:\x\cba\addons\main\CfgVehicles.hpp	1247172068	0	P:\x\cba\addons\main\CfgVehicl
 P:\x\cba\addons\vectors\fnc_simplifyAngle.sqf	1252313929	1	CBA_fnc_simplifyAngle
 P:\x\cba\addons\strings\fnc_replace.sqf	1247216736	1	CBA_fnc_replace
 P:\x\cba\addons\arrays\test_join.sqf	1247216733	0	P:\x\cba\addons\arrays\test_join.sqf
-P:\x\cba\addons\common\fnc_getPosition.sqf	1265893582	1	CBA_fnc_getPosition
 P:\x\cba\addons\versioning\XEH_preInit.sqf	1264080777	0	P:\x\cba\addons\versioning\XEH_preInit.sqf
 P:\x\cba\addons\vectors\fnc_vectDir.sqf	1263919348	1	CBA_fnc_vectDir
 P:\x\cba\addons\common\fnc_isTurnedOut.sqf	1264663398	1	CBA_fnc_isTurnedOut
@@ -66,6 +65,7 @@ P:\x\cba\addons\network\fnc_opc.sqf	1249651849	0	P:\x\cba\addons\network\fnc_opc
 P:\x\cba\addons\common\config.cpp	1265387828	0	P:\x\cba\addons\common\config.cpp
 P:\x\cba\addons\overview.txt	1247033039	1	Overview
 P:\x\cba\addons\hashes\test_hashes.sqf	1247216735	0	P:\x\cba\addons\hashes\test_hashes.sqf
+P:\x\cba\addons\common\fnc_getPos.sqf	1265895400	1	CBA_fnc_getPos
 P:\x\cba\addons\events\CfgEventHandlers.hpp	1249625084	0	P:\x\cba\addons\events\CfgEventHandlers.hpp
 P:\x\cba\addons\versioning\CfgEventHandlers.hpp	1262620034	0	P:\x\cba\addons\versioning\CfgEventHandlers.hpp
 P:\x\cba\addons\hashes\fnc_hashSet.sqf	1247756331	1	CBA_fnc_hashSet
@@ -175,7 +175,6 @@ P:\x\cba\addons\common\fnc_getAlive.sqf	1263753286	1	CBA_fnc_getAlive
 P:\x\cba\addons\ai\CfgFunctions.hpp	1265893652	0	P:\x\cba\addons\ai\CfgFunctions.hpp
 P:\x\cba\addons\arrays\CfgFunctions.hpp	1265893653	0	P:\x\cba\addons\arrays\CfgFunctions.hpp
 P:\x\cba\addons\events\script_component.hpp	1264081310	0	P:\x\cba\addons\events\script_component.hpp
-P:\x\cba\addons\common\fnc_setPosition.sqf	1265893582	1	CBA_fnc_setPosition
 P:\x\cba\addons\common\fnc_getAspectRatio.sqf	1257701214	1	CBA_fnc_getAspectRatio
 P:\x\cba\addons\common\init_actionmonitor.sqf	1264148609	0	P:\x\cba\addons\common\init_actionmonitor.sqf
 P:\x\cba\addons\arrays\fnc_filter.sqf	1247216733	1	CBA_fnc_filter
@@ -210,4 +209,5 @@ P:\x\cba\addons\events\fnc_keyHandler.sqf	1264071609	0	P:\x\cba\addons\events\fn
 P:\x\cba\addons\network\CfgEventHandlers.hpp	1247998413	0	P:\x\cba\addons\network\CfgEventHandlers.hpp
 P:\x\cba\addons\common\init.sqf	1264082366	0	P:\x\cba\addons\common\init.sqf
 P:\x\cba\addons\hashes\fnc_isHash.sqf	1247756331	1	CBA_fnc_isHash
+P:\x\cba\addons\common\fnc_setPos.sqf	1265895437	1	CBA_fnc_setPos
 P:\x\cba\addons\extended_eventhandlers\PostInit.sqf	1264081495	0	P:\x\cba\addons\extended_eventhandlers\PostInit.sqf
