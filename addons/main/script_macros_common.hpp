@@ -320,11 +320,13 @@ Group: General
 	#define COMPONENT_M DOUBLES(m,COMPONENT)
 	#define COMPONENT_S DOUBLES(s,COMPONENT)
 	#define COMPONENT_F DOUBLES(f,COMPONENT)
+	#define COMPONENT_C COMPONENT(c,COMPONENT)
 #else
 	#define COMPONENT_T COMPONENT
 	#define COMPONENT_M COMPONENT
 	#define COMPONENT_S COMPONENT
 	#define COMPONENT_F COMPONENT
+	#define COMPONENT_C COMPONENT
 #endif
 
 /* -------------------------------------------
@@ -509,6 +511,7 @@ Author:
 #define PATHTO_T(var1) PATHTOF_SYS(PREFIX,COMPONENT_T,var1)
 #define PATHTO_M(var1) PATHTOF_SYS(PREFIX,COMPONENT_M,var1)
 #define PATHTO_S(var1) PATHTOF_SYS(PREFIX,COMPONENT_S,var1)
+#define PATHTO_C(var1) PATHTOF_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_F(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTO_SYS(var1,var2,var3)'
