@@ -31,7 +31,7 @@ SCRIPT(scaleVectTo);
 
 PARAMS_2(_vect,_newMagn);
 
-_magn = _vect call CBA_fnc_vectMagn;
+_magn = _vect call BIS_fnc_magnitude;
 _scaleFactor = _newMagn / _magn;
 _outVect = [_vect, _scaleFactor] call CBA_fnc_scaleVect;
 _outVect;
