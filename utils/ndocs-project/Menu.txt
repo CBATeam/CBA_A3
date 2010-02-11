@@ -161,6 +161,7 @@ Group: Functions  {
          File: removeWeapon  (no auto-title, common\fnc_removeWeapon.sqf)
          File: selectWeapon  (no auto-title, common\fnc_selectWeapon.sqf)
          File: setHeight  (no auto-title, common\fnc_setHeight.sqf)
+         File: setPosition  (no auto-title, common\fnc_setPosition.sqf)
          File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
          }  # Group: Misc
 
