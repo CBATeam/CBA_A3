@@ -14,12 +14,10 @@ class CfgVehicles
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	/*
 	class CAAnimalBase: Animal
 	{
 		 class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	*/
 	class CAManBase: Man
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
