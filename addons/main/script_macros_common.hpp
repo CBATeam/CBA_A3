@@ -524,8 +524,8 @@ Author:
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
-#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); _this call ##var1##_##var2##_fnc_##var3 }
-#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); _this call ##var1##_fnc_##var3 }
+#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var3 } else { _this call ##var1##_##var2##_fnc_##var3 } }
+#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_fnc_##var3 } else { _this call ##var1##_fnc_##var3 } }
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
