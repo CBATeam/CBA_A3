@@ -609,7 +609,7 @@ Author:
 
 #define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
-#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
+#define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT_F),fnc,var1)
 
 /* -------------------------------------------
 Macros: IS_x()
