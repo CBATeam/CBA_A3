@@ -117,6 +117,12 @@ class CfgFunctions
 				description = "A function used to find out the distance between two positions. Parameters: Array containing two of [Marker, Object, Location, Group or Position] Example: _distance = [Player, [0,0,0]] call CBA_fnc_getDistance Returns: Number - Distance in meters Author: Rommel";
 				file = "\x\cba\addons\common\fnc_getDistance.sqf";
 			};
+			// CBA_fnc_getFirer
+			class getFirer
+			{
+				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles). Parameters: Vehicle that fired Weapon that was used Example: _unit = player call CBA_fnc_getFirer Returns: Unit Author: Rocko";
+				file = "\x\cba\addons\common\fnc_getFirer.sqf";
+			};
 			// CBA_fnc_getGroup
 			class getGroup
 			{

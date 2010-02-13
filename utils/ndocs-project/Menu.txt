@@ -135,6 +135,7 @@ Group: Functions  {
 			File: getAspectRatio  (no auto-title, common\fnc_getAspectRatio.sqf)
 			File: getConfigEntry  (no auto-title, common\fnc_getConfigEntry.sqf)
 			File: getDistance  (no auto-title, common\fnc_getDistance.sqf)
+			File: getFirer  (no auto-title, common\fnc_getFirer.sqf)
 			File: getGroup  (no auto-title, common\fnc_getGroup.sqf)
 			File: getGroupIndex  (no auto-title, common\fnc_getGroupIndex.sqf)
 			File: getNearest  (no auto-title, common\fnc_getNearest.sqf)
