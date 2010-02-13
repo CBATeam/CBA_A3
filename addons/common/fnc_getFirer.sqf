@@ -40,16 +40,8 @@ if (_tc > 0) then {
 };
 
 _wtp = [];
-// Test fix for mainturret gunner :O
-if (isArray(__cfg >> "MainTurret" >> "weapons")) then
 {
-	_mainWeapons = getArray(__cfg >> "MainTurret" >> "weapons");
-	TRACE_1("",_mainWeapons);
-	if (_w in _mainWeapons) exitWith { _wtp = [0] };
-};
-
-{
-	_weapons = getArray((((__cfg select (_x select 0)) >> "turrets") select (_x select 1)) >> "weapons");
+	_weapons = if (count _x == 1) then { getArray((__cfg select (_x select 0)) >> "weapons") } else { getArray((((__cfg select (_x select 0)) >> "turrets") select (_x select 1)) >> "weapons") };
 	TRACE_3("",_weapons,_x,_v turretUnit _x);
 	if (_w in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
