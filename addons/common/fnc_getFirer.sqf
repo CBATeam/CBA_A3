@@ -18,9 +18,10 @@ Author:
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
-private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu"];
+private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons"];
 PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
 if (_v isKindOf "CAManBase") exitWith { _v }; // return the unit itself when it's a Man
+if (_v isKindOf "Helicopter") exitWith { gunner _v };
 
 _tp = [];
 _tc  = count __cfg;
@@ -39,8 +40,17 @@ if (_tc > 0) then {
 };
 
 _wtp = [];
+// Test fix for mainturret gunner :O
+if (isArray(__cfg >> "MainTurret" >> "weapons")) then
 {
-	_weapons = getArray((((__cfg select (_ptp select 0)) >> "turrets") select (_ptp select 1)) >> "weapons");
+	_mainWeapons = getArray(__cfg >> "MainTurret" >> "weapons");
+	TRACE_1("",_mainWeapons);
+	if (_w in _mainWeapons) exitWith { _wtp = [0] };
+};
+
+{
+	_weapons = getArray((((__cfg select (_x select 0)) >> "turrets") select (_x select 1)) >> "weapons");
+	TRACE_3("",_weapons,_x,_v turretUnit _x);
 	if (_w in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
 
