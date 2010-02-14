@@ -19,10 +19,10 @@ Author:
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
-private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons"];
+private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons", "_r"];
 PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
-if (_v isKindOf "CAManBase") exitWith { [_v, []] }; // return the unit itself when it's a Man
-if (_v isKindOf "Helicopter") exitWith { [gunner _v, [0]] };
+if (_v isKindOf "CAManBase") exitWith { _r = [_v, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
+if (_v isKindOf "Helicopter") exitWith { _r = [gunner _v, [0]]; TRACE_1("Result",_r); _r; };
 
 _tp = [];
 _tc  = count __cfg;
@@ -47,7 +47,8 @@ _wtp = [];
 	if (_w in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
 
-if (count _wtp == 0) exitWith { [objNull, []] }; // Or should we exit with gunner _v ?
+if (count _wtp == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r; }; // Or should we exit with gunner _v ?
 
-_tu = _v turretUnit _wtp;
-[_tu, _wtp];
+_r = [_v turretUnit _wtp, _wtp];
+TRACE_1("Result",_r);
+_r;

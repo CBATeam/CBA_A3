@@ -25,9 +25,8 @@ _path = __cfg;
 
 if (count _tp > 0) then
 {
-	{
-		_path = ((_path >> "turrets") select _x);
-	} forEach _tp;
+	{ _path = ((_path >> "turrets") select _x) } forEach _tp;
 };
 
+TRACE_1("Result",_path);
 _path;
