@@ -21,8 +21,8 @@ Author:
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
 private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons"];
 PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
-if (_v isKindOf "CAManBase") exitWith { [_v, [0]] }; // return the unit itself when it's a Man
-if (_v isKindOf "Helicopter") exitWith { [gunner _v,[0]] };
+if (_v isKindOf "CAManBase") exitWith { [_v, []] }; // return the unit itself when it's a Man
+if (_v isKindOf "Helicopter") exitWith { [gunner _v, [0]] };
 
 _tp = [];
 _tc  = count __cfg;
