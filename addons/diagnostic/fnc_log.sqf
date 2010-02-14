@@ -25,12 +25,9 @@ Author:
 SCRIPT(log);
 
 // ----------------------------------------------------------------------------
-private ["_entry"];
-PARAMS_3(_file,_lineNum,_message);
 
 if (isNil "CBA_LOG_ARRAY") then { CBA_LOG_ARRAY = [] };
-_entry = [_file,_lineNum,_message];
-PUSH(CBA_LOG_ARRAY,_entry);
+PUSH(CBA_LOG_ARRAY,_this);
 
 if (isNil "CBA_LOG_VAR") then
 {
