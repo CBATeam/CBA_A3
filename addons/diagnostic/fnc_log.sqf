@@ -19,7 +19,7 @@ Returns:
 Author:
 	Spooner and Rommel
 -----------------------------------------------------------------------------*/
-
+#define DEBUG_MODE_NORMAL
 #include "script_component.hpp"
 
 SCRIPT(log);
