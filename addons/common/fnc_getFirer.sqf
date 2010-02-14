@@ -10,6 +10,7 @@ Example:
 	_unit = player call CBA_fnc_getFirer
 Returns:
 	Unit
+	Turretpath
 Author:
 	Rocko
 
@@ -41,7 +42,7 @@ if (_tc > 0) then {
 
 _wtp = [];
 {
-	_weapons = if (count _x == 1) then { getArray((__cfg select (_x select 0)) >> "weapons") } else { getArray((((__cfg select (_x select 0)) >> "turrets") select (_x select 1)) >> "weapons") };
+	_weapons = getArray([_v, _x] call CBA_fnc_getTurret >> "weapons");
 	TRACE_3("",_weapons,_x,_v turretUnit _x);
 	if (_w in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
@@ -49,4 +50,4 @@ _wtp = [];
 if (count _wtp == 0) exitWith { objNull }; // Or should we exit with gunner _v ?
 
 _tu = _v turretUnit _wtp;
-_tu;
+[_tu, _wtp];

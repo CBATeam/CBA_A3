@@ -165,6 +165,12 @@ class CfgFunctions
 				description = "Returns existing group on side, or newly created group when not existent.";
 				file = "\x\cba\addons\common\fnc_getSharedGroup.sqf";
 			};
+			// CBA_fnc_getTurret
+			class getTurret
+			{
+				description = "A function used to find out which config turret is turretpath. Parameters: Vehicle Turretpath Example: _config = [vehicle player, [0]] call CBA_fnc_getTurret Returns: Turret Config entry Author: Sickboy";
+				file = "\x\cba\addons\common\fnc_getTurret.sqf";
+			};
 			// CBA_fnc_getUISize
 			class getUISize
 			{
