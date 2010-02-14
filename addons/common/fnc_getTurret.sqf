@@ -26,7 +26,7 @@ _path = (__cfg select (_tp select 0));
 if (count _tp > 1) then
 {
 	{
-		_path = _path select _x;
+		_path = _path >> "Turrets" >> select _x;
 	} forEach _tp;
 };
 
