@@ -47,7 +47,7 @@ _wtp = [];
 	if (_w in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
 
-if (count _wtp == 0) exitWith { objNull }; // Or should we exit with gunner _v ?
+if (count _wtp == 0) exitWith { [objNull, []] }; // Or should we exit with gunner _v ?
 
 _tu = _v turretUnit _wtp;
 [_tu, _wtp];
