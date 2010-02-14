@@ -525,6 +525,7 @@ Author:
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
 #define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var3 } else { _this call ##var1##_##var2##_fnc_##var3 } }
+#define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = { ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var4 } else { _this call ##var1##_##var2##_fnc_##var4 } }
 #define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_fnc_##var3 } else { _this call ##var1##_fnc_##var3 } }
 
 #ifndef DEBUG_SETTINGS
@@ -607,9 +608,10 @@ Author:
 #define SETVARMAIN SETVARMAINS(PREFIX)
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
-#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
+//#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
+#define PREP(var1) PREP_SYS2(PREFIX,COMPONENT,COMPONENT_F,var1)
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
-#define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT_F),fnc,var1)
+#define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
 
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
