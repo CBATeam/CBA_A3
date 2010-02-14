@@ -611,6 +611,15 @@ Author:
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
 #define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT_F),fnc,var1)
 
+#define ARG_1(A,B) ((A) select (B))
+#define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
+#define ARG_3(A,B,C,D) (ARG_1(ARG_2(A,B,C),D))
+#define ARG_4(A,B,C,D,E) (ARG_1(ARG_3(A,B,C,D),E))
+#define ARG_5(A,B,C,D,E,F) (ARG_1(ARG_4(A,B,C,D,E),F))
+#define ARG_6(A,B,C,D,E,F,G) (ARG_1(ARG_5(A,B,C,D,E,F),G))
+#define ARG_7(A,B,C,D,E,F,G,H) (ARG_1(ARG_6(A,B,C,D,E,E,F,G),H))
+#define ARG_8(A,B,C,D,E,F,G,H,I) (ARG_1(ARG_7(A,B,C,D,E,E,F,G,H),I))
+
 /* -------------------------------------------
 Macros: IS_x()
 	Checking the data types of variables.
