@@ -18,15 +18,15 @@ Author:
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
-
+#define __cfg (configFile >> "CfgVehicles" >> (typeof _v))
+private ["_path"];
 PARAMS_2(_v,_tp);
+_path = __cfg;
 
-_path = (__cfg select (_tp select 0));
-if (count _tp > 1) then
+if (count _tp > 0) then
 {
 	{
-		_path = _path >> "Turrets" >> select _x;
+		_path = ((_path >> "turrets") select _x);
 	} forEach _tp;
 };
 
