@@ -620,6 +620,10 @@ Author:
 #define ARG_7(A,B,C,D,E,F,G,H) (ARG_1(ARG_6(A,B,C,D,E,E,F,G),H))
 #define ARG_8(A,B,C,D,E,F,G,H,I) (ARG_1(ARG_7(A,B,C,D,E,E,F,G,H),I))
 
+// CONTROL(46) 12
+#define DISPLAY(A) (findDisplay A)
+#define CONTROL(A) DISPLAY(A) displayCtrl
+
 /* -------------------------------------------
 Macros: IS_x()
 	Checking the data types of variables.
