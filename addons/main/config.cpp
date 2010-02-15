@@ -9,8 +9,7 @@ class CfgPatches
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = { "Extended_EventHandlers", "CBA_common", "CBA_arrays", "CBA_events", "CBA_diagnostic", "CBA_hashes", "CBA_network", "CBA_strings", "CBA_vectors", "CBA_versioning" };
-		version = VERSION;
-		versionstr = QUOTE(VERSION);
+		VERSION_CONFIG;
 	};
 };
 
