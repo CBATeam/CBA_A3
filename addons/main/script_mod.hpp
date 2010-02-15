@@ -2,7 +2,7 @@
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define BUILD 70
-#define VERSION 0.3.BUILD
+#define VERSION 0.3.0.BUILD
 // MINIMAL required version for the Mod. Components can specify others..
 #define REQUIRED_VERSION 1.02
 
