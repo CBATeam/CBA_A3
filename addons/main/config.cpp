@@ -8,7 +8,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "Extended_EventHandlers", "CBA_common", "CBA_arrays", "CBA_events", "CBA_diagnostic", "CBA_hashes", "CBA_network", "CBA_strings", "CBA_vectors", "CBA_versioning" };
+		requiredAddons[] = { "Extended_EventHandlers", "cba_common", "cba_arrays", "cba_events", "cba_diagnostic", "cba_hashes", "cba_network", "cba_strings", "cba_vectors", "cba_versioning", "cba_ai" };
 		VERSION_CONFIG;
 	};
 };
