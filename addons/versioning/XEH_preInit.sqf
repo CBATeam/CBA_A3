@@ -8,15 +8,15 @@ LOG(MSG_INIT);
 ADDON = false;
 
 // Build versions hash
-GVAR(versions) = [[], "0.00"] call CBA_fnc_hashCreate;
+GVAR(versions) = [[], [[0, 0, 0], 0]] call CBA_fnc_hashCreate;
 private ["_prefix", "_version", "_verCfg"];
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 {
 	_prefix = (CFGSETTINGS) select _i;
 	if (isClass _prefix) then
 	{
-		_verCfg = (configFile >> "CfgPatches" >> format["%1_main", configName _prefix] >> "versionstr");
-		_version = if (isText(_verCfg)) then { getText(_verCfg) } else { "0.00" };
+		_verCfg = (configFile >> "CfgPatches" >> format["%1_main", configName _prefix] >> "versionAr");
+		_version = if (isArray(_verCfg)) then { [getArray(_verCfg), getNumber(_prefix >> "level")] } else { [[0, 0, 0], 0] };
 		[GVAR(versions), configName _prefix, _version] call CBA_fnc_hashSet;
 	};
 };
