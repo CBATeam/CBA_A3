@@ -2,4 +2,4 @@
 
 LOG(MSG_INIT);
 
-call compile preprocessFileLineNumbers QUOTE(PATHTO(flexiMenu\init));
+call COMPILE_FILE(flexiMenu\init);
