@@ -16,7 +16,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
 private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons", "_r"];

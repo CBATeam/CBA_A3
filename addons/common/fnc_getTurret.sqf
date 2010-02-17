@@ -15,7 +15,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v))
