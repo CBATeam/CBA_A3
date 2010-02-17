@@ -1,0 +1,40 @@
+//#include "\ca\editor\Data\Scripts\dikCodes.h"
+
+#define ICE_DIKASCIIMap [\
+  [65, DIK_A],\
+  [66, DIK_B],\
+  [67, DIK_C],\
+  [68, DIK_D],\
+  [69, DIK_E],\
+  [70, DIK_F],\
+  [71, DIK_G],\
+  [72, DIK_H],\
+  [73, DIK_I],\
+  [74, DIK_J],\
+  [75, DIK_K],\
+  [76, DIK_L],\
+  [77, DIK_M],\
+  [78, DIK_N],\
+  [79, DIK_O],\
+  [80, DIK_P],\
+  [81, DIK_Q],\
+  [82, DIK_R],\
+  [83, DIK_S],\
+  [84, DIK_T],\
+  [85, DIK_U],\
+  [86, DIK_V],\
+  [87, DIK_W],\
+  [88, DIK_X],\
+  [89, DIK_Y],\
+  [90, DIK_Z],\
+  [48, DIK_0],\
+  [49, DIK_1],\
+  [50, DIK_2],\
+  [51, DIK_3],\
+  [52, DIK_4],\
+  [53, DIK_5],\
+  [54, DIK_6],\
+  [55, DIK_7],\
+  [56, DIK_8],\
+  [57, DIK_9]\
+  ]
