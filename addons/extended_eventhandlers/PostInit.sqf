@@ -46,11 +46,11 @@ if !(isNull player) then
 
 if !(isDedicated) then
 {
-	startLoadingScreen ["CBA Initialization started...", "RscDisplayLoadMission"];
+	startLoadingScreen ["Post Initialization Processing...", "RscDisplayLoadMission"];
 	[] spawn
 	{
 		private["_time2Wait"];
-		_time2Wait = diag_ticktime + 3;
+		_time2Wait = diag_ticktime + 10;
 		waituntil {diag_ticktime > _time2Wait};
 		endLoadingScreen;
 	};
