@@ -55,6 +55,14 @@
 	#define VERSION 0
 #endif
 
+#ifndef VERSION_AR
+	#define VERSION_AR VERSION
+#endif
+
+#ifndef VERSION_CONFIG
+	#define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION); versionAr[] = {VERSION_AR}
+#endif
+
 /* -------------------------------------------
 Group: Debugging
 ------------------------------------------- */
@@ -319,12 +327,14 @@ Group: General
 	#define COMPONENT_T DOUBLES(t,COMPONENT)
 	#define COMPONENT_M DOUBLES(m,COMPONENT)
 	#define COMPONENT_S DOUBLES(s,COMPONENT)
-	#define COMPONENT_F DOUBLES(f,COMPONENT)
+	#define COMPONENT_C DOUBLES(c,COMPONENT)
+	#define COMPONENT_F COMPONENT_C
 #else
 	#define COMPONENT_T COMPONENT
 	#define COMPONENT_M COMPONENT
 	#define COMPONENT_S COMPONENT
 	#define COMPONENT_F COMPONENT
+	#define COMPONENT_C COMPONENT
 #endif
 
 /* -------------------------------------------
@@ -509,6 +519,7 @@ Author:
 #define PATHTO_T(var1) PATHTOF_SYS(PREFIX,COMPONENT_T,var1)
 #define PATHTO_M(var1) PATHTOF_SYS(PREFIX,COMPONENT_M,var1)
 #define PATHTO_S(var1) PATHTOF_SYS(PREFIX,COMPONENT_S,var1)
+#define PATHTO_C(var1) PATHTOF_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_F(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTO_SYS(var1,var2,var3)'
@@ -521,12 +532,9 @@ Author:
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
 //#define SETGVARMAINS(var1,var2) ##var1##_##var2 = 
 
-#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define CALL_SYS(var1,var2,var3) call ##var1##_##var2##_fnc_##var3
-#define CALLMAIN_SYS(var1,var3) call ##var1##_fnc_##var3
-#define SPAWN_SYS(var1,var2,var3) spawn ##var1##_##var2##_fnc_##var3
-#define SPAWNMAIN_SYS(var1,var2) spawn ##var1##_fnc_##var2
+#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var3 } else { _this call ##var1##_##var2##_fnc_##var3 } }
+#define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = { ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var4 } else { _this call ##var1##_##var2##_fnc_##var4 } }
+#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_fnc_##var3 } else { _this call ##var1##_fnc_##var3 } }
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
@@ -608,9 +616,23 @@ Author:
 #define SETVARMAIN SETVARMAINS(PREFIX)
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
-#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
+//#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
+#define PREP(var1) PREP_SYS2(PREFIX,COMPONENT,COMPONENT_F,var1)
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
-#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
+#define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
+
+#define ARG_1(A,B) ((A) select (B))
+#define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
+#define ARG_3(A,B,C,D) (ARG_1(ARG_2(A,B,C),D))
+#define ARG_4(A,B,C,D,E) (ARG_1(ARG_3(A,B,C,D),E))
+#define ARG_5(A,B,C,D,E,F) (ARG_1(ARG_4(A,B,C,D,E),F))
+#define ARG_6(A,B,C,D,E,F,G) (ARG_1(ARG_5(A,B,C,D,E,F),G))
+#define ARG_7(A,B,C,D,E,F,G,H) (ARG_1(ARG_6(A,B,C,D,E,E,F,G),H))
+#define ARG_8(A,B,C,D,E,F,G,H,I) (ARG_1(ARG_7(A,B,C,D,E,E,F,G,H),I))
+
+// CONTROL(46) 12
+#define DISPLAY(A) (findDisplay A)
+#define CONTROL(A) DISPLAY(A) displayCtrl
 
 /* -------------------------------------------
 Macros: IS_x()

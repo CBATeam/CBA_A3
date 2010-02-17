@@ -17,6 +17,7 @@ Author:
 	Spooner
 ---------------------------------------------------------------------------- */
 
+#define DEBUG_MODE_NORMAL
 #include "script_component.hpp"
 
 SCRIPT(formatElapsedTime);
