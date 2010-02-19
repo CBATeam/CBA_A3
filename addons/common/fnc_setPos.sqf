@@ -17,7 +17,7 @@ Author:
 PARAMS_2(_entity,_position);
 
 private "_typeName";
-_typeName = typeName _this;
+_typeName = typeName _entity;
 
 if (_typeName in ["OBJECT","LOCATION"]) exitwith {
 	if (surfaceIsWater _position) then {
