@@ -120,7 +120,7 @@ class CfgFunctions
 			// CBA_fnc_getFirer
 			class getFirer
 			{
-				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles). Parameters: Vehicle that fired Weapon that was used Example: _unit = player call CBA_fnc_getFirer Returns: Unit Author: Rocko";
+				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles). Parameters: Vehicle that fired Weapon that was used Example: _unit = player call CBA_fnc_getFirer Returns: Unit Turretpath Author: Rocko";
 				file = "\x\cba\addons\common\fnc_getFirer.sqf";
 			};
 			// CBA_fnc_getGroup
