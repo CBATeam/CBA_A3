@@ -300,7 +300,7 @@ class CfgFunctions
 			// CBA_fnc_setPos
 			class setPos
 			{
-				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west"" call CBA_fnc_getPosition] call CBA_fnc_setPos Returns: Nil Author: Rommel";
+				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west"" call CBA_fnc_getPos] call CBA_fnc_setPos Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\common\fnc_setPos.sqf";
 			};
 			// CBA_fnc_switchPlayer

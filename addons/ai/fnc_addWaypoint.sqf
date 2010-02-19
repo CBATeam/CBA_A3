@@ -30,7 +30,7 @@ Author:
 
 PARAMS_2(_group,_position);
 _group = _group call CBA_fnc_getGroup;
-_position = _position call CBA_fnc_getPosition;
+_position = _position call CBA_fnc_getPos;
 DEFAULT_PARAM(2,_radius,0);
 
 private ["_count", "_waypoint"];

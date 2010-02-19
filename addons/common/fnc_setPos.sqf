@@ -6,7 +6,7 @@ Description:
 Parameters:
 	Marker, Object, Location, Group or Position
 Example:
-	[player, "respawn_west" call CBA_fnc_getPosition] call CBA_fnc_setPos
+	[player, "respawn_west" call CBA_fnc_getPos] call CBA_fnc_setPos
 Returns:
 	Nil
 Author:
