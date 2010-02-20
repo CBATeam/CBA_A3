@@ -16,6 +16,7 @@
 // TODO high: Consider adding: "default menu source" in first array of menu def (same as "optional icon folder") to allow nominated (usually same) menu file to be re-used for same section of menu tree.
 // TODO: how to distinguish external/internal vehicle actions
 // TODO medium/easy: Support missionConfigFile too
+// TODO high: add in menu priority, similar to addAction
 
 // Desc: Determine which menu resource to display. Create and init the menu using menu def's param.
 // Pass optional paramters (if used) to determine which menu to use and/or alter it's properties.
@@ -68,8 +69,9 @@ Note: visible allows value 2 to make the current button be re-used for the next 
 	["Menu Name": type Any, "Menu Caption": string, "menu dialog class or suffix id": string, "\ca\ui\data\": string, "menuStayOpenUponSelect": boolean],
 	[
 		["caption 1", "player sideChat 'selected option 1'", "iconplane_ca.paa", "hint 1", "", -1, 1, 1],
-		...]
+		...
 	]
+]
 */
 //-----------------------------------------------------------------------------
 private ["_valid", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];

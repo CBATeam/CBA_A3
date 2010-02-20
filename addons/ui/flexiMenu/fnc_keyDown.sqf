@@ -55,12 +55,12 @@ if (_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) then
 			{ // forEach
 				if (_dikCode in (_x select 1)) then
 				{
-					if ((_x select 0 == typeOf _potentialTarget) || 
-						(/*(_vehicleTarget != player) &&*/ (_x select 0 == typeOf _vehicleTarget)) ||
+					if ((_potentialTarget isKindOf (_x select 0)) || 
+						(/*(_vehicleTarget != player) &&*/ (_vehicleTarget isKindOf (_x select 0))) ||
 						(_x select 0 == "player")) exitWith
 					{
 						_isTypeTarget = true;
-						_target = if ((_vehicleTarget != player) && (_x select 0 == typeOf _vehicleTarget)) then {_vehicleTarget} else {_potentialTarget};
+						_target = if ((_vehicleTarget != player) && (_vehicleTarget isKindOf (_x select 0))) then {_vehicleTarget} else {_potentialTarget};
 						if (_x select 0 == "player") then
 						{
 							_target = player;

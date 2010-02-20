@@ -10,7 +10,7 @@
 #define _CW 0.15*safeZoneW*_DefaultAspectRatio // _CH // exception // 0.10*safeZoneW // circle (button) width
 #define _CH 0.15*safeZoneH // 0.15*safeZoneW // exception safeZoneH // circle (button) height
 #define _SMW 0.15*safeZoneW // sub-menu width
-#define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
+//#define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
 #define _captionHgt 0.85
 
