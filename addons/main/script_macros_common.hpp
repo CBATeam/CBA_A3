@@ -515,7 +515,9 @@ Author:
 
 #define PATHTO_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
 #define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+#define PATHTOF2_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
 
+#define PATHTO_R(var1) PATHTOF2_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_T(var1) PATHTOF_SYS(PREFIX,COMPONENT_T,var1)
 #define PATHTO_M(var1) PATHTOF_SYS(PREFIX,COMPONENT_M,var1)
 #define PATHTO_S(var1) PATHTOF_SYS(PREFIX,COMPONENT_S,var1)
