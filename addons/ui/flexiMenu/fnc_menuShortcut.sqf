@@ -35,7 +35,7 @@ _menuDefs = (_this select 1) call FUNC(getMenuDef);
 	_enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
 	_visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
-	if (_dikCode == _shortcut && _enabled != 0 && _visible != 0) exitWith
+	if (_dikCode == _shortcut && _enabled != 0 && _visible > 0) exitWith
 	{
 		call compile _action;
 		_handled = true;

@@ -59,7 +59,7 @@ if (_containCaret) then
 	_asciiKey = (toArray toUpper toString [_array select (_index+1)]) select 0;
 };
 
-if (_enabled != 0 && _visible != 0) then
+if (_enabled != 0 && _visible > 0) then
 {
 	if (_shortcut_DIK == -1 && _asciiKey != -1) then
 	{

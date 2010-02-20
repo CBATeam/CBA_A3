@@ -20,6 +20,8 @@
 // Desc: Determine which menu resource to display. Create and init the menu using menu def's param.
 // Pass optional paramters (if used) to determine which menu to use and/or alter it's properties.
 //-----------------------------------------------------------------------------
+// See http://dev-heaven.net/projects/cca/wiki/FlexiMenu for array syntax info.
+
 // Notes: CBA_UI_fnc_setObjectMenuSource allows you to assign a menu source to a particular object. It will add an object variable called QUOTE(GVAR(flexiMenu_source)) containing the menu source.
 //-----------------------------------------------------------------------------
 // Syntax 1: _source
@@ -55,8 +57,8 @@
 			"tooltip", 
 			{"submenu"|["menuName", "", {0/1} (optional - use embedded list menu)]}, 
 			-1 (shortcut DIK code), // TODO: Allow string ("Z") type shortcut designation
-			{0/1/"0"/"1"/false/true} (enabled), 
-			{0|1|-1/"0"|"1"|"-1"/false/true} (visible, -1 is special case for reserved hidden button)]
+			{0|1/"0"|"1"/false|true} (enabled), 
+			{-1|0|1/"-1"|"0"|"1"/false|true} (visible, -1 is special case for reserved hidden button)]
 	]
 ]
 Note: visible allows value -1 (instead of 0) to make the current button be re-used for the next menu item, rather than hidden and left as a gap. It is dependent on the design of the menu dialog used.
