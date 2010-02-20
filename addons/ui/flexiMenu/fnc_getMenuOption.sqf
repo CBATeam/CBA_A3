@@ -188,8 +188,9 @@ if (_caption != "") then
 	// add code to action to show sub menu
 	if (_subMenuSource != "") then
 	{
-		_action = format ["%1;[%5, [%2, %3]] call compile preprocessFileLineNumbers '%4'", 
+		_action = format ["%1;[%5, [[%2, %3]]] call compile preprocessFileLineNumbers '%4'", 
 			_action, 
+// TODO: Does _subMenuSource need to handle merged menus too?
 			str _subMenuSource, 
 			if (typeName _params == typeName []) then {_params} else {str _params},
 			if (_useListBox == 0) then {

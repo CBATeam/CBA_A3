@@ -16,9 +16,15 @@
 // TODO: how to distinguish external/internal vehicle actions
 // TODO medium/easy: Support missionConfigFile too
 // TODO high: add in menu priority, similar to addAction
+// TODO: if using multiple merged _menuSources, then it may need a "doMerge" or "priorityOne" option(s) to avoid merging in special cases.
+// TODO: _minObjectInteractionDistance: Find a very fast way to determine vehicle size and orientation to calc suitable dist.
 
 // Desc: Determine which menu resource to display. Create and init the menu using menu def's param.
 // Pass optional paramters (if used) to determine which menu to use and/or alter it's properties.
+
+// Note: Side effect of merging menus is that only the header of the first menu is retained.
+// TODO: Losing secondary headers will lose things like iconFolder. Perhaps auto merge into menuOptions in advance.
+// TODO: Somehow handle shortcut clashes between merged menus. Currently it will simply use first found entry.
 //-----------------------------------------------------------------------------
 // See http://dev-heaven.net/projects/cca/wiki/FlexiMenu for array syntax info.
 
@@ -75,7 +81,7 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 ]
 */
 //-----------------------------------------------------------------------------
-private ["_valid", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
+private ["_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
 private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled"];
 private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width"];
 
@@ -126,8 +132,9 @@ for [{_i = 0}, {_i < _flexiMenu_maxListButtons}, {_i = _i + 1}] do
 // initially list caption
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
+_menuSources = _this select 1;
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
-	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _this select 1, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 _idcIndex = 0;
 

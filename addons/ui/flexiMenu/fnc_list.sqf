@@ -3,15 +3,16 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "data\common.hpp"
 
-private ["_menuDefs", "_idc", "_iconFolder"];
+private ["_menuSources", "_menuDefs", "_idc", "_iconFolder"];
 private["_menuOption", "_caption", "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];
 
 _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 (uiNamespace getVariable QUOTE(GVAR(display))) displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
+_menuSources = _this select 1;
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
-	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _this select 1, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlSetText _caption;
