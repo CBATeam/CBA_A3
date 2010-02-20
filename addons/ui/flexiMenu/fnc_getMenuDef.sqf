@@ -3,29 +3,31 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "data\common.hpp"
 
-private ["_menuDefs", "_menuSource", "_menuParams", "_array"];
+private ["_menuDefs", "_target", "_params", "_menuSource", "_menuParams", "_array"];
+
+_target = _this select 0;
+_params = _this select 1; // [_target, _menuSource];
 
 _menuSource = "";
-_menuParams = "error";
+_menuParams = [_target];
 // Syntax 1
-if (typeName _this == typeName "") then
+if (typeName _params == typeName "") then
 {
-	_menuSource = _this;
-	_menuParams = [];
+	_menuSource = _params;
 };
 // Syntax 2
-if (typeName _this == typeName []) then
+if (typeName _params == typeName []) then
 {
-	if (count _this > 0) then
+	if (count _params > 0) then
 	{
-		_menuSource = _this select 0;
+		_menuSource = _params select 0;
 		if (typeName _menuSource == typeName "") then // check for syntax: function, code string or sqf filename
 		{
-			_menuParams = if (count _this > 1) then {_this select 1} else {[]};
+			_menuParams = if (count _params > 1) then {[_target, _params select 1]};
 		}
 		else // else typeName == typeName []
 		{
-			_menuSource = _this;
+			_menuSource = _params;
 		};
 	};
 };

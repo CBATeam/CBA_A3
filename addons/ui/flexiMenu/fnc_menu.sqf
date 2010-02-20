@@ -9,7 +9,6 @@
 // TODO: Consider adding: menu properties source value.
 // TODO: Consider adding: "stay open" menu or menu option property (see menuStayOpenUponSelect), eg: for NV adjustment or VD adjustment, etc. TODO: Clarify: presumably upon releasing interact key. Close with right click.
 // TODO: Consider adding: pass parameters [object, caller] to action
-// TODO high: Pass in _target as param in keyDown: nul = [_target, _menuSource] call FUNC(menu);
 // TODO: Consider adding: object menu interaction radius (similar to userAction class). (Specify where?)
 // TODO: Bug: the rsc of curr menu is not properly passed on to list menu, whereby default menu param gets used instead (if different).
 // TODO (half done): Refactor: the dialog display speed has deteriorated with the inclusion of shortcut handling and 'clean drawing'. Investigate possible performance improvements. Replace KRON string functions maybe.
@@ -125,9 +124,8 @@ for [{_i = 0}, {_i < _flexiMenu_maxListButtons}, {_i = _i + 1}] do
 // initially list caption
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
-// TODO: Can't find a CBA macro for dialog EH's.
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
-	format ["[_this, %1] call %2", _this, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, %1] call %2", _this select 1, QUOTE(FUNC(menuShortcut))]];
 
 _idcIndex = 0;
 

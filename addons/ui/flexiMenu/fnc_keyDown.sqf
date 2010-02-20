@@ -85,9 +85,7 @@ if (_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) then
 				if (count _menuSource > 0) then
 				{
 					// show menu dialog and load menu data
-// TODO: Probably pass in _target too. High priority.
-					//nul = [_target, _menuSource] call FUNC(menu);
-					nul = _menuSource call FUNC(menu);
+					nul = [_target, _menuSource] call FUNC(menu);
 					_handled = true;
 				};
 			}
