@@ -188,12 +188,16 @@ if (_caption != "") then
 	// add code to action to show sub menu
 	if (_subMenuSource != "") then
 	{
-		_action = format ["%1;[%2, %3] call compile preprocessFileLineNumbers '%4'", 
+		_action = format ["%1;[%5, [%2, %3]] call compile preprocessFileLineNumbers '%4'", 
 			_action, 
 			str _subMenuSource, 
 			if (typeName _params == typeName []) then {_params} else {str _params},
-			if (_useListBox == 0) then {QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_menu))} else {QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_list))}
-			];
+			if (_useListBox == 0) then {
+				QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_menu))
+			} else {
+				QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_list)) },
+			QUOTE(GVAR(target))
+		];
 	};
 	if (_useListBox == 0 && _multiReselect == 0) then // if using embedded listBox && close upon selection
 	{

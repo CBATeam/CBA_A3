@@ -85,6 +85,7 @@ if (_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) then
 				if (count _menuSource > 0) then
 				{
 					// show menu dialog and load menu data
+					GVAR(target) = _target; // global variable used since passing an object as a string is too difficult.
 					nul = [_target, _menuSource] call FUNC(menu);
 					_handled = true;
 				};

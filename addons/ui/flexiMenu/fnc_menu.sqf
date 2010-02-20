@@ -56,10 +56,10 @@
 			{"submenu"|["menuName", "", {0/1} (optional - use embedded list menu)]}, 
 			-1 (shortcut DIK code), // TODO: Allow string ("Z") type shortcut designation
 			{0/1/"0"/"1"/false/true} (enabled), 
-			{0|1|2/"0"|"1"|"2"/false/true} (visible)]
+			{0|1|-1/"0"|"1"|"-1"/false/true} (visible, -1 is special case for reserved hidden button)]
 	]
 ]
-Note: visible allows value 2 to make the current button be re-used for the next menu item, rather than hidden and left as a gap. It is dependent on the design of the menu dialog used.
+Note: visible allows value -1 (instead of 0) to make the current button be re-used for the next menu item, rather than hidden and left as a gap. It is dependent on the design of the menu dialog used.
 */
 
 // For each menu option, only the caption and action are required paramters. The other parameters are optional.
@@ -125,7 +125,7 @@ for [{_i = 0}, {_i < _flexiMenu_maxListButtons}, {_i = _i + 1}] do
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
-	format ["[_this, %1] call %2", _this select 1, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _this select 1, QUOTE(FUNC(menuShortcut))]];
 
 _idcIndex = 0;
 
@@ -185,7 +185,13 @@ _commitList = [];
 				_commitList set[count _commitList, [_idc, _enabled, _visible]];
 			};
 
-			_idcIndex = _idcIndex+1;
+			// _visible==1 means: button used, go to next button.
+			// _visible==0 means: button hidden and unused, so re-use this idc for next menu option.
+			// _visible==-1 means: button hidden but reserved, so skip this idc and use next idc for next menu option.
+			if (_visible != 0) then // i.e. in [-1,1]
+			{
+				_idcIndex = _idcIndex+1;
+			}; // else if (_visible == 0) then {re-use hidden button idc}
 		};
 	};
 } forEach (_menuDefs select 1);
@@ -200,12 +206,12 @@ _commitList = [];
 	};
 	_enabled = _x select 1;
 	_visible = _x select 2;
-	ctrlShow [_idc, (_visible != 0)];
+	ctrlShow [_idc, (_visible > 0)];
 	ctrlEnable [_idc, (_enabled != 0)];
 } forEach _commitList;
 
 // hide and disable unused buttons
-// Note: you still need to disable hidden buttons because you can tab to them otherwise!
+// Note: BIS bug: you still need to disable hidden RscShortcutButton(s) because you can tab to them otherwise!
 with uiNamespace do
 {
 	for [{_i = _idcIndex}, {_i < _flexiMenu_maxButtons}, {_i = _i + 1}] do

@@ -11,7 +11,7 @@ _menuDefs = _this call FUNC(getMenuDef);
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 (uiNamespace getVariable QUOTE(GVAR(display))) displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
-	format ["[_this, %1] call %2", _menuDefs, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _this select 1, QUOTE(FUNC(menuShortcut))]];
 
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlSetText _caption;
@@ -96,7 +96,7 @@ _idc = _flexiMenu_baseIDC_listButton;
 
 		(GVAR(display) displayCtrl _idc) ctrlCommit 0; // commit pos/size before showing
 
-		(GVAR(display) displayCtrl _idc) ctrlShow (_visible != 0);
+		(GVAR(display) displayCtrl _idc) ctrlShow (_visible > 0);
 		(GVAR(display) displayCtrl _idc) ctrlEnable (_enabled != 0);
 	};
 	_idc = _idc+1;

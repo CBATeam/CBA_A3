@@ -4,6 +4,7 @@ if (isDedicated) exitWith {false};
 
 // list of all menu activation keys and associated types
 GVAR(typeMenuSources) = [];
+GVAR(target) = objNull;
 
 PREP_SUB(flexiMenu,keyDown);
 PREP_SUB(flexiMenu,keyUp);
