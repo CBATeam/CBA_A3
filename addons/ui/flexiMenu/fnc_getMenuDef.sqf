@@ -8,9 +8,6 @@ private ["_menuDefs", "_target", "_menuSources"];
 _target = _this select 0;
 _menuSources = _this select 1; // [_target, _menuSources];
 
-diag_log 'g';
-diag_log _menuSources;
-
 _menuDefs = [];
 
 { // forEach
