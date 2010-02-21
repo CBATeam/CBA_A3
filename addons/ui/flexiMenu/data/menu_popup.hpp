@@ -21,9 +21,7 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
   class controlsBackground {};
   class objects {};
 
-#ifdef _flexiMenu_useSlowCleanDrawMode
 	flexiMenu_primaryMenuControlWidth = _BW;
-#endif
 	flexiMenu_subMenuControlWidth = _BW;
 	flexiMenu_subMenuCaptionWidth = _BW;
 
@@ -34,11 +32,7 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
   {
     x = _SX-_BW;
     y = safeZoneY+0.30*safeZoneH;
-#ifdef _flexiMenu_useSlowCleanDrawMode
 		w = 0; //_BW; // hide initially
-#else
-		w = _BW;
-#endif
     h = _BH;
     sizeEx = _BH;
     size = _BH*0.75;
@@ -132,7 +126,6 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
 			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
 			x = _SX;\
 			y = safeZoneY+0.30*safeZoneH+_BH+##ID*_BH;\
-			w = 0; /* //_BW; // hide initially */\
     }
 
 		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_listButton);

@@ -119,16 +119,6 @@ setMousePosition [0.5, 0.5];
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
 
-#ifndef _flexiMenu_useSlowCleanDrawMode
-// initially hide all list buttons
-for [{_i = 0}, {_i < _flexiMenu_maxListButtons}, {_i = _i + 1}] do
-{
-  _idc = _flexiMenu_baseIDC_listButton+_i;
-	if (isNull ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _idc)) exitWith {};
-  ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _idc) ctrlShow false;
-	//((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _idc) ctrlEnable false;
-};
-#endif
 // initially list caption
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
@@ -138,7 +128,6 @@ GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEve
 
 _idcIndex = 0;
 
-#ifdef _flexiMenu_useSlowCleanDrawMode
 // TODO: Support missionConfigFile too
 _width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 if (_width == 0) then
@@ -146,7 +135,6 @@ if (_width == 0) then
 	player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
 	_width = _SMW;
 };
-#endif
 //-----------------------------------------------------------------------------
 _commitList = [];
 { // forEach
@@ -169,11 +157,14 @@ _commitList = [];
 		{
 			with uiNamespace do
 			{
-#ifdef _flexiMenu_useSlowCleanDrawMode
 				_array = ctrlPosition (GVAR(display) displayCtrl _idc);
 				if ({_x == 0} count _array == 4) then
 				{
-					if (!isNull GVAR(display)) exitWith {diag_log format ["Warning: Too many menu items or missing Menu button control: %1", [_menuRsc, _idc, _caption]]};
+					if (!isNull GVAR(display)) exitWith
+					{
+						diag_log format ["Warning: Too many menu items or missing Menu button control: %1", 
+							[_menuRsc, _idc, _caption]]
+					};
 				}
 				else
 				{
@@ -185,7 +176,6 @@ _commitList = [];
 				};
 
 				(GVAR(display) displayCtrl _idc) ctrlCommit 0; // commit pos/size before showing
-#endif
 
 				(GVAR(display) displayCtrl _idc) ctrlSetStructuredText parseText _caption;
 				(GVAR(display) displayCtrl _idc) ctrlSetToolTip _tooltip;
@@ -229,7 +219,7 @@ with uiNamespace do
 		(GVAR(display) displayCtrl _idc) ctrlShow false;
 		(GVAR(display) displayCtrl _idc) ctrlEnable false;
 	};
-//#ifndef _flexiMenu_useSlowCleanDrawMode
+
 	// hide and disable unused list buttons
 	for [{_i = 0}, {_i < _flexiMenu_maxButtons}, {_i = _i + 1}] do
 	{
@@ -237,5 +227,4 @@ with uiNamespace do
 		(GVAR(display) displayCtrl _idc) ctrlShow false;
 		(GVAR(display) displayCtrl _idc) ctrlEnable false;
 	};
-//#endif
 };

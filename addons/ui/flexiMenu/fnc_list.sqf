@@ -52,6 +52,7 @@ with uiNamespace do
 };
 
 // TODO: Support missionConfigFile too
+// TODO: For merged menus, _menuRsc must come from the first merged menu, not secondary.
 _width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 //player sideChat format ["control width = %1", [_width, _menuRsc]];
 if (_width == 0) then
@@ -79,7 +80,11 @@ _idc = _flexiMenu_baseIDC_listButton;
 		_array = ctrlPosition (GVAR(display) displayCtrl _idc);
 		if ({_x == 0} count _array == 4) then
 		{
-			if (!isNull GVAR(display)) exitWith {diag_log format ["Warning: Too many menu items or missing List button control: %1", [_menuRsc, _idc, _caption]]};
+			if (!isNull GVAR(display)) exitWith
+			{
+				diag_log format ["Warning: Too many menu items or missing List button control: %1", 
+					[_menuRsc, _idc, _caption]]
+			};
 		}
 		else
 		{
@@ -87,7 +92,7 @@ _idc = _flexiMenu_baseIDC_listButton;
 			{
 				_array = [_array select 0, _array select 1, _width, _array select 3];
 				(GVAR(display) displayCtrl _idc) ctrlSetPosition _array;
-//player sideChat format ["Adjusting list width to: %1", _width];
+//diag_log format ["Adjusting list width to: %1", _width];
 			};
 		};
 

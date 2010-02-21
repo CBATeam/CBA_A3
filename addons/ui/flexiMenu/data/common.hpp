@@ -20,6 +20,11 @@
 // Base IDC value of first list button.
 #define _flexiMenu_baseIDC_listButton 340
 
+#define _flexiMenu_typeMenuSources_ID_type 0
+#define _flexiMenu_typeMenuSources_ID_DIKCodes 1
+#define _flexiMenu_typeMenuSources_ID_priority 2
+#define _flexiMenu_typeMenuSources_ID_menuSource 3
+
 #define _flexiMenu_menuProperty_ID_menuName 0
 #define _flexiMenu_menuProperty_ID_menuDesc 1
 #define _flexiMenu_menuProperty_ID_menuResource 2
