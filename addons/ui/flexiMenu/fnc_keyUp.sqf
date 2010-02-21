@@ -16,7 +16,7 @@ _handled = false;
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
-	if (_dikCode in (_x select 1)) exitWith
+	if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) exitWith
 	{
 		_potentialKeyMatch = true;
 	};

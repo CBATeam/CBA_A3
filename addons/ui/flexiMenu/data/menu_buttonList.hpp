@@ -23,9 +23,7 @@ class CBA_flexiMenu_rscButtonList //: _flexiMenu_rscRose
   class objects {};
 
 	// custom flexiMenu properties
-#ifdef _flexiMenu_useSlowCleanDrawMode
 	flexiMenu_primaryMenuControlWidth = _BW;
-#endif
 	flexiMenu_subMenuControlWidth = _SMW;
 	flexiMenu_subMenuCaptionWidth = 0.40;
 
@@ -75,11 +73,7 @@ class CBA_flexiMenu_rscButtonList //: _flexiMenu_rscRose
   {
     x = _SX-_BW;
     y = _SY;
-#ifdef _flexiMenu_useSlowCleanDrawMode
 		w = 0; //_BW; // hide initially
-#else
-		w = _BW;
-#endif
     h = _BH;
     sizeEx = _BH;
     size = _BH*0.75;

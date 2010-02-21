@@ -39,9 +39,7 @@ class CBA_flexiMenu_rscArma2
   class objects {};
 
 	// custom flexiMenu properties
-#ifdef _flexiMenu_useSlowCleanDrawMode
 	flexiMenu_primaryMenuControlWidth = _BW;
-#endif
 	flexiMenu_subMenuControlWidth = _SMW;
 	flexiMenu_subMenuCaptionWidth = 0.40;
 
@@ -89,11 +87,7 @@ class CBA_flexiMenu_rscArma2
 
   class button: _flexiMenu_RscShortcutButton
   {
-#ifdef _flexiMenu_useSlowCleanDrawMode
 		w = 0; //_BW; // hide initially
-#else
-		w = _BW;
-#endif
     h = _BH*1.52; // paa's only use 66% of hgt
     sizeEx = _BH;
     size = _BH*0.85;
@@ -282,61 +276,5 @@ class CBA_flexiMenu_rscArma2
 		ExpandMacro_ListControls(08);
 		ExpandMacro_ListControls(09);
 		ExpandMacro_ListControls(10);
-		//-----------------------
-		/*
-		// temp debug lines to help position centre circle/box due to aspect ratio, auto centring and offset attributes.
-    class debugScreenCentreLine1: rscText
-    {
-			idc = 9731;
-			style = 176;
-			x = 0.5-(0.5/2);
-			y = 0.5-(0.5/2);
-			w = 0.5;
-			h = 0.5;
-			sizeEx = 0.1;
-			font = "Zeppelin32";
-			colorText[] = {1, 1, 1, .5};
-		};
-    class debugScreenCentreLine2: debugScreenCentreLine1
-    {
-			idc = 9732;
-			x = 0.5+(0.5/2);
-			y = 0.5-(0.5/2);
-			w = -0.5;
-			h = 0.5;
-		};
-    class debugScreenCentreLineB1: debugScreenCentreLine1
-    {
-			idc = 9741;
-			x = 0.5+(_CW/2);
-			y = 0.5-(_CW/2);
-			w = -_CW;
-			h = 0;
-		};
-    class debugScreenCentreLineB2: debugScreenCentreLine1
-    {
-			idc = 9742;
-			x = 0.5+(_CW/2);
-			y = 0.5+(_CW/2);
-			w = -_CW;
-			h = 0;
-		};
-    class debugScreenCentreLineB3: debugScreenCentreLine1
-    {
-			idc = 9743;
-			x = 0.5-(_CW/2);
-			y = 0.5-(_CW/2);
-			w = 0;
-			h = _CW;
-		};
-    class debugScreenCentreLineB4: debugScreenCentreLine1
-    {
-			idc = 9744;
-			x = 0.5+(_CW/2);
-			y = 0.5-(_CW/2);
-			w = 0;
-			h = _CW;
-		};
-		*/
   };  
 };

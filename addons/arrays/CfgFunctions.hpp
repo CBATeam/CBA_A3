@@ -39,6 +39,12 @@ class CfgFunctions
 				description = "Joins an array of values into a single string, joining each fragment around a separator string. Inverse of <CBA_fnc_split>.";
 				file = "\x\cba\addons\arrays\fnc_join.sqf";
 			};
+			// CBA_fnc_sortNestedArray
+			class sortNestedArray
+			{
+				description = "Used to sort a nested array from lowest to highest using quick sort based on the specified column, which must have numerical data, returning passed in array.";
+				file = "\x\cba\addons\arrays\fnc_sortNestedArray.sqf";
+			};
 			// CBA_fnc_shuffle
 			class shuffle
 			{

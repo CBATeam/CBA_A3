@@ -20,7 +20,7 @@ _handled = false;
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
-	if (_dikCode in (_x select 1)) exitWith
+	if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) exitWith
 	{
 		_potentialKeyMatch = true;
 	};
@@ -57,26 +57,26 @@ if (_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) then
 			_potentialMenuSources = [];
 
 			{ // forEach
-				if (_dikCode in (_x select 1)) then
+				if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) then
 				{
-					if ((_potentialTarget isKindOf (_x select 0)) || 
-						(/*(_vehicleTarget != player) &&*/ (_vehicleTarget isKindOf (_x select 0))) ||
-						(_x select 0 == "player")) then
+					if ((_potentialTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type)) || 
+						(/*(_vehicleTarget != player) &&*/ (_vehicleTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type))) ||
+						(_x select _flexiMenu_typeMenuSources_ID_type == "player")) then
 					{
 						if (count _potentialMenuSources == 0) then
 						{
 							_isTypeTarget = true;
-							_target = if ((_vehicleTarget != player) && (_vehicleTarget isKindOf (_x select 0))) then {
+							_target = if ((_vehicleTarget != player) && (_vehicleTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type))) then {
 								_vehicleTarget
 							} else {
 								_potentialTarget
 							};
-							if (_x select 0 == "player") then
+							if (_x select _flexiMenu_typeMenuSources_ID_type == "player") then
 							{
 								_target = player;
 							};
 						};
-						_potentialMenuSources = _potentialMenuSources+[_x select 2];
+						_potentialMenuSources = _potentialMenuSources+[_x select _flexiMenu_typeMenuSources_ID_menuSource];
 					};
 				};
 			} forEach GVAR(typeMenuSources);
