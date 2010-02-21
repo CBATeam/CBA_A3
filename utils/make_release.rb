@@ -13,9 +13,9 @@ FOLDER = "CBA_#{versionSafe}"
 RELEASE_FOLDER = File.join('release', FOLDER)
 PACKAGE = "#{RELEASE_FOLDER}.7z"
 ADDONS_DIR = File.join(RELEASE_FOLDER, '@CBA', 'addons')
-DOCS_DIR = File.join(RELEASE_FOLDER, 'docs')
-KEYS_DIR = File.join(RELEASE_FOLDER, 'keys')
-SOURCE_DIR = File.join(RELEASE_FOLDER, 'source')
+DOCS_DIR = File.join(RELEASE_FOLDER, '@CBA', 'store')
+KEYS_DIR = File.join(RELEASE_FOLDER, '@CBA', 'store', 'keys')
+SOURCE_DIR = File.join(RELEASE_FOLDER, '@CBA', 'store', 'source')
  
 rmtree RELEASE_FOLDER
 rm PACKAGE if File.exist? PACKAGE
@@ -38,8 +38,8 @@ Dir.new('../addons/').each do |file|
 	end
 end
 
-cp_r '../docs/cba_function_library', DOCS_DIR
-cp_r '../docs/cba_wiki', DOCS_DIR
+cp_r '../store/function_library.tar', DOCS_DIR
+cp_r '../store/wiki.tar', DOCS_DIR
 
 cd 'release'
 %x[7z a #{FOLDER} #{FOLDER}/]

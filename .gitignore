@@ -3,6 +3,6 @@
 *.bisign
 *.biprivatekey
 *.bikey
-/docs/cba_function_library/*
-/docs/cba_wiki/*
+/store/function_library/*
+/store/wiki/*
 /utils/release/*
