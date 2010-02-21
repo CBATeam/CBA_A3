@@ -38,8 +38,8 @@ Dir.new('../addons/').each do |file|
 	end
 end
 
-cp_r '../store/function_library.tar', DOCS_DIR
-cp_r '../store/wiki.tar', DOCS_DIR
+cp '../store/function_library.tar', DOCS_DIR
+cp '../store/wiki.tar', DOCS_DIR
 
 cd 'release'
 %x[7z a #{FOLDER} #{FOLDER}/]
