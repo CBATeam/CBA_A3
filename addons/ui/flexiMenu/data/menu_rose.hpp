@@ -17,7 +17,10 @@
 #define _gapW 0.01*safeZoneW // Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH/2-2*_BH)*2/3) // Button "height" vertical spacing
 
-#define _eval_image(_param,_imageTag) __EVAL(format ["%1\data\rose\%2%3.paa", _flexiMenu_path, ##_param, ##_imageTag])
+#define _flexiMenu_PATH \x\cba\addons\ui\flexiMenu
+#define IMAGE(A,B) QUOTE(_flexiMenu_PATH\A\B.paa)
+#define _eval_image(_param) IMAGE(data\rose,_param)
+
 
 #define _gapWLevel1 (-0.025*safeZoneW) // extra indentation required for side buttons on row 1 and 4 to reach circle edge
 #define _gapWLevel2 (-0.015*safeZoneW) // extra indentation required for side buttons on row 2 and 3 to reach circle edge
@@ -44,7 +47,7 @@ class CBA_flexiMenu_rscRose
 
 //class listButton; // external ref
 //#include "common_listClass.hpp"
-#define _eval_image2(_param) __EVAL(format ["%1\data\buttonList\%2.paa", _flexiMenu_path, ##_param])
+#define _eval_image2(_param) IMAGE(data\buttonList,_param)
 
   class listButton: _flexiMenu_RscShortcutButton
   {
@@ -75,13 +78,13 @@ class CBA_flexiMenu_rscRose
       align = "left";
       shadow = "true";
     };
-    animTextureNormal = _eval_image2("normal");
-    animTextureDisabled = _eval_image2("disabled");
-    animTextureOver = _eval_image2("over");
-    animTextureFocused = _eval_image2("focused");
-    animTexturePressed = _eval_image2("down");
-    animTextureDefault = _eval_image2("default");
-    animTextureNoShortcut = _eval_image2("normal");
+	animTextureNormal = _eval_image2(normal);
+	animTextureDisabled = _eval_image2(disabled);
+	animTextureOver = _eval_image2(over);
+	animTextureFocused = _eval_image2(focused);
+	animTexturePressed = _eval_image2(down);
+	animTextureDefault = _eval_image2(default);
+	animTextureNoShortcut = _eval_image2(normal);
   };
 
   class button: _flexiMenu_RscShortcutButton
@@ -141,41 +144,42 @@ class CBA_flexiMenu_rscRose
         right = 0; //0.002;
         bottom = 0.0;
       };
-      animTextureNormal = _eval_image("normal_", "circle");
-      animTextureDisabled = _eval_image("disabled_", "circle");
-      animTextureOver = _eval_image("over_", "circle");
-      animTextureFocused = _eval_image("focused_", "circle");
-      animTexturePressed = _eval_image("down_", "circle");
-      animTextureDefault = _eval_image("normal_", "circle"); // used?
-      animTextureNoShortcut = _eval_image("normal_", "circle"); // used?
+		animTextureNormal = _eval_image(DOUBLES(normal,circle));
+		animTextureDisabled = _eval_image(DOUBLES(disabled,circle));
+		animTextureOver = _eval_image(DOUBLES(over,circle));
+		animTextureFocused = _eval_image(DOUBLES(focused,circle));
+		animTexturePressed = _eval_image(DOUBLES(down,circle));
+		animTextureDefault = _eval_image(DOUBLES(normal,circle)); // used?
+		animTextureNoShortcut = _eval_image(DOUBLES(normal,circle)); // used?
     };
 
-#define ExpandMacro_RowControls(ID,newX,newY,imageTag) \
-    class button##ID: button\
-    {\
-			idc = __EVAL(_flexiMenu_IDC);\
-			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
-      x = ##newX;\
-      y = ##newY;\
-      animTextureNormal = _eval_image("normal_", imageTag);\
-      animTextureDisabled = _eval_image("disabled_", imageTag);\
-      animTextureOver = _eval_image("over_", imageTag);\
-      animTextureFocused = _eval_image("focused_", imageTag);\
-      animTexturePressed = _eval_image("down_", imageTag);\
-      animTextureDefault = _eval_image("normal_", imageTag);\
-      animTextureNoShortcut = _eval_image("normal_", imageTag);\
-    }
+		#define ExpandMacro_RowControls(ID,newX,newY,imageTag) \
+		class button##ID: button {\
+			idc = __EVAL(_flexiMenu_IDCi);\
+			__EXEC(_flexiMenu_IDCi = _flexiMenu_IDCi+1);\
+			x = ##newX;\
+			y = ##newY;\
+			text = "";\
+			action = "";\
+			animTextureNormal = _eval_image(DOUBLES(normal,imageTag));\
+			animTextureDisabled = _eval_image(DOUBLES(disabled,imageTag));\
+			animTextureOver = _eval_image(DOUBLES(over,imageTag));\
+			animTextureFocused = _eval_image(DOUBLES(focused,imageTag));\
+			animTexturePressed = _eval_image(DOUBLES(down,imageTag));\
+			animTextureDefault = _eval_image(DOUBLES(normal,imageTag));\
+			animTextureNoShortcut = _eval_image(DOUBLES(normal,imageTag));\
+		}
 		
-		ExpandMacro_RowControls(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH, "top");
-		ExpandMacro_RowControls(03, _SX-_BW/2, _SY+(_CH/2+_gapH), "bottom");
-		ExpandMacro_RowControls(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH, "L01");
-		ExpandMacro_RowControls(05, _leftButtonLevel2X, _SY-_gapH/2-_BH, "L02");
-		ExpandMacro_RowControls(06, _leftButtonLevel2X, _SY+_gapH/2, "L03");
-		ExpandMacro_RowControls(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH, "L04");
-		ExpandMacro_RowControls(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH, "R01");
-		ExpandMacro_RowControls(09, _rightButtonLevel2X, _SY-_gapH/2-_BH, "R02");
-		ExpandMacro_RowControls(10, _rightButtonLevel2X, _SY+_gapH/2, "R03");
-		ExpandMacro_RowControls(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH, "R04");
+		ExpandMacro_RowControls(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
+		ExpandMacro_RowControls(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
+		ExpandMacro_RowControls(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);
+		ExpandMacro_RowControls(05, _leftButtonLevel2X, _SY-_gapH/2-_BH,L02);
+		ExpandMacro_RowControls(06, _leftButtonLevel2X, _SY+_gapH/2,L03);
+		ExpandMacro_RowControls(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH,L04);
+		ExpandMacro_RowControls(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,R01);
+		ExpandMacro_RowControls(09, _rightButtonLevel2X, _SY-_gapH/2-_BH,R02);
+		ExpandMacro_RowControls(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
+		ExpandMacro_RowControls(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
 		//-----------------------
     class caption2: caption
     {
