@@ -67,7 +67,10 @@ _menuDefs = [];
 	}
 	else
 	{
-		_menuDefs set [1, (_menuDefs select 1)+(_menuDef select 1)];
+		if (count _menuDef > 0) then
+		{
+			_menuDefs set [1, (_menuDefs select 1)+(_menuDef select 1)];
+		};
 	};
 } forEach _menuSources;
 

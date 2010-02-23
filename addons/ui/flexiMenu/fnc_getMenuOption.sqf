@@ -31,14 +31,32 @@ _caption = _menuDef select _flexiMenu_menuDef_ID_caption;
 _shortcut_DIK = if (count _menuDef > _flexiMenu_menuDef_ID_shortcut) then {_menuDef select _flexiMenu_menuDef_ID_shortcut} else {-1};
 _tooltip = if (count _menuDef > _flexiMenu_menuDef_ID_tooltip) then {_menuDef select _flexiMenu_menuDef_ID_tooltip} else {""};
 
+// enabled
 _enabled = if (count _menuDef > _flexiMenu_menuDef_ID_enabled) then {_menuDef select _flexiMenu_menuDef_ID_enabled} else {1};
+if (isNil "_enabled") then
+{
+	hint ("Error logged: 'enabled' menu property returned nil.\n\n"+
+		format["Source data: %1", _this]);
+	ERROR_WITH_TITLE("'enabled' menu property returned nil.", str _this);
+	_enabled = 0; 
+	_caption = "Error: "+_caption;
+};
 if (typeName _enabled != typeName 2) then
 {
 	if (typeName _enabled == typeName "") then {_enabled = parseNumber _enabled}; // allow "0"/"1" like BIS does
 	if (typeName _enabled == typeName true) then {_enabled = if (_enabled) then {1}else{0}}; // convert boolean to number
 };
 
+// visible
 _visible = if (count _menuDef > _flexiMenu_menuDef_ID_visible) then {_menuDef select _flexiMenu_menuDef_ID_visible} else {1};
+if (isNil "_visible") then
+{
+	hint ("Error logged: 'visible' menu property returned nil.\n\n"+
+		format["Source data: %1", _this]);
+	ERROR_WITH_TITLE("'visible' menu property returned nil.", str _this);
+	_visible = 0; 
+	_caption = "Error: "+_caption;
+};
 if (typeName _visible != typeName 2) then
 {
 	if (typeName _visible == typeName "") then {_visible = parseNumber _visible}; // allow "0"/"1"/"2" like BIS does
