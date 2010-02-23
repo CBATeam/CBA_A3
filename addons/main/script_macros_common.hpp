@@ -220,7 +220,7 @@ Parameters:
 	
 Example:
 	(begin example)
-		ERROR("Value not found","Value of frog not found in config ...yada...yada...");
+		ERROR_WITH_TITLE("Value not found","Value of frog not found in config ...yada...yada...");
 	(end)
 	
 Author:
