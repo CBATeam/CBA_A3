@@ -70,7 +70,8 @@ FUNC(attach_handler) =
 [] spawn
 {
 	waitUntil { !(isNull (findDisplay 46)) };
-	{ (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"];
+	// Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers
+	if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"] };
 	// IMPORTANT: Case Sensitive Strings!
 	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
