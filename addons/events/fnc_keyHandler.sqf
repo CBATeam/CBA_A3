@@ -17,12 +17,9 @@ private ["_settings", "_code", "_handled", "_result", "_handlers"];
 #endif
 
 PARAMS_2(_keyData,_type);
+_type = toLower _type;
 
-_handlers = switch _type do
-{
-	case 0: { GVAR(keys_down) };
-	case 1: { GVAR(keys_up) };
-};
+_handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
 GVAR(keypressed) = time;
 

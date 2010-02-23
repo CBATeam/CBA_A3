@@ -24,6 +24,8 @@ SCRIPT(removeDisplayHandler);
 private ["_ar"];
 PARAMS_2(_type,_index);
 
+_type = toLower _type;
+// TODO: Verify if the eventhandler type exists?
 _ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 if (typeName _ar == "ARRAY") then
 {

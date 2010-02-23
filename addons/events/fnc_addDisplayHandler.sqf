@@ -25,6 +25,8 @@ SCRIPT(addDisplayHandler);
 private ["_ar", "_id", "_idx"];
 PARAMS_2(_type,_code);
 
+_type = toLower _type;
+// TODO: Verify if the eventhandler type exists?
 _ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 if (typeName _ar != "ARRAY") then { _ar = [] };
 _id = if (isDedicated || (isNull (findDisplay 46))) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };

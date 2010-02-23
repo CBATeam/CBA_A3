@@ -8,7 +8,7 @@ Parameters:
 	_key - Numerical key to attach action to [Integer].
 	_settings - Shift, Ctrl, Alt required [Array].
 	_code - Code to execute upon event [Code].
-	_type - "DOWN" (default) = keyDown,  "UP" = keyUp [String].
+	_type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
 
 Returns:
 
@@ -26,9 +26,11 @@ SCRIPT(addKeyHandler);
 
 private ["_ar", "_entry", "_type", "_handlers"];
 PARAMS_3(_key,_settings,_code);
-_type = if (count _this > 3) then { _this select 3 } else { "DOWN" };
+_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
+_type = toLower _type;
+if !(_type in ["keyup", "keydown"]) exitWith { ERROR("Type does not exist") };
 
-_handlers = if (_type == "UP") then { GVAR(keys_up) } else { GVAR(keys_down) };
+_handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
 if(_key>(count _handlers))then{_handlers resize(_key+1);};
 _ar = _handlers select _key;

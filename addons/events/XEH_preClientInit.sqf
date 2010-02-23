@@ -64,20 +64,19 @@ FUNC(attach_handler) =
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
 // Workaround , in macros
-#define UP [_this, 1]
-#define DOWN [_this, 0]
+#define UP [_this, 'keyup']
+#define DOWN [_this, 'keydown']
 
 [] spawn
 {
 	waitUntil { !(isNull (findDisplay 46)) };
 	// Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers
 	if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"] };
-	// IMPORTANT: Case Sensitive Strings!
+
 	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 
 	// ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
-
 
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.

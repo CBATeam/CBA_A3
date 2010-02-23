@@ -33,12 +33,20 @@ GVAR(handler_hash) = [[], ""] call CBA_fnc_hashCreate;
 	- Script (in sys_attachments addon (it has COMPONENT defined as sys_attachments)):
 	[QUOTE(COMPONENT), "cqb", { _this call GVAR(keyPressed) }] call cba_fnc_AddKeyHandlerFromConfig;
 */
-GVAR(keys_down) = []; GVAR(keys_up) = [];
+private ["_arUp", "_arDown"];
+GVAR(keyhandler_hash) = [[], []] call CBA_fnc_hashCreate;
+_arUp = [GVAR(keyhandler_hash), "keyup"] call CBA_fnc_hashGet;
+_arDown = [GVAR(keyhandler_hash), "keydown"] call CBA_fnc_hashGet;
 for "_i" from 0 to 250 do
 {
-	GVAR(keys_down) set [_i, []];
-	GVAR(keys_up) set [_i, []];
+	_arUp set [_i, []];
+	_arDown set [_i, []];
 };
+
+// Due to limitation, have to actually set the first time
+[GVAR(keyhandler_hash), "keyup", _arUp] call CBA_fnc_hashSet;
+[GVAR(keyhandler_hash), "keydown", _arDown] call CBA_fnc_hashSet;
+
 PREP(keyHandler);
 
 /*

@@ -8,7 +8,7 @@ Parameters:
 	_component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
 	_action - Action classname [String].
 	_code - Code to execute upon event [Code].
-	_type - "DOWN" (default) = keyDown,  "UP" = keyUp [String].
+	_type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
 
 Returns:
 
@@ -25,7 +25,9 @@ SCRIPT(addKeyHandlerFromConfig);
 
 private ["_key", "_type"];
 PARAMS_3(_component,_action,_code);
-_type = if (count _this > 3) then { _this select 3 } else { "DOWN" };
+_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
+_type = toLower _type;
+if !(_type in ["keyup", "keydown"]) exitWith { ERROR("Type does not exist") };
 
 _key = [_component, _action] call CBA_fnc_readKeyFromConfig;
 if (_key select 0 > -1) exitWith
