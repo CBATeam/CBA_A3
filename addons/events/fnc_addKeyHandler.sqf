@@ -28,6 +28,7 @@ private ["_ar", "_entry", "_type", "_handlers"];
 PARAMS_3(_key,_settings,_code);
 _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
+if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 
 _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
