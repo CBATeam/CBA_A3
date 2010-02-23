@@ -27,7 +27,7 @@ private ["_key", "_type"];
 PARAMS_3(_component,_action,_code);
 _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
-if !(_type in ["keyup", "keydown"]) exitWith { ERROR("Type does not exist") };
+if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 
 _key = [_component, _action] call CBA_fnc_readKeyFromConfig;
 if (_key select 0 > -1) exitWith

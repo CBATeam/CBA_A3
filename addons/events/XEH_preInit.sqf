@@ -21,7 +21,6 @@ if (isServer or (alive player)) then
 	};
 };
 
-
 // Display Eventhandlers - Abstraction layer
 GVAR(handler_hash) = [[], ""] call CBA_fnc_hashCreate;
 

@@ -1,6 +1,7 @@
 #define COMPONENT events
 #include "\x\cba\addons\main\script_mod.hpp"
 
+#define KEYS_ARRAY ['keydown', 'keyup']
 
 #ifdef DEBUG_ENABLED_EVENTS
 	#define DEBUG_MODE_FULL
