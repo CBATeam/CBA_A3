@@ -629,6 +629,7 @@ Author:
 #define PREP(var1) PREP_SYS2(PREFIX,COMPONENT,COMPONENT_F,var1)
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
 #define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
+#define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
