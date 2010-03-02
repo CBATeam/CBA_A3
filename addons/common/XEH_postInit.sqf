@@ -23,6 +23,14 @@ LOG(MSG_INIT);
 	CREATE_CENTER _x;
 } forEach [east, west, resistance, civilian, sideLogic];
 
+Resistance setFriend [East, 0];
+East setFriend [Resistance, 0];
+
+West setFriend [East, 0];
+East setFriend [West, 0];
+
+//Resistance setFriend [West, 1];
+//West setFriend [Resistance, 1];
 
 // NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
 //       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
