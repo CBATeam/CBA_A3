@@ -22,7 +22,7 @@ LOG("Initialising the Functions module early.");
 
 ADDON = false;
 
-
+GVAR(centers) = [];
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 
 // Prepare all functions

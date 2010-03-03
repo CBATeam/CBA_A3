@@ -45,6 +45,12 @@ class CfgFunctions
 				description = "Add weapon(s) to vehicle cargo.";
 				file = "\x\cba\addons\common\fnc_addWeaponCargo.sqf";
 			};
+			// CBA_fnc_createCenter
+			class createCenter
+			{
+				description = "bla";
+				file = "\x\cba\addons\common\fnc_createCenter.sqf";
+			};
 			// CBA_fnc_createMarker
 			class createMarker
 			{
