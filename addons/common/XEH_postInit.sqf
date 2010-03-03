@@ -2,36 +2,6 @@
 
 LOG(MSG_INIT);
 
-// Create centers that do not exist yet
-// TODO: Evaluate handling this in some createGroup function instead of creating them all?
-#define CREATE_CENTER _center = createCenter
-
-{
-	/*
-	private ["_group", "_center"];
-	_group = [_x] call CBA_fnc_getSharedGroup;
-	if (isNil "_group") then
-	{
-		CREATE_CENTER _x;
-		_group = [_x] call CBA_fnc_getSharedGroup;
-	} else {
-		if (isNull _group) then { CREATE_CENTER _x; _group = [_x] call CBA_fnc_getSharedGroup };
-	};
-	deleteGroup _group;
-	*/
-
-	CREATE_CENTER _x;
-} forEach [east, west, resistance, civilian, sideLogic];
-
-Resistance setFriend [East, 0];
-East setFriend [Resistance, 0];
-
-West setFriend [East, 0];
-East setFriend [West, 0];
-
-//Resistance setFriend [West, 1];
-//West setFriend [Resistance, 1];
-
 // NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
 //       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
 //       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
@@ -41,17 +11,7 @@ if (isNil "BIS_functions_mainscope") then
 {
 	if (isServer) then
 	{
-/*
-		_group = [sideLogic] call CBA_fnc_getSharedGroup;
-		if (isNil "_group") then
-		{
-			CREATE_CENTER sideLogic;
-			_group = [sideLogic] call CBA_fnc_getSharedGroup;
-		} else {
-			if (isNull _group) then { CREATE_CENTER sideLogic; _group = [sideLogic] call CBA_fnc_getSharedGroup };
-		};
-*/
-		// CREATE_CENTER sideLogic; // Handled above
+		// CREATE_CENTER sideLogic; // Handled in function
 		_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 		TRACE_2("Created FunctionsManager Logic",_group,_logic);
