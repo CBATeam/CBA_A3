@@ -171,6 +171,12 @@ class CfgFunctions
 				description = "Returns existing group on side, or newly created group when not existent.";
 				file = "\x\cba\addons\common\fnc_getSharedGroup.sqf";
 			};
+			// CBA_fnc_getTerrainProfile
+			class getTerrainProfile
+			{
+				description = "A returns the profile of the terain between two positions at a certain interval. Parameters: _pos1 - Start position, either an object or position. _pos1 - End position, either an object or position. _interval - Sampling interval for terrain heights, in meters. Example: _profile = [Player, [0,0,0], 100] call CBA_fnc_getTerrainProfile Returns: Array - [distance, directions, interval, [altitudes]] Author: Nou";
+				file = "\x\cba\addons\common\fnc_getTerrainProfile.sqf";
+			};
 			// CBA_fnc_getTurret
 			class getTurret
 			{

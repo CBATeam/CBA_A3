@@ -145,6 +145,7 @@ Group: Functions  {
 			File: getPistol  (no auto-title, common\fnc_getPistol.sqf)
 			File: getPos  (no auto-title, common\fnc_getPos.sqf)
 			File: getSharedGroup  (no auto-title, common\fnc_getSharedGroup.sqf)
+			File: getTerrainProfile  (no auto-title, common\fnc_getTerrainProfile.sqf)
 			File: getTurret  (no auto-title, common\fnc_getTurret.sqf)
 			File: getUISize  (no auto-title, common\fnc_getUISize.sqf)
 			File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
