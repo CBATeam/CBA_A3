@@ -121,27 +121,51 @@ class Extended_Init_EventHandlers
 	// Flag carriers
 	class FlagCarrierUSA
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\data\flag_usa_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\data\flag_usa_co.paa""";
+		};
 	};
 	class FlagCarrierCDF
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\data\flag_Chernarus_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\data\flag_Chernarus_co.paa""";
+		};
 	};
 	class FlagCarrierRU
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\data\flag_rus_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\data\flag_rus_co.paa""";
+		};
 	};
 	class FlagCarrierINS
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\data\flag_ChDKZ_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\data\flag_ChDKZ_co.paa""";
+		};
 	};
 	class FlagCarrierGUE
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\data\flag_NAPA_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\data\flag_NAPA_co.paa""";
+		};
 	};
 	class FlagCarrierChecked
 	{
-		SLX_BIS = "(_this select 0) setFlagTexture ""\ca\structures\misc\armory\checkered_flag\data\checker_flag_co.paa""";
+		class SLX_BIS
+		{
+			scope = 0;
+			init = "(_this select 0) setFlagTexture ""\ca\structures\misc\armory\checkered_flag\data\checker_flag_co.paa""";
+		};
 	};
 	
 	// Force recon specials.
