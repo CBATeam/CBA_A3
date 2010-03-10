@@ -5,11 +5,11 @@ Description:
 	A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They will also patrol the radius.
 Parameters:
 	- Group (Group or Object)
-	- Position (XYZ, Object, Location or Group)
 	Optional:
+	- Position (XYZ, Object, Location or Group)
 	- Defend Radius (Scalar)
 Example:
-	[group player, player] call CBA_fnc_taskDefend
+	[group player] call CBA_fnc_taskDefend
 Returns:
 	Nil
 Author:
@@ -23,8 +23,9 @@ Author:
 
 private ["_count", "_waypoints", "_list", "_units", "_i"];
 
-PARAMS_2(_group,_position);
+PARAMS_1(_group);
 _group = _group call CBA_fnc_getGroup;
+DEFAULT_PARAM(1,_position,_group);
 DEFAULT_PARAM(2,_radius,50);
 
 _group enableAttack false;
@@ -41,7 +42,7 @@ _i = 0;
 			INC(_i);
 		};
 	} else {
-		if (random 1 < 0.67) then {
+		if (random 1 < 0.87) then {
 			private ["_array", "_building", "_count"];
 			_array = _x call CBA_fnc_getNearestBuilding;
 			_building = ARG2(_array, 0);
@@ -58,6 +59,6 @@ _i = 0;
 	};
 } forEach _units;
 _count = count _units;
-if (_i < _count * 0.75) exitwith {
-	[_group, _position, _radius/2 * _count, 5, "SAD", "SAFE", "YELLOW", "LIMITED"] call CBA_fnc_taskPatrol;
+if (_i < _count * 0.5) exitwith {
+	[_group, _position, _radius, 5, "SAD"] call CBA_fnc_taskPatrol;
 };

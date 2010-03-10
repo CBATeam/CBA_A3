@@ -14,7 +14,7 @@ Rommel
 
 ---------------------------------------------------------------------------- */
 
-#include "\x\cba\addons\main\script_macros_common.hpp"
+#include "script_component.hpp"
 
 PARAMS_2(_entity,_position);
 
@@ -22,18 +22,17 @@ private "_typeName";
 _typeName = typeName _entity;
 
 if (_typeName in ["OBJECT","LOCATION"]) exitwith {
-if (surfaceIsWater _position) then {
-_entity setposASL (_position call CBA_fnc_getpos)
-} else {
-_entity setposATL (_position call CBA_fnc_getpos)
+	if (surfaceIsWater _position) then {
+		_entity setposASL (_position call CBA_fnc_getpos)
+	} else {
+		_entity setposATL (_position call CBA_fnc_getpos)
+	};
 };
-};
-if (_typeName "GROUP") exitwith {
-/*
-not yet implemented
-*/
+if (_typeName == "GROUP") exitwith {
+	/*
+	not yet implemented
+	*/
 };
 if (_typeName "STRING") exitwith {
-_entity setMarkerPos (_position call CBA_fnc_getpos)
+	_entity setMarkerPos (_position call CBA_fnc_getpos)
 };
-
