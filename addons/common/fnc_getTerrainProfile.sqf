@@ -2,51 +2,49 @@
 Function: CBA_fnc_getTerrainProfile
 
 Description:
-	A returns the profile of the terain between two positions at a certain
-	interval.
+	A function used to find the terrain profile between two positions
 Parameters:
-	_pos1 - Start position, either an object or position.
-    _pos1 - End position, either an object or position.
-    _interval - Sampling interval for terrain heights, in meters.
-Example:
-	_profile = [Player, [0,0,0], 100] call CBA_fnc_getTerrainProfile
+	- Position A [Object, Location, Position, Marker or Group]
+	- Position B [Object, Location, Position, Marker or Group]
+	Optional:
+	- Resolution (in Metres)
 Returns:
-	Array - [distance, directions, interval, [altitudes]]
+	Array containing [2D Distance, Angle, Terrain Profile (in format [Relative Altitude, 2D Distance from, 3D Distance from])
+Example:
+	[[0,0,0], [0,0,1000], 10] call CBA_fnc_getTerrainProfile
 Author:
-	Nou
+	Rommel && Noubernou
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-PARAMS_3(_pos1,_pos2,_interval);
-_pos1 = _pos1 call CBA_fnc_getPos;
-_pos2 = _pos2 call CBA_fnc_getPos;
-_direction = abs ([_pos1, _pos2] call BIS_fnc_dirTo);
-_distance = [_pos1, _pos2] call BIS_fnc_distance2D;
-_intervalDistance = 0;
-_profile = [];
-_poll = "Logic" createVehicleLocal _pos1;
+PARAMS_2(_posA,_posB)
+_posA = _posA call CBA_fnc_getPos;
+_posB = _posB call CBA_fnc_getPos;
+_posA set [2,0]; _posB set [2,0];
 
-_poll setPos [_pos1 select 0, _pos1 select 1, 0];
-_pollPos = getPosASL _poll;
-_alt = [_pollPos select 2, _intervalDistance];
-_profile set [(count _profile), _alt];
-_lastPos = _pos1;
-_intervalDistance = _intervalDistance + _interval;
-while{_intervalDistance < _distance} do {
-    _pos = [_lastPos, _interval, _direction] call BIS_fnc_relPos;
-    _poll setPos [_pos select 0, _pos select 1, 0];
-    _pollPos = getPosASL _poll;
-    _alt = [_pollPos select 2, _intervalDistance];
-    _profile set [(count _profile), _alt];
-    _intervalDistance = _intervalDistance + _interval;
-    _lastPos = _pos;
+DEFAULT_PARAM(2,_resolution,10);
+
+private ["_angle", "_2Ddistance", "_return", "_z", "_adj", "_pos", "_alt"];
+_angle = [_posA, _posB] call BIS_fnc_dirTo;
+_2Ddistance = [_posA, _posB] call BIS_fnc_distance2D;
+
+_logic = "logic" createvehiclelocal _posA;
+_logic setposATL _posA;
+_z = (getposASL _logic) select 2;
+_return = [];
+
+for "_i" from 0 to (_2Ddistance / _resolution) do {
+	_adj = _resolution * _i;
+	_pos = [_posA, _adj, _angle] call BIS_fnc_relPos;
+	_logic setposATL _pos;
+	_alt = ((getposASL _logic) select 2) - _z;
+	_return set [_i,[_alt, _adj, _pos]];
 };
-_poll setPos [_pos2 select 0, _pos2 select 1, 0];
-_pollPos = getPosASL _poll;
-_alt = [_pollPos select 2, _distance];
-_profile set [(count _profile), _alt];
+_logic setposATL _posB;
+_alt = ((getposASL _logic) select 2) - _z;
+_return set [count _return,[_alt, _2Ddistance, _pos]];
 
-deleteVehicle _poll;
+deletevehicle _logic;
 
-[_distance, _direction, _interval, _profile];
+[_2Ddistance, _angle, _return]
