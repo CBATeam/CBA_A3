@@ -23,8 +23,9 @@ for "_i" from 0 to (_c - 1) do {
 activateAddons _addons;
 TRACE_1("Activated",count _addons);
 
+// TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
 sleep 0.001;
-if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP
+if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
 
 while {true} do {
 	activateAddons _addons;
