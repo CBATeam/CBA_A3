@@ -33,6 +33,6 @@ if (_typeName == "GROUP") exitwith {
 	not yet implemented
 	*/
 };
-if (_typeName "STRING") exitwith {
+if (_typeName == "STRING") exitwith {
 	_entity setMarkerPos (_position call CBA_fnc_getpos)
 };
