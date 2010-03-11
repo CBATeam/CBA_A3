@@ -26,8 +26,10 @@ TRACE_1("Activated",count _addons);
 // TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
 sleep 0.001;
 if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
-
-while {true} do {
-	activateAddons _addons;
-	sleep 5; // Experimental
+[_addons] spawn {
+	PARAMS_1(_addons);
+	while {true} do {
+		activateAddons _addons;
+		sleep 5; // Experimental
+	};
 };
