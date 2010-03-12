@@ -2,9 +2,6 @@
 
 LOG(MSG_INIT);
 
-// NOTE: Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
-[] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_addons));
-
 // NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
 //       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
 //       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
