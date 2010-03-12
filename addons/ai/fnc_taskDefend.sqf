@@ -17,7 +17,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "\x\cba\addons\main\script_macros_common.hpp"
+#include "script_component.hpp"
 
 #define ARG2(X,Y)	((X) select (Y))
 
