@@ -3,7 +3,7 @@
 #define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
 TRACE_2("",GVAR(versions),GVAR(versions_server));
-SLEEP(4); // Test workaround for JIP issue
+SLEEP(3); // Test workaround for JIP issue
 
 if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
 
@@ -26,8 +26,9 @@ if (isServer) then
 
 	private ["_logic", "_str"];
 	_logic = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0,0,0], [], 0, ""];
-	_str = 'if(isServer)exitWith{};_func={GVAR(mismatch)=[format["%1",player],_this];publicVariable QUOTE(GVAR(mismatch));_this spawn{_t=format["You are missing the following mod: %1",_this];diag_log text _t;sleep 2;player globalChat _t}};';
+	_str = 'if(isServer)exitWith{};0 = [] spawn { sleep 1; sleep 1; _func={GVAR(mismatch)=[format["%2 (%1)",name player, player],_this];publicVariable QUOTE(GVAR(mismatch));_this spawn{_t=format["You are missing the following mod: %1",_this];diag_log text _t;sleep 2;player globalChat _t}};';
 	[GVAR(versions_server), {_str = _str + format['if !(isClass(configFile >> "CfgPatches" >> "%1_main"))exitWith{"%1_main" call _func};', _key]}] call CBA_fnc_hashEachPair;
+	ADD(_str,"};");
 	// Actually disconnect em? 
 	// endMission "END1"
 	_logic setVehicleInit _str;
