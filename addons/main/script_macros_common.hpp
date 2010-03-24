@@ -544,6 +544,8 @@ Author:
 #define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
 #define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4))
 
+#define LSTR(var1) TRIPLES(ADDON,STR,var1)
+
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
@@ -630,6 +632,7 @@ Author:
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
 #define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
+#define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
