@@ -85,6 +85,7 @@ _handle =
 waitUntil {completedFSM _handle};
 
 if !(isDedicated) then {endLoadingScreen};
+SLX_XEH_MACHINE set [8, true];
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];
