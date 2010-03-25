@@ -75,14 +75,14 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 // Still using delayLess.fsm for this one as this can still increase init speed at briefing?
-_handle = 
-{
+//_handle = 
+//{
 	// we set this BEFORE executing the inits, so that any unit created in another
 	// thread still gets their InitPost ran
 	SLX_XEH_MACHINE set [7, true];
 	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
-} execFSM "extended_eventhandlers\delayless.fsm";
-waitUntil {completedFSM _handle};
+//} execFSM "extended_eventhandlers\delayless.fsm";
+//waitUntil {completedFSM _handle};
 
 if !(isDedicated) then {endLoadingScreen};
 SLX_XEH_MACHINE set [8, true];
