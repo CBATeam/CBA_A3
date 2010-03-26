@@ -116,7 +116,7 @@ setMousePosition [0.5, 0.5];
 //if (isNil QUOTE(GVAR(display))) exitWith {hint format["%1 is nil", GVAR(display)]};
 //if (isNull GVAR(display)) exitWith {hint format["%1 is null", GVAR(display)]};
 
-_caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
+IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc,"");
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
 
 // initially list caption

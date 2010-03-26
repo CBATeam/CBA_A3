@@ -14,6 +14,7 @@ PREP_SUB(flexiMenu,getMenuDef);
 PREP_SUB(flexiMenu,getMenuOption);
 PREP_SUB(flexiMenu,menuShortcut);
 PREP_SUB(flexiMenu,highlightCaretKey);
+PREP_SUB(flexiMenu,execute);
 
 // TODO: move these to public CfgFunctions soon.
 PREP_SUB(flexiMenu,add);
@@ -27,7 +28,9 @@ GVAR(lastAccessTime) = 0;
 
 [] spawn
 {
+	// !isDedicated checked at top
 	waitUntil {!isNull (findDisplay 46)}; // CBA_fnc_addDisplayHandler is still dodgy
+
 	GVAR(keyDown_EHID) = ["keyDown", QUOTE(_this call FUNC(keyDown))] call CBA_fnc_addDisplayHandler;
 	GVAR(keyUp_EHID) = ["keyUp", QUOTE(_this call FUNC(keyUp))] call CBA_fnc_addDisplayHandler;
 };

@@ -10,7 +10,7 @@ _msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
 if (isNil QUOTE(GVAR(typeMenuSources))) exitWith {diag_log _msg};
 if (typeName _this != typeName []) exitWith {diag_log _msg};
 if (count _this != 4) exitWith {diag_log _msg};
-if (typeName (_this select _flexiMenu_typeMenuSources_ID_type) != typeName "") exitWith {diag_log _msg};
+if !(toLower typeName (_this select _flexiMenu_typeMenuSources_ID_type) in [toLower typeName "", toLower typeName []]) exitWith {diag_log _msg};
 if (typeName (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != typeName []) exitWith {diag_log _msg};
 if (typeName (_this select _flexiMenu_typeMenuSources_ID_priority) != typeName 2) exitWith {diag_log _msg};
 if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeName [], typeName ""]) exitWith {diag_log _msg};

@@ -2,11 +2,11 @@
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "data\common.hpp"
 
-#define _minObjectInteractionDistance 5 // arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
+#define _minObjDist(_var) (4 max (1.4+(sizeOf typeOf _var)/2)) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
 private["_handled", /* "_ctrl", */ "_dikCode", /* "_shift", "_ctrlKey", "_alt", */
 	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget", 
-	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget"];
+	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList"];
 
 //_ctrl = _this select 0;
 _dikCode = _this select 1;
@@ -46,13 +46,19 @@ if (!GVAR(optionSelected) && time-GVAR(lastAccessTime) > 0.4) then
 		_target = objNull;
 		// if dedicated interact key is used
 		if (_dikCode in _flexiMenu_interactKeys) then {_target = cursorTarget};
-		if (!isNull _target && _target distance player > _minObjectInteractionDistance) then {_target = objNull};
+		if (!isNull _target) then
+		{
+			if (_target distance player > _minObjDist(_target)) then {_target = objNull};
+		};
 
 		_isTypeTarget = false;
 
 		// check for [cursorTarget or "player" or "vehicle"] types in typeMenuSources list
 		_potentialTarget = cursorTarget;
-		if (!isNull _potentialTarget && _potentialTarget distance player > _minObjectInteractionDistance) then {_potentialTarget = objNull};
+		if (!isNull _potentialTarget) then
+		{
+			if (_potentialTarget distance player > _minObjDist(_potentialTarget)) then {_potentialTarget = objNull};
+		};
 		_vehicleTarget = vehicle player;
 		if (_vehicleTarget == player) then {_vehicleTarget = objNull};
 
@@ -61,19 +67,24 @@ if (!GVAR(optionSelected) && time-GVAR(lastAccessTime) > 0.4) then
 		{ // forEach
 			if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) then
 			{
-				if ((_potentialTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type)) || 
-					(/*(_vehicleTarget != player) &&*/ (_vehicleTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type))) ||
-					(_x select _flexiMenu_typeMenuSources_ID_type == "player")) then
+				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
+				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
+
+				if (({_potentialTarget isKindOf _x} count _typesList > 0) || 
+					({_vehicleTarget isKindOf _x} count _typesList > 0) ||
+					("player" in _typesList)) then
 				{
 					if (count _potentialMenuSources == 0) then
 					{
 						_isTypeTarget = true;
-						_target = if ((_vehicleTarget != player) && (_vehicleTarget isKindOf (_x select _flexiMenu_typeMenuSources_ID_type))) then {
+						_target = if ((_vehicleTarget != player) && 
+							({_vehicleTarget isKindOf _x} count _typesList > 0)) then
+						{
 							_vehicleTarget
 						} else {
 							_potentialTarget
 						};
-						if (_x select _flexiMenu_typeMenuSources_ID_type == "player") then
+						if ("player" in _typesList) then
 						{
 							_target = player;
 						};

@@ -105,7 +105,10 @@ _idc = _flexiMenu_baseIDC_listButton;
 		(GVAR(display) displayCtrl _idc) ctrlShow (_visible > 0);
 		(GVAR(display) displayCtrl _idc) ctrlEnable (_enabled != 0);
 	};
-	_idc = _idc+1;
+	if (_visible != 0) then // i.e. in [-1,1]
+	{
+		_idc = _idc+1;
+	}; // else if (_visible == 0) then {re-use hidden button idc}
 } forEach (_menuDefs select 1);
 
 _idc = _flexiMenu_baseIDC_listButton;
