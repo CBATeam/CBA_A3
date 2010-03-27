@@ -110,6 +110,16 @@ _idc = _flexiMenu_baseIDC_listButton;
 		_idc = _idc+1;
 	}; // else if (_visible == 0) then {re-use hidden button idc}
 } forEach (_menuDefs select 1);
-
+//-----------------------------------------------------------------------------
+// hide and disable unused list buttons
+with uiNamespace do
+{
+	for [{_i = _idc}, {_i < _flexiMenu_baseIDC_listButton+_flexiMenu_maxButtons}, {_i = _i + 1}] do
+	{
+		(GVAR(display) displayCtrl _i) ctrlShow false;
+		(GVAR(display) displayCtrl _i) ctrlEnable false;
+	};
+};
+//-----------------------------------------------------------------------------
 _idc = _flexiMenu_baseIDC_listButton;
 ctrlSetFocus (GVAR(display) displayCtrl _idc);

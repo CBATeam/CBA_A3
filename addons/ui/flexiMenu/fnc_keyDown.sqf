@@ -2,7 +2,7 @@
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "data\common.hpp"
 
-#define _minObjDist(_var) (4 max (1.4+(sizeOf typeOf _var)/2)) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
+#define _minObjDist(_var) (2 max (1.4+(sizeOf typeOf _var)/2)) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
 private["_handled", /* "_ctrl", */ "_dikCode", /* "_shift", "_ctrlKey", "_alt", */
 	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget", 
