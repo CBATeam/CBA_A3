@@ -557,6 +557,7 @@ Author:
 // User Functions
 // Please define PREFIX and COMPONENT before including
 #define ADDON DOUBLES(PREFIX,COMPONENT)
+#define MAIN_ADDON DOUBLES(PREFIX,main)
 
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
