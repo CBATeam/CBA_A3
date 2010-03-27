@@ -635,6 +635,19 @@ Author:
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
+#ifndef PRELOAD_ADDONS
+	#define PRELOAD_ADDONS class CfgAddons \
+{ \
+	class PreloadAddons \
+	{ \
+		class ADDON \
+		{ \
+			list[]={ QUOTE(ADDON) }; \
+		}; \
+	}; \
+}
+#endif
+
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
 #define ARG_3(A,B,C,D) (ARG_1(ARG_2(A,B,C),D))
