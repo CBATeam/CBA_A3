@@ -3,9 +3,9 @@
 
 private ['_msg', '_i'];
 
-/* // _this = ["player", [DIK_LSHIFT], ["mission\weapon_menuDef.sqf", ["main"]]] */
+// _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 
-/* // validate params */
+// validate params
 _msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
 if (isNil QUOTE(GVAR(typeMenuSources))) exitWith {diag_log _msg};
 if (typeName _this != typeName []) exitWith {diag_log _msg};
