@@ -46,6 +46,7 @@ Dir["skel/**/*"].each do |e|
 		str.gsub!("__PREFIX__", prefix)
 		
 		ne = e.sub!("skel/", "")
+		ne.gsub!(".cpp.hpp", ".cpp")
 		File.open(File.join(path, ne), "w") {|f| f.puts str}
 	end
 end
