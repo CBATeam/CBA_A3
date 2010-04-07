@@ -8,13 +8,14 @@
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
 
-private["_menuDefs0", "_menuDef", 
+private["_menuDefs0", "_menuDef", "_fastPartialResult", 
 	"_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled", 
 	"_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
 	"_keyName", "_offset"];
 
 _menuDefs0 = _this select 0;
 _menuDef = _this select 1;
+IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
 
 IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
 IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
@@ -139,7 +140,10 @@ if (_index >= 0) then
 // TODO: Read an appropriate color from the menu class.
 
 		_offset = (if (_containCaret) then {1} else {0});
-		_caption = [_array, _index, _offset, _ST_highlightKey_attribute] call FUNC(highlightCaretKey);
+		if (!_fastPartialResult) then
+		{
+			_caption = [_array, _index, _offset, _ST_highlightKey_attribute] call FUNC(highlightCaretKey);
+		};
 	}
 	else
 	{
@@ -167,7 +171,7 @@ else
 };
 //-----------------------------------------------------------------------------
 IfCountDefault(_icon,_menuDef,_flexiMenu_menuDef_ID_icon,"");
-if (_icon != "") then
+if (_icon != "" && !_fastPartialResult) then
 {
 	_array = toArray _icon;
 	// if pathname does not already contain a folder path
@@ -187,6 +191,7 @@ if (_caption != "") then
 };
 //-----------------------------------------------------------------------------
 _result = [];
+_result resize _flexiMenu_menuDef_ID_totalIDs;
 _result set [_flexiMenu_menuDef_ID_caption, _caption];
 _result set [_flexiMenu_menuDef_ID_action, _action];
 _result set [_flexiMenu_menuDef_ID_icon, _icon];

@@ -16,6 +16,10 @@ _dikCode = _this select 1;
 
 _handled = false;
 
+// prevent unneeded cpu usage due to key down causing repeated event trigger
+if (time-(GVAR(lastAccessCheck) select 0) < 0.150 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
+GVAR(lastAccessCheck) = [time, _dikCode];
+
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
@@ -31,9 +35,8 @@ if !(_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) exitWith
 	_handled // result
 };
 //-----------------------------------------------------------------------------
-if (!GVAR(optionSelected) && time-GVAR(lastAccessTime) > 0.4) then
+if (!GVAR(optionSelected)) then
 {
-	GVAR(lastAccessTime) = time;
 	// check if menu already open
 	_active = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
 	if (_active) then

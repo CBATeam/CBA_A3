@@ -39,6 +39,7 @@
 #define _flexiMenu_menuDef_ID_shortcut 5
 #define _flexiMenu_menuDef_ID_enabled 6
 #define _flexiMenu_menuDef_ID_visible 7
+#define _flexiMenu_menuDef_ID_totalIDs 8
 
 #define _menuRscPrefix "CBA_flexiMenu_rsc"
 

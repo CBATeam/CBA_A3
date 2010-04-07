@@ -17,17 +17,18 @@ _ctrlKey = _EHParams select 3;
 _altKey = _EHParams select 4;
 
 _handled = false;
-//if (isNil QUOTE(GVAR(lastAccessTime))) then {GVAR(lastAccessTime) = 0};
-//if (time-GVAR(lastAccessTime) < 0.1) exitWith {_handled};
-//GVAR(lastAccessTime) = time;
+
+// prevent unneeded cpu usage due to key down causing repeated event trigger
+if (time-(GVAR(lastAccessCheck) select 0) < 0.150 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
+GVAR(lastAccessCheck) = [time, _dikCode];
 
 _menuDefs = (_this select 1) call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 { // forEach
-	_menuOption = [_menuDefs select 0, _x] call FUNC(getMenuOption);
+	_menuOption = [_menuDefs select 0, _x, true] call FUNC(getMenuOption); // get fast partial record
 
 	//_caption = _menuOption select _flexiMenu_menuDef_ID_caption;
-	_action = _menuOption select _flexiMenu_menuDef_ID_action;
+	//_action = _menuOption select _flexiMenu_menuDef_ID_action;
 	//_icon = _menuOption select _flexiMenu_menuDef_ID_icon;
 	//_tooltip = _menuOption select _flexiMenu_menuDef_ID_tooltip;
 	//_subMenu = _menuOption select _flexiMenu_menuDef_ID_subMenuSource;
@@ -37,6 +38,9 @@ _menuDefs = (_this select 1) call FUNC(getMenuDef);
 
 	if (_dikCode == _shortcut && _enabled != 0 && _visible > 0) exitWith
 	{
+		_menuOption = [_menuDefs select 0, _x, false] call FUNC(getMenuOption); // get complete same record
+		_action = _menuOption select _flexiMenu_menuDef_ID_action;
+
 		call compile _action;
 		_handled = true;
 	};
