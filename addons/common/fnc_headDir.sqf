@@ -54,15 +54,14 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-private["_unit", "_object", "_position", "_viewpos", "_vector", "_magnitude", "_azimuth", "_angle", "_dif", "_infov", "_threed"];
+private["_position", "_viewpos", "_vector", "_magnitude", "_azimuth", "_angle", "_dif", "_infov", "_threed"];
 
 PARAMS_1(_unit);
 _ai = false;
 _threed = false;
 if (_unit != player) then { _ai = true };
-_object = _this select 1;
-if (isNil ("_object")) then { _object = _unit;};
-//player sidechat format ["unit:%1 is ai =%2 and object is %3", _unit,_ai,_object];
+DEFAULT_PARAM(1,_object,_unit);
+TRACE_3("params",_unit,_ai,_object);
 
 if !(typeName _object == "ARRAY") then
 {
@@ -93,9 +92,9 @@ else
 };
 
 _angle = ((_object select 0)-(getPos _unit select 0)) atan2 ((_object select 1)-(getPos _unit select 1));
-//player sidechat format ["_pos: %1 _angle:%2", _pos,_angle];
+TRACE_2("",_pos,_angle);
 	
-_dif = (_angle - _azimuth);
+_dif = _angle - _azimuth;
 
 if (_dif < 0) then { _dif = 360 + _dif;};
 if (_dif > 180) then { _dif = _dif - 360;};
