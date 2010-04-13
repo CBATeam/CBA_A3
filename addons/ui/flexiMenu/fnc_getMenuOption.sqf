@@ -154,7 +154,8 @@ if (_index >= 0) then
 else
 {
 	// map menu shortcut DIK code
-	if (_shortcut_DIK != -1) then
+	// Note: don't append shortcut to empty caption, which is usually an "icon only" menu, without text captions.
+	if (_shortcut_DIK != -1 && _caption != "") then 
 	{
 		private ["_keyName"];
 		_keyName = keyName _shortcut_DIK;

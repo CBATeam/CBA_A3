@@ -23,7 +23,10 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource;
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc)) then // if not a full class name
 {
-	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	if (!isClass (missionConfigFile >> _menuRsc)) then // if not a full class name
+	{
+		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	};
 };
 
 // TODO: Support missionConfigFile too
@@ -51,14 +54,17 @@ with uiNamespace do
 	(GVAR(display) displayCtrl _idc) ctrlShow true;
 };
 
-// TODO: Support missionConfigFile too
 // TODO: For merged menus, _menuRsc must come from the first merged menu, not secondary.
-_width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+_width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 //player sideChat format ["control width = %1", [_width, _menuRsc]];
 if (_width == 0) then
 {
-	player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
-	_width = _SMW;
+	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+	if (_width == 0) then
+	{
+		player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
+		_width = _SMW;
+	};
 };
 
 _idc = _flexiMenu_baseIDC_listButton;
