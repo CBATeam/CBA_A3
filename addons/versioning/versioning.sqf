@@ -3,7 +3,6 @@
 #define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
 TRACE_1("",GVAR(versions));
-if !(isNil QUOTE(GVAR(versions_server))) then { TRACE_1("",GVAR(versions_server)) };
 SLEEP(3); // Test workaround for JIP issue
 
 if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
@@ -36,7 +35,6 @@ if (isServer) then
 	processInitCommands;
 } else {
 	waitUntil {!(isNil QUOTE(GVAR(versions_server)))};
-	TRACE_1("",GVAR(versions));
 	TRACE_1("",GVAR(versions_server));
 	[GVAR(versions_server), {call FUNC(version_check)}] call CBA_fnc_hashEachPair;
 };
