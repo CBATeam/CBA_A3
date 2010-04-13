@@ -109,7 +109,10 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; //
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc)) then // if not a full class name
 {
-	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	if (!isClass (missionConfigFile >> _menuRsc)) then // if not a full class name
+	{
+		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	};
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
@@ -128,12 +131,15 @@ GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEve
 
 _idcIndex = 0;
 
-// TODO: Support missionConfigFile too
-_width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+_width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 if (_width == 0) then
 {
-	player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
-	_width = _SMW;
+	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+	if (_width == 0) then
+	{
+		player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
+		_width = _SMW;
+	};
 };
 //-----------------------------------------------------------------------------
 _commitList = [];
