@@ -14,7 +14,7 @@ PREP_SUB(flexiMenu,list);
 PREP_SUB(flexiMenu,getMenuDef);
 PREP_SUB(flexiMenu,getMenuOption);
 PREP_SUB(flexiMenu,menuShortcut);
-PREP_SUB(flexiMenu,mouseButtonDown);
+//PREP_SUB(flexiMenu,mouseButtonDown);
 PREP_SUB(flexiMenu,highlightCaretKey);
 PREP_SUB(flexiMenu,execute);
 
