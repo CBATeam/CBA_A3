@@ -17,7 +17,7 @@ _dikCode = _this select 1;
 _handled = false;
 
 // prevent unneeded cpu usage due to key down causing repeated event trigger
-if (time-(GVAR(lastAccessCheck) select 0) < 0.150 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
+if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
 GVAR(lastAccessCheck) = [time, _dikCode];
 
 // scan typeMenuSources key list (optimise overhead)
@@ -30,12 +30,12 @@ _potentialKeyMatch = false;
 } forEach GVAR(typeMenuSources);
 
 // check if interaction key used
-if !(_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) exitWith
+if !(_potentialKeyMatch) exitWith
 {
 	_handled // result
 };
 //-----------------------------------------------------------------------------
-if (!GVAR(optionSelected)) then
+if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 {
 	// check if menu already open
 	_active = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
@@ -43,17 +43,18 @@ if (!GVAR(optionSelected)) then
 	{
 		_active = (!isNull (uiNamespace getVariable QUOTE(GVAR(display))));
 	};
-	if (!_active) then
+	if (_active) then
 	{
+		if (!GVAR(holdKeyDown)) then
+		{
+			closeDialog 0;
+		};
+	}
+	else
+	{
+		//player sideChat format [__FILE__+": _active", _this];
 		// examine cursor object for relevant menu def variable
 		_target = objNull;
-		// if dedicated interact key is used
-		if (_dikCode in _flexiMenu_interactKeys) then {_target = cursorTarget};
-		if (!isNull _target) then
-		{
-			if (_target distance player > _minObjDist(_target)) then {_target = objNull};
-		};
-
 		_isTypeTarget = false;
 
 		// check for [cursorTarget or "player" or "vehicle"] types in typeMenuSources list
@@ -126,10 +127,6 @@ if (!GVAR(optionSelected)) then
 		{
 			//player sideChat format [__FILE__+": no cursor target", _this];
 		};
-	}
-	else
-	{
-		//player sideChat format [__FILE__+": _active", _this];
 	};
 };
 

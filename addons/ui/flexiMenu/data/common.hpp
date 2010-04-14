@@ -49,5 +49,3 @@
 #define _SMW 0.15*safeZoneW // common sub-menu width
 
 #define _LBH 0.033*safeZoneH // list button height
-
-#define _flexiMenu_interactKeys [DIK_LWIN] // object interaction dik keys list

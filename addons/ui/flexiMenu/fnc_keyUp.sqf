@@ -13,6 +13,8 @@ _dikCode = _this select 1;
 _handled = false;
 //player sideChat format [__FILE__+":", _this];
 
+if (!GVAR(holdKeyDown)) exitWith {_handled}; // key release monitoring not required.
+
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
@@ -23,7 +25,7 @@ _potentialKeyMatch = false;
 } forEach GVAR(typeMenuSources);
 
 // check if interaction key used
-if !(_potentialKeyMatch || (_dikCode in _flexiMenu_interactKeys)) exitWith
+if !(_potentialKeyMatch) exitWith
 {
 	_handled // result
 };

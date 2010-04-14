@@ -128,6 +128,8 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 _menuSources = _this select 1;
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
 	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
+/* GVAR(mouseButtonDownEHID) = */ (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["mouseButtonDown", 
+	format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 

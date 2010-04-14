@@ -5,6 +5,7 @@ if (isDedicated) exitWith {false};
 // list of all menu activation keys and associated types
 GVAR(typeMenuSources) = []; // types, keys and menu sources data
 GVAR(target) = objNull; // current object for interaction
+GVAR(holdKeyDown) = false; // default global behaviour of requiring holding key down. Can be overriden by menus.
 
 PREP_SUB(flexiMenu,keyDown);
 PREP_SUB(flexiMenu,keyUp);
@@ -13,6 +14,7 @@ PREP_SUB(flexiMenu,list);
 PREP_SUB(flexiMenu,getMenuDef);
 PREP_SUB(flexiMenu,getMenuOption);
 PREP_SUB(flexiMenu,menuShortcut);
+PREP_SUB(flexiMenu,mouseButtonDown);
 PREP_SUB(flexiMenu,highlightCaretKey);
 PREP_SUB(flexiMenu,execute);
 

@@ -19,8 +19,18 @@ _altKey = _EHParams select 4;
 _handled = false;
 
 // prevent unneeded cpu usage due to key down causing repeated event trigger
-if (time-(GVAR(lastAccessCheck) select 0) < 0.150 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
-GVAR(lastAccessCheck) = [time, _dikCode];
+if (GVAR(holdKeyDown)) then
+{
+	if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
+	GVAR(lastAccessCheck) = [time, _dikCode];
+};
+
+if (!GVAR(holdKeyDown) && (_dikCode in (actionKeys "menuBack"))) exitWith
+{
+	closeDialog 0;
+	_handled = true;
+	_handled
+};
 
 _menuDefs = (_this select 1) call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
