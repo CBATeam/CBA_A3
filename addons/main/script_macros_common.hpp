@@ -741,6 +741,7 @@ Macros: EXPLODE_n()
 	EXPLODE_6(ARRAY,A,B,C,D,E,F) - Split a 6-element array into separate variables.
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G) - Split a 7-element array into separate variables.
 	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) - Split a 8-element array into separate variables.
+	EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) - Split a 9-element array into separate variables.
 	
 Parameters:
 	ARRAY - Array to read from [Array]
@@ -775,6 +776,9 @@ Author:
 	
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
+	
+#define EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) \
+	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
 
 /* -------------------------------------------
 Group: Managing Function Parameters

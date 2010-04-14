@@ -5,8 +5,8 @@ Description:
 	A function for a group to randomly patrol a parsed radius and location.
 Parameters:
 	- Group (Group or Object)
-	- Position (XYZ, Object, Location or Group)
 	Optional:
+	- Position (XYZ, Object, Location or Group)
 	- Radius (Scalar)
 	- Waypoint Count (Scalar)
 	- Waypoint Type (String)
