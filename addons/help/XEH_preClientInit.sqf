@@ -71,10 +71,8 @@ FUNC(readConfig) = {
 	for "_i" from 0 to (count _config) - 1 do {
 		_entry = _config select _i;
 		if (isClass _entry) then {
-			_author = _entry >> "Author";
-			_authorUrl = _entry >> "AuthorUrl";
-			if (isArray _author) then { [_hash, configName _entry, getArray _author] call CBA_fnc_hashSet };
-			if (isText _authorUrl) then { [_hash2, configName _entry, getText _authorUrl] call CBA_fnc_hashSet };
+			if (isArray (_entry >> "author")) then { [_hash, configName _entry, getArray(_entry >> "author")] call CBA_fnc_hashSet };
+			if (isText (_entry >> "authorUrl")) then { [_hash2, configName _entry, getText(_entry >> "authorUrl")] call CBA_fnc_hashSet };
 		};
 	};
 	[_hash, _hash2];
@@ -83,7 +81,7 @@ FUNC(readConfig) = {
 FUNC(process) = {
 	PARAMS_2(_h1,_h2);
 	_ar = [];
-	[_h1, {_entry = format["%1, URL: %3<br/>Authors: %2", _key, [_value, ", "] call CBA_fnc_join, [_h2, _key] call CBA_fnc_hashGet]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
+	[_h1, {_entry = format["%1, URL: %3<br/>Author: %2", _key, [_value, ", "] call CBA_fnc_join, [_h2, _key] call CBA_fnc_hashGet]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
 	[_ar, "<br/><br/>"] call CBA_fnc_join;
 };
 

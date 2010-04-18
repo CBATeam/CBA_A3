@@ -34,6 +34,17 @@
 <French>Wiki (Documentation)</French>
 <Hungarian>Wiki (Documentation)</Hungarian>
 </Key>
+<Key ID="STR_DN_CBA_CREDITS">
+<English>Credits</English>
+<German>Credits</German>
+<Spanish>Credits</Spanish>
+<Czech>Credits</Czech>
+<Russian>Credits</Russian>
+<Italian>Credits</Italian>
+<Polish>Twórcy</Polish>
+<French>Credits</French>
+<Hungarian>Credits</Hungarian>
+</Key>
 <Key ID="STR_DN_CBA_CREDITS_ADDONS">
 <English>Credits - Addons</English>
 <German>Credits - Addons</German>
