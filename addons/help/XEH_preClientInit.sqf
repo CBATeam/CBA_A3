@@ -70,8 +70,8 @@ FUNC(readConfig) = {
 	for "_i" from 0 to (count _config) - 1 do {
 		_entry = _config select _i;
 		if (isClass _entry) then {
-			_author = _entry >> "AUTHOR";
-			_authorUrl = _entry >> "AUTHOR_URL";
+			_author = _entry >> "Author";
+			_authorUrl = _entry >> "AuthorUrl";
 			if (isArray _author) then { [_hash, configName _entry, getArray _author] call CBA_fnc_hashSet };
 			if (isText _authorUrl) then { [_hash2, configName _entry, getText _authorUrl] call CBA_fnc_hashSet };
 		};
