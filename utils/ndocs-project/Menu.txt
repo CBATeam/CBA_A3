@@ -175,6 +175,7 @@ Group: Functions  {
          File: getMarkerPersistent  (no auto-title, network\fnc_getMarkerPersistent.sqf)
          File: globalExecute  (no auto-title, network\fnc_globalExecute.sqf)
          File: globalSay  (no auto-title, network\fnc_globalSay.sqf)
+         File: globalSay3d  (no auto-title, network\fnc_globalSay3d.sqf)
          File: setMarkerPersistent  (no auto-title, network\fnc_setMarkerPersistent.sqf)
          }  # Group: Network
 

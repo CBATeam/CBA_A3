@@ -30,13 +30,13 @@ class CfgFunctions
 			// CBA_fnc_taskDefend
 			class taskDefend
 			{
-				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They will also patrol the radius. Parameters: - Group (Group or Object) - Position (XYZ, Object, Location or Group) Optional: - Defend Radius (Scalar) Example: [group player, player] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
+				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They will also patrol the radius. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Defend Radius (Scalar) Example: [group player] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\ai\fnc_taskDefend.sqf";
 			};
 			// CBA_fnc_taskPatrol
 			class taskPatrol
 			{
-				description = "A function for a group to randomly patrol a parsed radius and location. Parameters: - Group (Group or Object) - Position (XYZ, Object, Location or Group) Optional: - Radius (Scalar) - Waypoint Count (Scalar) - Waypoint Type (String) - Behaviour (String) - Combat Mode (String) - Speed Mode (String) - Formation (String) - Code To Execute at Each Waypoint (String) - TimeOut at each Waypoint (Array [Min, Med, Max]) Example: [this, this, 300, 7, ""MOVE"", ""AWARE"", ""YELLOW"", ""FULL"", ""STAG COLUMN"", ""this spawn CBA_fnc_taskSearchHouse"", [3,6,9]] call CBA_fnc_taskPatrol;";
+				description = "A function for a group to randomly patrol a parsed radius and location. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Radius (Scalar) - Waypoint Count (Scalar) - Waypoint Type (String) - Behaviour (String) - Combat Mode (String) - Speed Mode (String) - Formation (String) - Code To Execute at Each Waypoint (String) - TimeOut at each Waypoint (Array [Min, Med, Max]) Example: [this, getmarkerpos ""objective1""] call CBA_fnc_taskPatrol [this, this, 300, 7, ""MOVE"", ""AWARE"", ""YELLOW"", ""FULL"", ""STAG COLUMN"", ""this spawn CBA_fnc_taskSearchHouse"", [3,6,9]] call CBA_fnc_taskPatrol;";
 				file = "\x\cba\addons\ai\fnc_taskPatrol.sqf";
 			};
 		};
