@@ -46,7 +46,25 @@ if !(isNull player) then
 
 if !(isDedicated) then
 {
-	startLoadingScreen ["Post Initialization Processing...", "RscDisplayLoadMission"];
+	_text = "Post Initialization Processing...";
+	if !(isNil "CBA_help_credits") then {
+		// Randomly pick 2 addons from cfgPatches to display credits
+		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
+		_cr = [];
+		_tmp = [];
+		{ PUSH(_tmp,_x) } forEach ((_credits select 0) select 1);
+		_tmp = [_tmp] call CBA_fnc_shuffle;
+		for "_i" from 0 to 1 do {
+			_key = _tmp select _i;
+			//diag_log _key;
+			_entry = format["%1, by: %2", _key, [[_credits select 0, _key] call CBA_fnc_hashGet, ", "] call CBA_fnc_join];
+			PUSH(_cr,_entry);
+		};
+		_text = [_cr, ". "] call CBA_fnc_join;
+		diag_log _text;
+	};
+	
+	startLoadingScreen [_text, "RscDisplayLoadMission"];
 	[] spawn
 	{
 		private["_time2Wait"];

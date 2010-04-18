@@ -82,15 +82,18 @@ FUNC(process) = {
 };
 
 GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
-{ [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches", "CfgVehicles", "CfgWeapons"];
+{ [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
 
+_text spawn {
+	// Wait until player is ready
+	waitUntil {player == player};
 
-player createDiarySubject ["CBA_docs", "CBA"]; 
-player createDiaryRecord ["CBA_docs", ["Credits - Addons", ([GVAR(credits), "CfgPatches"] call CBA_fnc_hashGet) call FUNC(process)]];
-player createDiaryRecord ["CBA_docs", ["Credits - Vehicles", ([GVAR(credits), "CfgVehicles"] call CBA_fnc_hashGet) call FUNC(process)]];
-player createDiaryRecord ["CBA_docs", ["Credits - Weapons", ([GVAR(credits), "CfgWeapons"] call CBA_fnc_hashGet) call FUNC(process)]];
-player createDiaryRecord ["CBA_docs", ["Keys", _text]];
-player createDiaryRecord ["CBA_docs", ["Website", "http://dev-heaven.net/projects/cca"]];
-player createDiaryRecord ["CBA_docs", ["Wiki", "http://dev-heaven.net/projects/cca"]];
-
+	player createDiarySubject ["CBA_docs", "CBA"]; 
+	player createDiaryRecord ["CBA_docs", ["Credits - Addons", ([GVAR(credits), "CfgPatches"] call CBA_fnc_hashGet) call FUNC(process)]];
+	//player createDiaryRecord ["CBA_docs", ["Credits - Vehicles", ([GVAR(credits), "CfgVehicles"] call CBA_fnc_hashGet) call FUNC(process)]];
+	//player createDiaryRecord ["CBA_docs", ["Credits - Weapons", ([GVAR(credits), "CfgWeapons"] call CBA_fnc_hashGet) call FUNC(process)]];
+	player createDiaryRecord ["CBA_docs", ["Keys", _this]];
+	player createDiaryRecord ["CBA_docs", ["Website", "http://dev-heaven.net/projects/cca"]];
+	player createDiaryRecord ["CBA_docs", ["Wiki", "http://dev-heaven.net/projects/cca"]];
+};

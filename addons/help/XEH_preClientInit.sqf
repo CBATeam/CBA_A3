@@ -9,6 +9,6 @@ PREP(doc_init);
 PREP(help);
 PREP(describe);
 
-[] spawn FUNC(doc_init);
+call FUNC(doc_init);
 
 ADDON = true;
