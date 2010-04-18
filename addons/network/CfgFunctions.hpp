@@ -27,6 +27,12 @@ class CfgFunctions
 				description = "Says sound on all client computer";
 				file = "\x\cba\addons\network\fnc_globalSay.sqf";
 			};
+			// CBA_fnc_globalSay3d
+			class globalSay3d
+			{
+				description = "Says sound on all client computer in 3d";
+				file = "\x\cba\addons\network\fnc_globalSay3d.sqf";
+			};
 			// CBA_fnc_setMarkerPersistent
 			class setMarkerPersistent
 			{
