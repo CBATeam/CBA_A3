@@ -16,7 +16,7 @@ _pkeynam = { //local function
 	_keys = [_shift,_ctrl,_alt,_key];
 	_keystrg = "^";
 	{
-		_mod = _x in [42,56,29];
+		_mod = _x in [42,56,29]; // ???
 		_knaml = call compile format["format['%2',%1]",(keyName _x),"%1"];
 		_knaml = [_knaml, " "] call CBA_fnc_split;
 		_knam = "^";
@@ -40,7 +40,8 @@ for "_i" from 0 to (count _cEvents)-1 do {
 		//format system name
 		_aSys = [_tSys, "_"] call CBA_fnc_split;
 		_tS = "^";
-		{if((_x != "ace") && (_x != "sys")) then {_tS = _tS + " " + _x;}} forEach _aSys;
+		{if((_x != "sys")) then {_tS = _tS + " " + _x;}} forEach _aSys;
+		// (_x != "ace") && 
 		_tS = [_tS, "^ ", ""] call CBA_fnc_replace;
 		_tS = format["%1:",_tS];
 		_text = _text + _tS + "<br/>";

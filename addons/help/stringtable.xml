@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project name="Arma2"><Package name="CBA">
+<Container name="STR_DN">
+<Key ID="STR_DN_CBA_HELP_KEYS">
+<English>Keybindings</English>
+<German>Tastendruckzuweisung</German>
+<Spanish>Keybindings</Spanish>
+<Czech>Keybindings</Czech>
+<Russian>Keybindings</Russian>
+<Italian>Keybindings</Italian>
+<Polish>Klawisze</Polish>
+<French>Keybindings</French>
+<Hungarian>Keybindings</Hungarian>
+</Key>
+<Key ID="STR_DN_CBA_WEBSITE">
+<English>Bugtracker</English>
+<German>Bugtracker</German>
+<Spanish>Bugtracker</Spanish>
+<Czech>Bugtracker</Czech>
+<Russian>Bugtracker</Russian>
+<Italian>Bugtracker</Italian>
+<Polish>Zgłaszanie błędów</Polish>
+<French>Bugtracker</French>
+<Hungarian>Bugtracker</Hungarian>
+</Key>
+<Key ID="STR_DN_CBA_WEBSITE_WIKI">
+<English>Wiki (Documentation)</English>
+<German>Wiki (Documentation)</German>
+<Spanish>Wiki (Documentation)</Spanish>
+<Czech>Wiki (Documentation)</Czech>
+<Russian>Wiki (Documentation)</Russian>
+<Italian>Wiki (Documentation)</Italian>
+<Polish>Wiki (dokumentacja)</Polish>
+<French>Wiki (Documentation)</French>
+<Hungarian>Wiki (Documentation)</Hungarian>
+</Key>
+<Key ID="STR_DN_CBA_CREDITS_ADDONS">
+<English>Credits - Addons</English>
+<German>Credits - Addons</German>
+<Spanish>Credits - Addons</Spanish>
+<Czech>Credits - Addons</Czech>
+<Russian>Credits - Addons</Russian>
+<Italian>Credits - Addons</Italian>
+<Polish>Twórcy - Addons</Polish>
+<French>Credits - Addons</French>
+<Hungarian>Credits - Addons</Hungarian>
+</Key>
+</Container>
+</Package></Project>
