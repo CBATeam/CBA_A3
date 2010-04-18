@@ -7,7 +7,9 @@ class CfgPatches
 		units[] = {};
 		requiredVersion = 1;
 		requiredAddons[] = { "CBA_common" };
-		version = 0;
+		version = VERSION;
+		author[] = {"Dr Eyeball"};
+		authorUrl = URL;
 	};
 };
 

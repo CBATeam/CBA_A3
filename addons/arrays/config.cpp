@@ -7,6 +7,8 @@ class CfgPatches
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = { "CBA_common" };
 		version = VERSION;
+		author[] = {"Spooner"};
+		authorUrl = URL;
 	};
 };
 
