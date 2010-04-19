@@ -7,8 +7,29 @@ ADDON = false;
 PREP(help);
 PREP(describe);
 
-private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg", "_mod", "_knaml", "_knam", "_k", "_text", "_cEvents", "_i", "_cSys", "_tSys", "_aSys", "_tS", "_j", "_c", "_tC", "_keyn", "_credits"];
+FUNC(readConfig) = {
+	PARAMS_1(_type);
+	_config = configFile >> _type;
+	_hash = [[], []] call CBA_fnc_hashCreate;
+	_hash2 = [[], ""] call CBA_fnc_hashCreate;
+	for "_i" from 0 to (count _config) - 1 do {
+		_entry = _config select _i;
+		if (isClass _entry) then {
+			if (isArray (_entry >> "author")) then { [_hash, configName _entry, getArray(_entry >> "author")] call CBA_fnc_hashSet };
+			if (isText (_entry >> "authorUrl")) then { [_hash2, configName _entry, getText(_entry >> "authorUrl")] call CBA_fnc_hashSet };
+		};
+	};
+	[_hash, _hash2];
+};
 
+FUNC(process) = {
+	PARAMS_2(_h1,_h2);
+	_ar = [];
+	[_h1, {_entry = format["%1, URL: %3<br/>Author: %2", _key, [_value, ", "] call CBA_fnc_join, [_h2, _key] call CBA_fnc_hashGet]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
+	[_ar, "<br/><br/>"] call CBA_fnc_join;
+};
+
+private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg", "_mod", "_knaml", "_knam", "_k", "_text", "_cEvents", "_i", "_cSys", "_tSys", "_aSys", "_tS", "_j", "_c", "_tC", "_keyn", "_credits"];
 _pkeynam = { //local function
 	_shift = if(_shift > 0) then {42} else {0};
 	_ctrl = if(_ctrl > 0) then {56} else {0};
@@ -60,29 +81,6 @@ for "_i" from 0 to (count _cEvents)-1 do {
 		};
 		_text = _text + "<br/>";
 	};
-};
-
-
-FUNC(readConfig) = {
-	PARAMS_1(_type);
-	_config = configFile >> _type;
-	_hash = [[], []] call CBA_fnc_hashCreate;
-	_hash2 = [[], ""] call CBA_fnc_hashCreate;
-	for "_i" from 0 to (count _config) - 1 do {
-		_entry = _config select _i;
-		if (isClass _entry) then {
-			if (isArray (_entry >> "author")) then { [_hash, configName _entry, getArray(_entry >> "author")] call CBA_fnc_hashSet };
-			if (isText (_entry >> "authorUrl")) then { [_hash2, configName _entry, getText(_entry >> "authorUrl")] call CBA_fnc_hashSet };
-		};
-	};
-	[_hash, _hash2];
-};
-
-FUNC(process) = {
-	PARAMS_2(_h1,_h2);
-	_ar = [];
-	[_h1, {_entry = format["%1, URL: %3<br/>Author: %2", _key, [_value, ", "] call CBA_fnc_join, [_h2, _key] call CBA_fnc_hashGet]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
-	[_ar, "<br/><br/>"] call CBA_fnc_join;
 };
 
 GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
