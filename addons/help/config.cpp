@@ -7,7 +7,7 @@ class CfgPatches {
 		requiredAddons[] = { "cba_common" };
 		version = VERSION;
 		author[] = {"alef", "Rocko", "Sickboy"};
-		authorUrl = URL;
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 

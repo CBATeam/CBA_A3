@@ -9,7 +9,7 @@ class CfgPatches
 		requiredAddons[] = { "CBA_common" };
 		version = VERSION;
 		author[] = {"Dr Eyeball"};
-		authorUrl = URL;
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 

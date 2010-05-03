@@ -11,7 +11,7 @@ class CfgPatches
 		requiredAddons[] = { "Extended_EventHandlers", "cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_versioning", "cba_ui", "cba_help" };
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
-		authorUrl = URL;
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 

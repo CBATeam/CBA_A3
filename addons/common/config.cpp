@@ -9,7 +9,7 @@ class CfgPatches
 		requiredAddons[] = { "Extended_EventHandlers" };
 		version = VERSION;
 		author[] = {"Spooner", "Sickboy", "Rocko"};
-		authorUrl = URL;
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 #include "CfgEventHandlers.hpp"
