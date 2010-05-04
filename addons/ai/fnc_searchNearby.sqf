@@ -14,9 +14,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "\x\cba\addons\main\script_macros_common.hpp"
-
-#define ARG2(X,Y)	((X) select (Y))
+#include "script_component.hpp"
 
 _group = _this call CBA_fnc_getGroup;
 _group lockWP true;
@@ -27,8 +25,8 @@ _group setBehaviour "COMBAT";
 
 private ["_array", "_building", "_indices"];
 _array = _leader call CBA_fnc_getNearestBuilding;
-_building = ARG2(_array, 0);
-_indices = ARG2(_array, 1);
+_building = ARG_2(_array, 0);
+_indices = ARG_2(_array, 1);
 _group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
 
 if (([_group, _building] call CBA_fnc_getDistance) > 500) exitwith {_group lockWP false};

@@ -31,7 +31,7 @@ _ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 if (typeName _ar != "ARRAY") then { _ar = [] };
 _id = if (isDedicated || (isNull (findDisplay 46))) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
 _idx = count _ar;
-_ar set [_idx, [_id, _code]];
+_ar set [_idx, [if (isNil "_id") then { nil } else { _id }, _code]];
 [GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
 if (isNil "_id" && !isDedicated) then { [] spawn FUNC(attach_handler) };
 _idx;

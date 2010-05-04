@@ -7,6 +7,8 @@ class CfgPatches
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = { "Extended_EventHandlers", "CBA_common" };
 		version = VERSION;
+		author[] = {"Sickboy"};
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 #include "CfgEventhandlers.hpp"

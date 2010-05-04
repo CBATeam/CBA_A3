@@ -1,38 +1,41 @@
 // Desc: parse and set menu option record values
 // _this = [_menuDefs select 0, _menuDefs select 1 select N] (header & one menu def)
 //-----------------------------------------------------------------------------
-private["_menuDefs0", "_menuDef", 
-	"_result", "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled", 
-	"_array", "_index", "_containCaret", "_subMenuSource", "_asciiKey", "_iconFolder", "_multiReselect",
-	"_keyName", "_offset", "_params", "_useListBox"];
-
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "DIKASCIIMap.hpp"
 #include "data\common.hpp"
 
+#define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
+
+private["_menuDefs0", "_menuDef", "_fastPartialResult", 
+	"_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled", 
+	"_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
+	"_keyName", "_offset"];
+
 _menuDefs0 = _this select 0;
 _menuDef = _this select 1;
+IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
 
-_iconFolder = if (count _menuDefs0 > _flexiMenu_menuProperty_ID_iconFolder) then {_menuDefs0 select _flexiMenu_menuProperty_ID_iconFolder} else {""}; // base icon folder (eg: "\ca\ui\data\")
-_multiReselect = if (count _menuDefs0 > _flexiMenu_menuProperty_ID_multiReselect) then {_menuDefs0 select _flexiMenu_menuProperty_ID_multiReselect} else {0}; // menuStayOpenUponSelect: 0/1 type boolean
-if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1}else{0}};
+IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
+IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
+if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1}else{0}}; // convert boolean to integer
 
 _caption = "";
-_action = "";
+IfCountDefault(_action,_menuDef,_flexiMenu_menuDef_ID_action,"");
 _icon = "";
 _tooltip = "";
-_subMenu = "";
+IfCountDefault(_subMenu,_menuDef,_flexiMenu_menuDef_ID_subMenuSource,"");
 _shortcut_DIK = -1;
 _enabled = 0;
 _visible = 0;
 //-----------------------------------------------------------------------------
 _caption = _menuDef select _flexiMenu_menuDef_ID_caption;
-_shortcut_DIK = if (count _menuDef > _flexiMenu_menuDef_ID_shortcut) then {_menuDef select _flexiMenu_menuDef_ID_shortcut} else {-1};
-_tooltip = if (count _menuDef > _flexiMenu_menuDef_ID_tooltip) then {_menuDef select _flexiMenu_menuDef_ID_tooltip} else {""};
+IfCountDefault(_shortcut_DIK,_menuDef,_flexiMenu_menuDef_ID_shortcut,-1);
+IfCountDefault(_tooltip,_menuDef,_flexiMenu_menuDef_ID_tooltip,"");
 
 // enabled
-_enabled = if (count _menuDef > _flexiMenu_menuDef_ID_enabled) then {_menuDef select _flexiMenu_menuDef_ID_enabled} else {1};
+IfCountDefault(_enabled,_menuDef,_flexiMenu_menuDef_ID_enabled,1);
 if (isNil "_enabled") then
 {
 	hint ("Error logged: 'enabled' menu property returned nil.\n\n"+
@@ -48,7 +51,7 @@ if (typeName _enabled != typeName 2) then
 };
 
 // visible
-_visible = if (count _menuDef > _flexiMenu_menuDef_ID_visible) then {_menuDef select _flexiMenu_menuDef_ID_visible} else {1};
+IfCountDefault(_visible,_menuDef,_flexiMenu_menuDef_ID_visible,1);
 if (isNil "_visible") then
 {
 	hint ("Error logged: 'visible' menu property returned nil.\n\n"+
@@ -61,6 +64,12 @@ if (typeName _visible != typeName 2) then
 {
 	if (typeName _visible == typeName "") then {_visible = parseNumber _visible}; // allow "0"/"1"/"2" like BIS does
 	if (typeName _visible == typeName true) then {_visible = if (_visible) then {1}else{0}}; // convert boolean to number
+};
+
+if (_caption == "-") then
+{
+	_caption = _flexiMenuSeparatorLine;
+	_enabled = 0;
 };
 //-----------------------------------------------------------------------------
 // search for "^" embedded caption shortcut
@@ -131,7 +140,10 @@ if (_index >= 0) then
 // TODO: Read an appropriate color from the menu class.
 
 		_offset = (if (_containCaret) then {1} else {0});
-		_caption = [_array, _index, _offset, _ST_highlightKey_attribute] call FUNC(highlightCaretKey);
+		if (!_fastPartialResult) then
+		{
+			_caption = [_array, _index, _offset, _ST_highlightKey_attribute] call FUNC(highlightCaretKey);
+		};
 	}
 	else
 	{
@@ -142,7 +154,8 @@ if (_index >= 0) then
 else
 {
 	// map menu shortcut DIK code
-	if (_shortcut_DIK != -1) then
+	// Note: don't append shortcut to empty caption, which is usually an "icon only" menu, without text captions.
+	if (_shortcut_DIK != -1 && _caption != "") then 
 	{
 		private ["_keyName"];
 		_keyName = keyName _shortcut_DIK;
@@ -158,73 +171,28 @@ else
 	};
 };
 //-----------------------------------------------------------------------------
-_icon = "";
-if (count _menuDef > _flexiMenu_menuDef_ID_icon) then
+IfCountDefault(_icon,_menuDef,_flexiMenu_menuDef_ID_icon,"");
+if (_icon != "" && !_fastPartialResult) then
 {
-	_icon = _menuDef select _flexiMenu_menuDef_ID_icon;
-	if (_icon != "") then
+	_array = toArray _icon;
+	// if pathname does not already contain a folder path
+	if (_iconFolder != "" && _array find 92 < 0 && _array find 47 < 0) then // 92='\', 47='/'
 	{
-		_array = toArray _icon;
-		// if pathname does not already contain a folder path
-		if (_iconFolder != "" && _array find 92 < 0 && _array find 47 < 0) then // 92='\', 47='/'
-		{
-			_icon = _iconFolder+_icon;
-		};
-		_caption = format ["<img image='%2'/> %1", _caption, _icon];
+		_icon = _iconFolder+_icon;
 	};
+	_caption = format ["<img image='%2'/> %1", _caption, _icon];
 };
 //-----------------------------------------------------------------------------
-_action = "";
 if (_caption != "") then
 {
-	// default option handling
-	_action = "";
-	if (_multiReselect == 0) then {_action = format["%1 = true;", QUOTE(GVAR(optionSelected))];};
-	// prefix with custom option handling
-	if ((_menuDef select _flexiMenu_menuDef_ID_action) != "") then
-	{
-		_action = _action+";"+(_menuDef select _flexiMenu_menuDef_ID_action);
-	};
+	_actionOptions = [_action, _subMenu, _multiReselect];
 
-	// append optional sub menu handling
-	_subMenu = if (count _menuDef > _flexiMenu_menuDef_ID_subMenuSource) then {_menuDef select _flexiMenu_menuDef_ID_subMenuSource} else {""};
-//diag_log "_subMenu="+_subMenu;
-//player groupchat _subMenu;
-	_subMenuSource = "";
-	_params = ["?"];
-	_useListBox = 0;
-	if (typeName _subMenu == typeName []) then
-	{
-		_subMenuSource = _subMenu select 0;
-		_params = _subMenu select 1;
-		_useListBox = if (count _subMenu > 2) then {_subMenu select 2} else {0};
-	}
-	else // else (assume?) it was a string
-	{
-		_subMenuSource = _subMenu;
-	};
-	// add code to action to show sub menu
-	if (_subMenuSource != "") then
-	{
-		_action = format ["%1;[%5, [[%2, %3]]] call compile preprocessFileLineNumbers '%4'", 
-			_action, 
-// TODO: Does _subMenuSource need to handle merged menus too?
-			str _subMenuSource, 
-			if (typeName _params == typeName []) then {_params} else {str _params},
-			if (_useListBox == 0) then {
-				QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_menu))
-			} else {
-				QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,fnc_list)) },
-			QUOTE(GVAR(target))
-		];
-	};
-	if (_useListBox == 0 && _multiReselect == 0) then // if using embedded listBox && close upon selection
-	{
-		_action = "closeDialog 0;"+_action;
-	};
+	// TODO: Consider changing _action array item from string to type code.
+	_action = format ["%1 call %2", _actionOptions, QUOTE(FUNC(execute))];
 };
 //-----------------------------------------------------------------------------
 _result = [];
+_result resize _flexiMenu_menuDef_ID_totalIDs;
 _result set [_flexiMenu_menuDef_ID_caption, _caption];
 _result set [_flexiMenu_menuDef_ID_action, _action];
 _result set [_flexiMenu_menuDef_ID_icon, _icon];

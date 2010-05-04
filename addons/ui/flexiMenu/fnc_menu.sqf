@@ -109,14 +109,17 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; //
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc)) then // if not a full class name
 {
-	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	if (!isClass (missionConfigFile >> _menuRsc)) then // if not a full class name
+	{
+		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	};
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
 //if (isNil QUOTE(GVAR(display))) exitWith {hint format["%1 is nil", GVAR(display)]};
 //if (isNull GVAR(display)) exitWith {hint format["%1 is null", GVAR(display)]};
 
-_caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
+IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc,"");
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
 
 // initially list caption
@@ -125,15 +128,20 @@ _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc)
 _menuSources = _this select 1;
 GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
 	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
+/* GVAR(mouseButtonDownEHID) = */ (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["mouseButtonDown", 
+	format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 
-// TODO: Support missionConfigFile too
-_width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+_width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 if (_width == 0) then
 {
-	player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
-	_width = _SMW;
+	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+	if (_width == 0) then
+	{
+		player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
+		_width = _SMW;
+	};
 };
 //-----------------------------------------------------------------------------
 _commitList = [];

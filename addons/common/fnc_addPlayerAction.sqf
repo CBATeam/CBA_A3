@@ -26,7 +26,6 @@ Author:
 #include "script_component.hpp"
 
 PARAMS_1(_actionArray);
-TRACE_1(_this);
 
 private "_return";
 

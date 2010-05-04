@@ -17,7 +17,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "\x\cba\addons\main\script_macros_common.hpp"
+#include "script_component.hpp"
 
 PARAMS_2(_group,_position);	
 DEFAULT_PARAM(2,_radius,0);

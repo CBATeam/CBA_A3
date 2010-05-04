@@ -51,8 +51,8 @@ FUNC(handle_retach) =
 FUNC(attach_handler) =
 {
 	if (GVAR(attaching)) exitWith {}; // Already busy
-	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
 	GVAR(attaching) = true;
+	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
 
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);

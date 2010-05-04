@@ -6,8 +6,10 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = 1;
-		requiredAddons[] = { "CBA_common", "CBA_main" };
-		version = 0;
+		requiredAddons[] = { "CBA_common" };
+		version = VERSION;
+		author[] = {"Dr Eyeball"};
+		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
 

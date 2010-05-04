@@ -544,6 +544,8 @@ Author:
 #define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
 #define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4))
 
+#define LSTR(var1) TRIPLES(ADDON,STR,var1)
+
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]
@@ -555,6 +557,7 @@ Author:
 // User Functions
 // Please define PREFIX and COMPONENT before including
 #define ADDON DOUBLES(PREFIX,COMPONENT)
+#define MAIN_ADDON DOUBLES(PREFIX,main)
 
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
@@ -630,6 +633,20 @@ Author:
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
 #define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
+#define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
+
+#ifndef PRELOAD_ADDONS
+	#define PRELOAD_ADDONS class CfgAddons \
+{ \
+	class PreloadAddons \
+	{ \
+		class ADDON \
+		{ \
+			list[]={ QUOTE(ADDON) }; \
+		}; \
+	}; \
+}
+#endif
 
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
@@ -724,6 +741,7 @@ Macros: EXPLODE_n()
 	EXPLODE_6(ARRAY,A,B,C,D,E,F) - Split a 6-element array into separate variables.
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G) - Split a 7-element array into separate variables.
 	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) - Split a 8-element array into separate variables.
+	EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) - Split a 9-element array into separate variables.
 	
 Parameters:
 	ARRAY - Array to read from [Array]
@@ -758,6 +776,9 @@ Author:
 	
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
+	
+#define EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) \
+	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
 
 /* -------------------------------------------
 Group: Managing Function Parameters

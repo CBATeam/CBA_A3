@@ -39,6 +39,7 @@
 #define _flexiMenu_menuDef_ID_shortcut 5
 #define _flexiMenu_menuDef_ID_enabled 6
 #define _flexiMenu_menuDef_ID_visible 7
+#define _flexiMenu_menuDef_ID_totalIDs 8
 
 #define _menuRscPrefix "CBA_flexiMenu_rsc"
 
@@ -48,5 +49,3 @@
 #define _SMW 0.15*safeZoneW // common sub-menu width
 
 #define _LBH 0.033*safeZoneH // list button height
-
-#define _flexiMenu_interactKeys [DIK_LWIN] // object interaction dik keys list

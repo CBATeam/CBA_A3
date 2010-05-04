@@ -17,7 +17,8 @@ SLX_XEH_MACHINE =
 	false, // 5 - Player Check Finished
 	!isMultiplayer, // 6 - SP?
 	false, // 7 - StartInit Passed
-	0      // 8 - counter used to assign a vehicleVarName to unnamed playable
+	false, // 8 - Postinit Passed
+	0      // 9 - counter used to assign a vehicleVarName to unnamed playable
 	       //     units so they can be tracked. See RespawnMonitor.sqf
 ];
 SLX_XEH_F_INIT = {

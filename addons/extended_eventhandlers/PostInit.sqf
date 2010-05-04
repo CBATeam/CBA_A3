@@ -46,7 +46,23 @@ if !(isNull player) then
 
 if !(isDedicated) then
 {
-	startLoadingScreen ["Post Initialization Processing...", "RscDisplayLoadMission"];
+	_text = "Post Initialization Processing...";
+	if !(isNil "CBA_help_credits") then {
+		// Randomly pick 2 addons from cfgPatches to display credits
+		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
+		_cr = [];
+		_tmp = [];
+		{ PUSH(_tmp,_x) } forEach ((_credits select 0) select 1);
+		_tmp = [_tmp] call CBA_fnc_shuffle;
+		for "_i" from 0 to 1 do {
+			_key = _tmp select _i;
+			_entry = format["%1, by: %2", _key, [[_credits select 0, _key] call CBA_fnc_hashGet, ", "] call CBA_fnc_join];
+			PUSH(_cr,_entry);
+		};
+		_text = [_cr, ". "] call CBA_fnc_join;
+	};
+	
+	startLoadingScreen [_text, "RscDisplayLoadMission"];
 	[] spawn
 	{
 		private["_time2Wait"];
@@ -75,16 +91,17 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 // Still using delayLess.fsm for this one as this can still increase init speed at briefing?
-_handle = 
-{
+//_handle = 
+//{
 	// we set this BEFORE executing the inits, so that any unit created in another
 	// thread still gets their InitPost ran
 	SLX_XEH_MACHINE set [7, true];
 	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
-} execFSM "extended_eventhandlers\delayless.fsm";
-waitUntil {completedFSM _handle};
+//} execFSM "extended_eventhandlers\delayless.fsm";
+//waitUntil {completedFSM _handle};
 
 if !(isDedicated) then {endLoadingScreen};
+SLX_XEH_MACHINE set [8, true];
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];

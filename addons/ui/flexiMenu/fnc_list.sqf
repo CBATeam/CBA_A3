@@ -23,7 +23,10 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource;
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc)) then // if not a full class name
 {
-	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	if (!isClass (missionConfigFile >> _menuRsc)) then // if not a full class name
+	{
+		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	};
 };
 
 // TODO: Support missionConfigFile too
@@ -51,14 +54,17 @@ with uiNamespace do
 	(GVAR(display) displayCtrl _idc) ctrlShow true;
 };
 
-// TODO: Support missionConfigFile too
 // TODO: For merged menus, _menuRsc must come from the first merged menu, not secondary.
-_width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+_width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 //player sideChat format ["control width = %1", [_width, _menuRsc]];
 if (_width == 0) then
 {
-	player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
-	_width = _SMW;
+	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+	if (_width == 0) then
+	{
+		player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
+		_width = _SMW;
+	};
 };
 
 _idc = _flexiMenu_baseIDC_listButton;
@@ -105,8 +111,21 @@ _idc = _flexiMenu_baseIDC_listButton;
 		(GVAR(display) displayCtrl _idc) ctrlShow (_visible > 0);
 		(GVAR(display) displayCtrl _idc) ctrlEnable (_enabled != 0);
 	};
-	_idc = _idc+1;
+	if (_visible != 0) then // i.e. in [-1,1]
+	{
+		_idc = _idc+1;
+	}; // else if (_visible == 0) then {re-use hidden button idc}
 } forEach (_menuDefs select 1);
-
+//-----------------------------------------------------------------------------
+// hide and disable unused list buttons
+with uiNamespace do
+{
+	for [{_i = _idc}, {_i < _flexiMenu_baseIDC_listButton+_flexiMenu_maxButtons}, {_i = _i + 1}] do
+	{
+		(GVAR(display) displayCtrl _i) ctrlShow false;
+		(GVAR(display) displayCtrl _i) ctrlEnable false;
+	};
+};
+//-----------------------------------------------------------------------------
 _idc = _flexiMenu_baseIDC_listButton;
 ctrlSetFocus (GVAR(display) displayCtrl _idc);

@@ -46,3 +46,4 @@ if (_typeName == "STRING") exitwith {
 	getMarkerPos _this
 };
 if (_typeName == "ARRAY") exitwith {_this};
+if (_typeName == "TASK") exitwith {taskDestination _this};

@@ -38,8 +38,8 @@ if (!_nomonitor) then
 		_vvn=vehicleVarName _x;
 		if (_vvn=="") then
 		{
-			_n=SLX_XEH_MACHINE select 8;
-			SLX_XEH_MACHINE set [8, _n+1];
+			_n=SLX_XEH_MACHINE select 9;
+			SLX_XEH_MACHINE set [9, _n+1];
 			_vvn=format["slx_xeh_playable%1", _n];
 			_x setVehicleVarName _vvn; 
 		};
