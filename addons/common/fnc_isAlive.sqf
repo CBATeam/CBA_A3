@@ -14,11 +14,21 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private "_type";
-_type = typeName _this;
-if (_type in ["ARRAY","GROUP"]) exitwith {
-	private "_array";
-	if (_type == "GROUP") then {_array = units _this} else {_array =+ _this};
-	{if (Alive _x) exitwith {true}; false} ForEach _array;
+private "_typeName";
+_typeName = typeName _this;
+
+switch (_typeName) do {
+	case ("ARRAY") : {
+		{
+			if (_x call FUNCMAIN(isAlive)) exitwith {true};
+			false;
+		} foreach _this;
+	};
+	case ("OBJECT") : {
+		alive _this;
+	};
+	case ("GROUP") : {
+		(units _this) call FUNCMAIN(isAlive);
+	};
+	default {alive _this};
 };
-alive _this
