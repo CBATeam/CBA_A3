@@ -14,6 +14,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+#include "script_component.hpp"
+
 private "_typeName";
 _typeName = typeName _this;
 
