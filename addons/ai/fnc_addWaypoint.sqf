@@ -26,7 +26,7 @@ Author:
 
 #include "script_component.hpp"
 
-#define ARG(X)	(_this select (X))
+#define ARG(X)	ARG_1(_this,(X))
 
 PARAMS_2(_group,_position);
 _group = _group call CBA_fnc_getGroup;
@@ -52,3 +52,5 @@ if (_count < 9) exitWith {};
 _waypoint setWaypointStatements ["TRUE", ARG(8)];
 if (_count < 10) exitWith {};
 _waypoint setWaypointTimeout ARG(9);
+if (_count < 11) exitWith {};
+_waypoint setWaypointHousePosition ARG(10);
