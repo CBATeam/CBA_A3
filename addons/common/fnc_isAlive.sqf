@@ -30,7 +30,11 @@ switch (_typeName) do {
 		alive _this;
 	};
 	case ("GROUP") : {
-		(units _this) call FUNCMAIN(isAlive);
+		if (isnull (leader _this)) then {
+			false;
+		} else {
+			(units _this) call FUNCMAIN(isAlive);
+		};
 	};
 	default {alive _this};
 };
