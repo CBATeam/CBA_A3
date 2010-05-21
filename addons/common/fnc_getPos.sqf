@@ -13,6 +13,7 @@ Author:
 	Rommel
 
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
 
 private ["_typeName","_position"];
 _typeName = typeName _this;
