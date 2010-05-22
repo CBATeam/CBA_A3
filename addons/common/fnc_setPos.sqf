@@ -28,7 +28,7 @@ if (_radius > 0) then {
 	_position = [
 		(_position select 0) + ((random _radius) - (random _radius)),
 		(_position select 1) + ((random _radius) - (random _radius)),
-		(_position select 2) + ((random _radius) - (random _radius))
+		(_position select 2)
 	];
 };
 
