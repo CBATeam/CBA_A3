@@ -27,13 +27,13 @@ if (_typeName in ["OBJECT","LOCATION"]) exitwith {
 };
 if (_typeName == "GROUP") exitwith {
 	private ["_units", "_count", "_tx", "_ty", "_tz"];
-	_units = (units _this) call CBA_fnc_getAlive;
+	_units = (units _this) call FUNCMAIN(getAlive);
 	_count = count _units;
-	if (_count < 2) exitwith {(leader _this) call CBA_fnc_getPos};
+	if (_count < 2) exitwith {(leader _this) call FUNCMAIN(getPos)};
 	_tx = 0; _ty = 0; _tz = 0;
 	{
 		private "_position";
-		_position = _x call CBA_fnc_getPos;
+		_position = _x call FUNCMAIN(getPos);
 		_tx = _tx + (_position select 0);
 		_ty = _ty + (_position select 1);
 		_tz = _tz + (_position select 2);
