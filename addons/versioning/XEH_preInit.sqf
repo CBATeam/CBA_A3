@@ -18,7 +18,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 		_verCfg = (configFile >> "CfgPatches" >> format["%1_main", configName _prefix] >> "versionAr");
 		_level = if (isNumber(_prefix >> "level")) then { getNumber(_prefix >> "level") } else { -1 };
 		_version = if (isArray(_verCfg)) then { [getArray(_verCfg), _level] } else { [[0, 0, 0], 0] };
-		[GVAR(versions), configName _prefix, _version] call CBA_fnc_hashSet;
+		[GVAR(versions), toLower(configName _prefix), _version] call CBA_fnc_hashSet;
 	};
 };
 
