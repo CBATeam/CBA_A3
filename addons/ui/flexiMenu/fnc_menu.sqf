@@ -83,8 +83,9 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 //-----------------------------------------------------------------------------
 private ["_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
 private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled"];
-private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width"];
+private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width", "_list"];
 
+#define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
 //player sideChat format [__FILE__+": %1", _this];
 
 /*
@@ -143,6 +144,9 @@ if (_width == 0) then
 		_width = _SMW;
 	};
 };
+
+//_list = (_menuDefs select 1);
+//if (count _list == 0) then {};
 //-----------------------------------------------------------------------------
 _commitList = [];
 { // forEach
@@ -161,7 +165,7 @@ _commitList = [];
 		_enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
 		_visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
-		if (_caption != "") then
+		if (_caption != "" && (_caption != "No options" || _idcIndex == 0)) then
 		{
 			with uiNamespace do
 			{
@@ -201,8 +205,28 @@ _commitList = [];
 			}; // else if (_visible == 0) then {re-use hidden button idc}
 		};
 	};
-} forEach (_menuDefs select 1);
+} forEach (_menuDefs select 1)+[_MenuOption_NoOptions];
 //-----------------------------------------------------------------------------
+// if no menu options are shown/applicable
+if (_idcIndex == 0) then
+{
+	// TODO: This block is duplicate code from above. Find a tidy way to merge this back with code above, by adding fake "No options" menu option.
+	_idc = _flexiMenu_baseIDC_button+_idcIndex;
+	with uiNamespace do
+	{
+		_array = ctrlPosition (GVAR(display) displayCtrl _idc);
+		if (_array select 2 == 0) then
+		{
+			_array = [_array select 0, _array select 1, _width, _array select 3];
+			(GVAR(display) displayCtrl _idc) ctrlSetPosition _array;
+		};
+		(GVAR(display) displayCtrl _idc) ctrlCommit 0; // commit pos/size before showing
+		(GVAR(display) displayCtrl _idc) ctrlSetStructuredText parseText "No options";
+		_commitList set[count _commitList, [_idc, 0, 1]];
+	};
+	_idcIndex = _idcIndex+1;
+};
+
 // handle odd case where uncommitted controls are not shown
 {
 	_t = time;

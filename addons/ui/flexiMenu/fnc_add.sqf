@@ -1,7 +1,7 @@
 ﻿#include "\x\cba\addons\ui\script_component.hpp"
 #include "data\common.hpp"
 
-private ["_msg", "_exit", "_list"];
+private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 // Note: calling script may require this file for dik codes: #include "\ca\editor\Data\Scripts\dikCodes.h"
 
@@ -17,10 +17,22 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 // common bug: invalid DIK code (type any) when missing #include "dikCodes.h"
 
 //_temp = _this select _flexiMenu_typeMenuSources_ID_DIKCodes;
+//if (isNil {_temp}) exitWith {diag_log _msg};
 //diag_log ['cba ui fnc_add.sqf: warning: checking:', _this, _temp, str _temp, isNil {_temp}, typeName _temp, typeName 2]; // temp debug
 //TODO: still not detecting nil?
 if (({isNil {_x}} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
-if (({typeName _x != typeName 2} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
+
+// convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
+for [{_i = 0}, {_i < count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)}, {_i = _i + 1}] do
+{
+	_key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
+	// if not an already an array (eg: simple DIK integer)
+	if (typeName _key != typeName []) then
+	{
+		_key = [_key, [false,false,false]];
+		(_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
+	};
+};
 //_temp = _this select _flexiMenu_typeMenuSources_ID_DIKCodes;
 //if (str _temp == "[any]") exitWith {diag_log _msg};
 //if (str _temp == "any") exitWith {diag_log _msg};
