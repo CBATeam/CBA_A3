@@ -18,7 +18,7 @@ Author:
 private ["_typeName","_position"];
 _typeName = typeName _this;
 
-if (_typeName in ["OBJECT","LOCATION"]) exitwith {
+if (_typeName == "OBJECT") exitwith {
 	_position = getposATL _this;
 	if (surfaceIsWater _position) then {
 		_position = getposASL _this
@@ -48,3 +48,4 @@ if (_typeName == "STRING") exitwith {
 };
 if (_typeName == "ARRAY") exitwith {_this};
 if (_typeName == "TASK") exitwith {taskDestination _this};
+if (_typeName == "LOCATION") exitwith {position _this};
