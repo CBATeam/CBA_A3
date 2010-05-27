@@ -2,17 +2,18 @@
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "data\common.hpp"
 
-#define _minObjDist(_var) (2 max (1.4+(sizeOf typeOf _var)/2)) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
+#define _minObjDist(_var) (if (_var isKindOf "caManBase") then {3} else {(2 max (1.4+(sizeOf typeOf _var)/2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
-private["_handled", /* "_ctrl", */ "_dikCode", /* "_shift", "_ctrlKey", "_alt", */
+private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
 	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget", 
-	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList"];
+	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList", 
+	"_keys", "_settings"];
 
 //_ctrl = _this select 0;
 _dikCode = _this select 1;
-//_shift = _this select 2;
-//_ctrlKey = _this select 3;
-//_alt = _this select 4;
+_shift = _this select 2;
+_ctrlKey = _this select 3;
+_alt = _this select 4;
 
 _handled = false;
 
@@ -23,10 +24,19 @@ GVAR(lastAccessCheck) = [time, _dikCode];
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
-	if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) exitWith
+	// syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
+	_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
 	{
-		_potentialKeyMatch = true;
-	};
+		_settings = _x select 1;
+		if ((_x select 0 == _dikCode) && 
+			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && // can't seem to compare booleans. i.e. ((_settings select 0) == _shift)
+			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
+		{
+			_potentialKeyMatch = true;
+		};
+	} forEach _keys;
+	if (_potentialKeyMatch) exitWith {};
 } forEach GVAR(typeMenuSources);
 
 // check if interaction key used
@@ -69,7 +79,20 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 		_potentialMenuSources = [];
 
 		{ // forEach
-			if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) then
+			_potentialKeyMatch = false; // "_actualKeyMatchFound"
+			_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
+			{
+				_settings = _x select 1;
+				if ((_x select 0 == _dikCode) && 
+					((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
+					((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+					((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
+				{
+					_potentialKeyMatch = true;
+				};
+			} forEach _keys;
+
+			if (_potentialKeyMatch) then
 			{
 				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
 				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type

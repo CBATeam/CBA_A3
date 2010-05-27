@@ -2,13 +2,13 @@
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "data\common.hpp"
 
-private["_handled", /* "_ctrl", */ "_dikCode", /* "_shift", "_ctrlKey", "_alt", */
+private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
 	"_active", "_potentialKeyMatch"];
 //_ctrl = _this select 0;
 _dikCode = _this select 1;
-//_shift = _this select 2;
-//_ctrlKey = _this select 3;
-//_alt = _this select 4;
+_shift = _this select 2;
+_ctrlKey = _this select 3;
+_alt = _this select 4;
 
 _handled = false;
 //player sideChat format [__FILE__+":", _this];
@@ -18,10 +18,19 @@ if (!GVAR(holdKeyDown)) exitWith {_handled}; // key release monitoring not requi
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
-	if (_dikCode in (_x select _flexiMenu_typeMenuSources_ID_DIKCodes)) exitWith
+	// syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
+	_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
 	{
-		_potentialKeyMatch = true;
-	};
+		_settings = _x select 1;
+		if ((_x select 0 == _dikCode) && 
+			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && 
+			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
+		{
+			_potentialKeyMatch = true;
+		};
+	} forEach _keys;
+	if (_potentialKeyMatch) exitWith {};
 } forEach GVAR(typeMenuSources);
 
 // check if interaction key used
