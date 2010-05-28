@@ -69,6 +69,12 @@ class CfgFunctions
 				description = "Gets a value from parameters list (usually _this) with a default.";
 				file = "\x\cba\addons\common\fnc_defaultParam.sqf";
 			};
+			// CBA_fnc_deleteEntity
+			class deleteEntity
+			{
+				description = "A function used to delete entities Parameters: Array, Object, Group or Marker Example: [car1,car2,car3] call CBA_fnc_deleteEntity Returns: Nothing Author: Rommel";
+				file = "\x\cba\addons\common\fnc_deleteEntity.sqf";
+			};
 			// CBA_fnc_determineMuzzles
 			class determineMuzzles
 			{
@@ -86,6 +92,12 @@ class CfgFunctions
 			{
 				description = "Drops a weapon.";
 				file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
+			};
+			// CBA_fnc_findEntity
+			class findEntity
+			{
+				description = "A function used to find out the first entity of parsed type in a nearEntitys call Parameters: - Type (Classname, Object) - Position (XYZ, Object, Location or Group) Optional: - Radius (Scalar) Example: _veh = [""LaserTarget"", player] call CBA_fnc_findEntity Returns: First entity; nil return if nothing Author: Rommel";
+				file = "\x\cba\addons\common\fnc_findEntity.sqf";
 			};
 			// CBA_fnc_getAlive
 			class getAlive
