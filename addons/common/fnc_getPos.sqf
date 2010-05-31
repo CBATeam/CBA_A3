@@ -54,5 +54,5 @@ switch (_typeName) do {
 	case ("TASK") : {
 		taskDestination _this
 	};
-	default {_this};
+	default {[]+_this};
 };
