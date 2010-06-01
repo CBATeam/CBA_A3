@@ -2,7 +2,7 @@
 Function: CBA_fnc_vectRotate2D
 
 Description:
-	Rotates a 2D vector around a given center
+	Rotates a 2D vector around a given center, for rotating of a vector from its origin, use BIS_fnc_rotateVector2D
 
 Parameters:
 	Center, Vector, Angle
