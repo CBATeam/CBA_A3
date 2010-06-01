@@ -14,18 +14,23 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private "_type";
-_type = typeName _this;
-if (_type in ["ARRAY","GROUP"]) exitwith {
-	private ["_return","_array","_i"];
-	_return = []; _i = 0;
-	if (_type == "GROUP") then {_array = units _this} else {_array =+ _this};
-	{
-		if (alive _x) then {
-			_return set [_i, _x];
-			_i = _i + 1;
-		}
-	} ForEach _array;
-	_return
+private "_typeName";
+_typeName = typeName _this;
+if (_typeName == "OBJECT") exitwith {alive _this};
+
+private ["_return","_array"];
+_array = [];
+switch (_typeName) do {
+	case ("GROUP") : {
+		_array = units _this;
+	};
+	case ("ARRAY") :{
+		_array =+ _this;
+	};
 };
-alive _this
+{
+	if (alive _x) then {
+		_return set [count _return, _x];
+	}
+} ForEach _array;
+_return

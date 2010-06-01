@@ -16,7 +16,7 @@ Author:
 
 #include <script_component.hpp>
 
-private ["_typeName","_position"];
+private "_typeName";
 _typeName = typeName _this;
 
 switch (_typeName) do {
