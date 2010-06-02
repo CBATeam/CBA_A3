@@ -33,8 +33,8 @@ if ((vehicle _unit) != _unit) then
 }
 else
 {
- 	if (count(_anim)<12) exitWith {};
- 	_dthstr = toString([_anim select 0, _anim select 1, _anim select 2, _anim select 3]);
+	if (count(_anim)<12) exitWith {};
+	_dthstr = toString([_anim select 0, _anim select 1, _anim select 2, _anim select 3]);
 	_posstr = toString([_anim select 4, _anim select 5, _anim select 6, _anim select 7]);
 	_movstr = toString([_anim select 8, _anim select 9, _anim select 10, _anim select 11]);
 	if (_dthstr == "adth" || _dthstr == "slx_") then
@@ -43,21 +43,21 @@ else
 	}
 	else
 	{
-		switch (_posstr) do
+		_upos = switch (_posstr) do
 		{
-			case "ppne": { _upos = "prone"; };
-			case "pknl": { _upos = "kneel"; };
-			case "perc": { _upos = "stand"; };
-			default { _upos = "kneel"; };
+			case "ppne": { "prone" };
+			case "pknl": { "kneel" };
+			case "perc": { "stand" };
+			default { "kneel" };
 		};
 	};
-	switch (_movstr) do
+	_umov = switch (_movstr) do
 	{
-		case "mstp": { _umov = "stop"; };
-		case "mwlk": { _umov = "slow"; };
-		case "mrun": { _umov = "normal"; };
-		case "meva": { _umov = "fast"; };
-		default { _umov = "stop"; };
+		case "mstp": { "stop" };
+		case "mwlk": { "slow" };
+		case "mrun": { "normal" };
+		case "meva": { "fast" };
+		default { "stop" };
 	};
 };
 
