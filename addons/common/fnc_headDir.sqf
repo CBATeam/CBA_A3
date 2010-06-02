@@ -54,50 +54,46 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-private["_position", "_viewpos", "_vector", "_magnitude", "_azimuth", "_angle", "_dif", "_infov", "_threed"];
+private["_azimuth", "_angle", "_dif", "_infov", "_threed"];
 
 PARAMS_1(_unit);
-_ai = false;
-_threed = false;
-if (_unit != player) then { _ai = true };
 DEFAULT_PARAM(1,_object,_unit);
-TRACE_3("params",_unit,_ai,_object);
+_threed = false;
 
-if !(typeName _object == "ARRAY") then
-{
-	_object = getpos _object;
+if (_object != _unit) then {
+	_angle = [(_unit call CBA_fnc_getpos),(_object call CBA_fnc_getpos)] call BIS_fnc_dirTo;
+} else {
+	_angle = 0;
 };
-if (_ai) then
+if (_unit != player) then
 {
 	_azimuth = getdir _unit;
 }
 else
 {
+	private ["_position","_viewPos","_vector","_magnitude"];
 	_position = positionCameraToWorld [0, 0, 0];
-	if ((_position distance _unit)>2) then { _threed = true;} else { _threed = false;};
+	_threed = if ((_position distance _unit)>2) then {true} else {false};
 	_viewPos = positionCameraToWorld [0, 0, 99999999];
-	_vector = 	[
-			(_viewPos select 0) - (_position select 0),
-			(_viewPos select 1) - (_position select 1),
-			(_viewPos select 2) - (_position select 2)
-			];
+	_vector = [
+		(_viewPos select 0) - (_position select 0),
+		(_viewPos select 1) - (_position select 1),
+		(_viewPos select 2) - (_position select 2)
+	];
 	_magnitude = [0, 0, 0] distance _vector;
-	_vector = 	[
-			(_vector select 0) / _magnitude, 
-			(_vector select 1) / _magnitude,
-			(_vector select 2) / _magnitude
-			];
+	_vector = [
+		(_vector select 0) / _magnitude, 
+		(_vector select 1) / _magnitude,
+		(_vector select 2) / _magnitude
+	];
 	_azimuth = (_vector select 0) atan2 (_vector select 1);
-	_azimuth = ((_azimuth + 360) mod 360);
+	_azimuth = [_azimuth] call CBA_fnc_simplifyAngle;
 };
 
-_angle = ((_object select 0)-(getPos _unit select 0)) atan2 ((_object select 1)-(getPos _unit select 1));
-TRACE_2("",_pos,_angle);
-	
 _dif = _angle - _azimuth;
 
 if (_dif < 0) then { _dif = 360 + _dif;};
 if (_dif > 180) then { _dif = _dif - 360;};
-if (abs(_dif) < 43) then { _infov = true;} else { _infov = false;};
+_infov = if (abs(_dif) < 43) then {true} else {false};
 
 [_azimuth,_dif,_infov,_threed]
