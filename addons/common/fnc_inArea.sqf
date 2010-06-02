@@ -17,7 +17,7 @@ Author:
 
 PARAMS_2(_zRef,_position);
 
-_position = (_position call cba_fnc_getpos);
+_position = (_position call CBA_fnc_getpos);
 
 private "_typeName";
 _typeName = typeName _zRef;
@@ -28,19 +28,19 @@ switch (_typeName) do {
 		_zSize = markerSize _zRef;
 		_zDir = markerDir _zRef;
 		_zShape = markerShape _zRef;
-		_zPos = (_zRef call cba_fnc_getpos);
+		_zPos = (_zRef call CBA_fnc_getpos);
 	};
 	case ("OBJECT") : {
 		_zSize = triggerArea _zRef;
 		_zDir = _zSize select 2;
 		_zShape = if (_zSize select 3) then {"RECTANGLE"} else {"ELLIPSE"};
-		_zPos = (_zRef call cba_fnc_getpos);
+		_zPos = (_zRef call CBA_fnc_getpos);
 	};
 	case ("ARRAY") : {};
 	default {false};
 };
 
-_position = [_center,_position,_zDir] call cba_fnc_vectRotate2D;
+_position = [_center,_position,_zDir] call CBA_fnc_vectRotate2D;
 
 EXPLODE_2(_center,_x1,_y1);
 EXPLODE_2(_position,_x2,_y2);

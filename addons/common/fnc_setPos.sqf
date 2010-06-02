@@ -21,7 +21,7 @@ DEFAULT_PARAM(2,_radius,0);
 
 private "_typeName";
 _typeName = typeName _entity;
-_position = (_position call FUNCMAIN(getpos));
+_position = (_position call CBA_fnc_getpos);
 
 if (_radius > 0) then {
 	_radius = _radius * 2;
@@ -41,7 +41,7 @@ switch (_typeName) do {
 		};
 	};
 	case ("GROUP") : {
-		_position = (leader _this) call FUNCMAIN(getpos);
+		_position = (leader _this) call CBA_fnc_getpos;
 		_x = (_position select 0);
 		_y = (_position select 1);
 		_z = (_position select 2);
@@ -51,7 +51,7 @@ switch (_typeName) do {
 			_tx = _x + (_txyz select 0);
 			_ty = _y + (_txyz select 1);
 			_tz = _z + (_txyz select 2);
-			[_x,[_tx,_ty,_tz]] call FUNCMAIN(setpos);
+			[_x,[_tx,_ty,_tz]] call CBA_fnc_setpos;
 		} foreach (units _this);
 	};
 	case ("STRING") : {

@@ -22,7 +22,7 @@ _typeName = typeName _this;
 switch (_typeName) do {
 	case ("ARRAY") : {
 		{
-			if (_x call FUNCMAIN(isAlive)) exitwith {true};
+			if (_x call CBA_fnc_isAlive) exitwith {true};
 			false;
 		} foreach _this;
 	};
@@ -33,7 +33,7 @@ switch (_typeName) do {
 		if (isnull (leader _this)) then {
 			false;
 		} else {
-			(units _this) call FUNCMAIN(isAlive);
+			(units _this) call CBA_fnc_isAlive);
 		};
 	};
 	default {alive _this};

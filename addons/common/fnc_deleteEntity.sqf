@@ -22,7 +22,7 @@ _typeName = typeName _this;
 switch (_typeName) do {
 	case ("ARRAY") : {
 		{
-			_x call FUNCMAIN(deleteEntity);
+			_x call CBA_fnc_deleteEntity;
 		} foreach _this;
 	};
 	case ("OBJECT") : {
@@ -33,7 +33,7 @@ switch (_typeName) do {
 		deletevehicle _this;
 	};
 	case ("GROUP") : {
-		(units _this) call FUNCMAIN(deleteEntity);
+		(units _this) call CBA_fnc_deleteEntity;
 		{deletewaypoint _x} foreach (waypoints _this);
 		deletegroup _this;
 	};

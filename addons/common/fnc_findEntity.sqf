@@ -27,4 +27,4 @@ DEFAULT_PARAM(2,_radius,50);
 		_x
 	};
 	nil
-} foreach ((_position call FUNCMAIN(getpos)) nearEntities _radius);
+} foreach ((_position call CBA_fnc_getpos) nearEntities _radius);

@@ -23,7 +23,7 @@ SCRIPT(nearPlayer);
 PARAMS_2(_unit,_distance);
 
 private "_position";
-_position = _unit call cba_fnc_getpos;
+_position = _unit call CBA_fnc_getpos;
 {
 	if ((_position distance _x) < _distance) exitWith { true };
 	false;
