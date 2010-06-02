@@ -18,7 +18,7 @@ Parameters:
 Example:
 	[this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_taskSearchHouse", [3,6,9]]
 Returns:
-	Nil
+	Waypoint
 Author:
 	Rommel
 
@@ -34,23 +34,24 @@ _position = _position call CBA_fnc_getPos;
 DEFAULT_PARAM(2,_radius,0);
 
 private ["_count", "_waypoint"];
-
 _count = count _this;
 _waypoint = _group addWaypoint [_position, _radius];
 
-if (_count < 4) exitWith {};
+if (_count < 4) exitWith {_waypoint};
 _waypoint setWaypointType ARG(3);
-if (_count < 5) exitWith {};
+if (_count < 5) exitWith {_waypoint};
 _waypoint setWaypointBehaviour ARG(4);
-if (_count < 6) exitWith {};
+if (_count < 6) exitWith {_waypoint};
 _waypoint setWaypointCombatMode ARG(5);
-if (_count < 7) exitWith {};
+if (_count < 7) exitWith {_waypoint};
 _waypoint setWaypointSpeed ARG(6);
-if (_count < 8) exitWith {};
+if (_count < 8) exitWith {_waypoint};
 _waypoint setWaypointFormation ARG(7);
-if (_count < 9) exitWith {};
+if (_count < 9) exitWith {_waypoint};
 _waypoint setWaypointStatements ["TRUE", ARG(8)];
-if (_count < 10) exitWith {};
+if (_count < 10) exitWith {_waypoint};
 _waypoint setWaypointTimeout ARG(9);
-if (_count < 11) exitWith {};
+if (_count < 11) exitWith {_waypoint};
 _waypoint setWaypointHousePosition ARG(10);
+
+_waypoint;

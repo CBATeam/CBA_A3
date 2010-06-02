@@ -22,5 +22,4 @@ Author:
 PARAMS_2(_group,_position);	
 DEFAULT_PARAM(2,_radius,0);
 
-_group enableAttack false;
 [_group, _position, _radius, "SAD", "COMBAT", "RED"] call CBA_fnc_addWaypoint;
