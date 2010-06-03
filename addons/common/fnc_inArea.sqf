@@ -37,12 +37,13 @@ switch (_typeName) do {
 		_zPos = (_zRef call CBA_fnc_getpos);
 	};
 	case ("ARRAY") : {};
-	default {false};
 };
 
-_position = [_center,_position,_zDir] call CBA_fnc_vectRotate2D;
+if (isnil "_zSize") exitwith {false};
 
-EXPLODE_2(_center,_x1,_y1);
+_position = [_zPos,_position,_zDir] call CBA_fnc_vectRotate2D;
+
+EXPLODE_2(_zPos,_x1,_y1);
 EXPLODE_2(_position,_x2,_y2);
 
 private ["_dx","_dy"];
