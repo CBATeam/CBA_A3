@@ -33,7 +33,7 @@ switch (_typeName) do {
 		if (isnull (leader _this)) then {
 			false;
 		} else {
-			(units _this) call CBA_fnc_isAlive);
+			(units _this) call CBA_fnc_isAlive;
 		};
 	};
 	default {alive _this};

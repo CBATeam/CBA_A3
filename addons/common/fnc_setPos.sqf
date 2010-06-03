@@ -6,7 +6,7 @@ A function used to set the position of an entity.
 Parameters:
 Marker, Object, Location, Group or Position
 Example:
-[player, "respawn_west" call CBA_fnc_getPos] call CBA_fnc_setPos
+[player, "respawn_west"] call CBA_fnc_setPos
 Returns:
 Nil
 Author:
@@ -34,14 +34,10 @@ if (_radius > 0) then {
 
 switch (_typeName) do {
 	case ("OBJECT") : {
-		if (surfaceIsWater _position) then {
-			_entity setposASL _position;
-		} else {
-			_entity setposATL _position;
-		};
+		_entity setpos _position;
 	};
 	case ("GROUP") : {
-		_position = (leader _this) call CBA_fnc_getpos;
+		_position = (leader _entity) call CBA_fnc_getpos;
 		_x = (_position select 0);
 		_y = (_position select 1);
 		_z = (_position select 2);
@@ -52,7 +48,7 @@ switch (_typeName) do {
 			_ty = _y + (_txyz select 1);
 			_tz = _z + (_txyz select 2);
 			[_x,[_tx,_ty,_tz]] call CBA_fnc_setpos;
-		} foreach (units _this);
+		} foreach (units _entity);
 	};
 	case ("STRING") : {
 		_entity setMarkerPos _position;
