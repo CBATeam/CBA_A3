@@ -15,7 +15,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-PARAMS_2(_zRef,_position);
+PARAMS_2(_position,_zRef);
 
 _position = (_position call CBA_fnc_getpos);
 
