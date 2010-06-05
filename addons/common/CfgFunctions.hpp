@@ -48,7 +48,7 @@ class CfgFunctions
 			// CBA_fnc_createCenter
 			class createCenter
 			{
-				description = "bla";
+				description = "Selects center if it already exists, creates it if it doesn't yet.";
 				file = "\x\cba\addons\common\fnc_createCenter.sqf";
 			};
 			// CBA_fnc_createMarker
@@ -213,11 +213,23 @@ class CfgFunctions
 				description = "Get death animation for a unit.";
 				file = "\x\cba\addons\common\fnc_getUnitDeathAnim.sqf";
 			};
+			// CBA_fnc_getVolume
+			class getVolume
+			{
+				description = "Return the volume of an object";
+				file = "\x\cba\addons\common\fnc_getVolume.sqf";
+			};
 			// CBA_fnc_headDir
 			class headDir
 			{
 				description = "Get the direction of a unit's head.";
 				file = "\x\cba\addons\common\fnc_headDir.sqf";
+			};
+			// CBA_fnc_inArea
+			class inArea
+			{
+				description = "A function used to determine if a position is within a zone. Parameters: Marker, Object, Location, Group or Position, Zone (Marker, Trigger, Array) Example:";
+				file = "\x\cba\addons\common\fnc_inArea.sqf";
 			};
 			// CBA_fnc_inheritsFrom
 			class inheritsFrom
@@ -324,7 +336,7 @@ class CfgFunctions
 			// CBA_fnc_setPos
 			class setPos
 			{
-				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west"" call CBA_fnc_getPos] call CBA_fnc_setPos Returns: Nil Author: Rommel";
+				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west""] call CBA_fnc_setPos Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\common\fnc_setPos.sqf";
 			};
 			// CBA_fnc_switchPlayer

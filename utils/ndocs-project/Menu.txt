@@ -150,7 +150,9 @@ Group: Functions  {
          File: getUISize  (no auto-title, common\fnc_getUISize.sqf)
          File: getUnitAnim  (no auto-title, common\fnc_getUnitAnim.sqf)
          File: getUnitDeathAnim  (no auto-title, common\fnc_getUnitDeathAnim.sqf)
+         File: getVolume  (no auto-title, common\fnc_getVolume.sqf)
          File: headDir  (no auto-title, common\fnc_headDir.sqf)
+         File: inArea  (no auto-title, common\fnc_inArea.sqf)
          File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
          File: isAlive  (no auto-title, common\fnc_isAlive.sqf)
          File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
@@ -211,6 +213,7 @@ Group: Functions  {
          File: vectElev  (no auto-title, vectors\fnc_vectElev.sqf)
          File: vectMagn  (no auto-title, vectors\fnc_vectMagn.sqf)
          File: vectMagn2D  (no auto-title, vectors\fnc_vectMagn2D.sqf)
+         File: vectRotate2D  (no auto-title, vectors\fnc_vectRotate2D.sqf)
          File: vectSubtract  (no auto-title, vectors\fnc_vectSubtract.sqf)
          }  # Group: Vectors
 
