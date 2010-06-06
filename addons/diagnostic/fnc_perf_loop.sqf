@@ -5,6 +5,7 @@
 #include "script_component.hpp"
 #define DELAY 1
 #define DIFF 1.1
+#define HIGH_DIFF 2
 #define INTERVAL 10
 #define LAG_INTERVAL 2 // INTERVAL
 #define DEFAULT_VALUES diag_tickTime, time, diag_fps, diag_fpsMin
@@ -105,9 +106,10 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 
 // Output logged information and add warnings when appropriate
 [] spawn {
-	private ["_nextTime", "_limit", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do", "_ar"];
+	private ["_nextTime", "_limit", "_high", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do", "_ar"];
 	_nextTime = time + INTERVAL;
-	_limit = DELAY * 1.1;
+	_limit = DELAY * DIFF;
+	_high = DELAY * HIGH_DIFF;
 	while {GVAR(log)} do {
 		waitUntil {time > _nextTime};
 		_ar = GVAR(ar); GVAR(ar) = [];
@@ -120,8 +122,8 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 			_deltaTime = (_b select 1) - (_a select 1);
 			_log = ["Delta", _a, _b, _deltaTick, _deltaTime];
 			_do = false;
-			if (_deltaTime > _limit) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime); _do = true };
-			if (_deltaTick > _limit) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick); _do = true };
+			if (_deltaTime > _limit) then { _do = true; if (_deltaTime > _high) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime) } };
+			if (_deltaTick > _limit) then { _do = true; if (_deltaTick > _high) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick) } };
 			if (_do) then { PUSH(GVAR(logs),_log) };
 		} forEach _ar;
 		if (GVAR(interactive)) then {
