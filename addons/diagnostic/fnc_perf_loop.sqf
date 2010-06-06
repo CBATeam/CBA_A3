@@ -17,6 +17,23 @@ private ["_entry", "_create", "_dump", "_f"];
 if (isNil QUOTE(GVAR(running))) then { GVAR(running) = false };
 if (GVAR(running)) exitWith {}; // Already running
 GVAR(running) = true;
+
+
+FUNC(lag) = {
+		for "_i" from 0 to 100 do {
+			call compile format["nearestObjects [call compile ""player"", [""All""], 5000]"];
+		};
+};
+
+FUNC(lag2) = {
+		{ deleteVehicle _x } forEach _objects; // _x setDamage 1
+		_objects = [];
+		for "_i" from 0 to 100 do {
+			_logic = "LOGIC" createVehicleLocal [0, 0, 0];
+			PUSH(_objects,_logic);
+		};
+};
+
 TRACE_1("Started",GVAR(running));
 
 GVAR(ar) = [];
@@ -30,12 +47,7 @@ if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = true };
 	while {GVAR(lag)} do {
 		waitUntil {time > _nextTime};
 		TRACE_1("Lag Started","");
-		{ deleteVehicle _x } forEach _objects; // _x setDamage 1
-		_objects = [];
-		for "_i" from 0 to 100 do {
-			_logic = "LOGIC" createVehicleLocal [0, 0, 0];
-			PUSH(_objects,_logic);
-		};
+		call FUNC(lag);
 		_nextTime = time + INTERVAL;
 		TRACE_1("Lag Ended","");
 	};
