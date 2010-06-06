@@ -13,9 +13,6 @@
 	#define PUSH(A,B) A set [count A, B]
 */
 
-// temp
-GVAR(lag) = true;
-
 private ["_entry", "_create", "_dump", "_f"];
 
 if (isNil QUOTE(GVAR(running))) then { GVAR(running) = false };
@@ -23,8 +20,9 @@ if (GVAR(running)) exitWith {}; // Already running
 GVAR(running) = true;
 
 FUNC(lag) = {
+		//_unit = if (isNull player) then { allUnits select 0 } else { player };
 		for "_i" from 0 to 100 do {
-			call compile format["nearestObjects [call compile ""player"", [""All""], 5000]"];
+			{ _unit = _x; call compile format["nearestObjects [call compile ""_unit"", [""All""], 5000]"] } forEach allUnits;
 		};
 };
 
@@ -79,7 +77,9 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 	_limit = DELAY * 1.1;
 	while {GVAR(log)} do {
 		waitUntil {time > _nextTime};
+		_ar = GVAR(ar); GVAR(ar) = [];
 		{
+			// TODO: Also compare the delta between two entries :)
 			_a = _x select 0; _b = _x select 1;
 			_deltaTick = (_b select 0) - (_a select 0);
 			_deltaTime = (_b select 1) - (_a select 1);
@@ -88,13 +88,12 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 			if (_deltaTime > _limit) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime); _do = true };
 			if (_deltaTick > _limit) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick); _do = true };
 			if (_do) then { PUSH(GVAR(logs),_log) };
-		} forEach GVAR(ar);
+		} forEach _ar;
 		if (GVAR(interactive)) then {
 			// Output at each iteration
 			{ diag_log _x } forEach GVAR(logs);
 			GVAR(logs) = [];
 		};
-		GVAR(ar) = [];
 		_nextTime = time + INTERVAL;
 	};
 	if !(GVAR(interactive)) then {
