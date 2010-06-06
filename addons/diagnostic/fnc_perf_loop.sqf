@@ -26,6 +26,32 @@ FUNC(lag) = {
 		};
 };
 
+FUNC(lag3) = {
+	// Piece of ace_sys_maptools that caused lags for sys_missileguidance 
+    DOUBLES(ADDON,compassRuler) = "";
+	DOUBLES(ADDON,compassRose) = "";
+    while { true } do {
+        if("ace_sys_maptools_tools_tools_tools" in (weapons player)) then {
+		} else {
+            _actionId = -1;
+			deleteMarkerLocal QUOTE(DOUBLES(ADDON,compassRuler));
+            deleteMarkerLocal QUOTE(DOUBLES(ADDON,compassRose));
+            GVAR(MouseDown) = false;
+            GVAR(DragOK)    = false;
+            GVAR(OffDrag)   = false;
+            GVAR(LastDragPosition) = [];
+            GVAR(RulerStartPos) = [];
+            GVAR(MouseShift) = false;
+            GVAR(LastDragAzimuth) = -1000;
+            GVAR(MapLineSegmentStart) = [0, 0, 0];
+            GVAR(MapLineColor) = 0;
+            GVAR(MapPreviousDir) = 0;
+            GVAR(RulerKeyDown) = -1000;
+		};
+	};
+
+};
+
 FUNC(lag2) = {
 		{ deleteVehicle _x } forEach _objects; // _x setDamage 1
 		_objects = [];
