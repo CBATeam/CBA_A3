@@ -18,7 +18,6 @@ if (isNil QUOTE(GVAR(running))) then { GVAR(running) = false };
 if (GVAR(running)) exitWith {}; // Already running
 GVAR(running) = true;
 
-
 FUNC(lag) = {
 		for "_i" from 0 to 100 do {
 			call compile format["nearestObjects [call compile ""player"", [""All""], 5000]"];
@@ -36,9 +35,10 @@ FUNC(lag2) = {
 
 TRACE_1("Started",GVAR(running));
 
-GVAR(ar) = [];
+GVAR(logs) = []; GVAR(ar) = [];
 if (isNil QUOTE(GVAR(log))) then { GVAR(log) = true };
-if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = true };
+if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = false };
+if (isNil QUOTE(GVAR(interactive))) then { GVAR(interactive) = true };
 
 [] spawn {
 	private ["_nextTime", "_objects", "_logic"];
@@ -65,10 +65,9 @@ _create = {
 
 // Output logged information and add warnings when appropriate
 [] spawn {
-	private ["_nextTime", "_limit", "_a", "_b", "_deltaTick", "_deltaTime", "_logs", "_log", "_do"];
+	private ["_nextTime", "_limit", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do"];
 	_nextTime = time + INTERVAL;
 	_limit = DELAY * 1.1;
-	_logs = [];
 	while {GVAR(log)} do {
 		waitUntil {time > _nextTime};
 		{
@@ -79,15 +78,24 @@ _create = {
 			_do = false;
 			if (_deltaTime > _limit) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime); _do = true };
 			if (_deltaTick > _limit) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick); _do = true };
-			if (_do) then { PUSH(_logs,_log) };
+			if (_do) then { PUSH(GVAR(logs),_log) };
 		} forEach GVAR(ar);
-		{ diag_log _x } forEach _logs;
-		GVAR(ar) = []; _logs = [];
+		if (GVAR(interactive)) then {
+			// Output at each iteration
+			{ diag_log _x } forEach GVAR(logs);
+			GVAR(logs) = [];
+		};
+		GVAR(ar) = [];
 		_nextTime = time + INTERVAL;
 	};
+	if !(GVAR(interactive)) then {
+		// Output at exit
+		{ diag_log _x } forEach GVAR(log);
+	};
+	GVAR(log) = [];
 };
 
-// Sleep for 1 second, then execute a simple command, and log the delta between the logged times and ticktimes
+// Sleep for DELAY seconds, then execute a simple command, and log the delta between the logged times and ticktimes
 while {GVAR(log)} do {
 	_entry = [[diag_tickTime, time]];
 	sleep DELAY;
