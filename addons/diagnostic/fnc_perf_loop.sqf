@@ -1,13 +1,16 @@
 /*
 	Script performance measurements, by Sickboy. Originally by Rommel
 */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define DELAY 1
 #define DIFF 1.1
 #define INTERVAL 10
 #define LAG_INTERVAL 2 // INTERVAL
+#define DEFAULT_VALUES diag_tickTime, time, diag_fps
 
 /*
+	// For usage outside CBA
 	#define QUOTE(A) #A
 	#define GVAR(A) my_##A
 	#define PUSH(A,B) A set [count A, B]
@@ -102,18 +105,20 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 
 // Output logged information and add warnings when appropriate
 [] spawn {
-	private ["_nextTime", "_limit", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do"];
+	private ["_nextTime", "_limit", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do", "_ar"];
 	_nextTime = time + INTERVAL;
 	_limit = DELAY * 1.1;
 	while {GVAR(log)} do {
 		waitUntil {time > _nextTime};
 		_ar = GVAR(ar); GVAR(ar) = [];
+		_log = ["Current", DEFAULT_VALUES];
+		PUSH(GVAR(logs),_log);
 		{
 			// TODO: Also compare the delta between two entries :)
 			_a = _x select 0; _b = _x select 1;
 			_deltaTick = (_b select 0) - (_a select 0);
 			_deltaTime = (_b select 1) - (_a select 1);
-			_log = [diag_tickTime, time, _a, _b, _deltaTick, _deltaTime];
+			_log = ["Delta", _a, _b, _deltaTick, _deltaTime];
 			_do = false;
 			if (_deltaTime > _limit) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime); _do = true };
 			if (_deltaTick > _limit) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick); _do = true };
@@ -135,10 +140,10 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 
 // Sleep for DELAY seconds, then execute a simple command, and log the delta between the logged times and ticktimes
 while {GVAR(log)} do {
-	_entry = [[diag_tickTime, time]];
+	_entry = [[DEFAULT_VALUES]];
 	sleep DELAY;
 	[] call _create;
-	_entry set [count _entry, [diag_tickTime, time]];
+	_entry set [count _entry, [DEFAULT_VALUES]];
 	PUSH(GVAR(ar),_entry);
 };
 
