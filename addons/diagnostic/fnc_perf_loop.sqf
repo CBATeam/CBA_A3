@@ -5,12 +5,16 @@
 #define DELAY 1
 #define DIFF 1.1
 #define INTERVAL 10
+#define LAG_INTERVAL 2 // INTERVAL
 
 /*
 	#define QUOTE(A) #A
 	#define GVAR(A) my_##A
 	#define PUSH(A,B) A set [count A, B]
 */
+
+// temp
+GVAR(lag) = true;
 
 private ["_entry", "_create", "_dump", "_f"];
 
@@ -33,25 +37,11 @@ FUNC(lag2) = {
 		};
 };
 
-TRACE_1("Started",GVAR(running));
 
 GVAR(logs) = []; GVAR(ar) = [];
 if (isNil QUOTE(GVAR(log))) then { GVAR(log) = true };
 if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = false };
 if (isNil QUOTE(GVAR(interactive))) then { GVAR(interactive) = true };
-
-[] spawn {
-	private ["_nextTime", "_objects", "_logic"];
-	_nextTime = time + INTERVAL;
-	_objects = [];
-	while {GVAR(lag)} do {
-		waitUntil {time > _nextTime};
-		TRACE_1("Lag Started","");
-		call FUNC(lag);
-		_nextTime = time + INTERVAL;
-		TRACE_1("Lag Ended","");
-	};
-};
 
 _dump = {
 	//diag_log format ["%1	%2	%3	%4	%5",count allunits,time,diag_ticktime,diag_fpsmin,diag_fps];
@@ -61,6 +51,25 @@ _create = {
 	private "_pid";
 	_pid = [] spawn _dump;
 	waituntil {scriptDone _pid};
+};
+
+waitUntil {SLX_XEH_MACHINE select 5}; // waitUntil player ready etc
+TRACE_1("Started",GVAR(running));
+
+if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
+
+// Induce lag by executing commands
+[] spawn {
+	private ["_nextTime", "_objects", "_logic"];
+	_nextTime = time + LAG_INTERVAL;
+	_objects = [];
+	while {GVAR(lag)} do {
+		waitUntil {time > _nextTime};
+		TRACE_1("Lag Started","");
+		call FUNC(lag);
+		_nextTime = time + LAG_INTERVAL;
+		TRACE_1("Lag Ended","");
+	};
 };
 
 // Output logged information and add warnings when appropriate
