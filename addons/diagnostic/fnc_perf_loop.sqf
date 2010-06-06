@@ -7,7 +7,7 @@
 #define DIFF 1.1
 #define INTERVAL 10
 #define LAG_INTERVAL 2 // INTERVAL
-#define DEFAULT_VALUES diag_tickTime, time, diag_fps
+#define DEFAULT_VALUES diag_tickTime, time, diag_fps, diag_fpsMin
 
 /*
 	// For usage outside CBA
