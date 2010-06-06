@@ -116,7 +116,7 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 		_log = ["Current", DEFAULT_VALUES];
 		PUSH(GVAR(logs),_log);
 		{
-			// TODO: Also compare the delta between two entries :)
+			// TODO: Also compare the delta between the previous few entries?
 			_a = _x select 0; _b = _x select 1;
 			_deltaTick = (_b select 0) - (_a select 0);
 			_deltaTime = (_b select 1) - (_a select 1);
