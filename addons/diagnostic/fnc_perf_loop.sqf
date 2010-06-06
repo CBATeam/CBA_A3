@@ -13,6 +13,9 @@
 	#define PUSH(A,B) A set [count A, B]
 */
 
+// temp
+//GVAR(lag) = true;
+
 private ["_entry", "_create", "_dump", "_f"];
 
 if (isNil QUOTE(GVAR(running))) then { GVAR(running) = false };
@@ -31,7 +34,7 @@ FUNC(lag3) = {
     DOUBLES(ADDON,compassRuler) = "";
 	DOUBLES(ADDON,compassRose) = "";
     while { true } do {
-        if("ace_sys_maptools_tools_tools_tools" in (weapons player)) then {
+        if("ace_sys_maptools_tools_tools_tools" in ["A", "B", "C"]) then {
 		} else {
             _actionId = -1;
 			deleteMarkerLocal QUOTE(DOUBLES(ADDON,compassRuler));
@@ -90,6 +93,7 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 	while {GVAR(lag)} do {
 		waitUntil {time > _nextTime};
 		TRACE_1("Lag Started","");
+		// [] spawn FUNC(lag3);
 		call FUNC(lag);
 		_nextTime = time + LAG_INTERVAL;
 		TRACE_1("Lag Ended","");
