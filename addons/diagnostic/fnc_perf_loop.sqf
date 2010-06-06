@@ -24,13 +24,17 @@ if (isNil QUOTE(GVAR(log))) then { GVAR(log) = true };
 if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = true };
 
 [] spawn {
-	private ["_nextTime"];
+	private ["_nextTime", "_objects", "_logic"];
 	_nextTime = time + INTERVAL;
+	_objects = [];
 	while {GVAR(lag)} do {
 		waitUntil {time > _nextTime};
 		TRACE_1("Lag Started","");
+		{ deleteVehicle _x } forEach _objects; // _x setDamage 1
+		_objects = [];
 		for "_i" from 0 to 100 do {
 			_logic = "LOGIC" createVehicleLocal [0, 0, 0];
+			PUSH(_objects,_logic);
 		};
 		_nextTime = time + INTERVAL;
 		TRACE_1("Lag Ended","");
