@@ -54,13 +54,18 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-private["_azimuth", "_angle", "_dif", "_infov", "_threed"];
+private["_azimuth", "_angle", "_dif", "_infov", "_threed", "_do"];
 
 PARAMS_1(_unit);
 DEFAULT_PARAM(1,_object,_unit);
 _threed = false;
 
-if (_object != _unit) then {
+_do = (typeName _object != typeName _unit);
+if (!_do) then {
+	_do = (_object != _unit);
+};
+
+if (_do) then {
 	_angle = [(_unit call CBA_fnc_getpos),(_object call CBA_fnc_getpos)] call BIS_fnc_dirTo;
 } else {
 	_angle = 0;
