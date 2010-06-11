@@ -63,6 +63,9 @@ if !(isDedicated) then
 	};
 	
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
+	private["_time2Wait"];
+	_time2Wait = diag_ticktime + 1;
+	waituntil {diag_ticktime > _time2Wait};
 	[] spawn
 	{
 		private["_time2Wait"];
