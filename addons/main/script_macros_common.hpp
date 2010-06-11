@@ -757,27 +757,35 @@ Author:
 	Spooner
 ------------------------------------------- */
 #define EXPLODE_2(ARRAY,A,B) \
+	private [#A,#B]; \
 	A = (ARRAY) select 0; B = (ARRAY) select 1
 	
 #define EXPLODE_3(ARRAY,A,B,C) \
+	private [#A,#B,#C]; \
 	EXPLODE_2(ARRAY,A,B); C = (ARRAY) select 2
 	
 #define EXPLODE_4(ARRAY,A,B,C,D) \
+	private [#A,#B,#C,#D]; \
 	EXPLODE_3(ARRAY,A,B,C); D = (ARRAY) select 3
 	
 #define EXPLODE_5(ARRAY,A,B,C,D,E) \
+	private [#A,#B,#C,#D,#E]; \
 	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4
 	
 #define EXPLODE_6(ARRAY,A,B,C,D,E,F) \
+	private [#A,#B,#C,#D,#E,#F]; \
 	EXPLODE_5(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
 	
 #define EXPLODE_7(ARRAY,A,B,C,D,E,F,G) \
+	private [#A,#B,#C,#D,#E,#F,#G]; \
 	EXPLODE_6(ARRAY,A,B,C,D,E,F); G = (ARRAY) select 6
 	
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
+	private [#A,#B,#C,#D,#E,#F,#G,#H]; \
 	EXPLODE_7(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
 	
 #define EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) \
+	private [#A,#B,#C,#D,#E,#F,#G,#H,#I]; \
 	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
 
 /* -------------------------------------------
@@ -824,39 +832,36 @@ Author:
 	TRACE_1("PARAMS_1",A)
 	
 #define PARAMS_2(A,B) \
-	private [#A, #B]; \
 	EXPLODE_2(_this,A,B); \
 	TRACE_2("PARAMS_2",A,B)
 	
 #define PARAMS_3(A,B,C) \
-	private [#A, #B, #C]; \
 	EXPLODE_3(_this,A,B,C); \
 	TRACE_3("PARAMS_3",A,B,C)
 	
 #define PARAMS_4(A,B,C,D) \
-	private [#A, #B, #C, #D]; \
 	EXPLODE_4(_this,A,B,C,D); \
 	TRACE_4("PARAMS_4",A,B,C,D)
 	
 #define PARAMS_5(A,B,C,D,E) \
-	private [#A, #B, #C, #D, #E]; \
 	EXPLODE_5(_this,A,B,C,D,E); \
 	TRACE_5("PARAMS_5",A,B,C,D,E)
 	
 #define PARAMS_6(A,B,C,D,E,F) \
-	private [#A, #B, #C, #D, #E, #F]; \
 	EXPLODE_6(_this,A,B,C,D,E,F); \
 	TRACE_6("PARAMS_6",A,B,C,D,E,F)
 	
 #define PARAMS_7(A,B,C,D,E,F,G) \
-	private [#A, #B, #C, #D, #E, #F, #G]; \
 	EXPLODE_7(_this,A,B,C,D,E,F,G); \
 	TRACE_7("PARAMS_7",A,B,C,D,E,F,G)
 	
 #define PARAMS_8(A,B,C,D,E,F,G,H) \
-	private [#A, #B, #C, #D, #E, #F, #G, #H]; \
 	EXPLODE_8(_this,A,B,C,D,E,F,G,H); \
 	TRACE_8("PARAMS_8",A,B,C,D,E,F,G,H)
+	
+#define PARAMS_9(A,B,C,D,E,F,G,H,I) \
+	EXPLODE_9(_this,A,B,C,D,E,F,G,H,I); \
+	TRACE_9("PARAMS_8",A,B,C,D,E,F,G,H,I)
 	
 /* -------------------------------------------
 Macro: DEFAULT_PARAM() 

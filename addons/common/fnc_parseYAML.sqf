@@ -139,9 +139,10 @@ _parse =
 						{
 							private ["_retVal"];
 							
-							_retVal = ([_yaml, _pos, _currentIndent,
-								_lines] call _parse);
-							EXPLODE_3(_retVal,_pos,_value,_error);
+							_retVal = ([_yaml, _pos, _currentIndent, _lines] call _parse);
+							_pos = _retVal select 0;
+							_value = _retVal select 1;
+							_error = _retVal select 2;
 						};
 						
 						if (not _error) then
@@ -192,9 +193,10 @@ _parse =
 						{
 							private ["_retVal"];
 							
-							_retVal = ([_yaml, _pos, _currentIndent,
-								_lines] call _parse);
-							EXPLODE_3(_retVal,_pos,_value,_error);
+							_retVal = ([_yaml, _pos, _currentIndent, _lines] call _parse);
+							_pos = _retVal select 0;
+							_value = _retVal select 1;
+							_error = _retVal select 2;
 						};
 						
 						if (not _error) then
@@ -365,8 +367,9 @@ if (count _yaml > 0) then
 _pos = -1;
 
 _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
-
-EXPLODE_3(_retVal,_pos,_data,_error);
+_pos = _retVal select 0;
+_value = _retVal select 1;
+_error = _retVal select 2;
 //TRACE_2("Parsed",_pos,_error);
 
 if (_error) then

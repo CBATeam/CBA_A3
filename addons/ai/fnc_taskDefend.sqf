@@ -28,7 +28,6 @@ _group = _group call CBA_fnc_getGroup;
 DEFAULT_PARAM(1,_position,_group);
 DEFAULT_PARAM(2,_radius,50);
 
-_group enableAttack false;
 _list = [_position, vehicles, _radius, {(_x isKindOf "LandVehicles") && (_x emptyPositions "gunner" > 0)}] call CBA_fnc_getNearest;
 _count = count _list;
 _units = units _group;

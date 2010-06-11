@@ -19,21 +19,6 @@ Examples:
 Author:
 	Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectDot.sqf";
 
-#include "script_component.hpp"
-SCRIPT(vectDot);
-
-
- private ["_u","_v","_i","_size", "_dot"];
-
-PARAMS_2(_u,_v);
-
-_size = count _u;
-_dot=0;
-for [{_i=0}, {_i<_size}, {_i=_i+1}] do
-{
-    _dot = _dot + (_u select _i) * (_v select _1);
-};
-
-_dot;
+//Function is complete replica, deprecated
+_this call BIS_fnc_dotProduct

@@ -22,11 +22,9 @@ SCRIPT(nearPlayer);
 
 PARAMS_2(_unit,_distance);
 
-private "_ok";
-_ok = false;
-
+private "_position";
+_position = _unit call CBA_fnc_getpos;
 {
-	if ((_unit distance _x) < _distance) exitWith { _ok = true };
+	if ((_position distance _x) < _distance) exitWith { true };
+	false;
 } forEach ([] call CBA_fnc_players);
-
-_ok

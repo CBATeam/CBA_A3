@@ -25,18 +25,17 @@ PARAMS_2(_position,_array)
 DEFAULT_PARAM(2,_radius,10^5)
 DEFAULT_PARAM(3,_code,{true})
 
+private "_return";
 _return = [];
 {
 	_distance = [_position,_x] call CBA_fnc_getDistance;
-	if !(isnil {_distance}) then {
-		if (_distance < _radius) then {
-			if !(call _code) exitwith {};
-			if (count _this > 2) then {
-				_return set [count _return, _x];
-			} else {
-				_radius = _distance;
-				_return = _x;
-			};
+	if (_distance < _radius) then {
+		if !(call _code) exitwith {};
+		if (count _this > 2) then {
+			_return set [count _return, _x];
+		} else {
+			_radius = _distance;
+			_return = _x;
 		};
 	};
 } foreach _array;

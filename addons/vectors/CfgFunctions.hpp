@@ -93,6 +93,12 @@ class CfgFunctions
 				description = "Returns the magnitude of a vector with the given i and k coordinates or the magnitude of the i and k components of a 3D vector.";
 				file = "\x\cba\addons\vectors\fnc_vectMagn2D.sqf";
 			};
+			// CBA_fnc_vectRotate2D
+			class vectRotate2D
+			{
+				description = "Rotates a 2D vector around a given center, for rotating of a vector from its origin, use BIS_fnc_rotateVector2D";
+				file = "\x\cba\addons\vectors\fnc_vectRotate2D.sqf";
+			};
 			// CBA_fnc_vectSubtract
 			class vectSubtract
 			{

@@ -14,6 +14,4 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#define ARG(X)	(_this select (X))
-
-(ARG(0) call CBA_fnc_getPos) distance (ARG(1) call CBA_fnc_getPos)
+((_this select 0) call CBA_fnc_getPos) distance ((_this select 1) call CBA_fnc_getPos)

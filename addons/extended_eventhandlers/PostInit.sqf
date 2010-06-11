@@ -68,7 +68,7 @@ if !(isDedicated) then
 		private["_time2Wait"];
 		_time2Wait = diag_ticktime + 10;
 		waituntil {diag_ticktime > _time2Wait};
-		endLoadingScreen;
+		if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); endLoadingScreen; };
 	};
 };
 

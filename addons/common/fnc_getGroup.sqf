@@ -14,8 +14,5 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-if (typeName _this == "GROUP") exitwith {
-	if (isnull _this) exitwith {};
-	_this
-};
+if (typeName _this == "GROUP") exitwith {_this};
 group _this

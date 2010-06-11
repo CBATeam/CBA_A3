@@ -1,3 +1,4 @@
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 LOG("XEH: PreInit Started");
@@ -70,7 +71,12 @@ SLX_XEH_F_INIT = {
 			};
 			_i = _i+1;
 		};
-		{ call _x } forEach _Inits;	   
+		{
+			#ifdef DEBUG_MODE_FULL
+				LOG(_x);
+			#endif
+			call _x;
+		} forEach _Inits;	   
 	};
 	#ifdef DEBUG_MODE_FULL
 	_msg = format["XEH END: Init %1", _this];
