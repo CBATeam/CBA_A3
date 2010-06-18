@@ -1,7 +1,7 @@
 /*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, PerfTest">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,4346,-63.965511,-136.637909,26.034477,-86.637924,0.000000,"Start"};
+item0[] = {"Start",0,250,-63.965511,-136.637909,26.034477,-86.637924,0.000000,"Start"};
 item1[] = {"Condition_Code",4,218,-133.362061,-208.189651,-43.362061,-158.189651,99.000000,"Condition Code"};
 item2[] = {"END",1,250,-266.982758,-274.137939,-176.982727,-224.137955,0.000000,"END"};
 item3[] = {"Run_Code",8,218,39.913788,-209.482758,129.913757,-159.482742,0.000000,"Run Code"};
@@ -29,6 +29,7 @@ class FSM
        "if (_c < 4) then { _this set [3, {}] };" \n
        "if (_c < 5) then { _this set [4, {}] };" \n
        "if (_c < 6) then { _this set [5, []] };" \n
+       "if (_c < 7) then { _this set [6, {true}] };" \n
        "" \n
        "// Call ""Init"" code" \n
        "private (_this select 5);" \n
@@ -55,7 +56,7 @@ class FSM
           to="Start";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"// Call ""Run"" code" \n
-           "call (_this select 2);" \n
+           "if (call (_this select 6)) then { call (_this select 2) };" \n
            ""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
