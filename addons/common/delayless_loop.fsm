@@ -10,7 +10,7 @@ link1[] = {0,3};
 link2[] = {1,2};
 link3[] = {3,0};
 globals[] = {0.000000,0,0,0,0,640,480,1,5,6316128,1,-300.000000,300.000000,300.000000,-300.000000,847,460,1};
-window[] = {0,-1,-1,-32000,-32000,1484,360,1554,879,1,865};
+window[] = {0,-1,-1,-1,-1,830,225,1419,225,1,865};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -28,8 +28,10 @@ class FSM
        "// Handle optional paramters" \n
        "if (_c < 4) then { _this set [3, {}] };" \n
        "if (_c < 5) then { _this set [4, {}] };" \n
+       "if (_c < 6) then { _this set [5, []] };" \n
        "" \n
        "// Call ""Init"" code" \n
+       "private (_this select 5);" \n
        "call (_this select 3);" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
