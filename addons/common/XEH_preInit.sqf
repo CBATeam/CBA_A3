@@ -24,6 +24,7 @@ ADDON = false;
 
 GVAR(centers) = [];
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
+GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
