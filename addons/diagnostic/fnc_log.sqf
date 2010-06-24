@@ -39,9 +39,9 @@ SCRIPT(log);
 		{
 			_fnc_log =
 			{
-				PARAMS_6(_file,_lineNum,_message,_frameNo,_tickTime,_gameTime);
+				PARAMS_7(_file,_lineNum,_message,_frameNo,_fps,_tickTime,_gameTime);
 				// TODO: Add log message to trace log
-				diag_log [_frameNo,
+				diag_log [_frameNo, _fps,
 					[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
 					[_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, ":", _lineNum + 1, _message];
 			};
