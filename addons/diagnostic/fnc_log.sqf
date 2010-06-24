@@ -29,7 +29,7 @@ SCRIPT(log);
 #ifndef DEBUG_SYNCHRONOUS
 	if (isNil "CBA_LOG_ARRAY") then { CBA_LOG_ARRAY = [] };
 	private ["_msg"];
-	_msg = [_this select 0, _this select 1, _this select 2, diag_frameNo, diag_tickTime, time]; // Save it here because we want to know when it was happening, not when it is outputted
+	_msg = [_this select 0, _this select 1, _this select 2, diag_frameNo, diag_fps, diag_tickTime, time]; // Save it here because we want to know when it was happening, not when it is outputted
 	PUSH(CBA_LOG_ARRAY,_msg);
 
 	if (isNil "CBA_LOG_VAR") then
@@ -68,7 +68,7 @@ SCRIPT(log);
 #else
 	PARAMS_3(_file,_lineNum,_message);
 	// TODO: Add log message to trace log
-	diag_log [diag_frameNo,
+	diag_log [diag_frameNo, diag_fps,
 		[diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
 		[time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, ":", _lineNum + 1, _message];
 #endif
