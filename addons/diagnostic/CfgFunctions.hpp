@@ -33,6 +33,12 @@ class CfgFunctions
 				description = "Logs a message to the RPT log.";
 				file = "\x\cba\addons\diagnostic\fnc_log.sqf";
 			};
+			// CBA_fnc_peek
+			class peek
+			{
+				description = "Peek at variable on the server To receive the variable content back, you will have to [""cba_diagnostics_receive_peak"", {_this call myFunction}] call CBA_fnc_addEventHandler;";
+				file = "\x\cba\addons\diagnostic\fnc_peek.sqf";
+			};
 			// CBA_fnc_test
 			class test
 			{
