@@ -87,6 +87,7 @@ Group: Functions  {
          File: debug  (no auto-title, diagnostic\fnc_debug.sqf)
          File: error  (no auto-title, diagnostic\fnc_error.sqf)
          File: log  (no auto-title, diagnostic\fnc_log.sqf)
+         File: peek  (no auto-title, diagnostic\fnc_peek.sqf)
          File: test  (no auto-title, diagnostic\fnc_test.sqf)
          }  # Group: Diagnostic
 

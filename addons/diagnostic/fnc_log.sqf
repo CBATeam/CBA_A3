@@ -28,7 +28,9 @@ SCRIPT(log);
 
 #ifndef DEBUG_SYNCHRONOUS
 	if (isNil "CBA_LOG_ARRAY") then { CBA_LOG_ARRAY = [] };
-	PUSH(CBA_LOG_ARRAY,_this);
+	private ["_msg"];
+	_msg = [_this select 0, _this select 1, _this select 2, diag_frameNo, diag_fps, diag_tickTime, time]; // Save it here because we want to know when it was happening, not when it is outputted
+	PUSH(CBA_LOG_ARRAY,_msg);
 
 	if (isNil "CBA_LOG_VAR") then
 	{
@@ -37,11 +39,11 @@ SCRIPT(log);
 		{
 			_fnc_log =
 			{
-				PARAMS_3(_file,_lineNum,_message);
+				PARAMS_7(_file,_lineNum,_message,_frameNo,_fps,_tickTime,_gameTime);
 				// TODO: Add log message to trace log
-				diag_log text format ["%1 (%2) [%3:%4] %5",
-					[diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
-					[time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, _lineNum + 1, _message];
+				diag_log [_frameNo, _fps,
+					[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
+					[_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, ":", _lineNum + 1, _message];
 			};
 
 			while {count CBA_LOG_ARRAY > 0} do
@@ -66,9 +68,9 @@ SCRIPT(log);
 #else
 	PARAMS_3(_file,_lineNum,_message);
 	// TODO: Add log message to trace log
-	diag_log text format ["%1 (%2) [%3:%4] %5",
+	diag_log [diag_frameNo, diag_fps,
 		[diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
-		[time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, _lineNum + 1, _message];
+		[time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, _file, ":", _lineNum + 1, _message];
 #endif
 
 nil;

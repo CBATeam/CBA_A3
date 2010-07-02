@@ -16,7 +16,8 @@ Author:
 
 #include "script_component.hpp"
 
-_group = _this call CBA_fnc_getGroup;
+PARAMS_1(_group);
+_group = _group call CBA_fnc_getGroup;
 _group lockWP true;
 private ["_leader","_behaviour"];
 _leader = leader _group;
@@ -25,8 +26,8 @@ _group setBehaviour "COMBAT";
 
 private ["_array", "_building", "_indices"];
 _array = _leader call CBA_fnc_getNearestBuilding;
-_building = ARG_2(_array, 0);
-_indices = ARG_2(_array, 1);
+_building = ARG_1(_array, 0);
+_indices = ARG_1(_array, 1);
 _group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
 
 if (([_group, _building] call CBA_fnc_getDistance) > 500) exitwith {_group lockWP false};

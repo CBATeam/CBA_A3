@@ -24,6 +24,7 @@ ADDON = false;
 
 GVAR(centers) = [];
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
+GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
@@ -81,6 +82,8 @@ DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but 
 
 // NOTE: Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
 [] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_addons));
+
+[] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_delayLess));
 
 // Announce Initialization Complete
 ADDON = true;
