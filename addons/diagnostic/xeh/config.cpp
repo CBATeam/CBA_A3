@@ -1,0 +1,41 @@
+// TODO: server##type client##type ?
+// #define EH_DEBUG_ENABLED
+#ifdef EH_DEBUG_ENABLED
+	#include "script_component.hpp"
+	class CfgPatches {
+			class ADDON {
+					units[] = {};
+					weapons[] = {};
+					worlds[] = {};
+					requiredVersion = 1.0;
+					requiredAddons[] = {"cba_diagnostic"};
+			};
+	};
+
+	#define ARGUMENTS diag_frameNo, diag_tickTime, time, _this
+	#define EH_INIT(type2) ##type2 = QUOTE(FUNC(diag_xeh) = { diag_log [ARGUMENTS]; }; ['type type2'] call FUNC(diag_xeh))
+	
+	#define EH_DEBUG(type) class Extended_##type##_EventHandlers { class All { class 0 { ##type = QUOTE((['type']+_this) call FUNC(diag_xeh)); }; }; }
+	#define EH_DEBUG_ONCE(type) class Extended_##type##_EventHandlers { class 0 { EH_INIT(init); EH_INIT(serverInit); EH_INIT(clientInit); }; }
+
+	EH_DEBUG_ONCE(preInit);
+	EH_DEBUG_ONCE(postInit);
+	EH_DEBUG(InitPost);
+	EH_DEBUG(Init);
+	EH_DEBUG(AnimChanged);
+	EH_DEBUG(AnimDone);
+	EH_DEBUG(Dammaged);
+	EH_DEBUG(Engine);
+	EH_DEBUG(Fired);
+	EH_DEBUG(FiredNear);
+	EH_DEBUG(Fuel);
+	EH_DEBUG(Gear);
+	EH_DEBUG(GetIn);
+	EH_DEBUG(GetOut);
+	EH_DEBUG(Hit);
+	EH_DEBUG(IncomingMissile);
+	EH_DEBUG(Killed);
+	EH_DEBUG(LandedTouchDown);
+	EH_DEBUG(LandedStopped);
+	EH_DEBUG(HandleDamage);
+#endif
