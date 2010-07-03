@@ -13,9 +13,10 @@
 	};
 
 	#define ARGUMENTS diag_frameNo, diag_tickTime, time, _this
+	#define UNIT_ARGS 'type', typeOf (_this select 0), _this
 	#define EH_INIT(type2) ##type2 = QUOTE(FUNC(diag_xeh) = { diag_log [ARGUMENTS]; }; ['type type2'] call FUNC(diag_xeh))
 	
-	#define EH_DEBUG(type) class Extended_##type##_EventHandlers { class All { class 0 { ##type = QUOTE((['type']+_this) call FUNC(diag_xeh)); }; }; }
+	#define EH_DEBUG(type) class Extended_##type##_EventHandlers { class All { class 0 { ##type = QUOTE([UNIT_ARGS] call FUNC(diag_xeh)); }; }; }
 	#define EH_DEBUG_ONCE(type) class Extended_##type##_EventHandlers { class 0 { EH_INIT(init); EH_INIT(serverInit); EH_INIT(clientInit); }; }
 
 	EH_DEBUG_ONCE(preInit);
