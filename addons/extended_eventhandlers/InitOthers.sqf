@@ -7,7 +7,7 @@
 */
 #include "script_component.hpp"
 private [
-	"_unit", "_isExcluded", "_event", "_Extended_EH_Class",
+	"_unit", "_isExcluded", "_event", "_Extended_EH_Class", "_class",
 	"_unitClass", "_classes", "_excludeClass", "_excludeClasses", "_handlers",
 	"_handler", "_cfgEntry", "_scopeEntry", "_handlerEntry", "_excludeEntry",
 	"_scope", "_i", "_t", "_xeh", "_event", "_replaceDEH"
@@ -42,7 +42,7 @@ _f = {
 	_clientHandlerEntry = _cfgEntry / format["client%1", _eventCus];
 	// If the particular EH is private and vehicle is of the
 	// "wrong" class, do nothing, ie don't add the EH.
-	if !(_scope == 0 && (_unitClass != _x)) then
+	if !(_scope == 0 && (_unitClass != _class)) then
 	{
 		if (isText _handlerEntry) then
 		{
@@ -113,13 +113,14 @@ _f = {
 	{
 		_configFile=_x;
 		{
-			if ((configName (_configFile/_Extended_EH_Class/_x))!= "") then
+			_class = _x;
+			if ((configName (_configFile/_Extended_EH_Class/_class))!= "") then
 			{
 				_i = 0;
-				_t = count (_configFile/_Extended_EH_Class/_x);
+				_t = count (_configFile/_Extended_EH_Class/_class);
 				while { _i<_t } do
 				{
-					_cfgEntry = (_configFile/_Extended_EH_Class/_x) select _i;
+					_cfgEntry = (_configFile/_Extended_EH_Class/_class) select _i;
 					// Standard XEH event handler string
 					if (isText _cfgEntry) then
 					{
