@@ -94,12 +94,13 @@ SLX_XEH_F_INIT = {
 
 // Add / Remove the playerEvents
 SLX_XEH_F_ADDPLAYEREVENTS = {
+	if (isNull _this) exitWith {}; // not a valid object
 	{ _event = format["Extended_%1EH",_x]; _this setVariable [(_this getVariable _event) select 0, compile format["_this call ((_this select 0) getVariable '%1_Player')",_event]] } forEach SLX_XEH_OTHER_EVENTS;
 };
 SLX_XEH_F_REMOVEPLAYEREVENTS = {
+	if (isNull _this) exitWith {}; // not a valid object
 	{ _event = format["Extended_%1EH",_x]; _this setVariable [(_this getVariable _event) select 0] } forEach SLX_XEH_OTHER_EVENTS;
 };
-
 
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";

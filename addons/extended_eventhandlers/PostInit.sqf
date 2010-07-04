@@ -103,6 +103,24 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 //} execFSM "extended_eventhandlers\delayless.fsm";
 //waitUntil {completedFSM _handle};
 
+if !(isDedicated) then {
+	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
+	_lastPlayer = player;
+	_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
+	_lastPlayer spawn {
+		_lastPlayer = _this;
+		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, perhaps synchronous
+		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
+		while {true} do {
+			waitUntil {player != _lastPlayer};
+			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
+			waitUntil {player == player};
+			_lastPlayer = player;
+			_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;			
+		};
+	};
+};
+
 if !(isDedicated) then {endLoadingScreen};
 SLX_XEH_MACHINE set [8, true];
 
