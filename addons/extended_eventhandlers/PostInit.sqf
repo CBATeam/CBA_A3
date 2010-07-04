@@ -103,7 +103,7 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 //} execFSM "extended_eventhandlers\delayless.fsm";
 //waitUntil {completedFSM _handle};
 
-if !(isDedicated) then {
+if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
 	_lastPlayer = player;
 	_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
