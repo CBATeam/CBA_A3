@@ -109,8 +109,9 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 	_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 	_lastPlayer spawn {
 		_lastPlayer = _this;
-		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, perhaps synchronous
+		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, synchronous.
 		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
+		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
 		while {true} do {
 			waitUntil {player != _lastPlayer};
 			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
