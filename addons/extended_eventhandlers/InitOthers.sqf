@@ -168,7 +168,7 @@ _f = {
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
 	_unit setVariable [_xeh, [compile _handler]];
-	_unit setVariable [_xehPlayer, [compile _handlerPlayer]];
+	_unit setVariable [_xehPlayer, compile _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
 	diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, _event, _handler != ""];
