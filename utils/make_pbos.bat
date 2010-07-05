@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-4-2.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-5-0.biprivatekey"
 set SIGN="C:\tools\dsutils\DSSignFile.exe"
 
 REM set OPTS=-m
@@ -21,6 +21,7 @@ cd "C:\tools"
 %TOOL% %OPTS% "%ADDONS%\extended_eventhandlers"
 %TOOL% %OPTS% "%ADDONS%\main"
 %TOOL% %OPTS% "%ADDONS%\arrays"
+%TOOL% %OPTS% "%ADDONS%\help"
 %TOOL% %OPTS% "%ADDONS%\common"
 %TOOL% %OPTS% "%ADDONS%\diagnostic"
 %TOOL% %OPTS% "%ADDONS%\events"
