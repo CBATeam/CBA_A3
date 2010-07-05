@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-3-1.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-4-2.biprivatekey"
 set SIGN="C:\tools\dsutils\DSSignFile.exe"
 
 REM set OPTS=-m
@@ -34,9 +34,9 @@ cd "C:\tools"
 echo.
 
 cd %ADDONS%
-rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
+rem rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 
-%SIGN% %KEY% "%ADDONS%\extended_eventhandlers.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_extended_eventhandlers.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_ai.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_main.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_arrays.pbo"
@@ -44,6 +44,7 @@ rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 %SIGN% %KEY% "%ADDONS%\cba_diagnostic.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_events.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_hashes.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_help.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_network.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_strings.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_ui.pbo"
