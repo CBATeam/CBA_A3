@@ -7,7 +7,7 @@ include Net
 
 HOST = 'dev-heaven.net'
 ATTACHMENTS_DIR = 'attachments'
-EXPORT_HTML = '?export=html'
+EXPORT_HTML = '?format=html'
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.1) Gecko/20060111 Firefox/1.5.0.1'
 GET_OPTIONS = { 'User-Agent' => USER_AGENT }
@@ -85,7 +85,7 @@ END_CSS
 
 	puts "Fetched #{page}.html (#{text.length} bytes)"
 		
-    while text =~ /<a href="(\w+)(?:#\w*)?\.html" class="wiki\-page"/
+    while text =~ /<a href\="(\w+)\.html"/
       name = $1
 
       fetch(project, name, destination, exclude, getCSS) unless exclude.include? name.downcase
