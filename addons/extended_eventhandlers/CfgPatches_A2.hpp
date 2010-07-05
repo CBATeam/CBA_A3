@@ -9,11 +9,7 @@ class CfgPatches
 		authorUrl = "http://dev-heaven.net/projects/cca";
 		requiredAddons[] =
 		{
-			"CAAir2", // Car, SU25Wreck, Mi24Wreck, F35bWreck, MQ9PredatorWreck, MV22Wreck, C130JWreck, Ka52Wreck, UH1YWreck
-			"CA_E", // Tank
-			"CAAir", // Helicopter, ParachuteBase, AH1ZWreck, MH60Wreck, AV8BWreck, Mi17Wreck
-			"CAA10", // Plane, A10, A10Wreck
-			"CAData", // Ship, StaticCannon
+			"CAData", // Car, Tank, Helicopter, Plane, Ship, ParachuteBase, StaticCannon
 			"HALO_Test", // BIS_Steerable_Parachute
 			"CA_Modules", // BIS_Effect_FilmGrain, BIS_Effect_Day, BIS_Effect_MovieNight, BIS_Effect_Sepia
 			"CA_Missions_AlternativeInjurySimulation", // AlternativeInjurySimulation
@@ -37,8 +33,11 @@ class CfgPatches
 			"CA_Missions_SecOps", // SecOpManager
 			"CA_Modules_StratLayer", // StrategicReferenceLayer
 			"CACharacters2", // FR_Base, FR_Miles, FR_Cooper, FR_Sykes, FR_OHara, FR_Rodriguez
+			"CAAir", // AH1ZWreck, MH60Wreck, AV8BWreck, Mi17Wreck
 			"CAMisc3", // Land_Fire_burning, Land_Campfire_burning, Land_Fire_barrel_burning, FlagCarrierUSA, FlagCarrierCDF, FlagCarrierRU, FlagCarrierINS, FlagCarrierGUE, FlagCarrierChecked, TargetPopUpTarget, TargetEpopup, Barrack2, Mass_grave, Warfare
 			"CATracked2_AAV", // AAV
+			"CAA10", // A10, A10Wreck
+			"CAAir2", // SU25Wreck, Mi24Wreck, F35bWreck, MQ9PredatorWreck, MV22Wreck, C130JWreck, Ka52Wreck, UH1YWreck
 			"CAAir3", // Su34
 			"CA_CruiseMissile" // CruiseMissile2
 		};
