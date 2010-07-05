@@ -21,4 +21,4 @@ Author:
 ---------------------------------------------------------------------------- */
 
 //Function is complete replica, deprecated
-_this call BIS_fnc_vectAdd
+_this call BIS_fnc_vectorAdd
