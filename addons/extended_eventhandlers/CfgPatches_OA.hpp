@@ -9,11 +9,7 @@ class CfgPatches
 		authorUrl = "http://dev-heaven.net/projects/cca";
 		requiredAddons[] =
 		{
-			"CAAir", // All, Helicopter, ParachuteBase
-			"CAAir2", // Car
-			"CA_E", // Tank
-			"CAA10", // Plane, A10, A10Wreck
-			"CAData", // StaticCannon
+			"CAData", // All, Car, Tank, Helicopter, Plane, ParachuteBase, StaticCannon
 			"HALO_Test", // BIS_Steerable_Parachute
 			"CA_Modules", // BIS_Effect_FilmGrain, BIS_Effect_Day, BIS_Effect_MovieNight, BIS_Effect_Sepia
 			"CA_Missions_AlternativeInjurySimulation", // AlternativeInjurySimulation
@@ -46,6 +42,7 @@ class CfgPatches
 			"CACharacters_E", // TK_CIV_Takistani01_EP1, TK_CIV_Takistani02_EP1, TK_CIV_Takistani03_EP1, TK_CIV_Takistani04_EP1, TK_CIV_Takistani05_EP1, TK_CIV_Takistani06_EP1, TK_CIV_Woman01_EP1, TK_CIV_Woman02_EP1, TK_CIV_Woman03_EP1, Dr_Annie_Baker_EP1, Rita_Ensler_EP1, Haris_Press_EP1, Dr_Hladik_EP1, TK_INS_Soldier_EP1, TK_INS_Soldier_2_EP1, TK_INS_Soldier_3_EP1, TK_INS_Soldier_4_EP1, TK_INS_Soldier_AA_EP1, TK_INS_Soldier_AT_EP1, TK_INS_Soldier_TL_EP1, TK_INS_Soldier_Sniper_EP1, TK_INS_Soldier_AR_EP1, TK_INS_Soldier_MG_EP1, TK_INS_Bonesetter_EP1, TK_INS_Warlord_EP1, TK_GUE_Soldier_EP1, TK_GUE_Soldier_2_EP1, TK_GUE_Soldier_3_EP1, TK_GUE_Soldier_4_EP1, TK_GUE_Soldier_5_EP1, TK_GUE_Soldier_AA_EP1, TK_GUE_Soldier_AT_EP1, TK_GUE_Soldier_HAT_EP1, TK_GUE_Soldier_TL_EP1, TK_GUE_Soldier_Sniper_EP1, TK_GUE_Soldier_AR_EP1, TK_GUE_Soldier_MG_EP1, TK_GUE_Bonesetter_EP1, TK_GUE_Warlord_EP1
 			"CAMisc3", // Land_Fire_burning, Land_Campfire_burning, FlagCarrierUSA, FlagCarrierCDF, FlagCarrierChecked, TargetPopUpTarget, TargetEpopup, Barrack2, Mass_grave
 			"CAWheeled_E", // Pickup_PK_TK_GUE_EP1
+			"CAA10", // A10, A10Wreck
 			"CAAir_E_AH6J", // AH6X_EP1
 			"CAAir_E_Halo", // Steerable_Parachute_EP1
 			"CA_L39", // l39Wreck
