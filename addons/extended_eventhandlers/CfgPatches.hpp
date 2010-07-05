@@ -28,6 +28,24 @@ class CfgPatches
 			"BI_SRRS", // BIS_SRRS_Logic
 			"CA_Modules_UAV", // UAVManager
 			"CA_Modules_ZoRA", // ZoraManager
+			"HALO_Test", // BIS_Steerable_Parachute
+			"CA_Modules", // BIS_Effect_FilmGrain, BIS_Effect_Day, BIS_Effect_MovieNight, BIS_Effect_Sepia
+			"CA_Missions_AlternativeInjurySimulation", // AlternativeInjurySimulation
+			"CA_Modules_Alice", // AliceManager
+			"CA_Missions_AmbientCombat", // AmbientCombatManager
+			"CA_Modules_Animals", // BIS_animals_Logic
+			"CA_Missions_BattlefieldClearance", // BattleFieldClearance
+			"CA_Modules_clouds", // BIS_clouds_Logic
+			"CA_Modules_Coin", // ConstructionManager
+			"CA_Missions_FirstAidSystem", // FirstAidSystem
+			"CA_Modules_Functions", // FunctionsManager, PreloadManager
+			"CA_Missions_GarbageCollector", // GarbageCollector
+			"CA_HighCommand", // HighCommand, HighCommandSubordinate
+			"CA_Modules_Marta", // MartaManager
+			"CA_Modules_Silvie", // SilvieManager
+			"BI_SRRS", // BIS_SRRS_Logic
+			"CA_Modules_UAV", // UAVManager
+			"CA_Modules_ZoRA", // ZoraManager
 			"CA_Modules_Alice2", // Alice2Manager
 			"CA_Modules_E_Gita", // GitaManager
 			"CA_Modules_E_Jukebox", // JukeboxManager
