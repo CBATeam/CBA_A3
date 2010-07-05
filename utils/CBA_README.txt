@@ -15,7 +15,7 @@ Online function library reference at http://dev-heaven.net/docs/cba/
 
 What do I need?
 ===============
-* You should always install the @CBA mod folder by copying it to your ArmA II insallation
+* You should always install the @CBA mod folder by copying it to your ArmA II installation
   folder.
 
 * If you have a "merged", Combined Operations installation with both the old ArmA II
