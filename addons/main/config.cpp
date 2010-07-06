@@ -15,8 +15,6 @@ class CfgPatches
 	};
 };
 
-VERSIONING
-
 class CfgMods
 {
 	class PREFIX
@@ -30,4 +28,19 @@ class CfgMods
 		action = "http://dev-heaven.net/projects/cca";
 	};
 };
+
+class CfgSettings {
+	class CBA {
+		class Versioning {
+			class PREFIX {
+			};
+		};
+		class Registry {
+			class PREFIX {
+				removed[] = {};
+			};
+		};
+	};
+};
+
 #include "CfgVehicles.hpp"

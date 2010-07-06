@@ -46,3 +46,17 @@ _f = {
 
 if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
 if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
+
+#define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
+for "_i" from 0 to ((count (CFG)) - 1) do {
+	_entry = (CFG) select _i;
+	if (isClass(_entry)) then {
+		if (isArray(_entry >> "removed")) then {
+			{
+				if (isClass(configFile >> "CfgPatches" >> _x)) then {
+					format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] spawn _f;
+				};
+			} forEach (getArray(_entry >> "removed"));
+		};
+	};
+};
