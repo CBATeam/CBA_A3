@@ -39,8 +39,8 @@ _hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
 _hasA2 = isClass(configFile >> "CfgWorlds" >> "Chernarus");
 _f = {
 		diag_log text _this;
-		BIS_functions_mainscope globalChat _this;
 		sleep 1;
+		BIS_functions_mainscope globalChat _this;
 		hintC _this;
 };
 
