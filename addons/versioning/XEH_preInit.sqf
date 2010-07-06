@@ -11,6 +11,7 @@ ADDON = false;
 GVAR(versions) = [[], [[0, 0, 0], 0]] call CBA_fnc_hashCreate;
 GVAR(dependencies) = [[], ["", [0, 0, 0], "true"]] call CBA_fnc_hashCreate;
 private ["_prefix", "_version", "_verCfg", "_level", "_deps", "_dependencies", "_entry"];
+#define DATA configName _entry,(getArray(_entry))
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 {
 	_prefix = (CFGSETTINGS) select _i;
@@ -26,7 +27,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 			for "_j" from 0 to ((count _deps) - 1) do {
 				_entry = _deps select _j;
 				if (isArray(_entry)) then {
-					PUSH(_dependencies,(getArray(_entry)));
+					PUSH(_dependencies,[DATA]);
 				};
 			};
 			[GVAR(dependencies), toLower(configName _prefix), _dependencies] call CBA_fnc_hashSet;
