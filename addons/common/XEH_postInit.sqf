@@ -47,7 +47,10 @@ _f = {
 if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
 if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
 
+// Upgrade check - Registry for removed addons, warn the user if found
+// TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
 #define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
+private ["_entry"];
 for "_i" from 0 to ((count (CFG)) - 1) do {
 	_entry = (CFG) select _i;
 	if (isClass(_entry)) then {
