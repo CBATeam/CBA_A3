@@ -15,9 +15,8 @@ TRACE_1("",GVAR(versions));
 				if !(isArray(_class >> "versionAr")) then {
 					diag_log text format["WARNING: %1 requires %2 at version %3 (or higher)", _key, _x select 0, _x select 1];
 				} else {
-					// TODO: Proper version check like between server-client versioning
-					if (format["%1", getArray(_class >> "versionAr")] != format["%1", _x select 1]) then {
-						diag_log text format["WARNING: %1 requires %2 at version %3 (or higher)", _key, _x select 0, _x select 1];
+					if ([_x select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
+						diag_log text format["WARNING: %1 requires %2 at version %3 (or higher). You have: %4", _key, _x select 0, _x select 1, getArray(_class >> "versionAr")];
 					};
 				};
 			};

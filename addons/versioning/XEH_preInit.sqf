@@ -35,5 +35,18 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 };
 
 PREP(version_check);
+FUNC(version_compare) = {
+	private ["_failed", "_c"];
+	PARAMS_2(_value,_localValue);
+	_failed = false;
+	_c = count _localValue;
+	
+	for "_i" from 0 to ((count _value) - 1) do {
+		if (_i == _c) exitWith { _failed = true}; // Woobs
+		if ((_localValue select _i) > (_value select _i)) exitWith {}; // All good
+		if ((_localValue select _i) < (_value select _i)) exitWith {_failed = true}; // Woobs
+	};
+	_failed;
+};
 
 ADDON = true;
