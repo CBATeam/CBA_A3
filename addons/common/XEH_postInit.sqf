@@ -1,4 +1,5 @@
 #define MESSAGE "ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA modfolder! Please restart the game with the mod."
+#define MESSAGE2 "ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA modfolder! Please restart the game without the mod."
 #include "script_component.hpp"
 
 LOG(MSG_INIT);
@@ -32,14 +33,16 @@ if (isnil "RE") then
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
 
-
-if !(isClass(configFile >> "CfgMods" >> "CBA_OA" )) then {
-	if !(isClass(configFile >> "CfgWorlds" >> "Chernarus" )) then {
-		[] spawn {
-			sleep 1;
-			hintC MESSAGE;
-		};
-		diag_log text MESSAGE;
-		BIS_functions_mainscope globalChat MESSAGE;
-	};
+// A2 / Operation Arrowhead, standalone / combined operations check
+private ["_hasCbaOa", "_hasA2", "_f"];
+_hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
+_hasA2 = isClass(configFile >> "CfgWorlds" >> "Chernarus");
+_f = {
+		diag_log text _this;
+		BIS_functions_mainscope globalChat _this;
+		sleep 1;
+		hintC _this;
 };
+
+if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
+if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
