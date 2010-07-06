@@ -30,3 +30,10 @@ if (isnil "RE") then
 	LOG("Initialising the MP module early.");
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
+
+
+if !(isClass(configFile >> "CfgMods" >> "CBA_OA" )) then {
+	if !(isClass(configFile >> "CfgWorlds" >> "Chernarus" )) then {
+		BIS_functions_mainscope globalChat "ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA modfolder! Please restart the game with the mod.";
+	};
+};
