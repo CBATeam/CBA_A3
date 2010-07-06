@@ -35,11 +35,11 @@ if (isnil "RE") then
 
 if !(isClass(configFile >> "CfgMods" >> "CBA_OA" )) then {
 	if !(isClass(configFile >> "CfgWorlds" >> "Chernarus" )) then {
-		diag_log text MESSAGE;
-		BIS_functions_mainscope globalChat MESSAGE;
 		[] spawn {
 			sleep 1;
 			hintC MESSAGE;
 		};
+		diag_log text MESSAGE;
+		BIS_functions_mainscope globalChat MESSAGE;
 	};
 };
