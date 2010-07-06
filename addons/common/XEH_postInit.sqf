@@ -36,7 +36,7 @@ if (isnil "RE") then
 // A2 / Operation Arrowhead, standalone / combined operations check
 private ["_hasCbaOa", "_hasA2", "_f"];
 _hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
-_hasA2 = isClass(configFile >> "CfgWorlds" >> "Chernarus");
+_hasA2 = isClass(configFile >> "CfgPatches" >> "Chernarus");
 _f = {
 		diag_log text _this;
 		sleep 1;
