@@ -1,3 +1,4 @@
+#define MESSAGE "ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA modfolder! Please restart the game with the mod."
 #include "script_component.hpp"
 
 LOG(MSG_INIT);
@@ -34,6 +35,11 @@ if (isnil "RE") then
 
 if !(isClass(configFile >> "CfgMods" >> "CBA_OA" )) then {
 	if !(isClass(configFile >> "CfgWorlds" >> "Chernarus" )) then {
-		BIS_functions_mainscope globalChat "ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA modfolder! Please restart the game with the mod.";
+		diag_log text MESSAGE;
+		BIS_functions_mainscope globalChat MESSAGE;
+		[] spawn {
+			sleep 1;
+			hintC MESSAGE;
+		};
 	};
 };
