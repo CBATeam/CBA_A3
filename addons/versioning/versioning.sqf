@@ -3,6 +3,27 @@
 #define SLEEP(TIME) _i = 0; while {_i < TIME} do { _i = _i + 1; sleep 1 }
 
 TRACE_1("",GVAR(versions));
+
+// Depency check and warn
+[GVAR(dependencies), {
+	{
+		_class = (configFile >> "CfgPatches" >> _x select 0);
+		if !(isClass(_class)) then {
+			diag_log text format["WARNING: %1 requires %2 at version %3 (or higher)", _key, _x select 0, _x select 1];
+		} else {
+			if !(isArray(_class >> "versionAr")) then {
+				diag_log text format["WARNING: %1 requires %2 at version %3 (or higher)", _key, _x select 0, _x select 1];
+			} else {
+				// TODO: Proper version check like between server-client versioning
+				if (format["%1", getArray(_class >> "versionAr")] != format["%1", _x select 1]) then {
+					diag_log text format["WARNING: %1 requires %2 at version %3 (or higher)", _key, _x select 0, _x select 1];
+				};
+			};
+		};
+	} forEach _value;
+}] call CBA_fnc_hashEachPair;
+
+
 SLEEP(3); // Test workaround for JIP issue
 
 if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
