@@ -6,20 +6,25 @@ TRACE_1("",GVAR(versions));
 
 // Depency check and warn
 [GVAR(dependencies), {
-	private ["_mod", "_data", "_class"];
+	private ["_mod", "_data", "_class", "_f"];
+	_f = {
+		diag_log text _this;
+		sleep 1;
+		BIS_functions_mainscope globalChat _this;
+	};
 	{
 		_mod = _x select 0;
 		_data = _x select 1;
 		_class = (configFile >> "CfgPatches" >> (_data select 0));
 		if (call compile(_data select 2)) then {
 			if !(isClass(_class)) then {
-				diag_log text format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1];
+				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1] spawn _f;
 			} else {
 				if !(isArray(_class >> "versionAr")) then {
-					diag_log text format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1];
+					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1] spawn _f;
 				} else {
 					if ([_data select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
-						diag_log text format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _data select 0, _mod, _data select 1, getArray(_class >> "versionAr")];
+						format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _data select 0, _mod, _data select 1, getArray(_class >> "versionAr")] spawn _f;
 					};
 				};
 			};
