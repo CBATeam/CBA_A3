@@ -1,5 +1,5 @@
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = "if !((_this select 0) isKindOf 'AllVehicles' || (_this select 0) isKindOf 'Logic') exitWith {}; if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init;"; \
+#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init;"; \
 fired = "_s=nearestObject[_this select 0,_this select 4]; {[_this select 0,_this select 1,_this select 2,_this select 3,_this select 4,_s]call _x}forEach((_this select 0)getVariable'Extended_FiredEH')"; \
 animChanged      = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimChangedEH')"; \
 animStateChanged = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimStateChangedEH')"; \
