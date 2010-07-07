@@ -28,8 +28,11 @@ TRACE_1("Activated",count _addons);
 	PARAMS_1(_addons);
 	sleep 0.001;
 	if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
+	activateAddons _addons;
+/*
 	while {true} do {
 		activateAddons _addons;
 		sleep 5; // Experimental
 	};
+*/
 };
