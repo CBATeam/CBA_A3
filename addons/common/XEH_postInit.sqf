@@ -47,6 +47,19 @@ _f = {
 if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
 if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
 
+
+if (isServer && _hasA2) then {
+	BIS_functions_mainscope setVehicleInit "
+		if !(isClass(configFile >> 'CfgPatches' >> 'Chernarus')) then {
+			'You have joined a Combined Operations server, but you are running Operation Arrowhead standalone!' spawn {
+				hintC _this;				
+				BIS_functions_mainscope globalChat _this;
+			};
+		};
+	";
+	processInitCommands;
+};
+
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
 #define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
