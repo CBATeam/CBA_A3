@@ -54,7 +54,9 @@ if (isServer && _hasA2) then {
 	BIS_functions_mainscope setVehicleInit "
 		if !(isClass(configFile >> 'CfgPatches' >> 'Chernarus')) then {
 			'You have joined a Combined Operations server, but you are running Operation Arrowhead standalone!' spawn {
-				hintC _this;				
+				sleep 1;
+				hintC _this;
+				waitUntil {!(isNil 'BIS_functions_mainscope')};
 				BIS_functions_mainscope globalChat _this;
 			};
 		};
