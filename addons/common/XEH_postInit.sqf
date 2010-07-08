@@ -47,9 +47,7 @@ _f = {
 if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
 if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
 
-// Warn OA-standalone users when joining a OA-combined ops server
-// TODO: Improve message/actions
-// TOOD: Consider merging the SVI, with the only other SVI already available?
+
 if (isServer && _hasA2) then {
 	BIS_functions_mainscope setVehicleInit "
 		if !(isClass(configFile >> 'CfgPatches' >> 'Chernarus')) then {
