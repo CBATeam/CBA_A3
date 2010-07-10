@@ -45,7 +45,6 @@ FUNC(log) = {
 	_done = false;
 	while {true} do {
 		if (typeName nil == "STRING" || str(nil) != "ANY") then {
-			diag_log "check";
 			if !(_done) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); _done = true; };
 			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
 		};
