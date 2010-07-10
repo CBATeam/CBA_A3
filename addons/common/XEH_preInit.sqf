@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
+CBA_nil = [nil];
+
 /*
  * Prepare BIS functions/MP and precompile all functions we already have
  * registered with it. In order to have the functions loaded early,

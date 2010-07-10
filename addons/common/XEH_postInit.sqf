@@ -33,19 +33,33 @@ if (isnil "RE") then
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
 };
 
-// A2 / Operation Arrowhead, standalone / combined operations check
-private ["_hasCbaOa", "_hasA2", "_f"];
-_hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
-_hasA2 = isClass(configFile >> "CfgPatches" >> "Chernarus");
-_f = {
+FUNC(log) = {
 		diag_log text _this;
 		sleep 1;
 		BIS_functions_mainscope globalChat _this;
 		hintC _this;
 };
 
-if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn _f };
-if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn _f };
+// Nil check
+[] spawn {
+	_done = false;
+	while {true} do {
+		if (typeName nil == "STRING" || str(nil) != "ANY") then {
+			diag_log "check";
+			if !(_done) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); _done = true; };
+			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
+		};
+		sleep 1;
+	};
+};
+
+// A2 / Operation Arrowhead, standalone / combined operations check
+private ["_hasCbaOa", "_hasA2"];
+_hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
+_hasA2 = isClass(configFile >> "CfgPatches" >> "Chernarus");
+
+if (_hasA2 && _hasCbaOa) then { MESSAGE2 spawn FUNC(log) };
+if (!_hasA2 && !_hasCbaOa) then { MESSAGE spawn FUNC(log) };
 
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
@@ -57,7 +71,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 		if (isArray(_entry >> "removed")) then {
 			{
 				if (isClass(configFile >> "CfgPatches" >> _x)) then {
-					format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] spawn _f;
+					format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] spawn FUNC(log);
 				};
 			} forEach (getArray(_entry >> "removed"));
 		};
