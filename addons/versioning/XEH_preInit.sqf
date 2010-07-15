@@ -7,7 +7,9 @@ SCRIPT(XEH_preInit);
 LOG(MSG_INIT);
 ADDON = false;
 
-// Build versions hash
+if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
+
+// Build versions hashes
 GVAR(versions) = [[], [[0, 0, 0], 0]] call CBA_fnc_hashCreate;
 GVAR(dependencies) = [[], ["", [0, 0, 0], "true"]] call CBA_fnc_hashCreate;
 private ["_prefix", "_version", "_verCfg", "_level", "_deps", "_dependencies", "_entry"];
