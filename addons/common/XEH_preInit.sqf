@@ -32,7 +32,7 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 	if !(isMultiplayer) exitWith {};
 	if (isDedicated) exitWith {};
 	waitUntil {isServer};
-	diag_log "WARNING: isServer is true while isDedicated is false; You can safely ignore this if this is a hosted game; otherwise please report asap";
+	diag_log [diag_frameNo, diag_tickTime, time, "WARNING: isServer is true while isDedicated is false; You can safely ignore this if this is a hosted game; otherwise please report asap"];
 };
 
 // Prepare all functions
