@@ -28,6 +28,13 @@ GVAR(centers) = [];
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
+[] spawn {
+	if !(isMultiplayer) exitWith {};
+	if (isDedicated) exitWith {};
+	waitUntil {isServer};
+	diag_log "WARNING: isServer is true while isDedicated is false; You can safely ignore this if this is a hosted game; otherwise please report asap";
+};
+
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
 DEPRECATE(fAddMagazineCargo,fnc_addMagazineCargo);
