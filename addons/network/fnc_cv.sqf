@@ -11,7 +11,7 @@ if (_c > 3) then { _varName = _this select 3 } else { _varName = "" };
 if (_c > 4) then { _init = _this select 4 } else { _init = "" };
 _object = null;
 
-if !(isServer) then
+if !(SLX_XEH_MACHINE select 3) then
 {
 	[0, { _this call FUNC(cv) }, _this] call CBA_fnc_globalExecute;
 	TRACE_1("Sending vehicle create request",_this);

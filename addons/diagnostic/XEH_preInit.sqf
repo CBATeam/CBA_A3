@@ -3,7 +3,7 @@ LOG(MSG_INIT);
 
 [QUOTE(GVAR(debug)), { _this call CBA_fnc_debug }] call CBA_fnc_addEventHandler;
 
-if (isServer) then
+if (SLX_XEH_MACHINE select 3) then
 {
 	FUNC(handle_peak) =
 	{

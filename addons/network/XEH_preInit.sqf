@@ -60,7 +60,7 @@ OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
 
 GVAR(init) = false;
 
-if (isServer) then
+if (SLX_XEH_MACHINE select 3) then
 {
 	ISNIL(MARKERS,[]); // Sync Markers for JIP
 

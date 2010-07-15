@@ -16,7 +16,7 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 // and at the briefing, still time == 0
 if (isNull player) then
 {
-	if !(isServer) then
+	if !(SLX_XEH_MACHINE select 3) then
 	{
 		SLX_XEH_MACHINE set [1, true]; // set JIP
 		waitUntil { !(isNull player) };

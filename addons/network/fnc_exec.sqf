@@ -18,7 +18,7 @@ if ((typeName _chan) == "OBJECT") then
 } else {
 	switch _chan do
 	{
-		case 0: { if (isServer) then { _ex = true } };
+		case 0: { if (SLX_XEH_MACHINE select 3) then { _ex = true } };
 		case -1: { if (SLX_XEH_MACHINE select 0) then { _ex = true } };
 		case -2: { _ex = true };
 		//case -3: { if (GVAR(uID) != _id) then { _ex = true } };

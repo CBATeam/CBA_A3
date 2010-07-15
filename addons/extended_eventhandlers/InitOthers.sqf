@@ -69,14 +69,14 @@ _f = {
 				};
 			};
 		};
-		if (isServer) then
+		if (SLX_XEH_MACHINE select 3) then
 		{
 			if (isText _serverHandlerEntry) then
 			{
 				_handlers set [count _handlers, getText _serverHandlerEntry];
 			};
 		};
-		if !(isDedicated) then
+		if (SLX_XEH_MACHINE select 0) then
 		{
 			if (isText _clientHandlerEntry) then
 			{

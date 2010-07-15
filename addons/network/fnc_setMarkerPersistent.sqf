@@ -36,7 +36,7 @@ TRACE_1(_this);
 private ["_markerConsistent", "_return"];
 _markerConsistent = toLower _marker; // Name of marker as stored internally.
 
-_return = if (isServer) then
+_return = if (SLX_XEH_MACHINE select 3) then
 {
 	if (_persistent) then
 	{

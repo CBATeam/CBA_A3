@@ -11,7 +11,7 @@ LOG(MSG_INIT);
 private ["_group", "_logic"];
 if (isNil "BIS_functions_mainscope") then
 {
-	if (isServer) then
+	if (SLX_XEH_MACHINE select 3) then
 	{
 		// CREATE_CENTER sideLogic; // Handled in function
 		_group = [sideLogic] call CBA_fnc_getSharedGroup;

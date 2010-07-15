@@ -31,7 +31,7 @@ TRACE_1(_this);
 private ["_markerConsistent", "_return"];
 _markerConsistent = toLower _marker; // Ensure we use a consistent name to search for.
 
-_return = if (isServer) then
+_return = if (SLX_XEH_MACHINE select 3) then
 {
 	_markerConsistent in GVAR(MARKERS);
 } else {

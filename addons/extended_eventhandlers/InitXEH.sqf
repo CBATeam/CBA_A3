@@ -57,7 +57,7 @@ SLX_XEH_F_INIT = {
 				{
 					_Inits set [count _Inits, compile(getText _entry)];
 				};
-				if (isServer) then
+				if (SLX_XEH_MACHINE select 3) then
 				{
 					if (isText _entryServer) then
 					{

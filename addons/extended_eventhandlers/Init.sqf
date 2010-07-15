@@ -201,7 +201,7 @@ else
 											_inits set [count _inits, _init];
 										};
 									};
-									if (isServer) then
+									if (SLX_XEH_MACHINE select 3) then
 									{
 										if (isText _serverInitEntry) then
 										{
@@ -209,7 +209,7 @@ else
 											_inits set [count _inits, _serverInit];
 										};
 									};
-									if !(isDedicated) then
+									if (SLX_XEH_MACHINE select 0) then
 									{
 										if (isText _clientInitEntry) then
 										{
