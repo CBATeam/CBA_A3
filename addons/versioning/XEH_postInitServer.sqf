@@ -11,6 +11,16 @@ publicVariable QUOTE(GVAR(versions_serv));
 publicVariable QUOTE(GVAR(versions_server)); // TODO: Deprecate?
 publicVariable QUOTE(GVAR(versions_srv)); // TODO: Deprecate?
 
+// Paranoid; yet pretty annoying gamebreaking issue :-)
+QUOTE(GVAR(versions_serv)) addPublicVariableEventHandler
+{
+	private ["_params"];
+	_params = _this select 1;
+	diag_log [diag_frameNo, diag_tickTime, time, "WARNING: Some client seems to have overriden the versions array; please report to CBA devs!"];
+	GVAR(versions_serv) = GVAR(versions);
+	publicVariable QUOTE(GVAR(versions_serv));
+};
+
 QUOTE(GVAR(mismatch)) addPublicVariableEventHandler
 {
 	private ["_params"];
