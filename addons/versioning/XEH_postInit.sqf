@@ -5,7 +5,7 @@ SCRIPT(XEH_postInit);
 	Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 */
 
-["CBA_VERSIONING", GVAR(versions)] call CBA_fnc_log;
+diag_log [diag_frameNo, diag_tickTime, time, "CBA_VERSIONING", GVAR(versions)];
 
 // Depency check and warn
 [GVAR(dependencies), {
