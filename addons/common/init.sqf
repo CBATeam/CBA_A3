@@ -1,4 +1,4 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-TRACE_4("MISSINIT",missionName,worldName,isMultiplayer,isServer);
+["MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated] call CBA_fnc_log;

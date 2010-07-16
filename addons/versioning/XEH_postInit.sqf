@@ -1,13 +1,11 @@
-#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(XEH_postInit);
-LOG(MSG_INIT);
 
 /*
 	Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 */
 
-TRACE_1("",GVAR(versions));
+["CBA_VERSIONING", GVAR(versions)] call CBA_fnc_log;
 
 // Depency check and warn
 [GVAR(dependencies), {
