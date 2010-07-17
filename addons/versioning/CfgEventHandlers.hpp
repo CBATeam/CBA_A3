@@ -12,6 +12,6 @@ class Extended_PostInit_EventHandlers
 	{
 		init = QUOTE(call COMPILE_FILE(XEH_postInit));
 		serverInit = QUOTE(call COMPILE_FILE(XEH_postInitServer));
-		clientInit = QUOTE(call COMPILE_FILE(XEH_postInitClient));
+		clientInit = QUOTE(if !(isServer) then { call COMPILE_FILE(XEH_postInitClient) });
 	};
 };
