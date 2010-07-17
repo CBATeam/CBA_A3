@@ -24,12 +24,7 @@ if (isNull player) then
 
 		// For JIP players only: Usually we are now a few ms/seconds into
 		// the game. Test for JIP players
-		_i = 0;
-		while { _i < 2 } do
-		{
-			_i = _i + 1;
-			sleep 0.5;
-		};
+		for "_i" from 0 to 1 do { sleep 0.5 };
 	};
 };
 
