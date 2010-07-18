@@ -15,7 +15,7 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable", "_isMan", "_names", "_idx"
+	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -75,7 +75,10 @@ else
 	};
 	
 	// Check each class to see if there is a counterpart in extended event handlers
-	// If there is, add it to an array of init event handlers "_inits"
+	// If there is, add it to an array of init event handlers "_inits". Use
+	// _names to keep track of handler entry names so that a given handler
+	// of a certain name can be overriden in a child class. 
+	// (See dev-heaven.net issues #12104 and #12108)
 	_names = [];	// event handler config entry names
 	_inits = [];	// array of handlers or arrays with handlers, the
 				    // later being used for XEH handlers that make use of
@@ -87,7 +90,7 @@ else
 	
 	// Function to update the event handler or handlers at a given index
 	// into the _inits array
-	_ffSetInit = {
+	_fSetInit = {
 		private ["_idx", "_init", "_type", "_handler", "_cur"];
 	
 		_idx=_this select 0;
