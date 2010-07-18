@@ -174,7 +174,7 @@ else
 						// yet, so add it to the end of the _inits array
 						_idx = count _inits;
 						_names set [_idx, _name];
-					}
+					};
 					// Standard XEH init string
 					if (isText _cfgEntry && [] call _useEH) then
 					{
