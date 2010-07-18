@@ -15,7 +15,7 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable", "_isMan"
+	"_justCreated", "_playable", "_isMan", "_names", "_idx"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -76,11 +76,47 @@ else
 	
 	// Check each class to see if there is a counterpart in extended event handlers
 	// If there is, add it to an array of init event handlers "_inits"
-	_inits = [];
+	_names = [];	// event handler config entry names
+	_inits = [];	// array of handlers or arrays with handlers, the
+				    // later being used for XEH handlers that make use of
+				    // the serverInit and clientInit feature.
 	_init = {};
 	_excludeClass = "";
 	_excludeClasses = [];
 	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
+	
+	// Function to update the event handler or handlers at a given index
+	// into the _inits array
+	_ffSetInit = {
+		private ["_idx", "_init", "_type", "_handler", "_cur"];
+	
+		_idx=_this select 0;
+		_init = _this select 1;
+		_type=["all", "server", "client"] find (_this select 2);	// 0 1 2
+	
+		_handler={};
+		_cur=_inits select _idx;
+		if (isNil"_cur")then{_cur={};};
+		if (typeName _cur == "ARRAY") then
+		{
+			_handler = _cur;
+			_handler set [_type, _init];
+		}
+		else
+		{
+			if (_type > 0) then
+			{
+				_handler=[_cur,{},{}];
+				_handler set [_type, _init];
+			}
+			else
+			{
+				_handler=_init;
+			};
+		};
+		_inits set [_idx, _handler];
+	};
+
 	
 	/*  If we're called following a respawn, the use of a XEH init EH is
 	*  determined by the "composite EH" class property "onRespawn". The default
@@ -127,10 +163,20 @@ else
 				while { _i<_t } do
 				{
 					_cfgEntry = (_configFile/_Extended_Init_Class/_x) select _i;
+					_name = configName _cfgEntry;
+					_idx = _names find _name;
+					if (_idx < 0) then
+					{
+						// This particular handler entry name hasn't been seen
+						// yet, so add it to the end of the _inits array
+						_idx = count _inits;
+						_names set [_idx, _name];
+					}
 					// Standard XEH init string
 					if (isText _cfgEntry && [] call _useEH) then
 					{
-						_inits set [count _inits, compile(getText _cfgEntry)];
+						
+						_inits set [_idx, compile(getText _cfgEntry)];
 					}
 					else
 					{
@@ -194,11 +240,13 @@ else
 										_init = compile(getText _initEntry);
 										if (_useDEHinit && _replaceDEH) then
 										{
-											_inits set [0, _init];
+											//_inits set [0, _init];
+											[0, _init, "all"] call _fSetInit;
 										}
 										else
 										{
-											_inits set [count _inits, _init];
+											//_inits set [_idx, _init];
+											[_idx, _init, "all"] call _fSetInit;
 										};
 									};
 									if (SLX_XEH_MACHINE select 3) then
@@ -206,7 +254,8 @@ else
 										if (isText _serverInitEntry) then
 										{
 											_serverInit = compile(getText _serverInitEntry);
-											_inits set [count _inits, _serverInit];
+											//_inits set [_idx, _serverInit];
+											[_idx, _serverInit, "server"] call _fSetInit;
 										};
 									};
 									if (SLX_XEH_MACHINE select 0) then
@@ -214,7 +263,8 @@ else
 										if (isText _clientInitEntry) then
 										{
 											_clientInit = compile(getText _clientInitEntry);
-											_inits set [count _inits, _clientInit];
+											//_inits set [_idx, _clientInit];
+											[_idx, _clientInit, "client"] call _fSetInit;
 										};
 									};
 								};
@@ -232,7 +282,20 @@ else
 	diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _inits];
 	#endif
 	
-	{ [_unit] call _x } forEach _inits;
+	{
+		private ["_h"];
+		if (typeName _x=="CODE") then
+		{
+			// Normal code type handler
+			[_unit] call _x;
+		}
+		else
+		{
+			// It's an array of handlers (all, server, client)
+			_h=_x;
+			{[_unit] call _x} forEach _h;
+		};
+	} forEach _inits;
 };
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: %2", time, _this];

@@ -10,7 +10,8 @@ private [
 	"_unit", "_isExcluded", "_event", "_Extended_EH_Class", "_class",
 	"_unitClass", "_classes", "_excludeClass", "_excludeClasses", "_handlers",
 	"_handler", "_cfgEntry", "_scopeEntry", "_handlerEntry", "_excludeEntry",
-	"_scope", "_i", "_t", "_xeh", "_event", "_replaceDEH"
+	"_scope", "_i", "_t", "_xeh", "_event", "_replaceDEH", "_name", "_names",
+	"_namesPlayer", "_idx", "_idxPlayer"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -33,10 +34,43 @@ while {!((_classes select 0) in ["", "All"])} do
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };
 
+// Adds or updates a handler in the _handlers or _handlersPlayer arrays
+// used when collecting event handlers.
+_fSetHandler = {
+	private ["_idx", "_handler", "_h", "_type", "_cur"];
+	
+	_idx=_this select 0;
+	_handler = _this select 1;
+	_type=["all", "server", "client"] find (_this select 2);
+	
+	_h={};
+	_cur=_handlers select _idx;
+	if (isNil"_cur")then{_cur={};};
+	if (typeName _cur == "ARRAY") then
+	{
+		_h = _cur;
+		_h set [_type, _handler]
+	}
+	else
+	{
+		if (_type > 0) then
+		{
+			_h=[_cur,{},{}];
+			_h set [_type, _handler];
+		}
+		else
+		{
+			_h=_handler;
+		};
+	};
+	_handlers set [_idx, _h];
+};
+
 _f = {
-	private ["_handlers", "_eventCus"];
+	private ["_handlers", "_eventCus", "_idx"];
 	_eventCus = format["%1%2",_event, _this select 0];
 	_handlers = _this select 1;
+	_idx = _this select 2;
 	_handlerEntry = _cfgEntry / _eventCus;
 	_serverHandlerEntry = _cfgEntry / format["server%1", _eventCus];
 	_clientHandlerEntry = _cfgEntry / format["client%1", _eventCus];
@@ -61,11 +95,13 @@ _f = {
 			{
 				if (_hasDefaultEH && _replaceDEH) then
 				{
-					_handlers set [0, getText _handlerEntry];
+					//_handlers set [0, getText _handlerEntry];
+					[0, getText _handlerEntry, "all"] call _fSetHandler;
 				}
 				else
 				{
-					_handlers set [count _handlers, getText _handlerEntry];
+					//_handlers set [count _handlers, getText _handlerEntry];
+					[_idx, getText _handlerEntry, "all"] call _fSetHandler;
 				};
 			};
 		};
@@ -73,14 +109,16 @@ _f = {
 		{
 			if (isText _serverHandlerEntry) then
 			{
-				_handlers set [count _handlers, getText _serverHandlerEntry];
+				//_handlers set [count _handlers, getText _serverHandlerEntry];
+				[_idx, getText _handlerEntry, "server"] call _fSetHandler;
 			};
 		};
 		if (SLX_XEH_MACHINE select 0) then
 		{
 			if (isText _clientHandlerEntry) then
 			{
-				_handlers set [count _handlers, getText _clientHandlerEntry];
+				//_handlers set [count _handlers, getText _clientHandlerEntry];
+				[_idx, getText _handlerEntry, "client"] call _fSetHandler;
 			};									
 		};
 	};
@@ -95,6 +133,7 @@ _f = {
 	// Check each class to see if there is a counterpart in the extended event
 	// handlers, add all lines from matching classes to an array, "_handlers"
 	_handlers = []; _handlersPlayer = [];
+	_names = []; _namesPlayer = [];
 	_excludeClass = "";
 	_excludeClasses = [];
 	
@@ -121,10 +160,24 @@ _f = {
 				while { _i<_t } do
 				{
 					_cfgEntry = (_configFile/_Extended_EH_Class/_class) select _i;
+					_name = configName _cfgEntry;
+					_idx = _names find _name;
+					if (_idx < 0) then
+					{
+						_idx = count _handlers;
+						_names set [_idx, _name];
+					};
+					_idxPlayer = _namesPlayer find _name;
+					if (_idxPlayer < 0) then
+					{
+						_idxPlayer = count _handlersPlayer;
+						_namesPlayer set [_idxPlayer, _name];
+					};
 					// Standard XEH event handler string
 					if (isText _cfgEntry) then
 					{
-						_handlers set [count _handlers, getText _cfgEntry];
+						//_handlers set [count _handlers, getText _cfgEntry];
+						_handlers set [_idx, getText _cfgEntry];
 					}
 					else
 					{
@@ -149,7 +202,7 @@ _f = {
 							};
 							_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 							// Handle event, serverEvent and clientEvent, for both normal and player
-							{	_x call _f } forEach [["", _handlers], ["Player", _handlersPlayer]];
+							{	_x call _f } forEach [["", _handlers, _idx], ["Player", _handlersPlayer, _idxPlayer]];
 						};
 					};
 					_i = _i + 1;
@@ -160,9 +213,29 @@ _f = {
 	
 	// Now concatenate all the handlers into one string
 	_handler = "";
-	{ _handler = _handler + _x + ";" } forEach _handlers;
+	{
+		if (typeName _x=="STRING") then
+		{
+			_handler = _handler + _x + ";"
+		}
+		else
+		{
+			_h=_x;
+			{_handler = _handler + _x + ";"} forEach _h;
+		};
+	} forEach _handlers;
 	_handlerPlayer = "";
-	{ _handlerPlayer = _handlerPlayer + _x + ";" } forEach _handlersPlayer;
+	{
+		if (typeName _x=="STRING") then
+		{
+			_handlerPlayer = _handlerPlayer + _x + ";"
+		}
+		else
+		{
+			_h=_x;
+			{_handlerPlayer = _handlerPlayer + _x + ";"} forEach _h;
+		};
+	} forEach _handlersPlayer;
 
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
