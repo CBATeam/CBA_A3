@@ -1,5 +1,5 @@
-#define MESSAGE "ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA modfolder! Please restart the game with the mod."
-#define MESSAGE2 "ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA modfolder! Please restart the game without the mod."
+#define MESSAGE localize "STR_CBA_COMMON_OA_ST_NO_CBA_OA"
+#define MESSAGE2 localize "STR_CBA_COMMON_OA_CO_HAS_CBA_OA"
 #include "script_component.hpp"
 
 LOG(MSG_INIT);
