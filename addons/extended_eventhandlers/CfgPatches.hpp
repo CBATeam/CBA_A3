@@ -3,7 +3,7 @@ class CfgPatches
 	class Extended_EventHandlers
 	{
 		units[] = {};
-		requiredVersion = 1.50;
+		requiredVersion = 1.05;
 		SLX_XEH2_Version = 3.02;
 		author[] = {"Solus", "Killswitch", "Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
