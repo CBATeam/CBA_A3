@@ -43,9 +43,9 @@ _fSetHandler = {
 	_handler = _this select 1;
 	_type=["all", "server", "client"] find (_this select 2);
 	
-	_h={};
+	_h="";
 	_cur=_handlers select _idx;
-	if (isNil"_cur")then{_cur={};};
+	if (isNil"_cur")then{_cur="";};
 	if (typeName _cur == "ARRAY") then
 	{
 		_h = _cur;
@@ -55,7 +55,7 @@ _fSetHandler = {
 	{
 		if (_type > 0) then
 		{
-			_h=[_cur,{},{}];
+			_h=[_cur,"",""];
 			_h set [_type, _handler];
 		}
 		else
