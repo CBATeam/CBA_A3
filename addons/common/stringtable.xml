@@ -24,4 +24,26 @@
 	<Polish>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA modfolder! Please restart the game without the mod.</Polish>
 	<Hungarian>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA modfolder! Please restart the game without the mod.</Hungarian>
 </Key>
+<Key ID="STR_CBA_COMMON_A2_ST_NO_CBA_A2">
+	<English>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</English>
+	<German>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</German>
+	<Italian>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Italian>
+	<Spanish>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Spanish>
+	<French>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</French>
+	<Czech>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Czech>
+	<Russian>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Russian>
+	<Polish>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Polish>
+	<Hungarian>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 modfolder! Please restart the game with the mod.</Hungarian>
+</Key>
+<Key ID="STR_CBA_COMMON_OA_HAS_CBA_A2">
+	<English>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</English>
+	<German>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</German>
+	<Italian>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Italian>
+	<Spanish>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Spanish>
+	<French>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</French>
+	<Czech>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Czech>
+	<Russian>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Russian>
+	<Polish>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Polish>
+	<Hungarian>ERROR: You seem to be an A2: Operation Arrowhead user, but have loaded the @CBA_A2 modfolder! Please restart the game without the mod.</Hungarian>
+</Key>
 </Container></Package></Project>
