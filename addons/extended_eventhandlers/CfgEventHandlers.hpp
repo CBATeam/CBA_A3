@@ -118,7 +118,6 @@ class Extended_Init_EventHandlers
 	};
 	class HighCommand /* : Logic */ {
 		class SLX_BIS {
-			scope = 0;	// Only for HighCommand, not for HighCommandSubordinate.
 			init = "if (isServer) then {if (isnil 'BIS_HC_mainscope') then {BIS_HC_mainscope = _this select 0; publicvariable 'bis_hc_mainscope'}; _ok = _this execVM '\ca\Modules\HC\data\scripts\hc.sqf'}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
 		};
 	};
