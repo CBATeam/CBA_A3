@@ -3,7 +3,7 @@ class CfgVehicles {
 	class All {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	class Static: All { class EventHandlers {}; };
+	class Static: All { class EventHandlers {}; }; // Manually created
 	class LandVehicle;
 	class Car: LandVehicle {
 		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
