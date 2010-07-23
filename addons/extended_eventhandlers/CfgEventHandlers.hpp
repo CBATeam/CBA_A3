@@ -117,9 +117,7 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\garbage_collector\data\scripts\init.sqf""";
 	};
 	class HighCommand /* : Logic */ {
-		class SLX_BIS {
-			init = "if (isServer) then {if (isnil 'BIS_HC_mainscope') then {BIS_HC_mainscope = _this select 0; publicvariable 'bis_hc_mainscope'}; _ok = _this execVM '\ca\Modules\HC\data\scripts\hc.sqf'}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
-		};
+		SLX_BIS = "if (isServer) then {if (isnil 'BIS_HC_mainscope') then {BIS_HC_mainscope = _this select 0; publicvariable 'bis_hc_mainscope'}; _ok = _this execVM '\ca\Modules\HC\data\scripts\hc.sqf'}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
 	};
 	class HighCommandSubordinate /* : HighCommand */ {
 		SLX_BIS = "";
