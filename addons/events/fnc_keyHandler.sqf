@@ -10,7 +10,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(keyHandler);
 
-private ["_settings", "_code", "_handled", "_result", "_handlers", "_idx"];
+private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers", "_idx"];
 #ifdef DEBUG_MODE_FULL
 	private ["_ar"];
 	_ar = [];
@@ -27,8 +27,12 @@ _handled = false; // If true, suppress the default handling of the key.
 _result = false;
 
 _idx = _keyData select 1;
-if (count _handlers > _idx) then {
+if (count _handlers > _idx) then
 {
+	_myHandlers = _handlers select _idx;
+	if (isNil "_myHandlers") exitWith {};
+	if (typeName _myHandlers != typeName []) exitWith {};
+	{
 		_settings = _x select 0;
 		_code = _x select 1;
 		if (true) then
@@ -57,9 +61,8 @@ if (count _handlers > _idx) then {
 		
 		// If any handler says that it has completely _handled_ the keypress,
 		// then don't allow other handlers to be tried at all.
-		if (_result) exitWith { _handled = true };
-		
-	} forEach (_handlers select _idx);
+		if (_result) exitWith { _handled = true };			
+	} forEach _myHandlers;
 };
 TRACE_2("keyPressed",_this,_ar);
 
