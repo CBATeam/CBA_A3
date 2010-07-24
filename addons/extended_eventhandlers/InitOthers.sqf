@@ -110,7 +110,7 @@ _f = {
 			if (isText _serverHandlerEntry) then
 			{
 				//_handlers set [count _handlers, getText _serverHandlerEntry];
-				[_idx, getText _handlerEntry, "server"] call _fSetHandler;
+				[_idx, getText _serverHandlerEntry, "server"] call _fSetHandler;
 			};
 		};
 		if (SLX_XEH_MACHINE select 0) then
@@ -118,7 +118,7 @@ _f = {
 			if (isText _clientHandlerEntry) then
 			{
 				//_handlers set [count _handlers, getText _clientHandlerEntry];
-				[_idx, getText _handlerEntry, "client"] call _fSetHandler;
+				[_idx, getText _clientHandlerEntry, "client"] call _fSetHandler;
 			};									
 		};
 	};
