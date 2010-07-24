@@ -35,12 +35,12 @@ Example startup parameters
 
 For Combined Operations (ArmA II and Arrowhead installed together):
 
-	-mod=@CBA
+    -mod=@CBA
 
 
 For a standalone Operation Arrowhead:
 
-	-mod=@CBA;@CBA_OA
+    -mod=@CBA;@CBA_OA
 
 
 For ArmA II only (people without Arrowhead):
