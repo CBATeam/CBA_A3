@@ -16,9 +16,16 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 // and at the briefing, still time == 0
 if (isNull player) then
 {
-	if !(SLX_XEH_MACHINE select 3) then
+	if !(SLX_XEH_MACHINE select 6) then // only if MultiPlayer
 	{
 		SLX_XEH_MACHINE set [1, true]; // set JIP
+		// TEST for weird jip-is-server-issue :S
+		if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
+			diag_log ["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE];
+			SLX_XEH_MACHINE set [2, true]; // set Dedicated client
+			SLX_XEH_MACHINE set [3, false]; // set server
+			SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
+		};
 		waitUntil { !(isNull player) };
 		waitUntil { local player };
 
