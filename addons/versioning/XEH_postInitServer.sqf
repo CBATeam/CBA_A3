@@ -2,14 +2,11 @@
 
 if (SLX_XEH_MACHINE select 1) exitWith { LOG("WARNING: YOUR MACHINE WAS DETECTED AS SERVER INSTEAD OF CLIENT!") };
 
-GVAR(versions_serv) = GVAR(versions); // For latest versions
-GVAR(versions_server) = GVAR(versions); // For legacy versions
-GVAR(versions_srv) = [[], "0.0.0"] call CBA_fnc_hashCreate; // For legacy versions
+GVAR(versions_serv) = + GVAR(versions); // For latest versions
+GVAR(versions_server) = + GVAR(versions); // For legacy versions
 
-[GVAR(versions_serv), { _str = [_value select 0, "."] call CBA_fnc_join; [GVAR(versions_srv),_key, _str] call CBA_fnc_hashSet }] call CBA_fnc_hashEachPair;
 publicVariable QUOTE(GVAR(versions_serv));
 publicVariable QUOTE(GVAR(versions_server)); // TODO: Deprecate?
-publicVariable QUOTE(GVAR(versions_srv)); // TODO: Deprecate?
 
 // Paranoid; yet pretty annoying gamebreaking issue :-)
 QUOTE(GVAR(versions_serv)) addPublicVariableEventHandler
