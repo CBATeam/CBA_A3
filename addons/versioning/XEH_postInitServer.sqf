@@ -16,9 +16,12 @@ QUOTE(GVAR(versions_serv)) addPublicVariableEventHandler
 {
 	private ["_params"];
 	_params = _this select 1;
-	diag_log [diag_frameNo, diag_tickTime, time, "WARNING: Some client seems to have overriden the versions array; please report to CBA devs!"];
-	GVAR(versions_serv) = GVAR(versions);
-	publicVariable QUOTE(GVAR(versions_serv));
+	diag_log [diag_frameNo, diag_tickTime, time, _params, "WARNING: Some client seems to have overriden the versions array; please report to CBA devs!"];
+	diag_log [GVAR(versions), GVAR(version_serv)];
+	if (isServer && isDedicated) then {
+		GVAR(versions_serv) = GVAR(versions);
+		publicVariable QUOTE(GVAR(versions_serv));
+	};
 };
 
 QUOTE(GVAR(mismatch)) addPublicVariableEventHandler
