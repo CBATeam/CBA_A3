@@ -8,7 +8,7 @@ SLX_XEH_objects = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [
 	"AnimChanged", "AnimStateChanged", "AnimDone", "Dammaged", "Engine",
-	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit",
+	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "GetInMan", "GetOutMan", "Hit",
 	"IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped" //,
 	//"HandleDamage", "HandleHealing"
 ];

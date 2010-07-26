@@ -472,13 +472,38 @@ class Extended_Engine_EventHandlers {};
 
 class Extended_Fuel_EventHandlers {};
 class Extended_Gear_EventHandlers {};
-class Extended_GetIn_EventHandlers {};
-class Extended_GetOut_EventHandlers {};
 class Extended_IncomingMissile_EventHandlers {};
 
 class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LandedStopped_EventHandlers {};
 class Extended_HandleDamage_EventHandlers {};
 
+class Extended_GetIn_EventHandlers
+{
+	// Default Extended Event Handlers: Custom GetInMan event
+	class AllVehicles
+	{
+		class SLX_GetInMan
+		{
+				scope	 = public;
+				getIn  = "{[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH')";
+		};
+	};
+};
+class Extended_GetOut_EventHandlers
+{
+	// Default Extended Event Handlers: Custom GetOutMan event
+	class AllVehicles
+	{
+		class SLX_GetOutMan
+		{
+				scope	 = public;
+				getOut = "{[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH')";
+		};
+	};
+};
+
+class Extended_GetInMan_EventHandlers {};
+class Extended_GetOutMan_EventHandlers {};
 
 class DefaultEventhandlers; // external - BIS default event handlers in ArmA 2
