@@ -528,7 +528,6 @@ Author:
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
-#define GVARS(var1,var2,var3) ##var1##_##var2##_##var3
 #define GVARMAINS(var1,var2) ##var1##_##var2##
 #define CFGSETTINGSS(var1,var2) configFile >> "CfgSettings" >> #var1 >> #var2
 //#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 = 
@@ -597,7 +596,7 @@ Example:
 Author:
 	Sickboy
 ------------------------------------------- */
-#define GVAR(var1) GVARS(PREFIX,COMPONENT,var1)
+#define GVAR(var1) TRIPLES(PREFIX,COMPONENT,var1)
 
 /* -------------------------------------------
 Macro: GVARMAIN()
