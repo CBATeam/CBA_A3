@@ -16,7 +16,7 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 // and at the briefing, still time == 0
 if (isNull player) then
 {
-	if !(SLX_XEH_MACHINE select 6) then // only if MultiPlayer
+	if (!isDedicated && !(SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 	{
 		SLX_XEH_MACHINE set [1, true]; // set JIP
 		// TEST for weird jip-is-server-issue :S
