@@ -22,16 +22,20 @@ class CfgVehicles {
 	class Ship: AllVehicles {
 		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
 	};
+	/*
 	class ParachuteBase: Helicopter {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
+	*/
 	class StaticWeapon;
 	class StaticCannon: StaticWeapon {
 		class Eventhandlers { EXTENDED_EVENTHANDLERS };
 	};
+	/*
 	class BIS_Steerable_Parachute: Plane {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
+	*/
 	class Logic;
 	class BIS_Effect_FilmGrain: Logic {
 		class Eventhandlers { EXTENDED_EVENTHANDLERS };
@@ -395,9 +399,11 @@ class CfgVehicles {
 	class AH6X_EP1: AH6_Base_EP1 {
 		class EventHandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
 	};
+	/*
 	class Steerable_Parachute_EP1: Plane {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
+	*/
 	class l39Wreck: PlaneWreck {
 		class Eventhandlers { EXTENDED_EVENTHANDLERS };
 	};
