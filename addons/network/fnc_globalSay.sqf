@@ -5,14 +5,14 @@ Description:
 	Says sound on all client computer
 
 Parameters:
-	_object - Object that performs Say [Object]
+	[_objects] - Array of Objects that perform Say [Object]
 	_say - [sound, maxTitlesDistance,speed] or "sound" [Array or String]
 
 Returns:
 	
 Example:
 	(begin example)
-		[player, "Alarm01"] call CBA_fnc_globalSay;
+		[[player], "Alarm01"] call CBA_fnc_globalSay;
 	(end)
 	
 Author:
