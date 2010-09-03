@@ -141,6 +141,12 @@ class CfgFunctions
 				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles). Parameters: Vehicle that fired Weapon that was used Example: _unit = player call CBA_fnc_getFirer Returns: Unit Turretpath Author: Rocko";
 				file = "\x\cba\addons\common\fnc_getFirer.sqf";
 			};
+			// CBA_fnc_getFov
+			class getFov
+			{
+				description = "Get current camera's field of view in radians and zoom. Fov is calculated in the same format as it is set up in configs and used by camSetFov and alike. Precision is about 95%.";
+				file = "\x\cba\addons\common\fnc_getFov.sqf";
+			};
 			// CBA_fnc_getGroup
 			class getGroup
 			{
