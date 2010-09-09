@@ -64,7 +64,7 @@ if (_hasOa && _hasCbaA2) then { (localize "STR_CBA_COMMON_OA_HAS_CBA_A2") spawn 
 if (!_hasOa && !_hasCbaA2) then { (localize "STR_CBA_COMMON_A2_ST_NO_CBA_A2") spawn FUNC(log) };
 
 // Run the per frame handler init code, bringing up the hidden map control
-[] spawn compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_perFrameHandler));
+execVM QUOTE(PATHTO_F(init_perFrameHandler));
 
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
