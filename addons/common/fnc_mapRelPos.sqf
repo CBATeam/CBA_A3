@@ -29,12 +29,12 @@ Author:
 SCRIPT(mapRelPos);
 
 private ["_pos","_dist","_dir","_northing","_easting","_northingSize",
-         "_eastingSize","_e","_n","_posArray","_ea","_na"];
+         "_eastingSize","_e","_n","_posArray","_ea","_na","_reversed"];
 
 _pos  = _this select 0;
 _dist = _this select 1;
 _dir  = _this select 2;
-
+_reversed = [] call CBA_fnc_northingReversed;
 if(IS_STRING(_pos)) then {
     _posArray = toArray _pos;
     _pos = [];
@@ -69,9 +69,11 @@ _n = (parseNumber _northing)*(10^((10-(_northingSize*2))/2));
 
 _pos = [_e, _n];
 
-// flip the Y position into its negative value (to compensate for the northings 
-// going down)
-_pos set [1, ((_pos select 1)*-1)];
+if(_reversed) then {
+	// flip the Y position into its negative value (to compensate for the northings 
+	// going down)
+	_pos set [1, ((_pos select 1)*-1)];
+};
 
 //find position relative to passed position
 _pos = [floor ((_pos select 0) + _dist*sin _dir), floor ((_pos select 1) + _dist*cos _dir)];

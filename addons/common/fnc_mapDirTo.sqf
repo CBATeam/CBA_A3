@@ -37,4 +37,4 @@ PARAMS_2(_pos1,_pos2);
 _pos1 = _pos1 call CBA_fnc_mapGridToPos;
 _pos2 = _pos2 call CBA_fnc_mapGridToPos;
 
-[_pos1,_pos2] call BIS_fnc_dirTo;
+(([_pos1,_pos2] call BIS_fnc_dirTo) + 360) mod 360;
