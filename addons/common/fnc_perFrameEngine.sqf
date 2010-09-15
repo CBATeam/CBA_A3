@@ -16,7 +16,7 @@ execution).
 
 // We monitor all our frame render's in this loop. If the frames stop rendering, that means they alt+tabbed
 // and we still want to at least TRY and run them until the onDraw kicks up again
-FUNC(_monitorFrameRender) = {
+FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
 	while { true } do {
 		// check to see if the frame-render hasn't run in a second. 
@@ -42,7 +42,7 @@ FUNC(_monitorFrameRender) = {
 	};
 };
 
-FUNC(_onFrame) = {	
+FUNC(onFrame) = {	
 	private["_func", "_delay", "_delta", "_handlerData"];
 	GVAR(lastFrameRender) = diag_tickTime;
 	// if(GVAR(lastCount) > (GVAR(fpsCount)-1)) then {
@@ -72,9 +72,9 @@ GVAR(fpsCount) = 0;
 GVAR(lastCount) = -1;
 GVAR(lastFrameRender) = 0;
 // prepare our handlers list
-((_this select 0) displayCtrl 40122) ctrlSetEventHandler ["Draw", QUOTE([_this] call FUNC(_onFrame);) ];
+((_this select 0) displayCtrl 40122) ctrlSetEventHandler ["Draw", QUOTE([_this] call FUNC(onFrame)) ];
 [] spawn {
 	sleep 3;
 	GVAR(lastFrameRender) = diag_tickTime;
-	[] spawn FUNC(_monitorFrameRender);
+	[] spawn FUNC(monitorFrameRender);
 };
