@@ -89,8 +89,7 @@ DEPRECATE_SYS(KRON_StrLen,DOUBLES(PREFIX,fnc_strLen));
 DEPRECATE_SYS(KRON_StrToArray,DOUBLES(PREFIX,fnc_split)); // CBA_fnc_split does the same and more.
 DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but CBA one is 1 line (reuses other functions).
 
-
-PREP(perFrameEngine);
+call COMPILE_FILE(init_perFrameHandler);
 
 // NOTE: Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
 [] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_addons));
