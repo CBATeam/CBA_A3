@@ -417,7 +417,7 @@ class RscTitles
         enableSimulation = 1;
         enableDisplay = 1;
 
-        onLoad = QUOTE(_this call CBA_fnc__perFrameEngine;);
+        onLoad = QUOTE(_this call CBA_common_fnc_perFrameEngine);
 
         duration = 99999999999999999;
         fadein  = 0;
