@@ -27,6 +27,12 @@ class CfgFunctions
 				description = "Add a magazine, but verify that it was successful without over-burdening the recipient.";
 				file = "\x\cba\addons\common\fnc_addMagazineVerified.sqf";
 			};
+			// CBA_fnc_addPerFrameHandler
+			class addPerFrameHandler
+			{
+				description = "Add a handler that will execute every frame, or every x number of seconds";
+				file = "\x\cba\addons\common\fnc_addPerFrameHandler.sqf";
+			};
 			// CBA_fnc_addPlayerAction
 			class addPlayerAction
 			{
@@ -285,6 +291,12 @@ class CfgFunctions
 				description = "Check whether these are any players within a certain distance of a unit.";
 				file = "\x\cba\addons\common\fnc_nearPlayer.sqf";
 			};
+			// CBA_fnc_northingReversed
+			class northingReversed
+			{
+				description = "Checks if the maps northing is reversed (like Chernarus & Utes, or any map pre-OA)";
+				file = "\x\cba\addons\common\fnc_northingReversed.sqf";
+			};
 			// CBA_fnc_objectRandom
 			class objectRandom
 			{
@@ -314,6 +326,12 @@ class CfgFunctions
 			{
 				description = "Remove a magazine.";
 				file = "\x\cba\addons\common\fnc_removeMagazine.sqf";
+			};
+			// CBA_fnc_removePerFrameHandler
+			class removePerFrameHandler
+			{
+				description = "Remove a handler that you have added using CBA_fnc_addPerFrameHandler";
+				file = "\x\cba\addons\common\fnc_removePerFrameHandler.sqf";
 			};
 			// CBA_fnc_removePlayerAction
 			class removePlayerAction
