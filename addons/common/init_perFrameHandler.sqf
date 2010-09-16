@@ -1,4 +1,5 @@
 //init_perFrameHandler.sqf
+// #define DEBUG_MODE_FULL
 
 #include "script_component.hpp"
 
@@ -11,10 +12,21 @@ FUNC(blaHandler) = {
 	// All functions get _logic as _this param. Params inside _logic getVariable "params";
 	private ["_logic"];
 	PARAMS_1(_params);
-	_logic = _params select 1;
+	_logic = _params select 0;
+	
+	if (isNil "_logic") exitWith {
+		// Remove handler
+		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
+	};
+
+	if (isNull _logic) exitWith {
+		// Remove handler
+		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
+	};
 	
 	// Check exit condition - Exit if false
 	if (_logic call (_logic getVariable "exit_condition")) exitWith {
+		TRACE_1("Exit Condition", _logic);
 		// Execute End code
 		_logic call (_logic getVariable "end");
 		// Remove handler
@@ -26,6 +38,7 @@ FUNC(blaHandler) = {
 	
 	// Check Run Condition - Exit until next loop if false
 	if !(_logic call (_logic getVariable "run_condition")) exitWith {};
+	// TRACE_1("Executing",_logic);
 	// Execute code
 	_logic call (_logic getVariable "run");
 };
