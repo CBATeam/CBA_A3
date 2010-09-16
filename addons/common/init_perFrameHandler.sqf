@@ -9,7 +9,9 @@ PREP(perFrameEngine);
 
 FUNC(blaHandler) = {
 	// All functions get _logic as _this param. Params inside _logic getVariable "params";
-	PARAMS_1(_logic);
+	private ["_logic"];
+	PARAMS_1(_params);
+	_logic = _params select 1;
 	
 	// Check exit condition - Exit if false
 	if (_logic call (_logic getVariable "exit_condition")) exitWith {
