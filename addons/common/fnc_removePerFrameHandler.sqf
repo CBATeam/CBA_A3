@@ -25,4 +25,5 @@ Author:
 #include "script_component.hpp"
 
 PARAMS_1(_handle);
+if (isNil "_handle") exitWith {}; // Nil handle, nil action
 GVAR(perFrameHandlerArray) set [_handle, nil];

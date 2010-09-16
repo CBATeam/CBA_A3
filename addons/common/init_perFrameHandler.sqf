@@ -7,6 +7,56 @@
 
 PREP(perFrameEngine);
 
+FUNC(blaHandler) = {
+	// All functions get _logic as _this param. Params inside _logic getVariable "params";
+	PARAMS_1(_logic);
+	
+	// Check exit condition - Exit if false
+	if (_logic call (_logic getVariable "exit_condition")) exitWith {
+		// Execute End code
+		_logic call (_logic getVariable "end");
+		// Remove handler
+		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
+		
+		// Bai Bai logic
+		deleteVehicle _logic;
+	};
+	
+	// Check Run Condition - Exit until next loop if false
+	if !(_logic call (_logic getVariable "run_condition")) exitWith {};
+	// Execute code
+	_logic call (_logic getVariable "run");
+};
+
+
+FUNC(addPerFrameHandlerLogic) = {
+	PARAMS_1(_function);
+	DEFAULT_PARAM(1,_params,[]);
+	DEFAULT_PARAM(2,_delay,0);
+	DEFAULT_PARAM(3,_start,{});
+	DEFAULT_PARAM(4,_end,{});
+	DEFAULT_PARAM(5,_runCondition,{true});
+	DEFAULT_PARAM(6,_exitCondition,{false});
+
+	// Store vars on Logic
+	_logic = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	_logic setVariable ["start", _start];
+	_logic setVariable ["run_condition", _runCondition];
+	_logic setVariable ["exit_condition", _exitCondition];
+	_logic setVariable ["run", _function];
+	_logic setVariable ["end", _end];
+	_logic setVariable ["params", _params];
+	
+	// Run start code
+	_logic call (_logic getVariable "start");
+	
+	// Add handler
+	_handle = [FUNC(blaHandler), _delay, [_logic]] call CBA_fnc_addPerFrameHandler;
+	_logic setVariable ["handle", _handle];
+
+	_logic; // Returns logic because you can get the handle from it, and much more
+};
+
 // We monitor all our frame render's in this loop. If the frames stop rendering, that means they alt+tabbed
 // and we still want to at least TRY and run them until the onDraw kicks up again
 FUNC(monitorFrameRender) = {
