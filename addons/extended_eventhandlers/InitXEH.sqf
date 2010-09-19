@@ -62,7 +62,7 @@ SLX_XEH_F_INIT = {
 					if (isText _entryServer) then
 					{
 						_Inits set [count _Inits, compile(getText _entryServer)];
-					};				
+					};
 				};
 				if (!isDedicated) then
 				{
@@ -84,7 +84,7 @@ SLX_XEH_F_INIT = {
 				LOG(_x);
 			#endif
 			call _x;
-		} forEach _Inits;	   
+		} forEach _Inits;
 	};
 	#ifdef DEBUG_MODE_FULL
 	_msg = format["XEH END: Init %1", _this];

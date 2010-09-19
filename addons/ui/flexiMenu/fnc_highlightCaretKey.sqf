@@ -9,14 +9,14 @@ in order to avoid the millions of Deprecated function warnings:
 	WARNING: Deprecated function used: KRON_StrToArray (new: cba_fnc_split) in cba_common
 */
 
-private ['_result', '_array', '_index', '_offset', '_ST_highlightKey_attribute', 
+private ['_result', '_array', '_index', '_offset', '_ST_highlightKey_attribute',
 	'_captionArray', '_i', '_len', '_array2'];
 
 _array = _this select 0;
 _index = _this select 1;
 _offset = _this select 2;
 _ST_highlightKey_attribute = _this select 3;
-	
+
 _captionArray = [];
 
 _len = 0;

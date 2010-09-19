@@ -3,19 +3,19 @@ Function: CBA_fnc_getUISize
 
 Description:
 	Used to determine the UI size of the screen.
-	
+
 Parameters:
 	_output - the desired output format, either "NUMBER" or "STRING".
-	
+
 Returns:
 	If the desired output format is
 
 	"NUMBER" : an index into ["verysmall","small","normal","large"]
 	"STRING" : one of "verysmall", "small", "normal" or "large"
-	
+
 	If an error occurs, the function returns either the number -1 or
 	the string "error", depending on the desired output format.
-	
+
 Examples:
 	(begin example)
 		_uiSize = "STRING" call CBA_fnc_getUISize;

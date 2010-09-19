@@ -24,7 +24,7 @@ scriptName "fnc_vectSubtract.sqf";
 #include "script_component.hpp"
 SCRIPT(vectSubtract);
 
- 
+
  private ["_u","_v","_i","_k", "_j"];
 
 PARAMS_2(_u,_v);

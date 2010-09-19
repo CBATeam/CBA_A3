@@ -6,7 +6,7 @@ Description:
 Parameters:
 	Marker, Object, Location, Group or Position, Zone (Marker, Trigger, Array)
 Example:
-	
+
 Returns:
 	Boolean
 Author:

@@ -44,7 +44,7 @@
 //   _this select 1 = optional menu script parameters (type: any, syntax: any). Eg: ['menu name', 'menu resource name']
 //   Eg 3: array: [menu definition source string, paramters]. Eg: ["mission\ammoCrate_menuDef.sqf", ["main", _menuRsc]]
 //-----------------------------------------------------------------------------
-/* submenu is either: 
+/* submenu is either:
 	a menuDef array variable, - typeName "array"
 	"_this call function", - typeName "string" - space but no dot, nor quotes
 	"_this call compile preprocessFileLineNumbers 'mission\sys_crewserved_menuDef.sqf'" - typeName "string" - dot and space and embedded quotes
@@ -57,13 +57,13 @@
 	["Menu Caption", "flexiMenu resource dialog", "optional icon folder", menuStayOpenUponSelect],
 	[
 		[
-			"caption", 
-			"action", 
-			"icon", 
-			"tooltip", 
-			{"submenu"|["menuName", "", {0/1} (optional - use embedded list menu)]}, 
+			"caption",
+			"action",
+			"icon",
+			"tooltip",
+			{"submenu"|["menuName", "", {0/1} (optional - use embedded list menu)]},
 			-1 (shortcut DIK code), // TODO: Allow string ("Z") type shortcut designation
-			{0|1/"0"|"1"/false|true} (enabled), 
+			{0|1/"0"|"1"/false|true} (enabled),
 			{-1|0|1/"-1"|"0"|"1"/false|true} (visible, -1 is special case for reserved hidden button)]
 	]
 ]
@@ -127,9 +127,9 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 ((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
+GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown",
 	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
-/* GVAR(mouseButtonDownEHID) = */ (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["mouseButtonDown", 
+/* GVAR(mouseButtonDownEHID) = */ (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["mouseButtonDown",
 	format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
@@ -174,7 +174,7 @@ _commitList = [];
 				{
 					if (!isNull GVAR(display)) exitWith
 					{
-						diag_log format ["Warning: Too many menu items or missing Menu button control: %1", 
+						diag_log format ["Warning: Too many menu items or missing Menu button control: %1",
 							[_menuRsc, _idc, _caption]]
 					};
 				}

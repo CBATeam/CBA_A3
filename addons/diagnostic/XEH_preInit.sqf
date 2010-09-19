@@ -13,8 +13,8 @@ if (SLX_XEH_MACHINE select 3) then
 			[QUOTE(GVAR(receive_peak)), [_variable, nil]] call CBA_fnc_globalEvent;
 		} else {
 			[QUOTE(GVAR(receive_peak)), [_variable, call compile _variable]] call CBA_fnc_globalEvent;
-		}; 
-		
+		};
+
 	};
 	[QUOTE(GVAR(peek)), { _this call CBA_fnc_handle_peak }] call CBA_fnc_addEventHandler;
 };

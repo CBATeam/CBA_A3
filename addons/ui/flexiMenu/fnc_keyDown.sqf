@@ -5,8 +5,8 @@
 #define _minObjDist(_var) (if (_var isKindOf "caManBase") then {3} else {(2 max (1.4+(sizeOf typeOf _var)/2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
 private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
-	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget", 
-	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList", 
+	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget",
+	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList",
 	"_keys", "_settings"];
 
 //_ctrl = _this select 0;
@@ -28,9 +28,9 @@ _potentialKeyMatch = false;
 	_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
 	{
 		_settings = _x select 1;
-		if ((_x select 0 == _dikCode) && 
+		if ((_x select 0 == _dikCode) &&
 			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && // can't seem to compare booleans. i.e. ((_settings select 0) == _shift)
-			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
 			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
 		{
 			_potentialKeyMatch = true;
@@ -83,9 +83,9 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 			_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
 			{
 				_settings = _x select 1;
-				if ((_x select 0 == _dikCode) && 
+				if ((_x select 0 == _dikCode) &&
 					((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
-					((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+					((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
 					((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
 				{
 					_potentialKeyMatch = true;
@@ -97,14 +97,14 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
 				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
 
-				if (({_potentialTarget isKindOf _x} count _typesList > 0) || 
+				if (({_potentialTarget isKindOf _x} count _typesList > 0) ||
 					({_vehicleTarget isKindOf _x} count _typesList > 0) ||
 					("player" in _typesList)) then
 				{
 					if (count _potentialMenuSources == 0) then
 					{
 						_isTypeTarget = true;
-						_target = if ((_vehicleTarget != player) && 
+						_target = if ((_vehicleTarget != player) &&
 							({_vehicleTarget isKindOf _x} count _typesList > 0)) then
 						{
 							_vehicleTarget
@@ -130,7 +130,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 
 			/*
 			if ( // count _menuSource == 0 &&
-			_isTypeTarget) then 
+			_isTypeTarget) then
 			{
 				_menuSources = _menuSources+_potentialMenuSources;
 			};

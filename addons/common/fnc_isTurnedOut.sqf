@@ -3,13 +3,13 @@ Function: CBA_fnc_isTurnedOut
 
 Description:
 	Checks whether a unit is turned out in a vehicle or not.
-	
+
 Parameters:
 	_unit - Unit to check [Object]
 
 Returns:
 	"true" for turned out or "false" for not turned out [Boolean]
-	
+
 Examples:
 	(begin example)
 		if ( [player] call CBA_fnc_isTurnedOut ) then

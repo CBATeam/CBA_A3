@@ -10,7 +10,7 @@ Parameters:
 
 Returns:
 	Newly created Hash [Hash]
-	
+
 Examples:
 (begin code)
 	_emptyHash = [] call hashCreate;
@@ -21,7 +21,7 @@ Examples:
 	[_animalCounts, "frog"] call CBA_fnc_hashGet; // => 12
 	[_animalCounts, "monkey"] call CBA_fnc_hashGet; // => 0
 (end code)
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */

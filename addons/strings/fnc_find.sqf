@@ -12,15 +12,15 @@ Parameters:
 
 Returns:
 	First position of string. Returns -1 if not found [Number]
-	
+
 Examples:
 	(begin example)
 		_result = ["frog-headed fish", "f"] call CBA_fnc_find;
 		// _result => 0
-		
+
 		_result = ["frog-headed fish", "f", 5] call CBA_fnc_find;
 		// _result => 12
-		
+
 		_result = ["frog-headed fish", "fish"] call CBA_fnc_find;
 		// _result => 12
 	(end)
@@ -63,7 +63,7 @@ for [ { _haystackIndex = _initialIndex; _needleIndex = 0 },
 	{
 		// Matched a single character.
 		_needleIndex = _needleIndex + 1;
-		
+
 		// Found the whole needle.
 		if (_needleIndex == _needleCount) then
 		{

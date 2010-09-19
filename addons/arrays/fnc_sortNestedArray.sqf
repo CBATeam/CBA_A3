@@ -19,7 +19,7 @@ scriptName "CBA_fnc_sortNestedArray";
 /*
 	Modified BIS function to sort nested arrays.
 	Added 2nd parameter to indicate which column (index in nested array) to sort on.
-	Sorts an array of numbers from lowest (left) to highest (right). 
+	Sorts an array of numbers from lowest (left) to highest (right).
 	The passed array is modified by reference.
 	This function uses the quick sort algorithm.
 */

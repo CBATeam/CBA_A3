@@ -3,14 +3,14 @@ Function: CBA_fnc_mapGridToPos
 
 Description:
 	Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.
-	
+
 Parameters:
 	_pos - The position, either an array of strings for the northing & easting or a string.
 	_doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
 
 Returns:
 	Position in internal gridspace.
-	
+
 Examples:
 	(begin example)
 		_pos = ["024","015"] call CBA_fnc_mapGridToPos;
@@ -29,12 +29,12 @@ Author:
 
 SCRIPT(mapGridToPos);
 
-private ["_pos", "_doOffset", "_posArray", "_ea", "_na", "_start", "_check", 
+private ["_pos", "_doOffset", "_posArray", "_ea", "_na", "_start", "_check",
          "_minus", "_digits", "_maxNorthing", "_height", "_easting", "_northing",
          "_eastingSize", "_northingSize", "_eastingMultiple", "_northingMultiple",
          "_posX", "_posY", "_offset", "_return", "_reversed"];
 
-         
+
 _doOffSet = false;
 _reversed = [] call CBA_fnc_northingReversed;
 _pos = [];
@@ -75,7 +75,7 @@ if(IS_STRING(_pos)) then {
 /**
  * Get extents of the Y Northing column for the map.
  * This uses mapGridPosition to get the 6 digit coordinate
- * at the bottom internal grid position, then it adds 1 
+ * at the bottom internal grid position, then it adds 1
  * meter to the internal Y coordinate till mapGridPosition
  * changes. This reveals the correct height in meters of the
  * map.

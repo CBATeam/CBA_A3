@@ -40,7 +40,7 @@ ADDON = false;
 #endif
 
 
-// COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast. 
+// COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast.
 ISNIL(timeSync_Disabled,false); // deprecated
 ISNIL(weatherSync_Disabled,false);
 
@@ -67,9 +67,9 @@ if (SLX_XEH_MACHINE select 3) then
 	PREP(opc);
 	PREP(opd);
 	PREP(sync);
-	
+
 	FUNC(id) = { "server" };
-	
+
 	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;

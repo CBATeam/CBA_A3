@@ -3,7 +3,7 @@ Function: CBA_fnc_readKeyFromConfig
 
 Description:
 	Reads key setting from config
-	
+
 Parameters:
 	_component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
 	_action - Action classname [String].

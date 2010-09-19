@@ -7,7 +7,7 @@
 if (isDedicated || !dialog) exitWith {};
 
 private['_handled', '_EHParams', '_control', '_dikCode', '_shiftKey', '_ctrlKey', '_altKey'];
-private['_menuDefs', "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"]; 
+private['_menuDefs', "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"];
 _EHParams = _this select 0;
 
 _control = _EHParams select 0;
@@ -56,4 +56,4 @@ _menuDefs = (_this select 1) call FUNC(getMenuDef);
 	};
 } forEach (_menuDefs select 1);
 
-_handled;  
+_handled;

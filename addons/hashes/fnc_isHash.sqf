@@ -3,9 +3,9 @@ Function: CBA_fnc_isHash
 
 Description:
 	Check if a value is a Hash data structure.
- 
+
 	See <CBA_fnc_hashCreate>.
-	
+
 Parameters:
 	_value - Data structure to check [Any]
 

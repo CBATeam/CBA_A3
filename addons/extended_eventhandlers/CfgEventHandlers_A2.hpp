@@ -78,32 +78,32 @@ class Extended_Init_EventHandlers
 								// since this is what the stock BIS AAV does
 		};
 	};
-	
+
 	class StaticCannon
 	{
 		SLX_BIS_StaticCannon_Init = "_scr = _this execVM'\ca\Data\ParticleEffects\SCRIPTS\init.sqf'";
 	};
-	
+
 	class M252
 	{
 		SLX_BIS = "_scr = _this execVM'\ca\Data\ParticleEffects\SCRIPTS\init.sqf'";
 	};
-	
+
 	class 2b14_82mm
 	{
 		SLX_BIS = "_scr = _this execVM'\ca\Data\ParticleEffects\SCRIPTS\init.sqf'";
 	};
-	
+
 	class A10
 	{
 		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
 	};
-	
+
 	class Su34
 	{
 		SLX_BIS_init = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
 	};
-	
+
 	// Fires.
 	class Land_Fire_burning
 	{
@@ -117,7 +117,7 @@ class Extended_Init_EventHandlers
 	{
 		SLX_BIS = "(_this select 0) inflame true";
 	};
-	
+
 	// Flag carriers
 	class FlagCarrierUSA
 	{
@@ -167,7 +167,7 @@ class Extended_Init_EventHandlers
 			init = "(_this select 0) setFlagTexture ""\ca\structures\misc\armory\checkered_flag\data\checker_flag_co.paa""";
 		};
 	};
-	
+
 	// Force recon specials.
 	class FR_Miles
 	{
@@ -186,10 +186,10 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "(_this select 0) setIdentity ""Ohara"";";
 	};
 	class FR_Rodriguez
-	{ 
+	{
 		SLX_BIS = "(_this select 0) setIdentity ""Rodriguez"";";
 	};
-	
+
 	// Buildings
 	class Barrack2
 	{
@@ -199,7 +199,7 @@ class Extended_Init_EventHandlers
 	{
 		SLX_BIS = "dummy = _this execVM ""ca\characters2\OTHER\scripts\fly.sqf""";
 	};
-	
+
 	// Logics
 	class BIS_ARTY_Logic
 	{
@@ -220,7 +220,7 @@ class Extended_Init_EventHandlers
 	class AliceManager
 	{
 		SLX_BIS = "if (isnil 'BIS_alice_mainscope') then {BIS_alice_mainscope = _this select 0; publicvariable 'BIS_alice_mainscope'; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\alice\data\scripts\main.sqf""};};";
- 
+
 	};
 	class AmbientCombatManager
 	{
@@ -302,22 +302,22 @@ class Extended_Fired_EventHandlers
 		// Stock BIS fired EH for the StaticCannon class
 		SLX_BIS_StaticCannon_fired ="_this call BIS_Effects_EH_Fired";
 	};
-	
+
 	class M252
 	{
 		SLX_BIS ="_this call BIS_Effects_EH_Fired;";
 	};
-	
+
 	class 2b14_82mm
 	{
 		SLX_BIS ="_this call BIS_Effects_EH_Fired;";
 	};
-	
+
 	class A10
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
-	
+
 	class Su34
 	{
 		SLX_BIS = "_this call BIS_Effects_EH_Fired;";

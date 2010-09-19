@@ -75,7 +75,7 @@ PREP(keyHandler);
 	private ["_history"];
 	waitUntil { time > 0 };
 	_history = diag_frameNo;
-	
+
 	waitUntil
 	{
 		// Instead of + 1, using + 10, it seems script scheduling or something else can allow more than 1 frame skip per iteration

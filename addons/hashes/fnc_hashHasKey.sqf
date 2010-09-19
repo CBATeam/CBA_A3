@@ -3,7 +3,7 @@ Function: CBA_fnc_hashHasKey
 
 Description:
 	Check if a Hash has a value defined for a key.
-	
+
 	See <CBA_fnc_hashCreate>.
 
 Parameters:
@@ -12,7 +12,7 @@ Parameters:
 
 Returns:
 	True if key defined, false if not defined [Boolean]
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
@@ -25,5 +25,5 @@ SCRIPT(hashHasKey);
 // -----------------------------------------------------------------------------
 
 PARAMS_2(_hash,_key);
-	
+
 _key in (_hash select HASH_KEYS); // Return.

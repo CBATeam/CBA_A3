@@ -9,12 +9,12 @@ Parameters:
 
 Returns:
 	Number of characters in string [Number]
-	
+
 Examples:
 	(begin example)
 		_length = [""] call CBA_fnc_strLen;
 		// _result => 0
-		
+
 		_length = ["frogs are fishy"] call CBA_fnc_strLen;
 		// _result => 15
 	(end)

@@ -169,7 +169,7 @@ class CBA_flexiMenu_rscRose
 			animTextureDefault = _eval_image(DOUBLES(normal,imageTag));\
 			animTextureNoShortcut = _eval_image(DOUBLES(normal,imageTag));\
 		}
-		
+
 		ExpandMacro_RowControls(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
 		ExpandMacro_RowControls(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
 		ExpandMacro_RowControls(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);

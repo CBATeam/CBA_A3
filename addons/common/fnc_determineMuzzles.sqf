@@ -3,7 +3,7 @@ Function: CBA_fnc_determineMuzzles
 
 Description:
 	Gets the list of possible muzzles for a weapon.
-	
+
 Parameters:
 
 Returns:

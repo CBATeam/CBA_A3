@@ -12,7 +12,7 @@ Parameters:
 
 Returns:
 	New grid reference (10 digit) in format [Easting, Northing]
-	
+
 Examples:
 	(begin example)
 		_endPos = [[024,015], 20, 45] call CBA_fnc_mapDirTo;
@@ -70,7 +70,7 @@ _n = (parseNumber _northing)*(10^((10-(_northingSize*2))/2));
 _pos = [_e, _n];
 
 if(_reversed) then {
-	// flip the Y position into its negative value (to compensate for the northings 
+	// flip the Y position into its negative value (to compensate for the northings
 	// going down)
 	_pos set [1, ((_pos select 1)*-1)];
 };

@@ -3,7 +3,7 @@ Function: CBA_fnc_addKeyHandler
 
 Description:
 	Adds an action to a keyhandler
-	
+
 Parameters:
 	_key - Numerical key to attach action to [Integer].
 	_settings - Shift, Ctrl, Alt required [Array].

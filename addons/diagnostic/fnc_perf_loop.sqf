@@ -34,7 +34,7 @@ FUNC(lag) = {
 };
 
 FUNC(lag3) = {
-	// Piece of ace_sys_maptools that caused lags for sys_missileguidance 
+	// Piece of ace_sys_maptools that caused lags for sys_missileguidance
     DOUBLES(ADDON,compassRuler) = "";
 	DOUBLES(ADDON,compassRose) = "";
     while { true } do {

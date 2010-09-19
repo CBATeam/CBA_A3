@@ -2,7 +2,7 @@
 
 class CfgVehicles
 {
-	class Logic;	
+	class Logic;
 	class CBA_main_require : Logic
 	{
 		displayName = "Require CBA";

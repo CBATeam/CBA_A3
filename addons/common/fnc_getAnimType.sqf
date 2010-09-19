@@ -6,7 +6,7 @@ Description:
 	animation type.
 
 	Main types are for pistol, rifle and no weapon.
-	
+
 Parameters:
 
 Returns:

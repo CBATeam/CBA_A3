@@ -59,7 +59,7 @@ _menuDefs = [];
 			_menuParams call compile _menuSource;
 		};
 	};
-	
+
 	// merge menuDef's - keeping original header array [0] and merging data array [1]
 	if (count _menuDefs == 0) then
 	{

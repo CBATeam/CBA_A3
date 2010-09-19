@@ -4,7 +4,7 @@ Internal Function: CBA_events_fnc_keyHandler
 Description:
 	Executes the key's handler
 
-Author: 
+Author:
 	Sickboy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
@@ -46,7 +46,7 @@ if (count _handlers > _idx) then
 				PUSH(_ar,_code);
 			#endif
 			_result = _keyData call _code;
-			
+
 			if (isNil "_result") then
 			{
 				WARNING("Nil result from handler.");
@@ -58,10 +58,10 @@ if (count _handlers > _idx) then
 				_result = false;
 			}; };
 		};
-		
+
 		// If any handler says that it has completely _handled_ the keypress,
 		// then don't allow other handlers to be tried at all.
-		if (_result) exitWith { _handled = true };			
+		if (_result) exitWith { _handled = true };
 	} forEach _myHandlers;
 };
 TRACE_2("keyPressed",_this,_ar);

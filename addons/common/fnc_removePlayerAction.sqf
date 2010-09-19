@@ -6,20 +6,20 @@ Description:
 
 Parameters:
 	_actionIndex - Index of action to remove [Number]
-	
+
 Returns:
 	True if removed. False if a dedicated server or where the action was not
 	defined [Boolean]
-	
+
 Example:
 	(begin example)
 		actionIndex = [["Teleport", "teleport.sqf"]] call CBA_fnc_addPlayerAction;
-		
+
 		// later
-		
+
 		[actionIndex] call CBA_fnc_removePlayerAction;
 	(end)
-	
+
 Author:
 	Sickboy
 

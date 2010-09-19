@@ -3,7 +3,7 @@ Function: CBA_fnc_realHeight
 
 Description:
 	Real z coordinate of an object, for placing stuff on roofs, etc.
-	
+
 Parameters:
 
 Returns:

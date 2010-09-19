@@ -8,7 +8,7 @@ Description:
 	* _accumulator - Value passed from last iteration, set to _initial for the
 		first iteration.
 	* _x - Element of _array.
-	
+
 Parameters:
 	_array - Array of key-value pairs to create Hash from [Array]
 	_initial - Initial value to pass into the function as _accumulator [Any]
@@ -16,7 +16,7 @@ Parameters:
 
 Returns:
 	Accumlated value [Any]
-	
+
 Examples:
 	(begin example)
 		_result = [[1, 2, 3], "", { _accumulator + (str _x) }] call CBA_fnc_inject;
@@ -28,7 +28,7 @@ Examples:
 		_result = [[1, 2, 3], 0, { _accumulator + _x }] call CBA_fnc_inject;
 		// _result ==> 6
 	(end)
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
@@ -48,7 +48,7 @@ if (not isNil "_initial") then
 	_accumulator = _initial;
 };
 
-{	
+{
 	_accumulator = call _function;
 } forEach _array;
 

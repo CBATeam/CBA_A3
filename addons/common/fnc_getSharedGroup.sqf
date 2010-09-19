@@ -3,13 +3,13 @@ Function: CBA_fnc_getSharedGroup
 
 Description:
 	Returns existing group on side, or newly created group when not existent.
-	
+
 Parameters:
 	_side - Side to get group for [Side]
 
 Returns:
 	Group [Group]
-	
+
 Examples:
 	(begin example)
 	(end)

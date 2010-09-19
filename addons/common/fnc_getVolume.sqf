@@ -3,7 +3,7 @@ Function: CBA_fnc_getVolume
 
 Description:
 	Return the volume of an object
-	
+
 Parameters:
 
 Returns:

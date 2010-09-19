@@ -157,7 +157,7 @@ class CBA_flexiMenu_rscArma2
         align = "left";
         shadow = "true";
       };
-      */      
+      */
       animTextureNormal = _eval_image("normal");
       animTextureDisabled = _eval_image("disabled");
       animTextureOver = _eval_image("over");
@@ -276,5 +276,5 @@ class CBA_flexiMenu_rscArma2
 		ExpandMacro_ListControls(08);
 		ExpandMacro_ListControls(09);
 		ExpandMacro_ListControls(10);
-  };  
+  };
 };

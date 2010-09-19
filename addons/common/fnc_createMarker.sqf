@@ -3,23 +3,23 @@ Function: CBA_fnc_createMarker
 
 Description:
 	Creates a marker all at once.
-	
+
 Parameters:
 	_markerName - Name of marker to create [String]
 	_position - [Array: [x, y]]
 	_shape - "Icon", "Rectangle" or "Elipse" [String]
 	_size - [Array: [width, height]]
-	
+
 Optional Parameters:
 	"BRUSH:" - e.g. "Solid"
 	"COLOR:" - e.g. "ColorRed"
 	"TEXT:" - e.g. "Objective Area"
 	"TYPE:" - e.g. "Pickup"
-	"GLOBAL" - Add for a global marker, but leave out for a local marker. 
+	"GLOBAL" - Add for a global marker, but leave out for a local marker.
 
 Returns:
 	Name of the marker [String]
-	
+
 Examples:
 	(begin example)
 		_marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_createMarker;

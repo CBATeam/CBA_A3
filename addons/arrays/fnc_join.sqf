@@ -12,16 +12,16 @@ Parameters:
 
 Returns:
 	The joined string [String]
-	
+
 Example:
 	(begin example)
 		_result = [["FISH", "Cheese", "frog.sqf"], "\"] call CBA_fnc_join;
 		// _result ==> "FISH\Cheese\frog.sqf"
-		
+
 		_result = [[3, 2, 1, "blast-off!"], "..."] call CBA_fnc_join;
 		// _result ==> "3...2...1...blast-off!"
 	(end)
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */

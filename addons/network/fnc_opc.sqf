@@ -16,7 +16,7 @@ _plName = if (isNull player) then { "" } else { name player };
 if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
 {
 	TRACE_3("Player Connected",_name,_id,_obj);
-	if (time > 0) then 
+	if (time > 0) then
 	{
 		[_obj] call FUNC(sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(markers);
 	};

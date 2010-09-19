@@ -9,13 +9,13 @@ Example (direct use of function):
 	private "_frog";
 	_frog = [_this, 2, 12] call CBA_fnc_defaultParam;
 (end code)
-  
+
 Example (macro):
 (begin code)
 	#include "script_component.hpp"
 	DEFAULT_PARAM(2,_frog,12);
 (end code)
- 
+
 Parameters:
 	_params - Array of parameters, usually _this [Array]
 	_index - Parameter index in the params array [Integer: >= 0]

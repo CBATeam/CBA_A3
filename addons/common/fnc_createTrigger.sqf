@@ -3,10 +3,10 @@ Function: CBA_fnc_createTrigger
 
 Description:
 	Create a trigger all at once.
-	
+
 Parameters:
 	_pos - Position [Array]
-	
+
 Optional Parameters:
 	"AREA:" - e.g. [5, 5, 0, false]
 	"ACT:" - e.g. ["CIV", "PRESENT", true]
@@ -19,7 +19,7 @@ Returns:
 Examples:
 	(begin example)
 		[_position] call createTrigger;
-		
+
 		[_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call createTrigger;
 	(end)
 
@@ -31,7 +31,7 @@ Author:
 SCRIPT(createTrigger);
 
 /*
-	createTrigger function by 
+	createTrigger function by
 
 */
 

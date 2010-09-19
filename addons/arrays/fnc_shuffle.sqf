@@ -3,10 +3,10 @@ Function: CBA_fnc_shuffle
 
 Description:
 	Shuffles an array's contents into random order, returning a new array.
-	
+
 Parameters:
 	_array - Array of values to shuffle [Array, containing anything except nil]
-	
+
 Returns:
 	New array containing shuffled values from original array [Array]
 
@@ -15,7 +15,7 @@ Example:
 		_result = [[1, 2, 3, 4, 5]] call CBA_fnc_shuffle;
 		// _result could be [4, 2, 5, 1, 3]
 	(end)
-	
+
 TODO:
 	Allow shuffling of elements in-place, using the original array.
 

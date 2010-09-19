@@ -12,7 +12,7 @@ _fn = "CBA_fnc_inject";
 ASSERT_DEFINED(_fn,"");
 
 LOG("Testing " + _fn);
-  
+
 _result = [[], "", { _accumulator + (str _x) }] call CBA_fnc_inject;
 _expected = "";
 ASSERT_OP(_result,==,_expected,_fn);

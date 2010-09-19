@@ -8,8 +8,8 @@
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
 
-private["_menuDefs0", "_menuDef", "_fastPartialResult", 
-	"_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled", 
+private["_menuDefs0", "_menuDef", "_fastPartialResult",
+	"_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",
 	"_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
 	"_keyName", "_offset"];
 
@@ -41,7 +41,7 @@ if (isNil "_enabled") then
 	hint ("Error logged: 'enabled' menu property returned nil.\n\n"+
 		format["Source data: %1", _this]);
 	ERROR_WITH_TITLE("'enabled' menu property returned nil.", str _this);
-	_enabled = 0; 
+	_enabled = 0;
 	_caption = "Error: "+_caption;
 };
 if (typeName _enabled != typeName 2) then
@@ -57,7 +57,7 @@ if (isNil "_visible") then
 	hint ("Error logged: 'visible' menu property returned nil.\n\n"+
 		format["Source data: %1", _this]);
 	ERROR_WITH_TITLE("'visible' menu property returned nil.", str _this);
-	_visible = 0; 
+	_visible = 0;
 	_caption = "Error: "+_caption;
 };
 if (typeName _visible != typeName 2) then
@@ -123,7 +123,7 @@ if (_enabled != 0 && _visible > 0) then
 else
 {
 	_shortcut_DIK = -1; // disable shortcut for disabled menu options
-	if (_shortcut_DIK != -1) then {player sidechat str [_caption, _shortcut_DIK, _enabled, _visible]};	
+	if (_shortcut_DIK != -1) then {player sidechat str [_caption, _shortcut_DIK, _enabled, _visible]};
 };
 
 // remove "^" from caption and substitute coloured shortcut letter if enabled.
@@ -155,7 +155,7 @@ else
 {
 	// map menu shortcut DIK code
 	// Note: don't append shortcut to empty caption, which is usually an "icon only" menu, without text captions.
-	if (_shortcut_DIK != -1 && _caption != "") then 
+	if (_shortcut_DIK != -1 && _caption != "") then
 	{
 		private ["_keyName"];
 		_keyName = keyName _shortcut_DIK;
@@ -165,7 +165,7 @@ else
 			_array = _array-[34]; // 34=("). Strip off leading and trailing quotes.
 		};
 		_keyName = toString _array;
-		
+
 		// append shortcut key name to caption. Eg: "Option (F9)".
 		_caption = _caption+format[" (%1%2</t>)", _ST_highlightKey_attribute, _keyName];
 	};

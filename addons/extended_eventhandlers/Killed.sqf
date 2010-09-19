@@ -15,11 +15,11 @@ if (_u in playableUnits && _name != "") then
 	_name spawn
 	{
 		_getUnit=compile _this;
-		
+
 		#ifdef DEBUG_MODE_FULL
 		diag_log text format["(%1) XEH killed: waiting for %2 (%3) to respawn.",time, _this, call _getUnit];
 		#endif
-		
+
 		waitUntil {alive (call _getUnit)};
 		_unit=call _getUnit;
 		#ifdef DEBUG_MODE_FULL

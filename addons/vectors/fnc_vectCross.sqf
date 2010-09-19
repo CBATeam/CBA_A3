@@ -17,7 +17,7 @@ Examples:
 	(end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric, 
+	Vigilante, courtesy by -=ACE=- of Simcentric,
 ---------------------------------------------------------------------------- */
 
 //Function is complete replica, deprecated

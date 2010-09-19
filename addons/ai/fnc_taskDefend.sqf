@@ -49,7 +49,7 @@ _i = 0;
 				_count = ARG2(_array, 1);
 				_x commandMove (_building buildingPos _count);
 				_x spawn {
-					waituntil {unitReady _this}; 
+					waituntil {unitReady _this};
 					commandStop _this;
 				};
 			};

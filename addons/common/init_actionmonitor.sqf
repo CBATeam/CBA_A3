@@ -15,29 +15,29 @@ LOG("Action monitor started");
 {
 	while { true } do
 	{
-		// Don't mess around endlessly adding and re-adding to a 
+		// Don't mess around endlessly adding and re-adding to a
 		// corpse/destroyed vehicle.
 		waitUntil { alive (vehicle player) };
-		
+
 		// Add actions to new vehicle.
 		_veh = vehicle player;
 		_actionIndexes = [];
 		[GVAR(actionList), { PUSH(_actionIndexes,_veh addAction _value) }] call
 			CBA_fnc_hashEachPair;
-			
+
 		TRACE_2("Added actions",_veh,count _actionIndexes);
-		
+
 		waitUntil
 		{
 			(vehicle player) != _veh || !(alive player) || GVAR(actionListUpdated)
 		};
-		
+
 		// Remove actions from previous vehicle.
 		GVAR(actionListUpdated) = false;
 		{ _veh removeAction _x } foreach _actionIndexes;
-		
+
 		TRACE_2("Removed actions",_veh,count _actionIndexes);
-		
+
 		sleep 1;
 	};
 };

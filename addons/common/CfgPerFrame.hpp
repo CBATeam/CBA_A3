@@ -141,9 +141,9 @@ class CBA_Dummy_Map {
     scaleMax = 1;
     scaleMin = 0.125;
 	text = "";
-	
+
 	maxSatelliteAlpha = 0;	 // Alpha to 0 by default
-	alphaFadeStartScale = 1.0; 
+	alphaFadeStartScale = 1.0;
 	alphaFadeEndScale = 1.1;   // Prevent div/0
 
 	showCountourInterval=1;
@@ -423,20 +423,20 @@ class RscTitles
         fadein  = 0;
         fadeout = 0;
 		name = "CBA_FrameHandlerTitle";
-		class controlsBackground { 
+		class controlsBackground {
 			class dummy_map : CBA_Dummy_Map {
 				idc = 40122;
-				x = 0; 
+				x = 0;
 				y = 0;
-				w = 0;  
+				w = 0;
 				h = 0;
 			};
 		};
-		class objects { 
-			
+		class objects {
+
 		};
 		class controls {
-			
+
 		};
 	};
 };

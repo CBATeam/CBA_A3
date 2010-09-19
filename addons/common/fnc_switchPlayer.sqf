@@ -3,7 +3,7 @@ Function: CBA_fnc_switchPlayer
 
 Description:
 	Switch player to another unit.
-	
+
 Parameters:
 
 Returns:

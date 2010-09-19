@@ -10,7 +10,7 @@ Parameters:
 
 Returns:
 	nil
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
@@ -23,7 +23,7 @@ SCRIPT(localEvent);
 
 PARAMS_1(_eventType);
 DEFAULT_PARAM(1,_params,nil);
-	
+
 private "_handlers";
 
 // Run locally.

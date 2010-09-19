@@ -3,7 +3,7 @@ Function: CBA_fnc_nearPlayer
 
 Description:
 	Check whether these are any players within a certain distance of a unit.
-	
+
 Parameters:
 
 Returns:

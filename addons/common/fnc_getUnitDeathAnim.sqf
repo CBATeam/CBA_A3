@@ -3,7 +3,7 @@ Function: CBA_fnc_getUnitDeathAnim
 
 Description:
 	Get death animation for a unit.
-	
+
 Parameters:
 
 Returns:

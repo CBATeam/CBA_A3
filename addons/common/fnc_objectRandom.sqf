@@ -3,7 +3,7 @@ Function: CBA_fnc_objectRandom
 
 Description:
 	Creates a "random" number 0-9 based on an object's velocity
-	
+
 Parameters:
 
 Returns:

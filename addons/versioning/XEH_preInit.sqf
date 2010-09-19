@@ -43,7 +43,7 @@ FUNC(version_compare) = {
 	PARAMS_2(_value,_localValue);
 	_failed = false;
 	_c = count _localValue;
-	
+
 	for "_i" from 0 to ((count _value) - 1) do {
 		if (_i == _c) exitWith { _failed = true}; // Woobs
 		if ((_localValue select _i) > (_value select _i)) exitWith {}; // All good

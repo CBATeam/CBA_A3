@@ -27,7 +27,7 @@ LOG(MSG_INIT);
 // Display Eventhandlers - Abstraction layer
 GVAR(attaching) = false;
 
-FUNC(handle_retach) = 
+FUNC(handle_retach) =
 {
 	private ["_id", "_ar2"];
 	// _key and _value

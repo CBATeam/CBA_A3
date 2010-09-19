@@ -12,7 +12,7 @@ Parameters:
 
 Returns:
 	Formatted time [String]
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
@@ -34,7 +34,7 @@ _hours = floor (_seconds / 3600);
 _seconds = _seconds - (_hours * 3600);
 _minutes = floor (_seconds / 60);
 _seconds = _seconds - (_minutes * 60);
-	
+
 // Add the milliseconds if required.
 _elapsed = switch (_format) do
 {
@@ -72,5 +72,5 @@ _elapsed = switch (_format) do
 		_msg;
 	};
 };
-	
+
 _elapsed; // Return.

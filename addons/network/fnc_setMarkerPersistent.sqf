@@ -3,18 +3,18 @@ Function: CBA_fnc_setMarkerPersistent
 
 Description:
 	Sets or unsets JIP persistency on a global marker.
-	
+
 	Only has an	effect if called on the server.
-	
+
 	Query persistency with <CBA_fnc_getMarkerPersistent>.
-	
+
 Parameters:
 	_marker - Name of a marker [String]
 	_persistent - If true, marker will be kept consistent for JIP players [Boolean]
 
 Returns:
 	True if executed on the server [Boolean]
-	
+
 Example:
 	(begin example)
 		_marker = createMarker ["TAG_fishingVillage", getPos TAG_fish];
@@ -24,7 +24,7 @@ Example:
 		["TAG_fishingVillage", false] call CBA_fnc_setMarkerPersistent.
 		// Marker will no longer be kept persistent for JIP players.
 	(end)
-	
+
 Author:
 	Sickboy
 */

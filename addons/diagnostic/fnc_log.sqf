@@ -3,19 +3,19 @@ Function: CBA_fnc_log
 
 Description:
 	Logs a message to the RPT log.
-	
+
 	Should not be used directly, but rather via macro (<LOG()>).
-	
+
 	This function is unaffected by the debug level (<DEBUG_MODE_x>).
-	
+
 Parameters:
 	_file - File error occurred in [String]
 	_lineNum - Line number error occurred on (starting from 0) [Number]
 	_message - Message [String]
-	
+
 Returns:
 	nil
-	
+
 Author:
 	Spooner and Rommel
 -----------------------------------------------------------------------------*/
@@ -50,11 +50,11 @@ SCRIPT(log);
 			{
 				_selected = CBA_LOG_ARRAY select 0;
 				_selected call _fnc_log;
-				
+
 				// Removal method one
 				CBA_LOG_ARRAY set [0, objNull];
 				CBA_LOG_ARRAY = CBA_LOG_ARRAY - [objNull];
-				
+
 				/*
 				// Removal method 2
 				for "_i" from 1 to (count CBA_LOG_ARRAY - 1) do {

@@ -13,7 +13,7 @@ Parameters:
 
 Returns:
 	The hash [Hash]
-	
+
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
@@ -31,7 +31,7 @@ private ["_index", "_isDefault"];
 // Work out whether the new value is the default value for this assoc.
 _isDefault = [if (isNil "_value") then { nil } else { _value },
 	_hash select HASH_DEFAULT_VALUE] call BIS_fnc_areEqual;
-	
+
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then
 {
@@ -39,17 +39,17 @@ if (_index >= 0) then
 	{
 		// Remove the key, if the new value is the default value.
 		_hash set [HASH_KEYS, (_hash select HASH_KEYS) - [_key]];
-		
+
 		// Copy all the values, after the one we want to remove, down by
 		// one place, then cut off the last value.
 		private "_values";
 		_values = _hash select HASH_VALUES;
-		
+
 		for "_i" from _index to ((count _values) - 2) do
 		{
 			_values set [_i, _values select (_i + 1)];
 		};
-		
+
 		_values resize ((count _values) - 1);
 	}
 	else

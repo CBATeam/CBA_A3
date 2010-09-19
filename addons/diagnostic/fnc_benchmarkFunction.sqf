@@ -6,27 +6,27 @@ Description:
 
 	Recommended to run with small number of iterations first and build up, to
 	prevent locking up the machine.
-	
+
 Parameters:
 	_function - Function to test [Function]
-	_parameters - Parameters to pass to the function on each iteration 
+	_parameters - Parameters to pass to the function on each iteration
 		[Array or nil]
 	_iterations - Number of iterations to run, in order to get an accurate
 		average time [Number]
 
 Returns:
 	Average execution time [Number]
-	
+
 Examples:
 (begin example)
 	// Array creation through use of push.
 	_array = [];
 	_took = [{ _array set [count _array, 1] }, nil, 1000] call CBA_fnc_benchmarkFunction;
-	
+
 	// Array creation through use of concatenation.
 	_array = [];
 	_took = [{ _array = _array + [1] }, nil, 1000] call CBA_fnc_benchmarkFunction;
-	
+
 	// "Null function" to compare to (use as a control vs. operation time
 	//	of other functions).
 	_array = [];

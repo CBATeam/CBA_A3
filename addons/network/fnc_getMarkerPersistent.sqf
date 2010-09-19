@@ -5,21 +5,21 @@ Description:
 	Checks if a global marker is persistent for JIP players.
 
 	Always returns false unless called on the server.
-	
+
 	Set/unset persistency with <CBA_fnc_setMarkerPersistent>.
-	
+
 Parameters:
 	_marker - Name of a marker [String]
 
 Returns:
-	True if the marker is persistent. False if not persistent or if executed 
+	True if the marker is persistent. False if not persistent or if executed
 		on a dedicated client [Boolean]
-	
+
 Example:
 	(begin example)
 		_isPersistent = ["TAG_fishingVillage"] call CBA_fnc_getMarkerPersistent;
 	(end)
-	
+
 Author:
 	Spooner
 */

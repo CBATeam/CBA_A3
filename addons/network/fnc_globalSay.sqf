@@ -9,12 +9,12 @@ Parameters:
 	_say - [sound, maxTitlesDistance,speed] or "sound" [Array or String]
 
 Returns:
-	
+
 Example:
 	(begin example)
 		[[player], "Alarm01"] call CBA_fnc_globalSay;
 	(end)
-	
+
 Author:
 	Sickboy
 */

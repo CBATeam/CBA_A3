@@ -3,13 +3,13 @@ Function: CBA_fnc_getPistol
 
 Description:
 	Returns name of pistol in unit's inventory, if any.
-	
+
 Parameters:
 	_unit - Unit to check for a pistol in [Object]
 
 Returns:
 	Class name of pistol, if carried, otherwise "" [String]
-	
+
 Examples:
 	(begin example)
 		_pistol = [player] call CBA_fnc_getPistol;

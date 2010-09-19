@@ -9,16 +9,16 @@
 //
 //  Usage:
 //
-//    • KRON_StrToArray - Converts a string into an array of characters: 
+//    • KRON_StrToArray - Converts a string into an array of characters:
 //                        _array =[_str] call KRON_StrToArray
 //
 //    • KRON_StrLen     - Returns the length of the string
 //                        _len =[_str] call KRON_StrLen
 //
-//    • KRON_StrLeft    - Returns l characters from the left side of the string 
+//    • KRON_StrLeft    - Returns l characters from the left side of the string
 //                        _left =[_str,l] call KRON_StrLeft
 //
-//    • KRON_StrRight   - Returns l characters from the right side of the string 
+//    • KRON_StrRight   - Returns l characters from the right side of the string
 //                        _right =[_str,l] call KRON_StrRight
 //
 //    • KRON_StrMid     - Returns l characters from the string, starting at position p (zero-based)
@@ -57,7 +57,7 @@
 //
 //    • KRON_ArraySort  - Sorts an array of strings in acsending order (Numbers before letters, uppercase before lowercase)
 //                        If array is multi-dimensional, optional parameter (_idx) specifies which column is used for sorting
-//                        If optional parameter "desc" is given, order is reversed 
+//                        If optional parameter "desc" is given, order is reversed
 //                        If optional parameter "case" is given, capitalization is considered (upper before lowercase)
 //                        _srt =[_arr,(_idx),("desc"),("case")] call KRON_ArraySort
 //
@@ -118,7 +118,7 @@ KRON_StrRight = {
 	};
  _out
 };
-	
+
 KRON_StrMid = {
 	private["_in", "_pos", "_len", "_arr", "_i", "_out"];
 	_in = _this select 0;
@@ -265,7 +265,7 @@ KRON_Compare = {
 		{
 			if (_s1<_s2) then { _s =-1 } else { if (_s1>_s2) then { _s = 1 }};
 		};
-		_s	
+		_s
 	};
 	_s1 = toArray(_s1);
 	_s2 = toArray(_s2);
@@ -276,7 +276,7 @@ KRON_Compare = {
 	{
 		if ((_s1 select _i)<(_s2 select _i)) then
 		{
-			_s =-1; 
+			_s =-1;
 			_i = _l;
 		} else {
 			if ((_s1 select _i)>(_s2 select _i)) then

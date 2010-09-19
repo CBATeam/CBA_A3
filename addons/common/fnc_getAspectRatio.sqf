@@ -6,7 +6,7 @@ Description:
 
 Parameters:
 	_output - string with one of ["ARRAY","NUMBER","STRING"]
-	
+
 Returns:
 	array, string or number of screenratio i.e. [16,9] or "16:9" or 1.333 ..
 

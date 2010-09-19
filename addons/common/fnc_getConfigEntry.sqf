@@ -3,15 +3,15 @@ Function: CBA_fnc_getConfigEntry
 
 Description:
 	Gets a configuration entry.
-	
-	Will check if _cfg exists, and will return either the config value, or 
+
+	Will check if _cfg exists, and will return either the config value, or
 	supplied default value.
-	
+
 Parameters:
 	_configEntry - Entry to get value of [Config]
 	_entryType - "text", "number" or "array" [String]
 	_defaultValue - Value to return if config entry unavailable [Any]
-	
+
 Returns:
 	Value found [String, Number or Array]
 

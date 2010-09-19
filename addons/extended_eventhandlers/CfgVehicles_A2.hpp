@@ -8,7 +8,7 @@ class CfgVehicles
 	class Man;
 	class Tracked_APC;
 	class StaticWeapon;
-	
+
 	// Generic classes.
 	class AllVehicles: All
 	{
@@ -52,7 +52,7 @@ class CfgVehicles
 	{
 		class EventHandlers : DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Vehicles.
 	/*
 	class BIS_Steerable_Parachute : Plane
@@ -79,7 +79,7 @@ class CfgVehicles
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
 	*/
-	
+
 	// Static weapons.
 	class StaticMortar;
 	class 2b14_82mm : StaticMortar
@@ -90,26 +90,26 @@ class CfgVehicles
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Fires.
 	class Land_Fire;
 	class Land_Fire_burning : Land_Fire
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	class Land_Campfire;
 	class Land_Campfire_burning : Land_Campfire
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	class Land_Fire_barrel;
 	class Land_Fire_barrel_burning : Land_Fire_barrel
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Flag carriers
 	class FlagCarrier;
 	class FlagCarrierUSA : FlagCarrier
@@ -132,13 +132,13 @@ class CfgVehicles
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	class FlagCarrierCore;
 	class FlagCarrierChecked : FlagCarrierCore
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Popup targets
 	class TargetBase;
 	class TargetPopUpTarget : TargetBase
@@ -149,20 +149,20 @@ class CfgVehicles
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Buildings
 	class Land_Barrack2;
 	class Barrack2 : Land_Barrack2
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	class Grave;
 	class Mass_grave : Grave
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Logics
 	class Logic;
 	class BIS_ARTY_Logic : Logic
@@ -253,7 +253,7 @@ class CfgVehicles
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	// Force Recon specials:
 #define SLX_BIS_ForceRecon_EH \
 	{ \
@@ -263,13 +263,13 @@ class CfgVehicles
 			EXTENDED_EVENTHANDLERS \
 		}; \
 	}
-	
+
 	class SoldierWB;
 	class FR_Base : SoldierWB
 	{
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	
+
 	class FR_Miles : FR_Base
 	SLX_BIS_ForceRecon_EH;
 
@@ -288,14 +288,14 @@ class CfgVehicles
 	SLX_BIS_ForceRecon_EH;
 
 	class FR_Corpsman : FR_Base
-	{ 
+	{
 		class EventHandlers;
 	};
 	class FR_OHara : FR_Corpsman
 	SLX_BIS_ForceRecon_EH;
 
-	class FR_AR : FR_Base 
-	{ 
+	class FR_AR : FR_Base
+	{
 		class EventHandlers;
 	};
 	class FR_Rodriguez : FR_AR

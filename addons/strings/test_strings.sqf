@@ -99,7 +99,7 @@ ASSERT_OP(_str,==,"frog",_fn);
 
 _str = ["   frog"] call CBA_fnc_leftTrim; // spaces
 ASSERT_OP(_str,==,"frog",_fn);
-	
+
 _str = ["	frog"] call CBA_fnc_leftTrim; // tab
 ASSERT_OP(_str,==,"frog",_fn);
 
@@ -126,7 +126,7 @@ ASSERT_OP(_str,==,"frog",_fn);
 
 _str = ["frog   "] call CBA_fnc_rightTrim;
 ASSERT_OP(_str,==,"frog",_fn);
-	
+
 _str = ["frog 	"] call CBA_fnc_rightTrim; // including tabs
 ASSERT_OP(_str,==,"frog",_fn);
 
@@ -188,7 +188,7 @@ ASSERT_OP(_str,==,_expected,_fn);
 _str = [12345.67, 1, 1, true] call CBA_fnc_formatNumber;
 _expected = "12,345.7";
 ASSERT_OP(_str,==,_expected,_fn);
-	
+
 _str = [0.1, 1] call CBA_fnc_formatNumber;
 ASSERT_OP(_str,==,"0",_fn);
 
@@ -201,7 +201,7 @@ ASSERT_OP(_str,==,".10",_fn);
 _str = [12, 0] call CBA_fnc_formatNumber;
 ASSERT_OP(_str,==,"12",_fn);
 
-_str = [12, 3] call CBA_fnc_formatNumber; 
+_str = [12, 3] call CBA_fnc_formatNumber;
 ASSERT_OP(_str,==,"012",_fn);
 
 _str = [-12] call CBA_fnc_formatNumber;

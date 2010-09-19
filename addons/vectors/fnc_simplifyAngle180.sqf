@@ -2,9 +2,9 @@
 Function: CBA_fnc_simplifyAngle180
 
 Description:
- Returns an equivalent angle to the specified angle in the range -180 to 180.  
+ Returns an equivalent angle to the specified angle in the range -180 to 180.
  If the inputted angle is in the range -180 to 180, it will be returned unchanged.
-	
+
 Parameters:
  _angle the un-adjusted angle.
 

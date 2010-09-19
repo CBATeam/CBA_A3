@@ -62,7 +62,7 @@ for "_i" from 0 to (count _cEvents)-1 do {
 		_aSys = [_tSys, "_"] call CBA_fnc_split;
 		_tS = "^";
 		{if((_x != "sys")) then {_tS = _tS + " " + _x;}} forEach _aSys;
-		// (_x != "ace") && 
+		// (_x != "ace") &&
 		_tS = [_tS, "^ ", ""] call CBA_fnc_replace;
 		_tS = format["%1:",_tS];
 		_text = _text + _tS + "<br/>";

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-player createDiarySubject ["CBA_docs", "CBA"]; 
+player createDiarySubject ["CBA_docs", "CBA"];
 player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_WEBSITE_WIKI"), "http://dev-heaven.net/projects/cca"]];
 player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_HELP_KEYS"), GVAR(keys)]];
 player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_CREDITS_ADDONS"), ([GVAR(credits), "CfgPatches"] call CBA_fnc_hashGet) call FUNC(process)]];

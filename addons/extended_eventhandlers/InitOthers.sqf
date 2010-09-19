@@ -38,11 +38,11 @@ while {!((_classes select 0) in ["", "All"])} do
 // used when collecting event handlers.
 _fSetHandler = {
 	private ["_idx", "_handler", "_h", "_type", "_cur"];
-	
+
 	_idx=_this select 0;
 	_handler = _this select 1;
 	_type=["all", "server", "client"] find (_this select 2);
-	
+
 	_h="";
 	_cur=_handlers select _idx;
 	if (isNil"_cur")then{_cur="";};
@@ -119,7 +119,7 @@ _f = {
 			{
 				//_handlers set [count _handlers, getText _clientHandlerEntry];
 				[_idx, getText _clientHandlerEntry, "client"] call _fSetHandler;
-			};									
+			};
 		};
 	};
 };
@@ -136,7 +136,7 @@ _f = {
 	_names = []; _namesPlayer = [];
 	_excludeClass = "";
 	_excludeClasses = [];
-	
+
 	// Does the vehicle's class EventHandlers inherit from the BIS
 	// DefaultEventhandlers? If so, include BIS own default handler for the
 	// event type currently being processed and make it the first
@@ -145,7 +145,7 @@ _f = {
 	{
 		_handlers =[getText(configFile/"DefaultEventhandlers"/_event)];
 	};
-	
+
 	// Search the mission config file (description.ext), then campaign
 	// config file (description.ext) and finally addon config for
 	// extended event handlers to use.
@@ -210,7 +210,7 @@ _f = {
 			};
 		} forEach _classes;
 	} forEach [configFile, campaignConfigFile, missionConfigFile];
-	
+
 	// Now concatenate all the handlers into one string
 	_handler = "";
 	{

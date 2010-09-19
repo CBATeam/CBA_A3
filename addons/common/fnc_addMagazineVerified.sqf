@@ -4,7 +4,7 @@ Function: CBA_fnc_addMagazineVerified
 Description:
 	Add a magazine, but verify that it was successful without over-burdening the
 	recipient.
-	
+
 Parameters:
 
 Returns:

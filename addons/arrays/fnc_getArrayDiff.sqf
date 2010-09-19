@@ -4,7 +4,7 @@ Function: CBA_fnc_getArrayDiff
 Description:
 	A function used to return the differences between two arrays.
 Parameters:
-	Two Arrays of strings (must not contain scalars) 
+	Two Arrays of strings (must not contain scalars)
 Example:
 	_distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff
 Returns:
@@ -45,7 +45,7 @@ for "_i" from 1 to (count _elmsA) step 2 do {
 			if (_cT > 0) then {
 				_case = 0; //Missing from A
 			};
-		};		
+		};
 		// We have the difference, now put it in the right array
 		for "_j" from 1 to _cT do {
 			(_return select _case) set [count (_return select _case), _item]; // Fills array

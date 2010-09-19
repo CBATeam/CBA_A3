@@ -10,12 +10,12 @@ Parameters:
 	_parameter - OPTIONAL. Parameter to pass to the code in the _this variables [Any]
 
 Returns:
-	
+
 Example:
 	(begin example)
 		[-1, {player globalChat _this}, "TEST"] call CBA_fnc_globalExecute;
 	(end)
-	
+
 Author:
 	Sickboy
 */

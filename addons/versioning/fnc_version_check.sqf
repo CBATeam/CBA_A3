@@ -37,5 +37,5 @@ if (isText ((CFGSETTINGS) >> _key >> "handler")) then
 	// TODO: PreCompile and spawn from Hash or so?
 	[_remoteVersion, _localVersion, player, _level] spawn (call compile getText((CFGSETTINGS) >> _key >> "handler"));
 };
-// Actually disconnect em? 
+// Actually disconnect em?
 // endMission "END1"

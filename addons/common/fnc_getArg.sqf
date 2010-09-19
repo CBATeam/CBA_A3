@@ -3,7 +3,7 @@ Function: CBA_fnc_getArg
 
 Description:
 	Get default named argument from list.
-	
+
 Parameters:
 
 Returns:

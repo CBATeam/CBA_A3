@@ -52,7 +52,7 @@ if (_subMenuSource != "") then
 {
 	// TODO: Find a way to combine the menu and list scripts together.
 	_pathName = QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,%1));
-	_pathName = format [_pathName, 
+	_pathName = format [_pathName,
 		if (_useListBox == 0) then {'fnc_menu'}else{'fnc_list'}];
 
 	[GVAR(target), [[_subMenuSource, _params]]] call compile preprocessFileLineNumbers _pathName;

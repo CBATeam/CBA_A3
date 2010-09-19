@@ -73,11 +73,11 @@ else
 	{
 		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 	};
-	
+
 	// Check each class to see if there is a counterpart in extended event handlers
 	// If there is, add it to an array of init event handlers "_inits". Use
 	// _names to keep track of handler entry names so that a given handler
-	// of a certain name can be overriden in a child class. 
+	// of a certain name can be overriden in a child class.
 	// (See dev-heaven.net issues #12104 and #12108)
 	_names = [];	// event handler config entry names
 	_inits = [];	// array of handlers or arrays with handlers, the
@@ -87,16 +87,16 @@ else
 	_excludeClass = "";
 	_excludeClasses = [];
 	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
-	
+
 	// Function to update the event handler or handlers at a given index
 	// into the _inits array
 	_fSetInit = {
 		private ["_idx", "_init", "_type", "_handler", "_cur"];
-	
+
 		_idx=_this select 0;
 		_init = _this select 1;
 		_type=["all", "server", "client"] find (_this select 2);	// 0 1 2
-	
+
 		_handler={};
 		_cur=_inits select _idx;
 		if (isNil"_cur")then{_cur={};};
@@ -120,7 +120,7 @@ else
 		_inits set [_idx, _handler];
 	};
 
-	
+
 	/*  If we're called following a respawn, the use of a XEH init EH is
 	*  determined by the "composite EH" class property "onRespawn". The default
 	*  is to not call the XEH init EH, since the ArmA default behaviour is that
@@ -128,15 +128,15 @@ else
 	*/
 	_onRespawn=false;
 	_useEH = { if (_isRespawn) then { _onRespawn } else { true } };
-	
+
 	/*
 	*  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
 	*  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
-	* 
+	*
 	*  Further, The AAV class uses a variation of this DefaultEventhandlers set with
 	*  it's own specific init EH.  Here, we make sure to include the BIS DEH init
 	*  event handler and make it the first one that will be called by XEH. The AAV
-	*  is accomodated by code further below and two composite 
+	*  is accomodated by code further below and two composite
 	*  Extended_Init_EventHandlers definitions in the config.cpp that define
 	*  a property "replaceDefault" which will replace the DEH init with the
 	*  class-specific BIS init EH for that vehicle.
@@ -155,7 +155,7 @@ else
 			};
 		};
 	};
-	
+
 	{
 		_configFile=_x;
 		{
@@ -178,7 +178,7 @@ else
 					// Standard XEH init string
 					if (isText _cfgEntry && [] call _useEH) then
 					{
-						
+
 						_inits set [_idx, compile(getText _cfgEntry)];
 					}
 					else
@@ -279,12 +279,12 @@ else
 			};
 		} forEach _classes;
 	} forEach [configFile, campaignConfigFile, missionConfigFile];
-	
+
 	// Now call all the init EHs on the unit.
 	#ifdef DEBUG_MODE_FULL
 	diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _inits];
 	#endif
-	
+
 	{
 		private ["_h"];
 		if (typeName _x=="CODE") then

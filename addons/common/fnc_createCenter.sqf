@@ -3,13 +3,13 @@ Function: CBA_fnc_createCenter
 
 Description:
 	Selects center if it already exists, creates it if it doesn't yet.
-	
+
 Parameters:
 	_side - [SIDE]
 
 Returns:
 	Center [Side]
-	
+
 Examples:
 	(begin example)
 		_group = createGroup ([West] call CBA_fnc_createCenter);

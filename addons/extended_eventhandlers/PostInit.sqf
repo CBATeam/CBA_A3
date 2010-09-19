@@ -62,7 +62,7 @@ if !(isDedicated) then
 		};
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
-	
+
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
 	private["_time2Wait"];
 	_time2Wait = diag_ticktime + 1;
@@ -76,7 +76,7 @@ if !(isDedicated) then
 	};
 };
 
-/* 
+/*
  * Monitor playable units (players and AI) and re-run any XEH init handlers
  * that are configured to be re-run on respawn. (By default, init EH:s are not
  * re-run when a unit respawns.
@@ -95,7 +95,7 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 // Still using delayLess.fsm for this one as this can still increase init speed at briefing?
-//_handle = 
+//_handle =
 //{
 	// we set this BEFORE executing the inits, so that any unit created in another
 	// thread still gets their InitPost ran
@@ -118,7 +118,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
 			waitUntil {player == player};
 			_lastPlayer = player;
-			_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;			
+			_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 		};
 	};
 };

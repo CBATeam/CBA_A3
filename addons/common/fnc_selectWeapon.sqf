@@ -3,7 +3,7 @@ Function: CBA_fnc_selectWeapon
 
 Description:
 	Selects weapon, if the player has the weapon, including correctly selecting a muzzle, if any.
-	
+
 Parameters:
 	_unit - Unit object to perform function on [Object]
 	_weap - Weapon to select [String]

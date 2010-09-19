@@ -9,12 +9,12 @@ Parameters:
 
 Returns:
 	Capitalized string [String].
-	
+
 Examples:
 	(begin example)
 		_result = ["FISH"] call CBA_fnc_capitalize;
 		// _result => "Fish"
-		
+
 		_result = ["frog-headed fish"] call CBA_fnc_capitalize;
 		// _result => "Frog-headed fish"
 	(end)
@@ -30,7 +30,7 @@ SCRIPT(capitalize);
 // ----------------------------------------------------------------------------
 
 PARAMS_1(_string);
-	
+
 // Make the whole string into a lower case character array.
 _string = toArray (toLower _string);
 

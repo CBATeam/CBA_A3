@@ -13,15 +13,15 @@ Parameters:
 		Position Array, defaults to getting compass direction]
 
 Returns:
-	[<NUMBER>, <NUMBER>, <BOOL>, <BOOL>] 
+	[<NUMBER>, <NUMBER>, <BOOL>, <BOOL>]
 		* Direction of unit head (for the local player, this is taken to be the
-			true head direction; for other players or AI, the value is just the 
+			true head direction; for other players or AI, the value is just the
 		* Difference angle (negative or positive), e.g how many degrees turning
 			to center object horizontally
 		* True/False if given object is in field of view of player relative to
 			his head
 		* True/False if player is using 3rd person view
-			
+
 Examples:
 	(begin example)
 		_data = [player] call CBA_fnc_headDir;
@@ -38,10 +38,10 @@ Examples:
 		// => direction of ai, difference towards players pos, if player is in
 		//    fov of ai, and 3rd person off (default return)
 	(end)
-	
+
 TODO:
  	Vertical angle.
-	
+
 ImplementationNote:
 	positionCameraToWorld is only valid for player object, it is not handled for
 	other players or AI!! For these you can only check if its turned towards an
@@ -87,7 +87,7 @@ else
 	];
 	_magnitude = [0, 0, 0] distance _vector;
 	_vector = [
-		(_vector select 0) / _magnitude, 
+		(_vector select 0) / _magnitude,
 		(_vector select 1) / _magnitude,
 		(_vector select 2) / _magnitude
 	];

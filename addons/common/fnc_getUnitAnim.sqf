@@ -3,7 +3,7 @@ Function: CBA_fnc_getUnitAnim
 
 Description:
 	Get information about a unit's stance and speed.
-	
+
 Parameters:
 
 Returns:

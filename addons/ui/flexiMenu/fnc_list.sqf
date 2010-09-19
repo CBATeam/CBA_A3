@@ -11,7 +11,7 @@ _menuDefs = _this call FUNC(getMenuDef);
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 (uiNamespace getVariable QUOTE(GVAR(display))) displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown", 
+GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown",
 	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
@@ -88,7 +88,7 @@ _idc = _flexiMenu_baseIDC_listButton;
 		{
 			if (!isNull GVAR(display)) exitWith
 			{
-				diag_log format ["Warning: Too many menu items or missing List button control: %1", 
+				diag_log format ["Warning: Too many menu items or missing List button control: %1",
 					[_menuRsc, _idc, _caption]]
 			};
 		}

@@ -21,7 +21,7 @@ EXPLODE_2(_center,_x,_y);
 
 private ["_dx","_dy"];
 _dx = _x - (_vector select 0);
-_dy = _y - (_vector select 1);	
+_dy = _y - (_vector select 1);
 
 [
 	_x - ((_dx* cos(_angle)) - (_dy* sin(_angle))),

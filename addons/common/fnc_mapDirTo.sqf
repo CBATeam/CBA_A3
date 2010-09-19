@@ -3,14 +3,14 @@ Function: CBA_fnc_mapDirTo
 
 Description:
 	Gets the direction between two map grid references.
-	
+
 Parameters:
 	_pos1 - Origin position array in format [Easting, Northing] [Array]
 	_pos2 - End position in format [Easting, Northing] [Array]
 
 Returns:
 	Direction from _pos1 to _pos2 [Number]
-	
+
 Examples:
 	(begin example)
 		_dir = [[024,015], [025,014]] call CBA_fnc_mapDirTo;

@@ -22,9 +22,9 @@ _potentialKeyMatch = false;
 	_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
 	{
 		_settings = _x select 1;
-		if ((_x select 0 == _dikCode) && 
-			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && 
-			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) && 
+		if ((_x select 0 == _dikCode) &&
+			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
+			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
 			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
 		{
 			_potentialKeyMatch = true;

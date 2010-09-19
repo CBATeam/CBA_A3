@@ -3,7 +3,7 @@ Function: CBA_fnc_addKeyHandlerFromConfig
 
 Description:
 	Adds an action to a keyhandler, read from config
-	
+
 Parameters:
 	_component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
 	_action - Action classname [String].

@@ -51,38 +51,38 @@ else
 	"_currentIndex", "_foundIndex"];
 
 	_separatorArray = toArray _separator;
-	
+
 	_currentIndex = 0;
-	
+
 	while { _currentIndex < (count _stringArray) } do
 	{
 		_foundIndex = [_stringArray, _separatorArray, _currentIndex] call CBA_fnc_find;
-		
+
 		// Not found, so use rest of string as final fragment.
 		if (_foundIndex < 0) exitWith
 		{
 			_fragment = [];
-			
+
 			for "_i" from _currentIndex to ((count _stringArray) - 1) do
 			{
 				PUSH(_fragment,_stringArray select _i);
 			};
-			
+
 			PUSH(_split,toString _fragment);
 		};
 
 		// Found, so use all string before found position as next fragment.
 		_fragment = [];
-		
+
 		for "_i" from _currentIndex to (_foundIndex - 1) do
 		{
 			PUSH(_fragment,_stringArray select _i);
 		};
-		
+
 		PUSH(_split,toString _fragment);
-		
+
 		_currentIndex = _foundIndex + (count _separatorArray);
-		
+
 		// If the separator is present at the end of the string, then
 		// add an empty string.
 		if (_currentIndex == (count _stringArray)) then

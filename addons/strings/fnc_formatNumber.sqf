@@ -2,7 +2,7 @@
 Function: CBA_fnc_formatNumber
 
 Description:
-	Formats a number to a minimum integer width and to a specific number of 
+	Formats a number to a minimum integer width and to a specific number of
 	decimal places (including padding with 0s and correct rounding). Numbers
 	are always displayed fully, never being condensed using an exponent (e.g.
 	the number 1.234e9 would be given as "1234000000").
@@ -19,7 +19,7 @@ Limitations:
 
 Parameters:
 	_number - Number to format [Number]
-	_integerWidth - Minimum width of integer part of number, padded with 0s, 
+	_integerWidth - Minimum width of integer part of number, padded with 0s,
 		[Number: >= 0, defaults to 1]
 	_decimalPlaces - Number of decimal places, padded with trailing 0s,
 		if necessary [Number: >= 0, defaults to 0]
@@ -28,7 +28,7 @@ Parameters:
 
 Returns:
 	The number formatted into a string.
-	
+
 Examples:
 	(begin example)
 		// Assumes English formatting.
@@ -74,7 +74,7 @@ private ["_integerPart", "_string", "_numIntegerDigits", "_decimalPoint",
 
 _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
 _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
-	
+
 // Start by working out how to display the integer part of the number.
 if (_decimalPlaces > 0) then
 {
@@ -94,10 +94,10 @@ while {_integerPart > 0} do
 	{
 		_string = _thousandsSeparator + _string;
 	};
-	
+
 	_string =  (str (_integerPart mod 10)) + _string;
 	_numIntegerDigits = _numIntegerDigits + 1;
-	
+
 	_integerPart = floor (_integerPart / 10);
 };
 
@@ -108,9 +108,9 @@ while {_numIntegerDigits < _integerWidth} do
 	{
 		_string = _thousandsSeparator + _string;
 	};
-	
+
 	_string = "0" + _string;
-	
+
 	_numIntegerDigits = _numIntegerDigits + 1;
 };
 
@@ -124,11 +124,11 @@ if (_number < 0) then
 if (_decimalPlaces > 0) then
 {
 	private ["_digit", "_multiplier", "_i"];
-	
+
 	_string = _string + _decimalPoint;
-	
+
 	_multiplier = 10;
-	
+
 	for "_i" from 1 to _decimalPlaces do
 	{
 		if (_i == _decimalPlaces) then
@@ -144,15 +144,15 @@ if (_decimalPlaces > 0) then
 		if (not (finite _digit)) exitWith
 		{
 			private "_j";
-			
+
 			for "_j" from _i to _decimalPlaces do
 			{
 				_string = _string + "0";
 			};
 		};
-		
+
 		_string = _string + (str _digit);
-		
+
 		_multiplier = _multiplier * 10;
 	};
 };

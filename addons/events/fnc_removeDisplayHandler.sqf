@@ -3,7 +3,7 @@ Function: CBA_fnc_removeDisplayHandler
 
 Description:
 	Removes an action to a displayHandler
-	
+
 Parameters:
 	_type - Displayhandler type to attach to [String].
 	_id - Displayhandler ID to remove [Code].

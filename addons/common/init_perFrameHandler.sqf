@@ -13,7 +13,7 @@ FUNC(blaHandler) = {
 	private ["_logic"];
 	PARAMS_1(_params);
 	_logic = _params select 0;
-	
+
 	if (isNil "_logic") exitWith {
 		// Remove handler
 		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
@@ -23,7 +23,7 @@ FUNC(blaHandler) = {
 		// Remove handler
 		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
 	};
-	
+
 	// Check exit condition - Exit if false
 	if (_logic call (_logic getVariable "exit_condition")) exitWith {
 		TRACE_1("Exit Condition", _logic);
@@ -31,11 +31,11 @@ FUNC(blaHandler) = {
 		_logic call (_logic getVariable "end");
 		// Remove handler
 		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
-		
+
 		// Bai Bai logic
 		deleteVehicle _logic;
 	};
-	
+
 	// Check Run Condition - Exit until next loop if false
 	if !(_logic call (_logic getVariable "run_condition")) exitWith {};
 	// TRACE_1("Executing",_logic);
@@ -61,10 +61,10 @@ FUNC(addPerFrameHandlerLogic) = {
 	_logic setVariable ["run", _function];
 	_logic setVariable ["end", _end];
 	_logic setVariable ["params", _params];
-	
+
 	// Run start code
 	_logic call (_logic getVariable "start");
-	
+
 	// Add handler
 	_handle = [FUNC(blaHandler), _delay, [_logic]] call CBA_fnc_addPerFrameHandler;
 	_logic setVariable ["handle", _handle];
@@ -77,10 +77,10 @@ FUNC(addPerFrameHandlerLogic) = {
 FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
 	while { true } do {
-		// check to see if the frame-render hasn't run in a second. 
+		// check to see if the frame-render hasn't run in a second.
 		// if it hasnt, pick it up for now
 		if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
-			{	
+			{
 				_handlerData = _x;
 				if(!(isNil "_handlerData") && IS_ARRAY(_handlerData)) then {
 					_func = _handlerData select 0;
@@ -100,7 +100,7 @@ FUNC(monitorFrameRender) = {
 	};
 };
 
-FUNC(onFrame) = {	
+FUNC(onFrame) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
 	GVAR(lastFrameRender) = diag_tickTime;
 	// if(GVAR(lastCount) > (GVAR(fpsCount)-1)) then {
@@ -110,7 +110,7 @@ FUNC(onFrame) = {
 	// GVAR(lastCount) = GVAR(fpsCount);
 	// GVAR(fpsCount) = GVAR(fpsCount) + 1;
 	// player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
-	{	
+	{
 		_handlerData = _x;
 		if(!(isNil "_handlerData") && IS_ARRAY(_handlerData)) then {
 			_func = _handlerData select 0;

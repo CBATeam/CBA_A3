@@ -2,8 +2,8 @@
 Function: CBA_fnc_polar2vect
 
 Description:
- Creates a vector based on a inputted magnitude, direction and elevation  
-	
+ Creates a vector based on a inputted magnitude, direction and elevation
+
 Parameters:
  _mag the magnitude of the vector to create
  _dir the direction of the vector to create

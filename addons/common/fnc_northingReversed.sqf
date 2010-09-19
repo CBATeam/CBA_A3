@@ -3,18 +3,18 @@ Function: CBA_fnc_northingReversed
 
 Description:
 	Checks if the maps northing is reversed (like Chernarus & Utes, or any map pre-OA)
-	
+
 Parameters:
 	None
-	
+
 Returns:
 	_reversed - Bool, true if its reversed, false if it is not.
-	
+
 Examples:
 	(begin example)
 		_reversed = [] call CBA_fnc_northingReversed
 	(end)
-	
+
 Author:
 	Nou
 

@@ -3,10 +3,10 @@ Function: CBA_fnc_addWeaponCargo
 
 Description:
 	Add weapon(s) to vehicle cargo.
-	
+
 	Function which verifies existence of _item and _unit, returns false in case
 	of trouble, or when able to add _item to _unit true in case of success.
-	
+
 Parameters:
 
 Returns:
