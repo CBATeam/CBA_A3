@@ -45,7 +45,7 @@ if !(isNull player) then
 	};
 };
 
-_time2Wait = 0;
+private["_time2Wait"];
 if !(isDedicated) then
 {
 	_text = "Post Initialization Processing...";
@@ -65,7 +65,6 @@ if !(isDedicated) then
 	};
 
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
-	private["_time2Wait"];
 	_time2Wait = diag_ticktime + 1;
 	[] spawn
 	{
