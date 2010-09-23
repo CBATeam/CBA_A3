@@ -45,6 +45,7 @@ if !(isNull player) then
 	};
 };
 
+_time2Wait = 0;
 if !(isDedicated) then
 {
 	_text = "Post Initialization Processing...";
@@ -66,7 +67,6 @@ if !(isDedicated) then
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
 	private["_time2Wait"];
 	_time2Wait = diag_ticktime + 1;
-	waituntil {diag_ticktime > _time2Wait};
 	[] spawn
 	{
 		private["_time2Wait"];
@@ -123,7 +123,9 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 	};
 };
 
-if !(isDedicated) then {endLoadingScreen};
+
+if !(isDedicated) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen };
+
 SLX_XEH_MACHINE set [8, true];
 
 #ifdef DEBUG_MODE_FULL
