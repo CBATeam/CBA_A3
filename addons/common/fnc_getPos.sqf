@@ -13,27 +13,26 @@ Author:
 	Rommel
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
-private "_typeName";
+private "_typename";
 
-_typeName = typeName _this;
+_typename = tolower (typename _this);
 
-switch (_typeName) do {
-	case ("OBJECT") : {
+switch (_typename) do {
+	case ("object") : {
 		getpos _this
 	};
-	case ("GROUP") : {
+	case ("group") : {
 		getpos (leader _this)
 	};
-	case ("STRING") : {
-		getMarkerPos _this
+	case ("string") : {
+		getmarkerpos _this
 	};
-	case ("LOCATION") : {
+	case ("location") : {
 		position _this
 	};
-	case ("TASK") : {
-		taskDestination _this
+	case ("task") : {
+		taskdestination _this
 	};
-	default {[]+_this};
+	default {_this};
 };

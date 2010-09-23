@@ -16,24 +16,24 @@ Author:
 
 #include "script_component.hpp"
 
-private "_typeName";
-_typeName = typeName _this;
+private "_typename";
+_typename = typename _this;
 
-switch (_typeName) do {
-	case ("ARRAY") : {
+switch (_typename) do {
+	case ("array") : {
 		{
-			if (_x call CBA_fnc_isAlive) exitwith {true};
+			if (_x call CBA_fnc_isalive) exitwith {true};
 			false;
 		} foreach _this;
 	};
-	case ("OBJECT") : {
+	case ("object") : {
 		alive _this;
 	};
-	case ("GROUP") : {
+	case ("group") : {
 		if (isnull (leader _this)) then {
 			false;
 		} else {
-			(units _this) call CBA_fnc_isAlive;
+			(units _this) call CBA_fnc_isalive;
 		};
 	};
 	default {alive _this};

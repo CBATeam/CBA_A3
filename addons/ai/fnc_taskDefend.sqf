@@ -8,6 +8,7 @@ Parameters:
 	Optional:
 	- Position (XYZ, Object, Location or Group)
 	- Defend Radius (Scalar)
+	- Can Patrol(Boolean)
 Example:
 	[group player] call CBA_fnc_taskDefend
 Returns:
@@ -19,45 +20,63 @@ Author:
 
 #include "script_component.hpp"
 
-#define ARG2(X,Y)	((X) select (Y))
-
-private ["_count", "_waypoints", "_list", "_units", "_i"];
+private ["_count", "_waypoints", "_list", "_list2", "_units", "_i"];
 
 PARAMS_1(_group);
 _group = _group call CBA_fnc_getGroup;
 DEFAULT_PARAM(1,_position,_group);
 DEFAULT_PARAM(2,_radius,50);
 
-_list = [_position, vehicles, _radius, {(_x isKindOf "LandVehicles") && (_x emptyPositions "gunner" > 0)}] call CBA_fnc_getNearest;
-_count = count _list;
+_group enableattack false;
+
+_list = [_position, vehicles, _radius, {(_x iskindof "StaticWeapon") && (_x emptypositions "Gunner" > 0)}] call CBA_fnc_getnearest;
+_list2 = _position nearObjects ["building",_radius];
 _units = units _group;
+_count = count _units;
+
+if (count _this > 3) then {_group setbehaviour (_this select 3)};
+
+{
+	if (str(_x buildingpos 2) == "[0,0,0]") then {_list2 = _list2 - [_x]};
+} foreach _list2;
 _i = 0;
 {
-	if (random 1 < 0.34) then {
-		if (_count > 0) then {
-			_x assignAsGunner ARG2(_list,(_count - 1));
-			_list resize (_count - 1);
-			[_x] orderGetIn true;
+	if (random 1 < 0.31) then {
+		private ["_count"];
+		_count = (count _list) - 1;
+		if (_count > -1) then {
+			_x assignasgunner (_list select _count);
+			_list resize _count;
+			[_x] ordergetin true;
 			INC(_i);
 		};
 	} else {
-		if (random 1 < 0.87) then {
-			private ["_array", "_building", "_count"];
-			_array = _x call CBA_fnc_getNearestBuilding;
-			_building = ARG2(_array, 0);
-			if (([_x,_building] call CBA_fnc_getDistance) < _radius) then {
-				_count = ARG2(_array, 1);
-				_x commandMove (_building buildingPos _count);
-				_x spawn {
-					waituntil {unitReady _this};
-					commandStop _this;
+		if (random 1 < 0.93) then {
+			private ["_count"];
+			_count = (count _list2) - 1;
+			if (_count > -1) then {
+				private ["_building","_k"];
+				_building = _list2 select _count;
+				_k = 0;
+				while {str(_object buildingpos _k) != "[0,0,0]"} do {_k = _k + 1};
+				[_x,_building buildingpos floor(random _k)] spawn {
+					(_this select 0) domove (_this select 1);
+					(_this select 0) commandmove (_this select 1);
+					//waituntil {((expectedDestination _this) select 1) == "LEADER PLANNED"};
+					sleep 3;
+					waituntil {unitready (_this select 0)};
+					(_this select 0) disableai "move";
+					commandstop _this;
+					waituntil {not (unitready (_this select 0))};
+					(_this select 0) enableai "move";
 				};
+				_list2 resize _count;
+				INC(_i);
 			};
-			INC(_i);
 		};
 	};
-} forEach _units;
-_count = count _units;
+} foreach (_units - [leader _group]);
+if (count _this > 4) then {if !(_this select 4) then {_i = _count}};
 if (_i < _count * 0.5) exitwith {
-	[_group, _position, _radius, 5, "SAD"] call CBA_fnc_taskPatrol;
+	[_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
 };

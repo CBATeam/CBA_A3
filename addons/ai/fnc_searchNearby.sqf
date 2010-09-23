@@ -18,19 +18,20 @@ Author:
 
 PARAMS_1(_group);
 _group = _group call CBA_fnc_getGroup;
-_group lockWP true;
 private ["_leader","_behaviour"];
 _leader = leader _group;
 _behaviour = behaviour _leader;
-_group setBehaviour "COMBAT";
 
 private ["_array", "_building", "_indices"];
 _array = _leader call CBA_fnc_getNearestBuilding;
 _building = ARG_1(_array, 0);
 _indices = ARG_1(_array, 1);
-_group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
 
-if (([_group, _building] call CBA_fnc_getDistance) > 500) exitwith {_group lockWP false};
+if (_leader distance _building > 500) exitwith {};
+
+_group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
+_group setBehaviour "COMBAT";
+_group lockWP true;
 
 private ["_count","_units"];
 _units = units _group;

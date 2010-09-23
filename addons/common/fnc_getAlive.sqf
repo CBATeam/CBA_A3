@@ -14,17 +14,17 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private "_typeName";
-_typeName = typeName _this;
-if (_typeName == "OBJECT") exitwith {alive _this};
+private "_typename";
+_typename = tolower (typename _this);
+if (_typename == "object") exitwith {alive _this};
 
 private ["_return","_array"];
 _array = [];
-switch (_typeName) do {
-	case ("GROUP") : {
+switch (_typename) do {
+	case ("group") : {
 		_array = units _this;
 	};
-	case ("ARRAY") :{
+	case ("array") :{
 		_array =+ _this;
 	};
 };
@@ -32,5 +32,5 @@ switch (_typeName) do {
 	if (alive _x) then {
 		_return set [count _return, _x];
 	}
-} ForEach _array;
+} foreach _array;
 _return

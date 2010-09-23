@@ -315,6 +315,12 @@ class CfgFunctions
 				description = "Get a list of current player objects.";
 				file = "\x\cba\addons\common\fnc_players.sqf";
 			};
+			// CBA_fnc_randPos
+			class randPos
+			{
+				description = "A function used to randomize a position around a given center";
+				file = "\x\cba\addons\common\fnc_randPos.sqf";
+			};
 			// CBA_fnc_realHeight
 			class realHeight
 			{

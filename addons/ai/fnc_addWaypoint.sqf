@@ -53,5 +53,7 @@ if (_count < 10) exitWith {_waypoint};
 _waypoint setWaypointTimeout ARG(9);
 if (_count < 11) exitWith {_waypoint};
 _waypoint setWaypointHousePosition ARG(10);
+if (_count < 12) exitWith {_waypoint};
+_waypoint setWaypointCompletionRadius ARG(11);
 
 _waypoint;

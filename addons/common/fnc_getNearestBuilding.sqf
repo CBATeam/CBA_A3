@@ -18,7 +18,5 @@ private ["_building", "_i"];
 _building = nearestBuilding _this;
 _i = 0;
 
-while {str(_building buildingPos _i) != str([0,0,0])} do {
-	_i = _i + 1;
-};
+while {str(_building buildingPos _i) != "[0,0,0]"} do {_i = _i + 1;};
 [_building, _i]

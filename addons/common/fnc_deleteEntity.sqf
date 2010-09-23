@@ -14,34 +14,32 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include <script_component.hpp>
+private "_typename";
+_typename = tolower (typename _this);
 
-private "_typeName";
-_typeName = typeName _this;
-
-switch (_typeName) do {
-	case ("ARRAY") : {
+switch (_typename) do {
+	case ("array") : {
 		{
-			_x call CBA_fnc_deleteEntity;
+			_x call CBA_fnc_deletEentity;
 		} foreach _this;
 	};
-	case ("OBJECT") : {
+	case ("object") : {
 		if (vehicle _this != _this) then {
-			unassignVehicle _this;
+			unassignvehicle _this;
 			_this setposasl [0,0,0];
 		};
 		deletevehicle _this;
 	};
-	case ("GROUP") : {
+	case ("group") : {
 		(units _this) call CBA_fnc_deleteEntity;
 		{deletewaypoint _x} foreach (waypoints _this);
 		deletegroup _this;
 	};
-	case ("LOCATION") : {
-		deleteLocation _this;
+	case ("location") : {
+		deletelocation _this;
 	};
-	case ("STRING") : {
-		deleteMarker _this
+	case ("string") : {
+		deletemarker _this
 	};
 	default {deletevehicle _this};
 };
