@@ -3,7 +3,7 @@
 
 LOG("XEH: PreInit Started");
 
-if !(isDedicated) then { 4711 cutText ["","BLACK OUT", 0.01] };
+if !(isDedicated) then { 4711 cutText ["", "BLACK OUT", 0.01] }; // Might have to move to the start of PostInit spawn instead...
 
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];

@@ -123,7 +123,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 
-if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen; 4711 cutText ["","PLAIN", 0.01] };
+if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen; 4711 cutText ["", "PLAIN", 0.01] };
 
 SLX_XEH_MACHINE set [8, true];
 
