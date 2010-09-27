@@ -3,6 +3,8 @@
 
 LOG("XEH: PreInit Started");
 
+if !(isDedicated) then { 4711 cutText ["","BLACK OUT", 0.01] };
+
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
 // All events except the init event

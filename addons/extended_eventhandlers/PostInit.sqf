@@ -71,7 +71,7 @@ if !(isDedicated) then
 		private["_time2Wait"];
 		_time2Wait = diag_ticktime + 10;
 		waituntil {diag_ticktime > _time2Wait};
-		if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); endLoadingScreen; };
+		if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); endLoadingScreen; 4711 cutText ["","PLAIN", 0.01] };
 	};
 };
 
@@ -123,7 +123,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 
-if !(isDedicated) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen };
+if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen; 4711 cutText ["","PLAIN", 0.01] };
 
 SLX_XEH_MACHINE set [8, true];
 
