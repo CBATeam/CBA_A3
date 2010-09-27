@@ -45,35 +45,9 @@ if !(isNull player) then
 	};
 };
 
+// Loading screen minimal 1s
 private["_time2Wait"];
-if !(isDedicated) then
-{
-	_text = "Post Initialization Processing...";
-	if !(isNil "CBA_help_credits") then {
-		// Randomly pick 2 addons from cfgPatches to display credits
-		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
-		_cr = [];
-		_tmp = [];
-		{ PUSH(_tmp,_x) } forEach ((_credits select 0) select 1);
-		_tmp = [_tmp] call CBA_fnc_shuffle;
-		for "_i" from 0 to 1 do {
-			_key = _tmp select _i;
-			_entry = format["%1, by: %2", _key, [[_credits select 0, _key] call CBA_fnc_hashGet, ", "] call CBA_fnc_join];
-			PUSH(_cr,_entry);
-		};
-		_text = [_cr, ". "] call CBA_fnc_join;
-	};
-
-	startLoadingScreen [_text, "RscDisplayLoadMission"];
-	_time2Wait = diag_ticktime + 1;
-	[] spawn
-	{
-		private["_time2Wait"];
-		_time2Wait = diag_ticktime + 10;
-		waituntil {diag_ticktime > _time2Wait};
-		if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); endLoadingScreen; 4711 cutText ["","PLAIN", 0.01] };
-	};
-};
+if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
 
 /*
  * Monitor playable units (players and AI) and re-run any XEH init handlers
@@ -89,9 +63,7 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
 
 // General InitPosts
-{
-	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT;
-} forEach [configFile, campaignConfigFile, missionConfigFile];
+{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 // Still using delayLess.fsm for this one as this can still increase init speed at briefing?
 //_handle =
@@ -122,8 +94,8 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 	};
 };
 
-
-if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; endLoadingScreen; 4711 cutText ["", "PLAIN", 0.01] };
+// Remove black-screen + loading-screen
+if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; 4711 cutText ["", "PLAIN", 0.01]; endLoadingScreen };
 
 SLX_XEH_MACHINE set [8, true];
 
