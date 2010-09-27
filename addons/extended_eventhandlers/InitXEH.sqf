@@ -3,9 +3,6 @@
 
 LOG("XEH: PreInit Started");
 
-// Black screen behind loading screen
-if !(isDedicated) then { 4711 cutText ["", "BLACK OUT", 0.01] }; // Might have to move to the start of PostInit spawn instead...
-
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
 // All events except the init event
@@ -112,6 +109,9 @@ LOG("XEH: PreInit Finished");
 // Loading Screen used during PostInit - terminated in PostInit.sqf
 if !(isDedicated) then
 {
+	// Black screen behind loading screen
+	4711 cutText ["", "BLACK OUT", 0.01];
+
 	_text = "Post Initialization Processing...";
 	if !(isNil "CBA_help_credits") then {
 		// Randomly pick 2 addons from cfgPatches to display credits
