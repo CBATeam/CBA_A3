@@ -1,6 +1,6 @@
 // XEH uses all existing event handlers
 #define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init;"; \
-fired = "_c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach((_this select 0)getVariable'Extended_FiredEH')"; \
+fired = "_c=count _this;if(_c<6)then{_this set [_c, nearestObject[_this select 0,_this select 4]]}else{_mag=_this select 5;_this set [5,_this select 6];_this set [6,_mag]};{_this call _x}forEach((_this select 0)getVariable'Extended_FiredEH')"; \
 animChanged      = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimChangedEH')"; \
 animStateChanged = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimStateChangedEH')"; \
 animDone         = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimDoneEH')"; \
