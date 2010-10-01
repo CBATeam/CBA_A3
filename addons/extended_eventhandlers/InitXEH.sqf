@@ -127,6 +127,7 @@ if !(isDedicated) then
 		};
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
+	startLoadingScreen [_text, "RscDisplayLoadMission"];
 	
 	// Remove black-screen + loading-screen on timeOut
 	[] spawn
