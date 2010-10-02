@@ -92,27 +92,6 @@ SLX_XEH_F_INIT = {
 	#endif
 };
 
-SLX_XEH_F_POSTINIT = {
-	LOG("XEH: VehicleInit Started");
-	{
-		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-		_crew = crew _x;
-		/*
-		* If it's a vehicle then start event handlers for the crew.
-		* (Vehicles have crew and are neither humanoids nor game logics)
-		*/
-		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-		{
-			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
-		};
-	} forEach vehicles;
-	LOG("XEH: VehicleInit Finished");
-
-	LOG("XEH: PostInit Started");
-	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-	LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
-};
-
 // Add / Remove the playerEvents
 SLX_XEH_F_ADDPLAYEREVENTS = {
 	if (isNull _this) exitWith {}; // not a valid object
@@ -173,11 +152,19 @@ startLoadingScreen [_text, "RscDisplayLoadMission"];
 */
 _cinit = [] spawn
 {
-	if (isDedicated) then
 	{
-		// Dedicated servers can't use loadingScreens..
-		{ call SLX_XEH_F_POSTINIT } execFSM "extended_eventhandlers\delayLess.fsm";
-	} else {
-		call SLX_XEH_F_POSTINIT;
-	};
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
+		{
+			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
+		};
+	} forEach vehicles;
+	LOG("XEH: PostInit Started");
+	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
+	LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 };
