@@ -24,6 +24,9 @@ FUNC(blaHandler) = {
 		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
 	};
 
+	private (_logic getVariable "private");
+	{ call _x } forEach (_logic getVariable "deserialize");
+
 	// Check exit condition - Exit if false
 	if (_logic call (_logic getVariable "exit_condition")) exitWith {
 		TRACE_1("Exit Condition", _logic);
@@ -41,6 +44,7 @@ FUNC(blaHandler) = {
 	// TRACE_1("Executing",_logic);
 	// Execute code
 	_logic call (_logic getVariable "run");
+	{ call _x } forEach (_logic getVariable "serialize");
 };
 
 
@@ -52,6 +56,7 @@ FUNC(addPerFrameHandlerLogic) = {
 	DEFAULT_PARAM(4,_end,{});
 	DEFAULT_PARAM(5,_runCondition,{true});
 	DEFAULT_PARAM(6,_exitCondition,{false});
+	DEFAULT_PARAM(7,_private,[]);
 
 	// Store vars on Logic
 	_logic = "HeliHEmpty" createVehicleLocal [0, 0, 0];
@@ -61,9 +66,26 @@ FUNC(addPerFrameHandlerLogic) = {
 	_logic setVariable ["run", _function];
 	_logic setVariable ["end", _end];
 	_logic setVariable ["params", _params];
+	_logic setVariable ["private", _private];
+
+	// Prepare Serialization and Deserialization code
+	_serialize = [];
+	{
+		_serialize set [count _serialize, compile format["_logic setVariable ['%1', if (isNil '%1') then { nil } else { %1 }]"]];
+	} forEach (_logic getVariable 'private');
+
+	_deSerialize = [];
+	{
+		_deSerialize set [count _serialize, compile format["%1 = _logic getVariable '%1'"]];
+	} forEach (_logic getVariable 'private');
+	
+	_logic setVariable ["serialize", _serialize];
+	_logic setVariable ["deserialize", _deserialize];
 
 	// Run start code
+	private (_logic getVariable "private");
 	_logic call (_logic getVariable "start");
+	{ call _x } forEach (_logic getVariable "serialize");
 
 	// Add handler
 	_handle = [FUNC(blaHandler), _delay, [_logic]] call CBA_fnc_addPerFrameHandler;
