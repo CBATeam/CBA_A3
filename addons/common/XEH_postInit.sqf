@@ -1,3 +1,4 @@
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 LOG(MSG_INIT);
@@ -51,6 +52,7 @@ FUNC(log) = {
 };
 
 // A2 / Operation Arrowhead, standalone / combined operations check
+TRACE_1("OA Check",nil);
 private ["_hasCbaOa", "_hasCbaA2", "_hasA2", "_hasOa"];
 _hasCbaA2 = isClass(configFile >> "CfgMods" >> "CBA_A2");
 _hasCbaOa = isClass(configFile >> "CfgMods" >> "CBA_OA");
@@ -65,6 +67,7 @@ if (!_hasOa && !_hasCbaA2) then { (localize "STR_CBA_COMMON_A2_ST_NO_CBA_A2") sp
 
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
+TRACE_1("Upgrade Check",nil);
 #define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
 private ["_entry"];
 for "_i" from 0 to ((count (CFG)) - 1) do {
