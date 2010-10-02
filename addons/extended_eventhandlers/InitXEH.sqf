@@ -152,6 +152,7 @@ startLoadingScreen [_text, "RscDisplayLoadMission"];
 */
 _cinit = [] spawn
 {
+	LOG("XEH: VehicleInit Started");
 	{
 		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
 		_crew = crew _x;
@@ -164,6 +165,8 @@ _cinit = [] spawn
 			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
 		};
 	} forEach vehicles;
+	LOG("XEH: VehicleInit Finished");
+
 	LOG("XEH: PostInit Started");
 	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
 	LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
