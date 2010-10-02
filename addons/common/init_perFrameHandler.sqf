@@ -79,7 +79,7 @@ FUNC(addPerFrameHandlerLogic) = {
 
 	_deSerialize = [];
 	{
-		_deSerialize set [count _serialize, compile format["%1 = _logic getVariable '%1'", _x]];
+		_deSerialize set [count _deSerialize, compile format["%1 = _logic getVariable '%1'", _x]];
 	} forEach (_logic getVariable 'private');
 	
 	_logic setVariable ["serialize", _serialize];
@@ -87,7 +87,7 @@ FUNC(addPerFrameHandlerLogic) = {
 
 	// Run start code
 	private (_logic getVariable "private");
-	_logic call (_logic getVariable "start");
+	_params call (_logic getVariable "start");
 
 	// Serialize
 	{ call _x } forEach (_logic getVariable "serialize");
