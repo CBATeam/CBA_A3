@@ -24,6 +24,7 @@ FUNC(blaHandler) = {
 		[_logic getVariable "handle"] call CBA_fnc_removePerFrameHandler;
 	};
 
+	// Deserialize
 	private (_logic getVariable "private");
 	{ call _x } forEach (_logic getVariable "deserialize");
 
@@ -44,6 +45,8 @@ FUNC(blaHandler) = {
 	// TRACE_1("Executing",_logic);
 	// Execute code
 	_logic call (_logic getVariable "run");
+	
+	// Serialize
 	{ call _x } forEach (_logic getVariable "serialize");
 };
 
@@ -85,6 +88,8 @@ FUNC(addPerFrameHandlerLogic) = {
 	// Run start code
 	private (_logic getVariable "private");
 	_logic call (_logic getVariable "start");
+
+	// Serialize
 	{ call _x } forEach (_logic getVariable "serialize");
 
 	// Add handler
