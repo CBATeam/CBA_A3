@@ -128,16 +128,18 @@ if !(isDedicated) then
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
-	
-	// Remove black-screen + loading-screen on timeOut
-	[] spawn
-	{
-		private["_time2Wait"];
-		_time2Wait = diag_ticktime + 10;
-		waituntil {diag_ticktime > _time2Wait};
-		if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); 4711 cutText ["","PLAIN", 0.01]; endLoadingScreen };
-	};
 };
+
+// Warn if PostInit takes longer than 10 tickTime seconds
+// Remove black-screen + loading-screen on timeOut
+[] spawn
+{
+	private["_time2Wait"];
+	_time2Wait = diag_ticktime + 10;
+	waituntil {diag_ticktime > _time2Wait};
+	if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01]; endLoadingScreen } };
+};
+
 
 /*
 * Process the crews of vehicles. This "thread" will run just
