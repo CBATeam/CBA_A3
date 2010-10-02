@@ -95,7 +95,8 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 // Remove black-screen + loading-screen
-if (!isDedicated && !(SLX_XEH_MACHINE select 8)) then { waituntil {diag_ticktime > _time2Wait}; 4711 cutText ["", "PLAIN", 0.01]; endLoadingScreen };
+if !(isDedicated) then { waituntil {diag_ticktime > _time2Wait}; 4711 cutText ["", "PLAIN", 0.01] };
+endLoadingScreen;
 
 SLX_XEH_MACHINE set [8, true];
 

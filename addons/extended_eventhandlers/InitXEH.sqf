@@ -128,12 +128,12 @@ call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
 LOG("XEH: PreInit Finished");
 
 // Loading Screen used during PostInit - terminated in PostInit.sqf
+_text = "Post Initialization Processing...";
 if !(isDedicated) then
 {
 	// Black screen behind loading screen
 	4711 cutText ["", "BLACK OUT", 0.01];
 
-	_text = "Post Initialization Processing...";
 	if !(isNil "CBA_help_credits") then {
 		// Randomly pick 2 addons from cfgPatches to display credits
 		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
@@ -148,8 +148,8 @@ if !(isDedicated) then
 		};
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
-	startLoadingScreen [_text, "RscDisplayLoadMission"];
 };
+startLoadingScreen [_text, "RscDisplayLoadMission"];
 
 // Warn if PostInit takes longer than 10 tickTime seconds
 // Remove black-screen + loading-screen on timeOut
