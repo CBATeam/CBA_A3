@@ -25,6 +25,7 @@ LOG("Initialising the Functions module early.");
 ADDON = false;
 
 GVAR(centers) = [];
+CBA_actionHelper = QUOTE(PATHTO(actionHelper));
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
