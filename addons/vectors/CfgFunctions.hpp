@@ -12,7 +12,7 @@ class CfgFunctions
 			// CBA_fnc_polar2vect
 			class polar2vect
 			{
-				description = "Creates a vector based on a inputted magnitude, direction and elevation  ";
+				description = "Creates a vector based on a inputted magnitude, direction and elevation";
 				file = "\x\cba\addons\vectors\fnc_polar2vect.sqf";
 			};
 			// CBA_fnc_scaleVect

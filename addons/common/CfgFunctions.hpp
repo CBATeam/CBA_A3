@@ -318,7 +318,7 @@ class CfgFunctions
 			// CBA_fnc_randPos
 			class randPos
 			{
-				description = "A function used to randomize a position around a given center";
+				description = "A function used to randomize a position around a given center Parameters: Marker, Object, Location, Group or Position, Radius Example: _position =  [position, radius] call CBA_fnc_randPos Returns: Position - [X,Y,Z] Author: Rommel";
 				file = "\x\cba\addons\common\fnc_randPos.sqf";
 			};
 			// CBA_fnc_realHeight
