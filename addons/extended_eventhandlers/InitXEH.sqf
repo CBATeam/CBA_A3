@@ -165,9 +165,8 @@ _cinit = [] spawn
 			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
 		};
 	} forEach vehicles;
-	LOG("XEH: VehicleInit Finished");
 
-	LOG("XEH: PostInit Started");
+	LOG("XEH: VehicleInit Finished, PostInit Started");
 	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
 	LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 };
