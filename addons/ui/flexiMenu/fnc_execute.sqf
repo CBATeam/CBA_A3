@@ -42,9 +42,11 @@ if (_useListBox == 0 && _multiReselect == 0) then // if using embedded listBox &
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)
-if (_action != "") then
-{
-	call compile _action;
+if (typeName _action == "CODE") then { call _action } else {
+	if (_action != "") then
+	{
+		call compile _action;
+	};
 };
 
 // show sub menu
