@@ -22,7 +22,7 @@ Author:
 SCRIPT(removeKeyHandler);
 private ["_type", "_hashKey", "_keyData", "_handlers", "_idx", "_myHandlers"];
 PARAMS_1(_hashKey);
-_type = if (count _this > 1) then { _this select 3 } else { "keydown" };
+_type = if (count _this > 1) then { _this select 1 } else { "keydown" };
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };

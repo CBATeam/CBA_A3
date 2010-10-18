@@ -9,6 +9,7 @@ Parameters:
 	_settings - Shift, Ctrl, Alt required [Array].
 	_code - Code to execute upon event [Code].
 	_type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
+	_hashKey - used to identify this handler [String].
 
 Returns:
 
@@ -25,9 +26,11 @@ Author:
 SCRIPT(addKeyHandler);
 
 private ["_ar", "_entry", "_type", "_handlers"];
-PARAMS_4(_key,_settings,_code,_hashKey);
-_type = if (count _this > 4) then { _this select 4 } else { "keydown" };
+PARAMS_3(_key,_settings,_code);
+_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
+_hashKey = if (count _this > 4) then { _this select 4 } else { "" };
+_hashKey = toLower(hashKey);
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 
