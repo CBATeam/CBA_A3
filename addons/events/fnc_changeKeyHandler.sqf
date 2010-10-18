@@ -21,6 +21,7 @@ Author:
 	Sickboy
 
 ---------------------------------------------------------------------------- */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(changeKeyHandler);
 private ["_type", "_keyData", "_handlers", "_idx", "_myHandlers", "_ar"];

@@ -7,10 +7,11 @@ Description:
 Author:
 	Sickboy
 ---------------------------------------------------------------------------- */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(keyHandler);
 
-private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers", "_idx"];
+private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers", "_idx", "_data"];
 #ifdef DEBUG_MODE_FULL
 	private ["_ar"];
 	_ar = [];
@@ -65,6 +66,6 @@ if (count _handlers > _idx) then
 		if (_result) exitWith { _handled = true };
 	} forEach _myHandlers;
 };
-TRACE_2("keyPressed",_this,_ar);
+TRACE_3("keyPressed",_this,_ar,_myHandlers);
 
 _handled;

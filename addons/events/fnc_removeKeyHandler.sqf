@@ -18,6 +18,7 @@ Author:
 	Sickboy
 
 ---------------------------------------------------------------------------- */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(removeKeyHandler);
 private ["_type", "_hashKey", "_keyData", "_handlers", "_idx", "_myHandlers"];
