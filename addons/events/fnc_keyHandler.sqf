@@ -33,8 +33,9 @@ if (count _handlers > _idx) then
 	if (isNil "_myHandlers") exitWith {};
 	if (typeName _myHandlers != typeName []) exitWith {};
 	{
-		_settings = _x select 0;
-		_code = _x select 1;
+		_data = [QUOTE(GVAR(keyhandlers)), _x] call CBA_fnc_hashGet;
+		_settings = _data select 1;
+		_code = _data select 2;
 		if (true) then
 		{
 			// Verify if the required modifier keys are present

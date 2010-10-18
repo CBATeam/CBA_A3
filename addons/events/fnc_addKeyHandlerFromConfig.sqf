@@ -29,12 +29,13 @@ _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
+_hashKey = toLower(format["%1_%2", _component, _action]);
 
 _key = [_component, _action] call CBA_fnc_readKeyFromConfig;
 if (_key select 0 > -1) exitWith
 {
-	 [_key select 0, _key select 1, _code, _type] call CBA_fnc_addKeyHandler;
-	 true;
+	 [_key select 0, _key select 1, _code, _type, _hashKey] call CBA_fnc_addKeyHandler;
+	 _hashKey;
 };
 
-false;
+"";

@@ -33,6 +33,12 @@ class CfgFunctions
 				description = "Adds an action to a keyhandler, read from config";
 				file = "\x\cba\addons\events\fnc_addKeyHandlerFromConfig.sqf";
 			};
+			// CBA_fnc_changeKeyHandler
+			class changeKeyHandler
+			{
+				description = "Changes an action to a keyhandler";
+				file = "\x\cba\addons\events\fnc_changeKeyHandler.sqf";
+			};
 			// CBA_fnc_globalEvent
 			class globalEvent
 			{
@@ -68,6 +74,12 @@ class CfgFunctions
 			{
 				description = "Removes an event handler previously registered with CBA_fnc_addEventHandler.";
 				file = "\x\cba\addons\events\fnc_removeEventHandler.sqf";
+			};
+			// CBA_fnc_removeKeyHandler
+			class removeKeyHandler
+			{
+				description = "Removes an action to a keyhandler";
+				file = "\x\cba\addons\events\fnc_removeKeyHandler.sqf";
 			};
 		};
 	};

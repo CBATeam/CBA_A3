@@ -25,19 +25,20 @@ Author:
 SCRIPT(addKeyHandler);
 
 private ["_ar", "_entry", "_type", "_handlers"];
-PARAMS_3(_key,_settings,_code);
-_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
+PARAMS_4(_key,_settings,_code,_hashKey);
+_type = if (count _this > 4) then { _this select 4 } else { "keydown" };
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
+
+[QUOTE(GVAR(keyhandlers)), _hashKey, [_key, _settings, _code]] call CBA_fnc_hashSet;
 
 _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
 if(_key>(count _handlers))then{_handlers resize(_key+1);};
 _ar = _handlers select _key;
 if(isNil"_ar")then{_ar=[]};
-_entry = [_settings, _code];
-PUSH(_ar,_entry);
+PUSH(_ar,_hashKey);
 _handlers set [_key, _ar];
 
 true;
