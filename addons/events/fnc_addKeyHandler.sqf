@@ -34,7 +34,7 @@ _hashKey = toLower(hashKey);
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 
-[QUOTE(GVAR(keyhandlers)), _hashKey, [_key, _settings, _code]] call CBA_fnc_hashSet;
+[GVAR(keyhandlers), _hashKey, [_key, _settings, _code]] call CBA_fnc_hashSet;
 
 _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
