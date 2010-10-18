@@ -36,12 +36,18 @@ _keyData = [GVAR(keyhandlers), _hashKey] call CBA_fnc_hashGet;
 _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
 // Remove existing key.
+_exit = true; // Doesn't exis?
 _idx = _keyData select 0;
 if (count _handlers > _idx) then {
 	_myHandlers = _handlers select _idx;
-	_myHandlers = _myHandlers - [_hashKey];
-	_handlers set [_idx, _myHandlers];
+	if (_hashKey in _myHandlers) then {
+		_myHandlers = _myHandlers - [_hashKey];
+		_handlers set [_idx, _myHandlers];
+		_exit = false; // does exist
+	};
 };
+
+if (_exit) exitWith { false };
 
 // Add to new key.
 if(_key>(count _handlers))then{_handlers resize(_key+1);};

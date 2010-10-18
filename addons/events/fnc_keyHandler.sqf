@@ -35,6 +35,7 @@ if (count _handlers > _idx) then
 	if (typeName _myHandlers != typeName []) exitWith {};
 	{
 		_data = [GVAR(keyhandlers), _x] call CBA_fnc_hashGet;
+		TRACE_2("",_data,_x);
 		_settings = _data select 1;
 		_code = _data select 2;
 		if (true) then

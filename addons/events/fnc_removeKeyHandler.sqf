@@ -36,8 +36,10 @@ _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 _idx = _keyData select 0;
 if (count _handlers > _idx) then {
 	_myHandlers = _handlers select _idx;
-	_myHandlers = _myHandlers - [_hashKey];
-	_handlers set [_idx, _myHandlers];
+	if (_hashKey in _myHandlers) then {
+		_myHandlers = _myHandlers - [_hashKey];
+		_handlers set [_idx, _myHandlers];
+	};
 };
 
 
