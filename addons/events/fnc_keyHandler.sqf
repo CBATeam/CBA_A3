@@ -11,7 +11,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(keyHandler);
 
-private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers", "_idx", "_data"];
+private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers", "_idx", "_data", "_keyhandlers"];
 #ifdef DEBUG_MODE_FULL
 	private ["_ar"];
 	_ar = [];
@@ -27,6 +27,8 @@ GVAR(keypressed) = time;
 _handled = false; // If true, suppress the default handling of the key.
 _result = false;
 
+_keyhandlers = if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) };
+
 _idx = _keyData select 1;
 if (count _handlers > _idx) then
 {
@@ -34,7 +36,7 @@ if (count _handlers > _idx) then
 	if (isNil "_myHandlers") exitWith {};
 	if (typeName _myHandlers != typeName []) exitWith {};
 	{
-		_data = [GVAR(keyhandlers), _x] call CBA_fnc_hashGet;
+		_data = [_keyhandlers, _x] call CBA_fnc_hashGet;
 		TRACE_2("",_data,_x);
 		_settings = _data select 1;
 		_code = _data select 2;
@@ -67,6 +69,6 @@ if (count _handlers > _idx) then
 		if (_result) exitWith { _handled = true };
 	} forEach _myHandlers;
 };
-TRACE_3("keyPressed",_this,_ar,_myHandlers);
+TRACE_4("keyPressed",_this,_ar,_myHandlers,_handled);
 
 _handled;

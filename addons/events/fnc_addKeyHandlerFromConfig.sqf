@@ -20,6 +20,7 @@ Examples:
 Author:
 	Sickboy
 ---------------------------------------------------------------------------- */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(addKeyHandlerFromConfig);
 

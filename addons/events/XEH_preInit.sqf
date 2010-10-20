@@ -34,7 +34,8 @@ GVAR(handler_hash) = [[], ""] call CBA_fnc_hashCreate;
 */
 private ["_arUp", "_arDown"];
 GVAR(keyhandler_hash) = [[], []] call CBA_fnc_hashCreate;
-GVAR(keyhandlers) = [[], []] call CBA_fnc_hashCreate;
+GVAR(keyhandlers_down) = [[], []] call CBA_fnc_hashCreate;
+GVAR(keyhandlers_up) = [[], []] call CBA_fnc_hashCreate;
 _arUp = [GVAR(keyhandler_hash), "keyup"] call CBA_fnc_hashGet;
 _arDown = [GVAR(keyhandler_hash), "keydown"] call CBA_fnc_hashGet;
 for "_i" from 0 to 250 do
