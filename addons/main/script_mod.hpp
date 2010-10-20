@@ -2,9 +2,9 @@
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define MAJOR 0
-#define MINOR 6
+#define MINOR 7
 #define PATCHLVL 0
-#define BUILD 122
+#define BUILD 128
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
