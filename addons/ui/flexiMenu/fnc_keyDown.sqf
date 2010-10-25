@@ -17,6 +17,8 @@ _handled = false;
 if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
 GVAR(lastAccessCheck) = [time, _dikCode];
 
+TRACE_2("",GVAR(typeMenuSources),GVAR(lastAccessCheck));
+
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
@@ -38,6 +40,7 @@ _potentialKeyMatch = false;
 // check if interaction key used
 if !(_potentialKeyMatch) exitWith
 {
+	TRACE_1("No potential keymatch",nil);
 	_handled // result
 };
 //-----------------------------------------------------------------------------
@@ -147,6 +150,9 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 			//player sideChat format [__FILE__+": no cursor target", _this];
 		};
 	};
+} else {
+	TRACE_1("xxx",nil);
 };
 
+TRACE_1("",_handled);
 _handled // result
