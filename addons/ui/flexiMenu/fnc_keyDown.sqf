@@ -1,19 +1,15 @@
+// #define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "data\common.hpp"
 
-#define _minObjDist(_var) (if (_var isKindOf "caManBase") then {3} else {(2 max (1.4+(sizeOf typeOf _var)/2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
+#define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4+(sizeOf typeOf _var)/2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
 private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
 	"_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget",
 	"_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList",
 	"_keys", "_settings"];
-
-//_ctrl = _this select 0;
-_dikCode = _this select 1;
-_shift = _this select 2;
-_ctrlKey = _this select 3;
-_alt = _this select 4;
+PARAMS_5(_ctrl,_dikCode,_shift,_ctrlKey,_alt);
 
 _handled = false;
 
