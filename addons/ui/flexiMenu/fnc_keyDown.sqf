@@ -17,25 +17,33 @@ _handled = false;
 if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
 GVAR(lastAccessCheck) = [time, _dikCode];
 
-TRACE_2("",GVAR(typeMenuSources),GVAR(lastAccessCheck));
+TRACE_1("",GVAR(lastAccessCheck));
 
 // scan typeMenuSources key list (optimise overhead)
 _potentialKeyMatch = false;
 {
 	// syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
+	TRACE_1("",_x);
 	_keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
+	TRACE_2("",_keys,_flexiMenu_typeMenuSources_ID_DIKCodes);
 	{
+		TRACE_1("uhh",nil);
+		TRACE_5("",_x,_dikCode,_shift,_ctrlKey,_alt);
 		_settings = _x select 1;
 		if ((_x select 0 == _dikCode) &&
 			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && // can't seem to compare booleans. i.e. ((_settings select 0) == _shift)
 			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
-			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
-		{
+			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt))
+		) exitWith {
 			_potentialKeyMatch = true;
+			TRACE_1("",_potentialKeyMatch);
 		};
 	} forEach _keys;
+	TRACE_1("",_potentialKeyMatch);
 	if (_potentialKeyMatch) exitWith {};
 } forEach GVAR(typeMenuSources);
+
+TRACE_1("",_potentialKeyMatch);
 
 // check if interaction key used
 if !(_potentialKeyMatch) exitWith
