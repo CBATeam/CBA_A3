@@ -22,11 +22,9 @@ TRACE_1("",GVAR(lastAccessCheck));
 _potentialKeyMatch = false;
 {
 	// syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
-	TRACE_1("",_x);
 	_keys = (_x select 1);
-	TRACE_2("",_keys,_flexiMenu_typeMenuSources_ID_DIKCodes);
+	TRACE_2("",_flexiMenu_typeMenuSources_ID_DIKCodes,_x);
 	{
-		TRACE_1("uhh",nil);
 		TRACE_5("",_x,_dikCode,_shift,_ctrlKey,_alt);
 		_settings = _x select 1;
 		if ((_x select 0 == _dikCode) &&
