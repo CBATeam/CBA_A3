@@ -1,5 +1,3 @@
-#include "\x\cba\addons\ui\script_component.hpp"
-
 // this is a duplicate #define which should match the one in script_component.hpp
 #define _flexiMenu_useSlowCleanDrawMode
 
