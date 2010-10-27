@@ -1,7 +1,6 @@
 // Desc: Fill and show an embedded listbox on dialog menu.
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
-#include "data\common.hpp"
 
 private ["_menuSources", "_menuDefs", "_idc", "_iconFolder"];
 private["_menuOption", "_caption", "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];

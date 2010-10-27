@@ -4,7 +4,6 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 #include "DIKASCIIMap.hpp"
-#include "data\common.hpp"
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
 

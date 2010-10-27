@@ -21,3 +21,5 @@
 
 // array select with bounds check (for optional parameters)
 #define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then { ##array2 select ##index3 } else { ##default4 };
+
+#include "\x\cba\addons\ui\flexiMenu\data\common.hpp"

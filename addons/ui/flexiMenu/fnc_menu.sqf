@@ -1,5 +1,4 @@
 #include "\x\cba\addons\ui\script_component.hpp"
-#include "data\common.hpp"
 //-----------------------------------------------------------------------------
 // TODO: Menu string parameter substitutions. Eg: _action="[%ID%] call func". Eg: %ID%,<ID>
 // TODO: Consider adding: a base IDC override value.

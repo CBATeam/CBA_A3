@@ -2,7 +2,6 @@
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\ca\editor\Data\Scripts\dikCodes.h"
-#include "data\common.hpp"
 
 if (isDedicated || !dialog) exitWith {};
 

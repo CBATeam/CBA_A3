@@ -1,5 +1,4 @@
 ﻿#include "\x\cba\addons\ui\script_component.hpp"
-#include "data\common.hpp"
 
 private ['_msg', '_i'];
 

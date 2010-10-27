@@ -1,5 +1,4 @@
 ﻿#include "\x\cba\addons\ui\script_component.hpp"
-#include "data\common.hpp"
 
 private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
