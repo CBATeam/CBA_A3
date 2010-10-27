@@ -1,4 +1,4 @@
-#include "common.hpp"
+#include "script_component.hpp"
 //#include "common_rose.hpp"
 
 #define _DefaultAspectRatio 3/4

@@ -1,4 +1,4 @@
-#include "common.hpp"
+#include "script_component.hpp"
 
 #define _eval_image(_param) __EVAL(format ["%1\data\popup\%2.paa", _flexiMenu_path, ##_param])
 
