@@ -1,5 +1,4 @@
 
-class DefaultEventhandlers;
 class Extended_EventHandlers;
 class Extended_PreInit_EventHandlers;
 class Extended_PostInit_EventHandlers;
