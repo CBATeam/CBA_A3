@@ -5,6 +5,9 @@ class CfgPatches
 		units[] = {};
 		requiredVersion = 1.05;
 		SLX_XEH2_Version = 3.02;
+		version = "3.0.2";
+		versionStr = "3.0.2";
+		versionAr[] = {3,0,2};
 		author[] = {"Solus", "Killswitch", "Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
 		requiredAddons[] =
