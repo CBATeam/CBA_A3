@@ -1106,7 +1106,6 @@ Author:
 #define OBSOLETE(OLD_FUNCTION,COMMAND_CODE) \
 	OBSOLETE_SYS(DOUBLES(PREFIX,OLD_FUNCTION),COMMAND_CODE)
 	
-		ace_settings_immersive_dismount, ace_c_men_ruckless
 #define BWC_CONFIG(NAME) class NAME { \
 		units[] = {}; \
 		weapons[] = {}; \
