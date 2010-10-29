@@ -5,6 +5,7 @@
 * from each matching EH class and set things up.
 *
 */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private [
 	"_unit", "_isExcluded", "_event", "_Extended_EH_Class", "_class",

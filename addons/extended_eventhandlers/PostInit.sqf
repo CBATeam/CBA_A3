@@ -6,6 +6,7 @@
 	code in such a post-init "EH" rather than in a normal XEH init EH which
 	 might be called several times.
 */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 #ifdef DEBUG_MODE_FULL
@@ -18,6 +19,10 @@ if (isNull player) then
 {
 	if (!isDedicated && !(SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 	{
+		#ifdef DEBUG_MODE_FULL
+		diag_log text "JIP";
+		#endif
+
 		SLX_XEH_MACHINE set [1, true]; // set JIP
 		// TEST for weird jip-is-server-issue :S
 		if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
@@ -41,6 +46,9 @@ if !(isNull player) then
 	{
 		// DEBUG TEST: Crashing due to JIP, or when going from briefing
 		//			 into game
+		#ifdef DEBUG_MODE_FULL
+		diag_log text "NULLGROUP";
+		#endif		
 		waitUntil { !(isNull (group player)) };
 	};
 };
@@ -95,7 +103,13 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 // Remove black-screen + loading-screen
-if !(isDedicated) then { waituntil {diag_ticktime > _time2Wait}; 4711 cutText ["", "PLAIN", 0.01] };
+if !(isDedicated) then {
+	#ifdef DEBUG_MODE_FULL
+	diag_log ["Waiting...", _time2Wait, diag_tickTime];
+	#endif
+	waituntil {diag_ticktime > _time2Wait};
+	4711 cutText ["", "PLAIN", 0.01];
+};
 endLoadingScreen;
 
 SLX_XEH_MACHINE set [8, true];
