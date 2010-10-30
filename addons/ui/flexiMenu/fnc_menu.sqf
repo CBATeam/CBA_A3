@@ -85,16 +85,7 @@ private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK"
 private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
-//player sideChat format [__FILE__+": %1", _this];
 
-/*
-_valid = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
-if (_valid) then
-{
-  _valid = (!isNull (uiNamespace getVariable QUOTE(GVAR(display))));
-};
-if (_valid) exitWith {hint format["%1 is not nil", GVAR(display)]}; // or ignore and overwrite
-*/
 //-----------------------------------------------------------------------------
 if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log format ["%1: Invalid params type: %2", __FILE__, _this]};
 
@@ -107,51 +98,44 @@ if (count (_menuDefs select 0) <= _flexiMenu_menuProperty_ID_menuResource) exitW
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; // determine which dialog to show
 
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
-if (!isClass (configFile >> _menuRsc)) then // if not a full class name
-{
-	if (!isClass (missionConfigFile >> _menuRsc)) then // if not a full class name
-	{
+if (!isClass (configFile >> _menuRsc)) then { // if not a full class name
+	if (!isClass (missionConfigFile >> _menuRsc)) then { // if not a full class name
 		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
 	};
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
-//if (isNil QUOTE(GVAR(display))) exitWith {hint format["%1 is nil", GVAR(display)]};
-//if (isNull GVAR(display)) exitWith {hint format["%1 is null", GVAR(display)]};
+
+private "_disp";
+_disp = uiNamespace getVariable QUOTE(GVAR(display));
 
 IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc,"");
-((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
+(_disp displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
 
 // initially list caption
-((uiNamespace getVariable QUOTE(GVAR(display))) displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
+(_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["keyDown",
-	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
-/* GVAR(mouseButtonDownEHID) = */ (uiNamespace getVariable QUOTE(GVAR(display))) displayAddEventHandler ["mouseButtonDown",
-	format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
+
+_disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 
 _width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
-if (_width == 0) then
-{
+if (_width == 0) then {
 	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
-	if (_width == 0) then
-	{
+	if (_width == 0) then {
 		player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
 		_width = _SMW;
 	};
 };
 
-//_list = (_menuDefs select 1);
-//if (count _list == 0) then {};
 //-----------------------------------------------------------------------------
 _commitList = [];
 { // forEach
-	if (count _x >= 2) then // all essential array items exist
-	{
-		_idc = _flexiMenu_baseIDC_button+_idcIndex;
+	if (count _x >= 2) then { // all essential array items exist
+		_idc = _flexiMenu_baseIDC_button + _idcIndex;
 		_menuOption = [_menuDefs select 0, _x] call FUNC(getMenuOption);
 
 		_caption = _menuOption select _flexiMenu_menuDef_ID_caption;
@@ -160,79 +144,63 @@ _commitList = [];
 		_tooltip = _menuOption select _flexiMenu_menuDef_ID_tooltip;
 		_subMenu = _menuOption select _flexiMenu_menuDef_ID_subMenuSource;
 		_shortcut_DIK = _menuOption select _flexiMenu_menuDef_ID_shortcut;
-//if (_shortcut_DIK != -1) then {player sidechat str [_caption, _shortcut_DIK, round time]};
 		_enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
 		_visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
-		if (_caption != "" && (_caption != "No options" || _idcIndex == 0)) then
-		{
-			with uiNamespace do
-			{
-				_array = ctrlPosition (GVAR(display) displayCtrl _idc);
-				if ({_x == 0} count _array == 4) then
-				{
-					if (!isNull GVAR(display)) exitWith
-					{
-						diag_log format ["Warning: Too many menu items or missing Menu button control: %1",
-							[_menuRsc, _idc, _caption]]
-					};
-				}
-				else
-				{
-					if (_array select 2 == 0) then
-					{
-						_array = [_array select 0, _array select 1, _width, _array select 3];
-						(GVAR(display) displayCtrl _idc) ctrlSetPosition _array;
-					};
+		if (_caption != "" && (_caption != "No options" || _idcIndex == 0)) then {
+			_ctrl = _disp displayCtrl _idc;
+			_array = ctrlPosition _ctrl;
+			if ({_x == 0} count _array == 4) then {
+				if (!isNull _disp) exitWith {
+					diag_log format ["Warning: Too many menu items or missing Menu button control: %1", [_menuRsc, _idc, _caption]]
 				};
-
-				(GVAR(display) displayCtrl _idc) ctrlCommit 0; // commit pos/size before showing
-
-				(GVAR(display) displayCtrl _idc) ctrlSetStructuredText parseText _caption;
-				(GVAR(display) displayCtrl _idc) ctrlSetToolTip _tooltip;
-				buttonSetAction [_idc, _action];
-
-				_commitList set[count _commitList, [_idc, _enabled, _visible]];
+			} else {
+				if (_array select 2 == 0) then {
+					_array = [_array select 0, _array select 1, _width, _array select 3];
+					_ctrl ctrlSetPosition _array;
+				};
 			};
+
+			_ctrl ctrlCommit 0; // commit pos/size before showing
+
+			_ctrl ctrlSetStructuredText parseText _caption;
+			_ctrl ctrlSetToolTip _tooltip;
+			buttonSetAction [_idc, _action];
+
+			_commitList set [count _commitList, [_idc, _enabled, _visible]];
 
 			// _visible==1 means: button used, go to next button.
 			// _visible==0 means: button hidden and unused, so re-use this idc for next menu option.
 			// _visible==-1 means: button hidden but reserved, so skip this idc and use next idc for next menu option.
-			if (_visible != 0) then // i.e. in [-1,1]
-			{
-				_idcIndex = _idcIndex+1;
-			}; // else if (_visible == 0) then {re-use hidden button idc}
+			if (_visible != 0) then { // i.e. in [-1,1]
+				_idcIndex = _idcIndex + 1;
+			};
 		};
 	};
-} forEach (_menuDefs select 1)+[_MenuOption_NoOptions];
+} forEach (_menuDefs select 1) + [_MenuOption_NoOptions];
 //-----------------------------------------------------------------------------
 // if no menu options are shown/applicable
-if (_idcIndex == 0) then
-{
+if (_idcIndex == 0) then {
 	// TODO: This block is duplicate code from above. Find a tidy way to merge this back with code above, by adding fake "No options" menu option.
-	_idc = _flexiMenu_baseIDC_button+_idcIndex;
-	with uiNamespace do
-	{
-		_array = ctrlPosition (GVAR(display) displayCtrl _idc);
-		if (_array select 2 == 0) then
-		{
-			_array = [_array select 0, _array select 1, _width, _array select 3];
-			(GVAR(display) displayCtrl _idc) ctrlSetPosition _array;
-		};
-		(GVAR(display) displayCtrl _idc) ctrlCommit 0; // commit pos/size before showing
-		(GVAR(display) displayCtrl _idc) ctrlSetStructuredText parseText "No options";
-		_commitList set[count _commitList, [_idc, 0, 1]];
+	_idc = _flexiMenu_baseIDC_button + _idcIndex;
+	_ctrl = _disp displayCtrl _idc;
+	_array = ctrlPosition _ctrl;
+	if (_array select 2 == 0) then {
+		_array = [_array select 0, _array select 1, _width, _array select 3];
+		_ctrl ctrlSetPosition _array;
 	};
-	_idcIndex = _idcIndex+1;
+	_ctrl ctrlCommit 0; // commit pos/size before showing
+	_ctrl ctrlSetStructuredText parseText "No options";
+	_commitList set [count _commitList, [_idc, 0, 1]];
+	_idcIndex = _idcIndex + 1;
 };
 
 // handle odd case where uncommitted controls are not shown
 {
 	_t = time;
 	_idc = _x select 0;
-	if (!ctrlCommitted (GVAR(display) displayCtrl _idc)) then
-	{
-		waitUntil {ctrlCommitted (GVAR(display) displayCtrl _idc) || time > _t+1.9};
+	if (!ctrlCommitted (_disp displayCtrl _idc)) then {
+		waitUntil {ctrlCommitted (_disp displayCtrl _idc) || time > _t + 1.9};
 	};
 	_enabled = _x select 1;
 	_visible = _x select 2;
@@ -242,20 +210,17 @@ if (_idcIndex == 0) then
 
 // hide and disable unused buttons
 // Note: BIS bug: you still need to disable hidden RscShortcutButton(s) because you can tab to them otherwise!
-with uiNamespace do
-{
-	for [{_i = _idcIndex}, {_i < _flexiMenu_maxButtons}, {_i = _i + 1}] do
-	{
-		_idc = _flexiMenu_baseIDC_button+_i;
-		(GVAR(display) displayCtrl _idc) ctrlShow false;
-		(GVAR(display) displayCtrl _idc) ctrlEnable false;
-	};
+for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
+	_idc = _flexiMenu_baseIDC_button + _i;
+	_ctrl = _disp displayCtrl _idc;
+	_ctrl ctrlShow false;
+	_ctrl ctrlEnable false;
+};
 
-	// hide and disable unused list buttons
-	for [{_i = 0}, {_i < _flexiMenu_maxButtons}, {_i = _i + 1}] do
-	{
-		_idc = _flexiMenu_baseIDC_listButton+_i;
-		(GVAR(display) displayCtrl _idc) ctrlShow false;
-		(GVAR(display) displayCtrl _idc) ctrlEnable false;
-	};
+// hide and disable unused list buttons
+for "_i" from 0 to (_flexiMenu_maxButtons - 1) do {
+	_idc = _flexiMenu_baseIDC_listButton + _i;
+	_ctrl = _disp displayCtrl _idc;
+	_ctrl ctrlShow false;
+	_ctrl ctrlEnable false;
 };

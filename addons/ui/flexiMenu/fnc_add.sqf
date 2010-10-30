@@ -15,43 +15,30 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 
 // common bug: invalid DIK code (type any) when missing #include "dikCodes.h"
 
-//_temp = _this select _flexiMenu_typeMenuSources_ID_DIKCodes;
-//if (isNil {_temp}) exitWith {diag_log _msg};
-//diag_log ['cba ui fnc_add.sqf: warning: checking:', _this, _temp, str _temp, isNil {_temp}, typeName _temp, typeName 2]; // temp debug
 //TODO: still not detecting nil?
-if (({isNil {_x}} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
+if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
 
 // convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
-for [{_i = 0}, {_i < count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)}, {_i = _i + 1}] do
-{
+for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
 	_key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
 	// if not an already an array (eg: simple DIK integer)
-	if (typeName _key != typeName []) then
-	{
+	if (typeName _key != typeName []) then {
 		_key = [_key, [false,false,false]];
 		(_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
 	};
 };
-//_temp = _this select _flexiMenu_typeMenuSources_ID_DIKCodes;
-//if (str _temp == "[any]") exitWith {diag_log _msg};
-//if (str _temp == "any") exitWith {diag_log _msg};
 
 // Check for duplicate record and then warn and ignore.
-if (({str _x == str _this} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith
-{
+if (({str _x == str _this} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {
 	diag_log format ["Warning: duplicate record, ignoring. %1 (%2)", _this, __FILE__];
 };
 
-GVAR(typeMenuSources) = GVAR(typeMenuSources)+[_this];
+GVAR(typeMenuSources) set [count GVAR(typeMenuSources), _this];
 [GVAR(typeMenuSources), _flexiMenu_typeMenuSources_ID_priority] call CBA_fnc_sortNestedArray;
 
 // reverse the order of sorting, so highest priority is at the top
-GVAR(typeMenuSources) = call
-{
-	private ['_list'];
-	_list = [];
-	{
-		_list = [_x]+_list;
-	} forEach GVAR(typeMenuSources);
-	_list
+_list = [];
+for "_e" from (count GVAR(typeMenuSources) - 1) to 0 step -1 do {
+	_list set [count _list, GVAR(typeMenuSources) select _e];
 };
+GVAR(typeMenuSources) = _list;

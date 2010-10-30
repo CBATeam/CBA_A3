@@ -28,8 +28,7 @@ GVAR(optionSelected) = false;
 // prevent multiple activations of menu due to key press via keyDown. onLoad can sometimes take a few milliseconds to init.
 GVAR(lastAccessCheck) = [0, -1];
 
-[] spawn
-{
+[] spawn {
 	// !isDedicated checked at top
 	waitUntil {!isNull (findDisplay 46)}; // CBA_fnc_addDisplayHandler is still dodgy
 

@@ -16,12 +16,11 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 
 _i = 0;
 {
-	if (str _x == str _this) then
-	{
+	if (str _x == str _this) then {
 		GVAR(typeMenuSources) set [_i, -1];
 		_x = -1;
 	};
-	_i = _i+1;
+	_i = _i + 1;
 } forEach GVAR(typeMenuSources);
 
-GVAR(typeMenuSources) = GVAR(typeMenuSources)-[-1];
+GVAR(typeMenuSources) = GVAR(typeMenuSources) - [-1];

@@ -28,7 +28,7 @@ _potentialKeyMatch = false;
 		TRACE_5("",_x,_dikCode,_shift,_ctrlKey,_alt);
 		_settings = _x select 1;
 		if ((_x select 0 == _dikCode) &&
-			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) && // can't seem to compare booleans. i.e. ((_settings select 0) == _shift)
+			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
 			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
 			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt))
 		) exitWith {
@@ -43,38 +43,29 @@ _potentialKeyMatch = false;
 TRACE_1("",_potentialKeyMatch);
 
 // check if interaction key used
-if !(_potentialKeyMatch) exitWith
-{
+if !(_potentialKeyMatch) exitWith {
 	TRACE_1("No potential keymatch",nil);
-	_handled // result
+	_handled
 };
 //-----------------------------------------------------------------------------
-if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
-{
+if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 	// check if menu already open
 	_active = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
-	if (_active) then
-	{
+	if (_active) then {
 		_active = (!isNull (uiNamespace getVariable QUOTE(GVAR(display))));
 	};
-	if (_active) then
-	{
-		if (!GVAR(holdKeyDown)) then
-		{
+	if (_active) then {
+		if (!GVAR(holdKeyDown)) then {
 			closeDialog 0;
 		};
-	}
-	else
-	{
-		//player sideChat format [__FILE__+": _active", _this];
+	} else {
 		// examine cursor object for relevant menu def variable
 		_target = objNull;
 		_isTypeTarget = false;
 
 		// check for [cursorTarget or "player" or "vehicle"] types in typeMenuSources list
 		_potentialTarget = cursorTarget;
-		if (!isNull _potentialTarget) then
-		{
+		if (!isNull _potentialTarget) then {
 			if (_potentialTarget distance player > _minObjDist(_potentialTarget)) then {_potentialTarget = objNull};
 		};
 		_vehicleTarget = vehicle player;
@@ -96,8 +87,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 				};
 			} forEach _keys;
 
-			if (_potentialKeyMatch) then
-			{
+			if (_potentialKeyMatch) then {
 				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
 				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
 
@@ -105,54 +95,35 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 					({_vehicleTarget isKindOf _x} count _typesList > 0) ||
 					("player" in _typesList)) then
 				{
-					if (count _potentialMenuSources == 0) then
-					{
+					if (count _potentialMenuSources == 0) then {
 						_isTypeTarget = true;
 						_target = if ((_vehicleTarget != player) &&
-							({_vehicleTarget isKindOf _x} count _typesList > 0)) then
-						{
-							_vehicleTarget
-						} else {
-							_potentialTarget
-						};
-						if ("player" in _typesList) then
-						{
+							({_vehicleTarget isKindOf _x} count _typesList > 0)) then {_vehicleTarget} else {_potentialTarget};
+						if ("player" in _typesList) then {
 							_target = player;
 						};
 					};
-					_potentialMenuSources = _potentialMenuSources+[_x select _flexiMenu_typeMenuSources_ID_menuSource];
+					_potentialMenuSources set [count _potentialMenuSources, _x select _flexiMenu_typeMenuSources_ID_menuSource];
 				};
 			};
 		} forEach GVAR(typeMenuSources);
 
-		if (!isNull _target) then
-		{
+		if (!isNull _target) then {
 			private ["_menuSources", "_menuSource"]; // sometimes nil
 			_menuSources = [];
 			_menuSource = _target getVariable QUOTE(GVAR(flexiMenu_source));
-			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources = _menuSources+[_menuSource]};
+			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources set [count _menuSources, _menuSource]};
 
-			/*
-			if ( // count _menuSource == 0 &&
-			_isTypeTarget) then
 			{
-				_menuSources = _menuSources+_potentialMenuSources;
-			};
-			*/
-			_menuSources = _menuSources+_potentialMenuSources;
+				_menuSources set [count _menuSources, _x];
+			} forEach _potentialMenuSources;
 
-			//if (isNil "_menuSource") then {_menuSource = []};
-			if (count _menuSources > 0) then
-			{
+			if (count _menuSources > 0) then {
 				// show menu dialog and load menu data
 				GVAR(target) = _target; // global variable used since passing an object as a string is too difficult.
-				nul = [_target, _menuSources] call FUNC(menu);
+				[_target, _menuSources] call FUNC(menu);
 				_handled = true;
 			};
-		}
-		else
-		{
-			//player sideChat format [__FILE__+": no cursor target", _this];
 		};
 	};
 } else {
@@ -160,4 +131,4 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then
 };
 
 TRACE_1("",_handled);
-_handled // result
+_handled
