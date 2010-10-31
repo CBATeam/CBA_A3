@@ -31,7 +31,7 @@ if (_playable && _name != "") then
 		#endif
 		if (!isNil "_unit") then
 		{
-			if !(isNull _unit) then { [_unit, "Extended_Init_EventHandlers", true] call SLX_XEH_init; [_unit, "Extended_InitPost_EventHandlers", true] spawn SLX_XEH_init };
+			if !(isNull _unit) then { [_unit, "Extended_Init_EventHandlers", true] call SLX_XEH_init; };
 		};
 	};
 };

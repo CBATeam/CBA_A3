@@ -62,7 +62,7 @@ class Extended_Init_EventHandlers
 		class SLX_Init_Post_All
 		{
 				scope	 = public;
-				onRespawn = false;   // A2 keeps object variables after respawn
+				onRespawn = true;
 				init	  = "_this call SLX_XEH_initPost";
 		};
 	};
