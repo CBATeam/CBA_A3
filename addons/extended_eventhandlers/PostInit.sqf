@@ -53,10 +53,6 @@ if !(isNull player) then
 	};
 };
 
-// Loading screen minimal 1s
-private["_time2Wait"];
-if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
-
 /*
  * Monitor playable units (players and AI) and re-run any XEH init handlers
  * that are configured to be re-run on respawn. (By default, init EH:s are not
@@ -70,18 +66,38 @@ if (isMultiplayer) then
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
 
-// General InitPosts
-{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
+// Loading screen minimal 1s
+private["_time2Wait"];
+if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
 
-// Still using delayLess.fsm for this one as this can still increase init speed at briefing?
-//_handle =
-//{
+// Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
+_handle =
+{
+	LOG("XEH: VehicleInit Started");
+	{
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
+		{
+			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
+		};
+	} forEach vehicles;
+	
+	LOG("XEH: VehicleInit Finished, PostInit Started");
+
+	// General InitPosts
+	{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
+
 	// we set this BEFORE executing the inits, so that any unit created in another
 	// thread still gets their InitPost ran
 	SLX_XEH_MACHINE set [7, true];
 	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
-//} execFSM "extended_eventhandlers\delayless.fsm";
-//waitUntil {completedFSM _handle};
+} execFSM "extended_eventhandlers\delayless.fsm";
+waitUntil {completedFSM _handle};
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
@@ -113,6 +129,8 @@ if !(isDedicated) then {
 endLoadingScreen;
 
 SLX_XEH_MACHINE set [8, true];
+
+LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];

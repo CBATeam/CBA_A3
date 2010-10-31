@@ -150,23 +150,4 @@ startLoadingScreen [_text, "RscDisplayLoadMission"];
 *  3) spawn:ed "threads" are started
 *  4) the mission's init.sqf/sqs is run
 */
-_cinit = [] spawn
-{
-	LOG("XEH: VehicleInit Started");
-	{
-		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-		_crew = crew _x;
-		/*
-		* If it's a vehicle then start event handlers for the crew.
-		* (Vehicles have crew and are neither humanoids nor game logics)
-		*/
-		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-		{
-			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
-		};
-	} forEach vehicles;
-
-	LOG("XEH: VehicleInit Finished, PostInit Started");
-	call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-	LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
-};
+_cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
