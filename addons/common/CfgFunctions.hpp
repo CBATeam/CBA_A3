@@ -377,4 +377,15 @@ class CfgFunctions
 			};
 		};
 	};
+	
+	// Need to be manually maintained
+	// Missing BIS functions
+	class BIS {
+		class variables {
+			class undefCheck {
+				file = "\x\cba\addons\common\dummy.sqf";
+			};
+		};
+	};
+
 };

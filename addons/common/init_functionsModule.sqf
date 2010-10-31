@@ -1,9 +1,18 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
+
+// #define DEBUG_MODE_FULL
+#include "script_component.hpp"
+
 scriptName "CBA\common\init_functionsModule";
 
 private ["_recompile"];
 _recompile = (count _this) > 0;
+
+#ifdef DEBUG_MODE_FULL
+	diag_log [diag_frameNo, diag_tickTime, time, "Initializing function module", _this];
+#endif
+
 
 //--- Functions are already running
 if (BIS_fnc_init && !_recompile) exitWith {};
@@ -49,16 +58,11 @@ for "_t" from 0 to 2 do {
 								};
 							};
 							_itemPath = if (_itemPath == "") then {_pathFile + "\" + _categoryName + "\fn_" + _itemName + ".sqf"} else {_itemPath};
-							call compile format ["
-								if (isnil '%2_fnc_%3' || %4) then {
-									%2_fnc_%3 = {
-										if (!%4) then {debuglog ('Log: [Functions] %2_fnc_%3 loaded (%1)')};
-										%2_fnc_%3 = compile preprocessFileLineNumbers '%1';
-										_this call %2_fnc_%3;
-									};
-									%2_fnc_%3_path = '%1';
-								};
-							",_itemPath,_tagName,_itemName,_recompile];
+
+							_fn = format["%1_fnc_%2", _tagName, _itemName];
+							if (isNil _fn || _recompile) then {
+								missionNameSpace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
+							};
 						};
 					};
 				};
@@ -66,4 +70,21 @@ for "_t" from 0 to 2 do {
 		};
 	};
 };
+
+private ["_test", "_test2"];
+_test = (_this select 0) setPos (position (_this select 0)); if (isnil "_test") then {_test = false};
+_test2 = (_this select 0) playMove ""; if (isnil "_test2") then {_test2 = false};
+if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\modules\functions\misc\fn_initCounter.sqf"))};
+
+//--------------------------------------------------------------------------------------------------------
+//--- INIT COMPLETE --------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
+[] spawn {
+	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
+	BIS_fnc_init = true;
+};
+
+#ifdef DEBUG_MODE_FULL
+	diag_log [diag_frameNo, diag_tickTime, time, "Function module done!"];
+#endif
 
