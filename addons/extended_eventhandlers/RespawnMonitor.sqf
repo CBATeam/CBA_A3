@@ -5,6 +5,7 @@
 	types (where none is the default unless explicitly specified
 	in the description.ext file), we don't need to run this.
 */
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private [
 	"_cfgRespawn", "_respawn", "_nomonitor", "_initEH", "_name",
