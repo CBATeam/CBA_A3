@@ -15,4 +15,7 @@
 
 #define LOG(MESSAGE) diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]
 
+#define INITPOST [_unit, "Extended_InitPost_EventHandlers"]
+
+
 //#include "\x\cba\addons\main\script_macros.hpp"
