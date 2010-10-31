@@ -20,7 +20,7 @@ PARAMS_2(_entity,_position);
 DEFAULT_PARAM(2,_radius,0);
 
 private "_typename";
-_typename = tolower (typename _entity;
+_typename = tolower (typename _entity);
 _position = _position call RMM_fnc_getpos;
 
 if (_radius > 0) then {
