@@ -13,6 +13,26 @@
 diag_log text format["(%1) XEH BEG: PostInit", time];
 #endif
 
+// Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
+_handle = {
+	LOG("XEH: VehicleInit Started");
+	{
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
+		{
+			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
+		};
+	} forEach vehicles;
+	
+	LOG("XEH: VehicleInit Finished, PostInit Started");
+} execFSM "extended_eventhandlers\delayless.fsm";
+waitUntil {completedFSM _handle};
+
 // On Server + Non JIP Client, we are now after all objects have inited
 // and at the briefing, still time == 0
 if (isNull player) then
@@ -33,10 +53,6 @@ if (isNull player) then
 		};
 		waitUntil { !(isNull player) };
 		waitUntil { local player };
-
-		// For JIP players only: Usually we are now a few ms/seconds into
-		// the game. Test for JIP players
-		for "_i" from 0 to 1 do { sleep 0.5 };
 	};
 };
 
@@ -53,6 +69,9 @@ if !(isNull player) then
 	};
 };
 
+SLX_XEH_MACHINE set [5, true]; // set player check = complete
+// diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
+
 /*
  * Monitor playable units (players and AI) and re-run any XEH init handlers
  * that are configured to be re-run on respawn. (By default, init EH:s are not
@@ -63,32 +82,12 @@ if (isMultiplayer) then
 	SLX_XEH_rmon = [] execVM "extended_eventhandlers\RespawnMonitor.sqf";
 };
 
-SLX_XEH_MACHINE set [5, true]; // set player check = complete
-// diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
-
 // Loading screen minimal 1s
 private["_time2Wait"];
 if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
 
 // Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
-_handle =
-{
-	LOG("XEH: VehicleInit Started");
-	{
-		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-		_crew = crew _x;
-		/*
-		* If it's a vehicle then start event handlers for the crew.
-		* (Vehicles have crew and are neither humanoids nor game logics)
-		*/
-		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-		{
-			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
-		};
-	} forEach vehicles;
-	
-	LOG("XEH: VehicleInit Finished, PostInit Started");
-
+_handle = {
 	// General InitPosts
 	{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
 
