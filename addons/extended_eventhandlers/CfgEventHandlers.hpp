@@ -457,6 +457,10 @@ class Extended_hit_Eventhandlers {
 	};
 };
 class Extended_killed_Eventhandlers {
+	class Man	{
+		SLX_XEH_Killed = "_this call SLX_XEH_killed"; // Used by the respawn mon.
+	};
+
 	class A10 /* : Plane */ {
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";
 	};
