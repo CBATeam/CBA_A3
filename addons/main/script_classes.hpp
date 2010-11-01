@@ -26,7 +26,7 @@ class CfgNonAIVehicles;
 class CfgSimulationCosts;
 class CfgMarkedTargets;
 class CfgFSMs;
-class CfgSkeletonParameters;
+// class CfgSkeletonParameters; // Don't use or break and experience the consequences ;-)
 class CfgVoice;
 class CfgVoiceTypes;
 class CfgCoreData;
