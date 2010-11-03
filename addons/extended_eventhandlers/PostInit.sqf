@@ -13,6 +13,16 @@
 diag_log text format["(%1) XEH BEG: PostInit", time];
 #endif
 
+// Warn if PostInit takes longer than 10 tickTime seconds
+// Remove black-screen + loading-screen on timeOut
+[] spawn
+{
+	private["_time2Wait"];
+	_time2Wait = diag_ticktime + 10;
+	waituntil {diag_ticktime > _time2Wait};
+	if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
+};
+
 // Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
 _handle = {
 	LOG("XEH: VehicleInit Started");
