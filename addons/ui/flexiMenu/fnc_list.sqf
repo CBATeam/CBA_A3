@@ -1,3 +1,4 @@
+disableSerialization;
 // Desc: Fill and show an embedded listbox on dialog menu.
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"

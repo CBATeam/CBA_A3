@@ -1,3 +1,4 @@
+disableSerialization;
 #include "\x\cba\addons\ui\script_component.hpp"
 //-----------------------------------------------------------------------------
 // TODO: Menu string parameter substitutions. Eg: _action="[%ID%] call func". Eg: %ID%,<ID>
