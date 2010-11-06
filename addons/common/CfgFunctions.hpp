@@ -9,6 +9,12 @@ class CfgFunctions
 	{
 		class Misc
 		{
+			// CBA_fnc_actionArgument (use _path)
+			class actionArgument
+			{
+				description = "Used to call the code parsed in the addaction argument.";
+				file = "\x\cba\addons\common\fnc_actionArgument.sqf";
+			};
 			// CBA_fnc_addMagazine
 			class addMagazine
 			{

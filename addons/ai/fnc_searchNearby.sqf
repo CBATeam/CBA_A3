@@ -6,7 +6,7 @@ Description:
 Parameters:
 	Group (Group or Object)
 Example:
-	(group player) spawn CBA_fnc_searchNearby
+	[group player] spawn CBA_fnc_searchNearby
 Returns:
 	Nil
 Author:
@@ -14,24 +14,21 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "script_component.hpp"
-
-PARAMS_1(_group);
-_group = _group call CBA_fnc_getGroup;
+private ["_group"];
+_group = (_this select 0) call CBA_fnc_getgroup;
+_group lockwp true;
 private ["_leader","_behaviour"];
 _leader = leader _group;
 _behaviour = behaviour _leader;
+_group setbehaviour "combat";
 
 private ["_array", "_building", "_indices"];
-_array = _leader call CBA_fnc_getNearestBuilding;
-_building = ARG_1(_array, 0);
-_indices = ARG_1(_array, 1);
+_array = _leader call CBA_fnc_getnearestbuilding;
+_building = _array select 0;
+_indices = _array select 1;
+_group setformdir ([_leader, _building] call bis_fnc_dirto);
 
-if (_leader distance _building > 500) exitwith {};
-
-_group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
-_group setBehaviour "COMBAT";
-_group lockWP true;
+if (_leader distance _building > 500) exitwith {_group lockwp false};
 
 private ["_count","_units"];
 _units = units _group;
@@ -42,11 +39,11 @@ while {_indices > 0 and _count > 0} do {
 	while {_indices > 0 and _count > 0} do {
 		private "_unit";
 		_unit = (_units select _count);
-		if (unitReady _unit) then {
-			_unit commandMove (_building buildingPos _indices);
+		if (unitready _unit) then {
+			_unit commandmove (_building buildingpos _indices);
 			_unit spawn {
 				sleep 5;
-				waituntil {unitReady _this};
+				waituntil {unitready _this};
 			};
 			_indices = _indices - 1;
 		};
@@ -55,9 +52,9 @@ while {_indices > 0 and _count > 0} do {
 	_units = units _group;
 	_count = (count _units) - 1;
 };
-waituntil {sleep 3;	{unitReady _x} count _units == count (units _group) - 1};
+waituntil {sleep 3;	{unitready _x} count _units == count (units _group) - 1};
 {
-	_x doFollow _leader;
+	_x dofollow _leader;
 } foreach _units;
-_group setBehaviour _behaviour;
-_group lockWP false;
+_group setbehaviour _behaviour;
+_group lockwp false;
