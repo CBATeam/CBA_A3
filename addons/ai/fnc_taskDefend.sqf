@@ -60,6 +60,10 @@ _i = 0;
 			if (count _array > 0) then {
 				_p = (_building getvariable "CBA_taskDefend_positions") call BIS_fnc_selectRandom;
 				_array = _array - [_p];
+				if (count _array == 0) then {
+					_buildings = _buildings - [_building];
+					_building setvariable ["CBA_taskDefend_positions",nil];
+				};
 				_building setvariable ["CBA_taskDefend_positions",_array];
 				[_x,_building buildingpos _p] spawn {
 					(_this select 0) domove (_this select 1);
@@ -75,7 +79,10 @@ _i = 0;
 		};
 	};
 } foreach _units;
+{
+	_x setvariable ["CBA_taskDefend_positions",nil];
+} foreach _buildings;
 if (count _this > 4) then {if !(_this select 4) then {_i = _count}};
-if (_i < _count * 0.5) exitwith {
+if (_i < _count * 0.5) then {
 	[_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
 };
