@@ -66,6 +66,7 @@ _i = 0;
 				};
 				_building setvariable ["CBA_taskDefend_positions",_array];
 				[_x,_building buildingpos _p] spawn {
+					if (surfaceIsWater (_this select 1)) exitwith {};
 					(_this select 0) domove (_this select 1);
 					sleep 5;
 					waituntil {unitready (_this select 0)};
