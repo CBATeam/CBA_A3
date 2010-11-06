@@ -33,7 +33,7 @@ _units = units _group;
 _count = count _units;
 
 {
-	if (str(_x buildingpos _threshold) == "[0,0,0]") then {_buildings = _buildings - [_x]};};
+	if (str(_x buildingpos _threshold) == "[0,0,0]") then {_buildings = _buildings - [_x]};
 } foreach _buildings;
 _i = 0;
 {
@@ -60,6 +60,7 @@ _i = 0;
 			if (count _array > 0) then {
 				_p = (_building getvariable "CBA_taskDefend_positions") call BIS_fnc_selectRandom;
 				_array = _array - [_p];
+				_building setvariable ["CBA_taskDefend_positions",_array];
 				[_x,_building buildingpos _p] spawn {
 					(_this select 0) domove (_this select 1);
 					sleep 5;
