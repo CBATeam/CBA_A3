@@ -25,7 +25,18 @@ _path = __cfg;
 
 if (count _tp > 0) then
 {
-	{ _path = ((_path >> "turrets") select _x) } forEach _tp;
+	{
+		// First filter non classes
+		_turrets = (_path >> "turrets");
+		_turs = [];
+		for "_i" from 0 to (count _turrets) - 1 do
+		{
+			_y = _turrets select _i;
+			if (isClass(_y)) then { PUSH(_turs,_y) };
+		};
+		_path = (_turs select _x);
+		
+	} forEach _tp;
 };
 
 TRACE_1("Result",_path);
