@@ -35,6 +35,10 @@ for "_t" from 0 to 2 do {
 			_tagName = configname _currentTag;
 			_itemPathTag = gettext (_currentTag >> "file");
 
+			#ifdef DEBUG_MODE_FULL
+				diag_log [_tagName, _itemPathTag];
+			#endif
+
 			for "_i" from 0 to (count _currentTag - 1) do {
 				_currentCategory = _currentTag select _i;
 
@@ -43,13 +47,15 @@ for "_t" from 0 to 2 do {
 
 					_categoryName = configname _currentCategory;
 					_itemPathCat = gettext (_currentCategory >> "file");
+					#ifdef DEBUG_MODE_FULL
+						diag_log [_categoryName,_itemPathCat];
+					#endif
 
 					for "_n" from 0 to (count _currentCategory - 1) do {
 						_currentItem = _currentCategory select _n;
 
 						//--- Is Item
 						if (isclass _currentItem) then {
-
 							_itemName = configname _currentItem;
 							_itemPathItem = gettext (_currentItem >> "file");
 							_itemPath = if (_itemPathItem != "") then {_itemPathItem} else {
@@ -58,10 +64,15 @@ for "_t" from 0 to 2 do {
 								};
 							};
 							_itemPath = if (_itemPath == "") then {_pathFile + "\" + _categoryName + "\fn_" + _itemName + ".sqf"} else {_itemPath};
+							#ifdef DEBUG_MODE_FULL
+								diag_log [_itemName,_itemPathItem,_itemPath];
+							#endif
 
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
 							if (isNil _fn || _recompile) then {
 								missionNameSpace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
+								_fnPath = format["%1_path", _fn];
+								missionNameSpace setVariable [_fnPath, _itemPath];
 							};
 						};
 					};
