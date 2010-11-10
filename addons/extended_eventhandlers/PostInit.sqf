@@ -150,9 +150,11 @@ SLX_XEH_MACHINE set [8, true];
 #define FIRED_EH "_par = +_this;_c=count _par;if(_c<6)then{_par set[_c,nearestObject[_par select 0,_par select 4]];_par set[_c+1,currentMagazine(_par select 0)]}else{_mag=_par select 5;_par set[5,_par select 6];_par set[6,_mag]};{_par call _x}forEach((_par select 0)getVariable'Extended_FiredEH')"
 
 [] spawn {
-	_events = ["fired", "animChanged", "animStateChanged", "dammaged", "engine", "firedNear", "fuel", "gear", "getIn", "getOut", "incomingMissile", "hit", "killed"];
+	private ["_events", "_fnc", "_ar"];
+	_events = [XEH_EVENTS];
+
 	_fnc = {
-		PARAMS_2(_obj,_ar);
+		PARAMS_1(_obj);
 		_XEH = _obj getVariable "Extended_FiredEH";
 		if (isNil "_XEH") then {
 			_TAG = _obj getVariable "SLX_XEH_TAG";
@@ -169,10 +171,11 @@ SLX_XEH_MACHINE set [8, true];
 			PUSH(_ar,_x);
 		};
 	};
-	_ar = []; // Used to maintain the list of done objects
+
+	_ar = []; // Used to maintain the list of processed objects
 	while {true} do {
 		_ar = _ar - [objNull]; // cleanup
-		{ [_x, _ar] call _fnc } forEach ((vehicles+allUnits) - _ar);
+		{ [_x] call _fnc } forEach ((vehicles+allUnits) - _ar);
 		sleep 3;
 	};
 };

@@ -1,3 +1,4 @@
+#define PREFIX cba
 #define COMPONENT xeh
 //#include "\x\cba\addons\main\script_mod.hpp"
 
@@ -17,5 +18,7 @@
 
 #define INITPOST [_unit, "Extended_InitPost_EventHandlers"]
 
+#define XEH_EVENTS "Fired", "AnimChanged", "AnimStateChanged", "Dammaged", "Engine", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "IncomingMissile", "Hit", "Killed", "LandedTouchDown", "landedStopped"
 
-//#include "\x\cba\addons\main\script_macros.hpp"
+
+#include "\x\cba\addons\extended_eventhandlers\script_macros_common.hpp"
