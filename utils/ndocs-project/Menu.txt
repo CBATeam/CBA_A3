@@ -119,6 +119,7 @@ Group: Functions  {
 
       Group: Misc  {
 
+         File: actionArgument  (no auto-title, common\fnc_actionArgument.sqf)
          File: addMagazine  (no auto-title, common\fnc_addMagazine.sqf)
          File: addMagazineCargo  (no auto-title, common\fnc_addMagazineCargo.sqf)
          File: addMagazineVerified  (no auto-title, common\fnc_addMagazineVerified.sqf)
@@ -126,6 +127,7 @@ Group: Functions  {
          File: addPlayerAction  (no auto-title, common\fnc_addPlayerAction.sqf)
          File: addWeapon  (no auto-title, common\fnc_addWeapon.sqf)
          File: addWeaponCargo  (no auto-title, common\fnc_addWeaponCargo.sqf)
+         File: CBA_fnc_switchPlayer  (common\fnc_switchPlayerForExisting.sqf)
          File: createCenter  (no auto-title, common\fnc_createCenter.sqf)
          File: createMarker  (no auto-title, common\fnc_createMarker.sqf)
          File: createTrigger  (no auto-title, common\fnc_createTrigger.sqf)

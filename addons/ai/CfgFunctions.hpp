@@ -12,13 +12,13 @@ class CfgFunctions
 			// CBA_fnc_addWaypoint
 			class addWaypoint
 			{
-				description = "A function used to add a waypoint to a group. Parameters: - Group (Group or Object) - Position (XYZ, Object, Location or Group) Optional: - Radius (Scalar) - Waypoint Type (String) - Behaviour (String) - Combat Mode (String) - Speed Mode (String) - Formation (String) - Code To Execute at Each Waypoint (String) - TimeOut at each Waypoint (Array [Min, Med, Max]) Example: [this, this, 300, ""MOVE"", ""AWARE"", ""YELLOW"", ""FULL"", ""STAG COLUMN"", ""this spawn CBA_fnc_taskSearchHouse"", [3,6,9]] Returns: Waypoint Author: Rommel";
+				description = "A function used to add a waypoint to a group. Parameters: - Group (Group or Object) - Position (XYZ, Object, Location or Group) Optional: - Radius (Scalar) - Waypoint Type (String) - Behaviour (String) - Combat Mode (String) - Speed Mode (String) - Formation (String) - Code To Execute at Each Waypoint (String) - TimeOut at each Waypoint (Array [Min, Med, Max]) - Waypoint Completion Radius (Scalar) Example: [this, this, 300, ""MOVE"", ""AWARE"", ""YELLOW"", ""FULL"", ""STAG COLUMN"", ""this spawn CBA_fnc_searchNearby"", [3,6,9]] Returns: Waypoint Author: Rommel";
 				file = "\x\cba\addons\ai\fnc_addWaypoint.sqf";
 			};
 			// CBA_fnc_searchNearby
 			class searchNearby
 			{
-				description = "A function for a group to search a nearby building. Parameters: Group (Group or Object) Example: (group player) spawn CBA_fnc_searchNearby Returns: Nil Author: Rommel";
+				description = "A function for a group to search a nearby building. Parameters: Group (Group or Object) Example: [group player] spawn CBA_fnc_searchNearby Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\ai\fnc_searchNearby.sqf";
 			};
 			// CBA_fnc_taskAttack
@@ -30,7 +30,7 @@ class CfgFunctions
 			// CBA_fnc_taskDefend
 			class taskDefend
 			{
-				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They will also patrol the radius. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Defend Radius (Scalar) - Can Patrol(Boolean) Example: [group player] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
+				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They may also patrol the radius unless otherwise specified. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Defend Radius (Scalar) - Building Size Threshold (Integer, default 2) Example: [this] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\ai\fnc_taskDefend.sqf";
 			};
 			// CBA_fnc_taskPatrol
