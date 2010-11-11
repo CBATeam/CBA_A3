@@ -141,10 +141,10 @@ SLX_XEH_MACHINE set [8, true];
 
 
 // XEH for non XEH supported addons
-// Only works if there is at least 1 XEH-enabled object on the Map
+// Only works if there is at least 1 XEH-enabled object on the Map - Perhaps add a XEH logic so that users can always add that?
 // Only works until someone uses removeAllEventhandlers on the object
-// TODO: Improve detection of objects without XEH, so that we don't have to use two cycles for each object. (verify configFile ... class eventhandlers?)
-// TODO: Exclusions (Ammo crates for instance have no XEH by default due to crashes)
+// TODO: Perhaps do a config verification - if no custom eventhandlers detected in all CfgVehicles classes, don't run this XEH handler - might be too much processing.
+// TODO: Exclusions (Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 // TODO: Support objects that only have partial Eventhandlers overriden (e.g init is XEH, but fired isn't, etc)
 #define DEFAULT_EH "{_this call _x}forEach((_this select 0)getVariable'Extended_%1EH')"
 #define FIRED_EH "_par = +_this;_c=count _par;if(_c<6)then{_par set[_c,nearestObject[_par select 0,_par select 4]];_par set[_c+1,currentMagazine(_par select 0)]}else{_mag=_par select 5;_par set[5,_par select 6];_par set[6,_mag]};{_par call _x}forEach((_par select 0)getVariable'Extended_FiredEH')"
@@ -154,20 +154,31 @@ SLX_XEH_MACHINE set [8, true];
 	_events = [XEH_EVENTS];
 
 	_fnc = {
+		private ["_cfg", "_init", "_initAr", "_XEH"];
 		PARAMS_1(_obj);
+		
+		// Check 1 - a XEH object variable
 		_XEH = _obj getVariable "Extended_FiredEH";
-		if !(isNil "_XEH") exitWith { TRACE_1("Has XEH",_obj); PUSH(_ar,_obj) };
+		if !(isNil "_XEH") exitWith { TRACE_1("Has XEH (1)",_obj); PUSH(_ar,_obj) };
 
-		_TAG = _obj getVariable "SLX_XEH_TAG";
-		if (isNil "_TAG") then { 
-			_obj setVariable ["SLX_XEH_TAG", false];
-			TRACE_1("Tagged",_obj);
-		} else {
-			TRACE_1("Adding XEH",_obj);
-			[_obj,'Extended_Init_EventHandlers'] call SLX_XEH_init;
-			{ _obj addEventHandler [_x, format[if (_event != "fired") then { DEFAULT_EH } else { FIRED_EH }, _x]] } forEach _events;
-			PUSH(_ar,_obj);
+		// Check 2 - XEH init EH detected
+		_cfg = (configFile >> "CfgVehicles" >> typeOf _obj);
+		_init = getText(_cfg >> "EventHandlers" >> "init");
+		_initAr = toArray(_init);
+		_XEH = false;
+		if (count _initAr > 11) then {
+			_ar = [];
+			for "_i" from 0 to 11 do {
+				PUSH(_ar,_initAr select _i);
+			};
+			if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
 		};
+		if (_XEH) exitWith { TRACE_1("Has XEH (2)",_obj); PUSH(_ar,_obj) };
+
+		TRACE_1("Adding XEH",_obj);
+		[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
+		{ _obj addEventHandler [_x, format[if (_event != "fired") then { DEFAULT_EH } else { FIRED_EH }, _x]] } forEach _events;
+		PUSH(_ar,_obj);
 	};
 
 	_ar = []; // Used to maintain the list of processed objects
