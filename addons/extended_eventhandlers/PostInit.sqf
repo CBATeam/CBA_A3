@@ -156,19 +156,17 @@ SLX_XEH_MACHINE set [8, true];
 	_fnc = {
 		PARAMS_1(_obj);
 		_XEH = _obj getVariable "Extended_FiredEH";
-		if (isNil "_XEH") then {
-			_TAG = _obj getVariable "SLX_XEH_TAG";
-			if (isNil "_TAG") then { 
-				_obj setVariable ["SLX_XEH_TAG", false];
-				TRACE_1("Tagged",_obj);
-			} else {
-				TRACE_1("Adding XEH",_obj);
-				[_obj,'Extended_Init_EventHandlers'] call SLX_XEH_init;
-				{ _obj addEventHandler [_x, format[if (_event != "fired") then { DEFAULT_EH } else { FIRED_EH }, _x]] } forEach _events;
-				PUSH(_ar,_x);
-			};
+		if !(isNil "_XEH") exitWith { TRACE_1("Has XEH",_obj); PUSH(_ar,_obj) };
+
+		_TAG = _obj getVariable "SLX_XEH_TAG";
+		if (isNil "_TAG") then { 
+			_obj setVariable ["SLX_XEH_TAG", false];
+			TRACE_1("Tagged",_obj);
 		} else {
-			PUSH(_ar,_x);
+			TRACE_1("Adding XEH",_obj);
+			[_obj,'Extended_Init_EventHandlers'] call SLX_XEH_init;
+			{ _obj addEventHandler [_x, format[if (_event != "fired") then { DEFAULT_EH } else { FIRED_EH }, _x]] } forEach _events;
+			PUSH(_ar,_obj);
 		};
 	};
 
