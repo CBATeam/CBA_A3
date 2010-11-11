@@ -92,6 +92,7 @@ if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\module
 //--------------------------------------------------------------------------------------------------------
 [] spawn {
 	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
+	waitUntil {!isNil "bis_functions_mainscope"};
 	BIS_fnc_init = true;
 };
 
