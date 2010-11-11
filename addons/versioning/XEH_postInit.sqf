@@ -21,10 +21,10 @@ diag_log [diag_frameNo, diag_tickTime, time, "CBA_VERSIONING", GVAR(versions)];
 		_class = (configFile >> "CfgPatches" >> (_data select 0));
 		if (call compile(_data select 2)) then {
 			if !(isClass(_class)) then {
-				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1] spawn _f;
+				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _data select 0, _mod, _data select 1] spawn _f;
 			} else {
 				if !(isArray(_class >> "versionAr")) then {
-					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher)", _key, _data select 0, _mod, _data select 1] spawn _f;
+					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid verion info found.", _key, _data select 0, _mod, _data select 1] spawn _f;
 				} else {
 					if ([_data select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
 						format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _data select 0, _mod, _data select 1, getArray(_class >> "versionAr")] spawn _f;
