@@ -102,6 +102,28 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	{ _event = format["Extended_%1EH",_x]; _this setVariable [_event, [(_this getVariable _event) select 0]] } forEach SLX_XEH_OTHER_EVENTS;
 };
 
+// This can also be uesd for better debugging
+#define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
+XEH_FUNC(Hit);
+XEH_FUNC(AnimChanged);
+XEH_FUNC(AnimStateChanged);
+XEH_FUNC(Dammaged);
+XEH_FUNC(Engine);
+XEH_FUNC(FiredNear);
+XEH_FUNC(Fuel);
+XEH_FUNC(Gear);
+XEH_FUNC(GetIn);
+XEH_FUNC(GetOut);
+XEH_FUNC(IncomingMissile);
+XEH_FUNC(Hit);
+XEH_FUNC(Killed);
+XEH_FUNC(LandedTouchDown);
+XEH_FUNC(landedStopped);
+SLX_XEH_EH_Fired = { _par = +_this;_c=count _par;if(_c<6)then{_par set[_c,nearestObject[_par select 0,_par select 4]];_par set[_c+1,currentMagazine(_par select 0)]}else{_mag=_par select 5;_par set[5,_par select 6];_par set[6,_mag]};{_par call _x}forEach((_par select 0)getVariable'Extended_FiredEH') };
+SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
+SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
+// e.g; _this call SLX_XEH_EH_Fired;
+
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
 LOG("XEH: PreInit Finished");

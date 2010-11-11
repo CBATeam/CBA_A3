@@ -1,23 +1,23 @@
 // XEH uses all existing event handlers
 #define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};[_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init;"; \
-fired = "_par = +_this;_c=count _par;if(_c<6)then{_par set[_c,nearestObject[_par select 0,_par select 4]];_par set[_c+1,currentMagazine(_par select 0)]}else{_mag=_par select 5;_par set[5,_par select 6];_par set[6,_mag]};{_par call _x}forEach((_par select 0)getVariable'Extended_FiredEH')"; \
-animChanged      = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimChangedEH')"; \
-animStateChanged = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimStateChangedEH')"; \
-animDone         = "{_this call _x}forEach((_this select 0)getVariable'Extended_AnimDoneEH')"; \
-dammaged         = "{_this call _x}forEach((_this select 0)getVariable'Extended_DammagedEH')"; \
-engine           = "{_this call _x}forEach((_this select 0)getVariable'Extended_EngineEH')"; \
-firedNear        = "{_this call _x}forEach((_this select 0)getVariable'Extended_FiredNearEH')"; \
-fuel             = "{_this call _x}forEach((_this select 0)getVariable'Extended_FuelEH')"; \
-gear             = "{_this call _x}forEach((_this select 0)getVariable'Extended_GearEH')"; \
-getIn            = "{_this call _x}forEach((_this select 0)getVariable'Extended_GetInEH')"; \
-getOut           = "{_this call _x}forEach((_this select 0)getVariable'Extended_GetOutEH')"; \
-hit              = "{_this call _x}forEach((_this select 0)getVariable'Extended_HitEH')"; \
-incomingMissile  = "{_this call _x}forEach((_this select 0)getVariable'Extended_IncomingMissileEH')"; \
-killed           = "{_this call _x}forEach((_this select 0)getVariable'Extended_KilledEH')"; \
-landedTouchDown  = "{_this call _x}forEach((_this select 0)getVariable'Extended_LandedTouchDownEH')"; \
-landedStopped    = "{_this call _x}forEach((_this select 0)getVariable'Extended_LandedStoppedEH')"; // \
-//handleDamage     = "{_this call _x}forEach((_this select 0)getVariable'Extended_HandleDamageEH')"; \
-//handleHealing    = "{_this call _x}forEach((_this select 0)getVariable'Extended_HandleHealingEH')";
+fired = "_this call SLX_XEH_EH_Fired"; \
+animChanged      = "_this call SLX_XEH_EH_AnimChanged"; \
+animStateChanged = "_this call SLX_XEH_EH_AnimStateChanged"; \
+animDone         = "_this call SLX_XEH_EH_AnimDone"; \
+dammaged         = "_this call SLX_XEH_EH_Dammaged"; \
+engine           = "_this call SLX_XEH_EH_Engine"; \
+firedNear        = "_this call SLX_XEH_EH_FiredNear"; \
+fuel             = "_this call SLX_XEH_EH_Fuel"; \
+gear             = "_this call SLX_XEH_EH_Gear"; \
+getIn            = "_this call SLX_XEH_EH_GetIn"; \
+getOut           = "_this call SLX_XEH_EH_GetOut"; \
+hit              = "_this call SLX_XEH_EH_Hit"; \
+incomingMissile  = "_this call SLX_XEH_EH_IncomingMissile"; \
+killed           = "_this call SLX_XEH_EH_Killed"; \
+landedTouchDown  = "_this call SLX_XEH_EH_LandedTouchDown"; \
+landedStopped    = "_this call SLX_XEH_EH_LandedStopped"; // \
+//handleDamage     = "_this call SLX_XEH_EH_HandleDamage"; \
+//handleHealing    = "_this call SLX_XEH_EH_HandleHealing";
 
 
 // We'll need this one for backwards compatibility with third-party addons
@@ -490,7 +490,7 @@ class Extended_GetIn_EventHandlers
 		class SLX_GetInMan
 		{
 				scope	 = public;
-				getIn  = "{[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH')";
+				getIn  = "_this call SLX_XEH_EH_GetInMan";
 		};
 	};
 };
@@ -502,7 +502,7 @@ class Extended_GetOut_EventHandlers
 		class SLX_GetOutMan
 		{
 				scope	 = public;
-				getOut = "{[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH')";
+				getOut = "_this call SLX_XEH_EH_GetOutMan";
 		};
 	};
 };
