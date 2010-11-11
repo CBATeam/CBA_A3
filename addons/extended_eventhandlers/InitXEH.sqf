@@ -1,7 +1,7 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-LOG("XEH: PreInit Started");
+XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version"));
 
 // Start one vehicle crew initialisation thread and one respawn monitor
 SLX_XEH_objects = [];
@@ -37,7 +37,7 @@ SLX_XEH_F_INIT = {
 	_Inits = [];
 	#ifdef DEBUG_MODE_FULL
 	_msg = format["XEH BEG: Init %1", _this];
-	LOG(_msg);
+	XEH_LOG(_msg);
 	#endif
 
 	if (isClass _this) then
@@ -81,14 +81,14 @@ SLX_XEH_F_INIT = {
 		};
 		{
 			#ifdef DEBUG_MODE_FULL
-				LOG(_x);
+				XEH_LOG(_x);
 			#endif
 			call _x;
 		} forEach _Inits;
 	};
 	#ifdef DEBUG_MODE_FULL
 	_msg = format["XEH END: Init %1", _this];
-	LOG(_msg);
+	XEH_LOG(_msg);
 	#endif
 };
 
@@ -126,7 +126,7 @@ SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call 
 
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
-LOG("XEH: PreInit Finished");
+XEH_LOG("XEH: PreInit Finished");
 
 // Loading Screen used during PostInit - terminated in PostInit.sqf
 _text = "Post Initialization Processing...";

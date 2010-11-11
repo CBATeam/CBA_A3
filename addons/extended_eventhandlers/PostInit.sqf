@@ -20,12 +20,12 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 	private["_time2Wait"];
 	_time2Wait = diag_ticktime + 10;
 	waituntil {diag_ticktime > _time2Wait};
-	if !(SLX_XEH_MACHINE select 8) then { LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
+	if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
 };
 
 // Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
 _handle = {
-	LOG("XEH: VehicleInit Started");
+	XEH_LOG("XEH: VehicleInit Started");
 	{
 		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
 		_crew = crew _x;
@@ -39,7 +39,7 @@ _handle = {
 		};
 	} forEach vehicles;
 	
-	LOG("XEH: VehicleInit Finished, PostInit Started");
+	XEH_LOG("XEH: VehicleInit Finished, PostInit Started");
 } execFSM "extended_eventhandlers\delayless.fsm";
 waitUntil {completedFSM _handle};
 
@@ -249,7 +249,7 @@ SLX_XEH_MACHINE set [8, true];
 	};
 };
 
-LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
+XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];

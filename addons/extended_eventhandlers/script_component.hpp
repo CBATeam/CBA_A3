@@ -14,7 +14,7 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
-#define LOG(MESSAGE) diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]
+#define XEH_LOG(MESSAGE) diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]
 
 #define INITPOST [_unit, "Extended_InitPost_EventHandlers"]
 
