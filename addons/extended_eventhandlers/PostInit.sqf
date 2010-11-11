@@ -168,7 +168,7 @@ SLX_XEH_MACHINE set [8, true];
 			TRACE_2("Adding XEH Full (No EH)",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
-			TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_obj);
+			TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type);
 		};
 
 		if (_type in _xehClasses) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
@@ -218,8 +218,8 @@ SLX_XEH_MACHINE set [8, true];
 				};
 			};
 		} forEach _events;
-		if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(_xehClasses,_obj); };
-		if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_obj); };
+		if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(_xehClasses,_type); };
+		if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type); };
 		PUSH(_processedObjects,_obj);
 	};
 
