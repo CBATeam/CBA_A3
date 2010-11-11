@@ -20,7 +20,7 @@ private [
 #endif
 
 // Get unit.
-_unit = _this select 0;
+PARAMS_1(_unit);
 _unitClass = typeOf _unit;
 
 _ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");

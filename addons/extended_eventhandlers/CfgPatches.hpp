@@ -65,14 +65,5 @@ class CfgPatches
 // disabled, you should receive a message about missing XEH addon, ONLY when
 // the requiredAddons list is incomplete, or class inheritance is broken
 /*
-class CfgAddons
-{
-	class PreloadAddons
-	{
-		class Extended_EventHandlers
-		{
-			list[] = { "Extended_EventHandlers" };
-		};
-	 };
-};
+PRELOAD_ADDONS;
 */

@@ -13,8 +13,10 @@
 #endif
 
 #define XEH_LOG(MESSAGE) diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]
-#define INITPOST [_unit, "Extended_InitPost_EventHandlers"]
-#define XEH_EVENTS "Fired", "AnimChanged", "AnimStateChanged", "Dammaged", "Engine", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "IncomingMissile", "Hit", "Killed", "LandedTouchDown", "LandedStopped"
-
+#define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", "Dammaged", "Engine", \
+	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit", \
+	"IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped"
+//"HandleDamage", "HandleHealing"
+#define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan"
 
 #include "\x\cba\addons\extended_eventhandlers\script_macros_common.hpp"

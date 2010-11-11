@@ -1,9 +1,6 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_unit"];
-_unit = _this select 0;
-
 /*  Extended event handlers by Solus
 *
 *  Get all inherited classes, then check if each inherited class has a counter-
@@ -22,10 +19,10 @@ private [
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH BEG: %2", time, _this];
 #endif
+
 // Get unit.
-_unit = _this select 0;
-_Extended_Init_Class = _this select 1;
-_isRespawn = if (count _this>2) then { _this select 2 } else { false };
+PARAMS_2(_unit,_Extended_Init_Class);
+DEFAULT_PARAM(2,_isRespawn,false);
 
 //
 // Bug #7432 fix - dedicated 1.05 servers will re-run the init EH when a unit
@@ -33,8 +30,8 @@ _isRespawn = if (count _this>2) then { _this select 2 } else { false };
 
 // A new unit will be similar to "11c67248# 17488: usmc_soldier_co.p3d" in
 // string form before it's fully initialised. The "#" character is 35.
-_justCreated=(((toArray format["%1",_unit])find 35)>=0);
-_playable=_unit getVariable "slx_xeh_playable";
+_justCreated = (((toArray format["%1",_unit])find 35)>=0);
+_playable = _unit getVariable "slx_xeh_playable";
 if (isNil "_playable")then{_playable=false};
 _isMan = _unit isKindOf "Man";
 
@@ -64,9 +61,7 @@ if (_isMan && (isDedicated && (time>0) && (_justCreated || _playable))) then
 		diag_log text format ["(%1) XEH: %2 respawned. Don't re-run the init EH", time, _unit];
 		#endif
 	};
-}
-else
-{
+} else {
 	// Get array of inherited classes of unit.
 	_unitClass = typeOf _unit;
 	_classes = [_unitClass];
