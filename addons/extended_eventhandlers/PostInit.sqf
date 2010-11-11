@@ -158,6 +158,10 @@ SLX_XEH_MACHINE set [8, true];
 
 		PUSH(_processedObjects,_obj);
 
+		// Already has Full XEH EH entries - Needs nothing!
+		if (_type in _xehClasses) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
+
+		// No XEH EH entries at all - Needs full XEH
 		if (_type in _fullClasses) exitWith {
 			TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
@@ -165,15 +169,13 @@ SLX_XEH_MACHINE set [8, true];
 		};
 
 		_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
-
+		// No EH class - Needs full XEH
 		if !(isClass _cfg) exitWith {
 			TRACE_2("Adding XEH Full (No EH)",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 			TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type);
 		};
-
-		if (_type in _xehClasses) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
 
 		// Check 1 - a XEH object variable
 		// Cannot use anymore because we want to do deeper verifications
@@ -231,7 +233,7 @@ SLX_XEH_MACHINE set [8, true];
 	_fullClasses = []; // Used to cache classes that NEED full XEH setup
 	while {true} do {
 		_processedObjects = _processedObjects - [objNull]; // cleanup
-		{ [_x] call _fnc } forEach ((vehicles+allUnits) - _processedObjects);
+		{ [_x] call _fnc } forEach ((vehicles+allUnits) - _processedObjects); // TODO: Does this need an isNull check?
 		sleep 3;
 	};
 };
