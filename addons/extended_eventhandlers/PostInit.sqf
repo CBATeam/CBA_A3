@@ -206,6 +206,7 @@ SLX_XEH_MACHINE set [8, true];
 		_partial = false;
 		{
 			_event = (_cfg >> _x);
+			_XEH = false;
 
 			if (isText _event) then {
 				_eventAr = toArray(getText(_event));
@@ -214,9 +215,10 @@ SLX_XEH_MACHINE set [8, true];
 					for "_i" from 0 to 13 do {
 						PUSH(_ar,_eventAr select _i);
 					};
-					if (toString(_ar) == "_this call SLX") then { _full = false } else { TRACE_2("Adding missing EH",_obj,_x); _partial = true; _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] };
+					if (toString(_ar) == "_this call SLX") then { _full = false; _XEH = true };
 				};
 			};
+			if !(_XEH) then { _partial = true; TRACE_2("Adding missing EH",_obj,_x); _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] };
 		} forEach _events;
 		if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(_xehClasses,_type); };
 		if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type); };
