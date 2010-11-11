@@ -144,11 +144,11 @@ SLX_XEH_MACHINE set [8, true];
 // Only works until someone uses removeAllEventhandlers on the object
 // Only works if there is at least 1 XEH-enabled object on the Map - Place SLX_XEH_Logic to make sure XEH initializes.
 // TODO: Perhaps do a config verification - if no custom eventhandlers detected in _all_ CfgVehicles classes, don't run this XEH handler - might be too much processing.
-// TODO: Exclusions. LaserTargets (etc)? And Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 
 [] spawn {
 	private ["_events", "_fnc", "_processedObjects"];
 	_events = [XEH_EVENTS];
+	_excludes = ["LaserTarget"]; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 
 	_fnc = {
 		private ["_cfg", "_init", "_initAr", "_XEH", "_type"];
@@ -167,6 +167,8 @@ SLX_XEH_MACHINE set [8, true];
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 		};
+		
+		if (_type in _exclClasses) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };
 
 		_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
 		// No EH class - Needs full XEH
@@ -175,6 +177,13 @@ SLX_XEH_MACHINE set [8, true];
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 			TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type);
+		};
+		
+		_excl = false;
+		{ if (_obj isKindOf _x) exitWith { _excl = true } } forEach _excludes;
+		if (_excl) exitWith {
+			TRACE_2("Exclusion, abort",_obj,_type);
+			PUSH(_exclClasses,_type);
 		};
 
 		// Check 1 - a XEH object variable
@@ -231,10 +240,12 @@ SLX_XEH_MACHINE set [8, true];
 	_processedObjects = []; // Used to maintain the list of processed objects
 	_xehClasses = []; // Used to cache classes that have full XEH setup
 	_fullClasses = []; // Used to cache classes that NEED full XEH setup
+	_exclClasses = []; // Used for exclusion classes
+
 	while {true} do {
 		_processedObjects = _processedObjects - [objNull]; // cleanup
 		{ [_x] call _fnc } forEach ((vehicles+allUnits) - _processedObjects); // TODO: Does this need an isNull check?
-		sleep 3;
+		sleep 2;
 	};
 };
 
