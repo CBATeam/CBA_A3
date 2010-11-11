@@ -145,7 +145,6 @@ SLX_XEH_MACHINE set [8, true];
 // Only works if there is at least 1 XEH-enabled object on the Map - Place SLX_XEH_Logic to make sure XEH initializes.
 // TODO: Perhaps do a config verification - if no custom eventhandlers detected in _all_ CfgVehicles classes, don't run this XEH handler - might be too much processing.
 // TODO: Exclusions. LaserTargets (etc)? And Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
-// TODO: Class Caching? No need to re-check and re-check and re-check the same classes?
 
 [] spawn {
 	private ["_events", "_fnc", "_processedObjects"];
@@ -156,13 +155,23 @@ SLX_XEH_MACHINE set [8, true];
 		PARAMS_1(_obj);
 		
 		_type = typeOf _obj;
-		_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
 
-		if !(isClass _cfg) exitWith {
-			TRACE_2("Adding XEH",_obj,_type);
+		if (_type in _fullClasses) exitWith {
+			TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 		};
+
+		_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
+
+		if !(isClass _cfg) exitWith {
+			TRACE_2("Adding XEH Full (No EH)",_obj,_type);
+			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
+			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
+			TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_obj);
+		};
+
+		if (_type in _xehClasses) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
 
 		// Check 1 - a XEH object variable
 		// Cannot use anymore because we want to do deeper verifications
@@ -184,18 +193,20 @@ SLX_XEH_MACHINE set [8, true];
 			};
 		};
 		
+		_full = false;
 		if (_XEH) then {
-			TRACE_2("Has XEH",_obj,_type)
+			TRACE_2("Has XEH init",_obj,_type)
 		} else {
-			TRACE_2("Adding XEH",_obj,_type);
+			TRACE_2("Adding XEH init",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
+			_full = true;
 		};
 		
 		// Add script-eventhandlers for those events that are not setup properly.
+		_partial = false;
 		{
 			_event = (_cfg >> _x);
 
-			_XEH = false;
 			if (isText _event) then {
 				_eventAr = toArray(getText(_event));
 				if (count _eventAr > 13) then {
@@ -203,19 +214,18 @@ SLX_XEH_MACHINE set [8, true];
 					for "_i" from 0 to 13 do {
 						PUSH(_ar,_eventAr select _i);
 					};
-					if (toString(_ar) == "_this call SLX") then { _XEH = true };
+					if (toString(_ar) == "_this call SLX") then { _full = false } else { TRACE_2("Adding missing EH",_obj,_x); _partial = true; _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] };
 				};
 			};
-
-			if !(_XEH) then {
-				TRACE_2("Adding missing EH",_obj,_x);
-				_obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]];
-			};
 		} forEach _events;
+		if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(_xehClasses,_obj); };
+		if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_obj); };
 		PUSH(_processedObjects,_obj);
 	};
 
 	_processedObjects = []; // Used to maintain the list of processed objects
+	_xehClasses = []; // Used to cache classes that have full XEH setup
+	_fullClasses = []; // Used to cache classes that NEED full XEH setup
 	while {true} do {
 		_processedObjects = _processedObjects - [objNull]; // cleanup
 		{ [_x] call _fnc } forEach ((vehicles+allUnits) - _processedObjects);
