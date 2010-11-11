@@ -143,8 +143,8 @@ SLX_XEH_MACHINE set [8, true];
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
 // Only works if there is at least 1 XEH-enabled object on the Map - Place SLX_XEH_Logic to make sure XEH initializes.
-// TODO: Perhaps do a config verification - if no custom eventhandlers detected in all CfgVehicles classes, don't run this XEH handler - might be too much processing.
-// TODO: Exclusions (Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
+// TODO: Perhaps do a config verification - if no custom eventhandlers detected in _all_ CfgVehicles classes, don't run this XEH handler - might be too much processing.
+// TODO: Exclusions. LaserTargets (etc)? And Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 // TODO: Class Caching? No need to re-check and re-check and re-check the same classes?
 
 [] spawn {
@@ -152,13 +152,14 @@ SLX_XEH_MACHINE set [8, true];
 	_events = [XEH_EVENTS];
 
 	_fnc = {
-		private ["_cfg", "_init", "_initAr", "_XEH"];
+		private ["_cfg", "_init", "_initAr", "_XEH", "_type"];
 		PARAMS_1(_obj);
 		
-		_cfg = (configFile >> "CfgVehicles" >> typeOf _obj >> "EventHandlers");
+		_type = typeOf _obj;
+		_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
 
 		if !(isClass _cfg) exitWith {
-			TRACE_1("Adding XEH",_obj);
+			TRACE_2("Adding XEH",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 			{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 		};
@@ -166,7 +167,7 @@ SLX_XEH_MACHINE set [8, true];
 		// Check 1 - a XEH object variable
 		// Cannot use anymore because we want to do deeper verifications
 		//_XEH = _obj getVariable "Extended_FiredEH";
-		//if !(isNil "_XEH") exitWith { TRACE_1("Has XEH (1)",_obj); PUSH(_processedObjects,_obj) };
+		//if !(isNil "_XEH") exitWith { TRACE_2("Has XEH (1)",_obj,_type); PUSH(_processedObjects,_obj) };
 
 		// Check 2 - XEH init EH detected
 		_init = _cfg >> "init";
@@ -184,9 +185,9 @@ SLX_XEH_MACHINE set [8, true];
 		};
 		
 		if (_XEH) then {
-			TRACE_1("Has XEH",_obj)
+			TRACE_2("Has XEH",_obj,_type)
 		} else {
-			TRACE_1("Adding XEH",_obj);
+			TRACE_2("Adding XEH",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
 		};
 		
