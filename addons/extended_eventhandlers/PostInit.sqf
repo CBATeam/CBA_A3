@@ -156,6 +156,8 @@ SLX_XEH_MACHINE set [8, true];
 		
 		_type = typeOf _obj;
 
+		PUSH(_processedObjects,_obj);
+
 		if (_type in _fullClasses) exitWith {
 			TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
 			[_obj, "Extended_Init_EventHandlers"] call SLX_XEH_init;
@@ -176,7 +178,7 @@ SLX_XEH_MACHINE set [8, true];
 		// Check 1 - a XEH object variable
 		// Cannot use anymore because we want to do deeper verifications
 		//_XEH = _obj getVariable "Extended_FiredEH";
-		//if !(isNil "_XEH") exitWith { TRACE_2("Has XEH (1)",_obj,_type); PUSH(_processedObjects,_obj) };
+		//if !(isNil "_XEH") exitWith { TRACE_2("Has XEH (1)",_obj,_type) };
 
 		// Check 2 - XEH init EH detected
 		_init = _cfg >> "init";
@@ -193,7 +195,7 @@ SLX_XEH_MACHINE set [8, true];
 			};
 		};
 		
-		_full = false;
+		_full = false; // Used for caching objects that need ALL eventhandlers assigned, incl init.
 		if (_XEH) then {
 			TRACE_2("Has XEH init",_obj,_type)
 		} else {
@@ -218,11 +220,10 @@ SLX_XEH_MACHINE set [8, true];
 					if (toString(_ar) == "_this call SLX") then { _full = false; _XEH = true };
 				};
 			};
-			if !(_XEH) then { _partial = true; TRACE_2("Adding missing EH",_obj,_x); _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] };
+			if !(_XEH) then { _partial = true; TRACE_3("Adding missing EH",_obj,_type,_x); _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] };
 		} forEach _events;
 		if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(_xehClasses,_type); };
 		if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(_fullClasses,_type); };
-		PUSH(_processedObjects,_obj);
 	};
 
 	_processedObjects = []; // Used to maintain the list of processed objects
