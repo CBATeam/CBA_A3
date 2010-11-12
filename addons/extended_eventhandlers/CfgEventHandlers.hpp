@@ -69,7 +69,7 @@ class Extended_Init_EventHandlers
 
 	// Vehicles.
 	class StaticCannon /* : StaticWeapon */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class BIS_Effect_FilmGrain /* : Logic */ {
 		SLX_BIS = """filmGrain"" ppEffectEnable true;   ""filmGrain"" ppEffectAdjust [0.03, 1, 1, 0.1, 1, false];  ""filmGrain"" ppEffectCommit 0;   ";
@@ -159,10 +159,10 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "if (isnil 'BIS_WeatherParticles_logic') then {BIS_WeatherParticles_logic = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\weather\data\scripts\main.sqf""}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'};};";
 	};
 	class M252 /* : StaticMortar */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class 2b14_82mm /* : StaticMortar */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class SecOpManager /* : Logic */ {
 		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\missions\som\data\scripts\init.sqf""";
@@ -339,19 +339,19 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "dummy = _this execVM ""ca\characters2\OTHER\scripts\fly.sqf""";
 	};
 	class AAV /* : Tracked_APC */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";_this execVM ""\ca\tracked2\AAV\scripts\init.sqf""";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }_this execVM ""\ca\tracked2\AAV\scripts\init.sqf""";
 	};
 	class Pickup_PK_TK_GUE_EP1 /* : Pickup_PK_base */ {
 		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup1_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup2_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup3_EINS_CO""] select floor random 3]";
 	};
 	class A10 /* : Plane */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class Su34 /* : Plane */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class AH6X_EP1 /* : AH6_Base_EP1 */ {
-		SLX_BIS = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";(_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true];";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }(_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true];";
 	};
 	class FlagCarrierUNO_EP1 /* : FlagCarrier */ {
 		SLX_BIS = "(_this select 0) setFlagTexture ""ca\Ca_E\data\flag_uno_co.paa""";
@@ -512,7 +512,7 @@ class Extended_GetOutMan_EventHandlers {};
 
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
- init = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
- fired = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
- killed = "_this call BIS_Effects_EH_Killed;";
+	init = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+	fired = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
+	killed = "_this call BIS_Effects_EH_Killed;";
 };
