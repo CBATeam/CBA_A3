@@ -1,6 +1,6 @@
 #define COMPONENT eventhandlers
 
-#include "\x\cba\addons\extended_eventhandlers\script_mod.hpp"
+#include "\extended_eventhandlers\script_mod.hpp"
 
 // #define DEBUG_ENABLED_XEH
 
@@ -19,4 +19,4 @@
 //"HandleDamage", "HandleHealing"
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan"
 
-#include "\x\cba\addons\extended_eventhandlers\script_macros_common.hpp"
+#include "\extended_eventhandlers\script_macros_common.hpp"
