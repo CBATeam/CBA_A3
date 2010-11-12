@@ -97,6 +97,14 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	{ _event = format["Extended_%1EH",_x]; _this setVariable [_event, [(_this getVariable _event) select 0]] } forEach SLX_XEH_OTHER_EVENTS;
 };
 
+SLX_XEH_F_CONVERT_FIRED_EH = {
+	_ar = +_this;
+	_mag = _ar select 6;
+	_ar set [6, _ar select 5];
+	_ar set [5, _mag];
+	_ar;
+};
+
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
 #define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }

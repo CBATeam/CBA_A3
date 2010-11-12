@@ -428,19 +428,19 @@ class Extended_Init_EventHandlers
 };
 class Extended_fired_Eventhandlers {
 	class StaticCannon /* : StaticWeapon */ {
-		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
+		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
 	};
 	class M252 /* : StaticMortar */ {
-		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
+		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
 	};
 	class 2b14_82mm /* : StaticMortar */ {
-		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
+		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
 	};
 	class A10 /* : Plane */ {
-		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
+		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
 	};
 	class Su34 /* : Plane */ {
-		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
+		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
 	};
 };
 class Extended_firednear_Eventhandlers {
@@ -510,4 +510,9 @@ class Extended_GetOut_EventHandlers
 class Extended_GetInMan_EventHandlers {};
 class Extended_GetOutMan_EventHandlers {};
 
-class DefaultEventhandlers; // external - BIS default event handlers in ArmA 2
+class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
+{
+ init = "_scr = _this execVM ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf"";";
+ fired = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
+ killed = "_this call BIS_Effects_EH_Killed;";
+};
