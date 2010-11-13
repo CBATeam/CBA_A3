@@ -22,7 +22,7 @@ Author:
 private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons", "_r"];
 PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
 if (_v isKindOf "CAManBase") exitWith { _r = [_v, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
-if (_v isKindOf "Helicopter") exitWith { _gunney = gunner _v; _r = [if (isNull _gunney) then { driver _v } else { _gunney }, [0]]; TRACE_1("Result",_r); _r; };
+if (_v isKindOf "Air") exitWith { _gunney = gunner _v; _r = [if (isNull _gunney) then { driver _v } else { _gunney }, [0]]; TRACE_1("Result",_r); _r; };
 
 _tp = [];
 _tc  = count __cfg;
