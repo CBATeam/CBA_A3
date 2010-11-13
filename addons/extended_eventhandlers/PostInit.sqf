@@ -43,6 +43,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 }];
 GVAR(init_obj) setDamage 1;
+waitUntil {isNil QUOTE(GVAR(init_obj))};
 
 
 // On Server + Non JIP Client, we are now after all objects have inited
@@ -110,6 +111,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 }];
 GVAR(init_obj) setDamage 1;
+waitUntil {isNil QUOTE(GVAR(init_obj))};
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
