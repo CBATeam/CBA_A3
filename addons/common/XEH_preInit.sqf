@@ -36,6 +36,25 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 	diag_log [diag_frameNo, diag_tickTime, time, "WARNING: isServer is true while isDedicated is false; You can safely ignore this if this is a hosted game; otherwise please report asap"];
 };
 
+// DirectCall, using single-frame-code-executioner by Xeno
+// The directCall function will execute (with parameters) next frame, and without delay
+// [[1,2,3], "mySuperFunction"] call FUNC(directCall);
+// _obj = [[1,2,3], "mySuperFunction"] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
+GVAR(call_i) = 0; 
+FUNC(directCall) = {
+	private ["_obj", "_objName"];
+	PARAMS_2(_params,_function);
+
+	INC(GVAR(call_i));
+	_objName = format[QUOTE(GVAR(call_obj_%1)), GVAR(call_i)];
+	_obj = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	missionNameSpace setVariable [_objName, _obj];
+	_obj addEventHandler ["killed", compile "%1 call %2; deleteVehicle %3; %3 = nil", _params, _function, _objName];
+	_obj setDamage 1;
+	_obj;
+};
+
+
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
 DEPRECATE(fAddMagazineCargo,fnc_addMagazineCargo);
