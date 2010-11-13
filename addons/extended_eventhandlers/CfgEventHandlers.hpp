@@ -17,9 +17,9 @@ killed           = "_this call SLX_XEH_EH_Killed"; \
 landedTouchDown  = "_this call SLX_XEH_EH_LandedTouchDown"; \
 landedStopped    = "_this call SLX_XEH_EH_LandedStopped"; \
 respawn          = "_this call SLX_XEH_EH_Respawn"; \
-MPRespawn        = "_this call SLX_XEH_EH_MPRespawn"; \
-MPHit            = "_this call SLX_XEH_EH_MPHit"; \
-MPKilled         = "_this call SLX_XEH_EH_MPKilled"; // \
+mpRespawn        = "_this call SLX_XEH_EH_MPRespawn"; \
+mpHit            = "_this call SLX_XEH_EH_MPHit"; \
+mpKilled         = "_this call SLX_XEH_EH_MPKilled"; // \
 //handleDamage     = "_this call SLX_XEH_EH_HandleDamage"; \
 //handleHealing    = "_this call SLX_XEH_EH_HandleHealing";
 
@@ -514,6 +514,7 @@ class Extended_GetOutMan_EventHandlers {};
 // New OA 1.55 classes
 // TODO: What about Vehicle Respawn?
 // TODO: MPRespawn vs Respawn seems unclear, only respawn seems to work?
+// Respawn only seems to fire where the unit is local, but MPRespawn or MPKilled nowhere??
 class Extended_Respawn_EventHandlers
 {
 	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
@@ -534,6 +535,7 @@ class Extended_MPRespawn_EventHandlers
 {
 	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
 	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
+	/*
 	class CAManBase
 	{
 		class SLX_RespawnInit
@@ -542,6 +544,7 @@ class Extended_MPRespawn_EventHandlers
 				mprespawn  = "_this call SLX_XEH_EH_RespawnInit";
 		};
 	};
+	*/
 };
 
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2

@@ -17,7 +17,7 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH BEG: %2", time, _this];
+diag_log text format["(%1) XEH BEG: %2", time, _this, local (_this select 0)];
 #endif
 
 // Get unit.
