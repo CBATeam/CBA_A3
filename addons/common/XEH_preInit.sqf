@@ -38,18 +38,20 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
 // DirectCall, using single-frame-code-executioner by Xeno
 // The directCall function will execute (with parameters) next frame, and without delay
-// [[1,2,3], "mySuperFunction"] call FUNC(directCall);
-// _obj = [[1,2,3], "mySuperFunction"] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
+// [[1,2,3], {mycode to execute}] call FUNC(directCall);
+// _obj = [[1,2,3], {mycode to execute}] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
 GVAR(call_i) = 0; 
 FUNC(directCall) = {
 	private ["_obj", "_objName"];
-	PARAMS_2(_params,_function);
+	PARAMS_2(_params,_code);
 
 	INC(GVAR(call_i));
 	_objName = format[QUOTE(GVAR(call_obj_%1)), GVAR(call_i)];
 	_obj = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 	missionNameSpace setVariable [_objName, _obj];
-	_obj addEventHandler ["killed", compile format["%1 call %2; deleteVehicle %3; %3 = nil", _params, _function, _objName]];
+	_obj setVariable [QUOTE(GVAR(params)), _params];
+	_obj setVariable [QUOTE(GVAR(code)), _code];
+	_obj addEventHandler ["killed", compile format["(%1 getVariable 'cba_common_params') call (%1 getVariable 'cba_common_code'); deleteVehicle %1; %1 = nil", _objName]];
 	_obj setDamage 1;
 	_obj;
 };
