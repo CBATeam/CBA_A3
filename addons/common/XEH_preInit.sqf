@@ -41,6 +41,7 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 // [[1,2,3], {mycode to execute}] call FUNC(directCall);
 // _obj = [[1,2,3], {mycode to execute}] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
 GVAR(call_i) = 0; 
+FUNC(directCallInt) = { (_this getVariable QUOTE(GVAR(params))) call (_this getVariable QUOTE(GVAR(code))); deleteVehicle _this };
 FUNC(directCall) = {
 	private ["_obj", "_objName"];
 	PARAMS_2(_params,_code);
@@ -51,7 +52,7 @@ FUNC(directCall) = {
 	missionNameSpace setVariable [_objName, _obj];
 	_obj setVariable [QUOTE(GVAR(params)), _params];
 	_obj setVariable [QUOTE(GVAR(code)), _code];
-	_obj addEventHandler ["killed", compile format["(%1 getVariable 'cba_common_params') call (%1 getVariable 'cba_common_code'); deleteVehicle %1; %1 = nil", _objName]];
+	_obj addEventHandler ["killed", compile format[QUOTE(%1 call FUNC(directCallInt); %1 = nil), _objName]];
 	_obj setDamage 1;
 	_obj;
 };
