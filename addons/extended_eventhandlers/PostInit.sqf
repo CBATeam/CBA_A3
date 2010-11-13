@@ -23,8 +23,8 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 	if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
 };
 
-// Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
-_handle = {
+GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) addEventHandler ["killed", {
 	XEH_LOG("XEH: VehicleInit Started");
 	{
 		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
@@ -40,8 +40,10 @@ _handle = {
 	} forEach vehicles;
 	
 	XEH_LOG("XEH: VehicleInit Finished, PostInit Started");
-} execFSM "extended_eventhandlers\delayless.fsm";
-waitUntil {completedFSM _handle};
+	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
+}];
+GVAR(init_obj) setDamage 1;
+
 
 // On Server + Non JIP Client, we are now after all objects have inited
 // and at the briefing, still time == 0
@@ -96,8 +98,8 @@ if (isMultiplayer) then
 private["_time2Wait"];
 if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
 
-// Still using delayLess.fsm so it errors with 'suspension not allowed in this context', incase someone used a sleep or waitUntil incl error output!
-_handle = {
+GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) addEventHandler ["killed", {
 	// General InitPosts
 	{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
 
@@ -105,8 +107,9 @@ _handle = {
 	// thread still gets their InitPost ran
 	SLX_XEH_MACHINE set [7, true];
 	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
-} execFSM "extended_eventhandlers\delayless.fsm";
-waitUntil {completedFSM _handle};
+	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
+}];
+GVAR(init_obj) setDamage 1;
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
