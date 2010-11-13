@@ -49,7 +49,7 @@ FUNC(directCall) = {
 	_objName = format[QUOTE(GVAR(call_obj_%1)), GVAR(call_i)];
 	_obj = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 	missionNameSpace setVariable [_objName, _obj];
-	_obj addEventHandler ["killed", compile "%1 call %2; deleteVehicle %3; %3 = nil", _params, _function, _objName];
+	_obj addEventHandler ["killed", compile format["%1 call %2; deleteVehicle %3; %3 = nil", _params, _function, _objName]];
 	_obj setDamage 1;
 	_obj;
 };
