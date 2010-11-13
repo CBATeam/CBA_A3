@@ -51,16 +51,12 @@ _fSetHandler = {
 	{
 		_h = _cur;
 		_h set [_type, _handler]
-	}
-	else
-	{
+	} else {
 		if (_type > 0) then
 		{
 			_h=[_cur,"",""];
 			_h set [_type, _handler];
-		}
-		else
-		{
+		} else {
 			_h=_handler;
 		};
 	};
@@ -84,9 +80,7 @@ _f = {
 			if (isText _replaceEntry) then
 			{
 				_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-			}
-			else
-			{
+			} else {
 				if (isNumber _replaceEntry) then
 				{
 					_replaceDEH = ((getNumber _replaceEntry) == 1);
@@ -98,9 +92,7 @@ _f = {
 				{
 					//_handlers set [0, getText _handlerEntry];
 					[0, getText _handlerEntry, "all"] call _fSetHandler;
-				}
-				else
-				{
+				} else {
 					//_handlers set [count _handlers, getText _handlerEntry];
 					[_idx, getText _handlerEntry, "all"] call _fSetHandler;
 				};
@@ -144,7 +136,7 @@ _f = {
 	// EH to be called.
 	if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 	{
-		_handlers =[getText(configFile/"DefaultEventhandlers"/_event)];
+		_handlers = [getText(configFile/"DefaultEventhandlers"/_event)];
 	};
 
 	// Search the mission config file (description.ext), then campaign
@@ -179,9 +171,7 @@ _f = {
 					{
 						//_handlers set [count _handlers, getText _cfgEntry];
 						_handlers set [_idx, getText _cfgEntry];
-					}
-					else
-					{
+					} else {
 						// Composite XEH event handler class
 						if (isClass _cfgEntry) then
 						{
@@ -193,9 +183,7 @@ _f = {
 							if (isText _excludeEntry) then
 							{
 								_excludeClass = (getText _excludeEntry);
-							}
-							else
-							{
+							} else {
 								if (isArray _excludeEntry) then
 								{
 									_excludeClasses = (getArray _excludeEntry);
@@ -218,9 +206,7 @@ _f = {
 		if (typeName _x=="STRING") then
 		{
 			_handler = _handler + _x + ";"
-		}
-		else
-		{
+		} else {
 			_h=_x;
 			{_handler = _handler + _x + ";"} forEach _h;
 		};
@@ -230,9 +216,7 @@ _f = {
 		if (typeName _x=="STRING") then
 		{
 			_handlerPlayer = _handlerPlayer + _x + ";"
-		}
-		else
-		{
+		} else {
 			_h=_x;
 			{_handlerPlayer = _handlerPlayer + _x + ";"} forEach _h;
 		};
