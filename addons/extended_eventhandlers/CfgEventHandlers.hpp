@@ -512,7 +512,21 @@ class Extended_GetInMan_EventHandlers {};
 class Extended_GetOutMan_EventHandlers {};
 
 // New OA 1.55 classes
-class Extended_Respawn_EventHandlers {};
+// TODO: What about Vehicle Respawn?
+// TODO: MPRespawn vs Respawn seems unclear, only respawn seems to work?
+class Extended_Respawn_EventHandlers
+{
+	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
+	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
+	class CAManBase
+	{
+		class SLX_RespawnInit
+		{
+				scope	 = public;
+				respawn  = "_this call SLX_XEH_EH_RespawnInit";
+		};
+	};
+};
 class Extended_MPHit_EventHandlers {};
 class Extended_MPKilled_EventHandlers {};
 
@@ -520,7 +534,7 @@ class Extended_MPRespawn_EventHandlers
 {
 	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
 	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
-	class Man
+	class CAManBase
 	{
 		class SLX_RespawnInit
 		{
