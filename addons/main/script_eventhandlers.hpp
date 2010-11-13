@@ -1,4 +1,3 @@
-
 class Extended_EventHandlers;
 class Extended_PreInit_EventHandlers;
 class Extended_PostInit_EventHandlers;
@@ -20,3 +19,7 @@ class Extended_killed_Eventhandlers;
 class Extended_LandedTouchDown_EventHandlers;
 class Extended_LandedStopped_EventHandlers;
 class Extended_HandleDamage_EventHandlers;
+class Extended_Respawn_EventHandlers;
+class Extended_MPRespawn_EventHandlers;
+class Extended_MPKilled_EventHandlers;
+class Extended_MPHit_EventHandlers;

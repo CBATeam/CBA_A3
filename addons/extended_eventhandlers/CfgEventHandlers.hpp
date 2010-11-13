@@ -15,7 +15,11 @@ hit              = "_this call SLX_XEH_EH_Hit"; \
 incomingMissile  = "_this call SLX_XEH_EH_IncomingMissile"; \
 killed           = "_this call SLX_XEH_EH_Killed"; \
 landedTouchDown  = "_this call SLX_XEH_EH_LandedTouchDown"; \
-landedStopped    = "_this call SLX_XEH_EH_LandedStopped"; // \
+landedStopped    = "_this call SLX_XEH_EH_LandedStopped"; \
+respawn          = "_this call SLX_XEH_EH_Respawn"; \
+MPRespawn        = "_this call SLX_XEH_EH_MPRespawn"; \
+MPHit            = "_this call SLX_XEH_EH_MPHit"; \
+MPKilled         = "_this call SLX_XEH_EH_MPKilled"; // \
 //handleDamage     = "_this call SLX_XEH_EH_HandleDamage"; \
 //handleHealing    = "_this call SLX_XEH_EH_HandleHealing";
 
@@ -458,10 +462,6 @@ class Extended_hit_Eventhandlers {
 	};
 };
 class Extended_killed_Eventhandlers {
-	class Man	{
-		SLX_XEH_Killed = "_this call SLX_XEH_killed"; // Used by the respawn mon.
-	};
-
 	class A10 /* : Plane */ {
 		SLX_BIS = "_this call BIS_Effects_EH_Killed;";
 	};
@@ -510,6 +510,25 @@ class Extended_GetOut_EventHandlers
 
 class Extended_GetInMan_EventHandlers {};
 class Extended_GetOutMan_EventHandlers {};
+
+// New OA 1.55 classes
+class Extended_Respawn_EventHandlers {};
+class Extended_MPHit_EventHandlers {};
+class Extended_MPKilled_EventHandlers {};
+
+class Extended_MPRespawn_EventHandlers
+{
+	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
+	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
+	class Man
+	{
+		class SLX_RespawnInit
+		{
+				scope	 = public;
+				mprespawn  = "_this call SLX_XEH_EH_RespawnInit";
+		};
+	};
+};
 
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
