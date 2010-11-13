@@ -426,23 +426,24 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "if (IsNil {BIS_WF_Common}) then {BIS_WF_Common = _this select 0;Private [""_nullReturn""];_nullReturn = [false] ExecVM ""ca\Warfare2\Scripts\Init.sqf"";};";
 	};
 };
-class Extended_fired_Eventhandlers {
+class Extended_firedBis_Eventhandlers {
 	class StaticCannon /* : StaticWeapon */ {
-		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
+		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
 	class M252 /* : StaticMortar */ {
-		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
+		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
 	class 2b14_82mm /* : StaticMortar */ {
-		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
+		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
 	class A10 /* : Plane */ {
-		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
+		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
 	class Su34 /* : Plane */ {
-		SLX_BIS = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;";
+		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
 };
+
 class Extended_firednear_Eventhandlers {
 	class CAAnimalBase /* : Animal */ {
 		SLX_BIS = "_this execFSM ""CA\animals2\Data\scripts\reactFire.fsm"";";
@@ -513,6 +514,7 @@ class Extended_GetOutMan_EventHandlers {};
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
 	init = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
-	fired = "(_this call SLX_XEH_F_CONVERT_FIRED_EH) call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
+	delete fired;
+	firedBis = "_this call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
 	killed = "_this call BIS_Effects_EH_Killed;";
 };

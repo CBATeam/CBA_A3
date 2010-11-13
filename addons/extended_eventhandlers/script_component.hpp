@@ -17,6 +17,6 @@
 	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit", \
 	"IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped"
 //"HandleDamage", "HandleHealing"
-#define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan"
+#define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 
 #include "\extended_eventhandlers\script_macros_common.hpp"

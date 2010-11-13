@@ -97,16 +97,12 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	{ _event = format["Extended_%1EH",_x]; _this setVariable [_event, [(_this getVariable _event) select 0]] } forEach SLX_XEH_OTHER_EVENTS;
 };
 
-SLX_XEH_F_CONVERT_FIRED_EH = {
-	[_this select 0, _this select 1, _this select 2, _this select 3, _this select 4, _this select 6, _this select 5];
-};
-
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
 #define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
 
 SLX_XEH_EH_Init = { [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init; };
-SLX_XEH_EH_Fired = { _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach((_this select 0)getVariable'Extended_FiredEH') };
+SLX_XEH_EH_Fired = { {_this call _x}forEach((_this select 0)getVariable'Extended_FiredBisEH'); _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach((_this select 0)getVariable'Extended_FiredEH') };
 SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
 SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
 
