@@ -225,7 +225,7 @@ _f = {
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
-	_unit setVariable [_xeh, [compile _handler]];
+	_unit setVariable [_xeh, if (_handler == "" && _handlerPlayer == "") then { [] } else { [compile _handler] }];
 	_unit setVariable [_xehPlayer, compile _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
