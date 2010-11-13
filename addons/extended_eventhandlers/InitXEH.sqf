@@ -102,7 +102,7 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 #define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
 
 SLX_XEH_EH_Init = { [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init; };
-SLX_XEH_EH_Fired = { {_this call _x}forEach((_this select 0)getVariable'Extended_FiredBisEH'); _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach((_this select 0)getVariable'Extended_FiredEH') };
+SLX_XEH_EH_Fired = { {_this call _x}forEach((_this select 0)getVariable'Extended_FiredBisEH'); _feh = ((_this select 0)getVariable'Extended_FiredEH'); if (count _feh > 0) then { _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach _feh } };
 SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
 SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
 
