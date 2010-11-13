@@ -16,10 +16,10 @@ incomingMissile  = "_this call SLX_XEH_EH_IncomingMissile"; \
 killed           = "_this call SLX_XEH_EH_Killed"; \
 landedTouchDown  = "_this call SLX_XEH_EH_LandedTouchDown"; \
 landedStopped    = "_this call SLX_XEH_EH_LandedStopped"; \
-respawn          = "_this call SLX_XEH_EH_Respawn"; \
-mpRespawn        = "_this call SLX_XEH_EH_MPRespawn"; \
-mpHit            = "_this call SLX_XEH_EH_MPHit"; \
-mpKilled         = "_this call SLX_XEH_EH_MPKilled"; // \
+respawn          = "_this call SLX_XEH_EH_Respawn"; // \
+//mpRespawn        = "_this call SLX_XEH_EH_MPRespawn"; \
+//mpHit            = "_this call SLX_XEH_EH_MPHit"; \
+//mpKilled         = "_this call SLX_XEH_EH_MPKilled"; // \
 //handleDamage     = "_this call SLX_XEH_EH_HandleDamage"; \
 //handleHealing    = "_this call SLX_XEH_EH_HandleHealing";
 
@@ -519,6 +519,7 @@ class Extended_Respawn_EventHandlers
 {
 	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
 	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
+	// This is required because BIS Initeventhandlers fire on all machines for respawning unit, except on his own machine.
 	class CAManBase
 	{
 		class SLX_RespawnInit
@@ -528,25 +529,15 @@ class Extended_Respawn_EventHandlers
 		};
 	};
 };
+
+/*
+// Don't work
 class Extended_MPHit_EventHandlers {};
 class Extended_MPKilled_EventHandlers {};
-
 class Extended_MPRespawn_EventHandlers
 {
-	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
-	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
-	/*
-	class CAManBase
-	{
-		class SLX_RespawnInit
-		{
-				scope	 = public;
-				mprespawn  = "_this call SLX_XEH_EH_RespawnInit";
-		};
-	};
-	*/
 };
-
+*/
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
 	init = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
