@@ -55,6 +55,17 @@ class Extended_InitPost_EventHandlers
 			init	  = "_this call SLX_XEH_initOthers";
 		};
 	};
+	class Man
+	{
+		// We use this to determine if a unit has respawned,
+		// and therefore not re-run init eventhandlers that have onRespawn = false (the default)
+		class SLX_Init_Playable
+		{
+			// TOODO just move to postInit
+			init	= "_unit = _this select 0; if (_unit in playableUnits) then { _unit setVariable ['SLX_XEH_PLAYABLE', true] }";
+			onRespawn = false;
+		};
+	};
 };
 
 // Extended EH classes, where new events are defined.
