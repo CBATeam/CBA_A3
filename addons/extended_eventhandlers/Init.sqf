@@ -55,12 +55,12 @@ if (count _this == 2 && _isMan && (time>0)) exitWith
 
 		_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
 		if (isNil "_unitPlayable") then { _unitPlayable = false };
+		
+		// If unit already has the variable, it is a respawned unit.
+		// Set by InitPost Man-eventhandler.
 		if (_unitPlayable) then {
 			[_unit, _this select 1, true] call SLX_XEH_init; // is respawn
 		} else {
-			if (_unit in playableUnits) then {
-				_unit setVariable ["SLX_XEH_PLAYABLE", true];
-			};
 			[_unit, _this select 1, false] call SLX_XEH_init; // is not respawn
 		};
 	};
