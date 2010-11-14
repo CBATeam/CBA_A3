@@ -191,7 +191,7 @@ _f = {
 							};
 							_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 							// Handle event, serverEvent and clientEvent, for both normal and player
-							{	_x call _f } forEach [["", _handlers, _idx], ["Player", _handlersPlayer, _idxPlayer]];
+							{ _x call _f } forEach [["", _handlers, _idx], ["Player", _handlersPlayer, _idxPlayer]];
 						};
 					};
 					_i = _i + 1;
@@ -205,20 +205,48 @@ _f = {
 	{
 		if (typeName _x=="STRING") then
 		{
-			_handler = _handler + _x + ";"
+			if (_x != "") then {
+				_handler = _handler + _x + ";"
+			} else {
+				#ifdef DEBUG_MODE_FULL
+					XEH_LOG("Empty handler!");
+				#endif
+			};
 		} else {
 			_h=_x;
-			{_handler = _handler + _x + ";"} forEach _h;
+			{
+				if (_x != "") then {
+					_handler = _handler + _x + ";"
+				} else {
+					#ifdef DEBUG_MODE_FULL
+						XEH_LOG("Empty handler!");
+					#endif
+				};
+			} forEach _h;
 		};
 	} forEach _handlers;
 	_handlerPlayer = "";
 	{
 		if (typeName _x=="STRING") then
 		{
-			_handlerPlayer = _handlerPlayer + _x + ";"
+			if (_x != "") then {
+				_handlerPlayer = _handlerPlayer + _x + ";"
+			} else {
+				#ifdef DEBUG_MODE_FULL
+					XEH_LOG("Empty handler!");
+				#endif
+			};
 		} else {
 			_h=_x;
-			{_handlerPlayer = _handlerPlayer + _x + ";"} forEach _h;
+			{
+				if (_x != "") then {
+					_handlerPlayer = _handlerPlayer + _x + ";"
+				} else {
+					#ifdef DEBUG_MODE_FULL
+						XEH_LOG("Empty handler!");
+					#endif
+				};
+			} forEach _h;
 		};
 	} forEach _handlersPlayer;
 
@@ -229,7 +257,7 @@ _f = {
 	_unit setVariable [_xehPlayer, compile _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
-		diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, _event, _handler != ""];
+		diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, _event, _handler != "", _handlerPlayer != ""];
 	#endif
 } forEach SLX_XEH_OTHER_EVENTS;
 
