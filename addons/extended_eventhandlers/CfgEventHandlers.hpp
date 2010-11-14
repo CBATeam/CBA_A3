@@ -62,7 +62,7 @@ class Extended_InitPost_EventHandlers
 		class SLX_Init_Playable
 		{
 			// TOODO just move to postInit
-			init	= "_unit = _this select 0; if (_unit in playableUnits) then { _unit setVariable ['SLX_XEH_PLAYABLE', true] }";
+			init	= "_this call SLX_XEH_initPlayable";
 			onRespawn = false;
 		};
 	};
