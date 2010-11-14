@@ -343,7 +343,7 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "dummy = _this execVM ""ca\characters2\OTHER\scripts\fly.sqf""";
 	};
 	class AAV /* : Tracked_APC */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }_this execVM ""\ca\tracked2\AAV\scripts\init.sqf""";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }; _this execVM ""\ca\tracked2\AAV\scripts\init.sqf""";
 	};
 	class Pickup_PK_TK_GUE_EP1 /* : Pickup_PK_base */ {
 		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup1_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup2_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup3_EINS_CO""] select floor random 3]";
@@ -355,7 +355,7 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class AH6X_EP1 /* : AH6_Base_EP1 */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }(_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true];";
+		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }; (_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true];";
 	};
 	class FlagCarrierUNO_EP1 /* : FlagCarrier */ {
 		SLX_BIS = "(_this select 0) setFlagTexture ""ca\Ca_E\data\flag_uno_co.paa""";
