@@ -441,7 +441,9 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "if (IsNil {BIS_WF_Common}) then {BIS_WF_Common = _this select 0;Private [""_nullReturn""];_nullReturn = [false] ExecVM ""ca\Warfare2\Scripts\Init.sqf"";};";
 	};
 };
-class Extended_firedBis_Eventhandlers {
+class Extended_fired_Eventhandlers {}; // Backwards compatibility, uses XEH notation
+
+class Extended_firedBis_Eventhandlers { // New fired EH, uses BIS notation
 	class StaticCannon /* : StaticWeapon */ {
 		SLX_BIS = "_this call BIS_Effects_EH_Fired;";
 	};
