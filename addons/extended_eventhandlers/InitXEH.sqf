@@ -1,17 +1,27 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+// Compile all necessary scripts and start one vehicle crew initialisation thread
+
 XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version"));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
-// Start one vehicle crew initialisation thread
 SLX_XEH_objects = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 
-SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
-SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
-SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
+private ["_cfgRespawn", "_respawn"];
+_cfgRespawn = (missionConfigFile/"respawn");
+_respawn = false;
+if ( isNumber(_cfgRespawn) ) then
+{
+	_respawn = !(getNumber(_cfgRespawn) in [0, 1, 4, 5]);
+};
+if ( isText(_cfgRespawn) ) then
+{
+	_respawn = !(getText(_cfgRespawn) in ["none", "bird", "group", "side"]);
+};
+
 SLX_XEH_MACHINE =
 [
 	!isDedicated, // 0 - isClient (and thus has player)
@@ -23,9 +33,10 @@ SLX_XEH_MACHINE =
 	!isMultiplayer, // 6 - SP?
 	false, // 7 - StartInit Passed
 	false, // 8 - Postinit Passed
-	0      // 9 - counter used to assign a vehicleVarName to unnamed playable
-	       //     units so they can be tracked. See RespawnMonitor.sqf
+	isMultiplayer && _respawn      // 9 - Multiplayer && respawn?
 ];
+
+
 SLX_XEH_F_INIT = {
 	private [
 		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
@@ -48,7 +59,6 @@ SLX_XEH_F_INIT = {
 				_entryServer = (_entry/"serverInit");
 				_entryClient = (_entry/"clientInit");
 				_entry = (_entry/"init");
-
 				if (isText _entry) then
 				{
 					_Inits set [count _Inits, compile(getText _entry)];
@@ -107,29 +117,6 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	#define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 
-SLX_XEH_initPlayable =
-{
-	_unit = _this select 0;
-	if (_unit in playableUnits) then
-	{
-		#ifdef DEBUG_MODE_FULL
-			diag_log ['Playabale unit!', _unit];
-		#endif
-		_unit setVariable ['SLX_XEH_PLAYABLE', true];
-	};
-};
-SLX_XEH_EH_Init = { [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init };
-SLX_XEH_EH_RespawnInit = { [_this select 0, "Extended_Init_EventHandlers", true] call SLX_XEH_init };
-SLX_XEH_EH_Fired =
-{
-	#ifdef DEBUG_MODE_FULL
-		// diag_log ['Fired',_this, local (_this select 0), typeOf (_this select 0)];
-	#endif
-	{_this call _x}forEach((_this select 0)getVariable'Extended_FiredBisEH'); _feh = ((_this select 0)getVariable'Extended_FiredEH'); if (count _feh > 0) then { _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach _feh }
-};
-SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
-SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
-
 XEH_FUNC(Hit);
 XEH_FUNC(AnimChanged);
 XEH_FUNC(AnimStateChanged);
@@ -149,6 +136,36 @@ XEH_FUNC(Respawn);
 XEH_FUNC(MPHit);
 XEH_FUNC(MPKilled);
 XEH_FUNC(MPRespawn);
+
+SLX_XEH_EH_Init = { [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init };
+SLX_XEH_EH_RespawnInit = { [_this select 0, "Extended_Init_EventHandlers", true] call SLX_XEH_init };
+SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
+SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
+SLX_XEH_EH_Fired =
+{
+	#ifdef DEBUG_MODE_FULL
+		// diag_log ['Fired',_this, local (_this select 0), typeOf (_this select 0)];
+	#endif
+	{_this call _x}forEach((_this select 0)getVariable'Extended_FiredBisEH'); _feh = ((_this select 0)getVariable'Extended_FiredEH'); if (count _feh > 0) then { _c=count _this;if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};{_this call _x}forEach _feh }
+};
+
+// XEH init functions
+SLX_XEH_initPlayable =
+{
+	_unit = _this select 0;
+	if (_unit in playableUnits) then
+	{
+		#ifdef DEBUG_MODE_FULL
+			diag_log ['Playabale unit!', _unit];
+		#endif
+		_unit setVariable ['SLX_XEH_PLAYABLE', true];
+	};
+};
+
+SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
+SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
+SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
+
 
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";

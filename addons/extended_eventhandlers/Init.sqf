@@ -29,7 +29,7 @@ _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
 _isMan = _unit isKindOf "Man";
 
-if (count _this == 2 && _isMan && (time>0) && isMultiplayer) exitWith
+if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWith
 {
 	// Delay initialisation until we can check if it's a respawned unit
 	// or a createUnit:ed one. (Respawned units will have the object variable
