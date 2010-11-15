@@ -37,8 +37,8 @@ _fnc_partial = {
 
 // Process each new unit
 _fnc = {
-	private ["_cfg", "_init", "_initAr", "_XEH", "_type", "_full", "_partial"];
-	PARAMS_1(_obj);
+	private ["_obj", "_cfg", "_init", "_initAr", "_XEH", "_type", "_full", "_partial"];
+	_obj = _this select 0;
 	
 	_type = typeOf _obj;
 

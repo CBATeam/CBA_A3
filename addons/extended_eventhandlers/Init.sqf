@@ -8,7 +8,7 @@
 *  each matching EH class and exec them.
 */
 private [
-	"_Extended_Init_Class", "_isRespawn", "_unitClass", "_classes",
+	"_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass", "_classes",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
@@ -21,8 +21,9 @@ private [
 #endif
 
 // Get unit.
-PARAMS_2(_unit,_Extended_Init_Class);
-DEFAULT_PARAM(2,_isRespawn,false);
+_unit = _this select 0;
+_Extended_Init_Class = _this select 1;
+_isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 
 //
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
@@ -40,8 +41,8 @@ if (count _this == 2 && _isMan && (time>0)) exitWith
 	// Wait for the unit to be fully "ready"
 	_h = [_unit,_Extended_Init_Class] spawn
 	{
-		private ["_unitPlayable"];
-		PARAMS_1(_unit);
+		private ["_unit", "_unitPlayable"];
+		_unit = _this select 0;
 
 		#ifdef DEBUG_MODE_FULL
 			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit];
