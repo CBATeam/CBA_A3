@@ -201,57 +201,39 @@ _f = {
 	} forEach [configFile, campaignConfigFile, missionConfigFile];
 
 	// Now concatenate all the handlers into one string
-	#ifdef DEBUG_MODE_FULL
-		diag_log ["Handlers:", _handlers];
-	#endif
 	_handler = "";
 	{
 		if (typeName _x=="STRING") then
 		{
+			// Some entries are empty, because they do not contain all variants (server, client, and normal)
 			if (_x != "") then {
 				_handler = _handler + _x + ";"
-			} else {
-				#ifdef DEBUG_MODE_FULL
-					XEH_LOG("Empty handler!");
-				#endif
 			};
 		} else {
 			_h=_x;
+			// Some entries are empty, because they do not contain all variants (server, client, and normal)
 			{
 				if (_x != "") then {
 					_handler = _handler + _x + ";"
-				} else {
-					#ifdef DEBUG_MODE_FULL
-						XEH_LOG("Empty handler!");
-					#endif
 				};
 			} forEach _h;
 		};
 	} forEach _handlers;
 
-	#ifdef DEBUG_MODE_FULL
-		diag_log ["HandlersPlayer:", _handlersPlayer];
-	#endif
 	_handlerPlayer = "";
 	{
 		if (typeName _x=="STRING") then
 		{
+			// Some entries are empty, because they do not contain all variants (server, client, and normal)
 			if (_x != "") then {
 				_handlerPlayer = _handlerPlayer + _x + ";"
-			} else {
-				#ifdef DEBUG_MODE_FULL
-					XEH_LOG("Empty handler!");
-				#endif
 			};
 		} else {
 			_h=_x;
 			{
+				// Some entries are empty, because they do not contain all variants (server, client, and normal)
 				if (_x != "") then {
 					_handlerPlayer = _handlerPlayer + _x + ";"
-				} else {
-					#ifdef DEBUG_MODE_FULL
-						XEH_LOG("Empty handler!");
-					#endif
 				};
 			} forEach _h;
 		};
