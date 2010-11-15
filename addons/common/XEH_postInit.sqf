@@ -26,7 +26,7 @@ if (isNil "BIS_functions_mainscope") then
 	TRACE_1("Using already available BIS_functions_mainscope",_logic);
 };
 
-if (isnil "RE") then
+if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
