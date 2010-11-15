@@ -8,6 +8,7 @@ class Extended_AnimDone_EventHandlers;
 class Extended_Dammaged_EventHandlers;
 class Extended_Engine_EventHandlers;
 class Extended_fired_Eventhandlers;
+class Extended_firedbis_Eventhandlers;
 class Extended_firednear_Eventhandlers;
 class Extended_Fuel_EventHandlers;
 class Extended_Gear_EventHandlers;
