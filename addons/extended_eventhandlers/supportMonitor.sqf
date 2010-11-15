@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
 // Only works if there is at least 1 XEH-enabled object on the Map - Place SLX_XEH_Logic to make sure XEH initializes.

@@ -202,7 +202,7 @@ _f = {
 
 	// Now concatenate all the handlers into one string
 	#ifdef DEBUG_MODE_FULL
-		diag_log ["Handlers:, _handlers];
+		diag_log ["Handlers:", _handlers];
 	#endif
 	_handler = "";
 	{
@@ -230,7 +230,7 @@ _f = {
 	} forEach _handlers;
 
 	#ifdef DEBUG_MODE_FULL
-		diag_log ["HandlersPlayer:, _handlersPlayer];
+		diag_log ["HandlersPlayer:", _handlersPlayer];
 	#endif
 	_handlerPlayer = "";
 	{
