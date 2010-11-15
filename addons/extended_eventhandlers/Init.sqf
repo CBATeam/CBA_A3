@@ -25,11 +25,11 @@ _unit = _this select 0;
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 
-//
+// Multiplayer respawn handling
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
 _isMan = _unit isKindOf "Man";
 
-if (count _this == 2 && _isMan && (time>0)) exitWith
+if (count _this == 2 && _isMan && (time>0) && isMultiplayer) exitWith
 {
 	// Delay initialisation until we can check if it's a respawned unit
 	// or a createUnit:ed one. (Respawned units will have the object variable
