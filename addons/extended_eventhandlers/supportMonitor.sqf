@@ -10,7 +10,6 @@ _excludes = ["LaserTarget"]; // TODO: Anything else?? - Ammo crates for instance
 
 // Add all (Init + "Other" XEH eventhandlers")
 _fnc_full = {
-	TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
 	[_obj] call SLX_XEH_EH_Init;
 	{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach _events;
 };
@@ -39,7 +38,6 @@ _fnc_partial = {
 _fnc = {
 	private ["_obj", "_cfg", "_init", "_initAr", "_XEH", "_type", "_full", "_partial"];
 	_obj = _this select 0;
-	
 	_type = typeOf _obj;
 
 	PUSH(_processedObjects,_obj);
@@ -48,15 +46,18 @@ _fnc = {
 	if (_type in _xehClasses) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
 
 	// No XEH EH entries at all - Needs full XEH
-	if (_type in _fullClasses) exitWith { call _fnc_full };
+	if (_type in _fullClasses) exitWith {
+		TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
+		call _fnc_full;
+	};
 	
 	if (_type in _exclClasses) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };
 
 	_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
 	// No EH class - Needs full XEH
 	if !(isClass _cfg) exitWith {
+		TRACE_2("Adding XEH Full and caching",_obj,_type);
 		call _fnc_full;
-		TRACE_2("Caching (full)",_obj,_type);
 		PUSH(_fullClasses,_type);
 	};
 	
