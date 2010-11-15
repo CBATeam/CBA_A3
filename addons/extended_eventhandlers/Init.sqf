@@ -17,7 +17,7 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH BEG: %2", time, _this, local (_this select 0)];
+	diag_log text format["(%1) XEH BEG: %2, %3", time, _this, local (_this select 0), typeOf (_this select 0)];
 #endif
 
 // Get unit.
@@ -280,7 +280,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH RUN: %2 - %3", time, _this, _inits];
+diag_log text format["(%1) XEH RUN: %2 - %3 - %3", time, _this, typeOf (_this select 0), _inits];
 #endif
 
 {
