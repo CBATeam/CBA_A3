@@ -25,13 +25,7 @@ PARAMS_2(_unit,_Extended_Init_Class);
 DEFAULT_PARAM(2,_isRespawn,false);
 
 //
-// Bug #7432 fix - dedicated 1.05 servers will re-run the init EH when a unit
-//                 respawns
-
-// A new unit will be similar to "11c67248# 17488: usmc_soldier_co.p3d" in
-// string form before it's fully initialised. The "#" character is 35.
-// Respawn event runs on computers where respawning unit is local
-// Init event runs on computers where the respawning unit is not local
+// Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
 _isMan = _unit isKindOf "Man";
 
 if (count _this == 2 && _isMan && (time>0)) exitWith
