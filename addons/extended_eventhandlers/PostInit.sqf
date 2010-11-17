@@ -122,6 +122,13 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 	};
 };
 
+// XEH for non XEH supported addons
+execVM "\extended_eventhandlers\supportMonitor.sqf";
+
+SLX_XEH_MACHINE set [8, true];
+XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
+
+
 // Remove black-screen + loading-screen
 if !(isDedicated) then {
 	#ifdef DEBUG_MODE_FULL
@@ -130,15 +137,8 @@ if !(isDedicated) then {
 	waituntil {diag_ticktime > _time2Wait};
 	4711 cutText ["", "PLAIN", 0.01];
 };
+
 endLoadingScreen;
-
-SLX_XEH_MACHINE set [8, true];
-
-
-// XEH for non XEH supported addons
-execVM "\extended_eventhandlers\supportMonitor.sqf";
-
-XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];
