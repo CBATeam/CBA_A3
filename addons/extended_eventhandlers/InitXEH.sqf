@@ -153,12 +153,14 @@ SLX_XEH_EH_Fired =
 SLX_XEH_initPlayable =
 {
 	_unit = _this select 0;
+	_var = _unit getVariable "SLX_XEH_PLAYABLE";
+	if !(isNil "_var") exitWith {}; // Already set
 	if (_unit in playableUnits || isPlayer _unit || _unit == player) then
 	{
 		#ifdef DEBUG_MODE_FULL
-			diag_log ['Playabale unit!', _unit];
+			diag_log ['Playable unit!', _unit];
 		#endif
-		_unit setVariable ['SLX_XEH_PLAYABLE', true]; // last resort would be to broadcast it but nasty :/ , true
+		_unit setVariable ['SLX_XEH_PLAYABLE', true, true]; // temporary until better solution for players in MP..
 	};
 };
 

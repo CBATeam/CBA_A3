@@ -2,7 +2,7 @@
 
 #include "\extended_eventhandlers\script_mod.hpp"
 
-#define DEBUG_ENABLED_XEH
+// #define DEBUG_ENABLED_XEH
 
 #ifdef DEBUG_ENABLED_XEH
 	#define DEBUG_MODE_FULL
