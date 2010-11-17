@@ -72,7 +72,10 @@ if (SLX_XEH_MACHINE select 3) then
 
 	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call CBA_fnc_addEventHandler;
 	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call CBA_fnc_addEventHandler;
-	[QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
+	QUOTE(GVAR(join)) addPublicVariableEventHandler {
+		[QUOTE(GVAR(opc)), _this select 1] call CBA_fnc_localEvent;
+	};
+	// [QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
 
 	// onPlayerConnected '[_name,_id] call FUNC(opc)';
 	// TODO: Handle OPD without actually using opd

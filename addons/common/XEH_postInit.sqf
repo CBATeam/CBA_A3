@@ -26,6 +26,8 @@ if (isNil "BIS_functions_mainscope") then
 	TRACE_1("Using already available BIS_functions_mainscope",_logic);
 };
 
+CBA_logic = _logic;
+
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
@@ -35,7 +37,7 @@ if (isNil "RE" && isNil "BIS_MPF_logic") then
 FUNC(log) = {
 		diag_log text _this;
 		sleep 1;
-		BIS_functions_mainscope globalChat _this;
+		CBA_logic globalChat _this;
 		hintC _this;
 };
 
