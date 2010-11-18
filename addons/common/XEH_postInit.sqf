@@ -43,13 +43,14 @@ FUNC(log) = {
 
 // Nil check
 [] spawn {
+	if (isNil "CBA_NIL_CHECKED") then { CBA_NIL_CHECKED = false };
 	_done = false;
 	while {true} do {
+		sleep 1;
 		if (typeName nil == "STRING" || str(nil) != "ANY") then {
-			if !(_done) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); _done = true; };
+			if !(CBA_NIL_CHECKED) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); CBA_NIL_CHECKED = true; };
 			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
 		};
-		sleep 1;
 	};
 };
 
