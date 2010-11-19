@@ -195,7 +195,10 @@ if !(isDedicated) then
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
 };
-startLoadingScreen [_text, "RscDisplayLoadMission"];
+
+if (isDedicated || isMultiplayer || (!isMultiplayer && !isNull player)) then {
+	startLoadingScreen [_text, "RscDisplayLoadMission"];
+};
 
 /*
 * Process the crews of vehicles. This "thread" will run just
