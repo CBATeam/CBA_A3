@@ -4,7 +4,7 @@ Function: CBA_fnc_setMarkerPersistent
 Description:
 	Sets or unsets JIP persistency on a global marker.
 
-	Only has an	effect if called on the server.
+	Will broadcast event to server, if function is called on a client
 
 	Query persistency with <CBA_fnc_getMarkerPersistent>.
 
@@ -56,8 +56,8 @@ _return = if (SLX_XEH_MACHINE select 3) then
 	};
 	true;
 } else {
-	WARNING("Function ran on a dedicated client. Function only usable on a server. Marker was: " + str _marker);
-	false;
+	[QUOTE(GVAR(marker_persist)), [_marker,_persistent]] call CBA_fnc_addEventHandler;
+	true;
 };
 
 _return;

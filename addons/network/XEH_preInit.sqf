@@ -75,6 +75,9 @@ if (SLX_XEH_MACHINE select 3) then
 	QUOTE(GVAR(join)) addPublicVariableEventHandler {
 		[QUOTE(GVAR(opc)), _this select 1] call CBA_fnc_localEvent;
 	};
+
+	[QUOTE(GVAR(marker_persist)), { _this call CBA_fnc_setMarkerPersistent }] call CBA_fnc_addEventHandler;
+
 	// [QUOTE(GVAR(join)), { [QUOTE(GVAR(opc)), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
 
 	// onPlayerConnected '[_name,_id] call FUNC(opc)';
