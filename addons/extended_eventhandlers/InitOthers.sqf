@@ -243,7 +243,7 @@ _f = {
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
 	_ha = _unit getVariable [_xeh, []];
-	if (_handler != "" && _handlerPlayer != "") then { 
+	if (_handler != "") then { 
 		_ha set [0, compile _handler];
 	};
 	_unit setVariable [_xeh, _ha];
