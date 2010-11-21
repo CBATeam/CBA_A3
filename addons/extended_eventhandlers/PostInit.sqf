@@ -105,23 +105,27 @@ waitUntil {isNil QUOTE(GVAR(init_obj))};
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
-	_lastPlayer = player;
-	_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
-	_lastPlayer spawn {
-		_lastPlayer = _this;
+	[] spawn {
+		waitUntil {player getVariable ["SLX_XEH_READY", false]};
+		_lastPlayer = player;
+		_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
+		#ifdef DEBUG_MODE_FULL
+			diag_log ["Running Player EH check", _lastPlayer];
+		#endif
 		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, synchronous.
 		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
 		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
+		// TODO: Evaluate with respawn... 
 		while {true} do {
-			waitUntil {player != _lastPlayer};
-			if (alive _lastPlayer) then {
-				_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
-			};
-			waitUntil {player == player};
+			waitUntil {sleep 1; player != _lastPlayer};
+			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
+			waitUntil {sleep 1; !(isNull player)};
+			sleep 1;
 			_newPlayer = player;
-			if (alive _lastPlayer) then {
-				_newPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
-			};
+			#ifdef DEBUG_MODE_FULL
+				diag_log ["New Player", _newPlayer, _lastPlayer];
+			#endif
+			_newPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 			_lastPlayer = _newPlayer;
 		};
 	};

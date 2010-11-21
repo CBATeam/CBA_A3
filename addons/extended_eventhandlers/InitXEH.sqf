@@ -101,11 +101,11 @@ SLX_XEH_F_INIT = {
 // Add / Remove the playerEvents
 SLX_XEH_F_ADDPLAYEREVENTS = {
 	if (isNull _this) exitWith {}; // not a valid object
-	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable _event; _this setVariable [_event, [if (count _curEvt > 0) then { _curEvt select 0 } else { {} }, compile format["_this call ((_this select 0) getVariable '%1_Player')",_event]]] } forEach SLX_XEH_OTHER_EVENTS;
+	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable [_event, []]; _this setVariable [_event, [if (count _curEvt > 0) then { _curEvt select 0 } else { {} }, compile format["_this call ((_this select 0) getVariable '%1_Player')",_event]]] } forEach SLX_XEH_OTHER_EVENTS;
 };
 SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	if (isNull _this) exitWith {}; // not a valid object
-	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable _event; if (count _curEvt > 0) then { _this setVariable [_event, [_curEvt select 0]] } } forEach SLX_XEH_OTHER_EVENTS;
+	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable [_event, []]; if (count _curEvt > 0) then { _this setVariable [_event, [_curEvt select 0]] } } forEach SLX_XEH_OTHER_EVENTS;
 };
 
 // The actual XEH functions that are called from within the engine eventhandlers.

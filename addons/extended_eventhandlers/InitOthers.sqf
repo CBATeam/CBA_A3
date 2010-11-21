@@ -242,13 +242,19 @@ _f = {
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
-	_unit setVariable [_xeh, if (_handler == "" && _handlerPlayer == "") then { [] } else { [compile _handler] }];
+	_ha = _unit getVariable [_xeh, []];
+	if (_handler != "" && _handlerPlayer != "") then { 
+		_ha set [0, compile _handler];
+	};
+	_unit setVariable [_xeh, _ha];
 	_unit setVariable [_xehPlayer, compile _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
 		diag_log text format["(%1) XEH RUN: %2 - %3 - %4 - %5", time, _this, _event, typeOf (_this select 0), _handler != "", _handlerPlayer != ""];
 	#endif
 } forEach SLX_XEH_OTHER_EVENTS;
+
+_unit setVariable ["SLX_XEH_READY", true];
 
 #ifdef DEBUG_MODE_FULL
 	diag_log text format["(%1) XEH END: %2", time, _this];
