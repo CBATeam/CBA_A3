@@ -554,7 +554,8 @@ class Extended_MPRespawn_EventHandlers
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
 	init = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+	// Replace fired with firedBis
 	delete fired;
-	firedBis = "_this call BIS_Effects_EH_Fired;"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
-	killed = "_this call BIS_Effects_EH_Killed;";
+	firedBis = "_this call BIS_Effects_EH_Fired"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
+	killed = "_this call BIS_Effects_EH_Killed";
 };
