@@ -160,7 +160,12 @@ SLX_XEH_initPlayable =
 		#ifdef DEBUG_MODE_FULL
 			diag_log ['Playable unit!', _unit];
 		#endif
-		_unit setVariable ['SLX_XEH_PLAYABLE', true, true]; // temporary until better solution for players in MP..
+		if (_unit == player) then {
+			_unit setVariable ['SLX_XEH_PLAYABLE', true, true]; // temporary until better solution for players in MP..
+		} else {
+			// Workaround for JIP players thinking they are respawners :P
+			_unit setVariable ['SLX_XEH_PLAYABLE', true];
+		};
 	};
 };
 

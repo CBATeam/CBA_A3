@@ -114,10 +114,15 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
 		while {true} do {
 			waitUntil {player != _lastPlayer};
-			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
+			if (alive _lastPlayer) then {
+				_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
+			};
 			waitUntil {player == player};
-			_lastPlayer = player;
-			_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
+			_newPlayer = player;
+			if (alive _lastPlayer) then {
+				_newPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
+			};
+			_lastPlayer = _newPlayer;
 		};
 	};
 };
