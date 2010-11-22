@@ -61,8 +61,8 @@ _fnc = {
 		PUSH(_fullClasses,_type);
 	};
 	
-	_excl = false;
-	{ if (_obj isKindOf _x) exitWith { _excl = true } } forEach _excludes;
+	_excl = getNumber(configFile >> "CfgVehicles" >> "SLX_XEH_DISABLED") == 1;
+	if !(_excl) then { { if (_obj isKindOf _x) exitWith { _excl = true } } forEach _excludes };
 	if (_excl) exitWith {
 		TRACE_2("Exclusion, abort and caching",_obj,_type);
 		PUSH(_exclClasses,_type);
