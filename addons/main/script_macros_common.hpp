@@ -1113,3 +1113,5 @@ Author:
 		requiredAddons[] = {}; \
 		version = VERSION; \
 }
+
+#define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
