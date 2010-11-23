@@ -36,7 +36,7 @@ class CfgSettings {
 				// CBA requiring CBA_OA, only if A2 is not found
 				class dependencies {
 				   CBA_OA[]={"cba_oa_main", {0,7,0}, "!isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
-				   XEH[]={"extended_eventhandlers", {3,0,3}, "true"};
+				   XEH[]={"extended_eventhandlers", {3,0,4}, "true"};
 				};
 			};
 		};
