@@ -118,6 +118,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 		// TODO: Evaluate with respawn... 
 		while {true} do {
 			waitUntil {sleep 1; player != _lastPlayer};
+			sleep 1;
 			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
 			waitUntil {sleep 1; !(isNull player)};
 			sleep 1;
