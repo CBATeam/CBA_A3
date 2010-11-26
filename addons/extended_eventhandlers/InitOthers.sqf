@@ -73,21 +73,22 @@ _f = {
 	_clientHandlerEntry = _cfgEntry / format["client%1", _eventCus];
 	// If the particular EH is private and vehicle is of the
 	// "wrong" class, do nothing, ie don't add the EH.
+	//diag_log ["EventCus",_eventCus, getText _handlerEntry,_handlers];
 	if !(_scope == 0 && (_unitClass != _class)) then
 	{
-		if (isText _handlerEntry) then
+		if !( [] call _isExcluded ) then
 		{
-			if (isText _replaceEntry) then
+			if (isText _handlerEntry) then
 			{
-				_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-			} else {
-				if (isNumber _replaceEntry) then
+				if (isText _replaceEntry) then
 				{
-					_replaceDEH = ((getNumber _replaceEntry) == 1);
+					_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
+				} else {
+					if (isNumber _replaceEntry) then
+					{
+						_replaceDEH = ((getNumber _replaceEntry) == 1);
+					};
 				};
-			};
-			if !( [] call _isExcluded ) then
-			{
 				if (_hasDefaultEH && _replaceDEH) then
 				{
 					//_handlers set [0, getText _handlerEntry];
@@ -97,23 +98,31 @@ _f = {
 					[_idx, getText _handlerEntry, "all"] call _fSetHandler;
 				};
 			};
-		};
-		if (SLX_XEH_MACHINE select 3) then
-		{
-			if (isText _serverHandlerEntry) then
+			if (SLX_XEH_MACHINE select 3) then
 			{
-				//_handlers set [count _handlers, getText _serverHandlerEntry];
-				[_idx, getText _serverHandlerEntry, "server"] call _fSetHandler;
+				if (isText _serverHandlerEntry) then
+				{
+					//_handlers set [count _handlers, getText _serverHandlerEntry];
+					[_idx, getText _serverHandlerEntry, "server"] call _fSetHandler;
+				};
 			};
-		};
-		if (SLX_XEH_MACHINE select 0) then
-		{
-			if (isText _clientHandlerEntry) then
+			if (SLX_XEH_MACHINE select 0) then
 			{
-				//_handlers set [count _handlers, getText _clientHandlerEntry];
-				[_idx, getText _clientHandlerEntry, "client"] call _fSetHandler;
+				if (isText _clientHandlerEntry) then
+				{
+					//_handlers set [count _handlers, getText _clientHandlerEntry];
+					[_idx, getText _clientHandlerEntry, "client"] call _fSetHandler;
+				};
 			};
+		} else {
+			#ifdef DEBUG_MODE_FULL
+				diag_log ["Excluded", _class, _excludeClass, _excludeClasses];
+			#endif
 		};
+	} else {
+		#ifdef DEBUG_MODE_FULL
+			diag_log ["Scoped", _class, _scope];
+		#endif
 	};
 };
 
@@ -127,8 +136,6 @@ _f = {
 	// handlers, add all lines from matching classes to an array, "_handlers"
 	_handlers = []; _handlersPlayer = [];
 	_names = []; _namesPlayer = [];
-	_excludeClass = "";
-	_excludeClasses = [];
 
 	// Does the vehicle's class EventHandlers inherit from the BIS
 	// DefaultEventhandlers? If so, include BIS own default handler for the
@@ -152,6 +159,8 @@ _f = {
 				_t = count (_configFile/_Extended_EH_Class/_class);
 				while { _i<_t } do
 				{
+					_excludeClass = "";
+					_excludeClasses = [];
 					_cfgEntry = (_configFile/_Extended_EH_Class/_class) select _i;
 					_name = configName _cfgEntry;
 					_idx = _names find _name;
@@ -199,7 +208,7 @@ _f = {
 			};
 		} forEach _classes;
 	} forEach [configFile, campaignConfigFile, missionConfigFile];
-
+	
 	// Now concatenate all the handlers into one string
 	_handler = "";
 	{
