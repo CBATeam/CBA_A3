@@ -44,17 +44,6 @@ class Extended_PostInit_EventHandlers {};
 // per mission but InitPost handlers are called for each unit.
 class Extended_InitPost_EventHandlers
 {
-	class All
-	{
-		// Compile code for other EHs to run and put them in the setVariable.
-		// Set up code for the remaining event handlers too...
-		class SLX_Init_Other_All
-		{
-			scope	 = public;
-			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
-			init	  = "_this call SLX_XEH_initOthers";
-		};
-	};
 	class Man
 	{
 		// We use this to determine if a unit has respawned,
@@ -74,6 +63,17 @@ class Extended_Init_EventHandlers
 	// Default Extended Event Handlers: Add extended event handlers to compile code.
 	class All
 	{
+		// Compile code for other EHs to run and put them in the setVariable.
+		// Set up code for the remaining event handlers too...
+		// Since A2 1.08 / OA (at least 1.55) setVariables don't seem to drop off at ordinary or JIP join any longer,
+		// so they can be processed and compiled at (pre)init again.
+		class SLX_Init_Other_All
+		{
+			scope	 = public;
+			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
+			init	  = "_this call SLX_XEH_initOthers";
+		};
+		// Run InitPost
 		class SLX_Init_Post_All
 		{
 				scope	 = public;
