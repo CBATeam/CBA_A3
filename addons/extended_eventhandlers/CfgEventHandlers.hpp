@@ -48,6 +48,8 @@ class Extended_InitPost_EventHandlers
 	{
 		// Compile code for other EHs to run and put them in the setVariable.
 		// Set up code for the remaining event handlers too...
+		// This is in PostInit as opposed to (pre)Init,
+		// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
 		class SLX_Init_Other_All
 		{
 			scope	 = public;
