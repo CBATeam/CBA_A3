@@ -27,9 +27,10 @@ switch (_typename) do {
 		if (vehicle _this != _this) then {
 			unassignvehicle _this;
 			_this setposasl [0,0,0];
-		};
-		if (count ((crew _this)-[_this]) > 0) then {
-			(crew _this) call CBA_fnc_deleteentity;
+		} else {
+			if (count ((crew _this)-[_this]) > 0) then {
+				(crew _this) call CBA_fnc_deleteentity;
+			};
 		};
 		deletevehicle _this;
 	};
