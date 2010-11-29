@@ -10,7 +10,7 @@ Parameters:
 	_code - Condition to meet (Code)
 Example:
 	_nearestVeh = [player, vehicles] call CBA_fnc_getNearest
-	_nearestGroup = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest
+	_nearestGroups = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest
 Returns:
 	Nearest given entity or List of entities within given distance
 Author:
@@ -26,7 +26,7 @@ DEFAULT_PARAM(2,_radius,10^5)
 DEFAULT_PARAM(3,_code,{true})
 
 private "_return";
-_return = [];
+_return = if (count _this > 2) then {[]} else {objNull};
 {
 	_distance = [_position,_x] call CBA_fnc_getDistance;
 	if (_distance < _radius) then {
