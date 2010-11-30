@@ -393,5 +393,11 @@ class CfgFunctions
 			};
 		};
 	};
-
+	class BIS_PMC {
+		class PMC_Campaign {
+			class initIdentity {
+				file = "\x\cba\addons\common\dummy.sqf";
+			};
+		};
+	};
 };
