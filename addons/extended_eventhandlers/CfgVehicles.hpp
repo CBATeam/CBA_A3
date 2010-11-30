@@ -36,94 +36,6 @@ class CfgVehicles {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
 	*/
-	class Logic;
-	class BIS_Effect_FilmGrain: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_Effect_Day: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_Effect_MovieNight: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_Effect_Sepia: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class AlternativeInjurySimulation: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class AliceManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class AmbientCombatManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_animals_Logic: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BattleFieldClearance: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_clouds_Logic: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class ConstructionManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class FirstAidSystem: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class FunctionsManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class PreloadManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class GarbageCollector: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class HighCommand: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class HighCommandSubordinate: HighCommand {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class MartaManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class SilvieManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_SRRS_Logic: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class UAVManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class ZoraManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class Alice2Manager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class GitaManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class JukeboxManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_Support: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class UAV_HeliManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class WeatherPostprocessManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class WeatherParticlesManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
 	class Animal;
 	class CAAnimalBase: Animal {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
@@ -133,15 +45,6 @@ class CfgVehicles {
 		class Eventhandlers { EXTENDED_EVENTHANDLERS };
 	};
 	class 2b14_82mm: StaticMortar {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class SecOpManager: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class StrategicReferenceLayer: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class WarfareOA: Logic {
 		class Eventhandlers { EXTENDED_EVENTHANDLERS };
 	};
 	class SoldierWB;
@@ -470,21 +373,13 @@ class CfgVehicles {
 	class FlagCarrierWhite_EP1: FlagCarrierUNO_EP1 {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
-	class BIS_ARTY_Logic: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class BIS_ARTY_Virtual_Artillery: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
-	class Warfare: Logic {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
-	};
 	class MQ9PredatorB;
 	class CruiseMissile2: MQ9PredatorB {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
 
 	// Custom object that can be used to force XEH initialization even if no XEH compatible object is on the Map.
+	class Logic;
 	class SLX_XEH_Logic: Logic {
 		displayName = "XEH (backup) Initialization Logic";
 		vehicleClass = "Modules";

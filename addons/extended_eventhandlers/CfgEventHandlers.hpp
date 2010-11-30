@@ -88,107 +88,12 @@ class Extended_Init_EventHandlers
 	class StaticCannon /* : StaticWeapon */ {
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
-	class BIS_Effect_FilmGrain /* : Logic */ {
-		SLX_BIS = """filmGrain"" ppEffectEnable true;   ""filmGrain"" ppEffectAdjust [0.03, 1, 1, 0.1, 1, false];  ""filmGrain"" ppEffectCommit 0;   ";
-	};
-	class BIS_Effect_Day /* : Logic */ {
-		SLX_BIS = """colorCorrections"" ppEffectAdjust [1, 1.02, -0.005, [0.0, 0.0, 0.0, 0.0], [1, 0.8, 0.6, 0.65],  [0.199, 0.587, 0.114, 0.0]];   ""colorCorrections"" ppEffectCommit 0;      ""colorCorrections"" ppEffectEnable true";
-	};
-	class BIS_Effect_MovieNight /* : Logic */ {
-		SLX_BIS = """colorCorrections"" ppEffectAdjust [1, 1.15, 0, [0.0, 0.0, 0.0, 0.0], [0.5, 0.8, 1, 0.5],  [0.199, 0.587, 0.114, 0.0]];   ""colorCorrections"" ppEffectCommit 0; ""colorCorrections"" ppEffectEnable true";
-	};
-	class BIS_Effect_Sepia /* : Logic */ {
-		SLX_BIS = """colorCorrections"" ppEffectAdjust [1, 1.06, -0.01, [0.0, 0.0, 0.0, 0.0], [0.44, 0.26, 0.078, 0],  [0.199, 0.587, 0.114, 0.0]];   ""colorCorrections"" ppEffectCommit 0; ""colorCorrections"" ppEffectEnable true";
-	};
-	class AlternativeInjurySimulation /* : Logic */ {
-		SLX_BIS = "[] call (compile (preprocessFileLineNumbers (""\ca\Modules\MP\data\scripts\MPframework.sqf""))); _ok = _this execVM ""\ca\Modules\AIS\data\scripts\ISserverStartUsingLogic.sqf""";
-	};
-	class AliceManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_alice_mainscope') then {BIS_alice_mainscope = _this select 0; publicvariable 'BIS_alice_mainscope'; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\alice\data\scripts\main.sqf""};}";
-	};
-	class AmbientCombatManager /* : Logic */ {
-		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\ambient_combat\data\scripts\init.sqf""";
-	};
-	class BIS_animals_Logic /* : Logic */ {
-		SLX_BIS = "_this execVM '\CA\Modules\Animals\Data\scripts\init.sqf'";
-	};
-	class BattleFieldClearance /* : Logic */ {
-		SLX_BIS = "[] call (compile (preprocessFileLineNumbers (""\ca\Modules\MP\data\scripts\MPframework.sqf""))); _ok = _this execVM ""\ca\Modules\BC\data\scripts\BCserverStartUsingLogic.sqf""";
-	};
-	class BIS_clouds_Logic /* : Logic */ {
-		SLX_BIS = "_this exec '\ca\modules\Clouds\data\scripts\BIS_CloudSystem.sqs'";
-	};
-	class ConstructionManager /* : Logic */ {
-		SLX_BIS = "if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\coin\data\scripts\coin.sqf""}";
-	};
-	class FirstAidSystem /* : Logic */ {
-		SLX_BIS = "[] call (compile (preprocessFileLineNumbers (""\ca\Modules\MP\data\scripts\MPframework.sqf""))); _ok = _this execVM ""\ca\Modules\FA\data\scripts\FAserverStartUsingLogic.sqf""";
-	};
-	class FunctionsManager /* : Logic */ {
-		SLX_BIS = "textLogFormat ['PRELOAD_ Functions\init %1', [_this, BIS_functions_mainscope]]; 	if (isnil 'BIS_functions_mainscope') then 	{ BIS_functions_mainscope = _this select 0;  if (isServer) then {_this execVM 'ca\modules\functions\main.sqf'};} else {_this spawn { textLogFormat ['PRELOAD_ Functions\init  ERROR: deleting redundant FM! %1', [_this, (_this select 0), BIS_functions_mainscope]]; _mygrp = group (_this select 0); deleteVehicle (_this select 0); deleteGroup _mygrp;};}; 			  if (isnil 'RE') then {[] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'};	";
-	};
-	class PreloadManager /* : Logic */ {
-		SLX_BIS = "onPreloadStarted {BIS_PRELOAD_ARRAY=[];textLogFormat['PRELOAD_ Preload Manager - onPreloadStarted, _maxTime %1 timenow %2',_maxTime,time];startLoadingScreen[localize 'str_load_game','RscDisplayLoadMission'];};onPreloadFinished {	textLogFormat['PRELOAD_  Preload Manager - onPreloadFinished T %1',time];	startLoadingScreen['','RscDisplayLoadMission'];	endLoadingScreen;			};	";
-	};
-	class GarbageCollector /* : Logic */ {
-		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\garbage_collector\data\scripts\init.sqf""";
-	};
-	class HighCommand /* : Logic */ {
-		SLX_BIS = "if (isServer) then {if (isnil 'BIS_HC_mainscope') then {BIS_HC_mainscope = _this select 0; publicvariable 'bis_hc_mainscope'}; _ok = _this execVM '\ca\Modules\HC\data\scripts\hc.sqf'}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
-	};
-	class HighCommandSubordinate /* : HighCommand */ {
-		SLX_BIS = "";
-	};
-	class MartaManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_marta_mainscope') then {BIS_marta_mainscope = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\marta\data\scripts\main.sqf""}}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
-	};
-	class SilvieManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_silvie_mainscope') then {BIS_silvie_mainscope = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\silvie\data\scripts\main.sqf""};}";
-	};
-	class BIS_SRRS_Logic /* : Logic */ {
-		SLX_BIS = "_ok = _this execVM '\ca\modules\srrs\data\scripts\init.sqf'";
-	};
-	class UAVManager /* : Logic */ {
-		SLX_BIS = "if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\uav\data\scripts\uav.sqf""}";
-	};
-	class ZoraManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_Zora_mainscope') then {BIS_Zora_MainScope = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules\zora\data\scripts\main.sqf""};}";
-	};
-	class Alice2Manager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_alice_mainscope') then {BIS_alice_mainscope = _this select 0; publicvariable 'BIS_alice_mainscope'; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\alice2\data\scripts\main.sqf""};}";
-	};
-	class GitaManager /* : Logic */ {
-		SLX_BIS = "if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\gita\data\scripts\main.sqf""}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'}";
-	};
-	class JukeboxManager /* : Logic */ {
-		SLX_BIS = "_ok = _this execVM ""ca\modules_e\jukebox\data\scripts\jukebox.sqf""";
-	};
-	class BIS_Support /* : Logic */ {
-		SLX_BIS = "_this execVM '\ca\modules_e\ssm\data\scripts\init.sqf' ";
-	};
-	class UAV_HeliManager /* : Logic */ {
-		SLX_BIS = "if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\uav_heli\data\scripts\uav.sqf""}";
-	};
-	class WeatherPostprocessManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_WeatherPostprocess_logic') then {BIS_WeatherPostprocess_logic = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\weather\data\scripts\main.sqf""}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'};}";
-	};
-	class WeatherParticlesManager /* : Logic */ {
-		SLX_BIS = "if (isnil 'BIS_WeatherParticles_logic') then {BIS_WeatherParticles_logic = _this select 0; if (isServer) then {private [""_ok""];_ok = _this execVM ""ca\modules_e\weather\data\scripts\main.sqf""}; if (isnil 'RE') then {private [""_ok""]; _ok = [] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'};}";
-	};
+
 	class M252 /* : StaticMortar */ {
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
 	};
 	class 2b14_82mm /* : StaticMortar */ {
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
-	};
-	class SecOpManager /* : Logic */ {
-		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\missions\som\data\scripts\init.sqf""";
-	};
-	class StrategicReferenceLayer /* : Logic */ {
-		SLX_BIS = "private [""_ok""]; _ok = (_this select 0) execVM ""ca\modules\strat_layer\data\scripts\init.sqf""";
-	};
-	class WarfareOA /* : Logic */ {
-		SLX_BIS = "BIS_WF_UI = 'OA';BIS_WF_OA = true;if (IsNil {BIS_WF_Common}) then {BIS_WF_Common = _this select 0;Private [""_nullReturn""];_nullReturn = [false,'\CA\Warfare2_E\Scripts\'] ExecVM ""ca\Warfare2\Scripts\Init.sqf"";}";
 	};
 	class FR_Miles /* : FR_Base */ {
 		SLX_BIS = "(_this select 0) setidentity ""Miles""";
@@ -432,15 +337,6 @@ class Extended_Init_EventHandlers
 	};
 	class FlagCarrierWhite_EP1 /* : FlagCarrierUNO_EP1 */ {
 		SLX_BIS = "(_this select 0) setFlagTexture ""ca\Ca_E\data\flag_white_co.paa""";
-	};
-	class BIS_ARTY_Logic /* : Logic */ {
-		SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\init.sqf'";
-	};
-	class BIS_ARTY_Virtual_Artillery /* : Logic */ {
-		SLX_BIS = "_script = _this execVM '\ca\modules\arty\data\scripts\ARTY_initVirtual.sqf'";
-	};
-	class Warfare /* : Logic */ {
-		SLX_BIS = "if (IsNil {BIS_WF_Common}) then {BIS_WF_Common = _this select 0;Private [""_nullReturn""];_nullReturn = [false] ExecVM ""ca\Warfare2\Scripts\Init.sqf"";}";
 	};
 };
 class Extended_fired_Eventhandlers {}; // Backwards compatibility, uses XEH notation

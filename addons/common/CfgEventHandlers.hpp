@@ -15,11 +15,3 @@ class Extended_PostInit_EventHandlers
 		init = QUOTE(call COMPILE_FILE(XEH_postInit));
 	};
 };
-
-class Extended_Init_EventHandlers
-{
-	// Override - no need to double compile or compile functions at the same time (main disabled)
-	class FunctionsManager /* : Logic */ {
-		SLX_BIS = "textLogFormat ['PRELOAD_ Functions\init %1', [_this, BIS_functions_mainscope]]; 	if (isnil 'BIS_functions_mainscope') then 	{ BIS_functions_mainscope = _this select 0;  if (isServer) then {_dummy = BIS_functions_mainscope spawn {_this setpos [1000,10,0];}};} else {_this spawn { textLogFormat ['PRELOAD_ Functions\init  ERROR: deleting redundant FM! %1', [_this, (_this select 0), BIS_functions_mainscope]]; _mygrp = group (_this select 0); deleteVehicle (_this select 0); deleteGroup _mygrp;};}; if (isnil 'RE') then {[] execVM '\ca\Modules\MP\data\scripts\MPframework.sqf'};	";
-	};
-};
