@@ -176,6 +176,17 @@ SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sq
 SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
 SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
 
+/*
+* Process the crews of vehicles. This "thread" will run just
+* before the mission init.sqf is processed. The order of execution is
+*
+*  1) all config.cpp init EHs (including all Extended_Init_Eventhandlers)
+*  2) all the init lines in the mission.sqm
+*  3) spawn:ed "threads" are started
+*  4) the mission's init.sqf/sqs is run
+*/
+_cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
+
 
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
@@ -223,14 +234,3 @@ if (isDedicated || isMultiplayer || (!isMultiplayer && !isNull player)) then {
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
 };
 */
-
-/*
-* Process the crews of vehicles. This "thread" will run just
-* before the mission init.sqf is processed. The order of execution is
-*
-*  1) all config.cpp init EHs (including all Extended_Init_Eventhandlers)
-*  2) all the init lines in the mission.sqm
-*  3) spawn:ed "threads" are started
-*  4) the mission's init.sqf/sqs is run
-*/
-_cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
