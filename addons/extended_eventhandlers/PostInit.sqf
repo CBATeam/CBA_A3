@@ -141,10 +141,12 @@ XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 // Remove black-screen + loading-screen
 if !(isDedicated) then {
+	/*
 	#ifdef DEBUG_MODE_FULL
 	diag_log ["Waiting...", _time2Wait, diag_tickTime];
 	#endif
 	waituntil {diag_ticktime > _time2Wait};
+	*/
 	4711 cutText ["", "PLAIN", 0.01];
 };
 
