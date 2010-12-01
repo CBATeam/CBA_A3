@@ -204,9 +204,25 @@ if !(isDedicated) then
 	};
 };
 
+/*
+// Disabled loadingScreen, only purpose left was to give mission scripts some extra time, as well as spawned instances
+// as well as provide Credits system to CBA and 3rd parties
+// the actual compiling of scripts is done in Killed EH anyway.
+#define CFG "CfgSettings" >> "cba" >> "loadingScreen"
 if (isDedicated || isMultiplayer || (!isMultiplayer && !isNull player)) then {
+	_disabled = false;
+
+	_cfg = missionConfigFile >> CFG;
+	if (isNumber(_cfg >> "disabled")) then { _disabled = getNumber(_cfg >> "disabled") == 1 };
+	if (_disabled) exitWith { CBA_loadingscreen_disabled = true };
+
+	_cfg = configFile >> CFG;
+	if (isNumber(_cfg >> "disabled")) then { _disabled = getNumber(_cfg >> "disabled") == 1 };
+	if (_disabled) exitWith { CBA_loadingscreen_disabled = true };
+
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
 };
+*/
 
 /*
 * Process the crews of vehicles. This "thread" will run just

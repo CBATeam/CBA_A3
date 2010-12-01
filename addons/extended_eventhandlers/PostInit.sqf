@@ -148,7 +148,7 @@ if !(isDedicated) then {
 	4711 cutText ["", "PLAIN", 0.01];
 };
 
-endLoadingScreen;
+// if (isNil "CBA_loadingscreen_disabled") then { if !(isServer && !isNil "BIS_MPA_sendEvent") then { _abort = false; if (isServer && !isNil "BIS_MPA") then { _abort = !(BIS_MPAM getVariable ["initDone", false]) }; if !(_abort) then { endLoadingScreen } } };
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];
