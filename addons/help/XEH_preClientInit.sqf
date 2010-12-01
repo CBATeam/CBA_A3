@@ -18,7 +18,7 @@ FUNC(readConfig) = {
 		if (isClass _entry) then {
 			if (isArray (_entry >> "author")) then { [_hash, configName _entry, getArray(_entry >> "author")] call CBA_fnc_hashSet };
 			if (isText (_entry >> "authorUrl")) then { [_hash2, configName _entry, getText(_entry >> "authorUrl")] call CBA_fnc_hashSet };
-			if (isText (_entry >> "versionStr")) then { [_hash3, configName _entry, getText(_entry >> "versionStr")] call CBA_fnc_hashSet };
+			if (isText (_entry >> "version")) then { [_hash3, configName _entry, getText(_entry >> "version")] call CBA_fnc_hashSet };
 		};
 	};
 	[_hash, _hash2, _hash3];
@@ -27,7 +27,7 @@ FUNC(readConfig) = {
 FUNC(process) = {
 	PARAMS_3(_h1,_h2,_h3);
 	_ar = [];
-	[_h1, {_entry = format["%1, %2, URL: %3<br/>Author: %4", _key, [_h3, _key] call CBA_fnc_hashGet, [_h2, _key] call CBA_fnc_hashGet, [_value, ", "] call CBA_fnc_join]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
+	[_h1, {_entry = format["%1, v%2, (%3)<br/>Author: %4", _key, [_h3, _key] call CBA_fnc_hashGet, [_h2, _key] call CBA_fnc_hashGet, [_value, ", "] call CBA_fnc_join]; PUSH(_ar,_entry) }] call CBA_fnc_hashEachPair;
 	[_ar, "<br/><br/>"] call CBA_fnc_join;
 };
 
@@ -89,7 +89,7 @@ GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
 { [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
 // TODO Read dynamically
-GVAR(docs) = "Bugtracker: http://dev-heaven.net/projects/cca - Documentation: http://dev-heaven.net/projects/cca";
+GVAR(docs) = "CBA<br />Bugtracker: http://dev-heaven.net/projects/cca<br />Documentation: http://dev-heaven.net/projects/cca";
 
 GVAR(keys) = _text;
 
