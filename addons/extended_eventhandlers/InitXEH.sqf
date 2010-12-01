@@ -199,6 +199,7 @@ if !(isDedicated) then
 	// Black screen behind loading screen
 	4711 cutText ["", "BLACK OUT", 0.01];
 
+/*
 	if !(isNil "CBA_help_credits") then {
 		// Randomly pick 2 addons from cfgPatches to display credits
 		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
@@ -213,6 +214,7 @@ if !(isDedicated) then
 		};
 		_text = [_cr, ". "] call CBA_fnc_join;
 	};
+*/
 };
 
 /*

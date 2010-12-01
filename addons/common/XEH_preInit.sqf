@@ -115,9 +115,9 @@ DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but 
 call COMPILE_FILE(init_perFrameHandler);
 
 // NOTE: Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
-[] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_addons));
+[] call COMPILE_FILE(init_addons);
 
-[] call compile preProcessFileLineNumbers QUOTE(PATHTO_F(init_delayLess));
+[] call COMPILE_FILE(init_delayLess);
 
 // Announce Initialization Complete
 ADDON = true;
