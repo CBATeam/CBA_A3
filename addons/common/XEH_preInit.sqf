@@ -29,13 +29,6 @@ CBA_actionHelper = QUOTE(PATHTO(actionHelper));
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
-[] spawn {
-	if !(isMultiplayer) exitWith {};
-	if (isDedicated) exitWith {};
-	waitUntil {isServer};
-	diag_log [diag_frameNo, diag_tickTime, time, "WARNING: isServer is true while isDedicated is false; You can safely ignore this if this is a hosted game; otherwise please report asap"];
-};
-
 // DirectCall, using single-frame-code-executioner by Xeno
 // The directCall function will execute (with parameters) next frame, and without delay
 // [[1,2,3], {mycode to execute}] call FUNC(directCall);
