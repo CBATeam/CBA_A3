@@ -86,6 +86,9 @@ for "_i" from 0 to (count _cEvents)-1 do {
 GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
 { [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
+// TODO Read dynamically
+GVAR(docs) = "Bugtracker: http://dev-heaven.net/projects/cca - Documentation: http://dev-heaven.net/projects/cca";
+
 GVAR(keys) = _text;
 
 ADDON = true;
