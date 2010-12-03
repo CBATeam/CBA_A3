@@ -96,7 +96,7 @@ if (_c > 0) then {
 		_mod = _cfg select _i;
 		if (isClass _mod) then {
 			if (isText(_mod >> "description")) then {
-				_e = format["%1 - %2<br />%3<br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
+				_e = format["* %1 - %2<br />%3<br /><br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
 				ADD(GVAR(docs),_e);
 			};
 		};
