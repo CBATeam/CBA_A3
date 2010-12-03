@@ -26,6 +26,7 @@ class CfgMods
 		hideName = "true";
 		actionName = "Website";
 		action = "http://dev-heaven.net/projects/cca";
+		description = "Bugtracker: http://dev-heaven.net/projects/cca<br />Documentation: http://dev-heaven.net/projects/cca";
 	};
 };
 

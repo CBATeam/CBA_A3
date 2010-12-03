@@ -88,8 +88,20 @@ for "_i" from 0 to (count _cEvents)-1 do {
 GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
 { [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
-// TODO Read dynamically
-GVAR(docs) = "CBA<br />Bugtracker: http://dev-heaven.net/projects/cca<br />Documentation: http://dev-heaven.net/projects/cca";
+GVAR(docs) = "";
+_cfg = configFile >> "CfgMods";
+_c = count _cfg;
+if (_c > 0) then {
+	for "_i" from 0 to (_c - 1) do {
+		_mod = _cfg select _i;
+		if (isClass _mod) then {
+			if (isText(_mod >> "description")) then {
+				_e = format["%1 - %2<br />%3<br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
+				ADD(GVAR(docs),_e);
+			};
+		};
+	};
+};
 
 GVAR(keys) = _text;
 
