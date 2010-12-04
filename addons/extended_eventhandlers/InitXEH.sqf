@@ -176,24 +176,12 @@ SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sq
 SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
 SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
 
-/*
-* Process the crews of vehicles. This "thread" will run just
-* before the mission init.sqf is processed. The order of execution is
-*
-*  1) all config.cpp init EHs (including all Extended_Init_Eventhandlers)
-*  2) all the init lines in the mission.sqm
-*  3) spawn:ed "threads" are started
-*  4) the mission's init.sqf/sqs is run
-*/
-_cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-
-
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
 XEH_LOG("XEH: PreInit Finished");
 
 // Loading Screen used during PostInit - terminated in PostInit.sqf
-_text = "Post Initialization Processing...";
+// _text = "Post Initialization Processing...";
 if !(isDedicated) then
 {
 	// Black screen behind loading screen
@@ -236,3 +224,102 @@ if (isDedicated || isMultiplayer || (!isMultiplayer && !isNull player)) then {
 	startLoadingScreen [_text, "RscDisplayLoadMission"];
 };
 */
+
+
+/*
+* Process the crews of vehicles. This "thread" will run just
+* before the mission init.sqf is processed. The order of execution is
+*
+*  1) all config.cpp init EHs (including all Extended_Init_Eventhandlers)
+*  2) all the init lines in the mission.sqm
+*  3) spawn:ed "threads" are started
+*  4) the mission's init.sqf/sqs is run
+*/
+SLX_XEH_PINIT = compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
+
+// This will put it to process in the same frame but at the end when everything is ready
+GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) addEventHandler ["killed", {
+	XEH_LOG("XEH: VehicleInit Started");
+	diag_log [player, vehicles];
+	diag_log (crew (vehicles select 0));
+	{
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
+		{
+			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
+		};
+	} forEach vehicles;
+	
+	XEH_LOG("XEH: VehicleInit Finished, PostInit Started");
+
+	// Warn if PostInit takes longer than 10 tickTime seconds
+	// Remove black-screen + loading-screen on timeOut
+	[] spawn
+	{
+		private["_time2Wait"];
+		_time2Wait = diag_ticktime + 10;
+		waituntil {diag_ticktime > _time2Wait};
+		if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
+	};
+	
+	_abort = false;
+	// On Server + Non JIP Client, we are now after all objects have inited
+	// and at the briefing, still time == 0
+	if (isNull player) then
+	{
+		if (!isDedicated && !(SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
+		{
+			//#ifdef DEBUG_MODE_FULL
+			diag_log text "JIP";
+			//#endif
+			_abort = true;
+	
+			SLX_XEH_MACHINE set [1, true]; // set JIP
+			// TEST for weird jip-is-server-issue :S
+			if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
+				diag_log ["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE];
+				SLX_XEH_MACHINE set [2, true]; // set Dedicated client
+				SLX_XEH_MACHINE set [3, false]; // set server
+				SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
+			};
+		};
+	};
+	if !(isNull player) then
+	{
+		if (isNull (group player)) then
+		{
+			// DEBUG TEST: Crashing due to JIP, or when going from briefing
+			//			 into game
+			#ifdef DEBUG_MODE_FULL
+			diag_log text "NULLGROUP";
+			#endif
+			_abort = true;
+		};
+	};
+
+	// If JIP or Player object otherwise not ready in MP as client
+	if (_abort) exitWith {
+		[] spawn {
+			waitUntil { !(isNull player) };
+			waitUntil { local player };
+			waitUntil { !(isNull (group player)) };
+			GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+			GVAR(init_obj) addEventHandler ["killed", {
+				call SLX_XEH_PINIT;
+				deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
+			}];
+			GVAR(init_obj) setDamage 1;
+		};
+		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
+	};
+
+	call SLX_XEH_PINIT;
+	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
+}];
+GVAR(init_obj) setDamage 1;
