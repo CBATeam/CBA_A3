@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-CBA_nil = [nil];
-
 /*
  * Prepare BIS functions/MP and precompile all functions we already have
  * registered with it. In order to have the functions loaded early,
@@ -16,13 +14,16 @@ CBA_nil = [nil];
  * loaded and preprocessed twice, but this should only occur once per mission
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
+diag_log [diag_frameNo, diag_tickTime, time, "MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated];
+
+LOG("Initialising the Functions module early.");
 [objNull] call COMPILE_FILE(init_functionsModule);
 
 LOG(MSG_INIT);
-call COMPILE_FILE(init);
-LOG("Initialising the Functions module early.");
 
 ADDON = false;
+
+CBA_nil = [nil];
 
 GVAR(centers) = [];
 CBA_actionHelper = QUOTE(PATHTO(actionHelper));
