@@ -7,15 +7,15 @@ class RscActiveText;
 class CBA_CREDITS_CONT : RscStructuredText {
 	idc = CBA_CREDITS_CONT_IDC;
 	colorBackground[] = { 0, 0, 0, 0 };
-	__SX(0.25);
-	__SY(0.01);
-	__SW(0.74);
+	__SX(0.025);
+	__SY(0.964);
+	__SW(0.725);
 	__SH(0.025);
 	size = "0.025 * SafeZoneH";
 	class Attributes {
 		font = "TahomaB";
-		color = "#C8C8C8";
-		align = "right";
+		color = "#E0D8A6";
+		align = "left";
 		valign = "top";
 		shadow = true;
 		shadowColor = "#191970";

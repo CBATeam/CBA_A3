@@ -23,9 +23,14 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 
 	_ctrl = _disp displayCtrl CBA_CREDITS_CONT_IDC;
 
+	//get settings
+	{
+		call compile format ["if ( isNil '%1' ) then { %1 = isClass(configFile/'CfgPatches'/'%1'); } else { if ( typeName %1 != 'BOOL' ) then { %1 = isClass(configFile/'CfgPatches'/'%1'); }; };",_x];
+	} forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
+
 	//TRACE_1("",ctrlText _ctrl);
 	//if text not already shown
-	if ( (ctrlText _ctrl) == "" ) then {
+	if ( (ctrlText _ctrl) == "" && ! CBA_DisableCredits ) then {
 		//find addon with author
 		_config = configFile >> "CfgPatches";
 		_stop = false;
@@ -38,7 +43,7 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 
 		//addon name
 		_name = configName _entry;
-		_name = "<t color='#99cccc'>" + _name + "</t>";
+		if ( ! CBA_MonochromeCredits ) then { _name = "<t color='#99cccc'>" + _name + "</t>"; };
 		//author(s) name
 		_authors = getArray(_entry >> "author");
 		_author = _authors select 0;
@@ -48,15 +53,20 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 		//url if any
 		if (isText (_entry >> "authorUrl")) then {
 			_url = getText(_entry >> "authorUrl");
-			_url = "<t color='#566D7E'>" + _url + "</t>";
+			if ( ! CBA_MonochromeCredits ) then { _url = "<t color='#566D7E'>" + _url + "</t>"; };
 		} else {
 			_url = "";
 		};
-		
-		_version = getText(_entry >> "version");
+
+		//version if any
+		if (isText (_entry >> "version")) then {
+			_version = " v" + getText(_entry >> "version");
+		} else {
+			_version = "";
+		};
 
 		//single line
-		_text = _name + " v" + _version + " by " + _author + " " + _url;
+		_text = _name + _version + " by " + _author + " " + _url;
 		_ctrl ctrlSetStructuredText parseText _text;
 		//TRACE_1("2",ctrlText _ctrl);
 	};
