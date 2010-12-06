@@ -237,3 +237,4 @@ Group: Macros  {
    File: script_macros_common  (no auto-title, main\script_macros_common.hpp)
    }  # Group: Macros
 
+File: script_macros_common.hpp  (extended_eventhandlers\script_macros_common.hpp)
