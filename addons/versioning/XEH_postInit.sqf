@@ -5,7 +5,7 @@ SCRIPT(XEH_postInit);
 	Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 */
 
-if (!XEH_DisableLogging) then
+if (!SLX_XEH_DisableLogging) then
 {
 	diag_log [diag_frameNo, diag_tickTime, time, "CBA_VERSIONING", GVAR(versions)];
 };

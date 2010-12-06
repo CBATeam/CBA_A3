@@ -20,8 +20,6 @@ private [
 	diag_log text format["(%1) XEH BEG: %2, %3", time, _this, local (_this select 0), typeOf (_this select 0)];
 #endif
 
-if (isClass(configFile/"CfgPatches"/"Disable_XEH_Logging")) then {XEH_DisableLogging = true;} else {XEH_DisableLogging = false;};
-
 // Get unit.
 _unit = _this select 0;
 _Extended_Init_Class = _this select 1;
