@@ -4,7 +4,7 @@
 
 disableSerialization;
 PARAMS_1(_data);
-private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text"];
+private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text", "_version"];
 
 if ( isNil QUOTE(GVAR(show_proc)) ) then {
 	GVAR(show_proc) = true;
@@ -52,9 +52,11 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 		} else {
 			_url = "";
 		};
+		
+		_version = getText(_entry >> "version");
 
 		//single line
-		_text = _name + " by " + _author + " " + _url;
+		_text = _name + " v" + _version + " by " + _author + " " + _url;
 		_ctrl ctrlSetStructuredText parseText _text;
 		//TRACE_1("2",ctrlText _ctrl);
 	};
