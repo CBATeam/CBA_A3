@@ -14,7 +14,10 @@ SCRIPT(XEH_preInit);
  * loaded and preprocessed twice, but this should only occur once per mission
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
-diag_log [diag_frameNo, diag_tickTime, time, "MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated];
+if (!XEH_DisableLogging) then
+{
+	diag_log [diag_frameNo, diag_tickTime, time, "MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated];
+};
 
 LOG("Initialising the Functions module early.");
 [objNull] call COMPILE_FILE(init_functionsModule);

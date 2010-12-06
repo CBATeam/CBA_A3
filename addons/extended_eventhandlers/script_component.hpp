@@ -12,7 +12,7 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
-#define XEH_LOG(MESSAGE) diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]
+#define XEH_LOG(MESSAGE) if (!XEH_DisableLogging) then {diag_log [diag_frameNo, diag_tickTime, time, MESSAGE]};
 #define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", "Dammaged", "Engine", \
 	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit", \
 	"IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped", \
