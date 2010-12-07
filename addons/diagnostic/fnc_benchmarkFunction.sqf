@@ -55,9 +55,7 @@ if (isNil "_parameters") then
 	{
 		call _function;
 	};
-}
-else
-{
+} else {
 	for "_i" from 1 to _iterations do
 	{
 		_parameters call _function;

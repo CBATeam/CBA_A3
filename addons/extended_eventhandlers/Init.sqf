@@ -109,9 +109,7 @@ _fSetInit = {
 		{
 			_handler=[_cur,{},{}];
 			_handler set [_type, _init];
-		}
-		else
-		{
+		} else {
 			_handler=_init;
 		};
 	};
@@ -177,9 +175,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 				if (isText _cfgEntry && [] call _useEH) then
 				{
 					_inits set [_idx, compile(getText _cfgEntry)];
-				}
-				else
-				{
+				} else {
 					// Composite XEH init class
 					if (isClass _cfgEntry) then
 					{
@@ -193,9 +189,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 						if (isText _excludeEntry) then
 						{
 							_excludeClass = (getText _excludeEntry);
-						}
-						else
-						{
+						} else {
 							if (isArray _excludeEntry) then
 							{
 								_excludeClasses = (getArray _excludeEntry);
@@ -205,9 +199,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 						if (isText _respawnEntry) then
 						{
 							_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
-						}
-						else
-						{
+						} else {
 							if (isNumber _respawnEntry) then
 							{
 								_onRespawn = ((getNumber _respawnEntry) == 1);
@@ -217,9 +209,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 						if (isText _replaceEntry) then
 						{
 							_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
-						}
-						else
-						{
+						} else {
 							if (isNumber _replaceEntry) then
 							{
 								_replaceDEH = ((getNumber _replaceEntry) == 1);
@@ -242,9 +232,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 									{
 										//_inits set [0, _init];
 										[0, _init, "all"] call _fSetInit;
-									}
-									else
-									{
+									} else {
 										//_inits set [_idx, _init];
 										[_idx, _init, "all"] call _fSetInit;
 									};

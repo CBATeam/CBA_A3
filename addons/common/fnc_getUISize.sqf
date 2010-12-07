@@ -86,9 +86,7 @@ if (_error) then
 	} else {
 		_return = -1;
 	};
-}
-else
-{
+} else {
 	if (_output == "STRING") then
 	{
 		switch (_index) do

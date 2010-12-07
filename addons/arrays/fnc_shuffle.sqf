@@ -39,9 +39,7 @@ _tempArray = if ((count _this) != 1) then
 else{if (IS_ARRAY(_this select 0)) then
 {
 	[] + (_this select 0); // Correct params passed.
-}
-else
-{
+} else {
 	WARNING("CBA_fnc_shuffle requires an array as first parameter, not just a direct array: " + str _this);
 	[] + _this;
 }; };

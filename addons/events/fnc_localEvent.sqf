@@ -37,9 +37,7 @@ if (not (isNil "_handlers")) then
 			if (isNil "_params") then
 			{
 				call _x;
-			}
-			else
-			{
+			} else {
 				_params call _x;
 			};
 		};

@@ -45,9 +45,7 @@ if (_weapon != "") then {
             _class = inheritsFrom _class;
         };
         _weapon = _temp;
-    }
-    else
-    {
+    } else {
         // If some unknown class used.
         //_anim = _array select 0;
         _weapon = "";

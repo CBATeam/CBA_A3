@@ -48,9 +48,7 @@ if ((count _array) > 0) then
 		_element = if (IS_STRING(_element)) then { _element } else { str _element };
 		_joined = _joined + _separator + _element;
 	};
-}
-else
-{
+} else {
 	_joined = "";
 };
 

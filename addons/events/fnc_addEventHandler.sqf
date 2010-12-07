@@ -32,9 +32,7 @@ if (isNil "_handlers") then
 	// No handlers for this event already exist, so make a new event type.
 	CBA_eventHandlers setVariable [_eventType, [_handler]];
 	_handlerIndex = 0;
-}
-else
-{
+} else {
 	// Handlers already recorded, so add another one.
 	_handlerIndex = count _handlers;
 	PUSH(_handlers,_handler);

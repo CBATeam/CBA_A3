@@ -44,9 +44,7 @@ if (_separator == "") then
 	{
 		PUSH(_split,toString [_x]);
 	} forEach _stringArray;
-}
-else
-{
+} else {
 	private [ "_separatorArray", "_fragment",
 	"_currentIndex", "_foundIndex"];
 

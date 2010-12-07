@@ -39,9 +39,7 @@ private "_return";
 _return = if (isMultiplayer) then
 {
 	[playableUnits, { isPlayer _x }] call BIS_fnc_conditionalSelect;
-}
-else
-{
+} else {
 	[player];
 };
 

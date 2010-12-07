@@ -73,9 +73,7 @@ if (_do) then {
 if (_unit != player) then
 {
 	_azimuth = getdir _unit;
-}
-else
-{
+} else {
 	private ["_position","_viewPos","_vector","_magnitude"];
 	_position = positionCameraToWorld [0, 0, 0];
 	_threed = if ((_position distance _unit)>2) then {true} else {false};

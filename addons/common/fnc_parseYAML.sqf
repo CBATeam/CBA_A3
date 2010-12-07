@@ -112,16 +112,12 @@ _parse =
 			};
 
 			_pos = _pos - 1; // Parse the newline normally.
-		}
-		else
-		{
+		} else {
 			if (_char in _lineBreaks) then
 			{
 				_currentIndent = 0;
 				PUSH(_lines,[]);
-			}
-			else
-			{
+			} else {
 				PUSH(_lines select ((count _lines) - 1), _char);
 			};
 
@@ -151,9 +147,7 @@ _parse =
 							PUSH(_data,_value);
 							_mode = YAML_MODE_STRING;
 						};
-					}
-					else
-					{
+					} else {
 						PUSH(_value,_char);
 					};
 				};
@@ -164,9 +158,7 @@ _parse =
 						["Unexpected new-line, when expecting ':'",
 								_yaml, _pos, _lines] call _raiseError;
 							_error = true;
-					}
-					else
-					{
+					} else {
 						switch (_char) do
 						{
 							case ASCII_YAML_ASSOC:
@@ -205,9 +197,7 @@ _parse =
 							[_data, _key, _value] call CBA_fnc_hashSet;
 							_mode = YAML_MODE_STRING;
 						};
-					}
-					else
-					{
+					} else {
 						PUSH(_value,_char);
 					};
 				};
@@ -257,9 +247,7 @@ _parse =
 
 									_value = [];
 									_mode = YAML_MODE_ARRAY;
-								}
-								else
-								{
+								} else {
 									//TRACE_2("BLAH",_indent,_currentIndent);
 									_error = true;
 								};
@@ -270,17 +258,13 @@ _parse =
 								//TRACE_2("End of Array",count _lines,_indent);
 								_pos = _pos - 1;
 								_return = true;
-							}
-							else
-							{
+							} else {
 								if (_dataType == YAML_TYPE_ARRAY) then
 								{
 									//TRACE_2("New element of Array",count _lines,_indent);
 									_value = [];
 									_mode = YAML_MODE_ARRAY;
-								}
-								else
-								{
+								} else {
 									//TRACE_3("BLEHH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
@@ -302,9 +286,7 @@ _parse =
 									_key = [_char];
 									_value = [];
 									_mode = YAML_MODE_ASSOC_KEY;
-								}
-								else
-								{
+								} else {
 									//TRACE_3("BLAH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
@@ -315,18 +297,14 @@ _parse =
 								//TRACE_2("End of Hash",count _lines,_indent);
 								_pos = _pos - 1;
 								_return = true;
-							}
-							else
-							{
+							} else {
 								if (_dataType == YAML_TYPE_ASSOC) then
 								{
 									//TRACE_2("New element of Hash",count _lines,_indent);
 									_key = [_char];
 									_value = [];
 									_mode = YAML_MODE_ASSOC_KEY;
-								}
-								else
-								{
+								} else {
 									//TRACE_3("BLEH",_dataType,_indent,_currentIndent);
 									_error = true;
 								};
@@ -375,8 +353,6 @@ _error = _retVal select 2;
 if (_error) then
 {
 	nil; // Return.
-}
-else
-{
+} else {
 	_data; // Return.
 };

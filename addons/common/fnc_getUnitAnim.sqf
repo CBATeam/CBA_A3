@@ -30,9 +30,7 @@ _umov = "stop";
 if ((vehicle _unit) != _unit) then
 {
 	_upos = "vehicle";
-}
-else
-{
+} else {
 	if (count(_anim)<12) exitWith {};
 	_dthstr = toString([_anim select 0, _anim select 1, _anim select 2, _anim select 3]);
 	_posstr = toString([_anim select 4, _anim select 5, _anim select 6, _anim select 7]);

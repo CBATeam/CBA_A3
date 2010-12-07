@@ -55,9 +55,7 @@ if (_index >= 0) then
 		// Replace the original value for this key.
 		(_hash select HASH_VALUES) set [_index, _value];
 	};
-}
-else
-{
+} else {
 	// Ignore values that are the same as the default.
 	if (not _isDefault) then
 	{

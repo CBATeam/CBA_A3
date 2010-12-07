@@ -79,9 +79,7 @@ _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
 if (_decimalPlaces > 0) then
 {
 	_integerPart = floor (abs _number);
-}
-else
-{
+} else {
 	_integerPart = round (abs _number);
 };
 
@@ -134,9 +132,7 @@ if (_decimalPlaces > 0) then
 		if (_i == _decimalPlaces) then
 		{
 			_digit = round ((_number * _multiplier) mod 10);
-		}
-		else
-		{
+		} else {
 			_digit = floor ((_number * _multiplier) mod 10);
 		};
 

@@ -57,8 +57,6 @@ if (not isNil "_params") then
 if (isNil "_value") then
 {
 	nil;
-}
-else
-{
+} else {
 	_value;
 };

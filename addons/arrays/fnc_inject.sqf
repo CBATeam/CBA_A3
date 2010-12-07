@@ -56,8 +56,6 @@ if (not isNil "_initial") then
 if (isNil "_accumulator") then
 {
 	nil;
-}
-else
-{
+} else {
 	_accumulator;
 };

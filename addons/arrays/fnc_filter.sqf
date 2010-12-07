@@ -47,9 +47,7 @@ private ["_arrayOut", "_x"];
 if _inPlace then
 {
 	_arrayOut = _array;
-}
-else
-{
+} else {
 	_arrayOut = [];
 	_arrayOut resize (count _array);
 };
