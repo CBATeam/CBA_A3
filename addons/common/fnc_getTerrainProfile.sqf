@@ -3,15 +3,19 @@ Function: CBA_fnc_getTerrainProfile
 
 Description:
 	A function used to find the terrain profile between two positions
+
 Parameters:
 	- Position A [Object, Location, Position, Marker or Group]
 	- Position B [Object, Location, Position, Marker or Group]
 	Optional:
 	- Resolution (in Metres)
+
 Returns:
 	Array containing [2D Distance, Angle, Terrain Profile (in format [Relative Altitude, 2D Distance from, 3D Distance from])
+
 Example:
 	[[0,0,0], [0,0,1000], 10] call CBA_fnc_getTerrainProfile
+
 Author:
 	Rommel && Noubernou
 
