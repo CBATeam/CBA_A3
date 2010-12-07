@@ -25,7 +25,7 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 
 	//get settings
 	{
-		call compile format ["if ( isNil '%1' ) then { %1 = isClass(configFile/'CfgPatches'/'%1'); } else { if ( typeName %1 != 'BOOL' ) then { %1 = isClass(configFile/'CfgPatches'/'%1'); }; };",_x];
+		if (isNil _x) then { missionNamespace setVariable [_x, isClass(configFile/"CfgPatches"/_x)] };
 	} forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
 
 	//TRACE_1("",ctrlText _ctrl);
