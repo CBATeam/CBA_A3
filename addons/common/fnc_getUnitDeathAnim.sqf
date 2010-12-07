@@ -34,9 +34,7 @@ if (isText (_curAnim >> "actions")) then
 		{
 			_deathAnim = getText _deathAnimCfg;
 		};
-	}
-	else
-	{
+	} else {
 		_deathAnimCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
 		if (isArray (_deathAnimCfg >> "interpolateTo")) then
 		{

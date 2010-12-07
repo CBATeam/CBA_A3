@@ -104,9 +104,7 @@ _fSetInit = {
 	{
 		_handler = _cur;
 		_handler set [_type, _init];
-	}
-	else
-	{
+	} else {
 		if (_type > 0) then
 		{
 			_handler=[_cur,{},{}];
@@ -290,9 +288,7 @@ diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this se
 	{
 		// Normal code type handler
 		[_unit] call _x;
-	}
-	else
-	{
+	} else {
 		// It's an array of handlers (all, server, client)
 		_h=_x;
 		{[_unit] call _x} forEach _h;

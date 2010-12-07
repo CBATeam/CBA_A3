@@ -51,9 +51,7 @@ if (_index >= 0) then
 		};
 
 		_values resize ((count _values) - 1);
-	}
-	else
-	{
+	} else {
 		// Replace the original value for this key.
 		(_hash select HASH_VALUES) set [_index, _value];
 	};

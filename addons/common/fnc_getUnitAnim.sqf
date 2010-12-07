@@ -40,9 +40,7 @@ else
 	if (_dthstr == "adth" || _dthstr == "slx_") then
 	{
 		_upos = "prone";
-	}
-	else
-	{
+	} else {
 		_upos = switch (_posstr) do
 		{
 			case "ppne": { "prone" };

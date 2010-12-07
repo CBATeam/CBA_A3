@@ -83,9 +83,7 @@ if (_error) then
 	if (_output == "STRING") then
 	{
 		_return = "error";
-	}
-	else
-	{
+	} else {
 		_return = -1;
 	};
 }
@@ -112,9 +110,7 @@ else
 				_return = "large";
 			};
 		};
-	}
-	else
-	{
+	} else {
 		_return = _index;
 	};
 };

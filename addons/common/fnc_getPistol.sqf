@@ -34,9 +34,7 @@ _pistol = "";
 if (IS_ARRAY(_this)) then
 {
 	_unit = _this select 0;
-}
-else
-{
+} else {
 	_unit = _this;
 	WARNING("Expected [_unit], not _unit, passed to function. Unit was: " + str _unit);
 };

@@ -48,9 +48,7 @@ else
 			_handlers set [_handlerIndex, nil];
 			TRACE_2("Removed",_eventType,_handlerIndex);
 		};
-	}
-	else
-	{
+	} else {
 		WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " never set.");
 	};
 };
