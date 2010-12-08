@@ -16,7 +16,7 @@ if (!SLX_XEH_DisableLogging) then
 	_f = {
 		diag_log text _this;
 		sleep 1;
-		BIS_functions_mainscope globalChat _this;
+		CBA_logic globalChat _this;
 	};
 	{
 		_mod = _x select 0;
@@ -27,7 +27,7 @@ if (!SLX_XEH_DisableLogging) then
 				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _data select 0, _mod, _data select 1] spawn _f;
 			} else {
 				if !(isArray(_class >> "versionAr")) then {
-					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid verion info found.", _key, _data select 0, _mod, _data select 1] spawn _f;
+					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _key, _data select 0, _mod, _data select 1] spawn _f;
 				} else {
 					if ([_data select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
 						format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _data select 0, _mod, _data select 1, getArray(_class >> "versionAr")] spawn _f;
