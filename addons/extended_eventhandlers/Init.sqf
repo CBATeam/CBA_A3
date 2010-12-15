@@ -137,6 +137,7 @@ _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 *  a property "replaceDefault" which will replace the DEH init with the
 *  class-specific BIS init EH for that vehicle.
 */
+
 _useDEHinit = false;
 if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 {
@@ -186,6 +187,8 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 						_excludeEntry = _cfgEntry / "exclude";
 						_respawnEntry = _cfgEntry / "onRespawn";
 						_replaceEntry = _cfgEntry / "replaceDEH";
+						_excludeClasses = [];
+						_excludeClass = "";
 						if (isText _excludeEntry) then
 						{
 							_excludeClass = (getText _excludeEntry);
