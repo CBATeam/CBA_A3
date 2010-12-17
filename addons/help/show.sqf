@@ -18,8 +18,6 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 		_ctrlt = _data select 0;
 		_disp = ctrlParent _ctrlt;
 	};
-	_ctrlt ctrlEnable false;
-	_ctrlt ctrlShow false;
 
 	_ctrl = _disp displayCtrl CBA_CREDITS_CONT_IDC;
 
