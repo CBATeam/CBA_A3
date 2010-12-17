@@ -75,7 +75,7 @@ _idc = _flexiMenu_baseIDC_listButton;
 
 	_ctrl = _disp displayCtrl _idc;
 	_array = ctrlPosition _ctrl;
-	
+
 	if ({_x == 0} count _array == 4) then {
 		if (!isNull _disp) exitWith {
 			diag_log format ["Warning: Too many menu items or missing List button control: %1",

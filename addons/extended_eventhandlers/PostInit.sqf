@@ -38,7 +38,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 			{ [_x, "Extended_Init_Eventhandlers"] call SLX_XEH_init } forEach _crew;
 		};
 	} forEach vehicles;
-	
+
 	XEH_LOG("XEH: VehicleInit Finished, PostInit Started");
 	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 }];
@@ -77,7 +77,7 @@ if !(isNull player) then
 		//			 into game
 		#ifdef DEBUG_MODE_FULL
 		diag_log text "NULLGROUP";
-		#endif		
+		#endif
 		waitUntil { !(isNull (group player)) };
 	};
 };
@@ -115,7 +115,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, synchronous.
 		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
 		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
-		// TODO: Evaluate with respawn... 
+		// TODO: Evaluate with respawn...
 		while {true} do {
 			waitUntil {sleep 1; player != _lastPlayer};
 			sleep 1;

@@ -37,7 +37,7 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 // The directCall function will execute (with parameters) next frame, and without delay
 // [[1,2,3], {mycode to execute}] call FUNC(directCall);
 // _obj = [[1,2,3], {mycode to execute}] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
-GVAR(call_i) = 0; 
+GVAR(call_i) = 0;
 FUNC(directCallInt) = { (_this getVariable QUOTE(GVAR(params))) call (_this getVariable QUOTE(GVAR(code))); deleteVehicle _this };
 FUNC(directCall) = {
 	private ["_obj", "_objName"];

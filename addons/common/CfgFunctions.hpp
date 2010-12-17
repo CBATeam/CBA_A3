@@ -383,7 +383,7 @@ class CfgFunctions
 			};
 		};
 	};
-	
+
 	// Need to be manually maintained
 	// Missing BIS functions
 	class BIS {

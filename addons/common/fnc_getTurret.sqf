@@ -35,7 +35,7 @@ if (count _tp > 0) then
 			if (isClass(_y)) then { PUSH(_turs,_y) };
 		};
 		_path = (_turs select _x);
-		
+
 	} forEach _tp;
 };
 

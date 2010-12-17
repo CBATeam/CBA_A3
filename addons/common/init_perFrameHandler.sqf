@@ -45,7 +45,7 @@ FUNC(blaHandler) = {
 	// TRACE_1("Executing",_logic);
 	// Execute code
 	_logic call (_logic getVariable "run");
-	
+
 	// Serialize
 	{ call _x } forEach (_logic getVariable "serialize");
 };
@@ -81,7 +81,7 @@ FUNC(addPerFrameHandlerLogic) = {
 	{
 		_deSerialize set [count _deSerialize, compile format["%1 = _logic getVariable '%1'", _x]];
 	} forEach (_logic getVariable 'private');
-	
+
 	_logic setVariable ["serialize", _serialize];
 	_logic setVariable ["deserialize", _deserialize];
 

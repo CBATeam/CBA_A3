@@ -50,7 +50,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWi
 
 		_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
 		if (isNil "_unitPlayable") then { _unitPlayable = false };
-		
+
 		// If unit already has the variable, it is a respawned unit.
 		// Set by InitPost Man-eventhandler.
 		if (_unitPlayable) then {
@@ -59,7 +59,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWi
 			[_unit, _this select 1, false] call SLX_XEH_init; // is not respawn
 		};
 	};
-	
+
 	#ifdef DEBUG_MODE_FULL
 	diag_log text format["(%1) XEH END: %2", time, _this];
 	#endif

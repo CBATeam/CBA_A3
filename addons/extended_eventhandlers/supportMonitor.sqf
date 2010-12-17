@@ -50,7 +50,7 @@ _fnc = {
 		TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
 		call _fnc_full;
 	};
-	
+
 	if (_type in _exclClasses) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };
 
 	_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
@@ -60,7 +60,7 @@ _fnc = {
 		call _fnc_full;
 		PUSH(_fullClasses,_type);
 	};
-	
+
 	_excl = getNumber(configFile >> "CfgVehicles" >> "SLX_XEH_DISABLED") == 1;
 	if !(_excl) then { { if (_obj isKindOf _x) exitWith { _excl = true } } forEach _excludes };
 	if (_excl) exitWith {
@@ -87,7 +87,7 @@ _fnc = {
 			if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
 		};
 	};
-	
+
 	_full = false; // Used for caching objects that need ALL eventhandlers assigned, incl init.
 	if (_XEH) then {
 		TRACE_2("Has XEH init",_obj,_type)
@@ -96,7 +96,7 @@ _fnc = {
 		[_obj] call SLX_XEH_EH_Init;
 		_full = true;
 	};
-	
+
 	// Add script-eventhandlers for those events that are not setup properly.
 	_partial = false;
 	call _fnc_partial;

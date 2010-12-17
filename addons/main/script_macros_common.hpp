@@ -1105,7 +1105,7 @@ Author:
 ------------------------------------------- */
 #define OBSOLETE(OLD_FUNCTION,COMMAND_CODE) \
 	OBSOLETE_SYS(DOUBLES(PREFIX,OLD_FUNCTION),COMMAND_CODE)
-	
+
 #define BWC_CONFIG(NAME) class NAME { \
 		units[] = {}; \
 		weapons[] = {}; \

@@ -208,7 +208,7 @@ _f = {
 			};
 		} forEach _classes;
 	} forEach [configFile, campaignConfigFile, missionConfigFile];
-	
+
 	// Now concatenate all the handlers into one string
 	_handler = "";
 	{
@@ -252,7 +252,7 @@ _f = {
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
 	_ha = _unit getVariable [_xeh, []];
-	if (_handler != "") then { 
+	if (_handler != "") then {
 		_ha set [0, compile _handler];
 	};
 	_unit setVariable [_xeh, _ha];

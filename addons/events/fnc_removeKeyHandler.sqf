@@ -5,7 +5,7 @@ Description:
 	Removes an action to a keyhandler
 
 Parameters:
-	_hashKey 
+	_hashKey
 
 Returns:
 
