@@ -81,8 +81,8 @@ while { !((_classes select 0) in ["", "All"]) } do
 // (See dev-heaven.net issues #12104 and #12108)
 _names = [];	// event handler config entry names
 _inits = [];	// array of handlers or arrays with handlers, the
-			    // later being used for XEH handlers that make use of
-			    // the serverInit and clientInit feature.
+			// later being used for XEH handlers that make use of
+			// the serverInit and clientInit feature.
 _init = {};
 _excludeClass = "";
 _excludeClasses = [];

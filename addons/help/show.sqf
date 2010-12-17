@@ -11,7 +11,7 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 
 	//get display control
 	if (typeName (_data select 0) == "DISPLAY") then {
-		  _disp = _data select 0;
+		_disp = _data select 0;
 	};
 
 	if (typeName (_data select 0) == "CONTROL") then {

@@ -4,7 +4,7 @@
 	them. This is done once per mission and after all the extended init event
 	handler code is run. An addon maker can put run-once, late initialisation
 	code in such a post-init "EH" rather than in a normal XEH init EH which
-	 might be called several times.
+	might be called several times.
 */
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"

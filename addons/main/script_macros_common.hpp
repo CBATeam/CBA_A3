@@ -936,7 +936,7 @@ Parameters:
 
 Example:
 	(begin example)
-		 ASSERT_FALSE(_frogIsDead,"The frog died");
+		ASSERT_FALSE(_frogIsDead,"The frog died");
 	(end)
 
 Author:

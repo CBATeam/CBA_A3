@@ -19,11 +19,11 @@ Returns:
 
 Example:
 	(begin example)
-	  _dumpHash = {
+	_dumpHash = {
 		diag_log format ["Key: %1, Value: %2", _key, _value];
-	  };
+	};
 
-	  [_hash, _dumpHash] call CBA_fnc_hashEachPair;
+	[_hash, _dumpHash] call CBA_fnc_hashEachPair;
 	(end)
 
 Author:

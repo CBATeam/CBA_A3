@@ -94,9 +94,9 @@ if (GVAR(lag)) then {
 	[] spawn {
 		// By HojO
 		for "_i" from 0 to 100 do {
-		    _null = [] spawn {
+		_null = [] spawn {
 			while{true} do {_LagMyGame = sin(cos(tan(sin(cos(tan(sin(cos(tan(0.12345678)))))))));};
-		    };
+		};
 		};
 	/*
 		private ["_nextTime", "_objects", "_logic"];

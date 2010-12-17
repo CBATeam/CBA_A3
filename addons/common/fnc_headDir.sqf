@@ -27,7 +27,7 @@ Examples:
 		_data = [player] call CBA_fnc_headDir;
 		// => returns direction of head (freelook)
 
- 		_data = [player, house1] call CBA_fnc_headDir;
+		_data = [player, house1] call CBA_fnc_headDir;
 		// => returns direction of head, difference angle, if house is in fov
 		//    and if 3rd person is on or not
 
@@ -40,7 +40,7 @@ Examples:
 	(end)
 
 TODO:
- 	Vertical angle.
+	Vertical angle.
 
 ImplementationNote:
 	positionCameraToWorld is only valid for player object, it is not handled for
