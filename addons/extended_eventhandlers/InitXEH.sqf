@@ -53,6 +53,7 @@ SLX_XEH_FNC_SUPPORTM = {
 
 	private ["_obj", "_cfg", "_init", "_initAr", "_XEH", "_type", "_full", "_partial"];
 	_obj = _this select 0;
+	_XEH = if (count _this > 1) then { _this select 1 } else { false };
 	_type = typeOf _obj;
 
 	PUSH(SLX_XEH_PROCESSED_OBJECTS,_obj);
@@ -91,15 +92,16 @@ SLX_XEH_FNC_SUPPORTM = {
 	// Check 2 - XEH init EH detected
 	_init = _cfg >> "init";
 
-	_XEH = false;
-	if (isText _init) then {
-		_initAr = toArray(getText(_init));
-		if (count _initAr > 11) then {
-			_ar = [];
-			for "_i" from 0 to 11 do {
-				PUSH(_ar,_initAr select _i);
+	if !(_XEH) then {
+		if (isText _init) then {
+			_initAr = toArray(getText(_init));
+			if (count _initAr > 11) then {
+				_ar = [];
+				for "_i" from 0 to 11 do {
+					PUSH(_ar,_initAr select _i);
+				};
+				if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
 			};
-			if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
 		};
 	};
 

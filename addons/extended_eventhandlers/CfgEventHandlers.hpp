@@ -78,7 +78,7 @@ class Extended_Init_EventHandlers
 		{
 			scope	 = public;
 			onRespawn = true;
-			init = "_this call SLX_XEH_FNC_SUPPORTM";
+			init = "[_this select 0, true] call SLX_XEH_FNC_SUPPORTM";
 		};
 		// Compile code for other EHs to run and put them in the setVariable.
 		// Set up code for the remaining event handlers too...
