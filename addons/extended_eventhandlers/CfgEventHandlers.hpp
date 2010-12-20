@@ -76,11 +76,17 @@ class Extended_Init_EventHandlers
 	// Default Extended Event Handlers: Add extended event handlers to compile code.
 	class All
 	{
+		class SLX_Init_AAA
+		{
+			scope	 = public;
+			onRespawn = true;
+			init = "_this call SLX_XEH_FNC_SUPPORTM";
+		};
 		class SLX_Init_Post_All
 		{
-				scope	 = public;
-				onRespawn = true;
-				init	  = "_this call SLX_XEH_initPost";
+			scope	 = public;
+			onRespawn = true;
+			init	  = "_this call SLX_XEH_initPost";
 		};
 	};
 
