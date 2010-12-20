@@ -197,7 +197,7 @@ SLX_XEH_FNC_SUPPORTM = {
 
 	if (_type in SLX_XEH_EXCL_CLASSES) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };
 
-	_excl = getNumber(configFile >> "CfgVehicles" >> "SLX_XEH_DISABLED") == 1;
+	_excl = getNumber(configFile >> "CfgVehicles" >> _type >> "SLX_XEH_DISABLED") == 1;
 	if !(_excl) then { { if (_obj isKindOf _x) exitWith { _excl = true } } forEach SLX_XEH_EXCLUDES };
 	if (_excl) exitWith {
 		TRACE_2("Exclusion, abort and caching",_obj,_type);
