@@ -22,6 +22,11 @@ private [
 
 // Get unit.
 _unit = _this select 0;
+if (isNull _unit) exitWith {
+	#ifdef DEBUG_MODE_FULL
+		diag_log text format["(%1) XEH EXIT - NULL OBJECT: %2", time, _this];
+	#endif
+};
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 
@@ -43,6 +48,13 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWi
 	{
 		private ["_unit", "_unitPlayable"];
 		_unit = _this select 0;
+
+		
+		if (isNull _unit) exitWith {
+			#ifdef DEBUG_MODE_FULL
+				diag_log text format["(%1) XEH BEG: (Bug #7432) %2 Null Object", time, _unit];
+			#endif
+		};
 
 		#ifdef DEBUG_MODE_FULL
 			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit];
