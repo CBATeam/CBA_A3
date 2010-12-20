@@ -237,9 +237,9 @@ SLX_XEH_FNC_SUPPORTM = {
 
 // Used on Init of all objects, not on respawn.
 SLX_XEH_FNC_SUPPORTM2 = {
-	private ["_unit", "_type", "_cfg", "_partial", "_full"];
-	_unit = _this select 0;
-	_type = typeOf _unit;
+	private ["_obj", "_type", "_cfg", "_partial", "_full"];
+	_obj = _this select 0;
+	_type = typeOf _obj;
 
 	// No XEH EH entries at all - Needs full XEH
 	if (_type in SLX_XEH_FULL_CLASSES) exitWith {
