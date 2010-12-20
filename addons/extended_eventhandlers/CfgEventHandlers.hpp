@@ -44,7 +44,7 @@ class Extended_PostInit_EventHandlers {};
 // per mission but InitPost handlers are called for each unit.
 class Extended_InitPost_EventHandlers
 {
-	class All
+	class Man
 	{
 		// Compile code for other EHs to run and put them in the setVariable.
 		// Set up code for the remaining event handlers too...
@@ -56,9 +56,7 @@ class Extended_InitPost_EventHandlers
 			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
 			init	  = "_this call SLX_XEH_initOthers";
 		};
-	};
-	class Man
-	{
+
 		// We use this to determine if a unit has respawned,
 		// and therefore not re-run init eventhandlers that have onRespawn = false (the default)
 		class SLX_Init_Playable
@@ -81,6 +79,15 @@ class Extended_Init_EventHandlers
 			scope	 = public;
 			onRespawn = true;
 			init = "_this call SLX_XEH_FNC_SUPPORTM";
+		};
+		// Compile code for other EHs to run and put them in the setVariable.
+		// Set up code for the remaining event handlers too...
+		class SLX_Init_Other_All
+		{
+			scope	 = public;
+			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
+			init	  = "_this call SLX_XEH_initOthers";
+			exclude[] = {"Man"}; // Man is in PostInit because setVariables fall off man based units
 		};
 		class SLX_Init_Post_All
 		{
