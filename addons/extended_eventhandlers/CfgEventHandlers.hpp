@@ -1,5 +1,5 @@
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};_this call SLX_XEH_EH_Init; [_this select 0, true] call SLX_XEH_FNC_SUPPORTM"; \
+#define EXTENDED_EVENTHANDLERS init = "if(isnil'SLX_XEH_objects')then{call compile preprocessFile'extended_eventhandlers\InitXEH.sqf'};_this call SLX_XEH_EH_Init"; \
 fired = "_this call SLX_XEH_EH_Fired"; \
 animChanged      = "_this call SLX_XEH_EH_AnimChanged"; \
 animStateChanged = "_this call SLX_XEH_EH_AnimStateChanged"; \
@@ -74,6 +74,11 @@ class Extended_Init_EventHandlers
 	// Default Extended Event Handlers: Add extended event handlers to compile code.
 	class All
 	{
+		class SLX_Init_AAA
+		{
+			onRespawn = false;
+			init = "_this call SLX_XEH_FNC_SUPPORTM2";
+		};
 		// Compile code for other EHs to run and put them in the setVariable.
 		// Set up code for the remaining event handlers too...
 		class SLX_Init_Other_All
