@@ -14,37 +14,13 @@ diag_log text format["(%1) XEH BEG: PostInit", time];
 #endif
 
 // Warn if PostInit takes longer than 10 tickTime seconds
-// Remove black-screen + loading-screen on timeOut
 [] spawn
 {
 	private["_time2Wait"];
 	_time2Wait = diag_ticktime + 10;
 	waituntil {diag_ticktime > _time2Wait};
-	if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); if !(isDedicated) then { 4711 cutText ["","PLAIN", 0.01] }; endLoadingScreen };
+	if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
 };
-
-GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-GVAR(init_obj) addEventHandler ["killed", {
-	XEH_LOG("XEH: VehicleInit Started");
-	{
-		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-		_crew = crew _x;
-		/*
-		* If it's a vehicle then start event handlers for the crew.
-		* (Vehicles have crew and are neither humanoids nor game logics)
-		*/
-		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-		{
-			{ [_x] call SLX_XEH_EH_init } forEach _crew;
-		};
-	} forEach vehicles;
-
-	XEH_LOG("XEH: VehicleInit Finished, PostInit Started");
-	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
-}];
-GVAR(init_obj) setDamage 1;
-waitUntil {isNil QUOTE(GVAR(init_obj))};
-
 
 // On Server + Non JIP Client, we are now after all objects have inited
 // and at the briefing, still time == 0
@@ -85,19 +61,35 @@ if !(isNull player) then
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
 
-// Loading screen minimal 1s
-private["_time2Wait"];
-if !(isDedicated) then { _time2Wait = diag_ticktime + 1 };
-
 GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 GVAR(init_obj) addEventHandler ["killed", {
+	XEH_LOG("XEH: VehicleCrewInit Started");
+	{
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
+		{
+			{ [_x] call SLX_XEH_EH_init } forEach _crew;
+		};
+	} forEach vehicles;
+
+	XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
+	
 	// General InitPosts
-	{	(_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
+	{ (_x/"Extended_PostInit_EventHandlers") call SLX_XEH_F_INIT } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 	// we set this BEFORE executing the inits, so that any unit created in another
 	// thread still gets their InitPost ran
 	SLX_XEH_MACHINE set [7, true];
+	{ [_x] call SLX_XEH_INIT_DELAYED } forEach SLX_XEH_DELAYED; // Run Delayed inits for man-based units
+	SLX_XEH_DELAYED = [];
 	{ _x call SLX_XEH_init } forEach SLX_XEH_OBJECTS; // Run InitPosts
+	SLX_XEH_OBJECTS = [];
+
 	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 }];
 GVAR(init_obj) setDamage 1;
@@ -137,20 +129,6 @@ execVM "\extended_eventhandlers\supportMonitor.sqf";
 
 SLX_XEH_MACHINE set [8, true];
 XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
-
-
-// Remove black-screen + loading-screen
-if !(isDedicated) then {
-	/*
-	#ifdef DEBUG_MODE_FULL
-	diag_log ["Waiting...", _time2Wait, diag_tickTime];
-	#endif
-	waituntil {diag_ticktime > _time2Wait};
-	*/
-	4711 cutText ["", "PLAIN", 0.01];
-};
-
-// if (isNil "CBA_loadingscreen_disabled") then { if !(isServer && !isNil "BIS_MPA_sendEvent") then { _abort = false; if (isServer && !isNil "BIS_MPA") then { _abort = !(BIS_MPAM getVariable ["initDone", false]) }; if !(_abort) then { endLoadingScreen } } };
 
 #ifdef DEBUG_MODE_FULL
 diag_log text format["(%1) XEH END: PostInit", time];

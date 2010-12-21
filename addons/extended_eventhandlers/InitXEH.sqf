@@ -176,6 +176,33 @@ SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sq
 SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
 SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
 
+SLX_XEH_DELAYED = [];
+SLX_XEH_INIT_DELAYED = {
+	private ["_unit", "_unitPlayable"];
+	_unit = _this select 0;
+
+	
+	if (isNull _unit) exitWith {
+		#ifdef DEBUG_MODE_FULL
+			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 Null Object", time, _unit];
+		#endif
+	};
+
+	#ifdef DEBUG_MODE_FULL
+		diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit];
+	#endif
+
+	_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
+	if (isNil "_unitPlayable") then { _unitPlayable = false };
+
+	// If unit already has the variable, it is a respawned unit.
+	// Set by InitPost Man-eventhandler.
+	if (_unitPlayable) then {
+		[_unit, _this select 1, true] call SLX_XEH_init; // is respawn
+	} else {
+		[_unit, _this select 1, false] call SLX_XEH_init; // is not respawn
+	};
+};
 
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
@@ -295,48 +322,3 @@ _cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\Post
 // Load and call any "pre-init", run-once event handlers
 call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
 XEH_LOG("XEH: PreInit Finished");
-
-// Loading Screen used during PostInit - terminated in PostInit.sqf
-_text = "Post Initialization Processing...";
-if !(isDedicated) then
-{
-	// Black screen behind loading screen
-	4711 cutText ["", "BLACK OUT", 0.01];
-
-/*
-	if !(isNil "CBA_help_credits") then {
-		// Randomly pick 2 addons from cfgPatches to display credits
-		_credits = [CBA_help_credits, "CfgPatches"] call CBA_fnc_hashGet;
-		_cr = [];
-		_tmp = [];
-		{ PUSH(_tmp,_x) } forEach ((_credits select 0) select 1);
-		_tmp = [_tmp] call CBA_fnc_shuffle;
-		for "_i" from 0 to 1 do {
-			_key = _tmp select _i;
-			_entry = format["%1, by: %2", _key, [[_credits select 0, _key] call CBA_fnc_hashGet, ", "] call CBA_fnc_join];
-			PUSH(_cr,_entry);
-		};
-		_text = [_cr, ". "] call CBA_fnc_join;
-	};
-*/
-};
-
-/*
-// Disabled loadingScreen, only purpose left was to give mission scripts some extra time, as well as spawned instances
-// as well as provide Credits system to CBA and 3rd parties
-// the actual compiling of scripts is done in Killed EH anyway.
-#define CFG "CfgSettings" >> "cba" >> "loadingScreen"
-if (isDedicated || isMultiplayer || (!isMultiplayer && !isNull player)) then {
-	_disabled = false;
-
-	_cfg = missionConfigFile >> CFG;
-	if (isNumber(_cfg >> "disabled")) then { _disabled = getNumber(_cfg >> "disabled") == 1 };
-	if (_disabled) exitWith { CBA_loadingscreen_disabled = true };
-
-	_cfg = configFile >> CFG;
-	if (isNumber(_cfg >> "disabled")) then { _disabled = getNumber(_cfg >> "disabled") == 1 };
-	if (_disabled) exitWith { CBA_loadingscreen_disabled = true };
-
-	startLoadingScreen [_text, "RscDisplayLoadMission"];
-};
-*/

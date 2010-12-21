@@ -46,17 +46,6 @@ class Extended_InitPost_EventHandlers
 {
 	class Man
 	{
-		// Compile code for other EHs to run and put them in the setVariable.
-		// Set up code for the remaining event handlers too...
-		// This is in PostInit as opposed to (pre)Init,
-		// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
-		class SLX_Init_Other_All
-		{
-			scope	 = public;
-			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
-			init	  = "_this call SLX_XEH_initOthers";
-		};
-
 		// We use this to determine if a unit has respawned,
 		// and therefore not re-run init eventhandlers that have onRespawn = false (the default)
 		class SLX_Init_Playable
@@ -71,31 +60,6 @@ class Extended_InitPost_EventHandlers
 // Extended EH classes, where new events are defined.
 class Extended_Init_EventHandlers
 {
-	// Default Extended Event Handlers: Add extended event handlers to compile code.
-	class All
-	{
-		class SLX_Init_AAA
-		{
-			onRespawn = false;
-			init = "_this call SLX_XEH_FNC_SUPPORTM2";
-		};
-		// Compile code for other EHs to run and put them in the setVariable.
-		// Set up code for the remaining event handlers too...
-		class SLX_Init_Other_All
-		{
-			scope	 = public;
-			onRespawn = false;   // Not needed in A2 for SLX_XEH_initOthers
-			init	  = "_this call SLX_XEH_initOthers";
-			exclude[] = {"Man"}; // Man is in PostInit because setVariables fall off man based units
-		};
-		class SLX_Init_Post_All
-		{
-			scope	 = public;
-			onRespawn = true;
-			init	  = "_this call SLX_XEH_initPost";
-		};
-	};
-
 	// Vehicles.
 	class StaticCannon /* : StaticWeapon */ {
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";

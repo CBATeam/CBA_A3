@@ -8,12 +8,12 @@
 *  each matching EH class and exec them.
 */
 private [
-	"_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass", "_classes",
+	"_slx_xeh_unit", "_Extended_Init_Class", "_isRespawn", "_slx_xeh_unitClass", "_classes",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit"
+	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit", "_post"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -21,8 +21,8 @@ private [
 #endif
 
 // Get unit.
-_unit = _this select 0;
-if (isNull _unit) exitWith {
+_slx_xeh_unit = _this select 0;
+if (isNull _slx_xeh_unit) exitWith {
 	#ifdef DEBUG_MODE_FULL
 		diag_log text format["(%1) XEH EXIT - NULL OBJECT: %2", time, _this];
 	#endif
@@ -30,11 +30,13 @@ if (isNull _unit) exitWith {
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 
+_post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
+
 // Multiplayer respawn handling
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
-_isMan = _unit isKindOf "Man";
+_isMan = _slx_xeh_unit isKindOf "Man";
 
-if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWith
+if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_post) exitWith
 {
 	// Delay initialisation until we can check if it's a respawned unit
 	// or a createUnit:ed one. (Respawned units will have the object variable
@@ -44,32 +46,10 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWi
 	#endif
 
 	// Wait for the unit to be fully "ready"
-	_h = [_unit,_Extended_Init_Class] spawn
-	{
-		private ["_unit", "_unitPlayable"];
-		_unit = _this select 0;
-
-		
-		if (isNull _unit) exitWith {
-			#ifdef DEBUG_MODE_FULL
-				diag_log text format["(%1) XEH BEG: (Bug #7432) %2 Null Object", time, _unit];
-			#endif
-		};
-
-		#ifdef DEBUG_MODE_FULL
-			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit];
-		#endif
-
-		_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
-		if (isNil "_unitPlayable") then { _unitPlayable = false };
-
-		// If unit already has the variable, it is a respawned unit.
-		// Set by InitPost Man-eventhandler.
-		if (_unitPlayable) then {
-			[_unit, _this select 1, true] call SLX_XEH_init; // is respawn
-		} else {
-			[_unit, _this select 1, false] call SLX_XEH_init; // is not respawn
-		};
+	if (SLX_XEH_MACHINE select 7) then {
+		_h = [_slx_xeh_unit,_Extended_Init_Class] spawn SLX_XEH_INIT_DELAYED;
+	} else {
+		SLX_XEH_DELAYED set [count SLX_XEH_DELAYED, _slx_xeh_unit];
 	};
 
 	#ifdef DEBUG_MODE_FULL
@@ -79,8 +59,8 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9)) exitWi
 };
 
 // Get array of inherited classes of unit.
-_unitClass = typeOf _unit;
-_classes = [_unitClass];
+_slx_xeh_unitClass = typeOf _slx_xeh_unit;
+_classes = [_slx_xeh_unitClass];
 while { !((_classes select 0) in ["", "All"]) } do
 {
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
@@ -98,7 +78,7 @@ _inits = [];	// array of handlers or arrays with handlers, the
 _init = {};
 _excludeClass = "";
 _excludeClasses = [];
-_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
+_isExcluded = { (_slx_xeh_unitClass isKindOf _excludeClass) || ({ _slx_xeh_unitClass isKindOf _x }count _excludeClasses>0) };
 
 // Function to update the event handler or handlers at a given index
 // into the _inits array
@@ -153,7 +133,7 @@ _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 _useDEHinit = false;
 if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 {
-	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
+	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_slx_xeh_unitClass/"EventHandlers");
 	if (configName(_ehSuper)=="DefaultEventhandlers") then
 	{
 		if (isText (configFile/"DefaultEventhandlers"/"init")) then
@@ -231,7 +211,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 							};
 						};
 						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-						if !(_scope == 0 && (_unitClass != _x)) then
+						if !(_scope == 0 && (_slx_xeh_unitClass != _x)) then
 						{
 							if (!([] call _isExcluded) && [] call _useEH) then
 							{
@@ -285,16 +265,32 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits];
 #endif
 
+// Naughty but more flexible...
+if !(_isRespawn) then {
+	// Compile code for other EHs to run and put them in the setVariable.
+	// Set up code for the remaining event handlers too...
+	// This is in PostInit as opposed to (pre)Init,
+	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
+	// Run men's SLX_XEH_initOthers in PostInit, only when in Multiplayer
+	if !((_isMan && isMultiplayer && !_post) || ((!_isMan || !isMultiplayer) && _post)) then { _inits set [count _inits, {_this call SLX_XEH_initOthers}] };
+	// Run supportM
+	if !(_post) then { _inits set [count _inits, {_this call SLX_XEH_FNC_SUPPORTM2}] };
+};
+
+if !(_post) then { _inits set [count _inits, {_this call SLX_XEH_initPost}] } else {
+	if (_isMan) then { _inits set [count _inits, {_this call SLX_XEH_initPlayable }] };
+};
+
 {
 	private ["_h"];
 	if (typeName _x=="CODE") then
 	{
 		// Normal code type handler
-		[_unit] call _x;
+		[_slx_xeh_unit] call _x;
 	} else {
 		// It's an array of handlers (all, server, client)
 		_h=_x;
-		{[_unit] call _x} forEach _h;
+		{[_slx_xeh_unit] call _x} forEach _h;
 	};
 } forEach _inits;
 
