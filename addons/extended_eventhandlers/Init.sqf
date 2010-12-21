@@ -13,7 +13,7 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit", "_post"
+	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit", "_post", "_isDelayed"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -29,6 +29,7 @@ if (isNull _slx_xeh_unit) exitWith {
 };
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
+_isDelayed = if (count _this < 4) then { false } else { _this select 3 };
 
 _post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
 
@@ -47,7 +48,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 
 	// Wait for the unit to be fully "ready"
 	if (SLX_XEH_MACHINE select 7) then {
-		_h = [_slx_xeh_unit,_Extended_Init_Class] spawn SLX_XEH_INIT_DELAYED;
+		_h = [_slx_xeh_unit] spawn SLX_XEH_INIT_DELAYED;
 	} else {
 		SLX_XEH_DELAYED set [count SLX_XEH_DELAYED, _slx_xeh_unit];
 	};
@@ -277,7 +278,7 @@ if !(_isRespawn) then {
 	if !(_post) then { _inits set [count _inits, {_this call SLX_XEH_FNC_SUPPORTM2}] };
 };
 
-if !(_post) then { _inits set [count _inits, {_this call SLX_XEH_initPost}] } else {
+if !(_post) then { _inits set [count _inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] } else {
 	if (_isMan) then { _inits set [count _inits, {_this call SLX_XEH_initPlayable }] };
 };
 

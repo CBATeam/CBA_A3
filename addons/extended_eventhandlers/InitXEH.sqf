@@ -198,9 +198,9 @@ SLX_XEH_INIT_DELAYED = {
 	// If unit already has the variable, it is a respawned unit.
 	// Set by InitPost Man-eventhandler.
 	if (_unitPlayable) then {
-		[_unit, _this select 1, true] call SLX_XEH_init; // is respawn
+		[_unit, "Extended_Init_EventHandlers", true, true] call SLX_XEH_init; // is respawn
 	} else {
-		[_unit, _this select 1, false] call SLX_XEH_init; // is not respawn
+		[_unit, "Extended_Init_EventHandlers", false, true] call SLX_XEH_init; // is not respawn
 	};
 };
 
