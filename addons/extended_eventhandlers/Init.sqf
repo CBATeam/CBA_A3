@@ -17,14 +17,14 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH BEG: %2, %3", time, _this, local (_this select 0), typeOf (_this select 0)];
+	format["XEH BEG: %2, %3", time, _this, local (_this select 0), typeOf (_this select 0)] call SLX_XEH_LOG;
 #endif
 
 // Get unit.
 _slx_xeh_unit = _this select 0;
 if (isNull _slx_xeh_unit) exitWith {
 	#ifdef DEBUG_MODE_FULL
-		diag_log text format["(%1) XEH EXIT - NULL OBJECT: %2", time, _this];
+		format["XEH EXIT - NULL OBJECT: %2", time, _this] call SLX_XEH_LOG;
 	#endif
 };
 _Extended_Init_Class = _this select 1;
@@ -43,7 +43,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	// or a createUnit:ed one. (Respawned units will have the object variable
 	// "slx_xeh_isplayable" set to true)
 	#ifdef DEBUG_MODE_FULL
-		diag_log text format["(%1) XEH: (Bug #7432) deferring init for %2 ",time, _this];
+		format["XEH: (Bug #7432) deferring init for %2 ",time, _this] call SLX_XEH_LOG;
 	#endif
 
 	// Wait for the unit to be fully "ready"
@@ -54,7 +54,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	};
 
 	#ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH END: %2", time, _this];
+	format["XEH END: %2", time, _this] call SLX_XEH_LOG;
 	#endif
 	nil;
 };
@@ -263,7 +263,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits];
+format["XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits] call SLX_XEH_LOG;
 #endif
 
 // Naughty but more flexible...
@@ -296,7 +296,7 @@ if !(_post) then { _inits set [count _inits, compile format ["[_this select 0, %
 } forEach _inits;
 
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH END: %2", time, _this];
+format["XEH END: %2", time, _this] call SLX_XEH_LOG;
 #endif
 
 nil;

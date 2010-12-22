@@ -36,6 +36,10 @@ SLX_XEH_objects = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 
+SLX_XEH_LOG = {
+	XEH_LOG(_this);
+};
+
 // Process each new unit
 SLX_XEH_F_INIT = {
 	private [
@@ -184,12 +188,12 @@ SLX_XEH_INIT_DELAYED = {
 	
 	if (isNull _unit) exitWith {
 		#ifdef DEBUG_MODE_FULL
-			diag_log text format["(%1) XEH BEG: (Bug #7432) %2 Null Object", time, _unit];
+			format["XEH BEG: (Bug #7432) %2 Null Object", time, _unit] call SLX_XEH_LOG;
 		#endif
 	};
 
 	#ifdef DEBUG_MODE_FULL
-		diag_log text format["(%1) XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit];
+		format["XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit] call SLX_XEH_LOG;
 	#endif
 
 	_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";

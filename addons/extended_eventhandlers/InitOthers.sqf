@@ -16,7 +16,7 @@ private [
 ];
 
 #ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH BEG: %2 - %3", time, _this, typeOf (_this select 0)];
+	format["XEH BEG: %2 - %3", time, _this, typeOf (_this select 0)] call SLX_XEH_LOG;
 #endif
 
 // Get unit.
@@ -259,14 +259,14 @@ _f = {
 	_unit setVariable [_xehPlayer, compile _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
-		diag_log text format["(%1) XEH RUN: %2 - %3 - %4 - %5", time, _this, _event, typeOf (_this select 0), _handler != "", _handlerPlayer != ""];
+		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _event, typeOf (_this select 0), _handler != "", _handlerPlayer != ""] call SLX_XEH_LOG;
 	#endif
 } forEach SLX_XEH_OTHER_EVENTS;
 
 _unit setVariable ["SLX_XEH_READY", true];
 
 #ifdef DEBUG_MODE_FULL
-	diag_log text format["(%1) XEH END: %2", time, _this];
+	format["XEH END: %2", time, _this] call SLX_XEH_LOG;
 #endif
 
 nil;

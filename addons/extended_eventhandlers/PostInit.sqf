@@ -10,7 +10,7 @@
 #include "script_component.hpp"
 
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH BEG: PostInit", time];
+format["XEH BEG: PostInit", time] call SLX_XEH_LOG;
 #endif
 
 // Warn if PostInit takes longer than 10 tickTime seconds
@@ -29,7 +29,7 @@ if (isNull player) then
 	if (!isDedicated && !(SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 	{
 		#ifdef DEBUG_MODE_FULL
-		diag_log text "JIP";
+		"JIP" call SLX_XEH_LOG;
 		#endif
 
 		SLX_XEH_MACHINE set [1, true]; // set JIP
@@ -52,14 +52,14 @@ if !(isNull player) then
 		// DEBUG TEST: Crashing due to JIP, or when going from briefing
 		//			 into game
 		#ifdef DEBUG_MODE_FULL
-		diag_log text "NULLGROUP";
+		"NULLGROUP" call SLX_XEH_LOG;
 		#endif
 		waitUntil { !(isNull (group player)) };
 	};
 };
 
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
-// diag_log text format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time];
+// format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time] call SLX_XEH_LOG;
 
 GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 GVAR(init_obj) addEventHandler ["killed", {
@@ -131,7 +131,7 @@ SLX_XEH_MACHINE set [8, true];
 XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 #ifdef DEBUG_MODE_FULL
-diag_log text format["(%1) XEH END: PostInit", time];
+format["XEH END: PostInit", time] call SLX_XEH_LOG;
 #endif
 
 nil;
