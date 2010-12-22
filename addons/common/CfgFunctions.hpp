@@ -9,7 +9,7 @@ class CfgFunctions
 	{
 		class Misc
 		{
-			// CBA_fnc_actionArgument (use _path)
+			// CBA_fnc_actionArgument
 			class actionArgument
 			{
 				description = "Used to call the code parsed in the addaction argument.";
@@ -174,7 +174,7 @@ class CfgFunctions
 			// CBA_fnc_getNearest
 			class getNearest
 			{
-				description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array. Parameters: _position - Marker, Object, Location, Group or Position _array - Array of [Marker, Object, Location, Group and or Positions] _radius - Maximum distance from _position _code - Condition to meet (Code) Example: _nearestVeh = [player, vehicles] call CBA_fnc_getNearest _nearestGroup = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest Returns: Nearest given entity or List of entities within given distance Author: Rommel";
+				description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array. Parameters: _position - Marker, Object, Location, Group or Position _array - Array of [Marker, Object, Location, Group and or Positions] _radius - Maximum distance from _position _code - Condition to meet (Code) Example: _nearestVeh = [player, vehicles] call CBA_fnc_getNearest _nearestGroups = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest Returns: Nearest given entity or List of entities within given distance Author: Rommel";
 				file = "\x\cba\addons\common\fnc_getNearest.sqf";
 			};
 			// CBA_fnc_getNearestBuilding
@@ -204,7 +204,7 @@ class CfgFunctions
 			// CBA_fnc_getTerrainProfile
 			class getTerrainProfile
 			{
-				description = "A function used to find the terrain profile between two positions Parameters: - Position A [Object, Location, Position, Marker or Group] - Position B [Object, Location, Position, Marker or Group] Optional: - Resolution (in Metres) Returns: Array containing [2D Distance, Angle, Terrain Profile (in format [Relative Altitude, 2D Distance from, 3D Distance from]) Example: [[0,0,0], [0,0,1000], 10] call CBA_fnc_getTerrainProfile Author: Rommel && Noubernou";
+				description = "A function used to find the terrain profile between two positions";
 				file = "\x\cba\addons\common\fnc_getTerrainProfile.sqf";
 			};
 			// CBA_fnc_getTurret
@@ -383,7 +383,6 @@ class CfgFunctions
 			};
 		};
 	};
-
 	// Need to be manually maintained
 	// Missing BIS functions
 	class BIS {
