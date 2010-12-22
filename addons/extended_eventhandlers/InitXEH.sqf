@@ -166,7 +166,7 @@ SLX_XEH_initPlayable =
 	if (_unit in playableUnits || isPlayer _unit || _unit == player) then
 	{
 		#ifdef DEBUG_MODE_FULL
-			diag_log ['Playable unit!', _unit];
+			str(['Playable unit!', _unit]) call SLX_XEH_LOG;
 		#endif
 		if (_unit == player) then {
 			_unit setVariable ['SLX_XEH_PLAYABLE', true, true]; // temporary until better solution for players in MP..

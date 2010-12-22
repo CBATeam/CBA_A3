@@ -35,7 +35,7 @@ if (isNull player) then
 		SLX_XEH_MACHINE set [1, true]; // set JIP
 		// TEST for weird jip-is-server-issue :S
 		if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
-			diag_log ["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE];
+			str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
 			SLX_XEH_MACHINE set [2, true]; // set Dedicated client
 			SLX_XEH_MACHINE set [3, false]; // set server
 			SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
@@ -102,7 +102,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 		_lastPlayer = player;
 		_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 		#ifdef DEBUG_MODE_FULL
-			diag_log ["Running Player EH check", _lastPlayer];
+			str(["Running Player EH check", _lastPlayer]) call SLX_XEH_LOG;
 		#endif
 		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, synchronous.
 		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
@@ -116,7 +116,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 			sleep 1;
 			_newPlayer = player;
 			#ifdef DEBUG_MODE_FULL
-				diag_log ["New Player", _newPlayer, _lastPlayer];
+				str(["New Player", _newPlayer, _lastPlayer]) call SLX_XEH_LOG;
 			#endif
 			_newPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 			_lastPlayer = _newPlayer;
