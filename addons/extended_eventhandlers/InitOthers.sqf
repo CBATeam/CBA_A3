@@ -116,12 +116,12 @@ _f = {
 			};
 		} else {
 			#ifdef DEBUG_MODE_FULL
-				diag_log ["Excluded", _class, _excludeClass, _excludeClasses];
+				str(["Excluded", _unit, _class, _excludeClass, _excludeClasses]) call SLX_XEH_LOG;
 			#endif
 		};
 	} else {
 		#ifdef DEBUG_MODE_FULL
-			diag_log ["Scoped", _class, _scope];
+			str(["Scoped", _unit, _class, _scope]) call SLX_XEH_LOG;
 		#endif
 	};
 };
