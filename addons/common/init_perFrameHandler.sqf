@@ -109,15 +109,17 @@ FUNC(monitorFrameRender) = {
 		if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
 			{
 				_handlerData = _x;
-				if(!(isNil "_handlerData") && IS_ARRAY(_handlerData)) then {
-					_func = _handlerData select 0;
-					_delay = _handlerData select 1;
-					_delta = _handlerData select 2;
-					if(diag_tickTime > _delta) then {
-						[(_handlerData select 4), (_handlerData select 5)] call _func;
-						_delta = diag_tickTime + _delay;
-						//TRACE_1("data", _data);
-						_handlerData set [2, _delta];
+				if !(isNil "_handlerData") then {
+					if (IS_ARRAY(_handlerData)) then {
+						_func = _handlerData select 0;
+						_delay = _handlerData select 1;
+						_delta = _handlerData select 2;
+						if(diag_tickTime > _delta) then {
+							[(_handlerData select 4), (_handlerData select 5)] call _func;
+							_delta = diag_tickTime + _delay;
+							//TRACE_1("data", _data);
+							_handlerData set [2, _delta];
+						};
 					};
 				};
 			} forEach GVAR(perFrameHandlerArray);
