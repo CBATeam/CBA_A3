@@ -73,7 +73,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 		*/
 		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
 		{
-			{ [_x] call SLX_XEH_EH_init } forEach _crew;
+			{ [_x] call SLX_XEH_EH_CrewInit } forEach _crew;
 		};
 	} forEach vehicles;
 
