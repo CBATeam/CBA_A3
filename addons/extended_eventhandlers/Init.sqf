@@ -263,11 +263,6 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 	} forEach _classes;
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
-// Now call all the init EHs on the unit.
-#ifdef DEBUG_MODE_FULL
-format["XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits] call SLX_XEH_LOG;
-#endif
-
 // Naughty but more flexible...
 if !(_isRespawn) then {
 	// Compile code for other EHs to run and put them in the setVariable.
@@ -283,6 +278,11 @@ if !(_isRespawn) then {
 if !(_post) then { _inits set [count _inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] } else {
 	if (_isMan) then { _inits set [count _inits, {_this call SLX_XEH_initPlayable }] };
 };
+
+// Now call all the init EHs on the unit.
+#ifdef DEBUG_MODE_FULL
+format["XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits] call SLX_XEH_LOG;
+#endif
 
 {
 	private ["_h"];
