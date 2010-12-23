@@ -33,6 +33,7 @@ SLX_XEH_MACHINE =
 ];
 
 SLX_XEH_objects = [];
+SLX_XEH_INIT_MEN = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 
@@ -350,9 +351,10 @@ if (isServer) then { // SinglePlayer or Server in MP
 			*/
 			if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
 			{
-				{ [_x] call SLX_XEH_EH_CrewInit } forEach _crew;
+				{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
 			};
 		} forEach vehicles;
+		SLX_XEH_INIT_MEN = nil;
 		
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 		call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
@@ -382,9 +384,10 @@ if (isServer) then { // SinglePlayer or Server in MP
 				*/
 				if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
 				{
-					{ [_x] call SLX_XEH_EH_CrewInit } forEach _crew;
+					{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
 				};
 			} forEach vehicles;
+			SLX_XEH_INIT_MEN = nil;
 			XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 			deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 		}];

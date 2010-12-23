@@ -59,6 +59,8 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	nil;
 };
 
+if (_isMan) then { if !(isNil "SLX_XEH_INIT_MEN") then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
+
 // Get array of inherited classes of unit.
 _slx_xeh_unitClass = typeOf _slx_xeh_unit;
 _classes = [_slx_xeh_unitClass];
