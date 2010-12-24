@@ -12,7 +12,7 @@ private [
 	"_unitClass", "_classes", "_excludeClass", "_excludeClasses", "_handlers",
 	"_handler", "_cfgEntry", "_scopeEntry", "_handlerEntry", "_excludeEntry",
 	"_scope", "_i", "_t", "_xeh", "_event", "_replaceDEH", "_name", "_names",
-	"_namesPlayer", "_idx", "_idxPlayer"
+	"_namesPlayer", "_idx", "_idxPlayer", "_ha"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -247,11 +247,14 @@ _f = {
 			} forEach _h;
 		};
 	} forEach _handlersPlayer;
+	
+	if (isNull _unit) exitWith {};
 
 	// Attach the compiled extended event handler to the unit.
 	_xeh = format["Extended_%1EH", _event];
 	_xehPlayer = format["Extended_%1EH_Player", _event];
-	_ha = _unit getVariable [_xeh, []];
+	_ha = _unit getVariable _xeh;
+	if (isNil "_ha") then { _ha = [] };
 	if (_handler != "") then {
 		_ha set [0, compile _handler];
 	};
