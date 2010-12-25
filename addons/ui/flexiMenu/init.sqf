@@ -28,12 +28,7 @@ GVAR(optionSelected) = false;
 // prevent multiple activations of menu due to key press via keyDown. onLoad can sometimes take a few milliseconds to init.
 GVAR(lastAccessCheck) = [0, -1];
 
-[] spawn {
-	// !isDedicated checked at top
-	waitUntil {!isNull (findDisplay 46)}; // CBA_fnc_addDisplayHandler is still dodgy
+GVAR(keyDown_EHID) = ["keyDown", QUOTE(_this call FUNC(keyDown))] call CBA_fnc_addDisplayHandler;
+GVAR(keyUp_EHID) = ["keyUp", QUOTE(_this call FUNC(keyUp))] call CBA_fnc_addDisplayHandler;
 
-	GVAR(keyDown_EHID) = ["keyDown", QUOTE(_this call FUNC(keyDown))] call CBA_fnc_addDisplayHandler;
-	GVAR(keyUp_EHID) = ["keyUp", QUOTE(_this call FUNC(keyUp))] call CBA_fnc_addDisplayHandler;
-};
-
-true
+true;
