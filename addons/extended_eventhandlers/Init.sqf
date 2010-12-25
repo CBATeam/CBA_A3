@@ -129,16 +129,20 @@ if !(_isRespawn) then {
 	// This is in PostInit as opposed to (pre)Init,
 	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
 	// Run men's SLX_XEH_initOthers in PostInit, only when in Multiplayer
-	if !((_isMan && isMultiplayer && !_post) || ((!_isMan || !isMultiplayer) && _post)) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
 	// Run supportM
 	if (_post) then {
-		if (_isMan) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initPlayable }] };
+		if (_isMan) then {
+			_sys_inits set [count _sys_inits, {_this call SLX_XEH_initPlayable }];
+			if (isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
+		};
 	} else {
 		_sys_inits set [count _sys_inits, {_this call SLX_XEH_FNC_SUPPORTM2}];
+		if (!_isMan || !isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
 	};
 };
 
 if !(_post) then { _sys_inits set [count _sys_inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] };
+
 
 /*
 *  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
