@@ -31,12 +31,14 @@ if (isNull _slx_xeh_unit) exitWith {
 _Extended_Init_Class = _this select 1;
 _isRespawn = if (count _this < 3) then { false } else { _this select 2 };
 _isDelayed = if (count _this < 4) then { false } else { _this select 3 };
+_slx_xeh_unitClass = typeOf _slx_xeh_unit;
 
 _post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
 
 // Multiplayer respawn handling
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
-_isMan = _slx_xeh_unit isKindOf "Man";
+_sim = getText(configFile/"CfgVehicles"/_slx_xeh_unitClass/"simulation");
+_isMan = _slx_xeh_unit isKindOf "Man" || { _sim == _x }count["soldier"] > 0; // "invisible"
 
 if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_post) exitWith
 {
@@ -63,7 +65,6 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 if (_isMan) then { if !(isNil "SLX_XEH_INIT_MEN") then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
 
 // Get array of inherited classes of unit.
-_slx_xeh_unitClass = typeOf _slx_xeh_unit;
 _classes = [_slx_xeh_unitClass];
 while { !((_classes select 0) in ["", "All"]) } do
 {
