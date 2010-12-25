@@ -360,9 +360,11 @@ if (isServer) then { // SinglePlayer or Server in MP
 		call SLX_XEH_postInit;
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 	}];
-	GVAR(init_obj) setDamage 1;
+	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 } else { // Client in MP, JIP or ordinary
-	[] spawn {
+	// Prepare and Run VehicleCrewInits
+	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	GVAR(init_obj) addEventHandler ["killed", {
 		// Warn if PostInit takes longer than 10 tickTime seconds
 		[] spawn
 		{
@@ -371,36 +373,33 @@ if (isServer) then { // SinglePlayer or Server in MP
 			waituntil {diag_ticktime > _time2Wait};
 			if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
 		};
-
-		// Prepare postInit
-		GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-		GVAR(init_obj) addEventHandler ["killed", {
-			call SLX_XEH_postInit;
-			deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
-		}];
-
-		// Prepare and Run VehicleCrewInits
-		GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-		GVAR(init_obj2) addEventHandler ["killed", {
-			XEH_LOG("XEH: VehicleCrewInit Started");
+		XEH_LOG("XEH: VehicleCrewInit Started");
+		{
+			_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+			_crew = crew _x;
+			/*
+			* If it's a vehicle then start event handlers for the crew.
+			* (Vehicles have crew and are neither humanoids nor game logics)
+			*/
+			if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
 			{
-				_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-				_crew = crew _x;
-				/*
-				* If it's a vehicle then start event handlers for the crew.
-				* (Vehicles have crew and are neither humanoids nor game logics)
-				*/
-				if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-				{
-					{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
-				};
-			} forEach vehicles;
-			SLX_XEH_INIT_MEN = nil;
-			XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
-			deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
-		}];
-		GVAR(init_obj2) setDamage 1;
+				{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
+			};
+		} forEach vehicles;
+		SLX_XEH_INIT_MEN = nil;
+		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
+		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
+	}];
+	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 
+	// Prepare postInit
+	GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	GVAR(init_obj2) addEventHandler ["killed", {
+		call SLX_XEH_postInit;
+		deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
+	}];
+
+	[] spawn {
 		// On Server + Non JIP Client, we are now after all objects have inited
 		// and at the briefing, still time == 0
 		if (isNull player) then
@@ -438,7 +437,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		};
 
 		// Run PostInit
-		GVAR(init_obj) setDamage 1;
+		GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 	};
 };
 
