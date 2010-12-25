@@ -42,7 +42,7 @@ SCRIPT(log);
 				PARAMS_6(_file,_lineNum,_message,_frameNo,_tickTime,_gameTime);
 				// TODO: Add log message to trace log
 				diag_log [_frameNo, 
-					diag_tickTime, time, //[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
+					_tickTime, _gameTime, //[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
 					_file + ":"+str(_lineNum + 1), _message];
 			};
 
