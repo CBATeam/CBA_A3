@@ -13,7 +13,8 @@ private [
 	"_onRespawn", "_useEH", "_i", "_t", "_cfgEntry", "_scopeEntry",
 	"_initEntry", "_excludeEntry", "_respawnEntry", "_u", "_eic", "_sim", "_crew",
 	"_clientInitEntry", "_serverInitEntry", "_serverInit", "_clientInit",
-	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit", "_post", "_isDelayed"
+	"_justCreated", "_playable", "_isMan", "_names", "_idx", "_fSetInit", "_post", "_isDelayed",
+	"_sys_inits"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -120,6 +121,25 @@ _fSetInit = {
 _onRespawn=false;
 _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 
+// Naughty but more flexible...
+_sys_inits = [];
+if !(_isRespawn) then {
+	// Compile code for other EHs to run and put them in the setVariable.
+	// Set up code for the remaining event handlers too...
+	// This is in PostInit as opposed to (pre)Init,
+	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
+	// Run men's SLX_XEH_initOthers in PostInit, only when in Multiplayer
+	if !((_isMan && isMultiplayer && !_post) || ((!_isMan || !isMultiplayer) && _post)) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
+	// Run supportM
+	if (_post) then {
+		if (_isMan) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initPlayable }] };
+	} else {
+		_sys_inits set [count _sys_inits, {_this call SLX_XEH_FNC_SUPPORTM2}];
+	};
+};
+
+if !(_post) then { _sys_inits set [count _sys_inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] };
+
 /*
 *  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
 *  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
@@ -134,7 +154,7 @@ _useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 */
 
 _useDEHinit = false;
-if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
+if !(_post) then
 {
 	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_slx_xeh_unitClass/"EventHandlers");
 	if (configName(_ehSuper)=="DefaultEventhandlers") then
@@ -148,6 +168,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 	};
 };
 
+// All inits
 {
 	_configFile=_x;
 	{
@@ -263,21 +284,7 @@ if (_Extended_Init_Class =="Extended_Init_EventHandlers") then
 	} forEach _classes;
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
-// Naughty but more flexible...
-if !(_isRespawn) then {
-	// Compile code for other EHs to run and put them in the setVariable.
-	// Set up code for the remaining event handlers too...
-	// This is in PostInit as opposed to (pre)Init,
-	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
-	// Run men's SLX_XEH_initOthers in PostInit, only when in Multiplayer
-	if !((_isMan && isMultiplayer && !_post) || ((!_isMan || !isMultiplayer) && _post)) then { _inits set [count _inits, {_this call SLX_XEH_initOthers}] };
-	// Run supportM
-	if !(_post) then { _inits set [count _inits, {_this call SLX_XEH_FNC_SUPPORTM2}] };
-};
-
-if !(_post) then { _inits set [count _inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] } else {
-	if (_isMan) then { _inits set [count _inits, {_this call SLX_XEH_initPlayable }] };
-};
+if (count _sys_inits > 0) then { _inits = _sys_inits + _inits };
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
