@@ -56,7 +56,7 @@ FUNC(attach_handler) =
 
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);
-	_handle = { [GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair } execFSM CBA_common_delayLess;
+	_handle = { [GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair; CBA_EVENTS_DONE = true; } execFSM CBA_common_delayLess;
 	waitUntil {completedFSM _handle};
 	GVAR(attaching) = false;
 };
@@ -75,6 +75,8 @@ FUNC(attach_handler) =
 
 	["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 	["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+	
+	call FUNC(attach_handler);
 
 	// ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
 

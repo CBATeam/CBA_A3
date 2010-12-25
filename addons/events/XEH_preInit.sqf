@@ -7,6 +7,8 @@ LOG(MSG_INIT);
 
 // Initialisation required by CBA events.
 CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
+CBA_EVENTS_DONE = false;
+
 // TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
 if (isServer or (alive player)) then
 {
