@@ -11,7 +11,7 @@
 
 #ifdef DEBUG_MODE_FULL
 	"XEH BEG: PostInit" call SLX_XEH_LOG;
-	XEH_LOG(str([player, group player, local player]));
+	str([player, group player, local player]) call SLX_XEH_LOG;
 #endif
 
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
