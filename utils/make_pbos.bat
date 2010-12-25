@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-6-0.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-7-2.biprivatekey"
 set SIGN="C:\tools\dsutils\DSSignFile.exe"
 
 REM set OPTS=-m
@@ -17,20 +17,20 @@ P:
 
 cd "C:\tools"
 
-%TOOL% %OPTS% "%ADDONS%\ai"
-%TOOL% %OPTS% "%ADDONS%\extended_eventhandlers"
-%TOOL% %OPTS% "%ADDONS%\main"
-%TOOL% %OPTS% "%ADDONS%\arrays"
-%TOOL% %OPTS% "%ADDONS%\help"
-%TOOL% %OPTS% "%ADDONS%\common"
-%TOOL% %OPTS% "%ADDONS%\diagnostic"
-%TOOL% %OPTS% "%ADDONS%\events"
-%TOOL% %OPTS% "%ADDONS%\hashes"
-%TOOL% %OPTS% "%ADDONS%\network"
-%TOOL% %OPTS% "%ADDONS%\strings"
-%TOOL% -m "%ADDONS%\ui"
-%TOOL% %OPTS% "%ADDONS%\vectors"
-%TOOL% %OPTS% "%ADDONS%\versioning"
+REM %TOOL% %OPTS% "%ADDONS%\ai"
+REM %TOOL% %OPTS% "%ADDONS%\extended_eventhandlers"
+REM %TOOL% %OPTS% "%ADDONS%\main"
+REM %TOOL% %OPTS% "%ADDONS%\arrays"
+REM %TOOL% %OPTS% "%ADDONS%\help"
+REM %TOOL% %OPTS% "%ADDONS%\common"
+REM %TOOL% %OPTS% "%ADDONS%\diagnostic"
+REM %TOOL% %OPTS% "%ADDONS%\events"
+REM %TOOL% %OPTS% "%ADDONS%\hashes"
+REM %TOOL% %OPTS% "%ADDONS%\network"
+REM %TOOL% %OPTS% "%ADDONS%\strings"
+REM %TOOL% -m "%ADDONS%\ui"
+REM %TOOL% %OPTS% "%ADDONS%\vectors"
+REM %TOOL% %OPTS% "%ADDONS%\versioning"
 
 echo.
 
