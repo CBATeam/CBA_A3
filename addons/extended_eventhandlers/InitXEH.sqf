@@ -357,6 +357,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 		call SLX_XEH_postInit;
+
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 	}];
 	#ifdef DEBUG_MODE_FULL
@@ -416,7 +417,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 
 	if (local player && !(isNull (group player))) then {
 		#ifdef DEBUG_MODE_FULL
-			XEH_LOG("Early post init!");
+			XEH_LOG("Early post init! " + str(player));
 		#endif
 		// Run PostInit
 		SLX_XEH_pppinit = true;
