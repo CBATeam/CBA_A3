@@ -388,6 +388,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		} forEach vehicles;
 		SLX_XEH_INIT_MEN = nil;
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
+
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
 	}];
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
@@ -399,45 +400,56 @@ if (isServer) then { // SinglePlayer or Server in MP
 		deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 	}];
 
-	[] spawn {
-		// On Server + Non JIP Client, we are now after all objects have inited
-		// and at the briefing, still time == 0
-		if (isNull player) then
-		{
-			if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
-			{
-				#ifdef DEBUG_MODE_FULL
-				"JIP" call SLX_XEH_LOG;
-				#endif
-		
-				SLX_XEH_MACHINE set [1, true]; // set JIP
-				// TEST for weird jip-is-server-issue :S
-				if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
-					str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
-					SLX_XEH_MACHINE set [2, true]; // set Dedicated client
-					SLX_XEH_MACHINE set [3, false]; // set server
-					SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
-				};
-				waitUntil { !(isNull player) };
-			};
-		};
-		
-		if !(isNull player) then
-		{
-			if (isNull (group player)) then
-			{
-				// DEBUG TEST: Crashing due to JIP, or when going from briefing
-				//			 into game
-				#ifdef DEBUG_MODE_FULL
-				"NULLGROUP" call SLX_XEH_LOG;
-				#endif
-				waitUntil { !(isNull (group player)) };
-			};
-			waitUntil { local player };
-		};
-
+	if (local player && !(isNull (group player))) then {
+		#ifdef DEBUG_MODE_FULL
+			XEH_LOG("Early post init!");
+		#endif
 		// Run PostInit
 		GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
+	} else {
+		#ifdef DEBUG_MODE_FULL
+			XEH_LOG("Late post init!");
+		#endif
+		[] spawn {
+			// On Server + Non JIP Client, we are now after all objects have inited
+			// and at the briefing, still time == 0
+			if (isNull player) then
+			{
+				if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
+				{
+					#ifdef DEBUG_MODE_FULL
+					"JIP" call SLX_XEH_LOG;
+					#endif
+			
+					SLX_XEH_MACHINE set [1, true]; // set JIP
+					// TEST for weird jip-is-server-issue :S
+					if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
+						str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
+						SLX_XEH_MACHINE set [2, true]; // set Dedicated client
+						SLX_XEH_MACHINE set [3, false]; // set server
+						SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
+					};
+					waitUntil { !(isNull player) };
+				};
+			};
+			
+			if !(isNull player) then
+			{
+				if (isNull (group player)) then
+				{
+					// DEBUG TEST: Crashing due to JIP, or when going from briefing
+					//			 into game
+					#ifdef DEBUG_MODE_FULL
+					"NULLGROUP" call SLX_XEH_LOG;
+					#endif
+					waitUntil { !(isNull (group player)) };
+				};
+				waitUntil { local player };
+			};
+	
+			// Run PostInit
+			GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
+		};
 	};
 };
 
