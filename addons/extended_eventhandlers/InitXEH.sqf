@@ -360,6 +360,9 @@ if (isServer) then { // SinglePlayer or Server in MP
 		call SLX_XEH_postInit;
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 	}];
+	#ifdef DEBUG_MODE_FULL
+		XEH_LOG("Early post init (Server) !");
+	#endif
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 } else { // Client in MP, JIP or ordinary
 	// Prepare and Run VehicleCrewInits

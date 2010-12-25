@@ -10,7 +10,8 @@
 #include "script_component.hpp"
 
 #ifdef DEBUG_MODE_FULL
-format["XEH BEG: PostInit", time] call SLX_XEH_LOG;
+	"XEH BEG: PostInit" call SLX_XEH_LOG;
+	XEH_LOG(str([player, group player, local player]));
 #endif
 
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
@@ -64,7 +65,7 @@ SLX_XEH_MACHINE set [8, true];
 XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
 
 #ifdef DEBUG_MODE_FULL
-format["XEH END: PostInit", time] call SLX_XEH_LOG;
+	"XEH END: PostInit" call SLX_XEH_LOG;
 #endif
 
 nil;
