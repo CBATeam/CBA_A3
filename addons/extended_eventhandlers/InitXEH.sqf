@@ -328,7 +328,6 @@ SLX_XEH_FNC_SUPPORTM2 = {
 	In multiplayer, a JIP player's object will not be ready when the killed EH is played, nor when a spawn is used.
 	Since we cannot determine if it is a JIP player at the right time, we will have to use different initialization processes.
 */
-
 if (isServer) then { // SinglePlayer or Server in MP
 	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 	GVAR(init_obj) addEventHandler ["killed", {
@@ -365,6 +364,8 @@ if (isServer) then { // SinglePlayer or Server in MP
 	#endif
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 } else { // Client in MP, JIP or ordinary
+	SLX_XEH_pppinit = false;
+
 	// Prepare and Run VehicleCrewInits
 	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 	GVAR(init_obj) addEventHandler ["killed", {
@@ -392,6 +393,16 @@ if (isServer) then { // SinglePlayer or Server in MP
 		SLX_XEH_INIT_MEN = nil;
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 
+		// Run PostInit
+		if (local player && !isNull (group player) && !SLX_XEH_pppinit) then {
+			SLX_XEH_pppinit = true;
+			#ifdef DEBUG_MODE_FULL
+				XEH_LOG("Semi-Early post init!");
+			#endif
+			call SLX_XEH_postInit;
+			deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
+		};
+
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
 	}];
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
@@ -408,6 +419,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 			XEH_LOG("Early post init!");
 		#endif
 		// Run PostInit
+		SLX_XEH_pppinit = true;
 		GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 	} else {
 		#ifdef DEBUG_MODE_FULL
@@ -451,7 +463,10 @@ if (isServer) then { // SinglePlayer or Server in MP
 			};
 	
 			// Run PostInit
-			GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
+			if !(SLX_XEH_pppinit) then {
+				SLX_XEH_pppinit = true;
+				GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
+			};
 		};
 	};
 };
