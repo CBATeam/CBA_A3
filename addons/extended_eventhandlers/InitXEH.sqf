@@ -181,6 +181,7 @@ SLX_XEH_initPlayable =
 SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
 SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
 SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
+SLX_XEH_postInit = compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
 
 SLX_XEH_DELAYED = [];
 SLX_XEH_INIT_DELAYED = {
@@ -322,7 +323,6 @@ SLX_XEH_FNC_SUPPORTM2 = {
 *  3) spawn:ed "threads" are started
 *  4) the mission's init.sqf/sqs is run
 */
-//_cinit = [] spawn compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
 
 /*
 	In multiplayer, a JIP player's object will not be ready when the killed EH is played, nor when a spawn is used.
@@ -357,7 +357,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		SLX_XEH_INIT_MEN = nil;
 		
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
-		call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
+		call SLX_XEH_postInit;
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 	}];
 	GVAR(init_obj) setDamage 1;
@@ -371,7 +371,15 @@ if (isServer) then { // SinglePlayer or Server in MP
 			waituntil {diag_ticktime > _time2Wait};
 			if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
 		};
-		
+
+		// Prepare postInit
+		GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+		GVAR(init_obj) addEventHandler ["killed", {
+			call SLX_XEH_postInit;
+			deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
+		}];
+
+		// Prepare and Run VehicleCrewInits
 		GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 		GVAR(init_obj2) addEventHandler ["killed", {
 			XEH_LOG("XEH: VehicleCrewInit Started");
@@ -397,7 +405,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		// and at the briefing, still time == 0
 		if (isNull player) then
 		{
-			if (!isDedicated && !(SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
+			if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 			{
 				#ifdef DEBUG_MODE_FULL
 				"JIP" call SLX_XEH_LOG;
@@ -412,7 +420,6 @@ if (isServer) then { // SinglePlayer or Server in MP
 					SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
 				};
 				waitUntil { !(isNull player) };
-				waitUntil { local player };
 			};
 		};
 		
@@ -427,13 +434,10 @@ if (isServer) then { // SinglePlayer or Server in MP
 				#endif
 				waitUntil { !(isNull (group player)) };
 			};
+			waitUntil { local player };
 		};
 
-		GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-		GVAR(init_obj) addEventHandler ["killed", {
-			call compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-			deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
-		}];
+		// Run PostInit
 		GVAR(init_obj) setDamage 1;
 	};
 };
