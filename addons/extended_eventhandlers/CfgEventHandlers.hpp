@@ -42,20 +42,7 @@ class Extended_PostInit_EventHandlers {};
 // Finally, "InitPost" handlers are run once on every unit in the mission.
 // Note the difference here - the PreInit and PostInit handlers above run once
 // per mission but InitPost handlers are called for each unit.
-class Extended_InitPost_EventHandlers
-{
-	class Man
-	{
-		// We use this to determine if a unit has respawned,
-		// and therefore not re-run init eventhandlers that have onRespawn = false (the default)
-		class SLX_Init_Playable
-		{
-			// TOODO just move to postInit
-			init	= "_this call SLX_XEH_initPlayable";
-			onRespawn = false;
-		};
-	};
-};
+class Extended_InitPost_EventHandlers {};
 
 // Extended EH classes, where new events are defined.
 class Extended_Init_EventHandlers
