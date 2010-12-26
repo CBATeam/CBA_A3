@@ -431,6 +431,9 @@ if (isServer) then { // SinglePlayer or Server in MP
 			// and at the briefing, still time == 0
 			if (isNull player) then
 			{
+				#ifdef DEBUG_MODE_FULL
+				"NULL PLAYER" call SLX_XEH_LOG;
+				#endif
 				if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 				{
 					#ifdef DEBUG_MODE_FULL
