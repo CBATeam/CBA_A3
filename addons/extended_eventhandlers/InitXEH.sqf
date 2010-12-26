@@ -328,7 +328,7 @@ SLX_XEH_FNC_SUPPORTM2 = {
 	In multiplayer, a JIP player's object will not be ready when the killed EH is played, nor when a spawn is used.
 	Since we cannot determine if it is a JIP player at the right time, we will have to use different initialization processes.
 */
-if (isServer) then { // SinglePlayer or Server in MP
+if (isDedicated) then { // Dedicated server
 	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 	GVAR(init_obj) addEventHandler ["killed", {
 		// Warn if PostInit takes longer than 10 tickTime seconds
@@ -364,7 +364,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		XEH_LOG("Early post init (Server) !"+str(player));
 	#endif
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
-} else { // Client in MP, JIP or ordinary
+} else { // Singleplayer, Client in MP, JIP or ordinary
 	SLX_XEH_pppinit = false;
 
 	// Prepare and Run VehicleCrewInits
@@ -395,13 +395,8 @@ if (isServer) then { // SinglePlayer or Server in MP
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 
 		// Run PostInit
-		#ifdef DEBUG_MODE_FULL
-			if (isNil "player") then {
-				"ERROR: nil player" call SLX_XEH_LOG;
-			};
-		#endif
 
-		if (local player && !isNull (group player) && !SLX_XEH_pppinit) then {
+		if (local player && !(isNull (group player)) && !SLX_XEH_pppinit) then {
 			SLX_XEH_pppinit = true;
 			#ifdef DEBUG_MODE_FULL
 				XEH_LOG("Semi-Early post init!" + str(player));
@@ -421,12 +416,6 @@ if (isServer) then { // SinglePlayer or Server in MP
 		deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 	}];
 
-	#ifdef DEBUG_MODE_FULL
-		if (isNil "player") then {
-			"ERROR: nil player" call SLX_XEH_LOG;
-		};
-	#endif
-
 	if (local player && !(isNull (group player))) then {
 		#ifdef DEBUG_MODE_FULL
 			XEH_LOG("Early post init! " + str(player));
@@ -441,12 +430,6 @@ if (isServer) then { // SinglePlayer or Server in MP
 		[] spawn {
 			// On Server + Non JIP Client, we are now after all objects have inited
 			// and at the briefing, still time == 0
-			#ifdef DEBUG_MODE_FULL
-				if (isNil "player") then {
-					"ERROR: nil player" call SLX_XEH_LOG;
-				};
-			#endif
-
 			if (isNull player) then
 			{
 				#ifdef DEBUG_MODE_FULL
