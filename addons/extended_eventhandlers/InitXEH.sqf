@@ -143,7 +143,6 @@ XEH_FUNC(MPKilled);
 XEH_FUNC(MPRespawn);
 
 SLX_XEH_EH_Init = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init };
-SLX_XEH_EH_CrewInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0,'Extended_Init_EventHandlers', false, true]call SLX_XEH_init };
 SLX_XEH_EH_RespawnInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0, "Extended_Init_EventHandlers", true] call SLX_XEH_init };
 SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetInManEH') };
 SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x}forEach((_this select 2)getVariable'Extended_GetOutManEH') };
@@ -316,7 +315,7 @@ SLX_XEH_FNC_SUPPORTM2 = {
 
 /*
 * Process the crews of vehicles. This "thread" will run just
-* before the mission init.sqf is processed. The order of execution is
+* before PostInit and the mission init.sqf is processed. The order of execution is
 *
 *  1) all config.cpp init EHs (including all Extended_Init_Eventhandlers)
 *  2) all the init lines in the mission.sqm
@@ -324,134 +323,86 @@ SLX_XEH_FNC_SUPPORTM2 = {
 *  4) the mission's init.sqf/sqs is run
 */
 
-/*
-	In multiplayer, a JIP player's object will not be ready when the killed EH is played, nor when a spawn is used.
-	Since we cannot determine if it is a JIP player at the right time, we will have to use different initialization processes.
-*/
-if (isDedicated) then { // Dedicated server
-	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-	GVAR(init_obj) addEventHandler ["killed", {
-		// Warn if PostInit takes longer than 10 tickTime seconds
-		[] spawn
+GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) addEventHandler ["killed", {
+	XEH_LOG("XEH: VehicleCrewInit: "+str(count vehicles));
+	{
+		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
+		_crew = crew _x;
+		/*
+		* If it's a vehicle then start event handlers for the crew.
+		* (Vehicles have crew and are neither humanoids nor game logics)
+		*/
+		if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
 		{
-			private["_time2Wait"];
-			_time2Wait = diag_ticktime + 10;
-			waituntil {diag_ticktime > _time2Wait};
-			if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
+			{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_Init } } forEach _crew;
 		};
+	} forEach vehicles;
+	SLX_XEH_INIT_MEN = nil;
+	
+	deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
+}];
 
-		XEH_LOG("XEH: VehicleCrewInit Started");
-		{
-			_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-			_crew = crew _x;
-			/*
-			* If it's a vehicle then start event handlers for the crew.
-			* (Vehicles have crew and are neither humanoids nor game logics)
-			*/
-			if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-			{
-				{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
-			};
-		} forEach vehicles;
-		SLX_XEH_INIT_MEN = nil;
-		
-		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
-		call SLX_XEH_postInit;
+GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 
-		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
-	}];
+// Prepare postInit
+GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj2) addEventHandler ["killed", {
+	call SLX_XEH_postInit;
+	deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
+}];
 
-	#ifdef DEBUG_MODE_FULL
-		XEH_LOG("Early post init (Server) !"+str(player));
-	#endif
+// Schedule PostInit
+[] spawn {
+	// Warn if PostInit takes longer than 10 tickTime seconds
+	[] spawn
+	{
+		private["_time2Wait"];
+		_time2Wait = diag_ticktime + 10;
+		waituntil {diag_ticktime > _time2Wait};
+		if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
+	};
 
-	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
-
-} else { // Singleplayer, Client in MP, JIP or ordinary
-	// Prepare and Run VehicleCrewInits
-	GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-	GVAR(init_obj) addEventHandler ["killed", {
-		// Warn if PostInit takes longer than 10 tickTime seconds
-		[] spawn
-		{
-			private["_time2Wait"];
-			_time2Wait = diag_ticktime + 10;
-			waituntil {diag_ticktime > _time2Wait};
-			if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
-		};
-		XEH_LOG("XEH: VehicleCrewInit Started");
-		{
-			_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
-			_crew = crew _x;
-			/*
-			* If it's a vehicle then start event handlers for the crew.
-			* (Vehicles have crew and are neither humanoids nor game logics)
-			*/
-			if ((count _crew>0)&&{ _sim == _x }count["soldier", "invisible"] == 0) then
-			{
-				{ if !(_x in SLX_XEH_INIT_MEN) then { [_x] call SLX_XEH_EH_CrewInit } } forEach _crew;
-			};
-		} forEach vehicles;
-		SLX_XEH_INIT_MEN = nil;
-		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
-
-		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil;
-	}];
-	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
-
-	// Prepare postInit
-	GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
-	GVAR(init_obj2) addEventHandler ["killed", {
-		call SLX_XEH_postInit;
-		deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
-	}];
-
-	#ifdef DEBUG_MODE_FULL
-		XEH_LOG("Late post init!" + str(player));
-	#endif
-	[] spawn {
-		// On Server + Non JIP Client, we are now after all objects have inited
-		// and at the briefing, still time == 0
-		if (isNull player) then
+	// On Server + Non JIP Client, we are now after all objects have inited
+	// and at the briefing, still time == 0
+	if (isNull player) then
+	{
+		#ifdef DEBUG_MODE_FULL
+		"NULL PLAYER" call SLX_XEH_LOG;
+		#endif
+		if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
 		{
 			#ifdef DEBUG_MODE_FULL
-			"NULL PLAYER" call SLX_XEH_LOG;
+			"JIP" call SLX_XEH_LOG;
 			#endif
-			if !((SLX_XEH_MACHINE select 4) || (SLX_XEH_MACHINE select 6)) then // only if MultiPlayer and not dedicated
-			{
-				#ifdef DEBUG_MODE_FULL
-				"JIP" call SLX_XEH_LOG;
-				#endif
-		
-				SLX_XEH_MACHINE set [1, true]; // set JIP
-				// TEST for weird jip-is-server-issue :S
-				if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
-					str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
-					SLX_XEH_MACHINE set [2, true]; // set Dedicated client
-					SLX_XEH_MACHINE set [3, false]; // set server
-					SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
-				};
-				waitUntil { !(isNull player) };
+	
+			SLX_XEH_MACHINE set [1, true]; // set JIP
+			// TEST for weird jip-is-server-issue :S
+			if (!(SLX_XEH_MACHINE select 2) || SLX_XEH_MACHINE select 3 || SLX_XEH_MACHINE select 4) then {
+				str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
+				SLX_XEH_MACHINE set [2, true]; // set Dedicated client
+				SLX_XEH_MACHINE set [3, false]; // set server
+				SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
 			};
+			waitUntil { !(isNull player) };
 		};
-		
-		if !(isNull player) then
-		{
-			if (isNull (group player)) then
-			{
-				// DEBUG TEST: Crashing due to JIP, or when going from briefing
-				//			 into game
-				#ifdef DEBUG_MODE_FULL
-				"NULLGROUP" call SLX_XEH_LOG;
-				#endif
-				waitUntil { !(isNull (group player)) };
-			};
-			waitUntil { local player };
-		};
-
-		// Run PostInit
-		GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 	};
+	
+	if !(isNull player) then
+	{
+		if (isNull (group player)) then
+		{
+			// DEBUG TEST: Crashing due to JIP, or when going from briefing
+			//			 into game
+			#ifdef DEBUG_MODE_FULL
+			"NULLGROUP" call SLX_XEH_LOG;
+			#endif
+			waitUntil { !(isNull (group player)) };
+		};
+		waitUntil { local player };
+	};
+
+	GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 };
 
 
