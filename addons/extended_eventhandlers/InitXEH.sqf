@@ -361,7 +361,7 @@ if (isServer) then { // SinglePlayer or Server in MP
 		deleteVehicle GVAR(init_obj);GVAR(init_obj) = nil
 	}];
 	#ifdef DEBUG_MODE_FULL
-		XEH_LOG("Early post init (Server) !");
+		XEH_LOG("Early post init (Server) !"+str(player));
 	#endif
 	GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 } else { // Client in MP, JIP or ordinary
@@ -395,10 +395,16 @@ if (isServer) then { // SinglePlayer or Server in MP
 		XEH_LOG("XEH: VehicleCrewInit Finished, PostInit Started");
 
 		// Run PostInit
+		#ifdef DEBUG_MODE_FULL
+			if (isNil "player") then {
+				"ERROR: nil player" call SLX_XEH_LOG;
+			};
+		#endif
+
 		if (local player && !isNull (group player) && !SLX_XEH_pppinit) then {
 			SLX_XEH_pppinit = true;
 			#ifdef DEBUG_MODE_FULL
-				XEH_LOG("Semi-Early post init!");
+				XEH_LOG("Semi-Early post init!" + str(player));
 			#endif
 			call SLX_XEH_postInit;
 			deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
@@ -415,6 +421,12 @@ if (isServer) then { // SinglePlayer or Server in MP
 		deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 	}];
 
+	#ifdef DEBUG_MODE_FULL
+		if (isNil "player") then {
+			"ERROR: nil player" call SLX_XEH_LOG;
+		};
+	#endif
+
 	if (local player && !(isNull (group player))) then {
 		#ifdef DEBUG_MODE_FULL
 			XEH_LOG("Early post init! " + str(player));
@@ -424,11 +436,17 @@ if (isServer) then { // SinglePlayer or Server in MP
 		GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 	} else {
 		#ifdef DEBUG_MODE_FULL
-			XEH_LOG("Late post init!");
+			XEH_LOG("Late post init!" + str(player));
 		#endif
 		[] spawn {
 			// On Server + Non JIP Client, we are now after all objects have inited
 			// and at the briefing, still time == 0
+			#ifdef DEBUG_MODE_FULL
+				if (isNil "player") then {
+					"ERROR: nil player" call SLX_XEH_LOG;
+				};
+			#endif
+
 			if (isNull player) then
 			{
 				#ifdef DEBUG_MODE_FULL
