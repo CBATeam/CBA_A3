@@ -14,6 +14,8 @@
 	str([player, group player, local player]) call SLX_XEH_LOG;
 #endif
 
+XEH_LOG("XEH: PostInit Started");
+
 SLX_XEH_postInit = nil;
 
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
