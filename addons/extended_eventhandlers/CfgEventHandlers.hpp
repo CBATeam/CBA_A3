@@ -301,6 +301,62 @@ class Extended_Init_EventHandlers
 	class FlagCarrierWhite_EP1 /* : FlagCarrierUNO_EP1 */ {
 		SLX_BIS = "(_this select 0) setFlagTexture ""ca\Ca_E\data\flag_white_co.paa""";
 	};
+	
+	class FlagCarrierIONblack_PMC /* : FlagCarrier */ {
+		SLX_BIS = "(_this select 0) setFlagTexture 'ca\Ca_PMC\flag_ion_black_co';";
+	};
+	class FlagCarrierIONwhite_PMC /* : FlagCarrierIONblack_PMC */ {
+		SLX_BIS = "(_this select 0) setFlagTexture 'ca\Ca_PMC\flag_ion_white_co';";
+	};
+
+	class Soldier_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\PMC_soldier\Data\bauer_2_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_3_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_4_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_5_co.paa""] select floor random 4]; (_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\bauer_gear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_1_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_2_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_3_co.paa""] select floor random 4]; (_this select 0) setObjectTexture [2,[""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_CO.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2]";
+	};
+	class Soldier_Engineer_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Frost\Data\Frost_1_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_2_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_3_co.paa""] select floor random 3];";
+	};
+	class Soldier_Crew_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Frost\Data\Frost_1_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_2_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_3_co.paa""] select floor random 3];";
+	};
+	class Soldier_Medic_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Frost\Data\Frost_1_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_2_co.paa"",""\Ca\Characters_PMC\Frost\Data\Frost_3_co.paa""] select floor random 3];";
+	};
+	class Soldier_TL_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Gracenko\Data\Gracenko_1_co.paa"",""\Ca\Characters_PMC\Gracenko\Data\Gracenko_2_co.paa"",""\Ca\Characters_PMC\Gracenko\Data\Gracenko_3_co.paa"",""\Ca\Characters_PMC\Gracenko\Data\Gracenko_4_co.paa""] select floor random 4];";
+	};
+	class Soldier_MG_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Asano\Data\tex1_1_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_2_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_3_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_4_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_5_co.paa""] select floor random 5];(_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\headgear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2];(_this select 0) setObjectTexture [2,[""ca\characters_pmc\asano\data\tex2_co.paa"",""ca\characters_pmc\asano\data\tex2_1_co.paa""] select floor random 2]";
+	};
+	class Soldier_Sniper_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\PMC_soldier\Data\bauer_2_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_3_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_4_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\bauer_5_co.paa""] select floor random 4]; (_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\bauer_gear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_1_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_2_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\Bauer_Gear_3_co.paa""] select floor random 4]; (_this select 0) setObjectTexture [2,[""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_CO.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2]";
+	};
+	class Soldier_GL_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Asano\Data\tex1_1_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_2_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_3_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_4_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_5_co.paa""] select floor random 5];(_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\headgear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2];(_this select 0) setObjectTexture [2,[""ca\characters_pmc\asano\data\tex2_co.paa"",""ca\characters_pmc\asano\data\tex2_1_co.paa""] select floor random 2]";
+	};
+	class Soldier_Bodyguard_AA12_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""ca\characters_pmc\dixon\data\european-man_02_co.paa"",""ca\characters_pmc\dixon\data\european-man_03_co.paa"",""ca\characters_pmc\dixon\data\european-man_04_co.paa"",""ca\characters_pmc\dixon\data\european-man_05_co.paa""] select floor random 4]; (_this select 0) setObjectTexture [1,[""Ca\Characters_PMC\Dixon\Data\Dix_1_CO.paa"",""Ca\Characters_PMC\Dixon\Data\Dix_2_CO.paa"",""Ca\Characters_PMC\Dixon\Data\Dix_3_CO.paa"",""Ca\Characters_PMC\Dixon\Data\Dix_4_CO.paa"",""Ca\Characters_PMC\Dixon\Data\Dix_4_CO.paa""] select floor random 5]";
+	};
+	class Soldier_AA_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Asano\Data\tex1_1_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_2_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_3_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_4_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_5_co.paa""] select floor random 5];(_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\headgear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2];(_this select 0) setObjectTexture [2,[""ca\characters_pmc\asano\data\tex2_co.paa"",""ca\characters_pmc\asano\data\tex2_1_co.paa""] select floor random 2]";
+	};
+	class Soldier_AT_PMC /* : Soldier_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\Ca\Characters_PMC\Asano\Data\tex1_1_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_2_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_3_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_4_co.paa"",""\Ca\Characters_PMC\Asano\Data\tex1_5_co.paa""] select floor random 5];(_this select 0) setObjectTexture [1,[""ca\characters_pmc\pmc_soldier\data\headgear_co.paa"",""\Ca\Characters_PMC\PMC_soldier\Data\HeadGear_1_CO.paa""] select floor random 2];(_this select 0) setObjectTexture [2,[""ca\characters_pmc\asano\data\tex2_co.paa"",""ca\characters_pmc\asano\data\tex2_1_co.paa""] select floor random 2]";
+	};
+	class Poet_PMC /* : Special_Character_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setidentity ""PMC_Poet""";
+	};
+	class Ry_PMC /* : Special_Character_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setidentity ""PMC_Ry""";
+	};
+	class Reynolds_PMC /* : Special_Character_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setidentity ""PMC_Reynolds_NoGlasses""";
+	};
+	class Tanny_PMC /* : Special_Character_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setidentity ""PMC_Tanny""";
+	};
+	class Dixon_PMC /* : Special_Character_Base_PMC */ {
+		SLX_BIS = "(_this select 0) setidentity ""PMC_Dixon""";
+	};
 };
 class Extended_fired_Eventhandlers {}; // Backwards compatibility, uses XEH notation
 

@@ -377,6 +377,63 @@ class CfgVehicles {
 	class CruiseMissile2: MQ9PredatorB {
 		class EventHandlers { EXTENDED_EVENTHANDLERS };
 	};
+	
+	class FlagCarrierIONblack_PMC: FlagCarrier {
+		class EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class FlagCarrierIONwhite_PMC: FlagCarrierIONblack_PMC {
+		class EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Base_PMC: SoldierGB { class EventHandlers; };
+	class Soldier_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Engineer_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Crew_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Medic_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_TL_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_MG_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Sniper_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_GL_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_Bodyguard_AA12_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_AA_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Soldier_AT_PMC: Soldier_Base_PMC {
+		class EventHandlers: EventHandlers { EXTENDED_EVENTHANDLERS };
+	};
+	class Special_Character_Base_PMC: Soldier_Base_PMC { class EventHandlers; };
+	class Poet_PMC: Special_Character_Base_PMC {
+		class EventHandlers: EventHandlers { handleidentity = "true"; EXTENDED_EVENTHANDLERS };
+	};
+	class Ry_PMC: Special_Character_Base_PMC {
+		class EventHandlers: EventHandlers { handleidentity = "true"; EXTENDED_EVENTHANDLERS };
+	};
+	class Reynolds_PMC: Special_Character_Base_PMC {
+		class EventHandlers: EventHandlers { handleidentity = "true"; EXTENDED_EVENTHANDLERS };
+	};
+	class Tanny_PMC: Special_Character_Base_PMC {
+		class EventHandlers: EventHandlers { handleidentity = "true"; EXTENDED_EVENTHANDLERS };
+	};
+	class Dixon_PMC: Special_Character_Base_PMC {
+		class EventHandlers: EventHandlers { handleidentity = "true"; EXTENDED_EVENTHANDLERS };
+	};
 
 	// Custom object that can be used to force XEH initialization even if no XEH compatible object is on the Map.
 	class Logic;
