@@ -25,7 +25,7 @@ QUOTE(GVAR(mismatch)) addPublicVariableEventHandler
 {
 	private ["_params"];
 	_params = _this select 1;
-	[format["%1 - Not running! (Machine: %2)", _params select 1, _params select 0], QUOTE(COMPONENT), [true, true, true]] call CBA_fnc_debug;
+	[format["%1 - Not running! (Machine: %2)", _params select 1, _params select 0], QUOTE(COMPONENT), [CBA_display_ingame_warnings, true, true]] call CBA_fnc_debug;
 };
 
 private ["_str"];

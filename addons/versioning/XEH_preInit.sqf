@@ -7,6 +7,7 @@ SCRIPT(XEH_preInit);
 LOG(MSG_INIT);
 ADDON = false;
 
+if (isNil "CBA_display_ingame_warnings") then { CBA_display_ingame_warnings = true };
 if (isNil QUOTE(GVAR(mismatch))) then { GVAR(mismatch) = [] };
 
 // Build versions hashes
