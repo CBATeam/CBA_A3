@@ -9,6 +9,7 @@ Parameters:
 	- Position (XYZ, Object, Location or Group)
 	- Defend Radius (Scalar)
 	- Building Size Threshold (Integer, default 2)
+	- Can patrol (boolean)
 Example:
 	[this] call CBA_fnc_taskDefend
 Returns:
