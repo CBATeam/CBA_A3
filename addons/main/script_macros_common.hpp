@@ -647,6 +647,16 @@ Author:
 }
 #endif
 
+/* -------------------------------------------
+Macros: ARG_#()
+	Select from list of array arguments
+
+Parameters:
+	VARIABLE(1-8) - elements for the list
+
+Author:
+	Rommel
+------------------------------------------- */
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
 #define ARG_3(A,B,C,D) (ARG_1(ARG_2(A,B,C),D))
@@ -655,6 +665,47 @@ Author:
 #define ARG_6(A,B,C,D,E,F,G) (ARG_1(ARG_5(A,B,C,D,E,F),G))
 #define ARG_7(A,B,C,D,E,F,G,H) (ARG_1(ARG_6(A,B,C,D,E,E,F,G),H))
 #define ARG_8(A,B,C,D,E,F,G,H,I) (ARG_1(ARG_7(A,B,C,D,E,E,F,G,H),I))
+
+/* -------------------------------------------
+Macros: ARR_#()
+	Create list from arguments. Useful for working around , in macro parameters.
+	1-8 arguments possible.
+
+Parameters:
+	VARIABLE(1-8) - elements for the list
+
+Author:
+	Nou
+------------------------------------------- */
+#define ARR_1(ARG1) ARG1
+#define ARR_2(ARG1,ARG2) ARG1, ARG2
+#define ARR_3(ARG1,ARG2,ARG3) ARG1, ARG2, ARG3
+#define ARR_4(ARG1,ARG2,ARG3,ARG4) ARG1, ARG2, ARG3, ARG4
+#define ARR_5(ARG1,ARG2,ARG3,ARG4,ARG5) ARG1, ARG2, ARG3, ARG4, ARG5
+#define ARR_6(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6
+#define ARR_7(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7
+#define ARR_8(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7, ARG8
+
+/* -------------------------------------------
+Macros: FORMAT_#(STR, ARG1)
+	Format - Useful for working around , in macro parameters.
+	1-8 arguments possible.
+
+Parameters:
+	STRING - string used by format
+	VARIABLE(1-8) - elements for usage in format
+
+Author:
+	Nou & Sickboy
+------------------------------------------- */
+#define FORMAT_1(STR,ARG1) format[STR, ARG1]
+#define FORMAT_2(STR,ARG1,ARG2) format[STR, ARG1, ARG2]
+#define FORMAT_3(STR,ARG1,ARG2,ARG3) format[STR, ARG1, ARG2, ARG3]
+#define FORMAT_4(STR,ARG1,ARG2,ARG3,ARG4) format[STR, ARG1, ARG2, ARG3, ARG4]
+#define FORMAT_5(STR,ARG1,ARG2,ARG3,ARG4,ARG5) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5]
+#define FORMAT_6(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6]
+#define FORMAT_7(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7]
+#define FORMAT_8(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7, ARG8]
 
 // CONTROL(46) 12
 #define DISPLAY(A) (findDisplay A)
