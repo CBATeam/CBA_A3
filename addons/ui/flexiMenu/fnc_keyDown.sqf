@@ -64,11 +64,16 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 		_isTypeTarget = false;
 
 		// check for [cursorTarget or "player" or "vehicle"] types in typeMenuSources list
+		_objects = nearestObjects [player, [], 1.5];
+		{
+			(group player) reveal _x;
+		} forEach _objects;
 		_potentialTarget = cursorTarget;
 		if (!isNull _potentialTarget) then {
 			if (_potentialTarget distance player > _minObjDist(_potentialTarget)) then {_potentialTarget = objNull};
 		};
 		_vehicleTarget = vehicle player;
+		
 		if (_vehicleTarget == player) then {_vehicleTarget = objNull};
 
 		_potentialMenuSources = [];
