@@ -36,7 +36,8 @@ SLX_XEH_OBJECTS = [];
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
 	[] spawn {
-		waitUntil {player getVariable ["SLX_XEH_READY", false]};
+		private ["_ready"];
+		waitUntil {_ready = player getVariable "SLX_XEH_READY"; if (isNil "_ready") then { _ready = false }; _ready};
 		_lastPlayer = player;
 		_lastPlayer call SLX_XEH_F_ADDPLAYEREVENTS;
 		#ifdef DEBUG_MODE_FULL
