@@ -19,10 +19,10 @@ What do I need?
 * You should always install the @CBA mod folder by copying it to your ArmA II installation
   folder.
 
-* If you have a "merged", Combined Operations installation with both the old ArmA II
+* If you have a "merged" or "seperate", Combined Operations installation with both the old ArmA II
   content and the new Arrowhead expansion, you're done - you only need the @CBA mod folder.
 
-* If you have a standalone Operation Arrowhead installation, you need both the @CBA
+* If you only have a standalone Operation Arrowhead installation, you need both the @CBA
   and the @CBA_OA folders loaded.
   
 * If you only have the older ArmA II installed, you need both the @CBA and the
@@ -33,7 +33,7 @@ What do I need?
 Example startup parameters
 ==========================
 
-For Combined Operations (ArmA II and Arrowhead installed together):
+For Combined Operations (ArmA II and Arrowhead launched together):
 
     -mod=@CBA
 
