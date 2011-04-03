@@ -19,12 +19,13 @@ Author:
 
 #include "script_component.hpp"
 
+SCRIPT(findEntity);
+
 PARAMS_2(_type,_position);
 DEFAULT_PARAM(2,_radius,50);
 
-{
-	if (_x iskindof _type) exitwith {
-		_x
-	};
-	nil
-} foreach ((_position call CBA_fnc_getpos) nearEntities _radius);
+// this function doesn't return the nearest entity, neither did the previous version
+
+_ret = (_position call CBA_fnc_getpos) nearEntities [[_type], _radius];
+if (count _ret > 0) exitWith {_ret select 0};
+nil
