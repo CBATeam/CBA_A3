@@ -8,15 +8,13 @@ LOG(MSG_INIT);
 ["CBA_loadGame", { [] spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler;
 ["CBA_playerSpawn", { LOG("Player spawn detected!") }] call CBA_fnc_addEventHandler;
 
-[] spawn
-{
+[] spawn {
 	private ["_lastPlayer", "_newPlayer"];
 	waitUntil {player == player};
 	_lastPlayer = objNull;
-	while {true} do
-	{
+	while {true} do {
 		waitUntil {player != _lastPlayer};
-		waitUntil {!(isNull player)};
+		waitUntil {!isNull player};
 		_newPlayer = player; // Cumbersome but ensures refering to the same object
 		["CBA_playerSpawn", [_newPlayer, _lastPlayer]] call CBA_fnc_localEvent;
 		_lastPlayer = _newPlayer;
@@ -27,20 +25,17 @@ LOG(MSG_INIT);
 // Display Eventhandlers - Abstraction layer
 GVAR(attaching) = false;
 
-FUNC(handle_retach) =
-{
+FUNC(handle_retach) = {
 	private ["_id", "_ar2"];
 	// _key and _value
 	TRACE_2("",_key,_value);
 	{
 		_id = _x select 0;
-		if !(isNil "_id") then
-		{
+		if !(isNil "_id") then {
 			TRACE_2("Removing",_key,_id);
 			(findDisplay 46) displayRemoveEventHandler [_key, _id];
 		};
-		if (count _x != 1) then
-		{
+		if (count _x != 1) then {
 			TRACE_2("Adding",_key,_x select 1);
 			_x set [0, (findDisplay 46) displayAddEventHandler [_key, _x select 1]];
 		};
@@ -48,8 +43,7 @@ FUNC(handle_retach) =
 };
 
 // TODO: Stack/multiplex into single events per type ?
-FUNC(attach_handler) =
-{
+FUNC(attach_handler) = {
 	if (GVAR(attaching)) exitWith {}; // Already busy
 	GVAR(attaching) = true;
 	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
@@ -70,9 +64,8 @@ FUNC(attach_handler) =
 ["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 
-[] spawn
-{
-	waitUntil { !(isNull (findDisplay 46)) };
+[] spawn {
+	waitUntil { !isNull (findDisplay 46) };
 	// Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers
 	if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"] };
 
@@ -83,8 +76,7 @@ FUNC(attach_handler) =
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
 	GVAR(keypressed) = time;
-	while {true} do
-	{
+	while {true} do {
 		waitUntil {(time - GVAR(keypressed)) > 10};
 		TRACE_1("Longer than 10 seconds ago",_this);
 		call FUNC(attach_handler);

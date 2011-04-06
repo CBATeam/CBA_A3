@@ -24,14 +24,12 @@ SCRIPT(readKeyFromConfig);
 private ["_component", "_action", "_settings", "_i"];
 PARAMS_2(_component,_action);
 _settings = [false, false, false];
-if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith
-{
+if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith {
 	TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action));
 	[getNumber(CFGSETTINGS >> _component >> _action), _settings];
 };
 
-if (isClass(CFGSETTINGS >> _component >> _action)) exitWith
-{
+if (isClass(CFGSETTINGS >> _component >> _action)) exitWith {
 	TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action >> "key"));
 	_i = 0;
 	{

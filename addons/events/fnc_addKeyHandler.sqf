@@ -39,9 +39,9 @@ if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 
 _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 
-if(_key>(count _handlers))then{_handlers resize(_key+1);};
+if (_key > count _handlers) then {_handlers resize(_key + 1)};
 _ar = _handlers select _key;
-if(isNil"_ar")then{_ar=[]};
+if (isNil"_ar")then{_ar=[]};
 PUSH(_ar,_hashKey);
 _handlers set [_key, _ar];
 

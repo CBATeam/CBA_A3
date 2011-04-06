@@ -33,8 +33,7 @@ if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
 _hashKey = toLower(format["%1_%2", _component, _action]);
 
 _key = [_component, _action] call CBA_fnc_readKeyFromConfig;
-if (_key select 0 > -1) exitWith
-{
+if (_key select 0 > -1) exitWith {
 	[_key select 0, _key select 1, _code, _type, _hashKey] call CBA_fnc_addKeyHandler;
 	_hashKey;
 };

@@ -21,6 +21,12 @@ class CfgFunctions
 				description = "Registers an event handler for a specific CBA event.";
 				file = "\x\cba\addons\events\fnc_addEventHandler.sqf";
 			};
+			// CBA_fnc_addLocalEventHandler
+			class addLocalEventHandler
+			{
+				description = "Registers an event handler for a specific CBA event, event only runs where the first parameter is local.";
+				file = "\x\cba\addons\events\fnc_addLocalEventHandler.sqf";
+			};
 			// CBA_fnc_addKeyHandler
 			class addKeyHandler
 			{
@@ -75,11 +81,23 @@ class CfgFunctions
 				description = "Removes an event handler previously registered with CBA_fnc_addEventHandler.";
 				file = "\x\cba\addons\events\fnc_removeEventHandler.sqf";
 			};
+			// CBA_fnc_removeLocalEventHandler
+			class removeLocalEventHandler
+			{
+				description = "Removes an event handler previously registered with CBA_fnc_addLocalEventHandler.";
+				file = "\x\cba\addons\events\fnc_removeLocalEventHandler.sqf";
+			};
 			// CBA_fnc_removeKeyHandler
 			class removeKeyHandler
 			{
 				description = "Removes an action to a keyhandler";
 				file = "\x\cba\addons\events\fnc_removeKeyHandler.sqf";
+			};
+			// CBA_fnc_whereLocalEvent
+			class whereLocalEvent
+			{
+				description = "Raises a CBA event on the machines where paramter 0 is local.";
+				file = "\x\cba\addons\events\fnc_whereLocalEvent.sqf";
 			};
 		};
 	};

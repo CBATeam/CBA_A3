@@ -7,19 +7,20 @@ LOG(MSG_INIT);
 
 // Initialisation required by CBA events.
 CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
+CBA_eventHandlersLocal = "Logic" createVehicleLocal [0, 0];
 CBA_EVENTS_DONE = false;
 
 // TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
-if (isServer or (alive player)) then
-{
+if (isServer || alive player) then {
 	// We want all events, as soon as they start arriving.
 	"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
+	"CBA_l" addPublicVariableEventHandler { (_this select 1) call FUNC(remoteLocalEvent) };
 } else {
 	// Ignore the last event that was sent out before we joined.
-	[] spawn
-	{
+	[] spawn {
 		waitUntil { alive player };
 		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
+		"CBA_l" addPublicVariableEventHandler { (_this select 1) call FUNC(remoteLocalEvent) };
 	};
 };
 
@@ -40,8 +41,7 @@ GVAR(keyhandlers_down) = [[], []] call CBA_fnc_hashCreate;
 GVAR(keyhandlers_up) = [[], []] call CBA_fnc_hashCreate;
 _arUp = [GVAR(keyhandler_hash), "keyup"] call CBA_fnc_hashGet;
 _arDown = [GVAR(keyhandler_hash), "keydown"] call CBA_fnc_hashGet;
-for "_i" from 0 to 250 do
-{
+for "_i" from 0 to 250 do {
 	_arUp set [_i, []];
 	_arDown set [_i, []];
 };
@@ -51,6 +51,7 @@ for "_i" from 0 to 250 do
 [GVAR(keyhandler_hash), "keydown", _arDown] call CBA_fnc_hashSet;
 
 PREP(keyHandler);
+PREP(remoteLocalEvent);
 
 /*
 	// Disabled - SB - 2010-01-22: Bugged, and not working anyway.

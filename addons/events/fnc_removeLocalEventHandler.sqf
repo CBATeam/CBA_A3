@@ -1,8 +1,8 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_removeEventHandler
+Function: CBA_fnc_removeLocalEventHandler
 
 Description:
-	Removes an event handler previously registered with CBA_fnc_addEventHandler.
+	Removes an event handler previously registered with CBA_fnc_addLocalEventHandler.
 
 Parameters:
 	_eventType - Type of event to remove [String].
@@ -16,12 +16,12 @@ TODO:
 	elements in the array if lots of removes are made.
 
 Author:
-	Spooner
+	Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 
-SCRIPT(removeEventHandler);
+SCRIPT(removeLocalEventHandler);
 
 // -----------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ PARAMS_2(_eventType,_handlerIndex);
 
 private "_handlers";
 
-_handlers = CBA_eventHandlers getVariable _eventType;
+_handlers = CBA_eventHandlersLocal getVariable _eventType;
 
 if (isNil "_handlers") then {
 	WARNING("Event type not registered: " + (str _eventType));

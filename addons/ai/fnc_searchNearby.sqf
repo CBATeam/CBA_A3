@@ -41,10 +41,11 @@ while {_indices > 0 and _count > 0} do {
 		_unit = (_units select _count);
 		if (unitready _unit) then {
 			_unit commandmove (_building buildingpos _indices);
-			_unit spawn {
+			// disabled the following code... why spawn for a waitUntil ? Xeno
+			/*_unit spawn {
 				sleep 5;
 				waituntil {unitready _this};
-			};
+			};*/
 			_indices = _indices - 1;
 		};
 		_count = _count - 1;
