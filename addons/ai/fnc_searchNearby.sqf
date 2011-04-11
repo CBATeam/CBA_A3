@@ -34,11 +34,11 @@ private ["_count","_units"];
 _units = units _group;
 _count = (count _units) - 1;
 
-while {_indices > 0 and _count > 0} do {
+while {_indices > 0 && _count > 0} do {
 	sleep 10;
-	while {_indices > 0 and _count > 0} do {
+	while {_indices > 0 && _count > 0} do {
 		private "_unit";
-		_unit = (_units select _count);
+		_unit = _units select _count;
 		if (unitready _unit) then {
 			_unit commandmove (_building buildingpos _indices);
 			// disabled the following code... why spawn for a waitUntil ? Xeno
@@ -53,7 +53,7 @@ while {_indices > 0 and _count > 0} do {
 	_units = units _group;
 	_count = (count _units) - 1;
 };
-waituntil {sleep 3;	{unitready _x} count _units == count (units _group) - 1};
+waituntil {sleep 3;	{unitready _x} count _units >= count (units _group) - 1};
 {
 	_x dofollow _leader;
 } foreach _units;
