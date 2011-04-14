@@ -524,6 +524,14 @@ Author:
 #define PATHTO_C(var1) PATHTOF_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_F(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 
+// Already quoted ""
+#define QPATHTO_R(var1) QUOTE(PATHTO_R(var1))
+#define QPATHTO_T(var1) QUOTE(PATHTO_T(var1))
+#define QPATHTO_M(var1) QUOTE(PATHTO_M(var1))
+#define QPATHTO_S(var1) QUOTE(PATHTO_S(var1))
+#define QPATHTO_C(var1) QUOTE(PATHTO_C(var1))
+#define QPATHTO_F(var1) QUOTE(PATHTO_F(var1))
+
 #define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTO_SYS(var1,var2,var3)'
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
@@ -597,6 +605,7 @@ Author:
 	Sickboy
 ------------------------------------------- */
 #define GVAR(var1) TRIPLES(PREFIX,COMPONENT,var1)
+#define QGVAR(var1) QUOTE(GVAR(var1))
 
 /* -------------------------------------------
 Macro: GVARMAIN()
@@ -1165,4 +1174,13 @@ Author:
 		version = VERSION; \
 }
 
+// XEH Specific
 #define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
+
+#define XEH_PRE_INIT QUOTE(call COMPILE_FILE(XEH_PreInit_Once))
+#define XEH_PRE_CINIT QUOTE(call COMPILE_FILE(XEH_PreClientInit_Once))
+#define XEH_PRE_SINIT QUOTE(call COMPILE_FILE(XEH_PreServerInit_Once))
+
+#define XEH_POST_INIT QUOTE(call COMPILE_FILE(XEH_PostInit_Once))
+#define XEH_POST_CINIT QUOTE(call COMPILE_FILE(XEH_PostClientInit_Once))
+#define XEH_POST_SINIT QUOTE(call COMPILE_FILE(XEH_PostServerInit_Once))
