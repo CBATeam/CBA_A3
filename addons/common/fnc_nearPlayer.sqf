@@ -10,7 +10,7 @@ Returns:
 
 Examples:
 	(begin example)
-
+	[unit, distance] call CBA_fnc_nearPlayer
 	(end)
 
 Author:
