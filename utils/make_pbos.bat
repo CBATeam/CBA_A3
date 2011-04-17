@@ -5,7 +5,7 @@ set ADDONS=P:\x\cba\addons
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
 
-set KEY="P:\x\cba\utils\CBA_v0-7-2.biprivatekey"
+set KEY="P:\x\cba\utils\CBA_v0-7-4.biprivatekey"
 set SIGN="C:\tools\dsutils\DSSignFile.exe"
 
 REM set OPTS=-m

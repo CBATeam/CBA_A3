@@ -97,14 +97,18 @@ Group: Functions  {
          File: addEventHandler  (no auto-title, events\fnc_addEventHandler.sqf)
          File: addKeyHandler  (no auto-title, events\fnc_addKeyHandler.sqf)
          File: addKeyHandlerFromConfig  (no auto-title, events\fnc_addKeyHandlerFromConfig.sqf)
+         File: addLocalEventHandler  (no auto-title, events\fnc_addLocalEventHandler.sqf)
          File: changeKeyHandler  (no auto-title, events\fnc_changeKeyHandler.sqf)
          File: globalEvent  (no auto-title, events\fnc_globalEvent.sqf)
          File: localEvent  (no auto-title, events\fnc_localEvent.sqf)
          File: readKeyFromConfig  (no auto-title, events\fnc_readKeyFromConfig.sqf)
          File: remoteEvent  (no auto-title, events\fnc_remoteEvent.sqf)
+         File: remoteLocalEvent  (no auto-title, events\fnc_remoteLocalEvent.sqf)
          File: removeDisplayHandler  (no auto-title, events\fnc_removeDisplayHandler.sqf)
          File: removeEventHandler  (no auto-title, events\fnc_removeEventHandler.sqf)
          File: removeKeyHandler  (no auto-title, events\fnc_removeKeyHandler.sqf)
+         File: removeLocalEventHandler  (no auto-title, events\fnc_removeLocalEventHandler.sqf)
+         File: whereLocalEvent  (no auto-title, events\fnc_whereLocalEvent.sqf)
          }  # Group: Events
 
       Group: Hashes  {

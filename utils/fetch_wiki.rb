@@ -17,7 +17,8 @@ GET_OPTIONS = { 'User-Agent' => USER_AGENT }
 module Wiki
   def self.fetch(project, page, destination, exclude = Set.new(), getCSS = true)
     # Get the full version so we can find attachments.
-    text = HTTP.new(HOST).request_get("/wiki/#{project}/#{page}", GET_OPTIONS).body
+    addr = "/projects/#{project}/wiki/#{page}"
+    text = HTTP.new(HOST).request_get(addr, GET_OPTIONS).body
     exclude.add page.downcase
 
     while text =~ %r["/(#{ATTACHMENTS_DIR}/\d+/([\w\-]+\.\w+))"]i
@@ -35,7 +36,7 @@ module Wiki
     end
 
     # Get the simple version for wiki links and actual download.
-    path = "/wiki/#{project}/#{page}#{EXPORT_HTML}"
+    path = "#{addr}#{EXPORT_HTML}"
     text = HTTP.new(HOST).request_get(path, GET_OPTIONS).body
 	text.gsub!(%r[href="/]) do |match|
 		"href=\"http://#{HOST}/"

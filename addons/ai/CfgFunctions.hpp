@@ -30,7 +30,7 @@ class CfgFunctions
 			// CBA_fnc_taskDefend
 			class taskDefend
 			{
-				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They may also patrol the radius unless otherwise specified. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Defend Radius (Scalar) - Building Size Threshold (Integer, default 2) Example: [this] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
+				description = "A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They may also patrol the radius unless otherwise specified. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Defend Radius (Scalar) - Building Size Threshold (Integer, default 2) - Can patrol (boolean) Example: [this] call CBA_fnc_taskDefend Returns: Nil Author: Rommel";
 				file = "\x\cba\addons\ai\fnc_taskDefend.sqf";
 			};
 			// CBA_fnc_taskPatrol
