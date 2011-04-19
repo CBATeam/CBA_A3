@@ -32,7 +32,7 @@ if (isNil "RE" && isNil "BIS_MPF_logic") then
 LOG("Initialising the Functions module early.");
 [] call COMPILE_FILE(init_functionsModule);
 LOG(MSG_INIT);
-if (true) exitWith {};
+// if (true) exitWith {};
 
 ADDON = false;
 
