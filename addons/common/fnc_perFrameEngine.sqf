@@ -13,8 +13,4 @@ execution).
 
 // prepare our handlers list
 ((_this select 0) displayCtrl 40122) ctrlSetEventHandler ["Draw", QUOTE([_this] call FUNC(onFrame)) ];
-[] spawn {
-	sleep 3;
-	GVAR(lastFrameRender) = diag_tickTime;
-	[] spawn FUNC(monitorFrameRender);
-};
+

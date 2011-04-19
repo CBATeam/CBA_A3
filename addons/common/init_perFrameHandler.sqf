@@ -160,9 +160,3 @@ GVAR(perFrameHandlerArray) = [];
 GVAR(fpsCount) = 0;
 GVAR(lastCount) = -1;
 GVAR(lastFrameRender) = 0;
-
-// Run the per frame handler init code, bringing up the hidden map control
-[] spawn {
-	waitUntil {time > 0};
-	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
-};

@@ -1,3 +1,4 @@
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
@@ -14,15 +15,24 @@ SCRIPT(XEH_preInit);
  * loaded and preprocessed twice, but this should only occur once per mission
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
+
 if (!SLX_XEH_DisableLogging) then
 {
 	diag_log [diag_frameNo, diag_tickTime, time, "MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated];
 };
 
-LOG("Initialising the Functions module early.");
-[objNull] call COMPILE_FILE(init_functionsModule);
+/*
+if (isNil "RE" && isNil "BIS_MPF_logic") then
+{
+	LOG("Initialising the MP module early.");
+	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
+};
+*/
 
+LOG("Initialising the Functions module early.");
+[] call COMPILE_FILE(init_functionsModule);
 LOG(MSG_INIT);
+if (true) exitWith {};
 
 ADDON = false;
 
@@ -65,17 +75,6 @@ FUNC(log) = {
 
 // Nil check
 if (isNil "CBA_NIL_CHECKED") then { CBA_NIL_CHECKED = false };
-
-[] spawn {
-	_done = false;
-	while {true} do {
-		sleep 1;
-		if (typeName nil == "STRING" || str(nil) != "ANY") then {
-			if !(CBA_NIL_CHECKED) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); CBA_NIL_CHECKED = true; };
-			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
-		};
-	};
-};
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
@@ -131,12 +130,13 @@ DEPRECATE_SYS(KRON_StrLen,DOUBLES(PREFIX,fnc_strLen));
 DEPRECATE_SYS(KRON_StrToArray,DOUBLES(PREFIX,fnc_split)); // CBA_fnc_split does the same and more.
 DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but CBA one is 1 line (reuses other functions).
 
+
 call COMPILE_FILE(init_perFrameHandler);
 
 // NOTE: Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
-[] call COMPILE_FILE(init_addons);
+call COMPILE_FILE(init_addons);
 
-[] call COMPILE_FILE(init_delayLess);
+call COMPILE_FILE(init_delayLess);
 
 // Announce Initialization Complete
 ADDON = true;

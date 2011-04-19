@@ -90,11 +90,6 @@ if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\module
 //--------------------------------------------------------------------------------------------------------
 //--- INIT COMPLETE --------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------
-[] spawn {
-	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
-	waitUntil {!isNil "bis_functions_mainscope"};
-	BIS_fnc_init = true;
-};
 
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, "Function module done!"];
