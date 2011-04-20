@@ -103,9 +103,12 @@ FUNC(addPerFrameHandlerLogic) = {
 FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
 	
+	TRACE_1("Monitor frame render loop",nil);
+	
 	// check to see if the frame-render hasn't run in a second.
 	// if it hasnt, pick it up for now
 	if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
+		TRACE_1("Executing frameRender",nil);
 		{
 			_handlerData = _x;
 			if !(isNil "_handlerData") then {

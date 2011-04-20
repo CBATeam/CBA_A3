@@ -95,9 +95,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 	GVAR(lastFrameRender) = diag_tickTime;
 	// Use a trigger, runs every 0.5s, unscheduled execution
 	GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
-	//GVAR(perFrameTrigger) setTriggerArea[5,5,0,false];
-	GVAR(perFrameTrigger) setTriggerActivation["ANY","PRESENT",true];
-	GVAR(perFrameTrigger) setTriggerStatements["true", QUOTE(call FUNC(monitorFrameRender)), ""];
+	GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
 };
 
 if !(isDedicated) then {
