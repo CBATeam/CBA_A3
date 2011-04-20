@@ -3,8 +3,7 @@
 
 #include "script_component.hpp"
 
-#define _DELAY_MONITOR_THRESHOLD 1
-#define _DELAY_MONITOR_SLEEP	 0.5
+#define _DELAY_MONITOR_THRESHOLD 0.4 // 1
 
 PREP(perFrameEngine);
 
@@ -103,29 +102,26 @@ FUNC(addPerFrameHandlerLogic) = {
 // and we still want to at least TRY and run them until the onDraw kicks up again
 FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
-	while { true } do {
-		// check to see if the frame-render hasn't run in a second.
-		// if it hasnt, pick it up for now
-		if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
-			{
-				_handlerData = _x;
-				if !(isNil "_handlerData") then {
-					if (IS_ARRAY(_handlerData)) then {
-						_func = _handlerData select 0;
-						_delay = _handlerData select 1;
-						_delta = _handlerData select 2;
-						if(diag_tickTime > _delta) then {
-							[(_handlerData select 4), (_handlerData select 5)] call _func;
-							_delta = diag_tickTime + _delay;
-							//TRACE_1("data", _data);
-							_handlerData set [2, _delta];
-						};
+	
+	// check to see if the frame-render hasn't run in a second.
+	// if it hasnt, pick it up for now
+	if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
+		{
+			_handlerData = _x;
+			if !(isNil "_handlerData") then {
+				if (IS_ARRAY(_handlerData)) then {
+					_func = _handlerData select 0;
+					_delay = _handlerData select 1;
+					_delta = _handlerData select 2;
+					if(diag_tickTime > _delta) then {
+						[(_handlerData select 4), (_handlerData select 5)] call _func;
+						_delta = diag_tickTime + _delay;
+						//TRACE_1("data", _data);
+						_handlerData set [2, _delta];
 					};
 				};
-			} forEach GVAR(perFrameHandlerArray);
-		} else {
-			sleep _DELAY_MONITOR_SLEEP;
-		};
+			};
+		} forEach GVAR(perFrameHandlerArray);
 	};
 };
 

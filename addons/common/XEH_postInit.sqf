@@ -90,10 +90,14 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 [] spawn {
 	waitUntil {time > 0};
 	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
+	sleep 0.1;
 
-	sleep 3;
 	GVAR(lastFrameRender) = diag_tickTime;
-	call FUNC(monitorFrameRender);
+	// Use a trigger, runs every 0.5s, unscheduled execution
+	GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
+	//GVAR(perFrameTrigger) setTriggerArea[5,5,0,false];
+	GVAR(perFrameTrigger) setTriggerActivation["ANY","PRESENT",true];
+	GVAR(perFrameTrigger) setTriggerStatements["true", QUOTE(call FUNC(monitorFrameRender)), ""];
 };
 
 if !(isDedicated) then {
