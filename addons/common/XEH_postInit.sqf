@@ -9,6 +9,15 @@ LOG(MSG_INIT);
 //       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
 //       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
 //		 In SP or as server (dedicated or clientServer), the logic is created with group and createUnit.
+[] spawn {
+	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
+	waitUntil {!isNil "bis_functions_mainscope"};
+	BIS_fnc_init = true;
+	#ifdef DEBUG_MODE_FULL
+		diag_log [diag_frameNo, diag_tickTime, time, "BLA: Function module init true!"];
+	#endif
+};
+
 private ["_group", "_logic"];
 if (isNil "BIS_functions_mainscope") then
 {
@@ -34,14 +43,6 @@ if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
 	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
-};
-[] spawn {
-	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
-	waitUntil {!isNil "bis_functions_mainscope"};
-	BIS_fnc_init = true;
-	#ifdef DEBUG_MODE_FULL
-		diag_log [diag_frameNo, diag_tickTime, time, "BLA: Function module init true!"];
-	#endif
 };
 [] spawn {
 	_done = false;
