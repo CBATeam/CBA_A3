@@ -12,6 +12,7 @@ Online function library reference at http://dev-heaven.net/docs/cba/
 @CBA/store/keys/                      => Server keys for addons.
 @CBA/store/source/                    => Source files for all addons.
 
+Commercial and military usage prohibited.
 
 
 What do I need?
