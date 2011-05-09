@@ -392,7 +392,7 @@ GVAR(init_obj2) addEventHandler ["killed", {
 	
 	if !(isNull player) then
 	{
-		if (isNull (group player)) then
+		if (isNull (group player) && player isKindOf "CAManBase") then
 		{
 			// DEBUG TEST: Crashing due to JIP, or when going from briefing
 			//			 into game
