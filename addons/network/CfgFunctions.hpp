@@ -39,6 +39,12 @@ class CfgFunctions
 				description = "Sets or unsets JIP persistency on a global marker.";
 				file = "\x\cba\addons\network\fnc_setMarkerPersistent.sqf";
 			};
+			// CBA_fnc_setVarNet
+			class setVarNet
+			{
+				description = "Broadcasts a variable with object setVariable ['name',value,true] only if the value has changed.";
+				file = "\x\cba\addons\network\fnc_setVarNet.sqf";
+			};
 		};
 	};
 };
