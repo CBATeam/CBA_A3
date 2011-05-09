@@ -1,15 +1,14 @@
 /*
-Function: CBA_fnc_setVarNet
+Function: CBA_fnc_publicVariable
 
 Description:
-	Same as setVariable ["name",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space.
+	CBA_fnc_publicVariable does only broadcast the new value if it doesn't exist in missionNamespace or the new value is different to the one in missionNamespace.
 	Checks also for different types. Nil as value gets always broadcasted.
 	
 	Should reduce network traffic.
 
 Parameters:
-	_object - Name of a marker [Object, Group]
-	_variable - Name of the variable in variable space [String]
+	_pv - Name of the publicVariable [String]
 	_value - Value to check and broadcast if it is not the same as the previous one, code will always be broadcasted [Any]
 
 Returns:
@@ -17,31 +16,30 @@ Returns:
 
 Example:
 	(begin example)
-		// This will only broadcast "somefish" if it either doesn't exist yet in the variable space or the value is not 50
-		_broadcasted = [player, "somefish", 50] call CBA_fnc_setVarNet;
+		// This will only broadcast "somefish" if it either doesn't exist yet in the missionNamespace or the value is not 50
+		_broadcasted = ["somefish", 50] call CBA_fnc_publicVariable;
 	(end)
 
 Author:
 	Xeno
 */
-//#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_3(_object,_variable,_value);
+PARAMS_2(_pv,_value);
 
-// does setVariable public also work for other types ??
-if (typeName _object != typeName "OBJECT" && typeName _object == "GROUP") exitWith {
-	WARNING("The first parameter is not of type object or group!");
+if (typeName _pv != typeName "") exitWith {
+	WARNING("The first parameter is not of type string!");
 	false
 };
 
 private ["_var","_s"];
-
-_var = _object getVariable _variable;
+_var = missionNamespace getVariable _pv;
 
 if (isNil "_var") exitWith {
-	TRACE_3("Broadcasting",_object,_variable,_value);
-	_object setVariable [_variable, _value, true];
+	TRACE_2("Broadcasting",_pv,_value);
+	missionNamespace setVariable [_pv, _value];
+	publicVariable _pv;
 	true
 };
 
@@ -72,7 +70,8 @@ if (_s) exitwith {
 	false
 };
 
-TRACE_3("Broadcasting",_object,_variable,_value);
-_object setVariable [_variable, _value, true];
+TRACE_2("Broadcasting",_pv,_value);
+missionNamespace setVariable [_pv, _value];
+publicVariable _pv;
 
 true

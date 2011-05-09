@@ -45,6 +45,12 @@ class CfgFunctions
 				description = "Broadcasts a variable with object setVariable ['name',value,true] only if the value has changed.";
 				file = "\x\cba\addons\network\fnc_setVarNet.sqf";
 			};
+			// CBA_fnc_publicVariable
+			class publicVariable
+			{
+				description = "Broadcasts a publicVariable only if the value has changed.";
+				file = "\x\cba\addons\network\fnc_publicVariable.sqf";
+			};
 		};
 	};
 };
