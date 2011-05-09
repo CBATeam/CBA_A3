@@ -44,10 +44,12 @@ private["_modelLogics", "_pilotLogic", "_neckLogic", "_pilotPos", "_neckPos",
 	"_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 
 PARAMS_1(_unit);
+
 _return = [];
-if(_unit isKindOf "CAManBase" ) then {
+
+if (_unit isKindOf "CAManBase" ) then {
 	_modelLogics = _unit getVariable [QUOTE(GVAR(modelLogics)), []];
-	if((count _modelLogics) == 0) then {
+	if (count _modelLogics == 0) then {
 		_pilotLogic = "logic" createVehicleLocal (getPos _unit);
 		_pilotLogic attachTo [_unit, [0,0,0], "pilot"];
 		_neckLogic = "logic" createVehicleLocal (getPos _unit);
@@ -59,17 +61,14 @@ if(_unit isKindOf "CAManBase" ) then {
 
 	_pilotPos = _unit worldToModel (getPosATL (_modelLogics select 0));
 	_neckPos = _unit worldToModel (getPosATL (_modelLogics select 1));
-	_polar = (([_neckPos, _pilotPos] call BIS_fnc_vectorFromXToY) call CBA_fnc_vect2polar);
-	_pitch = (_polar select 2)-35; // Subtract 35 to compensate for mem point height dif
+	_polar = ([_neckPos, _pilotPos] call BIS_fnc_vectorFromXToY) call CBA_fnc_vect2polar;
+	_pitch = (_polar select 2) - 35; // Subtract 35 to compensate for mem point height dif
 	_abs = _polar select 1;
 	_dif = 0;
 
-	if(_abs > 180) then {
-		_dif = _abs - 360;
-	} else {
-		_dif = _abs;
-	};	
+	_dif = if (_abs > 180) then {_abs - 360} else {_abs};
 	_world = (getDir _unit) + _dif mod 360;
 	_return = [_world, _dif, _pitch];
 };
+
 _return;

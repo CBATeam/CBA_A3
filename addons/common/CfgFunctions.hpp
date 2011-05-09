@@ -291,6 +291,12 @@ class CfgFunctions
 				description = "Find a position relative to a known position on the map. Passing strings in for the Northing and Easting is the preferred way.";
 				file = "\x\cba\addons\common\fnc_mapRelPos.sqf";
 			};
+			// CBA_fnc_modelHeadDir
+			class modelHeadDir
+			{
+				description = "Get the direction of any unit's head.";
+				file = "\x\cba\addons\common\fnc_modelHeadDir.sqf";
+			};
 			// CBA_fnc_nearPlayer
 			class nearPlayer
 			{
