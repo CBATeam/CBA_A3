@@ -33,6 +33,12 @@ class CfgFunctions
 				description = "Says sound on all client computer in 3d";
 				file = "\x\cba\addons\network\fnc_globalSay3d.sqf";
 			};
+			// CBA_fnc_publicVariable
+			class publicVariable
+			{
+				description = "CBA_fnc_publicVariable does only broadcast the new value if it doesn't exist in missionNamespace or the new value is different to the one in missionNamespace. Checks also for different types. Nil as value gets always broadcasted.";
+				file = "\x\cba\addons\network\fnc_publicVariable.sqf";
+			};
 			// CBA_fnc_setMarkerPersistent
 			class setMarkerPersistent
 			{
@@ -42,14 +48,8 @@ class CfgFunctions
 			// CBA_fnc_setVarNet
 			class setVarNet
 			{
-				description = "Broadcasts a variable with object setVariable ['name',value,true] only if the value has changed.";
+				description = "Same as setVariable [""name"",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space. Checks also for different types. Nil as value gets always broadcasted.";
 				file = "\x\cba\addons\network\fnc_setVarNet.sqf";
-			};
-			// CBA_fnc_publicVariable
-			class publicVariable
-			{
-				description = "Broadcasts a publicVariable only if the value has changed.";
-				file = "\x\cba\addons\network\fnc_publicVariable.sqf";
 			};
 		};
 	};

@@ -170,6 +170,7 @@ Group: Functions  {
          File: mapDirTo  (no auto-title, common\fnc_mapDirTo.sqf)
          File: mapGridToPos  (no auto-title, common\fnc_mapGridToPos.sqf)
          File: mapRelPos  (no auto-title, common\fnc_mapRelPos.sqf)
+         File: modelHeadDir  (no auto-title, common\fnc_modelHeadDir.sqf)
          File: nearPlayer  (no auto-title, common\fnc_nearPlayer.sqf)
          File: northingReversed  (no auto-title, common\fnc_northingReversed.sqf)
          File: objectRandom  (no auto-title, common\fnc_objectRandom.sqf)
@@ -193,7 +194,9 @@ Group: Functions  {
          File: globalExecute  (no auto-title, network\fnc_globalExecute.sqf)
          File: globalSay  (no auto-title, network\fnc_globalSay.sqf)
          File: globalSay3d  (no auto-title, network\fnc_globalSay3d.sqf)
+         File: publicVariable  (no auto-title, network\fnc_publicVariable.sqf)
          File: setMarkerPersistent  (no auto-title, network\fnc_setMarkerPersistent.sqf)
+         File: setVarNet  (no auto-title, network\fnc_setVarNet.sqf)
          }  # Group: Network
 
       Group: Strings  {
