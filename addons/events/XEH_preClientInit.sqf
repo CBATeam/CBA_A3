@@ -80,7 +80,7 @@ FUNC(attach_handler) = {
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
 	GVAR(keypressed) = time;
-	if !(isMultiplayer) then {
+	if (isServer || !isMultiplayer) then {
 		while {true} do {
 			waitUntil {(time - GVAR(keypressed)) > 10};
 			TRACE_1("Longer than 10 seconds ago",_this);
