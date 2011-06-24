@@ -42,19 +42,23 @@ FUNC(handle_retach) = {
 	} forEach _value;
 };
 
+CBA_EVENT_KEY_LOGIC = objNull;
+
 // TODO: Stack/multiplex into single events per type ?
 FUNC(attach_handler) = {
-	if (GVAR(attaching)) exitWith {}; // Already busy
-	GVAR(attaching) = true;
-	TRACE_3("ReAttaching",GVAR(attaching),GVAR(keypressed),time);
+	if !(isNull (CBA_EVENT_KEY_LOGIC)) exitWith {}; // Already busy
+	TRACE_1("ReAttaching",GVAR(keypressed));
 
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);
-	_handle = { [GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair; CBA_EVENTS_DONE = true; } execFSM CBA_common_delayLess;
-	waitUntil {completedFSM _handle};
-	GVAR(attaching) = false;
-};
 
+	CBA_EVENT_KEY_LOGIC = "HeliHEmpty" createVehicleLocal [0,0,0];
+	CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
+		[GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
+		CBA_EVENTS_DONE = true; 
+		deleteVehicle CBA_EVENT_KEY_LOGIC;
+	}];
+};
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
 // Workaround , in macros
@@ -76,10 +80,12 @@ FUNC(attach_handler) = {
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
 	GVAR(keypressed) = time;
-	while {true} do {
-		waitUntil {(time - GVAR(keypressed)) > 10};
-		TRACE_1("Longer than 10 seconds ago",_this);
-		call FUNC(attach_handler);
-		GVAR(keypressed) = time;
+	if !(isMultiplayer) then {
+		while {true} do {
+			waitUntil {(time - GVAR(keypressed)) > 10};
+			TRACE_1("Longer than 10 seconds ago",_this);
+			call FUNC(attach_handler);
+			GVAR(keypressed) = time;
+		};
 	};
 };
