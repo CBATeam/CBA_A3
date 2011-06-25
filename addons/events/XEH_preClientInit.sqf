@@ -1,4 +1,4 @@
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
 	Custom events
@@ -58,6 +58,7 @@ FUNC(attach_handler) = {
 		CBA_EVENTS_DONE = true; 
 		deleteVehicle CBA_EVENT_KEY_LOGIC;
 	}];
+	CBA_EVENT_KEY_LOGIC setDamage 1;
 };
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
