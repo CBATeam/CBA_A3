@@ -104,7 +104,13 @@ FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
 	
 	TRACE_1("Monitor frame render loop",nil);
-	
+	// Check if the PFH died for some reason.
+	_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
+	if(!(isNil "_pfhIdd")) then {
+		if(isNull _pfhIdd) then {
+			7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
+		};
+	};
 	// check to see if the frame-render hasn't run in a second.
 	// if it hasnt, pick it up for now
 	if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {

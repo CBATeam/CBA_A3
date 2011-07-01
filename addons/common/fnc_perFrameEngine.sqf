@@ -12,5 +12,6 @@ execution).
 #include "script_component.hpp"
 
 // prepare our handlers list
+uiNamespace setVariable ["CBA_PFHIDD", (_this select 0)];
 ((_this select 0) displayCtrl 40122) ctrlSetEventHandler ["Draw", QUOTE([_this] call FUNC(onFrame)) ];
 
