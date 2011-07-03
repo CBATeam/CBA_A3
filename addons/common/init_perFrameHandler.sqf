@@ -102,7 +102,7 @@ FUNC(addPerFrameHandlerLogic) = {
 // and we still want to at least TRY and run them until the onDraw kicks up again
 FUNC(monitorFrameRender) = {
 	private["_func", "_delay", "_delta", "_handlerData"];
-	
+	disableSerialization;
 	TRACE_1("Monitor frame render loop",nil);
 	// Check if the PFH died for some reason.
 	_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
