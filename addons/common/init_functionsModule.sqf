@@ -10,12 +10,14 @@ private ["_recompile"];
 _recompile = (count _this) > 0;
 
 #ifdef DEBUG_MODE_FULL
+	_timeStart = diag_tickTime;
 	diag_log [diag_frameNo, diag_tickTime, time, "Initializing function module", _this];
 #endif
 
 
 //--- Functions are already running
 if (BIS_fnc_init && !_recompile) exitWith {};
+
 
 //-----------------------------------------------------------------------------
 //--- PREPROCESS --------------------------------------------------------------
@@ -92,6 +94,6 @@ if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\module
 //--------------------------------------------------------------------------------------------------------
 
 #ifdef DEBUG_MODE_FULL
-	diag_log [diag_frameNo, diag_tickTime, time, "Function module done!"];
+	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
 
