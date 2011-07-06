@@ -70,7 +70,7 @@ DEFAULT_PARAM(2,_decimalPlaces,DEFAULT_DECIMAL_PLACES);
 DEFAULT_PARAM(3,_separateThousands,DEFAULT_SEPARATE_THOUSANDS);
 
 private ["_integerPart", "_string", "_numIntegerDigits", "_decimalPoint",
-	"_thousandsSeparator"];
+	"_thousandsSeparator", "_basePlaces"];
 
 _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
 _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
@@ -78,6 +78,8 @@ _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
 // Start by working out how to display the integer part of the number.
 if (_decimalPlaces > 0) then
 {
+	_basePlaces = 10 ^ _decimalPlaces;
+	_number = round(_number * _basePlaces) / _basePlaces;
 	_integerPart = floor (abs _number);
 } else {
 	_integerPart = round (abs _number);
@@ -129,12 +131,7 @@ if (_decimalPlaces > 0) then
 
 	for "_i" from 1 to _decimalPlaces do
 	{
-		if (_i == _decimalPlaces) then
-		{
-			_digit = round ((_number * _multiplier) mod 10);
-		} else {
-			_digit = floor ((_number * _multiplier) mod 10);
-		};
+		_digit = floor ((_number * _multiplier) mod 10);
 
 		// If the digit has become infintesimal, pad to the end with zeroes.
 		if (not (finite _digit)) exitWith
