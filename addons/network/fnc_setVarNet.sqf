@@ -13,7 +13,7 @@ Parameters:
 	_value - Value to check and broadcast if it is not the same as the previous one, code will always be broadcasted [Any]
 
 Returns:
-	True if if broadcasted, otherwise false [Boolean]
+	True if broadcasted, otherwise false [Boolean]
 
 Example:
 	(begin example)
@@ -30,7 +30,7 @@ Author:
 PARAMS_3(_object,_variable,_value);
 
 // does setVariable public also work for other types ??
-if (typeName _object != typeName "OBJECT" && typeName _object == "GROUP") exitWith {
+if (typeName _object != "OBJECT" && typeName _object != "GROUP") exitWith {
 	WARNING("The first parameter is not of type object or group!");
 	false
 };
