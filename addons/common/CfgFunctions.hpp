@@ -387,6 +387,12 @@ class CfgFunctions
 				description = "Switch player to another unit.";
 				file = "\x\cba\addons\common\fnc_switchPlayer.sqf";
 			};
+			// CBA_fnc_systemChat
+			class systemChat
+			{
+				description = "Display a message in the global chat channel.";
+				file = "\x\cba\addons\common\fnc_systemChat.sqf";
+			};
 		};
 	};
 	// Need to be manually maintained
