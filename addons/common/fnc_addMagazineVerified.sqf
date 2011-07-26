@@ -2,16 +2,21 @@
 Function: CBA_fnc_addMagazineVerified
 
 Description:
-	Add a magazine, but verify that it was successful without over-burdening the
-	recipient.
+	Add magazines to the player, but verify that it was
+	successful and doesn't over-burden the recipient. The
+	function will fill all available inventory slots with
+	the requested magazine type.
 
 Parameters:
+	_magazine - the magazine type to add. [String]
 
 Returns:
+	nothing, but if the player has insufficient inventory space
+	for the magazine in question, a warning message is shown.
 
 Examples:
 	(begin example)
-
+	"SmokeShell" call CBA_fnc_AddMagazineVerified
 	(end)
 
 Author:
