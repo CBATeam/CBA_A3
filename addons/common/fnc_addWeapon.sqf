@@ -8,12 +8,15 @@ Description:
 	case of trouble, or when able to add _item to _unit true in case of success.
 
 Parameters:
+	_unit - the unit
+	_item - name of the weapon to add
 
 Returns:
+	true on success, false otherwise
 
 Examples:
 	(begin example)
-
+	_result = [player, "Binocular"] call CBA_fnc_addWeapon
 	(end)
 
 Author:
@@ -28,14 +31,12 @@ SCRIPT(addWeapon);
 #define __cfg (configFile >> "CfgWeapons")
 #define __action addWeapon
 
-private ["_unit", "_item"];
-PARAMS_1(_unit);
+PARAMS_2(_unit,_item);
 if (typeName _unit != "OBJECT") exitWith
 {
 	TRACE_2("Unit not Object",_unit,_item);
 	false
 };
-_item = _this select 1;
 if (typeName _item != "STRING") exitWith
 {
 	TRACE_2("Item not String",_unit,_item);

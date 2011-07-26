@@ -8,12 +8,14 @@ Description:
 	of trouble, or when able to remove _item from _unit true in case of success
 
 Parameters:
+	_unit   - the unit that should drop a magazine [Object]
+	_item   - class name of the weapon to drop [String]
 
 Returns:
-
+	true if successful, false otherwise
 Examples:
 	(begin example)
-
+	_result = [player, primaryWeapon player] call CBA_fnc_dropWeapon
 	(end)
 
 Author:

@@ -8,12 +8,15 @@ Description:
 	of trouble, or when able to remove _item from _unit true in case of success.
 
 Parameters:
+	_unit   - the unit that should drop a magazine [Object]
+	_item   - class name of the magazine to drop [String]
 
 Returns:
+	true if successful, false otherwise 
 
 Examples:
 	(begin example)
-
+	_result = [player, "SmokeShell"] call CBA_fnc_dropMagazine
 	(end)
 
 Author:
@@ -78,7 +81,6 @@ if (isNull _holder) exitWith
 	TRACE_3("Holder isNull",_unit,_item,_holder);
 	false
 };
-
 _unit action [__action, _holder, _item];
 TRACE_3("Holder: %3 - Success",_unit,_item,_holder);
 true
