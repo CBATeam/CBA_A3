@@ -13,7 +13,7 @@ Returns:
 
 Examples:
 	(begin example)
-
+	_result = [player, secondaryWeapon player] call CBA_fnc_selectWeapon
 	(end)
 
 Author:

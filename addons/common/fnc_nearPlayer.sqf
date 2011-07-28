@@ -5,8 +5,13 @@ Description:
 	Check whether these are any players within a certain distance of a unit.
 
 Parameters:
+	_unit:       the unit to check the distance from. [Object]
+	_distance:   the desired distance. [Number]
 
 Returns:
+	Boolean - true if there are any players within the given
+                  distance of the unit, false if there aren't.
+
 
 Examples:
 	(begin example)

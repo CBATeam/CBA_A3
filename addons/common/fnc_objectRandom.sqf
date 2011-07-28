@@ -5,12 +5,14 @@ Description:
 	Creates a "random" number 0-9 based on an object's velocity
 
 Parameters:
+	_o - an object to base the random number on. [Object]
 
 Returns:
+	A number between 0 and 9.
 
 Examples:
 	(begin example)
-
+	_random = _helicopter call CBA_fnc_objectRandom;
 	(end)
 
 Author:

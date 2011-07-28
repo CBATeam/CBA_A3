@@ -5,12 +5,20 @@ Description:
 	Get information about a unit's stance and speed.
 
 Parameters:
+	_unit - get stance and movement mode for this unit
 
 Returns:
+	An array containing two strings, [ stance, speed ] where
+
+	- stance is one of "prone", "kneel" or "stand"
+	- speed is one of "stop", "slow", "normal" or "fast"
 
 Examples:
 	(begin example)
+	_result = player call CBA_fnc_getUnitAnim;
 
+	_stance = _result select 0;
+	_speed = _result select 1;
 	(end)
 
 Author:

@@ -2,15 +2,18 @@
 Function: CBA_fnc_getVolume
 
 Description:
-	Return the volume of an object
+	Return the volume of an object based on the object's model's bounding
+	box.
 
 Parameters:
+	_object - an object to calculate the volume of. [Object]
 
 Returns:
+	_volume - the volume. [Number]
 
 Examples:
 	(begin example)
-
+	_vol = _vehicle call CBA_fnc_getVolume
 	(end)
 
 Author:

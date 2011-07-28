@@ -3,12 +3,41 @@ Function: CBA_fnc_inArea
 
 Description:
 	A function used to determine if a position is within a zone.
+
+	The "position" can be given as a marker name, an object,
+	location, group or a position array.
+
+	The zone is specificed either as a marker name or a trigger.
+
 Parameters:
-	Marker, Object, Location, Group or Position, Zone (Marker, Trigger, Array)
+	A two-element array, [ position, zone], where
+
+	- position: Marker|Object|Location|Group|Position
+	- zone:     Marker|Trigger
+
 Example:
+	(begin example)
+	// Is the marker "playermarker" inside the "safezone" marker area?
+	_safe = [ "playermarker", "safezone"] call CBA_fnc_inArea;
+
+	// is the player within the safe zone marker area?
+	_pos = getPos player;
+	_safe = [ _pos, "safezone" ] call CBA_fnc_inArea;
+
+	// Deny artillery if target is inside the trigger area
+	if ([_target, cityTrigger] call CBA_fnc_inArea) then
+	{
+		// deny fire mission
+	}
+	else
+	{
+		// fire away!
+	};
+	(end)	
 
 Returns:
 	Boolean
+
 Author:
 	Rommel
 

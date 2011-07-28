@@ -5,12 +5,25 @@ Description:
 	Switch player to another unit.
 
 Parameters:
+	type:   The type of the new unit the player should switch to [String]
+	
+	Optional:
+	[type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
+                              the weapons the player had before.
+
+
+	NOTE: the function must be spawned. It cannot be called.
 
 Returns:
+	nil
 
 Examples:
 	(begin example)
+	// Change into a M136 AT rifleman
+	_h = "USMC_Soldier_LAT" spawn CBA_fnc_switchPlayer;
 
+	// Switch into a corpsman, but keep the weapons
+	_h = ["USMC_Soldier_Medic", "LEAVEWEPS"] spawn CBA_fnc_switchPlayer;
 	(end)
 
 Author:

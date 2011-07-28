@@ -5,12 +5,14 @@ Description:
 	Get death animation for a unit.
 
 Parameters:
+	_unit - the unit to get the death animation for. [Object]
 
 Returns:
+	_deathAnim - the name of the animation. [String]
 
 Examples:
 	(begin example)
-
+	_anim = player call CBA_fnc_getUnitDeathAnim;
 	(end)
 
 Author:

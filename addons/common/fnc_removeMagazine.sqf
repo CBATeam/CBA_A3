@@ -8,12 +8,15 @@ Description:
 	of trouble, or when able to remove _item from _unit true in case of success.
 
 Parameters:
+	_unit - the unit or vehicle
+	_item - name of the magazine to remove
 
 Returns:
-
+	true on success, false otherwise
+	
 Examples:
 	(begin example)
-
+	_result = [player, "SmokeShell"] call CBA_fnc_removeMagazine
 	(end)
 
 Author:

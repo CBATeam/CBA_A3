@@ -5,12 +5,14 @@ Description:
 	Real z coordinate of an object, for placing stuff on roofs, etc.
 
 Parameters:
+	_obj: an object [Object]
 
 Returns:
+	The z coordinate of the top of that object. [Number]
 
 Examples:
 	(begin example)
-
+	_height = _house call CBA_fnc_realHeight;
 	(end)
 
 Author:
