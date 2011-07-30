@@ -186,6 +186,7 @@ Group: Functions  {
          File: setHeight  (no auto-title, common\fnc_setHeight.sqf)
          File: setPos  (no auto-title, common\fnc_setPos.sqf)
          File: switchPlayer  (no auto-title, common\fnc_switchPlayer.sqf)
+         File: systemChat  (no auto-title, common\fnc_systemChat.sqf)
          }  # Group: Misc
 
       Group: Network  {

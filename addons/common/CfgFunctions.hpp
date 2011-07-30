@@ -24,13 +24,13 @@ class CfgFunctions
 			// CBA_fnc_addMagazineCargo
 			class addMagazineCargo
 			{
-				description = "Add magazine to a vehicle cargo.";
+				description = "Add magazine(s) to a vehicle's cargo.";
 				file = "\x\cba\addons\common\fnc_addMagazineCargo.sqf";
 			};
 			// CBA_fnc_addMagazineVerified
 			class addMagazineVerified
 			{
-				description = "Add a magazine, but verify that it was successful without over-burdening the recipient.";
+				description = "Add magazines to the player, but verify that it was successful and doesn't over-burden the recipient. The function will fill all available inventory slots with the requested magazine type.";
 				file = "\x\cba\addons\common\fnc_addMagazineVerified.sqf";
 			};
 			// CBA_fnc_addPerFrameHandler
@@ -234,7 +234,7 @@ class CfgFunctions
 			// CBA_fnc_getVolume
 			class getVolume
 			{
-				description = "Return the volume of an object";
+				description = "Return the volume of an object based on the object's model's bounding box.";
 				file = "\x\cba\addons\common\fnc_getVolume.sqf";
 			};
 			// CBA_fnc_headDir
@@ -246,7 +246,7 @@ class CfgFunctions
 			// CBA_fnc_inArea
 			class inArea
 			{
-				description = "A function used to determine if a position is within a zone. Parameters: Marker, Object, Location, Group or Position, Zone (Marker, Trigger, Array) Example:";
+				description = "A function used to determine if a position is within a zone.";
 				file = "\x\cba\addons\common\fnc_inArea.sqf";
 			};
 			// CBA_fnc_inheritsFrom

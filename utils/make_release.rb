@@ -25,21 +25,21 @@ mkdir_p DOCS_DIR
 mkdir_p KEYS_DIR
 mkdir_p SOURCE_DIR
 
-cp 'CBA_README.txt', File.join(RELEASE_FOLDER, "CBA_#{versionSafe}_README.txt")
+cp 'CBA_README.txt', File.join(RELEASE_FOLDER, "CBA_#{versionSafe}_README.txt"), :preserve => true
 
-cp "CBA_#{versionSafe}.bikey", KEYS_DIR
+cp "CBA_#{versionSafe}.bikey", KEYS_DIR, :preserve => true
 
 Dir.new('../addons/').each do |file|
 	file_path = "../addons/#{file}"
 	if (not ['..', '.'].include? file) and File.directory? file_path
-		cp_r(file_path, SOURCE_DIR)
+		cp_r(file_path, SOURCE_DIR, :preserve => true)
 	elsif file =~ /\.(pbo|bisign)$/
-		cp(file_path, ADDONS_DIR)
+		cp(file_path, ADDONS_DIR, :preserve => true)
 	end
 end
 
-cp '../store/function_library.tar', DOCS_DIR
-cp '../store/wiki.tar', DOCS_DIR
+cp '../store/function_library.tar', DOCS_DIR, :preserve => true
+cp '../store/wiki.tar', DOCS_DIR, :preserve => true
 
 cd 'release'
 %x[7z a #{FOLDER} #{FOLDER}/]
