@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\ca\editor\Data\Scripts\dikCodes.h"
 
@@ -22,7 +22,7 @@ TRACE_1("",GVAR(lastAccessCheck));
 _potentialKeyMatch = false;
 {
 	// syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
-	_keys = (_x select 1);
+	_keys = _x select 1;
 	TRACE_2("",_flexiMenu_typeMenuSources_ID_DIKCodes,_x);
 	{
 		TRACE_5("",_x,_dikCode,_shift,_ctrlKey,_alt);
@@ -80,7 +80,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 
 		{ // forEach
 			_potentialKeyMatch = false; // "_actualKeyMatchFound"
-			_keys = (_x select 1);
+			_keys = _x select 1;
 			{
 				_settings = _x select 1;
 				if ((_x select 0 == _dikCode) &&
@@ -93,13 +93,11 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 			} forEach _keys;
 
 			if (_potentialKeyMatch) then {
+				if (!alive player && (_x select 4)) exitWith {};
 				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
 				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
 
-				if (({_potentialTarget isKindOf _x} count _typesList > 0) ||
-					({_vehicleTarget isKindOf _x} count _typesList > 0) ||
-					("player" in _typesList)) then
-				{
+				if (({_potentialTarget isKindOf _x} count _typesList > 0) || ({_vehicleTarget isKindOf _x} count _typesList > 0) || ("player" in _typesList)) then {
 					if (count _potentialMenuSources == 0) then {
 						_isTypeTarget = true;
 						_target = if ((_vehicleTarget != player) &&
