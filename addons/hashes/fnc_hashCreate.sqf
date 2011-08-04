@@ -6,7 +6,7 @@ Description:
 
 Parameters:
 	_array - Array of key-value pairs to create Hash from [Array, defaults to []]
-	_defaultValue - Hash to look for key in [Any, defaults to nil]
+	_defaultValue - Default value when no value assigned to a key [Any, defaults to nil]
 
 Returns:
 	Newly created Hash [Hash]
