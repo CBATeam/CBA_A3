@@ -2,7 +2,7 @@
 Function: CBA_fnc_hashRem
 
 Description:
-	Removes given key from Hash.
+	Removes given key from given Hash.
 
 	See <CBA_fnc_hashCreate>.
 
@@ -14,13 +14,13 @@ Returns:
 	The hash [Hash]
 
 Author:
-	Spooner
+	Sickboy
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 #include "script_hashes.hpp"
 
-SCRIPT(hashSet);
+SCRIPT(hashRem);
 
 // ----------------------------------------------------------------------------
 PARAMS_2(_hash,_key);

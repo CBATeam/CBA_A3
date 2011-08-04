@@ -36,7 +36,7 @@ class CfgFunctions
 			// CBA_fnc_hashRem
 			class hashRem
 			{
-				description = "Removes given key from Hash.";
+				description = "Removes given key from given Hash.";
 				file = "\x\cba\addons\hashes\fnc_hashRem.sqf";
 			};
 			// CBA_fnc_hashSet
