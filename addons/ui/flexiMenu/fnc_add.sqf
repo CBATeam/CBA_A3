@@ -1,13 +1,16 @@
-﻿#include "\x\cba\addons\ui\script_component.hpp"
+﻿//#define DEBUG_MODE_FULL
+#include "\x\cba\addons\ui\script_component.hpp"
 
 private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 // Note: calling script may require this file for dik codes: #include "\ca\editor\Data\Scripts\dikCodes.h"
 
+TRACE_1("",_this);
+
 // validate params_msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
 if (isNil QUOTE(GVAR(typeMenuSources))) exitWith {diag_log _msg};
 if (typeName _this != typeName []) exitWith {diag_log _msg};
-if (count _this != 4) exitWith {diag_log _msg};
+if (count _this < 4 || count _this > 5) exitWith {diag_log _msg};
 if !(toLower typeName (_this select _flexiMenu_typeMenuSources_ID_type) in [toLower typeName "", toLower typeName []]) exitWith {diag_log _msg};
 if (typeName (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != typeName []) exitWith {diag_log _msg};
 if (typeName (_this select _flexiMenu_typeMenuSources_ID_priority) != typeName 2) exitWith {diag_log _msg};
@@ -17,6 +20,8 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 
 //TODO: still not detecting nil?
 if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
+
+if (count _this == 4) then {_this set [count _this, true]};
 
 // convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
 for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
