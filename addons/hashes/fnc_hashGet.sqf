@@ -32,12 +32,14 @@ if (_index >= 0) then
 	(_hash select HASH_VALUES) select _index; // Return.
 } else {
 	_default = _hash select HASH_DEFAULT_VALUE;
-	// Make a copy of the array instead!
-	if (typeName _default == "ARRAY") then
-	{
-		_new = [];
-		{ PUSH(_new,_x) } forEach _default;
-		_default = _new;
+	if (isNil "_default") then {
+		nil // Return
+	} else {
+		// Make a copy of the array instead!
+		if (typeName _default == "ARRAY") then
+		{
+			_default = + _default;
+		};
+		_default // Return.
 	};
-	_default; // Return.
 };
