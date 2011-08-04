@@ -117,6 +117,7 @@ Group: Functions  {
          File: hashEachPair  (no auto-title, hashes\fnc_hashEachPair.sqf)
          File: hashGet  (no auto-title, hashes\fnc_hashGet.sqf)
          File: hashHasKey  (no auto-title, hashes\fnc_hashHasKey.sqf)
+         File: hashRem  (no auto-title, hashes\fnc_hashRem.sqf)
          File: hashSet  (no auto-title, hashes\fnc_hashSet.sqf)
          File: isHash  (no auto-title, hashes\fnc_isHash.sqf)
          }  # Group: Hashes
