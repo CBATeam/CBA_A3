@@ -13,11 +13,11 @@ Returns:
 
 Examples:
 (begin code)
-	_emptyHash = [] call hashCreate;
+	_emptyHash = [] call CBA_fnc_hashCreate;
 	[_emptyHash, "frog"] call CBA_fnc_hashGet; // => nil
 
 	_pairs = [["frog", 12], ["fish", 9]];
-	_animalCounts = [_pairs, 0] call hashCreate;
+	_animalCounts = [_pairs, 0] call CBA_fnc_hashCreate;
 	[_animalCounts, "frog"] call CBA_fnc_hashGet; // => 12
 	[_animalCounts, "monkey"] call CBA_fnc_hashGet; // => 0
 (end code)
