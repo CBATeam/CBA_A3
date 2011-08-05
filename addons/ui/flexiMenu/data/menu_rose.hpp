@@ -31,14 +31,13 @@
 #define _rightButtonLevel1X (_SX+(_CW/2+_gapW+_gapWLevel1)+_gapWRight)
 #define _rightButtonLevel2X (_SX+(_CW/2+_gapW+_gapWLevel2)+_gapWRight)
 
-class CBA_flexiMenu_rscRose
-{
-  idd = -1; //_flexiMenu_IDD;
-  movingEnable = 0;
-  onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QUOTE(GVAR(display))]);
-  onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QUOTE(GVAR(display))]);
-  class controlsBackground {};
-  class objects {};
+class CBA_flexiMenu_rscRose {
+	idd = -1; //_flexiMenu_IDD;
+	movingEnable = 0;
+	onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QUOTE(GVAR(display))]);
+	onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QUOTE(GVAR(display))]);
+	class controlsBackground {};
+	class objects {};
 
 	// custom flexiMenu properties
 	flexiMenu_primaryMenuControlWidth = _BW;
@@ -49,109 +48,100 @@ class CBA_flexiMenu_rscRose
 //#include "common_listClass.hpp"
 #define _eval_image2(_param) IMAGE(data\buttonList,_param)
 
-  class listButton: _flexiMenu_RscShortcutButton
-  {
-    x = 0.5;
-    y = 0.5;
+	class listButton: _flexiMenu_RscShortcutButton {
+		x = 0.5;
+		y = 0.5;
 		w = 0; //_SMW; // hide initially
-    //w = _SMW;
-    h = _LBH;
-    sizeEx = _LBH;
-    size = _LBH*0.75;
+		//w = _SMW;
+		h = _LBH;
+		sizeEx = _LBH;
+		size = _LBH*0.75;
 
-    color[] = {_captionColorFG, 1};
-    color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
-    colorBackground[] = {1, 1, 1, 1};
-    colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
-    colorDisabled[] = {1, 1, 1, 0.25};
-    class TextPos
-    {
+		color[] = {_captionColorFG, 1};
+		color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
+		colorBackground[] = {1, 1, 1, 1};
+		colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
+		colorDisabled[] = {1, 1, 1, 0.25};
+		class TextPos {
 			left = 0.02;
 			top = 0.005;
 			right = 0.02;
 			bottom = 0.005;
-    };
-    class Attributes
-    {
-      font = "Zeppelin32";
-      color = "#E5E5E5";
-      align = "left";
-      shadow = "true";
-    };
-	animTextureNormal = _eval_image2(normal);
-	animTextureDisabled = _eval_image2(disabled);
-	animTextureOver = _eval_image2(over);
-	animTextureFocused = _eval_image2(focused);
-	animTexturePressed = _eval_image2(down);
-	animTextureDefault = _eval_image2(default);
-	animTextureNoShortcut = _eval_image2(normal);
-  };
+		};
+		class Attributes {
+			font = "Zeppelin32";
+			color = "#E5E5E5";
+			align = "left";
+			shadow = "true";
+		};
+		animTextureNormal = _eval_image2(normal);
+		animTextureDisabled = _eval_image2(disabled);
+		animTextureOver = _eval_image2(over);
+		animTextureFocused = _eval_image2(focused);
+		animTexturePressed = _eval_image2(down);
+		animTextureDefault = _eval_image2(default);
+		animTextureNoShortcut = _eval_image2(normal);
+	};
 
-  class button: _flexiMenu_RscShortcutButton
-  {
+	class button: _flexiMenu_RscShortcutButton {
 		w = 0; //_BW; // hide initially
-    h = _BH;
-    sizeEx = _BH;
-    size = _BH*0.85;
+		h = _BH;
+		sizeEx = _BH;
+		size = _BH*0.85;
 
-    color[] = {_captionColorFG, 1};
-    color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
-    colorBackground[] = {1, 1, 1, 1};
-    colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
-    colorDisabled[] = {1, 1, 1, 0.25};
-    //action = _eval_action(-1);
+		color[] = {_captionColorFG, 1};
+		color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
+		colorBackground[] = {1, 1, 1, 1};
+		colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
+		colorDisabled[] = {1, 1, 1, 0.25};
+		//action = _eval_action(-1);
 
-		class Attributes
-		{
+		class Attributes {
 			font = "Zeppelin32";
 			color = "#E5E5E5";
 			align = "center";
 			shadow = "true";
 		};
-  };
-  //---------------------------------
-  class controls
-  {
-    class caption: rscText
-    {
+	};
+	//---------------------------------
+	class controls {
+		class caption: rscText {
 			idc = _flexiMenu_IDC_menuDesc;
-      //x = _SX-_BW;
-      x = _leftButtonLevel1X;
+			//x = _SX-_BW;
+			x = _leftButtonLevel1X;
 			//y = _SY-_buttonsBeforeCenter*_BH-_gapH-_BH*_captionHgt;
-      y = _SY-(_CH/2+_gapH)-_BH-_gapH-_BH*_captionHgt;
-      w = 0.40;
+			y = _SY-(_CH/2+_gapH)-_BH-_gapH-_BH*_captionHgt;
+			w = 0.40;
 			h = _BH*_captionHgt;
 			sizeEx = _BH*_captionHgt;
 			color[] = {_captionColorFG, 1};
 			text = "";
-    };
+		};
 
 		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_button);
-    class button01: button
-    {
+		class button01: button {
 			idc = __EVAL(_flexiMenu_IDC);
 			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);
-      x = _SX-_CW/2+_CX_correction;
-      y = _SY-_CH/2;
-      w = _CW;
-      h = _CH;
-      sizeEx = _CH;
-      //size = _BH*0.8;
-      class TextPos
-      {
-        left = -_CX_correction*2; // not sure if logic is correct, but seems close enough // 0.008
-        top = _CH/2-_BH/2;
-        right = 0; //0.002;
-        bottom = 0.0;
-      };
-		animTextureNormal = _eval_image(DOUBLES(normal,circle));
-		animTextureDisabled = _eval_image(DOUBLES(disabled,circle));
-		animTextureOver = _eval_image(DOUBLES(over,circle));
-		animTextureFocused = _eval_image(DOUBLES(focused,circle));
-		animTexturePressed = _eval_image(DOUBLES(down,circle));
-		animTextureDefault = _eval_image(DOUBLES(normal,circle)); // used?
-		animTextureNoShortcut = _eval_image(DOUBLES(normal,circle)); // used?
-    };
+			x = _SX-_CW/2+_CX_correction;
+			y = _SY-_CH/2;
+			w = _CW;
+			h = _CH;
+			sizeEx = _CH;
+			//size = _BH*0.8;
+			class TextPos {
+				left = -_CX_correction*2; // not sure if logic is correct, but seems close enough // 0.008
+				top = _CH/2-_BH/2;
+				right = 0; //0.002;
+				bottom = 0.0;
+			};
+			animTextureNormal = _eval_image(DOUBLES(normal,circle));
+			animTextureDisabled = _eval_image(DOUBLES(disabled,circle));
+			animTextureOver = _eval_image(DOUBLES(over,circle));
+			animTextureFocused = _eval_image(DOUBLES(focused,circle));
+			animTexturePressed = _eval_image(DOUBLES(down,circle));
+			animTextureDefault = _eval_image(DOUBLES(normal,circle)); // used?
+			animTextureNoShortcut = _eval_image(DOUBLES(normal,circle)); // used?
+		};
 
 		#define ExpandMacro_RowControls(ID,newX,newY,imageTag) \
 		class button##ID: button {\
@@ -181,23 +171,22 @@ class CBA_flexiMenu_rscRose
 		ExpandMacro_RowControls(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
 		ExpandMacro_RowControls(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
 		//-----------------------
-    class caption2: caption
-    {
+		class caption2: caption {
 			idc = _flexiMenu_IDC_listMenuDesc;
-      x = _SX-(_SMW/2);
+			x = _SX-(_SMW/2);
 			y = _SY+(_CH/2+_gapH)+_BH+_gapH+0*_LBH;
-      w = 0; //flexiMenu_subMenuCaptionWidth; // hide initially
-    };
+			w = 0; //flexiMenu_subMenuCaptionWidth; // hide initially
+		};
 
 //#include "common_listControls.hpp"
 #define ExpandMacro_ListControls(ID)\
-    class listButton##ID: listButton\
-    {\
-			idc = __EVAL(_flexiMenu_IDC);\
-			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
-      x = _SX-(_SMW/2);\
-			y = _SY+(_CH/2+_gapH)+_BH+_gapH+(1+##ID)*_LBH;\
-    }
+	class listButton##ID: listButton\
+	{\
+		idc = __EVAL(_flexiMenu_IDC);\
+		__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
+		x = _SX-(_SMW/2);\
+		y = _SY+(_CH/2+_gapH)+_BH+_gapH+(1+##ID)*_LBH;\
+	}
 
 		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_listButton);
 		ExpandMacro_ListControls(00);

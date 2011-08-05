@@ -1,9 +1,6 @@
-class CfgFunctions
-{
-	class CBA
-	{
-		class UI
-		{
+class CfgFunctions {
+	class CBA {
+		class UI {
 			class flexiMenu_Add {
 				description = "Add a type-based menu source. Result: TBA (WIP)";
 				file = QUOTE(PATHTOF(flexiMenu\fnc_add.sqf));

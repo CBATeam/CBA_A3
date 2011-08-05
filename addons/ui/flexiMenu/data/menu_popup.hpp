@@ -12,14 +12,13 @@
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
 #define _captionHgt 0.75
 
-class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
-{
-  idd = -1; //_flexiMenu_IDD;
-  movingEnable = 0;
-  onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QUOTE(GVAR(display))]);
-  onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QUOTE(GVAR(display))]);
-  class controlsBackground {};
-  class objects {};
+class CBA_flexiMenu_rscPopup { //: _flexiMenu_rscRose
+	idd = -1; //_flexiMenu_IDD;
+	movingEnable = 0;
+	onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QUOTE(GVAR(display))]);
+	onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QUOTE(GVAR(display))]);
+	class controlsBackground {};
+	class objects {};
 
 	flexiMenu_primaryMenuControlWidth = _BW;
 	flexiMenu_subMenuControlWidth = _BW;
@@ -28,65 +27,60 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
 //class listButton; // external ref
 //#include "common_listClass.hpp"
 
-  class listButton: _flexiMenu_RscShortcutButton
-  {
-    x = _SX-_BW;
-    y = safeZoneY+0.30*safeZoneH;
+	class listButton: _flexiMenu_RscShortcutButton {
+		x = _SX-_BW;
+		y = safeZoneY+0.30*safeZoneH;
 		w = 0; //_BW; // hide initially
-    h = _BH;
-    sizeEx = _BH;
-    size = _BH*0.75;
+		h = _BH;
+		sizeEx = _BH;
+		size = _BH*0.75;
 
-    color[] = {_captionColorFG, 1};
-    color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
-    colorBackground[] = {1, 1, 1, 1};
-    colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
-    colorDisabled[] = {1, 1, 1, 0.25};
-    class TextPos
-    {
+		color[] = {_captionColorFG, 1};
+		color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
+		colorBackground[] = {1, 1, 1, 1};
+		colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
+		colorDisabled[] = {1, 1, 1, 0.25};
+		class TextPos {
 			left = 0.02;
 			top = 0.005;
 			right = 0.02;
 			bottom = 0.005;
-    };
-    class Attributes
-    {
-      font = "Zeppelin32";
-      color = "#E5E5E5";
-      align = "left";
-      shadow = "true";
-    };
-    animTextureNormal = _eval_image("normal");
-    animTextureDisabled = _eval_image("disabled");
-    animTextureOver = _eval_image("over");
-    animTextureFocused = _eval_image("focused");
-    animTexturePressed = _eval_image("down");
-    animTextureDefault = _eval_image("default");
-    animTextureNoShortcut = _eval_image("normal");
-  };
-  //---------------------------------
-  class controls
-  {
-    class caption: rscText
-    {
+		};
+		class Attributes {
+			font = "Zeppelin32";
+			color = "#E5E5E5";
+			align = "left";
+			shadow = "true";
+		};
+		animTextureNormal = _eval_image("normal");
+		animTextureDisabled = _eval_image("disabled");
+		animTextureOver = _eval_image("over");
+		animTextureFocused = _eval_image("focused");
+		animTexturePressed = _eval_image("down");
+		animTextureDefault = _eval_image("default");
+		animTextureNoShortcut = _eval_image("normal");
+	};
+	//---------------------------------
+	class controls {
+		class caption: rscText {
 			idc = _flexiMenu_IDC_menuDesc;
-      x = _SX-_BW;
+			x = _SX-_BW;
 			y = safeZoneY+0.30*safeZoneH-_BH*_captionHgt;
-      w = _BW;
+			w = _BW;
 			h = _BH*_captionHgt;
 			sizeEx = _BH*_captionHgt;
 			color[] = {_captionColorFG, 1};
 			colorBackground[] = {_captionColorBG, 1};
 			text = "";
-    };
+		};
 
 #define ExpandMacro_RowControls(ID) \
-    class button##ID: listButton\
-    {\
-			idc = __EVAL(_flexiMenu_IDC);\
-			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
-			y = safeZoneY+0.30*safeZoneH+##ID*_BH;\
-    }
+	class button##ID: listButton\
+	{\
+		idc = __EVAL(_flexiMenu_IDC);\
+		__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
+		y = safeZoneY+0.30*safeZoneH+##ID*_BH;\
+	}
 
 		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_button);
 		ExpandMacro_RowControls(00);
@@ -110,23 +104,22 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
 		ExpandMacro_RowControls(18);
 		ExpandMacro_RowControls(19);
 		//-----------------------
-    class caption2: caption
-    {
+		class caption2: caption {
 			idc = _flexiMenu_IDC_listMenuDesc;
-      x = _SX;
+			x = _SX;
 			y = safeZoneY+0.30*safeZoneH+_BH-_BH*_captionHgt;
-      w = 0; //flexiMenu_subMenuCaptionWidth; // hide initially
-    };
+			w = 0; //flexiMenu_subMenuCaptionWidth; // hide initially
+		};
 
 //#include "common_listControls.hpp"
 #define ExpandMacro_ListControls(ID)\
-    class listButton##ID: listButton\
-    {\
-			idc = __EVAL(_flexiMenu_IDC);\
-			__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
-			x = _SX;\
-			y = safeZoneY+0.30*safeZoneH+_BH+##ID*_BH;\
-    }
+	class listButton##ID: listButton\
+	{\
+		idc = __EVAL(_flexiMenu_IDC);\
+		__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
+		x = _SX;\
+		y = safeZoneY+0.30*safeZoneH+_BH+##ID*_BH;\
+	}
 
 		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_listButton);
 		ExpandMacro_ListControls(00);
@@ -149,5 +142,5 @@ class CBA_flexiMenu_rscPopup //: _flexiMenu_rscRose
 		ExpandMacro_ListControls(17);
 		ExpandMacro_ListControls(18);
 		ExpandMacro_ListControls(19);
-  };
+	};
 };
