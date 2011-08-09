@@ -1,6 +1,7 @@
 @echo off
 
 set ADDONS=P:\x\cba\addons
+set OPTIONAL=P:\x\cba\optional
 
 set TOOL="C:\tools\six-arma-tools.exe"
 set OPTS=-b
@@ -51,5 +52,9 @@ rem rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 %SIGN% %KEY% "%ADDONS%\cba_ui.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_vectors.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_versioning.pbo"
+
+for %%F in (%OPTIONAL%\*.pbo) do (
+	%SIGN% %KEY% %%F
+)
 
 pause
