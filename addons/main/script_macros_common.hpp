@@ -959,6 +959,26 @@ Author:
 	TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
+Macro: KEY_PARAM()
+	Get value from key in _this list, return default when key is not included in list.
+
+Parameters:
+	KEY - Key name [String]
+	NAME - Name of the variable to set [Identifier]
+	DEF_VALUE - Default value to use in case key not found [ANY]
+
+Example:
+
+
+Author:
+	Muzzleflash
+------------------------------------------- */
+#define KEY_PARAM(KEY,NAME,DEF_VALUE) \
+	private #NAME; \
+	NAME = [toLower KEY, toUpper KEY, DEF_VALUE, RETNIL(_this)] call CBA_fnc_getArg;
+	TRACE_3("KEY_PARAM",KEY,NAME,DEF_VALUE)
+
+/* -------------------------------------------
 Group: Assertions
 ------------------------------------------- */
 
