@@ -71,11 +71,12 @@ for "_t" from 0 to 2 do {
 							#endif
 
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
-							if (isNil _fn || _recompile) then {
-								missionNameSpace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
-								_fnPath = format["%1_path", _fn];
-								missionNameSpace setVariable [_fnPath, _itemPath];
+							_uifn = uiNamespace getVariable _fn;
+							if (isNil "_uifn" || _recompile) then {
+								uiNamespace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
 							};
+							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
+							missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
 						};
 					};
 				};
