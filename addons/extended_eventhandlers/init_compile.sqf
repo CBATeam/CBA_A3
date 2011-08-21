@@ -16,7 +16,7 @@ _fnc_compile = {
 	} else { TRACE_1('Retrieved from cache',_this) };
 	
 	_cba_int_code;
-}];
+};
 
 uiNamespace setVariable ["SLX_XEH_COMPILE", _fnc_compile];
 
