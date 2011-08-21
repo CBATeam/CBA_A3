@@ -4,17 +4,21 @@
 private "_fnc_compile";
 
 _fnc_compile = {
-	// Compiles scripts into uiNameSpace for caching purposes
+	// Compiles scripts into uiNamespace for caching purposes
+	// Occurs only once per game start.
+	// If you want to be able to recompile at every mission restart
+	// you will have to use CBA_RECOMPILE = true; very early
 	// By Sickboy
+	// CfgFunctions are also cached, By Xeno. Requires another method to recompile.
 	private "_cba_int_code";
-
+	
 	_cba_int_code = uiNamespace getVariable _this;
 	if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then {
 		TRACE_1('Compiling',_this);
 		_cba_int_code = compile preProcessFileLineNumbers _this;
 		uiNameSpace setVariable [_this, _cba_int_code];
 	} else { TRACE_1('Retrieved from cache',_this) };
-	
+
 	_cba_int_code;
 };
 

@@ -534,7 +534,7 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2(var1) ('var1' call {private '_slx_xeh_compile';_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile })
+#define COMPILE_FILE2(var1) ('var1' call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
 #define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2(PATHTO_SYS(var1,var2,var3))
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
