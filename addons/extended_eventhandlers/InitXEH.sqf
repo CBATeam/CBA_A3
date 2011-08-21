@@ -32,13 +32,16 @@ SLX_XEH_MACHINE =
 	isMultiplayer && _respawn      // 9 - Multiplayer && respawn?
 ];
 
+// Backup
+_fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
+if (isNil "_fnc_compile") then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
-SLX_XEH_COMPILE = compile preProcessFileLineNumbers "extended_eventhandlers\fnc_compile.sqf";
 
 // Process each new unit
 SLX_XEH_F_INIT = {

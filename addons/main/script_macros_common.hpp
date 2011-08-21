@@ -533,8 +533,8 @@ Author:
 #define QPATHTO_F(var1) QUOTE(PATHTO_F(var1))
 
 // Also this only works for binarized configs after recompiling the pbos
-#define COMPILE_FILE_SYS(var1,var2,var3) ('PATHTO_SYS(var1,var2,var3)' call SLX_XEH_COMPILE)
-#define COMPILE_FILE2(var1) ('var1' call SLX_XEH_COMPILE)
+#define COMPILE_FILE2(var1) ('var1' call {private '_slx_xeh_compile';_slx_xeh_compile = uiNameSpace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile })
+#define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2(PATHTO_SYS(var1,var2,var3))
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
