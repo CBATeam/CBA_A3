@@ -37,9 +37,8 @@ SLX_XEH_INIT_MEN = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 
-SLX_XEH_LOG = {
-	XEH_LOG(_this);
-};
+SLX_XEH_LOG = { XEH_LOG(_this); };
+SLX_XEH_COMPILE = compile preProcessFileLineNumbers "extended_eventhandlers\fnc_compile.sqf";
 
 // Process each new unit
 SLX_XEH_F_INIT = {
@@ -179,21 +178,10 @@ SLX_XEH_initPlayable =
 	};
 };
 
-SLX_XEH_init = compile preProcessFileLineNumbers "extended_eventhandlers\Init.sqf";
-SLX_XEH_initPost = compile preProcessFileLineNumbers "extended_eventhandlers\InitPost.sqf";
-SLX_XEH_initOthers = compile preProcessFileLineNumbers "extended_eventhandlers\InitOthers.sqf";
-SLX_XEH_postInit = compile preProcessFileLineNumbers "extended_eventhandlers\PostInit.sqf";
-
-SLX_XEH_COMPILE = {
-	private '_cba_int_code';
-	_cba_int_code = uiNamespace getVariable _this;
-	if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then {
-		TRACE_1('Compiling',_this);
-		_cba_int_code = compile preProcessFileLineNumbers _this;
-		uiNameSpace setVariable [_this, _cba_int_code];
-	} else { TRACE_1('Retrieved from cache',_this) };
-	_cba_int_code;
-};
+SLX_XEH_init = COMPILE_FILE2(extended_eventhandlers\Init.sqf);
+SLX_XEH_initPost = COMPILE_FILE2(extended_eventhandlers\InitPost.sqf);
+SLX_XEH_initOthers = COMPILE_FILE2(extended_eventhandlers\InitOthers.sqf);
+SLX_XEH_postInit = COMPILE_FILE2(extended_eventhandlers\PostInit.sqf);
 
 SLX_XEH_DELAYED = [];
 SLX_XEH_INIT_DELAYED = {
@@ -420,5 +408,5 @@ GVAR(init_obj2) addEventHandler ["killed", {
 
 
 // Load and call any "pre-init", run-once event handlers
-call compile preprocessFileLineNumbers "extended_eventhandlers\PreInit.sqf";
+call COMPILE_FILE2(extended_eventhandlers\PreInit.sqf);
 XEH_LOG("XEH: PreInit Finished");
