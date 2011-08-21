@@ -3,6 +3,8 @@
 
 private "_fnc_compile";
 
+TRACE_1("Init Compile",_this);
+
 _fnc_compile = {
 	// Compiles scripts into uiNamespace for caching purposes
 	// Occurs only once per game start.
