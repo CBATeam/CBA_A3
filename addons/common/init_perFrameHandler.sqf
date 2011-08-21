@@ -144,6 +144,7 @@ FUNC(onFrame) = {
 	// GVAR(lastCount) = GVAR(fpsCount);
 	// GVAR(fpsCount) = GVAR(fpsCount) + 1;
 	// player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
+	TRACE_1("Executing onFrame",nil);
 	{
 		_handlerData = _x;
 		if !(isNil "_handlerData") then {
