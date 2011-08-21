@@ -524,7 +524,18 @@ Author:
 #define PATHTO_C(var1) PATHTOF_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_F(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 
-#define COMPILE_FILE_SYS(var1,var2,var3) compile preProcessFileLineNumbers 'PATHTO_SYS(var1,var2,var3)'
+// Already quoted ""
+#define QPATHTO_R(var1) QUOTE(PATHTO_R(var1))
+#define QPATHTO_T(var1) QUOTE(PATHTO_T(var1))
+#define QPATHTO_M(var1) QUOTE(PATHTO_M(var1))
+#define QPATHTO_S(var1) QUOTE(PATHTO_S(var1))
+#define QPATHTO_C(var1) QUOTE(PATHTO_C(var1))
+#define QPATHTO_F(var1) QUOTE(PATHTO_F(var1))
+
+// TODO: Extract the common code to function?
+// Also this only works for binarized configs after recompiling the pbos
+#define COMPILE_FILE_SYS(var1,var2,var3) (['PATHTO_SYS(var1,var2,var3)', 'TRIPLES(var1,var2,var3)'] call { private '_cba_int_code'; _cba_int_code = uiNamespace getVariable (_this select 1); if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then { TRACE_1('Compiling',_this); _cba_int_code = compile preProcessFileLineNumbers (_this select 0); uiNameSpace setVariable [_this select 1, _cba_int_code] } else { TRACE_1('Retrieved from cache',_this) }; _cba_int_code; })
+#define COMPILE_FILE2(var1) ('var1' call { private '_cba_int_code'; _cba_int_code = uiNamespace getVariable (_this select 0); if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then { TRACE_1('Compiling',_this); _cba_int_code = compile preProcessFileLineNumbers (_this select 0); uiNameSpace setVariable [_this select 0, _cba_int_code] } else { TRACE_1('Retrieved from cache',_this) }; _cba_int_code; })
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
@@ -597,6 +608,7 @@ Author:
 	Sickboy
 ------------------------------------------- */
 #define GVAR(var1) TRIPLES(PREFIX,COMPONENT,var1)
+#define QGVAR(var1) QUOTE(GVAR(var1))
 
 /* -------------------------------------------
 Macro: GVARMAIN()
@@ -647,6 +659,16 @@ Author:
 }
 #endif
 
+/* -------------------------------------------
+Macros: ARG_#()
+	Select from list of array arguments
+
+Parameters:
+	VARIABLE(1-8) - elements for the list
+
+Author:
+	Rommel
+------------------------------------------- */
 #define ARG_1(A,B) ((A) select (B))
 #define ARG_2(A,B,C) (ARG_1(ARG_1(A,B),C))
 #define ARG_3(A,B,C,D) (ARG_1(ARG_2(A,B,C),D))
@@ -655,6 +677,47 @@ Author:
 #define ARG_6(A,B,C,D,E,F,G) (ARG_1(ARG_5(A,B,C,D,E,F),G))
 #define ARG_7(A,B,C,D,E,F,G,H) (ARG_1(ARG_6(A,B,C,D,E,E,F,G),H))
 #define ARG_8(A,B,C,D,E,F,G,H,I) (ARG_1(ARG_7(A,B,C,D,E,E,F,G,H),I))
+
+/* -------------------------------------------
+Macros: ARR_#()
+	Create list from arguments. Useful for working around , in macro parameters.
+	1-8 arguments possible.
+
+Parameters:
+	VARIABLE(1-8) - elements for the list
+
+Author:
+	Nou
+------------------------------------------- */
+#define ARR_1(ARG1) ARG1
+#define ARR_2(ARG1,ARG2) ARG1, ARG2
+#define ARR_3(ARG1,ARG2,ARG3) ARG1, ARG2, ARG3
+#define ARR_4(ARG1,ARG2,ARG3,ARG4) ARG1, ARG2, ARG3, ARG4
+#define ARR_5(ARG1,ARG2,ARG3,ARG4,ARG5) ARG1, ARG2, ARG3, ARG4, ARG5
+#define ARR_6(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6
+#define ARR_7(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7
+#define ARR_8(ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7, ARG8
+
+/* -------------------------------------------
+Macros: FORMAT_#(STR, ARG1)
+	Format - Useful for working around , in macro parameters.
+	1-8 arguments possible.
+
+Parameters:
+	STRING - string used by format
+	VARIABLE(1-8) - elements for usage in format
+
+Author:
+	Nou & Sickboy
+------------------------------------------- */
+#define FORMAT_1(STR,ARG1) format[STR, ARG1]
+#define FORMAT_2(STR,ARG1,ARG2) format[STR, ARG1, ARG2]
+#define FORMAT_3(STR,ARG1,ARG2,ARG3) format[STR, ARG1, ARG2, ARG3]
+#define FORMAT_4(STR,ARG1,ARG2,ARG3,ARG4) format[STR, ARG1, ARG2, ARG3, ARG4]
+#define FORMAT_5(STR,ARG1,ARG2,ARG3,ARG4,ARG5) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5]
+#define FORMAT_6(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6]
+#define FORMAT_7(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7]
+#define FORMAT_8(STR,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) format[STR, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7, ARG8]
 
 // CONTROL(46) 12
 #define DISPLAY(A) (findDisplay A)
@@ -899,6 +962,26 @@ Author:
 	TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
+Macro: KEY_PARAM()
+	Get value from key in _this list, return default when key is not included in list.
+
+Parameters:
+	KEY - Key name [String]
+	NAME - Name of the variable to set [Identifier]
+	DEF_VALUE - Default value to use in case key not found [ANY]
+
+Example:
+
+
+Author:
+	Muzzleflash
+------------------------------------------- */
+#define KEY_PARAM(KEY,NAME,DEF_VALUE) \
+	private #NAME; \
+	NAME = [toLower KEY, toUpper KEY, DEF_VALUE, RETNIL(_this)] call CBA_fnc_getArg; \
+	TRACE_3("KEY_PARAM",KEY,NAME,DEF_VALUE)
+
+/* -------------------------------------------
 Group: Assertions
 ------------------------------------------- */
 
@@ -1113,3 +1196,14 @@ Author:
 		requiredAddons[] = {}; \
 		version = VERSION; \
 }
+
+// XEH Specific
+#define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
+
+#define XEH_PRE_INIT QUOTE(call COMPILE_FILE(XEH_PreInit_Once))
+#define XEH_PRE_CINIT QUOTE(call COMPILE_FILE(XEH_PreClientInit_Once))
+#define XEH_PRE_SINIT QUOTE(call COMPILE_FILE(XEH_PreServerInit_Once))
+
+#define XEH_POST_INIT QUOTE(call COMPILE_FILE(XEH_PostInit_Once))
+#define XEH_POST_CINIT QUOTE(call COMPILE_FILE(XEH_PostClientInit_Once))
+#define XEH_POST_SINIT QUOTE(call COMPILE_FILE(XEH_PostServerInit_Once))

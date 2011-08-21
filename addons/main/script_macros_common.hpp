@@ -535,6 +535,7 @@ Author:
 // TODO: Extract the common code to function?
 // Also this only works for binarized configs after recompiling the pbos
 #define COMPILE_FILE_SYS(var1,var2,var3) (['PATHTO_SYS(var1,var2,var3)', 'TRIPLES(var1,var2,var3)'] call { private '_cba_int_code'; _cba_int_code = uiNamespace getVariable (_this select 1); if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then { TRACE_1('Compiling',_this); _cba_int_code = compile preProcessFileLineNumbers (_this select 0); uiNameSpace setVariable [_this select 1, _cba_int_code] } else { TRACE_1('Retrieved from cache',_this) }; _cba_int_code; })
+#define COMPILE_FILE2(var1) ('var1' call { private '_cba_int_code'; _cba_int_code = uiNamespace getVariable (_this select 0); if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then { TRACE_1('Compiling',_this); _cba_int_code = compile preProcessFileLineNumbers (_this select 0); uiNameSpace setVariable [_this select 0, _cba_int_code] } else { TRACE_1('Retrieved from cache',_this) }; _cba_int_code; })
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)

@@ -15,7 +15,7 @@ class CfgPatches {
 
 class Extended_PreInit_EventHandlers {
 	class cba_ui {
-		clientInit = "call compile preProcessFileLineNumbers 'x\cba\addons\ui\XEH_preClientInit.sqf'";
+		clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
 	};
 };
 
