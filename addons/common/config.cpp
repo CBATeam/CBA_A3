@@ -17,3 +17,4 @@ class CfgPatches
 #include "CfgFunctions.hpp"
 
 #include "CfgPerFrame.hpp"
+
