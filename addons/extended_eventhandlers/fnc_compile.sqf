@@ -1,6 +1,9 @@
-#include "script_component.hpp"
+// Compiles scripts into uiNameSpace for caching purposes
+// By Sickboy
 
 // #define DEBUG_MODE_FULL
+#include "script_component.hpp"
+
 private '_cba_int_code';
 _cba_int_code = uiNamespace getVariable _this;
 if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then {
