@@ -41,7 +41,10 @@ SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
 // All events except the init event
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
+SLX_XEH_OTHER_EVENTS_FULL = [];
+{ SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
+SLX_XEH_INIT_TYPES = ["all", "server", "client"];
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
@@ -109,7 +112,6 @@ SLX_XEH_F_INIT = {
 
 
 // NEW Init (+InitPost) Function
-SLX_XEH_INIT_TYPES = ["all", "server", "client"];
 SLX_XEH_F2_INIT = {
 	private [
 		"_fSetInit", "_onRespawn", "_useEH", "_inits", "_i", "_t", "_name", "_idx", "_names", "_init", "_clientInit", "_serverInit",
@@ -378,7 +380,7 @@ SLX_XEH_F2_INIT_OTHER = {
 	PARAMS_5(_configFile,_event_id,_unitClass,_classes,_hasDefaultEh);
 
 	_event = SLX_XEH_EVENTS select _event_id;
-	_Extended_EH_Class = SLX_XEH_EVENTS_FULL select _event_id; // format["Extended_%1_EventHandlers", _event];
+	_Extended_EH_Class = SLX_XEH_OTHER_EVENTS_FULL select _event_id; // format["Extended_%1_EventHandlers", _event];
 
 	// Check each class to see if there is a counterpart in the extended event
 	// handlers, add all lines from matching classes to an array, "_handlers"
@@ -605,9 +607,6 @@ SLX_XEH_INIT_DELAYED = {
 		[_unit, "Extended_Init_EventHandlers", false, true] call SLX_XEH_init; // is not respawn
 	};
 };
-
-SLX_XEH_OTHER_EVENTS_FULL = [];
-{ SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_EVENTS;
 
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
