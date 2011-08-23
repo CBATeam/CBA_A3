@@ -133,7 +133,6 @@ SLX_XEH_F2_INIT = {
 	// into the _inits array
 	_fSetInit = {
 		private ["_idx", "_init", "_type", "_handler", "_cur"];
-	
 		_idx=_this select 0;
 		_init = _this select 1;
 		_type=SLX_XEH_INIT_TYPES find (_this select 2);	// 0 1 2
@@ -165,9 +164,23 @@ SLX_XEH_F2_INIT = {
 	_onRespawn=false;
 	_useEH = { if (_isRespawn) then { _onRespawn } else { true } };
 
+	// Check each class to see if there is a counterpart in extended event handlers
+	// If there is, add it to an array of init event handlers "_inits". Use
+	// _names to keep track of handler entry names so that a given handler
+	// of a certain name can be overriden in a child class.
+	// (See dev-heaven.net issues #12104 and #12108)
+	_names = [];	// event handler config entry names
+	_inits = [];	// array of handlers or arrays with handlers, the
+				// later being used for XEH handlers that make use of
+				// the serverInit and clientInit feature.
+	_init = {};
+	_excludeClass = "";
+	_excludeClasses = [];
+	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
+
 	PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
+
 	{
-		_inits = [];
 		if ((configName (_configFile/_x))!= "") then
 		{
 			_i = 0;
@@ -321,7 +334,9 @@ SLX_XEH_F2_INIT_OTHER = {
 		};
 		_handlers set [_idx, _h];
 	};
-	
+
+	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
+
 	_f = {
 		private ["_handlers", "_eventCus", "_idx", "_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceEntry", "_replaceDEH"];
 		_eventCus = format["%1%2",_event, _this select 0];
@@ -385,11 +400,9 @@ SLX_XEH_F2_INIT_OTHER = {
 		};
 	};
 
-	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
-
 	PARAMS_5(_configFile,_event_id,_unitClass,_classes,_hasDefaultEh);
 
-	_event = SLX_XEH_EVENTS select _event_id;
+	_event = SLX_XEH_OTHER_EVENTS select _event_id;
 	_Extended_EH_Class = SLX_XEH_OTHER_EVENTS_FULL select _event_id; // format["Extended_%1_EventHandlers", _event];
 
 	// Check each class to see if there is a counterpart in the extended event

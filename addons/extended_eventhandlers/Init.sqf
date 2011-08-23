@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 /*  Extended event handlers by Solus
@@ -68,20 +68,7 @@ while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };
 
-// Check each class to see if there is a counterpart in extended event handlers
-// If there is, add it to an array of init event handlers "_inits". Use
-// _names to keep track of handler entry names so that a given handler
-// of a certain name can be overriden in a child class.
-// (See dev-heaven.net issues #12104 and #12108)
-_names = [];	// event handler config entry names
-_inits = [];	// array of handlers or arrays with handlers, the
-			// later being used for XEH handlers that make use of
-			// the serverInit and clientInit feature.
-_init = {};
-_excludeClass = "";
-_excludeClasses = [];
-_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
-
+_inits = [];
 
 // Naughty but more flexible...
 _sys_inits = [];
