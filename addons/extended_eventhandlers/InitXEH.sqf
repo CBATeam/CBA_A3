@@ -18,6 +18,14 @@ if ( isText(_cfgRespawn) ) then
 	_respawn = !(getText(_cfgRespawn) in ["none", "bird", "group", "side"]);
 };
 
+
+// UNIQUE Session ID since start of game
+private ["_id"];
+_id = uiNamespace getVariable "SLX_XEH_ID";
+if (isNil "_id") then { _id = 1 } else { INC(_id) };
+uiNamespace setVariable ["SLX_XEH_ID", _id];
+
+
 SLX_XEH_MACHINE =
 [
 	!isDedicated, // 0 - isClient (and thus has player)
@@ -30,7 +38,8 @@ SLX_XEH_MACHINE =
 	false, // 7 - StartInit Passed
 	false, // 8 - Postinit Passed
 	isMultiplayer && _respawn,      // 9 - Multiplayer && respawn?
-	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } } // Machine type (only 3 possible configurations)
+	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // Machine type (only 3 possible configurations)
+	_id // SESSION_ID
 ];
 
 // Backup
