@@ -25,7 +25,7 @@ _hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
 
 // Get array of inherited classes of unit.
 _classes = [_unitClass];
-while {!((_classes select 0) in ["", "All"])} do
+while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
 {
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };

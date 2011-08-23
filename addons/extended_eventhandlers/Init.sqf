@@ -10,8 +10,8 @@
 private [
 	"_slx_xeh_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass", "_classes",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
-	"_u", "_eic", "_sim", "_crew", "_data",
-	"_isMan", "_fSetInit", "_post", "_isDelayed", "_sys_inits"
+	"_u", "_sim", "_data",
+	"_isMan", "_fSetInit", "_post", "_isDelayed", "_sys_inits", "_slx_xeh_unitAr"
 ];
 
 #ifdef DEBUG_MODE_FULL
@@ -63,7 +63,7 @@ if (_isMan) then { if !(isNil "SLX_XEH_INIT_MEN") then { PUSH(SLX_XEH_INIT_MEN,_
 
 // Get array of inherited classes of unit.
 _classes = [_unitClass];
-while { !((_classes select 0) in ["", "All"]) } do
+while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
 {
 	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 };
@@ -148,14 +148,15 @@ if (count _sys_inits > 0) then { _inits = _sys_inits + _inits };
 	format["XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits] call SLX_XEH_LOG;
 #endif
 
+_slx_xeh_unitAr = [_slx_xeh_unit];
 {
 	if (typeName _x=="CODE") then
 	{
 		// Normal code type handler
-		[_slx_xeh_unit] call _x;
+		_slx_xeh_unitAr call _x;
 	} else {
 		// It's an array of handlers (all, server, client)
-		{[_slx_xeh_unit] call _x} forEach _x;
+		{_slx_xeh_unitAr call _x} forEach _x;
 	};
 } forEach _inits;
 

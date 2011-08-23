@@ -54,6 +54,7 @@ SLX_XEH_OTHER_EVENTS_FULL = [];
 { SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_INIT_TYPES = ["all", "server", "client"];
+SLX_XEH_DEF_CLASSES = ["", "All"];
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
