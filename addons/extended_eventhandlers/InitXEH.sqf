@@ -185,7 +185,7 @@ SLX_XEH_F2_INIT = {
 					_names set [_idx, _name];
 				};
 				// Standard XEH init string
-				if (isText _cfgEntry && _useEH) then
+				if (isText _cfgEntry && (call _useEH)) then
 				{
 					_inits set [_idx, compile(getText _cfgEntry)];
 				} else {
@@ -233,7 +233,7 @@ SLX_XEH_F2_INIT = {
 						_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 						if !(_scope == 0 && (_unitClass != _x)) then
 						{
-							if (!([] call _isExcluded) && _useEH) then
+							if (!([] call _isExcluded) && (call _useEH)) then
 							{
 								if (isText _initEntry) then
 								{

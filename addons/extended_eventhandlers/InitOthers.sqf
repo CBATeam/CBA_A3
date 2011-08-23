@@ -39,7 +39,7 @@ while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
 	_handler = "";
 	_handlerPlayer = "";
 	{
-		_data = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] SLX_XEH_F2_INIT_OTHER;
+		_data = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
 		ADD(_handler,_data select 0);
 		ADD(_handlerPlayer,_data select 1);
 	} forEach SLX_XEH_CONFIG_FILES;
