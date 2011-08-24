@@ -41,10 +41,11 @@ _i = 0;
 	_eventData = _data select _i;
 
 	// Collect eventhandlers for configFile, campaignConfigFile and missionConfigFile
-	_handler = [];
+	_handler = [[]];
+	_handlerInt = _handler select 0;
 	_handlerPlayer = [];
 	{
-		PUSH(_handler, _x select 0);
+		PUSH(_handlerInt, _x select 0);
 		PUSH(_handlerPlayer, _x select 1);
 	} forEach _eventData;
 
