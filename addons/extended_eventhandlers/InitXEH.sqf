@@ -537,11 +537,10 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	if (isNil "_types") then { _types = [nil, nil, nil, uiNamespace getVariable "SLX_XEH_ID"]; uiNamespace setVariable [_unitClass, _types] };
 	_type = SLX_XEH_MACHINE select 10;
 	
-	// _data for configFile, campaignConfigFile, missionConfigFile
+	// _data for events (Fired, etc)
 	_cached = true;
 	_data = _types select _type;
-	if (isNil "_data") then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
-
+	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
 	private ["_config", "_configData", "_configId", "_event_id"];
@@ -554,7 +553,7 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 
 	_event_id = 0;
 	{
-		// configData array: index 0 .. # EhCode for each event type, e.g: Fired, AnimChanged, AnimDone, etc
+		// configData array: index 0 .. 2 # EhCode per config (configFile, campaignConfigFile, missionConfigFile) for this event type
 		_configData = [];
 		_data set [_event_id, _configData];
 		{
@@ -587,7 +586,7 @@ SLX_XEH_F_ADDPLAYEREVENTS = {
 		if (isNil "_curEvt") then { _curEvt = [] };
 		_this setVariable [_event, [
 			if (count _curEvt > 0) then { _curEvt select 0 } else { [] },
-			[compile format["_this call ((_this select 0) getVariable '%1_Player')",_event] ]
+			[compile format["{ _this call _x } forEach ((_this select 0) getVariable '%1_Player')",_event] ]
 		]];
 	} forEach SLX_XEH_OTHER_EVENTS;
 };
@@ -608,7 +607,7 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	#define XEH_FUNC(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { { _this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 #ifndef DEBUG_MODE_FULL
-	#define XEH_FUNC(A) SLX_XEH_EH_##A = { { {_this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
+	#define XEH_FUNC(A) SLX_XEH_EH_##A = { { { _this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 
 XEH_FUNC(Hit);

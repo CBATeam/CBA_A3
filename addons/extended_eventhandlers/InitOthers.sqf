@@ -38,11 +38,15 @@ _data = [_unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHERS_CACHE;
 _i = 0;
 {
 	_event = _x;
+	_eventData = _data select _i;
 
 	// Collect eventhandlers for configFile, campaignConfigFile and missionConfigFile
-	_eventData = _data select _i;
-	_handler = _eventData select 0;
-	_handlerPlayer = _eventData select 1;
+	_handler = [];
+	_handlerPlayer = [];
+	{
+		PUSH(_handler, _x select 0);
+		PUSH(_handlerPlayer, _x select 1);
+	} forEach _eventData;
 
 	// Attach the compiled extended event handler to the unit.
 	_xeh = SLX_XEH_OTHER_EVENTS_XEH select _i;
