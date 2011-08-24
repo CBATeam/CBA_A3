@@ -9,7 +9,7 @@
 #include "script_component.hpp"
 private [
 	"_unit", "_event", "_unitClass", "_classes", "_handlers", "_handler",
-	"_xeh", "_xehPlayer", "_event", "_ha", "_event_id", "_data", "_i"
+	"_xeh", "_xehPlayer", "_event", "_ha", "_data", "_i"
 ];
 
 #ifdef DEBUG_MODE_FULL

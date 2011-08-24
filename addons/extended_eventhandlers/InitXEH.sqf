@@ -527,12 +527,14 @@ SLX_XEH_F2_INIT_OTHER = {
 };
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
-	PARAMS_3(_unitClass, _classes, _hasDefaultEH);
+
+	PARAMS_3(_unitClass,_classes,_hasDefaultEH);
+
 	// TODO: Use more unique variable names inside uiNamespace.
 	private ["_types", "_type", "_data", "_cached"];
-	_types = uiNamespace getVariable _class;
+	_types = uiNamespace getVariable _unitClass;
 	//        ded, server, client, SESSION_ID
-	if (isNil "_types") then { _types = [nil, nil, nil, uiNamespace getVariable "SLX_XEH_ID"]; uiNamespace setVariable [_class, _types] };
+	if (isNil "_types") then { _types = [nil, nil, nil, uiNamespace getVariable "SLX_XEH_ID"]; uiNamespace setVariable [_unitClass, _types] };
 	_type = SLX_XEH_MACHINE select 10;
 	
 	// _data for configFile, campaignConfigFile, missionConfigFile
@@ -554,7 +556,7 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	{
 		// configData array: index 0 .. # EhCode for each event type, e.g: Fired, AnimChanged, AnimDone, etc
 		_configData = [];
-		_data set [_eventId, _configData];
+		_data set [_event_id, _configData];
 		{
 			_config = _x;
 			_retdata = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
@@ -575,15 +577,29 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 
 
 // Add / Remove the playerEvents
+// TODO: Improve
 SLX_XEH_F_ADDPLAYEREVENTS = {
 	private ["_event", "_curEvt"];
 	if (isNull _this) exitWith {}; // not a valid object
-	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable _event; if (isNil "_curEvt") then { _curEvt = [] }; _this setVariable [_event, [if (count _curEvt > 0) then { _curEvt select 0 } else { {} }, compile format["_this call ((_this select 0) getVariable '%1_Player')",_event]]] } forEach SLX_XEH_OTHER_EVENTS;
+	{
+		_event = format["Extended_%1EH",_x];
+		_curEvt = _this getVariable _event;
+		if (isNil "_curEvt") then { _curEvt = [] };
+		_this setVariable [_event, [
+			if (count _curEvt > 0) then { _curEvt select 0 } else { [] },
+			[compile format["_this call ((_this select 0) getVariable '%1_Player')",_event] ]
+		]];
+	} forEach SLX_XEH_OTHER_EVENTS;
 };
 SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	private ["_event", "_curEvt"];
 	if (isNull _this) exitWith {}; // not a valid object
-	{ _event = format["Extended_%1EH",_x]; _curEvt = _this getVariable _event; if (isNil "_curEvt") then { _curEvt = [] }; if (count _curEvt > 0) then { _this setVariable [_event, [_curEvt select 0]] } } forEach SLX_XEH_OTHER_EVENTS;
+	{
+		_event = format["Extended_%1EH",_x];
+		_curEvt = _this getVariable _event;
+		if (isNil "_curEvt") then { _curEvt = [] };
+		if (count _curEvt > 0) then { _this setVariable [_event, [_curEvt select 0]] };
+	} forEach SLX_XEH_OTHER_EVENTS;
 };
 
 // The actual XEH functions that are called from within the engine eventhandlers.
