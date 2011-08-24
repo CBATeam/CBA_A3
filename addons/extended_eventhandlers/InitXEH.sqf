@@ -52,7 +52,12 @@ SLX_XEH_INIT_MEN = [];
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
 SLX_XEH_OTHER_EVENTS_FULL = [];
 { SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+
+SLX_XEH_OTHER_EVENTS_XEH = [];
+{ SLX_XEH_OTHER_EVENTS_XEH set [_forEachIndex, format["Extended_%1EH", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
+SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
 SLX_XEH_INIT_TYPES = ["all", "server", "client"];
 SLX_XEH_DEF_CLASSES = ["", "All"];
 
@@ -521,6 +526,53 @@ SLX_XEH_F2_INIT_OTHER = {
 	[_handler, _handerPlayer];
 };
 
+SLX_XEH_F2_INIT_OTHERS_CACHE = {
+	PARAMS_3(_unitClass, _classes, _hasDefaultEH);
+	// TODO: Use more unique variable names inside uiNamespace.
+	private ["_types", "_type", "_data", "_cached"];
+	_types = uiNamespace getVariable _class;
+	//        ded, server, client, SESSION_ID
+	if (isNil "_types") then { _types = [nil, nil, nil, uiNamespace getVariable "SLX_XEH_ID"]; uiNamespace setVariable [_class, _types] };
+	_type = SLX_XEH_MACHINE select 10;
+	
+	// _data for configFile, campaignConfigFile, missionConfigFile
+	_cached = true;
+	_data = _types select _type;
+	if (isNil "_data") then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
+
+
+	// Now load the data from config if !_cached, or load data from cache if _cached already.
+	private ["_config", "_configData", "_configId", "_event_id"];
+	
+	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
+	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith { _data };
+	
+	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
+	_cfgs = if (_cached) then { _configId = 1; SLX_XEH_CONFIG_FILES_VARIABLE } else { _configId = 0; SLX_XEH_CONFIG_FILES };
+
+	_event_id = 0;
+	{
+		// configData array: index 0 .. # EhCode for each event type, e.g: Fired, AnimChanged, AnimDone, etc
+		_configData = [];
+		_data set [_eventId, _configData];
+		{
+			_config = _x;
+			_retdata = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
+			// NewData: Compiled handlers and player handlers.
+			_newData = [compile (_retData select 0), compile (_retData select 1)];
+			PUSH(_configData,_newData);
+			INC(_configId);
+		} forEach _cfgs;
+		INC(_event_id);
+	} forEach SLX_XEH_OTHER_EVENTS;
+	
+	// Tag this unit class with the current session id
+	_types set [3, uiNamespace getVariable "SLX_XEH_ID"];
+	
+	// Return data
+	_data;
+};
+
 
 // Add / Remove the playerEvents
 SLX_XEH_F_ADDPLAYEREVENTS = {
@@ -537,10 +589,10 @@ SLX_XEH_F_REMOVEPLAYEREVENTS = {
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
 #ifdef DEBUG_MODE_FULL
-	#define XEH_FUNC(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
+	#define XEH_FUNC(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { { _this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 #ifndef DEBUG_MODE_FULL
-	#define XEH_FUNC(A) SLX_XEH_EH_##A = { {_this call _x}forEach((_this select 0)getVariable'Extended_##A##EH') }
+	#define XEH_FUNC(A) SLX_XEH_EH_##A = { { {_this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 
 XEH_FUNC(Hit);
