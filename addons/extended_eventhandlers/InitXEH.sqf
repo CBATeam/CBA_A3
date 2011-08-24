@@ -331,10 +331,15 @@ SLX_XEH_F2_INIT_CACHE = {
 	_cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
 
 	// Get array of inherited classes of unit.
-	_classes = [_unitClass];
-	while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
-	{
-		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+	if (_cached) then {
+		_classes = uiNamespace getVariable (_unitClass + "_classes");
+	} else {
+		_classes = [_unitClass];
+		while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
+		{
+			_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+		};
+		uiNamespace setVariable [(_unitClass + "_classes"), _classes];
 	};
 
 	_data = [];
@@ -609,10 +614,15 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	_hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
 
 	// Get array of inherited classes of unit.
-	_classes = [_unitClass];
-	while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
-	{
-		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+	if (_cached) then {
+		_classes = uiNamespace getVariable (_unitClass + "_classes");
+	} else {
+		_classes = [_unitClass];
+		while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
+		{
+			_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+		};
+		uiNamespace setVariable [(_unitClass + "_classes"), _classes];
 	};
 
 	_event_id = 0;
