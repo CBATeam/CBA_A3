@@ -8,6 +8,7 @@ scriptName "CBA\common\init_functionsModule";
 
 private ["_recompile"];
 _recompile = (count _this) > 0;
+if !(isNil "CBA_RECOMPILE") then { _recompile = true }; 
 
 #ifdef DEBUG_MODE_FULL
 	_timeStart = diag_tickTime;
