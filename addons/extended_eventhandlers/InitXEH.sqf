@@ -579,9 +579,9 @@ SLX_XEH_F2_INIT_OTHER = {
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	// TODO: Use more unique variable names inside uiNamespace.
-	private ["_types", "_type", "_data", "_cached", "_classes"];
+	private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH"];
 
-	PARAMS_2(_unitClass,_hasDefaultEH);
+	PARAMS_1(_unitClass);
 
 	_types = uiNamespace getVariable _unitClass;
 	//        ded, server, client, SESSION_ID
@@ -604,6 +604,9 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 
 	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
 	_cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+
+	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
+	_hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
 
 	// Get array of inherited classes of unit.
 	_classes = [_unitClass];

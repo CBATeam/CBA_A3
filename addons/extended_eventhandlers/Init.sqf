@@ -32,11 +32,14 @@ _unitClass = typeOf _slx_xeh_unit;
 
 _post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
 
-/*
 if !(_post) then {
-	// TODO: PreCache the "Other" eventhandlers
+	// Pre Cache the "Other" EventHandlers
+	_unitClass call SLX_XEH_F2_INIT_OTHERS_CACHE;
+
+	// TODO: PreCache "Init" and "InitPost" eventhandlers?
+	// As in MP we will spawn because of need to delay the initialization, see below notes for details.
 };
-*/
+
 
 // Multiplayer respawn handling
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns

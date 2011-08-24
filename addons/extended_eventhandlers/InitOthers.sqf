@@ -20,13 +20,10 @@ private [
 _unit = _this select 0;
 _unitClass = typeOf _unit;
 
-_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-_hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
-
 // Iterate over the event types and set up any extended event handlers
 // that might be defined.
 
-_data = [_unitClass, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHERS_CACHE;
+_data = _unitClass call SLX_XEH_F2_INIT_OTHERS_CACHE;
 _i = 0;
 {
 	_event = _x;
