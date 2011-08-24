@@ -48,11 +48,11 @@ Index: Index (Everything)
 
 Group: Project  {
 
-   Link: Wiki  (http://dev-heaven.net/wiki/cca)
-   Link: Reference  (http://dev-heaven.net/docs/cba/)
-   Link: Forums  (http://dev-heaven.net/projects/cca/boards)
+   Link: Wiki  (http://dev-heaven.net/projects/cca/wiki)
+   Link: Reference  (http://dev-heaven.net/docs/cba/index.html)
+   Link: Forums  (http://dev-heaven.net/disqus/index/cca)
    Link: Issues  (http://dev-heaven.net/projects/cca/issues)
-   Link: Download  (http://dev-heaven.net/projects/list_files/cca)
+   Link: Download  (http://dev-heaven.net/projects/cca/files)
    }  # Group: Project
 
 Group: Functions  {
@@ -243,6 +243,7 @@ Group: Macros  {
 
    Macro Index: Index
    File: script_macros_common  (no auto-title, main\script_macros_common.hpp)
+   File: script_macros_mission.hpp  (main\script_macros_mission.hpp)
    }  # Group: Macros
 
 File: script_macros_common.hpp  (extended_eventhandlers\script_macros_common.hpp)
