@@ -300,6 +300,51 @@ SLX_XEH_F2_INIT = {
 	_inits;
 };
 
+SLX_XEH_F2_INIT_CACHE = {
+
+	PARAMS_5(_unitClass,_classes,_useDEHinit,_ehType,_isRespawn);
+
+	// TODO: Use more unique variable names inside uiNamespace.
+	private ["_types", "_type", "_data", "_cached", "_storageKey"];
+
+	_storageKey = _unitClass + _ehType;
+
+	_types = uiNamespace getVariable _storageKey;
+	//        ded, server, client, SESSION_ID
+	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_storageKey, _types] };
+	_type = SLX_XEH_MACHINE select 10;
+
+	// _data - inits
+	_cached = true;
+	_data = _types select _type;
+	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
+
+	// Now load the data from config if !_cached, or load data from cache if _cached already.
+	private ["_config", "_configData", "_event_id"];
+
+	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
+	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
+		TRACE_2("Fully Cached",_unitClass,_ehType);
+		_data;
+	};
+
+	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
+	_cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+
+	_data = [];
+	{
+		_config = _x;
+		_retdata = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call SLX_XEH_F2_INIT;
+		ADD(_data,_retData); // Or use ForEach and PUSH ?
+	} forEach _cfgs;
+
+	// Tag this unit class with the current session id
+	_types set [3, uiNamespace getVariable "SLX_XEH_ID"];
+
+	// Return data
+	_data;
+};
+
 
 // NEW Init Other Function
 SLX_XEH_F2_INIT_OTHER = {

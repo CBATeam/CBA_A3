@@ -123,10 +123,7 @@ if !(_post) then
 };
 
 // All inits
-{
-	_data = [_x >> _Extended_Init_Class, _unitClass, _classes, _useDEHinit, _isRespawn] call SLX_XEH_F2_INIT;
-	ADD(_inits,_data);
-} forEach SLX_XEH_CONFIG_FILES;
+_inits = [_unitClass, _classes, _useDEHinit, _Extended_Init_Class, _isRespawn] call SLX_XEH_F2_INIT_CACHE;
 
 if (count _sys_inits > 0) then { _inits = _sys_inits + _inits };
 
