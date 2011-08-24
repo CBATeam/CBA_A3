@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 // Compile all necessary scripts and start one vehicle crew initialisation thread
@@ -534,7 +534,7 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	private ["_types", "_type", "_data", "_cached"];
 	_types = uiNamespace getVariable _unitClass;
 	//        ded, server, client, SESSION_ID
-	if (isNil "_types") then { _types = [nil, nil, nil, uiNamespace getVariable "SLX_XEH_ID"]; uiNamespace setVariable [_unitClass, _types] };
+	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_unitClass, _types] };
 	_type = SLX_XEH_MACHINE select 10;
 	
 	// _data for events (Fired, etc)
