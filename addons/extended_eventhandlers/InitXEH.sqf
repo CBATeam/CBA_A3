@@ -131,7 +131,7 @@ SLX_XEH_F2_INIT = {
 	private [
 		"_fSetInit", "_onRespawn", "_useEH", "_inits", "_i", "_t", "_name", "_idx", "_names", "_init", "_clientInit", "_serverInit",
 		"_cfgEntry", "_respawnEntry", "_scopeEntry", "_initEntry", "_serverInitEntry", "_clientInitEntry",
-		"_excludeEntry", "_excludeClass", "_excludeClasses"
+		"_excludeEntry", "_excludeClass", "_excludeClasses", "_replaceDEH", "_replaceEntry"
 	];
 
 	// Function to update the event handler or handlers at a given index
@@ -388,7 +388,7 @@ SLX_XEH_F2_INIT_OTHER = {
 	_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
 
 	_f = {
-		private ["_handlers", "_eventCus", "_idx", "_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceEntry", "_replaceDEH"];
+		private ["_handlers", "_eventCus", "_idx", "_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceDEH"];
 		_eventCus = format["%1%2",_event, _this select 0];
 		_handlers = _this select 1;
 		_idx = _this select 2;
