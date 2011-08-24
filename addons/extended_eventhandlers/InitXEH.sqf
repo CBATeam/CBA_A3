@@ -543,26 +543,25 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
-	private ["_config", "_configData", "_configId", "_event_id"];
+	private ["_config", "_configData", "_event_id"];
 	
 	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
 	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith { _data };
 	
 	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
-	_cfgs = if (_cached) then { _configId = 1; SLX_XEH_CONFIG_FILES_VARIABLE } else { _configId = 0; SLX_XEH_CONFIG_FILES };
+	_cfgs = if (_cached) then { SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
 
 	_event_id = 0;
 	{
-		// configData array: index 0 .. 2 # EhCode per config (configFile, campaignConfigFile, missionConfigFile) for this event type
-		_configData = [];
+		// configData array: index 0 .. 2 # normal handlers, player handlers
+		_configData = [[], []];
 		_data set [_event_id, _configData];
 		{
 			_config = _x;
 			_retdata = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
-			// NewData: Compiled handlers and player handlers.
-			_newData = [compile (_retData select 0), compile (_retData select 1)];
-			PUSH(_configData,_newData);
-			INC(_configId);
+			// Normal EH and Player EH code
+			PUSH((_configData select 0),compile (_retData select 0));
+			PUSH((_configData select 1),compile (_retData select 1));
 		} forEach _cfgs;
 		INC(_event_id);
 	} forEach SLX_XEH_OTHER_EVENTS;

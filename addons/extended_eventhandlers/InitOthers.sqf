@@ -40,14 +40,8 @@ _i = 0;
 	_event = _x;
 	_eventData = _data select _i;
 
-	// Collect eventhandlers for configFile, campaignConfigFile and missionConfigFile
-	_handler = [[]];
-	_handlerInt = _handler select 0;
-	_handlerPlayer = [];
-	{
-		PUSH(_handlerInt, _x select 0);
-		PUSH(_handlerPlayer, _x select 1);
-	} forEach _eventData;
+	_handler = [_eventData select 0];
+	_handlerPlayer = _eventData select 1;
 
 	// Attach the compiled extended event handler to the unit.
 	_xeh = SLX_XEH_OTHER_EVENTS_XEH select _i;
