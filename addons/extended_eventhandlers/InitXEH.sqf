@@ -415,6 +415,7 @@ SLX_XEH_F2_INIT_OTHER = {
 			{
 				if (isText _handlerEntry) then
 				{
+					_replaceDEH = false;
 					if (isText _replaceEntry) then
 					{
 						_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
@@ -519,7 +520,6 @@ SLX_XEH_F2_INIT_OTHER = {
 						_scopeEntry = _cfgEntry / "scope";
 						_excludeEntry = _cfgEntry / "exclude";
 						_replaceEntry = _cfgEntry / "replaceDEH";
-						_replaceDEH = false;
 
 						if (isText _excludeEntry) then
 						{
