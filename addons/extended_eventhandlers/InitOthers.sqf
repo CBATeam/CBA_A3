@@ -8,7 +8,7 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private [
-	"_unit", "_event", "_unitClass", "_classes", "_handlers", "_handler",
+	"_unit", "_event", "_unitClass", "_handlers", "_handler",
 	"_xeh", "_xehPlayer", "_event", "_ha", "_data", "_i"
 ];
 
@@ -23,18 +23,10 @@ _unitClass = typeOf _unit;
 _ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
 _hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
 
-// Get array of inherited classes of unit.
-_classes = [_unitClass];
-while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
-{
-	_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
-};
-
-
 // Iterate over the event types and set up any extended event handlers
 // that might be defined.
 
-_data = [_unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHERS_CACHE;
+_data = [_unitClass, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHERS_CACHE;
 _i = 0;
 {
 	_event = _x;

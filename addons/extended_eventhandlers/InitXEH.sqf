@@ -301,11 +301,10 @@ SLX_XEH_F2_INIT = {
 };
 
 SLX_XEH_F2_INIT_CACHE = {
-
-	PARAMS_5(_unitClass,_classes,_useDEHinit,_ehType,_isRespawn);
-
 	// TODO: Use more unique variable names inside uiNamespace.
-	private ["_types", "_type", "_data", "_cached", "_storageKey"];
+	private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes"];
+
+	PARAMS_4(_unitClass,_useDEHinit,_ehType,_isRespawn);
 
 	_storageKey = _unitClass + _ehType;
 
@@ -330,6 +329,13 @@ SLX_XEH_F2_INIT_CACHE = {
 
 	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
 	_cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+
+	// Get array of inherited classes of unit.
+	_classes = [_unitClass];
+	while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
+	{
+		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+	};
 
 	_data = [];
 	{
@@ -572,11 +578,11 @@ SLX_XEH_F2_INIT_OTHER = {
 };
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
-
-	PARAMS_3(_unitClass,_classes,_hasDefaultEH);
-
 	// TODO: Use more unique variable names inside uiNamespace.
-	private ["_types", "_type", "_data", "_cached"];
+	private ["_types", "_type", "_data", "_cached", "_classes"];
+
+	PARAMS_2(_unitClass,_hasDefaultEH);
+
 	_types = uiNamespace getVariable _unitClass;
 	//        ded, server, client, SESSION_ID
 	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_unitClass, _types] };
@@ -598,6 +604,13 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 
 	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
 	_cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+
+	// Get array of inherited classes of unit.
+	_classes = [_unitClass];
+	while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
+	{
+		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+	};
 
 	_event_id = 0;
 	{
