@@ -55,5 +55,3 @@ class CfgSettings
 };
 
 #include "CfgVehicles.hpp"
-
-
