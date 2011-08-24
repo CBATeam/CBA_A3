@@ -316,13 +316,13 @@ SLX_XEH_F2_INIT_OTHER = {
 	// used when collecting event handlers.
 	_fSetHandler = {
 		private ["_idx", "_handler", "_h", "_type", "_cur"];
-	
-		_idx=_this select 0;
+
+		_idx = _this select 0;
 		_handler = _this select 1;
-		_type=["all", "server", "client"] find (_this select 2);
-	
-		_h="";
-		_cur=_handlers select _idx;
+		_type= SLX_XEH_INIT_TYPES find (_this select 2);
+
+		_h = "";
+		_cur = _handlers select _idx;
 		if (isNil"_cur")then{_cur="";};
 		if (typeName _cur == "ARRAY") then
 		{
@@ -546,10 +546,13 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	private ["_config", "_configData", "_event_id"];
 	
 	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
-	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith { _data };
-	
+	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
+		TRACE_1("Fully Cached",_unitClass);
+		_data;
+	};
+
 	// Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
-	_cfgs = if (_cached) then { SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+	_cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
 
 	_event_id = 0;
 	{
