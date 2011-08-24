@@ -31,6 +31,8 @@ while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
 };
 
 
+// Iterate over the event types and set up any extended event handlers
+// that might be defined.
 
 _data = [_unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHERS_CACHE;
 _i = 0;
@@ -52,39 +54,6 @@ _i = 0;
 		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _event, typeOf (_this select 0)] call SLX_XEH_LOG; // , _handler != "", _handlerPlayer != ""
 	#endif
 	INC(_i);
-} forEach SLX_XEH_OTHER_EVENTS;
-
-// Iterate over the event types and set up any extended event handlers
-// that might be defined.
-{
-	_event = _x;
-	_event_id = _forEachIndex;
-
-	_handler = "";
-	_handlerPlayer = "";
-	{
-		_config = _x;
-		_data = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
-		ADD(_handler,_data select 0);
-		ADD(_handlerPlayer,_data select 1);
-	} forEach SLX_XEH_CONFIG_FILES;
-
-	if (isNull _unit) exitWith {};
-
-	// Attach the compiled extended event handler to the unit.
-	_xeh = format["Extended_%1EH", _event];
-	_xehPlayer = format["Extended_%1EH_Player", _event];
-	_ha = _unit getVariable _xeh;
-	if (isNil "_ha") then { _ha = [] };
-	if (_handler != "") then {
-		_ha set [0, compile _handler];
-	};
-	_unit setVariable [_xeh, _ha];
-	_unit setVariable [_xehPlayer, compile _handlerPlayer];
-
-	#ifdef DEBUG_MODE_FULL
-		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _event, typeOf (_this select 0), _handler != "", _handlerPlayer != ""] call SLX_XEH_LOG;
-	#endif
 } forEach SLX_XEH_OTHER_EVENTS;
 
 _unit setVariable ["SLX_XEH_READY", true];
