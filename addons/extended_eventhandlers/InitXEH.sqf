@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 // Compile all necessary scripts and start one vehicle crew initialisation thread
@@ -320,7 +320,7 @@ SLX_XEH_F2_INIT_CACHE = {
 	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
-	private ["_config", "_configData", "_event_id"];
+	private ["_config", "_configData", "_cfgs", "_retData"];
 
 	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
 	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
@@ -334,7 +334,7 @@ SLX_XEH_F2_INIT_CACHE = {
 	_data = [];
 	{
 		_config = _x;
-		_retdata = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call SLX_XEH_F2_INIT;
+		_retData = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call SLX_XEH_F2_INIT;
 		ADD(_data,_retData); // Or use ForEach and PUSH ?
 	} forEach _cfgs;
 
@@ -568,7 +568,7 @@ SLX_XEH_F2_INIT_OTHER = {
 		};
 	} forEach _handlersPlayer;
 
-	[_handler, _handerPlayer];
+	[_handler, _handlerPlayer];
 };
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
@@ -581,15 +581,15 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	//        ded, server, client, SESSION_ID
 	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_unitClass, _types] };
 	_type = SLX_XEH_MACHINE select 10;
-	
+
 	// _data for events (Fired, etc)
 	_cached = true;
 	_data = _types select _type;
 	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
-	private ["_config", "_configData", "_event_id"];
-	
+	private ["_config", "_configData", "_event_id", "_cfgs", "_retData"];
+
 	// If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
 	if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
 		TRACE_1("Fully Cached",_unitClass);
@@ -606,17 +606,18 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 		_data set [_event_id, _configData];
 		{
 			_config = _x;
-			_retdata = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
+			_retData = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
+
 			// Normal EH and Player EH code
 			PUSH((_configData select 0),compile (_retData select 0));
 			PUSH((_configData select 1),compile (_retData select 1));
 		} forEach _cfgs;
 		INC(_event_id);
 	} forEach SLX_XEH_OTHER_EVENTS;
-	
+
 	// Tag this unit class with the current session id
 	_types set [3, uiNamespace getVariable "SLX_XEH_ID"];
-	
+
 	// Return data
 	_data;
 };
