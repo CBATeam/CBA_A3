@@ -12,11 +12,9 @@
 #include "script_component.hpp"
 
 private "_fnc_compile";
-
 TRACE_1("Init Compile",_this);
 
 if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_COMPILE_RECOMPILE = CACHE_DIS(compile) };
-
 _fnc_compile = {
 	private "_cba_int_code";
 	// TODO: Unique namespace?

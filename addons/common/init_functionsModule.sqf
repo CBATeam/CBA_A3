@@ -83,7 +83,7 @@ for "_t" from 0 to 2 do {
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
 							#ifdef DO_NOT_STORE_IN_MISSION_NS
 								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _fn]];
-							#elsif
+							#else
 								missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
 							#endif
 						};
@@ -97,7 +97,7 @@ for "_t" from 0 to 2 do {
 private ["_test", "_test2"];
 _test = (_this select 0) setPos (position (_this select 0)); if (isnil "_test") then {_test = false};
 _test2 = (_this select 0) playMove ""; if (isnil "_test2") then {_test2 = false};
-if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\modules\functions\misc\fn_initCounter.sqf"))};
+if (_test || _test2) then {0 call COMPILE_FILE2(ca\modules\functions\misc\fn_initCounter.sqf) };
 
 //--------------------------------------------------------------------------------------------------------
 //--- INIT COMPLETE --------------------------------------------------------------------------------------
