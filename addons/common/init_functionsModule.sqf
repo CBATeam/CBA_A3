@@ -8,7 +8,10 @@ scriptName "CBA\common\init_functionsModule";
 
 private ["_recompile"];
 _recompile = (count _this) > 0;
-if !(isNil "CBA_RECOMPILE") then { _recompile = true }; 
+
+if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = (!isNil "CBA_RECOMPILE" || getNumber(configFile >> "CfgSettings" >> "CBA" >> "caching" >> "functions") != 1) };
+
+if (CBA_FUNC_RECOMPILE) then { _recompile = true };
 
 #ifdef DEBUG_MODE_FULL
 	_timeStart = diag_tickTime;

@@ -15,11 +15,13 @@ private "_fnc_compile";
 
 TRACE_1("Init Compile",_this);
 
+if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_FUNC_RECOMPILE = (!isNil "CBA_RECOMPILE" || getNumber(configFile >> "CfgSettings" >> "CBA" >> "caching" >> "compile") != 1) };
+
 _fnc_compile = {
 	private "_cba_int_code";
-
+	// TODO: Unique namespace?
 	_cba_int_code = uiNamespace getVariable _this;
-	if (isNil '_cba_int_code' || !isNil 'CBA_RECOMPILE') then {
+	if (isNil '_cba_int_code' || CBA_COMPILE_RECOMPILE) then {
 		TRACE_1('Compiling',_this);
 		_cba_int_code = compile preProcessFileLineNumbers _this;
 		uiNameSpace setVariable [_this, _cba_int_code];

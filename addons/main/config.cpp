@@ -34,6 +34,10 @@ class CfgMods
 class CfgSettings
 {
 	class CBA {
+		class Caching
+		{
+			functions = 1;
+		};
 		class Versioning
 		{
 			class PREFIX {

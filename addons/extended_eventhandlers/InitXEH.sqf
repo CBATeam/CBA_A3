@@ -46,6 +46,8 @@ SLX_XEH_MACHINE =
 _fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
 if (isNil "_fnc_compile") then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
 
+if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = (!isNil "CBA_RECOMPILE" || getNumber(configFile >> "CfgSettings" >> "CBA" >> "caching" >> "xeh") != 1) };
+
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
 // All events except the init event
@@ -314,7 +316,7 @@ SLX_XEH_F2_INIT_CACHE = {
 	_type = SLX_XEH_MACHINE select 10;
 
 	// _data - inits
-	_cached = true;
+	_cached = !SLX_XEH_RECOMPILE;
 	_data = _types select _type;
 	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
@@ -594,7 +596,7 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	_type = SLX_XEH_MACHINE select 10;
 
 	// _data for events (Fired, etc)
-	_cached = true;
+	_cached = !SLX_XEH_RECOMPILE;
 	_data = _types select _type;
 	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
 
