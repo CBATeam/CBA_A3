@@ -307,7 +307,7 @@ SLX_XEH_F2_INIT_CACHE = {
 
 	PARAMS_4(_unitClass,_useDEHinit,_ehType,_isRespawn);
 
-	_storageKey = _unitClass + _ehType;
+	_storageKey = "SLX_XEH_" + _unitClass + _ehType; // TODO: Cache??
 
 	_types = uiNamespace getVariable _storageKey;
 	//        ded, server, client, SESSION_ID
@@ -585,13 +585,15 @@ SLX_XEH_F2_INIT_OTHER = {
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	// TODO: Use more unique variable names inside uiNamespace.
-	private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH"];
+	private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH", "_storageKey"];
 
 	PARAMS_1(_unitClass);
 
-	_types = uiNamespace getVariable _unitClass;
+	_storageKey = "SLX_XEH_" + _unitClass; // TODO: Cache??
+
+	_types = uiNamespace getVariable _storageKey;
 	//        ded, server, client, SESSION_ID
-	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_unitClass, _types] };
+	if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_storageKey, _types] };
 	_type = SLX_XEH_MACHINE select 10;
 
 	// _data for events (Fired, etc)
