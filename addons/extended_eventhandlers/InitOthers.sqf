@@ -33,6 +33,7 @@ _i = 0;
 	_handlerPlayer = _eventData select 1;
 
 	// Attach the compiled extended event handler to the unit.
+	// TODO: Add alternative handler implementation; no setVariables on the units, just grab directly from uiNamespace
 	_xeh = SLX_XEH_OTHER_EVENTS_XEH select _i;
 	_xehPlayer = _xeh + "_Player";
 	_unit setVariable [_xeh, _handler];
