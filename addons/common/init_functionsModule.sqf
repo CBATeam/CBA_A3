@@ -78,13 +78,13 @@ for "_t" from 0 to 2 do {
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
 							_uifn = uiNamespace getVariable _fn;
 							if (isNil "_uifn" || _recompile) then {
-								uiNamespace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
+								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
 							#ifdef DO_NOT_STORE_IN_MISSION_NS
-								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _fn]];
+								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _itemPath]];
 							#else
-								missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
+								missionNameSpace setVariable [_fn, uiNamespace getVariable _itemPath];
 							#endif
 						};
 					};
@@ -106,4 +106,3 @@ if (_test || _test2) then {0 call COMPILE_FILE2(ca\modules\functions\misc\fn_ini
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
-
