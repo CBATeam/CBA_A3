@@ -42,7 +42,7 @@ CBA_logic = _logic;
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
-	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
+	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
 };
 [] spawn {
 	_done = false;

@@ -55,7 +55,7 @@ if ( _init ) then {
 			uisleep 2;
 			GVAR(VerTime) = GVAR(VerTime) - 1;
 			if ( GVAR(VerTime) <= 0 ) then {
-				_this call compile preprocessFile '\x\cba\addons\help\showver.sqf';
+				_this call COMPILE_FILE2(\x\cba\addons\help\showver.sqf);
 			};
 			_timeout = _timeout - 1;
 		};
