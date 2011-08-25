@@ -29,8 +29,13 @@ _i = 0;
 	_event = _x;
 	_eventData = _data select _i;
 
-	_handler = [_eventData select 0];
-	_handlerPlayer = _eventData select 1;
+	// TODO: Improve - current implementation is to remove empty code
+	_handler = [];
+	_handlerPlayer = [];
+	{ if !(isNil "_x") then { PUSH(_handler,_x) } } forEach (_eventData select 0);
+	{ if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach (_eventData select 1);
+
+	_handler = [_handler];
 
 	// Attach the compiled extended event handler to the unit.
 	// TODO: Add alternative handler implementation; no setVariables on the units, just grab directly from uiNamespace

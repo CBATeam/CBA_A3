@@ -638,9 +638,9 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 			_retData = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call SLX_XEH_F2_INIT_OTHER;
 
 			// Normal EH and Player EH code
-			(_configData select 0) set [_config_id, compile (_retData select 0)];
-			(_configData select 1) set [_config_id, compile (_retData select 1)];
-			
+			(_configData select 0) set [_config_id, if ((_retData select 0) == "") then { nil } else { compile (_retData select 0) } ];
+			(_configData select 1) set [_config_id, if ((_retData select 1) == "") then { nil } else { compile (_retData select 1) }];
+
 			INC(_config_id);
 		} forEach _cfgs;
 		INC(_event_id);
