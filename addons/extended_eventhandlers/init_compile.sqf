@@ -14,9 +14,10 @@
 private "_fnc_compile";
 TRACE_1("Init Compile",_this);
 
-if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_COMPILE_RECOMPILE = CACHE_DIS(compile) };
 _fnc_compile = {
 	private "_cba_int_code";
+	if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_COMPILE_RECOMPILE = CACHE_DIS(compile) };
+
 	// TODO: Unique namespace?
 	_cba_int_code = uiNamespace getVariable _this;
 	if (isNil '_cba_int_code' || CBA_COMPILE_RECOMPILE) then {
