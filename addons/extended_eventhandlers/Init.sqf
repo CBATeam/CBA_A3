@@ -34,7 +34,7 @@ _post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
 
 if !(_post) then {
 	// Pre Cache the "Other" EventHandlers
-	_unitClass call SLX_XEH_F2_INIT_OTHERS_CACHE;
+	if !(SLX_XEH_RECOMPILE) then { _unitClass call SLX_XEH_F2_INIT_OTHERS_CACHE };
 
 	// TODO: PreCache "Init" and "InitPost" eventhandlers?
 	// As in MP we will spawn because of need to delay the initialization, see below notes for details.
