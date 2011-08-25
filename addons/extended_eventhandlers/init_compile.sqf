@@ -15,7 +15,7 @@ private "_fnc_compile";
 
 TRACE_1("Init Compile",_this);
 
-if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_FUNC_RECOMPILE = (!isNil "CBA_RECOMPILE" || getNumber(configFile >> "CfgSettings" >> "CBA" >> "caching" >> "compile") != 1) };
+if (isNil "CBA_COMPILE_RECOMPILE") then { CBA_COMPILE_RECOMPILE = CACHE_DIS(compile) };
 
 _fnc_compile = {
 	private "_cba_int_code";

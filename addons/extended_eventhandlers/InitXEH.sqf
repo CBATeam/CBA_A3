@@ -25,6 +25,7 @@ _id = uiNamespace getVariable "SLX_XEH_ID";
 if (isNil "_id") then { _id = 1 } else { INC(_id) };
 uiNamespace setVariable ["SLX_XEH_ID", _id];
 
+if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = CACHE_DIS(xeh) };
 
 SLX_XEH_MACHINE =
 [
@@ -44,9 +45,7 @@ SLX_XEH_MACHINE =
 
 // Backup
 _fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile") then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
-
-if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = (!isNil "CBA_RECOMPILE" || getNumber(configFile >> "CfgSettings" >> "CBA" >> "caching" >> "xeh") != 1) };
+if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
