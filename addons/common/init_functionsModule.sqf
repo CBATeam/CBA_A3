@@ -6,6 +6,8 @@
 
 scriptName "CBA\common\init_functionsModule";
 
+// #define DO_NOT_STORE_IN_MISSION_NS
+
 private ["_recompile"];
 _recompile = (count _this) > 0;
 
@@ -79,7 +81,11 @@ for "_t" from 0 to 2 do {
 								uiNamespace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
-							missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
+							#ifdef DO_NOT_STORE_IN_MISSION_NS
+								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _fn]];
+							#elsif
+								missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
+							#endif
 						};
 					};
 				};
