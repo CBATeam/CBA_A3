@@ -317,7 +317,7 @@ SLX_XEH_F2_INIT_CACHE = {
 	// _data - inits
 	_cached = !SLX_XEH_RECOMPILE;
 	_data = _types select _type;
-	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
+	if (isNil "_data" || !_cached) then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
 	private ["_config", "_configData", "_cfgs", "_retData"];
@@ -597,7 +597,7 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 	// _data for events (Fired, etc)
 	_cached = !SLX_XEH_RECOMPILE;
 	_data = _types select _type;
-	if (isNil "_data") then { _data = []; _types set [_type, _data]; _cached = false };
+	if (isNil "_data" || !_cached) then { _data = []; _types set [_type, _data]; _cached = false };
 
 	// Now load the data from config if !_cached, or load data from cache if _cached already.
 	private ["_config", "_configData", "_event_id", "_cfgs", "_retData"];
