@@ -302,7 +302,6 @@ SLX_XEH_F2_INIT = {
 };
 
 SLX_XEH_F2_INIT_CACHE = {
-	// TODO: Use more unique variable names inside uiNamespace.
 	private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes"];
 
 	PARAMS_4(_unitClass,_useDEHinit,_ehType,_isRespawn);
@@ -584,7 +583,6 @@ SLX_XEH_F2_INIT_OTHER = {
 };
 
 SLX_XEH_F2_INIT_OTHERS_CACHE = {
-	// TODO: Use more unique variable names inside uiNamespace.
 	private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH", "_storageKey"];
 
 	PARAMS_1(_unitClass);
