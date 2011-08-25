@@ -127,7 +127,7 @@ if !(_post) then
 // All inits
 _inits = [_unitClass, _useDEHinit, _Extended_Init_Class, _isRespawn] call SLX_XEH_F2_INIT_CACHE;
 
-if (count _sys_inits > 0) then { _inits = _sys_inits + _inits };
+if (count _sys_inits > 0) then { _inits = [_sys_inits] + _inits };
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
@@ -136,14 +136,16 @@ if (count _sys_inits > 0) then { _inits = _sys_inits + _inits };
 
 _slx_xeh_unitAr = [_slx_xeh_unit];
 {
-	if (typeName _x=="CODE") then
 	{
-		// Normal code type handler
-		_slx_xeh_unitAr call _x;
-	} else {
-		// It's an array of handlers (all, server, client)
-		{_slx_xeh_unitAr call _x} forEach _x;
-	};
+		if (typeName _x=="CODE") then
+		{
+			// Normal code type handler
+			_slx_xeh_unitAr call _x;
+		} else {
+			// It's an array of handlers (all, server, client)
+			{_slx_xeh_unitAr call _x} forEach _x;
+		};
+	} forEach _x;
 } forEach _inits;
 
 #ifdef DEBUG_MODE_FULL
