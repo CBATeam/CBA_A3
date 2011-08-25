@@ -24,6 +24,8 @@
             #include "x\cba\addons\main\script_macros_mission.hpp"
 */
 
+// TODO: Alternate COMPILE_FILE macros that add e.g "mission\"
+
 /************************** REMOVED ***********************/
 
 #undef MAINPREFIX
