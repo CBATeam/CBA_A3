@@ -48,11 +48,9 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
 		// TODO: Evaluate with respawn...
 		while {true} do {
-			waitUntil {sleep 1; player != _lastPlayer};
-			sleep 1;
+			waitUntil {sleep 0.5; player != _lastPlayer};
 			_lastPlayer call SLX_XEH_F_REMOVEPLAYEREVENTS;
-			waitUntil {sleep 1; !(isNull player)};
-			sleep 1;
+			waitUntil {sleep 0.5; !(isNull player)};
 			_newPlayer = player;
 			#ifdef DEBUG_MODE_FULL
 				str(["New Player", _newPlayer, _lastPlayer]) call SLX_XEH_LOG;

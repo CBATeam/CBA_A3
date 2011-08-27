@@ -49,13 +49,16 @@ if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { call compile preProcessFil
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
-// All events except the init event
-SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS];
+SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
+
 SLX_XEH_OTHER_EVENTS_FULL = [];
 { SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
-
 SLX_XEH_OTHER_EVENTS_XEH = [];
 { SLX_XEH_OTHER_EVENTS_XEH set [_forEachIndex, format["Extended_%1EH", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+SLX_XEH_OTHER_EVENTS_XEH_PLAYERS = [];
+{ SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [_forEachIndex, format["Extended_%1EH_Player", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+SLX_XEH_OTHER_EVENTS_PLAYERS = [];
+{ SLX_XEH_OTHER_EVENTS_PLAYERS set [_forEachIndex, compile format["{ _this call _x } forEach ((_this select 0)getVariable 'Extended_%1EH_Player')", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
@@ -70,9 +73,10 @@ SLX_XEH_F_INIT = {
 		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
 	];
 	_Inits = [];
+
 	#ifdef DEBUG_MODE_FULL
-	_msg = format["XEH BEG: Init %1", _this];
-	XEH_LOG(_msg);
+		_msg = format["XEH BEG: Init %1", _this];
+		XEH_LOG(_msg);
 	#endif
 
 	if (isClass _this) then
@@ -659,35 +663,45 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 SLX_XEH_F_ADDPLAYEREVENTS = {
 	private ["_event", "_curEvt"];
 	if (isNull _this) exitWith {}; // not a valid object
+
 	{
-		_event = format["Extended_%1EH",_x];
+		_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
 		_curEvt = _this getVariable _event;
-		if (isNil "_curEvt") then { _curEvt = [] };
-		_this setVariable [_event, [
-			if (count _curEvt > 0) then { _curEvt select 0 } else { [] },
-			[compile format["{ _this call _x } forEach ((_this select 0) getVariable '%1_Player')",_event] ]
-		]];
+		if (isNil "_curEvt") then { _curEvt = []; _this setVariable [_event, _curEvt] };
+		PUSH(_curEvt,SLX_XEH_OTHER_EVENTS_PLAYERS select _forEachIndex);
 	} forEach SLX_XEH_OTHER_EVENTS;
 };
 SLX_XEH_F_REMOVEPLAYEREVENTS = {
 	private ["_event", "_curEvt"];
 	if (isNull _this) exitWith {}; // not a valid object
+
 	{
-		_event = format["Extended_%1EH",_x];
+		_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
 		_curEvt = _this getVariable _event;
 		if (isNil "_curEvt") then { _curEvt = [] };
-		if (count _curEvt > 0) then { _this setVariable [_event, [_curEvt select 0]] };
+		if (count _curEvt > 0) then {
+			_newEvt = [];
+			if (count _curEvt > 1) then {
+				// Take all but the last (last = player handler)
+				for "_i" from 0 to ((count _curEvt) - 2) do { PUSH(_newEvt,_curEvt select _i) };
+			};
+			_this setVariable [_event, _newEvt];
+		};
 	} forEach SLX_XEH_OTHER_EVENTS;
 };
 
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
 #ifdef DEBUG_MODE_FULL
-	#define XEH_FUNC(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { { _this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
+	#define XEH_FUNC_NORMAL(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
 #ifndef DEBUG_MODE_FULL
-	#define XEH_FUNC(A) SLX_XEH_EH_##A = { { { _this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
+	#define XEH_FUNC_NORMAL(A) SLX_XEH_EH_##A = { { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
 #endif
+
+#define XEH_FUNC_PLAYER(A) SLX_XEH_EH_##A##_Player = { { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH_Player') }
+
+#define XEH_FUNC(A) XEH_FUNC_NORMAL(A); XEH_FUNC_PLAYER(A)
 
 XEH_FUNC(Hit);
 XEH_FUNC(AnimChanged);
@@ -708,11 +722,12 @@ XEH_FUNC(Respawn);
 XEH_FUNC(MPHit);
 XEH_FUNC(MPKilled);
 XEH_FUNC(MPRespawn);
+XEH_FUNC(FiredBis);
 
 SLX_XEH_EH_Init = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init };
 SLX_XEH_EH_RespawnInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0, "Extended_Init_EventHandlers", true] call SLX_XEH_init };
-SLX_XEH_EH_GetInMan = { { {[_this select 2, _this select 1, _this select 0] call _x } forEach _x }forEach((_this select 2)getVariable'Extended_GetInManEH') };
-SLX_XEH_EH_GetOutMan = { { {[_this select 2, _this select 1, _this select 0] call _x } forEach _x }forEach((_this select 2)getVariable'Extended_GetOutManEH') };
+SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x }forEach((_this select 2)getVariable'Extended_GetInManEH') };
+SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x }forEach((_this select 2)getVariable'Extended_GetOutManEH') };
 SLX_XEH_EH_Fired =
 {
 	#ifdef DEBUG_MODE_FULL
@@ -723,11 +738,8 @@ SLX_XEH_EH_Fired =
 	if (count _feh > 0) then { 
 		_c=count _this;
 		if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};
-		{ {_this call _x} forEach _x } forEach _feh;
+		{_this call _x } forEach _feh;
 	};
-};
-SLX_XEH_EH_FiredBis = {
-	{ {_this call _x } forEach _x }forEach((_this select 0)getVariable'Extended_FiredBisEH');
 };
 
 // XEH init functions
