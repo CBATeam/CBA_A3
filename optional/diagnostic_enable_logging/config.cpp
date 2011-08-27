@@ -1,12 +1,12 @@
 class CfgPatches
 {
-	class cba_diagnostic_logging
+	class ADDON
 	{
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.05;
-		requiredAddons[] = {"Extended_EventHandlers"};
-		version = "0.7.0.134";
+		requiredVersion = REQUIRED_VERSION;
+		requiredAddons[] = {"CBA_Diagnostic"};
+		version = VERSION;
 		author[] = {"Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
