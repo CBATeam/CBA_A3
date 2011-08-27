@@ -62,7 +62,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 // XEH for non XEH supported addons
-execVM "\extended_eventhandlers\supportMonitor.sqf";
+[] spawn COMPILE_FILE2(\extended_eventhandlers\supportMonitor.sqf);
 
 SLX_XEH_MACHINE set [8, true];
 XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
