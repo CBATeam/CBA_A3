@@ -45,7 +45,7 @@ SLX_XEH_MACHINE =
 
 // Backup
 _fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { nil call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
