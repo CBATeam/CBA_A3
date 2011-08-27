@@ -49,14 +49,14 @@ class Extended_Init_EventHandlers
 {
 	// Vehicles.
 	class StaticCannon /* : StaticWeapon */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 
 	class M252 /* : StaticMortar */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 	class 2b14_82mm /* : StaticMortar */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 	class FR_Miles /* : FR_Base */ {
 		SLX_BIS = "(_this select 0) setidentity ""Miles""";
@@ -221,19 +221,19 @@ class Extended_Init_EventHandlers
 		SLX_BIS = "(_this select 0) setdir getdir (_this select 0)";
 	};
 	class Mass_grave /* : Grave */ {
-		SLX_BIS = "dummy = _this execVM ""ca\characters2\OTHER\scripts\fly.sqf""";
+		SLX_BIS = QUOTE(dummy = _this spawn COMPILE_FILE2(ca\characters2\OTHER\scripts\fly.sqf));
 	};
 	class AAV /* : Tracked_APC */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }; _this execVM ""\ca\tracked2\AAV\scripts\init.sqf""";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) };_this spawn COMPILE_FILE2(\ca\tracked2\AAV\scripts\init.sqf));
 	};
 	class Pickup_PK_TK_GUE_EP1 /* : Pickup_PK_base */ {
 		SLX_BIS = "(_this select 0) setObjectTexture [0,[""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup1_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup2_EINS_CO"",""\CA\wheeled_E\Datsun_Armed\Data\datsun_trup3_EINS_CO""] select floor random 3]";
 	};
 	class A10 /* : Plane */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 	class Su34 /* : Plane */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 	class AH6X_EP1 /* : AH6_Base_EP1 */ {
 		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }; (_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true]";
@@ -385,10 +385,10 @@ class Extended_firednear_Eventhandlers {
 };
 class Extended_hit_Eventhandlers {
 	class TargetPopUpTarget /* : TargetBase */ {
-		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
+		SLX_BIS = QUOTE([(_this select 0)] spawn COMPILE_FILE2(ca\misc\scripts\PopUpTarget.sqf));
 	};
 	class TargetEpopup /* : TargetBase */ {
-		SLX_BIS = "[(_this select 0)] execVM ""ca\misc\scripts\PopUpTarget.sqf""";
+		SLX_BIS = QUOTE([(_this select 0)] spawn COMPILE_FILE2(ca\misc\scripts\PopUpTarget.sqf));
 	};
 };
 class Extended_killed_Eventhandlers {
@@ -470,7 +470,7 @@ class Extended_MPRespawn_EventHandlers
 */
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
-	init = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }";
+	init = QUOTE(if(isNil 'BIS_Effects_Init') then { COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	// Replace fired with firedBis
 	delete fired;
 	firedBis = "_this call BIS_Effects_EH_Fired"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
