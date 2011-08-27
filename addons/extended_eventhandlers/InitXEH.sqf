@@ -67,7 +67,7 @@ SLX_XEH_DEF_CLASSES = ["", "All"];
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
-// Process each new unit
+// Pre and PostInit
 SLX_XEH_F_INIT = {
 	private [
 		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
@@ -81,6 +81,7 @@ SLX_XEH_F_INIT = {
 
 	if (isClass _this) then
 	{
+		// Collect inits
 		_i = 0;
 		_c = count _this;
 		while { _i<_c } do
@@ -117,6 +118,8 @@ SLX_XEH_F_INIT = {
 			};
 			INC(_i);
 		};
+
+		// Run collected inits
 		{
 			#ifdef DEBUG_MODE_FULL
 				XEH_LOG(_x);
@@ -124,9 +127,10 @@ SLX_XEH_F_INIT = {
 			call _x;
 		} forEach _Inits;
 	};
+
 	#ifdef DEBUG_MODE_FULL
-	_msg = format["XEH END: Init %1", _this];
-	XEH_LOG(_msg);
+		_msg = format["XEH END: Init %1", _this];
+		XEH_LOG(_msg);
 	#endif
 };
 
