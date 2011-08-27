@@ -236,7 +236,8 @@ class Extended_Init_EventHandlers
 		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	};
 	class AH6X_EP1 /* : AH6_Base_EP1 */ {
-		SLX_BIS = "if(isNil 'BIS_Effects_Init') then { call compile preProcessFileLineNumbers ""\ca\Data\ParticleEffects\SCRIPTS\init.sqf""; }; (_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true]";
+		SLX_BIS = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
+		SLX_BIS2 = "(_this select 0) lockturret [[0],true];(_this select 0) lockturret [[1],true]";
 	};
 	class FlagCarrierUNO_EP1 /* : FlagCarrier */ {
 		SLX_BIS = "(_this select 0) setFlagTexture ""ca\Ca_E\data\flag_uno_co.paa""";
@@ -470,7 +471,7 @@ class Extended_MPRespawn_EventHandlers
 */
 class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
 {
-	init = QUOTE(if(isNil 'BIS_Effects_Init') then { COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
+	init = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
 	// Replace fired with firedBis
 	delete fired;
 	firedBis = "_this call BIS_Effects_EH_Fired"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
