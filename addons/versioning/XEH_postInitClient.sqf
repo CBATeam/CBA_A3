@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-[] spawn {
+SLX_XEH_STR spawn {
 	waitUntil {!(isNil QUOTE(GVAR(versions_serv)))};
 	if (!SLX_XEH_DisableLogging) then
 	{

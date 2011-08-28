@@ -9,7 +9,7 @@ LOG(MSG_INIT);
 //       the logic is created locally on MP dedicated client, to still allow this early, called precompilation of the functions.
 //       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
 //		 In SP or as server (dedicated or clientServer), the logic is created with group and createUnit.
-[] spawn {
+SLX_XEH_STR spawn {
 	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
 	waitUntil {!isNil "bis_functions_mainscope"};
 	BIS_fnc_init = true;
@@ -42,9 +42,9 @@ CBA_logic = _logic;
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
-	_this call compile preprocessFileLineNumbers "\ca\Modules\MP\data\scripts\MPframework.sqf";
+	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
 };
-[] spawn {
+SLX_XEH_STR spawn {
 	_done = false;
 	while {true} do {
 		sleep 1;
@@ -88,7 +88,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 };
 
 // Run the per frame handler init code, bringing up the hidden map control
-[] spawn {
+SLX_XEH_STR spawn {
 	waitUntil {time > 0};
 	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 	sleep 0.1;
@@ -100,7 +100,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 };
 
 if !(isDedicated) then {
-	[] spawn
+	SLX_XEH_STR spawn
 	{
 		LOG("Action monitor started");
 		while { true } do

@@ -34,13 +34,17 @@ class CfgMods
 class CfgSettings
 {
 	class CBA {
+		class Caching
+		{
+			functions = 1;
+		};
 		class Versioning
 		{
 			class PREFIX {
 				// CBA requiring CBA_OA, only if A2 is not found
 				class dependencies {
 					CBA_OA[] = {"cba_oa_main", {0,7,0}, "!isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
-					XEH[] = {"extended_eventhandlers", {3,0,8}, "true"};
+					XEH[] = {"extended_eventhandlers", {3,1,0}, "true"};
 				};
 			};
 		};
@@ -55,5 +59,3 @@ class CfgSettings
 };
 
 #include "CfgVehicles.hpp"
-
-

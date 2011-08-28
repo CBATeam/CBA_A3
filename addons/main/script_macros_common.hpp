@@ -513,9 +513,16 @@ Author:
 #define GETVARS(var1,var2,var3) (##var1##_##var2 getVariable #var3)
 #define GETVARMAINS(var1,var2) GETVARS(var1,MAINLOGIC,var2)
 
-#define PATHTO_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
-#define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
-#define PATHTOF2_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+#ifndef PATHTO_SYS
+	#define PATHTO_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
+#endif
+#ifndef PATHTOF_SYS
+	#define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+#endif
+
+#ifndef PATHTOF2_SYS
+	#define PATHTOF2_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+#endif
 
 #define PATHTO_R(var1) PATHTOF2_SYS(PREFIX,COMPONENT_C,var1)
 #define PATHTO_T(var1) PATHTOF_SYS(PREFIX,COMPONENT_T,var1)
@@ -534,8 +541,10 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2(var1) ('var1' call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
-#define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2(PATHTO_SYS(var1,var2,var3))
+#define COMPILE_FILE2_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
+#define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
+
+#define COMPILE_FILE2(var1) COMPILE_FILE2_SYS('var1')
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
@@ -556,6 +565,8 @@ Author:
 
 #define LSTR(var1) TRIPLES(ADDON,STR,var1)
 
+#define CACHE_DIS_SYS(var1,var2) (isNumber(var1 >> "CfgSettings" >> "CBA" >> "caching" >> QUOTE(var2)) && getNumber(var1 >> "CfgSettings" >> "CBA" >> "caching" >> QUOTE(var2)) != 1)
+#define CACHE_DIS(var1) (!isNil "CBA_RECOMPILE" || CACHE_DIS_SYS(configFile,var1) || CACHE_DIS_SYS(missionConfigFile,var1))
 
 #ifndef DEBUG_SETTINGS
 	#define DEBUG_SETTINGS [false, true, false]

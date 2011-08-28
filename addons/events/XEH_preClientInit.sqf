@@ -5,10 +5,10 @@
 */
 LOG(MSG_INIT);
 
-["CBA_loadGame", { [] spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler;
+["CBA_loadGame", { SLX_XEH_STR spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler;
 ["CBA_playerSpawn", { LOG("Player spawn detected!") }] call CBA_fnc_addEventHandler;
 
-[] spawn {
+SLX_XEH_STR spawn {
 	private ["_lastPlayer", "_newPlayer"];
 	waitUntil {player == player};
 	_lastPlayer = objNull;
@@ -69,7 +69,7 @@ FUNC(attach_handler) = {
 ["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 
-[] spawn {
+SLX_XEH_STR spawn {
 	waitUntil { !isNull (findDisplay 46) };
 	// Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers
 	if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"] };

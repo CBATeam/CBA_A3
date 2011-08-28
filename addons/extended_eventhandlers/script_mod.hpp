@@ -2,11 +2,11 @@
 #define PREFIX extended
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define MAJOR 3
-#define MINOR 0
-#define PATCHLVL 8
+#define MINOR 1
+#define PATCHLVL 0
 //#define BUILD 136
 
-#define VERSION_SCALAR 3.08
+#define VERSION_SCALAR 3.10
 #define VERSION MAJOR.MINOR.PATCHLVL
 #define VERSION_AR MAJOR,MINOR,PATCHLVL
 

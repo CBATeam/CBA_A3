@@ -7,20 +7,22 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = {"CBA_Diagnostic"};
+		requiredAddons[] = {"Extended_EventHandlers", "CBA_Main"};
 		version = VERSION;
 		author[] = {"Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
-class Extended_Init_EventHandlers
+
+class CfgSettings
 {
-	class All
+	class CBA
 	{
-		class cba_diagnostic_logging
+		class Caching
 		{
-			init = "diag_log [diag_frameNo, diag_fps, diag_tickTime, time, _this, typeOf (_this select 0), getPosASL (_this select 0)]";
+			xeh = 0;
+			compile = 0;
+			functions = 0;
 		};
 	};
 };
-

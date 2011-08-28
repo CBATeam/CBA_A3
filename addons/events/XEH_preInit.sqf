@@ -17,7 +17,7 @@ if (isServer || alive player) then {
 	"CBA_l" addPublicVariableEventHandler { (_this select 1) call FUNC(remoteLocalEvent) };
 } else {
 	// Ignore the last event that was sent out before we joined.
-	[] spawn {
+	SLX_XEH_STR spawn {
 		waitUntil { alive player };
 		"CBA_e" addPublicVariableEventHandler { (_this select 1) call CBA_fnc_localEvent };
 		"CBA_l" addPublicVariableEventHandler { (_this select 1) call FUNC(remoteLocalEvent) };
@@ -74,7 +74,7 @@ PREP(remoteLocalEvent);
 
 /*
 // Disabled - SB - 2009-07-22: Script scheduling seems to mess this up. Mostly spotted at dedicated server.
-[] spawn
+SLX_XEH_STR spawn
 {
 	// Based on the pretty much assumption that loadedGames are always back in time, not forward
 	private ["_history"];

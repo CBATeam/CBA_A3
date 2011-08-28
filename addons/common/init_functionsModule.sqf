@@ -6,9 +6,13 @@
 
 scriptName "CBA\common\init_functionsModule";
 
+// #define DO_NOT_STORE_IN_MISSION_NS
+
 private ["_recompile"];
 _recompile = (count _this) > 0;
-if !(isNil "CBA_RECOMPILE") then { _recompile = true }; 
+
+if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = CACHE_DIS(functions) };
+if (CBA_FUNC_RECOMPILE) then { _recompile = true };
 
 #ifdef DEBUG_MODE_FULL
 	_timeStart = diag_tickTime;
@@ -74,10 +78,14 @@ for "_t" from 0 to 2 do {
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
 							_uifn = uiNamespace getVariable _fn;
 							if (isNil "_uifn" || _recompile) then {
-								uiNamespace setVariable [_fn, compile preProcessFileLineNumbers _itemPath];
+								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
-							missionNameSpace setVariable [_fn, uiNamespace getVariable _fn];
+							#ifdef DO_NOT_STORE_IN_MISSION_NS
+								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _itemPath]];
+							#else
+								missionNameSpace setVariable [_fn, uiNamespace getVariable _itemPath];
+							#endif
 						};
 					};
 				};
@@ -89,7 +97,7 @@ for "_t" from 0 to 2 do {
 private ["_test", "_test2"];
 _test = (_this select 0) setPos (position (_this select 0)); if (isnil "_test") then {_test = false};
 _test2 = (_this select 0) playMove ""; if (isnil "_test2") then {_test2 = false};
-if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\modules\functions\misc\fn_initCounter.sqf"))};
+if (_test || _test2) then {0 call COMPILE_FILE2(ca\modules\functions\misc\fn_initCounter.sqf) };
 
 //--------------------------------------------------------------------------------------------------------
 //--- INIT COMPLETE --------------------------------------------------------------------------------------
@@ -98,4 +106,3 @@ if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "ca\module
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
-

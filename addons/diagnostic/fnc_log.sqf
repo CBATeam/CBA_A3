@@ -35,7 +35,7 @@ SCRIPT(log);
 	if (isNil "CBA_LOG_VAR") then
 	{
 		CBA_LOG_VAR = true;
-		[] spawn
+		SLX_XEH_STR spawn
 		{
 			_fnc_log =
 			{
