@@ -9,6 +9,10 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+// No _this in pre/PostInit, also fixes call to init_compile
+private ["_this"];
+_this = nil;
+
 #ifdef DEBUG_MODE_FULL
 	"XEH BEG: PostInit" call SLX_XEH_LOG;
 	str([player, group player, local player]) call SLX_XEH_LOG;
@@ -36,7 +40,7 @@ SLX_XEH_OBJECTS = [];
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
-	[] spawn {
+	SLX_XEH_STR spawn {
 		private ["_ready"];
 		waitUntil {_ready = player getVariable "SLX_XEH_READY"; if (isNil "_ready") then { _ready = false }; _ready};
 		_lastPlayer = player;
@@ -63,7 +67,7 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 };
 
 // XEH for non XEH supported addons
-[] spawn COMPILE_FILE2(\extended_eventhandlers\supportMonitor.sqf);
+SLX_XEH_STR spawn COMPILE_FILE2(\extended_eventhandlers\supportMonitor.sqf);
 
 SLX_XEH_MACHINE set [8, true];
 XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));

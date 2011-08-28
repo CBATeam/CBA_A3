@@ -1,6 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+// No _this in pre/PostInit, also fixes call to init_compile
+private ["_this"];
 _this = nil;
 
 private ["_id", "_cfgRespawn", "_respawn"];
@@ -153,9 +155,9 @@ GVAR(init_obj2) addEventHandler ["killed", {
 }];
 
 // Schedule PostInit
-[] spawn {
+SLX_XEH_STR spawn {
 	// Warn if PostInit takes longer than 10 tickTime seconds
-	[] spawn
+	SLX_XEH_STR spawn
 	{
 		private["_time2Wait"];
 		_time2Wait = diag_ticktime + 10;
