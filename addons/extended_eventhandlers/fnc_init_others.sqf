@@ -26,6 +26,7 @@ _unitClass = typeOf _unit;
 // that might be defined.
 
 _data = _unitClass call FUNC(init_others_enum_cache);
+
 {
 	_eventData = _data select _forEachIndex;
 

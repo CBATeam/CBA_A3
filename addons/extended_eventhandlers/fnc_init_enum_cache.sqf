@@ -3,9 +3,9 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id"];
+private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit"];
 
-PARAMS_4(_unitClass,_useDEHinit,_ehType,_isRespawn);
+PARAMS_3(_unitClass,_ehType,_isRespawn);
 
 _storageKey = ("SLX_XEH_" + _unitClass + _ehType); // TODO: Cache??
 
@@ -46,7 +46,36 @@ if (_cached) then {
 _config_id = if (_cached) then { 1 } else { 0 };
 {
 	_config = _x;
+
+	/*
+	*  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
+	*  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
+	*
+	*  Further, The AAV class uses a variation of this DefaultEventhandlers set with
+	*  it's own specific init EH.  Here, we make sure to include the BIS DEH init
+	*  event handler and make it the first one that will be called by XEH. The AAV
+	*  is accomodated by code further below and two composite
+	*  Extended_Init_EventHandlers definitions in the config.cpp that define
+	*  a property "replaceDefault" which will replace the DEH init with the
+	*  class-specific BIS init EH for that vehicle.
+	*/
+	// TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
+	_useDEHinit = false;
+	if (_config_id == 0 && _ehType == SLX_XEH_STR_INIT_EH) then
+	{
+		_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
+		if (configName(_ehSuper)=="DefaultEventhandlers") then
+		{
+			if (isText (configFile/"DefaultEventhandlers"/"init")) then
+			{
+				_useDEHinit = true;
+				_DEHinit = getText(configFile/"DefaultEventhandlers"/"init");
+			};
+		};
+	};
+
 	_retData = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call FUNC(init_enum);
+	if (_useDEHinit) then { _retData = [compile(_DEHinit)] + _retData };
 	_data set [_config_id, _retData];
 	INC(_config_id);
 } forEach _cfgs;

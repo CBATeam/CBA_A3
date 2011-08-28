@@ -34,19 +34,15 @@ DEFAULT_PARAM(3,_isDelayed,false);
 _unitClass = typeOf _slx_xeh_unit;
 _post = _Extended_Init_Class == SLX_XEH_STR_INIT_POST_EH;
 
-if !(_post) then {
-	// Pre Cache the "Other" EventHandlers
-	if !(SLX_XEH_RECOMPILE) then { _unitClass call FUNC(init_others_enum_cache) };
-
-	// TODO: PreCache "Init" and "InitPost" eventhandlers?
-	// As in MP we will spawn because of need to delay the initialization, see below notes for details.
-};
-
-
 // Multiplayer respawn handling
 // Bug #7432 fix - all machines will re-run the init EH where the unit is not local, when a unit respawns
 _sim = getText(configFile/"CfgVehicles"/_unitClass/"simulation");
 _isMan = _slx_xeh_unit isKindOf "Man" || { _sim == _x }count["soldier"] > 0; // "invisible"
+
+if !(_post) then {
+	// Pre Cache the "Other" EventHandlers
+	if !(SLX_XEH_RECOMPILE) then { _unitClass call FUNC(init_others_enum_cache) };
+};
 
 if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_post) exitWith
 {
@@ -56,6 +52,9 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	#ifdef DEBUG_MODE_FULL
 		format["XEH: (Bug #7432) deferring init for %2 ",time, _this] call SLX_XEH_LOG;
 	#endif
+
+	// PreCache Init eventhandlers
+	[_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
 
 	// Wait for the unit to be fully "ready"
 	if (SLX_XEH_MACHINE select 7) then {
@@ -72,9 +71,11 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 
 if (_isMan) then { if !(isNil "SLX_XEH_INIT_MEN") then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
 
-_inits = [];
+// All inits
+_inits = [_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
 
 // Naughty but more flexible...
+// TODO: Improve
 _sys_inits = [];
 if !(_isRespawn) then {
 	// Compile code for other EHs to run and put them in the setVariable.
@@ -95,39 +96,6 @@ if !(_isRespawn) then {
 };
 
 if !(_post) then { _sys_inits set [count _sys_inits, compile format ['[_this select 0, %1, %2] call FUNC(init_post)',_isRespawn,_isDelayed]] };
-
-
-/*
-*  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
-*  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
-*
-*  Further, The AAV class uses a variation of this DefaultEventhandlers set with
-*  it's own specific init EH.  Here, we make sure to include the BIS DEH init
-*  event handler and make it the first one that will be called by XEH. The AAV
-*  is accomodated by code further below and two composite
-*  Extended_Init_EventHandlers definitions in the config.cpp that define
-*  a property "replaceDefault" which will replace the DEH init with the
-*  class-specific BIS init EH for that vehicle.
-*/
-
-// TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
-_useDEHinit = false;
-if !(_post) then
-{
-	_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-	if (configName(_ehSuper)=="DefaultEventhandlers") then
-	{
-		if (isText (configFile/"DefaultEventhandlers"/"init")) then
-		{
-			_useDEHinit = true;
-			_DEHinit = getText(configFile/"DefaultEventhandlers"/"init");
-			_inits = [compile(_DEHinit)];
-		};
-	};
-};
-
-// All inits
-_inits = [_unitClass, _useDEHinit, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
 
 if (count _sys_inits > 0) then { _inits = [_sys_inits] + _inits };
 
