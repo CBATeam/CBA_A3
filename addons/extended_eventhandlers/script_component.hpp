@@ -20,4 +20,10 @@
 //"HandleDamage", "HandleHealing"
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 
+
+// Custom path macros
+#define PATHTO_SYS(var1,var2,var3) DOUBLES(var1,var2)\##var3.sqf
+#define PATHTOF_SYS(var1,var2,var3) \DOUBLES(var1,var2)\##var3
+#define PATHTOF2_SYS(var1,var2,var3) DOUBLES(var1,var2)\##var3
+
 #include "\extended_eventhandlers\script_macros_common.hpp"
