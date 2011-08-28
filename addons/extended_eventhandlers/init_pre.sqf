@@ -65,7 +65,7 @@ SLX_XEH_OTHER_EVENTS_PLAYERS = [];
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
-SLX_XEH_INIT_TYPES = ["all", "server", "client"];
+
 SLX_XEH_DEF_CLASSES = ["", "All"];
 
 SLX_XEH_DELAYED = [];

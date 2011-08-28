@@ -37,7 +37,6 @@ _names = [];	// event handler config entry names
 _inits = [];	// array of handlers or arrays with handlers, the
 			// later being used for XEH handlers that make use of
 			// the serverInit and clientInit feature.
-_init = {};
 _excludeClass = "";
 _excludeClasses = [];
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
