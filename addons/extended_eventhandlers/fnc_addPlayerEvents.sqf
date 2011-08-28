@@ -1,9 +1,12 @@
+// Add Player Events to Player Object
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+private ["_event", "_curEvt"];
+
 PARAMS_1(_object);
 
-private ["_event", "_curEvt"];
 if (isNull _object) exitWith {}; // not a valid object
 
 {

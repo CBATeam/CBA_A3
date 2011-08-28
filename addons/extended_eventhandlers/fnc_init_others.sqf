@@ -1,3 +1,5 @@
+// Init Others per Object
+
 /* Extended event handlers by Solus and Killswitch
 *
 * Get all inherited classes, then check if each inherited class has a

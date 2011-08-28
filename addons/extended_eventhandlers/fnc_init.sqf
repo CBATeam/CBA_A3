@@ -1,3 +1,5 @@
+// Init/InitPost per Object
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

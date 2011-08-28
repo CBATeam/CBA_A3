@@ -1,3 +1,5 @@
+// Init Post per Object, Directly or add to array for processing at once at start.
+
 #include "script_component.hpp"
 #define INITPOST _unit, "Extended_InitPost_EventHandlers"
 
