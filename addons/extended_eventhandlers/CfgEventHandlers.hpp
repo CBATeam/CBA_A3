@@ -402,6 +402,7 @@ class Extended_killed_Eventhandlers {
 };
 
 class Extended_AnimChanged_EventHandlers {};
+class Extended_AnimStateChanged_EventHandlers {};
 class Extended_AnimDone_EventHandlers {};
 class Extended_Dammaged_EventHandlers {};
 class Extended_Engine_EventHandlers {};

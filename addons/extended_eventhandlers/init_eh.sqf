@@ -19,6 +19,7 @@ SLX_XEH_EH_RespawnInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_thi
 
 XEH_FUNC(Hit);
 XEH_FUNC(AnimChanged);
+XEH_FUNC(AnimDone);
 XEH_FUNC(AnimStateChanged);
 XEH_FUNC(Dammaged);
 XEH_FUNC(Engine);
