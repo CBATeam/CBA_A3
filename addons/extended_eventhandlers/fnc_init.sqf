@@ -57,7 +57,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 
 	// Wait for the unit to be fully "ready"
 	if (SLX_XEH_MACHINE select 7) then {
-		_h = [_slx_xeh_unit] spawn SLX_XEH_INIT_DELAYED;
+		_h = [_slx_xeh_unit] spawn FUNC(init_delayed);
 	} else {
 		SLX_XEH_DELAYED set [count SLX_XEH_DELAYED, _slx_xeh_unit];
 	};
@@ -83,11 +83,11 @@ if !(_isRespawn) then {
 	// Run supportM
 	if (_post) then {
 		if (_isMan) then {
-			_sys_inits set [count _sys_inits, {_this call SLX_XEH_initPlayable }];
+			_sys_inits set [count _sys_inits, {_this call FUNC(init_playable) }];
 			if (isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
 		};
 	} else {
-		_sys_inits set [count _sys_inits, {_this call SLX_XEH_FNC_SUPPORTM2}];
+		_sys_inits set [count _sys_inits, {_this call FUNC(support_monitor2)}];
 		if (!_isMan || !isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
 	};
 };

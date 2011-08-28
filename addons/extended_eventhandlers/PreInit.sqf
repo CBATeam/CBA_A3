@@ -7,7 +7,7 @@
 	called several times.
 */
 {
-	(_x/"Extended_PreInit_EventHandlers") call SLX_XEH_F_INIT;
+	(_x/"Extended_PreInit_EventHandlers") call FUNC(INIT_ONCE);
 } forEach [configFile, campaignConfigFile, missionConfigFile];
 
 nil;

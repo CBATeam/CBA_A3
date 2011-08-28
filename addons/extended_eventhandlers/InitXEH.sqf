@@ -67,72 +67,18 @@ SLX_XEH_DEF_CLASSES = ["", "All"];
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
-// Pre and PostInit
-SLX_XEH_F_INIT = {
-	private [
-		"_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
-	];
-	_Inits = [];
+PREP(init_once); // Pre and PostInit
+PREP(init_delayed);
+PREP(addPlayerEvents); // Add / Remove the playerEvents
+PREP(removePlayerEvents);
+PREP(init_playable);
+PREP(support_monitor);
+PREP(support_monitor2);
 
-	#ifdef DEBUG_MODE_FULL
-		_msg = format["XEH BEG: Init %1", _this];
-		XEH_LOG(_msg);
-	#endif
-
-	if (isClass _this) then
-	{
-		// Collect inits
-		_i = 0;
-		_c = count _this;
-		while { _i<_c } do
-		{
-			_entry = _this select _i;
-			if (isClass _entry) then
-			{
-				_entryServer = (_entry/"serverInit");
-				_entryClient = (_entry/"clientInit");
-				_entry = (_entry/"init");
-				if (isText _entry) then
-				{
-					_Inits set [count _Inits, compile(getText _entry)];
-				};
-				if (SLX_XEH_MACHINE select 3) then
-				{
-					if (isText _entryServer) then
-					{
-						_Inits set [count _Inits, compile(getText _entryServer)];
-					};
-				};
-				if (!isDedicated) then
-				{
-					if (isText _entryClient) then
-					{
-						_Inits set [count _Inits, compile(getText _entryClient)];
-					};
-				};
-			} else {
-				if (isText _entry) then
-				{
-					_Inits set [count _Inits, compile(getText _entry)];
-				};
-			};
-			INC(_i);
-		};
-
-		// Run collected inits
-		{
-			#ifdef DEBUG_MODE_FULL
-				XEH_LOG(_x);
-			#endif
-			call _x;
-		} forEach _Inits;
-	};
-
-	#ifdef DEBUG_MODE_FULL
-		_msg = format["XEH END: Init %1", _this];
-		XEH_LOG(_msg);
-	#endif
-};
+SLX_XEH_init = COMPILE_FILE2(extended_eventhandlers\Init.sqf);
+SLX_XEH_initPost = COMPILE_FILE2(extended_eventhandlers\InitPost.sqf);
+SLX_XEH_initOthers = COMPILE_FILE2(extended_eventhandlers\InitOthers.sqf);
+SLX_XEH_postInit = COMPILE_FILE2(extended_eventhandlers\PostInit.sqf);
 
 
 // NEW Init (+InitPost) Function
@@ -662,38 +608,6 @@ SLX_XEH_F2_INIT_OTHERS_CACHE = {
 };
 
 
-// Add / Remove the playerEvents
-// TODO: Improve
-SLX_XEH_F_ADDPLAYEREVENTS = {
-	private ["_event", "_curEvt"];
-	if (isNull _this) exitWith {}; // not a valid object
-
-	{
-		_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
-		_curEvt = _this getVariable _event;
-		if (isNil "_curEvt") then { _curEvt = []; _this setVariable [_event, _curEvt] };
-		PUSH(_curEvt,SLX_XEH_OTHER_EVENTS_PLAYERS select _forEachIndex);
-	} forEach SLX_XEH_OTHER_EVENTS;
-};
-SLX_XEH_F_REMOVEPLAYEREVENTS = {
-	private ["_event", "_curEvt"];
-	if (isNull _this) exitWith {}; // not a valid object
-
-	{
-		_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
-		_curEvt = _this getVariable _event;
-		if (isNil "_curEvt") then { _curEvt = [] };
-		if (count _curEvt > 0) then {
-			_newEvt = [];
-			if (count _curEvt > 1) then {
-				// Take all but the last (last = player handler)
-				for "_i" from 0 to ((count _curEvt) - 2) do { PUSH(_newEvt,_curEvt select _i) };
-			};
-			_this setVariable [_event, _newEvt];
-		};
-	} forEach SLX_XEH_OTHER_EVENTS;
-};
-
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
 #ifdef DEBUG_MODE_FULL
@@ -746,58 +660,7 @@ SLX_XEH_EH_Fired =
 	};
 };
 
-// XEH init functions
-SLX_XEH_initPlayable =
-{
-	_unit = _this select 0;
-	_var = _unit getVariable "SLX_XEH_PLAYABLE";
-	if !(isNil "_var") exitWith {}; // Already set
-	if (_unit in playableUnits || isPlayer _unit || _unit == player) then
-	{
-		#ifdef DEBUG_MODE_FULL
-			str(['Playable unit!', _unit]) call SLX_XEH_LOG;
-		#endif
-		if (_unit == player) then {
-			_unit setVariable ['SLX_XEH_PLAYABLE', true, true]; // temporary until better solution for players in MP..
-		} else {
-			// Workaround for JIP players thinking they are respawners :P
-			_unit setVariable ['SLX_XEH_PLAYABLE', true];
-		};
-	};
-};
-
-SLX_XEH_init = COMPILE_FILE2(extended_eventhandlers\Init.sqf);
-SLX_XEH_initPost = COMPILE_FILE2(extended_eventhandlers\InitPost.sqf);
-SLX_XEH_initOthers = COMPILE_FILE2(extended_eventhandlers\InitOthers.sqf);
-SLX_XEH_postInit = COMPILE_FILE2(extended_eventhandlers\PostInit.sqf);
-
 SLX_XEH_DELAYED = [];
-SLX_XEH_INIT_DELAYED = {
-	private ["_unit", "_unitPlayable"];
-	_unit = _this select 0;
-
-	
-	if (isNull _unit) exitWith {
-		#ifdef DEBUG_MODE_FULL
-			format["XEH BEG: (Bug #7432) %2 Null Object", time, _unit] call SLX_XEH_LOG;
-		#endif
-	};
-
-	#ifdef DEBUG_MODE_FULL
-		format["XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit] call SLX_XEH_LOG;
-	#endif
-
-	_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
-	if (isNil "_unitPlayable") then { _unitPlayable = false };
-
-	// If unit already has the variable, it is a respawned unit.
-	// Set by InitPost Man-eventhandler.
-	if (_unitPlayable) then {
-		[_unit, "Extended_Init_EventHandlers", true, true] call SLX_XEH_init; // is respawn
-	} else {
-		[_unit, "Extended_Init_EventHandlers", false, true] call SLX_XEH_init; // is not respawn
-	};
-};
 
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
@@ -813,96 +676,6 @@ SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup
 SLX_XEH_FULL_CLASSES = []; // Used to cache classes that NEED full XEH setup
 SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
-// Used by SupportMonitor
-SLX_XEH_FNC_SUPPORTM = {
-	private ["_obj", "_cfg", "_init", "_initAr", "_XEH", "_type", "_excl"];
-	_obj = _this select 0;
-	_type = typeOf _obj;
-
-	if (_type in SLX_XEH_EXCL_CLASSES) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };
-
-	_excl = getNumber(configFile >> "CfgVehicles" >> _type >> "SLX_XEH_DISABLED") == 1;
-	if !(_excl) then { { if (_obj isKindOf _x) exitWith { _excl = true } } forEach SLX_XEH_EXCLUDES };
-	if (_excl) exitWith {
-		TRACE_2("Exclusion, abort and caching",_obj,_type);
-		PUSH(SLX_XEH_EXCL_CLASSES,_type);
-	};
-
-	_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
-
-	// No EH class - Needs full XEH
-	if !(isClass _cfg) exitWith {
-		TRACE_2("Adding XEH Full and caching",_obj,_type);
-		PUSH(SLX_XEH_FULL_CLASSES,_type);
-		[_obj] call SLX_XEH_EH_Init;
-	};
-
-	// Check 2 - XEH init EH detected
-	_XEH = false;
-	_init = _cfg >> "init";
-	if (isText _init) then {
-		_initAr = toArray(getText(_init));
-		if (count _initAr > 11) then {
-			_ar = [];
-			for "_i" from 0 to 11 do {
-				PUSH(_ar,_initAr select _i);
-			};
-			if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
-		};
-	};
-
-	if (_XEH) then {
-		TRACE_2("Has XEH init",_obj,_type)
-	} else {
-		TRACE_2("Adding XEH init",_obj,_type);
-		[_obj] call SLX_XEH_EH_Init;
-	};
-};
-
-// Used on Init of all objects, not on respawn.
-SLX_XEH_FNC_SUPPORTM2 = {
-	private ["_obj", "_type", "_cfg", "_partial", "_full"];
-	_obj = _this select 0;
-	_type = typeOf _obj;
-
-	// No XEH EH entries at all - Needs full XEH
-	if (_type in SLX_XEH_FULL_CLASSES) exitWith {
-		TRACE_2("Adding XEH Full (cache hit)",_obj,_type);
-		{ _obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]] } forEach SLX_XEH_EVENTS_NAT;
-	};
-
-	// Already has Full XEH EH entries - Needs nothing!
-	if (_type in SLX_XEH_CLASSES) exitWith { TRACE_2("Already XEH (cache hit)",_obj,_type) };
-
-	_cfg = (configFile >> "CfgVehicles" >> _type >> "EventHandlers");
-
-	// Add script-eventhandlers for those events that are not setup properly.
-	_partial = false; _full = true;
-
-	{
-		_event = (_cfg >> _x);
-		_XEH = false;
-
-		if (isText _event) then {
-			_eventAr = toArray(getText(_event));
-			if (count _eventAr > 13) then {
-				_ar = [];
-				for "_i" from 0 to 13 do {
-					PUSH(_ar,_eventAr select _i);
-				};
-				if (toString(_ar) == "_this call SLX") then { _full = false; _XEH = true };
-			};
-		};
-		if !(_XEH) then {
-			_partial = true;
-			TRACE_3("Adding missing EH",_obj,_type,_x);
-			_obj addEventHandler [_x, compile format["_this call SLX_XEH_EH_%1", _x]];
-		};
-	} forEach SLX_XEH_EVENTS_NAT;
-
-	if !(_partial) then { TRACE_2("Caching",_obj,_type); PUSH(SLX_XEH_CLASSES,_type); };
-	if (_full) then { TRACE_2("Caching (full)",_obj,_type); PUSH(SLX_XEH_FULL_CLASSES,_type); };
-};
 
 /*
 * Process the crews of vehicles. This "thread" will run just
