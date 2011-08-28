@@ -32,7 +32,7 @@ if (isNull _slx_xeh_unit) exitWith {
 DEFAULT_PARAM(2,_isRespawn,false);
 DEFAULT_PARAM(3,_isDelayed,false);
 _unitClass = typeOf _slx_xeh_unit;
-_post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
+_post = _Extended_Init_Class == SLX_XEH_STR_INIT_POST_EH;
 
 if !(_post) then {
 	// Pre Cache the "Other" EventHandlers

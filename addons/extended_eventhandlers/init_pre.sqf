@@ -47,6 +47,8 @@ SLX_XEH_MACHINE =
 ];
 
 SLX_XEH_STR = ""; // Empty string
+SLX_XEH_STR_INIT_EH = "Extended_Init_EventHandlers";
+SLX_XEH_STR_INIT_POST_EH = "Extended_InitPost_EventHandlers";
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];

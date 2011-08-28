@@ -22,7 +22,7 @@ if (isNil "_unitPlayable") then { _unitPlayable = false };
 // If unit already has the variable, it is a respawned unit.
 // Set by InitPost Man-eventhandler.
 if (_unitPlayable) then {
-	[_unit, "Extended_Init_EventHandlers", true, true] call FUNC(init); // is respawn
+	[_unit, SLX_XEH_STR_INIT_EH, true, true] call FUNC(init); // is respawn
 } else {
-	[_unit, "Extended_Init_EventHandlers", false, true] call FUNC(init); // is not respawn
+	[_unit, SLX_XEH_STR_INIT_EH, false, true] call FUNC(init); // is not respawn
 };

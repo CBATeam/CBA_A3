@@ -1,7 +1,7 @@
 // Init Post per Object, Directly or add to array for processing at once at start.
 
 #include "script_component.hpp"
-#define INITPOST _unit, "Extended_InitPost_EventHandlers"
+#define INITPOST _unit, SLX_XEH_STR_INIT_POST_EH
 
 PARAMS_3(_unit,_isRespawn,_isDelayed);
 
