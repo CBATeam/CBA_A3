@@ -10,7 +10,7 @@
 #include "script_component.hpp"
 
 // No _this in pre/PostInit, also fixes call to init_compile
-private ["_this"];
+private "_this";
 _this = nil;
 
 #ifdef DEBUG_MODE_FULL
