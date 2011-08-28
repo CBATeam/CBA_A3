@@ -12,38 +12,21 @@ private [
 // Adds or updates a handler in the _handlers or _handlersPlayer arrays
 // used when collecting event handlers.
 _fSetHandler = {
-	private ["_idx", "_handler", "_h", "_type", "_cur"];
+	private ["_cur"];
 
-	_idx = _this select 0;
-	_handler = _this select 1;
-	_type= SLX_XEH_INIT_TYPES find (_this select 2);
+	PARAMS_3(_idx,_handler,_type);
 
-	_h = "";
 	_cur = _handlers select _idx;
-	if (isNil"_cur")then{_cur="";};
-	if (typeName _cur == "ARRAY") then
-	{
-		_h = _cur;
-		_h set [_type, _handler]
-	} else {
-		if (_type > 0) then
-		{
-			_h=[_cur,"",""];
-			_h set [_type, _handler];
-		} else {
-			_h=_handler;
-		};
-	};
-	_handlers set [_idx, _h];
+	if (isNil"_cur")then{_cur=[nil,nil,nil]; _handlers set [_idx,_cur] };
+	_cur set [_type, _handler]
 };
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
 
 _f = {
-	private ["_handlers", "_eventCus", "_idx", "_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceDEH"];
-	_eventCus = format["%1%2",_event, _this select 0];
-	_handlers = _this select 1;
-	_idx = _this select 2;
+	private ["_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceDEH"];
+	PARAMS_1(_eventCus, _handlers,_idx);
+	_eventCus = format["%1%2",_event, _eventCus];
 	_handlerEntry = _cfgEntry / _eventCus;
 	_serverHandlerEntry = _cfgEntry / format["server%1", _eventCus];
 	_clientHandlerEntry = _cfgEntry / format["client%1", _eventCus];
@@ -68,27 +51,23 @@ _f = {
 				};
 				if (_hasDefaultEH && _replaceDEH) then
 				{
-					//_handlers set [0, getText _handlerEntry];
-					[0, getText _handlerEntry, "all"] call _fSetHandler;
+					[0, getText _handlerEntry, 0] call _fSetHandler;
 				} else {
-					//_handlers set [count _handlers, getText _handlerEntry];
-					[_idx, getText _handlerEntry, "all"] call _fSetHandler;
+					[_idx, getText _handlerEntry, 0] call _fSetHandler;
 				};
 			};
 			if (SLX_XEH_MACHINE select 3) then
 			{
 				if (isText _serverHandlerEntry) then
 				{
-					//_handlers set [count _handlers, getText _serverHandlerEntry];
-					[_idx, getText _serverHandlerEntry, "server"] call _fSetHandler;
+					[_idx, getText _serverHandlerEntry, 1] call _fSetHandler;
 				};
 			};
 			if (SLX_XEH_MACHINE select 0) then
 			{
 				if (isText _clientHandlerEntry) then
 				{
-					//_handlers set [count _handlers, getText _clientHandlerEntry];
-					[_idx, getText _clientHandlerEntry, "client"] call _fSetHandler;
+					[_idx, getText _clientHandlerEntry, 2] call _fSetHandler;
 				};
 			};
 		} else {
@@ -152,8 +131,7 @@ if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 			// Standard XEH event handler string
 			if (isText _cfgEntry) then
 			{
-				//_handlers set [count _handlers, getText _cfgEntry];
-				_handlers set [_idx, getText _cfgEntry];
+				[_idx, getText _cfgEntry, 0] call _fSetHandler;
 			} else {
 				// Composite XEH event handler class
 				if (isClass _cfgEntry) then
@@ -184,40 +162,16 @@ if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 // Now concatenate all the handlers into one string
 _handler = "";
 {
-	if (typeName _x=="STRING") then
-	{
-		// Some entries are empty, because they do not contain all variants (server, client, and normal)
-		if (_x != "") then {
-			_handler = _handler + _x + ";"
-		};
-	} else {
-		_h=_x;
-		// Some entries are empty, because they do not contain all variants (server, client, and normal)
-		{
-			if (_x != "") then {
-				_handler = _handler + _x + ";"
-			};
-		} forEach _h;
-	};
+	_h=_x;
+	// It's an array of handlers (all, server, client)
+	if !(isNil "_h") then { {if !(isNil "_x") then { _handler = _handler + _x + ";" } } forEach _h };
 } forEach _handlers;
 
 _handlerPlayer = "";
 {
-	if (typeName _x=="STRING") then
-	{
-		// Some entries are empty, because they do not contain all variants (server, client, and normal)
-		if (_x != "") then {
-			_handlerPlayer = _handlerPlayer + _x + ";"
-		};
-	} else {
-		_h=_x;
-		{
-			// Some entries are empty, because they do not contain all variants (server, client, and normal)
-			if (_x != "") then {
-				_handlerPlayer = _handlerPlayer + _x + ";"
-			};
-		} forEach _h;
-	};
+	_h=_x;
+	// It's an array of handlers (all, server, client)
+	if !(isNil "_h") then { {if !(isNil "_x") then { _handlerPlayer = _handlerPlayer + _x + ";" } } forEach _h };
 } forEach _handlersPlayer;
 
 [_handler, _handlerPlayer];

@@ -153,19 +153,10 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 	};
 } forEach _classes;
 
-
 _flatInits = [];
 {
-	switch (typeName _x) do {
-		case "CODE": {
-			// Normal code type handler
-			PUSH(_flatInits,_x);
-		};
-		case "ARRAY": {
-			// It's an array of handlers (all, server, client)
-			{if !(isNil "_x") then { PUSH(_flatInits,_x) } } forEach _x;
-		};
-	};
+	// It's an array of handlers (all, server, client)
+	if !(isNil "_x") then { {if !(isNil "_x") then { PUSH(_flatInits,_x) } } forEach _x };
 } forEach _inits;
 
 _flatInits;
