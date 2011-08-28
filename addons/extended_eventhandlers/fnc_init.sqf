@@ -54,7 +54,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	#endif
 
 	// PreCache Init eventhandlers
-	[_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
+	if !(SLX_XEH_RECOMPILE) then { [_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache) };
 
 	// Wait for the unit to be fully "ready"
 	if (SLX_XEH_MACHINE select 7) then {
