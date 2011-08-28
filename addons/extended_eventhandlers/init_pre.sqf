@@ -49,6 +49,8 @@ SLX_XEH_MACHINE =
 SLX_XEH_STR = ""; // Empty string
 SLX_XEH_STR_INIT_EH = "Extended_Init_EventHandlers";
 SLX_XEH_STR_INIT_POST_EH = "Extended_InitPost_EventHandlers";
+SLX_XEH_STR_PreInit = "Extended_PreInit_EventHandlers";
+SLX_XEH_STR_PostInit = "Extended_PostInit_EventHandlers";
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
@@ -217,7 +219,7 @@ SLX_XEH_STR spawn {
 	in such a pre-init "EH" rather than in a normal XEH init EH which might be
 	called several times.
 */
-{ (_x/"Extended_PreInit_EventHandlers") call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
+{ (_x/SLX_XEH_STR_PreInit) call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
 
 
 XEH_LOG("XEH: PreInit Finished");

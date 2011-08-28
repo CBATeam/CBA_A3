@@ -27,7 +27,7 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 
 
 // Run General PostInit
-{ (_x/"Extended_PostInit_EventHandlers") call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
+{ (_x/SLX_XEH_STR_PostInit) call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
 
 // we set this BEFORE executing the inits, so that any unit created in another
 // thread still gets their InitPost ran
