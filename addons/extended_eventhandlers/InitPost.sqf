@@ -1,8 +1,7 @@
 #include "script_component.hpp"
 #define INITPOST _unit, "Extended_InitPost_EventHandlers"
 
-private ["_unit", "_isRespawn", "_isDelayed"];
-_unit = _this select 0; _isRespawn = _this select 1; _isDelayed = _this select 2;
+PARAMS_3(_unit,_isRespawn,_isDelayed);
 
 // Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
 if (SLX_XEH_MACHINE select 7) then

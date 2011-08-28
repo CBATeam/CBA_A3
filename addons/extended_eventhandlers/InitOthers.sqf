@@ -17,7 +17,7 @@ private [
 #endif
 
 // Get unit.
-_unit = _this select 0;
+PARAMS_1(_unit);
 _unitClass = typeOf _unit;
 
 // Iterate over the event types and set up any extended event handlers

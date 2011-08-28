@@ -19,17 +19,17 @@ private [
 #endif
 
 // Get unit.
-_slx_xeh_unit = _this select 0;
+PARAMS_2(_slx_xeh_unit,_Extended_Init_Class);
+
 if (isNull _slx_xeh_unit) exitWith {
 	#ifdef DEBUG_MODE_FULL
 		format["XEH EXIT - NULL OBJECT: %2", time, _this] call SLX_XEH_LOG;
 	#endif
 };
-_Extended_Init_Class = _this select 1;
-_isRespawn = if (count _this < 3) then { false } else { _this select 2 };
-_isDelayed = if (count _this < 4) then { false } else { _this select 3 };
-_unitClass = typeOf _slx_xeh_unit;
 
+DEFAULT_PARAM(2,_isRespawn,false);
+DEFAULT_PARAM(3,_isDelayed,false);
+_unitClass = typeOf _slx_xeh_unit;
 _post = _Extended_Init_Class == "Extended_InitPost_EventHandlers";
 
 if !(_post) then {
@@ -131,7 +131,7 @@ if (count _sys_inits > 0) then { _inits = [_sys_inits] + _inits };
 
 // Now call all the init EHs on the unit.
 #ifdef DEBUG_MODE_FULL
-	format["XEH RUN: %2 - %3 - %4", time, _this, typeOf (_this select 0), _inits] call SLX_XEH_LOG;
+	format["XEH RUN: %2 - %3 - %4", time, _this, typeOf _slx_xeh_unit, _inits] call SLX_XEH_LOG;
 #endif
 
 _slx_xeh_unitAr = [_slx_xeh_unit];
