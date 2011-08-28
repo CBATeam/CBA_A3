@@ -29,7 +29,7 @@ if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exit
 };
 
 // Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
-_cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+_cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { TRACE_1("Not Cached",_unitClass); SLX_XEH_CONFIG_FILES };
 
 _ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
 _hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");

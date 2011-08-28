@@ -29,7 +29,7 @@ if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exit
 };
 
 // Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
-_cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES_VARIABLE } else { SLX_XEH_CONFIG_FILES };
+_cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES_VARIABLE } else { TRACE_2("Not Cached",_unitClass,_ehType); SLX_XEH_CONFIG_FILES };
 
 // Get array of inherited classes of unit.
 if (_cached) then {
