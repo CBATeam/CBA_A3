@@ -23,7 +23,7 @@ _unitClass = typeOf _unit;
 // Iterate over the event types and set up any extended event handlers
 // that might be defined.
 
-_data = _unitClass call SLX_XEH_F2_INIT_OTHERS_CACHE;
+_data = _unitClass call FUNC(init_others_enum_cache);
 {
 	_eventData = _data select _forEachIndex;
 
