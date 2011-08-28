@@ -110,7 +110,7 @@ _slx_xeh_unitAr = [_slx_xeh_unit];
 {
 	// forEach code
 	{
-		TRACE_2("Running Code on",_slx_xeh_unitAr,_x);
+		TRACE_3("Running Code on",_Extended_Init_Class,_slx_xeh_unitAr,_x);
 		_slx_xeh_unitAr call _x;
 	} forEach _x;
 } forEach _inits;

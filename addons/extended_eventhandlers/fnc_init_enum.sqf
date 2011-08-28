@@ -67,7 +67,8 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 			// Standard XEH init string
 			if (isText _cfgEntry && (call _useEH)) then
 			{
-				_inits set [_idx, compile(getText _cfgEntry)];
+				_init = compile(getText _cfgEntry);
+				[_idx, _init, "all"] call _fSetInit;
 			} else {
 				// Composite XEH init class
 				if (isClass _cfgEntry) then
@@ -162,13 +163,15 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 
 _flatInits = [];
 {
-	if (typeName _x=="CODE") then
-	{
-		// Normal code type handler
-		PUSH(_flatInits,_x);
-	} else {
-		// It's an array of handlers (all, server, client)
-		{if !(isNil "_x") then { PUSH(_flatInits,_x) } } forEach _x;
+	switch (typeName _x) do {
+		case "CODE": {
+			// Normal code type handler
+			PUSH(_flatInits,_x);
+		};
+		case "ARRAY": {
+			// It's an array of handlers (all, server, client)
+			{if !(isNil "_x") then { PUSH(_flatInits,_x) } } forEach _x;
+		};
 	};
 } forEach _inits;
 
