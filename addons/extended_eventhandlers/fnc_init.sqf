@@ -32,6 +32,7 @@ if (isNull _slx_xeh_unit) exitWith {
 DEFAULT_PARAM(2,_isRespawn,false);
 DEFAULT_PARAM(3,_isDelayed,false);
 _unitClass = typeOf _slx_xeh_unit;
+TRACE_1("UnitClass",_unitClass);
 _post = _Extended_Init_Class == SLX_XEH_STR_INIT_POST_EH;
 
 // Multiplayer respawn handling
@@ -110,7 +111,7 @@ _slx_xeh_unitAr = [_slx_xeh_unit];
 {
 	// forEach code
 	{
-		TRACE_3("Running Code on",_Extended_Init_Class,_slx_xeh_unitAr,_x);
+		TRACE_4("Running Code on",_Extended_Init_Class,_slx_xeh_unitAr,_unitClass,_x);
 		_slx_xeh_unitAr call _x;
 	} forEach _x;
 } forEach _inits;

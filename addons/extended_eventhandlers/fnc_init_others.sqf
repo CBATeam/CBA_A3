@@ -46,7 +46,7 @@ _data = _unitClass call FUNC(init_others_enum_cache);
 	_unit setVariable [_xehPlayer, _handlerPlayer];
 
 	#ifdef DEBUG_MODE_FULL
-		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _x, typeOf (_this select 0), count _handler > 0, count _handlerPlayer > 0] call SLX_XEH_LOG;
+		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _x, _unitClass, count _handler > 0, count _handlerPlayer > 0] call SLX_XEH_LOG;
 	#endif
 } forEach SLX_XEH_OTHER_EVENTS;
 
