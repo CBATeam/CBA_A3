@@ -22,7 +22,7 @@ Examples:
 	(end)
 
 Author:
-	Spooner
+	Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -31,63 +31,55 @@ SCRIPT(split);
 
 // ----------------------------------------------------------------------------
 
+private ["_strar", "_separ", "_countstr", "_countsepstr", "_split", "_curidx", "_curstr", "_char", "_sepidx", "_sephelper", "_newidx", "_cchar", "_schar"];
 PARAMS_1(_string);
 DEFAULT_PARAM(1,_separator,"");
 
-private ["_stringArray", "_split"];
-_stringArray = toArray _string;
+_strar = toArray _string;
+_separ = toArray _separator;
+_countstr = count _strar;
+_countsepstr = count _separ;
+if (_countsepstr > _countstr) exitWith {[]};
 _split = [];
-
-if (_separator == "") then
-{
-	// Special case, split into single character strings.
+if (_separator == "") then {
 	{
 		PUSH(_split,toString [_x]);
-	} forEach _stringArray;
+	} forEach _strar;
 } else {
-	private [ "_separatorArray", "_fragment",
-	"_currentIndex", "_foundIndex"];
-
-	_separatorArray = toArray _separator;
-
-	_currentIndex = 0;
-
-	while { _currentIndex < (count _stringArray) } do
-	{
-		_foundIndex = [_stringArray, _separatorArray, _currentIndex] call CBA_fnc_find;
-
-		// Not found, so use rest of string as final fragment.
-		if (_foundIndex < 0) exitWith
-		{
-			_fragment = [];
-
-			for "_i" from _currentIndex to ((count _stringArray) - 1) do
-			{
-				PUSH(_fragment,_stringArray select _i);
+	_curidx = 0;
+	_curstr = [];
+	while {_curidx < _countstr} do {
+		_char = _strar select _curidx;
+		if (_char != _separ select 0) then {
+			PUSH(_curstr,_char);
+		} else {
+			_sepidx = 0;
+			_sephelper = [];
+			_newidx = 0;
+			for "_i" from _curidx to _curidx + _countsepstr do {
+				if (_sepidx >= _countsepstr) exitWith {};
+				if (_i >= _countstr) exitWith {};
+				_cchar = _strar select _i;
+				_schar = _separ select _sepidx;
+				if (_cchar != _schar) exitWith {};
+				PUSH(_sephelper,_cchar);
+				INC(_sepidx);
+				_newidx = _i;
 			};
-
-			PUSH(_split,toString _fragment);
+			if (count _sephelper == _countsepstr) then { // match
+				_curidx = _newidx;
+				PUSH(_split,toString _curstr);
+				_curstr = [];
+			} else {
+				PUSH(_curstr,_char);
+			};
 		};
-
-		// Found, so use all string before found position as next fragment.
-		_fragment = [];
-
-		for "_i" from _currentIndex to (_foundIndex - 1) do
-		{
-			PUSH(_fragment,_stringArray select _i);
-		};
-
-		PUSH(_split,toString _fragment);
-
-		_currentIndex = _foundIndex + (count _separatorArray);
-
-		// If the separator is present at the end of the string, then
-		// add an empty string.
-		if (_currentIndex == (count _stringArray)) then
-		{
-			PUSH(_split,"");
-		};
+		INC(_curidx);
+	};
+	if (count _curstr > 0) then {
+		PUSH(_split,toString _curstr);
+	} else {
+		PUSH(_split,"");
 	};
 };
-
-_split ; // Return.
+_split
