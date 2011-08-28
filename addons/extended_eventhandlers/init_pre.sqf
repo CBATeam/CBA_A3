@@ -61,7 +61,7 @@ SLX_XEH_OTHER_EVENTS_XEH = [];
 SLX_XEH_OTHER_EVENTS_XEH_PLAYERS = [];
 { SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [_forEachIndex, format["Extended_%1EH_Player", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_PLAYERS = [];
-{ SLX_XEH_OTHER_EVENTS_PLAYERS set [_forEachIndex, compile format["{ _this call _x } forEach ((_this select 0)getVariable 'Extended_%1EH_Player')", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+{ SLX_XEH_OTHER_EVENTS_PLAYERS set [_forEachIndex, compile format["{ _this call _x } forEach ((_this select 0)getVariable SLX_XEH_STR_%1_Player)", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
