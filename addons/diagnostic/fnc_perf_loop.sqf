@@ -80,7 +80,7 @@ _dump = {
 
 _create = {
 	private "_pid";
-	_pid = [] spawn _dump;
+	_pid = SLX_XEH_STR spawn _dump;
 	waituntil {scriptDone _pid};
 };
 
@@ -91,12 +91,10 @@ if (time == 0) then { sleep 0.001 }; // Sleep until after the briefing
 
 // Induce lag by executing commands
 if (GVAR(lag)) then {
-	[] spawn {
+	SLX_XEH_STR spawn {
 		// By HojO
 		for "_i" from 0 to 100 do {
-		_null = [] spawn {
-			while{true} do {_LagMyGame = sin(cos(tan(sin(cos(tan(sin(cos(tan(0.12345678)))))))));};
-		};
+			_null = SLX_XEH_STR spawn { while{true} do {_LagMyGame = sin(cos(tan(sin(cos(tan(sin(cos(tan(0.12345678)))))))));} };
 		};
 	/*
 		private ["_nextTime", "_objects", "_logic"];
@@ -105,7 +103,7 @@ if (GVAR(lag)) then {
 		while {GVAR(lag)} do {
 			waitUntil {time > _nextTime};
 			TRACE_1("Lag Started","");
-			// [] spawn FUNC(lag3);
+			// SLX_XEH_STR spawn FUNC(lag3);
 			call FUNC(lag);
 			_nextTime = time + LAG_INTERVAL;
 			TRACE_1("Lag Ended","");
@@ -115,7 +113,7 @@ if (GVAR(lag)) then {
 };
 
 // Output logged information and add warnings when appropriate
-[] spawn {
+SLX_XEH_STR spawn {
 	private ["_nextTime", "_limit", "_high", "_a", "_b", "_deltaTick", "_deltaTime", "_log", "_do", "_ar"];
 	_nextTime = time + INTERVAL;
 	_limit = DELAY * DIFF;

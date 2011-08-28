@@ -126,7 +126,7 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 					_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 					if !(_scope == 0 && (_unitClass != _x)) then
 					{
-						if (!([] call _isExcluded) && (call _useEH)) then
+						if (!(call _isExcluded) && (call _useEH)) then
 						{
 							if (isText _initEntry) then
 							{

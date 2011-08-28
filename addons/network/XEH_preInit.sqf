@@ -87,7 +87,7 @@ if (SLX_XEH_MACHINE select 3) then
 
 	// Looped Weather Sync
 	/*
-	[] spawn
+	SLX_XEH_STR spawn
 	{
 		// Every 60 Seconds weather sync
 		while { true } do

@@ -52,7 +52,7 @@ _f = {
 	//diag_log ["EventCus",_eventCus, getText _handlerEntry,_handlers];
 	if !(_scope == 0 && (_unitClass != _class)) then
 	{
-		if !( [] call _isExcluded ) then
+		if !(call _isExcluded) then
 		{
 			if (isText _handlerEntry) then
 			{

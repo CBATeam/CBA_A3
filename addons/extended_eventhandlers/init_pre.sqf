@@ -1,6 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+_this = nil;
+
 private ["_id", "_cfgRespawn", "_respawn"];
 
 // UNIQUE Session ID since start of game
@@ -83,7 +85,7 @@ SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
 // Backup
 _fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { SLX_XEH_STR call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
