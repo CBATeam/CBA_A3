@@ -25,7 +25,9 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x
 
 _f = {
 	private ["_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceDEH"];
-	PARAMS_1(_eventCus, _handlers,_idx);
+
+	PARAMS_3(_eventCus,_handlers,_idx);
+
 	_eventCus = format["%1%2",_event, _eventCus];
 	_handlerEntry = _cfgEntry / _eventCus;
 	_serverHandlerEntry = _cfgEntry / format["server%1", _eventCus];
