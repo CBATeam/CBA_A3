@@ -1,5 +1,5 @@
 // XEH uses all existing event handlers
-#define EXTENDED_EVENTHANDLERS init = QUOTE(if(isnil'SLX_XEH_objects')then{call COMPILE_FILE2(extended_eventhandlers\preInit.sqf)};_this call SLX_XEH_EH_Init); \
+#define EXTENDED_EVENTHANDLERS init = QUOTE(if(isnil'SLX_XEH_objects')then{call COMPILE_FILE2(extended_eventhandlers\init_pre.sqf)};_this call SLX_XEH_EH_Init); \
 fired = "_this call SLX_XEH_EH_Fired"; \
 animChanged      = "_this call SLX_XEH_EH_AnimChanged"; \
 animStateChanged = "_this call SLX_XEH_EH_AnimStateChanged"; \

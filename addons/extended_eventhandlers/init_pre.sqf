@@ -145,7 +145,7 @@ GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 // Prepare postInit
 GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 GVAR(init_obj2) addEventHandler ["killed", {
-	call COMPILE_FILE(PostInit);
+	call COMPILE_FILE(init_post);
 	deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 }];
 
