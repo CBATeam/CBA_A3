@@ -55,7 +55,7 @@ _event_id = 0;
 	_config_id = if (_cached) then { 1 } else { 0 };
 	{
 		_config = _x;
-		_retData = [_config, _event_id, _unitClass, _classes, _hasDefaultEH] call FUNC(init_others_enum);
+		_retData = [_config, _event_id, _unitClass, _classes, if (_config_id == 0) then { _hasDefaultEH } else { false }] call FUNC(init_others_enum);
 
 		// Normal EH and Player EH code
 		(_configData select 0) set [_config_id, if ((_retData select 0) == "") then { nil } else { compile (_retData select 0) } ];

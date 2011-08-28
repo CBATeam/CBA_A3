@@ -12,15 +12,12 @@ private [
 // Function to update the event handler or handlers at a given index
 // into the _inits array
 _fSetInit = {
-	private ["_type", "_handler", "_cur"];
-	PARAMS_2(_idx,_init);
-	_type = SLX_XEH_INIT_TYPES find (_this select 2);	// 0 1 2
+	private ["_cur"];
+	PARAMS_3(_idx,_init,_type);
 
 	_cur = _inits select _idx;
-	if (isNil"_cur")then{ _cur = [nil, nil, nil] };
-	_handler = _cur;
-	_handler set [_type, _init];
-	_inits set [_idx, _handler];
+	if (isNil"_cur")then{ _cur = [nil, nil, nil]; _inits set [_idx, _cur] };
+	_cur set [_type, _init];
 };
 
 /*  If we're called following a respawn, the use of a XEH init EH is
@@ -68,7 +65,7 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 			if (isText _cfgEntry && (call _useEH)) then
 			{
 				_init = compile(getText _cfgEntry);
-				[_idx, _init, "all"] call _fSetInit;
+				[_idx, _init, 0] call _fSetInit;
 			} else {
 				// Composite XEH init class
 				if (isClass _cfgEntry) then
@@ -126,11 +123,9 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 								_init = compile(getText _initEntry);
 								if (_useDEHinit && _replaceDEH) then
 								{
-									//_inits set [0, _init];
-									[0, _init, "all"] call _fSetInit;
+									[0, _init, 0] call _fSetInit;
 								} else {
-									//_inits set [_idx, _init];
-									[_idx, _init, "all"] call _fSetInit;
+									[_idx, _init, 0] call _fSetInit;
 								};
 							};
 							if (SLX_XEH_MACHINE select 3) then
@@ -138,8 +133,7 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 								if (isText _serverInitEntry) then
 								{
 									_serverInit = compile(getText _serverInitEntry);
-									//_inits set [_idx, _serverInit];
-									[_idx, _serverInit, "server"] call _fSetInit;
+									[_idx, _serverInit, 1] call _fSetInit;
 								};
 							};
 							if (SLX_XEH_MACHINE select 0) then
@@ -147,8 +141,7 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 								if (isText _clientInitEntry) then
 								{
 									_clientInit = compile(getText _clientInitEntry);
-									//_inits set [_idx, _clientInit];
-									[_idx, _clientInit, "client"] call _fSetInit;
+									[_idx, _clientInit, 2] call _fSetInit;
 								};
 							};
 						};

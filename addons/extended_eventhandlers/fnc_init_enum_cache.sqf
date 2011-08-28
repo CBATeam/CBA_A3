@@ -3,7 +3,7 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit"];
+private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit", "_DEHinit"];
 
 PARAMS_3(_unitClass,_ehType,_isRespawn);
 
