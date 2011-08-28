@@ -15,7 +15,6 @@ SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
 XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version"));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
-private [];
 _cfgRespawn = (missionConfigFile/"respawn");
 _respawn = false;
 if ( isNumber(_cfgRespawn) ) then
@@ -42,6 +41,8 @@ SLX_XEH_MACHINE =
 	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // Machine type (only 3 possible configurations)
 	_id // SESSION_ID
 ];
+
+SLX_XEH_STR = ""; // Empty string
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
@@ -82,7 +83,7 @@ SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
 // Backup
 _fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { nil call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { SLX_XEH_STR call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
