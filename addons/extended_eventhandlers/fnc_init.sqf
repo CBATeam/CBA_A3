@@ -92,7 +92,7 @@ if !(_isRespawn) then {
 	};
 };
 
-if !(_post) then { _sys_inits set [count _sys_inits, compile format ["[_this select 0, %1, %2] call FUNC(init_post)",_isRespawn,_isDelayed]] };
+if !(_post) then { _sys_inits set [count _sys_inits, compile format ['[_this select 0, %1, %2] call FUNC(init_post)',_isRespawn,_isDelayed]] };
 
 
 /*
