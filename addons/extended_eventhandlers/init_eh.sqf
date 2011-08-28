@@ -13,7 +13,7 @@ SLX_XEH_EH_RespawnInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_thi
 	#define XEH_FUNC_NORMAL(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = { { _this call _x }forEach((_this select 0)getVariable SLX_XEH_STR_##A) }
 #endif
 
-#define XEH_FUNC_PLAYER(A) SLX_XEH_STR_##A_Player = 'Extended_##A##EH_Player'; SLX_XEH_EH_##A##_Player = { { _this call _x }forEach((_this select 0)getVariable SLX_XEH_STR_##A_Player) }
+#define XEH_FUNC_PLAYER(A) SLX_XEH_STR_##A##_Player = 'Extended_##A##EH_Player'; SLX_XEH_EH_##A##_Player = { { _this call _x }forEach((_this select 0)getVariable SLX_XEH_STR_##A_Player) }
 
 #define XEH_FUNC(A) XEH_FUNC_NORMAL(A); XEH_FUNC_PLAYER(A)
 
