@@ -12,7 +12,7 @@
 private [
 	"_slx_xeh_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
-	"_u", "_sim", "_data", "_config",
+	"_u", "_sim", "_data",
 	"_isMan", "_fSetInit", "_post", "_isDelayed", "_sys_inits", "_slx_xeh_unitAr"
 ];
 
@@ -109,9 +109,8 @@ _slx_xeh_unitAr = [_slx_xeh_unit];
 // forEach configFile type
 {
 	// forEach code
-	_config = _x;
 	{
-		TRACE_3("Running Code on",_config,_slx_xeh_unitAr,_x);
+		TRACE_2("Running Code on",_slx_xeh_unitAr,_x);
 		_slx_xeh_unitAr call _x;
 	} forEach _x;
 } forEach _inits;
