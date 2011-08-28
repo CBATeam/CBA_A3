@@ -1,8 +1,9 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+private ["_id", "_cfgRespawn", "_respawn"];
+
 // UNIQUE Session ID since start of game
-private ["_id"];
 _id = uiNamespace getVariable "SLX_XEH_ID";
 if (isNil "_id") then { _id = 1 } else { INC(_id) };
 uiNamespace setVariable ["SLX_XEH_ID", _id];
@@ -14,7 +15,7 @@ SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
 XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version"));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
-private ["_cfgRespawn", "_respawn"];
+private [];
 _cfgRespawn = (missionConfigFile/"respawn");
 _respawn = false;
 if ( isNumber(_cfgRespawn) ) then
@@ -42,10 +43,6 @@ SLX_XEH_MACHINE =
 	_id // SESSION_ID
 ];
 
-// Backup
-_fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { nil call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
-
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
@@ -64,78 +61,6 @@ SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
 SLX_XEH_INIT_TYPES = ["all", "server", "client"];
 SLX_XEH_DEF_CLASSES = ["", "All"];
 
-SLX_XEH_LOG = { XEH_LOG(_this); };
-
-PREP(init_once); // Pre and PostInit
-PREP(init_delayed);
-PREP(addPlayerEvents); // Add / Remove the playerEvents
-PREP(removePlayerEvents);
-PREP(init_playable);
-PREP(support_monitor);
-PREP(support_monitor2);
-
-SLX_XEH_init = COMPILE_FILE2(extended_eventhandlers\Init.sqf);
-SLX_XEH_initPost = COMPILE_FILE2(extended_eventhandlers\InitPost.sqf);
-SLX_XEH_initOthers = COMPILE_FILE2(extended_eventhandlers\InitOthers.sqf);
-SLX_XEH_postInit = COMPILE_FILE2(extended_eventhandlers\PostInit.sqf);
-
-PREP(init_enum);
-PREP(init_enum_cache);
-PREP(init_others_enum);
-PREP(init_others_enum_cache);
-
-// The actual XEH functions that are called from within the engine eventhandlers.
-// This can also be uesd for better debugging
-#ifdef DEBUG_MODE_FULL
-	#define XEH_FUNC_NORMAL(A) SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
-#endif
-#ifndef DEBUG_MODE_FULL
-	#define XEH_FUNC_NORMAL(A) SLX_XEH_EH_##A = { { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH') }
-#endif
-
-#define XEH_FUNC_PLAYER(A) SLX_XEH_EH_##A##_Player = { { _this call _x }forEach((_this select 0)getVariable'Extended_##A##EH_Player') }
-
-#define XEH_FUNC(A) XEH_FUNC_NORMAL(A); XEH_FUNC_PLAYER(A)
-
-XEH_FUNC(Hit);
-XEH_FUNC(AnimChanged);
-XEH_FUNC(AnimStateChanged);
-XEH_FUNC(Dammaged);
-XEH_FUNC(Engine);
-XEH_FUNC(FiredNear);
-XEH_FUNC(Fuel);
-XEH_FUNC(Gear);
-XEH_FUNC(GetIn);
-XEH_FUNC(GetOut);
-XEH_FUNC(IncomingMissile);
-XEH_FUNC(Hit);
-XEH_FUNC(Killed);
-XEH_FUNC(LandedTouchDown);
-XEH_FUNC(LandedStopped);
-XEH_FUNC(Respawn);
-XEH_FUNC(MPHit);
-XEH_FUNC(MPKilled);
-XEH_FUNC(MPRespawn);
-XEH_FUNC(FiredBis);
-
-SLX_XEH_EH_Init = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0,'Extended_Init_EventHandlers']call SLX_XEH_init };
-SLX_XEH_EH_RespawnInit = { PUSH(SLX_XEH_PROCESSED_OBJECTS,_this select 0); [_this select 0, "Extended_Init_EventHandlers", true] call SLX_XEH_init };
-SLX_XEH_EH_GetInMan = { {[_this select 2, _this select 1, _this select 0] call _x }forEach((_this select 2)getVariable'Extended_GetInManEH') };
-SLX_XEH_EH_GetOutMan = { {[_this select 2, _this select 1, _this select 0] call _x }forEach((_this select 2)getVariable'Extended_GetOutManEH') };
-SLX_XEH_EH_Fired =
-{
-	#ifdef DEBUG_MODE_FULL
-		// diag_log ['Fired',_this, local (_this select 0), typeOf (_this select 0)];
-	#endif
-	_this call SLX_XEH_EH_FiredBis;
-	_feh = ((_this select 0)getVariable'Extended_FiredEH');
-	if (count _feh > 0) then { 
-		_c=count _this;
-		if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};
-		{_this call _x } forEach _feh;
-	};
-};
-
 SLX_XEH_DELAYED = [];
 
 // XEH for non XEH supported addons
@@ -151,6 +76,38 @@ SLX_XEH_PROCESSED_OBJECTS = []; // Used to maintain the list of processed object
 SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup
 SLX_XEH_FULL_CLASSES = []; // Used to cache classes that NEED full XEH setup
 SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
+
+
+// Function Compilation
+
+// Backup
+_fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
+if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { nil call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+
+SLX_XEH_LOG = { XEH_LOG(_this); };
+
+PREP(init_once); // Pre and PostInits
+
+PREP(init_delayed);
+PREP(init_playable);
+
+// Inits and InitPosts
+PREP(init);
+PREP(init_enum);
+PREP(init_enum_cache);
+PREP(init_post);
+
+// Init Others
+PREP(init_others);
+PREP(init_others_enum);
+PREP(init_others_enum_cache);
+
+PREP(addPlayerEvents); // Add / Remove the playerEvents
+PREP(removePlayerEvents);
+PREP(support_monitor);
+PREP(support_monitor2);
+
+call COMPILE_FILE(init_eh); // All XEH Event functions
 
 
 /*
@@ -188,7 +145,7 @@ GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 // Prepare postInit
 GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 GVAR(init_obj2) addEventHandler ["killed", {
-	call SLX_XEH_postInit;
+	call COMPILE_FILE(PostInit);
 	deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
 }];
 
@@ -245,7 +202,6 @@ GVAR(init_obj2) addEventHandler ["killed", {
 	GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 };
 
-
 // Load and call any "pre-init", run-once event handlers
 /*
 	Compile code strings in the Extended_PreInit_EventHandlers class and call
@@ -254,8 +210,7 @@ GVAR(init_obj2) addEventHandler ["killed", {
 	in such a pre-init "EH" rather than in a normal XEH init EH which might be
 	called several times.
 */
-{
-	(_x/"Extended_PreInit_EventHandlers") call FUNC(INIT_ONCE);
-} forEach [configFile, campaignConfigFile, missionConfigFile];
+{ (_x/"Extended_PreInit_EventHandlers") call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
+
 
 XEH_LOG("XEH: PreInit Finished");

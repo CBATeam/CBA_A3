@@ -79,20 +79,20 @@ if !(_isRespawn) then {
 	// Set up code for the remaining event handlers too...
 	// This is in PostInit as opposed to (pre)Init,
 	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
-	// Run men's SLX_XEH_initOthers in PostInit, only when in Multiplayer
+	// Run men's FUNC(init_others) in PostInit, only when in Multiplayer
 	// Run supportM
 	if (_post) then {
 		if (_isMan) then {
 			_sys_inits set [count _sys_inits, {_this call FUNC(init_playable) }];
-			if (isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
+			if (isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call FUNC(init_others)}] };
 		};
 	} else {
 		_sys_inits set [count _sys_inits, {_this call FUNC(support_monitor2)}];
-		if (!_isMan || !isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call SLX_XEH_initOthers}] };
+		if (!_isMan || !isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call FUNC(init_others)}] };
 	};
 };
 
-if !(_post) then { _sys_inits set [count _sys_inits, compile format ["[_this select 0, %1, %2] call SLX_XEH_initPost",_isRespawn,_isDelayed]] };
+if !(_post) then { _sys_inits set [count _sys_inits, compile format ["[_this select 0, %1, %2] call FUNC(init_post)",_isRespawn,_isDelayed]] };
 
 
 /*
