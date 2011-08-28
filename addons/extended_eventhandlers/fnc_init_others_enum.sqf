@@ -100,7 +100,7 @@ _names = []; _namesPlayer = [];
 // EH to be called.
 if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 {
-	_handlers = [getText(configFile/"DefaultEventhandlers"/_event)];
+	_handlers = [[getText(configFile/"DefaultEventhandlers"/_event)]];
 };
 
 // Search the mission config file (description.ext), then campaign
