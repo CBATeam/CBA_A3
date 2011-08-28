@@ -6,33 +6,20 @@
 private [
 	"_fSetInit", "_onRespawn", "_useEH", "_inits", "_i", "_t", "_name", "_idx", "_names", "_init", "_clientInit", "_serverInit",
 	"_cfgEntry", "_respawnEntry", "_scopeEntry", "_initEntry", "_serverInitEntry", "_clientInitEntry",
-	"_excludeEntry", "_excludeClass", "_excludeClasses", "_replaceDEH", "_replaceEntry"
+	"_excludeEntry", "_excludeClass", "_excludeClasses", "_replaceDEH", "_replaceEntry", "_flatInits"
 ];
 
 // Function to update the event handler or handlers at a given index
 // into the _inits array
 _fSetInit = {
-	private ["_idx", "_init", "_type", "_handler", "_cur"];
-	_idx=_this select 0;
-	_init = _this select 1;
-	_type=SLX_XEH_INIT_TYPES find (_this select 2);	// 0 1 2
+	private ["_type", "_handler", "_cur"];
+	PARAMS_2(_idx,_init);
+	_type = SLX_XEH_INIT_TYPES find (_this select 2);	// 0 1 2
 
-	_handler={};
-	_cur=_inits select _idx;
-	if (isNil"_cur")then{_cur={};};
-	if (typeName _cur == "ARRAY") then
-	{
-		_handler = _cur;
-		_handler set [_type, _init];
-	} else {
-		if (_type > 0) then
-		{
-			_handler=[_cur,{},{}];
-			_handler set [_type, _init];
-		} else {
-			_handler=_init;
-		};
-	};
+	_cur = _inits select _idx;
+	if (isNil"_cur")then{ _cur = [nil, nil, nil] };
+	_handler = _cur;
+	_handler set [_type, _init];
 	_inits set [_idx, _handler];
 };
 
@@ -172,4 +159,17 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 	};
 } forEach _classes;
 
-_inits;
+
+_flatInits = [];
+{
+	if (typeName _x=="CODE") then
+	{
+		// Normal code type handler
+		PUSH(_flatInits,_x);
+	} else {
+		// It's an array of handlers (all, server, client)
+		{if !(isNil "_x") then { PUSH(_flatInits,_x) } } forEach _x;
+	};
+} forEach _inits;
+
+_flatInits;
