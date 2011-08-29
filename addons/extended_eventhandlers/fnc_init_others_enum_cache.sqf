@@ -32,7 +32,7 @@ if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exit
 _cfgs = if (_cached) then { TRACE_1("Partial Cached",_unitClass); SLX_XEH_CONFIG_FILES_VARIABLE } else { TRACE_1("Not Cached",_unitClass); SLX_XEH_CONFIG_FILES };
 
 _ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-_hasDefaultEH = (configName(_ehSuper)=="DefaultEventhandlers");
+_hasDefaultEH = (configName(_ehSuper)==SLX_XEH_STR_DEH);
 
 // Get array of inherited classes of unit.
 if (_cached) then {

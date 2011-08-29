@@ -48,7 +48,7 @@ _config_id = if (_cached) then { 1 } else { 0 };
 	_config = _x;
 
 	/*
-	*  Several BIS vehicles use a set of EH:s in the BIS "DefaultEventhandlers"
+	*  Several BIS vehicles use a set of EH:s in the BIS SLX_XEH_STR_DEH
 	*  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
 	*
 	*  Further, The AAV class uses a variation of this DefaultEventhandlers set with
@@ -64,12 +64,12 @@ _config_id = if (_cached) then { 1 } else { 0 };
 	if (_config_id == 0 && _ehType == SLX_XEH_STR_INIT_EH) then
 	{
 		_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-		if (configName(_ehSuper)=="DefaultEventhandlers") then
+		if (configName(_ehSuper)==SLX_XEH_STR_DEH) then
 		{
-			if (isText (configFile/"DefaultEventhandlers"/"init")) then
+			if (isText (configFile/SLX_XEH_STR_DEH/"init")) then
 			{
 				_useDEHinit = true;
-				_DEHinit = getText(configFile/"DefaultEventhandlers"/"init");
+				_DEHinit = getText(configFile/SLX_XEH_STR_DEH/"init");
 			};
 		};
 	};

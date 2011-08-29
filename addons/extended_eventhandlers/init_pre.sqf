@@ -51,6 +51,7 @@ SLX_XEH_STR_INIT_EH = "Extended_Init_EventHandlers";
 SLX_XEH_STR_INIT_POST_EH = "Extended_InitPost_EventHandlers";
 SLX_XEH_STR_PreInit = "Extended_PreInit_EventHandlers";
 SLX_XEH_STR_PostInit = "Extended_PostInit_EventHandlers";
+SLX_XEH_STR_DEH = "DefaultEventhandlers";
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];
@@ -68,7 +69,7 @@ SLX_XEH_OTHER_EVENTS_PLAYERS = [];
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
 
-SLX_XEH_DEF_CLASSES = ["", "All"];
+SLX_XEH_DEF_CLASSES = [SLX_XEH_STR, "All"];
 
 SLX_XEH_DELAYED = [];
 

@@ -18,7 +18,7 @@ _fSetHandler = {
 
 	_cur = _handlers select _idx;
 	if (isNil"_cur")then{_cur=[nil,nil,nil]; _handlers set [_idx,_cur] };
-	_cur set [_type, if (_handler == "") then { nil } else { compile _handler }]
+	_cur set [_type, if (_handler == SLX_XEH_STR) then { nil } else { compile _handler }]
 };
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
@@ -98,10 +98,10 @@ _names = []; _namesPlayer = [];
 // DefaultEventhandlers? If so, include BIS own default handler for the
 // event type currently being processed and make it the first
 // EH to be called.
-if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
+if (_hasDefaultEH && isText(configFile/SLX_XEH_STR_DEH/_event)) then
 {
-	_handler = getText(configFile/"DefaultEventhandlers"/_event);
-	if (_handler != "") then { _handlers = [[compile _handler]] };
+	_handler = getText(configFile/SLX_XEH_STR_DEH/_event);
+	if (_handler != SLX_XEH_STR) then { _handlers = [[compile _handler]] };
 };
 
 // Search the mission config file (description.ext), then campaign
@@ -109,13 +109,13 @@ if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 // extended event handlers to use.
 {
 	_class = _x;
-	if ((configName (_configFile/_Extended_EH_Class/_class))!= "") then
+	if ((configName (_configFile/_Extended_EH_Class/_class))!= SLX_XEH_STR) then
 	{
 		_i = 0;
 		_t = count (_configFile/_Extended_EH_Class/_class);
 		while { _i<_t } do
 		{
-			_excludeClass = "";
+			_excludeClass = SLX_XEH_STR;
 			_excludeClasses = [];
 			_cfgEntry = (_configFile/_Extended_EH_Class/_class) select _i;
 			_name = configName _cfgEntry;
@@ -154,7 +154,7 @@ if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 					};
 					_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
 					// Handle event, serverEvent and clientEvent, for both normal and player
-					{ _x call _f } forEach [["", _handlers, _idx], ["Player", _handlersPlayer, _idxPlayer]];
+					{ _x call _f } forEach [[SLX_XEH_STR, _handlers, _idx], ["Player", _handlersPlayer, _idxPlayer]];
 				};
 			};
 			INC(_i);

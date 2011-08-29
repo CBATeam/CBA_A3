@@ -37,14 +37,14 @@ _names = [];	// event handler config entry names
 _inits = [];	// array of handlers or arrays with handlers, the
 			// later being used for XEH handlers that make use of
 			// the serverInit and clientInit feature.
-_excludeClass = "";
+_excludeClass = SLX_XEH_STR;
 _excludeClasses = [];
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
 
 PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 
 {
-	if ((configName (_configFile/_x))!= "") then
+	if ((configName (_configFile/_x))!= SLX_XEH_STR) then
 	{
 		_i = 0;
 		_t = count (_configFile/_x);
@@ -77,7 +77,7 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 					_respawnEntry = _cfgEntry / "onRespawn";
 					_replaceEntry = _cfgEntry / "replaceDEH";
 					_excludeClasses = [];
-					_excludeClass = "";
+					_excludeClass = SLX_XEH_STR;
 					if (isText _excludeEntry) then
 					{
 						_excludeClass = (getText _excludeEntry);
