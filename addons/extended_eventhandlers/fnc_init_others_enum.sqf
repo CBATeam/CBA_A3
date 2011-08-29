@@ -18,7 +18,7 @@ _fSetHandler = {
 
 	_cur = _handlers select _idx;
 	if (isNil"_cur")then{_cur=[nil,nil,nil]; _handlers set [_idx,_cur] };
-	_cur set [_type, _handler]
+	_cur set [_type, if (_handler == "") then { nil } else { compile _handler }]
 };
 
 _isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
@@ -162,18 +162,18 @@ if (_hasDefaultEH && isText(configFile/"DefaultEventhandlers"/_event)) then
 } forEach _classes;
 
 // Now concatenate all the handlers into one string
-_handler = "";
+_handler = [];
 {
 	_h=_x;
 	// It's an array of handlers (all, server, client)
-	if !(isNil "_h") then { {if !(isNil "_x") then { _handler = _handler + _x + ";" } } forEach _h };
+	if !(isNil "_h") then { {if !(isNil "_x") then { PUSH(_handler,_x) } } forEach _h };
 } forEach _handlers;
 
-_handlerPlayer = "";
+_handlerPlayer = [];
 {
 	_h=_x;
 	// It's an array of handlers (all, server, client)
-	if !(isNil "_h") then { {if !(isNil "_x") then { _handlerPlayer = _handlerPlayer + _x + ";" } } forEach _h };
+	if !(isNil "_h") then { {if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach _h };
 } forEach _handlersPlayer;
 
 [_handler, _handlerPlayer];
