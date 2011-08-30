@@ -55,7 +55,10 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	#endif
 
 	// PreCache Init eventhandlers
-	if !(SLX_XEH_RECOMPILE) then { [_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache) };
+	if !(SLX_XEH_RECOMPILE) then {
+		[_unitClass, _Extended_Init_Class, false] call FUNC(init_enum_cache);
+		[_unitClass, _Extended_Init_Class, true] call FUNC(init_enum_cache);
+	};
 
 	// Wait for the unit to be fully "ready"
 	if (SLX_XEH_MACHINE select 7) then {
@@ -70,7 +73,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	nil;
 };
 
-if (_isMan) then { if !(isNil "SLX_XEH_INIT_MEN") then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
+if (_isMan) then { if !(_slx_xeh_unit in SLX_XEH_INIT_MEN) then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
 
 // All inits
 _inits = [_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
