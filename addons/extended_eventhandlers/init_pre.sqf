@@ -53,6 +53,7 @@ SLX_XEH_STR_PreInit = "Extended_PreInit_EventHandlers";
 SLX_XEH_STR_PostInit = "Extended_PostInit_EventHandlers";
 SLX_XEH_STR_DEH = "DefaultEventhandlers";
 SLX_XEH_STR_TAG = "SLX_XEH_";
+SLX_XEH_STR_PLAYABLE = "SLX_XEH_PLAYABLE";
 
 SLX_XEH_objects = [];
 SLX_XEH_INIT_MEN = [];

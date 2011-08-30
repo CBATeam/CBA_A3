@@ -16,7 +16,7 @@ if (isNull _unit) exitWith {
 	format["XEH BEG: (Bug #7432) %2 is now ready for init", time, _unit] call SLX_XEH_LOG;
 #endif
 
-_unitPlayable = _unit getVariable "SLX_XEH_PLAYABLE";
+_unitPlayable = _unit getVariable SLX_XEH_STR_PLAYABLE;
 if (isNil "_unitPlayable") then { _unitPlayable = false };
 
 // If unit already has the variable, it is a respawned unit.

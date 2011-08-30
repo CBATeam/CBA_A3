@@ -6,7 +6,7 @@
 private ["_var"];
 PARAMS_1(_unit);
 
-_var = _unit getVariable "SLX_XEH_PLAYABLE";
+_var = _unit getVariable SLX_XEH_STR_PLAYABLE;
 if !(isNil "_var") exitWith {}; // Already set
 if (_unit in playableUnits || isPlayer _unit || _unit == player) then
 {
