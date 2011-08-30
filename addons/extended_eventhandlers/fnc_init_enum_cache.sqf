@@ -7,7 +7,7 @@ private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_con
 
 PARAMS_3(_unitClass,_ehType,_isRespawn);
 
-_storageKey = ("SLX_XEH_" + _unitClass + _ehType); // TODO: Cache??
+_storageKey = ("SLX_XEH_" + _unitClass + _ehType + str(_isRespawn)); // TODO: Cache??
 
 _types = uiNamespace getVariable _storageKey;
 //        ded, server, client, SESSION_ID
