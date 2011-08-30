@@ -7,7 +7,8 @@ private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_con
 
 PARAMS_3(_unitClass,_ehType,_isRespawn);
 
-_storageKey = ("SLX_XEH_" + _unitClass + _ehType + if (_isRespawn) then { str(_isRespawn) } else { SLX_XEH_STR }); // TODO: Cache??
+_storageKey = (SLX_XEH_STR_TAG + _unitClass + _ehType);
+if (_isRespawn) then { _storageKey = (_storageKey + "_respawn") };
 
 _types = uiNamespace getVariable _storageKey;
 //        ded, server, client, SESSION_ID
