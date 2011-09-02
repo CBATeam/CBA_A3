@@ -3,7 +3,7 @@ class CfgPatches
 	class Extended_EventHandlers
 	{
 		units[] = {};
-		requiredVersion = 1.05;
+		requiredVersion = REQUIRED_VERSION;
 		SLX_XEH2_Version = VERSION_SCALAR;
 		version = VERSION;
 		versionStr = QUOTE(VERSION);
