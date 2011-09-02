@@ -60,6 +60,7 @@ class CfgPatches
 			"CACharacters_PMC" // Soldier_PMC, Soldier_Engineer_PMC, Soldier_Crew_PMC, Soldier_Medic_PMC, Soldier_TL_PMC, Soldier_MG_PMC, Soldier_Sniper_PMC, Soldier_GL_PMC, Soldier_Bodyguard_AA12_PMC, Soldier_AA_PMC, Soldier_AT_PMC, Poet_PMC, Ry_PMC, Reynolds_PMC, Tanny_PMC, Dixon_PMC
 		};
 	};
+	class CBA_Extended_EventHandlers { units[] = {}; weapons[] = {}; requiredVersion = REQUIRED_VERSION; requiredAddons[] = {}; };
 };
 
 // Disabled preLoadAddons; These are not required since XEH only overrides the
