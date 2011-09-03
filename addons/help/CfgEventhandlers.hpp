@@ -1,11 +1,11 @@
 class Extended_PreInit_EventHandlers {
 	class ADDON {
-		init = QUOTE(call COMPILE_FILE(XEH_preClientInit));
+		clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
 	};
 };
 
 class Extended_PostInit_EventHandlers {
 	class ADDON {
-		init = QUOTE(call COMPILE_FILE(XEH_postClientInit));
+		clientInit = QUOTE(call COMPILE_FILE(XEH_postClientInit));
 	};
 };
