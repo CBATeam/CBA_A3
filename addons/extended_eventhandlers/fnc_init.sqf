@@ -21,7 +21,7 @@ private [
 #endif
 
 // Get unit.
-PARAMS_2(_slx_xeh_unit,_Extended_Init_Class);
+PARAMS_1(_slx_xeh_unit);
 
 if (isNull _slx_xeh_unit) exitWith {
 	#ifdef DEBUG_MODE_FULL
@@ -29,6 +29,7 @@ if (isNull _slx_xeh_unit) exitWith {
 	#endif
 };
 
+DEFAULT_PARAM(1,_Extended_Init_Class,SLX_XEH_STR_INIT_EH);
 DEFAULT_PARAM(2,_isRespawn,false);
 DEFAULT_PARAM(3,_isDelayed,false);
 _unitClass = typeOf _slx_xeh_unit;
