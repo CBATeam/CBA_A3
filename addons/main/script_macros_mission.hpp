@@ -1,4 +1,4 @@
-#include "\x\cba\addons\main\script_component.hpp" 
+#include "\x\cba\addons\main\script_macros_common.hpp"
 
 /*
     Header: script_macros_mission.hpp
