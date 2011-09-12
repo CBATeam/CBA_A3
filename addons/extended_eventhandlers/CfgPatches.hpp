@@ -57,7 +57,8 @@ class CfgPatches
 			"CAMisc_E", // FlagCarrierUNO_EP1, FlagCarrierRedCrystal_EP1, FlagCarrierTFKnight_EP1, FlagCarrierCDFEnsign_EP1, FlagCarrierRedCross_EP1, FlagCarrierUSArmy_EP1, FlagCarrierTKMilitia_EP1, FlagCarrierRedCrescent_EP1, FlagCarrierGermany_EP1, FlagCarrierNATO_EP1, FlagCarrierBIS_EP1, FlagCarrierCzechRepublic_EP1, FlagCarrierPOWMIA_EP1, FlagCarrierBLUFOR_EP1, FlagCarrierOPFOR_EP1, FlagCarrierINDFOR_EP1, FlagCarrierTakistan_EP1, FlagCarrierTakistanKingdom_EP1, FlagCarrierUSA_EP1, FlagCarrierCDF_EP1, FlagCarrierWhite_EP1
 			"CA_CruiseMissile", // CruiseMissile2
 			"CA_PMC", // FlagCarrierIONblack_PMC, FlagCarrierIONwhite_PMC
-			"CACharacters_PMC" // Soldier_PMC, Soldier_Engineer_PMC, Soldier_Crew_PMC, Soldier_Medic_PMC, Soldier_TL_PMC, Soldier_MG_PMC, Soldier_Sniper_PMC, Soldier_GL_PMC, Soldier_Bodyguard_AA12_PMC, Soldier_AA_PMC, Soldier_AT_PMC, Poet_PMC, Ry_PMC, Reynolds_PMC, Tanny_PMC, Dixon_PMC
+			"CACharacters_PMC", // Soldier_PMC, Soldier_Engineer_PMC, Soldier_Crew_PMC, Soldier_Medic_PMC, Soldier_TL_PMC, Soldier_MG_PMC, Soldier_Sniper_PMC, Soldier_GL_PMC, Soldier_Bodyguard_AA12_PMC, Soldier_AA_PMC, Soldier_AT_PMC, Poet_PMC, Ry_PMC, Reynolds_PMC, Tanny_PMC, Dixon_PMC
+			"CAUI" // for overriding join buttons in MP (caching)
 		};
 	};
 	class CBA_Extended_EventHandlers { units[] = {}; weapons[] = {}; requiredVersion = REQUIRED_VERSION; requiredAddons[] = {}; };

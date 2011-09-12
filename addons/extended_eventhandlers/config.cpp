@@ -21,3 +21,4 @@ class CfgSettings
 #include "CfgPatches.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
+#include "CfgRscStd.hpp"
