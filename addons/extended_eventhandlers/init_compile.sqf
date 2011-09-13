@@ -15,7 +15,7 @@ private "_fnc_compile";
 TRACE_1("Init Compile",_this);
 
 _fnc_compile = {
-	private ["_cba_int_code", "_recompile"];
+	private ["_cba_int_code", "_recompile", "_isCached"];
 
 	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then { 
 		if (isNil "SLX_XEH_MACHINE" || isNil "CBA_isCached") then {
@@ -30,10 +30,12 @@ _fnc_compile = {
 
 	// TODO: Unique namespace?
 	_cba_int_code = uiNamespace getVariable _this;
-	if (isNil '_cba_int_code' || _recompile) then {
+	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { _this in CBA_CACHE_KEYS };
+	if (isNil '_cba_int_code' || _recompile || !_isCached) then {
 		TRACE_1('Compiling',_this);
 		_cba_int_code = compile preProcessFileLineNumbers _this;
 		uiNameSpace setVariable [_this, _cba_int_code];
+		if (!_isCached && !isNil "CBA_CACHE_KEYS") then { PUSH(CBA_CACHE_KEYS,_this) };
 	} else { TRACE_1('Retrieved from cache',_this) };
 
 	_cba_int_code;

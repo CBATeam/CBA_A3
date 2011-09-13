@@ -77,7 +77,8 @@ for "_t" from 0 to 2 do {
 
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
 							_uifn = uiNamespace getVariable _fn;
-							if (isNil "_uifn" || _recompile) then {
+							_inCache = !isMultiplayer || _itemPath in CBA_CACHE_KEYS;
+							if (isNil "_uifn" || _recompile || !_inCache) then {
 								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
@@ -86,6 +87,8 @@ for "_t" from 0 to 2 do {
 							#else
 								missionNameSpace setVariable [_fn, uiNamespace getVariable _itemPath];
 							#endif
+
+							if (!_inCache) then { PUSH(CBA_CACHE_KEYS,_itemPath) };
 						};
 					};
 				};

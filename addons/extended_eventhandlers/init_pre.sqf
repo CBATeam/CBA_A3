@@ -13,10 +13,20 @@ if (isNil "_id") then { _id = 1 } else { if (typeName _id != "SCALAR") then { _i
 uiNamespace setVariable ["SLX_XEH_ID", _id];
 
 CBA_isCached = uiNamespace getVariable "CBA_isCached";
-if (isNil "CBA_isCached" && isMultiplayer) then { CBA_isCached = -1 } else { CBA_isCached = _id };
+if (isNil "CBA_isCached" && isMultiplayer) then { CBA_isCached = -1 } else { CBA_isCached = _id; };
 uiNamespace setVariable ["CBA_isCached", CBA_isCached];
 
 if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = (CBA_isCached != (SLX_XEH_MACHINE select 11)) || CACHE_DIS(xeh); };
+
+if (CBA_isCached == -1 || !isMultiplayer) then {
+	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS", []];
+	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS2", []];
+	uiNamespace setVariable ["CBA_CACHE_KEYS", []];
+};
+
+SLX_XEH_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
+SLX_XEH_CACHE_KEYS2 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS2";
+CBA_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
 
 
 // Always compile cache function once

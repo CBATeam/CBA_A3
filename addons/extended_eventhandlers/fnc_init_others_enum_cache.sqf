@@ -3,7 +3,7 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH", "_storageKey"];
+private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH", "_storageKey", "_inCache"];
 
 PARAMS_1(_unitClass);
 
@@ -15,7 +15,8 @@ if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable
 _type = SLX_XEH_MACHINE select 10;
 
 // _data for events (Fired, etc)
-_cached = !SLX_XEH_RECOMPILE;
+_inCache = !isMultiplayer || _unitClass in SLX_XEH_CACHE_KEYS2;
+_cached = !SLX_XEH_RECOMPILE && _inCache;
 _data = _types select _type;
 if (isNil "_data" || !_cached) then { _data = []; _types set [_type, _data]; _cached = false };
 
@@ -68,6 +69,8 @@ _event_id = 0;
 
 // Tag this unit class with the current session id
 _types set [3, uiNamespace getVariable "SLX_XEH_ID"];
+
+if (!_inCache) then { PUSH(SLX_XEH_CACHE_KEYS2,_unitClass) };
 
 // Return data
 _data;
