@@ -28,7 +28,7 @@ if (!isMultiplayer || isDedicated || CBA_isCached == -1) then {
 SLX_XEH_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
 SLX_XEH_CACHE_KEYS2 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS2";
 SLX_XEH_CACHE_KEYS3 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS3";
-CBA_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
+CBA_CACHE_KEYS = uiNamespace getVariable "CBA_CACHE_KEYS";
 
 
 // Always compile cache function once
