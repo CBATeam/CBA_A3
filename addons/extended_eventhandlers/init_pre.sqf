@@ -92,9 +92,8 @@ SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
 // Function Compilation
 
-// Backup
-_fnc_compile = uiNamespace getVariable "SLX_XEH_COMPILE";
-if (isNil "_fnc_compile" || SLX_XEH_RECOMPILE) then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' };
+// Always compile it once to clear
+call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf';
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 

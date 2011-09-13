@@ -5,6 +5,6 @@
 
 TRACE_1("",_this);
 
-if (isNil 'SLX_XEH_objects') then { call COMPILE_FILE2(extended_eventhandlers\init_pre.sqf) };
+if (isNil 'SLX_XEH_objects') then { call compile preProcessFileLineNumbers 'extended_eventhandlers\init_pre.sqf' };
 
 _this call FUNC(init);
