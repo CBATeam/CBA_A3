@@ -76,7 +76,7 @@ for "_t" from 0 to 2 do {
 							#endif
 
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
-							_uifn = uiNamespace getVariable _fn;
+							_uifn = uiNamespace getVariable _itemPath;
 							_inCache = !isMultiplayer || isDedicated || _itemPath in CBA_CACHE_KEYS;
 							if (isNil "_uifn" || _recompile || !_inCache) then {
 								#ifdef DEBUG_MODE_FULL
