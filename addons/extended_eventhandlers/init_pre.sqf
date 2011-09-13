@@ -16,7 +16,7 @@ CBA_isCached = uiNamespace getVariable "CBA_isCached";
 if (isNil "CBA_isCached" && isMultiplayer) then { CBA_isCached = -1 } else { CBA_isCached = _id; };
 uiNamespace setVariable ["CBA_isCached", CBA_isCached];
 
-if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = (CBA_isCached != (SLX_XEH_MACHINE select 11)) || CACHE_DIS(xeh); };
+if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = CACHE_DIS(xeh) };
 
 if (CBA_isCached == -1 || !isMultiplayer) then {
 	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS", []];

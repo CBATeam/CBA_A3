@@ -21,7 +21,7 @@ _fnc_compile = {
 		if (isNil "SLX_XEH_MACHINE" || isNil "CBA_isCached") then {
 			true;
 		} else {
-			CBA_COMPILE_RECOMPILE = (CBA_isCached != (SLX_XEH_MACHINE select 11)) || CACHE_DIS(compile);
+			CBA_COMPILE_RECOMPILE = CACHE_DIS(compile);
 			CBA_COMPILE_RECOMPILE;
 		};
 	} else {
