@@ -16,7 +16,7 @@ if (CBA_FUNC_RECOMPILE) then { _recompile = true };
 
 #ifdef DEBUG_MODE_FULL
 	_timeStart = diag_tickTime;
-	diag_log [diag_frameNo, diag_tickTime, time, "Initializing function module", _this];
+	diag_log [diag_frameNo, diag_tickTime, time, "Initializing function module", _this, _recompile, CBA_FUNC_RECOMPILE];
 #endif
 
 
@@ -79,6 +79,9 @@ for "_t" from 0 to 2 do {
 							_uifn = uiNamespace getVariable _fn;
 							_inCache = !isMultiplayer || isDedicated || _itemPath in CBA_CACHE_KEYS;
 							if (isNil "_uifn" || _recompile || !_inCache) then {
+								#ifdef DEBUG_MODE_FULL
+									diag_log ["Compiling", _itemName,_itemPathItem,_itemPath];
+								#endif
 								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
