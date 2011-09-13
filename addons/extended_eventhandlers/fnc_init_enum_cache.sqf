@@ -15,7 +15,7 @@ _types = uiNamespace getVariable _storageKey;
 if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_storageKey, _types] };
 _type = SLX_XEH_MACHINE select 10;
 
-_isInitEH = _ehType == SLX_XEH_STR_INIT_EH
+_isInitEH = _ehType == SLX_XEH_STR_INIT_EH;
 // _data - inits
 _cacheAr = if (_isInitEH) then { SLX_XEH_CACHE_KEYS } else { SLX_XEH_CACHE_KEYS2 };
 _inCache = !isMultiplayer || isDedicated || _unitClass in _cacheAr;
