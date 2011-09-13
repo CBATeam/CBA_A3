@@ -77,7 +77,7 @@ for "_t" from 0 to 2 do {
 
 							_fn = format["%1_fnc_%2", _tagName, _itemName];
 							_uifn = uiNamespace getVariable _fn;
-							_inCache = !isMultiplayer || _itemPath in CBA_CACHE_KEYS;
+							_inCache = !isMultiplayer || isDedicated || _itemPath in CBA_CACHE_KEYS;
 							if (isNil "_uifn" || _recompile || !_inCache) then {
 								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
 							};
