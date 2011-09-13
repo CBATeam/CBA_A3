@@ -3,7 +3,7 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit", "_DEHinit", "_inCache"];
+private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit", "_DEHinit", "_inCache", "_isInitEH", "_cacheAr"];
 
 PARAMS_3(_unitClass,_ehType,_isRespawn);
 
@@ -15,8 +15,10 @@ _types = uiNamespace getVariable _storageKey;
 if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable [_storageKey, _types] };
 _type = SLX_XEH_MACHINE select 10;
 
+_isInitEH = _ehType == SLX_XEH_STR_INIT_EH
 // _data - inits
-_inCache = !isMultiplayer || isDedicated || _unitClass in SLX_XEH_CACHE_KEYS;
+_cacheAr = if (_isInitEH) then { SLX_XEH_CACHE_KEYS } else { SLX_XEH_CACHE_KEYS2 };
+_inCache = !isMultiplayer || isDedicated || _unitClass in _cacheAr;
 _cached = !SLX_XEH_RECOMPILE && _inCache;
 _data = _types select _type;
 if (isNil "_data" || !_cached) then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
@@ -63,7 +65,7 @@ _config_id = if (_cached) then { 1 } else { 0 };
 	*/
 	// TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
 	_useDEHinit = false;
-	if (_config_id == 0 && _ehType == SLX_XEH_STR_INIT_EH) then
+	if (_config_id == 0 && _isInitEH) then
 	{
 		_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
 		if (configName(_ehSuper)==SLX_XEH_STR_DEH) then
@@ -84,7 +86,7 @@ _config_id = if (_cached) then { 1 } else { 0 };
 
 // Tag this unit class with the current session id
 _types set [3, uiNamespace getVariable "SLX_XEH_ID"];
-if (!_inCache) then { PUSH(SLX_XEH_CACHE_KEYS,_unitClass) };
+if (!_inCache) then { PUSH(_cacheAr,_unitClass) };
 
 // Return data
 _data;

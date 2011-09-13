@@ -21,11 +21,13 @@ if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = CACHE_DIS(xeh) };
 if (!isMultiplayer || isDedicated || CBA_isCached == -1) then {
 	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS", []];
 	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS2", []];
+	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS3", []];
 	uiNamespace setVariable ["CBA_CACHE_KEYS", []];
 };
 
 SLX_XEH_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
 SLX_XEH_CACHE_KEYS2 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS2";
+SLX_XEH_CACHE_KEYS3 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS3";
 CBA_CACHE_KEYS = uiNamespace getVariable "SLX_XEH_CACHE_KEYS";
 
 
