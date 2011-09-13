@@ -13,12 +13,12 @@ if (isNil "_id") then { _id = 1 } else { if (typeName _id != "SCALAR") then { _i
 uiNamespace setVariable ["SLX_XEH_ID", _id];
 
 CBA_isCached = uiNamespace getVariable "CBA_isCached";
-if (isNil "CBA_isCached" && isMultiplayer) then { CBA_isCached = -1 } else { CBA_isCached = _id; };
+CBA_isCached = if (isNil "CBA_isCached" && isMultiplayer) then { -1 } else { _id };
 uiNamespace setVariable ["CBA_isCached", CBA_isCached];
 
 if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = CACHE_DIS(xeh) };
 
-if (CBA_isCached == -1 || !isMultiplayer) then {
+if (!isMultiplayer || CBA_isCached == -1) then {
 	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS", []];
 	uiNamespace setVariable ["SLX_XEH_CACHE_KEYS2", []];
 	uiNamespace setVariable ["CBA_CACHE_KEYS", []];
