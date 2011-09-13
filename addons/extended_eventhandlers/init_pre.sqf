@@ -9,10 +9,19 @@ private ["_id", "_cfgRespawn", "_respawn"];
 
 // UNIQUE Session ID since start of game
 _id = uiNamespace getVariable "SLX_XEH_ID";
-if (isNil "_id") then { _id = 1 } else { INC(_id) };
+if (isNil "_id") then { _id = 1 } else { if (typeName _id != "SCALAR") then { _id = 0 }; if (_id < 0) then { _id = 0 }; INC(_id) };
 uiNamespace setVariable ["SLX_XEH_ID", _id];
 
-if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = CACHE_DIS(xeh) };
+CBA_isCached = uiNamespace getVariable "CBA_isCached";
+if (isNil "CBA_isCached" && isMultiplayer) then { CBA_isCached = -1 } else { CBA_isCached = _id };
+uiNamespace setVariable ["CBA_isCached", CBA_isCached];
+
+if (isNil "SLX_XEH_RECOMPILE") then { SLX_XEH_RECOMPILE = (CBA_isCached != (SLX_XEH_MACHINE select 11)) || CACHE_DIS(xeh); };
+
+
+// Always compile cache function once
+call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf';
+
 
 // Compile all necessary scripts and start one vehicle crew initialisation thread
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
@@ -42,8 +51,8 @@ SLX_XEH_MACHINE =
 	false, // 7 - StartInit Passed
 	false, // 8 - Postinit Passed
 	isMultiplayer && _respawn,      // 9 - Multiplayer && respawn?
-	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // Machine type (only 3 possible configurations)
-	_id // SESSION_ID
+	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
+	_id // 11 - SESSION_ID
 ];
 
 SLX_XEH_STR = ""; // Empty string
@@ -91,9 +100,6 @@ SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
 
 // Function Compilation
-
-// Always compile it once to clear
-call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf';
 
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
