@@ -16,7 +16,7 @@ if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable
 _type = SLX_XEH_MACHINE select 10;
 
 // _data - inits
-_inCache = !isMultiplayer || _unitClass in SLX_XEH_CACHE_KEYS;
+_inCache = !isMultiplayer || isDedicated || _unitClass in SLX_XEH_CACHE_KEYS;
 _cached = !SLX_XEH_RECOMPILE && _inCache;
 _data = _types select _type;
 if (isNil "_data" || !_cached) then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
