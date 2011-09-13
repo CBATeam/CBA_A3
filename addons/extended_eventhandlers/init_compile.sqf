@@ -30,7 +30,7 @@ _fnc_compile = {
 
 	// TODO: Unique namespace?
 	_cba_int_code = uiNamespace getVariable _this;
-	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { _this in CBA_CACHE_KEYS };
+	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { if !(isMultiplayer) then { true } else { _this in CBA_CACHE_KEYS } };
 	if (isNil '_cba_int_code' || _recompile || !_isCached) then {
 		TRACE_1('Compiling',_this);
 		_cba_int_code = compile preProcessFileLineNumbers _this;
