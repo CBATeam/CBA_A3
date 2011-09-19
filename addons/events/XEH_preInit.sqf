@@ -95,4 +95,6 @@ SLX_XEH_STR spawn
 };
 */
 
+objNull spawn { waitUntil {time > 0}; [objNull, {["CBA_MISSION_START", time] call CBA_fnc_localEvent}] call CBA_common_fnc_directCall; };
+
 nil;
