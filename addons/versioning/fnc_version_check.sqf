@@ -10,7 +10,10 @@ _localVersion = _localValue select 0;
 _remoteVersion = _value select 0;
 _level = _value select 1;
 _lc = count _localVersion; _rc = count _remoteVersion;
-if (_level == -1) then { _level = _rc };
+switch _level do {
+	case -1: { _level = _rc }; // All must match
+	case -2: { _level = if (_lc == 0) then { 0 } else { _rc } }; // All must match, IF the addon is installed, otherwise ignore
+};
 if (_level == 0) exitWith {};
 
 if (_level > _rc) then { _level = _rc };
