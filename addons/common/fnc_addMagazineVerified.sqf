@@ -2,28 +2,35 @@
 Function: CBA_fnc_addMagazineVerified
 
 Description:
-	Add magazines to the player, but verify that it was
+	Add magazines to the unit, but verify that it was
 	successful and doesn't over-burden the recipient. The
-	function will fill all available inventory slots with
-	the requested magazine type.
+	function has to options to fill all available inventory slots with
+	the requested magazine type, create excess magazines on the ground
+	or do nothing.
 
 Parameters:
+	_unit - the unit to add magazine too. [Object]
 	_magazine - the magazine type to add. [String]
+	_action - 0 (default) do nothing, return false
+		- 1 create excess magazines on ground
+		- 2 fill all inventory slots
 
 Returns:
-	nothing, but if the player has insufficient inventory space
-	for the magazine in question, a warning message is shown.
+	true, if the unit has sufficient inventory space
+	for the magazine in question
 
 Examples:
 	(begin example)
-	"SmokeShell" call CBA_fnc_AddMagazineVerified
+	[player, "SmokeShell",1] call CBA_fnc_AddMagazineVerified
 	(end)
 
 Author:
+	Sickboy, Killswitch, Wolffy.Au
 
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
+
 SCRIPT(addMagazineVerified);
 
 #define __pistol 16
@@ -34,8 +41,17 @@ SCRIPT(addMagazineVerified);
 #define __rifleMax 12
 #define __ruckMax 20
 
-private ["_magazine", "_cfg", "_type", "_pistol", "_rifle", "_num", "_exit", "_ruck"];
-_magazine = _this;
+private ["_unit", "_magazine", "_action", "_return", "_cfg", "_type", "_pistol", "_rifle", "_num", "_exit", "_ruck"];
+// BWC
+if (typeName _this != "ARRAY") then {
+	_unit = player;
+	PARAMS_1(_magazine);
+	_action = 2;
+} else {
+	PARAMS_2(_unit,_magazine);
+	DEFAULT_PARAM(2,_action,0);
+};
+
 _cfg = (configFile >> "CfgMagazines" >> _magazine);
 _type = getNumber (_cfg >> "type");
 
@@ -78,7 +94,7 @@ _ruck = 0;
 			};
 		};
 	};
-} forEach (magazines player);
+} forEach (magazines _unit);
 
 private ["_j", "_k"];
 _exit = false;
@@ -121,11 +137,32 @@ switch _type do
 		};
 	};
 };
-if (_exit) exitWith { hint "Sorry, can't carry more of these magazines, please first make space!" };
+
+if (_exit && (_action == 0 || _action == 2)) exitWith { diag_log "CBA_fnc_addMagazineVerified: Sorry, can't carry more of these magazines!"; false; };
+_return = false;
 if ((_k - _j) >= _num)  then
 {
-	for "_i" from 1 to ((_k - _j) / _num) do
-	{
-		_action = [player,_magazine] call CBA_fnc_addMagazine;
-	};
+        switch (_action) do 
+        {
+                case 2: {
+			for "_i" from 1 to ((_k - _j) / _num) do
+			{
+                                [_unit,_magazine] call CBA_fnc_addMagazine;
+			};
+		};
+                default {
+                        [_unit,_magazine] call CBA_fnc_addMagazine;
+                };
+        };
+        _return = true;
+} else {
+        if (_action == 1) then {
+                private ["_wh"];
+                _unit switchMove "ainvpknlmstpslaywrfldnon_1"; 
+		_wh = createVehicle ["WeaponHolder", position _unit, [], 0, "NONE"];
+                [_wh, _magazine] call CBA_fnc_AddMagazineCargo;
+		_wh setPos ([_wh, 2] call CBA_fnc_randPos);
+        };
 };
+
+_return;
