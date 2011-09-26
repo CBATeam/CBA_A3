@@ -20,8 +20,6 @@ _this = nil;
 
 XEH_LOG("XEH: PostInit Started");
 
-SLX_XEH_postInit = nil;
-
 SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // format["(%2) SLX_XEH_MACHINE: %1", SLX_XEH_MACHINE, time] call SLX_XEH_LOG;
 
