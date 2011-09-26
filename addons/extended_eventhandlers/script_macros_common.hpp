@@ -763,21 +763,21 @@ Parameters:
 Author:
 	Spooner
 ------------------------------------------- */
-#define IS_META_SYS(VAR,DO) if (isNil {VAR}) then { false } else { DO }
-#define IS_ARRAY(VAR)    IS_META_SYS(VAR,((typeName (VAR)) == "ARRAY"))
-#define IS_BOOL(VAR)     IS_META_SYS(VAR,((typeName (VAR)) == "BOOL"))
-#define IS_CODE(VAR)     IS_META_SYS(VAR,((typeName (VAR)) == "CODE"))
-#define IS_CONFIG(VAR)   IS_META_SYS(VAR,((typeName (VAR)) == "CONFIG"))
-#define IS_CONTROL(VAR)  IS_META_SYS(VAR,((typeName (VAR)) == "CONTROL"))
-#define IS_DISPLAY(VAR)  IS_META_SYS(VAR,((typeName (VAR)) == "DISPLAY"))
-#define IS_GROUP(VAR)    IS_META_SYS(VAR,((typeName (VAR)) == "GROUP"))
-#define IS_OBJECT(VAR)   IS_META_SYS(VAR,((typeName (VAR)) == "OBJECT"))
-#define IS_SCALAR(VAR)   IS_META_SYS(VAR,((typeName (VAR)) == "SCALAR"))
-#define IS_SCRIPT(VAR)   IS_META_SYS(VAR,((typeName (VAR)) == "SCRIPT"))
-#define IS_SIDE(VAR)     IS_META_SYS(VAR,((typeName (VAR)) == "SIDE"))
-#define IS_STRING(VAR)   IS_META_SYS(VAR,((typeName (VAR)) == "STRING"))
-#define IS_TEXT(VAR)     IS_META_SYS(VAR,((typeName (VAR)) == "TEXT"))
-#define IS_LOCATION(VAR) IS_META_SYS(VAR,((typeName (VAR)) == "LOCATION"))
+#define IS_META_SYS(VAR,TYPE) if (isNil {VAR}) then { false } else { ((typeName (VAR)) == QUOTE(TYPE)) }
+#define IS_ARRAY(VAR)    IS_META_SYS(VAR,ARRAY)
+#define IS_BOOL(VAR)     IS_META_SYS(VAR,BOOL)
+#define IS_CODE(VAR)     IS_META_SYS(VAR,CODE)
+#define IS_CONFIG(VAR)   IS_META_SYS(VAR,CONFIG)
+#define IS_CONTROL(VAR)  IS_META_SYS(VAR,CONTROL)
+#define IS_DISPLAY(VAR)  IS_META_SYS(VAR,DISPLAY)
+#define IS_GROUP(VAR)    IS_META_SYS(VAR,GROUP)
+#define IS_OBJECT(VAR)   IS_META_SYS(VAR,OBJECT)
+#define IS_SCALAR(VAR)   IS_META_SYS(VAR,SCALAR)
+#define IS_SCRIPT(VAR)   IS_META_SYS(VAR,SCRIPT)
+#define IS_SIDE(VAR)     IS_META_SYS(VAR,SIDE)
+#define IS_STRING(VAR)   IS_META_SYS(VAR,STRING)
+#define IS_TEXT(VAR)     IS_META_SYS(VAR,TEXT)
+#define IS_LOCATION(VAR) IS_META_SYS(VAR,LOCATION)
 
 #define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
 #define IS_FUNCTION(VAR) IS_CODE(VAR)
