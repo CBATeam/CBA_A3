@@ -65,7 +65,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	if (SLX_XEH_MACHINE select 7) then {
 		_h = [_slx_xeh_unit] spawn FUNC(init_delayed);
 	} else {
-		SLX_XEH_DELAYED set [count SLX_XEH_DELAYED, _slx_xeh_unit];
+		PUSH(SLX_XEH_DELAYED,_slx_xeh_unit);
 	};
 
 	#ifdef DEBUG_MODE_FULL
