@@ -830,37 +830,45 @@ Example:
 Author:
 	Spooner
 ------------------------------------------- */
+#define EXPLODE_2_SYS(ARRAY,A,B) A = (ARRAY) select 0; B = (ARRAY) select 1
 #define EXPLODE_2(ARRAY,A,B) \
 	private [#A,#B]; \
-	A = (ARRAY) select 0; B = (ARRAY) select 1
+	EXPLODE_2_SYS(ARRAY,A,B)
 
+#define EXPLODE_3_SYS(ARRAY,A,B,C) EXPLODE_2_SYS(ARRAY,A,B); C = (ARRAY) select 2
 #define EXPLODE_3(ARRAY,A,B,C) \
 	private [#A,#B,#C]; \
-	EXPLODE_2(ARRAY,A,B); C = (ARRAY) select 2
-
+	EXPLODE_3_SYS(ARRAY,A,B,C)
+	
+#define EXPLODE_4_SYS(ARRAY,A,B,C,D) EXPLODE_3_SYS(ARRAY,A,B,C); D = (ARRAY) select 3
 #define EXPLODE_4(ARRAY,A,B,C,D) \
 	private [#A,#B,#C,#D]; \
-	EXPLODE_3(ARRAY,A,B,C); D = (ARRAY) select 3
+	EXPLODE_4_SYS(ARRAY,A,B,C,D)
 
+#define EXPLODE_5_SYS(ARRAY,A,B,C,D,E) EXPLODE_4_SYS(ARRAY,A,B,C,D); E = (ARRAY) select 4
 #define EXPLODE_5(ARRAY,A,B,C,D,E) \
 	private [#A,#B,#C,#D,#E]; \
-	EXPLODE_4(ARRAY,A,B,C,D); E = (ARRAY) select 4
+	EXPLODE_5(ARRAY,A,B,C,D,E)
 
+#define EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F) EXPLODE_5_SYS(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
 #define EXPLODE_6(ARRAY,A,B,C,D,E,F) \
 	private [#A,#B,#C,#D,#E,#F]; \
-	EXPLODE_5(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
+	EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F)
 
+#define EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G) EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F); G = (ARRAY) select 6
 #define EXPLODE_7(ARRAY,A,B,C,D,E,F,G) \
 	private [#A,#B,#C,#D,#E,#F,#G]; \
-	EXPLODE_6(ARRAY,A,B,C,D,E,F); G = (ARRAY) select 6
+	EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G)
 
+#define EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H) EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) \
 	private [#A,#B,#C,#D,#E,#F,#G,#H]; \
-	EXPLODE_7(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
+	EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H)
 
+#define EXPLODE_9_SYS(ARRAY,A,B,C,D,E,F,G,H,I) EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
 #define EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) \
 	private [#A,#B,#C,#D,#E,#F,#G,#H,#I]; \
-	EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
+	EXPLODE_9_SYS(ARRAY,A,B,C,D,E,F,G,H,I)
 
 /* -------------------------------------------
 Group: Managing Function Parameters
