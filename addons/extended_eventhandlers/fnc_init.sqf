@@ -74,7 +74,7 @@ if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_po
 	nil;
 };
 
-if (_isMan) then { if !(_slx_xeh_unit in SLX_XEH_INIT_MEN) then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
+if (_isMan && !isNil "SLX_XEH_INIT_MEN") then { if !(_slx_xeh_unit in SLX_XEH_INIT_MEN) then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
 
 // All inits
 _inits = [_unitClass, _Extended_Init_Class, _isRespawn] call FUNC(init_enum_cache);
