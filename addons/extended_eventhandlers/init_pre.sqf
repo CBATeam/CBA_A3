@@ -1,6 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+if !(isNil'SLX_XEH_MACHINE') exitWith {}; // Doublecheck..
+
 // No _this in pre/PostInit, also fixes call to init_compile
 private "_this";
 _this = nil;
@@ -51,6 +53,11 @@ if ( isText(_cfgRespawn) ) then
 	_respawn = !(getText(_cfgRespawn) in ["none", "bird", "group", "side"]);
 };
 
+SLX_XEH_objects = []; // Temporary array, to track InitPosts at mission initialization
+SLX_XEH_INIT_MEN = []; // Temporary array, to track ManBased inits - to workaround JIP issue "Double init eh ran for crew units"
+SLX_XEH_DELAYED = [];  // Temporary array, to track Delayed Inits at mission initialization
+
+// System array with machine / mission / session information
 SLX_XEH_MACHINE =
 [
 	!isDedicated, // 0 - isClient (and thus has player)
@@ -76,10 +83,7 @@ SLX_XEH_STR_DEH = "DefaultEventhandlers";
 SLX_XEH_STR_TAG = "SLX_XEH_";
 SLX_XEH_STR_PLAYABLE = "SLX_XEH_PLAYABLE";
 
-SLX_XEH_objects = [];
-SLX_XEH_INIT_MEN = [];
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
-
 SLX_XEH_OTHER_EVENTS_FULL = [];
 { SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_XEH = [];
@@ -93,8 +97,6 @@ SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
 
 SLX_XEH_DEF_CLASSES = [SLX_XEH_STR, "All"];
-
-SLX_XEH_DELAYED = [];
 
 // XEH for non XEH supported addons
 // Only works until someone uses removeAllEventhandlers on the object
@@ -112,7 +114,6 @@ SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
 
 // Function Compilation
-
 SLX_XEH_LOG = { XEH_LOG(_this); };
 
 PREP(init_once); // Pre and PostInits

@@ -33,9 +33,9 @@ SLX_XEH_MACHINE set [5, true]; // set player check = complete
 // thread still gets their InitPost ran
 SLX_XEH_MACHINE set [7, true];
 { [_x] call FUNC(init_delayed) } forEach SLX_XEH_DELAYED; // Run Delayed inits for man-based units
-SLX_XEH_DELAYED = [];
+SLX_XEH_DELAYED = nil;
 { _x call FUNC(init) } forEach SLX_XEH_OBJECTS; // Run InitPosts
-SLX_XEH_OBJECTS = [];
+SLX_XEH_OBJECTS = nil;
 
 
 if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
