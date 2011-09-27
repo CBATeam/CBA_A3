@@ -34,7 +34,7 @@ if (isText _init) then {
 		for "_i" from 0 to 11 do {
 			PUSH(_ar,_initAr select _i);
 		};
-		if (toString(_ar) == "if(isnil'SLX") then { _XEH = true };
+		if (toString(_ar) == "if(isNil'SLX") then { _XEH = true };
 	};
 };
 
