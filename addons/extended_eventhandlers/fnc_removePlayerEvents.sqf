@@ -12,13 +12,18 @@ if (isNull _object) exitWith {}; // not a valid object
 {
 	_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
 	_curEvt = _object getVariable _event;
-	if (isNil "_curEvt") then { _curEvt = [] };
-	if (count _curEvt > 0) then {
-		_newEvt = [];
-		if (count _curEvt > 1) then {
-			// Take all but the last (last = player handler)
-			for "_i" from 0 to ((count _curEvt) - 2) do { PUSH(_newEvt,_curEvt select _i) };
+	TRACE_2("",_event,_curEvt);
+	if !(isNil "_curEvt") then {
+		if (count _curEvt > 0) then {
+			_newEvt = [];
+			TRACE_1("Adjusting array",count _curEvt);
+			if (count _curEvt > 1) then {
+				// Take all but the last (last = player handler)
+				for "_i" from 0 to ((count _curEvt) - 2) do { PUSH(_newEvt,_curEvt select _i) };
+			};
+			_object setVariable [_event, _newEvt];
 		};
-		_object setVariable [_event, _newEvt];
 	};
 } forEach SLX_XEH_OTHER_EVENTS;
+
+_object setVariable ["SLX_XEH_PLAYER", nil]; // Used for Respawn determination (vs teamSwitch)

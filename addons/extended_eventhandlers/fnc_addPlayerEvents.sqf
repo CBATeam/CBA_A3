@@ -3,11 +3,16 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-private ["_event", "_curEvt"];
+private ["_event", "_curEvt", "_isPlayer"];
 
 PARAMS_1(_object);
 
 if (isNull _object) exitWith {}; // not a valid object
+
+// Respawn fix
+_isPlayer = _object getVariable "SLX_XEH_PLAYER";
+if !(isNil "_isPlayer") exitWith { TRACE_1("Abort. Unit is already tagged", _object) };
+
 
 {
 	_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
@@ -15,3 +20,5 @@ if (isNull _object) exitWith {}; // not a valid object
 	if (isNil "_curEvt") then { _curEvt = []; _object setVariable [_event, _curEvt] };
 	PUSH(_curEvt,SLX_XEH_OTHER_EVENTS_PLAYERS select _forEachIndex);
 } forEach SLX_XEH_OTHER_EVENTS;
+
+_object setVariable ["SLX_XEH_PLAYER", true];
