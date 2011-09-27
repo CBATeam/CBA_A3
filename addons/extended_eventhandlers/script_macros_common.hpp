@@ -848,7 +848,7 @@ Author:
 #define EXPLODE_5_SYS(ARRAY,A,B,C,D,E) EXPLODE_4_SYS(ARRAY,A,B,C,D); E = (ARRAY) select 4
 #define EXPLODE_5(ARRAY,A,B,C,D,E) \
 	private [#A,#B,#C,#D,#E]; \
-	EXPLODE_5(ARRAY,A,B,C,D,E)
+	EXPLODE_5_SYS(ARRAY,A,B,C,D,E)
 
 #define EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F) EXPLODE_5_SYS(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
 #define EXPLODE_6(ARRAY,A,B,C,D,E,F) \
