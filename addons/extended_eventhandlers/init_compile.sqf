@@ -12,6 +12,9 @@
 #include "script_component.hpp"
 
 // #define BENCHMARK // TODO: finalize
+#ifdef BENCHMARK
+	if (isNil "SLX_XEH_STR_BENCH") then { SLX_XEH_STR_BENCH = "private '_cba_int_time'; _cba_int_time = diag_tickTime; call (uiNamespace getVariable '%1'); diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if !(isNil '_ret') then { nil } else { _ret };" };
+#endif
 
 private "_fnc_compile";
 TRACE_1("Init Compile",_this);
@@ -36,13 +39,14 @@ _fnc_compile = {
 	if (isNil '_cba_int_code' || _recompile || !_isCached) then {
 		TRACE_1('Compiling',_this);
 #ifdef BENCHMARK
-	// TODO: Store strings in constants
 	// TODO: Fix
-	_cba_int_code = compile ("private ['_cba_int_time']; _cba_int_time = diag_tickTime; _ret = call {" + (preProcessFile _this) + format[";}; diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if (isNil '_ret') then { nil } else { _ret };", _this]);
+	//_cba_int_code = compile ("private ['_cba_int_time']; _cba_int_time = diag_tickTime; _ret = call {" + (preProcessFile _this) + format[";}; diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if (isNil '_ret') then { nil } else { _ret };", _this]);
+	uiNamespace setVariable [_this, compile preProcessFileLineNumbers _this];
+	_cba_int_code = compile format[SLX_XEH_STR_BENCH, _this];
 #else
 	_cba_int_code = compile preProcessFileLineNumbers _this;
+	uiNamespace setVariable [_this, _cba_int_code];
 #endif
-		uiNameSpace setVariable [_this, _cba_int_code];
 		if (!_isCached && !isNil "CBA_CACHE_KEYS") then { PUSH(CBA_CACHE_KEYS,_this) };
 	} else { TRACE_1('Retrieved from cache',_this) };
 
