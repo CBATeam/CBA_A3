@@ -11,6 +11,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+// #define BENCHMARK // TODO: finalize
+
 private "_fnc_compile";
 TRACE_1("Init Compile",_this);
 
@@ -33,7 +35,13 @@ _fnc_compile = {
 	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { !isMultiplayer || isDedicated || _this in CBA_CACHE_KEYS };
 	if (isNil '_cba_int_code' || _recompile || !_isCached) then {
 		TRACE_1('Compiling',_this);
-		_cba_int_code = compile preProcessFileLineNumbers _this;
+#ifdef BENCHMARK
+	// TODO: Store strings in constants
+	// TODO: Fix
+	_cba_int_code = compile ("private ['_cba_int_time']; _cba_int_time = diag_tickTime; _ret = call {" + (preProcessFile _this) + format[";}; diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if (isNil '_ret') then { nil } else { _ret };", _this]);
+#else
+	_cba_int_code = compile preProcessFileLineNumbers _this;
+#endif
 		uiNameSpace setVariable [_this, _cba_int_code];
 		if (!_isCached && !isNil "CBA_CACHE_KEYS") then { PUSH(CBA_CACHE_KEYS,_this) };
 	} else { TRACE_1('Retrieved from cache',_this) };
