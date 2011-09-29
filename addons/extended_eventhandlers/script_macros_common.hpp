@@ -63,6 +63,9 @@
 	#define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION); versionAr[] = {VERSION_AR}
 #endif
 
+#define ADDON DOUBLES(PREFIX,COMPONENT)
+#define MAIN_ADDON DOUBLES(PREFIX,main)
+
 /* -------------------------------------------
 Group: Debugging
 ------------------------------------------- */
@@ -508,7 +511,7 @@ Author:
 #define CREATELOGICS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]
 #define CREATELOGICLOCALS(var1,var2) ##var1##_##var2## = "LOGIC" createVehicleLocal [0, 0, 0]
 #define CREATELOGICGLOBALS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable QUOTE(DOUBLES(var1,var2))
-#define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit [QUOTE(TRIPLES(PREFIX,COMPONENT,logic)), [0, 0, 0], [], 0, "NONE"]
+#define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit [QUOTE(DOUBLES(ADDON,logic)), [0, 0, 0], [], 0, "NONE"]
 
 #define GETVARS(var1,var2,var3) (##var1##_##var2 getVariable #var3)
 #define GETVARMAINS(var1,var2) GETVARS(var1,MAINLOGIC,var2)
@@ -576,10 +579,6 @@ Author:
 
 // *************************************
 // User Functions
-// Please define PREFIX and COMPONENT before including
-#define ADDON DOUBLES(PREFIX,COMPONENT)
-#define MAIN_ADDON DOUBLES(PREFIX,main)
-
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 #define PATHTOF(var1) PATHTOF_SYS(PREFIX,COMPONENT,var1)
@@ -618,7 +617,7 @@ Example:
 Author:
 	Sickboy
 ------------------------------------------- */
-#define GVAR(var1) TRIPLES(PREFIX,COMPONENT,var1)
+#define GVAR(var1) DOUBLES(ADDON,var1)
 #define QGVAR(var1) QUOTE(GVAR(var1))
 
 /* -------------------------------------------
@@ -653,7 +652,7 @@ Author:
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 #define PREP(var1) PREP_SYS2(PREFIX,COMPONENT,COMPONENT_F,var1)
 #define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
-#define FUNC(var1) TRIPLES(DOUBLES(PREFIX,COMPONENT),fnc,var1)
+#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
@@ -1220,6 +1219,7 @@ Author:
 // XEH Specific
 #define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
 
+// TODO: These are actually outdated; _Once ?
 #define XEH_PRE_INIT QUOTE(call COMPILE_FILE(XEH_PreInit_Once))
 #define XEH_PRE_CINIT QUOTE(call COMPILE_FILE(XEH_PreClientInit_Once))
 #define XEH_PRE_SINIT QUOTE(call COMPILE_FILE(XEH_PreServerInit_Once))
