@@ -16,9 +16,15 @@ SCRIPT(XEH_preInit);
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
 
+if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = CACHE_DIS(functions) };
+
 if (!SLX_XEH_DisableLogging) then
 {
-	diag_log [diag_frameNo, diag_tickTime, time, "MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated];
+	diag_log [
+		diag_frameNo, diag_tickTime, time, "MISSINIT",
+		missionName, worldName, isMultiplayer, isServer, isDedicated,
+		"CACHE ENABLED? (XEH, Generic Compile, Function Compile)", [!SLX_XEH_RECOMPILE, !CBA_COMPILE_RECOMPILE, !CBA_FUNC_RECOMPILE], "Disable caching with cba_disable_cache.pbo"
+	];
 };
 
 /*
