@@ -805,7 +805,7 @@ Author:
 Macros: EXPLODE_n()
 	Splitting an ARRAY into a number of variables (A, B, C, etc).
 
-	Note that this does not make the created variables private.
+	Note that this does make the created variables private.
 
 	EXPLODE_2(ARRAY,A,B) - Split a 2-element array into separate variables.
 	EXPLODE_3(ARRAY,A,B,C) - Split a 3-element array into separate variables.
