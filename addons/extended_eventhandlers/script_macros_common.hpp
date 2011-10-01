@@ -544,10 +544,15 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
-#define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
+#define COMPILE_FILE2_CFG_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
 
-#define COMPILE_FILE2(var1) COMPILE_FILE2_SYS('var1')
+#ifdef DEBUG_MODE_FULL
+	#define COMPILE_FILE2_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { diag_log ['WARN', 'SLX_XEH_COMPILE function missing, compiling...']; _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
+#else
+	#define COMPILE_FILE2_SYS(var1) (var1 call (uiNamespace getVariable 'SLX_XEH_COMPILE'))
+#endif
+#define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
+#define COMPILE_FILE_CFG_SYS(var1,var2,var3) COMPILE_FILE2_CFG_SYS('PATHTO_SYS(var1,var2,var3)')
 
 #define SETVARS(var1,var2) ##var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
@@ -584,6 +589,8 @@ Author:
 #define PATHTOF(var1) PATHTOF_SYS(PREFIX,COMPONENT,var1)
 
 #define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT_F,var1)
+#define COMPILE_FILE2(var1) COMPILE_FILE2_SYS('var1')
+#define COMPILE_FILE2_CFG(var1) COMPILE_FILE2_CFG_SYS('var1')
 
 
 #define VERSIONING_SYS(var1) class CfgSettings \
