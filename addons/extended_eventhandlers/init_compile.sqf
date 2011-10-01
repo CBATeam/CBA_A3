@@ -55,7 +55,6 @@ _fnc_compile = {
 
 uiNamespace setVariable ["SLX_XEH_COMPILE", _fnc_compile];
 
-// TMP BWC
 SLX_XEH_COMPILE = _fnc_compile;
 
 // Still run the code for this call if needed
