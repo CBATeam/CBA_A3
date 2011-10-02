@@ -136,6 +136,7 @@ DEPRECATE_SYS(KRON_StrLen,DOUBLES(PREFIX,fnc_strLen));
 DEPRECATE_SYS(KRON_StrToArray,DOUBLES(PREFIX,fnc_split)); // CBA_fnc_split does the same and more.
 DEPRECATE_SYS(KRON_Replace,DOUBLES(PREFIX,fnc_replace)); // KRON is faster, but CBA one is 1 line (reuses other functions).
 
+call COMPILE_FILE(init_tables);
 
 call COMPILE_FILE(init_perFrameHandler);
 
