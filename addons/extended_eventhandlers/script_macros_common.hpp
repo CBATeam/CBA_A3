@@ -265,6 +265,7 @@ Macros: TRACE_n()
 	TRACE_6(MESSAGE,A,B,C,D,E,F) - Log 6 variables.
 	TRACE_7(MESSAGE,A,B,C,D,E,F,G) - Log 7 variables.
 	TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) - Log 8 variables.
+	TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) - Log 9 variables.
 
 Parameters:
 	MESSAGE -  Message to add to the trace [String]
@@ -303,6 +304,9 @@ Author:
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
 	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F), RETNIL(G), RETNIL(H)]] call CBA_fnc_log
 
+#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
+	[THIS_FILE_, __LINE__, format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9, I=%10', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F), RETNIL(G), RETNIL(H), RETNIL(I)]] call CBA_fnc_log
+
 #else
 
 #define TRACE_1(MESSAGE,A) /* disabled */
@@ -313,6 +317,7 @@ Author:
 #define TRACE_6(MESSAGE,A,B,C,D,E,F) /* disabled */
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
+#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
 
 #endif
 
@@ -949,7 +954,7 @@ Author:
 
 #define PARAMS_9(A,B,C,D,E,F,G,H,I) \
 	EXPLODE_9(_this,A,B,C,D,E,F,G,H,I); \
-	TRACE_9("PARAMS_8",A,B,C,D,E,F,G,H,I)
+	TRACE_9("PARAMS_9",A,B,C,D,E,F,G,H,I)
 
 /* -------------------------------------------
 Macro: DEFAULT_PARAM()
