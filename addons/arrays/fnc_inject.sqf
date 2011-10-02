@@ -43,8 +43,7 @@ PARAMS_3(_array,_initial,_function);
 
 private "_accumulator";
 
-if (not isNil "_initial") then
-{
+if (!isNil "_initial") then {
 	_accumulator = _initial;
 };
 
@@ -53,8 +52,7 @@ if (not isNil "_initial") then
 } forEach _array;
 
 // Return.
-if (isNil "_accumulator") then
-{
+if (isNil "_accumulator") then {
 	nil;
 } else {
 	_accumulator;
