@@ -30,7 +30,7 @@ class CfgFunctions
 			// CBA_fnc_addMagazineVerified
 			class addMagazineVerified
 			{
-				description = "Add magazines to the player, but verify that it was successful and doesn't over-burden the recipient. The function will fill all available inventory slots with the requested magazine type.";
+				description = "Add magazines to the unit, but verify that it was successful and doesn't over-burden the recipient. The function has to options to fill all available inventory slots with the requested magazine type, create excess magazines on the ground or do nothing.";
 				file = "\x\cba\addons\common\fnc_addMagazineVerified.sqf";
 			};
 			// CBA_fnc_addPerFrameHandler
@@ -254,6 +254,12 @@ class CfgFunctions
 			{
 				description = "Checks whether a config entry inherits, directly or indirectly, from another one.";
 				file = "\x\cba\addons\common\fnc_inheritsFrom.sqf";
+			};
+			// CBA_fnc_intToString
+			class intToString
+			{
+				description = "Faster int to string, uses an integer lookup table if possible Parameters: _int - Integer number Example: [5] call CBA_fnc_intToString Returns: String Author: Xeno";
+				file = "\x\cba\addons\common\fnc_intToString.sqf";
 			};
 			// CBA_fnc_isAlive
 			class isAlive

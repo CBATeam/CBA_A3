@@ -165,6 +165,7 @@ Group: Functions  {
          File: headDir  (no auto-title, common\fnc_headDir.sqf)
          File: inArea  (no auto-title, common\fnc_inArea.sqf)
          File: inheritsFrom  (no auto-title, common\fnc_inheritsFrom.sqf)
+         File: intToString  (no auto-title, common\fnc_intToString.sqf)
          File: isAlive  (no auto-title, common\fnc_isAlive.sqf)
          File: isTurnedOut  (no auto-title, common\fnc_isTurnedOut.sqf)
          File: isUnitGetOutAnim  (no auto-title, common\fnc_isUnitGetOutAnim.sqf)
