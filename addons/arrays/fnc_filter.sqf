@@ -44,16 +44,14 @@ DEFAULT_PARAM(2,_inPlace,false);
 
 private ["_arrayOut", "_x"];
 
-if _inPlace then
-{
+if (_inPlace) then {
 	_arrayOut = _array;
 } else {
 	_arrayOut = [];
 	_arrayOut resize (count _array);
 };
 
-for "_i" from 0 to ((count _array) - 1) do
-{
+for "_i" from 0 to ((count _array) - 1) do {
 	_x = _array select _i;
 	_arrayOut set [_i, call _filter];
 };

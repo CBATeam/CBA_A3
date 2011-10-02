@@ -15,7 +15,9 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-scriptName "CBA_fnc_sortNestedArray";
+#include "script_component.hpp"
+SCRIPT(sortNestedArray);
+
 /*
 	Modified BIS function to sort nested arrays.
 	Added 2nd parameter to indicate which column (index in nested array) to sort on.
@@ -26,43 +28,41 @@ scriptName "CBA_fnc_sortNestedArray";
 
 //set up a function for recursion
 private "_sort";
-_sort =
-{
-	private ["_h","_i","_j","_a","_lo","_hi","_x","_id"];
+_sort = {
+	private ["_h","_i","_j","_hi","_x"];
 
-	_a = _this select 0; //array to be sorted
-	_id = _this select 1; //array item index to be compared
-	_lo = _this select 2; //lower index to sort from
-	_hi = _this select 3; //upper index to sort to
+	PARAMS_4(_a,_id,_lo,_hi);
+	 // _a, array to be sorted
+	 // _id, array item index to be compared
+	 // _lo, lower index to sort from
+	 // _hi, upper index to sort to
 
-	_h = nil;            //used to make a do-while loop below
+	_h = nil; //used to make a do-while loop below
 	_i = _lo;
 	_j = _hi;
 	if (count _a == 0) exitWith {};
-	_x = (_a select ((_lo+_hi)/2)) select _id;
+	_x = (_a select ((_lo + _hi) / 2)) select _id;
 
 	//  partition
-	while {isnil "_h" || _i <= _j} do
-	{
+	while {isnil "_h" || _i <= _j} do {
 		//find first and last elements within bound that are greater / lower than _x
-		while {(_a select _i) select _id < _x} do {_i=_i+1};
-		while {(_a select _j) select _id > _x} do {_j=_j-1};
+		while {(_a select _i) select _id < _x} do {INC(_i)};
+		while {(_a select _j) select _id > _x} do {DEC(_j)};
 
-		if (_i<=_j) then
-		{
+		if (_i <= _j) then {
 			//swap elements _i and _j
 			_h = _a select _i;
 			_a set [_i, _a select _j];
 			_a set [_j, _h];
 
-			_i=_i+1;
-			_j=_j-1;
+			INC(_i);
+			DEC(_j);
 		};
 	};
 
 	// recursion
-	if (_lo<_j) then {[_a, _id, _lo, _j] call _sort};
-	if (_i<_hi) then {[_a, _id, _i, _hi] call _sort};
+	if (_lo < _j) then {[_a, _id, _lo, _j] call _sort};
+	if (_i < _hi) then {[_a, _id, _i, _hi] call _sort};
 };
 
 // and start it off
