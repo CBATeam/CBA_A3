@@ -6,7 +6,7 @@ Description:
 Parameters:
 	_int - Integer number
 Example:
-	[5] call CBA_fnc_intToString
+	5 call CBA_fnc_intToString
 Returns:
 	String
 Author:
