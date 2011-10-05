@@ -552,7 +552,7 @@ Author:
 #define COMPILE_FILE2_CFG_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
 
 #ifdef DEBUG_MODE_FULL
-	#define COMPILE_FILE2_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { diag_log 'WARN: SLX_XEH_COMPILE function missing, compiling...'; _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
+	#define COMPILE_FILE2_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { diag_log 'WARN: SLX_XEH_COMPILE function missing. compiling...'; _this call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf' } else { _this call _slx_xeh_compile } })
 #else
 	#define COMPILE_FILE2_SYS(var1) (var1 call SLX_XEH_COMPILE)
 #endif
