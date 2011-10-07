@@ -6,6 +6,8 @@ Description:
 	
 	This can be used on any character model provided it has the "neck" and
 	"pilot" mem points defined in the model.
+	
+	This works for proxy models as well!
 
 Parameters:
 	_unit - Unit to check [Object]
@@ -40,29 +42,17 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(modelHeadDir);
-private["_modelLogics", "_pilotLogic", "_neckLogic", "_pilotPos", "_neckPos",
-	"_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
+private["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 
 PARAMS_1(_unit);
 
 _return = [];
 
 if (_unit isKindOf "CAManBase" ) then {
-	_modelLogics = _unit getVariable [QUOTE(GVAR(modelLogics)), []];
-	if (count _modelLogics == 0) then {
-		_pilotLogic = "logic" createVehicleLocal (getPos _unit);
-		_pilotLogic attachTo [_unit, [0,0,0], "pilot"];
-		_neckLogic = "logic" createVehicleLocal (getPos _unit);
-		_neckLogic attachTo [_unit, [0,0,0], "neck"];
-		_modelLogics set[0, _pilotLogic];
-		_modelLogics set[1, _neckLogic];
-		_unit setVariable [QUOTE(GVAR(modelLogics)), _modelLogics];
-	};
-
-	_pilotPos = _unit worldToModel (getPosATL (_modelLogics select 0));
-	_neckPos = _unit worldToModel (getPosATL (_modelLogics select 1));
+	_pilotPos = (_unit selectionPosition "pilot");
+	_neckPos = (_unit selectionPosition "neck");
 	_polar = ([_neckPos, _pilotPos] call BIS_fnc_vectorFromXToY) call CBA_fnc_vect2polar;
-	_pitch = (_polar select 2) - 35; // Subtract 35 to compensate for mem point height dif
+	_pitch = (_polar select 2) - 23; // Subtract to compensate for mem point height dif
 	_abs = _polar select 1;
 	_dif = 0;
 
