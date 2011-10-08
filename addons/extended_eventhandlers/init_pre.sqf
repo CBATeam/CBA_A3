@@ -7,7 +7,7 @@ if !(isNil'SLX_XEH_MACHINE') exitWith {}; // Doublecheck..
 private "_this";
 _this = nil;
 
-private ["_id", "_cfgRespawn", "_respawn"];
+private ["_id", "_cfgRespawn", "_respawn", "_i"];
 
 // UNIQUE Session ID since start of game
 _id = uiNamespace getVariable "SLX_XEH_ID";
@@ -85,13 +85,13 @@ SLX_XEH_STR_PLAYABLE = "SLX_XEH_PLAYABLE";
 
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
 SLX_XEH_OTHER_EVENTS_FULL = [];
-{ SLX_XEH_OTHER_EVENTS_FULL set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+_i = 0; { SLX_XEH_OTHER_EVENTS_FULL set [_i, format["Extended_%1_EventHandlers", _x]]; INC(_i) } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_XEH = [];
-{ SLX_XEH_OTHER_EVENTS_XEH set [_forEachIndex, format["Extended_%1EH", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+_i = 0; { SLX_XEH_OTHER_EVENTS_XEH set [_i, format["Extended_%1EH", _x]]; INC(_i) } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_XEH_PLAYERS = [];
-{ SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [_forEachIndex, format["Extended_%1EH_Player", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+_i = 0; { SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [_i, format["Extended_%1EH_Player", _x]]; INC(_i) } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_PLAYERS = [];
-{ SLX_XEH_OTHER_EVENTS_PLAYERS set [_forEachIndex, compile format["{ _this call _x } forEach ((_this select 0)getVariable SLX_XEH_STR_%1_Player)", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+_i = 0; { SLX_XEH_OTHER_EVENTS_PLAYERS set [_i, compile format["{ _this call _x } forEach ((_this select 0)getVariable SLX_XEH_STR_%1_Player)", _x]]; ; INC(_i) } forEach SLX_XEH_OTHER_EVENTS;
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
@@ -104,7 +104,7 @@ SLX_XEH_DEF_CLASSES = [SLX_XEH_STR, "All"];
 // TODO: Perhaps do a config verification - if no custom eventhandlers detected in _all_ CfgVehicles classes, don't run this XEH handler - might be too much processing.
 SLX_XEH_EVENTS_NAT = [XEH_EVENTS];
 SLX_XEH_EVENTS_FULL_NAT = [];
-{ SLX_XEH_EVENTS_FULL_NAT set [_forEachIndex, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_EVENTS_NAT;
+_i = 0; { SLX_XEH_EVENTS_FULL_NAT set [_i, format["Extended_%1_EventHandlers", _x]]; INC(_i) } forEach SLX_XEH_EVENTS_NAT;
 
 SLX_XEH_EXCLUDES = ["LaserTarget"]; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 SLX_XEH_PROCESSED_OBJECTS = []; // Used to maintain the list of processed objects

@@ -9,8 +9,9 @@ PARAMS_1(_object);
 
 if (isNull _object) exitWith {}; // not a valid object
 
+_i = 0;
 {
-	_event = SLX_XEH_OTHER_EVENTS_XEH select _forEachIndex;
+	_event = SLX_XEH_OTHER_EVENTS_XEH select _i;
 	_curEvt = _object getVariable _event;
 	TRACE_2("",_event,_curEvt);
 	if !(isNil "_curEvt") then {
@@ -24,6 +25,7 @@ if (isNull _object) exitWith {}; // not a valid object
 			_object setVariable [_event, _newEvt];
 		};
 	};
+	INC(_i);
 } forEach SLX_XEH_OTHER_EVENTS;
 
 _object setVariable ["SLX_XEH_PLAYER", nil]; // Used for Respawn determination (vs teamSwitch)
