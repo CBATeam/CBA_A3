@@ -5,9 +5,12 @@ SCRIPT(XEH_postInit);
 	Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 */
 
-if (!SLX_XEH_DisableLogging) then
-{
-	diag_log [diag_frameNo, diag_tickTime, time, "CBA_VERSIONING", GVAR(versions)];
+if (!SLX_XEH_DisableLogging) then {
+	private "_logMsg";
+	_logMsg = "CBA_VERSIONING: ";
+	[GVAR(versions), { _logMsg = (_logMsg + format["%1=%2, ", _key, [_value select 0, "."] call CBA_fnc_join])}] call CBA_fnc_hashEachPair;
+
+	diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
 };
 
 // Depency check and warn
