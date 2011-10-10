@@ -68,7 +68,19 @@ if (!isDedicated && !isNull player) then { // isNull player check is for Main Me
 SLX_XEH_STR spawn COMPILE_FILE2(\extended_eventhandlers\supportMonitor.sqf);
 
 SLX_XEH_MACHINE set [8, true];
-XEH_LOG("XEH: PostInit Finished; " + str(SLX_XEH_MACHINE));
+
+_fnc_prettyXEH = {
+	private ["_mpRespawn", "_machineType", "_sessionId"];
+	EXPLODE_9(SLX_XEH_MACHINE,_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone);
+	_mpRespawn = SLX_XEH_MACHINE select 9;
+	_machineType = SLX_XEH_MACHINE select 10;
+	_sessionId = SLX_XEH_MACHINE SELECT 11;
+
+	(PFORMAT_9("State",_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone) +
+	", _mpRespawn="+str(_mpRespawn)+", _machineType="+str(_machineType)+", _sessionId="+str(_sessionId));
+};
+
+XEH_LOG("XEH: PostInit Finished. " + (call _fnc_prettyXEH));
 
 #ifdef DEBUG_MODE_FULL
 	"XEH END: PostInit" call SLX_XEH_LOG;
