@@ -32,16 +32,15 @@ SLX_XEH_CACHE_KEYS2 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS2";
 SLX_XEH_CACHE_KEYS3 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS3";
 CBA_CACHE_KEYS = uiNamespace getVariable "CBA_CACHE_KEYS";
 
-
 // Always compile cache function once
 call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf';
 
-
-// Compile all necessary scripts and start one vehicle crew initialisation thread
+// Log
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
-XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version"));
+XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version")+". "+PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
+// Compile all necessary scripts and start one vehicle crew initialisation thread
 _cfgRespawn = (missionConfigFile/"respawn");
 _respawn = false;
 if ( isNumber(_cfgRespawn) ) then
@@ -243,4 +242,4 @@ SLX_XEH_STR spawn {
 { (_x/SLX_XEH_STR_PreInit) call FUNC(init_once) } forEach SLX_XEH_CONFIG_FILES;
 
 
-XEH_LOG("XEH: PreInit Finished");
+XEH_LOG("XEH: PreInit Finished. " + PFORMAT_3("CACHE DISABLED? (Disable caching with cba_disable_cache.pbo)",SLX_XEH_RECOMPILE,CBA_COMPILE_RECOMPILE,CBA_FUNC_RECOMPILE));

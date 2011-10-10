@@ -18,14 +18,6 @@ SCRIPT(XEH_preInit);
 
 if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = CACHE_DIS(functions) };
 
-if (!SLX_XEH_DisableLogging) then {
-	diag_log [
-		diag_frameNo, diag_tickTime, time,
-		PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated),
-		PFORMAT_3("CACHE DISABLED? (Disable caching with cba_disable_cache.pbo)",SLX_XEH_RECOMPILE,CBA_COMPILE_RECOMPILE,CBA_FUNC_RECOMPILE)
-	];
-};
-
 /*
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
