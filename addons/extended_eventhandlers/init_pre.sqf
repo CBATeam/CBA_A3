@@ -151,7 +151,10 @@ call COMPILE_FILE(init_eh); // All XEH Event functions
 
 GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
 GVAR(init_obj) addEventHandler ["killed", {
-	XEH_LOG("XEH: VehicleCrewInit: "+str(count vehicles));
+	#ifdef DEBUG_MODE_FULL
+		XEH_LOG("XEH: VehicleCrewInit: "+str(count vehicles));
+	#endif
+
 	{
 		_sim = getText(configFile/"CfgVehicles"/(typeOf _x)/"simulation");
 		_crew = crew _x;
