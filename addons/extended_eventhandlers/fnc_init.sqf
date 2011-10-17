@@ -46,6 +46,7 @@ if !(_post) then {
 	if !(SLX_XEH_RECOMPILE) then { _unitClass call FUNC(init_others_enum_cache) };
 };
 
+// TODO: Remove delayed when v1.60 or newer is detected - #25225
 if (count _this == 2 && _isMan && (time>0) && (SLX_XEH_MACHINE select 9) && !_post) exitWith
 {
 	// Delay initialisation until we can check if it's a respawned unit
@@ -89,6 +90,8 @@ if !(_isRespawn) then {
 	// because units in a player's group setVariables are lost (counts at least for disabledAI = 1;)
 	// Run men's FUNC(init_others) in PostInit, only when in Multiplayer
 	// Run supportM
+	
+	// TODO: Remove delayed to PostInit for ManBasedUnits when v1.60 or newer is detected - #25225
 	if (_post) then {
 		if (_isMan) then {
 			_sys_inits set [count _sys_inits, {_this call FUNC(init_playable) }];
