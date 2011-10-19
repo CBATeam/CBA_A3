@@ -4,7 +4,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "cba_common" };
+		requiredAddons[] = { "cba_common", "CBA_hashes" };
 		version = VERSION;
 		author[] = {"alef", "Rocko", "Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
