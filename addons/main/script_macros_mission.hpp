@@ -41,6 +41,10 @@
 #undef COMPONENT_C
 #undef COMPONENT_F
 
+// Missions should support paths without leading \
+#undef PATHTO_SYS
+#define PATHTO_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
+
 #undef PATHTOF2_SYS
 
 #undef PATHTO_R
