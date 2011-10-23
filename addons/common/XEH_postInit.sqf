@@ -87,9 +87,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 	};
 };
 
-// Run the per frame handler init code, bringing up the hidden map control
-SLX_XEH_STR spawn {
-	waitUntil {time > 0};
+FUNC(initPerFrameBackupHandler) = {
 	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 	sleep 0.1;
 
@@ -97,6 +95,13 @@ SLX_XEH_STR spawn {
 	// Use a trigger, runs every 0.5s, unscheduled execution
 	GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
 	GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
+};
+
+// Run the per frame handler init code, bringing up the hidden map control
+if !(CBA_MISSION_START) then {
+	["CBA_MISSION_START", { SLX_XEH_STR spawn FUNC(initPerFrameBackupHandler) }] call CBA_fnc_addEventHandler;
+} else {
+	SLX_XEH_STR spawn FUNC(initPerFrameBackupHandler);
 };
 
 if !(isDedicated) then {

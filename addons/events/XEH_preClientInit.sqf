@@ -81,7 +81,7 @@ SLX_XEH_STR spawn {
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
 	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
 	GVAR(keypressed) = time;
-	if (isServer || !isMultiplayer) then {
+	if (isServer) then { // isServer = SP or MP server-client
 		while {true} do {
 			waitUntil {(time - GVAR(keypressed)) > 10};
 			TRACE_1("Longer than 10 seconds ago",_this);
