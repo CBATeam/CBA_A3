@@ -87,7 +87,7 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 	};
 };
 
-FUNC(initPerFrameBackupHandler) = {
+FUNC(initPerFrameHandlers) = {
 	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 	sleep 0.1;
 
@@ -99,9 +99,9 @@ FUNC(initPerFrameBackupHandler) = {
 
 // Run the per frame handler init code, bringing up the hidden map control
 if !(CBA_MISSION_START) then {
-	["CBA_MISSION_START", { SLX_XEH_STR spawn FUNC(initPerFrameBackupHandler) }] call CBA_fnc_addEventHandler;
+	["CBA_MISSION_START", { SLX_XEH_STR spawn FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
 } else {
-	SLX_XEH_STR spawn FUNC(initPerFrameBackupHandler);
+	SLX_XEH_STR spawn FUNC(initPerFrameHandlers);
 };
 
 if !(isDedicated) then {
@@ -137,12 +137,14 @@ if !(isDedicated) then {
 };
 
 // TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
+/*
 [CBA_COMMON_ADDONS] spawn {
 	PARAMS_1(_addons);
-	//TRACE_1("Activating addons",nil);
-	//activateAddons _addons;
-	//sleep 0.001;
-	//if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
-	//TRACE_1("Activating addons",nil);
-	//activateAddons _addons;
+	TRACE_1("Activating addons",nil);
+	activateAddons _addons;
+	sleep 0.001;
+	if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
+	TRACE_1("Activating addons",nil);
+	activateAddons _addons;
 };
+*/
