@@ -54,6 +54,7 @@ PREP(keyHandler);
 PREP(remoteLocalEvent);
 
 /*
+	// Action Handler
 	// Disabled - SB - 2010-01-22: Bugged, and not working anyway.
 	// FIXME: #define __cfg ??
 	GVAR(actions) = "LOGIC" createVehicleLocal [0, 0, 0];
@@ -69,16 +70,14 @@ PREP(remoteLocalEvent);
 	PREP(actionHandler);
 */
 
-// loadGame EventHandler
-//["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
-
 /*
+// loadGame EventHandler
+["CBA_loadGame", { LOG("Game load detected!") }] call CBA_fnc_addEventHandler;
+
 // Disabled - SB - 2009-07-22: Script scheduling seems to mess this up. Mostly spotted at dedicated server.
-SLX_XEH_STR spawn
-{
+FUNC(initLoadGameEvent) = {
 	// Based on the pretty much assumption that loadedGames are always back in time, not forward
 	private ["_history"];
-	waitUntil { time > 0 };
 	_history = diag_frameNo;
 
 	waitUntil
@@ -93,7 +92,9 @@ SLX_XEH_STR spawn
 		false
 	};
 };
+["CBA_MISSION_START", { SLX_XEH_STR spawn FUNC(initLoadGameEvent) }] CBA_fnc_addEventHandler;
 */
+
 CBA_MISSION_START = false;
 objNull spawn { waitUntil {time > 0}; [objNull, {CBA_MISSION_START = true; ["CBA_MISSION_START", time] call CBA_fnc_localEvent}] call CBA_common_fnc_directCall; };
 

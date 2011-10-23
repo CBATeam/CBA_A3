@@ -5,6 +5,11 @@
 
 #define _DELAY_MONITOR_THRESHOLD 0.4 // 1
 
+GVAR(perFrameHandlerArray) = [];
+GVAR(fpsCount) = 0;
+GVAR(lastCount) = -1;
+GVAR(lastFrameRender) = 0;
+
 PREP(perFrameEngine);
 
 FUNC(blaHandler) = {
@@ -162,7 +167,3 @@ FUNC(onFrame) = {
 		};
 	} forEach GVAR(perFrameHandlerArray);
 };
-GVAR(perFrameHandlerArray) = [];
-GVAR(fpsCount) = 0;
-GVAR(lastCount) = -1;
-GVAR(lastFrameRender) = 0;
