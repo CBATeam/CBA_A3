@@ -111,7 +111,9 @@ FUNC(monitorFrameRender) = {
 	TRACE_1("Monitor frame render loop",nil);
 	// Check if the PFH died for some reason.
 	_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
-	if(!(isNil "_pfhIdd")) then {
+	if(isNil "_pfhIdd") then {
+		7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
+	} else {
 		if(isNull _pfhIdd) then {
 			7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 		};
