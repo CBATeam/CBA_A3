@@ -22,7 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-PARAMS_2(_posA,_posB)
+PARAMS_2(_posA,_posB);
 _posA = _posA call CBA_fnc_getPos;
 _posB = _posB call CBA_fnc_getPos;
 _posA set [2,0]; _posB set [2,0];

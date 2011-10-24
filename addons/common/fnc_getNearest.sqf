@@ -22,8 +22,8 @@ Author:
 
 PARAMS_2(_position,_array);
 
-DEFAULT_PARAM(2,_radius,10^5)
-DEFAULT_PARAM(3,_code,{true})
+DEFAULT_PARAM(2,_radius,10^5);
+DEFAULT_PARAM(3,_code,{true});
 
 private "_return";
 _return = if (count _this > 2) then {[]} else {objNull};
