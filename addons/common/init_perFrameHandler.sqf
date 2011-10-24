@@ -3,7 +3,7 @@
 
 #include "script_component.hpp"
 
-#define _DELAY_MONITOR_THRESHOLD 0.4 // 1
+#define DELAY_MONITOR_THRESHOLD 1 // Frames
 
 GVAR(perFrameHandlerArray) = [];
 GVAR(fpsCount) = 0;
@@ -118,32 +118,19 @@ FUNC(monitorFrameRender) = {
 			7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 		};
 	};
-	// check to see if the frame-render hasn't run in a second.
+	// check to see if the frame-render hasn't run in > 1 frame.
 	// if it hasnt, pick it up for now
-	if((diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
+	if( abs(diag_frameNo - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
 		TRACE_1("Executing frameRender",nil);
-		{
-			_handlerData = _x;
-			if !(isNil "_handlerData") then {
-				if (IS_ARRAY(_handlerData)) then {
-					_func = _handlerData select 0;
-					_delay = _handlerData select 1;
-					_delta = _handlerData select 2;
-					if(diag_tickTime > _delta) then {
-						[(_handlerData select 4), (_handlerData select 5)] call _func;
-						_delta = diag_tickTime + _delay;
-						//TRACE_1("data", _data);
-						_handlerData set [2, _delta];
-					};
-				};
-			};
-		} forEach GVAR(perFrameHandlerArray);
+		call FUNC(onFrame);
 	};
 };
 
 FUNC(onFrame) = {
+	TRACE_1("Executing onFrame",nil);
+
 	private["_func", "_delay", "_delta", "_handlerData"];
-	GVAR(lastFrameRender) = diag_tickTime;
+	GVAR(lastFrameRender) = diag_frameNo;
 	// if(GVAR(lastCount) > (GVAR(fpsCount)-1)) then {
 		// hint "FUCK UP IN SEQUENCE!";
 	// };
@@ -151,7 +138,6 @@ FUNC(onFrame) = {
 	// GVAR(lastCount) = GVAR(fpsCount);
 	// GVAR(fpsCount) = GVAR(fpsCount) + 1;
 	// player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
-	TRACE_1("Executing onFrame",nil);
 	{
 		_handlerData = _x;
 		if !(isNil "_handlerData") then {
