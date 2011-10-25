@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_remoteLocalEvent
+Internal Function
 
 Description:
 	Raises a CBA event only on the machine where parameter one is local.

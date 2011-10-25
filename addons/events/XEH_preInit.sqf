@@ -53,6 +53,8 @@ for "_i" from 0 to 250 do {
 PREP(keyHandler);
 PREP(remoteLocalEvent);
 
+CBA_fnc_remoteLocalEvent = FUNC(remoteLocalEvent); // BWC
+
 /*
 	// Action Handler
 	// Disabled - SB - 2010-01-22: Bugged, and not working anyway.

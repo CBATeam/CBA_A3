@@ -69,12 +69,6 @@ class CfgFunctions
 				description = "Raises a CBA event on all machines EXCEPT the local one.";
 				file = "\x\cba\addons\events\fnc_remoteEvent.sqf";
 			};
-			// CBA_fnc_remoteLocalEvent
-			class remoteLocalEvent
-			{
-				description = "Raises a CBA event only on the machine where parameter one is local.";
-				file = "\x\cba\addons\events\fnc_remoteLocalEvent.sqf";
-			};
 			// CBA_fnc_removeDisplayHandler
 			class removeDisplayHandler
 			{
