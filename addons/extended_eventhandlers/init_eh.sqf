@@ -56,7 +56,7 @@ SLX_XEH_EH_Fired =
 	#endif
 	_this call SLX_XEH_EH_FiredBis;
 	_feh = ((_this select 0)getVariable SLX_XEH_STR_Fired);
-	if (count _feh > 0) then { 
+	if (count _feh > 0) then {
 		_c=count _this;
 		if(_c<6)then{_this set[_c,nearestObject[_this select 0,_this select 4]];_this set[_c+1,currentMagazine(_this select 0)]}else{_this = +_this; _mag=_this select 5;_this set[5,_this select 6];_this set[6,_mag]};
 		{_this call _x } forEach _feh;

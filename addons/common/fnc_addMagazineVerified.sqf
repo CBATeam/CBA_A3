@@ -158,7 +158,7 @@ if ((_k - _j) >= _num)  then
 } else {
         if (_action == 1) then {
                 private ["_wh"];
-                _unit switchMove "ainvpknlmstpslaywrfldnon_1"; 
+                _unit switchMove "ainvpknlmstpslaywrfldnon_1";
 		_wh = createVehicle ["WeaponHolder", position _unit, [], 0, "NONE"];
                 [_wh, _magazine] call CBA_fnc_AddMagazineCargo;
 		_wh setPos ([_wh, 2] call CBA_fnc_randPos);

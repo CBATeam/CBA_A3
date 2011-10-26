@@ -22,7 +22,7 @@ TRACE_1("Init Compile",_this);
 _fnc_compile = {
 	private ["_cba_int_code", "_recompile", "_isCached"];
 
-	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then { 
+	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then {
 		if (isNil "SLX_XEH_MACHINE" || isNil "CBA_isCached") then {
 			true;
 		} else {
