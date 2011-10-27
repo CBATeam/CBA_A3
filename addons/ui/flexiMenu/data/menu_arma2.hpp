@@ -18,7 +18,7 @@
 #define _gapH ((_CH/2-2*_BH)*2/3) // Button "height" vertical spacing
 
 #define _eval_image(_param) __EVAL(format ["%1\data\arma2\mid_button_%2.paa", _flexiMenu_path, ##_param])
-#define _eval_imageCA(_param) __EVAL(format ["\hsim\ui_h\data\igui_button_%1_ca.paa", ##_param])
+#define _eval_imageCA(_param) __EVAL(format ["\ca\ui\data\igui_button_%1_ca.paa", ##_param])
 
 #define _gapWLevel1 (0.01*safeZoneW) // extra indentation required for side buttons on row 1 and 4 to reach circle edge
 #define _gapWLevel2 (0.01*safeZoneW) // extra indentation required for side buttons on row 2 and 3 to reach circle edge
