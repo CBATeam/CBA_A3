@@ -66,7 +66,7 @@ FUNC(addPerFrameHandlerLogic) = {
 	DEFAULT_PARAM(7,_private,[]);
 
 	// Store vars on Logic
-	_logic = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	_logic = "Helipad_Invisible_H" createVehicleLocal [0, 0, 0];
 	_logic setVariable ["start", _start];
 	_logic setVariable ["run_condition", _runCondition];
 	_logic setVariable ["exit_condition", _exitCondition];

@@ -149,7 +149,7 @@ call COMPILE_FILE(init_eh); // All XEH Event functions
 *  4) the mission's init.sqf/sqs is run
 */
 
-GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) = "Helipad_Invisible_H" createVehicleLocal [0, 0, 0];
 GVAR(init_obj) addEventHandler ["killed", {
 	#ifdef DEBUG_MODE_FULL
 		XEH_LOG("XEH: VehicleCrewInit: "+str(count vehicles));
@@ -175,7 +175,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 
 // Prepare postInit
-GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj2) = "Helipad_Invisible_H" createVehicleLocal [0, 0, 0];
 GVAR(init_obj2) addEventHandler ["killed", {
 	call COMPILE_FILE(init_post);
 	deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;
