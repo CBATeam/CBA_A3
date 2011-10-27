@@ -39,13 +39,11 @@ if (isNil "BIS_functions_mainscope") then
 
 CBA_logic = _logic;
 
-/*
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
 	LOG("Initialising the MP module early.");
 	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
 };
-*/
 SLX_XEH_STR spawn {
 	_done = false;
 	while {true} do {
@@ -58,7 +56,6 @@ SLX_XEH_STR spawn {
 };
 
 // A2 / Operation Arrowhead, standalone / combined operations check
-/*
 TRACE_1("OA Check",nil);
 private ["_hasCbaOa", "_hasCbaA2", "_hasA2", "_hasOa"];
 _hasCbaA2 = isClass(configFile >> "CfgMods" >> "CBA_A2");
@@ -71,7 +68,6 @@ if (!_hasA2 && !_hasCbaOa) then { (localize "STR_CBA_COMMON_OA_ST_NO_CBA_OA") sp
 
 if (_hasOa && _hasCbaA2) then { (localize "STR_CBA_COMMON_OA_HAS_CBA_A2") spawn FUNC(log) };
 if (!_hasOa && !_hasCbaA2) then { (localize "STR_CBA_COMMON_A2_ST_NO_CBA_A2") spawn FUNC(log) };
-*/
 
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
