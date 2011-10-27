@@ -22,7 +22,7 @@ class CfgMods
 	{
 		dir = "@CBA";
 		name = "Community Base Addons";
-		picture = "ca\ui\data\logo_arma2ep1_ca.paa";
+		picture = "hsim\ui_h\data\logo_arma2ep1_ca.paa";
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";

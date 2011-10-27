@@ -150,7 +150,7 @@ class CBA_Dummy_Map {
 	scaleDefault = 2;
 
     class Task {
-        icon = "\ca\ui\data\ui_taskstate_current_CA.paa";
+        icon = "\hsim\ui_h\data\ui_taskstate_current_CA.paa";
         color[] = {1, 0.537000, 0, 0};
         size = 27;
         importance = 1;
@@ -167,7 +167,7 @@ class CBA_Dummy_Map {
     };
 
     class CustomMark {
-        icon = "\ca\ui\data\map_waypoint_ca.paa";
+        icon = "\hsim\ui_h\data\map_waypoint_ca.paa";
         color[] = {0.647100, 0.670600, 0.623500, 0};
         size = 18;
         importance = 1;
@@ -187,7 +187,7 @@ class CBA_Dummy_Map {
     };
 
     class Bunker {
-        icon = "\ca\ui\data\map_bunker_ca.paa";
+        icon = "\hsim\ui_h\data\map_bunker_ca.paa";
         color[] = {0.550000, 0.640000, 0.430000, 0};
         size = 14;
         importance = "1.5 * 14 * 0.05";
@@ -196,7 +196,7 @@ class CBA_Dummy_Map {
     };
 
     class Bush {
-        icon = "\ca\ui\data\map_bush_ca.paa";
+        icon = "\hsim\ui_h\data\map_bush_ca.paa";
         color[] = {0.450000, 0.640000, 0.330000, 0.0};
         size = 14;
         importance = "0.2 * 14 * 0.05";
@@ -205,7 +205,7 @@ class CBA_Dummy_Map {
     };
 
     class BusStop {
-        icon = "\ca\ui\data\map_busstop_ca.paa";
+        icon = "\hsim\ui_h\data\map_busstop_ca.paa";
         color[] = {0.150000, 0.260000, 0.870000, 0};
         size = 12;
         importance = "1 * 10 * 0.05";
@@ -214,7 +214,7 @@ class CBA_Dummy_Map {
     };
 
     class Command {
-        icon = "\ca\ui\data\map_waypoint_ca.paa";
+        icon = "\hsim\ui_h\data\map_waypoint_ca.paa";
         color[] = {0, 0.900000, 0, 0};
         size = 18;
         importance = 1;
@@ -223,7 +223,7 @@ class CBA_Dummy_Map {
     };
 
     class Cross {
-        icon = "\ca\ui\data\map_cross_ca.paa";
+        icon = "\hsim\ui_h\data\map_cross_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "0.7 * 16 * 0.05";
@@ -232,7 +232,7 @@ class CBA_Dummy_Map {
     };
 
     class Fortress {
-        icon = "\ca\ui\data\map_bunker_ca.paa";
+        icon = "\hsim\ui_h\data\map_bunker_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "2 * 16 * 0.05";
@@ -241,7 +241,7 @@ class CBA_Dummy_Map {
     };
 
     class Fuelstation {
-        icon = "\ca\ui\data\map_fuelstation_ca.paa";
+        icon = "\hsim\ui_h\data\map_fuelstation_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "2 * 16 * 0.05";
@@ -250,7 +250,7 @@ class CBA_Dummy_Map {
     };
 
     class Fountain {
-        icon = "\ca\ui\data\map_fountain_ca.paa";
+        icon = "\hsim\ui_h\data\map_fountain_ca.paa";
         color[] = {0.200000, 0.450000, 0.700000, 0};
         size = 11;
         importance = "1 * 12 * 0.05";
@@ -259,7 +259,7 @@ class CBA_Dummy_Map {
     };
 
     class Hospital {
-        icon = "\ca\ui\data\map_hospital_ca.paa";
+        icon = "\hsim\ui_h\data\map_hospital_ca.paa";
         color[] = {0.780000, 0, 0.050000, 0};
         size = 16;
         importance = "2 * 16 * 0.05";
@@ -268,7 +268,7 @@ class CBA_Dummy_Map {
     };
 
     class Chapel {
-        icon = "\ca\ui\data\map_chapel_ca.paa";
+        icon = "\hsim\ui_h\data\map_chapel_ca.paa";
         color[] = {0.550000, 0.640000, 0.430000, 0};
         size = 16;
         importance = "1 * 16 * 0.05";
@@ -277,7 +277,7 @@ class CBA_Dummy_Map {
     };
 
     class Church {
-        icon = "\ca\ui\data\map_church_ca.paa";
+        icon = "\hsim\ui_h\data\map_church_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "2 * 16 * 0.05";
@@ -286,7 +286,7 @@ class CBA_Dummy_Map {
     };
 
     class Lighthouse {
-        icon = "\ca\ui\data\map_lighthouse_ca.paa";
+        icon = "\hsim\ui_h\data\map_lighthouse_ca.paa";
         size = 14;
         color[] = {0, 0.900000, 0, 0};
         importance = "3 * 16 * 0.05";
@@ -295,7 +295,7 @@ class CBA_Dummy_Map {
     };
 
     class Quay {
-        icon = "\ca\ui\data\map_quay_ca.paa";
+        icon = "\hsim\ui_h\data\map_quay_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "2 * 16 * 0.05";
@@ -304,7 +304,7 @@ class CBA_Dummy_Map {
     };
 
     class Rock {
-        icon = "\ca\ui\data\map_rock_ca.paa";
+        icon = "\hsim\ui_h\data\map_rock_ca.paa";
         color[] = {0.100000, 0.100000, 0.100000, 0.0};
         size = 12;
         importance = "0.5 * 12 * 0.05";
@@ -313,7 +313,7 @@ class CBA_Dummy_Map {
     };
 
     class Ruin {
-        icon = "\ca\ui\data\map_ruin_ca.paa";
+        icon = "\hsim\ui_h\data\map_ruin_ca.paa";
         size = 16;
         color[] = {0, 0.900000, 0, 0};
         importance = "1.2 * 16 * 0.05";
@@ -322,7 +322,7 @@ class CBA_Dummy_Map {
     };
 
     class SmallTree {
-        icon = "\ca\ui\data\map_smalltree_ca.paa";
+        icon = "\hsim\ui_h\data\map_smalltree_ca.paa";
         color[] = {0.450000, 0.640000, 0.330000, 0.0};
         size = 12;
         importance = "0.6 * 12 * 0.05";
@@ -331,7 +331,7 @@ class CBA_Dummy_Map {
     };
 
     class Stack {
-        icon = "\ca\ui\data\map_stack_ca.paa";
+        icon = "\hsim\ui_h\data\map_stack_ca.paa";
         size = 20;
         color[] = {0, 0.900000, 0, 0};
         importance = "2 * 16 * 0.05";
@@ -340,7 +340,7 @@ class CBA_Dummy_Map {
     };
 
     class Tree {
-        icon = "\ca\ui\data\map_tree_ca.paa";
+        icon = "\hsim\ui_h\data\map_tree_ca.paa";
         color[] = {0.450000, 0.640000, 0.330000, 0.0};
         size = 12;
         importance = "0.9 * 16 * 0.05";
@@ -349,7 +349,7 @@ class CBA_Dummy_Map {
     };
 
     class Tourism {
-        icon = "\ca\ui\data\map_tourism_ca.paa";
+        icon = "\hsim\ui_h\data\map_tourism_ca.paa";
         color[] = {0.780000, 0, 0.050000, 0};
         size = 16;
         importance = "1 * 16 * 0.05";
@@ -358,7 +358,7 @@ class CBA_Dummy_Map {
     };
 
     class Transmitter {
-        icon = "\ca\ui\data\map_transmitter_ca.paa";
+        icon = "\hsim\ui_h\data\map_transmitter_ca.paa";
         color[] = {0, 0.900000, 0, 0};
         size = 20;
         importance = "2 * 16 * 0.05";
@@ -367,7 +367,7 @@ class CBA_Dummy_Map {
     };
 
     class ViewTower {
-        icon = "\ca\ui\data\map_viewtower_ca.paa";
+        icon = "\hsim\ui_h\data\map_viewtower_ca.paa";
         color[] = {0, 0.900000, 0, 0};
         size = 16;
         importance = "2.5 * 16 * 0.05";
@@ -376,7 +376,7 @@ class CBA_Dummy_Map {
     };
 
     class Watertower {
-        icon = "\ca\ui\data\map_watertower_ca.paa";
+        icon = "\hsim\ui_h\data\map_watertower_ca.paa";
         color[] = {0.200000, 0.450000, 0.700000, 0};
         size = 20;
         importance = "1.2 * 16 * 0.05";
@@ -385,7 +385,7 @@ class CBA_Dummy_Map {
     };
 
     class Waypoint {
-        icon = "\ca\ui\data\map_waypoint_ca.paa";
+        icon = "\hsim\ui_h\data\map_waypoint_ca.paa";
         color[] = {0, 0.350000, 0.700000, 0};
         size = 16;
         importance = "2.5 * 16 * 0.05";
@@ -394,7 +394,7 @@ class CBA_Dummy_Map {
     };
 
     class WaypointCompleted {
-        icon = "\ca\ui\data\map_waypoint_completed_ca.paa";
+        icon = "\hsim\ui_h\data\map_waypoint_completed_ca.paa";
         color[] = {0, 0.350000, 0.700000, 0};
         size = 16;
         importance = "2.5 * 16 * 0.05";

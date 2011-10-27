@@ -73,7 +73,7 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 // For each menu option, only the caption and action are required paramters. The other parameters are optional.
 /*
 [
-	["Menu Name": type Any, "Menu Caption": string, "menu dialog class or suffix id": string, "\ca\ui\data\": string, "menuStayOpenUponSelect": boolean],
+	["Menu Name": type Any, "Menu Caption": string, "menu dialog class or suffix id": string, "\hsim\ui_h\data\": string, "menuStayOpenUponSelect": boolean],
 	[
 		["caption 1", "player sideChat 'selected option 1'", "iconplane_ca.paa", "hint 1", "", -1, 1, 1],
 		...

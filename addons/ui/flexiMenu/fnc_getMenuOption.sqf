@@ -16,7 +16,7 @@ _menuDefs0 = _this select 0;
 _menuDef = _this select 1;
 IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
 
-IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
+IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\hsim\ui_h\data\")
 IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
 if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1}else{0}}; // convert boolean to integer
 

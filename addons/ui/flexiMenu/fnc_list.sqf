@@ -19,7 +19,7 @@ GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown",
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlSetText _caption;
 
-_iconFolder = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_iconFolder) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_iconFolder} else {""}; // base icon folder (eg: "\ca\ui\data\")
+_iconFolder = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_iconFolder) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_iconFolder} else {""}; // base icon folder (eg: "\hsim\ui_h\data\")
 //-----------------------------------------------------------------------------
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource;
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
