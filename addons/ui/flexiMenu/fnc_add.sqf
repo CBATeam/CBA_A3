@@ -3,7 +3,7 @@
 
 private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
-// Note: calling script may require this file for dik codes: #include "\ca\editor\Data\Scripts\dikCodes.h"
+// Note: calling script may require this file for dik codes: #include "\hsim\editor_h\Data\Scripts\dikCodes.h"
 
 TRACE_1("",_this);
 
