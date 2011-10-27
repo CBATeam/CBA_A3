@@ -1,4 +1,4 @@
-//#include "\hsim\editor_h\Data\Scripts\dikCodes.h"
+//#include "\ca\editor\Data\Scripts\dikCodes.h"
 
 #define ICE_DIKASCIIMap [\
   [65, DIK_A],\

@@ -1,5 +1,5 @@
 #include "\x\cba\addons\ui\script_component.hpp"
-#include "\hsim\editor_h\Data\Scripts\dikCodes.h"
+#include "\ca\editor\Data\Scripts\dikCodes.h"
 
 private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
 	"_active", "_potentialKeyMatch"];
