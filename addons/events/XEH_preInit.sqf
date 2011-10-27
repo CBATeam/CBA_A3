@@ -99,6 +99,10 @@ FUNC(initLoadGameEvent) = {
 
 // Awaits XEH PostInit sequence completed
 CBA_MISSION_START = false;
-objNull spawn { waitUntil {time > 0 && (SLX_XEH_MACHINE select 8)}; [objNull, {CBA_MISSION_START = true; ["CBA_MISSION_START", time] call CBA_fnc_localEvent}] call CBA_common_fnc_directCall; };
+objNull spawn {
+	waitUntil {time > 0 && (SLX_XEH_MACHINE select 8)};
+	TRACE_1("CBA_MISSION_START",nil);
+	[objNull, {CBA_MISSION_START = true; ["CBA_MISSION_START", time] call CBA_fnc_localEvent}] call CBA_common_fnc_directCall;
+};
 
 nil;
