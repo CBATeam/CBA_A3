@@ -52,7 +52,7 @@ FUNC(attach_handler) = {
 	waitUntil { !(isNull (findDisplay 46)) };
 	TRACE_1("Display found!",time);
 
-	CBA_EVENT_KEY_LOGIC = "Helipad_Invisible_H" createVehicleLocal [0,0,0];
+	CBA_EVENT_KEY_LOGIC = "HeliHEmpty" createVehicleLocal [0,0,0];
 	CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
 		[GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
 		CBA_EVENTS_DONE = true;
