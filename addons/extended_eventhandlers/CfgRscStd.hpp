@@ -1,5 +1,6 @@
 class RscStandardDisplay;
 class RscIGUIListBox;
+class RscListBox;
 class RscDisplayMultiplayer: RscStandardDisplay {
 	class ControlsBackground {
 		class CA_Cancel;
@@ -9,7 +10,7 @@ class RscDisplayMultiplayer: RscStandardDisplay {
 		};
 	};
 	class Controls {
-		class CA_ValueSessions: RscIGUIListBox {
+		class CA_ValueSessions: RscListBox {
 			onMouseButtonDown = "uiNamespace setVariable ['CBA_isCached', nil]";
 		};
 	};
