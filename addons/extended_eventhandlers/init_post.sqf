@@ -70,14 +70,20 @@ SLX_XEH_STR spawn COMPILE_FILE2(\extended_eventhandlers\supportMonitor.sqf);
 SLX_XEH_MACHINE set [8, true];
 
 _fnc_prettyXEH = {
-	private ["_mpRespawn", "_machineType", "_sessionId"];
+	private ["_mpRespawn", "_machineType", "_sessionId", "_str"];
 	EXPLODE_9(SLX_XEH_MACHINE,_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone);
 	_mpRespawn = SLX_XEH_MACHINE select 9;
 	_machineType = SLX_XEH_MACHINE select 10;
 	_sessionId = SLX_XEH_MACHINE SELECT 11;
 
-	(PFORMAT_9("State",_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone) +
+	_str = (PFORMAT_9("State",_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone) +
 	", _mpRespawn="+str(_mpRespawn)+", _machineType="+str(_machineType)+", _sessionId="+str(_sessionId));
+	if (!isDedicated) then { 
+		_str = _str + (", player="+str(player)+", _playerType="+str(typeOf player)+", _playerGroup="+str(group player));
+		if (!isNull player && vehicle player != player) then { _str = _str + (", _playerVehicle="+str(vehicle player)+", _playerVehicleType="+str(typeOf (vehicle player))) };
+	};
+
+	_str;
 };
 
 XEH_LOG("XEH: PostInit Finished. " + (call _fnc_prettyXEH));
