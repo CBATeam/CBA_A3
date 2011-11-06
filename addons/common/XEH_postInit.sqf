@@ -27,6 +27,7 @@ if (isNil "BIS_functions_mainscope") then
 		_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
 		TRACE_2("Created FunctionsManager Logic",_group,_logic);
+		BIS_OO_grpLogic = _group;
 	} else {
 		// TODO: Evaluate cleanup for this one
 		_logic = "LOGIC" createVehicleLocal [0, 0];

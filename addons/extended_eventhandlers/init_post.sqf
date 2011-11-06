@@ -78,6 +78,11 @@ _fnc_prettyXEH = {
 
 	_str = (PFORMAT_9("State",_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone) +
 	", _mpRespawn="+str(_mpRespawn)+", _machineType="+str(_machineType)+", _sessionId="+str(_sessionId));
+
+	if !(isNil "CBA_logic") then {
+		_str = _str + (", BIS_functions="+str(CBA_logic)+", group="+str(group CBA_logic));
+	};
+
 	if (!isDedicated) then { 
 		_str = _str + (", player="+str(player)+", _playerType="+str(typeOf player)+", _playerGroup="+str(group player));
 		if (!isNull player && vehicle player != player) then { _str = _str + (", _playerVehicle="+str(vehicle player)+", _playerVehicleType="+str(typeOf (vehicle player))) };
