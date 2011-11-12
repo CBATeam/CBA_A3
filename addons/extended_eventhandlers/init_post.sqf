@@ -93,6 +93,17 @@ _fnc_prettyXEH = {
 
 XEH_LOG("XEH: PostInit Finished. " + (call _fnc_prettyXEH));
 
+#ifdef DEBUG_MODE_CACHE
+	diag_log ["Calculating mem usage, for keys: ", count SLX_XEH_CACHE_KEYS, count SLX_XEH_CACHE_KEYS2, count SLX_XEH_CACHE_KEYS3, count CBA_CACHE_KEYS];
+	_c1 = 0; _c2 = 0; _c3 = 0; _c4 = 0;
+	{ _str = uiNamespace getVariable (SLX_XEH_STR_TAG + _x + "Extended_Init_Eventhandlers"); if (isNil "_str") then { diag_log ["Warn1", _x, "doesnt exist"] } else { _str = str(_str); ADD(_c1,count (toArray _str)) } } forEach SLX_XEH_CACHE_KEYS;
+	{ _str = uiNamespace getVariable (SLX_XEH_STR_TAG + _x + "Extended_InitPost_Eventhandlers"); if (isNil "_str") then { diag_log ["Warn2", _x, "doesnt exist"] } else { _str = str(_str); ADD(_c2,count (toArray _str)) } } forEach SLX_XEH_CACHE_KEYS2;
+	{ _str = uiNamespace getVariable ("SLX_XEH_" + _x); if (isNil "_str") then { diag_log ["Warn3", _x, "doesnt exist"] } else { _str = str(_str); ADD(_c3,count (toArray _str)) } } forEach SLX_XEH_CACHE_KEYS3;
+	{ _str = uiNamespace getVariable _x; if (isNil "_str") then { diag_log ["Warn4", _x, "doesnt exist"] } else { _str = str(_str); ADD(_c4,count (toArray _str)) } } forEach CBA_CACHE_KEYS;
+	diag_log ["Done calculating mem usage"];
+	diag_log ["Usage: ", _c1, _c2, _c3, _c4];
+#endif
+
 #ifdef DEBUG_MODE_FULL
 	"XEH END: PostInit" call SLX_XEH_LOG;
 #endif
