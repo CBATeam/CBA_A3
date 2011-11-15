@@ -7,7 +7,7 @@ if !(isNil'SLX_XEH_MACHINE') exitWith {}; // Doublecheck..
 private "_this";
 _this = nil;
 
-private ["_id", "_cfgRespawn", "_respawn"];
+private ["_id", "_cfgRespawn", "_respawn", "_level"];
 
 // UNIQUE Session ID since start of game
 _id = uiNamespace getVariable "SLX_XEH_ID";
@@ -56,6 +56,14 @@ SLX_XEH_objects = []; // Temporary array, to track InitPosts at mission initiali
 SLX_XEH_INIT_MEN = []; // Temporary array, to track ManBased inits - to workaround JIP issue "Double init eh ran for crew units"
 SLX_XEH_DELAYED = [];  // Temporary array, to track Delayed Inits at mission initialization
 
+
+// Game version detection
+_level = 0; // pre v1.60
+// TODO: Improve v1.60 detection
+if ((isNumber (configFile >> "CfgDifficulties" >> "recruit" >> "recoilCoef")) && (isNumber (configFile >> "CfgVehicles" >> "Car" >> "turnCoef"))) then {
+	_level = 1; // v1.60
+};
+
 // System array with machine / mission / session information
 SLX_XEH_MACHINE =
 [
@@ -70,7 +78,8 @@ SLX_XEH_MACHINE =
 	false, // 8 - Postinit Passed
 	isMultiplayer && _respawn,      // 9 - Multiplayer && respawn?
 	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
-	_id // 11 - SESSION_ID
+	_id, // 11 - SESSION_ID
+	_level // 12 - LEVEL - Used for version determination
 ];
 
 SLX_XEH_STR = ""; // Empty string
