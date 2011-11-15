@@ -37,6 +37,7 @@ call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf'
 
 // Log
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
+CBA_fnc_log = { diag_log [diag_frameNo, diag_tickTime, time, _this] }; // Backup function
 XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version")+". "+PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
