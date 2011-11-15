@@ -83,5 +83,13 @@ SLX_XEH_STR spawn {
 		// Use a trigger, runs every 0.5s, unscheduled execution
 		GVAR(keyTrigger) = createTrigger["EmptyDetector", [0,0,0]];
 		GVAR(keyTrigger) setTriggerStatements[QUOTE(if ((GVAR(keypressed) + TIMEOUT) < time) then { call FUNC(attach_handler) }), "", ""];
+	} else { // dedicatedClient
+		// TODO: Find better dummy class to use
+		CBA_EVENT_KEY_LOGIC = "HeliHEmpty" createVehicleLocal [0,0,0];
+		CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
+			call FUNC(attach_handler);
+			deleteVehicle CBA_EVENT_KEY_LOGIC;
+		}];
+		CBA_EVENT_KEY_LOGIC setDamage 1;
 	};
 };
