@@ -47,8 +47,8 @@ if (_new) then {
 	_isRespawn = _slx_xeh_unit getVariable "SLX_XEH_PLAYABLE";
 	if (isNil "_isRespawn") then { _isRespawn = false };
 } else {
-	_isRespawn = if (count _this > 2) then { _this select 2 };
-	_isDelayed = if (count _this > 3) then { _this select 3 };
+	_isRespawn = if (count _this > 2) then { _this select 2 } else { false };
+	_isDelayed = if (count _this > 3) then { _this select 3 } else { false };
 	if !(_post) then {
 		// Pre Cache the "Other" EventHandlers
 		if !(SLX_XEH_RECOMPILE) then { _unitClass call FUNC(init_others_enum_cache) };
