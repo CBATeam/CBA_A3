@@ -44,6 +44,8 @@ FUNC(handle_retach) = {
 
 CBA_EVENT_KEY_LOGIC = objNull;
 
+GVAR(attach_count) = 0;
+
 // TODO: Stack/multiplex into single events per type ?
 FUNC(attach_handler) = {
 	if !(isNull (CBA_EVENT_KEY_LOGIC)) exitWith {}; // Already busy
@@ -56,6 +58,7 @@ FUNC(attach_handler) = {
 	CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
 		[GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
 		CBA_EVENTS_DONE = true;
+		INC(GVAR(attach_count));
 		deleteVehicle CBA_EVENT_KEY_LOGIC;
 	}];
 	CBA_EVENT_KEY_LOGIC setDamage 1;
@@ -65,6 +68,7 @@ FUNC(attach_handler) = {
 // Workaround , in macros
 #define UP [_this, 'keyup']
 #define DOWN [_this, 'keydown']
+#define TIMEOUT 10
 
 ["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
@@ -83,8 +87,8 @@ SLX_XEH_STR spawn {
 	GVAR(keypressed) = time;
 	if (isServer) then { // isServer = SP or MP server-client
 		while {true} do {
-			waitUntil {(time - GVAR(keypressed)) > 10};
-			TRACE_1("Longer than 10 seconds ago",_this);
+			waitUntil {(time - GVAR(keypressed)) > TIMEOUT};
+			TRACE_1("Keyhandler timeout, reattaching.",GVAR(attach_count));
 			call FUNC(attach_handler);
 			GVAR(keypressed) = time;
 		};
