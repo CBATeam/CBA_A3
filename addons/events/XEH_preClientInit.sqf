@@ -5,7 +5,7 @@
 */
 LOG(MSG_INIT);
 
-["CBA_loadGame", { SLX_XEH_STR spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler;
+// ["CBA_loadGame", { SLX_XEH_STR spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler; // EH is unimplemented due to unreliable
 ["CBA_playerSpawn", { LOG("Player spawn detected!") }] call CBA_fnc_addEventHandler;
 
 SLX_XEH_STR spawn {
