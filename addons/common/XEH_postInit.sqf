@@ -90,7 +90,6 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 
 FUNC(initPerFrameHandlers) = {
 	7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
-	sleep 0.1;
 
 	GVAR(lastFrameRender) = diag_frameNo;
 	// Use a trigger, runs every 0.5s, unscheduled execution
@@ -100,9 +99,9 @@ FUNC(initPerFrameHandlers) = {
 
 // Run the per frame handler init code, bringing up the hidden map control
 if !(CBA_MISSION_START) then {
-	["CBA_MISSION_START", { SLX_XEH_STR spawn FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
+	["CBA_MISSION_START", { SLX_XEH_STR call FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
 } else {
-	SLX_XEH_STR spawn FUNC(initPerFrameHandlers);
+	SLX_XEH_STR call FUNC(initPerFrameHandlers);
 };
 
 if !(isDedicated) then {
