@@ -12,7 +12,7 @@
 private [
 	"_slx_xeh_unit", "_Extended_Init_Class", "_isRespawn", "_unitClass",
 	"_inits", "_init", "_excludeClass", "_excludeClasses", "_isExcluded",
-	"_u", "_sim", "_data",
+	"_u", "_sim", "_data", "_exit",
 	"_isMan", "_fSetInit", "_post", "_isDelayed", "_sys_inits", "_slx_xeh_unitAr"
 ];
 
@@ -42,6 +42,7 @@ _post = _Extended_Init_Class == SLX_XEH_STR_INIT_POST_EH;
 _sim = getText(configFile/"CfgVehicles"/_unitClass/"simulation");
 _isMan = _slx_xeh_unit isKindOf "Man" || { _sim == _x }count["soldier"] > 0; // "invisible"
 
+_exit = false;
 if (_new) then {
 	_isRespawn = _slx_xeh_unit getVariable "SLX_XEH_PLAYABLE";
 	if (isNil "_isRespawn") then { _isRespawn = false };
@@ -79,8 +80,10 @@ if (_new) then {
 		format["XEH END: %2", time, _this] call SLX_XEH_LOG;
 		#endif
 		nil;
+		_exit = true;
 	};
 };
+if (_exit) exitWith {};
 
 if (_isMan && !isNil "SLX_XEH_INIT_MEN") then { if !(_slx_xeh_unit in SLX_XEH_INIT_MEN) then { PUSH(SLX_XEH_INIT_MEN,_slx_xeh_unit) } }; // naughty JIP crew double init!
 
