@@ -44,31 +44,25 @@ FUNC(handle_retach) = {
 
 CBA_EVENT_KEY_LOGIC = objNull;
 
+GVAR(keypressed) = -100;
 GVAR(attach_count) = 0;
 
 // TODO: Stack/multiplex into single events per type ?
 FUNC(attach_handler) = {
-	if !(isNull (CBA_EVENT_KEY_LOGIC)) exitWith {}; // Already busy
-	TRACE_1("ReAttaching",GVAR(keypressed));
-
-	waitUntil { !(isNull (findDisplay 46)) };
-	TRACE_1("Display found!",time);
-
-	CBA_EVENT_KEY_LOGIC = "HeliHEmpty" createVehicleLocal [0,0,0];
-	CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
+	if !(isNull (findDisplay 46)) then {
+		TRACE_2("ReAttaching",GVAR(keypressed),GVAR(attach_count));
+		GVAR(keypressed) = time;
 		[GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
 		CBA_EVENTS_DONE = true;
 		INC(GVAR(attach_count));
-		deleteVehicle CBA_EVENT_KEY_LOGIC;
-	}];
-	CBA_EVENT_KEY_LOGIC setDamage 1;
+	};
 };
 
 // Display Eventhandlers - Higher level API specially for keyDown/Up and Action events
+#define TIMEOUT 10
 // Workaround , in macros
 #define UP [_this, 'keyup']
 #define DOWN [_this, 'keydown']
-#define TIMEOUT 10
 
 ["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
 ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
@@ -78,19 +72,16 @@ SLX_XEH_STR spawn {
 	// Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers
 	if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach ["KeyUp", "KeyDown"] };
 
-	call FUNC(attach_handler);
+	// Trigger will attach it..
+	// call FUNC(attach_handler);
 
 	// ["KeyDown", QUOTE(_this call FUNC(actionHandler))] call CBA_fnc_addDisplayHandler;
 
 	// Workaround for displayEventhandlers falling off at gameLoad after gameRestart
-	// Once the last registered keypress is longer than 10 seconds ago, re-attach the handler.
-	GVAR(keypressed) = time;
+	// Once the last registered keypress is longer than TIMEOUT seconds ago, re-attach the handler.
 	if (isServer) then { // isServer = SP or MP server-client
-		while {true} do {
-			waitUntil {(time - GVAR(keypressed)) > TIMEOUT};
-			TRACE_1("Keyhandler timeout, reattaching.",GVAR(attach_count));
-			call FUNC(attach_handler);
-			GVAR(keypressed) = time;
-		};
+		// Use a trigger, runs every 0.5s, unscheduled execution
+		GVAR(keyTrigger) = createTrigger["EmptyDetector", [0,0,0]];
+		GVAR(keyTrigger) setTriggerStatements[QUOTE(if ((GVAR(keypressed) + TIMEOUT) < time) then { call FUNC(attach_handler) }), "", ""];
 	};
 };
