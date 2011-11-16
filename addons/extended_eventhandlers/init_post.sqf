@@ -96,26 +96,29 @@ XEH_LOG("XEH: PostInit Finished. " + (call _fnc_prettyXEH));
 #ifdef DEBUG_MODE_FULL
 	[] spawn {
 		while { true } do {
-			str(["XEH DBG: Units, Vehiclse, Groups, AllDead count",
+			_str = str(["XEH DBG: Units, Vehiclse, Groups, AllDead count",
 				count allUnits,
 				count vehicles,
 				count allGroups,
-				count allDead]) call CBA_fnc_log;
+				count allDead]);
+			LOG(_str);
 
-			str(["XEH DBG: CBA Cache Keys count",
+			_str = str(["XEH DBG: CBA Cache Keys count",
 				count SLX_XEH_CACHE_KEYS,
 				count SLX_XEH_CACHE_KEYS2,
 				count SLX_XEH_CACHE_KEYS3,
-				count CBA_CACHE_KEYS]) call CBA_fnc_log;
+				count CBA_CACHE_KEYS]);
+			LOG(_str);
 			
-			str(["XEH DBG: XEH Monitor count",
+			_str = str(["XEH DBG: XEH Monitor count",
 				count SLX_XEH_PROCESSED_OBJECTS,
 				count SLX_XEH_CLASSES,
 				count SLX_XEH_FULL_CLASSES,
 				count SLX_XEH_EXCL_CLASSES,
 				isNil "SLX_XEH_OBJECTS",
 				isNil "SLX_XEH_DELAYED",
-				isNil "SLX_XEH_INIT_MEN"]) call CBA_fnc_log;
+				isNil "SLX_XEH_INIT_MEN"]);
+			LOG(_str);
 
 			sleep 10;
 		};
