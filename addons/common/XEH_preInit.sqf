@@ -34,7 +34,7 @@ LOG(MSG_INIT);
 ADDON = false;
 
 CBA_nil = [nil];
-
+GVAR(nextPFHid) = -1;
 GVAR(centers) = [];
 CBA_actionHelper = QUOTE(PATHTO(actionHelper));
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
