@@ -1,3 +1,3 @@
-ruby functions_config.rb '../Addons'
+ruby functions_config.rb "../addons"
 
 pause
