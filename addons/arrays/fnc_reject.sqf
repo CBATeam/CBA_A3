@@ -9,7 +9,7 @@ Parameters:
 	_block - Block [Code]
 
 Returns:
-	New array with elements removed for which the block returns true [String]
+	New array with elements removed for which the block returns true [Array]
 
 Example:
 	(begin example)

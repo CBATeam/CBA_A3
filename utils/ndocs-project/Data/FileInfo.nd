@@ -58,7 +58,7 @@ P:\x\cba\addons\common\fnc_inArea.sqf	1312056305	1	CBA_fnc_inArea
 P:\x\cba\addons\common\XEH_postInit.sqf	1321381161	0	P:\x\cba\addons\common\XEH_postInit.sqf
 P:\x\cba\addons\ui\flexiMenu\fnc_getMenuDef.sqf	1314557812	0	P:\x\cba\addons\ui\flexiMenu\fnc_getMenuDef.sqf
 P:\x\cba\addons\ui\flexiMenu\fnc_highlightCaretKey.sqf	1289321057	0	P:\x\cba\addons\ui\flexiMenu\fnc_highlightCaretKey.sqf
-P:\x\cba\addons\arrays\fnc_reject.sqf	1322834866	1	CBA_fnc_reject
+P:\x\cba\addons\arrays\fnc_reject.sqf	1322835736	1	CBA_fnc_reject
 P:\x\cba\addons\ui\flexiMenu\data\menu_arma2.hpp	1312704451	0	P:\x\cba\addons\ui\flexiMenu\data\menu_arma2.hpp
 P:\x\cba\addons\extended_eventhandlers\CfgPatches.hpp	1321601280	0	P:\x\cba\addons\extended_eventhandlers\CfgPatches.hpp
 P:\x\cba\addons\common\fnc_getConfigEntry.sqf	1289321057	1	CBA_fnc_getConfigEntry
@@ -149,7 +149,7 @@ P:\x\cba\addons\ui\flexiMenu\data\menu_rose.hpp	1312704451	0	P:\x\cba\addons\ui\
 P:\x\cba\addons\vectors\fnc_vectMagn.sqf	1269848759	1	CBA_fnc_vectMagn
 P:\x\cba\addons\vectors\fnc_vectRotate2D.sqf	1289321057	1	CBA_fnc_vectRotate2D
 P:\x\cba\addons\common\fnc_getSharedGroup.sqf	1303161486	1	CBA_fnc_getSharedGroup
-P:\x\cba\addons\arrays\fnc_select.sqf	1322834841	1	CBA_fnc_select
+P:\x\cba\addons\arrays\fnc_select.sqf	1322835740	1	CBA_fnc_select
 P:\x\cba\addons\strings\CfgFunctions.hpp	1322834931	0	P:\x\cba\addons\strings\CfgFunctions.hpp
 P:\x\cba\addons\common\fnc_addMagazineCargo.sqf	1311698710	1	CBA_fnc_addMagazineCargo
 P:\x\cba\addons\strings\license.txt	1303391748	0	P:\x\cba\addons\strings\license.txt
