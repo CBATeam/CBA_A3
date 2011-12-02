@@ -39,6 +39,18 @@ class CfgFunctions
 				description = "Joins an array of values into a single string, joining each fragment around a separator string. Inverse of <CBA_fnc_split>.";
 				file = "\x\cba\addons\arrays\fnc_join.sqf";
 			};
+			// CBA_fnc_reject
+			class reject
+			{
+				description = "Reject array elements for which the block returns true";
+				file = "\x\cba\addons\arrays\fnc_reject.sqf";
+			};
+			// CBA_fnc_select
+			class select
+			{
+				description = "Select array elements for which the block returns true";
+				file = "\x\cba\addons\arrays\fnc_select.sqf";
+			};
 			// CBA_fnc_shuffle
 			class shuffle
 			{

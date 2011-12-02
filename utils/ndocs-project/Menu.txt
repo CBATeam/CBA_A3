@@ -77,6 +77,8 @@ Group: Functions  {
          File: getArrayElements  (no auto-title, arrays\fnc_getArrayElements.sqf)
          File: inject  (no auto-title, arrays\fnc_inject.sqf)
          File: join  (no auto-title, arrays\fnc_join.sqf)
+         File: reject  (no auto-title, arrays\fnc_reject.sqf)
+         File: select  (no auto-title, arrays\fnc_select.sqf)
          File: shuffle  (no auto-title, arrays\fnc_shuffle.sqf)
          File: sortNestedArray  (no auto-title, arrays\fnc_sortNestedArray.sqf)
          }  # Group: Arrays

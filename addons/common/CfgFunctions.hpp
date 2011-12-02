@@ -258,7 +258,7 @@ class CfgFunctions
 			// CBA_fnc_intToString
 			class intToString
 			{
-				description = "Faster int to string, uses an integer lookup table if possible Parameters: _int - Integer number Example: [5] call CBA_fnc_intToString Returns: String Author: Xeno";
+				description = "Faster int to string, uses an integer lookup table if possible Parameters: _int - Integer number Example: 5 call CBA_fnc_intToString Returns: String Author: Xeno";
 				file = "\x\cba\addons\common\fnc_intToString.sqf";
 			};
 			// CBA_fnc_isAlive
