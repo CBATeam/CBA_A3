@@ -14,6 +14,8 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
+#include "script_component.hpp"
+
 private "_typename";
 _typename = tolower (typename _this);
 if (_typename == "object") exitwith {alive _this};
