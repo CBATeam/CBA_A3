@@ -45,10 +45,10 @@ private ["_unit", "_magazine", "_action", "_return", "_cfg", "_type", "_pistol",
 // BWC
 if (typeName _this != "ARRAY") then {
 	_unit = player;
-	PARAMS_1(_magazine);
+	EXPLODE_1(_this,_magazine);
 	_action = 2;
 } else {
-	PARAMS_2(_unit,_magazine);
+	EXPLODE_2(_this,_unit,_magazine);
 	DEFAULT_PARAM(2,_action,0);
 };
 
