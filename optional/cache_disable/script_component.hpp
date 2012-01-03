@@ -10,4 +10,7 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_CACHE_DISABLE
 #endif
 
+#undef REQUIRED_VERSION
+#define REQUIRED_VERSION 1.00
+
 #include "\x\cba\addons\main\script_macros.hpp"
