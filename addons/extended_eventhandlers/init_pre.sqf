@@ -127,6 +127,10 @@ SLX_XEH_STR_DEH = "DefaultEventhandlers";
 SLX_XEH_STR_TAG = "SLX_XEH_";
 SLX_XEH_STR_PLAYABLE = "SLX_XEH_PLAYABLE";
 
+SLX_XEH_STR_PROCESSED = "SLX_XEH_PROCESSED";
+SLX_XEH_AR_FALSE = [SLX_XEH_STR_PROCESSED, false];
+SLX_XEH_AR_TRUE = [SLX_XEH_STR_PROCESSED, true];
+
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
 SLX_XEH_OTHER_EVENTS_FULL = [];
 { SLX_XEH_OTHER_EVENTS_FULL set [count SLX_XEH_OTHER_EVENTS_FULL, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
@@ -151,8 +155,7 @@ SLX_XEH_EVENTS_FULL_NAT = [];
 { SLX_XEH_EVENTS_FULL_NAT set [count SLX_XEH_EVENTS_FULL_NAT, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_EVENTS_NAT;
 
 SLX_XEH_EXCLUDES = ["LaserTarget"]; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
-SLX_XEH_PROCESSED_OBJECTS = []; // Used to maintain the list of processed objects
-SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup
+SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup - TODO: Performance test.. Could use object with a variable space, classname as key
 SLX_XEH_FULL_CLASSES = []; // Used to cache classes that NEED full XEH setup
 SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
 
