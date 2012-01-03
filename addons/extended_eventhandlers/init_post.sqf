@@ -111,7 +111,6 @@ XEH_LOG("XEH: PostInit Finished. " + (call _fnc_prettyXEH));
 			LOG(_str);
 			
 			_str = str(["XEH DBG: XEH Monitor count",
-				count SLX_XEH_PROCESSED_OBJECTS,
 				count SLX_XEH_CLASSES,
 				count SLX_XEH_FULL_CLASSES,
 				count SLX_XEH_EXCL_CLASSES,
