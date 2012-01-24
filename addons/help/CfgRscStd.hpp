@@ -65,8 +65,8 @@ class RscDisplayMain: RscStandardDisplay {
 		class CBA_CREDITS_VER_BTN: CBA_CREDITS_VER_BTN {
 			idc = CBA_CREDITS_VER_BTN_IDC;
 			onMouseButtonClick = "[_this] call compile preprocessFile '\x\cba\addons\help\showver.sqf';";
-			onMouseEnter = QUOTE(GVAR(VerTime) = 20);
-			onMouseExit = QUOTE(GVAR(VerTime) = 2);
+			onMouseEnter = QUOTE(GVAR(VerTime) = diag_tickTime + 20);
+			onMouseExit = QUOTE(GVAR(VerTime) = diag_tickTime + 2);
 		};
 		class CBA_CREDITS_M: CBA_CREDITS_M {
 			idc = CBA_CREDITS_M_IDC;
