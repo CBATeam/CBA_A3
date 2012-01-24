@@ -61,7 +61,7 @@ _wtp = [];
 {
 	_weapons = getArray([_veh, _x] call CBA_fnc_getTurret >> "weapons");
 	TRACE_3("",_weapons,_x,_veh turretUnit _x);
-	if (_weapon in _weapons) exitWith { _wtp = _x; };
+	if (_weap in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
 
 if (count _wtp == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r; }; // Or should we exit with gunner _veh ?
