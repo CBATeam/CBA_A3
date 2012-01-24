@@ -18,17 +18,16 @@ Author:
 
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
-private ["_tp", "_tc", "_st", "_stc", "_wtp", "_tu", "_mti", "_mtJ", "_sti", "_stJ", "_mainWeapons", "_r", "_cfg", "_entry"];
-PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
-if (_v isKindOf "CAManBase") exitWith { _r = [_v, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
-if (_v isKindOf "Air") exitWith { _gunney = gunner _v; _r = [if (isNull _gunney) then { driver _v } else { _gunney }, [0]]; TRACE_1("Result",_r); _r; };
+#define __cfg (configFile >> "CfgVehicles" >> (typeof _veh) >> "turrets")
+private ["_tp", "_tc", "_st", "_stc", "_wtp", "_tu", "_mti", "_mtJ", "_sti", "_stJ", "_gunner", "_mainWeapons", "_r", "_cfg", "_entry"];
+PARAMS_2(_veh,_weap);  // Vehicle that fired	// Weapon that was fired
+if (_veh isKindOf "CAManBase") exitWith { _r = [_veh, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
+if (_veh isKindOf "Air") exitWith { _gunner = gunner _veh; _r = [if (isNull _gunner) then { driver _veh } else { _gunner }, [0]]; TRACE_1("Result",_r); _r; };
 
-_tp = [];
 _tc  = count __cfg;
-
 if (_tc == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r };
 
+_tp = [];
 
 // TODO: Only supports Main Turrets, and SubTurrets on MainTurrets.  No need for infinite level?
 // Check MainTurrets
@@ -60,13 +59,13 @@ for "_mti" from 0 to (_tc-1) do {
 
 _wtp = [];
 {
-	_weapons = getArray([_v, _x] call CBA_fnc_getTurret >> "weapons");
-	TRACE_3("",_weapons,_x,_v turretUnit _x);
-	if (_w in _weapons) exitWith { _wtp = _x; };
+	_weapons = getArray([_veh, _x] call CBA_fnc_getTurret >> "weapons");
+	TRACE_3("",_weapons,_x,_veh turretUnit _x);
+	if (_weapon in _weapons) exitWith { _wtp = _x; };
 } foreach _tp;
 
-if (count _wtp == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r; }; // Or should we exit with gunner _v ?
+if (count _wtp == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r; }; // Or should we exit with gunner _veh ?
 
-_r = [_v turretUnit _wtp, _wtp];
+_r = [_veh turretUnit _wtp, _wtp];
 TRACE_1("Result",_r);
 _r;
