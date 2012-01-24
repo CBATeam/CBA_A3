@@ -19,26 +19,42 @@ Author:
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v) >> "turrets")
-private ["_tp", "_tc", "_tp", "_st", "_stc", "_wtp", "_tu", "_mainWeapons", "_r"];
+private ["_tp", "_tc", "_st", "_stc", "_wtp", "_tu", "_mti", "_mtJ", "_sti", "_stJ", "_mainWeapons", "_r", "_cfg", "_entry"];
 PARAMS_2(_v,_w);  // Vehicle that fired	// Weapon that was fired
 if (_v isKindOf "CAManBase") exitWith { _r = [_v, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
 if (_v isKindOf "Air") exitWith { _gunney = gunner _v; _r = [if (isNull _gunney) then { driver _v } else { _gunney }, [0]]; TRACE_1("Result",_r); _r; };
 
 _tp = [];
 _tc  = count __cfg;
-if (_tc > 0) then {
-	for "_mti" from 0 to (_tc-1) do {
-		_tp set [(count _tp), [_mti]];
-		if(isClass (__cfg select _mti)) then {
-			_st = (__cfg select _mti) >> "turrets";
-			_stc = count _st;
-			if (_stc > 0) then {
-				for "_sti" from 0 to (_stc-1) do {
-					_stp = (_st select _sti);
-					_tp set [(count _tp), [_mti,_sti]];
+
+if (_tc == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r };
+
+
+// TODO: Only supports Main Turrets, and SubTurrets on MainTurrets.  No need for infinite level?
+// Check MainTurrets
+_mtJ = 0; // Custom counter since we ignore class properties (non subclasses)
+for "_mti" from 0 to (_tc-1) do {
+	_cfg = (__cfg select _mti);
+	if (isClass _cfg) then {
+		_entry = [_mtJ];
+		PUSH(_tp, _entry);
+
+		// Check SubTurrets
+		_st = _cfg >> "turrets";
+		_stc = count _st;
+		if (_stc > 0) then {
+			_stJ = 0; // Custom counter since we ignore class properties (non subclasses)
+			for "_sti" from 0 to (_stc-1) do {
+				_stp = _st select _sti;
+				if (isClass _stp) then {
+					_entry = [_mtJ, _stJ];
+					PUSH(_tp, _entry);
+
+					INC(_stJ);
 				};
 			};
 		};
+		INC(_mtJ);
 	};
 };
 
