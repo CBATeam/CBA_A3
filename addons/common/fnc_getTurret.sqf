@@ -34,7 +34,9 @@ if (count _tp > 0) then
 			_y = _turrets select _i;
 			if (isClass(_y)) then { PUSH(_turs,_y) };
 		};
-		_path = (_turs select _x);
+		if((count _turs)-1 >= _x) then {
+			_path = (_turs select _x);
+		};
 
 	} forEach _tp;
 };

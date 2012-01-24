@@ -29,12 +29,14 @@ _tc  = count __cfg;
 if (_tc > 0) then {
 	for "_mti" from 0 to (_tc-1) do {
 		_tp set [(count _tp), [_mti]];
-		_st = (__cfg select _mti) >> "turrets";
-		_stc = count _st;
-		if (_stc > 0) then {
-			for "_sti" from 0 to (_stc-1) do {
-				_stp = (_st select _sti);
-				_tp set [(count _tp), [_mti,_sti]];
+		if(isClass (__cfg select _mti)) then {
+			_st = (__cfg select _mti) >> "turrets";
+			_stc = count _st;
+			if (_stc > 0) then {
+				for "_sti" from 0 to (_stc-1) do {
+					_stp = (_st select _sti);
+					_tp set [(count _tp), [_mti,_sti]];
+				};
 			};
 		};
 	};
