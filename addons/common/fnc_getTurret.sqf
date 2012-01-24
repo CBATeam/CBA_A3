@@ -32,7 +32,9 @@ if (count _tp > 0) then
 		for "_i" from 0 to (count _turrets) - 1 do
 		{
 			_y = _turrets select _i;
-			if (isClass(_y)) then { PUSH(_turs,_y) };
+			// BIS turret functions seem to take properties (e.g bla = 1;) as turrets, so we need to include them also.
+			// if (isClass(_y)) then { 
+			PUSH(_turs,_y);
 		};
 		_path = (_turs select _x);
 
