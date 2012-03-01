@@ -7,7 +7,7 @@ Description:
 Parameters:
 	_markerName - Name of marker to create [String]
 	_position - [Array: [x, y]]
-	_shape - "Icon", "Rectangle" or "Elipse" [String]
+	_shape - "ICON", "RECTANGLE" or "ELLIPSE" [String]
 	_size - [Array: [width, height]]
 
 Optional Parameters:
