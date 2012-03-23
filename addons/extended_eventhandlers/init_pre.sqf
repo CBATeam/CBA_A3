@@ -96,6 +96,7 @@ SLX_XEH_DELAYED = [];  // Temporary array, to track Delayed Inits at mission ini
 // Game version detection
 _level = 0; // pre v1.60
 // TODO: Improve v1.60 detection
+// TODO: Temporary disabled due to #28652
 //if ((isNumber (configFile >> "CfgDifficulties" >> "recruit" >> "recoilCoef")) && (isNumber (configFile >> "CfgVehicles" >> "Car" >> "turnCoef"))) then {
 	//_level = 1; // v1.60
 //};
