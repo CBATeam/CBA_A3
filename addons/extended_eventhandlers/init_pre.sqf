@@ -115,7 +115,8 @@ SLX_XEH_MACHINE =
 	isMultiplayer && _respawn,      // 9 - Multiplayer && respawn?
 	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
 	_id, // 11 - SESSION_ID
-	_level // 12 - LEVEL - Used for version determination
+	_level, // 12 - LEVEL - Used for version determination
+	false // 13 - TIMEOUT - PostInit timedOut
 ];
 
 SLX_XEH_STR = ""; // Empty string
@@ -237,7 +238,12 @@ SLX_XEH_STR spawn {
 		private["_time2Wait"];
 		_time2Wait = diag_ticktime + 10;
 		waituntil {diag_ticktime > _time2Wait};
-		if !(SLX_XEH_MACHINE select 8) then { XEH_LOG("WARNING: PostInit did not finish in a timely fashion"); };
+		if !(SLX_XEH_MACHINE select 8) then { 
+			XEH_LOG("WARNING: PostInit did not finish in a timely fashion");
+			waitUntil {time > 0};
+			// Consider there will be no player if neither PostInit-Ready, nor PlayerCheck-Ready
+			if !(SLX_XEH_MACHINE select 8 || SLX_XEH_MACHINE select 5) then { SLX_XEH_MACHINE set [13, true]; };
+		};
 	};
 
 	// On Server + Non JIP Client, we are now after all objects have inited
@@ -261,7 +267,8 @@ SLX_XEH_STR spawn {
 				SLX_XEH_MACHINE set [3, false]; // set server
 				SLX_XEH_MACHINE set [4, false]; // set dedicatedserver
 			};
-			waitUntil { !(isNull player) };
+			waitUntil { !(isNull player) || SLX_XEH_MACHINE select 13 };
+			if (SLX_XEH_MACHINE select 13) then { XEH_LOG("WARNING: TimedOut waiting for player object to be ready. Continueing PostInit without Player ready") };
 		};
 	};
 	
@@ -280,6 +287,8 @@ SLX_XEH_STR spawn {
 	};
 
 	GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
+
+	SLX_XEH_MACHINE set [5, true]; // set player check = complete
 };
 
 // Load and call any "pre-init", run-once event handlers
