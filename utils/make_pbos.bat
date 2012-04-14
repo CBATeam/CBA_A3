@@ -30,8 +30,10 @@ REM %TOOL% %OPTS% "%ADDONS%\hashes"
 REM %TOOL% %OPTS% "%ADDONS%\network"
 REM %TOOL% %OPTS% "%ADDONS%\strings"
 REM %TOOL% -m "%ADDONS%\ui"
+REM %TOOL% %OPTS% "%ADDONS%\ui_helper"
 REM %TOOL% %OPTS% "%ADDONS%\vectors"
 REM %TOOL% %OPTS% "%ADDONS%\versioning"
+REM %TOOL% %OPTS% "%ADDONS%\xeh"
 
 echo.
 
@@ -50,8 +52,10 @@ rem rename xxx_extended_eventhandlers.pbo extended_eventhandlers.pbo
 %SIGN% %KEY% "%ADDONS%\cba_network.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_strings.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_ui.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_ui_helper.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_vectors.pbo"
 %SIGN% %KEY% "%ADDONS%\cba_versioning.pbo"
+%SIGN% %KEY% "%ADDONS%\cba_xeh.pbo"
 
 for %%F in (%OPTIONAL%\*.pbo) do (
 	%SIGN% %KEY% %%F
