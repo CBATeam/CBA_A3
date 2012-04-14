@@ -50,7 +50,9 @@ For Take on Helicopters Content
 
 
 For Combined Operations (A2 + OA):
+
     -mod=@CBA;@CBA_A2;@CBA_OA
 
 For Take on Rearmed (A2 + OA + TakeOn):
+
     -mod=arma2;arma2 oa;arma2 oa\expansion;take on;beta;@CBA;@CBA_A2;@CBA_OA;@CBA_TOH
