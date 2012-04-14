@@ -4,5 +4,4 @@
 
 #include "CfgPatches.hpp"
 #include "CfgEventHandlers.hpp"
-#include "CfgRscStd.hpp"
 #include "CfgVehicles.hpp"
