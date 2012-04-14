@@ -33,10 +33,12 @@ SLX_XEH_CACHE_KEYS3 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS3";
 CBA_CACHE_KEYS = uiNamespace getVariable "CBA_CACHE_KEYS";
 
 // Always compile cache function once
-call compile preProcessFileLineNumbers 'extended_eventhandlers\init_compile.sqf';
+call compile preProcessFileLineNumbers 'x\cba\addons\xeh\init_compile.sqf';
 
 // Log
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
+
+SLX_XEH_DUMMY = if (isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")) then { "Helipad_Invisible_H" } else { "HeliHEmpty" };
 
 // Backup functions for macros
 // TODO: Cleanup...
@@ -73,7 +75,7 @@ CBA_fnc_defaultParam = {
 		_value;
 	};
 };
-XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "Extended_Eventhandlers" >> "version")+". "+PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated));
+XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "CBA_XEH" >> "version")+". "+PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
 // Compile all necessary scripts and start one vehicle crew initialisation thread
@@ -199,7 +201,7 @@ call COMPILE_FILE(init_eh); // All XEH Event functions
 *  4) the mission's init.sqf/sqs is run
 */
 
-GVAR(init_obj) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj) = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
 GVAR(init_obj) addEventHandler ["killed", {
 	#ifdef DEBUG_MODE_FULL
 		XEH_LOG("XEH: VehicleCrewInit: "+str(count vehicles));
@@ -225,7 +227,7 @@ GVAR(init_obj) addEventHandler ["killed", {
 GVAR(init_obj) setDamage 1; // Schedule to run itsy bitsy later
 
 // Prepare postInit
-GVAR(init_obj2) = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+GVAR(init_obj2) = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
 GVAR(init_obj2) addEventHandler ["killed", {
 	call COMPILE_FILE(init_post);
 	deleteVehicle GVAR(init_obj2);GVAR(init_obj2) = nil;

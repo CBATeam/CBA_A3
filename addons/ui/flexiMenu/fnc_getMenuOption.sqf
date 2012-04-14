@@ -2,7 +2,7 @@
 // _this = [_menuDefs select 0, _menuDefs select 1 select N] (header & one menu def)
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
-#include "\ca\editor\Data\Scripts\dikCodes.h"
+#include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 #include "DIKASCIIMap.hpp"
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>

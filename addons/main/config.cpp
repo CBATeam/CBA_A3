@@ -1,14 +1,13 @@
 #include "script_component.hpp"
 
 // Simply a package which requires other addons.
-class CfgPatches
-{
-	class ADDON
-	{
+class CfgPatches {
+	class ADDON	{
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "Extended_EventHandlers", "CBA_Extended_EventHandlers", "cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_versioning", "cba_ui", "cba_help" };
+		// "CBA_XEH",  would create circular dependency, however XEH is required by CBA common in any case :)
+		requiredAddons[] = { "cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_versioning", "cba_ui", "cba_ui_helper", "cba_help" };
 		versionDesc = "C.B.A.";
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
@@ -16,13 +15,11 @@ class CfgPatches
 	};
 };
 
-class CfgMods
-{
-	class PREFIX
-	{
+class CfgMods {
+	class PREFIX {
 		dir = "@CBA";
 		name = "Community Base Addons";
-		picture = "ca\ui\data\logo_arma2ep1_ca.paa";
+		picture = "x\cba\addons\main\logo_cba_ca.paa";
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";
@@ -31,29 +28,27 @@ class CfgMods
 	};
 };
 
-class CfgSettings
-{
+class CfgSettings {
 	class CBA {
-		class Caching
-		{
+		class Caching {
 			functions = 1;
 		};
-		class Versioning
-		{
+		class Versioning {
 			class PREFIX {
 				class dependencies {
-					// CBA requiring CBA_A2, only if OA is not found
-					CBA_A2[] = {"cba_a2_main", {0,7,0}, "!isClass(configFile >> 'CfgPatches' >> 'Takistan')"};
-					// CBA requiring CBA_OA, only if A2 is not found
-					CBA_OA[] = {"cba_oa_main", {0,7,0}, "!isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
-					XEH[] = {"extended_eventhandlers", {3,3,3}, "true"};
+					// CBA requiring CBA_A2, if A2 is found
+					CBA_A2[] = {"cba_a2_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
+					// CBA requiring CBA_OA, if OA is found
+					CBA_OA[] = {"cba_oa_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Takistan')"};
+					// CBA requiring CBA_TOH, if TOH is found
+					CBA_TOH[] = {"cba_toh_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'United_States_H')"};
+
+					XEH[] = {"cba_xeh", {1,0,0}, "true"};
 				};
 			};
 		};
-		class Registry
-		{
-			class PREFIX
-			{
+		class Registry {
+			class PREFIX {
 				removed[] = {};
 			};
 		};
@@ -61,4 +56,3 @@ class CfgSettings
 };
 
 #include "CfgVehicles.hpp"
-

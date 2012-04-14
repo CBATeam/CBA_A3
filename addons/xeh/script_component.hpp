@@ -1,6 +1,6 @@
-#define COMPONENT eventhandlers
+#define COMPONENT xeh
 
-#include "\extended_eventhandlers\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 // #define DEBUG_ENABLED_XEH
 
@@ -21,9 +21,4 @@
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 
 
-// Custom path macros
-#define PATHTO_SYS(var1,var2,var3) DOUBLES(var1,var2)\##var3.sqf
-#define PATHTOF_SYS(var1,var2,var3) \DOUBLES(var1,var2)\##var3
-#define PATHTOF2_SYS(var1,var2,var3) DOUBLES(var1,var2)\##var3
-
-#include "\extended_eventhandlers\script_macros_common.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"

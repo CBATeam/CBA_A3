@@ -85,7 +85,7 @@ SLX_XEH_STR spawn {
 		GVAR(keyTrigger) setTriggerStatements[QUOTE(if ((GVAR(keypressed) + TIMEOUT) < time) then { call FUNC(attach_handler) }), "", ""];
 	} else { // dedicatedClient
 		// TODO: Find better dummy class to use
-		CBA_EVENT_KEY_LOGIC = "HeliHEmpty" createVehicleLocal [0,0,0];
+		CBA_EVENT_KEY_LOGIC = SLX_XEH_DUMMY createVehicleLocal [0,0,0];
 		CBA_EVENT_KEY_LOGIC addEventHandler ["Killed", {
 			call FUNC(attach_handler);
 			deleteVehicle CBA_EVENT_KEY_LOGIC;

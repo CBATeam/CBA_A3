@@ -52,7 +52,7 @@ FUNC(directCall) = {
 
 	INC(GVAR(call_i));
 	_objName = format[QUOTE(GVAR(call_obj_%1)), GVAR(call_i)];
-	_obj = "HeliHEmpty" createVehicleLocal [0, 0, 0];
+	_obj = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
 	missionNameSpace setVariable [_objName, _obj];
 	_obj setVariable [QUOTE(GVAR(params)), _params];
 	_obj setVariable [QUOTE(GVAR(code)), _code];

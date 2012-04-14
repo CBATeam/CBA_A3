@@ -1,7 +1,7 @@
 // Desc: "keyDown" EH for menu dialog
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
-#include "\ca\editor\Data\Scripts\dikCodes.h"
+#include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
 if (isDedicated || !dialog) exitWith {};
 

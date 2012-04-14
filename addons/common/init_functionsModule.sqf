@@ -27,12 +27,17 @@ if (BIS_fnc_init && !_recompile) exitWith {};
 //--- PREPROCESS --------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
+// TODO: HeaderType etc.
+
 //--- Create variables for all functions (and preprocess them after first call)
+_pathConfigs = [configfile,campaignconfigfile,missionconfigfile];
 for "_t" from 0 to 2 do {
-	_pathConfig = [configfile,campaignconfigfile,missionconfigfile] select _t;
+	_pathConfig = _pathConfigs select _t;
 	_pathFile = ["ca\modules\functions","functions","functions"] select _t;
 
 	_cfgFunctions = (_pathConfig >> "cfgfunctions");
+	if (isText(_cfgFunctions >> "file")) then { _pathFile = getText(_cfgFunctions >> "file")};
+
 	for "_c" from 0 to (count _cfgFunctions - 1) do {
 		_currentTag = _cfgFunctions select _c;
 
@@ -64,12 +69,15 @@ for "_t" from 0 to 2 do {
 						if (isclass _currentItem) then {
 							_itemName = configname _currentItem;
 							_itemPathItem = gettext (_currentItem >> "file");
+							_itemExt = gettext (_currentItem >> "ext");
+							if (_itemExt == "") then {_itemExt = ".sqf"};
+
 							_itemPath = if (_itemPathItem != "") then {_itemPathItem} else {
-								if (_itemPathCat != "") then {_itemPathCat + "\fn_" + _itemName + ".sqf"} else {
-									if (_itemPathTag != "") then {_itemPathTag + "\fn_" + _itemName + ".sqf"} else {""};
+								if (_itemPathCat != "") then {_itemPathCat + "\fn_" + _itemName + _itemExt} else {
+									if (_itemPathTag != "") then {_itemPathTag + "\fn_" + _itemName + _itemExt} else {""};
 								};
 							};
-							_itemPath = if (_itemPath == "") then {_pathFile + "\" + _categoryName + "\fn_" + _itemName + ".sqf"} else {_itemPath};
+							_itemPath = if (_itemPath == "") then {_pathFile + "\" + _categoryName + "\fn_" + _itemName + _itemExt} else {_itemPath};
 							#ifdef DEBUG_MODE_FULL
 								diag_log [_itemName,_itemPathItem,_itemPath];
 							#endif
@@ -81,7 +89,8 @@ for "_t" from 0 to 2 do {
 								#ifdef DEBUG_MODE_FULL
 									diag_log ["Compiling", _itemName,_itemPathItem,_itemPath];
 								#endif
-								uiNamespace setVariable [_itemPath, compile preProcessFileLineNumbers _itemPath];
+								_compiled = if (_itemExt == ".fsm") then { compile format ["_this execfsm '%1';",_itemPath] } else { compile preProcessFileLineNumbers _itemPath };
+								uiNamespace setVariable [_itemPath, _compiled];
 							};
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
 							#ifdef DO_NOT_STORE_IN_MISSION_NS

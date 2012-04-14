@@ -6,7 +6,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "Extended_EventHandlers" };
+		requiredAddons[] = { "CBA_XEH" };
 		version = VERSION;
 		author[] = {"Spooner", "Sickboy", "Rocko"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
