@@ -102,14 +102,22 @@ _level = 0; // pre v1.60
 //};
 
 FUNC(determineGame) = {
-	// 0 - A2
-	// 1 - OA
-	// 2 - TOH
-	if (isClass (configFile >> "CfgPatches" >> "HSim_UI_H")) then { // isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")
-		2
-	} else {
-		1 // TODO A2
-	}
+	// 0 = A2
+	// 1 = OA
+	// 2 = TOH
+	// 3 = A3 :P
+
+	// A2 does not support productVersion so we create a global array
+	if (typeName productVersion != "ARRAY") then {
+		productVersion = ["ArmA 2","ArmA2",-1,-1];
+	};
+
+	switch (productVersion select 1) do {
+		case "ArmA2": {0};
+		case "ArmA2OA": {1};
+		case "TakeOnH": {2};
+		default {0};
+	};
 }
 
 // System array with machine / mission / session information
