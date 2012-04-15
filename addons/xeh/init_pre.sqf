@@ -110,8 +110,21 @@ FUNC(determineGame) = {
 	private "_pv";
 	_pv = call {productVersion};
 
-	// A2 does not support productVersion so we create a global array
-	if (isNil "_pv") then { _pv = ["ArmA 2","ArmA2",-1,-1] };
+	// A2 (and OA pre 1.61beta, and TOH pre 1.05?) does not support productVersion so we deal with it manually
+	if (isNil "_pv") then { 
+		_pv = if (isClass(configFile >> "CfgPatches" >> "United_States_H")) then {
+			// TOH Backup
+			["TakeOn H","TakeOnH",-1,-1];
+		} else {
+			if (isClass(configFile >> "CfgPatches" >> "Takistan")) then {
+				// OA Backup
+				["ArmA 2OA","ArmA2OA",-1,-1];
+			} else {
+				// A2 Backup
+				["ArmA 2","ArmA2",-1,-1]`;
+			};
+		};
+	};
 
 	switch (_pv select 1) do {
 		case "ArmA2": {0};
