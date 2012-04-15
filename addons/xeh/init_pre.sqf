@@ -108,7 +108,7 @@ FUNC(determineGame) = {
 	// 3 = A3 :P
 
 	// A2 does not support productVersion so we create a global array
-	if (typeName productVersion != "ARRAY") then {
+	if (isNil "productVersion") then {
 		productVersion = ["ArmA 2","ArmA2",-1,-1];
 	};
 
@@ -118,7 +118,7 @@ FUNC(determineGame) = {
 		case "TakeOnH": {2};
 		default {0};
 	};
-}
+};
 
 // System array with machine / mission / session information
 SLX_XEH_MACHINE =
