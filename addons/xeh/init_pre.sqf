@@ -107,13 +107,11 @@ FUNC(determineGame) = {
 	// 2 = TOH
 	// 3 = A3 :P
 
-	// A2 does not support productVersion so we create a global array
 	private "_pv";
 	_pv = call {productVersion};
+
+	// A2 does not support productVersion so we create a global array
 	if (isNil "_pv") then { _pv = ["ArmA 2","ArmA2",-1,-1] };
-	//if (isNil "productVersion") then {
-		//productVersion = ["ArmA 2","ArmA2",-1,-1];
-	//};
 
 	switch (_pv select 1) do {
 		case "ArmA2": {0};
