@@ -38,8 +38,6 @@ call compile preProcessFileLineNumbers 'x\cba\addons\xeh\init_compile.sqf';
 // Log
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
 
-SLX_XEH_DUMMY = if (isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")) then { "Helipad_Invisible_H" } else { "HeliHEmpty" };
-
 // Backup functions for macros
 // TODO: Cleanup...
 CBA_fnc_log = { diag_log [diag_frameNo, diag_tickTime, time, _this] };
@@ -103,6 +101,17 @@ _level = 0; // pre v1.60
 	//_level = 1; // v1.60
 //};
 
+FUNC(determineGame) = {
+	// 0 - A2
+	// 1 - OA
+	// 2 - TOH
+	if (isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")) then {
+		2
+	} else {
+		1 // TODO A2
+	}
+}
+
 // System array with machine / mission / session information
 SLX_XEH_MACHINE =
 [
@@ -119,8 +128,11 @@ SLX_XEH_MACHINE =
 	if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
 	_id, // 11 - SESSION_ID
 	_level, // 12 - LEVEL - Used for version determination
-	false // 13 - TIMEOUT - PostInit timedOut
+	false, // 13 - TIMEOUT - PostInit timedOut
+	call FUNC(determineGame) // 14 - Game
 ];
+
+SLX_XEH_DUMMY = if ((SLX_XEH_MACHINE select 14) == 2) then { "Helipad_Invisible_H" } else { "HeliHEmpty" };
 
 SLX_XEH_STR = ""; // Empty string
 SLX_XEH_STR_INIT_EH = "Extended_Init_EventHandlers";
