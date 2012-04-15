@@ -105,7 +105,7 @@ FUNC(determineGame) = {
 	// 0 - A2
 	// 1 - OA
 	// 2 - TOH
-	if (isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")) then {
+	if (isClass (configFile >> "CfgPatches" >> "HSim_UI_H")) then { // isClass(configFile >> "CfgVehicles" >> "Helipad_Invisible_H")
 		2
 	} else {
 		1 // TODO A2
