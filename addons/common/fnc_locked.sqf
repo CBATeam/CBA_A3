@@ -21,7 +21,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(locked);
 
-if (call FUNC(determineGame) > 1) then {
+if (SLX_XEH_MACHINE select 14 > 1) then {
 	locked _this > 1
 } else {
 	locked _this
