@@ -69,14 +69,17 @@ SLX_XEH_STR spawn COMPILE_FILE2(\x\cba\addons\xeh\supportMonitor.sqf);
 SLX_XEH_MACHINE set [8, true];
 
 _fnc_prettyXEH = {
-	private ["_mpRespawn", "_machineType", "_sessionId", "_str"];
+	private ["_mpRespawn", "_machineType", "_sessionId", "_level", "_timeOut", "_game", "_str"];
 	EXPLODE_9(SLX_XEH_MACHINE,_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone);
 	_mpRespawn = SLX_XEH_MACHINE select 9;
 	_machineType = SLX_XEH_MACHINE select 10;
 	_sessionId = SLX_XEH_MACHINE SELECT 11;
+	_level = SLX_XEH_MACHINE SELECT 12;
+	_timeOut = SLX_XEH_MACHINE SELECT 13;
+	_game = SLX_XEH_MACHINE SELECT 14;
 
 	_str = (PFORMAT_9("State",_isClient,_isJip,_isDedClient,_isServer,_isDedServer,_playerCheckDone,_sp,_startInitDone,_postInitDone) +
-	", _mpRespawn="+str(_mpRespawn)+", _machineType="+str(_machineType)+", _sessionId="+str(_sessionId));
+	", _mpRespawn="+str(_mpRespawn)+", _machineType="+str(_machineType)+", _sessionId="+str(_sessionId)+", _level="+str(_level)+", _timeOut="+str(_timeOut)+", _game="+str(_game));
 
 	if !(isNil "CBA_logic") then {
 		_str = _str + (", BIS_functions="+str(CBA_logic)+", group="+str(group CBA_logic));
