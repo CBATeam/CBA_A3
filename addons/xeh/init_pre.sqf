@@ -121,7 +121,7 @@ FUNC(determineGame) = {
 				["ArmA 2OA","ArmA2OA",-1,-1];
 			} else {
 				// A2 Backup
-				["ArmA 2","ArmA2",-1,-1]`;
+				["ArmA 2","ArmA2",-1,-1];
 			};
 		};
 	};
