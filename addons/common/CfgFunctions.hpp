@@ -279,6 +279,12 @@ class CfgFunctions
 				description = "Checks whether a unit is turned out in a vehicle or not.";
 				file = "\x\cba\addons\common\fnc_isUnitGetOutAnim.sqf";
 			};
+			// CBA_fnc_locked
+			class locked
+			{
+				description = "A2/OA/TOH compatible locked check";
+				file = "\x\cba\addons\common\fnc_locked.sqf";
+			};
 			// CBA_fnc_mapDirTo
 			class mapDirTo
 			{
