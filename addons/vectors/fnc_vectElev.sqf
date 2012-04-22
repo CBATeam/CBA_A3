@@ -30,6 +30,6 @@ private ["_dist2D"];
 
 PARAMS_2(_pos1,_pos2);
 
-_dist2D = (_this) call CBA_fnc_vectMag2D;
+_dist2D = (_this) call CBA_fnc_vectMagn2D;
 
 (_this select 2) atan2 _dist2D;
