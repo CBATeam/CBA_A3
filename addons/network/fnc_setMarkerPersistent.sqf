@@ -8,6 +8,9 @@ Description:
 
 	Query persistency with <CBA_fnc_getMarkerPersistent>.
 
+        Please note, this function currently only fully works with markers created on the server,
+        due to client markers being deleted when the client disconnects.
+
 Parameters:
 	_marker - Name of a marker [String]
 	_persistent - If true, marker will be kept consistent for JIP players [Boolean]
