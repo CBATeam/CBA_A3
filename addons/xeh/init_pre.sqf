@@ -101,12 +101,7 @@ _level = 0; // pre v1.60
 	//_level = 1; // v1.60
 //};
 
-FUNC(determineGame) = {
-	// 0 = A2
-	// 1 = OA
-	// 2 = TOH
-	// 3 = A3 :P
-
+FUNC(determineProductVersion) = {
 	private "_pv";
 	_pv = call {productVersion};
 
@@ -114,17 +109,28 @@ FUNC(determineGame) = {
 	if (isNil "_pv") then { 
 		_pv = if (isClass(configFile >> "CfgPatches" >> "United_States_H")) then {
 			// TOH Backup
-			["TakeOn H","TakeOnH",-1,-1];
+			["TakeOn H", "TakeOnH", -1, -1];
 		} else {
 			if (isClass(configFile >> "CfgPatches" >> "Takistan")) then {
 				// OA Backup
-				["ArmA 2OA","ArmA2OA",-1,-1];
+				["ArmA 2OA", "ArmA2OA", -1, -1];
 			} else {
 				// A2 Backup
-				["ArmA 2","ArmA2",-1,-1];
+				["ArmA 2", "ArmA2", -1, -1];
 			};
 		};
 	};
+
+	_pv;
+};
+
+FUNC(determineGame) = {
+	// 0 = A2
+	// 1 = OA
+	// 2 = TOH
+	// 3 = A3 :P
+	private "_pv";
+	_pv = call FUNC(determineProductVersion);
 
 	switch (_pv select 1) do {
 		case "ArmA2": {0};
@@ -151,7 +157,8 @@ SLX_XEH_MACHINE =
 	_id, // 11 - SESSION_ID
 	_level, // 12 - LEVEL - Used for version determination
 	false, // 13 - TIMEOUT - PostInit timedOut
-	call FUNC(determineGame) // 14 - Game
+	call FUNC(determineGame), // 14 - Game
+	call FUNC(determineProductVersion) // 15 - Product+Version
 ];
 
 SLX_XEH_DUMMY = if ((SLX_XEH_MACHINE select 14) == 2) then { "Helipad_Invisible_H" } else { "HeliHEmpty" };
