@@ -112,7 +112,7 @@ if (SLX_XEH_MACHINE select 3) then
 };
 
 [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call CBA_fnc_addEventHandler;
-[QUOTE(GVAR(say)), { private "_say"; _say = _this; { _x say (_say select 1) } forEach (_say select 0) }] call CBA_fnc_addEventHandler;
+[QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(say3d)), { private "_say"; _say = _this; if (count _this > 2) then { if ((positionCameraToWorld [0,0,0]) distance (_say select 0) <= (_say select 2)) then { (_say select 0) say3d (_say select 1) } } else { (_say select 0) say3d (_say select 1) } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(weather)), { private "_weather"; _weather = _this; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(date)), { private "_date"; _date = _this; setDate _date }] call CBA_fnc_addEventHandler;
