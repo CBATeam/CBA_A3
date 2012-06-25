@@ -100,14 +100,12 @@ if (SLX_XEH_MACHINE select 3) then
 } else {
 	FUNC(id) =
 	{
-		private ["_id"];
 		if (player == player) then
 		{
-			_id = str(player);
+			str(player);
 		} else {
-			_id = "client";
+			"client";
 		};
-		_id
 	};
 };
 
