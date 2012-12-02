@@ -38,19 +38,20 @@ if (_index >= 0) then
 	if (_isDefault) then
 	{
 		// Remove the key, if the new value is the default value.
-		_hash set [HASH_KEYS, (_hash select HASH_KEYS) - [_key]];
+		// Do this by copying the key and value of the last element
+		// in the hash to the position of the element to be removed.
+		// Then, shrink the key and value arrays by one. (#2407)
+		private ["_keys", "_values", "_last"];
 
-		// Copy all the values, after the one we want to remove, down by
-		// one place, then cut off the last value.
-		private "_values";
+		_keys = _hash select HASH_KEYS;
 		_values = _hash select HASH_VALUES;
+		_last = (count _keys) - 1;
 
-		for "_i" from _index to ((count _values) - 2) do
-		{
-			_values set [_i, _values select (_i + 1)];
-		};
+		_keys set [_index, _keys select _last];
+		_keys resize _last;
 
-		_values resize ((count _values) - 1);
+		_values set [_index, _values select _last];
+		_values resize _last;
 	} else {
 		// Replace the original value for this key.
 		(_hash select HASH_VALUES) set [_index, _value];
