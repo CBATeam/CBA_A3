@@ -15,11 +15,11 @@ Returns:
 
 Examples:
 	(begin example)
-		_endPos = [[024,015], 20, 45] call CBA_fnc_mapDirTo;
+		_endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
 	(end)
 	(begin example)
 		// preferred
-		_endPos = [["024","015"], 20, 45] call CBA_fnc_mapDirTo;
+		_endPos = [["024","015"], 20, 45] call CBA_fnc_mapRelPos;
 	(end)
 Author:
 	Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
