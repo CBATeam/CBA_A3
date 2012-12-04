@@ -1,8 +1,18 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-SLX_XEH_EH_Init = { (_this select 0) setVariable SLX_XEH_AR_TRUE; [_this select 0, SLX_XEH_STR_INIT_EH]call FUNC(init) };
-SLX_XEH_EH_RespawnInit = { (_this select 0) setVariable SLX_XEH_AR_TRUE; [_this select 0, SLX_XEH_STR_INIT_EH, true] call FUNC(init) };
+SLX_XEH_EH_Init = { 
+	#ifdef DEBUG_MODE_FULL
+		diag_log ['Init',_this, local (_this select 0), typeOf (_this select 0)]; 
+	#endif
+	(_this select 0) setVariable SLX_XEH_AR_TRUE; [_this select 0, SLX_XEH_STR_INIT_EH]call FUNC(init);
+};
+SLX_XEH_EH_RespawnInit = { 
+	#ifdef DEBUG_MODE_FULL
+		diag_log ['RespawnInit',_this, local (_this select 0), typeOf (_this select 0)];
+	#endif
+	(_this select 0) setVariable SLX_XEH_AR_TRUE; [_this select 0, SLX_XEH_STR_INIT_EH, true] call FUNC(init);
+};
 
 // The actual XEH functions that are called from within the engine eventhandlers.
 // This can also be uesd for better debugging
