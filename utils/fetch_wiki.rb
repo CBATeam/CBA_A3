@@ -1,5 +1,6 @@
 require 'rake'
 require 'net/http'
+require 'net/http'
 require 'uri'
 require 'set'
 require 'fileutils'
@@ -18,13 +19,19 @@ module Wiki
   def self.fetch(project, page, destination, exclude = Set.new(), getCSS = true)
     # Get the full version so we can find attachments.
     addr = "/projects/#{project}/wiki/#{page}"
-    text = HTTP.new(HOST).request_get(addr, GET_OPTIONS).body
+    h = HTTP.new(HOST)
+    h.use_ssl = true
+    h.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    text = h.request_get(addr, GET_OPTIONS).body
     exclude.add page.downcase
 
     while text =~ %r["/(#{ATTACHMENTS_DIR}/\d+/([\w\-]+\.\w+))"]i
       image_name = $2
 
-      image = HTTP.new(HOST).request_get("/#{$1}", GET_OPTIONS).body
+      h = HTTP.new(HOST)
+      h.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	  h.use_ssl = true
+      image = h.request_get("/#{$1}", GET_OPTIONS).body
 
       File.open("#{destination}/#{image_name}", 'wb') do |file|
         file.write(image)
@@ -37,7 +44,10 @@ module Wiki
 
     # Get the simple version for wiki links and actual download.
     path = "#{addr}#{EXPORT_HTML}"
-    text = HTTP.new(HOST).request_get(path, GET_OPTIONS).body
+    h = HTTP.new(HOST)
+    h.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    h.use_ssl = true
+    text = h.request_get(path, GET_OPTIONS).body
 	text.gsub!(%r[href="/]) do |match|
 		"href=\"http://#{HOST}/"
 	end

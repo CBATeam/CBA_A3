@@ -133,6 +133,7 @@ Group: Functions  {
          File: addPlayerAction  (no auto-title, common\fnc_addPlayerAction.sqf)
          File: addWeapon  (no auto-title, common\fnc_addWeapon.sqf)
          File: addWeaponCargo  (no auto-title, common\fnc_addWeaponCargo.sqf)
+         File: CBA_fnc_locked  (common\fnc_locked.sqf)
          File: createCenter  (no auto-title, common\fnc_createCenter.sqf)
          File: createMarker  (no auto-title, common\fnc_createMarker.sqf)
          File: createTrigger  (no auto-title, common\fnc_createTrigger.sqf)
@@ -244,7 +245,7 @@ Group: Functions  {
 Group: Macros  {
 
    Macro Index: Index
+   File: script_macros_common.hpp  (main\script_macros_common.hpp)
    File: script_macros_mission.hpp  (main\script_macros_mission.hpp)
    }  # Group: Macros
 
-File: script_macros_common.hpp  (extended_eventhandlers\script_macros_common.hpp)
