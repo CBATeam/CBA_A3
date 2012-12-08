@@ -30,7 +30,7 @@ if (typeName _int != "SCALAR") exitWith {
 	""
 };
 
-if (_int < count CBA_INT_STRING_TABLE && _int >= 0) then {
+if (_int < count CBA_INT_STRING_TABLE && {_int >= 0}) then {
 	(CBA_INT_STRING_TABLE select _int)
 } else {
 	str _int

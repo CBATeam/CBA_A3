@@ -39,36 +39,31 @@ _inits = [];	// array of handlers or arrays with handlers, the
 			// the serverInit and clientInit feature.
 _excludeClass = SLX_XEH_STR;
 _excludeClasses = [];
-_isExcluded = { (_unitClass isKindOf _excludeClass) || ({ _unitClass isKindOf _x }count _excludeClasses>0) };
+_isExcluded = { (_unitClass isKindOf _excludeClass) || {({ _unitClass isKindOf _x } count _excludeClasses > 0)} };
 
 PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 
 {
-	if ((configName (_configFile/_x))!= SLX_XEH_STR) then
-	{
+	if (configName (_configFile/_x) != SLX_XEH_STR) then {
 		_i = 0;
 		_t = count (_configFile/_x);
-		while { _i<_t } do
-		{
+		while { _i < _t } do {
 			_cfgEntry = (_configFile/_x) select _i;
 			_name = configName _cfgEntry;
 			_idx = _names find _name;
-			if (_idx < 0) then
-			{
+			if (_idx < 0) then {
 				// This particular handler entry name hasn't been seen
 				// yet, so add it to the end of the _inits array
 				_idx = count _inits;
 				_names set [_idx, _name];
 			};
 			// Standard XEH init string
-			if (isText _cfgEntry && (call _useEH)) then
-			{
+			if (isText _cfgEntry && {(call _useEH)}) then {
 				_init = compile(getText _cfgEntry);
 				[_idx, _init, 0] call _fSetInit;
 			} else {
 				// Composite XEH init class
-				if (isClass _cfgEntry) then
-				{
+				if (isClass _cfgEntry) then {
 					_scopeEntry = _cfgEntry / "scope";
 					_initEntry = _cfgEntry / "init";
 					_serverInitEntry = _cfgEntry / "serverInit";
@@ -78,70 +73,52 @@ PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
 					_replaceEntry = _cfgEntry / "replaceDEH";
 					_excludeClasses = [];
 					_excludeClass = SLX_XEH_STR;
-					if (isText _excludeEntry) then
-					{
+					if (isText _excludeEntry) then {
 						_excludeClass = (getText _excludeEntry);
 					} else {
-						if (isArray _excludeEntry) then
-						{
+						if (isArray _excludeEntry) then {
 							_excludeClasses = (getArray _excludeEntry);
 						};
 					};
 					_onRespawn = false;
-					if (isText _respawnEntry) then
-					{
-						_onRespawn = ({ (getText _respawnEntry) == _x }count["1", "true"]>0);
+					if (isText _respawnEntry) then {
+						_onRespawn = ({ (getText _respawnEntry) == _x } count["1", "true"] > 0);
 					} else {
-						if (isNumber _respawnEntry) then
-						{
+						if (isNumber _respawnEntry) then {
 							_onRespawn = ((getNumber _respawnEntry) == 1);
 						};
 					};
 					_replaceDEH = false;
-					if (isText _replaceEntry) then
-					{
-						_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"]>0);
+					if (isText _replaceEntry) then {
+						_replaceDEH = ({ (getText _replaceEntry) == _x }count["1", "true"] > 0);
 					} else {
-						if (isNumber _replaceEntry) then
-						{
+						if (isNumber _replaceEntry) then {
 							_replaceDEH = ((getNumber _replaceEntry) == 1);
 						};
 					};
 					_scope = if (isNumber _scopeEntry) then { getNumber _scopeEntry } else { 2 };
-					if !(_scope == 0 && (_unitClass != _x)) then
-					{
-						if (!(call _isExcluded) && (call _useEH)) then
-						{
-							if (isText _initEntry) then
-							{
+					if !(_scope == 0 && {_unitClass != _x}) then {
+						if (!(call _isExcluded) && {call _useEH}) then {
+							if (isText _initEntry) then {
 								/*  If the init EH is private and vehicle is of the
 								*  "wrong" class, do nothing, ie don't add the EH.
 								*  Also, if we're called after a respawn and the
 								*  init EH shouldn't be used, then don't.
 								*/
 								_init = compile(getText _initEntry);
-								if (_useDEHinit && _replaceDEH) then
-								{
+								if (_useDEHinit && {_replaceDEH}) then {
 									[0, _init, 0] call _fSetInit;
 								} else {
 									[_idx, _init, 0] call _fSetInit;
 								};
 							};
-							if (SLX_XEH_MACHINE select 3) then
-							{
-								if (isText _serverInitEntry) then
-								{
-									_serverInit = compile(getText _serverInitEntry);
-									[_idx, _serverInit, 1] call _fSetInit;
-								};
+							if (SLX_XEH_MACHINE select 3 && {isText _serverInitEntry}) then {
+								_serverInit = compile(getText _serverInitEntry);
+								[_idx, _serverInit, 1] call _fSetInit;
 							};
-							if (SLX_XEH_MACHINE select 0) then
-							{
-								if (isText _clientInitEntry) then
-								{
-									_clientInit = compile(getText _clientInitEntry);
-									[_idx, _clientInit, 2] call _fSetInit;
-								};
+							if (SLX_XEH_MACHINE select 0 && {isText _clientInitEntry}) then {
+								_clientInit = compile(getText _clientInitEntry);
+								[_idx, _clientInit, 2] call _fSetInit;
 							};
 						};
 					};

@@ -117,7 +117,7 @@ if (_c > 1) then
 
 if (_type select 2) exitWith
 {
-	[QUOTE(GVAR(debug)), [_message, _component, [_type select 0,_type select 1,false]]] call CBA_fnc_globalEvent;
+	[QGVAR(debug), [_message, _component, [_type select 0,_type select 1,false]]] call CBA_fnc_globalEvent;
 };
 
 _msgAr = [];

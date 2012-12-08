@@ -40,71 +40,54 @@ _16to10 = [2.182, 1.714, 1.412, 1.2];
 _12to3 = [1.821, 1.430, 1.178, 1.001];
 _error = false;
 
-switch (_ratio) do
-{
-	case "4:3":
-	{
+switch (_ratio) do {
+	case "4:3": {
 		_sizes = _4to3;
 	};
-	case "5:4":
-	{
+	case "5:4": {
 		_sizes = _4to3;
 	};
-	case "16:9":
-	{
+	case "16:9": {
 		_sizes = _16to9;
 	};
-	case "16:10":
-	{
+	case "16:10": {
 		_sizes = _16to10;
 	};
-	case "12:3":
-	{
+	case "12:3": {
 		_sizes = _12to3;
 	};
-	default
-	{
+	default {
 		_error = true;
 	};
 };
 
-if (!_error) then
-{
+if (!_error) then {
 	_index = _sizes find ((round (safeZoneW * 1000)) / 1000);
 	//hint str _index;
-	if (_index == -1) exitWith
-	{
+	if (_index == -1) exitWith {
 		_error = true;
 	};
 };
 
-if (_error) then
-{
-	if (_output == "STRING") then
-	{
-		_return = "error";
+if (_error) then {
+	_return = if (_output == "STRING") then {
+		"error"
 	} else {
-		_return = -1;
+		-1
 	};
 } else {
-	if (_output == "STRING") then
-	{
-		switch (_index) do
-		{
-			case 0:
-			{
+	if (_output == "STRING") then {
+		switch (_index) do {
+			case 0: {
 				_return = "verysmall";
 			};
-			case 1:
-			{
+			case 1: {
 				_return = "small";
 			};
-			case 2:
-			{
+			case 2: {
 				_return = "normal";
 			};
-			case 3:
-			{
+			case 3: {
 				_return = "large";
 			};
 		};

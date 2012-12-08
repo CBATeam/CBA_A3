@@ -76,6 +76,10 @@ diag_log "cba_init";
 // 	} foreach GVAR(BIS_functions_list);
 	
 
+private ["_test", "_test2"];
+_test = (_this select 0) setPos (position (_this select 0)); if (isnil "_test") then {_test = false};
+_test2 = (_this select 0) playMove ""; if (isnil "_test2") then {_test2 = false};
+if (_test || {_test2}) then {0 call COMPILE_FILE2(ca\modules\functions\misc\fn_initCounter.sqf) };
 
 //--------------------------------------------------------------------------------------------------------
 //--- INIT COMPLETE --------------------------------------------------------------------------------------

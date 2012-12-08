@@ -35,7 +35,7 @@ _threshold = if (count _this > 3) then {_this select 3} else {2};
 _group enableattack false;
 
 private ["_count", "_list", "_list2", "_units", "_i"];
-_statics = [_position, vehicles, _radius, {(_x iskindof "StaticWeapon") && (_x emptypositions "Gunner" > 0)}] call CBA_fnc_getnearest;
+_statics = [_position, vehicles, _radius, {(_x iskindof "StaticWeapon") && {(_x emptypositions "Gunner" > 0)}}] call CBA_fnc_getnearest;
 _buildings = _position nearObjects ["building",_radius];
 _units = units _group;
 _count = count _units;
@@ -46,13 +46,13 @@ _count = count _units;
 _i = 0;
 {
 	_count = (count _statics) - 1;
-	if (random 1 < 0.31 && _count > -1) then {
+	if (random 1 < 0.31 && {_count > -1}) then {
 		_x assignasgunner (_statics select _count);
 		_statics resize _count;
 		[_x] ordergetin true;
 		_i = _i + 1;
 	} else {
-		if (random 1 < 0.93 && count _buildings > 0) then {
+		if (random 1 < 0.93 && {count _buildings > 0}) then {
 			private ["_building","_p","_array"];
 			_building = _buildings call BIS_fnc_selectRandom;
 			_array = _building getvariable "CBA_taskDefend_positions";
@@ -91,7 +91,7 @@ _i = 0;
 {
 	_x setvariable ["CBA_taskDefend_positions",nil];
 } foreach _buildings;
-if (count _this > 4) then {if !(_this select 4) then {_i = _count}};
+if (count _this > 4 && {!(_this select 4)}) then {_i = _count};
 if (_i < _count * 0.5) then {
 	[_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
 };

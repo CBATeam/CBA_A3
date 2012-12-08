@@ -27,58 +27,49 @@ SCRIPT(getAspectRatio);
 
  private ["_output","_aspectStr","_aspectArr","_ratio","_return"];
 
-_output = toUpper (_this);
+_output = toUpper _this;
 
 _aspectStr = "";
 _aspectArr = [];
 _return = 0;
 
 _ratio = (round ((safeZoneW / safeZoneH) * 1000)) / 1000;
-switch (_ratio) do
-{
-	case 1:
-	{
+switch (_ratio) do {
+	case 1: {
 			_aspectStr = "4:3";
 			_aspectArr = [4,3];
 	};
-	case (1.333):
-	{
+	case 1.333: {
 			_aspectStr = "16:9";
 			_aspectArr = [16,9];
 	};
-	case (1.334):
-	{
+	case 1.334: {
 			_aspectStr = "16:9";
 			_aspectArr = [16,9];
 	};
-	case 1.2:
-	{
+	case 1.2: {
 			_aspectStr = "16:10";
 			_aspectArr = [16,10];
 	};
-	case 0.937:
-	{
+	case 0.937: {
 			_aspectStr = "5:4";
 			_aspectArr = [5,4];
 	};
-	case 0.938:
-	{
+	case 0.938: {
 			_aspectStr = "5:4";
 			_aspectArr = [5,4];
 	};
-	case 1.001:
-	{
+	case 1.001: {
 			_aspectStr = "12:3";
 			_aspectArr = [12,3];
 	};
-	default
-	{
+	default {
 		hint str _ratio;
 	};
 };
 
-if(_output == "ARRAY") then {_return = _aspectArr;};
-if(_output == "STRING") then {_return = _aspectStr;};
-if(_output == "NUMBER") then {_return = _ratio;};
+if (_output == "ARRAY") then {_return = _aspectArr;};
+if (_output == "STRING") then {_return = _aspectStr;};
+if (_output == "NUMBER") then {_return = _ratio;};
 
 _return;;

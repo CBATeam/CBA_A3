@@ -28,11 +28,11 @@ if (typeName _subMenu == typeName []) then {
 };
 
 // close menu if needed
-if (_useListBox == 0 && _multiReselect == 0) then { // if using embedded listBox && normal close upon selection
+if (_useListBox == 0 && {_multiReselect == 0}) then { // if using embedded listBox && normal close upon selection
 	closeDialog 0;
 
 	// to prevent any successive user dialogs (activated via menu) from being inadvertantly closed by keyUp EH, set _display to null quickly here.
-	uiNamespace setVariable [QUOTE(GVAR(display)), displayNull]; // manually set here, since onUnload takes too long to complete.
+	uiNamespace setVariable [QGVAR(display), displayNull]; // manually set here, since onUnload takes too long to complete.
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)

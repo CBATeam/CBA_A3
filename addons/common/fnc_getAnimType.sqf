@@ -35,7 +35,7 @@ if (_weapon != "") then {
 
     if (isClass _class) then {
         _temp = "";
-        while { isClass _class && _temp == "" } do {
+        while { isClass _class && {_temp == ""} } do {
 			_temp = switch (configName _class) do {
 				case "RifleCore": {"rfl"};
 				case "LauncherCore": {"lnr"};

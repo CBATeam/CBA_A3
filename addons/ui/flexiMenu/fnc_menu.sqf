@@ -28,7 +28,7 @@ disableSerialization;
 //-----------------------------------------------------------------------------
 // See http://dev-heaven.net/projects/cca/wiki/FlexiMenu for array syntax info.
 
-// Notes: CBA_UI_fnc_setObjectMenuSource allows you to assign a menu source to a particular object. It will add an object variable called QUOTE(GVAR(flexiMenu_source)) containing the menu source.
+// Notes: CBA_UI_fnc_setObjectMenuSource allows you to assign a menu source to a particular object. It will add an object variable called QGVAR(flexiMenu_source) containing the menu source.
 //-----------------------------------------------------------------------------
 // Syntax 1: _source
 //   _this = menu definition source string
@@ -102,16 +102,14 @@ if (count (_menuDefs select 0) <= _flexiMenu_menuProperty_ID_menuResource) exitW
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; // determine which dialog to show
 
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
-if (!isClass (configFile >> _menuRsc)) then { // if not a full class name
-	if (!isClass (missionConfigFile >> _menuRsc)) then { // if not a full class name
-		_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
-	};
+if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
+	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
 
 private "_disp";
-_disp = uiNamespace getVariable QUOTE(GVAR(display));
+_disp = uiNamespace getVariable QGVAR(display);
 
 IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc,"");
 (_disp displayCtrl _flexiMenu_IDC_menuDesc) ctrlSetText _caption;
@@ -120,7 +118,7 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 _disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
@@ -151,7 +149,7 @@ _commitList = [];
 		_enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
 		_visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
-		if (_caption != "" && (_caption != "No options" || _idcIndex == 0)) then {
+		if (_caption != "" && {(_caption != "No options" || {_idcIndex == 0})}) then {
 			_ctrl = _disp displayCtrl _idc;
 			_array = ctrlPosition _ctrl;
 			if ({_x == 0} count _array == 4) then {
@@ -220,4 +218,4 @@ for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
 	_ctrl ctrlShow false;
 	_ctrl ctrlEnable false;
 };
-
+

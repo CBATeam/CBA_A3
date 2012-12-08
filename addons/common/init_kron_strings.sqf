@@ -80,15 +80,13 @@ KRON_StrToArray = {
 KRON_StrLeft = {
 	private["_in", "_len", "_arr", "_out"];
 	_in = _this select 0;
-	_len =(_this select 1)-1;
-	_arr =[_in] call KRON_StrToArray;
+	_len = (_this select 1) - 1;
+	_arr = [_in] call KRON_StrToArray;
 	_out ="";
-	if (_len>=(count _arr)) then
-	{
+	if (_len >= count _arr) then {
 		_out = _in;
 	} else {
-		for "_i" from 0 to _len do
-		{
+		for "_i" from 0 to _len do {
 			_out = _out + (_arr select _i);
 		};
 	};
@@ -109,11 +107,10 @@ KRON_StrRight = {
 	private["_in", "_len", "_arr", "_i", "_out"];
 	_in = _this select 0;
 	_len = _this select 1;
-	_arr =[_in] call KRON_StrToArray;
+	_arr = [_in] call KRON_StrToArray;
 	_out ="";
-	if (_len>(count _arr)) then { _len = count _arr };
-	for "_i" from ((count _arr)-_len) to ((count _arr)-1) do
-	{
+	if (_len > count _arr) then {_len = count _arr};
+	for "_i" from ((count _arr) - _len) to ((count _arr) - 1) do {
 		_out = _out + (_arr select _i);
 	};
  _out
@@ -123,15 +120,13 @@ KRON_StrMid = {
 	private["_in", "_pos", "_len", "_arr", "_i", "_out"];
 	_in = _this select 0;
 	_pos = abs(_this select 1);
-	_arr =[_in] call KRON_StrToArray;
-	_len = count(_arr);
-	if ((count _this)>2) then { _len =(_this select 2)};
+	_arr = [_in] call KRON_StrToArray;
+	_len = count _arr;
+	if (count _this > 2) then {_len = _this select 2};
 	_out ="";
-	if ((_pos+_len)>=(count _arr)) then { _len =(count _arr)-_pos };
-	if (_len>0) then
-	{
-		for "_i" from _pos to (_pos+_len-1) do
-		{
+	if ((_pos + _len) >= count _arr) then {_len = (count _arr) - _pos};
+	if (_len > 0) then {
+		for "_i" from _pos to (_pos + _len - 1) do {
 			_out = _out + (_arr select _i);
 		};
 	};
@@ -164,10 +159,7 @@ KRON_StrIndex = {
 */
 
 KRON_StrInStr = {
-	private["_out"];
-	_in = _this select 0;
-	_out = if (([_this select 0,_this select 1] call KRON_StrIndex)==-1) then { false } else { true };
-	_out
+	(([_this select 0, _this select 1] call KRON_StrIndex) != -1)
 };
 
 /*
@@ -225,16 +217,14 @@ KRON_StrLower = {
 KRON_ArrayToUpper = {
 	private["_in", "_i", "_e", "_out"];
 	_in = _this select 0;
-	_out =[];
-	if ((count _in)>0) then
-	{
-		for "_i" from 0 to (count _in)-1 do
-		{
+	_out = [];
+	if (count _in > 0) then {
+		for "_i" from 0 to (count _in) - 1 do {
 			_e = _in select _i;
-			if (typeName _e =="STRING") then {
-				_e = toUpper(_e);
+			if (typeName _e == "STRING") then {
+				_e = toUpper _e;
 			};
-			_out set [_i,_e];
+			_out set [_i, _e];
 		};
 	};
 	_out
@@ -242,57 +232,48 @@ KRON_ArrayToUpper = {
 
 KRON_Compare = {
 	private["_k", "_n", "_s", "_i", "_c", "_t", "_s1", "_s2", "_l1", "_l2", "_l"];
-	_k =[_this, "CASE"] call KRON_findFlag;
+	_k = [_this, "CASE"] call KRON_findFlag;
 	_n = 0;
 	_s = 0;
-	for "_i" from 0 to 1 do
-	{
+	for "_i" from 0 to 1 do {
 		_t = _this select _i;
-		switch (typeName _t) do
-		{
+		switch (typeName _t) do {
 			case "SCALAR": { _n = 1 };
-			case "BOOL": { _this set [_i,str(_t)]};
-			case "SIDE": { _this set [_i,str(_t)]};
-			case "STRING": { if !(_k) then { _this =[_this] call KRON_ArrayToUpper }};
+			case "BOOL": { _this set [_i, str _t]};
+			case "SIDE": { _this set [_i, str _t]};
+			case "STRING": { if !(_k) then { _this = [_this] call KRON_ArrayToUpper }};
 			default { _n =-1 };
 		};
 	};
 	_s1 = _this select 0;
 	_s2 = _this select 1;
-	if (_n!= 0) exitWith
-	{
-		if (_n == 1) then
-		{
-			if (_s1<_s2) then { _s =-1 } else { if (_s1>_s2) then { _s = 1 }};
+	if (_n != 0) exitWith {
+		if (_n == 1) then {
+			if (_s1 < _s2) then { _s =-1 } else { if (_s1 > _s2) then { _s = 1 }};
 		};
 		_s
 	};
-	_s1 = toArray(_s1);
-	_s2 = toArray(_s2);
+	_s1 = toArray _s1;
+	_s2 = toArray _s2;
 	_l1 = count _s1;
 	_l2 = count _s2;
-	_l = if (_l1<_l2) then { _l1 } else { _l2 };
-	for "_i" from 0 to _l-1 do
-	{
-		if ((_s1 select _i)<(_s2 select _i)) then
-		{
-			_s =-1;
+	_l = if (_l1 < _l2) then { _l1 } else { _l2 };
+	for "_i" from 0 to _l - 1 do {
+		if ((_s1 select _i) < (_s2 select _i)) then {
+			_s = -1;
 			_i = _l;
 		} else {
-			if ((_s1 select _i)>(_s2 select _i)) then
-			{
+			if ((_s1 select _i) > (_s2 select _i)) then {
 				_s = 1;
 				_i = _l;
 			};
 		};
 	};
-	if (_s == 0) then
-	{
-		if (_l1<_l2) then
-		{
+	if (_s == 0) then {
+		if (_l1 < _l2) then {
 			_s =-1;
 		} else {
-			if (_l1>_l2) then { _s = 1 };
+			if (_l1 > _l2) then { _s = 1 };
 		};
 	};
 	_s
@@ -301,68 +282,58 @@ KRON_Compare = {
 KRON_ArraySort = {
 	private["_a", "_d", "_k", "_s", "_i", "_vo", "_v1", "_v2", "_j", "_c", "_x"];
 	_a = +(_this select 0);
-	_d = if ([_this, "DESC"] call KRON_findFlag) then {-1 } else { 1 };
+	_d = if ([_this, "DESC"] call KRON_findFlag) then { -1 } else { 1 };
 	_k = if ([_this, "CASE"] call KRON_findFlag) then { "CASE" } else { "nocase" };
 	_s = -1;
-	if (typeName (_a select 0)=="ARRAY") then
-	{
+	if (typeName (_a select 0) == "ARRAY") then {
 		_s = 0;
-		if (((count _this)>1) && (typeName (_this select 1)=="SCALAR")) then
-		{
+		if (count _this > 1 && {typeName (_this select 1) == "SCALAR"}) then {
 			_s = _this select 1;
 		};
 	};
-	for "_i" from 0 to (count _a)-1 do
-	{
+	for "_i" from 0 to (count _a) - 1 do {
 		_vo = _a select _i;
 		_v1 = _vo;
-		if (_s>-1) then { _v1 = _v1 select _s };
+		if (_s > -1) then { _v1 = _v1 select _s };
 		_j = 0;
-		for [{ _j = _i-1 },{ _j>= 0 },{ _j = _j-1 }] do
-		{
+		for [{ _j = _i-1 }, { _j >= 0 }, { _j = _j - 1 }] do {
 			_v2 = _a select _j;
-			if (_s>-1) then { _v2 = _v2 select _s };
-			_c =[_v2,_v1,_k] call KRON_Compare;
-			if (_c!= _d) exitWith {};
-			_a set [_j+1,_a select _j];
+			if (_s > -1) then { _v2 = _v2 select _s };
+			_c = [_v2, _v1, _k] call KRON_Compare;
+			if (_c != _d) exitWith {};
+			_a set [_j + 1, _a select _j];
 		};
-		_a set [_j+1,_vo];
+		_a set [_j + 1, _vo];
 	};
 	_a
 };
 
 KRON_findFlag = {
-	private["_in", "_flg", "_arr", "_out"];
+	private["_in", "_flg", "_arr"];
 	_in = _this select 0;
 	_flg = toUpper(_this select 1);
-	_arr =[_in] call KRON_ArrayToUpper;
-	_out = _flg in _arr;
-	_out
+	_arr = [_in] call KRON_ArrayToUpper;
+	(_flg in _arr)
 };
 
 KRON_getArg = {
 	private["_in", "_flg", "_fl", "_def", "_arr", "_i", "_j", "_as", "_aa", "_org", "_p", "_out"];
 	_in = _this select 0;
 	_flg = toUpper(_this select 1);
-	_fl =[_flg] call KRON_StrLen;
-	_out ="";
-	if ((count _this)>2) then { _out = _this select 2 };
-	_arr =[_in] call KRON_ArrayToUpper;
-	if ((count _arr)>0) then
-	{
-		for "_i" from 0 to (count _in)-1 do
-		{
+	_fl = [_flg] call KRON_StrLen;
+	_out = "";
+	if (count _this > 2) then { _out = _this select 2 };
+	_arr = [_in] call KRON_ArrayToUpper;
+	if (count _arr > 0) then {
+		for "_i" from 0 to (count _in) - 1 do {
 			_as = _arr select _i;
-			if (typeName _as =="STRING") then
-			{
+			if (typeName _as =="STRING") then {
 				_aa = [_as] call KRON_StrToArray;
 				_p = _aa find ":";
-				if (_p == _fl) then
-				{
-					if (([_as,_fl] call KRON_StrLeft)== _flg) then
-					{
+				if (_p == _fl) then {
+					if (([_as,_fl] call KRON_StrLeft) == _flg) then {
 						_org = _in select _i;
-						_out =[_org,_p+1] call KRON_StrMid;
+						_out = [_org, _p + 1] call KRON_StrMid;
 					};
 				};
 			};
@@ -376,25 +347,20 @@ KRON_getArgRev = {
 	private["_in", "_flg", "_fl", "_def", "_arr", "_i", "_j", "_as", "_aa", "_org", "_p", "_out"];
 	_in = _this select 0;
 	_flg = toUpper(_this select 1);
-	_fl =[_flg] call KRON_StrLen;
+	_fl = [_flg] call KRON_StrLen;
 	_out ="";
-	if ((count _this)>2) then { _out = _this select 2 };
-	_arr =[_in] call KRON_ArrayToUpper;
-	if ((count _arr)>0) then
-	{
-		for "_i" from 0 to (count _in)-1 do
-		{
+	if (count _this > 2) then { _out = _this select 2 };
+	_arr = [_in] call KRON_ArrayToUpper;
+	if (count _arr > 0) then {
+		for "_i" from 0 to (count _in) - 1 do {
 			_as = _arr select _i;
-			if (typeName _as =="STRING") then
-			{
+			if (typeName _as =="STRING") then {
 				_aa = [_as] call KRON_StrToArray;
 				_p = _aa find ":";
-				if (_p+1 ==(count _aa)-_fl) then
-				{
-					if (([_as,_p+1] call KRON_StrMid)== _flg) then
-					{
+				if (_p + 1 == (count _aa) - _fl) then {
+					if (([_as, _p + 1] call KRON_StrMid) == _flg) then {
 						_org = _in select _i;
-						_out =[_org,_p] call KRON_StrLeft;
+						_out = [_org, _p] call KRON_StrLeft;
 					};
 				};
 			};

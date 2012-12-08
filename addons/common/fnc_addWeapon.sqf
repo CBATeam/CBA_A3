@@ -32,28 +32,23 @@ SCRIPT(addWeapon);
 #define __action addWeapon
 
 PARAMS_2(_unit,_item);
-if (typeName _unit != "OBJECT") exitWith
-{
+if (typeName _unit != "OBJECT") exitWith {
 	TRACE_2("Unit not Object",_unit,_item);
 	false
 };
-if (typeName _item != "STRING") exitWith
-{
+if (typeName _item != "STRING") exitWith {
 	TRACE_2("Item not String",_unit,_item);
 	false
 };
-if (isNull _unit) exitWith
-{
+if (isNull _unit) exitWith {
 	TRACE_2("Unit isNull",_unit,_item);
 	false
 };
-if (_item == "") exitWith
-{
+if (_item == "") exitWith {
 	TRACE_2("Empty Item",_unit,_item);
 	false
 };
-if !(isClass (__cfg >> _item)) exitWith
-{
+if !(isClass (__cfg >> _item)) exitWith {
 	TRACE_2("Item not exist in Config",_unit,_item);
 	false
 };

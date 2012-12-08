@@ -8,8 +8,7 @@ PARAMS_1(_unit);
 
 _var = _unit getVariable SLX_XEH_STR_PLAYABLE;
 if !(isNil "_var") exitWith {}; // Already set
-if (_unit in playableUnits || isPlayer _unit || _unit == player) then
-{
+if (_unit in playableUnits || {isPlayer _unit} || {_unit == player}) then {
 	#ifdef DEBUG_MODE_FULL
 		str(['Playable unit!', _unit]) call SLX_XEH_LOG;
 	#endif

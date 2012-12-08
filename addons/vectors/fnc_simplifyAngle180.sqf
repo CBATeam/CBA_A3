@@ -29,13 +29,11 @@ SCRIPT(simplifyAngle180);
 
 PARAMS_1(_angle);
 
-while {_angle <= -180} do
-{
+while {_angle <= -180} do {
       // Angle is too negative.
       _angle = _angle + 360;
 };
-while {_angle > 180} do
-{
+while {_angle > 180} do {
       // Angle is too positive.
       _angle = _angle - 360;
 };

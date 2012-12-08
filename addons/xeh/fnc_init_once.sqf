@@ -14,42 +14,29 @@ PARAMS_1(_config);
 	XEH_LOG(_msg);
 #endif
 
-if (isClass _config) then
-{
+if (isClass _config) then {
 	_Inits = [];
 
 	// Collect inits
 	_i = 0;
 	_c = count _config;
-	while { _i<_c } do
-	{
+	while { _i < _c } do {
 		_entry = _config select _i;
-		if (isClass _entry) then
-		{
+		if (isClass _entry) then {
 			_entryServer = (_entry/"serverInit");
 			_entryClient = (_entry/"clientInit");
 			_entry = (_entry/"init");
-			if (isText _entry) then
-			{
+			if (isText _entry) then {
 				_Inits set [count _Inits, compile(getText _entry)];
 			};
-			if (SLX_XEH_MACHINE select 3) then
-			{
-				if (isText _entryServer) then
-				{
-					_Inits set [count _Inits, compile(getText _entryServer)];
-				};
+			if (SLX_XEH_MACHINE select 3 && {isText _entryServer}) then {
+				_Inits set [count _Inits, compile(getText _entryServer)];
 			};
-			if (!isDedicated) then
-			{
-				if (isText _entryClient) then
-				{
-					_Inits set [count _Inits, compile(getText _entryClient)];
-				};
+			if (!isDedicated && {isText _entryClient}) then {
+				_Inits set [count _Inits, compile(getText _entryClient)];
 			};
 		} else {
-			if (isText _entry) then
-			{
+			if (isText _entry) then {
 				_Inits set [count _Inits, compile(getText _entry)];
 			};
 		};

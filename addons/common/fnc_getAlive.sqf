@@ -29,10 +29,10 @@ if (_typename == "object") exitwith {alive _this};
 private ["_return","_array"];
 _array = [];
 switch (_typename) do {
-	case ("group") : {
+	case "group" : {
 		_array = units _this;
 	};
-	case ("array") :{
+	case "array" :{
 		_array =+ _this;
 	};
 };

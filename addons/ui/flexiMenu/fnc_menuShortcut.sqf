@@ -23,7 +23,7 @@ if (GVAR(holdKeyDown)) then {
 	GVAR(lastAccessCheck) = [time, _dikCode];
 };
 
-if (!GVAR(holdKeyDown) && (_dikCode in (actionKeys "menuBack"))) exitWith {
+if (!GVAR(holdKeyDown) && {(_dikCode in (actionKeys "menuBack"))}) exitWith {
 	closeDialog 0;
 	true
 };
@@ -42,7 +42,7 @@ _menuDefs = (_this select 1) call FUNC(getMenuDef);
 	_enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
 	_visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
-	if (_dikCode == _shortcut && _enabled != 0 && _visible > 0) exitWith {
+	if (_dikCode == _shortcut && {_enabled != 0} && {_visible > 0}) exitWith {
 		_menuOption = [_menuDefs select 0, _x, false] call FUNC(getMenuOption); // get complete same record
 		_action = _menuOption select _flexiMenu_menuDef_ID_action;
 

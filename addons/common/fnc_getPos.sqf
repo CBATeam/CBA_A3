@@ -25,19 +25,19 @@ private "_typename";
 _typename = tolower (typename _this);
 
 switch (_typename) do {
-	case ("object") : {
+	case "object" : {
 		getpos _this
 	};
-	case ("group") : {
+	case "group" : {
 		getpos (leader _this)
 	};
-	case ("string") : {
+	case "string" : {
 		getmarkerpos _this
 	};
-	case ("location") : {
+	case "location" : {
 		position _this
 	};
-	case ("task") : {
+	case "task" : {
 		taskdestination _this
 	};
 	default {_this};

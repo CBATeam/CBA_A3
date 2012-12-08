@@ -31,13 +31,11 @@ TRACE_1(_this);
 
 private "_return";
 
-_return = if (isDedicated) then
-{
+_return = if (isDedicated) then {
 	WARNING("Function ran on a dedicated server. Function only usable on a client. Index was: " + str _actionIndex);
 	false;
 } else {
-	if ([GVAR(actionList), _actionIndex] call CBA_fnc_hashHasKey) then
-	{
+	if ([GVAR(actionList), _actionIndex] call CBA_fnc_hashHasKey) then {
 		[GVAR(actionlist),_actionIndex, nil] call CBA_fnc_hashSet;
 		GVAR(actionListUpdated) = true;
 		true;

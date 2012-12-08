@@ -54,8 +54,7 @@ _raiseError =
 	PUSH(_lastLine,_lastChar);
 
 	_pos = _pos + 1;
-	while { _pos < (count _yaml) } do
-	{
+	while { _pos < (count _yaml) } do {
 		_char = _yaml select _pos;
 
 		if (_char in [ASCII_YAML_COMMENT, ASCII_CR, ASCII_NEWLINE]) exitWith {};
@@ -66,8 +65,7 @@ _raiseError =
 	};
 
 	_errorBlock = "";
-	for [{ _i = 0 max ((count _lines) - 6) }, { _i < (count _lines)}, { _i = _i + 1 }] do
-	{
+	for [{ _i = 0 max ((count _lines) - 6) }, { _i < (count _lines)}, { _i = _i + 1 }] do {
 		_errorBlock = _errorBlock + format ["\n%1: %2", [_i + 1, 3] call CBA_fnc_formatNumber,
 			toString (_lines select _i)];
 	};

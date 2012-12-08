@@ -4,8 +4,7 @@
 _fnc = {
 	private "_moo";
 	_moo = _this getVariable SLX_XEH_STR_PROCESSED;
-	if (isNil "_moo") then { _moo = false };
-	if !(_moo) then {
+	if (isNil "_moo" || {!_moo}) then {
 		_this setVariable SLX_XEH_AR_TRUE;
 		_this call FUNC(support_monitor);
 	};

@@ -33,13 +33,11 @@ if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
 	_ver_list = [];
 	for "_x" from 0 to ((count _config) - 1) do {
 		_entry = _config select _x;
-		if ( isClass _entry ) then {
-			if ( isText(_entry >> "versionDesc") ) then {
-				_ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
-				_ver_act = getText(_entry >> "versionAct");
-				_ver_arr = [_ver_line, _ver_act];
-				PUSH(_ver_list,_ver_arr);
-			};
+		if ( isClass _entry && {isText(_entry >> "versionDesc")} ) then {
+			_ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
+			_ver_act = getText(_entry >> "versionAct");
+			_ver_arr = [_ver_line, _ver_act];
+			PUSH(_ver_list,_ver_arr);
 		};
 	};
 	uiNamespace setVariable [QGVAR(VerList), _ver_list];
@@ -59,7 +57,7 @@ if (_trap) then {
 };
 
 if (isNil QGVAR(VerTime)) then { GVAR(VerTime) = diag_tickTime; };
-if (! _trap || diag_tickTime >= GVAR(VerTime)) then {
+if (! _trap || {diag_tickTime >= GVAR(VerTime)}) then {
 	_key = _data select 1;
 	ISNILS(_key,0);
 	//left click forward, other click back

@@ -23,7 +23,7 @@ _fnc_compile = {
 	private ["_cba_int_code", "_recompile", "_isCached"];
 
 	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then {
-		if (isNil "SLX_XEH_MACHINE" || isNil "CBA_isCached") then {
+		if (isNil "SLX_XEH_MACHINE" || {isNil "CBA_isCached"}) then {
 			true;
 		} else {
 			CBA_COMPILE_RECOMPILE = CACHE_DIS(compile);
@@ -35,8 +35,8 @@ _fnc_compile = {
 
 	// TODO: Unique namespace?
 	_cba_int_code = uiNamespace getVariable _this;
-	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { !isMultiplayer || isDedicated || _this in CBA_CACHE_KEYS };
-	if (isNil '_cba_int_code' || _recompile || !_isCached) then {
+	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { !isMultiplayer || {isDedicated} || {_this in CBA_CACHE_KEYS} };
+	if (isNil '_cba_int_code' || {_recompile} || {!_isCached}) then {
 		TRACE_1('Compiling',_this);
 #ifdef BENCHMARK
 	// TODO: Fix
@@ -47,7 +47,7 @@ _fnc_compile = {
 	_cba_int_code = compile preProcessFileLineNumbers _this;
 	uiNamespace setVariable [_this, _cba_int_code];
 #endif
-		if (!_isCached && !isNil "CBA_CACHE_KEYS") then { PUSH(CBA_CACHE_KEYS,_this) };
+		if (!_isCached && {!isNil "CBA_CACHE_KEYS"}) then { PUSH(CBA_CACHE_KEYS,_this) };
 	} else { TRACE_1('Retrieved from cache',_this) };
 
 	_cba_int_code;

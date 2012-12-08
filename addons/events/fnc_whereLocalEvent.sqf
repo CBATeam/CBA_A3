@@ -37,7 +37,7 @@ if (typeName _locobj != "OBJECT") exitWith {
 
 TRACE_1("",_locobj);
 
-if (isNil "_locobj" || isNull _locobj) exitWith {
+if (isNil "_locobj" || {isNull _locobj}) exitWith {
 	WARNING("Locality check object is nil or null!");
 	nil
 };

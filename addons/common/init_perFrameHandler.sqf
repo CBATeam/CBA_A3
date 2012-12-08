@@ -111,16 +111,16 @@ FUNC(monitorFrameRender) = {
 	TRACE_1("Monitor frame render loop",nil);
 	// Check if the PFH died for some reason.
 	_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
-	if(isNil "_pfhIdd") then {
+	if (isNil "_pfhIdd") then {
 		7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 	} else {
-		if(isNull _pfhIdd) then {
+		if (isNull _pfhIdd) then {
 			7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 		};
 	};
 	// check to see if the frame-render hasn't run in > 1 frame.
 	// if it hasnt, pick it up for now
-	if( abs(diag_frameNo - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
+	if ( abs(diag_frameNo - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
 		TRACE_1("Executing frameRender",nil);
 		call FUNC(onFrame);
 	};
@@ -140,17 +140,15 @@ FUNC(onFrame) = {
 	// player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
 	{
 		_handlerData = _x;
-		if !(isNil "_handlerData") then {
-			if (IS_ARRAY(_handlerData)) then {
-				_func = _handlerData select 0;
-				_delay = _handlerData select 1;
-				_delta = _handlerData select 2;
-				if(diag_tickTime > _delta) then {
-					[(_handlerData select 4), (_handlerData select 5)] call _func;
-					_delta = diag_tickTime + _delay;
-					//TRACE_1("data", _data);
-					_handlerData set [2, _delta];
-				};
+		if (!isNil "_handlerData" && {IS_ARRAY(_handlerData)}) then {
+			_func = _handlerData select 0;
+			_delay = _handlerData select 1;
+			_delta = _handlerData select 2;
+			if (diag_tickTime > _delta) then {
+				[_handlerData select 4, _handlerData select 5] call _func;
+				_delta = diag_tickTime + _delay;
+				//TRACE_1("data", _data);
+				_handlerData set [2, _delta];
 			};
 		};
 	} forEach GVAR(perFrameHandlerArray);

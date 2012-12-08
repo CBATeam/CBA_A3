@@ -15,16 +15,16 @@ if (isNil "_types") then { _types = [nil, nil, nil, -1]; uiNamespace setVariable
 _type = SLX_XEH_MACHINE select 10;
 
 // _data for events (Fired, etc)
-_inCache = !isMultiplayer || isDedicated || _unitClass in SLX_XEH_CACHE_KEYS3;
-_cached = !SLX_XEH_RECOMPILE && _inCache;
+_inCache = !isMultiplayer || {isDedicated} || {_unitClass in SLX_XEH_CACHE_KEYS3};
+_cached = !SLX_XEH_RECOMPILE && {_inCache};
 _data = _types select _type;
-if (isNil "_data" || !_cached) then { _data = []; _types set [_type, _data]; _cached = false };
+if (isNil "_data" || {!_cached}) then { _data = []; _types set [_type, _data]; _cached = false };
 
 // Now load the data from config if !_cached, or load data from cache if _cached already.
 private ["_config", "_configData", "_event_id", "_cfgs", "_retData", "_config_id"];
 
 // If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
-if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
+if (_cached && {(_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")}) exitWith {
 	TRACE_1("Fully Cached",_unitClass);
 	_data;
 };
@@ -40,8 +40,7 @@ if (_cached) then {
 	_classes = uiNamespace getVariable ("SLX_XEH_" + _unitClass + "_classes");
 } else {
 	_classes = [_unitClass];
-	while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do
-	{
+	while {!((_classes select 0) in SLX_XEH_DEF_CLASSES)} do {
 		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 	};
 	uiNamespace setVariable [("SLX_XEH_" + _unitClass + "_classes"), _classes];

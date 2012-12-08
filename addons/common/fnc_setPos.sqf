@@ -34,10 +34,10 @@ if (_radius > 0) then {
 };
 
 switch (_typename) do {
-	case ("object") : {
+	case "object" : {
 		_entity setpos _position;
 	};
-	case ("group") : {
+	case "group" : {
 		private ["_ldp","_dx","_dy","_dz"];
 		_ldp = getpos (leader _entity);
 		_dx = _position select 0;
@@ -52,17 +52,17 @@ switch (_typename) do {
 			_x setpos [_tx,_ty,_tz];
 		} foreach (units _entity);
 	};
-	case ("string") : {
+	case "string" : {
 		_entity setmarkerpos _position;
 	};
-	case ("location") : {
+	case "location" : {
 		if (surfaceiswater _position) then {
 			_entity setPosition _position;
 		} else {
 			_entity setPosition _position;
 		};
 	};
-	case ("task") : {
+	case "task" : {
 		_entity setsimpletaskdestination _position;
 	};
 	default {_entity setpos _position};

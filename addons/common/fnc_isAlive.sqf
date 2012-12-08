@@ -24,16 +24,16 @@ private "_typename";
 _typename = tolower(typename _this);
 
 switch (_typename) do {
-	case ("array") : {
+	case "array" : {
 		{
 			if (_x call CBA_fnc_isalive) exitwith {true};
 			false;
 		} foreach _this;
 	};
-	case ("object") : {
+	case "object" : {
 		alive _this;
 	};
-	case ("group") : {
+	case "group" : {
 		if (isnull (leader _this)) then {
 			false;
 		} else {

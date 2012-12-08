@@ -34,8 +34,7 @@ PARAMS_2(_config,_baseConfig);
 private "_valid";
 _valid = false;
 
-while { (configName _config) != "" } do
-{
+while { (configName _config) != "" } do {
 	_config = inheritsFrom _config;
 	if (_config == _baseConfig) exitWith { _valid = true };
 };

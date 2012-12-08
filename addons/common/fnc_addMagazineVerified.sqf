@@ -63,33 +63,26 @@ _ruck = 0;
 	private ["_cfg", "_type"];
 	_cfg = (configFile >> "CfgMagazines" >> _x);
 	_type = getNumber (_cfg >> "type");
-	switch _type do
-	{
-		case __pistol:
-		{
+	switch _type do {
+		case __pistol: {
 			_pistol = _pistol + 1;
 		};
-		case __rifle:
-		{
+		case __rifle: {
 			_rifle = _rifle + 1;
 		};
-		case __ruck:
-		{
+		case __ruck: {
 			_ruck = _ruck + 1;
 		};
-		default
-		{
+		default {
 			if (_type > (__rifle * __rifleMax)) exitWith {};
 			_num = _type / __rifle;
-			if (_num == (round _num)) then
-			{
+			if (_num == (round _num)) then {
 				_rifle = _rifle + _num;
 			} else {
 				if (_type > (__pistol * __pistolMax)) exitWith {};
 
 				_num = _type / __pistol;
-				if (_num == (round _num)) then
-				{
+				if (_num == (round _num)) then {
 					_pistol = _pistol + _num;
 				};
 			};
@@ -99,39 +92,32 @@ _ruck = 0;
 
 private ["_j", "_k"];
 _exit = false;
-switch _type do
-{
-	case __pistol:
-	{
+switch _type do {
+	case __pistol: {
 		_num = 1;
 		_j = _pistol;
 		_k = __pistolMax;
 	};
-	case __rifle:
-	{
+	case __rifle: {
 		_num = 1;
 		_j = _rifle;
 		_k = __rifleMax;
 	};
-	case __ruck:
-	{
+	case __ruck: {
 		_num = 1;
 		_j = _ruck;
 		_k = __ruckMax;
 	};
-	default
-	{
+	default {
 		if (_type > (__rifle * __rifleMax)) exitWith { _exit = true };
 		_num = _type / __rifle;
-		if (_num == (round _num)) then
-		{
+		if (_num == (round _num)) then {
 			_j = _rifle;
 			_k = __rifleMax;
 		} else {
 			if (_type > (__pistol * __pistolMax)) exitWith { _exit = true };
 			_num = _type / __pistol;
-			if (_num == (round _num)) then
-			{
+			if (_num == (round _num)) then {
 				_j = _pistol;
 				_k = __pistolMax;
 			};
@@ -139,31 +125,28 @@ switch _type do
 	};
 };
 
-if (_exit && (_action == 0 || _action == 2)) exitWith { diag_log "CBA_fnc_addMagazineVerified: Sorry, can't carry more of these magazines!"; false; };
+if (_exit && {(_action == 0 || {_action == 2})}) exitWith { diag_log "CBA_fnc_addMagazineVerified: Sorry, can't carry more of these magazines!"; false; };
 _return = false;
-if ((_k - _j) >= _num)  then
-{
-        switch (_action) do 
-        {
-                case 2: {
-			for "_i" from 1 to ((_k - _j) / _num) do
-			{
-                                [_unit,_magazine] call CBA_fnc_addMagazine;
+if ((_k - _j) >= _num)  then {
+	switch (_action) do  {
+		case 2: {
+			for "_i" from 1 to ((_k - _j) / _num) do {
+				[_unit,_magazine] call CBA_fnc_addMagazine;
 			};
 		};
-                default {
-                        [_unit,_magazine] call CBA_fnc_addMagazine;
-                };
-        };
-        _return = true;
+		default {
+			[_unit,_magazine] call CBA_fnc_addMagazine;
+		};
+	};
+	_return = true;
 } else {
-        if (_action == 1) then {
-                private ["_wh"];
-                _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+	if (_action == 1) then {
+		private ["_wh"];
+		_unit switchMove "ainvpknlmstpslaywrfldnon_1";
 		_wh = createVehicle ["WeaponHolder", position _unit, [], 0, "NONE"];
-                [_wh, _magazine] call CBA_fnc_AddMagazineCargo;
+		[_wh, _magazine] call CBA_fnc_AddMagazineCargo;
 		_wh setPos ([_wh, 2] call CBA_fnc_randPos);
-        };
+	};
 };
 
 _return;

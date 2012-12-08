@@ -42,8 +42,14 @@ if (isNil "_enabled") then {
 	_caption = "Error: " + _caption;
 };
 if (typeName _enabled != typeName 2) then {
-	if (typeName _enabled == typeName "") then {_enabled = parseNumber _enabled}; // allow "0"/"1" like BIS does
-	if (typeName _enabled == typeName true) then {_enabled = if (_enabled) then {1} else {0}}; // convert boolean to number
+	switch (true) do {
+		case (typeName _enabled == typeName ""): {
+			_enabled = parseNumber _enabled; // allow "0"/"1" like BIS does
+		};
+		case (typeName _enabled == typeName true): {
+			_enabled = if (_enabled) then {1} else {0}; // convert boolean to number
+		};
+	};
 };
 
 // visible
@@ -55,8 +61,14 @@ if (isNil "_visible") then {
 	_caption = "Error: " + _caption;
 };
 if (typeName _visible != typeName 2) then {
-	if (typeName _visible == typeName "") then {_visible = parseNumber _visible}; // allow "0"/"1"/"2" like BIS does
-	if (typeName _visible == typeName true) then {_visible = if (_visible) then {1}else{0}}; // convert boolean to number
+	switch (true) do {
+		case (typeName _visible == typeName ""): {
+			_visible = parseNumber _visible; // allow "0"/"1"/"2" like BIS does
+		};
+		case (typeName _visible == typeName true): {
+			_visible = if (_visible) then {1} else {0};
+		};
+	};
 };
 
 if (_caption == "-") then {
@@ -69,7 +81,7 @@ _array = toArray /* toUpper */ _caption;
 
 // find hot key marker char "^"
 _index = _array find 94; // "^"
-_containCaret = (_index >= 0 && _index < (count _array) - 1);
+_containCaret = (_index >= 0 && {_index < (count _array) - 1});
 // ensure a char follows eg: "^S" (i.e. "^" is not last char)
 _asciiKey = -1;
 if (_containCaret) then {
@@ -77,15 +89,15 @@ if (_containCaret) then {
 	_asciiKey = (toArray toUpper toString [_array select (_index + 1)]) select 0;
 };
 
-if (_enabled != 0 && _visible > 0) then {
-	if (_shortcut_DIK == -1 && _asciiKey != -1) then {
+if (_enabled != 0 && {_visible > 0}) then {
+	if (_shortcut_DIK == -1 && {_asciiKey != -1}) then {
 		// find DIK code based on asciiKey ('Z'->DIK_Z)
 		{
 			if (_x select 0 == _asciiKey) exitWith {_shortcut_DIK = _x select 1}
 		} forEach ICE_DIKASCIIMap;
 	};
 	// mark coloured shortcut letter
-	if (_shortcut_DIK != -1 && !_containCaret) then {
+	if (!_containCaret && {_shortcut_DIK != -1}) then {
 		// find asciiKey based on DIK code (DIK_Z->'Z')
 		{
 			if (_x select 1 == _shortcut_DIK) exitWith {_asciiKey = _x select 0}
@@ -121,7 +133,7 @@ if (_index >= 0) then {
 } else {
 	// map menu shortcut DIK code
 	// Note: don't append shortcut to empty caption, which is usually an "icon only" menu, without text captions.
-	if (_shortcut_DIK != -1 && _caption != "") then {
+	if (_shortcut_DIK != -1 && {_caption != ""}) then {
 		private ["_keyName"];
 		_keyName = keyName _shortcut_DIK;
 		_array = toArray _keyName;
@@ -136,10 +148,10 @@ if (_index >= 0) then {
 };
 //-----------------------------------------------------------------------------
 IfCountDefault(_icon,_menuDef,_flexiMenu_menuDef_ID_icon,"");
-if (_icon != "" && !_fastPartialResult) then {
+if (!_fastPartialResult && {_icon != ""}) then {
 	_array = toArray _icon;
 	// if pathname does not already contain a folder path
-	if (_iconFolder != "" && _array find 92 < 0 && _array find 47 < 0) then { // 92='\', 47='/'
+	if (_iconFolder != "" && {_array find 92 < 0} && {_array find 47 < 0}) then { // 92='\', 47='/'
 		_icon = _iconFolder + _icon;
 	};
 	_caption = format ["<img image='%2'/> %1", _caption, _icon];

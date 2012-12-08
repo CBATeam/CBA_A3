@@ -6,7 +6,7 @@ disableSerialization;
 PARAMS_1(_data);
 private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text", "_version"];
 
-if ( isNil QUOTE(GVAR(show_proc)) ) then {
+if ( isNil QGVAR(show_proc) ) then {
 	GVAR(show_proc) = true;
 
 	//get display control
@@ -28,7 +28,7 @@ if ( isNil QUOTE(GVAR(show_proc)) ) then {
 
 	//TRACE_1("",ctrlText _ctrl);
 	//if text not already shown
-	if ( (ctrlText _ctrl) == "" && ! CBA_DisableCredits ) then {
+	if ( (ctrlText _ctrl) == "" && {!CBA_DisableCredits} ) then {
 		//find addon with author
 		_config = configFile >> "CfgPatches";
 		_stop = false;

@@ -34,34 +34,28 @@ SCRIPT(removeWeapon);
 
 private ["_unit", "_item"];
 PARAMS_1(_unit);
-if (typeName _unit != "OBJECT") exitWith
-{
+if (typeName _unit != "OBJECT") exitWith {
 	TRACE_2("Unit not Object",_unit,_item);
 	false
 };
 _item = _this select 1;
-if (typeName _item != "STRING") exitWith
-{
+if (typeName _item != "STRING") exitWith {
 	TRACE_2("Item not String",_unit,_item);
 	false
 };
-if (isNull _unit) exitWith
-{
+if (isNull _unit) exitWith {
 	TRACE_2("Unit isNull",_unit,_item);
 	false
 };
-if (_item == "") exitWith
-{
+if (_item == "") exitWith {
 	TRACE_2("Empty Item",_unit,_item);
 	false
 };
-if !(isClass (__cfg >> _item)) exitWith
-{
+if !(isClass (__cfg >> _item)) exitWith {
 	TRACE_2("Item not exist in Config",_unit,_item);
 	false
 };
-if !(_item in __ar) exitWith
-{
+if !(_item in __ar) exitWith {
 	TRACE_2("Item not available on Unit",_unit,_item);
 	false
 };

@@ -21,9 +21,9 @@ _potentialKeyMatch = false;
 	{
 		_settings = _x select 1;
 		if ((_x select 0 == _dikCode) &&
-			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
-			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
-			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
+			{((!_shift && {!(_settings select 0)}) || {(_shift && {(_settings select 0)})})} &&
+			{((!_ctrlKey && {!(_settings select 1)}) || {(_ctrlKey && {(_settings select 1)})})} &&
+			{((!_alt && {!(_settings select 2)}) || {(_alt && {(_settings select 2)})})} ) exitWith
 		{
 			_potentialKeyMatch = true;
 		};
@@ -36,9 +36,9 @@ if !(_potentialKeyMatch) exitWith {
 	_handled
 };
 //-----------------------------------------------------------------------------
-_active = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
+_active = (!isNil {uiNamespace getVariable QGVAR(display)});
 if (_active) then {
-	_active = (!isNull (uiNamespace getVariable QUOTE(GVAR(display))));
+	_active = (!isNull (uiNamespace getVariable QGVAR(display)));
 };
 if (_active) then {
 	closeDialog 0;

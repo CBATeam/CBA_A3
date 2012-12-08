@@ -27,8 +27,7 @@ SCRIPT(simplifyAngle);
 
 PARAMS_1(_angle);
 
-while {_angle < 0} do
-{
+while {_angle < 0} do {
       // Angle is negative, so convert it to the equivalent positive angle.
       _angle = _angle + 360;
 };
