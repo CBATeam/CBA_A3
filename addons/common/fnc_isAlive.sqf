@@ -20,20 +20,17 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private "_typename";
-_typename = tolower(typename _this);
-
-switch (_typename) do {
-	case "array" : {
+switch (typename _this) do {
+	case "ARRAY" : {
 		{
 			if (_x call CBA_fnc_isalive) exitwith {true};
 			false;
 		} foreach _this;
 	};
-	case "object" : {
+	case "OBJECT" : {
 		alive _this;
 	};
-	case "group" : {
+	case "GROUP" : {
 		if (isnull (leader _this)) then {
 			false;
 		} else {
