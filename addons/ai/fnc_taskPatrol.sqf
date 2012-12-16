@@ -3,9 +3,11 @@ Function: CBA_fnc_taskPatrol
 
 Description:
 	A function for a group to randomly patrol a parsed radius and location.
+
 Parameters:
 	- Group (Group or Object)
-	Optional:
+
+Optional:
 	- Position (XYZ, Object, Location or Group)
 	- Radius (Scalar)
 	- Waypoint Count (Scalar)
@@ -16,12 +18,16 @@ Parameters:
 	- Formation (String)
 	- Code To Execute at Each Waypoint (String)
 	- TimeOut at each Waypoint (Array [Min, Med, Max])
+
 Example:
+    (begin example)
     [this, getmarkerpos "objective1"] call CBA_fnc_taskPatrol
     [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
+    (end)
 
 Returns:
 	Nil
+
 Author:
 	Rommel
 

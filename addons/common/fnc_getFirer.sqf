@@ -3,14 +3,20 @@ Function: CBA_fnc_getFirer
 
 Description:
 	A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles).
+
 Parameters:
 	Vehicle that fired
 	Weapon that was used
+
 Example:
+    (begin example)
 	_unit = player call CBA_fnc_getFirer
+    (end)
+
 Returns:
 	Unit
 	Turretpath
+
 Author:
 	Rocko
 

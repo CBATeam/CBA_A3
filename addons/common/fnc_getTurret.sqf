@@ -3,13 +3,19 @@ Function: CBA_fnc_getTurret
 
 Description:
 	A function used to find out which config turret is turretpath.
+
 Parameters:
 	Vehicle
 	Turretpath
+
 Example:
+    (begin example)
 	_config = [vehicle player, [0]] call CBA_fnc_getTurret
+    (end)
+
 Returns:
 	Turret Config entry
+
 Author:
 	Sickboy
 

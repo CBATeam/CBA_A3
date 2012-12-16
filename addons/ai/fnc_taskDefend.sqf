@@ -3,17 +3,24 @@ Function: CBA_fnc_taskDefend
 
 Description:
 	A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They may also patrol the radius unless otherwise specified.
+
 Parameters:
 	- Group (Group or Object)
-	Optional:
+
+Optional:
 	- Position (XYZ, Object, Location or Group)
 	- Defend Radius (Scalar)
 	- Building Size Threshold (Integer, default 2)
 	- Can patrol (boolean)
+
 Example:
+    (begin example)
 	[this] call CBA_fnc_taskDefend
+    (end)
+
 Returns:
 	Nil
+
 Author:
 	Rommel
 

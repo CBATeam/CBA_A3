@@ -3,10 +3,12 @@ Function: CBA_fnc_addWaypoint
 
 Description:
 	A function used to add a waypoint to a group.
+
 Parameters:
 	- Group (Group or Object)
 	- Position (XYZ, Object, Location or Group)
-	Optional:
+
+Optional:
 	- Radius (Scalar)
 	- Waypoint Type (String)
 	- Behaviour (String)
@@ -16,10 +18,15 @@ Parameters:
 	- Code To Execute at Each Waypoint (String)
 	- TimeOut at each Waypoint (Array [Min, Med, Max])
 	- Waypoint Completion Radius (Scalar)
+
 Example:
+    (begin example)
 	[this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]]
+    (end)
+
 Returns:
 	Waypoint
+
 Author:
 	Rommel
 

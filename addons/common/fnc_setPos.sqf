@@ -3,12 +3,18 @@ Function: CBA_fnc_setPos
 
 Description:
 	A function used to set the position of an entity.
+
 Parameters:
 	Marker, Object, Location, Group or Position
+
 Example:
+    (begin example)
 	[player, "respawn_west"] call CBA_fnc_setPos
+    (end)
+
 Returns:
 	Nil
+
 Author:
 	Rommel
 

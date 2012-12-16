@@ -3,12 +3,18 @@ Function: CBA_fnc_getArrayDiff
 
 Description:
 	A function used to return the differences between two arrays.
+
 Parameters:
 	Two Arrays of strings (must not contain scalars)
+
 Example:
+    (begin example)
 	_distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff
+    (end
+
 Returns:
 	Array Differences (for above example, return is [[1],[0]])
+
 Author:
 	Rommel
 

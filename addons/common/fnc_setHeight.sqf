@@ -3,14 +3,20 @@ Function: CBA_fnc_setHeight
 
 Description:
 	A function used to set the height of an object
+
 Parameters:
 	_object - Object or Location
 	_height - Height in metres
 	_type - Optional parameter, 0 is getpos, 1 is getpos ASL, 2 is getposATL (Default: 1)
+
 Example:
+    (begin example)
 	[this, 10] call CBA_fnc_setHeight
+    (end)
+
 Returns:
 	Nothing
+
 Author:
 	Rommel
 

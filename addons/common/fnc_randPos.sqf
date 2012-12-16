@@ -3,12 +3,18 @@ Function: CBA_fnc_randPos
 
 Description:
 	A function used to randomize a position around a given center
+
 Parameters:
 	Marker, Object, Location, Group or Position, Radius
+
 Example:
+    (begin example)
 	_position =  [position, radius] call CBA_fnc_randPos
+    (end)
+
 Returns:
 	Position - [X,Y,Z]
+
 Author:
 	Rommel
 

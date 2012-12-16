@@ -3,12 +3,18 @@ Function: CBA_fnc_intToString
 
 Description:
 	Faster int to string, uses an integer lookup table if possible
+
 Parameters:
 	_int - Integer number
+
 Example:
+    (begin example)
 	5 call CBA_fnc_intToString
+    (end)
+
 Returns:
 	String
+
 Author:
 	Xeno
 

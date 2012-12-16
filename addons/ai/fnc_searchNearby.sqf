@@ -3,12 +3,18 @@ Function: CBA_fnc_searchNearby
 
 Description:
 	A function for a group to search a nearby building.
+
 Parameters:
 	Group (Group or Object)
+
 Example:
+    (begin example)
 	[group player] spawn CBA_fnc_searchNearby
+    (end)
+
 Returns:
 	Nil
+
 Author:
 	Rommel
 

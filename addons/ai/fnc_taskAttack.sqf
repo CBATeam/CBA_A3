@@ -3,15 +3,22 @@ Function: CBA_fnc_taskAttack
 
 Description:
 	A function for a group to attack a parsed location.
+
 Parameters:
 	- Group (Group or Object)
 	- Position (XYZ, Object, Location or Group)
-	Optional:
+
+Optional:
 	- Search Radius (Scalar)
+
 Example:
+    (begin example)
 	[group player, getpos (player findNearestEnemy player), 100] call CBA_fnc_taskAttack
+    (end)
+
 Returns:
 	Nil
+
 Author:
 	Rommel
 

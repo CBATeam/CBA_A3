@@ -3,12 +3,18 @@ Function: CBA_fnc_getArrayElements
 
 Description:
 	A function used to return the element counts in an array.
+
 Parameters:
 	Array
+
 Example:
+    (begin example)
 	_types = [0,0,1,1,1,1] call CBA_fnc_getArrayElements
+    (end)
+
 Returns:
 	Array element counts (for above example, return would be [0,2,1,4])
+
 Author:
 	Rommel && sbsmac
 

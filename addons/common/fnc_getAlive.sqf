@@ -3,12 +3,18 @@ Function: CBA_fnc_getAlive
 
 Description:
 	A function used to find out who is alive in an array or a group.
+
 Parameters:
 	Array, Group or Unit
+
 Example:
+    (begin example)
 	_alive = (Units player) call CBA_fnc_getAlive
+    (end)
+
 Returns:
 	Array
+
 Author:
 	Rommel
 

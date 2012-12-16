@@ -3,12 +3,18 @@ Function: CBA_fnc_deleteEntity
 
 Description:
 	A function used to delete entities
+
 Parameters:
 	Array, Object, Group or Marker
+
 Example:
+    (begin example)
 	[car1,car2,car3] call CBA_fnc_deleteEntity
+    (end)
+
 Returns:
 	Nothing
+
 Author:
 	Rommel
 

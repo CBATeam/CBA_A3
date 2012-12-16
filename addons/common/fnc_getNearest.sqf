@@ -3,16 +3,22 @@ Function: CBA_fnc_getNearest
 
 Description:
 	A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array.
+
 Parameters:
 	_position - Marker, Object, Location, Group or Position
 	_array - Array of [Marker, Object, Location, Group and or Positions]
 	_radius - Maximum distance from _position
 	_code - Condition to meet (Code)
+
 Example:
+    (begin example)
 	_nearestVeh = [player, vehicles] call CBA_fnc_getNearest
 	_nearestGroups = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest
+    (end)
+
 Returns:
 	Nearest given entity or List of entities within given distance
+
 Author:
 	Rommel
 
