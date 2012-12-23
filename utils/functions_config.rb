@@ -23,30 +23,30 @@ END_TEXT
 
 	SQF_HEADER = TEMPLATE_HEADER.gsub(/^#/, '//')
 	CFG_HEADER = SQF_HEADER
-	
+
 	# Generate all files.
 	protected
 	def initialize(path, relative_path)
 		tests path, relative_path
-		
+
 		all_configs = function_declarations path, relative_path
-		
+
 		docs path, all_configs
 	end
 
 	# Create a test for a single addon folder.
 	protected
 	def folder_test(path, relative_path)
-	
+
 		type = File.basename(path)
 		# Get list of tests in folder before creating a test file.
 		tests = Array.new
 		Dir.new(path).each do |file|
 			if file =~ TEST_PATTERN
-				tests.push $1 
+				tests.push $1
 			end
 		end
-		
+
 		# Create a test file which will test all the functions in the addon.
 		unless tests.empty?
 			File.open(File.join(path, TEST_FILE), 'w') do |file|
@@ -70,10 +70,10 @@ nil;
 END_SQF
 			end
 		end
-		
+
 		return (not tests.empty?)
 	end
-	
+
 	# Create tests for all addon folders.
 	protected
 	def tests(path, relative_path)
@@ -86,7 +86,7 @@ END_SQF
 				categories.push file if folder_test(full_path, relative_path)
 			end
 		end
-	
+
 		File.open(File.join(path, 'main', TEST_FILE), 'w') do |file|
 			file.puts <<END_SQF
 #{SQF_HEADER}
@@ -108,46 +108,50 @@ nil;
 END_SQF
 		end
 	end
-	
+
 	protected
 	def function_declarations(path, relative_path)
-	
+
 		all_configs = Hash.new
-		
-		Dir.new(path).each do |addon|
-			addon_path = File.join(path, addon)
-			
+
+		addon_paths = Dir.glob(File.join(path,"*")).select { |fn| File.directory?(fn) }.sort
+		addon_paths.each do |addon_path|
+			addon = File.basename(addon_path)
+
 			if addon_path =~ %r[^#{path}/(?:\w+_)?([^/\.]+)$]
 
 				type = $1
 				type = 'misc' if type =~ /^common$/i
-				
+
 				puts "\n=> #{addon_path}"
 				config = Hash.new
-					
-				Dir.new(addon_path).each do |function_file|
+
+				function_files = Dir.glob(File.join(addon_path, "*.sqf")).sort
+				function_files.each do |function_file|
+				  function_file = File.basename(function_file)
+
 					if function_file =~ /^fnc_(\w+)\.sqf$/i
 						name = $1
-						
+
 						type.capitalize!
 						source = File.read(File.join(addon_path, function_file))
-						
+
 						unless source =~ /^\s*Function:\s*(\w+)_fnc_#{name}/i
 							$stderr.puts ">>> ERROR >>> Incorrect/missing Function name documented in: #{function_file} (not adding to fns module)"
 							#exit false
 							next
 						end
-						
+
 						tag = $1
-						
+
 						description = if source =~ /Description:\s*([^\b]*?)\n\s*\n/
 							$1.gsub(/\s*\n\s*/, ' ')
 						else
 							'<NO DESC>'
 						end
-						
+
 						puts "Adding #{function_file}: #{description}"
-						
+
 						config[tag] = Hash.new unless config[tag]
 						config[tag][type] = Hash.new unless config[tag][type]
 						config[tag][type][name] = {
@@ -157,10 +161,10 @@ END_SQF
 						}
 					end
 				end
-					
+
 				unless config.empty?
 					output_file = File.join(addon_path, OUTPUT)
-					
+
 					# CfgFunctions >> Tag >> function type >> function.
 					File.open(output_file, 'w') do |file|
 						file.puts <<END_CONFIG
@@ -170,12 +174,12 @@ class CfgFunctions
 END_CONFIG
 						config.each_pair do |tag, types|
 							file.puts "\tclass #{tag}\n\t{";
-							
+
 							types.each_pair do |type, functions|
 								file.puts "\t\tclass #{type}\n\t\t{";
-								
+
 								functions.each do |function, data|
-									file.puts <<END_CONFIG	
+									file.puts <<END_CONFIG
 			// #{data[:name]}
 			class #{function}
 			{
@@ -184,17 +188,17 @@ END_CONFIG
 			};
 END_CONFIG
 								end
-								
+
 								file.puts "\t\t};";
 							end
-							
+
 							file.puts "\t};";
 						end
-						
+
 						file.puts "};";
 					end
 				end
-				
+
 				config.each_pair do |tag, types|
 					all_configs[tag] = Hash.new if all_configs[tag].nil?
 					types.each_pair do |type, functions|
@@ -204,16 +208,16 @@ END_CONFIG
 				end
 			end
 		end
-		
+
 		all_configs
 	end
-		
+
 	# Generate a menu for Ndocs.
 	protected
 	def docs(path, all_configs)
-		
+
 		menu_template = File.read(DOC_MENU_TEMPLATE)
-		menu = ''	
+		menu = ''
 
 		all_configs.to_a.sort { |a, b| a[0] <=> b[0] }.each do |tag, types|
 			menu += "\tGroup: #{tag} {\n"
@@ -247,14 +251,14 @@ END_CONFIG
 		end
 		puts "\nGenerated #{DOC_LANGUAGE}"
 	end
-end
+  end
 end
 
 if __FILE__ == $0
 
 	unless ARGV.size == 1
 		puts "Generate function declarations for Functions module."
-		puts USAGE
+		puts Cba::Generator::USAGE
 		exit
 	end
 
@@ -263,7 +267,7 @@ if __FILE__ == $0
 	unless File.directory? path
 		puts "Could not find directory: #{path}"
 		puts File.cwd
-		puts USAGE
+		puts Cba::Generator::USAGE
 		exit
 	end
 
@@ -272,9 +276,10 @@ if __FILE__ == $0
 
 	unless relative_path
 		puts "Could not find relative directory in: #{path}"
-		puts USAGE
+		puts Cba::Generator::USAGE
 		exit
 	end
-	
+
 	Cba::Generator.new(path, relative_path)
 end
+
