@@ -126,7 +126,7 @@ END_SQF
 				puts "\n=> #{addon_path}"
 				config = Hash.new
 
-				function_files = Dir.glob(File.join(addon_path, "*.sqf")).sort
+				function_files = Dir.glob(File.join(addon_path, "*.sqf")).sort { |a,b| File.basename(a)<=>File.basename(b) }
 				function_files.each do |function_file|
 				  function_file = File.basename(function_file)
 
