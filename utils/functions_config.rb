@@ -126,7 +126,7 @@ END_SQF
 				puts "\n=> #{addon_path}"
 				config = Hash.new
 
-				function_files = Dir.glob(File.join(addon_path, "*.sqf")).sort { |a,b| File.basename(a)<=>File.basename(b) }
+				function_files = Dir.glob(File.join(addon_path, "*.sqf"))
 				function_files.each do |function_file|
 				  function_file = File.basename(function_file)
 
@@ -144,7 +144,7 @@ END_SQF
 
 						tag = $1
 
-						description = if source =~ /Description:\s*([^\b]*?)\n\s*\n/
+						description = if source =~ /Description:\s*([^\b]*?)\r*\n\s*\n/
 							$1.gsub(/\s*\n\s*/, ' ')
 						else
 							'<NO DESC>'
@@ -178,7 +178,7 @@ END_CONFIG
 							types.each_pair do |type, functions|
 								file.puts "\t\tclass #{type}\n\t\t{";
 
-								functions.each do |function, data|
+								functions.sort_by {|function, data| function }.each do |function, data|
 									file.puts <<END_CONFIG
 			// #{data[:name]}
 			class #{function}
