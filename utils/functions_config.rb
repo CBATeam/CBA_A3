@@ -194,7 +194,27 @@ END_CONFIG
 
 							file.puts "\t};";
 						end
-
+						# Add the missing BIS functions to the CfgFunctions.hpp
+						# in CBA common
+						if type == 'Misc'
+							file.puts <<END_BISFIX
+	// Missing BIS functions
+	class BIS {
+		class variables {
+			class undefCheck {
+				file = "\\x\\cba\\addons\\common\\dummy.sqf";
+			};
+		};
+	};
+	class BIS_PMC {
+		class PMC_Campaign {
+			class initIdentity {
+				file = "\\x\\cba\\addons\\common\\dummy.sqf";
+			};
+		};
+	};
+END_BISFIX
+						end
 						file.puts "};";
 					end
 				end
