@@ -82,7 +82,7 @@ _unit_allItems_count = _unit_allItems select 1;
 // count parameter.
 _returnVar = false;
 clearMagazineCargo _unit;
-for [{_i=0}, {_i<(count _unit_allItems_types)}, {_i=_i+1}] do
+for "_i" from 0 to (count _unit_allItems_types) - 1 do
 {
     _item_type = _unit_allItems_types select _i;
     _item_count = _unit_allItems_count select _i;
