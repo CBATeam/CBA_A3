@@ -27,10 +27,16 @@ class CfgFunctions
 				description = "Add magazine(s) to a vehicle's cargo.";
 				file = "\x\cba\addons\common\fnc_addMagazineCargo.sqf";
 			};
+			// CBA_fnc_addMagazineCargoGlobal
+			class addMagazineCargoGlobal
+			{
+				description = "Add magazine(s) to a vehicle's cargo. MP synchronized.";
+				file = "\x\cba\addons\common\fnc_addMagazineCargoGlobal.sqf";
+			};
 			// CBA_fnc_addMagazineVerified
 			class addMagazineVerified
 			{
-				description = "Add magazines to the unit, but verify that it was successful and doesn't over-burden the recipient. The function has to options to fill all available inventory slots with the requested magazine type, create excess magazines on the ground or do nothing.";
+				description = "Add magazines to the unit, but verify that it was successful and doesn't over-burden the recipient.";
 				file = "\x\cba\addons\common\fnc_addMagazineVerified.sqf";
 			};
 			// CBA_fnc_addPerFrameHandler
@@ -56,6 +62,12 @@ class CfgFunctions
 			{
 				description = "Add weapon(s) to vehicle cargo.";
 				file = "\x\cba\addons\common\fnc_addWeaponCargo.sqf";
+			};
+			// CBA_fnc_addWeaponCargoGlobal
+			class addWeaponCargoGlobal
+			{
+				description = "Add weapon(s) to vehicle cargo. MP synchronized.";
+				file = "\x\cba\addons\common\fnc_addWeaponCargoGlobal.sqf";
 			};
 			// CBA_fnc_createCenter
 			class createCenter
@@ -84,7 +96,7 @@ class CfgFunctions
 			// CBA_fnc_deleteEntity
 			class deleteEntity
 			{
-				description = "A function used to delete entities Parameters: Array, Object, Group or Marker Example: [car1,car2,car3] call CBA_fnc_deleteEntity Returns: Nothing Author: Rommel";
+				description = "A function used to delete entities";
 				file = "\x\cba\addons\common\fnc_deleteEntity.sqf";
 			};
 			// CBA_fnc_determineMuzzles
@@ -108,13 +120,13 @@ class CfgFunctions
 			// CBA_fnc_findEntity
 			class findEntity
 			{
-				description = "A function used to find out the first entity of parsed type in a nearEntitys call Parameters: - Type (Classname, Object) - Position (XYZ, Object, Location or Group) Optional: - Radius (Scalar) Example: _veh = [""LaserTarget"", player] call CBA_fnc_findEntity Returns: First entity; nil return if nothing Author: Rommel";
+				description = "A function used to find out the first entity of parsed type in a nearEntitys call";
 				file = "\x\cba\addons\common\fnc_findEntity.sqf";
 			};
 			// CBA_fnc_getAlive
 			class getAlive
 			{
-				description = "A function used to find out who is alive in an array or a group. Parameters: Array, Group or Unit Example: _alive = (Units player) call CBA_fnc_getAlive Returns: Array Author: Rommel";
+				description = "A function used to find out who is alive in an array or a group.";
 				file = "\x\cba\addons\common\fnc_getAlive.sqf";
 			};
 			// CBA_fnc_getAnimType
@@ -144,43 +156,43 @@ class CfgFunctions
 			// CBA_fnc_getDistance
 			class getDistance
 			{
-				description = "A function used to find out the distance between two positions. Parameters: Array containing two of [Marker, Object, Location, Group or Position] Example: _distance = [Player, [0,0,0]] call CBA_fnc_getDistance Returns: Number - Distance in meters Author: Rommel";
+				description = "A function used to find out the distance between two positions.";
 				file = "\x\cba\addons\common\fnc_getDistance.sqf";
 			};
 			// CBA_fnc_getFirer
 			class getFirer
 			{
-				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles). Parameters: Vehicle that fired Weapon that was used Example: _unit = player call CBA_fnc_getFirer Returns: Unit Turretpath Author: Rocko";
+				description = "A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles).";
 				file = "\x\cba\addons\common\fnc_getFirer.sqf";
 			};
 			// CBA_fnc_getFov
 			class getFov
 			{
-				description = "Get current camera's field of view in radians and zoom. Fov is calculated in the same format as it is set up in configs and used by camSetFov and alike. Precision is about 95%.";
+				description = "Get current camera's field of view in radians and zoom.";
 				file = "\x\cba\addons\common\fnc_getFov.sqf";
 			};
 			// CBA_fnc_getGroup
 			class getGroup
 			{
-				description = "A function used to find out the group of an object. Parameters: Group or Unit Example: _group = player call CBA_fnc_getGroup Returns: Group Author: Rommel";
+				description = "A function used to find out the group of an object.";
 				file = "\x\cba\addons\common\fnc_getGroup.sqf";
 			};
 			// CBA_fnc_getGroupIndex
 			class getGroupIndex
 			{
-				description = "Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu, not just the order within the units of his group (this order can change due to players joining and leaving the game, deaths or promotions).";
+				description = "Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu.";
 				file = "\x\cba\addons\common\fnc_getGroupIndex.sqf";
 			};
 			// CBA_fnc_getNearest
 			class getNearest
 			{
-				description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array. Parameters: _position - Marker, Object, Location, Group or Position _array - Array of [Marker, Object, Location, Group and or Positions] _radius - Maximum distance from _position _code - Condition to meet (Code) Example: _nearestVeh = [player, vehicles] call CBA_fnc_getNearest _nearestGroups = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest Returns: Nearest given entity or List of entities within given distance Author: Rommel";
+				description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array.";
 				file = "\x\cba\addons\common\fnc_getNearest.sqf";
 			};
 			// CBA_fnc_getNearestBuilding
 			class getNearestBuilding
 			{
-				description = "A function used to find out the nearest building and appropriate building positions available. Parameters: Object Example: _array = player call CBA_fnc_getNearestBuilding Returns: Array with [building object, building positions (count)] Author: Rommel ---------------------------------------------------------------------------- */";
+				description = "A function used to find out the nearest building and appropriate building positions available.";
 				file = "\x\cba\addons\common\fnc_getNearestBuilding.sqf";
 			};
 			// CBA_fnc_getPistol
@@ -192,7 +204,7 @@ class CfgFunctions
 			// CBA_fnc_getPos
 			class getPos
 			{
-				description = "A function used to get the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: _position = (group player) call CBA_fnc_getPos Returns: Position (AGL) - [X,Y,Z] Author: Rommel";
+				description = "A function used to get the position of an entity.";
 				file = "\x\cba\addons\common\fnc_getPos.sqf";
 			};
 			// CBA_fnc_getSharedGroup
@@ -210,7 +222,7 @@ class CfgFunctions
 			// CBA_fnc_getTurret
 			class getTurret
 			{
-				description = "A function used to find out which config turret is turretpath. Parameters: Vehicle Turretpath Example: _config = [vehicle player, [0]] call CBA_fnc_getTurret Returns: Turret Config entry Author: Sickboy";
+				description = "A function used to find out which config turret is turretpath.";
 				file = "\x\cba\addons\common\fnc_getTurret.sqf";
 			};
 			// CBA_fnc_getUISize
@@ -258,13 +270,13 @@ class CfgFunctions
 			// CBA_fnc_intToString
 			class intToString
 			{
-				description = "Faster int to string, uses an integer lookup table if possible Parameters: _int - Integer number Example: 5 call CBA_fnc_intToString Returns: String Author: Xeno";
+				description = "Faster int to string, uses an integer lookup table if possible";
 				file = "\x\cba\addons\common\fnc_intToString.sqf";
 			};
 			// CBA_fnc_isAlive
 			class isAlive
 			{
-				description = "A function used to find out if the group or object is alive. Parameters: Array, Group or Unit Example: _alive = (Units player) call CBA_fnc_getAlive Returns: Boolean Author: Rommel";
+				description = "A function used to find out if the group or object is alive.";
 				file = "\x\cba\addons\common\fnc_isAlive.sqf";
 			};
 			// CBA_fnc_isTurnedOut
@@ -282,7 +294,7 @@ class CfgFunctions
 			// CBA_fnc_locked
 			class locked
 			{
-				description = "A2/OA/TOH compatible locked check";
+				description = "A2/OA/TOH compatible locked function.";
 				file = "\x\cba\addons\common\fnc_locked.sqf";
 			};
 			// CBA_fnc_mapDirTo
@@ -342,7 +354,7 @@ class CfgFunctions
 			// CBA_fnc_randPos
 			class randPos
 			{
-				description = "A function used to randomize a position around a given center Parameters: Marker, Object, Location, Group or Position, Radius Example: _position =  [position, radius] call CBA_fnc_randPos Returns: Position - [X,Y,Z] Author: Rommel";
+				description = "A function used to randomize a position around a given center";
 				file = "\x\cba\addons\common\fnc_randPos.sqf";
 			};
 			// CBA_fnc_realHeight
@@ -356,6 +368,18 @@ class CfgFunctions
 			{
 				description = "Remove a magazine.";
 				file = "\x\cba\addons\common\fnc_removeMagazine.sqf";
+			};
+			// CBA_fnc_removeMagazineCargo
+			class removeMagazineCargo
+			{
+				description = "Function to remove specific items from local cargo space.";
+				file = "\x\cba\addons\common\fnc_removeMagazineCargo.sqf";
+			};
+			// CBA_fnc_removeMagazineCargoGlobal
+			class removeMagazineCargoGlobal
+			{
+				description = "Function to remove specific items from global cargo space. MP synchronized.";
+				file = "\x\cba\addons\common\fnc_removeMagazineCargoGlobal.sqf";
 			};
 			// CBA_fnc_removePerFrameHandler
 			class removePerFrameHandler
@@ -375,6 +399,18 @@ class CfgFunctions
 				description = "Remove a weapon.";
 				file = "\x\cba\addons\common\fnc_removeWeapon.sqf";
 			};
+			// CBA_fnc_removeWeaponCargo
+			class removeWeaponCargo
+			{
+				description = "Function to remove specific items from local cargo space.";
+				file = "\x\cba\addons\common\fnc_removeWeaponCargo.sqf";
+			};
+			// CBA_fnc_removeWeaponCargoGlobal
+			class removeWeaponCargoGlobal
+			{
+				description = "Function to remove specific items from global cargo space. MP synchronized.";
+				file = "\x\cba\addons\common\fnc_removeWeaponCargoGlobal.sqf";
+			};
 			// CBA_fnc_selectWeapon
 			class selectWeapon
 			{
@@ -384,13 +420,13 @@ class CfgFunctions
 			// CBA_fnc_setHeight
 			class setHeight
 			{
-				description = "A function used to set the height of an object Parameters: _object - Object or Location _height - Height in metres _type - Optional parameter, 0 is getpos, 1 is getpos ASL, 2 is getposATL (Default: 1) Example: [this, 10] call CBA_fnc_setHeight Returns: Nothing Author: Rommel";
+				description = "A function used to set the height of an object";
 				file = "\x\cba\addons\common\fnc_setHeight.sqf";
 			};
 			// CBA_fnc_setPos
 			class setPos
 			{
-				description = "A function used to set the position of an entity. Parameters: Marker, Object, Location, Group or Position Example: [player, ""respawn_west""] call CBA_fnc_setPos Returns: Nil Author: Rommel";
+				description = "A function used to set the position of an entity.";
 				file = "\x\cba\addons\common\fnc_setPos.sqf";
 			};
 			// CBA_fnc_switchPlayer
@@ -407,7 +443,6 @@ class CfgFunctions
 			};
 		};
 	};
-	// Need to be manually maintained
 	// Missing BIS functions
 	class BIS {
 		class variables {
