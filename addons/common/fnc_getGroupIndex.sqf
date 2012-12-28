@@ -3,9 +3,10 @@ Function: CBA_fnc_getGroupIndex
 
 Description:
 	Finds out the actual ID number of a person within his group as assigned by
-	the game and used in the squad leader's command menu, not just the order
-	within the units of his group (this order can change due to players joining
-	and leaving the game, deaths or promotions).
+	the game and used in the squad leader's command menu.
+
+	This is not just the order within the units of his group (this order can
+	change due to players joining and leaving the game, deaths or promotions).
 
 	Inspired by the OFP function, squadNumber.sqf, by General Barron
 	(http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)

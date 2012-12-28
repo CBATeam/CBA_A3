@@ -2,11 +2,12 @@
 Function: CBA_fnc_addMagazineVerified
 
 Description:
-	Add magazines to the unit, but verify that it was
-	successful and doesn't over-burden the recipient. The
-	function has to options to fill all available inventory slots with
-	the requested magazine type, create excess magazines on the ground
-	or do nothing.
+	Add magazines to the unit, but verify that it was successful and doesn't
+	over-burden the recipient.
+
+	The function has to options to fill all available inventory slots with
+	the requested magazine type, create excess magazines on the ground or
+	do nothing.
 
 Parameters:
 	_unit - the unit to add magazine too. [Object]

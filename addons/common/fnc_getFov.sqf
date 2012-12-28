@@ -3,17 +3,19 @@ Function: CBA_fnc_getFov
 
 Description:
 	Get current camera's field of view in radians and zoom.
-	Fov is calculated in the same format as it is set up in configs and used by camSetFov and alike.
-	Precision is about 95%.
+
+	Fov is calculated in the same format as it is set up in configs and used
+	by camSetFov and alike. Precision is about 95%.
 
 Parameters:
-	(optional) base fov value corresponding to 1x zoom (to properly calculate current zoom), defaults to 0.33333
+	(optional) base fov value corresponding to 1x zoom (to properly calculate
+	current zoom), defaults to 0.33333
 
 Examples:
 	(begin example)
-		_fovarray = call CBA_fnc_getFov
+	_fovarray = call CBA_fnc_getFov
 
-		_fovarray = 0.4 call CBA_fnc_getFov
+	_fovarray = 0.4 call CBA_fnc_getFov
 	(end)
 
 Returns:

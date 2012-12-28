@@ -2,8 +2,10 @@
 Function: CBA_fnc_locked
 
 Description:
-	A2/OA/TOH compatible locked function
-	The locked scripting command changed in TOH, it returns a number instead of a boolean.
+	A2/OA/TOH compatible locked function.
+
+	The locked scripting command changed in TOH; it returns a number instead
+	of a boolean.
 
 Parameters:
 	_object - The object the locked check is done for.
