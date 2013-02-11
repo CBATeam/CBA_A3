@@ -39,7 +39,7 @@ if (!isDedicated && {!isNull player}) then { // isNull player check is for Main 
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
 	SLX_XEH_STR spawn {
 		private ["_ready"];
-		waitUntil {_ready = player getVariable "SLX_XEH_READY"; (isNil "_ready" && {_ready})};
+		waitUntil {_ready = player getVariable "SLX_XEH_READY"; (!isNil "_ready" && {_ready})};
 		_lastPlayer = player;
 		_lastPlayer call FUNC(addPlayerEvents);
 		#ifdef DEBUG_MODE_FULL

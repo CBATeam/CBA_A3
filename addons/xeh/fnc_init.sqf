@@ -50,7 +50,7 @@ if (_new) then {
 	_isRespawn = if (count _this > 2) then { _this select 2 } else { false };
 	_isDelayed = if (count _this > 3) then { _this select 3 } else { false };
 	// Pre Cache the "Other" EventHandlers
-	if !(_post && {!SLX_XEH_RECOMPILE}) then { _unitClass call FUNC(init_others_enum_cache) };
+	if (!_post && {!SLX_XEH_RECOMPILE}) then { _unitClass call FUNC(init_others_enum_cache) };
 	
 	if (_isMan && {!_post} && {count _this == 2} && {time > 0} && {SLX_XEH_MACHINE select 9}) exitWith {
 		// Delay initialisation until we can check if it's a respawned unit
