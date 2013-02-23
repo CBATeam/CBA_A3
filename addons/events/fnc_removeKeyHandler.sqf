@@ -5,13 +5,16 @@ Description:
 	Removes an action to a keyhandler
 
 Parameters:
-	_hashKey
+  _hashKey - handler identifier [String].
+  _type    - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
+
 
 Returns:
 
 Examples:
 	(begin example)
 		["cba_somesystem_keyevent"] call CBA_fnc_removeKeyHandler;
+		["cba_anothersystem_keyup", "keyup"] call CBA_fnc_removeKeyHandler;
 	(end)
 
 Author:
@@ -21,9 +24,9 @@ Author:
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(removeKeyHandler);
-private ["_type", "_hashKey", "_keyData", "_handlers", "_idx", "_myHandlers"];
 PARAMS_1(_hashKey);
-_type = if (count _this > 1) then { _this select 1 } else { "keydown" };
+DEFAULT_PARAM(1,_type,"keydown");
+private ["_keyData", "_handlers", "_idx", "_myHandlers"];
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
 if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
