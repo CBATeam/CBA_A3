@@ -107,16 +107,22 @@ FUNC(determineProductVersion) = {
 
 	// A2 (and OA pre 1.61beta, and TOH pre 1.05?) does not support productVersion so we deal with it manually
 	if (isNil "_pv") then { 
-		_pv = if (isClass(configFile >> "CfgPatches" >> "United_States_H")) then {
-			// TOH Backup
-			["TakeOn H", "TakeOnH", -1, -1];
+		_pv = if (isClass(configFile >> "CfgPatches" >> "A3_Map_Stratis")) then {
+				// A3 Backup
+				["Arma 3 Alpha","Arma3Alpha", -1, -1]; //,5,102571]
+
 		} else {
-			if (isClass(configFile >> "CfgPatches" >> "Takistan")) then {
-				// OA Backup
-				["ArmA 2OA", "ArmA2OA", -1, -1];
+			if (isClass(configFile >> "CfgPatches" >> "United_States_H")) then {
+				// TOH Backup
+				["TakeOn H", "TakeOnH", -1, -1];
 			} else {
-				// A2 Backup
-				["ArmA 2", "ArmA2", -1, -1];
+				if (isClass(configFile >> "CfgPatches" >> "Takistan")) then {
+					// OA Backup
+					["ArmA 2OA", "ArmA2OA", -1, -1];
+				} else {
+					// A2 Backup
+					["ArmA 2", "ArmA2", -1, -1];
+				};
 			};
 		};
 	};
@@ -136,6 +142,7 @@ FUNC(determineGame) = {
 		case "ArmA2": {0};
 		case "ArmA2OA": {1};
 		case "TakeOnH": {2};
+		case "Arma3Alpha": {3};
 		default {0};
 	};
 };
@@ -161,7 +168,11 @@ SLX_XEH_MACHINE =
 	call FUNC(determineProductVersion) // 15 - Product+Version
 ];
 
-SLX_XEH_DUMMY = if ((SLX_XEH_MACHINE select 14) == 2) then { "Helipad_Invisible_H" } else { "HeliHEmpty" };
+SLX_XEH_DUMMY = switch (SLX_XEH_MACHINE select 14) do {
+	case 2: {"Helipad_Invisible_H" };
+	case 3: {"Land_HelipadEmpty_F" };
+	default { "HeliHEmpty" };
+};
 
 SLX_XEH_STR = ""; // Empty string
 SLX_XEH_STR_INIT_EH = "Extended_Init_EventHandlers";
