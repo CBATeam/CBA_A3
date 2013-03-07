@@ -15,6 +15,7 @@ class CfgPatches {
 	};
 };
 
+/*
 class CfgMods {
 	class PREFIX {
 		dir = "@CBA";
@@ -27,7 +28,7 @@ class CfgMods {
 		description = "Bugtracker: http://dev-heaven.net/projects/cca<br />Documentation: http://dev-heaven.net/projects/cca";
 	};
 };
-
+*/
 class CfgSettings {
 	class CBA {
 		class Caching {
