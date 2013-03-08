@@ -67,7 +67,7 @@ class CBA_flexiMenu_rscArma2 {
 			bottom = 0.005;
 		};
 		class Attributes {
-			font = "Zeppelin32";
+			font = "PuristaMedium";
 			color = "#E5E5E5";
 			align = "left";
 			shadow = "true";
@@ -101,7 +101,7 @@ class CBA_flexiMenu_rscArma2 {
 			h = 0.1;
 		};
 		class Attributes {
-			font = "Zeppelin32";
+			font = "PuristaMedium";
 			color = "#E5E5E5";
 			align = "center";
 			shadow = "true";
@@ -140,7 +140,7 @@ class CBA_flexiMenu_rscArma2 {
 			};
 			/*
 			class Attributes {
-				font = "Zeppelin32";
+				font = "PuristaMedium";
 				color = "#E5E5E5";
 				align = "left";
 				shadow = "true";

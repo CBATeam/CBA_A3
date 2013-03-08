@@ -156,17 +156,17 @@ class CBA_Dummy_Map: RscMapControl {
 	ptsPerSquareRoad = 0;
 	ptsPerSquareObj = 0;
 
-	fontLabel = "Zeppelin32";
+	fontLabel = "PuristaMedium";
 	sizeExLabel = 0.0;
-	fontGrid = "Zeppelin32";
+	fontGrid = "PuristaMedium";
 	sizeExGrid = 0.0;
-	fontUnits = "Zeppelin32";
+	fontUnits = "PuristaMedium";
 	sizeExUnits = 0.0;
-	fontNames = "Zeppelin32";
+	fontNames = "PuristaMedium";
 	sizeExNames = 0.0;
-	fontInfo = "Zeppelin32";
+	fontInfo = "PuristaMedium";
 	sizeExInfo = 0.0;
-	fontLevel = "Zeppelin32";
+	fontLevel = "PuristaMedium";
 	sizeExLevel = 0.0;
     scaleMax = 1;
     scaleMin = 0.125;
@@ -210,7 +210,7 @@ class CBA_Dummy_Map: RscMapControl {
         y = "SafeZoneY";
         w = 0.340000;
         h = 0.152000;
-        font = "Zeppelin32";
+        font = "PuristaMedium";
         sizeEx = 0.039210;
         colorBackground[] = {0.906000, 0.901000, 0.880000, 0};
         color[] = {0, 0, 0, 0};

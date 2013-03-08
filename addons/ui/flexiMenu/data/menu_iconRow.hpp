@@ -54,7 +54,7 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 			bottom = 0.005;
 		};
 		class Attributes {
-			font = "Zeppelin32";
+			font = "PuristaMedium";
 			color = "#E5E5E5";
 			align = "left";
 			shadow = "true";
@@ -88,7 +88,7 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 			bottom = 0.000;
 		};
 		class Attributes {
-			font = "Zeppelin32";
+			font = "PuristaMedium";
 			color = "#E5E5E5";
 			align = "center";
 			shadow = "true";
