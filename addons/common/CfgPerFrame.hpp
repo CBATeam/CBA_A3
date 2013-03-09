@@ -180,7 +180,7 @@ class CBA_Dummy_Map: RscMapControl {
 	scaleDefault = 2;
 
     class Task: Task {
-        //icon = "\ca\ui\data\ui_taskstate_current_CA.paa";
+        //icon = "\A3\ui_f\data\map\mapcontrol\taskIcon_CA.paa";
         color[] = {1, 0.537000, 0, 0};
         size = 27;
         importance = 1;
