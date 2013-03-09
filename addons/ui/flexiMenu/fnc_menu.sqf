@@ -81,14 +81,17 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 ]
 */
 //-----------------------------------------------------------------------------
-private ["_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
+private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
 private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled"];
 private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
 
 //-----------------------------------------------------------------------------
-if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log format ["%1: Invalid params type: %2", __FILE__, _this]};
+_msg = "";
+_msg = format ["%1: Invalid params type: %2", __FILE__, _this];
+if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
+if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log _msg};
 
 _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
@@ -217,11 +220,4 @@ for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
 	_ctrl ctrlShow false;
 	_ctrl ctrlEnable false;
 };
-
-// hide and disable unused list buttons
-for "_i" from 0 to (_flexiMenu_maxButtons - 1) do {
-	_idc = _flexiMenu_baseIDC_listButton + _i;
-	_ctrl = _disp displayCtrl _idc;
-	_ctrl ctrlShow false;
-	_ctrl ctrlEnable false;
-};
+

@@ -3,7 +3,7 @@ disableSerialization;
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ["_menuSources", "_menuDefs", "_idc", "_iconFolder"];
+private ["_msg", "_menuSources", "_menuDefs", "_idc", "_iconFolder"];
 private["_menuOption", "_caption", "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];
 
 _menuDefs = _this call FUNC(getMenuDef);
@@ -22,7 +22,10 @@ _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc)
 _iconFolder = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_iconFolder) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_iconFolder} else {""}; // base icon folder (eg: "\ca\ui\data\")
 //-----------------------------------------------------------------------------
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource;
-if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
+_msg = "";
+_msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
+if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
+if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
 if (!isClass (configFile >> _menuRsc)) then { // if not a full class name
 	if (!isClass (missionConfigFile >> _menuRsc)) then { // if not a full class name
 		_menuRsc = _menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
@@ -105,9 +108,3 @@ _idc = _flexiMenu_baseIDC_listButton;
 // hide and disable unused list buttons
 for "_i" from _idc to (_flexiMenu_baseIDC_listButton + _flexiMenu_maxButtons - 1) do {
 	_ctrl = _disp displayCtrl _i;
-	_ctrl ctrlShow false;
-	_ctrl ctrlEnable false;
-};
-//-----------------------------------------------------------------------------
-_idc = _flexiMenu_baseIDC_listButton;
-ctrlSetFocus (_disp displayCtrl _idc);

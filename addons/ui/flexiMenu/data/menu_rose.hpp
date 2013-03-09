@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 //#include "common_rose.hpp"
 

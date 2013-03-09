@@ -1,13 +1,18 @@
-﻿//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 
 private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 // Note: calling script may require this file for dik codes: #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
-TRACE_1("",_this);
+_msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"; //Initialize
+_key = [];
 
-// validate params_msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
+// validate params
+_msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__ ];  //
+TRACE_2("",_this,_msg);
+
+if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"};
 if (isNil QUOTE(GVAR(typeMenuSources))) exitWith {diag_log _msg};
 if (typeName _this != typeName []) exitWith {diag_log _msg};
 if (count _this < 4 || count _this > 5) exitWith {diag_log _msg};
@@ -23,6 +28,7 @@ if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) >
 
 if (count _this == 4) then {_this set [count _this, true]};
 
+
 // convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
 for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
 	_key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
@@ -32,6 +38,8 @@ for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) 
 		(_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
 	};
 };
+
+TRACE_2("",_key,_flexiMenu_typeMenuSources_ID_DIKCodes);
 
 // Check for duplicate record and then warn and ignore.
 if (({str _x == str _this} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {
