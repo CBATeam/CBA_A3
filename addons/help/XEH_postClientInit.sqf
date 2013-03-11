@@ -1,4 +1,10 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
+
+
+GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
+{ [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
+TRACE_1("",GVAR(credits));
 
 player createDiarySubject ["CBA_docs", "CBA"];
 //player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_WEBSITE_WIKI"), "http://dev-heaven.net/projects/cca"]];

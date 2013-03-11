@@ -86,10 +86,6 @@ for "_i" from 0 to (count _cEvents)-1 do {
 	};
 };
 
-GVAR(credits) = [[], []] call CBA_fnc_hashCreate;
-{ [GVAR(credits), _x, [_x] call FUNC(readConfig)] call CBA_fnc_hashSet } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
-TRACE_1("",GVAR(credits));
-
 GVAR(docs) = "";
 _cfg = configFile >> "CfgMods";
 _c = count _cfg;
