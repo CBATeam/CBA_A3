@@ -28,6 +28,8 @@ PARAMS_3(_hash,_key,_value);
 
 private ["_index", "_isDefault"];
 
+if (isNil "BIS_fnc_areEqual") then { LOG( "WARNING: BIS_fnc_areEqual is Nil") };
+
 // Work out whether the new value is the default value for this assoc.
 _isDefault = [if (isNil "_value") then { nil } else { _value },
 	_hash select HASH_DEFAULT_VALUE] call BIS_fnc_areEqual;
