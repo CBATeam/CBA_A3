@@ -51,6 +51,12 @@ class CfgFunctions
 				description = "Check if a value is a Hash data structure.";
 				file = "\x\cba\addons\hashes\fnc_isHash.sqf";
 			};
+			// CBA_fnc_testHash
+			class testHash
+			{
+				description = "Internal Self Check. Check the RPT file for results.";
+				file = "\x\cba\addons\hashes\test.sqf";
+			};
 		};
 	};
 };

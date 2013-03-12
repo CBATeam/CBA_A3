@@ -63,6 +63,12 @@ class CfgFunctions
 				description = "Used to sort a nested array from lowest to highest using quick sort based on the specified column, which must have numerical data. Parameters: _array: array - Nested array to be sorted _index: integer - sub array item index to be sorted on Example: _array = [_array,1] call CBA_fnc_sortNestedArray Returns: Passed in array Author: Standard algorithm";
 				file = "\x\cba\addons\arrays\fnc_sortNestedArray.sqf";
 			};
+			// CBA_fnc_testArrays
+			class testArrays
+			{
+				description = "Internal Self Check. Check the RPT file for results.";
+				file = "\x\cba\addons\arrays\test.sqf";
+			};
 		};
 	};
 };

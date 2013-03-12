@@ -69,6 +69,12 @@ class CfgFunctions
 				description = "Trims white-space (space, tab, newline) from the both ends of a string.";
 				file = "\x\cba\addons\strings\fnc_trim.sqf";
 			};
+			// CBA_fnc_testStrings
+			class testStrings
+			{
+				description = "Internal Self Check. Check the RPT file for results.";
+				file = "\x\cba\addons\strings\test.sqf";
+			};
 		};
 	};
 };
