@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 SCRIPT(test_hashEachPair);
@@ -12,6 +12,7 @@ _fn = "CBA_fnc_hashEachPair";
 ASSERT_DEFINED(_fn,"");
 
 LOG("Testing " + _fn);
+Diag_log ("Testing " + _fn);
 
 _hash = [[[1, 12], [5, 25]], 88] call CBA_fnc_hashCreate;
 
