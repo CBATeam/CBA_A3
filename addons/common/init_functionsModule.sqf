@@ -1,7 +1,9 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
-// #define DEBUG_MODE_FULL
+// TODO: Should we consider just running  A3\functions_f\initFunctions.sqf  ?
+
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 scriptName "CBA\common\init_functionsModule";
@@ -43,9 +45,13 @@ for "_t" from 0 to 2 do {
 
 		//--- Is Tag
 		if (isclass _currentTag) then {
-			_tagName = configname _currentTag;
+			// see the new "Initialize tag" Comment for reference in file => A3\functions_f\initFunctions.sqf
+			// TODO: Add Support for Required Addons
+			// QUESTION: Should we consider just running  A3\functions_f\initFunctions.sqf  ?
+			_tagName = gettext (_currentTag >> "tag");
+			if (_tagName == "") then {_tagName = configname _currentTag};
 			_itemPathTag = gettext (_currentTag >> "file");
-
+			
 			#ifdef DEBUG_MODE_FULL
 				diag_log [_tagName, _itemPathTag];
 			#endif
@@ -92,6 +98,7 @@ for "_t" from 0 to 2 do {
 								_compiled = if (_itemExt == ".fsm") then { compile format ["_this execfsm '%1';",_itemPath] } else { compile preProcessFileLineNumbers _itemPath };
 								uiNamespace setVariable [_itemPath, _compiled];
 							};
+							TRACE_1("MissionNamespace Function Name", _fn);
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
 							#ifdef DO_NOT_STORE_IN_MISSION_NS
 								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _itemPath]];
@@ -111,12 +118,12 @@ for "_t" from 0 to 2 do {
 private ["_test", "_test2"];
 _test = (_this select 0) setPos (position (_this select 0)); if (isnil "_test") then {_test = false};
 _test2 = (_this select 0) playMove ""; if (isnil "_test2") then {_test2 = false};
-if (_test || _test2) then {0 call COMPILE_FILE2(ca\modules\functions\misc\fn_initCounter.sqf) };
+if (_test || _test2) then {0 call COMPILE_FILE2(A3\functions_f\misc\fn_initCounter.sqf) };
 
 //--------------------------------------------------------------------------------------------------------
 //--- INIT COMPLETE --------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------
-
+	
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
