@@ -1,9 +1,7 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
-// TODO: Should we consider just running  A3\functions_f\initFunctions.sqf  ?
-
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 scriptName "CBA\common\init_functionsModule";
@@ -35,7 +33,7 @@ if (BIS_fnc_init && !_recompile) exitWith {};
 _pathConfigs = [configfile,campaignconfigfile,missionconfigfile];
 for "_t" from 0 to 2 do {
 	_pathConfig = _pathConfigs select _t;
-	_pathFile = ["ca\modules\functions","functions","functions"] select _t;
+	_pathFile = ["a3\functions_f","functions","functions"] select _t;
 
 	_cfgFunctions = (_pathConfig >> "cfgfunctions");
 	if (isText(_cfgFunctions >> "file")) then { _pathFile = getText(_cfgFunctions >> "file")};
@@ -45,13 +43,9 @@ for "_t" from 0 to 2 do {
 
 		//--- Is Tag
 		if (isclass _currentTag) then {
-			// see the new "Initialize tag" Comment for reference in file => A3\functions_f\initFunctions.sqf
-			// TODO: Add Support for Required Addons
-			// QUESTION: Should we consider just running  A3\functions_f\initFunctions.sqf  ?
-			_tagName = gettext (_currentTag >> "tag");
-			if (_tagName == "") then {_tagName = configname _currentTag};
+			_tagName = configname _currentTag;
 			_itemPathTag = gettext (_currentTag >> "file");
-			
+
 			#ifdef DEBUG_MODE_FULL
 				diag_log [_tagName, _itemPathTag];
 			#endif
@@ -98,7 +92,7 @@ for "_t" from 0 to 2 do {
 								_compiled = if (_itemExt == ".fsm") then { compile format ["_this execfsm '%1';",_itemPath] } else { compile preProcessFileLineNumbers _itemPath };
 								uiNamespace setVariable [_itemPath, _compiled];
 							};
-							TRACE_1("MissionNamespace Function Name", _fn);
+							TRACE_1("BIS Function Name: ", _fn);
 							missionNameSpace setVariable [format["%1_path", _fn], _itemPath];
 							#ifdef DO_NOT_STORE_IN_MISSION_NS
 								missionNameSpace setVariable [_fn, compile format["_this call (uiNamespace getVariable '%1')", _itemPath]];
@@ -127,3 +121,11 @@ if (_test || _test2) then {0 call COMPILE_FILE2(A3\functions_f\misc\fn_initCount
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
+
+vmBFE = uiNamespace getVariable "BIS_fnc_areEqual";
+if (isNil "vmBFE") then { diag_log "WARNING: BIS_fnc_areEqual (uiNamespace-1) is Nil"; diag_log vmBFE };
+if (isNil "uiNamespace getVariable 'BIS_fnc_areEqual'") then { diag_log "WARNING: BIS_fnc_areEqual (uiNamespace-2) is Nil" };
+if (isNil "BIS_fnc_areEqual") then { diag_log "WARNING: BIS_fnc_areEqual (missionNamespace) is Nil" };
+TRACE_2("DebugBIS_fnc_areEqual Before", BIS_fnc_areEqual,  vmBFE);
+BIS_fnc_areEqual = uiNamespace getVariable "BIS_fnc_areEqual";
+TRACE_2("DebugBIS_fnc_areEqual After", BIS_fnc_areEqual, vmBFE);

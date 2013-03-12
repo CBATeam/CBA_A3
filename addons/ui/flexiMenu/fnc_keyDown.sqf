@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 

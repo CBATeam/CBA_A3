@@ -29,7 +29,7 @@ Example:
 Author:
 	Spooner
 ---------------------------------------------------------------------------- */
-
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #include "script_hashes.hpp"
 
