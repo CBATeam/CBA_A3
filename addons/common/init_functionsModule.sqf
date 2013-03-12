@@ -121,11 +121,3 @@ if (_test || _test2) then {0 call COMPILE_FILE2(A3\functions_f\misc\fn_initCount
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
 #endif
-
-vmBFE = uiNamespace getVariable "BIS_fnc_areEqual";
-if (isNil "vmBFE") then { diag_log "WARNING: BIS_fnc_areEqual (uiNamespace-1) is Nil"; diag_log vmBFE };
-if (isNil "uiNamespace getVariable 'BIS_fnc_areEqual'") then { diag_log "WARNING: BIS_fnc_areEqual (uiNamespace-2) is Nil" };
-if (isNil "BIS_fnc_areEqual") then { diag_log "WARNING: BIS_fnc_areEqual (missionNamespace) is Nil" };
-TRACE_2("DebugBIS_fnc_areEqual Before", BIS_fnc_areEqual,  vmBFE);
-BIS_fnc_areEqual = uiNamespace getVariable "BIS_fnc_areEqual";
-TRACE_2("DebugBIS_fnc_areEqual After", BIS_fnc_areEqual, vmBFE);
