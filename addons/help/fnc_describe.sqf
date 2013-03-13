@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #define __cfg configFile >> _type
 #define __cfgveh configFile >> _type
 #include "script_component.hpp"
