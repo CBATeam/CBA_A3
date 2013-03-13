@@ -1,7 +1,7 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 scriptName "CBA\common\init_functionsModule";
@@ -46,7 +46,6 @@ if (BIS_fnc_init && !_recompile) exitWith {};  // A3 build 0.11.103003 => observ
 	
 #ifdef DEBUG_MODE_FULL
 	diag_log [diag_frameNo, diag_tickTime, time, diag_tickTime - _timeStart, "Function module done!"];
+	// Function Tests
+	0 Call GVAR(fncInitTest);
 #endif
-
-// Function Tests
-0 Call GVAR(fncInitTest);
