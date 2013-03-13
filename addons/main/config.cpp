@@ -7,7 +7,7 @@ class CfgPatches {
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
 		// "CBA_XEH",  would create circular dependency, however XEH is required by CBA common in any case :)
-		requiredAddons[] = {}; // "cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_versioning", "cba_ui", "cba_ui_helper", "cba_help"
+		requiredAddons[] = {"cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_versioning", "cba_ui", "cba_ui_helper", "cba_help"};
 		versionDesc = "C.B.A.";
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
