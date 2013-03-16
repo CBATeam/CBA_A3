@@ -1,4 +1,4 @@
-#define COMPONENT xeh
+#define COMPONENT xeh_a3
 
 #include "\x\cba_a3\addons\main\script_mod.hpp"
 
