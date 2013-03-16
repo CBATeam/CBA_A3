@@ -4,6 +4,9 @@ class RscStandardDisplay;
 class RscStructuredText;
 class RscActiveText;
 class RscButton;
+class CA_Version;
+class VersionText;
+class VersionNumber;
 
 class CBA_CREDITS_CONT: RscStructuredText {
 	idc = -1; //template
@@ -57,8 +60,8 @@ class CBA_CREDITS_VER_BTN: RscButton {
 
 class RscDisplayMain: RscStandardDisplay {
 	class controls {
-		class CA_Version;
-		class CBA_CREDITS_VER: CA_Version {
+		class VersionNumber;
+		class CBA_CREDITS_VER: VersionNumber {
 			idc = CBA_CREDITS_VER_IDC;
 			y = -1;
 		};
@@ -70,7 +73,7 @@ class RscDisplayMain: RscStandardDisplay {
 		};
 		class CBA_CREDITS_M: CBA_CREDITS_M {
 			idc = CBA_CREDITS_M_IDC;
-			onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; [_this, true] call compile preprocessFile '\x\cba\addons\help\showver.sqf';";
+			onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; ";
 		};
 	};
 };
