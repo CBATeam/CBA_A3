@@ -3,10 +3,10 @@
 #define __W SafeZoneW
 #define __H SafeZoneH
 
-#define __SX(var1) x = QUOTE((var1 * safeZoneW) + safeZoneX)
-#define __SY(var1) y = QUOTE((var1 * safeZoneH) + safeZoneY)
-#define __SW(var1) w = QUOTE(var1 * safeZoneW)
-#define __SH(var1) h = QUOTE(var1 * safeZoneH)
+#define __SX(var1) x = QUOTE(var1 * (((safezoneW / safezoneH) min 1.2) / 40) + safezoneX)
+#define __SY(var1) y = QUOTE(var1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2)))
+#define __SW(var1) w = QUOTE(var1 * (((safezoneW / safezoneH) min 1.2) / 40))
+#define __SH(var1) h = QUOTE(var1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25))
 
 // Control types
 #define CT_STATIC           0

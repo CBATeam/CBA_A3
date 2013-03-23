@@ -7,14 +7,15 @@ class RscButton;
 class CA_Version;
 class VersionText;
 class VersionNumber;
+class RscControlsGroupNoScrollbars;
 
 class CBA_CREDITS_CONT: RscStructuredText {
 	idc = -1; //template
 	colorBackground[] = { 0, 0, 0, 0 };
-	__SX(0.025);
-	__SY(0.964);
-	__SW(0.725);
-	__SH(0.025);
+	__SX(1);
+	__SY(1);
+	__SW(40);
+	__SH(1);
 	size = "0.025 * SafeZoneH";
 	class Attributes {
 		font = "TahomaB";
@@ -61,6 +62,24 @@ class CBA_CREDITS_VER_BTN: RscButton {
 class RscDisplayMain: RscStandardDisplay {
 	class controls {
 		class VersionNumber;
+		
+		class ModIcons: RscControlsGroupNoScrollbars
+		{
+			class Controls
+			{
+			};
+			idc = 141;
+			//__SW_Right_Justifide(15);
+			//__SX_Right_Justifide(90);
+			//x = "safezonX + safezoneW - (16 * (((safezoneW / safezoneH) min 1.2) / 40))";
+			//__SY(9.3);
+			//__SH(2);
+			x = "safezoneX + safezoneW - (16 * 			(			((safezoneW / safezoneH) min 1.2) / 40))";
+			y = "safezoneY + (20.8 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))";
+			w = "15 * 			(			((safezoneW / safezoneH) min 1.2) / 40)";
+			h = "20 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+		};
 		class CBA_CREDITS_VER: VersionNumber {
 			idc = CBA_CREDITS_VER_IDC;
 			y = -1;
@@ -71,10 +90,16 @@ class RscDisplayMain: RscStandardDisplay {
 			onMouseEnter = QUOTE(GVAR(VerTime) = diag_tickTime + 20);
 			onMouseExit = QUOTE(GVAR(VerTime) = diag_tickTime + 2);
 		};
+		/*
 		class CBA_CREDITS_M: CBA_CREDITS_M {
 			idc = CBA_CREDITS_M_IDC;
+			__SX(1);
+			__SY(10);
+			__SW(15);
+			__SH(1);
 			onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; ";
 		};
+		*/
 	};
 };
 
