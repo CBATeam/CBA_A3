@@ -29,7 +29,7 @@ FUNC(handleMismatch) = {
 QUOTE(GVAR(mismatch)) addPublicVariableEventHandler { (_this select 1) call FUNC(handleMismatch) };
 
 private "_str";
-_str = 'if(isServer)exitWith{};0 = objNull spawn { sleep 1; sleep 1; _func={GVAR(mismatch)=[format["%2 (%1)",name player, player],_this];publicVariable QUOTE(GVAR(mismatch));_this spawn{_t=format["You are missing the following mod: %1",_this];diag_log text _t;sleep 2;player globalChat _t}};';
+_str = 'if(isServer)exitWith{};if (isNil "CBA_display_ingame_warnings") { CBA_display_ingame_warnings = true; }; 0 = objNull spawn { sleep 1; sleep 1; _func={GVAR(mismatch)=[format["%2 (%1)",name player, player],_this];publicVariable QUOTE(GVAR(mismatch));_this spawn{_t=format["You are missing the following mod: %1",_this];diag_log text _t;sleep 2;if (CBA_display_ingame_warnings){player globalChat _t}}};';
 [GVAR(versions_serv), {
 	_cfg = (configFile >> "CfgSettings" >> "CBA" >> "Versioning" >> _key);
 	_addon = if (isClass _cfg) then { if (isText (_cfg >> "main_addon")) then { getText (_cfg >> "main_addon") } else { _key + "_main" }; } else { _key + "_main" }; 
