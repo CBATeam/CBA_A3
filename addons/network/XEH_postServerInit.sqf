@@ -5,7 +5,7 @@ LOG(MSG_INIT);
 // [["__SERVER__","0",objNull,true]] call CBA_fnc_globalEvent;
 
 // Use Function that can be called using BIS_fnc_MP so that even non CBA clients will announce
-[nil, QGVAR(sendPlayerID), CBA_logic, true] spawn BIS_fnc_MP;
+[nil, QGVAR(sendPlayerID),true, true] spawn BIS_fnc_MP;
 TRACE_2("",cba_network_joinN,cba_network_sendPlayerID);
 
 //CBA_logic setVehicleInit QUOTE(if(!isDedicated)then{[]spawn{waitUntil{player == player};GVAR(joinN) = DATA;publicVariable 'GVAR(joinN)'}});
