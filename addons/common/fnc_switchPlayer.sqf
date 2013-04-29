@@ -63,8 +63,11 @@ _newUnit addScore (_ar select 3);
 hint format["3.State transfered, switched player control to new unit, local: %1", local _newUnit];
 sleep 1;
 if (_ar select 7 != "") then {
-	_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
-	processInitCommands;
+
+	GVAR(setVehVarName) = {format["this setVehicleVarName '%1'; %1 = this", _ar select 7];};
+	[nil, QGVAR(setVehVarName), _newUnit, true] spawn BIS_fnc_MP;
+	//_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
+	//processInitCommands;
 };
 
 if ("LEAVEWEAPS" in _this) then

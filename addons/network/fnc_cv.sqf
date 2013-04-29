@@ -28,6 +28,8 @@ if !(SLX_XEH_MACHINE select 3) then
 		};
 		if (_init != "") then
 		{
+			GVAR(state) = {_init}; publicVariable QGVAR(state);
+			[nil, QGVAR(state), _object, true] spawn BIS_fnc_MP;
 			_object setVehicleInit _init;
 			processInitCommands;
 		};

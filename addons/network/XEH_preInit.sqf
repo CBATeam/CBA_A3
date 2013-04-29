@@ -28,6 +28,9 @@
 */
 #define CHANGETIME 5
 
+// Define a DATA and Function that can be called using BIS_fnc_MP so that even non CBA clients will announce
+#define DATA [name player,getPlayerUID player,player,isClass(configFile>>'CfgPatches'>>'cba_main')]
+
 LOG(MSG_INIT);
 
 // Announce the initialization of the script
@@ -109,6 +112,8 @@ if (SLX_XEH_MACHINE select 3) then
 	};
 };
 
+
+GVAR(sendPlayerID) = { if(!isDedicated)then{[]spawn{waitUntil{player == player};GVAR(joinN) = DATA;publicVariable 'GVAR(joinN)'}}; };
 [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call CBA_fnc_addEventHandler;
 [QUOTE(GVAR(say3d)), { private "_say"; _say = _this; if (count _this > 2) then { if ((positionCameraToWorld [0,0,0]) distance (_say select 0) <= (_say select 2)) then { (_say select 0) say3d (_say select 1) } } else { (_say select 0) say3d (_say select 1) } }] call CBA_fnc_addEventHandler;

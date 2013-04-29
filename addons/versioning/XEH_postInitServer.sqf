@@ -39,5 +39,9 @@ _str = 'if(isServer)exitWith{};if (isNil "CBA_display_ingame_warnings") { CBA_di
 ADD(_str,"};");
 // Actually disconnect em?
 // endMission "END1"
-CBA_logic setVehicleInit _str;
-processInitCommands;
+
+GVAR(state) = {_str}; publicVariable QGVAR(state);
+// Make sure _str is available for all clients
+[nil, QGVAR(state), CBA_logic, true] spawn BIS_fnc_MP;
+//CBA_logic setVehicleInit _str;
+//processInitCommands;
