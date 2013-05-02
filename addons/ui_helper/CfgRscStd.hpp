@@ -1,17 +1,15 @@
+class CA_Join;
+class CA_ValueSessions;
 class RscListBox;
 class RscStandardDisplay;
-class RscButtonMenuCancel;
 
 class RscDisplayMultiplayer: RscStandardDisplay {
-	class ControlsBackground {
-		class CA_Cancel: RscButtonMenuCancel{};
-		class CA_Join: CA_Cancel {
+	class Controls {
+		class CA_Join: CA_Join {
 			onMouseButtonDown = "uiNamespace setVariable ['CBA_isCached', nil]";
 			onKeyDown = "uiNamespace setVariable ['CBA_isCached', nil]";
 		};
-	};
-	class Controls {
-		class CA_ValueSessions: RscListBox {
+		class CA_ValueSessions: CA_ValueSessions {
 			onMouseButtonDown = "uiNamespace setVariable ['CBA_isCached', nil]";
 		};
 	};
