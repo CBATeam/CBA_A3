@@ -40,8 +40,8 @@ ADD(_str,"};");
 // Actually disconnect em?
 // endMission "END1"
 
-GVAR(state) = {_str}; publicVariable QGVAR(state);
+GVAR(state) = {call compile _this}; publicVariable QGVAR(state);
 // Make sure _str is available for all clients
-[nil, QGVAR(state), CBA_logic, true] spawn BIS_fnc_MP;
+[_str, QGVAR(state), CBA_LOGIC, true] spawn BIS_fnc_MP;
 //CBA_logic setVehicleInit _str;
 //processInitCommands;
