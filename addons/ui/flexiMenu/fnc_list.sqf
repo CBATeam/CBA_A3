@@ -108,4 +108,9 @@ _idc = _flexiMenu_baseIDC_listButton;
 // hide and disable unused list buttons
 for "_i" from _idc to (_flexiMenu_baseIDC_listButton + _flexiMenu_maxButtons - 1) do {
 	_ctrl = _disp displayCtrl _i;
-};
+	_ctrl ctrlShow false;
+	_ctrl ctrlEnable false;	
+};		
+//-----------------------------------------------------------------------------	
+_idc = _flexiMenu_baseIDC_listButton;	
+ctrlSetFocus (_disp displayCtrl _idc);
