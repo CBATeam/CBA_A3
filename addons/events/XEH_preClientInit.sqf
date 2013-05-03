@@ -1,3 +1,5 @@
+// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable. 
+// So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
@@ -6,7 +8,7 @@
 LOG(MSG_INIT);
 
 // ["CBA_loadGame", { SLX_XEH_STR spawn FUNC(attach_handler) }] call CBA_fnc_addEventHandler; // EH is unimplemented due to unreliable
-["CBA_playerSpawn", { LOG("Player spawn detected!") }] call CBA_fnc_addEventHandler;
+["CBA_playerSpawn", { LOG("Player spawn detected!") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 
 SLX_XEH_STR spawn {
 	private ["_lastPlayer", "_newPlayer"];
@@ -16,7 +18,7 @@ SLX_XEH_STR spawn {
 		waitUntil {player != _lastPlayer};
 		waitUntil {!isNull player};
 		_newPlayer = player; // Cumbersome but ensures refering to the same object
-		["CBA_playerSpawn", [_newPlayer, _lastPlayer]] call CBA_fnc_localEvent;
+		["CBA_playerSpawn", [_newPlayer, _lastPlayer]] call (uiNamespace getVariable "CBA_fnc_localEvent");
 		_lastPlayer = _newPlayer;
 	};
 };
@@ -52,7 +54,7 @@ FUNC(attach_handler) = {
 	if !(isNull (findDisplay 46)) then {
 		TRACE_2("ReAttaching",GVAR(keypressed),GVAR(attach_count));
 		GVAR(keypressed) = time;
-		[GVAR(handler_hash), {call FUNC(handle_retach)}] call CBA_fnc_hashEachPair;
+		[GVAR(handler_hash), {call FUNC(handle_retach)}] call (uiNamespace getVariable "CBA_fnc_hashEachPair");
 		CBA_EVENTS_DONE = true;
 		INC(GVAR(attach_count));
 	};
@@ -64,8 +66,8 @@ FUNC(attach_handler) = {
 #define UP [_this, 'keyup']
 #define DOWN [_this, 'keydown']
 
-["KeyUp", QUOTE(UP call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
-["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call CBA_fnc_addDisplayHandler;
+["KeyUp", QUOTE(UP call FUNC(keyHandler))] call (uiNamespace getVariable "CBA_fnc_addDisplayHandler");
+["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call (uiNamespace getVariable "CBA_fnc_addDisplayHandler");
 
 SLX_XEH_STR spawn {
 	waitUntil { !isNull (findDisplay 46) };

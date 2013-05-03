@@ -54,7 +54,7 @@ _s = if (typeName _value != typeName _var) then {
 			((_var && _value) || (!_var && !_value))
 		};
 		case "ARRAY": {
-			([_var, _value] call BIS_fnc_areEqual)
+			([_var, _value] call (uiNamespace getVariable "BIS_fnc_areEqual"))
 		};
 		case "CODE": {
 			false
