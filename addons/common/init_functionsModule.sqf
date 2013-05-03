@@ -1,7 +1,7 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 scriptName "CBA\common\init_functionsModule";
@@ -38,15 +38,38 @@ if (CBA_FUNC_RECOMPILE) then { _recompile = true };
 
 //--- Functions are already running
 if (BIS_fnc_init && {!_recompile}) exitWith {};  // A3 build 0.11.103003 => observing that during the preInit phase, BIS_fnc_init (uiNamespace) is true 
-GVAR(BIS_functions_list) = call (uiNamespace getVariable "BIS_functions_list");
+//GVAR(BIS_functions_list) = call (uiNamespace getVariable "BIS_functions_list");
 
 //-----------------------------------------------------------------------------
 //--- PREPROCESS --------------------------------------------------------------
 //-----------------------------------------------------------------------------
 
-// [] call compile preprocessFileLineNumbers "A3\functions_f\initFunctions.sqf";
+[3] call compile preprocessFileLineNumbers "A3\functions_f\initFunctions.sqf";
 
-	
+//--- Mission only
+/*
+_functions_listRecompile = uiNamespace getVariable "BIS_functions_list";
+_functions_listForced = uiNamespace getVariable "BIS_functions_list";
+diag_log "cba_init";
+	if (!isNil "bis_functions_mainscope") then {
+		private ["_test", "_test2"];
+		_test = bis_functions_mainscope setPos (position bis_functions_mainscope); if (isnil "_test") then {_test = false};
+		_test2 = bis_functions_mainscope playMove ""; if (isnil "_test2") then {_test2 = false};
+		if (_test || _test2) then {0 call (compile (preprocessFileLineNumbers "a3\functions_f\misc\fn_initCounter.sqf"))};
+	};
+
+	//--- Recompile selected functions
+	{
+		_x call bis_fnc_recompile;
+	} foreach _functions_listRecompile;
+
+	//--- Call forced functions
+	{
+		["Executing %1",_x] call bis_fnc_logFormat;
+		_function = [] call (missionnamespace getvariable _x);
+		missionnamespace setvariable [_x + "_init",_function];
+	} foreach _functions_listForced;
+*/
 // 	{
 // 		_xCode = uinamespace getvariable _x;
 // 		missionnamespace setvariable [_x,_xCode];
