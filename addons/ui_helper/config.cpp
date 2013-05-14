@@ -6,7 +6,7 @@ class CfgPatches {
 		worlds[] = {};
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = {
-			"CBA_common"
+			"CBA_common","A3_UI_F"
 		};
 	};
 };
