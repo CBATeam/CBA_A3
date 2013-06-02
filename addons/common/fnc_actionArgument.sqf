@@ -25,8 +25,6 @@ _arguments = _this select 3;
 
 (_arguments select 0) call (_arguments select 1);
 
-if (count _arguments > 2) then {
-	if (_arguments select 2) then {
-		_target removeAction _id;
-	};
+if (count _arguments > 2 && {_arguments select 2}) then {
+	_target removeAction _id;
 };

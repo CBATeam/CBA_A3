@@ -59,7 +59,7 @@ _return = if (SLX_XEH_MACHINE select 3) then
 	};
 	true;
 } else {
-	[QUOTE(GVAR(marker_persist)), [_marker,_persistent]] call CBA_fnc_globalEvent;
+	[QGVAR(marker_persist), [_marker,_persistent]] call CBA_fnc_globalEvent;
 	true;
 };
 

@@ -29,8 +29,7 @@ PARAMS_1(_actionArray);
 
 private "_return";
 
-_return = if (isDedicated) then
-{
+_return = if (isDedicated) then {
 	WARNING("Function ran on a dedicated server. Function only usable on a client. Action: " + str _actionArray);
 	-1; // Invalid action number.
 } else {

@@ -21,14 +21,12 @@ _menuDefs = [];
 		_menuSource = _params;
 	};
 	// Syntax 2
-	if (typeName _params == typeName []) then {
-		if (count _params > 0) then {
-			_menuSource = _params select 0;
-			if (typeName _menuSource == typeName "") then {// check for syntax: function, code string or sqf filename
-				_menuParams = if (count _params > 1) then {[_target, _params select 1]};
-			} else {
-				_menuSource = _params;
-			};
+	if (typeName _params == typeName [] && {count _params > 0}) then {
+		_menuSource = _params select 0;
+		if (typeName _menuSource == typeName "") then {// check for syntax: function, code string or sqf filename
+			_menuParams = if (count _params > 1) then {[_target, _params select 1]};
+		} else {
+			_menuSource = _params;
 		};
 	};
 	//-----------------------------------------------------------------------------
@@ -39,7 +37,7 @@ _menuDefs = [];
 	} else {
 		// check which string syntax was used: function, code string or sqf filename
 		_array = toArray _menuSource;
-		_menuDef = if (_array find 46 >= 0 && _array find 34 < 0 && _array find 39 < 0) then { // 46='.',34=("),39=(') (eg: as in 'path\file.sqf')
+		_menuDef = if (_array find 46 >= 0 && {_array find 34 < 0} && {_array find 39 < 0}) then { // 46='.',34=("),39=(') (eg: as in 'path\file.sqf')
 			// sqf filename. Eg: 'path\file.sqf'
 			_menuParams call COMPILE_FILE2_SYS(_menuSource);
 			// TODO: DEBUG switch to recompile menus always?

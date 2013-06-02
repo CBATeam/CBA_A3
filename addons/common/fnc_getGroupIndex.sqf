@@ -40,8 +40,7 @@ _number = [];
 
 // Read in all digits after the group name and colon in the full player label.
 // Format of player label is "<groupName>:<groupNumber> <playerName>"
-for "_i" from (_groupLabelLen + 1) to ((count _labelArray) - 1) do
-{
+for "_i" from (_groupLabelLen + 1) to ((count _labelArray) - 1) do {
 	if ((_labelArray select _i) == ASCII_SPACE) exitWith {};
 	PUSH(_number,_labelArray select _i);
 };

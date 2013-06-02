@@ -30,9 +30,9 @@ _type = toLower _type;
 // TODO: Verify if the eventhandler type exists?
 _ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
 if (typeName _ar != "ARRAY") then { _ar = [] };
-_id = if (isDedicated || isNull (findDisplay 46) || !CBA_EVENTS_DONE) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
+_id = if (isDedicated || {isNull (findDisplay 46)} || {!CBA_EVENTS_DONE}) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
 _idx = count _ar;
 _ar set [_idx, [if (isNil "_id") then { nil } else { _id }, _code]];
 [GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
-if (isNil "_id" && !isDedicated && CBA_EVENTS_DONE) then { SLX_XEH_STR spawn FUNC(attach_handler) };
+if (isNil "_id" && {!isDedicated} && {CBA_EVENTS_DONE}) then { SLX_XEH_STR spawn FUNC(attach_handler) };
 _idx;

@@ -22,7 +22,7 @@
 
 private ["_entry", "_create", "_dump", "_f"];
 
-if (isNil QUOTE(GVAR(running))) then { GVAR(running) = false };
+if (isNil QGVAR(running)) then { GVAR(running) = false };
 if (GVAR(running)) exitWith {}; // Already running
 GVAR(running) = true;
 
@@ -70,9 +70,9 @@ FUNC(lag2) = {
 
 
 GVAR(logs) = []; GVAR(ar) = [];
-if (isNil QUOTE(GVAR(log))) then { GVAR(log) = true };
-if (isNil QUOTE(GVAR(lag))) then { GVAR(lag) = false };
-if (isNil QUOTE(GVAR(interactive))) then { GVAR(interactive) = true };
+if (isNil QGVAR(log)) then { GVAR(log) = true };
+if (isNil QGVAR(lag)) then { GVAR(lag) = false };
+if (isNil QGVAR(interactive)) then { GVAR(interactive) = true };
 
 _dump = {
 	//diag_log format ["%1	%2	%3	%4	%5",count allunits,time,diag_ticktime,diag_fpsmin,diag_fps];

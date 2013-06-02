@@ -49,7 +49,7 @@ _s = if (typeName _value != typeName _var) then {
 } else {
 	switch (typename _value) do {
 		case "BOOL": {
-			((_var && _value) || (!_var && !_value))
+			((_var && {_value}) || {(!_var && {!_value})})
 		};
 		case "ARRAY": {
 			([_var, _value] call (uiNamespace getVariable "BIS_fnc_areEqual"))

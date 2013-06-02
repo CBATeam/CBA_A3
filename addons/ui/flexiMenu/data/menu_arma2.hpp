@@ -32,8 +32,8 @@
 class CBA_flexiMenu_rscArma2 {
 	idd = -1; //_flexiMenu_IDD;
 	movingEnable = 0;
-	onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QUOTE(GVAR(display))]);
-	onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QUOTE(GVAR(display))]);
+	onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QGVAR(display)]);
+	onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QGVAR(display)]);
 	class controlsBackground {};
 	class objects {};
 

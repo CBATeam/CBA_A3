@@ -10,11 +10,11 @@ _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 private "_disp";
-_disp = uiNamespace getVariable QUOTE(GVAR(display));
+_disp = uiNamespace getVariable QGVAR(display);
 _disp displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
 _menuSources = _this select 1;
 GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown",
-	format ["[_this, [%1, %2]] call %3", QUOTE(GVAR(target)), _menuSources, QUOTE(FUNC(menuShortcut))]];
+	format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlSetText _caption;
@@ -26,10 +26,7 @@ _msg = "";
 _msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
 if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
 if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
-if (!isClass (configFile >> _menuRsc)) then { // if not a full class name
-	if (!isClass (missionConfigFile >> _menuRsc)) then { // if not a full class name
-		_menuRsc = _menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
-	};
+	_menuRsc = _menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
 
 // TODO: Support missionConfigFile too
@@ -42,13 +39,11 @@ if (_width == 0) then {
 _idc = _flexiMenu_IDC_listMenuDesc;
 _ctrl = _disp displayCtrl _idc;
 _array = ctrlPosition _ctrl;
-if ({_x == 0} count _array != 4) then {
-	if (_array select 2 == 0) then {
-		_array = [_array select 0, _array select 1, _width, _array select 3];
-		_ctrl ctrlSetPosition _array;
+if ({_x == 0} count _array != 4 && {_array select 2 == 0}) then {
+	_array = [_array select 0, _array select 1, _width, _array select 3];
+	_ctrl ctrlSetPosition _array;
 
-		_ctrl ctrlCommit 0; // commit pos/size before showing
-	};
+	_ctrl ctrlCommit 0; // commit pos/size before showing
 };
 _ctrl ctrlShow true;
 

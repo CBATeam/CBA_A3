@@ -40,9 +40,9 @@ private ["_count","_units"];
 _units = units _group;
 _count = (count _units) - 1;
 
-while {_indices > 0 && _count > 0} do {
+while {_indices > 0 && {_count > 0}} do {
 	sleep 10;
-	while {_indices > 0 && _count > 0} do {
+	while {_indices > 0 && {_count > 0}} do {
 		private "_unit";
 		_unit = _units select _count;
 		if (unitready _unit) then {

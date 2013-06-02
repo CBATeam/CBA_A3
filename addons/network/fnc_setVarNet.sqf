@@ -30,7 +30,7 @@ Author:
 PARAMS_3(_object,_variable,_value);
 
 // does setVariable public also work for other types ??
-if (typeName _object != "OBJECT" && typeName _object != "GROUP") exitWith {
+if (typeName _object != "OBJECT" && {typeName _object != "GROUP"}) exitWith {
 	WARNING("The first parameter is not of type object or group!");
 	false
 };
@@ -51,7 +51,7 @@ _s = if (typeName _value != typeName _var) then {
 } else {
 	switch (typename _value) do {
 		case "BOOL": {
-			((_var && _value) || (!_var && !_value))
+			((_var && {_value}) || {(!_var && {!_value})})
 		};
 		case "ARRAY": {
 			([_var, _value] call (uiNamespace getVariable "BIS_fnc_areEqual"))

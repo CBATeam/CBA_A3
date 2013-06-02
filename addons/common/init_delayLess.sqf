@@ -12,7 +12,7 @@ FUNC(addTriggerHandler) = {
 	GVAR(d) set [_c, _this];
 
 	// Create the trigger, only on first use
-	if (isNil QUOTE(GVAR(d_trigger))) then {
+	if (isNil QGVAR(d_trigger)) then {
 		GVAR(d_trigger) = createTrigger["EmptyDetector", [0,0]];
 		GVAR(d_trigger) setTriggerActivation ["ANY", "PRESENT", true];
 		GVAR(d_trigger) setTriggerStatements["{ if (count _x == 2) then { (_x select 0) call (_x select 1) } } forEach cba_common_d", "", ""];

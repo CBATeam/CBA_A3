@@ -8,7 +8,7 @@ PARAMS_4(_name,_id,_obj,_cba);
 
 _plName = if (isNull player) then { "" } else { name player };
 
-if ((_name!= "__SERVER__") && (_name!= format["%1", _plName])) then
+if ((_name!= "__SERVER__") && {(_name!= format["%1", _plName])}) then
 {
 	if (time > 0) then
 	{

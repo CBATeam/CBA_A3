@@ -35,11 +35,11 @@ SLX_XEH_DELAYED = nil;
 SLX_XEH_OBJECTS = nil;
 
 
-if (!isDedicated && !isNull player) then { // isNull player check is for Main Menu situation.
+if (!isDedicated && {!isNull player}) then { // isNull player check is for Main Menu situation.
 	// Doing this before the spawn so we pull this into the PostInit, halted simulation state, for the initial player.
 	SLX_XEH_STR spawn {
 		private ["_ready"];
-		waitUntil {_ready = player getVariable "SLX_XEH_READY"; if (isNil "_ready") then { _ready = false }; _ready};
+		waitUntil {_ready = player getVariable "SLX_XEH_READY"; (!isNil "_ready" && {_ready})};
 		_lastPlayer = player;
 		_lastPlayer call FUNC(addPlayerEvents);
 		#ifdef DEBUG_MODE_FULL
@@ -87,7 +87,7 @@ _fnc_prettyXEH = {
 
 	if (!isDedicated) then { 
 		_str = _str + (", player="+str(player)+", _playerType="+str(typeOf player)+", _playerGroup="+str(group player));
-		if (!isNull player && vehicle player != player) then { _str = _str + (", _playerVehicle="+str(vehicle player)+", _playerVehicleType="+str(typeOf (vehicle player))) };
+		if (!isNull player && {vehicle player != player}) then { _str = _str + (", _playerVehicle="+str(vehicle player)+", _playerVehicleType="+str(typeOf (vehicle player))) };
 	};
 
 	_str;

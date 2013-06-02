@@ -99,11 +99,9 @@ _c = count _cfg;
 if (_c > 0) then {
 	for "_i" from 0 to (_c - 1) do {
 		_mod = _cfg select _i;
-		if (isClass _mod) then {
-			if (isText(_mod >> "description")) then {
-				_e = format["* %1 - %2<br />%3<br /><br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
-				ADD(GVAR(docs),_e);
-			};
+		if (isClass _mod && {isText(_mod >> "description")}) then {
+			_e = format["* %1 - %2<br />%3<br /><br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
+			ADD(GVAR(docs),_e);
 		};
 	};
 };

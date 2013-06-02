@@ -42,8 +42,7 @@ _xpos = (worldtoscreen _pos) select 0;
 _pos2 = positioncameratoworld [_xoff,0,__dist];
 _xpos2 = worldtoscreen _pos2;
 
-while {count _xpos2 == 0 || _xoff > -0.001} do
-{
+while {count _xpos2 == 0 || {_xoff > -0.001}} do {
 	_xoff = _xoff/2;
 	_pos2 = positioncameratoworld [_xoff,0,__dist];
 	_xpos2 = worldtoscreen _pos2;

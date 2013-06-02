@@ -36,36 +36,30 @@ _minutes = floor (_seconds / 60);
 _seconds = _seconds - (_minutes * 60);
 
 // Add the milliseconds if required.
-_elapsed = switch (_format) do
-{
-	case "H:MM:SS":
-	{
+_elapsed = switch (_format) do {
+	case "H:MM:SS": {
 		format ["%1:%2:%3",
 			_hours,
 			[_minutes, 2] call CBA_fnc_formatNumber,
 			[_seconds, 2, 0] call CBA_fnc_formatNumber];
 	};
-	case "M:SS":
-	{
+	case "M:SS": {
 		format ["%1:%2",
 			_minutes,
 			[_seconds, 2, 0] call CBA_fnc_formatNumber];
 	};
-	case "H:MM:SS.mmm":
-	{
+	case "H:MM:SS.mmm": {
 		format ["%1:%2:%3",
 			_hours,
 			[_minutes, 2] call CBA_fnc_formatNumber,
 			[_seconds, 2, 3] call CBA_fnc_formatNumber];
 	};
-	case "M:SS.mmm":
-	{
+	case "M:SS.mmm": {
 		format ["%1:%2",
 			_minutes,
 			[_seconds, 2, 3] call CBA_fnc_formatNumber];
 	};
-	default
-	{
+	default {
 		private "_msg";
 		_msg = format ["%1: %2", _msg, _format];
 		ERROR(_msg);

@@ -18,16 +18,16 @@ _type = SLX_XEH_MACHINE select 10;
 _isInitEH = _ehType == SLX_XEH_STR_INIT_EH;
 // _data - inits
 _cacheAr = if (_isInitEH) then { SLX_XEH_CACHE_KEYS } else { SLX_XEH_CACHE_KEYS2 };
-_inCache = !isMultiplayer || isDedicated || _unitClass in _cacheAr;
-_cached = !SLX_XEH_RECOMPILE && _inCache;
+_inCache = !isMultiplayer || {isDedicated} || {_unitClass in _cacheAr};
+_cached = !SLX_XEH_RECOMPILE && {_inCache};
 _data = _types select _type;
-if (isNil "_data" || !_cached) then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
+if (isNil "_data" || {!_cached}) then { _data = [[], [], []]; _types set [_type, _data]; _cached = false };
 
 // Now load the data from config if !_cached, or load data from cache if _cached already.
 private ["_config", "_configData", "_cfgs", "_retData"];
 
 // If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
-if (_cached && (_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")) exitWith {
+if (_cached && {(_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")}) exitWith {
 	TRACE_2("Fully Cached",_unitClass,_ehType);
 	_data;
 };
@@ -40,8 +40,7 @@ if (_cached) then {
 	_classes = uiNamespace getVariable ("SLX_XEH_" + _unitClass + "_classes");
 } else {
 	_classes = [_unitClass];
-	while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do
-	{
+	while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do {
 		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
 	};
 	uiNamespace setVariable [("SLX_XEH_" + _unitClass + "_classes"), _classes];
@@ -65,21 +64,16 @@ _config_id = if (_cached) then { 1 } else { 0 };
 	*/
 	// TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
 	_useDEHinit = false;
-	if (_config_id == 0 && _isInitEH) then
-	{
+	if (_isInitEH && {_config_id == 0}) then {
 		_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-		if (configName(_ehSuper)==SLX_XEH_STR_DEH) then
-		{
-			if (isText (configFile/SLX_XEH_STR_DEH/"init")) then
-			{
-				_useDEHinit = true;
-				_DEHinit = getText(configFile/SLX_XEH_STR_DEH/"init");
-			};
+		if (configName _ehSuper == SLX_XEH_STR_DEH && {isText (configFile/SLX_XEH_STR_DEH/"init")}) then {
+			_useDEHinit = true;
+			_DEHinit = getText(configFile/SLX_XEH_STR_DEH/"init");
 		};
 	};
 
 	_retData = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call FUNC(init_enum);
-	if (_useDEHinit) then { _retData = [compile(_DEHinit)] + _retData };
+	if (_useDEHinit) then { _retData = [compile _DEHinit] + _retData };
 	_data set [_config_id, _retData];
 	INC(_config_id);
 } forEach _cfgs;

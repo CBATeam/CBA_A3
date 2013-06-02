@@ -20,24 +20,20 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private "_typename";
-
-_typename = tolower (typename _this);
-
-switch (_typename) do {
-	case ("object") : {
+switch (typename _this) do {
+	case "OBJECT" : {
 		getpos _this
 	};
-	case ("group") : {
+	case "GROUP" : {
 		getpos (leader _this)
 	};
-	case ("string") : {
+	case "STRING" : {
 		getmarkerpos _this
 	};
-	case ("location") : {
+	case "LOCATION" : {
 		position _this
 	};
-	case ("task") : {
+	case "TASK" : {
 		taskdestination _this
 	};
 	default {_this};

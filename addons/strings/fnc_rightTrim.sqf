@@ -40,9 +40,8 @@ _whiteSpace = WHITE_SPACE;
 
 _numWhiteSpaces = count _chars;
 
-for "_pos" from ((count _chars) - 1) to 0 step -1 do
-{
-	if (not ((_chars select _pos) in _whiteSpace)) exitWith { _numWhiteSpaces = (count _chars) - _pos - 1 };
+for "_pos" from ((count _chars) - 1) to 0 step -1 do {
+	if !((_chars select _pos) in _whiteSpace) exitWith { _numWhiteSpaces = (count _chars) - _pos - 1 };
 };
 
 _chars resize ((count _chars) - _numWhiteSpaces);

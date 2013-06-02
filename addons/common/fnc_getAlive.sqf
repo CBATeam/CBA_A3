@@ -23,16 +23,16 @@ Author:
 #include "script_component.hpp"
 
 private "_typename";
-_typename = tolower (typename _this);
-if (_typename == "object") exitwith {alive _this};
+_typename = typename _this;
+if (_typename == "OBJECT") exitwith {alive _this};
 
 private ["_return","_array"];
 _array = [];
 switch (_typename) do {
-	case ("group") : {
+	case "GROUP" : {
 		_array = units _this;
 	};
-	case ("array") :{
+	case "ARRAY" :{
 		_array =+ _this;
 	};
 };

@@ -27,26 +27,16 @@ Author:
 
 SCRIPT(getPistol);
 
-private ["_pistol", "_unit"];
+private ["_pistol"];
+PARAMS_1(_unit);
+if !(_unit isKindOf "man") exitWith {""};
+
 _pistol = "";
 
-// Backwards compatibility (deprecated). Accept array or single value.
-if (IS_ARRAY(_this)) then
 {
-	_unit = _this select 0;
-} else {
-	_unit = _this;
-	WARNING("Expected [_unit], not _unit, passed to function. Unit was: " + str _unit);
-};
+	if ((getNumber (configFile >> "CfgWeapons" >> _x >> "Type")) == PISTOL_TYPE) exitWith {
+		_pistol = _x;
+	};
+} forEach (weapons _unit);
 
-if (_unit isKindOf "man") then
-{
-	{
-		if ((getNumber (configFile >> "CfgWeapons" >> _x >> "Type")) == PISTOL_TYPE) exitWith
-		{
-			_pistol = _x;
-		};
-	} forEach (weapons _unit);
-};
-
-_pistol;
+_pistol

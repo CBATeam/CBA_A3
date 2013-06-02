@@ -12,8 +12,26 @@ CBA_eventHandlers = "Logic" createVehicleLocal [0, 0];
 CBA_eventHandlersLocal = "Logic" createVehicleLocal [0, 0];
 CBA_EVENTS_DONE = false;
 
+PREP(NetRunEventTOR);
+
+GVAR(event_holderToR) = "Logic" createVehicleLocal [0, 0];
+
+"CBA_ntor" addPublicVariableEventHandler {
+	(_this select 1) call FUNC(NetRunEventTOR);
+};
+
+if (isServer) then {
+	GVAR(event_holderCTS) = "Logic" createVehicleLocal [0, 0];
+
+	PREP(NetRunEventCTS);
+
+	"CBA_ncts" addPublicVariableEventHandler {
+		(_this select 1) call FUNC(NetRunEventCTS);
+	};
+};
+
 // TODO: Verify if this code is okay; there can be no player object ready at PreInit, thus it's not very useful
-if (isServer || alive player) then {
+if (isServer || {alive player}) then {
 	// We want all events, as soon as they start arriving.
 	"CBA_e" addPublicVariableEventHandler { (_this select 1) call (uiNamespace getVariable "CBA_fnc_localEvent") };
 	"CBA_l" addPublicVariableEventHandler { (_this select 1) call FUNC(remoteLocalEvent) };
@@ -102,7 +120,7 @@ FUNC(initLoadGameEvent) = {
 // Awaits XEH PostInit sequence completed
 CBA_MISSION_START = false;
 objNull spawn {
-	waitUntil {time > 0 && (SLX_XEH_MACHINE select 8)};
+	waitUntil {time > 0 && {(SLX_XEH_MACHINE select 8)}};
 	TRACE_1("CBA_MISSION_START",nil);
 	[objNull, {CBA_MISSION_START = true; ["CBA_MISSION_START", time] call (uiNamespace getVariable "CBA_fnc_localEvent")}] call CBA_common_fnc_directCall;
 };

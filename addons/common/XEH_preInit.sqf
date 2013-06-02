@@ -46,17 +46,17 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 // [[1,2,3], {mycode to execute}] call FUNC(directCall);
 // _obj = [[1,2,3], {mycode to execute}] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
 GVAR(call_i) = 0;
-FUNC(directCallInt) = { (_this getVariable QUOTE(GVAR(params))) call (_this getVariable QUOTE(GVAR(code))); deleteVehicle _this };
+FUNC(directCallInt) = { (_this getVariable QGVAR(params)) call (_this getVariable QGVAR(code)); deleteVehicle _this };
 FUNC(directCall) = {
 	private ["_obj", "_objName"];
 	PARAMS_2(_params,_code);
 
 	INC(GVAR(call_i));
-	_objName = format[QUOTE(GVAR(call_obj_%1)), GVAR(call_i)];
+	_objName = format[QGVAR(call_obj_%1), GVAR(call_i)];
 	_obj = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
 	missionNameSpace setVariable [_objName, _obj];
-	_obj setVariable [QUOTE(GVAR(params)), _params];
-	_obj setVariable [QUOTE(GVAR(code)), _code];
+	_obj setVariable [QGVAR(params), _params];
+	_obj setVariable [QGVAR(code), _code];
 	_obj addEventHandler ["killed", compile format[QUOTE(%1 call FUNC(directCallInt); %1 = nil), _objName]];
 	_obj setDamage 1;
 	_obj;
@@ -65,10 +65,10 @@ FUNC(directCall) = {
 CBA_logic = objNull;
 
 FUNC(log) = {
-		diag_log text _this;
-		sleep 1;
-		CBA_logic globalChat _this;
-		hintC _this;
+	diag_log text _this;
+	sleep 1;
+	CBA_logic globalChat _this;
+	hintC _this;
 };
 
 // Nil check

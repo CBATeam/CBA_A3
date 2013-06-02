@@ -50,7 +50,7 @@ _sort = {
 	_x = (_a select ((_lo + _hi) / 2)) select _id;
 
 	//  partition
-	while {isnil "_h" || _i <= _j} do {
+	while {isnil "_h" || {_i <= _j}} do {
 		//find first and last elements within bound that are greater / lower than _x
 		while {(_a select _i) select _id < _x} do {INC(_i)};
 		while {(_a select _j) select _id > _x} do {DEC(_j)};

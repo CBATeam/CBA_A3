@@ -35,7 +35,7 @@ _pos  = _this select 0;
 _dist = _this select 1;
 _dir  = _this select 2;
 _reversed = [] call CBA_fnc_northingReversed;
-if(IS_STRING(_pos)) then {
+if (IS_STRING(_pos)) then {
     _posArray = toArray _pos;
     _pos = [];
     _ea = [];
@@ -53,10 +53,10 @@ if(IS_STRING(_pos)) then {
 _easting = _pos select 0;
 _northing = _pos select 1;
 
-if(IS_NUMBER(_easting)) then {
+if (IS_NUMBER(_easting)) then {
     _easting = format["%1", _easting];
 };
-if(IS_NUMBER(_northing)) then {
+if (IS_NUMBER(_northing)) then {
     _northing = format["%1", _northing];
 };
 
@@ -69,7 +69,7 @@ _n = (parseNumber _northing)*(10^((10-(_northingSize*2))/2));
 
 _pos = [_e, _n];
 
-if(_reversed) then {
+if (_reversed) then {
 	// flip the Y position into its negative value (to compensate for the northings
 	// going down)
 	_pos set [1, ((_pos select 1)*-1)];

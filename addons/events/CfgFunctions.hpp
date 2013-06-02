@@ -99,6 +99,37 @@ class CfgFunctions
 				description = "Raises a CBA event only on the machine where parameter one is local.";
 				file = "\x\cba\addons\events\fnc_whereLocalEvent.sqf";
 			};
+			// CBA_fnc_addClientToServerEventhandler
+			class addClientToServerEventhandler {
+				description = "Registers an event handler for a client to server event which only runs on the server (thus is only needed on the server)";
+				file = "\x\cba\addons\events\fnc_addClientToServerEventhandler.sqf";
+			};
+			// CBA_fnc_clientToServerEvent
+			class clientToServerEvent {
+				description = "Raises an CBA event only on the server (only broadcasted to server and not to other clients)";
+				file = "\x\cba\addons\events\fnc_clientToServerEvent.sqf";
+			};
+			// CBA_fnc_removeClientToServerEvent
+			class removeClientToServerEvent {
+				description = "Removes client to server event";
+				file = "\x\cba\addons\events\fnc_removeClientToServerEvent.sqf";
+			};
+			// CBA_fnc_addReceiverOnlyEventhandler
+			class addReceiverOnlyEventhandler {
+				description = "Registers an event handler for an CBA event which is only broadcasted to the receiver (and no other clients)";
+				file = "\x\cba\addons\events\fnc_addReceiverOnlyEventhandler.sqf";
+			};
+			// CBA_fnc_receiverOnlyEvent
+			class receiverOnlyEvent {
+				description = "Raises an CBA event only on the receiver and is only broadcasted there";
+				file = "\x\cba\addons\events\fnc_receiverOnlyEvent.sqf";
+			};
+			// CBA_fnc_removeReceiverOnlyEvent
+			class removeReceiverOnlyEvent {
+				description = "Removes receiver only event";
+				file = "\x\cba\addons\events\fnc_removeReceiverOnlyEvent.sqf";
+			};
+
 		};
 	};
 };

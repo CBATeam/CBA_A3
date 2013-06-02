@@ -25,19 +25,17 @@ _entity = _this select 0;
 _position = _this select 1;
 _radius = if (count _this > 2) then {_this select 2} else {0};
 
-private "_typename";
-_typename = tolower (typename _entity);
 _position = _position call CBA_fnc_getpos;
 
 if (_radius > 0) then {
 	_position = [_position, _radius] call CBA_fnc_randPos;
 };
 
-switch (_typename) do {
-	case ("object") : {
+switch (typename _entity) do {
+	case "OBJECT" : {
 		_entity setpos _position;
 	};
-	case ("group") : {
+	case "GROUP" : {
 		private ["_ldp","_dx","_dy","_dz"];
 		_ldp = getpos (leader _entity);
 		_dx = _position select 0;
@@ -52,17 +50,17 @@ switch (_typename) do {
 			_x setpos [_tx,_ty,_tz];
 		} foreach (units _entity);
 	};
-	case ("string") : {
+	case "STRING" : {
 		_entity setmarkerpos _position;
 	};
-	case ("location") : {
+	case "LOCATION" : {
 		if (surfaceiswater _position) then {
 			_entity setPosition _position;
 		} else {
 			_entity setPosition _position;
 		};
 	};
-	case ("task") : {
+	case "TASK" : {
 		_entity setsimpletaskdestination _position;
 	};
 	default {_entity setpos _position};

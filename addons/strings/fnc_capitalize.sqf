@@ -35,8 +35,7 @@ PARAMS_1(_string);
 _string = toArray (toLower _string);
 
 // If there is a first letter, capitalise it.
-if ((count _string) > 0) then
-{
+if (count _string > 0) then {
 	_string set [0, (toArray (toUpper (toString [_string select 0]))) select 0];
 };
 

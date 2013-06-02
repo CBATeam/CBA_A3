@@ -76,8 +76,7 @@ _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
 _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
 
 // Start by working out how to display the integer part of the number.
-if (_decimalPlaces > 0) then
-{
+if (_decimalPlaces > 0) then {
 	_basePlaces = 10 ^ _decimalPlaces;
 	_number = round(_number * _basePlaces) / _basePlaces;
 	_integerPart = floor (abs _number);
@@ -88,10 +87,8 @@ if (_decimalPlaces > 0) then
 _string = "";
 _numIntegerDigits = 0;
 
-while {_integerPart > 0} do
-{
-	if ((_numIntegerDigits > 0) and ((_numIntegerDigits mod 3) == 0) and _separateThousands) then
-	{
+while {_integerPart > 0} do {
+	if (_numIntegerDigits > 0 && {(_numIntegerDigits mod 3) == 0} && {_separateThousands}) then {
 		_string = _thousandsSeparator + _string;
 	};
 
@@ -102,10 +99,8 @@ while {_integerPart > 0} do
 };
 
 // Pad integer with 0s
-while {_numIntegerDigits < _integerWidth} do
-{
-	if ((_numIntegerDigits > 0) and ((_numIntegerDigits mod 3) == 0) and _separateThousands) then
-	{
+while {_numIntegerDigits < _integerWidth} do {
+	if (_numIntegerDigits > 0 && {(_numIntegerDigits mod 3) == 0} && {_separateThousands}) then {
 		_string = _thousandsSeparator + _string;
 	};
 
@@ -115,31 +110,26 @@ while {_numIntegerDigits < _integerWidth} do
 };
 
 // Add a - sign if needed.
-if (_number < 0) then
-{
+if (_number < 0) then {
 	_string = "-" + _string;
 };
 
 // Add decimal digits, if necessary.
-if (_decimalPlaces > 0) then
-{
+if (_decimalPlaces > 0) then {
 	private ["_digit", "_multiplier", "_i"];
 
 	_string = _string + _decimalPoint;
 
 	_multiplier = 10;
 
-	for "_i" from 1 to _decimalPlaces do
-	{
+	for "_i" from 1 to _decimalPlaces do {
 		_digit = floor ((_number * _multiplier) mod 10);
 
 		// If the digit has become infintesimal, pad to the end with zeroes.
-		if (not (finite _digit)) exitWith
-		{
+		if (!(finite _digit)) exitWith {
 			private "_j";
 
-			for "_j" from _i to _decimalPlaces do
-			{
+			for "_j" from _i to _decimalPlaces do {
 				_string = _string + "0";
 			};
 		};

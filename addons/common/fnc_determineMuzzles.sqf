@@ -29,11 +29,9 @@ PARAMS_1(_weap);
 
 private ["_r"];
 _r = [_weap];
-if (isArray(__cfg >> "muzzles")) then
-{
+if (isArray(__cfg >> "muzzles")) then {
 	_ar = getArray(__cfg >> "muzzles");
-	if (count _ar == 0) exitWith {};
-	if ((_ar select 0) == "this") exitWith {};
+	if (count _ar == 0 || {(_ar select 0) == "this"}) exitWith {};
 	_r = _ar;
 };
 

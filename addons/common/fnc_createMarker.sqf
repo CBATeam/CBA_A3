@@ -51,8 +51,7 @@ _global = "GLOBAL" in _this || _persist;
 TRACE_6("",_br,_ty,_co,_tx,_persist,_global);
 
 
-if (_global) then
-{
+if (_global) then {
 	_m = createMarker [_this select 0, _this select 1];
 	_m setMarkerShape (_this select 2);
 	_m setMarkerSize (_this select 3);

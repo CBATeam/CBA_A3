@@ -37,25 +37,21 @@ _chars = toArray _string;
 _whiteSpace = WHITE_SPACE;
 
 // Left trim.
-if ((count _chars) > 0) then
-{
+if (count _chars > 0) then {
 	private "_numWhiteSpaces";
 	_numWhiteSpaces = count _chars;
 
-	for "_i" from 0 to ((count _chars) - 1) do
-	{
-		if (not ((_chars select _i) in _whiteSpace)) exitWith { _numWhiteSpaces = _i };
+	for "_i" from 0 to ((count _chars) - 1) do {
+		if !((_chars select _i) in _whiteSpace) exitWith { _numWhiteSpaces = _i };
 	};
 
-	if (_numWhiteSpaces > 0) then
-	{
+	if (_numWhiteSpaces > 0) then {
 		private "_newChars";
 
 		_newChars = [];
 		_newChars resize ((count _chars) - _numWhiteSpaces);
 
-		for "_i" from 0 to ((count _newChars) - 1) do
-		{
+		for "_i" from 0 to ((count _newChars) - 1) do {
 			_newChars set [_i, _chars select (_i + _numWhiteSpaces)];
 		};
 

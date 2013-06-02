@@ -19,10 +19,8 @@ SLX_XEH_STR spawn {
 };
 
 private ["_group", "_logic"];
-if (isNil "BIS_functions_mainscope") then
-{
-	if (SLX_XEH_MACHINE select 3) then
-	{
+if (isNil "BIS_functions_mainscope") then {
+	if (SLX_XEH_MACHINE select 3) then {
 		// CREATE_CENTER sideLogic; // Handled in function
 		_group = [sideLogic] call CBA_fnc_getSharedGroup;
 		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
@@ -40,17 +38,15 @@ if (isNil "BIS_functions_mainscope") then
 
 CBA_logic = _logic;
 
-if (isNil "RE" && isNil "BIS_MPF_logic") then {
-	if (isClass(configFile >> "CfgPatches" >> "CA_Modules")) then {
-		LOG("Initialising the MP module early.");
-		_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
-	};
+if (isNil "RE" && {isNil "BIS_MPF_logic"} && {isClass(configFile >> "CfgPatches" >> "CA_Modules")}) then {
+	LOG("Initialising the MP module early.");
+	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
 };
 SLX_XEH_STR spawn {
 	_done = false;
 	while {true} do {
 		sleep 1;
-		if (typeName nil == "STRING" || str(nil) != "ANY") then {
+		if (typeName nil == "STRING" || {str(nil) != "ANY"}) then {
 			if !(CBA_NIL_CHECKED) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); CBA_NIL_CHECKED = true; };
 			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
 		};
@@ -78,14 +74,12 @@ TRACE_1("Upgrade Check",nil);
 private ["_entry"];
 for "_i" from 0 to ((count (CFG)) - 1) do {
 	_entry = (CFG) select _i;
-	if (isClass(_entry)) then {
-		if (isArray(_entry >> "removed")) then {
-			{
-				if (isClass(configFile >> "CfgPatches" >> _x)) then {
-					format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] spawn FUNC(log);
-				};
-			} forEach (getArray(_entry >> "removed"));
-		};
+	if (isClass(_entry) && {isArray(_entry >> "removed")}) then {
+		{
+			if (isClass(configFile >> "CfgPatches" >> _x)) then {
+				format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] spawn FUNC(log);
+			};
+		} forEach (getArray(_entry >> "removed"));
 	};
 };
 
@@ -109,8 +103,7 @@ if !(isDedicated) then {
 	SLX_XEH_STR spawn
 	{
 		LOG("Action monitor started");
-		while { true } do
-		{
+		while { true } do {
 			// Don't mess around endlessly adding and re-adding to a
 			// corpse/destroyed vehicle.
 			waitUntil { alive (vehicle player) };
@@ -120,10 +113,9 @@ if !(isDedicated) then {
 			_actionIndexes = [];
 			[GVAR(actionList), { PUSH(_actionIndexes,_veh addAction _value) }] call CBA_fnc_hashEachPair;
 			TRACE_2("Added actions",_veh,count _actionIndexes);
-			waitUntil
-			{
+			waitUntil {
 				sleep 1;
-				(vehicle player) != _veh || !(alive player) || GVAR(actionListUpdated)
+				(vehicle player) != _veh || {!alive player} || {GVAR(actionListUpdated)}
 			};
 	
 			// Remove actions from previous vehicle.

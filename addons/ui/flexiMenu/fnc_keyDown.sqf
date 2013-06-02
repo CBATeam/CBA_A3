@@ -13,7 +13,7 @@ PARAMS_5(_ctrl,_dikCode,_shift,_ctrlKey,_alt);
 _handled = false;
 
 // prevent unneeded cpu usage due to key down causing repeated event trigger
-if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && (GVAR(lastAccessCheck) select 1) == _dikCode) exitWith {_handled};
+if (time-(GVAR(lastAccessCheck) select 0) < 0.220 && {(GVAR(lastAccessCheck) select 1) == _dikCode}) exitWith {_handled};
 GVAR(lastAccessCheck) = [time, _dikCode];
 
 TRACE_1("",GVAR(lastAccessCheck));
@@ -28,9 +28,9 @@ _potentialKeyMatch = false;
 		TRACE_5("",_x,_dikCode,_shift,_ctrlKey,_alt);
 		_settings = _x select 1;
 		if ((_x select 0 == _dikCode) &&
-			((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
-			((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
-			((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt))
+			{((!_shift && {!(_settings select 0)}) || {(_shift && {(_settings select 0)})})} &&
+			{((!_ctrlKey && {!(_settings select 1)}) || {(_ctrlKey && {(_settings select 1)})})} &&
+			{((!_alt && {!(_settings select 2)}) || {(_alt && {(_settings select 2)})})}
 		) exitWith {
 			_potentialKeyMatch = true;
 			TRACE_1("",_potentialKeyMatch);
@@ -50,9 +50,9 @@ if !(_potentialKeyMatch) exitWith {
 //-----------------------------------------------------------------------------
 if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 	// check if menu already open
-	_active = (!isNil {uiNamespace getVariable QUOTE(GVAR(display))});
+	_active = (!isNil {uiNamespace getVariable QGVAR(display)});
 	if (_active) then {
-		_active = (!isNull (uiNamespace getVariable QUOTE(GVAR(display))));
+		_active = (!isNull (uiNamespace getVariable QGVAR(display)));
 	};
 	if (_active) then {
 		if (!GVAR(holdKeyDown)) then {
@@ -69,9 +69,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 			(group player) reveal _x;
 		} forEach _objects;
 		_potentialTarget = cursorTarget;
-		if (!isNull _potentialTarget) then {
-			if (_potentialTarget distance player > _minObjDist(_potentialTarget)) then {_potentialTarget = objNull};
-		};
+		if (!isNull _potentialTarget && {_potentialTarget distance player > _minObjDist(_potentialTarget)}) then {_potentialTarget = objNull};
 		_vehicleTarget = vehicle player;
 		
 		if (_vehicleTarget == player) then {_vehicleTarget = objNull};
@@ -84,24 +82,24 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 			{
 				_settings = _x select 1;
 				if ((_x select 0 == _dikCode) &&
-					((!(_settings select 0) && !_shift) || ((_settings select 0) && _shift)) &&
-					((!(_settings select 1) && !_ctrlKey) || ((_settings select 1) && _ctrlKey)) &&
-					((!(_settings select 2) && !_alt) || ((_settings select 2) && _alt)) ) exitWith
+					{((!_shift && {!(_settings select 0)}) || {(_shift && {(_settings select 0)})})} &&
+					{((!_ctrlKey && {!(_settings select 1)}) || {(_ctrlKey && {(_settings select 1)})})} &&
+					{((!_alt && {!(_settings select 2)}) || {(_alt && {(_settings select 2)})})} ) exitWith
 				{
 					_potentialKeyMatch = true;
 				};
 			} forEach _keys;
 
 			if (_potentialKeyMatch) then {
-				if (!alive player && (_x select 4)) exitWith {};
+				if (!alive player && {(_x select 4)}) exitWith {};
 				_typesList = _x select _flexiMenu_typeMenuSources_ID_type;
 				if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
 
-				if (({_potentialTarget isKindOf _x} count _typesList > 0) || ({_vehicleTarget isKindOf _x} count _typesList > 0) || ("player" in _typesList)) then {
+				if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
 					if (count _potentialMenuSources == 0) then {
 						_isTypeTarget = true;
 						_target = if ((_vehicleTarget != player) &&
-							({_vehicleTarget isKindOf _x} count _typesList > 0)) then {_vehicleTarget} else {_potentialTarget};
+							{({_vehicleTarget isKindOf _x} count _typesList > 0)}) then {_vehicleTarget} else {_potentialTarget};
 						if ("player" in _typesList) then {
 							_target = player;
 						};
@@ -114,7 +112,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 		if (!isNull _target) then {
 			private ["_menuSources", "_menuSource"]; // sometimes nil
 			_menuSources = [];
-			_menuSource = _target getVariable QUOTE(GVAR(flexiMenu_source));
+			_menuSource = _target getVariable QGVAR(flexiMenu_source);
 			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources set [count _menuSources, _menuSource]};
 
 			{

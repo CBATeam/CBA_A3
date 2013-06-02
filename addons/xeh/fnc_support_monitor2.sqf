@@ -31,7 +31,7 @@ _partial = false; _full = true;
 			for "_i" from 0 to 13 do {
 				PUSH(_ar,_eventAr select _i);
 			};
-			if (toString(_ar) == "_this call SLX") then { _full = false; _XEH = true };
+			if (toString _ar == "_this call SLX") then { _full = false; _XEH = true };
 		};
 	};
 	if !(_XEH) then {
