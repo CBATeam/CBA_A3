@@ -1,8 +1,10 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
+SCRIPT(init_pre);
 
 if !(isNil'SLX_XEH_MACHINE') exitWith {}; // Doublecheck..
 
+LOG(MSG_INIT);
 // No _this in pre/PostInit, also fixes call to init_compile
 private "_this";
 _this = nil;
@@ -40,8 +42,10 @@ SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
 
 // Backup functions for macros
 // TODO: Cleanup...
-CBA_fnc_log = { diag_log [diag_frameNo, diag_tickTime, time, _this] };
-CBA_fnc_defaultParam = {
+// CBA_fnc_log = { diag_log [diag_frameNo, diag_tickTime, time, _this] };
+
+
+/* CBA_fnc_defaultParam = {
 	PARAMS_3(_params,_index,_defaultValue);
 	
 	private "_value";
@@ -73,6 +77,8 @@ CBA_fnc_defaultParam = {
 		_value;
 	};
 };
+*/
+
 XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "CBA_XEH" >> "version")+". "+PFORMAT_5("MISSINIT",missionName,worldName,isMultiplayer,isServer,isDedicated));
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
