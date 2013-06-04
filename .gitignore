@@ -7,3 +7,5 @@ addons/*.bisign
 /store/wiki/*
 /utils/release/*
 /utils/six-arma-tools.yml
+
+*.7z
