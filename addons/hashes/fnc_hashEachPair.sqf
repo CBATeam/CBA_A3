@@ -50,7 +50,7 @@ for "_i" from 0 to ((count _keys) - 1) do
 
 	_key = _keys select _i;
 	_value = _values select _i;
-
+	TRACE_2("VM CHECK",_key,_value);
 	call _code;
 };
 

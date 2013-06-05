@@ -5,7 +5,7 @@
 SCRIPT(test_hashes);
 
 // ----------------------------------------------------------------------------
-
+#define DEBUG_MODE_FULL
 private ["_hash", "_expected", "_result"];
 
 LOG("Testing Hashes");
@@ -46,7 +46,7 @@ ASSERT_FALSE(_result,"hashHashKey");
 [_hash, "frog", nil] call CBA_fnc_hashSet;
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
-ASSERT_TRUE(isNil "_result","hashSet/Get");
+ASSERT_TRUE(_result == "UNDEF","hashSet/Get");
 
 // Value never put in is nil.
 _result = [_hash, "fish"] call CBA_fnc_hashGet;
@@ -79,6 +79,6 @@ ASSERT_OP(_result,==,1,"hashSet/Get");
 
 [_hash, "frog", nil] call CBA_fnc_hashSet;
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
-ASSERT_TRUE(isNil "_result","hashSet/Get");
+ASSERT_TRUE(_result == "UNDEF","hashSet/Get");
 
 nil;
