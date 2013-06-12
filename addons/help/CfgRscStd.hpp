@@ -12,34 +12,28 @@ class RscControlsGroupNoScrollbars;
 class CBA_CREDITS_CONT: RscStructuredText {
 	idc = -1; //template
 	colorBackground[] = { 0, 0, 0, 0 };
-	__SX(1);
-	__SY(1);
-	__SW(40);
+	__SX(25);
+	__SY(23);
+	__SW(30);
 	__SH(1);
-	size = "0.025 * SafeZoneH";
 	class Attributes {
-		font = "TahomaB";
-		color = "#E0D8A6";
-		align = "left";
-		valign = "top";
-		shadow = true;
-		shadowColor = "#191970";
-		size = "1";
+		font = "PuristaLight";
+		align = "center";
+		valign = "bottom";
+		color = "#bdcc9c";
+		size = 0.8;
 	};
 };
 
-class CBA_CREDITS_M: RscActiveText { //mouse trap
-	idc = -1; //template
+class CBA_CREDITS_M: RscActiveText { //mouse trap, blocks screen until disabled onMouseEnter (automatic)
 	style = 48;
-	__SX(0);
-	__SY(0);
-	__SW(1);
-	__SH(1);
-	default = 0;
-	text = "#(argb,8,8,3)color(1,1,1,1)";
-	color[] = {0,0,0,0};
-	colorActive[] = {0,0,0,0};
-	onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; [_this] call compile preprocessFile '\x\cba\addons\help\show.sqf';";
+	idc = -1; //template
+	__FSX(0);
+	__FSY(0);
+	__FSW(1);
+	__FSH(1);
+	text = "#(argb,8,8,3)color(1,1,1,0)";
+	onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; _this call compile preprocessFileLineNumbers '\x\cba\addons\help\mm_spc_init.sqf';";
 };
 
 class CBA_CREDITS_VER_BTN: RscButton {
@@ -86,41 +80,39 @@ class RscDisplayMain: RscStandardDisplay {
 		};
 		class CBA_CREDITS_VER_BTN: CBA_CREDITS_VER_BTN {
 			idc = CBA_CREDITS_VER_BTN_IDC;
-			onMouseButtonClick = "[_this] call compile preprocessFile '\x\cba\addons\help\showver.sqf';";
-			onMouseEnter = QUOTE(GVAR(VerTime) = diag_tickTime + 20);
-			onMouseExit = QUOTE(GVAR(VerTime) = diag_tickTime + 2);
+			onMouseButtonClick = "_this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf';";
+			onMouseEnter = QUOTE(GVAR(VerPause) = true);
+			onMouseExit = QUOTE(GVAR(VerPause) = nil);
 		};
-		/*
-		class CBA_CREDITS_M: CBA_CREDITS_M {
+		class CBA_CREDITS_CONT_C : CBA_CREDITS_CONT {
+			idc = CBA_CREDITS_CONT_IDC;
+		};
+	};
+	class controlsBackground {
+		class CBA_CREDITS_M_M: CBA_CREDITS_M {
 			idc = CBA_CREDITS_M_IDC;
-			__SX(1);
-			__SY(10);
-			__SW(15);
-			__SH(1);
-			onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; ";
-		};
-		*/
+		};	
 	};
 };
 
 class RscDisplayInterrupt: RscStandardDisplay {
 	class controls {
-		class CBA_CREDITS_CONT : CBA_CREDITS_CONT {
+		class CBA_CREDITS_CONT_C: CBA_CREDITS_CONT {
 			idc = CBA_CREDITS_CONT_IDC;
 		};
-		class CBA_CREDITS_M : CBA_CREDITS_M {
-			idc = CBA_CREDITS_M_IDC;
+		class CBA_CREDITS_M_P: CBA_CREDITS_M {
+			idc = CBA_CREDITS_M_P_IDC;
 		};
 	};
 };
 
 class RscDisplayMPInterrupt: RscStandardDisplay {
 	class controls {
-		class CBA_CREDITS_CONT : CBA_CREDITS_CONT {
+		class CBA_CREDITS_CONT_C: CBA_CREDITS_CONT {
 			idc = CBA_CREDITS_CONT_IDC;
 		};
-		class CBA_CREDITS_M : CBA_CREDITS_M {
-			idc = CBA_CREDITS_M_IDC;
+		class CBA_CREDITS_M_P: CBA_CREDITS_M {
+			idc = CBA_CREDITS_M_P_IDC;
 		};
 	};
 };

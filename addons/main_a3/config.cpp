@@ -8,7 +8,6 @@ class CfgPatches {
 		requiredAddons[] = {
 			"CBA_Main"
 		};
-		versionDesc = "C.B.A.";
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
 		authorUrl = "http://dev-heaven.net/projects/cca";

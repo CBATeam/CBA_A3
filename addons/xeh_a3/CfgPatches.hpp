@@ -11,7 +11,6 @@ class CfgPatches {
 			//"CA_Modules_Functions", // FunctionsManager, PreloadManager
 			//"CA_Missions_GarbageCollector" // GarbageCollector
 		};
-		versionDesc = "C.B.A.";
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
 		authorUrl = "http://dev-heaven.net/projects/cca";

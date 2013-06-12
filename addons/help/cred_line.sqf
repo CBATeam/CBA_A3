@@ -3,19 +3,18 @@
 #include "script_dialog_defines.hpp"
 
 disableSerialization;
-PARAMS_1(_data);
 private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text", "_version"];
 
 if ( isNil QGVAR(show_proc) ) then {
 	GVAR(show_proc) = true;
 
 	//get display control
-	if (typeName (_data select 0) == "DISPLAY") then {
-		_disp = _data select 0;
+	if (typeName (_this select 0) == "DISPLAY") then {
+		_disp = _this select 0;
 	};
 
-	if (typeName (_data select 0) == "CONTROL") then {
-		_ctrlt = _data select 0;
+	if (typeName (_this select 0) == "CONTROL") then {
+		_ctrlt = _this select 0;
 		_disp = ctrlParent _ctrlt;
 	};
 
