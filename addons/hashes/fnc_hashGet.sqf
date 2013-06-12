@@ -25,13 +25,13 @@ SCRIPT(hashGet);
 // -----------------------------------------------------------------------------
 private ["_index", "_default", "_new"];
 PARAMS_2(_hash,_key);
+DEFAULT_PARAM(2,_default,_hash select HASH_DEFAULT_VALUE);
 
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then
 {
 	(_hash select HASH_VALUES) select _index; // Return.
 } else {
-	_default = _hash select HASH_DEFAULT_VALUE;
 	if (isNil "_default") then {
 		nil // Return
 	} else {
