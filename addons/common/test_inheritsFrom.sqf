@@ -23,8 +23,8 @@ Game as integer from SLX_XEH_MACHINE
 _game = SLX_XEH_MACHINE select 14;
 
 if (_game > 3) then {
-	LOG ("FIXME! - Unknown game " + _game + ". All assert tests will fail! " + _fn); //Sanity check and reminder
-	Diag_log ("FIXME! - Unknown game " + _game + ". All assert tests will fail! " + _fn);
+	LOG ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn); //Sanity check and reminder
+	Diag_log ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn);
 };
 
 if (_game < 2) then {
