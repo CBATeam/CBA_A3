@@ -1,6 +1,5 @@
 #define COMPONENT xeh_a3
-
-#include "\x\cba_a3\addons\main\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 // #define DEBUG_ENABLED_XEH
 
@@ -13,4 +12,4 @@
 #endif
 
 
-#include "\x\cba_a3\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"

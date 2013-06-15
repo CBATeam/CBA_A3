@@ -1,5 +1,5 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
-#define PREFIX cba_a3
+#define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define MAJOR 1
 #define MINOR 0

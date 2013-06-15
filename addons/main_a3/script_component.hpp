@@ -1,4 +1,4 @@
-#define COMPONENT main
+#define COMPONENT main_a3
 #include "script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_MAIN
