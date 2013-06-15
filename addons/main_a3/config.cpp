@@ -28,7 +28,7 @@ class CfgSettings {
 
 class CfgMods {
 	class PREFIX {
-		dir = "@CBA_a3";
+		dir = "@CBA_A3";
 		name = "Community Base Addons (Arma III)";
 		picture = "x\cba\addons\main\logo_cba_ca.paa";
 		hidePicture = "true";
