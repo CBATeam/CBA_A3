@@ -21,7 +21,7 @@ if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
 	//Position version banner
 	_ctrl_o = _disp displayCtrl CA_Version_IDC;
 	//align with BI version position
-	_x = __RIX(-18);
+	_x = __RIX(-21);
 	_y = __IY(23);
 	_w = __IW(8);
 	_h = __IH(1);
