@@ -40,7 +40,7 @@ class Extended_init_Eventhandlers {
         };
         class FirePlace_burning_F /* : Land_FirePlace_F */ {
                 SLX_BIS = "(_this select 0) inflame true";
-        }
+        };
 };
 class Extended_killed_Eventhandlers {
         class Land_Communication_anchor_F /* : House_F */ {
