@@ -1,5 +1,5 @@
 #define COMPONENT ui
-#include "\x\cba\addons\main\script_mod.hpp"
+#include "\x\cba_a3\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_UI
 
@@ -11,9 +11,9 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_UI
 #endif
 
-#include "\x\cba\addons\main\script_macros.hpp"
+#include "\x\cba_a3\addons\main\script_macros.hpp"
 
-// #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
+// #include "\x\cba_a3\addons\ui\flexiMenu\data\common.hpp"
 
 // this is a duplicate #define which should match the one in script_component.hpp
 #define _flexiMenu_useSlowCleanDrawMode

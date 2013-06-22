@@ -48,7 +48,7 @@ if (_trap) then {
 	[_ctrl_b] spawn { //will terminate when main menu mission exits
 		while {true} do {
 			uiSleep 3;
-			if (isNil QGVAR(VerPause)) then { _this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf'; };
+			if (isNil QGVAR(VerPause)) then { _this call compile preprocessFileLineNumbers '\x\cba_a3\addons\help\ver_line.sqf'; };
 		};			
 	};
 };

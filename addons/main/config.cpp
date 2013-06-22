@@ -20,7 +20,7 @@ class CfgMods {
 	class PREFIX {
 		dir = "@CBA";
 		name = "Community Base Addons";
-		picture = "x\cba\addons\main\logo_cba_ca.paa";
+		picture = "x\cba_a3\addons\main\logo_cba_ca.paa";
 		hidePicture = "true";
 		hideName = "true";
 		actionName = "Website";

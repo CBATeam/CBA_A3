@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba_a3\addons\ui\script_component.hpp"
 //#include "common_rose.hpp"
 
 #define _DefaultAspectRatio 3/4

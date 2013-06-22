@@ -14,7 +14,7 @@ SCRIPT(test);
 LOG("===--- Testing ---===");
 
 {
-	call compile preprocessFileLineNumbers format ["\x\cba\addons\%1\test.sqf", _x];
+	call compile preprocessFileLineNumbers format ["\x\cba_a3\addons\%1\test.sqf", _x];
 } forEach CATEGORIES;
 
 nil;

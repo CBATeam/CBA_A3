@@ -20,7 +20,7 @@ Returns:
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
-#include "\x\cba\addons\strings\script_strings.hpp"
+#include "\x\cba_a3\addons\strings\script_strings.hpp"
 
 SCRIPT(getGroupIndex);
 

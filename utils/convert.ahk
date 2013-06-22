@@ -37,7 +37,7 @@ Loop, parse, components, %A_Space%
 	if ( (A_Index < 10) || (A_Index > (lines-2)) )
 	    continue
 	re=\\x\\cba\\addons\\(.*)\\fnc_(.*)\.sqf
-	rp=x\cba\addons\$1_fnc_$2.sqf
+	rp=x\cba_a3\addons\$1_fnc_$2.sqf
 	l:=RegExReplace(A_LoopReadLine, re, rp)
 	FileAppend, %l%`r`n, CfgFunctions.hpp
     }
@@ -50,7 +50,7 @@ Loop, orig\extended_eventhandlers\*.sqf
     fnc_dst=extended_eventhandlers_%A_LoopFileName%
     FileRead, file, %A_LoopFileFullPath%
     re="extended_eventhandlers\\
-    rp="x\cba\addons\extended_eventhandlers_
+    rp="x\cba_a3\addons\extended_eventhandlers_
     file:=RegExReplace(file, re, rp)
     re=#include "script_component.hpp"
     rp=
@@ -86,7 +86,7 @@ Loop, parse, components, %A_Space%
 	file:=RegExReplace(file, re, rp)
 	if ( fnc_dst = "common_XEH_preInit.sqf" ) {
 	    re=GVAR\(delayless\).*
-	    rp=GVAR(delayless) = "x\cba\addons\delayless.fsm"`;
+	    rp=GVAR(delayless) = "x\cba_a3\addons\delayless.fsm"`;
 	    file:=RegExReplace(file, re, rp)
 	}
 	FileDelete, %fnc_dst%
@@ -103,14 +103,14 @@ Loop, parse, components, %A_Space%
 FileDelete, CBA_init.hpp
 FileAppend,
 (
-call compile preProcessFileLineNumbers "x\cba\addons\extended_eventhandlers_InitXEH.sqf";
-call compile preProcessFileLineNumbers "x\cba\addons\events_XEH_preInit.sqf";
-if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba\addons\events_XEH_preClientInit.sqf"};
-if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba\addons\common_XEH_preClientInit.sqf"};
-call compile preProcessFileLineNumbers "x\cba\addons\common_XEH_preInit.sqf";
-call compile preProcessFileLineNumbers "x\cba\addons\common_XEH_postInit.sqf";
-call compile preProcessFileLineNumbers "x\cba\addons\diagnostic_XEH_preInit.sqf";
-call compile preProcessFileLineNumbers "x\cba\addons\network_XEH_preInit.sqf";
-if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba\addons\network_XEH_postClientInit.sqf"};
-call compile preProcessFileLineNumbers "x\cba\addons\vectors_XEH_preInit.sqf";
+call compile preProcessFileLineNumbers "x\cba_a3\addons\extended_eventhandlers_InitXEH.sqf";
+call compile preProcessFileLineNumbers "x\cba_a3\addons\events_XEH_preInit.sqf";
+if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba_a3\addons\events_XEH_preClientInit.sqf"};
+if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba_a3\addons\common_XEH_preClientInit.sqf"};
+call compile preProcessFileLineNumbers "x\cba_a3\addons\common_XEH_preInit.sqf";
+call compile preProcessFileLineNumbers "x\cba_a3\addons\common_XEH_postInit.sqf";
+call compile preProcessFileLineNumbers "x\cba_a3\addons\diagnostic_XEH_preInit.sqf";
+call compile preProcessFileLineNumbers "x\cba_a3\addons\network_XEH_preInit.sqf";
+if (!isDedicated) then {call compile preProcessFileLineNumbers "x\cba_a3\addons\network_XEH_postClientInit.sqf"};
+call compile preProcessFileLineNumbers "x\cba_a3\addons\vectors_XEH_preInit.sqf";
 ), CBA_init.hpp

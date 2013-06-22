@@ -13,7 +13,7 @@ ASSERT_DEFINED(_fn,_fn);
 
 LOG("Testing " + _fn);
 
-_data = ["\x\cba\addons\common\test_parseYaml_config.yml"] call CBA_fnc_parseYaml;
+_data = ["\x\cba_a3\addons\common\test_parseYaml_config.yml"] call CBA_fnc_parseYaml;
 
 ASSERT_TRUE([_data] call CBA_fnc_isHash,_fn);
 

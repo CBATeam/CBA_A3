@@ -1,5 +1,5 @@
 disableSerialization;
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba_a3\addons\ui\script_component.hpp"
 //-----------------------------------------------------------------------------
 // TODO: Menu string parameter substitutions. Eg: _action="[%ID%] call func". Eg: %ID%,<ID>
 // TODO: Consider adding: a base IDC override value.

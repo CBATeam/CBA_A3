@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba_a3\addons\ui\script_component.hpp"
 
 #define _eval_image(_param) __EVAL(format ["%1\data\buttonList\%2.paa", _flexiMenu_path, ##_param])
 

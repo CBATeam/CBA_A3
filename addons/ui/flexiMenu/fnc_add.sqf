@@ -1,11 +1,11 @@
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba_a3\addons\ui\script_component.hpp"
 
 TRACE_1("",_this);
 
 private ["_msg", "_exit", "_list", "_i", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
-// Note: calling script may require this file for dik codes: #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
+// Note: calling script may require this file for dik codes: #include "\x\cba_a3\addons\ui_helper\script_dikCodes.hpp"
 
 _msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"; //Initialize
 _key = [];

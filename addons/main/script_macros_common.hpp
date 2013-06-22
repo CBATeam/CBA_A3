@@ -111,7 +111,7 @@ Examples:
 		#ifndef DEBUG_MODE_FULL
 		#define DEBUG_MODE_FULL
 		#endif
-		#include "\x\cba\addons\main\script_macros_common.hpp"
+		#include "\x\cba_a3\addons\main\script_macros_common.hpp"
 	(end)
 
 Author:
@@ -583,7 +583,7 @@ Author:
 	#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
 	#define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
 #else
-	#define COMPILE_FILE2_CFG_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'x\cba\addons\xeh\init_compile.sqf' } else { _this call _slx_xeh_compile } })
+	#define COMPILE_FILE2_CFG_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'x\cba_a3\addons\xeh\init_compile.sqf' } else { _this call _slx_xeh_compile } })
 	#define COMPILE_FILE2_SYS(var1) (var1 call SLX_XEH_COMPILE)
 #endif
 

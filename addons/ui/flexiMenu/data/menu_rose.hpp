@@ -1,5 +1,5 @@
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba_a3\addons\ui\script_component.hpp"
 //#include "common_rose.hpp"
 
 #define _DefaultAspectRatio 3/4
@@ -18,7 +18,7 @@
 #define _gapW 0.01*safeZoneW // Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH/2-2*_BH)*2/3) // Button "height" vertical spacing
 
-#define _flexiMenu_PATH \x\cba\addons\ui\flexiMenu
+#define _flexiMenu_PATH \x\cba_a3\addons\ui\flexiMenu
 #define IMAGE(A,B) QUOTE(_flexiMenu_PATH\A\B.paa)
 #define _eval_image(_param) IMAGE(data\rose,_param)
 
