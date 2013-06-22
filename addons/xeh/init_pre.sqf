@@ -135,6 +135,7 @@ FUNC(determineGame) = {
 		case "ArmA2OA": {1};
 		case "TakeOnH": {2};
 		case "Arma3Alpha": {3};
+		case "Arma3": {3};
 		default {0};
 	};
 };
