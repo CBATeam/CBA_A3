@@ -1,0 +1,57 @@
+/*%FSM<COMPILE "D:\Program files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, SBs SupaFSM">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"",7,210,-30.000000,-425.000000,-20.000000,-425.000000,0.000000,""};
+item1[] = {"Init",0,250,-150.000000,-175.000000,-50.000000,-125.000000,0.000000,"Init"};
+item2[] = {"execute",8,4314,-275.000000,-175.000000,-175.000000,-125.000000,1.000000,"execute"};
+item3[] = {"End",1,250,-400.000000,-175.000000,-300.000000,-125.000000,0.000000,"End"};
+link0[] = {1,2};
+link1[] = {2,3};
+globals[] = {25.000000,1,0,0,0,640,480,3,121,6316128,1,-466.578888,208.527237,350.990051,-396.594299,829,918,1};
+window[] = {2,-1,-1,-1,-1,863,110,1070,145,3,847};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "SBs SupaFSM";
+  class States
+  {
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "execute">*/
+        class execute
+        {
+          priority = 1.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"call _this; true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

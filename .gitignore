@@ -1,0 +1,11 @@
+addons/*.pbo
+addons/*.bisign
+*.bikey
+*.log
+*.biprivatekey
+/store/function_library/*
+/store/wiki/*
+/utils/release/*
+/utils/six-arma-tools.yml
+
+*.7z
