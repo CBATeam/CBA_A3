@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 GVAR(CREDITS_Info) = [GVAR(credits), "CfgPatches"] call (uiNamespace getVariable "CBA_fnc_hashGet");

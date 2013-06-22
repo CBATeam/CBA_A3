@@ -1,6 +1,6 @@
 // Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable. 
 // So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
