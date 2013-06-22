@@ -33,7 +33,7 @@ class CBA_CREDITS_M: RscActiveText { //mouse trap, blocks screen until disabled 
 	__FSW(1);
 	__FSH(1);
 	text = "#(argb,8,8,3)color(1,1,1,0)";
-	onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; _this call compile preprocessFileLineNumbers '\x\cba_a3\addons\help\mm_spc_init.sqf';";
+	onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; _this call compile preprocessFileLineNumbers '\x\cba\addons\help\mm_spc_init.sqf';";
 };
 
 class CBA_CREDITS_VER_BTN: RscButton {
@@ -80,7 +80,7 @@ class RscDisplayMain: RscStandardDisplay {
 		};
 		class CBA_CREDITS_VER_BTN: CBA_CREDITS_VER_BTN {
 			idc = CBA_CREDITS_VER_BTN_IDC;
-			onMouseButtonClick = "_this call compile preprocessFileLineNumbers '\x\cba_a3\addons\help\ver_line.sqf';";
+			onMouseButtonClick = "_this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf';";
 			onMouseEnter = QUOTE(GVAR(VerPause) = true);
 			onMouseExit = QUOTE(GVAR(VerPause) = nil);
 		};

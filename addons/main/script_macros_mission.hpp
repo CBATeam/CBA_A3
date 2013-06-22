@@ -1,4 +1,4 @@
-#include "\x\cba_a3\addons\main\script_macros_common.hpp"
+#include "\x\cba\addons\main\script_macros_common.hpp"
 
 /*
     Header: script_macros_mission.hpp
@@ -21,7 +21,7 @@
 
     Usage:
         Define PREFIX and COMPONENT, then include this file:
-            #include "x\cba_a3\addons\main\script_macros_mission.hpp"
+            #include "x\cba\addons\main\script_macros_mission.hpp"
 */
 
 // TODO: Alternate COMPILE_FILE macros that add e.g "mission\"

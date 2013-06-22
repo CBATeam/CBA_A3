@@ -1,11 +1,11 @@
 // Desc: parse and set menu option record values
 // _this = [_menuDefs select 0, _menuDefs select 1 select N] (header & one menu def)
 //-----------------------------------------------------------------------------
-#include "\x\cba_a3\addons\ui\script_component.hpp"
-#include "\x\cba_a3\addons\ui_helper\script_dikCodes.hpp"
+#include "\x\cba\addons\ui\script_component.hpp"
+#include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 #include "DIKASCIIMap.hpp"
 
-#define _flexiMenuSeparatorLine "<img image='\x\cba_a3\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
+#define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
 
 private["_menuDefs0", "_menuDef", "_fastPartialResult",
 	"_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",

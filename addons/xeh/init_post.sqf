@@ -64,7 +64,7 @@ if (!isDedicated && {!isNull player}) then { // isNull player check is for Main 
 };
 
 // XEH for non XEH supported addons
-SLX_XEH_STR spawn COMPILE_FILE2(\x\cba_a3\addons\xeh\supportMonitor.sqf);
+SLX_XEH_STR spawn COMPILE_FILE2(\x\cba\addons\xeh\supportMonitor.sqf);
 
 SLX_XEH_MACHINE set [8, true];
 

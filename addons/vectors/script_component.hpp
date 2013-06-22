@@ -1,5 +1,5 @@
 #define COMPONENT vectors
-#include "\x\cba_a3\addons\main\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 
 #ifdef DEBUG_ENABLED_VECTORS
@@ -10,4 +10,4 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_VECTORS
 #endif
 
-#include "\x\cba_a3\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"

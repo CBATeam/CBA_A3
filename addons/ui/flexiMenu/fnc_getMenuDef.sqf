@@ -1,6 +1,6 @@
 // Desc: determine menuDef to use, based on variable param variations
 //-----------------------------------------------------------------------------
-#include "\x\cba_a3\addons\ui\script_component.hpp"
+#include "\x\cba\addons\ui\script_component.hpp"
 
 private ["_menuDefs", "_target", "_menuSources"];
 

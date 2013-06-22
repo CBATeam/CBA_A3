@@ -1,4 +1,4 @@
-//#include "\x\cba_a3\addons\ui_helper\script_dikCodes.hpp"
+//#include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
 #define ICE_DIKASCIIMap [\
   [65, DIK_A],\

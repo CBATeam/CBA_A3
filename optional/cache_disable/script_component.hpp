@@ -1,5 +1,5 @@
 #define COMPONENT cache_disable
-#include "\x\cba_a3\addons\main\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 
 #ifdef DEBUG_ENABLED_CACHE_DISABLE
@@ -13,4 +13,4 @@
 #undef REQUIRED_VERSION
 #define REQUIRED_VERSION 1.00
 
-#include "\x\cba_a3\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"

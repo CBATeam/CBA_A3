@@ -1,1 +1,1 @@
-_this call compile preProcessFileLineNumbers "\x\cba_a3\addons\xeh\init.sqf";
+_this call compile preProcessFileLineNumbers "\x\cba\addons\xeh\init.sqf";

@@ -2,7 +2,7 @@
 
 // Perform menu action execution along with related menu behaviour changes.
 //-----------------------------------------------------------------------------
-#include "\x\cba_a3\addons\ui\script_component.hpp"
+#include "\x\cba\addons\ui\script_component.hpp"
 
 private["_action", "_subMenu", "_multiReselect", "_useListBox", "_subMenuSource", "_params", "_pathName"];
 

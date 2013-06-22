@@ -35,7 +35,7 @@ SLX_XEH_CACHE_KEYS3 = uiNamespace getVariable "SLX_XEH_CACHE_KEYS3";
 CBA_CACHE_KEYS = uiNamespace getVariable "CBA_CACHE_KEYS";
 
 // Always compile cache function once
-call compile preProcessFileLineNumbers 'x\cba_a3\addons\xeh\init_compile.sqf';
+call compile preProcessFileLineNumbers 'x\cba\addons\xeh\init_compile.sqf';
 
 // Log
 SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");

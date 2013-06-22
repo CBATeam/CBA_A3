@@ -1,4 +1,4 @@
-#include "\x\cba_a3\addons\ui\script_component.hpp"
+#include "\x\cba\addons\ui\script_component.hpp"
 
 if (isDedicated) exitWith {false};
 

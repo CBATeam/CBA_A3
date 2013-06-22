@@ -1,5 +1,5 @@
 #define COMPONENT events
-#include "\x\cba_a3\addons\main\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 #define KEYS_ARRAY_WRONG ['down', 'up']
 #define KEYS_ARRAY ['keydown', 'keyup']
@@ -14,4 +14,4 @@
 	#define DEBUG_SETTINGS DEBUG_SETTINGS_EVENTS
 #endif
 
-#include "\x\cba_a3\addons\main\script_macros.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"

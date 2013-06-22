@@ -1,4 +1,4 @@
-#include "\x\cba_a3\addons\ui\script_component.hpp"
+#include "\x\cba\addons\ui\script_component.hpp"
 #define _rightMouseButton 1
 
 //private["_display", "_button", "_x", "_y", "_shiftKey", "_ctrlKey", "_altKey"]; // event params

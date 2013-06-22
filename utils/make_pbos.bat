@@ -1,6 +1,6 @@
 @echo off
 
-set ADDONS=P:\x\cba_a3\addons
+set ADDONS=P:\x\cba\addons
 set OPTIONAL=P:\x\cba\optional
 
 set TOOL="C:\tools\six-arma-tools.exe"

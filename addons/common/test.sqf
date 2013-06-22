@@ -14,7 +14,7 @@ SCRIPT(test-common);
 LOG("=== Testing Common ===");
 
 {
-	call compile preprocessFileLineNumbers format ["\x\cba_a3\addons\common\test_%1.sqf", _x];
+	call compile preprocessFileLineNumbers format ["\x\cba\addons\common\test_%1.sqf", _x];
 } forEach TESTS;
 
 nil;
