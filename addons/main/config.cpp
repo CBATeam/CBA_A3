@@ -37,12 +37,14 @@ class CfgSettings {
 		class Versioning {
 			class PREFIX {
 				class dependencies {
-					// CBA requiring CBA_A2, if A2 is found
-					CBA_A2[] = {"cba_a2_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
-					// CBA requiring CBA_OA, if OA is found
-					CBA_OA[] = {"cba_oa_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Takistan')"};
-					// CBA requiring CBA_TOH, if TOH is found
-					CBA_TOH[] = {"cba_toh_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'United_States_H')"};
+				    /*
+						// CBA requiring CBA_A2, if A2 is found
+						CBA_A2[] = {"cba_a2_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Chernarus')"};
+						// CBA requiring CBA_OA, if OA is found
+						CBA_OA[] = {"cba_oa_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'Takistan')"};
+						// CBA requiring CBA_TOH, if TOH is found
+						CBA_TOH[] = {"cba_toh_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'United_States_H')"};
+					*/
 					// CBA requiring CBA_A3, if A3 is found
 					CBA_A3[] = {"cba_main_a3", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'A3_Map_Stratis')"};
 
