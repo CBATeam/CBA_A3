@@ -60,12 +60,12 @@ _hasCbaA2 = isClass(configFile >> "CfgPatches" >> "CBA_A2_main");
 _hasCbaOa = isClass(configFile >> "CfgPatches" >> "CBA_OA_main");
 _hasA2 = isClass(configFile >> "CfgPatches" >> "Chernarus");
 _hasOa = isClass(configFile >> "CfgPatches" >> "Takistan");
-
+/* 
 if (_hasA2 && !_hasCbaA2) then { "Running A2 Content but missing @CBA_A2, please install and enable @CBA_A2, or disable A2 content" spawn FUNC(log) };
 if (_hasOA && !_hasCbaOA) then { "Running OA Content but missing @CBA_OA, please install and enable @CBA_OA, or disable OA content" spawn FUNC(log) };
 if (!_hasA2 && _hasCbaA2) then { "Not Running A2 Content but running @CBA_A2, please disable @CBA_A2 or enable A2 content" spawn FUNC(log) };
 if (!_hasOa && _hasCbaOa) then { "Not Running OA Content but running @CBA_OA, please disable @CBA_OA or enable OA content" spawn FUNC(log) };
-
+ */
 
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
