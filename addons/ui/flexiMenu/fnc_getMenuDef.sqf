@@ -13,7 +13,7 @@ _menuDefs = [];
 	private ["_params", "_menuSource", "_menuParams", "_array", "_menuDef"]; // declare locally to safe guard variables after _menuSource call, which is beyond our control of correctness.
 
 	_params = _x;
-    if (isNil "_params") then { diag_log format ["%1:%2: CBA WARNING: _params is nil! Check Source: %2", __FILE__, __LINE__, _params]; };
+    if (isNil "_params") then { diag_log format ["%1:%2: CBA WARNING: _params is nil! Check Source: %3", __FILE__, __LINE__, _params]; };
 	
 	_menuSource = "";
 	_menuParams = [_target];
