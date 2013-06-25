@@ -86,20 +86,25 @@ private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK"
 private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
-
+TRACE_1("INPUT Params []",_this);
 //-----------------------------------------------------------------------------
 _msg = "";
 _msg = format ["%1: Invalid params type: %2", __FILE__, _this];
 if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
 if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log _msg};
+TRACE_2("INPUT Params",_this select 0, _this select 1);
 
 _menuDefs = _this call FUNC(getMenuDef);
+TRACE_1("Get Menu Defs",_menuDefs);
 //-----------------------------------------------------------------------------
+if (isNil "_menuDefs") exitWith {diag_log format ["%1: Invalid _menuDefs from target: %2", __FILE__, _this select 0]};
 if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
 if (count _menuDefs == 0) exitWith {diag_log format ["%1: Invalid params c1: %2", __FILE__, _this]};
 if (count _menuDefs < 2) exitWith {diag_log format ["%1: Invalid params c2: %2", __FILE__, _this]};
 if (count (_menuDefs select 0) <= _flexiMenu_menuProperty_ID_menuResource) exitWith {diag_log format ["%1: Invalid params c3: %2", __FILE__, _this]};
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; // determine which dialog to show
+
+TRACE_2("Determined which dialog to show",_flexiMenu_menuProperty_ID_menuResource,_menuRsc);
 
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
@@ -108,6 +113,7 @@ if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRs
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
 
+TRACE_2("Show Diaglog",_flexiMenu_menuProperty_ID_menuResource,_menuRsc);
 private "_disp";
 _disp = uiNamespace getVariable QGVAR(display);
 

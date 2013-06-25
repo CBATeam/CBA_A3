@@ -114,11 +114,12 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 			_menuSources = [];
 			_menuSource = _target getVariable QGVAR(flexiMenu_source);
 			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources set [count _menuSources, _menuSource]};
-
+			TRACE_2("",_menuSource,_menuSources);
 			{
 				_menuSources set [count _menuSources, _x];
 			} forEach _potentialMenuSources;
 
+			TRACE_2("",_target, _menuSources);
 			if (count _menuSources > 0) then {
 				// show menu dialog and load menu data
 				GVAR(target) = _target; // global variable used since passing an object as a string is too difficult.
