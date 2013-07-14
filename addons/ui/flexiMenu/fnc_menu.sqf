@@ -1,4 +1,5 @@
 disableSerialization;
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 //-----------------------------------------------------------------------------
 // TODO: Menu string parameter substitutions. Eg: _action="[%ID%] call func". Eg: %ID%,<ID>
@@ -97,9 +98,18 @@ TRACE_2("INPUT Params",_this select 0, _this select 1);
 _menuDefs = _this call FUNC(getMenuDef);
 TRACE_1("Get Menu Defs",_menuDefs);
 //-----------------------------------------------------------------------------
-if (isNil "_menuDefs") exitWith {diag_log format ["%1: Invalid _menuDefs from target: %2", __FILE__, _this select 0]};
+
+//Array must be returned. 
+if (isNil "_menuDefs") then {diag_log format ["%1: Nil Warning: Expected type array from _menuDefs from target: %2 from source: %3", __FILE__, _this select 0, _this select 1]};
 if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
-if (count _menuDefs == 0) exitWith {diag_log format ["%1: Invalid params c1: %2", __FILE__, _this]};
+
+// Empty Array is allowed to signify that nothing should happen
+if (count _menuDefs == 0) exitWith {
+  #ifdef DEBUG_MODE_FULL
+	diag_log format ["%1: _menuDefs is an empty, nothing to do. params c1: %2", __FILE__, _this];
+  #endif
+};
+
 if (count _menuDefs < 2) exitWith {diag_log format ["%1: Invalid params c2: %2", __FILE__, _this]};
 if (count (_menuDefs select 0) <= _flexiMenu_menuProperty_ID_menuResource) exitWith {diag_log format ["%1: Invalid params c3: %2", __FILE__, _this]};
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; // determine which dialog to show
