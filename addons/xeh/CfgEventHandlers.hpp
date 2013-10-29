@@ -48,6 +48,9 @@ class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LandedStopped_EventHandlers {};
 class Extended_HandleDamage_EventHandlers {};
 
+class Extended_Put_EventHandlers {};
+class Extended_Take_EventHandlers {};
+
 class Extended_GetIn_EventHandlers
 {
 	// Default Extended Event Handlers: Custom GetInMan event

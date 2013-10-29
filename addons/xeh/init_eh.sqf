@@ -1,13 +1,13 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-SLX_XEH_EH_Init = { 
+SLX_XEH_EH_Init = {
 	#ifdef DEBUG_MODE_FULL
-		diag_log ['Init',_this, local (_this select 0), typeOf (_this select 0)]; 
+		diag_log ['Init',_this, local (_this select 0), typeOf (_this select 0)];
 	#endif
 	(_this select 0) setVariable SLX_XEH_AR_TRUE; [_this select 0, SLX_XEH_STR_INIT_EH]call FUNC(init);
 };
-SLX_XEH_EH_RespawnInit = { 
+SLX_XEH_EH_RespawnInit = {
 	#ifdef DEBUG_MODE_FULL
 		diag_log ['RespawnInit',_this, local (_this select 0), typeOf (_this select 0)];
 	#endif
@@ -48,6 +48,8 @@ XEH_FUNC(MPHit);
 XEH_FUNC(MPKilled);
 XEH_FUNC(MPRespawn);
 XEH_FUNC(FiredBis);
+XEH_FUNC(Put);
+XEH_FUNC(Take);
 
 SLX_XEH_STR_GetInMan = 'Extended_GetInManEH';
 SLX_XEH_STR_GetInMan_Player = 'Extended_GetInManEH_Player';

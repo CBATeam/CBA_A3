@@ -16,7 +16,7 @@
 #define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", "Dammaged", "Engine", \
 	"Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", "Hit", \
 	"IncomingMissile", "Killed", "LandedTouchDown", "LandedStopped", \
-	"Respawn" //, "MPHit", "MPKilled", "MPRespawn"
+	"Respawn", "Put", "Take" //, "MPHit", "MPKilled", "MPRespawn"
 //"HandleDamage", "HandleHealing"
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 
