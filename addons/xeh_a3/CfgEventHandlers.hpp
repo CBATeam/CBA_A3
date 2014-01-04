@@ -6,6 +6,9 @@ class Extended_fired_Eventhandlers {
         class Mk6_Mortar_Base /* : StaticMortar */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
+        class Helicopter /* : Air */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
         class Helicopter_Base_F /* : Helicopter */ {
                 SLX_BIS = "";
         };
@@ -43,6 +46,9 @@ class Extended_init_Eventhandlers {
         };
 };
 class Extended_killed_Eventhandlers {
+         class Helicopter /* : Air */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
+        };
         class Land_Communication_anchor_F /* : House_F */ {
                 SLX_BIS = "[(_this select 0)] execVM ""\A3\Structures_F\Ind\Transmitter_Tower\Scripts\anchor_ruins.sqf""";
         };
