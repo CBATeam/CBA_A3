@@ -118,8 +118,8 @@ class CBA_Dummy_Map: RscMapControl {
 	type=100;
 	style=48;
 
-	x = 0;
-	y = 0;
+	x = -10;
+	y = -10;
 	w = 1;
 	h = 1;
 
@@ -455,8 +455,8 @@ class RscTitles {
 		class controlsBackground {
 			class dummy_map : CBA_Dummy_Map {
 				idc = 40122;
-				x = 0;
-				y = 0;
+				x = -10;
+				y = -10;
 				w = 0;
 				h = 0;
 			};
