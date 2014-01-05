@@ -29,19 +29,36 @@
 	EH_DEBUG_INIT(Init);
 	EH_DEBUG(AnimChanged);
 	EH_DEBUG(AnimDone);
+	EH_DEBUG(AnimStateChanged);
+	EH_DEBUG(ControlsShifted);
 	EH_DEBUG(Dammaged);
 	EH_DEBUG(Engine);
+	EH_DEBUG(EpeContact);
+	EH_DEBUG(EpeContactEnd);
+	EH_DEBUG(EpeContactStart);
+	EH_DEBUG(Explosion);
 	EH_DEBUG(Fired);
 	EH_DEBUG(FiredNear);
 	EH_DEBUG(Fuel);
 	EH_DEBUG(Gear);
 	EH_DEBUG(GetIn);
 	EH_DEBUG(GetOut);
+//	EH_DEBUG(HandleDamage);
+//	EH_DEBUG(HandleHeal);
 	EH_DEBUG(Hit);
+	EH_DEBUG(HitPart);
 	EH_DEBUG(IncomingMissile);
 	EH_DEBUG(Killed);
 	EH_DEBUG(LandedTouchDown);
 	EH_DEBUG(LandedStopped);
-	EH_DEBUG(HandleDamage);
+	EH_DEBUG(Local);
+//	EH_DEBUG(MPHit);
+//	EH_DEBUG(MPKilled);
+//	EH_DEBUG(MPRespawn);
+	EH_DEBUG(Put);
+	EH_DEBUG(Respawn);
+	EH_DEBUG(Take);
+	EH_DEBUG(WeaponAssembled);
+	EH_DEBUG(WeaponDisassembled);
 #endif
 

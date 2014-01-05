@@ -15,9 +15,10 @@ SLX_XEH_EH_RespawnInit = {
 };
 
 // The actual XEH functions that are called from within the engine eventhandlers.
-// This can also be uesd for better debugging
+// This can also be used for better debugging
 #ifdef DEBUG_MODE_FULL
 	#define XEH_FUNC_NORMAL(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = { if ('A' in ['Respawn', 'MPRespawn', 'Killed', 'MPKilled', 'Hit', 'MPHit']) then { diag_log ['A',_this, local (_this select 0), typeOf (_this select 0)] }; { _this call _x }forEach((_this select 0)getVariable SLX_XEH_STR_##A) }
+
 #endif
 #ifndef DEBUG_MODE_FULL
 	#define XEH_FUNC_NORMAL(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = { { _this call _x }forEach((_this select 0)getVariable SLX_XEH_STR_##A) }
@@ -26,30 +27,42 @@ SLX_XEH_EH_RespawnInit = {
 #define XEH_FUNC_PLAYER(A) SLX_XEH_STR_##A##_Player = 'Extended_##A##EH_Player'
 
 #define XEH_FUNC(A) XEH_FUNC_NORMAL(A); XEH_FUNC_PLAYER(A)
+// HitPart is special in that the passed parameter to the event handler is an array of arrays
+#define XEH_FUNC_HP(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = {{_this call _x}forEach(((_this select 0)select 0)getVariable SLX_XEH_STR_##A)}; XEH_FUNC_PLAYER(A)
 
-XEH_FUNC(Hit);
 XEH_FUNC(AnimChanged);
 XEH_FUNC(AnimDone);
 XEH_FUNC(AnimStateChanged);
+XEH_FUNC(ControlsShifted);
 XEH_FUNC(Dammaged);
 XEH_FUNC(Engine);
+XEH_FUNC(EpeContact);
+XEH_FUNC(EpeContactEnd);
+XEH_FUNC(EpeContactStart);
+XEH_FUNC(Explosion);
+XEH_FUNC(FiredBIS);
 XEH_FUNC(FiredNear);
 XEH_FUNC(Fuel);
 XEH_FUNC(Gear);
 XEH_FUNC(GetIn);
 XEH_FUNC(GetOut);
-XEH_FUNC(IncomingMissile);
+//XEH_FUNC(HandleDamage);
+//XEH_FUNC(HandleHeal);
 XEH_FUNC(Hit);
+XEH_FUNC_HP(HitPart);
+XEH_FUNC(IncomingMissile);
 XEH_FUNC(Killed);
 XEH_FUNC(LandedTouchDown);
 XEH_FUNC(LandedStopped);
-XEH_FUNC(Respawn);
-XEH_FUNC(MPHit);
-XEH_FUNC(MPKilled);
-XEH_FUNC(MPRespawn);
-XEH_FUNC(FiredBis);
+XEH_FUNC(Local);
+//XEH_FUNC(MPHit);
+//XEH_FUNC(MPKilled);
+//XEH_FUNC(MPRespawn);
 XEH_FUNC(Put);
+XEH_FUNC(Respawn);
 XEH_FUNC(Take);
+XEH_FUNC(WeaponAssembled);
+XEH_FUNC(WeaponDisassembled);
 
 SLX_XEH_STR_GetInMan = 'Extended_GetInManEH';
 SLX_XEH_STR_GetInMan_Player = 'Extended_GetInManEH_Player';
@@ -74,3 +87,4 @@ SLX_XEH_EH_Fired =
 		{_this call _x } forEach _feh;
 	};
 };
+
