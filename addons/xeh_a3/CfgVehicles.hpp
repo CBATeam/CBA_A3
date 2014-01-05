@@ -1,4 +1,3 @@
-// TODO: Sort out A2 from OA!
 class CfgVehicles {
         class All {
                 class EventHandlers { EXTENDED_EVENTHANDLERS };
@@ -117,7 +116,7 @@ class CfgVehicles {
                 class Eventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class StaticMortar;
-        class Mk6_Mortar_Base: StaticMortar {
+        class Mortar_01_Base_F: StaticMortar {
                 class Eventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class Helicopter_Base_F: Helicopter {

@@ -3,7 +3,7 @@ class Extended_fired_Eventhandlers {
         class StaticCannon /* : StaticWeapon */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
-        class Mk6_Mortar_Base /* : StaticMortar */ {
+        class Mortar_01_Base_F /* : StaticMortar */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
         class Helicopter /* : Air */ {
@@ -11,6 +11,12 @@ class Extended_fired_Eventhandlers {
         };
         class Helicopter_Base_F /* : Helicopter */ {
                 SLX_BIS = "";
+        };
+        class Car_F /* : Car */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
+        class Ship_F /* : Ship */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
 };
 class Extended_init_Eventhandlers {
@@ -47,6 +53,12 @@ class Extended_init_Eventhandlers {
 };
 class Extended_killed_Eventhandlers {
          class Helicopter /* : Air */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
+        };
+        class Car_F /* : Car */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
+        };
+        class Ship_F /* : Ship */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
         };
         class Land_Communication_anchor_F /* : House_F */ {
