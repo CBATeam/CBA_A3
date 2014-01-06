@@ -2,7 +2,7 @@
 Internal Function: CBA_network_fnc_exec
 */
 #include "script_component.hpp"
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 // Generic NET Execution Handler
 private ["_ar", "_id", "_chan", "_cmd", "_objAr", "_ex", "_msg"];
 PARAMS_2(_id,_ar);
@@ -20,6 +20,7 @@ if (isNil "_chan") exitWith {};
 if (isNil "_cmd") exitWith {};
 if (isNil "_objAr") exitWith {};
 
+_ex = false;
 if ((typeName _chan) == "OBJECT") then
 {
 	_ex = (local _chan);
@@ -39,7 +40,6 @@ if (GVAR(debug)) then
 	TRACE_6("",_ex,call FUNC(id),_id,_chan,_objAr,_cmd);
 };
 
-if (isNil "_ex") exitWith {};
 if (_ex) then
 {
 	TRACE_2("executing",_objAr,_cmd);
