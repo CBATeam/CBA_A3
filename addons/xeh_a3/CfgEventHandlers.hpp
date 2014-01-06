@@ -12,10 +12,16 @@ class Extended_fired_Eventhandlers {
         class Helicopter_Base_F /* : Helicopter */ {
                 SLX_BIS = "";
         };
+        class Plane /* : Air */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
         class Car_F /* : Car */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
         class Ship_F /* : Ship */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
+        class Tank_F /* : Tank */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
 };
@@ -52,13 +58,19 @@ class Extended_init_Eventhandlers {
         };
 };
 class Extended_killed_Eventhandlers {
-         class Helicopter /* : Air */ {
+        class Helicopter /* : Air */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
+        };
+        class Plane /* : Air */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
         };
         class Car_F /* : Car */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
         };
         class Ship_F /* : Ship */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
+        };
+        class Tank_F /* : Tank */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled')";
         };
         class Land_Communication_anchor_F /* : House_F */ {

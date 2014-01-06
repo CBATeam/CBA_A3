@@ -6,6 +6,9 @@ class CfgVehicles {
         class Helicopter: Air {
                 class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
+        class Plane: Air {
+                class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+        };
         class StaticWeapon;
         class StaticCannon: StaticWeapon {
                 class Eventhandlers { EXTENDED_EVENTHANDLERS };
@@ -145,5 +148,9 @@ class CfgVehicles {
         class Wreck_base_F;
         class Land_Wreck_Commanche_F: Wreck_base_F {
                 class EventHandlers { EXTENDED_EVENTHANDLERS };
+        };
+        class Tank;
+        class Tank_F: Tank {
+            class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
 };
