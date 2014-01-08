@@ -102,6 +102,7 @@ if !(CBA_MISSION_START) then {
 if !(isDedicated) then {
 	SLX_XEH_STR spawn
 	{
+		waitUntil {!isNil QGVAR(nextActionIndex)};
 		LOG("Action monitor started");
 		while { true } do {
 			// Don't mess around endlessly adding and re-adding to a
