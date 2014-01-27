@@ -67,7 +67,7 @@ class CBA_flexiMenu_rscPopup { //: _flexiMenu_rscRose
 			idc = _flexiMenu_IDC_menuDesc;
 			x = _SX-_BW;
 			y = safeZoneY+0.30*safeZoneH-_BH*_captionHgt;
-      w = 0.50*safeZoneW;
+			w = _BW;
 			h = _BH*_captionHgt;
 			sizeEx = _BH*_captionHgt;
 			colorText[] = {_captionColorFG, 1};
