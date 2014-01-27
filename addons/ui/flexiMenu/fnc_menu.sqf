@@ -140,12 +140,20 @@ _disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(
 
 _idcIndex = 0;
 
-_width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 if (_width == 0) then {
-	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+	_width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 	if (_width == 0) then {
 		player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
 		_width = _SMW;
+	};
+};
+
+GVAR(hotKeyColor) = getText(missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+if (GVAR(hotKeyColor) == "") then {
+	GVAR(hotKeyColor) = getText(configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+	if (GVAR(hotKeyColor) == "") then {
+		GVAR(hotKeyColor) = __defaultHotkeyColor;
 	};
 };
 

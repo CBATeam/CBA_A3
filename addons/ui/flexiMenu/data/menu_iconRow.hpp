@@ -1,6 +1,6 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 
-#define _eval_image(_param) __EVAL(format ["%1\data\arma2\mid_button_%2.paa", _flexiMenu_path, ##_param])
+#define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 
 #define _SX (safeZoneX+safeZoneW/2) // screen centre x
 #define _SY (safeZoneY+safeZoneH/2) // screen centre y
@@ -20,8 +20,8 @@
 class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 	idd = -1; //_flexiMenu_IDD;
 	movingEnable = 0;
-	onLoad = __EVAL(format["uiNamespace setVariable ['%1', _this select 0]", QGVAR(display)]);
-	onUnload = __EVAL(format["uiNamespace setVariable ['%1', displayNull]", QGVAR(display)]);
+	onLoad = QUOTE(with uiNamespace do {GVAR(display) = _this select 0};);
+	onUnload = QUOTE(with uiNamespace do {GVAR(display) = displayNull};);
 	class controlsBackground {};
 	class objects {};
 
@@ -32,7 +32,7 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 
 //class listButton; // external ref
 //#include "common_listClass.hpp"
-#define _eval_image2(_param) __EVAL(format ["%1\data\buttonList\%2.paa", _flexiMenu_path, ##_param])
+#define _imagePath2(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\buttonList\TOKEN.paa)
 
 	class listButton: _flexiMenu_RscShortcutButton {
 		x = 0.5;
@@ -59,13 +59,13 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 			align = "left";
 			shadow = "true";
 		};
-		animTextureNormal = _eval_image2("normal");
-		animTextureDisabled = _eval_image2("disabled");
-		animTextureOver = _eval_image2("over");
-		animTextureFocused = _eval_image2("focused");
-		animTexturePressed = _eval_image2("down");
-		animTextureDefault = _eval_image2("default");
-		animTextureNoShortcut = _eval_image2("normal");
+    animTextureNormal = _imagePath2(normal);
+    animTextureDisabled = _imagePath2(disabled);
+    animTextureOver = _imagePath2(over);
+    animTextureFocused = _imagePath2(focused);
+    animTexturePressed = _imagePath2(down);
+    animTextureDefault = _imagePath2(default);
+    animTextureNoShortcut = _imagePath2(normal);
 	};
 
   class button: _flexiMenu_RscShortcutButton {
@@ -93,13 +93,13 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 			align = "center";
 			shadow = "true";
 		};
-		animTextureNormal = _eval_image("normal");
-		animTextureDisabled = _eval_image("disabled");
-		animTextureOver = _eval_image("over");
-		animTextureFocused = _eval_image("focus");
-		animTexturePressed = _eval_image("down");
-		animTextureDefault = _eval_image("normal"); // used?
-		animTextureNoShortcut = _eval_image("normal"); // used?
+		animTextureNormal = _imagePath(mid_button_normal);
+		animTextureDisabled = _imagePath(mid_button_disabled);
+		animTextureOver = _imagePath(mid_button_over);
+		animTextureFocused = _imagePath(mid_button_focus);
+		animTexturePressed = _imagePath(mid_button_down);
+		animTextureDefault = _imagePath(mid_button_normal); // used?
+		animTextureNoShortcut = _imagePath(mid_button_normal); // used?
 		//action = _eval_action(-1);
 	};
 	//---------------------------------
@@ -108,23 +108,21 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 			idc = _flexiMenu_IDC_menuDesc;
 			x = _SX-_buttonsBeforeCenter*_BW;
 			y = _SY-_gapH-_StandardBH*_captionHgt;
-			w = 0.40;
+      w = 0.50*safeZoneW;
 			h = _StandardBH*_captionHgt;
 			sizeEx = _StandardBH*_captionHgt;
-			color[] = {_captionColorFG, 1};
+			colorText[] = {_captionColorFG, 1};
 			text = "";
 		};
 
 #define ExpandMacro_RowControls(ID)\
 	class button##ID: button\
 	{\
-		idc = __EVAL(_flexiMenu_IDC);\
-		__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
+		idc = _flexiMenu_baseIDC_button+ID;\
 		x = _SX-_buttonsBeforeCenter*_BW+(##ID mod _buttonsPerRow)*_BW;\
 		y = _SY+floor(##ID / _buttonsPerRow)*(_gapH+_BH2);\
-    }
+  }
 
-		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_button);
 		ExpandMacro_RowControls(00);
 		ExpandMacro_RowControls(01);
 		ExpandMacro_RowControls(02);
@@ -157,13 +155,11 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\
-		idc = __EVAL(_flexiMenu_IDC);\
-		__EXEC(_flexiMenu_IDC = _flexiMenu_IDC+1);\
+		idc = _flexiMenu_baseIDC_listButton+ID;\
 		x = _SX-_buttonsBeforeCenter*_BW+(_buttonsPerRow+1)*_BW;\
 		y = _SY+##ID*_LBH;\
 	}
 
-		__EXEC(_flexiMenu_IDC = _flexiMenu_baseIDC_listButton);
 		ExpandMacro_ListControls(00);
 		ExpandMacro_ListControls(01);
 		ExpandMacro_ListControls(02);

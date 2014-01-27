@@ -50,12 +50,20 @@ if ({_x == 0} count _array != 4 && {_array select 2 == 0}) then {
 _ctrl ctrlShow true;
 
 // TODO: For merged menus, _menuRsc must come from the first merged menu, not secondary.
-_width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 if (_width == 0) then {
-	_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+	_width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 	if (_width == 0) then {
 		player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
 		_width = _SMW;
+	};
+};
+
+GVAR(hotKeyColor) = getText(missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+if (GVAR(hotKeyColor) == "") then {
+	GVAR(hotKeyColor) = getText(configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+	if (GVAR(hotKeyColor) == "") then {
+		GVAR(hotKeyColor) = __defaultHotkeyColor;
 	};
 };
 

@@ -13,15 +13,15 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
+// Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
 
-// this is a duplicate #define which should match the one in script_component.hpp
 #define _flexiMenu_useSlowCleanDrawMode
 
 //#define _flexiMenu_IDD 406
 
-#define _flexiMenu_maxButtons 30
-#define _flexiMenu_maxListButtons 30
+#define _flexiMenu_maxButtons 100
+#define _flexiMenu_maxListButtons 100
 
 #define _flexiMenu_IDC_menuDesc 230
 #define _flexiMenu_IDC_listMenuDesc 231
@@ -59,11 +59,11 @@
 #define _menuRscPrefix "CBA_flexiMenu_rsc"
 
 #define _flexiMenu_path QUOTE(PATHTOF(flexiMenu))
-//#define _eval_action(_param) __EVAL(format ["[%2] execVM '%1\action.sqf'", _flexiMenu_path, ##_param])
 
 #define _SMW 0.15*safeZoneW // common sub-menu width
-
 #define _LBH 0.033*safeZoneH // list button height
+#define _LBH_overlap 0.0375*safeZoneH // button height with 1 pixel overlap for type "popup" menu
+#define __defaultHotkeyColor "#f07EB27E"
 
 
 // additional "_SUB" macros to handle sub folders
@@ -74,4 +74,3 @@
 
 // array select with bounds check (for optional parameters)
 #define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then { ##array2 select ##index3 } else { ##default4 };
-

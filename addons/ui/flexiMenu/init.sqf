@@ -6,6 +6,7 @@ if (isDedicated) exitWith {false};
 GVAR(typeMenuSources) = []; // types, keys and menu sources data
 GVAR(target) = objNull; // current object for interaction
 GVAR(holdKeyDown) = false; // default global behaviour of requiring holding key down. Can be overriden by menus.
+GVAR(hotKeyColor) = ""; // override colour of hotkey. It is set from rsc menu file, upon opening either the "menu" or "list". If not present, a default will be used.
 
 PREP_SUB(flexiMenu,keyDown);
 PREP_SUB(flexiMenu,keyUp);

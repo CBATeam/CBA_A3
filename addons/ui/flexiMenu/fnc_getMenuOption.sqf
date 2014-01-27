@@ -118,13 +118,11 @@ if (_index >= 0) then {
 	if (_enabled != 0) then {
 		private ["_offset"];
 
-#define _ST_highlightKey_attribute "<t color='#f07EB27E'>"
-
 // TODO: Read an appropriate color from the menu class.
 
 		_offset = (if (_containCaret) then {1} else {0});
 		if (!_fastPartialResult) then {
-			_caption = [_array, _index, _offset, _ST_highlightKey_attribute] call FUNC(highlightCaretKey);
+			_caption = [_array, _index, _offset, format ["<t color='%1'>", GVAR(hotKeyColor)]] call FUNC(highlightCaretKey);
 		};
 	} else {
 		_array = _array - [94]; // "^"
@@ -143,7 +141,7 @@ if (_index >= 0) then {
 		_keyName = toString _array;
 
 		// append shortcut key name to caption. Eg: "Option (F9)".
-		_caption = _caption+format[" (%1%2</t>)", _ST_highlightKey_attribute, _keyName];
+		_caption = _caption+format[" (<t color='%1'>%2</t>)", GVAR(hotKeyColor), _keyName];
 	};
 };
 //-----------------------------------------------------------------------------
