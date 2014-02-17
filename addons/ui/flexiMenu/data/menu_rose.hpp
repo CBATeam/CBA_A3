@@ -9,7 +9,12 @@
 #define _CX_correction 0.011*safeZoneW
 #define _CW 0.15*safeZoneW*_DefaultAspectRatio // _CH // exception // 0.10*safeZoneW // circle (button) width
 #define _CH 0.15*safeZoneH // 0.15*safeZoneW // exception safeZoneH // circle (button) height
+
+#ifdef _SMW
+#undef _SMW
+#endif
 #define _SMW 0.21*safeZoneW // sub-menu width
+
 #define _listButtonsPerRow 10
 //#define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
@@ -140,7 +145,7 @@ class CBA_flexiMenu_rscRose {
 		animTextureNoShortcut = _imagePath(DOUBLES(normal,circle)); // used?
 		};
 
-		#define ExpandMacro_RowControls(ID,newX,newY,imageTag) \
+		#define ExpandRowControl(ID,newX,newY,imageTag) \
 		class button##ID: button {\
 			idc = _flexiMenu_baseIDC_button+(ID-1);\
 			x = ##newX;\
@@ -156,16 +161,16 @@ class CBA_flexiMenu_rscRose {
 			animTextureNoShortcut = _imagePath(DOUBLES(normal,imageTag));\
 		}
 
-		ExpandMacro_RowControls(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
-		ExpandMacro_RowControls(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
-		ExpandMacro_RowControls(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);
-		ExpandMacro_RowControls(05, _leftButtonLevel2X, _SY-_gapH/2-_BH,L02);
-		ExpandMacro_RowControls(06, _leftButtonLevel2X, _SY+_gapH/2,L03);
-		ExpandMacro_RowControls(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH,L04);
-		ExpandMacro_RowControls(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,R01);
-		ExpandMacro_RowControls(09, _rightButtonLevel2X, _SY-_gapH/2-_BH,R02);
-		ExpandMacro_RowControls(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
-		ExpandMacro_RowControls(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
+		ExpandRowControl(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
+		ExpandRowControl(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
+		ExpandRowControl(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);
+		ExpandRowControl(05, _leftButtonLevel2X, _SY-_gapH/2-_BH,L02);
+		ExpandRowControl(06, _leftButtonLevel2X, _SY+_gapH/2,L03);
+		ExpandRowControl(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH,L04);
+		ExpandRowControl(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,R01);
+		ExpandRowControl(09, _rightButtonLevel2X, _SY-_gapH/2-_BH,R02);
+		ExpandRowControl(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
+		ExpandRowControl(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
 		//-----------------------
 		class caption2: caption {
 			idc = _flexiMenu_IDC_listMenuDesc;

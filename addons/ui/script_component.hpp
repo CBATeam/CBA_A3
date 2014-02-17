@@ -1,4 +1,4 @@
-#define COMPONENT ui
+﻿#define COMPONENT ui
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_UI
@@ -60,11 +60,18 @@
 
 #define _flexiMenu_path QUOTE(PATHTOF(flexiMenu))
 
+#ifdef _SMW
+#undef _SMW
+#endif 
 #define _SMW 0.15*safeZoneW // common sub-menu width
+
 #define _LBH 0.033*safeZoneH // list button height
 #define _LBH_overlap 0.0375*safeZoneH // button height with 1 pixel overlap for type "popup" menu
-#define __defaultHotkeyColor "#f07EB27E"
 
+#ifdef __defaultHotkeyColor
+  #undef __defaultHotkeyColor
+#endif
+#define __defaultHotkeyColor "#f07EB27E"
 
 // additional "_SUB" macros to handle sub folders
 #define PATHTO_SUB(var1,var2,var3,var4) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3\##var4.sqf

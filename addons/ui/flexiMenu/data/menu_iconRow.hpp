@@ -1,20 +1,53 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+﻿#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 
+#ifdef _SX
+#undef _SX
+#endif 
 #define _SX (safeZoneX+safeZoneW/2) // screen centre x
+
+#ifdef _SY
+#undef _SY
+#endif 
 #define _SY (safeZoneY+safeZoneH/2) // screen centre y
+
+#ifdef _BW
+#undef _BW
+#endif 
 #define _BW 0.04*safeZoneW // button width
+
+#ifdef _BH
+#undef _BH
+#endif 
 #define _BH 0.04*safeZoneH // button height
+
 #define _BH2 _BH*1.52 // button height adjust for some paa's which only use 66% of hgt
 #define _StandardBH 0.033*safeZoneH // button height
+
+#ifdef _SMW
+#undef _SMW
+#endif 
 #define _SMW 0.15*safeZoneW // sub-menu width
+
 #define _gapW 0.01*safeZoneW
+
+#ifdef _gapH
+#undef _gapH
+#endif 
 #define _gapH 0.01*safeZoneH
+
+#ifdef _buttonsBeforeCenter
+#undef _buttonsBeforeCenter
+#endif 
 #define _buttonsBeforeCenter 6 // buttons before screen centre, allowing menu to appear centred.
 #define _buttonsPerRow 5
 #define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
+
+#ifdef _captionHgt
+#undef _captionHgt
+#endif 
 #define _captionHgt 0.75
 
 class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
@@ -123,6 +156,7 @@ class CBA_flexiMenu_rscIconRow { //: _flexiMenu_rscRose
 		y = _SY+floor(##ID / _buttonsPerRow)*(_gapH+_BH2);\
   }
 
+ 
 		ExpandMacro_RowControls(00);
 		ExpandMacro_RowControls(01);
 		ExpandMacro_RowControls(02);
