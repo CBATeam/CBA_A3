@@ -34,8 +34,16 @@ _i = 0;
 	// New array per entitity is at least important for _handler, because of optional player handlers.
 	_handler = [];
 	_handlerPlayer = [];
-	{ { if !(isNil "_x") then { PUSH(_handler,_x) } } forEach _x } forEach (_eventData select 0);
-	{ { if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach _x } forEach (_eventData select 1);
+	 { 
+        if !(isNil "_x") then { 
+            { if !(isNil "_x") then { PUSH(_handler,_x) } } forEach _x 
+        };
+    } forEach (_eventData select 0);
+    { 
+        if !(isNil "_x") then { 
+            { if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach _x 
+        };
+    } forEach (_eventData select 1);
 
 	// Attach the compiled extended event handler to the unit.
 	// TODO: Add alternative handler implementation; no setVariables on the units, just grab directly from uiNamespace
