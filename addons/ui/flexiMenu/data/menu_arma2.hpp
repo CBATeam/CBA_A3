@@ -237,6 +237,9 @@ class CBA_flexiMenu_rscArma2 {
 
 //#include "common_listControls.hpp"
 // Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
+#ifdef ExpandMacro_ListControls
+#undef ExpandMacro_ListControls
+#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\

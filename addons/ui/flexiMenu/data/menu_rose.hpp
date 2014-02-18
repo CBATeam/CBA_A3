@@ -145,7 +145,10 @@ class CBA_flexiMenu_rscRose {
 		animTextureNoShortcut = _imagePath(DOUBLES(normal,circle)); // used?
 		};
 
-		#define ExpandRowControl(ID,newX,newY,imageTag) \
+		#ifdef ExpandMacro_RowControls
+		#undef ExpandMacro_RowControls
+		#endif 
+		#define ExpandMacro_RowControls(ID,newX,newY,imageTag) \
 		class button##ID: button {\
 			idc = _flexiMenu_baseIDC_button+(ID-1);\
 			x = ##newX;\
@@ -161,16 +164,16 @@ class CBA_flexiMenu_rscRose {
 			animTextureNoShortcut = _imagePath(DOUBLES(normal,imageTag));\
 		}
 
-		ExpandRowControl(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
-		ExpandRowControl(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
-		ExpandRowControl(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);
-		ExpandRowControl(05, _leftButtonLevel2X, _SY-_gapH/2-_BH,L02);
-		ExpandRowControl(06, _leftButtonLevel2X, _SY+_gapH/2,L03);
-		ExpandRowControl(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH,L04);
-		ExpandRowControl(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,R01);
-		ExpandRowControl(09, _rightButtonLevel2X, _SY-_gapH/2-_BH,R02);
-		ExpandRowControl(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
-		ExpandRowControl(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
+		ExpandMacro_RowControls(02, _SX-_BW/2, _SY-(_CH/2+_gapH)-_BH,top);
+		ExpandMacro_RowControls(03, _SX-_BW/2, _SY+(_CH/2+_gapH),bottom);
+		ExpandMacro_RowControls(04, _leftButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,L01);
+		ExpandMacro_RowControls(05, _leftButtonLevel2X, _SY-_gapH/2-_BH,L02);
+		ExpandMacro_RowControls(06, _leftButtonLevel2X, _SY+_gapH/2,L03);
+		ExpandMacro_RowControls(07, _leftButtonLevel1X, _SY+_gapH/2+_BH+_gapH,L04);
+		ExpandMacro_RowControls(08, _rightButtonLevel1X, _SY-_gapH/2-_BH-_gapH-_BH,R01);
+		ExpandMacro_RowControls(09, _rightButtonLevel2X, _SY-_gapH/2-_BH,R02);
+		ExpandMacro_RowControls(10, _rightButtonLevel2X, _SY+_gapH/2,R03);
+		ExpandMacro_RowControls(11, _rightButtonLevel1X, _SY+_gapH/2+_BH+_gapH,R04);
 		//-----------------------
 		class caption2: caption {
 			idc = _flexiMenu_IDC_listMenuDesc;
@@ -181,6 +184,9 @@ class CBA_flexiMenu_rscRose {
 
 //#include "common_listControls.hpp"
 // Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
+#ifdef ExpandMacro_ListControls
+#undef ExpandMacro_ListControls
+#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\

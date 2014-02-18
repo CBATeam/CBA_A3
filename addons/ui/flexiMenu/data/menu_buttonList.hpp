@@ -143,31 +143,34 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 			text = "";
 		};
 
-#define ExpandMacroRow(ID) \
+#ifdef ExpandMacro_RowControls
+#undef ExpandMacro_RowControls
+#endif 
+#define ExpandMacro_RowControls(ID) \
 	class button##ID: button\
 	{\
 		idc = _flexiMenu_baseIDC_button+ID;\
       y = _SY-_buttonsBeforeCenter*_BH+ID*_BH;\
 	}
 
-		ExpandMacroRow(00);
-		ExpandMacroRow(01);
-		ExpandMacroRow(02);
-		ExpandMacroRow(03);
-		ExpandMacroRow(04);
-		ExpandMacroRow(05);
-		ExpandMacroRow(06);
-		ExpandMacroRow(07);
-		ExpandMacroRow(08);
-		ExpandMacroRow(09);
-		ExpandMacroRow(10);
-		ExpandMacroRow(11);
-		ExpandMacroRow(12);
-		ExpandMacroRow(13);
-		ExpandMacroRow(14);
-		ExpandMacroRow(15);
-		ExpandMacroRow(16);
-		ExpandMacroRow(17);
+		ExpandMacro_RowControls(00);
+		ExpandMacro_RowControls(01);
+		ExpandMacro_RowControls(02);
+		ExpandMacro_RowControls(03);
+		ExpandMacro_RowControls(04);
+		ExpandMacro_RowControls(05);
+		ExpandMacro_RowControls(06);
+		ExpandMacro_RowControls(07);
+		ExpandMacro_RowControls(08);
+		ExpandMacro_RowControls(09);
+		ExpandMacro_RowControls(10);
+		ExpandMacro_RowControls(11);
+		ExpandMacro_RowControls(12);
+		ExpandMacro_RowControls(13);
+		ExpandMacro_RowControls(14);
+		ExpandMacro_RowControls(15);
+		ExpandMacro_RowControls(16);
+		ExpandMacro_RowControls(17);
 		//-----------------------
 		class caption2: caption {
 			idc = _flexiMenu_IDC_listMenuDesc;
@@ -177,6 +180,9 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 		};
 
 //#include "common_listControls.hpp"
+#ifdef ExpandMacro_ListControls
+#undef ExpandMacro_ListControls
+#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\

@@ -103,6 +103,9 @@ class CBA_flexiMenu_rscPopup { //: _flexiMenu_rscRose
 			text = "";
 		};
 
+#ifdef ExpandMacro_RowControls
+#undef ExpandMacro_RowControls
+#endif 
 #define ExpandMacro_RowControls(ID) \
 	class button##ID: listButton\
 	{\
@@ -139,6 +142,9 @@ class CBA_flexiMenu_rscPopup { //: _flexiMenu_rscRose
 		};
 
 //#include "common_listControls.hpp"
+#ifdef ExpandMacro_ListControls
+#undef ExpandMacro_ListControls
+#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\
