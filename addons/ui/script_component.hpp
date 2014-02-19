@@ -56,21 +56,8 @@
 #define _flexiMenu_menuDef_ID_visible 7
 #define _flexiMenu_menuDef_ID_totalIDs 8
 
-#define _menuRscPrefix "CBA_flexiMenu_rsc"
-
-#define _flexiMenu_path QUOTE(PATHTOF(flexiMenu))
-
-#ifdef _SMW
-#undef _SMW
-#endif 
-#define _SMW 0.15*safeZoneW // common sub-menu width
-
-#define _LBH 0.033*safeZoneH // list button height
-#define _LBH_overlap 0.0375*safeZoneH // button height with 1 pixel overlap for type "popup" menu
-
-#ifdef __defaultHotkeyColor
-  #undef __defaultHotkeyColor
-#endif
+#define __menuRscPrefix "CBA_flexiMenu_rsc"
+#define __SMW_default 0.15*safeZoneW // common sub-menu width, used in script
 #define __defaultHotkeyColor "#f07EB27E"
 
 // additional "_SUB" macros to handle sub folders

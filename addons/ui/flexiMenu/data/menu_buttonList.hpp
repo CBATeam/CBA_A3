@@ -1,47 +1,16 @@
-﻿#include "\x\cba\addons\ui\script_component.hpp"
+﻿//#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\buttonList\TOKEN.paa)
-
-#ifdef _SX
-#undef _SX
-#endif 
 #define _SX (safeZoneX+safeZoneW/2) // screen centre x
-
-#ifdef _SY
-#undef _SY
-#endif 
 #define _SY (safeZoneY+safeZoneH/2) // screen centre y
-
-#ifdef _BW
-#undef _BW
-#endif 
 #define _BW 0.21*safeZoneW // button width
-
-#ifdef _BH
-#undef _BH
-#endif 
 #define _BH 0.033*safeZoneH // button height
-
-#ifdef _SMW
-#undef _SMW
-#endif 
 #define _SMW 0.21*safeZoneW // sub-menu width
-
-#ifdef _gapH
-#undef _gapH
-#endif 
+#define _LBH 0.033*safeZoneH // list button height
 #define _gapH 0.01*safeZoneH
-
-#ifdef _buttonsBeforeCenter
-#undef _buttonsBeforeCenter
-#endif 
 #define _buttonsBeforeCenter 7 // buttons above screen centre, allowing menu to appear centred.
 #define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
-
-#ifdef _captionHgt
-#undef _captionHgt
-#endif 
 #define _captionHgt 0.75
 
 class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
@@ -57,7 +26,6 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 	flexiMenu_subMenuControlWidth = _SMW;
 	flexiMenu_subMenuCaptionWidth = 0.40;
 
-//class listButton; // external ref
 //#include "common_listClass.hpp"
 #define _imagePath2(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\buttonList\TOKEN.paa)
 
@@ -143,9 +111,6 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 			text = "";
 		};
 
-#ifdef ExpandMacro_RowControls
-#undef ExpandMacro_RowControls
-#endif 
 #define ExpandMacro_RowControls(ID) \
 	class button##ID: button\
 	{\
@@ -180,9 +145,6 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 		};
 
 //#include "common_listControls.hpp"
-#ifdef ExpandMacro_ListControls
-#undef ExpandMacro_ListControls
-#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\
@@ -204,3 +166,19 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 		ExpandMacro_ListControls(10);
 	};
 };
+
+#undef _imagePath
+#undef _SX
+#undef _SY
+#undef _BW
+#undef _BH
+#undef _SMW
+#undef _LBH
+#undef _gapH
+#undef _buttonsBeforeCenter
+#undef _captionColorBG
+#undef _captionColorFG
+#undef _captionHgt
+#undef _imagePath2
+#undef ExpandMacro_RowControls
+#undef ExpandMacro_ListControls

@@ -1,4 +1,4 @@
-﻿#include "\x\cba\addons\ui\script_component.hpp"
+﻿//#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _DefaultAspectRatio 3/4
 #define _SX (safeZoneX+safeZoneW/2) // screen centre x
@@ -8,36 +8,19 @@
 #define _CX_correction 0.011*safeZoneW
 #define _CW 0.15*safeZoneW*_DefaultAspectRatio // _CH // exception // 0.10*safeZoneW // circle (button) width
 #define _CH 0.15*safeZoneH // 0.15*safeZoneW // exception safeZoneH // circle (button) height
-
-#ifdef _SMW
-#undef _SMW
-#endif  
 #define _SMW 0.21*safeZoneW // sub-menu width
-
+#define _LBH 0.033*safeZoneH // list button height
+#define _LBH_overlap 0.0375*safeZoneH // button height with 1 pixel overlap for type "popup" menu
 #define _listButtonsPerRow 10
 //#define _captionColorBG 58/256, 80/256, 55/256 // BIS mid green (button over colour)
 #define _captionColorFG 138/256, 146/256, 105/256 // BIS greenish text
 #define _captionHgt 0.85
-
 #define _gapW 0.01*safeZoneW // Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH/2-2*_BH)*2/3) // Button "height" vertical spacing
-
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 #define _imagePathCA(TOKEN) QUOTE(\ca\ui\data\TOKEN.paa)
-
-#ifdef _gapWLevel1
-#undef _gapWLevel1
-#endif  
 #define _gapWLevel1 (0.01*safeZoneW) // extra indentation required for side buttons on row 1 and 4 to reach circle edge
-
-#ifdef _gapWLevel2
-#undef _gapWLevel2
-#endif  
 #define _gapWLevel2 (0.01*safeZoneW) // extra indentation required for side buttons on row 2 and 3 to reach circle edge
-
-#ifdef _gapWRight
-#undef _gapWRight
-#endif  
 #define _gapWRight (-0.015*safeZoneW-_gapW) // extra indentation required for all right side buttons to reach circle edge
 
 #define _leftButtonLevel1X (_SX-(_CW/2+_gapW+_gapWLevel1)-_BW-_gapWRight)
@@ -58,7 +41,6 @@ class CBA_flexiMenu_rscArma2 {
 	flexiMenu_subMenuControlWidth = _SMW;
 	flexiMenu_subMenuCaptionWidth = 0.40;
 
-	//class listButton; // external ref
 	//#include "common_listClass.hpp"
 	#define _imagePath2(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\buttonList\TOKEN.paa)
 
@@ -237,9 +219,6 @@ class CBA_flexiMenu_rscArma2 {
 
 //#include "common_listControls.hpp"
 // Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
-#ifdef ExpandMacro_ListControls
-#undef ExpandMacro_ListControls
-#endif 
 #define ExpandMacro_ListControls(ID)\
 	class listButton##ID: listButton\
 	{\
@@ -280,3 +259,31 @@ class CBA_flexiMenu_rscArma2 {
 		ExpandMacro_ListControls(29);
 	};
 };
+
+#undef _DefaultAspectRatio
+#undef _SX
+#undef _SY
+#undef _BW
+#undef _BH
+#undef _CX_correction
+#undef _CW
+#undef _CH
+#undef _SMW
+#undef _LBH
+#undef _LBH_overlap
+#undef _listButtonsPerRow
+#undef _captionColorFG
+#undef _captionHgt
+#undef _gapW
+#undef _gapH
+#undef _imagePath
+#undef _imagePathCA
+#undef _gapWLevel1
+#undef _gapWLevel2
+#undef _gapWRight
+#undef _leftButtonLevel1X
+#undef _leftButtonLevel2X
+#undef _rightButtonLevel1X
+#undef _rightButtonLevel2X
+#undef _imagePath2
+#undef ExpandMacro_ListControls

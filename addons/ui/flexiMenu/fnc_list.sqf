@@ -28,14 +28,14 @@ if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
 if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
 	
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
-	_menuRsc = _menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
+	_menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
 
 // TODO: Support missionConfigFile too
 _width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_subMenuCaptionWidth");
 if (_width == 0) then {
 	player sideChat format ["Error: missing flexiMenu_subMenuCaptionWidth: %1", _menuRsc];
-	_width = _SMW;
+	_width = __SMW_default;
 };
 
 _idc = _flexiMenu_IDC_listMenuDesc;
@@ -55,7 +55,7 @@ if (_width == 0) then {
 	_width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 	if (_width == 0) then {
 		player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
-		_width = _SMW;
+		_width = __SMW_default;
 	};
 };
 
