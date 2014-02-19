@@ -19,6 +19,7 @@ if (isNil "_chan") exitWith {};
 if (isNil "_cmd") exitWith {};
 if (isNil "_objAr") exitWith {};
 
+
 _ex = false;
 if ((typeName _chan) == "OBJECT") then
 {
@@ -37,6 +38,11 @@ if ((typeName _chan) == "OBJECT") then
 if (GVAR(debug)) then
 {
 	TRACE_6("",_ex,call FUNC(id),_id,_chan,_objAr,_cmd);
+};
+
+if (isNil "_ex") then 
+{ 
+	_ex = false; 
 };
 
 if (_ex) then
