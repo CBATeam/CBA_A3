@@ -84,7 +84,7 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 //-----------------------------------------------------------------------------
 private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", 	"_t", "_w", "_idcIndex", "_idc"];
 private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled"];
-private ["_params", "_useListBox", "_menuOption", "_commitList", "_menuRscPrefix", "_source", "_width", "_list"];
+private ["_params", "_useListBox", "_menuOption", "_commitList", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
 TRACE_1("INPUT Params []",_this);
@@ -118,7 +118,7 @@ TRACE_2("Determined which dialog to show",_flexiMenu_menuProperty_ID_menuResourc
 
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
-	_menuRsc = _menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+	_menuRsc = __menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
@@ -145,7 +145,7 @@ if (_width == 0) then {
 	_width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 	if (_width == 0) then {
 		player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
-		_width = _SMW;
+		_width = __SMW_default;
 	};
 };
 
