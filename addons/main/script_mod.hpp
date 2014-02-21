@@ -3,15 +3,15 @@
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
 #define MAJOR 1
 #define MINOR 0
-#define PATCHLVL 4
-#define BUILD 198
+#define PATCHLVL 5
+#define BUILD 208
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.0
+#define REQUIRED_VERSION 1.1
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)
