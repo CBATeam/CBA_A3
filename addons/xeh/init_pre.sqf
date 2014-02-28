@@ -188,7 +188,18 @@ SLX_XEH_OTHER_EVENTS_XEH = [];
 SLX_XEH_OTHER_EVENTS_XEH_PLAYERS = [];
 { SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [count SLX_XEH_OTHER_EVENTS_XEH_PLAYERS, format["Extended_%1EH_Player", _x]] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_PLAYERS = [];
-{ SLX_XEH_OTHER_EVENTS_PLAYERS set [count SLX_XEH_OTHER_EVENTS_PLAYERS, compile format["{ _this call _x } forEach ((_this select 0)getVariable SLX_XEH_STR_%1_Player)", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+
+// HitPart is special in that the passed parameter to the event handler is an array of arrays
+{ 
+	if (_x == "HitPart") then  {
+	SLX_XEH_OTHER_EVENTS_PLAYERS set [count SLX_XEH_OTHER_EVENTS_PLAYERS, compile format["{ { _this call _x } forEach (((_this select 0) select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x]] 
+	} 
+	else 
+	{
+	SLX_XEH_OTHER_EVENTS_PLAYERS set [count SLX_XEH_OTHER_EVENTS_PLAYERS, compile format["{ { _this call _x } forEach ((_this select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x]] 
+	}
+
+} forEach SLX_XEH_OTHER_EVENTS;
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
 SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
