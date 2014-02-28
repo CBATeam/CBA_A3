@@ -9,3 +9,7 @@ addons/*.bisign
 /utils/six-arma-tools.yml
 
 *.7z
+
+/addons/CBA_Project.sublime-workspace
+
+/addons/*.lnk
