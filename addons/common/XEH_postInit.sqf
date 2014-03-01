@@ -38,10 +38,6 @@ if (isNil "BIS_functions_mainscope") then {
 
 CBA_logic = _logic;
 
-if (isNil "RE" && {isNil "BIS_MPF_logic"} && {isClass(configFile >> "CfgPatches" >> "CA_Modules")}) then {
-	LOG("Initialising the MP module early.");
-	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
-};
 SLX_XEH_STR spawn {
 	_done = false;
 	while {true} do {
