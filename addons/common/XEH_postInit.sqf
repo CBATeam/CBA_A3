@@ -108,8 +108,10 @@ if !(isDedicated) then {
 			// Add actions to new vehicle.
 			_veh = vehicle player;
 			_actionIndexes = [];
-			[GVAR(actionList), { PUSH(_actionIndexes,_veh addAction _value) }] call CBA_fnc_hashEachPair;
-			TRACE_2("Added actions",_veh,count _actionIndexes);
+			TRACE_3("Before Adding actions",_veh,count _actionIndexes, GVAR(actionList));
+			[GVAR(actionList), { TRACE_3("Inside the code for the hashPair",_veh,_actionIndexes, _value); PUSH(_actionIndexes, if (TypeName(_value) =="ARRAY") then {_veh addAction _value}) }] call CBA_fnc_hashEachPair;
+			TRACE_3("Added actions",_veh,count _actionIndexes, GVAR(actionList));
+			
 			waitUntil {
 				sleep 1;
 				(vehicle player) != _veh || {!alive player} || {GVAR(actionListUpdated)}
@@ -119,7 +121,7 @@ if !(isDedicated) then {
 			GVAR(actionListUpdated) = false;
 			{ _veh removeAction _x } foreach _actionIndexes;
 	
-			TRACE_2("Removed actions",_veh,count _actionIndexes);
+			TRACE_2("Removed actions",_veh,count _actionIndexes,GVAR(actionList));
 	
 			sleep 1;
 		};
