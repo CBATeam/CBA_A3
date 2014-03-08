@@ -22,7 +22,7 @@ _hash = [5, [4], [1], 2]; // Not a real hash.
 ASSERT_FALSE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
 ASSERT_FALSE([5] call CBA_fnc_isHash,"CBA_fnc_isHash");
 
-// Putting in and retreiving values.
+// Putting in and retrieving values.
 _hash = [] call CBA_fnc_hashCreate;
 ASSERT_DEFINED("_hash","hashSet/Get");
 ASSERT_TRUE([_hash] call CBA_fnc_isHash,"CBA_fnc_isHash");
@@ -79,6 +79,6 @@ ASSERT_OP(_result,==,1,"hashSet/Get");
 
 [_hash, "frog", nil] call CBA_fnc_hashSet;
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
-ASSERT_TRUE(_result == "UNDEF","hashSet/Get");
+ASSERT_TRUE(isNil "_result","hashSet/Get");
 
 nil;

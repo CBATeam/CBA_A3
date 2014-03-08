@@ -1,5 +1,5 @@
 x\cba\addons\hashes
 prefix=x\cba\addons\hashes
 product=Arma 3
-version=002
+version=003
 Pbo Type is: Arma

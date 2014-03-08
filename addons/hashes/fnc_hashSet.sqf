@@ -26,8 +26,7 @@ private ["_hash","_key", "_value","_index", "_isDefault"];
 // ----------------------------------------------------------------------------
 PARAMS_3(_hash,_key,_value);
 
-//_value can no longer be nil. We will use what Karel from BI uses: "UNDEF" -VM
-if (isNil "_value") then { _value = "UNDEF"};
+if (isNil "_value") then { _value = nil};
 if (isNil "_key") exitWith {_hash};
 if (isNil "_hash") exitWith {_hash;};
 
@@ -35,7 +34,7 @@ if (isNil "_hash") exitWith {_hash;};
 if (isNil "BIS_fnc_areEqual") then { LOG( "WARNING: BIS_fnc_areEqual is Nil") };
 
 // Work out whether the new value is the default value for this assoc.
-_isDefault = [if (isNil "_value") then { "UNDEF" } else { _value },
+_isDefault = [if (isNil "_value") then { nil } else { _value },
 	_hash select HASH_DEFAULT_VALUE] call (uiNamespace getVariable "BIS_fnc_areEqual");
 
 _index = (_hash select HASH_KEYS) find _key;
