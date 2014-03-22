@@ -80,17 +80,17 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 };
 
 FUNC(initPerFrameHandlers) = {
-	if (!isNil "BIS_fnc_addStackedEventHandler") then {
-		["CBA_PFH", "onEachFrame", QUOTE(FUNC(onFrame))] call BIS_fnc_addStackedEventHandler;
-	} else {
-		// Fallback to the old system
+	if (isNil "BIS_fnc_addStackedEventHandler") then {
 		7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
-
-		GVAR(lastFrameRender) = diag_frameNo;
-		// Use a trigger, runs every 0.5s, unscheduled execution
-		GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
-		GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
+	} else {
+		// Use the new, stacked onEachFrame system
+		["CBA_PFH", "onEachFrame", QUOTE(FUNC(onFrame))] call BIS_fnc_addStackedEventHandler;
 	};
+	
+	GVAR(lastFrameRender) = diag_frameNo;
+	// Use a trigger, runs every 0.5s, unscheduled execution
+	GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
+	GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
 };
 
 // Run the per frame handler init code, bringing up the hidden map control

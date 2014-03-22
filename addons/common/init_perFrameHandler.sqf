@@ -110,19 +110,27 @@ FUNC(monitorFrameRender) = {
 	disableSerialization;
 	TRACE_1("Monitor frame render loop",nil);
 	// Check if the PFH died for some reason.
-	_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
-	if (isNil "_pfhIdd") then {
-		7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
-	} else {
-		if (isNull _pfhIdd) then {
+	if (isNil "BIS_fnc_addStackedEventHandler") then {
+		_pfhIdd = uiNamespace getVariable "CBA_PFHIDD";
+		if (isNil "_pfhIdd") then {
 			7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
+		} else {
+			if (isNull _pfhIdd) then {
+				7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
+			};
 		};
 	};
+	
 	// check to see if the frame-render hasn't run in > 1 frame.
 	// if it hasnt, pick it up for now
 	if ( abs(diag_frameNo - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
 		TRACE_1("Executing frameRender",nil);
-		call FUNC(onFrame);
+		if (isNil "BIS_fnc_addStackedEventHandler") then {
+			call FUNC(onFrame);
+		} else {
+			// Restore the onEachFrame handler
+			["CBA_PFH", "onEachFrame", QUOTE(FUNC(onFrame))] call BIS_fnc_addStackedEventHandler;
+		};
 	};
 };
 
