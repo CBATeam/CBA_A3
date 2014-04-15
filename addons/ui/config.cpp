@@ -4,7 +4,7 @@ class CfgPatches {
 	class cba_ui {
 		units[] = {};
 		requiredVersion = 1;
-		requiredAddons[] = { "CBA_common" };
+		requiredAddons[] = { "CBA_common", "CBA_arrays" };
 		version = VERSION;
 		author[] = {"Dr Eyeball"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
