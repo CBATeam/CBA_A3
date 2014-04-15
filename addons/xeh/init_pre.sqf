@@ -214,7 +214,7 @@ SLX_XEH_EVENTS_NAT = [XEH_EVENTS];
 SLX_XEH_EVENTS_FULL_NAT = [];
 { SLX_XEH_EVENTS_FULL_NAT set [count SLX_XEH_EVENTS_FULL_NAT, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_EVENTS_NAT;
 
-SLX_XEH_EXCLUDES = ["LaserTarget"]; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
+SLX_XEH_EXCLUDES = ["LaserTarget","ParachuteBase"]; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup - TODO: Performance test.. Could use object with a variable space, classname as key
 SLX_XEH_FULL_CLASSES = []; // Used to cache classes that NEED full XEH setup
 SLX_XEH_EXCL_CLASSES = []; // Used for exclusion classes
