@@ -81,7 +81,7 @@ class FSM
   initState="Start";
   finalStates[] =
   {
-    "END",
+    "END"
   };
 };
 /*%FSM</COMPILE>*/
