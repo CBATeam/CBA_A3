@@ -16,8 +16,6 @@ fuel               = "_this call SLX_XEH_EH_Fuel"; \
 gear               = "_this call SLX_XEH_EH_Gear"; \
 getIn              = "_this call SLX_XEH_EH_GetIn"; \
 getOut             = "_this call SLX_XEH_EH_GetOut"; \
-//handleDamage      = "_this call SLX_XEH_EH_HandleDamage"; \
-//handleHeal        = "_this call SLX_XEH_EH_HandleHeal"; \
 hit                = "_this call SLX_XEH_EH_Hit"; \
 hitPart            = "_this call SLX_XEH_EH_HitPart"; \
 incomingMissile    = "_this call SLX_XEH_EH_IncomingMissile"; \
@@ -25,12 +23,15 @@ killed             = "_this call SLX_XEH_EH_Killed"; \
 landedTouchDown    = "_this call SLX_XEH_EH_LandedTouchDown"; \
 landedStopped      = "_this call SLX_XEH_EH_LandedStopped"; \
 local              = "_this call SLX_XEH_EH_Local"; \
-//mpHit             = "_this call SLX_XEH_EH_MPHit"; \
-//mpKilled          = "_this call SLX_XEH_EH_MPKilled"; \
-//mpRespawn         = "_this call SLX_XEH_EH_MPRespawn";
 respawn            = "_this call SLX_XEH_EH_Respawn"; \
 put                = "_this call SLX_XEH_EH_Put"; \
 take               = "_this call SLX_XEH_EH_Take"; \
 weaponAssembled    = "_this call SLX_XEH_EH_WeaponAssembled"; \
 weaponDisAssembled = "_this call SLX_XEH_EH_WeaponDisassembled";
+
+//handleDamage      = "_this call SLX_XEH_EH_HandleDamage"; \
+//handleHeal        = "_this call SLX_XEH_EH_HandleHeal"; \
+//mpHit             = "_this call SLX_XEH_EH_MPHit"; \
+//mpKilled          = "_this call SLX_XEH_EH_MPKilled"; \
+//mpRespawn         = "_this call SLX_XEH_EH_MPRespawn";
 
