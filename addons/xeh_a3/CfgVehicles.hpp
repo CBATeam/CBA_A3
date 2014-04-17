@@ -3,23 +3,23 @@ class CfgVehicles {
                 class EventHandlers { EXTENDED_EVENTHANDLERS };
         };
         class ArtilleryTarget: All {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class FireSectorTarget: All {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class LaserTarget: All  {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class NVTarget: All  {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class Air;
         class Helicopter: Air {
                 class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class ParachuteBase: Helicopter {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class Plane: Air {
                 class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
@@ -27,7 +27,7 @@ class CfgVehicles {
         class PlaneWreck;
         class Plane_Fighter_03_wreck_F: PlaneWreck
         {
-                SLX_XEH_DISABLED = 1;
+                XEH_DISABLED;
         };
         class StaticWeapon;
         class StaticCannon: StaticWeapon {
