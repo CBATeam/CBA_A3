@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 LOG(MSG_INIT);
 // Why would we send __SERVER__ to an on PLAYER connected event,

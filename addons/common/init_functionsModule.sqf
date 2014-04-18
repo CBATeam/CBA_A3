@@ -1,7 +1,7 @@
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 scriptName "CBA\common\init_functionsModule";
 
@@ -44,8 +44,8 @@ if (BIS_fnc_init && {!_recompile}) exitWith {};  // A3 build 0.11.103003 => obse
 
 LOG("CBA: Initialising the Functions module early.");
 // The call is used to convert the code to an array
-if {isNil "GVAR(BIS_functions_list)"} then { GVAR(BIS_functions_list) = call (uiNamespace getVariable "BIS_functions_list"); };
-if {isNil "GVAR(BIS_functions_listForced)"} then { GVAR(BIS_functions_listForced) = call (uiNamespace getVariable "BIS_functions_listForced"); };
+if (isNil QGVAR(BIS_functions_list)) then { GVAR(BIS_functions_list) = call (uiNamespace getVariable "BIS_functions_list"); };
+if (isNil QGVAR(BIS_functions_listForced)) then { GVAR(BIS_functions_listForced) = call (uiNamespace getVariable "BIS_functions_listForced"); };
 
 
 //-----------------------------------------------------------------------------
