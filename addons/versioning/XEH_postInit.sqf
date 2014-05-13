@@ -13,9 +13,9 @@ if (!SLX_XEH_DisableLogging) then {
 	diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
 };
 
-// Depency check and warn
+// Dependency check and warn
 [GVAR(dependencies), {
-	private ["_mod", "_data", "_class", "_f"];
+	private ["_mod", "_data", "_class", "_f","_dependencyIsPresent"];
 	_f = {
 		diag_log text _this;
 		sleep 1;
@@ -25,7 +25,8 @@ if (!SLX_XEH_DisableLogging) then {
 		_mod = _x select 0;
 		_data = _x select 1;
 		_class = (configFile >> "CfgPatches" >> (_data select 0));
-		if (call compile(_data select 2)) then {
+		missionNamespace setVariable ["_dependencyIsPresent", _data select 2];
+		if (_dependencyIsPresent) then {
 			if !(isClass(_class)) then {
 				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _data select 0, _mod, _data select 1] spawn _f;
 			} else {
