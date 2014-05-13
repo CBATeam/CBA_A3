@@ -1,5 +1,5 @@
 x\cba\addons\xeh_a3
 prefix=x\cba\addons\xeh_a3
 product=Arma 3
-version=005
+version=006
 Pbo Type is: Arma
