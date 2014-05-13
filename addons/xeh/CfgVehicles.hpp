@@ -5,7 +5,7 @@ class CfgVehicles {
 	class Static: All {
 		XEH_DISABLED;
 	};
-	class Static: All {
+	class Thing: All {
 		XEH_DISABLED;
 	};
 	class LandVehicle;
