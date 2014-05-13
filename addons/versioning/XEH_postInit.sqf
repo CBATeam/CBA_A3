@@ -15,7 +15,7 @@ if (!SLX_XEH_DisableLogging) then {
 
 // Dependency check and warn
 [GVAR(dependencies), {
-	private ["_mod", "_data", "_class", "_f","_dependencyIsPresent"];
+	private ["_mod", "_dependencyInfo", "_class", "_f","_dependencyIsPresent"];
 	_f = {
 		diag_log text _this;
 		sleep 1;
@@ -23,18 +23,18 @@ if (!SLX_XEH_DisableLogging) then {
 	};
 	{
 		_mod = _x select 0;
-		_data = _x select 1;
-		_class = (configFile >> "CfgPatches" >> (_data select 0));
-		missionNamespace setVariable ["_dependencyIsPresent", _data select 2];
+		_dependencyInfo = _x select 1;
+		_class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
+		missionNamespace setVariable ["_dependencyIsPresent", _dependencyInfo select 2];
 		if (_dependencyIsPresent) then {
 			if !(isClass(_class)) then {
-				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _data select 0, _mod, _data select 1] spawn _f;
+				format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1] spawn _f;
 			} else {
 				if !(isArray(_class >> "versionAr")) then {
-					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _key, _data select 0, _mod, _data select 1] spawn _f;
+					format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1] spawn _f;
 				} else {
-					if ([_data select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
-						format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _data select 0, _mod, _data select 1, getArray(_class >> "versionAr")] spawn _f;
+					if ([_dependencyInfo select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
+						format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1, getArray(_class >> "versionAr")] spawn _f;
 					};
 				};
 			};
