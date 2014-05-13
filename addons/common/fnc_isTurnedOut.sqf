@@ -19,7 +19,7 @@ Examples:
 	(end)
 
 Author:
-	commy2, BWMod
+	commy2, Task Force Radio
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
