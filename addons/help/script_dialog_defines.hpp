@@ -1,4 +1,4 @@
-#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "defineCommonGrids.inc"
 
 #define __X SafeZoneX
 #define __Y SafeZoneY
