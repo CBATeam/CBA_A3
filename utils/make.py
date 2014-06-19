@@ -177,7 +177,7 @@ def find_bi_tools(work_drive):
 	except:
 		raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
-	addonbuilder_path = os.path.join(arma3tools_path, "AddonBuilder.exe")
+	addonbuilder_path = os.path.join(arma3tools_path, "AddonBuilder", "AddonBuilder.exe")
 	dssignfile_path = os.path.join(arma3tools_path, "DSSignFile", "DSSignFile.exe")
 	dscreatekey_path = os.path.join(arma3tools_path, "DSSignFile", "DSCreateKey.exe")
 
