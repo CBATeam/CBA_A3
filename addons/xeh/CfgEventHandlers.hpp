@@ -40,6 +40,8 @@ class Extended_Hit_EventHandlers {};
 class Extended_HitPart_EventHandlers {};
 class Extended_Init_EventHandlers {};
 class Extended_IncomingMissile_EventHandlers {};
+class Extended_InventoryClosed_EventHandlers {};
+class Extended_InventoryOpened_EventHandlers {};
 class Extended_Killed_EventHandlers {};
 class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LandedStopped_EventHandlers {};
@@ -52,6 +54,7 @@ class Extended_MPRespawn_EventHandlers {};
 */
 class Extended_Put_EventHandlers {};
 class Extended_Take_EventHandlers {};
+class Extended_SoundPlayed_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
 

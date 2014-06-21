@@ -26,6 +26,7 @@ local              = "_this call SLX_XEH_EH_Local"; \
 respawn            = "_this call SLX_XEH_EH_Respawn"; \
 put                = "_this call SLX_XEH_EH_Put"; \
 take               = "_this call SLX_XEH_EH_Take"; \
+soundPlayed        = "_this call SLX_XEH_EH_SoundPlayed"; \
 weaponAssembled    = "_this call SLX_XEH_EH_WeaponAssembled"; \
 weaponDisAssembled = "_this call SLX_XEH_EH_WeaponDisassembled";
 
