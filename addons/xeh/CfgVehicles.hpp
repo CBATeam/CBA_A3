@@ -5,6 +5,10 @@ class CfgVehicles {
 	class Static: All {
 		XEH_DISABLED;
 	};
+	class Strategic;
+	class ReammoBox: Strategic {
+		XEH_ENABLED;
+	}
 	class Thing: All {
 		XEH_DISABLED;
 	};

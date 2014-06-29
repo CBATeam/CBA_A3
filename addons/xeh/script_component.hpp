@@ -17,8 +17,9 @@
 	"Dammaged", "Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
 	"Explosion", "Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", \
 	/* "HandleDamage", "HandleHeal", */ "Hit", "HitPart", "IncomingMissile", \
+	"InventoryClosed", "InventoryOpened", \
 	"Killed", "LandedTouchDown", "LandedStopped", "Local", /* "MPHit", */ \
-	/* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", \
+	/* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", "SoundPlayed", \
 	"WeaponAssembled", "WeaponDisassembled"
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 

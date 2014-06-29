@@ -1252,6 +1252,7 @@ Author:
 
 // XEH Specific
 #define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
+#define XEH_ENABLED class EventHandlers { EXTENDED_EVENTHANDLERS }; delete SLX_XEH_DISABLED
 
 // TODO: These are actually outdated; _Once ?
 #define XEH_PRE_INIT QUOTE(call COMPILE_FILE(XEH_PreInit_Once))

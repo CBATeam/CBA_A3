@@ -19,6 +19,8 @@ getOut             = "_this call SLX_XEH_EH_GetOut"; \
 hit                = "_this call SLX_XEH_EH_Hit"; \
 hitPart            = "_this call SLX_XEH_EH_HitPart"; \
 incomingMissile    = "_this call SLX_XEH_EH_IncomingMissile"; \
+inventoryClosed    = "_this call SLX_XEH_EH_InventoryClosed"; \
+inventoryOpened    = "_this call SLX_XEH_EH_InventoryOpened"; \
 killed             = "_this call SLX_XEH_EH_Killed"; \
 landedTouchDown    = "_this call SLX_XEH_EH_LandedTouchDown"; \
 landedStopped      = "_this call SLX_XEH_EH_LandedStopped"; \
@@ -26,6 +28,7 @@ local              = "_this call SLX_XEH_EH_Local"; \
 respawn            = "_this call SLX_XEH_EH_Respawn"; \
 put                = "_this call SLX_XEH_EH_Put"; \
 take               = "_this call SLX_XEH_EH_Take"; \
+soundPlayed        = "_this call SLX_XEH_EH_SoundPlayed"; \
 weaponAssembled    = "_this call SLX_XEH_EH_WeaponAssembled"; \
 weaponDisAssembled = "_this call SLX_XEH_EH_WeaponDisassembled";
 
