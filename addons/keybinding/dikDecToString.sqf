@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 GVAR(dikDecToStringTable) = [
 ["-1", ""],
 ["0", "No key"],

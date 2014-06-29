@@ -5,7 +5,7 @@ class CfgPatches
 	{
 		units[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = { "CBA_common", "CBA_XEH" };
+		requiredAddons[] = { "CBA_common", "CBA_XEH", "A3_UI_F" };
 		version = VERSION;
 		author[] = {"Taosenai"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
@@ -15,6 +15,6 @@ class CfgPatches
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
-#include "gui\keybinding_gui.hpp"
+#include "gui\gui.hpp"
 
 
