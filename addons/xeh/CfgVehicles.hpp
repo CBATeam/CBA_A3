@@ -8,7 +8,7 @@ class CfgVehicles {
 	class Strategic;
 	class ReammoBox: Strategic {
 		XEH_ENABLED;
-	}
+	};
 	class Thing: All {
 		XEH_DISABLED;
 	};
