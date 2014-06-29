@@ -55,6 +55,6 @@ _trg = createTrigger["EmptyDetector", _pos];
 if (count _area>0) then { _trg setTriggerArea _area };
 if (count _activation>0) then { _trg setTriggerActivation _activation };
 if (count _statements>0) then { _trg setTriggerStatements _statements };
-if (_name != "") then { call compile format["%1 = _trg", _name] };
+if (_name != "") then { missionNamespace setVariable[format["%1",_name],_trg]; };   
 
 [_trg, _this]
