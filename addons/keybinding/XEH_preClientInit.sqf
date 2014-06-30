@@ -39,7 +39,9 @@ GVAR(waitingForInput) = false;
 //                ],
 //   ]
 // ]
-profileNamespace setVariable [QGVAR(registry), []];
+// 
+// This clears the keybind registry.
+// profileNamespace setVariable [QGVAR(registry), []];
 
 // Temporary array that tracks loaded key handlers for specified keybinds.
 // Format: Array of arrays

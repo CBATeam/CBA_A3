@@ -32,12 +32,11 @@ Author:
 // Clients only.
 if (isDedicated) exitWith {};
 
-// Parse parameters.
-_modName = [_this, 0, nil, [""]] call bis_fnc_param;
-_actionName = [_this, 1, nil, [""]] call bis_fnc_param;
-_functionName = [_this, 2, nil, [""]] call bis_fnc_param;
-_defaultKeybind = [_this, 3, [-1, false, false, false], [[]], 4] call bis_fnc_param;
-_overwrite = [_this, 4, false, [false, true]] call bis_fnc_param;
+_nullKeybind = [-1,false,false,false];
+
+PARAMS_3(_modName,_actionName,_functionName);
+DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
+DEFAULT_PARAM(4,_overwrite,false);
 
 // Get a local copy of the keybind registry.
 _registry = profileNamespace getVariable [QGVAR(registry), []];
@@ -90,13 +89,18 @@ if (_index > -1) then {
 
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
-	// Increment the event handler ID source.
-	GVAR(ehCounter) = _ehID + 1;
 
-	// Add new key handler with updated data if a key is specified.
-	if (_dikCode != -1) then { // A DIK of -1 signifies "no key set"
+	if (_dikCode != -1) then {  // A DIK code of -1 signifies "no key set"
+		// Increment the event handler ID source.
+		GVAR(ehCounter) = _ehID + 1;
+
 		// Add CBA key handler.
 		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], "keydown", format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+
+	} else {
+		// No key handler will be created, so set ehID to -1 so that no removal will
+		// be attempted on update.
+		_ehID = -1;
 	};
 
 	// Update the handler tracker array.
@@ -109,12 +113,18 @@ if (_index > -1) then {
 
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
-	// Increment the event handler ID source.
-	GVAR(ehCounter) = _ehID + 1;
 
-	if (_dikCode != -1) then { // A DIK of -1 signifies "no key set"
+	if (_dikCode != -1) then {  // A DIK code of -1 signifies "no key set"
+		// Increment the event handler ID source.
+		GVAR(ehCounter) = _ehID + 1;
+
 		// Add CBA key handler.
 		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], "keydown", format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+
+	} else {
+		// No key handler will be created, so set ehID to -1 so that no removal will
+		// be attempted on update.
+		_ehID = -1;
 	};
 
 	// Add to handler tracker array.

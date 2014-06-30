@@ -43,6 +43,7 @@ if (!isNull _display) then { // Make sure user hasn't exited dialog before conti
 	};
 
 	// Re-register the handler, overwriting old keypressdata.
+	player sidechat format ["%1", [_modName, _actionName, _functionName, _keyPressData, true]];
 	[_modName, _actionName, _functionName, _keyPressData, true] call cba_fnc_registerKeybind;
 
 	// Update the main dialog.

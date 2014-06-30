@@ -26,8 +26,7 @@ Author:
 
 #include "script_component.hpp"
 
-_modName = [_this, 0, nil, [""]] call bis_fnc_param;
-_actionName = [_this, 1, nil, [""]] call bis_fnc_param;
+PARAMS_2(_modName,_actionName);
 
 // Iterate over all entries in the keybinding registry, searching for the mod 
 // and action.
