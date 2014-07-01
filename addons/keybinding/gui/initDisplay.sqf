@@ -23,7 +23,7 @@ _addonsGroup ctrlEnable false;
 
 if (isNil "cba_fnc_registerKeybind") then {
 	// XEH PreInit has not run yet, so we need to prepare this function right now.
-	FUNC(onButtonClick) = compile preprocessFileLineNumbers "\x\cba\addons\keybinding\gui\fnc_onButtonClick.sqf";
+	FUNC(onButtonClick_configure) = compile preprocessFileLineNumbers "\x\cba\addons\keybinding\gui\fnc_onButtonClick_configure.sqf";
 
 	_lb = _display displayCtrl 202;
 	_lb lnbAddRow ["You must load a mission to view/change these controls."];

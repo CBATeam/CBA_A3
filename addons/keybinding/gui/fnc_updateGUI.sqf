@@ -80,11 +80,15 @@ if !(isNull _display) then {
 			if (_shift) then {_keyString = format ["Shift+%1", _keyString]};	
 			if (_alt) then {_keyString = format ["Alt+%1", _keyString]};
 			if (_ctrl) then {_keyString = format ["Ctrl+%1", _keyString]};
+			if (_keyString != "") then {
+				// Add quotes around whole string.
+				_keyString = format ["""%1""", _keyString]
+			};
 
 			// Add the row.
 			_lb lnbAddRow [_actionName, _keyString];
 			// Set row data to the index of the action in the binds registry.
-			_lb lnbSetData [[_forEachIndex, 1], format ["%1", _index]];
+			_lb lnbSetData [[_forEachIndex, 1], _keyString];
 
 		} foreach _curActions;
 	};

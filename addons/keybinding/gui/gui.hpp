@@ -31,7 +31,7 @@ class RscDisplayConfigure {
 		class CBA_ButtonConfigureAddons : RscButtonMenuOK {
 			idc = 4302;
 			text = "Configure Addons";
-			onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick";
+			onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_configure";
 			x = "20.15 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX)";
 			y = "23 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))";
 			w = "12.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -70,7 +70,7 @@ class RscDisplayConfigure {
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					h = "15.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					h = "12.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 				class CBA_AddonsCA_ControlsPageText : RscText {
 					sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -104,11 +104,11 @@ class RscDisplayConfigure {
 
 					onLBDblClick = "_this spawn cba_keybinding_fnc_onLBDblClick";
 
-					rowHeight = 0.050;
+					rowHeight = 0.042;
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					h = "15.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					h = "12.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 				class CBA_AddonsTextAction : RscText {
 					idc = 2003;
@@ -127,6 +127,34 @@ class RscDisplayConfigure {
 					w = "14 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					colorBackground[] = {0,0,0,1};
+				};
+				class CBA_B_Delete : RscButtonMenu {
+					idc = 204;
+					text = "$STR_DISP_DELETE";
+					x = "6.85 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					y = "16.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+
+					onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_delete";
+				};
+				class CBA_ButtonDefault : RscButtonMenu {
+					idc = 205;
+					text = "$STR_DISP_DEFAULT";
+					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					y = "16.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+
+					onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_default";
+				};
+				class CBA_TextHelp: RscText {
+					idc = 206;
+					text = "Double click any action to change its binding";
+					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					y = "20.3 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "24 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 			};
 		};

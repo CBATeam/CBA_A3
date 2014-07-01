@@ -7,7 +7,9 @@ ADDON = false;
 call COMPILE_FILE(dikDecToString);
 
 // Prepare GUI functions and variables.
-PREP_SUB(gui,onButtonClick);
+PREP_SUB(gui,onButtonClick_configure);
+PREP_SUB(gui,onButtonClick_delete);
+PREP_SUB(gui,onButtonClick_default);
 PREP_SUB(gui,onComboChanged);
 PREP_SUB(gui,onKeyDown);
 PREP_SUB(gui,onLBDblClick);
@@ -41,7 +43,7 @@ GVAR(waitingForInput) = false;
 // ]
 // 
 // This clears the keybind registry.
-// profileNamespace setVariable [QGVAR(registry), []];
+// profileNamespace setVariable ["cba_keybinding_registry", []];
 
 // Temporary array that tracks loaded key handlers for specified keybinds.
 // Format: Array of arrays

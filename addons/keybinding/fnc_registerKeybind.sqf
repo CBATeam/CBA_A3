@@ -48,15 +48,24 @@ _handlerTracker = GVAR(handlers);
 _modKeybinds = [_registry, _modName] call bis_fnc_getFromPairs;
 if (isNil "_modKeybinds") then {
 	// If nil, add the mod to the registry an empty array of keybinds.
-	[_registry, _modName, []] call bis_fnc_setToPairs;
 	_modKeybinds = [];
+	[_registry, _modName, _modKeybinds] call bis_fnc_setToPairs;
 };
 
 // Get the existing keypress data for the action.
-_keybind = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
+_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
+// Only need the assigned data, not the default.
+_keybind = _keybindData select 0;
+
+// If nil or overwrite specified, set the default keybind to the action.
 if (isNil "_keybind" || _overwrite) then {
-	// If nil or overwrite specified, set the default keybind to the action.
-	[_modKeybinds, _actionName, _defaultKeybind] call bis_fnc_setToPairs;
+	// Only change the stored default keybinding when it was nil.
+	if (_overwrite) then {
+		[_modKeybinds, _actionName, [_defaultKeybind, _keybindData select 1]] call bis_fnc_setToPairs;
+	} else {
+		[_modKeybinds, _actionName, [_defaultKeybind, _defaultKeybind]] call bis_fnc_setToPairs;
+	};
+
 	_keybind = _defaultKeybind;
 
 	// Update local registry.
