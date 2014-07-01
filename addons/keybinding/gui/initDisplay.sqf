@@ -12,6 +12,11 @@ _addonsGroup = _display displayctrl 4301;
 _addonsGroup ctrlShow false;
 _addonsGroup ctrlEnable false;
 
+// Hide fake keyboard button on display init.
+_fakeKeyboardButton = _display displayctrl 4303; 
+_fakeKeyboardButton ctrlShow false;
+_fakeKeyboardButton ctrlEnable false;
+
 // Check if a mission has been started and functions initialized. We can't do anything from this dialog if not,
 // because CBA does not (can not) run init scripts until mission start, and CfgFunctions will not run preInit = 1
 // scripts until mission start as well.

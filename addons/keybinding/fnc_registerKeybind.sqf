@@ -9,6 +9,7 @@ Parameters:
  "modName"  String, name of the registering mod.
  "actionName"  String, name of the action to register.
  "functionName"  String, name of the function to call when key is pressed.
+ 			     If you don't want to register a function, pass "nil".
  _defaultKeybind  Array, the default keybind in the format
                 [DIK code, shift?, ctrl?, alt?] (? indicates true/false)
 
@@ -17,7 +18,7 @@ Parameters:
              False by default.
 
 Returns:
- Returns true on success.
+ Returns the current keybind for the action.
 
 Examples:
  ["your_mod", "your_action", "your_mod_fnc_openMenu", [15, true, true, true]]
@@ -99,7 +100,7 @@ if (_index > -1) then {
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
 
-	if (_dikCode != -1) then {  // A DIK code of -1 signifies "no key set"
+	if (_dikCode != -1 && _functionName != "nil") then {  // A DIK code of -1 signifies "no key set"
 		// Increment the event handler ID source.
 		GVAR(ehCounter) = _ehID + 1;
 
@@ -123,7 +124,7 @@ if (_index > -1) then {
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
 
-	if (_dikCode != -1) then {  // A DIK code of -1 signifies "no key set"
+	if (_dikCode != -1 && _functionName != "nil") then {  // A DIK code of -1 signifies "no key set"
 		// Increment the event handler ID source.
 		GVAR(ehCounter) = _ehID + 1;
 
@@ -142,5 +143,4 @@ if (_index > -1) then {
 	GVAR(handlers) = _handlerTracker;
 };
 
-
-true;
+_keybind;

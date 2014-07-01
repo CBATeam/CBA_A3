@@ -29,15 +29,13 @@ GVAR(waitingForInput) = false;
 // Format: Associative array. Access with bis_fnc_getFromPairs.
 // [
 //   ["modName1", [
-//                  ["actionName1", keybind],
-//                  ["actionName2", keybind],
-//                  ["actionName3", keybind]
+//                  ["actionName1", [currentKeybind, defaultKeybind]],
+//                  ["actionName2", [currentKeybind, defaultKeybind]],
+//                  ["actionName3", [currentKeybind, defaultKeybind]]
 //                ],
 //   ],
 //   ["modName2", [
-//                  ["actionName1", keybind],
-//                  ["actionName2", keybind],
-//                  ["actionName3", keybind]
+//                  ["actionName1", [currentKeybind, defaultKeybind]]
 //                ],
 //   ]
 // ]

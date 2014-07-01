@@ -38,6 +38,16 @@ class RscDisplayConfigure {
 			h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 
+		class CBA_FakeButtonKeyboard: RscButtonMenu
+		{
+			idc = 4303;
+			text = "$STR_A3_RscDisplayConfigure_ButtonKeyboard";
+			x = "1 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX)";
+			y = "2.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))";
+			w = "8 * (((safezoneW / safezoneH) min 1.2) / 40)";
+			h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+		};
+
 		class CBA_AddonsGroup : RscControlsGroup {
 			class VScrollbar : VScrollbar {
 				width = 0;

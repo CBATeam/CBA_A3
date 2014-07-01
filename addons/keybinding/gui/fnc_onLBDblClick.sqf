@@ -3,18 +3,25 @@
 disableSerialization;
 
 _display = uiNamespace getVariable "RscDisplayConfigure";
-_ctrl = _this select 0;
-_idx = _this select 1;
+
+// Get listnbox
+_lnb = _display displayCtrl 202;
+// Get currently selected index
+_lnbIndex = lnbCurSelRow _lnb;
+// Get combobox
+_combo = _display displayCtrl 208;
+// Get the mod selected in the comobo
+_comboMod = _combo lbText (lbCurSel _combo);
 
 // Don't allow multiple keys to be changed at once.
 if (GVAR(waitingForInput)) exitWith {};
 
 // Get handler tracker index for key stored in listbox
-_index = parseNumber (_ctrl lnbData [_idx, 1]);
+_handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
 
 // Get entry from handler tracker array
 _handlerTracker = GVAR(handlers);
-_keyConfig = _handlerTracker select _index;
+_keyConfig = _handlerTracker select _handlerIndex;
 _modName = _keyConfig select 0;
 _actionName = _keyConfig select 1;
 _oldKeyData = _keyConfig select 2;
@@ -27,11 +34,11 @@ GVAR(input) = [];
 GVAR(waitingForInput) = true;
 
 // Update box content to indicate that we're waiting for input.
-_ctrl lnbSetText [[_idx, 1], "Press key or Esc to cancel"];
-_ctrl lnbSetColor [[_idx, 1], [1,0,0,1]];
+_lnb lnbSetText [[_lnbIndex, 1], "Press key or Esc to cancel"];
+_lnb lnbSetColor [[_lnbIndex, 1], [1,0,0,1]];
 
-// Wait for input.
-waitUntil {count GVAR(input) > 0 || !GVAR(waitingForInput)};
+// Wait for input, selection, or mod change.
+waitUntil {count GVAR(input) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbText (lbCurSel _combo))};
 
 if (GVAR(waitingForInput)) then {
 	// Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.
@@ -41,13 +48,11 @@ if (GVAR(waitingForInput)) then {
 		// Get stored keypress data.
 		_keyPressData = GVAR(input);
 
-		// If Esc was pressed, update the key to be blank.
-		if (_keyPressData select 0 == 1) then {
-			_keyPressData = [-1, false, false, false];
+		// If a valid key other than Escape was pressed,
+		if (_keyPressData select 0 != 1) then {
+			// Re-register the handler, overwriting old keypressdata.
+			[_modName, _actionName, _functionName, _keyPressData, true] call cba_fnc_registerKeybind;
 		};
-
-		// Re-register the handler, overwriting old keypressdata.
-		[_modName, _actionName, _functionName, _keyPressData, true] call cba_fnc_registerKeybind;
 
 		// Update the main dialog.
 		[] call FUNC(updateGUI);

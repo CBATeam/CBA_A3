@@ -3,20 +3,21 @@
 disableSerialization;
 
 // Get button
-_ctrl = _this select 0;
+_button = _this select 0;
 // Get dialog
 _display = uiNamespace getVariable "RscDisplayConfigure";
+
 // Get listnbox
 _lnb = _display displayCtrl 202;
 // Get currently selected index
-_idx = lnbCurSelRow _lnb;
+_lnbIndex = lnbCurSelRow _lnb;
 
 // Get handler tracker index for key stored in listbox
-_index = parseNumber (_ctrl lnbData [_idx, 1]);
+_handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
 
 // Get entry from handler tracker array
 _handlerTracker = GVAR(handlers);
-_keyConfig = _handlerTracker select _index;
+_keyConfig = _handlerTracker select _handlerIndex;
 _modName = _keyConfig select 0;
 _actionName = _keyConfig select 1;
 _oldKeyData = _keyConfig select 2;

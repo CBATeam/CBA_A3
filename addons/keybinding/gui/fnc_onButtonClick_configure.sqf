@@ -12,6 +12,7 @@ _KeyboardGroup = _display displayctrl 2300;
 _MouseGroup = _display displayctrl 2301;
 _addonsGroup = _display displayctrl 4301; 
 _toggleButton = _display displayCtrl 4302;
+_fakeKeyboardButton = _display displayctrl 4303; 
 
 _keyboardButton = _display displayctrl 2400;
 _mouseButton = _display displayCtrl 2401;
@@ -38,13 +39,17 @@ if !(ctrlEnabled _addonsGroup) then {
 	_control ctrlenable false;
 	_control ctrlshow false;
 
-	// Hide mouse and controllers buttons
+	// Hide mouse, keyboard, and controllers buttons
 	_mouseButton ctrlenable false;
 	_mouseButton ctrlshow false;
 	_controllerButton ctrlenable false;
 	_controllerButton ctrlshow false;
+	_keyboardButton ctrlenable false;
+	_keyboardButton ctrlshow false;
 
-	//--- Set focus to KEYBOARD button
+	// Show fake keyboard button
+	_fakeKeyboardButton ctrlShow true;
+	_fakeKeyboardButton ctrlEnable true;
 
 	// Show Addons group
 	_addonsGroup ctrlenable true;
@@ -67,13 +72,21 @@ if !(ctrlEnabled _addonsGroup) then {
 	_MouseGroup ctrlenable false;
 	_MouseGroup ctrlshow false;
 
-	// Show mouse and controllers buttons
+	// Hide fake keyboard button
+	_fakeKeyboardButton ctrlShow false;
+	_fakeKeyboardButton ctrlEnable false;
+
+	// Terminate any waiting input actions
+	GVAR(waitingForInput) = false;
+	GVAR(input) = [];
+
+	// Show mouse, keyboard, and controllers buttons
 	_mouseButton ctrlenable true;
 	_mouseButton ctrlshow true;
 	_controllerButton ctrlenable true;
 	_controllerButton ctrlshow true;
-	
-	//--- Set focus to KEYBOARD button
+	_keyboardButton ctrlenable true;
+	_keyboardButton ctrlshow true;
 	
 	//--- Show Presets button
 	_control = _display displayctrl 114;

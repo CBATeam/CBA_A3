@@ -10,17 +10,20 @@ _display = uiNamespace getVariable "RscDisplayConfigure";
 
 if !(isNull _display) then {
 	_combo = _display displayCtrl 208;
-	_lb = _display displayCtrl 202;
-	_comboMods = [];
+	_lnb = _display displayCtrl 202;
+	
+	// Get a local copy of the handler array.
 	_handlerTracker = GVAR(handlers);
-	_keyDict = [];
 
 	// Parse the key handler tracker array.
+	_comboMods = [];
+	_keyDict = [];
 	{
-		// ["modName", "actionName", keyPressData array, "functionName", ehID]
+		// Format of handler tracker array: array of arrays like
+		// ["modName", "actionName", keybind, "functionName", ehID]
 		_modName = _x select 0;
 		_actionName = _x select 1;
-		_keyPressData = _x select 2;
+		_keybind = _x select 2;
 		_functionName = _x select 3;
 		_ehID = _x select 4;
 
@@ -29,13 +32,11 @@ if !(isNull _display) then {
 			_comboMods set [count _comboMods, _modName];
 		};
 
-		// Build a dictionary with entries like ["mod":["action",index],["action2",index]]]
+		// Build a dict with entries like ["mod":[["action",index in handlers tracker array],["action2",index]]]
 		[_keyDict, _modName, [[_actionName, _forEachIndex]]] call bis_fnc_addToPairs;
 	} foreach _handlerTracker;
 
-	// Save combomods list to global var.
-	GVAR(guiComboMods) = _comboMods;
-
+	// First run only actions.
 	if (_firstRun) then {
 		// Clear the combobox.
 		lbClear _combo;
@@ -48,29 +49,29 @@ if !(isNull _display) then {
 		_combo lbSetCurSel 0;
 	};
 
+	// Fill the listnbox with actions.
 	if (count _comboMods > 0) then {
 		// Get the selected mod.
 		_current = _comboMods select (lbCurSel _combo);
 		// Get the actions associated with the current mod.
-		_curActions = [_keyDict, _current] call bis_fnc_getFromPairs;
+		_modActions = [_keyDict, _current] call bis_fnc_getFromPairs;
 
 		// Clear the listbox.
-		lnbClear _lb;
+		lnbClear _lnb;
 
 		// Add the actions to the listbox and associate their data.
 		{
 			_actionName = _x select 0;
 			_index = _x select 1;
 
-			_keyPressData = (_handlerTracker select _index) select 2;
-			_dikCode = _keyPressData select 0;
-			_shift = _keyPressData select 1;
-			_ctrl = _keyPressData select 2;
-			_alt = _keyPressData select 3;
+			_keybind = (_handlerTracker select _index) select 2;
+			_dikCode = _keybind select 0;
+			_shift = _keybind select 1;
+			_ctrl = _keybind select 2;
+			_alt = _keybind select 3;
 
 			// Try to convert dik code to a human key code.
 			_keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call bis_fnc_getFromPairs;
-
 			if (isNil "_keyName") then {
 				_keyName = format ["Unknown Code %1", _dikCode];
 			};
@@ -86,10 +87,11 @@ if !(isNull _display) then {
 			};
 
 			// Add the row.
-			_lb lnbAddRow [_actionName, _keyString];
-			// Set row data to the index of the action in the binds registry.
-			_lb lnbSetData [[_forEachIndex, 1], _keyString];
+			_lnb lnbAddRow [_actionName, _keyString];
 
-		} foreach _curActions;
+			// Set row data to the index of the action in the handler tracker.
+			_lnb lnbSetData [[_forEachIndex, 0], format ["%1", _index]];
+
+		} foreach _modActions;
 	};
 };
