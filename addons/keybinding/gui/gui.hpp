@@ -150,10 +150,10 @@ class RscDisplayConfigure {
 				};
 				class CBA_TextHelp: RscText {
 					idc = 206;
-					text = "Double click any action to change its binding";
+					text = ""; // Set in script to avoid automatic uppercasing
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					y = "20.3 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-					w = "24 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					y = "18 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "21 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 			};

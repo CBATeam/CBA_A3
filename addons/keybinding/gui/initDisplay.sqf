@@ -26,11 +26,14 @@ if (isNil "cba_fnc_registerKeybind") then {
 	FUNC(onButtonClick_configure) = compile preprocessFileLineNumbers "\x\cba\addons\keybinding\gui\fnc_onButtonClick_configure.sqf";
 
 	_lb = _display displayCtrl 202;
-	_lb lnbAddRow ["You must load a mission to view/change these controls."];
-	_lb lnbAddRow ["Sorry!"];
+	_lb lnbAddRow ["You must load a world or mission to view/change."];
 	
 } else {
 	[true] call FUNC(updateGUI); // true means first-run
+
+	// Do this here to avoid automatic uppercasing by BI RscDisplayConfigure.sqf onLoad.
+	_text = _display displayCtrl 206;
+	_text ctrlSetText "Double click any action to change its binding";
 
 	// Add handler to prevent key passthrough when waiting for input for binding (to block Esc).
 	_display displayAddEventHandler ["KeyDown", "_this call cba_keybinding_fnc_onKeyDown"];
