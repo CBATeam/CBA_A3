@@ -73,6 +73,7 @@ if (isNil "_keybind" || _overwrite) then {
 	[_registry, _modName, _modKeybinds] call bis_fnc_setToPairs;
 	// Update profile registry.
 	profileNamespace setVariable [QGVAR(registry), _registry];
+	saveProfileNamespace;
 };
 
 // Split the keybind data.
