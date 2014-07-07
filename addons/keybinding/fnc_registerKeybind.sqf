@@ -47,9 +47,8 @@ _handlerTracker = GVAR(handlers);
 
 // Get array of the mod's keybinds from the registry.
 _modKeybinds = nil;
-if (count _registry > 0) then {
-	_modKeybinds = [_registry, _modName] call bis_fnc_getFromPairs;
-};
+_modKeybinds = [_registry, _modName] call bis_fnc_getFromPairs;
+
 if (isNil "_modKeybinds") then {
 	// If nil, add the mod to the registry an empty array of keybinds.
 	_modKeybinds = [];
@@ -76,7 +75,6 @@ if (isNil "_keybind" || _overwrite) then {
 	[_registry, _modName, _modKeybinds] call bis_fnc_setToPairs;
 	// Update profile registry.
 	profileNamespace setVariable [QGVAR(registry), _registry];
-	saveProfileNamespace;
 };
 
 // Split the keybind data.
