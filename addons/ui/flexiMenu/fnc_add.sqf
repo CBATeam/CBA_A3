@@ -25,26 +25,30 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 // common bug: invalid DIK code (type any) when missing #include "dikCodes.h"
 
 //TODO: still not detecting nil?
-if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
+// if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
 
 if (count _this == 4) then {_this set [count _this, true]};
 
 
 // convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
-for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
-	_key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
-	// if not an already an array (eg: simple DIK integer)
-	if (typeName _key != typeName []) then {
-		_key = [_key, [false,false,false]];
-		(_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
+if (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != 0) then {
+	for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
+		_key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
+		// if not an already an array (eg: simple DIK integer)
+		if (typeName _key != typeName []) then {
+			_key = [_key, [false,false,false]];
+			(_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
+		};
 	};
 };
 
 TRACE_2("",_key,_flexiMenu_typeMenuSources_ID_DIKCodes);
 
 // Check for duplicate record and then warn and ignore.
-if (({str _x == str _this} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {
-	diag_log format ["Warning: duplicate record, ignoring. %1 (%2)", _this, __FILE__];
+if (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != 0) then {
+	if (({str _x == str _this} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {
+		diag_log format ["Warning: duplicate record, ignoring. %1 (%2)", _this, __FILE__];
+	};
 };
 
 GVAR(typeMenuSources) set [count GVAR(typeMenuSources), _this];
