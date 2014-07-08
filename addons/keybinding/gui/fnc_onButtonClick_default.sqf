@@ -27,15 +27,17 @@ _functionName = _keyConfig select 3;
 _registry = profileNamespace getVariable [QGVAR(registry), []];
 
 // Get array of the mod's keybinds from the registry.
-_modKeybinds = [_registry, _modName] call bis_fnc_getFromPairs;
+_modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
 
-// Get the existing keypress data for the action.
-_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
-// Need the default bind.
-_defaultKeybind = _keybindData select 1;
+if (!isNil "_modKeybinds") then {
+	// Get the existing keypress data for the action.
+	_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
+	// Need the default bind.
+	_defaultKeybind = _keybindData select 1;
 
-// Re-register the handler with default keybind.
-[_modName, _actionName, _functionName, _defaultKeybind, true] call cba_fnc_registerKeybind;
+	// Re-register the handler with default keybind.
+	[_modName, _actionName, _functionName, _defaultKeybind, true] call cba_fnc_registerKeybind;
+};
 
 // Clear any input actions.
 GVAR(waitingForInput) = false;

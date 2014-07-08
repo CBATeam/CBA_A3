@@ -47,7 +47,7 @@ _handlerTracker = GVAR(handlers);
 
 // Get array of the mod's keybinds from the registry.
 _modKeybinds = nil;
-_modKeybinds = [_registry, _modName] call bis_fnc_getFromPairs;
+_modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
 
 if (isNil "_modKeybinds") then {
 	// If nil, add the mod to the registry an empty array of keybinds.
