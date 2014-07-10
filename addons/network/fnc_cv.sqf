@@ -1,6 +1,7 @@
 /*
 Internal Function: CBA_network_fnc_cv
 */
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 #define __scriptname fnc_cv
 private ["_veh", "_pos", "_c", "_dir", "_object", "_varName", "_init", "_valid"];
@@ -24,6 +25,9 @@ if !(SLX_XEH_MACHINE select 3) then
 		if (_varName != "") then
 		{
 			call compile format["%1 = _object; publicVariable '%1'", _varName];
+			missionNamespace setVariable[format["%1",_varName],_object]; 
+			_pubVar = format["%1", _varName];
+			publicVariable _pubVar;
 			//_object setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _varName];
 		};
 		if (_init != "") then
