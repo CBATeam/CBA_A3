@@ -24,7 +24,7 @@ if !(SLX_XEH_MACHINE select 3) then
 		_object setDir _dir;
 		if (_varName != "") then
 		{
-			missionNamespace setVariable[str _varName,_object, true];
+			missionNamespace setVariable[format["%1",_varName],_object, true]; 
 		};
 		if (_init != "") then
 		{
