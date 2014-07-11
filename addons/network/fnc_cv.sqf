@@ -24,11 +24,9 @@ if !(SLX_XEH_MACHINE select 3) then
 		_object setDir _dir;
 		if (_varName != "") then
 		{
-			call compile format["%1 = _object; publicVariable '%1'", _varName];
 			missionNamespace setVariable[format["%1",_varName],_object]; 
 			_pubVar = format["%1", _varName];
 			publicVariable _pubVar;
-			//_object setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _varName];
 		};
 		if (_init != "") then
 		{
