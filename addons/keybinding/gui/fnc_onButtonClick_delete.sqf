@@ -18,19 +18,23 @@ _handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
 // Get entry from handler tracker array
 _handlerTracker = GVAR(handlers);
 _keyConfig = _handlerTracker select _handlerIndex;
-_modName = _keyConfig select 0;
-_actionName = _keyConfig select 1;
-_oldKeyData = _keyConfig select 2;
-_functionName = _keyConfig select 3;
 
-// Blank the keybind.
-_keybind = [-1, false, false, false];
+// Something must be selected.
+if (!isNil "_keyConfig") then {
+	_modName = _keyConfig select 0;
+	_actionName = _keyConfig select 1;
+	_oldKeyData = _keyConfig select 2;
+	_functionName = _keyConfig select 3;
 
-// Re-register the handler with default keybind.
-[_modName, _actionName, _functionName, _keybind, true] call cba_fnc_registerKeybind;
+	// Blank the keybind.
+	_keybind = [-1, false, false, false];
 
-// Clear any input actions.
-GVAR(waitingForInput) = false;
+	// Re-register the handler with default keybind.
+	[_modName, _actionName, _functionName, _keybind, true] call cba_fnc_registerKeybind;
 
-// Update the main dialog.
-[] call FUNC(updateGUI);
+	// Clear any input actions.
+	GVAR(waitingForInput) = false;
+
+	// Update the main dialog.
+	[] call FUNC(updateGUI);
+};

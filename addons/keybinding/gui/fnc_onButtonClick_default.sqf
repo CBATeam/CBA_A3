@@ -18,29 +18,33 @@ _handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
 // Get entry from handler tracker array
 _handlerTracker = GVAR(handlers);
 _keyConfig = _handlerTracker select _handlerIndex;
-_modName = _keyConfig select 0;
-_actionName = _keyConfig select 1;
-_oldKeyData = _keyConfig select 2;
-_functionName = _keyConfig select 3;
 
-// Get a local copy of the keybind registry.
-_registry = profileNamespace getVariable [QGVAR(registry), []];
+// Something must be selected.
+if (!isNil "_keyConfig") then {
+	_modName = _keyConfig select 0;
+	_actionName = _keyConfig select 1;
+	_oldKeyData = _keyConfig select 2;
+	_functionName = _keyConfig select 3;
 
-// Get array of the mod's keybinds from the registry.
-_modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
+	// Get a local copy of the keybind registry.
+	_registry = profileNamespace getVariable [QGVAR(registry), []];
 
-if (!isNil "_modKeybinds") then {
-	// Get the existing keypress data for the action.
-	_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
-	// Need the default bind.
-	_defaultKeybind = _keybindData select 1;
+	// Get array of the mod's keybinds from the registry.
+	_modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
 
-	// Re-register the handler with default keybind.
-	[_modName, _actionName, _functionName, _defaultKeybind, true] call cba_fnc_registerKeybind;
+	if (!isNil "_modKeybinds") then {
+		// Get the existing keypress data for the action.
+		_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
+		// Need the default bind.
+		_defaultKeybind = _keybindData select 1;
+
+		// Re-register the handler with default keybind.
+		[_modName, _actionName, _functionName, _defaultKeybind, true] call cba_fnc_registerKeybind;
+	};
+
+	// Clear any input actions.
+	GVAR(waitingForInput) = false;
+
+	// Update the main dialog.
+	[] call FUNC(updateGUI);
 };
-
-// Clear any input actions.
-GVAR(waitingForInput) = false;
-
-// Update the main dialog.
-[] call FUNC(updateGUI);
