@@ -448,7 +448,7 @@ class RscTitles {
 
         onLoad = QUOTE(_this call CBA_common_fnc_perFrameEngine);
 
-        duration = 99999999999999999;
+        duration = 99999999;
         fadein  = 0;
         fadeout = 0;
 		name = "CBA_FrameHandlerTitle";
