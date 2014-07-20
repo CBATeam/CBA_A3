@@ -17,6 +17,9 @@ Parameters:
  _overwrite  boolean, should this call overwrite existing keybind data?
              False by default.
 
+ _keypressType  String, trigger event on KeyDown or KeyUp event?
+             "KeyDown" by default. 
+
 Returns:
  Returns the current keybind for the action.
 
@@ -38,6 +41,7 @@ _nullKeybind = [-1,false,false,false];
 PARAMS_3(_modName,_actionName,_functionName);
 DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
 DEFAULT_PARAM(4,_overwrite,false);
+DEFAULT_PARAM(5,_keypressType,"KeyDown");
 
 // Get a local copy of the keybind registry.
 _registry = profileNamespace getVariable [QGVAR(registry), []];
@@ -48,6 +52,9 @@ _handlerTracker = GVAR(handlers);
 // Get array of the mod's keybinds from the registry.
 _modKeybinds = nil;
 _modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
+
+// Lowercase keypress type.
+_keypressType = toLower _keypressType;
 
 if (isNil "_modKeybinds") then {
 	// If nil, add the mod to the registry an empty array of keybinds.
@@ -107,7 +114,7 @@ if (_index > -1) then {
 		GVAR(ehCounter) = _ehID + 1;
 
 		// Add CBA key handler.
-		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], "keydown", format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
 
 	} else {
 		// No key handler will be created, so set ehID to -1 so that no removal will
@@ -131,7 +138,7 @@ if (_index > -1) then {
 		GVAR(ehCounter) = _ehID + 1;
 
 		// Add CBA key handler.
-		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], "keydown", format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
 
 	} else {
 		// No key handler will be created, so set ehID to -1 so that no removal will
