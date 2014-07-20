@@ -6,25 +6,25 @@ Description:
  a function with that keybind being pressed.
 
 Parameters:
- "modName"  String, name of the registering mod.
- "actionName"  String, name of the action to register.
- "functionName"  String, name of the function to call when key is pressed.
- 			     If you don't want to register a function, pass "nil".
- _defaultKeybind  Array, the default keybind in the format
-                [DIK code, shift?, ctrl?, alt?] (? indicates true/false)
+ "modName"			String, name of the registering mod.
+ "actionName"		String, name of the action to register.
+ _code				Code to call when key is pressed. _this will be the same as
+ 					for the key event.
+ _defaultKeybind	Array, the default keybind in the format
+                	[DIK code, shift?, ctrl?, alt?] (? indicates true/false)
 
  Optional:
- _overwrite  boolean, should this call overwrite existing keybind data?
-             False by default.
+ _overwrite			boolean, should this call overwrite existing keybind data?
+            		False by default.
 
- _keypressType  String, trigger event on KeyDown or KeyUp event?
-             "KeyDown" by default. 
+ _keypressType		String, trigger event on KeyDown or KeyUp event?
+					"KeyDown" by default. 
 
 Returns:
  Returns the current keybind for the action.
 
 Examples:
- ["your_mod", "your_action", "your_mod_fnc_openMenu", [15, true, true, true]]
+ ["your_mod", "your_action", {_this call your_mod_fnc_openMenu}, [15, true, true, true]]
       call cba_fnc_registerKeybind;
 
 Author:
@@ -38,7 +38,7 @@ if (isDedicated) exitWith {};
 
 _nullKeybind = [-1,false,false,false];
 
-PARAMS_3(_modName,_actionName,_functionName);
+PARAMS_3(_modName,_actionName,_code);
 DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
 DEFAULT_PARAM(4,_overwrite,false);
 DEFAULT_PARAM(5,_keypressType,"KeyDown");
@@ -55,6 +55,12 @@ _modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
 
 // Lowercase keypress type.
 _keypressType = toLower _keypressType;
+
+// Handle deprecated string function name.
+if (typeName _code == "STRING") then {
+	_code = compile format ["_this call %1", _code];
+	diag_log format ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
+};
 
 if (isNil "_modKeybinds") then {
 	// If nil, add the mod to the registry an empty array of keybinds.
@@ -109,12 +115,12 @@ if (_index > -1) then {
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
 
-	if (_dikCode != -1 && _functionName != "nil") then {  // A DIK code of -1 signifies "no key set"
+	if (_dikCode != -1 && !isNil {_code}) then {  // A DIK code of -1 signifies "no key set"
 		// Increment the event handler ID source.
 		GVAR(ehCounter) = _ehID + 1;
 
 		// Add CBA key handler.
-		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+		[_dikCode, [_shift, _ctrl, _alt], _code, _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
 
 	} else {
 		// No key handler will be created, so set ehID to -1 so that no removal will
@@ -123,7 +129,7 @@ if (_index > -1) then {
 	};
 
 	// Update the handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _functionName, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
 	_handlerTracker set [_index, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 
@@ -133,12 +139,12 @@ if (_index > -1) then {
 	// Get a fresh event handler ID.
 	_ehID = GVAR(ehCounter);
 
-	if (_dikCode != -1 && _functionName != "nil") then {  // A DIK code of -1 signifies "no key set"
+	if (_dikCode != -1 && !isNil {_code}) then {  // A DIK code of -1 signifies "no key set"
 		// Increment the event handler ID source.
 		GVAR(ehCounter) = _ehID + 1;
 
 		// Add CBA key handler.
-		[_dikCode, [_shift, _ctrl, _alt], compile format ["_this call %1", _functionName], _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
+		[_dikCode, [_shift, _ctrl, _alt], _code, _keypressType, format ["%1", _ehID]] call cba_fnc_addKeyHandler;
 
 	} else {
 		// No key handler will be created, so set ehID to -1 so that no removal will
@@ -147,7 +153,7 @@ if (_index > -1) then {
 	};
 
 	// Add to handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _functionName, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
 	_handlerTracker set [count _handlerTracker, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 };
