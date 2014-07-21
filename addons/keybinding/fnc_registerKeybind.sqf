@@ -50,8 +50,8 @@ _registry = profileNamespace getVariable [QGVAR(registry), []];
 _handlerTracker = GVAR(handlers);
 
 // Get array of the mod's keybinds from the registry.
-_modKeybinds = nil;
-_modKeybinds = [_registry, _modName, nil] call bis_fnc_getFromPairs;
+_modKeybinds = [];
+_modKeybinds = [_registry, _modName, []] call bis_fnc_getFromPairs;
 
 // Lowercase keypress type.
 _keypressType = toLower _keypressType;
@@ -62,20 +62,28 @@ if (typeName _code == "STRING") then {
 	diag_log format ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
 };
 
-if (isNil "_modKeybinds") then {
+// _modKeybinds will be an empty array if not found in the registry.
+if (count _modKeybinds == 0) then {
 	// If nil, add the mod to the registry an empty array of keybinds.
 	_modKeybinds = [];
 	[_registry, _modName, _modKeybinds] call bis_fnc_setToPairs;
 };
 
-// Get the existing keypress data for the action.
-_keybindData = [_modKeybinds, _actionName] call bis_fnc_getFromPairs;
-// Only need the assigned data, not the default.
-_keybind = _keybindData select 0;
+// Attempt to get the existing keypress data for the action.
+_keybindData = [];
+_keybindData = [_modKeybinds, _actionName, []] call bis_fnc_getFromPairs;
+
+_keybind = nil;
+
+// _keybindData will be an empty array if not found in the mod's registry entry.
+if (count _keybindData > 0) then {
+	// Only need the assigned data (select 0), not the default (select 1).
+	_keybind = _keybindData select 0;
+};
 
 // If nil or overwrite specified, set the default keybind to the action.
 if (isNil "_keybind" || _overwrite) then {
-	// Only change the stored default keybinding when it was nil.
+	// Only change the stored default keybinding if _overwrite was set true.
 	if (_overwrite) then {
 		[_modKeybinds, _actionName, [_defaultKeybind, _keybindData select 1]] call bis_fnc_setToPairs;
 	} else {
