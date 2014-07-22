@@ -8,8 +8,15 @@ private["_target", "_menuSource", "_potentialTarget", "_isTypeTarget", "_potenti
 // Call this function with the exact parameter set passed to fleximenu_fnc_add.
 _addParameters = _this;
 
+// Return true if menu was found, false if not.
+_opened = false;
+
 // Code reuse from fnc_keyDown below, recommented.
+
 if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
+	// Doing something with the menu.
+	_opened = true;
+
 	// Check if a menu is already open.
 	_active = (!isNil {uiNamespace getVariable QGVAR(display)});
 	if (_active) then {
@@ -85,3 +92,5 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 		};
 	};
 };
+
+_opened;
