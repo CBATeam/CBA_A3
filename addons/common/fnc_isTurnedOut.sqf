@@ -75,11 +75,11 @@ if(_vehicle != _unit) then {
 				if((count _attenuateCargo) > 0) then {
 					_index = -1;
 					// @TODO remove this if check when 1.26 is released from dev.
-					if((productVersion select 3) < 126064) then {
+					// if((productVersion select 3) < 126064) then {
 						_index = (count _attenuateCargo)-1; // wait for command to get cargo index
-					} else {
-						_index = _vehicle getCargoIndex _unit;
-					};
+					// } else {
+						// _index = _vehicle getCargoIndex _unit;
+					// };
 					if(_index > -1) then {
 						if(_index > (count _attenuateCargo)-1) then {
 							_index = (count _attenuateCargo)-1;
