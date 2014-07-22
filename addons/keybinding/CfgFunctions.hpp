@@ -21,6 +21,12 @@ class CfgFunctions
 				description = "Adds or updates the keybind handler for a specified mod action, and associates a function with that keybind being pressed.";
 				file = "\x\cba\addons\keybinding\fnc_registerKeybind.sqf";
 			};
+			// CBA_fnc_registerKeybindToFleximenu
+			class registerKeybindToFleximenu
+			{
+				description = "Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.";
+				file = "\x\cba\addons\keybinding\fnc_registerKeybindToFleximenu.sqf";
+			};
 		};
 	};
 };
