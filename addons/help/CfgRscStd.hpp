@@ -56,24 +56,7 @@ class CBA_CREDITS_VER_BTN: RscButton {
 class RscDisplayMain: RscStandardDisplay {
 	class controls {
 		class VersionNumber;
-		
-		class ModIcons: RscControlsGroupNoScrollbars
-		{
-			class Controls
-			{
-			};
-			idc = 141;
-			//__SW_Right_Justifide(15);
-			//__SX_Right_Justifide(90);
-			//x = "safezonX + safezoneW - (16 * (((safezoneW / safezoneH) min 1.2) / 40))";
-			//__SY(9.3);
-			//__SH(2);
-			x = "safezoneX + safezoneW - (16 * 			(			((safezoneW / safezoneH) min 1.2) / 40))";
-			y = "safezoneY + (20.8 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))";
-			w = "15 * 			(			((safezoneW / safezoneH) min 1.2) / 40)";
-			h = "20 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-			
-		};
+
 		class CBA_CREDITS_VER: VersionNumber {
 			idc = CBA_CREDITS_VER_IDC;
 			y = -1;
@@ -91,7 +74,7 @@ class RscDisplayMain: RscStandardDisplay {
 	class controlsBackground {
 		class CBA_CREDITS_M_M: CBA_CREDITS_M {
 			idc = CBA_CREDITS_M_IDC;
-		};	
+		};
 	};
 };
 
