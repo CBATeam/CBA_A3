@@ -13,3 +13,11 @@ addons/*.bisign
 /addons/CBA_Project.sublime-workspace
 
 /addons/*.lnk
+/addons/cache_disable/$PBOPREFIX$.TXT
+/addons/cache_disable/config.cpp
+/addons/cache_disable/script_component.hpp
+/addons/diagnostic_disable_xeh_logging/$PBOPREFIX$.TXT
+/addons/diagnostic_disable_xeh_logging/config.cpp
+/addons/diagnostic_enable_logging/$PBOPREFIX$.TXT
+/addons/diagnostic_enable_logging/config.cpp
+/addons/diagnostic_enable_logging/script_component.hpp
