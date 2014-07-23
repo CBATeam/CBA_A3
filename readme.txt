@@ -9,8 +9,13 @@ Online function library reference at http://dev-heaven.net/docs/cba/
 
 CBA: License
 ==========================
-license.txt   => GNU GENERAL PUBLIC LICENSE
-Clarification => http://forums.bistudio.com/showthread.php?178224-CBA-Community-Base-Addons-ARMA-3&p=2730730&viewfull=1#post2730730
+license.txt   => GNU GENERAL PUBLIC LICENSE v2
+
+Any addon which calls CBA-defined functions need not be licensed under the GPLv2 
+or released under a free software license. Only if you are directly including CBA code 
+in your addon's binarized PBO or redistributing a modified version of CBA itself would 
+your work be considered derivative and therefore be legally required to be released under 
+the terms of the GPL. (And there's no reason to ever do either of these.)
 
 
 Example startup parameters
