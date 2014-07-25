@@ -1,4 +1,6 @@
-Release Candidate 3
+Release Candidate 3 Hotfix
+
+This hotfix will fix both of the known issues listed below and will display the version 1.08.140725
 
 CBA: Community Base Addons
 ==========================
@@ -24,7 +26,12 @@ For ARMA 3 Content
 Launch with -mod=@CBA_A3
 
 *** KNOWN ISSUES ***
-None at this time
+FIXED: Wrongly formatted Keybind arrary can permanently corrupt profileNameSpace Variable "cba_keybinding_registry"
+FIXED: Changing the keybind breaks KeyUp handling in a rare case.
+
+These items are only fixed when the CBA RC3 hotfix is applied. 
+This hotfix when applied will show version 1.08.140725 and will all of the above known issues. 
+
 
 *** Change Log ***
 CBA_A3_RC3 Roadmap - http://dev.withsix.com/versions/1620
