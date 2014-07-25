@@ -124,7 +124,7 @@ _ctrl = _keybind select 2;
 _alt = _keybind select 3;
 
 // See if this action has already been mapped to a keybind.
-_index = [_modName, _actionName] call cba_fnc_getKeybind;
+_index = [_modName, _actionName, _keypressType] call cba_fnc_getKeybind;
 
 if (_index > -1) then {
 	// It's already mapped to a key handler, so it must be updated.
@@ -136,7 +136,7 @@ if (_index > -1) then {
 	_existingEHID = _handlerData select 4;
 	if (_existingEHID > 0) then {
 		// Remove the old key handler.
-		[format ["%1", _existingEHID]] call cba_fnc_removeKeyHandler;
+		[format ["%1", _existingEHID], _keypressType] call cba_fnc_removeKeyHandler;
 	};
 
 	// Get a fresh event handler ID.
@@ -156,7 +156,7 @@ if (_index > -1) then {
 	};
 
 	// Update the handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID, _keypressType];
 	_handlerTracker set [_index, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 
@@ -180,7 +180,7 @@ if (_index > -1) then {
 	};
 
 	// Add to handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID, _keypressType];
 	_handlerTracker set [count _handlerTracker, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 };

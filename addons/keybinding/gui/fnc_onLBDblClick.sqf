@@ -16,16 +16,8 @@ _comboMod = _combo lbText (lbCurSel _combo);
 // Don't allow multiple keys to be changed at once.
 if (GVAR(waitingForInput)) exitWith {};
 
-// Get handler tracker index for key stored in listbox
-_handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
-
-// Get entry from handler tracker array
-_handlerTracker = GVAR(handlers);
-_keyConfig = _handlerTracker select _handlerIndex;
-_modName = _keyConfig select 0;
-_actionName = _keyConfig select 1;
-_oldKeyData = _keyConfig select 2;
-_functionName = _keyConfig select 3;
+// Get handler tracker index array for keys stored in listbox data string
+_handlerIndexArray = call compile (_lnb lnbData [_lnbIndex, 0]);
 
 // Clear keypress data.
 GVAR(input) = [];
@@ -50,14 +42,24 @@ if (GVAR(waitingForInput)) then {
 
 		// If a valid key other than Escape was pressed,
 		if (_keyPressData select 0 != 1) then {
-			// Re-register the handler, overwriting old keypressdata.
-			[_modName, _actionName, _functionName, _keyPressData, true] call cba_fnc_registerKeybind;
+			{
+				// Get entry from handler tracker array
+				_keyConfig = GVAR(handlers) select _x;
+
+				_modName = _keyConfig select 0;
+				_actionName = _keyConfig select 1;
+				_oldKeyData = _keyConfig select 2;
+				_functionName = _keyConfig select 3;
+				//_oldEhID = _keyConfig select 4;
+				_keypressType = _keyConfig select 5;
+
+				// Re-register and overwrite old bind.
+				[_modName, _actionName, _functionName, _keyPressData, true, _keypressType] call cba_fnc_registerKeybind;
+
+			} forEach _handlerIndexArray;
 		};
 
 		// Update the main dialog.
 		[] call FUNC(updateGUI);
 	};
 };
-
-
-
