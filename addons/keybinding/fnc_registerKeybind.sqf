@@ -56,10 +56,29 @@ _modKeybinds = [_registry, _modName, []] call bis_fnc_getFromPairs;
 // Lowercase keypress type.
 _keypressType = toLower _keypressType;
 
+// Confirm correct formatting of keybind array.
+if (count _defaultKeybind != 4) then {
+	// See if it is a addKeyHandler style keypress array
+	if (count _defaultKeybind == 2 && {typeName (_defaultKeybind select 1) == "ARRAY"} && {count (_defaultKeybind select 1) == 3}) then {
+		// Convert from [DIK, [shift, ctrl, alt]] to [DIK, shift, ctrl, alt]
+		_defaultKeybind = [_defaultKeybind select 0, (_defaultKeybind select 1) select 0, (_defaultKeybind select 1) select 1, (_defaultKeybind select 1) select 2];
+	} else {
+		// Key format is not known, set to nil and warn
+		_defaultKeybind = _nullKeybind;
+
+		_warn = ["[CBA Keybinding] ERROR: Invalid keybind format %1 for %2 %3. Using null keybind.", _defaultKeybind, _modName, _actionName];
+		_warn call bis_fnc_error;
+		diag_log format _warn;
+	};
+};
+
 // Handle deprecated string function name.
 if (typeName _code == "STRING") then {
 	_code = compile format ["_this call %1", _code];
-	diag_log format ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
+
+	_warn = ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
+	_warn call bis_fnc_error;
+	diag_log format _warn;
 };
 
 // _modKeybinds will be an empty array if not found in the registry.

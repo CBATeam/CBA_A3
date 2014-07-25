@@ -45,7 +45,7 @@ GVAR(waitingForInput) = false;
 
 // Temporary array that tracks loaded key handlers for specified keybinds.
 // Format: Array of arrays
-//      [["modName", "actionName", keybind, "functionName", "ehID"]]
+//      [["modName", "actionName", [keybind], {code}, ehID], ...]
 GVAR(handlers) = [];
 
 // Counter for indexing added key handlers.
