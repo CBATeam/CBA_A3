@@ -12,29 +12,35 @@ _lnb = _display displayCtrl 202;
 // Get currently selected index
 _lnbIndex = lnbCurSelRow _lnb;
 
-// Get handler tracker index for key stored in listbox
-_handlerIndex = parseNumber (_lnb lnbData [_lnbIndex, 0]);
+// Get handler tracker index array for keys stored in listbox data string
+_handlerIndexArray = call compile (_lnb lnbData [_lnbIndex, 0]);
 
 // Get entry from handler tracker array
 _handlerTracker = GVAR(handlers);
-_keyConfig = _handlerTracker select _handlerIndex;
 
-// Something must be selected.
-if (!isNil "_keyConfig") then {
-	_modName = _keyConfig select 0;
-	_actionName = _keyConfig select 1;
-	_oldKeyData = _keyConfig select 2;
-	_functionName = _keyConfig select 3;
+{
+	// Get the keyconfig from the tracker based on the indexes
+	_keyConfig = _handlerTracker select _x;
 
-	// Blank the keybind.
-	_keybind = [-1, false, false, false];
+	// Something must be selected.
+	if (!isNil "_keyConfig") then {
+		_modName = _keyConfig select 0;
+		_actionName = _keyConfig select 1;
+		_oldKeyData = _keyConfig select 2;
+		_functionName = _keyConfig select 3;
+		//_oldEhID = _keyConfig select 4;
+		_keypressType = _keyConfig select 5;
 
-	// Re-register the handler with default keybind.
-	[_modName, _actionName, _functionName, _keybind, true] call cba_fnc_registerKeybind;
+		// Blank the keybind.
+		_keybind = [-1, false, false, false];
 
-	// Clear any input actions.
-	GVAR(waitingForInput) = false;
+		// Re-register the handler with default keybind.
+		[_modName, _actionName, _functionName, _keybind, true, _keypressType] call cba_fnc_registerKeybind;
+	};
+} forEach _handlerIndexArray;
 
-	// Update the main dialog.
-	[] call FUNC(updateGUI);
-};
+// Clear any input actions.
+GVAR(waitingForInput) = false;
+
+// Update the main dialog.
+[] call FUNC(updateGUI);

@@ -20,12 +20,13 @@ if !(isNull _display) then {
 	_keyDict = [];
 	{
 		// Format of handler tracker array: array of arrays like
-		// ["modName", "actionName", keybind, "functionName", ehID]
+		// ["modName", "actionName", keybind, "functionName", ehID, "keypressType"]
 		_modName = _x select 0;
 		_actionName = _x select 1;
 		_keybind = _x select 2;
 		_functionName = _x select 3;
-		_ehID = _x select 4;
+		// _ehID = _x select 4;
+		_keypressType = _x select 5;
 
 		// Add all mods to the combo array.
 		if !(_modName in _comboMods) then {
@@ -59,39 +60,76 @@ if !(isNull _display) then {
 		// Clear the listbox.
 		lnbClear _lnb;
 
+		// Array tracking actionNames to be ignored as parsing continues.
+		// Used so that only one entry is added for binds with two calls,
+		// one using KeyDown and one using KeyUp.
+		_ignore = [];
+
 		// Add the actions to the listbox and associate their data.
 		{
 			_actionName = _x select 0;
 			_index = _x select 1;
 
-			_keybind = (_handlerTracker select _index) select 2;
-			_dikCode = _keybind select 0;
-			_shift = _keybind select 1;
-			_ctrl = _keybind select 2;
-			_alt = _keybind select 3;
+			if !(_actionName in _ignore) then {
 
-			// Try to convert dik code to a human key code.
-			_keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call bis_fnc_getFromPairs;
-			if (isNil "_keyName") then {
-				_keyName = format ["Unknown Code %1", _dikCode];
+				_keybind = (_handlerTracker select _index) select 2;
+				_dikCode = _keybind select 0;
+				_shift = _keybind select 1;
+				_ctrl = _keybind select 2;
+				_alt = _keybind select 3;
+
+				_keypressType = (_handlerTracker select _index) select 5;
+
+				// Try to convert dik code to a human key code.
+				_keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call bis_fnc_getFromPairs;
+				if (isNil "_keyName") then {
+					_keyName = format ["Unknown Code %1", _dikCode];
+				};
+
+				// Build the full key combination name.
+				_keyString = format ["%1", _keyName];
+				if (_shift) then {_keyString = format ["Shift+%1", _keyString]};	
+				if (_alt) then {_keyString = format ["Alt+%1", _keyString]};
+				if (_ctrl) then {_keyString = format ["Ctrl+%1", _keyString]};
+				if (_keyString != "") then {
+					// Add quotes around whole string.
+					_keyString = format ["""%1""", _keyString]
+				};
+
+				// Search the modActions array for any other actions with the same name
+				// but a different keypressType (KeyDown and KeyUp on same actionname)
+				_dupSearch = [];
+				_foundIndex = -1;
+				{
+					_sActionName = _x select 0;
+					_sIndex = _x select 1;
+
+					_sKeybind = (_handlerTracker select _sIndex) select 2;
+					_sKeypressType = (_handlerTracker select _sIndex) select 5;
+
+					if (_sActionName == _actionName && {_sKeypressType != _keypressType}) exitWith {
+						// Found an action with the same name but different keypresstypes.
+						// Add it to the ignore array.
+						_ignore set [count _ignore, _actionName];
+
+						// Update the foundIndex to point to the found action
+						_foundIndex = _sIndex;
+					};
+				} foreach _modActions;
+
+				// Add the row.
+				_lnb lnbAddRow [_actionName, _keyString];
+
+				// Format the array containing the indexes referred to by the action name.
+				// It is stored as a string.
+				_indexArray = [_index];
+				if (_foundIndex > -1) then {
+					_indexArray set [count _indexArray, _foundIndex];
+				};
+
+				// Set row data to the index of the action in the handler tracker.
+				_lnb lnbSetData [[_forEachIndex, 0], format ["%1", _indexArray]];
 			};
-
-			// Build the full key combination name.
-			_keyString = format ["%1", _keyName];
-			if (_shift) then {_keyString = format ["Shift+%1", _keyString]};	
-			if (_alt) then {_keyString = format ["Alt+%1", _keyString]};
-			if (_ctrl) then {_keyString = format ["Ctrl+%1", _keyString]};
-			if (_keyString != "") then {
-				// Add quotes around whole string.
-				_keyString = format ["""%1""", _keyString]
-			};
-
-			// Add the row.
-			_lnb lnbAddRow [_actionName, _keyString];
-
-			// Set row data to the index of the action in the handler tracker.
-			_lnb lnbSetData [[_forEachIndex, 0], format ["%1", _index]];
-
 		} foreach _modActions;
 	};
 };

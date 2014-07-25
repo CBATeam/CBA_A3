@@ -56,10 +56,29 @@ _modKeybinds = [_registry, _modName, []] call bis_fnc_getFromPairs;
 // Lowercase keypress type.
 _keypressType = toLower _keypressType;
 
+// Confirm correct formatting of keybind array.
+if (count _defaultKeybind != 4) then {
+	// See if it is a addKeyHandler style keypress array
+	if (count _defaultKeybind == 2 && {typeName (_defaultKeybind select 1) == "ARRAY"} && {count (_defaultKeybind select 1) == 3}) then {
+		// Convert from [DIK, [shift, ctrl, alt]] to [DIK, shift, ctrl, alt]
+		_defaultKeybind = [_defaultKeybind select 0, (_defaultKeybind select 1) select 0, (_defaultKeybind select 1) select 1, (_defaultKeybind select 1) select 2];
+	} else {
+		// Key format is not known, set to nil and warn
+		_defaultKeybind = _nullKeybind;
+
+		_warn = ["[CBA Keybinding] ERROR: Invalid keybind format %1 for %2 %3. Using null keybind.", _defaultKeybind, _modName, _actionName];
+		_warn call bis_fnc_error;
+		diag_log format _warn;
+	};
+};
+
 // Handle deprecated string function name.
 if (typeName _code == "STRING") then {
 	_code = compile format ["_this call %1", _code];
-	diag_log format ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
+
+	_warn = ["[CBA_Keybinding] WARN: Deprecated call to cba_fnc_registerKeybind by %1 %2 -- code parameter is a string. Pass code directly (check function definition).", _modName, _actionName];
+	_warn call bis_fnc_error;
+	diag_log format _warn;
 };
 
 // _modKeybinds will be an empty array if not found in the registry.
@@ -105,7 +124,7 @@ _ctrl = _keybind select 2;
 _alt = _keybind select 3;
 
 // See if this action has already been mapped to a keybind.
-_index = [_modName, _actionName] call cba_fnc_getKeybind;
+_index = [_modName, _actionName, _keypressType] call cba_fnc_getKeybind;
 
 if (_index > -1) then {
 	// It's already mapped to a key handler, so it must be updated.
@@ -117,7 +136,7 @@ if (_index > -1) then {
 	_existingEHID = _handlerData select 4;
 	if (_existingEHID > 0) then {
 		// Remove the old key handler.
-		[format ["%1", _existingEHID]] call cba_fnc_removeKeyHandler;
+		[format ["%1", _existingEHID], _keypressType] call cba_fnc_removeKeyHandler;
 	};
 
 	// Get a fresh event handler ID.
@@ -137,7 +156,7 @@ if (_index > -1) then {
 	};
 
 	// Update the handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID, _keypressType];
 	_handlerTracker set [_index, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 
@@ -161,7 +180,7 @@ if (_index > -1) then {
 	};
 
 	// Add to handler tracker array.
-	_handlerData = [_modName, _actionName, _keybind, _code, _ehID];
+	_handlerData = [_modName, _actionName, _keybind, _code, _ehID, _keypressType];
 	_handlerTracker set [count _handlerTracker, _handlerData];
 	GVAR(handlers) = _handlerTracker;
 };
