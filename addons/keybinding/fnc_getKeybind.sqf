@@ -6,19 +6,17 @@ Description:
  specified action.
 
 Parameters:
- "modName" Name of the registering mod.
- "actionName" Name of the action to be checked for.
+ _modName			Name of the registering mod [String]
+ _actionName		Name of the action to get [String]
 
  Optional:
- "keypresstype" Key press type ("keydown" or "keyup")
-                Default: "keydown")
+  _keypressType		"keydown" (Default) = keyDown, "keyup" = keyUp [String]
 
 Returns:
- Returns index to cba_keybind_handlers if 
- found. Returns -1 if not.
+ Index to cba_keybind_handlers if found, -1 if not [Integer]
 
 Examples:
-_index = ["your_mod", "openMenu"] call cba_fnc_getKeybind;
+ _index = ["your_mod", "openMenu"] call cba_fnc_getKeybind;
 
  if (_index >= 0) then {
 	_handler = cba_keybind_handlers select _index;

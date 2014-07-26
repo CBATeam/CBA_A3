@@ -6,26 +6,34 @@ Description:
  a function with that keybind being pressed.
 
 Parameters:
- "modName"			String, name of the registering mod.
- "actionName"		String, name of the action to register.
- _code				Code to call when key is pressed. _this will be the same as
- 					for the key event.
- _defaultKeybind	Array, the default keybind in the format
-                	[DIK code, shift?, ctrl?, alt?] (? indicates true/false)
+ _modName			Name of the registering mod [String]
+ _actionName		Name of the action to register [String]
+ _code				Code to execute upon event [Code]
+ _defaultKeybind	Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
 
  Optional:
- _overwrite			boolean, should this call overwrite existing keybind data?
-            		False by default.
-
- _keypressType		String, trigger event on KeyDown or KeyUp event?
-					"KeyDown" by default. 
+ _overwrite			Overwrite existing keybind data? [Bool] (Default: False)
+ _keypressType		"keydown" (Default) = keyDown, "keyup" = keyUp [String]
 
 Returns:
- Returns the current keybind for the action.
+ Returns the current keybind for the action [Array]
 
 Examples:
- ["your_mod", "your_action", {_this call your_mod_fnc_openMenu}, [15, true, true, true]]
+ // Register a simple keypress to an action
+ // This file should be included for readable DIK codes.
+ #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+ ["Your Mod", "Your Action", {["main"] call your_mod_fnc_openMenu}, [DIK_TAB, [true, true, true]]]
       call cba_fnc_registerKeybind;
+ ["Your Mod", "Your Other Action", your_mod_fnc_openStuff, [DIK_K, [false, false, true]]] call cba_fnc_registerKeybind;
+
+
+ // Register on keyup
+ ["Your Mod", "Your KeyUp Action", {_this call your_mod_fnc_doStuff}, [DIK_O, [true, false, false]], false, "keyup"] call cba_fnc_registerKeybind;
+
+
+ // Register different events for both keydown and keyup of the same action
+ ["Your Mod", "Your Double Action", {_this call your_mod_fnc_keyDown}, [DIK_P, [false, false, false]], false, "keydown"] call cba_fnc_registerKeybind;
+ ["Your Mod", "Your Double Action", {_this call your_mod_fnc_keyUp}, [DIK_P, [false, false, false]], false, "keyup"] call cba_fnc_registerKeybind;
 
 Author:
  Taosenai

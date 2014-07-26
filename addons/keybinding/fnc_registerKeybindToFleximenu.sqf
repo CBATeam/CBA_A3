@@ -5,26 +5,21 @@ Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
 Parameters:
- "modName"			String, name of the registering mod.
- "actionName"		String, name of the action to register.
- _fleximenuDef		Array, definition of the Fleximenu in the same format as
- 					would be passed to CBA_fnc_flexiMenu_Add, but with the
- 					keybind set to [].
- _defaultKeybind	Array, the default keybind in the format
-                	[DIK code, shift?, ctrl?, alt?] (? indicates true/false)
+ _modName			Name of the registering mod [String]
+ _actionName		Name of the action to register [String]
+ _fleximenuDef		Parameter array for CBA_fnc_flexiMenu_Add, but with the
+ 					keybind set to [] [Array]
+ _defaultKeybind	Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
 
- Optional:
- _overwrite			boolean, should this call overwrite existing keybind data?
-            		False by default.
-
- _keypressType		String, open menu on KeyDown or KeyUp event?
-					"KeyDown" by default. 
+Optional:
+ _overwrite			Overwrite existing keybind data? [Bool] (Default: False)
+ _keypressType		"keydown" (Default) = keyDown, "keyup" = keyUp [String]
 
 Returns:
- Returns the current keybind for the Fleximenu.
+ Returns the current keybind for the Fleximenu [Array]
 
 Examples:
- ["your_mod", "your_action", ["player", [], -100, "_this call my_menu_code_array"], [15, true, true, true]] call cba_fnc_registerKeybindToFleximenu;
+ ["Your Mod", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_registerKeybindToFleximenu;
 
 Author:
  Taosenai
