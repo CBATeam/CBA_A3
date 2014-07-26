@@ -21,3 +21,6 @@ addons/*.bisign
 /addons/diagnostic_enable_logging/$PBOPREFIX$.TXT
 /addons/diagnostic_enable_logging/config.cpp
 /addons/diagnostic_enable_logging/script_component.hpp
+
+*.pbo
+/utils/make.cache
