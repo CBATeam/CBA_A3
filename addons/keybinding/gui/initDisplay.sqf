@@ -29,9 +29,10 @@ _fakeKeyboardButton ctrlEnable false;
 if (isNil "cba_fnc_registerKeybind") then {
 	// XEH PreInit has not run yet, so we need to prepare this function right now.
 	FUNC(onButtonClick_configure) = compile preprocessFileLineNumbers "\x\cba\addons\keybinding\gui\fnc_onButtonClick_configure.sqf";
+	FUNC(onButtonClick_cancel) = {};
 
 	_lb = _display displayCtrl 202;
-	_lb lnbAddRow ["You must load a world or mission to view/change."];
+	_lb lnbAddRow ["You must load an intro/world/mission to view/change."];
 	
 } else {
 	[true] call FUNC(updateGUI); // true means first-run
@@ -42,4 +43,9 @@ if (isNil "cba_fnc_registerKeybind") then {
 
 	// Add handler to prevent key passthrough when waiting for input for binding (to block Esc).
 	_display displayAddEventHandler ["KeyDown", "_this call cba_keybinding_fnc_onKeyDown"];
+
+	// Make copies of the current registry and handlers arrays (for Esc/cancel)
+	GVAR(registryBackup) = + (profileNamespace getVariable [QGVAR(registry), []]);
+	GVAR(handlersBackup) = + GVAR(handlers)
+
 };

@@ -28,6 +28,10 @@ class RscDisplayConfigure {
 	onLoad = "[""onLoad"",_this,""RscDisplayConfigure"",'GUI'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""; _this call compile preprocessfilelinenumbers ""\x\cba\addons\keybinding\gui\initDisplay.sqf""";
 	
 	class controls {
+		class CA_ButtonCancel: RscButtonMenuCancel {
+			onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_cancel";
+		};
+
 		class CBA_ButtonConfigureAddons : RscButtonMenuOK {
 			idc = 4302;
 			text = "Configure Addons";

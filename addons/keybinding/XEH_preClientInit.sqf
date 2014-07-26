@@ -10,6 +10,7 @@ call COMPILE_FILE(dikDecToString);
 PREP_SUB(gui,onButtonClick_configure);
 PREP_SUB(gui,onButtonClick_delete);
 PREP_SUB(gui,onButtonClick_default);
+PREP_SUB(gui,onButtonClick_cancel);
 PREP_SUB(gui,onComboChanged);
 PREP_SUB(gui,onKeyDown);
 PREP_SUB(gui,onLBDblClick);
