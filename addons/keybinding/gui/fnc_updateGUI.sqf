@@ -119,6 +119,7 @@ if !(isNull _display) then {
 
 				// Search the handler array for any other keybinds using this key.
 				_isDuplicated = false;
+				_dupAction = "";
 				{
 					_sModName = _x select 0;
 					_sActionName = _x select 1;
@@ -127,9 +128,16 @@ if !(isNull _display) then {
 
 					if ((_sModName != _modName || _sActionName != _actionName) && [_sKeybind, _keybind] call bis_fnc_areEqual) exitWith {
 						_isDuplicated = true;
+						_dupAction = _sActionName;
 					};
 
 				} foreach _handlerTracker;
+
+				if (_isDuplicated) then {
+					// Add the name of the action that dupes the keybinding to the 
+					// end of the readable bind string.
+					_keyString = format ["%1 [%2]", _keyString, _dupAction];
+				};
 
 				// Add the row.
 				_lnb lnbAddRow [_actionName, _keyString];

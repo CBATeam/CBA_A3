@@ -26,6 +26,7 @@ GVAR(waitingForInput) = false;
 //
 // example: [15, true, false, false]
 
+// The keybind registry is stored in profileNamespace as "cba_keybinding_registry."
 // Permament array that tracks all key configs registered by fnc_registerKeybindHandler.
 // Format: Associative array. Access with bis_fnc_getFromPairs.
 // [
