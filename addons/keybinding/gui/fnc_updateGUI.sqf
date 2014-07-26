@@ -53,9 +53,9 @@ if !(isNull _display) then {
 	// Fill the listnbox with actions.
 	if (count _comboMods > 0) then {
 		// Get the selected mod.
-		_current = _comboMods select (lbCurSel _combo);
+		_modName = _comboMods select (lbCurSel _combo);
 		// Get the actions associated with the current mod.
-		_modActions = [_keyDict, _current] call bis_fnc_getFromPairs;
+		_modActions = [_keyDict, _modName] call bis_fnc_getFromPairs;
 
 		// Clear the listbox.
 		lnbClear _lnb;
@@ -96,9 +96,9 @@ if !(isNull _display) then {
 					_keyString = format ["""%1""", _keyString]
 				};
 
-				// Search the modActions array for any other actions with the same name
-				// but a different keypressType (KeyDown and KeyUp on same actionname)
-				_dupSearch = [];
+				// Search the modActions array (without current modAction) for any other 
+				// actions with the same name but a different keypressType (KeyDown and
+				// KeyUp on same actionname).
 				_foundIndex = -1;
 				{
 					_sActionName = _x select 0;
@@ -107,7 +107,7 @@ if !(isNull _display) then {
 					_sKeybind = (_handlerTracker select _sIndex) select 2;
 					_sKeypressType = (_handlerTracker select _sIndex) select 5;
 
-					if (_sActionName == _actionName && {_sKeypressType != _keypressType}) exitWith {
+					if (_sActionName == _actionName && {_sKeypressType != _keypressType}) then {
 						// Found an action with the same name but different keypresstypes.
 						// Add it to the ignore array.
 						_ignore set [count _ignore, _actionName];
@@ -115,7 +115,21 @@ if !(isNull _display) then {
 						// Update the foundIndex to point to the found action
 						_foundIndex = _sIndex;
 					};
-				} foreach _modActions;
+				} foreach (_modActions - [_x]);
+
+				// Search the handler array for any other keybinds using this key.
+				_isDuplicated = false;
+				{
+					_sModName = _x select 0;
+					_sActionName = _x select 1;
+					_sKeybind = _x select 2;
+					_sKeypressType = _x select 5;
+
+					if ((_sModName != _modName || _sActionName != _actionName) && [_sKeybind, _keybind] call bis_fnc_areEqual) exitWith {
+						_isDuplicated = true;
+					};
+
+				} foreach _handlerTracker;
 
 				// Add the row.
 				_lnb lnbAddRow [_actionName, _keyString];
@@ -129,6 +143,11 @@ if !(isNull _display) then {
 
 				// Set row data to the index of the action in the handler tracker.
 				_lnb lnbSetData [[_forEachIndex, 0], format ["%1", _indexArray]];
+
+				// Set the row color to red if a duplicate keybind exists.
+				if (_isDuplicated) then {
+					_lnb lnbSetColor [[_forEachIndex, 1], [1,0,0,1]];
+				};
 			};
 		} foreach _modActions;
 	};

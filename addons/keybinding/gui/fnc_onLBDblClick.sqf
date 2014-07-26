@@ -27,7 +27,7 @@ GVAR(waitingForInput) = true;
 
 // Update box content to indicate that we're waiting for input.
 _lnb lnbSetText [[_lnbIndex, 1], "Press key or Esc to cancel"];
-_lnb lnbSetColor [[_lnbIndex, 1], [1,0,0,1]];
+_lnb lnbSetColor [[_lnbIndex, 1], [0,1,0,1]];
 
 // Wait for input, selection, or mod change.
 waitUntil {count GVAR(input) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbText (lbCurSel _combo))};
