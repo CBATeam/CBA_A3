@@ -51,6 +51,8 @@ XEH_FUNC(GetOut);
 XEH_FUNC(Hit);
 XEH_FUNC_HP(HitPart);
 XEH_FUNC(IncomingMissile);
+XEH_FUNC(InventoryClosed);
+XEH_FUNC(InventoryOpened);
 XEH_FUNC(Killed);
 XEH_FUNC(LandedTouchDown);
 XEH_FUNC(LandedStopped);
