@@ -25,6 +25,8 @@ SCRIPT(isHash);
 
 PARAMS_1(_value);
 
+private "_result";
+
 _result = false;
 
 if ((typeName _value) == "ARRAY" && {(count _value) == 4} && {(typeName (_value select HASH_ID)) == (typeName TYPE_HASH)}) then {
