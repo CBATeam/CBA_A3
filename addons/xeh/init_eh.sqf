@@ -30,6 +30,9 @@ SLX_XEH_EH_RespawnInit = {
 // HitPart is special in that the passed parameter to the event handler is an array of arrays
 #define XEH_FUNC_HP(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = {{_this call _x}forEach(((_this select 0)select 0) getVariable [SLX_XEH_STR_##A,[]])}; XEH_FUNC_PLAYER(A)
 
+// HandleHeal, InventoryClosed, InventoryOpened
+#define XEH_FUNC_BOOL(A) SLX_XEH_STR_##A = 'Extended_##A##EH'; SLX_XEH_EH_##A = {_r=false;{_t=(_this call _x);if(typeName _t==typeName false)then{_r=_r or _t}}forEach((_this select 0)getVariable[SLX_XEH_STR_##A,[]]);_r}; XEH_FUNC_PLAYER(A)
+
 XEH_FUNC(AnimChanged);
 XEH_FUNC(AnimDone);
 XEH_FUNC(AnimStateChanged);
@@ -47,12 +50,12 @@ XEH_FUNC(Gear);
 XEH_FUNC(GetIn);
 XEH_FUNC(GetOut);
 //XEH_FUNC(HandleDamage);
-//XEH_FUNC(HandleHeal);
+XEH_FUNC_BOOL(HandleHeal);
 XEH_FUNC(Hit);
 XEH_FUNC_HP(HitPart);
 XEH_FUNC(IncomingMissile);
-XEH_FUNC(InventoryClosed);
-XEH_FUNC(InventoryOpened);
+XEH_FUNC_BOOL(InventoryClosed);
+XEH_FUNC_BOOL(InventoryOpened);
 XEH_FUNC(Killed);
 XEH_FUNC(LandedTouchDown);
 XEH_FUNC(LandedStopped);

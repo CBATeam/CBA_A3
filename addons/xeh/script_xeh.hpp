@@ -16,6 +16,7 @@ fuel               = "_this call SLX_XEH_EH_Fuel"; \
 gear               = "_this call SLX_XEH_EH_Gear"; \
 getIn              = "_this call SLX_XEH_EH_GetIn"; \
 getOut             = "_this call SLX_XEH_EH_GetOut"; \
+handleHeal         = "_this call SLX_XEH_EH_HandleHeal"; \
 hit                = "_this call SLX_XEH_EH_Hit"; \
 hitPart            = "_this call SLX_XEH_EH_HitPart"; \
 incomingMissile    = "_this call SLX_XEH_EH_IncomingMissile"; \
@@ -33,7 +34,6 @@ weaponAssembled    = "_this call SLX_XEH_EH_WeaponAssembled"; \
 weaponDisAssembled = "_this call SLX_XEH_EH_WeaponDisassembled";
 
 //handleDamage      = "_this call SLX_XEH_EH_HandleDamage"; \
-//handleHeal        = "_this call SLX_XEH_EH_HandleHeal"; \
 //mpHit             = "_this call SLX_XEH_EH_MPHit"; \
 //mpKilled          = "_this call SLX_XEH_EH_MPKilled"; \
 //mpRespawn         = "_this call SLX_XEH_EH_MPRespawn";
