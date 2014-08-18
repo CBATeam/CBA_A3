@@ -16,7 +16,7 @@
 #define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", "ControlsShifted", \
 	"Dammaged", "Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
 	"Explosion", "Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", \
-	/* "HandleDamage", "HandleHeal", */ "Hit", "HitPart", "IncomingMissile", \
+	/* "HandleDamage", */ "HandleHeal", "Hit", "HitPart", "IncomingMissile", \
 	"InventoryClosed", "InventoryOpened", \
 	"Killed", "LandedTouchDown", "LandedStopped", "Local", /* "MPHit", */ \
 	/* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", "SoundPlayed", \

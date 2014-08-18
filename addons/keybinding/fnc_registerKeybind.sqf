@@ -193,4 +193,7 @@ if (_index > -1) then {
 	GVAR(handlers) = _handlerTracker;
 };
 
+// Emit an event that a key has been registered.
+["cba_keybinding_registerKeybind", _this] call cba_fnc_localEvent;
+
 _keybind;
