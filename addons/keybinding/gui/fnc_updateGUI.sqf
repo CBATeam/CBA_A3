@@ -66,6 +66,8 @@ if !(isNull _display) then {
 		_ignore = [];
 
 		// Add the actions to the listbox and associate their data.
+		_lbCount = 0; // Count of items in listbox is not necessary equal to the count
+		// of keybinds due to keyup/keydown.
 		{
 			_actionName = _x select 0;
 			_index = _x select 1;
@@ -150,12 +152,14 @@ if !(isNull _display) then {
 				};
 
 				// Set row data to the index of the action in the handler tracker.
-				_lnb lnbSetData [[_forEachIndex, 0], format ["%1", _indexArray]];
+				_lnb lnbSetData [[_lbCount, 0], format ["%1", _indexArray]];
 
 				// Set the row color to red if a duplicate keybind exists.
 				if (_isDuplicated) then {
-					_lnb lnbSetColor [[_forEachIndex, 1], [1,0,0,1]];
+					_lnb lnbSetColor [[_lbCount, 1], [1,0,0,1]];
 				};
+
+				_lbCount = _lbCount + 1;
 			};
 		} foreach _modActions;
 	};
