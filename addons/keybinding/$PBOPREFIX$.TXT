@@ -1,5 +1,5 @@
 x\cba\addons\keybinding
 prefix=x\cba\addons\keybinding
 product=Arma 3
-version=005
+version=006
 Pbo Type is: Arma
