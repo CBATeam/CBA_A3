@@ -5,7 +5,7 @@ class CfgPatches {
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = {
 			"CBA_MAIN_A3", "CBA_XEH",
-			"CAData", "A3_Characters_F", "A3_Boat_F", "A3_animals_f", "A3_air_f", "A3_soft_f", "A3_static_f", "A3_weapons_f", "a3_structures_f" // "A3_armor_f"
+			"A3_Characters_F", "A3_Boat_F", "A3_animals_f", "A3_air_f", "A3_soft_f", "A3_static_f", "A3_weapons_f", "a3_structures_f" // "A3_armor_f"
 			//"CAData", // All, Car, Tank, Helicopter, Plane, Ship, ParachuteBase
 			//"CA_Missions_AmbientCombat", // AmbientCombatManager
 			//"CA_Modules_Functions", // FunctionsManager, PreloadManager
