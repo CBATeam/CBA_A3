@@ -36,8 +36,8 @@ SLX_XEH_EH_RespawnInit = {
 XEH_FUNC(AnimChanged);
 XEH_FUNC(AnimDone);
 XEH_FUNC(AnimStateChanged);
-XEH_FUNC(ContainerClosed);
-XEH_FUNC(ContainerOpened);
+XEH_FUNC_BOOL(ContainerClosed);
+XEH_FUNC_BOOL(ContainerOpened);
 XEH_FUNC(ControlsShifted);
 XEH_FUNC(Dammaged);
 XEH_FUNC(Engine);
