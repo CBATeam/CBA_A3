@@ -22,6 +22,8 @@ class Extended_InitPost_EventHandlers {};
 class Extended_AnimChanged_EventHandlers {};
 class Extended_AnimDone_EventHandlers {};
 class Extended_AnimStateChanged_EventHandlers {};
+class Extended_ContainerClosed_EventHandlers {};
+class Extended_ContainerOpened_EventHandlers {};
 class Extended_ControlsShifted_EventHandlers {};
 class Extended_Dammaged_EventHandlers {};
 class Extended_Engine_EventHandlers {};

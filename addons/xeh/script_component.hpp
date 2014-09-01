@@ -13,8 +13,9 @@
 #endif
 
 #define XEH_LOG(MESSAGE) if !(SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, MESSAGE] }
-#define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", "ControlsShifted", \
-	"Dammaged", "Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
+#define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", \
+	"ContainerClosed", "ContainerOpened", "ControlsShifted", "Dammaged", \
+	"Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
 	"Explosion", "Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", \
 	/* "HandleDamage", */ "HandleHeal", "Hit", "HitPart", "IncomingMissile", \
 	"InventoryClosed", "InventoryOpened", \
