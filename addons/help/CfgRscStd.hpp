@@ -4,9 +4,6 @@ class RscStandardDisplay;
 class RscStructuredText;
 class RscActiveText;
 class RscButton;
-class CA_Version;
-class VersionText;
-class VersionNumber;
 class RscControlsGroupNoScrollbars;
 
 class CBA_CREDITS_CONT: RscStructuredText {
