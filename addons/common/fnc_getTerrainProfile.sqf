@@ -47,7 +47,7 @@ for "_i" from 0 to (_2Ddistance / _resolution) do {
 };
 _logic setposATL _posB;
 _alt = ((getposASL _logic) select 2) - _z;
-_return set [count _return,[_alt, _2Ddistance, _pos]];
+_return pushBack [_alt, _2Ddistance, _pos];
 
 deletevehicle _logic;
 

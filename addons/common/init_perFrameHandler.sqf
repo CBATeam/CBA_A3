@@ -78,12 +78,12 @@ FUNC(addPerFrameHandlerLogic) = {
 	// Prepare Serialization and Deserialization code
 	_serialize = [];
 	{
-		_serialize set [count _serialize, compile format["_logic setVariable ['%1', if (isNil '%1') then { nil } else { %1 }]", _x]];
+		_serialize pushBack (compile format["_logic setVariable ['%1', if (isNil '%1') then { nil } else { %1 }]", _x]);
 	} forEach (_logic getVariable 'private');
 
 	_deSerialize = [];
 	{
-		_deSerialize set [count _deSerialize, compile format["%1 = _logic getVariable '%1'", _x]];
+		_deSerialize pushBack (compile format["%1 = _logic getVariable '%1'", _x]);
 	} forEach (_logic getVariable 'private');
 
 	_logic setVariable ["serialize", _serialize];

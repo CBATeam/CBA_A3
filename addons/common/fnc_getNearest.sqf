@@ -38,7 +38,7 @@ _return = if (count _this > 2) then {[]} else {objNull};
 	if (_distance < _radius) then {
 		if !(call _code) exitwith {};
 		if (count _this > 2) then {
-			_return set [count _return, _x];
+			_return pushBack _x;
 		} else {
 			_radius = _distance;
 			_return = _x;
