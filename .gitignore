@@ -24,3 +24,6 @@ addons/*.bisign
 
 *.pbo
 /utils/make.cache
+
+*~
+*#
