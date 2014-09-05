@@ -158,16 +158,8 @@ class CfgVehicles {
         class Car_F: Car {
                 class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
-        class Offroad_Base: Car_F { class Eventhandlers; };
-        class c_offroad: Offroad_Base {
-                class EventHandlers: Eventhandlers { EXTENDED_EVENTHANDLERS };
-        };
         class Quadbike_Base_F: Car_F {
                 class EventHandlers: Eventhandlers { EXTENDED_EVENTHANDLERS };
-        };
-        class Wreck_base_F;
-        class Land_Wreck_Commanche_F: Wreck_base_F {
-                class EventHandlers { EXTENDED_EVENTHANDLERS };
         };
         class Tank;
         class Tank_F: Tank {

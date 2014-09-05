@@ -47,12 +47,6 @@ class Extended_init_Eventhandlers {
         class Underwear_F /* : B_Soldier_F */ {
                 SLX_BIS = "(_this select 0) execVM ""\A3\Characters_F\Common\scripts\randomize.sqf""";
         };
-        class c_offroad /* : Offroad_Base */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_F\Offroad\scripts\randomize.sqf""";
-        };
-        class Land_Wreck_Commanche_F /* : Wreck_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Structures_F\Wrecks\scripts\commanche.sqf""";
-        };
         class FirePlace_burning_F /* : Land_FirePlace_F */ {
                 SLX_BIS = "(_this select 0) inflame true";
         };
