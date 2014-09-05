@@ -27,7 +27,7 @@ if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeNa
 //TODO: still not detecting nil?
 // if (({isNil "_x"} count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes)) > 0) exitWith {diag_log _msg};
 
-if (count _this == 4) then {_this set [count _this, true]};
+if (count _this == 4) then {_this pushBack true};
 
 
 // convert any single key items (eg: DIK_A) into a key array [key, [shift,ctrl,alt]]
@@ -51,12 +51,12 @@ if (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != 0) then {
 	};
 };
 
-GVAR(typeMenuSources) set [count GVAR(typeMenuSources), _this];
+GVAR(typeMenuSources) pushBack _this;
 [GVAR(typeMenuSources), _flexiMenu_typeMenuSources_ID_priority] call CBA_fnc_sortNestedArray;
 
 // reverse the order of sorting, so highest priority is at the top
 _list = [];
 for "_e" from (count GVAR(typeMenuSources) - 1) to 0 step -1 do {
-	_list set [count _list, GVAR(typeMenuSources) select _e];
+	_list pushBack (GVAR(typeMenuSources) select _e);
 };
 GVAR(typeMenuSources) = _list;

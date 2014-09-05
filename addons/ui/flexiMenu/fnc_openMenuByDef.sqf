@@ -69,7 +69,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 						_target = player;
 					};
 				};
-				_potentialMenuSources set [count _potentialMenuSources, _x select _flexiMenu_typeMenuSources_ID_menuSource];
+				_potentialMenuSources pushBack (_x select _flexiMenu_typeMenuSources_ID_menuSource);
 			};
 		} forEach [_addParameters];
 
@@ -80,9 +80,9 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 
 			_menuSources = [];
 			_menuSource = _target getVariable QGVAR(flexiMenu_source);
-			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources set [count _menuSources, _menuSource]};
+			if (isNil "_menuSource") then {_menuSource = []} else {_menuSources pushBack _menuSource};
 			{
-				_menuSources set [count _menuSources, _x];
+				_menuSources pushBack _x;
 			} forEach _potentialMenuSources;
 
 			if (count _menuSources > 0) then {

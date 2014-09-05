@@ -76,7 +76,7 @@ for "_i" from 0 to (count _elmsB - 1) step 2 do {
 	_item = _elmsB select _i;
 	_cB = _elmsB select (_i + 1);
 	for "_j" from 0 to (_cB - 1) do {
-		(_return select 1) set [count (_return select 1), _item]; // Fills array
+		(_return select 1) pushBack _item; // Fills array
 	};
 };
 // Now we're done, return the work done

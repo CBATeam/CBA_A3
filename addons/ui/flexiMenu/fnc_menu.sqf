@@ -193,7 +193,7 @@ _commitList = [];
 			_ctrl ctrlSetToolTip _tooltip;
 			buttonSetAction [_idc, _action];
 
-			_commitList set [count _commitList, [_idc, _enabled, _visible]];
+			_commitList pushBack [_idc, _enabled, _visible];
 
 			// _visible==1 means: button used, go to next button.
 			// _visible==0 means: button hidden and unused, so re-use this idc for next menu option.
@@ -217,7 +217,7 @@ if (_idcIndex == 0) then {
 	};
 	_ctrl ctrlCommit 0; // commit pos/size before showing
 	_ctrl ctrlSetStructuredText parseText "No options";
-	_commitList set [count _commitList, [_idc, 0, 1]];
+	_commitList pushBack [_idc, 0, 1];
 	_idcIndex = _idcIndex + 1;
 };
 
