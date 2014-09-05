@@ -13,7 +13,7 @@ if ((SLX_XEH_MACHINE select 12) > 0) then {
 		[INITPOST] spawn FUNC(init);
 	} else {
 		// StartInit was not yet done, this unit is spawned in start of mission
-		SLX_XEH_objects set [count SLX_XEH_objects, [INITPOST]];
+		SLX_XEH_objects pushBack [INITPOST];
 	};
 } else {
 	// Pre v1.60
@@ -25,6 +25,6 @@ if ((SLX_XEH_MACHINE select 12) > 0) then {
 		if (_isDelayed) then { [INITPOST, _isRespawn, _isDelayed] call FUNC(init) } else { [INITPOST, _isRespawn, _isDelayed] spawn FUNC(init) }; // Spawn; Otherwise setVariable won't hold etc
 	} else {
 		// StartInit was not yet done, this unit is spawned in start of mission
-		SLX_XEH_objects set [count SLX_XEH_objects, [INITPOST, _isRespawn, _isDelayed]];
+		SLX_XEH_objects pushBack [INITPOST, _isRespawn, _isDelayed];
 	};
 };

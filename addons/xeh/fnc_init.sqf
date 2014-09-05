@@ -97,14 +97,14 @@ if (_new) then {
 	// Post v1.60
 	if !(_isRespawn) then {
 		if !(_post) then {
-			_sys_inits set [count _sys_inits, {_this call FUNC(support_monitor2)}]; // Handle missing entries from class CfgEventHandlers
-			_sys_inits set [count _sys_inits, {_this call FUNC(init_others)}]; // Handle eventHandlers setVariabled on the object
+			_sys_inits pushBack {_this call FUNC(support_monitor2)}; // Handle missing entries from class CfgEventHandlers
+			_sys_inits pushBack {_this call FUNC(init_others)};      // Handle eventHandlers setVariabled on the object
 		} else {
-			if (_isMan) then { _sys_inits set [count _sys_inits, {_this call FUNC(init_playable)}] }; // Handle playable TAG
+			if (_isMan) then { _sys_inits pushBack {_this call FUNC(init_playable)} }; // Handle playable TAG
 		};
 	};
 	
-	if !(_post) then { _sys_inits set [count _sys_inits, {[_this select 0] call FUNC(init_post)}] }; // Prepare InitPost
+	if !(_post) then { _sys_inits pushBack {[_this select 0] call FUNC(init_post)} }; // Prepare InitPost
 } else {
 	// Pre v1.60
 	// This is in PostInit as opposed to (pre)Init,
@@ -112,17 +112,17 @@ if (_new) then {
 	// Run men's FUNC(init_others) in PostInit, only when in Multiplayer
 	if !(_isRespawn) then {
 		if !(_post) then {
-			_sys_inits set [count _sys_inits, {_this call FUNC(support_monitor2)}]; // Handle missing entries from class CfgEventHandlers
-			if (!_isMan || {!isMultiplayer}) then { _sys_inits set [count _sys_inits, {_this call FUNC(init_others)}] }; // Handle eventHandlers setVariabled on the object
+			_sys_inits pushBack {_this call FUNC(support_monitor2)}; // Handle missing entries from class CfgEventHandlers
+			if (!_isMan || {!isMultiplayer}) then { _sys_inits pushBack {_this call FUNC(init_others)} }; // Handle eventHandlers setVariabled on the object
 		} else {
 			if (_isMan) then {
-				_sys_inits set [count _sys_inits, {_this call FUNC(init_playable) }];
-				if (isMultiplayer) then { _sys_inits set [count _sys_inits, {_this call FUNC(init_others)}] }; // Handle eventHandlers setVariabled on the object
+				_sys_inits pushBack {_this call FUNC(init_playable)};
+				if (isMultiplayer) then { _sys_inits pushBack {_this call FUNC(init_others)} }; // Handle eventHandlers setVariabled on the object
 			};
 		};
 	};
 	
-	if !(_post) then { _sys_inits set [count _sys_inits, compile format ['[_this select 0, %1, %2] call FUNC(init_post)',_isRespawn,_isDelayed]]  }; // Prepare InitPost
+	if !(_post) then { _sys_inits pushBack (compile format ['[_this select 0, %1, %2] call FUNC(init_post)',_isRespawn,_isDelayed])  }; // Prepare InitPost
 };
 
 if (count _sys_inits > 0) then { _inits = [_sys_inits] + _inits };

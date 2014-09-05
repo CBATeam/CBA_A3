@@ -27,17 +27,17 @@ if (isClass _config) then {
 			_entryClient = (_entry/"clientInit");
 			_entry = (_entry/"init");
 			if (isText _entry) then {
-				_Inits set [count _Inits, compile(getText _entry)];
+				_Inits pushBack compile(getText _entry);
 			};
 			if (SLX_XEH_MACHINE select 3 && {isText _entryServer}) then {
-				_Inits set [count _Inits, compile(getText _entryServer)];
+				_Inits pushBack compile(getText _entryServer);
 			};
 			if (!isDedicated && {isText _entryClient}) then {
-				_Inits set [count _Inits, compile(getText _entryClient)];
+				_Inits pushBack compile(getText _entryClient);
 			};
 		} else {
 			if (isText _entry) then {
-				_Inits set [count _Inits, compile(getText _entry)];
+				_Inits pushBack compile(getText _entry);
 			};
 		};
 		INC(_i);

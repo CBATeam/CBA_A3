@@ -182,23 +182,23 @@ SLX_XEH_AR_TRUE = [SLX_XEH_STR_PROCESSED, true];
 
 SLX_XEH_OTHER_EVENTS = [XEH_EVENTS,XEH_CUSTOM_EVENTS]; // All events except the init event
 SLX_XEH_OTHER_EVENTS_FULL = [];
-{ SLX_XEH_OTHER_EVENTS_FULL set [count SLX_XEH_OTHER_EVENTS_FULL, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+{ SLX_XEH_OTHER_EVENTS_FULL pushBack format["Extended_%1_EventHandlers", _x] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_XEH = [];
-{ SLX_XEH_OTHER_EVENTS_XEH set [count SLX_XEH_OTHER_EVENTS_XEH, format["Extended_%1EH", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+{ SLX_XEH_OTHER_EVENTS_XEH pushBack format["Extended_%1EH", _x] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_XEH_PLAYERS = [];
-{ SLX_XEH_OTHER_EVENTS_XEH_PLAYERS set [count SLX_XEH_OTHER_EVENTS_XEH_PLAYERS, format["Extended_%1EH_Player", _x]] } forEach SLX_XEH_OTHER_EVENTS;
+{ SLX_XEH_OTHER_EVENTS_XEH_PLAYERS pushBack  format["Extended_%1EH_Player", _x] } forEach SLX_XEH_OTHER_EVENTS;
 SLX_XEH_OTHER_EVENTS_PLAYERS = [];
 
 // HitPart is special in that the passed parameter to the event handler is an array of arrays
-{ 
-	if (_x == "HitPart") then  {
-	SLX_XEH_OTHER_EVENTS_PLAYERS set [count SLX_XEH_OTHER_EVENTS_PLAYERS, compile format["{ { _this call _x } forEach (((_this select 0) select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x]] 
-	} 
-	else 
-	{
-	SLX_XEH_OTHER_EVENTS_PLAYERS set [count SLX_XEH_OTHER_EVENTS_PLAYERS, compile format["{ { _this call _x } forEach ((_this select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x]] 
-	}
-
+{
+  if (_x == "HitPart") then
+  {
+    SLX_XEH_OTHER_EVENTS_PLAYERS pushBack (compile format["{ { _this call _x } forEach (((_this select 0) select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x])
+  }
+  else
+  {
+    SLX_XEH_OTHER_EVENTS_PLAYERS pushBack (compile format["{ { _this call _x } forEach ((_this select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x])
+  }
 } forEach SLX_XEH_OTHER_EVENTS;
 
 SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
@@ -212,7 +212,7 @@ SLX_XEH_DEF_CLASSES = [SLX_XEH_STR, "All"];
 // TODO: Perhaps do a config verification - if no custom eventhandlers detected in _all_ CfgVehicles classes, don't run this XEH handler - might be too much processing.
 SLX_XEH_EVENTS_NAT = [XEH_EVENTS];
 SLX_XEH_EVENTS_FULL_NAT = [];
-{ SLX_XEH_EVENTS_FULL_NAT set [count SLX_XEH_EVENTS_FULL_NAT, format["Extended_%1_EventHandlers", _x]] } forEach SLX_XEH_EVENTS_NAT;
+{ SLX_XEH_EVENTS_FULL_NAT pushBack format["Extended_%1_EventHandlers", _x] } forEach SLX_XEH_EVENTS_NAT;
 
 SLX_XEH_EXCLUDES = []; // TODO: Anything else?? - Ammo crates for instance have no XEH by default due to crashes) - however, they don't appear in 'vehicles' list anyway.
 SLX_XEH_CLASSES = []; // Used to cache classes that have full XEH setup - TODO: Performance test.. Could use object with a variable space, classname as key
