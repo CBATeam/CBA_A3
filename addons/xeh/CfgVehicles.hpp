@@ -28,18 +28,18 @@ class CfgVehicles {
 
 	class Air;
 	class Helicopter: Air {
-		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+		delete EventHandlers;
 	};
 	class ParachuteBase: Helicopter {
 		XEH_DISABLED;
 	};
 	class Plane: Air {
-		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
+		delete EventHandlers;
 	};
 
 	class StaticWeapon;
 	class StaticCannon: StaticWeapon {
-		class Eventhandlers { EXTENDED_EVENTHANDLERS };
+		delete EventHandlers;
 	};
 
 	// Custom object that can be used to force XEH initialization even if no XEH compatible object is on the Map.
