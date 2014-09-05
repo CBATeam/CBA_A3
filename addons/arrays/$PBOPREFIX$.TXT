@@ -1,5 +1,5 @@
 x\cba\addons\arrays
 prefix=x\cba\addons\arrays
 product=Arma 3
-version=002
+version=003
 Pbo Type is: Arma
