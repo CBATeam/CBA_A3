@@ -54,7 +54,7 @@ for "_i" from 1 to (count _elmsA) step 2 do {
 		};
 		// We have the difference, now put it in the right array
 		for "_j" from 1 to _cT do {
-			(_return select _case) set [count (_return select _case), _item]; // Fills array
+			(_return select _case) pushBack _item; // Fills array
 		};
 		// Remove the item from B, it was in both arrays
 		_elmsB set [_idx, NULL];
@@ -63,7 +63,7 @@ for "_i" from 1 to (count _elmsA) step 2 do {
 	} else {
 		// Missing from B
 		for "_j" from 0 to _cA do {
-			(_return select 0) set [count (_return select 0), _item]; // Fills array
+			(_return select 0) pushBack _item; // Fills array
 		};
 	};
 	// Remove the item from A

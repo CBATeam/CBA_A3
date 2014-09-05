@@ -507,7 +507,7 @@ Examples:
 Author:
 	Spooner
 ------------------------------------------- */
-#define PUSH(var1,var2) var1 set [count (var1), var2]
+#define PUSH(var1,var2) (var1) pushBack (var2)
 
 /* -------------------------------------------
 Macro: ISNILS()

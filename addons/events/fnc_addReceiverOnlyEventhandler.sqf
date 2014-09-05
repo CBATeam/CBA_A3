@@ -21,5 +21,5 @@ SCRIPT(addReceiverOnlyEventhandler);
 private ["_ea"];
 _ea = GVAR(event_holderToR) getVariable (_this select 0);
 if (isNil "_ea") then {_ea = []};
-_ea set [count _ea, _this select 1];
+_ea pushBack (_this select 1);
 GVAR(event_holderToR) setVariable [_this select 0, _ea];

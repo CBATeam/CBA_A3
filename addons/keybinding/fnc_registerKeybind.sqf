@@ -189,7 +189,7 @@ if (_index > -1) then {
 
 	// Add to handler tracker array.
 	_handlerData = [_modName, _actionName, _keybind, _code, _ehID, _keypressType];
-	_handlerTracker set [count _handlerTracker, _handlerData];
+	_handlerTracker pushBack _handlerData;
 	GVAR(handlers) = _handlerTracker;
 };
 

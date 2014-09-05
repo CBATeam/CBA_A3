@@ -30,7 +30,7 @@ if !(isNull _display) then {
 
 		// Add all mods to the combo array.
 		if !(_modName in _comboMods) then {
-			_comboMods set [count _comboMods, _modName];
+			_comboMods pushBack _modName;
 		};
 
 		// Build a dict with entries like ["mod":[["action",index in handlers tracker array],["action2",index]]]
@@ -112,7 +112,7 @@ if !(isNull _display) then {
 					if (_sActionName == _actionName && {_sKeypressType != _keypressType}) then {
 						// Found an action with the same name but different keypresstypes.
 						// Add it to the ignore array.
-						_ignore set [count _ignore, _actionName];
+						_ignore pushBack _actionName;
 
 						// Update the foundIndex to point to the found action
 						_foundIndex = _sIndex;
@@ -148,7 +148,7 @@ if !(isNull _display) then {
 				// It is stored as a string.
 				_indexArray = [_index];
 				if (_foundIndex > -1) then {
-					_indexArray set [count _indexArray, _foundIndex];
+					_indexArray pushBack _foundIndex;
 				};
 
 				// Set row data to the index of the action in the handler tracker.

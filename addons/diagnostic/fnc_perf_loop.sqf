@@ -14,7 +14,7 @@
 	// For usage outside CBA
 	#define QUOTE(A) #A
 	#define GVAR(A) my_##A
-	#define PUSH(A,B) A set [count A, B]
+	#define PUSH(A,B) A pushBack B
 */
 
 // temp
@@ -153,7 +153,7 @@ while {GVAR(log)} do {
 	_entry = [[DEFAULT_VALUES]];
 	sleep DELAY;
 	[] call _create;
-	_entry set [count _entry, [DEFAULT_VALUES]];
+	_entry pushBack [DEFAULT_VALUES];
 	PUSH(GVAR(ar),_entry);
 };
 
