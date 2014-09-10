@@ -28,13 +28,13 @@ class CfgVehicles {
 
 	class Air;
 	class Helicopter: Air {
-		delete EventHandlers;
+		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
 	};
 	class ParachuteBase: Helicopter {
 		XEH_DISABLED;
 	};
 	class Plane: Air {
-		delete EventHandlers;
+		class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
 	};
 
 	class StaticWeapon;

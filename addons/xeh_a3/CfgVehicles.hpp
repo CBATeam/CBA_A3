@@ -21,6 +21,21 @@ class CfgVehicles {
         class Snake_random_F: Animal_Base_F {
                 delete EventHandlers;
         };
+        class Fin_Base_F;
+        class Fin_random_F: Fin_Base_F {
+                delete EventHandlers; // Eventhandlers
+        };
+        class Alsatian_Base_F;
+        class Alsatian_Random_F: Alsatian_Base_F {
+                delete EventHandlers; // Eventhandlers
+        };
+        class Goat_Base_F;
+        class Goat_random_F: Goat_Base_F {
+                delete EventHandlers; // Eventhandlers
+        };
+        class Sheep_random_F: Animal_Base_F {
+                delete EventHandlers; // Eventhandlers
+        };
 
         class FlagCarrierCore;
         class FlagChecked_F: FlagCarrierCore {
@@ -43,6 +58,11 @@ class CfgVehicles {
                 XEH_ENABLED;
         };
 
+        class StaticWeapon;
+        class StaticCannon: StaticWeapon {
+                delete EventHandlers;
+        };
+
         class StaticMortar;
         class Mortar_01_Base_F: StaticMortar {
                 delete EventHandlers;
@@ -50,15 +70,18 @@ class CfgVehicles {
 
         class Helicopter;
         class Helicopter_Base_F: Helicopter {
-                delete EventHandlers;
+//                delete EventHandlers;
+        };
+        class Heli_Attack_01_base_F: Helicopter_Base_F {
+                delete EventHandlers; // Eventhandlers
         };
 
         class Ship;
         class Ship_F: Ship {
-                delete EventHandlers; // DefaultEventhandlers
+                class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class Boat_Civil_01_base_F: Ship_F {
-                delete EventHandlers; // Eventhandlers
+//                delete EventHandlers; // Eventhandlers
         };
         class C_Boat_Civil_01_rescue_F: Boat_Civil_01_base_F {
                 delete EventHandlers; // Eventhandlers
@@ -108,7 +131,7 @@ class CfgVehicles {
 
         class Civilian_F;
         class C_man_1: Civilian_F {
-                delete EventHandlers;
+//                delete EventHandlers;
         };
         class C_man_hunter_1_F: C_man_1 {
                 delete EventHandlers;
@@ -133,15 +156,23 @@ class CfgVehicles {
 
         class SoldierGB;
         class I_G_Soldier_base_F: SoldierGB {
-                delete EventHandlers;
+                delete EventHandlers; // Eventhandlers
+        };
+        class B_G_Soldier_F;
+        class I_G_Story_SF_Captain_F: B_G_Soldier_F {
+                delete EventHandlers; // Eventhandlers
+        };
+        class I_G_Story_Protagonist_F;
+        class I_G_resistanceLeader_F: I_G_Story_Protagonist_F {
+                delete EventHandlers; // Eventhandlers
         };
 
         class Car;
         class Car_F: Car {
-                delete EventHandlers; // DefaultEventhandlers
+                class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class Quadbike_01_base_F: Car_F {
-                delete EventHandlers; // Eventhandlers
+//                delete EventHandlers; // Eventhandlers
         };
         class C_Quadbike_01_F: Quadbike_01_base_F {
                 delete EventHandlers; // Eventhandlers
@@ -163,7 +194,7 @@ class CfgVehicles {
                 delete EventHandlers; // Eventhandlers
         };
         class Offroad_01_repair_base_F: Offroad_01_base_F {
-                delete EventHandlers; // Eventhandlers
+//                delete EventHandlers; // Eventhandlers
         };
         class B_G_Offroad_01_repair_F: Offroad_01_repair_base_F {
                 delete EventHandlers; // Eventhandlers
@@ -183,7 +214,7 @@ class CfgVehicles {
 
         class Truck_F;
         class Van_01_base_F: Truck_F {
-                delete EventHandlers; // Eventhandlers
+//                delete EventHandlers; // Eventhandlers
         };
         class I_G_Van_01_transport_F: Van_01_base_F {
                 delete EventHandlers; // Eventhandlers
@@ -207,7 +238,7 @@ class CfgVehicles {
 
         class Tank;
         class Tank_F: Tank {
-            delete EventHandlers; // DefaultEventhandlers
+                class Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };
         };
         class APC_Tracked_02_base_F: Tank_F {
                 delete EventHandlers; // Eventhandlers
