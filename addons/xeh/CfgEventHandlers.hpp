@@ -109,14 +109,11 @@ class Extended_Respawn_EventHandlers
 };
 
 
-// TODO: Consider where these need to be implemented
-// Perhaps needs to move to _GAME specific variants?
-class DefaultEventhandlers // external - BIS default event handlers in ArmA 2
+class DefaultEventhandlers // external - BIS default event handlers in ArmA 3
 {
-	init = QUOTE(if(isNil 'BIS_Effects_Init') then { call COMPILE_FILE2(\ca\Data\ParticleEffects\SCRIPTS\init.sqf) });
-	// Replace fired with firedBis
-	delete fired;
-	firedBis = "_this call BIS_Effects_EH_Fired"; // Have to convert between XEH _projectile @ _this select 5,  and BIS _projectile @ _this select 6.
-	killed = "_this call BIS_Effects_EH_Killed";
+	EXTENDED_EVENTHANDLERS
+//	init = "";
+//	firedBis = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
+//	killed = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled');";
 };
 
