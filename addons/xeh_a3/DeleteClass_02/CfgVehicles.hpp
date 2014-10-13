@@ -6,23 +6,22 @@ class CfgVehicles {
 	class Ship_F;
 	class Truck_F;
 
-
 	class C_man_1: Civilian_F {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 	class Helicopter_Base_F: Helicopter {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 	class Boat_Civil_01_base_F: Ship_F {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 	class Offroad_01_repair_base_F: Offroad_01_base_F {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 	class Quadbike_01_base_F: Car_F {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 	class Van_01_base_F: Truck_F {
-		delete Eventhandlers; // Eventhandlers
+		delete EventHandlers; // Eventhandlers
 	};
 };
