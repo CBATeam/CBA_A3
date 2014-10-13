@@ -1,4 +1,10 @@
 // Extended EH classes, where new events are defined.
+class Extended_fired_Eventhandlers {
+        class Car_F /* : Car */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
+};
+
 class Extended_firedBIS_Eventhandlers {
         class StaticCannon /* : StaticWeapon */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
@@ -14,9 +20,6 @@ class Extended_firedBIS_Eventhandlers {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
         class Plane /* : Air */ {
-                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
-        };
-        class Car_F /* : Car */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
         class B_APC_Tracked_01_AA_F /*: B_APC_Tracked_01_base_F */ {

@@ -3,4 +3,5 @@
 #include "\x\cba\addons\xeh\script_xeh.hpp"
 
 #include "CfgPatches.hpp"
+class DefaultEventHandlers;
 #include "CfgVehicles.hpp"
