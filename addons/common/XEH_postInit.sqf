@@ -86,7 +86,7 @@ FUNC(initPerFrameHandlers) = {
 		// Use the new, stacked onEachFrame system
 		["CBA_PFH", "onEachFrame", QUOTE(FUNC(onFrame))] call BIS_fnc_addStackedEventHandler;
 	};
-	
+
 	GVAR(lastFrameRender) = diag_frameNo;
 	// Use a trigger, runs every 0.5s, unscheduled execution
 	GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
@@ -109,25 +109,25 @@ if !(isDedicated) then {
 			// Don't mess around endlessly adding and re-adding to a
 			// corpse/destroyed vehicle.
 			waitUntil { alive (vehicle player) };
-			
+
 			// Add actions to new vehicle.
 			_veh = vehicle player;
 			_actionIndexes = [];
 			TRACE_3("Before Adding actions",_veh,count _actionIndexes, GVAR(actionList));
-			[GVAR(actionList), { TRACE_3("Inside the code for the hashPair",_veh,_actionIndexes, _value); PUSH(_actionIndexes, if (TypeName(_value) =="ARRAY") then {_veh addAction _value}) }] call CBA_fnc_hashEachPair;
+			[GVAR(actionList), { TRACE_3("Inside the code for the hashPair",_veh,_actionIndexes, _value); if (!isNil "_value" && typeName(_value) == "ARRAY") then {PUSH(_actionIndexes, _veh addAction _value)}}] call CBA_fnc_hashEachPair;
 			TRACE_3("Added actions",_veh,count _actionIndexes, GVAR(actionList));
-			
+
 			waitUntil {
 				sleep 1;
 				(vehicle player) != _veh || {!alive player} || {GVAR(actionListUpdated)}
 			};
-	
+
 			// Remove actions from previous vehicle.
 			GVAR(actionListUpdated) = false;
-			{ _veh removeAction _x } foreach _actionIndexes;
-	
+			{ _veh removeAction _x } forEach _actionIndexes;
+
 			TRACE_2("Removed actions",_veh,count _actionIndexes,GVAR(actionList));
-	
+
 			sleep 1;
 		};
 	};
