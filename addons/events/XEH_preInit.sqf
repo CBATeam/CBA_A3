@@ -70,6 +70,8 @@ for "_i" from 0 to 250 do {
 [GVAR(keyhandler_hash), "keyup", _arUp] call (uiNamespace getVariable "CBA_fnc_hashSet");
 [GVAR(keyhandler_hash), "keydown", _arDown] call (uiNamespace getVariable "CBA_fnc_hashSet");
 
+GVAR(keyUpDownList) = [];
+
 PREP(keyHandler);
 PREP(remoteLocalEvent);
 
