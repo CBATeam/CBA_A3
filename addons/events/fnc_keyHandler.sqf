@@ -35,11 +35,9 @@ if(_type == "keydown") then {
 	if (count _handlers > _idx) then {
 		
 		_myHandlers = _handlers select _idx;
-		diag_log text format["_myHandlers: %1", _myHandlers];
 		if (isNil "_myHandlers") exitWith {};
 		if (typeName _myHandlers != "ARRAY") exitWith {};
 		{
-			player sideChat format["_this: %1 %2", _this, _x];
 			_data = [GVAR(keyhandlers_down), _x] call CBA_fnc_hashGet;
 			TRACE_2("",_data,_x);
 			_settings = _data select 1;
@@ -47,7 +45,6 @@ if(_type == "keydown") then {
 			// Verify if the required modifier keys are present
 			_valid = true;
 			// Cannot compare booleans, so must use ! && etc.
-			player sideChat format["settings: %1", _settings];
 			for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _valid = false } };
 			if (_valid) then { 
 				#ifdef DEBUG_MODE_FULL
