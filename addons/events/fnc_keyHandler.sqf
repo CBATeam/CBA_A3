@@ -33,38 +33,43 @@ _idx = _keyData select 1;
 if(_type == "keydown") then {
 	_handlers = [GVAR(keyhandler_hash), "keydown"] call CBA_fnc_hashGet;
 	if (count _handlers > _idx) then {
+		
 		_myHandlers = _handlers select _idx;
+		diag_log text format["_myHandlers: %1", _myHandlers];
 		if (isNil "_myHandlers") exitWith {};
 		if (typeName _myHandlers != "ARRAY") exitWith {};
 		{
+			player sideChat format["_this: %1 %2", _this, _x];
 			_data = [GVAR(keyhandlers_down), _x] call CBA_fnc_hashGet;
 			TRACE_2("",_data,_x);
 			_settings = _data select 1;
 			_code = _data select 2;
 			// Verify if the required modifier keys are present
-			_exit = false;
+			_valid = true;
 			// Cannot compare booleans, so must use ! && etc.
-			for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _exit = true } };
-			if (_exit) exitWith {};
-			#ifdef DEBUG_MODE_FULL
-				PUSH(_ar,_code);
-			#endif
-			_result = _keyData call _code;
+			player sideChat format["settings: %1", _settings];
+			for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _valid = false } };
+			if (_valid) then { 
+				#ifdef DEBUG_MODE_FULL
+					PUSH(_ar,_code);
+				#endif
+				_result = _keyData call _code;
 
-			if (isNil "_result") then {
-				WARNING("Nil result from handler.");
-				_result = false;
-			}
-			else {
-				if (typeName _result != "BOOL") then {
-					TRACE_1("WARNING: Non-boolean result from handler.",_result);
+				if (isNil "_result") then {
+					WARNING("Nil result from handler.");
 					_result = false;
+				}
+				else {
+					if (typeName _result != "BOOL") then {
+						TRACE_1("WARNING: Non-boolean result from handler.",_result);
+						_result = false;
+					};
 				};
-			};
 
-			// If any handler says that it has completely _handled_ the keypress,
-			// then don't allow other handlers to be tried at all.
-			if (_result) exitWith { _handled = true };
+				// If any handler says that it has completely _handled_ the keypress,
+				// then don't allow other handlers to be tried at all.
+				if (_result) exitWith { _handled = true };
+			};
 		} forEach _myHandlers;
 	};
 	/*
@@ -85,28 +90,22 @@ if(_type == "keydown") then {
 				_settings = _data select 1;
 				_code = _data select 2;
 				// Verify if the required modifier keys are present
-				_exit = false;
+				_valid = true;
 				// Cannot compare booleans, so must use ! && etc.
-				for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _exit = true } };
-				if (_exit) exitWith {};
-				#ifdef DEBUG_MODE_FULL
-					PUSH(_ar,_code);
-				#endif
-				
-				PUSH(GVAR(keyUpDownList), _x);
+				for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _valid = false } };
+				if (_valid) then {
+					#ifdef DEBUG_MODE_FULL
+						PUSH(_ar,_code);
+					#endif
+					
+					PUSH(GVAR(keyUpDownList), _x);
+				};
 			};
 		} forEach _myHandlers;
 	};
 } else {
 	_handlers = [GVAR(keyhandler_hash), "keyup"] call CBA_fnc_hashGet;
-	/*if (count _handlers > _idx || 
-		{_idx == 0x2A} || {_idx == 0x36} || // shift
-		{_idx == 0x1D} || {_idx == 0x9D} || // ctrl
-		{_idx == 0x38} || {_idx == 0xB8}	// alt
-	) then {
-		
-	};
-	*/
+
 	_ignoredUpKeys = [];
 	_remHandlers = [];
 	{
@@ -122,41 +121,41 @@ if(_type == "keydown") then {
 			{_idx == 0x38} || {_idx == 0xB8}	// alt
 		) then {
 			if(!(_key in _ignoredUpKeys)) then {
-				_exit = true;
+				_valid = false;
 				// Cannot compare booleans, so must use ! && etc.
 				if(_idx != _key) then {
 					if((_settings select 0) && {_idx == 0x2A} || {_idx == 0x36}) then {
-						_exit = false;
+						_valid = true;
 					} else {
 						if((_settings select 1) && {_idx == 0x1D} || {_idx == 0x9D}) then {
-							_exit = false;
+							_valid = true;
 						} else {
 							if((_settings select 2) && {_idx == 0x38} || {_idx == 0xB8}) then {
-								_exit = false;
+								_valid = true;
 							};
 						};
 					};
 				} else {
-					_exit = false;
+					_valid = true;
 				};
-				if (_exit) exitWith {};
-				
-				_result = _keyData call _code;
-				
-				if (isNil "_result") then {
-					WARNING("Nil result from handler.");
-					_result = false;
-				}
-				else {
-					if (typeName _result != "BOOL") then {
-						TRACE_1("WARNING: Non-boolean result from handler.",_result);
+				if (_valid) then {
+					_result = _keyData call _code;
+					
+					if (isNil "_result") then {
+						WARNING("Nil result from handler.");
 						_result = false;
+					}
+					else {
+						if (typeName _result != "BOOL") then {
+							TRACE_1("WARNING: Non-boolean result from handler.",_result);
+							_result = false;
+						};
 					};
+					PUSH(_remHandlers, _x);
+					// If any handler says that it has completely _handled_ the keypress,
+					// then don't allow other handlers to be tried at all.
+					if (_result) then { PUSH(_ignoredUpKeys, _key); };
 				};
-				PUSH(_remHandlers, _x);
-				// If any handler says that it has completely _handled_ the keypress,
-				// then don't allow other handlers to be tried at all.
-				if (_result) then { PUSH(_ignoredUpKeys, _key); };
 			} else {
 				PUSH(_remHandlers, _x);
 			};
