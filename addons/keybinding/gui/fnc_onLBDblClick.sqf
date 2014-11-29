@@ -22,6 +22,8 @@ _handlerIndexArray = call compile (_lnb lnbData [_lnbIndex, 0]);
 // Clear keypress data.
 GVAR(input) = [];
 
+GVAR(modifiers) = [];
+
 // Mark that we're waiting so that onKeyDown handler blocks input (Esc key)
 GVAR(waitingForInput) = true;
 

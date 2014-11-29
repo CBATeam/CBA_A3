@@ -90,9 +90,9 @@ if !(isNull _display) then {
 
 				// Build the full key combination name.
 				_keyString = format ["%1", _keyName];
-				if (_shift) then {_keyString = format ["Shift+%1", _keyString]};	
-				if (_alt) then {_keyString = format ["Alt+%1", _keyString]};
-				if (_ctrl) then {_keyString = format ["Ctrl+%1", _keyString]};
+				if (_shift && _dikCode != 42) then {_keyString = format ["Shift+%1", _keyString]};	
+				if (_alt && _dikCode != 56) then {_keyString = format ["Alt+%1", _keyString]};
+				if (_ctrl && _dikCode != 29) then {_keyString = format ["Ctrl+%1", _keyString]};
 				if (_keyString != "") then {
 					// Add quotes around whole string.
 					_keyString = format ["""%1""", _keyString]

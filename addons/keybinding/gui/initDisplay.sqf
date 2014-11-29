@@ -43,6 +43,8 @@ if (isNil "cba_fnc_registerKeybind") then {
 
 	// Add handler to prevent key passthrough when waiting for input for binding (to block Esc).
 	_display displayAddEventHandler ["KeyDown", "_this call cba_keybinding_fnc_onKeyDown"];
+	_display displayAddEventHandler ["KeyUp", "_this call cba_keybinding_fnc_onKeyUp"];
+	
 
 	// Make copies of the current registry and handlers arrays (for Esc/cancel)
 	GVAR(registryBackup) = + (profileNamespace getVariable [QGVAR(registry), []]);

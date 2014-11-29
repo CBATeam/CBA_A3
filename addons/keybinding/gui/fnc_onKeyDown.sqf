@@ -11,6 +11,11 @@ _alt = _this select 4;
 if (GVAR(waitingForInput)) then {
 	if !(_dikCode in [42, 29, 56]) then { // Don't accept LShift, LCtrl, or LAlt on their own
 		GVAR(input) = [_dikCode, _shift, _ctrl, _alt];
+		GVAR(modifiers) = [];
+	} else {
+		if(!(_dikCode in GVAR(modifiers))) then {
+			PUSH(GVAR(modifiers), _dikCode);
+		};
 	};
 };
 
