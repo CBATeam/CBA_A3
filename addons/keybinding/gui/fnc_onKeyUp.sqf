@@ -12,7 +12,6 @@ if((count GVAR(modifiers)) > 0) then {
 	//if !(_dikCode in [42, 29, 56]) then { // Don't accept LShift, LCtrl, or LAlt on their own
 	if(_dikCode in GVAR(modifiers)) then {
 		_dikCode = GVAR(modifiers) select 0;
-		diag_log text format["m: %1", GVAR(modifiers)];
 		GVAR(modifiers) = GVAR(modifiers);
 		
 		if(29 in GVAR(modifiers)) then {
