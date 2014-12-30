@@ -51,6 +51,7 @@ GVAR(waitingForInput) = false;
 // Format: Array of arrays
 //      [["modName", "actionName", [keybind], {code}, ehID], ...]
 GVAR(handlers) = [];
+GVAR(handlersBackup) = [];
 
 // Counter for indexing added key handlers.
 GVAR(ehCounter) = 512;
