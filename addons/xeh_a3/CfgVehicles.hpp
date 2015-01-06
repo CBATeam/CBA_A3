@@ -58,11 +58,6 @@ class CfgVehicles {
                 XEH_ENABLED;
         };
 
-        class StaticWeapon;
-        class StaticCannon: StaticWeapon {
-                delete Eventhandlers;
-        };
-
         class StaticMortar;
         class Mortar_01_Base_F: StaticMortar {
                 delete Eventhandlers;
@@ -74,6 +69,10 @@ class CfgVehicles {
         };
         class Heli_Attack_01_base_F: Helicopter_Base_F {
                 delete Eventhandlers; // Eventhandlers
+        };
+        class Heli_Light_01_base_F;
+        class Heli_Light_01_civil_base_F: Heli_Light_01_base_F {
+                delete EventHandlers;
         };
 
         class Ship;
@@ -154,10 +153,6 @@ class CfgVehicles {
                 delete Eventhandlers;
         };
 
-        class SoldierGB;
-        class I_G_Soldier_base_F: SoldierGB {
-                delete Eventhandlers; // Eventhandlers
-        };
         class B_G_Soldier_F;
         class I_G_Story_SF_Captain_F: B_G_Soldier_F {
                 delete Eventhandlers; // Eventhandlers

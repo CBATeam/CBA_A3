@@ -4,12 +4,16 @@ class CfgVehicles {
 	class Helicopter;
 	class Offroad_01_base_F;
 	class Ship_F;
+	class SoldierGB;
 	class Truck_F;
 
 
 	class C_man_1: Civilian_F {
 		delete Eventhandlers; // Eventhandlers
 	};
+    class I_G_Soldier_base_F: SoldierGB {
+		delete Eventhandlers; // Eventhandlers
+    };
 	class Helicopter_Base_F: Helicopter {
 		delete Eventhandlers; // Eventhandlers
 	};

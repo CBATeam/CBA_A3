@@ -1,10 +1,10 @@
 class CfgPatches {
-	class cba_xeh_DeleteClass_02 {
+	class cba_xeh_DeleteClass_01 {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = {
-			"cba_xeh_DeleteClass_01"
+			ADDON
 		};
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};
