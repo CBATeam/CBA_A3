@@ -78,7 +78,7 @@ class CfgVehicles {
 
         class Ship;
         class Ship_F: Ship {
-                class Eventhandlers { EXTENDED_EVENTHANDLERS };
+                class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
         };
         class Boat_Civil_01_base_F: Ship_F {
 //                delete Eventhandlers; // Eventhandlers
@@ -169,7 +169,7 @@ class CfgVehicles {
 
         class Car;
         class Car_F: Car {
-                class Eventhandlers { EXTENDED_EVENTHANDLERS };
+                class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
         };
         class Quadbike_01_base_F: Car_F {
 //                delete Eventhandlers; // Eventhandlers
@@ -238,7 +238,7 @@ class CfgVehicles {
 
         class Tank;
         class Tank_F: Tank {
-                class Eventhandlers { EXTENDED_EVENTHANDLERS };
+                class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
         };
         class APC_Tracked_02_base_F: Tank_F {
                 delete Eventhandlers; // Eventhandlers
