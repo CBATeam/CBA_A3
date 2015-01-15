@@ -23,11 +23,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-private["_handle", "_data"];
+private["_handle", "_data", "_publicHandle"];
 PARAMS_2(_func,_delay);
 DEFAULT_PARAM(2,_params,[]);
 
 _handle = -1;
+_publicHandle = -1;
 if (!isNil "_func") then {
 	_handle = GVAR(nextPFHid);
 	if (_handle == -1) then {
@@ -38,7 +39,10 @@ if (!isNil "_func") then {
 			_handle = (count GVAR(perFrameHandlerArray));
 		};
 	};
-	_data = [_func, _delay, 0, diag_tickTime, _params, _handle];
+    _publicHandle = count GVAR(PFHhandles);
+    GVAR(PFHhandles) set[_publicHandle, _handle];
+	_data = [_func, _delay, 0, diag_tickTime, _params, _publicHandle];
 	GVAR(perFrameHandlerArray) set [_handle, _data];
 };
-_handle
+
+_publicHandle
