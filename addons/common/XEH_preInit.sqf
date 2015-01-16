@@ -36,6 +36,7 @@ ADDON = false;
 
 CBA_nil = [nil];
 GVAR(nextPFHid) = -1;
+GVAR(PFHhandles) = [];
 GVAR(centers) = [];
 CBA_actionHelper = QUOTE(PATHTO(actionHelper));
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));

@@ -20,7 +20,8 @@ private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers"
 PARAMS_2(_keyData,_type);
 _type = toLower _type;
 
-
+_idx = _keyData select 1;
+if(_idx == 0) exitWith {};
 
 GVAR(keypressed) = time;
 
@@ -29,7 +30,7 @@ _result = false;
 
 _keyhandlers = if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) };
 
-_idx = _keyData select 1;
+
 if(_type == "keydown") then {
 	_handlers = [GVAR(keyhandler_hash), "keydown"] call CBA_fnc_hashGet;
 	if (count _handlers > _idx) then {

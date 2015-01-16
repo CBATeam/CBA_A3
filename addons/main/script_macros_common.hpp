@@ -662,6 +662,7 @@ Author:
 	Sickboy
 ------------------------------------------- */
 #define GVAR(var1) DOUBLES(ADDON,var1)
+#define EGVAR(var1,var2) DOUBLES(DOUBLES(PREFIX,var1),var2)
 #define QGVAR(var1) QUOTE(GVAR(var1))
 
 /* -------------------------------------------
@@ -699,6 +700,7 @@ Author:
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
+#define EFUNC(var1,var2) FUNC_INNER(var1,var2)
 
 #ifndef PRELOAD_ADDONS
 	#define PRELOAD_ADDONS class CfgAddons \
