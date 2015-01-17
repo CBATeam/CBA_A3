@@ -27,7 +27,7 @@ if (GVAR(waitingForInput)) then {
 
 if (_dikCode == 1 && !GVAR(waitingForInput)) then {
 	// Esc was pressed to close menu, revert changes.
-	[] spawn cba_keybinding_fnc_onButtonClick_cancel;
+	[] call cba_keybinding_fnc_onButtonClick_cancel;
 };
 
 _return;
