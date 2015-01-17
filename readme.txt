@@ -1,4 +1,4 @@
-Release Candidate 4
+Release Candidate 5
 
 CBA: Community Base Addons
 ==========================
@@ -24,8 +24,8 @@ For ARMA 3 Content
 Launch with -mod=@CBA_A3
 
 *** KNOWN ISSUES ***
-- CBA Keybinding requires a mission to be initilized to function properly. This includes working in the main menu of Arma 3. Command-line parameters like -world=empty or -skipIntro will cause Keybinding to work ONLY in-game but NOT in the main menu of Arma. 
+- CBA Keybinding requires a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Command-line parameters like -world=empty or -skipIntro will cause Keybinding to work ONLY in-game but NOT in the main menu of Arma. 
 
 
 *** Change Log ***
-CBA_A3_RC3 Roadmap - http://dev.withsix.com/versions/1620
+CBA_A3_RC5 Roadmap - http://dev.withsix.com/versions/1620
