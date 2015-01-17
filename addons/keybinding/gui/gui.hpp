@@ -29,13 +29,13 @@ class RscDisplayConfigure {
 	
 	class controls {
 		class CA_ButtonCancel: RscButtonMenuCancel {
-			onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_cancel";
+			onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_cancel";
 		};
 
 		class CBA_ButtonConfigureAddons : RscButtonMenuOK {
 			idc = 4302;
 			text = "Configure Addons";
-			onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_configure";
+			onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_configure";
 			x = "20.15 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX)";
 			y = "23 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))";
 			w = "12.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -101,7 +101,7 @@ class RscDisplayConfigure {
 					linespacing = 1;
 					text = "";
 
-					onLBSelChanged = "_this spawn cba_keybinding_fnc_onComboChanged";
+					onLBSelChanged = "_this call cba_keybinding_fnc_onComboChanged";
 
 					wholeHeight = "12 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					x = "4.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -116,7 +116,7 @@ class RscDisplayConfigure {
 					idcLeft = -1;
 					idcRight = -1;
 
-					onLBDblClick = "_this spawn cba_keybinding_fnc_onLBDblClick";
+					onLBDblClick = "_this call cba_keybinding_fnc_onLBDblClick";
 
 					rowHeight = 0.042;
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -150,7 +150,7 @@ class RscDisplayConfigure {
 					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-					onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_delete";
+					onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_delete";
 				};
 				class CBA_ButtonDefault : RscButtonMenu {
 					idc = 205;
@@ -160,7 +160,7 @@ class RscDisplayConfigure {
 					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-					onButtonClick = "_this spawn cba_keybinding_fnc_onButtonClick_default";
+					onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_default";
 				};
 				class CBA_TextHelp: RscText {
 					idc = 206;
