@@ -7,7 +7,7 @@ _dikCode = _this select 1;
 _shift = false;
 _ctrl = false;
 _alt = false;
-
+if(_dikCode == 0) exitWith {false};
 if((count GVAR(modifiers)) > 0) then {
 	//if !(_dikCode in [42, 29, 56]) then { // Don't accept LShift, LCtrl, or LAlt on their own
 	if(_dikCode in GVAR(modifiers)) then {

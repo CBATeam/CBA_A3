@@ -7,7 +7,7 @@ _dikCode = _this select 1;
 _shift = _this select 2;
 _ctrl = _this select 3;
 _alt = _this select 4;
-
+if(_dikCode == 0) exitWith {false};
 if (GVAR(waitingForInput)) then {
 	if !(_dikCode in [42, 29, 56]) then { // Don't accept LShift, LCtrl, or LAlt on their own
 		GVAR(input) = [_dikCode, _shift, _ctrl, _alt];
