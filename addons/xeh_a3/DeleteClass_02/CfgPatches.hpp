@@ -4,7 +4,7 @@ class CfgPatches {
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = {
-			"cba_xeh_DeleteClass_01"
+			ADDON, "cba_xeh_DeleteClass_01"
 		};
 		VERSION_CONFIG;
 		author[] = {"CBA Team"};

@@ -1,4 +1,15 @@
 // #define EH_DEBUG_ENABLED
+#ifndef EH_DEBUG_ENABLED
+	class CfgPatches {
+			class cba_diagnostics_xeh_disabled {
+					units[] = {};
+					weapons[] = {};
+					worlds[] = {};
+					requiredVersion = 1.0;
+					requiredAddons[] = {"cba_diagnostic"};
+			};
+	};
+#endif
 #ifdef EH_DEBUG_ENABLED
 	#include "script_component.hpp"
 	class CfgPatches {

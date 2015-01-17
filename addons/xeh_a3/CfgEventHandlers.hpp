@@ -1,11 +1,5 @@
 // Extended EH classes, where new events are defined.
 class Extended_fired_Eventhandlers {
-        class Car_F /* : Car */ {
-                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
-        };
-};
-
-class Extended_firedBIS_Eventhandlers {
         class StaticCannon /* : StaticWeapon */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
@@ -28,6 +22,9 @@ class Extended_firedBIS_Eventhandlers {
         class APC_Tracked_02_base_F /* : Tank_F */ {
                 SLX_BIS = "[_this select 0,_this select 6,'missile_move','MissileBase'] call BIS_fnc_missileLaunchPositionFix; _this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
+        class Car_F /* : Car */ {
+                SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
+        };
         class Ship_F /* : Ship */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
@@ -39,6 +36,9 @@ class Extended_firedBIS_Eventhandlers {
         };
 };
 class Extended_init_Eventhandlers {
+        class Car_F /* : Car */ {
+                SLX_BIS = "";
+        };
         class C_man_1 /* : Civilian_F */ {
                 SLX_BIS = "(_this select 0) execVM ""\A3\characters_f\civil\scripts\randomize_civ1.sqf""";
         };
@@ -190,4 +190,6 @@ class Extended_killed_Eventhandlers {
         };
 };
 
-class DefaultEventHandlers;
+class Default_Extended_Eventhandlers;
+class DefaultEventhandlers;
+class Eventhandlers;

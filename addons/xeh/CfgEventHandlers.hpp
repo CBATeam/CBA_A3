@@ -5,6 +5,7 @@ class Extended_EventHandlers
 	EXTENDED_EVENTHANDLERS
 };
 
+
 // Class for "pre-init", run-once event handlers. Code in here runs before any
 // Extended_Init_Eventhandlers code.
 class Extended_PreInit_EventHandlers {};
@@ -108,12 +109,5 @@ class Extended_Respawn_EventHandlers
 	};
 };
 
-
-class DefaultEventhandlers // external - BIS default event handlers in ArmA 3
-{
-	EXTENDED_EVENTHANDLERS
-//	init = "";
-//	firedBis = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
-//	killed = "_this call (uinamespace getvariable 'BIS_fnc_effectKilled');";
-};
-
+class DefaultEventhandlers;
+class Default_Extended_Eventhandlers: DefaultEventhandlers { EXTENDED_EVENTHANDLERS };

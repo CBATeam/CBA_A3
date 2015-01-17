@@ -1,4 +1,7 @@
+/////////////////////////////////////////////////////////////////////////////////
+// MACRO: EXTENDED_EVENTHANDLERS
 // XEH uses all existing event handlers
+/////////////////////////////////////////////////////////////////////////////////
 #define EXTENDED_EVENTHANDLERS init = QUOTE(if(isNil'SLX_XEH_MACHINE')then{call compile preProcessFileLineNumbers '\x\cba\addons\xeh\init_pre.sqf'};_this call SLX_XEH_EH_Init); \
 fired              = "_this call SLX_XEH_EH_Fired"; \
 animChanged        = "_this call SLX_XEH_EH_AnimChanged"; \
@@ -40,3 +43,57 @@ weaponDisAssembled = "_this call SLX_XEH_EH_WeaponDisassembled";
 //mpKilled          = "_this call SLX_XEH_EH_MPKilled"; \
 //mpRespawn         = "_this call SLX_XEH_EH_MPRespawn";
 
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// MACRO: DELETE_EVENTHANDLERS
+//
+// Example:
+//
+//      class DefaultEventhandlers;
+//      class Car_F;
+//      class MRAP_01_base_F: Car_F {
+//           class EventHandlers;
+//      };
+//      class B_MRAP_01_F: MRAP_01_base_F {
+//	         class Eventhandlers: EventHandlers {
+//	   		      DELETE_EVENTHANDLERS
+//	         };
+//	    };
+/////////////////////////////////////////////////////////////////////////////////
+
+#define DELETE_EVENTHANDLERS delete init; \
+delete fired; \
+delete animChanged; \
+delete animDone; \
+delete animStateChanged; \
+delete containerClosed; \
+delete containerOpened; \
+delete controlsShifted; \
+delete dammaged; \
+delete engine; \
+delete epeContact; \
+delete epeContactEnd; \
+delete epeContactStart; \
+delete explosion; \
+delete firedNear; \
+delete fuel; \
+delete gear; \
+delete getIn; \
+delete getOut; \
+delete handleHeal; \
+delete hit; \
+delete hitPart; \
+delete incomingMissile; \
+delete inventoryClosed; \
+delete inventoryOpened; \
+delete killed; \
+delete landedTouchDown; \
+delete landedStopped; \
+delete local;  \
+delete respawn;  \
+delete put;  \
+delete take; \
+delete soundPlayed; \
+delete weaponAssembled; \
+delete weaponDisAssembled;

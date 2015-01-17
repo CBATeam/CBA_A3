@@ -3,7 +3,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		worlds[] = {};
-		requiredAddons[] = {};
+		requiredAddons[] = {"A3_Data_F","A3_Air_F","A3_Air_F_Beta"};
 		requiredVersion = REQUIRED_VERSION;
 		VERSION_CONFIG;
 		author[] = {"CBA Team", "Solus", "Killswitch"};
@@ -15,7 +15,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		worlds[] = {};
-		requiredAddons[] = {};
+		requiredAddons[] = {"A3_Data_F","A3_Air_F","A3_Air_F_Beta"};
 		requiredVersion = REQUIRED_VERSION;
 		version = "4.0.0"; // Due to older mod versions requiring > 3,3,3 etc
 		versionStr = "4.0.0";
@@ -28,7 +28,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		worlds[] = {};
-		requiredAddons[] = {};
+		requiredAddons[] = {"A3_Data_F","A3_Air_F","A3_Air_F_Beta"};
 		requiredVersion = REQUIRED_VERSION;
 		VERSION_CONFIG;
 		author[] = {"CBA Team", "Solus", "Killswitch"};
