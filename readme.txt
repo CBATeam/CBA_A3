@@ -24,6 +24,7 @@ For ARMA 3 Content
 Launch with -mod=@CBA_A3
 
 *** KNOWN ISSUES ***
+- CBA Logo does not show up on the main screen on Arma3 v1.38 or later
 - CBA Keybinding requires a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Command-line parameters like -world=empty or -skipIntro will cause Keybinding to work ONLY in-game but NOT in the main menu of Arma. 
 
 
