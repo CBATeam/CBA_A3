@@ -28,3 +28,4 @@ addons/*.bisign
 *~
 *#
 temp/
+release/
