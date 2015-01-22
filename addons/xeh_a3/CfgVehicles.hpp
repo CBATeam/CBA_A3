@@ -70,8 +70,8 @@ class CfgVehicles {
         class Heli_Attack_01_base_F: Helicopter_Base_F {
                // delete Eventhandlers; // Eventhandlers
         };
-        class Heli_Light_01_base_F;
-        class Heli_Light_01_civil_base_F: Heli_Light_01_base_F {
+        class Heli_Light_01_unarmed_base_F;
+        class Heli_Light_01_civil_base_F: class Heli_Light_01_unarmed_base_F {
                 delete EventHandlers;
         };
 
@@ -211,7 +211,8 @@ class CfgVehicles {
         class Quadbike_01_base_F: Car_F {
         //                delete Eventhandlers; // Eventhandlers
         };
-        class C_Quadbike_01_F: Quadbike_01_base_F {
+        class Quadbike_01_civil_base_F;
+        class C_Quadbike_01_F: Quadbike_01_civil_base_F {
               //   delete Eventhandlers; // Eventhandlers
         };
         class I_G_Quadbike_01_F: Quadbike_01_base_F {
@@ -259,7 +260,8 @@ class CfgVehicles {
         class I_G_Van_01_transport_F: Van_01_base_F {
                //  delete Eventhandlers; // Eventhandlers
         };
-        class C_Van_01_fuel_F: Van_01_base_F {
+        class Van_01_civil_fuel_base_F;
+        class C_Van_01_fuel_F: Van_01_civil_fuel_base_F {
               //   delete Eventhandlers; // Eventhandlers
         };
         class I_G_Van_01_fuel_F: Van_01_base_F {
