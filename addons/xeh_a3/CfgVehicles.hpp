@@ -71,7 +71,7 @@ class CfgVehicles {
                // delete Eventhandlers; // Eventhandlers
         };
         class Heli_Light_01_unarmed_base_F;
-        class Heli_Light_01_civil_base_F: class Heli_Light_01_unarmed_base_F {
+        class Heli_Light_01_civil_base_F: Heli_Light_01_unarmed_base_F {
                 delete EventHandlers;
         };
 
