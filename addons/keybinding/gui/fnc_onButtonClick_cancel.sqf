@@ -2,7 +2,8 @@
 
 disableSerialization;
 
-_return = true;
+// Switch return to FALSE because this was blocking escape
+_return = false;
 
 // Remove every currently registered key handler
 {
