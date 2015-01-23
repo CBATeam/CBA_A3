@@ -11,17 +11,19 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-// #define BENCHMARK // TODO: finalize
-#ifdef BENCHMARK
-	if (isNil "SLX_XEH_STR_BENCH") then { SLX_XEH_STR_BENCH = "private '_cba_int_time'; _cba_int_time = diag_tickTime; call (uiNamespace getVariable '%1'); diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if !(isNil '_ret') then { nil } else { _ret };" };
-#endif
-
-private "_fnc_compile";
 TRACE_1("Init Compile",_this);
 
-_fnc_compile = {
-	private ["_cba_int_code", "_recompile", "_isCached"];
+SLX_XEH_COMPILE = {
+    (compile preprocessFileLineNumbers _this);
+};
 
+SLX_XEH_COMPILE_NEW = {
+	private ["_cba_int_code", "_recompile", "_isCached", "_fncFile", "_fncName", "_compileStr"];
+    if(!IS_ARRAY(_this)) exitWith {
+        diag_log text format["CBA FUNCTION CACHE WARNING: The file '%1' is being compiled directly by calling SLX_XEH_COMPILE, but following an outdated call signature. The new calling signature is [filePath, functionName] call SLX_XEH_COMPILE. This file will not be compiled!", _this];
+    };
+    _fncFile = _this select 0;
+    _fncName = _this select 1;
 	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then {
 		if (isNil "SLX_XEH_MACHINE" || {isNil "CBA_isCached"}) then {
 			true;
@@ -32,30 +34,25 @@ _fnc_compile = {
 	} else {
 		CBA_COMPILE_RECOMPILE;
 	};
+    if(_recompile && {!(missionNamespace getVariable [QGVAR(cacheSecWarning), false])}) then {
+        missionNamespace setVariable [QGVAR(cacheSecWarning), true];
+        diag_log text "CBA FUNCTION CACHE WARNING: Recompiling is now disabled via missions due to security issues. Please #define DISABLE_COMPILE_CACHE in your addon before including CBA macros only during development to enable recompilation.";
+    };
 
 	// TODO: Unique namespace?
-	_cba_int_code = uiNamespace getVariable _this;
-	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { !isMultiplayer || {isDedicated} || {_this in CBA_CACHE_KEYS} };
-	if (isNil '_cba_int_code' || {_recompile} || {!_isCached}) then {
-		TRACE_1('Compiling',_this);
-#ifdef BENCHMARK
-	// TODO: Fix
-	//_cba_int_code = compile ("private ['_cba_int_time']; _cba_int_time = diag_tickTime; _ret = call {" + (preProcessFile _this) + format[";}; diag_log [diag_frameNo, diag_tickTime, time, '%1', _cba_int_time, diag_tickTime - _cba_int_time]; if (isNil '_ret') then { nil } else { _ret };", _this]);
-	uiNamespace setVariable [_this, compile preProcessFileLineNumbers _this];
-	_cba_int_code = compile format[SLX_XEH_STR_BENCH, _this];
-#else
-	_cba_int_code = compile preProcessFileLineNumbers _this;
-	uiNamespace setVariable [_this, _cba_int_code];
-#endif
-		if (!_isCached && {!isNil "CBA_CACHE_KEYS"}) then { PUSH(CBA_CACHE_KEYS,_this) };
-	} else { TRACE_1('Retrieved from cache',_this) };
+	_cba_int_code = uiNamespace getVariable _fncName;
+	_isCached = if (isNil "CBA_CACHE_KEYS") then { false } else { !isMultiplayer || {isDedicated} || {_fncName in CBA_CACHE_KEYS} };
+	if (isNil '_cba_int_code') then {
+		TRACE_1('Compiling',_fncFile);
 
-	_cba_int_code;
+        missionNamespace setVariable [_fncName, (compileFinal preprocessFileLineNumbers _fncFile)];
+        uiNamespace setVariable [_fncName, missionNamespace getVariable _fncName];
+        
+		if (!_isCached && {!isNil "CBA_CACHE_KEYS"}) then { PUSH(CBA_CACHE_KEYS,_fncName) };
+	} else { 
+        missionNamespace setVariable [_fncName, uiNamespace getVariable _fncName];
+    };
 };
 
-uiNamespace setVariable ["SLX_XEH_COMPILE", _fnc_compile];
-
-SLX_XEH_COMPILE = _fnc_compile;
-
 // Still run the code for this call if needed
-if !(isNil "_this") then { _this call _fnc_compile };
+if !(isNil "_this") then { _this call SLX_XEH_COMPILE_NEW };

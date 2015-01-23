@@ -577,15 +577,8 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-
-// If DISABLE_COMPILE_CACHE is defined, use normal compile preProc...
-#ifdef DISABLE_COMPILE_CACHE
-	#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
-	#define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
-#else
-	#define COMPILE_FILE2_CFG_SYS(var1) (var1 call {_slx_xeh_compile = uiNamespace getVariable 'SLX_XEH_COMPILE'; if (isNil '_slx_xeh_compile') then { _this call compile preProcessFileLineNumbers 'x\cba\addons\xeh\init_compile.sqf' } else { _this call _slx_xeh_compile } })
-	#define COMPILE_FILE2_SYS(var1) (var1 call SLX_XEH_COMPILE)
-#endif
+#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
+#define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
 #define COMPILE_FILE_CFG_SYS(var1,var2,var3) COMPILE_FILE2_CFG_SYS('PATHTO_SYS(var1,var2,var3)')
@@ -695,8 +688,15 @@ Author:
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
-#define PREP(var1) PREP_SYS2(PREFIX,COMPONENT,COMPONENT_F,var1)
-#define PREPMAIN(var1) PREPMAIN_SYS(PREFIX,COMPONENT_F,var1)
+
+#ifdef DISABLE_COMPILE_CACHE
+    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
+    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
+#else
+	#define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
+    #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
+#endif
+
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)

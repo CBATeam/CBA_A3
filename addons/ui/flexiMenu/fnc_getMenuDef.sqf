@@ -45,7 +45,7 @@ _menuDefs = [];
 		_array = toArray _menuSource;
 		_menuDef = if (_array find 46 >= 0 && {_array find 34 < 0} && {_array find 39 < 0}) then { // 46='.',34=("),39=(') (eg: as in 'path\file.sqf')
 			// sqf filename. Eg: 'path\file.sqf'
-			_menuParams call COMPILE_FILE2_SYS(_menuSource);
+			_menuParams call COMPILE_FILE2(_menuSource);
 			// TODO: DEBUG switch to recompile menus always?
 		} else { // code string. Eg: '_this call someFunction' or '_this call compile preprocessFileLineNumbers "file.sqf"'
 			_menuParams call compile _menuSource;
