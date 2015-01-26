@@ -7,37 +7,43 @@ _button = _this select 0;
 // Get dialog
 _display = uiNamespace getVariable "RscDisplayConfigure";
 
+_combo = _display displayCtrl 208;
+// Get the mod selected in the comobo
+_comboMod = _combo lbData (lbCurSel _combo);
+
 // Get listnbox
 _lnb = _display displayCtrl 202;
 // Get currently selected index
 _lnbIndex = lnbCurSelRow _lnb;
-
 // Get handler tracker index array for keys stored in listbox data string
-_handlerIndexArray = call compile (_lnb lnbData [_lnbIndex, 0]);
+_actionId = _lnb lnbData [_lnbIndex, 0];
 
-// Get entry from handler tracker array
-_handlerTracker = GVAR(handlers);
+_modId = (GVAR(handlers) select 0) find _comboMod;
+if(_modId == -1) exitWith {};
 
-{
-	// Get the keyconfig from the tracker based on the indexes
-	_keyConfig = _handlerTracker select _x;
+_modRegistry = (GVAR(handlers) select 1) select _modId;
 
-	// Something must be selected.
-	if (!isNil "_keyConfig") then {
-		_modName = _keyConfig select 0;
-		_actionName = _keyConfig select 1;
-		_oldKeyData = _keyConfig select 2;
-		_functionName = _keyConfig select 3;
-		//_oldEhID = _keyConfig select 4;
-		_keypressType = _keyConfig select 5;
+_actionEntryId = (_modRegistry select 0) find _actionId;
+if(_actionEntryId == -1) exitWith {};
+_actionEntry = (_modRegistry select 1) select _actionEntryId;
 
-		// Blank the keybind.
-		_keybind = [-1, false, false, false];
+_hashDown = format["%1_%2_down", _comboMod, _actionId];
+_entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
+if(_entryIndex == -1) exitWith {};
+_defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
+                    
 
-		// Re-register the handler with default keybind.
-		[_modName, _actionName, _functionName, _keybind, true, _keypressType] call cba_fnc_registerKeybind;
-	};
-} forEach _handlerIndexArray;
+[
+    _comboMod, 
+    _actionId, 
+    _actionEntry select 0, 
+    _defaultEntry select 0,
+    _defaultEntry select 1,
+    [-1,[false,false,false]],
+    _defaultEntry select 2,
+    _defaultEntry select 3,
+    true
+] call cba_fnc_registerKeybind;
 
 // Clear any input actions.
 GVAR(waitingForInput) = false;

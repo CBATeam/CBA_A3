@@ -9,11 +9,8 @@ Parameters:
  _modName			Name of the registering mod [String]
  _actionName		Name of the action to get [String]
 
- Optional:
-  _keypressType		"keydown" (Default) = keyDown, "keyup" = keyUp [String]
-
 Returns:
- Index to cba_keybind_handlers if found, -1 if not [Integer]
+ Keyboard entry.
 
 Examples:
  _index = ["your_mod", "openMenu"] call cba_fnc_getKeybind;
@@ -29,18 +26,32 @@ Author:
 #include "script_component.hpp"
 
 PARAMS_2(_modName,_actionName);
-DEFAULT_PARAM(2,_keypressType,"keydown") 
 
-// Iterate over all entries in the keybinding registry, searching for the mod 
-// action, and keypress type (KeyDown or KeyUp)
-_index = -1;
-{
-	if (_x select 0 == _modName) then {
-		if (_x select 1 == _actionName && toLower (_x select 5) == toLower _keypressType) exitWith {
-			_index = _forEachIndex;
-		};
-	};
-} forEach GVAR(handlers);
+_modId = (GVAR(handlers) select 0) find _modName;
+if(_modId == -1) exitWith {nil};
+
+_modRegistry = (GVAR(handlers) select 1) select _modId;
+
+_actionEntryId = (_modRegistry select 0) find _actionName;
+if(_actionEntryId == -1) exitWith {nil};
+_actionEntry = (_modRegistry select 1) select _actionEntryId;
+
+_hashDown = format["%1_%2_down", _comboMod, _actionName];
+_entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
+if(_entryIndex == -1) exitWith {nil};
+_defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
+
+_entry = [
+    _comboMod, 
+    _actionId, 
+    _actionEntry select 0, 
+    _defaultEntry select 0,
+    _defaultEntry select 1,
+    _actionEntry select 1,
+    _defaultEntry select 2,
+    _defaultEntry select 3
+];
+
 
 // Return the index into the registry.
-_index;
+_entry;

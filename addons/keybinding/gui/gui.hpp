@@ -83,8 +83,8 @@ class RscDisplayConfigure {
 					colorBackground[] = {0,0,0,0.4};
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-					w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					h = "12.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "35 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					h = "13.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 				class CBA_AddonsCA_ControlsPageText : RscText {
 					sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -111,7 +111,7 @@ class RscDisplayConfigure {
 				};
 				class CBA_AddonsCA_ValueKeys : RscListNBox {
 					idc = 202;
-					columns[] = {0,0.44};
+					columns[] = {0,0.54285};
 					drawSideArrows = false;
 					idcLeft = -1;
 					idcRight = -1;
@@ -121,24 +121,24 @@ class RscDisplayConfigure {
 					rowHeight = 0.042;
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-					w = "25 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					h = "12.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					w = "35 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					h = "13.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};
 				class CBA_AddonsTextAction : RscText {
 					idc = 2003;
 					text = "$STR_A3_RscDisplayConfigure_TextAction";
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "2.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-					w = "11 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					w = "19 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					colorBackground[] = {0,0,0,1};
 				};
 				class CBA_AddonsTextAssignedKeys : RscText {
 					idc = 2004;
 					text = "$STR_A3_RscDisplayConfigure_TextAssignedKeys";
-					x = "11.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					x = "19.48 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y = "2.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-					w = "14 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					w = "16 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					colorBackground[] = {0,0,0,1};
 				};
@@ -146,7 +146,7 @@ class RscDisplayConfigure {
 					idc = 204;
 					text = "$STR_DISP_DELETE";
 					x = "6.85 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					y = "16.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					y = "17.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
@@ -156,7 +156,7 @@ class RscDisplayConfigure {
 					idc = 205;
 					text = "$STR_DISP_DEFAULT";
 					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					y = "16.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					y = "17.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					w = "6.25 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
@@ -165,8 +165,8 @@ class RscDisplayConfigure {
 				class CBA_TextHelp: RscText {
 					idc = 206;
 					text = ""; // Set in script to avoid automatic uppercasing
-					x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
-					y = "18 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+					x = "13.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+					y = "17.45 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 					w = "21 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 				};

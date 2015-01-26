@@ -23,7 +23,7 @@ if((count GVAR(modifiers)) > 0) then {
 		if(56 in GVAR(modifiers)) then {
 			_alt = true;
 		};
-		GVAR(input) = [_dikCode, _shift, _ctrl, _alt];
+		GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
 	};
 };
 false;

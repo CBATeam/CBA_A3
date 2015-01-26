@@ -43,6 +43,7 @@ if(_type == "keydown") then {
 			TRACE_2("",_data,_x);
 			_settings = _data select 1;
 			_code = _data select 2;
+            
 			// Verify if the required modifier keys are present
 			_valid = true;
 			// Cannot compare booleans, so must use ! && etc.
@@ -51,7 +52,12 @@ if(_type == "keydown") then {
 				#ifdef DEBUG_MODE_FULL
 					PUSH(_ar,_code);
 				#endif
-				_result = _keyData call _code;
+                
+                _holdKey = _data select 3;
+                _holdDelay = _data select 4;
+                _args = +_keyData;
+                _args pushBack +_data;
+				_result = _args call _code;
 
 				if (isNil "_result") then {
 					WARNING("Nil result from handler.");
@@ -137,7 +143,9 @@ if(_type == "keydown") then {
 					_valid = true;
 				};
 				if (_valid) then {
-					_result = _keyData call _code;
+                    _args = +_keyData;
+                    _args pushBack +_data;
+					_result = _args call _code;
 					
 					if (isNil "_result") then {
 						WARNING("Nil result from handler.");

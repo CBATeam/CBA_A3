@@ -29,7 +29,7 @@ Author:
 
 // Clients only.
 if (isDedicated) exitWith {};
-
+/*
 _nullKeybind = [-1,false,false,false];
 
 PARAMS_3(_modName,_actionName,_fleximenuDef);
@@ -54,3 +54,4 @@ _code = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDe
 _keybind = [_modName, _actionName, _code, _defaultKeybind, _overwrite, _keypressType] call cba_fnc_registerKeybind;
 
 _keybind;
+*/

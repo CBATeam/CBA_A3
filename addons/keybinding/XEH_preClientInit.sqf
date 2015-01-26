@@ -20,6 +20,9 @@ PREP_SUB(gui,updateGUI);
 GVAR(input) = [];
 GVAR(modifiers) = [];
 GVAR(waitingForInput) = false;
+GVAR(modPrettyNames) = [[],[]];
+GVAR(defaultKeybinds) = [[],[]];
+GVAR(activeMods) = [];
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -50,7 +53,7 @@ GVAR(waitingForInput) = false;
 // Temporary array that tracks loaded key handlers for specified keybinds.
 // Format: Array of arrays
 //      [["modName", "actionName", [keybind], {code}, ehID], ...]
-GVAR(handlers) = [];
+GVAR(handlers) = [[],[]];
 GVAR(handlersBackup) = [];
 
 // Counter for indexing added key handlers.

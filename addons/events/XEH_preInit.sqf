@@ -75,6 +75,8 @@ GVAR(keyUpDownList) = [];
 PREP(keyHandler);
 PREP(remoteLocalEvent);
 
+FUNC(handleKeyDownUp) = {};
+
 CBA_fnc_remoteLocalEvent = FUNC(remoteLocalEvent); // BWC
 
 /*

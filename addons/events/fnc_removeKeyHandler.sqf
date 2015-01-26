@@ -44,6 +44,8 @@ if (count _handlers > _idx) then {
 		_handlers set [_idx, _myHandlers];
 	};
 };
-
+if(_type == "keydown") then {
+    [_hashKey+"_CBADEFAULTUPHANDLER", "keyup"] call cba_fnc_removeKeyHandler;
+};
 
 true;
