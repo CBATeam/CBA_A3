@@ -23,6 +23,7 @@ GVAR(waitingForInput) = false;
 GVAR(modPrettyNames) = [[],[]];
 GVAR(defaultKeybinds) = [[],[]];
 GVAR(activeMods) = [];
+GVAR(activeBinds) = [];
 
 /////////////////////////////////////////////////////////////////////////////////
 

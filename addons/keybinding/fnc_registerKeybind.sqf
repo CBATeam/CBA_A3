@@ -52,6 +52,7 @@ _registry = profileNamespace getVariable [QGVAR(registryNew), [[],[]]];
 if(!(_modName in GVAR(activeMods))) then {
     GVAR(activeMods) pushBack _modName;
 };
+GVAR(activeBinds) pushBack (_modName + "_" + _actionId);
 _modId = (_registry select 0) find _modName;
 if(_modId == -1) then {
     (_registry select 0) pushBack _modName;
