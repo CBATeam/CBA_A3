@@ -18,13 +18,19 @@ class CfgFunctions
 			// CBA_fnc_registerKeybind
 			class registerKeybind
 			{
-				description = "Adds or updates the keybind handler for a specified mod action, and associates a function with that keybind being pressed.";
+				description = "This function is removed, please use cba_fnc_addKeybind instead.";
 				file = "\x\cba\addons\keybinding\fnc_registerKeybind.sqf";
+			};
+            // CBA_fnc_addKeybind
+			class addKeybind
+			{
+				description = "Adds or updates the keybind handler for a specified mod action, and associates a function with that keybind being pressed.";
+				file = "\x\cba\addons\keybinding\fnc_addKeybind.sqf";
 			};
 			// CBA_fnc_registerKeybindToFleximenu
 			class registerKeybindToFleximenu
 			{
-				description = "Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.";
+				description = "This function is currently disabled.";
 				file = "\x\cba\addons\keybinding\fnc_registerKeybindToFleximenu.sqf";
 			};
             class registerKeybindModPrettyName
