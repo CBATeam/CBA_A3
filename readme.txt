@@ -1,4 +1,4 @@
-Release Candidate 5
+Release Candidate 6
 
 CBA: Community Base Addons
 ==========================
