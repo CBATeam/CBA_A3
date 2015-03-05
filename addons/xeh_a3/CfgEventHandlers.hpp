@@ -1,5 +1,5 @@
 // Extended EH classes, where new events are defined.
-class Extended_fired_Eventhandlers {
+class Extended_firedBIS_Eventhandlers {
         class StaticCannon /* : StaticWeapon */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired');";
         };
@@ -126,7 +126,7 @@ class Extended_init_Eventhandlers {
         class I_G_Van_01_fuel_F /* : Van_01_base_F */ {
                 SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Van_01\scripts\randomize_fuel.sqf""";
         };
-        class C_Kart_01_F /* : Kart_01_Base_F */{
+        class C_Kart_01_F /* : C_Kart_01_F_Base  */{
                 SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Kart\Kart_01\scripts\randomize.sqf""";
         };
         class Snake_random_F /* : Animal_Base_F */ {
