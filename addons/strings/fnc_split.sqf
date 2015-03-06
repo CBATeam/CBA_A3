@@ -39,7 +39,7 @@ _strar = toArray _string;
 _separ = toArray _separator;
 _countstr = count _strar;
 _countsepstr = count _separ;
-if (_countsepstr > _countstr) exitWith {[]};
+if (_countsepstr > _countstr) exitWith {_strar};
 _split = [];
 if (_separator == "") then {
 	{
