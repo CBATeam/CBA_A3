@@ -26,7 +26,7 @@ Examples:
 	(end)
 
 Author:
-	Xeno
+	jaynus
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
