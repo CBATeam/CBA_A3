@@ -79,7 +79,7 @@ _fnc = {
                         _defaultEntry select 2,
                         _defaultEntry select 3,
                         true
-                    ] call cba_fnc_registerKeybind;
+                    ] call cba_fnc_addKeybind;
                     // Update the main dialog.
                     saveProfileNamespace;
                 };

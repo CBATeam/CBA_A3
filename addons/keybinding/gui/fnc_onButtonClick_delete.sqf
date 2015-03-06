@@ -43,7 +43,7 @@ _defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
     _defaultEntry select 2,
     _defaultEntry select 3,
     true
-] call cba_fnc_registerKeybind;
+] call cba_fnc_addKeybind;
 
 // Clear any input actions.
 GVAR(waitingForInput) = false;
