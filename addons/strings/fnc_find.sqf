@@ -52,6 +52,9 @@ if (typeName _needle != "STRING") exitWith {
 if(_initialIndex < 1) then {
 	_ret = _haystack find _needle;
 } else {
+	if(_initialIndex > (count _haystack) ) exitWith {
+		-1
+	};
 	_tempString = [_haystack, _initialIndex, ((count _haystack) - _initialIndex)] call CBA_fnc_substring;
 	_ret = _tempString find _needle;
 	if(_ret > -1) then {
