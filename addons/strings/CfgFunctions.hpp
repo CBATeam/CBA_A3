@@ -15,6 +15,12 @@ class CfgFunctions
 				description = "Upper case the first letter of the string, lower case the rest.";
 				file = "\x\cba\addons\strings\fnc_capitalize.sqf";
 			};
+			// CBA_fnc_substring
+			class substring
+			{
+				description = "Extracts the index-based substring from a string.";
+				file = "\x\cba\addons\strings\fnc_substring.sqf";
+			};
 			// CBA_fnc_find
 			class find
 			{
