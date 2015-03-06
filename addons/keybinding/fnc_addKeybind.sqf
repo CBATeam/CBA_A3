@@ -48,7 +48,11 @@ DEFAULT_PARAM(8,_overwrite,false);
 
 
 // Get a local copy of the keybind registry.
-_registry = profileNamespace getVariable [QGVAR(registryNew), [[],[]]];
+_registry = profileNamespace getVariable [QGVAR(registryNew), nil];
+if(isNil "_registry") then {
+    _registry = [[],[]];
+    profileNamespace setVariable [QGVAR(registryNew), _registry];
+};
 if(!(_modName in GVAR(activeMods))) then {
     GVAR(activeMods) pushBack _modName;
 };
