@@ -225,7 +225,9 @@ class CfgVehicles {
         class C_Hatchback_01_F: Hatchback_01_base_F {
              //    delete Eventhandlers; // Eventhandlers
         };
-        class C_Hatchback_01_sport_F: Hatchback_01_base_F {
+
+        class Hatchback_01_sport_base_F;
+        class C_Hatchback_01_sport_F: Hatchback_01_sport_base_F {
              //    delete Eventhandlers; // Eventhandlers
         };
 
