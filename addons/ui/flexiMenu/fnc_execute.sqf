@@ -36,9 +36,20 @@ if (_useListBox == 0 && {_multiReselect == 0}) then { // if using embedded listB
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)
-if (typeName _action == "CODE") then {
-	call _action
-} else {
+switch (typeName _action) do
+{
+	case "CODE": {
+		call _action;
+	};
+	case "ARRAY": {
+		if ((count(_action) == 2) && {typeName(_action select 1) == "CODE"}) then {
+			private ["_args", "_function"];
+			_args = _action select 0;
+			_function = _action select 1;
+			_args call _function;
+		};
+	};
+	case "STRING": {
 	if (_action != "") then {
 		call compile _action;
 	};

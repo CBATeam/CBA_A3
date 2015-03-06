@@ -26,7 +26,7 @@ _msg = "";
 _msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
 if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
 if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
-	
+
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
 	_menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
@@ -68,6 +68,8 @@ if (GVAR(hotKeyColor) == "") then {
 };
 
 _idc = _flexiMenu_baseIDC_listButton;
+GVAR(action_closure) = [];
+GVAR(action_closure_id) = 0;
 //-----------------------------------------------------------------------------
 { // forEach
 	_menuOption = [_menuDefs select 0, _x] call FUNC(getMenuOption);
@@ -114,8 +116,8 @@ _idc = _flexiMenu_baseIDC_listButton;
 for "_i" from _idc to (_flexiMenu_baseIDC_listButton + _flexiMenu_maxButtons - 1) do {
 	_ctrl = _disp displayCtrl _i;
 	_ctrl ctrlShow false;
-	_ctrl ctrlEnable false;	
-};		
-//-----------------------------------------------------------------------------	
-_idc = _flexiMenu_baseIDC_listButton;	
+	_ctrl ctrlEnable false;
+};
+//-----------------------------------------------------------------------------
+_idc = _flexiMenu_baseIDC_listButton;
 ctrlSetFocus (_disp displayCtrl _idc);

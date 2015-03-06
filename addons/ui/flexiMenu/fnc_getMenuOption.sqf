@@ -158,8 +158,13 @@ if (!_fastPartialResult && {_icon != ""}) then {
 if (_caption != "") then {
 	_actionOptions = [_action, _subMenu, _multiReselect];
 
-	// TODO: Consider changing _action array item from string to type code.
-	_action = format ["%1 call %2", _actionOptions, QUOTE(FUNC(execute))];
+	// Store the action in global array to allow more complex arg types (e.g. objects) to
+	// be passed in without having to be forced into a string for buttonSetAction in
+	// fnc_menu, fnc_list and fnc_menuShortcut.
+	GVAR(action_closure) set [GVAR(action_closure_id), _actionOptions];
+	_action = format ["(%1 select %2) call %3", QGVAR(action_closure), GVAR(action_closure_id), QUOTE(FUNC(execute))];
+	GVAR(action_closure_id) = GVAR(action_closure_id) + 1;
+
 };
 //-----------------------------------------------------------------------------
 _result = [];
