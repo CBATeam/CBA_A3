@@ -1,5 +1,5 @@
 x\cba\addons\main
 prefix=x\cba\addons\main
 product=Arma 3
-version=017
+version=018
 Pbo Type is: Arma
