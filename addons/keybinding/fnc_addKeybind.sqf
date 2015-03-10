@@ -11,12 +11,12 @@ Parameters:
  _displayName       Pretty name, or an array of strings for the pretty name and a tool tip [String]
  _downCode      	Code for down event, empty string for no code. [Code]
  _upCode            Code for up event, empty string for no code. [Code]
- 
+
  Optional:
  _defaultKeybind	The keybinding data in the format [DIK, [shift, ctrl, alt]] [Array]
- _holdKey           Will the key fire every frame while down [Bool]
- _holdDelay         How long after keydown will the key start firing every frame, in seconds. [Float]
- 
+ _holdKey           Will the key fire every frame while down [Bool]  - NOT YET IMPLEMENTED
+ _holdDelay         How long after keydown will the key start firing every frame, in seconds. [Float]  - NOT YET IMPLEMENTED
+
 Returns:
  Returns the current keybind for the action [Array]
 
@@ -24,14 +24,15 @@ Examples:
  // Register a simple keypress to an action
  // This file should be included for readable DIK codes.
  #include "\a3\editor_f\Data\Scripts\dikCodes.h"
- ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], { _this call mymod_fnc_keyDown }, { _this call mymod_fnc_keyUp }, [DIK_TAB, [false, false, false]]] call cba_fnc_registerKeybind;
- ["MyMod", "MyOtherKey", ["My Other Pretty Key Name", "My Other Pretty Tool Tip"], { _this call mymod_fnc_keyDownOther }, { _this call mymod_fnc_keyUpOther }, [DIK_K, [false, false, false]]] call cba_fnc_registerKeybind;
- 
+ ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], { _this call mymod_fnc_keyDown }, { _this call mymod_fnc_keyUp }, [DIK_TAB, [false, false, false]]] call cba_fnc_addKeybind;
+ ["MyMod", "MyOtherKey", ["My Other Pretty Key Name", "My Other Pretty Tool Tip"], { _this call mymod_fnc_keyDownOther }, { _this call mymod_fnc_keyUpOther }, [DIK_K, [false, false, false]]] call cba_fnc_addKeybind;
+
 
 
 Author:
  Taosenai & Nou
 ---------------------------------------------------------------------------- */
+//TODD: Implement the holdkey features - Nou
 
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
