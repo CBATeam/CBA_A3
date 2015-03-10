@@ -6,7 +6,7 @@ This function is deprecated, please use cba_fnc_addKeybind. This function will N
 Author:
  Nou
 ---------------------------------------------------------------------------- */
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 
@@ -35,9 +35,10 @@ if (count _defaultKeybind != 4) then {
 		_warn call bis_fnc_error;
 		diag_log format _warn;
 	};
+	diag_log Format ["Converted _defaultKeybind => %1",_defaultKeybind];
 };
 
-diag_log Format ["Resulting _defaultKeybind => %1",_defaultKeybind];
+
 _dikCode = _defaultKeybind select 0;
 _shift = _defaultKeybind select 1;
 _ctrl = _defaultKeybind select 2;
