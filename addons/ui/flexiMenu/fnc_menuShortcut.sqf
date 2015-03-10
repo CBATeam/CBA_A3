@@ -29,8 +29,6 @@ if (!GVAR(holdKeyDown) && {(_dikCode in (actionKeys "menuBack"))}) exitWith {
 };
 
 _menuDefs = (_this select 1) call FUNC(getMenuDef);
-GVAR(action_closure) = [];
-GVAR(action_closure_id) = 0;
 //-----------------------------------------------------------------------------
 { // forEach
 	_menuOption = [_menuDefs select 0, _x, true] call FUNC(getMenuOption); // get fast partial record
