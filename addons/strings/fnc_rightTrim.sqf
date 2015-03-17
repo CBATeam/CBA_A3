@@ -31,7 +31,7 @@ SCRIPT(rightTrim);
 
 PARAMS_1(_string);
 
-private ["_chars", "_whiteSpace", "_pos"];
+private ["_chars", "_whiteSpace", "_pos","_numWhiteSpaces"];
 
 _chars = toArray _string;
 _whiteSpace = WHITE_SPACE;
