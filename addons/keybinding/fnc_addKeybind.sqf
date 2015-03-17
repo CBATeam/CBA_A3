@@ -11,12 +11,12 @@ Parameters:
  _displayName       Pretty name, or an array of strings for the pretty name and a tool tip [String]
  _downCode      	Code for down event, empty string for no code. [Code]
  _upCode            Code for up event, empty string for no code. [Code]
- 
+
  Optional:
  _defaultKeybind	The keybinding data in the format [DIK, [shift, ctrl, alt]] [Array]
- _holdKey           Will the key fire every frame while down [Bool]
- _holdDelay         How long after keydown will the key start firing every frame, in seconds. [Float]
- 
+ _holdKey           Will the key fire every frame while down [Bool]  - NOT YET IMPLEMENTED
+ _holdDelay         How long after keydown will the key start firing every frame, in seconds. [Float]  - NOT YET IMPLEMENTED
+
 Returns:
  Returns the current keybind for the action [Array]
 
@@ -24,15 +24,16 @@ Examples:
  // Register a simple keypress to an action
  // This file should be included for readable DIK codes.
  #include "\a3\editor_f\Data\Scripts\dikCodes.h"
- ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], { _this call mymod_fnc_keyDown }, { _this call mymod_fnc_keyUp }, [DIK_TAB, [false, false, false]]] call cba_fnc_registerKeybind;
- ["MyMod", "MyOtherKey", ["My Other Pretty Key Name", "My Other Pretty Tool Tip"], { _this call mymod_fnc_keyDownOther }, { _this call mymod_fnc_keyUpOther }, [DIK_K, [false, false, false]]] call cba_fnc_registerKeybind;
- 
+ ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], { _this call mymod_fnc_keyDown }, { _this call mymod_fnc_keyUp }, [DIK_TAB, [false, false, false]]] call cba_fnc_addKeybind;
+ ["MyMod", "MyOtherKey", ["My Other Pretty Key Name", "My Other Pretty Tool Tip"], { _this call mymod_fnc_keyDownOther }, { _this call mymod_fnc_keyUpOther }, [DIK_K, [false, false, false]]] call cba_fnc_addKeybind;
+
 
 
 Author:
  Taosenai & Nou
 ---------------------------------------------------------------------------- */
-
+//TODD: Implement the holdkey features - Nou
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 // Clients only.
@@ -46,6 +47,7 @@ DEFAULT_PARAM(6,_holdKey,false);
 DEFAULT_PARAM(7,_holdDelay,0);
 DEFAULT_PARAM(8,_overwrite,false);
 
+_keybind = nil;
 
 // Get a local copy of the keybind registry.
 _registry = profileNamespace getVariable [QGVAR(registryNew), nil];
@@ -56,8 +58,13 @@ if(isNil "_registry") then {
 if(!(_modName in GVAR(activeMods))) then {
     GVAR(activeMods) pushBack _modName;
 };
+
+TRACE_1("",_registry);
+
 GVAR(activeBinds) pushBack (_modName + "_" + _actionId);
 _modId = (_registry select 0) find _modName;
+TRACE_2("",_modId,_modName);
+
 if(_modId == -1) then {
     (_registry select 0) pushBack _modName;
     _modId = (_registry select 1) pushBack [[],[]];
@@ -66,6 +73,8 @@ if(_modId == -1) then {
 _modRegistry = (_registry select 1) select _modId;
 
 _actionEntryId = (_modRegistry select 0) find _actionId;
+TRACE_3("",_actionEntryId,_actionId, _modRegistry);
+
 if(_actionEntryId == -1) then {
     (_modRegistry select 0) pushBack _actionId;
     _actionEntryId = (_modRegistry select 1) pushBack [_displayName, _defaultKeybind];
@@ -76,12 +85,17 @@ _actionEntry set[0, _displayName];
 _hashDown = format["%1_%2_down", _modName, _actionId];
 _hashUp = format["%1_%2_up", _modName, _actionId];
 
+TRACE_3("",_defaultKeybind,_actionEntryId,_hashDown);
+TRACE_2("",_actionEntry,_hashUp);
+
 _entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
 if(_entryIndex == -1) then {
     _entryIndex = (GVAR(defaultKeybinds) select 0) pushBack _hashDown;
     (GVAR(defaultKeybinds) select 1) set[_entryIndex, []];
 };
 _defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
+
+TRACE_1("",_defaultEntry);
 
 if(_overwrite) then {
     if(IS_CODE(_downCode)) then {
@@ -115,6 +129,8 @@ if(_defaultKeybind select 0 != -1) then {
     };
 };
 
+_keybind = _actionEntry select 1;
+TRACE_1("",_keybind);
 
 GVAR(handlers) = _registry;
 

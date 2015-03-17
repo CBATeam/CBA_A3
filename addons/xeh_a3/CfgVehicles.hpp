@@ -46,6 +46,10 @@ class CfgVehicles {
         class test_EmptyObjectForBubbles: Thing {
                 XEH_ENABLED;
         };
+        class thingX;
+        class ReammoBox_F: thingX
+                XEH_ENABLED;
+        };
         class test_EmptyObjectForFireBig: test_EmptyObjectForBubbles {
                 XEH_ENABLED;
         };

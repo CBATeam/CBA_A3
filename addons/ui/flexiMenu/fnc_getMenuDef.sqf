@@ -15,7 +15,7 @@ _menuDefs = [];
 
 	_params = _x;
     if (isNil "_params") then { diag_log format ["%1:%2: CBA WARNING: Menu sources item is nil! Check Source: %3", __FILE__, __LINE__, _params]; };
-	
+
 	_menuSource = "";
 	_menuParams = [_target];
 	// Syntax 1
@@ -31,7 +31,7 @@ _menuDefs = [];
 			_menuSource = _params;
 		};
 	};
-	
+
 	TRACE_1("",_menuSource);
 	//-----------------------------------------------------------------------------
 	// determine if string represents an executable statement or actual data (via variable).
@@ -45,7 +45,7 @@ _menuDefs = [];
 		_array = toArray _menuSource;
 		_menuDef = if (_array find 46 >= 0 && {_array find 34 < 0} && {_array find 39 < 0}) then { // 46='.',34=("),39=(') (eg: as in 'path\file.sqf')
 			// sqf filename. Eg: 'path\file.sqf'
-			_menuParams call COMPILE_FILE2(_menuSource);
+			_menuParams call COMPILE_FILE2_SYS(_menuSource);
 			// TODO: DEBUG switch to recompile menus always?
 		} else { // code string. Eg: '_this call someFunction' or '_this call compile preprocessFileLineNumbers "file.sqf"'
 			_menuParams call compile _menuSource;
@@ -53,7 +53,7 @@ _menuDefs = [];
 	};
 
 	TRACE_1("",_menuDef); //sometimes Nil
-	
+
 	// merge menuDef's - keeping original header array [0] and merging data array [1]
 	if !(isNil "_menuDef") then {
 		if (count _menuDefs == 0) then {

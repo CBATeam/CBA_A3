@@ -99,7 +99,7 @@ _menuDefs = _this call FUNC(getMenuDef);
 TRACE_1("Get Menu Defs",_menuDefs);
 //-----------------------------------------------------------------------------
 
-//Array must be returned.
+//Array must be returned. 
 if (isNil "_menuDefs") then {diag_log format ["%1: Nil Warning: Expected type array from _menuDefs from target: %2 from source: %3", __FILE__, _this select 0, _this select 1]};
 if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
 
@@ -159,8 +159,6 @@ if (GVAR(hotKeyColor) == "") then {
 
 //-----------------------------------------------------------------------------
 _commitList = [];
-GVAR(action_closure) = [];
-GVAR(action_closure_id) = 0;
 { // forEach
 	if (count _x >= 2) then { // all essential array items exist
 		_idc = _flexiMenu_baseIDC_button + _idcIndex;

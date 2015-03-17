@@ -36,20 +36,9 @@ if (_useListBox == 0 && {_multiReselect == 0}) then { // if using embedded listB
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)
-switch (typeName _action) do
-{
-	case "CODE": {
-		call _action;
-	};
-	case "ARRAY": {
-		if ((count(_action) == 2) && {typeName(_action select 1) == "CODE"}) then {
-			private ["_args", "_function"];
-			_args = _action select 0;
-			_function = _action select 1;
-			_args call _function;
-		};
-	};
-	case "STRING": {
+if (typeName _action == "CODE") then {
+	call _action
+} else {
 	if (_action != "") then {
 		call compile _action;
 	};
@@ -61,7 +50,7 @@ if (_subMenuSource != "") then {
 	_pathName = QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,%1));
 	_pathName = format [_pathName, if (_useListBox == 0) then {'fnc_menu'} else {'fnc_list'}];
 
-	[GVAR(target), [[_subMenuSource, _params]]] call COMPILE_FILE2(_pathName);
+	[GVAR(target), [[_subMenuSource, _params]]] call COMPILE_FILE2_SYS(_pathName);
 	// TODO: DEBUG switch to recompile menus always?
 	// compile preprocessFileLineNumbers _pathName;
 };
