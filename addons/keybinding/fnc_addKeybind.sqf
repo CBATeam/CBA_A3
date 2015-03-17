@@ -94,6 +94,7 @@ if(_overwrite) then {
     _actionEntry set[1, _defaultKeybind];
 };
 if(!_overwrite) then {
+    _defaultKeybind = _actionEntry select 1;
     _actionEntry set[2, _defaultKeybind];
 };
 
