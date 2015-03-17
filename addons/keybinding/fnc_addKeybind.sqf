@@ -129,7 +129,7 @@ if(_defaultKeybind select 0 != -1) then {
     };
 };
 
-_keybind = _actionEntry select 1;
+_keybind = +(_actionEntry select 1); // return a copy
 TRACE_1("",_keybind);
 
 GVAR(handlers) = _registry;
