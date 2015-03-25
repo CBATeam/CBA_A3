@@ -1,5 +1,5 @@
 x\cba\addons\diagnostic
 prefix=x\cba\addons\diagnostic
 product=Arma 3
-version=005
+version=006
 Pbo Type is: Arma
