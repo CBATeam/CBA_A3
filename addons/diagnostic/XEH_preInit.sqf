@@ -121,7 +121,7 @@ FUNC(initExtendedDebug) = {
         _nextButton ctrlCommit 0;
     };
     
-    if(_index == 49 || _index == (count _prevStatements)-1 || (count _prevStatements) > 1) then {
+    if(_index == 49 || _index == (count _prevStatements)-1 || (count _prevStatements) == 0) then {
         _prevButton ctrlEnable false;
         _prevButton ctrlCommit 0;
     };
@@ -149,9 +149,11 @@ FUNC(logStatement) = {
         };
         uiNamespace setVariable ["cba_diagnostic_statementIndex", 0];
         profileNamespace setVariable ["cba_diagnostic_statements", _prevStatements];
-        _prevButton = _display displayCtrl 90110;
-        _prevButton ctrlEnable true;
-        _prevButton ctrlCommit 0;
+        if((count _prevStatements) > 1) then {
+            _prevButton = _display displayCtrl 90110;
+            _prevButton ctrlEnable true;
+            _prevButton ctrlCommit 0;
+        };
         _nextButton = _display displayCtrl 90111;
         _nextButton ctrlEnable false;
         _nextButton ctrlCommit 0;
@@ -161,7 +163,7 @@ FUNC(logStatement) = {
 FUNC(debugPrevStatement) = {
     _index = uiNamespace getVariable ["cba_diagnostic_statementIndex", 0];
     _prevStatements = profileNamespace getVariable ["cba_diagnostic_statements", []];
-    _index = ((_index + 1) min ((count _prevStatements)-1)) min 49;
+    _index = ((_index + 1) min (((count _prevStatements)-1) max 0)) min 49;
     uiNamespace setVariable ["cba_diagnostic_statementIndex", _index];
     _prevStatement = _prevStatements select _index;
     
