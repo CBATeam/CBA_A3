@@ -10,8 +10,8 @@ Parameters:
 	_code - Code to execute upon event [Code].
 	_type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
 	_hashKey - used to identify this handler, randomly generated if not supplied [String].
-    _holdKey - if the event is a keydown event, will it execute frame while key is held down [Bool]
-    _holdDelay - if the event executes while being held down, how long of a delay before it starts every frame in seconds. [Float]
+    _holdKey - Will the key fire every frame while down [Bool]
+    _holdDelay - How long after keydown will the key event fire, in seconds. [Float]
 
 Returns:
     Hash key [String]
@@ -35,7 +35,7 @@ _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
 _hashKey = if (count _this > 4) then { _this select 4 } else { format["%1%2%3%4%5%6%7%8", floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100)] };
 _hashKey = toLower(_hashKey);
-_holdKey = if (count _this > 5) then { _this select 5 } else { false };
+_holdKey = if (count _this > 5) then { _this select 5 } else { true };
 _holdDelay = if (count _this > 6) then { _this select 6 } else { 0 };
 
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
@@ -45,7 +45,7 @@ if(_type == "keydown") then {
     _upHandlerArgs = +_this;
     _upHandlerArgs set[2, FUNC(handleKeyDownUp)];
     _upHandlerArgs set[3, "keyup"];
-    _upHandlerArgs set[4, _hashKey+"_CBADEFAULTUPHANDLER"];
+    _upHandlerArgs set[4, _hashKey+"_cbadefaultuphandler"];
     _upHandlerArgs call cba_fnc_addKeyHandler;
 };
 

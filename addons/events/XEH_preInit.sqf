@@ -71,11 +71,24 @@ for "_i" from 0 to 250 do {
 [GVAR(keyhandler_hash), "keydown", _arDown] call (uiNamespace getVariable "CBA_fnc_hashSet");
 
 GVAR(keyUpDownList) = [];
+GVAR(keyDownList) = [];
+
+GVAR(keyHoldTimers) = [[], ""] call (uiNamespace getVariable "CBA_fnc_hashCreate");
 
 PREP(keyHandler);
 PREP(remoteLocalEvent);
 
-FUNC(handleKeyDownUp) = { false };
+FUNC(handleKeyDownUp) = {
+    private ["_hash"];
+    _hash = _this select ((count _this)-1);
+    if(_hash in GVAR(keyDownList)) then {
+        GVAR(keyDownList) = GVAR(keyDownList) - [_hash];
+    };
+    if(([GVAR(keyHoldTimers), _hash] call cba_fnc_hashHasKey)) then {
+        [GVAR(keyHoldTimers), _hash] call cba_fnc_hashRem;
+    };
+    false 
+};
 
 CBA_fnc_remoteLocalEvent = FUNC(remoteLocalEvent); // BWC
 

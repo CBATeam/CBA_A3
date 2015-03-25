@@ -28,7 +28,7 @@ GVAR(keypressed) = time;
 _handled = false; // If true, suppress the default handling of the key.
 _result = false;
 
-_keyhandlers = if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) };
+_keyhandlers = if(_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) };
 
 
 if(_type == "keydown") then {
@@ -54,24 +54,48 @@ if(_type == "keydown") then {
 				#endif
                 
                 _holdKey = _data select 3;
+                _execute = true;
+                
                 _holdDelay = _data select 4;
-                _args = +_keyData;
-                _args pushBack +_data;
-				_result = _args call _code;
+                _holdTime = 0;
+                if(_holdDelay > 0) then {
+                    if(!([GVAR(keyHoldTimers), (_x + "_cbadefaultuphandler")] call cba_fnc_hashHasKey)) then {
+                        [GVAR(keyHoldTimers), (_x + "_cbadefaultuphandler"), diag_tickTime + _holdDelay] call cba_fnc_hashSet;
+                    };
+                    _holdTime = [GVAR(keyHoldTimers), (_x + "_cbadefaultuphandler")] call cba_fnc_hashGet;
+                    if(diag_tickTime < _holdTime) then {
+                        _execute = false;
+                    };
+                };
+                if(_execute) then {
+                    if(!_holdKey) then {
+                        if((_x + "_cbadefaultuphandler") in GVAR(keyDownList)) then {
+                            _execute = false;
+                        } else {
+                            GVAR(keyDownList) pushBack (_x + "_cbadefaultuphandler");
+                        };
+                    };
+                    if(_execute) then {
+                        _args = +_keyData;
+                        _args pushBack +_data;
+                        _args pushBack _x;
+                        _result = _args call _code;
 
-				if (isNil "_result") then {
-					WARNING("Nil result from handler.");
-					_result = false;
-				}
-				else {
-					if (typeName _result != "BOOL") then {
-						TRACE_1("WARNING: Non-boolean result from handler.",_result);
-						_result = false;
-					};
-				};
+                        if (isNil "_result") then {
+                            WARNING("Nil result from handler.");
+                            _result = false;
+                        }
+                        else {
+                            if (typeName _result != "BOOL") then {
+                                TRACE_1("WARNING: Non-boolean result from handler.",_result);
+                                _result = false;
+                            };
+                        };
 
-				// If any handler says that it has completely _handled_ the keypress,
-				// then don't allow other handlers to be tried at all.
+                        // If any handler says that it has completely _handled_ the keypress,
+                        // then don't allow other handlers to be tried at all.
+                    };
+                };
 				if (_result) exitWith { _handled = true };
 			};
 		} forEach _myHandlers;
@@ -145,6 +169,7 @@ if(_type == "keydown") then {
 				if (_valid) then {
                     _args = +_keyData;
                     _args pushBack +_data;
+                    _args pushBack _x;
 					_result = _args call _code;
 					
 					if (isNil "_result") then {

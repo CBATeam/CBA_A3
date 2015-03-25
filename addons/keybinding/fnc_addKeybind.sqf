@@ -14,8 +14,8 @@ Parameters:
 
  Optional:
  _defaultKeybind	The keybinding data in the format [DIK, [shift, ctrl, alt]] [Array]
- _holdKey           Will the key fire every frame while down [Bool]  - NOT YET IMPLEMENTED
- _holdDelay         How long after keydown will the key start firing every frame, in seconds. [Float]  - NOT YET IMPLEMENTED
+ _holdKey           Will the key fire every frame while down [Bool]
+ _holdDelay         How long after keydown will the key event fire, in seconds. [Float]
 
 Returns:
  Returns the current keybind for the action [Array]
@@ -43,7 +43,7 @@ _nullKeybind = [-1,[false,false,false]];
 
 PARAMS_5(_modName,_actionId,_displayName,_downCode,_upCode);
 DEFAULT_PARAM(5,_defaultKeybind,_nullKeybind);
-DEFAULT_PARAM(6,_holdKey,false);
+DEFAULT_PARAM(6,_holdKey,true);
 DEFAULT_PARAM(7,_holdDelay,0);
 DEFAULT_PARAM(8,_overwrite,false);
 
