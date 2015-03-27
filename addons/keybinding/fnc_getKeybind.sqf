@@ -36,14 +36,14 @@ _actionEntryId = (_modRegistry select 0) find _actionName;
 if(_actionEntryId == -1) exitWith {nil};
 _actionEntry = (_modRegistry select 1) select _actionEntryId;
 
-_hashDown = format["%1_%2_down", _comboMod, _actionName];
+_hashDown = format["%1_%2_down", _modName, _actionName];
 _entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
 if(_entryIndex == -1) exitWith {nil};
 _defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
 
 _entry = [
-    _comboMod, 
-    _actionId, 
+    _modName, 
+    _actionName, 
     _actionEntry select 0, 
     _defaultEntry select 0,
     _defaultEntry select 1,
