@@ -235,19 +235,6 @@ class CfgVehicles {
              //    delete Eventhandlers; // Eventhandlers
         };
 
-        class Offroad_01_base_F;
-        class C_Offroad_01_F: Offroad_01_base_F {
-             //    delete Eventhandlers; // Eventhandlers
-        };
-        class Offroad_01_repair_base_F: Offroad_01_base_F {
-        //                delete Eventhandlers; // Eventhandlers
-        };
-        class B_G_Offroad_01_repair_F: Offroad_01_repair_base_F {
-             //    delete Eventhandlers; // Eventhandlers
-        };
-        class I_G_Offroad_01_F: Offroad_01_base_F{
-              //   delete Eventhandlers; // Eventhandlers
-        };
         class Offroad_01_armed_base_F;
         class I_G_Offroad_01_armed_F: Offroad_01_armed_base_F {
              //    delete Eventhandlers; // Eventhandlers
@@ -261,13 +248,6 @@ class CfgVehicles {
         class Truck_F;
         class Van_01_base_F: Truck_F {
         //                delete Eventhandlers; // Eventhandlers
-        };
-        class I_G_Van_01_transport_F: Van_01_base_F {
-               //  delete Eventhandlers; // Eventhandlers
-        };
-        class Van_01_civil_fuel_base_F;
-        class C_Van_01_fuel_F: Van_01_civil_fuel_base_F {
-              //   delete Eventhandlers; // Eventhandlers
         };
         class I_G_Van_01_fuel_F: Van_01_base_F {
                //  delete Eventhandlers; // Eventhandlers
