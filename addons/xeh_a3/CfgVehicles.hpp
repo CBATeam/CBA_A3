@@ -244,15 +244,6 @@ class CfgVehicles {
         class C_SUV_01_F: SUV_01_base_F {
               //   delete Eventhandlers; // Eventhandlers
         };
-
-        class Truck_F;
-        class Van_01_base_F: Truck_F {
-        //                delete Eventhandlers; // Eventhandlers
-        };
-        class I_G_Van_01_fuel_F: Van_01_base_F {
-               //  delete Eventhandlers; // Eventhandlers
-        };
-
         class C_Kart_01_F_Base;
         class C_Kart_01_F: C_Kart_01_F_Base {
                //  delete Eventhandlers; // Eventhandlers
