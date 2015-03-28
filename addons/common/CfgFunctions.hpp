@@ -444,6 +444,8 @@ class CfgFunctions
 		};
 	};
 	// Missing BIS functions
+	// OBSOLETE
+/*
 	class BIS {
 		class variables {
 			class undefCheck {
@@ -458,4 +460,7 @@ class CfgFunctions
 			};
 		};
 	};
+
+*/
+
 };
