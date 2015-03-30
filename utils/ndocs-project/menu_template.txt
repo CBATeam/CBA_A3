@@ -49,11 +49,11 @@ File: Overview (no auto-title, overview.txt)
 Index: Index (Everything)
 	
 Group: Project  {
-	Link: Wiki  (http://dev-heaven.net/projects/cca/wiki)
-	Link: Reference (http://dev-heaven.net/docs/cba/index.html)
-	Link: Forums  (http://dev-heaven.net/disqus/index/cca)
-	Link: Issues  (http://dev-heaven.net/projects/cca/issues)
-	Link: Download  (http://dev-heaven.net/projects/cca/files)
+	Link: Wiki  (http://dev.withsix.com/projects/cca/wiki)
+	Link: Reference (http://dev.withsix.com/docs/cba/index.html)
+	Link: Forums  (http://dev.withsix.com/disqus/index/cca)
+	Link: Issues  (http://dev.withsix.com/projects/cca/issues)
+	Link: Download  (http://dev.withsix.com/projects/cca/files)
 	}  # Group: Project
    
 	File: Overview (doc_overview.txt)

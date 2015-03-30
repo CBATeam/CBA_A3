@@ -13,5 +13,5 @@ Online:
 
 The latest documentation can be,
 
-* Viewed at http://dev-heaven.net/docs/cba/
-* Downloaded from http://dev-heaven.net/projects/list_files/cca/
+* Viewed at https://dev.withsix.com/docs/cba/index.html
+* Downloaded from https://dev.withsix.com/projects/cca/files
