@@ -19,6 +19,6 @@ $NATURALDOCS -i "../addons" -o HTML "../store/function_library" -p "ndocs-projec
 echo -e "\n=== Packaging documentation ===\n"
 cd ../store
 rm -f function_library.tar
-tar -cf function_library.tar function_library
+fakeroot tar -cf function_library.tar function_library
 
 exit 0
