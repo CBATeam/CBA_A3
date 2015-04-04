@@ -16,6 +16,7 @@ Parameters:
  _defaultKeybind	The keybinding data in the format [DIK, [shift, ctrl, alt]] [Array]
  _holdKey           Will the key fire every frame while down [Bool]
  _holdDelay         How long after keydown will the key event fire, in seconds. [Float]
+ _overwrite         Overwrite any previously stored default keybind [Bool]
 
 Returns:
  Returns the current keybind for the action [Array]
