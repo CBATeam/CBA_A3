@@ -5,7 +5,7 @@ Description:
 	Switch player to another unit.
 
 Parameters:
-	type:   The type of the new unit the player should switch to [String]
+	[type] The type of the new unit the player should switch to [String]
 
 	Optional:
 	[type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
@@ -66,7 +66,7 @@ if (_ar select 7 != "") then
 {
 	if (isMultiplayer) then
 	{
-		GVAR(setVehVarName) = compile format ["{private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;}", _ar select 7];
+		GVAR(setVehVarName) = compile format ["private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;", _ar select 7];
 		publicVariable QGVAR(setVehVarName);
 		[[netId _oldUnit, netId _newUnit], QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
 		//_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
