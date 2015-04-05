@@ -6,7 +6,7 @@ Description:
 
 Parameters:
 	type:   The type of the new unit the player should switch to [String]
-	
+
 	Optional:
 	[type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
                               the weapons the player had before.
@@ -20,7 +20,7 @@ Returns:
 Examples:
 	(begin example)
 	// Change into a M136 AT rifleman
-	_h = "USMC_Soldier_LAT" spawn CBA_fnc_switchPlayer;
+	_h = ["USMC_Soldier_LAT"] spawn CBA_fnc_switchPlayer;
 
 	// Switch into a corpsman, but keep the weapons
 	_h = ["USMC_Soldier_Medic", "LEAVEWEPS"] spawn CBA_fnc_switchPlayer;
@@ -62,12 +62,21 @@ _newUnit addScore (_ar select 3);
 
 hint format["3.State transfered, switched player control to new unit, local: %1", local _newUnit];
 sleep 1;
-if (_ar select 7 != "") then {
-
-	GVAR(setVehVarName) = {format["objectFromNetID (this) setVehicleVarName '%1'; %1 = this", _ar select 7];};
-	[netid _newUnit, QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
-	//_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
-	//processInitCommands;
+if (_ar select 7 != "") then
+{
+	if (isMultiplayer) then
+	{
+		GVAR(setVehVarName) = compile format ["{private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;}", _ar select 7];
+		publicVariable QGVAR(setVehVarName);
+		[[netId _oldUnit, netId _newUnit], QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
+		//_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
+		//processInitCommands;
+	}
+	else
+	{
+		_oldUnit setVehicleVarName "";
+		_newUnit setVehicleVarName (_ar select 7);
+	};
 };
 
 if ("LEAVEWEAPS" in _this) then
