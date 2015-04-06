@@ -33,6 +33,11 @@ class CfgFunctions
 				description = "This function is currently disabled.";
 				file = "\x\cba\addons\keybinding\fnc_registerKeybindToFleximenu.sqf";
 			};
+			class addKeybindToFleximenu
+			{
+				description = "Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.";
+				file = "\x\cba\addons\keybinding\fnc_addKeybindToFleximenu.sqf";
+			};
             class registerKeybindModPrettyName
             {
                 description = "Associate a keybinds unique mod name with a pretty name (localized name, etc)";
