@@ -29,6 +29,7 @@ Author:
 
 // Clients only.
 if (isDedicated) exitWith {};
+diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKeybindToFleximenu is no longer a valid function and has been replaced with CBA_fnc_addKeybindToFleximenu. Contact the developer of mod %1 to change the code to use the new function.",_this select 0,_this select 1];
 
 _nullKeybind = [-1,false,false,false];
 
@@ -41,7 +42,7 @@ DEFAULT_PARAM(5,_keypressType,"KeyDown");
 // def array to []. Give them a warning if it wasn't.
 if (count (_fleximenuDef select 1) > 0) then {
 	_fleximenuDef set [1, []];
-	WARNING("Fleximenu definition passed to CBA_fnc_registerKeybindToFleximenu included a keycode. Ignoring it.")
+	WARNING("[CBA Keybinding] Fleximenu definition passed to CBA_fnc_registerKeybindToFleximenu included a keycode. Ignoring it.")
 };
 
 // Create the fleximenu.
