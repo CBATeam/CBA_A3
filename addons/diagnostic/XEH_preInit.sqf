@@ -35,9 +35,9 @@ FUNC(initExtendedDebug) = {
     uiNamespace setVariable ["cba_diagnostic_display", _display];
     _pos = ctrlPosition _dbg;
     _x = _pos select 0;//9 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX);
-	_y = -5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2));
+	_y = safeZoneY;// * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2));
 	_w = 22 * (((safezoneW / safezoneH) min 1.2) / 40);
-	_h = 40 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
+	_h = safeZoneH;//40 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
     
     _dbg ctrlSetPosition [_x, _y, _w, _h];
     _dbg ctrlCommit 0;
@@ -52,7 +52,7 @@ FUNC(initExtendedDebug) = {
             if(_idc != 0 && !(_idc in _exclude)) then {
                 _ctrl = _display displayCtrl _idc;
                 _pos = ctrlPosition _ctrl;
-                _pos set[1, (_pos select 1)+YPOS(5)];
+                _pos set[1, (_pos select 1)+SafeZoneH-YPOS(25)];
                 _ctrl ctrlSetPosition _pos;
                 _ctrl ctrlCommit 0;
             };
@@ -61,22 +61,24 @@ FUNC(initExtendedDebug) = {
     
     _exeBg = _display displayCtrl 11885;
     _exeBgPos = ctrlPosition _exeBg;
-    _exeBgPos set[3, (_exeBgPos select 3)+YPOS(3.75)];
+    _exeBgPos set[3, SafeZoneH-YPOS(18.25)];
     _exeBg ctrlSetPosition _exeBgPos;
     _exeBg ctrlCommit 0;
     
     _exe = _display displayCtrl 12284;
     _exePos = ctrlPosition _exe;
-    _exePos set[3, (_exePos select 3)+YPOS(3.75)];
+    _exePos set[3, SafeZoneH-YPOS(19.25)];
     _exe ctrlSetPosition _exePos;
     _exe ctrlCommit 0;
     
     _prevButton = _display ctrlCreate ["RscButtonMenu", 90110, _dbg];
     
     _x = 0 * (((safezoneW / safezoneH) min 1.2) / 40);
-	_y = 2.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2));
+	_y = 9.25 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
 	_w = 11.25 * (((safezoneW / safezoneH) min 1.2) / 40);
 	_h = 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
+    
+    _y = _y + SafeZoneH - YPOS(26.25);
     
     
     
@@ -90,11 +92,11 @@ FUNC(initExtendedDebug) = {
     _nextButton = _display ctrlCreate ["RscButtonMenu", 90111, _dbg];
     
     _x = 11.5 * (((safezoneW / safezoneH) min 1.2) / 40);
-	_y = 2.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2));
+	_y = 9.25 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
 	_w = 11.25 * (((safezoneW / safezoneH) min 1.2) / 40);
 	_h = 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25);
     
-    
+    _y = _y + SafeZoneH - YPOS(26.25);
     
     _nextButton ctrlSetPosition [_x, _y, _w, _h];
     _nextButton ctrlSetText "Next Statement";
