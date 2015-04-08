@@ -1,12 +1,9 @@
 CBA: Community Base Addons - OPTIONAL ADDONS
 ============================================
 
-Online wiki at http://dev-heaven.net/wiki/cca/
-Online function library reference at http://dev-heaven.net/docs/cba/
-
-cba_cache_disable.pbo						=> Dev Tool. Copy this to your cba\addons if you want to disable CBA's caching of functions.
-cba_diagnostic_disable_xeh_logging.pbo		=> Copy this to your cba\addons if you want to disable all the extra RPT logging.
-cba_diagnostic_enable_logging.pbo			=> DEV Tool. Copy this to your cba\addons if you want to enable more logging.
+cba_cache_disable.pbo                  => Dev Tool. Copy this to your cba\addons if you want to disable CBA's caching of functions.
+cba_diagnostic_disable_xeh_logging.pbo => Copy this to your cba\addons if you want to disable all the extra RPT logging.
+cba_diagnostic_enable_logging.pbo      => DEV Tool. Copy this to your cba\addons if you want to enable more logging.
 
 
 Background on CBA Caching
@@ -27,3 +24,4 @@ the game.
 References: 
 * http://wiki.ace-mod.net/Performance_Revolution
 * http://forums.bistudio.com/showthread.php?103871-CBA-Community-Base-Addons-for-A2-OA-and-CO&p=2065505&viewfull=1#post2065505
+
