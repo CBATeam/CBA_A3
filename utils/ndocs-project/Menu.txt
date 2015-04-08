@@ -209,6 +209,7 @@ Group: Functions  {
       Group: Keybinding  {
 
          File: CBA_fnc_addKeybind  (keybinding/fnc_addKeybind.sqf)
+         File: CBA_fnc_addKeybindToFleximenu  (keybinding/fnc_addKeybindToFleximenu.sqf)
          File: CBA_fnc_getKeybind  (keybinding/fnc_getKeybind.sqf)
          File: CBA_fnc_registerKeybind  (keybinding/fnc_registerKeybind.sqf)
          File: CBA_fnc_registerKeybindModPrettyName  (keybinding/fnc_registerKeybindModPrettyName.sqf)

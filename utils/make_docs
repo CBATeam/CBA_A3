@@ -13,7 +13,7 @@ if [ ! -d ../store/function_library ]
 then
   mkdir ../store/function_library
 fi
-$NATURALDOCS -i "../addons" -o HTML "../store/function_library" -p "ndocs-project" -s Default cba
+$NATURALDOCS -r -i "../addons" -o HTML "../store/function_library" -p "ndocs-project" -s Default cba
 
 
 echo -e "\n=== Packaging documentation ===\n"
