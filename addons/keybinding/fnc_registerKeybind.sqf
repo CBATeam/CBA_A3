@@ -12,7 +12,7 @@ Author:
 
 // Clients only.
 if (isDedicated) exitWith {};
-diag_log text format["%1=>%2 called cba_fnc_registerKeybind is no longer a valid function and has been replaced with cba_fnc_addKeybind. Contact the developer of mod %1 to change the code to use the new function.",_this select 0,_this select 1];
+diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called cba_fnc_registerKeybind is no longer a valid function and has been replaced with cba_fnc_addKeybind. Contact the developer of mod %1 to change the code to use the new function.",_this select 0,_this select 1];
 
 _nullKeybind = [-1,false,false,false];
 
