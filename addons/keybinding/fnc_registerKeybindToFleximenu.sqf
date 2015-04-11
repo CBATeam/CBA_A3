@@ -1,6 +1,8 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerKeybindToFleximenu
 
+This function is deprecated. Please use CBA_fnc_addKeybindToFleximenu.
+
 Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
