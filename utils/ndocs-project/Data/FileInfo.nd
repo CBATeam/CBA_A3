@@ -239,7 +239,7 @@ SQF
 /mnt/stuff/workspace/cba_a3/addons/ui/$PBOPREFIX$.TXT	1406372049	0	/mnt/stuff/workspace/cba_a3/addons/ui/$PBOPREFIX$.TXT
 /mnt/stuff/workspace/cba_a3/addons/help/XEH_postClientInit.sqf	1371932382	0	/mnt/stuff/workspace/cba_a3/addons/help/XEH_postClientInit.sqf
 /mnt/stuff/workspace/cba_a3/addons/keybinding/fnc_addKeybindToFleximenu.sqf	1428775987	1	CBA_fnc_addKeybindToFleximenu
-/mnt/stuff/workspace/cba_a3/addons/keybinding/fnc_registerKeybindToFleximenu.sqf	1428776253	1	CBA_fnc_registerKeybindToFleximenu
+/mnt/stuff/workspace/cba_a3/addons/keybinding/fnc_registerKeybindToFleximenu.sqf	1428776419	1	CBA_fnc_registerKeybindToFleximenu
 /mnt/stuff/workspace/cba_a3/addons/common/init_functionsModule.sqf	1397816721	0	/mnt/stuff/workspace/cba_a3/addons/common/init_functionsModule.sqf
 /mnt/stuff/workspace/cba_a3/addons/extended_eventhandlers/init_compile.sqf	1371932382	0	/mnt/stuff/workspace/cba_a3/addons/extended_eventhandlers/init_compile.sqf
 /mnt/stuff/workspace/cba_a3/addons/ui/CfgFunctions.hpp	1405598591	0	/mnt/stuff/workspace/cba_a3/addons/ui/CfgFunctions.hpp
