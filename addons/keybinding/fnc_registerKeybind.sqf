@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerKeybind
 
-This function is deprecated, please use cba_fnc_addKeybind. This function will NOT register or save keys to the binding menu.
+This function is deprecated, please use CBA_fnc_addKeybind. This function will NOT register or save keys to the binding menu.
 
 Author:
  Nou

@@ -5,13 +5,15 @@ Description:
  Associates a pretty name to a keybinding mod entry.
 
 Parameters:
- _modName			Name of the registering mod [String]
- _prettyName		Pretty name of the mod (localized, etc) [String]
+ _modName			- Name of the registering mod [String]
+ _prettyName		- Pretty name of the mod (localized, etc) [String]
 
 Returns:
 
 Examples:
+	(begin example)
  ["mymod", "My Cool Mod!"] call CBA_fnc_registerKeybindModPrettyName;
+	(end example)
 
 Author:
  Nou

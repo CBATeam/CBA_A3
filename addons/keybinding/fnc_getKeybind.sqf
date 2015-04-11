@@ -6,18 +6,20 @@ Description:
  specified action.
 
 Parameters:
- _modName			Name of the registering mod [String]
- _actionName		Name of the action to get [String]
+ _modName			- Name of the registering mod [String]
+ _actionName		- Name of the action to get [String]
 
 Returns:
  Keyboard entry.
 
 Examples:
+	(begin example)
  _index = ["your_mod", "openMenu"] call cba_fnc_getKeybind;
 
  if (_index >= 0) then {
 	_handler = cba_keybind_handlers select _index;
  };
+	(end example)
 
 Author:
  Taosenai

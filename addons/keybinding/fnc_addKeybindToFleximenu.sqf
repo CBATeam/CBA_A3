@@ -5,26 +5,26 @@ Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
 Parameters:
- _modName			Name of the registering mod [String]
- _actionName		Name of the action to register [String]
- _displayName		Pretty name, or an array of strings for the pretty name and a tool tip [String]
- _fleximenuDef		Parameter array for CBA_fnc_flexiMenu_Add, but with the
- 					keybind set to [] [Array]
+ _modName			- Name of the registering mod [String]
+ _actionName		- Name of the action to register [String]
+ _displayName		- Pretty name, or an array of strings for the pretty name and a tool tip [String]
+ _fleximenuDef		- Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] [Array]
 
 Optional:
- _defaultKeybind	Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
- _holdKey           Will the key fire every frame while down [Bool] (Default: true)
- _holdDelay         How long after keydown will the key event fire, in seconds. [Float] (Default: 0)
- _overwrite			Overwrite existing keybind data? [Bool] (Default: False)
+ _defaultKeybind	- Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
+ _holdKey           - Will the key fire every frame while down [Bool] (Default: true)
+ _holdDelay         - How long after keydown will the key event fire, in seconds. [Float] (Default: 0)
+ _overwrite			- Overwrite existing keybind data? [Bool] (Default: False)
 
 
 Returns:
  Returns the current keybind for the Fleximenu [Array]
 
 Examples:
+	(begin example)
  ["Your Mod", "Your_Action_Key", ["Your Action","ToolTip"], ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
  ["Your Mod", "Your_Action_Key", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
-
+	(end example)
 Author:
  ViperMaul
 ---------------------------------------------------------------------------- */
