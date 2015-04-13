@@ -29,31 +29,25 @@ SCRIPT(replace);
 // ----------------------------------------------------------------------------
 
 PARAMS_3(_string,_pattern,_replacement);
-private["_i", "_findIndex", "_stringArray", "_replaceArray", "_returnArray"];
+private["_i", "_cp", "_findIndex", "_stringArray", "_replaceArray", "_returnArray"];
 
-_findIndex = _string find _pattern;
+_returnArray  = [];
+_cp           = count _pattern;
+_stringArray  = toArray _string;
+_replaceArray = toArray _replacement;
+
+_findIndex    = _string find _pattern;
 while { _findIndex != -1 } do {
-
-	_stringArray = toArray _string;
-	_replaceArray = toArray _replacement;
-
-	_returnArray = [];
-
 	_i = 0;
 	while { _i < _findIndex } do {
 		_returnArray pushBack (_stringArray select _i);
 		_i = _i + 1;
 	};
 	_returnArray append _replaceArray;
+	_stringArray deleteRange [0, _i + _cp];
 
-	_i = _i + (count _pattern);
-	while { _i < (count _string) } do { 
-		_returnArray pushBack (_stringArray select _i);
-		_i = _i + 1;
-	};
-
-	_string = toString _returnArray;
+	_string = toString _stringArray;
 	_findIndex = _string find _pattern;
 };
-
-_string
+_returnArray append _stringArray;
+toString _returnArray
