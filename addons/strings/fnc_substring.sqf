@@ -28,13 +28,13 @@ SCRIPT(substring);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_2(_string,_startIndex, _endIndex);
+PARAMS_3(_string,_startIndex, _endIndex);
 private ["_arr", "_ret", "_i", "_x"];
 _arr = toArray _string;
 _ret = [];
 
 _x = 0;
-while { _startIndex < (_startIndex+_endIndex) && (_x+_startIndex) < (count _arr) } do {
+while { _startIndex < _endIndex && (_x+_startIndex) < (count _arr) } do {
 	_ret set[_x, (_arr select _startIndex)];
 	_x = _x + 1;
 	_startIndex = _startIndex + 1;
