@@ -3,6 +3,7 @@
 #include "script_component.hpp"
 
 #define DEBUG_CONSOLE   ((findDisplay 49) displayCtrl 13184)
+#define MOVIE_PAUSE ((findDisplay 49) displayCtrl 1004)
 #define YPOS(y) (y * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25))
 
 LOG(MSG_INIT);
@@ -215,8 +216,10 @@ cba_diagnostic_debugShown = false;
 
 _fnc = {
     if(!cba_diagnostic_debugShown && !isNull (findDisplay 49)) then {
-        cba_diagnostic_debugShown = true;
-        [] call FUNC(initExtendedDebug);
+        if (isNull MOVIE_PAUSE) then {
+            cba_diagnostic_debugShown = true;
+            [] call FUNC(initExtendedDebug);
+        };
     } else {
         if(cba_diagnostic_debugShown && isNull (findDisplay 49)) then {
             cba_diagnostic_debugShown = false;
