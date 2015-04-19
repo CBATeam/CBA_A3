@@ -23,6 +23,8 @@ Returns:
 Examples:
 	(begin example)
  ["Your Mod", "Your_Action_Key", ["Your Action","ToolTip"], ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
+	(end example)
+	(begin example)
  ["Your Mod", "Your_Action_Key", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_addKeybindToFleximenu;
 	(end example)
 Author:

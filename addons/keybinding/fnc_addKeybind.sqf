@@ -26,7 +26,10 @@ Examples:
  // Register a simple keypress to an action
  // This file should be included for readable DIK codes.
  #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+
  ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], { _this call mymod_fnc_keyDown }, { _this call mymod_fnc_keyUp }, [DIK_TAB, [false, false, false]]] call cba_fnc_addKeybind;
+	(end example)
+	(begin example)
  ["MyMod", "MyOtherKey", "My Other Pretty Key Name", { _this call mymod_fnc_keyDownOther }, { _this call mymod_fnc_keyUpOther }, [DIK_K, [false, false, false]]] call cba_fnc_addKeybind;
 	(end example)
 
