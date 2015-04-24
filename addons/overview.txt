@@ -9,6 +9,18 @@ functions are precompiled during the pre-init phase.
 As a support for the function libray, CBA also provides a number of preprocessor
 macros to aid in development.
 
+Features:
+
+* <Extended Eventhandlers (XEH) at https://dev.withsix.com/projects/cca/wiki/Extended_Eventhandlers>
+* Function and Macro Libraries
+* <Key Management at https://dev.withsix.com/projects/cca/wiki/Key_Management> and configurable <Keybinding at https://dev.withsix.com/projects/cca/wiki/Keybinding> system
+* <Custom Events System at https://dev.withsix.com/projects/cca/wiki/Custom_Events_System>
+* <Author and Credits system at https://dev.withsix.com/projects/cca/wiki/Author_and_Credits_system> (Displayed during Main Menu and Pause Menu)
+* <Nil Check at https://dev.withsix.com/projects/cca/wiki/Nil_Check>
+* <Help System at https://dev.withsix.com/projects/cca/wiki/Help_System>
+* <Versioning System at https://dev.withsix.com/projects/cca/wiki/Versioning_System>
+* <UI System at https://dev.withsix.com/projects/cca/wiki/UI_System>
+
 Online:
 
 The latest documentation can be,
