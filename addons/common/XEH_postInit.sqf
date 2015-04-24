@@ -10,7 +10,6 @@ LOG(MSG_INIT);
 //       But initialization doesn't officially finish until the official (server created / mission.sqm included) logic is available.
 //		 In SP or as server (dedicated or clientServer), the logic is created with group and createUnit.
 SLX_XEH_STR spawn {
-	waitUntil {!isNil "BIS_MPF_InitDone"}; //functions init must be after MPF init
 	waitUntil {!isNil "bis_functions_mainscope"};
 	BIS_fnc_init = true;
 	#ifdef DEBUG_MODE_FULL
