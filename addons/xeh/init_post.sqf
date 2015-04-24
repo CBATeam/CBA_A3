@@ -45,21 +45,27 @@ if (!isDedicated && {!isNull player}) then { // isNull player check is for Main 
 		#ifdef DEBUG_MODE_FULL
 			str(["Running Player EH check", _lastPlayer]) call SLX_XEH_LOG;
 		#endif
-		// TODO: Perhaps this is possible in some event-style fashion, which would add the player events asap, synchronous.
-		// (though perhaps not possible like teamswitch, besides, player == _unit is probably false at (preInit)?
-		// TODO: Perhaps best run the statements in 'delayLess' FSM (or completely in delaylessLoop), synchronous, unscheduled?
-		// TODO: Evaluate with respawn...
-		while {true} do {
-			waitUntil {sleep 0.5; player != _lastPlayer};
-			_lastPlayer call FUNC(removePlayerEvents);
-			waitUntil {sleep 0.5; !(isNull player)};
-			_newPlayer = player;
-			#ifdef DEBUG_MODE_FULL
-				str(["New Player", _newPlayer, _lastPlayer]) call SLX_XEH_LOG;
-			#endif
-			_newPlayer call FUNC(addPlayerEvents);
-			_lastPlayer = _newPlayer;
+		// switched away frmo scheduler loop to PFH system for re-adding additional events.
+		_fnc = {
+            _params = _this select 0;
+            _lastPlayer = _params select 0;
+            
+			if(player != _lastPlayer) then {
+                _lastPlayer call FUNC(removePlayerEvents);
+                // set _lastPlayer entry to player, even if null
+                _params set[0, player];
+            };
+            // check if player is not null and not equal to last player (if it was null, then it will be different)
+			if(!(isNull player) && player != _lastPlayer) then {
+                // set _lastPlayer to guranateed NOT null object, this resets the two cycle check
+                _params set[0, player];
+                #ifdef DEBUG_MODE_FULL
+                    str(["New Player", player, _lastPlayer]) call SLX_XEH_LOG;
+                #endif
+                player call FUNC(addPlayerEvents);
+            };
 		};
+        [_fnc, 0.1, [player]] call cba_fnc_addPerFrameHandler;
 	};
 };
 
