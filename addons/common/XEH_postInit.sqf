@@ -38,17 +38,6 @@ if (isNil "BIS_functions_mainscope") then {
 
 CBA_logic = _logic;
 
-SLX_XEH_STR spawn {
-	_done = false;
-	while {true} do {
-		sleep 1;
-		if (typeName nil == "STRING" || {str(nil) != "ANY"}) then {
-			if !(CBA_NIL_CHECKED) then { "WARNING: NIL VARIABLE OVERRIDEN; Please fix Mission or loaded addon-scripts" spawn FUNC(log); CBA_NIL_CHECKED = true; };
-			nil = CBA_nil select 0; // TODO: This doesn't work properly.. it will at least undefine nil, making the error more apparant, yet not exactly what we want.
-		};
-	};
-};
-
 // A2 / Operation Arrowhead, standalone / combined operations check
 TRACE_1("OA Check",nil);
 private ["_hasCbaOa", "_hasCbaA2", "_hasA2", "_hasOa"];
