@@ -13,14 +13,11 @@ LOG(MSG_INIT);
 SLX_XEH_STR spawn {
 	private ["_lastPlayer", "_newPlayer"];
 	waitUntil {player == player};
-	_lastPlayer = objNull;
-	while {true} do {
-		waitUntil {player != _lastPlayer};
-		waitUntil {!isNull player};
-		_newPlayer = player; // Cumbersome but ensures refering to the same object
-		["CBA_playerSpawn", [_newPlayer, _lastPlayer]] call (uiNamespace getVariable "CBA_fnc_localEvent");
-		_lastPlayer = _newPlayer;
-	};
+    player addEventHandler ["Respawn", {
+        if(_this select 0 == player) then {
+            _this call ["CBA_playerSpawn", _this] call (uiNamespace getVariable "CBA_fnc_localEvent")
+        };
+    }];
 };
 
 
