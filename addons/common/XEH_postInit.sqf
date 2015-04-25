@@ -87,37 +87,33 @@ if !(CBA_MISSION_START) then {
 } else {
 	SLX_XEH_STR call FUNC(initPerFrameHandlers);
 };
-
+GVAR(actionIndexes) = [];
 if !(isDedicated) then {
 	SLX_XEH_STR spawn
 	{
 		waitUntil {!isNil QGVAR(nextActionIndex)};
 		LOG("Action monitor started");
-		while { true } do {
-			// Don't mess around endlessly adding and re-adding to a
-			// corpse/destroyed vehicle.
-			waitUntil { alive (vehicle player) };
-
-			// Add actions to new vehicle.
-			_veh = vehicle player;
-			_actionIndexes = [];
-			TRACE_3("Before Adding actions",_veh,count _actionIndexes, GVAR(actionList));
-			[GVAR(actionList), { TRACE_3("Inside the code for the hashPair",_veh,_actionIndexes, _value); if (!isNil "_value" && typeName(_value) == "ARRAY") then {PUSH(_actionIndexes, _veh addAction _value)}}] call CBA_fnc_hashEachPair;
-			TRACE_3("Added actions",_veh,count _actionIndexes, GVAR(actionList));
-
-			waitUntil {
-				sleep 1;
-				(vehicle player) != _veh || {!alive player} || {GVAR(actionListUpdated)}
-			};
-
-			// Remove actions from previous vehicle.
-			GVAR(actionListUpdated) = false;
-			{ _veh removeAction _x } forEach _actionIndexes;
-
-			TRACE_2("Removed actions",_veh,count _actionIndexes,GVAR(actionList));
-
-			sleep 1;
-		};
+        _fnc = {
+            _params = _this select 0;
+            _prevVic = _params select 0;
+            if(isNull player) exitWith {};
+            if(player != (vehicle player) && {(vehicle player) != _prevVic}) then {
+                [GVAR(actionList), { 
+                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value); 
+                    if (!isNil "_value" && typeName(_value) == "ARRAY") then {
+                        PUSH(GVAR(actionIndexes), (vehicle player) addAction _value)
+                    };
+                }] call CBA_fnc_hashEachPair;
+            };
+            if(player == (vehicle player) && {(vehicle player) != _prevVic}) then {
+                { 
+                    _prevVic removeAction _x;
+                } forEach GVAR(actionIndexes);
+                GVAR(actionIndexes) = [];
+            };
+            _params set[0, (vehicle player)];
+        };
+        [_fnc, 1, [player]] call cba_fnc_addPerFrameHandler;
 	};
 };
 
