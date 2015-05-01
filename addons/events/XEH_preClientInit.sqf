@@ -1,4 +1,4 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable. 
+// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
 // So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
@@ -15,7 +15,7 @@ SLX_XEH_STR spawn {
 	waitUntil {player == player};
     player addEventHandler ["Respawn", {
         if(_this select 0 == player) then {
-            _this call ["CBA_playerSpawn", _this] call (uiNamespace getVariable "CBA_fnc_localEvent")
+           ["CBA_playerSpawn", _this] call (uiNamespace getVariable "CBA_fnc_localEvent")
         };
     }];
 };
