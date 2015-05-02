@@ -89,27 +89,29 @@ if !(isNull _display) then {
 
                     // Search the handler array for any other keybinds using this key.
                     _isDuplicated = false;
-                    _dupeActionName = "";
-                    {
-                        
-                        _sActionId = _x;
-                        _dupeAction = (_modActions select 1) select _forEachIndex;
-                        _sActionName = _dupeAction select 0; 
-                        _sKeybind = _dupeAction select 1;
-                        if((_modName + "_" + _sActionId) in GVAR(activeBinds)) then {
-                            if (_sActionId != _actionId && _sKeybind isEqualTo _keybind) exitWith {
-                                _isDuplicated = true;
-                                _dupeActionName = _sActionName;
+                    if(_dikCode != 0) then {
+                        _dupeActionName = "";
+                        {
+                            
+                            _sActionId = _x;
+                            _dupeAction = (_modActions select 1) select _forEachIndex;
+                            _sActionName = _dupeAction select 0; 
+                            _sKeybind = _dupeAction select 1;
+                            if((_modName + "_" + _sActionId) in GVAR(activeBinds)) then {
+                                if (_sActionId != _actionId && _sKeybind isEqualTo _keybind) exitWith {
+                                    _isDuplicated = true;
+                                    _dupeActionName = _sActionName;
+                                };
                             };
+                        } foreach (_modActions select 0);
+                    
+                        if (_isDuplicated) then {
+                            // Add the name of the action that dupes the keybinding to the 
+                            // end of the readable bind string.
+                            _keyString = format ["%1 [%2]", _keyString, _dupeActionName];
                         };
-                    } foreach (_modActions select 0);
-
-                    if (_isDuplicated) then {
-                        // Add the name of the action that dupes the keybinding to the 
-                        // end of the readable bind string.
-                        _keyString = format ["%1 [%2]", _keyString, _dupeActionName];
                     };
-
+                    
                     // Add the row.
                     _lbCount = _lnb lnbAddRow [_actionName, _keyString];
                     _lnb lbSetTooltip [_lbCount, _toolTip];
@@ -127,6 +129,10 @@ if !(isNull _display) then {
                     // Set the row color to red if a duplicate keybind exists.
                     if (_isDuplicated) then {
                         _lnb lnbSetColor [[_lbCount, 1], [1,0,0,1]];
+                    };
+                    
+                    if(_dikCode == 0) then {
+                        // @TODO: Set the color seperately if it is an unbound key.
                     };
                 };
             };
