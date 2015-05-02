@@ -1,3 +1,4 @@
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
@@ -9,13 +10,19 @@ _ctrl = _this select 3;
 _alt = _this select 4;
 if(_dikCode == 0) exitWith {false};
 if (GVAR(waitingForInput)) then {
-	if !(_dikCode in [42, 29, 56]) then { // Don't accept LShift, LCtrl, or LAlt on their own
+	if !(_dikCode in [42, 29, 56, 54, 157, 184]) then { // Don't accept LShift, LCtrl, or LAlt or RShift, RCtrl, or RAlt on their own
+		TRACE_4("Update Input",_dikCode,_shift, _ctrl, _alt);
+		TRACE_2("Before",GVAR(modifiers), GVAR(input));
 		GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
 		GVAR(modifiers) = [];
+		TRACE_2("After",GVAR(modifiers), GVAR(input));
 	} else {
+		TRACE_4("Update Modifiers",_dikCode,_shift, _ctrl, _alt);
+		TRACE_2("Before",GVAR(modifiers), GVAR(input));
 		if(!(_dikCode in GVAR(modifiers))) then {
 			PUSH(GVAR(modifiers), _dikCode);
 		};
+		TRACE_2("After",GVAR(modifiers), GVAR(input));
 	};
 };
 
