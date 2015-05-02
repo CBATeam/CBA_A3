@@ -129,6 +129,18 @@ class Extended_init_Eventhandlers {
         class C_Kart_01_F /* : C_Kart_01_F_Base  */{
                 SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Kart\Kart_01\scripts\randomize.sqf""";
         };
+        class Fin_random_F /* : Fin_Base_F */ {
+                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";	
+        };
+        class Alsatian_Random_F /* : Alsatian_Base_F */ {
+                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize_als.sqf"";(_this select 0) call _FRnd;";
+        };
+        class Goat_random_F /* : Goat_Base_F */ {
+                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\goat\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+        };
+        class Sheep_random_F /* : Animal_Base_F */ {
+                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\Sheep\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+        };
         class Snake_random_F /* : Animal_Base_F */ {
                 SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f\Snakes\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
         };
