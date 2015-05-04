@@ -72,6 +72,12 @@ class Extended_init_Eventhandlers {
         class I_G_Soldier_base_F /* : SoldierGB */ {
                 XEH_BIS = "(_this select 0) execVM ""\A3\Characters_F_Bootcamp\Data\Scripts\randomize_gue1.sqf""";
         };
+        class I_G_Story_SF_Captain_F /* : B_G_Soldier_F */ {
+                XEH_BIS = "";
+        };
+        class I_G_Story_Protagonist_F /* : B_G_Soldier_F */ {
+                XEH_BIS = "";
+        };
         class MBT_03_base_F /* : Tank_F */ {
                 XEH_BIS = "if (local (_this select 0)) then {{(_this select 0) animate [_x,(random 1)]} forEach ['HideHull','HideTurret']}";
         };
