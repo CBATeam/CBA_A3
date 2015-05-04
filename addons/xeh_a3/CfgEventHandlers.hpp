@@ -42,6 +42,21 @@ class Extended_init_Eventhandlers {
         class C_man_1 /* : Civilian_F */ {
                 SLX_BIS = "(_this select 0) execVM ""\A3\characters_f\civil\scripts\randomize_civ1.sqf""";
         };
+        class C_man_hunter_1_F /* : C_man_1 */ {
+                SLX_BIS = "";
+        };
+        class C_man_pilot_F /* : C_man_1 */ {
+                SLX_BIS = "";
+        };
+        class C_man_journalist_F /* : C_man_1 */ {
+                SLX_BIS = "";
+        };
+        class C_driver_1_F /* : C_man_1 */ {
+                SLX_BIS = "";
+        };
+        class C_Soldier_VR_F /* : C_man_1 */ {
+                SLX_BIS = "";
+        };
         class B_Story_SF_Captain_F /* : B_Soldier_base_F */ {
                 XEH_BIS = "(_this select 0) setIdentity ""EPA_B_Miller""";
         };
