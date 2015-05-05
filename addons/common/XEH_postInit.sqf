@@ -93,27 +93,30 @@ if !(isDedicated) then {
 	{
 		waitUntil {!isNil QGVAR(nextActionIndex)};
 		LOG("Action monitor started");
-        _fnc = {
-            _params = _this select 0;
-            _prevVic = _params select 0;
-            if(isNull player) exitWith {};
-            if(player != (vehicle player) && {(vehicle player) != _prevVic}) then {
-                [GVAR(actionList), { 
-                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value); 
-                    if (!isNil "_value" && typeName(_value) == "ARRAY") then {
-                        PUSH(GVAR(actionIndexes), (vehicle player) addAction _value)
-                    };
-                }] call CBA_fnc_hashEachPair;
-            };
-            if(player == (vehicle player) && {(vehicle player) != _prevVic}) then {
-                { 
-                    _prevVic removeAction _x;
-                } forEach GVAR(actionIndexes);
-                GVAR(actionIndexes) = [];
-            };
-            _params set[0, (vehicle player)];
-        };
-        [_fnc, 1, [player]] call cba_fnc_addPerFrameHandler;
+		_fnc = {
+			_params  = _this select 0;
+			_prevVic = _params select 0;
+			_curVic  = vehicle player;
+			if (isNull player) exitWith {};
+			if (GVAR(actionListUpdated) || (_curVic != _prevVic) && (count GVAR(actionIndexes) > 0)) then
+			{
+				_vic = if (_curVic != _prevVic) then {_prevVic} else {_curVic};
+				{ _vic removeAction _x; } forEach GVAR(actionIndexes);
+				GVAR(actionIndexes) = [];
+			};
+			if (GVAR(actionListUpdated) || (_curVic != _prevVic)) then
+			{
+				GVAR(actionListUpdated) = false;
+				[GVAR(actionList), {
+					TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
+					if (!isNil "_value" && typeName(_value) == "ARRAY") then {
+						PUSH(GVAR(actionIndexes), (vehicle player) addAction _value)
+					};
+				}] call CBA_fnc_hashEachPair;
+			};
+			_params set [0, (vehicle player)];
+		};
+		[_fnc, 1, [vehicle player]] call CBA_fnc_addPerFrameHandler;
 	};
 };
 
