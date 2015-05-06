@@ -11,31 +11,12 @@ LOG(MSG_INIT);
 //		 In SP or as server (dedicated or clientServer), the logic is created with group and createUnit.
 SLX_XEH_STR spawn {
 	waitUntil {!isNil "bis_functions_mainscope"};
-	BIS_fnc_init = true;
+	waitUntil {!isNull bis_functions_mainscope};
+	CBA_logic = bis_functions_mainscope;
 	#ifdef DEBUG_MODE_FULL
 		diag_log [diag_frameNo, diag_tickTime, time, "BLA: Function module init true!"];
 	#endif
 };
-
-private ["_group", "_logic"];
-if (isNil "BIS_functions_mainscope") then {
-	if (SLX_XEH_MACHINE select 3) then {
-		// CREATE_CENTER sideLogic; // Handled in function
-		_group = [sideLogic] call CBA_fnc_getSharedGroup;
-		_logic = _group createUnit ["FunctionsManager", [0,0,0], [], 0, "none"];
-		TRACE_2("Created FunctionsManager Logic",_group,_logic);
-		BIS_OO_grpLogic = _group;
-	} else {
-		// TODO: Evaluate cleanup for this one
-		_logic = "LOGIC" createVehicleLocal [0, 0];
-		TRACE_1("Created FunctionsManager Logic (local)",_logic);
-	};
-} else {
-	_logic = BIS_functions_mainscope;
-	TRACE_1("Using already available BIS_functions_mainscope",_logic);
-};
-
-CBA_logic = _logic;
 
 // A2 / Operation Arrowhead, standalone / combined operations check
 TRACE_1("OA Check",nil);
