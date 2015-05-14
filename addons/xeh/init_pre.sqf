@@ -314,7 +314,6 @@ SLX_XEH_STR spawn {
 			"JIP" call SLX_XEH_LOG;
 			#endif
 	
-			SLX_XEH_MACHINE set [1, true]; // set JIP
 			// TEST for weird jip-is-server-issue :S
 			if (!(SLX_XEH_MACHINE select 2) || {SLX_XEH_MACHINE select 3} || {SLX_XEH_MACHINE select 4}) then {
 				str(["WARNING: JIP Client, yet wrong detection", SLX_XEH_MACHINE]) call SLX_XEH_LOG;
@@ -339,6 +338,9 @@ SLX_XEH_STR spawn {
 		waitUntil { local player };
 	};
 
+	// set JIP
+	SLX_XEH_MACHINE set [1, !isDedicated && getClientState in ["BRIEFING SHOWN","BRIEFING READ","GAME FINISHED","DEBRIEFING READ"]];
+	
 	GVAR(init_obj2) setDamage 1; // Schedule to run itsy bitsy later
 
 	SLX_XEH_MACHINE set [5, true]; // set player check = complete
