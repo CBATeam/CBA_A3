@@ -49,8 +49,11 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 	};
 };
 
+private ["_oldPFH"];
+_oldPFH = isNil "BIS_fnc_addStackedEventHandler";
+
 FUNC(initPerFrameHandlers) = {
-	if (isNil "BIS_fnc_addStackedEventHandler") then {
+	if (_this) then {
 		7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
 	} else {
 		// Use the new, stacked onEachFrame system
@@ -64,11 +67,12 @@ FUNC(initPerFrameHandlers) = {
 };
 
 // Run the per frame handler init code, bringing up the hidden map control
-if !(CBA_MISSION_START) then {
-	["CBA_MISSION_START", { SLX_XEH_STR call FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
+if (_oldPFH && {!CBA_MISSION_START}) then {
+	["CBA_MISSION_START", { _oldPFH call FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
 } else {
-	SLX_XEH_STR call FUNC(initPerFrameHandlers);
+	_oldPFH call FUNC(initPerFrameHandlers);
 };
+
 GVAR(actionIndexes) = [];
 if !(isDedicated) then {
 	SLX_XEH_STR spawn
