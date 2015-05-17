@@ -26,11 +26,11 @@ _reversed = false;
 if (isNil QGVAR(mapReversed)) then {
 	_test = getNumber (configFile >> "CfgWorlds" >> worldName >> "Grid" >> "Zoom1" >> "stepY");
 	if (_test > 0) then {
-		_start = format["%1", mapGridPosition [0, 0]];
-		_check = parseNumber(_start);
+		_check = parseNumber(format["%1", mapGridPosition [0, 0]]);
+		_start = _check;
 		_plus = 0;
 		diag_log text "---------------------";
-		while {_check != _start} do {
+		while {_check == _start} do {
 			_check = parseNumber(format["%1", mapGridPosition [0, _plus]]);
 			_plus = _plus + 1;
 		};
