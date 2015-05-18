@@ -5,6 +5,8 @@
 
 PARAMS_1(_unit);
 
+// jaynus: THIS IS A LIE
+// This was disabled, so it is always calling the pre-1.60 codeblock!!!!
 if ((SLX_XEH_MACHINE select 12) > 0) then {
 	// Post v1.60
 
@@ -22,7 +24,12 @@ if ((SLX_XEH_MACHINE select 12) > 0) then {
 
 	// Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
 	if (SLX_XEH_MACHINE select 7) then {
-		if (_isDelayed) then { [INITPOST, _isRespawn, _isDelayed] call FUNC(init) } else { [INITPOST, _isRespawn, _isDelayed] spawn FUNC(init) }; // Spawn; Otherwise setVariable won't hold etc
+        // jaynus: ##76260, this was backwards. It should *spawn* on delayed, and CALL otherwise
+		if (!_isDelayed) then { 
+            [INITPOST, _isRespawn, _isDelayed] call FUNC(init) 
+        } else { 
+            [INITPOST, _isRespawn, _isDelayed] spawn FUNC(init) 
+        }; // Spawn; Otherwise setVariable won't hold etc
 	} else {
 		// StartInit was not yet done, this unit is spawned in start of mission
 		SLX_XEH_objects pushBack [INITPOST, _isRespawn, _isDelayed];

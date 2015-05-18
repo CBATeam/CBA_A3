@@ -290,14 +290,18 @@ GVAR(init_obj2) addEventHandler ["killed", {
 
 // Schedule PostInit
 SLX_XEH_STR spawn {
-	// Warn if PostInit takes longer than 10 tickTime seconds
+	// Warn if PostInit takes longer than 300 tickTime seconds (5 minutes)
 	SLX_XEH_STR spawn {
 		private["_time2Wait"];
-		_time2Wait = diag_ticktime + 10;
-		waituntil {diag_ticktime > _time2Wait};
+		_time2Wait = diag_ticktime + 300;       
+        // jaynus: #76260, this is upped to 5 minutes as these times get excessive in A3
+        // We wait 5 minutes for completion, not just randomly 10 seconds.
+		waituntil {diag_ticktime > _time2Wait || (SLX_XEH_MACHINE select 8) };
 		if !(SLX_XEH_MACHINE select 8) then { 
 			XEH_LOG("WARNING: PostInit did not finish in a timely fashion");
-			waitUntil {time > 0};
+			
+            // This instantly triggers if JIP
+            waitUntil {time > 0};
 			// Consider there will be no player if neither PostInit-Ready, nor PlayerCheck-Ready
 			if !(SLX_XEH_MACHINE select 8 || {SLX_XEH_MACHINE select 5}) then { SLX_XEH_MACHINE set [13, true]; };
 		};
