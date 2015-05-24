@@ -106,49 +106,49 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "_this select 0 animate [""HidePoliceSigns"",0]; _this select 0 animate [""HideRescueSigns"",1]; _this select 0 animate [""HidePolice"",0];";
         };
         class C_Offroad_01_F /* : Offroad_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_F\Offroad_01\scripts\randomize.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class Offroad_01_repair_base_F /* : Offroad_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Offroad_01\scripts\repair_init.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class B_G_Offroad_01_repair_F /* : Offroad_01_repair_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Offroad_01\scripts\randomize_colors.sqf"";(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Offroad_01\scripts\repair_init.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Offroad_01_F /* : Offroad_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Offroad_01\scripts\randomize_colors.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Offroad_01_armed_F /* : Offroad_01_armed_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Offroad_01\scripts\randomize_colors.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Quadbike_01_F /* : Quadbike_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Beta\Quadbike_01\scripts\randomize_CIV_colors.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Quadbike_01_F /* : Quadbike_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Quadbike_01\scripts\randomize_colors.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Hatchback_01_F /* : Hatchback_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\Hatchback_01\scripts\randomize.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Hatchback_01_sport_F /* : Hatchback_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\Hatchback_01\scripts\randomize_sports.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_SUV_01_F /* : SUV_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\SUV_01\scripts\clock.sqf""; (_this select 0) execVM ""\A3\soft_f_gamma\SUV_01\scripts\randomize.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};(_this select 0) execVM ""\A3\soft_f_gamma\SUV_01\scripts\clock.sqf"";";
         };
         class Van_01_base_F /* : Truck_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\randomize_colour.sqf"";(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf""";
+                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Van_01_transport_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Van_01\scripts\randomize_transport.sqf""";
+                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Van_01_fuel_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";(_this select 0) execVM ""\A3\Soft_F_Gamma\Van_01\scripts\randomize_colour_fuel.sqf""";
+                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Van_01_fuel_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";(_this select 0) execVM ""\A3\Soft_F_Bootcamp\Van_01\scripts\randomize_fuel.sqf""";
+                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Kart_01_F /* : C_Kart_01_F_Base  */{
-                SLX_BIS = "(_this select 0) execVM ""\A3\Soft_F_Kart\Kart_01\scripts\randomize.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
         };
         class Fin_random_F /* : Fin_Base_F */ {
                 SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";	
@@ -187,7 +187,7 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "(_this select 0) inflame true";
         };
         class Heli_Light_01_civil_base_F /* : Heli_Light_01_base_F */ {
-        		SLX_BIS = "(_this select 0) execVM ""\A3\Air_F\Heli_Light_01\scripts\randomize.sqf""";
+        		SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
 };
 class Extended_killed_Eventhandlers {
