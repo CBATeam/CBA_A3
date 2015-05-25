@@ -22,7 +22,7 @@ Examples:
 	(end)
 
 Author:
-	Xeno
+	PabstMirror
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -31,55 +31,41 @@ SCRIPT(split);
 
 // ----------------------------------------------------------------------------
 
-private ["_strar", "_separ", "_countstr", "_countsepstr", "_split", "_curidx", "_curstr", "_char", "_sepidx", "_sephelper", "_newidx", "_cchar", "_schar"];
-PARAMS_1(_string);
+private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
+PARAMS_1(_input);
 DEFAULT_PARAM(1,_separator,"");
-
-_strar = toArray _string;
-_separ = toArray _separator;
-_countstr = count _strar;
-_countsepstr = count _separ;
-if (_countsepstr > _countstr) exitWith {_strar};
 _split = [];
-if (_separator == "") then {
-	{
-		PUSH(_split,toString [_x]);
-	} forEach _strar;
-} else {
-	_curidx = 0;
-	_curstr = [];
-	while {_curidx < _countstr} do {
-		_char = _strar select _curidx;
-		if (_char != _separ select 0) then {
-			PUSH(_curstr,_char);
+_index = 0;
+_inputCount = count _input;
+_separatorCount = count _separator;
+//Return array if split count > input count (Match default behavior):
+if (_separatorCount > _inputCount) exitWith {toArray _input};
+if (_separatorCount > 0) then {
+	_lastWasSeperator = true;
+	while {_index < _inputCount} do {
+		_find = (_input select [_index, (_inputCount - _index)]) find _separator;
+		if (_find == 0) then {
+			_index = _index + _separatorCount;
+			if (_lastWasSeperator) then {_split pushBack "";};
+			_lastWasSeperator = true;
 		} else {
-			_sepidx = 0;
-			_sephelper = [];
-			_newidx = 0;
-			for "_i" from _curidx to _curidx + _countsepstr do {
-				if (_sepidx >= _countsepstr) exitWith {};
-				if (_i >= _countstr) exitWith {};
-				_cchar = _strar select _i;
-				_schar = _separ select _sepidx;
-				if (_cchar != _schar) exitWith {};
-				PUSH(_sephelper,_cchar);
-				INC(_sepidx);
-				_newidx = _i;
-			};
-			if (count _sephelper == _countsepstr) then { // match
-				_curidx = _newidx;
-				PUSH(_split,toString _curstr);
-				_curstr = [];
+			_lastWasSeperator = false;
+			if (_find == -1) then {
+				_split pushBack (_input select [_index, (_inputCount - _index)]);
+				_index = _inputCount;
 			} else {
-				PUSH(_curstr,_char);
+				_split pushBack (_input select [_index, _find]);
+				_index = _index + _find;
 			};
 		};
-		INC(_curidx);
 	};
-	if (count _curstr > 0) then {
-		PUSH(_split,toString _curstr);
-	} else {
-		PUSH(_split,"");
+	//Handle split at end:
+	if ((_inputCount >= _separatorCount) && {(_input select [(_inputCount - _separatorCount), _separatorCount]) isEqualTo _separator}) then {
+		_split pushBack "";
+	};
+} else {
+	for "_index" from 0 to (_inputCount - 1) do {
+		_split pushBack (_input select [_index, 1]);
 	};
 };
 _split
