@@ -27,6 +27,12 @@ class CfgFunctions
 				description = "Finds a string within another string.";
 				file = "\x\cba\addons\strings\fnc_find.sqf";
 			};
+            // CBA_fnc_find
+			class floatToString
+			{
+				description = "Higher precision string representation of a float. Fast.";
+				file = "\x\cba\addons\strings\fnc_floatToString.sqf";
+			};
 			// CBA_fnc_formatElapsedTime
 			class formatElapsedTime
 			{

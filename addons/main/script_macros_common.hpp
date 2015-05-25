@@ -829,6 +829,8 @@ Author:
 #define IS_INTEGER(VAR)  if ( IS_SCALAR(VAR) ) then { (floor(VAR) == (VAR)) } else { false }
 #define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
+#define FLOAT_TO_STRING(num)    (str floor num + "." + (str (num-floor num) select [2]) + "0")
+
 /* -------------------------------------------
 Macro: SCRIPT()
 	Sets name of script (relies on PREFIX and COMPONENT values being #defined).
