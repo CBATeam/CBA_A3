@@ -2,16 +2,16 @@
 Function: CBA_fnc_vectRotate2D
 
 Description:
-	Rotates a 2D vector around a given center, for rotating of a vector from its origin, use BIS_fnc_rotateVector2D
+    Rotates a 2D vector around a given center, for rotating of a vector from its origin, use BIS_fnc_rotateVector2D
 
 Parameters:
-	Center, Vector, Angle
+    Center, Vector, Angle
 
 Returns:
-	The rotated vector
+    The rotated vector
 
 Author:
-	Rommel
+    Rommel
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -24,6 +24,6 @@ _dx = _x - (_vector select 0);
 _dy = _y - (_vector select 1);
 
 [
-	_x - ((_dx* cos(_angle)) - (_dy* sin(_angle))),
-	_y - ((_dx* sin(_angle)) + (_dy* cos(_angle)))
+    _x - ((_dx* cos(_angle)) - (_dy* sin(_angle))),
+    _y - ((_dx* sin(_angle)) + (_dy* cos(_angle)))
 ]

@@ -2,7 +2,7 @@
 Function: CBA_fnc_removeKeyHandler
 
 Description:
-	Removes an action to a keyhandler
+    Removes an action to a keyhandler
 
 Parameters:
   _hashKey - handler identifier [String].
@@ -12,13 +12,13 @@ Parameters:
 Returns:
 
 Examples:
-	(begin example)
-		["cba_somesystem_keyevent"] call CBA_fnc_removeKeyHandler;
-		["cba_anothersystem_keyup", "keyup"] call CBA_fnc_removeKeyHandler;
-	(end)
+    (begin example)
+        ["cba_somesystem_keyevent"] call CBA_fnc_removeKeyHandler;
+        ["cba_anothersystem_keyup", "keyup"] call CBA_fnc_removeKeyHandler;
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 
 ---------------------------------------------------------------------------- */
 // #define DEBUG_MODE_FULL
@@ -38,11 +38,11 @@ _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 // Remove existing key.
 _idx = _keyData select 0;
 if (count _handlers > _idx) then {
-	_myHandlers = _handlers select _idx;
-	if (_hashKey in _myHandlers) then {
-		_myHandlers = _myHandlers - [_hashKey];
-		_handlers set [_idx, _myHandlers];
-	};
+    _myHandlers = _handlers select _idx;
+    if (_hashKey in _myHandlers) then {
+        _myHandlers = _myHandlers - [_hashKey];
+        _handlers set [_idx, _myHandlers];
+    };
 };
 if(_type == "keydown") then {
     [_hashKey+"_CBADEFAULTUPHANDLER", "keyup"] call cba_fnc_removeKeyHandler;

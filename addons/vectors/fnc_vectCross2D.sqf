@@ -12,12 +12,12 @@ Returns:
  the cross product (scalar magnitude) of the two vectors.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectCross2D.sqf";
 

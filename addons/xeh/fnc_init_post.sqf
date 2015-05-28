@@ -6,25 +6,25 @@
 PARAMS_1(_unit);
 
 if ((SLX_XEH_MACHINE select 12) > 0) then {
-	// Post v1.60
+    // Post v1.60
 
-	// Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
-	if (SLX_XEH_MACHINE select 7) then {
-		[INITPOST] spawn FUNC(init);
-	} else {
-		// StartInit was not yet done, this unit is spawned in start of mission
-		SLX_XEH_objects pushBack [INITPOST];
-	};
+    // Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
+    if (SLX_XEH_MACHINE select 7) then {
+        [INITPOST] spawn FUNC(init);
+    } else {
+        // StartInit was not yet done, this unit is spawned in start of mission
+        SLX_XEH_objects pushBack [INITPOST];
+    };
 } else {
-	// Pre v1.60
-	DEFAULT_PARAM(1,_isRespawn,false);
-	DEFAULT_PARAM(2,_isDelayed,false);
+    // Pre v1.60
+    DEFAULT_PARAM(1,_isRespawn,false);
+    DEFAULT_PARAM(2,_isDelayed,false);
 
-	// Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
-	if (SLX_XEH_MACHINE select 7) then {
-		if (_isDelayed) then { [INITPOST, _isRespawn, _isDelayed] call FUNC(init) } else { [INITPOST, _isRespawn, _isDelayed] spawn FUNC(init) }; // Spawn; Otherwise setVariable won't hold etc
-	} else {
-		// StartInit was not yet done, this unit is spawned in start of mission
-		SLX_XEH_objects pushBack [INITPOST, _isRespawn, _isDelayed];
-	};
+    // Add unit to InitPost mechanism, or else spawn initPost manually (JIP probably)
+    if (SLX_XEH_MACHINE select 7) then {
+        if (_isDelayed) then { [INITPOST, _isRespawn, _isDelayed] call FUNC(init) } else { [INITPOST, _isRespawn, _isDelayed] spawn FUNC(init) }; // Spawn; Otherwise setVariable won't hold etc
+    } else {
+        // StartInit was not yet done, this unit is spawned in start of mission
+        SLX_XEH_objects pushBack [INITPOST, _isRespawn, _isDelayed];
+    };
 };

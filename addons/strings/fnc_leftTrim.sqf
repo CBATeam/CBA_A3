@@ -2,24 +2,24 @@
 Function: CBA_fnc_leftTrim
 
 Description:
-	Trims white-space (space, tab, newline) from the left end of a string.
+    Trims white-space (space, tab, newline) from the left end of a string.
 
-	See <CBA_fnc_rightTrim> and <CBA_fnc_trim>.
+    See <CBA_fnc_rightTrim> and <CBA_fnc_trim>.
 
 Parameters:
-	_string - String to trim [String]
+    _string - String to trim [String]
 
 Returns:
-	Trimmed string [String]
+    Trimmed string [String]
 
 Example:
-	(begin example)
-		_result = [" frogs are fishy   "] call CBA_fnc_leftTrim;
-		// _result => "frogs are fishy   "
-	(end)
+    (begin example)
+        _result = [" frogs are fishy   "] call CBA_fnc_leftTrim;
+        // _result => "frogs are fishy   "
+    (end)
 
 Author:
-	Spooner
+    Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -38,25 +38,25 @@ _whiteSpace = WHITE_SPACE;
 
 // Left trim.
 if (count _chars > 0) then {
-	private "_numWhiteSpaces";
-	_numWhiteSpaces = count _chars;
+    private "_numWhiteSpaces";
+    _numWhiteSpaces = count _chars;
 
-	for "_i" from 0 to ((count _chars) - 1) do {
-		if !((_chars select _i) in _whiteSpace) exitWith { _numWhiteSpaces = _i };
-	};
+    for "_i" from 0 to ((count _chars) - 1) do {
+        if !((_chars select _i) in _whiteSpace) exitWith { _numWhiteSpaces = _i };
+    };
 
-	if (_numWhiteSpaces > 0) then {
-		private "_newChars";
+    if (_numWhiteSpaces > 0) then {
+        private "_newChars";
 
-		_newChars = [];
-		_newChars resize ((count _chars) - _numWhiteSpaces);
+        _newChars = [];
+        _newChars resize ((count _chars) - _numWhiteSpaces);
 
-		for "_i" from 0 to ((count _newChars) - 1) do {
-			_newChars set [_i, _chars select (_i + _numWhiteSpaces)];
-		};
+        for "_i" from 0 to ((count _newChars) - 1) do {
+            _newChars set [_i, _chars select (_i + _numWhiteSpaces)];
+        };
 
-		_chars = _newChars;
-	};
+        _chars = _newChars;
+    };
 };
 
 toString _chars; // Return.

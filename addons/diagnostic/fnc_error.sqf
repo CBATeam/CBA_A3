@@ -2,22 +2,22 @@
 Function: CBA_fnc_error
 
 Description:
-	Logs an error message to the RPT log.
+    Logs an error message to the RPT log.
 
-	Should not be used directly, but rather via macros (<ERROR()>,
-		<ERROR_WITH_TITLE()> or the <Assertions>).
+    Should not be used directly, but rather via macros (<ERROR()>,
+        <ERROR_WITH_TITLE()> or the <Assertions>).
 
 Parameters:
-	_file - Name of file [String]
-	_lineNum - Line of file (starting at 0) [Number]
-	_title - Title of the error [String]
-	_message - Error message [String, which may contain \n]
+    _file - Name of file [String]
+    _lineNum - Line of file (starting at 0) [Number]
+    _title - Title of the error [String]
+    _message - Error message [String, which may contain \n]
 
 Returns:
-	nil
+    nil
 
 Author:
-	Spooner
+    Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -37,7 +37,7 @@ diag_log text format ["%1 (%2) [%3:%4] -ERROR- %5", _time, time, _file, _lineNum
 _lines = [_message, "\n"] call CBA_fnc_split;
 
 {
-	diag_log text format ["            %1", _x];
+    diag_log text format ["            %1", _x];
 } forEach _lines;
 
 nil;

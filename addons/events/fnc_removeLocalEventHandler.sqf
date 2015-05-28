@@ -2,21 +2,21 @@
 Function: CBA_fnc_removeLocalEventHandler
 
 Description:
-	Removes an event handler previously registered with CBA_fnc_addLocalEventHandler.
+    Removes an event handler previously registered with CBA_fnc_addLocalEventHandler.
 
 Parameters:
-	_eventType - Type of event to remove [String].
-	_handlerIndex - Index of the event handler to remove [Number].
+    _eventType - Type of event to remove [String].
+    _handlerIndex - Index of the event handler to remove [Number].
 
 Returns:
-	nil
+    nil
 
 TODO:
-	Use Hash to store handlers as a sparse array, to save on lots of empty
-	elements in the array if lots of removes are made.
+    Use Hash to store handlers as a sparse array, to save on lots of empty
+    elements in the array if lots of removes are made.
 
 Author:
-	Xeno
+    Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -32,18 +32,18 @@ private "_handlers";
 _handlers = CBA_eventHandlersLocal getVariable _eventType;
 
 if (isNil "_handlers") then {
-	WARNING("Event type not registered: " + (str _eventType));
+    WARNING("Event type not registered: " + (str _eventType));
 } else {
-	if (count _handlers > _handlerIndex) then {
-		if (isNil { _handlers select _handlerIndex } ) then {
-			WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " already removed.");
-		} else {
-			_handlers set [_handlerIndex, nil];
-			TRACE_2("Removed",_eventType,_handlerIndex);
-		};
-	} else {
-		WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " never set.");
-	};
+    if (count _handlers > _handlerIndex) then {
+        if (isNil { _handlers select _handlerIndex } ) then {
+            WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " already removed.");
+        } else {
+            _handlers set [_handlerIndex, nil];
+            TRACE_2("Removed",_eventType,_handlerIndex);
+        };
+    } else {
+        WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " never set.");
+    };
 };
 
 nil; // Return.

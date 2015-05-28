@@ -2,23 +2,23 @@
 Function: CBA_fnc_changeKeyHandler
 
 Description:
-	Changes an action to a keyhandler
+    Changes an action to a keyhandler
 
 Parameters:
-	_hashKey - String
-	_key - New key [integer]
-	_settings - Array of settings (shift, alt etc)
-	_type - Type of keyevent [String] - default keydown
+    _hashKey - String
+    _key - New key [integer]
+    _settings - Array of settings (shift, alt etc)
+    _type - Type of keyevent [String] - default keydown
 
 Returns:
 
 Examples:
-	(begin example)
-		["cba_somesystem_keyevent", 44, [false,false,false]] call CBA_fnc_changeKeyHandler;
-	(end)
+    (begin example)
+        ["cba_somesystem_keyevent", 44, [false,false,false]] call CBA_fnc_changeKeyHandler;
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 
 ---------------------------------------------------------------------------- */
 // #define DEBUG_MODE_FULL
@@ -39,12 +39,12 @@ _handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
 _exit = true; // Doesn't exis?
 _idx = _keyData select 0;
 if (count _handlers > _idx) then {
-	_myHandlers = _handlers select _idx;
-	if (_hashKey in _myHandlers) then {
-		_myHandlers = _myHandlers - [_hashKey];
-		_handlers set [_idx, _myHandlers];
-		_exit = false; // does exist
-	};
+    _myHandlers = _handlers select _idx;
+    if (_hashKey in _myHandlers) then {
+        _myHandlers = _myHandlers - [_hashKey];
+        _handlers set [_idx, _myHandlers];
+        _exit = false; // does exist
+    };
 };
 
 if (_exit) exitWith { false };

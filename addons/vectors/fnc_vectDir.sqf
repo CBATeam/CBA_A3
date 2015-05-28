@@ -11,12 +11,12 @@ Returns:
  the corresponding angle in range 0 to 360.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectDir.sqf";
 

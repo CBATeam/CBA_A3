@@ -1,4 +1,4 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable. 
+// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
 // So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
 #include "script_component.hpp"
 /* CBA_Network - by Sickboy (sb_at_dev-heaven.net)
@@ -39,9 +39,9 @@ LOG(MSG_INIT);
 ADDON = false;
 
 #ifdef DEBUG_MODE_FULL
-	ISNIL(debug,true);
+    ISNIL(debug,true);
 #else
-	ISNIL(debug,false);
+    ISNIL(debug,false);
 #endif
 
 
@@ -67,53 +67,53 @@ GVAR(init) = false;
 
 if (SLX_XEH_MACHINE select 3) then
 {
-	ISNIL(MARKERS,[]); // Sync Markers for JIP
+    ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-	PREP(opc);
-	PREP(opd);
-	PREP(sync);
+    PREP(opc);
+    PREP(opd);
+    PREP(sync);
 
-	FUNC(id) = { "server" };
+    FUNC(id) = { "server" };
 
-	/* Not used
-	[QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-	[QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-	QGVAR(joinN) addPublicVariableEventHandler {
-		[QUOTE(GVAR(opc)), _this select 1] call (uiNamespace getVariable "CBA_fnc_localEvent");
-	};
-	*/
+    /* Not used
+    [QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
+    [QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
+    QGVAR(joinN) addPublicVariableEventHandler {
+        [QUOTE(GVAR(opc)), _this select 1] call (uiNamespace getVariable "CBA_fnc_localEvent");
+    };
+    */
 
-	[QUOTE(GVAR(marker_persist)), { _this call (uiNamespace getVariable "CBA_fnc_setMarkerPersistent") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
+    [QUOTE(GVAR(marker_persist)), { _this call (uiNamespace getVariable "CBA_fnc_setMarkerPersistent") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 
-	// [QGVAR(join), { [QGVAR(opc), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
+    // [QGVAR(join), { [QGVAR(opc), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
 
-	// onPlayerConnected '[_name,_id] call FUNC(opc)';
-	// TODO: Handle OPD without actually using opd
-	// Disabled for now, either not used, or annoying to mission makers
-	// onPlayerDisconnected '[_name,_id] call FUNC(opd)';
+    // onPlayerConnected '[_name,_id] call FUNC(opc)';
+    // TODO: Handle OPD without actually using opd
+    // Disabled for now, either not used, or annoying to mission makers
+    // onPlayerDisconnected '[_name,_id] call FUNC(opd)';
 
-	// Looped Weather Sync
-	/*
-	SLX_XEH_STR spawn
-	{
-		// Every 60 Seconds weather sync
-		while { true } do
-		{
-			sleep 60;
-			call FUNC(sync);
-		};
-	};
-	*/
+    // Looped Weather Sync
+    /*
+    SLX_XEH_STR spawn
+    {
+        // Every 60 Seconds weather sync
+        while { true } do
+        {
+            sleep 60;
+            call FUNC(sync);
+        };
+    };
+    */
 } else {
-	FUNC(id) =
-	{
-		if (player == player) then
-		{
-			str(player);
-		} else {
-			"client";
-		};
-	};
+    FUNC(id) =
+    {
+        if (player == player) then
+        {
+            str(player);
+        } else {
+            "client";
+        };
+    };
 };
 
 

@@ -2,28 +2,28 @@
 Function: CBA_fnc_mapGridToPos
 
 Description:
-	Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.
+    Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.
 
 Parameters:
-	_pos - The position, either an array of strings for the northing & easting or a string.
-	_doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
+    _pos - The position, either an array of strings for the northing & easting or a string.
+    _doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
 
 Returns:
-	Position in internal gridspace.
+    Position in internal gridspace.
 
 Examples:
-	(begin example)
-		_pos = ["024","015"] call CBA_fnc_mapGridToPos;
-	(end)
-	(begin example)
-		_pos = [["024","015"], true] call CBA_fnc_mapGridToPos;
-	(end)
-	(begin example)
-		_pos = "024015" call CBA_fnc_mapGridToPos;
-	(end)
+    (begin example)
+        _pos = ["024","015"] call CBA_fnc_mapGridToPos;
+    (end)
+    (begin example)
+        _pos = [["024","015"], true] call CBA_fnc_mapGridToPos;
+    (end)
+    (begin example)
+        _pos = "024015" call CBA_fnc_mapGridToPos;
+    (end)
 
 Author:
-	Nou
+    Nou
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
@@ -81,66 +81,66 @@ if (IS_STRING(_pos)) then {
  * map.
  */
  if (_reversed) then {
-	_start = format["%1", mapGridPosition [0, 0]];
-	_check = _start;
-	_minus = 0;
-	while{_check == _start} do {
-		_check = format["%1", mapGridPosition [0, _minus]];
-		_minus = _minus - 1;
-	};
+    _start = format["%1", mapGridPosition [0, 0]];
+    _check = _start;
+    _minus = 0;
+    while{_check == _start} do {
+        _check = format["%1", mapGridPosition [0, _minus]];
+        _minus = _minus - 1;
+    };
 
-	_digits = toArray _start;
-	_maxNorthing = parseNumber (toString [_digits select 3, _digits select 4, _digits select 5]);
-	_height = (_maxNorthing*100) - abs(_minus) + 1;
+    _digits = toArray _start;
+    _maxNorthing = parseNumber (toString [_digits select 3, _digits select 4, _digits select 5]);
+    _height = (_maxNorthing*100) - abs(_minus) + 1;
 } else {
-	if (isNil QGVAR(rvOriginX) || {isNil QGVAR(rvOriginY)}) then {
-		_start = format["%1", mapGridPosition [0, 0]];
-		_size = toArray _start;
-		_rvOriginY = 0;
-		_rvOriginX = 0;
-		_ignore = false;
-		switch (count _size) do {
-			case 2: {
-				_rvOriginY = (parseNumber (toString [(_size select 1)]))*10000;
-				_rvOriginX = (parseNumber (toString [(_size select 0)]))*10000;
-			};
-			case 4: {
-				_rvOriginY = (parseNumber (toString [(_size select 2), (_size select 3)]))*1000;
-				_rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1)]))*1000;
-			};
-			case 6: {
-				_rvOriginY = (parseNumber (toString [(_size select 3), (_size select 4), (_size select 5)]))*100;
-				_rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2)]))*100;
-			};
-			case 8: {
-				_rvOriginY = (parseNumber (toString [(_size select 4), (_size select 5), (_size select 6), (_size select 7)]))*10;
-				_rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2), (_size select 3)]))*10;
-			};
-			case 10: {
-				_rvOriginY = (parseNumber (toString [(_size select 5), (_size select 6), (_size select 7), (_size select 8), (_size select 9)]));
-				_rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2), (_size select 3), (_size select 4)]));
-				_ignore = true;
-			};
-		};
-		if (!_ignore) then {
-			_check = _start;
-			_minus = 0;
-			while {_check == _start} do {
-				_check = format["%1", mapGridPosition [0, _minus]];
-				_minus = _minus - 1;
-			};
-			_rvOriginY = _rvOriginY+(abs _minus)-1;
-			_minus = 0;
-			_check = _start;
-			while {_check == _start} do {
-				_check = format["%1", mapGridPosition [_minus, 0]];
-				_minus = _minus - 1;
-			};
-			_rvOriginX = _rvOriginX+(abs _minus)-1;
-		};
-		GVAR(rvOriginX) = _rvOriginX;
-		GVAR(rvOriginY) = _rvOriginY;
-	};
+    if (isNil QGVAR(rvOriginX) || {isNil QGVAR(rvOriginY)}) then {
+        _start = format["%1", mapGridPosition [0, 0]];
+        _size = toArray _start;
+        _rvOriginY = 0;
+        _rvOriginX = 0;
+        _ignore = false;
+        switch (count _size) do {
+            case 2: {
+                _rvOriginY = (parseNumber (toString [(_size select 1)]))*10000;
+                _rvOriginX = (parseNumber (toString [(_size select 0)]))*10000;
+            };
+            case 4: {
+                _rvOriginY = (parseNumber (toString [(_size select 2), (_size select 3)]))*1000;
+                _rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1)]))*1000;
+            };
+            case 6: {
+                _rvOriginY = (parseNumber (toString [(_size select 3), (_size select 4), (_size select 5)]))*100;
+                _rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2)]))*100;
+            };
+            case 8: {
+                _rvOriginY = (parseNumber (toString [(_size select 4), (_size select 5), (_size select 6), (_size select 7)]))*10;
+                _rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2), (_size select 3)]))*10;
+            };
+            case 10: {
+                _rvOriginY = (parseNumber (toString [(_size select 5), (_size select 6), (_size select 7), (_size select 8), (_size select 9)]));
+                _rvOriginX = (parseNumber (toString [(_size select 0), (_size select 1), (_size select 2), (_size select 3), (_size select 4)]));
+                _ignore = true;
+            };
+        };
+        if (!_ignore) then {
+            _check = _start;
+            _minus = 0;
+            while {_check == _start} do {
+                _check = format["%1", mapGridPosition [0, _minus]];
+                _minus = _minus - 1;
+            };
+            _rvOriginY = _rvOriginY+(abs _minus)-1;
+            _minus = 0;
+            _check = _start;
+            while {_check == _start} do {
+                _check = format["%1", mapGridPosition [_minus, 0]];
+                _minus = _minus - 1;
+            };
+            _rvOriginX = _rvOriginX+(abs _minus)-1;
+        };
+        GVAR(rvOriginX) = _rvOriginX;
+        GVAR(rvOriginY) = _rvOriginY;
+    };
 };
 
 /**
@@ -162,9 +162,9 @@ _eastingMultiple = (10^((10-(_eastingSize*2))/2));
 _northingMultiple = (10^((10-(_northingSize*2))/2));
 _posY = 0;
 if (_reversed) then {
-	_posY = (_height-((parseNumber _northing)*_northingMultiple))+100;
+    _posY = (_height-((parseNumber _northing)*_northingMultiple))+100;
 } else {
-	_posY = ((parseNumber _northing)*_northingMultiple);
+    _posY = ((parseNumber _northing)*_northingMultiple);
 };
 _posX = ((parseNumber _easting)*_eastingMultiple);
 
@@ -178,8 +178,8 @@ if (_doOffSet && {(_northingMultiple max _eastingMultiple) > 1}) then {
 
 // Return position.
 _return = if (_reversed) then {
-	[_posX+_offset, _posY-_offset, 0]
+    [_posX+_offset, _posY-_offset, 0]
 } else {
-	[_posX+_offset-GVAR(rvOriginX), _posY+_offset-GVAR(rvOriginY), 0]
+    [_posX+_offset-GVAR(rvOriginX), _posY+_offset-GVAR(rvOriginY), 0]
 };
 _return

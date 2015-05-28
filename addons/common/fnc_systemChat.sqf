@@ -2,21 +2,21 @@
 Function: CBA_fnc_systemChat
 
 Description:
-	Display a message in the global chat channel.
+    Display a message in the global chat channel.
 
 Parameters:
-	_message - the message to display [String]
-	
+    _message - the message to display [String]
+
 Returns:
-	nothing
-	
+    nothing
+
 Examples:
-	(begin example)
-	"Hello, world!" call CBA_fnc_systemChat
-	(end)
+    (begin example)
+    "Hello, world!" call CBA_fnc_systemChat
+    (end)
 
 Author:
-	Killswitch
+    Killswitch
 ---------------------------------------------------------------------------- */
 
 #include <script_component.hpp>

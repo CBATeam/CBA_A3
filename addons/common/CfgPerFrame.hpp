@@ -113,71 +113,71 @@ class RscMapControl {
     class ActiveMarker;
 };
 class CBA_Dummy_Map: RscMapControl {
-	idc = -1;
+    idc = -1;
 
-	type=100;
-	style=48;
+    type=100;
+    style=48;
 
-	x = -10;
-	y = -10;
-	w = 1;
-	h = 1;
+    x = -10;
+    y = -10;
+    w = 1;
+    h = 1;
 
-	colorBackground[] = {1.00, 1.00, 1.00, 0};
-	colorText[] = {0.00, 0.00, 0.00, 0};
-	colorSea[] = {0.56, 0.80, 0.98, 0};
-	colorForest[] = {0.60, 0.80, 0.20, 0};
-	colorRocks[] = {0.50, 0.50, 0.50, 0};
-	colorCountlines[] = {0.65, 0.45, 0.27, 0};
-	colorMainCountlines[] = {0.65, 0.45, 0.27, 0};
-	colorCountlinesWater[] = {0.00, 0.53, 1.00, 0};
-	colorMainCountlinesWater[] = {0.00, 0.53, 1.00, 0};
-	colorForestBorder[] = {0.40, 0.80, 0.00, 0};
-	colorRocksBorder[] = {0.50, 0.50, 0.50, 0};
-	colorPowerLines[] = {0.00, 0.00, 0.00, 0};
-	colorNames[] = {0.00, 0.00, 0.00, 0};
-	colorInactive[] = {1.00, 1.00, 1.00, 0};
-	colorLevels[] = {0.00, 0.00, 0.00, 0};
-	colorRailWay[] = {0.00, 0.00, 0.00, 0};
-	colorOutside[] = {0.56, 0.80, 0.98, 0};
+    colorBackground[] = {1.00, 1.00, 1.00, 0};
+    colorText[] = {0.00, 0.00, 0.00, 0};
+    colorSea[] = {0.56, 0.80, 0.98, 0};
+    colorForest[] = {0.60, 0.80, 0.20, 0};
+    colorRocks[] = {0.50, 0.50, 0.50, 0};
+    colorCountlines[] = {0.65, 0.45, 0.27, 0};
+    colorMainCountlines[] = {0.65, 0.45, 0.27, 0};
+    colorCountlinesWater[] = {0.00, 0.53, 1.00, 0};
+    colorMainCountlinesWater[] = {0.00, 0.53, 1.00, 0};
+    colorForestBorder[] = {0.40, 0.80, 0.00, 0};
+    colorRocksBorder[] = {0.50, 0.50, 0.50, 0};
+    colorPowerLines[] = {0.00, 0.00, 0.00, 0};
+    colorNames[] = {0.00, 0.00, 0.00, 0};
+    colorInactive[] = {1.00, 1.00, 1.00, 0};
+    colorLevels[] = {0.00, 0.00, 0.00, 0};
+    colorRailWay[] = {0.00, 0.00, 0.00, 0};
+    colorOutside[] = {0.56, 0.80, 0.98, 0};
 
-	font = "TahomaB";
-	sizeEx = 0.00;
+    font = "TahomaB";
+    sizeEx = 0.00;
 
-	stickX[] = {0.0, {"Gamma", 1.00, 1.50} };
-	stickY[] = {0.0, {"Gamma", 1.00, 1.50} };
-	ptsPerSquareSea = 0;
-	ptsPerSquareTxt = 0;
-	ptsPerSquareCLn = 0;
-	ptsPerSquareExp = 0;
-	ptsPerSquareCost = 0;
-	ptsPerSquareFor = "0f";
-	ptsPerSquareForEdge = "0f";
-	ptsPerSquareRoad = 0;
-	ptsPerSquareObj = 0;
+    stickX[] = {0.0, {"Gamma", 1.00, 1.50} };
+    stickY[] = {0.0, {"Gamma", 1.00, 1.50} };
+    ptsPerSquareSea = 0;
+    ptsPerSquareTxt = 0;
+    ptsPerSquareCLn = 0;
+    ptsPerSquareExp = 0;
+    ptsPerSquareCost = 0;
+    ptsPerSquareFor = "0f";
+    ptsPerSquareForEdge = "0f";
+    ptsPerSquareRoad = 0;
+    ptsPerSquareObj = 0;
 
-	fontLabel = "PuristaMedium";
-	sizeExLabel = 0.0;
-	fontGrid = "PuristaMedium";
-	sizeExGrid = 0.0;
-	fontUnits = "PuristaMedium";
-	sizeExUnits = 0.0;
-	fontNames = "PuristaMedium";
-	sizeExNames = 0.0;
-	fontInfo = "PuristaMedium";
-	sizeExInfo = 0.0;
-	fontLevel = "PuristaMedium";
-	sizeExLevel = 0.0;
+    fontLabel = "PuristaMedium";
+    sizeExLabel = 0.0;
+    fontGrid = "PuristaMedium";
+    sizeExGrid = 0.0;
+    fontUnits = "PuristaMedium";
+    sizeExUnits = 0.0;
+    fontNames = "PuristaMedium";
+    sizeExNames = 0.0;
+    fontInfo = "PuristaMedium";
+    sizeExInfo = 0.0;
+    fontLevel = "PuristaMedium";
+    sizeExLevel = 0.0;
     scaleMax = 1;
     scaleMin = 0.125;
-	text = "";
+    text = "";
 
-	maxSatelliteAlpha = 0;	 // Alpha to 0 by default
-	alphaFadeStartScale = 1.0;
-	alphaFadeEndScale = 1.1;   // Prevent div/0
+    maxSatelliteAlpha = 0;     // Alpha to 0 by default
+    alphaFadeStartScale = 1.0;
+    alphaFadeEndScale = 1.1;   // Prevent div/0
 
-	showCountourInterval=1;
-	scaleDefault = 2;
+    showCountourInterval=1;
+    scaleDefault = 2;
 
     class Task: Task {
         //icon = "\A3\ui_f\data\map\mapcontrol\taskIcon_CA.paa";
@@ -440,9 +440,9 @@ class CBA_Dummy_Map: RscMapControl {
 
 
 class RscTitles {
-	class CBA_FrameHandlerTitle {
-		idd = 40121;
-		movingEnable = 1;
+    class CBA_FrameHandlerTitle {
+        idd = 40121;
+        movingEnable = 1;
         enableSimulation = 1;
         enableDisplay = 1;
 
@@ -451,17 +451,17 @@ class RscTitles {
         duration = 99999999;
         fadein  = 0;
         fadeout = 0;
-		name = "CBA_FrameHandlerTitle";
-		class controlsBackground {
-			class dummy_map : CBA_Dummy_Map {
-				idc = 40122;
-				x = -10;
-				y = -10;
-				w = 0;
-				h = 0;
-			};
-		};
-		class objects {};
-		class controls {};
-	};
+        name = "CBA_FrameHandlerTitle";
+        class controlsBackground {
+            class dummy_map : CBA_Dummy_Map {
+                idc = 40122;
+                x = -10;
+                y = -10;
+                w = 0;
+                h = 0;
+            };
+        };
+        class objects {};
+        class controls {};
+    };
 };

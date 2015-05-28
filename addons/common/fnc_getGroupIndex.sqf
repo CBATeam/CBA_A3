@@ -2,20 +2,20 @@
 Function: CBA_fnc_getGroupIndex
 
 Description:
-	Finds out the actual ID number of a person within his group as assigned by
-	the game and used in the squad leader's command menu.
+    Finds out the actual ID number of a person within his group as assigned by
+    the game and used in the squad leader's command menu.
 
-	This is not just the order within the units of his group (this order can
-	change due to players joining and leaving the game, deaths or promotions).
+    This is not just the order within the units of his group (this order can
+    change due to players joining and leaving the game, deaths or promotions).
 
-	Inspired by the OFP function, squadNumber.sqf, by General Barron
-	(http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)
+    Inspired by the OFP function, squadNumber.sqf, by General Barron
+    (http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)
 
 Parameters:
-	_man - Man to check [Object: "Man"]
+    _man - Man to check [Object: "Man"]
 
 Returns:
-	Number of person in his group [Number: 1+]
+    Number of person in his group [Number: 1+]
 
 ---------------------------------------------------------------------------- */
 
@@ -41,8 +41,8 @@ _number = [];
 // Read in all digits after the group name and colon in the full player label.
 // Format of player label is "<groupName>:<groupNumber> <playerName>"
 for "_i" from (_groupLabelLen + 1) to ((count _labelArray) - 1) do {
-	if ((_labelArray select _i) == ASCII_SPACE) exitWith {};
-	PUSH(_number,_labelArray select _i);
+    if ((_labelArray select _i) == ASCII_SPACE) exitWith {};
+    PUSH(_number,_labelArray select _i);
 };
 
 // Go back to the original varName.

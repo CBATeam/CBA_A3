@@ -2,24 +2,24 @@
 Function: CBA_fnc_substring
 
 Description:
-	Extracts the index-based substring from a string.
+    Extracts the index-based substring from a string.
 
 Parameters:
-	_string - String to make replacement in [String]
-	_startIndex - Index to start the substring extraction [String]
-	_endIndex - Index to end the substring extraction [String]
+    _string - String to make replacement in [String]
+    _startIndex - Index to start the substring extraction [String]
+    _endIndex - Index to end the substring extraction [String]
 
 Returns:
-	String extracted [String]
+    String extracted [String]
 
 Example:
-	(begin example)
-		_str = ["Fish frog cheese fromage", 5, 8] call CBA_fnc_substring;
-		// => "frog"
-	(end)
+    (begin example)
+        _str = ["Fish frog cheese fromage", 5, 8] call CBA_fnc_substring;
+        // => "frog"
+    (end)
 
 Author:
-	jaynus
+    jaynus
 --------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -35,9 +35,9 @@ _ret = [];
 
 _x = 0;
 while { _startIndex < _endIndex && (_x+_startIndex) < (count _arr) } do {
-	_ret set[_x, (_arr select _startIndex)];
-	_x = _x + 1;
-	_startIndex = _startIndex + 1;
+    _ret set[_x, (_arr select _startIndex)];
+    _x = _x + 1;
+    _startIndex = _startIndex + 1;
 };
 
 _ret = toString _ret;

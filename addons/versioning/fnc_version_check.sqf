@@ -11,22 +11,22 @@ _remoteVersion = _value select 0;
 _level = _value select 1;
 _lc = count _localVersion; _rc = count _remoteVersion;
 switch _level do {
-	case -1: { _level = _rc }; // All must match
-	case -2: { _level = if (_lc == 0) then { 0 } else { _rc } }; // All must match, IF the addon is installed, otherwise ignore
+    case -1: { _level = _rc }; // All must match
+    case -2: { _level = if (_lc == 0) then { 0 } else { _rc } }; // All must match, IF the addon is installed, otherwise ignore
 };
 if (_level == 0) exitWith {};
 
 if (_level > _rc) then { _level = _rc };
 if (_lc >= _level) then
 {
-	for "_i" from 0 to (_level - 1) do
-	{
-		_local = _localVersion select _i;
-		_remote = _remoteVersion select _i;
-		if (_local != _remote) exitWith { _failed = true; };
-	};
+    for "_i" from 0 to (_level - 1) do
+    {
+        _local = _localVersion select _i;
+        _remote = _remoteVersion select _i;
+        if (_local != _remote) exitWith { _failed = true; };
+    };
 } else {
-	_failed = true;
+    _failed = true;
 };
 
 if !(_failed) exitWith {};
@@ -37,8 +37,8 @@ if !(_failed) exitWith {};
 // Allow custom handler
 if (isText ((CFGSETTINGS) >> _key >> "handler")) then
 {
-	// TODO: PreCompile and spawn from Hash or so?
-	[_remoteVersion, _localVersion, player, _level] spawn (call compile getText((CFGSETTINGS) >> _key >> "handler"));
+    // TODO: PreCompile and spawn from Hash or so?
+    [_remoteVersion, _localVersion, player, _level] spawn (call compile getText((CFGSETTINGS) >> _key >> "handler"));
 };
 // Actually disconnect em?
 // endMission "END1"

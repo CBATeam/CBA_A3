@@ -14,7 +14,7 @@ SCRIPT(test-arrays);
 LOG("=== Testing Arrays ===");
 
 {
-	call compile preprocessFileLineNumbers format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+    call compile preprocessFileLineNumbers format ["\x\cba\addons\arrays\test_%1.sqf", _x];
 } forEach TESTS;
 
 nil;

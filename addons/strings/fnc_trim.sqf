@@ -2,24 +2,24 @@
 Function: CBA_fnc_trim
 
 Description:
-	Trims white-space (space, tab, newline) from the both ends of a string.
+    Trims white-space (space, tab, newline) from the both ends of a string.
 
-	See <CBA_fnc_leftTrim> and <CBA_fnc_rightTrim>.
+    See <CBA_fnc_leftTrim> and <CBA_fnc_rightTrim>.
 
 Parameters:
-	_string - String to trim [String]
+    _string - String to trim [String]
 
 Returns:
-	Trimmed string [String]
+    Trimmed string [String]
 
 Example:
-	(begin example)
-		_result = [" frogs are fishy   "] call CBA_fnc_trim;
-		// _result => "frogs are fishy"
-	(end)
+    (begin example)
+        _result = [" frogs are fishy   "] call CBA_fnc_trim;
+        // _result => "frogs are fishy"
+    (end)
 
 Author:
-	Spooner
+    Spooner
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

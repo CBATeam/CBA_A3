@@ -2,19 +2,19 @@
 Function: CBA_fnc_getArg
 
 Description:
-	Get default named argument from list.
+    Get default named argument from list.
 
 Parameters:
 
 Returns:
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Kronzky (www.kronzky.info)
+    Kronzky (www.kronzky.info)
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

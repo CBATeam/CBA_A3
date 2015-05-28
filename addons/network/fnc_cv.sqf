@@ -14,34 +14,34 @@ _object = null;
 
 if !(SLX_XEH_MACHINE select 3) then
 {
-	[0, { _this call FUNC(cv) }, _this] call CBA_fnc_globalExecute;
-	TRACE_1("Sending vehicle create request",_this);
+    [0, { _this call FUNC(cv) }, _this] call CBA_fnc_globalExecute;
+    TRACE_1("Sending vehicle create request",_this);
 } else {
-	_object = _veh createVehicle _pos;
-	_valid = !(isNull _object);
-	if (_valid) then
-	{
-		_object setDir _dir;
-		if (_varName != "") then
-		{
-			missionNamespace setVariable[format["%1",_varName],_object, true]; 
-		};
-		if (_init != "") then
-		{
-			GVAR(state) = {_init}; publicVariable QGVAR(state);
-			[nil, QGVAR(state), _object, true] spawn BIS_fnc_MP;
-			_object setVehicleInit _init;
-			processInitCommands;
-		};
-	};
-	private ["_idx", "_name", "_sid"];
-	// _id value comes from GVAR(fnc_Exec)
-	if (isNil "_id") then
-	{
-		_sid = 0;
-		_name = "Server";
-	} else {
-		_name = _id;
-	};
-	TRACE_5("Received Vehicle Create Request",_this,_sid,_name,_object,_valid);
+    _object = _veh createVehicle _pos;
+    _valid = !(isNull _object);
+    if (_valid) then
+    {
+        _object setDir _dir;
+        if (_varName != "") then
+        {
+            missionNamespace setVariable[format["%1",_varName],_object, true];
+        };
+        if (_init != "") then
+        {
+            GVAR(state) = {_init}; publicVariable QGVAR(state);
+            [nil, QGVAR(state), _object, true] spawn BIS_fnc_MP;
+            _object setVehicleInit _init;
+            processInitCommands;
+        };
+    };
+    private ["_idx", "_name", "_sid"];
+    // _id value comes from GVAR(fnc_Exec)
+    if (isNil "_id") then
+    {
+        _sid = 0;
+        _name = "Server";
+    } else {
+        _name = _id;
+    };
+    TRACE_5("Received Vehicle Create Request",_this,_sid,_name,_object,_valid);
 };

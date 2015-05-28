@@ -2,19 +2,19 @@
 Function: CBA_fnc_hashRem
 
 Description:
-	Removes given key from given Hash.
+    Removes given key from given Hash.
 
-	See <CBA_fnc_hashCreate>.
+    See <CBA_fnc_hashCreate>.
 
 Parameters:
-	_hash - Hash to use [Hash]
-	_key - Key to remove from Hash [Any]
+    _hash - Hash to use [Hash]
+    _key - Key to remove from Hash [Any]
 
 Returns:
-	The hash [Hash]
+    The hash [Hash]
 
 Author:
-	Sickboy
+    Sickboy
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

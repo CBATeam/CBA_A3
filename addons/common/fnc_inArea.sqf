@@ -2,44 +2,44 @@
 Function: CBA_fnc_inArea
 
 Description:
-	A function used to determine if a position is within a zone.
+    A function used to determine if a position is within a zone.
 
-	The "position" can be given as a marker name, an object,
-	location, group or a position array.
+    The "position" can be given as a marker name, an object,
+    location, group or a position array.
 
-	The zone is specificed either as a marker name or a trigger.
+    The zone is specificed either as a marker name or a trigger.
 
 Parameters:
-	A two-element array, [ position, zone], where
+    A two-element array, [ position, zone], where
 
-	- position: Marker|Object|Location|Group|Position
-	- zone:     Marker|Trigger
+    - position: Marker|Object|Location|Group|Position
+    - zone:     Marker|Trigger
 
 Example:
-	(begin example)
-	// Is the marker "playermarker" inside the "safezone" marker area?
-	_safe = [ "playermarker", "safezone"] call CBA_fnc_inArea;
+    (begin example)
+    // Is the marker "playermarker" inside the "safezone" marker area?
+    _safe = [ "playermarker", "safezone"] call CBA_fnc_inArea;
 
-	// is the player within the safe zone marker area?
-	_pos = getPos player;
-	_safe = [ _pos, "safezone" ] call CBA_fnc_inArea;
+    // is the player within the safe zone marker area?
+    _pos = getPos player;
+    _safe = [ _pos, "safezone" ] call CBA_fnc_inArea;
 
-	// Deny artillery if target is inside the trigger area
-	if ([_target, cityTrigger] call CBA_fnc_inArea) then
-	{
-		// deny fire mission
-	}
-	else
-	{
-		// fire away!
-	};
-	(end)	
+    // Deny artillery if target is inside the trigger area
+    if ([_target, cityTrigger] call CBA_fnc_inArea) then
+    {
+        // deny fire mission
+    }
+    else
+    {
+        // fire away!
+    };
+    (end)
 
 Returns:
-	Boolean
+    Boolean
 
 Author:
-	Rommel
+    Rommel
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
@@ -50,18 +50,18 @@ _position = (_position call CBA_fnc_getpos);
 
 private ["_zSize","_zDir","_zShape","_zPos"];
 switch (typename _zRef) do {
-	case "STRING" : {
-		_zSize = markerSize _zRef;
-		_zDir = markerDir _zRef;
-		_zShape = tolower (markerShape _zRef);
-		_zPos = (_zRef call CBA_fnc_getpos);
-	};
-	case "OBJECT" : {
-		_zSize = triggerArea _zRef;
-		_zDir = _zSize select 2;
-		_zShape = if (_zSize select 3) then {"rectangle"} else {"ellipse"};
-		_zPos = getpos _zRef;
-	};
+    case "STRING" : {
+        _zSize = markerSize _zRef;
+        _zDir = markerDir _zRef;
+        _zShape = tolower (markerShape _zRef);
+        _zPos = (_zRef call CBA_fnc_getpos);
+    };
+    case "OBJECT" : {
+        _zSize = triggerArea _zRef;
+        _zDir = _zSize select 2;
+        _zShape = if (_zSize select 3) then {"rectangle"} else {"ellipse"};
+        _zPos = getpos _zRef;
+    };
 };
 
 if (isnil "_zSize") exitwith {false};
@@ -85,10 +85,10 @@ _zx = _zsize select 0;
 _zy = _zsize select 1;
 
 switch (_zShape) do {
-	case "ellipse" : {
-		((_dx^2)/(_zx^2) + (_dy^2)/(_zy^2)) < 1
-	};
-	case "rectangle" : {
-		(abs _dx < _zx) and (abs _dy < _zy)
-	};
+    case "ellipse" : {
+        ((_dx^2)/(_zx^2) + (_dy^2)/(_zy^2)) < 1
+    };
+    case "rectangle" : {
+        (abs _dx < _zx) and (abs _dy < _zy)
+    };
 };

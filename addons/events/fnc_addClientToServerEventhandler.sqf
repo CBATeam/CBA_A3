@@ -2,17 +2,17 @@
 Function: CBA_fnc_addClientToServerEventhandler
 
 Description:
-	Registers an event handler for a client to server event which only runs on the server (thus is only needed on the server)
+    Registers an event handler for a client to server event which only runs on the server (thus is only needed on the server)
 
 Parameters:
-	_eventType - Type of event to handle [String].
-	_handler - Function to call when event is raised [Code].
+    _eventType - Type of event to handle [String].
+    _handler - Function to call when event is raised [Code].
 
 Returns:
-	Nothing
+    Nothing
 
 Author:
-	Xeno
+    Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

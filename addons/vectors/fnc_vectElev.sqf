@@ -11,14 +11,14 @@ Returns:
  the corresponding angle of elevation in range -90 to 90.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 *  @[not needed yet]call CBA_fnc_simplifyElev.sqf
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectElev.sqf";
 

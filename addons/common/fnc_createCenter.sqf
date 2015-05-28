@@ -2,21 +2,21 @@
 Function: CBA_fnc_createCenter
 
 Description:
-	Selects center if it already exists, creates it if it doesn't yet.
+    Selects center if it already exists, creates it if it doesn't yet.
 
 Parameters:
-	_side - [SIDE]
+    _side - [SIDE]
 
 Returns:
-	Center [Side]
+    Center [Side]
 
 Examples:
-	(begin example)
-		_group = createGroup ([West] call CBA_fnc_createCenter);
-	(end)
+    (begin example)
+        _group = createGroup ([West] call CBA_fnc_createCenter);
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 private ["_center"];

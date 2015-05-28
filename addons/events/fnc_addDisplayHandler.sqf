@@ -2,22 +2,22 @@
 Function: CBA_fnc_addDisplayHandler
 
 Description:
-	Adds an action to a displayHandler
+    Adds an action to a displayHandler
 
 Parameters:
-	_type - Displayhandler type to attach to [String].
-	_code - Code to execute upon event [String].
+    _type - Displayhandler type to attach to [String].
+    _code - Code to execute upon event [String].
 
 Returns:
-	the id of the attached handler
+    the id of the attached handler
 
 Examples:
-	(begin example)
-		_id = ["KeyDown", "_this call myKeyDownEH"] call CBA_fnc_addDisplayHandler;
-	(end)
+    (begin example)
+        _id = ["KeyDown", "_this call myKeyDownEH"] call CBA_fnc_addDisplayHandler;
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 ---------------------------------------------------------------------------- */
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"

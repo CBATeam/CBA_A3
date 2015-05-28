@@ -2,22 +2,22 @@
 Function: CBA_fnc_taskPatrol
 
 Description:
-	A function for a group to randomly patrol a parsed radius and location.
+    A function for a group to randomly patrol a parsed radius and location.
 
 Parameters:
-	- Group (Group or Object)
+    - Group (Group or Object)
 
 Optional:
-	- Position (XYZ, Object, Location or Group)
-	- Radius (Scalar)
-	- Waypoint Count (Scalar)
-	- Waypoint Type (String)
-	- Behaviour (String)
-	- Combat Mode (String)
-	- Speed Mode (String)
-	- Formation (String)
-	- Code To Execute at Each Waypoint (String)
-	- TimeOut at each Waypoint (Array [Min, Med, Max])
+    - Position (XYZ, Object, Location or Group)
+    - Radius (Scalar)
+    - Waypoint Count (Scalar)
+    - Waypoint Type (String)
+    - Behaviour (String)
+    - Combat Mode (String)
+    - Speed Mode (String)
+    - Formation (String)
+    - Code To Execute at Each Waypoint (String)
+    - TimeOut at each Waypoint (Array [Min, Med, Max])
 
 Example:
     (begin example)
@@ -26,16 +26,16 @@ Example:
     (end)
 
 Returns:
-	Nil
+    Nil
 
 Author:
-	Rommel
+    Rommel
 
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 
-#define NULL	"$null$"
+#define NULL    "$null$"
 
 PARAMS_1(_group);
 DEFAULT_PARAM(1,_position,_group);

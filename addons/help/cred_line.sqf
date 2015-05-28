@@ -6,66 +6,66 @@ disableSerialization;
 private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text", "_version"];
 
 if ( isNil QGVAR(show_proc) ) then {
-	GVAR(show_proc) = true;
+    GVAR(show_proc) = true;
 
-	//get display control
-	if (typeName (_this select 0) == "DISPLAY") then {
-		_disp = _this select 0;
-	};
+    //get display control
+    if (typeName (_this select 0) == "DISPLAY") then {
+        _disp = _this select 0;
+    };
 
-	if (typeName (_this select 0) == "CONTROL") then {
-		_ctrlt = _this select 0;
-		_disp = ctrlParent _ctrlt;
-	};
+    if (typeName (_this select 0) == "CONTROL") then {
+        _ctrlt = _this select 0;
+        _disp = ctrlParent _ctrlt;
+    };
 
-	_ctrl = _disp displayCtrl CBA_CREDITS_CONT_IDC;
+    _ctrl = _disp displayCtrl CBA_CREDITS_CONT_IDC;
 
-	//get settings
-	{
-		if (isNil _x) then { missionNamespace setVariable [_x, isClass(configFile/"CfgPatches"/_x)] };
-	} forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
+    //get settings
+    {
+        if (isNil _x) then { missionNamespace setVariable [_x, isClass(configFile/"CfgPatches"/_x)] };
+    } forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
 
-	//TRACE_1("",ctrlText _ctrl);
-	//if text not already shown
-	if ( (ctrlText _ctrl) == "" && {!CBA_DisableCredits} ) then {
-		//find addon with author
-		_config = configFile >> "CfgPatches";
-		_stop = false;
-		while { ! _stop } do {
-			_rand = floor(random(count _config));
-			_entry = _config select _rand;
-			if ( isClass _entry ) then { _stop = isArray (_entry >> "author"); };
-			//TRACE_1("",configName _entry);
-		};
+    //TRACE_1("",ctrlText _ctrl);
+    //if text not already shown
+    if ( (ctrlText _ctrl) == "" && {!CBA_DisableCredits} ) then {
+        //find addon with author
+        _config = configFile >> "CfgPatches";
+        _stop = false;
+        while { ! _stop } do {
+            _rand = floor(random(count _config));
+            _entry = _config select _rand;
+            if ( isClass _entry ) then { _stop = isArray (_entry >> "author"); };
+            //TRACE_1("",configName _entry);
+        };
 
-		//addon name
-		_name = configName _entry;
-		if ( ! CBA_MonochromeCredits ) then { _name = "<t color='#99cccc'>" + _name + "</t>"; };
-		//author(s) name
-		_authors = getArray(_entry >> "author");
-		_author = _authors select 0;
-		for "_x" from 1 to (count(_authors)-1) do {
-			if ( typeName (_authors select _x) == "STRING" ) then { _author = _author + ", " + (_authors select _x); }
-		};
-		//url if any
-		if (isText (_entry >> "authorUrl")) then {
-			_url = getText(_entry >> "authorUrl");
-			if ( ! CBA_MonochromeCredits ) then { _url = "<t color='#566D7E'>" + _url + "</t>"; };
-		} else {
-			_url = "";
-		};
+        //addon name
+        _name = configName _entry;
+        if ( ! CBA_MonochromeCredits ) then { _name = "<t color='#99cccc'>" + _name + "</t>"; };
+        //author(s) name
+        _authors = getArray(_entry >> "author");
+        _author = _authors select 0;
+        for "_x" from 1 to (count(_authors)-1) do {
+            if ( typeName (_authors select _x) == "STRING" ) then { _author = _author + ", " + (_authors select _x); }
+        };
+        //url if any
+        if (isText (_entry >> "authorUrl")) then {
+            _url = getText(_entry >> "authorUrl");
+            if ( ! CBA_MonochromeCredits ) then { _url = "<t color='#566D7E'>" + _url + "</t>"; };
+        } else {
+            _url = "";
+        };
 
-		//version if any
-		if (isText (_entry >> "version")) then {
-			_version = " v" + getText(_entry >> "version");
-		} else {
-			_version = "";
-		};
+        //version if any
+        if (isText (_entry >> "version")) then {
+            _version = " v" + getText(_entry >> "version");
+        } else {
+            _version = "";
+        };
 
-		//single line
-		_text = _name + _version + " by " + _author + " " + _url;
-		_ctrl ctrlSetStructuredText parseText _text;
-		//TRACE_1("2",ctrlText _ctrl);
-	};
-	GVAR(show_proc) = nil;
+        //single line
+        _text = _name + _version + " by " + _author + " " + _url;
+        _ctrl ctrlSetStructuredText parseText _text;
+        //TRACE_1("2",ctrlText _ctrl);
+    };
+    GVAR(show_proc) = nil;
 };
