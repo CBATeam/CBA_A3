@@ -2,22 +2,22 @@
 Function: CBA_fnc_getTerrainProfile
 
 Description:
-	A function used to find the terrain profile between two positions
+    A function used to find the terrain profile between two positions
 
 Parameters:
-	- Position A [Object, Location, Position, Marker or Group]
-	- Position B [Object, Location, Position, Marker or Group]
-	Optional:
-	- Resolution (in Metres)
+    - Position A [Object, Location, Position, Marker or Group]
+    - Position B [Object, Location, Position, Marker or Group]
+    Optional:
+    - Resolution (in Metres)
 
 Returns:
-	Array containing [2D Distance, Angle, Terrain Profile (in format [Relative Altitude, 2D Distance from, 3D Distance from])
+    Array containing [2D Distance, Angle, Terrain Profile (in format [Relative Altitude, 2D Distance from, 3D Distance from])
 
 Example:
-	[[0,0,0], [0,0,1000], 10] call CBA_fnc_getTerrainProfile
+    [[0,0,0], [0,0,1000], 10] call CBA_fnc_getTerrainProfile
 
 Author:
-	Rommel && Noubernou
+    Rommel && Noubernou
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
@@ -39,11 +39,11 @@ _z = (getposASL _logic) select 2;
 _return = [];
 
 for "_i" from 0 to (_2Ddistance / _resolution) do {
-	_adj = _resolution * _i;
-	_pos = [_posA, _adj, _angle] call BIS_fnc_relPos;
-	_logic setposATL _pos;
-	_alt = ((getposASL _logic) select 2) - _z;
-	_return set [_i,[_alt, _adj, _pos]];
+    _adj = _resolution * _i;
+    _pos = [_posA, _adj, _angle] call BIS_fnc_relPos;
+    _logic setposATL _pos;
+    _alt = ((getposASL _logic) select 2) - _z;
+    _return set [_i,[_alt, _adj, _pos]];
 };
 _logic setposATL _posB;
 _alt = ((getposASL _logic) select 2) - _z;

@@ -22,9 +22,9 @@ _totalIterations = 0;
 
 [_hash,
 {
-	ADD(_sumKeys,_key);
-	ADD(_sumValues,_value);
-	INC(_totalIterations);
+    ADD(_sumKeys,_key);
+    ADD(_sumValues,_value);
+    INC(_totalIterations);
 }] call CBA_fnc_hashEachPair;
 
 _expected = 6;

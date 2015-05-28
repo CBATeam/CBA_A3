@@ -23,30 +23,30 @@ if (isNil "_objAr") exitWith {};
 _ex = false;
 if ((typeName _chan) == "OBJECT") then
 {
-	_ex = (local _chan);
+    _ex = (local _chan);
 } else {
-	switch _chan do
-	{
-		case 0: { if (SLX_XEH_MACHINE select 3) then { _ex = true } };
-		case -1: { if (SLX_XEH_MACHINE select 0) then { _ex = true } };
-		case -2: { _ex = true };
-		//case -3: { if (GVAR(uID) != _id) then { _ex = true } };
-		//default { if (GVAR(uID) == _chan) then { _ex = true } };
-	};
+    switch _chan do
+    {
+        case 0: { if (SLX_XEH_MACHINE select 3) then { _ex = true } };
+        case -1: { if (SLX_XEH_MACHINE select 0) then { _ex = true } };
+        case -2: { _ex = true };
+        //case -3: { if (GVAR(uID) != _id) then { _ex = true } };
+        //default { if (GVAR(uID) == _chan) then { _ex = true } };
+    };
 };
 
 if (GVAR(debug)) then
 {
-	TRACE_6("",_ex,call FUNC(id),_id,_chan,_objAr,_cmd);
+    TRACE_6("",_ex,call FUNC(id),_id,_chan,_objAr,_cmd);
 };
 
-if (isNil "_ex") then 
-{ 
-	_ex = false; 
+if (isNil "_ex") then
+{
+    _ex = false;
 };
 
 if (_ex) then
 {
-	TRACE_2("executing",_objAr,_cmd);
-	_objAr call _cmd; // Changed to call; should not be necessary to spawn here? this way _id etc is given to calling instance
+    TRACE_2("executing",_objAr,_cmd);
+    _objAr call _cmd; // Changed to call; should not be necessary to spawn here? this way _id etc is given to calling instance
 };

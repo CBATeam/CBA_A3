@@ -2,21 +2,21 @@
 Function: CBA_fnc_getGroup
 
 Description:
-	A function used to find out the group of an object.
+    A function used to find out the group of an object.
 
 Parameters:
-	Group or Unit
+    Group or Unit
 
 Example:
     (begin example)
-	_group = player call CBA_fnc_getGroup
+    _group = player call CBA_fnc_getGroup
     (end)
 
 Returns:
-	Group
+    Group
 
 Author:
-	Rommel
+    Rommel
 
 ---------------------------------------------------------------------------- */
 

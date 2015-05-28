@@ -8,12 +8,12 @@ Parameters:
 Returns:
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vect2Polar.sqf";
 

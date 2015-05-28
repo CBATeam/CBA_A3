@@ -11,13 +11,13 @@ Returns:
  the magnitude of the i,k components of the vector.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 *  @call sct_simplifyAngle.sqf
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectMagn2D.sqf";
 

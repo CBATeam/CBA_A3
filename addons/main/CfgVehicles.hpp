@@ -2,10 +2,10 @@
 
 class CfgVehicles
 {
-	class Logic;
-	class CBA_main_require : Logic
-	{
-		displayName = "Require CBA";
-		vehicleClass = "Modules";
-	};
+    class Logic;
+    class CBA_main_require : Logic
+    {
+        displayName = "Require CBA";
+        vehicleClass = "Modules";
+    };
 };

@@ -16,57 +16,57 @@ _ctrl_b = _disp displayCtrl CBA_CREDITS_VER_BTN_IDC;
 _ctrl_t = _disp displayCtrl CBA_CREDITS_M_IDC;
 
 if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
-	_ver_list = [];
-	uiNamespace setVariable [QGVAR(VerList), _ver_list];
-	//Position version banner
-	_ctrl_o = _disp displayCtrl CA_Version_IDC;
-	//align with BI version position
-	_x = __RIX(-21);
-	_y = __IY(23);
-	_w = __IW(8);
-	_h = __IH(1);
-	_ctrl ctrlSetPosition [_x, _y, _w, _h];
-	_ctrl ctrlCommit 0;
-	//button align
-	_ctrl_b ctrlSetPosition [_x, _y, _w, _h];
-	_ctrl_b ctrlCommit 0;
-	
-	//Gather version info
-	_config = configFile >> "CfgPatches";
-	for "_x" from 0 to ((count _config) - 1) do {
-		_entry = _config select _x;
-		if ( isClass _entry && {isText(_entry >> "versionDesc")} ) then {
-			_ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
-			_ver_act = getText(_entry >> "versionAct");
-			_ver_arr = [_ver_line, _ver_act];
-			PUSH(_ver_list,_ver_arr);
-		};
-	};
+    _ver_list = [];
+    uiNamespace setVariable [QGVAR(VerList), _ver_list];
+    //Position version banner
+    _ctrl_o = _disp displayCtrl CA_Version_IDC;
+    //align with BI version position
+    _x = __RIX(-21);
+    _y = __IY(23);
+    _w = __IW(8);
+    _h = __IH(1);
+    _ctrl ctrlSetPosition [_x, _y, _w, _h];
+    _ctrl ctrlCommit 0;
+    //button align
+    _ctrl_b ctrlSetPosition [_x, _y, _w, _h];
+    _ctrl_b ctrlCommit 0;
+
+    //Gather version info
+    _config = configFile >> "CfgPatches";
+    for "_x" from 0 to ((count _config) - 1) do {
+        _entry = _config select _x;
+        if ( isClass _entry && {isText(_entry >> "versionDesc")} ) then {
+            _ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
+            _ver_act = getText(_entry >> "versionAct");
+            _ver_arr = [_ver_line, _ver_act];
+            PUSH(_ver_list,_ver_arr);
+        };
+    };
 };
 
 if (_trap) then {
-	[_ctrl_b] spawn { //will terminate when main menu mission exits
-		while {true} do {
-			uiSleep 3;
-			if (isNil QGVAR(VerPause)) then { _this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf'; };
-		};			
-	};
+    [_ctrl_b] spawn { //will terminate when main menu mission exits
+        while {true} do {
+            uiSleep 3;
+            if (isNil QGVAR(VerPause)) then { _this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf'; };
+        };
+    };
 };
 
 //left click forward, other click back
 if ( isNil {uiNamespace getVariable QGVAR(VerNext)} ) then { uiNamespace setVariable [QGVAR(VerNext), -1]; };
 _next = uiNamespace getVariable QGVAR(VerNext);
 if ( _key == 0 ) then {
-	_next = _next + 1;
+    _next = _next + 1;
 } else {
-	_next = _next - 1;
+    _next = _next - 1;
 };
 //stay in bounds
 _ver_list = uiNamespace getVariable QGVAR(VerList);
 if ( _next >= count _ver_list ) then {
-	_next = 0;
+    _next = 0;
 } else {
-	if ( _next < 0 ) then { _next = count _ver_list - 1; };
+    if ( _next < 0 ) then { _next = count _ver_list - 1; };
 };
 uiNamespace setVariable [QGVAR(VerNext), _next];
 

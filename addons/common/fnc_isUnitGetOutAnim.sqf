@@ -2,24 +2,24 @@
 Function: CBA_fnc_isUnitGetOutAnim
 
 Description:
-	Checks whether a unit is turned out in a vehicle or not.
+    Checks whether a unit is turned out in a vehicle or not.
 
 Parameters:
-	_unit - Unit to check [Object]
+    _unit - Unit to check [Object]
 
 Returns:
-	"true" for turned out or "false" for not turned out [Boolean]
+    "true" for turned out or "false" for not turned out [Boolean]
 
 Examples:
-	(begin example)
-		if ( [player] call CBA_fnc_isTurnedOut ) then
-		{
-			player sideChat "I am turned out!";
-		};
-	(end)
+    (begin example)
+        if ( [player] call CBA_fnc_isTurnedOut ) then
+        {
+            player sideChat "I am turned out!";
+        };
+    (end)
 
 Author:
-	(c) Denisko-Redisko
+    (c) Denisko-Redisko
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

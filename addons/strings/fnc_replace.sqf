@@ -2,24 +2,24 @@
 Function: CBA_fnc_replace
 
 Description:
-	Replaces substrings within a string. Case-dependent.
+    Replaces substrings within a string. Case-dependent.
 
 Parameters:
-	_string - String to make replacement in [String]
-	_pattern - Substring to replace [String]
-	_replacement - String to replace the _pattern with [String]
+    _string - String to make replacement in [String]
+    _pattern - Substring to replace [String]
+    _replacement - String to replace the _pattern with [String]
 
 Returns:
-	String with replacements made [String]
+    String with replacements made [String]
 
 Example:
-	(begin example)
-		_str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
-		// => "Fish pig cheese pimage"
-	(end)
+    (begin example)
+        _str = ["Fish frog cheese fromage", "fro", "pi"] call CBA_fnc_replace;
+        // => "Fish pig cheese pimage"
+    (end)
 
 Author:
-	jaynus
+    jaynus
 --------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -38,16 +38,16 @@ _replaceArray = toArray _replacement;
 
 _findIndex    = _string find _pattern;
 while { _findIndex != -1 } do {
-	_i = 0;
-	while { _i < _findIndex } do {
-		_returnArray pushBack (_stringArray select _i);
-		_i = _i + 1;
-	};
-	_returnArray append _replaceArray;
-	_stringArray deleteRange [0, _i + _cp];
+    _i = 0;
+    while { _i < _findIndex } do {
+        _returnArray pushBack (_stringArray select _i);
+        _i = _i + 1;
+    };
+    _returnArray append _replaceArray;
+    _stringArray deleteRange [0, _i + _cp];
 
-	_string = toString _stringArray;
-	_findIndex = _string find _pattern;
+    _string = toString _stringArray;
+    _findIndex = _string find _pattern;
 };
 _returnArray append _stringArray;
 toString _returnArray

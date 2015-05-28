@@ -12,12 +12,12 @@ Returns:
  the sum of the two vectors (u - v).
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectSubtract.sqf";
 

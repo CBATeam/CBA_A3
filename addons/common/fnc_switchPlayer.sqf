@@ -2,29 +2,29 @@
 Function: CBA_fnc_switchPlayer
 
 Description:
-	Switch player to another unit.
+    Switch player to another unit.
 
 Parameters:
-	[type] The type of the new unit the player should switch to [String]
+    [type] The type of the new unit the player should switch to [String]
 
-	Optional:
-	[type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
+    Optional:
+    [type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
                               the weapons the player had before.
 
 
-	NOTE: the function must be spawned. It cannot be called.
+    NOTE: the function must be spawned. It cannot be called.
 
 Returns:
-	nil
+    nil
 
 Examples:
-	(begin example)
-	// Change into a M136 AT rifleman
-	_h = ["USMC_Soldier_LAT"] spawn CBA_fnc_switchPlayer;
+    (begin example)
+    // Change into a M136 AT rifleman
+    _h = ["USMC_Soldier_LAT"] spawn CBA_fnc_switchPlayer;
 
-	// Switch into a corpsman, but keep the weapons
-	_h = ["USMC_Soldier_Medic", "LEAVEWEPS"] spawn CBA_fnc_switchPlayer;
-	(end)
+    // Switch into a corpsman, but keep the weapons
+    _h = ["USMC_Soldier_Medic", "LEAVEWEPS"] spawn CBA_fnc_switchPlayer;
+    (end)
 
 Author:
 
@@ -64,28 +64,28 @@ hint format["3.State transfered, switched player control to new unit, local: %1"
 sleep 1;
 if (_ar select 7 != "") then
 {
-	if (isMultiplayer) then
-	{
-		GVAR(setVehVarName) = compile format ["private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;", _ar select 7];
-		publicVariable QGVAR(setVehVarName);
-		[[netId _oldUnit, netId _newUnit], QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
-		//_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
-		//processInitCommands;
-	}
-	else
-	{
-		_oldUnit setVehicleVarName "";
-		_newUnit setVehicleVarName (_ar select 7);
-	};
+    if (isMultiplayer) then
+    {
+        GVAR(setVehVarName) = compile format ["private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;", _ar select 7];
+        publicVariable QGVAR(setVehVarName);
+        [[netId _oldUnit, netId _newUnit], QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
+        //_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
+        //processInitCommands;
+    }
+    else
+    {
+        _oldUnit setVehicleVarName "";
+        _newUnit setVehicleVarName (_ar select 7);
+    };
 };
 
 if ("LEAVEWEAPS" in _this) then
 {
-	sleep 1;
+    sleep 1;
 } else {
-	removeAllWeapons _newUnit;
-	{ _newUnit addMagazine _x } forEach (_ar select 1);
-	{ _newUnit addWeapon _x } forEach (_ar select 0);
+    removeAllWeapons _newUnit;
+    { _newUnit addMagazine _x } forEach (_ar select 1);
+    { _newUnit addWeapon _x } forEach (_ar select 0);
 };
 if ((primaryWeapon _newUnit) != "") then { [_newUnit, primaryWeapon _newUnit] call CBA_fnc_selectWeapon };
 

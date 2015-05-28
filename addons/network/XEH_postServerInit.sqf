@@ -6,15 +6,15 @@ LOG(MSG_INIT);
 
 // OPC gets _id, _uid, _name
 [QUOTE(GVAR(opc)), "onPlayerConnected", {
-	if (_name=="__SERVER__") exitWith {};
-	_obj=objNull;
-	{
-		if (_name == name _x) then
-		{
-			_obj=_x;
-		};
-	} forEach playableUnits;
-	if (!isNull _obj) then {[_name, _uid, _obj] call FUNC(opc);};
+    if (_name=="__SERVER__") exitWith {};
+    _obj=objNull;
+    {
+        if (_name == name _x) then
+        {
+            _obj=_x;
+        };
+    } forEach playableUnits;
+    if (!isNull _obj) then {[_name, _uid, _obj] call FUNC(opc);};
 }] call BIS_fnc_addStackedEventhandler;
 
 // Use Function that can be called using BIS_fnc_MP so that even non CBA clients will announce

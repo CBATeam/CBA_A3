@@ -18,32 +18,32 @@ SLX_XEH_COMPILE = {
 };
 
 SLX_XEH_COMPILE_NEW = {
-	private ["_cba_int_code", "_recompile", "_isCached", "_fncFile", "_fncName", "_compileStr"];
+    private ["_cba_int_code", "_recompile", "_isCached", "_fncFile", "_fncName", "_compileStr"];
     _fncFile = _this select 0;
     _fncName = _this select 1;
-	_recompile = if (isNil "CBA_COMPILE_RECOMPILE") then {
-		if (isNil "SLX_XEH_MACHINE" || {isNil "CBA_isCached"}) then {
-			true;
-		} else {
-			CBA_COMPILE_RECOMPILE = CACHE_DIS(compile);
-			CBA_COMPILE_RECOMPILE;
-		};
-	} else {
-		CBA_COMPILE_RECOMPILE;
-	};
+    _recompile = if (isNil "CBA_COMPILE_RECOMPILE") then {
+        if (isNil "SLX_XEH_MACHINE" || {isNil "CBA_isCached"}) then {
+            true;
+        } else {
+            CBA_COMPILE_RECOMPILE = CACHE_DIS(compile);
+            CBA_COMPILE_RECOMPILE;
+        };
+    } else {
+        CBA_COMPILE_RECOMPILE;
+    };
     // if(_recompile && {!(missionNamespace getVariable [QGVAR(cacheSecWarning), false])}) then {
         // missionNamespace setVariable [QGVAR(cacheSecWarning), true];
         // diag_log text "CBA FUNCTION CACHE WARNING: Recompiling is now disabled via missions due to security issues. Please #define DISABLE_COMPILE_CACHE in your addon before including CBA macros only during development to enable recompilation.";
     // };
 
-	// TODO: Unique namespace?
-	_cba_int_code = uiNamespace getVariable _fncName;
-	if (isNil '_cba_int_code') then {
-		TRACE_1('Compiling',_fncFile);
+    // TODO: Unique namespace?
+    _cba_int_code = uiNamespace getVariable _fncName;
+    if (isNil '_cba_int_code') then {
+        TRACE_1('Compiling',_fncFile);
 
         missionNamespace setVariable [_fncName, (compileFinal preprocessFileLineNumbers _fncFile)];
         uiNamespace setVariable [_fncName, missionNamespace getVariable _fncName];
-	} else {
+    } else {
         if(_recompile) then {
             missionNamespace setVariable [_fncName, (compileFinal preprocessFileLineNumbers _fncFile)];
         } else {

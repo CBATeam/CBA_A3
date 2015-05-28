@@ -10,12 +10,12 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private [
-	"_unit", "_unitClass", "_handlers", "_handler",
-	"_xeh", "_xehPlayer", "_ha", "_data", "_i"
+    "_unit", "_unitClass", "_handlers", "_handler",
+    "_xeh", "_xehPlayer", "_ha", "_data", "_i"
 ];
 
 #ifdef DEBUG_MODE_FULL
-	format["XEH BEG: %2 - %3", time, _this, typeOf (_this select 0)] call SLX_XEH_LOG;
+    format["XEH BEG: %2 - %3", time, _this, typeOf (_this select 0)] call SLX_XEH_LOG;
 #endif
 
 // Get unit.
@@ -28,42 +28,42 @@ _unitClass = typeOf _unit;
 _data = _unitClass call FUNC(init_others_enum_cache);
 _i = 0;
 {
-	_eventData = _data select _i;
+    _eventData = _data select _i;
 
-	// TODO: Improve - current implementation is to remove empty code
-	// New array per entitity is at least important for _handler, because of optional player handlers.
-	_handler = [];
-	_handlerPlayer = [];
-	 { 
-        if !(isNil "_x") then { 
-            { if !(isNil "_x") then { PUSH(_handler,_x) } } forEach _x 
+    // TODO: Improve - current implementation is to remove empty code
+    // New array per entitity is at least important for _handler, because of optional player handlers.
+    _handler = [];
+    _handlerPlayer = [];
+     {
+        if !(isNil "_x") then {
+            { if !(isNil "_x") then { PUSH(_handler,_x) } } forEach _x
         };
     } forEach (_eventData select 0);
-    { 
-        if !(isNil "_x") then { 
-            { if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach _x 
+    {
+        if !(isNil "_x") then {
+            { if !(isNil "_x") then { PUSH(_handlerPlayer,_x) } } forEach _x
         };
     } forEach (_eventData select 1);
 
-	// Attach the compiled extended event handler to the unit.
-	// TODO: Add alternative handler implementation; no setVariables on the units, just grab directly from uiNamespace
-	_xeh = SLX_XEH_OTHER_EVENTS_XEH select _i;
-	_xehPlayer = SLX_XEH_OTHER_EVENTS_XEH_PLAYERS select _i;
+    // Attach the compiled extended event handler to the unit.
+    // TODO: Add alternative handler implementation; no setVariables on the units, just grab directly from uiNamespace
+    _xeh = SLX_XEH_OTHER_EVENTS_XEH select _i;
+    _xehPlayer = SLX_XEH_OTHER_EVENTS_XEH_PLAYERS select _i;
 
-	_unit setVariable [_xeh, _handler];
-	_unit setVariable [_xehPlayer, _handlerPlayer];
+    _unit setVariable [_xeh, _handler];
+    _unit setVariable [_xehPlayer, _handlerPlayer];
 
-	INC(_i);
+    INC(_i);
 
-	#ifdef DEBUG_MODE_FULL
-		format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _x, _unitClass, count _handler > 0, count _handlerPlayer > 0] call SLX_XEH_LOG;
-	#endif
+    #ifdef DEBUG_MODE_FULL
+        format["XEH RUN: %2 - %3 - %4 - %5", time, _this, _x, _unitClass, count _handler > 0, count _handlerPlayer > 0] call SLX_XEH_LOG;
+    #endif
 } forEach SLX_XEH_OTHER_EVENTS;
 
 _unit setVariable ["SLX_XEH_READY", true];
 
 #ifdef DEBUG_MODE_FULL
-	format["XEH END: %2", time, _this] call SLX_XEH_LOG;
+    format["XEH END: %2", time, _this] call SLX_XEH_LOG;
 #endif
 
 nil;

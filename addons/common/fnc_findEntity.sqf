@@ -2,25 +2,25 @@
 Function: CBA_fnc_findEntity
 
 Description:
-	A function used to find out the first entity of parsed type in a nearEntitys call
+    A function used to find out the first entity of parsed type in a nearEntitys call
 
 Parameters:
-	- Type (Classname, Object)
-	- Position (XYZ, Object, Location or Group)
+    - Type (Classname, Object)
+    - Position (XYZ, Object, Location or Group)
 
 Optional:
-	- Radius (Scalar)
+    - Radius (Scalar)
 
 Example:
     (begin example)
-	_veh = ["LaserTarget", player] call CBA_fnc_findEntity
+    _veh = ["LaserTarget", player] call CBA_fnc_findEntity
     (end)
 
 Returns:
-	First entity; nil return if nothing
+    First entity; nil return if nothing
 
 Author:
-	Rommel
+    Rommel
 
 ---------------------------------------------------------------------------- */
 

@@ -2,27 +2,27 @@
 Function: CBA_fnc_addKeyHandler
 
 Description:
-	Adds an action to a keyhandler
+    Adds an action to a keyhandler
 
 Parameters:
-	_key - Numerical key to attach action to [Integer].
-	_settings - Shift, Ctrl, Alt required [Array].
-	_code - Code to execute upon event [Code].
-	_type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
-	_hashKey - used to identify this handler, randomly generated if not supplied [String].
+    _key - Numerical key to attach action to [Integer].
+    _settings - Shift, Ctrl, Alt required [Array].
+    _code - Code to execute upon event [Code].
+    _type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
+    _hashKey - used to identify this handler, randomly generated if not supplied [String].
     _holdKey - Will the key fire every frame while down [Bool]
     _holdDelay - How long after keydown will the key event fire, in seconds. [Float]
 
 Returns:
     Hash key [String]
-    
+
 Examples:
-	(begin example)
-		[47, [true, false, false], { _this call myAction }] call CBA_fnc_addKeyHandler;
-	(end)
+    (begin example)
+        [47, [true, false, false], { _this call myAction }] call CBA_fnc_addKeyHandler;
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 
 ---------------------------------------------------------------------------- */
 // #define DEBUG_MODE_FULL

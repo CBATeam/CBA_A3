@@ -100,7 +100,7 @@ ASSERT_OP(_str,==,"frog",_fn);
 _str = ["   frog"] call CBA_fnc_leftTrim; // spaces
 ASSERT_OP(_str,==,"frog",_fn);
 
-_str = ["	frog"] call CBA_fnc_leftTrim; // tab
+_str = ["    frog"] call CBA_fnc_leftTrim; // tab
 ASSERT_OP(_str,==,"frog",_fn);
 
 _str = ["   "] call CBA_fnc_leftTrim;
@@ -127,16 +127,16 @@ ASSERT_OP(_str,==,"frog",_fn);
 _str = ["frog   "] call CBA_fnc_rightTrim;
 ASSERT_OP(_str,==,"frog",_fn);
 
-_str = ["frog 	"] call CBA_fnc_rightTrim; // including tabs
+_str = ["frog     "] call CBA_fnc_rightTrim; // including tabs
 ASSERT_OP(_str,==,"frog",_fn);
 
 _str = ["   "] call CBA_fnc_rightTrim;
 ASSERT_OP(_str,==,"",_fn);
 
-_str = [" 	"] call CBA_fnc_rightTrim; // including tabs
+_str = ["     "] call CBA_fnc_rightTrim; // including tabs
 ASSERT_OP(_str,==,"",_fn);
 
-_str = [" x	"] call CBA_fnc_rightTrim;
+_str = [" x    "] call CBA_fnc_rightTrim;
 ASSERT_OP(_str,==," x",_fn);
 
 // ----------------------------------------------------------------------------

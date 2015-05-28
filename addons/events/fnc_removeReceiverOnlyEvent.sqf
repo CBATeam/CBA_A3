@@ -2,16 +2,16 @@
 Function: CBA_fnc_removeReceiverOnlyEvent
 
 Description:
-	Removes an event handler previously registered with CBA_fnc_addReceiverOnlyEventhandler.
+    Removes an event handler previously registered with CBA_fnc_addReceiverOnlyEventhandler.
 
 Parameters:
-	_eventType - Type of event to remove [String].
+    _eventType - Type of event to remove [String].
 
 Returns:
-	nil
+    nil
 
 Author:
-	Xeno
+    Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

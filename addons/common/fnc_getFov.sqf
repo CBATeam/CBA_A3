@@ -2,26 +2,26 @@
 Function: CBA_fnc_getFov
 
 Description:
-	Get current camera's vertical field of view in radians and zoom.
+    Get current camera's vertical field of view in radians and zoom.
 
-	Zoom is relative to specified config FOV, defaults to 0.7 (vehicle driver initFov).
+    Zoom is relative to specified config FOV, defaults to 0.7 (vehicle driver initFov).
 
 Parameters:
-	(optional) base config fov value corresponding to 1x zoom, defaults to 0.7.
+    (optional) base config fov value corresponding to 1x zoom, defaults to 0.7.
 
 Examples:
-	(begin example)
-	_fovarray = call CBA_fnc_getFov
-	
-	_fovarray = 0.75 call CBA_fnc_getFov
-	(end)
+    (begin example)
+    _fovarray = call CBA_fnc_getFov
+
+    _fovarray = 0.75 call CBA_fnc_getFov
+    (end)
 
 Returns:
-	Array [fov,zoom]
+    Array [fov,zoom]
 
 Authors:
-	q1184 (original code and calculation method)
-	ceeeb (improved code and new zoom calculation method)
+    q1184 (original code and calculation method)
+    ceeeb (improved code and new zoom calculation method)
 
 ---------------------------------------------------------------------------- */
 

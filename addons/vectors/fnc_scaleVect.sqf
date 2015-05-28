@@ -12,12 +12,12 @@ Returns:
  a vector in the form [x, z, y] which represents the scaled initial vector.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_scaleVect.sqf";
 

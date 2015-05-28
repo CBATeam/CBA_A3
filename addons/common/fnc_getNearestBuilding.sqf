@@ -2,21 +2,21 @@
 Function: CBA_fnc_getNearestBuilding
 
 Description:
-	A function used to find out the nearest building and appropriate building positions available.
+    A function used to find out the nearest building and appropriate building positions available.
 
 Parameters:
-	Object
+    Object
 
 Example:
     (begin example)
-	_array = player call CBA_fnc_getNearestBuilding
+    _array = player call CBA_fnc_getNearestBuilding
     (end)
 
 Returns:
-	Array with [building object, building positions (count)]
+    Array with [building object, building positions (count)]
 
 Author:
-	Rommel
+    Rommel
 ---------------------------------------------------------------------------- */
 
 private ["_building", "_i"];

@@ -1,4 +1,4 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable. 
+// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
 // So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
@@ -23,8 +23,8 @@ if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = CACHE_DIS(functions)
 /*
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
-	LOG("Initialising the MP module early.");
-	_this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
+    LOG("Initialising the MP module early.");
+    _this call COMPILE_FILE2(\ca\Modules\MP\data\scripts\MPframework.sqf);
 };
 */
 
@@ -49,27 +49,27 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 GVAR(call_i) = 0;
 FUNC(directCallInt) = { (_this getVariable QGVAR(params)) call (_this getVariable QGVAR(code)); deleteVehicle _this };
 FUNC(directCall) = {
-	private ["_obj", "_objName"];
-	PARAMS_2(_params,_code);
+    private ["_obj", "_objName"];
+    PARAMS_2(_params,_code);
 
-	INC(GVAR(call_i));
-	_objName = format[QGVAR(call_obj_%1), GVAR(call_i)];
-	_obj = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
-	missionNameSpace setVariable [_objName, _obj];
-	_obj setVariable [QGVAR(params), _params];
-	_obj setVariable [QGVAR(code), _code];
-	_obj addEventHandler ["killed", compile format[QUOTE(%1 call FUNC(directCallInt); %1 = nil), _objName]];
-	_obj setDamage 1;
-	_obj;
+    INC(GVAR(call_i));
+    _objName = format[QGVAR(call_obj_%1), GVAR(call_i)];
+    _obj = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
+    missionNameSpace setVariable [_objName, _obj];
+    _obj setVariable [QGVAR(params), _params];
+    _obj setVariable [QGVAR(code), _code];
+    _obj addEventHandler ["killed", compile format[QUOTE(%1 call FUNC(directCallInt); %1 = nil), _objName]];
+    _obj setDamage 1;
+    _obj;
 };
 
 CBA_logic = objNull;
 
 FUNC(log) = {
-	diag_log text _this;
-	sleep 1;
-	CBA_logic globalChat _this;
-	hintC _this;
+    diag_log text _this;
+    sleep 1;
+    CBA_logic globalChat _this;
+    hintC _this;
 };
 
 // Nil check

@@ -18,7 +18,7 @@ _result = [_original] call CBA_fnc_shuffle;
 ASSERT_OP(count _result,==,count _original,_fn);
 
 {
-	ASSERT_OP(_x,in,_original,_fn);
+    ASSERT_OP(_x,in,_original,_fn);
 } forEach _result;
 
 // Test depecated version.
@@ -27,7 +27,7 @@ _result = _original call CBA_fnc_shuffle;
 ASSERT_OP(count _result,==,count _original,_fn);
 
 {
-	ASSERT_OP(_x,in,_original,_fn);
+    ASSERT_OP(_x,in,_original,_fn);
 } forEach _result;
 
 // Test depecated version.

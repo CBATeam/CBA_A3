@@ -23,18 +23,18 @@ Game as integer from SLX_XEH_MACHINE
 _game = SLX_XEH_MACHINE select 14;
 
 if (_game > 3) then {
-	LOG ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn); //Sanity check and reminder
-	Diag_log ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn);
+    LOG ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn); //Sanity check and reminder
+    Diag_log ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All assert tests will fail! " + _fn);
 };
 
 if (_game < 2) then {
-	_clssname = "m16a4_acg_gl"; //Arma2 variants
-	} else {
-	if (_game == 2) then {
-		_clssname = "M4A1_H"; //TOH
-	} else {
-		_clssname = "arifle_MXC_F"; //Arma3
-	};
+    _clssname = "m16a4_acg_gl"; //Arma2 variants
+    } else {
+    if (_game == 2) then {
+        _clssname = "M4A1_H"; //TOH
+    } else {
+        _clssname = "arifle_MXC_F"; //Arma3
+    };
 };
 
 _class = configFile >> "CfgWeapons" >> _clssname;

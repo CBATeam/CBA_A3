@@ -6,9 +6,9 @@ GVAR(CREDITS_CfgPatches) = (GVAR(CREDITS_Info)) call FUNC(process);
 TRACE_2("",GVAR(CREDITS_Info), GVAR(CREDITS_CfgPatches));
 
 #ifdef DEBUG_MODE_FULL
-	// Troubleshooting an A3 Funcitons Compliation for missionNamespace.
-	if (isNil "CBA_fnc_hashGet") then { diag_log "CBA_fnc_hashGet is nil!!";};
-	if (isNil QGVAR(CREDITS_CfgPatches)) then { diag_log "CREDITS_CfgPatches is nil! CBA_fnc_hashGet must have failed"; TRACE_1("",CBA_fnc_hashGet)};
+    // Troubleshooting an A3 Funcitons Compliation for missionNamespace.
+    if (isNil "CBA_fnc_hashGet") then { diag_log "CBA_fnc_hashGet is nil!!";};
+    if (isNil QGVAR(CREDITS_CfgPatches)) then { diag_log "CREDITS_CfgPatches is nil! CBA_fnc_hashGet must have failed"; TRACE_1("",CBA_fnc_hashGet)};
 #endif
 
 player createDiarySubject ["CBA_docs", "CBA"];

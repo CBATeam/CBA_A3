@@ -28,8 +28,8 @@ private ["_config", "_configData", "_cfgs", "_retData"];
 
 // If already cached, and already ran for this unitClass in this mission (SLX_XEH_ID matches), exit and return existing _data.
 if (_cached && {(_types select 3) == (uiNamespace getVariable "SLX_XEH_ID")}) exitWith {
-	TRACE_2("Fully Cached",_unitClass,_ehType);
-	_data;
+    TRACE_2("Fully Cached",_unitClass,_ehType);
+    _data;
 };
 
 // Skip configFile if already cached - it doesn't until game restart (or future mergeConfigFile ;)).
@@ -37,45 +37,45 @@ _cfgs = if (_cached) then { TRACE_2("Partial Cached",_unitClass,_ehType); SLX_XE
 
 // Get array of inherited classes of unit.
 if (_cached) then {
-	_classes = uiNamespace getVariable ("SLX_XEH_" + _unitClass + "_classes");
+    _classes = uiNamespace getVariable ("SLX_XEH_" + _unitClass + "_classes");
 } else {
-	_classes = [_unitClass];
-	while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do {
-		_classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
-	};
-	uiNamespace setVariable [("SLX_XEH_" + _unitClass + "_classes"), _classes];
+    _classes = [_unitClass];
+    while { !((_classes select 0) in SLX_XEH_DEF_CLASSES) } do {
+        _classes = [(configName (inheritsFrom (configFile/"CfgVehicles"/(_classes select 0))))]+_classes;
+    };
+    uiNamespace setVariable [("SLX_XEH_" + _unitClass + "_classes"), _classes];
 };
 
 _config_id = if (_cached) then { 1 } else { 0 };
 {
-	_config = _x;
+    _config = _x;
 
-	/*
-	*  Several BIS vehicles use a set of EH:s in the BIS SLX_XEH_STR_DEH
-	*  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
-	*
-	*  Further, The AAV class uses a variation of this DefaultEventhandlers set with
-	*  it's own specific init EH.  Here, we make sure to include the BIS DEH init
-	*  event handler and make it the first one that will be called by XEH. The AAV
-	*  is accomodated by code further below and two composite
-	*  Extended_Init_EventHandlers definitions in the config.cpp that define
-	*  a property "replaceDefault" which will replace the DEH init with the
-	*  class-specific BIS init EH for that vehicle.
-	*/
-	// TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
-	_useDEHinit = false;
-	if (_isInitEH && {_config_id == 0}) then {
-		_ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
-		if (configName _ehSuper == SLX_XEH_STR_DEH && {isText (configFile/SLX_XEH_STR_DEH/"init")}) then {
-			_useDEHinit = true;
-			_DEHinit = getText(configFile/SLX_XEH_STR_DEH/"init");
-		};
-	};
+    /*
+    *  Several BIS vehicles use a set of EH:s in the BIS SLX_XEH_STR_DEH
+    *  ("DEH" in the following) class - Car, Tank, Helicopter, Plane and Ship.
+    *
+    *  Further, The AAV class uses a variation of this DefaultEventhandlers set with
+    *  it's own specific init EH.  Here, we make sure to include the BIS DEH init
+    *  event handler and make it the first one that will be called by XEH. The AAV
+    *  is accomodated by code further below and two composite
+    *  Extended_Init_EventHandlers definitions in the config.cpp that define
+    *  a property "replaceDefault" which will replace the DEH init with the
+    *  class-specific BIS init EH for that vehicle.
+    */
+    // TODO: What if SuperOfSuper inheritsFrom DefaultEventhandlers?
+    _useDEHinit = false;
+    if (_isInitEH && {_config_id == 0}) then {
+        _ehSuper = inheritsFrom(configFile/"CfgVehicles"/_unitClass/"EventHandlers");
+        if (configName _ehSuper == SLX_XEH_STR_DEH && {isText (configFile/SLX_XEH_STR_DEH/"init")}) then {
+            _useDEHinit = true;
+            _DEHinit = getText(configFile/SLX_XEH_STR_DEH/"init");
+        };
+    };
 
-	_retData = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call FUNC(init_enum);
-	if (_useDEHinit) then { _retData = [compile _DEHinit] + _retData };
-	_data set [_config_id, _retData];
-	INC(_config_id);
+    _retData = [_config >> _ehType, _unitClass, _classes, _useDEHinit, _isRespawn] call FUNC(init_enum);
+    if (_useDEHinit) then { _retData = [compile _DEHinit] + _retData };
+    _data set [_config_id, _retData];
+    INC(_config_id);
 } forEach _cfgs;
 
 // Tag this unit class with the current session id

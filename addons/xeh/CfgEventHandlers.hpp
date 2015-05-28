@@ -2,7 +2,7 @@
 // that expect the class to exist
 class Extended_EventHandlers
 {
-	EXTENDED_EVENTHANDLERS
+    EXTENDED_EVENTHANDLERS
 };
 
 
@@ -63,28 +63,28 @@ class Extended_WeaponDisassembled_EventHandlers {};
 
 class Extended_GetIn_EventHandlers
 {
-	// Default Extended Event Handlers: Custom GetInMan event
-	class AllVehicles
-	{
-		class SLX_GetInMan
-		{
-				scope	 = public;
-				getIn  = "_this call SLX_XEH_EH_GetInMan";
-		};
-	};
+    // Default Extended Event Handlers: Custom GetInMan event
+    class AllVehicles
+    {
+        class SLX_GetInMan
+        {
+                scope     = public;
+                getIn  = "_this call SLX_XEH_EH_GetInMan";
+        };
+    };
 };
 
 class Extended_GetOut_EventHandlers
 {
-	// Default Extended Event Handlers: Custom GetOutMan event
-	class AllVehicles
-	{
-		class SLX_GetOutMan
-		{
-				scope	 = public;
-				getOut = "_this call SLX_XEH_EH_GetOutMan";
-		};
-	};
+    // Default Extended Event Handlers: Custom GetOutMan event
+    class AllVehicles
+    {
+        class SLX_GetOutMan
+        {
+                scope     = public;
+                getOut = "_this call SLX_XEH_EH_GetOutMan";
+        };
+    };
 };
 
 class Extended_GetInMan_EventHandlers {};
@@ -96,17 +96,17 @@ class Extended_GetOutMan_EventHandlers {};
 // Respawn only seems to fire where the unit is local, but MPRespawn or MPKilled nowhere??
 class Extended_Respawn_EventHandlers
 {
-	// We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
-	// We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
-	// This is required because BIS Initeventhandlers fire on all machines for respawning unit, except on his own machine.
-	class CAManBase
-	{
-		class SLX_RespawnInit
-		{
-				scope	 = public;
-				respawn  = "_this call SLX_XEH_EH_RespawnInit";
-		};
-	};
+    // We use this to re-attach eventhandlers on respawn, just like ordinary eventhandlers are re-attached.
+    // We also use it to rerun init eventhandlers with onRespawn = true; functionallity now sort of shared with MPRespawn EH etc.
+    // This is required because BIS Initeventhandlers fire on all machines for respawning unit, except on his own machine.
+    class CAManBase
+    {
+        class SLX_RespawnInit
+        {
+                scope     = public;
+                respawn  = "_this call SLX_XEH_EH_RespawnInit";
+        };
+    };
 };
 
 class DefaultEventhandlers;

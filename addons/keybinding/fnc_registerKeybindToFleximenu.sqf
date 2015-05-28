@@ -7,22 +7,22 @@ Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
 Parameters:
- _modName			- Name of the registering mod [String]
- _actionName		- Name of the action to register [String]
- _fleximenuDef		- Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] [Array]
- _defaultKeybind	- Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
+ _modName            - Name of the registering mod [String]
+ _actionName        - Name of the action to register [String]
+ _fleximenuDef        - Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] [Array]
+ _defaultKeybind    - Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
 
 Optional:
- _overwrite			- Overwrite existing keybind data? [Bool] (Default: False)
- _keypressType		- "keydown" (Default) = keyDown, "keyup" = keyUp [String]
+ _overwrite            - Overwrite existing keybind data? [Bool] (Default: False)
+ _keypressType        - "keydown" (Default) = keyDown, "keyup" = keyUp [String]
 
 Returns:
  Returns the current keybind for the Fleximenu [Array]
 
 Examples:
-	(begin example)
+    (begin example)
   ["Your Mod", "Your Action", ["player", [], -100, "_this call my_menu_code_array"], [15, [true, true, true]]] call cba_fnc_registerKeybindToFleximenu;
-	(end example)
+    (end example)
 
 Author:
  Taosenai
@@ -44,8 +44,8 @@ DEFAULT_PARAM(5,_keypressType,"KeyDown");
 // Help the user out by always setting the keycode param of the fleximenu
 // def array to []. Give them a warning if it wasn't.
 if (count (_fleximenuDef select 1) > 0) then {
-	_fleximenuDef set [1, []];
-	WARNING("[CBA Keybinding] Fleximenu definition passed to CBA_fnc_registerKeybindToFleximenu included a keycode. Ignoring it.")
+    _fleximenuDef set [1, []];
+    WARNING("[CBA Keybinding] Fleximenu definition passed to CBA_fnc_registerKeybindToFleximenu included a keycode. Ignoring it.")
 };
 
 // Create the fleximenu.

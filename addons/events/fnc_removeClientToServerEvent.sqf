@@ -2,16 +2,16 @@
 Function: CBA_fnc_removeClientToServerEvent
 
 Description:
-	Removes an event handler previously registered with CBA_fnc_addClientToServerEventhandler.
+    Removes an event handler previously registered with CBA_fnc_addClientToServerEventhandler.
 
 Parameters:
-	_eventType - Type of event to remove [String].
+    _eventType - Type of event to remove [String].
 
 Returns:
-	nil
+    nil
 
 Author:
-	Xeno
+    Xeno
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"

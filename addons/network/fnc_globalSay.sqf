@@ -2,21 +2,21 @@
 Function: CBA_fnc_globalSay
 
 Description:
-	Says sound on all client computer
+    Says sound on all client computer
 
 Parameters:
-	[_objects] - Array of Objects that perform Say [Object]
-	_say - [sound, maxTitlesDistance,speed] or "sound" [Array or String]
+    [_objects] - Array of Objects that perform Say [Object]
+    _say - [sound, maxTitlesDistance,speed] or "sound" [Array or String]
 
 Returns:
 
 Example:
-	(begin example)
-		[[player], "Alarm01"] call CBA_fnc_globalSay;
-	(end)
+    (begin example)
+        [[player], "Alarm01"] call CBA_fnc_globalSay;
+    (end)
 
 Author:
-	Sickboy
+    Sickboy
 */
 // Deprecated?, use now globalEvent
 #include "script_component.hpp"

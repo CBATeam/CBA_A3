@@ -2,23 +2,23 @@
 Function: CBA_fnc_reject
 
 Description:
-	Reject array elements for which the block returns true
+    Reject array elements for which the block returns true
 
 Parameters:
-	_array - Input Array [Array]
-	_block - Block [Code]
+    _array - Input Array [Array]
+    _block - Block [Code]
 
 Returns:
-	New array with elements removed for which the block returns true [Array]
+    New array with elements removed for which the block returns true [Array]
 
 Example:
-	(begin example)
-		_result = [[1,2,3], {_this in [2,3]}] call CBA_fnc_reject;
-		// _result => [1]
-	(end)
+    (begin example)
+        _result = [[1,2,3], {_this in [2,3]}] call CBA_fnc_reject;
+        // _result => [1]
+    (end)
 
 Author:
-	MuzzleFlash
+    MuzzleFlash
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -34,10 +34,10 @@ _result = [];
 _result resize (count _array);
 _rIdx = 0;
 {
-	if !(_x call _filterCode) then {
-		_result set [_rIdx, _x];
-		INC(_rIdx);
-	};
+    if !(_x call _filterCode) then {
+        _result set [_rIdx, _x];
+        INC(_rIdx);
+    };
 } forEach _array;
 
 _result resize _rIdx;

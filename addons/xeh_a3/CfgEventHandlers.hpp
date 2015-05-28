@@ -151,7 +151,7 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
         };
         class Fin_random_F /* : Fin_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";	
+                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
         };
         class Alsatian_Random_F /* : Alsatian_Base_F */ {
                 SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize_als.sqf"";(_this select 0) call _FRnd;";
@@ -187,7 +187,7 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "(_this select 0) inflame true";
         };
         class Heli_Light_01_civil_base_F /* : Heli_Light_01_base_F */ {
-        		SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
 };
 class Extended_killed_Eventhandlers {

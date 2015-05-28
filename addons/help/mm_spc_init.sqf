@@ -14,8 +14,8 @@ _idc = ([str _ctrl, "#"] call (uiNamespace getVariable "CBA_fnc_split")) select 
 _cfg = configFile>>"CBA_MouseTrapEvent">>("IDC_" + _idc);
 
 if (isClass _cfg) then {
-	for "_i" from 0 to (count _cfg - 1) do {
-		_this call compile preprocessFileLineNumbers getText (_cfg select _i);
-	}
+    for "_i" from 0 to (count _cfg - 1) do {
+        _this call compile preprocessFileLineNumbers getText (_cfg select _i);
+    }
 };
 

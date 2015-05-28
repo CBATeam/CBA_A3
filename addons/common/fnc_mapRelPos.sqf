@@ -2,27 +2,27 @@
 Function: CBA_fnc_mapRelPos
 
 Description:
-	Find a position relative to a known position on the map. Passing strings
-	in for the Northing and Easting is the preferred way.
+    Find a position relative to a known position on the map. Passing strings
+    in for the Northing and Easting is the preferred way.
 
 Parameters:
-	_pos - Position in 10 digit grid format [Easting, Northing] [Array]
-	_dist - Distance from the starting position [Number]
-	_dir  - Direction from the starting position [Number]
+    _pos - Position in 10 digit grid format [Easting, Northing] [Array]
+    _dist - Distance from the starting position [Number]
+    _dir  - Direction from the starting position [Number]
 
 Returns:
-	New grid reference (10 digit) in format [Easting, Northing]
+    New grid reference (10 digit) in format [Easting, Northing]
 
 Examples:
-	(begin example)
-		_endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
-	(end)
-	(begin example)
-		// preferred
-		_endPos = [["024","015"], 20, 45] call CBA_fnc_mapRelPos;
-	(end)
+    (begin example)
+        _endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
+    (end)
+    (begin example)
+        // preferred
+        _endPos = [["024","015"], 20, 45] call CBA_fnc_mapRelPos;
+    (end)
 Author:
-	Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
+    Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
@@ -70,9 +70,9 @@ _n = (parseNumber _northing)*(10^((10-(_northingSize*2))/2));
 _pos = [_e, _n];
 
 if (_reversed) then {
-	// flip the Y position into its negative value (to compensate for the northings
-	// going down)
-	_pos set [1, ((_pos select 1)*-1)];
+    // flip the Y position into its negative value (to compensate for the northings
+    // going down)
+    _pos set [1, ((_pos select 1)*-1)];
 };
 
 //find position relative to passed position

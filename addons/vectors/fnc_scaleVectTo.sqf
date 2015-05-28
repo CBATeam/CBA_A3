@@ -12,14 +12,14 @@ Returns:
  a vector which has the same direction and elevation as the original vector, but which has a specified magnitude.
 
 Examples:
-	(begin example)
+    (begin example)
 
-	(end)
+    (end)
 
 *  @[not needed yet]*  @call sct_simplifyAngle.sqf
 
 Author:
-	Vigilante, courtesy by -=ACE=- of Simcentric
+    Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
 scriptName "fnc_scaleVectTo.sqf";
 

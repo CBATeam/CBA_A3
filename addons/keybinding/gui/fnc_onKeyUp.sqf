@@ -14,31 +14,31 @@ TRACE_2("KEY UP",GVAR(modifiers), GVAR(input));
 
 if(_dikCode == 0) exitWith {false};
 if((count GVAR(modifiers)) > 0) then {
-	//if !(_dikCode in [42, 29, 56  54, 157, 184]) then { // Don't accept LShift, LCtrl, or LAlt or RShift, RCtrl, or RAlt on their own
-	if(_dikCode in GVAR(modifiers) && { (count GVAR(input)) > 0 }) then {
+    //if !(_dikCode in [42, 29, 56  54, 157, 184]) then { // Don't accept LShift, LCtrl, or LAlt or RShift, RCtrl, or RAlt on their own
+    if(_dikCode in GVAR(modifiers) && { (count GVAR(input)) > 0 }) then {
 
-		TRACE_4("Update Modifiers before",_dikCode,_shift, _ctrl, _alt);
-		TRACE_2("Before",GVAR(modifiers), GVAR(input));
+        TRACE_4("Update Modifiers before",_dikCode,_shift, _ctrl, _alt);
+        TRACE_2("Before",GVAR(modifiers), GVAR(input));
 
-		_dikCode = GVAR(modifiers) select 0;
+        _dikCode = GVAR(modifiers) select 0;
 
-		GVAR(modifiers) = GVAR(modifiers);
-		TRACE_2("After",GVAR(modifiers), GVAR(input));
+        GVAR(modifiers) = GVAR(modifiers);
+        TRACE_2("After",GVAR(modifiers), GVAR(input));
 
-		if(29 in GVAR(modifiers)) then {
-			_ctrl = true;
-		};
-		if(42 in GVAR(modifiers)) then {
-			_shift = true;
-		};
-		if(56 in GVAR(modifiers)) then {
-			_alt = true;
-		};
+        if(29 in GVAR(modifiers)) then {
+            _ctrl = true;
+        };
+        if(42 in GVAR(modifiers)) then {
+            _shift = true;
+        };
+        if(56 in GVAR(modifiers)) then {
+            _alt = true;
+        };
 
-		TRACE_4("Update Modifiers after",_dikCode,_shift, _ctrl, _alt);
-		TRACE_4("Update input",_dikCode,_shift, _ctrl, _alt);
-		GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
-	};
+        TRACE_4("Update Modifiers after",_dikCode,_shift, _ctrl, _alt);
+        TRACE_4("Update input",_dikCode,_shift, _ctrl, _alt);
+        GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+    };
 };
 TRACE_4("No Modifires",_dikCode,_shift, _ctrl, _alt);
 TRACE_2("final",GVAR(modifiers), GVAR(input));
