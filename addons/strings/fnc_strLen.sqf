@@ -29,4 +29,4 @@ SCRIPT(strLen);
 
 // ----------------------------------------------------------------------------
 
-count (toArray (_this select 0)); // Return.
+count (_this select 0); // Return.
