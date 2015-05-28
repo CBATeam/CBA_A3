@@ -4,7 +4,7 @@ Function: CBA_fnc_setVarNet
 Description:
 	Same as setVariable ["name",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space.
 	Checks also for different types. Nil as value gets always broadcasted.
-	
+
 	Should reduce network traffic.
 
 Parameters:
@@ -54,7 +54,7 @@ _s = if (typeName _value != typeName _var) then {
 			((_var && {_value}) || {(!_var && {!_value})})
 		};
 		case "ARRAY": {
-			([_var, _value] call (uiNamespace getVariable "BIS_fnc_areEqual"))
+			(_var isEqualTo _value)
 		};
 		case "CODE": {
 			false
