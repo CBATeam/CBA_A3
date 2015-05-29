@@ -4,7 +4,7 @@ Function: CBA_fnc_publicVariable
 Description:
 	CBA_fnc_publicVariable does only broadcast the new value if it doesn't exist in missionNamespace or the new value is different to the one in missionNamespace.
 	Checks also for different types. Nil as value gets always broadcasted.
-	
+
 	Should reduce network traffic.
 
 Parameters:
@@ -52,7 +52,7 @@ _s = if (typeName _value != typeName _var) then {
 			((_var && {_value}) || {(!_var && {!_value})})
 		};
 		case "ARRAY": {
-			([_var, _value] call (uiNamespace getVariable "BIS_fnc_areEqual"))
+			(_var isEqualTo _value)
 		};
 		case "CODE": {
 			false
