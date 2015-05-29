@@ -46,7 +46,7 @@ ASSERT_FALSE(_result,"hashHashKey");
 [_hash, "frog", nil] call CBA_fnc_hashSet;
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
-ASSERT_TRUE(_result == "UNDEF","hashSet/Get");
+ASSERT_TRUE(isNil "_result","hashSet/Get");
 
 // Value never put in is nil.
 _result = [_hash, "fish"] call CBA_fnc_hashGet;

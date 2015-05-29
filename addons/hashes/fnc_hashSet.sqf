@@ -30,8 +30,11 @@ if (isNil "_value") then { _value = nil};
 if (isNil "_key") exitWith {_hash};
 if (isNil "_hash") exitWith {_hash;};
 
+if (isNil "BIS_fnc_areEqual") then { LOG( "WARNING: BIS_fnc_areEqual is Nil") };
+
 // Work out whether the new value is the default value for this assoc.
-_isDefault = if (isNil "_value") then { false } else { _value isEqualTo (_hash select HASH_DEFAULT_VALUE)};
+_isDefault = [if (isNil "_value") then { nil } else { _value },
+	_hash select HASH_DEFAULT_VALUE] call (uiNamespace getVariable "BIS_fnc_areEqual");
 
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then
@@ -56,7 +59,7 @@ if (_index >= 0) then
 	} else {
 		// Replace the original value for this key.
 		TRACE_2("VM CHECK SET",_index,_value);
-		(_hash select HASH_VALUES) set [_index, _value];
+		(_hash select HASH_VALUES) set [_index, if (isNil "_value") then { nil } else { _value }];
 	};
 } else {
 	// Ignore values that are the same as the default.
