@@ -4,11 +4,14 @@
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private["_action", "_subMenu", "_multiReselect", "_useListBox", "_subMenuSource", "_params", "_pathName"];
+private["_arrayID", "_actionData", "_action", "_subMenu", "_multiReselect", "_useListBox", "_subMenuSource", "_params", "_pathName", "_actionCode", "_actionParams"];
 
-_action = _this select 0;
-_subMenu = _this select 1;
-_multiReselect = _this select 2;
+_arrayID = _this;
+_actionData = GVAR(menuActionData) select _arrayID;
+
+_action = _actionData select 0;
+_subMenu = _actionData select 1;
+_multiReselect = _actionData select 2;
 //-----------------------------------------------------------------------------
 // indicates an option/button was selected, (to allow menu to close upon release of interact key), except if _multiReselect enabled.
 if (_multiReselect == 0) then {
@@ -36,11 +39,21 @@ if (_useListBox == 0 && {_multiReselect == 0}) then { // if using embedded listB
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)
-if (typeName _action == "CODE") then {
-    call _action
+if (typeName _action == typename []) then {
+    _actionParams = _action select 0;
+    _actionCode = _action select 1;
 } else {
-    if (_action != "") then {
-        call compile _action;
+    _actionParams = 1;
+    _actionCode = _action;
+};
+
+if (typeName _actionCode == typename {}) then {
+    _actionParams call _actionCode
+} else {
+    if (typename _actionCode == typename "") then {
+        if(_actionCode != "") then {
+            _actionParams call compile _actionCode;
+        };
     };
 };
 

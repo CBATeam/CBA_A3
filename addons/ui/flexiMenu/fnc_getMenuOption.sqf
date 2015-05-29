@@ -10,7 +10,7 @@
 private["_menuDefs0", "_menuDef", "_fastPartialResult",
     "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",
     "_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
-    "_keyName", "_offset"];
+    "_keyName", "_offset", "_arrayID"];
 
 _menuDefs0 = _this select 0;
 _menuDef = _this select 1;
@@ -156,10 +156,12 @@ if (!_fastPartialResult && {_icon != ""}) then {
 };
 //-----------------------------------------------------------------------------
 if (_caption != "") then {
+    _arrayID = count GVAR(menuActionData);
     _actionOptions = [_action, _subMenu, _multiReselect];
+    GVAR(menuActionData) set [_arrayID, _actionOptions];
 
     // TODO: Consider changing _action array item from string to type code.
-    _action = format ["%1 call %2", _actionOptions, QUOTE(FUNC(execute))];
+    _action = format ["%1 call %2", _arrayID, QUOTE(FUNC(execute))];
 };
 //-----------------------------------------------------------------------------
 _result = [];
