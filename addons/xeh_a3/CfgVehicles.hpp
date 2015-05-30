@@ -106,28 +106,44 @@ class CfgVehicles {
         //    delete Eventhandlers;
     };
     class B_Story_SF_Captain_F: B_Soldier_base_F {
-        //    delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_Story_Protagonist_F: B_Soldier_base_F {
-        //    delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_Story_Engineer_F: B_Soldier_base_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_Story_Pilot_F: B_Soldier_base_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_CTRG_soldier_GL_LAT_F: B_Soldier_base_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_CTRG_soldier_engineer_exp_F: B_Soldier_base_F {
-        //    delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_CTRG_soldier_M_medic_F: B_Soldier_base_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_CTRG_soldier_AR_A_F: B_Soldier_base_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class B_Soldier_F;
@@ -142,36 +158,50 @@ class CfgVehicles {
 
     class Civilian_F;
     class C_man_1: Civilian_F {
-        //                delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class C_man_hunter_1_F: C_man_1 {
-        //  delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class C_man_pilot_F: C_man_1 {
-        //  delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class C_journalist_F: C_man_1 {
         //   delete Eventhandlers;
     };
     class C_Driver_1_F: C_man_1 {
-        //  delete Eventhandlers;
+        //   delete Eventhandlers;
     };
     class C_Soldier_VR_F: C_man_1 {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class C_Orestes;
     class C_Nikos: C_Orestes {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class B_G_Soldier_F;
     class I_G_Story_SF_Captain_F: B_G_Soldier_F {
-        //delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class I_G_Story_Protagonist_F;
     class I_G_resistanceLeader_F: I_G_Story_Protagonist_F {
-        //delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class LandVehicle;
