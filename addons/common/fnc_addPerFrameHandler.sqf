@@ -39,8 +39,7 @@ if (!isNil "_func") then {
             _handle = (count GVAR(perFrameHandlerArray));
         };
     };
-    _publicHandle = count GVAR(PFHhandles);
-    GVAR(PFHhandles) set[_publicHandle, _handle];
+    _publicHandle = GVAR(PFHhandles) pushback _handle;
     _data = [_func, _delay, 0, diag_tickTime, _params, _publicHandle];
     GVAR(perFrameHandlerArray) set [_handle, _data];
 };
