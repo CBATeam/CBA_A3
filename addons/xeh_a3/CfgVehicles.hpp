@@ -81,11 +81,7 @@ class CfgVehicles {
 
         class Ship;
         class Ship_F: Ship {
-
                 class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
-
-        //    class Eventhandlers: Default_Extended_Eventhandlers{};
-        //    Stashed changes
         };
         class Boat_Civil_01_base_F: Ship_F {
             class Eventhandlers: Eventhandlers {
@@ -169,29 +165,6 @@ class CfgVehicles {
               //   delete Eventhandlers;
         };
 
-//
-//        class SoldierGB;
-//        class I_G_Soldier_base_F: SoldierGB {
-//             class Eventhandlers: Eventhandlers{
-//                DELETE_EVENTHANDLERS
-//             };
-//             //delete Eventhandlers; // Eventhandlers
- //       };
-
-        // class I_G_Soldier_F: I_G_Soldier_base_F
-        // class I_G_officer_F: I_G_Soldier_base_F
-        // class I_G_Soldier_lite_F: I_G_Soldier_base_F
-        // class I_G_Soldier_SL_F: I_G_Soldier_base_F
-        // class I_G_Soldier_TL_F: I_G_Soldier_base_F
-        // class I_G_Soldier_AR_F: I_G_Soldier_base_F
-        // class I_G_medic_F: I_G_Soldier_base_F
-        // class I_G_engineer_F: I_G_Soldier_base_F
-        // class I_G_Soldier_exp_F: I_G_Soldier_base_F
-        // class I_G_Soldier_GL_F: I_G_Soldier_base_F
-        // class I_G_Soldier_M_F: I_G_Soldier_base_F
-        // class I_G_Soldier_LAT_F: I_G_Soldier_base_F
-
-// Stashed changes
         class B_G_Soldier_F;
         class I_G_Story_SF_Captain_F: B_G_Soldier_F {
               //delete Eventhandlers; // Eventhandlers
@@ -206,11 +179,7 @@ class CfgVehicles {
             class Eventhandlers;
         };
         class Car_F: Car {
-
                 class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
-//
-    //        class Eventhandlers: Default_Extended_Eventhandlers{};
-// Stashed changes
         };
         class Quadbike_01_base_F: Car_F {
         //                delete Eventhandlers; // Eventhandlers
@@ -256,11 +225,7 @@ class CfgVehicles {
 
         class Tank;
         class Tank_F: Tank {
-
                 class Eventhandlers: DefaultEventHandlers { EXTENDED_EVENTHANDLERS };
-//
-  //          class Eventhandlers: Default_Extended_Eventhandlers{};
-// Stashed changes
         };
 
         class APC_Tracked_02_base_F: Tank_F {
