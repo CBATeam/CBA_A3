@@ -48,10 +48,10 @@ class Extended_init_Eventhandlers {
         class C_man_pilot_F /* : C_man_1 */ {
                 SLX_BIS = "";
         };
-        class C_man_journalist_F /* : C_man_1 */ {
+        class C_journalist_F /* : C_man_1 */ {
                 SLX_BIS = "";
         };
-        class C_driver_1_F /* : C_man_1 */ {
+        class C_Driver_1_F /* : C_man_1 */ {
                 SLX_BIS = "";
         };
         class C_Soldier_VR_F /* : C_man_1 */ {
