@@ -103,7 +103,9 @@ class CfgVehicles {
 
     class B_Soldier_base_F;
     class B_RangeMaster_F: B_Soldier_base_F {
-        //    delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class B_Story_SF_Captain_F: B_Soldier_base_F {
         class Eventhandlers: Eventhandlers {
@@ -148,12 +150,14 @@ class CfgVehicles {
 
     class B_Soldier_F;
     class Underwear_F: B_Soldier_F {
-        //   delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class C_man_w_worker_F;
     class C_scientist_F: C_man_w_worker_F {
-        //   delete Eventhandlers;
+        class Eventhandlers { EXTENDED_EVENTHANDLERS };
     };
 
     class Civilian_F;
@@ -173,10 +177,10 @@ class CfgVehicles {
         };
     };
     class C_journalist_F: C_man_1 {
-        //   delete Eventhandlers;
+        class Eventhandlers { EXTENDED_EVENTHANDLERS };
     };
     class C_Driver_1_F: C_man_1 {
-        //   delete Eventhandlers;
+        class Eventhandlers { EXTENDED_EVENTHANDLERS };
     };
     class C_Soldier_VR_F: C_man_1 {
         class Eventhandlers: Eventhandlers {
