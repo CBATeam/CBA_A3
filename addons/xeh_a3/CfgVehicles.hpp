@@ -211,6 +211,12 @@ class CfgVehicles {
             DELETE_EVENTHANDLERS
         };
     };
+    class SoldierGB;
+    class I_G_Soldier_base_F: SoldierGB {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
 
     class LandVehicle;
     class Car: LandVehicle {
