@@ -69,10 +69,14 @@ class CfgVehicles {
 
     class Helicopter;
     class Helicopter_Base_F: Helicopter {
-        //  delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Heli_Attack_01_base_F: Helicopter_Base_F {
-        // delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Heli_Light_01_unarmed_base_F;
     class Heli_Light_01_civil_base_F: Heli_Light_01_unarmed_base_F {

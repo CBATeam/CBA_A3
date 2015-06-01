@@ -10,6 +10,9 @@ class Extended_firedBIS_Eventhandlers {
         {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
+        class Helicopter_Base_F: Helicopter {
+        		SLX_BIS = "";
+        };
         class Heli_Attack_01_base_F /* : Helicopter_Base_F */ {
                 SLX_BIS = "_this call (uinamespace getvariable 'BIS_fnc_effectFired')";
         };
