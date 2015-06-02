@@ -4,7 +4,7 @@
 #define MAJOR 1
 #define MINOR 1
 #define PATCHLVL 22
-#define BUILD 150530
+#define BUILD 150602
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
