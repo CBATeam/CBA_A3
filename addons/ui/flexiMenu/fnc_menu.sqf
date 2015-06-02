@@ -158,6 +158,7 @@ if (GVAR(hotKeyColor) == "") then {
 };
 
 //-----------------------------------------------------------------------------
+GVAR(menuActionData) = [];
 _commitList = [];
 { // forEach
     if (count _x >= 2) then { // all essential array items exist
