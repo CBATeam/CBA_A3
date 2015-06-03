@@ -4,6 +4,8 @@ CBA: Community Base Addons - OPTIONAL ADDONS
 cba_cache_disable.pbo                  => Dev Tool. Copy this to your cba\addons if you want to disable CBA's caching of functions.
 cba_diagnostic_disable_xeh_logging.pbo => Copy this to your cba\addons if you want to disable all the extra RPT logging.
 cba_diagnostic_enable_logging.pbo      => DEV Tool. Copy this to your cba\addons if you want to enable more logging.
+cba_enable_auto_xeh.pbo                => This will add extended event handler (XEH) functionality to units and vehicles that
+                                          are not XEH enabled. This may cause unforeseen side effects.
 
 
 Background on CBA Caching

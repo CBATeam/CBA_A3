@@ -28,14 +28,8 @@ if !(isClass _cfg) exitWith {
 _XEH = false;
 _init = _cfg >> "init";
 if (isText _init) then {
-    _initAr = toArray(getText(_init));
-    if (count _initAr > 11) then {
-        _ar = [];
-        for "_i" from 0 to 11 do {
-            PUSH(_ar,_initAr select _i);
-        };
-        _XEH = (toString(_ar) == "if(isNil'SLX");
-    };
+    _txt = getText(_init);
+    _XEH = _txt find "_this call SLX_XEH_EH_Init" > -1;
 };
 
 if (_XEH) then {
