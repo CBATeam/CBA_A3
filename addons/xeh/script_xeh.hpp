@@ -2,7 +2,7 @@
 // MACRO: EXTENDED_EVENTHANDLERS
 // XEH uses all existing event handlers
 /////////////////////////////////////////////////////////////////////////////////
-#define EXTENDED_EVENTHANDLERS init = QUOTE(if(isNil'SLX_XEH_MACHINE')then{call compile preProcessFileLineNumbers '\x\cba\addons\xeh\init_pre.sqf'};_this call SLX_XEH_EH_Init); \
+#define EXTENDED_EVENTHANDLERS init = "_this call SLX_XEH_EH_Init"; \
 fired              = "_this call SLX_XEH_EH_Fired"; \
 animChanged        = "_this call SLX_XEH_EH_AnimChanged"; \
 animDone           = "_this call SLX_XEH_EH_AnimDone"; \
