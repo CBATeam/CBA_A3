@@ -42,4 +42,4 @@ _fnc = {
     };
 };
 
-[_fnc, 3, [(count vehicles), (count allUnits), vehicles, allUnits]] call cba_fnc_addPerFrameHandler;
+[_fnc, 3, [0, 0, [], []]] call CBA_fnc_addPerFrameHandler;
