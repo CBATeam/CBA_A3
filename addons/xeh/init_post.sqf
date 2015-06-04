@@ -69,8 +69,11 @@ if (!isDedicated && {!isNull player}) then { // isNull player check is for Main 
     };
 };
 
-// XEH for non XEH supported addons
-//SLX_XEH_STR spawn COMPILE_FILE2(\x\cba\addons\xeh\supportMonitor.sqf);
+// Optional: XEH for non XEH supported addons
+#define SUPMON configFile>>"CfgSettings">>"CBA">>"XEH">>"supportMonitor"
+if (isNumber(SUPMON) && getNumber(SUPMON) == 1) then {
+    SLX_XEH_STR spawn COMPILE_FILE2(\x\cba\addons\xeh\supportMonitor.sqf);
+};
 
 SLX_XEH_MACHINE set [8, true];
 
