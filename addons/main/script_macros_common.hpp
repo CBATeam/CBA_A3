@@ -952,19 +952,11 @@ Example:
 Author:
     Jonpas
 ------------------------------------------- */
-#ifndef LSTRING
+#ifndef STRING_MACROS_GUARD
+    #def STRING_MACROS_GUARD
     #define LSTRING(var1) QUOTE(TRIPLES(STR,ADDON,var1))
-#endif
-
-#ifndef LESTRING
     #define LESTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
-#endif
-
-#ifndef CSTRING
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
-#endif
-
-#ifndef ECSTRING
     #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
 #endif
 
