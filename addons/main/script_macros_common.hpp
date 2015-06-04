@@ -953,7 +953,7 @@ Author:
     Jonpas
 ------------------------------------------- */
 #ifndef STRING_MACROS_GUARD
-    #def STRING_MACROS_GUARD
+#define STRING_MACROS_GUARD
     #define LSTRING(var1) QUOTE(TRIPLES(STR,ADDON,var1))
     #define LESTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
