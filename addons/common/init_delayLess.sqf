@@ -9,7 +9,7 @@ FUNC(addTriggerHandler) = {
     // #define DEBUG_MODE_FULL
     // [[_param1, _param2], { _param1 = _this select 0; _param2 = _this select 1; /* do stuff */}] call cba_fnc_addTriggerHandler;
     _c = count GVAR(d);
-    GVAR(d) set [_c, _this];
+    GVAR(d) pushBack _this;
 
     // Create the trigger, only on first use
     if (isNil QGVAR(d_trigger)) then {
