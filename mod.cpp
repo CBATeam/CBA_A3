@@ -1,8 +1,8 @@
-name = "Community Base Addons v1.1.22";
+name = "Community Base Addons v1.1.23";
 picture = "logo_cba_ca.paa";
 actionName = "Website";
 action = "http://dev.withsix.com/projects/cba-a3";
-description = "Bugtracker: http://dev.withsix.com/projects/cca<br />Documentation: http://dev.withsix.com/projects/cba-a3";
+description = "Bugtracker: https://github.com/CBATeam/CBA_A3/issues<br />Documentation: http://dev.withsix.com/projects/cba-a3";
 logo = "logo_cba_ca.paa";
 logoOver = "logo_cba_ca.paa";
 tooltip = "Community Base Addons";
