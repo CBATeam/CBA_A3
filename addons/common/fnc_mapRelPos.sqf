@@ -40,11 +40,11 @@ if (IS_STRING(_pos)) then {
     _pos = [];
     _ea = [];
     for "_i" from 0 to (((count _posArray)/2)-1) do {
-        _ea set [(count _ea), _posArray select _i];
+        _ea pushBack (_posArray select _i);
     };
     _na = [];
     for "_i" from (((count _posArray)/2)) to (((count _posArray))-1) do {
-        _na set [(count _na), _posArray select _i];
+        _na pushBack (_posArray select _i);
     };
     _pos set[0, (toString _ea)];
     _pos set[1, (toString _na)];
