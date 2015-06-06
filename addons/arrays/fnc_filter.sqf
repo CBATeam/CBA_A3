@@ -53,7 +53,7 @@ if (_inPlace) then {
 
 for "_i" from 0 to ((count _array) - 1) do {
     _x = _array select _i;
-    _arrayOut set [_i, call _filter];
+    _arrayOut pushBack (call _filter);
 };
 
 _arrayOut;
