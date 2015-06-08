@@ -238,11 +238,15 @@ class CfgVehicles {
 
     class Hatchback_01_base_F;
     class C_Hatchback_01_F: Hatchback_01_base_F {
-        //    delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Hatchback_01_sport_base_F;
     class C_Hatchback_01_sport_F: Hatchback_01_sport_base_F {
-        //    delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class Offroad_01_armed_base_F;
