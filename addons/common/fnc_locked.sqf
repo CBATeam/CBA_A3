@@ -2,10 +2,10 @@
 Function: CBA_fnc_locked
 
 Description:
-    A2/OA/TOH compatible locked function.
+    A3 compatible locked function.
 
-    The locked scripting command changed in TOH; it returns a number instead
-    of a boolean.
+    The locked scripting command returns a numeric value.
+    This function returns a boolean.
 
 Parameters:
     _object - The object the locked check is done for.
@@ -17,14 +17,10 @@ Examples:
     (end)
 
 Author:
-    Xeno
+    Killswitch
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 SCRIPT(locked);
 
-if (SLX_XEH_MACHINE select 14 > 1) then {
-    locked _this > 1
-} else {
-    locked _this
-}
+locked _this > 1
