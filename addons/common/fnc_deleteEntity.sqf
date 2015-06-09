@@ -20,33 +20,33 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-switch (typename _this) do {
+switch (typeName _this) do {
     case "ARRAY" : {
         {
-            _x call CBA_fnc_deleteentity;
+            _x call CBA_fnc_deleteEntity;
         } foreach _this;
     };
     case "OBJECT" : {
         if (vehicle _this != _this) then {
-            unassignvehicle _this;
-            _this setposasl [0,0,0];
+            unassignVehicle _this;
+            _this setPosASL [0,0,0];
         } else {
             if (count ((crew _this) - [_this]) > 0) then {
-                (crew _this) call CBA_fnc_deleteentity;
+                (crew _this) call CBA_fnc_deleteEntity;
             };
         };
-        deletevehicle _this;
+        deleteVehicle _this;
     };
     case "GROUP" : {
-        (units _this) call CBA_fnc_deleteentity;
-        {deletewaypoint _x} foreach (waypoints _this);
-        deletegroup _this;
+        (units _this) call CBA_fnc_deleteEntity;
+        {deleteWaypoint _x} foreach (wayPoints _this);
+        deleteGroup _this;
     };
     case "LOCATION" : {
-        deletelocation _this;
+        deleteLocation _this;
     };
     case "STRING" : {
-        deletemarker _this
+        deleteMarker _this
     };
-    default {deletevehicle _this};
+    default {deleteVehicle _this};
 };
