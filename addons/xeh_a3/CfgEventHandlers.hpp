@@ -136,19 +136,19 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_SUV_01_F /* : SUV_01_base_F */ {
-                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};(_this select 0) execVM ""\A3\soft_f_gamma\SUV_01\scripts\clock.sqf"";";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class Van_01_base_F /* : Truck_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Van_01_transport_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Van_01_fuel_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class I_G_Van_01_fuel_F /* : Van_01_base_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\soft_f_gamma\van_01\scripts\clock.sqf"";if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
         };
         class C_Kart_01_F /* : C_Kart_01_F_Base  */{
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
