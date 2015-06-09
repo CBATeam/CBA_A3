@@ -42,27 +42,6 @@ CBA_actionHelper = QUOTE(PATHTO(actionHelper));
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
-// DirectCall, using single-frame-code-executioner by Xeno
-// The directCall function will execute (with parameters) next frame, and without delay
-// [[1,2,3], {mycode to execute}] call FUNC(directCall);
-// _obj = [[1,2,3], {mycode to execute}] call FUNC(directCall); waitUntil {isNull _obj}; // waits until the code has completed
-GVAR(call_i) = 0;
-FUNC(directCallInt) = { (_this getVariable QGVAR(params)) call (_this getVariable QGVAR(code)); deleteVehicle _this };
-FUNC(directCall) = {
-    private ["_obj", "_objName"];
-    PARAMS_2(_params,_code);
-
-    INC(GVAR(call_i));
-    _objName = format[QGVAR(call_obj_%1), GVAR(call_i)];
-    _obj = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
-    missionNameSpace setVariable [_objName, _obj];
-    _obj setVariable [QGVAR(params), _params];
-    _obj setVariable [QGVAR(code), _code];
-    _obj addEventHandler ["killed", compile format[QUOTE(%1 call FUNC(directCallInt); %1 = nil), _objName]];
-    _obj setDamage 1;
-    _obj;
-};
-
 CBA_logic = objNull;
 
 FUNC(log) = {
