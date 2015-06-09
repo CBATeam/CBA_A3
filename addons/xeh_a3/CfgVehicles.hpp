@@ -229,10 +229,14 @@ class CfgVehicles {
         //                delete Eventhandlers; // Eventhandlers
     };
     class C_Quadbike_01_F: Quadbike_01_base_F {
-        //   delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class I_G_Quadbike_01_F: Quadbike_01_base_F {
-        //   delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
 
@@ -249,23 +253,79 @@ class CfgVehicles {
         };
     };
 
+    class Offroad_01_base_F;
     class Offroad_01_armed_base_F;
+    class Offroad_01_civil_base_F;
+    class Offroad_01_military_base_F;
+    class Offroad_01_repair_military_base_F;
+    class C_Offroad_01_F: Offroad_01_civil_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class Offroad_01_repair_base_F: Offroad_01_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class B_G_Offroad_01_repair_F: Offroad_01_repair_military_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class I_G_Offroad_01_F: Offroad_01_military_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
     class I_G_Offroad_01_armed_F: Offroad_01_armed_base_F {
-        //    delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class SUV_01_base_F;
     class C_SUV_01_F: SUV_01_base_F {
-        //   delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+
+    class Truck_F;
+    class Van_01_base_F: Truck_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class Van_01_fuel_base_F;
+    class Van_01_transport_base_F;
+    class I_G_Van_01_transport_F: Van_01_transport_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class C_Van_01_fuel_F: Van_01_fuel_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class I_G_Van_01_fuel_F: Van_01_fuel_base_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class C_Kart_01_F_Base;
     class C_Kart_01_F: C_Kart_01_F_Base {
-        //  delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class Wheeled_APC_F;
     class APC_Wheeled_03_base_F: Wheeled_APC_F {
-        // delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class Tank;
@@ -274,14 +334,20 @@ class CfgVehicles {
     };
 
     class APC_Tracked_02_base_F: Tank_F {
-        // delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class MBT_03_base_F: Tank_F {
-        //delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class B_APC_Tracked_01_base_F;
     class B_APC_Tracked_01_AA_F: B_APC_Tracked_01_base_F {
-        // delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 };
