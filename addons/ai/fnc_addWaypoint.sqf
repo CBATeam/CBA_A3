@@ -21,7 +21,7 @@ Optional:
 
 Example:
     (begin example)
-    [this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]]
+    [this, this, 300, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_addWaypoint
     (end)
 
 Returns:
@@ -31,11 +31,11 @@ Author:
     Rommel
 
 ---------------------------------------------------------------------------- */
-
-private ["_group","_position","_radius"];
+#include "script_component.hpp"
+private ["_group","_position"];
 _group = (_this select 0) call CBA_fnc_getgroup;
 _position = (_this select 1) call CBA_fnc_getpos;
-_radius = if (count _this > 2) then {_this select 2} else {0};
+DEFAULT_PARAM(2,_radius,0);
 
 private ["_count", "_waypoint"];
 _count = count _this;
