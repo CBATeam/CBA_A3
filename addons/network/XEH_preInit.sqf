@@ -65,8 +65,7 @@ OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
 
 GVAR(init) = false;
 
-if (SLX_XEH_MACHINE select 3) then
-{
+if (SLX_XEH_MACHINE select 3) then {
     ISNIL(MARKERS,[]); // Sync Markers for JIP
 
     PREP(opc);
@@ -94,25 +93,17 @@ if (SLX_XEH_MACHINE select 3) then
 
     // Looped Weather Sync
     /*
-    SLX_XEH_STR spawn
-    {
+    SLX_XEH_STR spawn {
         // Every 60 Seconds weather sync
-        while { true } do
-        {
+        while { true } do {
             sleep 60;
             call FUNC(sync);
         };
     };
     */
 } else {
-    FUNC(id) =
-    {
-        if (player == player) then
-        {
-            str(player);
-        } else {
-            "client";
-        };
+    FUNC(id) = {
+        if (player == player) then { str(player); } else { "client"; };
     };
 };
 
