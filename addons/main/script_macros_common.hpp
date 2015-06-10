@@ -933,6 +933,33 @@ Author:
     private [#A,#B,#C,#D,#E,#F,#G,#H,#I]; \
     EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I)
 
+/* -------------------------------------------
+Macro: xSTRING()
+    Get full string identifier from a stringtable owned by this component.
+
+Parameters:
+    VARIABLE - Partial name of global variable owned by this component [Any].
+
+Example:
+    ADDON is CBA_Balls.
+    (begin example)
+        // Localized String (localize command must still be used with it)
+        LSTRING(Example); // STR_CBA_Balls_Example;
+        // Config String (note the $)
+        CSTRING(Example); // $STR_CBA_Balls_Example;
+    (end)
+
+Author:
+    Jonpas
+------------------------------------------- */
+#ifndef STRING_MACROS_GUARD
+#define STRING_MACROS_GUARD
+    #define LSTRING(var1) QUOTE(TRIPLES(STR,ADDON,var1))
+    #define LESTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
+    #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
+    #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
+#endif
+
 
 /* -------------------------------------------
 Group: Managing Function Parameters
