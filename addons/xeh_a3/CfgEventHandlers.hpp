@@ -60,6 +60,9 @@ class Extended_init_Eventhandlers {
         class C_Soldier_VR_F /* : C_man_1 */ {
                 SLX_BIS = "";
         };
+        class VirtualMan_F /* : Civilian_F */ {
+                XEH_BIS =  "_this call bis_fnc_initVirtualUnit;";
+        };
         class B_Story_SF_Captain_F /* : B_Soldier_base_F */ {
                 XEH_BIS = "(_this select 0) setIdentity ""EPA_B_Miller""";
         };
@@ -94,6 +97,9 @@ class Extended_init_Eventhandlers {
                 XEH_BIS = "";
         };
         class I_G_Story_Protagonist_F /* : B_G_Soldier_F */ {
+                XEH_BIS = "";
+        };
+        class I_G_resistanceLeader_F /* : I_G_Story_Protagonist_F */ {
                 XEH_BIS = "";
         };
         class MBT_03_base_F /* : Tank_F */ {
@@ -191,6 +197,12 @@ class Extended_init_Eventhandlers {
         };
         class Heli_Light_01_civil_base_F /* : Heli_Light_01_base_F */ {
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", [], false] call bis_fnc_initVehicle;};";
+        };
+        class Static_Designator_01_base_F /* : StaticWeapon */ {
+                SLX_BIS = "(_this select 0) execVM ""\A3\Static_F_Mark\Designator_01\Scripts\init.sqf""";
+        };
+        class Static_Designator_02_base_F /* : StaticWeapon */ {
+                SLX_BIS = "(_this select 0) execVM ""\A3\Static_F_Mark\Designator_02\Scripts\init.sqf""";
         };
 };
 class Extended_killed_Eventhandlers {
