@@ -34,17 +34,11 @@ PARAMS_3(_params,_index,_defaultValue);
 
 private "_value";
 
-if (!isNil "_defaultValue") then {
-    _value = _defaultValue;
-};
+if (!isNil "_defaultValue") then { _value = _defaultValue; };
 
-if (!isNil "_params" && {(typeName _params) == "ARRAY"} && {count _params > _index} && {!isNil { _params select _index }}) then {
-    _value = _params select _index;
+if (!isNil "_params" && { IS_ARRAY(_params) } && {count _params > _index} && {!isNil { ARG_1(_params,_index) }}) then {
+    _value = ARG_1(_params,_index);
 };
 
 // Return.
-if (isNil "_value") then {
-    nil;
-} else {
-    _value;
-};
+if (isNil "_value") then { nil; } else { _value; };
