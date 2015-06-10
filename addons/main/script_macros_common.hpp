@@ -873,7 +873,7 @@ Parameters:
 Example:
     (begin example)
         _array = ["fred", 156.8, 120.9];
-        EXPLODE_3(_array,_name_height,_weight);
+        EXPLODE_3(_array,_name,_height,_weight);
     (end)
 
 Author:
