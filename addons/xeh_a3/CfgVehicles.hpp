@@ -62,9 +62,20 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class StaticWeapon;
     class StaticMortar;
     class Mortar_01_Base_F: StaticMortar {
         delete Eventhandlers;
+    };
+    class Static_Designator_01_base_F: StaticWeapon {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class Static_Designator_02_base_F: StaticWeapon {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class Helicopter;
@@ -191,7 +202,9 @@ class CfgVehicles {
             DELETE_EVENTHANDLERS
         };
     };
-
+    class VirtualMan_F: Civilian_F {
+        class Eventhandlers { EXTENDED_EVENTHANDLERS };
+    };
     class C_Orestes;
     class C_Nikos: C_Orestes {
         class Eventhandlers: Eventhandlers {
@@ -205,7 +218,11 @@ class CfgVehicles {
             DELETE_EVENTHANDLERS
         };
     };
-    class I_G_Story_Protagonist_F;
+    class I_G_Story_Protagonist_F: B_G_Soldier_F {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
     class I_G_resistanceLeader_F: I_G_Story_Protagonist_F {
         class Eventhandlers: Eventhandlers {
             DELETE_EVENTHANDLERS
