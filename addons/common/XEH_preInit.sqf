@@ -67,7 +67,7 @@ FUNC(log) = {
 };
 
 // Nil check
-if (isNil "CBA_NIL_CHECKED") then { CBA_NIL_CHECKED = false };
+ISNILS(CBA_NIL_CHECKED,false);
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
