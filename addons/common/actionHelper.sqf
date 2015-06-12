@@ -13,10 +13,8 @@
 private ["_param", "_code", "_args"];
 _param = _this select 3;
 
-if (typeName _param == "ARRAY")then{
-    _code = _param select 0;
-    _args = _param select 1;
-
+if (IS_ARRAY(_param))then{
+    EXPLODE_2(_param,_code,_args);
     [_this select 0,_this select 1,_this select 2,_args] call _code;
 } else {
     _code = _param;
