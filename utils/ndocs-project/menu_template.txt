@@ -49,11 +49,11 @@ File: Overview (no auto-title, overview.txt)
 Index: Index (Everything)
 	
 Group: Project  {
-	Link: Wiki  (http://dev.withsix.com/projects/cca/wiki)
+	Link: Wiki  (https://github.com/CBATeam/CBA_A3/wiki)
 	Link: Reference (https://dev.withsix.com/docs/cba_a3/index.html)
-	Link: Forums  (http://dev.withsix.com/disqus/index/cca)
-	Link: Issues  (http://dev.withsix.com/projects/cca/issues)
-	Link: Download  (http://dev.withsix.com/projects/cca/files)
+	Link: Forums  (http://forums.bistudio.com/showthread.php?178224-CBA-Community-Base-Addons-ARMA-3)
+	Link: Issues  (https://github.com/CBATeam/CBA_A3/issues)
+	Link: Download  (https://github.com/CBATeam/CBA_A3/releases)
 	}  # Group: Project
    
 	File: Overview (doc_overview.txt)

@@ -49,11 +49,11 @@ Index: Index (Everything)
 
 Group: Project  {
 
-   Link: Wiki  (http://dev.withsix.com/projects/cca/wiki)
+   Link: Wiki  (https://github.com/CBATeam/CBA_A3/wiki)
    Link: Reference  (https://dev.withsix.com/docs/cba_a3/index.html)
-   Link: Forums  (http://dev.withsix.com/disqus/index/cca)
-   Link: Issues  (http://dev.withsix.com/projects/cca/issues)
-   Link: Download  (http://dev.withsix.com/projects/cca/files)
+   Link: Forums  (http://forums.bistudio.com/showthread.php?178224-CBA-Community-Base-Addons-ARMA-3)
+   Link: Issues  (https://github.com/CBATeam/CBA_A3/issues)
+   Link: Download  (https://github.com/CBATeam/CBA_A3/releases)
    }  # Group: Project
 
 Group: Functions  {
@@ -234,6 +234,7 @@ Group: Functions  {
 
          File: CBA_fnc_capitalize  (strings/fnc_capitalize.sqf)
          File: CBA_fnc_find  (strings/fnc_find.sqf)
+         File: CBA_fnc_floatToString  (strings/fnc_floatToString.sqf)
          File: CBA_fnc_formatElapsedTime  (strings/fnc_formatElapsedTime.sqf)
          File: CBA_fnc_formatNumber  (strings/fnc_formatNumber.sqf)
          File: CBA_fnc_leftTrim  (strings/fnc_leftTrim.sqf)
