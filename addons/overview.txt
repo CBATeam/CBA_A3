@@ -22,7 +22,6 @@ Features:
 
 Online:
 
-The latest documentation can be,
+The latest documentation can be
 
-* Viewed at https://dev.withsix.com/docs/cba/index.html
-* Downloaded from https://dev.withsix.com/projects/cca/files
+* Viewed online <here at https://github.com/CBATeam/CBA_A3/tree/master/docs/>
