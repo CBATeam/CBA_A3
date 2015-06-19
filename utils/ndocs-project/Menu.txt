@@ -50,7 +50,7 @@ Index: Index (Everything)
 Group: Project  {
 
    Link: Wiki  (https://github.com/CBATeam/CBA_A3/wiki)
-   Link: Reference  (https://dev.withsix.com/docs/cba_a3/index.html)
+   Link: Reference  (http://cbateam.github.io/CBA_A3/docs/files/overview-txt.html)
    Link: Forums  (http://forums.bistudio.com/showthread.php?178224-CBA-Community-Base-Addons-ARMA-3)
    Link: Issues  (https://github.com/CBATeam/CBA_A3/issues)
    Link: Download  (https://github.com/CBATeam/CBA_A3/releases)
