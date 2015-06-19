@@ -50,7 +50,7 @@ Index: Index (Everything)
 Group: Project  {
 
    Link: Wiki  (http://dev.withsix.com/projects/cca/wiki)
-   Link: Reference  (http://dev.withsix.com/docs/cba/index.html)
+   Link: Reference  (https://dev.withsix.com/docs/cba_a3/index.html)
    Link: Forums  (http://dev.withsix.com/disqus/index/cca)
    Link: Issues  (http://dev.withsix.com/projects/cca/issues)
    Link: Download  (http://dev.withsix.com/projects/cca/files)

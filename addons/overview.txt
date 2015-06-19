@@ -24,4 +24,4 @@ Online:
 
 The latest documentation can be
 
-* Viewed online <here at https://github.com/CBATeam/CBA_A3/tree/master/docs/>
+* Viewed online <here at https://dev.withsix.com/docs/cba_a3/index.html>
