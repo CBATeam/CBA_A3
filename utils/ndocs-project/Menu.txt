@@ -229,6 +229,7 @@ Group: Functions  {
 
       File: script_macros_common.hpp  (main/script_macros_common.hpp)
       File: script_macros_mission.hpp  (main/script_macros_mission.hpp)
+      File: script_xeh.hpp  (xeh/script_xeh.hpp)
 
       Group: Strings  {
 
@@ -266,7 +267,6 @@ Group: Functions  {
          File: CBA_fnc_vectSubtract  (vectors/fnc_vectSubtract.sqf)
          }  # Group: Vectors
 
-      File: xeh/script_xeh.hpp  (xeh/script_xeh.hpp)
       }  # Group: Misc
 
    }  # Group: Functions
