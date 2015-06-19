@@ -6,19 +6,29 @@ Description:
  specified action.
 
 Parameters:
- _modName            - Name of the registering mod [String]
+ _modName           - Name of the registering mod [String]
  _actionName        - Name of the action to get [String]
 
 Returns:
- Keyboard entry.
+ Keyboard entry - array of parameters of the same form as used for CBA_fnc_addKeybind
 
 Examples:
     (begin example)
- _index = ["your_mod", "openMenu"] call cba_fnc_getKeybind;
+    _entry = ["your_mod", "openMenu"] call CBA_fnc_getKeybind;
 
- if (_index >= 0) then {
-    _handler = cba_keybind_handlers select _index;
- };
+    if (!isNil "_entry") then {
+        _modName     = _entry select 0; // Name of the registering mod ("your_mod")
+        _actionName  = _entry select 1; // Id of the key action ("openMenu")
+        _displayName = _entry select 2; // Pretty name for the key action or an array with ["pretty name", "tool tip"]
+        _downCode    = _entry select 3; // Code to execute on keyDown
+        _upCode      = _entry select 4; // Code to execute on keyUp
+        _keyBind     = _entry select 5; // [DIK code, [shift, ctrl, alt]]
+        _holdKey     = _entry select 6; // Will the key fire every frame while held down? (bool)
+        _holdDelay   = _entry select 7; // How long after keydown will the key event fire, in seconds (float)
+        
+        ...
+        ...
+    };
     (end example)
 
 Author:
