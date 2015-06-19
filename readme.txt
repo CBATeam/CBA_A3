@@ -4,7 +4,7 @@ CBA: Community Base Addons
 ==========================
 
 Online wiki at https://github.com/CBATeam/CBA_A3/wiki
-Online function library reference at https://dev.withsix.com/projects/cca/wiki/Function_and_Macro_Libraries
+Online function library reference at https://cbateam.github.io/CBA_A3/docs/files/overview-txt.html
 
 
 CBA: License
