@@ -12,13 +12,17 @@ PREP_SUB(gui,onButtonClick_delete);
 PREP_SUB(gui,onButtonClick_default);
 PREP_SUB(gui,onButtonClick_cancel);
 PREP_SUB(gui,onComboChanged);
-PREP_SUB(gui,onKeyDown);
-PREP_SUB(gui,onKeyUp);
+//PREP_SUB(gui,onKeyDown);
+//PREP_SUB(gui,onKeyUp);
+PREP_SUB(gui,onKeyDownNextGen);
+PREP_SUB(gui,onKeyUpNextGen);
 PREP_SUB(gui,onLBDblClick);
 PREP_SUB(gui,updateGUI);
 
 GVAR(input) = [];
 GVAR(modifiers) = [];
+GVAR(firstKey) = [];
+GVAR(secondKey) = [];
 GVAR(waitingForInput) = false;
 GVAR(modPrettyNames) = [[],[]];
 GVAR(defaultKeybinds) = [[],[]];
@@ -47,7 +51,7 @@ GVAR(activeBinds) = [];
 //                ],
 //   ]
 // ]
-// 
+//
 // This clears the keybind registry.
 // profileNamespace setVariable ["cba_keybinding_registry", []];
 
