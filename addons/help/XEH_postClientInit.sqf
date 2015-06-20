@@ -64,7 +64,7 @@ _h = _pkeynam spawn {
                 _alt = _mod select 2;
                 _keyn = [_key,_shift,_ctrl,_alt] call _this;
     
-                _text = _text + format ["    %1: %2<br/>", _displayName, _keyn];
+                _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyn];
             };
             _text = _text + "<br/>";
         };
