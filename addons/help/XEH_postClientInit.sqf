@@ -20,10 +20,10 @@ _pkeynam = {
     _shift = if(_shift) then {42} else {0};
     _ctrl = if(_ctrl) then {56} else {0};
     _alt = if(_alt) then {29} else {0};
-    _keys = [_shift,_ctrl,_alt,_key];
+    _keys = [_shift,_ctrl,_alt,_dikKey];
     _keystrg = "^";
     {
-        _knaml = call compile format["format['%2',%1]",(keyName _x),"%1"];
+        _knaml = [cba_keybinding_dikDecToStringTable, format ["%1", _x]] call BIS_fnc_getFromPairs;
         _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
         _knam = "^";
         {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
@@ -57,12 +57,12 @@ _h = _pkeynam spawn {
                     _displayName = (_actionEntry select 0) select 0;
                 };
                 _keyBind = _actionEntry select 1;
-                _key = _keyBind select 0;
+                _dikKey = _keyBind select 0;
                 _mod = _keyBind select 1;
                 _shift = _mod select 0;
                 _ctrl = _mod select 1;
                 _alt = _mod select 2;
-                _keyn = [_key,_shift,_ctrl,_alt] call _this;
+                _keyn = call _this;
     
                 _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyn];
             };
