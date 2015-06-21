@@ -42,8 +42,8 @@ if (isNil "cba_fnc_registerKeybind") then {
     _text ctrlSetText "Double click any action to change its binding";
 
     // Add handler to prevent key passthrough when waiting for input for binding (to block Esc).
-    _display displayAddEventHandler ["KeyDown", "_this call cba_keybinding_fnc_onKeyDownNextGen"];
-    _display displayAddEventHandler ["KeyUp", "_this call cba_keybinding_fnc_onKeyUpNextGen"];
+    _display displayAddEventHandler ["KeyDown", "_this call cba_keybinding_fnc_onKeyDown"];
+    _display displayAddEventHandler ["KeyUp", "_this call cba_keybinding_fnc_onKeyUp"];
 
 
 };
