@@ -56,6 +56,9 @@ _h = _pkeynam spawn {
                 if (typeName _displayName == typeName []) then {
                     _displayName = (_actionEntry select 0) select 0;
                 };
+                // Escape < and >
+                _displayName = [_displayName, "<", "&lt;"] call (uiNamespace getVariable "CBA_fnc_replace");
+                _displayName = [_displayName, ">", "&gt;"] call (uiNamespace getVariable "CBA_fnc_replace");
                 _keyBind = _actionEntry select 1;
                 _dikKey = _keyBind select 0;
                 _mod = _keyBind select 1;
