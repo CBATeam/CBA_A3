@@ -33,6 +33,9 @@ _pkeynam = {
     _keystrg = [_keystrg, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
     _keystrg = [_keystrg, "^+", ""] call (uiNamespace getVariable "CBA_fnc_replace");
     _keystrg = [_keystrg, "^", "None"] call (uiNamespace getVariable "CBA_fnc_replace");
+    _keystrg = [_keystrg, "LAlt", "Alt"] call (uiNamespace getVariable "CBA_fnc_replace");
+    _keystrg = [_keystrg, "LCtrl", "Ctrl"] call (uiNamespace getVariable "CBA_fnc_replace");
+    _keystrg = [_keystrg, "LShift", "Shift"] call (uiNamespace getVariable "CBA_fnc_replace");
     _keystrg
 };
 
