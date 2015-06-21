@@ -28,10 +28,10 @@ _pkeynam = {
         _knam = "^";
         {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
         _knam = [_knam, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-        _keystrg = _keystrg + "-" + _knam;
+        _keystrg = _keystrg + "+" + _knam;
     } forEach _keys;
     _keystrg = [_keystrg, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "^-", ""] call (uiNamespace getVariable "CBA_fnc_replace");
+    _keystrg = [_keystrg, "^+", ""] call (uiNamespace getVariable "CBA_fnc_replace");
     _keystrg = [_keystrg, "^", "None"] call (uiNamespace getVariable "CBA_fnc_replace");
     _keystrg
 };
