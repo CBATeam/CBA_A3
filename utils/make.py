@@ -72,7 +72,7 @@ dssignfile = ""
 prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.txt", "license.txt", "logo_cba_ca.paa"]
+importantFiles = ["mod.cpp", "README.txt", "license.txt", "logo_cba_ca.paa","optional\README.TXT"]
 versionFiles = ["mod.cpp"]
 
 ###############################################################################
