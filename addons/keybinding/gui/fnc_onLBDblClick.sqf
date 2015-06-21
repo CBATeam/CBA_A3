@@ -28,6 +28,7 @@ GVAR(input) = [];
 GVAR(modifiers) = [];
 GVAR(firstKey) = [];
 GVAR(secondKey) = [];
+GVAR(thirdKey) = [];
 
 // Mark that we're waiting so that onKeyDown handler blocks input (Esc key)
 GVAR(waitingForInput) = true;
@@ -46,7 +47,7 @@ _fnc = {
     _combo = _data select 4;
     _display = _data select 5;
 
-    if(count GVAR(secondKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
+    if(count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
         [(_this select 1)] call cba_fnc_removePerFrameHandler;
         if (GVAR(waitingForInput)) then {
             // Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.

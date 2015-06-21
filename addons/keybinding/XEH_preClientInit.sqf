@@ -23,6 +23,7 @@ GVAR(input) = [];
 GVAR(modifiers) = [];
 GVAR(firstKey) = [];
 GVAR(secondKey) = [];
+GVAR(thirdKey) = [];
 GVAR(waitingForInput) = false;
 GVAR(modPrettyNames) = [[],[]];
 GVAR(defaultKeybinds) = [[],[]];
