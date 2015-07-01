@@ -49,22 +49,22 @@ PARAMS_2(_position,_zRef);
 _position = (_position call CBA_fnc_getpos);
 
 private ["_zSize","_zDir","_zShape","_zPos"];
-switch (typename _zRef) do {
+switch (typeName _zRef) do {
     case "STRING" : {
         _zSize = markerSize _zRef;
         _zDir = markerDir _zRef;
-        _zShape = tolower (markerShape _zRef);
+        _zShape = toLower (markerShape _zRef);
         _zPos = (_zRef call CBA_fnc_getpos);
     };
     case "OBJECT" : {
         _zSize = triggerArea _zRef;
         _zDir = _zSize select 2;
         _zShape = if (_zSize select 3) then {"rectangle"} else {"ellipse"};
-        _zPos = getpos _zRef;
+        _zPos = getPos _zRef;
     };
 };
 
-if (isnil "_zSize") exitwith {false};
+if (isNil "_zSize") exitWith {false};
 
 _position = [_zPos,_position,_zDir] call CBA_fnc_vectRotate2D;
 
@@ -85,10 +85,13 @@ _zx = _zsize select 0;
 _zy = _zsize select 1;
 
 switch (_zShape) do {
-    case "ellipse" : {
+    case "ellipse": {
         ((_dx^2)/(_zx^2) + (_dy^2)/(_zy^2)) < 1
     };
-    case "rectangle" : {
+    case "rectangle": {
         (abs _dx < _zx) and (abs _dy < _zy)
+    };
+    default {
+        false
     };
 };
