@@ -72,7 +72,7 @@ dssignfile = ""
 prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.txt", "license.txt", "logo_cba_ca.paa","optional\README.TXT"]
+importantFiles = ["mod.cpp", "README.txt", "license.txt", "logo_cba_ca.paa","README_optionals.txt"]
 versionFiles = ["mod.cpp"]
 
 ###############################################################################
@@ -357,14 +357,14 @@ def copy_optionals_for_building(mod,pbos):
     try:
 
         #special server.pbo processing
-        files = glob.glob(os.path.join(release_dir, project, "optional", "*.pbo"))
+        files = glob.glob(os.path.join(release_dir, project, "optionals", "*.pbo"))
         for file in files:
             file_name = os.path.basename(file)
             #print ("Adding the following file: {}".format(file_name))
             pbos.append(file_name)
-            pbo_path = os.path.join(release_dir, project, "optional", file_name)
+            pbo_path = os.path.join(release_dir, project, "optionals", file_name)
             sigFile_name = file_name +"."+ key_name + ".bisign"
-            sig_path = os.path.join(release_dir, project, "optional", sigFile_name)
+            sig_path = os.path.join(release_dir, project, "optionals", sigFile_name)
             if (os.path.isfile(pbo_path)):
                 print("Moving {} for processing.".format(pbo_path))
                 shutil.move(pbo_path, os.path.join(release_dir, project, "addons", file_name))
@@ -386,9 +386,9 @@ def copy_optionals_for_building(mod,pbos):
             #userconfig requires special handling since it is not a PBO source folder.
             #CfgConvert fails to build server.pbo if userconfig is not found in P:\
             if (dir_name == "userconfig"):
-                if (os.path.exists(os.path.join(release_dir, project, "optional", dir_name))):
-                    shutil.rmtree(os.path.join(release_dir, project, "optional", dir_name), True)
-                shutil.copytree(os.path.join(optionals_root,dir_name), os.path.join(release_dir, project, "optional", dir_name))
+                if (os.path.exists(os.path.join(release_dir, project, "optionals", dir_name))):
+                    shutil.rmtree(os.path.join(release_dir, project, "optionals", dir_name), True)
+                shutil.copytree(os.path.join(optionals_root,dir_name), os.path.join(release_dir, project, "optionals", dir_name))
                 destination = os.path.join(work_drive,dir_name)
             else:
                 destination = os.path.join(module_root,dir_name)
@@ -431,11 +431,11 @@ def cleanup_optionals(mod):
                 if (dir_name == "README.TXT"):
                     file_name = dir_name
                 src_file_path = os.path.join(release_dir, project, "addons", file_name)
-                dst_file_path = os.path.join(release_dir, project, "optional", file_name)
+                dst_file_path = os.path.join(release_dir, project, "optionals", file_name)
 
                 sigFile_name = "{}.{}.bisign".format(file_name,key_name)
                 src_sig_path = os.path.join(release_dir, project, "addons", sigFile_name)
-                dst_sig_path = os.path.join(release_dir, project, "optional", sigFile_name)
+                dst_sig_path = os.path.join(release_dir, project, "optionals", sigFile_name)
 
                 if (os.path.isfile(src_file_path)):
                     #print("Preserving {}".format(file_name))
@@ -946,7 +946,7 @@ See the make.cfg file for additional build options.
         # Project module Root
         module_root_parent = os.path.abspath(os.path.join(os.path.join(work_drive, prefix), os.pardir))
         module_root = cfg.get(make_target, "module_root", fallback=os.path.join(make_root_parent, "addons"))
-        optionals_root = os.path.join(module_root_parent, "optional")
+        optionals_root = os.path.join(module_root_parent, "optionals")
         extensions_root = os.path.join(module_root_parent, "extensions")
 
         commit_id = get_commit_ID()
@@ -1072,7 +1072,7 @@ See the make.cfg file for additional build options.
                     print_green("Created: {}".format(os.path.join(private_key_path, key_name + ".biprivatekey")))
                     print("Removing any old signature keys...")
                     purge(os.path.join(module_root, release_dir, project, "addons"), "^.*\.bisign$","*.bisign")
-                    purge(os.path.join(module_root, release_dir, project, "optional"), "^.*\.bisign$","*.bisign")
+                    purge(os.path.join(module_root, release_dir, project, "optionals"), "^.*\.bisign$","*.bisign")
                     purge(os.path.join(module_root, release_dir, project, "keys"), "^.*\.bikey$","*.bikey")
                 else:
                     print_error("Failed to create key!")
