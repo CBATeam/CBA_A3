@@ -38,7 +38,7 @@ switch (typeName _zRef) do {
         };
     };
     case "OBJECT" : {
-        if ((triggerArea _zRef) isEqualTo []) then {
+        if !((triggerArea _zRef) isEqualTo []) then {
             _zSize = triggerArea _zRef;
             _zDir = _zSize select 2;
             _zRect = _zSize select 3;
