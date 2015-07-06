@@ -354,8 +354,14 @@ class CfgFunctions
             // CBA_fnc_randPos
             class randPos
             {
-                description = "A function used to randomize a position around a given center";
+                description = "A function used to randomize a position around a given center.";
                 file = "\x\cba\addons\common\fnc_randPos.sqf";
+            };
+            // CBA_fnc_randPosArea
+            class randPosArea
+            {
+                description = "A function used to randomize a position within a given zone.";
+                file = "\x\cba\addons\common\fnc_randPosArea.sqf";
             };
             // CBA_fnc_realHeight
             class realHeight
