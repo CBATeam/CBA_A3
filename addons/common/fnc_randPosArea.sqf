@@ -11,7 +11,7 @@ Parameters:
     _perimeter - True to return only positions on the area perimeter [Boolean, defaults to false]
 
 Returns:
-    Position [Array]
+    Position [Array] (Empty array if non-area object/marker was given)
 
 Examples:
    (begin example)
@@ -30,18 +30,24 @@ _perimeter = if (count _this > 1) then {_this select 1} else {false};
 
 switch (typeName _zRef) do {
     case "STRING" : {
-        _zSize = markerSize _zRef;
-        _zDir = markerDir _zRef;
-        _zRect = (markerShape _zRef) == "RECTANGLE";
-        _zPos = markerPos _zRef;
+        if !((markerShape _zRef) in ["RECTANGLE","ELLIPSE"]) then {
+            _zSize = markerSize _zRef;
+            _zDir = markerDir _zRef;
+            _zRect = (markerShape _zRef) == "RECTANGLE";
+            _zPos = markerPos _zRef;
+        };
     };
     case "OBJECT" : {
-        _zSize = triggerArea _zRef;
-        _zDir = _zSize select 2;
-        _zRect = _zSize select 3;
-        _zPos = getPos _zRef;
+        if ((triggerArea _zRef) isEqualTo []) then {
+            _zSize = triggerArea _zRef;
+            _zDir = _zSize select 2;
+            _zRect = _zSize select 3;
+            _zPos = getPos _zRef;
+        };
     };
 };
+
+if (isNil "_zSize") exitWith {[]};
 
 private ["_x","_y","_a","_b","_rho","_phi","_x1","_x2","_y1","_y2"];
 if (_zRect) then {
