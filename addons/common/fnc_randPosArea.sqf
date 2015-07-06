@@ -30,7 +30,7 @@ _perimeter = if (count _this > 1) then {_this select 1} else {false};
 
 switch (typeName _zRef) do {
     case "STRING" : {
-        if !((markerShape _zRef) in ["RECTANGLE","ELLIPSE"]) then {
+        if ((markerShape _zRef) in ["RECTANGLE","ELLIPSE"]) then {
             _zSize = markerSize _zRef;
             _zDir = markerDir _zRef;
             _zRect = (markerShape _zRef) == "RECTANGLE";
