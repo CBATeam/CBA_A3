@@ -43,8 +43,6 @@ switch (typeName _zRef) do {
     };
 };
 
-if (_zSize isEqualTo []) exitWith {[0,0,0]};
-
 private ["_x","_y","_a","_b","_rho","_phi","_x1","_x2","_y1","_y2"];
 if (_zRect) then {
     _x = _zSize select 0;
