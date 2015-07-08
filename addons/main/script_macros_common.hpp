@@ -1024,7 +1024,7 @@ Author:
 ------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
     private #NAME; \
-    NAME = [RETNIL(_this), INDEX, DEF_VALUE] call CBA_fnc_defaultParam; \
+    NAME = RETNNIL(_this) param [INDEX, DEF_VALUE]; \
     TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
