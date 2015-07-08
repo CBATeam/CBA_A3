@@ -881,7 +881,7 @@ Author:
 ------------------------------------------- */
 #define EXPLODE_1_SYS(ARRAY,A) A = ARRAY param [0]
 #define EXPLODE_1(ARRAY,A) EXPLODE_1_SYS(ARRAY,A); TRACE_1("EXPLODE_1, " + QUOTE(ARRAY),A)
-#define EXPLODE_1_PVT(ARRAY,A) ARRAY params [#A]; TRACE_2("EXPLODE_1, " + QUOTE(ARRAY),A)
+#define EXPLODE_1_PVT(ARRAY,A) ARRAY params [#A]; TRACE_1("EXPLODE_1, " + QUOTE(ARRAY),A)
 
 #define EXPLODE_2_SYS(ARRAY,A,B) EXPLODE_1_SYS(ARRAY,A); B = ARRAY param [1]
 #define EXPLODE_2(ARRAY,A,B) EXPLODE_2_SYS(ARRAY,A,B); TRACE_2("EXPLODE_2, " + QUOTE(ARRAY),A,B)
