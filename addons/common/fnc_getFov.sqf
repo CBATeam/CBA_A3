@@ -31,14 +31,14 @@ Authors:
 
 private ["_zoomRef", "_widthReal", "_safeZoneAspectRatio", "_screenAspectRatio", "_pos", "_xPos", "_deltaX", "_trigRatio", "_fovH", "_fovV", "_fovVRads", "_configFov", "_zoom"];
 
-_zoomRef = if (IS_SCALAR(_this)) then {_this} else {0.7};
+_zoomRef = if (IS_SCALAR(_this)) then {_this} else {0.75};
 
 _widthReal = safeZoneW / 2;
 _safeZoneAspectRatio = (safeZoneW / safeZoneH);
 _screenAspectRatio = _safeZoneAspectRatio * (4 / 3);
 
 _pos = positionCameraToWorld [__xOff, 0, __dist];
-_xPos = worldToScreen (_pos select 0);
+_xPos = (worldToScreen _pos) select 0;
 _deltaX = _xPos - 0.5;
 
 _trigRatio = ((_widthReal * __xOff) / (__dist * _deltaX));
