@@ -24,5 +24,12 @@ Author:
 
 PARAMS_1(_angle);
 
-// Return simplified value
-_angle % 180
+// Normalize to 0-360
+_angle = [_angle] call CBA_fnc_simplifyAngle;
+
+// If within second half of range then move back a phase
+if (_angle > 180) then {
+    _angle = _angle - 360;
+};
+
+_angle
