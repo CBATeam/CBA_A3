@@ -1024,7 +1024,7 @@ Author:
 ------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
     private #NAME; \
-    NAME = RETNNIL(_this) param [INDEX, DEF_VALUE]; \
+    NAME = RETNIL(_this) param [INDEX, DEF_VALUE]; \
     TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
