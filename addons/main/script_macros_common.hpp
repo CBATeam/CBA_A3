@@ -1023,8 +1023,9 @@ Author:
     Spooner
 ------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
-    private #NAME; \
-    NAME = RETNIL(_this) param [INDEX, DEF_VALUE]; \
+    private [#NAME,"_this"]; \
+    ISNILS(_this,[]); \
+    NAME = _this param [INDEX, DEF_VALUE]; \
     TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------
