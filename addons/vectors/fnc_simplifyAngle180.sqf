@@ -2,41 +2,34 @@
 Function: CBA_fnc_simplifyAngle180
 
 Description:
- Returns an equivalent angle to the specified angle in the range -180 to 180.
- If the inputted angle is in the range -180 to 180, it will be returned unchanged.
+    Returns an equivalent angle to the specified angle in the range -180 to 180.
+    If the input angle is in the range -180 to 180, it will be returned unchanged.
 
 Parameters:
- _angle the un-adjusted angle.
+    _angle - The unadjusted angle [Number]
 
 Returns:
- the equivalent angle in range -180 to 180.
+    Simplified angle [Number]
 
 Examples:
-    (begin example)
-
-    (end)
+   (begin example)
+   _angle = [912] call CBA_fnc_simplifyAngle180;
+   (end)
 
 Author:
-    Vigilante, courtesy by -=ACE=- of Simcentric
+    SilentSpike 2015-27-07
 ---------------------------------------------------------------------------- */
-scriptName "fnc_simplifyAngle180.sqf";
 
 #include "script_component.hpp"
-SCRIPT(simplifyAngle180);
-
-
- private ["_angle"];
 
 PARAMS_1(_angle);
 
-while {_angle <= -180} do {
-      // Angle is too negative.
-      _angle = _angle + 360;
-};
-while {_angle > 180} do {
-      // Angle is too positive.
-      _angle = _angle - 360;
+// Normalize to 0-360
+_angle = [_angle] call CBA_fnc_simplifyAngle;
+
+// If within second half of range then move back a phase
+if (_angle > 180) then {
+    _angle = _angle - 360;
 };
 
-// return value
 _angle
