@@ -32,4 +32,6 @@ SCRIPT(defaultParam);
 // -----------------------------------------------------------------------------
 PARAMS_3(_params,_index,_defaultValue);
 
+ISNILS(_params,[]);
+
 _params param [_index,_defaultValue]
