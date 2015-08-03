@@ -45,6 +45,4 @@ for "_i" from _charCount2 to 0 step -1 do {
     if !((_char select _i) in WHITE_SPACE) exitWith { _numWhiteSpaces = _charCount2 - _i };
 };
 // select Only None White Space Part
-_string = _string select [0,_charCount - _numWhiteSpaces];
-
-_string; // Return.
+_string select [0,_charCount - _numWhiteSpaces]; // Return.

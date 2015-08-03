@@ -27,9 +27,6 @@ Author:
 SCRIPT(substring_new);
 
 // ----------------------------------------------------------------------------
-
-params["_string","_startIndex","_lenth"];
+PARAMS_3(_string, _startIndex, _lenth);
 // Cut out String
-_ret = _string select [_startIndex, _lenth];
-
-_ret // Return
+_string select [_startIndex, _lenth]; // Return
