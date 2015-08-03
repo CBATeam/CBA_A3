@@ -20,6 +20,7 @@ Example:
 
 Author:
     Spooner
+    joko // Jonas
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -31,19 +32,19 @@ SCRIPT(rightTrim);
 
 PARAMS_1(_string);
 
-private ["_chars", "_whiteSpace", "_pos","_numWhiteSpaces"];
+private ["_char","_charCount", "_charCount2", "_pos","_numWhiteSpaces"];
+// Convert String to Array for Find White Spaces
+_char = toArray _string;
+// Count String Lenth
+_charCount = count _string;
+// substract 1 for faster for(L43)
+_charCount2 = _charCount - 1;
 
-_chars = toArray _string;
-_whiteSpace = WHITE_SPACE;
-
-// Right trim.
-
-_numWhiteSpaces = count _chars;
-
-for "_pos" from ((count _chars) - 1) to 0 step -1 do {
-    if !((_chars select _pos) in _whiteSpace) exitWith { _numWhiteSpaces = (count _chars) - _pos - 1 };
+// find White Spaces and count than
+for "_i" from _charCount2 to 0 step -1 do {
+    if !((_char select _i) in WHITE_SPACE) exitWith { _numWhiteSpaces = _charCount2 - _i };
 };
+// select Only None White Space Part
+_string = _string select [0,_charCount - _numWhiteSpaces];
 
-_chars resize ((count _chars) - _numWhiteSpaces);
-
-toString _chars; // Return.
+_string; // Return.
