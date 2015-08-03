@@ -6,8 +6,8 @@ Description:
 
 Parameters:
     _string - String to make replacement in [String]
-    _startIndex - Index to start the substring extraction [String]
-    _endIndex - Index to end the substring extraction [String]
+    _startIndex - Index to start the substring extraction [Number]
+    _lenth - lenth of the extracted substring [Number]
 
 Returns:
     String extracted [String]
