@@ -2,7 +2,7 @@
 Function: CBA_fnc_substring
 
 Description:
-    Extracts the index-based substring from a string.(deprec)
+    Extracts the index-based substring from a string.
 
 Parameters:
     _string - String to make replacement in [String]
