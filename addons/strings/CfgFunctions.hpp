@@ -18,8 +18,14 @@ class CfgFunctions
             // CBA_fnc_substring
             class substring
             {
-                description = "Extracts the index-based substring from a string.";
+                description = "Extracts the index-based substring from a string.(deprec)";
                 file = "\x\cba\addons\strings\fnc_substring.sqf";
+            };
+            // CBA_fnc_substring_new
+            class substring_new
+            {
+                description = "Retrieves a substring of this instance. The substring starts at a specified character position and has a specified length.";
+                file = "\x\cba\addons\strings\fnc_substring_new.sqf";
             };
             // CBA_fnc_find
             class find
