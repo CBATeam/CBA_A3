@@ -7,7 +7,7 @@ Description:
 Parameters:
     _string - String to make replacement in [String]
     _startIndex - Index to start the substring extraction [Number]
-    _lenth - lenth of the extracted substring [Number](Optinal) if is not netten than 
+    _lenth - lenth of the extracted substring [Number](Optinal) if is not set than from _startIndex to end
 
 Returns:
     String extracted [String]
