@@ -1,0 +1,23 @@
+#!/bin/sh
+
+NATURALDOCS=`which NaturalDocs 2>/dev/null`
+
+if [ -z $NATURALDOCS ]
+then
+  echo "Could not find NaturalDocs in the PATH. Install it or adjust the PATH environment variable."
+  exit 1
+fi
+
+echo -e "\n=== Compiling documentation ===\n"
+if [ ! -d ../docs ]
+then
+  mkdir ../docs
+fi
+$NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
+
+
+echo -e "\n=== Packaging documentation ===\n"
+rm -f ../store/function_library.tar
+fakeroot tar -C ../ -cf ../store/function_library.tar docs
+
+exit 0

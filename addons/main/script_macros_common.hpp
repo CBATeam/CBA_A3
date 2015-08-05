@@ -879,59 +879,41 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define EXPLODE_1_SYS(ARRAY,A) A = if (IS_ARRAY((ARRAY))) then { (ARRAY) select 0 } else { ARRAY }
+#define EXPLODE_1_SYS(ARRAY,A) A = ARRAY param [0]
 #define EXPLODE_1(ARRAY,A) EXPLODE_1_SYS(ARRAY,A); TRACE_1("EXPLODE_1, " + QUOTE(ARRAY),A)
-#define EXPLODE_1_PVT(ARRAY,A) \
-    private #A; \
-    EXPLODE_1(ARRAY,A)
+#define EXPLODE_1_PVT(ARRAY,A) ARRAY params [#A]; TRACE_1("EXPLODE_1, " + QUOTE(ARRAY),A)
 
-#define EXPLODE_2_SYS(ARRAY,A,B) EXPLODE_1_SYS(ARRAY,A); B = (ARRAY) select 1
+#define EXPLODE_2_SYS(ARRAY,A,B) EXPLODE_1_SYS(ARRAY,A); B = ARRAY param [1]
 #define EXPLODE_2(ARRAY,A,B) EXPLODE_2_SYS(ARRAY,A,B); TRACE_2("EXPLODE_2, " + QUOTE(ARRAY),A,B)
-#define EXPLODE_2_PVT(ARRAY,A,B) \
-    private [#A,#B]; \
-    EXPLODE_2(ARRAY,A,B)
+#define EXPLODE_2_PVT(ARRAY,A,B) ARRAY params [#A,#B]; TRACE_2("EXPLODE_2, " + QUOTE(ARRAY),A,B)
 
-#define EXPLODE_3_SYS(ARRAY,A,B,C) EXPLODE_2_SYS(ARRAY,A,B); C = (ARRAY) select 2
+#define EXPLODE_3_SYS(ARRAY,A,B,C) EXPLODE_2_SYS(ARRAY,A,B); C = ARRAY param [2]
 #define EXPLODE_3(ARRAY,A,B,C) EXPLODE_3_SYS(ARRAY,A,B,C); TRACE_3("EXPLODE_3, " + QUOTE(ARRAY),A,B,C)
-#define EXPLODE_3_PVT(ARRAY,A,B,C) \
-    private [#A,#B,#C]; \
-    EXPLODE_3(ARRAY,A,B,C)
+#define EXPLODE_3_PVT(ARRAY,A,B,C) ARRAY params [#A,#B,#C]; TRACE_3("EXPLODE_3, " + QUOTE(ARRAY),A,B,C)
 
-#define EXPLODE_4_SYS(ARRAY,A,B,C,D) EXPLODE_3_SYS(ARRAY,A,B,C); D = (ARRAY) select 3
+#define EXPLODE_4_SYS(ARRAY,A,B,C,D) EXPLODE_3_SYS(ARRAY,A,B,C); D = ARRAY param [3]
 #define EXPLODE_4(ARRAY,A,B,C,D) EXPLODE_4_SYS(ARRAY,A,B,C,D); TRACE_4("EXPLODE_4, " + QUOTE(ARRAY),A,B,C,D)
-#define EXPLODE_4_PVT(ARRAY,A,B,C,D) \
-    private [#A,#B,#C,#D]; \
-    EXPLODE_4(ARRAY,A,B,C,D)
+#define EXPLODE_4_PVT(ARRAY,A,B,C,D) ARRAY params [#A,#B,#C,#D]; TRACE_4("EXPLODE_4, " + QUOTE(ARRAY),A,B,C,D)
 
-#define EXPLODE_5_SYS(ARRAY,A,B,C,D,E) EXPLODE_4_SYS(ARRAY,A,B,C,D); E = (ARRAY) select 4
+#define EXPLODE_5_SYS(ARRAY,A,B,C,D,E) EXPLODE_4_SYS(ARRAY,A,B,C,D); E = ARRAY param [4]
 #define EXPLODE_5(ARRAY,A,B,C,D,E) EXPLODE_5_SYS(ARRAY,A,B,C,D,E); TRACE_5("EXPLODE_5, " + QUOTE(ARRAY),A,B,C,D,E)
-#define EXPLODE_5_PVT(ARRAY,A,B,C,D,E) \
-    private [#A,#B,#C,#D,#E]; \
-    EXPLODE_5(ARRAY,A,B,C,D,E)
+#define EXPLODE_5_PVT(ARRAY,A,B,C,D,E) ARRAY params [#A,#B,#C,#D,#E]; TRACE_5("EXPLODE_5, " + QUOTE(ARRAY),A,B,C,D,E)
 
-#define EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F) EXPLODE_5_SYS(ARRAY,A,B,C,D,E); F = (ARRAY) select 5
+#define EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F) EXPLODE_5_SYS(ARRAY,A,B,C,D,E); F = ARRAY param [5]
 #define EXPLODE_6(ARRAY,A,B,C,D,E,F) EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F); TRACE_6("EXPLODE_6, " + QUOTE(ARRAY),A,B,C,D,E,F)
-#define EXPLODE_6_PVT(ARRAY,A,B,C,D,E,F) \
-    private [#A,#B,#C,#D,#E,#F]; \
-    EXPLODE_6(ARRAY,A,B,C,D,E,F)
+#define EXPLODE_6_PVT(ARRAY,A,B,C,D,E,F) ARRAY params [#A,#B,#C,#D,#E,#F]; TRACE_6("EXPLODE_6, " + QUOTE(ARRAY),A,B,C,D,E,F)
 
-#define EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G) EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F); G = (ARRAY) select 6
+#define EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G) EXPLODE_6_SYS(ARRAY,A,B,C,D,E,F); G = ARRAY param [6]
 #define EXPLODE_7(ARRAY,A,B,C,D,E,F,G) EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G); TRACE_7("EXPLODE_7, " + QUOTE(ARRAY),A,B,C,D,E,F,G)
-#define EXPLODE_7_PVT(ARRAY,A,B,C,D,E,F,G) \
-    private [#A,#B,#C,#D,#E,#F,#G]; \
-    EXPLODE_7(ARRAY,A,B,C,D,E,F,G)
+#define EXPLODE_7_PVT(ARRAY,A,B,C,D,E,F,G) ARRAY params [#A,#B,#C,#D,#E,#F,#G]; TRACE_7("EXPLODE_7, " + QUOTE(ARRAY),A,B,C,D,E,F,G)
 
-#define EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H) EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G); H = (ARRAY) select 7
+#define EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H) EXPLODE_7_SYS(ARRAY,A,B,C,D,E,F,G); H = ARRAY param [7]
 #define EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H) EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H); TRACE_8("EXPLODE_8, " + QUOTE(ARRAY),A,B,C,D,E,F,G,H)
-#define EXPLODE_8_PVT(ARRAY,A,B,C,D,E,F,G,H) \
-    private [#A,#B,#C,#D,#E,#F,#G,#H]; \
-    EXPLODE_8(ARRAY,A,B,C,D,E,F,G,H)
+#define EXPLODE_8_PVT(ARRAY,A,B,C,D,E,F,G,H) ARRAY params [#A,#B,#C,#D,#E,#F,#G,#H]; TRACE_8("EXPLODE_8, " + QUOTE(ARRAY),A,B,C,D,E,F,G,H)
 
-#define EXPLODE_9_SYS(ARRAY,A,B,C,D,E,F,G,H,I) EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H); I = (ARRAY) select 8
+#define EXPLODE_9_SYS(ARRAY,A,B,C,D,E,F,G,H,I) EXPLODE_8_SYS(ARRAY,A,B,C,D,E,F,G,H); I = ARRAY param [8]
 #define EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I) EXPLODE_9_SYS(ARRAY,A,B,C,D,E,F,G,H,I); TRACE_9("EXPLODE_9, " + QUOTE(ARRAY),A,B,C,D,E,F,G,H,I)
-#define EXPLODE_9_PVT(ARRAY,A,B,C,D,E,F,G,H,I) \
-    private [#A,#B,#C,#D,#E,#F,#G,#H,#I]; \
-    EXPLODE_9(ARRAY,A,B,C,D,E,F,G,H,I)
+#define EXPLODE_9_PVT(ARRAY,A,B,C,D,E,F,G,H,I) ARRAY params [#A,#B,#C,#D,#E,#F,#G,#H,#I]; TRACE_9("EXPLODE_9, " + QUOTE(ARRAY),A,B,C,D,E,F,G,H,I)
 
 /* -------------------------------------------
 Macro: xSTRING()
@@ -955,7 +937,7 @@ Author:
 #ifndef STRING_MACROS_GUARD
 #define STRING_MACROS_GUARD
     #define LSTRING(var1) QUOTE(TRIPLES(STR,ADDON,var1))
-    #define LESTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
+    #define ELSTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
     #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
 #endif
@@ -1041,8 +1023,9 @@ Author:
     Spooner
 ------------------------------------------- */
 #define DEFAULT_PARAM(INDEX,NAME,DEF_VALUE) \
-    private #NAME; \
-    NAME = [RETNIL(_this), INDEX, DEF_VALUE] call CBA_fnc_defaultParam; \
+    private [#NAME,"_this"]; \
+    ISNILS(_this,[]); \
+    NAME = _this param [INDEX, DEF_VALUE]; \
     TRACE_3("DEFAULT_PARAM",INDEX,NAME,DEF_VALUE)
 
 /* -------------------------------------------

@@ -26,7 +26,7 @@ SCRIPT(vect2Polar);
 PARAMS_3(_vx,_vy,_vz);
 
 _mag = _this call BIS_fnc_magnitude;
-_elev = asin (_vz / _mag);
+_elev = if (_mag > 0) then { asin (_vz / _mag) } else { 0 };
 _dir = _this call CBA_fnc_vectDir;
 
 [_mag, _dir, _elev];

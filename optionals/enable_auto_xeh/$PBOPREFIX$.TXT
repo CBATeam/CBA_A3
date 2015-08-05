@@ -1,0 +1,5 @@
+x\cba\addons\enable_auto_xeh
+prefix=x\cba\addons\enable_auto_xeh
+product=Arma 3
+version=001
+Pbo Type is: Arma
