@@ -5,7 +5,7 @@ Internal Function: CBA_network_fnc_cv
 #include "script_component.hpp"
 #define __scriptname fnc_cv
 private ["_veh", "_pos", "_c", "_dir", "_object", "_varName", "_init", "_valid"];
-PARAMS_2(_veh,_pos);
+params ["_veh","_pos"];
 _c = count _this;
 if (_c > 2) then { _dir = _this select 2 } else { _dir = 0 };
 if (_c > 3) then { _varName = _this select 3 } else { _varName = "" };

@@ -25,7 +25,7 @@ Author:
 */
 #include "script_component.hpp"
 
-PARAMS_1(_marker);
+params ["_marker"];
 TRACE_1(_this);
 
 private ["_markerConsistent", "_return"];
