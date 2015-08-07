@@ -45,7 +45,7 @@ private
     "_trg"
 ];
 
-PARAMS_1(_pos);
+params ["_pos"];
 _area = ["AREA:", "area:", [],_this] call CBA_fnc_getArg;
 _activation = ["ACT:", "act:", [],_this] call CBA_fnc_getArg;
 _statements = ["STATE:", "state:", [],_this] call CBA_fnc_getArg;

@@ -28,7 +28,7 @@ Author:
 
 SCRIPT(findEntity);
 
-PARAMS_2(_type,_position);
+params ["_type","_position"];
 DEFAULT_PARAM(2,_radius,50);
 
 // this function doesn't return the nearest entity, neither did the previous version

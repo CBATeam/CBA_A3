@@ -35,7 +35,7 @@ private ["_turn","_out","_unit","_vehicle","_cfg","_forceHideDriver","_phase","_
         "_forceHideGunner","_hatchAnimation","_attenuateCargo","_index"];
 _turn = false;
 _out = false;
-PARAMS_1(_unit);
+params ["_unit"];
 _vehicle = vehicle _unit;
 
 _cfg = configFile >> "CfgVehicles" >> (typeOf _vehicle);
@@ -53,7 +53,7 @@ if (_vehicle != _unit) then {
             _canHideGunner = getNumber(_turret >> "canHideGunner");
             _forceHideGunner = getNumber(_turret >> "forceHideGunner");
             _turn = (_canHideGunner == 1 && _forceHideGunner == 0);
-            
+
             _hatchAnimation = getText(_turret >> "animationSourceHatch");
             _out = (_vehicle animationPhase _hatchAnimation) > 0;
 
@@ -62,7 +62,7 @@ if (_vehicle != _unit) then {
                 _attenuateCargo = getArray(_cfg >> "soundAttenuationCargo");
                 if ((count _attenuateCargo) > 0) then {
                     _index = (count _attenuateCargo)-1; // wait for command to get cargo index
-                    
+
                     if (_index > -1) then {
                         if(_index > (count _attenuateCargo)-1) then {
                             _index = (count _attenuateCargo)-1;

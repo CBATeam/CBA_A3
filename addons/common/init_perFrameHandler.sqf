@@ -15,7 +15,7 @@ PREP(perFrameEngine);
 FUNC(blaHandler) = {
     // All functions get _logic as _this param. Params inside _logic getVariable "params";
     private ["_logic"];
-    PARAMS_1(_params);
+    params ["_params"];
     _logic = _params select 0;
 
     if (isNil "_logic") exitWith {
@@ -56,7 +56,7 @@ FUNC(blaHandler) = {
 
 
 FUNC(addPerFrameHandlerLogic) = {
-    PARAMS_1(_function);
+    params ["_function"];
     DEFAULT_PARAM(1,_params,[]);
     DEFAULT_PARAM(2,_delay,0);
     DEFAULT_PARAM(3,_start,{});

@@ -24,7 +24,7 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(isUnitGetOutAnim);
-PARAMS_1(_unit);
+params ["_unit"];
 private [
     "_animationState",
     "_moves",

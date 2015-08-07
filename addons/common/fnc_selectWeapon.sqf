@@ -24,7 +24,7 @@ Author:
 SCRIPT(selectWeapon);
 
 private ["_cfg", "_muz", "_ar"];
-PARAMS_2(_unit,_weap);
+params ["_unit","_weap"];
 _cfg = (configFile >> "CfgWeapons" >> _weap >> "muzzles");
 if (isArray _cfg) then {
     _ar = getArray _cfg;

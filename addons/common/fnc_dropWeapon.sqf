@@ -32,7 +32,7 @@ SCRIPT(dropWeapon);
 #define __ar (weapons _unit)
 
 private ["_unit", "_item", "_holder"];
-PARAMS_1(_unit);
+params ["_unit"];
 if (typeName _unit != "OBJECT") exitWith {
     TRACE_2("Unit not Object",_unit,_item);
     false

@@ -26,7 +26,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_2(_position,_array);
+params ["_position","_array"];
 
 DEFAULT_PARAM(2,_radius,10^5);
 DEFAULT_PARAM(3,_code,{true});

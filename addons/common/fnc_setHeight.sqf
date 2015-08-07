@@ -24,7 +24,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_2(_object,_height);
+params ["_object","_height"];
 DEFAULT_PARAM(2,_type,1);
 
 private "_position";

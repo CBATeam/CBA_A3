@@ -25,7 +25,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(nearPlayer);
 
-PARAMS_2(_unit,_distance);
+params ["_unit","_distance"];
 
 private "_position";
 _position = _unit call CBA_fnc_getpos;

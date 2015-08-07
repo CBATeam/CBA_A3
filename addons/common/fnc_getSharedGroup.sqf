@@ -21,7 +21,7 @@ Author:
 
 #define SIDES [east, west, resistance, civilian, sideLogic]
 
-PARAMS_1(_side);
+params ["_side"];
 
 private ["_group", "_idx", "_center"];
 _group = grpNull;

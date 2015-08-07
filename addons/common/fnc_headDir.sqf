@@ -56,7 +56,7 @@ SCRIPT(headDir);
 
 private["_azimuth", "_angle", "_dif", "_infov", "_threed", "_do"];
 
-PARAMS_1(_unit);
+params ["_unit"];
 DEFAULT_PARAM(1,_object,_unit);
 _threed = false;
 

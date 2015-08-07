@@ -31,7 +31,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(addWeaponCargoGlobal);
 
-PARAMS_2(_unit,_item);
+params ["_unit","_item"];
 DEFAULT_PARAM(2,_count,1);
 if (typeName _unit != "OBJECT") exitWith
 {

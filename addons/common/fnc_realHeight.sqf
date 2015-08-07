@@ -23,6 +23,6 @@ Author:
 SCRIPT(realHeight);
 
 private "_obj";
-PARAMS_1(_obj);
+params ["_obj"];
 
 ((getpos _obj) select 2) + (_obj distance (getpos _obj))
