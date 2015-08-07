@@ -32,8 +32,7 @@ SCRIPT(split);
 // ----------------------------------------------------------------------------
 
 private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
-params ["_input"];
-DEFAULT_PARAM(1,_separator,"");
+params ["_input", ["_separator",""]];
 _split = [];
 _index = 0;
 _inputCount = count _input;

@@ -30,8 +30,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(removeMagazineCargoGlobal);
 
-params ["_unit","_item"];
-DEFAULT_PARAM(2,_count,1);
+params ["_unit","_item", ["_count",1]];
 
 if (typeName _unit != "OBJECT") exitWith
 {

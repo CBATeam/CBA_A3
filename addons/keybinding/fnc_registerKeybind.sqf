@@ -16,10 +16,7 @@ diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called cba_fnc_registerKe
 
 _nullKeybind = [-1,false,false,false];
 
-params ["_modName","_actionName","_code"];
-DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
-DEFAULT_PARAM(4,_overwrite,false);
-DEFAULT_PARAM(5,_keypressType,"KeyDown");
+params ["_modName","_actionName","_code", ["_defaultKeybind",_nullKeybind], ["_overwrite",false], ["_keypressType","KeyDown"]];
 
 // Confirm correct formatting of keybind array is [DIK, shift, ctrl, alt]
 if (count _defaultKeybind != 4) then {

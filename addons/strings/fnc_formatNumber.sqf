@@ -64,10 +64,7 @@ SCRIPT(formatNumber);
 
 // -----------------------------------------------------------------------------
 
-params ["_number"];
-DEFAULT_PARAM(1,_integerWidth,DEFAULT_INTEGER_WIDTH);
-DEFAULT_PARAM(2,_decimalPlaces,DEFAULT_DECIMAL_PLACES);
-DEFAULT_PARAM(3,_separateThousands,DEFAULT_SEPARATE_THOUSANDS);
+params ["_number", ["_integerWidth",DEFAULT_INTEGER_WIDTH], ["_decimalPlaces",DEFAULT_DECIMAL_PLACES], ["_separateThousands",DEFAULT_SEPARATE_THOUSANDS]];
 
 private ["_integerPart", "_string", "_numIntegerDigits", "_decimalPoint",
     "_thousandsSeparator", "_basePlaces"];

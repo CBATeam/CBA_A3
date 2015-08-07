@@ -36,10 +36,7 @@ diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKe
 
 _nullKeybind = [-1,false,false,false];
 
-params ["_modName","_actionName","_fleximenuDef"];
-DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
-DEFAULT_PARAM(4,_overwrite,false);
-DEFAULT_PARAM(5,_keypressType,"KeyDown");
+params ["_modName","_actionName","_fleximenuDef", ["_defaultKeybind",_nullKeybind], ["_overwrite",false], ["_keypressType","KeyDown"]];
 
 // Help the user out by always setting the keycode param of the fleximenu
 // def array to []. Give them a warning if it wasn't.

@@ -21,8 +21,7 @@ SCRIPT(localEvent);
 
 // ----------------------------------------------------------------------------
 
-params ["_eventType"];
-DEFAULT_PARAM(1,_params,nil);
+params ["_eventType", ["_params",nil]];
 
 private "_handlers";
 
