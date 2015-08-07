@@ -37,10 +37,7 @@ Author:
 
 #define NULL    "$null$"
 
-PARAMS_1(_group);
-DEFAULT_PARAM(1,_position,_group);
-DEFAULT_PARAM(2,_radius,100);
-DEFAULT_PARAM(3,_count,3);
+params ["_group", ["_position",_group], ["_radius",100], ["_count",3]];
 
 _this =+ _this;
 if (count _this > 3) then {
