@@ -12,7 +12,7 @@ PREP(help);
 PREP(describe);
 
 FUNC(readConfig) = {
-    PARAMS_1(_type);
+    params ["_type"];
     _config = configFile >> _type;
     _hash = [[], []] call (uiNamespace getVariable "CBA_fnc_hashCreate");
     _hash2 = [[], ""] call (uiNamespace getVariable "CBA_fnc_hashCreate");
@@ -29,7 +29,7 @@ FUNC(readConfig) = {
 };
 
 FUNC(process) = {
-    PARAMS_3(_h1,_h2,_h3);
+    params ["_h1","_h2","_h3"];
     _ar = [];
     [_h1, {_entry = format["%1, v%2, (%3)<br/>Author: %4", _key, [_h3, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_h2, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_value, ", "] call (uiNamespace getVariable "CBA_fnc_join")]; PUSH(_ar,_entry) }] call (uiNamespace getVariable "CBA_fnc_hashEachPair");
     [_ar, "<br/><br/>"] call (uiNamespace getVariable "CBA_fnc_join");

@@ -3,7 +3,7 @@
 #include "script_dialog_defines.hpp"
 
 disableSerialization;
-PARAMS_1(_ctrl);
+params ["_ctrl"];
 private ["_idc", "_cfg"];
 
 //NOTE: preinit hasn't defined fnc variables yet on main menu, do it manually for now
