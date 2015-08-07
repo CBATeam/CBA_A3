@@ -23,7 +23,7 @@ Author:
 SCRIPT(hashRem);
 
 // ----------------------------------------------------------------------------
-PARAMS_2(_hash,_key);
+params ["_hash","_key"];
 
 private ["_defaultValue"];
 

@@ -37,7 +37,7 @@ SCRIPT(hashEachPair);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_2(_hash,_code);
+params ["_hash","_code"];
 
 private ["_keys", "_values"];
 
