@@ -16,7 +16,7 @@ diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called cba_fnc_registerKe
 
 _nullKeybind = [-1,false,false,false];
 
-PARAMS_3(_modName,_actionName,_code);
+params ["_modName","_actionName","_code"];
 DEFAULT_PARAM(3,_defaultKeybind,_nullKeybind);
 DEFAULT_PARAM(4,_overwrite,false);
 DEFAULT_PARAM(5,_keypressType,"KeyDown");

@@ -25,7 +25,7 @@ Examples:
         _keyBind     = _entry select 5; // [DIK code, [shift, ctrl, alt]]
         _holdKey     = _entry select 6; // Will the key fire every frame while held down? (bool)
         _holdDelay   = _entry select 7; // How long after keydown will the key event fire, in seconds (float)
-        
+
         ...
         ...
     };
@@ -37,7 +37,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_2(_modName,_actionName);
+params ["_modName","_actionName"];
 
 _modId = (GVAR(handlers) select 0) find _modName;
 if(_modId == -1) exitWith {nil};

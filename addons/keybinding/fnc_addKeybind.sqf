@@ -45,7 +45,7 @@ if (isDedicated) exitWith {};
 
 _nullKeybind = [-1,[false,false,false]];
 
-PARAMS_5(_modName,_actionId,_displayName,_downCode,_upCode);
+params ["_modName","_actionId","_displayName","_downCode","_upCode"];
 DEFAULT_PARAM(5,_defaultKeybind,_nullKeybind);
 DEFAULT_PARAM(6,_holdKey,true);
 DEFAULT_PARAM(7,_holdDelay,0);

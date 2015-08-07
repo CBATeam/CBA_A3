@@ -38,7 +38,7 @@ if (isDedicated) exitWith {};
 
 _nullKeybind = [-1,[false,false,false]];
 
-PARAMS_4(_modName,_actionId,_displayName,_fleximenuDef);
+params ["_modName","_actionId","_displayName","_fleximenuDef"];
 DEFAULT_PARAM(4,_defaultKeybind,_nullKeybind);
 DEFAULT_PARAM(5,_holdKey,true);
 DEFAULT_PARAM(6,_holdDelay,0);
