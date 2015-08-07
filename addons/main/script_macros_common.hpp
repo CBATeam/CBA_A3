@@ -851,6 +851,8 @@ Author:
 
 /* -------------------------------------------
 Macros: EXPLODE_n()
+    DEPRECATED - Use param/params commands added in Arma 3 1.48
+
     Splitting an ARRAY into a number of variables (A, B, C, etc).
 
     Note that this NOT does make the created variables private.
@@ -949,6 +951,8 @@ Group: Managing Function Parameters
 
 /* -------------------------------------------
 Macros: PARAMS_n()
+    DEPRECATED - Use param/params commands added in Arma 3 1.48
+
     Setting variables based on parameters passed to a function.
 
     Each parameter is defines as private and set to the appropriate value from _this.
@@ -993,6 +997,8 @@ Author:
 
 /* -------------------------------------------
 Macro: DEFAULT_PARAM()
+    DEPRECATED - Use param/params commands added in Arma 3 1.48
+
     Getting a default function parameter. This may be used together with <PARAMS_n()> to have a mix of required and
     optional parameters.
 
