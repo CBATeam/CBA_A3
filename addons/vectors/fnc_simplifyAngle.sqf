@@ -22,7 +22,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_1(_angle);
+params ["_angle"];
 
 // Return simplified angle
 ((_angle % 360) + 360) % 360
