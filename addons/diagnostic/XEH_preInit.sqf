@@ -14,7 +14,7 @@ if (SLX_XEH_MACHINE select 3) then
 {
     FUNC(handle_peak) =
     {
-        PARAMS_1(_variable);
+        params ["_variable"];
         if (isNil _variable) then
         {
             [QUOTE(GVAR(receive_peak)), [_variable, nil]] call (uiNamespace getVariable "CBA_fnc_globalEvent");
