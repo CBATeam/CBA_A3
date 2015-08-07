@@ -3,7 +3,7 @@
 
 // Used on Init of all objects, not on respawn.
 private ["_type", "_cfg", "_partial", "_full"];
-PARAMS_1(_obj);
+params ["_obj"];
 _type = typeOf _obj;
 
 // No XEH EH entries at all - Needs full XEH

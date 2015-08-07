@@ -13,7 +13,7 @@ private [
 // into the _inits array
 _fSetInit = {
     private ["_cur"];
-    PARAMS_3(_idx,_init,_type);
+    params ["_idx","_init","_type"];
 
     _cur = _inits select _idx;
     if (isNil"_cur")then{ _cur = [nil, nil, nil]; _inits set [_idx, _cur] };
@@ -41,7 +41,7 @@ _excludeClass = SLX_XEH_STR;
 _excludeClasses = [];
 _isExcluded = { (_unitClass isKindOf _excludeClass) || {({ _unitClass isKindOf _x } count _excludeClasses > 0)} };
 
-PARAMS_5(_configFile,_unitClass,_classes,_useDEHinit,_isRespawn);
+params ["_configFile","_unitClass","_classes","_useDEHinit","_isRespawn"];
 
 {
     if (configName (_configFile/_x) != SLX_XEH_STR) then {

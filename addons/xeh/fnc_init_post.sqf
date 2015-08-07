@@ -3,7 +3,7 @@
 #include "script_component.hpp"
 #define INITPOST _unit, SLX_XEH_STR_INIT_POST_EH
 
-PARAMS_1(_unit);
+params ["_unit"];
 
 if ((SLX_XEH_MACHINE select 12) > 0) then {
     // Post v1.60

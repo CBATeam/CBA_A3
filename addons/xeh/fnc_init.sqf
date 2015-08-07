@@ -21,7 +21,7 @@ private [
 #endif
 
 // Get unit.
-PARAMS_1(_slx_xeh_unit);
+params ["_slx_xeh_unit"];
 
 if (isNull _slx_xeh_unit) exitWith {
     #ifdef DEBUG_MODE_FULL
