@@ -32,7 +32,7 @@ SCRIPT(split);
 // ----------------------------------------------------------------------------
 
 private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
-PARAMS_1(_input);
+params ["_input"];
 DEFAULT_PARAM(1,_separator,"");
 _split = [];
 _index = 0;

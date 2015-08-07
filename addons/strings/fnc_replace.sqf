@@ -28,7 +28,7 @@ SCRIPT(replace);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_3(_string,_pattern,_replacement);
+params ["_string","_pattern","_replacement"];
 private["_i", "_cp", "_findIndex", "_stringArray", "_replaceArray", "_returnArray"];
 
 _returnArray  = [];

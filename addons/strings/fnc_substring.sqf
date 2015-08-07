@@ -28,8 +28,7 @@ Author:
 SCRIPT(substring);
 
 // ----------------------------------------------------------------------------
-PARAMS_3(_string, _startIndex, _endIndex);
-//params["_string","_startIndex","_endIndex"];
+params["_string","_startIndex","_endIndex"];
 // Check if _start is Larger than _endIndex to Prevent Issues
 if (_startIndex > _endIndex) exitWith {""};
 // Calculate Differenz between _start and _end for select lenth value

@@ -35,7 +35,7 @@ SCRIPT(find);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_2(_haystack,_needle);
+params ["_haystack","_needle"];
 DEFAULT_PARAM(2,_initialIndex,0);
 
 private ["_ret", "_start", "_tempString"];
