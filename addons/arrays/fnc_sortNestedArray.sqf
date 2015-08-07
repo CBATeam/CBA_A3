@@ -35,9 +35,8 @@ SCRIPT(sortNestedArray);
 //set up a function for recursion
 private "_sort";
 _sort = {
-    private ["_h","_i","_j","_hi","_x"];
-
-    PARAMS_4(_a,_id,_lo,_hi);
+    private ["_h","_i","_j","_x"];
+    params ["_a","_id","_lo","_hi"];
      // _a, array to be sorted
      // _id, array item index to be compared
      // _lo, lower index to sort from

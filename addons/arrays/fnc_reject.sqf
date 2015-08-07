@@ -28,7 +28,7 @@ SCRIPT(reject);
 // ----------------------------------------------------------------------------
 
 private "_result";
-PARAMS_2(_array,_filterCode);
+params ["_array","_filterCode"];
 
 _result = [];
 _result resize (count _array);

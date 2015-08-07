@@ -24,7 +24,7 @@ Author:
 
 #define NULL "$null$"
 
-PARAMS_2(_arrayA,_arrayB);
+params ["_arrayA","_arrayB"];
 
 private ["_elmsA", "_elmsB", "_return", "_item", "_idx", "_cA", "_cB", "_case", "_cT"];
 
