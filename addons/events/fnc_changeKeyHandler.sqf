@@ -25,7 +25,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(changeKeyHandler);
 private ["_type", "_keyData", "_handlers", "_idx", "_myHandlers", "_ar"];
-PARAMS_3(_hashKey,_key,_settings);
+params ["_hashKey","_key","_settings"];
 _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };

@@ -25,7 +25,7 @@ SCRIPT(removeEventHandler);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_2(_eventType,_handlerIndex);
+params ["_eventType","_handlerIndex"];
 
 private "_handlers";
 

@@ -25,7 +25,7 @@ Author:
 SCRIPT(addKeyHandlerFromConfig);
 
 private ["_key", "_type"];
-PARAMS_3(_component,_action,_code);
+params ["_component","_action","_code"];
 _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
 if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };

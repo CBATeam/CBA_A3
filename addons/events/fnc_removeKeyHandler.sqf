@@ -24,7 +24,7 @@ Author:
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(removeKeyHandler);
-PARAMS_1(_hashKey);
+params ["_hashKey"];
 DEFAULT_PARAM(1,_type,"keydown");
 private ["_keyData", "_handlers", "_idx", "_myHandlers"];
 _type = toLower _type;
