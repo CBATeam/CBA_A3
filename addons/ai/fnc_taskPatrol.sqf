@@ -37,7 +37,9 @@ Author:
 
 #define NULL    "$null$"
 
-params ["_group", ["_position",_group], ["_radius",100], ["_count",3]];
+params ["_group", ["_position",grpNull], ["_radius",100], ["_count",3]];
+
+_position = [_position,_group] select (isNull _position);
 
 _this =+ _this;
 if (count _this > 3) then {
