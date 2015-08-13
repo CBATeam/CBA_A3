@@ -20,6 +20,7 @@ Example:
 
 Author:
     jaynus
+    joko // Jonas
 --------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -27,19 +28,11 @@ Author:
 SCRIPT(substring);
 
 // ----------------------------------------------------------------------------
-
-PARAMS_3(_string,_startIndex, _endIndex);
-private ["_arr", "_ret", "_i", "_x"];
-_arr = toArray _string;
-_ret = [];
-
-_x = 0;
-while { _startIndex < _endIndex && (_x+_startIndex) < (count _arr) } do {
-    _ret set[_x, (_arr select _startIndex)];
-    _x = _x + 1;
-    _startIndex = _startIndex + 1;
-};
-
-_ret = toString _ret;
-
-_ret
+PARAMS_3(_string, _startIndex, _endIndex);
+//params["_string","_startIndex","_endIndex"];
+// Check if _start is Larger than _endIndex to Prevent Issues
+if (_startIndex > _endIndex) exitWith {""};
+// Calculate Differenz between _start and _end for select lenth value
+_endIndex = _endIndex + 1 - _startIndex;
+// Cut out String
+_string select [_startIndex, _endIndex]; // Return
