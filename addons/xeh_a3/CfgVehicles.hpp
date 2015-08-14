@@ -36,6 +36,10 @@ class CfgVehicles {
     class Sheep_random_F: Animal_Base_F {
         delete Eventhandlers; // Eventhandlers
     };
+    class Fowl_Base_F;
+	class Cock_random_F : Fowl_Base_F {
+        delete Eventhandlers; // Eventhandlers
+    };
 
     class FlagCarrierCore;
     class FlagChecked_F: FlagCarrierCore {
