@@ -20,18 +20,15 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private ["_group"];
-_group = (_this select 0) call CBA_fnc_getgroup;
+params ["_group"];
+_group = _group call CBA_fnc_getgroup;
 _group lockwp true;
 private ["_leader","_behaviour"];
 _leader = leader _group;
 _behaviour = behaviour _leader;
 _group setbehaviour "combat";
 
-private ["_array", "_building", "_indices"];
-_array = _leader call CBA_fnc_getnearestbuilding;
-_building = _array select 0;
-_indices = _array select 1;
+(_leader call CBA_fnc_getnearestbuilding) params ["_building", "_indices"];
 _group setformdir ([_leader, _building] call bis_fnc_dirto);
 
 if (_leader distance _building > 500) exitwith {_group lockwp false};
