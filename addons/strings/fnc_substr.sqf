@@ -24,10 +24,10 @@ Author:
 
 #include "script_component.hpp"
 
-SCRIPT(substring_new);
+SCRIPT(substr);
 
 // ----------------------------------------------------------------------------
-PARAMS_3(_string, _startIndex, _length);
+PARAMS_3(_string,_startIndex,_length);
 // Check if _length is set else extrakt string to end
 if (isNil "_length" || _length <= 0) exitWith { _string select [_startIndex]; };
 // Cut out String
