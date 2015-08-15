@@ -19,8 +19,7 @@ Example:
     (end)
 
 Author:
-    Spooner
-    joko // Jonas
+    Spooner, joko // Jonas
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
