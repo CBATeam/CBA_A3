@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_substring_new
+Function: CBA_fnc_substr
 
 Description:
     Retrieves a substring of this instance. The substring starts at a specified character position and has a specified length.
@@ -14,7 +14,7 @@ Returns:
 
 Example:
     (begin example)
-        _str = ["Fish frog cheese fromage", 5, 4] call CBA_fnc_substring_new;
+        _str = ["Fish frog cheese fromage", 5, 4] call CBA_fnc_substr;
         // => "frog"
     (end)
 
