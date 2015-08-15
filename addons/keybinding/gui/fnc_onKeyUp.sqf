@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
@@ -17,7 +17,7 @@ if((count GVAR(firstKey)) > 0) then {
         _dikCode = GVAR(firstKey) select 0;
 
         GVAR(firstKey) = GVAR(firstKey);
-		
+
         TRACE_2("KEY UP: 1st key After",GVAR(firstKey), GVAR(input));
     };
 };
@@ -50,7 +50,7 @@ if ( (count GVAR(secondKey)) < 1 ) then {
 			TRACE_2("KEY UP: 3rd Key Before",GVAR(thirdKey), GVAR(input));
 
 			GVAR(input) set [0, GVAR(thirdKey) select 0];
-			
+
 			TRACE_1("KEY UP: Update modifiers after",_dikCode);
 			TRACE_2("KEY UP: Third key After",GVAR(thirdKey), GVAR(input));
 		};

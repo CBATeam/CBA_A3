@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
