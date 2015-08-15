@@ -43,7 +43,7 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "";
         };
         class C_man_1 /* : Civilian_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\characters_f\civil\scripts\randomize_civ1.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;};";
         };
         class C_man_hunter_1_F /* : C_man_1 */ {
                 SLX_BIS = "";
@@ -91,7 +91,7 @@ class Extended_init_Eventhandlers {
                 XEH_BIS = "(_this select 0) setIdentity ""Nikos""";
         };
         class I_G_Soldier_base_F /* : SoldierGB */ {
-                XEH_BIS = "(_this select 0) execVM ""\A3\Characters_F_Bootcamp\Data\Scripts\randomize_gue1.sqf""";
+                XEH_BIS = "if (local (_this select 0)) then {[(_this select 0), [], []] call BIS_fnc_unitHeadgear;};";
         };
         class I_G_Story_SF_Captain_F /* : B_G_Soldier_F */ {
                 XEH_BIS = "";
