@@ -25,7 +25,7 @@ SCRIPT(getAnimType);
 
 private ["_man", "_array", "_anim", "_weapon", "_pos"];
 
-PARAMS_2(_man,_array);
+params ["_man","_array"];
 _anim = "";
 _weapon = format["%1", currentWeapon _man];
 _pos = "";

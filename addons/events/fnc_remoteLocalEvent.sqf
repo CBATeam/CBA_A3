@@ -20,8 +20,7 @@ Author:
 SCRIPT(remoteLocalEvent);
 
 // ----------------------------------------------------------------------------
-PARAMS_1(_eventType);
-DEFAULT_PARAM(1,_params,nil);
+params ["_eventType", ["_params",nil]];
 
 private "_locobj";
 _locobj = if (typeName _params == typeName []) then {_params select 0} else {_params};

@@ -24,8 +24,8 @@ SCRIPT(hashGet);
 
 // -----------------------------------------------------------------------------
 private ["_index", "_default", "_new"];
-PARAMS_2(_hash,_key);
-DEFAULT_PARAM(2,_default,_hash select HASH_DEFAULT_VALUE);
+params ["_hash","_key"];
+_default = param [2,_hash select HASH_DEFAULT_VALUE];
 
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then

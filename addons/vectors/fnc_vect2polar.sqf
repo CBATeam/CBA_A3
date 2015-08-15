@@ -23,7 +23,7 @@ SCRIPT(vect2Polar);
 
  private ["_mag", "_dir", "_elev", "_vx", "_vy", "_vz"];
 
-PARAMS_3(_vx,_vy,_vz);
+params ["_vx","_vy","_vz"];
 
 _mag = _this call BIS_fnc_magnitude;
 _elev = if (_mag > 0) then { asin (_vz / _mag) } else { 0 };

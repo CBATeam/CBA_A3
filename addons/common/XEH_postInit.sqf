@@ -109,7 +109,7 @@ if !(isDedicated) then {
 // TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
 /*
 [CBA_COMMON_ADDONS] spawn {
-    PARAMS_1(_addons);
+    params ["_addons"];
     TRACE_1("Activating addons",nil);
     activateAddons _addons;
     sleep 0.001;

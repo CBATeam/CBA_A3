@@ -19,7 +19,7 @@ Author:
  Nou
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-PARAMS_2(_mod,_prettyName);
+params ["_mod","_prettyName"];
 
 private ["_modIndex"];
 

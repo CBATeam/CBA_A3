@@ -54,10 +54,10 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-private["_azimuth", "_angle", "_dif", "_infov", "_threed", "_do"];
+private["_azimuth", "_angle", "_dif", "_infov", "_object", "_threed", "_do"];
 
-PARAMS_1(_unit);
-DEFAULT_PARAM(1,_object,_unit);
+params ["_unit"];
+_object = param [1,_unit];
 _threed = false;
 
 _do = (typeName _object != typeName _unit);

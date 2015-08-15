@@ -4,7 +4,7 @@
 #include "script_component.hpp"
 
 private ["_ar", "_entry", "_type"];
-PARAMS_1(_unit);
+params ["_unit"];
 _ar = [];
 _type = typeOf _unit;
 

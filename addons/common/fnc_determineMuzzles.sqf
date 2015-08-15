@@ -24,7 +24,7 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(determineMuzzles);
-PARAMS_1(_weap);
+params ["_weap"];
 #define __cfg configFile >> "CfgWeapons" >> _weap
 
 private ["_r"];

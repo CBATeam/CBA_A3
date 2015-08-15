@@ -30,7 +30,7 @@ Returns:
 SCRIPT(defaultParam);
 
 // -----------------------------------------------------------------------------
-PARAMS_3(_params,_index,_defaultValue);
+params ["_params","_index","_defaultValue"];
 
 ISNILS(_params,[]);
 

@@ -25,7 +25,7 @@ Author:
 SCRIPT(error);
 
 // -----------------------------------------------------------------------------
-PARAMS_4(_file,_lineNum,_title,_message);
+params ["_file","_lineNum","_title","_message"];
 
 private ["_time", "_lines"];
 

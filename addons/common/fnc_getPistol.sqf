@@ -28,7 +28,7 @@ Author:
 SCRIPT(getPistol);
 
 private ["_pistol"];
-PARAMS_1(_unit);
+params ["_unit"];
 if !(_unit isKindOf "man") exitWith {""};
 
 _pistol = "";

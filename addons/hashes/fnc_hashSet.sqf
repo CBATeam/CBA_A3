@@ -24,7 +24,7 @@ Author:
 SCRIPT(hashSet);
 private ["_hash","_key", "_value","_index", "_isDefault"];
 // ----------------------------------------------------------------------------
-PARAMS_3(_hash,_key,_value);
+params ["_hash","_key","_value"];
 
 if (isNil "_value") then { _value = nil};
 if (isNil "_key") exitWith {_hash};

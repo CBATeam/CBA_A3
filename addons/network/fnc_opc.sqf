@@ -4,7 +4,7 @@
 #include "script_component.hpp"
 
 private["_plName"];
-PARAMS_3(_name,_id,_obj);
+params ["_name","_id","_obj"];
 
 _plName = if (isNull player) then { "" } else { name player };
 

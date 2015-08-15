@@ -3,7 +3,7 @@
 
 private ["_cfg", "_init", "_initAr", "_XEH", "_type", "_excl"];
 
-PARAMS_1(_obj);
+params ["_obj"];
 _type = typeOf _obj;
 
 if (_type in SLX_XEH_EXCL_CLASSES) exitWith { TRACE_2("Exclusion, abort (cache hit)",_obj,_type) };

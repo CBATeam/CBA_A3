@@ -27,7 +27,7 @@ Author:
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_3(_object,_variable,_value);
+params ["_object","_variable","_value"];
 
 // does setVariable public also work for other types ??
 if (typeName _object != "OBJECT" && {typeName _object != "GROUP"}) exitWith {

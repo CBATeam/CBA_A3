@@ -32,8 +32,7 @@ SCRIPT(join);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_1(_array);
-DEFAULT_PARAM(1,_separator,"");
+params ["_array", ["_separator",""]];
 
 private ["_joined", "_element"];
 

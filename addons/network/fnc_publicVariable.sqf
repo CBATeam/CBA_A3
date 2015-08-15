@@ -26,7 +26,7 @@ Author:
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_2(_pv,_value);
+params ["_pv","_value"];
 
 if (typeName _pv != typeName "") exitWith {
 	WARNING("The first parameter is not of type string!");

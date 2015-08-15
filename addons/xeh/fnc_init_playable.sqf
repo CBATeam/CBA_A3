@@ -4,7 +4,7 @@
 #include "script_component.hpp"
 
 private ["_var"];
-PARAMS_1(_unit);
+params ["_unit"];
 
 _var = _unit getVariable SLX_XEH_STR_PLAYABLE;
 if !(isNil "_var") exitWith {}; // Already set

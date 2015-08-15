@@ -39,7 +39,7 @@ SCRIPT(inject);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_3(_array,_initial,_function);
+params ["_array","_initial","_function"];
 
 private "_accumulator";
 

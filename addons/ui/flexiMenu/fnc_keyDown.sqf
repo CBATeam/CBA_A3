@@ -8,7 +8,7 @@ private["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt",
     "_target", "_menuSource", "_active", "_potentialTarget", "_isTypeTarget",
     "_potentialKeyMatch", "_potentialMenuSources", "_vehicleTarget", "_typesList",
     "_keys", "_settings"];
-PARAMS_5(_ctrl,_dikCode,_shift,_ctrlKey,_alt);
+params["_ctrl","_dikCode","_shift","_ctrlKey","_alt"];
 
 _handled = false;
 

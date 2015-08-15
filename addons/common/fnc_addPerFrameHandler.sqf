@@ -24,8 +24,7 @@ Author:
 #include "script_component.hpp"
 
 private["_handle", "_data", "_publicHandle"];
-PARAMS_2(_func,_delay);
-DEFAULT_PARAM(2,_params,[]);
+params ["_func","_delay", ["_params",[]]];
 
 _handle = -1;
 _publicHandle = -1;

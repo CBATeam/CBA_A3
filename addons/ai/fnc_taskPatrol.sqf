@@ -37,10 +37,9 @@ Author:
 
 #define NULL    "$null$"
 
-PARAMS_1(_group);
-DEFAULT_PARAM(1,_position,_group);
-DEFAULT_PARAM(2,_radius,100);
-DEFAULT_PARAM(3,_count,3);
+params ["_group", ["_position",[]], ["_radius",100], ["_count",3]];
+
+_position = [_position,_group] select (_position isEqualTo []);
 
 _this =+ _this;
 if (count _this > 3) then {

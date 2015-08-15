@@ -24,7 +24,7 @@ Author:
 SCRIPT(addDisplayHandler);
 
 private ["_ar", "_id", "_idx"];
-PARAMS_2(_type,_code);
+params ["_type","_code"];
 
 _type = toLower _type;
 // TODO: Verify if the eventhandler type exists?

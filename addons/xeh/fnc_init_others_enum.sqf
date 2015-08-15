@@ -14,7 +14,7 @@ private [
 _fSetHandler = {
     private ["_cur"];
 
-    PARAMS_3(_idx,_handler,_type);
+    params ["_idx","_handler","_type"];
 
     _cur = _handlers select _idx;
     if (isNil"_cur") then {_cur = [nil,nil,nil]; _handlers set [_idx,_cur] };
@@ -26,7 +26,7 @@ _isExcluded = { (_unitClass isKindOf _excludeClass) || {({ _unitClass isKindOf _
 _f = {
     private ["_handlerEntry", "_serverHandlerEntry", "_clientHandlerEntry", "_replaceDEH"];
 
-    PARAMS_3(_eventCus,_handlers,_idx);
+    params ["_eventCus","_handlers","_idx"];
 
     _eventCus = format["%1%2",_event, _eventCus];
     _handlerEntry = _cfgEntry / _eventCus;
@@ -70,7 +70,7 @@ _f = {
     };
 };
 
-PARAMS_5(_configFile,_event_id,_unitClass,_classes,_hasDefaultEh);
+params ["_configFile","_event_id","_unitClass","_classes","_hasDefaultEh"];
 
 _event = SLX_XEH_OTHER_EVENTS select _event_id;
 _Extended_EH_Class = SLX_XEH_OTHER_EVENTS_FULL select _event_id; // format["Extended_%1_EventHandlers", _event];

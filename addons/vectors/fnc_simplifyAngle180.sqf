@@ -22,7 +22,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_1(_angle);
+params ["_angle"];
 
 // Normalize to 0-360
 _angle = [_angle] call CBA_fnc_simplifyAngle;

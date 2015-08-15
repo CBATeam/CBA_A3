@@ -27,7 +27,7 @@ if !(isNull _display) then {
                     _nameIndex = (GVAR(modPrettyNames) select 0) find _x;
                     _modPrettyName = _x;
                     if(_nameIndex != -1) then {
-                        (GVAR(modPrettyNames) select 1) select _nameIndex;
+                        _modPrettyName = (GVAR(modPrettyNames) select 1) select _nameIndex;
                     };
                     _entry = _combo lbAdd _modPrettyName;
                     _combo lbSetData [_entry, _x];

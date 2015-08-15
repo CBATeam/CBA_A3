@@ -28,7 +28,7 @@ SCRIPT(trim);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_1(_string);
+params ["_string"];
 
 // Rtrim first for efficiency.
 _string = [_string] call CBA_fnc_rightTrim;

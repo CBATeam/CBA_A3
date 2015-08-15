@@ -28,7 +28,7 @@ SCRIPT(polar2vect);
 
  private ["_mag", "_dir", "_elev", "_magCosElev", "_vx", "_vy", "_vz"];
 
-PARAMS_3(_mag,_dir,_elev);
+params ["_mag","_dir","_elev"];
 
 _magCosElev = _mag * cos(_elev);
 

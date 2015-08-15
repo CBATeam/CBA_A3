@@ -43,7 +43,7 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "";
         };
         class C_man_1 /* : Civilian_F */ {
-                SLX_BIS = "(_this select 0) execVM ""\A3\characters_f\civil\scripts\randomize_civ1.sqf""";
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), [], nil] call BIS_fnc_unitHeadgear;};";
         };
         class C_man_hunter_1_F /* : C_man_1 */ {
                 SLX_BIS = "";
@@ -91,7 +91,7 @@ class Extended_init_Eventhandlers {
                 XEH_BIS = "(_this select 0) setIdentity ""Nikos""";
         };
         class I_G_Soldier_base_F /* : SoldierGB */ {
-                XEH_BIS = "(_this select 0) execVM ""\A3\Characters_F_Bootcamp\Data\Scripts\randomize_gue1.sqf""";
+                XEH_BIS = "if (local (_this select 0)) then {[(_this select 0), [], []] call BIS_fnc_unitHeadgear;};";
         };
         class I_G_Story_SF_Captain_F /* : B_G_Soldier_F */ {
                 XEH_BIS = "";
@@ -159,20 +159,26 @@ class Extended_init_Eventhandlers {
         class C_Kart_01_F /* : C_Kart_01_F_Base  */{
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
         };
+        class Snake_random_F /* : Animal_Base_F */ {
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f\Snakes\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+        };
         class Fin_random_F /* : Fin_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
         };
         class Alsatian_Random_F /* : Alsatian_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\dog\scripts\randomize_als.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\dog\scripts\randomize_als.sqf"";(_this select 0) call _FRnd;";
         };
         class Goat_random_F /* : Goat_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\goat\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\goat\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
         };
         class Sheep_random_F /* : Animal_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f_beta\Sheep\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\Sheep\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
         };
-        class Snake_random_F /* : Animal_Base_F */ {
-                SLX_BIS = "_FRnd = compile loadFile ""\A3\animals_f\Snakes\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+        class Cock_random_F /* : Fowl_Base_F */ {
+                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\Chicken\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+        };
+        class Cock_white_F /* : Cock_random_F */ {
+                SLX_BIS = "";
         };
         class FlagChecked_F /* : FlagCarrierCore */ {
                 SLX_BIS = "(_this select 0) setFlagTexture '\A3\signs_f\signspecial\data\checker_flag_co.paa';";

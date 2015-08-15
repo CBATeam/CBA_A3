@@ -26,7 +26,7 @@ SCRIPT(getGroupIndex);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_1(_man);
+params ["_man"];
 
 private ["_varName", "_manLabel", "_number", "_labelArray", "_groupLabelLen"];
 

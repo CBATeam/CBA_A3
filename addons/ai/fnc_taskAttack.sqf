@@ -26,7 +26,6 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_2(_group,_position);
-DEFAULT_PARAM(2,_radius,0);
+params ["_group","_position", ["_radius",0]];
 
 [_group, _position, _radius, "SAD", "COMBAT", "RED"] call CBA_fnc_addWaypoint;

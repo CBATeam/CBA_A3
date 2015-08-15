@@ -20,8 +20,7 @@ Examples:
     (end)
 
 Author:
-    Spooner
-    joko // Jonas
+    Spooner, joko // Jonas
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -30,7 +29,7 @@ SCRIPT(capitalize);
 
 // ----------------------------------------------------------------------------
 private ["_charCount","_string1","_string2"];
-PARAMS_1(_string);
+params ["_string"];
 
 _charCount = count _string;
 if (_charCount > 0) then {

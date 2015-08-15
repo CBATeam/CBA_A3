@@ -22,7 +22,7 @@ QGVAR(versions_serv) addPublicVariableEventHandler { (_this select 1) call FUNC(
 
 // Missing Modfolder check
 FUNC(handleMismatch) = {
-    PARAMS_2(_machine,_mod);
+    params ["_machine","_mod"];
     [format["%1 - Not running! (Machine: %2)", _mod, _machine], QUOTE(COMPONENT), [CBA_display_ingame_warnings, true, true]] call CBA_fnc_debug;
 };
 

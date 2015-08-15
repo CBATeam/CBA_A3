@@ -144,6 +144,7 @@ Group: Functions  {
          File: CBA_fnc_parseYAML  (common/fnc_parseYAML.sqf)
          File: CBA_fnc_players  (common/fnc_players.sqf)
          File: CBA_fnc_randPos  (common/fnc_randPos.sqf)
+         File: CBA_fnc_randPosArea  (common/fnc_randPosArea.sqf)
          File: CBA_fnc_realHeight  (common/fnc_realHeight.sqf)
          File: CBA_fnc_removeMagazine  (common/fnc_removeMagazine.sqf)
          File: CBA_fnc_removeMagazineCargo  (common/fnc_removeMagazineCargo.sqf)
@@ -243,6 +244,7 @@ Group: Functions  {
          File: CBA_fnc_rightTrim  (strings/fnc_rightTrim.sqf)
          File: CBA_fnc_split  (strings/fnc_split.sqf)
          File: CBA_fnc_strLen  (strings/fnc_strLen.sqf)
+         File: CBA_fnc_substr  (strings/fnc_substr.sqf)
          File: CBA_fnc_substring  (strings/fnc_substring.sqf)
          File: CBA_fnc_trim  (strings/fnc_trim.sqf)
          }  # Group: Strings

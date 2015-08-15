@@ -19,8 +19,7 @@ Example:
     (end)
 
 Author:
-    Spooner
-    joko // Jonas
+    Spooner, joko // Jonas
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -30,7 +29,7 @@ SCRIPT(leftTrim);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_1(_string);
+params ["_string"];
 
 private ["_chars","_charCount"];
 

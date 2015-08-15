@@ -33,7 +33,7 @@ Author:
 */
 #include "script_component.hpp"
 
-PARAMS_2(_marker,_persistent);
+params ["_marker","_persistent"];
 TRACE_1(_this);
 
 private ["_markerConsistent", "_return"];

@@ -23,7 +23,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(intToString);
 
-PARAMS_1(_int);
+params ["_int"];
 
 if (typeName _int != "SCALAR") exitWith {
     WARNING("Expected number as paramater, type was " + (typeName _int));

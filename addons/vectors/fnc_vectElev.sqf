@@ -28,7 +28,7 @@ SCRIPT(vectElev);
 
 private ["_dist2D"];
 
-PARAMS_2(_pos1,_pos2);
+params ["_pos1","_pos2"];
 
 _dist2D = (_this) call CBA_fnc_vectMagn2D;
 

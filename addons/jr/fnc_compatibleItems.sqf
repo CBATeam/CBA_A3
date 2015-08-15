@@ -12,13 +12,15 @@
     Returns:
         ARRAY of STRINGs
 
-    Example:
-        _acclist = "LMG_Mk200_F" call CBA_fnc_compatibleItems;
+    Examples:
+        _acclist = ["LMG_Mk200_F"] call CBA_fnc_compatibleItems;
+        _muzzleacclist = ["LMG_Mk200_F", 101] call CBA_fnc_compatibleItems;
 */
 
-private ["_weapon","_cfgWeapon"];
-_weapon = [_this,0,"",[""]] call bis_fnc_param;
-_typefilter = [_this,1,0] call bis_fnc_param;
+params [["_weapon", "", [""]], ["_typefilter", 0]];
+if (_weapon == "") exitWith {[]};
+
+private ["_cfgWeapon"];
 _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
 
 if (isClass _cfgWeapon) then {
@@ -42,6 +44,6 @@ if (isClass _cfgWeapon) then {
     if (_typefilter == 0) then {_compatibleItems} else {[_compatibleItems, {_typefilter == getnumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")}] call BIS_fnc_conditionalSelect};
 
 } else {
-    if (_weapon != "") then {["'%1' not found in CfgWeapons",_weapon] call bis_fnc_error;};
+    ["'%1' not found in CfgWeapons",_weapon] call bis_fnc_error;
     []
 };

@@ -18,7 +18,7 @@ Author:
 #include "script_component.hpp"
 
 SCRIPT(peek);
-PARAMS_1(_variable);
+params ["_variable"];
 
 // ----------------------------------------------------------------------------
 

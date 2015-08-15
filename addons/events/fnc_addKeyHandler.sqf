@@ -30,7 +30,7 @@ Author:
 SCRIPT(addKeyHandler);
 
 private ["_ar", "_entry", "_type", "_handlers", "_hashKey", "_holdDelay"];
-PARAMS_3(_key,_settings,_code);
+params ["_key","_settings","_code"];
 _type = if (count _this > 3) then { _this select 3 } else { "keydown" };
 _type = toLower _type;
 _hashKey = if (count _this > 4) then { _this select 4 } else { format["%1%2%3%4%5%6%7%8", floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100)] };
