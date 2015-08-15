@@ -37,7 +37,7 @@ class CfgVehicles {
         delete Eventhandlers; // Eventhandlers
     };
     class Fowl_Base_F;
-	class Cock_random_F : Fowl_Base_F {
+    class Cock_random_F : Fowl_Base_F {
         delete Eventhandlers; // Eventhandlers
     };
 
