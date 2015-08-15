@@ -1,0 +1,27 @@
+File: Overview
+
+(see CBA_logo_large.png)
+
+The CBA functions library comprises a number of categories of functions such
+as arrays, hashes, strings and vectors. There are also functions for managing
+UI elements, custom events and key binds.
+
+As a support for the function libray, CBA also provides a number of preprocessor
+macros to aid in development.
+
+Features:
+
+* <Extended Eventhandlers (XEH) at https://github.com/CBATeam/CBA_A3/wiki/Extended%20Eventhandlers>
+* <Function and Macro Libraries at https://github.com/CBATeam/CBA_A3/wiki/Function%20and%20Macro%20Libraries>
+* <Key Management at https://github.com/CBATeam/CBA_A3/wiki/Key%20Management> and configurable <Keybinding at https://github.com/CBATeam/CBA_A3/wiki/Keybinding> system
+* <Custom Events System at https://github.com/CBATeam/CBA_A3/wiki/Custom%20Events%20System>
+* <Author and Credits system at https://github.com/CBATeam/CBA_A3/wiki/Author%20and%20Credits%20system> (Displayed during Main Menu and Pause Menu)
+* <Help System at https://github.com/CBATeam/CBA_A3/wiki/Help%20System>
+* <Versioning System at https://github.com/CBATeam/CBA_A3/wiki/Versioning%20System>
+* <UI System at https://github.com/CBATeam/CBA_A3/wiki/UI%20System>
+
+Online:
+
+The latest documentation can be
+
+* Viewed online <here at http://cbateam.github.io/CBA_A3/docs/files/overview-txt.html>
