@@ -43,7 +43,7 @@ SCRIPT(benchmarkFunction);
 
 // ----------------------------------------------------------------------------
 
-PARAMS_3(_function,_parameters,_iterations);
+params ["_function","_parameters","_iterations"];
 
 private ["_start", "_averageTime"];
 

@@ -21,7 +21,7 @@ SCRIPT(addLocalEventHandler);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_2(_eventType,_handler);
+params ["_eventType","_handler"];
 
 private ["_handlers", "_handlerIndex"];
 

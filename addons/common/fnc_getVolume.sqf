@@ -22,7 +22,7 @@ Author:
 
 #include <script_component.hpp>
 
-PARAMS_1(_object);
+params ["_object"];
 
 private "_bounds";
 _bounds = (boundingBox _object) select 1;

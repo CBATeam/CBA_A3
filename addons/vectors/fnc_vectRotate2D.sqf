@@ -16,8 +16,8 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_3(_center,_vector,_angle);
-EXPLODE_2_PVT(_center,_x,_y);
+params ["_center","_vector","_angle"];
+_center params ["_x","_y"];
 
 private ["_dx","_dy"];
 _dx = _x - (_vector select 0);

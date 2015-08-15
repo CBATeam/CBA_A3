@@ -23,7 +23,7 @@ Author:
 SCRIPT(objectRandom);
 
 private["_o", "_r", "_v", "_s", "_a", "_b", "_c"];
-PARAMS_1(_o);
+params ["_o"];
 _r = 0;
 if !(isNull _o) then {
     _v = velocity(vehicle _o);

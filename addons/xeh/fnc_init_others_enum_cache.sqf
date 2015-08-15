@@ -5,7 +5,7 @@
 
 private ["_types", "_type", "_data", "_cached", "_classes", "_ehSuper", "_hasDefaultEH", "_storageKey", "_inCache"];
 
-PARAMS_1(_unitClass);
+params ["_unitClass"];
 
 _storageKey = ("SLX_XEH_" + _unitClass); // TODO: Cache??
 

@@ -4,7 +4,7 @@
 #include "script_component.hpp"
 
 private ["_unitPlayable"];
-PARAMS_1(_unit);
+params ["_unit"];
 
 if (isNull _unit) exitWith {
     #ifdef DEBUG_MODE_FULL

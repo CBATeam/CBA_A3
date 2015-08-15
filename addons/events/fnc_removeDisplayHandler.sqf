@@ -22,7 +22,7 @@ Author:
 SCRIPT(removeDisplayHandler);
 
 private ["_ar", "_entry"];
-PARAMS_2(_type,_index);
+params ["_type","_index"];
 
 _type = toLower _type;
 _ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;

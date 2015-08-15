@@ -29,7 +29,7 @@ SCRIPT(scaleVectTo);
 
  private ["_vect", "_newMagn", "_magn", "_scaleFactor", "_outVect"];
 
-PARAMS_2(_vect,_newMagn);
+params ["_vect","_newMagn"];
 
 _magn = _vect call BIS_fnc_magnitude;
 _scaleFactor = _newMagn / _magn;

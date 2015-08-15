@@ -24,7 +24,7 @@ Author:
 
 #include "script_component.hpp"
 
-PARAMS_1(_publicHandle);
+params ["_publicHandle"];
 private ["_handle"];
 if (isNil "_publicHandle" || (_publicHandle < 0)) exitWith {}; // Nil/no handle, nil action
 _handle = GVAR(PFHhandles) select _publicHandle;

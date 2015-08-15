@@ -44,7 +44,7 @@ Author:
 SCRIPT(modelHeadDir);
 private["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 
-PARAMS_1(_unit);
+params ["_unit"];
 
 _return = [];
 

@@ -39,7 +39,7 @@ SCRIPT(log);
         {
             _fnc_log =
             {
-                PARAMS_6(_file,_lineNum,_message,_frameNo,_tickTime,_gameTime);
+                params ["_file","_lineNum","_message","_frameNo","_tickTime","_gameTime"];
                 // TODO: Add log message to trace log
                 diag_log [_frameNo,
                     _tickTime, _gameTime, //[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
@@ -66,7 +66,7 @@ SCRIPT(log);
         };
     };
 #else
-    PARAMS_3(_file,_lineNum,_message);
+    params ["_file","_lineNum","_message"];
     // TODO: Add log message to trace log
     diag_log [diag_frameNo,
         diag_tickTime, time, // [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime

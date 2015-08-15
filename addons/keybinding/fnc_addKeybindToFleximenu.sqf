@@ -38,11 +38,7 @@ if (isDedicated) exitWith {};
 
 _nullKeybind = [-1,[false,false,false]];
 
-PARAMS_4(_modName,_actionId,_displayName,_fleximenuDef);
-DEFAULT_PARAM(4,_defaultKeybind,_nullKeybind);
-DEFAULT_PARAM(5,_holdKey,true);
-DEFAULT_PARAM(6,_holdDelay,0);
-DEFAULT_PARAM(7,_overwrite,false);
+params ["_modName","_actionId","_displayName","_fleximenuDef", ["_defaultKeybind",_nullKeybind], ["_holdKey",true], ["_holdDelay",0], ["_overwrite",false]];
 
 if (typeName(_fleximenuDef) != "Array") then { WARNING("Fleximenu definition passed is not in Array format") };
 

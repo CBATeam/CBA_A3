@@ -6,8 +6,7 @@ if (isNil "CBA_fnc_defaultParam") then { CBA_fnc_defaultParam = uiNamespace getV
 
 disableSerialization;
 private ["_trap", "_disp", "_ctrl_b", "_x", "_ctrl_t", "_ctrl_o", "_next", "_config", "_ver_list", "_entry", "_ver_line", "_ver_act", "_ver_arr"];
-PARAMS_1(_ctrl);
-DEFAULT_PARAM(1,_key,0);
+params ["_ctrl", ["_key",0]];
 
 _trap = ctrlIDC _ctrl != CBA_CREDITS_VER_BTN_IDC;
 _disp = ctrlParent _ctrl;

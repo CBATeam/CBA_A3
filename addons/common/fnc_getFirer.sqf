@@ -26,7 +26,7 @@ Author:
 #include "script_component.hpp"
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _veh) >> "turrets")
 private ["_tp", "_tc", "_st", "_stc", "_wtp", "_tu", "_mti", "_mtJ", "_sti", "_stJ", "_gunner", "_mainWeapons", "_r", "_cfg", "_entry"];
-PARAMS_2(_veh,_weap);  // Vehicle that fired    // Weapon that was fired
+params ["_veh","_weap"];  // Vehicle that fired    // Weapon that was fired
 if (_veh isKindOf "CAManBase") exitWith { _r = [_veh, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
 if (_veh isKindOf "Air") exitWith { _gunner = gunner _veh; _r = [if (isNull _gunner) then { driver _veh } else { _gunner }, [0]]; TRACE_1("Result",_r); _r; };
 

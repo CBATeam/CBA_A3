@@ -33,7 +33,7 @@ Author:
 
 SCRIPT(mapDirTo);
 
-PARAMS_2(_pos1,_pos2);
+params ["_pos1","_pos2"];
 _pos1 = _pos1 call CBA_fnc_mapGridToPos;
 _pos2 = _pos2 call CBA_fnc_mapGridToPos;
 

@@ -24,8 +24,7 @@ SCRIPT(formatElapsedTime);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_1(_seconds);
-DEFAULT_PARAM(1,_format,"H:MM:SS");
+params ["_seconds", ["_format","H:MM:SS"]];
 
 private ["_minutes", "_hours", "_secondsDecimals"];
 

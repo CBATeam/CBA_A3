@@ -27,7 +27,7 @@ SCRIPT(vectSubtract);
 
  private ["_u","_v","_i","_k", "_j"];
 
-PARAMS_2(_u,_v);
+params ["_u","_v"];
 
 _i = (_u select 0) - (_v select 0);
 _k = (_u select 1) - (_v select 1);

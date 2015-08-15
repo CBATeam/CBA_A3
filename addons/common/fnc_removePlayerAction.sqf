@@ -27,7 +27,7 @@ Author:
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_1(_actionIndex);
+params ["_actionIndex"];
 TRACE_1(_this);
 
 private "_return";

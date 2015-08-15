@@ -29,7 +29,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(inheritsFrom);
 
-PARAMS_2(_config,_baseConfig);
+params ["_config","_baseConfig"];
 
 private "_valid";
 _valid = false;

@@ -26,7 +26,7 @@ Author:
 
 #define __cfg (configFile >> "CfgVehicles" >> (typeof _v))
 private ["_path"];
-PARAMS_2(_v,_tp);
+params ["_v","_tp"];
 _path = __cfg;
 
 if (count _tp > 0) then {

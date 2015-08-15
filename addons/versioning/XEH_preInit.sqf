@@ -45,7 +45,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
 PREP(version_check);
 FUNC(version_compare) = {
     private ["_failed", "_c"];
-    PARAMS_2(_value,_localValue);
+    params ["_value","_localValue"];
     _failed = false;
     _c = count _localValue;
 

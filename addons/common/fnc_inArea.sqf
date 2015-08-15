@@ -44,7 +44,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-PARAMS_2(_position,_zRef);
+params ["_position","_zRef"];
 
 _position = (_position call CBA_fnc_getpos);
 

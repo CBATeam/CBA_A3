@@ -39,8 +39,7 @@ SCRIPT(filter);
 
 // -----------------------------------------------------------------------------
 
-PARAMS_2(_array,_filter);
-DEFAULT_PARAM(2,_inPlace,false);
+params ["_array","_filter", ["_inPlace",false]];
 
 private ["_arrayOut", "_x"];
 

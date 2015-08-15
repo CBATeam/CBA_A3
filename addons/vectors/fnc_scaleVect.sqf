@@ -27,7 +27,7 @@ SCRIPT(scaleVect);
 
  private ["_vect","_factor","_i","_k", "_j"];
 
-PARAMS_2(_vect,_factor);
+params ["_vect","_factor"];
 
 _i = _factor * (_vect select 0);
 _k = _factor * (_vect select 1);

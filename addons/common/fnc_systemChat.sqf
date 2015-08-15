@@ -21,7 +21,7 @@ Author:
 
 #include <script_component.hpp>
 
-PARAMS_1(_message);
+params ["_message"];
 
 CBA_logic globalChat _message;
 

@@ -22,7 +22,7 @@ Author:
 SCRIPT(readKeyFromConfig);
 
 private ["_component", "_action", "_settings"];
-PARAMS_2(_component,_action);
+params ["_component","_action"];
 _settings = [false, false, false];
 if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith {
     TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action));

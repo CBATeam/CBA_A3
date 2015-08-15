@@ -36,8 +36,7 @@ SCRIPT(addMagazineCargo);
 #define __cfg (configFile >> "CfgMagazines")
 #define __action addMagazineCargo
 
-PARAMS_2(_unit,_item);
-DEFAULT_PARAM(2,_count,1);
+params ["_unit","_item", ["_count",1]];
 if (typeName _unit != "OBJECT") exitWith {
     TRACE_2("Unit not Object",_unit,_item);
     false

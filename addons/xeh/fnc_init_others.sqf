@@ -19,7 +19,7 @@ private [
 #endif
 
 // Get unit.
-PARAMS_1(_unit);
+params ["_unit"];
 _unitClass = typeOf _unit;
 
 // Iterate over the event types and set up any extended event handlers

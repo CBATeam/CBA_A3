@@ -7,7 +7,7 @@ private [
     "_i", "_c", "_entry", "_entryServer", "_entryClient", "_Inits"
 ];
 
-PARAMS_1(_config);
+params ["_config"];
 
 #ifdef DEBUG_MODE_FULL
     _msg = format["XEH BEG: Init %1", _config];

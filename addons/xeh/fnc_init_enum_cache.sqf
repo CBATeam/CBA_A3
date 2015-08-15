@@ -5,7 +5,7 @@
 
 private ["_types", "_type", "_data", "_cached", "_storageKey", "_classes", "_config_id", "_useDEHinit", "_DEHinit", "_inCache", "_isInitEH", "_cacheAr"];
 
-PARAMS_3(_unitClass,_ehType,_isRespawn);
+params ["_unitClass","_ehType","_isRespawn"];
 
 _storageKey = (SLX_XEH_STR_TAG + _unitClass + _ehType);
 if (_isRespawn) then { ADD(_storageKey,"_respawn") };

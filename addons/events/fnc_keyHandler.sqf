@@ -17,7 +17,7 @@ private ["_settings", "_code", "_handled", "_result", "_handlers", "_myHandlers"
     _ar = [];
 #endif
 
-PARAMS_2(_keyData,_type);
+params ["_keyData","_type"];
 _type = toLower _type;
 
 _idx = _keyData select 1;

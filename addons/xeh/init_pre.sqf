@@ -46,7 +46,7 @@ SLX_XEH_DisableLogging = isClass(configFile/"CfgPatches"/"Disable_XEH_Logging");
 
 
 /* CBA_fnc_defaultParam = {
-    PARAMS_3(_params,_index,_defaultValue);
+    params ["_params","_index","_defaultValue"];
 
     private "_value";
 

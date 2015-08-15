@@ -5,7 +5,7 @@
 
 private ["_event", "_curEvt"];
 
-PARAMS_1(_object);
+params ["_object"];
 
 if (isNull _object) exitWith {}; // not a valid object
 

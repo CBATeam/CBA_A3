@@ -40,7 +40,7 @@ SCRIPT(parseYAML);
 private "_raiseError";
 _raiseError =
 {
-    PARAMS_4(_message,_yaml,_pos,_lines);
+    params ["_message","_yaml","_pos","_lines"];
 
     private ["_errorBlock", "_i", "_lastLine", "_lastChar"];
 
@@ -79,7 +79,7 @@ _raiseError =
 private "_parse";
 _parse =
 {
-    PARAMS_4(_yaml,_pos,_indent,_lines);
+    params ["_yaml","_pos","_indent","_lines"];
 
     private ["_error", "_currentIndent", "_key", "_value", "_return",
         "_mode", "_dataType", "_data"];
@@ -321,7 +321,7 @@ _parse =
 
 // ----------------------------------------------------------------------------
 
-PARAMS_1(_file);
+params ["_file"];
 
 private ["_yamlString", "_yaml", "_outerData", "_lineBreaks"];
 _yamlString = loadFile _file;

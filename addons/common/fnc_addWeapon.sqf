@@ -31,7 +31,7 @@ SCRIPT(addWeapon);
 #define __cfg (configFile >> "CfgWeapons")
 #define __action addWeapon
 
-PARAMS_2(_unit,_item);
+params ["_unit","_item"];
 if (typeName _unit != "OBJECT") exitWith {
     TRACE_2("Unit not Object",_unit,_item);
     false
