@@ -11,9 +11,7 @@ private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations"];
 _fn = "CBA_fnc_hashEachPair";
 LOG("Testing " + _fn);
 
-ASSERT_DEFINED("CBA_fnc_hashEachPair","");
-
-Diag_log [diag_frameNo, diag_tickTime, time, ("Testing " + _fn)];
+TEST_DEFINED("CBA_fnc_hashEachPair","");
 
 _hash = [[[1, 12], [5, 25]], 88] call CBA_fnc_hashCreate;
 
@@ -29,10 +27,10 @@ _totalIterations = 0;
 }] call CBA_fnc_hashEachPair;
 
 _expected = 6;
-ASSERT_OP(_sumKeys,==,_expected,"");
+TEST_OP(_sumKeys,==,_expected,"");
 
 _expected = 37;
-ASSERT_OP(_sumValues,==,_expected,"");
+TEST_OP(_sumValues,==,_expected,"");
 
 _expected = 2;
-ASSERT_OP(_totalIterations,==,_expected,"");
+TEST_OP(_totalIterations,==,_expected,"");
