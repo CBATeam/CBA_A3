@@ -1,4 +1,4 @@
-Release Candidate 7 Hotfix2
+CBA A3 v2.0
 
 CBA: Community Base Addons
 ==========================
@@ -31,4 +31,4 @@ For ARMA 3 Content, launch with -mod=@CBA_A3
 
 
 *** Change Log ***
-CBA_A3_RC7 Hotfix - https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A%22CBA_A3_RC7+Hotfix2%22+is%3Aclosed
+CBA_A3 v2.0 - https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A%22CBA_A3+v2.0%22+is%3Aclosed
