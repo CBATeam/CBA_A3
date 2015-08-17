@@ -9,7 +9,7 @@ SCRIPT(test_filter);
 private ["_original", "_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_filter";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_filter","");
 
 LOG("Testing " + _fn);
 

@@ -9,7 +9,7 @@ SCRIPT(test_join);
 private ["_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_join";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_join","");
 
 LOG("Testing " + _fn);
 

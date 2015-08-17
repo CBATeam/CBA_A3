@@ -9,7 +9,7 @@ SCRIPT(test_inject);
 private ["_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_inject";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_inject","");
 
 LOG("Testing " + _fn);
 

@@ -9,7 +9,7 @@ SCRIPT(test_inheritsFrom);
 private ["_class", "_base", "_expected", "_result", "_fn", "_game", "_clssname"];
 
 _fn = "CBA_fnc_inheritsFrom";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_inheritsFrom","");
 
 LOG("Testing " + _fn);
 

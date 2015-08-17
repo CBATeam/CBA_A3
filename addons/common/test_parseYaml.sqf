@@ -9,7 +9,7 @@ SCRIPT(test_parseYaml);
 private ["_expected", "_result", "_fn", "_data"];
 
 _fn = "CBA_fnc_parseYaml";
-ASSERT_DEFINED(_fn,_fn);
+ASSERT_DEFINED("CBA_fnc_parseYaml",_fn);
 
 LOG("Testing " + _fn);
 

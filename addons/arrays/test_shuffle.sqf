@@ -9,7 +9,7 @@ SCRIPT(test_shuffle);
 private ["_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_shuffle";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_shuffle","");
 
 LOG("Testing " + _fn);
 
