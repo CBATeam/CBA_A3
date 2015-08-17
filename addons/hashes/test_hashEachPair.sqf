@@ -9,9 +9,10 @@ SCRIPT(test_hashEachPair);
 private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations"];
 
 _fn = "CBA_fnc_hashEachPair";
-ASSERT_DEFINED(_fn,"");
-
 LOG("Testing " + _fn);
+
+ASSERT_DEFINED("CBA_fnc_hashEachPair","");
+
 Diag_log [diag_frameNo, diag_tickTime, time, ("Testing " + _fn)];
 
 _hash = [[[1, 12], [5, 25]], 88] call CBA_fnc_hashCreate;

@@ -12,7 +12,7 @@ LOG('Testing Strings');
 
 // UNIT TESTS (stringFind)
 _fn = "CBA_fnc_find";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_find","");
 
 _pos = ["frog", "f"] call CBA_fnc_find;
 ASSERT_OP(_pos,==,0,_fn);
@@ -35,7 +35,7 @@ ASSERT_OP(_pos,==,3,_fn);
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringSplit)
 _fn = "CBA_fnc_split";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_split","");
 
 _array = ["", "\"] call CBA_fnc_split;
 _expected = [];
@@ -65,7 +65,7 @@ ASSERT_OP(str _array, ==, str _expected, _fn);
 // UNIT TESTS (stringReplace)
 _fn = "CBA_fnc_replace";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_replace","");
 
 _str = ["", "", ""] call CBA_fnc_replace;
 ASSERT_OP(_str,==,"",_fn);
@@ -86,7 +86,7 @@ ASSERT_OP(_str,==,"fraidai",_fn);
 // UNIT TESTS (leftTrim)
 _fn = "CBA_fnc_leftTrim";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_leftTrim","");
 
 _str = [""] call CBA_fnc_leftTrim;
 ASSERT_OP(_str,==,"",_fn);
@@ -113,7 +113,7 @@ ASSERT_OP(_str,==,"x ",_fn);
 // UNIT TESTS (rightTrim)
 _fn = "CBA_fnc_rightTrim";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_rightTrim","");
 
 _str = [""] call CBA_fnc_rightTrim;
 ASSERT_OP(_str,==,"",_fn);
@@ -143,7 +143,7 @@ ASSERT_OP(_str,==," x",_fn);
 // UNIT TESTS (trim)
 _fn = "CBA_fnc_trim";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_trim","");
 
 _str = [""] call CBA_fnc_trim;
 ASSERT_OP(_str,==,"",_fn);
@@ -155,7 +155,7 @@ ASSERT_OP(_str,==,"x",_fn);
 // UNIT TESTS (capitalize)
 _fn = "CBA_fnc_capitalize";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_capitalize","");
 
 _str = [""] call CBA_fnc_capitalize;
 ASSERT_OP(_str,==,"",_fn);
@@ -173,7 +173,7 @@ ASSERT_OP(_str,==,"Frog",_fn);
 // UNIT TESTS (CBA_fnc_formatNumber)
 _fn = "CBA_fnc_formatNumber";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_formatNumber","");
 
 _str = [0.0001, 1, 3] call CBA_fnc_formatNumber;
 ASSERT_OP(_str,==,"0.000",_fn);
@@ -211,7 +211,7 @@ ASSERT_OP(_str,==,"-12",_fn);
 // UNIT TESTS (elaspsedTime)
 _fn = "CBA_fnc_formatElapsedTime";
 
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_formatElapsedTime","");
 
 _str = [0, "H:MM:SS"] call CBA_fnc_formatElapsedTime;
 _expected = "0:00:00";
@@ -233,7 +233,7 @@ ASSERT_OP(_str,==,_expected,_fn);
 // UNIT TESTS (compareStrings)
 /* Function ISN'T implemented.
 _fn = "CBA_fnc_compare";
-ASSERT_DEFINED(_fn,"");
+ASSERT_DEFINED("CBA_fnc_compare","");
 
 _result = ["", ""] call CBA_fnc_compare;
 ASSERT_OP(_result, ==, 0, _fn);
