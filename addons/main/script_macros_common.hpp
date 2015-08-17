@@ -233,6 +233,25 @@ Author:
     [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
 
 /* -------------------------------------------
+Macro: MESSAGE_WITH_TITLE()
+    Record a single line, timestamped log entry in the RPT log.
+
+Parameters:
+    TITLE - Title of log message [String]
+    MESSAGE -  Body of message [String]
+
+Example:
+    (begin example)
+        MESSAGE_WITH_TITLE("Value found","Value of frog found in config <someconfig>");
+    (end)
+
+Author:
+    Killswitch
+------------------------------------------- */
+#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) \
+    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE)] call CBA_fnc_log;
+
+/* -------------------------------------------
 Macro: RETNIL()
     If a variable is undefined, return the value nil. Otherwise, return the
     variable itself.
@@ -1149,6 +1168,122 @@ Author:
     if (isNil VARIABLE) then \
     { \
         ASSERTION_ERROR('Assertion (VARIABLE is defined) failed!\n\n' + (MESSAGE)); \
+    }
+
+/* -------------------------------------------
+Group: Unit tests
+------------------------------------------- */
+#define TEST_SUCCESS(MESSAGE) MESSAGE_WITH_TITLE("Test OK",MESSAGE)
+#define TEST_FAIL(MESSAGE) ERROR_WITH_TITLE("Test FAIL",MESSAGE)
+
+/* -------------------------------------------
+Macro: TEST_TRUE()
+    Tests that a CONDITION is true.
+    If the condition is not true, an error is raised with the given MESSAGE.
+
+Parameters:
+    CONDITION - Condition to assert as true [Boolean]
+    MESSSAGE - Message to display if (A OPERATOR B) is false [String]
+
+Example:
+    (begin example)
+        TEST_TRUE(_frogIsDead,"The frog is alive");
+    (end)
+
+Author:
+    Killswitch
+------------------------------------------- */
+#define TEST_TRUE(CONDITION, MESSAGE) \
+    if (CONDITION) then \
+    { \
+        TEST_SUCCESS('(CONDITION)'); \
+    } \
+    else \
+    { \
+        TEST_FAIL('(CONDITION) ' + (MESSAGE)); \
+    }
+
+/* -------------------------------------------
+Macro: TEST_FALSE()
+    Tests that a CONDITION is false.
+    If the condition is not false, an error is raised with the given MESSAGE.
+
+Parameters:
+    CONDITION - Condition to test as false [Boolean]
+    MESSSAGE - Message to display if (A OPERATOR B) is true [String]
+
+Example:
+    (begin example)
+        TEST_FALSE(_frogIsDead,"The frog died");
+    (end)
+
+Author:
+    Killswitch
+------------------------------------------- */
+#define TEST_FALSE(CONDITION, MESSAGE) \
+    if (not (CONDITION)) then \
+    { \
+        TEST_SUCCESS('(not (CONDITION))'); \
+    } \
+    else \
+    { \
+        TEST_FAIL('(not (CONDITION)) ' + (MESSAGE)); \
+    }
+
+/* -------------------------------------------
+Macro: TEST_OP()
+    Tests that (A OPERATOR B) is true.
+    If the test fails, an error is raised with the given MESSAGE.
+
+Parameters:
+    A - First value [Any]
+    OPERATOR - Binary operator to use [Operator]
+    B - Second value [Any]
+    MESSSAGE - Message to display if (A OPERATOR B)  is false. [String]
+
+Example:
+    (begin example)
+        TEST_OP(_fish,>,5,"Too few fish!");
+    (end)
+
+Author:
+    Killswitch
+------------------------------------------- */
+#define TEST_OP(A,OPERATOR,B,MESSAGE) \
+    if ((A) OPERATOR (B)) then \
+    { \
+        TEST_SUCCESS('(A OPERATOR B)') \
+    } \
+    else \
+    { \
+        TEST_FAIL('(A OPERATOR B)') \
+    };
+
+/* -------------------------------------------
+Macro: TEST_DEFINED()
+    Tests that a VARIABLE is defined.
+
+Parameters:
+    VARIABLE - Variable to test if defined [String or Function].
+    MESSAGE - Message to display if variable is undefined [String].
+
+Examples:
+    (begin example)
+        TEST_DEFINED("_anUndefinedVar","Too few fish!");
+        TEST_DEFINED({ obj getVariable "anUndefinedVar" },"Too many fish!");
+    (end)
+
+Author:
+    Killswitch
+------------------------------------------- */
+#define TEST_DEFINED(VARIABLE,MESSAGE) \
+    if (not isNil VARIABLE) then \
+    { \
+        TEST_SUCCESS('(' + VARIABLE + ' is defined)'); \
+    } \
+    else \
+    { \
+        TEST_FAIL('(' + VARIABLE + ' is not defined)' + (MESSAGE)); \
     }
 
 /* -------------------------------------------
