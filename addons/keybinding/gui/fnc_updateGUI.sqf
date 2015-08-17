@@ -1,4 +1,3 @@
-#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
@@ -65,7 +64,7 @@ if !(isNull _display) then {
                     };
                     _actionName = _prettyName;
                 };
-                TRACE_4("",_modName,_action,_actionName,_keybind);
+
                 if(IS_ARRAY(_keybind) && {IS_ARRAY(_keybind select 1)}) then {
                     _dikCode = _keybind select 0;
                     _shift = (_keybind select 1) select 0;
@@ -80,14 +79,14 @@ if !(isNull _display) then {
 
                     // Build the full key combination name.
                     _keyString = format ["%1", _keyName];
-                    if (_shift && {_dikCode != 42} && {_dikCode != 54}) then {_keyString = format ["Shift+%1", _keyString]};
+                    if (_shift && _dikCode != 42) then {_keyString = format ["Shift+%1", _keyString]};
                     if (_alt && _dikCode != 56) then {_keyString = format ["Alt+%1", _keyString]};
                     if (_ctrl && _dikCode != 29) then {_keyString = format ["Ctrl+%1", _keyString]};
                     if (_keyString != "") then {
                         // Add quotes around whole string.
                         _keyString = format ["""%1""", _keyString]
                     };
-                    TRACE_1("",_keyString);
+
                     // Search the handler array for any other keybinds using this key.
                     _isDuplicated = false;
                     if(_dikCode != 0) then {
