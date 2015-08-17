@@ -46,7 +46,7 @@ if (count _this > 3) then {
     _this set [3, NULL];
     _this = _this - [NULL];
 };
-for "_x" from 0 to _count do {
+for "_x" from 1 to _count do {
     _this call CBA_fnc_addWaypoint;
 };
 _this2 =+ _this;
