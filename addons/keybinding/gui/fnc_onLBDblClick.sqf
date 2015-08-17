@@ -1,3 +1,4 @@
+//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
@@ -25,6 +26,9 @@ _actionId = _lnb lnbData [_lnbIndex, 0];
 GVAR(input) = [];
 
 GVAR(modifiers) = [];
+GVAR(firstKey) = [];
+GVAR(secondKey) = [];
+GVAR(thirdKey) = [];
 
 // Mark that we're waiting so that onKeyDown handler blocks input (Esc key)
 GVAR(waitingForInput) = true;
@@ -43,7 +47,7 @@ _fnc = {
     _combo = _data select 4;
     _display = _data select 5;
 
-    if(count GVAR(input) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
+    if(count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
         [(_this select 1)] call cba_fnc_removePerFrameHandler;
         if (GVAR(waitingForInput)) then {
             // Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.
@@ -52,7 +56,7 @@ _fnc = {
             if (!isNull _display) then { // Make sure user hasn't exited dialog before continuing.
                 // Get stored keypress data.
                 _newKeycode = GVAR(input);
-
+                TRACE_4("",_newKeycode,GVAR(handlers),_comboMod,GVAR(defaultKeybinds));
                 // If a valid key other than Escape was pressed,
                 if (_newKeycode select 0 != 1) then {
                     _modId = (GVAR(handlers) select 0) find _comboMod;
@@ -68,11 +72,11 @@ _fnc = {
                     _entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
                     if(_entryIndex == -1) exitWith {};
                     _defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
-                    
+
                     [
-                        _comboMod, 
-                        _actionId, 
-                        _actionEntry select 0, 
+                        _comboMod,
+                        _actionId,
+                        _actionEntry select 0,
                         _defaultEntry select 0,
                         _defaultEntry select 1,
                         _newKeycode,
@@ -83,8 +87,8 @@ _fnc = {
                     // Update the main dialog.
                     saveProfileNamespace;
                 };
-                
-                
+
+
             };
         };
         [] call FUNC(updateGUI);

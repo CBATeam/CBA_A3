@@ -1,4 +1,4 @@
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 
@@ -36,7 +36,7 @@ if (GVAR(waitingForInput)) then {
         TRACE_4("KEY DOWN: Update Modifiers",_dikCode,_shift,_ctrl,_alt);
 
     } else{
-
+		
 		// Check for secondKey
 		if (count GVAR(firstKey)>0 && {(count GVAR(secondKey)<1)}) then {
         // Check for secondKey only when firstKey is detected
@@ -47,17 +47,17 @@ if (GVAR(waitingForInput)) then {
 			GVAR(secondKey) = [_dikCode];
 			GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
 		};
-
+        
         TRACE_4("KEY DOWN: 2nd Key After",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
         TRACE_4("KEY DOWN: Update Modifiers",_dikCode,_shift,_ctrl,_alt);
-
+		
 		} else {
 			// Check for thirdKey
 			if (count GVAR(secondKey)>0 && {count GVAR(firstKey)>0}) then {
 				// Check for ThirdKey only when first and Second Key is detected
 				TRACE_4("KEY DOWN: Update Input",_dikCode,_shift,_ctrl,_alt);
 				TRACE_4("KEY DOWN: 3rd Key Before",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
-
+				
 				if( ( !(_dikCode in GVAR(secondKey)) && { !(_dikCode in GVAR(firstKey)) })) then {
 					GVAR(thirdKey) = [_dikCode];
 					GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
@@ -67,9 +67,9 @@ if (GVAR(waitingForInput)) then {
 			};
 		};
     };
-
-
-
+	
+	
+	
 };
 
 

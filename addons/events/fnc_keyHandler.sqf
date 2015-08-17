@@ -82,7 +82,7 @@ if(_type == "keydown") then {
                         _result = _args call _code;
 
                         if (isNil "_result") then {
-                            WARNING("Nil result from handler.");
+                            TRACE_1("WARNING: Non-boolean result from handler.",_result);
                             _result = false;
                         }
                         else {
