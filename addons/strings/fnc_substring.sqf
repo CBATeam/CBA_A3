@@ -5,7 +5,7 @@ Description:
     Extracts the index-based substring from a string.
 
 Parameters:
-    _string - String to make replacement in [String]
+    _string - String to extract from [String]
     _startIndex - Index to start the substring extraction [String]
     _endIndex - Index to end the substring extraction [String]
 

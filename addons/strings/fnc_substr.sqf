@@ -5,7 +5,7 @@ Description:
     Retrieves a substring of this instance. The substring starts at a specified character position and has a specified length.
 
 Parameters:
-    _string - String to make replacement in [String]
+    _string - String to extract from [String]
     _startIndex - Index to start the substring extraction [Number]
     _length - length of the extracted substring [Number](Optinal) if is not set than from _startIndex to end
 
