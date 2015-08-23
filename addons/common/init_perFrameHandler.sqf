@@ -139,8 +139,7 @@ FUNC(onFrame) = {
     // player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
     {
         _handlerData = _x;
-        if (!isNil "_handlerData" && {IS_ARRAY(_handlerData)}) then {
-            params ["_func", "_delay", "_delta", "_args", "_idPFH"];
+        if (_handlerData params ["_func", "_delay", "_delta", "", "_args", "_idPFH"]) then {
             if (diag_tickTime > _delta) then {
                 [_args, _idPFH] call _func;
                 _delta = diag_tickTime + _delay;
@@ -148,6 +147,5 @@ FUNC(onFrame) = {
                 _handlerData set [2, _delta];
             };
         };
-        nil
     } count GVAR(perFrameHandlerArray);
 };

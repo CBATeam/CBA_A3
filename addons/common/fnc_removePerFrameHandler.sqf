@@ -31,3 +31,14 @@ _handle = GVAR(PFHhandles) select _publicHandle;
 if (isNil "_handle") exitWith {}; // Nil handle, nil action
 GVAR(PFHhandles) set [_publicHandle, nil];
 GVAR(perFrameHandlerArray) set [_handle, nil];
+_newArray = [];
+
+{
+    private "_entry";
+    _entry = _x;
+    if !(isNil "_entry") then {
+        _newArray set [_forEachIndex, _entry];
+    };
+} forEach GVAR(perFrameHandlerArray);
+GVAR(perFrameHandlerArray) = _newArray;
+GVAR(nextPFHid) = (GVAR(perFrameHandlerArray)) call CBA_fnc_findFirstEmptyEntry;
