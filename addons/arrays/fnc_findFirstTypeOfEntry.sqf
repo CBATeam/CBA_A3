@@ -23,7 +23,7 @@ Author:
 
 scopeName "main";
 
-params ["_typeOf", "_array"]
+params ["_typeOf", "_array"];
 {
     if (typeOf _x == _typeOf) then {
         _forEachIndex breakOut "main";
