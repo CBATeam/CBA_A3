@@ -15,6 +15,12 @@ class CfgFunctions
                 description = "Filter each element of an array via a function.";
                 file = "\x\cba\addons\arrays\fnc_filter.sqf";
             };
+            // CBA_fnc_findFirstEmptyEntry
+            class findFirstEmptyEntry
+            {
+                description = "A function that return the index of the first Empty Entry in a Array.";
+                file = "\x\cba\addons\arrays\fnc_findFirstEmptyEntry.sqf";
+            };
             // CBA_fnc_getArrayDiff
             class getArrayDiff
             {

@@ -8,7 +8,7 @@ Parameters:
     _handle - The function handle you wish to remove
 
 Returns:
-    _handle - a number representing the handle of the function. Use this to remove the handler.
+    None
 
 Examples:
     (begin example)
@@ -25,19 +25,9 @@ Author:
 #include "script_component.hpp"
 
 params ["_publicHandle"];
-private ["_handle"];
+private "_handle";
 if (isNil "_publicHandle" || (_publicHandle < 0)) exitWith {}; // Nil/no handle, nil action
 _handle = GVAR(PFHhandles) select _publicHandle;
 if (isNil "_handle") exitWith {}; // Nil handle, nil action
-GVAR(PFHhandles) set[_publicHandle, nil];
+GVAR(PFHhandles) set [_publicHandle, nil];
 GVAR(perFrameHandlerArray) set [_handle, nil];
-_newArray = [];
-for "_i" from (count GVAR(perFrameHandlerArray))-1 to 0 step -1 do {
-    _entry = GVAR(perFrameHandlerArray) select _i;
-    if (isNil "_entry") then {
-        GVAR(nextPFHid) = _i;
-    } else {
-        _newArray set[_i, _entry];
-    };
-};
-GVAR(perFrameHandlerArray) = _newArray;

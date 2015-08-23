@@ -35,7 +35,6 @@ LOG(MSG_INIT);
 ADDON = false;
 
 CBA_nil = [nil];
-GVAR(nextPFHid) = -1;
 GVAR(PFHhandles) = [];
 GVAR(centers) = [];
 CBA_actionHelper = QUOTE(PATHTO(actionHelper));
@@ -50,8 +49,9 @@ FUNC(directCall) = {
     params ["_params","_code"];
     _o = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
     ["CBA_DC", "onEachFrame", {
-        (_this select 0) call (_this select 1);
-        (_this select 2) setDamage 1;
+        params ["_args", "_code", "_o"];
+        _args call _code;
+        _o setDamage 1;
         ["CBA_DC", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
     }, [_params, _code, _o]] call BIS_fnc_addStackedEventHandler;
     _o

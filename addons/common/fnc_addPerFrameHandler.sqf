@@ -29,7 +29,7 @@ params ["_func","_delay", ["_params",[]]];
 _handle = -1;
 _publicHandle = -1;
 if (!isNil "_func") then {
-    _handle = GVAR(nextPFHid);
+    _handle = (GVAR(perFrameHandlerArray)) call CBA_fnc_findFirstEmptyEntry;
     if (_handle == -1) then {
         _handle = count GVAR(perFrameHandlerArray);
     } else {
