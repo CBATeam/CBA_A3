@@ -1,19 +1,19 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_findFirstEmptyEntry
+Function: CBA_fnc_findFirstNullEntry
 
 Description:
-    A function that return the index of the first Empty Entry in a Array.
+    A function that return the index of the first Null Entry in a Array.
 
 Parameters:
     A Array with Nil type of Variable
 
 Example:
     (begin example)
-    _index = ["", Player, "test", nil, VARIABLE, nil] call CBA_fnc_findFirstEmptyEntry
+    _index = ["", Player, "test", objNull, VARIABLE, ] call CBA_fnc_findFirstNullEntry
     (end)
 
 Returns:
-    Index that is the first Empty Entrys in the Array if no Empty in retrun 0
+    Index that is the first Null Entrys in the Array if no Null in retrun 0
 
 Author:
     joko // Jonas
@@ -23,9 +23,7 @@ Author:
 scopeName "main";
 
 {
-    private "_current";
-    _current = _x;
-    if (isNil "_current") then {
+    if (isNull _x) then {
         _forEachIndex breakOut "main";
     };
 } forEach _this;

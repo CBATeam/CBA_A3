@@ -21,6 +21,18 @@ class CfgFunctions
                 description = "A function that return the index of the first Empty Entry in a Array.";
                 file = "\x\cba\addons\arrays\fnc_findFirstEmptyEntry.sqf";
             };
+            // CBA_fnc_findFirstTypeOfEntry
+            class findFirstTypeOfEntry
+            {
+                description = "A function that return the index of the first Empty Entry in a Array.";
+                file = "\x\cba\addons\arrays\fnc_findFirstTypeOfEntry.sqf";
+            };
+            // CBA_fnc_findFirstTypeOfEntry
+            class CBA_fnc_findFirstNullEntry
+            {
+                description = "A function that return the index of the first Empty Entry in a Array.";
+                file = "\x\cba\addons\arrays\fnc_findFirstNullEntry.sqf";
+            };
             // CBA_fnc_getArrayDiff
             class getArrayDiff
             {
