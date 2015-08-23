@@ -27,8 +27,8 @@ class CfgFunctions
                 description = "A function that return the index of the first Type Of Entry in a Array.";
                 file = "\x\cba\addons\arrays\fnc_findFirstTypeOfEntry.sqf";
             };
-            // CBA_fnc_findFirstTypeOfEntry
-            class CBA_fnc_findFirstNullEntry
+            // CBA_fnc_findFirstNullEntry
+            class findFirstNullEntry
             {
                 description = "A function that return the index of the first Null Entry in a Array.";
                 file = "\x\cba\addons\arrays\fnc_findFirstNullEntry.sqf";
