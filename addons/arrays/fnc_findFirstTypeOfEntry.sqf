@@ -14,7 +14,7 @@ Example:
     (end)
 
 Returns:
-    Index that is the first Type Of in the Array if no Empty in retrun 0
+    Index that is the first Type Of in the Array if no Empty in retrun -1
 
 Author:
     joko // Jonas

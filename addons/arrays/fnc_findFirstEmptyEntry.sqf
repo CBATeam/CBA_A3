@@ -13,7 +13,7 @@ Example:
     (end)
 
 Returns:
-    Index that is the first Empty Entrys in the Array if no Empty in retrun 0
+    Index that is the first Empty Entrys in the Array if no Empty in retrun -1
 
 Author:
     joko // Jonas

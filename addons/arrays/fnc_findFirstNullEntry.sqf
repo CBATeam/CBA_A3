@@ -5,7 +5,7 @@ Description:
     A function that return the index of the first Null Entry in a Array.
 
 Parameters:
-    A Array with Nil type of Variable
+    A Array with Any type of Variable
 
 Example:
     (begin example)
@@ -13,7 +13,7 @@ Example:
     (end)
 
 Returns:
-    Index that is the first Null Entrys in the Array if no Null in retrun 0
+    Index that is the first Null Entrys in the Array if no Null in retrun -1
 
 Author:
     joko // Jonas
