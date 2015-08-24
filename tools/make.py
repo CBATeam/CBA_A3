@@ -58,7 +58,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "@cba"
+project = "@CBA_A3"
 PROJECT_VERSION = "2.0.0"
 arma3tools_path = ""
 work_drive = ""
