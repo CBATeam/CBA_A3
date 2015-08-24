@@ -32,11 +32,6 @@ if (!isNil "_func") then {
     _handle = GVAR(nextPFHid);
     if (_handle == -1) then {
         _handle = count GVAR(perFrameHandlerArray);
-    } else {
-        _test = GVAR(perFrameHandlerArray) select _handle;
-        if (!isNil "_test") then {
-            _handle = (count GVAR(perFrameHandlerArray));
-        };
     };
     _publicHandle = GVAR(PFHhandles) pushback _handle;
     _data = [_func, _delay, 0, diag_tickTime, _params, _publicHandle];
