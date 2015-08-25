@@ -100,7 +100,7 @@ TEST_OP(_str,==,"frog",_fn);
 _str = ["   frog"] call CBA_fnc_leftTrim; // spaces
 TEST_OP(_str,==,"frog",_fn);
 
-_str = ["    frog"] call CBA_fnc_leftTrim; // tab
+_str = ["	frog"] call CBA_fnc_leftTrim; // tab
 TEST_OP(_str,==,"frog",_fn);
 
 _str = ["   "] call CBA_fnc_leftTrim;
@@ -127,16 +127,16 @@ TEST_OP(_str,==,"frog",_fn);
 _str = ["frog   "] call CBA_fnc_rightTrim;
 TEST_OP(_str,==,"frog",_fn);
 
-_str = ["frog     "] call CBA_fnc_rightTrim; // including tabs
+_str = ["frog 	"] call CBA_fnc_rightTrim; // including tabs
 TEST_OP(_str,==,"frog",_fn);
 
 _str = ["   "] call CBA_fnc_rightTrim;
 TEST_OP(_str,==,"",_fn);
 
-_str = ["     "] call CBA_fnc_rightTrim; // including tabs
+_str = [" 	"] call CBA_fnc_rightTrim; // including tabs
 TEST_OP(_str,==,"",_fn);
 
-_str = [" x    "] call CBA_fnc_rightTrim;
+_str = [" x	"] call CBA_fnc_rightTrim;
 TEST_OP(_str,==," x",_fn);
 
 // ----------------------------------------------------------------------------
