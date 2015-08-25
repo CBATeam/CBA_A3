@@ -67,6 +67,7 @@ XEH_FUNC(Local);
 //XEH_FUNC(MPRespawn);
 XEH_FUNC(Put);
 XEH_FUNC(Respawn);
+XEH_FUNC(SeatSwitched);
 XEH_FUNC(Take);
 XEH_FUNC(WeaponAssembled);
 XEH_FUNC(WeaponDisassembled);

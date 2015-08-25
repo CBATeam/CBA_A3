@@ -20,8 +20,8 @@
     /* "HandleDamage", */ "HandleHeal", "Hit", "HitPart", "IncomingMissile", \
     "InventoryClosed", "InventoryOpened", \
     "Killed", "LandedTouchDown", "LandedStopped", "Local", /* "MPHit", */ \
-    /* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", "SoundPlayed", \
-    "WeaponAssembled", "WeaponDisassembled"
+    /* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", "SeatSwitched", \
+    "SoundPlayed", "WeaponAssembled", "WeaponDisassembled"
 #define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
 
 
