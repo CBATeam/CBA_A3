@@ -1,20 +1,20 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_findFirstTypeOfEntry
+Function: CBA_fnc_findType
 
 Description:
-    A function that return the index of the first Type Of Entry in a Array.
+    A function that returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: TypeOf Return as String
+    0: Entry type to search for. Possible vales are those that the typeOf command returns
     1: A Array with Any type of Variable
 
 Example:
     (begin example)
-    _index = ["OBJECT",["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findFirstTypeOfEntry
+    _index = ["OBJECT",["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findType
     (end)
 
 Returns:
-    Index that is the first Type Of in the Array if no Empty in retrun -1
+    Index of the first entry of the indicated type in the array or -1 if no entry of the type could be found.
 
 Author:
     joko // Jonas

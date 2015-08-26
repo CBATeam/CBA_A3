@@ -15,23 +15,23 @@ class CfgFunctions
                 description = "Filter each element of an array via a function.";
                 file = "\x\cba\addons\arrays\fnc_filter.sqf";
             };
-            // CBA_fnc_findFirstEmptyEntry
-            class findFirstEmptyEntry
+            // CBA_fnc_findNil
+            class findNil
             {
-                description = "A function that return the index of the first Empty Entry in a Array.";
-                file = "\x\cba\addons\arrays\fnc_findFirstEmptyEntry.sqf";
+                description = "A function that returns the index of the first empty (nil) entry in an array.";
+                file = "\x\cba\addons\arrays\fnc_findNil.sqf";
             };
             // CBA_fnc_findFirstTypeOfEntry
             class findFirstTypeOfEntry
             {
-                description = "A function that return the index of the first Type Of Entry in a Array.";
-                file = "\x\cba\addons\arrays\fnc_findFirstTypeOfEntry.sqf";
+                description = "A function that returns the index of the first entry of a certain type in an array.";
+                file = "\x\cba\addons\arrays\fnc_findType.sqf";
             };
             // CBA_fnc_findFirstNullEntry
             class findFirstNullEntry
             {
-                description = "A function that return the index of the first Null Entry in a Array.";
-                file = "\x\cba\addons\arrays\fnc_findFirstNullEntry.sqf";
+                description = "A function that returns the index of the first null entry in an array.";
+                file = "\x\cba\addons\arrays\fnc_findNull.sqf";
             };
             // CBA_fnc_getArrayDiff
             class getArrayDiff

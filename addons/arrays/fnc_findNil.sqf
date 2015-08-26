@@ -1,19 +1,19 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_findFirstEmptyEntry
+Function: CBA_fnc_findNil
 
 Description:
-    A function that return the index of the first Empty Entry in a Array.
+    A function that returns the index of the first empty (nil) entry in an array.
 
 Parameters:
-    A Array with Nil type of Variable
+    The array to search in.
 
 Example:
     (begin example)
-    _index = ["", Player, "test", nil, VARIABLE, nil] call CBA_fnc_findFirstEmptyEntry
+    _index = ["", Player, "test", nil, VARIABLE, nil] call CBA_fnc_findNil
     (end)
 
 Returns:
-    Index that is the first Empty Entrys in the Array if no Empty in retrun -1
+    Index of the first nil entry in the array. If there is no nil entry, the function returns -1
 
 Author:
     joko // Jonas

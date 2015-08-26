@@ -1,19 +1,19 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_findFirstNullEntry
+Function: CBA_fnc_findNull
 
 Description:
-    A function that return the index of the first Null Entry in a Array.
+    A function that returns the index of the first null entry in an array.
 
 Parameters:
-    A Array with Any type of Variable
+    The array to search in.
 
 Example:
     (begin example)
-    _index = ["", Player, "test", objNull, VARIABLE, ] call CBA_fnc_findFirstNullEntry
+    _index = ["", Player, "test", objNull, VARIABLE, ] call CBA_fnc_findNull
     (end)
 
 Returns:
-    Index that is the first Null Entrys in the Array if no Null in retrun -1
+    Index of the first null entry in the array. If there is no null entry, the function returns -1
 
 Author:
     joko // Jonas
