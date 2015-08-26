@@ -1439,10 +1439,16 @@ See the make.cfg file for additional build options.
 
         if os.path.exists(a3_path):
             try:
-                shutil.rmtree(os.path.join(a3_path, project), True)
-                shutil.copytree(os.path.join(module_root, release_dir, project), os.path.join(a3_path, project))
+                shutil.rmtree(a3_path, True)
+                shutil.copytree(os.path.join(module_root, release_dir, project), a3_path)
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
+        else:
+            try:
+                shutil.copytree(os.path.join(module_root, release_dir, project), a3_path)
+            except:
+                print_error("Could not copy files. Is Arma 3 running?")
+
 
     print_green("\nDone.")
 
