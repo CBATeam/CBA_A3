@@ -21,11 +21,17 @@ class CfgFunctions
                 description = "A function that returns the index of the first empty (nil) entry in an array.";
                 file = "\x\cba\addons\arrays\fnc_findNil.sqf";
             };
-            // CBA_fnc_findType
-            class findType
+            // CBA_fnc_findTypeName
+            class findTypeName
             {
                 description = "A function that returns the index of the first entry of a certain type in an array.";
-                file = "\x\cba\addons\arrays\fnc_findType.sqf";
+                file = "\x\cba\addons\arrays\fnc_findTypeName.sqf";
+            };
+            // CBA_fnc_findTypeOf
+            class findTypeOf
+            {
+                description = "A function that returns the index of the first entry of a certain type in an array.";
+                file = "\x\cba\addons\arrays\fnc_findTypeOf.sqf";
             };
             // CBA_fnc_findNull
             class findNull

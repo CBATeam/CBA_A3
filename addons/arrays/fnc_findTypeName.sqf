@@ -1,16 +1,16 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_findType
+Function: CBA_fnc_findTypeName
 
 Description:
     A function that returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: Entry type to search for. Possible vales are those that the typeOf command returns
+    0: Entry type to search for. if Put in was not a String it Check if
     1: A Array with Any type of Variable
 
 Example:
     (begin example)
-    _index = ["OBJECT",["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findType
+    _index = ["OBJECT",["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
     (end)
 
 Returns:
@@ -23,9 +23,14 @@ Author:
 
 scopeName "main";
 
-params ["_typeOf", "_array"];
+params ["_typeName", "_array"];
+_typeName = toUpper _typeName;
+if !(_typeName in ["ARRAY", "BOOL", "CODE", "CONFIG", "CONTROL", "DISPLAY", "LOCALTION", "OBJECT", "SCALAR", "SCRIPT", "SIDE", "STRING", "TEXT", "TEAM_MEMBER", "NAMESPACE"]) then {
+    _typeName = typeName _typeName;
+};
+
 {
-    if (typeOf _x == _typeOf) then {
+    if (typeName _x == _typeName) then {
         _forEachIndex breakOut "main";
     };
 } forEach _array;
