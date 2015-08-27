@@ -141,6 +141,27 @@ Author:
 #endif
 
 /* -------------------------------------------
+Macros: CBA_LOGLEVEL_X
+    Default CBA Loglevels for ease of access.
+
+    CBA_LOGLEVEL_FATAL - Logs for very severe errors that will presumably lead to the system not working.
+    CBA_LOGLEVEL_ERROR - Logs for error events that might still allow the system to continue.
+    CBA_LOGLEVEL_WARN - Logs for potentially harmful situations for the system.
+    CBA_LOGLEVEL_INFO - Logs for informational messages about the general progress of the system.
+    CBA_LOGLEVEL_DEBUG - Logs for fine-grained information mostly useful for debugging the system.
+    CBA_LOGLEVEL_TRACE - Logs for finer-grained information for system call logs or similar.
+
+Author:
+    MikeMatrix
+------------------------------------------- */
+#define CBA_LOGLEVEL_FATAL 60
+#define CBA_LOGLEVEL_ERROR 50
+#define CBA_LOGLEVEL_WARN 40
+#define CBA_LOGLEVEL_INFO 30
+#define CBA_LOGLEVEL_DEBUG 20
+#define CBA_LOGLEVEL_TRACE 10
+
+/* -------------------------------------------
 Macro: LOG()
     Log a timestamped message into the RPT log.
 
@@ -158,7 +179,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_FULL
-#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
+#define LOG(MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), MESSAGE, CBA_LOGLEVEL_DEBUG, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 #else
 #define LOG(MESSAGE) /* disabled */
 #endif
@@ -181,7 +202,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_NORMAL
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
+#define WARNING(MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), MESSAGE, CBA_LOGLEVEL_WARN, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 #else
 #define WARNING(MESSAGE) /* disabled */
 #endif
@@ -205,8 +226,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR(MESSAGE) \
-    [THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
+#define ERROR(MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), MESSAGE, CBA_LOGLEVEL_ERROR, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 /* -------------------------------------------
 Macro: ERROR_WITH_TITLE()
@@ -229,8 +249,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
+#define ERROR_WITH_TITLE(TITLE,MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), FORMAT_2("%1 - %2",TITLE,MESSAGE), CBA_LOGLEVEL_ERROR, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 /* -------------------------------------------
 Macro: MESSAGE_WITH_TITLE()
@@ -248,8 +267,7 @@ Example:
 Author:
     Killswitch
 ------------------------------------------- */
-#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE)] call CBA_fnc_log;
+#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), FORMAT_2("%1 - %2",TITLE,MESSAGE), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 /* -------------------------------------------
 Macro: RETNIL()
@@ -328,31 +346,31 @@ Author:
 
 #ifdef DEBUG_MODE_FULL
 #define TRACE_1(MESSAGE,A) \
-    [THIS_FILE_, __LINE__, PFORMAT_1(MESSAGE,A)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_1(MESSAGE,A), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_2(MESSAGE,A,B) \
-    [THIS_FILE_, __LINE__, PFORMAT_2(MESSAGE,A,B)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_2(MESSAGE,A,B), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_3(MESSAGE,A,B,C) \
-    [THIS_FILE_, __LINE__, PFORMAT_3(MESSAGE,A,B,C)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_3(MESSAGE,A,B,C), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_4(MESSAGE,A,B,C,D) \
-    [THIS_FILE_, __LINE__, PFORMAT_4(MESSAGE,A,B,C,D)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_4(MESSAGE,A,B,C,D), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_5(MESSAGE,A,B,C,D,E) \
-    [THIS_FILE_, __LINE__, PFORMAT_5(MESSAGE,A,B,C,D,E)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_5(MESSAGE,A,B,C,D,E), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-    [THIS_FILE_, __LINE__, PFORMAT_6(MESSAGE,A,B,C,D,E,F)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_6(MESSAGE,A,B,C,D,E,F), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-    [THIS_FILE_, __LINE__, PFORMAT_7(MESSAGE,A,B,C,D,E,F,G)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_7(MESSAGE,A,B,C,D,E,F,G), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-    [THIS_FILE_, __LINE__, PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
-    [THIS_FILE_, __LINE__, PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I)] call CBA_fnc_log
+    [QUOTE(PREFIX), QUOTE(COMPONENT), PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I), CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
 
 #else
 

@@ -6,6 +6,11 @@
 #define MOVIE_PAUSE ((findDisplay 49) displayCtrl 1004)
 #define YPOS(y) (y * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25))
 
+GVAR(logLevel) = CBA_LOGLEVEL_INFO;
+#ifdef DEBUG_MODE_FULL
+GVAR(logLevel) = CBA_LOGLEVEL_TRACE;
+#endif
+
 LOG(MSG_INIT);
 
 [QUOTE(GVAR(debug)), { _this call (uiNamespace getVariable "CBA_fnc_debug") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");

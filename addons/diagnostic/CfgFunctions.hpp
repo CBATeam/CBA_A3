@@ -45,6 +45,42 @@ class CfgFunctions
                 description = "Runs unit tests for an addon or component.";
                 file = "\x\cba\addons\diagnostic\fnc_test.sqf";
             };
+            // CBA_fnc_addLogLevel
+            class addLogLevel
+            {
+                description = "Add a system wide named log level.";
+                file = "\x\cba\addons\diagnostic\fnc_addLogLevel.sqf";
+            };
+            // CBA_fnc_getLogLevel
+            class getLogLevel
+            {
+                description = "Get a system wide named log level.";
+                file = "\x\cba\addons\diagnostic\fnc_getLogLevel.sqf";
+            };
+            // CBA_fnc_removeLogLevel
+            class removeLogLevel
+            {
+                description = "Remove a system wide named log level.";
+                file = "\x\cba\addons\diagnostic\fnc_removeLogLevel.sqf";
+            };
+            // CBA_fnc_logDynamic
+            class logDynamic
+            {
+                description = "Logs messages with meta information to provided log writers.";
+                file = "\x\cba\addons\diagnostic\fnc_logDynamic.sqf";
+            };
+            // CBA_fnc_diagLogWriter
+            class diagLogWriter
+            {
+                description = "Writes supplied message to diag_log.";
+                file = "\x\cba\addons\diagnostic\fnc_diagLogWriter.sqf";
+            };
+            // CBA_fnc_systemChatLogWriter
+            class systemChatLogWriter
+            {
+                description = "Writes supplied message to systemChat.";
+                file = "\x\cba\addons\diagnostic\fnc_systemChatLogWriter.sqf";
+            };
         };
     };
 };
