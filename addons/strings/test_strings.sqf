@@ -37,6 +37,10 @@ TEST_OP(_pos,==,3,_fn);
 _fn = "CBA_fnc_split";
 TEST_DEFINED("CBA_fnc_split","");
 
+_array = ["", ""] call CBA_fnc_split;
+_expected = [];
+TEST_OP(str _array, ==, str _expected, _fn);
+
 _array = ["", "\"] call CBA_fnc_split;
 _expected = [];
 TEST_OP(str _array, ==, str _expected, _fn);
@@ -59,6 +63,18 @@ TEST_OP(str _array, ==, str _expected, _fn);
 
 _array = ["peas", ""] call CBA_fnc_split;
 _expected = ["p", "e", "a", "s"];
+TEST_OP(str _array, ==, str _expected, _fn);
+
+_array = ["cheeseaafrog", "aa"] call CBA_fnc_split;
+_expected = ["cheese", "frog"];
+TEST_OP(str _array, ==, str _expected, _fn);
+
+_array = ["abc", "abc"] call CBA_fnc_split;
+_expected = ["", ""];
+TEST_OP(str _array, ==, str _expected, _fn);
+
+_array = ["abc", "long"] call CBA_fnc_split;
+_expected = ["abc"];
 TEST_OP(str _array, ==, str _expected, _fn);
 
 // ----------------------------------------------------------------------------
