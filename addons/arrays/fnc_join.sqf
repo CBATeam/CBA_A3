@@ -1,6 +1,8 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_join
 
+DEPRECATED - Please use <joinString at https://community.bistudio.com/wiki/joinString> added in Arma 3 1.50
+
 Description:
     Joins an array of values into a single string, joining each fragment around
     a separator string. Inverse of <CBA_fnc_split>.
@@ -32,21 +34,6 @@ SCRIPT(join);
 
 // ----------------------------------------------------------------------------
 
-params ["_array", ["_separator",""]];
+params [["_array",[]], ["_separator",""]];
 
-private ["_joined", "_element"];
-
-if (count _array > 0) then {
-    _element = _array select 0;
-    _joined = if (IS_STRING(_element)) then { _element } else { str _element };
-
-    for "_i" from 1 to ((count _array) - 1) do {
-        _element = _array select _i;
-        _element = if (IS_STRING(_element)) then { _element } else { str _element };
-        _joined = _joined + _separator + _element;
-    };
-} else {
-    _joined = "";
-};
-
-_joined; // Return.
+_array joinString _separator
