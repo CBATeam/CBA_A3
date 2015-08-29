@@ -32,7 +32,7 @@ if (_lc >= _level) then
 if !(_failed) exitWith {};
 
 // Default version mismatch handling, broadcast to all!
-[format["%1 - Version Mismatch! (Machine: %2 (%6) version: %4, serverVersion: %3, Level: %5)", _key, player, [_remoteVersion, "."] call CBA_fnc_join, [_localVersion, "."] call CBA_fnc_join, _level, name player], QUOTE(ADDON), [CBA_display_ingame_warnings, true, true]] call CBA_fnc_debug;
+[format["%1 - Version Mismatch! (Machine: %2 (%6) version: %4, serverVersion: %3, Level: %5)", _key, player, _remoteVersion joinString ".", _localVersion joinString ".", _level, name player], QUOTE(ADDON), [CBA_display_ingame_warnings, true, true]] call CBA_fnc_debug;
 
 // Allow custom handler
 if (isText ((CFGSETTINGS) >> _key >> "handler")) then

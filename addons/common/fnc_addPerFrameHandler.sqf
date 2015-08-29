@@ -26,21 +26,17 @@ Author:
 private["_handle", "_data", "_publicHandle"];
 params ["_func","_delay", ["_params",[]]];
 
-_handle = -1;
-_publicHandle = -1;
 if (!isNil "_func") then {
-    _handle = GVAR(nextPFHid);
-    if (_handle == -1) then {
-        _handle = count GVAR(perFrameHandlerArray);
+    _handle = if (GVAR(nextPFHid) == -1) then {
+        GVAR(nextPFHid) = count GVAR(perFrameHandlerArray);
+        GVAR(nextPFHid)
     } else {
-        _test = GVAR(perFrameHandlerArray) select _handle;
-        if (!isNil "_test") then {
-            _handle = (count GVAR(perFrameHandlerArray));
-        };
+        GVAR(nextPFHid) = GVAR(nextPFHid) + 1;
+        GVAR(nextPFHid)
     };
+
     _publicHandle = GVAR(PFHhandles) pushback _handle;
     _data = [_func, _delay, 0, diag_tickTime, _params, _publicHandle];
-    GVAR(perFrameHandlerArray) set [_handle, _data];
+    GVAR(perFrameHandlerArray) pushBack _data;
 };
-
 _publicHandle

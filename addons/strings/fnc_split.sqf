@@ -32,14 +32,14 @@ SCRIPT(split);
 // ----------------------------------------------------------------------------
 
 private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
-params ["_input", ["_separator",""]];
+params [["_input",""], ["_separator",""]];
 _split = [];
 _index = 0;
 _inputCount = count _input;
 _separatorCount = count _separator;
 //Return array if split count > input count (Match default behavior):
-if (_separatorCount > _inputCount) exitWith {toArray _input};
-if (_separatorCount > 0) then {
+if (_separatorCount > _inputCount) exitWith {[_input]};
+if (_separatorCount > 1) then {
     _lastWasSeperator = true;
     while {_index < _inputCount} do {
         _find = (_input select [_index, (_inputCount - _index)]) find _separator;
@@ -63,8 +63,6 @@ if (_separatorCount > 0) then {
         _split pushBack "";
     };
 } else {
-    for "_index" from 0 to (_inputCount - 1) do {
-        _split pushBack (_input select [_index, 1]);
-    };
+    _split = _input splitString _separator;
 };
 _split
