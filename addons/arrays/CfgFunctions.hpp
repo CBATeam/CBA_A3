@@ -15,6 +15,18 @@ class CfgFunctions
                 description = "Filter each element of an array via a function.";
                 file = "\x\cba\addons\arrays\fnc_filter.sqf";
             };
+            // CBA_fnc_findMax
+            class findMax
+            {
+                description = "Find smallest numeric value with index in an array.";
+                file = "\x\cba\addons\arrays\fnc_findMax.sqf";
+            };
+            // CBA_fnc_findMin
+            class findMin
+            {
+                description = "Find biggest numeric value with index in an array.";
+                file = "\x\cba\addons\arrays\fnc_findMin.sqf";
+            };
             // CBA_fnc_getArrayDiff
             class getArrayDiff
             {
@@ -26,18 +38,6 @@ class CfgFunctions
             {
                 description = "A function used to return the element counts in an array. Parameters: Array Example: _types = [0,0,1,1,1,1] call CBA_fnc_getArrayElements Returns: Array element counts (for above example, return would be [0,2,1,4]) Author: Rommel && sbsmac";
                 file = "\x\cba\addons\arrays\fnc_getArrayElements.sqf";
-            };
-            // CBA_fnc_getHightestVaule
-            class getHightestVaule
-            {
-                description = "Use to find Hightest value with index in a array.";
-                file = "\x\cba\addons\arrays\fnc_getHightestVaule.sqf";
-            };
-            // CBA_fnc_getLowestVaule
-            class getLowestVaule
-            {
-                description = "Use to find Hightest value with index in a Array.";
-                file = "\x\cba\addons\arrays\fnc_getLowestVaule.sqf";
             };
             // CBA_fnc_inject
             class inject
