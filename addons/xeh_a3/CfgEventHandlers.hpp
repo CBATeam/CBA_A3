@@ -160,22 +160,22 @@ class Extended_init_Eventhandlers {
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
         };
         class Snake_random_F /* : Animal_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f\Snakes\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Fin_random_F /* : Fin_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\dog\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Alsatian_Random_F /* : Alsatian_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\dog\scripts\randomize_als.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Goat_random_F /* : Goat_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\goat\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Sheep_random_F /* : Animal_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\Sheep\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Cock_random_F /* : Fowl_Base_F */ {
-                SLX_BIS = "_FRnd = compile preprocessFile ""\A3\animals_f_beta\Chicken\scripts\randomize.sqf"";(_this select 0) call _FRnd;";
+                SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
         class Cock_white_F /* : Cock_random_F */ {
                 SLX_BIS = "";
