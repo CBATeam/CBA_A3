@@ -5,7 +5,7 @@ Description:
     A function that returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: Entry type to search for. Possible vales are those that the typeOf command returns(Classnames) or a Object
+    0: Entry type to search for. Object or class name (as returned by the typeOf command).
     1: A Array with Any type of Variable
 
 Example:

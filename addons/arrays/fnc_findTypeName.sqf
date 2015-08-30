@@ -5,7 +5,7 @@ Description:
     A function that returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: Entry type to search for. if Put in was not a String it Check if
+    0: Entry type to search for. Was not a string with a known type name it take the typeName from the input.
     1: A Array with Any type of Variable
 
 Example:
