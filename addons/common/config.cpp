@@ -18,4 +18,4 @@ class CfgPatches
 
 #include "CfgPerFrame.hpp"
 
-
+#include "CfgRemoteExec.hpp"

@@ -37,11 +37,4 @@ _str = 'if(isServer)exitWith{};if (isNil "CBA_display_ingame_warnings") then { C
     _str = _str + format['if !(isClass(configFile >> "CfgPatches" >> "%1"))exitWith{"%1" call _func};', _addon];
 }] call CBA_fnc_hashEachPair;
 ADD(_str,"};");
-// Actually disconnect em?
-// endMission "END1"
-GVAR(str) = _str; // debug
-GVAR(state) = {call compile _this}; publicVariable QGVAR(state);
-// Make sure _str is available for all clients
-[_str, QGVAR(state), true, true] spawn BIS_fnc_MP;
-//CBA_logic setVehicleInit _str;
-//processInitCommands;
+(compile _str) remoteExecCall ["BIS_fnc_call", -2];
