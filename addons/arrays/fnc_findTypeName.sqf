@@ -27,7 +27,7 @@ scopeName "main";
 
 params [["_array", [], [[]]], "_typeName"];
 
-if (isNil "_typeName" || {count _array <= 0}) exitWith {-1};
+if (isNil "_typeName" || {_array isEqualTo []}) exitWith {-1};
 
 // If a string is given, tansform to uppercase for type matching
 if (typeName _typeName isEqualTo "STRING") then {

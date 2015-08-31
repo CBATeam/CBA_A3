@@ -25,7 +25,7 @@ scopeName "main";
 
 params [["_array", [], [[]]], ["_typeOf", nil, [objNull, ""]]];
 
-if (isNil "_typeOf" || {count _array <= 0}) exitWith {-1};
+if (isNil "_typeOf" || {_array isEqualTo []}) exitWith {-1};
 
 if (typeName _typeOf == "OBJECT") then {
     _typeOf = typeOf _typeOf;
