@@ -5,8 +5,8 @@ Description:
     A function that returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: Entry type to search for. Was not a string with a known type name it take the typeName from the input.
-    1: A Array with Any type of Variable
+    0: Array
+    1: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwies typename of the variable will be used.
 
 Example:
     (begin example)
@@ -21,11 +21,21 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+#define TYPENAMES ["ARRAY", "BOOL", "CODE", "CONFIG", "CONTROL", "DISPLAY", "GROUP", "LOCATION", "OBJECT", "SCALAR", "SCRIPT", "SIDE", "STRING", "TASK", "TEXT", "TEAM_MEMBER", "NAMESPACE"]
+
 scopeName "main";
 
-params ["_typeName", "_array"];
-_typeName = toUpper _typeName;
-if !(_typeName in ["ARRAY", "BOOL", "CODE", "CONFIG", "CONTROL", "DISPLAY", "LOCALTION", "OBJECT", "SCALAR", "SCRIPT", "SIDE", "STRING", "TEXT", "TEAM_MEMBER", "NAMESPACE"]) then {
+params [["_array", [], [[]]], "_typeName"];
+
+if (isNil "_typeName" || {_array isEqualTo []}) exitWith {-1};
+
+// If a string is given, tansform to uppercase for type matching
+if (typeName _typeName isEqualTo "STRING") then {
+    _typeName = toUpper _typeName;
+};
+
+// If _typeName is not a typename description, use the type of that value
+if !(_typeName in TYPENAMES) then {
     _typeName = typeName _typeName;
 };
 

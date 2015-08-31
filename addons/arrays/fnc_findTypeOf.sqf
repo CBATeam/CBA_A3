@@ -2,15 +2,15 @@
 Function: CBA_fnc_findTypeOf
 
 Description:
-    A function that returns the index of the first entry of the given type in an array.
+    A function that returns the index of the first entry (either object or class name string) of the given type in an array.
 
 Parameters:
-    0: Entry type to search for. Object or class name (as returned by the typeOf command).
-    1: A Array with Any type of Variable
+    0: Array
+    1: Entry type, can be either Object or class name string (as returned by typeOf)
 
 Example:
     (begin example)
-    _index = [Player, ["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeOf
+    _index = [["", Player, "test", nil, VARIABLE, nil], player] call CBA_fnc_findTypeOf
     (end)
 
 Returns:
@@ -23,16 +23,19 @@ Author:
 
 scopeName "main";
 
-params ["_typeOf", "_array"];
+params [["_array", [], [[]]], ["_typeOf", nil, [objNull, ""]]];
+
+if (isNil "_typeOf" || {_array isEqualTo []}) exitWith {-1};
+
 if (typeName _typeOf == "OBJECT") then {
     _typeOf = typeOf _typeOf;
 };
 
 {
-    if (_x typeName == "OBJECT" && {typeOf _x == _typeOf}) then {
+    if (typeName _x == "OBJECT" && {typeOf _x == _typeOf}) then {
         _forEachIndex breakOut "main";
     };
-    if (_x typeName == "STRING" && {_x == _typeOf}) then {
+    if (typeName _x == "STRING" && {_x == _typeOf}) then {
         _forEachIndex breakOut "main";
     };
 } forEach _array;
