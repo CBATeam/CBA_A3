@@ -20,12 +20,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+if (typeName _this != "ARRAY") exitWith {-1};
+
 scopeName "main";
 
 {
-    private "_current";
-    _current = _x;
-    if (isNil "_current") then {
+    if (isNil "_x") then {
         _forEachIndex breakOut "main";
     };
 } forEach _this;
