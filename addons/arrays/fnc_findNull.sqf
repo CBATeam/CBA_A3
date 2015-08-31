@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (typeName _this != "ARRAY") exitWith {-1};
+if !(IS_ARRAY(_this)) exitWith {-1};
 
 scopeName "main";
 

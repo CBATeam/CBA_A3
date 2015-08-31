@@ -27,15 +27,15 @@ params [["_array", [], [[]]], ["_typeOf", nil, [objNull, ""]]];
 
 if (isNil "_typeOf" || {_array isEqualTo []}) exitWith {-1};
 
-if (typeName _typeOf == "OBJECT") then {
+if (IS_OBJECT(_typeOf) then {
     _typeOf = typeOf _typeOf;
 };
 
 {
-    if (typeName _x == "OBJECT" && {typeOf _x == _typeOf}) then {
+    if (IS_OBJECT(_x) && {typeOf _x == _typeOf}) then {
         _forEachIndex breakOut "main";
     };
-    if (typeName _x == "STRING" && {_x == _typeOf}) then {
+    if (IS_STRING(_x) && {_x == _typeOf}) then {
         _forEachIndex breakOut "main";
     };
 } forEach _array;

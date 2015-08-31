@@ -30,7 +30,7 @@ params [["_array", [], [[]]], "_typeName"];
 if (isNil "_typeName" || {_array isEqualTo []}) exitWith {-1};
 
 // If a string is given, tansform to uppercase for type matching
-if (typeName _typeName isEqualTo "STRING") then {
+if (IS_STRING(_typeName)) then {
     _typeName = toUpper _typeName;
 };
 
