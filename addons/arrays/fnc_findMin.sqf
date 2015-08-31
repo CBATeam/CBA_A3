@@ -13,7 +13,7 @@ Example:
     (end)
 
 Returns:
-    _max: smallest value in array
+    _min: smallest value in array
     _index: index of the smallest value in array
     nil on failure
 
@@ -26,8 +26,8 @@ SCRIPT(findMin);
 
 private ["_index"];
 
-if (!((typeName _this) isEqualTo (typeName []))) exitWith {nil};
-if (count _this <= 0) exitWith {nil};
+if (!IS_ARRAY(_this)) exitWith {nil};
+if (_this isEqualTo []) exitWith {nil};
 
 params ["_min"];
 _index = 0;
