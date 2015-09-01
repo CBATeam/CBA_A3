@@ -21,7 +21,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(readKeyFromConfig);
 
-private ["_component", "_action", "_settings"];
+private ["_settings"];
 params ["_component","_action"];
 _settings = [false, false, false];
 if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith {

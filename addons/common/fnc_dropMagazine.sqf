@@ -32,7 +32,7 @@ SCRIPT(dropMagazine);
 #define __action "DROPMAGAZINE"
 #define __ar (magazines _unit)
 
-private ["_unit", "_item", "_holder"];
+private ["_item", "_holder"];
 params ["_unit"];
 if (typeName _unit != "OBJECT") exitWith {
     TRACE_2("Unit not Object",_unit,_item);

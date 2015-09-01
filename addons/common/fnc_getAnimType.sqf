@@ -23,7 +23,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(getAnimType);
 
-private ["_man", "_array", "_anim", "_weapon", "_pos"];
+private ["_anim", "_weapon", "_pos"];
 
 params ["_man","_array"];
 _anim = "";

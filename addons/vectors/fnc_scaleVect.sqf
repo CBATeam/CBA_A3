@@ -25,7 +25,7 @@ scriptName "fnc_scaleVect.sqf";
 SCRIPT(scaleVect);
 
 
- private ["_vect","_factor","_i","_k", "_j"];
+private ["_i","_k", "_j"];
 
 params ["_vect","_factor"];
 
