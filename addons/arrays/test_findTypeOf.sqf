@@ -28,12 +28,12 @@ _result = [["", player, 5, objNull, player], typeOf player] call CBA_fnc_findTyp
 _expected = 1;
 TEST_OP(_result,==,_expected,_fn);
 
-// Finf first only, mixed solutions in array
+// Find first only, mixed solutions in array
 _result = [["", typeOf player, 5, objNull, player], typeOf player] call CBA_fnc_findTypeOf;
 _expected = 1;
 TEST_OP(_result,==,_expected,_fn);
 
-// Return not found, when no matching elemnt is in array
+// Return not found, when no matching element is in array
 _result = [["", 5, objNull], typeOf player] call CBA_fnc_findTypeOf;
 _expected = -1;
 TEST_OP(_result,==,_expected,_fn);

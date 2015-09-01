@@ -6,7 +6,7 @@ Description:
 
 Parameters:
     0: Array
-    1: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwies typename of the variable will be used.
+    1: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwise typename of the variable will be used.
 
 Example:
     (begin example)
