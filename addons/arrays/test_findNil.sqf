@@ -13,7 +13,7 @@ LOG("Testing " + _fn);
 
 TEST_DEFINED("CBA_fnc_findNil","");
 
-// Use of embeded nil
+// Use of embedded nil
 _result = ["", 5, objNull, nil, player] call CBA_fnc_findNil;
 _expected = 3;
 TEST_OP(_result,==,_expected,_fn);
