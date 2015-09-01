@@ -27,7 +27,7 @@ params [["_array", [], [[]]], ["_typeOf", nil, [objNull, ""]]];
 
 if (isNil "_typeOf" || {_array isEqualTo []}) exitWith {-1};
 
-if (IS_OBJECT(_typeOf) then {
+if (IS_OBJECT(_typeOf)) then {
     _typeOf = typeOf _typeOf;
 };
 
