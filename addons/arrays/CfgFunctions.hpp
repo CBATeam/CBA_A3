@@ -18,13 +18,13 @@ class CfgFunctions
             // CBA_fnc_findMax
             class findMax
             {
-                description = "Find smallest numeric value with index in an array.";
+                description = "Find largest numeric value with index in an array.";
                 file = "\x\cba\addons\arrays\fnc_findMax.sqf";
             };
             // CBA_fnc_findMin
             class findMin
             {
-                description = "Find biggest numeric value with index in an array.";
+                description = "Find smallest numeric value with index in an array.";
                 file = "\x\cba\addons\arrays\fnc_findMin.sqf";
             };
             // CBA_fnc_getArrayDiff
