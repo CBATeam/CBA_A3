@@ -2,7 +2,7 @@
 Function: CBA_fnc_findMin
 
 Description:
-    Find biggest numeric value with index in an array.
+    Find smallest numeric value with index in an array.
 
 Parameters:
     _array: Array with Numbers

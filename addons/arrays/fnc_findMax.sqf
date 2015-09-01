@@ -2,7 +2,7 @@
 Function: CBA_fnc_findMax
 
 Description:
-    Find smallest numeric value with index in an array.
+    Find largest numeric value with index in an array.
 
 Parameters:
     _array: Array with Numbers
@@ -13,8 +13,8 @@ Example:
     (end)
 
 Returns:
-    _max: biggest value in array
-    _index: index of the biggest value in array
+    _max: largest value in array
+    _index: index of the largest value in array
     nil on failure
 
 Author:
