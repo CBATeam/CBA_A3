@@ -34,13 +34,14 @@ GVAR(perFrameHandlerArray) set [_handle, nil];
 _newArray = [];
 
 GVAR(nextPFHid) = ({
-    private ["_entry", "_publicH", "_newHandle"];
-    _entry = _x;
-    _publicH = _x select 5;
-    if !(isNil "_entry") then {
-        _newHandle = _newArray pushBack _entry;
+    private ["_publicH", "_newHandle", "_return"];
+    _return = false;
+    _x params ["", "", "", "", "", "_publicH"];
+    if !(isNil "_x") then {
+        _newHandle = _newArray pushBack _x;
         GVAR(PFHhandles) set [_publicH, _newHandle];
+        _return = true;
     };
-    true
+    _return
 } count GVAR(perFrameHandlerArray)) - 1;
 GVAR(perFrameHandlerArray) = _newArray;
