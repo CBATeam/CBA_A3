@@ -33,7 +33,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(switchPlayer);
 
-private ["_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
+private ["_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
 params ["_type"];
 _oldUnit = player;
 

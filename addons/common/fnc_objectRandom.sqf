@@ -22,7 +22,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(objectRandom);
 
-private["_o", "_r", "_v", "_s", "_a", "_b", "_c"];
+private["_r", "_v", "_s", "_a", "_b", "_c"];
 params ["_o"];
 _r = 0;
 if !(isNull _o) then {

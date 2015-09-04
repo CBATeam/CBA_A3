@@ -31,7 +31,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(isTurnedOut);
 
-private ["_turn","_out","_unit","_vehicle","_cfg","_forceHideDriver","_phase","_assignedRole","_turretPath","_turret","_canHideGunner",
+private ["_turn","_out","_vehicle","_cfg","_forceHideDriver","_phase","_assignedRole","_turretPath","_turret","_canHideGunner",
         "_forceHideGunner","_hatchAnimation","_attenuateCargo","_index"];
 _turn = false;
 _out = false;
