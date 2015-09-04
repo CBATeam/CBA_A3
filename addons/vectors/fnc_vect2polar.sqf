@@ -21,7 +21,7 @@ scriptName "fnc_vect2Polar.sqf";
 SCRIPT(vect2Polar);
 
 
- private ["_mag", "_dir", "_elev", "_vx", "_vy", "_vz"];
+private ["_mag", "_dir", "_elev"];
 
 params ["_vx","_vy","_vz"];
 

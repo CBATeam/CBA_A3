@@ -22,7 +22,7 @@ Author:
 #include "script_hashes.hpp"
 
 SCRIPT(hashSet);
-private ["_hash","_key", "_value","_index", "_isDefault"];
+private ["_index", "_isDefault"];
 // ----------------------------------------------------------------------------
 params ["_hash","_key","_value"];
 
