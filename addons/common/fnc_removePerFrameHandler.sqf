@@ -34,7 +34,7 @@ GVAR(perFrameHandlerArray) set [_handle, nil];
 _newArray = [];
 
 GVAR(nextPFHid) = ({
-    private ["_publicH", "_newHandle", "_return"];
+    private ["_newHandle", "_return"];
     _return = false;
     _x params ["", "", "", "", "", "_publicH"];
     if !(isNil "_x") then {
