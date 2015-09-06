@@ -27,6 +27,30 @@ class CfgFunctions
                 description = "Find smallest numeric value with index in an array.";
                 file = "\x\cba\addons\arrays\fnc_findMin.sqf";
             };
+            // CBA_fnc_findNil
+            class findNil
+            {
+                description = "A function that returns the index of the first empty (nil) entry in an array.";
+                file = "\x\cba\addons\arrays\fnc_findNil.sqf";
+            };
+            // CBA_fnc_findTypeName
+            class findTypeName
+            {
+                description = "A function that returns the index of the first entry of a certain type in an array.";
+                file = "\x\cba\addons\arrays\fnc_findTypeName.sqf";
+            };
+            // CBA_fnc_findTypeOf
+            class findTypeOf
+            {
+                description = "A function that returns the index of the first entry of a certain type in an array.";
+                file = "\x\cba\addons\arrays\fnc_findTypeOf.sqf";
+            };
+            // CBA_fnc_findNull
+            class findNull
+            {
+                description = "A function that returns the index of the first null entry in an array.";
+                file = "\x\cba\addons\arrays\fnc_findNull.sqf";
+            };
             // CBA_fnc_getArrayDiff
             class getArrayDiff
             {

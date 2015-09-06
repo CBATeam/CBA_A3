@@ -3,7 +3,7 @@ Internal Function: CBA_network_fnc_exec
 */
 #include "script_component.hpp"
 // Generic NET Execution Handler
-private ["_ar", "_id", "_chan", "_cmd", "_objAr", "_ex", "_msg"];
+private ["_chan", "_cmd", "_objAr", "_ex", "_msg"];
 params ["_id","_ar"];
 
 if (count _ar < 2) exitWith {};

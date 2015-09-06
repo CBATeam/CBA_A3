@@ -32,7 +32,7 @@ SCRIPT(removeWeapon);
 #define __action removeWeapon
 #define __ar (weapons _unit)
 
-private ["_unit", "_item"];
+private ["_item"];
 params ["_unit"];
 if (typeName _unit != "OBJECT") exitWith {
     TRACE_2("Unit not Object",_unit,_item);

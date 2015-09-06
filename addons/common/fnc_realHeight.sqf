@@ -22,7 +22,6 @@ Author:
 #include "script_component.hpp"
 SCRIPT(realHeight);
 
-private "_obj";
 params ["_obj"];
 
 ((getpos _obj) select 2) + (_obj distance (getpos _obj))

@@ -135,7 +135,19 @@ GVAR(dikDecToStringTable) = [
 ["211", "Delete"],
 ["219", "Left Windows"],
 ["220", "Right Windows"],
-["221", "App Menu"]
+["221", "App Menu"],
+["222", "Power"],
+["223", "Sleep"],
+["227", "Wake"],
+["229", "Search"],
+["230", "Favorites"],
+["231", "Refresh"],
+["232", "Stop"],
+["233", "Forward"],
+["234", "Back"],
+["235", "My Computer"],
+["236", "Mail"],
+["237", "Media"]
 ];
 
 // Make sure this is in both namespaces, no matter where it runs from.
