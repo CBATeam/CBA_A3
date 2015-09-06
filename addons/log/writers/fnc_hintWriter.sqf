@@ -1,8 +1,8 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_diagLogWriter
+Function: CBA_fnc_hintWriter
 
 Description:
-    Writes supplied message to diag_log.
+    Writes supplied message with hint.
 
     This is intended to be used in combination with CBA_fnc_logDynamic.
 
@@ -17,8 +17,10 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-SCRIPT(diagLogWriter);
+SCRIPT(hintWriter);
 
 params ["_message"];
 
-diag_log text _message;
+hint _message;
+
+nil

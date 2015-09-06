@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getLogLevel
+Function: CBA_fnc_getLogLevelDescriptor
 
 Description:
     Get log level name.
@@ -16,14 +16,18 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-SCRIPT(getLogLevel);
+SCRIPT(getLogLevelDescriptor);
 
-private ["_result"];
+private ["_result", "_index"];
 
 params ["_level"];
 
-INITIALIZE_LOGLEVELS;
+INITIALIZE_LOGLEVELDESCRIPTORS;
 
-_result = ([GVAR(logLevels), _level] call CBA_fnc_hashGet);
+_index = GVAR(logLevelDescriptors) select 0 find _level;
+
+if (_index <= -1) exitWith {_level};
+
+_result = GVAR(logLevelDescriptors) select 1 select _index;
 
 if (isNil "_result") then {_level} else {_result};

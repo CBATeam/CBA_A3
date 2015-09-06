@@ -1,8 +1,8 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_systemChatLogWriter
+Function: CBA_fnc_diagLogGlobalWriter
 
 Description:
-    Writes supplied message to systemChat.
+    Writes supplied message to diag_log on every connected client and server.
 
     This is intended to be used in combination with CBA_fnc_logDynamic.
 
@@ -17,8 +17,10 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-SCRIPT(systemChatLogWriter);
+SCRIPT(diagLogGlobalWriter);
 
 params ["_message"];
 
-systemChat _message;
+[-2, {diag_log text _this}, _message] call CBA_fnc_globalExecute;
+
+nil

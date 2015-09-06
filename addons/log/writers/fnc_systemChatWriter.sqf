@@ -1,11 +1,13 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addLogLevel
+Function: CBA_fnc_systemChatLogWriter
 
 Description:
-    Remove a system wide named log level.
+    Writes supplied message to systemChat.
+
+    This is intended to be used in combination with CBA_fnc_logDynamic.
 
 Parameters:
-    _level - Numeric priority level [Number]
+    _message - Log message [String]
 
 Returns:
     nil
@@ -15,12 +17,10 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-SCRIPT(removeLogLevel);
+SCRIPT(systemChatLogWriter);
 
-params ["_level"];
+params ["_message"];
 
-INITIALIZE_LOGLEVELS;
-
-[GVAR(logLevels), _level] call CBA_fnc_hashRem;
+systemChat _message;
 
 nil

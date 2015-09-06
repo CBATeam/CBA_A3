@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addLogLevel
+Function: CBA_fnc_addLogLevelDescriptor
 
 Description:
     Add a system wide named log level.
@@ -16,12 +16,20 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-SCRIPT(addLogLevel);
+SCRIPT(addLogLevelDescriptor);
+
+private "_index";
 
 params ["_name", "_level"];
 
-INITIALIZE_LOGLEVELS;
+INITIALIZE_LOGLEVELDESCRIPTORS;
 
-[GVAR(logLevels), _level, _name] call CBA_fnc_hashSet;
+_index = GVAR(logLevelDescriptors) select 0 find _level;
+if (_index <= -1) exitWith {
+    GVAR(logLevelDescriptors) select 0 pushBack _level;
+    GVAR(logLevelDescriptors) select 1 pushBack _name;
+};
+
+GVAR(logLevelDescriptors) set [_index, _name];
 
 nil
