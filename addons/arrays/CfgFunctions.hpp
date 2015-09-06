@@ -15,6 +15,18 @@ class CfgFunctions
                 description = "Filter each element of an array via a function.";
                 file = "\x\cba\addons\arrays\fnc_filter.sqf";
             };
+            // CBA_fnc_findMax
+            class findMax
+            {
+                description = "Find largest numeric value with index in an array.";
+                file = "\x\cba\addons\arrays\fnc_findMax.sqf";
+            };
+            // CBA_fnc_findMin
+            class findMin
+            {
+                description = "Find smallest numeric value with index in an array.";
+                file = "\x\cba\addons\arrays\fnc_findMin.sqf";
+            };
             // CBA_fnc_findNil
             class findNil
             {
