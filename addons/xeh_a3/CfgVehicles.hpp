@@ -38,7 +38,12 @@ class CfgVehicles {
     };
     class Fowl_Base_F;
     class Cock_random_F: Fowl_Base_F {
-        delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
+    class Cock_white_F: Cock_random_F {
+        delete Eventhandlers; // Eventhandlers;
     };
 
     class FlagCarrierCore;
