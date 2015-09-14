@@ -14,9 +14,7 @@ PREP(perFrameEngine);
 
 FUNC(blaHandler) = {
     // All functions get _logic as _this param. Params inside _logic getVariable "params";
-    private ["_logic"];
-    params ["_params"];
-    _logic = _params select 0;
+    (_this select 0) params ["_logic"];
 
     if (isNil "_logic") exitWith {
         // Remove handler
@@ -56,14 +54,7 @@ FUNC(blaHandler) = {
 
 
 FUNC(addPerFrameHandlerLogic) = {
-    params ["_function"];
-    DEFAULT_PARAM(1,_params,[]);
-    DEFAULT_PARAM(2,_delay,0);
-    DEFAULT_PARAM(3,_start,{});
-    DEFAULT_PARAM(4,_end,{});
-    DEFAULT_PARAM(5,_runCondition,{true});
-    DEFAULT_PARAM(6,_exitCondition,{false});
-    DEFAULT_PARAM(7,_private,[]);
+    params ["_function", ["_params", []], [[]], ["_delay", 0, [0]], ["_start", {}, [{}]], ["_runCondition", {true}, [{true}]], ["_exitCondition",{false},[{false}]], ["_private", [],[[]]]];
 
     // Store vars on Logic
     _logic = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
@@ -106,7 +97,7 @@ FUNC(addPerFrameHandlerLogic) = {
 // We monitor all our frame render's in this loop. If the frames stop rendering, that means they alt+tabbed
 // and we still want to at least TRY and run them until the onDraw kicks up again
 FUNC(monitorFrameRender) = {
-    private["_func", "_delay", "_delta", "_handlerData"];
+    private "_pfhIdd";
     disableSerialization;
     TRACE_1("Monitor frame render loop",nil);
     // Check if the PFH died for some reason.
@@ -137,7 +128,7 @@ FUNC(monitorFrameRender) = {
 FUNC(onFrame) = {
     TRACE_1("Executing onFrame",nil);
 
-    private["_func", "_delay", "_delta", "_handlerData"];
+    private "_handlerData";
     GVAR(lastFrameRender) = diag_frameNo;
     // if(GVAR(lastCount) > (GVAR(fpsCount)-1)) then {
         // hint "FUCK UP IN SEQUENCE!";
@@ -148,16 +139,13 @@ FUNC(onFrame) = {
     // player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
     {
         _handlerData = _x;
-        if (!isNil "_handlerData" && {IS_ARRAY(_handlerData)}) then {
-            _func = _handlerData select 0;
-            _delay = _handlerData select 1;
-            _delta = _handlerData select 2;
+        if (_handlerData params ["_func", "_delay", "_delta", "", "_args", "_idPFH"]) then {
             if (diag_tickTime > _delta) then {
-                [_handlerData select 4, _handlerData select 5] call _func;
+                [_args, _idPFH] call _func;
                 _delta = diag_tickTime + _delay;
                 //TRACE_1("data", _data);
                 _handlerData set [2, _delta];
             };
         };
-    } forEach GVAR(perFrameHandlerArray);
+    } count GVAR(perFrameHandlerArray);
 };

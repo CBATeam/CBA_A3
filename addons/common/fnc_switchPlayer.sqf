@@ -33,7 +33,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(switchPlayer);
 
-private ["_type", "_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
+private ["_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
 params ["_type"];
 _oldUnit = player;
 
@@ -45,13 +45,13 @@ _dummyUnit = (_ar select 4) createUnit [_type, [0, 0, 0], [], 0, "NONE"]; // Joi
 if (isNull _dummyUnit) exitWith { hint "Sorry, something went wrong, dummyUnit is null" };
 [_oldUnit] join _dummyGroup;
 
-hint format["1.Dummy created, State saved and put oldUnit in new group: %1", _dummyGroup];
+LOG(format["1.Dummy created, State saved and put oldUnit in new group: %1", _dummyGroup]);
 
 _newUnit = _dummyGroup createUnit [_type, _ar select 5, [], 0, "NONE"];
 
 if (isNull _newUnit) exitWith { hint "Sorry, something went wrong, newUnit is null" };
 
-hint format["2.New unit created, local: %1", local _newUnit];
+LOG(format["2.New unit created, local: %1", local _newUnit]);
 sleep 1;
 
 addSwitchableUnit _newUnit;
@@ -60,7 +60,7 @@ selectPlayer _newUnit;
 _newUnit setRank (_ar select 2);
 _newUnit addScore (_ar select 3);
 
-hint format["3.State transfered, switched player control to new unit, local: %1", local _newUnit];
+LOG(format["3.State transfered, switched player control to new unit, local: %1", local _newUnit]);
 sleep 1;
 if (_ar select 7 != "") then
 {
@@ -68,9 +68,7 @@ if (_ar select 7 != "") then
     {
         GVAR(setVehVarName) = compile format ["private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;", _ar select 7];
         publicVariable QGVAR(setVehVarName);
-        [[netId _oldUnit, netId _newUnit], QGVAR(setVehVarName), nil, true] spawn BIS_fnc_MP;
-        //_newUnit setVehicleInit format["this setVehicleVarName '%1'; %1 = this", _ar select 7];
-        //processInitCommands;
+        [netId _oldUnit, netId _newUnit] remoteExecCall [QGVAR(setVehVarName)];
     }
     else
     {
@@ -89,18 +87,18 @@ if ("LEAVEWEAPS" in _this) then
 };
 if ((primaryWeapon _newUnit) != "") then { [_newUnit, primaryWeapon _newUnit] call CBA_fnc_selectWeapon };
 
-hint "4.Weapons switched on new unit";
+LOG("4.Weapons switched on new unit");
 sleep 1;
 
 [_newUnit] join (_ar select 4);
 //removeSwitchableUnit _newUnit;
 
-hint "5.New Unit joined in original group";
+LOG("5.New Unit joined in original group");
 sleep 1;
 
 { deleteVehicle _x } forEach [_oldUnit, _dummyUnit]; // Might have to remote execute this to be successfull in MP
 
-hint "6.Deleted and moved away dummy units etc";
+LOG("6.Deleted and moved away dummy units etc");
 sleep 1;
 
 if (_ar select 6) then { (group _newUnit) selectLeader _newUnit };

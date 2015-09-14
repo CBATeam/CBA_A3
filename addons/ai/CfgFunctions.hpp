@@ -39,6 +39,12 @@ class CfgFunctions
                 description = "A function for a group to randomly patrol a parsed radius and location. Parameters: - Group (Group or Object) Optional: - Position (XYZ, Object, Location or Group) - Radius (Scalar) - Waypoint Count (Scalar) - Waypoint Type (String) - Behaviour (String) - Combat Mode (String) - Speed Mode (String) - Formation (String) - Code To Execute at Each Waypoint (String) - TimeOut at each Waypoint (Array [Min, Med, Max]) Example: [this, getmarkerpos ""objective1""] call CBA_fnc_taskPatrol [this, this, 300, 7, ""MOVE"", ""AWARE"", ""YELLOW"", ""FULL"", ""STAG COLUMN"", ""this spawn CBA_fnc_searchNearby"", [3,6,9]] call CBA_fnc_taskPatrol;";
                 file = "\x\cba\addons\ai\fnc_taskPatrol.sqf";
             };
+            // CBA_fnc_taskSearchArea
+            class taskSearchArea
+            {
+                description = "A function used to have AI search a given marker or trigger area indefinitely. Includes random building searches.";
+                file = "\x\cba\addons\ai\fnc_taskSearchArea.sqf";
+            }
         };
     };
 };

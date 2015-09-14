@@ -30,9 +30,6 @@
 */
 #define CHANGETIME 5
 
-// Define a DATA and Function that can be called using BIS_fnc_MP so that even non CBA clients will announce
-#define DATA [name player,getPlayerUID player,player,isClass(configFile>>'CfgPatches'>>'cba_main')]
-
 LOG(MSG_INIT);
 
 // Announce the initialization of the script
@@ -50,7 +47,6 @@ ISNIL(timeSync_Disabled,true); // deprecated
 ISNIL(weatherSync_Disabled,true);
 
 PREP(exec);
-//PREP(cv);
 
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
@@ -73,14 +69,6 @@ if (SLX_XEH_MACHINE select 3) then {
     PREP(sync);
 
     FUNC(id) = { "server" };
-
-    /* Not used
-    [QUOTE(GVAR(opc)), { _this call FUNC(opc) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-    [QUOTE(GVAR(opd)), { _this call FUNC(opd) }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-    QGVAR(joinN) addPublicVariableEventHandler {
-        [QUOTE(GVAR(opc)), _this select 1] call (uiNamespace getVariable "CBA_fnc_localEvent");
-    };
-    */
 
     [QUOTE(GVAR(marker_persist)), { _this call (uiNamespace getVariable "CBA_fnc_setMarkerPersistent") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 
@@ -108,7 +96,6 @@ if (SLX_XEH_MACHINE select 3) then {
 };
 
 
-//GVAR(sendPlayerID) = { if(!isDedicated)then{[]spawn{waitUntil{player == player};GVAR(joinN) = DATA;publicVariable 'GVAR(joinN)'}}; };
 [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 [QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 [QUOTE(GVAR(say3d)), { private "_say"; _say = _this; if (count _this > 2) then { if ((positionCameraToWorld [0,0,0]) distance (_say select 0) <= (_say select 2)) then { (_say select 0) say3d (_say select 1) } } else { (_say select 0) say3d (_say select 1) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");

@@ -13,8 +13,9 @@ if [ ! -d ../docs ]
 then
   mkdir ../docs
 fi
+cp overview.txt CBA_logo_large.png ../addons
 $NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
-
+rm ../addons/{overview.txt,CBA_logo_large.png}
 
 echo -e "\n=== Packaging documentation ===\n"
 rm -f ../store/function_library.tar

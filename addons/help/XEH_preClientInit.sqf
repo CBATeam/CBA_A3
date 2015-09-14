@@ -31,8 +31,8 @@ FUNC(readConfig) = {
 FUNC(process) = {
     params ["_h1","_h2","_h3"];
     _ar = [];
-    [_h1, {_entry = format["%1, v%2, (%3)<br/>Author: %4", _key, [_h3, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_h2, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_value, ", "] call (uiNamespace getVariable "CBA_fnc_join")]; PUSH(_ar,_entry) }] call (uiNamespace getVariable "CBA_fnc_hashEachPair");
-    [_ar, "<br/><br/>"] call (uiNamespace getVariable "CBA_fnc_join");
+    [_h1, {_entry = format["%1, v%2, (%3)<br/>Author: %4", _key, [_h3, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_h2, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), _value joinString ", "]; PUSH(_ar,_entry) }] call (uiNamespace getVariable "CBA_fnc_hashEachPair");
+    _ar joinString "<br/><br/>";
 };
 
 private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg", "_mod", "_knaml", "_knam", "_k", "_text", "_cEvents", "_i", "_cSys", "_tSys", "_aSys", "_tS", "_j", "_c", "_tC", "_keyn", "_credits"];

@@ -15,7 +15,7 @@ private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg",
  "_mod", "_knaml", "_knam", "_i", "_j", "_k", "_text",  "_names", "_handlers",
  "_name", "_handler", "_actionNames", "_actionEntries", "_actionName",
  "_displayName", "_keyn"];
- 
+
 _pkeynam = {
     _shift = if(_shift) then {42} else {0};
     _ctrl = if(_ctrl) then {56} else {0};
@@ -23,7 +23,7 @@ _pkeynam = {
     _keys = [_shift,_ctrl,_alt,_dikKey];
     _keystrg = "^";
     {
-        _knaml = [cba_keybinding_dikDecToStringTable, format ["%1", _x]] call BIS_fnc_getFromPairs;
+        _knaml = [cba_keybinding_dikDecToStringTable, format ["%1", _x], format ["Unknown key (%1)",_x]] call BIS_fnc_getFromPairs;
         _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
         _knam = "^";
         {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
@@ -50,11 +50,11 @@ _h = _pkeynam spawn {
             _text = _text + format ["%1:<br/>", _name];
             _actionNames = _handler select 0;
             _actionEntries = _handler select 1;
-            
+
             for "_j" from 0 to (count _actionNames - 1) do {
                 _actionName = _actionNames select _j;
                 _actionEntry = _actionEntries select _j;
-        
+
                 _displayName = _actionEntry select 0;
                 if (typeName _displayName == typeName []) then {
                     _displayName = (_actionEntry select 0) select 0;
@@ -69,7 +69,7 @@ _h = _pkeynam spawn {
                 _ctrl = _mod select 1;
                 _alt = _mod select 2;
                 _keyn = call _this;
-    
+
                 _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyn];
             };
             _text = _text + "<br/>";

@@ -27,7 +27,7 @@ scriptName "fnc_scaleVectTo.sqf";
 SCRIPT(scaleVectTo);
 
 
- private ["_vect", "_newMagn", "_magn", "_scaleFactor", "_outVect"];
+private ["_magn", "_scaleFactor", "_outVect"];
 
 params ["_vect","_newMagn"];
 
