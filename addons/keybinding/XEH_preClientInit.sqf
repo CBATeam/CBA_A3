@@ -20,6 +20,7 @@ PREP_SUB(gui,onLBDblClick);
 PREP_SUB(gui,updateGUI);
 
 GVAR(input) = [];
+GVAR(frameNoKeyPress) = diag_frameNo;
 GVAR(modifiers) = [];
 GVAR(firstKey) = [];
 GVAR(secondKey) = [];
@@ -65,7 +66,6 @@ GVAR(handlersBackup) = [];
 // Counter for indexing added key handlers.
 GVAR(ehCounter) = 512;
 
-GVAR(forbiddenKeys) = ["327693","327692","327699","327703","327702","327698","327697","327701","327700","327696"];
 /////////////////////////////////////////////////////////////////////////////////
 
 // Announce initialization complete

@@ -24,6 +24,7 @@ _actionId = _lnb lnbData [_lnbIndex, 0];
 
 // Clear keypress data.
 GVAR(input) = [];
+GVAR(frameNoKeyPress) = diag_frameNo;
 
 GVAR(modifiers) = [];
 GVAR(firstKey) = [];
@@ -42,7 +43,7 @@ _fnc = {
     params ["_args", "_idPFH"];
     _args params ["_actionId", "_lnb", "_lnbIndex", "_comboMod", "_combo", "_display"];
     if (count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
-        if (str GVAR(input) in GVAR(forbiddenKeys)) exitWith {};
+        if (str (GVAR(input) select 0) in GVAR(forbiddenKeys)) exitWith {};
         [_idPFH] call cba_fnc_removePerFrameHandler;
         if (GVAR(waitingForInput)) then {
             // Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.
@@ -51,6 +52,7 @@ _fnc = {
             if (!isNull _display) then { // Make sure user hasn't exited dialog before continuing.
                 private ["_newKeycode", "_modId", "_modRegistry", "_actionEntryId", "_actionEntry", "_hashDown", "_entryIndex", "_defaultEntry"];
                 // Get stored keypress data.
+                if (GVAR(frameNoKeyPress) == diag_frameNo) exitWith {};
                 _newKeycode = GVAR(input);
                 TRACE_4("",_newKeycode,GVAR(handlers),_comboMod,GVAR(defaultKeybinds));
                 // If a valid key other than Escape was pressed,

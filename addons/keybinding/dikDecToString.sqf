@@ -152,6 +152,10 @@ GVAR(dikDecToStringTable) = [
 ["327687", "Controller Direction Right"]
 ];
 
+GVAR(forbiddenKeys) = ["327693","327692","327699","327703","327702","327698","327697","327701","327700","327696","327788"];
+
 // Make sure this is in both namespaces, no matter where it runs from.
 uiNamespace setVariable [QGVAR(dikDecToStringTable), GVAR(dikDecToStringTable)];
 missionNamespace setVariable [QGVAR(dikDecToStringTable), GVAR(dikDecToStringTable)];
+uiNamespace setVariable [QGVAR(forbiddenKeys), GVAR(forbiddenKeys)];
+missionNamespace setVariable [QGVAR(forbiddenKeys), GVAR(forbiddenKeys)];

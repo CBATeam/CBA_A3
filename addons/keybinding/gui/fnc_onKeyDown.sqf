@@ -23,11 +23,14 @@ if (GVAR(waitingForInput)) then {
         _shift = false;
         _ctrl = false;
         _alt = false;
-        GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+        if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+            GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+            GVAR(frameNoKeyPress) = diag_frameNo;
+        };
         TRACE_4("KEY DOWN: 1st Key After",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
         TRACE_4("KEY DOWN: Update Modifiers",_dikCode,_shift,_ctrl,_alt);
 
-    } else{
+    } else {
 
         // Check for secondKey
         if (count GVAR(firstKey)>0 && {(count GVAR(secondKey)<1)}) then {
@@ -37,7 +40,10 @@ if (GVAR(waitingForInput)) then {
 
         if(!(_dikCode in GVAR(firstKey))) then {
             GVAR(secondKey) = [_dikCode];
-            GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+            if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+                GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+                GVAR(frameNoKeyPress) = diag_frameNo;
+            };
         };
 
         TRACE_4("KEY DOWN: 2nd Key After",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
@@ -52,7 +58,10 @@ if (GVAR(waitingForInput)) then {
 
                 if( ( !(_dikCode in GVAR(secondKey)) && { !(_dikCode in GVAR(firstKey)) })) then {
                     GVAR(thirdKey) = [_dikCode];
-                    GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+                    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+                        GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
+                        GVAR(frameNoKeyPress) = diag_frameNo;
+                    };
                 };
                 TRACE_4("KEY DOWN: 3rd Key After",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
                 TRACE_4("KEY DOWN: Update Modifiers",_dikCode,_shift,_ctrl,_alt);

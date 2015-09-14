@@ -1,7 +1,7 @@
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
-private ["_display", "_combo", "_comboMod", "_lnb", "_lnbIndex"," _actionId", "_modId", "_modRegistry", "_actionEntryId", "_actionEntry", "_hashDown", "_entryIndex", "_defaultEntry"];
+private ["_display", "_combo", "_comboMod", "_lnb", "_lnbIndex", "_actionId", "_modId", "_modRegistry", "_actionEntryId", "_actionEntry", "_hashDown", "_entryIndex", "_defaultEntry"];
 // Get button
 params ["_button"];
 // Get dialog

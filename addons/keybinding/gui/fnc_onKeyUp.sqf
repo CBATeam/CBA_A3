@@ -25,8 +25,10 @@ TRACE_5("KEY UP",GVAR(modifiers), GVAR(input), GVAR(firstKey), GVAR(secondKey),G
 if ( (count GVAR(secondKey)) < 1 ) then {
     GVAR(secondKey) = GVAR(firstKey);
     GVAR(firstKey) = [];
-    GVAR(input) set [0, GVAR(secondKey) select 0];
-
+    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+        GVAR(input) set [0, GVAR(secondKey) select 0];
+        GVAR(frameNoKeyPress) = diag_frameNo;
+    };
 } else {
 
     // Check for secondKey
@@ -36,7 +38,10 @@ if ( (count GVAR(secondKey)) < 1 ) then {
     TRACE_1("KEY UP: Update Modifiers before",_dikCode);
     TRACE_2("KEY UP: 2nd key Before",GVAR(secondKey), GVAR(input));
 
-    GVAR(input) set [0, GVAR(secondKey) select 0];
+    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+        GVAR(input) set [0, GVAR(secondKey) select 0];
+        GVAR(frameNoKeyPress) = diag_frameNo;
+    };
 
     TRACE_1("KEY UP: Update modifiers after",_dikCode);
     TRACE_2("KEY UP: 2nd key After",GVAR(secondKey), GVAR(input));
@@ -47,8 +52,10 @@ if ( (count GVAR(secondKey)) < 1 ) then {
             TRACE_1("KEY UP: Update Modifiers before",_dikCode);
             TRACE_2("KEY UP: 3rd Key Before",GVAR(thirdKey), GVAR(input));
 
-            GVAR(input) set [0, GVAR(thirdKey) select 0];
-
+            if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+                GVAR(input) set [0, GVAR(thirdKey) select 0];
+                GVAR(frameNoKeyPress) = diag_frameNo;
+            };
             TRACE_1("KEY UP: Update modifiers after",_dikCode);
             TRACE_2("KEY UP: Third key After",GVAR(thirdKey), GVAR(input));
         };
@@ -59,7 +66,10 @@ if (count GVAR(thirdKey) < 1) then {
     GVAR(thirdKey) = [_dikCode];
 };
 
-GVAR(input) set [0, GVAR(thirdKey) select 0];
+if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+    GVAR(input) set [0, GVAR(thirdKey) select 0];
+    GVAR(frameNoKeyPress) = diag_frameNo;
+};
 TRACE_5("KEY UP",GVAR(modifiers), GVAR(input), GVAR(firstKey), GVAR(secondKey), GVAR(thirdKey));
 GVAR(modifiers) = GVAR(firstKey) + GVAR(secondKey);
 TRACE_1("KEY UP: Modifires",_dikCode);
