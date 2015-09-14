@@ -2,9 +2,7 @@
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
-
-_display = _this select 0;
-_dikCode = _this select 1;
+params ["_display", "_dikCode"];
 
 TRACE_1("KEY UP",_dikCode);
 TRACE_5("KEY UP",GVAR(modifiers), GVAR(input), GVAR(firstKey), GVAR(secondKey),GVAR(thirdKey));
@@ -31,8 +29,8 @@ if ( (count GVAR(secondKey)) < 1 ) then {
 
 } else {
 
-	// Check for secondKey
-	if (count GVAR(firstKey)>0 && {(count GVAR(secondKey)<1)}) then {
+    // Check for secondKey
+    if (count GVAR(firstKey)>0 && {(count GVAR(secondKey)<1)}) then {
     // if it is a Multiple-Key Event then modifiers must be recorded.
 
     TRACE_1("KEY UP: Update Modifiers before",_dikCode);
@@ -42,23 +40,23 @@ if ( (count GVAR(secondKey)) < 1 ) then {
 
     TRACE_1("KEY UP: Update modifiers after",_dikCode);
     TRACE_2("KEY UP: 2nd key After",GVAR(secondKey), GVAR(input));
-	} else {
-		// Check for thirdKey
-		if (count GVAR(secondKey)>0 && {count GVAR(firstKey)>0}) then {
-			// if it is a Multiple-Key Event then modifiers must be recorded.
-			TRACE_1("KEY UP: Update Modifiers before",_dikCode);
-			TRACE_2("KEY UP: 3rd Key Before",GVAR(thirdKey), GVAR(input));
+    } else {
+        // Check for thirdKey
+        if (count GVAR(secondKey)>0 && {count GVAR(firstKey)>0}) then {
+            // if it is a Multiple-Key Event then modifiers must be recorded.
+            TRACE_1("KEY UP: Update Modifiers before",_dikCode);
+            TRACE_2("KEY UP: 3rd Key Before",GVAR(thirdKey), GVAR(input));
 
-			GVAR(input) set [0, GVAR(thirdKey) select 0];
+            GVAR(input) set [0, GVAR(thirdKey) select 0];
 
-			TRACE_1("KEY UP: Update modifiers after",_dikCode);
-			TRACE_2("KEY UP: Third key After",GVAR(thirdKey), GVAR(input));
-		};
-	};
+            TRACE_1("KEY UP: Update modifiers after",_dikCode);
+            TRACE_2("KEY UP: Third key After",GVAR(thirdKey), GVAR(input));
+        };
+    };
 };
 
 if (count GVAR(thirdKey) < 1) then {
-	GVAR(thirdKey) = [_dikCode];
+    GVAR(thirdKey) = [_dikCode];
 };
 
 GVAR(input) set [0, GVAR(thirdKey) select 0];

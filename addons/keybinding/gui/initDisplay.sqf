@@ -4,8 +4,8 @@
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
-
-_display = _this select 0;
+private ["_addonsGroup", "_fakeKeyboardButton", "_lb", "_text"];
+params ["_display"];
 
 // Hide addons group on display init.
 _addonsGroup = _display displayctrl 4301;
@@ -32,7 +32,7 @@ if (isNil "cba_fnc_registerKeybind") then {
     FUNC(onButtonClick_cancel) = {};
 
     _lb = _display displayCtrl 202;
-    _lb lnbAddRow ["You must load an intro/world/mission to view/change."];
+    _lb lnbAddRow [localize LSTRING(canNotEdit)];
 
 } else {
     [true] call FUNC(updateGUI); // true means first-run

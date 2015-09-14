@@ -7,7 +7,7 @@ GVAR(dikDecToStringTable) = [
 ["2", "1"],
 ["3", "2"],
 ["4", "3"],
-["5", "4"], 
+["5", "4"],
 ["6", "5"],
 ["7", "6"],
 ["8", "7"],
@@ -135,7 +135,21 @@ GVAR(dikDecToStringTable) = [
 ["211", "Delete"],
 ["219", "Left Windows"],
 ["220", "Right Windows"],
-["221", "App Menu"]
+["221", "App Menu"],
+["327680", "Controller Button 1"],
+["327681", "Controller Button 2"],
+["327682", "Controller Button 3"],
+["327683", "Controller Button 4"],
+["327690", "Controller Button 5"],
+["327691", "Controller Button 6"],
+["327689", "Controller Button 7"],
+["327688", "Controller Button 8"],
+["327694", "Controller Button 9"],
+["327695", "Controller Button 10"],
+["327684", "Controller Direction Up"],
+["327685", "Controller Direction Down"],
+["327686", "Controller Direction Left"],
+["327687", "Controller Direction Right"]
 ];
 
 // Make sure this is in both namespaces, no matter where it runs from.

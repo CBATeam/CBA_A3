@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package name="CBA">
+    <Key ID="STR_cba_keybinding_configureAddons">
+        <English>Configure Addons</English>
+        <German>Addon Tasten zuweisungen einstellen</German>
+    </Key>
+    <Key ID="STR_cba_keybinding_configureBase">
+        <English>Configure Base</English>
+        <German>Addon Tasten zuweisungen einstellen</German>
+    </Key>
+    <Key ID="STR_cba_keybinding_unkownKey">
+        <English>Unknown Code %1</English>
+        <German>Unbekannter Tasten Code %1</German>
+    </Key>
+    <Key ID="STR_cba_keybinding_canNotEdit">
+        <English>You must load an intro/world/mission to view/change.</English>
+        <German>Du musst erst ein intro/welt/mission um die Tastenbelegung ändern zu können.</German>
+    </Key>
+    <Key ID="STR_cba_keybinding_doubleClickToStart">
+        <English>Double click any action to change its binding</English>
+        <German>Doppel Klicke auf eine Action um die Tastenbelegung zu ändern</German>
+    </Key>
+</Package>

@@ -2,7 +2,7 @@
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
-
+private ["_display", "_lnb", "_lnbIndex", "_combo", "_comboMod", "_actionId"];
 _display = uiNamespace getVariable "RscDisplayConfigure";
 
 // Get listnbox
@@ -39,21 +39,17 @@ _lnb lnbSetColor [[_lnbIndex, 1], [0,1,0,1]];
 
 // Wait for input, selection, or mod change.
 _fnc = {
-    _data = _this select 0;
-    _actionId = _data select 0;
-    _lnb = _data select 1;
-    _lnbIndex = _data select 2;
-    _comboMod = _data select 3;
-    _combo = _data select 4;
-    _display = _data select 5;
-
-    if(count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
-        [(_this select 1)] call cba_fnc_removePerFrameHandler;
+    params ["_args", "_idPFH"];
+    _args params ["_actionId", "_lnb", "_lnbIndex", "_comboMod", "_combo", "_display"];
+    if (count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
+        if (str GVAR(input) in GVAR(forbiddenKeys)) exitWith {};
+        [_idPFH] call cba_fnc_removePerFrameHandler;
         if (GVAR(waitingForInput)) then {
             // Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.
             GVAR(waitingForInput) = false;
 
             if (!isNull _display) then { // Make sure user hasn't exited dialog before continuing.
+                private ["_newKeycode", "_modId", "_modRegistry", "_actionEntryId", "_actionEntry", "_hashDown", "_entryIndex", "_defaultEntry"];
                 // Get stored keypress data.
                 _newKeycode = GVAR(input);
                 TRACE_4("",_newKeycode,GVAR(handlers),_comboMod,GVAR(defaultKeybinds));
@@ -87,7 +83,6 @@ _fnc = {
                     // Update the main dialog.
                     saveProfileNamespace;
                 };
-
 
             };
         };

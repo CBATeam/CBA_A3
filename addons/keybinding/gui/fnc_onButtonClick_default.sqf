@@ -1,9 +1,9 @@
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 disableSerialization;
-
+private ["_display", "_combo", "_comboMod", "_lnb", "_lnbIndex"," _actionId", "_modId", "_modRegistry", "_actionEntryId", "_actionEntry", "_hashDown", "_entryIndex", "_defaultEntry"];
 // Get button
-_button = _this select 0;
+params ["_button"];
 // Get dialog
 _display = uiNamespace getVariable "RscDisplayConfigure";
 
@@ -31,12 +31,12 @@ _hashDown = format["%1_%2_down", _comboMod, _actionId];
 _entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
 if(_entryIndex == -1) exitWith {};
 _defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
-                    
+
 
 [
-    _comboMod, 
-    _actionId, 
-    _actionEntry select 0, 
+    _comboMod,
+    _actionId,
+    _actionEntry select 0,
     _defaultEntry select 0,
     _defaultEntry select 1,
     _actionEntry select 2,
