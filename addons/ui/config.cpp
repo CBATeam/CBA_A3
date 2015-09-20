@@ -7,7 +7,7 @@ class CfgPatches {
         requiredAddons[] = { "CBA_common", "CBA_arrays" };
         version = VERSION;
         author[] = {"Dr Eyeball"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 

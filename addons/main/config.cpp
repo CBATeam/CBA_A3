@@ -11,7 +11,7 @@ class CfgPatches {
         versionDesc = "C.B.A.";
         VERSION_CONFIG;
         author[] = {"CBA Team"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 

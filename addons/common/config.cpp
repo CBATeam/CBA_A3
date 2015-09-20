@@ -9,7 +9,7 @@ class CfgPatches
         requiredAddons[] = { "A3_BaseConfig_F","CBA_XEH" };
         version = VERSION;
         author[] = {"Spooner", "Sickboy", "Rocko"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 #include "CfgEventHandlers.hpp"

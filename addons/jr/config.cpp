@@ -17,7 +17,7 @@ class CfgPatches {
         requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark"};
         version = VERSION;
         author[] = {"Robalo"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
     class asdg_jointrails { //compat
         units[] = {};

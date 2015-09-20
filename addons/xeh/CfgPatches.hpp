@@ -7,7 +7,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         VERSION_CONFIG;
         author[] = {"CBA Team", "Solus", "Killswitch"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 
     // Backwards compatibility
@@ -21,7 +21,7 @@ class CfgPatches {
         versionStr = "4.0.0";
         versionAr[] = {4,0,0};
         author[] = {"CBA Team", "Solus", "Killswitch"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 
     class CBA_Extended_EventHandlers {
@@ -32,6 +32,6 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         VERSION_CONFIG;
         author[] = {"CBA Team", "Solus", "Killswitch"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
