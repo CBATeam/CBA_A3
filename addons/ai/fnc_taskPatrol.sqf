@@ -39,6 +39,8 @@ Author:
 
 params ["_group", ["_position",[]], ["_radius",100], ["_count",3]];
 
+if (!local _group) exitWith {};
+
 _position = [_position,_group] select (_position isEqualTo []);
 
 _this =+ _this;
