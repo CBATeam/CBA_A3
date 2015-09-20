@@ -8,7 +8,7 @@ class CfgPatches
         requiredAddons[] = { "CBA_common", "CBA_XEH", "A3_UI_F" };
         version = VERSION;
         author[] = {"Taosenai"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 

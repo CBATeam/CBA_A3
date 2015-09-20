@@ -8,7 +8,7 @@ class CfgPatches
         requiredAddons[] = { "CBA_common" };
         version = VERSION;
         author[] = {"Spooner"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 
