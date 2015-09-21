@@ -2,7 +2,7 @@
 #include "\x\cba\addons\main\script_mod.hpp"
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define DEBUG_ENABLED_KEYBINDING
+//#define DEBUG_ENABLED_KEYBINDING
 
 #ifdef DEBUG_ENABLED_KEYBINDING
     #define DEBUG_MODE_FULL
