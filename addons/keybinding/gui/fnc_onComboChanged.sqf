@@ -4,6 +4,3 @@ disableSerialization;
 
 // Update the main dialog.
 [] call FUNC(updateGUI);
-
-
-

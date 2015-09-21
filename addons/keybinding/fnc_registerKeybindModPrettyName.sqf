@@ -30,4 +30,4 @@ if(_modIndex == -1) then {
 
 (GVAR(modPrettyNames) select 1) set[_modIndex, _prettyName];
 
-true;
+true
