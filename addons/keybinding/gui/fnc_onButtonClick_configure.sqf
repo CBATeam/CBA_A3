@@ -2,9 +2,9 @@
 
 // This button, when clicked, toggles between vanilla and addon control config in RscDisplayConfigure.
 disableSerialization;
-
+private ["_KeyboardGroup", "_MouseGroup", "_addonsGroup", "_toggleButton", "_fakeKeyboardButton", "_keyboardButton", "_mouseButton", "_controllerButton", "_title"];
 // Get button
-_ctrl = _this select 0;
+params ["_ctrl"];
 // Get dialog
 _display = uiNamespace getVariable "RscDisplayConfigure";
 
@@ -56,13 +56,13 @@ if !(ctrlEnabled _addonsGroup) then {
     _addonsGroup ctrlshow true;
 
     // Change button text
-    _toggleButton ctrlSetText "Configure Base";
+    _toggleButton ctrlSetText localize LSTRING(configureBase);
 } else {
     // Switch back to vanilla keyboard config.
     // Hide Addons group
     _addonsGroup ctrlenable false;
     _addonsGroup ctrlshow false;
-    _toggleButton ctrlSetText "Configure Addons";
+    _toggleButton ctrlSetText localize LSTRING(configureAddons);
 
     //--- Enable Keyboard
     _KeyboardGroup ctrlenable true;

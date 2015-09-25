@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package name="CBA">
+    <Key ID="STR_cba_keybinding_configureAddons">
+        <English>Configure Addons</English>
+    </Key>
+    <Key ID="STR_cba_keybinding_configureBase">
+        <English>Configure Base</English>
+    </Key>
+    <Key ID="STR_cba_keybinding_unkownKey">
+        <English>Unknown Code %1</English>
+    </Key>
+    <Key ID="STR_cba_keybinding_canNotEdit">
+        <English>You must load an intro/world/mission to view/change.</English>
+    </Key>
+    <Key ID="STR_cba_keybinding_doubleClickToStart">
+        <English>Double click any action to change its binding</English>
+    </Key>
+</Package>

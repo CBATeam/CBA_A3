@@ -35,11 +35,7 @@ if (count _defaultKeybind != 4) then {
     diag_log Format ["Converted _defaultKeybind => %1",_defaultKeybind];
 };
 
-
-_dikCode = _defaultKeybind select 0;
-_shift = _defaultKeybind select 1;
-_ctrl = _defaultKeybind select 2;
-_alt = _defaultKeybind select 3;
+_defaultKeybind params ["_dikCode", "_shift", "_ctrl", "_alt"];
 
 
 if(_dikCode > -1 && !isNil {_code}) then {  // A DIK code of -1 signifies "no key set"

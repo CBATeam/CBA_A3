@@ -442,6 +442,6 @@ class CfgPatches {
         };
         VERSION_CONFIG;
         author[] = {"CBA Team"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };

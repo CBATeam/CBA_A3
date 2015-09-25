@@ -8,7 +8,7 @@ class CfgPatches
         requiredAddons[] = { "CBA_common", "CBA_XEH" };
         version = VERSION;
         author[] = {"Vigilante"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 #include "CfgEventHandlers.hpp"

@@ -10,6 +10,6 @@ class cfgPatches
         versionStr = "4.0.0";
         versionAr[] = {4,0,0};
         author[] = {"CBA Team", "Solus", "Killswitch"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
+        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };

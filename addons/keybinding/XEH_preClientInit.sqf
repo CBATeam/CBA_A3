@@ -20,6 +20,7 @@ PREP_SUB(gui,onLBDblClick);
 PREP_SUB(gui,updateGUI);
 
 GVAR(input) = [];
+GVAR(frameNoKeyPress) = diag_frameNo;
 GVAR(modifiers) = [];
 GVAR(firstKey) = [];
 GVAR(secondKey) = [];

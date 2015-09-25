@@ -7,7 +7,7 @@ GVAR(dikDecToStringTable) = [
 ["2", "1"],
 ["3", "2"],
 ["4", "3"],
-["5", "4"], 
+["5", "4"],
 ["6", "5"],
 ["7", "6"],
 ["8", "7"],
@@ -147,9 +147,27 @@ GVAR(dikDecToStringTable) = [
 ["234", "Back"],
 ["235", "My Computer"],
 ["236", "Mail"],
-["237", "Media"]
+["237", "Media"],
+["327680", "Controller Button 1"],
+["327681", "Controller Button 2"],
+["327682", "Controller Button 3"],
+["327683", "Controller Button 4"],
+["327690", "Controller Button 5"],
+["327691", "Controller Button 6"],
+["327689", "Controller Button 7"],
+["327688", "Controller Button 8"],
+["327694", "Controller Button 9"],
+["327695", "Controller Button 10"],
+["327684", "Controller Direction Up"],
+["327685", "Controller Direction Down"],
+["327686", "Controller Direction Left"],
+["327687", "Controller Direction Right"]
 ];
+
+GVAR(forbiddenKeys) = ["327693","327692","327699","327703","327702","327698","327697","327701","327700","327696","327788"];
 
 // Make sure this is in both namespaces, no matter where it runs from.
 uiNamespace setVariable [QGVAR(dikDecToStringTable), GVAR(dikDecToStringTable)];
 missionNamespace setVariable [QGVAR(dikDecToStringTable), GVAR(dikDecToStringTable)];
+uiNamespace setVariable [QGVAR(forbiddenKeys), GVAR(forbiddenKeys)];
+missionNamespace setVariable [QGVAR(forbiddenKeys), GVAR(forbiddenKeys)];

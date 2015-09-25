@@ -34,7 +34,7 @@ class RscDisplayConfigure {
 
         class CBA_ButtonConfigureAddons : RscButtonMenuOK {
             idc = 4302;
-            text = "Configure Addons";
+            text = CSTRING(configureAddons);
             onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_configure";
             x = "20.15 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX)";
             y = "23 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))";

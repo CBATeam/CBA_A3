@@ -43,9 +43,9 @@ Author:
 // Clients only.
 if (isDedicated) exitWith {};
 
-_nullKeybind = [-1,[false,false,false]];
+_nullKeybind = [-1, [false,false,false]];
 
-params ["_modName","_actionId","_displayName","_downCode","_upCode", ["_defaultKeybind",_nullKeybind], ["_holdKey",true], ["_holdDelay",0], ["_overwrite",false]];
+params ["_modName","_actionId","_displayName","_downCode","_upCode", ["_defaultKeybind", _nullKeybind], ["_holdKey",true], ["_holdDelay",0], ["_overwrite",false]];
 
 if (count _defaultKeybind == 4) then {
     _msg = format ["%1: %2 - Wrong format for the default keybind parameter. Use [DIK, [shift, ctrl, alt]]", _modName, _actionId];

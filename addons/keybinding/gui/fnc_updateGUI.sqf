@@ -1,11 +1,11 @@
 //#define DEBUG_MODE_FULL
 #include "\x\cba\addons\keybinding\script_component.hpp"
-
+private ["_firstRun", "_display", "_combo", "_lnb", "_modName", "_modActions"];
 disableSerialization;
 
-_firstRun = false;
+
 // Pass any parameter to the function for full initialization behavior.
-if (count _this == 1) then {_firstRun = true};
+_firstRun = (count _this == 1);
 
 _display = uiNamespace getVariable "RscDisplayConfigure";
 
@@ -23,6 +23,7 @@ if !(isNull _display) then {
         if (count GVAR(activeMods) > 0) then {
             // Populate the combolistbox.
             {
+                private ["_nameIndex", "_modPrettyName", "_entry"];
                 if(_x in GVAR(activeMods)) then {
                     _nameIndex = (GVAR(modPrettyNames) select 0) find _x;
                     _modPrettyName = _x;
@@ -51,31 +52,24 @@ if !(isNull _display) then {
         // Add the actions to the listbox and associate their data.
         // of keybinds due to keyup/keydown.
         {
+            private ["_actionId", "_action", "_actionName", "_keyName", "_keyString", "_isDuplicated", "_dupeActionName", "_lbCount", "_indexArray"];
             _actionId = _x;
-            if((_modName + "_" + _actionId) in GVAR(activeBinds)) then {
+            if((format ["%1_%2", _modName, _actionId]) in GVAR(activeBinds)) then {
                 _action = (_modActions select 1) select _forEachIndex;
-                _actionName = _action select 0;
-                _keybind = _action select 1;
+                _action params ["_actionName", "_keybind"];
 
-                _toolTip = "";
-                if(IS_ARRAY(_actionName)) then {
-                    _prettyName = (_actionName select 0);
-                    if((count _actionName) > 1) then {
-                        _toolTip = _actionName select 1;
-                    };
-                    _actionName = _prettyName;
-                };
+                _actionName params ["_prettyName", ["_toolTip", ""]];
+                _actionName = _prettyName;
+
                 TRACE_4("",_modName,_action,_actionName,_keybind);
                 if(IS_ARRAY(_keybind) && {IS_ARRAY(_keybind select 1)}) then {
-                    _dikCode = _keybind select 0;
-                    _shift = (_keybind select 1) select 0;
-                    _ctrl = (_keybind select 1) select 1;
-                    _alt = (_keybind select 1) select 2;
+                    _keybind params ["_dikCode", "_modifier"];
+                    _modifier params ["_shift", "_ctrl", "_alt"];
 
                     // Try to convert dik code to a human key code.
-                    _keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call bis_fnc_getFromPairs;
+                    _keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call BIS_fnc_getFromPairs;
                     if (isNil "_keyName") then {
-                        _keyName = format ["Unknown Code %1", _dikCode];
+                        _keyName = format [localize LSTRING(unkownKey), _dikCode];
                     };
 
                     // Build the full key combination name.
@@ -93,12 +87,11 @@ if !(isNull _display) then {
                     if(_dikCode != 0) then {
                         _dupeActionName = "";
                         {
-
+                            private ["_sActionId", "_dupeAction"];
                             _sActionId = _x;
                             _dupeAction = (_modActions select 1) select _forEachIndex;
-                            _sActionName = _dupeAction select 0;
-                            _sKeybind = _dupeAction select 1;
-                            if((_modName + "_" + _sActionId) in GVAR(activeBinds)) then {
+                            _dupeAction params ["_sActionName", "_sKeybind"];
+                            if((format ["%1_%2", _modName, _sActionId]) in GVAR(activeBinds)) then {
                                 if (_sActionId != _actionId && _sKeybind isEqualTo _keybind) exitWith {
                                     _isDuplicated = true;
                                     _dupeActionName = _sActionName;
