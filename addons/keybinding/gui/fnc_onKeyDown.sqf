@@ -23,7 +23,7 @@ if (GVAR(waitingForInput)) then {
         _shift = false;
         _ctrl = false;
         _alt = false;
-        if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+        if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
             GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
             GVAR(frameNoKeyPress) = diag_frameNo;
         };
@@ -40,7 +40,7 @@ if (GVAR(waitingForInput)) then {
 
         if(!(_dikCode in GVAR(firstKey))) then {
             GVAR(secondKey) = [_dikCode];
-            if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+            if (GVAR(frameNoKeyPress) != diag_frameNo || _shift || _ctrl || _alt) then {
                 GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
                 GVAR(frameNoKeyPress) = diag_frameNo;
             };
@@ -58,7 +58,7 @@ if (GVAR(waitingForInput)) then {
 
                 if( ( !(_dikCode in GVAR(secondKey)) && { !(_dikCode in GVAR(firstKey)) })) then {
                     GVAR(thirdKey) = [_dikCode];
-                    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+                    if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
                         GVAR(input) = [_dikCode, [_shift, _ctrl, _alt]];
                         GVAR(frameNoKeyPress) = diag_frameNo;
                     };

@@ -25,7 +25,7 @@ TRACE_5("KEY UP",GVAR(modifiers), GVAR(input), GVAR(firstKey), GVAR(secondKey),G
 if ( (count GVAR(secondKey)) < 1 ) then {
     GVAR(secondKey) = GVAR(firstKey);
     GVAR(firstKey) = [];
-    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+    if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
         GVAR(input) set [0, GVAR(secondKey) select 0];
         GVAR(frameNoKeyPress) = diag_frameNo;
     };
@@ -38,7 +38,7 @@ if ( (count GVAR(secondKey)) < 1 ) then {
 
     TRACE_1("KEY UP: Update Modifiers before",_dikCode);
     TRACE_2("KEY UP: 2nd key Before",GVAR(secondKey), GVAR(input));
-    if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+    if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
         GVAR(input) set [0, GVAR(secondKey) select 0];
         GVAR(frameNoKeyPress) = diag_frameNo;
     };
@@ -51,7 +51,7 @@ if ( (count GVAR(secondKey)) < 1 ) then {
             // if it is a Multiple-Key Event then modifiers must be recorded.
             TRACE_1("KEY UP: Update Modifiers before",_dikCode);
             TRACE_2("KEY UP: 3rd Key Before",GVAR(thirdKey), GVAR(input));
-            if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+            if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
                 GVAR(input) set [0, GVAR(thirdKey) select 0];
                 GVAR(frameNoKeyPress) = diag_frameNo;
             };
@@ -66,7 +66,7 @@ if (count GVAR(thirdKey) < 1) then {
     GVAR(thirdKey) = [_dikCode];
 };
 
-if !(GVAR(frameNoKeyPress) == diag_frameNo) then {
+if (!(GVAR(frameNoKeyPress) == diag_frameNo) || (_shift || _ctrl || _alt)) then {
     GVAR(input) set [0, GVAR(thirdKey) select 0];
     GVAR(frameNoKeyPress) = diag_frameNo;
 };
