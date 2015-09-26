@@ -79,7 +79,7 @@ if !(isNull _display) then {
                     if (_ctrl && _dikCode != 29) then {_keyString = format ["Ctrl+%1", _keyString]};
                     if (_keyString != "") then {
                         // Add quotes around whole string.
-                        _keyString = format ["""%1""", _keyString]
+                        _keyString = format ["""%1""", _keyString];
                     };
                     TRACE_1("",_keyString);
                     // Search the handler array for any other keybinds using this key.
