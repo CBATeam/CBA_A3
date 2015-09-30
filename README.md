@@ -7,44 +7,36 @@
 
 ## Installation
 
-Download the latest version and unpack in your ARMA installation folder.
-For ARMA 3 content, launch with `-mod=@CBA_A3`
+Download the latest version and unpack it in your Arma 3 installation folder.
+Simply launch Arma 3 with `-mod=@CBA_A3` afterwards.
 
 ## Optionals
 
+To install any of the optionals, simply copy the respective PBOs into the `@CBA_A3\addons` folder.
+
 PBO                                    | Description
 -------------------------------------- | --------------------------------------
-cba_cache_disable.pbo                  | Dev Tool. Copy this to your cba\addons if you want to disable CBA's caching of functions.
-cba_diagnostic_disable_xeh_logging.pbo | Copy this to your cba\addons if you want to disable all the extra RPT logging.
-cba_diagnostic_enable_logging.pbo      | Dev Tool. Copy this to your cba\addons if you want to enable more logging.
-cba_enable_auto_xeh.pbo                | This will add extended event handler (XEH) functionality to units and vehicles that are not XEH enabled. This may cause unforeseen side effects.
+cba_cache_disable.pbo                  | Disables CBA's function caching. (Dev Tool)
+cba_diagnostic_disable_xeh_logging.pbo | Disables all additional XEH RPT logging.
+cba_diagnostic_enable_logging.pbo      | Enables additional logging (Dev Tool)
+cba_enable_auto_xeh.pbo                | Automatically add Extended Event Handler functionality to units and vehicles that do not have XEH enabled. This might cause unpredictable behavior.
 
 ### CBA Caching
 
-CBA implements a cache for all `compile preProcessFile`'d scripts (incl `CfgFunctions`, BIS functions module etc), and for all XEH events
-on `CfgVehicle` classes. This cache is stored in the `uiNamespace` and is therefore available throughout the whole lifetime of the running
-game (game start, till terminate game). Each class is only cached once, while mission and `campaignConfigfile` events are obviously
-evaluated every mission, but also only once per `CfgVehicle` class.
+CBA implements a cache for all `compile preProcessFile`'d scripts (incl `CfgFunctions`, BIS functions module, etc), and for all XEH events on `CfgVehicle` classes. This cache is stored in the `uiNamespace` and is therefore available throughout the whole lifetime of the running game (game start, till terminate game). Each class is only cached once, while mission and `campaignConfigfile` events are evaluated every mission, but also only once per `CfgVehicle` class.
 
-The performance gains are seen in feature heavy mods like ACE or AGM which release on scripting to make their features possible.
-Some of these functions need a long time to initialize the game, switching missions, islands, going from editor back to the game,
-and so forth. 2nd-nth mission (re)starts go faster, but it is still nowhere near as fast as playing the Vanilla game.
+The performance gains are seen in feature rich mods like ACE3 which rely heavily on scripting to make their features possible.
+Some of these functionalities cause long loading times for the game, switching missions, islands and switching from the editor back to the game.
+After the first mission load functions will be cached and loading times for functions will be comparable with the vanilla game.
 
-`cba_cache_disable.pbo` is an addon that can disable this if you need it however it makes mods slower by disabling CBA's function and
-script compilation cache, and xeh cache. It is useful during development so that edits will take effect without having to restart
-the game.
+`cba_cache_disable.pbo` is an optional addon that can disable this if you need it. However it makes mods slower by disabling CBA's function and script compilation cache, as well as the XEH cache. It is useful during development, since script changes will take effect without restarting the entire game.
 
 ## Known Issues
 
-* CBA Keybinding requires a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Command-line parameters like `-world=empty` or `-skipIntro` will cause Keybinding to work ONLY in-game but NOT in the main menu of Arma.
+* CBA Keybindings require a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Commandline parameters like `-world=empty` or `-skipIntro` will cause Keybinding to work ONLY in-game but NOT in the main menu.
 
 ## License
 
-Licensed under [GNU GENERAL PUBLIC LICENSE v2](license.txt)
+Licensed under GNU General Public License ([GPLv2](license.txt))
 
-Any addon which calls CBA-defined functions need not be licensed under the GPLv2
-or released under a free software license. Only if you are directly including
-CBA code in your addon's binarized PBO or redistributing a modified version of
-CBA itself would your work be considered derivative and therefore be legally
-required to be released under the terms of the GPL. (And there's no reason to
-ever do either of these.)
+Any addon which calls CBA-defined functions need not be licensed under the GPLv2 or released under a free software license. Only if it is directly including CBA code in the addon's binarized PBO or redistributing a modified version of CBA itself would it be considered derivative and therefore be legally required to be released under the terms of the GPL. (And there's no reason to ever do either of these.)
