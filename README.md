@@ -37,6 +37,6 @@ After the first mission load functions will be cached and loading times for func
 
 ## License
 
-Licensed under GNU General Public License ([GPLv2](license.txt))
+Licensed under GNU General Public License ([GPLv2](LICENSE.md))
 
 Any addon which calls CBA-defined functions need not be licensed under the GPLv2 or released under a free software license. Only if it is directly including CBA code in the addon's binarized PBO or redistributing a modified version of CBA itself would it be considered derivative and therefore be legally required to be released under the terms of the GPL. (And there's no reason to ever do either of these.)
