@@ -70,7 +70,7 @@ _count = round _count;
 (getWeaponCargo _box) params ["_allItemsType", "_allItemsCount"];
 
 // Clear cargo space and readd the items as long it's not the type in question
- ocal _returnVar = false;
+local _returnVar = false;
 clearWeaponCargoGlobal _box;
 {
     local _itemCount = _allItemsCount select _forEachIndex;
