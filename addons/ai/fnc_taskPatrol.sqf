@@ -39,14 +39,14 @@ Author:
 
 params ["_group", ["_position",[]], ["_radius",100], ["_count",3]];
 
-if (!local _group) exitWith {};
+_group = [_group] call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 _position = [_position,_group] select (_position isEqualTo []);
 
 _this =+ _this;
 if (count _this > 3) then {
-    _this set [3, NULL];
-    _this = _this - [NULL];
+    _this deleteAt 3;
 };
 for "_x" from 1 to _count do {
     _this call CBA_fnc_addWaypoint;

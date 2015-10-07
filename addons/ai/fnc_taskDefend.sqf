@@ -26,11 +26,12 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private ["_group","_position","_radius","_threshold"];
-_group = (_this select 0) call CBA_fnc_getgroup;
-_position = (if (count _this > 1) then {_this select 1} else {_group}) call CBA_fnc_getpos;
-_radius = if (count _this > 2) then {_this select 2} else {50};
-_threshold = if (count _this > 3) then {_this select 3} else {2};
+params ["_group", ["_position",[]], ["_radius",50], ["_threshold",2]];
+
+_group = [_group] call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
+
+_position = [_position,_group] select (_position isEqualTo []);
 
 _group enableattack false;
 

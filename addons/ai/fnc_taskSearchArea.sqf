@@ -40,6 +40,7 @@ params [
 private ["_pos","_args","_statement","_building"];
 
 _group = _group call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 // Cache arguments as group variable for recursive calls
 _args = [_area,_behaviour,_combat,_speed,_formation,_onComplete,_timeout];
