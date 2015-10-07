@@ -68,7 +68,7 @@ _count = round _count;
 // Returns array containing two arrays: [[type1, typeN, ...], [count1, countN, ...]]
 (getBackpackCargo _box) params ["_allItemsType", "_allItemsCount"];
 
-// Clear cargo space and readd the items as long its not the type in question
+// Clear cargo space and readd the items as long it's not the type in question
 local _returnVar = false;
 clearBackpackCargo _box;
 {
