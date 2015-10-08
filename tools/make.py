@@ -73,7 +73,7 @@ dssignfile = ""
 prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.txt", "license.txt", "logo_cba_ca.paa","README_optionals.txt"]
+importantFiles = ["mod.cpp", "README.MD", "license.md", "logo_cba_ca.paa"]
 versionFiles = ["mod.cpp"]
 
 ###############################################################################
@@ -1433,7 +1433,7 @@ See the make.cfg file for additional build options.
             a3_path = cygwin_a3path
 
         print_yellow("Path from the registry => {}".format(a3_path))
-        a3_path = test_dir
+        a3_path = os.path.join(test_dir,"{}_DEV".format(project)) 
 
         print_yellow("Copying build files to {}".format(a3_path))
 
