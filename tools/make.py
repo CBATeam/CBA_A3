@@ -752,7 +752,7 @@ def version_stamp_pboprefix(module,commitID):
         if configtext:
             if re.search(r"version=(.*?)$", configtext, re.DOTALL):
                 if configtext:
-                    configtext = re.sub(r"version=(.*?)$", "version = {}\n".format(commitID), configtext, flags=re.DOTALL)
+                    configtext = re.sub(r"version=(.*?)$", "version={}\n".format(commitID), configtext, flags=re.DOTALL)
                     f = open(configpath, "w")
                     f.write(configtext)
                     f.close()
