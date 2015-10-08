@@ -73,7 +73,7 @@ dssignfile = ""
 prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.MD", "license.md", "logo_cba_ca.paa"]
+importantFiles = ["mod.cpp", "README.md", "LICENSE.md", "logo_cba_ca.paa"]
 versionFiles = ["mod.cpp"]
 
 ###############################################################################
@@ -750,11 +750,9 @@ def version_stamp_pboprefix(module,commitID):
         f.close()
 
         if configtext:
-            patchestext = re.search(r"version.*?=.*?$", configtext, re.DOTALL)
-            if patchestext:
+            if re.search(r"version=(.*?)$", configtext, re.DOTALL):
                 if configtext:
-                    patchestext = re.search(r"(version.*?=)(.*?)$", configtext, re.DOTALL).group(1)
-                    configtext = re.sub(r"version(.*?)=(.*?)$", "version = {}\n".format(commitID), configtext, flags=re.DOTALL)
+                    configtext = re.sub(r"version=(.*?)$", "version = {}\n".format(commitID), configtext, flags=re.DOTALL)
                     f = open(configpath, "w")
                     f.write(configtext)
                     f.close()
@@ -1433,7 +1431,7 @@ See the make.cfg file for additional build options.
             a3_path = cygwin_a3path
 
         print_yellow("Path from the registry => {}".format(a3_path))
-        a3_path = os.path.join(test_dir,"{}_DEV".format(project)) 
+        a3_path = os.path.join(test_dir,"{}_DEV".format(project))
 
         print_yellow("Copying build files to {}".format(a3_path))
 
