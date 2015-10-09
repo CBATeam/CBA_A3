@@ -36,8 +36,8 @@ _newArray = [];
 GVAR(nextPFHid) = ({
     private ["_newHandle", "_return"];
     _return = false;
-    _x params ["", "", "", "", "", "_publicH"];
     if !(isNil "_x") then {
+        _x params ["", "", "", "", "", "_publicH"];
         _newHandle = _newArray pushBack _x;
         GVAR(PFHhandles) set [_publicH, _newHandle];
         _return = true;
