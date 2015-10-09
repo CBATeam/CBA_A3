@@ -16,6 +16,3 @@ Thumbs.db
 
 *~
 *#
-addons/cache_disable/$PBOPREFIX$.TXT
-addons/cache_disable/config.cpp
-addons/cache_disable/script_component.hpp
