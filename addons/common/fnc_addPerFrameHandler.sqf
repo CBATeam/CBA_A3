@@ -23,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-private["_handle", "_data", "_publicHandle"];
+private ["_handle", "_data", "_publicHandle"];
 params ["_func","_delay", ["_params",[]]];
 
 if (!isNil "_func") then {
