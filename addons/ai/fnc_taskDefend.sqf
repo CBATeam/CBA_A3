@@ -32,6 +32,7 @@ _group = [_group] call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 _position = [_position,_group] select (_position isEqualTo []);
+_position = _position call CBA_fnc_getPos;
 
 _group enableattack false;
 
