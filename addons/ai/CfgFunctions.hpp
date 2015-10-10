@@ -44,7 +44,7 @@ class CfgFunctions
             {
                 description = "A function used to have AI search a given marker or trigger area indefinitely. Includes random building searches.";
                 file = "\x\cba\addons\ai\fnc_taskSearchArea.sqf";
-            }
+            };
         };
     };
 };

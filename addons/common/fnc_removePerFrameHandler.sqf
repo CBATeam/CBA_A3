@@ -26,7 +26,7 @@ Author:
 
 params ["_publicHandle"];
 
-if (isNil "_publicHandle" || {(_publicHandle < 0)} || {!((count GVAR(PFHhandles)) >= _publicHandle)}) exitWith { // Nil/no handle, nil action or handle is larger than Public Handle Array
+if (isNil "_publicHandle" || {_publicHandle < 0} || {(count GVAR(PFHhandles)) <= _publicHandle}) exitWith {// Nil/no handle or handle is out of bounds of Public Handle Array
     WARNING("Invalid or not existing PFH ID.");
 };
 
