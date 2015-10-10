@@ -26,7 +26,9 @@ Author:
 
 params ["_publicHandle"];
 private "_handle";
-if (isNil "_publicHandle" || (_publicHandle < 0)) exitWith {}; // Nil/no handle, nil action
+if ((isNil "_publicHandle" || (_publicHandle < 0)) && {(count GVAR(PFHhandles)) < _publicHandle}) exitWith { // Nil/no handle, nil action or handle is larger than Public Handle Array
+    WARNING("PFH ID allready Removed or handle Not Exist or handle is smaller than 0");
+};
 _handle = GVAR(PFHhandles) select _publicHandle;
 if (isNil "_handle") exitWith {}; // Nil handle, nil action
 GVAR(PFHhandles) set [_publicHandle, nil];
