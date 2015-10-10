@@ -136,13 +136,15 @@ FUNC(onFrame) = {
     // GVAR(fpsCount) = GVAR(fpsCount) + 1;
     // player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
     {
+
         if !(isNil "_x") then {
-            if (_x params ["_func", "_delay", "_delta", "", "_args", "_idPFH"]) then {
+            _handlerData = _x;
+            if (_handlerData params ["_func", "_delay", "_delta", "", "_args", "_idPFH"]) then {
                 if (diag_tickTime > _delta) then {
                     [_args, _idPFH] call _func;
                     _delta = diag_tickTime + _delay;
                     //TRACE_1("data", _data);
-                    _x set [2, _delta];
+                    _handlerData set [2, _delta];
                 };
             };
         };
