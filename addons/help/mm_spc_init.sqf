@@ -9,7 +9,7 @@ private ["_idc", "_cfg"];
 //NOTE: preinit hasn't defined fnc variables yet on main menu, do it manually for now
 if (isNil "CBA_fnc_defaultParam") then { CBA_fnc_defaultParam = uiNamespace getVariable "CBA_fnc_defaultParam" };
 
-_idc = ([str _ctrl, "#"] call (uiNamespace getVariable "CBA_fnc_split")) select 1;
+_idc = ((str _ctrl) splitString "#") select 1;
 
 _cfg = configFile>>"CBA_MouseTrapEvent">>("IDC_" + _idc);
 

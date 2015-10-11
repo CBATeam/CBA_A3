@@ -24,7 +24,7 @@ _pkeynam = {
     _keystrg = "^";
     {
         _knaml = [cba_keybinding_dikDecToStringTable, format ["%1", _x], format ["Unknown key (%1)",_x]] call BIS_fnc_getFromPairs;
-        _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
+        _knaml = _knaml splitString  " ";
         _knam = "^";
         {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
         _knam = [_knam, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");

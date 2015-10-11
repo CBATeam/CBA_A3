@@ -34,7 +34,7 @@ _time = [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime;
 
 diag_log text format ["%1 (%2) [%3:%4] -ERROR- %5", _time, time, _file, _lineNum + 1, _title];
 
-_lines = [_message, "\n"] call CBA_fnc_split;
+_lines = _message splitString "\n";
 
 {
     diag_log text format ["            %1", _x];
