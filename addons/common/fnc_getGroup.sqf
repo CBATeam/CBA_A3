@@ -20,5 +20,5 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-if (tolower (typeName _this) == "GROUP") exitwith {_this};
+if (toUpper (typeName _this) isEqualTo "GROUP") exitwith {_this};
 group _this
