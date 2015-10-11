@@ -69,11 +69,18 @@ Group: Functions  {
          File: CBA_fnc_taskAttack  (ai/fnc_taskAttack.sqf)
          File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
          File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
+         File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
          }  # Group: Ai
 
       Group: Arrays  {
 
          File: CBA_fnc_filter  (arrays/fnc_filter.sqf)
+         File: CBA_fnc_findMax  (arrays/fnc_findMax.sqf)
+         File: CBA_fnc_findMin  (arrays/fnc_findMin.sqf)
+         File: CBA_fnc_findNil  (arrays/fnc_findNil.sqf)
+         File: CBA_fnc_findNull  (arrays/fnc_findNull.sqf)
+         File: CBA_fnc_findTypeName  (arrays/fnc_findTypeName.sqf)
+         File: CBA_fnc_findTypeOf  (arrays/fnc_findTypeOf.sqf)
          File: CBA_fnc_getArrayDiff  (arrays/fnc_getArrayDiff.sqf)
          File: CBA_fnc_getArrayElements  (arrays/fnc_getArrayElements.sqf)
          File: CBA_fnc_inject  (arrays/fnc_inject.sqf)
