@@ -50,7 +50,7 @@
 #else
     #define PATHTO_SYS(var1,var2,var3) ##var1\##var2\##var3.sqf
     #define PATHTOF_SYS(var1,var2,var3) ##var1\##var2\##var3
-    #define PATHTOF_SYS2(var1,var2,var3) ##var1\##var2\##var3
+    #define PATHTOF2_SYS(var1,var2,var3) ##var1\##var2\##var3
 #endif
 
 
