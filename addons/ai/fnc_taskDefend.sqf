@@ -28,7 +28,7 @@ Author:
 
 params ["_group", ["_position",[]], ["_radius",50], ["_threshold",2]];
 
-_group = [_group] call CBA_fnc_getGroup;
+_group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 _position = [_position,_group] select (_position isEqualTo []);

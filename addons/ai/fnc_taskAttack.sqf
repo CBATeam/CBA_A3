@@ -28,7 +28,7 @@ Author:
 
 params ["_group","_position", ["_radius",0]];
 
-_group = [_group] call CBA_fnc_getGroup;
+_group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 [_group, _position, _radius, "SAD", "COMBAT", "RED"] call CBA_fnc_addWaypoint;
