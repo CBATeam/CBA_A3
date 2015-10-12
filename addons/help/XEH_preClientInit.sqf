@@ -45,7 +45,7 @@ _pkeynam = { //local function
     {
         _mod = _x in [42,56,29]; // ???
         _knaml = call compile format["format['%2',%1]",(keyName _x),"%1"];
-        _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
+        _knaml = _knaml splitString " ";
         _knam = "^";
         {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
         // if(!(_mod) || ( (_k != (localize "STR_ACE_KN_LEFT")) && (_k != (localize "STR_ACE_KN_RIGHT")) )) then {  // ?????
@@ -65,7 +65,7 @@ for "_i" from 0 to (count _cEvents)-1 do {
     _tSys = configName _cSys;
     if (isNumber((_cSys select 0)/"key")) then {
         //format system name
-        _aSys = [_tSys, "_"] call (uiNamespace getVariable "CBA_fnc_split");
+        _aSys = _tSys splitString "_";
         _tS = "^";
         {if((_x != "sys")) then {_tS = _tS + " " + _x;}} forEach _aSys;
         // (_x != "ace") &&
