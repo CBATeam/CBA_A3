@@ -199,7 +199,7 @@ Parameters:
 
 Example:
     (begin example)
-        ERROR("Value not found","value of frog not found in config ...yada...yada...");
+        ERROR("value of frog not found in config ...yada...yada...");
     (end)
 
 Author:
