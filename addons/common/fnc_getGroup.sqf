@@ -19,6 +19,6 @@ Author:
     Rommel
 
 ---------------------------------------------------------------------------- */
-
-if (toUpper (typeName _this) isEqualTo "GROUP") exitwith {_this};
-group _this
+params [["_group", grpNull, [grpNull, objNull]]];
+if ((typeName _group) isEqualTo "GROUP") exitWith {_group};
+group _group
