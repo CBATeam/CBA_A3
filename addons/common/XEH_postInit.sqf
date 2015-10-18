@@ -118,3 +118,8 @@ if !(isDedicated) then {
     activateAddons _addons;
 };
 */
+
+if (hasInterface) then {
+    ["CBA_teamColorChanged", FUNC(onTeamColorChanged)] call FUNC(addEventHandler);
+    [FUNC(synchTeamColors), 0, []] call FUNC(addPerFrameHandler);
+};
