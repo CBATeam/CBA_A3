@@ -120,6 +120,6 @@ if !(isDedicated) then {
 */
 
 if (hasInterface) then {
-    ["CBA_teamColorChanged", FUNC(onTeamColorChanged)] call FUNC(addEventHandler);
-    [FUNC(synchTeamColors), 0, []] call FUNC(addPerFrameHandler);
+    ["CBA_teamColorChanged", CBA_fnc_onTeamColorChanged] call CBA_fnc_addEventHandler;
+    [CBA_fnc_synchTeamColors, 0, []] call CBA_fnc_addPerFrameHandler;
 };
