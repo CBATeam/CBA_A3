@@ -339,6 +339,12 @@ class CfgFunctions
                 description = "Creates a ""random"" number 0-9 based on an object's velocity";
                 file = "\x\cba\addons\common\fnc_objectRandom.sqf";
             };
+            // CBA_fnc_onTeamColorChanged
+            class onTeamColorChanged
+            {
+                description = "Assigns the units team color if it changed on another machine.";
+                file = "\x\cba\addons\common\fnc_onTeamColorChanged.sqf";
+            };
             // CBA_fnc_parseYAML
             class parseYAML
             {
@@ -440,6 +446,12 @@ class CfgFunctions
             {
                 description = "Switch player to another unit.";
                 file = "\x\cba\addons\common\fnc_switchPlayer.sqf";
+            };
+            // CBA_fnc_synchTeamColors
+            class synchTeamColors
+            {
+                description = "Synchs the team colors per frame.";
+                file = "\x\cba\addons\common\fnc_synchTeamColors.sqf";
             };
             // CBA_fnc_systemChat
             class systemChat
