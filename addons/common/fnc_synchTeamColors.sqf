@@ -22,7 +22,6 @@ if (leader player == player) then {
         if ((assignedTeam _x) != (_x getVariable [QGVAR(synchedTeam), "MAIN"])) then {
             //Local team != currently synched team, so we need to synchronize them again
             ["CBA_teamColorChanged", [_x, assignedTeam _x]] call CBA_fnc_remoteEvent;
-            _x setVariable [QGVAR(synchedTeam), assignedTeam _x];
         };
         true
     } count units player;
