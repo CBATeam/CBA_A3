@@ -121,7 +121,7 @@ if !(isDedicated) then {
 
 ["CBA_teamColorChanged", CBA_fnc_onTeamColorChanged] call CBA_fnc_addEventHandler;
 if (hasInterface) then {
-    [CBA_fnc_synchTeamColors, 0, []] call CBA_fnc_addPerFrameHandler;
+    [CBA_fnc_synchTeamColors, 1, []] call CBA_fnc_addPerFrameHandler;
     if (didJIP) then {
         private "_team";
         {

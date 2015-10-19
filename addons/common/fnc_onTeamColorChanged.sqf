@@ -19,6 +19,6 @@ Author:
 params ["_unit", "_team"];
 
 _unit assignTeam _team;
-if (isServer) then {
+if (local (leader _unit)) then {
     _unit setVariable [QGVAR(synchedTeam), _team, true];
 };
