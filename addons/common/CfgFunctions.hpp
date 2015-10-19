@@ -450,7 +450,7 @@ class CfgFunctions
             // CBA_fnc_synchTeamColors
             class synchTeamColors
             {
-                description = "Synchs the team colors per frame.";
+                description = "Synchs the team colors every second.";
                 file = "\x\cba\addons\common\fnc_synchTeamColors.sqf";
             };
             // CBA_fnc_systemChat

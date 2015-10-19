@@ -2,8 +2,7 @@
 Internal Function: CBA_fnc_synchTeamColors
 
 Description:
-    Synchs the team colors per frame. Does not need to be called manually and
-    is executed every frame.
+    Synchs the team colors every second. Does not need to be called manually.
 
 Parameters:
     None
