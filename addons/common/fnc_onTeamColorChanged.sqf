@@ -2,7 +2,7 @@
 Internal Function: CBA_fnc_onTeamColorChanged
 
 Description:
-    Assigns the units team color if it changed on another machine.
+    Assigns the units team color if it changed on the squad leaders machine.
 
 Parameters:
     _unit - unit [OBJECT]
