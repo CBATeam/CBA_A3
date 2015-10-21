@@ -38,7 +38,7 @@ GVAR(entities) = [];
                             false
                         } count EVENTHANDLERS(_event,_type);
                         false
-                    } count SUPPORTED_EH;
+                    } count (missionNamespace getVariable [format [QGVAR(::%1), _type], []]);
 
                     _class = inheritsFrom _class;
                 };

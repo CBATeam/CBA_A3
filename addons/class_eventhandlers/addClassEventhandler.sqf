@@ -49,4 +49,11 @@ _events pushBack _code;
 
 SETEVENTHANDLERS(_event,_type,_events);
 
+// set flag for this eventhandler to be used on this class. reduces overhead on init.
+private _eventFlags = missionNamespace getVariable [format [QGVAR(::%1), _type], []];
+
+if !(_event in _eventFlags) then {
+    _eventFlags pushBack _event;
+};
+
 true
