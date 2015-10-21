@@ -1,0 +1,5 @@
+x\cba\addons\class_eventhandlers
+prefix=x\cba\addons\class_eventhandlers
+product=Arma 3
+version=002
+Pbo Type is: Arma
