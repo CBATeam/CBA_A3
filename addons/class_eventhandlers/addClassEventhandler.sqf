@@ -28,12 +28,13 @@ if (!isClass (configFile >> "CfgVehicles" >> _type)) exitWith {false};
 // no such event
 if (_event != "init" && {!(_event in SUPPORTED_EH)}) exitWith {false};
 
+// add events to already existing classes
 {
     if (_x isKindOf _type) then {
         _x addEventHandler [_event, _code];
     };
     false
-} count (GVAR(allUnits) + GVAR(allVehicles));
+} count (missionNamespace getVariable [QGVAR(entities), []]);
 
 // define for units that are created later
 private _events = EVENTHANDLERS(_event,_type);
