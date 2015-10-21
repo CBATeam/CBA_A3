@@ -55,5 +55,5 @@
     "weaponrested" \
 ]
 
-#define EVENTHANDLERS(type,class) (uiNamespace getVariable [format [QGVAR(%1:%2), type, class], []])
-#define SETEVENTHANDLERS(type,class,events) (uiNamespace setVariable [format [QGVAR(%1:%2), type, class], events])
+#define EVENTHANDLERS(type,class) (missionNamespace getVariable [format [QGVAR(%1:%2), type, class], []])
+#define SETEVENTHANDLERS(type,class,events) (missionNamespace setVariable [format [QGVAR(%1:%2), type, class], events])
