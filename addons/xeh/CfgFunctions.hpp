@@ -9,7 +9,11 @@ class CfgFunctions
                 preInit = 1;
                 file = "\x\cba\addons\xeh\init_pre.sqf";
             };
+            class preStartXEH
+            {
+                preStart = 1;
+                file = "\x\cba\addons\xeh\init_preStart.sqf";
+            };
         };
     };
 };
-

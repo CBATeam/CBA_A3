@@ -6,6 +6,10 @@ class Extended_EventHandlers
 };
 
 
+// The PreStart handlers run once when the game is started
+// this could be used to precompile functions.
+class Extended_PreStart_EventHandlers {};
+
 // Class for "pre-init", run-once event handlers. Code in here runs before any
 // Extended_Init_Eventhandlers code.
 class Extended_PreInit_EventHandlers {};
