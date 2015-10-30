@@ -402,13 +402,13 @@ class CfgFunctions
             // CBA_fnc_removeMagazineCargo
             class removeMagazineCargo
             {
-                description = "Function to remove specific items from local cargo space.";
+                description = "Removes specific magazine(s) from local cargo space.";
                 file = "\x\cba\addons\common\fnc_removeMagazineCargo.sqf";
             };
             // CBA_fnc_removeMagazineCargoGlobal
             class removeMagazineCargoGlobal
             {
-                description = "Function to remove specific items from global cargo space. MP synchronized.";
+                description = "Removes specific magazine(s) from global cargo space. MP synchronized.";
                 file = "\x\cba\addons\common\fnc_removeMagazineCargoGlobal.sqf";
             };
             // CBA_fnc_removePerFrameHandler
@@ -432,13 +432,13 @@ class CfgFunctions
             // CBA_fnc_removeWeaponCargo
             class removeWeaponCargo
             {
-                description = "Function to remove specific items from local cargo space.";
+                description = "Removes specific weapon(s) from local cargo space.";
                 file = "\x\cba\addons\common\fnc_removeWeaponCargo.sqf";
             };
             // CBA_fnc_removeWeaponCargoGlobal
             class removeWeaponCargoGlobal
             {
-                description = "Function to remove specific items from global cargo space. MP synchronized.";
+                description = "Removes specific weapon(s) from global cargo space. MP synchronized.";
                 file = "\x\cba\addons\common\fnc_removeWeaponCargoGlobal.sqf";
             };
             // CBA_fnc_selectWeapon

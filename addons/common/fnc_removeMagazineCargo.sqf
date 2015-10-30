@@ -2,106 +2,92 @@
 Function: CBA_fnc_removeMagazineCargo
 
 Description:
-    Function to remove specific items from local cargo space.
+    Removes specific magazine(s) from local cargo space.
+    Warning: Magazine's ammo count is lost and becomes full.
 
-    * Use <CBA_fnc_removeMagazineCargoGlobal> if you want to remove the item in
-      global mission space.
+    * Use <CBA_fnc_removeMagazineCargoGlobal> if you want to remove the magazine(s) in
+      global cargo space.
 
 Parameters:
-    _unit - the vehicle providing cargo space [Object]
-    _item - classname of item to remove [String]
-    _count - number of items to remove [Number] (Default: 1)
+    _box - Object with cargo [Object]
+    _item - Classname of magazine(s) to remove [String]
+    _count - Number of magazine(s) to remove [Number] (Default: 1)
 
 Returns:
-    true on success, false otherwise (error or no such item in cargo)
+    Success [Boolean]
 
 Examples:
    (begin example)
-    // remove 1 Smokegrenade locally from the box
-   _success = [myCoolWeaponBox, "SmokeShell"] call CBA_fnc_removeMagazineCargo;
+   // Remove 1 Smokegrenade locally from a box
+   _success = [myCoolMagazineBox, "SmokeShell"] call CBA_fnc_removeMagazineCargo;
 
-   // remove 2 Handgrenades locally from the box
-   _success = [myCoolWeaponBox, "HandGrenade_West", 2] call CBA_fnc_removeMagazineCargo;
+   // Remove 2 Handgrenades locally from a box
+   _success = [myCoolMagazineBox, "HandGrenade_West", 2] call CBA_fnc_removeMagazineCargo;
    (end)
 
 Author:
     silencer.helling3r 2012-12-22
+    Jonpas
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(removeMagazineCargo);
 
-params ["_unit","_item", ["_count",1]];
+params ["_box","_item", ["_count",1]];
 
-if (typeName _unit != "OBJECT") exitWith
-{
-    TRACE_2("Unit not Object",_unit,_item);
+if (typeName _box != "OBJECT") exitWith {
+    TRACE_2("Box not Object",_box,_item);
     false
 };
-if (typeName _item != "STRING") exitWith
-{
-    TRACE_2("Item not String",_unit,_item);
+if (typeName _item != "STRING") exitWith {
+    TRACE_2("Item not String",_box,_item);
     false
 };
-if (isNull _unit) exitWith
-{
-    TRACE_2("Unit isNull",_unit,_item);
+if (isNull _box) exitWith {
+    TRACE_2("Box isNull",_box,_item);
     false
 };
-if (_item == "") exitWith
-{
-    TRACE_2("Empty Item",_unit,_item);
+if (_item == "") exitWith {
+    TRACE_2("Empty Item",_box,_item);
     false
 };
-if !(isClass (configFile >> "CfgMagazines" >> _item)) exitWith
-{
-    TRACE_2("Item does not exist in the game config",_unit,_item);
+if !(isClass (configFile >> "CfgMagazines" >> _item)) exitWith {
+    TRACE_2("Item does not exist in the game config",_box,_item);
     false
 };
-if (typeName _count != "SCALAR") exitWith
-{
-    TRACE_3("Count is not a number",_unit,_item,_count);
+if (typeName _count != "SCALAR") exitWith {
+    TRACE_3("Count is not a number",_box,_item,_count);
     false
 };
-if (_count <= 0) exitWith
-{
-    TRACE_3("Count is not a positive number",_unit,_item,_count);
+if (_count <= 0) exitWith {
+    TRACE_3("Count is not a positive number",_box,_item,_count);
     false
 };
-_count=round _count;    // ensure proper count
 
-private ["_i", "_unit_allItems", "_unit_allItems_types", "_unit_allItems_count", "_item_type", "_item_count","_returnVar"];
+// Ensure proper count
+_count = round _count;
 
-// returns array containing two arrays: [[type1, typeN, ...],[count1, countN, ...]]
-_unit_allItems = getMagazineCargo _unit;
-_unit_allItems_types = _unit_allItems select 0;
-_unit_allItems_count = _unit_allItems select 1;
+// Returns array containing two arrays: [[type1, typeN, ...], [count1, countN, ...]]
+(getMagazineCargo _box) params ["_allItemsType", "_allItemsCount"];
 
-// Clear cargo space and readd the items as long its not the type in question.
-// If it is the requested class, we cannot just substract items because of the
-// count parameter.
-_returnVar = false;
-clearMagazineCargo _unit;
-for "_i" from 0 to (count _unit_allItems_types) - 1 do
+// Clear cargo space and readd the items as long it's not the type in question
+local _returnVar = false;
+clearMagazineCargo _box;
 {
-    _item_type = _unit_allItems_types select _i;
-    _item_count = _unit_allItems_count select _i;
-    if (_item_type == _item) then
-    {
-        // process removal
-        returnVar = true;
+    local _itemCount = _allItemsCount select _forEachIndex;
 
-        _item_count = _item_count - _count;
-        if (_item_count > 0) then
-        {
-            // add with new count
-            _unit addMagazineCargo [_item_type, _item_count];
+    if (_x == _item) then {
+        // Process removal
+        _returnVar = true;
+
+        _itemCount = _itemCount - _count;
+        if (_itemCount > 0) then {
+            // Add with new count
+            _box addMagazineCargo [_x, _itemCount];
         };
-    }
-    else
-    {
-        // just readd item
-        _unit addMagazineCargo [_item_type, _item_count];
+    } else {
+        // Readd only
+        _box addMagazineCargo [_x, _itemCount];
     };
-};
-_returnVar
+} forEach _allItemsType;
 
+_returnVar
