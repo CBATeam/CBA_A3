@@ -369,6 +369,30 @@ class CfgFunctions
                 description = "Real z coordinate of an object, for placing stuff on roofs, etc.";
                 file = "\x\cba\addons\common\fnc_realHeight.sqf";
             };
+            // CBA_fnc_removeBackpackCargo
+            class removeBackpackCargo
+            {
+                description = "Removes specific backpack(s) from local cargo space.";
+                file = "\x\cba\addons\common\fnc_removeBackpackCargo.sqf";
+            };
+            // CBA_fnc_removeBackpackCargoGlobal
+            class removeBackpackCargoGlobal
+            {
+                description = "Remove specific backpack(s) from global cargo space. MP synchronized.";
+                file = "\x\cba\addons\common\fnc_removeBackpackCargoGlobal.sqf";
+            };
+            // CBA_fnc_removeItemCargo
+            class removeItemCargo
+            {
+                description = "Removes specific item(s) from local cargo space.";
+                file = "\x\cba\addons\common\fnc_removeItemCargo.sqf";
+            };
+            // CBA_fnc_removeItemCargoGlobal
+            class removeItemCargoGlobal
+            {
+                description = "Removes specific item(s) from global cargo space. MP synchronized.";
+                file = "\x\cba\addons\common\fnc_removeItemCargoGlobal.sqf";
+            };
             // CBA_fnc_removeMagazine
             class removeMagazine
             {
