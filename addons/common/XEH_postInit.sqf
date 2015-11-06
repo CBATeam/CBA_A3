@@ -62,7 +62,7 @@ FUNC(initPerFrameHandlers) = {
 
     GVAR(lastFrameRender) = diag_frameNo;
     // Use a trigger, runs every 0.5s, unscheduled execution
-    GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0]];
+    GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0], false];
     GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
 };
 

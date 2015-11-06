@@ -80,7 +80,7 @@ SLX_XEH_STR spawn {
     // Once the last registered keypress is longer than TIMEOUT seconds ago, re-attach the handler.
     if (isServer) then { // isServer = SP or MP server-client
         // Use a trigger, runs every 0.5s, unscheduled execution
-        GVAR(keyTrigger) = createTrigger["EmptyDetector", [0,0,0]];
+        GVAR(keyTrigger) = createTrigger["EmptyDetector", [0,0,0], false];
         GVAR(keyTrigger) setTriggerStatements[QUOTE(if ((GVAR(keypressed) + TIMEOUT) < time) then { call FUNC(attach_handler) }), "", ""];
     } else { // dedicatedClient
         // TODO: Find better dummy class to use
