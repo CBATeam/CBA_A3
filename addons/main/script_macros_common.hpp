@@ -141,6 +141,45 @@ Author:
 #endif
 
 /* -------------------------------------------
+Macros: CBA_LOGLEVEL_X
+    Default CBA Loglevels for ease of access.
+
+    CBA_LOGLEVEL_FATAL - Logs for very severe errors that will presumably lead to the system not working.
+    CBA_LOGLEVEL_ERROR - Logs for error events that might still allow the system to continue.
+    CBA_LOGLEVEL_WARN - Logs for potentially harmful situations for the system.
+    CBA_LOGLEVEL_INFO - Logs for informational messages about the general progress of the system.
+    CBA_LOGLEVEL_DEBUG - Logs for fine-grained information mostly useful for debugging the system.
+    CBA_LOGLEVEL_TRACE - Logs for finer-grained information for system call logs or similar.
+
+Author:
+    MikeMatrix
+------------------------------------------- */
+#define CBA_LOGLEVEL_FATAL 60
+#define CBA_LOGLEVEL_ERROR 50
+#define CBA_LOGLEVEL_WARN 40
+#define CBA_LOGLEVEL_INFO 30
+#define CBA_LOGLEVEL_DEBUG 20
+#define CBA_LOGLEVEL_TRACE 10
+
+/* -------------------------------------------
+Macros: CBA_LOG()
+    CBA Log Macros for ease of use.
+
+    CBA_LOG(LEVEL,MESSAGE) Log a message in the given log level.
+    CBA_LOG_X(MESSAGE) Convenience methods to logging to the default CBA Loglevels. X can be FATAL, ERROR, WARN, INFO, DEBUG or TRACE
+
+Author:
+    MikeMatrix
+------------------------------------------- */
+#define CBA_LOG(LEVEL,MESSAGE) [QUOTE(PREFIX), QUOTE(COMPONENT), MESSAGE, LEVEL, ["CBA_fnc_diagLogWriter"], THIS_FILE_, __LINE__] call CBA_fnc_logDynamic
+#define CBA_LOG_FATAL(MESSAGE) CBA_LOG(CBA_LOGLEVEL_FATAL,MESSAGE)
+#define CBA_LOG_ERROR(MESSAGE) CBA_LOG(CBA_LOGLEVEL_ERROR,MESSAGE)
+#define CBA_LOG_WARN(MESSAGE) CBA_LOG(CBA_LOGLEVEL_WARN,MESSAGE)
+#define CBA_LOG_INFO(MESSAGE) CBA_LOG(CBA_LOGLEVEL_INFO,MESSAGE)
+#define CBA_LOG_DEBUG(MESSAGE) CBA_LOG(CBA_LOGLEVEL_DEBUG,MESSAGE)
+#define CBA_LOG_TRACE(MESSAGE) CBA_LOG(CBA_LOGLEVEL_TRACE,MESSAGE)
+
+/* -------------------------------------------
 Macro: LOG()
     Log a timestamped message into the RPT log.
 
@@ -157,11 +196,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#ifdef DEBUG_MODE_FULL
-#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
-#else
-#define LOG(MESSAGE) /* disabled */
-#endif
+#define LOG(MESSAGE) CBA_LOG_DEBUG(MESSAGE)
 
 /* -------------------------------------------
 Macro: WARNING()
@@ -180,11 +215,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#ifdef DEBUG_MODE_NORMAL
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
-#else
-#define WARNING(MESSAGE) /* disabled */
-#endif
+#define WARNING(MESSAGE) CBA_LOG_WARN(MESSAGE)
 
 /* -------------------------------------------
 Macro: ERROR()
@@ -205,8 +236,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR(MESSAGE) \
-    [THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
+#define ERROR(MESSAGE) CBA_LOG_ERROR(MESSAGE)
 
 /* -------------------------------------------
 Macro: ERROR_WITH_TITLE()
@@ -229,8 +259,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
+#define ERROR_WITH_TITLE(TITLE,MESSAGE) ERROR(FORMAT_2("%1 - %2",TITLE,MESSAGE))
 
 /* -------------------------------------------
 Macro: MESSAGE_WITH_TITLE()
@@ -248,8 +277,7 @@ Example:
 Author:
     Killswitch
 ------------------------------------------- */
-#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE)] call CBA_fnc_log;
+#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) CBA_LOG_INFO(FORMAT_2("%1 - %2",TITLE,MESSAGE))
 
 /* -------------------------------------------
 Macro: RETNIL()
@@ -325,48 +353,15 @@ Author:
 #define PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
     format ['%1: A=%2, B=%3, C=%4, D=%5, E=%6, F=%7, G=%8, H=%9, I=%10', MESSAGE, RETNIL(A), RETNIL(B), RETNIL(C), RETNIL(D), RETNIL(E), RETNIL(F), RETNIL(G), RETNIL(H), RETNIL(I)]
 
-
-#ifdef DEBUG_MODE_FULL
-#define TRACE_1(MESSAGE,A) \
-    [THIS_FILE_, __LINE__, PFORMAT_1(MESSAGE,A)] call CBA_fnc_log
-
-#define TRACE_2(MESSAGE,A,B) \
-    [THIS_FILE_, __LINE__, PFORMAT_2(MESSAGE,A,B)] call CBA_fnc_log
-
-#define TRACE_3(MESSAGE,A,B,C) \
-    [THIS_FILE_, __LINE__, PFORMAT_3(MESSAGE,A,B,C)] call CBA_fnc_log
-
-#define TRACE_4(MESSAGE,A,B,C,D) \
-    [THIS_FILE_, __LINE__, PFORMAT_4(MESSAGE,A,B,C,D)] call CBA_fnc_log
-
-#define TRACE_5(MESSAGE,A,B,C,D,E) \
-    [THIS_FILE_, __LINE__, PFORMAT_5(MESSAGE,A,B,C,D,E)] call CBA_fnc_log
-
-#define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-    [THIS_FILE_, __LINE__, PFORMAT_6(MESSAGE,A,B,C,D,E,F)] call CBA_fnc_log
-
-#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-    [THIS_FILE_, __LINE__, PFORMAT_7(MESSAGE,A,B,C,D,E,F,G)] call CBA_fnc_log
-
-#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-    [THIS_FILE_, __LINE__, PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H)] call CBA_fnc_log
-
-#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
-    [THIS_FILE_, __LINE__, PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I)] call CBA_fnc_log
-
-#else
-
-#define TRACE_1(MESSAGE,A) /* disabled */
-#define TRACE_2(MESSAGE,A,B) /* disabled */
-#define TRACE_3(MESSAGE,A,B,C) /* disabled */
-#define TRACE_4(MESSAGE,A,B,C,D) /* disabled */
-#define TRACE_5(MESSAGE,A,B,C,D,E) /* disabled */
-#define TRACE_6(MESSAGE,A,B,C,D,E,F) /* disabled */
-#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
-#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
-#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
-
-#endif
+#define TRACE_1(MESSAGE,A) CBA_LOG_TRACE(PFORMAT_1(MESSAGE,A))
+#define TRACE_2(MESSAGE,A,B) CBA_LOG_TRACE(PFORMAT_2(MESSAGE,A,B))
+#define TRACE_3(MESSAGE,A,B,C) CBA_LOG_TRACE(PFORMAT_3(MESSAGE,A,B,C))
+#define TRACE_4(MESSAGE,A,B,C,D) CBA_LOG_TRACE(PFORMAT_4(MESSAGE,A,B,C,D))
+#define TRACE_5(MESSAGE,A,B,C,D,E) CBA_LOG_TRACE(PFORMAT_5(MESSAGE,A,B,C,D,E))
+#define TRACE_6(MESSAGE,A,B,C,D,E,F) CBA_LOG_TRACE(PFORMAT_6(MESSAGE,A,B,C,D,E,F))
+#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) CBA_LOG_TRACE(PFORMAT_7(MESSAGE,A,B,C,D,E,F,G))
+#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) CBA_LOG_TRACE(PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H))
+#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) CBA_LOG_TRACE(PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I))
 
 /* -------------------------------------------
 Group: General

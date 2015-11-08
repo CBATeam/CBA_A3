@@ -10,7 +10,7 @@ if (!SLX_XEH_DisableLogging) then {
     _logMsg = "CBA_VERSIONING: ";
     [GVAR(versions), { _logMsg = (_logMsg + format["%1=%2, ", _key, (_value select 0) joinString "."])}] call CBA_fnc_hashEachPair;
 
-    diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
+    [QUOTE(PREFIX), QUOTE(COMPONENT), _logMsg, CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter]] call CBA_fnc_logDynamic;
 };
 
 // Dependency check and warn

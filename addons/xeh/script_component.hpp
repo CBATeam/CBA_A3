@@ -12,7 +12,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
-#define XEH_LOG(MESSAGE) if !(SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, MESSAGE] }
+#define XEH_LOG(MESSAGE) if !(SLX_XEH_DisableLogging) then { [QUOTE(PREFIX), QUOTE(COMPONENT), MESSAGE, CBA_LOGLEVEL_INFO, [CBA_fnc_diagLogWriter]] call CBA_fnc_logDynamic }
 #define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", \
     "ContainerClosed", "ContainerOpened", "ControlsShifted", "Dammaged", \
     "Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
@@ -26,4 +26,3 @@
 
 
 #include "\x\cba\addons\main\script_macros.hpp"
-
