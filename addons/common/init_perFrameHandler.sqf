@@ -54,7 +54,7 @@ FUNC(blaHandler) = {
 
 
 FUNC(addPerFrameHandlerLogic) = {
-    params ["_function", ["_params", []], [[]], ["_delay", 0, [0]], ["_start", {}, [{}]], ["_end", {}, [{}]], ["_runCondition", {true}, [{true}]], ["_exitCondition",{false},[{false}]], ["_private", [],[[]]]];
+    params ["_function", ["_params", [], [[]]], ["_delay", 0, [0]], ["_start", {}, [{}]], ["_end", {}, [{}]], ["_runCondition", {true}, [{true}]], ["_exitCondition",{false},[{false}]], ["_private", [],[[]]]];
 
     // Store vars on Logic
     _logic = SLX_XEH_DUMMY createVehicleLocal [0, 0, 0];
