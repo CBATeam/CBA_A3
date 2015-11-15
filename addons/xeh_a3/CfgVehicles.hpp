@@ -19,22 +19,32 @@ class CfgVehicles {
 
     class Animal_Base_F;
     class Snake_random_F: Animal_Base_F {
-        delete Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Fin_Base_F;
     class Fin_random_F: Fin_Base_F {
-        delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Alsatian_Base_F;
     class Alsatian_Random_F: Alsatian_Base_F {
-        delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Goat_Base_F;
     class Goat_random_F: Goat_Base_F {
-        delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Sheep_random_F: Animal_Base_F {
-        delete Eventhandlers; // Eventhandlers
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
     class Fowl_Base_F;
     class Cock_random_F: Fowl_Base_F {
@@ -43,7 +53,9 @@ class CfgVehicles {
         };
     };
     class Cock_white_F: Cock_random_F {
-        delete Eventhandlers; // Eventhandlers;
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
     };
 
     class FlagCarrierCore;
