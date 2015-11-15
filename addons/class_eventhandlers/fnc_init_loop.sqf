@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-SCRIPT(XEH_postInit);
+SCRIPT(init);
 
 // main loop.
 
@@ -7,7 +7,7 @@ GVAR(entities) = [];
 
 [{
     if !(entities "" isEqualTo GVAR(entities)) then {
-        private _entities = entities "";
+        private "_entities"; _entities = entities "";
 
         GVAR(entities) = _entities;
 
@@ -16,9 +16,9 @@ GVAR(entities) = [];
             if !(_x getVariable [QGVAR(isInit), false]) then {
                 _x setVariable [QGVAR(isInit), true];
 
-                private _unit = _x;
-                private _type = typeOf _unit;
-                private _class = configFile >> "CfgVehicles" >> _type;
+                private "_unit"; _unit = _x;
+                private "_type"; _type = typeOf _unit;
+                private "_class"; _class = configFile >> "CfgVehicles" >> _type;
 
                 while {isClass _class} do {
                     _type = configName _class;
@@ -31,7 +31,7 @@ GVAR(entities) = [];
 
                     // add other eventhandlers
                     {
-                        private _event = _x;
+                        private "_event"; _event = _x;
 
                         {
                             _unit addEventHandler [_event, _x];
@@ -42,10 +42,8 @@ GVAR(entities) = [];
 
                     _class = inheritsFrom _class;
                 };
-
-                //systemChat str _unit;
             };
             false
         } count _entities;
     };
-}, 0, []] call CBA_fnc_addPerFrameHandler;
+}, 0.1, []] call CBA_fnc_addPerFrameHandler;

@@ -5,10 +5,10 @@ class CfgFunctions
     {
         class Misc
         {
-            class addClassEventhandler
+            class addEventHandlerToClass
             {
                 description = "Add an eventhandler to a class and all children";
-                file = QUOTE(\x\cba\addons\COMPONENT\addClassEventhandler.sqf);
+                file = QUOTE(\x\cba\addons\COMPONENT\fnc_addEventHandlerToClass.sqf);
             };
         };
     };
