@@ -5,7 +5,7 @@ Description:
     A function used to get the position of an entity.
 
 Parameters:
-    Marker, Object, Location, Group or Position
+    Marker, Object, Location, Group or Task
 
 Example:
     (begin example)
@@ -20,21 +20,23 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-switch (typename _this) do {
+params ["_thing"];
+
+switch (typename _thing) do {
     case "OBJECT" : {
-        getpos _this
+        getpos _thing
     };
     case "GROUP" : {
-        getpos (leader _this)
+        getpos (leader _thing)
     };
     case "STRING" : {
-        getmarkerpos _this
+        getmarkerpos _thing
     };
     case "LOCATION" : {
-        position _this
+        position _thing
     };
     case "TASK" : {
-        taskdestination _this
+        taskdestination _thing
     };
     default {_this};
 };
