@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addEventHandlerToClass
+Function: CBA_fnc_addClassEventHandler
 
 Description:
     Add an eventhandler to a class and all children.
@@ -14,8 +14,8 @@ Returns:
 
 Examples:
     (begin example)
-        ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addEventHandlerToClass;
-        ["All", "init", {systemChat str _this}] call CBA_fnc_addEventHandlerToClass;
+        ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+        ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
     (end)
 
 Author:
