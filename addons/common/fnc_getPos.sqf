@@ -22,21 +22,21 @@ Author:
 
 params ["_thing"];
 
-switch (typename _thing) do {
+switch (typeName _thing) do {
     case "OBJECT" : {
-        getpos _thing
+        getPos _thing
     };
     case "GROUP" : {
-        getpos (leader _thing)
+        getPos (leader _thing)
     };
     case "STRING" : {
-        getmarkerpos _thing
+        getMarkerPos _thing
     };
     case "LOCATION" : {
         position _thing
     };
     case "TASK" : {
-        taskdestination _thing
+        taskDestination _thing
     };
     default {_this};
 };
