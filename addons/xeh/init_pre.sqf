@@ -71,7 +71,7 @@ XEH_LOG("XEH: PreInit Started. v"+getText(configFile >> "CfgPatches" >> "CBA_XEH
 if (time > 0) then { XEH_LOG("XEH WARNING: Time > 0; This probably means there are no XEH compatible units by default on the map, perhaps add the SLX_XEH_Logic module.") };
 
 // Compile all necessary scripts and start one vehicle crew initialisation thread
-_cfgRespawn = (getMissionConfig "respawn");
+_cfgRespawn = (missionConfigFile/"respawn");
 _respawn = false;
 if ( isNumber(_cfgRespawn) ) then {
     _respawn = !(getNumber(_cfgRespawn) in [0, 1, 4, 5]);
