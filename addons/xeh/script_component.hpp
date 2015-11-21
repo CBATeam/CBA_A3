@@ -27,5 +27,3 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define SLX_XEH_CONFIG_FILES [configFile, campaignConfigFile, missionConfigFile]
-#define SLX_XEH_CONFIG_FILES_VARIABLE [campaignConfigFile, missionConfigFile]
