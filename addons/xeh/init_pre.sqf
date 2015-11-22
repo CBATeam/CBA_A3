@@ -77,7 +77,7 @@ if ( isNumber(_cfgRespawn) ) then {
     _respawn = !(getNumber(_cfgRespawn) in [0, 1, 4, 5]);
 };
 if ( isText(_cfgRespawn) ) then {
-    _respawn = !(getText(_cfgRespawn) in ["none", "bird", "group", "side"]);
+    _respawn = !((toLower getText(_cfgRespawn)) in ["none", "bird", "group", "side"]);
 };
 
 SLX_XEH_objects = []; // Temporary array, to track InitPosts at mission initialization
@@ -200,9 +200,6 @@ SLX_XEH_OTHER_EVENTS_PLAYERS = [];
     SLX_XEH_OTHER_EVENTS_PLAYERS pushBack (compile format["{ { _this call _x } forEach ((_this select 0) getVariable [SLX_XEH_STR_%1_Player,[]])  }",_x])
   }
 } forEach SLX_XEH_OTHER_EVENTS;
-
-SLX_XEH_CONFIG_FILES = [configFile, campaignConfigFile, missionConfigFile];
-SLX_XEH_CONFIG_FILES_VARIABLE = [campaignConfigFile, missionConfigFile];
 
 SLX_XEH_DEF_CLASSES = [SLX_XEH_STR, "All"];
 
