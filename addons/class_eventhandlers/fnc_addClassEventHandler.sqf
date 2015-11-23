@@ -49,15 +49,15 @@ if (_event != "init" && {!(_event in SUPPORTED_EH)}) exitWith {false};
 } count (missionNamespace getVariable [QGVAR(entities), []]);
 
 // define for units that are created later
-private "_events"; _events = EVENTHANDLERS(_event,_type);
+private _events = EVENTHANDLERS(_event,_type);
 
 _events pushBack _code;
 
 SETEVENTHANDLERS(_event,_type,_events);
 
 // set flag for this eventhandler to be used on this class. reduces overhead on init.
-private "_eventFlagsVarName"; _eventFlagsVarName = format [QGVAR(::%1), _type];
-private "_eventFlags"; _eventFlags = missionNamespace getVariable [_eventFlagsVarName, []];
+private _eventFlagsVarName = format [QGVAR(::%1), _type];
+private _eventFlags = missionNamespace getVariable [_eventFlagsVarName, []];
 
 if !(_event in _eventFlags) then {
     _eventFlags pushBack _event;

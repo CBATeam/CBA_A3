@@ -69,10 +69,10 @@ _count = round _count;
 (getBackpackCargo _box) params ["_allItemsType", "_allItemsCount"];
 
 // Clear cargo space and readd the items as long it's not the type in question
-private "_returnVar"; _returnVar = false;
+private _returnVar = false;
 clearBackpackCargoGlobal _box;
 {
-    private "_itemCount"; _itemCount = _allItemsCount select _forEachIndex;
+    private _itemCount = _allItemsCount select _forEachIndex;
 
     if (_x == _item) then {
         // Process removal
