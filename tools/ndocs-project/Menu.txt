@@ -153,6 +153,10 @@ Group: Functions  {
          File: CBA_fnc_randPos  (common/fnc_randPos.sqf)
          File: CBA_fnc_randPosArea  (common/fnc_randPosArea.sqf)
          File: CBA_fnc_realHeight  (common/fnc_realHeight.sqf)
+         File: CBA_fnc_removeBackpackCargo  (common/fnc_removeBackpackCargo.sqf)
+         File: CBA_fnc_removeBackpackCargoGlobal  (common/fnc_removeBackpackCargoGlobal.sqf)
+         File: CBA_fnc_removeItemCargo  (common/fnc_removeItemCargo.sqf)
+         File: CBA_fnc_removeItemCargoGlobal  (common/fnc_removeItemCargoGlobal.sqf)
          File: CBA_fnc_removeMagazine  (common/fnc_removeMagazine.sqf)
          File: CBA_fnc_removeMagazineCargo  (common/fnc_removeMagazineCargo.sqf)
          File: CBA_fnc_removeMagazineCargoGlobal  (common/fnc_removeMagazineCargoGlobal.sqf)
@@ -180,6 +184,7 @@ Group: Functions  {
 
       Group: Events  {
 
+         File: CBA_fnc_addClassEventHandler  (class_eventhandlers/fnc_addClassEventHandler.sqf)
          File: CBA_fnc_addClientToServerEventhandler  (events/fnc_addClientToServerEventhandler.sqf)
          File: CBA_fnc_addDisplayHandler  (events/fnc_addDisplayHandler.sqf)
          File: CBA_fnc_addEventHandler  (events/fnc_addEventHandler.sqf)
