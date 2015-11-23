@@ -71,10 +71,10 @@ _count = round _count;
 (getWeaponCargo _box) params ["_allItemsType", "_allItemsCount"];
 
 // Clear cargo space and readd the items as long it's not the type in question
-local _returnVar = false;
+private "_returnVar"; _returnVar = false;
 clearWeaponCargo _box;
 {
-    local _itemCount = _allItemsCount select _forEachIndex;
+    private "_itemCount"; _itemCount = _allItemsCount select _forEachIndex;
 
     if (_x == _item) then {
         // Process removal
