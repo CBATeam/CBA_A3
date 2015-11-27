@@ -24,12 +24,13 @@ Author:
 #include "script_component.hpp"
 SCRIPT(findMax);
 
+private ["_index"];
+
 if (!IS_ARRAY(_this)) exitWith {nil};
 if (_this isEqualTo []) exitWith {nil};
 
 params ["_max"];
-
-private _index = 0;
+_index = 0;
 
 {
     if (isNil "_x" || {(typeName _x) != (typeName 0)}) exitWith {_max = nil; _index = nil;};

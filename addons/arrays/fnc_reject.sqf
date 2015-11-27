@@ -27,14 +27,19 @@ SCRIPT(reject);
 
 // ----------------------------------------------------------------------------
 
-params ["_array", "_filterCode"];
+private "_result";
+params ["_array","_filterCode"];
 
-private _result = [];
-
+_result = [];
+_result resize (count _array);
+_rIdx = 0;
 {
     if !(_x call _filterCode) then {
-        _result pushBack _x;
+        _result set [_rIdx, _x];
+        INC(_rIdx);
     };
 } forEach _array;
 
-_result
+_result resize _rIdx;
+
+_result;
