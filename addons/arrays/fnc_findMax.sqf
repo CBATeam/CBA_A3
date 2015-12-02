@@ -30,6 +30,6 @@ if !(_array isEqualTypeAll 0) exitWith {nil};
 
 private _arraySorted = + _array;
 _arraySorted sort false; // false - descending
-_arraySorted params ["_min"];
+_arraySorted params ["_max"];
 
-[_min, _array find _min]
+[_max, _array find _max]
