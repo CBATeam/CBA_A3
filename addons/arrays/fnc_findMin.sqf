@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _result = [_array] call CBA_fnc_findMin
+    _result = [0,4,3,-2] call CBA_fnc_findMin
     (end)
 
 Returns:
@@ -18,23 +18,18 @@ Returns:
     nil on failure
 
 Author:
-    joko // Jonas
+    joko // Jonas, commy2
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(findMin);
 
-if (!IS_ARRAY(_this)) exitWith {nil};
-if (_this isEqualTo []) exitWith {nil};
+[_this] params [["_array", [], [[]]]];
 
-params ["_min"];
+if !(_array isEqualTypeAll 0) exitWith {nil};
 
-private _index = 0;
+private _arraySorted = + _array;
+_arraySorted sort true; // true - ascending
+_arraySorted params ["_min"];
 
-{
-    if (isNil "_x" || {(typeName _x) != (typeName 0)}) exitWith {_max = nil; _index = nil;};
-    if (_min > _x) then {_min = _x; _index = _forEachIndex};
-} forEach _this;
-
-if (isNil "_max") exitWith {nil};
-[_min, _index] // Return
+[_min, _array find _min]
