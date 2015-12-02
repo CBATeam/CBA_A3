@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _result = [_array] call CBA_fnc_findMax
+    _result = [0,4,3,-2] call CBA_fnc_findMax
     (end)
 
 Returns:
@@ -18,24 +18,18 @@ Returns:
     nil on failure
 
 Author:
-    joko // Jonas
+    joko // Jonas, commy2
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(findMax);
 
-private ["_index"];
+[_this] params [["_array", [], [[]]]];
 
-if (!IS_ARRAY(_this)) exitWith {nil};
-if (_this isEqualTo []) exitWith {nil};
+if !(_array isEqualTypeAll 0) exitWith {nil};
 
-params ["_max"];
-_index = 0;
+private _arraySorted = + _array;
+_arraySorted sort false; // false - descending
+_arraySorted params ["_min"];
 
-{
-    if (isNil "_x" || {(typeName _x) != (typeName 0)}) exitWith {_max = nil; _index = nil;};
-    if (_max < _x) then {_max = _x; _index = _forEachIndex};
-} forEach _this;
-
-if (isNil "_max") exitWith {nil};
-[_max, _index] // Return
+[_min, _array find _min]
