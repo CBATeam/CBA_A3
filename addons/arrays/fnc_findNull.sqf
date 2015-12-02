@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _index = ["", Player, "test", objNull, VARIABLE] call CBA_fnc_findNull
+    _index = ["", player, "test", objNull, _variable] call CBA_fnc_findNull
     (end)
 
 Returns:
@@ -20,18 +20,16 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if !(IS_ARRAY(_this)) exitWith {-1};
+[_this] params [["_array", [], [[]]]];
 
 scopeName "main";
 
-private "_checkableTypes";
-
-_checkableTypes = ["OBJECT", "CONTROL", "DISPLAY", "GROUP", "LOCATION", "TASK", "SCRIPT"];
+private _nullTypes = [objNull, controlNull, displayNull, grpNull, locationNull, taskNull, scriptNull, configNull];
 
 {
-    if (typeName _x in _checkableTypes && {isNull _x}) then {
+    if (_x in _nullTypes) then {
         _forEachIndex breakOut "main";
     };
-} forEach _this;
+} forEach _array;
 
 -1
