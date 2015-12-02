@@ -1,7 +1,7 @@
 # Community Base Addons
 
-[![](https://img.shields.io/badge/Changelog-2.1.2-orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=is%3Aclosed+milestone%3A2.1.2)
-[![](https://img.shields.io/badge/Release-2.1.2-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v2.1.2.151016)
+[![](https://img.shields.io/badge/Changelog-2.2.0-orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=is%3Aclosed+milestone%3A2.1.2)
+[![](https://img.shields.io/badge/Release-2.2.0-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v2.2.0.151130)
 [![](https://img.shields.io/badge/Github-Wiki-lightgrey.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/wiki)
 [![](https://img.shields.io/badge/Function-Documentation-yellow.svg?style=flat-square)](https://cbateam.github.io/CBA_A3/docs/files/overview-txt.html)
 
