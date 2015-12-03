@@ -37,7 +37,7 @@ _split = [];
 _index = 0;
 _inputCount = count _input;
 _separatorCount = count _separator;
-// Corner cases no longer handled well by splitString
+// Corner cases
 if (_separatorCount == 0 && _inputCount == 0) exitWith {[]};
 if (_separatorCount == 0) exitWith {_input splitString ""};
 if (_inputCount > 0 && _separatorCount > _inputCount) exitWith {[_input]};
