@@ -174,3 +174,8 @@ class RscDisplayConfigure {
         };
     };
 };
+
+class RscDisplayCurator {
+    onLoad = "['CBA_curatorOpened', _this] call CBA_fnc_localEvent; [""onLoad"",_this,""RscDisplayCurator"",'CuratorDisplays'] call (uinamespace getvariable 'BIS_fnc_initDisplay')";
+    onUnload = "['CBA_curatorClosed', _this] call CBA_fnc_localEvent; [""onUnload"",_this,""RscDisplayCurator"",'CuratorDisplays'] call (uinamespace getvariable 'BIS_fnc_initDisplay')";
+};
