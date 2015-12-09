@@ -27,19 +27,14 @@ SCRIPT(select);
 
 // ----------------------------------------------------------------------------
 
-private "_result";
-params ["_array","_filterCode"];
+params ["_array", "_filterCode"];
 
-_result = [];
-_result resize (count _array);
-_rIdx = 0;
+private _result = [];
+
 {
     if (_x call _filterCode) then {
-        _result set [_rIdx, _x];
-        INC(_rIdx);
+        _result pushBack _x;
     };
 } forEach _array;
 
-_result resize _rIdx;
-
-_result;
+_result

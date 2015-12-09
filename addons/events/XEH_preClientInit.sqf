@@ -66,6 +66,13 @@ FUNC(attach_handler) = {
 ["KeyUp", QUOTE(UP call FUNC(keyHandler))] call (uiNamespace getVariable "CBA_fnc_addDisplayHandler");
 ["KeyDown", QUOTE(DOWN call FUNC(keyHandler))] call (uiNamespace getVariable "CBA_fnc_addDisplayHandler");
 
+// add keyhandlers to zeus interface
+["CBA_curatorOpened", {
+    params ["_display"];
+    _display displayAddEventHandler ["KeyUp", {UP call FUNC(keyHandler)}];
+    _display displayAddEventHandler ["KeyDown", {DOWN call FUNC(keyHandler)}];
+}] call CBA_fnc_addEventHandler;
+
 SLX_XEH_STR spawn {
     waitUntil { !isNull (findDisplay 46) };
     // Workaround for Single Player, mission editor, or mission, preview/continue, whatever, adding double handlers

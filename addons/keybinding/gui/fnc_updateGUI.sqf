@@ -84,7 +84,7 @@ if !(isNull _display) then {
                     TRACE_1("",_keyString);
                     // Search the handler array for any other keybinds using this key.
                     _isDuplicated = false;
-                    if(_dikCode != 0) then {
+                    if(_dikCode > 0) then {
                         _dupeActionName = "";
                         {
                             private ["_sActionId", "_dupeAction"];
@@ -104,6 +104,9 @@ if !(isNull _display) then {
                             // end of the readable bind string.
                             _keyString = format ["%1 [%2]", _keyString, _dupeActionName];
                         };
+                    } else {
+                        //(dikCode <= 0): so it's unbound, leave string blank
+                        _keyString = "";
                     };
 
                     // Add the row.
@@ -123,10 +126,6 @@ if !(isNull _display) then {
                     // Set the row color to red if a duplicate keybind exists.
                     if (_isDuplicated) then {
                         _lnb lnbSetColor [[_lbCount, 1], [1,0,0,1]];
-                    };
-
-                    if(_dikCode == 0) then {
-                        // @TODO: Set the color seperately if it is an unbound key.
                     };
                 };
             };

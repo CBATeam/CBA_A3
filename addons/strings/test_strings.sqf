@@ -77,6 +77,14 @@ _array = ["this\is\a\path\to\fnc_test.sqf","\fnc_"] call CBA_fnc_split;
 _expected = ["this\is\a\path\to", "test.sqf"];
 TEST_OP(str _array, ==, str _expected, _fn);
 
+_array = ["babab", "bab"] call CBA_fnc_split;
+_expected = ["", "ab"];
+TEST_OP(str _array, ==, str _expected, _fn);
+
+_array = ["BbabTabAbabbabababab", "bab"] call CBA_fnc_split;
+_expected = ["B","TabA","","a","ab"];
+TEST_OP(str _array, ==, str _expected, _fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringReplace)
 _fn = "CBA_fnc_replace";
