@@ -115,6 +115,9 @@ if (_number < 0) then {
 if (_decimalPlaces > 0) then {
     private ["_digit", "_multiplier", "_i"];
 
+    //Use abs to prevent extra `-` signs and so floor doesn't get wrong value
+    _number = abs _number;
+    
     _string = _string + _decimalPoint;
 
     _multiplier = 10;

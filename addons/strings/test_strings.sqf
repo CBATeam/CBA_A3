@@ -231,6 +231,12 @@ TEST_OP(_str,==,"012",_fn);
 _str = [-12] call CBA_fnc_formatNumber;
 TEST_OP(_str,==,"-12",_fn);
 
+_str = [-12.75] call CBA_fnc_formatNumber;
+TEST_OP(_str,==,"-13",_fn);
+
+_str = [-12.75,0,3] call CBA_fnc_formatNumber;
+TEST_OP(_str,==,"-12.750",_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (elaspsedTime)
 _fn = "CBA_fnc_formatElapsedTime";
