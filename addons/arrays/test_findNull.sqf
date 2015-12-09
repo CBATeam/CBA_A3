@@ -6,6 +6,7 @@ SCRIPT(test_findNull);
 
 // ----------------------------------------------------------------------------
 
+disableSerialization;
 private ["_original", "_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_findNull";
