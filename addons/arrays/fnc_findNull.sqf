@@ -24,7 +24,7 @@ Author:
 
 scopeName "main";
 
-private _nullTypes = [objNull, controlNull, displayNull, grpNull, locationNull, taskNull, scriptNull, configNull];
+private _nullTypes = [objNull, controlNull, displayNull, grpNull, teamMemberNull, locationNull, taskNull, scriptNull, configNull];
 
 {
     if (_x in _nullTypes) then {
