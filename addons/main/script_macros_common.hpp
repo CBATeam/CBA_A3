@@ -829,7 +829,7 @@ Parameters:
 Author:
     Spooner
 ------------------------------------------- */
-#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then { false } else { VAR isEqualType TYPE })
+#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then { false } else { (VAR) isEqualType TYPE })
 #define IS_ARRAY(VAR)    IS_META_SYS(VAR,[])
 #define IS_BOOL(VAR)     IS_META_SYS(VAR,false)
 #define IS_CODE(VAR)     IS_META_SYS(VAR,{})
