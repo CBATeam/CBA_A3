@@ -842,7 +842,7 @@ Author:
 #define IS_SCRIPT(VAR)   IS_META_SYS(VAR,scriptNull)
 #define IS_SIDE(VAR)     IS_META_SYS(VAR,west)
 #define IS_STRING(VAR)   IS_META_SYS(VAR,"STRING")
-#define IS_TEXT(VAR)     IS_META_SYS(VAR,parseText "--</br>--")
+#define IS_TEXT(VAR)     IS_META_SYS(VAR,text "")
 #define IS_LOCATION(VAR) IS_META_SYS(VAR,locationNull)
 
 #define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
