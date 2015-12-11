@@ -48,7 +48,7 @@ if (_item == "") exitWith {
     TRACE_2("Empty Item",_box,_item);
     false
 };
-if !(isClass (configFile >> "CfgWeapons" >> _item)) exitWith {
+if !(isClass (configFile >> "CfgWeapons" >> _item) || isClass (configFile >> "CfgGlasses" >> _item)) exitWith {
     TRACE_2("Item does not exist in the game config",_box,_item);
     false
 };
