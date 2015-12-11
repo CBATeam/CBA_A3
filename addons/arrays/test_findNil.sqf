@@ -6,6 +6,7 @@ SCRIPT(test_findNil);
 
 // ----------------------------------------------------------------------------
 
+disableSerialization;
 private ["_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_findNil";

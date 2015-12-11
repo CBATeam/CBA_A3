@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _index = ["", Player, "test", nil, VARIABLE, nil] call CBA_fnc_findNil
+    _index = ["", player, "test", nil, _variable, nil] call CBA_fnc_findNil
     (end)
 
 Returns:
@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if !(IS_ARRAY(_this)) exitWith {-1};
+[_this] params [["_array", [], [[]]]];
 
 scopeName "main";
 
@@ -28,6 +28,6 @@ scopeName "main";
     if (isNil "_x") then {
         _forEachIndex breakOut "main";
     };
-} forEach _this;
+} forEach _array;
 
 -1

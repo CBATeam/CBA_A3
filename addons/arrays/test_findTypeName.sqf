@@ -6,6 +6,7 @@ SCRIPT(test_findTypeName);
 
 // ----------------------------------------------------------------------------
 
+disableSerialization;
 private ["_array", "_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_findTypeName";
