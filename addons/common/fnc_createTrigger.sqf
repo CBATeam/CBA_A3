@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        [_position] call createTrigger;
+        [_position] call CBA_fnc_createTrigger;
 
         [_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call CBA_fnc_createTrigger;
     (end)
