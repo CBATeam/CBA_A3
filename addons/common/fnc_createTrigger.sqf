@@ -20,7 +20,7 @@ Examples:
     (begin example)
         [_position] call createTrigger;
 
-        [_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call createTrigger;
+        [_position, "AREA:", [5, 5, 0, false], "ACT:", ["CIV", "PRESENT", true]] call CBA_fnc_createTrigger;
     (end)
 
 Author:
