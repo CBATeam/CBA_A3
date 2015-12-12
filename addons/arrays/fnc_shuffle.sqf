@@ -45,8 +45,7 @@ _tempArray = if (count _this != 1) then {
 
 for "_size" from (count _tempArray) to 1 step -1 do {
     _indexToRemove = floor random _size;
-    PUSH(_shuffledArray,_tempArray select _indexToRemove);
-    _tempArray = [_tempArray, _indexToRemove] call BIS_fnc_removeIndex;
+    _shuffledArray pushBack (_tempArray deleteAt _indexToRemove);
 };
 
 _shuffledArray
