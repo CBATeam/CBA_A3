@@ -69,6 +69,12 @@ class CfgFunctions
                 description = "Add weapon(s) to vehicle cargo. MP synchronized.";
                 file = "\x\cba\addons\common\fnc_addWeaponCargoGlobal.sqf";
             };
+            // CBA_fnc_canUseWeapon
+            class canUseWeapon
+            {
+                description = "Checks if the unit can currently use a weapon.";
+                file = "\x\cba\addons\common\fnc_canUseWeapon.sqf";
+            };
             // CBA_fnc_createCenter
             class createCenter
             {
@@ -279,6 +285,12 @@ class CfgFunctions
                 description = "A function used to find out if the group or object is alive.";
                 file = "\x\cba\addons\common\fnc_isAlive.sqf";
             };
+            // CBA_fnc_isPerson
+            class isPerson
+            {
+                description = "Checks if an object is a person - soldier or civilian.";
+                file = "\x\cba\addons\common\fnc_isPerson.sqf";
+            };
             // CBA_fnc_isTurnedOut
             class isTurnedOut
             {
@@ -450,7 +462,7 @@ class CfgFunctions
             // CBA_fnc_selectWeapon
             class selectWeapon
             {
-                description = "Selects weapon, if the player has the weapon, including correctly selecting a muzzle, if any.";
+                description = "Selects a weapon including correctly selecting a weapon mode of specified.";
                 file = "\x\cba\addons\common\fnc_selectWeapon.sqf";
             };
             // CBA_fnc_setHeight
