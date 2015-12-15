@@ -6,8 +6,8 @@ SCRIPT(init);
 GVAR(entities) = [];
 
 [{
-    if !(entities "" isEqualTo GVAR(entities)) then {
-        private _entities = entities "";
+    private _entities = entities "";
+    if !(_entities isEqualTo GVAR(entities)) then {
 
         GVAR(entities) = _entities;
 
