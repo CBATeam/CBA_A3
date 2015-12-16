@@ -6,9 +6,8 @@ SCRIPT(init);
 GVAR(entities) = [];
 
 [{
-    private _entities = entities "";
+    private _entities = entities "" + allUnits;
     if !(_entities isEqualTo GVAR(entities)) then {
-
         GVAR(entities) = _entities;
 
         // iterate through all objects and add eventhandlers to all new ones
