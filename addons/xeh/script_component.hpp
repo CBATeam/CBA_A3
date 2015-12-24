@@ -2,7 +2,7 @@
 
 #include "\x\cba\addons\main\script_mod.hpp"
 
-// #define DEBUG_ENABLED_XEH
+//#define DEBUG_ENABLED_XEH
 
 #ifdef DEBUG_ENABLED_XEH
     #define DEBUG_MODE_FULL
@@ -12,20 +12,68 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
-#define XEH_LOG(MESSAGE) if !(SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, MESSAGE] }
-#define XEH_EVENTS "AnimChanged", "AnimStateChanged", "AnimDone", \
-    "ContainerClosed", "ContainerOpened", "ControlsShifted", "Dammaged", \
-    "Engine", "EpeContact", "EpeContactEnd", "EpeContactStart", \
-    "Explosion", "Fired", "FiredNear", "Fuel", "Gear", "GetIn", "GetOut", \
-    /* "HandleDamage", */ "HandleHeal", "Hit", "HitPart", "IncomingMissile", \
-    "InventoryClosed", "InventoryOpened", \
-    "Killed", "LandedTouchDown", "LandedStopped", "Local", /* "MPHit", */ \
-    /* "MPKilled", "MPRespawn", */ "Respawn", "Put", "Take", "SeatSwitched", \
-    "SoundPlayed", "WeaponAssembled", "WeaponDisassembled"
-#define XEH_CUSTOM_EVENTS "GetInMan", "GetOutMan", "FiredBis"
-
-
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define SLX_XEH_CONFIG_FILES [configFile, campaignConfigFile, missionConfigFile]
-#define SLX_XEH_CONFIG_FILES_VARIABLE [campaignConfigFile, missionConfigFile]
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, msg] }
+
+#define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
+#define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
+#define SETEVENTHANDLERS(type,class,events) (missionNamespace setVariable [SYS_EVENTHANDLERS(type,class), events])
+
+#define SYS_INCOMP(class) format [QGVAR(\%1), class]
+#define SETINCOMP(class) missionNamespace setVariable [SYS_INCOMP(class), true]
+#define ISINCOMP(class) !isNil SYS_INCOMP(class)
+
+#define ISPROCESSED(obj) (obj getVariable [QGVAR(isProcessed), false])
+#define SETPROCESSED(obj) obj setVariable [QGVAR(isProcessed), true]
+
+#define XEH_FORMAT_CONFIG_NAME(name) format ["Extended_%1_EventHandlers", name]
+
+#include "script_xeh.hpp"
+
+#undef XEH_ENABLED
+#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; delete SLX_XEH_DISABLED
+
+#define XEH_EVENTS \
+    "AnimChanged", \
+    "AnimStateChanged", \
+    "AnimDone", \
+    "ContainerClosed", \
+    "ContainerOpened", \
+    "ControlsShifted", \
+    "Dammaged", \
+    "Engine", \
+    "EpeContact", \
+    "EpeContactEnd", \
+    "EpeContactStart", \
+    "Explosion", \
+    "Fired", \
+    "FiredBis", \
+    "FiredNear", \
+    "Fuel", \
+    "Gear", \
+    "GetIn", \
+    "GetInMan", \
+    "GetOut", \
+    "GetOutMan", \
+    "HandleHeal", \
+    "Hit", \
+    "HitPart", \
+    "IncomingMissile", \
+    "Init", \
+    "InitPost", \
+    "InventoryClosed", \
+    "InventoryOpened", \
+    "Killed", \
+    "LandedTouchDown", \
+    "LandedStopped", \
+    "Local", \
+    "Respawn", \
+    "Put", \
+    "Take", \
+    "SeatSwitched", \
+    "SoundPlayed", \
+    "WeaponAssembled", \
+    "WeaponDisassembled", \
+    "WeaponDeployed", \
+    "WeaponRested"

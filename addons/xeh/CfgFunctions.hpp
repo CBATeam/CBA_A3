@@ -1,15 +1,59 @@
-class CfgFunctions
-{
-    class CBA
-    {
-        class XEH
-        {
-            class initXEH
-            {
+
+class CfgFunctions {
+    class CBA {
+        class XEH {
+            class isSheduled {
+                description = "Check if the current scope is running in sheduled or unsheduled environment.";
+                file = PATHTOF(fnc_isSheduled.sqf);
+            };
+            class isRecompileEnabled {
+                description = "Check if recompiling is enabled.";
+                file = PATHTOF(fnc_isRecompileEnabled.sqf);
+            };
+            class addClassEventHandler {
+                description = "Add an eventhandler to a class and all children.";
+                file = PATHTOF(fnc_addClassEventHandler.sqf);
+            };
+            class initObject {
+                headerType = -1;
+                description = "Runs Init and adds other event handlers on this object.";
+                file = PATHTOF(fnc_initObject.sqf);
+            };
+            class initPostObject {
+                description = "Runs InitPost event handlers on this object.";
+                file = PATHTOF(fnc_initPostObject.sqf);
+            };
+            class supportMonitor {
+                description = "Iterate through all vehicle classes and find those who don't support extended event handlers.";
+                file = PATHTOF(fnc_supportMonitor.sqf);
+            };
+            class compileEventHandlers {
+                description = "Compiles all Extended EventHandlers in given config.";
+                file = PATHTOF(fnc_compileEventHandlers.sqf);
+            };
+            class compileFunction {
+                description = "Compiles a function into mission namespace and into ui namespace for caching purposes.";
+                file = PATHTOF(fnc_compileFunction.sqf);
+            };
+            class preStart {
+                preStart = 1;
+                description = "Occurs once during game start.";
+                file = PATHTOF(fnc_preStart.sqf);
+            };
+            class preInit {
                 preInit = 1;
-                file = "\x\cba\addons\xeh\init_pre.sqf";
+                description = "Occurs once per mission before objects are initialized.";
+                file = PATHTOF(fnc_preInit.sqf);
+            };
+            class postInit_unsheduled {
+                description = "Occurs once per mission after objects and functions are initialized.";
+                file = PATHTOF(fnc_postInit_unsheduled.sqf);
+            };
+            class postInit {
+                postInit = 1;
+                description = "Occurs once per mission after objects and functions are initialized.";
+                file = PATHTOF(fnc_postInit.sqf);
             };
         };
     };
 };
-

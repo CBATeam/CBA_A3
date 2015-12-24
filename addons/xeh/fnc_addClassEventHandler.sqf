@@ -1,0 +1,85 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_addClassEventHandler
+
+Description:
+    Add an eventhandler to a class and all children.
+
+Parameters:
+    0: _className        - The classname of objects you wish to add the eventhandler too. Can be a base class. <STRING>
+    1: _eventName        - The type of the eventhandler. E.g. "init", "fired", "killed" etc. <STRING>
+    2: _eventFunc        - Function to execute when event happens. <CODE>
+    3: _allowInheritance - Allow event for objects that only inherit from the given classname? [optional] <BOOLEAN> (default: true)
+    4: _excludedClasses  - Exclude these classes from this event including their children [optional] <ARRAY> (default: [])
+
+Returns:
+    _success - Whether adding the event was successful or not. <BOOLEAN>
+
+Examples:
+    (begin example)
+        ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+        ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+    (end)
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+
+params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]]];
+
+private _config = configFile >> "CfgVehicles" >> _className;
+
+// init fallback loop when executing on incompatible class for the first time
+if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
+    diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Eventhandlers. Fall back to loop.", configName _config];
+    call FUNC(startFallbackLoop);
+};
+
+// no such CfgVehicles class
+if (!isClass _config) exitWith {false};
+
+// handle custom event handlers
+if (_eventName == "getInMan") exitWith {
+    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call FUNC(getInMan);
+};
+
+if (_eventName == "getOutMan") exitWith {
+    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call FUNC(getOutMan);
+};
+
+_eventName = toLower _eventName;
+
+// no such event
+if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
+
+// add events to already existing objects
+private _entities = entities "" + allUnits;
+
+{
+    if (_x isKindOf _className && {getNumber (_config >> "SLX_XEH_DISABLED") != 1}) then {
+        private _unit = _x;
+
+        // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
+        if ((_allowInheritance || {typeOf _unit isEqualTo configName _config}) && {{_unit isKindOf _x} count _excludedClasses == 0}) then {
+            _unit addEventHandler [_eventName, _eventFunc];
+        };
+    };
+} forEach (_entities arrayIntersect _entities); // filter duplicates
+
+// define for units that are created later
+private _events = EVENTHANDLERS(_eventName,_className);
+
+_events pushBack [_eventFunc, _allowInheritance, _excludedClasses];
+
+SETEVENTHANDLERS(_eventName,_className,_events);
+
+// set flag for this event handler to be used on this class. reduces overhead on init.
+private _eventNameFlagsVarName = format [QGVAR(::%1), _className];
+private _eventNameFlags = missionNamespace getVariable [_eventNameFlagsVarName, []];
+
+if !(_eventName in _eventNameFlags) then {
+    _eventNameFlags pushBack _eventName;
+    missionNamespace setVariable [_eventNameFlagsVarName, _eventNameFlags];
+};
+
+true

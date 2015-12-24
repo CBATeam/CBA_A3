@@ -18,8 +18,6 @@ SCRIPT(XEH_preInit);
  * and will hopefully ensure forward compatibility with future ArmA II patches.
  */
 
-if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = CACHE_DIS(functions) };
-
 /*
 if (isNil "RE" && isNil "BIS_MPF_logic") then
 {
