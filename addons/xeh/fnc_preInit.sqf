@@ -24,7 +24,7 @@ SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
 SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 SLX_XEH_DUMMY = "Logic"; // backwards comp
-SLX_XEH_EH_Init = CBA_fnc_initObjectEvents; // backwards compatibility, this is frequently used in init event handlers in configs
+SLX_XEH_EH_Init = CBA_fnc_initObject; // backwards compatibility, this is frequently used in init event handlers in configs
 
 SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     !isDedicated, // 0 - isClient (and thus has player)

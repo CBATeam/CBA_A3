@@ -76,8 +76,8 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class thingX;
-    class ReammoBox_F: thingX {
+    class ThingX;
+    class ReammoBox_F: ThingX {
         XEH_ENABLED;
     };
 

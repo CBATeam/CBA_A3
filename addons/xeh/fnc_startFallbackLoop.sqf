@@ -22,6 +22,7 @@ Author:
 #include "script_component.hpp"
 
 if (GVAR(fallbackRunning)) exitWith {};
+GVAR(fallbackRunning) = true;
 
 GVAR(entities) = [];
 
@@ -38,5 +39,3 @@ GVAR(entities) = [];
         } count _entities;
     };
 }, 0.1, []] call CBA_fnc_addPerFrameHandler;
-
-GVAR(fallbackRunning) = true;
