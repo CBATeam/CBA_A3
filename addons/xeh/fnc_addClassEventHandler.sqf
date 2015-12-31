@@ -32,7 +32,7 @@ private _config = configFile >> "CfgVehicles" >> _className;
 // init fallback loop when executing on incompatible class for the first time
 if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
     diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Eventhandlers. Fall back to loop.", configName _config];
-    call FUNC(startFallbackLoop);
+    call CBA_fnc_startFallbackLoop;
 };
 
 // no such CfgVehicles class
@@ -40,11 +40,11 @@ if (!isClass _config) exitWith {false};
 
 // handle custom event handlers
 if (_eventName == "getInMan") exitWith {
-    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call FUNC(getInMan);
+    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_getInMan;
 };
 
 if (_eventName == "getOutMan") exitWith {
-    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call FUNC(getOutMan);
+    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_getOutMan;
 };
 
 _eventName = toLower _eventName;
@@ -54,14 +54,18 @@ if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
 
 // add events to already existing objects
 private _entities = entities "" + allUnits;
+private _eventVarName = format [QGVAR(%1), _eventName];
 
 {
     if (_x isKindOf _className && {getNumber (_config >> "SLX_XEH_DISABLED") != 1}) then {
         private _unit = _x;
 
-        // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
-        if ((_allowInheritance || {typeOf _unit isEqualTo configName _config}) && {{_unit isKindOf _x} count _excludedClasses == 0}) then {
-            _unit addEventHandler [_eventName, _eventFunc];
+        if (ISKINDOF(_unit,_className,_allowInheritance,_excludedClasses)) then {
+            if (isNil {_unit getVariable _eventVarName}) then {
+                _unit setVariable [_eventVarName, []];
+            };
+
+            (_unit getVariable _eventVarName) pushBack _eventFunc;
         };
     };
 } forEach (_entities arrayIntersect _entities); // filter duplicates

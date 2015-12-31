@@ -27,7 +27,12 @@
 #define ISPROCESSED(obj) (obj getVariable [QGVAR(isProcessed), false])
 #define SETPROCESSED(obj) obj setVariable [QGVAR(isProcessed), true]
 
+#define ISINITIALIZED(obj) (obj getVariable [QGVAR(isInitialized), false])
+#define SETINITIALIZED(obj) obj setVariable [QGVAR(isInitialized), true]
+
 #define XEH_FORMAT_CONFIG_NAME(name) format ["Extended_%1_EventHandlers", name]
+
+#define ISKINDOF(object,classname,allowInherit,excluded) ((allowInherit || {typeOf object == classname}) && {{object isKindOf _x} count (excluded) == 0})
 
 #include "script_xeh.hpp"
 
@@ -56,6 +61,7 @@
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
+    "HandleDamage", \
     "HandleHeal", \
     "Hit", \
     "HitPart", \

@@ -30,41 +30,62 @@ if !(ISPROCESSED(_unit)) then {
 
     if (getNumber (_class >> "SLX_XEH_DISABLED") == 1) exitWith {};
 
+    // add events to XEH incompatible units
+    if (ISINCOMP(typeOf _unit)) then {
+        {
+            if (_x isEqualTo "hitpart") then {
+                _unit addEventHandler ["hitpart", "{_this call _x} forEach ((_this select 0 select 0) getVariable ""cba_xeh_hitpart"")"];
+            } else {
+                if !(_x isEqualTo "init") then {
+                    _unit addEventHandler [_x, format ["{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_%1"")", _x]];
+                };
+            };
+        } forEach GVAR(EventsLowercase);
+    };
+
     while {isClass _class} do {
         private _className = configName _class;
 
         // call Init event handlers
-        {
-            // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
-            if ((_x select 1 || {typeOf _unit isEqualTo configName _class}) && {{_unit isKindOf _x} count (_x select 2) == 0}) then {
-                // prevent variable from being overwritten and causing issues without proper use of private
-                private _class = nil;
+        if !(ISINITIALIZED(_unit)) then {
+            {
+                if (ISKINDOF(_unit,_className,_x select 1,_x select 2)) then {
+                    // prevent variable from being overwritten and causing issues without proper use of private
+                    private ["_class", "_className"];
 
-                [_unit] call (_x select 0);
-            };
-        } forEach EVENTHANDLERS("init",_className);
+                    [_unit] call (_x select 0);
+                };
+            } forEach EVENTHANDLERS("init",_className);
+
+            // run InitPost or put on stack
+            if (SLX_XEH_MACHINE select 8) then {
+                _unit call CBA_fnc_initPostObject;
+            } else {
+                GVAR(InitPostStack) pushBack _unit;
+             };
+        };
 
         // add other event handlers
         {
-            private _event = _x;
+            private _eventName = _x;
+            private _eventVarName = format [QGVAR(%1), _eventName];
 
             {
                 // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
                 if ((_x select 1 || {typeOf _unit isEqualTo configName _class}) && {{_unit isKindOf _x} count (_x select 2) == 0}) then {
-                    _unit addEventHandler [_event, _x select 0];
+                    if (isNil {_unit getVariable _eventVarName}) then {
+                        _unit setVariable [_eventVarName, []];
+                    };
+
+                    (_unit getVariable _eventVarName) pushBack (_x select 0);
                 };
-            } forEach EVENTHANDLERS(_event,_className);
+            } forEach EVENTHANDLERS(_eventName,_className);
         } forEach (missionNamespace getVariable [format [QGVAR(::%1), _className], []]); // flags
 
         _class = inheritsFrom _class;
     };
 
-    // run InitPost or put on stack
-    if (SLX_XEH_MACHINE select 8) then {
-        _unit call CBA_fnc_initPostObject;
-    } else {
-        GVAR(InitPostStack) pushBack _unit;
-    };
+    SETINITIALIZED(_unit);
 };
 
 #ifdef DEBUG_MODE_FULL

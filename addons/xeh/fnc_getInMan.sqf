@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_XEH_fnc_getInMan
+Function: CBA_fnc_getInMan
 
 Description:
     Emulates GetInMan event handler by adding a GetIn event to all objects and rearranging parameters.

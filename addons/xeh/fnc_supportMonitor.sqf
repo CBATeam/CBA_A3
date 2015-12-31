@@ -38,9 +38,6 @@ private _notSupportingClasses = [];
             // don't list duplicates
             if (!_includeDuplicates && {configName inheritsFrom _eventhandlersClass == "EventHandlers"}) exitWith {};
 
-            // some addons use this method...
-            if (toLower getText (_eventhandlersClass >> "init") find "slx_xeh_eh_init" != -1) exitWith {};
-
             if (_addAddonToOutput) then {
                 _notSupportingClasses pushBack [configName _x, configSourceMod _x];
             } else {
@@ -48,6 +45,6 @@ private _notSupportingClasses = [];
             };
         };
     };
-} forEach ("true" configClasses (configFile >> "CfgVehicles"));
+} forEach ("getNumber (_x >> 'scope') > 0" configClasses (configFile >> "CfgVehicles"));
 
 _notSupportingClasses

@@ -41,15 +41,13 @@ with uiNamespace do {
     XEH_LOG("XEH: PreStart finished.");
 
     // check extended event handlers compatibility
-    if !(SLX_XEH_DisableLogging) then {
-        {
-            _x params ["_classname", "_addon"];
+    {
+        _x params ["_classname", "_addon"];
 
-            if (_addon == "") then {
-                diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers!", _classname];
-            } else {
-                diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers! Addon: %2", _classname, _addon];
-            };
-        } forEach (true call CBA_fnc_supportMonitor);
-    };
+        if (_addon == "") then {
+            diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers!", _classname];
+        } else {
+            diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers! Addon: %2", _classname, _addon];
+        };
+    } forEach (true call CBA_fnc_supportMonitor);
 };

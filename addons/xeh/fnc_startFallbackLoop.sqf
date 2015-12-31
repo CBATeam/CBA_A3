@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_XEH_fnc_startFallbackLoop
+Function: CBA_fnc_startFallbackLoop
 
 Description:
     Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.
@@ -23,6 +23,11 @@ Author:
 
 if (GVAR(fallbackRunning)) exitWith {};
 GVAR(fallbackRunning) = true;
+
+// don't run init and initPost event handlers on objects that already exist
+{
+    SETINITIALIZED(_x);
+} forEach (entities "" + allUnits);
 
 GVAR(entities) = [];
 

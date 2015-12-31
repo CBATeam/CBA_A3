@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_XEH_fnc_getOutMan
+Function: CBA_fnc_getOutMan
 
 Description:
     Emulates GetOutMan event handler by adding a GetOut event to all objects and rearranging parameters.
