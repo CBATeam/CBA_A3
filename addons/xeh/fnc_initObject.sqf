@@ -56,13 +56,6 @@ if !(ISPROCESSED(_unit)) then {
                     [_unit] call (_x select 0);
                 };
             } forEach EVENTHANDLERS("init",_className);
-
-            // run InitPost or put on stack
-            if (SLX_XEH_MACHINE select 8) then {
-                _unit call CBA_fnc_initPostObject;
-            } else {
-                GVAR(InitPostStack) pushBack _unit;
-             };
         };
 
         // add other event handlers
@@ -82,6 +75,15 @@ if !(ISPROCESSED(_unit)) then {
         } forEach (missionNamespace getVariable [format [QGVAR(::%1), _className], []]); // flags
 
         _class = inheritsFrom _class;
+    };
+
+    // run InitPost or put on stack
+    if !(ISINITIALIZED(_unit)) then {
+        if (SLX_XEH_MACHINE select 8) then {
+            _unit call CBA_fnc_initPostObject;
+        } else {
+            GVAR(InitPostStack) pushBack _unit;
+        };
     };
 
     SETINITIALIZED(_unit);
