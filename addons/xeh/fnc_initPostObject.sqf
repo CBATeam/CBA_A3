@@ -28,8 +28,7 @@ private _class = configFile >> "CfgVehicles" >> typeOf _unit;
 while {isClass _class} do {
     // call InitPost event handlers
     {
-        // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
-        if ((_x select 1 || {typeOf _unit isEqualTo configName _class}) && {{_unit isKindOf _x} count (_x select 2) == 0}) then {
+        if (ISKINDOF(_unit,configName _class,_x select 1,_x select 2)) then {
             // prevent variable from being overwritten and causing issues without proper use of private
             private _class = nil;
 

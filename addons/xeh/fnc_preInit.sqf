@@ -54,7 +54,7 @@ GVAR(EventsLowercase) = [];
 {
     private _class = configFile >> "CfgVehicles" >> _x;
 
-    while {isClass _class && {!ISINCOMP(_x)}} do {
+    while {isClass _class && {!ISINCOMP(configName _class)}} do {
         SETINCOMP(configName _class);
 
         _class = inheritsFrom _class;
