@@ -54,12 +54,12 @@ GVAR(EventsLowercase) = [];
 {
     private _class = configFile >> "CfgVehicles" >> _x;
 
-    while {isClass _class} do {
+    while {isClass _class && {!ISINCOMP(_x)}} do {
         SETINCOMP(configName _class);
 
         _class = inheritsFrom _class;
     };
-} forEach ([false, false, true] call CBA_fnc_supportMonitor);
+} forEach ([false, true] call CBA_fnc_supportMonitor);
 
 // recompile extended event handlers when enabled
 if (call CBA_fnc_isRecompileEnabled) then {

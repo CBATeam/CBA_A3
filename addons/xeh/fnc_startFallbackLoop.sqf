@@ -24,12 +24,17 @@ Author:
 if (GVAR(fallbackRunning)) exitWith {};
 GVAR(fallbackRunning) = true;
 
-// don't run init and initPost event handlers on objects that already exist
-{
-    SETINITIALIZED(_x);
-} forEach (entities "" + allUnits);
+GVAR(entities) = entities "" + allUnits;
 
-GVAR(entities) = [];
+{
+    // don't run init and initPost event handlers on objects that already exist
+    SETINITIALIZED(_x);
+
+    // add other events now. prevents addClassEventHandler from adding duplicates on incompatible units for the first time
+    if !(ISPROCESSED(_x)) then {
+        _x call CBA_fnc_initObject;
+    };
+} forEach GVAR(entities);
 
 [{
     private _entities = entities "" + allUnits;

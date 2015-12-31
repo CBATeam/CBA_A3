@@ -71,8 +71,7 @@ if !(ISPROCESSED(_unit)) then {
             private _eventVarName = format [QGVAR(%1), _eventName];
 
             {
-                // is matching class name if inheritance is disabled and is not a child of any of the excluded classes
-                if ((_x select 1 || {typeOf _unit isEqualTo configName _class}) && {{_unit isKindOf _x} count (_x select 2) == 0}) then {
+                if (ISKINDOF(_unit,configName _class,_x select 1,_x select 2)) then {
                     if (isNil {_unit getVariable _eventVarName}) then {
                         _unit setVariable [_eventVarName, []];
                     };
