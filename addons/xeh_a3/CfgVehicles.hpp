@@ -388,4 +388,11 @@ class CfgVehicles {
             DELETE_EVENTHANDLERS
         };
     };
+    
+    class Helicopter_Base_H;
+    class Heli_Transport_03_base_F: Helicopter_Base_H {
+        class Eventhandlers: Eventhandlers {
+            DELETE_EVENTHANDLERS
+        };
+    };
 };
