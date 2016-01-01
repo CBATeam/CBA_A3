@@ -159,6 +159,9 @@ class Extended_init_Eventhandlers {
         class C_Kart_01_F /* : C_Kart_01_F_Base  */{
                 SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", nil, nil] call bis_fnc_initVehicle; [(_this select 0)] call bis_fnc_initVehicleKart;};";
         };
+        class Heli_Transport_03_base_F /* : Helicopter_Base_H  */{
+                SLX_BIS = "if (local (_this select 0)) then {[(_this select 0), """", false, false] call bis_fnc_initVehicle;};";
+        };
         class Snake_random_F /* : Animal_Base_F */ {
                 SLX_BIS = "(_this select 0) call bis_fnc_animalRandomization;";
         };
