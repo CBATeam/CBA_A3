@@ -61,7 +61,6 @@
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
-    "HandleDamage", \
     "HandleHeal", \
     "Hit", \
     "HitPart", \

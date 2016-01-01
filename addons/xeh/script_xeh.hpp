@@ -29,7 +29,6 @@ gear = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_gear"")"
 getIn = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_getIn"")"; \
 getOut = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_getOut"")"; \
 handleHeal = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_handleHeal"")"; \
-handleDamage = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_handleDamage"")"; \
 hit = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_hit"")"; \
 hitPart = "{_this call _x} forEach ((_this select 0 select 0) getVariable ""cba_xeh_hitPart"")"; \
 incomingMissile = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_incomingMissile"")"; \
@@ -76,7 +75,6 @@ delete gear; \
 delete getIn; \
 delete getOut; \
 delete handleHeal; \
-delete handleDamage; \
 delete hit; \
 delete hitPart; \
 delete incomingMissile; \
