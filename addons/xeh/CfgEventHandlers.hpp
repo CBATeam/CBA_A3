@@ -1,10 +1,10 @@
 
-class CBA_Extended_EventHandlers {
+class XEH_CLASS {
     EXTENDED_EVENTHANDLERS
 };
 
 class DefaultEventhandlers {
-    class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
+    class XEH_CLASS: XEH_CLASS {};
 };
 
 // The PreStart handlers run once when the game is started

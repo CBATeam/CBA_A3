@@ -96,7 +96,7 @@ GVAR(fallbackRunning) = false;
     };
 } forEach GVAR(allEventHandlers);
 
-GVAR(InitPostStack) = [];
+GVAR(initPostStack) = [];
 
 #ifdef DEBUG_MODE_FULL
     diag_log text format ["isSheduled = %1", call CBA_fnc_isSheduled];

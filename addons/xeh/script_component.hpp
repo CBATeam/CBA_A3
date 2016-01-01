@@ -20,13 +20,16 @@
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
 #define SETEVENTHANDLERS(type,class,events) (missionNamespace setVariable [SYS_EVENTHANDLERS(type,class), events])
 
+// For any class that does not comply with XEH or has at least one incompatible descendant.
 #define SYS_INCOMP(class) format [QGVAR(\%1), class]
 #define SETINCOMP(class) missionNamespace setVariable [SYS_INCOMP(class), true]
 #define ISINCOMP(class) !isNil SYS_INCOMP(class)
 
+// Event handler variables set.
 #define ISPROCESSED(obj) (obj getVariable [QGVAR(isProcessed), false])
 #define SETPROCESSED(obj) obj setVariable [QGVAR(isProcessed), true]
 
+// Init and InitPost events done.
 #define ISINITIALIZED(obj) (obj getVariable [QGVAR(isInitialized), false])
 #define SETINITIALIZED(obj) obj setVariable [QGVAR(isInitialized), true]
 

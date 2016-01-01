@@ -22,19 +22,15 @@ Author:
 #include "script_component.hpp"
 
 if (GVAR(fallbackRunning)) exitWith {};
-GVAR(fallbackRunning) = true;
 
-GVAR(entities) = entities "" + allUnits;
+GVAR(fallbackRunning) = true;
 
 {
     // don't run init and initPost event handlers on objects that already exist
     SETINITIALIZED(_x);
+} forEach (entities "" + allUnits);
 
-    // add other events now. prevents addClassEventHandler from adding duplicates on incompatible units for the first time
-    if !(ISPROCESSED(_x)) then {
-        _x call CBA_fnc_initObject;
-    };
-} forEach GVAR(entities);
+GVAR(entities) = [];
 
 [{
     private _entities = entities "" + allUnits;
@@ -44,8 +40,13 @@ GVAR(entities) = entities "" + allUnits;
 
         {
             if !(ISPROCESSED(_x)) then {
-                _x call CBA_fnc_initObject;
+                _x call CBA_fnc_initEvents;
+
+                if (!ISINITIALIZED(_x) && {getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "SLX_XEH_DISABLED") != 1}) then {
+                    _x call CBA_fnc_init;
+                };
             };
+            nil
         } count _entities;
     };
 }, 0.1, []] call CBA_fnc_addPerFrameHandler;

@@ -27,9 +27,14 @@ XEH_LOG("XEH: PostInit started.");
 
 // do InitPost
 {
-    _x call CBA_fnc_initPostObject;
-} forEach GVAR(InitPostStack);
-GVAR(InitPostStack) = nil;
+    _x params ["_this"];
+
+    {
+        [_this] call _x;
+    } forEach (_this getVariable QGVAR(initPost));
+} forEach GVAR(initPostStack);
+
+GVAR(initPostStack) = nil;
 
 #ifdef DEBUG_MODE_FULL
     diag_log text format ["isSheduled = %1", call CBA_fnc_isSheduled];

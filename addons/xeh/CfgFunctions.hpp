@@ -14,14 +14,15 @@ class CfgFunctions {
                 description = "Add an eventhandler to a class and all children.";
                 file = PATHTOF(fnc_addClassEventHandler.sqf);
             };
-            class initObject {
+            class init {
                 headerType = -1;
-                description = "Runs Init and adds other event handlers on this object.";
-                file = PATHTOF(fnc_initObject.sqf);
+                description = "Runs Init and InitPost event handlers on this object.";
+                file = PATHTOF(fnc_init.sqf);
             };
-            class initPostObject {
-                description = "Runs InitPost event handlers on this object.";
-                file = PATHTOF(fnc_initPostObject.sqf);
+            class initEvents {
+                headerType = -1;
+                description = "Adds all event handlers to this object.";
+                file = PATHTOF(fnc_initEvents.sqf);
             };
             class supportMonitor {
                 description = "Iterate through all vehicle classes and find those who don't support extended event handlers.";

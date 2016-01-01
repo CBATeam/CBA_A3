@@ -9,7 +9,7 @@
 // Add all XEH event handlers
 /////////////////////////////////////////////////////////////////////////////////
 
-#define EXTENDED_EVENTHANDLERS init = "_this call CBA_fnc_initObject"; \
+#define EXTENDED_EVENTHANDLERS init = "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init"; \
 fired = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_fired"")"; \
 animChanged = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_animChanged"")"; \
 animDone = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_animDone"")"; \
