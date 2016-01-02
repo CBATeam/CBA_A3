@@ -55,14 +55,6 @@ class CfgFunctions {
                 description = "Occurs once per mission after objects and functions are initialized.";
                 file = PATHTOF(fnc_postInit_unsheduled.sqf);
             };
-            class getInMan {
-                description = "Emulates GetInMan event handler by adding a GetIn event to all objects and rearranging parameters.";
-                file = PATHTOF(fnc_getInMan.sqf);
-            };
-            class getOutMan {
-                description = "Emulates GetOutMan event handler by adding a GetOut event to all objects and rearranging parameters.";
-                file = PATHTOF(fnc_getOutMan.sqf);
-            };
             class startFallbackLoop {
                 description = "Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.";
                 file = PATHTOF(fnc_startFallbackLoop.sqf);

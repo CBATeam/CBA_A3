@@ -39,12 +39,20 @@ if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
 if (!isClass _config) exitWith {false};
 
 // handle custom event handlers
-if (_eventName == "getInMan") exitWith {
-    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_getInMan;
+if (_eventName == "getInMan" && {isNil QGVAR(getInManAdded)}) then {
+    GVAR(getInManAdded) = ["All", "getIn", {
+        {
+            [_this select 2, _this select 1, _this select 0, _this select 3] call _x;
+        } forEach ((_this select 2) getVariable QGVAR(getInMan));
+    }] call CBA_fnc_addClassEventHandler;
 };
 
-if (_eventName == "getOutMan") exitWith {
-    [configName _config, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_getOutMan;
+if (_eventName == "getOutMan" && {isNil QGVAR(getOutManAdded)}) then {
+    GVAR(getOutManAdded) = ["All", "getOut", {
+        {
+            [_this select 2, _this select 1, _this select 0, _this select 3] call _x;
+        } forEach ((_this select 2) getVariable QGVAR(getOutMan));
+    }] call CBA_fnc_addClassEventHandler;
 };
 
 _eventName = toLower _eventName;
