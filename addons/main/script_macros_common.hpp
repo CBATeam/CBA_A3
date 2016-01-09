@@ -621,9 +621,6 @@ Author:
 
 #define LSTR(var1) TRIPLES(ADDON,STR,var1)
 
-#define CACHE_DIS_SYS(var1,var2) (isNumber(var1 >> "CfgSettings" >> "CBA" >> "caching" >> QUOTE(var2)) && getNumber(var1 >> "CfgSettings" >> "CBA" >> "caching" >> QUOTE(var2)) != 1)
-#define CACHE_DIS(var1) (!isNil "CBA_RECOMPILE" || CACHE_DIS_SYS(configFile,var1) || CACHE_DIS_SYS(missionConfigFile,var1))
-
 #ifndef DEBUG_SETTINGS
     #define DEBUG_SETTINGS [false, true, false]
 #endif
@@ -1408,8 +1405,9 @@ Author:
 }
 
 // XEH Specific
-#define XEH_DISABLED class EventHandlers {}; SLX_XEH_DISABLED = 1
-#define XEH_ENABLED class EventHandlers { EXTENDED_EVENTHANDLERS }; delete SLX_XEH_DISABLED
+#define XEH_CLASS CBA_Extended_EventHandlers
+#define XEH_DISABLED class EventHandlers { class XEH_CLASS {}; }; SLX_XEH_DISABLED = 1
+#define XEH_ENABLED class EventHandlers { class XEH_CLASS { EXTENDED_EVENTHANDLERS }; }; delete SLX_XEH_DISABLED
 
 // TODO: These are actually outdated; _Once ?
 #define XEH_PRE_INIT QUOTE(call COMPILE_FILE(XEH_PreInit_Once))

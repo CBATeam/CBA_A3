@@ -6,7 +6,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "A3_BaseConfig_F","CBA_XEH" };
+        requiredAddons[] = { "A3_BaseConfig_F" };
         version = VERSION;
         author[] = {"Spooner", "Sickboy", "Rocko"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";

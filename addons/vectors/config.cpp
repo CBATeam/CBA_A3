@@ -5,7 +5,7 @@ class CfgPatches
     {
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "CBA_common", "CBA_XEH" };
+        requiredAddons[] = { "CBA_common" };
         version = VERSION;
         author[] = {"Vigilante"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
