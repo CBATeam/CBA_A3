@@ -10,6 +10,7 @@ scriptName "CBA\common\init_functionsModule";
 private ["_recompile"];
 _recompile = (count _this) > 0;
 
+if (isNil "CBA_FUNC_RECOMPILE") then { CBA_FUNC_RECOMPILE = ["functions"] call CBA_fnc_isRecompileEnabled; };
 if (CBA_FUNC_RECOMPILE) then { _recompile = true };
 
 

@@ -58,6 +58,10 @@ if (_eventName == "getOutMan" && {isNil QGVAR(getOutManAdded)}) then {
 _eventName = toLower _eventName;
 
 // no such event
+if (_eventName == "FiredBIS") exitWith {
+    WARNING("Cannot add 'FiredBIS' - Use 'Fired' instead");
+    false
+};
 if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
 
 // add events to already existing objects

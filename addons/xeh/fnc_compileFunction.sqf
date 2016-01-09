@@ -30,7 +30,7 @@ if (isNil "_cachedFunc") then {
     uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
 } else {
-    if (call CBA_fnc_isRecompileEnabled) then {
+    if (["compile"] call CBA_fnc_isRecompileEnabled) then {
         missionNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     } else {
         missionNamespace setVariable [_funcName, _cachedFunc];

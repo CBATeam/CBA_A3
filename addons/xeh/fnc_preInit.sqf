@@ -62,7 +62,7 @@ GVAR(EventsLowercase) = [];
 } forEach ([false, true] call CBA_fnc_supportMonitor);
 
 // recompile extended event handlers when enabled
-if (call CBA_fnc_isRecompileEnabled) then {
+if (["xeh"] call CBA_fnc_isRecompileEnabled) then {
     GVAR(allEventHandlers) = configFile call CBA_fnc_compileEventHandlers; // from addon config
 } else {
     GVAR(allEventHandlers) = call (uiNamespace getVariable QGVAR(fnc_getAllEventHandlers));
