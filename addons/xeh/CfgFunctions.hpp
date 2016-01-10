@@ -2,9 +2,9 @@
 class CfgFunctions {
     class CBA {
         class XEH {
-            class isSheduled {
-                description = "Check if the current scope is running in sheduled or unsheduled environment.";
-                file = PATHTOF(fnc_isSheduled.sqf);
+            class isscheduled {
+                description = "Check if the current scope is running in scheduled or unscheduled environment.";
+                file = PATHTOF(fnc_isscheduled.sqf);
             };
             class isRecompileEnabled {
                 description = "Check if recompiling is enabled.";
@@ -51,9 +51,9 @@ class CfgFunctions {
                 description = "Occurs once per mission after objects and functions are initialized.";
                 file = PATHTOF(fnc_postInit.sqf);
             };
-            class postInit_unsheduled {
+            class postInit_unscheduled {
                 description = "Occurs once per mission after objects and functions are initialized.";
-                file = PATHTOF(fnc_postInit_unsheduled.sqf);
+                file = PATHTOF(fnc_postInit_unscheduled.sqf);
             };
             class startFallbackLoop {
                 description = "Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.";
