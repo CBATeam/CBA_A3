@@ -9,7 +9,7 @@ Parameters:
     _arguments - Parameters to call the code with. [optional] <ANY>
 
 Returns:
-    None
+    _return - Return value of the function <ANY>
 
 Examples:
     (begin example)
@@ -23,6 +23,8 @@ Author:
 
 params [["_code", {}, [{}]], ["_arguments", []]];
 
-"_arguments call _code; false" configClasses (configFile >> "CBA_DirectCall");
+private "_return";
 
-nil
+"_return = _arguments call _code; false" configClasses (configFile >> "CBA_DirectCall");
+
+if (!isNil "_return") then {_return};
