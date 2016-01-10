@@ -1,5 +1,0 @@
-x\cba\addons\diagnostic
-prefix=x\cba\addons\diagnostic
-product=Arma 3
-version=008
-Pbo Type is: Arma

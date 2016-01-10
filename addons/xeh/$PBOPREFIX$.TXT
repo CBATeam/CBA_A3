@@ -1,5 +1,0 @@
-xeh
-prefix=xeh
-product=Arma 3
-version=003
-Pbo Type is: Arma

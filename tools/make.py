@@ -30,7 +30,7 @@
 
 ###############################################################################
 
-__version__ = "0.5"
+__version__ = "0.7"
 
 import sys
 
@@ -59,7 +59,7 @@ if sys.platform == "win32":
 
 ######## GLOBALS #########
 project = "@CBA_A3"
-PROJECT_VERSION = "2.0.0"
+project_version = "2.0.0"
 arma3tools_path = ""
 work_drive = ""
 module_root = ""
@@ -408,14 +408,9 @@ def copy_optionals_for_building(mod,pbos):
                 destination = os.path.join(module_root,dir_name)
 
             print("Temporarily copying {} => {} for building.".format(os.path.join(optionals_root,dir_name),destination))
-
-            if (dir_name != "README.TXT"):
-                if (os.path.exists(destination)):
-                    shutil.rmtree(destination, True)
-                shutil.copytree(os.path.join(optionals_root,dir_name), destination)
-            else:
-                if (os.path.isfile(dir_name)):
-                    shutil.move(os.path.join(optionals_root,dir_name), destination)
+            if (os.path.exists(destination)):
+                shutil.rmtree(destination, True)
+            shutil.copytree(os.path.join(optionals_root,dir_name), destination)
     except:
         print_error("Copy Optionals Failed")
         raise
@@ -433,17 +428,10 @@ def cleanup_optionals(mod):
             else:
                 destination = os.path.join(module_root,dir_name)
 
-            if (dir_name == "readme.txt"):
-                destination = os.path.join(work_drive,dir_name)
-            else:
-                destination = os.path.join(module_root,dir_name)
-
             print("Cleaning {}".format(destination))
 
             try:
                 file_name = "{}{}.pbo".format(pbo_name_prefix,dir_name)
-                if (dir_name == "README.TXT"):
-                    file_name = dir_name
                 src_file_path = os.path.join(release_dir, project, "addons", file_name)
                 dst_file_path = os.path.join(release_dir, project, "optionals", file_name)
 
@@ -501,29 +489,29 @@ def check_for_obsolete_pbos(addonspath, file):
 
 
 def backup_config(module):
-    #backup original $PBOPREFIX$.TXT
+    #backup original $PBOPREFIX$
     global work_drive
     global prefix
 
     try:
-        configpath = os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT")
+        configpath = os.path.join(work_drive, prefix, module, "$PBOPREFIX$")
         if os.path.isfile(configpath):
             shutil.copyfile(configpath, os.path.join(work_drive, prefix, module, "$PBOPREFIX$.backup"))
         else:
-            print_error("$PBOPREFIX$.TXT Does not exist for module: {}.".format(module))
+            print_error("$PBOPREFIX$ Does not exist for module: {}.".format(module))
 
     except:
-        print_error("Error creating backup of $PBOPREFIX$.TXT for module {}.".format(module))
+        print_error("Error creating backup of $PBOPREFIX$ for module {}.".format(module))
 
     return True
 
 def addon_restore(modulePath):
-    #restore original $PBOPREFIX$.TXT
+    #restore original $PBOPREFIX$
     try:
         if os.path.isfile(os.path.join(modulePath, "$PBOPREFIX$.backup")):
-            if os.path.isfile(os.path.join(modulePath, "$PBOPREFIX$.TXT")):
-                os.remove(os.path.join(modulePath, "$PBOPREFIX$.TXT"))
-            os.rename(os.path.join(modulePath, "$PBOPREFIX$.backup"), os.path.join(modulePath, "$PBOPREFIX$.TXT"))
+            if os.path.isfile(os.path.join(modulePath, "$PBOPREFIX$")):
+                os.remove(os.path.join(modulePath, "$PBOPREFIX$"))
+            os.rename(os.path.join(modulePath, "$PBOPREFIX$.backup"), os.path.join(modulePath, "$PBOPREFIX$"))
     except:
         print_yellow("Some error occurred. Check your addon folder {} for integrity".format(modulePath))
 
@@ -531,8 +519,8 @@ def addon_restore(modulePath):
 
 
 def get_project_version():
-    global PROJECT_VERSION
-    versionStamp = PROJECT_VERSION
+    global project_version
+    versionStamp = project_version
     #do the magic based on https://github.com/acemod/ACE3/issues/806#issuecomment-95639048
 
     try:
@@ -559,14 +547,14 @@ def get_project_version():
     except Exception as e:
         print_error("Get_project_version error: {}".format(e))
         print_error("Check the integrity of the file: {}".format(scriptModPath))
-        versionStamp = PROJECT_VERSION
+        versionStamp = project_version
         print_error("Resetting to the default version stamp: {}".format(versionStamp))
         input("Press Enter to continue...")
         print("Resuming build...")
 
     print_yellow("{} VERSION set to {}".format(project.lstrip("@").upper(),versionStamp))
-    PROJECT_VERSION = versionStamp
-    return PROJECT_VERSION
+    project_version = versionStamp
+    return project_version
 
 
 def replace_file(filePath, oldSubstring, newSubstring):
@@ -584,7 +572,7 @@ def replace_file(filePath, oldSubstring, newSubstring):
 
 
 def set_version_in_files():
-    newVersion = PROJECT_VERSION # MAJOR.MINOR.PATCH.BUILD
+    newVersion = project_version # MAJOR.MINOR.PATCH.BUILD
     newVersionShort = newVersion[:-2] # MAJOR.MINOR.PATCH
 
     # Regex patterns
@@ -697,11 +685,11 @@ def get_commit_ID():
 
 def version_stamp_pboprefix(module,commitID):
     ### Update pboPrefix with the correct version stamp. Use commit_id as the build number.
-    #This function will not handle any $PBOPREFIX$.TXT backup or cleanup.
+    #This function will not handle any $PBOPREFIX$ backup or cleanup.
     global work_drive
     global prefix
 
-    configpath = os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT")
+    configpath = os.path.join(work_drive, prefix, module, "$PBOPREFIX$")
 
     try:
         f = open(configpath, "r")
@@ -716,8 +704,8 @@ def version_stamp_pboprefix(module,commitID):
                     f.write(configtext)
                     f.close()
                 else:
-                    os.remove(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT"))
-                    os.rename(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.backup"), os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT"))
+                    os.remove(os.path.join(work_drive, prefix, module, "$PBOPREFIX$"))
+                    os.rename(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.backup"), os.path.join(work_drive, prefix, module, "$PBOPREFIX$"))
             else:
                 if configtext:
                     #append version info
@@ -725,8 +713,8 @@ def version_stamp_pboprefix(module,commitID):
                     f.write("\nversion = {}".format(commitID))
                     f.close()
                 else:
-                    os.remove(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT"))
-                    os.rename(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.backup"), os.path.join(work_drive, prefix, module, "$PBOPREFIX$.TXT"))
+                    os.remove(os.path.join(work_drive, prefix, module, "$PBOPREFIX$"))
+                    os.rename(os.path.join(work_drive, prefix, module, "$PBOPREFIX$.backup"), os.path.join(work_drive, prefix, module, "$PBOPREFIX$"))
     except Exception as e:
         print_error("Failed to include build number: {}".format(e))
         return False
@@ -741,7 +729,7 @@ def main(argv):
     """Build an Arma addon suite in a directory from rules in a make.cfg file."""
     print_blue("\nmake.py for Arma, modified for Advanced Combat Environment v{}".format(__version__))
 
-    global PROJECT_VERSION
+    global project_version
     global arma3tools_path
     global work_drive
     global module_root
@@ -827,7 +815,7 @@ See the make.cfg file for additional build options.
         argv.remove("release")
     else:
         make_release_zip = False
-        release_version = PROJECT_VERSION
+        release_version = project_version
 
     if "target" in argv:
         make_target = argv[argv.index("target") + 1]
@@ -985,6 +973,17 @@ See the make.cfg file for additional build options.
         print ("No cache found.")
         cache = {}
 
+    # Check the build version (from main) with cached version - forces a full rebuild when version changes
+    project_version = get_project_version()
+    cacheVersion = "None";
+    if 'cacheVersion' in cache:
+        cacheVersion = cache['cacheVersion']
+
+    if (project_version != cacheVersion):
+        cache = {}
+        print("Reseting Cache {0} to New Version {1}".format(cacheVersion, project_version))
+        cache['cacheVersion'] = project_version
+
     if not os.path.isdir(os.path.join(release_dir, project, "addons")):
         try:
             os.makedirs(os.path.join(release_dir, project, "addons"))
@@ -1008,6 +1007,9 @@ See the make.cfg file for additional build options.
         # Set version
         set_version_in_files();
         print("Version in files has been changed, make sure you commit and push the updates!")
+
+    amountOfBuildsFailed = 0
+    namesOfBuildsFailed = []
 
     try:
         # Temporarily copy optionals_root for building. They will be removed later.
@@ -1232,6 +1234,8 @@ See the make.cfg file for additional build options.
                         print_error("pboProject return code == {}".format(str(ret)))
                         print_error("Module not successfully built/signed. Check your {}temp\{}_packing.log for more info.".format(work_drive,module))
                         print ("Resuming build...")
+                        amountOfBuildsFailed += 1
+                        namesOfBuildsFailed.append("{}".format(module))
                         continue
 
                     # Back to the root
@@ -1387,29 +1391,29 @@ See the make.cfg file for additional build options.
             a3_path = cygwin_a3path
 
         print_yellow("Path from the registry => {}".format(a3_path))
-        a3_path = os.path.join(test_dir,"{}_DEV".format(project))
+        a3_path = test_dir
 
         print_yellow("Copying build files to {}".format(a3_path))
 
         if os.path.exists(a3_path):
             try:
-                shutil.rmtree(a3_path, True)
-                shutil.copytree(os.path.join(module_root, release_dir, project), a3_path)
-            except:
-                print_error("Could not copy files. Is Arma 3 running?")
-        else:
-            try:
-                shutil.copytree(os.path.join(module_root, release_dir, project), a3_path)
+                shutil.rmtree(os.path.join(a3_path, project), True)
+                shutil.copytree(os.path.join(module_root, release_dir, project), os.path.join(a3_path, project))
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
 
+    if amountOfBuildsFailed > 0:
+        print_error("Build failed. {} pbos failed.".format(amountOfBuildsFailed))
 
-    print_green("\nDone.")
+        for failedModuleName in namesOfBuildsFailed:
+            print("- {} failed.".format(failedModuleName))
 
+    else:
+        print_green("\Completed with 0 errors.")
 
 if __name__ == "__main__":
     start_time = timeit.default_timer()
     main(sys.argv)
     d,h,m,s = Fract_Sec(timeit.default_timer() - start_time)
     print("\nTotal Program time elapsed: {0:2}h {1:2}m {2:4.5f}s".format(h,m,s))
-input("Press Enter to continue...")
+    input("Press Enter to continue...")
