@@ -5,14 +5,14 @@ Description:
     Check if recompiling is enabled.
 
 Parameters:
-    None
+    0: _compileType - The compile type (`compile` or `functions`) <STRING>
 
 Returns:
     true - recompiling is enabled, false - recompiling is disabled <BOOLEAN>
 
 Examples:
     (begin example)
-        _enabled = call CBA_fnc_isRecompileEnabled;
+        _enabled = ["compile"] call CBA_fnc_isRecompileEnabled;
     (end)
 
 Author:
@@ -20,15 +20,21 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (isNil QGVAR(isRecompileEnabled)) then {
-    private _config = configFile >> "CfgSettings" >> "CBA" >> "caching" >> "compile";
-    private _missionConfig = missionConfigFile >> "CfgSettings" >> "CBA" >> "caching" >> "compile";
+params ["_compileType"];
 
-    GVAR(isRecompileEnabled) = (isNumber _config && {getNumber _config == 0}) || {isNumber _missionConfig && {getNumber _missionConfig == 0}};
+private _return = missionNamespace getVariable (format [QGVAR(isRecompileEnabled_%1), _compileType]);
 
-    #ifdef DEBUG_MODE_FULL
-        diag_log text format ["isRecompileEnabled = %1", GVAR(isRecompileEnabled)];
-    #endif
+if (isNil "_return") then {
+    private _config = configFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
+    private _missionConfig = missionConfigFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
+
+    _return = (isNumber _config && {getNumber _config == 0}) || {isNumber _missionConfig && {getNumber _missionConfig == 0}};
+    missionNamespace setVariable [(format [QGVAR(isRecompileEnabled_%1), _compileType]), _return];
+
+    // Normally, full caching is enabled. If not, log an informative message.
+    if (_return) then {
+        XEH_LOG(PFORMAT_1("CBA CACHE DISABLED? (Disable caching with cba_cache_disable.pbo)", _compileType));
+    };
 };
 
-GVAR(isRecompileEnabled)
+_return
