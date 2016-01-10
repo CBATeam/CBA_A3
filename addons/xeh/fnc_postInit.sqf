@@ -16,5 +16,4 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-// this runs in scheduled. we don't like scheduled. spawn a game logic with init event handler instead.
-"CBA_PostInit_Helper" createVehicleLocal [0,0,0];
+CBA_fnc_postInit_unscheduled call CBA_fnc_directCall;

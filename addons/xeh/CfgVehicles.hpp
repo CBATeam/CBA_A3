@@ -142,13 +142,4 @@ class CfgVehicles {
         scope = 1;
         displayName = "XEH Initialization Logic";
     };
-
-    // spawned in BI's scheduled postInit to run unscheduled XEH postInit
-    class CBA_PostInit_Helper: Logic {
-        scope = 1;
-        displayName = "XEH PostInit Helper";
-        class EventHandlers {
-            init = "[] call CBA_fnc_postInit_unscheduled; deleteVehicle (_this select 0);";
-        };
-    };
 };
