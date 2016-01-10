@@ -35,7 +35,7 @@ with uiNamespace do {
     } forEach (call FUNC(getAllEventHandlers));
 
     #ifdef DEBUG_MODE_FULL
-        diag_log text format ["isSheduled = %1", call CBA_fnc_isSheduled];
+        diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
     #endif
 
     XEH_LOG("XEH: PreStart finished.");

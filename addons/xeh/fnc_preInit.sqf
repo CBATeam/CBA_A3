@@ -99,7 +99,7 @@ GVAR(fallbackRunning) = false;
 GVAR(initPostStack) = [];
 
 #ifdef DEBUG_MODE_FULL
-    diag_log text format ["isSheduled = %1", call CBA_fnc_isSheduled];
+    diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
 #endif
 
 SLX_XEH_MACHINE set [7, true]; // PreInit passed
