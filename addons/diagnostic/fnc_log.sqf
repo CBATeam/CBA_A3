@@ -46,6 +46,7 @@ SCRIPT(log);
                     _file + ":"+str(_lineNum + 1), _message];
             };
 
+            _selected = "";
             while {_selected = CBA_LOG_ARRAY deleteAt 0; !isNil "_selected"} do
             {
                 _selected call _fnc_log;
