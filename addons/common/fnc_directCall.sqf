@@ -25,6 +25,6 @@ params [["_code", {}, [{}]], ["_arguments", []]];
 
 private "_return";
 
-"_return = _arguments call _code; false" configClasses (configFile >> "CBA_DirectCall");
+"_return = _arguments call _code" configClasses (configFile >> "CBA_DirectCall");
 
 if (!isNil "_return") then {_return};
