@@ -1008,6 +1008,9 @@ See the make.cfg file for additional build options.
         set_version_in_files();
         print("Version in files has been changed, make sure you commit and push the updates!")
 
+    amountOfBuildsFailed = 0
+    namesOfBuildsFailed = []
+
     try:
         # Temporarily copy optionals_root for building. They will be removed later.
         optionals_modules = []
@@ -1091,9 +1094,6 @@ See the make.cfg file for additional build options.
                     except:
                         print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
                         pass
-
-        amountOfBuildsFailed = 0
-        namesOfBuildsFailed = []
 
         # For each module, prep files and then build.
         print_blue("\nBuilding...")
