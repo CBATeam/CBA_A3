@@ -128,25 +128,14 @@ FUNC(monitorFrameRender) = {
 FUNC(onFrame) = {
     TRACE_1("Executing onFrame",nil);
     GVAR(lastFrameRender) = diag_frameNo;
-    // if(GVAR(lastCount) > (GVAR(fpsCount)-1)) then {
-        // hint "FUCK UP IN SEQUENCE!";
-    // };
-    // player sideChat format["fps: %1 %2 %3", (GVAR(fpsCount)/diag_fps), diag_fps, GVAR(fpsCount)];
-    // GVAR(lastCount) = GVAR(fpsCount);
-    // GVAR(fpsCount) = GVAR(fpsCount) + 1;
-    // player sideChat format["c: %1", GVAR(perFrameHandlerArray)];
-    {
 
-        if !(isNil "_x") then {
-            _handlerData = _x;
-            if (_handlerData params ["_func", "_delay", "_delta", "", "_args", "_idPFH"]) then {
-                if (diag_tickTime > _delta) then {
-                    [_args, _idPFH] call _func;
-                    _delta = diag_tickTime + _delay;
-                    //TRACE_1("data", _data);
-                    _handlerData set [2, _delta];
-                };
-            };
+    {
+        _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
+
+        if (diag_tickTime > _delta) then {
+            _x set [2, diag_tickTime + _delay];
+            [_args, _handle] call _function;
+            false
         };
     } count GVAR(perFrameHandlerArray);
 };
