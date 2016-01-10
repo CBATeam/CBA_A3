@@ -46,21 +46,9 @@ SCRIPT(log);
                     _file + ":"+str(_lineNum + 1), _message];
             };
 
-            while {count CBA_LOG_ARRAY > 0} do
+            while {_selected = CBA_LOG_ARRAY deleteAt 0; !isNil "_selected"} do
             {
-                _selected = CBA_LOG_ARRAY select 0;
                 _selected call _fnc_log;
-
-                // Removal method one
-                CBA_LOG_ARRAY set [0, objNull];
-                CBA_LOG_ARRAY = CBA_LOG_ARRAY - [objNull];
-
-                /*
-                // Removal method 2
-                for "_i" from 1 to (count CBA_LOG_ARRAY - 1) do {
-                    CBA_LOG_ARRAY set [_i - 1, CBA_LOG_ARRAY select _i];
-                };
-                */
             };
             CBA_LOG_VAR = nil;
         };
