@@ -1,5 +1,0 @@
-x\cba\addons\help
-prefix=x\cba\addons\help
-product=Arma 3
-version=004
-Pbo Type is: Arma

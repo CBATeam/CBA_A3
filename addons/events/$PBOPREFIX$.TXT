@@ -1,5 +1,0 @@
-x\cba\addons\events
-prefix=x\cba\addons\events
-product=Arma 3
-version=006
-Pbo Type is: Arma
