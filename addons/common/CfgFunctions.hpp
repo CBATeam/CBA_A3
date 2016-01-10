@@ -111,6 +111,12 @@ class CfgFunctions
                 description = "Gets the list of possible muzzles for a weapon.";
                 file = "\x\cba\addons\common\fnc_determineMuzzles.sqf";
             };
+            // CBA_fnc_directCall
+            class directCall
+            {
+                description = "Executes a piece of code in unscheduled environment.";
+                file = "\x\cba\addons\common\fnc_directCall.sqf";
+            };
             // CBA_fnc_dropMagazine
             class dropMagazine
             {
