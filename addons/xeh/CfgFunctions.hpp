@@ -2,9 +2,9 @@
 class CfgFunctions {
     class CBA {
         class XEH {
-            class isscheduled {
+            class isScheduled {
                 description = "Check if the current scope is running in scheduled or unscheduled environment.";
-                file = PATHTOF(fnc_isscheduled.sqf);
+                file = PATHTOF(fnc_isScheduled.sqf);
             };
             class isRecompileEnabled {
                 description = "Check if recompiling is enabled.";

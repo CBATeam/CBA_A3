@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_isscheduled
+Function: CBA_fnc_isScheduled
 
 Description:
     Check if the current scope is running in scheduled or unscheduled environment.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        _result = call CBA_fnc_isscheduled;
+        _result = call CBA_fnc_isScheduled;
     (end)
 
 Author:

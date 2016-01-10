@@ -37,7 +37,7 @@ XEH_LOG("XEH: PostInit started.");
 GVAR(initPostStack) = nil;
 
 #ifdef DEBUG_MODE_FULL
-    diag_log text format ["isscheduled = %1", call CBA_fnc_isscheduled];
+    diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
 #endif
 
 SLX_XEH_MACHINE set [8, true]; // PostInit passed
