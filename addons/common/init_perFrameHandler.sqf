@@ -133,7 +133,7 @@ FUNC(onFrame) = {
         _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
 
         if (diag_tickTime > _delta) then {
-            _x set [2, diag_tickTime + _delay];
+            _x set [2, _delta + _delay];
             [_args, _handle] call _function;
             false
         };

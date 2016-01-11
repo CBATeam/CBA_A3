@@ -24,7 +24,7 @@ Author:
 
 params [["_handle", -1, [0]]];
 
-if (_handle < 0 || {_handle > GVAR(lastPFHid)}) exitWith {};
+if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
 
 [{
     params ["_handle"];
