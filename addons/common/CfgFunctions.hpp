@@ -42,7 +42,7 @@ class CfgFunctions
             // CBA_fnc_addPerFrameHandler
             class addPerFrameHandler
             {
-                description = "Add a handler that will execute every frame, or every x number of seconds";
+                description = "Add a handler that will execute every frame, or every x number of seconds.";
                 file = "\x\cba\addons\common\fnc_addPerFrameHandler.sqf";
             };
             // CBA_fnc_addPlayerAction
@@ -438,7 +438,7 @@ class CfgFunctions
             // CBA_fnc_removePerFrameHandler
             class removePerFrameHandler
             {
-                description = "Remove a handler that you have added using CBA_fnc_addPerFrameHandler";
+                description = "Remove a handler that you have added using CBA_fnc_addPerFrameHandler.";
                 file = "\x\cba\addons\common\fnc_removePerFrameHandler.sqf";
             };
             // CBA_fnc_removePlayerAction
