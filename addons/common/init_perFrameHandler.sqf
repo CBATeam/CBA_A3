@@ -9,6 +9,7 @@ GVAR(perFrameHandlerArray) = [];
 GVAR(fpsCount) = 0;
 GVAR(lastCount) = -1;
 GVAR(lastFrameRender) = 0;
+GVAR(lastTickTime) = 0;
 
 PREP(perFrameEngine);
 
@@ -128,6 +129,7 @@ FUNC(monitorFrameRender) = {
 FUNC(onFrame) = {
     TRACE_1("Executing onFrame",nil);
     GVAR(lastFrameRender) = diag_frameNo;
+    GVAR(lastTickTime) = diag_tickTime;
 
     {
         _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
@@ -139,3 +141,10 @@ FUNC(onFrame) = {
         };
     } count GVAR(perFrameHandlerArray);
 };
+
+// fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded
+addMissionEventHandler ["Loaded", {
+    {
+        _x set [2, (_x select 2) - GVAR(lastTickTime) + diag_tickTime];
+    } forEach GVAR(perFrameHandlerArray);
+}];
