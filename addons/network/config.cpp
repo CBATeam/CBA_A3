@@ -11,7 +11,7 @@ class CfgPatches
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
-#include "CfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
 

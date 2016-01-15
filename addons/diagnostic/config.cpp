@@ -13,6 +13,6 @@ class CfgPatches
 };
 
 #include "CfgFunctions.hpp"
-#include "CfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"
 
 
