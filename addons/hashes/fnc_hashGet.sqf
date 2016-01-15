@@ -28,16 +28,14 @@ params ["_hash","_key"];
 _default = param [2,_hash select HASH_DEFAULT_VALUE];
 
 _index = (_hash select HASH_KEYS) find _key;
-if (_index >= 0) then
-{
+if (_index >= 0) then {
     (_hash select HASH_VALUES) select _index; // Return.
 } else {
     if (isNil "_default") then {
         nil // Return
     } else {
         // Make a copy of the array instead!
-        if (typeName _default == "ARRAY") then
-        {
+        if (typeName _default == "ARRAY") then {
             _default = + _default;
         };
         _default // Return.
