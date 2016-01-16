@@ -40,7 +40,7 @@
 #include "script_xeh.hpp"
 
 #undef XEH_ENABLED
-#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; delete SLX_XEH_DISABLED
+#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; SLX_XEH_DISABLED = 0
 
 #define XEH_EVENTS \
     "AnimChanged", \
