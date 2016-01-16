@@ -28,8 +28,6 @@ if !(ISPROCESSED(_unit)) then {
 
     private _class = configFile >> "CfgVehicles" >> typeOf _unit;
 
-    if (getNumber (_class >> "SLX_XEH_DISABLED") == 1) exitWith {};
-
     // add events to XEH incompatible units
     if (!isClass (_class >> "EventHandlers" >> QUOTE(XEH_CLASS))) then {
         {

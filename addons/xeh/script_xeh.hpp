@@ -55,41 +55,41 @@ weaponRested = "{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_
     Removes all event handlers.
 */
 
-#define DELETE_EVENTHANDLERS delete init; \
-delete fired; \
-delete animChanged; \
-delete animDone; \
-delete animStateChanged; \
-delete containerClosed; \
-delete containerOpened; \
-delete controlsShifted; \
-delete dammaged; \
-delete engine; \
-delete epeContact; \
-delete epeContactEnd; \
-delete epeContactStart; \
-delete explosion; \
-delete firedNear; \
-delete fuel; \
-delete gear; \
-delete getIn; \
-delete getOut; \
-delete handleHeal; \
-delete hit; \
-delete hitPart; \
-delete incomingMissile; \
-delete inventoryClosed; \
-delete inventoryOpened; \
-delete killed; \
-delete landedTouchDown; \
-delete landedStopped; \
-delete local; \
-delete respawn; \
-delete put; \
-delete take; \
-delete seatSwitched; \
-delete soundPlayed; \
-delete weaponAssembled; \
-delete weaponDisassembled; \
-delete weaponDeployed; \
-delete weaponRested;
+#define DELETE_EVENTHANDLERS init = ""; \
+fired = ""; \
+animChanged = ""; \
+animDone = ""; \
+animStateChanged = ""; \
+containerClosed = ""; \
+containerOpened = ""; \
+controlsShifted = ""; \
+dammaged = ""; \
+engine = ""; \
+epeContact = ""; \
+epeContactEnd = ""; \
+epeContactStart = ""; \
+explosion = ""; \
+firedNear = ""; \
+fuel = ""; \
+gear = ""; \
+getIn = ""; \
+getOut = ""; \
+handleHeal = ""; \
+hit = ""; \
+hitPart = ""; \
+incomingMissile = ""; \
+inventoryClosed = ""; \
+inventoryOpened = ""; \
+killed = ""; \
+landedTouchDown = ""; \
+landedStopped = ""; \
+local = ""; \
+respawn = ""; \
+put = ""; \
+take = ""; \
+seatSwitched = ""; \
+soundPlayed = ""; \
+weaponAssembled = ""; \
+weaponDisassembled = ""; \
+weaponDeployed = ""; \
+weaponRested = "";
