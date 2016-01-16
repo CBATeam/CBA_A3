@@ -69,7 +69,7 @@ private _entities = entities "" + allUnits;
 private _eventVarName = format [QGVAR(%1), _eventName];
 
 {
-    if (_x isKindOf _className && {getNumber (_config >> "SLX_XEH_DISABLED") != 1}) then {
+    if (_x isKindOf _className) then {
         private _unit = _x;
 
         if (ISKINDOF(_unit,_className,_allowInheritance,_excludedClasses)) then {

@@ -29,7 +29,7 @@ private _notSupportingClasses = [];
 
 {
     if (_classFilter == "" || {configName _x isKindOf _classFilter}) then {
-        if (!isClass (_x >> "EventHandlers" >> QUOTE(XEH_CLASS))) then {
+        if (configProperties [_x >> "EventHandlers" >> QUOTE(XEH_CLASS)] isEqualTo []) then {
             // don't list duplicates
             if (!_includeDuplicates && {{configName _x == "EventHandlers"} count configProperties [_x, "isClass _x", false] == 0}) exitWith {};
 

@@ -42,7 +42,7 @@ GVAR(entities) = [];
             if !(ISPROCESSED(_x)) then {
                 _x call CBA_fnc_initEvents;
 
-                if (!ISINITIALIZED(_x) && {getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "SLX_XEH_DISABLED") != 1}) then {
+                if !(ISINITIALIZED(_x)) then {
                     _x call CBA_fnc_init;
                 };
             };
