@@ -62,11 +62,19 @@ GVAR(EventsLowercase) = [];
 } forEach ([false, true] call CBA_fnc_supportMonitor);
 
 // always recompile extended event handlers
-// XEH_LOG("XEH: Compiling XEH START");
-GVAR(allEventHandlers) = configFile call CBA_fnc_compileEventHandlers; // from addon config
-GVAR(allEventHandlers) append (missionConfigFile call CBA_fnc_compileEventHandlers); // from mission config
-GVAR(allEventHandlers) append (campaignConfigFile call CBA_fnc_compileEventHandlers); // from campaign config
-// XEH_LOG("XEH: Compiling XEH END");
+#ifdef DEBUG_MODE_FULL
+    XEH_LOG("XEH: Compiling XEH START");
+#endif
+
+GVAR(allEventHandlers) = [];
+
+{
+    GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
+} forEach [configFile, campaignConfigFile, missionConfigFile];
+
+#ifdef DEBUG_MODE_FULL
+    XEH_LOG("XEH: Compiling XEH END");
+#endif
 
 // add extended event handlers to classes
 GVAR(fallbackRunning) = false;
@@ -78,19 +86,15 @@ GVAR(fallbackRunning) = false;
             call (_x select 2);
         };
     } else {
-        _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses", "_doesSomething"];
+        _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];
 
         // backwards comp, args in _this are already switched
         if (_eventName == "firedBis") then {
             _eventName = "fired";
         };
 
-        if (_doesSomething) then {
-            private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
-            TRACE_3("does something",_className,_eventName,_success);
-        } else {
-            TRACE_2("does NOT do something",_className,_eventName);
-        };
+        private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+        TRACE_3("addClassEventHandler",_className,_eventName,_success);
     };
 } forEach GVAR(allEventHandlers);
 

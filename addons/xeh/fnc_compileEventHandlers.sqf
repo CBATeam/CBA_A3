@@ -95,7 +95,6 @@ private _resultNames = [];
             private _customName = configName _x;
             private _allowInheritance = true;
             private _excludedClasses = [];
-            private _doesSomething = false;
 
             if (isClass _x) then {
                 // allow inheritance of this event?
@@ -121,23 +120,20 @@ private _resultNames = [];
 
                 if (isText _entry) then {
                     _eventFunc = _eventFunc + getText _entry + ";";
-                    _doesSomething = true;
                 };
 
                 // client only events
                 private _entryClient = _x >> format ["client%1", _entryName];
 
-                if ((!isDedicated) && {isText _entryClient}) then {
+                if (!isDedicated && {isText _entryClient}) then {
                     _eventFunc = _eventFunc + getText _entryClient + ";";
-                    _doesSomething = true;
                 };
 
                 // server only events
                 private _entryServer = _x >> format ["server%1", _entryName];
 
-                if ((isServer) && {isText _entryServer}) then {
+                if (isServer && {isText _entryServer}) then {
                     _eventFunc = _eventFunc + getText _entryServer + ";";
-                    _doesSomething = true;
                 };
 
                 // init event handlers that should run on respawn again, onRespawn = 1
@@ -148,12 +144,7 @@ private _resultNames = [];
                 // global events
                 if (isText _x) then {
                     _eventFunc = getText _x + ";";
-                    _doesSomething = true;
                 };
-            };
-            
-            if ((!_doesSomething) && {!isMultiplayer}) then { //Print error warning for XEH with no actual code
-                diag_log text format ["[XEH]: No functions found for [%1] in [%2] from config [%3] (check event name)", _eventName, _customName, _x];
             };
 
             // emulate oo-like inheritance by adding classnames that would redefine an event by using the same custom event name to the excluded classes
@@ -174,7 +165,11 @@ private _resultNames = [];
                 };
             } forEach _resultNames;
 
-            _result pushBack [_className, _eventName, compile _eventFunc, _allowInheritance, _excludedClasses, _doesSomething];
+            // only add event on machines where it exists
+            if !(_eventFunc isEqualTo _eventFuncBase) then {
+                _result pushBack [_className, _eventName, compile _eventFunc, _allowInheritance, _excludedClasses];
+            };
+
             _resultNames pushBack _customName;
         } forEach configProperties [_x];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
