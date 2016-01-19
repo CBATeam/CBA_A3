@@ -47,14 +47,14 @@ private _resultNames = [];
             // client only events
             private _entryClient = _x >> "clientInit";
 
-            if ((!isDedicated) && {isText _entryClient}) then {
+            if (!isDedicated && {isText _entryClient}) then {
                 _eventFunc = _eventFunc + getText _entryClient + ";";
             };
 
             // server only events
             private _entryServer = _x >> "serverInit";
 
-            if ((isServer) && {isText _entryServer}) then {
+            if (isServer && {isText _entryServer}) then {
                 _eventFunc = _eventFunc + getText _entryServer + ";";
             };
         } else {
@@ -64,8 +64,11 @@ private _resultNames = [];
             };
         };
 
-        _result pushBack ["", _eventName, compile _eventFunc];
-        _resultNames pushBack _customName;
+        // only add event on machines where it exists
+        if !(_eventFunc isEqualTo "") then {
+            _result pushBack ["", _eventName, compile _eventFunc];
+            _resultNames pushBack _customName;
+        };
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
 } forEach ["preStart", "preInit", "postInit"]; 
 
@@ -168,9 +171,8 @@ private _resultNames = [];
             // only add event on machines where it exists
             if !(_eventFunc isEqualTo _eventFuncBase) then {
                 _result pushBack [_className, _eventName, compile _eventFunc, _allowInheritance, _excludedClasses];
+                _resultNames pushBack _customName;
             };
-
-            _resultNames pushBack _customName;
         } forEach configProperties [_x];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
 } forEach [XEH_EVENTS];
