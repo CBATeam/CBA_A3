@@ -64,11 +64,8 @@ private _resultNames = [];
             };
         };
 
-        // only add event on machines where it exists
-        if !(_eventFunc isEqualTo "") then {
-            _result pushBack ["", _eventName, compile _eventFunc];
-            _resultNames pushBack _customName;
-        };
+        _result pushBack ["", _eventName, compile _eventFunc];
+        _resultNames pushBack _customName;
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
 } forEach ["preStart", "preInit", "postInit"]; 
 
@@ -170,11 +167,25 @@ private _resultNames = [];
 
             // only add event on machines where it exists
             if !(_eventFunc isEqualTo _eventFuncBase) then {
-                _result pushBack [_className, _eventName, compile _eventFunc, _allowInheritance, _excludedClasses];
-                _resultNames pushBack _customName;
+                _eventFunc = compile _eventFunc;
+            } else {
+                _eventFunc = {};
             };
+
+            _result pushBack [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses];
+            _resultNames pushBack _customName;
         } forEach configProperties [_x];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
 } forEach [XEH_EVENTS];
 
-_result
+//_result select {!((_x select 2) isEqualTo {})} @todo 1.55 dev, delete everything below
+
+private _return = [];
+
+{
+    if !((_x select 2) isEqualTo {}) then {
+        _return pushBack _x;
+    };
+} forEach _result;
+
+_return
