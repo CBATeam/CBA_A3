@@ -45,17 +45,21 @@ private _resultNames = [];
             };
 
             // client only events
-            private _entryClient = _x >> "clientInit";
+            if (!isDedicated) then {
+                _entry = _x >> "clientInit";
 
-            if (!isDedicated && {isText _entryClient}) then {
-                _eventFunc = _eventFunc + getText _entryClient + ";";
+                if (isText _entry) then {
+                    _eventFunc = _eventFunc + getText _entry + ";";
+                };
             };
 
             // server only events
-            private _entryServer = _x >> "serverInit";
+            if (isServer) then {
+                _entry = _x >> "serverInit";
 
-            if (isServer && {isText _entryServer}) then {
-                _eventFunc = _eventFunc + getText _entryServer + ";";
+                if (isText _entry) then {
+                    _eventFunc = _eventFunc + getText _entry + ";";
+                };
             };
         } else {
             // global events
@@ -64,7 +68,15 @@ private _resultNames = [];
             };
         };
 
-        _result pushBack ["", _eventName, compile _eventFunc];
+        if !(_eventFunc isEqualTo "") then {
+            _eventFunc = compile _eventFunc;
+            TRACE_2("does something",_customName,_eventName);
+        } else {
+            _eventFunc = {};
+            TRACE_2("does NOT do something",_customName,_eventName);
+        };
+
+        _result pushBack ["", _eventName, _eventFunc];
         _resultNames pushBack _customName;
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
 } forEach ["preStart", "preInit", "postInit"]; 
@@ -123,17 +135,21 @@ private _resultNames = [];
                 };
 
                 // client only events
-                private _entryClient = _x >> format ["client%1", _entryName];
+                if (!isDedicated) then {
+                    _entry = _x >> format ["client%1", _entryName];
 
-                if (!isDedicated && {isText _entryClient}) then {
-                    _eventFunc = _eventFunc + getText _entryClient + ";";
+                    if (isText _entry) then {
+                        _eventFunc = _eventFunc + getText _entry + ";";
+                    };
                 };
 
                 // server only events
-                private _entryServer = _x >> format ["server%1", _entryName];
+                if (isServer) then {
+                    _entry = _x >> format ["server%1", _entryName];
 
-                if (isServer && {isText _entryServer}) then {
-                    _eventFunc = _eventFunc + getText _entryServer + ";";
+                    if (isText _entry) then {
+                        _eventFunc = _eventFunc + getText _entry + ";";
+                    };
                 };
 
                 // init event handlers that should run on respawn again, onRespawn = 1
@@ -168,8 +184,10 @@ private _resultNames = [];
             // only add event on machines where it exists
             if !(_eventFunc isEqualTo _eventFuncBase) then {
                 _eventFunc = compile _eventFunc;
+                TRACE_3("does something",_customName,_className,_eventName);
             } else {
                 _eventFunc = {};
+                TRACE_3("does NOT do something",_customName,_className,_eventName);
             };
 
             _result pushBack [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses];
