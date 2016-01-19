@@ -23,16 +23,12 @@ with uiNamespace do {
 
     XEH_LOG("XEH: PreStart started.");
 
-    // pre compile PreInit and PostInit config event handlers
-    // stored in function to prevent these from being overwritten
-    GVAR(fnc_getAllEventHandlers) = compileFinal str (configFile call CBA_fnc_compileEventHandlers);
-
     // call PreStart events
     {
         if (_x select 1 == "preStart") then {
             call (_x select 2);
         };
-    } forEach (call FUNC(getAllEventHandlers));
+    } forEach (configFile call CBA_fnc_compileEventHandlers);
 
     #ifdef DEBUG_MODE_FULL
         diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];

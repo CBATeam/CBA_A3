@@ -61,15 +61,12 @@ GVAR(EventsLowercase) = [];
     };
 } forEach ([false, true] call CBA_fnc_supportMonitor);
 
-// recompile extended event handlers when enabled
-if (["xeh"] call CBA_fnc_isRecompileEnabled) then {
-    GVAR(allEventHandlers) = configFile call CBA_fnc_compileEventHandlers; // from addon config
-} else {
-    GVAR(allEventHandlers) = call (uiNamespace getVariable QGVAR(fnc_getAllEventHandlers));
-};
-
+// always recompile extended event handlers
+// XEH_LOG("XEH: Compiling XEH START");
+GVAR(allEventHandlers) = configFile call CBA_fnc_compileEventHandlers; // from addon config
 GVAR(allEventHandlers) append (missionConfigFile call CBA_fnc_compileEventHandlers); // from mission config
 GVAR(allEventHandlers) append (campaignConfigFile call CBA_fnc_compileEventHandlers); // from campaign config
+// XEH_LOG("XEH: Compiling XEH END");
 
 // add extended event handlers to classes
 GVAR(fallbackRunning) = false;
@@ -81,18 +78,19 @@ GVAR(fallbackRunning) = false;
             call (_x select 2);
         };
     } else {
-        _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];
+        _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses", "_doesSomething"];
 
         // backwards comp, args in _this are already switched
         if (_eventName == "firedBis") then {
             _eventName = "fired";
         };
 
-        private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
-
-        #ifdef DEBUG_MODE_FULL
-            diag_log text format ["%1:%2=%3", _className, _eventName, _success];
-        #endif
+        if (_doesSomething) then {
+            private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("does something",_className,_eventName,_success);
+        } else {
+            TRACE_2("does NOT do something",_className,_eventName);
+        };
     };
 } forEach GVAR(allEventHandlers);
 
