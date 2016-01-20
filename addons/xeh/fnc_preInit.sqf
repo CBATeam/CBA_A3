@@ -61,15 +61,20 @@ GVAR(EventsLowercase) = [];
     };
 } forEach ([false, true] call CBA_fnc_supportMonitor);
 
-// recompile extended event handlers when enabled
-if (["xeh"] call CBA_fnc_isRecompileEnabled) then {
-    GVAR(allEventHandlers) = configFile call CBA_fnc_compileEventHandlers; // from addon config
-} else {
-    GVAR(allEventHandlers) = call (uiNamespace getVariable QGVAR(fnc_getAllEventHandlers));
-};
+// always recompile extended event handlers
+#ifdef DEBUG_MODE_FULL
+    XEH_LOG("XEH: Compiling XEH START");
+#endif
 
-GVAR(allEventHandlers) append (missionConfigFile call CBA_fnc_compileEventHandlers); // from mission config
-GVAR(allEventHandlers) append (campaignConfigFile call CBA_fnc_compileEventHandlers); // from campaign config
+GVAR(allEventHandlers) = [];
+
+{
+    GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
+} forEach [configFile, campaignConfigFile, missionConfigFile];
+
+#ifdef DEBUG_MODE_FULL
+    XEH_LOG("XEH: Compiling XEH END");
+#endif
 
 // add extended event handlers to classes
 GVAR(fallbackRunning) = false;
@@ -89,10 +94,7 @@ GVAR(fallbackRunning) = false;
         };
 
         private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
-
-        #ifdef DEBUG_MODE_FULL
-            diag_log text format ["%1:%2=%3", _className, _eventName, _success];
-        #endif
+        TRACE_3("addClassEventHandler",_className,_eventName,_success);
     };
 } forEach GVAR(allEventHandlers);
 
