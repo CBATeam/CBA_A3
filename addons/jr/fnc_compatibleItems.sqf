@@ -20,15 +20,12 @@
 params [["_weapon", "", [""]], ["_typefilter", 0]];
 if (_weapon == "") exitWith {[]};
 
-private ["_cfgWeapon"];
-_cfgWeapon = configfile >> "cfgweapons" >> _weapon;
+private _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
 
 if (isClass _cfgWeapon) then {
-    private ["_compatibleItems"];
-    _compatibleItems = [];
+    private _compatibleItems = [];
     {
-        private ["_cfgCompatibleItems"];
-        _cfgCompatibleItems = _x >> "compatibleItems";
+        private _cfgCompatibleItems = _x >> "compatibleItems";
         if (isarray _cfgCompatibleItems) then {
             {
                 if !(_x in _compatibleItems) then {_compatibleItems pushBack _x;};
