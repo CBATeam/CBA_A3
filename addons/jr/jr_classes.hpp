@@ -87,6 +87,7 @@ class asdg_OpticRail1913_short: asdg_OpticRail1913 { // attachments that fit on 
 
 class asdg_OpticRail1913_short_MG: asdg_OpticRail1913_short { // attachments that would not work well on machine guns
     class compatibleItems: compatibleItems {
+/* // moved to optional addon: jr_disable_long_scopes_on_short_mg_rail
         optic_SOS = 0;
         optic_DMS = 0;
         optic_LRPS = 0;
@@ -97,6 +98,7 @@ class asdg_OpticRail1913_short_MG: asdg_OpticRail1913_short { // attachments tha
         optic_KHS_hex = 0;
         optic_KHS_old = 0;
         optic_KHS_tan = 0;
+*/
     };
 };
 
