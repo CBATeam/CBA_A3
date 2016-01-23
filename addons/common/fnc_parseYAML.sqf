@@ -48,10 +48,10 @@ _raiseError =
     _lastChar = _lastLine select ((count _lastLine) - 1);
     _lastLine resize ((count _lastLine) - 1);
 
-    PUSH(_lastLine,ASCII_VERTICAL_BAR);
-    PUSH(_lastLine,ASCII_HASH);
-    PUSH(_lastLine,ASCII_VERTICAL_BAR);
-    PUSH(_lastLine,_lastChar);
+    _lastLine pushBack ASCII_VERTICAL_BAR;
+    _lastLine pushBack ASCII_HASH;
+    _lastLine pushBack ASCII_VERTICAL_BAR;
+    _lastLine pushBack _lastChar;
 
     _pos = _pos + 1;
     while { _pos < (count _yaml) } do {
@@ -59,7 +59,7 @@ _raiseError =
 
         if (_char in [ASCII_YAML_COMMENT, ASCII_CR, ASCII_NEWLINE]) exitWith {};
 
-        PUSH(_lastLine,_char);
+        _lastLine pushBack _char;
 
         _pos = _pos + 1;
     };
@@ -114,9 +114,9 @@ _parse =
             if (_char in _lineBreaks) then
             {
                 _currentIndent = 0;
-                PUSH(_lines,[]);
+                _lines pushBack [];
             } else {
-                PUSH(_lines select ((count _lines) - 1), _char);
+                _lines select ((count _lines) - 1) pushBack _char;
             };
 
             switch (_mode) do
@@ -142,11 +142,11 @@ _parse =
                         if (not _error) then
                         {
                             //TRACE_1("Added Array element",_value);
-                            PUSH(_data,_value);
+                            _data pushBack _value;
                             _mode = YAML_MODE_STRING;
                         };
                     } else {
-                        PUSH(_value,_char);
+                        _value pushBack _char;
                     };
                 };
                 case YAML_MODE_ASSOC_KEY:
@@ -166,7 +166,7 @@ _parse =
                             };
                             default
                             {
-                                PUSH(_key,_char);
+                                _key pushBack _char;
                             };
                         };
                     };
@@ -196,7 +196,7 @@ _parse =
                             _mode = YAML_MODE_STRING;
                         };
                     } else {
-                        PUSH(_value,_char);
+                        _value pushBack _char;
                     };
                 };
                 case YAML_MODE_STRING:
@@ -336,7 +336,7 @@ if (count _yaml > 0) then
 {
     if (not ((_yaml select ((count _yaml) - 1)) in _lineBreaks)) then
     {
-        PUSH(_yaml,ASCII_NEWLINE);
+        _yaml pushBack ASCII_NEWLINE;
     };
 };
 

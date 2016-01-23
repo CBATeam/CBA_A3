@@ -96,7 +96,7 @@ if !(isDedicated) then {
                 [GVAR(actionList), {
                     TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
                     if (!isNil "_value" && typeName(_value) == "ARRAY") then {
-                        PUSH(GVAR(actionIndexes), (vehicle player) addAction _value)
+                        GVAR(actionIndexes) pushBack (vehicle player) addAction _value
                     };
                 }] call CBA_fnc_hashEachPair;
             };

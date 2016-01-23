@@ -42,7 +42,7 @@ _number = [];
 // Format of player label is "<groupName>:<groupNumber> <playerName>"
 for "_i" from (_groupLabelLen + 1) to ((count _labelArray) - 1) do {
     if ((_labelArray select _i) == ASCII_SPACE) exitWith {};
-    PUSH(_number,_labelArray select _i);
+    _number pushBack _labelArray select _i;
 };
 
 // Go back to the original varName.

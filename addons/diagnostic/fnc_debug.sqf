@@ -47,7 +47,7 @@ _ar2msg = {
         _orig = _this;
         _str = "[";
     };
-    { PUSH(_ar,toArray _x) } forEach _orig;
+    { _ar pushBack toArray _x } forEach _orig;
     _msg = [];
     _total = 0; _i = 0;
     {
@@ -58,14 +58,14 @@ _ar2msg = {
             if (_i > 0) then { _str = _str + ", " };
             _str = _str + toString(_x);
         } else {
-            PUSH(_msg,_str);
+            _msg pushBack _str;
             _total = _c;
             _str = toString(_x);
         };
         _i = _i + 1;
     } forEach _ar;
     _str = _str + "]";
-    PUSH(_msg,_str);
+    _msg pushBack _str;
     _msg
 };
 
@@ -77,15 +77,15 @@ _str2msg = {
     {
         if (_i < 180) then
         {
-            PUSH(_nar,_x);
+            _nar pushBack _x;
             _i = _i + 1;
         } else {
-            PUSH(_msg,toString(_nar));
+            _msg pushBack toString(_nar);
             _nar = [_x];
             _i = 1;
         };
     } forEach _ar;
-    if (count _nar > 0) then { PUSH(_msg,toString(_nar)) };
+    if (count _nar > 0) then { _msg pushBack toString(_nar) };
     _msg
 };
 
@@ -94,7 +94,7 @@ _format = {
     _msg = [];
     switch (typeName _this) do
     {
-        case "ARRAY": { { { PUSH(_msg,_x) } forEach (_x call _str2msg) } forEach _this };
+        case "ARRAY": { { { _msg pushBack _x } forEach (_x call _str2msg) } forEach _this };
         case "STRING": { _msg = _this call _str2msg };
         default { _msg = format["%1", _this] call _str2msg };
     };
@@ -123,10 +123,10 @@ if (_type select 2) exitWith
 _msgAr = [];
 switch (typeName _message) do
 {
-    case "ARRAY": { _msgAr = [format["%3 (%2) %1 -", _component, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime]]; { PUSH(_msgAr,_x) } forEach (_message call _ar2msg) };
+    case "ARRAY": { _msgAr = [format["%3 (%2) %1 -", _component, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime]]; { _msgAr pushBack _x } forEach (_message call _ar2msg) };
     default { _msgAr = (format["%4 (%3) %1 - %2", _component, _message, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime] call _format) };
 };
 
 if (_type select 0) then { if (SLX_XEH_MACHINE select 0) then { { ADDON globalChat _x } forEach _msgAr } };
 if (_type select 1) then { { if (_x != "") then { diag_log text _x } } forEach _msgAr };
-//PUSH(GVAR(debug),_msgAr); // TODO: Evaluate cleanup system?
+//GVAR(debug) pushBack _msgAr; // TODO: Evaluate cleanup system?

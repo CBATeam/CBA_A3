@@ -38,7 +38,7 @@ if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
             _ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
             _ver_act = getText(_entry >> "versionAct");
             _ver_arr = [_ver_line, _ver_act];
-            PUSH(_ver_list,_ver_arr);
+            _ver_list pushBack _ver_arr;
         };
     };
 };

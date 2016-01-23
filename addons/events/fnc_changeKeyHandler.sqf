@@ -53,7 +53,7 @@ if (_exit) exitWith { false };
 if(_key>(count _handlers))then{_handlers resize(_key+1);};
 _ar = _handlers select _key;
 if(isNil"_ar")then{_ar=[]};
-PUSH(_ar,_hashKey);
+_ar pushBack _hashKey;
 _handlers set [_key, _ar];
 
 // Update keydata

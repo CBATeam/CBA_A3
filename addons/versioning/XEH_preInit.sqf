@@ -34,7 +34,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
             for "_j" from 0 to ((count _deps) - 1) do {
                 _entry = _deps select _j;
                 if (isArray(_entry)) then {
-                    PUSH(_dependencies,[DATA]);
+                    _dependencies pushBack [DATA];
                 };
             };
             [GVAR(dependencies), toLower(configName _prefix), _dependencies] call (uiNamespace getVariable "CBA_fnc_hashSet");

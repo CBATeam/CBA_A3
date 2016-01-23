@@ -15,7 +15,7 @@ _addons = [];
 for "_i" from 0 to (_c - 1) do {
     _entry = _cfg select _i;
     if (isClass _entry) then {
-        PUSH(_addons,configName _entry);
+        _addons pushBack configName _entry;
     };
 };
 
@@ -24,4 +24,3 @@ activateAddons _addons;
 TRACE_1("Activated",count _addons);
 
 CBA_common_addons = _addons;
-
