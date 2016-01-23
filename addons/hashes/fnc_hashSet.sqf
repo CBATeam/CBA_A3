@@ -26,15 +26,11 @@ private ["_index", "_isDefault"];
 // ----------------------------------------------------------------------------
 params ["_hash","_key","_value"];
 
-if (isNil "_value") then { _value = nil};
 if (isNil "_key") exitWith {_hash};
-if (isNil "_hash") exitWith {_hash;};
-
-if (isNil "BIS_fnc_areEqual") then { LOG( "WARNING: BIS_fnc_areEqual is Nil") };
+if (isNil "_hash") exitWith {_hash};
 
 // Work out whether the new value is the default value for this assoc.
-_isDefault = [if (isNil "_value") then { nil } else { _value },
-    _hash select HASH_DEFAULT_VALUE] call (uiNamespace getVariable "BIS_fnc_areEqual");
+_isDefault = _value isEqualTo _hash select HASH_DEFAULT_VALUE;
 
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then {

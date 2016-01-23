@@ -46,5 +46,10 @@ _values resize (count _array);
     _values set [_forEachIndex, _x select 1];
 } forEach _array;
 
+/* //1.55 dev
+private _keys = _array apply {_x select 0};
+private _values = _array apply {_x select 1};
+*/
+
 // Return.
-[TYPE_HASH, _keys, _values, if (isNil "_defaultValue") then {nil} else {_defaultValue};];
+[TYPE_HASH, _keys, _values, _defaultValue];

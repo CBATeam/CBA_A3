@@ -39,10 +39,7 @@ SCRIPT(hashEachPair);
 
 params ["_hash","_code"];
 
-private ["_keys", "_values"];
-
-_keys = _hash select HASH_KEYS;
-_values = _hash select HASH_VALUES;
+_hash params ["", "_keys", "_values"];
 
 {
     private _key = _x;
