@@ -105,6 +105,12 @@ class CfgFunctions
                 description = "Returns the difference of two vectors.  Vectors can be 2D or 3D.";
                 file = "\x\cba\addons\vectors\fnc_vectSubtract.sqf";
             };
+            // CBA_fnc_testVectors
+            class testVectors
+            {
+                description = "Internal Self Check. Check the RPT file for results.";
+                file = "\x\cba\addons\vectors\test.sqf";
+            };
         };
     };
 };

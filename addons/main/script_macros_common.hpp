@@ -1259,6 +1259,39 @@ Author:
     };
 
 /* -------------------------------------------
+Macro: TEST_DEFINED_AND_OP()
+    Tests that A and B are defined and (A OPERATOR B) is true.
+    If the test fails, an error is raised with the given MESSAGE.
+
+Parameters:
+    A - First value [Any]
+    OPERATOR - Binary operator to use [Operator]
+    B - Second value [Any]
+    MESSSAGE - Message to display [String]
+
+Example:
+    (begin example)
+        TEST_OP(_fish,>,5,"Too few fish!");
+    (end)
+
+Author:
+    Killswitch, PabstMirror
+------------------------------------------- */
+#define TEST_DEFINED_AND_OP(A,OPERATOR,B,MESSAGE) \
+    if (isNil #A) then { \
+        TEST_FAIL('(A is not defined) ' + (MESSAGE)); \
+    } else { \
+        if (isNil #B) then { \
+            TEST_FAIL('(B is not defined) ' + (MESSAGE)); \
+        } else { \
+            if ((A) OPERATOR (B)) then { \
+                TEST_SUCCESS('(A OPERATOR B) ' + (MESSAGE)) \
+            } else { \
+                TEST_FAIL('(A OPERATOR B) ' + (MESSAGE)) \
+    }; }; };
+
+
+/* -------------------------------------------
 Macro: TEST_DEFINED()
     Tests that a VARIABLE is defined.
 
