@@ -26,12 +26,6 @@ scriptName "fnc_scaleVectTo.sqf";
 #include "script_component.hpp"
 SCRIPT(scaleVectTo);
 
-
-private ["_magn", "_scaleFactor", "_outVect"];
-
 params ["_vect","_newMagn"];
 
-_magn = _vect call BIS_fnc_magnitude;
-_scaleFactor = _newMagn / _magn;
-_outVect = [_vect, _scaleFactor] call CBA_fnc_scaleVect;
-_outVect;
+(vectorNormalized _vect) vectorMultiply _newMagn

@@ -14,7 +14,6 @@ Examples:
     (begin example)
 
     (end)
-*  @call sct_simplifyAngle.sqf
 
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
