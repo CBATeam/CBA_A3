@@ -6,9 +6,10 @@ SCRIPT(XEH_postInit);
 */
 
 if (!SLX_XEH_DisableLogging) then {
-    private "_logMsg";
+    private ["_logMsg", "_filter"];
     _logMsg = "CBA_VERSIONING: ";
-    [GVAR(versions), { _logMsg = (_logMsg + format["%1=%2, ", _key, (_value select 0) joinString "."])}] call CBA_fnc_hashEachPair;
+    _filter = {if (_x isEqualType 1) then {[_x] call CBA_fnc_formatNumber} else {_x}};
+    [GVAR(versions), { _logMsg = (_logMsg + format["%1=%2, ", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."])}] call CBA_fnc_hashEachPair;
 
     diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
 };
