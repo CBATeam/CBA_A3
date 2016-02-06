@@ -20,7 +20,7 @@ Game as integer from SLX_XEH_MACHINE
 2 = TOH
 3 = Arma3
 */
-_game = SLX_XEH_MACHINE select 14;
+_game = SLX_XEH_MACHINE select 15;
 
 if (_game > 3) then {
     LOG ("FIXME! - Unknown game " + (SLX_XEH_MACHINE select 15) + ". All TEST tests will fail! " + _fn); //Sanity check and reminder

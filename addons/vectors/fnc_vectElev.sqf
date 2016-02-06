@@ -15,8 +15,6 @@ Examples:
 
     (end)
 
-*  @[not needed yet]call CBA_fnc_simplifyElev.sqf
-
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
@@ -26,10 +24,8 @@ scriptName "fnc_vectElev.sqf";
 SCRIPT(vectElev);
 
 
-private ["_dist2D"];
-
 params ["_pos1","_pos2"];
 
-_dist2D = (_this) call CBA_fnc_vectMagn2D;
+private _dist2D = (_this) call CBA_fnc_vectMagn2D;
 
 (_this select 2) atan2 _dist2D;
