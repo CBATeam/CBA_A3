@@ -116,7 +116,7 @@ _parse =
                 _currentIndent = 0;
                 _lines pushBack [];
             } else {
-                _lines select ((count _lines) - 1) pushBack _char;
+                (_lines select ((count _lines) - 1)) pushBack _char;
             };
 
             switch (_mode) do

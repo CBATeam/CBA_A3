@@ -47,7 +47,7 @@ _ar2msg = {
         _orig = _this;
         _str = "[";
     };
-    { _ar pushBack toArray _x } forEach _orig;
+    { _ar pushBack (toArray _x) } forEach _orig;
     _msg = [];
     _total = 0; _i = 0;
     {
@@ -80,12 +80,12 @@ _str2msg = {
             _nar pushBack _x;
             _i = _i + 1;
         } else {
-            _msg pushBack toString(_nar);
+            _msg pushBack (toString(_nar));
             _nar = [_x];
             _i = 1;
         };
     } forEach _ar;
-    if (count _nar > 0) then { _msg pushBack toString(_nar) };
+    if (count _nar > 0) then { _msg pushBack (toString(_nar)) };
     _msg
 };
 

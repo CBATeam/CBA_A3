@@ -36,7 +36,7 @@ if (count _tp > 0) then {
         _turs = [];
         for "_i" from 0 to (count _turrets) - 1 do {
             _y = _turrets select _i;
-            if (isClass(_y)) then { _turs pushBack _y };
+            if (isClass(_y)) then { _turs pushBack _y; };
         };
         if ((count _turs)-1 >= _x) then {
             _path = (_turs select _x);
