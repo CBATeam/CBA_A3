@@ -30,7 +30,7 @@ if (isNil "_key") exitWith {_hash};
 if (isNil "_hash") exitWith {_hash};
 
 // Work out whether the new value is the default value for this assoc.
-_isDefault = _value isEqualTo _hash select HASH_DEFAULT_VALUE;
+_isDefault = _value isEqualTo (_hash select HASH_DEFAULT_VALUE);
 
 _index = (_hash select HASH_KEYS) find _key;
 if (_index >= 0) then {

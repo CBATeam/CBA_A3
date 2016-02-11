@@ -33,7 +33,6 @@ SCRIPT(hashCreate);
 
 // -----------------------------------------------------------------------------
 params [["_array", [], [[]]], "_defaultValue"];
-private ["_keys", "_values"];
 
 private _keys = [];
 private _values = [];
