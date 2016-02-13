@@ -87,6 +87,12 @@ class CfgFunctions
                 description = "Creates a marker all at once.";
                 file = "\x\cba\addons\common\fnc_createMarker.sqf";
             };
+            // CBA_fnc_createNamespace
+            class createNamespace
+            {
+                description = "Creates a namespace. Used to store and read variables via setVariable and getVariable.";
+                file = "\x\cba\addons\common\fnc_createNamespace.sqf";
+            };
             // CBA_fnc_createTrigger
             class createTrigger
             {
@@ -104,6 +110,12 @@ class CfgFunctions
             {
                 description = "A function used to delete entities";
                 file = "\x\cba\addons\common\fnc_deleteEntity.sqf";
+            };
+            // CBA_fnc_deleteNamespace
+            class deleteNamespace
+            {
+                description = "Deletes a namespace created with CBA_fnc_createNamespace.";
+                file = "\x\cba\addons\common\fnc_deleteNamespace.sqf";
             };
             // CBA_fnc_determineMuzzles
             class determineMuzzles
