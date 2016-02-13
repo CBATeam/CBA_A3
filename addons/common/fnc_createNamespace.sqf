@@ -20,5 +20,6 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(createNamespace);
 
 createLocation ["CBA_NamespaceDummy", [-1000, -1000, 0], 0, 0]

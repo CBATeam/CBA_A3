@@ -19,6 +19,7 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(deleteNamespace);
 
 params [["_namespace", locationNull, [locationNull]]];
 
