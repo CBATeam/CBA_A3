@@ -7,7 +7,7 @@ call {
 params [["_event", "", [""]], ["_args", []], ["_className", "", [""]]];
 
 // translate BI event names to CBA event names
-_event = ["", "DisplayLoad", "DisplayUnload"] param [["", "onload", "onunoad"] find toLower _event, ""];
+_event = ["", "DisplayLoad", "DisplayUnload"] param [["", "onload", "onunload"] find toLower _event, ""];
 
 if !(_event isEqualTo "") then {
     {
