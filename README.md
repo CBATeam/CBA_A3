@@ -19,7 +19,6 @@ PBO                                    | Description
 cba_cache_disable.pbo                  | Disables CBA's function caching. (Dev Tool)
 cba_diagnostic_disable_xeh_logging.pbo | Disables all additional XEH RPT logging.
 cba_diagnostic_enable_logging.pbo      | Enables additional logging (Dev Tool)
-cba_enable_auto_xeh.pbo                | Automatically add Extended Event Handler functionality to units and vehicles that do not have XEH enabled. This might cause unpredictable behavior.
 
 ### CBA Caching
 
