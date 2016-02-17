@@ -61,4 +61,11 @@ class CfgFunctions {
             };
         };
     };
+    class A3 {
+        class GUI {
+            class initDisplay {
+                file = PATHTOF(fnc_initDisplay.sqf);
+            };
+        };
+    };
 };

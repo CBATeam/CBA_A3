@@ -73,3 +73,18 @@ class Extended_SoundPlayed_EventHandlers {};
 class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
+
+// display xeh
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayDebugPublic {
+        CBA_test1 = "diag_log _this";
+        CBA_test2 = "systemChat str _this";
+    };
+};
+
+class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayDebugPublic {
+        CBA_test3 = "diag_log _this";
+        CBA_test4 = "systemChat str _this";
+    };
+};
