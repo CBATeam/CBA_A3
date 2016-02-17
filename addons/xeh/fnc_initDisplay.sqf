@@ -15,5 +15,5 @@ if !(_event isEqualTo "") then {
             private ["_event", "_className"];
             _args call compile getText _x;
         } forEach configProperties [_x >> XEH_FORMAT_CONFIG_NAME(_event) >> _className, "isText _x"];
-    } forEach [configFile, campaignConfigFile, missionConfigFile];
+    } forEach XEH_MAIN_CONFIGS;
 };

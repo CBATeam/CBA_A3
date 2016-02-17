@@ -70,7 +70,7 @@ GVAR(allEventHandlers) = [];
 
 {
     GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
-} forEach [configFile, campaignConfigFile, missionConfigFile];
+} forEach XEH_MAIN_CONFIGS;
 
 #ifdef DEBUG_MODE_FULL
     XEH_LOG("XEH: Compiling XEH END");
