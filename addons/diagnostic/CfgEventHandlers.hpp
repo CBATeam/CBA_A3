@@ -7,8 +7,8 @@ class Extended_PreInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayDebugPublic {
-        // lower case false is macro for 0.
         CBA_extendedDebug = QUOTE(_this call COMPILE_FILE(fnc_initExtendedDebug));
+        // remove scripted cancel button.
         CBA_removeCancelBtn = "((_this select 0) displayCtrl 2) ctrlEnable false; ((_this select 0) displayCtrl 2) ctrlShow false;";
     };
     class RscDisplayInterrupt {
