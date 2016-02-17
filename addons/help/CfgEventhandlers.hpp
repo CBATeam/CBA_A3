@@ -1,3 +1,4 @@
+
 class Extended_PreInit_EventHandlers {
     class ADDON {
         clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
@@ -10,11 +11,17 @@ class Extended_PostInit_EventHandlers {
     };
 };
 
-class CBA_MouseTrapEvent {
-    class IDC_2222711 { //CBA_CREDITS_M_IDC
-        cba_ver_line = "\x\cba\addons\help\ver_line.sqf";
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayMain {
+        CBA_helpVersion = QUOTE([(_this select 0) displayCtrl CBA_CREDITS_VER_IDC] call COMPILE_FILE(ver_line));
+        CBA_helpCredits = QUOTE(_this call COMPILE_FILE(cred_line));
     };
-    class IDC_2222714 { //CBA_CREDITS_M_P_IDC
-        cba_cred_line = "\x\cba\addons\help\cred_line.sqf";
+    class RscDisplayInterrupt {
+        CBA_helpVersion = QUOTE([(_this select 0) displayCtrl CBA_CREDITS_VER_IDC] call COMPILE_FILE(ver_line));
+        CBA_helpCredits = QUOTE(_this call COMPILE_FILE(cred_line));
+    };
+    class RscDisplayMPInterrupt {
+        CBA_helpVersion = QUOTE([(_this select 0) displayCtrl CBA_CREDITS_VER_IDC] call COMPILE_FILE(ver_line));
+        CBA_helpCredits = QUOTE(_this call COMPILE_FILE(cred_line));
     };
 };

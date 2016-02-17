@@ -5,14 +5,13 @@
 if (isNil "CBA_fnc_defaultParam") then { CBA_fnc_defaultParam = uiNamespace getVariable "CBA_fnc_defaultParam" };
 
 disableSerialization;
-private ["_trap", "_disp", "_ctrl_b", "_x", "_ctrl_t", "_ctrl_o", "_next", "_config", "_ver_list", "_entry", "_ver_line", "_ver_act", "_ver_arr"];
+private ["_trap", "_disp", "_ctrl_b", "_x", "_ctrl_o", "_next", "_config", "_ver_list", "_entry", "_ver_line", "_ver_act", "_ver_arr"];
 params ["_ctrl", ["_key",0]];
 
 _trap = ctrlIDC _ctrl != CBA_CREDITS_VER_BTN_IDC;
 _disp = ctrlParent _ctrl;
 _ctrl = _disp displayCtrl CBA_CREDITS_VER_IDC;
 _ctrl_b = _disp displayCtrl CBA_CREDITS_VER_BTN_IDC;
-_ctrl_t = _disp displayCtrl CBA_CREDITS_M_IDC;
 
 if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
     _ver_list = [];
