@@ -16,7 +16,7 @@
     Examples:
         _acclist = ["LMG_Mk200_F"] call CBA_fnc_compatibleItems;
         _muzzleacclist = ["LMG_Mk200_F", 101] call CBA_fnc_compatibleItems;
-*/
+ */
 #include "script_component.hpp"
 params [["_weapon", "", [""]], ["_typefilter", 0]];
 if (_weapon == "") exitWith {[]};
@@ -24,26 +24,23 @@ if (_weapon == "") exitWith {[]};
 if (isNil QGVAR(namespace)) then {
     GVAR(namespace) = call CBA_fnc_createNamespace;
 };
-private _compatibleItems = GVAR(namespace) getVariable format [QGVAR(cached_%1), _weapon];
+private _compatibleItems = GVAR(namespace) getVariable _weapon;
 
 if (isNil "_compatibleItems") then {
-    private ["_cfgWeapon"];
-    _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
+    _compatibleItems = [];
+    private _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
     if (isClass _cfgWeapon) then {
-        private ["_compatibleItems"];
-        _compatibleItems = [];
         {
-            private ["_cfgCompatibleItems"];
-            _cfgCompatibleItems = _x >> "compatibleItems";
+            private _cfgCompatibleItems = _x >> "compatibleItems";
             if (isArray _cfgCompatibleItems) then {
                 {
                     if !(_x in _compatibleItems) then {_compatibleItems pushBack _x;};
                     nil
                 } count (getArray _cfgCompatibleItems);
             } else {
-                if (isclass _cfgCompatibleItems) then {
+                if (isClass _cfgCompatibleItems) then {
                     {
-                        if (getnumber _x > 0 && {!((configname _x) in _compatibleItems)}) then {_compatibleItems pushBack (configname _x)};
+                        if ((getnumber _x > 0) && {!((configName _x) in _compatibleItems)}) then {_compatibleItems pushBack (configName _x)};
                         nil
                     } count configproperties [_cfgCompatibleItems, "isNumber _x"];
                 };
@@ -51,15 +48,14 @@ if (isNil "_compatibleItems") then {
             nil
         } count configproperties [_cfgWeapon >> "WeaponSlotsInfo","isclass _x"];
 
+        GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
     } else {
         ["'%1' not found in CfgWeapons",_weapon] call bis_fnc_error;
-        []
     };
+};
+
+if (_typefilter == 0) then { //return
+    _compatibleItems 
 } else {
-    if (_typefilter == 0) then {
-        _compatibleItems
-    } else {
-        // repace for 1.56 with _compatibleItems select {_typefilter == getNumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")};
-        [_compatibleItems, {_typefilter == getNumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")}] call BIS_fnc_conditionalSelect;
-    };
+    _compatibleItems select {_typefilter == getNumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")};
 };
