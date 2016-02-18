@@ -1,76 +1,106 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#include "script_dialog_defines.hpp"
-
-if (isNil "CBA_fnc_defaultParam") then { CBA_fnc_defaultParam = uiNamespace getVariable "CBA_fnc_defaultParam" };
 
 disableSerialization;
-private ["_trap", "_disp", "_ctrl_b", "_x", "_ctrl_o", "_next", "_config", "_ver_list", "_entry", "_ver_line", "_ver_act", "_ver_arr"];
-params ["_ctrl", ["_key",0]];
 
-_trap = ctrlIDC _ctrl != CBA_CREDITS_VER_BTN_IDC;
-_disp = ctrlParent _ctrl;
-_ctrl = _disp displayCtrl CBA_CREDITS_VER_IDC;
-_ctrl_b = _disp displayCtrl CBA_CREDITS_VER_BTN_IDC;
+// get display
+params [["_display", displayNull, [displayNull, controlNull]], ["_key", 0]];
 
-if ( isNil {uiNamespace getVariable QGVAR(VerList)} ) then {
-    _ver_list = [];
-    uiNamespace setVariable [QGVAR(VerList), _ver_list];
-    //Position version banner
-    _ctrl_o = _disp displayCtrl CA_Version_IDC;
-    //align with BI version position
-    _x = __RIX(-21);
-    _y = __IY(23);
-    _w = __IW(8);
-    _h = __IH(1);
-    _ctrl ctrlSetPosition [_x, _y, _w, _h];
+if (_display isEqualType controlNull) then {
+    _display = ctrlParent _display;
+};
+
+private _ctrl = _display displayCtrl CBA_CREDITS_VER_IDC;
+private _ctrlBtn = _display displayCtrl CBA_CREDITS_VER_BTN_IDC;
+
+if (isNull _ctrl) exitWith {};
+
+// create addon list
+if (isNil {uiNamespace getVariable QGVAR(VerList)}) then {
+    private _verList = [];
+    uiNamespace setVariable [QGVAR(VerList), _verList];
+
+    // align with BI version position
+    private _posX = __RIX(-21);
+    private _posY = __IY(23);
+    private _posW = __IW(8);
+    private _posH = __IH(1);
+
+    _ctrl ctrlSetPosition [_posX, _posY, _posW, _posH];
     _ctrl ctrlCommit 0;
-    //button align
-    _ctrl_b ctrlSetPosition [_x, _y, _w, _h];
-    _ctrl_b ctrlCommit 0;
 
-    //Gather version info
+    // button align
+    _ctrlBtn ctrlSetPosition [_posX, _posY, _posW, _posH];
+    _ctrlBtn ctrlCommit 0;
+
+    // gather version info
     _config = configFile >> "CfgPatches";
-    for "_x" from 0 to ((count _config) - 1) do {
-        _entry = _config select _x;
-        if ( isClass _entry && {isText(_entry >> "versionDesc")} ) then {
-            _ver_line = getText(_entry >> "versionDesc") + " v" + getText(_entry >> "version");
-            _ver_act = getText(_entry >> "versionAct");
-            _ver_arr = [_ver_line, _ver_act];
-            PUSH(_ver_list,_ver_arr);
-        };
-    };
+
+    {
+        private _entry = _x;
+
+        private _verLine = format ["%1 v%2", getText (_entry >> "versionDesc"), getText (_entry >> "version")];
+        private _verAct = getText (_entry >> "versionAct");
+
+        _verList pushBack [_verLine, _verAct];
+    } forEach ("isText (_x >> 'versionDesc')" configClasses _config);
 };
 
-if (_trap) then {
-    [_ctrl_b] spawn { //will terminate when main menu mission exits
-        while {true} do {
+// start loop that cycles through all addons
+terminate (_display getVariable [QGVAR(VerScript), scriptNull]);
+
+private _verScript = [_display] spawn { // will terminate when main menu mission exits
+    uiSleep 3;
+    QUOTE(_this call COMPILE_FILE(ver_line)) configClasses (configFile >> "CBA_DirectCall");
+};
+
+_display setVariable [QGVAR(VerScript), _verScript];
+
+// start loop with mouse moving event on main menu. this is used, because loops can't be used at that point
+if !(_display getVariable [QGVAR(VerScriptFlag), false]) then {
+    _display setVariable [QGVAR(VerScriptFlag), true];
+    _display displayAddEventHandler ["mouseMoving", {
+        params ["_display"];
+
+        if (!scriptDone (_display getVariable [QGVAR(VerScript), scriptNull])) exitWith {};
+
+        private _verScript = [_display] spawn { // will terminate when main menu mission exits
             uiSleep 3;
-            if (isNil QGVAR(VerPause)) then { _this call compile preprocessFileLineNumbers '\x\cba\addons\help\ver_line.sqf'; };
+            QUOTE(_this call COMPILE_FILE(ver_line)) configClasses (configFile >> "CBA_DirectCall");
         };
-    };
+
+        _display setVariable [QGVAR(VerScript), _verScript];
+    }];
 };
 
-//left click forward, other click back
-if ( isNil {uiNamespace getVariable QGVAR(VerNext)} ) then { uiNamespace setVariable [QGVAR(VerNext), -1]; };
-_next = uiNamespace getVariable QGVAR(VerNext);
-if ( _key == 0 ) then {
+// left click forward, other click back
+if (isNil {uiNamespace getVariable QGVAR(VerNext)}) then {
+    uiNamespace setVariable [QGVAR(VerNext), -1];
+};
+
+private _next = uiNamespace getVariable QGVAR(VerNext);
+
+if (_key isEqualTo 0) then {
     _next = _next + 1;
 } else {
     _next = _next - 1;
 };
-//stay in bounds
-_ver_list = uiNamespace getVariable QGVAR(VerList);
-if ( _next >= count _ver_list ) then {
+
+// stay in bounds
+_verList = uiNamespace getVariable QGVAR(VerList);
+
+if (_next >= count _verList) then {
     _next = 0;
 } else {
-    if ( _next < 0 ) then { _next = count _ver_list - 1; };
+    if (_next < 0) then {
+        _next = count _verList - 1;
+    };
 };
+
 uiNamespace setVariable [QGVAR(VerNext), _next];
 
-_ver_arr = _ver_list select _next;
-_ver_line = _ver_arr select 0;
-_ver_act = _ver_arr select 1;
+// add single line
+(_verList select _next) params ["_verLine", "_verAct"];
 
-_ctrl ctrlSetText _ver_line; //print version line
-_ctrl_b ctrlSetEventHandler ["MouseButtonDblClick", _ver_act]; //set double-click action if any
+_ctrl ctrlSetText _verLine; // print version line
+_ctrlBtn ctrlSetEventHandler ["MouseButtonDblClick", _verAct]; // set double-click action if any

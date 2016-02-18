@@ -1,71 +1,68 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#include "script_dialog_defines.hpp"
 
 disableSerialization;
-private ["_disp", "_ctrlt", "_ctrl", "_config", "_stop", "_rand", "_entry", "_name", "_authors", "_author", "_url", "_text", "_version"];
 
-if ( isNil QGVAR(show_proc) ) then {
-    GVAR(show_proc) = true;
+// get display
+params [["_display", displayNull, [displayNull, controlNull]]];
 
-    //get display control
-    if (typeName (_this select 0) == "DISPLAY") then {
-        _disp = _this select 0;
-    };
-
-    if (typeName (_this select 0) == "CONTROL") then {
-        _ctrlt = _this select 0;
-        _disp = ctrlParent _ctrlt;
-    };
-
-    _ctrl = _disp displayCtrl CBA_CREDITS_CONT_IDC;
-
-    //get settings
-    {
-        if (isNil _x) then { missionNamespace setVariable [_x, isClass(configFile/"CfgPatches"/_x)] };
-    } forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
-
-    //TRACE_1("",ctrlText _ctrl);
-    //if text not already shown
-    if ( (ctrlText _ctrl) == "" && {!CBA_DisableCredits} ) then {
-        //find addon with author
-        _config = configFile >> "CfgPatches";
-        _stop = false;
-        while { ! _stop } do {
-            _rand = floor(random(count _config));
-            _entry = _config select _rand;
-            if ( isClass _entry ) then { _stop = isArray (_entry >> "author"); };
-            //TRACE_1("",configName _entry);
-        };
-
-        //addon name
-        _name = configName _entry;
-        if ( ! CBA_MonochromeCredits ) then { _name = "<t color='#99cccc'>" + _name + "</t>"; };
-        //author(s) name
-        _authors = getArray(_entry >> "author");
-        _author = _authors select 0;
-        for "_x" from 1 to (count(_authors)-1) do {
-            if ( typeName (_authors select _x) == "STRING" ) then { _author = _author + ", " + (_authors select _x); }
-        };
-        //url if any
-        if (isText (_entry >> "authorUrl")) then {
-            _url = getText(_entry >> "authorUrl");
-            if ( ! CBA_MonochromeCredits ) then { _url = "<t color='#566D7E'>" + _url + "</t>"; };
-        } else {
-            _url = "";
-        };
-
-        //version if any
-        if (isText (_entry >> "version")) then {
-            _version = " v" + getText(_entry >> "version");
-        } else {
-            _version = "";
-        };
-
-        //single line
-        _text = _name + _version + " by " + _author + " " + _url;
-        _ctrl ctrlSetStructuredText parseText _text;
-        //TRACE_1("2",ctrlText _ctrl);
-    };
-    GVAR(show_proc) = nil;
+if (_display isEqualType controlNull) then {
+    _display = ctrlParent _display;
 };
+
+private _ctrl = _display displayCtrl CBA_CREDITS_CONT_IDC;
+
+if !(ctrlText _ctrl isEqualTo "") exitWith {};
+
+// get settings
+{
+    if (isNil _x) then {
+        missionNamespace setVariable [_x, isClass (configFile >> "CfgPatches" >> _x)];
+    };
+} forEach ["CBA_DisableCredits", "CBA_MonochromeCredits"];
+
+if (CBA_DisableCredits) exitWith {};
+
+// find addon with author
+private _config = configFile >> "CfgPatches";
+private _entry = selectRandom ("isArray (_x >> 'author')" configClasses _config);
+
+if (isNil "_entry") exitWith {};
+
+// addon name
+private _name = configName _entry;
+
+if (!CBA_MonochromeCredits) then {
+    _name = format ["<t color='#99cccc'>%1</t>", _name];
+};
+
+// author(s) name
+private _authors = getArray (_entry >> "author");
+private _author = _authors deleteAt 0;
+
+{
+    if (_x isEqualType "") then {
+        _author = format ["%1, %2", _author, _x];
+    };
+} forEach _authors;
+
+// url if any
+private _url = "";
+
+if (isText (_entry >> "authorUrl")) then {
+    _url = getText (_entry >> "authorUrl");
+
+    if (!CBA_MonochromeCredits) then {
+        _url = format ["<t color='#566D7E'>%1</t>", _url];
+    };
+};
+
+// version if any
+private _version = "";
+
+if (isText (_entry >> "version")) then {
+    _version = format [" v%1", getText (_entry >> "version")];
+};
+
+// add single line
+_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author, _url];

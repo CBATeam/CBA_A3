@@ -8,8 +8,9 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-PREP(help);
-PREP(describe);
+FUNC(help) = {
+    call BIS_fnc_help;
+};
 
 FUNC(readConfig) = {
     params ["_type"];
