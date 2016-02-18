@@ -46,7 +46,7 @@ class RscDisplayMain: RscStandardDisplay {
 
         class CBA_Credits_Ver_Btn: CBA_Credits_Ver_Btn {
             idc = CBA_CREDITS_VER_BTN_IDC;
-            onMouseButtonClick = QUOTE(_this call COMPILE_FILE(ver_line));
+            onMouseButtonClick = QUOTE(_this call COMPILE_FILE(fnc_setVersionLine));
         };
 
         class CBA_Credits_Cont_C: CBA_Credits_Cont {

@@ -1,3 +1,17 @@
+/* ----------------------------------------------------------------------------
+Function: CBA_help_fnc_setVersionLine
+
+Description:
+    Displays all CfgPatches with a "versionDesc" entry in the main menu. Mods are cycled automatically every 3 seconds or can be browsed using LMB and RMB.
+    Double clicking executes the script in "versionAct".
+
+Parameters:
+    0: _display - Main menu display or a control of the display. <DISPLAY, CONTROL>
+    1: _key     - 0: LMB - next mod, 1: RMB - previous mod <NUMBER> (optional, default: 0)
+
+Returns:
+    None
+---------------------------------------------------------------------------- */
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
@@ -51,7 +65,7 @@ terminate (_display getVariable [QGVAR(VerScript), scriptNull]);
 
 private _verScript = [_display] spawn { // will terminate when main menu mission exits
     uiSleep 3;
-    QUOTE(_this call COMPILE_FILE(ver_line)) configClasses (configFile >> "CBA_DirectCall");
+    QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
 };
 
 _display setVariable [QGVAR(VerScript), _verScript];
@@ -66,7 +80,7 @@ if !(_display getVariable [QGVAR(VerScriptFlag), false]) then {
 
         private _verScript = [_display] spawn { // will terminate when main menu mission exits
             uiSleep 3;
-            QUOTE(_this call COMPILE_FILE(ver_line)) configClasses (configFile >> "CBA_DirectCall");
+            QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
         };
 
         _display setVariable [QGVAR(VerScript), _verScript];

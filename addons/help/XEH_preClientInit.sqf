@@ -7,26 +7,6 @@ ADDON = false;
 
 FUNC(help) = {call BIS_fnc_help};
 
-FUNC(readConfig) = {
-    params ["_type"];
-
-    private _config = configFile >> _type;
-
-    private _hash1 = call CBA_fnc_createNamespace;
-    private _hash2 = call CBA_fnc_createNamespace;
-    private _hash3 = call CBA_fnc_createNamespace;
-
-    {
-        private _entry = _x;
-
-        _hash1 setVariable [configName _entry, getArray (_entry >> "author")];
-        _hash2 setVariable [configName _entry, getText (_entry >> "authorUrl")];
-        _hash3 setVariable [configName _entry, getText (_entry >> "version")];
-    } forEach ("isArray (_x >> 'author')" configClasses _config);
-
-    [_hash1, _hash2, _hash3]
-};
-
 FUNC(process) = {
     params ["_hash1", "_hash2", "_hash3"];
 
@@ -58,18 +38,17 @@ private _fnc_getKeyName = {
     private _result = "^";
 
     {
-        private _keyname1 = call compile format ["format ['%1', %2]", "%1", keyName _x];
+        private _keyName = call compile format ["format ['%1', %2]", "%1", keyName _x];
+        _keyName = [_keyName, " "] call CBA_fnc_split;
 
-        _keyname1 = [_keyname1, " "] call CBA_fnc_split;
-
-        private _keyname2 = "^";
+        private _keyText = "^";
 
         {
-            _keyname2 = _keyname2 + " " + _x;
-        } forEach _keyname1;
+            _keyText = _keyText + " " + _x;
+        } forEach _keyName;
 
-        _keyname2 = [_keyname2, "^ ", ""] call CBA_fnc_replace;
-        _result = _result + "-" + _keyname2;
+        _keyText = [_keyText, "^ ", ""] call CBA_fnc_replace;
+        _result = _result + "-" + _keyText;
     } forEach _keys;
 
     _result = [_result, "^ ", ""] call CBA_fnc_replace;
@@ -133,8 +112,28 @@ GVAR(keys) = _text;
 // credits
 GVAR(credits) = call CBA_fnc_createNamespace;
 
+private _fnc_readCreditsFromConfig = {
+    params ["_type"];
+
+    private _config = configFile >> _type;
+
+    private _hash1 = call CBA_fnc_createNamespace;
+    private _hash2 = call CBA_fnc_createNamespace;
+    private _hash3 = call CBA_fnc_createNamespace;
+
+    {
+        private _entry = _x;
+
+        _hash1 setVariable [configName _entry, getArray (_entry >> "author")];
+        _hash2 setVariable [configName _entry, getText (_entry >> "authorUrl")];
+        _hash3 setVariable [configName _entry, getText (_entry >> "version")];
+    } forEach ("isArray (_x >> 'author')" configClasses _config);
+
+    [_hash1, _hash2, _hash3]
+};
+
 {
-    GVAR(credits) setVariable [_x, _x call FUNC(readConfig)];
+    GVAR(credits) setVariable [_x, _x call _fnc_readCreditsFromConfig];
 } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
 // docs
