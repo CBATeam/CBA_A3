@@ -14,3 +14,5 @@ class CfgPatches {
 
 #include "CfgEventhandlers.hpp"
 #include "CfgRscStd.hpp"
+
+//#include "test_key.hpp"
