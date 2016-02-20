@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project name="Arma2">
+<Project name="Arma3">
 <Package name="CBA">
 <Container name="STR_DN">
 <Key ID="STR_DN_CBA_HELP_KEYS">
