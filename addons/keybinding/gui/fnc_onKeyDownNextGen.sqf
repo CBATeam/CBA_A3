@@ -20,7 +20,7 @@ if (GVAR(waitingForInput)) then {
         TRACE_4("KEY DOWN: 1st Key Before",GVAR(firstKey),GVAR(secondKey),GVAR(thirdKey), GVAR(input));
         GVAR(firstKey) = [];
         if(!(_dikCode in GVAR(firstKey))) then {
-            PUSH(GVAR(firstKey), _dikCode);
+            GVAR(firstKey) pushBack _dikCode;
         };
         _shift = false;
         _ctrl = false;

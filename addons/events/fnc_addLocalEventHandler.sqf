@@ -34,7 +34,7 @@ if (isNil "_handlers") then {
 } else {
     // Handlers already recorded, so add another one.
     _handlerIndex = count _handlers;
-    PUSH(_handlers,_handler);
+    _handlers pushBack _handler;
 };
 
 TRACE_2("Added",_eventType,_handlerIndex);

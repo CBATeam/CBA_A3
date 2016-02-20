@@ -40,7 +40,7 @@ switch (_typename) do {
 _return = [];
 {
     if (alive _x) then {
-        PUSH(_return,_x);
+        _return pushBack _x;
     }
 } foreach _array;
 _return

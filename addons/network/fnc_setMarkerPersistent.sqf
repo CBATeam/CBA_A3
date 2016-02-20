@@ -47,7 +47,7 @@ _return = if (SLX_XEH_MACHINE select 3) then
         {
             WARNING("Marker already persistent: " + str _marker);
         } else {
-            PUSH(GVAR(MARKERS),_markerConsistent);
+            GVAR(MARKERS) pushBack _markerConsistent;
         };
     } else {
         if (_markerConsistent in GVAR(MARKERS)) then
