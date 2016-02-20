@@ -73,39 +73,6 @@ if (_oldPFH && {!CBA_MISSION_START}) then {
     _oldPFH call FUNC(initPerFrameHandlers);
 };
 
-GVAR(actionIndexes) = [];
-if !(isDedicated) then {
-    SLX_XEH_STR spawn
-    {
-        waitUntil {!isNil QGVAR(nextActionIndex)};
-        LOG("Action monitor started");
-        _fnc = {
-            _params  = _this select 0;
-            _prevVic = _params select 0;
-            _curVic  = vehicle player;
-            if (isNull player) exitWith {};
-            if (GVAR(actionListUpdated) || (_curVic != _prevVic) && (count GVAR(actionIndexes) > 0)) then
-            {
-                _vic = if (_curVic != _prevVic) then {_prevVic} else {_curVic};
-                { _vic removeAction _x; } forEach GVAR(actionIndexes);
-                GVAR(actionIndexes) = [];
-            };
-            if (GVAR(actionListUpdated) || (_curVic != _prevVic)) then
-            {
-                GVAR(actionListUpdated) = false;
-                [GVAR(actionList), {
-                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
-                    if (!isNil "_value" && typeName(_value) == "ARRAY") then {
-                        GVAR(actionIndexes) pushBack ((vehicle player) addAction _value);
-                    };
-                }] call CBA_fnc_hashEachPair;
-            };
-            _params set [0, (vehicle player)];
-        };
-        [_fnc, 1, [vehicle player]] call CBA_fnc_addPerFrameHandler;
-    };
-};
-
 // TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
 /*
 [CBA_COMMON_ADDONS] spawn {
