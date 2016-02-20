@@ -42,7 +42,7 @@ for "_mti" from 0 to (_tc-1) do {
     _cfg = (__cfg select _mti);
     if (isClass _cfg) then {
         _entry = [_mtJ];
-        PUSH(_tp, _entry);
+        _tp pushBack _entry;
 
         // Check SubTurrets
         _st = _cfg >> "turrets";
@@ -53,7 +53,7 @@ for "_mti" from 0 to (_tc-1) do {
                 _stp = _st select _sti;
                 if (isClass _stp) then {
                     _entry = [_mtJ, _stJ];
-                    PUSH(_tp, _entry);
+                    _tp pushBack _entry;
 
                     INC(_stJ);
                 };

@@ -30,9 +30,7 @@ Author:
 params ["_actionIndex"];
 TRACE_1(_this);
 
-private "_return";
-
-_return = if (isDedicated) then {
+private _return = if (isDedicated) then {
     WARNING("Function ran on a dedicated server. Function only usable on a client. Index was: " + str _actionIndex);
     false;
 } else {

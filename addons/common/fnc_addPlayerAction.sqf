@@ -29,13 +29,39 @@ Author:
 params ["_actionArray"];
 TRACE_1(_this);
 
-private "_return";
-
-_return = if (isDedicated) then {
+private _return = if (isDedicated) then {
     WARNING("Function ran on a dedicated server. Function only usable on a client. Action: " + str _actionArray);
     -1; // Invalid action number.
 } else {
-    _index = GVAR(nextActionIndex);
+    if (!GVAR(actionListPFEH)) then {
+        LOG("Action monitor started");
+        GVAR(actionIndexes) = [];
+        GVAR(actionListPFEH) = true;
+        private _fnc = {
+            params ["_params"];
+            _params params ["_prevVic"];
+            private _curVic  = vehicle player;
+            if (isNull player) exitWith {};
+            if (GVAR(actionListUpdated) || {_curVic != _prevVic}) then {
+                TRACE_4("update",GVAR(actionListUpdated),_curVic,_prevVic,GVAR(actionIndexes));
+                if (count GVAR(actionIndexes) > 0) then {
+                    { _prevVic removeAction _x; } forEach GVAR(actionIndexes);
+                    GVAR(actionIndexes) = [];
+                };
+                GVAR(actionListUpdated) = false;
+                [GVAR(actionList), {
+                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
+                    if ((!isNil "_value") && {_value isEqualType []}) then {
+                        GVAR(actionIndexes) pushBack (_curVic addAction _value);
+                    };
+                }] call CBA_fnc_hashEachPair;
+            };
+            _params set [0, (vehicle player)];
+        };
+        [_fnc, 1, [vehicle player]] call CBA_fnc_addPerFrameHandler;
+    };
+
+    private _index = GVAR(nextActionIndex);
     [GVAR(actionList), _index, _actionArray] call CBA_fnc_hashSet;
     GVAR(actionListUpdated) = true;
     INC(GVAR(nextActionIndex));

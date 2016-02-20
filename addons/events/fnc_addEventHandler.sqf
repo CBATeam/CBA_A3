@@ -33,7 +33,7 @@ if (isNil "_handlers") exitwith {
     0;
 };
 // Handlers already recorded, so add another one.
-_handlerIndex = PUSH(_handlers,_handler);
+_handlerIndex = _handlers pushBack _handler;
 TRACE_2("Added",_eventType,_handlerIndex);
 
 _handlerIndex;

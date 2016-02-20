@@ -65,8 +65,8 @@ if (_index >= 0) then
     // Ignore values that are the same as the default.
     if (not _isDefault) then
     {
-        PUSH(_hash select HASH_KEYS,_key);
-        PUSH(_hash select HASH_VALUES,_value);
+        _hash select HASH_KEYS pushBack _key;
+        _hash select HASH_VALUES pushBack _value;
     };
 };
 TRACE_1("",_hash);

@@ -159,7 +159,7 @@ private _resultNames = [];
             } else {
                 // global events
                 if (isText _x) then {
-                    _eventFunc = getText _x + ";";
+                    _eventFunc = _eventFunc + getText _x + ";";
                 };
             };
 

@@ -30,7 +30,7 @@ SCRIPT(log);
     if (isNil "CBA_LOG_ARRAY") then { CBA_LOG_ARRAY = [] };
     private ["_msg"];
     _msg = [_this select 0, _this select 1, _this select 2, diag_frameNo, diag_tickTime, time]; // Save it here because we want to know when it was happening, not when it is outputted
-    PUSH(CBA_LOG_ARRAY,_msg);
+    CBA_LOG_ARRAY pushBack _msg;
 
     if (isNil "CBA_LOG_VAR") then
     {

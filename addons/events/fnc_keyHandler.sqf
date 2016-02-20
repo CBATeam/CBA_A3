@@ -50,7 +50,7 @@ if(_type == "keydown") then {
             for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _valid = false } };
             if (_valid) then {
                 #ifdef DEBUG_MODE_FULL
-                    PUSH(_ar,_code);
+                    _ar pushBack _code;
                 #endif
 
                 _holdKey = _data select 3;
@@ -123,10 +123,10 @@ if(_type == "keydown") then {
                 for "_i" from 0 to 2 do { if (((_settings select _i) && {!(_keyData select (_i + 2))}) || {(!(_settings select _i) && {(_keyData select (_i + 2))})}) exitWith { _valid = false } };
                 if (_valid) then {
                     #ifdef DEBUG_MODE_FULL
-                        PUSH(_ar,_code);
+                        _ar pushBack _code;
                     #endif
 
-                    PUSH(GVAR(keyUpDownList), _x);
+                    GVAR(keyUpDownList) pushBack _x;
                 };
             };
         } forEach _myHandlers;
@@ -182,13 +182,13 @@ if(_type == "keydown") then {
                             _result = false;
                         };
                     };
-                    PUSH(_remHandlers, _x);
+                    _remHandlers pushBack _x;
                     // If any handler says that it has completely _handled_ the keypress,
                     // then don't allow other handlers to be tried at all.
-                    if (_result) then { PUSH(_ignoredUpKeys, _key); };
+                    if (_result) then { _ignoredUpKeys pushBack _key; };
                 };
             } else {
-                PUSH(_remHandlers, _x);
+                _remHandlers pushBack _x;
             };
 
         };
