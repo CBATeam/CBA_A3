@@ -73,3 +73,7 @@ class Extended_SoundPlayed_EventHandlers {};
 class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
+
+// display xeh
+class Extended_DisplayLoad_EventHandlers {};
+class Extended_DisplayUnload_EventHandlers {};

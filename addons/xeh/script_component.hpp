@@ -39,6 +39,8 @@
 
 #include "script_xeh.hpp"
 
+#define XEH_MAIN_CONFIGS [configFile, campaignConfigFile, missionConfigFile]
+
 #undef XEH_ENABLED
 #define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; SLX_XEH_DISABLED = 0
 

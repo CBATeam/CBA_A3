@@ -2,7 +2,6 @@
 
 class RscStandardDisplay;
 class RscStructuredText;
-class RscActiveText;
 class RscButton;
 class RscControlsGroupNoScrollbars;
 
@@ -20,17 +19,6 @@ class CBA_CREDITS_CONT: RscStructuredText {
         color = "#bdcc9c";
         size = 0.8;
     };
-};
-
-class CBA_CREDITS_M: RscActiveText { //mouse trap, blocks screen until disabled onMouseEnter (automatic)
-    style = 48;
-    idc = -1; //template
-    __FSX(0);
-    __FSY(0);
-    __FSW(1);
-    __FSH(1);
-    text = "#(argb,8,8,3)color(1,1,1,0)";
-    onMouseEnter = "(_this select 0) ctrlEnable false; (_this select 0) ctrlShow false; _this call compile preprocessFileLineNumbers '\x\cba\addons\help\mm_spc_init.sqf';";
 };
 
 class CBA_CREDITS_VER_BTN: RscButton {
@@ -68,20 +56,12 @@ class RscDisplayMain: RscStandardDisplay {
             idc = CBA_CREDITS_CONT_IDC;
         };
     };
-    class controlsBackground {
-        class CBA_CREDITS_M_M: CBA_CREDITS_M {
-            idc = CBA_CREDITS_M_IDC;
-        };
-    };
 };
 
 class RscDisplayInterrupt: RscStandardDisplay {
     class controls {
         class CBA_CREDITS_CONT_C: CBA_CREDITS_CONT {
             idc = CBA_CREDITS_CONT_IDC;
-        };
-        class CBA_CREDITS_M_P: CBA_CREDITS_M {
-            idc = CBA_CREDITS_M_P_IDC;
         };
     };
 };
@@ -91,9 +71,5 @@ class RscDisplayMPInterrupt: RscStandardDisplay {
         class CBA_CREDITS_CONT_C: CBA_CREDITS_CONT {
             idc = CBA_CREDITS_CONT_IDC;
         };
-        class CBA_CREDITS_M_P: CBA_CREDITS_M {
-            idc = CBA_CREDITS_M_P_IDC;
-        };
     };
 };
-
