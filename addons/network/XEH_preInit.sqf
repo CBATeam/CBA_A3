@@ -94,10 +94,10 @@ if (SLX_XEH_MACHINE select 3) then {
 };
 
 // CBA_fnc_globalExecute is normally enabled
-_disableGE = false;
+private _disableGE = false;
 
 // Check the CfgSettings >> "CBA" >> "network" >> "disableGlobalExecute" value
-_entry = (CFGSETTINGSS(CBA,COMPONENT) >> "disableGlobalExecute");
+private _entry = (CFGSETTINGSS(CBA,COMPONENT) >> "disableGlobalExecute");
 if (isNumber _entry) then {
     _disableGE = (getNumber _entry == 1);
 } else {
@@ -107,7 +107,7 @@ if (isNumber _entry) then {
 };
 
 // Check the mission configuration
-_dGE = getMissionConfigValue ["CBA_disableGlobalExecute", -1];
+private _dGE = getMissionConfigValue ["CBA_disableGlobalExecute", -1];
 if (_dGE isEqualType 0) then {
     if (_dGE in [0, 1]) then {
         _disableGE = (_dGE == 1);
