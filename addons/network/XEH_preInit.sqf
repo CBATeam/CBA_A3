@@ -119,8 +119,7 @@ if (_dGE isEqualType 0) then {
 };
 
 if (_disableGE) then {
-    uiNamespace setVariable [QGVAR(exec), compileFinal ""];
-    missionNamespace setVariable [QGVAR(exec), compileFinal ""];
+    missionNamespace setVariable [QUOTE(FUNC(exec)), compileFinal ""];
 } else {
     PREP(exec);
     [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
