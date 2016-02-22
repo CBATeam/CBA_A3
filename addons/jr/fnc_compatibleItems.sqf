@@ -1,7 +1,7 @@
 /*
     Author: Karel Moricky
     Enhanced by Robalo
-    adding Caching by joko // Jonas
+    Caching added by joko // Jonas
 
     Description:
     Return all compatible weapon attachments
