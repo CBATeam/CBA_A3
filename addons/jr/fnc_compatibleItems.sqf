@@ -34,13 +34,13 @@ if (isNil "_compatibleItems") then {
             private _cfgCompatibleItems = _x >> "compatibleItems";
             if (isArray _cfgCompatibleItems) then {
                 {
-                    if !(_x in _compatibleItems) then {_compatibleItems pushBack _x;};
+                    _compatibleItems pushBackUnique _x;
                     nil
                 } count (getArray _cfgCompatibleItems);
             } else {
                 if (isClass _cfgCompatibleItems) then {
                     {
-                        if ((getnumber _x > 0) && {!((configName _x) in _compatibleItems)}) then {_compatibleItems pushBack (configName _x)};
+                        if ((getnumber _x > 0)) then {_compatibleItems pushBackUnique (configName _x)};
                         nil
                     } count configproperties [_cfgCompatibleItems, "isNumber _x"];
                 };
@@ -55,7 +55,7 @@ if (isNil "_compatibleItems") then {
 };
 
 if (_typefilter == 0) then { //return
-    _compatibleItems 
+    _compatibleItems
 } else {
     _compatibleItems select {_typefilter == getNumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")};
 };
