@@ -118,10 +118,7 @@ if (_dGE isEqualType 0) then {
     };
 };
 
-if (_disableGE) then {
-    missionNamespace setVariable [QUOTE(FUNC(exec)), compileFinal ""];
-} else {
-    PREP(exec);
+if (!_disableGE) then {
     [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 };
 [QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
