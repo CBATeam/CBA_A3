@@ -16,12 +16,18 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+// prevent this from being overwritten
+uiNamespace setVariable ["", compileFinal ""];
+
 // mission namespace does not exist yet.
 // spawned threads will not continue.
 with uiNamespace do {
     SLX_XEH_DisableLogging = isClass (configFile >> "CfgPatches" >> "Disable_XEH_Logging");
 
     XEH_LOG("XEH: PreStart started.");
+
+    SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
+    SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 
     // call PreStart events
     {
