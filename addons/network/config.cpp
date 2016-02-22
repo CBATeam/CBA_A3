@@ -11,7 +11,12 @@ class CfgPatches
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
+class CfgSettings {
+    class CBA {
+        class COMPONENT {
+            disableGlobalExecute = 0;
+        };
+    };
+};
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
-
-
