@@ -34,21 +34,8 @@ SCRIPT(hashCreate);
 // -----------------------------------------------------------------------------
 params [["_array", [], [[]]], "_defaultValue"];
 
-private _keys = [];
-private _values = [];
-
-_keys resize (count _array);
-_values resize (count _array);
-
-{
-    _keys set [_forEachIndex, _x select 0];
-    _values set [_forEachIndex, _x select 1];
-} forEach _array;
-
-/* //1.55 dev
 private _keys = _array apply {_x select 0};
 private _values = _array apply {_x select 1};
-*/
 
 // Return.
 [TYPE_HASH, _keys, _values, _defaultValue];
