@@ -8,8 +8,8 @@
 GVAR(perFrameHandlerArray) = [];
 GVAR(fpsCount) = 0;
 GVAR(lastCount) = -1;
-GVAR(lastFrameRender) = 0;
-GVAR(lastTickTime) = 0;
+GVAR(lastFrameRender) = diag_frameNo;
+GVAR(lastTickTime) = diag_tickTime;
 
 PREP(perFrameEngine);
 
@@ -129,7 +129,9 @@ FUNC(monitorFrameRender) = {
 FUNC(onFrame) = {
     TRACE_1("Executing onFrame",nil);
     GVAR(lastFrameRender) = diag_frameNo;
-    GVAR(lastTickTime) = diag_tickTime;
+
+    private _tickTime = diag_tickTime;
+    call FUNC(missionTimePFH);
 
     {
         _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
@@ -147,4 +149,60 @@ addMissionEventHandler ["Loaded", {
     {
         _x set [2, (_x select 2) - GVAR(lastTickTime) + diag_tickTime];
     } forEach GVAR(perFrameHandlerArray);
+
+    GVAR(lastFrameRender) = diag_frameNo; // reset these for new session
+    GVAR(lastTickTime) = diag_tickTime;
 }];
+
+CBA_missionTime = 0;
+GVAR(lastTime) = time;
+
+// increase CBA_missionTime variable every frame
+if (isMultiplayer) then {
+    // multiplayer - no accTime in MP
+    if (isServer) then {
+        // multiplayer server
+        FUNC(missionTimePFH) = {
+            if (time != GVAR(lastTime)) then {
+                CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                GVAR(lastTime) = time; // used to detect paused game
+            };
+
+            GVAR(lastTickTime) = _tickTime;
+        };
+
+        ["CBA_SynchMissionTime", "onPlayerConnected", {
+            _owner publicVariableClient "CBA_missionTime";
+        }] call BIS_fnc_addStackedEventHandler;
+    } else {
+        CBA_missionTime = -1;
+
+        // multiplayer client
+        0 spawn {
+            "CBA_missionTime" addPublicVariableEventHandler {
+                CBA_missionTime = _this select 1;
+
+                GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
+
+                FUNC(missionTimePFH) = {
+                    if (time != GVAR(lastTime)) then {
+                        CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                        GVAR(lastTime) = time; // used to detect paused game
+                    };
+
+                    GVAR(lastTickTime) = _tickTime;
+                };
+            };
+        };
+    };
+} else {
+    // single player
+    FUNC(missionTimePFH) = {
+        if (time != GVAR(lastTime)) then {
+            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
+            GVAR(lastTime) = time; // used to detect paused game
+        };
+
+        GVAR(lastTickTime) = _tickTime;
+    };
+};
