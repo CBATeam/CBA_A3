@@ -3,4 +3,3 @@
 PREP(opc);
 PREP(opd);
 PREP(sync);
-PREP(exec);

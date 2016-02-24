@@ -93,37 +93,6 @@ if (SLX_XEH_MACHINE select 3) then {
     };
 };
 
-// CBA_fnc_globalExecute is normally enabled
-private _disableGE = false;
-
-// Check the CfgSettings >> "CBA" >> "network" >> "disableGlobalExecute" value
-private _entry = (CFGSETTINGSS(CBA,COMPONENT) >> "disableGlobalExecute");
-if (isNumber _entry) then {
-    _disableGE = (getNumber _entry == 1);
-} else {
-    if (isText _entry) then {
-        _disableGE = (getText _entry == "true");
-    };
-};
-
-// Check the mission configuration
-private _dGE = getMissionConfigValue ["CBA_disableGlobalExecute", -1];
-if (_dGE isEqualType 0) then {
-    if (_dGE in [0, 1]) then {
-        _disableGE = (_dGE == 1);
-    };
-} else {
-    if (_dGE isEqualType "") then {
-        _disableGE = (_dGE == "true");
-    };
-};
-
-if (_disableGE) then {
-    missionNamespace setVariable [QUOTE(FUNC(exec)), compileFinal ""];
-} else {
-    PREP(exec);
-    [QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-};
 [QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 [QUOTE(GVAR(say3d)), { private "_say"; _say = _this; if (count _this > 2) then { if ((positionCameraToWorld [0,0,0]) distance (_say select 0) <= (_say select 2)) then { (_say select 0) say3d (_say select 1) } } else { (_say select 0) say3d (_say select 1) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 [QUOTE(GVAR(date)), { private "_date"; _date = _this; setDate _date }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
