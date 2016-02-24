@@ -8,6 +8,12 @@ class Display3DEN {
                 class DebugConsole {
                     shortcuts[] = {INPUT_CTRL_OFFSET + DIK_D};
                 };
+                class FunctionsViewer {
+                    shortcuts[] = {INPUT_ALT_OFFSET + DIK_F};
+                };
+                class ConfigViewer {
+                    shortcuts[] = {INPUT_CTRL_OFFSET + DIK_G};
+                };
             };
         };
     };
