@@ -2,7 +2,7 @@
 Function: CBA_fnc_globalExecute
 
 Description:
-    Executes code on given destinations
+    Executes code on given destinations. DEPRECATED. Use remoteExec instead.
 
 Parameters:
     _channel    - All: -2, ClientsOnly: -1, ServerOnly: 0 [Integer]
@@ -31,22 +31,24 @@ Author:
 
 params [["_channel", CBA_SEND_TO_ALL, [CBA_SEND_TO_ALL]], ["_code", {}, [{}]], ["_parameters", []]];
 
-if (isMultiplayer) then {
-    // translate CBA channel to BI channel
-    _channel = [
-        BI_SEND_TO_ALL,
-        BI_SEND_TO_CLIENTS_ONLY,
-        BI_SEND_TO_SERVER_ONLY
-    ] param [[
-        CBA_SEND_TO_ALL,
-        CBA_SEND_TO_CLIENTS_ONLY,
-        CBA_SEND_TO_SERVER_ONLY
-    ] find _channel];
+// translate CBA channel to BI channel
+_channel = [
+    BI_SEND_TO_ALL,
+    BI_SEND_TO_CLIENTS_ONLY,
+    BI_SEND_TO_SERVER_ONLY
+] param [[
+    CBA_SEND_TO_ALL,
+    CBA_SEND_TO_CLIENTS_ONLY,
+    CBA_SEND_TO_SERVER_ONLY
+] find _channel];
 
-    [_parameters, _code] remoteExec ["BIS_fnc_Call", _channel];
-} else {
-    // always executed in SP, no matter what channel
-    _parameters spawn _code;
+// we want to execute ClientsOnly on dedicated clients and SP clients too
+if (_channel isEqualTo BI_SEND_TO_CLIENTS_ONLY) then {
+    _channel = BI_SEND_TO_ALL;
+    _parameters = [_parameters, _code];
+    _code = {if (!isDedicated) then {(_this select 0) call (_this select 1)}};
 };
+
+[_parameters, _code] remoteExec ["BIS_fnc_Call", _channel];
 
 nil
