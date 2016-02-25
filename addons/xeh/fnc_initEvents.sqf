@@ -27,9 +27,13 @@ if !(ISPROCESSED(_unit)) then {
     SETPROCESSED(_unit);
 
     private _class = configFile >> "CfgVehicles" >> typeOf _unit;
+    private _eventClass = _class >> "EventHandlers" >> QUOTE(XEH_CLASS);
+
+    // adds ability to disable XEH completely on a unit, by manually clearing the CBA event handler class.
+    if (isClass _eventClass && {configProperties [_eventClass] isEqualTo []}) exitWith {};
 
     // add events to XEH incompatible units
-    if (!isClass (_class >> "EventHandlers" >> QUOTE(XEH_CLASS))) then {
+    if (!isClass _eventClass) then {
         {
             if (_x isEqualTo "hitpart") then {
                 _unit addEventHandler ["hitpart", "{_this call _x} forEach ((_this select 0 select 0) getVariable ""cba_xeh_hitpart"")"];
