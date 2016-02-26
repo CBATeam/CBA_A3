@@ -47,9 +47,9 @@ with uiNamespace do {
         _x params ["_classname", "_addon"];
 
         if (_addon == "") then {
-            diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers!", _classname];
+            diag_log text format ["[XEH]: %1 does not support Extended Event Handlers!", _classname];
         } else {
-            diag_log text format ["[XEH]: %1 does not support Extended Eventhandlers! Addon: %2", _classname, _addon];
+            diag_log text format ["[XEH]: %1 does not support Extended Event Handlers! Addon: %2", _classname, _addon];
         };
     } forEach (true call CBA_fnc_supportMonitor);
 };
