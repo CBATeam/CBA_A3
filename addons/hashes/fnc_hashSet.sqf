@@ -22,28 +22,38 @@ Author:
 #include "script_hashes.hpp"
 
 SCRIPT(hashSet);
-private ["_index", "_isDefault"];
+
 // ----------------------------------------------------------------------------
-params ["_hash","_key","_value"];
+params [["_hash", [], [[]]], "_key", "_value"];
 
 if (isNil "_key") exitWith {_hash};
 if (isNil "_hash") exitWith {_hash};
 
 // Work out whether the new value is the default value for this assoc.
-_isDefault = _value isEqualTo (_hash select HASH_DEFAULT_VALUE);
+private _isDefault = false;
 
-_index = (_hash select HASH_KEYS) find _key;
+private _default = _hash select HASH_DEFAULT_VALUE;
+
+if (isNil "_default") then {
+    _isDefault = isNil "_value";
+} else {
+    if (!isNil "_value") then {
+        _isDefault = _value isEqualTo _default;
+    };
+};
+
+private _index = (_hash select HASH_KEYS) find _key;
+
 if (_index >= 0) then {
     if (_isDefault) then {
         // Remove the key, if the new value is the default value.
         // Do this by copying the key and value of the last element
         // in the hash to the position of the element to be removed.
         // Then, shrink the key and value arrays by one. (#2407)
-        private ["_keys", "_values", "_last"];
 
-        _keys = _hash select HASH_KEYS;
-        _values = _hash select HASH_VALUES;
-        _last = (count _keys) - 1;
+        private _keys = _hash select HASH_KEYS;
+        private _values = _hash select HASH_VALUES;
+        private _last = (count _keys) - 1;
 
         _keys set [_index, _keys select _last];
         _keys resize _last;
@@ -53,7 +63,7 @@ if (_index >= 0) then {
     } else {
         // Replace the original value for this key.
         TRACE_2("VM CHECK SET",_index,_value);
-        (_hash select HASH_VALUES) set [_index, if (isNil "_value") then { nil } else { _value }];
+        (_hash select HASH_VALUES) set [_index, if (isNil "_value") then {nil} else {_value}];
     };
 } else {
     // Ignore values that are the same as the default.
@@ -63,4 +73,4 @@ if (_index >= 0) then {
     };
 };
 TRACE_1("",_hash);
-_hash; // Return.
+_hash // Return.

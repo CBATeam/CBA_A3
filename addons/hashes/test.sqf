@@ -14,7 +14,7 @@ SCRIPT(test-hashes);
 LOG("=== Testing Hashes ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\hashes\test_%1.sqf", _x];
+    0 spawn compile preprocessFileLineNumbers format ["\x\cba\addons\hashes\test_%1.sqf", _x];
 } forEach TESTS;
 
-nil;
+nil

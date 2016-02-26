@@ -48,6 +48,13 @@ TEST_FALSE(_result,"hashHashKey");
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 TEST_TRUE(isNil "_result","hashSet/Get");
 
+// Unsetting a value 2
+[_hash, "frog2", 23] call CBA_fnc_hashSet;
+[_hash, "frog2"] call CBA_fnc_hashRem;
+
+_result = [_hash, "frog2"] call CBA_fnc_hashGet;
+TEST_TRUE(isNil "_result","hashSet/Rem");
+
 // Value never put in is nil.
 _result = [_hash, "fish"] call CBA_fnc_hashGet;
 TEST_TRUE(isNil "_result","hashSet/Get");
