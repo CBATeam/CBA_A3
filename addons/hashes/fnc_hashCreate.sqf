@@ -38,4 +38,4 @@ private _keys = _array apply {_x select 0};
 private _values = _array apply {_x select 1};
 
 // Return.
-[TYPE_HASH, _keys, _values, _defaultValue];
+[TYPE_HASH, _keys, _values, if (isNil "_defaultValue") then {nil} else {_defaultValue}];

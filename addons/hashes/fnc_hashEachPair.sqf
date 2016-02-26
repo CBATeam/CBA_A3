@@ -36,8 +36,7 @@ Author:
 SCRIPT(hashEachPair);
 
 // -----------------------------------------------------------------------------
-
-params ["_hash","_code"];
+params [["_hash", [], [[]]], ["_code", {}, [{}]]];
 
 _hash params ["", "_keys", "_values"];
 
@@ -48,4 +47,4 @@ _hash params ["", "_keys", "_values"];
     call _code;
 } forEach _keys;
 
-nil; // Return.
+nil // Return.

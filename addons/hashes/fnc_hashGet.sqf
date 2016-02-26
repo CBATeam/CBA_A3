@@ -23,14 +23,15 @@ Author:
 SCRIPT(hashGet);
 
 // -----------------------------------------------------------------------------
-private ["_index", "_default"];
-params ["_hash","_key"];
-_default = param [2,_hash select HASH_DEFAULT_VALUE];
+params [["_hash", [], [[]]], "_key"];
 
-_index = (_hash select HASH_KEYS) find _key;
+private _index = (_hash select HASH_KEYS) find _key;
+
 if (_index >= 0) then {
     (_hash select HASH_VALUES) select _index; // Return.
 } else {
+    private _default = param [2, _hash select HASH_DEFAULT_VALUE];
+
     if (isNil "_default") then {
         nil // Return
     } else {
