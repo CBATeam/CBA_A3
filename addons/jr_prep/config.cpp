@@ -85,24 +85,24 @@ class CfgWeapons {
         };
     };
 
-	class arifle_MXM_F : arifle_MX_Base_F {
+    class arifle_MXM_F : arifle_MX_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
         };
     };
 
-	class arifle_MX_SW_F : arifle_MX_Base_F {
+    class arifle_MX_SW_F : arifle_MX_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
         };
     };
 
-	class arifle_Katiba_Base_F : Rifle_Base_F {
-		class WeaponSlotsInfo;
+    class arifle_Katiba_Base_F : Rifle_Base_F {
+        class WeaponSlotsInfo;
     };
 
-	class arifle_Katiba_C_F : arifle_Katiba_Base_F {
-		class WeaponSlotsInfo : WeaponSlotsInfo {
+    class arifle_Katiba_C_F : arifle_Katiba_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
         };
     };
