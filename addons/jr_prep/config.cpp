@@ -58,6 +58,7 @@ class CfgWeapons {
 
     class LMG_Mk200_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete MuzzleSlot;
             delete CowsSlot;
             delete PointerSlot;
             delete UnderBarrelSlot;
@@ -66,6 +67,7 @@ class CfgWeapons {
 
     class LMG_Zafir_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete MuzzleSlot;
             delete CowsSlot;
             delete PointerSlot;
         };
@@ -77,8 +79,31 @@ class CfgWeapons {
 
     class arifle_MXC_F : arifle_MX_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
             delete CowsSlot;
             delete PointerSlot;
+        };
+    };
+
+	class arifle_MXM_F : arifle_MX_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+	class arifle_MX_SW_F : arifle_MX_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+	class arifle_Katiba_Base_F : Rifle_Base_F {
+		class WeaponSlotsInfo;
+    };
+
+	class arifle_Katiba_C_F : arifle_Katiba_Base_F {
+		class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
         };
     };
 
