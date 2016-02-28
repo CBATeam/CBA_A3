@@ -16,6 +16,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+// hack to fix 3den executing preInit unnecessarily when returning from a preview
+if (uiNamespace getVariable [QGVAR(3denFix), false]) exitWith {
+    uiNamespace setVariable [QGVAR(3denFix), false];
+    diag_log text "[XEH]: 3den preview detected. Abort preInit.";
+};
+
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
 XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version") + ". " + PFORMAT_7("MISSIONINIT",missionName,worldName,isMultiplayer,isServer,isDedicated,hasInterface,didJIP));
