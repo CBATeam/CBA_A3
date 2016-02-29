@@ -10,7 +10,7 @@ Parameters:
     _code      - Code to execute upon event. <CODE>
     _type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
     _hashKey   - Key handler identifier. Randomly generated if not supplied. [optional] <STRING>
-    _holdKey   - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>
+    _allowHold - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>
     _holdDelay - How long after keydown will the key event fire, in seconds. [optional] <NUMBER>
 
 Returns:
@@ -35,7 +35,7 @@ params [
     ["_code", {}, [{}]],
     ["_type", "keydown", [""]],
     ["_hashKey", "", [""]],
-    ["_holdKey", true, [false]],
+    ["_allowHold", true, [false]],
     ["_holdDelay", 0, [0]]
 ];
 
@@ -69,7 +69,7 @@ if (_type isEqualTo "keydown") then {
 };
 
 private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
-_hash setVariable [_hashKey, [_key, _settings, _code, _holdKey, _holdDelay]];
+_hash setVariable [_hashKey, [_key, _settings, _code, _allowHold, _holdDelay]];
 
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
 

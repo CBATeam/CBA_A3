@@ -64,10 +64,8 @@ GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 FUNC(handleKeyDownUp) = {
     private _xUp = _this select (count _this - 1);
 
-    if (_xUp in GVAR(keyUpActiveList)) then {
-        GVAR(keyUpActiveList) = GVAR(keyUpActiveList) - [_xUp];
-    };
-
+    GVAR(keyUpActiveList) deleteAt (GVAR(keyUpActiveList) find _xUp);
     GVAR(keyHoldTimers) setVariable [_xUp, nil];
+
     false
 };

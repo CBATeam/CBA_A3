@@ -15,20 +15,15 @@ if (_inputKey == 0) exitWith {};
 
 private _inputSettings = _this select [2,3];
 
-private _handled = false; // If true, suppress the default handling of the key.
-private _result = false;
+private _blockInput = false;
 
 {
-    private _hash = GVAR(keyHandlersDown) getVariable _x;
+    private _keybindParams = GVAR(keyHandlersDown) getVariable _x;
 
-    _hash params ["", "_settings", "_code", "_holdKey", "_holdDelay"];
+    _keybindParams params ["", "_keybindSettings", "_code", "_allowHold", "_holdDelay"];
 
     // Verify if the required modifier keys are present
-    if !(
-        !((_settings select 0) isEqualTo (_inputSettings select 0)) || {
-        !((_settings select 1) isEqualTo (_inputSettings select 1)) || {
-        !((_settings select 2) isEqualTo (_inputSettings select 2))}}
-    ) then {
+    if (_keybindSettings isEqualTo _inputSettings) then {
         private _xUp = _x + "_cbadefaultuphandler";
         private _execute = true;
         private _holdTime = 0;
@@ -46,47 +41,30 @@ private _result = false;
             };
         };
 
-        if (_execute) then {
-            if !(_holdKey) then {
-                if (_xUp in GVAR(keyUpActiveList)) then {
-                    _execute = false;
-                } else {
-                    GVAR(keyUpActiveList) pushBack _xUp;
-                };
-            };
+        // check if either holding down a key is enabled or if the key wasn't already held down
+        if (_execute && {_allowHold || {GVAR(keyUpActiveList) pushBackUnique _xUp != -1}}) then {
+            private _params = + _this;
+            _params pushBack + _keybindParams;
+            _params pushBack _x;
 
-            if (_execute) then {
-                private _params = + _this;
-                _params pushBack + _hash;
-                _params pushBack _x;
-
-                _result = _params call _code;
-            };
+            _blockInput = _params call _code;
         };
 
-        if (_result isEqualTo true) exitWith {
-            _handled = true;
-        };
+        if (_blockInput isEqualTo true) exitWith {};
     };
 } forEach (GVAR(keyDownStates) param [_inputKey, []]);
 
 // To have a valid key up we first need to have a valid key down of the same combo!
 // If we do, we add it to a list of pressed key up combos, then on key up we check that list to see if we have a valid key up.
 {
-    if !(_x in GVAR(keyDownActiveList)) then {
-        private _hash = GVAR(keyHandlersUp) getVariable _x;
+    private _keybindParams = GVAR(keyHandlersUp) getVariable _x;
 
-        _hash params ["", "_settings"];
+    _keybindParams params ["", "_keybindSettings"];
 
-        // Verify if the required modifier keys are present
-        if !(
-            !((_settings select 0) isEqualTo (_inputSettings select 0)) || {
-            !((_settings select 1) isEqualTo (_inputSettings select 1)) || {
-            !((_settings select 2) isEqualTo (_inputSettings select 2))}}
-        ) then {
-            GVAR(keyDownActiveList) pushBack _x;
-        };
+    // Verify if the required modifier keys are present
+    if (_keybindSettings isEqualTo _inputSettings) then {
+        GVAR(keyDownActiveList) pushBackUnique _x;
     };
 } forEach (GVAR(keyUpStates) param [_inputKey, []]);
 
-_handled
+_blockInput
