@@ -75,5 +75,9 @@ class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
 
 // display xeh
-class Extended_DisplayLoad_EventHandlers {};
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayInterrupt {
+        GVAR(3denFix) = QUOTE(call COMPILE_FILE(XEH_interruptDisplayLoad));
+    };
+};
 class Extended_DisplayUnload_EventHandlers {};
