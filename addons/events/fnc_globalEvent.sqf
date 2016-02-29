@@ -5,23 +5,26 @@ Description:
     Raises a CBA event on all machines, including the local one.
 
 Parameters:
-    _eventType - Type of event to publish [String].
-    _params - Parameters to pass to the event handlers [Array].
+    _eventName - Type of event to publish. <STRING>
+    _params    - Parameters to pass to the event handlers. <ANY>
 
 Returns:
-    nil
+    None
+
+Examples:
+    (begin example)
+        ["test", ["global"]] call CBA_fnc_globalEvent;
+    (end)
 
 Author:
-    Spooner
+    Spooner, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(globalEvent);
 
-// ----------------------------------------------------------------------------
+params [["_eventName", "", [""]], ["_params", []]];
 
-_this call CBA_fnc_remoteEvent;
-_this call CBA_fnc_localEvent;
+CALL_EVENT(_params,_eventName);
+SEND_EVENT_TO_OTHERS(_params,_eventName);
 
-nil; // Return.
+nil

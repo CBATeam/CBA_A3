@@ -18,7 +18,7 @@ Author:
 
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
-XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version") + ". " + PFORMAT_7("MISSIONINIT",missionName,worldName,isMultiplayer,isServer,isDedicated,hasInterface,didJIP));
+XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
@@ -43,6 +43,8 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     productVersion, // 14 - Game
     3 // 15 - Product+Version, always Arma 3
 ];
+
+CBA_isHeadlessClient = !hasInterface && !isDedicated;
 
 // make case insensitive list of all supported events
 GVAR(EventsLowercase) = [];

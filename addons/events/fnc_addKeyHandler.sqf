@@ -2,62 +2,79 @@
 Function: CBA_fnc_addKeyHandler
 
 Description:
-    Adds an action to a keyhandler
+    Adds an action to a keybind.
 
 Parameters:
-    _key - Numerical key to attach action to [Integer].
-    _settings - Shift, Ctrl, Alt required [Array].
-    _code - Code to execute upon event [Code].
-    _type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
-    _hashKey - used to identify this handler, randomly generated if not supplied [String].
-    _holdKey - Will the key fire every frame while down [Bool]
-    _holdDelay - How long after keydown will the key event fire, in seconds. [Float]
+    _key       - Key (DIK-Code) to attach action to. <NUMBER>
+    _settings  - Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>
+    _code      - Code to execute upon event. <CODE>
+    _type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
+    _hashKey   - Key handler identifier. Randomly generated if not supplied. [optional] <STRING>
+    _holdKey   - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>
+    _holdDelay - How long after keydown will the key event fire, in seconds. [optional] <NUMBER>
 
 Returns:
-    Hash key [String]
+    _hashKey - Key handler identifier. Used to remove or change the key handler. <STRING>
 
 Examples:
     (begin example)
-        [47, [true, false, false], { _this call myAction }] call CBA_fnc_addKeyHandler;
+        _id = [47, [true, false, false], { _this call myAction }] call CBA_fnc_addKeyHandler;
     (end)
 
 Author:
-    Sickboy
-
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(addKeyHandler);
 
-private ["_ar", "_entry", "_type", "_handlers", "_hashKey", "_holdDelay"];
-params ["_key","_settings","_code"];
-_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
+if (!hasInterface) exitWith {""};
+
+params [
+    ["_key", 0, [0]],
+    ["_settings", [false, false, false], [[]], 3],
+    ["_code", {}, [{}]],
+    ["_type", "keydown", [""]],
+    ["_hashKey", "", [""]],
+    ["_holdKey", true, [false]],
+    ["_holdDelay", 0, [0]]
+];
+
 _type = toLower _type;
-_hashKey = if (count _this > 4) then { _this select 4 } else { format["%1%2%3%4%5%6%7%8", floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100), floor(random 100)] };
-_hashKey = toLower(_hashKey);
-_holdKey = if (count _this > 5) then { _this select 5 } else { true };
-_holdDelay = if (count _this > 6) then { _this select 6 } else { 0 };
 
-if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
-if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
-
-if(_type == "keydown") then {
-    _upHandlerArgs = +_this;
-    _upHandlerArgs set[2, FUNC(handleKeyDownUp)];
-    _upHandlerArgs set[3, "keyup"];
-    _upHandlerArgs set[4, _hashKey+"_cbadefaultuphandler"];
-    _upHandlerArgs call cba_fnc_addKeyHandler;
+// add "key" prefix to "down" and "up"
+if (_type in ["down", "up"]) then {
+    _type = "key" + _type;
 };
 
-[if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) }, _hashKey, [_key, _settings, _code, _holdKey, _holdDelay]] call CBA_fnc_hashSet;
+// check if type is either "keydown" or "keyup"
+if !(_type in ["keydown", "keyup"]) exitWith {
+    ERROR("Type does not exist");
+    ""
+};
 
+// create random hash if none was supplied
+if (_hashKey isEqualTo "") then {
+    _hashKey = format ["%1%2%3%4%5%6%7%8", floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100];
+};
 
-_handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
+_hashKey = toLower _hashKey;
 
-if (_key > count _handlers) then {_handlers resize(_key + 1)};
-_ar = _handlers select _key;
-if (isNil"_ar")then{_ar=[]};
-_ar pushBack _hashKey;
-_handlers set [_key, _ar];
+// add default keyup handler to keydown
+if (_type isEqualTo "keydown") then {
+    private _params = + _this;
+    _params set [2, FUNC(handleKeyDownUp)];
+    _params set [3, "keyup"];
+    _params set [4, _hashKey + "_cbadefaultuphandler"];
+    _params call CBA_fnc_addKeyHandler;
+};
 
-_hashKey;
+private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+_hash setVariable [_hashKey, [_key, _settings, _code, _holdKey, _holdDelay]];
+
+private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
+
+private _hashKeys = _keyHandlers param [_key, []];
+_hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander twice with the same keyHash/id executing the newly added action twice.
+_keyHandlers set [_key, _hashKeys];
+
+_hashKey

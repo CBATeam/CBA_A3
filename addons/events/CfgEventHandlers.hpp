@@ -5,29 +5,17 @@ class Extended_PreStart_EventHandlers {
     };
 };
 
-class Extended_PreInit_EventHandlers
-{
-    class ADDON
-    {
+class Extended_PreInit_EventHandlers {
+    class ADDON {
         init = QUOTE(call COMPILE_FILE(XEH_preInit));
-        clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
     };
 };
 
-/*
-class Extended_Hit_EventHandlers
-{
-    class All
-    {
-        GVAR(hit) = QUOTE(_this call FUNC(globalHitEvent));
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayMission {
+        ADDON = QUOTE(_this call COMPILE_FILE(XEH_missionDisplayLoad));
+    };
+    class RscDisplayCurator {
+        ADDON = QUOTE(_this call COMPILE_FILE(XEH_curatorDisplayLoad));
     };
 };
-
-class Extended_Killed_EventHandlers
-{
-    class All
-    {
-        GVAR(killed) = QUOTE(_this call FUNC(globalKilledEvent));
-    };
-};
-*/
