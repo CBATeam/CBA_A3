@@ -13,12 +13,3 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
-
-#include "test_keys.hpp"
-
-/*
-id0 = [15, [false, false, false], {systemChat str _this}, "keydown", nil, false, 2] call CBA_fnc_addKeyHandler;
-
-id1 = ["TestAddon", "action1", {systemChat str _this}] call CBA_fnc_addKeyHandlerFromConfig;
-id2 = ["TestAddon", "action2", {systemChat str _this}] call CBA_fnc_addKeyHandlerFromConfig;
-*/
