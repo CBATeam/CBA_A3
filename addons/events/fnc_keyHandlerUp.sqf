@@ -14,6 +14,7 @@ params ["", "_inputKey"];
 if (_inputKey == 0) exitWith {};
 
 private _blockedUpKeys = [];
+private _removeHandlers = [];
 
 {
     private _keybindParams = GVAR(keyHandlersUp) getVariable _x;
@@ -39,12 +40,14 @@ private _blockedUpKeys = [];
                     _blockedUpKeys pushBack _keybind;
                 };
 
-                GVAR(keyDownActiveList) deleteAt (GVAR(keyDownActiveList) find _x);
+                _removeHandlers pushBack _x;
             };
         } else {
-            GVAR(keyDownActiveList) deleteAt (GVAR(keyDownActiveList) find _x);
+            _removeHandlers pushBack _x;
         };
     };
 } forEach GVAR(keyDownActiveList);
+
+GVAR(keyDownActiveList) = GVAR(keyDownActiveList) - _removeHandlers; 
 
 false
