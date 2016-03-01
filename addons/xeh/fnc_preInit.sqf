@@ -89,7 +89,7 @@ GVAR(fallbackRunning) = false;
 {
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
-            call (_x select 2);
+            [] call (_x select 2);
         };
     } else {
         _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];

@@ -31,10 +31,24 @@ with uiNamespace do {
 
     // call PreStart events
     {
-        if (_x select 1 == "preStart") then {
-            call (_x select 2);
+        private _eventFunc = "";
+
+        if (isClass _x) then {
+            private _entry = _x >> "init";
+
+            if (isText _entry) then {
+                _eventFunc = _eventFunc + getText _entry + ";";
+            };
+        } else {
+            if (isText _x) then {
+                _eventFunc = getText _x + ";";
+            };
         };
-    } forEach (configFile call CBA_fnc_compileEventHandlers);
+
+        if !(_eventFunc isEqualTo "") then {
+            [] call compile _eventFunc;
+        };
+    } forEach configProperties [configFile >> XEH_FORMAT_CONFIG_NAME("preStart")];
 
     #ifdef DEBUG_MODE_FULL
         diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
