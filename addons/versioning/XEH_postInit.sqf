@@ -27,6 +27,11 @@ if (!SLX_XEH_DisableLogging) then {
         _dependencyInfo = _x select 1;
         _class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
         private _dependencyIsPresent = call compile (_dependencyInfo select 2);
+        if ((isNil "_dependencyIsPresent") || {!(_dependencyIsPresent isEqualType false)}) then {
+            //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" durring binerization
+            WARNING("Versioning Conditional return is bad" + str _x);
+            _dependencyIsPresent = true;
+        };
         if (_dependencyIsPresent) then {
             if !(isClass(_class)) then {
                 format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1] spawn _f;
