@@ -1,35 +1,18 @@
 
+#define F_FILEPATH(mod,func) class func {\
+    file = QUOTE(PATHTOF(mod\DOUBLES(fnc,func).sqf));\
+}
+
 class CfgFunctions {
     class CBA {
         class Config {
-            class getConfigEntry {
-                description = "Gets a configuration entry.";
-                file = QUOTE(PATHTOF(fnc_getConfigEntry.sqf));
-            };
-            class getObjectConfig {
-                description = "A function used to return the config of an object or class name.";
-                file = QUOTE(PATHTOF(fnc_getObjectConfig.sqf));
-            };
-            class getItemConfig {
-                description = "A function used to return the config of an item.";
-                file = QUOTE(PATHTOF(fnc_getItemConfig.sqf));
-            };
-            class getMuzzles {
-                description = "Gets the list of possible muzzles for a weapon.";
-                file = QUOTE(PATHTOF(fnc_getMuzzles.sqf));
-            };
-            class getWeaponModes {
-                description = "Gets the list of possible modes for a weapon.";
-                file = QUOTE(PATHTOF(fnc_getWeaponModes.sqf));
-            };
-            class inheritsFrom {
-                description = "Checks whether a config entry inherits, directly or indirectly, from another one.";
-                file = QUOTE(PATHTOF(fnc_inheritsFrom.sqf));
-            };
-            class getTurret {
-                description = "A function used to find out which config turret is turretpath.";
-                file = QUOTE(PATHTOF(fnc_getTurret.sqf));
-            };
+            F_FILEPATH(config,getConfigEntry);
+            F_FILEPATH(config,getObjectConfig);
+            F_FILEPATH(config,getItemConfig);
+            F_FILEPATH(config,getMuzzles);
+            F_FILEPATH(config,getWeaponModes);
+            F_FILEPATH(config,inheritsFrom);
+            F_FILEPATH(config,getTurret);
         };
 
         class Misc {

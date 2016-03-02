@@ -31,11 +31,11 @@ private _modes = [];
 
 {
     if (_includeHidden || {getNumber (_config >> _x >> "showToPlayer") == 1}) then {
-        _modes pushBack _x;
-    };
-
-    if (_x == "this") then {
-        _modes pushBack _weapon;
+        if (_x == "this") then {
+            _modes pushBack _weapon;
+        } else {
+            _modes pushBack _x;
+        };
     };
 } forEach getArray (_config >> "modes");
 
