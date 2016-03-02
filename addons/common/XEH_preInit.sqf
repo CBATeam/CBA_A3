@@ -67,6 +67,9 @@ FUNC(log) = {
 // Nil check
 ISNILS(CBA_NIL_CHECKED,false);
 
+// bwc
+CBA_fnc_determineMuzzles = CBA_fnc_getMuzzles;
+
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);
 DEPRECATE(fAddMagazineCargo,fnc_addMagazineCargo);

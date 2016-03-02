@@ -25,18 +25,19 @@ Examples:
 Author:
     Sickboy
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(inheritsFrom);
 
-params ["_config","_baseConfig"];
+params [["_config", configNull, [configNull]], ["_baseConfig", configNull, [configNull]]];
 
-private "_valid";
-_valid = false;
+private _valid = false;
 
-while { (configName _config) != "" } do {
+while {configName _config != ""} do {
     _config = inheritsFrom _config;
-    if (_config == _baseConfig) exitWith { _valid = true };
+
+    if (_config == _baseConfig) exitWith {
+        _valid = true;
+    };
 };
 
-_valid;
+_valid
