@@ -11,6 +11,13 @@ GVAR(lastCount) = -1;
 GVAR(lastFrameRender) = diag_frameNo;
 GVAR(lastTickTime) = diag_tickTime;
 
+GVAR(waitAndExecArray) = [];
+GVAR(waitAndExecArrayIsSorted) = false;
+GVAR(nextFrameNo) = diag_frameno;
+GVAR(nextFrameBufferA) = [];
+GVAR(nextFrameBufferB) = [];
+GVAR(waitUntilAndExecArray) = [];
+
 PREP(perFrameEngine);
 
 FUNC(blaHandler) = {
@@ -133,6 +140,7 @@ FUNC(onFrame) = {
     private _tickTime = diag_tickTime;
     call FUNC(missionTimePFH);
 
+    // Execute per frame handlers
     {
         _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
 
@@ -142,6 +150,56 @@ FUNC(onFrame) = {
             false
         };
     } count GVAR(perFrameHandlerArray);
+
+
+    // Execute wait and execute functions
+    // Sort the queue if necessary
+    if (!GVAR(waitAndExecArrayIsSorted)) then {
+        GVAR(waitAndExecArray) sort true;
+        GVAR(waitAndExecArrayIsSorted) = true;
+    };
+    private _delete = false;
+    {
+        if (_x select 0 > CBA_missionTime) exitWith {};
+
+        (_x select 2) call (_x select 1);
+
+        // Mark the element for deletion so it's not executed ever again
+        GVAR(waitAndExecArray) set [_forEachIndex, objNull];
+        _delete = true;
+    } forEach GVAR(waitAndExecArray);
+    if (_delete) then {
+        GVAR(waitAndExecArray) = GVAR(waitAndExecArray) - [objNull];
+    };
+
+
+    // Execute the exec next frame functions
+    {
+        (_x select 0) call (_x select 1);
+        false
+    } count GVAR(nextFrameBufferA);
+    // Swap double-buffer:
+    GVAR(nextFrameBufferA) = GVAR(nextFrameBufferB);
+    GVAR(nextFrameBufferB) = [];
+    GVAR(nextFrameNo) = diag_frameno + 1;
+
+
+    // Execute the waitUntilAndExec functions:
+    _delete = false;
+    {
+        // if condition is satisfied call statement
+        if ((_x select 2) call (_x select 0)) then {
+            (_x select 2) call (_x select 1);
+
+            // Mark the element for deletion so it's not executed ever again
+            GVAR(waitUntilAndExecArray) set [_forEachIndex, objNull];
+            _delete = true;
+        };
+    } forEach GVAR(waitUntilAndExecArray);
+    if (_delete) then {
+        GVAR(waitUntilAndExecArray) = GVAR(waitUntilAndExecArray) - [objNull];
+    };
+
 };
 
 // fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded

@@ -141,6 +141,12 @@ class CfgFunctions
                 description = "Drops a weapon.";
                 file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
             };
+            // CBA_fnc_execNextFrame
+            class execNextFrame
+            {
+                description = "Add piece of code that will execute once on the next frame.";
+                file = "\x\cba\addons\common\fnc_execNextFrame.sqf";
+            };
             // CBA_fnc_findEntity
             class findEntity
             {
@@ -512,6 +518,18 @@ class CfgFunctions
             {
                 description = "Display a message in the global chat channel.";
                 file = "\x\cba\addons\common\fnc_systemChat.sqf";
+            };
+            // CBA_fnc_waitAndExecute
+            class waitAndExecute
+            {
+                description = "Add piece of code that will execute after a certain delay in seconds.";
+                file = "\x\cba\addons\common\fnc_waitAndExecute.sqf";
+            };
+            // CBA_fnc_waitUntilAndExecute
+            class waitUntilAndExecute
+            {
+                description = "Add a condition and statement code. The condition will every frame until it's true, and then the statement will execute once. Both execute in non sched environment";
+                file = "\x\cba\addons\common\fnc_waitUntilAndExecute.sqf";
             };
         };
     };
