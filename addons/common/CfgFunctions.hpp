@@ -35,24 +35,71 @@ class CfgFunctions {
             F_FILEPATH(cargo,removeBackpackCargo);
         };
 
+        class Maps {
+            F_FILEPATH(maps,northingReversed);
+            F_FILEPATH(maps,mapGridToPos);
+            F_FILEPATH(maps,mapRelPos);
+            F_FILEPATH(maps,mapDirTo);
+            F_FILEPATH(maps,getTerrainProfile);
+        };
+
+        class Positions {
+            F_FILEPATH(positions,getDistance);
+            F_FILEPATH(positions,getPos);
+            F_FILEPATH(positions,setPos);
+            F_FILEPATH(positions,realHeight);
+            F_FILEPATH(positions,setHeight);
+            F_FILEPATH(positions,randPos);
+            F_FILEPATH(positions,randPosArea);
+            F_FILEPATH(positions,inArea);
+            F_FILEPATH(positions,getNearest);
+            F_FILEPATH(positions,getNearestBuilding);
+        };
+
+        class Entities {
+            F_FILEPATH(entities,findEntity);
+            F_FILEPATH(entities,deleteEntity);
+        };
+
         class Misc {
+            F_FILEPATH(misc,addPerFrameHandler);
+            F_FILEPATH(misc,removePerFrameHandler);
+            F_FILEPATH(misc,addPlayerAction);
+            F_FILEPATH(misc,removePlayerAction);
+            F_FILEPATH(misc,createNamespace);
+            F_FILEPATH(misc,deleteNamespace);
+            F_FILEPATH(misc,directCall);
+            F_FILEPATH(misc,objectRandom);
+            F_FILEPATH(misc,parseYAML);
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        class Unsorted {
             // CBA_fnc_actionArgument
             class actionArgument
             {
                 description = "Used to call the code parsed in the addaction argument.";
                 file = "\x\cba\addons\common\fnc_actionArgument.sqf";
-            };
-            // CBA_fnc_addPerFrameHandler
-            class addPerFrameHandler
-            {
-                description = "Add a handler that will execute every frame, or every x number of seconds.";
-                file = "\x\cba\addons\common\fnc_addPerFrameHandler.sqf";
-            };
-            // CBA_fnc_addPlayerAction
-            class addPlayerAction
-            {
-                description = "Adds persistent action to player (which will also be available in vehicles and after respawn or teamswitch).";
-                file = "\x\cba\addons\common\fnc_addPlayerAction.sqf";
             };
             // CBA_fnc_canUseWeapon
             class canUseWeapon
@@ -72,12 +119,6 @@ class CfgFunctions {
                 description = "Creates a marker all at once.";
                 file = "\x\cba\addons\common\fnc_createMarker.sqf";
             };
-            // CBA_fnc_createNamespace
-            class createNamespace
-            {
-                description = "Creates a namespace. Used to store and read variables via setVariable and getVariable.";
-                file = "\x\cba\addons\common\fnc_createNamespace.sqf";
-            };
             // CBA_fnc_createTrigger
             class createTrigger
             {
@@ -89,30 +130,6 @@ class CfgFunctions {
             {
                 description = "Gets a value from parameters list (usually _this) with a default.";
                 file = "\x\cba\addons\common\fnc_defaultParam.sqf";
-            };
-            // CBA_fnc_deleteEntity
-            class deleteEntity
-            {
-                description = "A function used to delete entities";
-                file = "\x\cba\addons\common\fnc_deleteEntity.sqf";
-            };
-            // CBA_fnc_deleteNamespace
-            class deleteNamespace
-            {
-                description = "Deletes a namespace created with CBA_fnc_createNamespace.";
-                file = "\x\cba\addons\common\fnc_deleteNamespace.sqf";
-            };
-            // CBA_fnc_directCall
-            class directCall
-            {
-                description = "Executes a piece of code in unscheduled environment.";
-                file = "\x\cba\addons\common\fnc_directCall.sqf";
-            };
-            // CBA_fnc_findEntity
-            class findEntity
-            {
-                description = "A function used to find out the first entity of parsed type in a nearEntitys call";
-                file = "\x\cba\addons\common\fnc_findEntity.sqf";
             };
             // CBA_fnc_getAlive
             class getAlive
@@ -138,12 +155,6 @@ class CfgFunctions {
                 description = "Used to determine the Aspect ratio of the screen.";
                 file = "\x\cba\addons\common\fnc_getAspectRatio.sqf";
             };
-            // CBA_fnc_getDistance
-            class getDistance
-            {
-                description = "A function used to find out the distance between two positions.";
-                file = "\x\cba\addons\common\fnc_getDistance.sqf";
-            };
             // CBA_fnc_getFirer
             class getFirer
             {
@@ -168,35 +179,11 @@ class CfgFunctions {
                 description = "Finds out the actual ID number of a person within his group as assigned by the game and used in the squad leader's command menu.";
                 file = "\x\cba\addons\common\fnc_getGroupIndex.sqf";
             };
-            // CBA_fnc_getNearest
-            class getNearest
-            {
-                description = "A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array.";
-                file = "\x\cba\addons\common\fnc_getNearest.sqf";
-            };
-            // CBA_fnc_getNearestBuilding
-            class getNearestBuilding
-            {
-                description = "A function used to find out the nearest building and appropriate building positions available.";
-                file = "\x\cba\addons\common\fnc_getNearestBuilding.sqf";
-            };
-            // CBA_fnc_getPos
-            class getPos
-            {
-                description = "A function used to get the position of an entity.";
-                file = "\x\cba\addons\common\fnc_getPos.sqf";
-            };
             // CBA_fnc_getSharedGroup
             class getSharedGroup
             {
                 description = "Returns existing group on side, or newly created group when not existent.";
                 file = "\x\cba\addons\common\fnc_getSharedGroup.sqf";
-            };
-            // CBA_fnc_getTerrainProfile
-            class getTerrainProfile
-            {
-                description = "A function used to find the terrain profile between two positions";
-                file = "\x\cba\addons\common\fnc_getTerrainProfile.sqf";
             };
             // CBA_fnc_getUISize
             class getUISize
@@ -227,12 +214,6 @@ class CfgFunctions {
             {
                 description = "Get the direction of a unit's head.";
                 file = "\x\cba\addons\common\fnc_headDir.sqf";
-            };
-            // CBA_fnc_inArea
-            class inArea
-            {
-                description = "A function used to determine if a position is within a zone.";
-                file = "\x\cba\addons\common\fnc_inArea.sqf";
             };
             // CBA_fnc_intToString
             class intToString
@@ -270,24 +251,6 @@ class CfgFunctions {
                 description = "A2/OA/TOH compatible locked function.";
                 file = "\x\cba\addons\common\fnc_locked.sqf";
             };
-            // CBA_fnc_mapDirTo
-            class mapDirTo
-            {
-                description = "Gets the direction between two map grid references.";
-                file = "\x\cba\addons\common\fnc_mapDirTo.sqf";
-            };
-            // CBA_fnc_mapGridToPos
-            class mapGridToPos
-            {
-                description = "Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.";
-                file = "\x\cba\addons\common\fnc_mapGridToPos.sqf";
-            };
-            // CBA_fnc_mapRelPos
-            class mapRelPos
-            {
-                description = "Find a position relative to a known position on the map. Passing strings in for the Northing and Easting is the preferred way.";
-                file = "\x\cba\addons\common\fnc_mapRelPos.sqf";
-            };
             // CBA_fnc_modelHeadDir
             class modelHeadDir
             {
@@ -300,71 +263,11 @@ class CfgFunctions {
                 description = "Check whether these are any players within a certain distance of a unit.";
                 file = "\x\cba\addons\common\fnc_nearPlayer.sqf";
             };
-            // CBA_fnc_northingReversed
-            class northingReversed
-            {
-                description = "Checks if the maps northing is reversed (like Chernarus & Utes, or any map pre-OA)";
-                file = "\x\cba\addons\common\fnc_northingReversed.sqf";
-            };
-            // CBA_fnc_objectRandom
-            class objectRandom
-            {
-                description = "Creates a ""random"" number 0-9 based on an object's velocity";
-                file = "\x\cba\addons\common\fnc_objectRandom.sqf";
-            };
-            // CBA_fnc_parseYAML
-            class parseYAML
-            {
-                description = "Parses a YAML file into a nested array/Hash structure.";
-                file = "\x\cba\addons\common\fnc_parseYAML.sqf";
-            };
-            // CBA_fnc_randPos
-            class randPos
-            {
-                description = "A function used to randomize a position around a given center.";
-                file = "\x\cba\addons\common\fnc_randPos.sqf";
-            };
-            // CBA_fnc_randPosArea
-            class randPosArea
-            {
-                description = "A function used to randomize a position within a given zone.";
-                file = "\x\cba\addons\common\fnc_randPosArea.sqf";
-            };
-            // CBA_fnc_realHeight
-            class realHeight
-            {
-                description = "Real z coordinate of an object, for placing stuff on roofs, etc.";
-                file = "\x\cba\addons\common\fnc_realHeight.sqf";
-            };
-            // CBA_fnc_removePerFrameHandler
-            class removePerFrameHandler
-            {
-                description = "Remove a handler that you have added using CBA_fnc_addPerFrameHandler.";
-                file = "\x\cba\addons\common\fnc_removePerFrameHandler.sqf";
-            };
-            // CBA_fnc_removePlayerAction
-            class removePlayerAction
-            {
-                description = "Removes player action previously added with <CBA_fnc_addPlayerAction>.";
-                file = "\x\cba\addons\common\fnc_removePlayerAction.sqf";
-            };
             // CBA_fnc_selectWeapon
             class selectWeapon
             {
                 description = "Selects a weapon including correctly selecting a weapon mode of specified.";
                 file = "\x\cba\addons\common\fnc_selectWeapon.sqf";
-            };
-            // CBA_fnc_setHeight
-            class setHeight
-            {
-                description = "A function used to set the height of an object";
-                file = "\x\cba\addons\common\fnc_setHeight.sqf";
-            };
-            // CBA_fnc_setPos
-            class setPos
-            {
-                description = "A function used to set the position of an entity.";
-                file = "\x\cba\addons\common\fnc_setPos.sqf";
             };
             // CBA_fnc_switchPlayer
             class switchPlayer
