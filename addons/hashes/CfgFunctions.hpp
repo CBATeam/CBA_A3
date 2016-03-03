@@ -57,6 +57,12 @@ class CfgFunctions
                 description = "Internal Self Check. Check the RPT file for results.";
                 file = "\x\cba\addons\hashes\test.sqf";
             };
+            // CBA_fnc_parseYAML
+            class parseYAML
+            {
+                description = "Parses a YAML file into a nested array/Hash structure.";
+                file = "\x\cba\addons\hashes\fnc_parseYAML.sqf";
+            };
         };
     };
 };
