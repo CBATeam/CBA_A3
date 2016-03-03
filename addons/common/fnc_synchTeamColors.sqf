@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_fnc_synchTeamColors
+Internal Function: CBA_common_fnc_synchTeamColors
 
 Description:
     Synchs the team colors. Does not need to be called manually.
@@ -13,7 +13,6 @@ Returns:
 Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 
 if (leader player == player) then {

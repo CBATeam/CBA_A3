@@ -1,3 +1,17 @@
+/*
+ * Prepare BIS functions/MP and precompile all functions we already have
+ * registered with it. In order to have the functions loaded early,
+ * we do so in the "init_functionsModule" script. However, to make sure
+ * everything is done properly, we also create a new BIS functions manager
+ * module so that the whole BIS MP and functions framework is initialised
+ * completely. (We need to do it this way since the BIS function manager
+ * defers initialisation by way of execVM:ing its init script.)
+ *
+ * Yes, there's some redundancy in that the functions will be
+ * loaded and preprocessed twice, but this should only occur once per mission
+ * and will hopefully ensure forward compatibility with future ArmA II patches.
+ */
+
 // Modified by Spooner for CBA in order to allow function initialisation
 // in preinit phase.
 
