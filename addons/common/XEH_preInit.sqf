@@ -60,7 +60,7 @@ CBA_logic = objNull;
 FUNC(log) = {
     diag_log text _this;
     sleep 1;
-    CBA_logic globalChat _this;
+    systemChat _this;
     hintC _this;
 };
 
@@ -69,7 +69,11 @@ ISNILS(CBA_NIL_CHECKED,false);
 
 // bwc
 CBA_fnc_getPistol = {params [["_unit", objNull, [objNull]]]; handgunWeapon _unit};
+CBA_fnc_players = {allPlayers};
+CBA_fnc_systemChat = {params [["_message", "", [""]]]; systemChat _message;};
+
 CBA_fnc_determineMuzzles = CBA_fnc_getMuzzles;
+
 CBA_fnc_addWeaponCargoGlobal = CBA_fnc_addWeaponCargo;
 CBA_fnc_addMagazineCargoGlobal = CBA_fnc_addMagazineCargo;
 CBA_fnc_removeWeaponCargoGlobal = CBA_fnc_removeWeaponCargo;

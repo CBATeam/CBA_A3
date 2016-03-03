@@ -180,12 +180,6 @@ class CfgFunctions {
                 description = "A function used to find out the nearest building and appropriate building positions available.";
                 file = "\x\cba\addons\common\fnc_getNearestBuilding.sqf";
             };
-            // CBA_fnc_getPistol
-            class getPistol
-            {
-                description = "Returns name of pistol in unit's inventory, if any.";
-                file = "\x\cba\addons\common\fnc_getPistol.sqf";
-            };
             // CBA_fnc_getPos
             class getPos
             {
@@ -318,23 +312,11 @@ class CfgFunctions {
                 description = "Creates a ""random"" number 0-9 based on an object's velocity";
                 file = "\x\cba\addons\common\fnc_objectRandom.sqf";
             };
-            // CBA_fnc_onTeamColorChanged
-            class onTeamColorChanged
-            {
-                description = "Assigns the units team color if it changed on another machine.";
-                file = "\x\cba\addons\common\fnc_onTeamColorChanged.sqf";
-            };
             // CBA_fnc_parseYAML
             class parseYAML
             {
                 description = "Parses a YAML file into a nested array/Hash structure.";
                 file = "\x\cba\addons\common\fnc_parseYAML.sqf";
-            };
-            // CBA_fnc_players
-            class players
-            {
-                description = "Get a list of current player objects.";
-                file = "\x\cba\addons\common\fnc_players.sqf";
             };
             // CBA_fnc_randPos
             class randPos
@@ -390,18 +372,11 @@ class CfgFunctions {
                 description = "Switch player to another unit.";
                 file = "\x\cba\addons\common\fnc_switchPlayer.sqf";
             };
-            // CBA_fnc_synchTeamColors
-            class synchTeamColors
-            {
-                description = "Synchs the team colors every second.";
-                file = "\x\cba\addons\common\fnc_synchTeamColors.sqf";
-            };
-            // CBA_fnc_systemChat
-            class systemChat
-            {
-                description = "Display a message in the global chat channel.";
-                file = "\x\cba\addons\common\fnc_systemChat.sqf";
-            };
+        };
+
+        class Internal {
+            F_FILEPATH(internal,onTeamColorChanged);
+            F_FILEPATH(internal,synchTeamColors);
         };
 
         class Broken {
