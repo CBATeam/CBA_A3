@@ -69,6 +69,12 @@ ISNILS(CBA_NIL_CHECKED,false);
 
 // bwc
 CBA_fnc_determineMuzzles = CBA_fnc_getMuzzles;
+CBA_fnc_addWeaponCargoGlobal = CBA_fnc_addWeaponCargo;
+CBA_fnc_addMagazineCargoGlobal = CBA_fnc_addMagazineCargo;
+CBA_fnc_removeWeaponCargoGlobal = CBA_fnc_removeWeaponCargo;
+CBA_fnc_removeMagazineCargoGlobal = CBA_fnc_removeMagazineCargo;
+CBA_fnc_removeItemCargoGlobal = CBA_fnc_removeItemCargo;
+CBA_fnc_removeBackpackCargoGlobal = CBA_fnc_removeBackpackCargo;
 
 // Prepare all functions
 DEPRECATE(fAddMagazine,fnc_addMagazine);

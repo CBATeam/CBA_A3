@@ -15,36 +15,32 @@ class CfgFunctions {
             F_FILEPATH(config,getTurret);
         };
 
+        class Inventory {
+            F_FILEPATH(inventory,addWeapon);
+            F_FILEPATH(inventory,addMagazine);
+            F_FILEPATH(inventory,addItem);
+            F_FILEPATH(inventory,removeWeapon);
+            F_FILEPATH(inventory,removeMagazine);
+            F_FILEPATH(inventory,removeItem);
+        };
+
+        class Cargo {
+            F_FILEPATH(cargo,addWeaponCargo);
+            F_FILEPATH(cargo,addMagazineCargo);
+            F_FILEPATH(cargo,addItemCargo);
+            F_FILEPATH(cargo,addBackpackCargo);
+            F_FILEPATH(cargo,removeWeaponCargo);
+            F_FILEPATH(cargo,removeMagazineCargo);
+            F_FILEPATH(cargo,removeItemCargo);
+            F_FILEPATH(cargo,removeBackpackCargo);
+        };
+
         class Misc {
             // CBA_fnc_actionArgument
             class actionArgument
             {
                 description = "Used to call the code parsed in the addaction argument.";
                 file = "\x\cba\addons\common\fnc_actionArgument.sqf";
-            };
-            // CBA_fnc_addMagazine
-            class addMagazine
-            {
-                description = "Add magazine to a vehicle/unit.";
-                file = "\x\cba\addons\common\fnc_addMagazine.sqf";
-            };
-            // CBA_fnc_addMagazineCargo
-            class addMagazineCargo
-            {
-                description = "Add magazine(s) to a vehicle's cargo.";
-                file = "\x\cba\addons\common\fnc_addMagazineCargo.sqf";
-            };
-            // CBA_fnc_addMagazineCargoGlobal
-            class addMagazineCargoGlobal
-            {
-                description = "Add magazine(s) to a vehicle's cargo. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_addMagazineCargoGlobal.sqf";
-            };
-            // CBA_fnc_addMagazineVerified
-            class addMagazineVerified
-            {
-                description = "Add magazines to the unit, but verify that it was successful and doesn't over-burden the recipient.";
-                file = "\x\cba\addons\common\fnc_addMagazineVerified.sqf";
             };
             // CBA_fnc_addPerFrameHandler
             class addPerFrameHandler
@@ -57,24 +53,6 @@ class CfgFunctions {
             {
                 description = "Adds persistent action to player (which will also be available in vehicles and after respawn or teamswitch).";
                 file = "\x\cba\addons\common\fnc_addPlayerAction.sqf";
-            };
-            // CBA_fnc_addWeapon
-            class addWeapon
-            {
-                description = "Add a weapon to a unit.";
-                file = "\x\cba\addons\common\fnc_addWeapon.sqf";
-            };
-            // CBA_fnc_addWeaponCargo
-            class addWeaponCargo
-            {
-                description = "Add weapon(s) to vehicle cargo.";
-                file = "\x\cba\addons\common\fnc_addWeaponCargo.sqf";
-            };
-            // CBA_fnc_addWeaponCargoGlobal
-            class addWeaponCargoGlobal
-            {
-                description = "Add weapon(s) to vehicle cargo. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_addWeaponCargoGlobal.sqf";
             };
             // CBA_fnc_canUseWeapon
             class canUseWeapon
@@ -129,18 +107,6 @@ class CfgFunctions {
             {
                 description = "Executes a piece of code in unscheduled environment.";
                 file = "\x\cba\addons\common\fnc_directCall.sqf";
-            };
-            // CBA_fnc_dropMagazine
-            class dropMagazine
-            {
-                description = "Drop a magazine.";
-                file = "\x\cba\addons\common\fnc_dropMagazine.sqf";
-            };
-            // CBA_fnc_dropWeapon
-            class dropWeapon
-            {
-                description = "Drops a weapon.";
-                file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
             };
             // CBA_fnc_findEntity
             class findEntity
@@ -388,48 +354,6 @@ class CfgFunctions {
                 description = "Real z coordinate of an object, for placing stuff on roofs, etc.";
                 file = "\x\cba\addons\common\fnc_realHeight.sqf";
             };
-            // CBA_fnc_removeBackpackCargo
-            class removeBackpackCargo
-            {
-                description = "Removes specific backpack(s) from local cargo space.";
-                file = "\x\cba\addons\common\fnc_removeBackpackCargo.sqf";
-            };
-            // CBA_fnc_removeBackpackCargoGlobal
-            class removeBackpackCargoGlobal
-            {
-                description = "Remove specific backpack(s) from global cargo space. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_removeBackpackCargoGlobal.sqf";
-            };
-            // CBA_fnc_removeItemCargo
-            class removeItemCargo
-            {
-                description = "Removes specific item(s) from local cargo space.";
-                file = "\x\cba\addons\common\fnc_removeItemCargo.sqf";
-            };
-            // CBA_fnc_removeItemCargoGlobal
-            class removeItemCargoGlobal
-            {
-                description = "Removes specific item(s) from global cargo space. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_removeItemCargoGlobal.sqf";
-            };
-            // CBA_fnc_removeMagazine
-            class removeMagazine
-            {
-                description = "Remove a magazine.";
-                file = "\x\cba\addons\common\fnc_removeMagazine.sqf";
-            };
-            // CBA_fnc_removeMagazineCargo
-            class removeMagazineCargo
-            {
-                description = "Removes specific magazine(s) from local cargo space.";
-                file = "\x\cba\addons\common\fnc_removeMagazineCargo.sqf";
-            };
-            // CBA_fnc_removeMagazineCargoGlobal
-            class removeMagazineCargoGlobal
-            {
-                description = "Removes specific magazine(s) from global cargo space. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_removeMagazineCargoGlobal.sqf";
-            };
             // CBA_fnc_removePerFrameHandler
             class removePerFrameHandler
             {
@@ -441,24 +365,6 @@ class CfgFunctions {
             {
                 description = "Removes player action previously added with <CBA_fnc_addPlayerAction>.";
                 file = "\x\cba\addons\common\fnc_removePlayerAction.sqf";
-            };
-            // CBA_fnc_removeWeapon
-            class removeWeapon
-            {
-                description = "Remove a weapon.";
-                file = "\x\cba\addons\common\fnc_removeWeapon.sqf";
-            };
-            // CBA_fnc_removeWeaponCargo
-            class removeWeaponCargo
-            {
-                description = "Removes specific weapon(s) from local cargo space.";
-                file = "\x\cba\addons\common\fnc_removeWeaponCargo.sqf";
-            };
-            // CBA_fnc_removeWeaponCargoGlobal
-            class removeWeaponCargoGlobal
-            {
-                description = "Removes specific weapon(s) from global cargo space. MP synchronized.";
-                file = "\x\cba\addons\common\fnc_removeWeaponCargoGlobal.sqf";
             };
             // CBA_fnc_selectWeapon
             class selectWeapon
@@ -495,6 +401,21 @@ class CfgFunctions {
             {
                 description = "Display a message in the global chat channel.";
                 file = "\x\cba\addons\common\fnc_systemChat.sqf";
+            };
+        };
+
+        class Broken {
+            // CBA_fnc_dropMagazine
+            class dropMagazine
+            {
+                description = "Drop a magazine.";
+                file = "\x\cba\addons\common\fnc_dropMagazine.sqf";
+            };
+            // CBA_fnc_dropWeapon
+            class dropWeapon
+            {
+                description = "Drops a weapon.";
+                file = "\x\cba\addons\common\fnc_dropWeapon.sqf";
             };
         };
     };
