@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_fnc_onTeamColorChanged
+Internal Function: CBA_common_fnc_onTeamColorChanged
 
 Description:
     Assigns the units team color if it changed on the squad leaders machine.
@@ -14,8 +14,8 @@ Returns:
 Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
+
 params ["_unit", "_team"];
 
 _unit assignTeam _team;
