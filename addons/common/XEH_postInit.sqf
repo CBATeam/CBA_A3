@@ -18,6 +18,13 @@ SLX_XEH_STR spawn {
     #endif
 };
 
+FUNC(log) = {
+    diag_log text _this;
+    sleep 1;
+    systemChat _this;
+    hintC _this;
+};
+
 // A2 / Operation Arrowhead, standalone / combined operations check
 /*
 TRACE_1("OA Check",nil);
@@ -73,22 +80,15 @@ if (_oldPFH && {!CBA_MISSION_START}) then {
     _oldPFH call FUNC(initPerFrameHandlers);
 };
 
-// TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
-/*
-[CBA_COMMON_ADDONS] spawn {
-    params ["_addons"];
-    TRACE_1("Activating addons",nil);
-    activateAddons _addons;
-    sleep 0.001;
-    if (SLX_XEH_MACHINE select 1) then { sleep 0.001 }; // JIP, sleep uses time, and time skips for JIP.
-    TRACE_1("Activating addons",nil);
-    activateAddons _addons;
-};
-*/
+// system to synch team colors
+PREP(onTeamColorChanged);
+PREP(synchTeamColors);
 
-["CBA_teamColorChanged", CBA_fnc_onTeamColorChanged] call CBA_fnc_addEventHandler;
+["CBA_teamColorChanged", FUNC(onTeamColorChanged)] call CBA_fnc_addEventHandler;
+
 if (hasInterface) then {
-    [CBA_fnc_synchTeamColors, 1, []] call CBA_fnc_addPerFrameHandler;
+    [FUNC(synchTeamColors), 1, []] call CBA_fnc_addPerFrameHandler;
+
     if (didJIP) then {
         private "_team";
         {
