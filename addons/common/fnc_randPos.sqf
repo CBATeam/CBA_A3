@@ -5,11 +5,12 @@ Description:
     A function used to randomize a position around a given center
 
 Parameters:
-    Marker, Object, Location, Group or Position, Radius
+    _position - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
+    _radius   - random Radius <NUMBER>
 
 Example:
     (begin example)
-    _position =  [position, radius] call CBA_fnc_randPos
+        _position =  [position, radius] call CBA_fnc_randPos
     (end)
 
 Returns:
@@ -17,13 +18,15 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(randPos);
 
-private ["_position","_radius"];
-_position = +((_this select 0) call CBA_fnc_getpos);
-_radius = _this select 1;
+params [
+    ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull, []]],
+    ["_radius", 0, [0]]
+];
 
-_position set [0,(_position select 0) + (_radius - (random (2*_radius)))];
-_position set [1,(_position select 1) + (_radius - (random (2*_radius)))];
-_position
+private _position = _entity call CBA_fnc_getPos;
+
+_position vectorAdd [_radius - 2 * random _radius, _radius - 2 * random _radius, 0]

@@ -5,11 +5,13 @@ Description:
     A function used to set the position of an entity.
 
 Parameters:
-    Marker, Object, Location, Group or Position
+    _entity   - <MARKER, OBJECT, LOCATION, GROUP, TASK>
+    _position - <MARKER, OBJECT, LOCATION, GROUP, TASK, POSITION>
+    _radius   - random Radius (optional) <NUMBER>
 
 Example:
     (begin example)
-    [player, "respawn_west"] call CBA_fnc_setPos
+        [player, "respawn_west"] call CBA_fnc_setPos
     (end)
 
 Returns:
@@ -17,51 +19,43 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(setPos);
 
-private ["_entity","_position","_radius"];
-_entity = _this select 0;
-_position = _this select 1;
-_radius = if (count _this > 2) then {_this select 2} else {0};
+params [
+    ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull]],
+    ["_position", nil, [objNull, grpNull, "", locationNull, taskNull, []]],
+    ["_radius", 0, [0]]
+];
 
-_position = _position call CBA_fnc_getpos;
+if (isNil "_position") exitWith {};
+
+_position = _position call CBA_fnc_getPos;
 
 if (_radius > 0) then {
     _position = [_position, _radius] call CBA_fnc_randPos;
 };
 
-switch (typename _entity) do {
+switch (typeName _entity) do {
     case "OBJECT" : {
-        _entity setpos _position;
+        _entity setPos _position;
     };
     case "GROUP" : {
-        private ["_ldp","_dx","_dy","_dz"];
-        _ldp = getpos (leader _entity);
-        _dx = _position select 0;
-        _dy = _position select 1;
-        _dz = _position select 2;
+        private _leaderPos = getPos (leader _entity);
+
         {
-            private ["_txyz","_tx", "_ty", "_tz"];
-            _txyz = _x worldtomodel _ldp;
-            _tx = _dx + (_txyz select 0);
-            _ty = _dy + (_txyz select 1);
-            _tz = _dz + (_txyz select 2);
-            _x setpos [_tx,_ty,_tz];
+            _x setpos (_position vectorAdd (_x worldToModel _leaderPos));
         } foreach (units _entity);
     };
     case "STRING" : {
-        _entity setmarkerpos _position;
+        _entity setMarkerPos _position;
     };
     case "LOCATION" : {
-        if (surfaceiswater _position) then {
-            _entity setPosition _position;
-        } else {
-            _entity setPosition _position;
-        };
+        _entity setPosition _position;
     };
     case "TASK" : {
-        _entity setsimpletaskdestination _position;
+        _entity setSimpleTaskDestination _position;
     };
-    default {_entity setpos _position};
+    default {};
 };
