@@ -4,65 +4,76 @@ Function: CBA_fnc_addWeaponCargo
 Description:
     Add weapon(s) to vehicle cargo.
 
-    Function which verifies existence of _item and _unit, returns false in case
-    of trouble, or when able to add _item to _unit true in case of success.
+    Function which verifies existence of _item and _container, returns false in case
+    of trouble, or when able to add _item to _container true in case of success.
 
 Parameters:
-    _unit  - the vehicle [Object]
-    _item  - name of weapon [String]
-    _count - number of weapons to add [Number] (Default: 1)
+    _container - the vehicle <OBJECT>
+    _item      - name of weapon <STRING>
+    _count     - number of weapons to add <NUMBER> (Default: 1)
+    _verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
 
 Returns:
-    true on success, false otherwise
+    true on success, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
-    // Add one laser designator to the cargo of SomeTruck
-    _result = [SomeTruck, "LaserDesignator"] call CBA_fnc_addWeaponCargo
+        // Add one laser designator to the cargo of SomeTruck
+        _result = [SomeTruck, "LaserDesignator"] call CBA_fnc_addWeaponCargo
 
-    // Add two AK 107 rifles to MyUAZ
-    _result = [MyUAZ, "AK_107_KOBRA", 2] call CBA_fnc_addWeaponCargo
+        // Add two MXC rifles to MyAPC. If the inventory is full, then put the rest on the ground
+        _result = [MyAPC, "arifle_MXC_F", 2, true] call CBA_fnc_addWeaponCargo
     (end)
 
 Author:
     Sickboy
-
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(addWeaponCargo);
 
-#define __scriptname fAddWeaponCargo
+params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_verify", false, [false]]];
 
-#define __cfg (configFile >> "CfgWeapons")
-#define __action addWeaponCargo
+private _return = false;
 
-params ["_unit","_item", ["_count",1]];
-if (typeName _unit != "OBJECT") exitWith {
-    TRACE_2("Unit not Object",_unit,_item);
-    false
+if (isNull _container) exitWith {
+    TRACE_2("Container not Object or null",_container,_item);
+    _return
 };
-_item = _this select 1;
-if (typeName _item != "STRING") exitWith {
-    TRACE_2("Item not String",_unit,_item);
-    false
+
+if (_item isEqualTo "") exitWith {
+    TRACE_2("Item not String or empty",_container,_item);
+    _return
 };
-if (isNull _unit) exitWith {
-    TRACE_2("Unit isNull",_unit,_item);
-    false
+
+private _config = configFile >> "CfgWeapons" >> _item;
+
+if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
+    TRACE_2("Item not exist in Config",_container,_item);
+    _return
 };
-if (_item == "") exitWith {
-    TRACE_2("Empty Item",_unit,_item);
-    false
+
+if (_verify) then {
+    if (_container canAdd [_item, _count]) then {
+        _container addWeaponCargoGlobal [_item, _count];
+        _return = true;
+    } else {
+        while {_container canAdd _item && {_count > 0}} do {
+            _container addWeaponCargoGlobal [_item, 1];
+            _count = _count - 1;
+        };
+
+        private _weaponHolder = nearestObject [_container, "WeaponHolder"];
+
+        if (isNull _weaponHolder || {_container distance _weaponHolder > 2}) then {
+            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+            _weaponHolder setPosATL (getPosATL _container vectorAdd [random 2 - 1, random 2 - 1, 0]);
+        };
+
+        _weaponHolder addWeaponCargoGlobal [_item, _count];
+    };
+} else {
+    _container addWeaponCargoGlobal [_item, _count];
+    _return = true;
 };
-if !(isClass (__cfg >> _item)) exitWith {
-    TRACE_2("Item not exist in Config",_unit,_item);
-    false
-};
-if (typeName _count != "SCALAR") exitWith {
-    TRACE_3("Count is not a number",_unit,_item,_count);
-    false
-};
-_unit __action [_item, _count];
-TRACE_2("Success",_unit,_item);
-true
+
+_return
