@@ -16,15 +16,6 @@ LOG(MSG_INIT);
     #endif
 };
 
-FUNC(log) = {
-    diag_log text _this;
-    _this spawn {
-        sleep 1;
-        systemChat _this;
-        hintC _this;
-    };
-};
-
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
 TRACE_1("Upgrade Check",nil);
@@ -53,8 +44,8 @@ FUNC(initPerFrameHandlers) = {
 
     GVAR(lastFrameRender) = diag_frameNo;
     // Use a trigger, runs every 0.5s, unscheduled execution
-    GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0], false];
-    GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(monitorFrameRender)), "", ""];
+    GVAR(perFrameTrigger) = createTrigger ["EmptyDetector", [0,0,0], false];
+    GVAR(perFrameTrigger) setTriggerStatements [QUOTE(call FUNC(monitorFrameRender)), "", ""];
 };
 
 // Run the per frame handler init code, bringing up the hidden map control
@@ -74,9 +65,8 @@ if (hasInterface) then {
     [FUNC(synchTeamColors), 1, []] call CBA_fnc_addPerFrameHandler;
 
     if (didJIP) then {
-        private "_team";
         {
-            _team = _x getVariable [QGVAR(synchedTeam), ""];
+            private _team = _x getVariable [QGVAR(synchedTeam), ""];
             if (_team != "") then {
                 _x assignTeam _team;
             };

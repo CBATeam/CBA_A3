@@ -2,13 +2,20 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-[] call COMPILE_FILE(init_functionsModule); // @todo
-
 LOG(MSG_INIT);
 
 ADDON = false;
 
 CBA_logic = objNull;
+
+FUNC(log) = {
+    diag_log text _this;
+    _this spawn {
+        sleep 1;
+        systemChat _this;
+        hintC _this;
+    };
+};
 
 // FSM
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));

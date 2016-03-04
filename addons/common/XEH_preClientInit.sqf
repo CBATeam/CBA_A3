@@ -2,4 +2,10 @@
 
 LOG(MSG_INIT);
 
-call COMPILE_FILE(init_actionmonitor);
+if (hasInterface) then {
+    // ArmA - actionmonitor.sqf v1.0 Original by BN880, converted by Sickboy (sb_at_dev-heaven.net), 6th Sense - Share the Spirit
+    GVAR(actionList) = [] call CBA_fnc_hashCreate;
+    GVAR(actionListUpdated) = false; // Set true to force recreation of actions.
+    GVAR(nextActionIndex) = 0; // Next index that will be given out.
+    GVAR(actionListPFEH) = false;
+};
