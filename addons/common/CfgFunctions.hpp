@@ -42,7 +42,9 @@ class CfgFunctions {
             F_FILEPATH(getFirer);
             F_FILEPATH(isTurnedOut);
             F_FILEPATH(getVolume);
-            F_FILEPATH(getVehicleRole);
+            F_FILEPATH(vehicleRole);
+            F_FILEPATH(turretPath);
+            F_FILEPATH(turretPathWeapon);
         };
 
         class Anims {

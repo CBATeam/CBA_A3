@@ -1,5 +1,9 @@
 
-CBA_fnc_createCenter = {_this};
+CBA_fnc_createCenter = {
+    params ["_side"];
+    _side
+};
+
 CBA_fnc_players = {allPlayers};
 CBA_fnc_locked = {locked _this > 1};
 
@@ -14,7 +18,8 @@ CBA_fnc_systemChat = {
 };
 
 CBA_fnc_defaultParam = {
-    params [["_params", []], ["_index", -2, [0]], "_defaultValue"];
+    params [["_params", []], ["_index", -1, [0]], "_defaultValue"];
+    if (_index < 0) exitWith {_defaultValue};
     _params param [_index, _defaultValue]
 };
 
@@ -27,7 +32,10 @@ CBA_fnc_removeMagazineCargoGlobal = CBA_fnc_removeMagazineCargo;
 CBA_fnc_removeItemCargoGlobal = CBA_fnc_removeItemCargo;
 CBA_fnc_removeBackpackCargoGlobal = CBA_fnc_removeBackpackCargo;
 
-FUNC(directCall) = CBA_fnc_directCall;
+FUNC(directCall) = {
+    params ["_params", "_code"];
+    [_code, _params] call CBA_fnc_directCall;
+};
 
 CBA_fnc_intToString = {
     params [["_int", nil, [0]]];

@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getVehicleRole
+Function: CBA_fnc_vehicleRole
 
 Description:
     A function used to report the soldiers role in his current vehicle.
@@ -10,7 +10,7 @@ Parameters:
 
 Example:
     (begin example)
-        _role = player call CBA_fnc_getVehicleRole
+        _role = player call CBA_fnc_vehicleRole
     (end)
 
 Returns:
@@ -20,7 +20,7 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-SCRIPT(getVehicleRole);
+SCRIPT(vehicleRole);
 
 params [["_unit", objNull, [objNull]]];
 
