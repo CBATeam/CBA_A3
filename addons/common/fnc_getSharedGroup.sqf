@@ -5,39 +5,38 @@ Description:
     Returns existing group on side, or newly created group when not existent.
 
 Parameters:
-    _side - Side to get group for [Side]
+    _side - Side to get group for <SIDE>
 
 Returns:
-    Group [Group]
+    Group <GROUP>
 
 Examples:
     (begin example)
+        _sharedAlliedGroup = west call CBA_fnc_getSharedGroup
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(getSharedGroup);
 
 #define SIDES [east, west, resistance, civilian, sideLogic]
 
-params ["_side"];
+params [["_side", sideFriendly, [west]]]; // sideFriendly as pseudo null side, replace with sideEmpty
 
-private ["_group", "_idx", "_center"];
-_group = grpNull;
-_idx = SIDES find _side;
-if (_idx > - 1) then {
-    if (isNull (GVAR(groups) select _idx)) then {
-        _center = [_side] call CBA_fnc_createCenter;
-        _group = createGroup _center;
-        GVAR(groups) set [_idx, _group];
-        // TODO: Evaluate if this doesn't mess things up when multiple clients are requesting groups
-        publicVariable QGVAR(groups);
-    } else {
-        _group = GVAR(groups) select _idx;
-    };
-} else {
-    WARNING("Illegal side parameter!");
+private _id = SIDES find _side;
+
+if (_id < 0) exitWith {grpNull};
+
+private _group = GVAR(groups) select _id;
+
+if (isNull _group) then {
+    _group = createGroup _side;
+    GVAR(groups) set [_id, _group];
+
+    // TODO: Evaluate if this doesn't mess things up when multiple clients are requesting groups
+    publicVariable QGVAR(groups);
 };
 
-_group;
+_group

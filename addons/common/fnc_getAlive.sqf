@@ -5,42 +5,30 @@ Description:
     A function used to find out who is alive in an array or a group.
 
 Parameters:
-    Array, Group or Unit
+    _entities - Array or Group <GROUP, ARRAY>
 
 Example:
     (begin example)
-    _alive = (Units player) call CBA_fnc_getAlive
+        _alive = (units player) call CBA_fnc_getAlive
     (end)
 
 Returns:
-    Array
+    <ARRAY>
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
+SCRIPT(getAlive);
 
-private "_typename";
-_typename = typename _this;
-if (_typename == "OBJECT") exitwith {alive _this};
+[_this] params [["_entities", [], [objNull, grpNull, []]]];
 
-private ["_return","_array"];
-_array = [];
-switch (_typename) do {
-    case "GROUP" : {
-        _array = units _this;
-    };
-    case "ARRAY" :{
-        _array =+ _this;
-    };
+if (_entities isEqualType objNull) exitwith {
+    alive _entities;
 };
 
-_return = [];
-{
-    if (alive _x) then {
-        _return pushBack _x;
-    }
-} foreach _array;
-_return
+if (_entities isEqualType grpNull) then {
+    _entities = units _entities;
+};
+
+_entities select {alive _x} // return
