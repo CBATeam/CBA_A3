@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["inheritsFrom", "parseYaml"]
+#define TESTS ["config", "inventory"]
 
 SCRIPT(test-common);
 

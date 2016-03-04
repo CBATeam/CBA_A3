@@ -13,7 +13,7 @@ LOG("Testing " + _fn);
 
 TEST_DEFINED("CBA_fnc_parseYaml",_fn);
 
-_data = ["\x\cba\addons\common\test_parseYaml_config.yml"] call CBA_fnc_parseYaml;
+_data = ["\x\cba\addons\hashes\test_parseYaml_config.yml"] call CBA_fnc_parseYaml;
 
 TEST_TRUE([_data] call CBA_fnc_isHash,_fn);
 

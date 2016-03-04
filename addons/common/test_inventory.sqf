@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(test_config);
 
-// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\inventory\test_inventory.sqf";
+// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_inventory.sqf";
 
 // Note: test requires a player with space in inventory
 
