@@ -1,6 +1,6 @@
 
 CBA_fnc_createCenter = {
-    WARNING('Deprecated function used: OLD_FUNCTION');
+    WARNING('Deprecated function used: CBA_fnc_createCenter');
     params ["_side"];
     _side
 };
