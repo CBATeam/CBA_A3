@@ -82,8 +82,10 @@
     "Put", \
     "Take", \
     "SeatSwitched", \
+    "SeatSwitchedMan", \
     "SoundPlayed", \
     "WeaponAssembled", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
-    "WeaponRested"
+    "WeaponRested", \
+    "Reloaded"

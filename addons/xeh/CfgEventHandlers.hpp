@@ -69,10 +69,12 @@ class Extended_MPRespawn_EventHandlers {};
 class Extended_Put_EventHandlers {};
 class Extended_Respawn_EventHandlers {};
 class Extended_SeatSwitched_EventHandlers {};
+class Extended_SeatSwitchedMan_EventHandlers {};
 class Extended_SoundPlayed_EventHandlers {};
 class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
+class Extended_Reloaded_EventHandlers {};
 
 // display xeh
 class Extended_DisplayLoad_EventHandlers {
