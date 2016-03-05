@@ -67,11 +67,7 @@ FUNC(initPerFrameHandlers) = {
 };
 
 // Run the per frame handler init code, bringing up the hidden map control
-if (_oldPFH && {!CBA_MISSION_START}) then {
-    ["CBA_MISSION_START", { _oldPFH call FUNC(initPerFrameHandlers) }] call CBA_fnc_addEventHandler;
-} else {
-    _oldPFH call FUNC(initPerFrameHandlers);
-};
+_oldPFH call FUNC(initPerFrameHandlers);
 
 // TODO: Consider a waitUntil loop with tickTime check to wait for some frames as opposed to trying to sleep until time > 0. Re MP Briefings etc.
 /*
