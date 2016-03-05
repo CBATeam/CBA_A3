@@ -3,6 +3,7 @@
 
 // Generic twice-a-second loop instantiator(?)
 GVAR(d) = [];
+
 FUNC(addTriggerHandler) = {
         private ["_c"];
     // #include "script_component.hpp"
@@ -12,9 +13,9 @@ FUNC(addTriggerHandler) = {
 
     // Create the trigger, only on first use
     if (isNil QGVAR(d_trigger)) then {
-        GVAR(d_trigger) = createTrigger["EmptyDetector", [0,0], false];
+        GVAR(d_trigger) = createTrigger ["EmptyDetector", [0,0], false];
         GVAR(d_trigger) setTriggerActivation ["ANY", "PRESENT", true];
-        GVAR(d_trigger) setTriggerStatements["{ if (count _x == 2) then { (_x select 0) call (_x select 1) } } forEach cba_common_d", "", ""];
+        GVAR(d_trigger) setTriggerStatements ["{ if (count _x == 2) then { (_x select 0) call (_x select 1) } } forEach cba_common_d", "", ""];
     };
     _c; // return index, so can either change array parameter count, or empty?
 };

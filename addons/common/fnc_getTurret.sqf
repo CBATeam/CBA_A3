@@ -5,8 +5,8 @@ Description:
     A function used to find out which config turret is turretpath.
 
 Parameters:
-    Vehicle
-    Turretpath
+    _vehicle    - Vehicle or vehicle class name <STRING, OBJECT>
+    _turretPath - Turret path <ARRAY>
 
 Example:
     (begin example)
@@ -17,33 +17,29 @@ Returns:
     Turret Config entry
 
 Author:
-    Sickboy
-
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
+SCRIPT(getTurret);
 
-#define __cfg (configFile >> "CfgVehicles" >> (typeof _v))
-private ["_path"];
-params ["_v","_tp"];
-_path = __cfg;
+params [["_vehicle", "", ["", objNull]], ["_turretPath", [], [[]]]];
 
-if (count _tp > 0) then {
-    {
-        // First filter non classes
-        _turrets = (_path >> "turrets");
-        _turs = [];
-        for "_i" from 0 to (count _turrets) - 1 do {
-            _y = _turrets select _i;
-            if (isClass(_y)) then { _turs pushBack _y; };
-        };
-        if ((count _turs)-1 >= _x) then {
-            _path = (_turs select _x);
-        };
-
-    } forEach _tp;
+if (_vehicle isEqualType objNull) then {
+    _vehicle = typeOf _vehicle;
 };
 
-TRACE_1("Result",_path);
-_path;
+private _config = configFile >> "CfgVehicles" >> _vehicle;
+
+// this is used by BI to indicate "driver turrets"
+if (_turretPath isEqualTo [-1]) exitWith {_config};
+
+{
+    if (_x < 0) exitWith {
+        _config = configNull;
+    };
+
+    // config classes ignores inherited classes, just like the engine does with turrets
+    _config = ("true" configClasses (_config >> "turrets")) param [_x, configNull];
+} forEach _turretPath;
+
+_config

@@ -5,23 +5,22 @@ Description:
     Real z coordinate of an object, for placing stuff on roofs, etc.
 
 Parameters:
-    _obj: an object [Object]
+    _object - an object <OBJECT>
 
 Returns:
-    The z coordinate of the top of that object. [Number]
+    The z coordinate of the top of that object. <NUMBER>
 
 Examples:
     (begin example)
-    _height = _house call CBA_fnc_realHeight;
+        _height = _house call CBA_fnc_realHeight;
     (end)
 
 Author:
 
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(realHeight);
 
-params ["_obj"];
+params [["_object", objNull, [objNull]]];
 
-((getpos _obj) select 2) + (_obj distance (getpos _obj))
+((getPos _object) select 2) + (_object distance (getPos _object))
