@@ -28,7 +28,7 @@ private _compatibleItems = GVAR(namespace) getVariable _weapon;
 
 if (isNil "_compatibleItems") then {
     _compatibleItems = [];
-    private _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
+    private _cfgWeapon = configFile >> "CfgWeapons" >> _weapon;
     if (isClass _cfgWeapon) then {
         {
             private _cfgCompatibleItems = _x >> "compatibleItems";
@@ -40,13 +40,13 @@ if (isNil "_compatibleItems") then {
             } else {
                 if (isClass _cfgCompatibleItems) then {
                     {
-                        if ((getnumber _x > 0)) then {_compatibleItems pushBackUnique (configName _x)};
+                        if ((getNumber _x > 0)) then {_compatibleItems pushBackUnique (configName _x)};
                         nil
-                    } count configproperties [_cfgCompatibleItems, "isNumber _x"];
+                    } count configProperties [_cfgCompatibleItems, "isNumber _x"];
                 };
             };
             nil
-        } count configproperties [_cfgWeapon >> "WeaponSlotsInfo","isclass _x"];
+        } count configProperties [_cfgWeapon >> "WeaponSlotsInfo","isclass _x"];
 
         GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
     } else {
@@ -57,5 +57,5 @@ if (isNil "_compatibleItems") then {
 if (_typefilter == 0) then { //return
     _compatibleItems
 } else {
-    _compatibleItems select {_typefilter == getNumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")};
+    _compatibleItems select {_typefilter == getNumber(configFile>>"CfgWeapons">>_x>>"itemInfo">>"type")};
 };
