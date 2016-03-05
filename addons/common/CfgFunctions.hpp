@@ -106,6 +106,9 @@ class CfgFunctions {
             F_FILEPATH(deleteNamespace);
             F_FILEPATH(directCall);
             F_FILEPATH(objectRandom);
+            F_FILEPATH(execNextFrame);
+            F_FILEPATH(waitAndExecute);
+            F_FILEPATH(waitUntilAndExecute);
         };
 
         class Ui {

@@ -27,7 +27,7 @@ switch (typeName _entity) do {
     case "ARRAY" : {
         {
             _x call CBA_fnc_deleteEntity;
-        } foreach _entity;
+        } forEach _entity;
     };
     case "OBJECT" : {
         if (vehicle _entity != _entity) then {
@@ -42,7 +42,7 @@ switch (typeName _entity) do {
     };
     case "GROUP" : {
         (units _entity) call CBA_fnc_deleteEntity;
-        {deleteWaypoint _x} foreach (wayPoints _entity);
+        {deleteWaypoint _x} forEach (wayPoints _entity);
         deleteGroup _entity;
     };
     case "LOCATION" : {

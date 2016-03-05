@@ -38,7 +38,7 @@ private _return = [[], objNull] select (isNil {param [2]});
     _distance = [_position, _x] call CBA_fnc_getDistance;
 
     if (_distance < _radius) then {
-        if !(call _code) exitwith {}; // don't move up. condition has to return false, vs. has to return true. Can be nil!
+        if !(call _code) exitWith {}; // don't move up. condition has to return false, vs. has to return true. Can be nil!
 
         if !(_return isEqualType objNull) then {
             _return pushBack _x;
@@ -47,6 +47,6 @@ private _return = [[], objNull] select (isNil {param [2]});
             _return = _x;
         };
     };
-} foreach _array;
+} forEach _array;
 
 _return

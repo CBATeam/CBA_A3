@@ -2,37 +2,39 @@
 Function: CBA_fnc_addDisplayHandler
 
 Description:
-    Adds an action to a displayHandler
+    Adds an action to the main display.
+    They are reapplied after loading a save game. Actions only persist for the mission and are removed after restart.
 
 Parameters:
-    _type - Displayhandler type to attach to [String].
-    _code - Code to execute upon event [String].
+    _type - Display handler type to attach. <STRING>
+    _code - Code to execute upon event. <STRING, CODE>
 
 Returns:
-    the id of the attached handler
+    _id - The ID of the attached handler. Used to remove with "CBA_fnc_removeDisplayHandler" <NUMBER>
 
 Examples:
     (begin example)
-        _id = ["KeyDown", "_this call myKeyDownEH"] call CBA_fnc_addDisplayHandler;
+        _id = ["KeyDown", {_this call myKeyDownEH}] call CBA_fnc_addDisplayHandler;
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(addDisplayHandler);
 
-private ["_ar", "_id", "_idx"];
-params ["_type","_code"];
+if (!hasInterface) exitWith {-1};
+
+params [["_type", "", [""]], ["_code", "", ["", {}]]];
 
 _type = toLower _type;
-// TODO: Verify if the eventhandler type exists?
-_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
-if (typeName _ar != "ARRAY") then { _ar = [] };
-_id = if (isDedicated || {isNull (findDisplay 46)} || {!CBA_EVENTS_DONE}) then { nil } else { (findDisplay 46) displayAddEventhandler [_type, _code] };
-_idx = count _ar;
-_ar set [_idx, [if (isNil "_id") then { nil } else { _id }, _code]];
-[GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
-if (isNil "_id" && {!isDedicated} && {CBA_EVENTS_DONE}) then { SLX_XEH_STR spawn FUNC(attach_handler) };
-_idx;
+
+private _handlers = [GVAR(handlerHash), _type] call CBA_fnc_hashGet;
+
+private _handlerId = (uiNamespace getVariable ["CBA_missionDisplay", displayNull]) displayAddEventHandler [_type, _code];
+
+private _id = _handlers pushBack [_handlerId, _code];
+
+[GVAR(handlerHash), _type, _handlers] call CBA_fnc_hashSet;
+
+_id

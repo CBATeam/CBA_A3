@@ -23,7 +23,7 @@ SCRIPT(getAlive);
 
 [_this] params [["_entities", [], [objNull, grpNull, []]]];
 
-if (_entities isEqualType objNull) exitwith {
+if (_entities isEqualType objNull) exitWith {
     alive _entities;
 };
 

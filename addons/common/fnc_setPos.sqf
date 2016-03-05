@@ -45,8 +45,8 @@ switch (typeName _entity) do {
         private _leaderPos = getPos (leader _entity);
 
         {
-            _x setpos (_position vectorAdd (_x worldToModel _leaderPos));
-        } foreach (units _entity);
+            _x setPos (_position vectorAdd (_x worldToModel _leaderPos));
+        } forEach (units _entity);
     };
     case "STRING" : {
         _entity setMarkerPos _position;

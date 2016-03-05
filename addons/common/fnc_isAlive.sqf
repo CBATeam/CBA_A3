@@ -28,10 +28,10 @@ switch (typename _entity) do {
         private _return = false;
 
         {
-            if (_x call CBA_fnc_isAlive) exitwith {
+            if (_x call CBA_fnc_isAlive) exitWith {
                 _return = true;
             };
-        } foreach _entity;
+        } forEach _entity;
 
         _return
     };

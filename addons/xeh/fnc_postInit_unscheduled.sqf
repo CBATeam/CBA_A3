@@ -16,7 +16,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-XEH_LOG("XEH: PostInit started.");
+XEH_LOG("XEH: PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
 
 // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
 if (CBA_missionTime == -1) then {
@@ -26,7 +26,7 @@ if (CBA_missionTime == -1) then {
 // call PostInit events
 {
     if (_x select 1 == "postInit") then {
-        call (_x select 2);
+        [] call (_x select 2);
     };
 } forEach GVAR(allEventHandlers);
 

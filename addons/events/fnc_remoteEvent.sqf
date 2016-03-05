@@ -2,26 +2,28 @@
 Function: CBA_fnc_remoteEvent
 
 Description:
-    Raises a CBA event on all machines EXCEPT the local one.
+    Raises a CBA event on all machines, except the local one.
 
 Parameters:
-    _eventType - Type of event to publish [String].
-    _params - Parameters to pass to the event handlers [Array].
+    _eventName - Type of event to publish. <STRING>
+    _params    - Parameters to pass to the event handlers. <ANY>
 
 Returns:
-    nil
+    None
+
+Examples:
+    (begin example)
+        ["test", ["remote"]] call CBA_fnc_remoteEvent;
+    (end)
 
 Author:
-    Spooner
+    Spooner, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(remoteEvent);
 
-// ----------------------------------------------------------------------------
-// Run remotely.
-CBA_e = _this;
-publicVariable "CBA_e"; // Nasty short name to limit bandwidth.
+params [["_eventName", "", [""]], ["_params", []]];
 
-nil; // Return.
+SEND_EVENT_TO_OTHERS(_params,_eventName);
+
+nil

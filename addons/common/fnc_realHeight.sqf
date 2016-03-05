@@ -23,4 +23,4 @@ SCRIPT(realHeight);
 
 params [["_object", objNull, [objNull]]];
 
-((getpos _object) select 2) + (_object distance (getpos _object))
+((getPos _object) select 2) + (_object distance (getPos _object))

@@ -79,7 +79,7 @@ private _resultNames = [];
         _result pushBack ["", _eventName, _eventFunc];
         _resultNames pushBack _customName;
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
-} forEach ["preStart", "preInit", "postInit"]; 
+} forEach ["preInit", "postInit"];
 
 // object events
 {

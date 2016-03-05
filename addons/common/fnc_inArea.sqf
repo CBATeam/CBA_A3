@@ -46,7 +46,7 @@ SCRIPT(inArea);
 
 params ["_position", ["_zRef", objNull, ["", objNull]]];
 
-_position = _position call CBA_fnc_getpos;
+_position = _position call CBA_fnc_getPos;
 
 private ["_zSize","_zDir","_zShape","_zPos"];
 
@@ -55,7 +55,7 @@ switch (typeName _zRef) do {
         _zSize = markerSize _zRef;
         _zDir = markerDir _zRef;
         _zShape = toLower (markerShape _zRef);
-        _zPos = (_zRef call CBA_fnc_getpos);
+        _zPos = (_zRef call CBA_fnc_getPos);
     };
     case "OBJECT": {
         _zSize = triggerArea _zRef;
