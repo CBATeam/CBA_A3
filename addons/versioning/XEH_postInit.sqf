@@ -28,8 +28,8 @@ if (!SLX_XEH_DisableLogging) then {
         _class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
         private _dependencyIsPresent = call compile format ["%1", (_dependencyInfo select 2)];
         if ((isNil "_dependencyIsPresent") || {!(_dependencyIsPresent isEqualType false)}) then {
-            //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" durring binerization
-            WARNING("Versioning Conditional return is bad" + str _x);
+            //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" durring binarization
+            WARNING("Versioning conditional return is bad" + str _x);
             _dependencyIsPresent = true;
         };
         if (_dependencyIsPresent) then {
