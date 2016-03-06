@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["config", "inventory"]
+#define TESTS ["config", "inventory", "weaponComponents"]
 
 SCRIPT(test-common);
 
