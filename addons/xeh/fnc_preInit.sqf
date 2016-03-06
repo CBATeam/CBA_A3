@@ -16,11 +16,10 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-// hack to fix 3den executing preInit unnecessarily when returning from a preview
-if (uiNamespace getVariable [QGVAR(3denFix), false]) exitWith {
-    uiNamespace setVariable [QGVAR(3denFix), false];
-    diag_log text "[XEH]: 3den preview detected. Abort preInit.";
+if (ISPROCESSED(missionNamespace)) exitWith {
+    diag_log text "[XEH]: preInit already executed. Abort preInit.";
 };
+SETPROCESSED(missionNamespace);
 
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
