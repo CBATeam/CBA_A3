@@ -1,10 +1,12 @@
 
-class XEH_CLASS {
+class DOUBLES(XEH_CLASS,base) {
     EXTENDED_EVENTHANDLERS
 };
 
+class XEH_CLASS: DOUBLES(XEH_CLASS,base) {}; // bwc
+
 class DefaultEventhandlers {
-    class XEH_CLASS: XEH_CLASS {};
+    class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
 };
 
 // The PreStart handlers run once when the game is started
