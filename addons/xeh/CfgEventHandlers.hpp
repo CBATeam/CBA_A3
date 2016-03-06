@@ -76,8 +76,9 @@ class Extended_WeaponDisassembled_EventHandlers {};
 
 // display xeh
 class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayInterrupt {
-        GVAR(3denFix) = QUOTE(call COMPILE_FILE(XEH_interruptDisplayLoad));
+    // fix for preInit = 1 functions not being executed when entering 3den from main menu
+    class Display3DEN {
+        ADDON = "[] call CBA_fnc_preInit;";
     };
 };
 class Extended_DisplayUnload_EventHandlers {};
