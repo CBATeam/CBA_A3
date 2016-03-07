@@ -61,4 +61,4 @@ if (isNil "_components") then {
     GVAR(weaponComponentsCache) setVariable [_weapon, _components];
 };
 
-_components
++ _components
