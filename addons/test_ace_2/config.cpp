@@ -12,3 +12,15 @@ class CfgPatches {
         };
     };
 };
+
+class CfgSettings {
+    class CBA {
+        class Versioning {
+            class Fake_ACE2 {
+                class Dependencies {
+                    CBA[] = {"CBA_Dummy", {2,0,0}, "true"};
+                };
+            };
+        };
+    };
+};

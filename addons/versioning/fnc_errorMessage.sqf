@@ -36,6 +36,8 @@ if (_textMessage isEqualType "") then {
     _textMessage = parseText _textMessage;
 };
 
+diag_log composeText [_textHeader, " ", _textMessage];
+
 // push back further messages
 if (!isNull (uiNamespace getVariable [QGVAR(displayErrorMessage), displayNull])) exitWith {
     ((uiNamespace getVariable QGVAR(displayErrorMessage)) getVariable QGVAR(info)) pushBack [_textHeader, _textMessage];

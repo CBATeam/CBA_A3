@@ -8,6 +8,7 @@ class CfgFunctions {
         class Versioning {
             F_FILEPATH(compareVersions);
             F_FILEPATH(errorMessage);
+            F_FILEPATH(checkDependencies);
         };
     };
 };
