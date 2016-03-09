@@ -1,4 +1,13 @@
 
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayMain {
+        ADDON = QUOTE(call COMPILE_FILE(XEH_mainDisplayLoad));
+    };
+    class RscDisplayMission {
+        ADDON = QUOTE(call COMPILE_FILE(XEH_missionDisplayLoad));
+    };
+};
+
 class Extended_PreStart_EventHandlers {
     class ADDON {
         init = QUOTE(call COMPILE_FILE(XEH_preStart));

@@ -39,7 +39,7 @@ if (!SLX_XEH_DisableLogging) then {
                 if !(isArray(_class >> "versionAr")) then {
                     format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1] spawn _f;
                 } else {
-                    if ([_dependencyInfo select 1, getArray(_class >> "versionAr")] call FUNC(version_compare)) then {
+                    if !([_dependencyInfo select 1, getArray(_class >> "versionAr")] call CBA_fnc_compareVersions) then {
                         format["WARNING: %1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _dependencyInfo select 0, _mod, _dependencyInfo select 1, getArray(_class >> "versionAr")] spawn _f;
                     };
                 };
