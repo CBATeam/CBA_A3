@@ -1,6 +1,15 @@
+/* ----------------------------------------------------------------------------
+Internal Function: init_dependencies
 
-GVAR(versionsNamespace) = [] call CBA_fnc_createNamespace;
-GVAR(dependenciesNamespace) = [] call CBA_fnc_createNamespace;
+Description:
+    Reads Versioning config.
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
+
+GVAR(versions) = [[], [[0,0,0], 0]] call CBA_fnc_hashCreate;
+GVAR(dependencies) = [[], ["", [0,0,0], "true"]] call CBA_fnc_hashCreate;
 
 {
     private _prefix = configName _x;
@@ -10,7 +19,7 @@ GVAR(dependenciesNamespace) = [] call CBA_fnc_createNamespace;
     private _level = if (isNumber (_x >> "level")) then { getNumber (_x >> "level") } else { -1 };
     private _version = if (isArray _cfgVersion) then { [getArray _cfgVersion, _level] } else { [[0,0,0], 0] };
 
-    GVAR(versionsNamespace) setVariable [_prefix, _version];
+    [GVAR(versions), _prefix, _version] call CBA_fnc_hashSet;
 
     private _cfgDependencies = _x >> "dependencies";
 
@@ -21,6 +30,6 @@ GVAR(dependenciesNamespace) = [] call CBA_fnc_createNamespace;
             _dependencies pushBack [configName _x, getArray _x];
         } forEach (configProperties [_cfgDependencies, "isArray _x"]);
 
-        GVAR(dependenciesNamespace) setVariable [_prefix, _dependencies];
+        [GVAR(dependencies), _prefix, _dependencies] call CBA_fnc_hashSet;
     };
 } forEach ("true" configClasses (configfile >> "CfgSettings" >> "CBA" >> "Versioning"));

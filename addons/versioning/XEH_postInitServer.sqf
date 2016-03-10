@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 
-if (SLX_XEH_MACHINE select 1) exitWith { LOG("WARNING: YOUR MACHINE WAS DETECTED AS SERVER INSTEAD OF CLIENT!") };
-
-GVAR(versions_serv) = + GVAR(versions); // For latest versions
+GVAR(versions_serv) = + GVAR(versions);
 publicVariable QGVAR(versions_serv);
 
 // Paranoid; yet pretty annoying gamebreaking issue :-) - @todo useless, remove?
@@ -16,10 +14,6 @@ QGVAR(versions_serv) addPublicVariableEventHandler {
     };
 };
 
-["handleMismatch", {
-    params ["_machine", "_addon"];
-    CBA_logic globalChat format ["%1 - Not running! (Machine: %2)", _machine, _addon];
-}] call CBA_fnc_addEventHandler;
 
 
 

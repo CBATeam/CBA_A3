@@ -6,8 +6,10 @@
 class CfgFunctions {
     class CBA {
         class Versioning {
-            F_FILEPATH(compareVersions);
+            F_FILEPATH(formatVersionNumber);
+            F_FILEPATH(logVersion);
             F_FILEPATH(errorMessage);
+            F_FILEPATH(compareVersions);
             F_FILEPATH(checkDependencies);
         };
     };

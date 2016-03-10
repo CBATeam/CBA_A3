@@ -16,11 +16,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(checkDependencies);
 
-private _namespace = GVAR(dependenciesNamespace);
-
-{
-    private _prefix = _x;
-
+[GVAR(dependencies), {
     {
         _x params ["_dependency", "_dependencyInfo"];
         _dependencyInfo params ["_dependencyClass", "_dependencyVersion", "_dependencyCondition"];
@@ -37,19 +33,19 @@ private _namespace = GVAR(dependenciesNamespace);
 
         if (_dependencyIsPresent) then {
             if (!isClass _class) then {
-                ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). You have none.", _prefix, _dependencyClass, _dependency, _dependencyVersionStr], _display] call CBA_fnc_errorMessage;
+                ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). You have none.", _key, _dependencyClass, _dependency, _dependencyVersionStr], _display] call CBA_fnc_errorMessage;
             } else {
                 if (!isArray (_class >> "versionAr")) then {
-                    ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _prefix, _dependencyClass, _dependency, _dependencyVersionStr], _display] call CBA_fnc_errorMessage;
+                    ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). No valid version info found.", _key, _dependencyClass, _dependency, _dependencyVersionStr], _display] call CBA_fnc_errorMessage;
                 } else {
                     private _localVersion = getArray (_class >> "versionAr");
                     private _localVersionStr = format ["v%1", _localVersion joinString "."];
 
                     if !([_dependencyVersion, _localVersion] call CBA_fnc_compareVersions) then {
-                        ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). You have: %5", _prefix, _dependencyClass, _dependency, _dependencyVersionStr, _localVersionStr], _display] call CBA_fnc_errorMessage;
+                        ["WARNING:", format ["%1 requires %2 (@%3) at version %4 (or higher). You have: %5", _key, _dependencyClass, _dependency, _dependencyVersionStr, _localVersionStr], _display] call CBA_fnc_errorMessage;
                     };
                 };
             };
         };
-    } forEach (_namespace getVariable _prefix);
-} forEach allVariables _namespace;
+    } forEach _value;
+}] call CBA_fnc_hashEachPair;

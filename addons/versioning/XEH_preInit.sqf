@@ -11,15 +11,13 @@ if (isNil "CBA_display_ingame_warnings") then {
     CBA_display_ingame_warnings = true;
 };
 
-GVAR(mismatch) = []
+GVAR(mismatch) = [];
+
+if (isServer) then {
+    ["handleMismatch", {
+        params ["_machine", "_addon"];
+        CBA_logic globalChat format ["%1 - Not running! (Machine: %2)", _machine, _addon];
+    }] call CBA_fnc_addEventHandler;
+};
 
 ADDON = true;
-
-
-
-/*
-    Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
-
-*/
-
-PREP(version_check);
