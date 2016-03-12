@@ -37,7 +37,7 @@ if (CBA_DisableCredits) exitWith {};
 
 // find addon with author
 private _config = configFile >> "CfgPatches";
-private _entry = selectRandom ("isArray (_x >> 'author')" configClasses _config);
+private _entry = ("isArray (_x >> 'author') && {!(getArray (_x >> 'author') isEqualTo [])}" configClasses _config) call (uiNamespace getVariable "BIS_fnc_selectRandom"); //bwc for 1.54 (Linux build)
 
 if (isNil "_entry") exitWith {};
 

@@ -14,10 +14,10 @@ class CfgPatches {
     };
 
     // Backwards compatibility
-    class cba_xeh_a3: ADDON {};
-    class Extended_EventHandlers: ADDON {};
-    class CBA_Extended_EventHandlers: ADDON {};
-    class cba_ee: ADDON {};
+    class cba_xeh_a3: ADDON {author[] = {};};
+    class Extended_EventHandlers: ADDON {author[] = {};};
+    class CBA_Extended_EventHandlers: ADDON {author[] = {};};
+    class cba_ee: ADDON {author[] = {};};
 };
 
 #include "CfgEventHandlers.hpp"
