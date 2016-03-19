@@ -63,6 +63,10 @@ class CfgFunctions {
             F_FILEPATH(removeWeapon);
             F_FILEPATH(removeMagazine);
             F_FILEPATH(removeItem);
+            F_FILEPATH(weaponComponents);
+            F_FILEPATH(dropWeapon);
+            F_FILEPATH(dropMagazine);
+            F_FILEPATH(dropItem);
         };
 
         class Cargo {
@@ -119,8 +123,6 @@ class CfgFunctions {
 
         class Broken {
             F_FILEPATH(actionArgument);
-            F_FILEPATH(dropMagazine);
-            F_FILEPATH(dropWeapon);
         };
     };
 };
