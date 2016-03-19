@@ -10,7 +10,7 @@ Description:
 Parameters:
     _unit - the unit that should drop a magazine <OBJECT>
     _item - class name of the magazine to drop <STRING>
-    _ammo - ammo count <NUMBER>
+    _ammo - ammo count (optional). If not specified a random magazine is chosen <NUMBER>
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
@@ -30,7 +30,7 @@ params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];
 
 // random mag mode
 if (_ammo < 0) then {
-    _ammo = (selectRandom (magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}})) param [1, "null"];
+    _ammo = ((magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}}) call BIS_fnc_selectRandom) param [1, "null"];
 };
 
 // no mag of this type in units inventory

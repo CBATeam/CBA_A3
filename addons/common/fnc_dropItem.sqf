@@ -27,7 +27,7 @@ SCRIPT(dropItem);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]]];
 
-private _return = [_unit, _item, _ammo] call CBA_fnc_removeItem;
+private _return = [_unit, _item] call CBA_fnc_removeItem;
 
 if (_return) then {
     _unit switchMove "ainvpknlmstpslaywrfldnon_1";
