@@ -7,7 +7,6 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark"};
         version = VERSION;
-        author[] = {"Robalo"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };

@@ -24,14 +24,12 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark"};
-        author[] = {"Robalo"};
     };
     class asdg_jointmuzzles { //compat
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark"};
-        author[] = {"Robalo"};
     };
 };
 
