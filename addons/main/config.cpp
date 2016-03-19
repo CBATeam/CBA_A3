@@ -48,7 +48,7 @@ class CfgSettings {
                     // CBA requiring CBA_A3, if A3 is found
                     CBA_A3[] = {"cba_main_a3", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'A3_Map_Stratis')"};
 
-                    XEH[] = {"cba_xeh", {1,0,0}, "true"};
+                    XEH[] = {"cba_xeh", {1,0,0}, "(true)"};
                 };
             };
         };
