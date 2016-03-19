@@ -55,7 +55,7 @@ if (isNil "_compatibleItems") then {
 };
 
 if (_typefilter == 0) then { //return
-    _compatibleItems
+    + _compatibleItems
 } else {
     _compatibleItems select {_typefilter == getNumber(configFile>>"CfgWeapons">>_x>>"itemInfo">>"type")};
 };
