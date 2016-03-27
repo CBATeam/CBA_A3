@@ -32,25 +32,6 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
     };
 };
 
-private _oldPFH = isNil "BIS_fnc_addStackedEventHandler";
-
-FUNC(initPerFrameHandlers) = {
-    if (_this) then {
-        7771 cutRsc ["CBA_FrameHandlerTitle", "PLAIN"];
-    } else {
-        // Use the new, stacked onEachFrame system
-        ["CBA_PFH", "onEachFrame", QUOTE(FUNC(onFrame))] call BIS_fnc_addStackedEventHandler;
-    };
-
-    GVAR(lastFrameRender) = diag_frameNo;
-    // Use a trigger, runs every 0.5s, unscheduled execution
-    GVAR(perFrameTrigger) = createTrigger ["EmptyDetector", [0,0,0], false];
-    GVAR(perFrameTrigger) setTriggerStatements [QUOTE(call FUNC(monitorFrameRender)), "", ""];
-};
-
-// Run the per frame handler init code, bringing up the hidden map control
-_oldPFH call FUNC(initPerFrameHandlers);
-
 // system to synch team colors
 PREP(onTeamColorChanged);
 PREP(synchTeamColors);
