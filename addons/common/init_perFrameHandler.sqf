@@ -99,7 +99,6 @@ if (isNil {canSuspend}) then {
                 GVAR(lastFrameRender) = diag_frameNo;
             }] call BIS_fnc_addStackedEventHandler;
             TRACE_1("PFH restored",nil);
-            diag_log text "PFH restored";
         };
     };
 
