@@ -8,7 +8,7 @@ Parameters:
     [type] The type of the new unit the player should switch to [String]
 
     Optional:
-    [type, "LEAVEWEPS"] - switch to new unit of the given type, but keep
+    [type, "LEAVEWEAPS"] - switch to new unit of the given type, but keep
                               the weapons the player had before.
 
 
@@ -23,7 +23,7 @@ Examples:
     _h = ["USMC_Soldier_LAT"] spawn CBA_fnc_switchPlayer;
 
     // Switch into a corpsman, but keep the weapons
-    _h = ["USMC_Soldier_Medic", "LEAVEWEPS"] spawn CBA_fnc_switchPlayer;
+    _h = ["USMC_Soldier_Medic", "LEAVEWEAPS"] spawn CBA_fnc_switchPlayer;
     (end)
 
 Author:
@@ -64,17 +64,7 @@ LOG(format["3.State transfered, switched player control to new unit, local: %1",
 sleep 1;
 if (_ar select 7 != "") then
 {
-    if (isMultiplayer) then
-    {
-        GVAR(setVehVarName) = compile format ["private['_ou','_nu'];_ou=objectFromNetID(_this select 0);_nu=objectFromNetId(_this select 1);_ou setVehicleVarName'';_nu setVehicleVarName'%1';%1=_nu;", _ar select 7];
-        publicVariable QGVAR(setVehVarName);
-        [netId _oldUnit, netId _newUnit] remoteExecCall [QGVAR(setVehVarName)];
-    }
-    else
-    {
-        _oldUnit setVehicleVarName "";
-        _newUnit setVehicleVarName (_ar select 7);
-    };
+    ["CBA_setVehVarName", [_oldUnit, _newUnit, (_ar select 7)]] call  CBA_fnc_globalEvent;
 };
 
 if ("LEAVEWEAPS" in _this) then

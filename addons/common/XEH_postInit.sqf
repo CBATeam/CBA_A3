@@ -51,3 +51,10 @@ if (hasInterface) then {
         } count allUnits;
     };
 };
+
+//Event for switching vehicle var names from CBA_fnc_switchPlayer
+["CBA_setVehVarName", {
+    params ["_oldVeh", "_newVeh", "_vehName"];
+    _oldVeh setVehicleVarName "";
+    _newVeh setVehicleVarName _vehName;
+}] call CBA_fnc_addEventHandler;
