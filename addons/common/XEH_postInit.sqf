@@ -53,7 +53,7 @@ if (hasInterface) then {
 };
 
 //Event for switching vehicle var names from CBA_fnc_switchPlayer
-["CBA_setVehVarName", {
+["CBA_setVehicleVarName", {
     params ["_oldVeh", "_newVeh", "_vehName"];
     _oldVeh setVehicleVarName "";
     _newVeh setVehicleVarName _vehName;

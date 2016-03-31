@@ -64,7 +64,7 @@ LOG(format["3.State transfered, switched player control to new unit, local: %1",
 sleep 1;
 if (_ar select 7 != "") then
 {
-    ["CBA_setVehVarName", [_oldUnit, _newUnit, (_ar select 7)]] call  CBA_fnc_globalEvent;
+    ["CBA_setVehicleVarName", [_oldUnit, _newUnit, (_ar select 7)]] call  CBA_fnc_globalEvent;
 };
 
 if ("LEAVEWEAPS" in _this) then
