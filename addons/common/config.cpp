@@ -14,7 +14,6 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
-#include "CfgRemoteExec.hpp"
 #include "CfgLocationTypes.hpp"
 
 class CBA_DirectCall {
