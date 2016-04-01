@@ -19,7 +19,7 @@ if (isNil {canSuspend}) then {
         if (!isNull _obj) then {[_name, _uid, _obj] call FUNC(opc);};
     }] call BIS_fnc_addStackedEventhandler;
 } else {
-    // v1.58 ad later
+    // v1.58 and later
     addMissionEventHandler ["PlayerConnected", {
         params ["_id", "_uid", "_name", "_jip", "_owner"];
 

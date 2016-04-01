@@ -144,7 +144,7 @@ if (isMultiplayer) then {
                 _owner publicVariableClient "CBA_missionTime";
             }] call BIS_fnc_addStackedEventHandler;
         } else {
-            // v1.58 ad later
+            // v1.58 and later
             addMissionEventHandler ["PlayerConnected", {
                 (_this select 4) publicVariableClient "CBA_missionTime";
             }];
