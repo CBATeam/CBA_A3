@@ -719,6 +719,10 @@ Author:
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 #define EFUNC(var1,var2) FUNC_INNER(var1,var2)
+#define QFUNC(var1) QUOTE(FUNC(var1))
+#define QFUNCMAIN(var1) QUOTE(FUNCMAIN(var1))
+#define QFUNC_INNER(var1,var2) QUOTE(FUNC_INNER(var1,var2))
+#define QEFUNC(var1,var2) QUOTE(EFUNC(var1,var2))
 
 #ifndef PRELOAD_ADDONS
     #define PRELOAD_ADDONS class CfgAddons \
