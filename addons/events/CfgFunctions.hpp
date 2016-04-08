@@ -46,6 +46,10 @@ class CfgFunctions {
                 description = "Raises a CBA event on all machines, including the local one.";
                 file = "\x\cba\addons\events\fnc_globalEvent.sqf";
             };
+            class globalEventJIP {
+                description = "Raises a CBA event on all machines. Event is put on a stack that is executed on every future JIP machine. Stack can be overwritten by using the same JIP-Stack-ID.";
+                file = "\x\cba\addons\events\fnc_globalEventJIP.sqf";
+            };
             class serverEvent {
                 description = "Raises a CBA event on the server machine.";
                 file = "\x\cba\addons\events\fnc_serverEvent.sqf";

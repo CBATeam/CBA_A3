@@ -6,6 +6,11 @@ ADDON = false;
 GVAR(eventNamespace) = call CBA_fnc_createNamespace;
 GVAR(eventHashes) = call CBA_fnc_createNamespace;
 
+if (isServer) then {
+    GVAR(eventNamespaceJIP) = (createGroup sideLogic) createUnit ["Logic", [0,0,0], [], 0, "NONE"]; // createVehicle fails on game logics. Have to use createUnit instead.
+    publicVariable QGVAR(eventNamespaceJIP);
+};
+
 // can't add at preInit
 0 spawn {
     EVENT_PVAR_STR addPublicVariableEventHandler {(_this select 1) call CBA_fnc_localEvent};
