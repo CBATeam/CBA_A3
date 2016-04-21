@@ -1,6 +1,33 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+//Install PFEH:
+if (isNil {canSuspend}) then {
+    // pre 1.58
+    ["CBA_PFH", "onEachFrame", {
+        call FUNC(onFrame);
+        GVAR(lastFrameRender) = diag_frameNo;
+    }] call BIS_fnc_addStackedEventHandler;
+
+    FUNC(monitorFrameRender) = {
+        if (abs (diag_frameno - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
+            // Restores the onEachFrame handler
+            ["CBA_PFH", "onEachFrame", {
+                call FUNC(onFrame);
+                GVAR(lastFrameRender) = diag_frameNo;
+            }] call BIS_fnc_addStackedEventHandler;
+            TRACE_1("PFH restored",nil);
+        };
+    };
+
+    // Use a trigger, runs every 0.5s, unscheduled execution
+    GVAR(perFrameTrigger) = createTrigger ["EmptyDetector", [0,0,0], false];
+    GVAR(perFrameTrigger) setTriggerStatements ['FUNC(monitorFrameRender) call CBA_fnc_directCall', "", ""];
+} else {
+    // 1.58 and later
+    addMissionEventHandler ["EachFrame", FUNC(onFrame)];
+};
+
 LOG(MSG_INIT);
 
 // NOTE: Due to the way the BIS functions initializations work, and the requirement of BIS_functions_mainscope to be a unit (in a group)
@@ -51,3 +78,10 @@ if (hasInterface) then {
         } count allUnits;
     };
 };
+
+//Event for switching vehicle var names from CBA_fnc_switchPlayer
+["CBA_setVehicleVarName", {
+    params ["_oldVeh", "_newVeh", "_vehName"];
+    _oldVeh setVehicleVarName "";
+    _newVeh setVehicleVarName _vehName;
+}] call CBA_fnc_addEventHandler;
