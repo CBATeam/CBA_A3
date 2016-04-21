@@ -84,31 +84,6 @@ FUNC(onFrame) = {
 
 };
 
-if (isNil {canSuspend}) then {
-    // pre 1.58
-    ["CBA_PFH", "onEachFrame", {
-        call FUNC(onFrame);
-        GVAR(lastFrameRender) = diag_frameNo;
-    }] call BIS_fnc_addStackedEventHandler;
-
-    FUNC(monitorFrameRender) = {
-        if (abs (diag_frameno - GVAR(lastFrameRender)) > DELAY_MONITOR_THRESHOLD) then {
-            // Restores the onEachFrame handler
-            ["CBA_PFH", "onEachFrame", {
-                call FUNC(onFrame);
-                GVAR(lastFrameRender) = diag_frameNo;
-            }] call BIS_fnc_addStackedEventHandler;
-            TRACE_1("PFH restored",nil);
-        };
-    };
-
-    // Use a trigger, runs every 0.5s, unscheduled execution
-    GVAR(perFrameTrigger) = createTrigger ["EmptyDetector", [0,0,0], false];
-    GVAR(perFrameTrigger) setTriggerStatements ['FUNC(monitorFrameRender) call CBA_fnc_directCall', "", ""];
-} else {
-    // 1.58 and later
-    addMissionEventHandler ["EachFrame", FUNC(onFrame)];
-};
 
 // fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded
 addMissionEventHandler ["Loaded", {
