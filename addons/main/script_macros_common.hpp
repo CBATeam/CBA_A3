@@ -632,6 +632,9 @@ Author:
 #define CFGSETTINGS CFGSETTINGSS(PREFIX,COMPONENT)
 #define PATHTO(var1) PATHTO_SYS(PREFIX,COMPONENT_F,var1)
 #define PATHTOF(var1) PATHTOF_SYS(PREFIX,COMPONENT,var1)
+#define PATHTOEF(var1,var2) PATHTOF_SYS(PREFIX,var1,var2)
+#define QPATHTOF(var1) QUOTE(PATHTOF(var1))
+#define QPATHTOEF(var1,var2) QUOTE(PATHTOEF(var1,var2))
 
 #define COMPILE_FILE(var1) COMPILE_FILE_SYS(PREFIX,COMPONENT_F,var1)
 #define COMPILE_FILE_CFG(var1) COMPILE_FILE_CFG_SYS(PREFIX,COMPONENT_F,var1)
@@ -719,6 +722,10 @@ Author:
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
 #define FUNC_INNER(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 #define EFUNC(var1,var2) FUNC_INNER(var1,var2)
+#define QFUNC(var1) QUOTE(FUNC(var1))
+#define QFUNCMAIN(var1) QUOTE(FUNCMAIN(var1))
+#define QFUNC_INNER(var1,var2) QUOTE(FUNC_INNER(var1,var2))
+#define QEFUNC(var1,var2) QUOTE(EFUNC(var1,var2))
 
 #ifndef PRELOAD_ADDONS
     #define PRELOAD_ADDONS class CfgAddons \

@@ -2,6 +2,10 @@
 class CfgFunctions {
     class CBA {
         class Events {
+            class addBISEventHandler {
+                description = "Adds an event handler with arguments.";
+                file = "\x\cba\addons\events\fnc_addBISEventHandler.sqf";
+            };
             class addDisplayHandler {
                 description = "Adds an action to the main display.";
                 file = "\x\cba\addons\events\fnc_addDisplayHandler.sqf";
