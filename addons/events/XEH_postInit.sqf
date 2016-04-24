@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 
 // execute JIP events after post init to guarantee execution of events added during postInit
 {
