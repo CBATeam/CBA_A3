@@ -28,23 +28,25 @@ SCRIPT(addBISEventHandler);
 
 params [
     ["_thing", objNull, [objNull, displayNull, controlNull, missionNamespace]],
-    ["_type", "objNull", [""]],
+    ["_type", "", [""]],
     ["_function", {}, [{}]],
     ["_arguments", []]
 ];
 
 // retrieve unique variable name to store arguments, atomic to prevent race conditions
 private _varID = {
-    private _varID = _thing getVariable [QGVAR(lastEventArgsID), -1];
+    private _varID = _thing getVariable [format [QGVAR(lastID_%1), _type], -1];
     _varID = _varID + 1;
-    _thing setVariable [QGVAR(lastEventArgsID), _varID];
+    _thing setVariable [format [QGVAR(lastID_%1), _type], _varID];
     _varID
 } call CBA_fnc_directCall;
 
+private _source = ["_this select 0", "missionNamespace"] select (_thing isEqualTo missionNamespace);
+
 private _fnc = format ['
-    ((_this select 0) getVariable QGVAR($%1)) params ["_thisFnc", "_thisArgs", "_thisID"];
+    ((%3) getVariable QGVAR(%1$%2)) params ["_thisType", "_thisId", "_thisFnc", "_thisArgs"];
     call _thisFnc
-', _varID];
+', _type, _varID, _source];
 
 private _id = call {
     if (_thing isEqualType objNull) exitWith {
@@ -60,16 +62,13 @@ private _id = call {
     };
 
     if (_thing isEqualTo missionNamespace) exitWith {
-        addMissionEventHandler [_type, format ['
-            (missionNamespace getVariable QGVAR($%1)) params ["_thisFnc", "_thisArgs", "_thisID"];
-            call _thisFnc
-        ', _varID]];
+        addMissionEventHandler [_type, _fnc];
     };
     -1
 };
 
 if (_id >= 0) then {
-    _thing setVariable [format [QGVAR($%1), _varID], [_function, _arguments, _id]];
+    _thing setVariable [format [QGVAR(%1$%2), _type, _varID], [_type, _id, _function, _arguments]];
 };
 
 _id
