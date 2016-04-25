@@ -68,11 +68,17 @@ def main():
 
         print("# Making {} ...".format(p))
 
+        usescriptsfolder = os.path.join(path, "$SCRIPTSFOLDER$")
+        if os.path.isfile(usescriptsfolder):
+            pbopath = "-@=userconfig"
+        else:
+            pbopath = "-@={}\\{}\\addons\\{}".format(MAINPREFIX,PREFIX.rstrip("_"),p)
+
         try:
             subprocess.check_output([
                 "makepbo",
                 "-NUP",
-                "-@={}\\{}\\addons\\{}".format(MAINPREFIX,PREFIX.rstrip("_"),p),
+                pbopath,
                 p,
                 "{}{}.pbo".format(PREFIX,p)
             ], stderr=subprocess.STDOUT)
