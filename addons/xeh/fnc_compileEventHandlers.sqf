@@ -153,7 +153,7 @@ private _resultNames = [];
                 };
 
                 // init event handlers that should run on respawn again, onRespawn = 1
-                if (_eventName == "init" && {getNumber (_x >> "onRespawn") == 1}) then {
+                if (toLower _eventName in ["init", "initpost"] && {getNumber (_x >> "onRespawn") == 1}) then {
                     _eventFunc = _eventFunc + "(_this select 0) addEventHandler ['Respawn', " + str _eventFunc + "];";
                 };
             } else {
