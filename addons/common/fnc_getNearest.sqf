@@ -2,7 +2,9 @@
 Function: CBA_fnc_getNearest
 
 Description:
-    A function used to find out the nearest entity parsed in an array to a position. Compares the distance between entity's in the parsed array.
+    Find out the nearest entity parsed in an array to a position.
+
+    Compares the distance between entity's in the parsed array.
 
 Parameters:
     _position - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>

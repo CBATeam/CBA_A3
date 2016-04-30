@@ -2,8 +2,9 @@
 Function: CBA_fnc_formatElapsedTime
 
 Description:
-    Formats time in seconds according to a format. Intended to show time elapsed,
-    rather than time-of-day.
+    Formats time in seconds according to a format.
+
+    Intended to show time elapsed, rather than time-of-day.
 
 Parameters:
     _seconds - Number of seconds to format, for example from 'time' command [number]

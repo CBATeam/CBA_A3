@@ -3,6 +3,7 @@ Function: CBA_fnc_addBISEventHandler
 
 Description:
     Adds an event handler with arguments.
+
     Additional arguments are passed as _thisArgs. The ID is passed as _thisID.
 
 Parameters:

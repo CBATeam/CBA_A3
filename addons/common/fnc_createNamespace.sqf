@@ -3,6 +3,7 @@ Function: CBA_fnc_createNamespace
 
 Description:
     Creates a namespace. Used to store and read variables via setVariable and getVariable.
+
     The Namespace is destroyed after the mission ends. getVariable ARRAY is not supported.
 
 Parameters:

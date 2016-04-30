@@ -3,6 +3,7 @@ Function: CBA_fnc_publicVariable
 
 Description:
 	CBA_fnc_publicVariable does only broadcast the new value if it doesn't exist in missionNamespace or the new value is different to the one in missionNamespace.
+
 	Checks also for different types. Nil as value gets always broadcasted.
 
 	Should reduce network traffic.
