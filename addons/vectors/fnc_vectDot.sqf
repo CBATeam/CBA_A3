@@ -2,14 +2,15 @@
 Function: CBA_fnc_vectDot
 
 Description:
- Returns the dot product of two vectors.  Vectors can be either two or three dimesions, but they must be the same dimension.
+    Returns the dot product of two vectors.
+    Vectors can be either two or three dimesions, but they must be the same dimension.
 
 Parameters:
- _u the first vector.
- _v the second vector.
+    _u the first vector.
+    _v the second vector.
 
 Returns:
- the dot product (scalar) of the two vectors.
+    The dot product (scalar) of the two vectors.
 
 Examples:
     (begin example)

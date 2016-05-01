@@ -2,7 +2,9 @@
 Function: CBA_fnc_findTypeOf
 
 Description:
-    A function that returns the index of the first entry (either object or class name string) of the given type in an array.
+   Returns the index of the first entry of a given type in an array.
+
+   The type argument is either an object or a class name string.
 
 Parameters:
     0: Array

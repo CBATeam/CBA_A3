@@ -2,7 +2,10 @@
 Function: CBA_fnc_globalEventJIP
 
 Description:
-    Raises a CBA event on all machines. Event is put on a stack that is executed on every future JIP machine. Stack can be overwritten by using the same JIP-Stack-ID.
+    Raises a CBA event on all machines.
+
+    Event is put on a stack that is executed on every future JIP machine.
+    Stack can be overwritten by using the same JIP-Stack-ID.
 
 Parameters:
     _eventName - Type of event to publish. <STRING>

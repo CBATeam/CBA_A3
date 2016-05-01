@@ -2,7 +2,7 @@
 Function: CBA_fnc_findTypeName
 
 Description:
-    A function that returns the index of the first entry of the given type in an array.
+    Returns the index of the first entry of the given type in an array.
 
 Parameters:
     0: Array

@@ -3,6 +3,7 @@ Function: CBA_fnc_removeWeaponCargo
 
 Description:
     Removes specific weapon(s) from local cargo space.
+
     Warning: Weapon's attachments are lost.
 
     * Use <CBA_fnc_removeWeaponCargoGlobal> if you want to remove the weapon(s) in

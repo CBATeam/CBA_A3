@@ -3,6 +3,7 @@ Function: CBA_fnc_getFirer
 
 Description:
     A function used to find out which unit exactly fired.
+
     Replacement for gunner, on multi-turret vehicles.
 
 Parameters:

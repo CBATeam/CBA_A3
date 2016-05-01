@@ -2,7 +2,9 @@
 Function: CBA_fnc_substr
 
 Description:
-    Retrieves a substring of this instance. The substring starts at a specified character position and has a specified length.
+    Retrieves a substring of this instance.
+
+    The substring starts at a specified character position and has a specified length.
 
 Parameters:
     _string - String to extract from [String]

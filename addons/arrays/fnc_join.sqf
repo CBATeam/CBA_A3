@@ -4,8 +4,9 @@ Function: CBA_fnc_join
 DEPRECATED - Please use <joinString at https://community.bistudio.com/wiki/joinString> added in Arma 3 1.50
 
 Description:
-    Joins an array of values into a single string, joining each fragment around
-    a separator string. Inverse of <CBA_fnc_split>.
+    Joins an array of values into a single string.
+
+    Eeach value is joined around a separator string. Inverse of <CBA_fnc_split>.
 
 Parameters:
     _array - Array to join together as a string [Array]

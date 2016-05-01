@@ -3,6 +3,7 @@ Function: CBA_fnc_taskSearchArea
 
 Description:
     Given group will indefinitely randomly search the given marker/trigger area.
+
     Will also perform random building searches.
 
 Parameters:

@@ -2,7 +2,8 @@
 Function: CBA_fnc_turretPath
 
 Description:
-    A function used to report the soldiers turret path in the current vehicle.
+    Get a unit's turret path in the current vehicle.
+
     Reverse version of the turretUnit scripting command.
 
 Parameters:

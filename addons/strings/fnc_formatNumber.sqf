@@ -3,7 +3,9 @@ Function: CBA_fnc_formatNumber
 
 Description:
     Formats a number to a minimum integer width and to a specific number of
-    decimal places (including padding with 0s and correct rounding). Numbers
+    decimal places.
+
+    The formatting includes padding with 0s and correct rounding. Numbers
     are always displayed fully, never being condensed using an exponent (e.g.
     the number 1.234e9 would be given as "1234000000").
 

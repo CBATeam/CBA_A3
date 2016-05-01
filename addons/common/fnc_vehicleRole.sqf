@@ -2,7 +2,8 @@
 Function: CBA_fnc_vehicleRole
 
 Description:
-    A function used to report the soldiers role in his current vehicle.
+    Get a unit's role in its current vehicle.
+
     Used because assignedVehicleRole reports the role assigned by the group leader instead of the current position.
 
 Parameters:

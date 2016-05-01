@@ -2,7 +2,8 @@
 Function: CBA_fnc_turretPathWeapon
 
 Description:
-    A function used to report the turret path belonging to a weapon of given vehicle.
+    Get the turret path belonging to a weapon of given vehicle.
+
     Reverse version of the weaponsTurret scripting command.
 
 Parameters:

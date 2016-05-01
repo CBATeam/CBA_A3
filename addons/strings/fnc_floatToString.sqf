@@ -3,8 +3,10 @@ Function: CBA_fnc_floatToString
 
 Description:
     Returns a higher precision string representation of a IEEE 754 floating point
-    number than the str function. This function is as barebones as possible. Inline
-    macro version of this function can be used with FLOAT_TO_STRING(num).
+    number than the str function.
+
+    This function is as barebones as possible. Inline macro version of this
+    function can be used with FLOAT_TO_STRING(num).
 
 Limitations:
 

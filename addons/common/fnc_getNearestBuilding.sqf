@@ -2,7 +2,7 @@
 Function: CBA_fnc_getNearestBuilding
 
 Description:
-    A function used to find out the nearest building and appropriate building positions available.
+    Find the nearest building and number of building positions available.
 
 Parameters:
     _position - <OBJECT, POSITION>

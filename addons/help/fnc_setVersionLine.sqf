@@ -2,7 +2,9 @@
 Function: CBA_help_fnc_setVersionLine
 
 Description:
-    Displays all CfgPatches with a "versionDesc" entry in the main menu. Mods are cycled automatically every 3 seconds or can be browsed using LMB and RMB.
+    Displays all CfgPatches with a "versionDesc" entry in the main menu.
+
+    Mods are cycled automatically every 3 seconds or can be browsed using LMB and RMB.
     Double clicking executes the script in "versionAct".
 
 Parameters:

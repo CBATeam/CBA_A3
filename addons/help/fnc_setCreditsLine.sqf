@@ -2,7 +2,8 @@
 Function: CBA_help_fnc_setCreditsLine
 
 Description:
-    Picks a random CfgPatches entry with an "author" entry and displays author, version and url in the main menu and ingame in the pause menu.
+    Picks a random CfgPatches entry with an "author" entry and displays author,
+    version and URL in the main menu and ingame in the pause menu.
 
 Parameters:
     0: _display - Either Main menu or Pause menu display or a control of these displays. <DISPLAY, CONTROL>

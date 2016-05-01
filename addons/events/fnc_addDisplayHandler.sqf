@@ -3,7 +3,9 @@ Function: CBA_fnc_addDisplayHandler
 
 Description:
     Adds an action to the main display.
-    They are reapplied after loading a save game. Actions only persist for the mission and are removed after restart.
+
+    They are reapplied after loading a save game. Actions only persist for the
+    mission and are removed after restart.
 
 Parameters:
     _type - Display handler type to attach. <STRING>

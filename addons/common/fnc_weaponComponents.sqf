@@ -3,6 +3,7 @@ Function: CBA_fnc_weaponComponents
 
 Description:
     Reports class name of base weapon without attachments and all attachments belonging to a pre equipped weapon.
+
     Base weapon and attachments are reported in lower case capitalization.
     Fixed version of BIS_fnc_weaponComponents.
 
