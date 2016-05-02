@@ -38,6 +38,13 @@ if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
 // no such CfgVehicles class
 if (!isClass _config) exitWith {false};
 
+//Handle initReto event type:
+private _runRetroactiveInit = false;
+if (_eventName == "initRetro") then {
+    _runRetroactiveInit = true;
+    _eventName = "init";
+};
+
 _eventName = toLower _eventName;
 
 // no such event
@@ -61,6 +68,11 @@ private _eventVarName = format [QGVAR(%1), _eventName];
             };
 
             (_unit getVariable _eventVarName) pushBack _eventFunc;
+
+            //Run initReto now if the unit has already been initialized
+            if (_runRetroactiveInit && {ISINITIALIZED(_unit)}) then {
+                [_unit] call _eventFunc;
+            };
         };
     };
 } forEach (_entities arrayIntersect _entities); // filter duplicates
