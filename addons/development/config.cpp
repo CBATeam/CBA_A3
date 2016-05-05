@@ -3,7 +3,6 @@
 class CfgPatches {
     class ADDON {
         units[] = {};
-        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_common"};
         version = VERSION;

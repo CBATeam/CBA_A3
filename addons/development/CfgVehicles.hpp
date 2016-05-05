@@ -48,10 +48,7 @@ class CfgVehicles{
 
 		class ModuleDescription: ModuleDescription{
 			description = "Core module sets definitions for mission";
-			sync[] = {"LocationArea_F"};
-	 
-			class LocationArea_F{
-				description[] = "Place module and pick options to define mission";
+			sync[] = {};
 			};
 		};
 	};
