@@ -62,14 +62,13 @@ private _fnc_getKeyName = {
 _fnc_getKeyName spawn {
     private _text = GVAR(keys);
 
-    cba_keybinding_handlers params [["_keyNames", [], [[]]], ["_keyHandlers", [], [[]]]];
+    cba_keybinding_handlers params [["_modNames", [], [[]]], ["_keyHandlers", [], [[]]]];
 
     {
-        private _keyName = _x;
+        private _modName = _x;
         private _keyHandler = _keyHandlers param [_forEachIndex, []];
-
-        if (!isNil "_keyName") then {
-            _text = _text + format ["%1:<br/>", _keyName];
+        if (!isNil "_modName" && _modName in cba_keybinding_activeMods) then {
+            _text = _text + format ["%1:<br/>", _modName];
 
             _keyHandler params [["_actionNames", [], [[]]], ["_actionEntries", [], [[]]]];
 
@@ -95,7 +94,7 @@ _fnc_getKeyName spawn {
 
             _text = _text + "<br/>";
         };
-    } forEach _keyNames;
+    } forEach _modNames;
 
     player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_HELP_KEYS", _text]];
 };
