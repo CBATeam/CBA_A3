@@ -2,10 +2,9 @@
 
 class CfgPatches {
     class ADDON {
-        units[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_common"};
-        version = VERSION;
+        units[] = {"CBA_moduleAttack"};
+        requiredVersion = 0.1;
+        requiredAddons[] = {"A3_Modules_F"};
         author[] = {"WiredTiger"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };

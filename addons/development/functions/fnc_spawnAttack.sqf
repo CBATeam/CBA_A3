@@ -1,19 +1,21 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_moduleAttack
+Function: CBA_fnc_spawnAttack
 
 Description:
     A function for spawning and commanding a group to attack a parsed location.
 
 Parameters:
-    - Group (Group or Object)
-    - Position (XYZ, Object, Location or Group)
+    - Group (Config or Array of Classnames)
+    - Headless Client (Bool)
+	- Spawn Point (XYZ, Object, Location or Marker)
+	- Attack Point (XYZ, Object, Location, Group, or Marker)
 
 Optional:
-    - Search Radius (Scalar)
+    - Nil
 
 Example:
     (begin example)
-    [group player, getpos (player findNearestEnemy player), 100] call CBA_fnc_taskAttack
+    [(configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad"), true, [0,0,0], getMarkerPos "myMarker"] call CBA_fnc_spawnAttack
     (end)
 
 Returns:
@@ -27,4 +29,4 @@ Author:
 #include "script_component.hpp"
 SCRIPT(moduleAttack);
 
-hint "It works!";
+params [];
