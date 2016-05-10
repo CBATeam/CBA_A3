@@ -49,6 +49,11 @@ if (_eventName == "FiredBIS") exitWith {
 };
 if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
 
+// don't use "apply retroactively" for non init events
+if (_applyInitRetroactivly && {!(_eventName in ["init", "initpost"])}) then {
+    _applyInitRetroactivly = false;
+};
+
 // add events to already existing objects
 private _entities = entities "" + allUnits;
 private _eventVarName = format [QGVAR(%1), _eventName];
