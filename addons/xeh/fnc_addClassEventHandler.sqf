@@ -10,6 +10,7 @@ Parameters:
     2: _eventFunc        - Function to execute when event happens. <CODE>
     3: _allowInheritance - Allow event for objects that only inherit from the given classname? [optional] <BOOLEAN> (default: true)
     4: _excludedClasses  - Exclude these classes from this event including their children [optional] <ARRAY> (default: [])
+    5: _applyInitRetroactively - Apply "init" event type on existing units that have already been initilized. [optional] <BOOLEAN> ((default: false)
 
 Returns:
     _success - Whether adding the event was successful or not. <BOOLEAN>
@@ -18,6 +19,7 @@ Examples:
     (begin example)
         ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
         ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+        ["Car", "init", {(_this select 0) engineOn true}, true, [], true] call CBA_fnc_addClassEventHandler; //Starts all current cars and those created later
     (end)
 
 Author:
@@ -25,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]]];
+params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]], ["_applyInitRetroactively", false, [false]]];
 
 private _config = configFile >> "CfgVehicles" >> _className;
 
@@ -47,6 +49,11 @@ if (_eventName == "FiredBIS") exitWith {
 };
 if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
 
+// don't use "apply retroactively" for non init events
+if (_applyInitRetroactively && {!(_eventName in ["init", "initpost"])}) then {
+    _applyInitRetroactively = false;
+};
+
 // add events to already existing objects
 private _entities = entities "" + allUnits;
 private _eventVarName = format [QGVAR(%1), _eventName];
@@ -61,6 +68,11 @@ private _eventVarName = format [QGVAR(%1), _eventName];
             };
 
             (_unit getVariable _eventVarName) pushBack _eventFunc;
+
+            //Run initReto now if the unit has already been initialized
+            if (_applyInitRetroactively && {ISINITIALIZED(_unit)}) then {
+                [_unit] call _eventFunc;
+            };
         };
     };
 } forEach (_entities arrayIntersect _entities); // filter duplicates
