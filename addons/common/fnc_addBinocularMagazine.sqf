@@ -3,6 +3,7 @@ Function: CBA_fnc_addBinocularMagazine
 
 Description:
     Adds a magazine to the units rangefinder.
+    Note that this breaks the unique magazine ids due to the usage of setUnitLoadout.
 
 Parameters:
     _unit     - A unit <OBJECT>
