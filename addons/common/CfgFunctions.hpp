@@ -68,6 +68,7 @@ class CfgFunctions {
             F_FILEPATH(dropMagazine);
             F_FILEPATH(dropItem);
             F_FILEPATH(binocularMagazine);
+            F_FILEPATH(addBinocularMagazine);
             F_FILEPATH(removeBinocularMagazine);
         };
 
