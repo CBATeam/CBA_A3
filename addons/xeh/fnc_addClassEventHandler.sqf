@@ -10,6 +10,7 @@ Parameters:
     2: _eventFunc        - Function to execute when event happens. <CODE>
     3: _allowInheritance - Allow event for objects that only inherit from the given classname? [optional] <BOOLEAN> (default: true)
     4: _excludedClasses  - Exclude these classes from this event including their children [optional] <ARRAY> (default: [])
+    5: _applyInitRetroactivly - Apply "init" event type on existing units that have already been initilized. [optional] <BOOLEAN> ((default: false)
 
 Returns:
     _success - Whether adding the event was successful or not. <BOOLEAN>
@@ -18,6 +19,7 @@ Examples:
     (begin example)
         ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
         ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+        ["Car", "init", {(_this select 0) engineOn true}, true, [], true] call CBA_fnc_addClassEventHandler; //Starts all current cars and those created later
     (end)
 
 Author:
@@ -25,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]]];
+params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]], ["_applyInitRetroactivly", false, [false]]];
 
 private _config = configFile >> "CfgVehicles" >> _className;
 
@@ -37,13 +39,6 @@ if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
 
 // no such CfgVehicles class
 if (!isClass _config) exitWith {false};
-
-//Handle initReto event type:
-private _runRetroactiveInit = false;
-if (_eventName == "initRetro") then {
-    _runRetroactiveInit = true;
-    _eventName = "init";
-};
 
 _eventName = toLower _eventName;
 
@@ -70,7 +65,7 @@ private _eventVarName = format [QGVAR(%1), _eventName];
             (_unit getVariable _eventVarName) pushBack _eventFunc;
 
             //Run initReto now if the unit has already been initialized
-            if (_runRetroactiveInit && {ISINITIALIZED(_unit)}) then {
+            if (_applyInitRetroactivly && {ISINITIALIZED(_unit)}) then {
                 [_unit] call _eventFunc;
             };
         };
