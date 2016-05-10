@@ -34,9 +34,6 @@ if (isNil "_ammo") then {
 };
 
 private _loadout = getUnitLoadout _unit;
-
-private _binocularInfo = _loadout param [8];
-_binocularInfo set [4, [_magazine, _ammo]];
-_loadout set [8, _binocularInfo];
+(_loadout select 8) set [4, [_magazine, _ammo]];
 
 _unit setUnitLoadout _loadout;
