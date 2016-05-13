@@ -49,6 +49,6 @@ if (_channel isEqualTo BI_SEND_TO_CLIENTS_ONLY) then {
     _code = {if (!isDedicated) then {(_this select 0) call (_this select 1)}};
 };
 
-[_parameters, _code] remoteExec ["BIS_fnc_Call", _channel];
+[_parameters, _code] remoteExec ["call", _channel];
 
 nil
