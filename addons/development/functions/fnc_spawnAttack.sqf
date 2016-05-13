@@ -26,7 +26,28 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "script_component.hpp"
-SCRIPT(moduleAttack);
+//#include "script_component.hpp"
+//SCRIPT(moduleAttack);
 
-params [];
+private ["_logic","_units","_activated","_isHeadless","_spawnPos","_attackPos"];
+
+_logic = param [0,objNull,[objNull]];
+_units = param [1,[],[[]]];
+_activated = param [2,true,[true]];
+
+myVar1 = _logic;
+myVar2 = _units;
+myVar3 = _activated;
+
+/*
+-String of array to array example-
+randVar = [myVar1 getVariable "spawnPosition"] call BIS_fnc_parseNumber;
+player setPos randVar
+*/
+
+/*
+-String of any kind to any kind example 2-   (Doesn't work with BOOL)
+randVar = call compile (myVar1 getVariable "scriptedUnit");
+hint typeName randVar
+*/
+
