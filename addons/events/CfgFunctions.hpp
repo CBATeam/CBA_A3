@@ -6,6 +6,10 @@ class CfgFunctions {
                 description = "Adds an event handler with arguments.";
                 file = "\x\cba\addons\events\fnc_addBISEventHandler.sqf";
             };
+            class addPlayerEventHandler {
+                description = "Adds a player event handler.";
+                file = "\x\cba\addons\events\fnc_addPlayerEventHandler.sqf";
+            };
             class addDisplayHandler {
                 description = "Adds an action to the main display.";
                 file = "\x\cba\addons\events\fnc_addDisplayHandler.sqf";
