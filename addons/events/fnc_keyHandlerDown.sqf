@@ -48,6 +48,11 @@ private _blockInput = false;
             _params pushBack _x;
 
             _blockInput = _params call _code;
+
+            if ((isNil "_blockInput") || {!(_blockInput isEqualType false)}) then {
+                LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
+                _blockInput = false; //Set to a bool, so we don't return garbage at end
+            };
         };
 
         if (_blockInput isEqualTo true) exitWith {};
