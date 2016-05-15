@@ -28,31 +28,24 @@ switch (toLower _type) do {
 case ("unit"): {
     [QGVAR(unitEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("weapon"): {
     [QGVAR(weaponEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("loadout"): {
     [QGVAR(loadoutEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("vehicle"): {
     [QGVAR(vehicleEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("turret"): {
     [QGVAR(turretEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("visionmode"): {
     [QGVAR(visionModeEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("cameraview"): {
     [QGVAR(cameraViewEvent), _id] call CBA_fnc_removeEventHandler;
 };
-
 case ("visiblemap"): {
     [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
 };
