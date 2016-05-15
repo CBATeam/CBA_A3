@@ -3,6 +3,10 @@
     file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
 }
 
+#define F_FILEPATH_L(func) class func {\
+    file = __EVAL([QUOTE(PATHTOF(DOUBLES(fnc,func).sqf)), QUOTE(PATHTOF(TRIPLES(fnc,func,Linux).sqf))] select IS_LINUX);\
+}
+
 class CfgFunctions {
     class CBA {
         class Config {
@@ -19,7 +23,7 @@ class CfgFunctions {
             F_FILEPATH(findEntity);
             F_FILEPATH(deleteEntity);
             F_FILEPATH(isAlive);
-            F_FILEPATH(getAlive);
+            F_FILEPATH_L(getAlive);
             F_FILEPATH(getGroup);
             F_FILEPATH(getSharedGroup);
             F_FILEPATH(nearPlayer);
