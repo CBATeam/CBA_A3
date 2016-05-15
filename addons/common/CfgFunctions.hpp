@@ -67,6 +67,9 @@ class CfgFunctions {
             F_FILEPATH(dropWeapon);
             F_FILEPATH(dropMagazine);
             F_FILEPATH(dropItem);
+            F_FILEPATH(binocularMagazine);
+            F_FILEPATH(addBinocularMagazine);
+            F_FILEPATH(removeBinocularMagazine);
         };
 
         class Cargo {
