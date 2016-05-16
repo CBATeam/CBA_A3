@@ -20,9 +20,11 @@ class CfgFunctions {
             F_FILEPATH(common,removeMagazine);
             F_FILEPATH(common,dropWeapon);
             F_FILEPATH(common,dropMagazine);
+            F_FILEPATH(common,binocularMagazine);
         };
 
         class Events {
+            F_FILEPATH(events,addPlayerEventHandler);
             F_FILEPATH(events,addKeyHandler);
             F_FILEPATH(events,targetEvent);
         };
