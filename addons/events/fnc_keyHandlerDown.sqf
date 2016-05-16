@@ -53,6 +53,12 @@ private _blockInput = false;
             _params pushBack _x;
 
             _blockInput = _params call _code;
+
+            #ifdef DEBUG_MODE_FULL
+                if ((isNil "_blockInput") || {!(_blockInput isEqualType false)}) then {
+                    LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
+                };
+            #endif
         };
 
         if (_blockInput isEqualTo true) exitWith {};
@@ -78,4 +84,5 @@ private _blockInput = false;
     };
 } forEach (GVAR(keyUpStates) param [_inputKey, []]);
 
-_blockInput
+//Only return true if _blockInput is defined and is type bool (handlers could return anything):
+(!isNil "_blockInput") && {_blockInput isEqualTo true}
