@@ -1459,4 +1459,3 @@ Author:
 #define XEH_POST_SINIT QUOTE(call COMPILE_FILE(XEH_PostServerInit_Once))
 
 #define IS_LINUX (productVersion select 2 <= 154)
-#define IS_LINUX true
