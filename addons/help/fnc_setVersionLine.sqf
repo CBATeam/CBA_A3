@@ -73,8 +73,8 @@ private _verScript = [_display] spawn { // will terminate when main menu mission
 uiNamespace setVariable [QGVAR(VerScript), _verScript];
 
 // start loop with mouse moving event on main menu. this is used, because loops can't be used at that point
-if !(_display getVariable [QGVAR(VerScriptFlag), false]) then {
-    _display setVariable [QGVAR(VerScriptFlag), true];
+if (isNull (uiNamespace getVariable [QGVAR(VerScriptFlag), displayNull])) then {
+    uiNamespace setVariable [QGVAR(VerScriptFlag), _display];
     _display displayAddEventHandler ["mouseMoving", {
         params ["_display"];
 
