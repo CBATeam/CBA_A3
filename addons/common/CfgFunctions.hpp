@@ -36,6 +36,7 @@ class CfgFunctions {
             F_FILEPATH(canUseWeapon);
             F_FILEPATH(selectWeapon);
             F_FILEPATH(switchPlayer);
+            F_FILEPATH(currentUnit);
         };
 
         class Vehicles {
