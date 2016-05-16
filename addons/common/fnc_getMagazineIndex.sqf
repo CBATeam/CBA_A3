@@ -23,4 +23,14 @@ private _displayName = getText (configFile >> "CfgMagazines" >> _magazine >> "di
 
 if (_displayName isEqualTo "") exitWith {[]};
 
-magazinesDetail _unit select {_x find _displayName == 0} apply {_x = _x splitString "[:]"; _x select (count _x - 1)};
+#ifndef LINUX_BUILD
+    magazinesDetail _unit select {_x find _displayName == 0} apply {_x = _x splitString "[:]"; _x select (count _x - 1)};
+#else
+    [magazinesDetail _unit, {
+        if (_x find _displayName == 0) then {
+            _x = _x splitString "[:]";
+            _x = _x select (count _x - 1);
+            true
+        } else {false};
+    }] call BIS_fnc_conditionalSelect;
+#endif

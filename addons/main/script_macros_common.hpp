@@ -1457,3 +1457,5 @@ Author:
 #define XEH_POST_INIT QUOTE(call COMPILE_FILE(XEH_PostInit_Once))
 #define XEH_POST_CINIT QUOTE(call COMPILE_FILE(XEH_PostClientInit_Once))
 #define XEH_POST_SINIT QUOTE(call COMPILE_FILE(XEH_PostServerInit_Once))
+
+#define IS_LINUX (productVersion select 2 <= 154)

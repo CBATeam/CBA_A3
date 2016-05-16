@@ -27,7 +27,11 @@ SCRIPT(dropWeapon);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]]];
 
-private _weaponInfo = (weaponsItems _unit select {_x select 0 == _item}) param [0, []];
+#ifndef LINUX_BUILD
+    private _weaponInfo = (weaponsItems _unit select {_x select 0 == _item}) param [0, []];
+#else
+    private _weaponInfo = ([weaponsItems _unit, {_x select 0 == _item}] call BIS_fnc_conditionalSelect) param [0, []];
+#endif
 private _return = [_unit, _item] call CBA_fnc_removeWeapon;
 
 if (_return) then {

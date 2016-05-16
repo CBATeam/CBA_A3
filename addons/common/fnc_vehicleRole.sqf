@@ -25,4 +25,8 @@ SCRIPT(vehicleRole);
 
 params [["_unit", objNull, [objNull]]];
 
-fullCrew vehicle _unit select {(_x select 0) isEqualTo _unit} param [0, [nil, ""]] select 1
+#ifndef LINUX_BUILD
+    fullCrew vehicle _unit select {(_x select 0) isEqualTo _unit} param [0, [nil, ""]] select 1
+#else
+    ([fullCrew vehicle _unit, {(_x select 0) isEqualTo _unit}] call BIS_fnc_conditionalSelect) param [0, [nil, ""]] select 1
+#endif

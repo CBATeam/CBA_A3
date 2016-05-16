@@ -74,7 +74,11 @@ _hash setVariable [_hashKey, [_key, _settings, _code, _allowHold, _holdDelay]];
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
 
 private _hashKeys = _keyHandlers param [_key, []];
-_hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander twice with the same keyHash/id executing the newly added action twice.
+#ifndef LINUX_BUILD
+    _hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander twice with the same keyHash/id executing the newly added action twice.
+#else
+    _hashKeys pushBack _hashKey;
+#endif
 _keyHandlers set [_key, _hashKeys];
 
 _hashKey

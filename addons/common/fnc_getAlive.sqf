@@ -31,4 +31,8 @@ if (_entities isEqualType grpNull) then {
     _entities = units _entities;
 };
 
-_entities select {alive _x} // return
+#ifndef LINUX_BUILD
+    _entities select {alive _x} // return
+#else
+    [_entities, {alive _x}] call BIS_fnc_conditionalSelect // return
+#endif

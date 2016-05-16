@@ -63,29 +63,29 @@ if (isNil {uiNamespace getVariable QGVAR(VerList)}) then {
 };
 
 // start loop that cycles through all addons
-terminate (_display getVariable [QGVAR(VerScript), scriptNull]);
+terminate (uiNamespace getVariable [QGVAR(VerScript), scriptNull]);
 
 private _verScript = [_display] spawn { // will terminate when main menu mission exits
     uiSleep 3;
     QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
 };
 
-_display setVariable [QGVAR(VerScript), _verScript];
+uiNamespace setVariable [QGVAR(VerScript), _verScript];
 
 // start loop with mouse moving event on main menu. this is used, because loops can't be used at that point
-if !(_display getVariable [QGVAR(VerScriptFlag), false]) then {
-    _display setVariable [QGVAR(VerScriptFlag), true];
+if (isNull (uiNamespace getVariable [QGVAR(VerScriptFlag), displayNull])) then {
+    uiNamespace setVariable [QGVAR(VerScriptFlag), _display];
     _display displayAddEventHandler ["mouseMoving", {
         params ["_display"];
 
-        if (!scriptDone (_display getVariable [QGVAR(VerScript), scriptNull])) exitWith {};
+        if (!scriptDone (uiNamespace getVariable [QGVAR(VerScript), scriptNull])) exitWith {};
 
         private _verScript = [_display] spawn { // will terminate when main menu mission exits
             uiSleep 3;
             QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
         };
 
-        _display setVariable [QGVAR(VerScript), _verScript];
+        uiNamespace setVariable [QGVAR(VerScript), _verScript];
     }];
 };
 

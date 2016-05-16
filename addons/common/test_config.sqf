@@ -158,8 +158,8 @@ TEST_TRUE(isNull _result,_funcName);
 _result = ["B_MBT_01_TUSK_F", [0,1]] call CBA_fnc_getTurret;
 TEST_TRUE(isNull _result,_funcName);
 
-_result = {isNull _x} count ([[0],[1],[2],[3],[4]] apply {["B_Heli_Transport_03_F", _x] call CBA_fnc_getTurret});
+/*_result = {isNull _x} count ([[0],[1],[2],[3],[4]] apply {["B_Heli_Transport_03_F", _x] call CBA_fnc_getTurret});
 TEST_TRUE(_result == 0,_funcName);
 
 _result = {!isNull _x} count ([[0],[1],[2],[3],[4]] apply {["B_Heli_Transport_03_F", _x] call CBA_fnc_getTurret});
-TEST_TRUE(_result == 5,_funcName);
+TEST_TRUE(_result == 5,_funcName);*/
