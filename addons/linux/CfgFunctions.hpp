@@ -20,7 +20,7 @@ class CfgFunctions {
             F_FILEPATH(common,removeMagazine);
             F_FILEPATH(common,dropWeapon);
             F_FILEPATH(common,dropMagazine);
-            F_FILEPATH(common,binocularMagazine);
+            F_FILEPATH(common,addBinocularMagazine);
         };
 
         class Events {
