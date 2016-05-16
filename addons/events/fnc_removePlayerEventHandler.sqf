@@ -24,7 +24,9 @@ SCRIPT(removePlayerEventHandler);
 
 params [["_type", "", [""]], ["_id", -1, [0]]];
 
-switch (toLower _type) do {
+_type = toLower _type;
+
+switch (_type) do {
 case ("unit"): {
     [QGVAR(unitEvent), _id] call CBA_fnc_removeEventHandler;
 };
@@ -51,3 +53,14 @@ case ("visiblemap"): {
 };
 default {nil};
 };
+
+if (!isNil QGVAR(playerEHInfo)) then {
+    GVAR(playerEHInfo) deleteAt (GVAR(playerEHInfo) find [_type, _id]);
+
+    if (count GVAR(playerEHInfo) == 1) then {
+        removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
+        GVAR(playerEHInfo) = nil;
+    };
+};
+
+nil

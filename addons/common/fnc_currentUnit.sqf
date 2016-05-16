@@ -2,8 +2,7 @@
 Function: CBA_fnc_currentUnit
 
 Description:
-    Returns the currently controlled unit.
-    Different from "player" when remote controlling units via zeus.
+    Returns the controlled unit. ("player" or remote controlled unit via zeus)
 
 Parameters:
     None
