@@ -34,8 +34,13 @@ SCRIPT(hashCreate);
 // -----------------------------------------------------------------------------
 params [["_array", [], [[]]], "_defaultValue"];
 
-private _keys = _array apply {_x select 0};
-private _values = _array apply {_x select 1};
+#ifndef LINUX_BUILD
+    private _keys = _array apply {_x select 0};
+    private _values = _array apply {_x select 1};
+#else
+    private _keys = [_array, {_x select 0}] call CBA_fnc_filter;
+    private _values = [_array, {_x select 1}] call CBA_fnc_filter;
+#endif
 
 // Return.
 [TYPE_HASH, _keys, _values, if (isNil "_defaultValue") then {nil} else {_defaultValue}];

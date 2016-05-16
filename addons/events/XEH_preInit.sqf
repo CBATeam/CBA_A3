@@ -46,7 +46,12 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
 };
 
 PREP(keyHandler);
-PREP(keyHandlerDown);
+#ifndef LINUX_BUILD
+    PREP(keyHandlerDown);
+#else
+    PREP(keyHandlerDown_Linux);
+    FUNC(keyHandlerDown) = FUNC(keyHandlerDown_Linux);
+#endif
 PREP(keyHandlerUp);
 
 ["keyDown", FUNC(keyHandlerDown)] call CBA_fnc_addDisplayHandler;
@@ -55,7 +60,11 @@ PREP(keyHandlerUp);
 private _keyHandlers = [];
 _keyHandlers resize 250;
 
-GVAR(keyDownStates) = _keyHandlers apply {[]};
+#ifndef LINUX_BUILD
+    GVAR(keyDownStates) = _keyHandlers apply {[]};
+#else
+    GVAR(keyDownStates) = [_keyHandlers, {[]}] call CBA_fnc_filter;
+#endif
 GVAR(keyUpStates) = + GVAR(keyDownStates);
 
 GVAR(keyHandlersDown) = call CBA_fnc_createNamespace;

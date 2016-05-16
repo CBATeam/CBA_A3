@@ -16,7 +16,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-XEH_LOG("XEH: PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
+XEH_LOG("XEH: PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP) + format ["isLinux=%1", IS_LINUX]);
 
 // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
 if (CBA_missionTime == -1) then {

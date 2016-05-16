@@ -27,4 +27,8 @@ params [["_unit", objNull, [objNull]]];
 
 private _vehicle = vehicle _unit;
 
-(allTurrets [_vehicle, true] select {(_vehicle turretUnit _x) isEqualTo _unit}) param [0, []]
+#ifndef LINUX_BUILD
+    (allTurrets [_vehicle, true] select {(_vehicle turretUnit _x) isEqualTo _unit}) param [0, []]
+#else
+    ([allTurrets [_vehicle, true], {(_vehicle turretUnit _x) isEqualTo _unit}] call BIS_fnc_conditionalSelect) param [0, []]
+#endif
