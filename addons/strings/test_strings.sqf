@@ -106,6 +106,12 @@ TEST_OP(_str,==,"frag",_fn);
 _str = ["frodo", "o", "ai"] call CBA_fnc_replace;
 TEST_OP(_str,==,"fraidai",_fn);
 
+_str = ["Test", "e", "ea"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Teast",_fn);
+
+_str = ["Mörser", "ö", "oe"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Moerser",_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (leftTrim)
 _fn = "CBA_fnc_leftTrim";
