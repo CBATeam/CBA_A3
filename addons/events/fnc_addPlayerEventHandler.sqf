@@ -32,6 +32,8 @@ Author:
 #include "script_component.hpp"
 SCRIPT(addPlayerEventHandler);
 
+if (!hasInterface) exitWith {-1};
+
 params [["_type", "", [""]], ["_function", {}, [{}]]];
 
 _type = toLower _type;
@@ -82,8 +84,8 @@ if (_id != -1) then {
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {
             private _player = call CBA_fnc_currentUnit;
             if !(_player isEqualTo GVAR(oldUnit)) then {
+                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
-                [QGVAR(unitEvent), [_player]] call CBA_fnc_localEvent;
             };
 
             private _data = currentWeapon _player;
