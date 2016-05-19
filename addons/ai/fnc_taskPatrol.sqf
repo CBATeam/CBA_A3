@@ -22,7 +22,7 @@ Optional:
 Example:
     (begin example)
     [this, getmarkerpos "objective1"] call CBA_fnc_taskPatrol
-    [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
+    [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this call CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
     (end)
 
 Returns:

@@ -9,51 +9,56 @@ Parameters:
 
 Example:
     (begin example)
-    [group player] spawn CBA_fnc_searchNearby
+    [group player] call CBA_fnc_searchNearby
     (end)
 
 Returns:
     Nil
 
 Author:
-    Rommel
+    Rommel, SilentSpike
 
 ---------------------------------------------------------------------------- */
 
 params ["_group"];
-_group = _group call CBA_fnc_getgroup;
-_group lockwp true;
-private ["_leader","_behaviour"];
-_leader = leader _group;
-_behaviour = behaviour _leader;
-_group setbehaviour "combat";
+_group = _group call CBA_fnc_getGroup;
+_group lockWP true;
 
-(_leader call CBA_fnc_getnearestbuilding) params ["_building", "_indices"];
-_group setformdir ([_leader, _building] call bis_fnc_dirto);
+private _building = nearestBuilding (leader _group);
+if ((leader _group) distanceSqr _building > 250e3) exitwith {_group lockWP false};
 
-if (_leader distance _building > 500) exitwith {_group lockwp false};
+[_group,_building] spawn {
+    params ["_group","_building"];
+    private _behaviour = behaviour (leader _group);
 
-private ["_count","_units"];
-_units = units _group;
-_count = (count _units) - 1;
+    // Prepare group to search
+    _group setBehaviour "Combat";
+    _group setFormDir ((leader _group) getDir _building);
 
-while {_indices > 0 && {_count > 0}} do {
-    sleep 10;
-    while {_indices > 0 && {_count > 0}} do {
-        private "_unit";
-        _unit = _units select _count;
-        if (unitready _unit) then {
-            _unit commandmove (_building buildingpos _indices);
-            _indices = _indices - 1;
-        };
-        _count = _count - 1;
+    // Search while there are still available positions
+    private _positions = _building buildingPos -1;
+    while {!(_positions isEqualTo [])} do {
+        // Abort search if the group has no units left
+        if ((units _group) isEqualTo []) exitWith {};
+
+        // Send all available units to the next available position
+        {
+            if (_positions isEqualTo []) exitWith {};
+            if (unitReady _x) then {
+                private _pos = _positions deleteAt 0;
+                _x commandMove _pos;
+            };
+        } forEach (units _group);
+
+        // Provide time for orders to be carried out
+        sleep 10;
     };
-    _units = units _group;
-    _count = (count _units) - 1;
+
+    // Once units are all finished searching return to previous tasks
+    waitUntil {sleep 3; {unitReady _x} count (units _group) >= count (units _group) - 1};
+    {
+        _x doFollow (leader _group);
+    } forEach (units _group);
+    _group setBehaviour _behaviour;
+    _group lockWP false;
 };
-waituntil {sleep 3;    {unitready _x} count _units >= count (units _group) - 1};
-{
-    _x dofollow _leader;
-} foreach _units;
-_group setbehaviour _behaviour;
-_group lockwp false;

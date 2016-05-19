@@ -69,7 +69,7 @@ private _statement = "[this] call CBA_fnc_taskSearchArea;";
 // Prepare building search statement
 private _building = nearestBuilding _pos;
 if ((_building distanceSqr _pos) < 400) then {
-    _statement = _statement + "[this] spawn CBA_fnc_searchNearby;";
+    _statement = _statement + "[this] call CBA_fnc_searchNearby;";
 };
 
 // Inject the statement in this order to ensure valid syntax
