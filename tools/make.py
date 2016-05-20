@@ -1185,6 +1185,7 @@ See the make.cfg file for additional build options.
             if build_tool == "pboproject":
                 try:
                     nobinFilePath = os.path.join(work_drive, prefix, module, "$NOBIN$")
+                    nobinNotestFilePath = os.path.join(work_drive, prefix, module, "$NOBIN-NOTEST$")
                     backup_config(module)
 
                     version_stamp_pboprefix(module,commit_id)
@@ -1192,7 +1193,9 @@ See the make.cfg file for additional build options.
                     if os.path.isfile(nobinFilePath):
                         print_green("$NOBIN$ Found. Proceeding with non-binarizing!")
                         cmd = [makepboTool, "-P","-A","-L","-G","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
-
+                    elif os.path.isfile(nobinNotestFilePath):
+                        print_green("$NOBIN-NOTEST$ Found. Proceeding with non-binarizing [what you see is what you get]!")
+                        cmd = [makepboTool, "-P","-A","-N","-G","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
                     else:
                         if check_external:
                             cmd = [pboproject, "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S","+Noisy", "+X", "+Clean", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
