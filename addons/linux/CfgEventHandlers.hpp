@@ -1,13 +1,15 @@
 
-#define F_FILEPATH(comp,func) class DOUBLES(PREFIX,comp) {\
-    init = __EVAL([QUOTE(call COMPILE_FILE_SYS(PREFIX,comp,func)), QUOTE(call COMPILE_FILE_SYS(PREFIX,comp,DOUBLES(func,Linux)))] select IS_LINUX);\
-}
-
 class Extended_PreStart_EventHandlers {
-    F_FILEPATH(events,XEH_preStart);
+    class cba_events {
+        init = __EVAL(["call compile preProcessFileLineNumbers '\x\cba\addons\events\XEH_preStart.sqf'","call compile preProcessFileLineNumbers '\x\cba\addons\events\XEH_preStart_Linux.sqf'"] select isNil compile "is3DEN");
+    };
 };
 
 class Extended_PreInit_EventHandlers {
-    F_FILEPATH(common,XEH_preInit);
-    F_FILEPATH(events,XEH_preInit);
+    class cba_common {
+        init = __EVAL(["call compile preProcessFileLineNumbers '\x\cba\addons\common\XEH_preInit.sqf'","call compile preProcessFileLineNumbers '\x\cba\addons\common\XEH_preInit_Linux.sqf'"] select isNil compile "is3DEN");
+    };
+    class cba_events {
+        init = __EVAL(["call compile preProcessFileLineNumbers '\x\cba\addons\events\XEH_preInit.sqf'","call compile preProcessFileLineNumbers '\x\cba\addons\events\XEH_preInit_Linux.sqf'"] select isNil compile "is3DEN");
+    };
 };

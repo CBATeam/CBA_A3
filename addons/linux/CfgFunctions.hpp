@@ -1,44 +1,70 @@
 
-#define F_FILEPATH(comp,func) class func {\
-    file = __EVAL([QUOTE(PATHTOEF(comp,DOUBLES(fnc,func).sqf)), QUOTE(PATHTOEF(comp,TRIPLES(fnc,func,Linux).sqf))] select IS_LINUX);\
-}
-
 class CfgFunctions {
     class CBA {
         class Entities {
-            F_FILEPATH(common,getAlive);
-            F_FILEPATH(common,getMagazineIndex);
+            class getAlive {
+                file = __EVAL(["\x\cba\addons\common\fnc_getAlive.sqf","\x\cba\addons\common\fnc_getAlive_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class getMagazineIndex {
+                file = __EVAL(["\x\cba\addons\common\fnc_getMagazineIndex.sqf","\x\cba\addons\common\fnc_getMagazineIndex_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class Vehicles {
-            F_FILEPATH(common,vehicleRole);
-            F_FILEPATH(common,turretPath);
-            F_FILEPATH(common,turretPathWeapon);
+            class vehicleRole {
+                file = __EVAL(["\x\cba\addons\common\fnc_vehicleRole.sqf","\x\cba\addons\common\fnc_vehicleRole_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class turretPath {
+                file = __EVAL(["\x\cba\addons\common\fnc_turretPath.sqf","\x\cba\addons\common\fnc_turretPath_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class turretPathWeapon {
+                file = __EVAL(["\x\cba\addons\common\fnc_turretPathWeapon.sqf","\x\cba\addons\common\fnc_turretPathWeapon_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class Inventory {
-            F_FILEPATH(common,removeMagazine);
-            F_FILEPATH(common,dropWeapon);
-            F_FILEPATH(common,dropMagazine);
-            F_FILEPATH(common,addBinocularMagazine);
+            class removeMagazine {
+                file = __EVAL(["\x\cba\addons\common\fnc_removeMagazine.sqf","\x\cba\addons\common\fnc_removeMagazine_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class dropWeapon {
+                file = __EVAL(["\x\cba\addons\common\fnc_dropWeapon.sqf","\x\cba\addons\common\fnc_dropWeapon_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class dropMagazine {
+                file = __EVAL(["\x\cba\addons\common\fnc_dropMagazine.sqf","\x\cba\addons\common\fnc_dropMagazine_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class addBinocularMagazine {
+                file = __EVAL(["\x\cba\addons\common\fnc_addBinocularMagazine.sqf","\x\cba\addons\common\fnc_addBinocularMagazine_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class Events {
-            F_FILEPATH(events,addPlayerEventHandler);
-            F_FILEPATH(events,addKeyHandler);
-            F_FILEPATH(events,targetEvent);
+            class addPlayerEventHandler {
+                file = __EVAL(["\x\cba\addons\events\fnc_addPlayerEventHandler.sqf","\x\cba\addons\events\fnc_addPlayerEventHandler_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class addKeyHandler {
+                file = __EVAL(["\x\cba\addons\events\fnc_addKeyHandler.sqf","\x\cba\addons\events\fnc_addKeyHandler_Linux.sqf"] select isNil compile "is3DEN");
+            };
+            class targetEvent {
+                file = __EVAL(["\x\cba\addons\events\fnc_targetEvent.sqf","\x\cba\addons\events\fnc_targetEvent_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class Hashes {
-            F_FILEPATH(hashes,hashCreate);
+            class hashCreate {
+                file = __EVAL(["\x\cba\addons\hashes\fnc_hashCreate.sqf","\x\cba\addons\hashes\fnc_hashCreate_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class JR {
-            F_FILEPATH(jr,compatibleItems);
+            class compatibleItems {
+                file = __EVAL(["\x\cba\addons\jr\fnc_compatibleItems.sqf","\x\cba\addons\jr\fnc_compatibleItems_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
 
         class XEH {
-            F_FILEPATH(xeh,compileEventHandlers);
+            class compileEventHandlers {
+                file = __EVAL(["\x\cba\addons\xeh\fnc_compileEventHandlers.sqf","\x\cba\addons\xeh\fnc_compileEventHandlers_Linux.sqf"] select isNil compile "is3DEN");
+            };
         };
     };
 };
