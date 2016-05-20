@@ -24,6 +24,9 @@ class CfgVehicles{
 				displayName = "Units";
 				description = "Enter a config or an array of classnames";
 				typeName = "STRING";
+				class values{
+					default = "NONE";
+				};
 			};
 			
 			class headlessClient{
