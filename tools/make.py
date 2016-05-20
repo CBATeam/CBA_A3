@@ -1378,8 +1378,10 @@ See the make.cfg file for additional build options.
     # Copy to Arma 3 folder for testing
     if test:
         print_blue("\nCopying to Arma 3.")
+        a3_path = os.path.join(os.environ['USERPROFILE'],"Documents\Arma 3")
 
         if sys.platform == "win32":
+            print_yellow("\nTesting for Win32.")
             reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
             try:
                 k = winreg.OpenKey(reg, r"SOFTWARE\Wow6432Node\Bohemia Interactive\Arma 3")
@@ -1397,8 +1399,9 @@ See the make.cfg file for additional build options.
 
         if os.path.exists(a3_path):
             try:
-                shutil.rmtree(os.path.join(a3_path, project), True)
-                shutil.copytree(os.path.join(module_root, release_dir, project), os.path.join(a3_path, project))
+                print_yellow("...in progress...")
+                shutil.rmtree(os.path.join(a3_path, "{}_DEV".format(project)), True)
+                shutil.copytree(os.path.join(module_root, release_dir, project), os.path.join(a3_path, "{}_DEV".format(project)))
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
 
@@ -1409,7 +1412,7 @@ See the make.cfg file for additional build options.
             print("- {} failed.".format(failedModuleName))
 
     else:
-        print_green("\Completed with 0 errors.")
+        print_green("\nCompleted with 0 errors.")
 
 if __name__ == "__main__":
     start_time = timeit.default_timer()
