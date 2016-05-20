@@ -32,8 +32,13 @@ Author:
 private ["_logic","_units","_activated","_isHeadless","_spawnPos","_attackPos"];
 
 _logic = param [0,objNull,[objNull]];
-_units = param [1,[],[[]]];
 _activated = param [2,true,[true]];
+
+if (!(_logic getVariable "scriptedUnit" == "") then {
+    _units = _logic getVariable "scriptedUnit";
+}else{
+    _units = param [1,[],[[]]];
+};
 
 myVar1 = _logic;
 myVar2 = _units;
