@@ -22,7 +22,7 @@ Optional:
 Example:
     (begin example)
     [this, getmarkerpos "objective1"] call CBA_fnc_taskPatrol
-    [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
+    [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this call CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
     (end)
 
 Returns:
@@ -43,15 +43,23 @@ if !(local _group) exitWith {}; // Don't create waypoints on each machine
 _position = [_position,_group] select (_position isEqualTo []);
 _position = _position call CBA_fnc_getPos;
 
-_this =+ _this;
+// Clear existing waypoints first
+[_group] call CBA_fnc_clearWaypoints;
+
+private _this =+ _this;
 if (count _this > 3) then {
     _this deleteAt 3;
 };
-for "_x" from 1 to _count do {
+
+// Store first WP to close loop later
+private _wp = _this call CBA_fnc_addWaypoint;
+
+for "_x" from 1 to (_count - 1) do {
     _this call CBA_fnc_addWaypoint;
 };
-_this2 =+ _this;
-_this2 set [3, "CYCLE"];
-_this2 call CBA_fnc_addWaypoint;
 
-deleteWaypoint ((waypoints _group) select 0);
+// Close the patrol loop
+_this set [1, getWPPos _wp];
+_this set [2, 0];
+_this set [3, "CYCLE"];
+_this call CBA_fnc_addWaypoint;
