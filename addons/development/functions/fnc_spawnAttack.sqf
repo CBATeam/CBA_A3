@@ -26,23 +26,33 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//#include "script_component.hpp"
-//SCRIPT(moduleAttack);
+#include "script_component.hpp"
+SCRIPT(spawnAttack);
 
-private ["_logic","_units","_activated","_isHeadless","_spawnPos","_attackPos"];
+private ["_logic","_units","_isHeadless","_spawnPos","_spawnRadius","_attackPos","_attackRadius"];
 
 _logic = param [0,objNull,[objNull]];
-_activated = param [2,true,[true]];
 
-if (!(_logic getVariable "scriptedUnit" == "") then {
+//Get array if defined otherwise synced units
+if (!(_logic getVariable "scriptedUnit" == "")) then {
     _units = _logic getVariable "scriptedUnit";
 }else{
     _units = param [1,[],[[]]];
 };
 
+_spawnPos = _logic getVariable "";
+_spawnRadius = _logic getVariable "";
+_attackPos = _logic getVariable "";
+_attackRadius = _logic getVariable "";
+
+//Spawn units on headless client otherwise server
+if (_logic getVariable "headlessClient" == 0) then {
+    //spawn on server
+}else{
+    //spawn on headless client
+};
 myVar1 = _logic;
 myVar2 = _units;
-myVar3 = _activated;
 
 /*
 -String of array to array example-
