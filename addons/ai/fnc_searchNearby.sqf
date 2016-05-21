@@ -64,7 +64,11 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {_group lockWP false
     };
 
     // Once units are all finished searching return to previous tasks
-    waitUntil {sleep 3; {unitReady _x} count (units _group) >= count (units _group) - 1};
+    waitUntil {
+        sleep 3;
+        private _units = (units _group) - [_leader];
+        ({unitReady _x} count _units) >= count _units
+    };
     {
         _x doFollow (leader _group); // Not using _leader in case of death
     } forEach (units _group);
