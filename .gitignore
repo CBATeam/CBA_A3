@@ -1,4 +1,6 @@
-release/*
+@*
+*.zip
+include/*
 *.cache
 *.pbo
 texHeaders.bin
