@@ -44,10 +44,24 @@ private _statics = _position nearObjects ["StaticWeapon", _radius];
 private _buildings = _position nearObjects ["Building", _radius];
 
 // Filter out occupied statics
-_statics = _statics select { (_x emptyPositions "Gunner") > 0 };
+[_statics,{(_x emptyPositions "Gunner") > 0},true] call CBA_fnc_filter;
 
 // Filter out buildings below the size threshold (and store positions for later use)
-_buildings = _buildings select {
+{
+    if ((_x buildingPos _threshold) isEqualto [0,0,0]) then {
+        _buildings set [_forEachIndex,nil];
+    } else {
+        private _positions = _x buildingPos -1;
+
+        if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
+            _x setVariable ["CBA_taskDefend_positions",_positions];
+        };
+    };
+} forEach _buildings;
+_buildings = _buildings arrayIntersect _buildings;
+
+// v1.56 version of the above
+/*_buildings = _buildings select {
     private _positions = _x buildingPos -1;
 
     if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
@@ -55,7 +69,7 @@ _buildings = _buildings select {
     };
 
     count (_positions) > _threshold
-};
+};*/
 
 private _units = units _group;
 private _assigned = 0;
@@ -69,7 +83,7 @@ private _assigned = 0;
     } else {
         // 93% chance to occupy a random nearby building position
         if ((random 1 < 0.93) && { !(_buildings isEqualto []) }) then {
-            private _building = selectRandom _buildings;
+            private _building = _buildings call BIS_fnc_selectRandom;
             private _array = _building getVariable ["CBA_taskDefend_positions",[]];
 
             if !(_array isEqualTo []) then {
