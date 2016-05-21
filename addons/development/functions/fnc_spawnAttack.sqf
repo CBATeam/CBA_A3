@@ -2,20 +2,22 @@
 Function: CBA_fnc_spawnAttack
 
 Description:
-    A function for spawning and commanding a group to attack a parsed location.
+    A function for spawning and commanding a group to attack a location with information
+	parsed from a module.
 
 Parameters:
-    - Group (Config or Array of Classnames)
-    - Headless Client (Bool)
+    - Group (Array of Classnames)
 	- Spawn Point (XYZ, Object, Location or Marker)
 	- Attack Point (XYZ, Object, Location, Group, or Marker)
 
 Optional:
-    - Nil
+    - Headless Client (Bool)
+    - Spawn Radius (Number)
+	- Attack Radius (Number)
 
 Example:
     (begin example)
-    [(configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad"), true, [0,0,0], getMarkerPos "myMarker"] call CBA_fnc_spawnAttack
+    [["unit1","unit2",..,"unitN"], true, [0,0,0], getMarkerPos "myMarker"] call CBA_fnc_spawnAttack
     (end)
 
 Returns:
@@ -29,7 +31,15 @@ Author:
 #include "script_component.hpp"
 SCRIPT(spawnAttack);
 
-private ["_logic","_units","_isHeadless","_spawnPos","_spawnRadius","_attackPos","_attackRadius"];
+params [
+    "_logic",
+	"_units",
+	["_isHeadless",0],
+	["_spawnPos",[0,0,0]],
+	["_spawnRadius",0],
+	["_attackPos",[0,0,0]],
+	["_attackRadius",0]
+];
 
 _logic = param [0,objNull,[objNull]];
 
