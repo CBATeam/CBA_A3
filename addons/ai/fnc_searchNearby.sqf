@@ -5,7 +5,7 @@ Description:
     A function for a group to search a nearby building.
 
 Parameters:
-    Group (Group or Object)
+    - Group (Group or Object)
 
 Example:
     (begin example)
@@ -29,17 +29,26 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {_group lockWP false
 
 [_group,_building] spawn {
     params ["_group","_building"];
-    private _behaviour = behaviour (leader _group);
+    private _leader = leader _group;
+    private _behaviour = behaviour _leader;
 
     // Prepare group to search
     _group setBehaviour "Combat";
-    _group setFormDir ((leader _group) getDir _building);
+    _group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
+
+    // Leader will only wait outside if group larger than 2
+    if (count (units _group) <= 2) then {
+        _leader = objNull;
+    };
 
     // Search while there are still available positions
     private _positions = _building buildingPos -1;
     while {!(_positions isEqualTo [])} do {
+        // Update units in case of death
+        private _units = (units _group) - [_leader];
+
         // Abort search if the group has no units left
-        if ((units _group) isEqualTo []) exitWith {};
+        if (_units isEqualTo []) exitWith {};
 
         // Send all available units to the next available position
         {
@@ -48,7 +57,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {_group lockWP false
                 private _pos = _positions deleteAt 0;
                 _x commandMove _pos;
             };
-        } forEach (units _group);
+        } forEach _units;
 
         // Provide time for orders to be carried out
         sleep 10;
@@ -57,7 +66,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {_group lockWP false
     // Once units are all finished searching return to previous tasks
     waitUntil {sleep 3; {unitReady _x} count (units _group) >= count (units _group) - 1};
     {
-        _x doFollow (leader _group);
+        _x doFollow (leader _group); // Not using _leader in case of death
     } forEach (units _group);
     _group setBehaviour _behaviour;
     _group lockWP false;
