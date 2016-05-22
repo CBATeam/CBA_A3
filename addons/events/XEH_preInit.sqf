@@ -31,7 +31,7 @@ if (!hasInterface) exitWith {};
 // This would cause douplicate display events to be added, because the old ones carry over while the new ones are added again.
 // If we detect an already existing main display we remove all display events that were previously defined.
 if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then {
-    GVAR(handlerHash) = (uiNamespace getVariable "CBA_missionDisplay") getVariable QGVAR(handlerHash);
+    GVAR(handlerHash) = uiNamespace getVariable QGVAR(handlerHash);
     [GVAR(handlerHash), {
         {
             (uiNamespace getVariable "CBA_missionDisplay") displayRemoveEventHandler [_key, _x param [0, -1]];
@@ -40,7 +40,7 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
 
     // to carry the hash over into a restarted game, we store the hashes array reference in the mission display namespace.
     GVAR(handlerHash) = [[], []] call CBA_fnc_hashCreate;
-    (uiNamespace getVariable "CBA_missionDisplay") setVariable [QGVAR(handlerHash), GVAR(handlerHash)];
+    uiNamespace setVariable [QGVAR(handlerHash), GVAR(handlerHash)];
 } else {
     GVAR(handlerHash) = [[], []] call CBA_fnc_hashCreate;
 };
