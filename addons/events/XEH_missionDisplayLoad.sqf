@@ -18,5 +18,5 @@ if (!isNil QGVAR(handlerHash)) then {
     }] call CBA_fnc_hashEachPair;
 
     // copy hash reference to display namespace again, because it's not serialized in save games
-    _display setVariable [QGVAR(handlerHash), GVAR(handlerHash)];
+    uiNamespace setVariable [QGVAR(handlerHash), GVAR(handlerHash)];
 };
