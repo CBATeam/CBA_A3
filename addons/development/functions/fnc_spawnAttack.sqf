@@ -28,7 +28,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "script_component.hpp"
+/*#include "script_component.hpp"
 SCRIPT(spawnAttack);
 
 params [
@@ -39,11 +39,11 @@ params [
 	["_spawnRadius",0],
 	["_attackPos",[0,0,0]],
 	["_attackRadius",0]
-];
+];*/
 
 _logic = param [0,objNull,[objNull]];
 
-//Get array if defined otherwise synced units
+/*/Get array if defined otherwise synced units
 if (!(_logic getVariable "scriptedUnit" == "")) then {
     _units = _logic getVariable "scriptedUnit";
 }else{
@@ -60,9 +60,11 @@ if (_logic getVariable "headlessClient" == 0) then {
     //spawn on server
 }else{
     //spawn on headless client
-};
+};*/
+
 myVar1 = _logic;
-myVar2 = _units;
+//myVar2 = _units;
+
 
 /*
 -String of array to array example-

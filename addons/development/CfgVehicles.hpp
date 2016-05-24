@@ -20,12 +20,6 @@ class CfgVehicles{
 		curatorInfoType = "RscDisplayAttributeAttack";
 
 		class Arguments: ArgumentsBaseUnits{
-			class scriptedUnit{
-				displayName = "Units";
-				description = "Enter a config or an array of classnames";
-				typeName = "STRING";
-			};
-			
 			class headlessClient{
 				displayName = "Headless Client?";
 				typeName = "BOOL";
@@ -33,6 +27,24 @@ class CfgVehicles{
 					class No	{name = "$STR_lib_info_no"; value = 0; default = 1;};
 					class Yes   {name = "$STR_lib_info_yes"; value = 1; default = 0;};
 				};
+			};
+			
+			class unitType{
+				displayName = "Unit Type";
+				description = "";
+				typeName = "STRING";
+			};
+			
+			class scriptedUnit{
+				displayName = "Units";
+				description = "Enter a config or an array of classnames";
+				typeName = "STRING";
+			};
+			
+			class unitSide{
+				displayName = "Side";
+				description = "";
+				typeName = "STRING";
 			};
 			
 			class spawnPosition{
