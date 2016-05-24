@@ -22,29 +22,41 @@ class CfgVehicles{
 		class Arguments: ArgumentsBaseUnits{
 			class headlessClient{
 				displayName = "Headless Client?";
+				description = "Enter if a headless client is present"
 				typeName = "BOOL";
 				class values{
-					class No	{name = "$STR_lib_info_no"; value = 0; default = 1;};
-					class Yes   {name = "$STR_lib_info_yes"; value = 1; default = 0;};
+					class No	{name = "$STR_lib_info_no"; value = 0; default = 0;};
+					class Yes   {name = "$STR_lib_info_yes"; value = 1;};
 				};
 			};
 			
 			class unitType{
 				displayName = "Unit Type";
-				description = "";
-				typeName = "STRING";
+				description = "Is the units synced or entered manually";
+				typeName = "NUMBER";
+				class values{
+					class syncedUnit {name = "Synced"; value = 10; default = 10;};
+					class arrayUnit {name = "Array"; value = 11;};
+					class configUnit {name = "Config"; value = 12;};
+				};
 			};
 			
 			class scriptedUnit{
 				displayName = "Units";
-				description = "Enter a config or an array of classnames";
+				description = "Enter an array of classnames or config";
 				typeName = "STRING";
 			};
 			
 			class unitSide{
 				displayName = "Side";
 				description = "";
-				typeName = "STRING";
+				typeName = "NUMBER";
+				class values{
+					class sideWest{name = "Blufor"; value = 10; default = 0;};
+					class sideOpfor{name = "OpFor"; value = 11;};
+					class sideInd{name = "Independent"; value = 12;};
+					class sideCiv{name = "Civilian"; value = 13;};
+				};
 			};
 			
 			class spawnPosition{

@@ -1,5 +1,9 @@
 #define COMPONENT modules
-#define DISABLE_COMPILE_CACHE
+
+#ifndef
+	#define DISABLE_COMPILE_CACHE
+#endif
+
 #include "\x\cba\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_MODULES
