@@ -49,6 +49,9 @@ if (_channel isEqualTo BI_SEND_TO_CLIENTS_ONLY) then {
     _code = {if (!isDedicated) then {(_this select 0) call (_this select 1)}};
 };
 
-[_parameters, _code] remoteExec ["call", _channel];
+// we want to have this executed in suspendable environment for bwc
+// using remoteExec with a SQF function (i.e. "BIS_fnc_call") will enter scheduled environment
+// using it with a SQF command (i.e. "call") will not! https://community.bistudio.com/wiki/remoteExec
+[_parameters, _code] remoteExec ["BIS_fnc_call", _channel];
 
 nil
