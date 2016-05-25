@@ -1,10 +1,9 @@
 class CfgVehicles{
 	class Logic;
 	class Module_F: Logic{
-		class ArgumentsBaseUnits{
-			class Units;
-		};
+		class ArgumentsBaseUnits;
 		class ModuleDescription;
+		class values;
 	};
 	class CBA_moduleAttack: Module_F{
 		scope = 2;
@@ -24,7 +23,7 @@ class CfgVehicles{
 				displayName = "Headless Client?";
 				description = "Enter if a headless client is present"
 				typeName = "BOOL";
-				class values{
+				class values: values{
 					class No	{name = "$STR_lib_info_no"; value = 0; default = 0;};
 					class Yes   {name = "$STR_lib_info_yes"; value = 1;};
 				};
@@ -34,7 +33,7 @@ class CfgVehicles{
 				displayName = "Unit Type";
 				description = "Is the units synced or entered manually";
 				typeName = "NUMBER";
-				class values{
+				class values: values{
 					class syncedUnit {name = "Synced"; value = 10; default = 10;};
 					class arrayUnit {name = "Array"; value = 11;};
 					class configUnit {name = "Config"; value = 12;};
@@ -51,7 +50,7 @@ class CfgVehicles{
 				displayName = "Side";
 				description = "";
 				typeName = "NUMBER";
-				class values{
+				class values: values{
 					class sideWest{name = "Blufor"; value = 10; default = 0;};
 					class sideOpfor{name = "OpFor"; value = 11;};
 					class sideInd{name = "Independent"; value = 12;};
@@ -88,8 +87,9 @@ class CfgVehicles{
 			
 			class LocationArea_F{
 				description[] = {
-					"Module can be synced to triggers",
-					"as well as units/groups"
+					"Module can be synced to triggers and placed units.",
+					"Units can also be defined within the module to have",
+					"them spawned in when needed instead of waiting in game."
 				};
 				optional = 1;
 				duplicate = 1;

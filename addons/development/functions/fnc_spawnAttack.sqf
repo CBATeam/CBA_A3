@@ -6,7 +6,7 @@ Description:
 	parsed from a module.
 
 Parameters:
-    - Group (Array of Classnames)
+    - Group (Array of Classnames or an array of a config)
 	- Spawn Point (XYZ, Object, Location or Marker)
 	- Attack Point (XYZ, Object, Location, Group, or Marker)
 
@@ -17,7 +17,7 @@ Optional:
 
 Example:
     (begin example)
-    [["unit1","unit2",..,"unitN"], true, [0,0,0], getMarkerPos "myMarker"] call CBA_fnc_spawnAttack
+    [["unit1","unit2",..,"unitN"], true, [0,0,0], getMarkerPos "myMarker"] call CBA_fnc_spawnAttack;
     (end)
 
 Returns:
@@ -28,43 +28,14 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-/*#include "script_component.hpp"
+#include "script_component.hpp"
 SCRIPT(spawnAttack);
 
-params [
-    "_logic",
-	"_units",
-	["_isHeadless",0],
-	["_spawnPos",[0,0,0]],
-	["_spawnRadius",0],
-	["_attackPos",[0,0,0]],
-	["_attackRadius",0]
-];*/
+private ["_logic"];
 
-_logic = param [0,objNull,[objNull]];
-
-/*/Get array if defined otherwise synced units
-if (!(_logic getVariable "scriptedUnit" == "")) then {
-    _units = _logic getVariable "scriptedUnit";
-}else{
-    _units = param [1,[],[[]]];
-};
-
-_spawnPos = _logic getVariable "";
-_spawnRadius = _logic getVariable "";
-_attackPos = _logic getVariable "";
-_attackRadius = _logic getVariable "";
-
-//Spawn units on headless client otherwise server
-if (_logic getVariable "headlessClient" == 0) then {
-    //spawn on server
-}else{
-    //spawn on headless client
-};*/
-
+_logic = _this select 0;
 myVar1 = _logic;
-//myVar2 = _units;
-
+myVar2 = 100;
 
 /*
 -String of array to array example-

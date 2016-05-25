@@ -6,5 +6,4 @@ ADDON = false;
 
 PREP(spawnAttack);
 
-
 ADDON = true;
