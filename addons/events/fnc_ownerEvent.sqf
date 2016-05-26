@@ -36,10 +36,11 @@ if (_targetOwner == 2) then { //Going to server:
         SEND_EVENT_TO_SERVER(_params,_eventName);
     };
 } else {
-    if (clientOwner == _targetOwner) then {
-        //We are the target client: Do local event (no network traffic) 
+    if (GVAR(clientID) == _targetOwner) then {
+        //We are the target client: Do local event (no network traffic)
         //Note: publicVariableClient to yourself DOES trigger addPublicVariableEventHandler, but it also causes network traffic
-        [_eventName, _params] call CBA_fnc_localEvent
+        TRACE_1("local",_this);
+        [_eventName, _params] call CBA_fnc_localEvent;
     } else {
         //Remote Client, send event (using publicVariableClient)
         SEND_EVENT_TO_CLIENT(_params,_eventName,_targetOwner);
