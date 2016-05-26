@@ -16,5 +16,3 @@
 #endif
 
 #include "\x\cba\addons\main\script_macros.hpp"
-
-#define 100 true
