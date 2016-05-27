@@ -28,12 +28,43 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-#include "script_component.hpp"
-SCRIPT(spawnAttack);
-
-private ["_logic"];
+//#include "script_component.hpp"
+//SCRIPT(spawnAttack);
+#define 100 false
+#define 111 true
+private ["_logic","_unit"];
 
 _logic = _this select 0;
+_headlessClient = _logic getVariable "headlessClient";
+_unitType = _logic getVariable "unitType";
+_scriptedUnit = _logic getVariable "scriptedUnit";
+_unitSide = _logic getVariable "unitSide";
+_spawnPosition = _logic getVariable "spawnPosition";
+_spawnRadius = _logic getVariable "spawnRadius";
+_attackPosition = _logic getVariable "attackPosition";
+_attackRadius = _logic getVariable "attackRadius";
+
+// Check where to run the code
+if (_headlessClient) then {
+    if (!hasInterface && !isServer) exitWith {}; // Works as is
+	if (hasInterface || isServer) exitWith {}; //Need to exit whole script
+}else{
+    if (hasInterface && !isServer) exitWith {}; //Needs to exit whole script
+};
+
+switch (_unitType) do {
+    case 10: {breakTo "main"};
+	case 11: {_unitType = "array"};
+	case 12: {_unitType = "config"};
+	default {diag_log "_unitType failed"};
+};
+
+switch (_unitType) do {
+    case "array": {hint "array"};
+	case "config": {hint "config"};
+	default {diag_log "array vs config failed"}
+};
+
 myVar1 = _logic;
 myVar2 = 100;
 

@@ -1,9 +1,7 @@
 class CfgVehicles{
 	class Logic;
 	class Module_F: Logic{
-		class ArgumentsBaseUnits{
-			class units;
-		};
+		class ArgumentsBaseUnits;
 		class ModuleDescription;
 	};
 	class CBA_moduleAttack: Module_F{
@@ -25,8 +23,8 @@ class CfgVehicles{
 				description = "Enter if a headless client is present"
 				typeName = "BOOL";
 				class values{
-					class No	{name = "$STR_lib_info_no"; value = 10; default = 10;};
-					class Yes   {name = "$STR_lib_info_yes"; value = 11;};
+					class No	{name = "$STR_lib_info_no"; value = 100; default = 100;};
+					class Yes   {name = "$STR_lib_info_yes"; value = 111;};
 				};
 			};
 			
