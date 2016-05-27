@@ -2,8 +2,9 @@
 
 ADDON = false;
 
-//ClientOwner is unreliable in saved games
-GVAR(clientID) = -1;
+//ClientOwner command is unreliable in saved games
+//CBA_clientID will hold the correct value for the client's owner (needed for publicVariableClient and remoteExec)
+CBA_clientID = -1; //Will be -1 until real value recieved from server
 
 // Initialisation required by CBA events.
 GVAR(eventNamespace) = call CBA_fnc_createNamespace;
@@ -16,7 +17,6 @@ if (isServer) then {
 
 // can't add at preInit
 0 spawn {
-    QGVAR(clientID) addPublicVariableEventHandler {TRACE_1("clientID PVEH",_this);};
     EVENT_PVAR_STR addPublicVariableEventHandler {(_this select 1) call CBA_fnc_localEvent};
 
     if (isServer) then {

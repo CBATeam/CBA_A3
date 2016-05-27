@@ -14,15 +14,15 @@
 
 
 if (isServer) then {
-    GVAR(clientID) = [0, 2] select isMultiplayer;
+    CBA_clientID = [0, 2] select isMultiplayer;
     addMissionEventHandler ["PlayerConnected", {
         params ["_id", "_uid", "_name", "_jip", "_owner"];
         TRACE_5("PlayerConnected eh",_id,_uid,_name,_jip,_owner);
 
         if (_owner != 2) then {
-            GVAR(clientID) = _owner;
-            _owner publicVariableClient QGVAR(clientID);
-            GVAR(clientID) = [0, 2] select isMultiplayer;
+            CBA_clientID = _owner;
+            _owner publicVariableClient "CBA_clientID";
+            CBA_clientID = [0, 2] select isMultiplayer;
         };
     }];
 };
