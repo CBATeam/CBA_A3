@@ -1,13 +1,19 @@
+# Project prefix
+PREFIX = cba
+# Build location
+BIN = @CBA_A3
+# Name of the zipped release package
+ZIP = CBA_A3
+# Path to directory that contains included Arma 3 files
+ARMA = include
+# armake flags (-i include -w disable certain warnings)
+FLAGS = -i $(ARMA) -w unquoted-string
+
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
 MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
 PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
 BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
 VERSION = v$(MAJOR).$(MINOR).$(PATCH).$(BUILD)
-PREFIX = cba
-BIN = @CBA_A3
-ZIP = CBA_A3
-ARMA = include
-FLAGS = -i $(ARMA) -w unquoted-string
 
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
 	@mkdir -p $(BIN)/addons
