@@ -6,7 +6,7 @@ BIN = @CBA_A3
 ZIP = CBA_A3
 # Path to directory that contains included Arma 3 files
 ARMA = include
-# armake flags (-i include -w disable certain warnings)
+# armake flags (-i include -w disable certain warnings) - defined again for filepatching build below
 FLAGS = -i $(ARMA) -w unquoted-string
 
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
@@ -32,6 +32,9 @@ $(BIN)/optionals/$(PREFIX)_%.pbo: optionals/%
 all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
 		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo, $(wildcard optionals/*))
 
+filepatching:
+	make FLAGS="-i $(ARMA) -w unquoted-string -p"
+
 $(BIN)/keys/%.biprivatekey:
 	@mkdir -p $(BIN)/keys
 	@echo "  KEY  $@"
@@ -56,3 +59,5 @@ release: clean signatures
 	@echo "  ZIP  $(ZIP)_$(VERSION).zip"
 	@cp LICENSE.md logo_cba_ca.paa mod.cpp README.md $(BIN)
 	@zip -r $(ZIP)_$(VERSION).zip $(BIN) &> /dev/null
+
+.PHONY: release
