@@ -292,19 +292,8 @@ Group: Functions  {
    Group: Xeh  {
 
       File: CBA_fnc_addClassEventHandler  (xeh/fnc_addClassEventHandler.sqf)
-      File: CBA_fnc_compileEventHandlers  (xeh/fnc_compileEventHandlers.sqf)
-      File: CBA_fnc_compileFunction  (xeh/fnc_compileFunction.sqf)
-      File: CBA_fnc_init  (xeh/fnc_init.sqf)
-      File: CBA_fnc_initEvents  (xeh/fnc_initEvents.sqf)
       File: CBA_fnc_isRecompileEnabled  (xeh/fnc_isRecompileEnabled.sqf)
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
-      File: CBA_fnc_postInit  (xeh/fnc_postInit.sqf)
-      File: CBA_fnc_postInit_unscheduled  (xeh/fnc_postInit_unscheduled.sqf)
-      File: CBA_fnc_preInit  (xeh/fnc_preInit.sqf)
-      File: CBA_fnc_preStart  (xeh/fnc_preStart.sqf)
-      File: CBA_fnc_startFallbackLoop  (xeh/fnc_startFallbackLoop.sqf)
-      File: CBA_fnc_supportMonitor  (xeh/fnc_supportMonitor.sqf)
-      File: script_xeh.hpp  (xeh/script_xeh.hpp)
       }  # Group: Xeh
 
    }  # Group: Functions
