@@ -1,8 +1,10 @@
 /*
 Function: CBA_fnc_globalSay
 
+DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say"] instead.
+
 Description:
-    Says sound on all client computer. DEPRECATED. Use remoteExec ["say"] instead.
+    Says sound on all client computer.
 
 Parameters:
     [_objects] - Array of Objects that perform Say [Object]
