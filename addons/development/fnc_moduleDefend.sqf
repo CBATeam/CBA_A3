@@ -41,24 +41,19 @@ _localUnits = [];
         _localUnits pushBack _x;
     };
 } forEach _units;
-
 if (count _localUnits == 0) exitWith {};
 
-// Parse defend position from string
+// Define variables
 _logic = param [0];
 _defendLocType = _logic getVariable "defendLocType";
 _defendPos = _logic getVariable "defendPosition";
 _defendSetPos = false;
 
-switch (_defendLocType) do {
-    case "array": {_defendPos = [_defendPos] call BIS_fnc_parseNumber;};
-    case "object": {_defendPos = getPos (call compile _defendPos);};
-    case "group": {_defendPos = getPos (leader(call compile _defendPos));};
-    case "marker": {_defendPos = getMarkerPos _defendPos;};
-    case "module": {_defendPos = getPos _logic;};
-    default {_defendSetPos = true;};
-};
+// Parse defend position from string
+_defendPos = [_defendLocType, _defendPos] call CBA_fnc_getStringPos;
+if (_defendPos == 0) then {_defendSetPos = true;};
 
+// Define if allowed to patrol
 _canPatrol = _logic getVariable "canPatrol";
 switch (_canPatrol) do {
     case 0: {_canPatrol = false;};

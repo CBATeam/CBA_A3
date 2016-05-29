@@ -5,6 +5,13 @@ class CfgFunctions
     {
         class Modules
         {
+            // CBA_fnc_getStringPos
+            class getStringPos
+            {
+                description = "A function to get the position of a string. Author: WiredTiger";
+                file = "\x\cba\addons\development\fnc_getStringPos.sqf";
+            };
+            
             // CBA_fnc_moduleAttack
             class moduleAttack
             {

@@ -22,28 +22,32 @@ class CfgVehicles{
             class attackLocType{
                 displayName = "Attack Location Type";
                 description = "Leave empty to use module location as attack location";
-                typeName = "STRING";
+                typeName = "NUMBER";
                 class values{
-                    class setLoc{
-                        name = "Set Position";
-                        value = "";
-                        default = "";
+                    class moduleLoc{
+                        name = "Module Position";
+                        value = 0;
+                        default = 0;
                     };
-                    class array{
-                        name = "Array";
-                        value = "array";
-                    };
-                    class object{
+                    class objectLoc{
                         name = "Object/Location";
-                        value = "object";
+                        value = 1;
                     };
-                    class group{
+                    class groupLoc{
                         name = "Group";
-                        value = "group";
+                        value = 2;
                     };
-                    class marker{
+                    class arrayLoc{
+                        name = "Array";
+                        value = 3;
+                    };
+                    class markerLoc{
                         name = "Marker";
-                        value = "marker";
+                        value = 4;
+                    };
+                    class taskLoc{
+                        name = "Task";
+                        value = 5;
                     };
                 };
             };
@@ -98,32 +102,32 @@ class CfgVehicles{
             class defendLocType{
                 displayName = "Defend Position Type";
                 description = "Leave empty to use module location as defend location";
-                typeName = "STRING";
+                typeName = "NUMBER";
                 class values{
                     class setLoc{
                         name = "Set Position";
-                        value = "";
-                        default = "";
+                        value = 0;
+                        default = 0;
                     };
-                    class array{
-                        name = "Array";
-                        value = "array";
-                    };
-                    class object{
+                    class objectLoc{
                         name = "Object/Location";
-                        value = "object";
+                        value = 1;
                     };
-                    class group{
+                    class groupLoc{
                         name = "Group";
-                        value = "group";
+                        value = 2;
                     };
-                    class marker{
+                    class arrayLoc{
+                        name = "Array";
+                        value = 3;
+                    };
+                    class markerLoc{
                         name = "Marker";
-                        value = "marker";
+                        value = 4;
                     };
-                    class module{
-                        name = "Module";
-                        value = "module";
+                    class taskLoc{
+                        name = "Task";
+                        value = 5;
                     };
                 };
             };
@@ -143,7 +147,7 @@ class CfgVehicles{
 
             class threshold{
                 displayName = "Building Size Threshold";
-                description = "";
+                description = "Smaller the number the more buildings available";
                 typeName = "NUMBER";
                 class values{
                     class two{
@@ -155,21 +159,21 @@ class CfgVehicles{
                         name = "0";
                         value = 0;
                     };
-                    class one{
-                        name = "1";
-                        value = 1;
-                    };
-                    class three{
-                        name = "3";
-                        value = 3;
-                    };
-                    class four{
-                        name = "4";
-                        value = 4;
-                    };
                     class five{
                         name = "5";
                         value = 5;
+                    };
+                    class eight{
+                        name = "8";
+                        value = 8;
+                    };
+                    class twelve{
+                        name = "12";
+                        value = 12;
+                    };
+                    class twenty{
+                        name = "20";
+                        value = 20;
                     };
                 };
             };
@@ -198,7 +202,9 @@ class CfgVehicles{
     
             class LocationArea_F{
                 description[] = {
-                    ""
+                    "Sync the module to group leaders to have them defend a selected area.",
+                    "The area can be passed through the module or where the groups spawn",
+                    "at the start of the mission."
                 };
                 position = 0;
                 optional = 0;

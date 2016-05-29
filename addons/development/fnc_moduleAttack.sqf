@@ -42,25 +42,21 @@ _localUnits = [];
         _localUnits pushBack _x;
     };
 } forEach _units;
-
 if (count _localUnits == 0) exitWith {};
 
-// Parse attack position from string
+// Define variables
 _logic = param [0];
 _attackLocType = _logic getVariable "attackLocType";
 _attackPos = _logic getVariable "attackPosition";
 
-switch (_attackLocType) do {
-    case "array": {_attackPos = [_attackPos] call BIS_fnc_parseNumber;};
-    case "object": {_attackPos = getPos (call compile _attackPos);};
-    case "group": {_attackPos = getPos (leader(call compile _attackPos));};
-    case "marker": {_attackPos = getMarkerPos _attackPos;};
-    default {_attackPos = getPos _logic;};
-};
+// Parse attack position from string
+_attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
+if (_attackPos == 0) then {_attackPos = getPos _logic;};
 
 // Set attack for local units
 _searchRadius = _logic getVariable "searchRadius";
 
+// Assign attack to units
 {
     [_x, _attackPos, _searchRadius] call CBA_fnc_taskAttack;
 } forEach _localUnits;
