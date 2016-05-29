@@ -12,12 +12,12 @@ class CfgFunctions
                 file = "\x\cba\addons\development\fnc_moduleAttack.sqf";
             };
 			
-			// CBA_fnc_moduleDefend
-			class moduleDefend
-			{
-				description = "A function used to set a group to defend a position through a module. Author: WiredTiger";
-				file = "\x\cba\addons\development\fnc_moduleDefend.sqf";
-			};
+	    // CBA_fnc_moduleDefend
+	    class moduleDefend
+	    {
+	    	description = "A function used to set a group to defend a position through a module. Author: WiredTiger";
+		file = "\x\cba\addons\development\fnc_moduleDefend.sqf";
+	    };
         };
     };
 };
