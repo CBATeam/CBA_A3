@@ -96,7 +96,7 @@ Group: Functions  {
       File: CBA_fnc_addBinocularMagazine  (common/fnc_addBinocularMagazine.sqf)
       File: CBA_fnc_addItem  (common/fnc_addItem.sqf)
       File: CBA_fnc_addItemCargo  (common/fnc_addItemCargo.sqf)
-      File: CBA_fnc_addMagazine files/ai/fnc_addWaypoint-sqf.html  (no auto-title, common/fnc_addMagazine.sqf)
+      File: CBA_fnc_addMagazine  (common/fnc_addMagazine.sqf)
       File: CBA_fnc_addMagazineCargo  (common/fnc_addMagazineCargo.sqf)
       File: CBA_fnc_addPerFrameHandler  (common/fnc_addPerFrameHandler.sqf)
       File: CBA_fnc_addPlayerAction  (common/fnc_addPlayerAction.sqf)
