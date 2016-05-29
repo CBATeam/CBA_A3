@@ -24,10 +24,14 @@ class CfgVehicles{
 				description = "Leave empty to use module location as attack location";
 				typeName = "STRING";
 				class values{
+					class setLoc{
+						name = "Set Position";
+						value = "";
+						default = "";
+					};
 					class array{
 						name = "Array";
 						value = "array";
-						default = "";
 					};
 					class object{
 						name = "Object/Location";
