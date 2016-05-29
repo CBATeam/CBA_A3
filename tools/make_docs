@@ -23,7 +23,7 @@ cp -a /tmp/xeh/fnc_addClassEventHandler.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_isRecompileEnabled.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_isScheduled.sqf ../addons/xeh
 
-$NATURALDOCS -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
+$NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
 rm ../addons/{overview.txt,CBA_logo_large.png}
 
 # Restore xeh
