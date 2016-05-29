@@ -2,8 +2,7 @@
 
 ADDON = false;
 
-#include "XEH_PREP.hpp"
-
-PREP(spawnAttack);
+PREP(moduleAttack);
+PREP(moduleDefend);
 
 ADDON = true;
