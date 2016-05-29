@@ -3,15 +3,15 @@ Function: CBA_fnc_moduleAttack
 
 Description:
     A function for commanding a group to attack a location with information
-	parsed from a module.
+    parsed from a module.
 
 Parameters:
     - Group (Array of Classnames or an array of a config)
-	- Spawn Point (XYZ, Object, Location or Marker)
-	- Attack Point (XYZ, Object, Location, Group, or Marker)
+    - Spawn Point (XYZ, Object, Location or Marker)
+    - Attack Point (XYZ, Object, Location, Group, or Marker)
 
 Optional:
-	- Attack Radius (Number)
+    - Attack Radius (Number)
 
 Example:
     (begin example)
@@ -38,8 +38,8 @@ _localUnits = [];
 {
     // Find owner of unit if headless client is present
     if (local _x) then {
-	    _localUnits pushBack _x;
-	};
+        _localUnits pushBack _x;
+    };
 } forEach _units;
 
 if (count _localUnits == 0) exitWith {};
@@ -52,17 +52,17 @@ _defendSetPos = false;
 
 switch (_defendLocType) do {
     case "array": {_defendPos = [_defendPos] call BIS_fnc_parseNumber;};
-	case "object": {_defendPos = getPos (call compile _defendPos);};
-	case "group": {_defendPos = getPos (leader(call compile _defendPos));};
-	case "marker": {_defendPos = getMarkerPos _defendPos;};
-	case "module": {_defendPos = getPos _logic;};
-	default {_defendSetPos = true;};
+    case "object": {_defendPos = getPos (call compile _defendPos);};
+    case "group": {_defendPos = getPos (leader(call compile _defendPos));};
+    case "marker": {_defendPos = getMarkerPos _defendPos;};
+    case "module": {_defendPos = getPos _logic;};
+    default {_defendSetPos = true;};
 };
 
 _canPatrol = _logic getVariable "canPatrol";
 switch (_canPatrol) do {
     case 0: {_canPatrol = false;};
-	default {_canPatrol = true;};
+    default {_canPatrol = true;};
 };
 
 // Command local units to defend area
