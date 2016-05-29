@@ -1,8 +1,10 @@
 /*
 Function: CBA_fnc_globalExecute
 
-Description:
-    Executes code on given destinations. DEPRECATED. Use remoteExec instead.
+DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> instead.
+
+Description
+    Executes code on given destinations.
 
 Parameters:
     _channel    - All: -2, ClientsOnly: -1, ServerOnly: 0 [Integer]
