@@ -14,8 +14,21 @@ then
   mkdir ../docs
 fi
 cp overview.txt CBA_logo_large.png ../addons
-$NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
+
+# Move the documented, but internal-only functions out of the way
+# while compiling the documentation
+cp -a ../addons/xeh /tmp/
+rm ../addons/xeh/*
+cp -a /tmp/xeh/fnc_addClassEventHandler.sqf ../addons/xeh
+cp -a /tmp/xeh/fnc_isRecompileEnabled.sqf ../addons/xeh
+cp -a /tmp/xeh/fnc_isScheduled.sqf ../addons/xeh
+
+$NATURALDOCS -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
 rm ../addons/{overview.txt,CBA_logo_large.png}
+
+# Restore xeh
+cp -a /tmp/xeh/* ../addons/xeh/
+rm -rf /tmp/xeh
 
 echo -e "\n=== Packaging documentation ===\n"
 rm -f ../store/function_library.tar
