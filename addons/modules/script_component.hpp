@@ -1,4 +1,3 @@
-#define DISABLE_COMPILE_CACHE
 #define COMPONENT modules
 #include "\x\cba\addons\main\script_mod.hpp"
 

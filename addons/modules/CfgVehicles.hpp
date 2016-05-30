@@ -5,7 +5,7 @@ class CfgVehicles{
         class ModuleDescription;
     };
 
-    class CBA_moduleAttack: Module_F{
+    class CBA_ModuleAttack: Module_F{
         scope = 2;
         displayName = "Attack";
         vehicleClass = "Modules";
@@ -142,7 +142,7 @@ class CfgVehicles{
                 displayName = "Defend Radius";
                 description = "The max distance to defend from the center point";
                 typeName = "NUMBER";
-                defaultValue = 0;
+                defaultValue = 25;
             };
 
             class threshold{
@@ -155,25 +155,25 @@ class CfgVehicles{
                         value = 2;
                         default = 2;
                     };
-                    class zero{
-                        name = "0";
-                        value = 0;
+                    class one{
+                        name = "1";
+                        value = 1;
+                    };
+                    class three{
+                        name = "3";
+                        value = 3;
+                    };
+                    class four{
+                        name = "4";
+                        value = 4;
                     };
                     class five{
                         name = "5";
                         value = 5;
                     };
-                    class eight{
-                        name = "8";
-                        value = 8;
-                    };
-                    class twelve{
-                        name = "12";
-                        value = 12;
-                    };
-                    class twenty{
-                        name = "20";
-                        value = 20;
+                    class six{
+                        name = "6";
+                        value = 6;
                     };
                 };
             };
@@ -278,7 +278,7 @@ class CfgVehicles{
                 displayName = "Waypoint Count";
                 description = "The amount of waypoints to create";
                 typeName = "NUMBER";
-                defaultValue = 7;
+                defaultValue = 4;
             };
             
             class waypointType{
@@ -436,7 +436,7 @@ class CfgVehicles{
                 displayName = "Timeout";
                 description = "[Min, Med, Max] Time to wait at waypoints";
                 typeName = "STRING";
-                defaultValue = "[3,5,10]";
+                defaultValue = "[1,5,10]";
             };
         };
         

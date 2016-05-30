@@ -4,5 +4,6 @@ ADDON = false;
 
 PREP(moduleAttack);
 PREP(moduleDefend);
+PREP(modulePatrol);
 
 ADDON = true;

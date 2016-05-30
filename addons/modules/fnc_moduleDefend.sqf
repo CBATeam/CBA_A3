@@ -55,10 +55,7 @@ if (_defendPos isEqualTo 0) then {_defendSetPos = true;};
 
 // Define if allowed to patrol
 _canPatrol = _logic getVariable "canPatrol";
-switch (_canPatrol) do {
-    case 0: {_canPatrol = false;};
-    default {_canPatrol = true;};
-};
+if (_canPatrol isEqualTo 0) then {_canPatrol = false;}else{_canPatrol = true;};
 
 // Command local units to defend area
 _defendRadius = _logic getVariable "defendRadius";
