@@ -6,7 +6,7 @@ class CfgPatches {
         requiredVersion = 0.1;
         requiredAddons[] = {"A3_Modules_F"};
         //author[] = {"WiredTiger"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authorUrl = "";
     };
 };
 
