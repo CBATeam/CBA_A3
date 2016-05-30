@@ -51,7 +51,7 @@ _attackPos = _logic getVariable "attackPosition";
 
 // Parse attack position from string
 _attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
-if (_attackPos == 0) then {_attackPos = getPos _logic;};
+if (_attackPos isEqualTo 0) then {_attackPos = getPos _logic;};
 
 // Set attack for local units
 _searchRadius = _logic getVariable "searchRadius";

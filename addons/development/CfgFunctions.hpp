@@ -25,6 +25,13 @@ class CfgFunctions
                 description = "A function used to set a group to defend a position through a module. Author: WiredTiger";
                 file = "\x\cba\addons\development\fnc_moduleDefend.sqf";
             };
+            
+            // CBA_fnc_modulePatrol
+            class modulePatrol
+            {
+                description = "";
+                file = "\x\cba\addons\development\fnc_modulePatrol.sqf";
+            };
         };
     };
 };
