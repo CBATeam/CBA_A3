@@ -1,8 +1,10 @@
 /*
 Function: CBA_fnc_globalSay3d
 
+DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say3D"] instead.
+
 Description:
-    Says sound on all client computer in 3d. DEPRECATED. Use remoteExec ["say3D"] instead.
+    Says sound on all client computer in 3D.
 
 Parameters:
     _object - Object that performs Say [Object] can also be _array - [object, targetObject]
