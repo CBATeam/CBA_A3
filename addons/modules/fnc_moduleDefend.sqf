@@ -20,7 +20,7 @@ Optional:
 
 Example:
     (begin example)
-    [Logic, [group1, group2,..., groupN] call CBA_fnc_moduleDefend
+    [Logic, [group1, group2,..., groupN]] call CBA_fnc_moduleDefend
     (end)
 
 Returns:
