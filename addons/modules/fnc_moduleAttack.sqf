@@ -6,15 +6,22 @@ Description:
     parsed from a module.
 
 Parameters:
-    - Group Leader(s) (Synced to module)
-    - Attack Point (XYZ, Object, Location, Group, Marker, or Task)
+    Logic Parameters (Must be passed associated with Object using "setVariable")
+    - Location Type (Scalar)
+        setVariable ["attackLocType", value]
+    
+    Group Parameter
+    - Group Leader(s) (Array)
 
 Optional:
-    - Attack Radius (Number)
+    - Attack Position (XYZ, Object, Location, Group, Marker, or Task)
+        setVariable ["attackPosition", value]
+    - Search Radius (Scalar)
+        setVariable ["searchRadius", value]
 
 Example:
     (begin example)
-    [groupLeader, "[0,0,0]", 25] call CBA_fnc_moduleAttack;
+    [Logic, [group1,group2,...,groupN]] call CBA_fnc_moduleAttack;
     (end)
 
 Returns:
@@ -28,21 +35,21 @@ Author:
 //#include "script_component.hpp"
 //SCRIPT(moduleAttack);
 
-private ["_units","_localUnits","_logic","_attackLocType","_attackPos","_searchRadius"];
+private ["_groups","_localGroups","_logic","_attackLocType","_attackPos","_searchRadius"];
 
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_units = param [1,[],[[]]];
-_localUnits = [];
+_groups = param [1,[],[[]]];
+_localGroups = [];
 
 {
     // Find owner of unit if headless client is present
     if (local _x) then {
-        _localUnits pushBack _x;
+        _localGroups pushBack _x;
     };
-} forEach _units;
-if (count _localUnits == 0) exitWith {};
+} forEach _groups;
+if (count _localGroups == 0) exitWith {};
 
 // Define variables
 _logic = param [0];
@@ -59,4 +66,4 @@ _searchRadius = _logic getVariable "searchRadius";
 // Assign attack to group leaders
 {
     [_x, _attackPos, _searchRadius] call CBA_fnc_taskAttack;
-} forEach _localUnits;
+} forEach _localGroups;

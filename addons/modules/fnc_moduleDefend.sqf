@@ -6,15 +6,21 @@ Description:
     parsed from a module.
 
 Parameters:
-    - Group (Array of Classnames or an array of a config)
-    - Spawn Point (XYZ, Object, Location or Marker)
-    - Attack Point (XYZ, Object, Location, Group, or Marker)
+    Logic Parameters (Must be passed associated with Object using "setVariable")
+    - Location Type (Scalar)
+        setVariable ["defendLocType", value]
 
 Optional:
-    - Attack Radius (Number)
+    - Defend Position (XYZ, Object, Location, Group, Marker, or Task)
+        setVariable ["defendPosition", value]
+    - Building Threshold (Scalar)
+        setVariable ["threshold", value]
+    - Can Patrol (Bool)
+        setVariable ["canPatrol", vaule]
 
 Example:
     (begin example)
+    [Logic, [group1, group2,..., groupN] call CBA_fnc_moduleDefend
     (end)
 
 Returns:
@@ -29,8 +35,8 @@ Author:
 
 private [
     "_logic",
-    "_units",
-    "_localUnits",
+    "_groups",
+    "_localGroups",
     "_defendPos",
     "_defendLocType",
     "_defendRadius",
@@ -42,16 +48,16 @@ private [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_units = param [1,[],[[]]];
-_localUnits = [];
+_groups = param [1,[],[[]]];
+_localGroups = [];
 
 {
     // Find owner of unit if headless client is present
     if (local _x) then {
-        _localUnits pushBack _x;
+        _localGroups pushBack _x;
     };
-} forEach _units;
-if (count _localUnits == 0) exitWith {};
+} forEach _groups;
+if (count _localGroups == 0) exitWith {};
 
 // Define variables
 _logic = param [0];
@@ -73,4 +79,4 @@ _threshold = _logic getVariable "threshold";
 {
     if (_defendSetPos) then {_defendPos = getPos _x;};
     [_x, _defendPos, _defendRadius, _threshold, _canPatrol] call CBA_fnc_taskDefend;
-} forEach _localUnits;
+} forEach _localGroups;

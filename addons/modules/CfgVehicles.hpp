@@ -7,7 +7,7 @@ class CfgVehicles {
 
     class CBA_ModuleAttack: Module_F {
         scope = 2;
-        displayName = "Attack"; //CString stringtable
+        displayName = "Attack"; // stringtable
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_moduleAttack"; //stringtable
@@ -20,17 +20,17 @@ class CfgVehicles {
 
         class Arguments: ArgumentsBaseUnits {
             class attackLocType{
-                displayName = "Attack Location Type";//CString stringtable
-                description = "Leave empty to use module location as attack location";//CString stringtable
+                displayName = "Attack Location Type"; // stringtable
+                description = "Leave empty to use module location as attack location"; // stringtable
                 typeName = "NUMBER";
                 class values {
                     class moduleLoc {
-                        name = "Module Position";//stringtable
+                        name = "Module Position"; //stringtable
                         value = 0;
                         default = 0;
                     };
                     class objectLoc {
-                        name = "Object/Location";//stringtable
+                        name = "Object/Location"; //stringtable
                         value = 1;
                     };
                     class groupLoc {

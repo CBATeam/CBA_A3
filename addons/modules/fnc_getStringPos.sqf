@@ -20,7 +20,8 @@ Example:
     (end)
 
 Returns:
-    Position [0,0,0] or 0
+    In case of Object, group, array, marker, or task position [x,y,z] is returned,
+    otherwise 0 is returned.
 
 Author:
     WiredTiger
@@ -36,12 +37,10 @@ params [
 ];
 
 switch (_type) do {
-    case 1: {_stringPos = getPos (call compile _string);}; // Object/Location
-    case 2: {_stringPos = getPos (leader (call compile _string));}; // Group
-    case 3: {_stringPos = [_string] call BIS_fnc_parseNumber;}; // Array
-    case 4: {_stringPos = getMarkerPos _string;}; // Marker
-    case 5: {_stringPos = taskDestination (call compile _string)}; // Task
-    default {};
+    case 1: {getPos (call compile _string);}; // Object/Location
+    case 2: {getPos (leader (call compile _string));}; // Group
+    case 3: {[_string] call BIS_fnc_parseNumber;}; // Array
+    case 4: {getMarkerPos _string;}; // Marker
+    case 5: {taskDestination (call compile _string)}; // Task
+    default {_stringPos};
 };
-
-_stringPos
