@@ -10,7 +10,8 @@ class CfgPatches {
         requiredAddons[] = {"cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_ui", "cba_ui_helper", "cba_help"};
         versionDesc = "C.B.A.";
         VERSION_CONFIG;
-        author[] = {"CBA Team"};
+        author = "$STR_CBA_Author";
+        authors[] = {};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };

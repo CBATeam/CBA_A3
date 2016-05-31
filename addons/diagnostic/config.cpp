@@ -6,7 +6,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_common","CBA_events","3DEN"};
         version = VERSION;
-        author[] = {"Spooner","Sickboy"};
+        author = "$STR_CBA_Author";
+        authors[] = {"Spooner","Sickboy"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
