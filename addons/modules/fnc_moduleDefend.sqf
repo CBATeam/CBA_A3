@@ -2,7 +2,7 @@
 Function: CBA_fnc_moduleAttack
 
 Description:
-    A function for commanding a group to attack a location with information
+    A function for commanding a group to defend a location with information
     parsed from a module.
 
 Parameters:
@@ -27,7 +27,17 @@ Author:
 
 //SCRIPT(moduleDefend);
 
-private["_logic","_units","_localUnits","_defendPos","_defendLocType","_defendRadius","_defendSetPos","_threshold","_canPatrol"];
+private [
+    "_logic",
+    "_units",
+    "_localUnits",
+    "_defendPos",
+    "_defendLocType",
+    "_defendRadius",
+    "_defendSetPos",
+    "_threshold",
+    "_canPatrol"
+];
 
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
@@ -57,7 +67,7 @@ if (_defendPos isEqualTo 0) then {_defendSetPos = true;};
 _canPatrol = _logic getVariable "canPatrol";
 if (_canPatrol isEqualTo 0) then {_canPatrol = false;}else{_canPatrol = true;};
 
-// Command local units to defend area
+// Command local group leaders to defend area
 _defendRadius = _logic getVariable "defendRadius";
 _threshold = _logic getVariable "threshold";
 {

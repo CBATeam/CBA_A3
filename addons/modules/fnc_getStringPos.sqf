@@ -29,7 +29,7 @@ Author:
 
 //SCRIPT(getStringPos);
 
-params[
+params [
     ["_type",0],
     ["_string",""],
     ["_stringPos",0]

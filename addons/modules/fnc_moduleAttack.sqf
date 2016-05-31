@@ -6,15 +6,15 @@ Description:
     parsed from a module.
 
 Parameters:
-    - Group (Array of Classnames or an array of a config)
-    - Spawn Point (XYZ, Object, Location or Marker)
-    - Attack Point (XYZ, Object, Location, Group, or Marker)
+    - Group Leader(s) (Synced to module)
+    - Attack Point (XYZ, Object, Location, Group, Marker, or Task)
 
 Optional:
     - Attack Radius (Number)
 
 Example:
     (begin example)
+    [groupLeader, "[0,0,0]", 25] call CBA_fnc_moduleAttack;
     (end)
 
 Returns:
@@ -28,7 +28,7 @@ Author:
 //#include "script_component.hpp"
 //SCRIPT(moduleAttack);
 
-private ["_logic","_units","_localUnits","_attackLocType","_attackPos","_searchRadius"];
+private ["_units","_localUnits","_logic","_attackLocType","_attackPos","_searchRadius"];
 
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
@@ -56,7 +56,7 @@ if (_attackPos isEqualTo 0) then {_attackPos = getPos _logic;};
 // Set attack for local units
 _searchRadius = _logic getVariable "searchRadius";
 
-// Assign attack to units
+// Assign attack to group leaders
 {
     [_x, _attackPos, _searchRadius] call CBA_fnc_taskAttack;
 } forEach _localUnits;

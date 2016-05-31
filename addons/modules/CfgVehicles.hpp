@@ -1,11 +1,11 @@
-class CfgVehicles{
+class CfgVehicles {
     class Logic;
-    class Module_F: Logic{
+    class Module_F: Logic {
         class ArgumentsBaseUnits;
         class ModuleDescription;
     };
 
-    class CBA_ModuleAttack: Module_F{
+    class CBA_ModuleAttack: Module_F {
         scope = 2;
         displayName = "Attack"; //CString stringtable
         vehicleClass = "Modules";
@@ -18,47 +18,47 @@ class CfgVehicles{
         is3DEN = 0;
         curatorInfoType = "RscDisplayAttributeAttack";
 
-        class Arguments: ArgumentsBaseUnits{
+        class Arguments: ArgumentsBaseUnits {
             class attackLocType{
                 displayName = "Attack Location Type";//CString stringtable
                 description = "Leave empty to use module location as attack location";//CString stringtable
                 typeName = "NUMBER";
-                class values{
-                    class moduleLoc{
+                class values {
+                    class moduleLoc {
                         name = "Module Position";//stringtable
                         value = 0;
                         default = 0;
                     };
-                    class objectLoc{
+                    class objectLoc {
                         name = "Object/Location";//stringtable
                         value = 1;
                     };
-                    class groupLoc{
+                    class groupLoc {
                         name = "Group"; //stringtable
                         value = 2;
                     };
-                    class arrayLoc{
+                    class arrayLoc {
                         name = "Array"; //stringtable
                         value = 3;
                     };
-                    class markerLoc{
+                    class markerLoc {
                         name = "Marker"; //stringtable
                         value = 4;
                     };
-                    class taskLoc{
+                    class taskLoc {
                         name = "Task"; //stringtable
                         value = 5;
                     };
                 };
             };
 
-            class attackPosition{
+            class attackPosition {
                 displayName = "Attack Position"; //stringtable
                 description = "Enter an array with brackets or name without quotes("")"; //stringtable
                 typeName = "STRING";
             };
 
-            class searchRadius{
+            class searchRadius {
                 displayName = "Search Radius"; //stringtable
                 description = "Enter a number for size of the radius to search"; //stringtable
                 typeName = "NUMBER";
@@ -66,11 +66,11 @@ class CfgVehicles{
             };
         };
 
-        class ModuleDescription: ModuleDescription{
+        class ModuleDescription: ModuleDescription {
             description = "Sync to leader of group to attack a parsed location"; //stringtable
             sync[] = {"LocationArea_F"};
 
-            class LocationArea_F{
+            class LocationArea_F {
                 position = 0;
                 optional = 0;
                 duplicate = 1;
@@ -79,7 +79,7 @@ class CfgVehicles{
         };
     };
 
-    class CBA_ModuleDefend: Module_F{
+    class CBA_ModuleDefend: Module_F {
         scope = 2;
         displayName = "Defend"; //stringtable
         vehicleClass = "Modules";
@@ -92,72 +92,72 @@ class CfgVehicles{
         is3DEN = 0;
         curatorInfoType = "RscDisplayAttributeDefend";
     
-        class Arguments: ArgumentsBaseUnits{
-            class defendLocType{
+        class Arguments: ArgumentsBaseUnits {
+            class defendLocType {
                 displayName = "Defend Position Type"; //stringtable
                 description = "Leave empty to use module location as defend location"; //stringtable
                 typeName = "NUMBER";
-                class values{
-                    class setLoc{
+                class values {
+                    class setLoc {
                         name = "Set Position"; //stringtable
                         value = 0;
                         default = 0;
                     };
-                    class objectLoc{
+                    class objectLoc {
                         name = "Object/Location"; //stringtable
                         value = 1;
                     };
-                    class groupLoc{
+                    class groupLoc {
                         name = "Group"; //stringtable
                         value = 2;
                     };
-                    class arrayLoc{
+                    class arrayLoc {
                         name = "Array"; //stringtable
                         value = 3;
                     };
-                    class markerLoc{
+                    class markerLoc {
                         name = "Marker"; //stringtable
                         value = 4;
                     };
-                    class taskLoc{
+                    class taskLoc {
                         name = "Task"; //stringtable
                         value = 5;
                     };
                 };
             };
     
-            class defendPosition{
+            class defendPosition {
                 displayName = "Defend Position"; //stringtable
                 description = "The center point of the defend area"; //stringtable
                 typeName = "STRING";
             };
     
-            class defendRadius{
+            class defendRadius {
                 displayName = "Defend Radius"; //stringtable
                 description = "The max distance to defend from the center point"; //stringtable
                 typeName = "NUMBER";
                 defaultValue = 25;
             };
 
-            class threshold{
+            class threshold {
                 displayName = "Building Size Threshold"; //stringtable
                 description = "Smaller the number the more buildings available"; //stringtable
                 typeName = "NUMBER";
-                class values{
-                    class two{
+                class values {
+                    class two {
                         name = "2";
                         value = 2;
                         default = 2;
                     };
-                    class one{
+                    class one {
                         name = "1";
                         value = 1;
                     };
-                    class three{
+                    class three {
                         name = "3";
                         value = 3;
                     };
-                    class four{
+                    class four {
                         name = "4";
                         value = 4;
                     };
@@ -165,24 +165,24 @@ class CfgVehicles{
                         name = "5";
                         value = 5;
                     };
-                    class six{
+                    class six {
                         name = "6";
                         value = 6;
                     };
                 };
             };
     
-            class canPatrol{
+            class canPatrol {
                 displayName = "Allow Patroling"; //stringtable
                 description = "AI will be able to patrol the area they are defending"; //stringtable
                 typeName = "BOOL";
-                class values{
-                    class yes{
+                class values {
+                    class yes {
                         name = "$STR_lib_info_yes";
                         value = 1;
                         default = 1;
                     };
-                    class no{
+                    class no {
                         name = "$STR_lib_info_no";
                         value = 0;
                     };
@@ -190,11 +190,11 @@ class CfgVehicles{
             };
         };
         
-        class ModuleDescription: ModuleDescription{
+        class ModuleDescription: ModuleDescription {
             description = "Sync to leader of group to defend a parsed location";
             sync[] = {"LocationArea_F"};
     
-            class LocationArea_F{
+            class LocationArea_F {
                 position = 0;
                 optional = 0;
                 duplicate = 1;
@@ -203,7 +203,7 @@ class CfgVehicles{
         };
     };
     
-    class CBA_ModulePatrol: Module_F{
+    class CBA_ModulePatrol: Module_F {
         scope = 2;
         displayName = "Patrol"; //stringtable
         vehicleClass = "Modules";
@@ -216,212 +216,212 @@ class CfgVehicles{
         is3DEN = 0;
         curatorInfoType = "RscDisplayAttributePatrol";
         
-        class Arguments: ArgumentsBaseUnits{
-            class patrolLocType{
+        class Arguments: ArgumentsBaseUnits {
+            class patrolLocType {
                 displayName = "Patrol Center Type"; //stringtable
                 description = "Select the type of position to pass"; //stringtable
                 typeName = "NUMBER";
-                class values{
-                    class setLoc{
+                class values {
+                    class setLoc {
                         name = "Set Position"; //stringtable
                         value = 0;
                         default = 0;
                     };
-                    class objectLoc{
+                    class objectLoc {
                         name = "Object/Location"; //stringtable
                         value = 1;
                     };
-                    class groupLoc{
+                    class groupLoc {
                         name = "Group"; //stringtable
                         value = 2;
                     };
-                    class arrayLoc{
+                    class arrayLoc {
                         name = "Array"; //stringtable
                         value = 3;
                     };
-                    class markerLoc{
+                    class markerLoc {
                         name = "Marker"; //stringtable
                         value = 4;
                     };
-                    class taskLoc{
+                    class taskLoc {
                         name = "Task"; //stringtable
                         value = 5;
                     };
                 };
             };
             
-            class patrolPosition{
+            class patrolPosition {
                 displayName = "Center point"; //stringtable
                 description = "If using a position other than the spawn point"; //stringtable
                 typeName = "STRING";
             };
             
-            class patrolRadius{
+            class patrolRadius {
                 displayName = "Patrol Radius"; //stringtable
                 description = "The distance to patrol from the center point"; //stringtable
                 typeName = "NUMBER";
                 defaultValue = 25;
             };
 
-            class waypointCount{
+            class waypointCount {
                 displayName = "Waypoint Count"; //stringtable
                 description = "The amount of waypoints to create"; //stringtable
                 typeName = "NUMBER";
                 defaultValue = 4;
             };
             
-            class waypointType{
+            class waypointType {
                 displayName = "Waypoint Type"; //stringtable
                 description = "The type of waypoint to be used"; //stringtable
                 typeName = "STRING";
-                class values{
-                    class move{
+                class values {
+                    class move {
                         name = "Move"; //stringtable
                         value = "MOVE";
                         default = "";
                     };
-                    class sad{
+                    class sad {
                         name = "Seek and Destroy"; //stringtable
                         value = "SAD";
                     };
-                    class loiter{
+                    class loiter {
                         name = "Loiter"; //stringtable
                         value = "LOITER";
                     };
                 };
             };
             
-            class behaviour{
+            class behaviour {
                 displayName = "Behaviour"; //stringtable
                 description = "The behaviour of the group"; //stringtable
                 typeName = "STRING";
-                class values{
-                    class careless{
+                class values {
+                    class careless {
                         name = "Careless"; //stringtable
                         value = "CARELESS";
                         default = "";
                     };
-                    class safe{
+                    class safe {
                         name = "Safe"; //stringtable
                         value = "SAFE";
                     };
-                    class aware{
+                    class aware {
                         name = "Aware"; //stringtable
                         value = "AWARE";
                     };
-                    class combat{
+                    class combat {
                         name = "Combat"; //stringtable
                         value = "COMBAT";
                     };
-                    class stealth{
+                    class stealth {
                         name = "Stealth"; //stringtable
                         value = "STEALTH";
                     };
                 };
             };
             
-            class combatMode{
+            class combatMode {
                 displayName = "Combat Mode"; //stringtable
                 description = "How fast the group is to engage"; //stringtable
                 typeName = "STRING";
-                class values{
-                    class yellow{
+                class values {
+                    class yellow {
                         name = "Yellow(Fire at will)"; //stringtable
                         value = "YELLOW";
                         default = "";
                     };
-                    class blue{
+                    class blue {
                         name = "Blue(Never fire)"; //stringtable
                         value = "BLUE";
                     };
-                    class green{
+                    class green {
                         name = "Green(Hold Fire-Defend Only)"; //stringtable
                         value = "GREEN";
                     };
-                    class white{
+                    class white {
                         name = "White(Hold Fire-Engage at will)"; //stringtable
                         value = "WHITE";
                     };
-                    class red{
+                    class red {
                         name = "Red(Fire at will-Engage at will)"; //stringtable
                         value = "RED";
                     };
                 };
             };
             
-            class speedMode{
+            class speedMode {
                 displayName = "Speed Mode"; //stringtable
                 description = "Walk, jog, or run to each waypoint"; //stringtable
                 typeName = "STRING";
-                class values{
-                    class limited{
+                class values {
+                    class limited {
                         name = "Limited(Walking)"; //stringtable
                         value = "LIMITED";
                         default = "";
                     };
-                    class normal{
+                    class normal {
                         name = "Normal(Jog-Stays in formation)"; //stringtable
                         value = "NORMAL";
                     };
-                    class full{
+                    class full {
                         name = "Full(Run-No formation)"; //stringtable
                         value = "FULL";
                     };
                 };
             };
             
-            class formation{
+            class formation {
                 displayName = "Formation"; //stringtable
                 description = "The formation to be used when moving"; //stringtable
                 typeName = "STRING";
-                class values{
-                    class column{
+                class values {
+                    class column {
                         name = "Column"; //stringtable
                         value = "COLUMN";
                         default = "";
                     };
-                    class stagColumn{
+                    class stagColumn {
                         name = "Stag Column"; //stringtable
                         value = "STAG COLUMN";
                     };
-                    class wedge{
+                    class wedge {
                         name = "Wedge"; //stringtable
                         value = "WEDGE";
                     };
-                    class echLeft{
+                    class echLeft {
                         name = "Ech Left"; //stringtable
                         value = "ECH LEFT";
                     };
-                    class echRight{
+                    class echRight {
                         name = "Ech Right"; //stringtable
                         value = "ECH RIGHT";
                     };
-                    class vee{
+                    class vee {
                         name = "Vee"; //stringtable
                         value = "VEE";
                     };
-                    class line{
+                    class line {
                         name = "Line"; //stringtable
                         value = "LINE";
                     };
-                    class file{
+                    class file {
                         name = "File"; //stringtable
                         value = "FILE";
                     };
-                    class diamond{
+                    class diamond {
                         name = "Diamond"; //stringtable
                         value = "DIAMOND";
                     };
                 };
             };
             
-            class executableCode{
+            class executableCode {
                 displayName = "Code to Execute"; //stringtable
                 description = "Any code to run at waypoints"; //stringtable
                 typeName = "STRING";
             };
             
-            class timeout{
+            class timeout {
                 displayName = "Timeout"; //stringtable
                 description = "[Min, Med, Max] Time to wait at waypoints"; //stringtable
                 typeName = "STRING";
@@ -429,11 +429,11 @@ class CfgVehicles{
             };
         };
         
-        class ModuleDescription: ModuleDescription{
+        class ModuleDescription: ModuleDescription {
             description = "Sync to leader of group to patrol a parsed location"; //stringtable
             sync[] = {"LocationArea_F"};
     
-            class LocationArea_F{
+            class LocationArea_F {
                 position = 0;
                 optional = 0;
                 duplicate = 1;

@@ -2,19 +2,42 @@
 Function: CBA_fnc_moduleAttack
 
 Description:
-    A function for commanding a group to attack a location with information
+    A function for commanding a group to patrol a location with information
     parsed from a module.
 
 Parameters:
-    - Group (Array of Classnames or an array of a config)
-    - Spawn Point (XYZ, Object, Location or Marker)
-    - Attack Point (XYZ, Object, Location, Group, or Marker)
+    Logic Parameters (Must be passed associated with Object using "setVariable")
+    - Location Type (Scalar)
+        setVariable ["patrolLocType", value]
+    - Patrol Radius (Scalar)
+        setVariable ["patrolRadius", value]
+    - Waypoint Count (Scalar)
+        setVariable ["waypointCount", value]
+    - Waypoint Type (String)
+        setVariable ["waypointType", value]
+    - Behaviour (String)
+        setVariable ["behaviour", value]
+    - Combast Mode (String)
+        setVariable ["combatMode", value]
+    - Speed Mode (String)
+        setVariable ["speedMode", value]
+    - Formation (String)
+        setVariable ["formation", value]
+    - Timeout at each waypoint (Array in String "[Min,Med,Max]")
+        setVariable ["timeout", value]
+    
+    Group Parameter
+    - Group Leader(s) (Array)
 
 Optional:
-    - Attack Radius (Number)
+    - Patrol Center (XYZ, Object, Location, Marker, or Task)
+        setVariable ["patrolPosition", value]
+    - Code to Execute at Each Waypoint (String)
+        setVariable ["executableCode", value]
 
 Example:
     (begin example)
+    [Logic, [group1,group2,...,groupN]] call CBA_fnc_modulePatrol;
     (end)
 
 Returns:
@@ -27,10 +50,10 @@ Author:
 
 //SCRIPT(modulePatrol);
 
-private[
+private [
     "_logic",
-    "_units",
-    "_localUnits",
+    "_groups",
+    "_localGroups",
     "_patrolPos",
     "_patrolRadius",
     "_waypointCount",
@@ -46,16 +69,16 @@ private[
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_units = param [1,[],[[]]];
-_localUnits = [];
+_groups = param [1,[],[[]]];
+_localGroups = [];
 
 {
     // Find owner of unit if headless client is present
     if (local _x) then {
-        _localUnits pushBack _x;
+        _localGroups pushBack _x;
     };
-} forEach _units;
-if (count _localUnits == 0) exitWith {};
+} forEach _groups;
+if (count _localGroups == 0) exitWith {};
 
 // Define variables
 _logic = param [0];
@@ -71,7 +94,7 @@ if (_patrolPos isEqualTo 0) then {_patrolSetPos = true;};
 _timeout = _logic getVariable "timeout";
 _timeout = [3,_timeout] call CBA_fnc_getStringPos;
 
-// Define remaining variables and command local units to patrol area
+// Define remaining variables and command local group leaders to patrol area
 _patrolRadius = _logic getVariable "patrolRadius";
 _waypointCount = _logic getVariable "waypointCount";
 _waypointType = _logic getVariable "waypointType";
@@ -95,4 +118,4 @@ _codeToRun = _logic getVariable "executableCode";
         _codeToRun,
         _timeout
     ] call CBA_fnc_taskPatrol;
-} forEach _localUnits;
+} forEach _localGroups;
