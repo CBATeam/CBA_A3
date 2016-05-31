@@ -25,7 +25,7 @@ class RscListBoxKeys;
 ///////////////////////////////////////////////////////////////////////////////
 
 class RscDisplayConfigure {
-    onLoad = "[""onLoad"",_this,""RscDisplayConfigure"",'GUI'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""; _this call compile preprocessfilelinenumbers ""\x\cba\addons\keybinding\gui\initDisplay.sqf""";
+    onLoad = "[""onLoad"",_this,""RscDisplayConfigure"",'GUI'] call compile preprocessfilelinenumbers ""a3\ui_f\scripts\initDisplay.sqf""; _this call compile preprocessfilelinenumbers ""\x\cba\addons\keybinding\gui\initDisplay.sqf""";
 
     class controls {
         class CA_ButtonCancel: RscButtonMenuCancel {

@@ -11,22 +11,22 @@ class asdg_SlotInfo { // Base class
 };
 
 class asdg_OpticRail: asdg_SlotInfo { // Base optic rail class
-    linkProxy = "\A3\data_f\proxies\weapon_slots\TOP";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\TOP";
     displayName = "$STR_A3_CowsSlot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_top";
+    iconPicture = "\a3\weapons_f\data\ui\attachment_top";
     iconPinpoint = "Bottom";
 };
 
 class asdg_MuzzleSlot: asdg_SlotInfo { // Base muzzle slot
-    linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\MUZZLE";
     displayName = "$str_a3_cfgweapons_abr_base_f_weaponslotsinfo_muzzleslot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_muzzle";
+    iconPicture = "\a3\weapons_f\data\ui\attachment_muzzle";
 };
 
 class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
-    linkProxy = "\A3\data_f\proxies\weapon_slots\SIDE";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
     displayName = "$STR_A3_PointerSlot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_side";
+    iconPicture = "\a3\weapons_f\data\ui\attachment_side";
     class compatibleItems {
         acc_flashlight = 1;
         acc_pointer_IR = 1;
@@ -34,8 +34,8 @@ class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
 };
 
 class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
-    linkProxy = "\A3\Data_F_Mark\Proxies\Weapon_Slots\UNDERBARREL";
-    iconPicture = "\A3\Weapons_F_Mark\Data\UI\attachment_under";
+    linkProxy = "\a3\data_f_mark\Proxies\Weapon_Slots\UNDERBARREL";
+    iconPicture = "\a3\weapons_f_mark\Data\UI\attachment_under";
     iconPinpoint = "Bottom";
     class compatibleItems {
         bipod_01_F_snd = 1;
