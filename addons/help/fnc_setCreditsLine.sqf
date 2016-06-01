@@ -38,7 +38,11 @@ if (CBA_DisableCredits) exitWith {};
 
 // find addon with author
 private _config = configFile >> "CfgPatches";
-private _entry = ("isText (_x >> 'author') && {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'}" configClasses _config) call (uiNamespace getVariable "BIS_fnc_selectRandom"); //bwc for 1.54 (Linux build)
+private _entry = ("
+    isText (_x >> 'author') &&
+    {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
+    {getText (_x >> 'author') != ''}
+" configClasses _config) call (uiNamespace getVariable "BIS_fnc_selectRandom"); //bwc for 1.54 (Linux build)
 
 if (isNil "_entry") exitWith {};
 
@@ -65,11 +69,19 @@ if (isArray (_entry >> "authors")) then {
 // url if any
 private _url = "";
 
-if (isText (_entry >> "authorUrl")) then {
-    _url = getText (_entry >> "authorUrl");
+if (isText (_entry >> "url")) then {
+    _url = getText (_entry >> "url");
 
     if (!CBA_MonochromeCredits) then {
         _url = format ["<t color='#566D7E'>%1</t>", _url];
+    };
+} else {
+    if (isText (_entry >> "authorUrl")) then {
+        _url = getText (_entry >> "authorUrl");
+
+        if (!CBA_MonochromeCredits) then {
+            _url = format ["<t color='#566D7E'>%1</t>", _url];
+        };
     };
 };
 
