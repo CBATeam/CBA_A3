@@ -16,7 +16,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark","CBA_jr_prep"};
         version = VERSION;
-        author[] = {"Robalo"};
+        author = "$STR_CBA_Author";
+        authors[] = {"Robalo"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
     class asdg_jointrails { //compat

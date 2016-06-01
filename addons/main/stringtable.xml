@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="CBA_A3">
+    <Package name="Main">
+        <Key ID="STR_CBA_Author">
+            <English>CBA Team</English>
+            <German>CBA-Team</German>
+        </Key>
+    </Package>
+</Project>

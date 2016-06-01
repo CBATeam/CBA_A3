@@ -7,7 +7,8 @@ class CfgPatches
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "CBA_common", "A3_UI_F" };
         version = VERSION;
-        author[] = {"Taosenai"};
+        author = "$STR_CBA_Author";
+        authors[] = {"Taosenai"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };

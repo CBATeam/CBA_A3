@@ -9,7 +9,8 @@ class CfgPatches {
             "CBA_Main"
         };
         VERSION_CONFIG;
-        author[] = {"CBA Team"};
+        author = "$STR_CBA_Author";
+        authors[] = {};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
