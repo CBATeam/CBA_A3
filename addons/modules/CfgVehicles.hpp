@@ -22,32 +22,32 @@ class CfgVehicles {
             class attackLocType{
                 displayName = "Attack Location Type"; // stringtable
                 description = "Leave empty to use module location as attack location"; // stringtable
-                typeName = "NUMBER";
+                typeName = "STRING";
                 class values {
                     class moduleLoc {
                         name = "Module Position"; //stringtable
-                        value = 0;
-                        default = 0;
+                        value = "";
+                        default = "";
                     };
                     class objectLoc {
                         name = "Object/Location"; //stringtable
-                        value = 1;
+                        value = "OBJECT";
                     };
                     class groupLoc {
                         name = "Group"; //stringtable
-                        value = 2;
+                        value = "GROUP";
                     };
                     class arrayLoc {
                         name = "Array"; //stringtable
-                        value = 3;
+                        value = "ARRAY";
                     };
                     class markerLoc {
                         name = "Marker"; //stringtable
-                        value = 4;
+                        value = "MARKER";
                     };
                     class taskLoc {
                         name = "Task"; //stringtable
-                        value = 5;
+                        value = "TASK";
                     };
                 };
             };
@@ -96,32 +96,32 @@ class CfgVehicles {
             class defendLocType {
                 displayName = "Defend Position Type"; //stringtable
                 description = "Leave empty to use module location as defend location"; //stringtable
-                typeName = "NUMBER";
+                typeName = "STRING";
                 class values {
                     class setLoc {
                         name = "Set Position"; //stringtable
-                        value = 0;
-                        default = 0;
+                        value = "";
+                        default = "";
                     };
                     class objectLoc {
                         name = "Object/Location"; //stringtable
-                        value = 1;
+                        value = "OBJECT";
                     };
                     class groupLoc {
                         name = "Group"; //stringtable
-                        value = 2;
+                        value = "GROUP";
                     };
                     class arrayLoc {
                         name = "Array"; //stringtable
-                        value = 3;
+                        value = "ARRAY";
                     };
                     class markerLoc {
                         name = "Marker"; //stringtable
-                        value = 4;
+                        value = "MARKER";
                     };
                     class taskLoc {
                         name = "Task"; //stringtable
-                        value = 5;
+                        value = "TASK";
                     };
                 };
             };
@@ -220,32 +220,32 @@ class CfgVehicles {
             class patrolLocType {
                 displayName = "Patrol Center Type"; //stringtable
                 description = "Select the type of position to pass"; //stringtable
-                typeName = "NUMBER";
+                typeName = "STRING";
                 class values {
                     class setLoc {
                         name = "Set Position"; //stringtable
-                        value = 0;
-                        default = 0;
+                        value = "";
+                        default = "";
                     };
                     class objectLoc {
                         name = "Object/Location"; //stringtable
-                        value = 1;
+                        value = "OBJECT";
                     };
                     class groupLoc {
                         name = "Group"; //stringtable
-                        value = 2;
+                        value = "GROUP";
                     };
                     class arrayLoc {
                         name = "Array"; //stringtable
-                        value = 3;
+                        value = "ARRAY";
                     };
                     class markerLoc {
                         name = "Marker"; //stringtable
-                        value = 4;
+                        value = "MARKER";
                     };
                     class taskLoc {
                         name = "Task"; //stringtable
-                        value = 5;
+                        value = "TASK";
                     };
                 };
             };

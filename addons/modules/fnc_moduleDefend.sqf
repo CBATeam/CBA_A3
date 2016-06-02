@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     Logic Parameters (Must be passed associated with Object using "setVariable")
-    - Location Type (Scalar)
+    - Location Type (String)
         setVariable ["defendLocType", value]
 
 Optional:
@@ -33,9 +33,9 @@ Author:
 
 #include "script_component.hpp"
 
-private [
-    "_logic",
-    "_groups",
+params [
+    ["_logic",objNull,[objNull]],
+    ["_groups",[],[[]]],
     "_localGroups",
     "_defendPos",
     "_defendLocType",
@@ -48,7 +48,6 @@ private [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_groups = param [1,[],[[]]];
 _localGroups = [];
 
 {
@@ -57,17 +56,17 @@ _localGroups = [];
         _localGroups pushBack _x;
     };
 } forEach _groups;
-if (count _localGroups == 0) exitWith {};
+
+if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_logic = param [0];
 _defendLocType = _logic getVariable "defendLocType";
 _defendPos = _logic getVariable "defendPosition";
 _defendSetPos = false;
 
 // Parse defend position from string
 _defendPos = [_defendLocType, _defendPos] call CBA_fnc_getStringPos;
-if (_defendPos isEqualTo 0) then {_defendSetPos = true;};
+if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol
 _canPatrol = _logic getVariable "canPatrol";

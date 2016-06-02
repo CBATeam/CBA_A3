@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     Logic Parameters (Must be passed associated with Object using "setVariable")
-    - Location Type (Scalar)
+    - Location Type (String)
         setVariable ["patrolLocType", value]
     - Patrol Radius (Scalar)
         setVariable ["patrolRadius", value]
@@ -50,9 +50,9 @@ Author:
 
 #include "script_component.hpp"
 
-private [
-    "_logic",
-    "_groups",
+params [
+    ["_logic",objNull,[objNull]],
+    ["_groups",[],[[]]],
     "_localGroups",
     "_patrolPos",
     "_patrolRadius",
@@ -69,7 +69,6 @@ private [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_groups = param [1,[],[[]]];
 _localGroups = [];
 
 {
@@ -78,21 +77,21 @@ _localGroups = [];
         _localGroups pushBack _x;
     };
 } forEach _groups;
-if (count _localGroups == 0) exitWith {};
+
+if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_logic = param [0];
 _patrolLocType = _logic getVariable "patrolLocType";
 _patrolPos = _logic getVariable "patrolPosition";
 _patrolSetPos = false;
 
 // Parse patrol position from string
 _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getStringPos;
-if (_patrolPos isEqualTo 0) then {_patrolSetPos = true;};
+if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos
 _timeout = _logic getVariable "timeout";
-_timeout = [3,_timeout] call CBA_fnc_getStringPos;
+_timeout = ["ARRAY",_timeout] call CBA_fnc_getStringPos;
 
 // Define remaining variables and command local group leaders to patrol area
 _patrolRadius = _logic getVariable "patrolRadius";

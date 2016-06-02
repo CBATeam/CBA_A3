@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     Logic Parameters (Must be passed associated with Object using "setVariable")
-    - Location Type (Scalar)
+    - Location Type (String)
         setVariable ["attackLocType", value]
     
     Group Parameter
@@ -34,12 +34,19 @@ Author:
 
 #include "script_component.hpp"
 
-private ["_groups","_localGroups","_logic","_attackLocType","_attackPos","_searchRadius"];
+params [
+    ["_logic",objNull,[objNull]],
+    ["_groups",[],[[]]],
+    "_localGroups",
+    "_logic",
+    "_attackLocType",
+    "_attackPos",
+    "_searchRadius"
+];
 
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_groups = param [1,[],[[]]];
 _localGroups = [];
 
 {
@@ -48,16 +55,16 @@ _localGroups = [];
         _localGroups pushBack _x;
     };
 } forEach _groups;
-if (count _localGroups == 0) exitWith {};
+
+if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_logic = param [0];
 _attackLocType = _logic getVariable "attackLocType";
 _attackPos = _logic getVariable "attackPosition";
 
 // Parse attack position from string
 _attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
-if (_attackPos isEqualTo 0) then {_attackPos = getPos _logic;};
+if (isNil "_attackPos") then {_attackPos = getPos _logic;};
 
 // Set attack for local units
 _searchRadius = _logic getVariable "searchRadius";
