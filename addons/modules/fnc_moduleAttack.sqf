@@ -59,15 +59,15 @@ _localGroups = [];
 if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_attackLocType = _logic getVariable "attackLocType";
-_attackPos = _logic getVariable "attackPosition";
+_attackLocType = _logic getVariable ["attackLocType",""];
+_attackPos = _logic getVariable ["attackPosition",objNull];
 
 // Parse attack position from string
 _attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
 if (isNil "_attackPos") then {_attackPos = getPos _logic;};
 
 // Set attack for local units
-_searchRadius = _logic getVariable "searchRadius";
+_searchRadius = _logic getVariable ["searchRadius",0];
 
 // Assign attack to group leaders
 {

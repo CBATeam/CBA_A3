@@ -81,8 +81,8 @@ _localGroups = [];
 if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_patrolLocType = _logic getVariable "patrolLocType";
-_patrolPos = _logic getVariable "patrolPosition";
+_patrolLocType = _logic getVariable ["patrolLocType",""];
+_patrolPos = _logic getVariable ["patrolPosition",objNull];
 _patrolSetPos = false;
 
 // Parse patrol position from string
@@ -90,18 +90,18 @@ _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getStringPos;
 if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos
-_timeout = _logic getVariable "timeout";
+_timeout = _logic getVariable ["timeout","[1,5,10]";
 _timeout = ["ARRAY",_timeout] call CBA_fnc_getStringPos;
 
 // Define remaining variables and command local group leaders to patrol area
-_patrolRadius = _logic getVariable "patrolRadius";
-_waypointCount = _logic getVariable "waypointCount";
-_waypointType = _logic getVariable "waypointType";
-_behaviour = _logic getVariable "behaviour";
-_combatMode = _logic getVariable "combatMode";
-_speedMode = _logic getVariable "speedMode";
-_formation = _logic getVariable "formation";
-_codeToRun = _logic getVariable "executableCode";
+_patrolRadius = _logic getVariable ["patrolRadius",25];
+_waypointCount = _logic getVariable ["waypointCount",4];
+_waypointType = _logic getVariable ["waypointType","MOVE"];
+_behaviour = _logic getVariable ["behaviour","CARELESS"];
+_combatMode = _logic getVariable ["combatMode","YELLOW"];
+_speedMode = _logic getVariable ["speedMode","LIMITED"];
+_formation = _logic getVariable ["formation","COLUMN"];
+_codeToRun = _logic getVariable ["executableCode",""];
 {
     if (_patrolSetPos) then {_patrolPos = getPos _x;};
     [
