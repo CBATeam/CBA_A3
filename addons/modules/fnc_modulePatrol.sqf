@@ -48,7 +48,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//SCRIPT(modulePatrol);
+#include "script_component.hpp"
 
 private [
     "_logic",

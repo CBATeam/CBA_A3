@@ -5,7 +5,8 @@ class CfgPatches {
         units[] = {"CBA_ModuleAttack","CBA_ModuleDefend","CBA_ModulePatrol"};
         requiredVersion = 0.1;
         requiredAddons[] = {"A3_Modules_F"};
-        //author[] = {"WiredTiger"};
+        author = "$STR_CBA_Author";
+        authors[] = {"WiredTiger"};
         authorUrl = "";
     };
 };

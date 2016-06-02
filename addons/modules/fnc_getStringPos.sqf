@@ -28,7 +28,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//SCRIPT(getStringPos);
+#include "script_component.hpp"
 
 params [
     ["_type",0],

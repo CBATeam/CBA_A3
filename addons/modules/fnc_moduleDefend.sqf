@@ -31,7 +31,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//SCRIPT(moduleDefend);
+#include "script_component.hpp"
 
 private [
     "_logic",

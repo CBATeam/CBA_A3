@@ -32,8 +32,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-//#include "script_component.hpp"
-//SCRIPT(moduleAttack);
+#include "script_component.hpp"
 
 private ["_groups","_localGroups","_logic","_attackLocType","_attackPos","_searchRadius"];
 
