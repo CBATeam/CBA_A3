@@ -90,7 +90,7 @@ _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getStringPos;
 if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos
-_timeout = _logic getVariable ["timeout","[1,5,10]";
+_timeout = _logic getVariable ["timeout","[1,5,10]"];
 _timeout = ["ARRAY",_timeout] call CBA_fnc_getStringPos;
 
 // Define remaining variables and command local group leaders to patrol area
