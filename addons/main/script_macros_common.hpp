@@ -535,7 +535,7 @@ Description:
     resulting array to the original
 
 Parameters:
-    ARR - Array to be modified
+    ARRAY - Array to be modified
     CODE - Code that'll be applied to each element of the array.
 
 Example:
@@ -556,8 +556,8 @@ Description:
     to the original
 
 Parameters:
-    ARR - Array to be filtered
-    CODE - Condition to pick elements.
+    ARRAY - Array to be filtered
+    CODE - Condition to pick elements
 
 Example:
     (begin example)
@@ -576,7 +576,7 @@ Description:
     Removes duplicate values in given array
 
 Parameters:
-    ARRAY0 - The array to be modified
+    ARRAY - The array to be modified
 
 Example:
     (begin example)
