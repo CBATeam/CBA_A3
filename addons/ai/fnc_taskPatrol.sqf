@@ -6,10 +6,10 @@ Description:
 
 Parameters:
     - Group (Group or Object)
-
-Optional:
     - Position (XYZ, Object, Location or Group)
     - Radius (Scalar)
+
+Optional:    
     - Waypoint Count (Scalar)
     - Waypoint Type (String)
     - Behaviour (String)
