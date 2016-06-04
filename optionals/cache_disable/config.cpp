@@ -7,7 +7,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_Extended_EventHandlers", "CBA_Main"};
         version = VERSION;
-        author[] = {"Sickboy"};
+        author = "$STR_CBA_Author";
+        authors[] = {"Sickboy"};
         authorUrl = "http://dev-heaven.net/projects/cca";
     };
 };
