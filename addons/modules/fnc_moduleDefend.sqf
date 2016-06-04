@@ -1,16 +1,17 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_moduleAttack
+Function: CBA_fnc_moduleDefend
 
 Description:
     A function for commanding a group to defend a location with information
     parsed from a module.
 
 Parameters:
+    - Group Leader(s) (Array)
+
+Optional:
     Logic Parameters (Must be passed associated with Object using "setVariable")
     - Location Type (String)
         setVariable ["defendLocType", value]
-
-Optional:
     - Defend Position (XYZ, Object, Location, Group, Marker, or Task)
         setVariable ["defendPosition", value]
     - Building Threshold (Scalar)

@@ -1,14 +1,19 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_moduleAttack
+Function: CBA_fnc_modulePatrol
 
 Description:
     A function for commanding a group to patrol a location with information
     parsed from a module.
 
 Parameters:
+    - Group Leader(s) (Array)
+
+Optional:
     Logic Parameters (Must be passed associated with Object using "setVariable")
     - Location Type (String)
         setVariable ["patrolLocType", value]
+    - Patrol Center (XYZ, Object, Location, Marker, or Task)
+        setVariable ["patrolPosition", value]
     - Patrol Radius (Scalar)
         setVariable ["patrolRadius", value]
     - Waypoint Count (Scalar)
@@ -23,17 +28,10 @@ Parameters:
         setVariable ["speedMode", value]
     - Formation (String)
         setVariable ["formation", value]
-    - Timeout at each waypoint (Array in String "[Min,Med,Max]")
-        setVariable ["timeout", value]
-    
-    Group Parameter
-    - Group Leader(s) (Array)
-
-Optional:
-    - Patrol Center (XYZ, Object, Location, Marker, or Task)
-        setVariable ["patrolPosition", value]
     - Code to Execute at Each Waypoint (String)
         setVariable ["executableCode", value]
+    - Timeout at each waypoint (Array in String "[Min,Med,Max]")
+        setVariable ["timeout", value]
 
 Example:
     (begin example)
@@ -90,8 +88,7 @@ _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getStringPos;
 if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos
-_timeout = _logic getVariable ["timeout","[1,5,10]"];
-_timeout = ["ARRAY",_timeout] call CBA_fnc_getStringPos;
+_timeout = [_logic getVariable ["timeout","[1,5,10]"]] call BIS_fnc_parseNumber;
 
 // Define remaining variables and command local group leaders to patrol area
 _patrolRadius = _logic getVariable ["patrolRadius",25];
