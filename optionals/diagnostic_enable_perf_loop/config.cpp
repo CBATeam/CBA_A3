@@ -15,7 +15,8 @@ class CfgPatches
 		requiredVersion = 1.02;
 		requiredAddons[] = {"CBA_common","CBA_diagnostic"};
 		version = "0.4.1.101";
-		author[] = {"Spooner","Sickboy"};
+		author = "$STR_CBA_Author";
+		authors[] = {"Spooner","Sickboy"};
 		authorUrl = "http://dev-heaven.net/projects/cca";
 	};
 };
