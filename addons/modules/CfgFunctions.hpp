@@ -29,7 +29,7 @@ class CfgFunctions
             // CBA_fnc_modulePatrol
             class modulePatrol
             {
-                description = "";
+                description = "A function used to set a group to patrol a position through a module.";
                 file = "\x\cba\addons\modules\fnc_modulePatrol.sqf";
             };
         };

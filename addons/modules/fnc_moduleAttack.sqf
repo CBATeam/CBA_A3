@@ -6,10 +6,11 @@ Description:
     parsed from a module.
 
 Parameters:
+    - Logic (Object)
     - Group Leader(s) (Array)
 
 Optional:
-Logic Parameters (Must be passed associated with Object using "setVariable")
+    Logic Parameters (Must be passed associated with Object using "setVariable")
     - Location Type (String)
         setVariable ["attackLocType", value]
     - Attack Position (XYZ, Object, Location, Group, Marker, or Task)

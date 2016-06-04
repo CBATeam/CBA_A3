@@ -6,6 +6,7 @@ Description:
     parsed from a module.
 
 Parameters:
+    - Logic (Object)
     - Group Leader(s) (Array)
 
 Optional:
