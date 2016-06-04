@@ -529,6 +529,61 @@ Author:
 #define PUSH(var1,var2) (var1) pushBack (var2)
 
 /* -------------------------------------------
+Macro: MAP()
+
+Parameters:
+    ARR - Array to be modified
+    CODE - Code that'll be applied to each element of the array.
+
+Example:
+    (begin example)
+        _array = [1, 2, 3, 4, 3, 8];
+        MAP(_array,_x+1);
+        // _array is now [2, 3, 4, 5, 4, 9];
+    (end)
+Author:
+    654wak654
+------------------------------------------- */
+#define MAP(ARR,CODE) ARR = ARR apply {CODE}
+
+/* -------------------------------------------
+Macro: FILTER()
+
+Parameters:
+    ARR - Array to be filtered
+    CODE - Condition to pick elements.
+
+Example:
+    (begin example)
+        _array = [1, 2, 3, 4, 3, 8];
+        FILTER(_array,_x % 2 == 0)
+        // _array is now [2, 4, 8];
+    (end)
+Author:
+    Commy2
+------------------------------------------- */
+#define FILTER(ARR,CODE) ARR = ARR select {CODE}
+
+/* -------------------------------------------
+Macro: UNIQUE()
+
+Parameters:
+    ARRAY0 - The array to be modified
+    ARRAY1 - The array to find intersections
+
+Example:
+    (begin example)
+        _someArray = [1, 2, 3, 4, 5, 5];
+        _anotherArray = [4, 5, 6, 7];
+        UNIQUE(_someArray,_anotherArray);
+        // _someArray is now [4, 5]
+    (end)
+Author:
+    Commy2
+------------------------------------------- */
+#define UNIQUE(ARG0,ARG1) ARG0 = ARG0 arrayIntersect ARG1
+
+/* -------------------------------------------
 Macro: ISNILS()
 
 Description:
