@@ -4,7 +4,7 @@ class CfgPatches {
     class cba_ui {
         units[] = {};
         requiredVersion = 1;
-        requiredAddons[] = { "CBA_common", "CBA_arrays" };
+        requiredAddons[] = { "CBA_common", "CBA_arrays", "A3_Ui_F" };
         version = VERSION;
         author = "$STR_CBA_Author";
         authors[] = {"Dr Eyeball"};
