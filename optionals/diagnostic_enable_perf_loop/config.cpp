@@ -9,22 +9,22 @@
 //Class cba_diagnostic_enable_perf_loop : config.bin{
 class CfgPatches
 {
-	class cba_diagnostic_enable_perf_loop
-	{
-		units[] = {};
-		requiredVersion = 1.02;
-		requiredAddons[] = {"CBA_common","CBA_diagnostic"};
-		version = "0.4.1.101";
-		author = "$STR_CBA_Author";
-		authors[] = {"Spooner","Sickboy"};
-		authorUrl = "http://dev-heaven.net/projects/cca";
-	};
+    class cba_diagnostic_enable_perf_loop
+    {
+        units[] = {};
+        requiredVersion = 1.02;
+        requiredAddons[] = {"CBA_common","CBA_diagnostic"};
+        version = "0.4.1.101";
+        author = "$STR_CBA_Author";
+        authors[] = {"Spooner","Sickboy"};
+        authorUrl = "http://dev-heaven.net/projects/cca";
+    };
 };
 class Extended_postInit_EventHandlers
 {
-	class cba_diagnostic_enable_perf_loop
-	{
-		init = "[] spawn cba_diagnostic_fnc_perf_loop";
-	};
+    class cba_diagnostic_enable_perf_loop
+    {
+        init = "[] spawn cba_diagnostic_fnc_perf_loop";
+    };
 };
 //};

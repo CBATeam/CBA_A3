@@ -2,17 +2,17 @@
 
 class CfgPatches
 {
-	class ADDON
-	{
-		units[] = {};
-		weapons[] = {};
-		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = {"cba_jr"};
-		version = VERSION;
-		author = "$STR_CBA_Author";
-		authors[] = {"Robalo"};
+    class ADDON
+    {
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {"cba_jr"};
+        version = VERSION;
+        author = "$STR_CBA_Author";
+        authors[] = {"Robalo"};
         authorUrl = "https://github.com/CBATeam/CBA_A3";
-	};
+    };
 };
 
 class asdg_OpticRail1913;
