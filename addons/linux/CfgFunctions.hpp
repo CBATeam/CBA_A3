@@ -23,6 +23,10 @@ class CfgFunctions {
             F_FILEPATH(common,addBinocularMagazine);
         };
 
+        class Ui {
+            F_FILEPATH(common,viewDir);
+        };
+
         class Events {
             F_FILEPATH(events,addPlayerEventHandler);
             F_FILEPATH(events,addKeyHandler);
