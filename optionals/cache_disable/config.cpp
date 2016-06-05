@@ -2,14 +2,15 @@
 
 class CfgPatches {
     class ADDON {
+        author = "$STR_CBA_Author";
+        name = ECSTRING(Optional,Component);
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_Extended_EventHandlers", "CBA_Main"};
         version = VERSION;
-        author = "$STR_CBA_Author";
         authors[] = {"Sickboy"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
     };
 };
 

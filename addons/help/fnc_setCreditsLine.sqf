@@ -49,6 +49,10 @@ if (isNil "_entry") exitWith {};
 // addon name
 private _name = configName _entry;
 
+if (isText (_entry >> "name")) then {
+    _name = getText (_entry >> "name");
+};
+
 if (!CBA_MonochromeCredits) then {
     _name = format ["<t color='#99cccc'>%1</t>", _name];
 };
