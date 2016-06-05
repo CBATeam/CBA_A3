@@ -6,10 +6,10 @@ Description:
 
 Parameters:
     - Group (Group or Object)
+
+Optional:
     - Position (XYZ, Object, Location or Group)
     - Radius (Scalar)
-
-Optional:    
     - Waypoint Count (Scalar)
     - Waypoint Type (String)
     - Behaviour (String)
@@ -47,6 +47,11 @@ _position = _position call CBA_fnc_getPos;
 [_group] call CBA_fnc_clearWaypoints;
 
 private _this =+ _this;
+switch (count _this) do {
+    case 1 : {_this append [_position, _radius]};
+    case 2 : {_this pushback _radius};
+    default {};
+};
 if (count _this > 3) then {
     _this deleteAt 3;
 };
