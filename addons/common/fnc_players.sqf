@@ -21,4 +21,4 @@ Author:
 #include "script_component.hpp"
 SCRIPT(players);
 
-(allUnits + allDead) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}
+[allUnits + allDead, {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}] call BIS_fnc_conditionalSelect
