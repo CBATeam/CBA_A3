@@ -19,7 +19,7 @@
 #define _gapH ((_CH/2-2*_BH)*2/3) // Button "height" vertical spacing
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 #define _imagePathCA(TOKEN) QUOTE(\ca\ui\data\TOKEN.paa)
-#define _imagePathUI(TOKEN) QUOTE(\a3\ui_f\data\gui\RscCommon\RscShortcutButtonMain\TOKEN.paa)
+#define _imagePathUI(TOKEN) QUOTE(\a3\ui_f\data\GUI\RscCommon\RscShortcutButtonMain\TOKEN.paa)
 #define _gapWLevel1 (0.01*safeZoneW) // extra indentation required for side buttons on row 1 and 4 to reach circle edge
 #define _gapWLevel2 (0.01*safeZoneW) // extra indentation required for side buttons on row 2 and 3 to reach circle edge
 #define _gapWRight (-0.015*safeZoneW-_gapW) // extra indentation required for all right side buttons to reach circle edge

@@ -13,20 +13,20 @@ class asdg_SlotInfo { // Base class
 class asdg_OpticRail: asdg_SlotInfo { // Base optic rail class
     linkProxy = "\a3\data_f\proxies\weapon_slots\TOP";
     displayName = "$STR_A3_CowsSlot0";
-    iconPicture = "\a3\weapons_f\data\ui\attachment_top";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_top";
     iconPinpoint = "Bottom";
 };
 
 class asdg_MuzzleSlot: asdg_SlotInfo { // Base muzzle slot
     linkProxy = "\a3\data_f\proxies\weapon_slots\MUZZLE";
     displayName = "$str_a3_cfgweapons_abr_base_f_weaponslotsinfo_muzzleslot0";
-    iconPicture = "\a3\weapons_f\data\ui\attachment_muzzle";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_muzzle";
 };
 
 class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
     linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
     displayName = "$STR_A3_PointerSlot0";
-    iconPicture = "\a3\weapons_f\data\ui\attachment_side";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_side";
     class compatibleItems {
         acc_flashlight = 1;
         acc_pointer_IR = 1;
