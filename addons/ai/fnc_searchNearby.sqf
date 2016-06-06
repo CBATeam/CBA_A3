@@ -21,7 +21,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_group"];
+
 _group = _group call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 private _building = nearestBuilding (leader _group);
 if ((leader _group) distanceSqr _building > 250e3) exitwith {};
