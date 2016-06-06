@@ -49,7 +49,7 @@ _position = _position call CBA_fnc_getPos;
 private _this =+ _this;
 switch (count _this) do {
     case 1 : {_this append [_position, _radius]};
-    case 2 : {_this pushback _radius};
+    case 2 : {_this pushBack _radius};
     default {};
 };
 if (count _this > 3) then {
