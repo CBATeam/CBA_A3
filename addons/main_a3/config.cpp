@@ -2,16 +2,15 @@
 
 class CfgPatches {
     class ADDON {
+        author = "$STR_CBA_Author";
+        name = ECSTRING(main,component);
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "CBA_Main"
-        };
+        requiredAddons[] = {"CBA_Main"};
         VERSION_CONFIG;
-        author = "$STR_CBA_Author";
         authors[] = {};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 

@@ -1,30 +1,20 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: Produced from mikero's Dos Tools Dll version 5.16
-//Produced on Mon Jun 07 03:11:11 2010 : Created on Mon Jun 07 03:11:11 2010
-//http://dev-heaven.net/projects/list_files/mikero-pbodll
-////////////////////////////////////////////////////////////////////
+#include "script_component.hpp"
 
-#define _ARMA_
-
-//Class cba_diagnostic_enable_perf_loop : config.bin{
-class CfgPatches
-{
-    class cba_diagnostic_enable_perf_loop
-    {
+class CfgPatches {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = ECSTRING(Optional,Component);
+        url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = 1.02;
         requiredAddons[] = {"CBA_common","CBA_diagnostic"};
         version = "0.4.1.101";
-        author = "$STR_CBA_Author";
         authors[] = {"Spooner","Sickboy"};
-        authorUrl = "http://dev-heaven.net/projects/cca";
     };
 };
-class Extended_postInit_EventHandlers
-{
-    class cba_diagnostic_enable_perf_loop
-    {
+
+class Extended_PostInit_EventHandlers {
+    class ADDON {
         init = "[] spawn cba_diagnostic_fnc_perf_loop";
     };
 };
-//};

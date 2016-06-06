@@ -21,7 +21,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_group"];
+
 _group = _group call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 private _building = nearestBuilding (leader _group);
 if ((leader _group) distanceSqr _building > 250e3) exitwith {};
@@ -34,7 +36,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
     _group lockWP true;
     private _wp = _group addWaypoint [getPos _leader, 0, currentWaypoint _group];
     private _cond = "({unitReady _x || !(alive _x)} count thisList) == count thisList";
-    private _comp = format ["this setFormation %1; this setBehaviour %2; deleteWaypoint [group this, currentWaypoint (group this)];",formation _group,behaviour _leader];
+    private _comp = format ["this setFormation '%1'; this setBehaviour '%2'; deleteWaypoint [group this, currentWaypoint (group this)];",formation _group,behaviour _leader];
     _wp setWaypointStatements [_cond,_comp];
 
     // Prepare group to search

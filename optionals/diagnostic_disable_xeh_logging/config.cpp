@@ -11,6 +11,9 @@
 
 class CfgPatches {
     class Disable_XEH_Logging {
+        author = "$STR_CBA_Author";
+        name = "$STR_CBA_Optional_Component";
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = 0.1;
