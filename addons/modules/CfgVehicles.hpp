@@ -7,7 +7,7 @@ class CfgVehicles {
 
     class CBA_ModuleAttack: Module_F {
         scope = 2;
-        displayName = CSTRING(Attack); // stringtable
+        displayName = CSTRING(Attack);
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_moduleAttack";
@@ -20,54 +20,71 @@ class CfgVehicles {
 
         class Arguments: ArgumentsBaseUnits {
             class attackLocType{
-                displayName = CSTRING(AttackLocType); // stringtable
-                description = CSTRING(AttackLocType_Desc); // stringtable
+                displayName = CSTRING(AttackLocType);
+                description = CSTRING(AttackLocType_Desc);
                 typeName = "STRING";
                 class values {
                     class moduleLoc {
-                        name = CSTRING(ModuleLoc); //stringtable
+                        name = CSTRING(ModuleLoc);
                         value = "";
                         default = "";
                     };
                     class objectLoc {
-                        name = CSTRING(ObjectLoc); //stringtable
+                        name = CSTRING(ObjectLoc);
                         value = "OBJECT";
                     };
                     class groupLoc {
-                        name = CSTRING(GroupLoc); //stringtable
+                        name = CSTRING(GroupLoc);
                         value = "GROUP";
                     };
                     class arrayLoc {
-                        name = CSTRING(ArrayLoc); //stringtable
+                        name = CSTRING(ArrayLoc);
                         value = "ARRAY";
                     };
                     class markerLoc {
-                        name = CSTRING(MarkerLoc); //stringtable
+                        name = CSTRING(MarkerLoc);
                         value = "MARKER";
                     };
                     class taskLoc {
-                        name = CSTRING(TaskLoc); //stringtable
+                        name = CSTRING(TaskLoc);
                         value = "TASK";
                     };
                 };
             };
 
             class attackPosition {
-                displayName = CSTRING(AttackPosition); //stringtable
-                description = CSTRING(AttackPosition_Desc); //stringtable
+                displayName = CSTRING(AttackPosition);
+                description = CSTRING(AttackPosition_Desc);
                 typeName = "STRING";
             };
 
             class searchRadius {
-                displayName = CSTRING(SearchRadius); //stringtable
-                description = CSTRING(SearchRadius_Desc); //stringtable
+                displayName = CSTRING(SearchRadius);
+                description = CSTRING(SearchRadius_Desc);
                 typeName = "NUMBER";
                 defaultValue = 0;
+            };
+            
+            class allowOverride {
+                displayName = CSTRING(AllowOverride);
+                description = CSTRING(AllowOverride_Desc);
+                typeName = "STRING";
+                class values {
+                    class no {
+                        name = "$STR_lib_info_no";
+                        value = "no";
+                        default = "";
+                    };
+                    class yes {
+                        name = "$STR_lib_info_yes";
+                        value = "yes";
+                    };
+                };
             };
         };
 
         class ModuleDescription: ModuleDescription {
-            description = CSTRING(AttackModuleDescription); //stringtable
+            description = CSTRING(AttackModuleDescription);
             sync[] = {"LocationArea_F"};
 
             class LocationArea_F {
@@ -81,10 +98,10 @@ class CfgVehicles {
 
     class CBA_ModuleDefend: Module_F {
         scope = 2;
-        displayName = CSTRING(Defend); //stringtable
+        displayName = CSTRING(Defend);
         vehicleClass = "Modules";
         category = "CBA_Modules";
-        function = "CBA_fnc_moduleDefend"; //stringtable
+        function = "CBA_fnc_moduleDefend";
         functionPriority = 1;
         isGlobal = 2;
         isTriggerActivated = 1;
@@ -94,54 +111,54 @@ class CfgVehicles {
     
         class Arguments: ArgumentsBaseUnits {
             class defendLocType {
-                displayName = CSTRING(DefendPositionType); //stringtable
-                description = CSTRING(DefendPositionType_Desc); //stringtable
+                displayName = CSTRING(DefendPositionType);
+                description = CSTRING(DefendPositionType_Desc);
                 typeName = "STRING";
                 class values {
                     class setLoc {
-                        name = CSTRING(SetLoc); //stringtable
+                        name = CSTRING(SetLoc);
                         value = "";
                         default = "";
                     };
                     class objectLoc {
-                        name = CSTRING(ObjectLoc); //stringtable
+                        name = CSTRING(ObjectLoc);
                         value = "OBJECT";
                     };
                     class groupLoc {
-                        name = CSTRING(GroupLoc); //stringtable
+                        name = CSTRING(GroupLoc);
                         value = "GROUP";
                     };
                     class arrayLoc {
-                        name = CSTRING(ArrayLoc); //stringtable
+                        name = CSTRING(ArrayLoc);
                         value = "ARRAY";
                     };
                     class markerLoc {
-                        name = CSTRING(MarkerLoc); //stringtable
+                        name = CSTRING(MarkerLoc);
                         value = "MARKER";
                     };
                     class taskLoc {
-                        name = CSTRING(TaskLoc); //stringtable
+                        name = CSTRING(TaskLoc);
                         value = "TASK";
                     };
                 };
             };
     
             class defendPosition {
-                displayName = CSTRING(DefendPosition); //stringtable
-                description = CSTRING(DefendPosition_Desc); //stringtable
+                displayName = CSTRING(DefendPosition);
+                description = CSTRING(DefendPosition_Desc);
                 typeName = "STRING";
             };
     
             class defendRadius {
-                displayName = CSTRING(DefendRadius); //stringtable
-                description = CSTRING(DefendRadius_Desc); //stringtable
+                displayName = CSTRING(DefendRadius);
+                description = CSTRING(DefendRadius_Desc);
                 typeName = "NUMBER";
                 defaultValue = 25;
             };
 
             class threshold {
-                displayName = CSTRING(Threshold); //stringtable
-                description = CSTRING(Threshold_Desc); //stringtable
+                displayName = CSTRING(Threshold);
+                description = CSTRING(Threshold_Desc);
                 typeName = "NUMBER";
                 class values {
                     class two {
@@ -173,8 +190,8 @@ class CfgVehicles {
             };
     
             class canPatrol {
-                displayName = CSTRING(CanPatrol); //stringtable
-                description = CSTRING(CanPatrol_Desc); //stringtable
+                displayName = CSTRING(CanPatrol);
+                description = CSTRING(CanPatrol_Desc);
                 typeName = "BOOL";
                 class values {
                     class yes {
@@ -205,7 +222,7 @@ class CfgVehicles {
     
     class CBA_ModulePatrol: Module_F {
         scope = 2;
-        displayName = CSTRING(Patrol); //stringtable
+        displayName = CSTRING(Patrol);
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_modulePatrol";
@@ -218,219 +235,219 @@ class CfgVehicles {
         
         class Arguments: ArgumentsBaseUnits {
             class patrolLocType {
-                displayName = CSTRING(PatrolCenterType); //stringtable
-                description = CSTRING(PatrolCenterType_Desc); //stringtable
+                displayName = CSTRING(PatrolCenterType);
+                description = CSTRING(PatrolCenterType_Desc);
                 typeName = "STRING";
                 class values {
                     class setLoc {
-                        name = CSTRING(SetLoc); //stringtable
+                        name = CSTRING(SetLoc);
                         value = "";
                         default = "";
                     };
                     class objectLoc {
-                        name = CSTRING(ObjectLoc); //stringtable
+                        name = CSTRING(ObjectLoc);
                         value = "OBJECT";
                     };
                     class groupLoc {
-                        name = CSTRING(GroupLoc); //stringtable
+                        name = CSTRING(GroupLoc);
                         value = "GROUP";
                     };
                     class arrayLoc {
-                        name = CSTRING(ArrayLoc); //stringtable
+                        name = CSTRING(ArrayLoc);
                         value = "ARRAY";
                     };
                     class markerLoc {
-                        name = CSTRING(MarkerLoc); //stringtable
+                        name = CSTRING(MarkerLoc);
                         value = "MARKER";
                     };
                     class taskLoc {
-                        name = CSTRING(TaskLoc); //stringtable
+                        name = CSTRING(TaskLoc);
                         value = "TASK";
                     };
                 };
             };
             
             class patrolPosition {
-                displayName = CSTRING(PatrolPosition); //stringtable
-                description = CSTRING(PatrolPosition_Desc); //stringtable
+                displayName = CSTRING(PatrolPosition);
+                description = CSTRING(PatrolPosition_Desc);
                 typeName = "STRING";
             };
             
             class patrolRadius {
-                displayName = CSTRING(PatrolRadius); //stringtable
-                description = CSTRING(PatrolRadius_Desc); //stringtable
+                displayName = CSTRING(PatrolRadius);
+                description = CSTRING(PatrolRadius_Desc);
                 typeName = "NUMBER";
                 defaultValue = 25;
             };
 
             class waypointCount {
-                displayName = CSTRING(WaypointCount); //stringtable
-                description = CSTRING(WaypointCount_Desc); //stringtable
+                displayName = CSTRING(WaypointCount);
+                description = CSTRING(WaypointCount_Desc);
                 typeName = "NUMBER";
                 defaultValue = 4;
             };
             
             class waypointType {
-                displayName = CSTRING(WaypointType); //stringtable
-                description = CSTRING(WaypointType_Desc); //stringtable
+                displayName = CSTRING(WaypointType);
+                description = CSTRING(WaypointType_Desc);
                 typeName = "STRING";
                 class values {
                     class move {
-                        name = CSTRING(Move); //stringtable
+                        name = CSTRING(Move);
                         value = "MOVE";
                         default = "";
                     };
                     class sad {
-                        name = CSTRING(SAD); //stringtable
+                        name = CSTRING(SAD);
                         value = "SAD";
                     };
                     class loiter {
-                        name = CSTRING(Loiter); //stringtable
+                        name = CSTRING(Loiter);
                         value = "LOITER";
                     };
                 };
             };
             
             class behaviour {
-                displayName = CSTRING(Behaviour); //stringtable
-                description = CSTRING(Behaviour_Desc); //stringtable
+                displayName = CSTRING(Behaviour);
+                description = CSTRING(Behaviour_Desc);
                 typeName = "STRING";
                 class values {
                     class careless {
-                        name = CSTRING(Careless); //stringtable
+                        name = CSTRING(Careless);
                         value = "CARELESS";
                         default = "";
                     };
                     class safe {
-                        name = CSTRING(Safe); //stringtable
+                        name = CSTRING(Safe);
                         value = "SAFE";
                     };
                     class aware {
-                        name = CSTRING(Aware); //stringtable
+                        name = CSTRING(Aware);
                         value = "AWARE";
                     };
                     class combat {
-                        name = CSTRING(Combat); //stringtable
+                        name = CSTRING(Combat);
                         value = "COMBAT";
                     };
                     class stealth {
-                        name = CSTRING(Stealth); //stringtable
+                        name = CSTRING(Stealth);
                         value = "STEALTH";
                     };
                 };
             };
             
             class combatMode {
-                displayName = CSTRING(CombatMode); //stringtable
-                description = CSTRING(CombatMode_Desc); //stringtable
+                displayName = CSTRING(CombatMode);
+                description = CSTRING(CombatMode_Desc);
                 typeName = "STRING";
                 class values {
                     class yellow {
-                        name = CSTRING(CombatYellow); //stringtable
+                        name = CSTRING(CombatYellow);
                         value = "YELLOW";
                         default = "";
                     };
                     class blue {
-                        name = CSTRING(CombatBlue); //stringtable
+                        name = CSTRING(CombatBlue);
                         value = "BLUE";
                     };
                     class green {
-                        name = CSTRING(CombatGreen); //stringtable
+                        name = CSTRING(CombatGreen);
                         value = "GREEN";
                     };
                     class white {
-                        name = CSTRING(CombatWhite); //stringtable
+                        name = CSTRING(CombatWhite);
                         value = "WHITE";
                     };
                     class red {
-                        name = CSTRING(CombatRed); //stringtable
+                        name = CSTRING(CombatRed);
                         value = "RED";
                     };
                 };
             };
             
             class speedMode {
-                displayName = CSTRING(SpeedMode); //stringtable
-                description = CSTRING(SpeedMode_Desc); //stringtable
+                displayName = CSTRING(SpeedMode);
+                description = CSTRING(SpeedMode_Desc);
                 typeName = "STRING";
                 class values {
                     class limited {
-                        name = CSTRING(SpeedLimited); //stringtable
+                        name = CSTRING(SpeedLimited);
                         value = "LIMITED";
                         default = "";
                     };
                     class normal {
-                        name = CSTRING(SpeedNormal); //stringtable
+                        name = CSTRING(SpeedNormal);
                         value = "NORMAL";
                     };
                     class full {
-                        name = CSTRING(SpeedFull); //stringtable
+                        name = CSTRING(SpeedFull);
                         value = "FULL";
                     };
                 };
             };
             
             class formation {
-                displayName = CSTRING(Formation); //stringtable
-                description = CSTRING(Formation_Desc); //stringtable
+                displayName = CSTRING(Formation);
+                description = CSTRING(Formation_Desc);
                 typeName = "STRING";
                 class values {
                     class column {
-                        name = CSTRING(Column); //stringtable
+                        name = CSTRING(Column);
                         value = "COLUMN";
                         default = "";
                     };
                     class stagColumn {
-                        name = CSTRING(StagColumn); //stringtable
+                        name = CSTRING(StagColumn);
                         value = "STAG COLUMN";
                     };
                     class wedge {
-                        name = CSTRING(Wedge); //stringtable
+                        name = CSTRING(Wedge);
                         value = "WEDGE";
                     };
                     class echLeft {
-                        name = CSTRING(EchLeft); //stringtable
+                        name = CSTRING(EchLeft);
                         value = "ECH LEFT";
                     };
                     class echRight {
-                        name = CSTRING(EchRight); //stringtable
+                        name = CSTRING(EchRight);
                         value = "ECH RIGHT";
                     };
                     class vee {
-                        name = CSTRING(Vee); //stringtable
+                        name = CSTRING(Vee);
                         value = "VEE";
                     };
                     class line {
-                        name = CSTRING(Line); //stringtable
+                        name = CSTRING(Line);
                         value = "LINE";
                     };
                     class file {
-                        name = CSTRING(File); //stringtable
+                        name = CSTRING(File);
                         value = "FILE";
                     };
                     class diamond {
-                        name = CSTRING(Diamond); //stringtable
+                        name = CSTRING(Diamond);
                         value = "DIAMOND";
                     };
                 };
             };
             
             class executableCode {
-                displayName = CSTRING(ExecutableCode); //stringtable
-                description = CSTRING(ExecutableCode_Desc); //stringtable
+                displayName = CSTRING(ExecutableCode);
+                description = CSTRING(ExecutableCode_Desc);
                 typeName = "STRING";
             };
             
             class timeout {
-                displayName = CSTRING(Timeout); //stringtable
-                description = CSTRING(Timeout_Desc); //stringtable
+                displayName = CSTRING(Timeout);
+                description = CSTRING(Timeout_Desc);
                 typeName = "STRING";
                 defaultValue = "[1,5,10]";
             };
         };
         
         class ModuleDescription: ModuleDescription {
-            description = CSTRING(PatrolModuleDescription); //stringtable
+            description = CSTRING(PatrolModuleDescription);
             sync[] = {"LocationArea_F"};
     
             class LocationArea_F {

@@ -52,6 +52,12 @@
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
         </Key>
+        <Key ID="STR_CBA_Modules_AllowOverride">
+            <English>Allow Override</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AllowOverride_Desc">
+            <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
+        </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
         </Key>

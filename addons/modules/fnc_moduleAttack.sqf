@@ -17,6 +17,8 @@ Optional:
         setVariable ["attackPosition", value]
     - Search Radius (Scalar)
         setVariable ["searchRadius", value]
+    - Allow Override (Bool)
+        setVariable ["allowOverride", value]
 
 Example:
     (begin example)
@@ -40,7 +42,8 @@ params [
     "_logic",
     "_attackLocType",
     "_attackPos",
-    "_searchRadius"
+    "_searchRadius",
+    "_allowOverride"
 ];
 
 // Only server, dedicated, or headless beyond this point
@@ -65,10 +68,12 @@ _attackPos = _logic getVariable ["attackPosition",objNull];
 _attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
 if (isNil "_attackPos") then {_attackPos = getPos _logic;};
 
-// Set attack for local units
+// Set final variables
 _searchRadius = _logic getVariable ["searchRadius",0];
+_allowOverride = _logic getVariable ["allowOverride","no"];
+if (_allowOverride isEqualTo "yes") then {_allowOverride = true;}else{_allowOverride = false;};
 
-// Assign attack to group leaders
+// Set group(s) to attack
 {
-    [_x, _attackPos, _searchRadius] call CBA_fnc_taskAttack;
+    [_x, _attackPos, _searchRadius, _allowOverride] call CBA_fnc_taskAttack;
 } forEach _localGroups;
