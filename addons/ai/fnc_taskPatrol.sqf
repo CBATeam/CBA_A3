@@ -21,7 +21,7 @@ Optional:
 
 Example:
     (begin example)
-    [this, getmarkerpos "objective1"] call CBA_fnc_taskPatrol
+    [this, getmarkerpos "objective1", 50] call CBA_fnc_taskPatrol
     [this, this, 300, 7, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this call CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
     (end)
 
@@ -47,6 +47,11 @@ _position = _position call CBA_fnc_getPos;
 [_group] call CBA_fnc_clearWaypoints;
 
 private _this =+ _this;
+switch (count _this) do {
+    case 1 : {_this append [_position, _radius]};
+    case 2 : {_this pushBack _radius};
+    default {};
+};
 if (count _this > 3) then {
     _this deleteAt 3;
 };
