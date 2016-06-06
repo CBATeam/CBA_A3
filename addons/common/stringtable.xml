@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<Project name="CBA_A3">
+    <Package name="Common">
+        <Key ID="STR_CBA_Common_Component">
+            <English>Community Base Addons - Common Component</English>
+        </Key>
+    </Package>
+</Project>
+
 <Project name="Arma2">
 <Package name="CBA">
 <Container name="STR_DN">

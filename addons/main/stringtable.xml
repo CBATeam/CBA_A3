@@ -5,5 +5,14 @@
             <English>CBA Team</English>
             <German>CBA-Team</German>
         </Key>
+        <Key ID="STR_CBA_URL">
+            <English>https://www.github.com/CBATeam/CBA_A3</English>
+        </Key>
+        <Key ID="STR_CBA_Main_Component">
+            <English>Community Base Addons - Main Component</English>
+        </Key>
+        <Key ID="STR_CBA_Optional_Component">
+            <English>Community Base Addons - Optional Component</English>
+        </Key>
     </Package>
 </Project>

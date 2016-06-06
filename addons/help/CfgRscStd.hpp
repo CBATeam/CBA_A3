@@ -2,14 +2,14 @@
 class RscButton;
 class CBA_Credits_Ver_Btn: RscButton {
     idc = -1; //template
-    colorText[] = {1, 1, 1, 0};
-    colorDisabled[] = {1, 1, 1, 0};
-    colorBackground[] = {1, 1, 1, 0};
-    colorBackgroundDisabled[] = {1, 1, 1, 0};
-    colorBackgroundActive[] = {1, 1, 1, 0};
-    colorShadow[] = {1, 1, 1, 0};
-    colorFocused[] = {1, 1, 1, 0};
-    soundClick[] = {"", 0.1, 1};
+    colorText[] = {1,1,1,0};
+    colorDisabled[] = {1,1,1,0};
+    colorBackground[] = {1,1,1,0};
+    colorBackgroundDisabled[] = {1,1,1,0};
+    colorBackgroundActive[] = {1,1,1,0};
+    colorShadow[] = {1,1,1,0};
+    colorFocused[] = {1,1,1,0};
+    soundClick[] = {"",0.1,1};
     x = -1;
     y = -1;
     w = 0;
@@ -20,7 +20,7 @@ class CBA_Credits_Ver_Btn: RscButton {
 class RscStructuredText;
 class CBA_Credits_Cont: RscStructuredText {
     idc = -1; //template
-    colorBackground[] = { 0, 0, 0, 0 };
+    colorBackground[] = {0,0,0,0};
     __SX(25);
     __SY(23);
     __SW(30);

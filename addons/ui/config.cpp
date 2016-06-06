@@ -1,21 +1,22 @@
 ﻿#include "script_component.hpp"
 
 class CfgPatches {
-    class cba_ui {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = 1;
-        requiredAddons[] = { "CBA_common", "CBA_arrays", "A3_Ui_F" };
+        requiredAddons[] = {"CBA_common","CBA_arrays","A3_Ui_F"};
         version = VERSION;
-        author = "$STR_CBA_Author";
         authors[] = {"Dr Eyeball"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 
 #include "CfgFunctions.hpp"
 
 class Extended_PreInit_EventHandlers {
-    class cba_ui {
+    class ADDON {
         clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
     };
 };
@@ -51,5 +52,3 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
 #include "flexiMenu\data\menu_buttonList.hpp"
 #include "flexiMenu\data\menu_iconRow.hpp"
 #include "flexiMenu\data\menu_popup.hpp"
-
-
