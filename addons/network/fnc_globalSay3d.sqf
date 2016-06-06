@@ -1,8 +1,10 @@
 /*
 Function: CBA_fnc_globalSay3d
 
+DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say3D"] instead.
+
 Description:
-    Says sound on all client computer in 3d
+    Says sound on all client computer in 3D.
 
 Parameters:
     _object - Object that performs Say [Object] can also be _array - [object, targetObject]
@@ -13,13 +15,26 @@ Returns:
 
 Example:
     (begin example)
-        [player, "Alarm01",500] call CBA_fnc_globalSay3d;
+        [player, "Alarm", 500] call CBA_fnc_globalSay3d;
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 */
 #include "script_component.hpp"
-TRACE_1("",_this);
 
-[QGVAR(say3d), _this] call CBA_fnc_globalEvent;
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]]];
+
+if (_objects isEqualType objNull) then {
+    _objects = [_objects];
+};
+
+if (!isNil "_distance") then {
+    _params = [_params, _distance];
+};
+
+{
+    [_x, _params] remoteExecCall ["say3D"];
+} forEach _objects;
+
+nil

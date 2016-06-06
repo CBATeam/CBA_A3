@@ -5,7 +5,7 @@ Description:
     A function used to delete entities
 
 Parameters:
-    Array, Object, Group or Marker
+    _entity to delete. Can be array of entites. <ARRAY, OBJECT, GROUP, LOCATION, MARKER>
 
 Example:
     (begin example)
@@ -17,36 +17,39 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(deleteEntity);
 
-switch (typeName _this) do {
+[_this] params [["_entity", objNull, [objNull, grpNull, locationNull, "", []]]];
+
+switch (typeName _entity) do {
     case "ARRAY" : {
         {
             _x call CBA_fnc_deleteEntity;
-        } foreach _this;
+        } forEach _entity;
     };
     case "OBJECT" : {
-        if (vehicle _this != _this) then {
-            unassignVehicle _this;
-            _this setPosASL [0,0,0];
+        if (vehicle _entity != _entity) then {
+            unassignVehicle _entity;
+            _entity setPosASL [0,0,0];
         } else {
-            if (count ((crew _this) - [_this]) > 0) then {
-                (crew _this) call CBA_fnc_deleteEntity;
+            if ({_x != _entity} count (crew _entity) > 0) then {
+                (crew _entity) call CBA_fnc_deleteEntity;
             };
         };
-        deleteVehicle _this;
+        deleteVehicle _entity;
     };
     case "GROUP" : {
-        (units _this) call CBA_fnc_deleteEntity;
-        {deleteWaypoint _x} foreach (wayPoints _this);
-        deleteGroup _this;
+        (units _entity) call CBA_fnc_deleteEntity;
+        {deleteWaypoint _x} forEach (wayPoints _entity);
+        deleteGroup _entity;
     };
     case "LOCATION" : {
-        deleteLocation _this;
+        deleteLocation _entity;
     };
     case "STRING" : {
-        deleteMarker _this
+        deleteMarker _entity
     };
-    default {deleteVehicle _this};
+    default {};
 };

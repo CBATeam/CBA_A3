@@ -1,5 +1,0 @@
-x\cba\addons\xeh_a3
-prefix=x\cba\addons\xeh_a3
-product=Arma 3
-version=023
-Pbo Type is: Arma

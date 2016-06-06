@@ -2,7 +2,9 @@
 Function: CBA_fnc_sortNestedArray
 
 Description:
-    Used to sort a nested array from lowest to highest using quick sort based on the specified column, which must have numerical data.
+    Used to sort a nested array from lowest to highest using quick sort.
+
+    Sorting is based on the specified column, which must have numerical data.
 
 Parameters:
     _array: array - Nested array to be sorted

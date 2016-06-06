@@ -14,7 +14,6 @@
     // For usage outside CBA
     #define QUOTE(A) #A
     #define GVAR(A) my_##A
-    #define PUSH(A,B) A pushBack B
 */
 
 // temp
@@ -64,7 +63,7 @@ FUNC(lag2) = {
         _objects = [];
         for "_i" from 0 to 100 do {
             _logic = "LOGIC" createVehicleLocal [0, 0, 0];
-            PUSH(_objects,_logic);
+            _objects pushBack _logic;
         };
 };
 
@@ -122,7 +121,7 @@ SLX_XEH_STR spawn {
         waitUntil {time > _nextTime};
         _ar = GVAR(ar); GVAR(ar) = [];
         _log = ["Current", DEFAULT_VALUES];
-        PUSH(GVAR(logs),_log);
+        GVAR(logs) pushBack _log;
         {
             // TODO: Also compare the delta between the previous few entries?
             _a = _x select 0; _b = _x select 1;
@@ -130,9 +129,9 @@ SLX_XEH_STR spawn {
             _deltaTime = (_b select 1) - (_a select 1);
             _log = ["Delta", _a, _b, _deltaTick, _deltaTime];
             _do = false;
-            if (_deltaTime > _limit) then { _do = true; if (_deltaTime > _high) then { PUSH(_log,"WARNING: Large deltaTime"); PUSH(_log,_deltaTime) } };
-            if (_deltaTick > _limit) then { _do = true; if (_deltaTick > _high) then { PUSH(_log,"WARNING: Large deltaTick"); PUSH(_log,_deltaTick) } };
-            if (_do) then { PUSH(GVAR(logs),_log) };
+            if (_deltaTime > _limit) then { _do = true; if (_deltaTime > _high) then { _log pushBack "WARNING: Large deltaTime"; _log pushBack _deltaTime } };
+            if (_deltaTick > _limit) then { _do = true; if (_deltaTick > _high) then { _log pushBack "WARNING: Large deltaTick"; _log pushBack _deltaTick } };
+            if (_do) then { GVAR(logs) pushBack _log };
         } forEach _ar;
         if (GVAR(interactive)) then {
             // Output at each iteration
@@ -154,7 +153,7 @@ while {GVAR(log)} do {
     sleep DELAY;
     [] call _create;
     _entry pushBack [DEFAULT_VALUES];
-    PUSH(GVAR(ar),_entry);
+    GVAR(ar) pushBack _entry;
 };
 
 GVAR(ar) = [];

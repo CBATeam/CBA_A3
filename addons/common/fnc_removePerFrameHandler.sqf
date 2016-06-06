@@ -2,10 +2,10 @@
 Function: CBA_fnc_removePerFrameHandler
 
 Description:
-    Remove a handler that you have added using CBA_fnc_addPerFrameHandler
+    Remove a handler that you have added using CBA_fnc_addPerFrameHandler.
 
 Parameters:
-    _handle - The function handle you wish to remove
+    _handle - The function handle you wish to remove. <NUMBER>
 
 Returns:
     None
@@ -18,34 +18,24 @@ Examples:
     (end)
 
 Author:
-    Nou & Jaynus, donated from ACRE project code for use by the community.
-
+    Nou & Jaynus, donated from ACRE project code for use by the community; commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 
-params ["_publicHandle"];
+params [["_handle", -1, [0]]];
 
-if (isNil "_publicHandle" || {_publicHandle < 0} || {(count GVAR(PFHhandles)) <= _publicHandle}) exitWith {// Nil/no handle or handle is out of bounds of Public Handle Array
-    WARNING("Invalid or not existing PFH ID.");
-};
+if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
 
-private "_handle";
-_handle = GVAR(PFHhandles) select _publicHandle;
-if (isNil "_handle") exitWith {}; // Nil handle, nil action
-GVAR(PFHhandles) set [_publicHandle, nil];
-GVAR(perFrameHandlerArray) set [_handle, nil];
-_newArray = [];
+[{
+    params ["_handle"];
 
-GVAR(nextPFHid) = ({
-    private ["_newHandle", "_return"];
-    _return = false;
-    if !(isNil "_x") then {
-        _x params ["", "", "", "", "", "_publicH"];
-        _newHandle = _newArray pushBack _x;
-        GVAR(PFHhandles) set [_publicH, _newHandle];
-        _return = true;
-    };
-    _return
-} count GVAR(perFrameHandlerArray)) - 1;
-GVAR(perFrameHandlerArray) = _newArray;
+    GVAR(perFrameHandlerArray) deleteAt (GVAR(PFHhandles) select _handle);
+    GVAR(PFHhandles) set [_handle, nil];
+
+    {
+        _x params ["", "", "", "", "", "_handle"];
+        GVAR(PFHhandles) set [_handle, _forEachIndex];
+    } forEach GVAR(perFrameHandlerArray);
+}, _handle] call CBA_fnc_directCall;
+
+nil

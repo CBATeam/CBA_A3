@@ -2,15 +2,16 @@
 Function: CBA_fnc_addKeyHandlerFromConfig
 
 Description:
-    Adds an action to a keyhandler, read from config
+    Adds an action to a keybind from config.
 
 Parameters:
-    _component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
-    _action - Action classname [String].
-    _code - Code to execute upon event [Code].
-    _type - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
+    _component - Classname under "CfgSettings" >> "CBA" >> "events" <STRING>
+    _action    - Action name <STRING>
+    _code      - Code to execute upon event. <CODE>
+    _type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
 
 Returns:
+    _hashKey - Key handler identifier. Used to remove or change the key handler. <STRING>
 
 Examples:
     (begin example)
@@ -18,24 +19,37 @@ Examples:
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(addKeyHandlerFromConfig);
 
-private ["_key", "_type"];
-params ["_component","_action","_code"];
-_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
-_type = toLower _type;
-if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
-if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
-_hashKey = toLower(format["%1_%2", _component, _action]);
+if (!hasInterface) exitWith {""};
 
-_key = [_component, _action] call CBA_fnc_readKeyFromConfig;
-if (_key select 0 > -1) exitWith {
-    [_key select 0, _key select 1, _code, _type, _hashKey] call CBA_fnc_addKeyHandler;
-    _hashKey;
+params [
+    ["_component", "", [""]],
+    ["_action", "", [""]],
+    ["_code", {}, [{}]],
+    ["_type", "keydown", [""]]
+];
+
+_type = toLower _type;
+
+// add "key" prefix to "down" and "up"
+if (_type in ["down", "up"]) then {
+    _type = "key" + _type;
 };
 
-"";
+// check if type is either "keydown" or "keyup"
+if !(_type in ["keydown", "keyup"]) exitWith {
+    ERROR("Type does not exist");
+    ""
+};
+
+private _hashKey = toLower format ["%1_%2", _component, _action];
+
+([_component, _action] call CBA_fnc_readKeyFromConfig) params ["_key", "_settings"];
+
+if (_key <= 0) exitWith {""};
+
+[_key, _settings, _code, _type, _hashKey] call CBA_fnc_addKeyHandler // return

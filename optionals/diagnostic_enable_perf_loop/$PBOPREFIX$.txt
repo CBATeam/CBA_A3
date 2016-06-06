@@ -1,5 +1,0 @@
-///////<HEADER>///////
-prefix=x\cba\addons\diagnostic_enable_perf_loop
-Pbo Type is: Arma Addon
-Sha: 'CFE4B3CA50D315652DE55E2D3D79E144D4F9256C'
-//////</HEADER>//////

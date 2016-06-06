@@ -1,18 +1,19 @@
 #include "script_component.hpp"
-class CfgPatches
-{
-    class ADDON
-    {
+
+class CfgPatches {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "CBA_XEH", "CBA_common", "CBA_events" };
+        requiredAddons[] = {"CBA_common","CBA_events","3DEN"};
         version = VERSION;
-        author[] = {"Spooner", "Sickboy"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Spooner","Sickboy"};
     };
 };
 
 #include "CfgFunctions.hpp"
-#include "CfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"
 
-
+#include "CfgDisplay3DEN.hpp"

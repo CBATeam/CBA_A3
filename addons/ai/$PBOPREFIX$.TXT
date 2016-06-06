@@ -1,5 +1,0 @@
-x\cba\addons\ai
-prefix=x\cba\addons\ai
-product=Arma 3
-version=004
-Pbo Type is: Arma

@@ -106,6 +106,12 @@ TEST_OP(_str,==,"frag",_fn);
 _str = ["frodo", "o", "ai"] call CBA_fnc_replace;
 TEST_OP(_str,==,"fraidai",_fn);
 
+_str = ["Test", "e", "ea"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Teast",_fn);
+
+_str = ["Mörser", "ö", "oe"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Moerser",_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (leftTrim)
 _fn = "CBA_fnc_leftTrim";
@@ -230,6 +236,12 @@ TEST_OP(_str,==,"012",_fn);
 
 _str = [-12] call CBA_fnc_formatNumber;
 TEST_OP(_str,==,"-12",_fn);
+
+_str = [-12.75] call CBA_fnc_formatNumber;
+TEST_OP(_str,==,"-13",_fn);
+
+_str = [-12.75,0,3] call CBA_fnc_formatNumber;
+TEST_OP(_str,==,"-12.750",_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (elaspsedTime)

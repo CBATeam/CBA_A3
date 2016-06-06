@@ -8,70 +8,67 @@ Description:
     of trouble, or when able to remove _item from _unit true in case of success
 
 Parameters:
-    _unit   - the unit that should drop a magazine [Object]
-    _item   - class name of the weapon to drop [String]
+    _unit - the unit that should drop a weapon <OBJECT>
+    _item - class name of the weapon to drop <STRING>
 
 Returns:
-    true if successful, false otherwise
+    true if successful, false otherwise <BOOLEAN>
+
 Examples:
     (begin example)
-    _result = [player, primaryWeapon player] call CBA_fnc_dropWeapon
+        _result = [player, primaryWeapon player] call CBA_fnc_dropWeapon
     (end)
 
 Author:
-
+    ?, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(dropWeapon);
 
-#define __scriptname fDropWeapon
+params [["_unit", objNull, [objNull]], ["_item", "", [""]]];
 
-#define __cfg (configFile >> "CfgWeapons")
-#define __action "DROPWEAPON"
-#define __ar (weapons _unit)
+#ifndef LINUX_BUILD
+    private _weaponInfo = (weaponsItems _unit select {_x select 0 == _item}) param [0, []];
+#else
+    private _weaponInfo = ([weaponsItems _unit, {_x select 0 == _item}] call BIS_fnc_conditionalSelect) param [0, []];
+#endif
+private _return = [_unit, _item] call CBA_fnc_removeWeapon;
 
-private ["_unit", "_item", "_holder"];
-params ["_unit"];
-if (typeName _unit != "OBJECT") exitWith {
-    TRACE_2("Unit not Object",_unit,_item);
-    false
-};
-_item = _this select 1;
-if (typeName _item != "STRING") exitWith {
-    TRACE_2("Item not String",_unit,_item);
-    false
-};
-if (isNull _unit) exitWith {
-    TRACE_2("Unit isNull",_unit,_item);
-    false
-};
-if (_item == "") exitWith {
-    TRACE_2("Empty Item",_unit,_item);
-    false
-};
-if !(isClass (__cfg >> _item)) exitWith {
-    TRACE_2("Item not exist in Config",_unit,_item);
-    false
-};
-if !(_item in __ar) exitWith {
-    TRACE_2("Item not available on Unit",_unit,_item);
-    false
-};
-_holder = if (count _this > 2) then {
-    _this select 2
-} else {
-    _unit
-};
-if (typeName _holder != "OBJECT") exitWith {
-    TRACE_3("Holder: %3 - Holder not object",_unit,_item,_holder);
-    false
-};
-if (isNull _holder) exitWith {
-    TRACE_3("Holder: %3 - Holder isNull",_unit,_item,_holder);
-    false
+if (_return) then {
+    private _baseWeapon = _item call CBA_fnc_weaponComponents param [0, _item];
+
+    private _items = _weaponInfo;
+    _items deleteAt 0; // delete the weapon
+
+    private _magazines = [];
+
+    {
+        if (_x isEqualType []) then {
+            _magazines pushBack _x;
+            _items set [_forEachIndex, ""];
+        };
+    } forEach _items;
+
+    _items = _items - [""];
+
+    _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+
+    private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
+
+    if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
+        _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+        _weaponHolder setPosASL getPosASL _unit;
+    };
+
+    _weaponHolder addWeaponCargoGlobal [_baseWeapon, 1];
+
+    {
+        _weaponHolder addItemCargoGlobal [_x, 1];
+    } forEach _items;
+
+    {
+        _weaponHolder addMagazineAmmoCargo [_x select 0, 1, _x select 1];
+    } forEach _magazines;
 };
 
-_unit action [__action, _holder, _item];
-TRACE_3("Holder: %3 - Success",_unit,_item,_holder);
-true
+_return

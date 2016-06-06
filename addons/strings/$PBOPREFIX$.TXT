@@ -1,5 +1,0 @@
-x\cba\addons\strings
-prefix=x\cba\addons\strings
-product=Arma 3
-version=007
-Pbo Type is: Arma

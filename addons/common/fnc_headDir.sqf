@@ -34,7 +34,7 @@ Examples:
         _data = [ai] call CBA_fnc_headDir;
         // => returns the direction of ai (not head)
 
-        _data = [ai, getpos player] call CBA_fnc_headDir;
+        _data = [ai, getPos player] call CBA_fnc_headDir;
         // => direction of ai, difference towards players pos, if player is in
         //    fov of ai, and 3rd person off (default return)
     (end)
@@ -66,7 +66,7 @@ if (!_do) then {
 };
 
 if (_do) then {
-    _angle = [(_unit call CBA_fnc_getpos),(_object call CBA_fnc_getpos)] call BIS_fnc_dirTo;
+    _angle = [(_unit call CBA_fnc_getPos),(_object call CBA_fnc_getPos)] call BIS_fnc_dirTo;
 } else {
     _angle = 0;
 };

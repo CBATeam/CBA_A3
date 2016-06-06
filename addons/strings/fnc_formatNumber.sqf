@@ -3,7 +3,9 @@ Function: CBA_fnc_formatNumber
 
 Description:
     Formats a number to a minimum integer width and to a specific number of
-    decimal places (including padding with 0s and correct rounding). Numbers
+    decimal places.
+
+    The formatting includes padding with 0s and correct rounding. Numbers
     are always displayed fully, never being condensed using an exponent (e.g.
     the number 1.234e9 would be given as "1234000000").
 
@@ -115,6 +117,9 @@ if (_number < 0) then {
 if (_decimalPlaces > 0) then {
     private ["_digit", "_multiplier", "_i"];
 
+    //Use abs to prevent extra `-` signs and so floor doesn't get wrong value
+    _number = abs _number;
+    
     _string = _string + _decimalPoint;
 
     _multiplier = 10;

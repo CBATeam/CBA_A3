@@ -7,22 +7,24 @@ Description:
     * You can <CBA_fnc_randPos> to find a position within a simple radius.
 
 Parameters:
-    _zone - The zone to find a position within [Marker or Trigger]
-    _perimeter - True to return only positions on the area perimeter [Boolean, defaults to false]
+    _zone      - The zone to find a position within <MARKER, TRIGGER>
+    _perimeter - True to return only positions on the area perimeter (optional, default: false) <BOOLEAN>
 
 Returns:
-    Position [Array] (Empty array if non-area object/marker was given)
+    Position <ARRAY> (Empty array if non-area object/marker was given)
 
 Examples:
    (begin example)
-   _position = [marker, true] call CBA_fnc_randPosArea;
+       _position = [marker, true] call CBA_fnc_randPosArea;
 
-   _position = [trigger] call CBA_fnc_randPosArea;
+       _position = [trigger] call CBA_fnc_randPosArea;
    (end)
 
 Author:
     SilentSpike 2015-07-06
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(randPosArea);
 
 private ["_zRef","_zSize","_zDir","_zRect","_zPos","_perimeter","_posVector"];
 _zRef = _this select 0;

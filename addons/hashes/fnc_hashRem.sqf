@@ -23,11 +23,9 @@ Author:
 SCRIPT(hashRem);
 
 // ----------------------------------------------------------------------------
-params ["_hash","_key"];
+params [["_hash", [], [[]]], "_key"];
 
-private ["_defaultValue"];
+private _defaultValue = _hash select HASH_DEFAULT_VALUE;
+[_hash, _key, if (isNil "_defaultValue") then {nil} else {_defaultValue}] call CBA_fnc_hashSet;
 
-_defaultValue = _hash select HASH_DEFAULT_VALUE;
-[_hash, _key, if (isNil "_defaultValue") then { nil } else { _defaultValue }] call CBA_fnc_hashSet;
-
-_hash; // Return.
+_hash // Return.

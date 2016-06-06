@@ -5,15 +5,15 @@ Description:
     A function used to find out the first entity of parsed type in a nearEntitys call
 
 Parameters:
-    - Type (Classname, Object)
-    - Position (XYZ, Object, Location or Group)
+    - Type (Classname or Object) <STRING, OBJECT>
+    - Position <OBJECT, LOCATION, GROUP, TASK, MARKER, POSITION>
 
 Optional:
-    - Radius (Scalar)
+    - Radius <NUMBER>
 
 Example:
     (begin example)
-    _veh = ["LaserTarget", player] call CBA_fnc_findEntity
+        _veh = ["LaserTarget", player] call CBA_fnc_findEntity
     (end)
 
 Returns:
@@ -21,17 +21,16 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(findEntity);
 
-params ["_type","_position", ["_radius",50]];
+params [["_type", "", [objNull, ""]], ["_position", objNull], ["_radius", 50, [0]]];
 
-// this function doesn't return the nearest entity, neither did the previous version
+if (_type isEqualType objNull) then {
+    _type = typeOf _type;
+};
 
-_ret = (_position call CBA_fnc_getpos) nearEntities [[_type], _radius];
-if (count _ret > 0) exitWith {_ret select 0};
-nil
+private _return = (_position call CBA_fnc_getPos) nearEntities [[_type], _radius];
+
+_return param [0]

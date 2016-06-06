@@ -2,14 +2,14 @@
 Function: CBA_fnc_getNearestBuilding
 
 Description:
-    A function used to find out the nearest building and appropriate building positions available.
+    Find the nearest building and number of building positions available.
 
 Parameters:
-    Object
+    _position - <OBJECT, POSITION>
 
 Example:
     (begin example)
-    _array = player call CBA_fnc_getNearestBuilding
+        _array = player call CBA_fnc_getNearestBuilding
     (end)
 
 Returns:
@@ -18,11 +18,11 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(getNearestBuilding);
 
-private ["_building", "_i"];
+[_this] params [["_position", objNull, [objNull, []]]];
 
-_building = nearestBuilding _this;
-_i = 0;
+private _building = nearestBuilding _position;
 
-while {str(_building buildingPos _i) != "[0,0,0]"} do {_i = _i + 1;};
-[_building, _i]
+[_building, count (_building buildingPos -1)]

@@ -2,7 +2,8 @@
 Function: CBA_fnc_peek
 
 Description:
-    Peek at variable on the server
+    Peek at variable on the server.
+
     To receive the variable content back, you will have to
     ["cba_diagnostics_receive_peak", {_this call myFunction}] call CBA_fnc_addEventHandler;
 

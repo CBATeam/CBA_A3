@@ -1,8 +1,10 @@
 /*
 Function: CBA_fnc_globalSay
 
+DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say"] instead.
+
 Description:
-    Says sound on all client computer
+    Says sound on all client computer.
 
 Parameters:
     [_objects] - Array of Objects that perform Say [Object]
@@ -12,14 +14,22 @@ Returns:
 
 Example:
     (begin example)
-        [[player], "Alarm01"] call CBA_fnc_globalSay;
+        [[player], "Alarm"] call CBA_fnc_globalSay;
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 */
-// Deprecated?, use now globalEvent
 #include "script_component.hpp"
-TRACE_1("",_this);
 
-[QGVAR(say), _this] call CBA_fnc_globalEvent;
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]]];
+
+if (_objects isEqualType objNull) then {
+    _objects = [_objects];
+};
+
+{
+    [_x, _params] remoteExecCall ["say"];
+} forEach _objects;
+
+nil

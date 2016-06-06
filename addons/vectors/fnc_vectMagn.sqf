@@ -23,5 +23,4 @@ scriptName "fnc_vectMagn.sqf";
 #include "script_component.hpp"
 SCRIPT(vectMagn);
 
-
-(sqrt((_this select 0)^2 + (_this select 1)^2 + (_this select 2)^2)) call CBA_fnc_simplifyAngle;
+vectorMagnitude _this

@@ -2,7 +2,10 @@
 Function: CBA_fnc_taskDefend
 
 Description:
-    A function for a group to defend a parsed location. Groups will mount nearby static machine guns, and bunker in nearby buildings. They may also patrol the radius unless otherwise specified.
+    A function for a group to defend a parsed location.
+
+    Groups will mount nearby static machine guns and bunker in nearby buildings.
+    They may also patrol the radius unless otherwise specified.
 
 Parameters:
     - Group (Group or Object)
@@ -22,11 +25,11 @@ Returns:
     Nil
 
 Author:
-    Rommel
+    Rommel, SilentSpike
 
 ---------------------------------------------------------------------------- */
 
-params ["_group", ["_position",[]], ["_radius",50], ["_threshold",2]];
+params ["_group", ["_position",[]], ["_radius",50,[0]], ["_threshold",2,[0]], ["_patrol",true,[true]]];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
@@ -34,66 +37,86 @@ if !(local _group) exitWith {}; // Don't create waypoints on each machine
 _position = [_position,_group] select (_position isEqualTo []);
 _position = _position call CBA_fnc_getPos;
 
-_group enableattack false;
+[_group] call CBA_fnc_clearWaypoints;
+_group enableAttack false;
 
-private ["_count", "_list", "_list2", "_units", "_i"];
-_statics = [_position, vehicles, _radius, {(_x iskindof "StaticWeapon") && {(_x emptypositions "Gunner" > 0)}}] call CBA_fnc_getnearest;
-_buildings = _position nearObjects ["building",_radius];
-_units = units _group;
-_count = count _units;
+private _statics = _position nearObjects ["StaticWeapon", _radius];
+private _buildings = _position nearObjects ["Building", _radius];
 
+// Filter out occupied statics
+[_statics,{(_x emptyPositions "Gunner") > 0},true] call CBA_fnc_filter;
+
+// Filter out buildings below the size threshold (and store positions for later use)
 {
-    if (str(_x buildingpos _threshold) == "[0,0,0]") then {_buildings = _buildings - [_x]};
-} foreach _buildings;
-_i = 0;
-{
-    _count = (count _statics) - 1;
-    if (random 1 < 0.31 && {_count > -1}) then {
-        _x assignasgunner (_statics select _count);
-        _statics resize _count;
-        [_x] ordergetin true;
-        _i = _i + 1;
+    if ((_x buildingPos _threshold) isEqualto [0,0,0]) then {
+        _buildings set [_forEachIndex,nil];
     } else {
-        if (random 1 < 0.93 && {count _buildings > 0}) then {
-            private ["_building","_p","_array"];
-            _building = _buildings call BIS_fnc_selectRandom;
-            _array = _building getvariable "CBA_taskDefend_positions";
-            if (isnil "_array") then {
-                private "_k"; _k = 0;
-                _building setvariable ["CBA_taskDefend_positions",[]];
-                while {str(_building buildingpos _k) != "[0,0,0]"} do {
-                    _building setvariable ["CBA_taskDefend_positions",(_building getvariable "CBA_taskDefend_positions") + [_k]];
-                    _k = _k + 1;
-                };
-                _array = _building getvariable "CBA_taskDefend_positions";
-            };
-            if (count _array > 0) then {
-                _p = (_building getvariable "CBA_taskDefend_positions") call BIS_fnc_selectRandom;
-                _array = _array - [_p];
-                if (count _array == 0) then {
+        private _positions = _x buildingPos -1;
+
+        if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
+            _x setVariable ["CBA_taskDefend_positions",_positions];
+        };
+    };
+} forEach _buildings;
+_buildings = _buildings arrayIntersect _buildings;
+
+// v1.56 version of the above
+/*_buildings = _buildings select {
+    private _positions = _x buildingPos -1;
+
+    if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
+        _x setVariable ["CBA_taskDefend_positions",_positions];
+    };
+
+    count (_positions) > _threshold
+};*/
+
+private _units = units _group;
+private _assigned = 0;
+{
+    // 31% chance to occupy nearest free static weapon
+    if ((random 1 < 0.31) && { !(_statics isEqualto []) }) then {
+        _x assignAsGunner (_statics deleteAt 0);
+        [_x] orderGetIn true;
+
+        _assigned = _assigned + 1;
+    } else {
+        // 93% chance to occupy a random nearby building position
+        if ((random 1 < 0.93) && { !(_buildings isEqualto []) }) then {
+            private _building = _buildings call BIS_fnc_selectRandom;
+            private _array = _building getVariable ["CBA_taskDefend_positions",[]];
+
+            if !(_array isEqualTo []) then {
+                private _pos = _array deleteAt (floor(random(count _array)));
+
+                // If building positions are all taken remove from possible buildings
+                if (_array isEqualTo []) then {
                     _buildings = _buildings - [_building];
-                    _building setvariable ["CBA_taskDefend_positions",nil];
+                    _building setVariable ["CBA_taskDefend_positions",nil];
                 };
-                _building setvariable ["CBA_taskDefend_positions",_array];
-                [_x,_building buildingpos _p] spawn {
-                    if (surfaceIsWater (_this select 1)) exitwith {};
-                    (_this select 0) domove (_this select 1);
+                _building setVariable ["CBA_taskDefend_positions",_array];
+
+                // AI manipulation trickey to keep them in position until commanded to move
+                [_x, _pos] spawn {
+                    params ["_unit","_pos"];
+                    if (surfaceIsWater _pos) exitwith {};
+
+                    _unit doMove _pos;
                     sleep 5;
-                    waituntil {unitready (_this select 0)};
-                    (_this select 0) disableai "move";
-                    dostop _this;
-                    waituntil {not (unitready (_this select 0))};
-                    (_this select 0) enableai "move";
+                    waituntil {unitReady _unit};
+                    _unit disableAI "move";
+                    doStop _unit;
+                    waituntil {!(unitReady _unit)};
+                    _unit enableAI "move";
                 };
-                _i = _i + 1;
+
+                _assigned = _assigned + 1;
             };
         };
     };
-} foreach _units;
-{
-    _x setvariable ["CBA_taskDefend_positions",nil];
-} foreach _buildings;
-if (count _this > 4 && {!(_this select 4)}) then {_i = _count};
-if (_i < _count * 0.5) then {
+} forEach _units;
+
+// If half of the group's units aren't assigned then patrol
+if (_patrol && {_assigned < (count _units) * 0.5}) then {
     [_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
 };

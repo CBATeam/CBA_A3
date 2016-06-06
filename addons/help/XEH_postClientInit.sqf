@@ -1,93 +1,100 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-GVAR(CREDITS_Info) = [GVAR(credits), "CfgPatches"] call (uiNamespace getVariable "CBA_fnc_hashGet");
-GVAR(CREDITS_CfgPatches) = (GVAR(CREDITS_Info)) call FUNC(process);
-TRACE_2("",GVAR(CREDITS_Info), GVAR(CREDITS_CfgPatches));
+// create diary
+player createDiarySubject ["CBA_docs", "CBA"];
 
-#ifdef DEBUG_MODE_FULL
-    // Troubleshooting an A3 Funcitons Compliation for missionNamespace.
-    if (isNil "CBA_fnc_hashGet") then { diag_log "CBA_fnc_hashGet is nil!!";};
-    if (isNil QGVAR(CREDITS_CfgPatches)) then { diag_log "CREDITS_CfgPatches is nil! CBA_fnc_hashGet must have failed"; TRACE_1("",CBA_fnc_hashGet)};
-#endif
+//player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_WEBSITE_WIKI", "http://dev-heaven.net/projects/cca"]];
 
-private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg",
- "_mod", "_knaml", "_knam", "_i", "_j", "_k", "_text",  "_names", "_handlers",
- "_name", "_handler", "_actionNames", "_actionEntries", "_actionName",
- "_displayName", "_keyn"];
+private _creditsInfo = GVAR(credits) getVariable "CfgPatches";
+private _credits_CfgPatches = _creditsInfo call FUNC(process);
 
-_pkeynam = {
-    _shift = if(_shift) then {42} else {0};
-    _ctrl = if(_ctrl) then {56} else {0};
-    _alt = if(_alt) then {29} else {0};
-    _keys = [_shift,_ctrl,_alt,_dikKey];
-    _keystrg = "^";
-    {
-        _knaml = [cba_keybinding_dikDecToStringTable, format ["%1", _x], format ["Unknown key (%1)",_x]] call BIS_fnc_getFromPairs;
-        _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
-        _knam = "^";
-        {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
-        _knam = [_knam, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-        _keystrg = _keystrg + "+" + _knam;
-    } forEach _keys;
-    _keystrg = [_keystrg, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "^+", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "^", "None"] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "LAlt", "Alt"] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "LCtrl", "Ctrl"] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "LShift", "Shift"] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg
+if (!isNil "_credits_CfgPatches") then {
+    player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_CREDITS_ADDONS", _credits_CfgPatches]];
 };
 
-_h = _pkeynam spawn {
-    _text = "";
-    _names = cba_keybinding_handlers select 0;
-    _handlers = cba_keybinding_handlers select 1;
-    for "_i" from 0 to (count _names) do {
-        _name = _names select _i;
-        _handler = _handlers select _i;
-        if (!isNil "_name") then {
-            _text = _text + format ["%1:<br/>", _name];
-            _actionNames = _handler select 0;
-            _actionEntries = _handler select 1;
+if (!isNil QGVAR(docs)) then {
+    player createDiaryRecord ["CBA_docs", ["Docs", GVAR(docs)]];
+};
 
-            for "_j" from 0 to (count _actionNames - 1) do {
-                _actionName = _actionNames select _j;
-                _actionEntry = _actionEntries select _j;
+if (!isNil QGVAR(keys)) then {
+    player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_HELP_KEYS", GVAR(keys)]];
+};
 
-                _displayName = _actionEntry select 0;
-                if (typeName _displayName == typeName []) then {
-                    _displayName = (_actionEntry select 0) select 0;
+//player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_CREDITS", GVAR(credits_cba)]];
+//player createDiaryRecord ["CBA_docs", ["Credits - Vehicles", (_creditsInfo getVariable "CfgVehicles") call FUNC(process)]];
+//player createDiaryRecord ["CBA_docs", ["Credits - Weapons", (_creditsInfo getVariable "CfgWeapons") call FUNC(process)]];
+//player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_WEBSITE", "http://dev-heaven.net/projects/cca"]];
+
+// add diary for scripted keybinds
+private _fnc_getKeyName = {
+    private _shift = [0, DIK_LSHIFT] select _shift;
+    private _ctrl = [0, DIK_LCONTROL] select _ctrl;
+    private _alt = [0, DIK_LMENU] select _alt;
+
+    private _keys = [_shift, _ctrl, _alt, _key];
+
+    _result = "^";
+
+    {
+        private _keyname1 = [cba_keybinding_dikDecToStringTable, format ["%1", _x], format ["Unknown key (%1)",_x]] call BIS_fnc_getFromPairs;
+        _keyname1 = [_keyname1, " "] call CBA_fnc_split;
+
+        private _keyname2 = "^";
+
+        {
+            _keyname2 = _keyname2 + " " + _x;
+        } forEach _keyname1;
+
+        _keyname2 = [_keyname2, "^ ", ""] call CBA_fnc_replace;
+        _result = _result + "+" + _keyname2;
+    } forEach _keys;
+
+    _result = [_result, "^ ", ""] call CBA_fnc_replace;
+    _result = [_result, "^+", ""] call CBA_fnc_replace;
+    _result = [_result, "^", "None"] call CBA_fnc_replace;
+    _result = [_result, "LAlt", "Alt"] call CBA_fnc_replace;
+    _result = [_result, "LCtrl", "Ctrl"] call CBA_fnc_replace;
+    _result = [_result, "LShift", "Shift"] call CBA_fnc_replace;
+    _result
+};
+
+_fnc_getKeyName spawn {
+    private _text = GVAR(keys);
+
+    cba_keybinding_handlers params [["_modNames", [], [[]]], ["_keyHandlers", [], [[]]]];
+
+    {
+        private _modName = _x;
+        private _keyHandler = _keyHandlers param [_forEachIndex, []];
+        if (!isNil "_modName" && _modName in cba_keybinding_activeMods) then {
+            _text = _text + format ["%1:<br/>", _modName];
+
+            _keyHandler params [["_actionNames", [], [[]]], ["_actionEntries", [], [[]]]];
+
+            {
+                private _actionName = _x;
+                private _actionEntry = _actionEntries param [_forEachIndex, []];
+
+                _actionEntry params [["_displayName", "", ["", []]], ["_keyBind", [], [[]]]];
+
+                if (_displayName isEqualType []) then {
+                    _displayName = _displayName param [0, ""];
                 };
-                // Escape < and >
-                _displayName = [_displayName, "<", "&lt;"] call (uiNamespace getVariable "CBA_fnc_replace");
-                _displayName = [_displayName, ">", "&gt;"] call (uiNamespace getVariable "CBA_fnc_replace");
-                _keyBind = _actionEntry select 1;
-                _dikKey = _keyBind select 0;
-                _mod = _keyBind select 1;
-                _shift = _mod select 0;
-                _ctrl = _mod select 1;
-                _alt = _mod select 2;
-                _keyn = call _this;
 
-                _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyn];
-            };
+                // Escape < and >
+                _displayName = [_displayName, "<", "&lt;"] call CBA_fnc_replace;
+                _displayName = [_displayName, ">", "&gt;"] call CBA_fnc_replace;
+
+                _keyBind params [["_key", 0, [0]], ["_mod", [], [[]]]];
+                _mod params [["_shift", false, [false]], ["_ctrl", false, [false]], ["_alt", false, [false]]];
+
+                _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, call _this];
+            } forEach _actionNames;
+
             _text = _text + "<br/>";
         };
-    };
-    player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_HELP_KEYS"), _text]];
+    } forEach _modNames;
+
+    player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_HELP_KEYS", _text]];
 };
-
-player createDiarySubject ["CBA_docs", "CBA"];
-//player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_WEBSITE_WIKI"), "http://dev-heaven.net/projects/cca"]];
-if (!isNil QGVAR(CREDITS_CfgPatches)) then { player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_CREDITS_ADDONS"), GVAR(CREDITS_CfgPatches)]];};
-if (!isNil QGVAR(docs)) then { player createDiaryRecord ["CBA_docs", ["Docs", GVAR(docs)]];};
-if (!isNil QGVAR(keys)) then { player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_HELP_KEYS"), GVAR(keys)]];};
-//player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_CREDITS"), GVAR(credits_cba)]];
-//player createDiaryRecord ["CBA_docs", ["Credits - Vehicles", ([GVAR(credits), "CfgVehicles"] call (uiNamespace getVariable "CBA_fnc_hashGet")) call FUNC(process)]];
-//player createDiaryRecord ["CBA_docs", ["Credits - Weapons", ([GVAR(credits), "CfgWeapons"] call (uiNamespace getVariable "CBA_fnc_hashGet")) call FUNC(process)]];
-
-//player createDiaryRecord ["CBA_docs", [(localize "STR_DN_CBA_WEBSITE"), "http://dev-heaven.net/projects/cca"]];
-
-
-// [cba_help_credits, "CfgPatches"] call (uiNamespace getVariable "CBA_fnc_hashGet")

@@ -24,13 +24,6 @@ scriptName "fnc_scaleVect.sqf";
 #include "script_component.hpp"
 SCRIPT(scaleVect);
 
-
-private ["_i","_k", "_j"];
-
 params ["_vect","_factor"];
 
-_i = _factor * (_vect select 0);
-_k = _factor * (_vect select 1);
-_j = _factor * (_vect select 2);
-
-[_i, _k, _j];
+_vect vectorMultiply _factor;

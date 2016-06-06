@@ -1,21 +1,23 @@
 #include "script_component.hpp"
-class CfgPatches
-{
-    class ADDON
-    {
+
+class CfgPatches {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "A3_BaseConfig_F","CBA_XEH" };
+        requiredAddons[] = {"A3_BaseConfig_F"};
         version = VERSION;
-        author[] = {"Spooner", "Sickboy", "Rocko"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Spooner","Sickboy","Rocko"};
     };
 };
+
 #include "CfgEventHandlers.hpp"
-
 #include "CfgFunctions.hpp"
+#include "CfgLocationTypes.hpp"
 
-#include "CfgPerFrame.hpp"
-
-#include "CfgRemoteExec.hpp"
+class CBA_DirectCall {
+    class dummy;
+};

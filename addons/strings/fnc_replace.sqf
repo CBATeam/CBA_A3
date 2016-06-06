@@ -19,35 +19,22 @@ Example:
     (end)
 
 Author:
-    jaynus
+    BaerMitUmlaut
 --------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 
 SCRIPT(replace);
 
-// ----------------------------------------------------------------------------
+params [["_string", "", [""]], ["_find", "", [""]], ["_replace", "", [""]]];
+if (_find == "") exitWith {_string}; // "1" find "" -> 0
+private _result = "";
+private _offset = count (_find splitString "");
 
-params ["_string","_pattern","_replacement"];
-private["_i", "_cp", "_findIndex", "_stringArray", "_replaceArray", "_returnArray"];
-
-_returnArray  = [];
-_cp           = count _pattern;
-_stringArray  = toArray _string;
-_replaceArray = toArray _replacement;
-
-_findIndex    = _string find _pattern;
-while { _findIndex != -1 } do {
-    _i = 0;
-    while { _i < _findIndex } do {
-        _returnArray pushBack (_stringArray select _i);
-        _i = _i + 1;
-    };
-    _returnArray append _replaceArray;
-    _stringArray deleteRange [0, _i + _cp];
-
-    _string = toString _stringArray;
-    _findIndex = _string find _pattern;
+while {_string find _find != -1} do {
+    private _index = _string find _find;
+    _result = _result + (_string select [0, _index]) + _replace;
+    _string = _string select [_index + _offset];
 };
-_returnArray append _stringArray;
-toString _returnArray
+
+_result + _string

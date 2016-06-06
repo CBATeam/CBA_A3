@@ -26,6 +26,13 @@ _fakeKeyboardButton ctrlEnable false;
 // This is a non-issue for most users, who will have a 'mission' loaded by the background of the
 // main menu. Only people (devs) using an ocean world load to save time will be affected.
 
+
+if ((!isNil {is3DEN}) && {is3DEN}) exitWith { //safe way to check 1.56 is3DEN command (ToDo: change after 1.56 release)
+    //if in eden editor, postInit will not run, so there won't be any valid keybinds to modify
+    _lb = _display displayCtrl 202;
+    _lb lnbAddRow [localize LSTRING(canNotEdit)];
+};
+
 if (isNil "cba_fnc_registerKeybind") then {
     // XEH PreInit has not run yet, so we need to prepare this function right now.
     FUNC(onButtonClick_configure) = compile preprocessFileLineNumbers "\x\cba\addons\keybinding\gui\fnc_onButtonClick_configure.sqf";

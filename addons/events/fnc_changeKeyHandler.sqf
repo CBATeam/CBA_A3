@@ -2,62 +2,65 @@
 Function: CBA_fnc_changeKeyHandler
 
 Description:
-    Changes an action to a keyhandler
+    Changes the key of a key handler.
 
 Parameters:
-    _hashKey - String
-    _key - New key [integer]
-    _settings - Array of settings (shift, alt etc)
-    _type - Type of keyevent [String] - default keydown
+    _hashKey  - Key handler identifier. <STRING>
+    _key      - New key (DIK-Code). <NUMBER>
+    _settings - New Settings. Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>
+    _type     - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
 
 Returns:
+    None
 
 Examples:
     (begin example)
-        ["cba_somesystem_keyevent", 44, [false,false,false]] call CBA_fnc_changeKeyHandler;
+        [_id, 44, [false,false,false]] call CBA_fnc_changeKeyHandler;
     (end)
 
 Author:
-    Sickboy
-
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(changeKeyHandler);
-private ["_type", "_keyData", "_handlers", "_idx", "_myHandlers", "_ar"];
-params ["_hashKey","_key","_settings"];
-_type = if (count _this > 3) then { _this select 3 } else { "keydown" };
+
+if (!hasInterface) exitWith {};
+
+params [
+    ["_hashKey", "", [""]],
+    ["_key", 0, [0]],
+    ["_settings", [false, false, false], [[]], 3],
+    ["_type", "keydown", [""]]
+];
+
 _type = toLower _type;
-if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
-if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
-_hashKey = toLower _hashKey;
-_keyData = [if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) }, _hashKey] call CBA_fnc_hashGet;
 
-_handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
-
-// Remove existing key.
-_exit = true; // Doesn't exis?
-_idx = _keyData select 0;
-if (count _handlers > _idx) then {
-    _myHandlers = _handlers select _idx;
-    if (_hashKey in _myHandlers) then {
-        _myHandlers = _myHandlers - [_hashKey];
-        _handlers set [_idx, _myHandlers];
-        _exit = false; // does exist
-    };
+// add "key" prefix to "down" and "up"
+if (_type in ["down", "up"]) then {
+    _type = "key" + _type;
 };
 
-if (_exit) exitWith { false };
+// check if type is either "keydown" or "keyup"
+if !(_type in ["keydown", "keyup"]) exitWith {
+    ERROR("Type does not exist");
+};
 
-// Add to new key.
-if(_key>(count _handlers))then{_handlers resize(_key+1);};
-_ar = _handlers select _key;
-if(isNil"_ar")then{_ar=[]};
-PUSH(_ar,_hashKey);
-_handlers set [_key, _ar];
+_hashKey = toLower _hashKey;
 
-// Update keydata
-_keyData set [0, _key];
-_keyData set [1, _settings];
+private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+private _keyData = _hash getVariable _hashKey;
+private _key = _keyData select 0;
 
-true;
+private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
+
+if (count _keyHandlers > _key) then {
+    private _hashKeys = _keyHandlers select _key;
+    _hashKeys = _hashKeys - [_hashKey];
+    _hashKeys pushBack _hashKey;
+    _keyHandlers set [_key, _hashKeys];
+
+    _keyData set [0, _key];
+    _keyData set [1, _settings];
+};
+
+nil

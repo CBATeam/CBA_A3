@@ -25,15 +25,7 @@ scriptName "fnc_polar2vect.sqf";
 #include "script_component.hpp"
 SCRIPT(polar2vect);
 
-
-private ["_magCosElev", "_vx", "_vy", "_vz"];
-
 params ["_mag","_dir","_elev"];
 
-_magCosElev = _mag * cos(_elev);
-
-_vx = _magCosElev * sin(_dir);
-_vz = _magCosElev * cos(_dir);
-_vy = _mag * sin(_elev);
-
-[_vx, _vz, _vy];
+private _magCosElev = _mag * cos(_elev);
+[_magCosElev * sin(_dir), _magCosElev * cos(_dir), _mag * sin(_elev)];

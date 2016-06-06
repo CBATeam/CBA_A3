@@ -22,15 +22,6 @@ Author:
 SCRIPT(isHash);
 
 // -----------------------------------------------------------------------------
+params ["_hash"];
 
-params ["_value"];
-
-private "_result";
-
-_result = false;
-
-if ((typeName _value) == "ARRAY" && {(count _value) == 4} && {(typeName (_value select HASH_ID)) == (typeName TYPE_HASH)}) then {
-    _result = ((_value select HASH_ID) == TYPE_HASH);
-};
-
-_result;
+_hash isEqualType [] && {count _hash == 4} && {(_hash select HASH_ID) isEqualTo TYPE_HASH}

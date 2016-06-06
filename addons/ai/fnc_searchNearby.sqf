@@ -5,55 +5,68 @@ Description:
     A function for a group to search a nearby building.
 
 Parameters:
-    Group (Group or Object)
+    - Group (Group or Object)
 
 Example:
     (begin example)
-    [group player] spawn CBA_fnc_searchNearby
+    [group player] call CBA_fnc_searchNearby
     (end)
 
 Returns:
     Nil
 
 Author:
-    Rommel
+    Rommel, SilentSpike
 
 ---------------------------------------------------------------------------- */
 
 params ["_group"];
-_group = _group call CBA_fnc_getgroup;
-_group lockwp true;
-private ["_leader","_behaviour"];
-_leader = leader _group;
-_behaviour = behaviour _leader;
-_group setbehaviour "combat";
 
-(_leader call CBA_fnc_getnearestbuilding) params ["_building", "_indices"];
-_group setformdir ([_leader, _building] call bis_fnc_dirto);
+_group = _group call CBA_fnc_getGroup;
+if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
-if (_leader distance _building > 500) exitwith {_group lockwp false};
+private _building = nearestBuilding (leader _group);
+if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
-private ["_count","_units"];
-_units = units _group;
-_count = (count _units) - 1;
+[_group,_building] spawn {
+    params ["_group","_building"];
+    private _leader = leader _group;
 
-while {_indices > 0 && {_count > 0}} do {
-    sleep 10;
-    while {_indices > 0 && {_count > 0}} do {
-        private "_unit";
-        _unit = _units select _count;
-        if (unitready _unit) then {
-            _unit commandmove (_building buildingpos _indices);
-            _indices = _indices - 1;
-        };
-        _count = _count - 1;
+    // Add a waypoint to regroup after the search
+    _group lockWP true;
+    private _wp = _group addWaypoint [getPos _leader, 0, currentWaypoint _group];
+    private _cond = "({unitReady _x || !(alive _x)} count thisList) == count thisList";
+    private _comp = format ["this setFormation '%1'; this setBehaviour '%2'; deleteWaypoint [group this, currentWaypoint (group this)];",formation _group,behaviour _leader];
+    _wp setWaypointStatements [_cond,_comp];
+
+    // Prepare group to search
+    _group setBehaviour "Combat";
+    _group setFormDir ([_leader, _building] call BIS_fnc_dirTo);
+
+    // Leader will only wait outside if group larger than 2
+    if (count (units _group) <= 2) then {
+        _leader = objNull;
     };
-    _units = units _group;
-    _count = (count _units) - 1;
+
+    // Search while there are still available positions
+    private _positions = _building buildingPos -1;
+    while {!(_positions isEqualTo [])} do {
+        // Update units in case of death
+        private _units = (units _group) - [_leader];
+
+        // Abort search if the group has no units left
+        if (_units isEqualTo []) exitWith {};
+
+        // Send all available units to the next available position
+        {
+            if (_positions isEqualTo []) exitWith {};
+            if (unitReady _x) then {
+                private _pos = _positions deleteAt 0;
+                _x commandMove _pos;
+                sleep 2;
+            };
+        } forEach _units;
+    };
+
+    _group lockWP false;
 };
-waituntil {sleep 3;    {unitready _x} count _units >= count (units _group) - 1};
-{
-    _x dofollow _leader;
-} foreach _units;
-_group setbehaviour _behaviour;
-_group lockwp false;

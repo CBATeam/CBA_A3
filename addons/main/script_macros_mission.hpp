@@ -58,7 +58,6 @@
 
 #undef MAINPREFIX
 #undef SUBPREFIX
-#undef VERSION
 #undef VERSION_AR
 #undef VERSION_CONFIG
 

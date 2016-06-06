@@ -12,40 +12,29 @@ Description:
     (http://www.ofpec.com/ed_depot/index_new.php?action=details&id=139&page=1&game=OFP&type=fu&cat=xyz)
 
 Parameters:
-    _man - Man to check [Object: "Man"]
+    _unit - Unit to check <OBJECT>
 
 Returns:
-    Number of person in his group [Number: 1+]
+    Number of person in his group <NUMBER>
 
+Author:
+    ?, A3: commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-#include "\x\cba\addons\strings\script_strings.hpp"
-
 SCRIPT(getGroupIndex);
 
-// ----------------------------------------------------------------------------
+params [["_unit", objNull, [objNull]]];
 
-params ["_man"];
+{
+    // Save and remove the person's varName, so that format doesn't just show that.
+    private _varName = vehicleVarName _unit;
+    _unit setVehicleVarName "";
 
-private ["_varName", "_manLabel", "_number", "_labelArray", "_groupLabelLen"];
+    private _return = str _unit select [count str group _unit + 1];
+    _return = (_return splitString " ") param [0, ""];
 
-// Save and remove the person's varName, so that format doesn't just show that.
-_varName = vehicleVarName _man;
-_man setVehicleVarName "";
+    // Go back to the original varName.
+    _unit setVehicleVarName _varName;
 
-_labelArray = toArray (str _man);
-_groupLabelLen = [str (group _man)] call CBA_fnc_strLen;
-_number = [];
-
-// Read in all digits after the group name and colon in the full player label.
-// Format of player label is "<groupName>:<groupNumber> <playerName>"
-for "_i" from (_groupLabelLen + 1) to ((count _labelArray) - 1) do {
-    if ((_labelArray select _i) == ASCII_SPACE) exitWith {};
-    PUSH(_number,_labelArray select _i);
-};
-
-// Go back to the original varName.
-_man setVehicleVarName _varName;
-
-parseNumber (toString _number); // Return.
+    parseNumber _return
+} call CBA_fnc_directCall

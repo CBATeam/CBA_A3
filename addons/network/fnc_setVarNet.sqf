@@ -3,6 +3,7 @@ Function: CBA_fnc_setVarNet
 
 Description:
 	Same as setVariable ["name",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space.
+
 	Checks also for different types. Nil as value gets always broadcasted.
 
 	Should reduce network traffic.

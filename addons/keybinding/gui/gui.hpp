@@ -25,7 +25,7 @@ class RscListBoxKeys;
 ///////////////////////////////////////////////////////////////////////////////
 
 class RscDisplayConfigure {
-    onLoad = "[""onLoad"",_this,""RscDisplayConfigure"",'GUI'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""; _this call compile preprocessfilelinenumbers ""\x\cba\addons\keybinding\gui\initDisplay.sqf""";
+    onLoad = "[""onLoad"",_this,""RscDisplayConfigure"",'GUI'] call compile preprocessfilelinenumbers ""a3\ui_f\scripts\initDisplay.sqf""; _this call compile preprocessfilelinenumbers ""\x\cba\addons\keybinding\gui\initDisplay.sqf""";
 
     class controls {
         class CA_ButtonCancel: RscButtonMenuCancel {
@@ -173,9 +173,4 @@ class RscDisplayConfigure {
             };
         };
     };
-};
-
-class RscDisplayCurator {
-    onLoad = "['CBA_curatorOpened', _this] call CBA_fnc_localEvent; [""onLoad"",_this,""RscDisplayCurator"",'CuratorDisplays'] call (uinamespace getvariable 'BIS_fnc_initDisplay')";
-    onUnload = "['CBA_curatorClosed', _this] call CBA_fnc_localEvent; [""onUnload"",_this,""RscDisplayCurator"",'CuratorDisplays'] call (uinamespace getvariable 'BIS_fnc_initDisplay')";
 };

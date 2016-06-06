@@ -5,45 +5,46 @@ Description:
     Removes an event handler previously registered with CBA_fnc_addEventHandler.
 
 Parameters:
-    _eventType - Type of event to remove [String].
-    _handlerIndex - Index of the event handler to remove [Number].
+    _eventName - Type of event to remove. <STRING>
+    _eventId   - Unique ID of the event handler to remove. <NUMBER>
 
 Returns:
-    nil
+    None
 
-TODO:
-    Use Hash to store handlers as a sparse array, to save on lots of empty
-    elements in the array if lots of removes are made.
+Examples:
+    (begin example)
+        ["test", _id] call CBA_fnc_removeEventHandler;
+    (end)
 
 Author:
-    Spooner
+    Spooner, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(removeEventHandler);
 
-// -----------------------------------------------------------------------------
+params [["_eventName", "", [""]], ["_eventId", -1, [0]]];
 
-params ["_eventType","_handlerIndex"];
+{
+    if (_eventId < 0) exitWith {};
 
-private "_handlers";
+    private _events = GVAR(eventNamespace) getVariable _eventName;
+    private _eventHash = GVAR(eventHashes) getVariable _eventName;
 
-_handlers = CBA_eventHandlers getVariable _eventType;
+    if (isNil "_events") exitWith {};
 
-if (isNil "_handlers") then {
-    WARNING("Event type not registered: " + (str _eventType));
-} else {
-    if (count _handlers > _handlerIndex) then {
-        if (isNil { _handlers select _handlerIndex } ) then {
-            WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " already removed.");
-        } else {
-            _handlers set [_handlerIndex, nil];
-            TRACE_2("Removed",_eventType,_handlerIndex);
-        };
-    } else {
-        WARNING("Handler for event " + (str _eventType) + " index " + (str _handlerIndex) + " never set.");
+    private _internalId = [_eventHash, _eventId] call CBA_fnc_hashGet;
+
+    if (_internalId != -1) then {
+        _events deleteAt _internalId;
+        [_eventHash, _eventId] call CBA_fnc_hashRem;
+
+        // decrement all higher internal ids, to adjust to new array position, _key == _eventId, _value == _internalId
+        [_eventHash, {
+            if (_value > _internalId && {!(_key isEqualTo "#lastId")}) then {
+                [_eventHash, _key, _value - 1] call CBA_fnc_hashSet;
+            };
+        }] call CBA_fnc_hashEachPair;
     };
-};
+} call CBA_fnc_directCall;
 
-nil; // Return.
+nil

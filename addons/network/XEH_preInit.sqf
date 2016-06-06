@@ -46,8 +46,6 @@ ADDON = false;
 ISNIL(timeSync_Disabled,true); // deprecated
 ISNIL(weatherSync_Disabled,true);
 
-PREP(exec);
-
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
 
@@ -58,8 +56,6 @@ OBSOLETE(fnc_addPersistentMarker,ADD_PERSISTENT_MARKER);
 OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
-
-GVAR(init) = false;
 
 if (SLX_XEH_MACHINE select 3) then {
     ISNIL(MARKERS,[]); // Sync Markers for JIP
@@ -78,30 +74,11 @@ if (SLX_XEH_MACHINE select 3) then {
     // TODO: Handle OPD without actually using opd
     // Disabled for now, either not used, or annoying to mission makers
     // onPlayerDisconnected '[_name,_id] call FUNC(opd)';
-
-    // Looped Weather Sync
-    /*
-    SLX_XEH_STR spawn {
-        // Every 60 Seconds weather sync
-        while { true } do {
-            sleep 60;
-            call FUNC(sync);
-        };
-    };
-    */
 } else {
     FUNC(id) = {
         if (player == player) then { str(player); } else { "client"; };
     };
 };
-
-
-[QUOTE(GVAR(cmd)), { if (GVAR(init)) then { _this spawn FUNC(exec) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-[QUOTE(GVAR(say)), { private "_say"; _say = _this; _objects = _say select 0; if (typeName _objects != "ARRAY") then { _objects = [_objects] }; { _x say (_say select 1) } forEach _objects }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-[QUOTE(GVAR(say3d)), { private "_say"; _say = _this; if (count _this > 2) then { if ((positionCameraToWorld [0,0,0]) distance (_say select 0) <= (_say select 2)) then { (_say select 0) say3d (_say select 1) } } else { (_say select 0) say3d (_say select 1) } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-[QUOTE(GVAR(date)), { private "_date"; _date = _this; setDate _date }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-//[QUOTE(GVAR(weather)), { private "_weather"; _weather = _this; CHANGETIME setOverCast (_weather select 0); CHANGETIME setRain (_weather select 2); (_weather select 1) spawn { sleep (CHANGETIME + 2); CHANGETIME setFog _this } }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-GVAR(init) = true; // Deprecated
 
 // Announce the completion of the initialization of the script
 ADDON = true;

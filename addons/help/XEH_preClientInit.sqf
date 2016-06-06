@@ -1,6 +1,3 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
-// So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
-
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
@@ -8,104 +5,146 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-PREP(help);
-PREP(describe);
-
-FUNC(readConfig) = {
-    params ["_type"];
-    _config = configFile >> _type;
-    _hash = [[], []] call (uiNamespace getVariable "CBA_fnc_hashCreate");
-    _hash2 = [[], ""] call (uiNamespace getVariable "CBA_fnc_hashCreate");
-    _hash3 = [[], ""] call (uiNamespace getVariable "CBA_fnc_hashCreate");
-    for "_i" from 0 to (count _config) - 1 do {
-        _entry = _config select _i;
-        if (isClass _entry) then {
-            if (isArray (_entry >> "author")) then { [_hash, configName _entry, getArray(_entry >> "author")] call (uiNamespace getVariable "CBA_fnc_hashSet") };
-            if (isText (_entry >> "authorUrl")) then { [_hash2, configName _entry, getText(_entry >> "authorUrl")] call (uiNamespace getVariable "CBA_fnc_hashSet") };
-            if (isText (_entry >> "version")) then { [_hash3, configName _entry, getText(_entry >> "version")] call (uiNamespace getVariable "CBA_fnc_hashSet") };
-        };
-    };
-    [_hash, _hash2, _hash3];
-};
+FUNC(help) = {call BIS_fnc_help};
 
 FUNC(process) = {
-    params ["_h1","_h2","_h3"];
-    _ar = [];
-    [_h1, {_entry = format["%1, v%2, (%3)<br/>Author: %4", _key, [_h3, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), [_h2, _key] call (uiNamespace getVariable "CBA_fnc_hashGet"), _value joinString ", "]; PUSH(_ar,_entry) }] call (uiNamespace getVariable "CBA_fnc_hashEachPair");
-    _ar joinString "<br/><br/>";
-};
+    params ["_hash1", "_hash2", "_hash3"];
 
-private ["_pkeynam", "_shift", "_ctrl", "_alt", "_keys", "_key", "_keystrg", "_mod", "_knaml", "_knam", "_k", "_text", "_cEvents", "_i", "_cSys", "_tSys", "_aSys", "_tS", "_j", "_c", "_tC", "_keyn", "_credits"];
-_pkeynam = { //local function
-    _shift = if(_shift > 0) then {42} else {0};
-    _ctrl = if(_ctrl > 0) then {56} else {0};
-    _alt = if(_alt > 0) then {29} else {0};
-    _keys = [_shift,_ctrl,_alt,_key];
-    _keystrg = "^";
+    private _result = [];
+
     {
-        _mod = _x in [42,56,29]; // ???
-        _knaml = call compile format["format['%2',%1]",(keyName _x),"%1"];
-        _knaml = [_knaml, " "] call (uiNamespace getVariable "CBA_fnc_split");
-        _knam = "^";
-        {_k = _x; _knam = _knam + " " + _k} forEach _knaml;
-        // if(!(_mod) || ( (_k != (localize "STR_ACE_KN_LEFT")) && (_k != (localize "STR_ACE_KN_RIGHT")) )) then {  // ?????
-        _knam = [_knam, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-        _keystrg = _keystrg + "-" + _knam;
+        private _entry = format [
+            "%1, v%2, (%3)<br/>Author: %4",
+            _x,
+            _hash3 getVariable _x,
+            _hash2 getVariable _x,
+            (_hash1 getVariable _x) joinString ", "
+        ];
+
+        _result pushBack _entry;
+    } forEach allVariables _hash1;
+
+    _result joinString "<br/><br/>";
+};
+
+// keys
+private _fnc_getKeyName = {
+    private _shift = [0, DIK_LSHIFT] select (_shift > 0);
+    private _ctrl = [0, DIK_LCONTROL] select (_ctrl > 0);
+    private _alt = [0, DIK_LMENU] select (_alt > 0);
+
+    private _keys = [_shift, _ctrl, _alt, _key];
+
+    private _result = "^";
+
+    {
+        private _keyName = call compile format ["format ['%1', %2]", "%1", keyName _x];
+        _keyName = [_keyName, " "] call CBA_fnc_split;
+
+        private _keyText = "^";
+
+        {
+            _keyText = _keyText + " " + _x;
+        } forEach _keyName;
+
+        _keyText = [_keyText, "^ ", ""] call CBA_fnc_replace;
+        _result = _result + "-" + _keyText;
     } forEach _keys;
-    _keystrg = [_keystrg, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "^-", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg = [_keystrg, "^", "None"] call (uiNamespace getVariable "CBA_fnc_replace");
-    _keystrg
+
+    _result = [_result, "^ ", ""] call CBA_fnc_replace;
+    _result = [_result, "^-", ""] call CBA_fnc_replace;
+    _result = [_result, "^", "None"] call CBA_fnc_replace;
+    _result
 };
 
-_text="";
-_cEvents = configFile/"CfgSettings"/"CBA"/"events";
-for "_i" from 0 to (count _cEvents)-1 do {
-    _cSys = _cEvents select _i;
-    _tSys = configName _cSys;
-    if (isNumber((_cSys select 0)/"key")) then {
-        //format system name
-        _aSys = [_tSys, "_"] call (uiNamespace getVariable "CBA_fnc_split");
-        _tS = "^";
-        {if((_x != "sys")) then {_tS = _tS + " " + _x;}} forEach _aSys;
-        // (_x != "ace") &&
-        _tS = [_tS, "^ ", ""] call (uiNamespace getVariable "CBA_fnc_replace");
-        _tS = format["%1:",_tS];
-        _text = _text + _tS + "<br/>";
-        for "_j" from 0 to (count _cSys)-1 do {
-            _c = _cSys select _j;
-            _tC = configName _c;
-            _tC = [_tC, "_", " "] call (uiNamespace getVariable "CBA_fnc_replace");
-            //key
-            _key = getNumber (_c/"key");
-            _shift = getNumber (_c/"shift");
-            _ctrl = getNumber (_c/"ctrl");
-            _alt = getNumber (_c/"alt");
-            _keyn = [_key,_shift,_ctrl,_alt] call _pkeynam;
-            _tC = format["    %1: %2",_tC,_keyn];
-            _text = _text + _tC + "<br/>";
+private _text = "";
+
+private _config = configFile >> "CfgSettings" >> "CBA" >> "events";
+
+{
+    private _addonConfig = _x;
+    private _addonName = configName _addonConfig;
+
+    private _addonNameArr = [_addonName, "_"] call CBA_fnc_split;
+    private _addonText = "^";
+
+    {
+        if (_x != "sys") then {
+            _addonText = format ["%1 %2", _addonText, _x];
         };
-        _text = _text + "<br/>";
-    };
-};
+    } forEach _addonNameArr;
 
+    _addonText = [_addonText, "^ ", ""] call CBA_fnc_replace;
+    _addonText = format ["%1:", _addonText];
 
-GVAR(credits) = [[], []] call (uiNamespace getVariable "CBA_fnc_hashCreate");
-{ [GVAR(credits), _x, [_x] call FUNC(readConfig)] call (uiNamespace getVariable "CBA_fnc_hashSet") } forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
+    {
+        private _entry = _x;
+        private _actionName = configName _entry;
 
-GVAR(docs) = "";
-_cfg = configFile >> "CfgMods";
-_c = count _cfg;
-if (_c > 0) then {
-    for "_i" from 0 to (_c - 1) do {
-        _mod = _cfg select _i;
-        if (isClass _mod && {isText(_mod >> "description")}) then {
-            _e = format["* %1 - %2<br />%3<br /><br />", configName _mod, getText(_mod >> "name"), getText(_mod >> "description")];
-            ADD(GVAR(docs),_e);
+        _actionName = [_actionName, "_", " "] call CBA_fnc_replace;
+
+        private ["_key", "_shift", "_ctrl", "_alt"];
+
+        if (isNumber _entry) then {
+            _key = getNumber _entry;
+            _shift = 0;
+            _ctrl = 0;
+            _alt = 0;
+        } else {
+            _key = getNumber (_entry >> "key");
+            _shift = getNumber (_entry >> "shift");
+            _ctrl = getNumber (_entry >> "ctrl");
+            _alt = getNumber (_entry >> "alt");
         };
-    };
-};
+
+        private _keyName = [_key, _shift, _ctrl, _alt] call _fnc_getKeyName;
+
+        _actionName = format ["    %1: %2", _actionName, _keyName];
+
+        _text = _text + _actionName + "<br/>";
+    } forEach configProperties [_addonConfig, "isNumber _x || isClass _x", true];
+
+    _text = _text + "<br/>";
+} forEach ("true" configClasses _config);
 
 GVAR(keys) = _text;
+
+// credits
+GVAR(credits) = call CBA_fnc_createNamespace;
+
+private _fnc_readCreditsFromConfig = {
+    params ["_type"];
+
+    private _config = configFile >> _type;
+
+    private _hash1 = call CBA_fnc_createNamespace;
+    private _hash2 = call CBA_fnc_createNamespace;
+    private _hash3 = call CBA_fnc_createNamespace;
+
+    {
+        private _entry = _x;
+
+        _hash1 setVariable [configName _entry, getArray (_entry >> "author")];
+        _hash2 setVariable [configName _entry, getText (_entry >> "authorUrl")];
+        _hash3 setVariable [configName _entry, getText (_entry >> "version")];
+    } forEach ("isArray (_x >> 'author')" configClasses _config);
+
+    [_hash1, _hash2, _hash3]
+};
+
+{
+    GVAR(credits) setVariable [_x, _x call _fnc_readCreditsFromConfig];
+} forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
+
+// docs
+GVAR(docs) = "";
+
+private _config = configFile >> "CfgMods";
+
+{
+    private _entry = format ["* %1 - %2<br />%3<br /><br />", configName _x, getText (_x >> "name"), getText (_x >> "description")];
+
+    GVAR(docs) + _entry;
+} forEach ("isText (_x >> 'description')" configClasses _config);
 
 ADDON = true;
