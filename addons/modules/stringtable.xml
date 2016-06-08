@@ -164,19 +164,19 @@
             <English>How fast the group is to engage</English>
         </Key>
         <Key ID="STR_CBA_Modules_CombatYellow">
-            <English>Yellow(Fire at will)</English>
+            <English>Yellow (Fire at will)</English>
         </Key>
         <Key ID="STR_CBA_Modules_CombatBlue">
-            <English>Blue(Never fire)</English>
+            <English>Blue (Never fire)</English>
         </Key>
         <Key ID="STR_CBA_Modules_CombatGreen">
-            <English>Green(Hold Fire-Defend Only)</English>
+            <English>Green (Hold Fire-Defend Only)</English>
         </Key>
         <Key ID="STR_CBA_Modules_CombatWhite">
-            <English>White(Hold Fire-Engage at will)</English>
+            <English>White (Hold Fire-Engage at will)</English>
         </Key>
         <Key ID="STR_CBA_Modules_CombatRed">
-            <English>Red(Fire at will-Engage at will)</English>
+            <English>Red (Fire at will-Engage at will)</English>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode">
             <English>Speed Mode</English>
