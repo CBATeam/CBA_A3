@@ -178,7 +178,7 @@ class CfgVehicles {
                         name = "4";
                         value = 4;
                     };
-                    class five{
+                    class five {
                         name = "5";
                         value = 5;
                     };
