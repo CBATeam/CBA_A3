@@ -5,11 +5,6 @@ CBA_fnc_createCenter = {
     _side
 };
 
-CBA_fnc_players = {
-    WARNING('Deprecated function used: CBA_fnc_players (new: allPlayers)');
-    allPlayers
-};
-
 CBA_fnc_locked = {
     WARNING('Deprecated function used: CBA_fnc_locked (new: locked)');
     locked _this > 1
