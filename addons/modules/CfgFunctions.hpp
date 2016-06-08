@@ -5,11 +5,11 @@ class CfgFunctions
     {
         class Modules
         {
-            // CBA_fnc_getStringPos
-            class getStringPos
+            // CBA_fnc_getPosFromString
+            class getPosFromString
             {
-                description = "A function to get the position of a string.";
-                file = "\x\cba\addons\modules\fnc_getStringPos.sqf";
+                description = "A function to get the position of an item passed as a string.";
+                file = "\x\cba\addons\modules\fnc_getPosFromString.sqf";
             };
             
             // CBA_fnc_moduleAttack

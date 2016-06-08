@@ -1,8 +1,11 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getStringPos
+Function: CBA_fnc_getPosFromString
 
 Description:
-    A function used to get the position of a string with a passed typeName.
+    A function used to get the position of an item when passed as a string. Designed
+	with modules in mind since information can, presently, only be passed as a string
+	or scalar. The type name needs to be passed along with the item so the function knows
+	how to extract the desired position.
 
 Parameters:
     - _type (String)
@@ -11,7 +14,8 @@ Parameters:
 
 Example:
     (begin example)
-    [1, "player"] call CBA_fnc_getStringPos;
+    ["OBJECT", "player"] call CBA_fnc_getPosFromString;
+	["MARKER","myMarker"] call CBA_fnc_getPosFromString;
     (end)
 
 Returns:

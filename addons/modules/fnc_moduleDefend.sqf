@@ -67,7 +67,7 @@ _defendPos = _logic getVariable ["defendPosition",objNull];
 _defendSetPos = false;
 
 // Parse defend position from string
-_defendPos = [_defendLocType, _defendPos] call CBA_fnc_getStringPos;
+_defendPos = [_defendLocType, _defendPos] call CBA_fnc_getPosFromString;
 if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol

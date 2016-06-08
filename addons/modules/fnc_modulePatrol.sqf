@@ -85,7 +85,7 @@ _patrolPos = _logic getVariable ["patrolPosition",objNull];
 _patrolSetPos = false;
 
 // Parse patrol position from string
-_patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getStringPos;
+_patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getPosFromString;
 if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos

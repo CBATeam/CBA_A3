@@ -65,7 +65,7 @@ _attackLocType = _logic getVariable ["attackLocType",""];
 _attackPos = _logic getVariable ["attackPosition",objNull];
 
 // Parse attack position from string
-_attackPos = [_attackLocType, _attackPos] call CBA_fnc_getStringPos;
+_attackPos = [_attackLocType, _attackPos] call CBA_fnc_getPosFromString;
 if (isNil "_attackPos") then {_attackPos = getPos _logic;};
 
 // Set final variables
