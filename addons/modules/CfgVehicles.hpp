@@ -8,6 +8,7 @@ class CfgVehicles {
     class CBA_ModuleAttack: Module_F {
         scope = 2;
         displayName = CSTRING(Attack);
+        author = "WiredTiger";
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_moduleAttack";
@@ -99,6 +100,7 @@ class CfgVehicles {
     class CBA_ModuleDefend: Module_F {
         scope = 2;
         displayName = CSTRING(Defend);
+        author = "WiredTiger";
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_moduleDefend";
@@ -223,6 +225,7 @@ class CfgVehicles {
     class CBA_ModulePatrol: Module_F {
         scope = 2;
         displayName = CSTRING(Patrol);
+        author = "WiredTiger";
         vehicleClass = "Modules";
         category = "CBA_Modules";
         function = "CBA_fnc_modulePatrol";
