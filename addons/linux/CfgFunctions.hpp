@@ -14,6 +14,7 @@ class CfgFunctions {
             F_FILEPATH(common,vehicleRole);
             F_FILEPATH(common,turretPath);
             F_FILEPATH(common,turretPathWeapon);
+            F_FILEPATH(common,viewDir);
         };
 
         class Inventory {
@@ -21,10 +22,6 @@ class CfgFunctions {
             F_FILEPATH(common,dropWeapon);
             F_FILEPATH(common,dropMagazine);
             F_FILEPATH(common,addBinocularMagazine);
-        };
-
-        class Ui {
-            F_FILEPATH(common,viewDir);
         };
 
         class Events {
