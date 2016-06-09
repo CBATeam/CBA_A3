@@ -4,6 +4,11 @@
 }
 
 class CfgFunctions {
+    class A3_Bootcamp {
+        class Inventory {
+            F_FILEPATH(jr,compatibleItems);
+        };
+    };
     class CBA {
         class Entities {
             F_FILEPATH(common,getAlive);
@@ -21,6 +26,7 @@ class CfgFunctions {
             F_FILEPATH(common,dropWeapon);
             F_FILEPATH(common,dropMagazine);
             F_FILEPATH(common,addBinocularMagazine);
+            F_FILEPATH(jr,compatibleItems);
         };
 
         class Events {
@@ -31,10 +37,6 @@ class CfgFunctions {
 
         class Hashes {
             F_FILEPATH(hashes,hashCreate);
-        };
-
-        class JR {
-            F_FILEPATH(jr,compatibleItems);
         };
 
         class XEH {
