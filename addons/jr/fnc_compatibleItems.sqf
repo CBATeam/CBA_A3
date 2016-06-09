@@ -9,7 +9,7 @@ Parameters:
     _typefilter - Optional filter. Can be "muzzle", "optic", "pointer" or "bipod". <STRING, NUMBER>
 
 Returns:
-    Class names of with weapon compatible attachments <ARRAY>
+    Class names of attachments compatible with weapon <ARRAY>
 
 Examples:
     (begin example)
