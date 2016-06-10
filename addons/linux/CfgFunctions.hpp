@@ -19,6 +19,7 @@ class CfgFunctions {
             F_FILEPATH(common,vehicleRole);
             F_FILEPATH(common,turretPath);
             F_FILEPATH(common,turretPathWeapon);
+            F_FILEPATH(common,viewDir);
         };
 
         class Inventory {

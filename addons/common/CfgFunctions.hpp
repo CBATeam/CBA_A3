@@ -47,6 +47,8 @@ class CfgFunctions {
             F_FILEPATH(vehicleRole);
             F_FILEPATH(turretPath);
             F_FILEPATH(turretPathWeapon);
+            F_FILEPATH(viewDir);
+            F_FILEPATH(turretDir);
         };
 
         class Anims {
