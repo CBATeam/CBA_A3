@@ -2,6 +2,10 @@
 
 ADDON = false;
 
+//ClientOwner command is unreliable in saved games
+//CBA_clientID will hold the correct value for the client's owner (needed for publicVariableClient and remoteExec)
+CBA_clientID = -1; //Will be -1 until real value recieved from server
+
 // Initialisation required by CBA events.
 GVAR(eventNamespace) = call CBA_fnc_createNamespace;
 GVAR(eventHashes) = call CBA_fnc_createNamespace;
