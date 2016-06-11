@@ -7,6 +7,7 @@ Description:
 Parameters:
     _eventName - Type of event to handle. <STRING>
     _eventFunc - Function to call when event is raised. <CODE>
+    _arguments - Arguments to pass to event handler. (optional) <Any>
 
 Returns:
     _eventId - Unique ID of the event handler (can be used with <CBA_fnc_removeEventHandler>).
@@ -22,7 +23,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(addEventHandler);
 
-params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]]];
+params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]];
 
 {
     if (_eventName isEqualTo "" || isNil "_eventFunc") exitWith {-1};
@@ -39,7 +40,8 @@ params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]]];
         GVAR(eventHashes) setVariable [_eventName, _eventHash];
     };
 
-    private _internalId = _events pushBack _eventFunc;
+    private _eventData = [_eventFunc, _arguments];
+    private _internalId = _events pushBack _eventData;
 
     // get last id
     private _eventId = [_eventHash, "#lastId"] call CBA_fnc_hashGet;
@@ -47,6 +49,7 @@ params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]]];
     // inc id
     _eventId = _eventId + 1;
 
+    _eventData pushBack _eventId;
     [_eventHash, "#lastId", _eventId] call CBA_fnc_hashSet;
     [_eventHash, _eventId, _internalId] call CBA_fnc_hashSet;
 
