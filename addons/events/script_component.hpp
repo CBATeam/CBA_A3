@@ -37,7 +37,7 @@
         _x params ["_thisFnc", "_thisArgs", "_thisId"];\
         args call _thisFnc;\
     };\
-} forEach (GVAR(eventNamespace) getVariable event)
+} forEach +(GVAR(eventNamespace) getVariable event) // copy array so events can be removed while iterating safely
 
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 
