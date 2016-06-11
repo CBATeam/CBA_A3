@@ -23,9 +23,9 @@ Author:
 #include "script_component.hpp"
 SCRIPT(addEventHandler);
 
-params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]];
+[{
+    params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]];
 
-{
     if (_eventName isEqualTo "" || isNil "_eventFunc") exitWith {-1};
 
     private _events = GVAR(eventNamespace) getVariable _eventName;
@@ -40,18 +40,14 @@ params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]]
         GVAR(eventHashes) setVariable [_eventName, _eventHash];
     };
 
-    private _eventData = [_eventFunc, _arguments];
-    private _internalId = _events pushBack _eventData;
-
-    // get last id
+    // get new id
     private _eventId = [_eventHash, "#lastId"] call CBA_fnc_hashGet;
+    INC(_eventId);
 
-    // inc id
-    _eventId = _eventId + 1;
+    private _internalId = _events pushBack [_eventFunc, _arguments, _eventId];
 
-    _eventData pushBack _eventId;
     [_eventHash, "#lastId", _eventId] call CBA_fnc_hashSet;
     [_eventHash, _eventId, _internalId] call CBA_fnc_hashSet;
 
     _eventId
-} call CBA_fnc_directCall;
+}, _this] call CBA_fnc_directCall;

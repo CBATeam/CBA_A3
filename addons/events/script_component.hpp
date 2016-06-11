@@ -31,11 +31,11 @@
 
 #define SEND_TEVENT_TO_SERVER(params,name,targets) TEVENT_PVAR = [name, params, targets]; publicVariableServer TEVENT_PVAR_STR
 
-#define CALL_EVENT(params,event) {\
+#define CALL_EVENT(args,event) {\
     if !(isNil "_x") then {\
         private _thisType = event;\
         _x params ["_thisFnc", "_thisArgs", "_thisId"];\
-        params call _thisFnc;\
+        args call _thisFnc;\
     };\
 } forEach (GVAR(eventNamespace) getVariable event)
 
