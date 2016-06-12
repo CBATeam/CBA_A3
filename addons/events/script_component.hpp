@@ -33,9 +33,7 @@
 
 #define CALL_EVENT(args,event) {\
     if !(isNil "_x") then {\
-        private _thisType = event;\
-        _x params ["_thisFnc", "_thisArgs", "_thisId"];\
-        args call _thisFnc;\
+        args call _x;\
     };\
 } forEach +(GVAR(eventNamespace) getVariable event) // copy array so events can be removed while iterating safely
 

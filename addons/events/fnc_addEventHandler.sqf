@@ -7,10 +7,9 @@ Description:
 Parameters:
     _eventName - Type of event to handle. <STRING>
     _eventFunc - Function to call when event is raised. <CODE>
-    _arguments - Arguments to pass to event handler. (optional) <Any>
 
 Returns:
-    _eventId - Unique ID of the event handler (can be used with <CBA_fnc_removeEventHandler>).
+    _eventId - Unique ID of the event handler (can be used with <CBA_fnc_removeEventHandler).
 
 Examples:
     (begin example)
@@ -24,7 +23,7 @@ Author:
 SCRIPT(addEventHandler);
 
 [{
-    params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]];
+    params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]]];
 
     if (_eventName isEqualTo "" || isNil "_eventFunc") exitWith {-1};
 
@@ -40,11 +39,11 @@ SCRIPT(addEventHandler);
         GVAR(eventHashes) setVariable [_eventName, _eventHash];
     };
 
+    private _internalId = _events pushBack _eventFunc;
+
     // get new id
     private _eventId = [_eventHash, "#lastId"] call CBA_fnc_hashGet;
     INC(_eventId);
-
-    private _internalId = _events pushBack [_eventFunc, _arguments, _eventId];
 
     [_eventHash, "#lastId", _eventId] call CBA_fnc_hashSet;
     [_eventHash, _eventId, _internalId] call CBA_fnc_hashSet;
