@@ -9,7 +9,7 @@ Parameters:
     _eventFunc - Function to call when event is raised. <CODE>
 
 Returns:
-    _eventId - Unique ID of the event handler (can be used with <CBA_fnc_removeEventHandler).
+    _eventId - Unique ID of the event handler (can be used with CBA_fnc_removeEventHandler).
 
 Examples:
     (begin example)

@@ -17,7 +17,7 @@ Parameters:
     _arguments - Arguments to pass to event handler. (optional) <Any>
 
 Returns:
-    _eventId - Unique ID of the event handler (can be used with <CBA_fnc_removeEventHandler).
+    _eventId - Unique ID of the event handler (can be used with CBA_fnc_removeEventHandler).
 
 Examples:
     (begin example)
@@ -44,7 +44,7 @@ if (isNil QGVAR(eventsArgs)) then {
 private _eventData = [_arguments, _eventFunc, _eventName];
 private _id = GVAR(eventsArgs) pushBack _eventData;
 
-private _eventFunc = compile format ['
+_eventFunc = compile format ['
     (GVAR(eventsArgs) select %1) params ["_thisArgs", "_thisFnc", "_thisType", "_thisId"];
     _this call _thisFnc;
 ', _id];
