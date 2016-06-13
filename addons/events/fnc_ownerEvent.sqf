@@ -29,7 +29,7 @@ TRACE_3("params",_eventName,_params,_targetOwner);
 if (_targetOwner == 2) then { //Going to server:
     if (isServer) then {
         //We are the server: Do local event (no network traffic)
-        [_eventName, _params] call CBA_fnc_localEvent;
+        CALL_EVENT(_params,_eventName);
     } else {
         //Remote Server, send event (using publicVariableServer)
         //Note: publicVariableClient does not seem to work on dedicated
@@ -39,7 +39,7 @@ if (_targetOwner == 2) then { //Going to server:
     if (CBA_clientID == _targetOwner) then {
         //We are the target client: Do local event (no network traffic)
         //Note: publicVariableClient to yourself DOES trigger addPublicVariableEventHandler, but it also causes network traffic
-        [_eventName, _params] call CBA_fnc_localEvent;
+        CALL_EVENT(_params,_eventName);
     } else {
         //Remote Client, send event (using publicVariableClient)
         SEND_EVENT_TO_CLIENT(_params,_eventName,_targetOwner);
