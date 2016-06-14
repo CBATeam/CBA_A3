@@ -33,8 +33,8 @@ private _gunBeg = _vehicle selectionPosition getText (_turretConfig >> "gunBeg")
 private _gunEnd = _vehicle selectionPosition getText (_turretConfig >> "gunEnd");
 
 if !(_relativeToModel) then {
-    _gunBeg = _vehicle modelToWorld _gunBeg;
-    _gunEnd = _vehicle modelToWorld _gunEnd;
+    _gunBeg = AGLToASL (_vehicle modelToWorld _gunBeg);
+    _gunEnd = AGLToASL (_vehicle modelToWorld _gunEnd);
 };
 
 private _turretDir = _gunEnd vectorFromTo _gunBeg;
