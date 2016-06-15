@@ -10,7 +10,7 @@ Description:
 Parameters:
     _array - Nested array to be sorted <ARRAY>
     _index - Sub array item index to be sorted on <NUMBER>
-    _order - true: ascending, false: descending (optional: true) <BOOLEAN>
+    _order - true: ascending, false: descending (optional, default: true) <BOOLEAN>
 
 Example:
     (begin example)
