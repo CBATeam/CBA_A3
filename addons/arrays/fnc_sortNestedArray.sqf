@@ -28,14 +28,20 @@ SCRIPT(sortNestedArray);
 
 params [["_array", [], [[]]], ["_index", 0, [0]], ["_order", true, [false]]];
 
+#ifndef LINUX_BUILD
 private _helperArray = _array apply {
     [_x select _index, _x]
 };
+#else
+private _helperArray = [_array, {
+    [_x select _index, _x]
+}] call CBA_fnc_filter;
+#endif
 
 _helperArray sort _order;
 
 {
-    _array set [_forEachIndex, _helperArray select _forEachIndex select 1];
-} forEach _array;
+    _array set [_forEachIndex, _x select 1];
+} forEach _helperArray;
 
 _array

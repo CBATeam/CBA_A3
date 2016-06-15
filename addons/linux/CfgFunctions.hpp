@@ -30,6 +30,10 @@ class CfgFunctions {
             F_FILEPATH(jr,compatibleItems);
         };
 
+        class Arrays {
+            F_FILEPATH(arrays,sortNestedArray);
+        };
+
         class Events {
             F_FILEPATH(events,addPlayerEventHandler);
             F_FILEPATH(events,addKeyHandler);
