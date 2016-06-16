@@ -11,7 +11,7 @@ GVAR(eventNamespace) = call CBA_fnc_createNamespace;
 GVAR(eventHashes) = call CBA_fnc_createNamespace;
 
 if (isServer) then {
-    GVAR(eventNamespaceJIP) = true call CBA_fnc_createNamespace; // createVehicle fails on game logics. Have to use createUnit instead.
+    GVAR(eventNamespaceJIP) = true call CBA_fnc_createNamespace;
     publicVariable QGVAR(eventNamespaceJIP);
 };
 
