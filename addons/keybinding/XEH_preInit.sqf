@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
+if (!hasInterface) exitWith {};
+
 ADDON = false;
 
 // Load DIK to string conversion table.
