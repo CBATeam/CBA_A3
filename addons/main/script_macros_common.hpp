@@ -677,6 +677,8 @@ Author:
 #define EGVAR(var1,var2) TRIPLES(PREFIX,var1,var2)
 #define QGVAR(var1) QUOTE(GVAR(var1))
 #define QEGVAR(var1,var2) QUOTE(EGVAR(var1,var2))
+#define QQGVAR(var1) QUOTE(QGVAR(var1))
+#define QQEGVAR(var1,var2) QUOTE(QEGVAR(var1,var2))
 
 /* -------------------------------------------
 Macro: GVARMAIN()
@@ -696,6 +698,7 @@ Author:
 ------------------------------------------- */
 #define GVARMAIN(var1) GVARMAINS(PREFIX,var1)
 #define QGVARMAIN(var1) QUOTE(GVARMAIN(var1))
+#define QQGVARMAIN(var1) QUOTE(QGVARMAIN(var1))
 // TODO: What's this?
 #define SETTINGS DOUBLES(PREFIX,settings)
 #define CREATELOGIC CREATELOGICS(PREFIX,COMPONENT)
@@ -726,6 +729,10 @@ Author:
 #define QFUNCMAIN(var1) QUOTE(FUNCMAIN(var1))
 #define QFUNC_INNER(var1,var2) QUOTE(FUNC_INNER(var1,var2))
 #define QEFUNC(var1,var2) QUOTE(EFUNC(var1,var2))
+#define QQFUNC(var1) QUOTE(QFUNC(var1))
+#define QQFUNCMAIN(var1) QUOTE(QFUNCMAIN(var1))
+#define QQFUNC_INNER(var1,var2) QUOTE(QFUNC_INNER(var1,var2))
+#define QQEFUNC(var1,var2) QUOTE(QEFUNC(var1,var2))
 
 #ifndef PRELOAD_ADDONS
     #define PRELOAD_ADDONS class CfgAddons \
