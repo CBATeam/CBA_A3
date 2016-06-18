@@ -16,6 +16,8 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
+
+#include "CfgVehicles.hpp"
 #include "CfgLocationTypes.hpp"
 
 class CBA_DirectCall {
