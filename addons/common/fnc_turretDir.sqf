@@ -12,7 +12,7 @@ Parameters:
 Returns:
     Azimuth + Inclination <ARRAY>
         0: _azimuth (0-360 degree) <NUMBER>
-        1: _inclination (180 to -180 degree, 0: forward) <NUMBER>
+        1: _inclination (90 to -90 degree, 0: forward) <NUMBER>
 
 Examples:
     (begin example)
