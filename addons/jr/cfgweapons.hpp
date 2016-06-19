@@ -611,5 +611,143 @@ class CfgWeapons {
             };
         };
     };
+	//DP APEX ADDITIONS
+		class arifle_MX_khk_F: arifle_MX_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: asdg_MuzzleSlot_762
+			{
+				iconPosition[] = {0,0.45};
+				iconScale = 0.2;
+				class compatibleItems: compatibleItems
+				{
+					muzzle_snds_h = 1;
+				};
+			};
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.5,0.35};
+				iconScale = 0.2;
+			};
+			class PointerSlot: asdg_FrontSideRail
+			{
+				iconPosition[] = {0.2,0.45};
+				iconScale = 0.25;
+			};
+			class UnderBarrelSlot: asdg_UnderSlot
+			{
+				iconPosition[] = {0.2,0.7};
+				iconScale = 0.2;
+			};
+		};
+	};
+	class arifle_MX_GL_khk_F: arifle_MX_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: asdg_MuzzleSlot_762
+			{
+				iconPosition[] = {0,0.45};
+				iconScale = 0.2;
+				class compatibleItems: compatibleItems
+				{
+					muzzle_snds_h = 1;
+				};
+			};
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.5,0.35};
+				iconScale = 0.2;
+			};
+			class PointerSlot: asdg_FrontSideRail
+			{
+				iconPosition[] = {0.2,0.45};
+				iconScale = 0.25;
+			};
+		};
+	};
+	class arifle_MX_SW_khk_F: arifle_MX_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: asdg_MuzzleSlot_762MG
+			{
+				iconPosition[] = {0,0.45};
+				iconScale = 0.2;
+				class compatibleItems: compatibleItems
+				{
+					muzzle_snds_h = 1;
+				};
+			};
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.5,0.35};
+				iconScale = 0.2;
+			};
+			class PointerSlot: asdg_FrontSideRail
+			{
+				iconPosition[] = {0.2,0.45};
+				iconScale = 0.25;
+			};
+			class UnderBarrelSlot: asdg_UnderSlot
+			{
+				iconPosition[] = {0.2,0.7};
+				iconScale = 0.2;
+			};
+		};
+	};
+	class arifle_MXM_khk_F: arifle_MX_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class MuzzleSlot: asdg_MuzzleSlot_762
+			{
+				iconPosition[] = {0,0.4};
+				iconScale = 0.2;
+				class compatibleItems: compatibleItems
+				{
+					muzzle_snds_h = 1;
+				};
+			};
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.5,0.35};
+				iconScale = 0.2;
+			};
+			class PointerSlot: asdg_FrontSideRail
+			{
+				iconPosition[] = {0.2,0.45};
+				iconScale = 0.25;
+			};
+			class UnderBarrelSlot: asdg_UnderSlot
+			{
+				iconPosition[] = {0.2,0.7};
+				iconScale = 0.2;
+			};
+		};
+	};
+	class srifle_GM6_ghex_F: GM6_base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.55,0.3};
+				iconScale = 0.2;
+			};
+		};
+	};
+	class srifle_LRR_tna_F: LRR_base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			class CowsSlot: asdg_OpticRail1913
+			{
+				iconPosition[] = {0.6,0.35};
+				iconScale = 0.2;
+			};
+		};
+	};
 
 };
