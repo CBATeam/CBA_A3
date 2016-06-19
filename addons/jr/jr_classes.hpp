@@ -46,6 +46,7 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
         bipod_02_F_hex = 1;
         bipod_03_F_blk = 1;
         bipod_03_F_oli = 1;
+		bipod_01_F_khk = 1;//dpapexaddon
     };
 };
 
@@ -76,6 +77,20 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_KHS_hex = 1;
         optic_KHS_old = 1;
         optic_KHS_tan = 1;
+		//dpapexaddon
+		optic_Arco_blk_F = 1;
+		optic_Arco_ghex_F = 1;
+		optic_DMS_ghex_F = 1;
+		optic_ERCO_blk_F = 1;
+		optic_ERCO_khk_F = 1;
+		optic_ERCO_snd_F = 1;
+		optic_Hamr_khk_F = 1;
+		optic_SOS_khk_F = 1;
+		optic_LRPS_tna_F = 1;
+		optic_LRPS_ghex_F = 1;
+		optic_Holosight_blk_F = 1;
+		optic_Holosight_khk_F = 1;
+		optic_Holosight_smg_blk_F = 1;
     };
 };
 
@@ -122,12 +137,18 @@ class asdg_OpticSideMount: asdg_OpticRail {
 class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount suppressors
     class compatibleItems {
         muzzle_snds_B = 1;
+		//dpapexaddon
+		muzzle_snds_B_khk_F = 1;
+		muzzle_snds_B_snd_F = 1;
     };
 };
 
 class asdg_MuzzleSlot_556: asdg_MuzzleSlot { // for 5.56x45 universal mount suppressors
     class compatibleItems {
         muzzle_snds_M = 1;
+		//dpapexaddon
+		muzzle_snds_m_khk_F = 1;
+		muzzle_snds_m_snd_F = 1;
     };
 };
 
@@ -135,6 +156,10 @@ class asdg_MuzzleSlot_762MG: asdg_MuzzleSlot { // for 7.62, 6.5 and 5.56 univers
     class compatibleItems {
         muzzle_snds_H_MG = 1;
         muzzle_snds_H_SW = 1;
+		//dpapexaddon
+		muzzle_snds_H_MG_blk_F = 1;
+		muzzle_snds_H_MG_khk_F = 1;
+		muzzle_snds_H_khk_F = 1;
     };
 };
 
