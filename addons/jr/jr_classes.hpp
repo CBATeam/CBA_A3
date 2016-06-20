@@ -58,17 +58,27 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_tws_mg = 1;
         optic_NVS = 1;
         optic_SOS = 1;
+        optic_SOS_khk_F = 1;
         optic_MRCO = 1;
         optic_Arco = 1;
+        optic_Arco_ghex_F = 1;
+        optic_Arco_blk_F = 1;
         optic_aco = 1;
         optic_ACO_grn = 1;
         optic_aco_smg = 1;
         optic_ACO_grn_smg = 1;
         optic_hamr = 1;
+        optic_Hamr_khk_F = 1;
         optic_Holosight = 1;
         optic_Holosight_smg = 1;
+        optic_Holosight_blk_F = 1;
+        optic_Holosight_khk_F = 1;
+        optic_Holosight_smg_blk_F = 1;
         optic_DMS = 1;
+        optic_DMS_ghex_F = 1;
         optic_LRPS = 1;
+        optic_LRPS_ghex_F = 1;
+        optic_LRPS_tna_F = 1;
         optic_AMS = 1;
         optic_AMS_khk = 1;
         optic_AMS_snd = 1;
@@ -76,6 +86,9 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_KHS_hex = 1;
         optic_KHS_old = 1;
         optic_KHS_tan = 1;
+        optic_ERCO_blk_F = 1;
+        optic_ERCO_khk_F = 1;
+        optic_ERCO_snd_F = 1;
     };
 };
 
@@ -122,18 +135,24 @@ class asdg_OpticSideMount: asdg_OpticRail {
 class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount suppressors
     class compatibleItems {
         muzzle_snds_B = 1;
+        muzzle_snds_B_khk_F = 1;
+        muzzle_snds_B_snd_F = 1;
     };
 };
 
 class asdg_MuzzleSlot_556: asdg_MuzzleSlot { // for 5.56x45 universal mount suppressors
     class compatibleItems {
         muzzle_snds_M = 1;
+        muzzle_snds_m_khk_F = 1;
+        muzzle_snds_m_snd_F = 1;
     };
 };
 
 class asdg_MuzzleSlot_762MG: asdg_MuzzleSlot { // for 7.62, 6.5 and 5.56 universal mount MG suppressors
     class compatibleItems {
         muzzle_snds_H_MG = 1;
+        muzzle_snds_H_MG_blk_F = 1;
+        muzzle_snds_H_MG_khk_F = 1;
         muzzle_snds_H_SW = 1;
     };
 };
@@ -181,4 +200,11 @@ class asdg_MuzzleSlot_545R: asdg_MuzzleSlot { // for 5.45x39 suppressors
 
 class asdg_MuzzleSlot_762R: asdg_MuzzleSlot { // for 7.62x39 suppressors
     class compatibleItems {};
+};
+
+class asdg_MuzzleSlot_58: asdg_MuzzleSlot { // for 5.8x42 suppressors
+    class compatibleItems {
+        muzzle_snds_58_blk_F = 1;
+        muzzle_snds_58_wdm_F = 1;
+    };
 };

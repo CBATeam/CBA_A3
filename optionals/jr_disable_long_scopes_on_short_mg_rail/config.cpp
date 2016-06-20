@@ -23,8 +23,12 @@ class asdg_OpticRail1913_short: asdg_OpticRail1913 {
 class asdg_OpticRail1913_short_MG: asdg_OpticRail1913_short {
     class compatibleItems: compatibleItems {
         optic_SOS = 0;
+        optic_SOS_khk_F = 0;
         optic_DMS = 0;
+        optic_DMS_ghex_F = 0;
         optic_LRPS = 0;
+        optic_LRPS_ghex_F = 0;
+        optic_LRPS_tna_F = 0;
         optic_AMS = 0;
         optic_AMS_khk = 0;
         optic_AMS_snd = 0;
