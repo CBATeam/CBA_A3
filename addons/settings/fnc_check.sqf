@@ -20,7 +20,7 @@ params [["_setting", "", [""]], "_value"];
 
 if (isNil "_value") exitWith {false};
 
-(GVAR(defaultSettings) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData"];
+([GVAR(defaultSettings) getVariable _setting] param [0, []]) params ["_defaultValue", "", ["_settingType", ""], "_settingData"];
 
 switch (toUpper _settingType) do {
     case ("CHECKBOX"): {
