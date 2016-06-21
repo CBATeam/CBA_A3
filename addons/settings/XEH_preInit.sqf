@@ -6,7 +6,6 @@ ADDON = false;
 #include "XEH_PREP.sqf"
 
 #ifdef DEBUG_MODE_FULL
-// CHECKBOX --- extra argument: default value
 ["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
 ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
@@ -25,10 +24,10 @@ ADDON = false;
 
     if (isNil QGVAR(ready)) exitWith {};
 
-    private _script = [GVAR(defaultSettings) getVariable _setting] param [0, []] param [8, {}];
-    [_script, _value] call {
+    private _script = NAMESPACE_GETVAR(GVAR(defaultSettings),_setting,[]) param [8, {}];
+    [_value, _script] call {
         private ["_setting", "_value", "_script"]; // prevent these variables from being overwritten
-        _this call CBA_fnc_directCall;
+        (_this select 0) call (_this select 1);
     };
 
     ["CBA_SettingChanged", [_setting, _value]] call CBA_fnc_localEvent;
@@ -40,6 +39,11 @@ ADDON = false;
         [QGVAR(refreshSetting), _x] call CBA_fnc_localEvent;
     } forEach GVAR(allSettings);
 }] call CBA_fnc_addEventHandler;
+
+// refresh all settings when loading a save game
+addMissionEventHandler ["Loaded", {
+    QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
+}];
 
 #ifdef DEBUG_MODE_FULL
 ["CBA_SettingChanged", {

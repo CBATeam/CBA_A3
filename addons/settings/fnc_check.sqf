@@ -20,7 +20,7 @@ params [["_setting", "", [""]], "_value"];
 
 if (isNil "_value") exitWith {false};
 
-([GVAR(defaultSettings) getVariable _setting] param [0, []]) params ["_defaultValue", "", ["_settingType", ""], "_settingData"];
+NAMESPACE_GETVAR(GVAR(defaultSettings),_setting,[]) params ["_defaultValue", "", ["_settingType", ""], "_settingData"];
 
 switch (toUpper _settingType) do {
     case ("CHECKBOX"): {

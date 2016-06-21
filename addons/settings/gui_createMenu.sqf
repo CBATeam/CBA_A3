@@ -21,12 +21,6 @@ _display setVariable [QGVAR(controls), []];
 
     _categories pushBackUnique _category;
 
-    private _sources = ["client", "server", "mission"];
-
-    if (_isGlobal) then {
-        _sources = [["client"], ["server"]] select isMultiplayer;
-    };
-
     {
         private _source = toLower _x;
         private _currentValue = [_setting, _source] call FUNC(get);
@@ -110,5 +104,5 @@ _display setVariable [QGVAR(controls), []];
         };
 
         _ctrlOptionsGroup setVariable [QGVAR(offsetY), _offsetY + MENU_OFFSET_SPACING];
-    } forEach _sources;
+    } forEach ["client", "server", "mission"];
 } forEach GVAR(allSettings);
