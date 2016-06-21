@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_statemachine_fnc_addState
+Function: CBA_statemachine_fnc_toString
 
 Description:
     Creates a readable string representation of a state machine.
