@@ -58,12 +58,9 @@ _stateMachine setVariable [ONSTATEENTERED(_name), _onStateEntered];
 _stateMachine setVariable [ONSTATELEAVING(_name), _onStateLeaving];
 _stateMachine setVariable [TRANSITIONS(_name), []];
 
-diag_log "derp";
-
 // First state added is always the intial state
 if (isNil {_stateMachine getVariable QGVAR(initialState)}) then {
     _stateMachine setVariable [QGVAR(initialState), _name];
-    diag_log "initial state set";
 };
 
 _name

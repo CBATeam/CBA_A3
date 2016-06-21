@@ -32,7 +32,7 @@ if (isNil QGVAR(stateMachines)) then {
 };
 
 private _updateCode = {};
-if (typeName _list == "CODE") then {
+if (_list isEqualType {}) then {
     _updateCode = _list;
     _list = [] call _updateCode;
 };

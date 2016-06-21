@@ -37,7 +37,7 @@ private _stateMachine = [_list] call FUNC(create);
     [_stateMachine, _onState, _onStateEntered, _onStateLeaving, _state] call FUNC(addState);
 
     false
-} count ("true" configClasses _config);
+} count (configProperties [_config, "isClass _x", true]);
 
 // We need to add the transitions in a second loop to make sure the states exist already
 {
@@ -51,9 +51,9 @@ private _stateMachine = [_list] call FUNC(create);
         [_stateMachine, _state, _targetState, _condition, _onTransition, _transition] call FUNC(addTransition);
 
         false
-    } count ("true" configClasses _x);
+    } count (configProperties [_x, "isClass _x", true]);
 
     false
-} count ("true" configClasses _config);
+} count (configProperties [_config, "isClass _x", true]);
 
 _stateMachine

@@ -27,5 +27,5 @@ if (isNil QGVAR(stateMachines)) exitWith {};
 private _index = GVAR(stateMachines) find _stateMachine;
 if (_index != -1) then {
     GVAR(stateMachines) deleteAt _index;
-    deleteLocation _stateMachine;
+    [_stateMachine] call CBA_fnc_deleteNamespace;
 };
