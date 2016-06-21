@@ -32,7 +32,9 @@ private _stateMachine = [_list] call FUNC(create);
 {
     private _state = configName _x;
     private _onState = compile getText (_x >> "onState");
-    [_stateMachine, _onState, _state] call FUNC(addState);
+    private _onStateEntered = compile getText (_x >> "onStateEntered");
+    private _onStateLeaving = compile getText (_x >> "onStateLeaving");
+    [_stateMachine, _onState, _onStateEntered, _onStateLeaving, _state] call FUNC(addState);
 
     false
 } count ("true" configClasses _config);

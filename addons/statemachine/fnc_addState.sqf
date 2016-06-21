@@ -9,6 +9,13 @@ Parameters:
     _onState        - code that is executed when state is active (frequency
                       depends on amount of objects active in state machine)
                       <CODE>
+                      (Default: {})
+    _onStateEntered - code that is executed once when state was entered, after
+                      onTransition (also once for the intial state) <CODE>
+                      (Default: {})
+    _onStateLeaving - code that is executed once when exiting state, before
+                      onTransition <CODE>
+                      (Default: {})
     _name           - unique state name <STRING>
                       (Default: "stateX" with X being a unique number)
 
@@ -28,6 +35,8 @@ SCRIPT(addState);
 params [
     ["_stateMachine", locationNull, [locationNull]],
     ["_onState", {}, [{}]],
+    ["_onStateEntered", {}, [{}]],
+    ["_onStateLeaving", {}, [{}]],
     ["_name", "", [""]]
 ];
 
@@ -45,6 +54,8 @@ if (_name == "") then {
 _states pushBack _name;
 _stateMachine setVariable [QGVAR(states), _states];
 _stateMachine setVariable [ONSTATE(_name), _onState];
+_stateMachine setVariable [ONSTATEENTERED(_name), _onStateEntered];
+_stateMachine setVariable [ONSTATELEAVING(_name), _onStateLeaving];
 _stateMachine setVariable [TRANSITIONS(_name), []];
 
 diag_log "derp";

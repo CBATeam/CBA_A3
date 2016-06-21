@@ -13,6 +13,8 @@ class MyAddon_Statemachine {
     // States are just subclasses of the state machine
     class Initial {
         onState = "";
+        onStateEntered = "";
+        onStateLeaving = "";
 
         // Transitions are also just subclasses of states
         class InCombat {

@@ -12,11 +12,12 @@
 
 private _stateMachine = [{allGroups select {!isPlayer leader _x}}] call CBA_statemachine_fnc_create;
 
-[_stateMachine, {}, "Initial"] call CBA_statemachine_fnc_addState;
-[_stateMachine, {}, "Alert"] call CBA_statemachine_fnc_addState;
+[_stateMachine, {}, {}, {}, "Initial"] call CBA_statemachine_fnc_addState;
+[_stateMachine, {}, {}, {}, "Alert"] call CBA_statemachine_fnc_addState;
 
 [_stateMachine, "Initial", "Alert", {combatMode _this == "YELLOW"}, {
     // Set skill once on transition
+    // This could also be done in the onStateEntered function
     {
         _x setSkill ["spotDistance", ((_x skill "spotDistance") * 1.5) min 1];
         _x setSkill ["spotTime",     ((_x skill "spotTime")     * 1.5) min 1];

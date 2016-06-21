@@ -15,3 +15,5 @@
 
 #define TRANSITIONS(var) (var + "_transitions")
 #define ONSTATE(var) (var + "_onState")
+#define ONSTATEENTERED(var) (var + "_onStateEntered")
+#define ONSTATELEAVING(var) (var + "_onStateLeaving")
