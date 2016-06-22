@@ -56,7 +56,7 @@ SCRIPT(headDir);
 
 params [
     ["_unit", objNull, [objNull]],
-    ["_offsetObject", objNull]
+    ["_offset", ""]
 ];
 
 private _azimuth = 0;
@@ -75,8 +75,8 @@ if (_unit != call CBA_fnc_currentUnit) then {
 
 private _diff = -_azimuth;
 
-if (!isNull _offsetObject) then {
-    ADD(_diff,_unit getDir ([_offsetObject] call CBA_fnc_getPos));
+if !(_offset isEqualTo "") then {
+    ADD(_diff,_unit getDir ([_offset] call CBA_fnc_getPos));
 };
 if (_diff < 0) then {
     ADD(_diff,360);
