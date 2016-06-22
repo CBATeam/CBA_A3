@@ -54,17 +54,19 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-params ["_unit"];
-private _object = param [1, _unit];
-private _isExternalCam = false;
+params [
+    ["_unit", objNull, [objNull]],
+    ["_offsetObject", objNull]
+];
 
 private _azimuth = 0;
-if (_unit != player) then {
+private _isExternalCam = false;
+if (_unit != call CBA_fnc_currentUnit) then {
     _azimuth = getDir _unit;
 } else {
-    private _camPos = positionCameraToWorld [0, 0, 0];
-    _isExternalCam = (_camPos distance _unit) > 2;
-    private _viewPos = positionCameraToWorld [0, 0, 99999999];
+    private _camPos = AGLToASL positionCameraToWorld [0, 0, 0];
+    _isExternalCam = (_camPos vectorDistance getPosASL _unit) > 2;
+    private _viewPos = AGLToASL positionCameraToWorld [0, 0, 99999999];
     private _vector = _viewPos vectorDiff _camPos;
     _vector = _vector vectorMultiply (1 / vectorMagnitude _vector);
     _azimuth = (_vector select 0) atan2 (_vector select 1);
@@ -73,8 +75,8 @@ if (_unit != player) then {
 
 private _diff = -_azimuth;
 
-if (_object != _unit) then {
-    ADD(_diff,_unit getDir _object);
+if (!isNull _offsetObject) then {
+    ADD(_diff,_unit getDir ([_offsetObject] call CBA_fnc_getPos));
 };
 if (_diff < 0) then {
     ADD(_diff,360);
