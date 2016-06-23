@@ -70,25 +70,6 @@ if (isArray (_entry >> "authors")) then {
     } forEach _authors;
 };
 
-// url if any
-private _url = "";
-
-if (isText (_entry >> "url")) then {
-    _url = getText (_entry >> "url");
-
-    if (!CBA_MonochromeCredits) then {
-        _url = format ["<t color='#566D7E'>%1</t>", _url];
-    };
-} else {
-    if (isText (_entry >> "authorUrl")) then {
-        _url = getText (_entry >> "authorUrl");
-
-        if (!CBA_MonochromeCredits) then {
-            _url = format ["<t color='#566D7E'>%1</t>", _url];
-        };
-    };
-};
-
 // version if any
 private _version = "";
 
@@ -97,4 +78,4 @@ if (isText (_entry >> "version")) then {
 };
 
 // add single line
-_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author, _url];
+_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author];
