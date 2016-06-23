@@ -54,49 +54,37 @@ Author:
 #include "script_component.hpp"
 SCRIPT(headDir);
 
-private["_azimuth", "_angle", "_dif", "_infov", "_object", "_threed", "_do"];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_offset", ""]
+];
 
-params ["_unit"];
-_object = param [1,_unit];
-_threed = false;
-
-_do = (typeName _object != typeName _unit);
-if (!_do) then {
-    _do = (_object != _unit);
-};
-
-if (_do) then {
-    _angle = [(_unit call CBA_fnc_getPos),(_object call CBA_fnc_getPos)] call BIS_fnc_dirTo;
+private _azimuth = 0;
+private _isExternalCam = false;
+if (_unit != call CBA_fnc_currentUnit) then {
+    _azimuth = getDir _unit;
 } else {
-    _angle = 0;
-};
-if (_unit != player) then
-{
-    _azimuth = getdir _unit;
-} else {
-    private ["_position","_viewPos","_vector","_magnitude"];
-    _position = positionCameraToWorld [0, 0, 0];
-    _threed = if ((_position distance _unit)>2) then {true} else {false};
-    _viewPos = positionCameraToWorld [0, 0, 99999999];
-    _vector = [
-        (_viewPos select 0) - (_position select 0),
-        (_viewPos select 1) - (_position select 1),
-        (_viewPos select 2) - (_position select 2)
-    ];
-    _magnitude = [0, 0, 0] distance _vector;
-    _vector = [
-        (_vector select 0) / _magnitude,
-        (_vector select 1) / _magnitude,
-        (_vector select 2) / _magnitude
-    ];
+    private _camPos = AGLToASL positionCameraToWorld [0, 0, 0];
+    _isExternalCam = (_camPos vectorDistance getPosASL _unit) > 2;
+    private _viewPos = AGLToASL positionCameraToWorld [0, 0, 99999999];
+    private _vector = _viewPos vectorDiff _camPos;
+    _vector = _vector vectorMultiply (1 / vectorMagnitude _vector);
     _azimuth = (_vector select 0) atan2 (_vector select 1);
     _azimuth = [_azimuth] call CBA_fnc_simplifyAngle;
 };
 
-_dif = _angle - _azimuth;
+private _diff = -_azimuth;
 
-if (_dif < 0) then { _dif = 360 + _dif;};
-if (_dif > 180) then { _dif = _dif - 360;};
-_infov = if (abs(_dif) < 43) then {true} else {false};
+if !(_offset isEqualTo "") then {
+    ADD(_diff,_unit getDir ([_offset] call CBA_fnc_getPos));
+};
+if (_diff < 0) then {
+    ADD(_diff,360);
+};
+if (_diff > 180) then {
+    SUB(_diff,360);
+};
 
-[_azimuth,_dif,_infov,_threed]
+private _inFOV = abs _diff < 43;
+
+[_azimuth, _diff, _inFOV, _isExternalCam]
