@@ -236,4 +236,15 @@ class CfgVehicles {
             class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
         };
     };
+
+    // APEX
+    class Plane_Base_F;
+    class Plane_Civil_01_base_F: Plane_Base_F {
+        XEH_ENABLED;
+    };
+
+    class B_CTRG_Soldier_3_F;
+    class B_CTRG_Miller_F: B_CTRG_Soldier_3_F {
+        XEH_ENABLED;
+    };
 };
