@@ -180,8 +180,8 @@ class GVAR(presets) {
     class controls {
         class CBA_Presets: RscControlsGroup {
             idc = IDC_PRESETS_GROUP;
-            x = POS_X_CENTERED(10);
-            y = POS_Y_CENTERED(0.9);
+            x = POS_X(10);
+            y = POS_Y(0.9);
             w = POS_W(20);
             h = POS_H(22.2);
 

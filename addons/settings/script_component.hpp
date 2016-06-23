@@ -39,13 +39,10 @@
 #define IDC_PRESETS_CANCEL 8006
 #define IDC_PRESETS_DELETE 8007
 
-#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_X)
-#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
+#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
+#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
-
-#define POS_X_CENTERED(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
-#define POS_Y_CENTERED(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
 
 #define COLOR_TEXT_DISABLED [1,1,1,0.3]
 #define COLOR_BUTTON_ENABLED [1,1,1,1]
