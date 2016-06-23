@@ -7,7 +7,7 @@
 #define __W SafeZoneW
 #define __H SafeZoneH
 
-#define __SX(var1) x = QUOTE(var1 * GUI_GRID_W + GUI_GRID_X)
+#define __SX(var1) x = QUOTE(var1 * GUI_GRID_W + GUI_GRID_CENTER_X)
 #define __SY(var1) y = QUOTE(var1 * GUI_GRID_H + GUI_GRID_Y)
 #define __SW(var1) w = QUOTE(var1 * GUI_GRID_W)
 #define __SH(var1) h = QUOTE(var1 * GUI_GRID_H)
