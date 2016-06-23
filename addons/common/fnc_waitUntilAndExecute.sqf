@@ -2,12 +2,12 @@
 Function: CBA_fnc_waitUntilAndExecute
 
 Description:
-    Executes a code once in non sched environment after a condition is true.
+    Executes a code once in unscheduled environment after a condition is true.
 
 Parameters:
     _condition - The function to evaluate as condition. <CODE>
     _statement - The function to run once the condition is true. <CODE>
-    _args      - Parameters passed to the function executing. This will be the same array every execution. (optional) <ANY>
+    _args      - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
 
 Passed Arguments:
     _this      - Parameters passed by this function. Same as '_args' above. <ANY>
