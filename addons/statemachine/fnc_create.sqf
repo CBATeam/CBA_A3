@@ -10,6 +10,7 @@ Parameters:
                       OR
                       code that will generate this list, called once the list
                       has been cycled through <CODE>
+    _skipNull       - skip list items that are null
 
 Returns:
     _stateMachine   - a state machine <LOCATION>
@@ -24,7 +25,10 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(create);
-params [["_list", [], [[], {}]]];
+params [
+    ["_list", [], [[], {}]],
+    ["_skipNull", false, [true]]
+];
 
 if (isNil QGVAR(stateMachines)) then {
     GVAR(stateMachines) = [];
@@ -35,6 +39,11 @@ private _updateCode = {};
 if (_list isEqualType {}) then {
     _updateCode = _list;
     _list = [] call _updateCode;
+} else {
+    // Filter list in case null elements were passed
+    if (_skipNull) then {
+        _list = _list select {!isNull _x};
+    };
 };
 
 private _stateMachine = call CBA_fnc_createNamespace;
@@ -42,6 +51,7 @@ _stateMachine setVariable [QGVAR(nextUniqueStateID), 0];    // Unique ID for aut
 _stateMachine setVariable [QGVAR(tick), 0];                 // List index ticker
 _stateMachine setVariable [QGVAR(states), []];              // State machine states
 _stateMachine setVariable [QGVAR(list), _list];             // List state machine iterates over
+_stateMachine setVariable [QGVAR(skipNull), _skipNull];     // Skip items that are null
 _stateMachine setVariable [QGVAR(updateCode), _updateCode]; // List update code
 _stateMachine setVariable [QGVAR(ID), GVAR(nextUniqueID)];  // Unique state machine ID
 INC(GVAR(nextUniqueID));

@@ -19,6 +19,7 @@ SCRIPT(clockwork);
 {
     private _stateMachine = _x;
     private _list = _stateMachine getVariable QGVAR(list);
+    private _skipNull = _stateMachine getVariable QGVAR(skipNull);
     private _updateCode = _stateMachine getVariable QGVAR(updateCode);
     private _id = _stateMachine getVariable QGVAR(ID);
 
@@ -26,11 +27,25 @@ SCRIPT(clockwork);
     if !(isNil {_stateMachine getVariable QGVAR(initialState)}) then {
         private _tick = _stateMachine getVariable QGVAR(tick);
 
+        // Skip to next non-null element or end of list
+        if (_skipNull) then {
+            while {(_tick < count _list) && {isNull (_list select _tick)}} do {
+                _tick = _tick + 1;
+            };
+        };
+
         // When the list was iterated through, jump back to start and update it
         if (_tick >= count _list) then {
             _tick = 0;
             if !(_updateCode isEqualTo {}) then {
                 _list = [] call _updateCode;
+
+                // Make sure list contains no null elements in case the code doesn't filter them
+                // Else they wouldn't be skipped at this point which could cause errors
+                if (_skipNull) then {
+                    _list = _list select {!isNull _x};
+                };
+
                 _stateMachine setVariable [QGVAR(list), _list];
             };
         };

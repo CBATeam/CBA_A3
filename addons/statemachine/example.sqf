@@ -10,7 +10,7 @@
     [] call compile preprocessFileLineNumbers "\x\cba\addons\statemachine\example.sqf"
 */
 
-private _stateMachine = [{allGroups select {!isPlayer leader _x}}] call CBA_statemachine_fnc_create;
+private _stateMachine = [{allGroups select {!isPlayer leader _x}}, true] call CBA_statemachine_fnc_create;
 
 [_stateMachine, {}, {}, {}, "Initial"] call CBA_statemachine_fnc_addState;
 [_stateMachine, {}, {}, {}, "Alert"] call CBA_statemachine_fnc_addState;

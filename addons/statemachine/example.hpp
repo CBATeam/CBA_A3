@@ -9,6 +9,7 @@ class MyAddon_Statemachine {
     // Class properties have the same name as the corresponding function parameters
     // and code goes into strings.
     list = "allGroups select {!isPlayer leader _x}";
+    skipNull = 1;
 
     // States are just subclasses of the state machine
     class Initial {

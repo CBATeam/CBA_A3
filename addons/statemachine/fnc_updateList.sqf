@@ -27,4 +27,10 @@ params [
     ["_list", [], [[]]]
 ];
 
+// Filter list in case null elements were passed
+private _skipNull = _stateMachine getVariable QGVAR(skipNull);
+if (_skipNull) then {
+    _list = _list select {!isNull _x};
+};
+
 _stateMachine setVariable [QGVAR(list), _list];
