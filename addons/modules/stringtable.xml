@@ -100,7 +100,7 @@
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
         </Key>
-        <Key ID="STR_CBA_Modules_PatrolCenterType_Desc)">
+        <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
