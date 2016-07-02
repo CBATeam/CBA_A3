@@ -79,7 +79,7 @@ if !(_offset isEqualTo "") then {
 #ifndef LINUX_BUILD
     ADD(_diff,_unit getDir ([_offset] call CBA_fnc_getPos));
 #else
-    ADD(_diff,[_unit, [_offset] call CBA_fnc_getPos] call BIS_fnc_dirTo);
+    ADD(_diff,[ARR_2(_unit,[_offset] call CBA_fnc_getPos)] call BIS_fnc_dirTo);
 #endif
 };
 if (_diff < 0) then {
