@@ -10,6 +10,11 @@ class CfgFunctions {
         };
     };
     class CBA {
+
+        class Anims {
+            F_FILEPATH(common,headDir);
+        };
+
         class Entities {
             F_FILEPATH(common,getAlive);
             F_FILEPATH(common,getMagazineIndex);
