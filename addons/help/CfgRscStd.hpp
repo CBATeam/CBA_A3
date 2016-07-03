@@ -1,5 +1,7 @@
 
 class RscButton;
+class RscText;
+
 class CBA_Credits_Ver_Btn: RscButton {
     idc = -1; //template
     colorText[] = {1,1,1,0};
@@ -29,7 +31,7 @@ class CBA_Credits_Cont: RscStructuredText {
     class Attributes {
         font = "RobotoCondensed";
         align = "center";
-        valign = "center";
+        valign = "middle";
         color = "#bdcc9c";
         size = 0.8;
     };
@@ -38,10 +40,12 @@ class CBA_Credits_Cont: RscStructuredText {
 class RscStandardDisplay;
 class RscDisplayMain: RscStandardDisplay {
     class controls {
-        class VersionNumber;
-        class CBA_Credits_Ver: VersionNumber {
+        class CBA_Credits_Ver: RscText {
             idc = CBA_CREDITS_VER_IDC;
             y = -1;
+            style = 0;
+            shadow = 0;
+            sizeEx = "0.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
         };
 
         class CBA_Credits_Ver_Btn: CBA_Credits_Ver_Btn {
