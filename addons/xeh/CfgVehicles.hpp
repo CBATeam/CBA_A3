@@ -236,4 +236,15 @@ class CfgVehicles {
             class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
         };
     };
+
+    // Similar but different issue with the actual taru helicopter. only poking the "init" entry fixes it. cause unknown.
+    class Helicopter_Base_F;
+    class Helicopter_Base_H: Helicopter_Base_F {
+        class EventHandlers;
+    };
+    class Heli_Transport_04_base_F: Helicopter_Base_H {
+        class EventHandlers: EventHandlers {
+            init = "if (local (_this select 0)) then {[(_this select 0), """", false, false] call bis_fnc_initVehicle;};";
+        };
+    };
 };
