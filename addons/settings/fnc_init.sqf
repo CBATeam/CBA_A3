@@ -141,7 +141,7 @@ if (!isNil "_settingInfo") then {
 };
 
 // --- read previous setting values from mission
-_settingsHash = missionNamespace getVariable [QGVAR(hash), "Scenario" get3DENMissionAttribute QGVAR(hash)];
+_settingsHash = getMissionConfigValue QGVAR(hash);
 
 if (isNil "_settingsHash") then {
     _settingsHash = NULL_HASH;

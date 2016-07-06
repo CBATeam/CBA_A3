@@ -14,7 +14,7 @@ class Cfg3DEN {
                             displayName = "";
                             tooltip = "";
                             defaultValue = QUOTE(NULL_HASH);
-                            expression = QUOTE(missionNamespace setVariable [ARR_3(QUOTE(QGVAR(hash)),_value,true)]);
+                            expression = ""
                             wikiType = "[[Array]]";
                         };
                     };
