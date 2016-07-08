@@ -11,7 +11,8 @@ GVAR(lastTickTime) = diag_tickTime;
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
 GVAR(nextFrameNo) = diag_frameno;
-GVAR(nextFrameBufferA) = [];
+GVAR(nextFramePreInit) = true;
+GVAR(nextFrameBufferA) = [[[], {GVAR(nextFramePreInit) = false; GVAR(nextFrameNo) = diag_frameno;}]];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 
