@@ -19,7 +19,3 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgLocationTypes.hpp"
-
-class CBA_DirectCall {
-    class dummy;
-};
