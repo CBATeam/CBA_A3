@@ -10,9 +10,9 @@ GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
-GVAR(nextFrameNo) = diag_frameno;
-GVAR(nextFramePreInit) = true;
-GVAR(nextFrameBufferA) = [[[], {GVAR(nextFramePreInit) = false; GVAR(nextFrameNo) = diag_frameno;}]];
+GVAR(nextFrameNo) = diag_frameno + 1;
+// PostInit can be 2 frames after preInit, need to manually set nextFrameNo, so new items get added to buffer B while processing A for the first time:
+GVAR(nextFrameBufferA) = [[[], {GVAR(nextFrameNo) = diag_frameno;}]];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 

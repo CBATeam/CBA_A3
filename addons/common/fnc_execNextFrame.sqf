@@ -23,7 +23,7 @@ Author:
 
 params [["_function", {}, [{}]], ["_args", []]];
 
-if (GVAR(nextFramePreInit) || {diag_frameno != GVAR(nextFrameNo)}) then {
+if (diag_frameno != GVAR(nextFrameNo)) then {
     GVAR(nextFrameBufferA) pushBack [_args, _function];
 } else {
     GVAR(nextFrameBufferB) pushBack [_args, _function];
