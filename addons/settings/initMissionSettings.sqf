@@ -3,7 +3,7 @@
 0 = 0 spawn {
     {
         // --- read previous setting values from mission
-        private _settingsHash = missionNamespace getVariable [QGVAR(hash), "Scenario" get3DENMissionAttribute QGVAR(hash)];
+        private _settingsHash = getMissionConfigValue QGVAR(hash);
 
         if (isNil "_settingsHash") then {
             _settingsHash = NULL_HASH;
