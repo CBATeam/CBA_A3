@@ -14,7 +14,7 @@ class Cfg3DEN {
                             displayName = "";
                             tooltip = "";
                             defaultValue = QUOTE(NULL_HASH);
-                            expression = ""
+                            expression = "";
                             wikiType = "[[Array]]";
                         };
                     };
