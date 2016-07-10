@@ -529,6 +529,81 @@ Author:
 #define PUSH(var1,var2) (var1) pushBack (var2)
 
 /* -------------------------------------------
+Macro: MAP()
+Description:
+    Applies given code to each element of the array, then assigns the
+    resulting array to the original
+Parameters:
+    ARRAY - Array to be modified
+    CODE - Code that'll be applied to each element of the array.
+Example:
+    (begin example)
+        _array = [1, 2, 3, 4, 3, 8];
+        MAP(_array,_x + 1);
+        // _array is now [2, 3, 4, 5, 4, 9];
+    (end)
+Author:
+    654wak654
+------------------------------------------- */
+#define MAP(ARR,CODE) ARR = ARR apply {CODE}
+
+/* -------------------------------------------
+Macro: FILTER()
+Description:
+    Filters an array based on given code, then assigns the resulting array 
+    to the original
+Parameters:
+    ARRAY - Array to be filtered
+    CODE - Condition to pick elements
+Example:
+    (begin example)
+        _array = [1, 2, 3, 4, 3, 8];
+        FILTER(_array,_x % 2 == 0)
+        // _array is now [2, 4, 8];
+    (end)
+Author:
+    Commy2
+------------------------------------------- */
+#define FILTER(ARR,CODE) ARR = ARR select {CODE}
+
+/* -------------------------------------------
+Macro: UNIQUE()
+Description:
+    Removes duplicate values in given array
+Parameters:
+    ARRAY - The array to be modified
+Example:
+    (begin example)
+        _someArray = [4, 4, 5, 5, 5, 2];
+        UNIQUE(_someArray);
+        // _someArray is now [4, 5, 2]
+    (end)
+Author:
+    Commy2
+------------------------------------------- */
+#define UNIQUE(ARR) ARR = ARR arrayIntersect ARR
+
+/* -------------------------------------------
+Macro: INTERSECTION()
+Description:
+    Finds unique common elements between two arrays and assigns them
+    to the first array
+Parameters:
+    ARRAY0 - The array to be modified
+    ARRAY1 - The array to find intersections with
+Example:
+    (begin example)
+        _someArray = [1, 2, 3, 4, 5, 5];
+        _anotherArray = [4, 5, 6, 7];
+        INTERSECTION(_someArray,_anotherArray);
+        // _someArray is now [4, 5]
+    (end)
+Author:
+    654wak654
+------------------------------------------- */
+#define INTERSECTION(ARG0,ARG1) ARG0 = ARG0 arrayIntersect (ARG1)
+
+/* -------------------------------------------
 Macro: ISNILS()
 
 Description:
