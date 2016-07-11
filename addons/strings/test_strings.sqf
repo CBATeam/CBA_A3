@@ -32,6 +32,9 @@ TEST_OP(_pos,==,-1,_fn);
 _pos = ["frofrog", "frog"] call CBA_fnc_find;
 TEST_OP(_pos,==,3,_fn);
 
+_pos = ["frog-headed fish", "f", 5] call CBA_fnc_find;
+TEST_OP(_pos,==,12,_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringSplit)
 _fn = "CBA_fnc_split";
