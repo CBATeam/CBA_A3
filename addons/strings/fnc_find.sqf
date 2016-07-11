@@ -53,7 +53,7 @@ if(_initialIndex < 1) then {
     if(_initialIndex > (count _haystack) ) exitWith {
         -1
     };
-    private _tempString = [_haystack, _initialIndex, ((count _haystack) - _initialIndex)] call CBA_fnc_substring;
+    private _tempString = [_haystack, _initialIndex] call CBA_fnc_substr;
     _ret = _tempString find _needle;
     if(_ret > -1) then {
         _ret = _ret + _initialIndex;
