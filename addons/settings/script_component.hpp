@@ -39,8 +39,10 @@
 #define IDC_PRESETS_CANCEL 8006
 #define IDC_PRESETS_DELETE 8007
 
-#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_X)
-#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
+#define IS_APEX (productVersion select 2 >= 162)
+
+#define POS_X(N) ((N) * GUI_GRID_W + ([GUI_GRID_X, GUI_GRID_CENTER_X] select IS_APEX))
+#define POS_Y(N) ((N) * GUI_GRID_H + ([GUI_GRID_Y, GUI_GRID_CENTER_Y] select IS_APEX))
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
 
