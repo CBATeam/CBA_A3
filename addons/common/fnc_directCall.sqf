@@ -6,14 +6,15 @@ Description:
 
 Parameters:
     _code      - Code to execute <CODE>
-    _arguments - Parameters to call the code with. [optional] <ANY>
+    _arguments - Parameters to call the code with. (optional) <ANY>
 
 Returns:
     _return - Return value of the function <ANY>
 
 Examples:
     (begin example)
-        0 spawn {{systemChat str (call CBA_fnc_isScheduled)} call CBA_fnc_directCall}
+        0 spawn { {systemChat str canSuspend} call CBA_fnc_directCall; };
+        -> false
     (end)
 
 Author:
@@ -21,10 +22,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_code", {}, [{}]], ["_arguments", []]];
+params [["_CBA_code", {}, [{}]], ["_CBA_arguments", []]];
 
-private "_return";
+private "_CBA_return";
 
-"_return = _arguments call _code" configClasses (configFile >> "CBA_DirectCall");
+isNil {
+    _CBA_return = _CBA_arguments call _CBA_code;
+};
 
-if (!isNil "_return") then {_return};
+if (!isNil "_CBA_return") then {_CBA_return};

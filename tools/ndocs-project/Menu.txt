@@ -156,6 +156,7 @@ Group: Functions  {
       File: CBA_fnc_nearPlayer  (common/fnc_nearPlayer.sqf)
       File: CBA_fnc_northingReversed  (common/fnc_northingReversed.sqf)
       File: CBA_fnc_objectRandom  (common/fnc_objectRandom.sqf)
+      File: CBA_fnc_players  (common/fnc_players.sqf)
       File: CBA_fnc_randPos  (common/fnc_randPos.sqf)
       File: CBA_fnc_randPosArea  (common/fnc_randPosArea.sqf)
       File: CBA_fnc_realHeight  (common/fnc_realHeight.sqf)
@@ -173,9 +174,11 @@ Group: Functions  {
       File: CBA_fnc_setHeight  (common/fnc_setHeight.sqf)
       File: CBA_fnc_setPos  (common/fnc_setPos.sqf)
       File: CBA_fnc_switchPlayer  (common/fnc_switchPlayer.sqf)
+      File: CBA_fnc_turretDir  (common/fnc_turretDir.sqf)
       File: CBA_fnc_turretPath  (common/fnc_turretPath.sqf)
       File: CBA_fnc_turretPathWeapon  (common/fnc_turretPathWeapon.sqf)
       File: CBA_fnc_vehicleRole  (common/fnc_vehicleRole.sqf)
+      File: CBA_fnc_viewDir  (common/fnc_viewDir.sqf)
       File: CBA_fnc_waitAndExecute  (common/fnc_waitAndExecute.sqf)
       File: CBA_fnc_waitUntilAndExecute  (common/fnc_waitUntilAndExecute.sqf)
       File: CBA_fnc_weaponComponents  (common/fnc_weaponComponents.sqf)
@@ -196,6 +199,7 @@ Group: Functions  {
       File: CBA_fnc_addBISEventHandler  (events/fnc_addBISEventHandler.sqf)
       File: CBA_fnc_addDisplayHandler  (events/fnc_addDisplayHandler.sqf)
       File: CBA_fnc_addEventHandler  (events/fnc_addEventHandler.sqf)
+      File: CBA_fnc_addEventHandlerArgs  (events/fnc_addEventHandlerArgs.sqf)
       File: CBA_fnc_addKeyHandler  (events/fnc_addKeyHandler.sqf)
       File: CBA_fnc_addKeyHandlerFromConfig  (events/fnc_addKeyHandlerFromConfig.sqf)
       File: CBA_fnc_addPlayerEventHandler  (events/fnc_addPlayerEventHandler.sqf)
@@ -203,6 +207,7 @@ Group: Functions  {
       File: CBA_fnc_globalEvent  (events/fnc_globalEvent.sqf)
       File: CBA_fnc_globalEventJIP  (events/fnc_globalEventJIP.sqf)
       File: CBA_fnc_localEvent  (events/fnc_localEvent.sqf)
+      File: CBA_fnc_ownerEvent  (events/fnc_ownerEvent.sqf)
       File: CBA_fnc_readKeyFromConfig  (events/fnc_readKeyFromConfig.sqf)
       File: CBA_fnc_remoteEvent  (events/fnc_remoteEvent.sqf)
       File: CBA_fnc_removeDisplayHandler  (events/fnc_removeDisplayHandler.sqf)
@@ -231,6 +236,11 @@ Group: Functions  {
       File: CBA_help_fnc_setVersionLine  (help/fnc_setVersionLine.sqf)
       }  # Group: Help
 
+   Group: Joint Rails  {
+
+      File: CBA_fnc_compatibleItems  (jr/fnc_compatibleItems.sqf)
+      }  # Group: Joint Rails
+
    Group: Keybinding  {
 
       File: CBA_fnc_addKeybind  (keybinding/fnc_addKeybind.sqf)
@@ -251,6 +261,14 @@ Group: Functions  {
       File: CBA_fnc_setMarkerPersistent  (network/fnc_setMarkerPersistent.sqf)
       File: CBA_fnc_setVarNet  (network/fnc_setVarNet.sqf)
       }  # Group: Network
+
+   Group: Modules  {
+
+      File: CBA_fnc_getPosFromString  (modules/fnc_getPosFromString.sqf)
+      File: CBA_fnc_moduleAttack  (modules/fnc_moduleAttack.sqf)
+      File: CBA_fnc_moduleDefend  (modules/fnc_moduleDefend.sqf)
+      File: CBA_fnc_modulePatrol  (modules/fnc_modulePatrol.sqf)
+      }  # Group: Modules
 
    Group: Strings  {
 
@@ -303,4 +321,16 @@ Group: Macros  {
    File: script_macros_common.hpp  (main/script_macros_common.hpp)
    File: script_macros_mission.hpp  (main/script_macros_mission.hpp)
    }  # Group: Macros
+
+Group: Statemachine  {
+
+   File: CBA_statemachine_fnc_addState  (statemachine/fnc_addState.sqf)
+   File: CBA_statemachine_fnc_addTransition  (statemachine/fnc_addTransition.sqf)
+   File: CBA_statemachine_fnc_clockwork  (statemachine/fnc_clockwork.sqf)
+   File: CBA_statemachine_fnc_create  (statemachine/fnc_create.sqf)
+   File: CBA_statemachine_fnc_createFromConfig  (statemachine/fnc_createFromConfig.sqf)
+   File: CBA_statemachine_fnc_delete  (statemachine/fnc_delete.sqf)
+   File: CBA_statemachine_fnc_toString  (statemachine/fnc_toString.sqf)
+   File: CBA_statemachine_fnc_updateList  (statemachine/fnc_updateList.sqf)
+   }  # Group: Statemachine
 

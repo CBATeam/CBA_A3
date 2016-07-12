@@ -10,8 +10,10 @@
             };
         };
     } forEach allVariables GVAR(eventNamespaceJIP);
-}, []] call CBA_fnc_execNextFrame;
 
+    // allow new incoming jip events
+    [QGVAR(eventJIP), CBA_fnc_localEvent] call CBA_fnc_addEventHandler;
+}, []] call CBA_fnc_execNextFrame;
 
 if (isServer) then {
     CBA_clientID = [0, 2] select isMultiplayer;

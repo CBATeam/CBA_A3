@@ -1,7 +1,7 @@
 # Community Base Addons
 
-[![](https://img.shields.io/badge/Changelog-2.4.1-orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A2.4.1+is%3Aclosed)
-[![](https://img.shields.io/badge/Release-2.4.1-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v2.4.1.160606)
+[![](https://img.shields.io/badge/Changelog-2.5.0-orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A2.5.0+is%3Aclosed)
+[![](https://img.shields.io/badge/Release-2.5.0-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v2.5.0.160711)
 [![](https://img.shields.io/badge/Github-Wiki-lightgrey.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/wiki)
 [![](https://img.shields.io/badge/BIF-Thread-lightgrey.svg?style=flat-square)](https://forums.bistudio.com/topic/168277-cba-community-base-addons-arma-3)
 [![](https://img.shields.io/badge/Function-Documentation-yellow.svg?style=flat-square)](https://cbateam.github.io/CBA_A3/docs/files/overview-txt.html)
