@@ -60,12 +60,15 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
 };
 
 // system to synch team colors
+// Note: 1.62 added Multiplayer synchronization for assigned team
+// Run the PFEH only if on previous versions, keep the event for backwards compatability
+
 PREP(onTeamColorChanged);
 PREP(synchTeamColors);
 
 ["CBA_teamColorChanged", FUNC(onTeamColorChanged)] call CBA_fnc_addEventHandler;
 
-if (hasInterface) then {
+if (hasInterface && {(productVersion select 2) < 162}) then {
     [FUNC(synchTeamColors), 1, []] call CBA_fnc_addPerFrameHandler;
 
     if (didJIP) then {
