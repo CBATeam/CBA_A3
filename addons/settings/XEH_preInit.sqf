@@ -63,12 +63,4 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
-// import settings from file if filepatching is enabled
-if (isFilePatchingEnabled) then {
-    [loadFile PATH_SETTINGS_FILE, "client"] call FUNC(import);
-    diag_log text "[CBA] (settings): Settings file loaded.";
-} else {
-    diag_log text "[CBA] (settings): Cannot load settings file. File patching disabled. Use -filePatching flag.";
-};
-
 ADDON = true;

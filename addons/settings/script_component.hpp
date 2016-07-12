@@ -15,8 +15,6 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SETTINGS
 #endif
 
-#define PATH_SETTINGS_FILE "userconfig\cba\settings.sqf"
-
 #define IDC_ADDONS_GROUP 4301
 #define IDC_BTN_CONFIGURE_ADDONS 4302
 #define IDC_BTN_CLIENT 9000
