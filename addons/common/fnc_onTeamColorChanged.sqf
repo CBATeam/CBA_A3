@@ -19,6 +19,9 @@ Author:
 params ["_unit", "_team"];
 
 _unit assignTeam _team;
+
+if ((productVersion select 2) > 162) exitWith {};
+
 if (local (leader _unit)) then {
     _unit setVariable [QGVAR(synchedTeam), _team, true];
 };
