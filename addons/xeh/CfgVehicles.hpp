@@ -247,4 +247,34 @@ class CfgVehicles {
             init = "if (local (_this select 0)) then {[(_this select 0), """", false, false] call bis_fnc_initVehicle;};";
         };
     };
+
+    // APEX
+    class Plane_Base_F;
+    class Plane_Civil_01_base_F: Plane_Base_F {
+        XEH_ENABLED;
+    };
+
+    class B_CTRG_Soldier_3_F;
+    class B_CTRG_Miller_F: B_CTRG_Soldier_3_F {
+        XEH_ENABLED;
+    };
+
+    class Land_PowerLine_01_pole_junction_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerLine_01_pole_lamp_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerLine_01_pole_lamp_off_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerLine_01_pole_small_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerLine_01_pole_tall_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerLine_01_pole_transformer_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
 };
