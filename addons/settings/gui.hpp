@@ -147,8 +147,8 @@ class CBA_ButtonConfigureSettings_base: RscButtonMenu {
     onButtonClick = QUOTE(ctrlParent (_this select 0) call COMPILE_FILE(openSettingsMenu));
     idc = IDC_BTN_SETTINGS;
     text = CSTRING(configureAddons);
-    x = POS_X(11.1);
-    y = POS_Y(23);
+    x = POS_X_LOW(11.1);
+    y = POS_Y_LOW(23);
     w = POS_W(10);
     h = POS_H(1);
 };
