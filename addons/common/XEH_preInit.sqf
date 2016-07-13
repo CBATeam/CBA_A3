@@ -29,11 +29,7 @@ call COMPILE_FILE(init_perFrameHandler);
 call COMPILE_FILE(init_delayLess);
 
 // Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
-#ifndef LINUX_BUILD
-    private _addons = ("true" configClasses (configFile >> "CfgPatches")) apply {configName _x};
-#else
-    private _addons = ["true" configClasses (configFile >> "CfgPatches"), {configName _x}] call CBA_fnc_filter;
-#endif
+private _addons = ("true" configClasses (configFile >> "CfgPatches")) apply {configName _x};
 
 activateAddons _addons;
 GVAR(addons) = _addons;

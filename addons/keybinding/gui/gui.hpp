@@ -34,8 +34,8 @@ class RscDisplayConfigure {
             idc = 4302;
             text = CSTRING(configureAddons);
             onButtonClick = "_this call cba_keybinding_fnc_onButtonClick_configure";
-            x = "20.15 * (((safezoneW / safezoneH) min 1.2) / 40) + ([safezoneX, safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2] select ((productVersion select 2) >= 162))";
-            y = "23 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/([1,2] select ((productVersion select 2) >= 162)))";
+            x = "20.15 * (((safezoneW / safezoneH) min 1.2) / 40) + safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2";
+            y = "23 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "12.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
         };
@@ -44,8 +44,8 @@ class RscDisplayConfigure {
         {
             idc = 4303;
             text = "$STR_A3_RscDisplayConfigure_ButtonKeyboard";
-            x = "1 * (((safezoneW / safezoneH) min 1.2) / 40) + ([safezoneX, safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2] select ((productVersion select 2) >= 162))";
-            y = "2.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/([1,2] select ((productVersion select 2) >= 162)))";
+            x = "1 * (((safezoneW / safezoneH) min 1.2) / 40) + safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2";
+            y = "2.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "8 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
         };
@@ -59,8 +59,8 @@ class RscDisplayConfigure {
             };
             idc = 4301;
             enableDisplay = 0;
-            x = "1 * (((safezoneW / safezoneH) min 1.2) / 40) + ([safezoneX, safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2] select ((productVersion select 2) >= 162))";
-            y = "3.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/([1,2] select ((productVersion select 2) >= 162)))";
+            x = "1 * (((safezoneW / safezoneH) min 1.2) / 40) + safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2";
+            y = "3.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "38 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "19.6 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 

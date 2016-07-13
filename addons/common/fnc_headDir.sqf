@@ -76,15 +76,13 @@ if (_unit != call CBA_fnc_currentUnit) then {
 private _diff = -_azimuth;
 
 if !(_offset isEqualTo "") then {
-#ifndef LINUX_BUILD
     ADD(_diff,_unit getDir ([_offset] call CBA_fnc_getPos));
-#else
-    ADD(_diff,[ARR_2(_unit,[_offset] call CBA_fnc_getPos)] call BIS_fnc_dirTo);
-#endif
 };
+
 if (_diff < 0) then {
     ADD(_diff,360);
 };
+
 if (_diff > 180) then {
     SUB(_diff,360);
 };

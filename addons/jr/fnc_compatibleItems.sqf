@@ -43,22 +43,14 @@ if (isNil "_compatibleItems") then {
 
             if (isArray _cfgCompatibleItems) then {
                 {
-                    #ifndef LINUX_BUILD
-                        _compatibleItems pushBackUnique _x;
-                    #else
-                        if !(_x in _compatibleItems) then {_compatibleItems pushBack _x};
-                    #endif
+                    _compatibleItems pushBackUnique _x;
                     nil
                 } count getArray _cfgCompatibleItems;
             } else {
                 if (isClass _cfgCompatibleItems) then {
                     {
                         if (getNumber _x > 0) then {
-                            #ifndef LINUX_BUILD
-                                _compatibleItems pushBackUnique configName _x;
-                            #else
-                                if !(configName _x in _compatibleItems) then {_compatibleItems pushBack configName _x};
-                            #endif
+                            _compatibleItems pushBackUnique configName _x;
                         };
                         nil
                     } count configProperties [_cfgCompatibleItems, "isNumber _x"];
@@ -80,9 +72,5 @@ if (isNil "_typefilter") then { //return
         _typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] find _typefilter, -1];
     };
 
-    #ifndef LINUX_BUILD
-        _compatibleItems select {_typefilter == getNumber (configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type")}
-    #else
-        [_compatibleItems, {_typefilter == getNumber (configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type")}] call BIS_fnc_conditionalSelect
-    #endif
+    _compatibleItems select {_typefilter == getNumber (configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type")}
 };
