@@ -47,29 +47,15 @@ private _buildings = _position nearObjects ["Building", _radius];
 [_statics,{(_x emptyPositions "Gunner") > 0},true] call CBA_fnc_filter;
 
 // Filter out buildings below the size threshold (and store positions for later use)
-{
-    if ((_x buildingPos _threshold) isEqualto [0,0,0]) then {
-        _buildings set [_forEachIndex,nil];
-    } else {
-        private _positions = _x buildingPos -1;
-
-        if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
-            _x setVariable ["CBA_taskDefend_positions",_positions];
-        };
-    };
-} forEach _buildings;
-_buildings = _buildings arrayIntersect _buildings;
-
-// v1.56 version of the above
-/*_buildings = _buildings select {
+_buildings = _buildings select {
     private _positions = _x buildingPos -1;
 
     if (isNil {_x getVariable "CBA_taskDefend_positions"}) then {
-        _x setVariable ["CBA_taskDefend_positions",_positions];
+        _x setVariable ["CBA_taskDefend_positions", _positions];
     };
 
     count (_positions) > _threshold
-};*/
+};
 
 private _units = units _group;
 private _assigned = 0;
