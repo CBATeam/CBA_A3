@@ -196,8 +196,4 @@ private _resultNames = [];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
 } forEach [XEH_EVENTS];
 
-#ifndef LINUX_BUILD
-    _result select {!((_x select 2) isEqualTo {})}
-#else
-    [_result, {!((_x select 2) isEqualTo {})}] call BIS_fnc_conditionalSelect
-#endif
+_result select {!((_x select 2) isEqualTo {})}

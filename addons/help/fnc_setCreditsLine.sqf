@@ -38,11 +38,11 @@ if (CBA_DisableCredits) exitWith {};
 
 // find addon with author
 private _config = configFile >> "CfgPatches";
-private _entry = ("
+private _entry = selectRandom ("
     isText (_x >> 'author') &&
     {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
     {getText (_x >> 'author') != ''}
-" configClasses _config) call (uiNamespace getVariable "BIS_fnc_selectRandom"); //bwc for 1.54 (Linux build)
+" configClasses _config);
 
 if (isNil "_entry") exitWith {};
 
