@@ -16,8 +16,6 @@ GVAR(nextFrameBufferA) = [[[], {GVAR(nextFrameNo) = diag_frameno;}]];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 
-PREP(perFrameEngine);
-
 // per frame handler system
 FUNC(onFrame) = {
     private _tickTime = diag_tickTime;
