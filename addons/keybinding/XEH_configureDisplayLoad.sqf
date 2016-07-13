@@ -26,9 +26,8 @@ _fakeKeyboardButton ctrlEnable false;
 // This is a non-issue for most users, who will have a 'mission' loaded by the background of the
 // main menu. Only people (devs) using an ocean world load to save time will be affected.
 
-
-if ((!isNil {is3DEN}) && {is3DEN}) exitWith { //safe way to check 1.56 is3DEN command (ToDo: change after 1.56 release)
-    //if in eden editor, postInit will not run, so there won't be any valid keybinds to modify
+//if in eden editor, postInit will not run, so there won't be any valid keybinds to modify
+if (is3DEN) exitWith {
     _lb = _display displayCtrl 202;
     _lb lnbAddRow [localize LSTRING(canNotEdit)];
 };
