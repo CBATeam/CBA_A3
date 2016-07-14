@@ -11,13 +11,15 @@
 
 class CfgPatches {
     class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark","CBA_jr_prep"};
+        requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark","A3_Weapons_F_Exp","CBA_jr_prep"};
         version = VERSION;
-        author[] = {"Robalo"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Robalo"};
     };
     class asdg_jointrails { //compat
         units[] = {};
@@ -33,16 +35,6 @@ class CfgPatches {
     };
 };
 
-class CfgFunctions {
-    class CBA {
-        class JR {
-            class compatibleItems {
-                description = "Get list of compatible attachments for a weapon";
-                file = QUOTE(PATHTOF(fnc_compatibleItems.sqf));
-            };
-        };
-    };
-};
-
 #include "jr_classes.hpp"
 #include "cfgweapons.hpp"
+#include "CfgFunctions.hpp"

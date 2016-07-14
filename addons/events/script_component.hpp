@@ -31,11 +31,11 @@
 
 #define SEND_TEVENT_TO_SERVER(params,name,targets) TEVENT_PVAR = [name, params, targets]; publicVariableServer TEVENT_PVAR_STR
 
-#define CALL_EVENT(params,event) {\
+#define CALL_EVENT(args,event) {\
     if !(isNil "_x") then {\
-        params call _x;\
+        args call _x;\
     };\
-} forEach (GVAR(eventNamespace) getVariable event)
+} forEach +([GVAR(eventNamespace) getVariable event] param [0, []]) // copy array so events can be removed while iterating safely
 
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 

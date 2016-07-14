@@ -10,12 +10,11 @@ GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
-GVAR(nextFrameNo) = diag_frameno;
-GVAR(nextFrameBufferA) = [];
+GVAR(nextFrameNo) = diag_frameno + 1;
+// PostInit can be 2 frames after preInit, need to manually set nextFrameNo, so new items get added to buffer B while processing A for the first time:
+GVAR(nextFrameBufferA) = [[[], {GVAR(nextFrameNo) = diag_frameno;}]];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
-
-PREP(perFrameEngine);
 
 // per frame handler system
 FUNC(onFrame) = {
@@ -113,17 +112,9 @@ if (isMultiplayer) then {
             GVAR(lastTickTime) = _tickTime;
         };
 
-        if (isNil {canSuspend}) then {
-            // pre v1.58
-            ["CBA_SynchMissionTime", "onPlayerConnected", {
-                _owner publicVariableClient "CBA_missionTime";
-            }] call BIS_fnc_addStackedEventHandler;
-        } else {
-            // v1.58 and later
-            addMissionEventHandler ["PlayerConnected", {
-                (_this select 4) publicVariableClient "CBA_missionTime";
-            }];
-        };
+        addMissionEventHandler ["PlayerConnected", {
+            (_this select 4) publicVariableClient "CBA_missionTime";
+        }];
     } else {
         CBA_missionTime = -1;
 

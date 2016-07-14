@@ -80,9 +80,8 @@ class Extended_Reloaded_EventHandlers {};
 
 // display xeh
 class Extended_DisplayLoad_EventHandlers {
-    // fix for preInit = 1 functions not being executed when entering 3den from main menu
     class Display3DEN {
-        ADDON = "[] call CBA_fnc_preInit;";
+        ADDON = QUOTE(call COMPILE_FILE(XEH_3DENDisplayLoad));
     };
 };
 class Extended_DisplayUnload_EventHandlers {};

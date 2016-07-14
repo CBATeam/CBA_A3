@@ -7,14 +7,17 @@ Description:
     The Namespace is destroyed after the mission ends. getVariable ARRAY is not supported.
 
 Parameters:
-    None
+    _isGlobal - create a global namespace (optional, default: false) <BOOLEAN>
 
 Returns:
-    _namespace - a namespace <LOCATION>
+    _namespace - a namespace <LOCATION, OBJECT>
 
 Examples:
     (begin example)
         _namespace = call CBA_fnc_createNamespace;
+
+        My_GlobalNamespace = true call CBA_fnc_createNamespace;
+        publicVariable "My_GlobalNamespace";
     (end)
 
 Author:
@@ -23,4 +26,12 @@ Author:
 #include "script_component.hpp"
 SCRIPT(createNamespace);
 
-createLocation ["CBA_NamespaceDummy", [-1000, -1000, 0], 0, 0]
+#define DUMMY_POSITION [-1000, -1000, 0]
+
+params [["_isGlobal", false]];
+
+if (_isGlobal isEqualTo true) then {
+    createVehicle ["CBA_NamespaceDummy", DUMMY_POSITION, [], 0, "NONE"]
+} else {
+    createLocation ["CBA_NamespaceDummy", DUMMY_POSITION, 0, 0]
+};

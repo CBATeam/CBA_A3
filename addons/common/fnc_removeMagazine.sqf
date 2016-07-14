@@ -65,31 +65,17 @@ if (_ammo < 0) then {
     private _backpack = backpackContainer _unit;
 
     // magazinesAmmoCargo bugged. returns nil for objNull.
-    #ifndef LINUX_BUILD
-        if (!isNull _uniform) then {
-            _uniformMagazines = magazinesAmmoCargo _uniform select {_x select 0 == _item};
-        };
+    if (!isNull _uniform) then {
+        _uniformMagazines = magazinesAmmoCargo _uniform select {_x select 0 == _item};
+    };
 
-        if (!isNull _vest) then {
-            _vestMagazines = magazinesAmmoCargo _vest select {_x select 0 == _item};
-        };
+    if (!isNull _vest) then {
+        _vestMagazines = magazinesAmmoCargo _vest select {_x select 0 == _item};
+    };
 
-        if (!isNull _backpack) then {
-            _backpackMagazines = magazinesAmmoCargo _backpack select {_x select 0 == _item};
-        };
-    #else
-        if (!isNull _uniform) then {
-            _uniformMagazines = [magazinesAmmoCargo _uniform, {_x select 0 == _item}] call BIS_fnc_conditionalSelect;
-        };
-
-        if (!isNull _vest) then {
-            _vestMagazines = [magazinesAmmoCargo _vest, {_x select 0 == _item}] call BIS_fnc_conditionalSelect;
-        };
-
-        if (!isNull _backpack) then {
-            _backpackMagazines = [magazinesAmmoCargo _backpack, {_x select 0 == _item}] call BIS_fnc_conditionalSelect;
-        };
-    #endif
+    if (!isNull _backpack) then {
+        _backpackMagazines = magazinesAmmoCargo _backpack select {_x select 0 == _item};
+    };
 
     {
         if (_x select 1 == _ammo) exitWith {

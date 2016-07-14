@@ -38,36 +38,36 @@ if (CBA_DisableCredits) exitWith {};
 
 // find addon with author
 private _config = configFile >> "CfgPatches";
-private _entry = ("isArray (_x >> 'author') && {!(getArray (_x >> 'author') isEqualTo [])}" configClasses _config) call (uiNamespace getVariable "BIS_fnc_selectRandom"); //bwc for 1.54 (Linux build)
+private _entry = selectRandom ("
+    isText (_x >> 'author') &&
+    {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
+    {getText (_x >> 'author') != ''}
+" configClasses _config);
 
 if (isNil "_entry") exitWith {};
 
 // addon name
 private _name = configName _entry;
 
+if (isText (_entry >> "name")) then {
+    _name = getText (_entry >> "name");
+};
+
 if (!CBA_MonochromeCredits) then {
     _name = format ["<t color='#99cccc'>%1</t>", _name];
 };
 
 // author(s) name
-private _authors = getArray (_entry >> "author");
-private _author = _authors deleteAt 0;
+private _author = getText (_entry >> "author");
 
-{
-    if (_x isEqualType "") then {
-        _author = format ["%1, %2", _author, _x];
-    };
-} forEach _authors;
+if (isArray (_entry >> "authors")) then {
+    private _authors = getArray (_entry >> "authors");
 
-// url if any
-private _url = "";
-
-if (isText (_entry >> "authorUrl")) then {
-    _url = getText (_entry >> "authorUrl");
-
-    if (!CBA_MonochromeCredits) then {
-        _url = format ["<t color='#566D7E'>%1</t>", _url];
-    };
+    {
+        if (_x isEqualType "") then {
+            _author = format ["%1, %2", _author, _x];
+        };
+    } forEach _authors;
 };
 
 // version if any
@@ -78,4 +78,4 @@ if (isText (_entry >> "version")) then {
 };
 
 // add single line
-_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author, _url];
+_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author];

@@ -29,11 +29,7 @@ if !(_targets isEqualType []) then {
     _targets = [_targets];
 };
 
-#ifndef LINUX_BUILD
-    private _remoteTargets = _targets select {!local GETOBJ(_x)};
-#else
-    private _remoteTargets = [_targets, {!local GETOBJ(_x)}] call BIS_fnc_conditionalSelect;
-#endif
+private _remoteTargets = _targets select {!local GETOBJ(_x)};
 
 // do local events if there is a local target
 if (count _targets > count _remoteTargets) then {

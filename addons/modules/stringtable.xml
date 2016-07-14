@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Modules">
+        <Key ID="STR_CBA_Modules_Component">
+            <English>Community Base Addons - Modules Component</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Category_DisplayName">
+            <English>CBA Modules</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Attack">
+            <English>Attack</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AttackLocType">
+            <English>Attack Location Type</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AttackLocType_Desc">
+            <English>Set what kind of object is being passed as the center point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ModuleLoc">
+            <English>Module Position</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ObjectLoc">
+            <English>Object/Location</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_GroupLoc">
+            <English>Group</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ArrayLoc">
+            <English>Array</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_MarkerLoc">
+            <English>Marker</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_TaskLoc">
+            <English>Task</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SetLoc">
+            <English>Set Position</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AttackPosition">
+            <English>Attack Position</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AttackPosition_Desc">
+            <English>Enter an array with brackets or name without quotes</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SearchRadius">
+            <English>Search Radius</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SearchRadius_Desc">
+            <English>Enter a number for size of the radius to search</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AttackModuleDescription">
+            <English>Sync to leader of group to attack a parsed location</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AllowOverride">
+            <English>Allow Override</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_AllowOverride_Desc">
+            <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Defend">
+            <English>Defend</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendPositionType">
+            <English>Defend Position Type</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendPositionType_Desc">
+            <English>Set what kind of object is being passed as the center point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendPosition">
+            <English>Defend Position</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendPosition_Desc">
+            <English>Enter an array with brackets or name without quotes</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendRadius">
+            <English>Defend Radius</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendRadius_Desc">
+            <English>The max distance to defend from the center point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Threshold">
+            <English>Building Size Threshold</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Threshold_Desc">
+            <English>Smaller the number the more buildings available</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CanPatrol">
+            <English>Allow Patrolling</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CanPatrol_Desc">
+            <English>AI will be able to patrol the area they are defending</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_DefendModuleDescription">
+            <English>Sync to leader of group to defend a parsed location</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Patrol">
+            <English>Patrol</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolCenterType">
+            <English>Patrol Center Type</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
+            <English>Set what kind of object is being passed as the center point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolPosition">
+            <English>Center Point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
+            <English>Enter an array with brackets or name without quotes</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolRadius">
+            <English>Patrol Radius</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolRadius_Desc">
+            <English>The distance to patrol from the center point</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_WaypointCount">
+            <English>Waypoint Count</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_WaypointCount_Desc">
+            <English>The amount of waypoints to create</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_WaypointType">
+            <English>Waypoint Type</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_WaypointType_Desc">
+            <English>The type of waypoint to be used</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Move">
+            <English>Move</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SAD">
+            <English>Seek and Destroy</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Loiter">
+            <English>Loiter</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Behaviour">
+            <English>Behaviour</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Behaviour_Desc">
+            <English>The behaviour of the group</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Careless">
+            <English>Careless</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Safe">
+            <English>Safe</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Aware">
+            <English>Aware</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Combat">
+            <English>Combat</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Stealth">
+            <English>Stealth</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatMode">
+            <English>Combat Mode</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatMode_Desc">
+            <English>How fast the group is to engage</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatYellow">
+            <English>Yellow (Fire at will)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatBlue">
+            <English>Blue (Never fire)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatGreen">
+            <English>Green (Hold Fire-Defend Only)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatWhite">
+            <English>White (Hold Fire-Engage at will)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_CombatRed">
+            <English>Red (Fire at will-Engage at will)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SpeedMode">
+            <English>Speed Mode</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SpeedMode_Desc">
+            <English>Walk, jog, or run to each waypoint</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SpeedLimited">
+            <English>Limited(Walking)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SpeedNormal">
+            <English>Normal(Jog-Stays in formation)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_SpeedFull">
+            <English>Full(Run-No formation)</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Formation">
+            <English>Formation</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Formation_Desc">
+            <English>The formation to be used when moving</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Column">
+            <English>Column</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_StagColumn">
+            <English>Stag Column</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Wedge">
+            <English>Wedge</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_EchLeft">
+            <English>Ech Left</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_EchRight">
+            <English>Ech Right</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Vee">
+            <English>Vee</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Line">
+            <English>Line</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_File">
+            <English>File</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Diamond">
+            <English>Diamond</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ExecutableCode">
+            <English>Code to Execute</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
+            <English>Any code to run at waypoints</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Timeout">
+            <English>Timeout</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_Timeout_Desc">
+            <English>[Min, Med, Max] Time to wait at waypoints</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_PatrolModuleDescription">
+            <English>Sync to leader of group to patrol a parsed location</English>
+        </Key>
+    </Package>
+</Project>

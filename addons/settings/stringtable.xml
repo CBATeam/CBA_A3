@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package name="CBA">
+    <Key ID="STR_cba_settings_Component">
+        <English>Community Base Addons - Settings Component</English>
+    </Key>
+    <Key ID="STR_cba_settings_configureAddons">
+        <English>Configure Addons</English>
+        <German>Modifikationen anpassen</German>
+        <Polish>Konfiguracja addonów</Polish>
+    </Key>
+    <Key ID="STR_cba_settings_configureBase">
+        <English>Configure Base</English>
+        <German>Hauptspiel anpassen</German>
+        <Polish>Konfiguracja bazy</Polish>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonClient">
+        <English>Client</English>
+        <German>Lokal</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonClient_tooltip">
+        <English>Edit your local settings. Red colored settings are overwritten by the server or mission.</English>
+        <German>Lokale Einstellungen bearbeiten. Rot geschriebene Einstellungen werden vom Server oder der Mission überschrieben.</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonServer">
+        <English>Server</English>
+        <German>Server</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonServer_tooltip">
+        <English>Look at the servers settings. 'Forced' settings overwrite the client and mission settings. Log in as admin to change.</English>
+        <German>Server-Einstellungen ansehen. 'Erzwungene' Einstellungen überschreiben lokale und Missionseinstellungen. Als Admin einloggen, um zu ändern.</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonMission">
+        <English>Mission</English>
+        <German>Mission</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonMission_tooltip">
+        <English>Edit the missions settings. 'Forced' settings overwrite the clients settings.</English>
+        <German>Missionseinstellungen bearbeiten. 'Erzwungene' Einstellungen überschreiben lokale.</German>
+    </Key>
+    <Key ID="STR_cba_settings_force">
+        <English>Force</English>
+        <German>Erzwingen</German>
+    </Key>
+    <Key ID="STR_cba_settings_force_tooltip">
+        <English>Check to overwrite this setting for all connected players.</English>
+        <German>Wählen, um diese Einstellung für alle verbunden Spieler zu überschreiben.</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonImport">
+        <English>Import</English>
+        <German>Import</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonImport_tooltip">
+        <English>Import settings from clipboard.</English>
+        <German>Einstellungen aus Zwischenablage einfügen.</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonExport">
+        <English>Export</English>
+        <German>Export</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonExport_tooltip">
+        <English>Export settings to clipboard.</English>
+        <German>Einstellungen in Zwischenablage speichern.</German>
+    </Key>
+    <Key ID="STR_cba_settings_Default">
+        <English>Default</English>
+        <German>Voreinst.</German>
+    </Key>
+    <Key ID="STR_cba_settings_overwritten_tooltip">
+        <English>Setting is overwritten. Check 'Server' or 'Mission' tab.</English>
+        <German>Einstellung ist überschrieben. Überprüfe 'Server' oder 'Mission'-Reiter.</German>
+    </Key>
+    <Key ID="STR_cba_settings_shortcut">
+        <English>Game Options (Addons)</English>
+        <German>Optionen (Modifikationen)</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonSave_tooltip">
+        <English>Save current settings as preset.</English>
+        <German>Derzeitige Einstellungen als Vorlage speichern.</German>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonLoad_tooltip">
+        <English>Load settings from preset.</English>
+        <German>Einstellungen aus Vorlage laden.</German>
+    </Key>
+</Package>

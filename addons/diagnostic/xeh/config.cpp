@@ -2,6 +2,9 @@
 #ifndef EH_DEBUG_ENABLED
     class CfgPatches {
         class cba_diagnostics_xeh_disabled {
+            author = "$STR_CBA_Author";
+            name = "$STR_CBA_Optional_Component";
+            url = "$STR_CBA_URL";
             units[] = {};
             weapons[] = {};
             worlds[] = {};
@@ -14,6 +17,9 @@
     #include "script_component.hpp"
     class CfgPatches {
         class ADDON {
+            author = "$STR_CBA_Author";
+            name = "$STR_CBA_Optional_Component";
+            url = "$STR_CBA_URL";
             units[] = {};
             weapons[] = {};
             worlds[] = {};

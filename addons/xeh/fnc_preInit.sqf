@@ -58,6 +58,8 @@ GVAR(EventsLowercase) = [];
 } forEach [XEH_EVENTS];
 
 // generate list of incompatible classes
+GVAR(incompatible) = [] call CBA_fnc_createNamespace;
+
 {
     private _class = configFile >> "CfgVehicles" >> _x;
 

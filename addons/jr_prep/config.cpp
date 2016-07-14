@@ -2,19 +2,22 @@
 
 class CfgPatches {
     class ADDON {
+        author = "$STR_CBA_Author";
+        name = ECSTRING(jr,component);
+        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark"};
+        requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark","A3_Weapons_F_Exp"};
         version = VERSION;
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
     };
 };
 
 class CfgWeapons {
-
-    class Rifle_Base_F;
-    
+    class Rifle;
+    class Rifle_Base_F : Rifle {
+        class WeaponSlotsInfo;
+    };
     class Rifle_Long_Base_F : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
@@ -113,6 +116,99 @@ class CfgWeapons {
     class arifle_TRG20_F : Tavor_base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
+        };
+    };
+
+    class LMG_03_base_F : Rifle_Long_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+            delete UnderBarrelSlot;
+        };
+    };
+
+    class DMR_07_base_F : Rifle_Long_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class SMG_05_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+            delete UnderBarrelSlot;
+        };
+    };
+/*
+    class arifle_AKS_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete UnderBarrelSlot;
+        };
+    };
+*/
+    class arifle_AK12_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_SPAR_01_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_SPAR_02_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+            delete UnderBarrelSlot;
+        };
+    };
+
+    class arifle_SPAR_03_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+            delete UnderBarrelSlot;
+        };
+    };
+
+    class arifle_CTAR_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_CTARS_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_ARX_base_F : Rifle_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete CowsSlot;
+            delete PointerSlot;
+            delete UnderBarrelSlot;
         };
     };
 

@@ -37,6 +37,7 @@ class CfgFunctions {
             F_FILEPATH(selectWeapon);
             F_FILEPATH(switchPlayer);
             F_FILEPATH(currentUnit);
+            F_FILEPATH(players);
         };
 
         class Vehicles {
@@ -46,6 +47,8 @@ class CfgFunctions {
             F_FILEPATH(vehicleRole);
             F_FILEPATH(turretPath);
             F_FILEPATH(turretPathWeapon);
+            F_FILEPATH(viewDir);
+            F_FILEPATH(turretDir);
         };
 
         class Anims {

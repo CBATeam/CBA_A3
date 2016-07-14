@@ -6,8 +6,8 @@ Description:
 
 Parameters:
     _string - String to extract from [String]
-    _startIndex - Index to start the substring extraction [String]
-    _endIndex - Index to end the substring extraction [String]
+    _startIndex - Index to start the substring extraction [Number]
+    _endIndex - Index to end the substring extraction [Number]
 
 Returns:
     String extracted [String]

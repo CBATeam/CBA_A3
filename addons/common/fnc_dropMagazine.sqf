@@ -30,11 +30,7 @@ params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];
 
 // random mag mode
 if (_ammo < 0) then {
-    #ifndef LINUX_BUILD
-        _ammo = ((magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}}) call BIS_fnc_selectRandom) param [1, "null"];
-    #else
-        _ammo = (([magazinesAmmoFull _unit, {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}}] call BIS_fnc_conditionalSelect) call BIS_fnc_selectRandom) param [1, "null"];
-    #endif
+    _ammo = (selectRandom (magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}})) param [1, "null"];
 };
 
 // no mag of this type in units inventory

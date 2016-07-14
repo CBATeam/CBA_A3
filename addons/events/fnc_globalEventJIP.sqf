@@ -38,6 +38,6 @@ if (_jipID isEqualTo "") then {
 GVAR(eventNamespaceJIP) setVariable [_jipID, [EVENT_PVAR_STR, [_eventName, _params]], true];
 
 // execute on every machine
-[_eventName, _params] call CBA_fnc_globalEvent;
+[QGVAR(eventJIP), [_eventName, _params]] call CBA_fnc_globalEvent;
 
 _jipID

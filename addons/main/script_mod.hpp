@@ -1,10 +1,10 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
-#define MAJOR 2
-#define MINOR 3
-#define PATCHLVL 2
-#define BUILD 160220
+#define MAJOR 3
+#define MINOR 0
+#define PATCHLVL 0
+#define BUILD 160713
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
@@ -12,7 +12,7 @@
 
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.54
+#define REQUIRED_VERSION 1.62
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)

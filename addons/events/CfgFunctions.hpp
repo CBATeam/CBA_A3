@@ -46,6 +46,10 @@ class CfgFunctions {
                 description = "Registers an event handler for a specific CBA event.";
                 file = "\x\cba\addons\events\fnc_addEventHandler.sqf";
             };
+            class addEventHandlerArgs {
+                description = "Registers an event handler for a specific CBA event with arguments.";
+                file = "\x\cba\addons\events\fnc_addEventHandlerArgs.sqf";
+            };
             class removeEventHandler {
                 description = "Removes an event handler previously registered with CBA_fnc_addEventHandler.";
                 file = "\x\cba\addons\events\fnc_removeEventHandler.sqf";
@@ -73,6 +77,10 @@ class CfgFunctions {
             class targetEvent {
                 description = "Raises a CBA event on all machines where this object or at least one of these objects are local.";
                 file = "\x\cba\addons\events\fnc_targetEvent.sqf";
+            };
+            class ownerEvent {
+                description = "Raises a CBA event on the target client ID's machine.";
+                file = "\x\cba\addons\events\fnc_ownerEvent.sqf";
             };
         };
     };
