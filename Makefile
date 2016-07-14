@@ -7,7 +7,7 @@ ZIP = CBA_A3
 # Path to directory that contains included Arma 3 files
 ARMA = include
 # armake flags (-i include -w disable certain warnings) - defined again for filepatching build below
-FLAGS = -i $(ARMA) -w unquoted-string
+FLAGS = -i $(ARMA) -w unquoted-string -w redefinition-wo-undef
 
 MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
 MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
@@ -33,7 +33,7 @@ all: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo, $(wildcard addons/*)) \
 		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo, $(wildcard optionals/*))
 
 filepatching:
-	make FLAGS="-i $(ARMA) -w unquoted-string -p"
+	make FLAGS="-i $(ARMA) -w unquoted-string -w redefinition-wo-undef -p"
 
 $(BIN)/keys/%.biprivatekey:
 	@mkdir -p $(BIN)/keys
