@@ -1,6 +1,5 @@
 #define COMPONENT settings
 #include "\x\cba\addons\main\script_mod.hpp"
-#include "\x\cba\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
@@ -14,6 +13,8 @@
 #ifdef DEBUG_SETTINGS_SETTINGS
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SETTINGS
 #endif
+
+#include "\x\cba\addons\main\script_macros.hpp"
 
 #define IDC_ADDONS_GROUP 4301
 #define IDC_BTN_CONFIGURE_ADDONS 4302
@@ -76,7 +77,7 @@
 #define NAMESPACE_GETVAR(namespace,varname,default) ([namespace getVariable varname] param [0, default])
 
 #define GET_VALUE(namespace,setting) ((GVAR(namespace) getVariable setting) param [0])
-#define GET_FORCED(namespace,setting) ((NAMESPACE_GETVAR(GVAR(namespace),setting,[]) param [1, false]) || {isMultiplayer && {NAMESPACE_GETVAR(GVAR(defaultSettings),setting,[]) param [7, false]}})
+#define GET_FORCED(namespace,setting) (NAMESPACE_GETVAR(GVAR(namespace),setting,[]) param [1, false])
 
 #define GET_TEMP_NAMESPACE(source) ([ARR_3(GVAR(clientSettingsTemp),GVAR(serverSettingsTemp),GVAR(missionSettingsTemp))] param [[ARR_3('client','server','mission')] find toLower source])
 #define SET_TEMP_NAMESPACE_VALUE(setting,value,source)   GET_TEMP_NAMESPACE(source) setVariable [ARR_2(setting,[ARR_2(value,(GET_TEMP_NAMESPACE(source) getVariable setting) param [1])])]

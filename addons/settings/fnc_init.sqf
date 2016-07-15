@@ -75,6 +75,10 @@ private _settingData = [];
 switch (toUpper _settingType) do {
     case ("CHECKBOX"): {
         _defaultValue = _valueInfo param [0, false, [false]]; // don't use params - we want these variables to be private to the main scope
+
+        if (isNumber (configFile >> "CBA_settings" >> _setting)) then { // See if custom default value is set in config
+            _defaultValue = (getNumber (configFile >> "CBA_settings" >> _setting)) > 0;
+        };
     };
     case ("LIST"): {
         _valueInfo params [["_values", [], [[]]], ["_labels", [], [[]]], ["_defaultIndex", 0, [0]]];
@@ -99,17 +103,30 @@ switch (toUpper _settingType) do {
             _labels set [_forEachIndex, _x];
         } forEach _labels;
 
+        
+        if (isNumber (configFile >> "CBA_settings" >> _setting)) then { // See if custom default value is set in config
+            _defaultIndex = getNumber (configFile >> "CBA_settings" >> _setting);
+        };
+        
         _defaultValue = _values param [_defaultIndex];
         _settingData append [_values, _labels];
     };
     case ("SLIDER"): {
         _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]]];
 
+        if (isNumber (configFile >> "CBA_settings" >> _setting)) then { // See if custom default value is set in config
+            _default = getNumber (configFile >> "CBA_settings" >> _setting);
+        };
+
         _defaultValue = _default;
         _settingData append [_min, _max, _trailingDecimals];
     };
     case ("COLOR"): {
         _defaultValue = [_valueInfo] param [0, [1,1,1], [[]], [3,4]];
+
+        if (isArray (configFile >> "CBA_settings" >> _setting)) then { // See if custom default value is set in config
+            _defaultValue = getArray (configFile >> "CBA_settings" >> _setting);
+        };
     };
     default {/* _defaultValue undefined, exit below */};
 };
@@ -161,7 +178,7 @@ if (!isNil "_settingInfo") then {
 if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
-    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;  
+    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
 };
 
 0

@@ -23,7 +23,7 @@ switch (toLower _source) do {
         GET_FORCED(clientSettings,_setting);
     };
     case ("server"): {
-        GET_FORCED(serverSettings,_setting);
+        GET_FORCED(serverSettings,_setting) || {(!GET_FORCED(missionSettings,_setting)) && {(isMultiplayer && {NAMESPACE_GETVAR(GVAR(defaultSettings),_setting,[]) param [7, false]})}};
     };
     case ("mission"): {
         GET_FORCED(missionSettings,_setting);
