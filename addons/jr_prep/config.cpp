@@ -212,4 +212,33 @@ class CfgWeapons {
         };
     };
 
+    class Pistol;
+
+    class Pistol_Base_F : Pistol {
+        class WeaponSlotsInfo;
+    };
+
+    class hgun_ACPC2_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+   };
+
+    class hgun_P07_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+    class hgun_Pistol_heavy_01_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+    class hgun_Rook40_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
 };
