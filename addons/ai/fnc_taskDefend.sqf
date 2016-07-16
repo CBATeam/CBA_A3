@@ -79,8 +79,9 @@ private _assigned = 0;
                 if (_array isEqualTo []) then {
                     _buildings = _buildings - [_building];
                     _building setVariable ["CBA_taskDefend_positions",nil];
+                } else {
+                    _building setVariable ["CBA_taskDefend_positions",_array];
                 };
-                _building setVariable ["CBA_taskDefend_positions",_array];
 
                 // AI manipulation trickey to keep them in position until commanded to move
                 [_x, _pos] spawn {
