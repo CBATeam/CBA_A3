@@ -894,4 +894,45 @@ class CfgWeapons {
         };
     };
 
+    class Pistol;
+
+    class Pistol_Base_F : Pistol {
+        class WeaponSlotsInfo;
+    };
+
+    class hgun_ACPC2_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class MuzzleSlot : asdg_MuzzleSlot_45ACP {
+                iconPosition[] = {0.25, 0.4};
+                iconScale = 0.2;
+            };
+        };
+   };
+
+    class hgun_P07_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class MuzzleSlot : asdg_MuzzleSlot_9MM {
+                iconPosition[] = {0.24, 0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class hgun_Pistol_heavy_01_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class MuzzleSlot : asdg_MuzzleSlot_45ACP {
+                iconPosition[] = {0.24, 0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class hgun_Rook40_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class MuzzleSlot : asdg_MuzzleSlot_9MM {
+                iconPosition[] = {0.3, 0.38};
+                iconScale = 0.2;
+            };
+        };
+    };
 };
