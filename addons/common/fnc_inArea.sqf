@@ -44,47 +44,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(inArea);
 
-params ["_position", ["_zRef", objNull, ["", objNull]]];
+params ["_position", ["_zRef", objNull, ["", objNull, locationNull, []], 5]];
 
 _position = _position call CBA_fnc_getPos;
-
-private ["_zSize","_zDir","_zShape","_zPos"];
-
-switch (typeName _zRef) do {
-    case "STRING": {
-        _zSize = markerSize _zRef;
-        _zDir = markerDir _zRef;
-        _zShape = toLower (markerShape _zRef);
-        _zPos = (_zRef call CBA_fnc_getPos);
-    };
-    case "OBJECT": {
-        _zSize = triggerArea _zRef;
-        _zDir = _zSize select 2;
-        _zShape = if (_zSize select 3) then {"rectangle"} else {"ellipse"};
-        _zPos = getPos _zRef;
-    };
-};
-
-if (isNil "_zSize") exitWith {false};
-
-_position = [_zPos, _position, _zDir] call CBA_fnc_vectRotate2D;
-
-_zPos params ["_x1", "_y1"];
-_position params ["_x2", "_y2"];
-
-private _dx = _x2 - _x1;
-private _dy = _y2 - _y1;
-
-_zSize params ["_zx", "_zy"];
-
-switch (_zShape) do {
-    case "ellipse": {
-        ((_dx^2)/(_zx^2) + (_dy^2)/(_zy^2)) < 1
-    };
-    case "rectangle": {
-        (abs _dx < _zx) && (abs _dy < _zy)
-    };
-    default {
-        false
-    };
-};
+_position inArea _zRef;

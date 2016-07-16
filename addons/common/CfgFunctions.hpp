@@ -96,6 +96,7 @@ class CfgFunctions {
         };
 
         class Positions {
+            F_FILEPATH(getArea);
             F_FILEPATH(getDistance);
             F_FILEPATH(getPos);
             F_FILEPATH(setPos);
