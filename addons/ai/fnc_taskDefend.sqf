@@ -38,13 +38,12 @@ _position = [_position,_group] select (_position isEqualTo []);
 _position = _position call CBA_fnc_getPos;
 
 [_group] call CBA_fnc_clearWaypoints;
-_group enableAttack false;
 
 private _statics = _position nearObjects ["StaticWeapon", _radius];
 private _buildings = _position nearObjects ["Building", _radius];
 
 // Filter out occupied statics
-[_statics,{(_x emptyPositions "Gunner") > 0},true] call CBA_fnc_filter;
+_statics = _statics select {(_x emptyPositions "Gunner") > 0};
 
 // Filter out buildings below the size threshold (and store positions for later use)
 _buildings = _buildings select {
@@ -57,15 +56,17 @@ _buildings = _buildings select {
     count (_positions) > _threshold
 };
 
+// If patrolling is enabled then the leader must be free to lead it
 private _units = units _group;
-private _assigned = 0;
+if (_patrol && {count _units > 1}) then {
+    _units deleteAt (_units find (leader _group));
+};
+
 {
     // 31% chance to occupy nearest free static weapon
     if ((random 1 < 0.31) && { !(_statics isEqualto []) }) then {
         _x assignAsGunner (_statics deleteAt 0);
         [_x] orderGetIn true;
-
-        _assigned = _assigned + 1;
     } else {
         // 93% chance to occupy a random nearby building position
         if ((random 1 < 0.93) && { !(_buildings isEqualto []) }) then {
@@ -77,13 +78,13 @@ private _assigned = 0;
 
                 // If building positions are all taken remove from possible buildings
                 if (_array isEqualTo []) then {
-                    _buildings = _buildings - [_building];
+                    _buildings deleteAt (_buildings find _building);
                     _building setVariable ["CBA_taskDefend_positions",nil];
                 } else {
                     _building setVariable ["CBA_taskDefend_positions",_array];
                 };
 
-                // AI manipulation trickey to keep them in position until commanded to move
+                // Wait until AI is in position then force them to stay
                 [_x, _pos] spawn {
                     params ["_unit","_pos"];
                     if (surfaceIsWater _pos) exitwith {};
@@ -91,19 +92,15 @@ private _assigned = 0;
                     _unit doMove _pos;
                     sleep 5;
                     waituntil {unitReady _unit};
-                    _unit disableAI "move";
-                    doStop _unit;
-                    waituntil {!(unitReady _unit)};
-                    _unit enableAI "move";
+                    _unit disableAI "PATH";
+                    _unit setUnitPos "UP";
                 };
-
-                _assigned = _assigned + 1;
             };
         };
     };
 } forEach _units;
 
-// If half of the group's units aren't assigned then patrol
-if (_patrol && {_assigned < (count _units) * 0.5}) then {
-    [_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
+// Remaining units will patrol if enabled
+if (_patrol) then {
+    [_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskPatrol;
 };
