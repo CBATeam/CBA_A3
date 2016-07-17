@@ -104,7 +104,6 @@ class CfgFunctions {
             F_FILEPATH(setHeight);
             F_FILEPATH(randPos);
             F_FILEPATH(randPosArea);
-            F_FILEPATH(inArea);
             F_FILEPATH(getNearest);
             F_FILEPATH(getNearestBuilding);
         };
