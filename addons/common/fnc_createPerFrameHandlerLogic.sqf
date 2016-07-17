@@ -58,7 +58,7 @@ Author:
 params [
     ["_function", {}, [{}]],
     ["_delay", 0, [0]],
-    ["_args", [], [[]]],
+    ["_args", []],
     ["_start", {}, [{}]],
     ["_end", {}, [{}]],
     ["_runCondition", {true}, [{}]],
