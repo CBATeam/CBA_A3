@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_createPerFrameHandlerLogic
+Function: CBA_fnc_createPerFrameHandlerObject
 
 Description:
     Creates a PFH object, that will execute code every frame, or every x number of seconds.
@@ -47,7 +47,7 @@ Examples:
             { random 1 > 0.5 },
             { random 1 > 0.8 },
             "_test"
-        ] call CBA_fnc_createPerFrameHandlerLogic;
+        ] call CBA_fnc_createPerFrameHandlerObject;
     (end)
 
 Author:

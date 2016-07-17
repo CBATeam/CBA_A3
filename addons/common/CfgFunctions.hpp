@@ -111,7 +111,7 @@ class CfgFunctions {
         class Misc {
             F_FILEPATH(addPerFrameHandler);
             F_FILEPATH(removePerFrameHandler);
-            F_FILEPATH(createPerFrameHandlerLogic);
+            F_FILEPATH(createPerFrameHandlerObject);
             F_FILEPATH(addPlayerAction);
             F_FILEPATH(removePlayerAction);
             F_FILEPATH(createNamespace);
