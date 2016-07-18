@@ -22,9 +22,4 @@ Author:
 
 params [["_logic", locationNull, [locationNull]]];
 
-if (!isNull _logic) then {
-    _logic call (_logic getVariable "end");
-
-    (_logic getVariable "handle") call CBA_fnc_removePerFrameHandler;
-    _logic call CBA_fnc_deleteNamespace;
-};
+_logic setVariable ["exit_condition", {true}];
