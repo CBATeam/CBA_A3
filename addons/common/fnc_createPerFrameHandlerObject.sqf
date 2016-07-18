@@ -109,7 +109,7 @@ private _handle = [{
     private (_logic getVariable "private");
     { call _x } forEach (_logic getVariable "deserialize");
 
-    // check exit condition - exit if false
+    // check exit condition - exit if true
     if (_logic call (_logic getVariable "exit_condition")) exitWith {
         // execute end code
         _logic call (_logic getVariable "end");
