@@ -32,7 +32,7 @@ Author:
 #include "script_component.hpp"
 params [
     ["_group", objNull, [objNull,grpNull]],
-    ["_area", "", ["",objNull]],
+    ["_area", "", ["",objNull,locationNull,[]], 5],
     ["_behaviour", "UNCHANGED", [""]],
     ["_combat", "NO CHANGE", [""]],
     ["_speed", "UNCHANGED", [""]],

@@ -71,3 +71,11 @@ CBA_fnc_intToString = {
     if (isNil "_int") exitWith {""};
     str _int
 };
+
+CBA_fnc_inArea = {
+    WARNING('Deprecated function used: CBA_fnc_inArea (new: inArea)');
+    params ["_position", ["_zRef", objNull, ["", objNull, locationNull, []], 5]];
+    
+    _position = _position call CBA_fnc_getPos;
+    _position inArea _zRef;
+};
