@@ -65,24 +65,27 @@ _ctrlButtonLoad ctrlEnable false;
 _ctrlButtonLoad ctrlShow false;
 _ctrlButtonLoad ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "load"] call FUNC(gui_preset)}];
 
-// ----- create export and import buttons
-private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
+// copyFromClipboard has no effect in MP, so only add button in SP
+if (!isMultiplayer) then {
+    // ----- create export and import buttons
+    private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
 
-_ctrlButtonImport ctrlSetPosition [
-    POS_X(24.4),
-    POS_Y(20.5),
-    POS_W(6),
-    POS_H(1)
-];
+    _ctrlButtonImport ctrlSetPosition [
+        POS_X(24.4),
+        POS_Y(20.5),
+        POS_W(6),
+        POS_H(1)
+    ];
 
-_ctrlButtonImport ctrlCommit 0;
-_ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
-_ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
-_ctrlButtonImport ctrlEnable false;
-_ctrlButtonImport ctrlShow false;
-_ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {[copyFromClipboard, uiNamespace getVariable QGVAR(source)] call FUNC(import)}];
+    _ctrlButtonImport ctrlCommit 0;
+    _ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
+    _ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
+    _ctrlButtonImport ctrlEnable false;
+    _ctrlButtonImport ctrlShow false;
+    _ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {[copyFromClipboard, uiNamespace getVariable QGVAR(source)] call FUNC(import)}];
 
-uiNamespace setVariable [QGVAR(ctrlButtonImport), _ctrlButtonImport];
+    uiNamespace setVariable [QGVAR(ctrlButtonImport), _ctrlButtonImport];
+};
 
 private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
 

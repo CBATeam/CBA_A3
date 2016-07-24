@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
-private _ctrlSetting = _display ctrlCreate ["RscXSliderH", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSetting;
+private _ctrlSetting = _display ctrlCreate ["RscXSliderH", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSetting;
 
 _ctrlSetting ctrlSetPosition [
     POS_W(16),
@@ -30,10 +30,15 @@ _ctrlSetting ctrlAddEventHandler ["SliderPosChanged", {
     _linkedControl ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
+    
+    //If new setting is same as default value, grey out the default button
+    (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
+    (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
+    _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];
 
-private _ctrlSettingEdit = _display ctrlCreate ["RscEdit", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSettingEdit;
+private _ctrlSettingEdit = _display ctrlCreate ["RscEdit", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSettingEdit;
 
 _ctrlSettingEdit ctrlSetPosition [
     POS_W(24),
@@ -59,6 +64,11 @@ _ctrlSettingEdit ctrlAddEventHandler ["KeyUp", {
 
     _value = sliderPosition _linkedControl;
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
+
+    //If new setting is same as default value, grey out the default button
+    (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
+    (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
+    _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];
 
 _ctrlSettingEdit ctrlAddEventHandler ["KillFocus", {
