@@ -2,7 +2,7 @@
 
 private _display = uiNamespace getVariable [QGVAR(display), displayNull];
 private _ctrlOptionsGroup = ((_display getVariable [QGVAR(controls), []]) select {ctrlShown _x}) param [0, controlNull];
-private _contols = _ctrlOptionsGroup getVariable [QGVAR(controls), []];
+private _controls = _ctrlOptionsGroup getVariable [QGVAR(controls), []];
 
 {
     private _linkedControls = _x getVariable QGVAR(linkedControls);
@@ -15,25 +15,31 @@ private _contols = _ctrlOptionsGroup getVariable [QGVAR(controls), []];
     if (!isNil "_value") then {
         switch (toUpper _settingType) do {
             case ("CHECKBOX"): {
-                _linkedControls params ["_ctrlSetting"];
+                _linkedControls params ["_ctrlSetting", "_defaultControl"];
 
                 _ctrlSetting cbSetChecked _value;
+
+                _defaultControl ctrlEnable !(_value isEqualTo _defaultValue);
             };
             case ("LIST"): {
                 _settingData params ["_values"];
-                _linkedControls params ["_ctrlSetting"];
+                _linkedControls params ["_ctrlSetting", "_defaultControl"];
 
                 _ctrlSetting lbSetCurSel (_values find _value);
+
+                _defaultControl ctrlEnable !(_value isEqualTo _defaultValue);
             };
             case ("SLIDER"): {
                 _settingData params ["", "", "_trailingDecimals"];
-                _linkedControls params ["_ctrlSetting", "_ctrlSettingEdit"];
+                _linkedControls params ["_ctrlSetting", "_ctrlSettingEdit", "_defaultControl"];
 
                 _ctrlSetting sliderSetPosition _value;
                 _ctrlSettingEdit ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
+                
+                _defaultControl ctrlEnable !(_value isEqualTo _defaultValue);
             };
             case ("COLOR"): {
-                _linkedControls params ["_ctrlSettingPreview", "_settingControls"];
+                _linkedControls params ["_ctrlSettingPreview", "_settingControls", "_defaultControl"];
 
                 _value params [
                     ["_r", 0, [0]],
@@ -51,6 +57,8 @@ private _contols = _ctrlOptionsGroup getVariable [QGVAR(controls), []];
                     _ctrlSetting sliderSetPosition _valueX;
                     _ctrlSettingEdit ctrlSetText ([_valueX, 1, 2] call CBA_fnc_formatNumber);
                 } forEach _settingControls;
+
+                _defaultControl ctrlEnable !(_value isEqualTo _defaultValue);
             };
             default {};
         };
@@ -74,4 +82,4 @@ private _contols = _ctrlOptionsGroup getVariable [QGVAR(controls), []];
             default {};
         };
     };
-} forEach _contols;
+} forEach _controls;
