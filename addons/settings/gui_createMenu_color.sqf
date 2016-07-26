@@ -52,7 +52,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls"];
+        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
         private _linkedControl = _linkedControls select _index select 1;
         _linkedControl ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
 
@@ -62,7 +62,6 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
 
         //If new setting is same as default value, grey out the default button
-        (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
         (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
         _defaultControl ctrlEnable (!(_currentValue isEqualTo _defaultValue));
     }];
@@ -94,7 +93,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls"];
+        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
 
         private _linkedControl = _linkedControls select _index select 0;
         _linkedControl sliderSetPosition _value;
@@ -105,7 +104,6 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
 
         //If new setting is same as default value, grey out the default button
-        (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
         (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
         _defaultControl ctrlEnable (!(_currentValue isEqualTo _defaultValue));
     }];

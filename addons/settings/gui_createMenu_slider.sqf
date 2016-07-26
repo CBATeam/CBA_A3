@@ -26,13 +26,12 @@ _ctrlSetting ctrlAddEventHandler ["SliderPosChanged", {
 
     (_control getVariable QGVAR(data)) params ["_setting", "_source", "_trailingDecimals"];
 
-    private _linkedControl = _control getVariable QGVAR(linkedControls) select 1;
+    (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControl", "_defaultControl"];
     _linkedControl ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
     
     //If new setting is same as default value, grey out the default button
-    (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
     (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
     _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];
@@ -59,14 +58,13 @@ _ctrlSettingEdit ctrlAddEventHandler ["KeyUp", {
 
     private _value = parseNumber ctrlText _control;
 
-    private _linkedControl = _control getVariable QGVAR(linkedControls) select 0;
+    (_control getVariable QGVAR(linkedControls)) params ["_linkedControl", "", "_defaultControl"];
     _linkedControl sliderSetPosition _value;
 
     _value = sliderPosition _linkedControl;
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
     //If new setting is same as default value, grey out the default button
-    (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
     (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
     _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];

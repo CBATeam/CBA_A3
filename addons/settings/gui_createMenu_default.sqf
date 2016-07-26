@@ -23,6 +23,7 @@ _ctrlSettingDefault ctrlAddEventHandler ["ButtonClick", {
     (_control getVariable QGVAR(data)) params ["_setting", "_source", "_defaultValue", "_settingType", "_settingData"];
     SET_TEMP_NAMESPACE_VALUE(_setting,_defaultValue,_source);
 
+    // Can disable button as the setting will now be the default
     _control ctrlEnable false;
 
     private _linkedControls = _control getVariable QGVAR(linkedControls);
