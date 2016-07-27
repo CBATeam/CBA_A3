@@ -155,85 +155,85 @@ class CfgVehicles {
     };
     class Land_Pod_Heli_Transport_04_ammo_F: Pod_Heli_Transport_04_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_bench_F: Pod_Heli_Transport_04_crewed_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_box_F: Pod_Heli_Transport_04_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_covered_F: Pod_Heli_Transport_04_crewed_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_fuel_F: Pod_Heli_Transport_04_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_medevac_F: Pod_Heli_Transport_04_crewed_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_repair_F: Pod_Heli_Transport_04_base_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_ammo_black_F: Land_Pod_Heli_Transport_04_ammo_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_bench_black_F: Land_Pod_Heli_Transport_04_bench_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_box_black_F: Land_Pod_Heli_Transport_04_box_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_covered_black_F: Land_Pod_Heli_Transport_04_covered_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_fuel_black_F: Land_Pod_Heli_Transport_04_fuel_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_medevac_black_F: Land_Pod_Heli_Transport_04_medevac_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
     class Land_Pod_Heli_Transport_04_repair_black_F: Land_Pod_Heli_Transport_04_repair_F {
         class EventHandlers: EventHandlers {
-            class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+            class XEH_CLASS: XEH_CLASS_BASE {};
         };
     };
 
