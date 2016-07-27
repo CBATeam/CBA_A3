@@ -43,7 +43,7 @@ class Cfg3DEN {
                     h = "8 * (pixelH * pixelGrid * 0.50)";
                     rows = 1;
                     columns = 4;
-                    strings[] = {"\a3\3DEN\Data\Attributes\default_ca.paa","\a3\3DEN\Data\Attributes\Stance\down_ca.paa","\a3\3DEN\Data\Attributes\Stance\middle_ca.paa","\a3\3DEN\Data\Attributes\Stance\up_ca.paa"};
+                    strings[] = {"\a3\3den\Data\Attributes\default_ca.paa","\a3\3den\Data\Attributes\Stance\down_ca.paa","\a3\3den\Data\Attributes\Stance\middle_ca.paa","\a3\3den\Data\Attributes\Stance\up_ca.paa"};
                     tooltips[] = {"$STR_3den_attributes_stance_default","$STR_3den_attributes_stance_down","$STR_3den_attributes_stance_middle","$STR_3den_attributes_stance_up"};
                     values[] = {-1,0,1,2};
                     onToolboxSelChanged = QUOTE(missionNamespace setVariable [ARR_2('GVAR(Stance_value)',_this select 1)];);

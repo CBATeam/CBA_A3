@@ -5,7 +5,7 @@ class CfgWaypoints {
             displayName = "GARRISON"; // all caps
             displayNameDebug = "CBA_Task_Garrison";
             file = QPATHTOF(fnc_waypointGarrison.sqf);
-            icon = "\a3\3DEN\Data\CfgWaypoints\GetInNearest_ca.paa";
+            icon = "\a3\3den\Data\CfgWaypoints\getInNearest_ca.paa";
         };
     };
 };
