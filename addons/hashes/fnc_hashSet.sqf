@@ -46,20 +46,13 @@ private _index = (_hash select HASH_KEYS) find _key;
 
 if (_index >= 0) then {
     if (_isDefault) then {
-        // Remove the key, if the new value is the default value.
-        // Do this by copying the key and value of the last element
-        // in the hash to the position of the element to be removed.
-        // Then, shrink the key and value arrays by one. (#2407)
+        // Remove the key and value, if the new value is the default value or nil
 
         private _keys = _hash select HASH_KEYS;
         private _values = _hash select HASH_VALUES;
-        private _last = (count _keys) - 1;
 
-        _keys set [_index, _keys select _last];
-        _keys resize _last;
-
-        _values set [_index, _values select _last];
-        _values resize _last;
+        _keys deleteAt _index;
+        _values deleteAt _index;
     } else {
         // Replace the original value for this key.
         TRACE_2("VM CHECK SET",_index,_value);
