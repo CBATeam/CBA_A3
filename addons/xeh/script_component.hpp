@@ -41,7 +41,7 @@
 #define XEH_MAIN_CONFIGS [configFile, campaignConfigFile, missionConfigFile]
 
 #undef XEH_ENABLED
-#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; SLX_XEH_DISABLED = 0
+#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS_BASE {}; }; SLX_XEH_DISABLED = 0
 
 #define XEH_EVENTS \
     "AnimChanged", \
