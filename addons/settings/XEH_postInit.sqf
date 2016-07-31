@@ -7,7 +7,7 @@
     };
 
     //Event to read modules
-    ["CBA_preSettingsInit", []] call CBA_fnc_localEvent;
+    ["CBA_beforeSettingsInitialized", []] call CBA_fnc_localEvent;
 
     GVAR(ready) = true;
     {
