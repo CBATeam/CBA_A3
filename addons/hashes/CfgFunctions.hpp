@@ -23,7 +23,7 @@ class CfgFunctions
             };
             class hashFilter
             {
-                description = "Iterate through all keys and values in a Hash. Code must return a bool, if true then key is removed";
+                description = "Iterate through all keys and values in a Hash. Code must return a bool, if false then key is removed";
                 file = "\x\cba\addons\hashes\fnc_hashFilter.sqf";
             };
             // CBA_fnc_hashGet

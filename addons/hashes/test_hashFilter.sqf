@@ -24,7 +24,7 @@ _totalIterations = 0;
     ADD(_sumKeys,_key);
     ADD(_sumValues,_value);
     INC(_totalIterations);
-    false
+    true
 }] call CBA_fnc_hashFilter;
 
 _expected = 6;
@@ -43,7 +43,7 @@ _totalIterations = 0;
 _removeOddValues = {
     ADD(_sumValues,_value);
     INC(_totalIterations);
-    ((_value % 2) == 1)
+    ((_value % 2) == 0)
 };
 _ret = [_hash, _removeOddValues] call CBA_fnc_hashFilter;
 
