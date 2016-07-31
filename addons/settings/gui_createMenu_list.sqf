@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
-private _ctrlSetting = _display ctrlCreate ["RscCombo", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSetting;
+private _ctrlSetting = _display ctrlCreate ["RscCombo", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSetting;
 
 _ctrlSetting ctrlSetPosition [
     POS_W(16),
@@ -39,6 +39,11 @@ _ctrlSetting ctrlAddEventHandler ["LBSelChanged", {
 
     private _value = _data select _index;
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
+
+    //If new setting is same as default value, grey out the default button
+    (_control getVariable QGVAR(linkedControls)) params ["", "_defaultControl"];
+    (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
+    _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];
 
 _linkedControls pushBack _ctrlSetting;

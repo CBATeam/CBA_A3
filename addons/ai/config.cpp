@@ -7,10 +7,12 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_common"};
+        requiredAddons[] = {"CBA_common","A3_3DEN"};
         version = VERSION;
         authors[] = {"Rommel"};
     };
 };
 
+#include "Cfg3DEN.hpp"
 #include "CfgFunctions.hpp"
+#include "CfgWaypoints.hpp"

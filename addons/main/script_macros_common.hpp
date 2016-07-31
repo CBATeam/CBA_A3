@@ -1528,6 +1528,7 @@ Author:
 
 // XEH Specific
 #define XEH_CLASS CBA_Extended_EventHandlers
+#define XEH_CLASS_BASE DOUBLES(XEH_CLASS,base)
 #define XEH_DISABLED class EventHandlers { class XEH_CLASS {}; }; SLX_XEH_DISABLED = 1
 #define XEH_ENABLED class EventHandlers { class XEH_CLASS { EXTENDED_EVENTHANDLERS }; }; SLX_XEH_DISABLED = 0
 

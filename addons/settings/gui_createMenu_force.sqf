@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
-private _ctrlSettingForce = _display ctrlCreate ["RscCheckBox", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSettingForce;
+private _ctrlSettingForce = _display ctrlCreate ["RscCheckBox", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSettingForce;
 
 _ctrlSettingForce ctrlSetPosition [
     POS_W(33),

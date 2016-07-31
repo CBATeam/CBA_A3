@@ -46,6 +46,7 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
         bipod_02_F_hex = 1;
         bipod_03_F_blk = 1;
         bipod_03_F_oli = 1;
+        bipod_01_F_khk = 1;
     };
 };
 
