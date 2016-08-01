@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["hashEachPair", "hashes", "parseYaml"]
+#define TESTS ["hashEachPair", "hashes", "parseYaml", "hashFilter"]
 
 SCRIPT(test-hashes);
 
