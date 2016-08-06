@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import fnmatch
 import os
@@ -6,6 +6,10 @@ import re
 import ntpath
 import sys
 import argparse
+
+if sys.version_info.major == 2
+    import codecs
+    open = codecs.open
 
 def check_config_style(filepath):
     bad_count_file = 0
