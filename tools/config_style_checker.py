@@ -7,7 +7,7 @@ import ntpath
 import sys
 import argparse
 
-if sys.version_info.major == 2
+if sys.version_info.major == 2:
     import codecs
     open = codecs.open
 
