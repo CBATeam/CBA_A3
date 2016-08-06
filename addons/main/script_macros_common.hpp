@@ -1540,3 +1540,43 @@ Author:
 #define XEH_POST_INIT QUOTE(call COMPILE_FILE(XEH_PostInit_Once))
 #define XEH_POST_CINIT QUOTE(call COMPILE_FILE(XEH_PostClientInit_Once))
 #define XEH_POST_SINIT QUOTE(call COMPILE_FILE(XEH_PostServerInit_Once))
+
+/* -------------------------------------------
+Macro: IS_ADMIN
+    Check if the local machine is an admin in the multiplayer environment.
+
+    Reports 'true' for logged and voted in admins.
+
+Parameters:
+    None
+
+Example:
+    (begin example)
+        // print "true" if player is admin
+        systemChat str IS_ADMIN;
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define IS_ADMIN serverCommandAvailable "#kick"
+
+/* -------------------------------------------
+Macro: IS_ADMIN_LOGGED
+    Check if the local machine is a logged in admin in the multiplayer environment.
+
+    Reports 'false' if the player was voted to be the admin.
+
+Parameters:
+    None
+
+Example:
+    (begin example)
+        // print "true" if player is admin and entered in the server password
+        systemChat str IS_ADMIN_LOGGED;
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"

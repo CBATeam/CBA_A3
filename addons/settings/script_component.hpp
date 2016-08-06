@@ -58,10 +58,8 @@
 #define MENU_OFFSET_COLOR 1.0
 #define MENU_OFFSET_COLOR_NEG -0.7
 
-#define IS_ADMIN serverCommandAvailable "#shutdown"
-
 #define CAN_SET_CLIENT_SETTINGS (!isMultiplayer || {!isServer}) // in singleplayer or as client in multiplayer
-#define CAN_SET_SERVER_SETTINGS (isMultiplayer && {isServer || IS_ADMIN}) // in multiplayer and host (local server) or logged in (not voted) admin (dedicated)
+#define CAN_SET_SERVER_SETTINGS (isMultiplayer && {isServer || IS_ADMIN_LOGGED}) // in multiplayer and host (local server) or logged in (not voted) admin (dedicated)
 #define CAN_SET_MISSION_SETTINGS is3den // duh
 
 #ifndef DEBUG_MODE_FULL

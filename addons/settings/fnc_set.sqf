@@ -76,7 +76,7 @@ switch (toLower _source) do {
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
-            if (IS_ADMIN) then {
+            if (IS_ADMIN_LOGGED) then {
                 [QGVAR(setSettingServer), [_setting, _value, _forced]] call CBA_fnc_serverEvent;
             } else {
                 _return = 12;
