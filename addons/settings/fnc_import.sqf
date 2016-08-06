@@ -27,4 +27,6 @@ _info = _info call FUNC(parse);
     SET_TEMP_NAMESPACE_FORCED(_setting,_force,_source);
 } forEach _info;
 
-call FUNC(gui_refresh);
+if (!isNull (uiNamespace getVariable [QGVAR(display), displayNull])) then {
+    call FUNC(gui_refresh);
+};
