@@ -23,10 +23,10 @@ switch (toLower _source) do {
         [_setting, "mission"] call FUNC(isForced) || {[_setting, "server"] call FUNC(isForced)}
     };
     case ("server"): {
-        false
+        (!([_setting, "server"] call FUNC(isForced))) && {[_setting, "mission"] call FUNC(isForced)}
     };
     case ("mission"): {
-        [_setting, "server"] call FUNC(isForced)
+        (!([_setting, "mission"] call FUNC(isForced))) || {[_setting, "server"] call FUNC(isForced)}
     };
     default {nil};
 };
