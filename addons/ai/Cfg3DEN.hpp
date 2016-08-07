@@ -9,7 +9,7 @@ class Cfg3DEN {
                         control = QGVAR(Stance);
                         displayName = "$STR_3DEN_Object_Attribute_Stance_displayName";
                         expression = "_this setUnitPos _value";
-                        defaultValue = "false";
+                        defaultValue = "'auto'";
                         wikiType = "[[String]]";
                     };
                 };
