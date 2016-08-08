@@ -49,6 +49,11 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     3 // 15 - Product+Version, always Arma 3
 ];
 
+CBA_fnc_preprocessFunction = uiNamespace getVariable ([
+    "CBA_fnc_preprocessFunction",
+    "CBA_fnc_preprocessFunction_debug"
+] select (uiNamespace getVariable [QGVAR(debugEnabled), false]));
+
 CBA_isHeadlessClient = !hasInterface && !isDedicated;
 
 // make case insensitive list of all supported events

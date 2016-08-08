@@ -30,6 +30,14 @@ params [
     ["_skipNull", false, [true]]
 ];
 
+#define LOG_TEST(var) QUOTE(#CBA diag_log text str var #\CBA)
+
+LOG_TEST(1);
+
+
+
+
+
 if (isNil QGVAR(stateMachines)) then {
     GVAR(stateMachines) = [];
     GVAR(nextUniqueID) = 0;

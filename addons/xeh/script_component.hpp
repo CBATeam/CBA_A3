@@ -14,6 +14,8 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+
 #define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, msg] }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
@@ -88,3 +90,6 @@
     "WeaponDeployed", \
     "WeaponRested", \
     "Reloaded"
+
+#define IDC_ENABLE_DEBUG_TEXT 110000
+#define IDC_ENABLE_DEBUG_OPTION 110001

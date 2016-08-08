@@ -28,7 +28,7 @@ if (isNil "_return") then {
     private _config = configFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
     private _missionConfig = missionConfigFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
 
-    _return = (isNumber _config && {getNumber _config == 0}) || {isNumber _missionConfig && {getNumber _missionConfig == 0}};
+    _return = (isNumber _config && {getNumber _config == 0}) || {isNumber _missionConfig && {getNumber _missionConfig == 0}} || {uiNamespace getVariable [QGVAR(debugEnabled), false]};
     missionNamespace setVariable [(format [QGVAR(isRecompileEnabled_%1), _compileType]), _return];
 
     // Normally, full caching is enabled. If not, log an informative message.
