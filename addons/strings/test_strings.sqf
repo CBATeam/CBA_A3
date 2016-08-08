@@ -299,4 +299,18 @@ _result = ["aardwolf", "aardvark"] call CBA_fnc_compare;
 TEST_OP(_result, ==, +1, _fn);
 */
 
-nil;
+// ----------------------------------------------------------------------------
+// UNIT TESTS (removeWhitespace)
+_fn = "CBA_fnc_removeWhitespace";
+
+TEST_DEFINED("CBA_fnc_removeWhitespace","");
+
+_str = " foo  bar   " call CBA_fnc_removeWhitespace;
+_expected = "foobar";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
+_str = [" foo  bar   ", true] call CBA_fnc_removeWhitespace;
+_expected = "foo bar";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
+nil
