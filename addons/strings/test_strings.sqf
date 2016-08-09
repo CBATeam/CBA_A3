@@ -313,4 +313,9 @@ _str = [" foo  bar   ", true] call CBA_fnc_removeWhitespace;
 _expected = "foo bar";
 TEST_OP(_str,isEqualTo,_expected,_fn);
 
+_str = "tab:	newline:
+space: " call CBA_fnc_removeWhitespace;
+_expected = "tab:newline:space:";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
 nil
