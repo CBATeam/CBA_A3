@@ -98,12 +98,14 @@ private _result = [];
         private _currentValue = [_setting, "default"] call FUNC(get);
 
         if (isNil "_currentValue") then {
-            diag_log text format ["[CBA] (settings): Error parsing settings file. Setting %1 does not exist.", str _setting];
+            private _message = format ["Error parsing settings file. Setting %1 does not exist.", str _setting];
+            ERROR(_message);
         } else {
             if ([_setting, _value] call FUNC(check)) then {
                 _result pushBack [_setting, _value, _force];
             } else {
-                diag_log text format ["[CBA] (settings): Error parsing settings file. Value %1 is invalid for setting %2.", _value, str _setting];
+                private _message = format ["Error parsing settings file. Value %1 is invalid for setting %2.", _value, str _setting];
+                ERROR(_message);
             };
         };
     };

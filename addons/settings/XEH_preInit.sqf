@@ -49,9 +49,9 @@ addMissionEventHandler ["Loaded", {
 ["CBA_SettingChanged", {
     params ["_setting", "_value"];
 
-    private _message = format ["[CBA] (settings): %1 = %2", _setting, _value];
+    private _message = format ["%1 = %2", _setting, _value];
     systemChat _message;
-    diag_log text _message;
+    LOG(_message);
 }] call CBA_fnc_addEventHandler;
 #endif
 
@@ -68,10 +68,12 @@ if (isServer) then {
     params ["_setting", "_value", ["_forced", false, [false]]];
 
     if ([_setting, "mission"] call FUNC(isForced)) exitWith {
-        diag_log text format ["[CBA] (settings): Setting %1 already forced, ignoring setSettingMission.", _setting];
+        private _message = format ["Setting %1 already forced, ignoring setSettingMission.", str _setting];
+        LOG(_message);
     };
     if (!([_setting, _value] call FUNC(check))) exitWith {
-        diag_log text format ["[CBA] (settings): Value %1 is invalid for setting %2.", _value, _setting];
+        private _message = format ["Value %1 is invalid for setting %2.", _value, str _setting];
+        WARNING(_message);
     };
 
     GVAR(missionSettings) setVariable [_setting, [_value, _forced]];

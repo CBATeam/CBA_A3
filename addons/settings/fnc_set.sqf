@@ -33,7 +33,8 @@ Author:
 params [["_setting", "", [""]], "_value", ["_forced", nil, [false]], ["_source", "client", [""]]];
 
 if (!isNil "_value" && {!([_setting, _value] call FUNC(check))}) exitWith {
-    diag_log text format ["[CBA] (settings): Value %1 is invalid for setting %2.", _value, str _setting];
+    private _message = format ["Value %1 is invalid for setting %2.", _value, str _setting];
+    WARNING(_message);
     1
 };
 
