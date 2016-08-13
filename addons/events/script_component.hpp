@@ -17,7 +17,7 @@
 #define KEYS_ARRAY ['keydown', 'keyup']
 
 // event system
-#define EVENT_PVAR CBAr
+#define EVENT_PVAR CBAs
 #define EVENT_PVAR_STR QUOTE(EVENT_PVAR)
 
 #define SYS_SEND_EVENT(params,name,command) EVENT_PVAR = [name, params]; command EVENT_PVAR_STR
@@ -26,7 +26,7 @@
 #define SEND_EVENT_TO_CLIENT(params,name,client) SYS_SEND_EVENT(params,name,client publicVariableClient)
 
 // target events
-#define TEVENT_PVAR CBAt
+#define TEVENT_PVAR CBAu
 #define TEVENT_PVAR_STR QUOTE(TEVENT_PVAR)
 
 #define SEND_TEVENT_TO_SERVER(params,name,targets) TEVENT_PVAR = [name, params, targets]; publicVariableServer TEVENT_PVAR_STR
