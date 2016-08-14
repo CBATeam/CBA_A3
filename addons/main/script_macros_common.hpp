@@ -158,7 +158,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_FULL
-#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
+#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE, 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 #else
 #define LOG(MESSAGE) /* disabled */
 #endif
@@ -181,7 +181,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_NORMAL
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
+#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, 'WARNING: ' + (MESSAGE), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 #else
 #define WARNING(MESSAGE) /* disabled */
 #endif
@@ -206,7 +206,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #define ERROR(MESSAGE) \
-    [THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
+    [THIS_FILE_, __LINE__, "ERROR", MESSAGE, 'PREFIX', 'COMPONENT'] call CBA_fnc_error;
 
 /* -------------------------------------------
 Macro: ERROR_WITH_TITLE()
@@ -230,7 +230,7 @@ Author:
     Spooner
 ------------------------------------------- */
 #define ERROR_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
+    [THIS_FILE_, __LINE__, TITLE, MESSAGE, 'PREFIX', 'COMPONENT'] call CBA_fnc_error;
 
 /* -------------------------------------------
 Macro: MESSAGE_WITH_TITLE()
@@ -249,7 +249,7 @@ Author:
     Killswitch
 ------------------------------------------- */
 #define MESSAGE_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE)] call CBA_fnc_log;
+    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE), 'PREFIX', 'COMPONENT'] call CBA_fnc_log;
 
 /* -------------------------------------------
 Macro: RETNIL()
@@ -328,31 +328,31 @@ Author:
 
 #ifdef DEBUG_MODE_FULL
 #define TRACE_1(MESSAGE,A) \
-    [THIS_FILE_, __LINE__, PFORMAT_1(MESSAGE,A)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_1(MESSAGE,A), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_2(MESSAGE,A,B) \
-    [THIS_FILE_, __LINE__, PFORMAT_2(MESSAGE,A,B)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_2(MESSAGE,A,B), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_3(MESSAGE,A,B,C) \
-    [THIS_FILE_, __LINE__, PFORMAT_3(MESSAGE,A,B,C)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_3(MESSAGE,A,B,C), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_4(MESSAGE,A,B,C,D) \
-    [THIS_FILE_, __LINE__, PFORMAT_4(MESSAGE,A,B,C,D)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_4(MESSAGE,A,B,C,D), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_5(MESSAGE,A,B,C,D,E) \
-    [THIS_FILE_, __LINE__, PFORMAT_5(MESSAGE,A,B,C,D,E)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_5(MESSAGE,A,B,C,D,E), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-    [THIS_FILE_, __LINE__, PFORMAT_6(MESSAGE,A,B,C,D,E,F)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_6(MESSAGE,A,B,C,D,E,F), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-    [THIS_FILE_, __LINE__, PFORMAT_7(MESSAGE,A,B,C,D,E,F,G)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_7(MESSAGE,A,B,C,D,E,F,G), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-    [THIS_FILE_, __LINE__, PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
-    [THIS_FILE_, __LINE__, PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I)] call CBA_fnc_log
+    [THIS_FILE_, __LINE__, PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I), 'PREFIX', 'COMPONENT'] call CBA_fnc_log
 
 #else
 

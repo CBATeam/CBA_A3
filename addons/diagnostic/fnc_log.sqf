@@ -5,61 +5,57 @@ Description:
     Logs a message to the RPT log.
 
     Should not be used directly, but rather via macro (<LOG()>).
-
     This function is unaffected by the debug level (<DEBUG_MODE_x>).
 
 Parameters:
-    _file - File error occurred in [String]
-    _lineNum - Line number error occurred on (starting from 0) [Number]
-    _message - Message [String]
+    _file      - File error occurred in <STRING>
+    _lineNum   - Line number error occurred on <NUMBER>
+    _message   - Message <STRING>
+    _prefix    - Addon name (optional, defaut: "cba") <STRING>
+    _component - Component name (optional, default: "diagnostic") <STRING>
 
 Returns:
     nil
 
 Author:
-    Spooner and Rommel
+    Spooner, Rommel, commy2
 -----------------------------------------------------------------------------*/
 #define DEBUG_MODE_NORMAL
 #include "script_component.hpp"
-
 SCRIPT(log);
 
-// ----------------------------------------------------------------------------
+params [
+    ["_file", "", [""]],
+    ["_lineNum", -1, [0]],
+    ["_message", "", [""]],
+    ["_prefix", 'PREFIX', [""]],
+    ["_component", 'COMPONENT', [""]]
+];
+
+private _log = text format ["[%1] (%2) WARNING: %3 File: %4 Line: %5", toUpper _prefix, _component, _message, _file, _lineNum];
 
 #ifndef DEBUG_SYNCHRONOUS
-    if (isNil "CBA_LOG_ARRAY") then { CBA_LOG_ARRAY = [] };
-    private ["_msg"];
-    _msg = [_this select 0, _this select 1, _this select 2, diag_frameNo, diag_tickTime, time]; // Save it here because we want to know when it was happening, not when it is outputted
-    CBA_LOG_ARRAY pushBack _msg;
+    if (isNil QGVAR(logArray)) then {
+        GVAR(logArray) = [];
+        GVAR(logScript) = scriptNull;
+    };
 
-    if (isNil "CBA_LOG_VAR") then
-    {
-        CBA_LOG_VAR = true;
-        SLX_XEH_STR spawn
-        {
-            _fnc_log =
-            {
-                params ["_file","_lineNum","_message","_frameNo","_tickTime","_gameTime"];
-                // TODO: Add log message to trace log
-                diag_log [_frameNo,
-                    _tickTime, _gameTime, //[_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [_gameTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime,
-                    _file + ":"+str(_lineNum + 1), _message];
-            };
+    GVAR(logArray) pushBack _log;
 
-            _selected = "";
-            while {_selected = CBA_LOG_ARRAY deleteAt 0; !isNil "_selected"} do
-            {
-                _selected call _fnc_log;
+    if (scriptDone GVAR(logScript)) then {
+        GVAR(logScript) = 0 spawn {
+            private "_selected";
+
+            while {
+                _selected = CBA_LOG_ARRAY deleteAt 0;
+                !isNil "_selected"
+            } do {
+                diag_log _selected;
             };
-            CBA_LOG_VAR = nil;
         };
     };
 #else
-    params ["_file","_lineNum","_message"];
-    // TODO: Add log message to trace log
-    diag_log [diag_frameNo,
-        diag_tickTime, time, // [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime, [time, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime
-        _file + ":"+str(_lineNum + 1), _message];
+    diag_log _log;
 #endif
 
-nil;
+nil
