@@ -29,6 +29,9 @@ with uiNamespace do {
     SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
     SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 
+    CBA_fnc_preprocessFunction = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_preprocessFunction.sqf);
+    CBA_fnc_preprocessFunction_debug = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_preprocessFunction_debug.sqf);
+
     // call PreStart events
     {
         private _eventFunc = "";
