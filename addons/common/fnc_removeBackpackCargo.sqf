@@ -2,12 +2,9 @@
 Function: CBA_fnc_removeBackpackCargo
 
 Description:
-    Removes specific backpack(s) from local cargo space.
+    Removes specific backpack(s) from cargo space.
 
     Warning: Backpack's inventory information is lost.
-
-    * Use <CBA_fnc_removeBackpackCargoGlobal> if you want to remove the backpack(s) in
-      global cargo space.
 
 Parameters:
     _container - Object with cargo <OBJECT>

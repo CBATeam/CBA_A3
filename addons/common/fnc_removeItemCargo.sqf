@@ -2,11 +2,7 @@
 Function: CBA_fnc_removeItemCargo
 
 Description:
-    Removes specific item(s) from local cargo space.
-
-
-    * Use <CBA_fnc_removeItemCargoGlobal> if you want to remove the item(s) in
-      global cargo space.
+    Removes specific item(s) from cargo space.
 
 Parameters:
     _container - Object with cargo <OBJECT>

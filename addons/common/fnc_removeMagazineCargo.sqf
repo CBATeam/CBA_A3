@@ -2,12 +2,9 @@
 Function: CBA_fnc_removeMagazineCargo
 
 Description:
-    Removes specific magazine(s) from local cargo space.
+    Removes specific magazine(s) from cargo space.
 
     Warning: Magazine's ammo count is lost and becomes full.
-
-    * Use <CBA_fnc_removeMagazineCargoGlobal> if you want to remove the magazine(s) in
-      global cargo space.
 
 Parameters:
     _container - Object with cargo <OBJECT>
