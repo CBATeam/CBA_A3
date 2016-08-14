@@ -63,7 +63,16 @@
     </Key>
     <Key ID="STR_cba_settings_Default">
         <English>Default</English>
+        <Czech>Výchozí</Czech>
         <German>Voreinst.</German>
+        <Russian>По умолчанию</Russian>
+        <Polish>Domyślnie</Polish>
+        <Italian>Predefinito</Italian>
+        <Spanish>Predet.</Spanish>
+        <French>Par défaut</French>
+        <Japanese>デフォルト</Japanese>
+        <Korean>기본값</Korean>
+        <Portuguese>Padrão</Portuguese>
     </Key>
     <Key ID="STR_cba_settings_overwritten_tooltip">
         <English>Setting is overwritten. Check 'Server' or 'Mission' tab.</English>

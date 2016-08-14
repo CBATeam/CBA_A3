@@ -161,7 +161,7 @@ if (!isNil "_settingInfo") then {
 if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
-    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;  
+    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
 };
 
 0

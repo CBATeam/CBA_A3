@@ -57,6 +57,12 @@ class CfgFunctions
                 description = "Trims white-space (space, tab, newline) from the left end of a string.";
                 file = "\x\cba\addons\strings\fnc_leftTrim.sqf";
             };
+            // CBA_fnc_removeWhitespace
+            class removeWhitespace
+            {
+                description = "Removes whitespace (space, tab, newline) from string.";
+                file = "\x\cba\addons\strings\fnc_removeWhitespace.sqf";
+            };
             // CBA_fnc_replace
             class replace
             {

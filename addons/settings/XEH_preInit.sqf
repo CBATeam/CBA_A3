@@ -63,4 +63,18 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
+// event to modify mission settings
+[QGVAR(setSettingMission), {
+    params ["_setting", "_value", ["_forced", false, [false]]];
+
+    if ([_setting, "mission"] call FUNC(isForced)) exitWith {
+        diag_log text format ["[CBA] (settings): Setting %1 already forced, ignoring setSettingMission.", _setting];
+    };
+    if (!([_setting, _value] call FUNC(check))) exitWith {
+        diag_log text format ["[CBA] (settings): Value %1 is invalid for setting %2.", _value, _setting];
+    };
+
+    GVAR(missionSettings) setVariable [_setting, [_value, _forced]];
+}] call CBA_fnc_addEventHandler;
+
 ADDON = true;

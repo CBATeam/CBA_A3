@@ -17,11 +17,6 @@ private _data = [_setting, _source];
 _ctrlSettingForce setVariable [QGVAR(linkedControls), _linkedControls];
 _ctrlSettingForce setVariable [QGVAR(data), _data];
 
-if (_isGlobal) then {
-    _ctrlSettingForce ctrlSetChecked true;
-    _ctrlSettingForce ctrlEnable false;
-};
-
 _ctrlSettingForce ctrlAddEventHandler ["CheckedChanged", {
     params ["_control", "_state"];
 
