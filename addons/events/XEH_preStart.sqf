@@ -3,3 +3,6 @@
 PREP(keyHandler);
 PREP(keyHandlerDown);
 PREP(keyHandlerUp);
+
+PREP(missionDisplayLoad);
+PREP(curatorDisplayLoad);
