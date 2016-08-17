@@ -1,10 +1,17 @@
 
 if (isFilePatchingEnabled) then {
     private _source = ["client", "server"] select (isMultiplayer && isServer);
-    private _file = loadFile PATH_SETTINGS_FILE;
+    private _info = loadFile PATH_SETTINGS_FILE;
 
-    if (_file != "") then {
-        [_file, _source] call EFUNC(settings,import);
+    if (_info != "") then {
+        _info = _info call EFUNC(settings,parse);
+
+        {
+            _x params ["_setting", "_value", "_force"];
+
+            [_setting, _value, _force, _source] call EFUNC(settings,set);
+        } forEach _info;
+
         diag_log text "[CBA] (settings): Settings file loaded.";
     } else {
         diag_log text "[CBA] (settings): Settings file not loaded. File empty or does not exist.";
