@@ -41,7 +41,7 @@ Author:
 #include "\x\cba\addons\keybinding\script_component.hpp"
 
 // Clients only.
-if (isDedicated) exitWith {};
+if (!hasInterface) exitWith {};
 
 _nullKeybind = [-1, [false,false,false]];
 
