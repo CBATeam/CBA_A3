@@ -1,43 +1,59 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_error
+Internal Function: CBA_fnc_error
 
 Description:
     Logs an error message to the RPT log.
 
-    Should not be used directly, but rather via macros (<ERROR()>,
-        <ERROR_WITH_TITLE()> or the <Assertions>).
+    Should not be used directly, but rather via macros (<ERROR_WITH_TITLE()>
+    or the <Assertions>).
 
 Parameters:
-    _file - Name of file [String]
-    _lineNum - Line of file (starting at 0) [Number]
-    _title - Title of the error [String]
-    _message - Error message [String, which may contain \n]
+    _prefix    - Addon name (optional, defaut: "cba") <STRING>
+    _component - Component name (optional, default: "diagnostic") <STRING>
+    _title     - Title of the error <STRING>
+    _message   - Error message (use "\n" for newline) <STRING>
+    _file      - Name of file <STRING>
+    _lineNum   - Line of file <NUMEBR>
 
 Returns:
     nil
 
 Author:
-    Spooner
+    Spooner, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(error);
 
-// -----------------------------------------------------------------------------
-params ["_file","_lineNum","_title","_message"];
+params [
+    ["_prefix", 'PREFIX', [""]],
+    ["_component", 'COMPONENT'],
+    ["_title", "", [""]],
+    ["_message", "", [""]],
+    ["_file", "", [""]],
+    ["_lineNum", -1, [0]]
+];
 
-private ["_time", "_lines"];
+_prefix = toUpper _prefix;
 
-// TODO: popup window with error message in it.
-_time = [diag_tickTime, "H:MM:SS.mmm"] call CBA_fnc_formatElapsedTime;
+// RPT log
+diag_log text format ["[%1] (%2) ERROR: %3 File: %4 Line: %5", _prefix, _component, _title, _file, _lineNum];
 
-diag_log text format ["%1 (%2) [%3:%4] -ERROR- %5", _time, time, _file, _lineNum + 1, _title];
-
-_lines = [_message, "\n"] call CBA_fnc_split;
+private _lines = [_message, "\n"] call CBA_fnc_split;
 
 {
     diag_log text format ["            %1", _x];
 } forEach _lines;
 
-nil;
+// error pop up
+QGVAR(Error) cutRsc [QGVAR(Error), "PLAIN"];
+private _control = uiNamespace getVariable QGVAR(Error);
+
+private _compose = [lineBreak, parseText format ["<t align='center' size='1.65'>[%1] (%2) %3<\t>", _prefix, _component, _title], lineBreak];
+
+{
+    _compose append [lineBreak, format ["            %1", _x]];
+} forEach _lines;
+
+_control ctrlSetStructuredText composeText _compose;
+
+nil

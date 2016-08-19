@@ -134,20 +134,24 @@ Author:
 #define DEBUG_MODE_MINIMAL
 #endif
 
-#ifdef THIS_FILE
-#define THIS_FILE_ 'THIS_FILE'
+#define LOG_SYS_FORMAT(LEVEL,MESSAGE) format ['[%1] (%2) %3: %4', toUpper 'PREFIX', 'COMPONENT', LEVEL, MESSAGE]
+
+#ifdef DEBUG_SYNCHRONOUS
+#define LOG_SYS(LEVEL,MESSAGE) diag_log text LOG_SYS_FORMAT(LEVEL,MESSAGE)
 #else
-#define THIS_FILE_ __FILE__
+#define LOG_SYS(LEVEL,MESSAGE) LOG_SYS_FORMAT(LEVEL,MESSAGE) call CBA_fnc_log
 #endif
+
+#define LOG_SYS_FILELINENUMBERS(LEVEL,MESSAGE) LOG_SYS(LEVEL,format [ARR_4('%1 File: %2 Line: %3',MESSAGE,__FILE__,__LINE__ + 1)])
 
 /* -------------------------------------------
 Macro: LOG()
-    Log a timestamped message into the RPT log.
+    Log a debug message into the RPT log.
 
-    Only run if <DEBUG_MODE_FULL> or higher is defined.
+    Only run if <DEBUG_MODE_FULL> is defined.
 
 Parameters:
-    MESSAGE - Message to record [String]
+    MESSAGE - Message to record <STRING>
 
 Example:
     (begin example)
@@ -158,19 +162,36 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_FULL
-#define LOG(MESSAGE) [THIS_FILE_, __LINE__, MESSAGE] call CBA_fnc_log
+#define LOG(MESSAGE) LOG_SYS_FILELINENUMBERS('LOG',MESSAGE)
 #else
 #define LOG(MESSAGE) /* disabled */
 #endif
 
 /* -------------------------------------------
+Macro: INFO()
+    Record a message without file and line number in the RPT log.
+
+Parameters:
+    MESSAGE - Message to record <STRING>
+
+Example:
+    (begin example)
+        INFO("Mod X is loaded, do Y");
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define INFO(MESSAGE) LOG_SYS('INFO',MESSAGE)
+
+/* -------------------------------------------
 Macro: WARNING()
-    Record a timestamped, non-critical error in the RPT log.
+    Record a non-critical error in the RPT log.
 
     Only run if <DEBUG_MODE_NORMAL> or higher is defined.
 
 Parameters:
-    MESSAGE - Message to record [String]
+    MESSAGE - Message to record <STRING>
 
 Example:
     (begin example)
@@ -181,21 +202,17 @@ Author:
     Spooner
 ------------------------------------------- */
 #ifdef DEBUG_MODE_NORMAL
-#define WARNING(MESSAGE) [THIS_FILE_, __LINE__, ('WARNING: ' + MESSAGE)] call CBA_fnc_log
+#define WARNING(MESSAGE) LOG_SYS_FILELINENUMBERS('WARNING',MESSAGE)
 #else
 #define WARNING(MESSAGE) /* disabled */
 #endif
 
 /* -------------------------------------------
 Macro: ERROR()
-    Record a timestamped, critical error in the RPT log.
-
-    The heading is "ERROR" (use <ERROR_WITH_TITLE()> for a specific title).
-
-    TODO: Popup an error dialog & throw an exception.
+    Record a critical error in the RPT log.
 
 Parameters:
-    MESSAGE -  Message to record [String]
+    MESSAGE -  Message to record <STRING>
 
 Example:
     (begin example)
@@ -205,12 +222,11 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR(MESSAGE) \
-    [THIS_FILE_, __LINE__, "ERROR", MESSAGE] call CBA_fnc_error;
+#define ERROR(MESSAGE) LOG_SYS_FILELINENUMBERS('ERROR',MESSAGE)
 
 /* -------------------------------------------
 Macro: ERROR_WITH_TITLE()
-    Record a timestamped, critical error in the RPT log.
+    Record a critical error in the RPT log.
 
     The title can be specified (in <ERROR()> the heading is always just "ERROR")
     Newlines (\n) in the MESSAGE will be put on separate lines.
@@ -218,8 +234,8 @@ Macro: ERROR_WITH_TITLE()
     TODO: Popup an error dialog & throw an exception.
 
 Parameters:
-    TITLE - Title of error message [String]
-    MESSAGE -  Body of error message [String]
+    TITLE - Title of error message <STRING>
+    MESSAGE -  Body of error message <STRING>
 
 Example:
     (begin example)
@@ -229,16 +245,15 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE, MESSAGE] call CBA_fnc_error;
+#define ERROR_WITH_TITLE(TITLE,MESSAGE) ['PREFIX', 'COMPONENT', TITLE, MESSAGE, __FILE__, __LINE__ + 1] call CBA_fnc_error
 
 /* -------------------------------------------
 Macro: MESSAGE_WITH_TITLE()
-    Record a single line, timestamped log entry in the RPT log.
+    Record a single line in the RPT log.
 
 Parameters:
-    TITLE - Title of log message [String]
-    MESSAGE -  Body of message [String]
+    TITLE - Title of log message <STRING>
+    MESSAGE -  Body of message <STRING>
 
 Example:
     (begin example)
@@ -248,8 +263,7 @@ Example:
 Author:
     Killswitch
 ------------------------------------------- */
-#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) \
-    [THIS_FILE_, __LINE__, TITLE + ': ' + (MESSAGE)] call CBA_fnc_log;
+#define MESSAGE_WITH_TITLE(TITLE,MESSAGE) LOG_SYS_FILELINENUMBERS(TITLE,MESSAGE)
 
 /* -------------------------------------------
 Macro: RETNIL()
@@ -327,35 +341,16 @@ Author:
 
 
 #ifdef DEBUG_MODE_FULL
-#define TRACE_1(MESSAGE,A) \
-    [THIS_FILE_, __LINE__, PFORMAT_1(MESSAGE,A)] call CBA_fnc_log
-
-#define TRACE_2(MESSAGE,A,B) \
-    [THIS_FILE_, __LINE__, PFORMAT_2(MESSAGE,A,B)] call CBA_fnc_log
-
-#define TRACE_3(MESSAGE,A,B,C) \
-    [THIS_FILE_, __LINE__, PFORMAT_3(MESSAGE,A,B,C)] call CBA_fnc_log
-
-#define TRACE_4(MESSAGE,A,B,C,D) \
-    [THIS_FILE_, __LINE__, PFORMAT_4(MESSAGE,A,B,C,D)] call CBA_fnc_log
-
-#define TRACE_5(MESSAGE,A,B,C,D,E) \
-    [THIS_FILE_, __LINE__, PFORMAT_5(MESSAGE,A,B,C,D,E)] call CBA_fnc_log
-
-#define TRACE_6(MESSAGE,A,B,C,D,E,F) \
-    [THIS_FILE_, __LINE__, PFORMAT_6(MESSAGE,A,B,C,D,E,F)] call CBA_fnc_log
-
-#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) \
-    [THIS_FILE_, __LINE__, PFORMAT_7(MESSAGE,A,B,C,D,E,F,G)] call CBA_fnc_log
-
-#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) \
-    [THIS_FILE_, __LINE__, PFORMAT_8(MESSAGE,A,B,C,D,E,F,G,H)] call CBA_fnc_log
-
-#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) \
-    [THIS_FILE_, __LINE__, PFORMAT_9(MESSAGE,A,B,C,D,E,F,G,H,I)] call CBA_fnc_log
-
+#define TRACE_1(MESSAGE,A) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_1(str diag_frameNo + ' ' + (MESSAGE),A))
+#define TRACE_2(MESSAGE,A,B) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_2(str diag_frameNo + ' ' + (MESSAGE),A,B))
+#define TRACE_3(MESSAGE,A,B,C) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_3(str diag_frameNo + ' ' + (MESSAGE),A,B,C))
+#define TRACE_4(MESSAGE,A,B,C,D) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_4(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D))
+#define TRACE_5(MESSAGE,A,B,C,D,E) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_5(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D,E))
+#define TRACE_6(MESSAGE,A,B,C,D,E,F) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_6(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D,E,F))
+#define TRACE_7(MESSAGE,A,B,C,D,E,F,G) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_7(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D,E,F,G))
+#define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_8(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D,E,F,G,H))
+#define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_9(str diag_frameNo + ' ' + (MESSAGE),A,B,C,D,E,F,G,H,I))
 #else
-
 #define TRACE_1(MESSAGE,A) /* disabled */
 #define TRACE_2(MESSAGE,A,B) /* disabled */
 #define TRACE_3(MESSAGE,A,B,C) /* disabled */
@@ -365,7 +360,6 @@ Author:
 #define TRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
 #define TRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
 #define TRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
-
 #endif
 
 /* -------------------------------------------

@@ -13,4 +13,4 @@ _info = _info call EFUNC(settings,parse);
     [_setting, _value, _force, _source] call EFUNC(settings,set);
 } forEach _info;
 
-diag_log text "[CBA] (settings): Settings file loaded from PBO.";
+LOG("Settings file loaded from PBO.");

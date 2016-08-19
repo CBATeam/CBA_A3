@@ -12,10 +12,10 @@ if (isFilePatchingEnabled) then {
             [_setting, _value, _force, _source] call EFUNC(settings,set);
         } forEach _info;
 
-        diag_log text "[CBA] (settings): Settings file loaded.";
+        LOG("Settings file loaded.");
     } else {
-        diag_log text "[CBA] (settings): Settings file not loaded. File empty or does not exist.";
+        WARNING("Settings file not loaded. File empty or does not exist.");
     };
 } else {
-    diag_log text "[CBA] (settings): Cannot load settings file. File patching disabled. Use -filePatching flag.";
+    WARNING("Cannot load settings file. File patching disabled. Use -filePatching flag.");
 };

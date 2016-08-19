@@ -3,7 +3,7 @@
 // --- refresh all settings after postInit to guarantee that events are added and settings are recieved from server
 {
     if (isNil QGVAR(serverSettings)) then {
-        diag_log text "[CBA] (settings): No server settings after postInit phase.";
+        ERROR("No server settings after postInit phase.");
     };
 
     //Event to read modules
@@ -14,7 +14,7 @@
         [QGVAR(refreshSetting), _x] call CBA_fnc_localEvent;
     } forEach GVAR(allSettings);
 
-    diag_log text format ["[CBA] (settings): Settings Initialized"];
+    LOG("Settings Initialized");
     ["CBA_settingsInitialized", []] call CBA_fnc_localEvent;
 } call CBA_fnc_execNextFrame;
 

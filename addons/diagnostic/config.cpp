@@ -17,3 +17,4 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 #include "CfgDisplay3DEN.hpp"
+#include "gui.hpp"
