@@ -45,6 +45,7 @@ private _lines = [_message, "\n"] call CBA_fnc_split;
 } forEach _lines;
 
 // error pop up
+disableSerialization;
 QGVAR(Error) cutRsc [QGVAR(Error), "PLAIN"];
 private _control = uiNamespace getVariable QGVAR(Error);
 
