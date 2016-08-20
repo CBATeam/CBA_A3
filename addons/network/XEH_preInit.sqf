@@ -62,20 +62,11 @@ OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
 if (isServer) then {
     ISNIL(MARKERS,[]); // Sync Markers for JIP
 
-    PREP(opc);
-    PREP(opd);
     PREP(sync);
 
     FUNC(id) = { "server" };
 
     [QUOTE(GVAR(marker_persist)), { _this call (uiNamespace getVariable "CBA_fnc_setMarkerPersistent") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-
-    // [QGVAR(join), { [QGVAR(opc), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
-
-    // onPlayerConnected '[_name,_id] call FUNC(opc)';
-    // TODO: Handle OPD without actually using opd
-    // Disabled for now, either not used, or annoying to mission makers
-    // onPlayerDisconnected '[_name,_id] call FUNC(opd)';
 } else {
     FUNC(id) = {
         if (player == player) then { str(player); } else { "client"; };
