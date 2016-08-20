@@ -1,20 +1,20 @@
-/*
+/* ----------------------------------------------------------------------------
 Function: CBA_fnc_setVarNet
 
 Description:
-    Same as setVariable ["name",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space.
+    Broadcast a object variable value to all machines. Used to reduce network traffic.
 
-    Checks also for different types. Nil as value gets always broadcasted.
-
-    Should reduce network traffic.
+    Does only broadcast the new value if it doesn't exist in the object namespace or
+    if the new value is different to the one in object namespace.
+    Nil as value gets always broadcasted.
 
 Parameters:
-    _object - Name of a marker [Object, Group]
-    _variable - Name of the variable in variable space [String]
-    _value - Value to check and broadcast if it is not the same as the previous one, code will always be broadcasted [Any]
+    _object   - Object namespace <OBJECT, GROUP>
+    _varName - Name of the public variable <STRING>
+    _value   - Value to broadcast <ANY>
 
 Returns:
-    True if broadcasted, otherwise false [Boolean]
+    True if if broadcasted, otherwise false <BOOLEAN>
 
 Example:
     (begin example)
@@ -23,57 +23,30 @@ Example:
     (end)
 
 Author:
-    Xeno
-*/
-//#define DEBUG_MODE_FULL
+    Xeno, commy2
+---------------------------------------------------------------------------- */
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_object","_variable","_value"];
+params [["_object", objNull, [objNull, grpNull]], ["_variable", "", [""]], "_value"];
 
-// does setVariable public also work for other types ??
-if (typeName _object != "OBJECT" && {typeName _object != "GROUP"}) exitWith {
-    WARNING("The first parameter is not of type object or group!");
+if (isNull _object) exitWith {
+    WARNING("Object wrong type, undefined or null");
     false
 };
 
-private ["_var","_s"];
+if (_varName isEqualTo "") exitWith {
+    WARNING("Variable name is wrong type or undefined");
+    false
+};
 
-_var = _object getVariable _variable;
+private _currentValue = missionNamespace getVariable _varName;
 
-if (isNil "_var") exitWith {
+if (isNil "_currentValue" || {!(_value isEqualTo _currentValue)}) then {
     TRACE_3("Broadcasting",_object,_variable,_value);
     _object setVariable [_variable, _value, true];
-    true
-};
-
-_s = if (typeName _value != typeName _var) then {
-    TRACE_2("Different typenames",_var,_value);
-    false
+    true // return
 } else {
-    switch (typename _value) do {
-        case "BOOL": {
-            ((_var && {_value}) || {(!_var && {!_value})})
-        };
-        case "ARRAY": {
-            (_var isEqualTo _value)
-        };
-        case "CODE": {
-            false
-        };
-        case "SCRIPT": {
-            false
-        };
-        default {
-            (_var == _value)
-        };
-    }
+    TRACE_2("Not broadcasting, current and new value are equal",_currentValue,_value);
+    false // return
 };
-if (_s) exitwith {
-    TRACE_2("Not broadcasting, _var and _value are equal",_var,_value);
-    false
-};
-
-TRACE_3("Broadcasting",_object,_variable,_value);
-_object setVariable [_variable, _value, true];
-
-true
