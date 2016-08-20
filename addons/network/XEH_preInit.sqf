@@ -44,10 +44,6 @@ ADDON = false;
 #endif
 
 
-// COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast.
-ISNIL(timeSync_Disabled,true); // deprecated
-ISNIL(weatherSync_Disabled,true);
-
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
 
@@ -61,8 +57,6 @@ OBSOLETE(fnc_removePersistentMarker,REMOVE_PERSISTENT_MARKER);
 
 if (isServer) then {
     ISNIL(MARKERS,[]); // Sync Markers for JIP
-
-    PREP(sync);
 
     FUNC(id) = { "server" };
 
