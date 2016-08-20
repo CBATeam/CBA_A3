@@ -1,16 +1,17 @@
-/*
+/* ----------------------------------------------------------------------------
 Function: CBA_fnc_globalSay
 
-DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say"] instead.
-
 Description:
-    Says sound on all client computer.
+    Says sound on all clients.
+
+    DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say"] instead.
 
 Parameters:
-    [_objects] - Array of Objects that perform Say [Object]
-    _say - [sound, maxTitlesDistance,speed] or "sound" [Array or String]
+    _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
+    _params  - [sound, maxTitlesDistance,speed] or "sound" <ARRAY, STRING>
 
 Returns:
+    Nothing
 
 Example:
     (begin example)
@@ -19,7 +20,7 @@ Example:
 
 Author:
     Sickboy, commy2
-*/
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
 params [["_objects", [], [[], objNull]], ["_params", "", ["", []]]];
