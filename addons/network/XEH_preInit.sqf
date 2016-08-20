@@ -42,20 +42,12 @@ ADDON = false;
 #endif
 
 
-// COMPATIBILITY Feature - Make sure Override variables are initialized appropriately for sync broadcast.
-ISNIL(timeSync_Disabled,true); // deprecated
-ISNIL(weatherSync_Disabled,true);
-
 DEPRECATE(fnc_remoteExecute,fnc_globalExecute);
 DEPRECATE(fnc_remoteSay,fnc_globalSay);
 
 // TODO: Add functions that add to opc/opd, instead of direct handling?
 
 if (SLX_XEH_MACHINE select 3) then {
-    PREP(opc);
-    PREP(opd);
-    PREP(sync);
-
     FUNC(id) = { "server" };
 
     // [QGVAR(join), { [QGVAR(opc), _this] call CBA_fnc_localEvent }] call CBA_fnc_addEventHandler;
