@@ -28,7 +28,7 @@ Author:
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params [["_object", objNull, [objNull, grpNull]], ["_variable", "", [""]], "_value"];
+params [["_object", objNull, [objNull, grpNull]], ["_varName", "", [""]], "_value"];
 
 if (isNull _object) exitWith {
     WARNING("Object wrong type, undefined or null");
@@ -42,11 +42,28 @@ if (_varName isEqualTo "") exitWith {
 
 private _currentValue = _object getVariable _varName;
 
-if (isNil "_currentValue" || {!(_value isEqualTo _currentValue)}) then {
-    TRACE_3("Broadcasting",_object,_variable,_value);
-    _object setVariable [_variable, _value, true];
-    true // return
+if (isNil "_currentValue") then {
+    if (isNil "_value") then {
+        TRACE_2("Not broadcasting. Current and new value are undefined",_object,_varName);
+        false // return
+    } else {
+        TRACE_3("Broadcasting previously undefined value",_object,_varName,_value);
+        _object setVariable [_varName, _value, true];
+        true // return
+    };
 } else {
-    TRACE_2("Not broadcasting. Current and new value are equal",_currentValue,_value);
-    false // return
+    if (isNil "_value") then {
+        TRACE_2("Broadcasting nil",_object,_varName);
+        _object setVariable [_varName, nil, true];
+        true // return
+    } else {
+        if (_value isEqualTo _currentValue) then {
+            TRACE_4("Not broadcasting. Current and new value are equal",_object,_varName,_currentValue,_value);
+            false // return
+        } else {
+            TRACE_3("Broadcasting",_object,_varName,_value);
+            _object setVariable [_varName, _value, true];
+            true // return
+        };
+    };
 };
