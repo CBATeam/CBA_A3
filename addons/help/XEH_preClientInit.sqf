@@ -5,9 +5,9 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-FUNC(help) = {call BIS_fnc_help};
+[QFUNC(help), {call BIS_fnc_help}] call CBA_fnc_compileFinal;
 
-FUNC(process) = {
+[QFUNC(process), {
     params ["_hash1", "_hash2", "_hash3"];
 
     private _result = [];
@@ -25,7 +25,7 @@ FUNC(process) = {
     } forEach allVariables _hash1;
 
     _result joinString "<br/><br/>";
-};
+}] call CBA_fnc_compileFinal;
 
 // keys
 private _fnc_getKeyName = {

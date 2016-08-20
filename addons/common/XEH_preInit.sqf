@@ -8,14 +8,14 @@ ADDON = false;
 
 CBA_logic = objNull;
 
-FUNC(log) = {
+[QFUNC(log), {
     diag_log text _this;
     _this spawn {
         sleep 1;
         systemChat _this;
         hintC _this;
     };
-};
+}] call CBA_fnc_compileFinal;
 
 // FSM
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
