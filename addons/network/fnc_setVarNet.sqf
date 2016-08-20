@@ -9,7 +9,7 @@ Description:
     Nil as value gets always broadcasted.
 
 Parameters:
-    _object   - Object namespace <OBJECT, GROUP>
+    _object  - Object namespace <OBJECT, GROUP>
     _varName - Name of the public variable <STRING>
     _value   - Value to broadcast <ANY>
 
@@ -40,13 +40,13 @@ if (_varName isEqualTo "") exitWith {
     false
 };
 
-private _currentValue = missionNamespace getVariable _varName;
+private _currentValue = _object getVariable _varName;
 
 if (isNil "_currentValue" || {!(_value isEqualTo _currentValue)}) then {
     TRACE_3("Broadcasting",_object,_variable,_value);
     _object setVariable [_variable, _value, true];
     true // return
 } else {
-    TRACE_2("Not broadcasting, current and new value are equal",_currentValue,_value);
+    TRACE_2("Not broadcasting. Current and new value are equal",_currentValue,_value);
     false // return
 };

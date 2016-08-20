@@ -42,6 +42,6 @@ if (isNil "_currentValue" || {!(_value isEqualTo _currentValue)}) then {
     publicVariable _varName;
     true // return
 } else {
-    TRACE_2("Not broadcasting, current and new value are equal",_currentValue,_value);
+    TRACE_2("Not broadcasting. Current and new value are equal",_currentValue,_value);
     false // return
 };
