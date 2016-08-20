@@ -122,6 +122,7 @@ class CfgFunctions {
             F_FILEPATH(execNextFrame);
             F_FILEPATH(waitAndExecute);
             F_FILEPATH(waitUntilAndExecute);
+            F_FILEPATH(compileFinal);
         };
 
         class Ui {

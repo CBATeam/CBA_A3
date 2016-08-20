@@ -34,15 +34,6 @@ private _addons = ("true" configClasses (configFile >> "CfgPatches")) apply {con
 activateAddons _addons;
 GVAR(addons) = _addons;
 
-FUNC(compileFinal) = compileFinal "
-    params [['_name', '', ['']], ['_function', {}, [{}]]];
-
-    _function = str _function;
-    _function = _function select [1, count _function - 2];
-
-    missionNamespace setVariable [_name, compileFinal _function];
-";
-
 // BWC
 #include "backwards_comp.sqf"
 

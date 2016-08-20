@@ -14,11 +14,11 @@
     (missionNamespace getVariable _eventsVar) pushBack ([_eventsVar, _this select 1] call CBA_fnc_addEventHandler);
 
     nil // no ID returned for this function
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 ["CBA_fnc_clientToServerEvent", {
     [format [QGVAR(CTS:%1), _this select 0], _this select 1] call CBA_fnc_serverEvent;
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 ["CBA_fnc_removeClientToServerEvent", {
     WARNING('Deprecated function used: CBA_fnc_removeClientToServerEvent');
@@ -33,7 +33,7 @@
 
         missionNamespace setVariable [_eventsVar, nil];
     };
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 // imitate deprecated receiverOnlyEvent
 ["CBA_fnc_addReceiverOnlyEventhandler", {
@@ -48,7 +48,7 @@
     (missionNamespace getVariable _eventsVar) pushBack ([_eventsVar, _this select 1] call CBA_fnc_addEventHandler);
 
     nil // no ID returned for this function
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 ["CBA_fnc_receiverOnlyEvent", {
     (_this select 1) params ["_target"];
@@ -57,7 +57,7 @@
     if (isServer && {!local _target}) exitWith {};
 
     [format [QGVAR(TOR:%1), _this select 0], _this select 1, _target] call CBA_fnc_targetEvent;
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 ["CBA_fnc_removeReceiverOnlyEvent", {
     WARNING('Usage of deprecated CBA_fnc_removeReceiverOnlyEvent');
@@ -70,7 +70,7 @@
 
         missionNamespace setVariable [_eventsVar, nil];
     };
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 // imitate deprecated whereLocalEvent / remoteLocalEvent
 ["CBA_fnc_addLocalEventHandler", {
@@ -83,13 +83,13 @@
     };
 
     (missionNamespace getVariable _eventsVar) pushBack ([_eventsVar, _this select 1] call CBA_fnc_addEventHandler) // return handler id
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 ["CBA_fnc_whereLocalEvent", {
     (_this select 1) params ["_target"];
 
     [format [QGVAR(WL:%1), _this select 0], _this select 1, _target] call CBA_fnc_targetEvent;
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
 
 // CBA_fnc_remoteLocalEvent, FUNC(remoteLocalEvent)
 
@@ -100,4 +100,4 @@
     if (!isNil _eventsVar) then {
         [_eventsVar, _this select 1] call CBA_fnc_removeEventHandler;
     };
-}] call EFUNC(common,compileFinal);
+}] call CBA_fnc_compileFinal;
