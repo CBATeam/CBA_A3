@@ -550,7 +550,7 @@ Author:
 /* -------------------------------------------
 Macro: FILTER()
 Description:
-    Filters an array based on given code, then assigns the resulting array 
+    Filters an array based on given code, then assigns the resulting array
     to the original
 Parameters:
     ARRAY - Array to be filtered
@@ -795,6 +795,17 @@ Author:
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
 #endif
+
+#ifdef RECOMPILE
+    #define RECOMPILE recompile = 1
+#else
+    #define RECOMPILE recompile = 0
+#endif
+
+#define F_FILEPATH(func) class func {\
+    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
+    RECOMPILE;\
+}
 
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
