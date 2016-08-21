@@ -34,10 +34,10 @@ class CfgFunctions
                 file = "\x\cba\addons\diagnostic\fnc_log.sqf";
             };
             // CBA_fnc_peek
-            class peek
+            class peak
             {
-                description = "Peek at variable on the server To receive the variable content back, you will have to [""cba_diagnostics_receive_peak"", {_this call myFunction}] call CBA_fnc_addEventHandler;";
-                file = "\x\cba\addons\diagnostic\fnc_peek.sqf";
+                description = "Peak at variable on the server To receive the variable content back, you will have to [""cba_diagnostic_receivePeak"", {_this call myFunction}] call CBA_fnc_addEventHandler;";
+                file = "\x\cba\addons\diagnostic\fnc_peak.sqf";
             };
             // CBA_fnc_test
             class test
