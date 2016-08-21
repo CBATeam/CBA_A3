@@ -803,7 +803,7 @@ Author:
 #endif
 
 #define F_FILEPATH(func) class func {\
-    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
+    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\ // \MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_func.sqf
     RECOMPILE;\
 }
 
