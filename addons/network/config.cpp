@@ -6,20 +6,15 @@ class CfgPatches {
         name = CSTRING(component);
         url = "$STR_CBA_URL";
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "CBA_common", "CBA_events" };
+        requiredAddons[] = {"CBA_common", "CBA_events"};
         version = VERSION;
         authors[] = {"Sickboy"};
     };
 };
 
-class CfgSettings {
-    class CBA {
-        class COMPONENT {
-            disableGlobalExecute = 0;
-        };
-    };
-};
-
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
+
+#include "CfgSettings.hpp"
