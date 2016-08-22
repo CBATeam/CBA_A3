@@ -4,7 +4,7 @@ Internal Function: CBA_fnc_error
 Description:
     Logs an error message to the RPT log.
 
-    Should not be used directly, but rather via macros (<ERROR_WITH_TITLE()>
+    Should not be used directly, but rather via macros (<ERROR()>, <ERROR_WITH_TITLE()>
     or the <Assertions>).
 
 Parameters:
@@ -49,7 +49,15 @@ disableSerialization;
 QGVAR(Error) cutRsc [QGVAR(Error), "PLAIN"];
 private _control = uiNamespace getVariable QGVAR(Error);
 
-private _compose = [lineBreak, parseText format ["<t align='center' size='1.65'>[%1] (%2) %3<\t>", _prefix, _component, _title], lineBreak];
+if (_message isEqualTo "") then {
+    _lines = [_title];
+    _title = "ERROR";
+};
+
+private _compose = [lineBreak, parseText format [
+    "<img align='center' size='1.65' image='\a3\3DEN\Data\Displays\Display3DEN\EntityMenu\functions_ca.paa' /><t align='center' size='1.65'>[%1] (%2) %3<\t>",
+    _prefix, _component, _title
+], lineBreak];
 
 {
     _compose append [lineBreak, format ["            %1", _x]];

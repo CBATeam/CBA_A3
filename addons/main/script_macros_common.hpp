@@ -222,7 +222,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR(MESSAGE) LOG_SYS_FILELINENUMBERS('ERROR',MESSAGE)
+#define ERROR(MESSAGE) ['PREFIX', 'COMPONENT', MESSAGE, nil, __FILE__, __LINE__ + 1] call CBA_fnc_error
 
 /* -------------------------------------------
 Macro: ERROR_WITH_TITLE()

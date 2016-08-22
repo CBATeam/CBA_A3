@@ -5,7 +5,6 @@ Description:
     Logs a message to the RPT log.
 
     Should not be used directly, but rather via macro (<LOG()>).
-    This function is unaffected by the debug level (<DEBUG_MODE_x>).
 
 Parameters:
     _message   - Message <STRING>
@@ -16,7 +15,6 @@ Returns:
 Author:
     Spooner, Rommel, commy2
 -----------------------------------------------------------------------------*/
-#define DEBUG_MODE_NORMAL
 #include "script_component.hpp"
 SCRIPT(log);
 
