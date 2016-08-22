@@ -9,12 +9,6 @@ class CfgFunctions
     {
         class Diagnostic
         {
-            // CBA_fnc_benchmarkFunction
-            class benchmarkFunction
-            {
-                description = "Benchmarks a function to see how long it will take to execute.";
-                file = "\x\cba\addons\diagnostic\fnc_benchmarkFunction.sqf";
-            };
             // CBA_fnc_debug
             class debug
             {
