@@ -6,20 +6,14 @@ LOG(MSG_INIT);
 
 [QUOTE(GVAR(debug)), { _this call (uiNamespace getVariable "CBA_fnc_debug") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
 
-if (SLX_XEH_MACHINE select 3) then
-{
-    FUNC(handle_peak) =
-    {
-        params ["_variable"];
-        if (isNil _variable) then
-        {
-            [QUOTE(GVAR(receive_peak)), [_variable, nil]] call (uiNamespace getVariable "CBA_fnc_globalEvent");
-        } else {
-            [QUOTE(GVAR(receive_peak)), [_variable, call compile _variable]] call (uiNamespace getVariable "CBA_fnc_globalEvent");
-        };
+if (isServer) then {
+    [QGVAR(peak), {
+        params ["_varName", "_targetID"];
 
-    };
-    [QUOTE(GVAR(peek)), { _this call CBA_fnc_handle_peak }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
+        private _value = missionNamespace getVariable _varName;
+
+        [QGVAR(receivePeak), [_varName, _value], _targetID] call CBA_fnc_ownerEvent;
+    }] call CBA_fnc_addEventHandler;
 };
 
 PREP(perf_loop);
