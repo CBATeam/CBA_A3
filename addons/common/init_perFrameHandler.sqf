@@ -17,7 +17,7 @@ GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 
 // per frame handler system
-FUNC(onFrame) = {
+[QFUNC(onFrame), {
     private _tickTime = diag_tickTime;
     call FUNC(missionTimePFH);
 
@@ -80,9 +80,7 @@ FUNC(onFrame) = {
     if (_delete) then {
         GVAR(waitUntilAndExecArray) = GVAR(waitUntilAndExecArray) - [objNull];
     };
-
-};
-
+}] call CBA_fnc_compileFinal;
 
 // fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded
 addMissionEventHandler ["Loaded", {
@@ -103,14 +101,14 @@ if (isMultiplayer) then {
     // multiplayer - no accTime in MP
     if (isServer) then {
         // multiplayer server
-        FUNC(missionTimePFH) = {
+        [QFUNC(missionTimePFH), {
             if (time != GVAR(lastTime)) then {
                 CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                 GVAR(lastTime) = time; // used to detect paused game
             };
 
             GVAR(lastTickTime) = _tickTime;
-        };
+        }] call CBA_fnc_compileFinal;
 
         addMissionEventHandler ["PlayerConnected", {
             (_this select 4) publicVariableClient "CBA_missionTime";
@@ -125,25 +123,25 @@ if (isMultiplayer) then {
 
                 GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
 
-                FUNC(missionTimePFH) = {
+                [QFUNC(missionTimePFH), {
                     if (time != GVAR(lastTime)) then {
                         CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                         GVAR(lastTime) = time; // used to detect paused game
                     };
 
                     GVAR(lastTickTime) = _tickTime;
-                };
+                }] call CBA_fnc_compileFinal;
             };
         };
     };
 } else {
     // single player
-    FUNC(missionTimePFH) = {
+    [QFUNC(missionTimePFH), {
         if (time != GVAR(lastTime)) then {
             CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
             GVAR(lastTime) = time; // used to detect paused game
         };
 
         GVAR(lastTickTime) = _tickTime;
-    };
+    }] call CBA_fnc_compileFinal;
 };

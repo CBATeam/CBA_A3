@@ -70,11 +70,11 @@ GVAR(keyUpActiveList) = [];
 
 GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 
-FUNC(handleKeyDownUp) = {
+[QFUNC(handleKeyDownUp), {
     private _xUp = _this select (count _this - 1);
 
     GVAR(keyUpActiveList) deleteAt (GVAR(keyUpActiveList) find _xUp);
     GVAR(keyHoldTimers) setVariable [_xUp, nil];
 
     false
-};
+}] call CBA_fnc_compileFinal;
