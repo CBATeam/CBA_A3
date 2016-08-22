@@ -12,6 +12,6 @@ if ((_name!= "__SERVER__") && {(_name!= format["%1", _plName])}) then
 {
     if (time > 0) then
     {
-        [_obj] call FUNC(sync); { _x setMarkerPos (getMarkerPos _x) } forEach GVAR(markers);
+        [_obj] call FUNC(sync);
     };
 };
