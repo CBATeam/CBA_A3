@@ -59,7 +59,6 @@ if (_global) then {
     if (_ty!= "") then { _m setMarkerType _ty };
     if (_co!= "") then { _m setMarkerColor _co };
     if (_tx!= "") then { _m setMarkerText _tx };
-    if (_persist) then { [_m, true] call CBA_fnc_setMarkerPersistent };
 } else {
     _m = createMarkerLocal [_this select 0, _this select 1];
     _m setMarkerShapeLocal (_this select 2);
