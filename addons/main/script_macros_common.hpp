@@ -804,8 +804,37 @@ Author:
     #define RECOMPILE recompile = 0
 #endif
 
+/* -------------------------------------------
+Macro: PATHTO_FNC()
+
+Description:
+    Defines a function inside CfgFunctions.
+
+    Full file path in addons:
+        '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
+    Define 'RECOMPILE' to enable recompiling.
+
+Parameters:
+    FUNCTION NAME - Name of the function, unquoted <STRING>
+
+Examples:
+    (begin example)
+        // file name: fnc_addPerFrameHandler.sqf
+        class CfgFunctions {
+            class CBA {
+                class Misc {
+                    PATHTO_FNC(addPerFrameHandler);
+                };
+            };
+        };
+        // -> CBA_fnc_addPerFrameHandler
+    (end)
+
+Author:
+    dixon13, commy2
+ ------------------------------------------- */
 #define PATHTO_FNC(func) class func {\
-    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\ // \MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_func.sqf
+    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
     RECOMPILE;\
 }
 
