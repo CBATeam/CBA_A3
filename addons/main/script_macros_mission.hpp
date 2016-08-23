@@ -53,7 +53,6 @@
     #define PATHTOF2_SYS(var1,var2,var3) ##var1\##var2\##var3
 #endif
 
-
 /************************** REMOVAL OF MACROS ***********************/
 
 #undef MAINPREFIX
@@ -75,3 +74,9 @@
 #undef XEH_POST_INIT
 #undef XEH_POST_CINIT
 #undef XEH_POST_SINIT
+
+#undef PATHTO_FNC
+#define PATHTO_FNC(func) class func {\
+    file = QUOTE(DOUBLES(fnc,func).sqf);\
+    RECOMPILE;\
+}

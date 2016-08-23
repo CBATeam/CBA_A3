@@ -797,12 +797,14 @@ Author:
 #endif
 
 #ifdef RECOMPILE
+    #undef RECOMPILE
     #define RECOMPILE recompile = 1
 #else
+    #undef RECOMPILE
     #define RECOMPILE recompile = 0
 #endif
 
-#define F_FILEPATH(func) class func {\
+#define PATHTO_FNC(func) class func {\
     file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\ // \MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_func.sqf
     RECOMPILE;\
 }
