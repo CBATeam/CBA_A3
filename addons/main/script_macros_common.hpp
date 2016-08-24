@@ -834,7 +834,7 @@ Author:
     dixon13, commy2
  ------------------------------------------- */
 #define PATHTO_FNC(func) class func {\
-    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
+    file = QPATHTOF(DOUBLES(fnc,func).sqf);\
     RECOMPILE;\
 }
 
