@@ -68,23 +68,22 @@ SCRIPT(formatNumber);
 
 params ["_number", ["_integerWidth",DEFAULT_INTEGER_WIDTH], ["_decimalPlaces",DEFAULT_DECIMAL_PLACES], ["_separateThousands",DEFAULT_SEPARATE_THOUSANDS]];
 
-private ["_integerPart", "_string", "_numIntegerDigits", "_decimalPoint",
-    "_thousandsSeparator", "_basePlaces"];
+private ["_integerPart"];
 
-_decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
-_thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
+private _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
+private _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
 
 // Start by working out how to display the integer part of the number.
 if (_decimalPlaces > 0) then {
-    _basePlaces = 10 ^ _decimalPlaces;
+    private _basePlaces = 10 ^ _decimalPlaces;
     _number = round(_number * _basePlaces) / _basePlaces;
     _integerPart = floor (abs _number);
 } else {
     _integerPart = round (abs _number);
 };
 
-_string = "";
-_numIntegerDigits = 0;
+private _string = "";
+private _numIntegerDigits = 0;
 
 while {_integerPart > 0} do {
     if (_numIntegerDigits > 0 && {(_numIntegerDigits mod 3) == 0} && {_separateThousands}) then {
@@ -115,23 +114,22 @@ if (_number < 0) then {
 
 // Add decimal digits, if necessary.
 if (_decimalPlaces > 0) then {
-    private ["_digit", "_multiplier", "_i"];
 
     //Use abs to prevent extra `-` signs and so floor doesn't get wrong value
     _number = abs _number;
-    
+    // Round number to correct for floating point precision and disable correct value.
+    _number = round ((_number - (floor _number)) * (10 ^ _decimalPlaces));
     _string = _string + _decimalPoint;
 
-    _multiplier = 10;
-
-    for "_i" from 1 to _decimalPlaces do {
-        _digit = floor ((_number * _multiplier) mod 10);
+    private _multiplier = 10;
+    for "_i" from _decimalPlaces to 1 step -1 do {
+        private _digit = floor ((_number mod (10^_i))/10^(_i -1));
 
         // If the digit has become infintesimal, pad to the end with zeroes.
         if (!(finite _digit)) exitWith {
             private "_j";
 
-            for "_j" from _i to _decimalPlaces do {
+            for "_j" from _decimalPlaces to _i step -1 do {
                 _string = _string + "0";
             };
         };
