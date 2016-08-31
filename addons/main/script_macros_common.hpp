@@ -600,7 +600,7 @@ Author:
 /* -------------------------------------------
 Macro: FILTER()
 Description:
-    Filters an array based on given code, then assigns the resulting array 
+    Filters an array based on given code, then assigns the resulting array
     to the original
 Parameters:
     ARRAY - Array to be filtered
@@ -845,6 +845,47 @@ Author:
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
 #endif
+
+#ifdef RECOMPILE
+    #undef RECOMPILE
+    #define RECOMPILE recompile = 1
+#else
+    #define RECOMPILE recompile = 0
+#endif
+
+/* -------------------------------------------
+Macro: PATHTO_FNC()
+
+Description:
+    Defines a function inside CfgFunctions.
+
+    Full file path in addons:
+        '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
+    Define 'RECOMPILE' to enable recompiling.
+
+Parameters:
+    FUNCTION NAME - Name of the function, unquoted <STRING>
+
+Examples:
+    (begin example)
+        // file name: fnc_addPerFrameHandler.sqf
+        class CfgFunctions {
+            class CBA {
+                class Misc {
+                    PATHTO_FNC(addPerFrameHandler);
+                };
+            };
+        };
+        // -> CBA_fnc_addPerFrameHandler
+    (end)
+
+Author:
+    dixon13, commy2
+ ------------------------------------------- */
+#define PATHTO_FNC(func) class func {\
+    file = QPATHTOF(DOUBLES(fnc,func).sqf);\
+    RECOMPILE;\
+}
 
 #define FUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define FUNCMAIN(var1) TRIPLES(PREFIX,fnc,var1)
