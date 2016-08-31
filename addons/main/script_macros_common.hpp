@@ -800,7 +800,6 @@ Author:
     #undef RECOMPILE
     #define RECOMPILE recompile = 1
 #else
-    #undef RECOMPILE
     #define RECOMPILE recompile = 0
 #endif
 
