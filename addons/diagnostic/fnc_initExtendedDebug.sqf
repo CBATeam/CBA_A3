@@ -174,6 +174,15 @@ _exeButton ctrlAddEventHandler ["MouseButtonUp", { _this call FUNC(logStatement)
 _exeButton = _display displayCtrl 13286;
 _exeButton ctrlAddEventHandler ["MouseButtonUp", { _this call FUNC(logStatement); false; }];
 
+// Save expression when hitting enter key inside expression text field
+_exe ctrlAddEventHandler ["KeyDown", {
+    params ["", "_key"];
+    if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then { // 28 and 156
+        _this call FUNC(logStatement);
+    };
+    false
+}];
+
 _index = uiNamespace getVariable ["cba_diagnostic_statementIndex", 0];
 
 _prevStatements = profileNamespace getVariable ["cba_diagnostic_statements", []];
