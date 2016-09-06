@@ -1,16 +1,12 @@
 
-#define F_FILEPATH(func) class func {\
-    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
-}
-
 class CfgFunctions {
     class CBA {
         class Network {
-            F_FILEPATH(globalExecute);
-            F_FILEPATH(globalSay);
-            F_FILEPATH(globalSay3d);
-            F_FILEPATH(publicVariable);
-            F_FILEPATH(setVarNet);
+            PATHTO_FNC(globalExecute);
+            PATHTO_FNC(globalSay);
+            PATHTO_FNC(globalSay3d);
+            PATHTO_FNC(publicVariable);
+            PATHTO_FNC(setVarNet);
         };
     };
 };
