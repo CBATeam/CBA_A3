@@ -5,5 +5,3 @@
 LOG(MSG_INIT);
 
 [QUOTE(GVAR(debug)), { _this call (uiNamespace getVariable "CBA_fnc_debug") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
-
-PREP(perf_loop);
