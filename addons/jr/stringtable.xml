@@ -4,5 +4,17 @@
         <Key ID="STR_CBA_JR_Component">
             <English>Community Base Addons - Joint Rails</English>
         </Key>
+        <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
+            <Original>Sound Suppressor MG</Original>
+            <English>Sound Suppressor MG</English>
+            <Czech>Tlumič hluku MG</Czech>
+            <French>Silencieux pour MG</French>
+            <German>Schalldämpfer MG</German>
+            <Italian>Silenziatore MG</Italian>
+            <Polish>Tłumik KM</Polish>
+            <Portuguese>Metralhadora silenciador</Portuguese>
+            <Russian>Глушитель для пулемета</Russian>
+            <Spanish>Silenciador MG</Spanish>
+        </Key>
     </Package>
 </Project>
