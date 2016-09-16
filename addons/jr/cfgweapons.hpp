@@ -636,7 +636,7 @@ class CfgWeapons {
         };
     };
 
-    class SMG_05_base_F : Rifle_Base_F {
+    class SMG_05_base_F : Rifle_Short_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class MuzzleSlot : asdg_MuzzleSlot_9MM_SMG {
                 iconPosition[] = {0.05, 0.35};
