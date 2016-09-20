@@ -42,7 +42,7 @@ if (isNil QGVAR(oldMarkers)) then {
 
             GVAR(oldMarkers) = _newAllMapMarkers;
         };
-    }, 0, GVAR(markerEvents)] call CBA_fnc_addPerFrameHandler;
+    }, 0] call CBA_fnc_addPerFrameHandler;
 };
 
 if (_function isEqualTo {}) exitWith {-1};
