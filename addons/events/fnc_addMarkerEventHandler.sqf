@@ -33,11 +33,11 @@ if (isNil QGVAR(oldMarkers)) then {
             params ["_events"];
 
             {
-                [QGVAR(markerDeleted), _x] call CBA_fnc_localEvent;
+                [QGVAR(markerDeleted), [_x]] call CBA_fnc_localEvent;
             } forEach (GVAR(oldMarkers) - _newAllMapMarkers);
 
             {
-                [QGVAR(markerCreated), _x] call CBA_fnc_localEvent;
+                [QGVAR(markerCreated), [_x]] call CBA_fnc_localEvent;
             } forEach (_newAllMapMarkers - GVAR(oldMarkers));
 
             GVAR(oldMarkers) = _newAllMapMarkers;
