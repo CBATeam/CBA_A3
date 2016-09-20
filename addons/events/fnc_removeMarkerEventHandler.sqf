@@ -17,7 +17,7 @@ Examples:
     (end)
 
 Author:
-    Spooner, commy2
+    commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(removeMarkerEventHandler);
