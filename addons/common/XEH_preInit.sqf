@@ -37,6 +37,4 @@ GVAR(addons) = _addons;
 // BWC
 #include "backwards_comp.sqf"
 
-PREP(setCallsign);
-
 ADDON = true;

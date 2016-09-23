@@ -1,22 +1,32 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_common_fnc_setCallsign
+Function: CBA_fnc_setCallsign
 
 Description:
-    Set call sign of a group via 3den attribute.
+    Set call sign of a group.
+
+    Works in SP, MP and Eden-Editor and at any point.
 
 Parameters:
-    _group    - A group <GROUP>
+    _group    - A group <GROUP, OBJECT>
     _callsign - The call sign the group should receive <STRING>
 
 Returns:
     Nothing
 
+Example:
+    (begin example)
+        [group player, "Banana Squad"] call CBA_fnc_setCallsign
+    (end)
+
 Author:
     snippers, commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+SCRIPT(setCallsign);
 
-params [["_group", grpNull, [grpNull]], ["_callsign", "", [""]]];
+params [["_group", grpNull, [grpNull, objNull]], ["_callsign", "", [""]]];
+
+private _group = _group call CBA_fnc_getGroup;
 
 if (is3DEN) then {
     _group setGroupId [_callsign]; 

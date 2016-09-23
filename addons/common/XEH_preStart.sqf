@@ -2,4 +2,3 @@
 
 PREP(onTeamColorChanged);
 PREP(synchTeamColors);
-PREP(setCallsign);

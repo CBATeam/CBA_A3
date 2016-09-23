@@ -5,7 +5,7 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Callsign {
-                        expression = QUOTE([ARR_2(_this,_value)] call FUNC(setCallsign));
+                        expression = "[_this, _value] call CBA_fnc_setCallsign";
                     };
                 };
             };
