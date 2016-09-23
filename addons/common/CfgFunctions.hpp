@@ -25,6 +25,7 @@ class CfgFunctions {
             PATHTO_FNC(getGroupIndex);
             PATHTO_FNC(getMagazineIndex);
             PATHTO_FNC(currentMagazineIndex);
+            PATHTO_FNC(setCallsign);
         };
 
         class Soldiers {
