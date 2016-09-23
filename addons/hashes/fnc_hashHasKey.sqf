@@ -23,6 +23,6 @@ Author:
 SCRIPT(hashHasKey);
 
 // -----------------------------------------------------------------------------
-params [["_hash", [] call CBA_fnc_hashCreate, [[]]], "_key"];
+params [["_hash", [[], []], [[]]], "_key"];
 
 _key in (_hash select HASH_KEYS); // Return.
