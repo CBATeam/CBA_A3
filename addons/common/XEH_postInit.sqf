@@ -35,6 +35,12 @@ for "_i" from 0 to ((count (CFG)) - 1) do {
     };
 };
 
+// event for switching team colors, DEPRECATED
+["CBA_teamColorChanged", {
+    params ["_unit", "_team"];
+    _unit assignTeam _team;
+}] call CBA_fnc_addEventHandler;
+
 //Event for switching vehicle var names from CBA_fnc_switchPlayer
 ["CBA_setVehicleVarName", {
     params ["_oldVeh", "_newVeh", "_vehName"];
