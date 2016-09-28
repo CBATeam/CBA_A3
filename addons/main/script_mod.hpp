@@ -4,7 +4,7 @@
 #define MAJOR 3
 #define MINOR 1
 #define PATCHLVL 0
-#define BUILD 160906
+#define BUILD 160928
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
@@ -12,7 +12,7 @@
 
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.62
+#define REQUIRED_VERSION 1.64
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)
