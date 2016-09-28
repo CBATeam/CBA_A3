@@ -141,6 +141,17 @@ class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount supp
     };
 };
 
+class asdg_MuzzleSlot_65: asdg_MuzzleSlot_762 { // for 6.5 weapons, mostly to deal with BIS vanilla compatibility
+    class compatibleItems: compatibleItems {
+        muzzle_snds_h = 1;
+        muzzle_snds_h_khk_F = 1;
+        muzzle_snds_h_snd_F = 1;
+        muzzle_snds_65_TI_blk_F = 1;
+        muzzle_snds_65_TI_hex_F = 1;
+        muzzle_snds_65_TI_ghex_F = 1;
+    };
+};
+
 class asdg_MuzzleSlot_556: asdg_MuzzleSlot { // for 5.56x45 universal mount suppressors
     class compatibleItems {
         muzzle_snds_M = 1;
@@ -207,5 +218,7 @@ class asdg_MuzzleSlot_58: asdg_MuzzleSlot { // for 5.8x42 suppressors
     class compatibleItems {
         muzzle_snds_58_blk_F = 1;
         muzzle_snds_58_wdm_F = 1;
+        muzzle_snds_58_ghex_F = 1;
+        muzzle_snds_58_hex_F = 1;
     };
 };

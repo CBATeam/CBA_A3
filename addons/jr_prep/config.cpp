@@ -18,6 +18,9 @@ class CfgWeapons {
     class Rifle_Base_F : Rifle {
         class WeaponSlotsInfo;
     };
+    class Rifle_Short_Base_F : Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
     class Rifle_Long_Base_F : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
@@ -136,7 +139,7 @@ class CfgWeapons {
         };
     };
 
-    class SMG_05_base_F : Rifle_Base_F {
+    class SMG_05_base_F : Rifle_Short_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
             delete CowsSlot;

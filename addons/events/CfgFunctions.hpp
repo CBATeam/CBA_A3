@@ -82,6 +82,8 @@ class CfgFunctions {
                 description = "Raises a CBA event on the target client ID's machine.";
                 file = "\x\cba\addons\events\fnc_ownerEvent.sqf";
             };
+            PATHTO_FNC(addMarkerEventHandler);
+            PATHTO_FNC(removeMarkerEventHandler);
         };
     };
 };

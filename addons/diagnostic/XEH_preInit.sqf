@@ -1,9 +1,10 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
-// So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
 #include "script_component.hpp"
+SCRIPT(XEH_preInit);
 
 LOG(MSG_INIT);
 
-[QUOTE(GVAR(debug)), { _this call (uiNamespace getVariable "CBA_fnc_debug") }] call (uiNamespace getVariable "CBA_fnc_addEventHandler");
+ADDON = false;
 
-PREP(perf_loop);
+[QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
+
+ADDON = true;
