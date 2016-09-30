@@ -57,6 +57,7 @@ _stateMachine setVariable [ONSTATE(_name), _onState];
 _stateMachine setVariable [ONSTATEENTERED(_name), _onStateEntered];
 _stateMachine setVariable [ONSTATELEAVING(_name), _onStateLeaving];
 _stateMachine setVariable [TRANSITIONS(_name), []];
+_stateMachine setVariable [EVENTTRANSITIONS(_name), []];
 
 // First state added is always the intial state
 if (isNil {_stateMachine getVariable QGVAR(initialState)}) then {

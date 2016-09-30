@@ -32,9 +32,9 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
 
 {
     private _state = configName _x;
-    private _onState = compile getText (_x >> "onState");
-    private _onStateEntered = compile getText (_x >> "onStateEntered");
-    private _onStateLeaving = compile getText (_x >> "onStateLeaving");
+    GET_FUNCTION(_onState,_x >> "onState");
+    GET_FUNCTION(_onStateEntered,_x >> "onStateEntered");
+    GET_FUNCTION(_onStateLeaving,_x >> "onStateLeaving");
     [_stateMachine, _onState, _onStateEntered, _onStateLeaving, _state] call FUNC(addState);
 
     false
@@ -46,10 +46,15 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
     {
         private _transition = configName _x;
         private _targetState = getText (_x >> "targetState");
-        private _condition = compile getText (_x >> "condition");
-        private _onTransition = compile getText (_x >> "onTransition");
+        GET_FUNCTION(_condition,_x >> "condition");
+        GET_FUNCTION(_onTransition,_x >> "onTransition");
+        private _events = getArray (_x >> "events");
 
-        [_stateMachine, _state, _targetState, _condition, _onTransition, _transition] call FUNC(addTransition);
+        if (_events isEqualTo []) then {
+            [_stateMachine, _state, _targetState, _condition, _onTransition, _transition] call FUNC(addTransition);
+        } else {
+            [_stateMachine, _state, _targetState, _events, _condition, _onTransition, _transition] call FUNC(addEventTransition);
+        };
 
         false
     } count (configProperties [_x, "isClass _x", true]);
