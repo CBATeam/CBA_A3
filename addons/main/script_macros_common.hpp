@@ -142,7 +142,7 @@ Author:
 #define LOG_SYS(LEVEL,MESSAGE) LOG_SYS_FORMAT(LEVEL,MESSAGE) call CBA_fnc_log
 #endif
 
-#define LOG_SYS_FILELINENUMBERS(LEVEL,MESSAGE) LOG_SYS(LEVEL,format [ARR_4('%1 File: %2 Line: %3',MESSAGE,__FILE__,__LINE__ + 1)])
+#define LOG_SYS_FILELINENUMBERS(LEVEL,MESSAGE) LOG_SYS(LEVEL,format [ARR_4('%1 %2:%3',MESSAGE,__FILE__,__LINE__ + 1)])
 
 /* -------------------------------------------
 Macro: LOG()
@@ -286,8 +286,6 @@ Macro: ERROR_WITH_TITLE()
 
     The title can be specified (in <ERROR()> the heading is always just "ERROR")
     Newlines (\n) in the MESSAGE will be put on separate lines.
-
-    TODO: Popup an error dialog & throw an exception.
 
 Parameters:
     TITLE - Title of error message <STRING>

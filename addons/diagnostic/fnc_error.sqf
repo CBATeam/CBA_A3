@@ -36,7 +36,7 @@ params [
 _prefix = toUpper _prefix;
 
 // RPT log
-diag_log text format ["[%1] (%2) ERROR: %3 File: %4 Line: %5", _prefix, _component, _title, _file, _lineNum];
+diag_log text format ["[%1] (%2) ERROR: %3 %4:%5", _prefix, _component, _title, _file, _lineNum];
 
 private _lines = [_message, "\n"] call CBA_fnc_split;
 
