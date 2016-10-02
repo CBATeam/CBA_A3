@@ -130,8 +130,7 @@ if (!isNil "_settingInfo") then {
     if !([_setting, _value] call FUNC(check)) then {
         _value = [_setting, "default"] call FUNC(get);
         [_setting, _value, _forced, "client"] call FUNC(set);
-        private _message = format ["Invalid value for setting %1. Fall back to default value.", str _setting];
-        WARNING(_message);
+        WARNING_1("Invalid value for setting %1. Fall back to default value.",str _setting);
     };
 
     GVAR(clientSettings) setVariable [_setting, [_value, _forced]];

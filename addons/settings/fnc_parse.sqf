@@ -98,14 +98,12 @@ private _result = [];
         private _currentValue = [_setting, "default"] call FUNC(get);
 
         if (isNil "_currentValue") then {
-            private _message = format ["Error parsing settings file. Setting %1 does not exist.", str _setting];
-            ERROR(_message);
+            ERROR_1("Error parsing settings file. Setting %1 does not exist.",str _setting);
         } else {
             if ([_setting, _value] call FUNC(check)) then {
                 _result pushBack [_setting, _value, _force];
             } else {
-                private _message = format ["Error parsing settings file. Value %1 is invalid for setting %2.", _value, str _setting];
-                ERROR(_message);
+                ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",_value,str _setting);
             };
         };
     };
