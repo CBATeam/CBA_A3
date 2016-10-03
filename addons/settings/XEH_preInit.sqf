@@ -68,12 +68,10 @@ if (isServer) then {
     params ["_setting", "_value", ["_forced", false, [false]]];
 
     if ([_setting, "mission"] call FUNC(isForced)) exitWith {
-        private _message = format ["Setting %1 already forced, ignoring setSettingMission.", str _setting];
-        LOG(_message);
+        LOG_1("Setting %1 already forced, ignoring setSettingMission.",str _setting);
     };
     if (!([_setting, _value] call FUNC(check))) exitWith {
-        private _message = format ["Value %1 is invalid for setting %2.", _value, str _setting];
-        WARNING(_message);
+        WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
     };
 
     GVAR(missionSettings) setVariable [_setting, [_value, _forced]];

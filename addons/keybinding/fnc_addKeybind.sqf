@@ -66,8 +66,7 @@ if (_tooltip isEqualTo "") then {
 };
 
 if (count _defaultKeybind == 4) then {
-    _msg = format ["%1: %2 - Wrong format for the default keybind parameter. Use [DIK, [shift, ctrl, alt]]", _modName, _actionId];
-    WARNING(_msg);
+    WARNING_2("%1: %2 - Wrong format for the default keybind parameter. Use [DIK, [shift, ctrl, alt]]",_modName,_actionId);
     _modifiers=[_defaultKeybind select 1, _defaultKeybind select 2, _defaultKeybind select 3];
     _defaultKeybind = [_defaultKeybind select 0, _modifiers];
 };
