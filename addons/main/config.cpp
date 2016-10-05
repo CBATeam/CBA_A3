@@ -56,7 +56,7 @@ class CfgSettings {
         };
         class Registry {
             class PREFIX {
-                removed[] = {};
+                removed[] = {"cba_linux"};
             };
         };
     };
