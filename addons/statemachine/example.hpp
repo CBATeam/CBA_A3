@@ -26,6 +26,12 @@ class MyAddon_Statemachine {
                 _x setSkill ['spotTime',     ((_x skill 'spotTime')     * 1.5) min 1]; \
             } forEach (units _this);";
         };
+
+        // Event transitions get triggered by CBA events
+        class Alarm: InCombat {
+            events[] = {"MyAddon_AlarmRaised"};
+            condition = "true";
+        };
     };
 
     // Empty classes will also work if the state contains no transitions or onState code.
