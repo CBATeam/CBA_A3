@@ -3,7 +3,7 @@ Function: CBA_fnc_compileFunction
 
 Description:
     Compiles a function into mission namespace and into ui namespace for caching purposes.
-    Recompiling can be enabled by insterting the CBA_cache_disable.pbo from the optionals folder.
+    Recompiling can be enabled by inserting the CBA_cache_disable.pbo from the optionals folder.
 
 Parameters:
     0: _funcFile - Path to function sqf file <STRING>
