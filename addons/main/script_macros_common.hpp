@@ -284,6 +284,8 @@ Author:
 Macro: ERROR_MSG()
     Record a critical error in the RPT log and display on screen error message.
 
+    Newlines (\n) in the MESSAGE will be put on separate lines.
+
 Parameters:
     MESSAGE -  Message to record <STRING>
 
@@ -295,7 +297,7 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define ERROR_MSG(MESSAGE) ['PREFIX', 'COMPONENT', MESSAGE, nil, __FILE__, __LINE__ + 1] call CBA_fnc_error
+#define ERROR_MSG(MESSAGE) ['PREFIX', 'COMPONENT', nil, MESSAGE, __FILE__, __LINE__ + 1] call CBA_fnc_error
 #define ERROR_MSG_1(MESSAGE,ARG1) ERROR_MSG(FORMAT_1(MESSAGE,ARG1))
 #define ERROR_MSG_2(MESSAGE,ARG1,ARG2) ERROR_MSG(FORMAT_2(MESSAGE,ARG1,ARG2))
 #define ERROR_MSG_3(MESSAGE,ARG1,ARG2,ARG3) ERROR_MSG(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
