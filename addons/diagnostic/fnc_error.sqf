@@ -49,8 +49,7 @@ disableSerialization;
 QGVAR(Error) cutRsc [QGVAR(Error), "PLAIN"];
 private _control = uiNamespace getVariable QGVAR(Error);
 
-if (_message isEqualTo "") then {
-    _lines = [_title];
+if (_title isEqualTo "") then {
     _title = "ERROR";
 };
 
