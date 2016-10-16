@@ -15,7 +15,7 @@ Examples:
     _emptyHash = [] call CBA_fnc_hashCreate;
     [_emptyHash] call CBA_fnc_hashSize; // => 0
 
-    _animalCounts = [["frog", 12], ["fish", 9]] call CBA_fnc_hashCreate;
+    _animalCounts = [[["frog", 12], ["fish", 9]]] call CBA_fnc_hashCreate;
     [_animalCounts] call CBA_fnc_hashSize; // => 2
 (end code)
 
