@@ -50,6 +50,12 @@ class CfgFunctions
                 description = "Sets a value for a given key in a Hash.";
                 file = "\x\cba\addons\hashes\fnc_hashSet.sqf";
             };
+            // CBA_fnc_hashSize
+            class hashSize
+            {
+                description = "Get number of elements in a Hash.";
+                file = "\x\cba\addons\hashes\fnc_hashSize.sqf";
+            };
             // CBA_fnc_isHash
             class isHash
             {

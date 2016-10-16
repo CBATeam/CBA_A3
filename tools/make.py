@@ -36,8 +36,9 @@ import sys
 
 if sys.version_info[0] == 2:
     print("Python 3 is required.")
-    sys.exit(1)
+#    sys.exit(1)
 
+import errno
 import os
 import os.path
 import shutil
@@ -45,7 +46,7 @@ import platform
 import glob
 import subprocess
 import hashlib
-import configparser
+import ConfigParser
 import json
 import traceback
 import time
@@ -55,7 +56,17 @@ import re
 from tempfile import mkstemp
 
 if sys.platform == "win32":
-    import winreg
+    import _winreg
+
+try:
+    FileNotFoundError
+except NameError:
+    FileNotFoundError = IOError
+
+try:
+    FileExistsError
+except NameError:
+    FileExistsError = IOError
 
 ######## GLOBALS #########
 project = "@CBA_A3"
@@ -208,11 +219,11 @@ if sys.platform == "win32":
 def find_bi_tools(work_drive):
     """Find BI tools."""
 
-    reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+    reg = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
     try:
-        k = winreg.OpenKey(reg, r"Software\bohemia interactive\arma 3 tools")
-        arma3tools_path = winreg.QueryValueEx(k, "path")[0]
-        winreg.CloseKey(k)
+        k = _winreg.OpenKey(reg, r"Software\bohemia interactive\arma 3 tools")
+        arma3tools_path = _winreg.QueryValueEx(k, "path")[0]
+        _winreg.CloseKey(k)
     except:
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
@@ -232,41 +243,41 @@ def find_depbo_tools(regKey):
     stop = False
 
     if regKey == "HKCU":
-        reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+        reg = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
         stop = True
     else:
-        reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
+        reg = _winreg.ConnectRegistry(None, _winreg.HKEY_LOCAL_MACHINE)
 
     try:
         try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\pboProject")
+            k = _winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\pboProject")
         except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\pboProject")
+            k = _winreg.OpenKey(reg, r"Software\Mikero\pboProject")
         try:
-            pboproject_path = winreg.QueryValueEx(k, "exe")[0]
-            winreg.CloseKey(k)
+            pboproject_path = _winreg.QueryValueEx(k, "exe")[0]
+            _winreg.CloseKey(k)
             print("Found pboproject.")
         except:
             print_error("ERROR: Could not find pboProject.")
 
         try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
+            k = _winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
         except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\rapify")
+            k = _winreg.OpenKey(reg, r"Software\Mikero\rapify")
         try:
-            rapify_path = winreg.QueryValueEx(k, "exe")[0]
-            winreg.CloseKey(k)
+            rapify_path = _winreg.QueryValueEx(k, "exe")[0]
+            _winreg.CloseKey(k)
             print("Found rapify.")
         except:
             print_error("Could not find rapify.")
 
         try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\MakePbo")
+            k = _winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\MakePbo")
         except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\MakePbo")
+            k = _winreg.OpenKey(reg, r"Software\Mikero\MakePbo")
         try:
-            makepbo_path = winreg.QueryValueEx(k, "exe")[0]
-            winreg.CloseKey(k)
+            makepbo_path = _winreg.QueryValueEx(k, "exe")[0]
+            _winreg.CloseKey(k)
             print("Found makepbo.")
         except:
             print_error("Could not find makepbo.")
@@ -445,11 +456,16 @@ def cleanup_optionals(mod):
                 if (os.path.isfile(src_sig_path)):
                     #print("Preserving {}".format(sigFile_name))
                     os.renames(src_sig_path,dst_sig_path)
+            except OSError as e:
+                if e.errno == errno.EEXIST:
+                	print_error("{} already exists".format(file_name))
+                continue
             except FileExistsError:
                 print_error("{} already exists".format(file_name))
                 continue
             shutil.rmtree(destination)
-
+          
+    
     except FileNotFoundError:
         print_yellow("{} file not found".format(file_name))
 
@@ -669,7 +685,7 @@ def get_commit_ID():
         os.chdir(make_root)
 
         commit_id = subprocess.check_output(["git", "rev-parse", "HEAD"])
-        commit_id = str(commit_id, "utf-8")[:8]
+        commit_id = unicode(commit_id, "utf-8")[:8]
     except:
         print_error("FAILED TO DETERMINE COMMIT ID.")
         print_yellow("Verify that \GIT\BIN or \GIT\CMD is in your system path or user path.")
@@ -747,11 +763,11 @@ def main(argv):
         print_error("Non-Windows platform (Cygwin?). Please re-run from cmd.")
         sys.exit(1)
 
-    reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+    reg = _winreg.ConnectRegistry(None, _winreg.HKEY_CURRENT_USER)
     try:
-        k = winreg.OpenKey(reg, r"Software\bohemia interactive\arma 3 tools")
-        arma3tools_path = winreg.QueryValueEx(k, "path")[0]
-        winreg.CloseKey(k)
+        k = _winreg.OpenKey(reg, r"Software\bohemia interactive\arma 3 tools")
+        arma3tools_path = _winreg.QueryValueEx(k, "path")[0]
+        _winreg.CloseKey(k)
     except:
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
@@ -854,33 +870,48 @@ See the make.cfg file for additional build options.
 
 
 
-    cfg = configparser.ConfigParser();
+    cfg = ConfigParser.ConfigParser({
+            'project' : "@"+os.path.basename(os.getcwd()),
+            'work_drive' : "P:\\",
+            'key' : None,
+            'private_key_path' : os.path.join("P:\\", "private_keys"),
+            'prefix' : '',
+            'zipPrefix' : 'CBA',
+            'module_autodetect' :  "true",
+            'modules' : None,
+            'ignore' : 'release',
+            'build_tool' : 'addonbuilder',
+            'release_dir' : 'release',
+            'test_dir' : os.path.join(os.environ["USERPROFILE"],r"Documents\Arma 3"),
+            'pbo_name_prefix' : None,
+            'module_root' : os.path.join(make_root_parent, "addons")
+    });
     try:
         cfg.read(os.path.join(make_root, "make.cfg"))
 
         # Project name (with @ symbol)
-        project = cfg.get(make_target, "project", fallback="@"+os.path.basename(os.getcwd()))
+        project = cfg.get(make_target, "project")
 
         # BI Tools work drive on Windows
-        work_drive = cfg.get(make_target, "work_drive",  fallback="P:\\")
+        work_drive = cfg.get(make_target, "work_drive")
 
         # Private key path
-        key = cfg.get(make_target, "key", fallback=None)
+        key = cfg.get(make_target, "key")
 
         # Private key creation directory
-        private_key_path = cfg.get(make_target, "private_key_path", fallback=os.path.join(work_drive, "private_keys"))
+        private_key_path = cfg.get(make_target, "private_key_path")
 
         # Project prefix (folder path)
-        prefix = cfg.get(make_target, "prefix", fallback="")
+        prefix = cfg.get(make_target, "prefix")
 
         # Release archive prefix
-        zipPrefix = cfg.get(make_target, "zipPrefix", fallback=project.lstrip("@").lower())
+        zipPrefix = cfg.get(make_target, "zipPrefix")
 
         # Should we autodetect modules on a complete build?
-        module_autodetect = cfg.getboolean(make_target, "module_autodetect", fallback=True)
+        module_autodetect = cfg.getboolean(make_target, "module_autodetect")
 
         # Manual list of modules to build for a complete build
-        modules = cfg.get(make_target, "modules", fallback=None)
+        modules = cfg.get(make_target, "modules")
         # Parse it out
         if modules:
             modules = [x.strip() for x in modules.split(',')]
@@ -888,23 +919,23 @@ See the make.cfg file for additional build options.
             modules = []
 
         # List of directories to ignore when detecting
-        ignore = [x.strip() for x in cfg.get(make_target, "ignore",  fallback="release").split(',')]
+        ignore = [x.strip() for x in cfg.get(make_target, "ignore").split(',')]
 
         # Which build tool should we use?
-        build_tool = cfg.get(make_target, "build_tool", fallback="addonbuilder").lower()
+        build_tool = cfg.get(make_target, "build_tool").lower()
 
         # Release/build directory, relative to script dir
-        release_dir = cfg.get(make_target, "release_dir", fallback="release")
+        release_dir = cfg.get(make_target, "release_dir")
 
         #Directory to copy the final built PBO's for a test run.
-        test_dir = cfg.get(make_target, "test_dir", fallback=os.path.join(os.environ["USERPROFILE"],r"documents\Arma 3"))
+        test_dir = cfg.get(make_target, "test_dir")
 
         # Project PBO file prefix (files are renamed to prefix_name.pbo)
-        pbo_name_prefix = cfg.get(make_target, "pbo_name_prefix", fallback=None)
+        pbo_name_prefix = cfg.get(make_target, "pbo_name_prefix")
 
         # Project module Root
         module_root_parent = os.path.abspath(os.path.join(os.path.join(work_drive, prefix), os.pardir))
-        module_root = cfg.get(make_target, "module_root", fallback=os.path.join(make_root_parent, "addons"))
+        module_root = cfg.get(make_target, "module_root")
         optionals_root = os.path.join(module_root_parent, "optionals")
         extensions_root = os.path.join(module_root_parent, "extensions")
 
@@ -1186,6 +1217,7 @@ See the make.cfg file for additional build options.
                 try:
                     nobinFilePath = os.path.join(work_drive, prefix, module, "$NOBIN$")
                     nobinNotestFilePath = os.path.join(work_drive, prefix, module, "$NOBIN-NOTEST$")
+                    noExtFilePath = os.path.join(work_drive, prefix, module, "$NOEXT$")
                     backup_config(module)
 
                     version_stamp_pboprefix(module,commit_id)
@@ -1196,6 +1228,9 @@ See the make.cfg file for additional build options.
                     elif os.path.isfile(nobinNotestFilePath):
                         print_green("$NOBIN-NOTEST$ Found. Proceeding with non-binarizing [what you see is what you get]!")
                         cmd = [makepboTool, "-P","-A","-N","-G","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
+                    elif os.path.isfile(noExtFilePath):
+                    	print_green("$NOEXT$ Found. Disable external reference checking")
+                    	cmd = [makepboTool, "-P","-A","-L","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
                     else:
                         if check_external:
                             cmd = [pboproject, "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S","+Noisy", "+X", "+Clean", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
@@ -1385,11 +1420,11 @@ See the make.cfg file for additional build options.
 
         if sys.platform == "win32":
             print_yellow("\nTesting for Win32.")
-            reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
+            reg = _winreg.ConnectRegistry(None, _winreg.HKEY_LOCAL_MACHINE)
             try:
-                k = winreg.OpenKey(reg, r"SOFTWARE\Wow6432Node\Bohemia Interactive\Arma 3")
-                a3_path = winreg.EnumValue(k, 1)[1]
-                winreg.CloseKey(k)
+                k = _winreg.OpenKey(reg, r"SOFTWARE\Wow6432Node\Bohemia Interactive\Arma 3")
+                a3_path = _winreg.EnumValue(k, 1)[1]
+                _winreg.CloseKey(k)
             except:
                 print_error("Could not find Arma 3's directory in the registry.")
         else:
