@@ -1,0 +1,1 @@
+["'initJIPcompatible.sqf' file is obsolete and has no function. Please don't execute it in your scripts."] call bis_fnc_error;

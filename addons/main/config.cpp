@@ -63,3 +63,5 @@ class CfgSettings {
 };
 
 #include "CfgVehicles.hpp"
+
+scriptsPath = QPATHTO_R(Scripts\);

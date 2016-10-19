@@ -1,0 +1,2 @@
+["Executing 'camera.sqs' script is an obsolete method, call BIS_fnc_cameraOld function instead."] call bis_fnc_error;
+_this call bis_fnc_cameraOld;

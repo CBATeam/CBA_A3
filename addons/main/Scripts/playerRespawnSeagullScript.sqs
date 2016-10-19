@@ -1,0 +1,6 @@
+_scripts = ["playerRespawnSeagullScript",_this] call (uinamespace getvariable "bis_fnc_selectRespawnTemplate");
+
+;--- Wait until scripts are finished so server can sync the mission status
+#loop
+~0.1
+if ({!scriptdone _x} count _scripts > 0) then {goto "loop";};
