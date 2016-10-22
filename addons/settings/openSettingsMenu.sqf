@@ -1,8 +1,11 @@
 #include "script_component.hpp"
 
-disableSerialization;
-
 params [["_display", findDisplay 46, [displayNull]]];
+
+// hide diary (usually on players list)
+if (ctrlIDD _display in [37, 52, 53]) then {
+    (_display displayCtrl 1001) lnbSetCurSelRow 0;
+};
 
 private _dlgSettings = _display createDisplay "RscDisplayGameOptions";
 
@@ -17,27 +20,30 @@ _ctrlConfigureAddons ctrlShow false;
 // then switch right to missions tab
 if (ctrlIDD _display == 313) then {
     private _ctrlMissionButton = _dlgSettings displayCtrl IDC_BTN_MISSION;
-    _ctrlMissionButton call FUNC(gui_sourceChanged);
+
+    if (ctrlEnabled _ctrlMissionButton) then {
+        _ctrlMissionButton call FUNC(gui_sourceChanged);
+    };
 };
 
 if (ctrlIDD _display in [37, 52, 53]) then {
     private _ctrlButtonCancel = _display displayCtrl 2;
-    private _ctrlButtonSettings = _display displayCtrl IDC_BTN_SETTINGS;
+    private _ctrlButtonConfigure = _display displayCtrl IDC_BTN_CONFIGURE;
 
     _ctrlButtonCancel ctrlEnable false;
     _ctrlButtonCancel ctrlShow false;
-    _ctrlButtonSettings ctrlEnable false;
-    _ctrlButtonSettings ctrlShow false;
+    _ctrlButtonConfigure ctrlEnable false;
+    _ctrlButtonConfigure ctrlShow false;
 
     [_dlgSettings, "unload", {
         _thisArgs params ["_display"];
 
         private _ctrlButtonCancel = _display displayCtrl 2;
-        private _ctrlButtonSettings = _display displayCtrl IDC_BTN_SETTINGS;
+        private _ctrlButtonConfigure = _display displayCtrl IDC_BTN_CONFIGURE;
 
         _ctrlButtonCancel ctrlEnable true;
         _ctrlButtonCancel ctrlShow true;
-        _ctrlButtonSettings ctrlEnable true;
-        _ctrlButtonSettings ctrlShow true;
+        _ctrlButtonConfigure ctrlEnable true;
+        _ctrlButtonConfigure ctrlShow true;
     }, [_display]] call CBA_fnc_addBISEventHandler;
 };

@@ -1,3 +1,4 @@
+
 class Cfg3DEN {
     class Attributes {
         class Default;
@@ -20,9 +21,19 @@ class Cfg3DEN {
                             control = "CBA_CategoryHider";
                             displayName = "";
                             tooltip = "";
-                            defaultValue = QUOTE(NULL_HASH);
+                            defaultValue = QUOTE(HASH_NULL);
                             expression = "";
                             wikiType = "[[Array]]";
+                        };
+                        class GVAR(hasSettingsFile) {
+                            property = QGVAR(hasSettingsFile);
+                            value = 0;
+                            control = "CBA_CategoryHider";
+                            displayName = "";
+                            tooltip = "";
+                            defaultValue = "false";
+                            expression = "";
+                            wikiType = "[[BOOL]]";
                         };
                     };
                 };

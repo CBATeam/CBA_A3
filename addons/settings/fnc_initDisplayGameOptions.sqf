@@ -1,8 +1,19 @@
 #include "script_component.hpp"
 
+if (isNil QUOTE(ADDON)) exitWith {
+    _this call (uiNamespace getVariable QFUNC(initDisplayGameOptions_disabled));
+};
+
 params ["_display"];
 
 uiNamespace setVariable [QGVAR(display), _display];
+
+// ----- create temporary setting namespaces
+with uiNamespace do {
+    GVAR(clientTemp)  = _display ctrlCreate ["RscText", -1];
+    GVAR(missionTemp) = _display ctrlCreate ["RscText", -1];
+    GVAR(serverTemp)  = _display ctrlCreate ["RscText", -1];
+};
 
 // ----- create addons list (filled later)
 private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
@@ -11,12 +22,11 @@ private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddons
 _ctrlAddonsGroup ctrlEnable false;
 _ctrlAddonsGroup ctrlShow false;
 
-_ctrlAddonList ctrlAddEventHandler ["LBSelChanged", FUNC(gui_addonChanged)];
+_ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
 private _categories = [];
 
 // ----- create settings lists
-
 #include "gui_createMenu.sqf"
 
 // ----- fill addons list
@@ -71,7 +81,7 @@ if (!isMultiplayer) then {
     private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
 
     _ctrlButtonImport ctrlSetPosition [
-        POS_X(24.4),
+        POS_X(26.4),
         POS_Y(20.5),
         POS_W(6),
         POS_H(1)
@@ -90,7 +100,7 @@ if (!isMultiplayer) then {
 private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
 
 _ctrlButtonExport ctrlSetPosition [
-    POS_X(30.5),
+    POS_X(32.5),
     POS_Y(20.5),
     POS_W(6),
     POS_H(1)
@@ -105,21 +115,22 @@ _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {copyToClipboard ([uiNames
 
 uiNamespace setVariable [QGVAR(ctrlButtonExport), _ctrlButtonExport];
 
-// ----- source buttons (client, server, mission)
+// ----- source buttons (server, mission, client)
+private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
+private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
+private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
+
+/*if (isServer) then {
+    _ctrlServerButton ctrlSetText localize LSTRING(ButtonLocal);
+};*/
+
 {
     _x ctrlEnable false;
     _x ctrlShow false;
     _x ctrlAddEventHandler ["ButtonClick", FUNC(gui_sourceChanged)];
-} forEach [_display displayCtrl IDC_BTN_CLIENT, _display displayCtrl IDC_BTN_SERVER, _display displayCtrl IDC_BTN_MISSION];
+} forEach [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton];
 
-GVAR(clientSettingsTemp) = [] call CBA_fnc_createNamespace;
-GVAR(serverSettingsTemp) = [] call CBA_fnc_createNamespace;
-GVAR(missionSettingsTemp) = [] call CBA_fnc_createNamespace;
-
-(_display displayCtrl IDC_BTN_CONFIGURE_ADDONS) ctrlAddEventHandler ["ButtonClick", FUNC(gui_configure)];
+(_display displayCtrl IDC_BTN_CONFIGURE_ADDONS) ctrlAddEventHandler ["ButtonClick", {_this call FUNC(gui_configure)}];
 
 // ----- scripted OK button
-(_display displayCtrl 999) ctrlAddEventHandler ["ButtonClick", {true call FUNC(gui_closeMenu)}];
-
-// set this per script to avoid it being all upper case
-(_display displayCtrl IDC_TXT_FORCE) ctrlSetText localize LSTRING(force);
+(_display displayCtrl 999) ctrlAddEventHandler ["ButtonClick", {call FUNC(gui_saveTempData); ctrlParent (_this select 0) closeDisplay 1}];

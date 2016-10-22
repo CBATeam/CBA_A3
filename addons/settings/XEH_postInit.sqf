@@ -2,27 +2,26 @@
 
 // --- refresh all settings after postInit to guarantee that events are added and settings are recieved from server
 {
-    if (isNil QGVAR(serverSettings)) then {
+    if (isNil QGVAR(server)) then {
         ERROR("No server settings after postInit phase.");
     };
 
     //Event to read modules
     ["CBA_beforeSettingsInitialized", []] call CBA_fnc_localEvent;
 
-    GVAR(ready) = true;
-    {
-        [QGVAR(refreshSetting), _x] call CBA_fnc_localEvent;
-    } forEach GVAR(allSettings);
+    // --- refresh all settings now
+    GVAR(ready) = true; // enable setting init script and CBA_SettingChanged event
+    QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
 
     LOG("Settings Initialized");
     ["CBA_settingsInitialized", []] call CBA_fnc_localEvent;
 } call CBA_fnc_execNextFrame;
 
 // --- autosave mission and server presets
-private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), NULL_HASH];
+private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), HASH_NULL];
 private _autosavedPresets = profileNamespace getVariable [QGVAR(autosavedPresets), [[],[]]];
 
-if !(allVariables GVAR(missionSettings) isEqualTo []) then {
+if !(allVariables GVAR(mission) isEqualTo []) then {
     private _preset = "mission" call FUNC(export);
     private _presetName = format ["Autosave: %1 (%2)", localize LSTRING(ButtonMission), missionName];
 

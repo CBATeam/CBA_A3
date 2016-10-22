@@ -9,7 +9,7 @@ class Display3DEN {
                     items[] += {QUOTE(ADDON)};
                 };
                 class ADDON {
-                    text = CSTRING(shortcut);
+                    text = CSTRING(3den_shortcut);
                     action = QUOTE(findDisplay 313 call COMPILE_FILE(openSettingsMenu));
                     data = QUOTE(ADDON);
                     shortcuts[] = {INPUT_CTRL_OFFSET + INPUT_ALT_OFFSET + DIK_S};

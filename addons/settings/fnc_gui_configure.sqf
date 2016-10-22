@@ -17,12 +17,13 @@ private _ctrlLayoutButton = _display displayCtrl 2405;
 private _ctrlTitle = _display displayCtrl 1000;
 private _ctrlPresetsButton = _display displayCtrl 114;
 private _ctrlDefaultButton = _display displayCtrl 101;
+private _ctrlButtonOK = _display displayCtrl 1;
 
 private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
 private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
-private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
 private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
 private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
+private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
 private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;
 private _ctrlButtonExport = _display displayCtrl IDC_BTN_EXPORT;
 private _ctrlButtonSave = _display displayCtrl IDC_BTN_SAVE;
@@ -49,16 +50,18 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlGUIButton ctrlShow false;
     _ctrlLayoutButton ctrlEnable false;
     _ctrlLayoutButton ctrlShow false;
+    _ctrlButtonOK ctrlEnable false;
+    _ctrlButtonOK ctrlShow false;
 
     //--- show and enable custom buttons
     _ctrlAddonsGroup ctrlEnable true;
     _ctrlAddonsGroup ctrlShow true;
-    _ctrlClientButton ctrlEnable CAN_VIEW_CLIENT_SETTINGS;
-    _ctrlClientButton ctrlShow true;
     _ctrlServerButton ctrlEnable CAN_VIEW_SERVER_SETTINGS;
     _ctrlServerButton ctrlShow true;
     _ctrlMissionButton ctrlEnable CAN_VIEW_MISSION_SETTINGS;
     _ctrlMissionButton ctrlShow true;
+    _ctrlClientButton ctrlEnable CAN_VIEW_CLIENT_SETTINGS;
+    _ctrlClientButton ctrlShow true;
     _ctrlButtonImport ctrlEnable true;
     _ctrlButtonImport ctrlShow true;
     _ctrlButtonExport ctrlEnable true;
@@ -73,9 +76,9 @@ if !(ctrlShown _ctrlAddonsGroup) then {
 
     //--- emulate default scope selection
     ([
-        _ctrlClientButton, _ctrlServerButton, _ctrlMissionButton
+        _ctrlServerButton, _ctrlMissionButton, _ctrlClientButton
     ] param [[
-        CAN_VIEW_CLIENT_SETTINGS, CAN_VIEW_SERVER_SETTINGS, CAN_VIEW_MISSION_SETTINGS
+        CAN_SET_SERVER_SETTINGS, CAN_SET_MISSION_SETTINGS, CAN_SET_CLIENT_SETTINGS
     ] find true]) call FUNC(gui_sourceChanged);
 } else {
     //--- enable and show default menu
@@ -97,16 +100,18 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlGUIButton ctrlShow true;
     _ctrlLayoutButton ctrlEnable true;
     _ctrlLayoutButton ctrlShow true;
+    _ctrlButtonOK ctrlEnable true;
+    _ctrlButtonOK ctrlShow true;
 
     //--- hide and disable custom buttons
     _ctrlAddonsGroup ctrlEnable false;
     _ctrlAddonsGroup ctrlShow false;
-    _ctrlClientButton ctrlEnable false;
-    _ctrlClientButton ctrlShow false;
     _ctrlServerButton ctrlEnable false;
     _ctrlServerButton ctrlShow false;
     _ctrlMissionButton ctrlEnable false;
     _ctrlMissionButton ctrlShow false;
+    _ctrlClientButton ctrlEnable false;
+    _ctrlClientButton ctrlShow false;
     _ctrlButtonImport ctrlEnable false;
     _ctrlButtonImport ctrlShow false;
     _ctrlButtonExport ctrlEnable false;
