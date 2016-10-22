@@ -41,7 +41,7 @@ _ctrlSetting ctrlAddEventHandler ["LBSelChanged", {
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
     //If new setting is same as default value, grey out the default button
-    (_control getVariable QGVAR(linkedControls)) params ["", "_defaultControl"];
+    (_control getVariable QGVAR(linkedControls)) params ["", "", "_defaultControl"];
     (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
     _defaultControl ctrlEnable (!(_value isEqualTo _defaultValue));
 }];

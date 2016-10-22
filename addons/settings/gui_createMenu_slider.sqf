@@ -26,7 +26,7 @@ _ctrlSetting ctrlAddEventHandler ["SliderPosChanged", {
 
     (_control getVariable QGVAR(data)) params ["_setting", "_source", "_trailingDecimals"];
 
-    (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControl", "_defaultControl"];
+    (_control getVariable QGVAR(linkedControls)) params ["", "", "_linkedControl", "_defaultControl"];
     _linkedControl ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
@@ -58,7 +58,7 @@ _ctrlSettingEdit ctrlAddEventHandler ["KeyUp", {
 
     private _value = parseNumber ctrlText _control;
 
-    (_control getVariable QGVAR(linkedControls)) params ["_linkedControl", "", "_defaultControl"];
+    (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControl", "", "_defaultControl"];
     _linkedControl sliderSetPosition _value;
 
     _value = sliderPosition _linkedControl;
@@ -74,7 +74,7 @@ _ctrlSettingEdit ctrlAddEventHandler ["KillFocus", {
 
     (_control getVariable QGVAR(data)) params ["", "", "_trailingDecimals"];
 
-    private _linkedControl = _control getVariable QGVAR(linkedControls) select 0;
+    (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControl"];
     private _value = sliderPosition _linkedControl;
 
     _control ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);

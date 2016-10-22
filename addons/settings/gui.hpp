@@ -69,24 +69,24 @@ class RscDisplayGameOptions {
             h = POS_H(1);
         };
 
-        class CBA_ButtonClient: RscButtonMenu {
-            idc = IDC_BTN_CLIENT;
-            text = CSTRING(ButtonClient);
-            tooltip = CSTRING(ButtonClient_tooltip);
+        class CBA_ButtonServer: RscButtonMenu {
+            idc = IDC_BTN_SERVER;
+            text = CSTRING(ButtonServer);
+            tooltip = CSTRING(ButtonServer_tooltip);
             x = POS_X(1);
             y = POS_Y(2.1);
             w = POS_W(8);
             h = POS_H(1);
         };
 
-        class CBA_ButtonServer: CBA_ButtonClient {
-            idc = IDC_BTN_SERVER;
-            text = CSTRING(ButtonServer);
-            tooltip = CSTRING(ButtonServer_tooltip);
+        class CBA_ButtonClient: CBA_ButtonServer {
+            idc = IDC_BTN_CLIENT;
+            text = CSTRING(ButtonClient);
+            tooltip = CSTRING(ButtonClient_tooltip);
             x = POS_X(9);
         };
 
-        class CBA_ButtonMission: CBA_ButtonClient {
+        class CBA_ButtonMission: CBA_ButtonServer {
             idc = IDC_BTN_MISSION;
             text = CSTRING(ButtonMission);
             tooltip = CSTRING(ButtonMission_tooltip);
@@ -188,7 +188,12 @@ class GVAR(presets) {
             class controls {
                 class CBA_Title: RscTitle {
                     style = 0;
-                    colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])","(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"};
+                    colorBackground[] = {
+                        "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
+                    };
                     idc = IDC_PRESETS_TITLE;
                     text = "";
                     x = POS_W(0);

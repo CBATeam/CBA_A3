@@ -18,9 +18,9 @@
 
 #define IDC_ADDONS_GROUP 4301
 #define IDC_BTN_CONFIGURE_ADDONS 4302
-#define IDC_BTN_CLIENT 9000
 #define IDC_BTN_SERVER 9001
-#define IDC_BTN_MISSION 9002
+#define IDC_BTN_CLIENT 9002
+#define IDC_BTN_MISSION 9003
 #define IDC_BTN_IMPORT 9010
 #define IDC_BTN_EXPORT 9011
 #define IDC_BTN_SAVE 9020
@@ -47,9 +47,9 @@
 #define POS_Y_LOW(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
 
 #define COLOR_TEXT_DISABLED [1,1,1,0.3]
+#define COLOR_TEXT_OVERWRITTEN COLOR_TEXT_DISABLED
 #define COLOR_BUTTON_ENABLED [1,1,1,1]
 #define COLOR_BUTTON_DISABLED [0,0,0,1]
-#define COLOR_TEXT_OVERWRITTEN [1,0.3,0.3,1]
 
 #define SLIDER_TYPES ["CBA_Rsc_Slider_R", "CBA_Rsc_Slider_G", "CBA_Rsc_Slider_B"]
 #define SLIDER_COLORS [[1,0,0,1], [0,1,0,1], [0,0,1,1], [1,1,1,1]]
@@ -59,17 +59,17 @@
 #define MENU_OFFSET_COLOR 1.0
 #define MENU_OFFSET_COLOR_NEG -0.7
 
-#define CAN_SET_CLIENT_SETTINGS (!isMultiplayer || {!isServer}) // in singleplayer or as client in multiplayer
-#define CAN_SET_SERVER_SETTINGS (isMultiplayer && {isServer || IS_ADMIN_LOGGED}) // in multiplayer and host (local server) or logged in (not voted) admin (dedicated)
+#define CAN_SET_SERVER_SETTINGS (isServer || {IS_ADMIN_LOGGED}) // in singleplayer, as host (local server) or as logged in (not voted) admin connected to a dedicated server
+#define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
 #define CAN_SET_MISSION_SETTINGS is3den // duh
 
 #ifndef DEBUG_MODE_FULL
-    #define CAN_VIEW_CLIENT_SETTINGS (!isMultiplayer || {!isServer}) // hide for local hosted MP client to not confuse
-    #define CAN_VIEW_SERVER_SETTINGS isMultiplayer // everyone can peak at those in multiplayer
+    #define CAN_VIEW_SERVER_SETTINGS true // everyone can peak at those in multiplayer
+    #define CAN_VIEW_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
     #define CAN_VIEW_MISSION_SETTINGS (is3den || missionVersion >= 15) // can view those in 3den or 3den missions
 #else
-    #define CAN_VIEW_CLIENT_SETTINGS true
     #define CAN_VIEW_SERVER_SETTINGS true
+    #define CAN_VIEW_CLIENT_SETTINGS true
     #define CAN_VIEW_MISSION_SETTINGS true
 #endif
 

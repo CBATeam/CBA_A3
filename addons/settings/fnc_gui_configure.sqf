@@ -20,8 +20,8 @@ private _ctrlDefaultButton = _display displayCtrl 101;
 
 private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
 private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
-private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
 private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
+private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
 private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
 private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;
 private _ctrlButtonExport = _display displayCtrl IDC_BTN_EXPORT;
@@ -53,10 +53,10 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     //--- show and enable custom buttons
     _ctrlAddonsGroup ctrlEnable true;
     _ctrlAddonsGroup ctrlShow true;
-    _ctrlClientButton ctrlEnable CAN_VIEW_CLIENT_SETTINGS;
-    _ctrlClientButton ctrlShow true;
     _ctrlServerButton ctrlEnable CAN_VIEW_SERVER_SETTINGS;
     _ctrlServerButton ctrlShow true;
+    _ctrlClientButton ctrlEnable CAN_VIEW_CLIENT_SETTINGS;
+    _ctrlClientButton ctrlShow true;
     _ctrlMissionButton ctrlEnable CAN_VIEW_MISSION_SETTINGS;
     _ctrlMissionButton ctrlShow true;
     _ctrlButtonImport ctrlEnable true;
@@ -73,9 +73,9 @@ if !(ctrlShown _ctrlAddonsGroup) then {
 
     //--- emulate default scope selection
     ([
-        _ctrlClientButton, _ctrlServerButton, _ctrlMissionButton
+        _ctrlServerButton, _ctrlClientButton, _ctrlMissionButton
     ] param [[
-        CAN_VIEW_CLIENT_SETTINGS, CAN_VIEW_SERVER_SETTINGS, CAN_VIEW_MISSION_SETTINGS
+        CAN_SET_SERVER_SETTINGS, CAN_SET_CLIENT_SETTINGS, CAN_SET_MISSION_SETTINGS
     ] find true]) call FUNC(gui_sourceChanged);
 } else {
     //--- enable and show default menu
@@ -101,10 +101,10 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     //--- hide and disable custom buttons
     _ctrlAddonsGroup ctrlEnable false;
     _ctrlAddonsGroup ctrlShow false;
-    _ctrlClientButton ctrlEnable false;
-    _ctrlClientButton ctrlShow false;
     _ctrlServerButton ctrlEnable false;
     _ctrlServerButton ctrlShow false;
+    _ctrlClientButton ctrlEnable false;
+    _ctrlClientButton ctrlShow false;
     _ctrlMissionButton ctrlEnable false;
     _ctrlMissionButton ctrlShow false;
     _ctrlButtonImport ctrlEnable false;

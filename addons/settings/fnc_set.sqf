@@ -12,11 +12,10 @@ Parameters:
 
 Returns:
     _return - Error code <NUMBER>
-        0: succes
+        0: success
         1: invalid value for setting
         2: new setting and forced state are the same as the previous ones
         10: invalid source
-        11: server source, but in SP
         12: server source, but no access
         13: mission source, but not in 3DEN editor
 
@@ -30,7 +29,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_setting", "", [""]], "_value", ["_forced", nil, [false]], ["_source", "client", [""]]];
+params [["_setting", "", [""]], "_value", ["_forced", nil, [false, 0]], ["_source", "client", [""]]];
 
 if (!isNil "_value" && {!([_setting, _value] call FUNC(check))}) exitWith {
     WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
@@ -38,7 +37,7 @@ if (!isNil "_value" && {!([_setting, _value] call FUNC(check))}) exitWith {
 };
 
 private _currentValue = [_setting, _source] call FUNC(get);
-private _currentForced = [_setting, _source] call FUNC(isForced);
+private _currentForced = [_setting, _source] call FUNC(getForced);
 
 if (isNil "_forced") then {
     _forced = _currentForced;
@@ -49,26 +48,15 @@ if (!isNil "_currentValue" && {_value isEqualTo _currentValue} && {_forced isEqu
 private _return = 0;
 
 switch (toLower _source) do {
-    case ("client"): {
-        // flag is used for server settings exclusively, keep previous state
-        _forced = [_setting, _source] call FUNC(isForced);
-
-        GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
-
-        private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
-        [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
-        profileNamespace setVariable [QGVAR(hash), _settingsHash];
-
-        [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
-    };
-    case ("server"): {
-        if (!isMultiplayer) exitWith {
-            _return = 11;
-        };
-
+    case "server": {
         if (isServer) then {
             GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
-            GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
+
+            if (isMultiplayer) then {
+                GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
+            } else {
+                GVAR(serverSettings) setVariable [_setting, [_value, _forced]];
+            };
 
             private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
             [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
@@ -83,7 +71,19 @@ switch (toLower _source) do {
             };
         };
     };
-    case ("mission"): {
+    case "client": {
+        // flag is used for server settings exclusively, keep previous state
+        _forced = [_setting, _source] call FUNC(isForced);
+
+        GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
+
+        private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
+        [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
+        profileNamespace setVariable [QGVAR(hash), _settingsHash];
+
+        [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+    };
+    case "mission": {
         if (!is3DEN) exitWith {
             _return = 13;
         };

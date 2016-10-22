@@ -33,7 +33,7 @@ private _info = "";
     private _forced = GET_TEMP_NAMESPACE_FORCED(_setting,_source);
 
     if (isNil "_forced") then {
-        _forced = [_setting, _source] call FUNC(isForced);
+        _forced = [_setting, _source] call FUNC(getForced);
     };
 
     // not displayed for client settings - assume it's not forced

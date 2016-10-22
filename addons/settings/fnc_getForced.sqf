@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_settings_fnc_isForced
+Internal Function: CBA_settings_fnc_getForced
 
 Description:
     Check if setting is forced.

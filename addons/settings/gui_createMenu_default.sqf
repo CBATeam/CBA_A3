@@ -4,7 +4,7 @@ private _ctrlSettingDefault = _display ctrlCreate ["RscButtonMenu", count _contr
 _controls pushBack _ctrlSettingDefault;
 
 _ctrlSettingDefault ctrlSetPosition [
-    POS_W(27),
+    POS_W(26),
     POS_H(_ctrlOptionsGroup getVariable QGVAR(offsetY)),
     POS_W(5),
     POS_H(1)
@@ -31,25 +31,25 @@ _ctrlSettingDefault ctrlAddEventHandler ["ButtonClick", {
     // reset buttons to default state
     switch (toUpper _settingType) do {
         case ("CHECKBOX"): {
-            _linkedControls params ["_ctrlSetting"];
+            _linkedControls params ["", "_ctrlSetting"];
 
             _ctrlSetting cbSetChecked _defaultValue;
         };
         case ("LIST"): {
             _settingData params ["_values"];
-            _linkedControls params ["_ctrlSetting"];
+            _linkedControls params ["", "_ctrlSetting"];
 
             _ctrlSetting lbSetCurSel (_values find _defaultValue);
         };
         case ("SLIDER"): {
             _settingData params ["", "", "_trailingDecimals"];
-            _linkedControls params ["_ctrlSetting", "_ctrlSettingEdit"];
+            _linkedControls params ["", "_ctrlSetting", "_ctrlSettingEdit"];
 
             _ctrlSetting sliderSetPosition _defaultValue;
             _ctrlSettingEdit ctrlSetText ([_defaultValue, 1, _trailingDecimals] call CBA_fnc_formatNumber);
         };
         case ("COLOR"): {
-            _linkedControls params ["_ctrlSettingPreview", "_settingControls"];
+            _linkedControls params ["", "_ctrlSettingPreview", "_settingControls"];
 
             _defaultValue params [
                 ["_r", 0, [0]],

@@ -20,13 +20,13 @@ params [["_setting", "", [""]], ["_source", "client", [""]]];
 
 switch (toLower _source) do {
     case ("client"): {
-        [_setting, "mission"] call FUNC(isForced) || {[_setting, "server"] call FUNC(isForced)}
+        [_setting, "mission"] call FUNC(getForced) || {[_setting, "server"] call FUNC(getForced)}
     };
     case ("server"): {
-        (!([_setting, "server"] call FUNC(isForced))) && {[_setting, "mission"] call FUNC(isForced)}
+        (!([_setting, "server"] call FUNC(getForced))) && {[_setting, "mission"] call FUNC(getForced)}
     };
     case ("mission"): {
-        (!([_setting, "mission"] call FUNC(isForced))) || {[_setting, "server"] call FUNC(isForced)}
+        (!([_setting, "mission"] call FUNC(getForced))) || {[_setting, "server"] call FUNC(getForced)}
     };
     default {nil};
 };

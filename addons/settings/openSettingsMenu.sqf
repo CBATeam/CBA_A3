@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-disableSerialization;
-
 params [["_display", findDisplay 46, [displayNull]]];
 
 private _dlgSettings = _display createDisplay "RscDisplayGameOptions";

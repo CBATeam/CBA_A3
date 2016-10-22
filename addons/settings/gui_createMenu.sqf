@@ -21,6 +21,8 @@ _display setVariable [QGVAR(controls), []];
 
     _categories pushBackUnique _category;
 
+    private _settingNameControls = [];
+
     {
         private _source = toLower _x;
         private _currentValue = [_setting, _source] call FUNC(get);
@@ -49,6 +51,7 @@ _display setVariable [QGVAR(controls), []];
 
         // ----- create setting name text
         private _ctrlSettingName = _display ctrlCreate ["CBA_Rsc_SettingText", -1, _ctrlOptionsGroup];
+        _settingNameControls pushBack _ctrlSettingName;
 
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
@@ -61,15 +64,17 @@ _display setVariable [QGVAR(controls), []];
         _ctrlSettingName ctrlCommit 0;
 
         // ----- check if setting can be altered
-        private _enabled = switch (_source) do {
-            case ("client"): {
-                CAN_SET_CLIENT_SETTINGS
+        private _enabled = false;
+
+        switch (_source) do {
+            case "server": {
+                _enabled = CAN_SET_SERVER_SETTINGS;
             };
-            case ("server"): {
-                CAN_SET_SERVER_SETTINGS
+            case "client": {
+                _enabled = CAN_SET_CLIENT_SETTINGS;
             };
-            case ("mission"): {
-                CAN_SET_MISSION_SETTINGS
+            case "mission": {
+                _enabled = CAN_SET_MISSION_SETTINGS;
             };
         };
 
@@ -78,7 +83,7 @@ _display setVariable [QGVAR(controls), []];
 
         // ----- create setting changer control
         private _controls = _ctrlOptionsGroup getVariable QGVAR(controls);
-        private _linkedControls = [];
+        private _linkedControls = [_settingNameControls];
 
         switch (toUpper _settingType) do {
             case ("CHECKBOX"): {
@@ -98,11 +103,9 @@ _display setVariable [QGVAR(controls), []];
 
         #include "gui_createMenu_default.sqf"
 
-        // ----- handle "force" button
-        if (_source != "client") then {
-            #include "gui_createMenu_force.sqf"
-        };
+        // ----- handle "priority" drop-down list
+        #include "gui_createMenu_force.sqf"
 
         _ctrlOptionsGroup setVariable [QGVAR(offsetY), _offsetY + MENU_OFFSET_SPACING];
-    } forEach ["client", "server", "mission"];
+    } forEach ["server", "client", "mission"];
 } forEach GVAR(allSettings);

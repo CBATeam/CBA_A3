@@ -52,7 +52,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
+        (_control getVariable QGVAR(linkedControls)) params ["", "_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
         private _linkedControl = _linkedControls select _index select 1;
         _linkedControl ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
 
@@ -93,7 +93,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
+        (_control getVariable QGVAR(linkedControls)) params ["", "_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
 
         private _linkedControl = _linkedControls select _index select 0;
         _linkedControl sliderSetPosition _value;
@@ -113,7 +113,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
 
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControls"];
+        (_control getVariable QGVAR(linkedControls)) params ["", "", "_linkedControls"];
         private _linkedControl = _linkedControls select _index select 0;
 
         private _value = sliderPosition _linkedControl;
@@ -121,7 +121,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         _control ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
     }];
 
-    (_linkedControls select 1) pushBack [_ctrlSetting, _ctrlSettingEdit];
+    (_linkedControls select 2) pushBack [_ctrlSetting, _ctrlSettingEdit];
 
     if (_isOverwritten) then {
         _ctrlSettingName ctrlSetTextColor COLOR_TEXT_OVERWRITTEN;

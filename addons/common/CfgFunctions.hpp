@@ -114,6 +114,7 @@ class CfgFunctions {
             PATHTO_FNC(removePlayerAction);
             PATHTO_FNC(createNamespace);
             PATHTO_FNC(deleteNamespace);
+            PATHTO_FNC(allNamespaces);
             PATHTO_FNC(directCall);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);

@@ -46,10 +46,9 @@
         <German>Missionseinstellungen bearbeiten. 'Erzwungene' Einstellungen überschreiben lokale.</German>
         <Japanese>ミッションの設定を編集します。'フォース'設定はクライアント設定を上書きします。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_force">
-        <English>Force</English>
-        <German>Erzwingen</German>
-        <Japanese>フォース</Japanese>
+    <Key ID="STR_cba_settings_priority">
+        <English>Priority</English>
+        <German>Priorität</German>
     </Key>
     <Key ID="STR_cba_settings_force_tooltip">
         <English>Check to overwrite this setting for all connected players.</English>

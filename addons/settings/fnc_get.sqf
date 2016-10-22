@@ -24,26 +24,26 @@ Author:
 params [["_setting", "", [""]], ["_source", "forced", [""]]];
 
 private _value = switch (toLower _source) do {
-    case ("client"): {
-        GET_VALUE(clientSettings,_setting);
-    };
-    case ("server"): {
+    case "server": {
         GET_VALUE(serverSettings,_setting);
     };
-    case ("mission"): {
+    case "client": {
+        GET_VALUE(clientSettings,_setting);
+    };
+    case "mission": {
         GET_VALUE(missionSettings,_setting);
     };
-    case ("default"): {
+    case "default": {
         GET_VALUE(defaultSettings,_setting);
     };
-    case ("forced"): {
+    case "forced": {
         private _value = [_setting, "client"] call FUNC(get);
 
-        if ([_setting, "mission"] call FUNC(isForced)) then {
+        if ([_setting, "mission"] call FUNC(getForced)) then {
             _value = [_setting, "mission"] call FUNC(get);
         };
 
-        if ([_setting, "server"] call FUNC(isForced)) then {
+        if ([_setting, "server"] call FUNC(getForced)) then {
             _value = [_setting, "server"] call FUNC(get);
         };
 
