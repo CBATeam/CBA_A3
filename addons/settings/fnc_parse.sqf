@@ -2,111 +2,90 @@
 Internal Function: CBA_settings_fnc_parse
 
 Description:
-    Copy all setting info into clipboard.
+    Convert settings in file format into array.
 
 Parameters:
-    _info - Content of file or clipboard to parse. <STRING>
+    _info     - Content of file or clipboard to parse. <STRING>
+    _validate - Check if settings are valid. (optional, default: false) <BOOL>
 
 Returns:
-    Settings with values and forced states. <ARRAY>
+    Settings with values and priority states. <ARRAY>
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-#define ASCII_NEWLINE 10
-#define ASCII_CARRIAGE_RETURN 13
-#define ASCII_TAB 9
-#define ASCII_SPACE 32
+// parses bool, number, string
+private _fnc_parseAny = {
+    params ["_string"];
 
-#define WHITE_SPACE [ASCII_NEWLINE, ASCII_CARRIAGE_RETURN, ASCII_TAB, ASCII_SPACE]
-
-#define KEYWORD_FORCE "force"
-#define QUOTE_MARKS toArray """'"
-#define ALL_NUMBERS toArray "0123456789"
-#define ASCII_ARRAY_OPEN (toArray "[" select 0)
-#define ASCII_ARRAY_CLOSE (toArray "]" select 0)
-
-private _fnc_parseArray = {
-    params [["_array", "", [""]]];
-    _array = _array call CBA_fnc_trim;
-
-    if ((_array select [0,1]) isEqualTo "[" && {(_array select [count _array - 1]) isEqualTo "]"}) then {
-        _array = (_array select [1, count _array - 2]) splitString ",";
-
-        // parse numbers and strings
-        _array = _array apply {
-            _x = _x call CBA_fnc_trim;
-
-            if ((_x select [0,1]) isEqualTo """") then {
-                _x select [1, count _x - 2]
-            } else {
-                parseNumber _x;
-            };
-        };
-
-        _array
-    } else {
-        []
+    // Remove whitespace so parseSimpleArray can handle arrays.
+    // Means that strings inside arrays don't support white space chars, but w/e.
+    // No such setting exists atm anyway.
+    if (_string find """" != 0) then {
+        _string = _string splitString WHITESPACE joinString "";
     };
+
+    parseSimpleArray format ["[%1]", _string] select 0
 };
 
-params [["_info", "", [""]]];
+params [["_info", "", [""]], ["_validate", false, [false]]];
 
+// remove whitespace at start and end of each line
 private _result = [];
 
 {
-    private _statement = _x;
+    _result pushBack (_x call CBA_fnc_trim);
+} forEach (_info splitString NEWLINE);
 
-    private _force = false;
-    if ((_statement splitString toString WHITE_SPACE) param [0, ""] == KEYWORD_FORCE) then {
-        _force = true;
-        _statement = _statement select [(toLower _statement find KEYWORD_FORCE) + count KEYWORD_FORCE];
+_info = (_result joinString NEWLINE) + NEWLINE;
+
+// separate statements (setting = value)
+_result = [];
+
+{
+    private _indexEqualSign = _x find "=";
+
+    private _setting = (_x select [0, _indexEqualSign]) call CBA_fnc_rightTrim;
+    private _value = ((_x select [_indexEqualSign + 1]) call CBA_fnc_trim) call _fnc_parseAny;
+    private _priority = 0;
+
+    if (_setting select [0, count "force"] == "force") then {
+        _setting = _setting select [count "force"] call CBA_fnc_leftTrim;
+        _priority = _priority + 1;
     };
 
-    _setting = (_statement select [0, _statement find "="]) call CBA_fnc_trim;
-    _value = (_statement select [(_statement find "=") + 1]) call CBA_fnc_trim;
+    if (_setting select [0, count "force"] == "force") then {
+        _setting = _setting select [count "force"] call CBA_fnc_leftTrim;
+        _priority = _priority + 1;
+    };
 
-    if (_setting != "") then {
-        private _value0 = toArray (_value select [0,1]) select 0;
-        private _valueE = toArray (_value select [count _value - 1]) select 0;
-
-        _value = switch (true) do {
-        //--- boolean
-        case (_value == "true"): {
-            true
-        };
-        case (_value == "false"): {
-            false
-        };
-        //--- number
-        case (_value0 in ALL_NUMBERS): {
-            parseNumber _value
-        };
-        //--- string
-        case (_value0 in QUOTE_MARKS && {_valueE in QUOTE_MARKS}): {
-            _value select [1, count _value - 2]
-        };
-        //--- array
-        case (_value0 == ASCII_ARRAY_OPEN && {_valueE == ASCII_ARRAY_CLOSE}): {
-            _value call _fnc_parseArray
-        };
-        default {nil};
-        };
-
-        private _currentValue = [_setting, "default"] call FUNC(get);
-
-        if (isNil "_currentValue") then {
-            ERROR_1("Error parsing settings file. Setting %1 does not exist.",str _setting);
+    if !(_setting isEqualTo "") then {
+        if !(_validate) then {
+            _result pushBack [_setting, _value, _priority];
         } else {
-            if ([_setting, _value] call FUNC(check)) then {
-                _result pushBack [_setting, _value, _force];
-            } else {
-                ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",_value,str _setting);
+            if (isNil {[_setting, "default"] call FUNC(get)}) exitWith {
+                ERROR_1("Error parsing settings file. Setting %1 does not exist.",_setting);
             };
+
+            if !([_setting, _value] call FUNC(check)) exitWith {
+                ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
+            };
+
+            private _isGlobal = GVAR(default) getVariable [_setting, []] param [7, 0];
+
+            if (_isGlobal isEqualTo 1) then {
+                _priority = _priority max 1;
+            };
+
+            if (_isGlobal isEqualTo 2) then {
+                _priority = _priority min 0;
+            };
+
+            _result pushBack [_setting, _value, _priority];
         };
     };
-} forEach (_info splitString ";");
+} forEach ([_info, ";" + NEWLINE] call CBA_fnc_split);
 
 _result

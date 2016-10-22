@@ -1,24 +1,22 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_settings_fnc_init
+Function: CBA_settings_fnc_init
 
 Description:
     Creates a new setting for that session.
 
 Parameters:
     _setting     - Unique setting name. Matches resulting variable name <STRING>
-    _settingType - Type of setting. Can be "CHECKBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
     _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     _category    - Category for the settings menu <STRING>
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
-    _isGlobal    - true: all clients share the same state of the setting (optional, default: false) <ARRAY>
-    _script      - Script to execute when setting is changed or forced. (optional) <CODE>
+    _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
+    _script      - Script to execute when setting is changed. (optional) <CODE>
 
 Returns:
     _return - Error code <NUMBER>
         0: Success, no error
-        1: Empty setting name
-        2: Empty menu category
-        3: Wrong setting type (couldn't find correct default value)
+        1: Failure, error
 
 Examples:
     (begin example)
@@ -54,12 +52,19 @@ params [
     ["_title", [], ["", []]],
     ["_category", "", [""]],
     ["_valueInfo", []],
-    ["_isGlobal", false, [false]],
+    ["_isGlobal", false, [false, 0]],
     ["_script", {}, [{}]]
 ];
 
-if (_setting isEqualTo "") exitWith {1};
-if (_category isEqualTo "") exitWith {2};
+if (_setting isEqualTo "") exitWith {
+    WARNING("Empty setting name");
+    1
+};
+
+if (_category isEqualTo "") exitWith {
+    WARNING_1("Empty menu category for setting %1",_setting);
+    1
+};
 
 // --- setting title and tooltip
 _title params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
@@ -68,15 +73,21 @@ if (_displayName isEqualTo "") then {
     _displayName = _setting;
 };
 
+// --- who can edit the setting
+_isGlobal = [0,1,2] select _isGlobal;
+
 // --- setting possible values and default ("data")
 private "_defaultValue";
 private _settingData = [];
 
 switch (toUpper _settingType) do {
-    case ("CHECKBOX"): {
+    case "CHECKBOX": {
         _defaultValue = _valueInfo param [0, false, [false]]; // don't use params - we want these variables to be private to the main scope
     };
-    case ("LIST"): {
+    case "EDITBOX": {
+        _defaultValue = _valueInfo param [0, "", [""]]; // don't use params - we want these variables to be private to the main scope
+    };
+    case "LIST": {
         _valueInfo params [["_values", [], [[]]], ["_labels", [], [[]]], ["_defaultIndex", 0, [0]]];
 
         if (_values isEqualTo []) then {
@@ -102,58 +113,74 @@ switch (toUpper _settingType) do {
         _defaultValue = _values param [_defaultIndex];
         _settingData append [_values, _labels];
     };
-    case ("SLIDER"): {
+    case "SLIDER": {
         _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]]];
 
         _defaultValue = _default;
         _settingData append [_min, _max, _trailingDecimals];
     };
-    case ("COLOR"): {
+    case "COLOR": {
         _defaultValue = [_valueInfo] param [0, [1,1,1], [[]], [3,4]];
     };
     default {/* _defaultValue undefined, exit below */};
 };
 
-if (isNil "_defaultValue") exitWith {3};
+if (isNil "_defaultValue") exitWith {
+    WARNING_1("Wrong type for setting %1 (couldn't find default value)",_setting);
+    1
+};
 
 // --- add setting info to settings namespace
-GVAR(defaultSettings) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script]];
-GVAR(allSettings) pushBackUnique _setting;
+if (isNil {GVAR(default) getVariable _setting}) then {
+    GVAR(allSettings) pushBack _setting;
+};
+
+GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script]];
 
 // --- read previous setting values from profile
-private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
-private _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
+private _settingInfo = GVAR(userconfig) getVariable _setting;
+
+if (isNil "_settingInfo") then {
+    private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+    _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
+};
 
 if (!isNil "_settingInfo") then {
-    _settingInfo params ["_value", "_forced"];
+    _settingInfo params ["_value", "_priority"];
 
     if !([_setting, _value] call FUNC(check)) then {
+        WARNING_2("Invalid value %1 for setting %2. Fall back to default value.",TO_STRING(_value),_setting);
         _value = [_setting, "default"] call FUNC(get);
-        [_setting, _value, _forced, "client"] call FUNC(set);
-        WARNING_1("Invalid value for setting %1. Fall back to default value.",str _setting);
     };
 
-    GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
+    // convert boolean to number
+    _priority = [0,1,2] select _priority;
 
-    if (isServer && isMultiplayer) then {
-        GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
+    GVAR(client) setVariable [_setting, [_value, _priority]];
+
+    if (isServer) then {
+        GVAR(server) setVariable [_setting, [_value, _priority], true];
     };
 };
 
 // --- read previous setting values from mission
-_settingsHash = getMissionConfigValue QGVAR(hash);
+_settingInfo = GVAR(missionConfig) getVariable _setting;
 
-if (isNil "_settingsHash") then {
-    _settingsHash = NULL_HASH;
+if (isNil "_settingInfo") then {
+    private _settingsHash = getMissionConfigValue [QGVAR(hash), HASH_NULL];
+    _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
 };
 
-_settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
-
 if (!isNil "_settingInfo") then {
-    _settingInfo params ["_value", "_forced"];
+    _settingInfo params ["_value", "_priority"];
+
+    // convert boolean to number
+    _priority = [0,1,2] select _priority;
 
     if ([_setting, _value] call FUNC(check)) then {
-        GVAR(missionSettings) setVariable [_setting, [_value, _forced]];
+        GVAR(mission) setVariable [_setting, [_value, _priority]];
+    } else {
+        WARNING_2("Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
     };
 };
 

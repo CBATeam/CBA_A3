@@ -1,17 +1,14 @@
-#include "script_component.hpp"
 
 class CfgPatches {
-    class ADDON {
+    class cba_settings_userconfig {
         author = "$STR_CBA_Author";
-        name = ECSTRING(settings,component);
+        name = "$STR_CBA_Settings_Component";
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
+        requiredVersion = 1.0;
         requiredAddons[] = {"cba_settings"};
-        version = VERSION;
+        version = 1.0;
         authors[] = {"commy2"};
     };
 };
-
-#include "CfgEventHandlers.hpp"
