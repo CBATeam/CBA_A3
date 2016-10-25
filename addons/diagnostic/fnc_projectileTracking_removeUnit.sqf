@@ -39,9 +39,9 @@ if (_arrayIndex >= 0) then {
 
     // if no more units are tracked, stop draw pfh and reset GVARs
     if (count GVAR(projectileTrackedUnits) == 0) then {
-        [GVAR(projectileDrawHandle)] call EFUNC(common,removePerFrameHandler);
+        [GVAR(projectileDrawHandle)] call CBA_fnc_removePerFrameHandler;
 
-        GVAR(projectileData) = EFUNC(hash,hashCreate);
+        GVAR(projectileData) = CBA_fnc_hashCreate;
         GVAR(projectileIndex) = 0;
         GVAR(projectileStartedDrawing) = false;
     };

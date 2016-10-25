@@ -31,8 +31,8 @@ if (!isNull _projectile) then {
     private _data = [];
     private _bulletData = [];
 
-    if ( [GVAR(projectileData), _index] call EFUNC(hash,hashHasKey) ) then {
-        _data = [GVAR(projectileData), _index] call EFUNC(hash,hashGet);
+    if ( [GVAR(projectileData), _index] call CBA_fnc_hashHasKey ) then {
+        _data = [GVAR(projectileData), _index] call CBA_fnc_hashGet;
         _bulletData = _data select 1;
     } else {
         _bulletData = [];
@@ -43,8 +43,8 @@ if (!isNull _projectile) then {
 
     _data set [1, _bulletData];
 
-    [GVAR(projectileData), _index, _data] call EFUNC(hash,hashSet);
+    [GVAR(projectileData), _index, _data] call CBA_fnc_hashSet;
 
 } else {
-    [_handle] call EFUNC(common,removePerFrameHandler);
+    [_handle] call CBA_fnc_removePerFrameHandler;
 };

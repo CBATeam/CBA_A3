@@ -25,9 +25,9 @@ Author:
 
 for "_index" from 0 to GVAR(projectileMaxLines) do {
 
-    if ( ([GVAR(projectileData), _index] call EFUNC(hash,hashHasKey)) ) then {
+    if ( ([GVAR(projectileData), _index] call CBA_fnc_hashHasKey) ) then {
 
-        private _currentEntry = [GVAR(projectileData), _index] call EFUNC(hash,hashGet);
+        private _currentEntry = [GVAR(projectileData), _index] call CBA_fnc_hashGet;
         private _projectileData = _currentEntry select 1;
 
         private _i = 1;
