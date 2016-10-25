@@ -2,49 +2,62 @@
 Function: CBA_fnc_removeKeyHandler
 
 Description:
-    Removes an action to a keyhandler
+    Removes an action from a keybind.
 
 Parameters:
-  _hashKey - handler identifier [String].
-  _type    - "keydown" (default) = keyDown,  "keyup" = keyUp [String].
-
+    _hashKey - Key handler identifier. <STRING>
+    _type    - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
 
 Returns:
+    None
 
 Examples:
     (begin example)
-        ["cba_somesystem_keyevent"] call CBA_fnc_removeKeyHandler;
+        _id call CBA_fnc_removeKeyHandler;
         ["cba_anothersystem_keyup", "keyup"] call CBA_fnc_removeKeyHandler;
     (end)
 
 Author:
-    Sickboy
-
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 SCRIPT(removeKeyHandler);
-params ["_hashKey", ["_type","keydown"]];
-private ["_keyData", "_handlers", "_idx", "_myHandlers"];
+
+if (!hasInterface) exitWith {};
+
+params [
+    ["_hashKey", "", [""]],
+    ["_type", "keydown", [""]]
+];
+
 _type = toLower _type;
-if (_type in KEYS_ARRAY_WRONG) then { _type = ("key" + _type) };
-if !(_type in KEYS_ARRAY) exitWith { ERROR("Type does not exist") };
+
+// add "key" prefix to "down" and "up"
+if (_type in ["down", "up"]) then {
+    _type = "key" + _type;
+};
+
+// check if type is either "keydown" or "keyup"
+if !(_type in ["keydown", "keyup"]) exitWith {
+    ERROR("Type does not exist");
+};
+
 _hashKey = toLower _hashKey;
-_keyData = [if (_type == "keydown") then { GVAR(keyhandlers_down) } else { GVAR(keyhandlers_up) }, _hashKey] call CBA_fnc_hashGet;
 
-_handlers = [GVAR(keyhandler_hash), _type] call CBA_fnc_hashGet;
-
-// Remove existing key.
-_idx = _keyData select 0;
-if (count _handlers > _idx) then {
-    _myHandlers = _handlers select _idx;
-    if (_hashKey in _myHandlers) then {
-        _myHandlers = _myHandlers - [_hashKey];
-        _handlers set [_idx, _myHandlers];
-    };
-};
-if(_type == "keydown") then {
-    [_hashKey+"_CBADEFAULTUPHANDLER", "keyup"] call cba_fnc_removeKeyHandler;
+// remove default keyup handler from keydown
+if (_type == "keydown") then {
+    [_hashKey + "_cbadefaultuphandler", "keyup"] call CBA_fnc_removeKeyHandler;
 };
 
-true;
+private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+private _key = (_hash getVariable _hashKey) select 0;
+
+private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
+
+if (count _keyHandlers > _key) then {
+    private _hashKeys = _keyHandlers select _key;
+    _hashKeys = _hashKeys - [_hashKey];
+    _keyHandlers set [_key, _hashKeys];
+};
+
+nil

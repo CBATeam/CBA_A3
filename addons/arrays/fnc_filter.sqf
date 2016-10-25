@@ -8,12 +8,12 @@ Description:
     * _x - Element of _array.
 
 Parameters:
-    _array - Array of key-value pairs to create Hash from [Array, defaults to []]
-    _filter - Function to filter each element [Function]
-    _inPlace - True to alter the array itself, rather than create a new one [Boolean, defaults to false]
+    _array   - Array <ARRAY>
+    _filter  - Function to filter each element <CODE>
+    _inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>
 
 Returns:
-    Filtered array [Array]
+    Filtered array <ARRAY>
 
 Examples:
     (begin example)
@@ -30,29 +30,19 @@ Examples:
     (end)
 
 Author:
-    Spooner
+    Spooner, commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
-
 SCRIPT(filter);
 
-// -----------------------------------------------------------------------------
-
-params ["_array","_filter", ["_inPlace",false]];
-
-private ["_arrayOut", "_x"];
+params [["_array", [], [[]]], ["_filter", {_x}, [{}]], ["_inPlace", false, [false]]];
 
 if (_inPlace) then {
-    _arrayOut = _array;
+    {
+        _array set [_forEachIndex, call _filter];
+    } forEach _array;
+
+    _array // return
 } else {
-    _arrayOut = [];
-    _arrayOut resize (count _array);
+    _array apply _filter // return
 };
-
-for "_i" from 0 to ((count _array) - 1) do {
-    _x = _array select _i;
-    _arrayOut set [_i, call _filter];
-};
-
-_arrayOut;

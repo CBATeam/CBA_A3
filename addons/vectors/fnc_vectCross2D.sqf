@@ -2,14 +2,17 @@
 Function: CBA_fnc_vectCross2D
 
 Description:
- Returns the cross product vector of two 2D vectors. The result is an integer value (positive or negative), representing the magnitude of the height component.
+    Returns the cross product vector of two 2D vectors.
+
+    The result is an integer value (positive or negative), representing the
+    magnitude of the height component.
 
 Parameters:
- _u the first vector.
- _v the second vector.
+    _u the first vector.
+    _v the second vector.
 
 Returns:
- the cross product (scalar magnitude) of the two vectors.
+    The cross product (scalar magnitude) of the two vectors.
 
 Examples:
     (begin example)

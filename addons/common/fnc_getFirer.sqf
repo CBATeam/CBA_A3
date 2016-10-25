@@ -2,76 +2,69 @@
 Function: CBA_fnc_getFirer
 
 Description:
-    A function used to find out which unit exactly fired (Replacement for gunner, on multi-turret vehicles).
+    A function used to find out which unit exactly fired.
+
+    Replacement for gunner, on multi-turret vehicles.
 
 Parameters:
-    Vehicle that fired
-    Weapon that was used
+    _vehicle - a vehicle with turrets <OBJECT>
+    _weapon  - a weapon in the vehicles turret <STRING>
 
 Example:
     (begin example)
-    _unit = player call CBA_fnc_getFirer
+        _turretPath = [cameraOn, "HMG_127_mbt"] call CBA_fnc_getFirer
     (end)
 
 Returns:
-    Unit
-    Turretpath
+    <ARRAY>
+        Firer of the weapon. objNull if the weapon does not exist on the vehicle <OBJECT>
+        Turret path of the firer. [] if firer is not in a turret <ARRAY>
 
 Author:
-    Rocko
-
+    Rocko, commy2
 ---------------------------------------------------------------------------- */
-
-// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#define __cfg (configFile >> "CfgVehicles" >> (typeof _veh) >> "turrets")
-private ["_tp", "_tc", "_st", "_stc", "_wtp", "_tu", "_mti", "_mtJ", "_sti", "_stJ", "_gunner", "_mainWeapons", "_r", "_cfg", "_entry"];
-params ["_veh","_weap"];  // Vehicle that fired    // Weapon that was fired
-if (_veh isKindOf "CAManBase") exitWith { _r = [_veh, []]; TRACE_1("Result",_r); _r; }; // return the unit itself when it's a Man
-if (_veh isKindOf "Air") exitWith { _gunner = gunner _veh; _r = [if (isNull _gunner) then { driver _veh } else { _gunner }, [0]]; TRACE_1("Result",_r); _r; };
+SCRIPT(getFirer);
 
-_tc  = count __cfg;
-if (_tc == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r };
+params [["_vehicle", objNull, [objNull]], ["_weapon", "", [""]]];
 
-_tp = [];
+_weapon = configName (configFile >> "CfgWeapons" >> _weapon); // fix case sensitivity issues
 
-// TODO: Only supports Main Turrets, and SubTurrets on MainTurrets.  No need for infinite level?
-// Check MainTurrets
-_mtJ = 0; // Custom counter since we ignore class properties (non subclasses)
-for "_mti" from 0 to (_tc-1) do {
-    _cfg = (__cfg select _mti);
-    if (isClass _cfg) then {
-        _entry = [_mtJ];
-        _tp pushBack _entry;
+private _gunner = objNull;
+private _turret = [];
 
-        // Check SubTurrets
-        _st = _cfg >> "turrets";
-        _stc = count _st;
-        if (_stc > 0) then {
-            _stJ = 0; // Custom counter since we ignore class properties (non subclasses)
-            for "_sti" from 0 to (_stc-1) do {
-                _stp = _st select _sti;
-                if (isClass _stp) then {
-                    _entry = [_mtJ, _stJ];
-                    _tp pushBack _entry;
+if (driver _vehicle isEqualTo _vehicle) then {
+    // handle soldiers
+    private _weapons = weapons _vehicle;
 
-                    INC(_stJ);
-                };
+    _weapons append [
+        configName (configFile >> "CfgWeapons" >> "Throw"),
+        configName (configFile >> "CfgWeapons" >> "Put")
+    ];
+
+    if (_weapon in _weapons) then {
+        _gunner = driver _vehicle;
+    };
+} else {
+    // handle vehicles
+    private _turrets = allTurrets _vehicle;
+    _turrets pushBack [-1];
+
+    {
+        if (_weapon in (_vehicle weaponsTurret _x)) exitWith {
+            if (_x isEqualTo [-1]) then {
+                _gunner = driver _vehicle;
+            } else {
+                _gunner = _vehicle turretUnit _x;
+                _turret = _x;
+            };
+
+            // at least return something when pilot used manual fire
+            if (isNull _gunner && {isManualFire _vehicle}) then {
+                _gunner = effectiveCommander _vehicle;
             };
         };
-        INC(_mtJ);
-    };
+    } forEach _turrets;
 };
 
-_wtp = [];
-{
-    _weapons = getArray([_veh, _x] call CBA_fnc_getTurret >> "weapons");
-    TRACE_3("",_weapons,_x,_veh turretUnit _x);
-    if (_weap in _weapons) exitWith { _wtp = _x; };
-} foreach _tp;
-
-if (count _wtp == 0) exitWith { _r = [objNull, []]; TRACE_1("Result",_r); _r; }; // Or should we exit with gunner _veh ?
-
-_r = [_veh turretUnit _wtp, _wtp];
-TRACE_1("Result",_r);
-_r;
+[_gunner, _turret]

@@ -6,16 +6,17 @@ SCRIPT(test_hashes);
 
 // ----------------------------------------------------------------------------
 #define DEBUG_MODE_FULL
-private ["_hash", "_expected", "_result"];
+private ["_hash", "_expected", "_result", "_size"];
 
 LOG("Testing Hashes");
 
-// UNIT TESTS (initStrings.sqf - stringJoin)
+// UNIT TESTS
 TEST_DEFINED("CBA_fnc_hashCreate","");
 TEST_DEFINED("CBA_fnc_hashGet","");
 TEST_DEFINED("CBA_fnc_hashSet","");
 TEST_DEFINED("CBA_fnc_hashHasKey","");
 TEST_DEFINED("CBA_fnc_isHash","");
+TEST_DEFINED("CBA_fnc_hashSize","");
 
 TEST_FALSE([[]] call CBA_fnc_isHash,"CBA_fnc_isHash");
 _hash = [5, [4], [1], 2]; // Not a real hash.
@@ -47,6 +48,13 @@ TEST_FALSE(_result,"hashHashKey");
 
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 TEST_TRUE(isNil "_result","hashSet/Get");
+
+// Unsetting a value 2
+[_hash, "frog2", 23] call CBA_fnc_hashSet;
+[_hash, "frog2"] call CBA_fnc_hashRem;
+
+_result = [_hash, "frog2"] call CBA_fnc_hashGet;
+TEST_TRUE(isNil "_result","hashSet/Rem");
 
 // Value never put in is nil.
 _result = [_hash, "fish"] call CBA_fnc_hashGet;
@@ -80,5 +88,31 @@ TEST_OP(_result,==,1,"hashSet/Get");
 [_hash, "frog", nil] call CBA_fnc_hashSet;
 _result = [_hash, "frog"] call CBA_fnc_hashGet;
 TEST_TRUE(isNil "_result","hashSet/Get");
+
+// Empty hash size
+_hash = [] call CBA_fnc_hashCreate;
+_size = [_hash] call CBA_fnc_hashSize;
+TEST_OP(_size,==,0,"hashSize");
+
+// Add one element
+[_hash, "aaa", 1] call CBA_fnc_hashSet;
+_size = [_hash] call CBA_fnc_hashSize;
+TEST_OP(_size,==,1,"hashSize");
+
+// Add two elements
+[_hash, "bbb", 2] call CBA_fnc_hashSet;
+[_hash, "ccc", 3] call CBA_fnc_hashSet;
+_size = [_hash] call CBA_fnc_hashSize;
+TEST_OP(_size,==,3,"hashSize");
+
+// Remove the second element added
+[_hash, "bbb"] call CBA_fnc_hashRem;
+_size = [_hash] call CBA_fnc_hashSize;
+TEST_OP(_size,==,2,"hashSize");
+
+// Check size of something that is not a hash
+_hash = [5, [4], [1], 2];
+_size = [_hash] call CBA_fnc_hashSize;
+TEST_OP(_size,==,-1,"hashSize");
 
 nil;

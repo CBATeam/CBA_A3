@@ -1,46 +1,76 @@
-/*
-    Author: Karel Moricky
-    Enhanced by Robalo
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_compatibleItems
 
-    Description:
-    Return all compatible weapon attachments
-    
-    Parameter(s):
-        0: STRING - weapon class
-        1: STRING - optional, accessory type: number (101 - muzzle, 201 - optic, 301 - pointer, 302 - bipod)
+Description:
+    Return all compatible weapon attachments.
 
-    Returns:
-        ARRAY of STRINGs
+Parameters:
+    _weapon     - A weapons class name <STRING>
+    _typefilter - Optional filter. Can be "muzzle", "optic", "pointer" or "bipod". <STRING, NUMBER>
 
-    Examples:
+Returns:
+    Class names of attachments compatible with weapon <ARRAY>
+
+Examples:
+    (begin example)
         _acclist = ["LMG_Mk200_F"] call CBA_fnc_compatibleItems;
-        _muzzleacclist = ["LMG_Mk200_F", 101] call CBA_fnc_compatibleItems;
-*/
+        _muzzleacclist = ["LMG_Mk200_F", "muzzle"] call CBA_fnc_compatibleItems;
+    (end)
 
-params [["_weapon", "", [""]], ["_typefilter", 0]];
+Author:
+    Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2
+---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(compatibleItems);
+
+params [["_weapon", "", [""]], ["_typefilter", nil, ["", 0]]];
+
 if (_weapon == "") exitWith {[]};
 
-private _cfgWeapon = configfile >> "cfgweapons" >> _weapon;
+if (isNil QGVAR(namespace)) then {
+    GVAR(namespace) = call CBA_fnc_createNamespace;
+};
 
-if (isClass _cfgWeapon) then {
-    private _compatibleItems = [];
-    {
-        private _cfgCompatibleItems = _x >> "compatibleItems";
-        if (isarray _cfgCompatibleItems) then {
-            {
-                if !(_x in _compatibleItems) then {_compatibleItems pushBack _x;};
-            } forEach getArray _cfgCompatibleItems;
-        } else {
-            if (isclass _cfgCompatibleItems) then {
+private _compatibleItems = GVAR(namespace) getVariable _weapon;
+
+if (isNil "_compatibleItems") then {
+    _compatibleItems = [];
+    private _cfgWeapon = configFile >> "CfgWeapons" >> _weapon;
+
+    if (isClass _cfgWeapon) then {
+        {
+            private _cfgCompatibleItems = _x >> "compatibleItems";
+
+            if (isArray _cfgCompatibleItems) then {
                 {
-                    if (getnumber _x > 0 && {!((configname _x) in _compatibleItems)}) then {_compatibleItems pushBack configname _x};
-                } foreach configproperties [_cfgCompatibleItems, "isNumber _x"];
+                    _compatibleItems pushBackUnique _x;
+                    nil
+                } count getArray _cfgCompatibleItems;
+            } else {
+                if (isClass _cfgCompatibleItems) then {
+                    {
+                        if (getNumber _x > 0) then {
+                            _compatibleItems pushBackUnique configName _x;
+                        };
+                        nil
+                    } count configProperties [_cfgCompatibleItems, "isNumber _x"];
+                };
             };
-        };
-    } foreach configproperties [_cfgWeapon >> "WeaponSlotsInfo","isclass _x"];
-    if (_typefilter == 0) then {_compatibleItems} else {[_compatibleItems, {_typefilter == getnumber(configfile>>"cfgweapons">>_x>>"itemInfo">>"type")}] call BIS_fnc_conditionalSelect};
+            nil
+        } count configProperties [_cfgWeapon >> "WeaponSlotsInfo", "isclass _x"];
 
+        GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
+    } else {
+        ["'%1' not found in CfgWeapons", _weapon] call bis_fnc_error;
+    };
+};
+
+if (isNil "_typefilter") then { //return
+    + _compatibleItems
 } else {
-    ["'%1' not found in CfgWeapons",_weapon] call bis_fnc_error;
-    []
+    if (_typefilter isEqualType "") then {
+        _typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] find _typefilter, -1];
+    };
+
+    _compatibleItems select {_typefilter == getNumber (configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type")}
 };

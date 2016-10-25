@@ -2,8 +2,9 @@
 Function: CBA_fnc_mapRelPos
 
 Description:
-    Find a position relative to a known position on the map. Passing strings
-    in for the Northing and Easting is the preferred way.
+    Find a position relative to a known position on the map.
+
+    Passing strings in for the Northing and Easting is the preferred way.
 
 Parameters:
     _pos - Position in 10 digit grid format [Easting, Northing] [Array]

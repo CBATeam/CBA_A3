@@ -11,22 +11,22 @@ class asdg_SlotInfo { // Base class
 };
 
 class asdg_OpticRail: asdg_SlotInfo { // Base optic rail class
-    linkProxy = "\A3\data_f\proxies\weapon_slots\TOP";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\TOP";
     displayName = "$STR_A3_CowsSlot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_top";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_top";
     iconPinpoint = "Bottom";
 };
 
 class asdg_MuzzleSlot: asdg_SlotInfo { // Base muzzle slot
-    linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\MUZZLE";
     displayName = "$str_a3_cfgweapons_abr_base_f_weaponslotsinfo_muzzleslot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_muzzle";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_muzzle";
 };
 
 class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
-    linkProxy = "\A3\data_f\proxies\weapon_slots\SIDE";
+    linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
     displayName = "$STR_A3_PointerSlot0";
-    iconPicture = "\A3\Weapons_F\Data\UI\attachment_side";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_side";
     class compatibleItems {
         acc_flashlight = 1;
         acc_pointer_IR = 1;
@@ -34,8 +34,8 @@ class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
 };
 
 class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
-    linkProxy = "\A3\Data_F_Mark\Proxies\Weapon_Slots\UNDERBARREL";
-    iconPicture = "\A3\Weapons_F_Mark\Data\UI\attachment_under";
+    linkProxy = "\a3\data_f_mark\Proxies\Weapon_Slots\UNDERBARREL";
+    iconPicture = "\a3\weapons_f_mark\Data\UI\attachment_under";
     iconPinpoint = "Bottom";
     class compatibleItems {
         bipod_01_F_snd = 1;
@@ -46,6 +46,7 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
         bipod_02_F_hex = 1;
         bipod_03_F_blk = 1;
         bipod_03_F_oli = 1;
+        bipod_01_F_khk = 1;
     };
 };
 
@@ -58,17 +59,27 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_tws_mg = 1;
         optic_NVS = 1;
         optic_SOS = 1;
+        optic_SOS_khk_F = 1;
         optic_MRCO = 1;
         optic_Arco = 1;
+        optic_Arco_ghex_F = 1;
+        optic_Arco_blk_F = 1;
         optic_aco = 1;
         optic_ACO_grn = 1;
         optic_aco_smg = 1;
         optic_ACO_grn_smg = 1;
         optic_hamr = 1;
+        optic_Hamr_khk_F = 1;
         optic_Holosight = 1;
         optic_Holosight_smg = 1;
+        optic_Holosight_blk_F = 1;
+        optic_Holosight_khk_F = 1;
+        optic_Holosight_smg_blk_F = 1;
         optic_DMS = 1;
+        optic_DMS_ghex_F = 1;
         optic_LRPS = 1;
+        optic_LRPS_ghex_F = 1;
+        optic_LRPS_tna_F = 1;
         optic_AMS = 1;
         optic_AMS_khk = 1;
         optic_AMS_snd = 1;
@@ -76,6 +87,9 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_KHS_hex = 1;
         optic_KHS_old = 1;
         optic_KHS_tan = 1;
+        optic_ERCO_blk_F = 1;
+        optic_ERCO_khk_F = 1;
+        optic_ERCO_snd_F = 1;
     };
 };
 
@@ -122,18 +136,35 @@ class asdg_OpticSideMount: asdg_OpticRail {
 class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount suppressors
     class compatibleItems {
         muzzle_snds_B = 1;
+        muzzle_snds_B_khk_F = 1;
+        muzzle_snds_B_snd_F = 1;
+    };
+};
+
+class asdg_MuzzleSlot_65: asdg_MuzzleSlot_762 { // for 6.5 weapons, mostly to deal with BIS vanilla compatibility
+    class compatibleItems: compatibleItems {
+        muzzle_snds_h = 1;
+        muzzle_snds_h_khk_F = 1;
+        muzzle_snds_h_snd_F = 1;
+        muzzle_snds_65_TI_blk_F = 1;
+        muzzle_snds_65_TI_hex_F = 1;
+        muzzle_snds_65_TI_ghex_F = 1;
     };
 };
 
 class asdg_MuzzleSlot_556: asdg_MuzzleSlot { // for 5.56x45 universal mount suppressors
     class compatibleItems {
         muzzle_snds_M = 1;
+        muzzle_snds_m_khk_F = 1;
+        muzzle_snds_m_snd_F = 1;
     };
 };
 
 class asdg_MuzzleSlot_762MG: asdg_MuzzleSlot { // for 7.62, 6.5 and 5.56 universal mount MG suppressors
     class compatibleItems {
         muzzle_snds_H_MG = 1;
+        muzzle_snds_H_MG_blk_F = 1;
+        muzzle_snds_H_MG_khk_F = 1;
         muzzle_snds_H_SW = 1;
     };
 };
@@ -181,4 +212,13 @@ class asdg_MuzzleSlot_545R: asdg_MuzzleSlot { // for 5.45x39 suppressors
 
 class asdg_MuzzleSlot_762R: asdg_MuzzleSlot { // for 7.62x39 suppressors
     class compatibleItems {};
+};
+
+class asdg_MuzzleSlot_58: asdg_MuzzleSlot { // for 5.8x42 suppressors
+    class compatibleItems {
+        muzzle_snds_58_blk_F = 1;
+        muzzle_snds_58_wdm_F = 1;
+        muzzle_snds_58_ghex_F = 1;
+        muzzle_snds_58_hex_F = 1;
+    };
 };

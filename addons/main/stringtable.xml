@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="CBA_A3">
+    <Package name="Main">
+        <Key ID="STR_CBA_Author">
+            <English>CBA Team</English>
+            <German>CBA-Team</German>
+        </Key>
+        <Key ID="STR_CBA_URL">
+            <English>https://www.github.com/CBATeam/CBA_A3</English>
+        </Key>
+        <Key ID="STR_CBA_Main_Component">
+            <English>Community Base Addons - Main Component</English>
+        </Key>
+        <Key ID="STR_CBA_Optional_Component">
+            <English>Community Base Addons - Optional Component</English>
+        </Key>
+    </Package>
+</Project>

@@ -2,13 +2,14 @@
 Function: CBA_fnc_removeDisplayHandler
 
 Description:
-    Removes an action to a displayHandler
+    Removes an action from the main display.
 
 Parameters:
-    _type - Displayhandler type to attach to [String].
-    _id - Displayhandler ID to remove [Code].
+    _type - Display handler type to remove. <STRING>
+    _id   - Display handler ID to remove. <NUMBER>
 
 Returns:
+    None
 
 Examples:
     (begin example)
@@ -16,22 +17,29 @@ Examples:
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(removeDisplayHandler);
 
-private ["_ar", "_entry"];
-params ["_type","_index"];
+if (!hasInterface) exitWith {};
+
+params [["_type", "", [""]], ["_id", -1, [0]]];
 
 _type = toLower _type;
-_ar = [GVAR(handler_hash), _type] call CBA_fnc_hashGet;
-if (typeName _ar == "ARRAY") then {
-    if (count _ar <= _index) exitWith {}; // Doesn't exist
-    _entry = _ar select _index;
-    if (count _entry > 1) then {
-        if !(isDedicated) then { (findDisplay 46) displayRemoveEventhandler [_type, _entry select 0] };
-        _ar set [_index, [nil]];
-        [GVAR(handler_hash), _type, _ar] call CBA_fnc_hashSet;
-    };
+
+if (_id < 0) exitWith {};
+
+private _handlers = [GVAR(handlerHash), _type] call CBA_fnc_hashGet;
+
+private _handler = _handlers param [_id];
+
+if (!isNil "_handler") then {
+    (uiNamespace getVariable ["CBA_missionDisplay", displayNull]) displayRemoveEventHandler [_type, _handler param [0, -1]];
+
+    _handlers set [_id, []];
+
+    [GVAR(handlerHash), _type, _handlers] call CBA_fnc_hashSet;
 };
+
+nil

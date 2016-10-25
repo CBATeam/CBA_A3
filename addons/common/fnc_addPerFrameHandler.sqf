@@ -6,11 +6,16 @@ Description:
 
 Parameters:
     _function - The function you wish to execute. <CODE>
-    _delay    - The amount of time in seconds between executions, 0 for every frame. [optional] (default: 0) <NUMBER>
-    _args     - Parameters passed to the function executing. This will be the same array every execution. [optional] <ANY>
+    _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
+    _args     - Parameters passed to the function executing. This will be the same array every execution. (optional) <ANY>
+
+Passed Arguments:
+    _this <ARRAY>
+        0: _args   - Parameters passed by this function. Same as '_args' above. <ANY>
+        1: _handle - A number representing the handle of the function. Same as '_handle' returned by this function. <NUMBER>
 
 Returns:
-    _handle - a number representing the handle of the function. Use this to remove the handler. <NUMBER>
+    _handle - A number representing the handle of the function. Use this to remove the handler. <NUMBER>
 
 Examples:
     (begin example)

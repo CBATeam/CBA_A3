@@ -2,13 +2,15 @@
 Function: CBA_fnc_readKeyFromConfig
 
 Description:
-    Reads key setting from config
+    Reads key setting from config.
 
 Parameters:
-    _component - Classname under "CfgSettings" >> "CBA" >> "events" [String].
-    _action - Action classname [String].
+    _component - Classname under "CfgSettings" >> "CBA" >> "events" <STRING>
+    _action    - Action name <STRING>
 
 Returns:
+    _key      - Key (DIK-Code) <NUMBER>
+    _settings - Shift, Ctrl, Alt modifiers <ARRAY>
 
 Examples:
     (begin example)
@@ -16,25 +18,32 @@ Examples:
     (end)
 
 Author:
-    Sickboy
+    Sickboy, commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(readKeyFromConfig);
 
-private ["_settings"];
-params ["_component","_action"];
-_settings = [false, false, false];
-if (isNumber(CFGSETTINGS >> _component >> _action)) exitWith {
-    TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action));
-    [getNumber(CFGSETTINGS >> _component >> _action), _settings];
+params [["_component", "", [""]], ["_action", "", [""]]];
+
+private _config = CFGSETTINGS >> _component >> _action;
+
+private _key = -1;
+private _settings = [false, false, false];
+
+if (isNumber _config) then {
+    TRACE_2("",_this,getNumber _config);
+    _key = getNumber _config;
 };
 
-if (isClass(CFGSETTINGS >> _component >> _action)) exitWith {
-    TRACE_2("",_this,getNumber(CFGSETTINGS >> _component >> _action >> "key"));
+if (isClass _config) then {
+    TRACE_2("",_this,getNumber (_config >> "key"));
+    _key = getNumber (_config >> "key");
+
     {
-        if (getNumber(CFGSETTINGS >> _component >> _action >> _x) == 1) then { _settings set [_forEachIndex, true] };
+        if (getNumber (_config >> _x) == 1) then {
+            _settings set [_forEachIndex, true];
+        };
     } forEach ["shift", "ctrl", "alt"];
-    [getNumber(CFGSETTINGS >> _component >> _action >> "key"), _settings];
 };
 
-[-1, _settings];
+[_key, _settings]

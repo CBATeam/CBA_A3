@@ -32,23 +32,10 @@ Author:
 SCRIPT(hashCreate);
 
 // -----------------------------------------------------------------------------
+params [["_array", [], [[]]], "_defaultValue"];
 
-DEFAULT_PARAM(0,_array,[]);
-DEFAULT_PARAM(1,_defaultValue,nil);
-private ["_keys", "_values"];
-
-_keys = [];
-_values = [];
-
-_keys resize (count _array);
-_values resize (count _array);
-
-for "_i" from 0 to ((count _array) - 1) do
-{
-    _keys set [_i, (_array select _i) select 0];
-    _values set [_i, (_array select _i) select 1];
-};
+private _keys = _array apply {_x select 0};
+private _values = _array apply {_x select 1};
 
 // Return.
-[TYPE_HASH, _keys, _values,
-    if (isNil "_defaultValue") then { nil } else { _defaultValue }];
+[TYPE_HASH, _keys, _values, if (isNil "_defaultValue") then {nil} else {_defaultValue}];

@@ -23,7 +23,6 @@ Author:
 SCRIPT(hashHasKey);
 
 // -----------------------------------------------------------------------------
-
-params ["_hash","_key"];
+params [["_hash", [[], []], [[]]], "_key"];
 
 _key in (_hash select HASH_KEYS); // Return.

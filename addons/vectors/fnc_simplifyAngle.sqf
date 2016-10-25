@@ -3,6 +3,7 @@ Function: CBA_fnc_simplifyAngle
 
 Description:
     Returns an equivalent angle to the specified angle in the range 0 to 360.
+
     If the input angle is in the range 0 to 360, it will be returned unchanged.
 
 Parameters:

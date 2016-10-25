@@ -10,6 +10,7 @@ Parameters:
     2: _eventFunc        - Function to execute when event happens. <CODE>
     3: _allowInheritance - Allow event for objects that only inherit from the given classname? [optional] <BOOLEAN> (default: true)
     4: _excludedClasses  - Exclude these classes from this event including their children [optional] <ARRAY> (default: [])
+    5: _applyInitRetroactively - Apply "init" event type on existing units that have already been initilized. [optional] <BOOLEAN> ((default: false)
 
 Returns:
     _success - Whether adding the event was successful or not. <BOOLEAN>
@@ -18,6 +19,7 @@ Examples:
     (begin example)
         ["CAManBase", "fired", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
         ["All", "init", {systemChat str _this}] call CBA_fnc_addClassEventHandler;
+        ["Car", "init", {(_this select 0) engineOn true}, true, [], true] call CBA_fnc_addClassEventHandler; //Starts all current cars and those created later
     (end)
 
 Author:
@@ -25,35 +27,18 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]]];
+params [["_className", "", [""]], ["_eventName", "", [""]], ["_eventFunc", {}, [{}]], ["_allowInheritance", true, [false]], ["_excludedClasses", [], [[]]], ["_applyInitRetroactively", false, [false]]];
 
 private _config = configFile >> "CfgVehicles" >> _className;
 
 // init fallback loop when executing on incompatible class for the first time
 if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
-    diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Eventhandlers. Fall back to loop.", configName _config];
+    diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Event Handlers. Fall back to loop.", configName _config];
     call CBA_fnc_startFallbackLoop;
 };
 
 // no such CfgVehicles class
 if (!isClass _config) exitWith {false};
-
-// handle custom event handlers
-if (_eventName == "getInMan" && {isNil QGVAR(getInManAdded)}) then {
-    GVAR(getInManAdded) = ["All", "getIn", {
-        {
-            [_this select 2, _this select 1, _this select 0, _this select 3] call _x;
-        } forEach ((_this select 2) getVariable QGVAR(getInMan));
-    }] call CBA_fnc_addClassEventHandler;
-};
-
-if (_eventName == "getOutMan" && {isNil QGVAR(getOutManAdded)}) then {
-    GVAR(getOutManAdded) = ["All", "getOut", {
-        {
-            [_this select 2, _this select 1, _this select 0, _this select 3] call _x;
-        } forEach ((_this select 2) getVariable QGVAR(getOutMan));
-    }] call CBA_fnc_addClassEventHandler;
-};
 
 _eventName = toLower _eventName;
 
@@ -63,6 +48,11 @@ if (_eventName == "FiredBIS") exitWith {
     false
 };
 if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
+
+// don't use "apply retroactively" for non init events
+if (_applyInitRetroactively && {!(_eventName in ["init", "initpost"])}) then {
+    _applyInitRetroactively = false;
+};
 
 // add events to already existing objects
 private _entities = entities "" + allUnits;
@@ -78,6 +68,11 @@ private _eventVarName = format [QGVAR(%1), _eventName];
             };
 
             (_unit getVariable _eventVarName) pushBack _eventFunc;
+
+            //Run initReto now if the unit has already been initialized
+            if (_applyInitRetroactively && {ISINITIALIZED(_unit)}) then {
+                [_unit] call _eventFunc;
+            };
         };
     };
 } forEach (_entities arrayIntersect _entities); // filter duplicates

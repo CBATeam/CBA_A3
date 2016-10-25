@@ -79,7 +79,7 @@ private _resultNames = [];
         _result pushBack ["", _eventName, _eventFunc];
         _resultNames pushBack _customName;
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
-} forEach ["preStart", "preInit", "postInit"]; 
+} forEach ["preInit", "postInit"];
 
 // object events
 {
@@ -153,7 +153,7 @@ private _resultNames = [];
                 };
 
                 // init event handlers that should run on respawn again, onRespawn = 1
-                if (_eventName == "init" && {getNumber (_x >> "onRespawn") == 1}) then {
+                if (toLower _eventName in ["init", "initpost"] && {getNumber (_x >> "onRespawn") == 1}) then {
                     _eventFunc = _eventFunc + "(_this select 0) addEventHandler ['Respawn', " + str _eventFunc + "];";
                 };
             } else {
@@ -196,14 +196,4 @@ private _resultNames = [];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
 } forEach [XEH_EVENTS];
 
-//_result select {!((_x select 2) isEqualTo {})} @todo 1.55 dev, delete everything below
-
-private _return = [];
-
-{
-    if !((_x select 2) isEqualTo {}) then {
-        _return pushBack _x;
-    };
-} forEach _result;
-
-_return
+_result select {!((_x select 2) isEqualTo {})}

@@ -34,19 +34,19 @@ _angle = [_posA, _posB] call BIS_fnc_dirTo;
 _2Ddistance = [_posA, _posB] call BIS_fnc_distance2D;
 
 _logic = "logic" createvehiclelocal _posA;
-_logic setposATL _posA;
-_z = (getposASL _logic) select 2;
+_logic setPosATL _posA;
+_z = (getPosASL _logic) select 2;
 _return = [];
 
 for "_i" from 0 to (_2Ddistance / _resolution) do {
     _adj = _resolution * _i;
     _pos = [_posA, _adj, _angle] call BIS_fnc_relPos;
-    _logic setposATL _pos;
-    _alt = ((getposASL _logic) select 2) - _z;
+    _logic setPosATL _pos;
+    _alt = ((getPosASL _logic) select 2) - _z;
     _return set [_i,[_alt, _adj, _pos]];
 };
-_logic setposATL _posB;
-_alt = ((getposASL _logic) select 2) - _z;
+_logic setPosATL _posB;
+_alt = ((getPosASL _logic) select 2) - _z;
 _return pushBack [_alt, _2Ddistance, _pos];
 
 deletevehicle _logic;

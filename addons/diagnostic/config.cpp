@@ -2,12 +2,14 @@
 
 class CfgPatches {
     class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_common","CBA_events","3DEN"};
         version = VERSION;
-        author[] = {"Spooner","Sickboy"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Spooner","Sickboy"};
     };
 };
 
@@ -15,3 +17,4 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 #include "CfgDisplay3DEN.hpp"
+#include "gui.hpp"

@@ -21,6 +21,6 @@ Author:
 #include "script_component.hpp"
 SCRIPT(deleteNamespace);
 
-params [["_namespace", locationNull, [locationNull]]];
+params [["_namespace", locationNull, [locationNull, objNull]]];
 
-deleteLocation _namespace;
+_namespace call CBA_fnc_deleteEntity;

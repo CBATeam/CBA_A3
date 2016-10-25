@@ -1,15 +1,18 @@
-/*
+/* ----------------------------------------------------------------------------
 Function: CBA_fnc_globalSay3d
 
 Description:
-    Says sound on all client computer in 3d. DEPRECATED. Use remoteExec ["say3D"] instead.
+    Says sound on all clients in 3D.
+
+    DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say3D"] instead.
 
 Parameters:
-    _object - Object that performs Say [Object] can also be _array - [object, targetObject]
-    _speechName - Speechname
-    _range - (Optional parameter) maximum distance from camera to execute command [Number]
+    _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
+    _params  - [sound, maxTitlesDistance,speed] or "sound" <STRING, ARRAY>
+    _range   - Maximum distance from camera to execute command (optional) <NUMBER>
 
 Returns:
+    Nothing
 
 Example:
     (begin example)
@@ -18,7 +21,7 @@ Example:
 
 Author:
     Sickboy, commy2
-*/
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
 params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]]];

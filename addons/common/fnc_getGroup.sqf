@@ -5,11 +5,11 @@ Description:
     A function used to find out the group of an object.
 
 Parameters:
-    Group or Unit
+    _entity - <OBJECT, GROUP>
 
 Example:
     (begin example)
-    _group = player call CBA_fnc_getGroup
+        _group = player call CBA_fnc_getGroup
     (end)
 
 Returns:
@@ -17,8 +17,12 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
-params [["_group", grpNull, [grpNull, objNull]]];
-if ((typeName _group) isEqualTo "GROUP") exitWith {_group};
-group _group
+#include "script_component.hpp"
+SCRIPT(getGroup);
+
+params [["_entity", grpNull, [grpNull, objNull]]];
+
+if (_entity isEqualType grpNull) exitWith {_entity};
+
+group _entity

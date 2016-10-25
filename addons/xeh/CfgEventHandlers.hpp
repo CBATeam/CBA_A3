@@ -1,10 +1,12 @@
 
-class XEH_CLASS {
+class XEH_CLASS_BASE {
     EXTENDED_EVENTHANDLERS
 };
 
+class XEH_CLASS: XEH_CLASS_BASE {}; // bwc
+
 class DefaultEventhandlers {
-    class XEH_CLASS: XEH_CLASS {};
+    class XEH_CLASS: XEH_CLASS_BASE {};
 };
 
 // The PreStart handlers run once when the game is started
@@ -69,11 +71,17 @@ class Extended_MPRespawn_EventHandlers {};
 class Extended_Put_EventHandlers {};
 class Extended_Respawn_EventHandlers {};
 class Extended_SeatSwitched_EventHandlers {};
+class Extended_SeatSwitchedMan_EventHandlers {};
 class Extended_SoundPlayed_EventHandlers {};
 class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
+class Extended_Reloaded_EventHandlers {};
 
 // display xeh
-class Extended_DisplayLoad_EventHandlers {};
+class Extended_DisplayLoad_EventHandlers {
+    class Display3DEN {
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(3DENDisplayLoad)'));
+    };
+};
 class Extended_DisplayUnload_EventHandlers {};

@@ -32,6 +32,9 @@ TEST_OP(_pos,==,-1,_fn);
 _pos = ["frofrog", "frog"] call CBA_fnc_find;
 TEST_OP(_pos,==,3,_fn);
 
+_pos = ["frog-headed fish", "f", 5] call CBA_fnc_find;
+TEST_OP(_pos,==,12,_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringSplit)
 _fn = "CBA_fnc_split";
@@ -105,6 +108,12 @@ TEST_OP(_str,==,"frag",_fn);
 
 _str = ["frodo", "o", "ai"] call CBA_fnc_replace;
 TEST_OP(_str,==,"fraidai",_fn);
+
+_str = ["Test", "e", "ea"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Teast",_fn);
+
+_str = ["Mörser", "ö", "oe"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Moerser",_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (leftTrim)
@@ -290,4 +299,23 @@ _result = ["aardwolf", "aardvark"] call CBA_fnc_compare;
 TEST_OP(_result, ==, +1, _fn);
 */
 
-nil;
+// ----------------------------------------------------------------------------
+// UNIT TESTS (removeWhitespace)
+_fn = "CBA_fnc_removeWhitespace";
+
+TEST_DEFINED("CBA_fnc_removeWhitespace","");
+
+_str = " foo  bar   " call CBA_fnc_removeWhitespace;
+_expected = "foobar";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
+_str = [" foo  bar   ", true] call CBA_fnc_removeWhitespace;
+_expected = "foo bar";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
+_str = "tab:	newline:
+space: " call CBA_fnc_removeWhitespace;
+_expected = "tab:newline:space:";
+TEST_OP(_str,isEqualTo,_expected,_fn);
+
+nil

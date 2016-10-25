@@ -1,22 +1,19 @@
 #include "script_component.hpp"
-class CfgPatches
-{
-    class ADDON
-    {
+
+class CfgPatches {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "CBA_common", "CBA_events" };
+        requiredAddons[] = {"CBA_common", "CBA_events"};
         version = VERSION;
-        author[] = {"Sickboy"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Sickboy"};
     };
 };
-class CfgSettings {
-    class CBA {
-        class COMPONENT {
-            disableGlobalExecute = 0;
-        };
-    };
-};
-#include "CfgEventHandlers.hpp"
+
 #include "CfgFunctions.hpp"
+
+#include "CfgSettings.hpp"

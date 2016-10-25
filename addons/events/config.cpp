@@ -1,17 +1,17 @@
 #include "script_component.hpp"
-class CfgPatches
-{
-    class ADDON
-    {
+
+class CfgPatches {
+    class ADDON {
+        author = "$STR_CBA_Author";
+        name = CSTRING(component);
+        url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "CBA_common" };
+        requiredAddons[] = {"CBA_common"};
         version = VERSION;
-        author[] = {"Spooner", "Sickboy", "Xeno"};
-        authorUrl = "https://github.com/CBATeam/CBA_A3";
+        authors[] = {"Spooner","Sickboy","Xeno","commy2"};
     };
 };
+
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
-
-

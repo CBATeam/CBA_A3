@@ -21,9 +21,8 @@
 #define SETEVENTHANDLERS(type,class,events) (missionNamespace setVariable [SYS_EVENTHANDLERS(type,class), events])
 
 // For any class that does not comply with XEH or has at least one incompatible descendant.
-#define SYS_INCOMP(class) format [QGVAR(\%1), class]
-#define SETINCOMP(class) missionNamespace setVariable [SYS_INCOMP(class), true]
-#define ISINCOMP(class) !isNil SYS_INCOMP(class)
+#define ISINCOMP(class) !isNil {GVAR(incompatible) getVariable class}
+#define SETINCOMP(class) GVAR(incompatible) setVariable [class, true]
 
 // Event handler variables set.
 #define ISPROCESSED(obj) (obj getVariable [QGVAR(isProcessed), false])
@@ -42,7 +41,7 @@
 #define XEH_MAIN_CONFIGS [configFile, campaignConfigFile, missionConfigFile]
 
 #undef XEH_ENABLED
-#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS {}; }; SLX_XEH_DISABLED = 0
+#define XEH_ENABLED class EventHandlers { class XEH_CLASS: XEH_CLASS_BASE {}; }; SLX_XEH_DISABLED = 0
 
 #define XEH_EVENTS \
     "AnimChanged", \
@@ -82,8 +81,10 @@
     "Put", \
     "Take", \
     "SeatSwitched", \
+    "SeatSwitchedMan", \
     "SoundPlayed", \
     "WeaponAssembled", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
-    "WeaponRested"
+    "WeaponRested", \
+    "Reloaded"

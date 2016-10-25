@@ -10,7 +10,7 @@ Parameters:
 Example:
     (begin example)
     _distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff
-    (end
+    (end example)
 
 Returns:
     Array Differences (for above example, return is [[1],[0]])

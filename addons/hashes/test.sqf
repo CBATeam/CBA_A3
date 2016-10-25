@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["hashEachPair", "hashes"]
+#define TESTS ["hashEachPair", "hashes", "parseYaml", "hashFilter"]
 
 SCRIPT(test-hashes);
 
@@ -14,7 +14,7 @@ SCRIPT(test-hashes);
 LOG("=== Testing Hashes ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\hashes\test_%1.sqf", _x];
+    0 spawn compile preprocessFileLineNumbers format ["\x\cba\addons\hashes\test_%1.sqf", _x];
 } forEach TESTS;
 
-nil;
+nil

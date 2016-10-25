@@ -21,6 +21,11 @@ class CfgFunctions
                 description = "Iterate through all keys and values in a Hash.";
                 file = "\x\cba\addons\hashes\fnc_hashEachPair.sqf";
             };
+            class hashFilter
+            {
+                description = "Iterate through all keys and values in a Hash. Code must return a bool, if false then key is removed";
+                file = "\x\cba\addons\hashes\fnc_hashFilter.sqf";
+            };
             // CBA_fnc_hashGet
             class hashGet
             {
@@ -45,6 +50,12 @@ class CfgFunctions
                 description = "Sets a value for a given key in a Hash.";
                 file = "\x\cba\addons\hashes\fnc_hashSet.sqf";
             };
+            // CBA_fnc_hashSize
+            class hashSize
+            {
+                description = "Get number of elements in a Hash.";
+                file = "\x\cba\addons\hashes\fnc_hashSize.sqf";
+            };
             // CBA_fnc_isHash
             class isHash
             {
@@ -56,6 +67,12 @@ class CfgFunctions
             {
                 description = "Internal Self Check. Check the RPT file for results.";
                 file = "\x\cba\addons\hashes\test.sqf";
+            };
+            // CBA_fnc_parseYAML
+            class parseYAML
+            {
+                description = "Parses a YAML file into a nested array/Hash structure.";
+                file = "\x\cba\addons\hashes\fnc_parseYAML.sqf";
             };
         };
     };

@@ -5,31 +5,32 @@ Description:
     Check whether these are any players within a certain distance of a unit.
 
 Parameters:
-    _unit:       the unit to check the distance from. [Object]
-    _distance:   the desired distance. [Number]
+    _unit     - the entity to check the distance from. <OBJECT>
+    _distance - the desired distance. <NUMBER>
 
 Returns:
-    Boolean - true if there are any players within the given
-                  distance of the unit, false if there aren't.
-
+    true if there are any players within the given distance of the unit, false if there aren't. <BOOLEAN>
 
 Examples:
     (begin example)
-    [unit, distance] call CBA_fnc_nearPlayer
+        [unit, distance] call CBA_fnc_nearPlayer
     (end)
 
 Author:
 
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(nearPlayer);
 
-params ["_unit","_distance"];
+params [["_entity", objNull], ["_distance", 0, [0]]];
 
-private "_position";
-_position = _unit call CBA_fnc_getpos;
+private _position = _entity call CBA_fnc_getPos;
+private _return = false;
+
 {
-    if ((_position distance _x) < _distance) exitWith { true };
-    false;
-} forEach ([] call CBA_fnc_players);
+    if (_position distance _x < _distance) exitWith {
+        _return = true;
+    };
+} forEach allPlayers;
+
+_return

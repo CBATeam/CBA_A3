@@ -8,57 +8,115 @@ Description:
     of trouble, or when able to remove _item from _unit true in case of success.
 
 Parameters:
-    _unit - the unit or vehicle
-    _item - name of the magazine to remove
+    _unit - the unit or vehicle <OBJECT>
+    _item - name of the magazine to remove <STRING>
+    _ammo - ammo count. used to remove a specific magazine (optional) <NUMBER>
 
 Returns:
-    true on success, false otherwise
+    true on success, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
-    _result = [player, "SmokeShell"] call CBA_fnc_removeMagazine
+        _result = [player, "SmokeShell"] call CBA_fnc_removeMagazine
     (end)
 
 Author:
 
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(removeMagazine);
 
-#define __scriptname fRemoveMagazine
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];
 
-#define __cfg (configFile >> "CfgMagazines")
-#define __action removeMagazine
-#define __ar (magazines _unit)
+private _return = false;
 
-private ["_item"];
-params ["_unit"];
-if (typeName _unit != "OBJECT") exitWith {
-    TRACE_2("Unit not Object",_unit,_item);
-    false
-};
-_item = _this select 1;
-if (typeName _item != "STRING") exitWith {
-    TRACE_2("Item not String",_unit,_item);
-    false
-};
 if (isNull _unit) exitWith {
-    TRACE_2("Unit isNull",_unit,_item);
-    false
+    TRACE_2("Unit not Object or null",_unit,_item);
+    _return
 };
-if (_item == "") exitWith {
-    TRACE_2("Empty Item",_unit,_item);
-    false
+
+if (_item isEqualTo "") exitWith {
+    TRACE_2("Item not String or empty",_unit,_item);
+    _return
 };
-if !(isClass (__cfg >> _item)) exitWith {
-    TRACE_2("Item not exist in Config",_unit,_item);
-    false
+
+private _config = configFile >> "CfgMagazines" >> _item;
+
+if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
+    TRACE_2("Item does not exist in Config",_unit,_item);
+    _return
 };
-if !(_item in __ar) exitWith {
+
+if !(configName _config in magazines _unit) exitWith {
     TRACE_2("Item not available on Unit",_unit,_item);
-    false
+    _return
 };
-_unit __action _item;
-TRACE_2("Success",_unit,_item);
-true
+
+if (_ammo < 0) then {
+    _unit removeMagazineGlobal _item; // removeMagazine fails on remote units
+    _return = true;
+} else {
+    private _uniformMagazines = [];
+    private _vestMagazines = [];
+    private _backpackMagazines = [];
+
+    private _uniform = uniformContainer _unit;
+    private _vest = vestContainer _unit;
+    private _backpack = backpackContainer _unit;
+
+    // magazinesAmmoCargo bugged. returns nil for objNull.
+    if (!isNull _uniform) then {
+        _uniformMagazines = magazinesAmmoCargo _uniform select {_x select 0 == _item};
+    };
+
+    if (!isNull _vest) then {
+        _vestMagazines = magazinesAmmoCargo _vest select {_x select 0 == _item};
+    };
+
+    if (!isNull _backpack) then {
+        _backpackMagazines = magazinesAmmoCargo _backpack select {_x select 0 == _item};
+    };
+
+    {
+        if (_x select 1 == _ammo) exitWith {
+            _uniformMagazines deleteAt _forEachIndex;
+            _return = true;
+        };
+    } forEach _uniformMagazines;
+
+    if !(_return) then {
+        {
+            if (_x select 1 == _ammo) exitWith {
+                _vestMagazines deleteAt _forEachIndex;
+                _return = true;
+            };
+        } forEach _vestMagazines;
+    };
+
+    if !(_return) then {
+        {
+            if (_x select 1 == _ammo) exitWith {
+                _backpackMagazines deleteAt _forEachIndex;
+                _return = true;
+            };
+        } forEach _backpackMagazines;
+    };
+
+    if (_return) then {
+        _unit removeMagazines _item; // doc wrong. works on remote units
+
+        {
+            _uniform addMagazineAmmoCargo [_item, 1, _x select 1];
+        } forEach _uniformMagazines;
+
+        {
+            _vest addMagazineAmmoCargo [_item, 1, _x select 1];
+        } forEach _vestMagazines;
+
+        {
+            _backpack addMagazineAmmoCargo [_item, 1, _x select 1];
+        } forEach _backpackMagazines;
+    };
+};
+
+_return

@@ -3,6 +3,7 @@ Function: CBA_fnc_selectWeapon
 
 Description:
     Selects a weapon including correctly selecting a weapon mode of specified.
+
     Has to be executed on the machine where the unit is local.
 
 Parameters:

@@ -2,44 +2,25 @@
 Function: CBA_fnc_players
 
 Description:
-    Get a list of current player objects.
+    Reports all (human) player objects. Does not include headless client entities.
 
-    In multi-player missions, returns list of human players, rather than all
-    playable units (playableUnits includes playable AI). Will include dead
-    player objects for players who are waiting to respawn.
-
-    In single-player missions, just returns an array containing the current
-    player object.
-
-    This command is similar to BIS_fnc_listPlayers. In fact, it is the same in
-    MP, but in SP it returns a result which is consistent to prevent the need
-    to handle things differently in different types of game
-    (BIS_fnc_listPlayers uses different criteria for the list in SP and MP).
+    Unlike "BIS_fnc_listPlayers", this function will not report the game logics of headless clients.
 
 Parameters:
-    None.
+    None
 
 Returns:
-    List of player objects [Array of Objects].
+    List of all player objects <ARRAY>
 
 Examples:
     (begin example)
-        _players = call CBA_fnc_players;
+        [] call CBA_fnc_players
     (end)
 
 Author:
-    Spooner
+    commy2
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(players);
 
-private "_return";
-
-_return = if (isMultiplayer) then {
-    [playableUnits, { isPlayer _x }] call BIS_fnc_conditionalSelect;
-} else {
-    [player];
-};
-
-_return;
+(allUnits + allDead) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}

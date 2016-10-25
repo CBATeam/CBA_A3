@@ -5,11 +5,11 @@ Description:
     A function used to get the position of an entity.
 
 Parameters:
-    Marker, Object, Location, Group or Task
+    _entity - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
 
 Example:
     (begin example)
-    _position = (group player) call CBA_fnc_getPos
+        _position = (group player) call CBA_fnc_getPos
     (end)
 
 Returns:
@@ -17,26 +17,32 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
+#include "script_component.hpp"
+SCRIPT(getPos);
 
-params ["_thing"];
+params [
+    ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull, [], 0]] // [] and 0 to handle position
+];
 
-switch (typeName _thing) do {
+switch (typeName _entity) do {
     case "OBJECT" : {
-        getPos _thing
+        getPos _entity
     };
     case "GROUP" : {
-        getPos (leader _thing)
+        getPos (leader _entity)
     };
     case "STRING" : {
-        getMarkerPos _thing
+        getMarkerPos _entity
     };
     case "LOCATION" : {
-        position _thing
+        position _entity
     };
     case "TASK" : {
-        taskDestination _thing
+        taskDestination _entity
     };
-    default {_this};
+    case "ARRAY" : {
+        _entity
+    };
+    default {_this}; // in case of position being passed not in array
 };

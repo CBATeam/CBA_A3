@@ -1,77 +1,66 @@
-/*
+/* ----------------------------------------------------------------------------
 Function: CBA_fnc_publicVariable
 
 Description:
-	CBA_fnc_publicVariable does only broadcast the new value if it doesn't exist in missionNamespace or the new value is different to the one in missionNamespace.
-	Checks also for different types. Nil as value gets always broadcasted.
+    Broadcast a variables value to all machines. Used to reduce network traffic.
 
-	Should reduce network traffic.
+    Does only broadcast the new value if it doesn't exist in missionNamespace or
+    if the new value is different to the one in missionNamespace.
+    Nil as value gets always broadcasted.
 
 Parameters:
-	_pv - Name of the publicVariable [String]
-	_value - Value to check and broadcast if it is not the same as the previous one, code will always be broadcasted [Any]
+    _varName - Name of the public variable <STRING>
+    _value   - Value to broadcast <ANY>
 
 Returns:
-	True if if broadcasted, otherwise false [Boolean]
+    True if if broadcasted, otherwise false <BOOLEAN>
 
 Example:
-	(begin example)
-		// This will only broadcast "somefish" if it either doesn't exist yet in the missionNamespace or the value is not 50
-		_broadcasted = ["somefish", 50] call CBA_fnc_publicVariable;
-	(end)
+    (begin example)
+        // This will only broadcast "somefish" if it either doesn't exist yet in the missionNamespace or the value is not 50
+        _broadcasted = ["somefish", 50] call CBA_fnc_publicVariable;
+    (end)
 
 Author:
-	Xeno
-*/
-// #define DEBUG_MODE_FULL
+    Xeno, commy2
+---------------------------------------------------------------------------- */
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_pv","_value"];
+params [["_varName", "", [""]], "_value"];
 
-if (typeName _pv != typeName "") exitWith {
-	WARNING("The first parameter is not of type string!");
-	false
+if (_varName isEqualTo "") exitWith {
+    WARNING("Variable name is wrong type or undefined");
+    false
 };
 
-private ["_var","_s"];
-_var = missionNamespace getVariable _pv;
+private _currentValue = missionNamespace getVariable _varName;
 
-if (isNil "_var") exitWith {
-	TRACE_2("Broadcasting",_pv,_value);
-	missionNamespace setVariable [_pv, _value];
-	publicVariable _pv;
-	true
-};
-
-_s = if (typeName _value != typeName _var) then {
-	TRACE_2("Different typenames",_var,_value);
-	false
+if (isNil "_currentValue") then {
+    if (isNil "_value") then {
+        TRACE_1("Not broadcasting. Current and new value are undefined",_varName);
+        false // return
+    } else {
+        TRACE_2("Broadcasting previously undefined value",_varName,_value);
+        missionNamespace setVariable [_varName, _value];
+        publicVariable _varName;
+        true // return
+    };
 } else {
-	switch (typename _value) do {
-		case "BOOL": {
-			((_var && {_value}) || {(!_var && {!_value})})
-		};
-		case "ARRAY": {
-			(_var isEqualTo _value)
-		};
-		case "CODE": {
-			false
-		};
-		case "SCRIPT": {
-			false
-		};
-		default {
-			(_var == _value)
-		};
-	}
+    if (isNil "_value") then {
+        TRACE_1("Broadcasting nil",_varName);
+        missionNamespace setVariable [_varName, nil];
+        publicVariable _varName;
+        true // return
+    } else {
+        if (_value isEqualTo _currentValue) then {
+            TRACE_3("Not broadcasting. Current and new value are equal",_varName,_currentValue,_value);
+            false // return
+        } else {
+            TRACE_2("Broadcasting",_varName,_value);
+            missionNamespace setVariable [_varName, _value];
+            publicVariable _varName;
+            true // return
+        };
+    };
 };
-if (_s) exitwith {
-	TRACE_2("Not broadcasting, _var and _value are equal",_var,_value);
-	false
-};
-
-TRACE_2("Broadcasting",_pv,_value);
-missionNamespace setVariable [_pv, _value];
-publicVariable _pv;
-
-true

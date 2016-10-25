@@ -8,57 +8,48 @@ Description:
     of trouble, or when able to remove _item from _unit true in case of success.
 
 Parameters:
-    _unit - the unit
-    _item - name of the weapon to remove
+    _unit - the unit <OBJECT>
+    _item - name of the weapon to remove <STRING>
 
 Returns:
-    true on success, false otherwise
+    true on success, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
-    _result = [player, "Binocular"] call CBA_fnc_removeWeapon
+        _result = [player, "Binocular"] call CBA_fnc_removeWeapon
     (end)
 
 Author:
 
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 SCRIPT(removeWeapon);
 
-#define __scriptname fRemoveWeapon
+params [["_unit", objNull, [objNull]], ["_item", "", [""]]];
 
-#define __cfg (configFile >> "CfgWeapons")
-#define __action removeWeapon
-#define __ar (weapons _unit)
+private _return = false;
 
-private ["_item"];
-params ["_unit"];
-if (typeName _unit != "OBJECT") exitWith {
-    TRACE_2("Unit not Object",_unit,_item);
-    false
-};
-_item = _this select 1;
-if (typeName _item != "STRING") exitWith {
-    TRACE_2("Item not String",_unit,_item);
-    false
-};
 if (isNull _unit) exitWith {
-    TRACE_2("Unit isNull",_unit,_item);
-    false
+    TRACE_2("Unit not Object or null",_unit,_item);
+    _return
 };
-if (_item == "") exitWith {
-    TRACE_2("Empty Item",_unit,_item);
-    false
+
+if (_item isEqualTo "") exitWith {
+    TRACE_2("Item not String or empty",_unit,_item);
+    _return
 };
-if !(isClass (__cfg >> _item)) exitWith {
-    TRACE_2("Item not exist in Config",_unit,_item);
-    false
+
+private _config = configFile >> "CfgWeapons" >> _item;
+
+if (!isClass _config || {getNumber (_config >> "scope") < 1}) exitWith {
+    TRACE_2("Item does not exist in Config",_unit,_item);
+    _return
 };
-if !(_item in __ar) exitWith {
+
+if !(configName _config in weapons _unit) exitWith {
     TRACE_2("Item not available on Unit",_unit,_item);
-    false
+    _return
 };
-_unit __action _item;
-TRACE_2("Success",_unit,_item);
+
+_unit removeWeaponGlobal _item; // removeWeapon fails on remote units
 true

@@ -2,18 +2,15 @@
 Function: CBA_fnc_removeItemCargo
 
 Description:
-    Removes specific item(s) from local cargo space.
-
-    * Use <CBA_fnc_removeItemCargoGlobal> if you want to remove the item(s) in
-      global cargo space.
+    Removes specific item(s) from cargo space.
 
 Parameters:
-    _box - Object with cargo [Object]
-    _item - Classname of item(s) to remove [String]
-    _count - Number of item(s) to remove [Number] (Default: 1)
+    _container - Object with cargo <OBJECT>
+    _item      - Classname of item(s) to remove <STRING>
+    _count     - Number of item(s) to remove <NUMBER> (Default: 1)
 
 Returns:
-    Success [Boolean]
+    true on success, false otherwise <BOOLEAN>
 
 Examples:
    (begin example)
@@ -30,62 +27,57 @@ Author:
 #include "script_component.hpp"
 SCRIPT(removeItemCargo);
 
-params ["_box", "_item", ["_count", 1]];
+params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]]];
 
-if (typeName _box != "OBJECT") exitWith {
-    TRACE_2("Box not Object",_box,_item);
-    false
+private _return = false;
+
+if (isNull _container) exitWith {
+    TRACE_2("Container not Object or null",_container,_item);
+    _return
 };
-if (typeName _item != "STRING") exitWith {
-    TRACE_2("Item not String",_box,_item);
-    false
+
+if (_item isEqualTo "") exitWith {
+    TRACE_2("Item not String or empty",_container,_item);
+    _return
 };
-if (isNull _box) exitWith {
-    TRACE_2("Box isNull",_box,_item);
-    false
+
+private _config = _item call CBA_fnc_getItemConfig;
+
+if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
+    TRACE_2("Item does not exist in Config",_container,_item);
+    _return
 };
-if (_item == "") exitWith {
-    TRACE_2("Empty Item",_box,_item);
-    false
-};
-if !(isClass (configFile >> "CfgWeapons" >> _item) || isClass (configFile >> "CfgGlasses" >> _item)) exitWith {
-    TRACE_2("Item does not exist in the game config",_box,_item);
-    false
-};
-if (typeName _count != "SCALAR") exitWith {
-    TRACE_3("Count is not a number",_box,_item,_count);
-    false
-};
+
 if (_count <= 0) exitWith {
-    TRACE_3("Count is not a positive number",_box,_item,_count);
-    false
+    TRACE_3("Count is not a positive number",_container,_item,_count);
+    _return
 };
 
 // Ensure proper count
 _count = round _count;
 
 // Returns array containing two arrays: [[type1, typeN, ...], [count1, countN, ...]]
-(getItemCargo _box) params ["_allItemsType", "_allItemsCount"];
+(getItemCargo _container) params ["_allItemsType", "_allItemsCount"];
 
 // Clear cargo space and readd the items as long it's not the type in question
-private _returnVar = false;
-clearItemCargo _box;
+clearItemCargoGlobal _container;
+
 {
     private _itemCount = _allItemsCount select _forEachIndex;
 
     if (_x == _item) then {
         // Process removal
-        _returnVar = true;
+        _return = true;
 
         _itemCount = _itemCount - _count;
         if (_itemCount > 0) then {
             // Add with new count
-            _box addItemCargo [_x, _itemCount];
+            _container addItemCargoGlobal [_x, _itemCount];
         };
     } else {
         // Readd only
-        _box addItemCargo [_x, _itemCount];
+        _container addItemCargoGlobal [_x, _itemCount];
     };
 } forEach _allItemsType;
 
-_returnVar
+_return
