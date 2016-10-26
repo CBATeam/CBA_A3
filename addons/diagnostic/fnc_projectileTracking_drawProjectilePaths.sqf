@@ -30,21 +30,21 @@ for "_index" from 0 to GVAR(projectileMaxLines) do {
         private _currentEntry = [GVAR(projectileData), _index] call CBA_fnc_hashGet;
         private _projectileData = _currentEntry select 1;
 
-        private _i = 1;
         private _arrCount = count _projectileData;
-
         private _startSpeed = 0;
 
-        while {_i < _arrCount} do {
-            private _currentProjectileData = _projectileData select _i;
+        {
+            private _currentProjectileData = _x;
+            private _nextProjectileData = nil;
 
-            private _prevProjectileData = nil;
-
-            if (_i == 1) then {
-                _prevProjectileData = _projectileData select 0;
+            if (_forEachIndex == 0) then {
                 _startSpeed = _currentProjectileData select 1;
+            };
+
+            if (_forEachIndex == _arrCount - 1) then {
+                _nextProjectileData =  _currentProjectileData;
             } else {
-                _prevProjectileData = _projectileData select (_i - 1);
+                _nextProjectileData = _projectileData select (_forEachIndex + 1);
             };
 
             private _currentSpeed = _currentProjectileData select 1;
@@ -52,10 +52,9 @@ for "_index" from 0 to GVAR(projectileMaxLines) do {
             private _green = _currentSpeed / _startSpeed;
             private _red = 1 - _green;
 
-            drawLine3D [_prevProjectileData select 0, _currentProjectileData select 0, [_red, _green, 0, 1]];
+            drawLine3D [_currentProjectileData select 0, _nextProjectileData select 0, [_red, _green, 0, 1]];
 
-            _i = _i + 1;
-        };
+        } forEach _projectileData;
 
     };
 };

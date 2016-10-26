@@ -6,8 +6,9 @@ Description:
 
 Parameters:
     _args - PerFrameHandler arguments <ARRAY>
-        _projectile - the projectile that needs to be tracked <OBJECT>
-        _index      - the current index/key of the hash <NUMBER>
+        _projectile             - the projectile that needs to be tracked <OBJECT>
+        _index                  - the current index/key of the hash <NUMBER>
+        _initialProjectileData  - the initial position and speed of the projectile (due to delayed execution) <ARRAY>
     _handle - PerFrameHandler handle <NUMBER>
 
 Returns:
@@ -24,7 +25,7 @@ Author:
 #include "script_component.hpp"
 
 params ["_args", "_handle"];
-_args params ["_projectile", "_index"];
+_args params ["_projectile", "_index", "_initialProjectileData"];
 
 if (!isNull _projectile) then {
 
@@ -35,7 +36,7 @@ if (!isNull _projectile) then {
         _data = [GVAR(projectileData), _index] call CBA_fnc_hashGet;
         _bulletData = _data select 1;
     } else {
-        _bulletData = [];
+        _bulletData = [_initialProjectileData];
         _data = [_handle, _bulletData];
     };
 
