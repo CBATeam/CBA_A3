@@ -23,7 +23,9 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-for "_index" from 0 to GVAR(projectileMaxLines) do {
+private _maxLines = GVAR(projectileMaxLines) min 20;
+
+for "_index" from 0 to _maxLines do {
 
     if ( ([GVAR(projectileData), _index] call CBA_fnc_hashHasKey) ) then {
 
