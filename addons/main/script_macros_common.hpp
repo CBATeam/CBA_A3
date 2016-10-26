@@ -371,7 +371,7 @@ Example:
 Author:
     Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) if (isNil {VARIABLE}) then {nil} else {VARIABLE}
+#define RETNIL(VARIABLE) ([VARIABLE] param [0,nil])
 
 /* -------------------------------------------
 Macro: RETDEF()
@@ -392,7 +392,7 @@ Example:
 Author:
     654wak654
 ------------------------------------------- */
-#define RETDEF(VARIABLE,DEFAULT_VALUE) if (isNil {VARIABLE}) then {DEFAULT_VALUE} else {VARIABLE}
+#define RETDEF(VARIABLE,DEFAULT_VALUE) ([VARIABLE] param [0,DEFAULT_VALUE])
 
 /* -------------------------------------------
 Macros: TRACE_n()
@@ -557,7 +557,7 @@ Example:
 Author:
     654wak654
 ------------------------------------------- */
-#define INV(var) var = (var) * -1
+#define INV(var) var = -var
 
 /* -------------------------------------------
 Macro: ADD()
@@ -1081,7 +1081,7 @@ Parameters:
 Author:
     Spooner
 ------------------------------------------- */
-#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then { false } else { (VAR) isEqualType TYPE })
+#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then {false} else {(VAR) isEqualType TYPE})
 #define IS_ARRAY(VAR)    IS_META_SYS(VAR,[])
 #define IS_BOOL(VAR)     IS_META_SYS(VAR,false)
 #define IS_CODE(VAR)     IS_META_SYS(VAR,{})
@@ -1099,7 +1099,7 @@ Author:
 
 #define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
 #define IS_FUNCTION(VAR) IS_CODE(VAR)
-#define IS_INTEGER(VAR)  if ( IS_SCALAR(VAR) ) then { (floor(VAR) == (VAR)) } else { false }
+#define IS_INTEGER(VAR)  (if (IS_SCALAR(VAR)) then {floor (VAR) == (VAR)} else {false})
 #define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
 #define FLOAT_TO_STRING(num)    (str parseNumber (str (_this%_this) + str floor abs _this) + "." + (str (abs _this-floor abs _this) select [2]) + "0")
