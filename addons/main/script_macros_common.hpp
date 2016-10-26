@@ -371,7 +371,7 @@ Example:
 Author:
     Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) ([VARIABLE] param [0,nil])
+#define RETNIL(VARIABLE) ([VARIABLE] param [0])
 
 /* -------------------------------------------
 Macro: RETDEF()
