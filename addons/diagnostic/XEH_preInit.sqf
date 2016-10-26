@@ -5,9 +5,11 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
+
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
-GVAR(projectileData) = EFUNC(hash,hashCreate);
+GVAR(projectileData) = [] call CBA_fnc_hashCreate;
 GVAR(projectileDrawHandle) = nil;
 GVAR(projectileIndex) = 0;
 GVAR(projectileMaxLines) = 20;

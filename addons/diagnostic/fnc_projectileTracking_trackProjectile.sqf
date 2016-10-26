@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_projectileTracking_trackProjectile
+Internal Function: CBA_diagnostic_fnc_projectileTracking_trackProjectile
 
 Description:
     Tracks a projectile's position and velocity and writes it to a hash
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [CBA_fnc_projectileTracking_trackProjectile, 0.1, [_projectile, _index]] call CBA_fnc_addPerFrameHandler;
+        [CBA_diagnostic_fnc_projectileTracking_trackProjectile, 0.1, [_projectile, _index]] call CBA_fnc_addPerFrameHandler;
     (end)
 
 Author:

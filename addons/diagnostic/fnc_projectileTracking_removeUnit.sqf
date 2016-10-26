@@ -31,7 +31,7 @@ if (_eventId == -1) exitWith {
     WARNING_1("No or wrong (%1) eventId supplied.",_eventId);
 };
 
-_unit removeEventHandler ["Fired", _eventId]
+_unit removeEventHandler ["Fired", _eventId];
 
 private _arrayIndex = GVAR(projectileTrackedUnits) find _unit;
 if (_arrayIndex >= 0) then {
@@ -41,7 +41,7 @@ if (_arrayIndex >= 0) then {
     if (count GVAR(projectileTrackedUnits) == 0) then {
         [GVAR(projectileDrawHandle)] call CBA_fnc_removePerFrameHandler;
 
-        GVAR(projectileData) = CBA_fnc_hashCreate;
+        GVAR(projectileData) = [] call CBA_fnc_hashCreate;
         GVAR(projectileIndex) = 0;
         GVAR(projectileStartedDrawing) = false;
     };

@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_projectileTracking_handleFired
+Internal Function: CBA_diagnostic_fnc_projectileTracking_handleFired
 
 Description:
     Handles the "Fired" event for projectile tracking
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        player addEventHandler ["Fired", CBA_fnc_projectileTracking_handleFired];
+        player addEventHandler ["Fired", CBA_diagnostic_fnc_projectileTracking_handleFired];
     (end)
 
 Author:

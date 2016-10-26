@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_projectileTracking_drawProjectilePaths
+Internal Function: CBA_diagnostic_fnc_projectileTracking_drawProjectilePaths
 
 Description:
     Draws the tracked projectiles flight paths
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [CBA_fnc_projectileTracking_drawProjectilePaths, 0, []] call CBA_fnc_addPerFrameHandler;
+        [CBA_diagnostic_fnc_projectileTracking_drawProjectilePaths, 0, []] call CBA_fnc_addPerFrameHandler;
     (end)
 
 Author:

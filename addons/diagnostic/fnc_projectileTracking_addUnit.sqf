@@ -7,7 +7,6 @@ Description:
 
 Parameters:
     _unit  - the unit or vehicle to track <OBJECT>
-    (_count - the amount of lines that are displayed simultaneously (maximum is 20 due to performance), optional <NUMBER>)
 
 Returns:
     _eventHandlerId - the fired event handler id <NUMBER>
@@ -15,7 +14,6 @@ Returns:
 Examples:
     (begin example)
         private _eventId = [player] call CBA_fnc_projectileTracking_addUnit;
-        (private _eventId = [vehicle player, 10] call CBA_fnc_projectileTracking_addUnit;)
     (end)
 
 Author:
@@ -27,6 +25,12 @@ params [["_unit", objNull]];
 
 if (isNull _unit) exitWith {
     WARNING_1("Unit %1 is objNull.",_unit);
+    (-1)
+};
+
+private _arrayIndex = GVAR(projectileTrackedUnits) find _unit;
+if (_arrayIndex >= 0) exitWith {
+    WARNING_1("Unit %1 already tracked.",_unit);
     (-1)
 };
 
