@@ -539,27 +539,6 @@ Author:
 #define DEC(var) var = (var) - 1
 
 /* -------------------------------------------
-Macro: INV()
-
-Description:
-    Invert a number's sign. Opposite of the abs command with positive numbers.
-
-Parameters:
-    VAR - Variable to invert [Number]
-
-Example:
-    (begin example)
-    _degrees = 45;
-    INV(_degrees);
-    // _degrees => -45
-    (end)
-
-Author:
-    654wak654
-------------------------------------------- */
-#define INV(var) var = -var
-
-/* -------------------------------------------
 Macro: ADD()
 
 Description:
