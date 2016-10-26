@@ -871,13 +871,28 @@ Author:
 
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 
-#ifdef DISABLE_COMPILE_CACHE
-    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
-    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
+#ifndef DISABLE_COMPILE_CACHE
+    #define ENABLE_CACHING true
 #else
-    #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
-    #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
+    #define ENABLE_CACHING false
 #endif
+
+#ifdef DEBUG_MODE_FULL
+    #define ENABLE_CALLSTACK true
+#else
+    #define ENABLE_CALLSTACK false
+#endif
+
+#define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)', ENABLE_CACHING, ENABLE_CALLSTACK] call CBA_fnc_compileFunction
+#define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)', ENABLE_CACHING, ENABLE_CALLSTACK] call CBA_fnc_compileFunction
+
+// Be aware that the RETURN macro only works with functions compiled with CBA_fnc_compileFunction!
+#define RETURN breakOut "CBA_ROOT_SCOPE"
+#define RETURN(var1) if (isNil {var1}) then { \
+        breakOut "CBA_ROOT_SCOPE" \
+    } else { \
+        (var1) breakOut "CBA_ROOT_SCOPE" \
+    }
 
 #ifdef RECOMPILE
     #undef RECOMPILE

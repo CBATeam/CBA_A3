@@ -36,6 +36,10 @@ class CfgFunctions {
                 description = "Compiles a function into mission namespace and into ui namespace for caching purposes.";
                 file = PATHTOF(fnc_compileFunction.sqf);
             };
+            class dumpCallstack {
+                description = "Dumps the current callstack to the RPT.";
+                file = PATHTOF(fnc_dumpCallstack.sqf);
+            };
             class preStart {
                 preStart = 1;
                 description = "Occurs once during game start.";

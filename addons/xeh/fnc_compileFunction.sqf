@@ -6,8 +6,10 @@ Description:
     Recompiling can be enabled by inserting the CBA_cache_disable.pbo from the optionals folder.
 
 Parameters:
-    0: _funcFile - Path to function sqf file <STRING>
-    1: _funcName - Final function name <STRING>
+    0: _funcFile        - Path to function sqf file <STRING>
+    1: _funcName        - Final function name <STRING>
+    2: _enableCaching   - Enable function caching (default: true) <BOOL>
+    2: _enableCallstack - Enable callstack logging (default: false) <BOOL>
 
 Returns:
     None
@@ -18,21 +20,38 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, BaerMitUmlaut
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_funcFile", "", [""]], ["_funcName", "", [""]]];
+params [
+    ["_funcFile", "", [""]],
+    ["_funcName", "", [""]],
+    ["_enableCaching", true, [true]],
+    ["_enableCallstack", false, [true]]
+];
 
-private _cachedFunc = uiNamespace getVariable _funcName;
+if (isNil QGVAR(functionHeader)) then {
+    GVAR(functionHeader) = preprocessFile QPATHTOF(script_header.hpp);
+    GVAR(functionHeaderDebug) = preprocessFile QPATHTOF(script_header_callstack.hpp);
+};
 
-if (isNil "_cachedFunc") then {
-    uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
-    missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
+private _header = format [GVAR(functionHeader), _funcName];
+
+if (_enableCallstack) then {
+    private _preprocessedFunction = _header + GVAR(functionHeaderDebug) + preprocessFileLineNumbers _funcFile;
+    missionNamespace setVariable [_funcName, compileFinal _preprocessedFunction];
 } else {
-    if (["compile"] call CBA_fnc_isRecompileEnabled) then {
-        missionNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
+    if (_enableCaching && {!(["compile"] call CBA_fnc_isRecompileEnabled)}) then {
+        private _cachedFunction = uiNamespace getVariable _funcName;
+        if (isNil "_cachedFunction") then {
+            private _preprocessedFunction = _header + preprocessFileLineNumbers _funcFile;
+            _cachedFunction = compileFinal _preprocessedFunction;
+            uiNamespace setVariable [_funcName, _cachedFunction];
+        };
+        missionNamespace setVariable [_funcName, _cachedFunction];
     } else {
-        missionNamespace setVariable [_funcName, _cachedFunc];
+        private _preprocessedFunction = _header + preprocessFileLineNumbers _funcFile;
+        missionNamespace setVariable [_funcName, compile _preprocessedFunction];
     };
 };
