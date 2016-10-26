@@ -365,13 +365,34 @@ Parameters:
 Example:
     (begin example)
         // _var is undefined
-        hintSilent format ["_var=%1", RETNIL(_var) ]; // "_var=any"
+        hintSilent format ["_var=%1", RETNIL(_var)]; // "_var=any"
     (end example)
 
 Author:
     Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) if (isNil{VARIABLE}) then {nil} else {VARIABLE}
+#define RETNIL(VARIABLE) if (isNil {VARIABLE}) then {nil} else {VARIABLE}
+
+/* -------------------------------------------
+Macro: RETDEF()
+    If a variable is undefined, return the default value. Otherwise, return the
+    variable itself.
+
+Parameters:
+    VARIABLE - the variable to check
+    DEFAULT_VALUE - the default value to use if variable is undefined
+
+Example:
+    (begin example)
+        // _var is undefined
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=5"
+        _var = 7;
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=7"
+    (end example)
+Author:
+    654wak654
+------------------------------------------- */
+#define RETDEF(VARIABLE,DEFAULT_VALUE) if (isNil {VARIABLE}) then {DEFAULT_VALUE} else {VARIABLE}
 
 /* -------------------------------------------
 Macros: TRACE_n()
@@ -516,6 +537,27 @@ Author:
     Spooner
 ------------------------------------------- */
 #define DEC(var) var = (var) - 1
+
+/* -------------------------------------------
+Macro: INV()
+
+Description:
+    Invert a number's sign. Opposite of the abs command with positive numbers.
+
+Parameters:
+    VAR - Variable to invert [Number]
+
+Example:
+    (begin example)
+    _degrees = 45;
+    INV(_degrees);
+    // _degrees => -45
+    (end)
+
+Author:
+    654wak654
+------------------------------------------- */
+#define INV(var) var = (var) * -1
 
 /* -------------------------------------------
 Macro: ADD()
