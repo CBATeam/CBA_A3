@@ -9,7 +9,7 @@ Parameters:
     _unit  - the unit or vehicle to track <OBJECT>
 
 Returns:
-    _eventHandlerId - the fired event handler id <NUMBER>
+    nil
 
 Examples:
     (begin example)
@@ -36,10 +36,10 @@ if (_arrayIndex >= 0) exitWith {
 
 private _eventId = _unit addEventHandler ["Fired", FUNC(projectileTracking_handleFired)];
 
+_unit setVariable ["cba_projectile_firedEhId", _eventId];
+
 GVAR(projectileTrackedUnits) pushBack _unit;
 
 if (GVAR(projectileStartedDrawing) isEqualTo false) then {
     GVAR(projectileDrawHandle) = [FUNC(projectileTracking_drawProjectilePaths), 0, []] call CBA_fnc_addPerFrameHandler;
 };
-
-_eventId

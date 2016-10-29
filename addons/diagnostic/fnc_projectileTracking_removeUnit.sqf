@@ -6,7 +6,6 @@ Description:
 
 Parameters:
     _unit    - the unit or vehicle to track <OBJECT>
-    _eventId - the event handler id <NUMBER>
 
 Returns:
     nil
@@ -21,14 +20,19 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_unit", objNull], ["_eventId", -1]];
+params [["_unit", objNull]];
 
 if (isNull _unit) exitWith {
     WARNING_1("Unit %1 is objNull.",_unit);
 };
 
+private _eventId = _unit getVariable ["cba_projectile_firedEhId", -1];
+
+// reset
+_unit setVariable ["cba_projectile_firedEhId", -1];
+
 if (_eventId == -1) exitWith {
-    WARNING_1("No or wrong (%1) eventId supplied.",_eventId);
+    WARNING_1("Unit has no or a wrong eventId (%1).",_eventId);
 };
 
 _unit removeEventHandler ["Fired", _eventId];
