@@ -12,7 +12,7 @@ Parameters:
     _element - Element to be inserted <ANY>
 
 Returns:
-    The modified array. Empty array in case of errors <ARRAY>
+    The modified array <ARRAY>
 
 Examples:
     (begin example)
@@ -29,11 +29,8 @@ SCRIPT(insert);
 
 params ["_array", "_index", "_element"];
 
-private _size = count _array;
-if (_index >= _size || {_index < 0}) exitWith {[]};
-
-_right = _array select [_index, _size];
-_array deleteRange [_index, _size];
+private _right = _array select [_index, count _array];
+_array resize _index;
 _array pushBack _element;
 _array append _right;
 _array
