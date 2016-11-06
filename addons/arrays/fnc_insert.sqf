@@ -25,11 +25,12 @@ Author:
     654wak654
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
+#define ARRAY_ELEMENT_LIMIT 1E7
 SCRIPT(insert);
 
 params ["_array", "_index", "_elements"];
 
-private _right = _array select [_index, count _array];
+private _right = _array select [_index, ARRAY_ELEMENT_LIMIT];
 _array resize _index;
 _array append _elements;
 _array append _right;
