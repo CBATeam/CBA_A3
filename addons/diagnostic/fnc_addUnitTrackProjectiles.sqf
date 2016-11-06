@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_projectileTracking_addUnit
+Function: CBA_fnc_addUnitTrackProjectiles
 
 Description:
     Adds projectile tracking to a given unit or vehicle.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        private _eventId = [player] call CBA_fnc_projectileTracking_addUnit;
+        private _eventId = [player] call CBA_fnc_addUnitTrackProjectiles;
     (end)
 
 Author:
