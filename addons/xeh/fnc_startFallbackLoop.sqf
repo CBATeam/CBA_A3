@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        call CBA_XEH_fnc_startFallbackLoop;
+        call CBA_fnc_startFallbackLoop;
     (end)
 
 Author:
