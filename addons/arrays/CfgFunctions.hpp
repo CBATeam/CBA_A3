@@ -69,6 +69,12 @@ class CfgFunctions
                 description = "Accumulates a value by passing elements of an array ""through"" a function.";
                 file = "\x\cba\addons\arrays\fnc_inject.sqf";
             };
+            // CBA_fnc_insert
+            class insert
+            {
+                description = "Inserts an element to the specified index of given array.";
+                file = "\x\cba\addons\arrays\fnc_insert.sqf";
+            };
             // CBA_fnc_join
             class join
             {
