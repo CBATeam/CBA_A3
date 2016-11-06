@@ -9,7 +9,7 @@ ADDON = false;
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
-GVAR(projectileData) = [] call CBA_fnc_hashCreate;
+GVAR(projectileData) = [];
 GVAR(projectileDrawHandle) = nil;
 GVAR(projectileIndex) = 0;
 GVAR(projectileMaxLines) = 20;

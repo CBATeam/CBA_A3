@@ -32,8 +32,9 @@ if (!isNull _projectile) then {
     private _data = [];
     private _bulletData = [];
 
-    if ( [GVAR(projectileData), _index] call CBA_fnc_hashHasKey ) then {
-        _data = [GVAR(projectileData), _index] call CBA_fnc_hashGet;
+    // array has an entry at this position but is not nil
+    if (_index <= (count GVAR(projectileData) - 1) && { !(isNil{(GVAR(projectileData) select _index)}) }) then {
+        _data = GVAR(projectileData) select _index;
         _bulletData = _data select 1;
     } else {
         _bulletData = [_initialProjectileData];
@@ -44,7 +45,7 @@ if (!isNull _projectile) then {
 
     _data set [1, _bulletData];
 
-    [GVAR(projectileData), _index, _data] call CBA_fnc_hashSet;
+    GVAR(projectileData) set [_index, _data];
 
 } else {
     [_handle] call CBA_fnc_removePerFrameHandler;

@@ -28,12 +28,12 @@ if (isNull _unit) exitWith {
 
 private _eventId = _unit getVariable ["cba_projectile_firedEhId", -1];
 
-// reset
-_unit setVariable ["cba_projectile_firedEhId", -1];
-
 if (_eventId == -1) exitWith {
     WARNING_1("Unit has no or a wrong eventId (%1).",_eventId);
 };
+
+// reset
+_unit setVariable ["cba_projectile_firedEhId", -1];
 
 _unit removeEventHandler ["Fired", _eventId];
 
@@ -45,7 +45,15 @@ if (_arrayIndex >= 0) then {
     if (count GVAR(projectileTrackedUnits) == 0) then {
         [GVAR(projectileDrawHandle)] call CBA_fnc_removePerFrameHandler;
 
-        GVAR(projectileData) = [] call CBA_fnc_hashCreate;
+        // someone could remove the unit while the projectiles are still being tracked
+        {
+            if (!(isNil {_x})) then {
+                private _handle = _x select 0;
+                [_handle] call CBA_fnc_removePerFrameHandler;
+            };
+        } forEach GVAR(projectileData);
+
+        GVAR(projectileData) = [];
         GVAR(projectileIndex) = 0;
         GVAR(projectileStartedDrawing) = false;
     };
