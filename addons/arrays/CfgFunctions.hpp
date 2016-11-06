@@ -72,7 +72,7 @@ class CfgFunctions
             // CBA_fnc_insert
             class insert
             {
-                description = "Inserts an element to the specified index of given array.";
+                description = "Inserts an array of elements to given array at the specified index.";
                 file = "\x\cba\addons\arrays\fnc_insert.sqf";
             };
             // CBA_fnc_join
