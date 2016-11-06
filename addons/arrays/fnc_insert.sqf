@@ -2,14 +2,14 @@
 Function: CBA_fnc_insert
 
 Description:
-    Inserts an element to the specified index of given array.
+    Inserts an array of elements to given array at the specified index.
 
     Modifies the original array (Thanks BaerMitUmlaut)
 
 Parameters:
-    _array   - Array to insert at <ARRAY>
-    _index   - Index of the insertion <NUMBER>
-    _element - Element to be inserted <ANY>
+    _array    - Array to insert at <ARRAY>
+    _index    - Index of the insertion <NUMBER>
+    _elements - Elements to be inserted <ARRAY>
 
 Returns:
     The modified array <ARRAY>
@@ -27,10 +27,10 @@ Author:
 #include "script_component.hpp"
 SCRIPT(insert);
 
-params ["_array", "_index", "_element"];
+params ["_array", "_index", "_elements"];
 
 private _right = _array select [_index, count _array];
 _array resize _index;
-_array pushBack _element;
+_array append _elements;
 _array append _right;
 _array
