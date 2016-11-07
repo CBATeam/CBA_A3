@@ -3,6 +3,7 @@
     <Package name="Common">
         <Key ID="STR_CBA_Common_Component">
             <English>Community Base Addons - Common Component</English>
+            <Japanese>Community Base Addons - 全般要素</Japanese>
         </Key>
     </Package>
 </Project>
@@ -20,6 +21,7 @@
     <Russian>ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA mod folder! Please restart the game and include that mod folder.</Russian>
     <Polish>ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA mod folder! Please restart the game and include that mod folder.</Polish>
     <Hungarian>ERROR: You seem to be an Operation Arrowhead Standalone user, but have not loaded @CBA_OA mod folder! Please restart the game and include that mod folder.</Hungarian>
+    <Japanese>エラー: Operation Arrowheadスタンドアローンを動作しているようですが、@CBA_OA MODが読み込まれていません！MODを読み込み、ゲームを再起動してください。</Japanese>
 </Key>
 <Key ID="STR_CBA_COMMON_OA_CO_HAS_CBA_OA">
     <English>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA mod folder! Please restart the game without that mod folder.</English>
@@ -31,6 +33,7 @@
     <Russian>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA mod folder! Please restart the game without that mod folder.</Russian>
     <Polish>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA mod folder! Please restart the game without that mod folder.</Polish>
     <Hungarian>ERROR: You seem to be an A2: Operation Arrowhead Combined Operations user, but have loaded the @CBA_OA mod folder! Please restart the game without that mod folder.</Hungarian>
+    <Japanese>エラー: Operation Arrowhead Combined Operationsを動作しているようですが、@CBA_OA MODが読み込まれています！MODを読み込まずにゲームを起動してください。</Japanese>
 </Key>
 <Key ID="STR_CBA_COMMON_A2_ST_NO_CBA_A2">
     <English>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 mod folder! Please restart the game and include that mod folder.</English>
@@ -42,6 +45,7 @@
     <Russian>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 mod folder! Please restart the game and include that mod folder.</Russian>
     <Polish>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 mod folder! Please restart the game and include that mod folder.</Polish>
     <Hungarian>ERROR: You seem to be an ArmA 2 Standalone user, but have not loaded @CBA_A2 mod folder! Please restart the game and include that mod folder.</Hungarian>
+    <Japanese>エラー: Arma 2を動作しているようですが、@CBA_A2 MODが読み込まれていません！MODを読み込み、ゲームを再起動してください。</Japanese>
 </Key>
 <Key ID="STR_CBA_COMMON_OA_HAS_CBA_A2">
     <English>ERROR: You seem to be an Operation Arrowhead user, but have loaded the @CBA_A2 mod folder! Please restart the game without that mod folder.</English>
@@ -53,5 +57,6 @@
     <Russian>ERROR: You seem to be an Operation Arrowhead user, but have loaded the @CBA_A2 mod folder! Please restart the game without that mod folder.</Russian>
     <Polish>ERROR: You seem to be an Operation Arrowhead user, but have loaded the @CBA_A2 mod folder! Please restart the game without that mod folder.</Polish>
     <Hungarian>ERROR: You seem to be an Operation Arrowhead user, but have loaded the @CBA_A2 mod folder! Please restart the game without that mod folder.</Hungarian>
+    <Japanese>エラー: Operation Arrowheadを動作しているようですが、@CBA_A2 MODが読み込まれています！MODを読み込まずにゲームを起動してください。</Japanese>
 </Key>
 </Container></Package></Project>
