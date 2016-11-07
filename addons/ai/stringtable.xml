@@ -3,6 +3,7 @@
     <Package name="AI">
         <Key ID="STR_CBA_AI_Component">
             <English>Community Base Addons - Artificial Intelligence</English>
+            <Japanese>Community Base Addons - 人工知能</Japanese>
         </Key>
     </Package>
 </Project>
