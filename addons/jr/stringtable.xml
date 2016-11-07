@@ -3,6 +3,7 @@
     <Package name="JR">
         <Key ID="STR_CBA_JR_Component">
             <English>Community Base Addons - Joint Rails</English>
+            <Japanese>Community Base Addons - ジョイント レール</Japanese>
         </Key>
         <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
             <Original>Sound Suppressor MG</Original>
@@ -15,6 +16,7 @@
             <Portuguese>Metralhadora silenciador</Portuguese>
             <Russian>Глушитель для пулемета</Russian>
             <Spanish>Silenciador MG</Spanish>
+            <Japanese>MG用消音器</Japanese>
         </Key>
     </Package>
 </Project>
