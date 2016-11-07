@@ -3,6 +3,7 @@
     <Package name="Hashes">
         <Key ID="STR_CBA_Hashes_Component">
             <English>Community Base Addons - Hashes</English>
+            <Japanese>Community Base Addons - ハッシュ</Japanese>
         </Key>
     </Package>
 </Project>
