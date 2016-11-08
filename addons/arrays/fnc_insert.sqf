@@ -16,8 +16,8 @@ Returns:
 
 Examples:
     (begin example)
-        _arr = ["a", "b", "d", "e"];
-        [_arr, 2, "c"] call CBA_fnc_insert;
+        _arr = ["a", "b", "e"];
+        [_arr, 2, ["c", "d"]] call CBA_fnc_insert;
         // _arr is now ["a", "b", "c", "d", "e"]
     (end)
 
