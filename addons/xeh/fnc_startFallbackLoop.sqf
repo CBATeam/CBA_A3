@@ -28,7 +28,8 @@ GVAR(fallbackRunning) = true;
 {
     // don't run init and initPost event handlers on objects that already exist
     SETINITIALIZED(_x);
-} forEach (entities [[], [], true, true]);
+    true
+} count (entities [[], [], true, true]);
 
 GVAR(entities) = [];
 

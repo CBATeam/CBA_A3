@@ -55,7 +55,6 @@ if (_applyInitRetroactively && {!(_eventName in ["init", "initpost"])}) then {
 };
 
 // add events to already existing objects
-private _entities = entities [[], [], true, true];
 private _eventVarName = format [QGVAR(%1), _eventName];
 
 {
@@ -75,7 +74,8 @@ private _eventVarName = format [QGVAR(%1), _eventName];
             };
         };
     };
-} forEach _entities;
+    true
+} count (entities [[], [], true, true]);
 
 // define for units that are created later
 private _events = EVENTHANDLERS(_eventName,_className);
