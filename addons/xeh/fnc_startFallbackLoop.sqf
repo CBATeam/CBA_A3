@@ -28,12 +28,12 @@ GVAR(fallbackRunning) = true;
 {
     // don't run init and initPost event handlers on objects that already exist
     SETINITIALIZED(_x);
-} forEach (entities "" + allUnits);
+} forEach (entities [[], [], true, true]);
 
 GVAR(entities) = [];
 
 [{
-    private _entities = entities "" + allUnits;
+    private _entities = entities [[], [], true, true];
 
     if !(_entities isEqualTo GVAR(entities)) then {
         GVAR(entities) = _entities;
