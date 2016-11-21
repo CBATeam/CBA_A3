@@ -52,7 +52,7 @@ SCRIPT(clockwork);
 
         // If the list has no items, we can stop checking this state machine
         // No need to set the tick when it will get reset next frame anyways
-        if (count _list > 0) then {
+        if !(_list isEqualTo []) then {
             _stateMachine setVariable [QGVAR(tick), _tick + 1];
 
             private _current = _list select _tick;
