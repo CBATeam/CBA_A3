@@ -13,6 +13,12 @@ class CfgPatches {
         version = VERSION;
         versionDesc = "MRT Attachment Functions";
     };
+    class MRT_AccFncs { //compat
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {"CBA_main"};
+    };
 };
 
 class Extended_PreInit_EventHandlers {
