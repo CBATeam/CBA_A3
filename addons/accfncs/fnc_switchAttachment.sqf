@@ -36,8 +36,8 @@ if (!isNil "_switchItem") then {
             player addSecondaryWeaponItem _switchItem;
         };
     };
-    _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call bis_fnc_getcfgdata;
-    if (!isNil _switchItemHintText) then {
+    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call bis_fnc_getcfgdata;
+    if (!isNil "_switchItemHintText") then {
         hintSilent format ["%1",_switchItemHintText];
     };
     playSound "click";
