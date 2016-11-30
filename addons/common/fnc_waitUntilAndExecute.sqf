@@ -3,11 +3,14 @@ Function: CBA_fnc_waitUntilAndExecute
 
 Description:
     Executes a code once in unscheduled environment after a condition is true.
+    It's also possible to add a timeout, in which case a difference code is executed.
 
 Parameters:
-    _condition - The function to evaluate as condition. <CODE>
-    _statement - The function to run once the condition is true. <CODE>
-    _args      - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
+    _condition   - The function to evaluate as condition. <CODE>
+    _statement   - The function to run once the condition is true. <CODE>
+    _args        - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
+    _timeout     - Timeout for the condition in seconds. (optional) <NUMBER>
+    _timeoutCode - Will execute instead of _statement if the condition times out. (optional) <CODE>
 
 Passed Arguments:
     _this      - Parameters passed by this function. Same as '_args' above. <ANY>
@@ -25,8 +28,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_condition", {}, [{}]], ["_statement", {}, [{}]], ["_args", []]];
+params [["_condition", {}, [{}]], ["_statement", {}, [{}]], ["_args", []], ["_timeout", 1E9, [0]], ["_timeoutCode", {}, [{}]]];
 
-GVAR(waitUntilAndExecArray) pushBack [_condition, _statement, _args];
+if (_timeout == 1E9) then {
+    GVAR(waitUntilAndExecArray) pushBack [_condition, _statement, _args];
+} else {
+    GVAR(waitUntilAndExecTimeoutArray) pushBack [_condition, _statement, _args, _timeout, _timeoutCode, time];
+};
 
 nil

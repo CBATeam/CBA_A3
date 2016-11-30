@@ -80,6 +80,22 @@ GVAR(waitUntilAndExecArray) = [];
     if (_delete) then {
         GVAR(waitUntilAndExecArray) = GVAR(waitUntilAndExecArray) - [objNull];
     };
+
+    // Execute the waitUntilAndExecTimeout functions:
+    _delete = false;
+    {
+        private _timeout = time - (_x select 5) > (_x select 3);
+        if (_timeout || {(_x select 2) call (_x select 0)}) then {
+            (_x select 2) call (_x select ([1, 4] select _timeout));
+
+            // Mark the element for deletion so it's not executed ever again
+            GVAR(waitUntilAndExecTimeoutArray) set [_forEachIndex, objNull];
+            _delete = true;
+        };
+    } forEach GVAR(waitUntilAndExecTimeoutArray);
+    if (_delete) then {
+        REM(GVAR(waitUntilAndExecTimeoutArray),objNull);
+    };
 }] call CBA_fnc_compileFinal;
 
 // fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded
