@@ -1,6 +1,8 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {};
+
 // create diary
 player createDiarySubject ["CBA_docs", "CBA"];
 
