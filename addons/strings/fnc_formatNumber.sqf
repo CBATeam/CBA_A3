@@ -53,7 +53,7 @@ Examples:
     (end)
 
 Author:
-    Spooner
+    Spooner, PabstMirror
 ---------------------------------------------------------------------------- */
 #define DEBUG_MODE_NORMAL
 #include "script_component.hpp"
@@ -64,80 +64,28 @@ Author:
 
 SCRIPT(formatNumber);
 
-// -----------------------------------------------------------------------------
-
 params ["_number", ["_integerWidth",DEFAULT_INTEGER_WIDTH], ["_decimalPlaces",DEFAULT_DECIMAL_PLACES], ["_separateThousands",DEFAULT_SEPARATE_THOUSANDS]];
 
-private ["_integerPart"];
+private _isNegative = _number < 0;
+private _return = (abs _number) toFixed _decimalPlaces;
+private _dotIndex = if (_decimalPlaces == 0) then {count _return} else {_return find "."};
 
-private _decimalPoint = localize "STR_CBA_FORMAT_NUMBER_DECIMAL_POINT";
-private _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
 
-// Start by working out how to display the integer part of the number.
-if (_decimalPlaces > 0) then {
-    private _basePlaces = 10 ^ _decimalPlaces;
-    _number = round(_number * _basePlaces) / _basePlaces;
-    _integerPart = floor (abs _number);
-} else {
-    _integerPart = round (abs _number);
+while {_integerWidth > _dotIndex} do { // pad with leading zeros
+    _return = "0" + _return;
+    _dotIndex = _dotIndex + 1;
 };
-
-private _string = "";
-private _numIntegerDigits = 0;
-
-while {_integerPart > 0} do {
-    if (_numIntegerDigits > 0 && {(_numIntegerDigits mod 3) == 0} && {_separateThousands}) then {
-        _string = _thousandsSeparator + _string;
-    };
-
-    _string =  (str (_integerPart mod 10)) + _string;
-    _numIntegerDigits = _numIntegerDigits + 1;
-
-    _integerPart = floor (_integerPart / 10);
+if ((_integerWidth == 0) && {_return select [0, 1] == "0"}) then {
+    _return = _return select [1]; // toFixed always adds zero left of decimal point, remove it
 };
-
-// Pad integer with 0s
-while {_numIntegerDigits < _integerWidth} do {
-    if (_numIntegerDigits > 0 && {(_numIntegerDigits mod 3) == 0} && {_separateThousands}) then {
-        _string = _thousandsSeparator + _string;
-    };
-
-    _string = "0" + _string;
-
-    _numIntegerDigits = _numIntegerDigits + 1;
-};
-
-// Add a - sign if needed.
-if (_number < 0) then {
-    _string = "-" + _string;
-};
-
-// Add decimal digits, if necessary.
-if (_decimalPlaces > 0) then {
-
-    //Use abs to prevent extra `-` signs and so floor doesn't get wrong value
-    _number = abs _number;
-    // Round number to correct for floating point precision and disable correct value.
-    _number = round ((_number - (floor _number)) * (10 ^ _decimalPlaces));
-    _string = _string + _decimalPoint;
-
-    private _multiplier = 10;
-    for "_i" from _decimalPlaces to 1 step -1 do {
-        private _digit = floor ((_number mod (10^_i))/10^(_i -1));
-
-        // If the digit has become infintesimal, pad to the end with zeroes.
-        if (!(finite _digit)) exitWith {
-            private "_j";
-
-            for "_j" from _decimalPlaces to _i step -1 do {
-                _string = _string + "0";
-            };
-        };
-
-        _string = _string + (str _digit);
-
-        _multiplier = _multiplier * 10;
+if (_separateThousands) then { // add localized thousands seperator "1,000"
+    private _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
+    for "_index" from (_dotIndex - 3) to 1 step -3 do {
+        _return = (_return select [0, _index]) + _thousandsSeparator + (_return select [_index]);
+        _dotIndex = _dotIndex + 1;
     };
 };
 
-_string; // Return.
+if (_isNegative) then {_return = "-" + _return;}; // re-add negative sign
+
+_return
