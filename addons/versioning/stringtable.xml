@@ -3,6 +3,7 @@
     <Package name="Versioning">
         <Key ID="STR_CBA_Versioning_Component">
             <English>Community Base Addons - Versioning</English>
+            <Japanese>Community Base Addons - バージョニング</Japanese>
         </Key>
     </Package>
 </Project>

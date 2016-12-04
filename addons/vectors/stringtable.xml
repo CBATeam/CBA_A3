@@ -3,6 +3,7 @@
     <Package name="Vectors">
         <Key ID="STR_CBA_Vectors_Component">
             <English>Community Base Addons - Vectors</English>
+            <Japanese>Community Base Addons - ベクター</Japanese>
         </Key>
     </Package>
 </Project>

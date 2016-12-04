@@ -3,6 +3,7 @@
     <Package name="Strings">
         <Key ID="STR_CBA_Strings_Component">
             <English>Community Base Addons - Strings</English>
+            <Japanese>Community Base Addons - ストリングス</Japanese>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_DECIMAL_POINT">
             <English>.</English>
@@ -13,6 +14,7 @@
             <French>,</French>
             <Spanish>,</Spanish>
             <Italian>,</Italian>
+            <Japanese>,</Japanese>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
@@ -23,6 +25,7 @@
             <French> </French>
             <Spanish> </Spanish>
             <Italian> </Italian>
+            <Japanese>,</Japanese>
         </Key>
     </Package>
 </Project>

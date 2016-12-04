@@ -3,6 +3,7 @@
     <Package name="Network">
         <Key ID="STR_CBA_Network_Component">
             <English>Community Base Addons - Network</English>
+            <Japanese>Community Base Addons - ネットワーク</Japanese>
         </Key>
     </Package>
 </Project>
