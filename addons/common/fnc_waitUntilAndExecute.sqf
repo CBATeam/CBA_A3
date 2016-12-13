@@ -22,18 +22,41 @@ Examples:
     (begin example)
         [{(_this select 0) == vehicle (_this select 0)}, {(_this select 0) setDamage 1;}, [player]] call CBA_fnc_waitUntilAndExecute;
     (end)
+    (begin example)
+        [{backpackCargo _this isEqualTo []}, {
+            deleteVehicle _this;
+        }, _holder, 5, {hint backpackCargo _this;}] call CBA_fnc_waitUntilAndExecute;
+    (end)
 
 Author:
     joko // Jonas, donated from ACE3
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_condition", {}, [{}]], ["_statement", {}, [{}]], ["_args", []], ["_timeout", 1E9, [0]], ["_timeoutCode", {}, [{}]]];
+params [
+    ["_condition", {}, [{}]],
+    ["_statement", {}, [{}]],
+    ["_args", []],
+    ["_timeout", 0, [0]],
+    ["_timeoutCode", {}, [{}]]
+];
 
-if (_timeout == 1E9) then {
+if (_timeout == 0) then {
     GVAR(waitUntilAndExecArray) pushBack [_condition, _statement, _args];
 } else {
-    GVAR(waitUntilAndExecTimeoutArray) pushBack [_condition, _statement, _args, _timeout, _timeoutCode, time];
+    GVAR(waitUntilAndExecArray) pushBack [{
+        params ["_condition", "_statement", "_args", "_timeout", "_timeoutCode", "_startTime"];
+
+        if (CBA_missionTime - _startTime > _timeout) exitWith {
+            _args call _timeoutCode;
+            true
+        };
+        if (_args call _condition) exitWith {
+            _args call _statement;
+            true
+        };
+        false
+    }, {}, [_condition, _statement, _args, _timeout, _timeoutCode, CBA_missionTime]];
 };
 
 nil
