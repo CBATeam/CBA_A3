@@ -1,10 +1,10 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 #define PREFIX cba
-// TODO: Consider Mod-wide or Component-narrow versions (or both, depending on wishes!)
+// TODO: Consider Mod-wide or Component-narrow versions  (or both, depending on wishes!)
 #define MAJOR 3
 #define MINOR 1
-#define PATCHLVL 1
-#define BUILD 161012
+#define PATCHLVL 2
+#define BUILD 161105
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
