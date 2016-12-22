@@ -1,4 +1,25 @@
-
+/* ----------------------------------------------------------------------------
+    Function: cba_modFunctions_fnc_compileModFunctions
+    
+    Description:
+        Loads every class* in CfgModFunctions-Config-File.
+        *every class = classes which are valid for this script
+    
+    Parameters:
+        -> just fill out the config file CfgModFunctions :)
+    
+    Return:
+        - nothing
+        
+    Examples:
+        - nothing needed - but for "those" geeks:
+        (begin example)
+        call cba_modFunctions_fnc_compileModFunctions;
+        (end)
+        
+    Author:
+        Vincent Heins (2016-12-22)
+---------------------------------------------------------------------------- */
 {
     private _pboConfig = _x;
     private _pboName = (configName _pboConfig);
