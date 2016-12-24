@@ -51,8 +51,8 @@ _position = _position call CBA_fnc_getPos;
 // Clear existing waypoints first
 [_group] call CBA_fnc_clearWaypoints;
 
-// Can pass paremeters straight through to addWaypoint
-private _this =+ _this;
+// Can pass parameters straight through to addWaypoint
+_this =+ _this;
 _this set [2,0];
 if (count _this > 3) then {
     _this deleteAt 3;
