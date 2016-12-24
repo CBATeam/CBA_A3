@@ -68,14 +68,7 @@ params [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_localGroups = [];
-
-{
-    // Find owner of unit if headless client is present
-    if (local _x) then {
-        _localGroups pushBack _x;
-    };
-} forEach _groups;
+_localGroups = _groups select { local _x };
 
 if (_localGroups isEqualTo []) exitWith {};
 
