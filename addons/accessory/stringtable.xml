@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="accfncs">
-        <Key ID="STR_CBA_accfncs_railNext">
+    <Package name="accessory">
+        <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_railNext_tooltip">
+        <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_railPrev">
+        <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_railPrev_tooltip">
+        <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_opticNext">
+        <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_opticNext_tooltip">
+        <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_opticPrev">
+        <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
         </Key>
-        <Key ID="STR_CBA_accfncs_opticPrev_tooltip">
+        <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
         </Key>
     </Package>
