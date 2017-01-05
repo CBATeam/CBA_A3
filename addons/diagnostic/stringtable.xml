@@ -3,6 +3,7 @@
     <Package name="Diagnostics">
         <Key ID="STR_CBA_Diagnostic_Component">
             <English>Community Base Addons - Diagnostics</English>
+            <Japanese>Community Base Addons - 診断</Japanese>
         </Key>
     </Package>
 </Project>

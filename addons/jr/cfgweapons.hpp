@@ -563,7 +563,7 @@ class CfgWeapons {
         };
     };
 
-    class SMG_02_base_F: Rifle_Base_F {
+    class SMG_02_base_F: Rifle_Short_Base_F {
         class WeaponSlotsInfo;
     };
 
@@ -645,6 +645,10 @@ class CfgWeapons {
             class CowsSlot : asdg_OpticRail1913_short {
                 iconPosition[] = {0.45, 0.28};
                 iconScale = 0.2;
+            };
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.25, 0.35};
+                iconScale = 0.25;
             };
         };
     };

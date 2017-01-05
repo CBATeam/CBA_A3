@@ -1,28 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Main">
         <Key ID="STR_CBA_Keybinding_Component">
             <English>Community Base Addons - Keybinding</English>
+            <Japanese>Community Base Addons - キー割り当て</Japanese>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
             <Polish>Konfiguracja addonów</Polish>
+            <Japanese>アドオンの設定</Japanese>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
             <Polish>Konfiguracja bazy</Polish>
+            <Japanese>基本設定</Japanese>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Code %1</English>
             <Polish>Nieznany klawisz %1</Polish>
+            <Japanese>%1のコードは不明です</Japanese>
         </Key>
         <Key ID="STR_cba_keybinding_canNotEdit">
             <English>You must load an intro/world/mission to view/change.</English>
             <Polish>Musisz wczytać intro/świat/misję by móc zmieniać/podglądać klawisze.</Polish>
+            <Japanese>閲覧や変更にはイントロかワールド、ミッションを読み込む必要があります。</Japanese>
         </Key>
         <Key ID="STR_cba_keybinding_doubleClickToStart">
             <English>Double click any action to change its binding</English>
             <Polish>Naciśnij dwukrotnie na daną akcję aby zmienić jej klawisz</Polish>
+            <Japanese>ダブル クリックで割り当てを変更できます</Japanese>
         </Key>
     </Package>
 </Project>

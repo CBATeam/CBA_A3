@@ -21,6 +21,13 @@ if (ISPROCESSED(missionNamespace)) exitWith {
 };
 SETPROCESSED(missionNamespace);
 
+add3DENEventHandler ["OnTerrainNew", { // switching terrains in 3den will reset missionNamespace
+    if (!ISPROCESSED(missionNamespace)) then { 
+        diag_log text "[XEH]: Re-running preInit after 3den terrain switch";
+        [] call CBA_fnc_preInit;
+    };
+}];
+
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
 XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version"));
