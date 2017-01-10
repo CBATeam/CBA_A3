@@ -162,10 +162,16 @@ if (_id != -1) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
             };
+
+            private _data = vehicle _player;
+            if !(_data isEqualTo GVAR(oldVehicle)) then {
+                GVAR(oldVehicle) = _data;
+                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+            };
         }];
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {
-            private _data = visibleMap;
+            params ["_data"]; //visibleMap is updated one frame later
 
             if !(_data isEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
