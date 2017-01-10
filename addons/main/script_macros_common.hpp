@@ -355,25 +355,6 @@ Author:
 #define MESSAGE_WITH_TITLE(TITLE,MESSAGE) LOG_SYS_FILELINENUMBERS(TITLE,MESSAGE)
 
 /* -------------------------------------------
-Macro: RETNIL()
-    If a variable is undefined, return the value nil. Otherwise, return the
-    variable itself.
-
-Parameters:
-    VARIABLE - the variable to check
-
-Example:
-    (begin example)
-        // _var is undefined
-        hintSilent format ["_var=%1", RETNIL(_var)]; // "_var=any"
-    (end example)
-
-Author:
-    Alef (see CBA issue #8514)
-------------------------------------------- */
-#define RETNIL(VARIABLE) ([VARIABLE] param [0])
-
-/* -------------------------------------------
 Macro: RETDEF()
     If a variable is undefined, return the default value. Otherwise, return the
     variable itself.
@@ -392,7 +373,26 @@ Example:
 Author:
     654wak654
 ------------------------------------------- */
-#define RETDEF(VARIABLE,DEFAULT_VALUE) ([VARIABLE] param [0,DEFAULT_VALUE])
+#define RETDEF(VARIABLE,DEFAULT_VALUE) (if (isNil QUOTE(VARIABLE)) then [{DEFAULT_VALUE}, {VARIABLE}])
+
+/* -------------------------------------------
+Macro: RETNIL()
+    If a variable is undefined, return the value nil. Otherwise, return the
+    variable itself.
+
+Parameters:
+    VARIABLE - the variable to check
+
+Example:
+    (begin example)
+        // _var is undefined
+        hintSilent format ["_var=%1", RETNIL(_var)]; // "_var=any"
+    (end example)
+
+Author:
+    Alef (see CBA issue #8514)
+------------------------------------------- */
+#define RETNIL(VARIABLE) RETDEF(VARIABLE,nil)
 
 /* -------------------------------------------
 Macros: TRACE_n()
