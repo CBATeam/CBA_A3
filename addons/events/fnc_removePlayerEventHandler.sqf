@@ -57,8 +57,10 @@ default {nil};
 if (!isNil QGVAR(playerEHInfo)) then {
     GVAR(playerEHInfo) deleteAt (GVAR(playerEHInfo) find [_type, _id]);
 
-    if (count GVAR(playerEHInfo) == 1) then {
-        removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
+    if (count GVAR(playerEHInfo) == 3) then {
+        removeMissionEventHandler ["EachFrame",         GVAR(playerEHInfo) select 0];
+        removeMissionEventHandler ["PlayerViewChanged", GVAR(playerEHInfo) select 1];
+        removeMissionEventHandler ["Map",               GVAR(playerEHInfo) select 2];
         GVAR(playerEHInfo) = nil;
     };
 };
