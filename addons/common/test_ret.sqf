@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(test_config);
 
-// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_config.sqf";
+// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_ret.sqf";
 
 private ["_funcName", "_result"];
 
