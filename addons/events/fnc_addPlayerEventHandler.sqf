@@ -179,27 +179,30 @@ if (_id != -1) then {
             };
         }];
 
-        // emulate change to first value from default
-        {
-            private _player = call CBA_fnc_currentUnit;
+        // emulate change to first value from default one frame later
+        // using spawn-dc to not having to wait for postInit to complete
+        0 spawn {
+            {
+                private _player = call CBA_fnc_currentUnit;
 
-            if !(_player isEqualTo GVAR(oldUnit)) then {
-                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
-                GVAR(oldUnit) = _player;
-            };
+                if !(_player isEqualTo GVAR(oldUnit)) then {
+                    [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                    GVAR(oldUnit) = _player;
+                };
 
-            private _data = vehicle _player;
-            if !(_data isEqualTo GVAR(oldVehicle)) then {
-                GVAR(oldVehicle) = _data;
-                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
+                private _data = vehicle _player;
+                if !(_data isEqualTo GVAR(oldVehicle)) then {
+                    GVAR(oldVehicle) = _data;
+                    [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
 
-            _data = visibleMap;
-            if !(_data isEqualTo GVAR(oldVisibleMap)) then {
-                GVAR(oldVisibleMap) = _data;
-                [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
-        } call CBA_fnc_execNextFrame;
+                _data = visibleMap;
+                if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                    GVAR(oldVisibleMap) = _data;
+                    [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
+            } call CBA_fnc_directCall;
+        };
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];
