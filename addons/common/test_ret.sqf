@@ -28,4 +28,10 @@ TEST_TRUE(_result isEqualTo 1,_funcName);
 _result = RETNIL(_undefined);
 TEST_TRUE(isNil "_result",_funcName);
 
+_result = RETNIL(abs -1);
+TEST_TRUE(_result isEqualTo 1,_funcName);
+
+_result = RETNIL(abs _undefined);
+TEST_TRUE(isNil "_result",_funcName);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
