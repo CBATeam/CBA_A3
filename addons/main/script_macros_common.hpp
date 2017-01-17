@@ -373,7 +373,7 @@ Example:
 Author:
     654wak654
 ------------------------------------------- */
-#define RETDEF(VARIABLE,DEFAULT_VALUE) (if (isNil QUOTE(VARIABLE)) then [{DEFAULT_VALUE}, {VARIABLE}])
+#define RETDEF(VARIABLE,DEFAULT_VALUE) (if (isNil {VARIABLE}) then [{DEFAULT_VALUE}, {VARIABLE}])
 
 /* -------------------------------------------
 Macro: RETNIL()
