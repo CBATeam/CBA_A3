@@ -57,6 +57,9 @@ if (_applyInitRetroactively && {!(_eventName in ["init", "initpost"])}) then {
 // add events to already existing objects
 private _eventVarName = format [QGVAR(%1), _eventName];
 
+private _entities = (entities [[], [], true, true]);
+_entities = _entities arrayIntersect _entities; // entities can return duplicates at postInit - #567
+
 {
     if (_x isKindOf _className) then {
         private _unit = _x;
@@ -75,7 +78,7 @@ private _eventVarName = format [QGVAR(%1), _eventName];
         };
     };
     true
-} count (entities [[], [], true, true]);
+} count _entities;
 
 // define for units that are created later
 private _events = EVENTHANDLERS(_eventName,_className);

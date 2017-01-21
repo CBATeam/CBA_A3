@@ -87,4 +87,8 @@
     "WeaponDisassembled", \
     "WeaponDeployed", \
     "WeaponRested", \
-    "Reloaded"
+    "Reloaded", \
+    "FiredMan", \
+    "TurnIn", \
+    "TurnOut", \
+    "Deleted"
