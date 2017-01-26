@@ -51,7 +51,7 @@ if (_zRef isEqualType "") then {
             _area pushBack (rectangular _zRef);
         } else {
             // Validate that area is of correct form
-            if (_area isEqualTypeArray [[],0,0,0,true]) then {
+            if (_zRef isEqualTypeArray [[],0,0,0,true]) then {
                 _area = _zRef;
             };
         };
