@@ -63,6 +63,7 @@ if (!isNil "_switchItem") then {
         hintSilent format ["%1",_switchItemHintText];
     };
     playSound "click";
+    ["CBA_switchAttachment", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
 } else {
     playSound "ClickSoft";
 };
