@@ -1,6 +1,6 @@
 release/*
 @*
-*.zip
+CBA_A3_*.zip
 include/*
 *.cache
 *.pbo
