@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
-private _ctrlSettingPreview = _display ctrlCreate ["RscText", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSettingPreview;
+private _ctrlSettingPreview = _display ctrlCreate ["RscText", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSettingPreview;
 
 _ctrlSettingPreview ctrlSetPosition [
     POS_W(9.5),
@@ -28,8 +28,8 @@ _ctrlSettingPreview setVariable [QGVAR(data), _data];
 _linkedControls append [_ctrlSettingPreview, []];
 
 for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
-    private _ctrlSetting = _display ctrlCreate [SLIDER_TYPES param [_index, "RscXSliderH"], count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-    _contols pushBack _ctrlSetting;
+    private _ctrlSetting = _display ctrlCreate [SLIDER_TYPES param [_index, "RscXSliderH"], count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+    _controls pushBack _ctrlSetting;
 
     _ctrlSetting ctrlSetPosition [
         POS_W(16),
@@ -52,7 +52,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls"];
+        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
         private _linkedControl = _linkedControls select _index select 1;
         _linkedControl ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
 
@@ -60,10 +60,14 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         _color set [_index, _value];
         _ctrlSettingPreview ctrlSetBackgroundColor _color;
         SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
+
+        //If new setting is same as default value, grey out the default button
+        (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
+        _defaultControl ctrlEnable (!(_currentValue isEqualTo _defaultValue));
     }];
 
-    private _ctrlSettingEdit = _display ctrlCreate ["RscEdit", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-    _contols pushBack _ctrlSettingEdit;
+    private _ctrlSettingEdit = _display ctrlCreate ["RscEdit", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+    _controls pushBack _ctrlSettingEdit;
 
     _ctrlSettingEdit ctrlSetPosition [
         POS_W(24),
@@ -89,7 +93,7 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         (_control getVariable QGVAR(data)) params ["_setting", "_source", "_currentValue", "_color"];
         private _index = _control getVariable QGVAR(index);
 
-        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls"];
+        (_control getVariable QGVAR(linkedControls)) params ["_ctrlSettingPreview", "_linkedControls", "_defaultControl"];
 
         private _linkedControl = _linkedControls select _index select 0;
         _linkedControl sliderSetPosition _value;
@@ -98,6 +102,10 @@ for "_index" from 0 to (((count _defaultValue max 3) min 4) - 1) do {
         _color set [_index, _value];
         _ctrlSettingPreview ctrlSetBackgroundColor _color;
         SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
+
+        //If new setting is same as default value, grey out the default button
+        (_defaultControl getVariable QGVAR(data)) params ["", "", "_defaultValue"];
+        _defaultControl ctrlEnable (!(_currentValue isEqualTo _defaultValue));
     }];
 
     _ctrlSettingEdit ctrlAddEventHandler ["KillFocus", {

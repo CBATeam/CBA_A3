@@ -111,7 +111,8 @@ if !(isNull _display) then {
 
                     // Add the row.
                     _lbCount = _lnb lnbAddRow [_actionName, _keyString];
-                    _lnb lbSetTooltip [_lbCount, _toolTip];
+                    _lnb lbSetTooltip [2*_lbCount, _toolTip];
+                    _lnb lbSetTooltip [2*_lbCount + 1, _toolTip];
 
                     // Format the array containing the indexes referred to by the action name.
                     // It is stored as a string.

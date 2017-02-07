@@ -8,7 +8,7 @@ Description:
 
 Parameters:
     _group - The group that will search [Group or Object]
-    _area - The area to search [Marker or Trigger]
+    _area - The area to search [Marker, Trigger or Area Array]
 
 Optional:
     _behaviour - Waypoint behaviour [String, defaults to "UNCHANGED"]
@@ -24,6 +24,7 @@ Returns:
 Examples:
    (begin example)
    [this, "Mark1"] call CBA_fnc_taskSearchArea;
+   [(allGroups select 2), [getPos player, 200, 200, 0, false]] call CBA_fnc_taskSearchArea;
    (end)
 
 Author:
@@ -32,7 +33,7 @@ Author:
 #include "script_component.hpp"
 params [
     ["_group", objNull, [objNull,grpNull]],
-    ["_area", "", ["",objNull]],
+    ["_area", "", ["",objNull,locationNull,[]], 5],
     ["_behaviour", "UNCHANGED", [""]],
     ["_combat", "NO CHANGE", [""]],
     ["_speed", "UNCHANGED", [""]],
@@ -61,19 +62,24 @@ _args params ["_area","_behaviour","_combat","_speed","_formation","_onComplete"
 private _pos = [_area] call CBA_fnc_randPosArea;
 
 // Exit if any bad input was used (has to run after all the above code)
-if ((_pos isEqualTo []) || {_area isEqualTo ""} || {isNull _group}) exitWith {};
+if ((_pos isEqualTo []) || {_area isEqualTo ""} || {isNull _group}) exitWith {ERROR_3("Bad Input [_pos: %1][_area: %2][_group: %3]", _pos, _area, _group);};
 
 // Prepare recursive function call statement
-private _statement = "[this] call CBA_fnc_taskSearchArea;";
+private _statements = ["[this] call CBA_fnc_taskSearchArea"];
 
 // Prepare building search statement
 private _building = nearestBuilding _pos;
 if ((_building distanceSqr _pos) < 400) then {
-    _statement = _statement + "[this] call CBA_fnc_searchNearby;";
+    // Clear waypoint to prevent getting stuck in a search loop
+    _statements append [
+        "deleteWaypoint [group this, currentWaypoint (group this)]",
+        "[group this] call CBA_fnc_searchNearby"
+    ];
 };
 
 // Inject the statement in this order to ensure valid syntax
-_onComplete = _statement + _onComplete;
+_statements pushBack _onComplete;
+_onComplete = _statements joinString ";";
 
 // Add the waypoint
 [

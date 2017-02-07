@@ -3,6 +3,7 @@
     <Package name="Arrays">
         <Key ID="STR_CBA_Arrays_Component">
             <English>Community Base Addons - Arrays</English>
+            <Japanese>Community Base Addons - アライ</Japanese>
         </Key>
     </Package>
 </Project>

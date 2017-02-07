@@ -33,7 +33,7 @@ Author:
 params [["_setting", "", [""]], "_value", ["_forced", nil, [false]], ["_source", "client", [""]]];
 
 if (!isNil "_value" && {!([_setting, _value] call FUNC(check))}) exitWith {
-    diag_log text format ["[CBA] (settings): Value %1 is invalid for setting %2.", _value, str _setting];
+    WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
     1
 };
 
@@ -76,7 +76,7 @@ switch (toLower _source) do {
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
-            if (serverCommandAvailable "#logout") then {
+            if (IS_ADMIN_LOGGED) then {
                 [QGVAR(setSettingServer), [_setting, _value, _forced]] call CBA_fnc_serverEvent;
             } else {
                 _return = 12;

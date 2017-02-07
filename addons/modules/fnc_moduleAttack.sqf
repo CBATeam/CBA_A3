@@ -49,14 +49,7 @@ params [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_localGroups = [];
-
-{
-    // Find owner of unit if headless client is present
-    if (local _x) then {
-        _localGroups pushBack _x;
-    };
-} forEach _groups;
+_localGroups = _groups select { local _x };
 
 if (_localGroups isEqualTo []) exitWith {};
 
@@ -70,8 +63,7 @@ if (isNil "_attackPos") then {_attackPos = getPos _logic;};
 
 // Set final variables
 _searchRadius = _logic getVariable ["searchRadius",0];
-_allowOverride = _logic getVariable ["allowOverride","no"];
-if (_allowOverride isEqualTo "yes") then {_allowOverride = true;}else{_allowOverride = false;};
+_allowOverride = _logic getVariable ["allowOverride",false];
 
 // Set group(s) to attack
 {

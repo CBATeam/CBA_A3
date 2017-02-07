@@ -77,7 +77,7 @@ _display setVariable [QGVAR(controls), []];
         private _isOverwritten = [_setting, _source] call FUNC(isOverwritten);
 
         // ----- create setting changer control
-        private _contols = _ctrlOptionsGroup getVariable QGVAR(controls);
+        private _controls = _ctrlOptionsGroup getVariable QGVAR(controls);
         private _linkedControls = [];
 
         switch (toUpper _settingType) do {

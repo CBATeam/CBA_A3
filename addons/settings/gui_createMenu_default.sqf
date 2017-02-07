@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
-private _ctrlSettingDefault = _display ctrlCreate ["RscButtonMenu", count _contols + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
-_contols pushBack _ctrlSettingDefault;
+private _ctrlSettingDefault = _display ctrlCreate ["RscButtonMenu", count _controls + IDC_OFFSET_SETTING, _ctrlOptionsGroup];
+_controls pushBack _ctrlSettingDefault;
 
 _ctrlSettingDefault ctrlSetPosition [
     POS_W(27),
@@ -22,6 +22,9 @@ _ctrlSettingDefault ctrlAddEventHandler ["ButtonClick", {
 
     (_control getVariable QGVAR(data)) params ["_setting", "_source", "_defaultValue", "_settingType", "_settingData"];
     SET_TEMP_NAMESPACE_VALUE(_setting,_defaultValue,_source);
+
+    // Can disable button as the setting will now be the default
+    _control ctrlEnable false;
 
     private _linkedControls = _control getVariable QGVAR(linkedControls);
 
@@ -71,6 +74,6 @@ _ctrlSettingDefault ctrlAddEventHandler ["ButtonClick", {
 
 _linkedControls pushBack _ctrlSettingDefault;
 
-if !(_enabled) then {
+if ((!_enabled) || {_currentValue isEqualTo _defaultValue}) then {
     _ctrlSettingDefault ctrlEnable false;
 };

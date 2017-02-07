@@ -24,6 +24,13 @@ private _stateMachine = [{allGroups select {!isPlayer leader _x}}, true] call CB
     } forEach (units _this);
 }, "InCombat"] call CBA_statemachine_fnc_addTransition;
 
+[_stateMachine, "Initial", "Alert", ["MyAddon_AlarmRaised"], {true}, {
+    {
+        _x setSkill ["spotDistance", ((_x skill "spotDistance") * 1.5) min 1];
+        _x setSkill ["spotTime",     ((_x skill "spotTime")     * 1.5) min 1];
+    } forEach (units _this);
+}, "Alarm"] call CBA_statemachine_fnc_addEventTransition;
+
 // This makes sure you can execute this through the debug console
 _stateMachine spawn {
     sleep 0.1;

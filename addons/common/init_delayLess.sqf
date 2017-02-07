@@ -4,7 +4,7 @@
 // Generic twice-a-second loop instantiator(?)
 GVAR(d) = [];
 
-FUNC(addTriggerHandler) = {
+[QFUNC(addTriggerHandler), {
         private ["_c"];
     // #include "script_component.hpp"
     // #define DEBUG_MODE_FULL
@@ -18,9 +18,8 @@ FUNC(addTriggerHandler) = {
         GVAR(d_trigger) setTriggerStatements ["{ if (count _x == 2) then { (_x select 0) call (_x select 1) } } forEach cba_common_d", "", ""];
     };
     _c; // return index, so can either change array parameter count, or empty?
-};
+}] call CBA_fnc_compileFinal;
 // TODO: Cleanup functions?
 
 // Specific twice-a-second loop
 // TODO: Should be a function that creates a trigger per loop, and uses onAct, onDeact, and removes the trigger on finish?
-

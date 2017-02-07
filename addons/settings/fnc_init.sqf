@@ -130,7 +130,7 @@ if (!isNil "_settingInfo") then {
     if !([_setting, _value] call FUNC(check)) then {
         _value = [_setting, "default"] call FUNC(get);
         [_setting, _value, _forced, "client"] call FUNC(set);
-        diag_log text format ["[CBA] (settings): Invalid value for setting %1. Fall back to default value.", str _setting];
+        WARNING_1("Invalid value for setting %1. Fall back to default value.",str _setting);
     };
 
     GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
@@ -161,7 +161,7 @@ if (!isNil "_settingInfo") then {
 if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
-    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;  
+    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
 };
 
 0

@@ -9,12 +9,6 @@ class CfgFunctions
     {
         class Diagnostic
         {
-            // CBA_fnc_benchmarkFunction
-            class benchmarkFunction
-            {
-                description = "Benchmarks a function to see how long it will take to execute.";
-                file = "\x\cba\addons\diagnostic\fnc_benchmarkFunction.sqf";
-            };
             // CBA_fnc_debug
             class debug
             {
@@ -33,17 +27,26 @@ class CfgFunctions
                 description = "Logs a message to the RPT log.";
                 file = "\x\cba\addons\diagnostic\fnc_log.sqf";
             };
-            // CBA_fnc_peek
-            class peek
-            {
-                description = "Peek at variable on the server To receive the variable content back, you will have to [""cba_diagnostics_receive_peak"", {_this call myFunction}] call CBA_fnc_addEventHandler;";
-                file = "\x\cba\addons\diagnostic\fnc_peek.sqf";
-            };
             // CBA_fnc_test
             class test
             {
                 description = "Runs unit tests for an addon or component.";
                 file = "\x\cba\addons\diagnostic\fnc_test.sqf";
+            };
+        };
+        class ProjectileTracking
+        {
+            // CBA_fnc_addUnitTrackProjectiles
+            class fnc_addUnitTrackProjectiles
+            {
+                description = "Adds projectile tracking to a given unit or vehicle.";
+                file = "\x\cba\addons\diagnostic\fnc_addUnitTrackProjectiles.sqf";
+            };
+            // CBA_removeUnitTrackProjectiles
+            class fnc_removeUnitTrackProjectiles
+            {
+                description = "Removes projectile tracking from a given unit or vehicle.";
+                file = "\x\cba\addons\diagnostic\fnc_removeUnitTrackProjectiles.sqf";
             };
         };
     };

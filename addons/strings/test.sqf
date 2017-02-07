@@ -17,4 +17,4 @@ LOG("=== Testing Strings ===");
     call compile preprocessFileLineNumbers format ["\x\cba\addons\strings\test_%1.sqf", _x];
 } forEach TESTS;
 
-nil;
+nil

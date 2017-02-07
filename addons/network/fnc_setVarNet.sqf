@@ -1,79 +1,69 @@
-/*
+/* ----------------------------------------------------------------------------
 Function: CBA_fnc_setVarNet
 
 Description:
-	Same as setVariable ["name",var, true] but only broadcasts when the value of var is different to the one which is already saved in the variable space.
+    Broadcast a object variable value to all machines. Used to reduce network traffic.
 
-	Checks also for different types. Nil as value gets always broadcasted.
-
-	Should reduce network traffic.
+    Does only broadcast the new value if it doesn't exist in the object namespace or
+    if the new value is different to the one in object namespace.
+    Nil as value gets always broadcasted.
 
 Parameters:
-	_object - Name of a marker [Object, Group]
-	_variable - Name of the variable in variable space [String]
-	_value - Value to check and broadcast if it is not the same as the previous one, code will always be broadcasted [Any]
+    _object  - Object namespace <OBJECT, GROUP>
+    _varName - Name of the public variable <STRING>
+    _value   - Value to broadcast <ANY>
 
 Returns:
-	True if broadcasted, otherwise false [Boolean]
+    True if if broadcasted, otherwise false <BOOLEAN>
 
 Example:
-	(begin example)
-		// This will only broadcast "somefish" if it either doesn't exist yet in the variable space or the value is not 50
-		_broadcasted = [player, "somefish", 50] call CBA_fnc_setVarNet;
-	(end)
+    (begin example)
+        // This will only broadcast "somefish" if it either doesn't exist yet in the variable space or the value is not 50
+        _broadcasted = [player, "somefish", 50] call CBA_fnc_setVarNet;
+    (end)
 
 Author:
-	Xeno
-*/
+    Xeno, commy2
+---------------------------------------------------------------------------- */
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_object","_variable","_value"];
+params [["_object", objNull, [objNull, grpNull]], ["_varName", "", [""]], "_value"];
 
-// does setVariable public also work for other types ??
-if (typeName _object != "OBJECT" && {typeName _object != "GROUP"}) exitWith {
-	WARNING("The first parameter is not of type object or group!");
-	false
+if (isNull _object) exitWith {
+    WARNING("Object wrong type, undefined or null");
+    false
 };
 
-private ["_var","_s"];
-
-_var = _object getVariable _variable;
-
-if (isNil "_var") exitWith {
-	TRACE_3("Broadcasting",_object,_variable,_value);
-	_object setVariable [_variable, _value, true];
-	true
+if (_varName isEqualTo "") exitWith {
+    WARNING("Variable name is wrong type or undefined");
+    false
 };
 
-_s = if (typeName _value != typeName _var) then {
-	TRACE_2("Different typenames",_var,_value);
-	false
+private _currentValue = _object getVariable _varName;
+
+if (isNil "_currentValue") then {
+    if (isNil "_value") then {
+        TRACE_2("Not broadcasting. Current and new value are undefined",_object,_varName);
+        false // return
+    } else {
+        TRACE_3("Broadcasting previously undefined value",_object,_varName,_value);
+        _object setVariable [_varName, _value, true];
+        true // return
+    };
 } else {
-	switch (typename _value) do {
-		case "BOOL": {
-			((_var && {_value}) || {(!_var && {!_value})})
-		};
-		case "ARRAY": {
-			(_var isEqualTo _value)
-		};
-		case "CODE": {
-			false
-		};
-		case "SCRIPT": {
-			false
-		};
-		default {
-			(_var == _value)
-		};
-	}
+    if (isNil "_value") then {
+        TRACE_2("Broadcasting nil",_object,_varName);
+        _object setVariable [_varName, nil, true];
+        true // return
+    } else {
+        if (_value isEqualTo _currentValue) then {
+            TRACE_4("Not broadcasting. Current and new value are equal",_object,_varName,_currentValue,_value);
+            false // return
+        } else {
+            TRACE_3("Broadcasting",_object,_varName,_value);
+            _object setVariable [_varName, _value, true];
+            true // return
+        };
+    };
 };
-if (_s) exitwith {
-	TRACE_2("Not broadcasting, _var and _value are equal",_var,_value);
-	false
-};
-
-TRACE_3("Broadcasting",_object,_variable,_value);
-_object setVariable [_variable, _value, true];
-
-true

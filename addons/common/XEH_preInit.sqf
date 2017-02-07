@@ -8,14 +8,14 @@ ADDON = false;
 
 CBA_logic = objNull;
 
-FUNC(log) = {
+[QFUNC(log), {
     diag_log text _this;
     _this spawn {
         sleep 1;
         systemChat _this;
         hintC _this;
     };
-};
+}] call CBA_fnc_compileFinal;
 
 // FSM
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
@@ -36,10 +36,5 @@ GVAR(addons) = _addons;
 
 // BWC
 #include "backwards_comp.sqf"
-
-// band aid - remove this once they fix PlayerConnected mission event handler
-// https://forums.bistudio.com/topic/143930-general-discussion-dev-branch/page-942#entry3003074
-[QGVAR(OPC_FIX), "onPlayerConnected", {}] call BIS_fnc_addStackedEventHandler;
-[QGVAR(OPC_FIX), "onPlayerConnected"] call BIS_fnc_removeStackedEventHandler;
 
 ADDON = true;

@@ -18,6 +18,9 @@ class CfgWeapons {
     class Rifle_Base_F : Rifle {
         class WeaponSlotsInfo;
     };
+    class Rifle_Short_Base_F : Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
     class Rifle_Long_Base_F : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
@@ -136,7 +139,7 @@ class CfgWeapons {
         };
     };
 
-    class SMG_05_base_F : Rifle_Base_F {
+    class SMG_05_base_F : Rifle_Short_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
             delete CowsSlot;
@@ -212,4 +215,33 @@ class CfgWeapons {
         };
     };
 
+    class Pistol;
+
+    class Pistol_Base_F : Pistol {
+        class WeaponSlotsInfo;
+    };
+
+    class hgun_ACPC2_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+   };
+
+    class hgun_P07_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+    class hgun_Pistol_heavy_01_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+    class hgun_Rook40_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
 };

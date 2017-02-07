@@ -1,135 +1,135 @@
 
-#define F_FILEPATH(func) class func {\
-    file = QUOTE(PATHTOF(DOUBLES(fnc,func).sqf));\
-}
-
 class CfgFunctions {
     class CBA {
         class Config {
-            F_FILEPATH(getConfigEntry);
-            F_FILEPATH(getObjectConfig);
-            F_FILEPATH(getItemConfig);
-            F_FILEPATH(getMuzzles);
-            F_FILEPATH(getWeaponModes);
-            F_FILEPATH(inheritsFrom);
-            F_FILEPATH(getTurret);
+            PATHTO_FNC(getConfigEntry);
+            PATHTO_FNC(getObjectConfig);
+            PATHTO_FNC(getItemConfig);
+            PATHTO_FNC(getMuzzles);
+            PATHTO_FNC(getWeaponModes);
+            PATHTO_FNC(inheritsFrom);
+            PATHTO_FNC(getTurret);
         };
 
         class Entities {
-            F_FILEPATH(findEntity);
-            F_FILEPATH(deleteEntity);
-            F_FILEPATH(isAlive);
-            F_FILEPATH(getAlive);
-            F_FILEPATH(getGroup);
-            F_FILEPATH(getSharedGroup);
-            F_FILEPATH(nearPlayer);
-            F_FILEPATH(getArg);
-            F_FILEPATH(createMarker);
-            F_FILEPATH(createTrigger);
-            F_FILEPATH(getGroupIndex);
-            F_FILEPATH(getMagazineIndex);
-            F_FILEPATH(currentMagazineIndex);
+            PATHTO_FNC(findEntity);
+            PATHTO_FNC(deleteEntity);
+            PATHTO_FNC(isAlive);
+            PATHTO_FNC(getAlive);
+            PATHTO_FNC(getGroup);
+            PATHTO_FNC(getSharedGroup);
+            PATHTO_FNC(nearPlayer);
+            PATHTO_FNC(getArg);
+            PATHTO_FNC(createMarker);
+            PATHTO_FNC(createTrigger);
+            PATHTO_FNC(getGroupIndex);
+            PATHTO_FNC(getMagazineIndex);
+            PATHTO_FNC(currentMagazineIndex);
+            PATHTO_FNC(setCallsign);
         };
 
         class Soldiers {
-            F_FILEPATH(isPerson);
-            F_FILEPATH(canUseWeapon);
-            F_FILEPATH(selectWeapon);
-            F_FILEPATH(switchPlayer);
-            F_FILEPATH(currentUnit);
-            F_FILEPATH(players);
+            PATHTO_FNC(isPerson);
+            PATHTO_FNC(canUseWeapon);
+            PATHTO_FNC(selectWeapon);
+            PATHTO_FNC(switchPlayer);
+            PATHTO_FNC(currentUnit);
+            PATHTO_FNC(players);
         };
 
         class Vehicles {
-            F_FILEPATH(getFirer);
-            F_FILEPATH(isTurnedOut);
-            F_FILEPATH(getVolume);
-            F_FILEPATH(vehicleRole);
-            F_FILEPATH(turretPath);
-            F_FILEPATH(turretPathWeapon);
-            F_FILEPATH(viewDir);
-            F_FILEPATH(turretDir);
+            PATHTO_FNC(getFirer);
+            PATHTO_FNC(isTurnedOut);
+            PATHTO_FNC(getVolume);
+            PATHTO_FNC(vehicleRole);
+            PATHTO_FNC(turretPath);
+            PATHTO_FNC(turretPathWeapon);
+            PATHTO_FNC(viewDir);
+            PATHTO_FNC(turretDir);
         };
 
         class Anims {
-            F_FILEPATH(getAnimType);
-            F_FILEPATH(getUnitAnim);
-            F_FILEPATH(getUnitDeathAnim);
-            F_FILEPATH(isUnitGetOutAnim);
-            F_FILEPATH(headDir);
-            F_FILEPATH(modelHeadDir);
+            PATHTO_FNC(getAnimType);
+            PATHTO_FNC(getUnitAnim);
+            PATHTO_FNC(getUnitDeathAnim);
+            PATHTO_FNC(isUnitGetOutAnim);
+            PATHTO_FNC(headDir);
+            PATHTO_FNC(modelHeadDir);
         };
 
         class Inventory {
-            F_FILEPATH(addWeapon);
-            F_FILEPATH(addMagazine);
-            F_FILEPATH(addItem);
-            F_FILEPATH(removeWeapon);
-            F_FILEPATH(removeMagazine);
-            F_FILEPATH(removeItem);
-            F_FILEPATH(weaponComponents);
-            F_FILEPATH(dropWeapon);
-            F_FILEPATH(dropMagazine);
-            F_FILEPATH(dropItem);
-            F_FILEPATH(binocularMagazine);
-            F_FILEPATH(addBinocularMagazine);
-            F_FILEPATH(removeBinocularMagazine);
+            PATHTO_FNC(addWeapon);
+            PATHTO_FNC(addMagazine);
+            PATHTO_FNC(addItem);
+            PATHTO_FNC(removeWeapon);
+            PATHTO_FNC(removeMagazine);
+            PATHTO_FNC(removeItem);
+            PATHTO_FNC(weaponComponents);
+            PATHTO_FNC(dropWeapon);
+            PATHTO_FNC(dropMagazine);
+            PATHTO_FNC(dropItem);
+            PATHTO_FNC(binocularMagazine);
+            PATHTO_FNC(addBinocularMagazine);
+            PATHTO_FNC(removeBinocularMagazine);
         };
 
         class Cargo {
-            F_FILEPATH(addWeaponCargo);
-            F_FILEPATH(addMagazineCargo);
-            F_FILEPATH(addItemCargo);
-            F_FILEPATH(addBackpackCargo);
-            F_FILEPATH(removeWeaponCargo);
-            F_FILEPATH(removeMagazineCargo);
-            F_FILEPATH(removeItemCargo);
-            F_FILEPATH(removeBackpackCargo);
+            PATHTO_FNC(addWeaponCargo);
+            PATHTO_FNC(addMagazineCargo);
+            PATHTO_FNC(addItemCargo);
+            PATHTO_FNC(addBackpackCargo);
+            PATHTO_FNC(removeWeaponCargo);
+            PATHTO_FNC(removeMagazineCargo);
+            PATHTO_FNC(removeItemCargo);
+            PATHTO_FNC(removeBackpackCargo);
         };
 
         class Maps {
-            F_FILEPATH(northingReversed);
-            F_FILEPATH(mapGridToPos);
-            F_FILEPATH(mapRelPos);
-            F_FILEPATH(mapDirTo);
-            F_FILEPATH(getTerrainProfile);
+            PATHTO_FNC(northingReversed);
+            PATHTO_FNC(mapGridToPos);
+            PATHTO_FNC(mapRelPos);
+            PATHTO_FNC(mapDirTo);
+            PATHTO_FNC(getTerrainProfile);
         };
 
         class Positions {
-            F_FILEPATH(getDistance);
-            F_FILEPATH(getPos);
-            F_FILEPATH(setPos);
-            F_FILEPATH(realHeight);
-            F_FILEPATH(setHeight);
-            F_FILEPATH(randPos);
-            F_FILEPATH(randPosArea);
-            F_FILEPATH(inArea);
-            F_FILEPATH(getNearest);
-            F_FILEPATH(getNearestBuilding);
+            PATHTO_FNC(getArea);
+            PATHTO_FNC(getDistance);
+            PATHTO_FNC(getPos);
+            PATHTO_FNC(setPos);
+            PATHTO_FNC(realHeight);
+            PATHTO_FNC(setHeight);
+            PATHTO_FNC(randPos);
+            PATHTO_FNC(randPosArea);
+            PATHTO_FNC(getNearest);
+            PATHTO_FNC(getNearestBuilding);
         };
 
         class Misc {
-            F_FILEPATH(addPerFrameHandler);
-            F_FILEPATH(removePerFrameHandler);
-            F_FILEPATH(addPlayerAction);
-            F_FILEPATH(removePlayerAction);
-            F_FILEPATH(createNamespace);
-            F_FILEPATH(deleteNamespace);
-            F_FILEPATH(directCall);
-            F_FILEPATH(objectRandom);
-            F_FILEPATH(execNextFrame);
-            F_FILEPATH(waitAndExecute);
-            F_FILEPATH(waitUntilAndExecute);
+            PATHTO_FNC(addPerFrameHandler);
+            PATHTO_FNC(removePerFrameHandler);
+            PATHTO_FNC(createPerFrameHandlerObject);
+            PATHTO_FNC(deletePerFrameHandlerObject);
+            PATHTO_FNC(addPlayerAction);
+            PATHTO_FNC(removePlayerAction);
+            PATHTO_FNC(createNamespace);
+            PATHTO_FNC(deleteNamespace);
+            PATHTO_FNC(directCall);
+            PATHTO_FNC(objectRandom);
+            PATHTO_FNC(execNextFrame);
+            PATHTO_FNC(waitAndExecute);
+            PATHTO_FNC(waitUntilAndExecute);
+            PATHTO_FNC(compileFinal);
         };
 
         class Ui {
-            F_FILEPATH(getFov);
-            F_FILEPATH(getAspectRatio);
-            F_FILEPATH(getUISize);
+            PATHTO_FNC(getFov);
+            PATHTO_FNC(getAspectRatio);
+            PATHTO_FNC(getUISize);
         };
 
         class Broken {
-            F_FILEPATH(actionArgument);
+            PATHTO_FNC(actionArgument);
         };
     };
 };

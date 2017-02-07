@@ -59,10 +59,11 @@ _output = _output + "States: " + _nli;
     } else {
         _output = _output + _x + _nli;
     };
+
     {
         _x params ["_name", "_condition", "_targetState", "_onTransition"];
         if (_outputCode) then {
-            _output = _output + "        " + format ["Transition %1:%2", _name, _nli3];
+            _output = _output + "    " + format ["Transition %1:%2", _name, _nli3];
             _output = _output + "Condition: " + str _condition + _nli3;
             _output = _output + "Target: " + _targetState + _nli3;
             _output = _output + "onTransition: " + str _onTransition + _nli;
@@ -72,6 +73,21 @@ _output = _output + "States: " + _nli;
 
         false
     } count (_stateMachine getVariable TRANSITIONS(_x));
+
+    {
+        _x params ["_name", "_events", "_condition", "_targetState", "_onTransition"];
+        if (_outputCode) then {
+            _output = _output + "    " + format ["Event transition %1:%2", _name, _nli3];
+            _output = _output + "Events: " + (_events joinString ", ") + _nli3;
+            _output = _output + "Condition: " + str _condition + _nli3;
+            _output = _output + "Target: " + _targetState + _nli3;
+            _output = _output + "onTransition: " + str _onTransition + _nli;
+        } else {
+            _output = _output + "    " + format ["%1 -> %2%3", _name, _targetState, _nli];
+        };
+
+        false
+    } count (_stateMachine getVariable EVENTTRANSITIONS(_x));
 
     false
 } count (_stateMachine getVariable QGVAR(states));

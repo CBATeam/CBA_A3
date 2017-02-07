@@ -1,12 +1,12 @@
 
-class DOUBLES(XEH_CLASS,base) {
+class XEH_CLASS_BASE {
     EXTENDED_EVENTHANDLERS
 };
 
-class XEH_CLASS: DOUBLES(XEH_CLASS,base) {}; // bwc
+class XEH_CLASS: XEH_CLASS_BASE {}; // bwc
 
 class DefaultEventhandlers {
-    class XEH_CLASS: DOUBLES(XEH_CLASS,base) {};
+    class XEH_CLASS: XEH_CLASS_BASE {};
 };
 
 // The PreStart handlers run once when the game is started
@@ -77,11 +77,15 @@ class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
 class Extended_Reloaded_EventHandlers {};
+class Extended_FiredMan_EventHandlers {};
+class Extended_TurnIn_EventHandlers {};
+class Extended_TurnOut_EventHandlers {};
+class Extended_Deleted_EventHandlers {};
 
 // display xeh
 class Extended_DisplayLoad_EventHandlers {
     class Display3DEN {
-        ADDON = QUOTE(call COMPILE_FILE(XEH_3DENDisplayLoad));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(3DENDisplayLoad)'));
     };
 };
 class Extended_DisplayUnload_EventHandlers {};

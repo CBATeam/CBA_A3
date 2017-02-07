@@ -28,6 +28,30 @@ Author:
 #define ASCII_ARRAY_OPEN (toArray "[" select 0)
 #define ASCII_ARRAY_CLOSE (toArray "]" select 0)
 
+private _fnc_parseArray = {
+    params [["_array", "", [""]]];
+    _array = _array call CBA_fnc_trim;
+
+    if ((_array select [0,1]) isEqualTo "[" && {(_array select [count _array - 1]) isEqualTo "]"}) then {
+        _array = (_array select [1, count _array - 2]) splitString ",";
+
+        // parse numbers and strings
+        _array = _array apply {
+            _x = _x call CBA_fnc_trim;
+
+            if ((_x select [0,1]) isEqualTo """") then {
+                _x select [1, count _x - 2]
+            } else {
+                parseNumber _x;
+            };
+        };
+
+        _array
+    } else {
+        []
+    };
+};
+
 params [["_info", "", [""]]];
 
 private _result = [];
@@ -66,9 +90,7 @@ private _result = [];
         };
         //--- array
         case (_value0 == ASCII_ARRAY_OPEN && {_valueE == ASCII_ARRAY_CLOSE}): {
-            // prevent abusing for SQF injection, by clearing white space -> no command syntax possible
-            _value = (_value splitString toString WHITE_SPACE) joinString "";
-            call compile _value
+            _value call _fnc_parseArray
         };
         default {nil};
         };
@@ -76,12 +98,12 @@ private _result = [];
         private _currentValue = [_setting, "default"] call FUNC(get);
 
         if (isNil "_currentValue") then {
-            diag_log text format ["[CBA] (settings): Error parsing settings file. Setting %1 does not exist.", str _setting];
+            ERROR_1("Error parsing settings file. Setting %1 does not exist.",str _setting);
         } else {
             if ([_setting, _value] call FUNC(check)) then {
                 _result pushBack [_setting, _value, _force];
             } else {
-                diag_log text format ["[CBA] (settings): Error parsing settings file. Value %1 is invalid for setting %2.", _value, str _setting];
+                ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",_value,str _setting);
             };
         };
     };

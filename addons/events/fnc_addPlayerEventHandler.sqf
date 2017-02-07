@@ -17,6 +17,7 @@ Description:
 Parameters:
     _type      - Event handler type. <STRING>
     _function  - Function to add to event. <CODE>
+    _applyRetroactively - Call function immediately if player is defined already (optional, default: false) <BOOL>
 
 Returns:
     _id - The ID of the event handler. <NUMBER>
@@ -34,33 +35,57 @@ SCRIPT(addPlayerEventHandler);
 
 if (!hasInterface) exitWith {-1};
 
-params [["_type", "", [""]], ["_function", {}, [{}]]];
+params [["_type", "", [""]], ["_function", {}, [{}]], ["_applyRetroactively", false, [false]]];
 
 _type = toLower _type;
 
 private _id = switch (_type) do {
 case ("unit"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), objNull] call _function;
+    };
     [QGVAR(unitEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("weapon"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), currentWeapon GVAR(oldUnit)] call _function;
+    };
     [QGVAR(weaponEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("loadout"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), getUnitLoadout GVAR(oldUnit)] call _function;
+    };
     [QGVAR(loadoutEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("vehicle"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), vehicle GVAR(oldUnit)] call _function;
+    };
     [QGVAR(vehicleEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("turret"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), GVAR(oldUnit) call CBA_fnc_turretPath] call _function;
+    };
     [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("visionmode"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), currentVisionMode GVAR(oldUnit)] call _function;
+    };
     [QGVAR(visionModeEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("cameraview"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), cameraView] call _function;
+    };
     [QGVAR(cameraViewEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 case ("visiblemap"): {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), visibleMap] call _function;
+    };
     [QGVAR(visibleMapEvent), _function] call CBA_fnc_addEventHandler // return id
 };
 default {-1};
@@ -83,10 +108,6 @@ if (_id != -1) then {
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {
             private _player = call CBA_fnc_currentUnit;
-            if !(_player isEqualTo GVAR(oldUnit)) then {
-                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
-                GVAR(oldUnit) = _player;
-            };
 
             private _data = currentWeapon _player;
             if !(_data isEqualTo GVAR(oldWeapon)) then {
@@ -115,12 +136,6 @@ if (_id != -1) then {
                 };
             };
 
-            _data = vehicle _player;
-            if !(_data isEqualTo GVAR(oldVehicle)) then {
-                GVAR(oldVehicle) = _data;
-                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
-
             _data = _player call CBA_fnc_turretPath;
             if !(_data isEqualTo GVAR(oldTurret)) then {
                 GVAR(oldTurret) = _data;
@@ -138,13 +153,56 @@ if (_id != -1) then {
                 GVAR(oldCameraView) = _data;
                 [QGVAR(cameraViewEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
+        }];
 
-            _data = visibleMap;
-            if !(_data isEqualTo GVAR(oldVisibleMap)) then {
-                GVAR(oldVisibleMap) = _data;
-                [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
+        GVAR(playerEHInfo) pushBack addMissionEventHandler ["PlayerViewChanged", {
+            private _player = call CBA_fnc_currentUnit;
+
+            if !(_player isEqualTo GVAR(oldUnit)) then {
+                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                GVAR(oldUnit) = _player;
+            };
+
+            private _data = vehicle _player;
+            if !(_data isEqualTo GVAR(oldVehicle)) then {
+                GVAR(oldVehicle) = _data;
+                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
         }];
+
+        GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {
+            params ["_data"]; //visibleMap is updated one frame later
+
+            if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                GVAR(oldVisibleMap) = _data;
+                [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
+            };
+        }];
+
+        // emulate change to first value from default one frame later
+        // using spawn-dc to not having to wait for postInit to complete
+        0 spawn {
+            {
+                private _player = call CBA_fnc_currentUnit;
+
+                if !(_player isEqualTo GVAR(oldUnit)) then {
+                    [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                    GVAR(oldUnit) = _player;
+                };
+
+                private _data = vehicle _player;
+                if !(_data isEqualTo GVAR(oldVehicle)) then {
+                    GVAR(oldVehicle) = _data;
+                    [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
+
+                _data = visibleMap;
+                if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                    GVAR(oldVisibleMap) = _data;
+                    [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
+            } call CBA_fnc_directCall;
+        };
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];

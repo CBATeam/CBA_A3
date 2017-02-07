@@ -49,9 +49,9 @@ addMissionEventHandler ["Loaded", {
 ["CBA_SettingChanged", {
     params ["_setting", "_value"];
 
-    private _message = format ["[CBA] (settings): %1 = %2", _setting, _value];
+    private _message = format ["%1 = %2", _setting, _value];
     systemChat _message;
-    diag_log text _message;
+    LOG(_message);
 }] call CBA_fnc_addEventHandler;
 #endif
 
@@ -62,5 +62,19 @@ if (isServer) then {
         [_setting, _value, _forced, "server"] call FUNC(set);
     }] call CBA_fnc_addEventHandler;
 };
+
+// event to modify mission settings
+[QGVAR(setSettingMission), {
+    params ["_setting", "_value", ["_forced", false, [false]]];
+
+    if ([_setting, "mission"] call FUNC(isForced)) exitWith {
+        LOG_1("Setting %1 already forced, ignoring setSettingMission.",str _setting);
+    };
+    if (!([_setting, _value] call FUNC(check))) exitWith {
+        WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
+    };
+
+    GVAR(missionSettings) setVariable [_setting, [_value, _forced]];
+}] call CBA_fnc_addEventHandler;
 
 ADDON = true;

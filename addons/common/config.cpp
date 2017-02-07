@@ -8,12 +8,13 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_BaseConfig_F"};
+        requiredAddons[] = {"A3_BaseConfig_F","A3_3DEN"};
         version = VERSION;
         authors[] = {"Spooner","Sickboy","Rocko"};
     };
 };
 
+#include "Cfg3DEN.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
