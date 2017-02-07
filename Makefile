@@ -48,7 +48,7 @@ signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSI
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-release: clean signatures
+release:
 	@"$(MAKE)" clean
 	@"$(MAKE)" $(MAKEFLAGS) signatures
 	@echo "  ZIP  $(ZIP)_v$(VERSION).zip"
