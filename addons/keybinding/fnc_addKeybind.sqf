@@ -71,6 +71,13 @@ if (count _defaultKeybind == 4) then {
     _defaultKeybind = [_defaultKeybind select 0, _modifiers];
 };
 
+// Make sure modifer is set to true, if base key is a modifier
+// This can happen with script added keybinds AND from the rebinding code (fnc_onLBDblClick)
+_defaultKeybind params ["_keyNumber", "_keyParams"];
+if (_keyNumber in [42, 54]) then {TRACE_1("setting shift", _keyParams); _keyParams set [0, true];};
+if (_keyNumber in [29, 157]) then {TRACE_1("setting ctrl", _keyParams); _keyParams set [1, true];};
+if (_keyNumber in [56, 184]) then {TRACE_1("setting alt", _keyParams); _keyParams set [2, true];};
+
 _keybind = nil;
 
 // Get a local copy of the keybind registry.
