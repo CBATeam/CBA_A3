@@ -27,7 +27,7 @@ params [
     ["_radius", 0, [0]]
 ];
 
-private _position = _entity call CBA_fnc_getPos;
+private _position = +(_entity call CBA_fnc_getPos); // copy so we don't modify the input array
 
 _position set [0, (_position select 0) + (_radius - 2 * random _radius)];
 _position set [1, (_position select 1) + (_radius - 2 * random _radius)];
