@@ -13,7 +13,10 @@ Example:
     (end)
 
 Returns:
-    Position (AGL) - [X,Y,Z]
+    Position (AGLS) - [X,Y,Z]
+    Z will always be 0 for MARKER, LOCATION and TASK.
+    If a position was provided, the position array will be copied.
+    Defaults to [0,0,0] if the entity is null.
 
 Author:
     Rommel
@@ -26,23 +29,25 @@ params [
 ];
 
 switch (typeName _entity) do {
-    case "OBJECT" : {
+    case "OBJECT": {
         getPos _entity
     };
-    case "GROUP" : {
+    case "GROUP": {
         getPos (leader _entity)
     };
-    case "STRING" : {
+    case "STRING": {
         getMarkerPos _entity
     };
-    case "LOCATION" : {
+    case "LOCATION": {
         position _entity
     };
-    case "TASK" : {
+    case "TASK": {
         taskDestination _entity
     };
-    case "ARRAY" : {
-        _entity
+    case "ARRAY": {
+        + _entity
     };
-    default {_this}; // in case of position being passed not in array
+    case "NUMBER": { // in case of position being passed not in array
+        + _this
+    };
 };
