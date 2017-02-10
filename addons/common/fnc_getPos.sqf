@@ -15,6 +15,9 @@ Example:
 Returns:
     Position (AGLS) - [X,Y,Z]
     Z will always be 0 for MARKER, LOCATION and TASK.
+    If entity is a group, the position of the group leader will be reported.
+    For OBJECT and GROUP the z will be relative to the first RoadWay LOD
+    below the object (AGLS format).
     If a position was provided, the position array will be copied.
     Defaults to [0,0,0] if the entity is null.
 
