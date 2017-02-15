@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_hashGetKeys
+Function: CBA_fnc_hashKeys
 
 Description:
     Returns all Keys in a Hash.
@@ -19,7 +19,7 @@ Author:
 #include "script_component.hpp"
 #include "script_hashes.hpp"
 
-SCRIPT(hashGetKeys);
+SCRIPT(hashKeys);
 
 // -----------------------------------------------------------------------------
 params [["_hash", [[], []], [[]]]];
