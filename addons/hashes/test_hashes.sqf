@@ -6,7 +6,7 @@ SCRIPT(test_hashes);
 
 // ----------------------------------------------------------------------------
 #define DEBUG_MODE_FULL
-private ["_hash", "_expected", "_result", "_size"];
+private ["_hash", "_expected", "_result", "_size", "_keys"];
 
 LOG("Testing Hashes");
 
@@ -17,6 +17,7 @@ TEST_DEFINED("CBA_fnc_hashSet","");
 TEST_DEFINED("CBA_fnc_hashHasKey","");
 TEST_DEFINED("CBA_fnc_isHash","");
 TEST_DEFINED("CBA_fnc_hashSize","");
+TEST_DEFINED("CBA_fnc_hashGetKeys","");
 
 TEST_FALSE([[]] call CBA_fnc_isHash,"CBA_fnc_isHash");
 _hash = [5, [4], [1], 2]; // Not a real hash.
@@ -114,5 +115,17 @@ TEST_OP(_size,==,2,"hashSize");
 _hash = [5, [4], [1], 2];
 _size = [_hash] call CBA_fnc_hashSize;
 TEST_OP(_size,==,-1,"hashSize");
+
+// Empty hash keys
+_hash = [] call CBA_fnc_hashCreate;
+_keys = [_hash] call CBA_fnc_hashGetKeys;
+TEST_OP(_keys,isEqualTo,[],"hashGetKeys");
+
+// Two elements keys with different types
+[_hash, "123", 1] call CBA_fnc_hashSet;
+[_hash, "124", 2] call CBA_fnc_hashSet;
+[_hash, 125, 3] call CBA_fnc_hashSet;
+_keys = [_hash] call CBA_fnc_hashGetKeys;
+TEST_OP(_keys,isEqualTo,[ARR_3("123","124",125)],"hashGetKeys");
 
 nil;

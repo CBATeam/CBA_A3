@@ -26,6 +26,12 @@ class CfgFunctions
                 description = "Iterate through all keys and values in a Hash. Code must return a bool, if false then key is removed";
                 file = "\x\cba\addons\hashes\fnc_hashFilter.sqf";
             };
+            // CBA_fnc_hashGetKeys
+            class hashGetKeys
+            {
+                description = "Returns all Keys in a Hash.";
+                file = "\x\cba\addons\hashes\fnc_hashGetKeys.sqf";
+            };
             // CBA_fnc_hashGet
             class hashGet
             {
