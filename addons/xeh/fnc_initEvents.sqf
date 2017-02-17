@@ -35,14 +35,8 @@ if !(ISPROCESSED(_unit)) then {
     // add events to XEH incompatible units
     if (!isClass _eventClass) then {
         {
-            if (_x isEqualTo "hitpart") then {
-                _unit addEventHandler ["hitpart", "{_this call _x} forEach ((_this select 0 select 0) getVariable ""cba_xeh_hitpart"")"];
-            } else {
-                if !(_x isEqualTo "init") then {
-                    _unit addEventHandler [_x, format ["{_this call _x} forEach ((_this select 0) getVariable ""cba_xeh_%1"")", _x]];
-                };
-            };
-        } forEach GVAR(EventsLowercase);
+            _unit addEventHandler [_x, format ['call QFUNC(%1)', _x]];
+        } forEach [XEH_EVENTS];
     };
 
     while {isClass _class} do {
