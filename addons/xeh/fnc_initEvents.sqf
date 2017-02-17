@@ -35,7 +35,7 @@ if !(ISPROCESSED(_unit)) then {
     // add events to XEH incompatible units
     if (!isClass _eventClass) then {
         {
-            _unit addEventHandler [_x, format ['call QFUNC(%1)', _x]];
+            _unit addEventHandler [_x, format ['call FUNC(%1)', _x]];
         } forEach [XEH_EVENTS];
     };
 
