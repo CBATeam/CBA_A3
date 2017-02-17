@@ -137,6 +137,15 @@ if (_id != -1) then {
                 };
             };
 
+            // Fix for problems with PlayerViewChanged eh not always firing on vehicle switch on dedicated
+            // Look into removing this block if event is fixed
+            _data = vehicle _player;
+            if !(_data isEqualTo GVAR(oldVehicle)) then {
+                TRACE_1("Using fallback polling event for vehicle change",_data);
+                GVAR(oldVehicle) = _data;
+                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+            };
+
             _data = _player call CBA_fnc_turretPath;
             if !(_data isEqualTo GVAR(oldTurret)) then {
                 GVAR(oldTurret) = _data;
