@@ -98,6 +98,7 @@ respawn = ""; \
 put = ""; \
 take = ""; \
 seatSwitched = ""; \
+seatSwitchedMan = ""; \
 soundPlayed = ""; \
 weaponAssembled = ""; \
 weaponDisassembled = ""; \
