@@ -17,7 +17,7 @@ Returns:
     Position - [X,Y,Z]
 
 Author:
-    Rommel
+    Rommel, commy2
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(randPos);
@@ -28,7 +28,12 @@ params [
 ];
 
 private _position = _entity call CBA_fnc_getPos;
+private _doResize = _position isEqualTypeArray [0,0];
 
-_position set [0, (_position select 0) + (_radius - 2 * random _radius)];
-_position set [1, (_position select 1) + (_radius - 2 * random _radius)];
+_position = _position getPos [_radius * sqrt random 1, random 360];
+
+if (_doResize) then {
+    _position resize 2;
+};
+
 _position

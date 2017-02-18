@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["MyFunction", {systemChat str _this}] = true call CBA_fnc_compileFinal;
+        ["MyFunction", {systemChat str _this}] call CBA_fnc_compileFinal;
     (end)
 
 Author:

@@ -2,6 +2,8 @@
 #include "\x\cba\addons\main\script_mod.hpp"
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 //#define DEBUG_ENABLED_KEYBINDING
 
 #ifdef DEBUG_ENABLED_KEYBINDING
