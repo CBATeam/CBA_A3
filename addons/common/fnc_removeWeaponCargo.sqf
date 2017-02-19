@@ -4,7 +4,7 @@ Function: CBA_fnc_removeWeaponCargo
 Description:
     Removes specific weapon(s) from cargo space.
 
-    Warning: Weapon's attachments are lost.
+    Warning: All weapon attachments/magazines in container will become detached.
 
 Parameters:
     _container - Object with cargo <OBJECT>
@@ -58,28 +58,39 @@ if (_count <= 0) exitWith {
 // Ensure proper count
 _count = round _count;
 
-// Returns array containing two arrays: [[type1, typeN, ...], [count1, countN, ...]]
-(getWeaponCargo _container) params ["_allItemsType", "_allItemsCount"];
+// Returns array in weaponsItems format
+private _weaponsItemsCargo = weaponsItemsCargo _container;
+diag_log _weaponsItemsCargo;
 
 // Clear cargo space and readd the items as long it's not the type in question
 clearWeaponCargoGlobal _container;
 
 {
-    private _itemCount = _allItemsCount select _forEachIndex;
-
-    if (_x == _item) then {
-        // Process removal
-        _return = true;
-
-        _itemCount = _itemCount - _count;
-        if (_itemCount > 0) then {
-            // Add with new count
-            _container addWeaponCargoGlobal [_x, _itemCount];
-        };
-    } else {
-        // Readd only
-        _container addWeaponCargoGlobal [_x, _itemCount];
+    _x params ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_magazineGL", "_bipod"];
+    // weaponsItems magazineGL does not exist if not loaded (not even as empty array)
+    if (count _x < 7) then {
+        _bipod = _magazineGL;
+        _magazineGL = "";
     };
-} forEach _allItemsType;
 
-_return
+    if (_count != 0 && {_weapon == _item}) then {
+        // Process removal
+        _count = _count - 1;
+    } else {
+        _weapon = [_weapon] call CBA_fnc_getNoLinkedItemsClass;
+        _container addWeaponCargoGlobal [_weapon, 1];
+
+        _container addItemCargoGlobal [_muzzle, 1];
+        _container addItemCargoGlobal [_pointer, 1];
+        _container addItemCargoGlobal [_optic, 1];
+        _container addItemCargoGlobal [_bipod, 1];
+
+        _magazine params ["_magazineClass", "_magazineAmmoCount"];
+        _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
+
+        _magazineGL params ["_magazineGLClass", "_magazineGLAmmoCount"];
+        _container addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
+    };
+} forEach _weaponsItemsCargo;
+
+(_count == 0)

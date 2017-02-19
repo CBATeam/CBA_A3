@@ -4,7 +4,7 @@ Function: CBA_fnc_removeBackpackCargo
 Description:
     Removes specific backpack(s) from cargo space.
 
-    Warning: All weapon attachments/magazines in all backpacks in the box will become detached.
+    Warning: All weapon attachments/magazines in all backpacks in container will become detached.
 
 Parameters:
     _container - Object with cargo <OBJECT>
@@ -65,13 +65,12 @@ private _backpackData = [];
 // Clear cargo space and readd the items as long it's not the type in question
 clearBackpackCargoGlobal _container;
 
-private _removed = 0;
 {
     _x params ["_backpackClass", "_itemCargo", "_magazinesAmmoCargo", "_weaponsItemsCargo"];
 
-    if (_removed != _count && {_backpackClass == _item}) then {
+    if (_count != 0 && {_backpackClass == _item}) then {
         // Process removal
-        _removed = _removed + 1;
+        _count = _count - 1;
     } else {
         // Save all backpacks for finding the one we readd after this
         private _addedBackpacks = everyBackpack _container;
@@ -92,34 +91,33 @@ private _removed = 0;
         // Magazines (and their ammo count)
         {
             _backpack addMagazineAmmoCargo [_x select 0, 1, _x select 1];
-            diag_log format ["adding mag: %1", _x];
         } forEach _magazinesAmmoCargo;
 
         // Weapons (and their attachments)
         // Put attachments next to weapon, no command to put it directly onto a weapon when weapon is in a container
         {
-            private _weapon = [_x select 0] call CBA_fnc_getNoLinkedItemsClass;
-            _backpack addWeaponCargoGlobal [_weapon, 1]; // Weapon
+            _x params ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_magazineGL", "_bipod"];
+            // weaponsItems magazineGL does not exist if not loaded (not even as empty array)
+            if (count _x < 7) then {
+                _bipod = _magazineGL;
+                _magazineGL = "";
+            };
 
-            _backpack addItemCargoGlobal [_x select 1, 1]; // Muzzle
-            _backpack addItemCargoGlobal [_x select 2, 1]; // Pointer
-            _backpack addItemCargoGlobal [_x select 3, 1]; // Optic
+            private _weapon = [_weapon] call CBA_fnc_getNoLinkedItemsClass;
+            _backpack addWeaponCargoGlobal [_weapon, 1];
 
-            // Magazine
-            (_x select 4) params ["_magazineClass", "_magazineAmmoCount"];
+            _backpack addItemCargoGlobal [_muzzle, 1];
+            _backpack addItemCargoGlobal [_pointer, 1];
+            _backpack addItemCargoGlobal [_optic, 1];
+            _backpack addItemCargoGlobal [_bipod, 1];
+
+            _magazine params ["_magazineClass", "_magazineAmmoCount"];
             _backpack addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
 
-            if (count _x > 6) then {
-                // Magazine GL
-                (_x select 5) params ["_magazineGLClass", "_magazineGLAmmoCount"];
-                _backpack addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
-
-                _backpack addItemCargoGlobal [_x select 6, 1]; // Bipod
-            } else {
-                _backpack addItemCargoGlobal [_x select 5, 1]; // Bipod
-            };
+            _magazineGL params ["_magazineGLClass", "_magazineGLAmmoCount"];
+            _backpack addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
         } forEach _weaponsItemsCargo;
     };
 } forEach _backpackData;
 
-(_removed == _count)
+(_count == 0)

@@ -64,17 +64,16 @@ private _magazinesAmmo = magazinesAmmoCargo _container;
 // Clear cargo space and readd the items as long it's not the type in question
 clearMagazineCargoGlobal _container;
 
-private _removed = 0;
 {
     _x params ["_magazineClass", "_magazineAmmo"];
 
-    if (_removed != _count && {_magazineClass == _item} && {_ammo < 0 || {_magazineAmmo == _ammo}}) then {
+    if (_count != 0 && {_magazineClass == _item} && {_ammo < 0 || {_magazineAmmo == _ammo}}) then {
         // Process removal
-        _removed = _removed + 1;
+        _count = _count - 1;
     } else {
         // Readd
         _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmo];
     };
 } forEach _magazinesAmmo;
 
-(_removed == _count)
+(_count == 0)
