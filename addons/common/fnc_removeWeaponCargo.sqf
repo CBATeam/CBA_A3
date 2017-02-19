@@ -15,13 +15,13 @@ Returns:
     true on success, false otherwise <BOOLEAN>
 
 Examples:
-   (begin example)
-   // Remove 1 Binocular locally from a box
-   _success = [myCoolWeaponBox, "Binocular"] call CBA_fnc_removeWeaponCargo;
+    (begin example)
+    // Remove 1 Binocular from a box
+    _success = [myCoolWeaponBox, "Binocular"] call CBA_fnc_removeWeaponCargo;
 
-   // Remove 2 M16A2 locally from a box
-   _success = [myCoolWeaponBox, "M16A2", 2] call CBA_fnc_removeWeaponCargo;
-   (end)
+    // Remove 2 M16A2 from a box
+    _success = [myCoolWeaponBox, "M16A2", 2] call CBA_fnc_removeWeaponCargo;
+    (end)
 
 Author:
     silencer.helling3r 2012-12-22, Jonpas

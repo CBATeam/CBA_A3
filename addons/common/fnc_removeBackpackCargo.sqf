@@ -15,13 +15,13 @@ Returns:
     true on success, false otherwise <BOOLEAN>
 
 Examples:
-   (begin example)
-    // Remove 1 Kitbag Tan backpack locally from a box
-   _success = [myCoolBackpackBox, "B_Kitbag_cbr"] call CBA_fnc_removeBackpackCargo;
+    (begin example)
+    // Remove 1 Kitbag Tan backpack from a box
+    _success = [myCoolBackpackBox, "B_Kitbag_cbr"] call CBA_fnc_removeBackpackCargo;
 
-   // Remove 2 Carryall Desert Camo backpacks locally from a box
-   _success = [myCoolBackpackBox, "B_Carryall_ocamo", 2] call CBA_fnc_removeBackpackCargo;
-   (end)
+    // Remove 2 Carryall Desert Camo backpacks from a box
+    _success = [myCoolBackpackBox, "B_Carryall_ocamo", 2] call CBA_fnc_removeBackpackCargo;
+    (end)
 
 Author:
     Jonpas

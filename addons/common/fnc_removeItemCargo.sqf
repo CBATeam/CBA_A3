@@ -13,13 +13,13 @@ Returns:
     true on success, false otherwise <BOOLEAN>
 
 Examples:
-   (begin example)
-    // Remove 1 GPS locally from a box
-   _success = [myCoolItemBox, "ItemGPS"] call CBA_fnc_removeItemCargo;
+    (begin example)
+    // Remove 1 GPS from a box
+    _success = [myCoolItemBox, "ItemGPS"] call CBA_fnc_removeItemCargo;
 
-   // Remove 2 Compasses locally from a box
-   _success = [myCoolItemBox, "ItemCompass", 2] call CBA_fnc_removeItemCargo;
-   (end)
+    // Remove 2 Compasses from a box
+    _success = [myCoolItemBox, "ItemCompass", 2] call CBA_fnc_removeItemCargo;
+    (end)
 
 Author:
     Jonpas
