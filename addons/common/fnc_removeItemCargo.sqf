@@ -29,28 +29,26 @@ SCRIPT(removeItemCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]]];
 
-private _return = false;
-
 if (isNull _container) exitWith {
     TRACE_2("Container not Object or null",_container,_item);
-    _return
+    false
 };
 
 if (_item isEqualTo "") exitWith {
     TRACE_2("Item not String or empty",_container,_item);
-    _return
+    false
 };
 
 private _config = _item call CBA_fnc_getItemConfig;
 
 if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
     TRACE_2("Item does not exist in Config",_container,_item);
-    _return
+    false
 };
 
 if (_count <= 0) exitWith {
     TRACE_3("Count is not a positive number",_container,_item,_count);
-    _return
+    false
 };
 
 // Ensure proper count
@@ -67,7 +65,7 @@ clearItemCargoGlobal _container;
 
     if (_x == _item) then {
         // Process removal
-        _return = true;
+        _count = 0;
 
         _itemCount = _itemCount - _count;
         if (_itemCount > 0) then {
@@ -80,4 +78,4 @@ clearItemCargoGlobal _container;
     };
 } forEach _allItemsType;
 
-_return
+(_count == 0)

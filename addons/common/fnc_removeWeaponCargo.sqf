@@ -31,28 +31,26 @@ SCRIPT(removeWeaponCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]]];
 
-private _return = false;
-
 if (isNull _container) exitWith {
     TRACE_2("Container not Object or null",_container,_item);
-    _return
+    false
 };
 
 if (_item isEqualTo "") exitWith {
     TRACE_2("Item not String or empty",_container,_item);
-    _return
+    false
 };
 
 private _config = configFile >> "CfgWeapons" >> _item;
 
 if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
     TRACE_2("Item does not exist in Config",_container,_item);
-    _return
+    false
 };
 
 if (_count <= 0) exitWith {
     TRACE_3("Count is not a positive number",_container,_item,_count);
-    _return
+    false
 };
 
 // Ensure proper count
@@ -60,7 +58,6 @@ _count = round _count;
 
 // Returns array in weaponsItems format
 private _weaponsItemsCargo = weaponsItemsCargo _container;
-diag_log _weaponsItemsCargo;
 
 // Clear cargo space and readd the items as long it's not the type in question
 clearWeaponCargoGlobal _container;
