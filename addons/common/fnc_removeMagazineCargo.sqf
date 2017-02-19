@@ -8,7 +8,7 @@ Parameters:
     _container - Object with cargo <OBJECT>
     _item      - Classname of magazine(s) to remove <STRING>
     _count     - Number of magazine(s) to remove <NUMBER> (Default: 1)
-    _ammo      - Ammo of magazine(s) to remove (-1 for a magazine with any ammo) <NUMBER> (Default: -1)
+    _ammo      - Ammo of magazine(s) to remove (-1 for magazine(s) with any ammo) <NUMBER> (Default: -1)
 
 Returns:
     true on success, false otherwise <BOOLEAN>
