@@ -46,26 +46,15 @@ if (isNil QGVAR(nonPresetClassesCache)) then {
 private _cachedAncestor = GVAR(nonPresetClassesCache) getVariable _class;
 
 if (isNil "_cachedAncestor") then {
-    private _fnc_findValidAncestor = {
-        params ["_class", "_config"];
-
-        if (configProperties [_config >> "TransportItems", "isClass _x", true] isEqualTo [] &&
-            {configProperties [_config >> "TransportMagazines", "isClass _x", true] isEqualTo []} &&
-            {configProperties [_config >> "TransportWeapons", "isClass _x", true] isEqualTo []}
-        ) then {
-            _class // Return current class - has no preset contents
-        } else {
-            // Check parent
-            private _parent = inheritsFrom _config;
-            if (isNull _parent) then {
-                "" // We reached configNull, stuff must be invalid
-            } else {
-                [configName _parent, _rootConfig] call CBA_fnc_getNonPresetClass; // Recursively search the ancestor tree
-            };
+    _cachedAncestor = "";
+    while {isClass _config && {getNumber (_config >> "scope") == 2}} do {
+        if (count (_config >> "TransportItems") == 0 && {count (_config >> "TransportMagazines") == 0} && {count (_config >> "TransportWeapons") == 0}) then {
+            _cachedAncestor = configName _config;
         };
+
+        _config = inheritsFrom _config;
     };
 
-    _cachedAncestor = [_class, _config] call _fnc_findValidAncestor;
     GVAR(nonPresetClassesCache) setVariable [_class, _cachedAncestor];
 };
 
