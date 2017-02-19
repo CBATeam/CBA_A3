@@ -2,18 +2,18 @@
 Function: CBA_fnc_getNoLinkedItemsClass
 
 Description:
-    Get ancestor class of a weapon or container which has no LinkedItems sub-class (preset attachments/contents).
+    Get ancestor class of a weapon or container which has no preset attachments/contents.
 
 Parameters:
     _item       - Classname of weapon/container <STRING>
     _configRoot - Root config ("CfgWeapons", "CfgVehicles", ...) <STRING> (Default: "CfgWeapons")
 
 Returns:
-    Ancestor class without LinkedItems sub-class on success, "" otherwise <STRING>
+    Ancestor class without preset attachments/contents sub-class on success, "" otherwise <STRING>
 
 Examples:
     (begin example)
-        // Get parent class without LinkedItems of a weapon (returns "arifle_MX_F")
+        // Get parent class without preset attachments of a weapon (returns "arifle_MX_F")
         _ancestorClass = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNoLinkedItemsClass;
     (end)
 
@@ -32,7 +32,7 @@ if (!isClass _config) exitWith {
     _class
 };
 
-// Return current class - has no LinkedItems
+// Return current class - has no preset attachments/contents
 if (
     // CfgWeapons
     (configProperties [_config >> "LinkedItems", "isClass _x", true] isEqualTo []) &&
