@@ -63,15 +63,14 @@ clearItemCargoGlobal _container;
 {
     private _itemCount = _allItemsCount select _forEachIndex;
 
-    if (_x == _item) then {
+    if (_count != 0 && {_x == _item}) then {
         // Process removal
-        _count = 0;
-
         _itemCount = _itemCount - _count;
         if (_itemCount > 0) then {
             // Add with new count
             _container addItemCargoGlobal [_x, _itemCount];
         };
+        _count = 0;
     } else {
         // Readd only
         _container addItemCargoGlobal [_x, _itemCount];

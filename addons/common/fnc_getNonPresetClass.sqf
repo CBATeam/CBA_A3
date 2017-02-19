@@ -29,7 +29,7 @@ private _config = configFile >> _rootConfig >> _class;
 
 // Invalid class/root config
 if (!isClass _config) exitWith {
-    _class
+    ""
 };
 
 // Return current class - has no preset attachments/contents
@@ -46,8 +46,8 @@ if (
 
 // Check parent
 private _parent = inheritsFrom _config;
-if (_parent isEqualTo configNull) then {
-    // We reached configNull, stuff must be invalid, return empty string
+if (isNull _parent) then {
+    // We reached configNull, stuff must be invalid
     ""
 } else {
     // Recursively search the ancestor tree

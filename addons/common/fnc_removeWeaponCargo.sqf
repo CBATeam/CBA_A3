@@ -82,10 +82,10 @@ clearWeaponCargoGlobal _container;
         _container addItemCargoGlobal [_optic, 1];
         _container addItemCargoGlobal [_bipod, 1];
 
-        _magazine params ["_magazineClass", "_magazineAmmoCount"];
+        _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", ""]];
         _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
 
-        _magazineGL params ["_magazineGLClass", "_magazineGLAmmoCount"];
+        _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", ""]];
         _container addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
     };
 } forEach _weaponsItemsCargo;
