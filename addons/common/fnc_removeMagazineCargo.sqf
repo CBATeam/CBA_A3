@@ -60,9 +60,6 @@ if (_count <= 0) exitWith {
 // Ensure proper count
 _count = round _count;
 
-// Returns array containing arrays: [[type1, ammo1], [type2, ammo2], ...]
-private _magazinesCargo = magazinesAmmoCargo _container;
-
 // Clear cargo space and readd the items as long it's not the type in question
 clearMagazineCargoGlobal _container;
 
@@ -80,6 +77,6 @@ private _removed = 0;
         // Readd only
         _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmo];
     };
-} forEach _magazinesCargo;
+} forEach (magazinesAmmoCargo _container); // [[type1, ammo1], [type2, ammo2], ...]
 
 _return
