@@ -28,16 +28,14 @@ params [["_class", "", [""]], ["_rootConfig", "CfgWeapons", [""]]];
 private _config = configFile >> _rootConfig >> _class;
 
 // Invalid class/root config
-if (!isClass _config) exitWith {
-    ""
-};
+if (!isClass _config) exitWith {""};
 
 // Use CBA_fnc_weaponComponents if weapon
 if (_rootConfig == "CfgWeapons") exitWith {
     (_class call CBA_fnc_weaponComponents) select 0
 };
 
-
+// Containers
 // Create cache if it doesn't exist yet
 if (isNil QGVAR(nonPresetClassesCache)) then {
     GVAR(nonPresetClassesCache) = [] call CBA_fnc_createNamespace;
@@ -47,11 +45,10 @@ private _cachedAncestor = GVAR(nonPresetClassesCache) getVariable _class;
 
 if (isNil "_cachedAncestor") then {
     _cachedAncestor = "";
-    while {isClass _config && {getNumber (_config >> "scope") == 2}} do {
-        if (count (_config >> "TransportItems") == 0 && {count (_config >> "TransportMagazines") == 0} && {count (_config >> "TransportWeapons") == 0}) then {
+    while {isClass _config && {getNumber (_config >> "scope") > 0}} do { // Some preset backpacks are scope = 1
+        if (count (_config >> "TransportItems") == 0 && {count (_config >> "TransportMagazines") == 0} && {count (_config >> "TransportWeapons") == 0}) exitWith {
             _cachedAncestor = configName _config;
         };
-
         _config = inheritsFrom _config;
     };
 

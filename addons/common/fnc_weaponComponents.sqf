@@ -42,7 +42,6 @@ if (isNil "_components") then {
 
     // get attachments
     private _attachments = [];
-
     {
         _attachments pushBack toLower getText (_x >> "item");
     } forEach ("true" configClasses (_config >> "LinkedItems")); // inheritance is apparently disabled for these
