@@ -4,7 +4,7 @@ Function: CBA_fnc_removeBackpackCargo
 Description:
     Removes specific backpack(s) from cargo space.
 
-    Warning: Backpack's inventory information is lost.
+    Warning: All weapon attachments/magazines in all backpacks in the box will become detached.
 
 Parameters:
     _container - Object with cargo <OBJECT>
@@ -31,55 +31,95 @@ SCRIPT(removeBackpackCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]]];
 
-private _return = false;
-
 if (isNull _container) exitWith {
     TRACE_2("Container not Object or null",_container,_item);
-    _return
+    false
 };
 
 if (_item isEqualTo "") exitWith {
     TRACE_2("Item not String or empty",_container,_item);
-    _return
+    false
 };
 
 private _config = _item call CBA_fnc_getObjectConfig;
 
 if (isNull _config || {getNumber (_config >> "scope") < 1} || {getNumber (_config >> "isBackpack") != 1}) exitWith {
     TRACE_2("Item not exist in Config",_container,_item);
-    _return
+    false
 };
 
 if (_count <= 0) exitWith {
     TRACE_3("Count is not a positive number",_container,_item,_count);
-    _return
+    false
 };
 
 // Ensure proper count
 _count = round _count;
 
-// Returns array containing two arrays: [[type1, typeN, ...], [count1, countN, ...]]
-(getBackpackCargo _container) params ["_allItemsType", "_allItemsCount"];
+// Save backpacks and contents
+private _backpackData = [];
+{
+    _backpackData pushBack [typeOf _x, getItemCargo _x, magazinesAmmoCargo _x, weaponsItemsCargo _x];
+} forEach (everyBackpack _container); // [object1, object2, ...]
 
 // Clear cargo space and readd the items as long it's not the type in question
 clearBackpackCargoGlobal _container;
 
+private _removed = 0;
 {
-    private _itemCount = _allItemsCount select _forEachIndex;
+    _x params ["_backpackClass", "_itemCargo", "_magazinesAmmoCargo", "_weaponsItemsCargo"];
 
-    if (_x == _item) then {
+    if (_removed != _count && {_backpackClass == _item}) then {
         // Process removal
-        _return = true;
-
-        _itemCount = _itemCount - _count;
-        if (_itemCount > 0) then {
-            // Add with new count
-            _container addBackpackCargoGlobal [_x, _itemCount];
-        };
+        _removed = _removed + 1;
     } else {
-        // Readd only
-        _container addBackpackCargoGlobal [_x, _itemCount];
-    };
-} forEach _allItemsType;
+        // Save all backpacks for finding the one we readd after this
+        private _addedBackpacks = everyBackpack _container;
 
-_return
+        // Readd
+        private _backpack = [_backpackClass, "CfgVehicles"] call CBA_fnc_getNoLinkedItemsClass;
+        _container addBackpackCargoGlobal [_backpack, 1];
+
+        // Find just added backpack and add contents (no command returns reference when adding)
+        private _backpack = (everyBackpack _container - _addedBackpacks) select 0;
+
+        // Items
+        {
+            private _itemCount = (_itemCargo select 1) select _forEachIndex;
+            _backpack addItemCargoGlobal [_x, _itemCount];
+        } forEach (_itemCargo select 0);
+
+        // Magazines (and their ammo count)
+        {
+            _backpack addMagazineAmmoCargo [_x select 0, 1, _x select 1];
+            diag_log format ["adding mag: %1", _x];
+        } forEach _magazinesAmmoCargo;
+
+        // Weapons (and their attachments)
+        // Put attachments next to weapon, no command to put it directly onto a weapon when weapon is in a container
+        {
+            private _weapon = [_x select 0] call CBA_fnc_getNoLinkedItemsClass;
+            _backpack addWeaponCargoGlobal [_weapon, 1]; // Weapon
+
+            _backpack addItemCargoGlobal [_x select 1, 1]; // Muzzle
+            _backpack addItemCargoGlobal [_x select 2, 1]; // Pointer
+            _backpack addItemCargoGlobal [_x select 3, 1]; // Optic
+
+            // Magazine
+            (_x select 4) params ["_magazineClass", "_magazineAmmoCount"];
+            _backpack addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
+
+            if (count _x > 6) then {
+                // Magazine GL
+                (_x select 5) params ["_magazineGLClass", "_magazineGLAmmoCount"];
+                _backpack addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
+
+                _backpack addItemCargoGlobal [_x select 6, 1]; // Bipod
+            } else {
+                _backpack addItemCargoGlobal [_x select 5, 1]; // Bipod
+            };
+        } forEach _weaponsItemsCargo;
+    };
+} forEach _backpackData;
+
+(_removed == _count)

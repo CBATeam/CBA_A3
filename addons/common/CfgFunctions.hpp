@@ -9,6 +9,7 @@ class CfgFunctions {
             PATHTO_FNC(getWeaponModes);
             PATHTO_FNC(inheritsFrom);
             PATHTO_FNC(getTurret);
+            PATHTO_FNC(getNoLinkedItemsClass);
         };
 
         class Entities {
