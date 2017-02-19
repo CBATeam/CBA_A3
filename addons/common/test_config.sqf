@@ -166,13 +166,13 @@ TEST_TRUE(_result == 5,_funcName);*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-_funcName = "CBA_fnc_getNoLinkedItemsClass";
+_funcName = "CBA_fnc_getNonPresetClass";
 LOG("Testing " + _funcName);
 
-TEST_DEFINED("CBA_fnc_getNoLinkedItemsClass","");
+TEST_DEFINED("CBA_fnc_getNonPresetClass","");
 
-_result = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNoLinkedItemsClass;
+_result = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNonPresetClass;
 TEST_TRUE(_result isEqualTo "arifle_MX_F",_funcName);
 
-_result = ["B_AssaultPack_mcamo_Ammo", "CfgVehicles"] call CBA_fnc_getNoLinkedItemsClass;
+_result = ["B_AssaultPack_mcamo_Ammo", "CfgVehicles"] call CBA_fnc_getNonPresetClass;
 TEST_TRUE(_result isEqualTo "B_AssaultPack_mcamo",_funcName);

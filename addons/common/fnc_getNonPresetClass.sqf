@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getNoLinkedItemsClass
+Function: CBA_fnc_getNonPresetClass
 
 Description:
     Get ancestor class of a weapon or container which has no preset attachments/contents.
@@ -14,14 +14,14 @@ Returns:
 Examples:
     (begin example)
         // Get parent class without preset attachments of a weapon (returns "arifle_MX_F")
-        _ancestorClass = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNoLinkedItemsClass;
+        _ancestorClass = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNonPresetClass;
     (end)
 
 Author:
     Jonpas
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-SCRIPT(getNoLinkedItemsClass);
+SCRIPT(getNonPresetClass);
 
 params [["_class", "", [""]], ["_rootConfig", "CfgWeapons", [""]]];
 
@@ -51,5 +51,5 @@ if (_parent isEqualTo configNull) then {
     ""
 } else {
     // Recursively search the ancestor tree
-    [configName _parent, _rootConfig] call CBA_fnc_getNoLinkedItemsClass;
+    [configName _parent, _rootConfig] call CBA_fnc_getNonPresetClass;
 };

@@ -76,7 +76,7 @@ clearBackpackCargoGlobal _container;
         private _addedBackpacks = everyBackpack _container;
 
         // Readd
-        private _backpack = [_backpackClass, "CfgVehicles"] call CBA_fnc_getNoLinkedItemsClass;
+        private _backpack = [_backpackClass, "CfgVehicles"] call CBA_fnc_getNonPresetClass;
         _container addBackpackCargoGlobal [_backpack, 1];
 
         // Find just added backpack and add contents (no command returns reference when adding)
@@ -103,7 +103,7 @@ clearBackpackCargoGlobal _container;
                 _magazineGL = "";
             };
 
-            private _weapon = [_weapon] call CBA_fnc_getNoLinkedItemsClass;
+            private _weapon = [_weapon] call CBA_fnc_getNonPresetClass;
             _backpack addWeaponCargoGlobal [_weapon, 1];
 
             _backpack addItemCargoGlobal [_muzzle, 1];

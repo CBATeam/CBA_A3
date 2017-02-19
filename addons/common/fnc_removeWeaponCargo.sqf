@@ -74,7 +74,7 @@ clearWeaponCargoGlobal _container;
         // Process removal
         _count = _count - 1;
     } else {
-        _weapon = [_weapon] call CBA_fnc_getNoLinkedItemsClass;
+        _weapon = [_weapon] call CBA_fnc_getNonPresetClass;
         _container addWeaponCargoGlobal [_weapon, 1];
 
         _container addItemCargoGlobal [_muzzle, 1];
