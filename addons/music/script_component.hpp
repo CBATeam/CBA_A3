@@ -1,5 +1,5 @@
 #define COMPONENT music
-#include "\fsh_main\script_mod.hpp"
+#include "\x\cba\addons\main\script_mod.hpp"
 
 
 #define DEBUG_MODE_FULL
