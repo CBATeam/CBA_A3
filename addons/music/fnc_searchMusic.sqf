@@ -4,8 +4,8 @@ Description:
     A function used to return sogns with given type and tags
 Parameters:
     1: A string or array of strings, defining music "type".
-	2: A string or array of strings, defining tags/themes to look for.
-	3: Array (optional) of song classes to search. Uses full list by default
+    2: A string or array of strings, defining tags/themes to look for.
+    3: Array (optional) of song classes to search. Uses full list by default
 Example:
     (begin example)
     _results = ["song","stealth"] call CBA_fnc_searchMusic
@@ -29,20 +29,20 @@ if (_search_type select 0 == 'any') then {_search_type = [];};
 if (_search_tags select 0 == 'any') then {_search_tags = [];};
 
 for [{_i=0}, {_i < (count _search_type)}, {INC(_i)}] do {
-	_entry = _search_type select _i;
-	if (typeName _entry != 'STRING') then {
-		_search_type set [_i, ''];
-	} else {
-		_search_type set [_i, toLower (_entry)];
-	};
+    _entry = _search_type select _i;
+    if (typeName _entry != 'STRING') then {
+        _search_type set [_i, ''];
+    } else {
+        _search_type set [_i, toLower (_entry)];
+    };
 };
 for [{_i=0}, {_i < (count _search_tags)}, {INC(_i)}] do {
-	_entry = _search_tags select _i;
-	if (typeName _entry != 'STRING') then {
-		_search_tags set [_i, ''];
-	} else {
-		_search_tags set [_i, toLower (_entry)];
-	};
+    _entry = _search_tags select _i;
+    if (typeName _entry != 'STRING') then {
+        _search_tags set [_i, ''];
+    } else {
+        _search_tags set [_i, toLower (_entry)];
+    };
 };
 
 _search_type = _search_type - [''];
@@ -50,29 +50,29 @@ _search_tags = _search_tags - [''];
 _results = [];
 
 {
-	_track = _x;
-	_cfg = [_track] call CBA_fnc_getMusicPath;
-	if (typeName _cfg == 'CONFIG') then {
-		_type = getText (_cfg >> 'type');
-		if (_type == '') then {_type = DEFAULT_SONG_TYPE};
-		if ((toLower _type) in _search_type || count _search_type == 0) then {
-			if (count _search_tags > 0) then {
-				_tags = getArray (_cfg >> 'tags');
-				_theme = getText (_cfg >> 'theme');
-				_tags pushBack _theme;	//BIS sounds dont have tags so use their theme instead
-				for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
-					_tag = toLower (_tags select _i);
-					if (_tag in _search_tags || count _search_tags == 0) then {
-						_i = count _tags;
-						_results pushBack _track;
-					};
-				};
-			} else {
-				//No tags required so add it
-				_results pushBack _track;
-			};
-		};
-	};	
+    _track = _x;
+    _cfg = [_track] call CBA_fnc_getMusicPath;
+    if (typeName _cfg == 'CONFIG') then {
+        _type = getText (_cfg >> 'type');
+        if (_type == '') then {_type = DEFAULT_SONG_TYPE};
+        if ((toLower _type) in _search_type || count _search_type == 0) then {
+            if (count _search_tags > 0) then {
+                _tags = getArray (_cfg >> 'tags');
+                _theme = getText (_cfg >> 'theme');
+                _tags pushBack _theme;	//BIS sounds dont have tags so use their theme instead
+                for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
+                    _tag = toLower (_tags select _i);
+                    if (_tag in _search_tags || count _search_tags == 0) then {
+                        _i = count _tags;
+                        _results pushBack _track;
+                    };
+                };
+            } else {
+                //No tags required so add it
+                _results pushBack _track;
+            };
+        };
+    };	
 } forEach _search_tracks;
 
 _results 
