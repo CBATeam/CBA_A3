@@ -21,8 +21,8 @@ if (typeName _className != 'STRING') exitWith {WARNING_1('Class not a string',_c
 _cfg = configFile >> 'CfgMusic' >> _className;
 _dur = getNumber (_cfg >> 'duration');
 if (_dur == 0) then {
-	_cfg = missionConfigFile >> 'CfgMusic' >> _className;
-	_dur = getNumber (_cfg >> 'name');
-	if (_dur == 0) exitWith {WARNING_1('No path found for class',_className);nil};
+    _cfg = missionConfigFile >> 'CfgMusic' >> _className;
+    _dur = getNumber (_cfg >> 'name');
+    if (_dur == 0) exitWith {WARNING_1('No path found for class',_className);nil};
 };
 _cfg 
