@@ -18,12 +18,12 @@ private ["_cfg","_data"];
 params [["_className",''],["_dataType",'name']];
 LOG(_className);
 if (typeName _className == 'STRING') then {
-	//Is a string, get config
-	_cfg = [_className] call CBA_fnc_getMusicPath;
+    //Is a string, get config
+    _cfg = [_className] call CBA_fnc_getMusicPath;
 } else {
-	if (IS_CONFIG(_className)) then {
-		_cfg = _className;
-	};
+    if (IS_CONFIG(_className)) then {
+        _cfg = _className;
+    };
 };
 if (typeName _cfg != 'CONFIG') exitWith {ERROR_1('Config not found',_className);};
 
