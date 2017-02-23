@@ -16,8 +16,8 @@ Author:
 #include "script_component.hpp"
 private ['_ret'];
 if (!([true] call CBA_fnc_getMusicPlaying)) exitWith {
-	//Nothing is playing, so no need to do anything
-	false
+    //Nothing is playing, so no need to do anything
+    false
 };
 
 playMusic ['',0];
