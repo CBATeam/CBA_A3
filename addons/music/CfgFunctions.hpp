@@ -34,7 +34,7 @@ class CfgFunctions
                 description = "returns the data on currently playing music";
                 file = "\x\cba\addons\music\fnc_getMusicPlaying.sqf";
             };
-              // FSH_fnc_playMusic
+            // FSH_fnc_playMusic
             class playMusic
             {
                 description = "Duh";
