@@ -1,6 +1,3 @@
-class CfgMusic 
+class CfgMusic
 {
-	
-	
-	
 };
