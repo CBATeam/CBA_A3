@@ -59,7 +59,7 @@ _results = [];
             if (count _search_tags > 0) then {
                 _tags = getArray (_cfg >> 'tags');
                 _theme = getText (_cfg >> 'theme');
-                _tags pushBack _theme;	//BIS sounds dont have tags so use their theme instead
+                _tags pushBack _theme;    //BIS sounds dont have tags so use their theme instead
                 for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
                     _tag = toLower (_tags select _i);
                     if (_tag in _search_tags || count _search_tags == 0) then {
@@ -71,8 +71,8 @@ _results = [];
                 //No tags required so add it
                 _results pushBack _track;
             };
-        };
-    };	
+        }
+    };
 } forEach _search_tracks;
 
 _results 
