@@ -50,14 +50,7 @@ params [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_localGroups = [];
-
-{
-    // Find owner of unit if headless client is present
-    if (local _x) then {
-        _localGroups pushBack _x;
-    };
-} forEach _groups;
+_localGroups = _groups select { local _x };
 
 if (_localGroups isEqualTo []) exitWith {};
 
@@ -72,7 +65,6 @@ if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol
 _canPatrol = _logic getVariable ["canPatrol",true];
-if (_canPatrol isEqualTo 0) then {_canPatrol = false;}else{_canPatrol = true;};
 
 // Command local group leaders to defend area
 _defendRadius = _logic getVariable ["defendRadius",25];

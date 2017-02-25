@@ -3,6 +3,7 @@
     <Package name="Ui">
         <Key ID="STR_CBA_Ui_Component">
             <English>Community Base Addons - User Interface</English>
+            <Japanese>Community Base Addons - ユーザー インターフェイス</Japanese>
         </Key>
     </Package>
 </Project>

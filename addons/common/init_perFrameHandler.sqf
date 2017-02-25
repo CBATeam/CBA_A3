@@ -51,6 +51,7 @@ GVAR(waitUntilAndExecArray) = [];
     } forEach GVAR(waitAndExecArray);
     if (_delete) then {
         GVAR(waitAndExecArray) = GVAR(waitAndExecArray) - [objNull];
+        _delete = false;
     };
 
 
@@ -66,7 +67,6 @@ GVAR(waitUntilAndExecArray) = [];
 
 
     // Execute the waitUntilAndExec functions:
-    _delete = false;
     {
         // if condition is satisfied call statement
         if ((_x select 2) call (_x select 0)) then {

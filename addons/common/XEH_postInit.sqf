@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 
 //Install PFEH:
-addMissionEventHandler ["EachFrame", FUNC(onFrame)];
+addMissionEventHandler ["EachFrame", {call FUNC(onFrame)}];
 
 LOG(MSG_INIT);
 

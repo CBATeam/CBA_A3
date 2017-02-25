@@ -68,6 +68,7 @@ Group: Functions  {
       File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
       File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
       File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
+      File: CBA_fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
       }  # Group: Ai
 
    Group: Arrays  {
@@ -104,13 +105,16 @@ Group: Functions  {
       File: CBA_fnc_addWeaponCargo  (common/fnc_addWeaponCargo.sqf)
       File: CBA_fnc_binocularMagazine  (common/fnc_binocularMagazine.sqf)
       File: CBA_fnc_canUseWeapon  (common/fnc_canUseWeapon.sqf)
+      File: CBA_fnc_compileFinal  (common/fnc_compileFinal.sqf)
       File: CBA_fnc_createMarker  (common/fnc_createMarker.sqf)
       File: CBA_fnc_createNamespace  (common/fnc_createNamespace.sqf)
+      File: CBA_fnc_createPerFrameHandlerObject  (common/fnc_createPerFrameHandlerObject.sqf)
       File: CBA_fnc_createTrigger  (common/fnc_createTrigger.sqf)
       File: CBA_fnc_currentMagazineIndex  (common/fnc_currentMagazineIndex.sqf)
       File: CBA_fnc_currentUnit  (common/fnc_currentUnit.sqf)
       File: CBA_fnc_deleteEntity  (common/fnc_deleteEntity.sqf)
       File: CBA_fnc_deleteNamespace  (common/fnc_deleteNamespace.sqf)
+      File: CBA_fnc_deletePerFrameHandlerObject  (common/fnc_deletePerFrameHandlerObject.sqf)
       File: CBA_fnc_directCall  (common/fnc_directCall.sqf)
       File: CBA_fnc_dropItem  (common/fnc_dropItem.sqf)
       File: CBA_fnc_dropMagazine  (common/fnc_dropMagazine.sqf)
@@ -119,6 +123,7 @@ Group: Functions  {
       File: CBA_fnc_findEntity  (common/fnc_findEntity.sqf)
       File: CBA_fnc_getAlive  (common/fnc_getAlive.sqf)
       File: CBA_fnc_getAnimType  (common/fnc_getAnimType.sqf)
+      File: CBA_fnc_getArea  (common/fnc_getArea.sqf)
       File: CBA_fnc_getArg  (common/fnc_getArg.sqf)
       File: CBA_fnc_getAspectRatio  (common/fnc_getAspectRatio.sqf)
       File: CBA_fnc_getConfigEntry  (common/fnc_getConfigEntry.sqf)
@@ -143,7 +148,6 @@ Group: Functions  {
       File: CBA_fnc_getVolume  (common/fnc_getVolume.sqf)
       File: CBA_fnc_getWeaponModes  (common/fnc_getWeaponModes.sqf)
       File: CBA_fnc_headDir  (common/fnc_headDir.sqf)
-      File: CBA_fnc_inArea  (common/fnc_inArea.sqf)
       File: CBA_fnc_inheritsFrom  (common/fnc_inheritsFrom.sqf)
       File: CBA_fnc_isAlive  (common/fnc_isAlive.sqf)
       File: CBA_fnc_isPerson  (common/fnc_isPerson.sqf)
@@ -171,6 +175,7 @@ Group: Functions  {
       File: CBA_fnc_removeWeapon  (common/fnc_removeWeapon.sqf)
       File: CBA_fnc_removeWeaponCargo  (common/fnc_removeWeaponCargo.sqf)
       File: CBA_fnc_selectWeapon  (common/fnc_selectWeapon.sqf)
+      File: CBA_fnc_setCallsign  (common/fnc_setCallsign.sqf)
       File: CBA_fnc_setHeight  (common/fnc_setHeight.sqf)
       File: CBA_fnc_setPos  (common/fnc_setPos.sqf)
       File: CBA_fnc_switchPlayer  (common/fnc_switchPlayer.sqf)
@@ -186,11 +191,7 @@ Group: Functions  {
 
    Group: Diagnostic  {
 
-      File: CBA_fnc_benchmarkFunction  (diagnostic/fnc_benchmarkFunction.sqf)
       File: CBA_fnc_debug  (diagnostic/fnc_debug.sqf)
-      File: CBA_fnc_error  (diagnostic/fnc_error.sqf)
-      File: CBA_fnc_log  (diagnostic/fnc_log.sqf)
-      File: CBA_fnc_peek  (diagnostic/fnc_peek.sqf)
       File: CBA_fnc_test  (diagnostic/fnc_test.sqf)
       }  # Group: Diagnostic
 
@@ -202,6 +203,7 @@ Group: Functions  {
       File: CBA_fnc_addEventHandlerArgs  (events/fnc_addEventHandlerArgs.sqf)
       File: CBA_fnc_addKeyHandler  (events/fnc_addKeyHandler.sqf)
       File: CBA_fnc_addKeyHandlerFromConfig  (events/fnc_addKeyHandlerFromConfig.sqf)
+      File: CBA_fnc_addMarkerEventHandler  (events/fnc_addMarkerEventHandler.sqf)
       File: CBA_fnc_addPlayerEventHandler  (events/fnc_addPlayerEventHandler.sqf)
       File: CBA_fnc_changeKeyHandler  (events/fnc_changeKeyHandler.sqf)
       File: CBA_fnc_globalEvent  (events/fnc_globalEvent.sqf)
@@ -213,6 +215,7 @@ Group: Functions  {
       File: CBA_fnc_removeDisplayHandler  (events/fnc_removeDisplayHandler.sqf)
       File: CBA_fnc_removeEventHandler  (events/fnc_removeEventHandler.sqf)
       File: CBA_fnc_removeKeyHandler  (events/fnc_removeKeyHandler.sqf)
+      File: CBA_fnc_removeMarkerEventHandler  (events/fnc_removeMarkerEventHandler.sqf)
       File: CBA_fnc_removePlayerEventHandler  (events/fnc_removePlayerEventHandler.sqf)
       File: CBA_fnc_serverEvent  (events/fnc_serverEvent.sqf)
       File: CBA_fnc_targetEvent  (events/fnc_targetEvent.sqf)
@@ -222,10 +225,12 @@ Group: Functions  {
 
       File: CBA_fnc_hashCreate  (hashes/fnc_hashCreate.sqf)
       File: CBA_fnc_hashEachPair  (hashes/fnc_hashEachPair.sqf)
+      File: CBA_fnc_hashFilter  (hashes/fnc_hashFilter.sqf)
       File: CBA_fnc_hashGet  (hashes/fnc_hashGet.sqf)
       File: CBA_fnc_hashHasKey  (hashes/fnc_hashHasKey.sqf)
       File: CBA_fnc_hashRem  (hashes/fnc_hashRem.sqf)
       File: CBA_fnc_hashSet  (hashes/fnc_hashSet.sqf)
+      File: CBA_fnc_hashSize  (hashes/fnc_hashSize.sqf)
       File: CBA_fnc_isHash  (hashes/fnc_isHash.sqf)
       File: CBA_fnc_parseYAML  (hashes/fnc_parseYAML.sqf)
       }  # Group: Hashes
@@ -253,12 +258,10 @@ Group: Functions  {
 
    Group: Network  {
 
-      File: CBA_fnc_getMarkerPersistent  (network/fnc_getMarkerPersistent.sqf)
       File: CBA_fnc_globalExecute  (network/fnc_globalExecute.sqf)
       File: CBA_fnc_globalSay  (network/fnc_globalSay.sqf)
       File: CBA_fnc_globalSay3d  (network/fnc_globalSay3d.sqf)
       File: CBA_fnc_publicVariable  (network/fnc_publicVariable.sqf)
-      File: CBA_fnc_setMarkerPersistent  (network/fnc_setMarkerPersistent.sqf)
       File: CBA_fnc_setVarNet  (network/fnc_setVarNet.sqf)
       }  # Group: Network
 
@@ -278,6 +281,7 @@ Group: Functions  {
       File: CBA_fnc_formatElapsedTime  (strings/fnc_formatElapsedTime.sqf)
       File: CBA_fnc_formatNumber  (strings/fnc_formatNumber.sqf)
       File: CBA_fnc_leftTrim  (strings/fnc_leftTrim.sqf)
+      File: CBA_fnc_removeWhitespace  (strings/fnc_removeWhitespace.sqf)
       File: CBA_fnc_replace  (strings/fnc_replace.sqf)
       File: CBA_fnc_rightTrim  (strings/fnc_rightTrim.sqf)
       File: CBA_fnc_split  (strings/fnc_split.sqf)
@@ -324,12 +328,15 @@ Group: Macros  {
 
 Group: Statemachine  {
 
+   File: CBA_statemachine_fnc_addEventTransition  (statemachine/fnc_addEventTransition.sqf)
    File: CBA_statemachine_fnc_addState  (statemachine/fnc_addState.sqf)
    File: CBA_statemachine_fnc_addTransition  (statemachine/fnc_addTransition.sqf)
    File: CBA_statemachine_fnc_clockwork  (statemachine/fnc_clockwork.sqf)
    File: CBA_statemachine_fnc_create  (statemachine/fnc_create.sqf)
    File: CBA_statemachine_fnc_createFromConfig  (statemachine/fnc_createFromConfig.sqf)
    File: CBA_statemachine_fnc_delete  (statemachine/fnc_delete.sqf)
+   File: CBA_statemachine_fnc_getCurrentState  (statemachine/fnc_getCurrentState.sqf)
+   File: CBA_statemachine_fnc_manualTransition  (statemachine/fnc_manualTransition.sqf)
    File: CBA_statemachine_fnc_toString  (statemachine/fnc_toString.sqf)
    File: CBA_statemachine_fnc_updateList  (statemachine/fnc_updateList.sqf)
    }  # Group: Statemachine
