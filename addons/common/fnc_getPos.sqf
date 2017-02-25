@@ -50,7 +50,7 @@ switch (typeName _entity) do {
     case "ARRAY": {
         + _entity
     };
-    case "NUMBER": { // in case of position being passed not in array
+    case "SCALAR": { // in case of position being passed not in array
         + _this
     };
 };
