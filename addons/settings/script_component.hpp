@@ -87,3 +87,10 @@
 #define GET_TEMP_NAMESPACE_FORCED(setting,source) ((GET_TEMP_NAMESPACE(source) getVariable setting) param [1])
 
 #define NULL_HASH ([] call CBA_fnc_hashCreate)
+
+#define ASCII_NEWLINE 10
+#define ASCII_CARRIAGE_RETURN 13
+#define ASCII_TAB 9
+#define ASCII_SPACE 32
+
+#define WHITE_SPACE [ASCII_NEWLINE, ASCII_CARRIAGE_RETURN, ASCII_TAB, ASCII_SPACE]
