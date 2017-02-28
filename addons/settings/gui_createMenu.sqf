@@ -86,16 +86,16 @@ _display setVariable [QGVAR(controls), []];
         private _linkedControls = [_settingNameControls];
 
         switch (toUpper _settingType) do {
-            case ("CHECKBOX"): {
+            case "CHECKBOX": {
                 #include "gui_createMenu_checkbox.sqf"
             };
-            case ("LIST"): {
+            case "LIST": {
                 #include "gui_createMenu_list.sqf"
             };
-            case ("SLIDER"): {
+            case "SLIDER": {
                 #include "gui_createMenu_slider.sqf"
             };
-            case ("COLOR"): {
+            case "COLOR": {
                 #include "gui_createMenu_color.sqf"
             };
             default {};
