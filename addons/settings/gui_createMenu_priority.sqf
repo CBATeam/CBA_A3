@@ -6,7 +6,7 @@ _controls pushBack _ctrlSettingForce;
 _ctrlSettingForce ctrlSetPosition [
     POS_W(32),
     POS_H(_ctrlOptionsGroup getVariable QGVAR(offsetY)),
-    POS_W(3),
+    POS_W(2),
     POS_H(1)
 ];
 _ctrlSettingForce ctrlCommit 0;
@@ -30,6 +30,7 @@ switch (_source) do {
 
 {
     private _index = _ctrlSettingForce lbAdd str _x;
+    _ctrlSettingForce lbSetTooltip [_index, "-tooltip-"];
 
     (_data select 2) pushBack _x;
 } forEach _priorities;

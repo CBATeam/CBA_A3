@@ -104,7 +104,7 @@ _display setVariable [QGVAR(controls), []];
         #include "gui_createMenu_default.sqf"
 
         // ----- handle "priority" drop-down list
-        #include "gui_createMenu_force.sqf"
+        #include "gui_createMenu_priority.sqf"
 
         _ctrlOptionsGroup setVariable [QGVAR(offsetY), _offsetY + MENU_OFFSET_SPACING];
     } forEach ["server", "client", "mission"];

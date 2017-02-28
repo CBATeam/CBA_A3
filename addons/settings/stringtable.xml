@@ -18,7 +18,7 @@
     </Key>
     <Key ID="STR_cba_settings_ButtonClient">
         <English>Client</English>
-        <German>Lokal</German>
+        <German>Client</German>
         <Japanese>クライアント</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonClient_tooltip">
@@ -30,6 +30,11 @@
         <English>Server</English>
         <German>Server</German>
         <Japanese>サーバー</Japanese>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonLocal">
+        <English>Local</English>
+        <German>Lokal</German>
+        <Japanese>ローカル</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonServer_tooltip">
         <English>Look at the servers settings. 'Forced' settings overwrite the client and mission settings. Log in as admin to change.</English>
