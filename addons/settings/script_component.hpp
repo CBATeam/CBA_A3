@@ -94,3 +94,6 @@
 #define ASCII_SPACE 32
 
 #define WHITE_SPACE [ASCII_NEWLINE, ASCII_CARRIAGE_RETURN, ASCII_TAB, ASCII_SPACE]
+
+#define ICON_ON  "a3\ui_f\data\IGUI\Cfg\Actions\ico_ON_ca.paa"
+#define ICON_OFF "a3\ui_f\data\IGUI\Cfg\Actions\ico_OFF_ca.paa"
