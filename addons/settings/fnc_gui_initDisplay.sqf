@@ -70,7 +70,7 @@ if (!isMultiplayer) then {
     private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
 
     _ctrlButtonImport ctrlSetPosition [
-        POS_X(24.4),
+        POS_X(26.4),
         POS_Y(20.5),
         POS_W(6),
         POS_H(1)
@@ -89,7 +89,7 @@ if (!isMultiplayer) then {
 private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
 
 _ctrlButtonExport ctrlSetPosition [
-    POS_X(30.5),
+    POS_X(32.5),
     POS_Y(20.5),
     POS_W(6),
     POS_H(1)

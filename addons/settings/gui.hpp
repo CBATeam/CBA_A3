@@ -39,7 +39,7 @@ class GVAR(OptionsGroup): RscControlsGroup {
     };
     x = POS_W(0.5);
     y = POS_H(3.5);
-    w = POS_W(35);
+    w = POS_W(37);
     h = POS_H(13.8);
     lineHeight = POS_H(1);
 
@@ -116,7 +116,7 @@ class RscDisplayGameOptions {
                     colorBackground[] = {0,0,0,0.4};
                     x = POS_W(0.5);
                     y = POS_H(3.5);
-                    w = POS_W(35);
+                    w = POS_W(37);
                     h = POS_H(13.8);
                 };
                 class CBA_AddonsCA_ControlsPageText: RscText {
@@ -136,7 +136,7 @@ class RscDisplayGameOptions {
                     tooltip = CSTRING(force_tooltip);
                     x = POS_W(25);
                     y = POS_H(2.5);
-                    w = POS_W(10);
+                    w = POS_W(10.5);
                     h = POS_H(1);
                 };
             };
