@@ -87,12 +87,7 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonServer: CBA_ButtonClient {
-            onLoad = QUOTE(\
-                if (!isMultiplayer) then {\
-                    params ['_control'];\
-                    _control ctrlSetText localize QUOTE(LSTRING(ButtonLocal));\
-                };\
-            );
+            onLoad = QUOTE(if (!isMultiplayer) then {(_this select 0) ctrlSetText localize QUOTE(LSTRING(ButtonLocal))};);
             idc = IDC_BTN_SERVER;
             text = CSTRING(ButtonServer);
             tooltip = CSTRING(ButtonServer_tooltip);
