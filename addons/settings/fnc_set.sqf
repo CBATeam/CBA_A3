@@ -8,7 +8,7 @@ Parameters:
     _setting - Name of the setting <STRING>
     _value   - Value of the setting <ANY>
     _forced  - Force setting? <BOOLEAN>
-    _source  - Can be "client", "server" or "mission" (optional, default: "client") <STRING>
+    _source  - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:
     _return - Error code <NUMBER>
@@ -48,29 +48,6 @@ if (!isNil "_currentValue" && {_value isEqualTo _currentValue} && {_forced isEqu
 private _return = 0;
 
 switch (toLower _source) do {
-    case "server": {
-        if (isServer) then {
-            GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
-
-            if (isMultiplayer) then {
-                GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
-            } else {
-                GVAR(serverSettings) setVariable [_setting, [_value, _forced]];
-            };
-
-            private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
-            [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
-            profileNamespace setVariable [QGVAR(hash), _settingsHash];
-
-            [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
-        } else {
-            if (IS_ADMIN_LOGGED) then {
-                [QGVAR(setSettingServer), [_setting, _value, _forced]] call CBA_fnc_serverEvent;
-            } else {
-                _return = 12;
-            };
-        };
-    };
     case "client": {
         // flag is used for server settings exclusively, keep previous state
         _forced = [_setting, _source] call FUNC(isForced);
@@ -95,6 +72,29 @@ switch (toLower _source) do {
         set3DENMissionAttributes [["Scenario", QGVAR(hash), _settingsHash]];
 
         [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+    };
+    case "server": {
+        if (isServer) then {
+            GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
+
+            if (isMultiplayer) then {
+                GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
+            } else {
+                GVAR(serverSettings) setVariable [_setting, [_value, _forced]];
+            };
+
+            private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
+            [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
+            profileNamespace setVariable [QGVAR(hash), _settingsHash];
+
+            [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
+        } else {
+            if (IS_ADMIN_LOGGED) then {
+                [QGVAR(setSettingServer), [_setting, _value, _forced]] call CBA_fnc_serverEvent;
+            } else {
+                _return = 12;
+            };
+        };
     };
     default {
         _return = 10;

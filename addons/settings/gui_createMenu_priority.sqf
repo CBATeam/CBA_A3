@@ -6,7 +6,7 @@ _controls pushBack _ctrlSettingForce;
 _ctrlSettingForce ctrlSetPosition [
     POS_W(32),
     POS_H(_ctrlOptionsGroup getVariable QGVAR(offsetY)),
-    POS_W(2),
+    POS_W(2.5),
     POS_H(1)
 ];
 _ctrlSettingForce ctrlCommit 0;
@@ -17,22 +17,29 @@ private _data = [_setting, _source, []];
 private _priorities = [];
 
 switch (_source) do {
-    case "server": {
-        _priorities append [0,2,4];
-    };
     case "client": {
-        _priorities append [-1,1];
+        _priorities append [0,3];
     };
     case "mission": {
-        _priorities append [0,3];
+        _priorities append [1,4,6];
+    };
+    case "server": {
+        _priorities append [2,5,7];
     };
 };
 
 {
     private _index = _ctrlSettingForce lbAdd str _x;
-    _ctrlSettingForce lbSetTooltip [_index, "-tooltip-"];
 
-    (_data select 2) pushBack _x;
+    private _tooltip = [
+        LSTRING(priority_low),
+        LSTRING(priority_medium),
+        LSTRING(priority_high)
+    ] select _forEachIndex;
+
+    _ctrlSettingForce lbSetTooltip [_index, localize _tooltip];
+
+    (_data select 2) pushBack _forEachIndex;
 } forEach _priorities;
 
 _ctrlSettingForce lbSetCurSel ((_data select 2) find ([_setting, _source] call FUNC(getForced)));

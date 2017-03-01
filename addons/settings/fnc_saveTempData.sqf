@@ -34,5 +34,5 @@ Author:
 
             [_setting, _value, _forced, _source] call FUNC(set);
         };
-    } forEach ["server", "client", "mission"];
+    } forEach ["client", "mission", "server"];
 } forEach GVAR(allSettings);

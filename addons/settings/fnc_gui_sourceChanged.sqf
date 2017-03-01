@@ -6,7 +6,7 @@ params ["_control"];
 // get dialog
 private _display = ctrlParent _control;
 
-private _selectedSource = ["server", "client", "mission"] param [[IDC_BTN_SERVER, IDC_BTN_CLIENT, IDC_BTN_MISSION] find ctrlIDC _control];
+private _selectedSource = ["client", "mission", "server"] param [[IDC_BTN_CLIENT, IDC_BTN_MISSION, IDC_BTN_SERVER] find ctrlIDC _control];
 
 uiNamespace setVariable [QGVAR(source), _selectedSource];
 
@@ -37,14 +37,14 @@ private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;
 private _ctrlButtonLoad = _display displayCtrl IDC_BTN_LOAD;
 
 private _enabled = switch (_selectedSource) do {
-    case ("client"): {
+    case "client": {
         CAN_SET_CLIENT_SETTINGS
     };
-    case ("server"): {
-        CAN_SET_SERVER_SETTINGS
-    };
-    case ("mission"): {
+    case "mission": {
         CAN_SET_MISSION_SETTINGS
+    };
+    case "server": {
+        CAN_SET_SERVER_SETTINGS
     };
 };
 

@@ -20,9 +20,9 @@ if (_mode == "save") then {
     // --- generate default name
     _ctrlEdit ctrlSetText format ["New: %1",
         localize ([
-            LSTRING(ButtonClient), LSTRING(ButtonServer), LSTRING(ButtonMission)
+            LSTRING(ButtonClient), LSTRING(ButtonMission), LSTRING(ButtonServer)
         ] param [[
-            "client", "server", "mission"
+            "client", "mission", "server"
         ] find (uiNamespace getVariable QGVAR(source))])
     ];
 

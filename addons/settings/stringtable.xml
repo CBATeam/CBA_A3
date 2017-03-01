@@ -55,6 +55,18 @@
         <English>Priority</English>
         <German>Priorität</German>
     </Key>
+    <Key ID="STR_cba_settings_priority_low">
+        <English>low</English>
+        <German>niedrig</German>
+    </Key>
+    <Key ID="STR_cba_settings_priority_medium">
+        <English>medium</English>
+        <German>mittel</German>
+    </Key>
+    <Key ID="STR_cba_settings_priority_high">
+        <English>high</English>
+        <German>hoch</German>
+    </Key>
     <Key ID="STR_cba_settings_force_tooltip">
         <English>Check to overwrite this setting for all connected players.</English>
         <German>Wählen, um diese Einstellung für alle verbunden Spieler zu überschreiben.</German>

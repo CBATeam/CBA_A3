@@ -6,7 +6,7 @@ Description:
 
 Parameters:
     _setting - Name of the setting <STRING>
-    _source  - Can be "client", "server" or "mission" (optional, default: "client") <STRING>
+    _source  - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:
     _overwritten - Whether or not the setting is overwritten <BOOLEAN>
@@ -19,14 +19,14 @@ Author:
 params [["_setting", "", [""]], ["_source", "client", [""]]];
 
 switch (toLower _source) do {
-    case ("client"): {
+    case "client": {
         [_setting, "mission"] call FUNC(getForced) || {[_setting, "server"] call FUNC(getForced)}
     };
-    case ("server"): {
-        (!([_setting, "server"] call FUNC(getForced))) && {[_setting, "mission"] call FUNC(getForced)}
-    };
-    case ("mission"): {
+    case "mission": {
         (!([_setting, "mission"] call FUNC(getForced))) || {[_setting, "server"] call FUNC(getForced)}
+    };
+    case "server": {
+        (!([_setting, "server"] call FUNC(getForced))) && {[_setting, "mission"] call FUNC(getForced)}
     };
     default {nil};
 };

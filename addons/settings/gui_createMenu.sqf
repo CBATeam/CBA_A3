@@ -67,14 +67,14 @@ _display setVariable [QGVAR(controls), []];
         private _enabled = false;
 
         switch (_source) do {
-            case "server": {
-                _enabled = CAN_SET_SERVER_SETTINGS;
-            };
             case "client": {
                 _enabled = CAN_SET_CLIENT_SETTINGS;
             };
             case "mission": {
                 _enabled = CAN_SET_MISSION_SETTINGS;
+            };
+            case "server": {
+                _enabled = CAN_SET_SERVER_SETTINGS;
             };
         };
 
@@ -107,5 +107,5 @@ _display setVariable [QGVAR(controls), []];
         #include "gui_createMenu_priority.sqf"
 
         _ctrlOptionsGroup setVariable [QGVAR(offsetY), _offsetY + MENU_OFFSET_SPACING];
-    } forEach ["server", "client", "mission"];
+    } forEach ["client", "mission", "server"];
 } forEach GVAR(allSettings);

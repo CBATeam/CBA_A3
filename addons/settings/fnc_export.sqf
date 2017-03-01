@@ -5,7 +5,7 @@ Description:
     Export all setting info to string.
 
 Parameters:
-    _source - Can be "client", "server" or "mission" (optional, default: "client") <STRING>
+    _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:
     Formatted setting info. <STRING>
