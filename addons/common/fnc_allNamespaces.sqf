@@ -8,7 +8,7 @@ Parameters:
     None
 
 Returns:
-    _namespace - all custom namespaces <ARRAY>
+    _namespaces - all custom namespaces <ARRAY of LOCATION, OBJECT>
 
 Examples:
     (begin example)
