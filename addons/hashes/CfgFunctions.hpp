@@ -80,6 +80,8 @@ class CfgFunctions
                 description = "Parses a YAML file into a nested array/Hash structure.";
                 file = "\x\cba\addons\hashes\fnc_parseYAML.sqf";
             };
+            PATHTO_FNC(serializeNamespace);
+            PATHTO_FNC(deserializeNamespace);
         };
     };
 };
