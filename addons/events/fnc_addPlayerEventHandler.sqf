@@ -106,12 +106,9 @@ if (_id != -1) then {
         GVAR(oldCameraView) = "";
         GVAR(oldVisibleMap) = false;
 
-        GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {
+        GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
+        [QFUNC(playerEH_EachFrame), {
             private _player = call CBA_fnc_currentUnit;
-            if !(_player isEqualTo GVAR(oldUnit)) then {
-                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
-                GVAR(oldUnit) = _player;
-            };
 
             private _data = currentWeapon _player;
             if !(_data isEqualTo GVAR(oldWeapon)) then {
@@ -140,8 +137,11 @@ if (_id != -1) then {
                 };
             };
 
+            // Fix for problems with PlayerViewChanged eh not always firing on vehicle switch on dedicated
+            // Look into removing this block if event is fixed
             _data = vehicle _player;
             if !(_data isEqualTo GVAR(oldVehicle)) then {
+                TRACE_1("Using fallback polling event for vehicle change",_data);
                 GVAR(oldVehicle) = _data;
                 [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
@@ -163,13 +163,58 @@ if (_id != -1) then {
                 GVAR(oldCameraView) = _data;
                 [QGVAR(cameraViewEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
+        }] call CBA_fnc_compileFinal;
 
-            _data = visibleMap;
+        GVAR(playerEHInfo) pushBack addMissionEventHandler ["PlayerViewChanged", {call FUNC(playerEH_ViewChanged)}];
+        [QFUNC(playerEH_ViewChanged), {
+            private _player = call CBA_fnc_currentUnit;
+
+            if !(_player isEqualTo GVAR(oldUnit)) then {
+                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                GVAR(oldUnit) = _player;
+            };
+
+            private _data = vehicle _player;
+            if !(_data isEqualTo GVAR(oldVehicle)) then {
+                GVAR(oldVehicle) = _data;
+                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+            };
+        }] call CBA_fnc_compileFinal;
+
+        GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {call FUNC(playerEH_Map)}];
+        [QFUNC(playerEH_Map), {
+            params ["_data"]; //visibleMap is updated one frame later
+
             if !(_data isEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
-                [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
+                [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
-        }];
+        }] call CBA_fnc_compileFinal;
+
+        // emulate change to first value from default one frame later
+        // using spawn-dc to not having to wait for postInit to complete
+        0 spawn {
+            {
+                private _player = call CBA_fnc_currentUnit;
+
+                if !(_player isEqualTo GVAR(oldUnit)) then {
+                    [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                    GVAR(oldUnit) = _player;
+                };
+
+                private _data = vehicle _player;
+                if !(_data isEqualTo GVAR(oldVehicle)) then {
+                    GVAR(oldVehicle) = _data;
+                    [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
+
+                _data = visibleMap;
+                if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                    GVAR(oldVisibleMap) = _data;
+                    [QGVAR(visibleMapEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
+            } call CBA_fnc_directCall;
+        };
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];

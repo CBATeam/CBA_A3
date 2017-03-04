@@ -4,7 +4,7 @@ Function: CBA_fnc_taskDefend
 Description:
     A function for a group to defend a parsed location.
 
-    Groups will mount nearby static machine guns and bunker in nearby buildings.
+    Units will mount nearby static machine guns and bunker in nearby buildings.
     They may also patrol the radius unless otherwise specified.
 
 Parameters:
@@ -29,7 +29,13 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_group", ["_position",[]], ["_radius",50,[0]], ["_threshold",2,[0]], ["_patrol",true,[true]]];
+params [
+    ["_group",grpNull,[grpNull,objNull]],
+    ["_position",[],[[],objNull,grpNull,locationNull],3],
+    ["_radius",50,[0]],
+    ["_threshold",2,[0]],
+    ["_patrol",true,[true]]
+];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
@@ -68,8 +74,8 @@ if (_patrol && {count _units > 1}) then {
         _x assignAsGunner (_statics deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        // 93% chance to occupy a random nearby building position
-        if ((random 1 < 0.93) && { !(_buildings isEqualto []) }) then {
+        // 93% chance to occupy a random nearby building position (100% when no patrol)
+        if ((!_patrol || {random 1 < 0.93}) && { !(_buildings isEqualto []) }) then {
             private _building = _buildings call BIS_fnc_selectRandom;
             private _array = _building getVariable ["CBA_taskDefend_positions",[]];
 
@@ -90,17 +96,19 @@ if (_patrol && {count _units > 1}) then {
                     if (surfaceIsWater _pos) exitwith {};
 
                     _unit doMove _pos;
-                    sleep 5;
                     waituntil {unitReady _unit};
-                    _unit disableAI "PATH";
-                    _unit setUnitPos "UP";
+                    doStop _unit;
+
+                    // This command causes AI to repeatedly attempt to crouch when engaged
+                    // If ever fixed by BI then consider uncommenting
+                    // _unit setUnitPos "UP";
                 };
             };
         };
     };
 } forEach _units;
 
-// Remaining units will patrol if enabled
+// Unassigned units will patrol if enabled
 if (_patrol) then {
     [_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskPatrol;
 };
