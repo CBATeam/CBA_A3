@@ -5,6 +5,14 @@
             <English>Community Base Addons - Common Component</English>
             <Japanese>Community Base Addons - 全般要素</Japanese>
         </Key>
+        <Key ID="STR_CBA_Common_ValidateInitBox">
+            <English>Validate Init Expression</English>
+            <German>Prüfe Init-Ausdruck</German>
+        </Key>
+        <Key ID="STR_CBA_Common_ValidateInitBox_tooltip">
+            <English>Enable code validation of the Init box\n\nUnchecking this enables the usage of local variables and return values in the Init box.</Original>
+            <German>Aktiviere Code-Validierung der Init-Box\n\nDeaktivieren ermöglicht die Benutzung von lokalen Variablen und Rückgabewerten in der Init-Box</German>
+        </Key>
     </Package>
 </Project>
 
