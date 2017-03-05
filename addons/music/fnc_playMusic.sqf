@@ -16,14 +16,14 @@ Author:
     Fishy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-private ["_cfg","_data","_canPlay","_duration","_ret"];
+private ["_config","_data","_canPlay","_duration","_return"];
 params [["_className",""],["_time",'name'],["_overWrite", true]];
 if (_className == "") exitWith {
     WARNING("No class given"); 
     false
 };
 
-_ret = false;
+_return = false;
 _canPlay = false;
 
 if (_overWrite) then {
@@ -40,9 +40,9 @@ if (_canPlay) then {
         if (_time < _duration) then {
             playMusic [_className, _time];
             GVAR(track) = [_className,CBA_missionTime,_time,_duration];
-            _ret = true;
+            _return = true;
         } else {WARNING("Time is greater than song length");};
     } else {WARNING("Music not found");};
 };
 
-_ret 
+_return 

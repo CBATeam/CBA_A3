@@ -9,29 +9,29 @@ Example:
     _musicTime = [] call CBA_fnc_getMusicPlaying;
     (end example)
 Returns:
-    array [class, music time, time left]
+    array [class, music time, time left] OR bool (true for playing music)
 Author:
     Fishy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-private ["_bool","_ret","_trackTime","_remaining"];
+private ["_bool","_return","_trackTime","_remainingTime"];
 _bool = [_this,0,false,[false]] call BIS_fnc_param;
-_ret = ['', 0, 0, 0];
+_return = ['', 0, 0, 0];
 if (isNil QGVAR(track)) exitWith {
-    if (_bool) then {_ret = false;};
-    _ret
+    if (_bool) then {_return = false;};
+    _return
 };
 if (_bool) exitWith {true};
 
 GVAR(track) params ["_class","_startTime","_playPos","_duration"];
 _trackTime = (CBA_missionTime - _startTime) + _playPos;
-_remaining = _duration - _trackTime;
-if (_remaining <=0) then {
-    _remaining = 0;
+_remainingTime = _duration - _trackTime;
+if (_remainingTime <=0) then {
+    _remainingTime = 0;
     _trackTime = 0;
     _class = "";
     GVAR(track) = nil;
 };
-_ret = [_class, _trackTime, _remaining];
-_ret 
+_return = [_class, _trackTime, _remainingTime];
+_return 

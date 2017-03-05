@@ -15,14 +15,14 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-private ['_vars','_cfg','_dur'];
+private ['_vars','_config','_duration'];
 if (!params [["_className",'']]) exitWith {WARNING('No Class name given');};
 if (typeName _className != 'STRING') exitWith {WARNING_1('Class not a string',_className);};
-_cfg = configFile >> 'CfgMusic' >> _className;
-_dur = getNumber (_cfg >> 'duration');
-if (_dur == 0) then {
-    _cfg = missionConfigFile >> 'CfgMusic' >> _className;
-    _dur = getNumber (_cfg >> 'name');
-    if (_dur == 0) exitWith {WARNING_1('No path found for class',_className);nil};
+_config = configFile >> 'CfgMusic' >> _className;
+_duration = getNumber (_config >> 'duration');
+if (_duration == 0) then {
+    _config = missionConfigFile >> 'CfgMusic' >> _className;
+    _duration = getNumber (_config >> 'name');
+    if (_duration == 0) exitWith {WARNING_1('No path found for class',_className);nil};
 };
-_cfg 
+_config 

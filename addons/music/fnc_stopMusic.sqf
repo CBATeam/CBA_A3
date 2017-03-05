@@ -14,7 +14,7 @@ Author:
     Fishy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-private ['_ret'];
+private ['_return'];
 if (!([true] call CBA_fnc_getMusicPlaying)) exitWith {
     //Nothing is playing, so no need to do anything
     false
