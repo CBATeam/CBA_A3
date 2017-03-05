@@ -22,7 +22,7 @@ if (!params [["_className",'']]) exitWith {ERROR('No Class name given');};
 
 _search_type = [_this,0,'any',['',[]]] call BIS_fnc_param;
 _search_tags = [_this,1,'any',['',[]]] call BIS_fnc_param;
-_search_tracks = [_this,2,[] call fsh_fnc_compileMusic,[[]]] call BIS_fnc_param;
+_search_tracks = [_this,2,[] call CBA_fnc_compileMusic,[[]]] call BIS_fnc_param;
 if (typeName _search_type == 'STRING') then {_search_type = [_search_type];};
 if (typeName _search_tags == 'STRING') then {_search_tags = [_search_tags];};
 if (_search_type select 0 == 'any') then {_search_type = [];};
