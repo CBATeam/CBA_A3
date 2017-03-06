@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_settings_fnc_init
+Function: CBA_settings_fnc_init
 
 Description:
     Creates a new setting for that session.
