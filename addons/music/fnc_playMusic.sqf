@@ -1,48 +1,53 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_playMusic
+
 Description:
     A function used to play music. 
+    
 Parameters:
     1: CLASS Class to play
     2: INT Position to play from (default: 0)
     3: BOOL allowed to interupt already playing music (default: true)
+    
+Returns:
+    BOOL -true if started playing music
+    
 Example:
     (begin example)
-    _bool = ["LeadTrack01_F_Bootcamp", 30, true] call CBA_fnc_playMusic;
+        _bool = ["LeadTrack01_F_Bootcamp", 30, true] call CBA_fnc_playMusic;
     (end example)
-Returns:
-    BOOL
+    
+
 Author:
     Fishy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-private ["_config","_data","_canPlay","_duration","_return"];
-params [["_className",""],["_time",'name'],["_overWrite", true]];
-if (_className == "") exitWith {
+
+params [["_className","",[""]],["_time",0,[0]],["_overWrite", true,[true]]];
+
+if (_className isEqualTo "") exitWith {
     WARNING("No class given"); 
     false
 };
 
+If ((!_overWrite)&&{[true] call CBA_fnc_getMusicPlaying}) exitWith {false};
+
+private "_return";
 _return = false;
-_canPlay = false;
 
-if (_overWrite) then {
-    _canPlay = true;
+private "_duration";
+_duration = [_className,"duration"] call CBA_fnc_getMusicData;
+
+if (!isNil "_duration") then {
+    if (_time < _duration) then {
+        playMusic [_className, _time];
+        GVAR(track) = [_className,CBA_missionTime,_time,_duration];
+        _return = true;
+    } else {
+        WARNING("Time is greater than song length");
+    };
 } else {
-    if (!([true] call CBA_fnc_getMusicPlaying)) then {
-    _canPlay = true;
-    }; 
-};
-
-if (_canPlay) then {
-    _duration = [_className,'duration'] call CBA_fnc_getMusicData;
-    if (!isNil "_duration") then {
-        if (_time < _duration) then {
-            playMusic [_className, _time];
-            GVAR(track) = [_className,CBA_missionTime,_time,_duration];
-            _return = true;
-        } else {WARNING("Time is greater than song length");};
-    } else {WARNING("Music not found");};
+    WARNING("Music not found");
 };
 
 _return 

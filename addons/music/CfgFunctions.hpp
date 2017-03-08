@@ -4,46 +4,46 @@ class CfgFunctions
     {
         class Music
         {
-            // FSH_fnc_getMusicPath
+            // CBA_fnc_getMusicPath
             class getMusicPath
             {
                 description = "Get the config path of given music class";
                 file = "\x\cba\addons\music\fnc_getMusicPath.sqf";
             };
-            // FSH_fnc_getMusicData
+            // CBA_fnc_getMusicData
             class getMusicData
             {
                 description = "Get data attached to music class";
                 file = "\x\cba\addons\music\fnc_getMusicData.sqf";
             };
-            // FSH_fnc_searchMusic
-            class searchMusic
+            // CBA_fnc_findMusic
+            class findMusic
             {
                 description = "Find music of spesified type";
-                file = "\x\cba\addons\music\fnc_searchMusic.sqf";
+                file = "\x\cba\addons\music\fnc_findMusic.sqf";
             };
-            // FSH_fnc_compileMusic
+            // CBA_fnc_compileMusic
             class compileMusic
             {
                 description = "Find all music in game";
                 file = "\x\cba\addons\music\fnc_compileMusic.sqf";
             };
-            // FSH_fnc_getMusicPlaying
+            // CBA_fnc_getMusicPlaying
             class getMusicPlaying
             {
-                description = "returns the data on currently playing music";
+                description = "Returns the data on currently playing music";
                 file = "\x\cba\addons\music\fnc_getMusicPlaying.sqf";
             };
-            // FSH_fnc_playMusic
+            // CBA_fnc_playMusic
             class playMusic
             {
-                description = "Duh";
+                description = "Play a given track";
                 file = "\x\cba\addons\music\fnc_playMusic.sqf";
             };
-            // FSH_fnc_stopMusic
+            // CBA_fnc_stopMusic
             class stopMusic
             {
-                description = "Duh";
+                description = "Stops the music playing";
                 file = "\x\cba\addons\music\fnc_stopMusic.sqf";
             };
         };
