@@ -16,13 +16,11 @@ Example:
     (end example)
 
 Author:
-    Fishy
+    Fishy, Dedmen
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (!params [["_bool",false,[false]]]) exitWith {WARNING('Incorrect param');};
-
-if (isNil QGVAR(track)) exitWith {['', 0, 0, 0]};
+if (isNil QGVAR(track)) exitWith {['', 0, 0]};
 
 GVAR(track) params ["_class","_startTime","_playPos","_duration"];
 

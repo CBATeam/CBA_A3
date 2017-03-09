@@ -2,7 +2,7 @@
 Function: CBA_fnc_isMusicPlaying
 
 Description:
-    A function used to return the current time on playing music. Must have been started with CBA_fnc_playMusic
+    Function that checks if music is currently playing
     
 Parameters:
     none
@@ -16,12 +16,9 @@ Example:
     (end example)
 
 Author:
-    Fishy
+    Dedmen, Commy2, Fishy
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-
-if (isNil QGVAR(track)) exitWith {false};
-
-true
+!isNil QGVAR(track)
 

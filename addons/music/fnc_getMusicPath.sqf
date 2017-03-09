@@ -20,15 +20,17 @@ Authors:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (!params [["_className","",[""]]]) exitWith {WARNING('No classname was provided');};
+if (!params [["_className","",["",configFile]]]) exitWith {WARNING('No classname was provided'); nil};
 
-private _config = configFile >> 'CfgMusic' >> _className;
+if (IS_CONFIG(_className)) exitWith {_className};
+
+private _config = missionConfigFile >> 'CfgMusic' >> _className;
 private _duration = getNumber (_config >> "duration");
 
-if (_duration == 0) then {
-    _config = missionConfigFile >> "CfgMusic" >> _className;
+if (_duration isEqualTo 0) then {
+    _config = configFile >> "CfgMusic" >> _className;
     _duration = getNumber (_config >> "duration");
-    if (_duration == 0) exitWith {WARNING_1("No path found for class",_className)};
+    if (_duration isEqualTo 0) exitWith {WARNING_1("No path found for class",_className); nil};
 };
 
 _config 

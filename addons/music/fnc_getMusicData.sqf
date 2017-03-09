@@ -5,8 +5,8 @@ Description:
     A function used to return data from the given music class
     
 Parameters:
-    one string OR one config path, and a data type (eg 'name')
-    
+    CONFIG or CLASS- music path or class name
+    DATA- the desired config entry
 Returns:
     data entry for requested music class
     
@@ -16,23 +16,15 @@ Example:
     (end example)
 
 Author:
-    Fishy
+    Fishy, Dedmen
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_className",""],["_dataType","name"]];
-private "_config";
+params [["_config","",["",configFile]],["_dataType","name"]];
 
-if (IS_STRING(_classname)) then {
-    //Is a string, get config
-    _config = [_className] call CBA_fnc_getMusicPath;
-} else {
-    if (IS_CONFIG(_className)) then {
-        _config = _className;
-    };
-};
+if (IS_STRING(_config)) then {_config = [_config] call CBA_fnc_getMusicPath;};
 
-If ((isNil "_config")||{!IS_CONFIG(_config)}) exitWith {ERROR_1("Config not found",_className);};
+If ((isNil "_config") || {!IS_CONFIG(_config)}) exitWith {ERROR_1("Config not found", _config); nil};
 
 //Now we have a config, grab the data
-[_config,_dataType,nil] call BIS_fnc_returnConfigEntry
+[_config, _dataType, nil] call BIS_fnc_returnConfigEntry

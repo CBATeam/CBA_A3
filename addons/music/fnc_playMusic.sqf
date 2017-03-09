@@ -5,12 +5,12 @@ Description:
     A function used to play music. 
     
 Parameters:
-    1: CLASS Class to play
-    2: INT Position to play from (default: 0)
-    3: BOOL allowed to interupt already playing music (default: true)
+    1: CLASS or CONFIG- music to play
+    2: INT- Position to play from (default: 0)
+    3: BOOL- allowed to interupt already playing music (default: true)
     
 Returns:
-    BOOL -true if started playing music
+    BOOL- true if started playing music
     
 Example:
     (begin example)
@@ -19,18 +19,17 @@ Example:
     
 
 Author:
-    Fishy
+    Fishy, Dedmen
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_className","",[""]],["_time",0,[0]],["_overWrite", true,[true]]];
+params [["_className","",["",configFile]],["_time",0,[0]],["_overWrite", true,[true]]];
 
-if (_className isEqualTo "") exitWith {
-    WARNING("No class given"); 
-    false
-};
+if (_className isEqualTo "") exitWith {WARNING("No class given"); false};
 
-If ((!_overWrite)&&{[true] call CBA_fnc_getMusicPlaying}) exitWith {false};
+If ((!_overWrite) && {call CBA_fnc_isMusicPlaying}) exitWith {false};
+
+if (IS_CONFIG(_className)) then {_className = configname _className;};
 
 private _return = false;
 

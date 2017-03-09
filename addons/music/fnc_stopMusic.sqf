@@ -2,17 +2,17 @@
 Function: CBA_fnc_stopMusic
 
 Description:
-    A function used to stop any music playing. Must have been started with CBA_fnc_playMusic, otherwise it is ignored. 
+    A function used to stop any music playing. 
     
 Parameters:
     none
 
 Returns:
-    BOOL: true if music was stopped, false if already stopped
+    nil
     
 Example:
     (begin example)
-        _bool = call CBA_fnc_stopMusic;
+        _nothing = call CBA_fnc_stopMusic;
     (end example)
 
 Author:
@@ -22,4 +22,5 @@ Author:
 
 playMusic ["",0];
 GVAR(track) = nil;
-true 
+
+nil 
