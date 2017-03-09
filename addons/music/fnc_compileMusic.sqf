@@ -25,21 +25,21 @@ if (isNil QGVARMAIN(compiledMusic)) then {
     private _missionConfig = missionConfigFile >> 'CfgMusic';
     private _unsortedSongs = [];
     
-    {
-        private _song = _x;
+    for [{_i=0}, {_i < (count _config)}, {INC(_i)}] do {
+        private _song = _config select _i;
         private _songDuration = getNumber (_song >> 'duration');
         if (_songDuration > 0) then {
             _unsortedSongs pushBack (configName _song);
         };
-    } forEach _config;
+    };
     
-    {
-        private _song = _x;
+    for [{_i=0}, {_i < (count _missionConfig)}, {INC(_i)}] do {
+        private _song = _missionConfig select _i;
         private _songDuration = getNumber (_song >> 'duration');
         if (_songDuration > 0) then {
             _unsortedSongs pushBack (configName _song);
         };
-    } forEach _missionConfig;
+    };
     
     GVARMAIN(compiledMusic) = _unsortedSongs;
 };
