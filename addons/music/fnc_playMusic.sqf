@@ -32,11 +32,9 @@ if (_className isEqualTo "") exitWith {
 
 If ((!_overWrite)&&{[true] call CBA_fnc_getMusicPlaying}) exitWith {false};
 
-private "_return";
-_return = false;
+private _return = false;
 
-private "_duration";
-_duration = [_className,"duration"] call CBA_fnc_getMusicData;
+private _duration = [_className,"duration"] call CBA_fnc_getMusicData;
 
 if (!isNil "_duration") then {
     if (_time < _duration) then {

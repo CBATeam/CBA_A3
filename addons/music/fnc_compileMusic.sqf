@@ -16,37 +16,30 @@ Example:
     (end example)
 
 Author:
-    Fishy
+    Fishy, Dedmen
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
 if (isNil QGVARMAIN(compiledMusic)) then {
-    private "_config";
-    _config = configFile >> 'CfgMusic';
-    private "_missionConfig";
-    _missionConfig = missionConfigFile >> 'CfgMusic';
-    private "_unsortedSongs";
-    _unsortedSongs = [];
+    private _config = configFile >> 'CfgMusic';
+    private _missionConfig = missionConfigFile >> 'CfgMusic';
+    private _unsortedSongs = [];
     
-    for [{_i=0}, {_i < (count _config)}, {INC(_i)}] do {
-        private "_song";
-        _song = _config select _i;
-        private "_songDuration";
-        _songDuration = getNumber (_song >> 'duration');
+    {
+        private _song = _x;
+        private _songDuration = getNumber (_song >> 'duration');
         if (_songDuration > 0) then {
             _unsortedSongs pushBack (configName _song);
         };
-    };
+    } forEach _config;
     
-    for [{_i=0}, {_i < (count _missionConfig)}, {INC(_i)}] do {
-        private "_song";
-        _song = _missionConfig select _i;
-        private "_songDuration";
-        _songDuration = getNumber (_song >> 'duration');
+    {
+        private _song = _x;
+        private _songDuration = getNumber (_song >> 'duration');
         if (_songDuration > 0) then {
             _unsortedSongs pushBack (configName _song);
         };
-    };
+    } forEach _missionConfig;
     
     GVARMAIN(compiledMusic) = _unsortedSongs;
 };

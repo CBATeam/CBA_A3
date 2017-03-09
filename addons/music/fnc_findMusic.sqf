@@ -31,29 +31,25 @@ if (IS_STRING(_searchTags)) then {_searchTags = [_searchTags];};
 if (_searchType select 0 == "any") then {_searchType = [];};
 if (_searchTags select 0 == "any") then {_searchTags = [];};
 
-_searchType = _searchType apply {If (IS_STRING(_x)) then {toLower _x}else{""};};
-_searchTags = _searchTags apply {If (IS_STRING(_x)) then {toLower _x}else{""};};
+_searchType = _searchType apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
+_searchTags = _searchTags apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
 
 _searchType = _searchType - [""];
 _searchTags = _searchTags - [""];
 
-private "_results";
-_results = [];
+private _results = [];
 
 {
-    private "_track";
-    _track = _x;
-    private "_config";
-    _config = [_track] call CBA_fnc_getMusicPath;
+    private _track = _x;
+    private _config = [_track] call CBA_fnc_getMusicPath;
     if (IS_CONFIG(_config)) then {
-        private "_type";
-        _type = getText (_config >> 'type');
+        private _type = getText (_config >> 'type');
         if (_type == "") then {_type = DEFAULT_SONG_TYPE};
         
         if (count _searchType == 0 || {(toLower _type) in _searchType}) then {
             if (count _searchTags > 0) then {
-                _tags = getArray (_config >> 'tags');
-                _theme = getText (_config >> 'theme');
+                private _tags = getArray (_config >> 'tags');
+                private _theme = getText (_config >> 'theme');
                 _tags pushBack _theme;    //BIS sounds dont have tags so use their theme instead
                 for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
                     _tag = toLower (_tags select _i);

@@ -22,15 +22,13 @@ Authors:
 
 if (!params [["_className","",[""]]]) exitWith {WARNING('No classname was provided');};
 
-private "_config";
-_config = configFile >> 'CfgMusic' >> _className;
-private "_duration";
-_duration = getNumber (_config >> "duration");
+private _config = configFile >> 'CfgMusic' >> _className;
+private _duration = getNumber (_config >> "duration");
 
 if (_duration == 0) then {
     _config = missionConfigFile >> "CfgMusic" >> _className;
-    _duration = getNumber (_config >> "name");
-    if (_duration == 0) exitWith {WARNING_1("No path found for class",_className);nil};
+    _duration = getNumber (_config >> "duration");
+    if (_duration == 0) exitWith {WARNING_1("No path found for class",_className)};
 };
 
 _config 

@@ -32,7 +32,7 @@ if (IS_STRING(_classname)) then {
     };
 };
 
-if (!IS_CONFIG(_config)) exitWith {ERROR_1("Config not found",_className);};
+If ((isNil "_config")||{!IS_CONFIG(_config)}) exitWith {ERROR_1("Config not found",_className);};
 
 //Now we have a config, grab the data
 [_config,_dataType,nil] call BIS_fnc_returnConfigEntry

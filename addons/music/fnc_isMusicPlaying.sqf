@@ -1,18 +1,18 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_stopMusic
+Function: CBA_fnc_isMusicPlaying
 
 Description:
-    A function used to stop any music playing. Must have been started with CBA_fnc_playMusic, otherwise it is ignored. 
+    A function used to return the current time on playing music. Must have been started with CBA_fnc_playMusic
     
 Parameters:
     none
 
 Returns:
-    BOOL: true if music was stopped, false if already stopped
+    BOOL- true if music is playing
     
 Example:
     (begin example)
-        _bool = call CBA_fnc_stopMusic;
+        _isPlaying = [] call CBA_fnc_isMusicPlaying;
     (end example)
 
 Author:
@@ -20,6 +20,8 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-playMusic ["",0];
-GVAR(track) = nil;
-true 
+
+if (isNil QGVAR(track)) exitWith {false};
+
+true
+

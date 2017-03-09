@@ -34,6 +34,12 @@ class CfgFunctions
                 description = "Returns the data on currently playing music";
                 file = "\x\cba\addons\music\fnc_getMusicPlaying.sqf";
             };
+            // CBA_fnc_isMusicPlaying
+            class isMusicPlaying
+            {
+                description = "Returns if music is playing or not";
+                file = "\x\cba\addons\music\fnc_isMusicPlaying.sqf";
+            };
             // CBA_fnc_playMusic
             class playMusic
             {
