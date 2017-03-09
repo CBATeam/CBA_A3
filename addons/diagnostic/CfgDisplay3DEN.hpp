@@ -12,7 +12,7 @@ class Display3DEN {
                     shortcuts[] = {INPUT_ALT_OFFSET + DIK_F};
                 };
                 class ConfigViewer {
-                    shortcuts[] = {INPUT_CTRL_OFFSET + DIK_G};
+                    shortcuts[] = {INPUT_ALT_OFFSET + DIK_G};
                 };
             };
         };
