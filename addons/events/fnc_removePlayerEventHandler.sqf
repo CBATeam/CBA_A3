@@ -27,28 +27,28 @@ params [["_type", "", [""]], ["_id", -1, [0]]];
 _type = toLower _type;
 
 switch (_type) do {
-case ("unit"): {
+case "unit": {
     [QGVAR(unitEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("weapon"): {
+case "weapon": {
     [QGVAR(weaponEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("loadout"): {
+case "loadout": {
     [QGVAR(loadoutEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("vehicle"): {
+case "vehicle": {
     [QGVAR(vehicleEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("turret"): {
+case "turret": {
     [QGVAR(turretEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("visionmode"): {
+case "visionmode": {
     [QGVAR(visionModeEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("cameraview"): {
+case "cameraview": {
     [QGVAR(cameraViewEvent), _id] call CBA_fnc_removeEventHandler;
 };
-case ("visiblemap"): {
+case "visiblemap": {
     [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
 };
 default {nil};
@@ -57,10 +57,12 @@ default {nil};
 if (!isNil QGVAR(playerEHInfo)) then {
     GVAR(playerEHInfo) deleteAt (GVAR(playerEHInfo) find [_type, _id]);
 
-    if (count GVAR(playerEHInfo) == 3) then {
-        removeMissionEventHandler ["EachFrame",         GVAR(playerEHInfo) select 0];
-        removeMissionEventHandler ["PlayerViewChanged", GVAR(playerEHInfo) select 1];
-        removeMissionEventHandler ["Map",               GVAR(playerEHInfo) select 2];
+    // First two entries are mission eventhandler ids. Rest are framework
+    // specific ids in array form. If all playerChanged eventhandlers were
+    // removed, then also clean up the mission eventhandlers.
+    if (count GVAR(playerEHInfo) == 2) then {
+        removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
+        removeMissionEventHandler ["Map",       GVAR(playerEHInfo) select 1];
         GVAR(playerEHInfo) = nil;
     };
 };
