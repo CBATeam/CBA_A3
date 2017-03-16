@@ -3,6 +3,7 @@
     <Package name="Help">
         <Key ID="STR_CBA_Help_Component">
             <English>Community Base Addons - Help</English>
+            <Japanese>Community Base Addons - ヘルプ</Japanese>
         </Key>
 
         <Key ID="STR_DN_CBA_HELP_KEYS">
@@ -15,6 +16,7 @@
             <Polish>Klawisze</Polish>
             <French>Keybindings</French>
             <Hungarian>Keybindings</Hungarian>
+            <Japanese>キー割り当て</Japanese>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE">
             <English>Bugtracker</English>
@@ -26,6 +28,7 @@
             <Polish>Zgłaszanie błędów</Polish>
             <French>Bugtracker</French>
             <Hungarian>Bugtracker</Hungarian>
+            <Japanese>バグトラッカー</Japanese>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE_WIKI">
             <English>Wiki (Documentation)</English>
@@ -37,6 +40,7 @@
             <Polish>Wiki (dokumentacja)</Polish>
             <French>Wiki (Documentation)</French>
             <Hungarian>Wiki (Documentation)</Hungarian>
+            <Japanese>ウィキ (ドキュメント)</Japanese>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS">
             <English>Credits</English>
@@ -48,6 +52,7 @@
             <Polish>Twórcy</Polish>
             <French>Credits</French>
             <Hungarian>Credits</Hungarian>
+            <Japanese>クレジット</Japanese>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS_ADDONS">
             <English>Credits - Addons</English>
@@ -59,6 +64,7 @@
             <Polish>Twórcy - Addons</Polish>
             <French>Credits - Addons</French>
             <Hungarian>Credits - Addons</Hungarian>
+            <Japanese>クレジット - アドオン</Japanese>
         </Key>
     </Package>
 </Project>

@@ -13,11 +13,10 @@ class CfgVehicles {
         category = "CBA_Modules";
         function = "CBA_fnc_moduleAttack";
         functionPriority = 1;
-        isGlobal = 2;
+        isGlobal = 1;
         isTriggerActivated = 1;
         isDisposable = 0;
         is3DEN = 0;
-        curatorInfoType = "RscDisplayAttributeAttack";
 
         class Arguments: ArgumentsBaseUnits {
             class attackLocType{
@@ -28,7 +27,7 @@ class CfgVehicles {
                     class moduleLoc {
                         name = CSTRING(ModuleLoc);
                         value = "";
-                        default = "";
+                        default = 1;
                     };
                     class objectLoc {
                         name = CSTRING(ObjectLoc);
@@ -65,22 +64,12 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = 0;
             };
-            
+
             class allowOverride {
                 displayName = CSTRING(AllowOverride);
                 description = CSTRING(AllowOverride_Desc);
-                typeName = "STRING";
-                class values {
-                    class no {
-                        name = "$STR_lib_info_no";
-                        value = "no";
-                        default = "";
-                    };
-                    class yes {
-                        name = "$STR_lib_info_yes";
-                        value = "yes";
-                    };
-                };
+                typeName = "BOOL";
+                defaultValue = 0;
             };
         };
 
@@ -105,12 +94,11 @@ class CfgVehicles {
         category = "CBA_Modules";
         function = "CBA_fnc_moduleDefend";
         functionPriority = 1;
-        isGlobal = 2;
+        isGlobal = 1;
         isTriggerActivated = 1;
         isDisposable = 0;
         is3DEN = 0;
-        curatorInfoType = "RscDisplayAttributeDefend";
-    
+
         class Arguments: ArgumentsBaseUnits {
             class defendLocType {
                 displayName = CSTRING(DefendPositionType);
@@ -120,7 +108,7 @@ class CfgVehicles {
                     class setLoc {
                         name = CSTRING(SetLoc);
                         value = "";
-                        default = "";
+                        default = 1;
                     };
                     class objectLoc {
                         name = CSTRING(ObjectLoc);
@@ -144,13 +132,13 @@ class CfgVehicles {
                     };
                 };
             };
-    
+
             class defendPosition {
                 displayName = CSTRING(DefendPosition);
                 description = CSTRING(DefendPosition_Desc);
                 typeName = "STRING";
             };
-    
+
             class defendRadius {
                 displayName = CSTRING(DefendRadius);
                 description = CSTRING(DefendRadius_Desc);
@@ -163,14 +151,14 @@ class CfgVehicles {
                 description = CSTRING(Threshold_Desc);
                 typeName = "NUMBER";
                 class values {
-                    class two {
-                        name = "2";
-                        value = 2;
-                        default = 2;
-                    };
                     class one {
                         name = "1";
                         value = 1;
+                    };
+                    class two {
+                        name = "2";
+                        value = 2;
+                        default = 1;
                     };
                     class three {
                         name = "3";
@@ -190,29 +178,19 @@ class CfgVehicles {
                     };
                 };
             };
-    
+
             class canPatrol {
                 displayName = CSTRING(CanPatrol);
                 description = CSTRING(CanPatrol_Desc);
                 typeName = "BOOL";
-                class values {
-                    class yes {
-                        name = "$STR_lib_info_yes";
-                        value = 1;
-                        default = 1;
-                    };
-                    class no {
-                        name = "$STR_lib_info_no";
-                        value = 0;
-                    };
-                };
+                defaultValue = 1;
             };
         };
-        
+
         class ModuleDescription: ModuleDescription {
             description = CSTRING(DefendModuleDescription);
             sync[] = {"LocationArea_F"};
-    
+
             class LocationArea_F {
                 position = 0;
                 optional = 0;
@@ -221,7 +199,7 @@ class CfgVehicles {
             };
         };
     };
-    
+
     class CBA_ModulePatrol: Module_F {
         scope = 2;
         displayName = CSTRING(Patrol);
@@ -230,12 +208,11 @@ class CfgVehicles {
         category = "CBA_Modules";
         function = "CBA_fnc_modulePatrol";
         functionPriority = 1;
-        isGlobal = 2;
+        isGlobal = 1;
         isTriggerActivated = 1;
         isDisposable = 0;
         is3DEN = 0;
-        curatorInfoType = "RscDisplayAttributePatrol";
-        
+
         class Arguments: ArgumentsBaseUnits {
             class patrolLocType {
                 displayName = CSTRING(PatrolCenterType);
@@ -245,7 +222,7 @@ class CfgVehicles {
                     class setLoc {
                         name = CSTRING(SetLoc);
                         value = "";
-                        default = "";
+                        default = 1;
                     };
                     class objectLoc {
                         name = CSTRING(ObjectLoc);
@@ -269,13 +246,13 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class patrolPosition {
                 displayName = CSTRING(PatrolPosition);
                 description = CSTRING(PatrolPosition_Desc);
                 typeName = "STRING";
             };
-            
+
             class patrolRadius {
                 displayName = CSTRING(PatrolRadius);
                 description = CSTRING(PatrolRadius_Desc);
@@ -289,7 +266,7 @@ class CfgVehicles {
                 typeName = "NUMBER";
                 defaultValue = 4;
             };
-            
+
             class waypointType {
                 displayName = CSTRING(WaypointType);
                 description = CSTRING(WaypointType_Desc);
@@ -298,7 +275,7 @@ class CfgVehicles {
                     class move {
                         name = CSTRING(Move);
                         value = "MOVE";
-                        default = "";
+                        default = 1;
                     };
                     class sad {
                         name = CSTRING(SAD);
@@ -310,7 +287,7 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class behaviour {
                 displayName = CSTRING(Behaviour);
                 description = CSTRING(Behaviour_Desc);
@@ -319,7 +296,7 @@ class CfgVehicles {
                     class careless {
                         name = CSTRING(Careless);
                         value = "CARELESS";
-                        default = "";
+                        default = 1;
                     };
                     class safe {
                         name = CSTRING(Safe);
@@ -339,7 +316,7 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class combatMode {
                 displayName = CSTRING(CombatMode);
                 description = CSTRING(CombatMode_Desc);
@@ -348,7 +325,7 @@ class CfgVehicles {
                     class yellow {
                         name = CSTRING(CombatYellow);
                         value = "YELLOW";
-                        default = "";
+                        default = 1;
                     };
                     class blue {
                         name = CSTRING(CombatBlue);
@@ -368,7 +345,7 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class speedMode {
                 displayName = CSTRING(SpeedMode);
                 description = CSTRING(SpeedMode_Desc);
@@ -377,7 +354,7 @@ class CfgVehicles {
                     class limited {
                         name = CSTRING(SpeedLimited);
                         value = "LIMITED";
-                        default = "";
+                        default = 1;
                     };
                     class normal {
                         name = CSTRING(SpeedNormal);
@@ -389,7 +366,7 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class formation {
                 displayName = CSTRING(Formation);
                 description = CSTRING(Formation_Desc);
@@ -398,7 +375,7 @@ class CfgVehicles {
                     class column {
                         name = CSTRING(Column);
                         value = "COLUMN";
-                        default = "";
+                        default = 1;
                     };
                     class stagColumn {
                         name = CSTRING(StagColumn);
@@ -434,13 +411,13 @@ class CfgVehicles {
                     };
                 };
             };
-            
+
             class executableCode {
                 displayName = CSTRING(ExecutableCode);
                 description = CSTRING(ExecutableCode_Desc);
                 typeName = "STRING";
             };
-            
+
             class timeout {
                 displayName = CSTRING(Timeout);
                 description = CSTRING(Timeout_Desc);
@@ -448,11 +425,11 @@ class CfgVehicles {
                 defaultValue = "[1,5,10]";
             };
         };
-        
+
         class ModuleDescription: ModuleDescription {
             description = CSTRING(PatrolModuleDescription);
             sync[] = {"LocationArea_F"};
-    
+
             class LocationArea_F {
                 position = 0;
                 optional = 0;

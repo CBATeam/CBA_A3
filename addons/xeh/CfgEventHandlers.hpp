@@ -77,6 +77,10 @@ class Extended_Take_EventHandlers {};
 class Extended_WeaponAssembled_EventHandlers {};
 class Extended_WeaponDisassembled_EventHandlers {};
 class Extended_Reloaded_EventHandlers {};
+class Extended_FiredMan_EventHandlers {};
+class Extended_TurnIn_EventHandlers {};
+class Extended_TurnOut_EventHandlers {};
+class Extended_Deleted_EventHandlers {};
 
 // display xeh
 class Extended_DisplayLoad_EventHandlers {

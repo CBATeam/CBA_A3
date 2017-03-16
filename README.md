@@ -1,7 +1,7 @@
 # Community Base Addons
 [![](https://travis-ci.org/CBATeam/CBA_A3.svg?style=flat-square)](https://travis-ci.org/CBATeam/CBA_A3)
-[![](https://img.shields.io/badge/Changelog--orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A3.1.2+is%3Aclosed)
-[![](https://img.shields.io/badge/Release-3.1.2-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v3.1.2.161105)
+[![](https://img.shields.io/badge/Changelog--orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A3.2.1+is%3Aclosed)
+[![](https://img.shields.io/badge/Release-3.2.1-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v3.2.1.170227)
 [![](https://img.shields.io/badge/Github-Wiki-lightgrey.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/wiki)
 [![](https://img.shields.io/badge/BIF-Thread-lightgrey.svg?style=flat-square)](https://forums.bistudio.com/topic/168277-cba-community-base-addons-arma-3)
 [![](https://img.shields.io/badge/Function-Documentation-yellow.svg?style=flat-square)](https://cbateam.github.io/CBA_A3/docs/files/overview-txt.html)

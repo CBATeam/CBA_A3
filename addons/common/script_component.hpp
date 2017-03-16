@@ -11,3 +11,5 @@
 #endif
 
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#define DUMMY_POSITION [-1000, -1000, 0]

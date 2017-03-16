@@ -3,11 +3,12 @@ Function: CBA_fnc_waitAndExecute
 
 Description:
     Executes a code once in unscheduled environment with a given game time delay.
+    Note that unlike PFEH, the delay is in CBA_missionTime not diag_tickTime (will be adjusted for time accl).
 
 Parameters:
     _function - The function you wish to execute. <CODE>
     _args     - Parameters passed to the function executing. (optional) <ANY>
-    _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
+    _delay    - The amount of time in seconds before the code is executed. (optional, default: 0) <NUMBER>
 
 Passed Arguments:
     _this     - Parameters passed by this function. Same as '_args' above. <ANY>

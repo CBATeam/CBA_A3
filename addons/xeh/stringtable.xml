@@ -3,6 +3,7 @@
     <Package name="XEH">
         <Key ID="STR_CBA_XEH_Component">
             <English>Community Base Addons - Extended Event Handlers</English>
+            <Japanese>Community Base Addons - 拡張型イベント ハンドラ</Japanese>
         </Key>
     </Package>
 </Project>

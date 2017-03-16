@@ -3,6 +3,7 @@
     <Package name="Events">
         <Key ID="STR_CBA_Events_Component">
             <English>Community Base Addons - Events</English>
+            <Japanese>Community Base Addons - イベント</Japanese>
         </Key>
     </Package>
 </Project>

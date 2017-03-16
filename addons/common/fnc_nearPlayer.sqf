@@ -31,6 +31,6 @@ private _return = false;
     if (_position distance _x < _distance) exitWith {
         _return = true;
     };
-} forEach allPlayers;
+} forEach ([] call CBA_fnc_players);
 
 _return
