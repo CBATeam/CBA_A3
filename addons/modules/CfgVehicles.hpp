@@ -105,8 +105,8 @@ class CfgVehicles {
                 description = CSTRING(DefendPositionType_Desc);
                 typeName = "STRING";
                 class values {
-                    class setLoc {
-                        name = CSTRING(SetLoc);
+                    class moduleLoc {
+                        name = CSTRING(ModuleLoc);
                         value = "";
                         default = 1;
                     };
@@ -219,8 +219,8 @@ class CfgVehicles {
                 description = CSTRING(PatrolCenterType_Desc);
                 typeName = "STRING";
                 class values {
-                    class setLoc {
-                        name = CSTRING(SetLoc);
+                    class moduleLoc {
+                        name = CSTRING(ModuleLoc);
                         value = "";
                         default = 1;
                     };
