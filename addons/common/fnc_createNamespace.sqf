@@ -29,7 +29,7 @@ SCRIPT(createNamespace);
 params [["_isGlobal", false]];
 
 if (_isGlobal isEqualTo true) then {
-    createVehicle ["CBA_NamespaceDummy", DUMMY_POSITION, [], 0, "NONE"]
+    createSimpleObject ["CBA_NamespaceDummy", DUMMY_POSITION]
 } else {
     createLocation ["CBA_NamespaceDummy", DUMMY_POSITION, 0, 0]
 };
