@@ -21,4 +21,4 @@ Author:
 #include "script_component.hpp"
 SCRIPT(allNamespaces);
 
-nearestLocations [DUMMY_POSITION, ["CBA_NamespaceDummy"], 1] + nearestObjects [DUMMY_POSITION, ["CBA_NamespaceDummy"], 1]
+nearestLocations [DUMMY_POSITION, ["CBA_NamespaceDummy"], 1] + nearestObjects [ASLToAGL DUMMY_POSITION, [], 1]
