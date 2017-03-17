@@ -4,5 +4,9 @@ class CfgVehicles {
     class CBA_NamespaceDummy: Static {
         scope = 1;
         displayName = "";
+
+        class EventHandlers {
+            init = "(_this select 0) enableSimulation false";
+        };
     };
 };
