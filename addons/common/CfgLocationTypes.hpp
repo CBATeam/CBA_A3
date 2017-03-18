@@ -2,7 +2,7 @@
 class CfgLocationTypes {
     class CBA_NamespaceDummy {
         name = "";
-        drawStyle = "name";
+        drawStyle = "area";
         texture = "";
         color[] = {0,0,0,0};
         size = 0;
