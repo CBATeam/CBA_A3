@@ -1,40 +1,6 @@
 
 class Cfg3DEN {
     class Attributes {
-        class Default;
-        class Title: Default {
-            class Controls;
-        };
-
-        class Checkbox: Title {
-            class Controls: Controls {
-                class Title;
-                class Value;
-            };
-        };
-
-        // A special checkbox that can manipulate the invisible init box.
-        class GVAR(ValidateToggleCheckbox): Checkbox {
-            class Controls: Controls {
-                class Title: Title {};
-                class Value: Value {
-                    onLoad = QUOTE(uiNamespace setVariable [ARR_2('GVAR(ctrlValidateToggleCheckbox)',_this select 0)]);
-
-                    // Either deletes the code inside the invisible init box or
-                    // fills it with a copy of the code of the visible variant.
-                    onCheckedChanged = QUOTE(\
-                        with uiNamespace do {\
-                            private _code = '';\
-                            if (cbChecked (_this select 0)) then {\
-                                _code = ctrlText GVAR(ctrlInitBox);\
-                            };\
-                            GVAR(ctrlInitBox_hidden) ctrlSetText _code;\
-                        };\
-                    );
-                };
-            };
-        };
-
         class Edit;
         class EditMulti3: Edit {
             class Controls;
@@ -54,17 +20,22 @@ class Cfg3DEN {
 
             class Controls: Controls {
                 class Value: Value {
-                    // Changing IDC would lead to a CTD and since we use two
-                    // copies, the default IDC cannot be used to access the
-                    // control via displayCtrl. Save control in a variable
-                    // instead.
+                    // Changing IDC would lead to a CTD
                     onLoad = QUOTE(uiNamespace setVariable [ARR_2('GVAR(ctrlInitBox_hidden)',_this select 0)]);
+
+                    // Makes this control not selectable without disabling it.
+                    onSetFocus = QUOTE(0 spawn {ctrlSetFocus (uiNamespace getVariable 'GVAR(ctrlInitBox)')});
                 };
             };
         };
 
         // editable copy of the init that has been doubled in size
         class GVAR(InitBox): EditCodeMulti3 {
+            attributeLoad = QUOTE(\
+                private _t = ctrlText (uiNamespace getVariable 'GVAR(ctrlInitBox_hidden)');\
+                (_this controlsGroupCtrl 100) ctrlSetText (_t select [ARR_2(5,count _t - 6)]);\
+            );
+            attributeSave = "";
             h = "(5 + 10 * 3.5) * (pixelH * pixelGrid * 0.50)";
 
             class Controls: Controls {
@@ -75,24 +46,13 @@ class Cfg3DEN {
                     h = "(10 * 3.5 + 1 * 5) * (pixelH * pixelGrid * 0.50)";
                 };
                 class Value: Value {
-                    // Changing IDC would lead to a CTD and since we use two
-                    // copies, the default IDC cannot be used to access the
-                    // control via displayCtrl. Save control in a variable
-                    // instead.
+                    // Changing IDC would lead to a CTD
                     onLoad = QUOTE(uiNamespace setVariable [ARR_2('GVAR(ctrlInitBox)',_this select 0)]);
 
                     // Copies contents of editable init box into the hidden
-                    // variant that has code validation enabled, but only if the
-                    // "Validate Init Expression" box is checked.
-                    onKillFocus = QUOTE(\
-                        with uiNamespace do {\
-                            private _code = '';\
-                            if (cbChecked GVAR(ctrlValidateToggleCheckbox)) then {\
-                                _code = ctrlText GVAR(ctrlInitBox);\
-                            };\
-                            GVAR(ctrlInitBox_hidden) ctrlSetText _code;\
-                        };\
-                    );
+                    // variant. Automatically adds call-block wrapper to enable
+                    // the usage of local variables and return values.
+                    onKillFocus = QUOTE((uiNamespace getVariable 'GVAR(ctrlInitBox_hidden)') ctrlSetText ('call{' + ctrlText (_this select 0) + '}'););
                     h = "10 * 3.5 * (pixelH * pixelGrid * 0.50)";
                 };
             };
@@ -104,34 +64,17 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        // Only the last control with data = "Init" is used by
-                        // the game to determine the objects init expression.
-                        // This control cannot be edited by hand, but if the
-                        // "Validate Init Expression" box is checked, the
-                        // contents of the visible init box are copied into this
-                        // control, which indirectly enables code validation.
-                        // If "Validate Init Expression" is unchecked, this
-                        // control is left blank, so any expression passes.
                         control = QGVAR(InitBox_hidden);
                     };
-                    class GVAR(Init): Init {
-                        // This disables code validation that prevents usage of
-                        // local variables and return values.
-                        validate = "";
+                    class GVAR(Init) {
+                        property = QGVAR(Init);
+                        value = 0;
                         control = QGVAR(InitBox);
-                    };
-                    class GVAR(ValidateToggle) {
-                        // The "Validate Init Expression" attribute does
-                        // nothing by itself. The variable is set by the
-                        // controls interface eventhandlers instead, so the
-                        // setting can be changed while the menu is opened.
-                        property = QGVAR(ValidateToggle);
-                        control = QGVAR(ValidateToggleCheckbox);
-                        displayName = CSTRING(ValidateInitBox);
-                        tooltip = CSTRING(ValidateInitBox_tooltip);
+                        displayName = "$STR_3DEN_Object_Attribute_Init_displayName";
+                        tooltip = "$STR_3DEN_Object_Attribute_Init_tooltip";
                         expression = "";
-                        typeName = "BOOL";
-                        defaultValue = "true";
+                        defaultValue = "";
+                        wikiType = "[[String]]";
                     };
                 };
             };
