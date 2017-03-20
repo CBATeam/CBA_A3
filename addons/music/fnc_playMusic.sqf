@@ -6,17 +6,16 @@ Description:
     
 Parameters:
     1: CLASS or CONFIG- music to play
-    2: INT- Position to play from (default: 0)
-    3: BOOL- allowed to interupt already playing music (default: true)
+    2: INT- Starting position of track in seconds (default: 0)
+    3: BOOL- allowed to interrupt already playing music (default: true)
     
 Returns:
-    BOOL- true if started playing music
+    BOOL- true if music started playing
     
 Example:
     (begin example)
         _bool = ["LeadTrack01_F_Bootcamp", 30, true] call CBA_fnc_playMusic;
     (end example)
-    
 
 Author:
     Fishy, Dedmen

@@ -24,7 +24,7 @@ if (!params [["_className","",["",configFile]]]) exitWith {WARNING('No classname
 
 if (IS_CONFIG(_className)) exitWith {_className};
 
-private _config = missionConfigFile >> 'CfgMusic' >> _className;
+private _config = missionConfigFile >> "CfgMusic" >> _className;
 private _duration = getNumber (_config >> "duration");
 
 if (_duration isEqualTo 0) then {

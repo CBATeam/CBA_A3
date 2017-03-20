@@ -19,7 +19,7 @@ class CfgFunctions
             // CBA_fnc_findMusic
             class findMusic
             {
-                description = "Find music of spesified type";
+                description = "Find music of specified type";
                 file = "\x\cba\addons\music\fnc_findMusic.sqf";
             };
             // CBA_fnc_compileMusic
