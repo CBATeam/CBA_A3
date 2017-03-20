@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-SCRIPT(test_config);
+SCRIPT(test_inventory);
 
 // 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_inventory.sqf";
 
@@ -72,3 +72,66 @@ player removeMagazines "SmokeShell";
 
 _result = [player, "SmokeShell"] call CBA_fnc_removeMagazine;
 TEST_FALSE(_result,_funcName);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+private _container = createVehicle ["B_supplyCrate_F", player, [], 10, "NONE"];
+clearBackpackCargoGlobal _container;
+clearItemCargoGlobal _container;
+clearMagazineCargoGlobal _container;
+clearWeaponCargoGlobal _container;
+
+
+_funcName = "CBA_fnc_removeBackpackCargo";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "SmokeShell"] call CBA_fnc_removeBackpackCargo;
+TEST_FALSE(_result,_funcName);
+
+_container addBackpackCargoGlobal ["B_AssaultPack_mcamo", 5];
+_result = [_container, "B_AssaultPack_mcamo", 3] call CBA_fnc_removeBackpackCargo;
+TEST_TRUE(_result,_funcName);
+TEST_TRUE(count (backpackCargo _container) == 2,_funcName);
+clearBackpackCargoGlobal _container;
+
+
+_funcName = "CBA_fnc_removeItemCargo";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "SmokeShell"] call CBA_fnc_removeItemCargo;
+TEST_FALSE(_result,_funcName);
+
+_container addItemCargoGlobal ["FirstAidKit", 5];
+_result = [_container, "FirstAidKit", 3] call CBA_fnc_removeItemCargo;
+TEST_TRUE(_result,_funcName);
+TEST_TRUE(count (itemCargo _container) == 2,_funcName);
+clearItemCargoGlobal _container;
+
+
+_funcName = "CBA_fnc_removeMagazineCargo";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "SmokeShell"] call CBA_fnc_removeMagazineCargo;
+TEST_FALSE(_result,_funcName);
+
+_container addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 5];
+_result = [_container, "30Rnd_556x45_Stanag", 3] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+TEST_TRUE(count (magazineCargo _container) == 2,_funcName);
+clearMagazineCargoGlobal _container;
+
+
+_funcName = "CBA_fnc_removeWeaponCargo";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "SmokeShell"] call CBA_fnc_removeWeaponCargo;
+TEST_FALSE(_result,_funcName);
+
+_container addWeaponCargoGlobal ["srifle_EBR_F", 5];
+_result = [_container, "srifle_EBR_F", 3] call CBA_fnc_removeWeaponCargo;
+TEST_TRUE(_result,_funcName);
+TEST_TRUE(count (weaponCargo _container) == 2,_funcName);
+clearWeaponCargoGlobal _container;
+
+
+deleteVehicle _container;
