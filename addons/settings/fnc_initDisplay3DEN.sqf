@@ -58,7 +58,8 @@ add3DENEventHandler ["OnMissionLoad", _fnc_resetMissionSettings];
 #define MESSAGE_EXPORTED_SP 5
 #define MESSAGE_EXPORTED_MP 6
 
-#define FILE_EXISTS(file) call {\
+#define FILE_EXISTS(file) call\
+{\
     private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
     _control htmlLoad file;\
     private _return = ctrlHTMLLoaded _control;\
