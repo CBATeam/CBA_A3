@@ -38,7 +38,7 @@ add3DENEventHandler ["OnMessage", {
     if !(_fileExists isEqualTo _fileExistedPreviously) then {
         set3DENMissionAttributes [["Scenario", QGVAR(hasSettingsFile), _fileExists]];
 
-        switch (_message) do {systemChat str _message;
+        switch (_message) do {
             case MESSGAE_SAVED: {
                 do3DENAction "MissionSave";
             };
