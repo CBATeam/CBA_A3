@@ -33,7 +33,7 @@ add3DENEventHandler ["OnMessage", {
 
     INFO("Checking mission settings file ...");
     private _fileExists = FILE_EXISTS(MISSION_SETTINGS_FILE);
-    private _fileExistedPreviously = ["Scenario" get3DENMissionAttribute QGVAR(hasSettingsFile)] param [0, false];
+    private _fileExistedPreviously = "Scenario" get3DENMissionAttribute QGVAR(hasSettingsFile);
 
     if !(_fileExists isEqualTo _fileExistedPreviously) then {
         set3DENMissionAttributes [["Scenario", QGVAR(hasSettingsFile), _fileExists]];

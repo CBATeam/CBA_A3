@@ -72,6 +72,7 @@ addMissionEventHandler ["Loaded", {
 if (isServer) then {
     [QGVAR(setSettingServer), {
         params ["_setting", "_value", ["_priority", 0], ["_store", false]];
+
         [_setting, _value, _priority, "server", _store] call FUNC(set);
     }] call CBA_fnc_addEventHandler;
 };
@@ -79,6 +80,7 @@ if (isServer) then {
 // event to modify mission settings
 [QGVAR(setSettingMission), {
     params ["_setting", "_value", ["_priority", 0], ["_store", false]];
+
     [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
 
