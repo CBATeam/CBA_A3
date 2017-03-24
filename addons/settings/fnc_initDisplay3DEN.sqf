@@ -64,7 +64,7 @@ add3DENEventHandler ["OnMissionLoad", _fnc_resetMissionSettings];
     private _return = ctrlHTMLLoaded _control;\
     ctrlDelete _control;\
     _return\
-}
+};
 
 add3DENEventHandler ["OnMessage", {
     params ["_message"];
