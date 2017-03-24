@@ -40,9 +40,11 @@ switch (toLower _source) do {
                 // convert boolean to number
                 _priority = [0,1,2] select _priority;
 
-                GVAR(client) setVariable [_setting, [_value, _priority min 0]];
+                GVAR(client) setVariable [_setting, [_value, _priority]];
             };
         } forEach GVAR(allSettings);
+
+        QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
     };
     case "mission": {
         if (!is3DEN) exitWith {};
@@ -64,9 +66,11 @@ switch (toLower _source) do {
                 // convert boolean to number
                 _priority = [0,1,2] select _priority;
 
-                GVAR(mission) setVariable [_setting, [_value, _priority min 1]];
+                GVAR(mission) setVariable [_setting, [_value, _priority]];
             };
         } forEach GVAR(allSettings);
+
+        QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
     };
     case "server": {
         if (!isServer) exitWith {};
@@ -90,18 +94,14 @@ switch (toLower _source) do {
                 // convert boolean to number
                 _priority = [0,1,2] select _priority;
 
-                GVAR(client) setVariable [_setting, [_value, _priority min 0]];
-                GVAR(server) setVariable [_setting, [_value, _priority min 2], true];
+                GVAR(client) setVariable [_setting, [_value, _priority]];
+                GVAR(server) setVariable [_setting, [_value, _priority], true];
             };
         } forEach GVAR(allSettings);
+
+        QGVAR(refreshAllSettings) call CBA_fnc_globalEvent;
     };
     default {};
-};
-
-if (isServer) then {
-    QGVAR(refreshAllSettings) call CBA_fnc_globalEvent;
-} else {
-    QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
 };
 
 nil

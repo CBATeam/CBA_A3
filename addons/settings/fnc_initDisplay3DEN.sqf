@@ -1,8 +1,48 @@
 #include "script_component.hpp"
 
 private _fnc_resetMissionSettings = {
-    // --- initialize settings of new mission
-    #include "initMissionSettings.sqf"
+    GVAR(mission) call CBA_fnc_deleteNamespace;
+    GVAR(mission) = [] call CBA_fnc_createNamespace;
+
+    // --- read mission settings file
+    GVAR(missionConfig) call CBA_fnc_deleteNamespace;
+    GVAR(missionConfig) = [] call CBA_fnc_createNamespace;
+
+    private _missionConfig = "";
+
+    if (getMissionConfigValue [QGVAR(hasSettingsFile), false]) then {
+        INFO("Loading mission settings file ...");
+        _missionConfig = loadFile MISSION_SETTINGS_FILE;
+    };
+
+    {
+        _x params ["_setting", "_value", "_priority"];
+
+        GVAR(missionConfig) setVariable [_setting, [_value, _priority]];
+    } forEach ([_missionConfig, false] call FUNC(parse));
+
+    {
+        private _setting = _x;
+        private _settingInfo = GVAR(missionConfig) getVariable _setting;
+
+        if (isNil "_settingInfo") then {
+            private _settingsHash = getMissionConfigValue [QGVAR(hash), HASH_NULL];
+            _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
+        };
+
+        if (!isNil "_settingInfo") then {
+            _settingInfo params ["_value", "_priority"];
+
+            // convert boolean to number
+            _priority = [0,1,2] select _priority;
+
+            if ([_setting, _value] call FUNC(check)) then {
+                GVAR(mission) setVariable [_setting, [_value, _priority]];
+            };
+        };
+    } forEach GVAR(allSettings);
+
+    QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
 };
 
 add3DENEventHandler ["OnMissionNew", _fnc_resetMissionSettings];
