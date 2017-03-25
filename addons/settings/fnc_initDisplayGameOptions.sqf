@@ -21,6 +21,19 @@ if (isNil QUOTE(ADDON)) exitWith {
     _ctrlToggleButton ctrlEnable false;
 };
 
+// ----- situational tooltips
+if (!isMultiplayer) then {
+    _ctrlServerButton ctrlSetTooltip localize LSTRING(ButtonClient_tooltip);
+};
+
+if (is3DEN) then {
+    _ctrlMissionButton ctrlSetTooltip localize LSTRING(ButtonMission_tooltip_3den);
+};
+
+if (isServer) then {
+    _ctrlClientButton ctrlSetTooltip "";
+};
+
 // ----- create temporary setting namespaces
 with uiNamespace do {
     GVAR(clientTemp)  = _display ctrlCreate ["RscText", -1];

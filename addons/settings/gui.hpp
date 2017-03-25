@@ -15,7 +15,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonServer: RscButtonMenu {
-            onLoad = QUOTE(if (!isMultiplayer) then {(_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(ButtonClient_tooltip))};);
             idc = IDC_BTN_SERVER;
             text = CSTRING(ButtonServer);
             tooltip = CSTRING(ButtonServer_tooltip);
@@ -26,7 +25,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonMission: CBA_ButtonServer {
-            onLoad = QUOTE(if (is3DEN) then {(_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(ButtonMission_tooltip_3den))};);
             idc = IDC_BTN_MISSION;
             text = CSTRING(ButtonMission);
             tooltip = CSTRING(ButtonMission_tooltip);
@@ -34,7 +32,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonClient: CBA_ButtonServer {
-            onLoad = "if (isServer) then {(_this select 0) ctrlSetTooltip ''};";
             idc = IDC_BTN_CLIENT;
             text = CSTRING(ButtonClient);
             tooltip = CSTRING(ButtonClient_tooltip);
