@@ -2,7 +2,7 @@
 
 // --- refresh all settings after postInit to guarantee that events are added and settings are recieved from server
 {
-    if (isNil QGVAR(server)) then {
+    if (isNull QGVAR(server)) then {
         ERROR("No server settings after postInit phase.");
     };
 

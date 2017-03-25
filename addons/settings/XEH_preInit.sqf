@@ -5,24 +5,21 @@ ADDON = false;
 
 #include "XEH_PREP.sqf"
 
-#ifdef DEBUG_MODE_FULL
+#ifdef DEBUG_MODE_FULL/*
 ["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
 ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", "null"] call cba_settings_fnc_init;
 ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
 ["Test_Setting_5", "COLOR",    ["longnametestlongnametestlongnametestlongnametestlongnametestlongnametestlongnametestlongnametestlongnametest" +
-                                "-test alpha-",    "-tooltip-"], "My Category", [1,0,0,0.5], false, {diag_log text format ["Color Alpha Setting Changed: %1", _this];}] call cba_settings_fnc_init;
-/*
+                                "-test alpha-",    "-tooltip-"], "My Category", [1,0,0,0.5], false, {diag_log text format ["Color Alpha Setting Changed: %1", _this];}] call cba_settings_fnc_init;*/
+
 ["Test_Setting_1", "CHECKBOX", "setting 1", "My Category", false] call cba_settings_fnc_init;
 ["Test_Setting_2", "CHECKBOX", "setting 2", "My Category", false] call cba_settings_fnc_init;
 ["Test_Setting_3", "CHECKBOX", "setting 3", "My Category", false] call cba_settings_fnc_init;
 ["Test_Setting_4", "CHECKBOX", "setting 4", "My Category", false] call cba_settings_fnc_init;
 ["Test_Setting_5", "CHECKBOX", "setting 5", "My Category", false] call cba_settings_fnc_init;
 ["Test_Setting_6", "CHECKBOX", "setting 6", "My Category", false] call cba_settings_fnc_init;
-["Test_Setting_7", "CHECKBOX", "setting 7", "My Category", false] call cba_settings_fnc_init;
-["Test_Setting_8", "CHECKBOX", "setting 8", "My Category", false] call cba_settings_fnc_init;
-["Test_Setting_9", "CHECKBOX", "setting 9", "My Category", false] call cba_settings_fnc_init;*/
 #endif
 
 // --- init settings namespaces
@@ -46,7 +43,7 @@ ADDON = false;
     ["CBA_SettingChanged", [_setting, _value]] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;
 
-// event to refresh all settings at once - saves bandwith
+// --- event to refresh all settings at once - saves bandwith
 [QGVAR(refreshAllSettings), {
     {
         [QGVAR(refreshSetting), _x] call CBA_fnc_localEvent;
@@ -68,7 +65,7 @@ addMissionEventHandler ["Loaded", {
 }] call CBA_fnc_addEventHandler;
 #endif
 
-// event to modify settings on a dedicated server as admin
+// --- event to modify settings on a dedicated server as admin
 if (isServer) then {
     [QGVAR(setSettingServer), {
         params ["_setting", "_value", ["_priority", 0], ["_store", false]];
@@ -77,7 +74,7 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
-// event to modify mission settings
+// --- event to modify mission settings
 [QGVAR(setSettingMission), {
     params ["_setting", "_value", ["_priority", 0], ["_store", false]];
 

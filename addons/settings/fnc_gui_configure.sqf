@@ -17,7 +17,7 @@ private _ctrlLayoutButton = _display displayCtrl 2405;
 private _ctrlTitle = _display displayCtrl 1000;
 private _ctrlPresetsButton = _display displayCtrl 114;
 private _ctrlDefaultButton = _display displayCtrl 101;
-private _ctrlButtonOK = _display displayCtrl 1;
+private _ctrlButtonOK = _display displayCtrl IDC_OK;
 
 private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
 private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;

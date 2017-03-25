@@ -3,7 +3,7 @@
 params [["_display", findDisplay 46, [displayNull]]];
 
 // hide diary (usually on players list)
-if (ctrlIDD _display in [37, 52, 53]) then {
+if (ctrlIDD _display in [IDD_INTEL_GETREADY, IDD_SERVER_GET_READY, IDD_CLIENT_GET_READY]) then {
     (_display displayCtrl 1001) lnbSetCurSelRow 0;
 };
 
@@ -26,8 +26,8 @@ if (ctrlIDD _display == 313) then {
     };
 };
 
-if (ctrlIDD _display in [37, 52, 53]) then {
-    private _ctrlButtonCancel = _display displayCtrl 2;
+if (ctrlIDD _display in [IDD_INTEL_GETREADY, IDD_SERVER_GET_READY, IDD_CLIENT_GET_READY]) then {
+    private _ctrlButtonCancel = _display displayCtrl IDC_CANCEL;
     private _ctrlButtonConfigure = _display displayCtrl IDC_BTN_CONFIGURE;
 
     _ctrlButtonCancel ctrlEnable false;
@@ -38,7 +38,7 @@ if (ctrlIDD _display in [37, 52, 53]) then {
     [_dlgSettings, "unload", {
         _thisArgs params ["_display"];
 
-        private _ctrlButtonCancel = _display displayCtrl 2;
+        private _ctrlButtonCancel = _display displayCtrl IDC_CANCEL;
         private _ctrlButtonConfigure = _display displayCtrl IDC_BTN_CONFIGURE;
 
         _ctrlButtonCancel ctrlEnable true;
