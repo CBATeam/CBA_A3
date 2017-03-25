@@ -15,7 +15,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonServer: RscButtonMenu {
-            onLoad = QUOTE(if (!isMultiplayer) then {(_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(ButtonClient_tooltip))};);
             idc = IDC_BTN_SERVER;
             text = CSTRING(ButtonServer);
             tooltip = CSTRING(ButtonServer_tooltip);
@@ -26,7 +25,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonMission: CBA_ButtonServer {
-            onLoad = QUOTE(if (is3DEN) then {(_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(ButtonMission_tooltip_3den))};);
             idc = IDC_BTN_MISSION;
             text = CSTRING(ButtonMission);
             tooltip = CSTRING(ButtonMission_tooltip);
@@ -34,7 +32,6 @@ class RscDisplayGameOptions {
         };
 
         class CBA_ButtonClient: CBA_ButtonServer {
-            onLoad = "if (isServer) then {(_this select 0) ctrlSetTooltip ''};";
             idc = IDC_BTN_CLIENT;
             text = CSTRING(ButtonClient);
             tooltip = CSTRING(ButtonClient_tooltip);
@@ -112,17 +109,16 @@ class RscDisplayClientGetReady: RscDisplayGetReady {
 
 class RscControlsGroupNoHScrollbars;
 class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
-    x = POS_W(0);/*0.5*/
+    x = POS_W(0);
     y = POS_H(3.5);
     w = POS_W(37.5);
     h = POS_H(13.8);
     lineHeight = POS_H(1);
-
-    class controls {}; // auto generated
 };
 
-// have to create to dynamically for every options group, because they would interfere with the controls groups otherwise
-// has to be done, because scripted controls are always placed below regular (config) ones.
+// Has to be created dynamically for every options group, because they would
+// interfere with the controls groups otherwise. Scripted controls are always
+// placed below config controls.
 class RscCombo;
 class GVAR(AddonsList): RscCombo {
     linespacing = 1;
@@ -132,103 +128,6 @@ class GVAR(AddonsList): RscCombo {
     y = POS_H(1);
     w = POS_W(21);
     h = POS_H(1);
-};
-
-class RscControlsGroup;
-class RscTitle;
-class RscEdit;
-class RscListBox;
-
-class GVAR(presets) {
-    idd = -1;
-    movingEnable = 1;
-    enableSimulation = 0;
-
-    class controls {
-        class Presets: RscControlsGroup {
-            idc = IDC_PRESETS_GROUP;
-            x = POS_X(10);
-            y = POS_Y(0.9);
-            w = POS_W(20);
-            h = POS_H(22.2);
-
-            class controls {
-                class Title: RscTitle {
-                    colorBackground[] = {
-                        "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])",
-                        "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
-                        "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
-                        "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
-                    };
-                    idc = IDC_PRESETS_TITLE;
-                    text = "";
-                    x = POS_W(0);
-                    y = POS_H(0);
-                    w = POS_W(20);
-                    h = POS_H(1);
-                };
-                class Background: RscText {
-                    idc = -1;
-                    colorBackground[] = {0,0,0,0.8};
-                    x = POS_W(0);
-                    y = POS_H(1.1);
-                    w = POS_W(20);
-                    h = POS_H(20);
-                };
-                class TextName: RscText {
-                    idc = IDC_PRESETS_NAME;
-                    style = ST_RIGHT;
-                    text = "$STR_DISP_INTEL_NAME";
-                    x = POS_W(0.5);
-                    y = POS_H(19.6);
-                    w = POS_W(5.5);
-                    h = POS_H(1);
-                    sizeEx = POS_H(0.8);
-                };
-                class EditName: RscEdit {
-                    idc = IDC_PRESETS_EDIT;
-                    x = POS_W(6);
-                    y = POS_H(19.6);
-                    w = POS_W(13.5);
-                    h = POS_H(1);
-                    sizeEx = POS_H(0.8);
-                };
-                class ValueName: RscListBox {
-                    idc = IDC_PRESETS_VALUE;
-                    colorBackground[] = {1,1,1,0.2};
-                    x = POS_W(0.5);
-                    y = POS_H(1.6);
-                    w = POS_W(19);
-                    h = POS_H(17.5);
-                    sizeEx = POS_H(0.8);
-                };
-                class ButtonOK: RscButtonMenu {
-                    idc = IDC_PRESETS_OK;
-                    text = "$STR_DISP_OK";
-                    x = POS_W(15);
-                    y = POS_H(21.2);
-                    w = POS_W(5);
-                    h = POS_H(1);
-                };
-                class ButtonCancel: RscButtonMenu {
-                    idc = IDC_PRESETS_CANCEL;
-                    text = "$STR_DISP_CANCEL";
-                    x = POS_W(0);
-                    y = POS_H(21.2);
-                    w = POS_W(5);
-                    h = POS_H(1);
-                };
-                class ButtonDelete: RscButtonMenu {
-                    idc = IDC_PRESETS_DELETE;
-                    text = "$STR_DISP_DELETE";
-                    x = POS_W(9.9);
-                    y = POS_H(21.2);
-                    w = POS_W(5);
-                    h = POS_H(1);
-                };
-            };
-        };
-    };
 };
 
 class RscButton;
@@ -337,6 +236,8 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
         class OverwriteMissionText: OverwriteMissionText {};
     };
 };
+
+class RscEdit;
 
 class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);
@@ -532,6 +433,102 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         };
         class OverwriteMissionText: OverwriteMissionText {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
+        };
+    };
+};
+
+class RscControlsGroup;
+class RscTitle;
+class RscListBox;
+
+class GVAR(presets) {
+    idd = -1;
+    movingEnable = 1;
+    enableSimulation = 0;
+
+    class controls {
+        class Presets: RscControlsGroup {
+            idc = IDC_PRESETS_GROUP;
+            x = POS_X(10);
+            y = POS_Y(0.9);
+            w = POS_W(20);
+            h = POS_H(22.2);
+
+            class controls {
+                class Title: RscTitle {
+                    colorBackground[] = {
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
+                    };
+                    idc = IDC_PRESETS_TITLE;
+                    text = "";
+                    x = POS_W(0);
+                    y = POS_H(0);
+                    w = POS_W(20);
+                    h = POS_H(1);
+                };
+                class Background: RscText {
+                    idc = -1;
+                    colorBackground[] = {0,0,0,0.8};
+                    x = POS_W(0);
+                    y = POS_H(1.1);
+                    w = POS_W(20);
+                    h = POS_H(20);
+                };
+                class TextName: RscText {
+                    idc = IDC_PRESETS_NAME;
+                    style = ST_RIGHT;
+                    text = "$STR_DISP_INTEL_NAME";
+                    x = POS_W(0.5);
+                    y = POS_H(19.6);
+                    w = POS_W(5.5);
+                    h = POS_H(1);
+                    sizeEx = POS_H(0.8);
+                };
+                class EditName: RscEdit {
+                    idc = IDC_PRESETS_EDIT;
+                    x = POS_W(6);
+                    y = POS_H(19.6);
+                    w = POS_W(13.5);
+                    h = POS_H(1);
+                    sizeEx = POS_H(0.8);
+                };
+                class ValueName: RscListBox {
+                    idc = IDC_PRESETS_VALUE;
+                    colorBackground[] = {1,1,1,0.2};
+                    x = POS_W(0.5);
+                    y = POS_H(1.6);
+                    w = POS_W(19);
+                    h = POS_H(17.5);
+                    sizeEx = POS_H(0.8);
+                };
+                class ButtonOK: RscButtonMenu {
+                    idc = IDC_PRESETS_OK;
+                    text = "$STR_DISP_OK";
+                    x = POS_W(15);
+                    y = POS_H(21.2);
+                    w = POS_W(5);
+                    h = POS_H(1);
+                };
+                class ButtonCancel: RscButtonMenu {
+                    idc = IDC_PRESETS_CANCEL;
+                    text = "$STR_DISP_CANCEL";
+                    x = POS_W(0);
+                    y = POS_H(21.2);
+                    w = POS_W(5);
+                    h = POS_H(1);
+                };
+                class ButtonDelete: RscButtonMenu {
+                    idc = IDC_PRESETS_DELETE;
+                    text = "$STR_DISP_DELETE";
+                    x = POS_W(9.9);
+                    y = POS_H(21.2);
+                    w = POS_W(5);
+                    h = POS_H(1);
+                };
+            };
         };
     };
 };

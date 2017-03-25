@@ -70,7 +70,7 @@ if (_mode == "save") then {
         [_presetsHash, _presetName, _preset] call CBA_fnc_hashSet;
         profileNamespace setVariable [QGVAR(presetsHash), _presetsHash];
 
-        _display closeDisplay 1;
+        _display closeDisplay IDC_OK;
     }];
 } else {
     _ctrlOK ctrlAddEventHandler ["ButtonClick", {
@@ -83,7 +83,7 @@ if (_mode == "save") then {
 
         [_preset, uiNamespace getVariable QGVAR(source)] call FUNC(import);
 
-        _display closeDisplay 1;
+        _display closeDisplay IDC_OK;
     }];
 };
 
@@ -91,7 +91,7 @@ _ctrlCancel ctrlAddEventHandler ["ButtonClick", {
     params ["_control"];
     private _display = ctrlParent _control;
 
-    _display closeDisplay 2;
+    _display closeDisplay IDC_CANCEL;
 }];
 
 _ctrlDelete ctrlAddEventHandler ["ButtonClick", {

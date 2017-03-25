@@ -9,18 +9,15 @@ private _display = ctrlParent _control;
 private _ctrlGeneralGroup = _display displayCtrl 2300;
 private _ctrlColorsGroup = _display displayCtrl 2301;
 private _ctrlDifficultyGroup = _display displayCtrl 2302;
-
+private _ctrlPresetsButton = _display displayCtrl 114;
+private _ctrlDefaultButton = _display displayCtrl 101;
 private _ctrlDifficultyButton = _display displayCtrl 304;
 private _ctrlGeneralButton = _display displayCtrl 2402;
 private _ctrlGUIButton = _display displayCtrl 2404;
 private _ctrlLayoutButton = _display displayCtrl 2405;
-private _ctrlTitle = _display displayCtrl 1000;
-private _ctrlPresetsButton = _display displayCtrl 114;
-private _ctrlDefaultButton = _display displayCtrl 101;
-private _ctrlButtonOK = _display displayCtrl 1;
+private _ctrlButtonOK = _display displayCtrl IDC_OK;
 
 private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
-private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
 private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
 private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
 private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
@@ -28,6 +25,7 @@ private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;
 private _ctrlButtonExport = _display displayCtrl IDC_BTN_EXPORT;
 private _ctrlButtonSave = _display displayCtrl IDC_BTN_SAVE;
 private _ctrlButtonLoad = _display displayCtrl IDC_BTN_LOAD;
+private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
 
 // Toggle displayed groups and buttons.
 if !(ctrlShown _ctrlAddonsGroup) then {
@@ -75,11 +73,17 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlToggleButton ctrlSetText localize LSTRING(configureBase);
 
     //--- emulate default scope selection
-    ([
-        _ctrlServerButton, _ctrlMissionButton, _ctrlClientButton
-    ] param [[
-        CAN_SET_SERVER_SETTINGS, CAN_SET_MISSION_SETTINGS, CAN_SET_CLIENT_SETTINGS
-    ] find true]) call FUNC(gui_sourceChanged);
+    switch (true) do {
+        case CAN_SET_SERVER_SETTINGS: {
+            _ctrlServerButton call FUNC(gui_sourceChanged);
+        };
+        case CAN_SET_MISSION_SETTINGS: {
+            _ctrlMissionButton call FUNC(gui_sourceChanged);
+        };
+        case CAN_SET_CLIENT_SETTINGS: {
+            _ctrlClientButton call FUNC(gui_sourceChanged);
+        };
+    };
 } else {
     //--- enable and show default menu
     _ctrlGeneralGroup ctrlEnable true;
