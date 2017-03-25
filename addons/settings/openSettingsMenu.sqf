@@ -17,7 +17,7 @@ _ctrlConfigureAddons call FUNC(gui_configure);
 _ctrlConfigureAddons ctrlEnable false;
 _ctrlConfigureAddons ctrlShow false;
 
-// then switch right to missions tab
+// then switch right to missions tab if in 3den
 if (ctrlIDD _display isEqualTo 313) then {
     private _ctrlMissionButton = _dlgSettings displayCtrl IDC_BTN_MISSION;
 
