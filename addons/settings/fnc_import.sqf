@@ -5,7 +5,7 @@ Description:
     Import all setting info from string.
 
 Parameters:
-    _info   - Formated settings info, (from CBA_settings_fnc_export), (optional, default: clipboard) <STRING>
+    _info   - Formated settings info, (from CBA_settings_fnc_export) <STRING>
     _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:

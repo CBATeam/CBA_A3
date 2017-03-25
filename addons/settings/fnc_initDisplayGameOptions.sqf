@@ -1,12 +1,25 @@
 #include "script_component.hpp"
 
-if (isNil QUOTE(ADDON)) exitWith {
-    _this call (uiNamespace getVariable QFUNC(initDisplayGameOptions_disabled));
-};
-
 params ["_display"];
-
 uiNamespace setVariable [QGVAR(display), _display];
+
+private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
+private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
+private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
+private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
+
+// ----- hide and disable the custom controls by default
+{
+    _x ctrlEnable false;
+    _x ctrlShow false;
+} forEach [_ctrlAddonsGroup, _ctrlServerButton, _ctrlMissionButton, _ctrlClientButton];
+
+// ----- disable in main menu
+if (isNil QUOTE(ADDON)) exitWith {
+    private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
+
+    _ctrlToggleButton ctrlEnable false;
+};
 
 // ----- create temporary setting namespaces
 with uiNamespace do {
@@ -16,11 +29,7 @@ with uiNamespace do {
 };
 
 // ----- create addons list (filled later)
-private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
 private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddonsGroup];
-
-_ctrlAddonsGroup ctrlEnable false;
-_ctrlAddonsGroup ctrlShow false;
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
@@ -32,9 +41,7 @@ private _categories = [];
 // ----- fill addons list
 {
     private _category = _x;
-
     private _index = _ctrlAddonList lbAdd _category;
-
     _ctrlAddonList lbSetData [_index, str _index];
     _display setVariable [str _index, _category];
 } forEach _categories;
@@ -93,8 +100,6 @@ if (!isMultiplayer) then {
     _ctrlButtonImport ctrlEnable false;
     _ctrlButtonImport ctrlShow false;
     _ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {[copyFromClipboard, uiNamespace getVariable QGVAR(source)] call FUNC(import)}];
-
-    uiNamespace setVariable [QGVAR(ctrlButtonImport), _ctrlButtonImport];
 };
 
 private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
@@ -113,20 +118,12 @@ _ctrlButtonExport ctrlEnable false;
 _ctrlButtonExport ctrlShow false;
 _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {copyToClipboard ([uiNamespace getVariable QGVAR(source)] call FUNC(export))}];
 
-uiNamespace setVariable [QGVAR(ctrlButtonExport), _ctrlButtonExport];
-
 // ----- source buttons (server, mission, client)
-private _ctrlServerButton = _display displayCtrl IDC_BTN_SERVER;
-private _ctrlMissionButton = _display displayCtrl IDC_BTN_MISSION;
-private _ctrlClientButton = _display displayCtrl IDC_BTN_CLIENT;
-
 /*if (isServer) then {
     _ctrlServerButton ctrlSetText localize LSTRING(ButtonLocal);
 };*/
 
 {
-    _x ctrlEnable false;
-    _x ctrlShow false;
     _x ctrlAddEventHandler ["ButtonClick", FUNC(gui_sourceChanged)];
 } forEach [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton];
 
