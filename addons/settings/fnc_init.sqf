@@ -10,7 +10,7 @@ Parameters:
     _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     _category    - Category for the settings menu <STRING>
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
-    _isGlobal    - true: all clients share the same state of the setting (optional, default: false) <ARRAY>
+    _isGlobal    - 1: all clients share the same setting, 2: setting can't be forced (optional, default: 0) <ARRAY>
     _script      - Script to execute when setting is changed. (optional) <CODE>
 
 Returns:
@@ -52,7 +52,7 @@ params [
     ["_title", [], ["", []]],
     ["_category", "", [""]],
     ["_valueInfo", []],
-    ["_isGlobal", false, [false]],
+    ["_isGlobal", false, [false, 0]],
     ["_script", {}, [{}]]
 ];
 
@@ -72,6 +72,9 @@ _title params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
 if (_displayName isEqualTo "") then {
     _displayName = _setting;
 };
+
+// --- who can edit the setting
+_isGlobal = [0,1,2] param [_isGlobal, 0];
 
 // --- setting possible values and default ("data")
 private "_defaultValue";
