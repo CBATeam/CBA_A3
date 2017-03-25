@@ -69,7 +69,7 @@ class RscDisplayGameOptions {
                     sizeEx = POS_H(1);
                 };
                 class PriorityText: RscText {
-                    onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(priority))); // set this per script to avoid it being all upper case
+                    onLoad = QUOTE((_this select 0) ctrlSetText 'Overwrite'); // set this per script to avoid it being all upper case/*localize QUOTE(LSTRING(priority))*/
                     idc = IDC_TXT_PRIORITY;
                     x = POS_W(30.5);
                     y = POS_H(2.5);
@@ -234,6 +234,14 @@ class GVAR(presets) {
 class RscButton;
 class RscPicture;
 
+class RscCheckBox;
+class GVAR(CheckboxSound): RscCheckBox {
+    soundEnter[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",0.090000004,1};
+    soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundPush",0.090000004,1};
+    soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.090000004,1};
+    soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.090000004,1};
+};
+
 class GVAR(Row_Base): RscControlsGroupNoScrollbars {
     GVAR(script) = "";
     x = POS_W(1);
@@ -285,30 +293,48 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             w = POS_W(1);
             h = POS_H(1);
         };
+        class OverwriteClients: GVAR(CheckboxSound) {
+            x = POS_W(29.5);
+            y = POS_H(0) + TABLE_LINE_SPACING/2;
+            w = POS_W(1);
+            h = POS_H(1);
+        };
+        class OverwriteClientsText: RscText {
+            text = "Clients";
+            x = POS_W(30.25);
+            y = POS_H(0) + TABLE_LINE_SPACING/2;
+            w = POS_W(2.25);
+            h = POS_H(1);
+            sizeEx = POS_H(3/4);
+        };
+        class OverwriteMission: OverwriteClients {
+            x = POS_W(32.5);
+        };
+        class OverwriteMissionText: OverwriteClientsText {
+            text = "Mission";
+            x = POS_W(33.25);
+        };
     };
 };
-
-class RscCheckBox;
 
 class GVAR(Row_Checkbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingCheckbox);
 
     class controls: controls {
         class Name: Name {};
-        class Checkbox: RscCheckBox {
+        class Checkbox: GVAR(CheckboxSound) {
             idc = IDC_SETTING_CHECKBOX;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
-            soundEnter[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",0.090000004,1};
-            soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundPush",0.090000004,1};
-            soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.090000004,1};
-            soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.090000004,1};
         };
         class Default: Default {};
-        class Priority: Priority {};
         class Locked: Locked {};
+        class OverwriteClients: OverwriteClients {};
+        class OverwriteClientsText: OverwriteClientsText {};
+        class OverwriteMission: OverwriteMission {};
+        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -325,8 +351,11 @@ class GVAR(Row_Editbox): GVAR(Row_Base) {
             h = POS_H(1);
         };
         class Default: Default {};
-        class Priority: Priority {};
         class Locked: Locked {};
+        class OverwriteClients: OverwriteClients {};
+        class OverwriteClientsText: OverwriteClientsText {};
+        class OverwriteMission: OverwriteMission {};
+        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -343,8 +372,11 @@ class GVAR(Row_List): GVAR(Row_Base) {
             h = POS_H(1);
         };
         class Default: Default {};
-        class Priority: Priority {};
         class Locked: Locked {};
+        class OverwriteClients: OverwriteClients {};
+        class OverwriteClientsText: OverwriteClientsText {};
+        class OverwriteMission: OverwriteMission {};
+        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -370,8 +402,11 @@ class GVAR(Row_Slider): GVAR(Row_Base) {
             h = POS_H(1);
         };
         class Default: Default {};
-        class Priority: Priority {};
         class Locked: Locked {};
+        class OverwriteClients: OverwriteClients {};
+        class OverwriteClientsText: OverwriteClientsText {};
+        class OverwriteMission: OverwriteMission {};
+        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -432,10 +467,19 @@ class GVAR(Row_Color): GVAR(Row_Base) {
         class Default: Default {
             y = POS_H(1) + TABLE_LINE_SPACING/2;
         };
-        class Priority: Priority {
+        class Locked: Locked {
             y = POS_H(1) + TABLE_LINE_SPACING/2;
         };
-        class Locked: Locked {
+        class OverwriteClients: OverwriteClients {
+            y = POS_H(1) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteClientsText: OverwriteClientsText {
+            y = POS_H(1) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteMission: OverwriteMission {
+            y = POS_H(1) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteMissionText: OverwriteMissionText {
             y = POS_H(1) + TABLE_LINE_SPACING/2;
         };
     };
@@ -474,10 +518,19 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         class Default: Default {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
         };
-        class Priority: Priority {
+        class Locked: Locked {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
         };
-        class Locked: Locked {
+        class OverwriteClients: OverwriteClients {
+            y = POS_H(1.5) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteClientsText: OverwriteClientsText {
+            y = POS_H(1.5) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteMission: OverwriteMission {
+            y = POS_H(1.5) + TABLE_LINE_SPACING/2;
+        };
+        class OverwriteMissionText: OverwriteMissionText {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
         };
     };
