@@ -13,8 +13,6 @@ _ctrlCheckbox ctrlAddEventHandler ["CheckedChanged", {
     private _value = _state == 1;
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
-    playSound QGVAR(CheckBoxClick);
-
     // if new value is same as default value, grey out the default button
     private _controlsGroup = ctrlParentControlsGroup _ctrlCheckbox;
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;

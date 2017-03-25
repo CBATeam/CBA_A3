@@ -21,4 +21,3 @@ class CfgPatches {
 #include "Display3DEN.hpp"
 
 #include "gui.hpp"
-#include "CfgSounds.hpp"

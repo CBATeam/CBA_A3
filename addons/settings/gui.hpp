@@ -301,6 +301,10 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
+            soundEnter[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",0.090000004,1};
+            soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundPush",0.090000004,1};
+            soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.090000004,1};
+            soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.090000004,1};
         };
         class Default: Default {};
         class Priority: Priority {};

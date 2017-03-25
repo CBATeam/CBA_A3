@@ -31,7 +31,7 @@ switch (toLower _source) do {
             private _setting = _x;
 
             if (!isNil {GVAR(userconfig) getVariable _setting}) then {
-                (GVAR(userconfig) getVariable _setting) params ["_value", ["_priority", 0]];
+                (GVAR(userconfig) getVariable _setting) params ["_value", "_priority"];
 
                 if !([_setting, _value] call FUNC(check)) then {
                     _value = [_setting, "default"] call FUNC(get);
@@ -57,7 +57,7 @@ switch (toLower _source) do {
             private _setting = _x;
 
             if (!isNil {GVAR(missionConfig) getVariable _setting}) then {
-                (GVAR(missionConfig) getVariable _setting) params ["_value", ["_priority", 0]];
+                (GVAR(missionConfig) getVariable _setting) params ["_value", "_priority"];
 
                 if !([_setting, _value] call FUNC(check)) then {
                     _value = [_setting, "default"] call FUNC(get);
@@ -85,7 +85,7 @@ switch (toLower _source) do {
             private _setting = _x;
 
             if (!isNil {GVAR(userconfig) getVariable _setting}) then {
-                (GVAR(userconfig) getVariable _setting) params ["_value", ["_priority", 0]];
+                (GVAR(userconfig) getVariable _setting) params ["_value", "_priority"];
 
                 if !([_setting, _value] call FUNC(check)) then {
                     _value = [_setting, "default"] call FUNC(get);
