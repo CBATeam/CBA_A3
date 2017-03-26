@@ -102,7 +102,7 @@ _display setVariable [QGVAR(lists), _lists];
         [_ctrlSettingGroup, _setting, _source, _currentValue, _defaultValue] call FUNC(gui_settingDefault);
 
         // ----- priority list
-        [_ctrlSettingGroup, _setting, _source, _currentPriority] call FUNC(gui_settingPriority);
+        [_ctrlSettingGroup, _setting, _source, _currentPriority] call FUNC(gui_settingOverwrite);
 
         // ----- check if setting can be altered
         private _enabled = switch (_source) do {

@@ -65,13 +65,22 @@ class RscDisplayGameOptions {
                     h = POS_H(1);
                     sizeEx = POS_H(1);
                 };
-                class PriorityText: RscText {
-                    onLoad = QUOTE((_this select 0) ctrlSetText 'Overwrite'); // set this per script to avoid it being all upper case/*localize QUOTE(LSTRING(priority))*/
-                    idc = IDC_TXT_PRIORITY;
+                class OverwriteClientText: RscText {
+                    // Set tooltip per script to avoid it being all upper case.
+                    // Disable multiline text to make in unselectable.
+                    onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(overwrite_clients)); (_this select 0) ctrlEnable false;);
+                    idc = IDC_TXT_OVERWRITE_CLIENT;
+                    style = ST_MULTI + ST_CENTER;
                     x = POS_W(30.5);
-                    y = POS_H(2.5);
-                    w = POS_W(10);
-                    h = POS_H(1);
+                    y = POS_H(2);
+                    w = POS_W(3);
+                    h = POS_H(2*3/4);
+                    sizeEx = POS_H(3/4);
+                };
+                class OverwriteMissionText: OverwriteClientText {
+                    onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(overwrite_mission)); (_this select 0) ctrlEnable false;);
+                    idc = IDC_TXT_OVERWRITE_MISSION;
+                    x = POS_W(33.5);
                 };
             };
         };
@@ -186,28 +195,14 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
         };
         class OverwriteClients: GVAR(CheckboxSound) {
             idc = IDC_SETTING_OVERWRITE_CLIENT;
-            x = POS_W(29.5);
+            x = POS_W(30.5);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
         };
-        class OverwriteClientsText: RscText {
-            idc = IDC_SETTING_OVERWRITE_CLIENT_TEXT;
-            text = "Clients";
-            x = POS_W(30.25);
-            y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(2.25);
-            h = POS_H(1);
-            sizeEx = POS_H(3/4);
-        };
         class OverwriteMission: OverwriteClients {
             idc = IDC_SETTING_OVERWRITE_MISSION;
-            x = POS_W(32.5);
-        };
-        class OverwriteMissionText: OverwriteClientsText {
-            idc = IDC_SETTING_OVERWRITE_MISSION_TEXT;
-            text = "Mission";
-            x = POS_W(33.25);
+            x = POS_W(33.5);
         };
     };
 };
@@ -227,9 +222,7 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
         class Default: Default {};
         class Locked: Locked {};
         class OverwriteClients: OverwriteClients {};
-        class OverwriteClientsText: OverwriteClientsText {};
         class OverwriteMission: OverwriteMission {};
-        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -250,9 +243,7 @@ class GVAR(Row_Editbox): GVAR(Row_Base) {
         class Default: Default {};
         class Locked: Locked {};
         class OverwriteClients: OverwriteClients {};
-        class OverwriteClientsText: OverwriteClientsText {};
         class OverwriteMission: OverwriteMission {};
-        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -271,9 +262,7 @@ class GVAR(Row_List): GVAR(Row_Base) {
         class Default: Default {};
         class Locked: Locked {};
         class OverwriteClients: OverwriteClients {};
-        class OverwriteClientsText: OverwriteClientsText {};
         class OverwriteMission: OverwriteMission {};
-        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -301,9 +290,7 @@ class GVAR(Row_Slider): GVAR(Row_Base) {
         class Default: Default {};
         class Locked: Locked {};
         class OverwriteClients: OverwriteClients {};
-        class OverwriteClientsText: OverwriteClientsText {};
         class OverwriteMission: OverwriteMission {};
-        class OverwriteMissionText: OverwriteMissionText {};
     };
 };
 
@@ -370,13 +357,7 @@ class GVAR(Row_Color): GVAR(Row_Base) {
         class OverwriteClients: OverwriteClients {
             y = POS_H(1) + TABLE_LINE_SPACING/2;
         };
-        class OverwriteClientsText: OverwriteClientsText {
-            y = POS_H(1) + TABLE_LINE_SPACING/2;
-        };
         class OverwriteMission: OverwriteMission {
-            y = POS_H(1) + TABLE_LINE_SPACING/2;
-        };
-        class OverwriteMissionText: OverwriteMissionText {
             y = POS_H(1) + TABLE_LINE_SPACING/2;
         };
     };
@@ -421,13 +402,7 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         class OverwriteClients: OverwriteClients {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
         };
-        class OverwriteClientsText: OverwriteClientsText {
-            y = POS_H(1.5) + TABLE_LINE_SPACING/2;
-        };
         class OverwriteMission: OverwriteMission {
-            y = POS_H(1.5) + TABLE_LINE_SPACING/2;
-        };
-        class OverwriteMissionText: OverwriteMissionText {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
         };
     };

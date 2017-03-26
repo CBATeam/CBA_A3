@@ -132,10 +132,6 @@ _ctrlButtonExport ctrlShow false;
 _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {copyToClipboard ([uiNamespace getVariable QGVAR(source)] call FUNC(export))}];
 
 // ----- source buttons (server, mission, client)
-/*if (isServer) then {
-    _ctrlServerButton ctrlSetText localize LSTRING(ButtonLocal);
-};*/
-
 {
     _x ctrlAddEventHandler ["ButtonClick", FUNC(gui_sourceChanged)];
 } forEach [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton];

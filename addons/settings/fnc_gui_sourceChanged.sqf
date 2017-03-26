@@ -30,7 +30,8 @@ private _selectedAddon = uiNamespace getVariable QGVAR(addon);
     _ctrlX ctrlSetBackgroundColor ([COLOR_BUTTON_DISABLED, COLOR_BUTTON_ENABLED] select (_control == _ctrlX));
 } forEach [IDC_BTN_SERVER, IDC_BTN_MISSION, IDC_BTN_CLIENT];
 
-(_display displayCtrl IDC_TXT_PRIORITY) ctrlShow (_selectedSource != "client");
+(_display displayCtrl IDC_TXT_OVERWRITE_CLIENT) ctrlShow !(_selectedSource isEqualTo "client");
+(_display displayCtrl IDC_TXT_OVERWRITE_MISSION) ctrlShow (_selectedSource isEqualTo "server");
 
 // enable / disable IMPORT and LOAD buttons
 private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;

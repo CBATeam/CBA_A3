@@ -23,5 +23,5 @@ if (hasInterface) then {
     PREP(gui_settingSlider);
     PREP(gui_settingColor);
     PREP(gui_SettingDefault);
-    PREP(gui_SettingPriority);
+    PREP(gui_settingOverwrite);
 };

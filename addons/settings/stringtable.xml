@@ -96,69 +96,32 @@
         <German>Zur Standardeinstellung zurücksetzen.</German>
         <Japanese>デフォルトにリセットします。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_priority">
-        <English>Priority</English>
-        <German>Priorität</German>
-        <Japanese>プライオリティ</Japanese>
-    </Key>
-    <Key ID="STR_cba_settings_overwrite_off">
-        <English>Don't overwrite</English>
-        <German>Nicht überschreiben</German>
-    </Key>
-    <Key ID="STR_cba_settings_overwrite_client">
-        <English>Overwrite client setting</English>
-        <German>Client-Einstellung überschreiben</German>
+    <Key ID="STR_cba_settings_overwrite_clients">
+        <English>Overwrite\nClients</English>
+        <German>Clients\nüberschreiben</German>
     </Key>
     <Key ID="STR_cba_settings_overwrite_mission">
-        <English>Overwrite mission setting</English>
-        <German>Missionseinstellung überschreiben</German>
+        <English>Overwrite\nMission</English>
+        <German>Mission\nüberschreiben</German>
     </Key>
     <Key ID="STR_cba_settings_overwrite_server">
-        <English>Overwrite server settings</English>
-        <German>Server-Einstellung überschreiben</German>
-    </Key>
-    <Key ID="STR_cba_settings_server_overwrite_off_tooltip">
-        <English>This setting only applies to the server or in single player mode.\nIn multiplayer, this setting will not be enforced on the connected clients.\nIt can be overwritten by the mission.</English>
-        <German>Diese Einstellung trifft nur auf den Server zu oder im Einzelspieler-Modus.\nIm Mehrspieler-Modus wird diese Einstellung nicht für die verbundenen Clients erzwungen.\nSie kann von der Mission überschrieben werden.</German>
-    </Key>
-    <Key ID="STR_cba_settings_server_overwrite_client_tooltip">
-        <English>This setting will be enforced on the connected clients in multiplayer mode.\nIt can however be overwritten by the mission.</English>
-        <German>Diese Einstellung wird im Mehrspieler-Modus für die verbundenen Clients erzwungen.\nSie kann jedoch von der Mission überschrieben werden.</German>
-    </Key>
-    <Key ID="STR_cba_settings_server_overwrite_mission_tooltip">
-        <English>This setting will be enforced on the connected clients in multiplayer mode.\nIt will also overwrite the missions setting explicitly.</English>
-        <German>Diese Einstellung wird im Mehrspieler-Modus für die verbundenen Clients erzwungen.\nSie wird auch die Missionseinstellung ausdrücklich überschreiben.</German>
-    </Key>
-    <Key ID="STR_cba_settings_mission_overwrite_off_tooltip">
-        <English>This setting will not be enforced and will have no effect.</English>
-        <German>Diese Einstellung wird nicht erzwungen und hat keine Auswirkung.</German>
-    </Key>
-    <Key ID="STR_cba_settings_mission_overwrite_client_tooltip">
-        <English>This setting will be enforced and will overwrite the clients setting.\nIt will also overwrite the servers setting by default, unless the server explicitly overwrites this mission setting.</English>
-        <German>Diese Einstellung wird erzwungen und überschreibt die Einstellung des Clients.\nEs wird auch standardmäßig die Server-Einstellung überschrieben, es sei denn, der Server überschreibt diese Missionseinstellung ausdrücklich.</German>
+        <English>Overwrite\nServer</English>
+        <German>Server\nüberschreiben</German>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
-        <English>This setting is currently not enforced and has no effect.</English>
-        <German>Diese Einstellung wird zur Zeit nicht erzwungen und hat keine Auswirkung.</German>
+        <English>This setting is not enforced and has no effect.</English>
+        <German>Diese Einstellung wird nicht erzwungen und hat keine Auswirkung.</German>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
-        <English>This setting is currently overwritten by the mission and has no effect.</English>
-        <German>Diese Einstellung wird zur Zeit von der Mission überschrieben und hat keine Auswirkung.</German>
+        <English>This setting is overwritten by the mission and has no effect.</English>
+        <German>Diese Einstellung wird von der Mission überschrieben und hat keine Auswirkung.</German>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
-        <English>This setting is currently overwritten by the server and has no effect.</English>
-        <German>Diese Einstellung wird zur Zeit vom Server überschrieben und hat keine Auswirkung.</German>
+        <English>This setting is overwritten by the server and has no effect.</English>
+        <German>Diese Einstellung wird vom Server überschrieben und hat keine Auswirkung.</German>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
-        <English>This setting is currently not enforced.\nIncrease the priority to overwrite the clients.</English>
-        <German>Diese Einstellung wird zur Zeit nicht erzwungen.\nErhöhe die Priorität, um die Clients zu überschreiben.</German>
-    </Key>
-    <Key ID="STR_cba_settings_overwritten_by_mission_tooltip_server">
-        <English>This setting is currently overwritten by the mission and has no effect.\nIncrease the priority to overwrite the mission.</English>
-        <German>Diese Einstellung wird zur Zeit von der Mission überschrieben und hat keine Auswirkung.\nErhöhe die Priorität, um die Mission zu überschreiben.</German>
-    </Key>
-    <Key ID="STR_cba_settings_overwritten_by_client_tooltip_3den">
-        <English>This setting is currently not enforced and has no effect.\nIncrease the priority to overwrite the clients.</English>
-        <German>Diese Einstellung wird zur Zeit nicht erzwungen und hat keine Auswirkung.\nErhöhe die Priorität, um die Clients zu überschreiben.</German>
+        <English>This setting is not enforced.</English>
+        <German>Diese Einstellung wird nicht erzwungen.</German>
     </Key>
 </Package>
