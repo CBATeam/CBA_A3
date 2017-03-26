@@ -2,58 +2,106 @@
 
 params ["_controlsGroup", "_setting", "_source", "_currentPriority"];
 
-private _ctrlPriority = _controlsGroup controlsGroupCtrl IDC_SETTING_PRIORITY;
-
-for "_index" from 0 to (["client", "mission", "server"] find _source) do {
-    private _label = [LSTRING(overwrite_off), LSTRING(overwrite_client), LSTRING(overwrite_mission)] select _index;
-    private _tooltip = "";
-
-    if (_source isEqualTo "mission") then {
-        _tooltip = [LSTRING(mission_overwrite_off_tooltip), LSTRING(mission_overwrite_client_tooltip), ""] select _index;
-    } else {
-        if (_source isEqualTo "server") then {
-            _tooltip = [LSTRING(server_overwrite_off_tooltip), LSTRING(server_overwrite_client_tooltip), LSTRING(server_overwrite_mission_tooltip)] select _index;
-        };
-    };
-
-    _ctrlPriority lbSetTooltip [_ctrlPriority lbAdd format ["%1: %2", _index, localize _label], localize _tooltip];
-};
-
-_ctrlPriority lbSetCurSel ([0,1,2] select _currentPriority);
+private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
+private _ctrlOverwriteClientText = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT_TEXT;
+private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
+private _ctrlOverwriteMissionText = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION_TEXT;
 
 if (_source isEqualTo "client") then {
-    _ctrlPriority ctrlEnable false;
+    _ctrlOverwriteClient ctrlEnable false;
+    _ctrlOverwriteClient ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteClient ctrlCommit 0;
 
-    // hide, without getting unhidden by controlsGroup
-    _ctrlPriority ctrlSetPosition [0,0,-1,-1];
-    _ctrlPriority ctrlCommit 0;
-} else {
-    _ctrlPriority setVariable [QGVAR(params), [_setting, _source]];
-    _ctrlPriority ctrlAddEventHandler ["LBSelChanged", {
-        EXIT_LOCKED;
-        params ["_ctrlPriority", "_value"];
-        (_ctrlPriority getVariable QGVAR(params)) params ["_setting", "_source"];
-
-        SET_TEMP_NAMESPACE_PRIORITY(_setting,_value,_source);
-
-        private _controlsGroup = ctrlParentControlsGroup _ctrlPriority;
-
-        {
-            _x call (_controlsGroup getVariable QFUNC(updateUI_locked));
-        } forEach (_controlsGroup getVariable QGVAR(groups));
-    }];
-
-    _controlsGroup setVariable [QFUNC(updateUI_priority), {
-        params ["_controlsGroup", "_priority"];
-
-        private _ctrlPriority = _controlsGroup controlsGroupCtrl IDC_SETTING_PRIORITY;
-        LOCK;
-        _ctrlPriority lbSetCurSel ([0,1,2] select _priority);
-        UNLOCK;
-
-        _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
-    }];
+    _ctrlOverwriteClientText ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteClientText ctrlCommit 0;
 };
+
+if !(_source isEqualTo "server") then {
+    _ctrlOverwriteMission ctrlEnable false;
+    _ctrlOverwriteMission ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteMission ctrlCommit 0;
+
+    _ctrlOverwriteMissionText ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteMissionText ctrlCommit 0;
+};
+
+if (_currentPriority > 0) then {
+    _ctrlOverwriteClient cbSetChecked true;
+
+    if (_currentPriority > 1) then {
+        _ctrlOverwriteMission cbSetChecked true;
+
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClientText ctrlSetTextColor COLOR_TEXT_DISABLED;
+    };
+};
+
+_ctrlOverwriteClient setVariable [QGVAR(state), cbChecked _ctrlOverwriteClient];
+
+_ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
+    params ["_ctrlOverwriteClient", "_state"];
+    private _controlsGroup = ctrlParentControlsGroup _ctrlOverwriteClient;
+    private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
+    private _setting = _controlsGroup getVariable QGVAR(setting);
+    private _source = _controlsGroup getVariable QGVAR(source);
+
+    SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
+
+    _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
+
+_ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
+    params ["_ctrlOverwriteMission", "_state"];
+    private _controlsGroup = ctrlParentControlsGroup _ctrlOverwriteMission;
+    private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
+    private _ctrlOverwriteClientText = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT_TEXT;
+    private _setting = _controlsGroup getVariable QGVAR(setting);
+    private _source = _controlsGroup getVariable QGVAR(source);
+
+    if (_state isEqualTo 1) then {
+        _ctrlOverwriteClient setVariable [QGVAR(state), cbChecked _ctrlOverwriteClient];
+        _ctrlOverwriteClient cbSetChecked true;
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClientText ctrlSetTextColor COLOR_TEXT_DISABLED;
+
+        SET_TEMP_NAMESPACE_PRIORITY(_setting,2,_source);
+    } else {
+        private _wasChecked = _ctrlOverwriteClient getVariable QGVAR(state);
+        _ctrlOverwriteClient cbSetChecked _wasChecked;
+        _ctrlOverwriteClient ctrlEnable true;
+        _ctrlOverwriteClientText ctrlSetTextColor COLOR_TEXT_ENABLED;
+
+        _state = [0,1] select _wasChecked;
+        SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
+    };
+
+    _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
+
+_controlsGroup setVariable [QFUNC(updateUI_priority), {
+    params ["_controlsGroup", "_priority"];
+
+    private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
+    private _ctrlOverwriteClientText = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT_TEXT;
+    private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
+    private _ctrlOverwriteMissionText = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION_TEXT;
+
+    if (_priority > 1) then {
+        _ctrlOverwriteMission cbSetChecked true;
+
+        _ctrlOverwriteClient cbSetChecked true;
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClientText ctrlSetTextColor COLOR_TEXT_DISABLED;
+    } else {
+        _ctrlOverwriteMission cbSetChecked false;
+
+        _ctrlOverwriteClient cbSetChecked (_priority > 0);
+        _ctrlOverwriteClient ctrlEnable true;
+        _ctrlOverwriteClientText ctrlSetTextColor COLOR_TEXT_ENABLED;
+    };
+
+    _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
 
 // update "locked" ui icon
 _controlsGroup setVariable [QFUNC(updateUI_locked), {

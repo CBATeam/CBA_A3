@@ -74,7 +74,7 @@ if (_displayName isEqualTo "") then {
 };
 
 // --- who can edit the setting
-_isGlobal = [0,1,2] param [_isGlobal, 0];
+_isGlobal = [0,1,2] select _isGlobal;
 
 // --- setting possible values and default ("data")
 private "_defaultValue";

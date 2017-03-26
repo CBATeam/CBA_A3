@@ -175,14 +175,6 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             w = POS_W(1);
             h = POS_H(1);
         };
-        class Priority: RscCombo {
-            idc = IDC_SETTING_PRIORITY;
-            x = POS_W(29.5);
-            y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(6);
-            h = POS_H(1);
-            sizeEx = POS_H(0.8);
-        };
         class Locked: RscPicture {
             idc = IDC_SETTING_LOCKED;
             text = QPATHTOF(locked_ca.paa);
@@ -193,12 +185,14 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             h = POS_H(1);
         };
         class OverwriteClients: GVAR(CheckboxSound) {
+            idc = IDC_SETTING_OVERWRITE_CLIENT;
             x = POS_W(29.5);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
         };
         class OverwriteClientsText: RscText {
+            idc = IDC_SETTING_OVERWRITE_CLIENT_TEXT;
             text = "Clients";
             x = POS_W(30.25);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
@@ -207,9 +201,11 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             sizeEx = POS_H(3/4);
         };
         class OverwriteMission: OverwriteClients {
+            idc = IDC_SETTING_OVERWRITE_MISSION;
             x = POS_W(32.5);
         };
         class OverwriteMissionText: OverwriteClientsText {
+            idc = IDC_SETTING_OVERWRITE_MISSION_TEXT;
             text = "Mission";
             x = POS_W(33.25);
         };

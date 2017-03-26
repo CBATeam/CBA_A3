@@ -20,7 +20,7 @@ Author:
 
 params [["_setting", "", [""]], ["_source", "priority", [""]]];
 
-switch (toLower _source) do {
+private _priority = switch (toLower _source) do {
     case "client": {
         (GVAR(client)  getVariable [_setting, [nil, 0]] select 1) min 0
     };
@@ -32,11 +32,24 @@ switch (toLower _source) do {
     };
     case "priority": {
         private _arr = [
-            (GVAR(client)  getVariable [_setting, [nil, 0]] select 1) min 0,
-            (GVAR(mission) getVariable [_setting, [nil, 0]] select 1) min 1,
-            (GVAR(server)  getVariable [_setting, [nil, 0]] select 1) min 2
+            [_setting, "client"]  call FUNC(priority),
+            [_setting, "mission"] call FUNC(priority),
+            [_setting, "server"]  call FUNC(priority)
         ];
         ["client", "mission", "server"] select (_arr find selectMax _arr)
     };
     default {0};
 };
+
+if (_priority isEqualType 0) then {
+    switch (GVAR(default) getVariable [_setting, []] param [7, 0]) do {
+        case 1: { //global
+            _priority = _priority max 1;
+        };
+        case 2: { //local
+            _priority = _priority min 0;
+        };
+    };
+};
+
+_priority
