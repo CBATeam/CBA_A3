@@ -81,6 +81,7 @@ switch (toLower _source) do {
             private _settingsHash = "Scenario" get3DENMissionAttribute QGVAR(hash);
             [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
             set3DENMissionAttributes [["Scenario", QGVAR(hash), _settingsHash]];
+            findDisplay 313 setVariable [QGVAR(hash), _settingsHash];
         };
 
         [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;

@@ -50,6 +50,7 @@ switch (toLower _source) do {
         if (!is3DEN) exitWith {};
 
         set3DENMissionAttributes [["Scenario", QGVAR(hash), HASH_NULL]];
+        findDisplay 313 setVariable [QGVAR(hash), HASH_NULL];
         GVAR(mission) call CBA_fnc_deleteNamespace;
         GVAR(mission) = [] call CBA_fnc_createNamespace;
 

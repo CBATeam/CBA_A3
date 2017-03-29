@@ -26,7 +26,7 @@ private _fnc_resetMissionSettings = {
         private _settingInfo = GVAR(missionConfig) getVariable _setting;
 
         if (isNil "_settingInfo") then {
-            private _settingsHash = getMissionConfigValue [QGVAR(hash), HASH_NULL];
+            private _settingsHash = findDisplay 313 getVariable [QGVAR(hash), HASH_NULL];
             _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
         };
 
@@ -45,8 +45,16 @@ private _fnc_resetMissionSettings = {
     QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
 };
 
-add3DENEventHandler ["OnMissionNew", _fnc_resetMissionSettings];
-add3DENEventHandler ["OnMissionLoad", _fnc_resetMissionSettings];
+add3DENEventHandler ["OnMissionPreview", _fnc_resetMissionSettings];
+add3DENEventHandler ["OnMissionPreviewEnd", compile format ["0 spawn {isNil %1}", _fnc_resetMissionSettings]]; // delay a bit for preInit to run
+
+private _fnc_resetMissionSettingsMissionChanged = compile format [
+    'findDisplay 313 setVariable [QGVAR(hash), "Scenario" get3DENMissionAttribute QGVAR(hash)]; call %1',
+    _fnc_resetMissionSettings
+];
+
+add3DENEventHandler ["OnMissionNew", _fnc_resetMissionSettingsMissionChanged];
+add3DENEventHandler ["OnMissionLoad", _fnc_resetMissionSettingsMissionChanged];
 
 // Missions crash on dedicated servers if there is a file missing during init.
 // Thus we check if the mission settings file exists when saving / exporting
