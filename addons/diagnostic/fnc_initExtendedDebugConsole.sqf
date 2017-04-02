@@ -9,7 +9,7 @@ private _debugConsole = _display displayCtrl IDC_RSCDEBUGCONSOLE_RSCDEBUGCONSOLE
 
 _debugConsole ctrlSetPosition [
     ctrlPosition _debugConsole select 0, // keep X
-    safezoneY, // top edge of the screen
+    safezoneY + 1 * GUI_GRID_H, // top edge of the screen
     22 * GUI_GRID_W, // slightly wider
     1 - 2 * safezoneY // full screen height
 ];
