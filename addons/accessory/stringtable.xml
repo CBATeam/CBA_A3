@@ -3,30 +3,39 @@
     <Package name="accessory">
         <Key ID="STR_CBA_accessory_Component">
             <English>Community Base Addons - Accessory Functions</English>
+            <Japanese>Community Base Addons - アクセサリー機能</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
+            <Japanese>レイル アイテムを次モード</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
+            <Japanese>アタッチメントのレイル アイテムを次のモードに変更します</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
+            <Japanese>レイル アイテムを前モード</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
+            <Japanese>アタッチメントのレイル アイテムを前のモードに変更します</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
+            <Japanese>照準器を次モード</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
+            <Japanese>アタッチメントの照準器アイテムを次のモードに変更します</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
+            <Japanese>照準器を前モード</Japanese>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
+            <Japanese>アタッチメントの照準器アイテムを前のモードに変更します</Japanese>
         </Key>
     </Package>
 </Project>
