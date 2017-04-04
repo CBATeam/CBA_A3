@@ -5,5 +5,18 @@
             <English>Community Base Addons - Diagnostics</English>
             <Japanese>Community Base Addons - 診断</Japanese>
         </Key>
+
+        <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
+            <English>Extended Debug Console</English>
+            <German>Erweiterte Debug-Konsole</German>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_PrevStatement">
+            <English>Previous Statement</English>
+            <German>Vorheriger Ausdruck</German>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_NextStatement">
+            <English>Next Statement</English>
+            <German>Nächster Ausdruck</German>
+        </Key>
     </Package>
 </Project>
