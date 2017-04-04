@@ -106,7 +106,7 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class setLoc {
-                        name = CSTRING(SetLoc);
+                        name = CSTRING(ModuleLoc);
                         value = "";
                         default = 1;
                     };
@@ -220,7 +220,7 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class setLoc {
-                        name = CSTRING(SetLoc);
+                        name = CSTRING(ModuleLoc);
                         value = "";
                         default = 1;
                     };

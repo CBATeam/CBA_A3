@@ -57,7 +57,7 @@ if (_applyInitRetroactively && {!(_eventName in ["init", "initpost"])}) then {
 // add events to already existing objects
 private _eventVarName = format [QGVAR(%1), _eventName];
 
-private _entities = (entities [[], [], true, true]);
+private _entities = (entities [[], [], true, false]); // include dead entities to handle respawning units
 _entities = _entities arrayIntersect _entities; // entities can return duplicates at postInit - #567
 
 {
