@@ -1,3 +1,4 @@
+#include "\a3\ui_f\hpp\defineResinclDesign.inc"
 #include "script_component.hpp"
 
 #define MAX_STATEMENTS 50
