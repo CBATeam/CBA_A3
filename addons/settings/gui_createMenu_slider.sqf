@@ -25,6 +25,7 @@ _ctrlSetting ctrlAddEventHandler ["SliderPosChanged", {
     params ["_control", "_value"];
 
     (_control getVariable QGVAR(data)) params ["_setting", "_source", "_trailingDecimals"];
+    if (_trailingDecimals < 0) then {_value = round _value};
 
     (_control getVariable QGVAR(linkedControls)) params ["", "_linkedControl", "_defaultControl"];
     _linkedControl ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
@@ -62,6 +63,7 @@ _ctrlSettingEdit ctrlAddEventHandler ["KeyUp", {
     _linkedControl sliderSetPosition _value;
 
     _value = sliderPosition _linkedControl;
+    if (_trailingDecimals < 0) then {_value = round _value};
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
     //If new setting is same as default value, grey out the default button
