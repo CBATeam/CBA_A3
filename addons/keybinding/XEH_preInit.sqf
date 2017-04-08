@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-GVAR(keyNames) = uiNamespace getVariable QGVAR(keyNames);
-
 if (!hasInterface) exitWith {};
 
 ADDON = false;
