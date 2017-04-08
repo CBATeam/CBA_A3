@@ -20,9 +20,9 @@ if (_mode == "save") then {
     // --- generate default name
     _ctrlEdit ctrlSetText format ["New: %1",
         localize ([
-            LSTRING(ButtonClient), LSTRING(ButtonServer), LSTRING(ButtonMission)
+            LSTRING(ButtonServer), LSTRING(ButtonMission), LSTRING(ButtonClient)
         ] param [[
-            "client", "server", "mission"
+            "server", "mission", "client"
         ] find (uiNamespace getVariable QGVAR(source))])
     ];
 
@@ -47,7 +47,7 @@ if (_mode == "save") then {
 };
 
 // --- fill listbox with profile stored presets
-private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), NULL_HASH];
+private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), HASH_NULL];
 
 [_presetsHash, {
     private _index = _ctrlValue lbAdd _key;
@@ -65,12 +65,12 @@ if (_mode == "save") then {
         private _presetName = ctrlText _ctrlEdit;
 
         private _preset = [uiNamespace getVariable QGVAR(source)] call FUNC(export);
-        private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), NULL_HASH];
+        private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), HASH_NULL];
 
         [_presetsHash, _presetName, _preset] call CBA_fnc_hashSet;
         profileNamespace setVariable [QGVAR(presetsHash), _presetsHash];
 
-        _display closeDisplay 1;
+        _display closeDisplay IDC_OK;
     }];
 } else {
     _ctrlOK ctrlAddEventHandler ["ButtonClick", {
@@ -83,7 +83,7 @@ if (_mode == "save") then {
 
         [_preset, uiNamespace getVariable QGVAR(source)] call FUNC(import);
 
-        _display closeDisplay 1;
+        _display closeDisplay IDC_OK;
     }];
 };
 
@@ -91,7 +91,7 @@ _ctrlCancel ctrlAddEventHandler ["ButtonClick", {
     params ["_control"];
     private _display = ctrlParent _control;
 
-    _display closeDisplay 2;
+    _display closeDisplay IDC_CANCEL;
 }];
 
 _ctrlDelete ctrlAddEventHandler ["ButtonClick", {
@@ -104,7 +104,7 @@ _ctrlDelete ctrlAddEventHandler ["ButtonClick", {
 
     _ctrlValue lbDelete _index;
 
-    private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), NULL_HASH];
+    private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), HASH_NULL];
 
     [_presetsHash, _presetName] call CBA_fnc_hashRem;
     profileNamespace setVariable [QGVAR(presetsHash), _presetsHash];

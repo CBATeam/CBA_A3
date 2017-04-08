@@ -1,4 +1,3 @@
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 ADDON = false;
@@ -6,10 +5,19 @@ ADDON = false;
 #include "XEH_PREP.sqf"
 
 #ifdef DEBUG_MODE_FULL
-["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
+["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
+["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", "null"] call cba_settings_fnc_init;
 ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
+
+["Test_Setting_5", "COLOR",    ["-test alpha-",    "-tooltip-"], "My Category", [1,0,0,0.5], false] call cba_settings_fnc_init;
+["Test_Setting_1", "EDITBOX", "setting 1", "My Category", "null", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
+["Test_Setting_2", "EDITBOX", "setting 2", "My Category", "null", nil, {systemChat str [2, _this]}] call cba_settings_fnc_init;
+["Test_Setting_3", "EDITBOX", "setting 3", "My Category", "null", nil, {systemChat str [3, _this]}] call cba_settings_fnc_init;
+["Test_Setting_4", "EDITBOX", "setting 4", "My Category", "null", nil, {systemChat str [4, _this]}] call cba_settings_fnc_init;
+["Test_Setting_5", "EDITBOX", "setting 5", "My Category", "null",   1, {systemChat str [5, _this]}] call cba_settings_fnc_init;
+["Test_Setting_6", "EDITBOX", "setting 6", "My Category", "null",   2, {systemChat str [6, _this]}] call cba_settings_fnc_init;
 #endif
 
 // --- init settings namespaces
@@ -24,7 +32,7 @@ ADDON = false;
 
     if (isNil QGVAR(ready)) exitWith {};
 
-    private _script = NAMESPACE_GETVAR(GVAR(defaultSettings),_setting,[]) param [8, {}];
+    private _script = (GVAR(default) getVariable [_setting, []]) param [8, {}];
     [_value, _script] call {
         private ["_setting", "_value", "_script"]; // prevent these variables from being overwritten
         (_this select 0) call (_this select 1);
@@ -33,7 +41,7 @@ ADDON = false;
     ["CBA_SettingChanged", [_setting, _value]] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;
 
-// event to refresh all settings at once - saves bandwith
+// --- event to refresh all settings at once - saves bandwith
 [QGVAR(refreshAllSettings), {
     {
         [QGVAR(refreshSetting), _x] call CBA_fnc_localEvent;
@@ -51,30 +59,24 @@ addMissionEventHandler ["Loaded", {
 
     private _message = format ["%1 = %2", _setting, _value];
     systemChat _message;
-    LOG(_message);
+    //LOG(_message);
 }] call CBA_fnc_addEventHandler;
 #endif
 
-// event to modify settings on a dedicated server as admin
+// --- event to modify settings on a dedicated server as admin
 if (isServer) then {
     [QGVAR(setSettingServer), {
-        params ["_setting", "_value", "_forced"];
-        [_setting, _value, _forced, "server"] call FUNC(set);
+        params ["_setting", "_value", ["_priority", 0], ["_store", false]];
+
+        [_setting, _value, _priority, "server", _store] call FUNC(set);
     }] call CBA_fnc_addEventHandler;
 };
 
-// event to modify mission settings
+// --- event to modify mission settings
 [QGVAR(setSettingMission), {
-    params ["_setting", "_value", ["_forced", false, [false]]];
+    params ["_setting", "_value", ["_priority", 0], ["_store", false]];
 
-    if ([_setting, "mission"] call FUNC(isForced)) exitWith {
-        LOG_1("Setting %1 already forced, ignoring setSettingMission.",str _setting);
-    };
-    if (!([_setting, _value] call FUNC(check))) exitWith {
-        WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
-    };
-
-    GVAR(missionSettings) setVariable [_setting, [_value, _forced]];
+    [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;
