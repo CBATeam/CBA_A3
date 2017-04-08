@@ -39,7 +39,11 @@ private _fnc_getKeyName = {
     _result = "^";
 
     {
-        private _keyname1 = [cba_keybinding_dikDecToStringTable, format ["%1", _x], format ["Unknown key (%1)",_x]] call BIS_fnc_getFromPairs;
+        private _keyname1 = EGVAR(keybinding,keyNames) select _x;
+        if (isNil "_keyname1") then {
+            _keyname1 = format [localize ELSTRING(keybinding,unkownKey), _x];
+        };
+
         _keyname1 = [_keyname1, " "] call CBA_fnc_split;
 
         private _keyname2 = "^";

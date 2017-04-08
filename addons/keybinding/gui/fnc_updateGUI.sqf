@@ -67,7 +67,7 @@ if !(isNull _display) then {
                     _modifier params ["_shift", "_ctrl", "_alt"];
 
                     // Try to convert dik code to a human key code.
-                    _keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call BIS_fnc_getFromPairs;
+                    _keyName = GVAR(keyNames) select _dikCode;
                     if (isNil "_keyName") then {
                         _keyName = format [localize LSTRING(unkownKey), _dikCode];
                     };

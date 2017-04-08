@@ -1,12 +1,15 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
+GVAR(keyNames) = uiNamespace getVariable QGVAR(keyNames);
+
 if (!hasInterface) exitWith {};
 
 ADDON = false;
 
 // Load DIK to string conversion table.
-call COMPILE_FILE(dikDecToString);
+GVAR(keyNames) = uiNamespace getVariable QGVAR(keyNames);
+GVAR(forbiddenKeys) = uiNamespace getVariable QGVAR(forbiddenKeys);
 
 // Prepare GUI functions and variables.
 PREP_SUB(gui,onButtonClick_configure);
