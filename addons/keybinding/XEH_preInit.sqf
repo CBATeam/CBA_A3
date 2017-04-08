@@ -8,6 +8,10 @@ if (!hasInterface) exitWith {};
 ADDON = false;
 
 // Load DIK to string conversion table.
+with uiNamespace do {
+    GVAR(keyNames) = [GVAR(keyNamesHash)] call CBA_fnc_deserializeNamespace;
+};
+
 GVAR(keyNames) = uiNamespace getVariable QGVAR(keyNames);
 GVAR(forbiddenKeys) = uiNamespace getVariable QGVAR(forbiddenKeys);
 

@@ -39,7 +39,7 @@ private _fnc_getKeyName = {
     _result = "^";
 
     {
-        private _keyname1 = EGVAR(keybinding,keyNames) select _x;
+        private _keyname1 = EGVAR(keybinding,keyNames) getVariable str _x;
         if (isNil "_keyname1") then {
             _keyname1 = format [localize ELSTRING(keybinding,unkownKey), _x];
         };
@@ -59,9 +59,9 @@ private _fnc_getKeyName = {
     _result = [_result, "^ ", ""] call CBA_fnc_replace;
     _result = [_result, "^+", ""] call CBA_fnc_replace;
     _result = [_result, "^", "None"] call CBA_fnc_replace;
-    _result = [_result, "LAlt", "Alt"] call CBA_fnc_replace;
-    _result = [_result, "LCtrl", "Ctrl"] call CBA_fnc_replace;
-    _result = [_result, "LShift", "Shift"] call CBA_fnc_replace;
+    _result = [_result, "LAlt", localize "str_dik_alt"] call CBA_fnc_replace;
+    _result = [_result, "LCtrl", localize "str_dik_control"] call CBA_fnc_replace;
+    _result = [_result, "LShift", localize "str_dik_shift"] call CBA_fnc_replace;
     _result
 };
 

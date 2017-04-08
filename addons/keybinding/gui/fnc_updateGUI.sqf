@@ -67,20 +67,31 @@ if !(isNull _display) then {
                     _modifier params ["_shift", "_ctrl", "_alt"];
 
                     // Try to convert dik code to a human key code.
-                    _keyName = GVAR(keyNames) select _dikCode;
+                    _keyName = GVAR(keyNames) getVariable str _dikCode;
                     if (isNil "_keyName") then {
                         _keyName = format [localize LSTRING(unkownKey), _dikCode];
                     };
 
                     // Build the full key combination name.
                     _keyString = format ["%1", _keyName];
-                    if (_shift && {_dikCode != 42} && {_dikCode != 54}) then {_keyString = format ["Shift+%1", _keyString]};
-                    if (_alt && _dikCode != 56) then {_keyString = format ["Alt+%1", _keyString]};
-                    if (_ctrl && _dikCode != 29) then {_keyString = format ["Ctrl+%1", _keyString]};
+
+                    if (_shift && {!(_dikCode in [DIK_LSHIFT, DIK_RSHIFT])}) then {
+                        _keyString = format ["%1+%2", localize "str_dik_shift", _keyString];
+                    };
+
+                    if (_alt && {!(_dikCode in [DIK_LMENU, DIK_RMENU])}) then {
+                        _keyString = format ["%1+%2", localize "str_dik_alt", _keyString];
+                    };
+
+                    if (_ctrl && {!(_dikCode in [DIK_LCONTROL, DIK_RCONTROL])}) then {
+                        _keyString = format ["%1+%2", localize "str_dik_control", _keyString];
+                    };
+
                     if (_keyString != "") then {
                         // Add quotes around whole string.
                         _keyString = format ["""%1""", _keyString];
                     };
+
                     TRACE_1("",_keyString);
                     // Search the handler array for any other keybinds using this key.
                     _isDuplicated = false;
