@@ -15,4 +15,5 @@ class CfgPatches {
 };
 
 #include "CfgEventhandlers.hpp"
-#include "CfgRscStd.hpp"
+
+#include "gui.hpp"
