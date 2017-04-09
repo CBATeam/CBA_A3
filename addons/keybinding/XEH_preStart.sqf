@@ -151,16 +151,16 @@ private _supportedKeys = [
     DIK_XBOX_B,
     DIK_XBOX_X,
     DIK_XBOX_Y,
-    DIK_XBOX_BLACK,
-    DIK_XBOX_WHITE,
-    DIK_XBOX_BACK,
-    DIK_XBOX_START,
-    DIK_XBOX_LEFT_THUMB,
-    DIK_XBOX_RIGHT_THUMB,
     DIK_XBOX_UP,
     DIK_XBOX_DOWN,
     DIK_XBOX_LEFT,
-    DIK_XBOX_RIGHT
+    DIK_XBOX_RIGHT,
+    DIK_XBOX_START,
+    DIK_XBOX_BACK,
+    DIK_XBOX_BLACK,
+    DIK_XBOX_WHITE,
+    DIK_XBOX_LEFT_THUMB,
+    DIK_XBOX_RIGHT_THUMB
 ];
 
 _supportedKeys = _supportedKeys apply {
@@ -173,4 +173,16 @@ _supportedKeys = _supportedKeys apply {
 };
 
 GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
-GVAR(forbiddenKeys) = ["327693","327692","327699","327703","327702","327698","327697","327701","327700","327696","327788"];
+
+GVAR(forbiddenKeys) = [
+    DIK_XBOX_LEFT_TRIGGER,
+    DIK_XBOX_RIGHT_TRIGGER,
+    DIK_XBOX_LEFT_THUMB_X_RIGHT,
+    DIK_XBOX_LEFT_THUMB_Y_UP,
+    DIK_XBOX_RIGHT_THUMB_X_RIGHT,
+    DIK_XBOX_RIGHT_THUMB_Y_UP,
+    DIK_XBOX_LEFT_THUMB_X_LEFT,
+    DIK_XBOX_LEFT_THUMB_Y_DOWN,
+    DIK_XBOX_RIGHT_THUMB_X_LEFT,
+    DIK_XBOX_RIGHT_THUMB_Y_DOWN
+];
