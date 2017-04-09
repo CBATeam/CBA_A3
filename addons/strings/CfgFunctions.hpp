@@ -99,6 +99,12 @@ class CfgFunctions
                 description = "Internal Self Check. Check the RPT file for results.";
                 file = "\x\cba\addons\strings\test.sqf";
             };
+            
+            class unicodeNumberToChar
+            {
+                description = "Return unicode char from give unicode number.";
+                file = "\x\cba\addons\strings\fnc_unicodeNumberToChar.sqf";
+            };
         };
     };
 };
