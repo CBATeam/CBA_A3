@@ -164,10 +164,8 @@ private _supportedKeys = [
 ];
 
 _supportedKeys = _supportedKeys apply {
-    private _keyName = keyName _x;
-
     // strip away additional quote marks
-    _keyName = parseSimpleArray format ["[%1]", _keyName] select 0;
+    private _keyName = parseSimpleArray format ["[%1]", keyName _x] select 0;
 
     [str _x, _keyName]
 };
