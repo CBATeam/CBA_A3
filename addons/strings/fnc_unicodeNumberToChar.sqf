@@ -18,6 +18,6 @@ Author:
     Vincent Heins
 ---------------------------------------------------------------------------- */
 
-private _unicodeNumber = param [0, 0, [0]];
+params [["_unicodeNumber", 0, [0]]];
 
 (str parseText format["&#%1;", _unicodeNumber]);
