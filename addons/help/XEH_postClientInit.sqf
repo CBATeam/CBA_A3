@@ -29,46 +29,10 @@ if (!isNil QGVAR(keys)) then {
 //player createDiaryRecord ["CBA_docs", [localize "STR_DN_CBA_WEBSITE", "http://dev-heaven.net/projects/cca"]];
 
 // add diary for scripted keybinds
-private _fnc_getKeyName = {
-    private _shift = [0, DIK_LSHIFT] select _shift;
-    private _ctrl = [0, DIK_LCONTROL] select _ctrl;
-    private _alt = [0, DIK_LMENU] select _alt;
-
-    private _keys = [_shift, _ctrl, _alt, _key];
-
-    _result = "^";
-
-    {
-        private _keyname1 = EGVAR(keybinding,keyNames) getVariable str _x;
-        if (isNil "_keyname1") then {
-            _keyname1 = format [localize ELSTRING(keybinding,unkownKey), _x];
-        };
-
-        _keyname1 = [_keyname1, " "] call CBA_fnc_split;
-
-        private _keyname2 = "^";
-
-        {
-            _keyname2 = _keyname2 + " " + _x;
-        } forEach _keyname1;
-
-        _keyname2 = [_keyname2, "^ ", ""] call CBA_fnc_replace;
-        _result = _result + "+" + _keyname2;
-    } forEach _keys;
-
-    _result = [_result, "^ ", ""] call CBA_fnc_replace;
-    _result = [_result, "^+", ""] call CBA_fnc_replace;
-    _result = [_result, "^", "None"] call CBA_fnc_replace;
-    _result = [_result, "LAlt", localize "str_dik_alt"] call CBA_fnc_replace;
-    _result = [_result, "LCtrl", localize "str_dik_control"] call CBA_fnc_replace;
-    _result = [_result, "LShift", localize "str_dik_shift"] call CBA_fnc_replace;
-    _result
-};
-
-_fnc_getKeyName spawn {
+0 spawn {
     private _text = GVAR(keys);
 
-    cba_keybinding_handlers params [["_modNames", [], [[]]], ["_keyHandlers", [], [[]]]];
+    EGVAR(keybinding,handlers) params [["_modNames", [], [[]]], ["_keyHandlers", [], [[]]]];
 
     {
         private _modName = _x;
@@ -82,7 +46,7 @@ _fnc_getKeyName spawn {
                 private _actionName = _x;
                 private _actionEntry = _actionEntries param [_forEachIndex, []];
 
-                _actionEntry params [["_displayName", "", ["", []]], ["_keyBind", [], [[]]]];
+                _actionEntry params [["_displayName", "", ["", []]], ["_keybind", [], [[]]]];
 
                 if (_displayName isEqualType []) then {
                     _displayName = _displayName param [0, ""];
@@ -92,10 +56,35 @@ _fnc_getKeyName spawn {
                 _displayName = [_displayName, "<", "&lt;"] call CBA_fnc_replace;
                 _displayName = [_displayName, ">", "&gt;"] call CBA_fnc_replace;
 
-                _keyBind params [["_key", 0, [0]], ["_mod", [], [[]]]];
-                _mod params [["_shift", false, [false]], ["_ctrl", false, [false]], ["_alt", false, [false]]];
+                _keybind params [["_key", 0, [0]], ["_modifier", [], [[]]]];
+                _modifier params [["_shift", false, [false]], ["_ctrl", false, [false]], ["_alt", false, [false]]];
 
-                _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, call _this];
+                // Try to convert dik code to a human key code.
+                private _keyName = EGVAR(keybinding,keyNames) getVariable str _key;
+
+                if (isNil "_keyName") then {
+                    _keyName = format [localize LSTRING(unkownKey), _key];
+                };
+
+                // Build the full key combination name.
+                if (_shift && {!(_key in [DIK_LSHIFT, DIK_RSHIFT])}) then {
+                    _keyName = localize "str_dik_shift" + "+" + _keyName;
+                };
+
+                if (_alt && {!(_key in [DIK_LMENU, DIK_RMENU])}) then {
+                    _keyName = localize "str_dik_alt" + "+" + _keyName;
+                };
+
+                if (_ctrl && {!(_key in [DIK_LCONTROL, DIK_RCONTROL])}) then {
+                    _keyName = localize "str_dik_control" + "+" + _keyName;
+                };
+
+                // Add quotes around whole string.
+                if (_keyName != "") then {
+                    _keyName = str _keyName;
+                };
+
+                _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
             } forEach _actionNames;
 
             _text = _text + "<br/>";
