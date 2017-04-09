@@ -2,7 +2,7 @@
 Function: CBA_fnc_unicodeNumberToChar
 Description:
     Gets the unicode char of the given unicode number
-    For more information to unicodes watch: https://unicode-table.com/
+    For more information to unicodes visit: https://unicode-table.com/
 Parameters:
     (number/integer/scalar) _unicodeNumber = the unicode number
 Returns:
