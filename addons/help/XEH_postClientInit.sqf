@@ -79,11 +79,6 @@ if (!isNil QGVAR(keys)) then {
                     _keyName = localize "str_dik_control" + "+" + _keyName;
                 };
 
-                // Add quotes around whole string.
-                if (_keyName != "") then {
-                    _keyName = str _keyName;
-                };
-
                 _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
             } forEach _actionNames;
 
