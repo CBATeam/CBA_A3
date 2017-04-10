@@ -1,26 +1,20 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_shuffle
-
 Description:
     Shuffles an array's contents into random order.
-
 Parameters:
-    _array - Array of values to shuffle [Array, containing anything except nil]
+    _array - Array of values to shuffle <Array, containing anything except nil>
     _inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>
-
 Returns:
-    New array containing shuffled values from original array [Array]
-
+    Array containing shuffled values <Array>
 Example:
     (begin example)
         _result = [[1, 2, 3, 4, 5]] call CBA_fnc_shuffle;
         // _result could be [4, 2, 5, 1, 3]
-
         _array = [1, 2, 3, 4, 5];
         [_array,true] call CBA_fnc_shuffle;
         // _array could now be [4, 2, 5, 1, 3]
     (end)
-
 Author:
     toadlife (version 1.01) http://toadlife.net
     rewritten by Spooner, Dorbedo
@@ -37,6 +31,7 @@ If (_inPlace) then {
     for "_size" from (count _tempArray) to 1 step -1 do {
         _array set [_size-1,(_tempArray deleteAt (floor random _size))];
     };
+    _array
 }else{
     private _shuffledArray = [];
     for "_size" from (count _tempArray) to 1 step -1 do {
