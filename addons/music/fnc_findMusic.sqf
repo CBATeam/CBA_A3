@@ -5,9 +5,9 @@ Description:
     A function used to return songs with given type and tags
     
 Parameters:
-    1: A string or array of strings, defining music "type".
-    2: A string or array of strings, defining tags/themes to look for.
-    3: Array (optional) of music to search. Uses all music in game by default. values can be either class or config
+    0: A string or array of strings, defining music "type".
+    1: A string or array of strings, defining tags/themes to look for.
+    2: Array (optional) of music to search. Uses all music in game by default. values can be either class or config
     
 Returns:
     array of classes that fit the bill.

@@ -10,11 +10,11 @@ Parameters:
     Default- what to return if nothing found
     
 Returns:
-    data entry for requested music class
+    data entry for requested music class (or default if nothing found)
     
 Example:
     (begin example)
-        _musicName = ["LeadTrack01_F_Bootcamp","Duration"] call CBA_fnc_getMusicData;
+        _duration = ["LeadTrack01_F_Bootcamp","duration"] call CBA_fnc_getMusicData;
     (end example)
 
 Author:
@@ -44,7 +44,6 @@ switch (toLower _dataType) do {
     case "type": {_return = DEFAULT_SONG_TYPE;};
     case "theme": {_return = DEFAULT_SONG_THEME;};
     case "tags": {_return = DEFAULT_SONG_TAGS;};
-    default {_return = nil;};
 };
 
 _return  
