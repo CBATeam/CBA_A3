@@ -5,11 +5,11 @@ Description:
     Shuffles an array's contents into random order.
 
 Parameters:
-    _array - Array of values to shuffle [Array, containing anything except nil]
+    _array - Array of values to shuffle <Array, containing anything except nil>
     _inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>
 
 Returns:
-    New array containing shuffled values from original array [Array]
+    Array containing shuffled values <Array>
 
 Example:
     (begin example)
@@ -37,6 +37,7 @@ If (_inPlace) then {
     for "_size" from (count _tempArray) to 1 step -1 do {
         _array set [_size-1,(_tempArray deleteAt (floor random _size))];
     };
+    _array
 }else{
     private _shuffledArray = [];
     for "_size" from (count _tempArray) to 1 step -1 do {
