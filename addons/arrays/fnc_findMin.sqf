@@ -28,5 +28,5 @@ SCRIPT(findMin);
 
 if !(_array isEqualTypeAll 0) exitWith {nil};
 
-private _max = selectMin _array;
-[_max, _array find _max]
+private _min = selectMin _array;
+[_min, _array find _min]
