@@ -56,7 +56,7 @@ if (_returnArray) then
 }
 else
 {
-    _unicodeNumber apply { (toString [_x]) };
+    (toString _unicodeNumber) splitString "";
 };
 
 //old thought: (str parseText format["&#%1;", _unicodeNumber]);
