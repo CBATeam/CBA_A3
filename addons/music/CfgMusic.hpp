@@ -581,94 +581,94 @@ class CfgMusic
     a3\music_f_exp (APEX)
     ---------------------------------------------- */
     class LeadTrack01_F_EXP
-	{
+    {
         type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack01a_F_EXP
-	{
+    };
+    class LeadTrack01a_F_EXP
+    {
         type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack01b_F_EXP
-	{
+    };
+    class LeadTrack01b_F_EXP
+    {
         type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack01c_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class LeadTrack01c_F_EXP
+    {
+        type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack02_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class LeadTrack02_F_EXP
+    {
+        type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack03_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class LeadTrack03_F_EXP
+    {
+        type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class LeadTrack04_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class LeadTrack04_F_EXP
+    {
+        type = "soundtrack";
         theme = "Action";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack01_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack01_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack01a_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack01a_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack01b_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack01b_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack02_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack02_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack02a_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack02a_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack02b_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack02b_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack02c_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack02c_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
-	class AmbientTrack02d_F_EXP
-	{
-		type = "soundtrack";
+    };
+    class AmbientTrack02d_F_EXP
+    {
+        type = "soundtrack";
         theme = "Stealth";
         tags[] = {bis, apex};
-	};
+    };
     
 };
