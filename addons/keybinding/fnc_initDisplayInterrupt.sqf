@@ -84,9 +84,9 @@ _button ctrlAddEventHandler ["ButtonClick", {
             (_display displayctrl 301) ctrlSetFade 1;       //Video
             (_display displayctrl 302) ctrlSetFade 1;       //Audio
             (_display displayctrl 303) ctrlSetFade 1;       //Controls
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlSetFade 1;       //Addon Controls
+            (_display displayctrl IDC_ADDON_CONTROLS) ctrlSetFade 1;
             (_display displayctrl 307) ctrlSetFade 1;       //Game Options
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlSetFade 1;       //Addon Options
+            (_display displayctrl IDC_ADDON_OPTIONS) ctrlSetFade 1;
             
             (_display displayctrl 301) ctrlCommit _buttonsTime; //Video
             uiSleep _buttonsTime;
