@@ -23,7 +23,12 @@ Author:
     Vincent Heins
 ---------------------------------------------------------------------------- */
 
-params [["_unicodeNumber", 0, [0]]];
+params [["_unicodeNumber", 0, [0, []]]];
 
-(toString [_unicodeNumber]);
+if (_unicodeNumber isEqualType 0) then
+{
+    _unicodeNumber = [_unicodeNumber];
+};
+
+(toString _unicodeNumber);
 //old thought: (str parseText format["&#%1;", _unicodeNumber]);
