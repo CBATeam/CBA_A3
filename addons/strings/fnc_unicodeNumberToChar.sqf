@@ -15,7 +15,7 @@ Examples:
     (begin example)
         _unicodeNumber = 49;
         _unicodeChar = "";
-        _unicodeChar = ([_unicodeNumber] call CBA_fnc_unicodeNumberToChar);
+        _unicodeChar = ([_unicodeNumber] call CBA_fnc_unicodeToChar);
         //_unicodeChar will return "1"
     (end)
 
