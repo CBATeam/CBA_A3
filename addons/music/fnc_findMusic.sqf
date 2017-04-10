@@ -27,8 +27,8 @@ params [["_searchType","any",["",[]]],["_searchTags","any",["",[]]],["_searchTra
 if (IS_STRING(_searchType)) then {_searchType = [_searchType];};
 if (IS_STRING(_searchTags)) then {_searchTags = [_searchTags];};
 
-if (_searchType select 0 == "any") then {_searchType = [];};
-if (_searchTags select 0 == "any") then {_searchTags = [];};
+if (_searchType select 0 isEqualTo "any") then {_searchType = [];};
+if (_searchTags select 0 isEqualTo "any") then {_searchTags = [];};
 
 _searchType = _searchType apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
 _searchTags = _searchTags apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
@@ -49,12 +49,14 @@ private _results = [];
     
     if (IS_CONFIG(_config)) then {
         private _type = getText (_config >> 'type');
-        if (_type == "") then {_type = DEFAULT_SONG_TYPE};
+        if (_type isEqualTo "") then {_type = DEFAULT_SONG_TYPE};
         
         if (count _searchType == 0 || {(toLower _type) in _searchType}) then {
             if (count _searchTags > 0) then {
                 private _tags = getArray (_config >> 'tags');
+                if (_tags isEqualTo []) then {_tags = DEFAULT_SONG_TAGS};
                 private _theme = getText (_config >> 'theme');
+                if (_theme isEqualTo "") then {_theme = DEFAULT_SONG_THEME};
                 _tags pushBackUnique _theme;    //Take the theme if no tags found
                 for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
                     _tag = toLower (_tags select _i);

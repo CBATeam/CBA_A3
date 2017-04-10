@@ -20,7 +20,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (isNil QGVAR(track)) exitWith {['', 0, 0]};
+if (isNil QGVAR(track)) exitWith {["", 0, 0]};
 
 GVAR(track) params ["_class","_startTime","_playPos","_duration"];
 

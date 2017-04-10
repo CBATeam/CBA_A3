@@ -30,7 +30,8 @@ private _duration = getNumber (_config >> "duration");
 if (_duration isEqualTo 0) then {
     _config = configFile >> "CfgMusic" >> _className;
     _duration = getNumber (_config >> "duration");
-    if (_duration isEqualTo 0) exitWith {WARNING_1("No path found for class",_className); nil};
 };
+
+if (_duration isEqualTo 0) exitWith {WARNING_1("No path found for class %1",_className); nil};
 
 _config 
