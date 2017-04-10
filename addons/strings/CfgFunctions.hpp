@@ -100,10 +100,10 @@ class CfgFunctions
                 file = "\x\cba\addons\strings\test.sqf";
             };
             
-            class unicodeNumberToChar
+            class unicodeToChar
             {
                 description = "Return unicode char from give unicode number.";
-                file = "\x\cba\addons\strings\fnc_unicodeNumberToChar.sqf";
+                file = "\x\cba\addons\strings\fnc_unicodeToChar.sqf";
             };
         };
     };
