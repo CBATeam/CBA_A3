@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_unicodeNumberToChar
+Function: CBA_fnc_unicodeToChar
 
 Description:
     Gets the unicode char of the given unicode number
