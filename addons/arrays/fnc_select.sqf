@@ -29,12 +29,4 @@ SCRIPT(select);
 
 params ["_array", "_filterCode"];
 
-private _result = [];
-
-{
-    if (_x call _filterCode) then {
-        _result pushBack _x;
-    };
-} forEach _array;
-
-_result
+_array select {_x call _filterCode}
