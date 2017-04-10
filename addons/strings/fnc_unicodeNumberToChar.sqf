@@ -25,4 +25,5 @@ Author:
 
 params [["_unicodeNumber", 0, [0]]];
 
-(str parseText format["&#%1;", _unicodeNumber]);
+(toString [_unicodeNumber]);
+//old thought: (str parseText format["&#%1;", _unicodeNumber]);
