@@ -2,10 +2,11 @@
 Function: CBA_fnc_shuffle
 
 Description:
-    Shuffles an array's contents into random order, returning a new array.
+    Shuffles an array's contents into random order.
 
 Parameters:
     _array - Array of values to shuffle [Array, containing anything except nil]
+    _inPlace - true: alter array, false: copy array (optional, default: false) <BOOLEAN>
 
 Returns:
     New array containing shuffled values from original array [Array]
@@ -14,38 +15,32 @@ Example:
     (begin example)
         _result = [[1, 2, 3, 4, 5]] call CBA_fnc_shuffle;
         // _result could be [4, 2, 5, 1, 3]
-    (end)
 
-TODO:
-    Allow shuffling of elements in-place, using the original array.
+        _array = [1, 2, 3, 4, 5];
+        [_array,true] call CBA_fnc_shuffle;
+        // _array could now be [4, 2, 5, 1, 3]
+    (end)
 
 Author:
     toadlife (version 1.01) http://toadlife.net
-    (rewritten by Spooner)
+    rewritten by Spooner, Dorbedo
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
 SCRIPT(shuffle);
 
-private ["_shuffledArray", "_tempArray", "_indexToRemove"];
-_shuffledArray = [];
+_this params [["_array",[],[[]]],["_inPlace",false,[false]]];
 
-// Support the deprecated parameter style: [1, 2, 3, 4, 5] call CBA_fnc_shuffle.
-_tempArray = if (count _this != 1) then {
-    WARNING("CBA_fnc_shuffle requires an array as first parameter, not just a direct array: " + str _this);
-    [] + _this;
-} else {
-    if (IS_ARRAY(_this select 0)) then {
-        [] + (_this select 0); // Correct params passed.
-    } else {
-        WARNING("CBA_fnc_shuffle requires an array as first parameter, not just a direct array: " + str _this);
-        [] + _this;
+private _tempArray =+ _array;
+
+If (_inPlace) then {
+    for "_size" from (count _tempArray) to 1 step -1 do {
+        _array set [_size-1,(_tempArray deleteAt (floor random _size))];
     };
+}else{
+    private _shuffledArray = [];
+    for "_size" from (count _tempArray) to 1 step -1 do {
+        _shuffledArray pushBack (_tempArray deleteAt (floor random _size));
+    };
+    _shuffledArray
 };
-
-for "_size" from (count _tempArray) to 1 step -1 do {
-    _indexToRemove = floor random _size;
-    _shuffledArray pushBack (_tempArray deleteAt _indexToRemove);
-};
-
-_shuffledArray
