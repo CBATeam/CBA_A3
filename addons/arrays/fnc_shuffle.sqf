@@ -29,7 +29,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(shuffle);
 
-_this params [["_array",[],[[]]],["_inPlace",false,[false]]];
+params [["_array",[],[[]]],["_inPlace",false,[false]]];
 
 private _tempArray =+ _array;
 
