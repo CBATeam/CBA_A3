@@ -52,7 +52,7 @@ if (_unicodeNumber isEqualType 0) then
 
 if (_returnArray) then
 {
-(toString _unicodeNumber);
+    (toString _unicodeNumber);
 }
 else
 {
