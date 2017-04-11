@@ -13,6 +13,8 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+
 #define IDC_ADDON_CONTROLS 127303
 #define IDC_ADDON_OPTIONS 127307
 
