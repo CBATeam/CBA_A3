@@ -132,7 +132,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         [{
             private _button = (_this select 0) deleteAt 0;
 
-            if (isNil "_button") then {
+            if (isNil "_button") exitWith {
                 (_this select 1) call CBA_fnc_removePerFrameHandler;
             };
 
@@ -210,7 +210,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         [{
             private _button = (_this select 0) deleteAt 0;
 
-            if (isNil "_button") then {
+            if (isNil "_button") exitWith {
                 (_this select 1) call CBA_fnc_removePerFrameHandler;
             };
 
