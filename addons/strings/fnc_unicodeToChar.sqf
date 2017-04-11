@@ -6,11 +6,12 @@ Description:
     For more information to unicodes visit: https://unicode-table.com/
 
 Parameters:
-    _unicodeNumber: the unicode number <NUMBER>
-    _returnArray: type of the result : true for array | false for string
+    _unicodeNumber : the unicode number : <NUMBER>
+    _returnArray : type of the result : true for array | false for string : <BOOL>
 
 Returns:
-    given unicode char <STRING>
+    Either an array or string:
+    The result from the unicode char related to the given unicode number (see _unicodeNumber)
 
 Examples:
     (begin example)
