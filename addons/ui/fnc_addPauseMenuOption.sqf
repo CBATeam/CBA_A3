@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _handle = ["Menu Name", "RscMenuDialog"] call CBA_fnc_addPauseMenuOption;
+        ["Menu Name", "RscDebugConsole"] call CBA_fnc_addPauseMenuOption;
     (end)
 
 Author:

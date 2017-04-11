@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (isNil QGVAR(MenuButtons)) exitWith {};
+
 params ["_display"];
 
 // list of all buttons
@@ -7,7 +9,7 @@ private _buttons = [];
 _display setVariable [QGVAR(MenuButtons), _buttons];
 
 // inital button placement
-private _offset = -1.1 * (count (missionNamespace getVariable [QGVAR(MenuButtons), []]) + 4);
+private _offset = -1.1 * (count GVAR(MenuButtons) + 4);
 if (getNumber (missionConfigFile >> "replaceAbortButton") > 0) then {
     _offset = _offset - 1.1;
 };
@@ -129,7 +131,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         _control ctrlSetPosition [(1 * GUI_GRID_W + GUI_GRID_X), ((18.6 - _offset) * GUI_GRID_H + GUI_GRID_Y)];                                                                                                                 
         _control ctrlCommit _upperPartTime;
         
-        [{
+        private _fnc_hideButton = {
             private _button = (_this select 0) deleteAt 0;
 
             if (isNil "_button") exitWith {
@@ -139,7 +141,10 @@ _button ctrlAddEventHandler ["ButtonClick", {
             _button ctrlSetFade 1;
             _button ctrlCommit 0.15;
             _button ctrlEnable false;
-        }, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
+        };
+
+        [_buttons, -1] call _fnc_hideButton;
+        [_fnc_hideButton, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
         
         uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", false];
     } else {
@@ -207,7 +212,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         //From bottom to top
         reverse _buttons;
 
-        [{
+        private _fnc_showButton = {
             private _button = (_this select 0) deleteAt 0;
 
             if (isNil "_button") exitWith {
@@ -217,7 +222,10 @@ _button ctrlAddEventHandler ["ButtonClick", {
             _button ctrlSetFade 0;
             _button ctrlCommit 0.15;
             _button ctrlEnable true;
-        }, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
+        };
+
+        [_buttons, -1] call _fnc_showButton;
+        [_fnc_showButton, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
         
         uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", true];
     };
