@@ -9,17 +9,14 @@ class CfgPatches {
         requiredVersion = 1;
         requiredAddons[] = {"CBA_common","CBA_arrays","A3_Ui_F"};
         version = VERSION;
-        authors[] = {"Dr Eyeball"};
+        authors[] = {"Dr Eyeball","commy2"};
     };
 };
 
+#include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
-class Extended_PreInit_EventHandlers {
-    class ADDON {
-        clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
-    };
-};
+#include "gui.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
