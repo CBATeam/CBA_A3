@@ -64,6 +64,10 @@ private _button = _display displayCtrl 101;
 
 _button ctrlRemoveEventHandler ["ButtonClick", 0]; // remove vanilla button
 _button ctrlAddEventHandler ["ButtonClick", {
+    params ["_button"];
+    if (_button getVariable [QGVAR(disabled), false]) exitWith {};
+    _button setVariable [QGVAR(disabled), true];
+
     _this spawn {
         // this is an edit of a BI script, don't change unnecessarily
         disableSerialization;
@@ -80,8 +84,8 @@ _button ctrlAddEventHandler ["ButtonClick", {
 
         //if options are expanded (Video Options button is shown), collapse it and vice versa
         //if(ctrlFade (_display displayCtrl 301) < 0.5) then
-        _upperPartTime = 0.05 * count _buttons; //0.05 for each button
-        _buttonsTime = 0.05;
+        _upperPartTime = 0.2; //0.05 for each button
+        _buttonsTime = 0.05 * (4 / count _buttons);
 
         //hide buttons and collapse accordion
         if (uiNamespace getvariable "BIS_DisplayInterrupt_isOptionsExpanded") then {
@@ -136,7 +140,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
                 _x ctrlSetFade 1;
             } forEach _buttons;
             
-            uiSleep 0.05;
+            //uiSleep 0.05;
 
             {
                 _x ctrlCommit _buttonsTime;
@@ -148,8 +152,6 @@ _button ctrlAddEventHandler ["ButtonClick", {
             } forEach _buttons;
             
             uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", false];
-            //set focus to Options button
-            ctrlSetFocus (_display displayctrl 101);    
         } else {
             //expand accordion and show buttons
                 
@@ -202,32 +204,14 @@ _button ctrlAddEventHandler ["ButtonClick", {
             _control ctrlCommit _upperPartTime;
             
             if (getnumber (missionconfigfile >> "replaceAbortButton") > 0) then {
-                // but these remain unmoved
-                _offset = _offset - 2 * 1.1;
+                {
+                    _x ctrlSetPosition [
+                        2 * GUI_GRID_W + GUI_GRID_X,
+                        (15.3 - _offset) * GUI_GRID_H + GUI_GRID_Y
+                    ];
 
-                //Video button
-                _control = _display displayctrl 301;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - 5 * 1.1 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
-                
-                //Audio button
-                _control = _display displayctrl 302;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - 4 * 1.1 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
-                
-                //Controls button
-                _control = _display displayctrl 303;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - 3 * 1.1 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
-                
-                // CBA Addon Controls button
-                _control = _display displayctrl IDC_ADDON_CONTROLS;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - 2 * 1.1 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
-                
-                //Game button
-                _control = _display displayctrl 307;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - 1 * 1.1 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
-                
-                // CBA Addon Options button
-                _control = _display displayctrl IDC_ADDON_OPTIONS;
-                _control ctrlSetPosition [(2 * GUI_GRID_W + GUI_GRID_X), ((18.6 - _offset) * GUI_GRID_H + GUI_GRID_Y)];
+                    _offset = _offset - 1.1;
+                } forEach _buttons;
             };
 
             //Enable and show buttons
@@ -247,8 +231,9 @@ _button ctrlAddEventHandler ["ButtonClick", {
             } forEach _buttons;
             
             uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", true];
-            //set focus to Options button
-            ctrlSetFocus (_display displayctrl 101);
         };
+
+        _ctrl setVariable [QGVAR(disabled), false];
+        ctrlSetFocus _ctrl;
     };
 }];
