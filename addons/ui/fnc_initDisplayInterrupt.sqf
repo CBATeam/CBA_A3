@@ -2,14 +2,64 @@
 
 params ["_display"];
 
+// list of all buttons
+private _buttons = [];
+_display setVariable [QGVAR(MenuButtons), _buttons];
+
+// inital button placement
+private _offset = 0;
+
+// --- create custom buttons
 {
-    private _control = _display displayCtrl _x;
+    _x params ["_displayName", "_tooltip", "_dialog"];
 
-    _control ctrlEnable false;
-    _control ctrlSetFade 1;
-    _control ctrlCommit 0;
-} forEach [IDC_ADDON_CONTROLS, IDC_ADDON_OPTIONS];
+    private _button = _display ctrlCreate ["RscButtonMenu", -1];
 
+    _button ctrlSetText toUpper _displayName;
+    _button ctrlSetTooltip _tooltip;
+    _button buttonSetAction format ["findDisplay %1 createDisplay '%2'", ctrlIDD _display, _dialog];
+    _button ctrlEnable false;
+    _button ctrlSetFade 1;
+
+    _button ctrlSetPosition [
+        POS_X(2),
+        POS_Y(18.6 + _offset),
+        POS_W(14),
+        POS_H(1)
+    ];
+
+    _button ctrlCommit 0;
+
+    _buttons pushBack _button;
+    _offset = _offset - 1.1;
+} forEach GVAR(MenuButtons);
+
+// --- move up old buttons
+{
+    private _button = _display displayCtrl _x;
+
+    //_button ctrlEnable false;
+    //_button ctrlSetFade 1;
+
+    _button ctrlSetPosition [
+        POS_X(2),
+        POS_Y(18.6 + _offset)
+    ];
+
+    _button ctrlCommit 0;
+
+    _buttons pushBack _button;
+    _offset = _offset - 1.1;
+} forEach [
+    IDC_OPTIONS_GAMEOPTIONS,
+    IDC_OPTIONS_CONFIGURE,
+    IDC_OPTIONS_AUDIO,
+    IDC_OPTIONS_VIDEO
+];
+
+reverse _buttons;
+
+// --- replace expand button action
 private _button = _display displayCtrl 101;
 
 _button ctrlRemoveEventHandler ["ButtonClick", 0]; // remove vanilla button
@@ -21,6 +71,8 @@ _button ctrlAddEventHandler ["ButtonClick", {
         params ["_ctrl"];
         _display = ctrlparent _ctrl;
 
+        _buttons = + (_display getVariable QGVAR(MenuButtons));
+
         _offset = 0;
         if (getnumber (missionconfigfile >> "replaceAbortButton") > 0) then { //MUF-test-removed: (getNumber(configfile >> "isDemo") != 1) &&
             _offset = 1.1;
@@ -28,7 +80,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
 
         //if options are expanded (Video Options button is shown), collapse it and vice versa
         //if(ctrlFade (_display displayCtrl 301) < 0.5) then
-        _upperPartTime = 0.3; //0.05 for each button
+        _upperPartTime = 0.05 * count _buttons; //0.05 for each button
         _buttonsTime = 0.05;
 
         //hide buttons and collapse accordion
@@ -80,33 +132,20 @@ _button ctrlAddEventHandler ["ButtonClick", {
             _control ctrlSetPosition [(1 * GUI_GRID_W + GUI_GRID_X), ((18.6 - _offset) * GUI_GRID_H + GUI_GRID_Y)];                                                                                                                 
             _control ctrlCommit _upperPartTime;
             
+            {
+                _x ctrlSetFade 1;
+            } forEach _buttons;
+            
+            uiSleep 0.05;
 
-            (_display displayctrl 301) ctrlSetFade 1;       //Video
-            (_display displayctrl 302) ctrlSetFade 1;       //Audio
-            (_display displayctrl 303) ctrlSetFade 1;       //Controls
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlSetFade 1;
-            (_display displayctrl 307) ctrlSetFade 1;       //Game Options
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlSetFade 1;
-            
-            (_display displayctrl 301) ctrlCommit _buttonsTime; //Video
-            uiSleep _buttonsTime;
-            (_display displayctrl 302) ctrlCommit _buttonsTime; //Audio
-            uiSleep _buttonsTime;
-            (_display displayctrl 303) ctrlCommit _buttonsTime; //Controls
-            uiSleep _buttonsTime;
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlCommit _buttonsTime;
-            uiSleep _buttonsTime;
-            (_display displayctrl 307) ctrlCommit _buttonsTime; //Game
-            uiSleep _buttonsTime;
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlCommit _buttonsTime;
-            
-            (_display displayctrl 301) ctrlEnable false;        //Video
-            (_display displayctrl 302) ctrlEnable false;        //Audio
-            (_display displayctrl 303) ctrlEnable false;        //Controls
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlEnable false;
-            (_display displayctrl 307) ctrlEnable false;        //Game Options
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlEnable false;
-            
+            {
+                _x ctrlCommit _buttonsTime;
+                uiSleep _buttonsTime;
+            } forEach _buttons;
+
+            {
+                _x ctrlEnable false;
+            } forEach _buttons;
             
             uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", false];
             //set focus to Options button
@@ -114,8 +153,8 @@ _button ctrlAddEventHandler ["ButtonClick", {
         } else {
             //expand accordion and show buttons
                 
-            // 2 additional buttons from CBA
-            _offset = _offset + 2 * 1.1;
+            // additional buttons from CBA minus 4 already existing ones
+            _offset = _offset + (count _buttons - 4) * 1.1;
 
             //Title background
             _control = _display displayctrl 1050;
@@ -192,35 +231,20 @@ _button ctrlAddEventHandler ["ButtonClick", {
             };
 
             //Enable and show buttons
-            (_display displayctrl 301) ctrlEnable true; //Video
-            (_display displayctrl 302) ctrlEnable true; //Audio
-            (_display displayctrl 303) ctrlEnable true; //Controls
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlEnable true;
-            (_display displayctrl 307) ctrlEnable true; //Game Options
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlEnable true;
-            
-            //--- Show all buttons from Options
-            (_display displayctrl 301) ctrlSetFade 0;   //Video
-            (_display displayctrl 302) ctrlSetFade 0;   //Audio
-            (_display displayctrl 303) ctrlSetFade 0;   //Controls
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlSetFade 0;
-            (_display displayctrl 307) ctrlSetFade 0;   //Game Options
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlSetFade 0;
+            {
+                _x ctrlEnable true;
+                _x ctrlSetFade 0;
+            } forEach _buttons;
             
             uiSleep 0.05;
-            
+
             //From bottom to top
-            (_display displayctrl IDC_ADDON_OPTIONS) ctrlCommit 0.15;
-            uiSleep _buttonsTime;
-            (_display displayctrl 307) ctrlCommit 0.15; //Game
-            uiSleep _buttonsTime;
-            (_display displayctrl IDC_ADDON_CONTROLS) ctrlCommit 0.15;
-            uiSleep _buttonsTime;
-            (_display displayctrl 303) ctrlCommit 0.15; //Controls
-            uiSleep _buttonsTime;
-            (_display displayctrl 302) ctrlCommit 0.15; //Audio
-            uiSleep _buttonsTime;
-            (_display displayctrl 301) ctrlCommit 0.15; //Video
+            reverse _buttons;
+
+            {
+                _x ctrlCommit 0.15;
+                uiSleep _buttonsTime;
+            } forEach _buttons;
             
             uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", true];
             //set focus to Options button
