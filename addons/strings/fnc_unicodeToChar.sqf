@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _unicodeNumber: the unicode number <NUMBER>
+    _returnArray: type of the result : true for array | false for string
 
 Returns:
     given unicode char <STRING>
@@ -20,9 +21,9 @@ Examples:
     (end)
     (begin example)
         _unicodeNumber = 49;
-        _unicodeChar = "";
-        _unicodeChar = ([_unicodeNumber, true] call CBA_fnc_unicodeToChar);
-        //_unicdeChar will return ["1"]
+        _unicodeCharArray = [];
+        _unicodeCharArray = ([_unicodeNumber, true] call CBA_fnc_unicodeToChar);
+        //_uniocdeChar will return ["1"]
     (end)
     (begin example)
         _unicodeNumberArray = [49, 50];
