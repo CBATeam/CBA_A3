@@ -60,3 +60,6 @@ if (isText (_entry >> "version")) then {
 
 // add single line
 _control ctrlSetStructuredText parseText format ["%1%2 by %3", _name, _version, _author];
+
+// make credits line not obstruct other controls
+_control ctrlEnable false;
