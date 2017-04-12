@@ -10,6 +10,7 @@ PREP(clear);
 PREP(priority);
 
 if (hasInterface) then {
+    PREP(openSettingsMenu);
     PREP(gui_addonChanged);
     PREP(gui_sourceChanged);
     PREP(gui_configure);
