@@ -88,7 +88,7 @@ class RscDisplayGameOptions {
 };
 
 class GVAR(ButtonConfigure_base): RscButtonMenu {
-    onButtonClick = QUOTE(ctrlParent (_this select 0) call COMPILE_FILE(openSettingsMenu));
+    onButtonClick = QUOTE(ctrlParent (_this select 0) call FUNC(openSettingsMenu));
     idc = IDC_BTN_CONFIGURE;
     text = CSTRING(configureAddons);
     x = POS_X_LOW(11.1);
@@ -502,4 +502,12 @@ class GVAR(presets) {
             };
         };
     };
+};
+
+class RscDisplayEmpty;
+class GVAR(MainMenuHelper): RscDisplayEmpty {
+    onLoad = QUOTE(\
+        (_this select 0) call FUNC(openSettingsMenu);\
+        (_this select 0) closeDisplay 0;\
+    );
 };

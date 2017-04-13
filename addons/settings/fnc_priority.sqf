@@ -20,37 +20,18 @@ Author:
 
 params [["_setting", "", [""]], ["_source", "priority", [""]]];
 
-private _isGlobal = GVAR(default) getVariable [_setting, []] param [7, 0];
-
 switch (toLower _source) do {
     case "client": {
-        (GVAR(client) getVariable [_setting, [nil, 0]] select 1) min 0
+        private _priority = GVAR(client)  getVariable [_setting, [nil, 0]] select 1;
+        SANITIZE_PRIORITY(_setting,_priority) min 0
     };
     case "mission": {
-        private _priority = (GVAR(mission) getVariable [_setting, [nil, 0]] select 1) min 1;
-
-        if (_isGlobal isEqualTo 1) exitWith {
-            _priority max 1
-        };
-
-        if (_isGlobal isEqualTo 2) exitWith {
-            _priority min 0
-        };
-
-        _priority
+        private _priority = GVAR(mission) getVariable [_setting, [nil, 0]] select 1;
+        SANITIZE_PRIORITY(_setting,_priority) min 1
     };
     case "server": {
-        private _priority = (GVAR(server) getVariable [_setting, [nil, 0]] select 1) min 2;
-
-        if (_isGlobal isEqualTo 1) exitWith {
-            _priority max 1
-        };
-
-        if (_isGlobal isEqualTo 2) exitWith {
-            _priority min 0
-        };
-
-        _priority
+        private _priority = GVAR(server)  getVariable [_setting, [nil, 0]] select 1;
+        SANITIZE_PRIORITY(_setting,_priority) min 2
     };
     case "priority": {
         private _arr = [

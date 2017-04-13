@@ -132,3 +132,13 @@
 // Keep quote marks for strings, but also print "<any>" if undefined.
 // str and format ["%1", ] on their own can only do either.
 #define TO_STRING(var) (call {private _str = var; if (_str isEqualType "") then {_str = str _str}; format ["%1", _str]})
+
+#define IS_GLOBAL_SETTING(setting) (GVAR(default) getVariable [setting, []] param [7, 0] == 1)
+#define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == 2)
+
+#define SANITIZE_PRIORITY(setting,priority) (call {\
+    private priority = [0,1,2] select priority;\
+    if IS_GLOBAL_SETTING(setting) exitWith {priority max 1};\
+    if IS_LOCAL_SETTING(setting)  exitWith {priority min 0};\
+    priority\
+})

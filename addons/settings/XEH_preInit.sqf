@@ -10,14 +10,14 @@ ADDON = false;
 ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
-
 ["Test_Setting_5", "COLOR",    ["-test alpha-",    "-tooltip-"], "My Category", [1,0,0,0.5], false] call cba_settings_fnc_init;
-["Test_Setting_1", "EDITBOX", "setting 1", "My Category", "null", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
-["Test_Setting_2", "EDITBOX", "setting 2", "My Category", "null", nil, {systemChat str [2, _this]}] call cba_settings_fnc_init;
-["Test_Setting_3", "EDITBOX", "setting 3", "My Category", "null", nil, {systemChat str [3, _this]}] call cba_settings_fnc_init;
-["Test_Setting_4", "EDITBOX", "setting 4", "My Category", "null", nil, {systemChat str [4, _this]}] call cba_settings_fnc_init;
-["Test_Setting_5", "EDITBOX", "setting 5", "My Category", "null",   1, {systemChat str [5, _this]}] call cba_settings_fnc_init;
-["Test_Setting_6", "EDITBOX", "setting 6", "My Category", "null",   2, {systemChat str [6, _this]}] call cba_settings_fnc_init;
+
+["Test_1", "EDITBOX", "setting 1", "Test Category", "null", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
+["Test_2", "EDITBOX", "setting 2", "Test Category", "null", nil, {systemChat str [2, _this]}] call cba_settings_fnc_init;
+["Test_3", "EDITBOX", "setting 3", "Test Category", "null", nil, {systemChat str [3, _this]}] call cba_settings_fnc_init;
+["Test_4", "EDITBOX", "setting 4", "Test Category", "null", nil, {systemChat str [4, _this]}] call cba_settings_fnc_init;
+["Test_5", "EDITBOX", "setting 5", "Test Category", "null",   1, {systemChat str [5, _this]}] call cba_settings_fnc_init;
+["Test_6", "EDITBOX", "setting 6", "Test Category", "null",   2, {systemChat str [6, _this]}] call cba_settings_fnc_init;
 #endif
 
 // --- init settings namespaces
@@ -78,5 +78,7 @@ if (isServer) then {
 
     [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
+
+[[localize LSTRING(menu_button)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
 
 ADDON = true;
