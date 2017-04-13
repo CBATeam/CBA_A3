@@ -16,6 +16,11 @@
         <Polish>Konfiguracja bazy</Polish>
         <Japanese>基本設定</Japanese>
     </Key>
+    <Key ID="STR_cba_settings_menu_button">
+        <English>Addon Options</English>
+        <German>Mod-Optionen</German>
+        <Japanese>アドオン オプション</Japanese>
+    </Key>
     <Key ID="STR_cba_settings_3den_shortcut">
         <English>Addon Options...</English>
         <German>Mod-Optionen...</German>
