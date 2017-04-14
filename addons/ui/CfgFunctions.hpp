@@ -1,3 +1,4 @@
+
 class CfgFunctions {
     class CBA {
         class UI {
@@ -17,6 +18,7 @@ class CfgFunctions {
                 description = "Open a previously defined menu by passing the exact parameters used with cba_fnc_fleximenu_add. Result: TBA (WIP)";
                 file = QUOTE(PATHTOF(flexiMenu\fnc_openMenuByDef.sqf));
             };
+            PATHTO_FNC(addPauseMenuOption);
         };
     };
 };

@@ -73,16 +73,7 @@ _result = [];
                 ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
             };
 
-            private _isGlobal = GVAR(default) getVariable [_setting, []] param [7, 0];
-
-            if (_isGlobal isEqualTo 1) then {
-                _priority = _priority max 1;
-            };
-
-            if (_isGlobal isEqualTo 2) then {
-                _priority = _priority min 0;
-            };
-
+            _priority = SANITIZE_PRIORITY(_setting,_priority);
             _result pushBack [_setting, _value, _priority];
         };
     };
