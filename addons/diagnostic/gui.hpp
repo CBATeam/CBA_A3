@@ -24,3 +24,24 @@ class RscTitles {
         };
     };
 };
+
+// debug console in virtual arsenal
+class RscControlsGroupNoScrollbars;
+
+class RscStandardDisplay;
+class RscDisplayMain: RscStandardDisplay {
+    class controls {
+        class GroupSingleplayer: RscControlsGroupNoScrollbars {
+            class Controls;
+        };
+
+        class GroupTutorials: GroupSingleplayer {
+            class Controls: Controls {
+                class Bootcamp;
+                class Arsenal: Bootcamp {
+                    onButtonClick = QUOTE(playMission [ARR_2('','PATHTOF(Scenarios\Arsenal.VR)')]);
+                };
+            };
+        };
+    };
+};
