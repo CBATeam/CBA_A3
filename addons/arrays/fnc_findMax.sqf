@@ -18,7 +18,7 @@ Returns:
     nil on failure
 
 Author:
-    joko // Jonas, commy2
+    joko // Jonas, commy2, Dorbedo
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
@@ -28,8 +28,5 @@ SCRIPT(findMax);
 
 if !(_array isEqualTypeAll 0) exitWith {nil};
 
-private _arraySorted = + _array;
-_arraySorted sort false; // false - descending
-_arraySorted params ["_max"];
-
+private _max = selectMax _array;
 [_max, _array find _max]
