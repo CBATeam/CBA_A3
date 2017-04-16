@@ -1,0 +1,1 @@
+#include "\A3\Missions_F_Bootcamp\Scenarios\Arsenal.VR\init.sqf"
