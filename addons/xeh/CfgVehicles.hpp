@@ -3,9 +3,6 @@ class CfgVehicles {
     class All {
         XEH_ENABLED;
     };
-    class Logic: All {
-        XEH_DISABLED;
-    };
     class LaserTarget: All {
         XEH_DISABLED;
     };
@@ -21,8 +18,87 @@ class CfgVehicles {
     class Static: All {
         XEH_DISABLED;
     };
-    class Thing: All {
-        XEH_DISABLED;
+
+    class Module_F;
+    class BIS_Effect_FilmGrain: Module_F {
+        XEH_ENABLED;
+    };
+    class BIS_Effect_Day: BIS_Effect_FilmGrain {
+        XEH_ENABLED;
+    };
+    class BIS_Effect_MovieNight: BIS_Effect_FilmGrain {
+        XEH_ENABLED;
+    };
+    class BIS_Effect_Sepia: BIS_Effect_FilmGrain {
+        XEH_ENABLED;
+    };
+
+    class HighCommand: Module_F {
+        XEH_ENABLED;
+    };
+    class HighCommandSubordinate: HighCommand {
+        XEH_ENABLED;
+    };
+
+    class MartaManager: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Site_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Items_base_F;
+    class Skeet_Clay_F: Items_base_F {
+        XEH_ENABLED;
+    };
+
+    class Thing;
+    class test_EmptyObjectForBubbles: Thing {
+        XEH_ENABLED;
+    };
+    class test_EmptyObjectForFireBig: test_EmptyObjectForBubbles {
+        XEH_ENABLED;
+    };
+    class test_EmptyObjectForSmoke: test_EmptyObjectForBubbles {
+        XEH_ENABLED;
+    };
+
+    class Land_File1_F;
+    class Intel_File1_F: Land_File1_F {
+        XEH_ENABLED;
+    };
+
+    class Land_File2_F;
+    class Intel_File2_F: Land_File2_F {
+        XEH_ENABLED;
+    };
+
+    class Land_Photos_V3_F;
+    class Intel_Photos_F: Land_Photos_V3_F {
+        XEH_ENABLED;
+    };
+
+    class ModuleEmpty_F: Thing {
+        XEH_ENABLED;
+    };
+
+    class Logic;
+    class LogicSectorBase_F: Logic {
+        XEH_ENABLED;
+    };
+
+    class Furniture_base_F;
+    class Land_OfficeTable_01_F: Furniture_base_F {
+        XEH_ENABLED;
+    };
+
+    class SportItems_base_F;
+    class Land_Balloon_01_air_F: SportItems_base_F {
+        XEH_ENABLED;
+    };
+    class Land_Balloon_01_water_F: Land_Balloon_01_air_F {
+        XEH_ENABLED;
     };
 
     class Helicopter;
@@ -137,7 +213,7 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    // backwards comp, inert
+    // backwards comp, inertx
     class SLX_XEH_Logic: Logic {
         scope = 1;
         displayName = "XEH Initialization Logic";
