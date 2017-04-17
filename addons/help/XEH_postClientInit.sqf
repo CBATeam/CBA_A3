@@ -63,7 +63,7 @@ if (!isNil QGVAR(keys)) then {
                 private _keyName = EGVAR(keybinding,keyNames) getVariable str _key;
 
                 if (isNil "_keyName") then {
-                    _keyName = format [localize LSTRING(unkownKey), _key];
+                    _keyName = format [localize ELSTRING(keybinding,unkownKey), _key];
                 };
 
                 // Build the full key combination name.
