@@ -213,7 +213,7 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    // backwards comp, inertx
+    // backwards comp, inert
     class SLX_XEH_Logic: Logic {
         scope = 1;
         displayName = "XEH Initialization Logic";
