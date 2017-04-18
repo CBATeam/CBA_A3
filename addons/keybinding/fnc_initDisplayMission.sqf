@@ -15,11 +15,11 @@ _display displayAddEventHandler ["KeyUp", {
 }];
 
 // --- add mouse ui eventhandlers
-_display ctrlAddEventHandler ["MouseButtonDown", {
+_display displayAddEventHandler ["MouseButtonDown", {
     call ((_this select 0) getVariable QFUNC(onMouseButtonDown));
 }];
 
-_display ctrlAddEventHandler ["MouseButtonUp", {
+_display displayAddEventHandler ["MouseButtonUp", {
     call ((_this select 0) getVariable QFUNC(onMouseButtonUp));
 }];
 
