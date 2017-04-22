@@ -1,4 +1,9 @@
 
+#define POS_H_GROUP(N) (5 + N * 3.5) * (pixelH * pixelGrid * 0.50)
+#define POS_H_BACKGROUND(N) (N * 3.5 + 0.6 * 5) * (pixelH * pixelGrid * 0.50)
+#define POS_H_TITLE(N) (N * 3.5 + 1 * 5) * (pixelH * pixelGrid * 0.50)
+#define POS_H_VALUE(N) N * 3.5 * (pixelH * pixelGrid * 0.50)
+
 class Cfg3DEN {
     class Attributes {
         class Edit;
@@ -14,46 +19,92 @@ class Cfg3DEN {
             };
         };
 
-        // invisible uneditable copy of the init box
-        class GVAR(InitBox_hidden): EditCodeMulti3 {
-            h = 0;
+        class GVAR(EditCodeMulti3): EditCodeMulti3 {
+            h = POS_H_GROUP(3);
 
             class Controls: Controls {
+                class Background: Background {
+                    h = POS_H_BACKGROUND(3);
+                };
+                class Title: Title {
+                    h = POS_H_TITLE(3);
+                };
                 class Value: Value {
-                    // Changing IDC would lead to a CTD
-                    onLoad = QUOTE(uiNamespace setVariable [ARR_2('GVAR(ctrlInitBox_hidden)',_this select 0)]);
+                    onLoad = "(_this select 0) ctrlEnable false;";
+                    h = 0;
+                };
+                class GVAR(Value): Value {
+                    // Copies contents of editable init box into the hidden
+                    // variant. Automatically adds call-block wrapper to enable
+                    // the usage of local variables and return values.
+                    onLoad = "_this spawn {\
+                        private _code = ctrlText (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100);\
+                        if (_code select [0, 5] == 'call{' && {_code select [count _code - 1] == '}'}) then {\
+                            _code = _code select [5, count _code - 6];\
+                        };\
+                        (_this select 0) ctrlSetText _code;\
+                    };";
+                    onKillFocus = "\
+                        private _code = ctrlText (_this select 0);\
+                        if (_code != '') then {\
+                            _code = 'call{' + _code + '}';\
+                        };\
+                        (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
+                    ";
 
-                    // Makes this control not selectable without disabling it.
-                    onSetFocus = QUOTE(0 spawn {ctrlSetFocus (uiNamespace getVariable 'GVAR(ctrlInitBox)')});
+                    idc = -1;
+                    h = POS_H_VALUE(3);
                 };
             };
         };
 
-        // editable copy of the init that has been doubled in size
-        class GVAR(InitBox): EditCodeMulti3 {
-            attributeLoad = QUOTE(\
-                private _t = ctrlText (uiNamespace getVariable 'GVAR(ctrlInitBox_hidden)');\
-                (_this controlsGroupCtrl 100) ctrlSetText (_t select [ARR_2(5,count _t - 6)]);\
-            );
-            attributeSave = "";
-            h = "(5 + 10 * 3.5) * (pixelH * pixelGrid * 0.50)";
+        class GVAR(EditCodeMulti5): GVAR(EditCodeMulti3) {
+            h = POS_H_GROUP(5);
 
             class Controls: Controls {
                 class Background: Background {
-                    h = "(10 * 3.5 + 0.6 * 5) * (pixelH * pixelGrid * 0.50)";
+                    h = POS_H_BACKGROUND(5);
                 };
                 class Title: Title {
-                    h = "(10 * 3.5 + 1 * 5) * (pixelH * pixelGrid * 0.50)";
+                    h = POS_H_TITLE(5);
                 };
-                class Value: Value {
-                    // Changing IDC would lead to a CTD
-                    onLoad = QUOTE(uiNamespace setVariable [ARR_2('GVAR(ctrlInitBox)',_this select 0)]);
+                class Value: Value {};
+                class GVAR(Value): GVAR(Value) {
+                    h = POS_H_VALUE(5);
+                };
+            };
+        };
 
-                    // Copies contents of editable init box into the hidden
-                    // variant. Automatically adds call-block wrapper to enable
-                    // the usage of local variables and return values.
-                    onKillFocus = QUOTE((uiNamespace getVariable 'GVAR(ctrlInitBox_hidden)') ctrlSetText ('call{' + ctrlText (_this select 0) + '}'););
-                    h = "10 * 3.5 * (pixelH * pixelGrid * 0.50)";
+        class GVAR(EditCodeMulti6): GVAR(EditCodeMulti3) {
+            h = POS_H_GROUP(6);
+
+            class Controls: Controls {
+                class Background: Background {
+                    h = POS_H_BACKGROUND(6);
+                };
+                class Title: Title {
+                    h = POS_H_TITLE(6);
+                };
+                class Value: Value {};
+                class GVAR(Value): GVAR(Value) {
+                    h = POS_H_VALUE(6);
+                };
+            };
+        };
+
+        class GVAR(EditCodeMulti10): GVAR(EditCodeMulti3) {
+            h = POS_H_GROUP(10);
+
+            class Controls: Controls {
+                class Background: Background {
+                    h = POS_H_BACKGROUND(10);
+                };
+                class Title: Title {
+                    h = POS_H_TITLE(10);
+                };
+                class Value: Value {};
+                class GVAR(Value): GVAR(Value) {
+                    h = POS_H_VALUE(10);
                 };
             };
         };
@@ -64,17 +115,7 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(InitBox_hidden);
-                    };
-                    class GVAR(Init) {
-                        property = QGVAR(Init);
-                        value = 0;
-                        control = QGVAR(InitBox);
-                        displayName = "$STR_3DEN_Object_Attribute_Init_displayName";
-                        tooltip = "$STR_3DEN_Object_Attribute_Init_tooltip";
-                        expression = "";
-                        defaultValue = "";
-                        wikiType = "[[String]]";
+                        control = QGVAR(EditCodeMulti10);
                     };
                 };
             };
@@ -85,8 +126,56 @@ class Cfg3DEN {
         class AttributeCategories {
             class Init {
                 class Attributes {
+                    class Init {
+                        control = QGVAR(EditCodeMulti6);
+                    };
                     class Callsign {
                         expression = "[_this, _value] call CBA_fnc_setCallsign";
+                    };
+                };
+            };
+        };
+    };
+
+    class Trigger {
+        class AttributeCategories {
+            class Expression {
+                class Attributes {
+                    class Condition {
+                        control = QGVAR(EditCodeMulti3);
+                    };
+                    class OnActivation {
+                        control = QGVAR(EditCodeMulti5);
+                    };
+                    class OnDeactivation {
+                        control = QGVAR(EditCodeMulti3);
+                    };
+                };
+            };
+        };
+    };
+
+    class Waypoint {
+        class AttributeCategories {
+            class Expression {
+                class Attributes {
+                    class Condition {
+                        control = QGVAR(EditCodeMulti3);
+                    };
+                    class OnActivation {
+                        control = QGVAR(EditCodeMulti5);
+                    };
+                };
+            };
+        };
+    };
+
+    class Logic {
+        class AttributeCategories {
+            class Init {
+                class Attributes {
+                    class Init {
+                        control = QGVAR(EditCodeMulti6);
                     };
                 };
             };
