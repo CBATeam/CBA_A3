@@ -54,7 +54,7 @@ if !(_type in ["keydown", "keyup"]) exitWith {
 
 // create random hash if none was supplied
 if (_hashKey isEqualTo "") then {
-    _hashKey = format ["%1%2%3%4%5%6%7%8", floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100];
+    _hashKey = format ["%1%2%3%4", floor random 1E4, floor random 1E4, floor random 1E4, floor random 1E4];
 };
 
 _hashKey = toLower _hashKey;
