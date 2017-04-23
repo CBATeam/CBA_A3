@@ -28,6 +28,18 @@ switch (true) do {
     };
 };
 
+if !(_this select 2) then {
+    GVAR(shift) = false;
+};
+
+if !(_this select 3) then {
+    GVAR(control) = false;
+};
+
+if !(_this select 4) then {
+    GVAR(alt) = false;
+};
+
 private _inputModifiers = [GVAR(shift), GVAR(control), GVAR(alt)];
 
 private _blockInput = false;
