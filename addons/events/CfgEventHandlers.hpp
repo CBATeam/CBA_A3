@@ -19,9 +19,9 @@ class Extended_PostInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayMission {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(missionDisplayLoad)'));
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMission)'));
     };
     class RscDisplayCurator {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(curatorDisplayLoad)'));
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayCurator)'));
     };
 };

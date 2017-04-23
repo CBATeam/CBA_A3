@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 
 if (hasInterface) then {
-    PREP(missionDisplayLoad);
-    PREP(curatorDisplayLoad);
+    PREP(initDisplayMission);
+    PREP(initDisplayCurator);
 
     PREP(keyHandler);
     PREP(keyHandlerDown);
