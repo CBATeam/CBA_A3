@@ -49,13 +49,7 @@ private _blockInput = false;
             _params pushBack + _keybindParams;
             _params pushBack _x;
 
-            _blockInput = _params call _code;
-
-            #ifdef DEBUG_MODE_FULL
-            if (isNil "_blockInput" || {!(_blockInput isEqualType false)}) then {
-                LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
-            };
-            #endif
+            _blockInput = _params call _code || {_blockInput};
         };
     };
 } forEach (GVAR(keyDownStates) param [_inputKey, []]);
