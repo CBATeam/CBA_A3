@@ -15,17 +15,17 @@ params ["", "_inputKey"];
 
 if (_inputKey isEqualTo 0) exitWith {};
 
-private _inputSettings = _this select [2,3];
+private _inputModifiers = _this select [2,3];
 
 private _blockInput = false;
 
 {
     private _keybindParams = GVAR(keyHandlersDown) getVariable _x;
 
-    _keybindParams params ["", "_keybindSettings", "_code", "_allowHold", "_holdDelay"];
+    _keybindParams params ["", "_keybindModifiers", "_code", "_allowHold", "_holdDelay"];
 
     // Verify if the required modifier keys are present
-    if (_keybindSettings isEqualTo _inputSettings) then {
+    if (_keybindModifiers isEqualTo _inputModifiers) then {
         private _xUp = _x + "_cbadefaultuphandler";
         private _execute = true;
         private _holdTime = 0;
@@ -59,10 +59,10 @@ private _blockInput = false;
 {
     private _keybindParams = GVAR(keyHandlersUp) getVariable _x;
 
-    _keybindParams params ["", "_keybindSettings"];
+    _keybindParams params ["", "_keybindModifiers"];
 
     // Verify if the required modifier keys are present
-    if (_keybindSettings isEqualTo _inputSettings) then {
+    if (_keybindModifiers isEqualTo _inputModifiers) then {
         GVAR(keyDownActiveList) pushBackUnique _x;
     };
 } forEach (GVAR(keyUpStates) param [_inputKey, []]);
