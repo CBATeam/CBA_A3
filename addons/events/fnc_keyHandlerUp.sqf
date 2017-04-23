@@ -13,7 +13,7 @@ SCRIPT(keyHandlerUp);
 
 params ["", "_inputKey"];
 
-if (_inputKey == 0) exitWith {};
+if (_inputKey isEqualTo 0) exitWith {};
 
 private _removeHandlers = [];
 
@@ -25,7 +25,7 @@ private _removeHandlers = [];
     // Verify if the required modifier keys are present
     if (_inputKey in [_keybind, DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) then {
         if (
-            _inputKey == _keybind
+            _inputKey isEqualTo _keybind
             || {(_keybindSettings select 0 && {_inputKey in [DIK_LSHIFT, DIK_RSHIFT]})
             || {(_keybindSettings select 1 && {_inputKey in [DIK_LCONTROL, DIK_RCONTROL]})
             || {(_keybindSettings select 2 && {_inputKey in [DIK_LMENU, DIK_RMENU]})}}}

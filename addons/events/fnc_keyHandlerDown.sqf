@@ -13,7 +13,7 @@ SCRIPT(keyHandlerDown);
 
 params ["", "_inputKey"];
 
-if (_inputKey == 0) exitWith {};
+if (_inputKey isEqualTo 0) exitWith {};
 
 private _inputSettings = _this select [2,3];
 
