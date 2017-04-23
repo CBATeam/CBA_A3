@@ -67,5 +67,4 @@ private _blockInput = false;
     };
 } forEach (GVAR(keyUpStates) param [_inputKey, []]);
 
-//Only return true if _blockInput is defined and is type bool (handlers could return anything):
-(!isNil "_blockInput") && {_blockInput isEqualTo true}
+_blockInput
