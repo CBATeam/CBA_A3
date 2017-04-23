@@ -53,9 +53,6 @@ PREP(keyHandler);
 PREP(keyHandlerDown);
 PREP(keyHandlerUp);
 
-["keyDown", FUNC(keyHandlerDown)] call CBA_fnc_addDisplayHandler;
-["keyUp", FUNC(keyHandlerUp)] call CBA_fnc_addDisplayHandler;
-
 private _keyHandlers = [];
 _keyHandlers resize 0xFF;
 
