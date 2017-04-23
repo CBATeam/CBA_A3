@@ -57,7 +57,7 @@ PREP(keyHandlerUp);
 ["keyUp", FUNC(keyHandlerUp)] call CBA_fnc_addDisplayHandler;
 
 private _keyHandlers = [];
-_keyHandlers resize 250;
+_keyHandlers resize 0xFF;
 
 GVAR(keyDownStates) = _keyHandlers apply {[]};
 GVAR(keyUpStates) = + GVAR(keyDownStates);
