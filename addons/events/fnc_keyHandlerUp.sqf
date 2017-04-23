@@ -1,7 +1,9 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandlerUp
+
 Description:
     Executes the key's handler
+
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */

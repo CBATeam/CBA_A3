@@ -1,7 +1,9 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandlerDown
+
 Description:
     Executes the key's handler
+
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
@@ -50,13 +52,11 @@ private _blockInput = false;
             _blockInput = _params call _code;
 
             #ifdef DEBUG_MODE_FULL
-                if ((isNil "_blockInput") || {!(_blockInput isEqualType false)}) then {
-                    LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
-                };
+            if (isNil "_blockInput" || {!(_blockInput isEqualType false)}) then {
+                LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
+            };
             #endif
         };
-
-        if (_blockInput isEqualTo true) exitWith {};
     };
 } forEach (GVAR(keyDownStates) param [_inputKey, []]);
 
