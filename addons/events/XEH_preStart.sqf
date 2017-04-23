@@ -7,4 +7,7 @@ if (hasInterface) then {
     PREP(keyHandler);
     PREP(keyHandlerDown);
     PREP(keyHandlerUp);
+    PREP(mouseHandlerDown);
+    PREP(mouseHandlerUp);
+    PREP(mouseWheelHandler);
 };

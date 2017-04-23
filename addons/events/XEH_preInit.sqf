@@ -53,6 +53,9 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
 PREP(keyHandler);
 PREP(keyHandlerDown);
 PREP(keyHandlerUp);
+PREP(mouseHandlerDown);
+PREP(mouseHandlerUp);
+PREP(mouseWheelHandler);
 
 private _keyHandlers = [];
 _keyHandlers resize 0xFF;
