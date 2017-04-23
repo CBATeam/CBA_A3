@@ -49,7 +49,7 @@ private _blockInput = false;
             _params pushBack + _keybindParams;
             _params pushBack _x;
 
-            _blockInput = _params call _code || {_blockInput};
+            _blockInput = [_params call _code] param [0, false] || {_blockInput};
         };
     };
 } forEach (GVAR(keyDownStates) param [_inputKey, []]);
