@@ -79,3 +79,7 @@ GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 
     false
 }] call CBA_fnc_compileFinal;
+
+GVAR(shift) = false;
+GVAR(control) = false;
+GVAR(alt) = false;

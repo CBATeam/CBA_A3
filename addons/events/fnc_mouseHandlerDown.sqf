@@ -13,6 +13,4 @@ SCRIPT(mouseHandlerDown);
 
 params ["_display", "_inputButton"];
 
-private _inputModifiers = _this select [4,3];
-
-([_display, MOUSE_OFFSET + _inputButton] + _inputModifiers) call FUNC(keyHandlerDown);
+[_display, MOUSE_OFFSET + _inputButton, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerDown);

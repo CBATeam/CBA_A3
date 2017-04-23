@@ -15,7 +15,20 @@ params ["", "_inputKey"];
 
 if (_inputKey isEqualTo 0) exitWith {};
 
-private _inputModifiers = _this select [2,3];
+// handle modifiers
+switch (true) do {
+    case (_inputKey in [DIK_LSHIFT, DIK_RSHIFT]): {
+        GVAR(shift) = true;
+    };
+    case (_inputKey in [DIK_LCONTROL, DIK_RCONTROL]): {
+        GVAR(control) = true;
+    };
+    case (_inputKey in [DIK_LMENU, DIK_RMENU]): {
+        GVAR(alt) = true;
+    };
+};
+
+private _inputModifiers = [GVAR(shift), GVAR(control), GVAR(alt)];
 
 private _blockInput = false;
 
