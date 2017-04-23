@@ -49,6 +49,7 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
     GVAR(handlerHash) = [[], []] call CBA_fnc_hashCreate;
 };
 
+// Key Handlers
 PREP(keyHandler);
 PREP(keyHandlerDown);
 PREP(keyHandlerUp);
