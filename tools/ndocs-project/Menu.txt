@@ -59,6 +59,11 @@ Group: Project  {
 
 Group: Functions  {
 
+   Group: Accessory  {
+
+      File: CBA_accessory_fnc_switchAttachment  (accessory/fnc_switchAttachment.sqf)
+      }  # Group: Accessory
+
    Group: Ai  {
 
       File: CBA_fnc_addWaypoint  (ai/fnc_addWaypoint.sqf)
@@ -83,6 +88,7 @@ Group: Functions  {
       File: CBA_fnc_getArrayDiff  (arrays/fnc_getArrayDiff.sqf)
       File: CBA_fnc_getArrayElements  (arrays/fnc_getArrayElements.sqf)
       File: CBA_fnc_inject  (arrays/fnc_inject.sqf)
+      File: CBA_fnc_insert  (arrays/fnc_insert.sqf)
       File: CBA_fnc_join  (arrays/fnc_join.sqf)
       File: CBA_fnc_reject  (arrays/fnc_reject.sqf)
       File: CBA_fnc_select  (arrays/fnc_select.sqf)
@@ -103,6 +109,7 @@ Group: Functions  {
       File: CBA_fnc_addPlayerAction  (common/fnc_addPlayerAction.sqf)
       File: CBA_fnc_addWeapon  (common/fnc_addWeapon.sqf)
       File: CBA_fnc_addWeaponCargo  (common/fnc_addWeaponCargo.sqf)
+      File: CBA_fnc_allNamespaces  (common/fnc_allNamespaces.sqf)
       File: CBA_fnc_binocularMagazine  (common/fnc_binocularMagazine.sqf)
       File: CBA_fnc_canUseWeapon  (common/fnc_canUseWeapon.sqf)
       File: CBA_fnc_compileFinal  (common/fnc_compileFinal.sqf)
@@ -137,6 +144,7 @@ Group: Functions  {
       File: CBA_fnc_getMuzzles  (common/fnc_getMuzzles.sqf)
       File: CBA_fnc_getNearest  (common/fnc_getNearest.sqf)
       File: CBA_fnc_getNearestBuilding  (common/fnc_getNearestBuilding.sqf)
+      File: CBA_fnc_getNonPresetClass  (common/fnc_getNonPresetClass.sqf)
       File: CBA_fnc_getObjectConfig  (common/fnc_getObjectConfig.sqf)
       File: CBA_fnc_getPos  (common/fnc_getPos.sqf)
       File: CBA_fnc_getSharedGroup  (common/fnc_getSharedGroup.sqf)
@@ -191,8 +199,10 @@ Group: Functions  {
 
    Group: Diagnostic  {
 
+      File: CBA_fnc_addUnitTrackProjectiles  (diagnostic/fnc_addUnitTrackProjectiles.sqf)
       File: CBA_fnc_debug  (diagnostic/fnc_debug.sqf)
       File: CBA_fnc_test  (diagnostic/fnc_test.sqf)
+      File: CBA_removeUnitTrackProjectiles  (diagnostic/fnc_removeUnitTrackProjectiles.sqf)
       }  # Group: Diagnostic
 
    Group: Events  {
@@ -211,6 +221,7 @@ Group: Functions  {
       File: CBA_fnc_localEvent  (events/fnc_localEvent.sqf)
       File: CBA_fnc_ownerEvent  (events/fnc_ownerEvent.sqf)
       File: CBA_fnc_readKeyFromConfig  (events/fnc_readKeyFromConfig.sqf)
+      File: CBA_fnc_registerChatCommand  (events/fnc_registerChatCommand.sqf)
       File: CBA_fnc_remoteEvent  (events/fnc_remoteEvent.sqf)
       File: CBA_fnc_removeDisplayHandler  (events/fnc_removeDisplayHandler.sqf)
       File: CBA_fnc_removeEventHandler  (events/fnc_removeEventHandler.sqf)
@@ -223,16 +234,19 @@ Group: Functions  {
 
    Group: Hashes  {
 
+      File: CBA_fnc_deserializeNamespace  (hashes/fnc_deserializeNamespace.sqf)
       File: CBA_fnc_hashCreate  (hashes/fnc_hashCreate.sqf)
       File: CBA_fnc_hashEachPair  (hashes/fnc_hashEachPair.sqf)
       File: CBA_fnc_hashFilter  (hashes/fnc_hashFilter.sqf)
       File: CBA_fnc_hashGet  (hashes/fnc_hashGet.sqf)
       File: CBA_fnc_hashHasKey  (hashes/fnc_hashHasKey.sqf)
+      File: CBA_fnc_hashKeys  (hashes/fnc_hashKeys.sqf)
       File: CBA_fnc_hashRem  (hashes/fnc_hashRem.sqf)
       File: CBA_fnc_hashSet  (hashes/fnc_hashSet.sqf)
       File: CBA_fnc_hashSize  (hashes/fnc_hashSize.sqf)
       File: CBA_fnc_isHash  (hashes/fnc_isHash.sqf)
       File: CBA_fnc_parseYAML  (hashes/fnc_parseYAML.sqf)
+      File: CBA_fnc_serializeNamespace  (hashes/fnc_serializeNamespace.sqf)
       }  # Group: Hashes
 
    Group: Help  {
@@ -273,6 +287,11 @@ Group: Functions  {
       File: CBA_fnc_modulePatrol  (modules/fnc_modulePatrol.sqf)
       }  # Group: Modules
 
+   Group: Settings  {
+
+      File: CBA_settings_fnc_init  (settings/fnc_init.sqf)
+      }  # Group: Settings
+
    Group: Strings  {
 
       File: CBA_fnc_capitalize  (strings/fnc_capitalize.sqf)
@@ -311,9 +330,16 @@ Group: Functions  {
       File: CBA_fnc_vectSubtract  (vectors/fnc_vectSubtract.sqf)
       }  # Group: Vectors
 
+   Group: Ui  {
+
+      File: CBA_fnc_addPauseMenuOption  (ui/fnc_addPauseMenuOption.sqf)
+      }  # Group: Ui
+
    Group: Xeh  {
 
       File: CBA_fnc_addClassEventHandler  (xeh/fnc_addClassEventHandler.sqf)
+      File: CBA_fnc_compileEventHandlers  (xeh/fnc_compileEventHandlers.sqf)
+      File: CBA_fnc_compileFunction  (xeh/fnc_compileFunction.sqf)
       File: CBA_fnc_isRecompileEnabled  (xeh/fnc_isRecompileEnabled.sqf)
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
       }  # Group: Xeh

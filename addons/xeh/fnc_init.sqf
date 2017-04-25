@@ -33,9 +33,11 @@ if !(ISINITIALIZED(_this)) then {
 
     // run InitPost or put on stack
     if (SLX_XEH_MACHINE select 8) then {
-        {
-            [_x, [_this]] call CBA_fnc_execNextFrame;
-        } forEach (_this getVariable QGVAR(initPost));
+        [{
+            {
+                [_this] call _x;
+            } forEach (_this getVariable QGVAR(initPost));
+        }, _this] call CBA_fnc_execNextFrame;
     } else {
         GVAR(initPostStack) pushBack _this;
     };
