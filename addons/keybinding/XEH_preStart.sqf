@@ -172,6 +172,22 @@ _supportedKeys = _supportedKeys apply {
 
 GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
 
+// manually add mouse key localizations to our inofficial DIK codes
+{
+    [GVAR(keyNamesHash), str (_x select 0), parseSimpleArray format ["[%1]", keyName (_x select 1)] select 0] call CBA_fnc_hashSet;
+} forEach [
+    [0xF0, 0x10000],
+    [0xF1, 0x10081],
+    [0xF2, 0x10002],
+    [0xF3, 0x10003],
+    [0xF4, 0x10004],
+    [0xF5, 0x10005],
+    [0xF6, 0x10006],
+    [0xF7, 0x10007],
+    [0xF8, 0x100004],
+    [0xF9, 0x100005]
+];
+
 GVAR(forbiddenKeys) = [
     DIK_XBOX_LEFT_TRIGGER,
     DIK_XBOX_RIGHT_TRIGGER,

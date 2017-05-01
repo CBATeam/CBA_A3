@@ -1,7 +1,9 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandlerDown
+
 Description:
     Executes the key's handler
+
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
@@ -11,19 +13,44 @@ SCRIPT(keyHandlerDown);
 
 params ["", "_inputKey"];
 
-if (_inputKey == 0) exitWith {};
+if (_inputKey isEqualTo 0) exitWith {};
 
-private _inputSettings = _this select [2,3];
+// handle modifiers
+switch (true) do {
+    case (_inputKey in [DIK_LSHIFT, DIK_RSHIFT]): {
+        GVAR(shift) = true;
+    };
+    case (_inputKey in [DIK_LCONTROL, DIK_RCONTROL]): {
+        GVAR(control) = true;
+    };
+    case (_inputKey in [DIK_LMENU, DIK_RMENU]): {
+        GVAR(alt) = true;
+    };
+};
+
+if !(_this select 2) then {
+    GVAR(shift) = false;
+};
+
+if !(_this select 3) then {
+    GVAR(control) = false;
+};
+
+if !(_this select 4) then {
+    GVAR(alt) = false;
+};
+
+private _inputModifiers = [GVAR(shift), GVAR(control), GVAR(alt)];
 
 private _blockInput = false;
 
 {
     private _keybindParams = GVAR(keyHandlersDown) getVariable _x;
 
-    _keybindParams params ["", "_keybindSettings", "_code", "_allowHold", "_holdDelay"];
+    _keybindParams params ["", "_keybindModifiers", "_code", "_allowHold", "_holdDelay"];
 
     // Verify if the required modifier keys are present
-    if (_keybindSettings isEqualTo _inputSettings) then {
+    if (_keybindModifiers isEqualTo _inputModifiers) then {
         private _xUp = _x + "_cbadefaultuphandler";
         private _execute = true;
         private _holdTime = 0;
@@ -47,16 +74,8 @@ private _blockInput = false;
             _params pushBack + _keybindParams;
             _params pushBack _x;
 
-            _blockInput = _params call _code;
-
-            #ifdef DEBUG_MODE_FULL
-                if ((isNil "_blockInput") || {!(_blockInput isEqualType false)}) then {
-                    LOG(PFORMAT_2("Keybind Handler returned nil or non-bool", _x, _blockInput));
-                };
-            #endif
+            _blockInput = [_params call _code] param [0, false] || {_blockInput};
         };
-
-        if (_blockInput isEqualTo true) exitWith {};
     };
 } forEach (GVAR(keyDownStates) param [_inputKey, []]);
 
@@ -65,13 +84,12 @@ private _blockInput = false;
 {
     private _keybindParams = GVAR(keyHandlersUp) getVariable _x;
 
-    _keybindParams params ["", "_keybindSettings"];
+    _keybindParams params ["", "_keybindModifiers"];
 
     // Verify if the required modifier keys are present
-    if (_keybindSettings isEqualTo _inputSettings) then {
+    if (_keybindModifiers isEqualTo _inputModifiers) then {
         GVAR(keyDownActiveList) pushBackUnique _x;
     };
 } forEach (GVAR(keyUpStates) param [_inputKey, []]);
 
-//Only return true if _blockInput is defined and is type bool (handlers could return anything):
-(!isNil "_blockInput") && {_blockInput isEqualTo true}
+_blockInput

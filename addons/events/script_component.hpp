@@ -40,3 +40,7 @@
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 
 #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+
+// key handler system
+#define MOUSE_OFFSET 0xF0
+#define MOUSE_WHEEL_OFFSET 0xF8 // MOUSE_OFFSET + 8 possible mouse keys
