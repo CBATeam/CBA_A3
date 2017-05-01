@@ -10,6 +10,11 @@ class Extended_PreInit_EventHandlers {
         init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
 };
+class Extended_PostInit_EventHandlers {
+    class ADDON {
+        init = QUOTE(call COMPILE_FILE(XEH_postInit));
+    };
+};
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayDebugPublic {
@@ -19,8 +24,10 @@ class Extended_DisplayLoad_EventHandlers {
     };
     class RscDisplayInterrupt {
         GVAR(extendedDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
+        GVAR(serverDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initServerDebugConsole)'));
     };
     class RscDisplayMPInterrupt {
         GVAR(extendedDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
+        GVAR(serverDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initServerDebugConsole)'));
     };
 };

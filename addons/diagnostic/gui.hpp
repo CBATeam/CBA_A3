@@ -45,3 +45,29 @@ class RscDisplayMain: RscStandardDisplay {
         };
     };
 };
+
+class RscEdit;
+class GVAR(watchInput): RscEdit {
+    autocomplete = "scripting";
+    shadow = 0;
+    font = "EtelkaMonospacePro";
+    idc = 12285;
+    x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+    y = "11 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+    w = "21 * (((safezoneW / safezoneH) min 1.2) / 40)";
+    h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+    sizeEx = "0.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+};
+class GVAR(watchOutput): RscEdit {
+    lineSpacing = 1;
+    style = 512;
+    shadow = 0;
+    font = "EtelkaMonospacePro";
+    idc = 12286;
+    x = "0.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+    y = "12 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+    w = "21 * (((safezoneW / safezoneH) min 1.2) / 40)";
+    h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+    colorBackground[] = {0, 0, 0, 0.75};
+    sizeEx = "0.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+};
