@@ -15,5 +15,5 @@ params ["_display", "_inputDirection"];
 
 private _inputDirection = [0, 1] select (_inputDirection < 0);
 
-[_display, MOUSE_WHEEL_OFFSET + _inputDirection, false, false, false] call FUNC(keyHandlerDown);
-[_display, MOUSE_WHEEL_OFFSET + _inputDirection, false, false, false] call FUNC(keyHandlerUp);
+[_display, MOUSE_WHEEL_OFFSET + _inputDirection, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerDown);
+[_display, MOUSE_WHEEL_OFFSET + _inputDirection, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerUp);
