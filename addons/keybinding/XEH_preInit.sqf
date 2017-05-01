@@ -33,42 +33,16 @@ GVAR(firstKey) = [];
 GVAR(secondKey) = [];
 GVAR(thirdKey) = [];
 GVAR(waitingForInput) = false;
-GVAR(modPrettyNames) = [[],[]];
 GVAR(defaultKeybinds) = [[],[]];
-GVAR(activeMods) = [];
-GVAR(activeBinds) = [];
 
-/////////////////////////////////////////////////////////////////////////////////
+if (isNil QGVAR(activeMods)) then {
+    GVAR(activeMods) = [] call CBA_fnc_createNamespace;
+    GVAR(activeBinds) = [] call CBA_fnc_createNamespace;
+};
 
-// All keybinds are stored as an array in this format:
-// keybind = [DIKcode, shift?, ctrl?, alt?]
-//
-// example: [15, true, false, false]
-
-// The keybind registry is stored in profileNamespace as "cba_keybinding_registry."
-// Permament array that tracks all key configs registered by fnc_registerKeybindHandler.
-// Format: Associative array. Access with bis_fnc_getFromPairs.
-// [
-//   ["modName1", [
-//                  ["actionName1", [currentKeybind, defaultKeybind]],
-//                  ["actionName2", [currentKeybind, defaultKeybind]],
-//                  ["actionName3", [currentKeybind, defaultKeybind]]
-//                ],
-//   ],
-//   ["modName2", [
-//                  ["actionName1", [currentKeybind, defaultKeybind]]
-//                ],
-//   ]
-// ]
-//
-// This clears the keybind registry.
-// profileNamespace setVariable ["cba_keybinding_registry", []];
-
-// Temporary array that tracks loaded key handlers for specified keybinds.
-// Format: Array of arrays
-//      [["modName", "actionName", [keybind], {code}, ehID], ...]
-GVAR(handlers) = [[],[]];
-GVAR(handlersBackup) = [];
+if (isNil QGVAR(modPrettyNames)) then {
+    GVAR(modPrettyNames) = [] call CBA_fnc_createNamespace;
+};
 
 // Counter for indexing added key handlers.
 GVAR(ehCounter) = 512;
