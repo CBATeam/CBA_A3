@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 
-PREP(configureDisplayLoad);
+if (!hasInterface) exitWith {};
+
+#include "XEH_PREP.sqf"
 
 private _supportedKeys = [
     DIK_ESCAPE,
@@ -176,16 +178,18 @@ GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
 {
     [GVAR(keyNamesHash), str (_x select 0), parseSimpleArray format ["[%1]", keyName (_x select 1)] select 0] call CBA_fnc_hashSet;
 } forEach [
-    [0xF0, 0x10000],
-    [0xF1, 0x10081],
-    [0xF2, 0x10002],
-    [0xF3, 0x10003],
-    [0xF4, 0x10004],
-    [0xF5, 0x10005],
-    [0xF6, 0x10006],
-    [0xF7, 0x10007],
-    [0xF8, 0x100004],
-    [0xF9, 0x100005]
+    [0xF0, 0x10000], // LMB
+    [0xF1, 0x10081], // RMB
+    [0xF2, 0x10002], // MMB
+    [0xF3, 0x10003], // Mouse #4
+    [0xF4, 0x10004], // Mouse #5
+    [0xF5, 0x10005], // Mouse #6
+    [0xF6, 0x10006], // Mouse #7
+    [0xF7, 0x10007], // Mouse #8
+    [0xF8, 0x100004], // Mouse wheel up
+    [0xF9, 0x100005], // Mouse wheel down
+    [84, DIK_SYSRQ],
+    [198, DIK_PAUSE]
 ];
 
 GVAR(forbiddenKeys) = [

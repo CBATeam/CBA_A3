@@ -32,16 +32,16 @@ if (!isNil QGVAR(keys)) then {
 0 spawn {
     private _text = GVAR(keys);
 
-    private _activeMods = allVariables EGVAR(keybinding,activeMods);
+    private _activeMods = allVariables EGVAR(keybinding,addons);
     _activeMods sort true;
 
     {
-        (EGVAR(keybinding,activeMods) getVariable _x) params ["_addonName", "_addonActions"];
+        (EGVAR(keybinding,addons) getVariable _x) params ["_addonName", "_addonActions"];
 
         _text = _text + format ["%1:<br/>", _addonName];
 
         {
-            (EGVAR(keybinding,activeBinds) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
+            (EGVAR(keybinding,actions) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
 
             private _keybind = _registryKeybinds select 0;
 
