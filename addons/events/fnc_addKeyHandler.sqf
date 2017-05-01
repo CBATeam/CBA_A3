@@ -69,6 +69,12 @@ if (_type isEqualTo "keydown") then {
 };
 
 private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+
+// fix using addKeyHander twice on different keys makes old handler unremovable
+if (!isNil {_hash getVariable _hashKey}) then {
+    [_hashKey, _type] call CBA_fnc_removeKeyHandler;
+};
+
 _hash setVariable [_hashKey, [_key, _settings, _code, _allowHold, _holdDelay]];
 
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
