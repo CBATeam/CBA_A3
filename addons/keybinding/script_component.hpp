@@ -43,3 +43,7 @@
 #define DIK_XBOX_LEFT_THUMB_Y_DOWN 327701
 #define DIK_XBOX_RIGHT_THUMB_X_LEFT 327702
 #define DIK_XBOX_RIGHT_THUMB_Y_DOWN 327703
+
+#define NAMESPACE_NULL objNull
+#define HASH_NULL ([] call CBA_fnc_hashCreate)
+#define KEYBIND_NULL [0, [false, false, false]]
