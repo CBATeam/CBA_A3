@@ -15,6 +15,19 @@ params ["", "_inputKey"];
 
 if (_inputKey isEqualTo 0) exitWith {};
 
+// handle modifiers
+switch (true) do {
+    case (_inputKey in [DIK_LSHIFT, DIK_RSHIFT]): {
+        GVAR(shift) = false;
+    };
+    case (_inputKey in [DIK_LCONTROL, DIK_RCONTROL]): {
+        GVAR(control) = false;
+    };
+    case (_inputKey in [DIK_LMENU, DIK_RMENU]): {
+        GVAR(alt) = false;
+    };
+};
+
 private _removeHandlers = [];
 
 {
