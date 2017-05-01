@@ -2,10 +2,11 @@
 Function: CBA_diagnostic_fnc_initServerDebugConsole
 
 Description:
-Adds addition watch statements that are run on the server and have their values returned to the client.
+    Adds addition watch statements that are run on the server and have their values returned to the client.
+    Requires `enableServerDebug = 1; `in description.ext
 
 Author:
-PabstMirror (based heavily on BIS's RscDebugConsole.sqf)
+    PabstMirror (based heavily on BIS's RscDebugConsole.sqf)
 ---------------------------------------------------------------------------- */
 
 //#define DEBUG_MODE_FULL
@@ -19,14 +20,14 @@ if (!((getMissionConfigValue ["enableServerDebug", 0]) isEqualTo 1)) exitWith {}
 params ["_display"];
 TRACE_1("adding server watch debug",_display);
 
-// adjust position of the controls group (make it wider)
+// adjust position of the main controls group to make it wider (may be slightly cut off with "Very-Large" text size)
 private _debugConsole = _display displayCtrl IDC_RSCDEBUGCONSOLE_RSCDEBUGCONSOLE;
 private _debugConsolePos = ctrlPosition _debugConsole;
 _debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
 _debugConsole ctrlSetPosition _debugConsolePos;
 _debugConsole ctrlCommit 0;
 
-// Add background and text:
+// Add background and "Server Watch" text:
 private _serverWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
 _serverWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
 private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
@@ -49,6 +50,7 @@ private _basePosition = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_W
 _basePosition set [0, (_basePosition select 0) + 22.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
 _basePosition set [1, (_basePosition select 1) - 2 * (COUNT_WATCH_BOXES - 4) * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
 for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
+    // Create the controls for each row and fill input with last saved value from profile
     private _profileVarName = format ["CBA_serverWatch_%1", _varIndex];
     private _savedStatement = profileNamespace getVariable [_profileVarName, ""];
     if (!(_savedStatement isEqualType "")) then {_savedStatement = ""};
@@ -75,6 +77,7 @@ for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
 _display setVariable [QGVAR(watchVars), _watchVars];
 
 
+// Runs constantly, sends statement to server and parses the result back in the output window
 private _fnc_updateWatchInfo = {
     params ["_display"];
 
@@ -97,9 +100,9 @@ private _fnc_updateWatchInfo = {
         };
 
         private _bgColor = switch (true) do {
-        case (_duration < 0.0015): {[linearConversion [0.0001, 0.0015, _duration, 0, 0.4, true], linearConversion [0.0005, 0.0015, _duration, 0, 0.4, true], 0, 0.4]};
-        case (_duration < 0.003): {[linearConversion [0.0015, 0.003, _duration, 0.4, 0.8, true], linearConversion [0.0015, 0.003, _duration, 0.4, 0.5, true], 0, 0.5]};
-        case (_duration < 0.1): {[linearConversion [0.003, 0.05, _duration, 0.8, 1, true], linearConversion [0.003, 0.05, _duration, 0.5, 0.1, true], 0, 0.8]};
+            case (_duration < 0.0015): {[linearConversion [0.0001, 0.0015, _duration, 0, 0.4, true], linearConversion [0.0005, 0.0015, _duration, 0, 0.4, true], 0, 0.4]};
+            case (_duration < 0.003): {[linearConversion [0.0015, 0.003, _duration, 0.4, 0.8, true], linearConversion [0.0015, 0.003, _duration, 0.4, 0.5, true], 0, 0.5]};
+            case (_duration < 0.1): {[linearConversion [0.003, 0.05, _duration, 0.8, 1, true], linearConversion [0.003, 0.05, _duration, 0.5, 0.1, true], 0, 0.8]};
             default {[1,0,0,1]};
         };
         _outputEditBox ctrlSetText _responseReturn;
