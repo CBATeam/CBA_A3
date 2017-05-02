@@ -23,7 +23,7 @@ TRACE_1("adding server watch debug",_display);
 // adjust position of the main controls group to make it wider (may be slightly cut off with "Very-Large" text size)
 private _debugConsole = _display displayCtrl IDC_RSCDEBUGCONSOLE_RSCDEBUGCONSOLE;
 private _debugConsolePos = ctrlPosition _debugConsole;
-_debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
+_debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * GUI_GRID_W];
 _debugConsole ctrlSetPosition _debugConsolePos;
 _debugConsole ctrlCommit 0;
 
@@ -31,24 +31,24 @@ _debugConsole ctrlCommit 0;
 private _serverWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
 _serverWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
 private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
-_ctrlPos set [0, (_ctrlPos select 0) + 22.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
-_ctrlPos set [1, (_ctrlPos select 1) - 2 * (COUNT_WATCH_BOXES - 4) * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
-_ctrlPos set [3, (_ctrlPos select 3) + 2 * (COUNT_WATCH_BOXES - 4) * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
+_ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
+_ctrlPos set [1, (_ctrlPos select 1) - 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
+_ctrlPos set [3, (_ctrlPos select 3) + 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
 _serverWatchBackground ctrlSetPosition _ctrlPos;
 _serverWatchBackground ctrlCommit 0;
 private _serverWatchText = _display ctrlCreate ["RscText", -1, _debugConsole];
 _serverWatchText ctrlSetText format ["Server %1", localize "STR_A3_RscDebugConsole_WatchText"];
-_serverWatchText ctrlSetFontHeight (0.8 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25));
-_ctrlPos set [0, (_ctrlPos select 0) + 0.2 * (((safezoneW / safezoneH) min 1.2) / 40)];
-_ctrlPos set [3, 0.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
+_serverWatchText ctrlSetFontHeight (0.8 * GUI_GRID_H);
+_ctrlPos set [0, (_ctrlPos select 0) + 0.2 * GUI_GRID_W];
+_ctrlPos set [3, 0.5 * GUI_GRID_W];
 _serverWatchText ctrlSetPosition _ctrlPos;
 _serverWatchText ctrlCommit 0;
 
 
 private _watchVars = [];
 private _basePosition = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHINPUT1);
-_basePosition set [0, (_basePosition select 0) + 22.5 * (((safezoneW / safezoneH) min 1.2) / 40)];
-_basePosition set [1, (_basePosition select 1) - 2 * (COUNT_WATCH_BOXES - 4) * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
+_basePosition set [0, (_basePosition select 0) + 22.5 * GUI_GRID_W];
+_basePosition set [1, (_basePosition select 1) - 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
 for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
     // Create the controls for each row and fill input with last saved value from profile
     private _profileVarName = format ["CBA_serverWatch_%1", _varIndex];
@@ -64,13 +64,13 @@ for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
 
     _inputEditbox ctrlSetPosition _basePosition;
     _inputEditbox ctrlCommit 0;
-    _basePosition set [1, (_basePosition select 1) + 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
+    _basePosition set [1, (_basePosition select 1) + 1 * GUI_GRID_H];
 
     _outputBackground ctrlSetPosition _basePosition;
     _outputBackground ctrlCommit 0;
     _outputEditBox ctrlSetPosition _basePosition;
     _outputEditBox ctrlCommit 0;
-    _basePosition set [1, (_basePosition select 1) + 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)];
+    _basePosition set [1, (_basePosition select 1) + 1 * GUI_GRID_H];
 
     _watchVars pushBack [_inputEditbox, _outputBackground, _outputEditBox, -1];
 };
