@@ -3,6 +3,7 @@ SCRIPT(XEH_postInit);
 
 if ((getMissionConfigValue ["enableServerDebug", 0]) isEqualTo 1) then {
     INFO("enableServerDebug is enabled");
+    if (!isServer) exitWith {};
     [QGVAR(serverWatchVariable), {
         params ["_clientID", "_varIndex", "_statementText"];
         TRACE_3("serverWatchVariable",_clientID,_varIndex,_statementText);
