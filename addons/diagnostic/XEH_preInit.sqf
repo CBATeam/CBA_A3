@@ -17,3 +17,25 @@ GVAR(projectileStartedDrawing) = false;
 GVAR(projectileTrackedUnits) = [];
 
 ADDON = true;
+
+if !(getMissionConfigValue ["enableServerDebug", 0] isEqualTo 1) exitWith {};
+
+if (isNil QGVAR(clientIDs)) then {
+    GVAR(clientIDs) = [[2, profileName]];
+};
+
+if (isServer) then {
+    addMissionEventHandler ["PlayerConnected", {
+        params ["", "", "_name", "", "_owner"];
+
+        GVAR(clientIDs) pushBackUnique [_owner, _name];
+        publicVariable QGVAR(clientIDs);
+    }];
+
+    addMissionEventHandler ["PlayerDisconnected", {
+        params ["", "", "_name", "", "_owner"];
+
+        GVAR(clientIDs) deleteAt (GVAR(clientIDs) find [_owner, _name]);
+        publicVariable QGVAR(clientIDs);
+    }];
+};

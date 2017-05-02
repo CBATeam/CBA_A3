@@ -27,10 +27,27 @@ _debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * GUI_GRID_W];
 _debugConsole ctrlSetPosition _debugConsolePos;
 _debugConsole ctrlCommit 0;
 
+// target selector
+private _clientList = _display ctrlCreate ["RscCombo", -1, _debugConsole];
+private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTESERVER);
+_ctrlPos set [0, (ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONCODEPERFORMANCE) select 0) + 22.5 * GUI_GRID_W];
+_ctrlPos set [2, 2 * (_ctrlPos select 2)];
+_clientList ctrlSetPosition _ctrlPos;
+_clientList ctrlCommit 0;
+
+// add available target
+{
+    _x params ["_clientID", "_profileName"];
+
+    _clientList lbSetValue [_clientList lbAdd format ["%1 - %2", _clientID, _profileName], _clientID];
+} forEach GVAR(clientIDs);
+
+_clientList lbSetCurSel 0;
+
 // Add background and "Server Watch" text:
 private _serverWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
 _serverWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
-private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
+_ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
 _ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
 _ctrlPos set [1, (_ctrlPos select 1) - 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
 _ctrlPos set [3, (_ctrlPos select 3) + 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
