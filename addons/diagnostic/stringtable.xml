@@ -18,5 +18,12 @@
             <English>Next Statement</English>
             <German>Nächster Ausdruck</German>
         </Key>
+
+        <Key ID="STR_CBA_Diagnostic_EnableServerDebug">
+            <English>Enable Server Debug</English>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_EnableServerDebug_tooltip">
+            <English>Determines server watch field availability. Requires Debug Console.</English>
+        </Key>
     </Package>
 </Project>
