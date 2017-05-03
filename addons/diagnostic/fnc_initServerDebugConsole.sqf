@@ -44,6 +44,15 @@ _clientList ctrlCommit 0;
 
 _clientList lbSetCurSel 0;
 
+GVAR(selectedClientID) = _clientList lbValue lbCurSel _clientList;
+
+_clientList ctrlAddEventHandler ["LBSelChanged", {
+    params ["_clientList", "_index"];
+
+    GVAR(selectedClientID) = _clientList lbValue _index;
+}];
+
+
 // Add background and "Server Watch" text:
 private _serverWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
 _serverWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
@@ -112,7 +121,7 @@ private _fnc_updateWatchInfo = {
             if ((_editText isEqualTo _responseStatement) && {_duration > 0.1}) exitWith {}; // don't re-run if statement that took a long time
             if ((diag_tickTime - _lastSent) > random [0.1, 0.2, 0.3]) then {
                 _x set [3, diag_tickTime]; // set last run to now
-                [QGVAR(serverWatchVariable), [CBA_clientID, _varIndex, _editText]] call CBA_fnc_serverEvent; // send statement to server
+                [QGVAR(watchVariable), [CBA_clientID, _varIndex, _editText], GVAR(selectedClientID)] call CBA_fnc_ownerEvent; // send statement to server
             };
         };
 
