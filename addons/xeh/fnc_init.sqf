@@ -19,9 +19,14 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
+#define DEBUG_SYNCHRONOUS
 #include "script_component.hpp"
 
 params ["_this"];
+
+if (_this call CBA_fnc_isTerrainObject) exitWith {
+    INFO_2("Abort init event for terrain object %1. Class: %2.",_this,typeOf _this);
+};
 
 if !(ISINITIALIZED(_this)) then {
     SETINITIALIZED(_this);
