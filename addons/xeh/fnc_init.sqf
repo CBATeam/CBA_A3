@@ -19,9 +19,15 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
+#define DEBUG_SYNCHRONOUS
 #include "script_component.hpp"
 
 params ["_this"];
+
+// fix for https://github.com/CBATeam/CBA_A3/issues/661
+if (scriptDone GVAR(LoadingCheck)) exitWith {
+    INFO_1("Abort init event during savegame load. Class: %1.",typeOf _this);
+};
 
 if !(ISINITIALIZED(_this)) then {
     SETINITIALIZED(_this);
