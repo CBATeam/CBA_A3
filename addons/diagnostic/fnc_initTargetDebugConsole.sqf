@@ -1,21 +1,23 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_diagnostic_fnc_initServerDebugConsole
+Function: CBA_diagnostic_fnc_initTargetDebugConsole
 
 Description:
-    Adds addition watch statements that are run on the server and have their values returned to the client.
-    Requires `enableServerDebug = 1; `in description.ext
+    Adds addition watch statements that are run on a remote target and have their values returned to the client.
+    Requires `EnableTargetDebug = 1; `in description.ext
 
 Author:
-    PabstMirror (based heavily on BIS's RscDebugConsole.sqf)
+    (based on BIS's RscDebugConsole.sqf)
+    PabstMirror
+    commy2
 ---------------------------------------------------------------------------- */
 
 //#define DEBUG_MODE_FULL
 #include "\a3\ui_f\hpp\defineResinclDesign.inc"
 #include "script_component.hpp"
 
-#define COUNT_WATCH_BOXES 4
+#define COUNT_WATCH_BOXES 8
 
-if (!((getMissionConfigValue ["enableServerDebug", 0]) isEqualTo 1)) exitWith {};
+if (!((getMissionConfigValue ["EnableTargetDebug", 0]) isEqualTo 1)) exitWith {};
 
 params ["_display"];
 TRACE_1("adding server watch debug",_display);
@@ -27,23 +29,45 @@ _debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * GUI_GRID_W];
 _debugConsole ctrlSetPosition _debugConsolePos;
 _debugConsole ctrlCommit 0;
 
-// target selector
-private _clientList = _display ctrlCreate ["RscCombo", -1, _debugConsole];
-private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTESERVER);
-_ctrlPos set [0, (ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONCODEPERFORMANCE) select 0) + 22.5 * GUI_GRID_W];
-_ctrlPos set [2, 2 * (_ctrlPos select 2)];
-_clientList ctrlSetPosition _ctrlPos;
-_clientList ctrlCommit 0;
+private _basePosition = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHINPUT1);
+_basePosition set [0, (_basePosition select 0) + 22.5 * GUI_GRID_W];
+_basePosition set [1, (_basePosition select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
 
-// add available target
+
+// Add background and "Target Watch" text:
+private _targetWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
+_targetWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
+_ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
+_ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
+_ctrlPos set [1, (_ctrlPos select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
+_ctrlPos set [3, (_ctrlPos select 3) + (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
+_targetWatchBackground ctrlSetPosition _ctrlPos;
+_targetWatchBackground ctrlCommit 0;
+private _targetWatchText = _display ctrlCreate ["RscText", -1, _debugConsole];
+_targetWatchText ctrlSetText format ["%1 %2", localize "str_watch_target", localize "STR_A3_RscDebugConsole_WatchText"];
+_targetWatchText ctrlSetFontHeight (0.7 * GUI_GRID_H);
+_ctrlPos set [0, (_ctrlPos select 0) + 0.2 * GUI_GRID_W];
+_ctrlPos set [3, 0.5 * GUI_GRID_W];
+_targetWatchText ctrlSetPosition _ctrlPos;
+_targetWatchText ctrlCommit 0;
+
+
+
+// Add target selector list
+private _clientList = _display ctrlCreate ["RscCombo", -1, _debugConsole];
+_clientList ctrlSetPosition _basePosition;
+_clientList ctrlCommit 0;
+_basePosition set [1, (_basePosition select 1) + 1.5 * GUI_GRID_H];
+
+// - add available targets to list
+private _lastSelected = 0;
 {
     _x params ["_clientID", "_profileName"];
-
     _clientList lbSetValue [_clientList lbAdd format ["%1 - %2", _clientID, _profileName], _clientID];
+    if (_clientID == GVAR(selectedClientID)) then {_lastSelected = _forEachIndex};
 } forEach GVAR(clientIDs);
 
-_clientList lbSetCurSel 0;
-
+_clientList lbSetCurSel _lastSelected;
 GVAR(selectedClientID) = _clientList lbValue lbCurSel _clientList;
 
 _clientList ctrlAddEventHandler ["LBSelChanged", {
@@ -53,31 +77,10 @@ _clientList ctrlAddEventHandler ["LBSelChanged", {
 }];
 
 
-// Add background and "Server Watch" text:
-private _serverWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
-_serverWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
-_ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
-_ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
-_ctrlPos set [1, (_ctrlPos select 1) - 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
-_ctrlPos set [3, (_ctrlPos select 3) + 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
-_serverWatchBackground ctrlSetPosition _ctrlPos;
-_serverWatchBackground ctrlCommit 0;
-private _serverWatchText = _display ctrlCreate ["RscText", -1, _debugConsole];
-_serverWatchText ctrlSetText format ["Server %1", localize "STR_A3_RscDebugConsole_WatchText"];
-_serverWatchText ctrlSetFontHeight (0.8 * GUI_GRID_H);
-_ctrlPos set [0, (_ctrlPos select 0) + 0.2 * GUI_GRID_W];
-_ctrlPos set [3, 0.5 * GUI_GRID_W];
-_serverWatchText ctrlSetPosition _ctrlPos;
-_serverWatchText ctrlCommit 0;
-
-
 private _watchVars = [];
-private _basePosition = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHINPUT1);
-_basePosition set [0, (_basePosition select 0) + 22.5 * GUI_GRID_W];
-_basePosition set [1, (_basePosition select 1) - 2 * (COUNT_WATCH_BOXES - 4) * GUI_GRID_H];
 for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
     // Create the controls for each row and fill input with last saved value from profile
-    private _profileVarName = format ["CBA_serverWatch_%1", _varIndex];
+    private _profileVarName = format ["CBA_targetWatch_%1", _varIndex];
     private _savedStatement = profileNamespace getVariable [_profileVarName, ""];
     if (!(_savedStatement isEqualType "")) then {_savedStatement = ""};
 
@@ -103,14 +106,14 @@ for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
 _display setVariable [QGVAR(watchVars), _watchVars];
 
 
-// Runs constantly, sends statement to server and parses the result back in the output window
+// Runs constantly, sends statement to target and parses the result back in the output window
 private _fnc_updateWatchInfo = {
     params ["_display"];
 
     private _watchVars = _display getVariable [QGVAR(watchVars), []];
     {
         private _varIndex = _forEachIndex;
-        private _varName = format ["CBA_serverWatchVar_%1_%2", CBA_clientID, _varIndex];
+        private _varName = format ["CBA_targetWatchVar_%1_%2", CBA_clientID, _varIndex];
         _x params ["_inputEditbox", "_outputBackground", "_outputEditBox", "_lastSent"];
         private _editText = ctrlText _inputEditbox;
         (missionNamespace getVariable [_varName, []]) params [["_responseStatement", "", [""]], ["_responseReturn", "", [""]], ["_duration", 0, [0]]];
@@ -121,7 +124,7 @@ private _fnc_updateWatchInfo = {
             if ((_editText isEqualTo _responseStatement) && {_duration > 0.1}) exitWith {}; // don't re-run if statement that took a long time
             if ((diag_tickTime - _lastSent) > random [0.1, 0.2, 0.3]) then {
                 _x set [3, diag_tickTime]; // set last run to now
-                [QGVAR(watchVariable), [CBA_clientID, _varIndex, _editText], GVAR(selectedClientID)] call CBA_fnc_ownerEvent; // send statement to server
+                [QGVAR(watchVariable), [CBA_clientID, _varIndex, _editText], GVAR(selectedClientID)] call CBA_fnc_ownerEvent; // send statement to target
             };
         };
 
@@ -147,12 +150,12 @@ private _fnc_onUnload = {
     {
         _x params ["_inputEditbox", "_outputBackground", "_outputEditBox", "_lastSent"];
         private _varIndex = _forEachIndex;
-        private _varName = format ["CBA_serverWatchVar_%1_%2", CBA_clientID, _varIndex];
+        private _varName = format ["CBA_targetWatchVar_%1_%2", CBA_clientID, _varIndex];
         private _editText = ctrlText _inputEditbox;
         (missionNamespace getVariable [_varName, []]) params [["_responseStatement", "", [""]], ["_responseReturn", "", [""]], ["_duration", 0, [0]]];
 
         if ((_editText isEqualTo _responseStatement) && {_duration < 0.1}) then {
-            private _profileVarName = format ["CBA_serverWatch_%1", _varIndex];
+            private _profileVarName = format ["CBA_targetWatch_%1", _varIndex];
             profileNamespace setVariable [_profileVarName, _responseStatement];
         };
     } forEach _watchVars;

@@ -19,11 +19,11 @@
             <German>Nächster Ausdruck</German>
         </Key>
 
-        <Key ID="STR_CBA_Diagnostic_EnableServerDebug">
-            <English>Enable Server Debug</English>
+        <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
+            <English>Enable Target Debuging</English>
         </Key>
-        <Key ID="STR_CBA_Diagnostic_EnableServerDebug_tooltip">
-            <English>Determines server watch field availability. Requires Debug Console.</English>
+        <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
+            <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
         </Key>
     </Package>
 </Project>

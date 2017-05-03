@@ -5,12 +5,12 @@ class Cfg3DEN {
             class AttributeCategories {
                 class States {
                     class Attributes {
-                        class EnableServerDebug {
-                            property = "EnableServerDebug";
+                        class EnableTargetDebug {
+                            property = "EnableTargetDebug";
                             value = 0;
                             control = "CheckboxNumber";
-                            displayName = CSTRING(EnableServerDebug);
-                            tooltip = CSTRING(EnableServerDebug_tooltip);
+                            displayName = CSTRING(EnableTargetDebug);
+                            tooltip = CSTRING(EnableTargetDebug_tooltip);
                             defaultValue = "0";
                             expression = "true";
                             wikiType = "[[Bool]]";
