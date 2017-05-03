@@ -127,6 +127,17 @@ GVAR(initPostStack) = [];
     diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
 #endif
 
+// fix for https://github.com/CBATeam/CBA_A3/issues/661
+private _fnc_setUpLoadingCheck = {
+    GVAR(LoadingCheck) = 0 spawn {
+        disableSerialization;
+        sleep 1E9;
+    };
+};
+
+call _fnc_setUpLoadingCheck;
+addMissionEventHandler ["Loaded", _fnc_setUpLoadingCheck];
+
 SLX_XEH_MACHINE set [7, true]; // PreInit passed
 
 XEH_LOG("XEH: PreInit finished.");
