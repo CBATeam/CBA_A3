@@ -37,7 +37,7 @@ _basePosition set [1, (_basePosition select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES -
 // Add background and "Target Watch" text:
 private _targetWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
 _targetWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
-_ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
+private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
 _ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
 _ctrlPos set [1, (_ctrlPos select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
 _ctrlPos set [3, (_ctrlPos select 3) + (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
@@ -76,6 +76,26 @@ _clientList ctrlAddEventHandler ["LBSelChanged", {
     GVAR(selectedClientID) = _clientList lbValue _index;
 }];
 
+// Add TARGET EXEC button
+private _serverExec = _display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTESERVER;
+_serverExec ctrlShow false;
+_serverExec ctrlEnable false;
+
+private _targetExec = _display ctrlCreate ["RscButtonMenu", -1, _debugConsole];
+_targetExec ctrlSetPosition ctrlPosition _serverExec;
+_targetExec ctrlCommit 0;
+_targetExec ctrlSetText toUpper localize LSTRING(TargetExec);
+
+_targetExec ctrlAddEventHandler ["ButtonClick", {
+    params ["_targetExec"];
+    private _statement = ctrlText (ctrlParentControlsGroup _targetExec controlsGroupCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION);
+    compile _statement remoteExec ["call", GVAR(selectedClientID)];
+}];
+
+_targetExec ctrlAddEventHandler ["MouseButtonUp", {
+    _this call FUNC(logStatement);
+    false
+}];
 
 private _watchVars = [];
 for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
