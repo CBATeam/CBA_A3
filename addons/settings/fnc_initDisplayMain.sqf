@@ -21,15 +21,15 @@ if (_file != "") then {
 
     if (!isNull _display) then {
         private _control = _display ctrlCreate ["RscHTML", -1];
-        _control htmlLoad USERCONFIG_SETTINGS_FILE;
+        _control htmlLoad _file;
         _fileExists = ctrlHTMLLoaded _control;
         ctrlDelete _control;
     } else {
-        _fileExists = loadFile USERCONFIG_SETTINGS_FILE != "";
+        _fileExists = loadFile _file != "";
     };
 
     if (_fileExists) then {
-        _userconfig = preprocessFile USERCONFIG_SETTINGS_FILE;
+        _userconfig = preprocessFile _file;
     };
 };
 
