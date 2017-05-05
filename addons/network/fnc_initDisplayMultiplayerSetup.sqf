@@ -9,22 +9,29 @@ private _fnc_update = {
         private _text = _playerList lbText 0;
         private _value = _playerList lbValue 0;
 
-        // delete old
+        // delete old lb entry
         _playerList lbDelete 0;
 
         if (_value == -1) then {
+            // lb entry was group name
+            // look up first unit role and check for hidden callsign
             (_playerList lbText 0 splitString "|") params [["_role", ""], ["_callsign", ""]];
 
             if (_callsign != "") then {
                 _text = _callsign;
             };
         } else {
+            // lb entry was role name
+            // remove hidden callsign if present
             _text = _text splitString "|" select 0;
         };
 
+        // create new lb entry
+        // value determines which slot is linked to the lb entry
         _playerList lbSetValue [_playerList lbAdd _text, _value];
     };
 };
 
+// lb is refreshed every frame, so we have to adjust every frame too
 _display displayAddEventHandler ["MouseMoving", _fnc_update];
 _display displayAddEventHandler ["MouseHolding", _fnc_update];
