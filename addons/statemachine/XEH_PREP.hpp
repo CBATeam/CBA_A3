@@ -10,4 +10,4 @@ PREP(manualTransition);
 PREP(toString);
 PREP(updateList);
 
-PREP(dev_dumpPerformanceCounters);
+PREP(dumpPerformanceCounters);
