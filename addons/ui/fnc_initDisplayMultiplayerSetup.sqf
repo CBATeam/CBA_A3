@@ -1,11 +1,14 @@
+#include "script_component.hpp"
+
+#define SEPARATORS "@"
 
 params ["_display"];
 
 private _fnc_update = {
     params ["_display"];
-    private _playerList = _display displayCtrl 109;
+    private _playerList = _display displayCtrl IDC_MPSETUP_ROLES;
 
-    for "_" from 0 to (lbSize _playerList - 1) do {
+    for "-" from 1 to lbSize _playerList do {
         private _text = _playerList lbText 0;
         private _value = _playerList lbValue 0;
 
@@ -15,7 +18,7 @@ private _fnc_update = {
         if (_value == -1) then {
             // lb entry was group name
             // look up first unit role and check for hidden callsign
-            (_playerList lbText 0 splitString "|") params [["_role", ""], ["_callsign", ""]];
+            private _callsign = _playerList lbText 0 splitString SEPARATORS param [1, ""];
 
             if (_callsign != "") then {
                 _text = _callsign;
@@ -23,7 +26,7 @@ private _fnc_update = {
         } else {
             // lb entry was role name
             // remove hidden callsign if present
-            _text = _text splitString "|" select 0;
+            _text = _text splitString SEPARATORS select 0;
         };
 
         // create new lb entry
@@ -31,6 +34,8 @@ private _fnc_update = {
         _playerList lbSetValue [_playerList lbAdd _text, _value];
     };
 };
+
+call _fnc_update;
 
 // lb is refreshed every frame, so we have to adjust every frame too
 _display displayAddEventHandler ["MouseMoving", _fnc_update];
