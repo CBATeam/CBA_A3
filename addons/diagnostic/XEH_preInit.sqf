@@ -54,6 +54,7 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] isEqualTo 1) then {
         addMissionEventHandler ["PlayerConnected", {
             params ["", "", "_name", "", "_owner"];
 
+            if (_owner == 2) exitWith {};
             GVAR(clientIDs) pushBackUnique [_owner, _name];
             publicVariable QGVAR(clientIDs);
         }];
