@@ -37,7 +37,7 @@ diag_log text format ["------------------ [Time: %1] -------------------------",
     {
         _sum = _sum + _x;
     } forEach _x;
-    private _averageResult = if (_count > 0) then {1000 * _sum / _count} else {"---"};
+    private _averageResult = if (_count > 0) then {1000 * _sum / _count} else {0};
     
     private _status = "*Removed*";
     {
