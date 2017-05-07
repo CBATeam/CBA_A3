@@ -35,7 +35,7 @@ private _fnc_update = {
     };
 };
 
-call _fnc_update;
+_display call _fnc_update;
 
 // lb is refreshed every frame, so we have to adjust every frame too
 _display displayAddEventHandler ["MouseMoving", _fnc_update];
