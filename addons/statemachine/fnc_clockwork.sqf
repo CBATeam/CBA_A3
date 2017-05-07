@@ -17,6 +17,9 @@ Author:
 SCRIPT(clockwork);
 
 {
+    #ifdef STATEMACHINE_PERFORMANCE_COUNTERS
+    private _perfStartTime = diag_tickTime;
+    #endif
     private _stateMachine = _x;
     private _list = _stateMachine getVariable QGVAR(list);
     private _skipNull = _stateMachine getVariable QGVAR(skipNull);
@@ -96,6 +99,11 @@ SCRIPT(clockwork);
                 };
             } forEach (_stateMachine getVariable TRANSITIONS(_thisState));
         };
+
+        #ifdef STATEMACHINE_PERFORMANCE_COUNTERS
+        private _perfRunTime = diag_tickTime - _perfStartTime;
+        (GVAR(performanceCounters) select _id) pushBack _perfRunTime;
+        #endif
     };
 
     false

@@ -9,3 +9,5 @@ PREP(getCurrentState);
 PREP(manualTransition);
 PREP(toString);
 PREP(updateList);
+
+PREP(dev_dumpPerformanceCounters);
