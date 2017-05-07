@@ -23,4 +23,4 @@ Author:
 #include "script_component.hpp"
 SCRIPT(players);
 
-(allPlayers) select { !(_x isKindOf "HeadlessClient_F") }
+(allUnits + allDeadMen) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}
