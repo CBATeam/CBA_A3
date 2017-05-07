@@ -4,11 +4,11 @@ Function: CBA_help_fnc_setVersionLine
 Description:
     Displays all CfgPatches with a "versionDesc" entry in the main menu.
 
-    Mods are cycled automatically every 3 seconds or can be browsed using LMB and RMB.
+    Mods are cycled automatically every 4 seconds or can be browsed using LMB and RMB.
     Double clicking executes the script in "versionAct".
 
 Parameters:
-    0: _display - Main menu display or a control of the display. <DISPLAY, CONTROL>
+    0: _control - Either version line or button control <CONTROL>
     1: _key     - 0: LMB - next mod, 1: RMB - previous mod <NUMBER> (optional, default: 0)
 
 Returns:
@@ -17,41 +17,19 @@ Returns:
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-disableSerialization;
+params ["_control", ["_key", 0]];
 
-// get display
-params [["_display", displayNull, [displayNull, controlNull]], ["_key", 0]];
+private _display = ctrlParent _control;
 
-if (_display isEqualType controlNull) then {
-    _display = ctrlParent _display;
-};
-
-private _ctrl = _display displayCtrl CBA_CREDITS_VER_IDC;
-private _ctrlBtn = _display displayCtrl CBA_CREDITS_VER_BTN_IDC;
-
-if (isNull _ctrl) exitWith {};
+private _ctrlText = _display displayCtrl IDC_VERSION_TEXT;
+private _ctrlButton = _display displayCtrl IDC_VERSION_BUTTON;
 
 // create addon list
 if (isNil {uiNamespace getVariable QGVAR(VerList)}) then {
     private _verList = [];
     uiNamespace setVariable [QGVAR(VerList), _verList];
 
-    // align with BI version position
-    private _posX = __RIX(-21);
-    private _posY = __IY(23);
-    private _posW = __IW(8);
-    private _posH = __IH(1);
-
-    _ctrl ctrlSetPosition [_posX, _posY, _posW, _posH];
-    _ctrl ctrlCommit 0;
-
-    // button align
-    _ctrlBtn ctrlSetPosition [_posX, _posY, _posW, _posH];
-    _ctrlBtn ctrlCommit 0;
-
     // gather version info
-    _config = configFile >> "CfgPatches";
-
     {
         private _entry = _x;
 
@@ -59,15 +37,15 @@ if (isNil {uiNamespace getVariable QGVAR(VerList)}) then {
         private _verAct = getText (_entry >> "versionAct");
 
         _verList pushBack [_verLine, _verAct];
-    } forEach ("isText (_x >> 'versionDesc')" configClasses _config);
+    } forEach ("isText (_x >> 'versionDesc')" configClasses (configFile >> "CfgPatches"));
 };
 
 // start loop that cycles through all addons
 terminate (uiNamespace getVariable [QGVAR(VerScript), scriptNull]);
 
-private _verScript = [_display] spawn { // will terminate when main menu mission exits
-    uiSleep 3;
-    QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
+private _verScript = [_control] spawn { // will terminate when main menu mission exits
+    uiSleep 4;
+    isNil (uiNamespace getVariable QFUNC(setVersionLine)); // execute unscheduled
 };
 
 uiNamespace setVariable [QGVAR(VerScript), _verScript];
@@ -75,14 +53,15 @@ uiNamespace setVariable [QGVAR(VerScript), _verScript];
 // start loop with mouse moving event on main menu. this is used, because loops can't be used at that point
 if (isNull (uiNamespace getVariable [QGVAR(VerScriptFlag), displayNull])) then {
     uiNamespace setVariable [QGVAR(VerScriptFlag), _display];
-    _display displayAddEventHandler ["mouseMoving", {
+
+    _display displayAddEventHandler ["MouseMoving", {
         params ["_display"];
 
         if (!scriptDone (uiNamespace getVariable [QGVAR(VerScript), scriptNull])) exitWith {};
 
-        private _verScript = [_display] spawn { // will terminate when main menu mission exits
-            uiSleep 3;
-            QUOTE(_this call COMPILE_FILE(fnc_setVersionLine)) configClasses (configFile >> "CBA_DirectCall");
+        private _verScript = [allControls _display select 0] spawn { // will terminate when main menu mission exits
+            uiSleep 4;
+            isNil (uiNamespace getVariable QFUNC(setVersionLine)); // execute unscheduled
         };
 
         uiNamespace setVariable [QGVAR(VerScript), _verScript];
@@ -118,5 +97,5 @@ uiNamespace setVariable [QGVAR(VerNext), _next];
 // add single line
 (_verList select _next) params ["_verLine", "_verAct"];
 
-_ctrl ctrlSetText _verLine; // print version line
-_ctrlBtn ctrlSetEventHandler ["MouseButtonDblClick", _verAct]; // set double-click action if any
+_ctrlText ctrlSetText _verLine; // print version line
+_ctrlButton ctrlSetEventHandler ["MouseButtonDblClick", _verAct]; // set double-click action if any

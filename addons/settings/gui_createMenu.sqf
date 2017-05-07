@@ -1,11 +1,25 @@
 // inline function, don't include script_component.hpp
 
+private _fnc_controlSetTablePosY = {
+    params ["_control", "_tablePosY"];
+
+    private _config = configFile >> ctrlClassName _control;
+
+    private _posX = getNumber (_config >> "x");
+    private _posY = getNumber (_config >> "y") + _tablePosY;
+    private _posH = getNumber (_config >> "h");
+
+    _control ctrlSetPosition [_posX, _posY];
+    _control ctrlCommit 0;
+
+    _posY + _posH
+};
+
 private _lists = [];
 _display setVariable [QGVAR(lists), _lists];
-_display setVariable [QGVAR(controls), []];
 
 {
-    (GVAR(defaultSettings) getVariable _x) params ["_defaultValue", "_setting", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
+    (GVAR(default) getVariable _x) params ["_defaultValue", "_setting", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
 
     if (isLocalized _category) then {
         _category = localize _category;
@@ -21,9 +35,12 @@ _display setVariable [QGVAR(controls), []];
 
     _categories pushBackUnique _category;
 
+    private _settingControlsGroups = [];
+
     {
         private _source = toLower _x;
         private _currentValue = [_setting, _source] call FUNC(get);
+        private _currentPriority = [_setting, _source] call FUNC(priority);
 
         // ----- create or retrieve options "list" controls group
         private _list = [QGVAR(list), _category, _source] joinString "$";
@@ -35,74 +52,74 @@ _display setVariable [QGVAR(controls), []];
             _ctrlOptionsGroup ctrlEnable false;
             _ctrlOptionsGroup ctrlShow false;
 
-            (_display getVariable QGVAR(controls)) pushBack _ctrlOptionsGroup;
-            _ctrlOptionsGroup setVariable [QGVAR(controls), []];
-            _ctrlOptionsGroup setVariable [QGVAR(offsetY), MENU_OFFSET_INITIAL];
-
             _lists pushBack _list;
             _display setVariable [_list, _ctrlOptionsGroup];
         } else {
             _ctrlOptionsGroup = _display getVariable _list;
         };
 
-        private _offsetY = _ctrlOptionsGroup getVariable QGVAR(offsetY);
+        // ----- create setting group
+        private _ctrlSettingGroup = switch (toUpper _settingType) do {
+            case "CHECKBOX": {
+                _display ctrlCreate [QGVAR(Row_Checkbox), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "EDITBOX": {
+                _display ctrlCreate [QGVAR(Row_Editbox), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "LIST": {
+                _display ctrlCreate [QGVAR(Row_List), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "SLIDER": {
+                _display ctrlCreate [QGVAR(Row_Slider), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "COLOR": {
+                _display ctrlCreate [[QGVAR(Row_Color), QGVAR(Row_ColorAlpha)] select (count _defaultValue > 3), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            default {controlNull};
+        };
 
-        // ----- create setting name text
-        private _ctrlSettingName = _display ctrlCreate ["CBA_Rsc_SettingText", -1, _ctrlOptionsGroup];
+        _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
+        _ctrlSettingGroup setVariable [QGVAR(source), _source];
+        _ctrlSettingGroup setVariable [QGVAR(params), _settingData];
+        _ctrlSettingGroup setVariable [QGVAR(groups), _settingControlsGroups];
+        _settingControlsGroups pushBack _ctrlSettingGroup;
 
+        // ----- adjust y position in table
+        private _tablePosY = _ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2];
+        _tablePosY = [_ctrlSettingGroup, _tablePosY] call _fnc_controlSetTablePosY;
+        _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
+
+        // ----- set setting name
+        private _ctrlSettingName = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_NAME;
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
-        _ctrlSettingName ctrlSetPosition [
-            POS_W(1),
-            POS_H(_offsetY),
-            POS_W(15),
-            POS_H(1)
-        ];
-        _ctrlSettingName ctrlCommit 0;
+
+        // ----- execute setting script
+        private _script = getText (configFile >> ctrlClassName _ctrlSettingGroup >> QGVAR(script));
+        [_ctrlSettingGroup, _setting, _source, _currentValue, _settingData] call (uiNamespace getVariable _script);
+
+        // ----- default button
+        [_ctrlSettingGroup, _setting, _source, _currentValue, _defaultValue] call FUNC(gui_settingDefault);
+
+        // ----- priority list
+        [_ctrlSettingGroup, _setting, _source, _currentPriority, _isGlobal] call FUNC(gui_settingOverwrite);
 
         // ----- check if setting can be altered
         private _enabled = switch (_source) do {
-            case ("client"): {
-                CAN_SET_CLIENT_SETTINGS
-            };
-            case ("server"): {
-                CAN_SET_SERVER_SETTINGS
-            };
-            case ("mission"): {
-                CAN_SET_MISSION_SETTINGS
-            };
+            case "client": {CAN_SET_CLIENT_SETTINGS && {isNil {GVAR(userconfig) getVariable _setting}}};
+            case "mission": {CAN_SET_MISSION_SETTINGS && {isNil {GVAR(missionConfig) getVariable _setting}}};
+            case "server": {CAN_SET_SERVER_SETTINGS && {isNil {GVAR(serverConfig) getVariable _setting}}};
         };
 
-        // ----- check if altering setting would have no effect
-        private _isOverwritten = [_setting, _source] call FUNC(isOverwritten);
+        if !(_enabled) then {
+            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_DISABLED;
 
-        // ----- create setting changer control
-        private _controls = _ctrlOptionsGroup getVariable QGVAR(controls);
-        private _linkedControls = [];
+            //private _ctrlSettingGroupControls = allControls ctrlParent _ctrlSettingGroup select {ctrlParentControlsGroup _x == _ctrlSettingGroup};
+            private _ctrlSettingGroupControls = "true" configClasses (configFile >> ctrlClassName _ctrlSettingGroup >> "controls") apply {_ctrlSettingGroup controlsGroupCtrl getNumber (_x >> "idc")};
 
-        switch (toUpper _settingType) do {
-            case ("CHECKBOX"): {
-                #include "gui_createMenu_checkbox.sqf"
-            };
-            case ("LIST"): {
-                #include "gui_createMenu_list.sqf"
-            };
-            case ("SLIDER"): {
-                #include "gui_createMenu_slider.sqf"
-            };
-            case ("COLOR"): {
-                #include "gui_createMenu_color.sqf"
-            };
-            default {};
+            {
+                _x ctrlEnable false;
+            } forEach _ctrlSettingGroupControls;
         };
-
-        #include "gui_createMenu_default.sqf"
-
-        // ----- handle "force" button
-        if (_source != "client") then {
-            #include "gui_createMenu_force.sqf"
-        };
-
-        _ctrlOptionsGroup setVariable [QGVAR(offsetY), _offsetY + MENU_OFFSET_SPACING];
-    } forEach ["client", "server", "mission"];
+    } forEach ["client", "mission", "server"];
 } forEach GVAR(allSettings);

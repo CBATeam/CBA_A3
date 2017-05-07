@@ -13,6 +13,17 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "\a3\ui_f\hpp\defineResincl.inc"
+
+#define IDC_ADDON_CONTROLS 127303
+#define IDC_ADDON_OPTIONS 127307
+
+#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_X)
+#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
+#define POS_W(N) ((N) * GUI_GRID_W)
+#define POS_H(N) ((N) * GUI_GRID_H)
+
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
 

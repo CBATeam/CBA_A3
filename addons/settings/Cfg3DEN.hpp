@@ -1,7 +1,8 @@
+
 class Cfg3DEN {
     class Attributes {
         class Default;
-        class CBA_CategoryHider: Default {
+        class GVAR(CategoryHider): Default {
             onLoad = "(ctrlParentControlsGroup ctrlParentControlsGroup (_this select 0)) ctrlShow false";
         };
     };
@@ -17,12 +18,22 @@ class Cfg3DEN {
                         class GVAR(hash) {
                             property = QGVAR(hash);
                             value = 0;
-                            control = "CBA_CategoryHider";
+                            control = QGVAR(CategoryHider);
                             displayName = "";
                             tooltip = "";
-                            defaultValue = QUOTE(NULL_HASH);
+                            defaultValue = QUOTE(HASH_NULL);
                             expression = "";
                             wikiType = "[[Array]]";
+                        };
+                        class GVAR(hasSettingsFile) {
+                            property = QGVAR(hasSettingsFile);
+                            value = 0;
+                            control = QGVAR(CategoryHider);
+                            displayName = "";
+                            tooltip = "";
+                            defaultValue = "false";
+                            expression = "";
+                            wikiType = "[[BOOL]]";
                         };
                     };
                 };

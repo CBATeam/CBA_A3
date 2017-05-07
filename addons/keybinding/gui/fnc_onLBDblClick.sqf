@@ -43,7 +43,7 @@ _fnc = {
     params ["_args", "_idPFH"];
     _args params ["_actionId", "_lnb", "_lnbIndex", "_comboMod", "_combo", "_display"];
     if (count GVAR(thirdKey) > 0 || !GVAR(waitingForInput) || lnbCurSelRow _lnb != _lnbIndex || _comboMod != (_combo lbData (lbCurSel _combo))) then {
-        if (str (GVAR(input) select 0) in GVAR(forbiddenKeys)) exitWith {};
+        if ((GVAR(input) select 0) in GVAR(forbiddenKeys)) exitWith {};
         [_idPFH] call cba_fnc_removePerFrameHandler;
         if (GVAR(waitingForInput)) then {
             // Tell the onKeyDown handler that we're not waiting anymore, so it stops blocking input.

@@ -16,18 +16,3 @@ class Extended_PostInit_EventHandlers {
         clientInit = QUOTE(call COMPILE_FILE(XEH_postClientInit));
     };
 };
-
-class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayMain {
-        CBA_helpVersion = QUOTE(_this call (uiNamespace getVariable 'FUNC(setVersionLine)'));
-        CBA_helpCredits = QUOTE(_this call (uiNamespace getVariable 'FUNC(setCreditsLine)'));
-    };
-    class RscDisplayInterrupt {
-        CBA_helpVersion = QUOTE(_this call (uiNamespace getVariable 'FUNC(setVersionLine)'));
-        CBA_helpCredits = QUOTE(_this call (uiNamespace getVariable 'FUNC(setCreditsLine)'));
-    };
-    class RscDisplayMPInterrupt {
-        CBA_helpVersion = QUOTE(_this call (uiNamespace getVariable 'FUNC(setVersionLine)'));
-        CBA_helpCredits = QUOTE(_this call (uiNamespace getVariable 'FUNC(setCreditsLine)'));
-    };
-};

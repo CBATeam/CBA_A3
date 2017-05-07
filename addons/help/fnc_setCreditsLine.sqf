@@ -6,7 +6,7 @@ Description:
     version and URL in the main menu and ingame in the pause menu.
 
 Parameters:
-    0: _display - Either Main menu or Pause menu display or a control of these displays. <DISPLAY, CONTROL>
+    0: _control - Credits line control <CONTROL>
 
 Returns:
     None
@@ -14,18 +14,9 @@ Returns:
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-disableSerialization;
+params ["_control"];
 
-// get display
-params [["_display", displayNull, [displayNull, controlNull]]];
-
-if (_display isEqualType controlNull) then {
-    _display = ctrlParent _display;
-};
-
-private _ctrl = _display displayCtrl CBA_CREDITS_CONT_IDC;
-
-if !(ctrlText _ctrl isEqualTo "") exitWith {};
+if !(ctrlText _control isEqualTo "") exitWith {};
 
 // get settings
 {
@@ -57,18 +48,8 @@ if (!CBA_MonochromeCredits) then {
     _name = format ["<t color='#99cccc'>%1</t>", _name];
 };
 
-// author(s) name
+// author name
 private _author = getText (_entry >> "author");
-
-if (isArray (_entry >> "authors")) then {
-    private _authors = getArray (_entry >> "authors");
-
-    {
-        if (_x isEqualType "") then {
-            _author = format ["%1, %2", _author, _x];
-        };
-    } forEach _authors;
-};
 
 // version if any
 private _version = "";
@@ -78,4 +59,7 @@ if (isText (_entry >> "version")) then {
 };
 
 // add single line
-_ctrl ctrlSetStructuredText parseText format ["%1%2 by %3 %4", _name, _version, _author];
+_control ctrlSetStructuredText parseText format ["%1%2 by %3", _name, _version, _author];
+
+// make credits line not obstruct other controls
+_control ctrlEnable false;

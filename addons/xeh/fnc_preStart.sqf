@@ -26,7 +26,7 @@ with uiNamespace do {
     SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
     SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 
-    PREP(3DENDisplayLoad);
+    PREP(initDisplay3DEN);
 
     // call PreStart events
     {

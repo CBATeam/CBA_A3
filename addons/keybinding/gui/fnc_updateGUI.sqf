@@ -52,7 +52,7 @@ if !(isNull _display) then {
         // Add the actions to the listbox and associate their data.
         // of keybinds due to keyup/keydown.
         {
-            private ["_actionId", "_action", "_actionName", "_keyName", "_keyString", "_isDuplicated", "_dupeActionName", "_lbCount", "_indexArray"];
+            private ["_actionId", "_action", "_actionName", "_isDuplicated", "_dupeActionName", "_lbCount", "_indexArray"];
             _actionId = _x;
             if((format ["%1_%2", _modName, _actionId]) in GVAR(activeBinds)) then {
                 _action = (_modActions select 1) select _forEachIndex;
@@ -63,28 +63,38 @@ if !(isNull _display) then {
 
                 TRACE_4("",_modName,_action,_actionName,_keybind);
                 if(IS_ARRAY(_keybind) && {IS_ARRAY(_keybind select 1)}) then {
-                    _keybind params ["_dikCode", "_modifier"];
+                    _keybind params ["_key", "_modifier"];
                     _modifier params ["_shift", "_ctrl", "_alt"];
 
                     // Try to convert dik code to a human key code.
-                    _keyName = [GVAR(dikDecToStringTable), format ["%1", _dikCode]] call BIS_fnc_getFromPairs;
+                    private _keyName = GVAR(keyNames) getVariable str _key;
+
                     if (isNil "_keyName") then {
-                        _keyName = format [localize LSTRING(unkownKey), _dikCode];
+                        _keyName = format [localize LSTRING(unkownKey), _key];
                     };
 
                     // Build the full key combination name.
-                    _keyString = format ["%1", _keyName];
-                    if (_shift && {_dikCode != 42} && {_dikCode != 54}) then {_keyString = format ["Shift+%1", _keyString]};
-                    if (_alt && _dikCode != 56) then {_keyString = format ["Alt+%1", _keyString]};
-                    if (_ctrl && _dikCode != 29) then {_keyString = format ["Ctrl+%1", _keyString]};
-                    if (_keyString != "") then {
-                        // Add quotes around whole string.
-                        _keyString = format ["""%1""", _keyString];
+                    if (_shift && {!(_key in [DIK_LSHIFT, DIK_RSHIFT])}) then {
+                        _keyName = localize "str_dik_shift" + "+" + _keyName;
                     };
-                    TRACE_1("",_keyString);
+
+                    if (_alt && {!(_key in [DIK_LMENU, DIK_RMENU])}) then {
+                        _keyName = localize "str_dik_alt" + "+" + _keyName;
+                    };
+
+                    if (_ctrl && {!(_key in [DIK_LCONTROL, DIK_RCONTROL])}) then {
+                        _keyName = localize "str_dik_control" + "+" + _keyName;
+                    };
+
+                    // Add quotes around whole string.
+                    if (_keyName != "") then {
+                        _keyName = str _keyName;
+                    };
+
+                    TRACE_1("",_keyName);
                     // Search the handler array for any other keybinds using this key.
                     _isDuplicated = false;
-                    if(_dikCode > 0) then {
+                    if (_key > 0) then {
                         _dupeActionName = "";
                         {
                             private ["_sActionId", "_dupeAction"];
@@ -94,7 +104,7 @@ if !(isNull _display) then {
                             if((format ["%1_%2", _modName, _sActionId]) in GVAR(activeBinds)) then {
                                 if (_sActionId != _actionId && _sKeybind isEqualTo _keybind) exitWith {
                                     _isDuplicated = true;
-                                    _dupeActionName = _sActionName;
+                                    _dupeActionName = _sActionName param [0];
                                 };
                             };
                         } foreach (_modActions select 0);
@@ -102,15 +112,15 @@ if !(isNull _display) then {
                         if (_isDuplicated) then {
                             // Add the name of the action that dupes the keybinding to the
                             // end of the readable bind string.
-                            _keyString = format ["%1 [%2]", _keyString, _dupeActionName];
+                            _keyName = format ["%1 [%2]", _keyName, _dupeActionName];
                         };
                     } else {
                         //(dikCode <= 0): so it's unbound, leave string blank
-                        _keyString = "";
+                        _keyName = "";
                     };
 
                     // Add the row.
-                    _lbCount = _lnb lnbAddRow [_actionName, _keyString];
+                    _lbCount = _lnb lnbAddRow [_actionName, _keyName];
                     _lnb lbSetTooltip [2*_lbCount, _toolTip];
                     _lnb lbSetTooltip [2*_lbCount + 1, _toolTip];
 

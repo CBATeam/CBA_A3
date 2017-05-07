@@ -4,7 +4,7 @@ Function: CBA_fnc_createNamespace
 Description:
     Creates a namespace. Used to store and read variables via setVariable and getVariable.
 
-    The Namespace is destroyed after the mission ends. getVariable ARRAY is not supported.
+    The Namespace is destroyed after the mission ends.
 
 Parameters:
     _isGlobal - create a global namespace (optional, default: false) <BOOLEAN>
@@ -26,12 +26,10 @@ Author:
 #include "script_component.hpp"
 SCRIPT(createNamespace);
 
-#define DUMMY_POSITION [-1000, -1000, 0]
-
 params [["_isGlobal", false]];
 
 if (_isGlobal isEqualTo true) then {
-    createVehicle ["CBA_NamespaceDummy", DUMMY_POSITION, [], 0, "NONE"]
+    createSimpleObject ["CBA_NamespaceDummy", DUMMY_POSITION]
 } else {
     createLocation ["CBA_NamespaceDummy", DUMMY_POSITION, 0, 0]
 };

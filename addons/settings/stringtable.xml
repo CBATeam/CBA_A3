@@ -16,15 +16,15 @@
         <Polish>Konfiguracja bazy</Polish>
         <Japanese>基本設定</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_ButtonClient">
-        <English>Client</English>
-        <German>Lokal</German>
-        <Japanese>クライアント</Japanese>
+    <Key ID="STR_cba_settings_menu_button">
+        <English>Addon Options</English>
+        <German>Mod-Optionen</German>
+        <Japanese>アドオン オプション</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_ButtonClient_tooltip">
-        <English>Edit your local settings. Red colored settings are overwritten by the server or mission.</English>
-        <German>Lokale Einstellungen bearbeiten. Rot geschriebene Einstellungen werden vom Server oder der Mission überschrieben.</German>
-        <Japanese>ローカル設定を編集します。赤色はサーバーかミッションによって上書きされる設定です。</Japanese>
+    <Key ID="STR_cba_settings_3den_shortcut">
+        <English>Addon Options...</English>
+        <German>Mod-Optionen...</German>
+        <Japanese>アドオン オプション...</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonServer">
         <English>Server</English>
@@ -32,9 +32,9 @@
         <Japanese>サーバー</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonServer_tooltip">
-        <English>Look at the servers settings. 'Forced' settings overwrite the client and mission settings. Log in as admin to change.</English>
-        <German>Server-Einstellungen ansehen. 'Erzwungene' Einstellungen überschreiben lokale und Missionseinstellungen. Als Admin einloggen, um zu ändern.</German>
-        <Japanese>サーバー設定を確認します。'フォース'設定はクライアントかミッションによる設定を上書きします。管理者が変更すると記録します。</Japanese>
+        <English>Look at the servers settings. Log in as admin to change.</English>
+        <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
+        <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonMission">
         <English>Mission</English>
@@ -42,19 +42,39 @@
         <Japanese>ミッション</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonMission_tooltip">
-        <English>Edit the missions settings. 'Forced' settings overwrite the clients settings.</English>
-        <German>Missionseinstellungen bearbeiten. 'Erzwungene' Einstellungen überschreiben lokale.</German>
-        <Japanese>ミッションの設定を編集します。'フォース'設定はクライアント設定を上書きします。</Japanese>
+        <English>Look at the missions settings.</English>
+        <German>Missionseinstellungen ansehen.</German>
+        <Japanese>ミッションの設定を確認します。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_force">
-        <English>Force</English>
-        <German>Erzwingen</German>
-        <Japanese>フォース</Japanese>
+    <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
+        <English>Edit the missions settings.</English>
+        <German>Missionseinstellungen bearbeiten.</German>
+        <Japanese>ミッションの設定を編集します。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_force_tooltip">
-        <English>Check to overwrite this setting for all connected players.</English>
-        <German>Wählen, um diese Einstellung für alle verbunden Spieler zu überschreiben.</German>
-        <Japanese>接続している全プレイヤーの設定を上書きします。</Japanese>
+    <Key ID="STR_cba_settings_ButtonClient">
+        <English>Client</English>
+        <German>Client</German>
+        <Japanese>クライアント</Japanese>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonClient_tooltip">
+        <English>Edit your local settings.</English>
+        <German>Lokale Einstellungen bearbeiten.</German>
+        <Japanese>ローカル設定を編集します。</Japanese>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonLocal">
+        <English>Local</English>
+        <German>Lokal</German>
+        <Japanese>ローカル</Japanese>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonSave_tooltip">
+        <English>Save current settings as preset.</English>
+        <German>Derzeitige Einstellungen als Vorlage speichern.</German>
+        <Japanese>現在の設定をプリセットとして保存します。</Japanese>
+    </Key>
+    <Key ID="STR_cba_settings_ButtonLoad_tooltip">
+        <English>Load settings from preset.</English>
+        <German>Einstellungen aus Vorlage laden.</German>
+        <Japanese>プリセットから設定を読み込みます。</Japanese>
     </Key>
     <Key ID="STR_cba_settings_ButtonImport">
         <English>Import</English>
@@ -76,37 +96,37 @@
         <German>Einstellungen in Zwischenablage speichern.</German>
         <Japanese>クリップボードに設定を出力します。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_Default">
-        <English>Default</English>
-        <Czech>Výchozí</Czech>
-        <German>Voreinst.</German>
-        <Russian>По умолчанию</Russian>
-        <Polish>Domyślnie</Polish>
-        <Italian>Predefinito</Italian>
-        <Spanish>Predet.</Spanish>
-        <French>Par défaut</French>
-        <Japanese>デフォルト</Japanese>
-        <Korean>기본값</Korean>
-        <Portuguese>Padrão</Portuguese>
+    <Key ID="STR_cba_settings_default_tooltip">
+        <English>Reset to default value.</English>
+        <German>Zur Standardeinstellung zurücksetzen.</German>
+        <Japanese>デフォルトにリセットします。</Japanese>
     </Key>
-    <Key ID="STR_cba_settings_overwritten_tooltip">
-        <English>Setting is overwritten. Check 'Server' or 'Mission' tab.</English>
-        <German>Einstellung ist überschrieben. Überprüfe 'Server' oder 'Mission'-Reiter.</German>
-        <Japanese>設定を上書きします。'サーバー'か'ミッション'タブを確認してください。</Japanese>
+    <Key ID="STR_cba_settings_overwrite_clients">
+        <English>Overwrite\nClients</English>
+        <German>Clients\nüberschreiben</German>
     </Key>
-    <Key ID="STR_cba_settings_shortcut">
-        <English>Game Options (Addons)</English>
-        <German>Optionen (Modifikationen)</German>
-        <Japanese>ゲーム オプション (アドオン)</Japanese>
+    <Key ID="STR_cba_settings_overwrite_mission">
+        <English>Overwrite\nMission</English>
+        <German>Mission\nüberschreiben</German>
     </Key>
-    <Key ID="STR_cba_settings_ButtonSave_tooltip">
-        <English>Save current settings as preset.</English>
-        <German>Derzeitige Einstellungen als Vorlage speichern.</German>
-        <Japanese>現在の設定をプリセットとして保存します。</Japanese>
+    <Key ID="STR_cba_settings_overwrite_server">
+        <English>Overwrite\nServer</English>
+        <German>Server\nüberschreiben</German>
     </Key>
-    <Key ID="STR_cba_settings_ButtonLoad_tooltip">
-        <English>Load settings from preset.</English>
-        <German>Einstellungen aus Vorlage laden.</German>
-        <Japanese>プリセットから設定を読み込みます。</Japanese>
+    <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
+        <English>This setting is overwritten by the clients.</English>
+        <German>Diese Einstellung wird von den Clients überschrieben.</German>
+    </Key>
+    <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
+        <English>This setting is overwritten by the mission.</English>
+        <German>Diese Einstellung wird von der Mission überschrieben.</German>
+    </Key>
+    <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
+        <English>This setting is overwritten by the server.</English>
+        <German>Diese Einstellung wird vom Server überschrieben.</German>
+    </Key>
+    <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
+        <English>This setting is overwritten by the clients and only applies to the server.</English>
+        <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
     </Key>
 </Package>
