@@ -14,6 +14,21 @@ class CfgWeapons {
         class WeaponSlotsInfo;
     };
 
+    class Launcher;
+
+    class Launcher_Base_F : Launcher {
+        class WeaponSlotsInfo;
+    };
+
+    class launch_Titan_base : Launcher_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class PointerSlot : asdg_FrontSideRail {
+                iconPosition[] = {0.2, 0.45};
+                iconScale = 0.25;
+            };
+        };
+    };
+
     class EBR_base_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo;
     };
@@ -591,11 +606,11 @@ class CfgWeapons {
     class hgun_PDW2000_F : pdw2000_base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class MuzzleSlot : asdg_MuzzleSlot_9MM_SMG {
-                iconPosition[] = {0.0, 0.45};
+                iconPosition[] = {0.1, 0.41};
                 iconScale = 0.2;
             };
             class CowsSlot: asdg_OpticRail1913 {
-                iconPosition[] = {0.5, 0.4};
+                iconPosition[] = {0.4, 0.32};
                 iconScale = 0.15;
             };
         };
@@ -842,6 +857,10 @@ class CfgWeapons {
                 iconPosition[] = {0.25, 0.4};
                 iconScale = 0.2;
             };
+            class PointerSlot : asdg_PistolUnderRail {
+                iconPosition[] = {0.48, 0.54};
+                iconScale = 0.25;
+            };
         };
    };
 
@@ -859,6 +878,19 @@ class CfgWeapons {
             class MuzzleSlot : asdg_MuzzleSlot_45ACP {
                 iconPosition[] = {0.24, 0.35};
                 iconScale = 0.2;
+            };
+            class PointerSlot : asdg_PistolUnderRail {
+                iconPosition[] = {0.47, 0.55};
+                iconScale = 0.3;
+            };
+        };
+    };
+
+    class hgun_Pistol_heavy_02_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class PointerSlot : asdg_PistolUnderRail {
+                iconPosition[] = {0.35, 0.6};
+                iconScale = 0.3;
             };
         };
     };
