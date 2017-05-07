@@ -36,10 +36,10 @@ Author:
 #include "script_component.hpp"
 
 params [
-    ["_group",grpNull,[grpNull,objNull]],
-    ["_position",[],[[],objNull,grpNull,locationNull],3],
-    ["_radius",100,[0]],
-    ["_count",3,[0]]
+    ["_group", grpNull, [grpNull, objNull]],
+    ["_position", [], [[], objNull, grpNull, locationNull], [2, 3]],
+    ["_radius", 100, [0]],
+    ["_count", 3, [0]]
 ];
 
 _group = _group call CBA_fnc_getGroup;
