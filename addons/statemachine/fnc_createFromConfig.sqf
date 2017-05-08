@@ -22,7 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 SCRIPT(createFromConfig);
-params [["_config", [], [configNull]]];
+params [["_config", configNull, [configNull]]];
 
 if (isNull _config) exitWith {};
 
