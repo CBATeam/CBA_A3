@@ -43,6 +43,7 @@ class CfgFunctions
                 description = "Associate a keybinds unique mod name with a pretty name (localized name, etc)";
                 file = "\x\cba\addons\keybinding\fnc_registerKeybindModPrettyName.sqf";
             };
+            PATHTO_FNC(localizeKey);
         };
     };
 };
