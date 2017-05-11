@@ -59,6 +59,13 @@ if (_hashKey isEqualTo "") then {
 
 _hashKey = toLower _hashKey;
 
+private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+
+// fix using addKeyHander twice on different keys makes old handler unremovable
+if (!isNil {_hash getVariable _hashKey}) then {
+    [_hashKey, _type] call CBA_fnc_removeKeyHandler;
+};
+
 // add default keyup handler to keydown
 if (_type isEqualTo "keydown") then {
     private _params = + _this;
@@ -66,13 +73,6 @@ if (_type isEqualTo "keydown") then {
     _params set [3, "keyup"];
     _params set [4, _hashKey + "_cbadefaultuphandler"];
     _params call CBA_fnc_addKeyHandler;
-};
-
-private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
-
-// fix using addKeyHander twice on different keys makes old handler unremovable
-if (!isNil {_hash getVariable _hashKey}) then {
-    [_hashKey, _type] call CBA_fnc_removeKeyHandler;
 };
 
 _hash setVariable [_hashKey, [_key, _settings, _code, _allowHold, _holdDelay]];
