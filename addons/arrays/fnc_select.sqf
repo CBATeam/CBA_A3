@@ -5,11 +5,11 @@ Description:
     Select array elements for which the block returns true
 
 Parameters:
-    _array - Input Array [Array]
-    _block - Block [Code]
+    _array - Array to be filtered <ARRAY>
+    _block - Condition <CODE>
 
 Returns:
-    New array with elements included for which the block returns true [Array]
+    New array with elements included for which the block returns true <ARRAY>
 
 Example:
     (begin example)
@@ -29,12 +29,4 @@ SCRIPT(select);
 
 params ["_array", "_filterCode"];
 
-private _result = [];
-
-{
-    if (_x call _filterCode) then {
-        _result pushBack _x;
-    };
-} forEach _array;
-
-_result
+_array select {_x call _filterCode}
