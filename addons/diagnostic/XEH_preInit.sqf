@@ -47,7 +47,7 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] isEqualTo 1) then {
 
 
     if (isNil QGVAR(clientIDs)) then {
-        GVAR(clientIDs) = [[2, profileName]];
+        GVAR(clientIDs) = [[2, format ["[SERVER] %1", profileName]]];
     };
 
     if (isServer) then {
