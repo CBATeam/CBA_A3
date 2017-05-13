@@ -60,10 +60,9 @@ _stateMachine setVariable [QGVAR(skipNull), _skipNull];     // Skip items that a
 _stateMachine setVariable [QGVAR(updateCode), _updateCode]; // List update code
 _stateMachine setVariable [QGVAR(ID), GVAR(nextUniqueID)];  // Unique state machine ID
 INC(GVAR(nextUniqueID));
-GVAR(stateMachines) pushBack _stateMachine;
 
-if (isNil QGVAR(pfh)) then {
-    GVAR(pfh) = [FUNC(clockwork), 0, []] call CBA_fnc_addPerFrameHandler;
+if (isNil QGVAR(efID)) then {
+    GVAR(efID) = addMissionEventHandler ["EachFrame", {call FUNC(clockwork)}];
 };
 
 _stateMachine

@@ -3,3 +3,4 @@
 #include "XEH_PREP.sqf"
 
 PREP(initExtendedDebugConsole);
+PREP(initTargetDebugConsole);
