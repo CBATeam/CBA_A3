@@ -43,7 +43,7 @@ if (!isNil QGVAR(keys)) then {
         {
             (EGVAR(keybinding,activeBinds) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
 
-            private _keyName = _registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey} joinString "    ";
+            private _keyName = (_registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 
             _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
         } forEach _addonActions;
