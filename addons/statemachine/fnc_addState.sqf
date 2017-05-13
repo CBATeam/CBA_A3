@@ -62,6 +62,7 @@ _stateMachine setVariable [EVENTTRANSITIONS(_name), []];
 // First state added is always the intial state
 if (isNil {_stateMachine getVariable QGVAR(initialState)}) then {
     _stateMachine setVariable [QGVAR(initialState), _name];
+    GVAR(stateMachines) pushBack _stateMachine; // add it to the list now that it has an initial state
 };
 
 _name
