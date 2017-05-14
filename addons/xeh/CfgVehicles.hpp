@@ -3,27 +3,6 @@ class CfgVehicles {
     class All {
         XEH_ENABLED;
     };
-    class Logic: All {
-        XEH_DISABLED;
-    };
-    class LaserTarget: All {
-        XEH_DISABLED;
-    };
-    class NVTarget: All {
-        XEH_DISABLED;
-    };
-    class ArtilleryTarget: All {
-        XEH_DISABLED;
-    };
-    class FireSectorTarget: All {
-        XEH_DISABLED;
-    };
-    class Static: All {
-        XEH_DISABLED;
-    };
-    class Thing: All {
-        XEH_DISABLED;
-    };
 
     class Helicopter;
     class ParachuteBase: Helicopter {
@@ -138,6 +117,7 @@ class CfgVehicles {
     };
 
     // backwards comp, inert
+    class Logic;
     class SLX_XEH_Logic: Logic {
         scope = 1;
         displayName = "XEH Initialization Logic";
