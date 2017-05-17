@@ -69,18 +69,18 @@ if (canSuspend) exitWith {
 
 params [
     ["_addon", "", [""]],
-    ["_action", "", [""]],
+    ["_addonAction", "", [""]],
     ["_title", "", ["", []]],
     ["_downCode", {}, [{}]],
     ["_upCode", {}, [{}]],
     ["_defaultKeybind", KEYBIND_NULL, [KEYBIND_NULL]],
-    ["_holdKey", true, [false]],
+    ["_holdKey", false, [false]],
     ["_holdDelay", 0, [0]],
     ["_overwrite", false, [false]]
 ];
 
-_title params [["_displayName", _action, [""]], ["_tooltip", "", [""]]];
-_action = toLower _action;
+_title params [["_displayName", _addonAction, [""]], ["_tooltip", "", [""]]];
+private _action = toLower format ["%1$%2", _addon, _addonAction];
 
 // support old format
 if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
@@ -91,6 +91,8 @@ if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
 // Make sure modifer is set to true, if base key is a modifier
 _defaultKeybind params [["_defaultKey", 0, [0]], ["_defaultModifiers", [], [[]]]];
 _defaultModifiers params [["_defaultShift", false, [false]], ["_defaultControl", false, [false]], ["_defaultAlt", false, [false]]];
+
+_defaultKey = _defaultKey max 0;
 
 if (_defaultKey in [DIK_LSHIFT, DIK_RSHIFT]) then {
     _defaultShift = true;
@@ -114,43 +116,46 @@ if (isNil "_registry") then {
     profileNamespace setVariable [QGVAR(registry_v3), _registry];
 };
 
-private _registryKeybinds = [_registry, _action] call CBA_fnc_hashGet;
+private _keybinds = [_registry, _action] call CBA_fnc_hashGet;
 
 // action doesn't exist in registry yet, create it and store default keybinding
-if (isNil "_registryKeybinds" || {_overwrite}) then {
-    _registryKeybinds = [_keybind];
-    [_registry, _action, _registryKeybinds] call CBA_fnc_hashSet;
+if (isNil "_keybinds" || {_overwrite}) then {
+    _keybinds = [_keybind];
+    [_registry, _action, _keybinds] call CBA_fnc_hashSet;
 };
+
+// filter out null binds
+_keybinds = _keybinds select {_x select 0 > DIK_ESCAPE};
 
 // make list of active mods and keybinds for gui
-if (isNil QGVAR(activeMods)) then {
-    GVAR(activeMods) = [] call CBA_fnc_createNamespace;
-    GVAR(activeBinds) = [] call CBA_fnc_createNamespace;
+if (isNil QGVAR(addons)) then {
+    GVAR(addons) = [] call CBA_fnc_createNamespace;
+    GVAR(actions) = [] call CBA_fnc_createNamespace;
 };
 
-private _addonInfo = GVAR(activeMods) getVariable _addon;
+private _addonInfo = GVAR(addons) getVariable _addon;
 
 if (isNil "_addonInfo") then {
     _addonInfo = [_addon, []];
-    GVAR(activeMods) setVariable [_addon, _addonInfo];
+    GVAR(addons) setVariable [_addon, _addonInfo];
 };
 
-(_addonInfo select 1) pushBackUnique toLower _action;
+(_addonInfo select 1) pushBackUnique toLower _addonAction;
 
-GVAR(activeBinds) setVariable [_addon + "$" + _action, [_displayName, _tooltip, _registryKeybinds, _defaultKeybind]];
+GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _defaultKeybind, _downCode, _upCode, _holdKey, _holdDelay]];
 
 // add this action to all keybinds
 {
     _keybind = _x;
 
     if !(_downCode isEqualTo {}) then {
-        [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1$%2$down", _addon, _action], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
+        [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1_down_%2", _action, _forEachIndex], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
     };
 
     if !(_upCode isEqualTo {}) then {
-        [_keybind select 0, _keybind select 1, _upCode, "keyUp", format ["%1$%2$up", _addon, _action]] call CBA_fnc_addKeyHandler;
+        [_keybind select 0, _keybind select 1, _upCode, "keyUp", format ["%1_up_%2", _action, _forEachIndex]] call CBA_fnc_addKeyHandler;
     };
-} forEach _registryKeybinds;
+} forEach _keybinds;
 
 // Emit an event that a key has been registered.
 [QGVAR(registerKeybind), _this] call CBA_fnc_localEvent;
