@@ -16,6 +16,8 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+diag_log text format ["XEH: missionNamespace processed [%1]", ISPROCESSED(missionNamespace)];
+
 if (ISPROCESSED(missionNamespace)) exitWith {
     diag_log text "[XEH]: preInit already executed. Abort preInit.";
 };
