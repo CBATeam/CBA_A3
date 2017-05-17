@@ -43,34 +43,7 @@ if (!isNil QGVAR(keys)) then {
         {
             (EGVAR(keybinding,activeBinds) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
 
-            private _keybind = _registryKeybinds select 0;
-
-            // Escape < and >
-            _displayName = [_displayName, "<", "&lt;"] call CBA_fnc_replace;
-            _displayName = [_displayName, ">", "&gt;"] call CBA_fnc_replace;
-
-            _keybind params [["_key", 0, [0]], ["_modifier", [], [[]]]];
-            _modifier params [["_shift", false, [false]], ["_ctrl", false, [false]], ["_alt", false, [false]]];
-
-            // Try to convert dik code to a human key code.
-            private _keyName = EGVAR(keybinding,keyNames) getVariable str _key;
-
-            if (isNil "_keyName") then {
-                _keyName = ["", format [localize ELSTRING(keybinding,unkownKey), _key]] select (_key > 0);
-            };
-
-            // Build the full key combination name.
-            if (_shift && {!(_key in [DIK_LSHIFT, DIK_RSHIFT])}) then {
-                _keyName = localize "str_dik_shift" + "+" + _keyName;
-            };
-
-            if (_alt && {!(_key in [DIK_LMENU, DIK_RMENU])}) then {
-                _keyName = localize "str_dik_alt" + "+" + _keyName;
-            };
-
-            if (_ctrl && {!(_key in [DIK_LCONTROL, DIK_RCONTROL])}) then {
-                _keyName = localize "str_dik_control" + "+" + _keyName;
-            };
+            private _keyName = (_registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 
             _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
         } forEach _addonActions;
