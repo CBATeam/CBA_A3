@@ -37,7 +37,7 @@ private _ctrlAddonList = _display displayCtrl IDC_ADDON_LIST;
 
 lbSort _ctrlAddonList;
 
-_ctrlAddonList lbSetCurSel 0;
+_ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call (uiNamespace getVariable QFUNC(gui_update))}];
 
 private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;

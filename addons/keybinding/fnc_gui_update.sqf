@@ -8,8 +8,12 @@ private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;
 
 lnbClear _ctrlKeyList;
 
-private _addon = _ctrlAddonList lbData lbCurSel _ctrlAddonList;
+private _index = lbCurSel _ctrlAddonList;
+private _addon = _ctrlAddonList lbData _index;
+
 private _addonActions = GVAR(addons) getVariable [_addon, [nil, []]] select 1;
+
+uiNamespace setVariable [QGVAR(addonIndex), _index];
 
 private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
 
