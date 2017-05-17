@@ -1,12 +1,13 @@
 #include "script_component.hpp"
 
-// fix for preInit = 1 functions not being executed when entering 3den from main menu
-[] call CBA_fnc_preInit;
+params ["_display"];
 
-// since 1.60, preInit = 1 functions aren't executed when returning from a preview either ...
-add3DENEventHandler ["OnMissionPreviewEnd", {[] call CBA_fnc_preInit}];
+private _fnc_watchDog = {
+    if (!ISPROCESSED(missionNamespace)) then {
+        diag_log text format ["XEH: missionNamespace processed [%1]", ISPROCESSED(missionNamespace)];
+        [] call CBA_fnc_preInit;
+    };
+};
 
-// switching terrains in 3den will reset missionNamespace
-add3DENEventHandler ["OnTerrainNew", {[] call CBA_fnc_preInit}];
-add3DENEventHandler ["OnMissionNew", {[] call CBA_fnc_preInit}];
-add3DENEventHandler ["OnMissionLoad", {[] call CBA_fnc_preInit}];
+_display displayAddEventHandler ["MouseMoving", _fnc_watchDog];
+_display displayAddEventHandler ["MouseHolding", _fnc_watchDog];
