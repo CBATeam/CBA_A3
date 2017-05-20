@@ -50,6 +50,16 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
     };
 };
 
+class asdg_PistolUnderRail: asdg_SlotInfo { // under rail for handguns
+    linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
+    displayName = "$STR_A3_PointerSlot0";
+    iconPicture = "\a3\weapons_f_mark\Data\UI\attachment_under";
+    iconPinpoint = "Bottom";
+    class compatibleItems {
+        acc_flashlight_pistol = 1;
+    };
+};
+
 // Picattiny rails for optic mounts
 
 class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to fit any optic, but not enough to attach a clip-on NVS in front of a long scope.
@@ -75,6 +85,7 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_Holosight_blk_F = 1;
         optic_Holosight_khk_F = 1;
         optic_Holosight_smg_blk_F = 1;
+        optic_Holosight_smg_khk_F = 1;
         optic_DMS = 1;
         optic_DMS_ghex_F = 1;
         optic_LRPS = 1;
