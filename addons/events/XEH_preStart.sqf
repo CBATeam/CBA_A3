@@ -1,8 +1,13 @@
 #include "script_component.hpp"
 
-PREP(keyHandler);
-PREP(keyHandlerDown);
-PREP(keyHandlerUp);
+if (hasInterface) then {
+    PREP(initDisplayMission);
+    PREP(initDisplayCurator);
 
-PREP(missionDisplayLoad);
-PREP(curatorDisplayLoad);
+    PREP(keyHandler);
+    PREP(keyHandlerDown);
+    PREP(keyHandlerUp);
+    PREP(mouseHandlerDown);
+    PREP(mouseHandlerUp);
+    PREP(mouseWheelHandler);
+};

@@ -39,6 +39,9 @@ _defaultKeybind params ["_dikCode", "_shift", "_ctrl", "_alt"];
 
 
 if(_dikCode > -1 && !isNil {_code}) then {  // A DIK code of -1 signifies "no key set"
+    if (isNil QGVAR(ehCounter)) then {
+        GVAR(ehCounter) = 512;
+    };
     GVAR(ehCounter) = GVAR(ehCounter) + 1;
     if(toLower _keypressType == "keydown") then {
         [_dikCode, [_shift, _ctrl, _alt], _code, "keydown", format ["%1", GVAR(ehCounter)]] call cba_fnc_addKeyHandler;

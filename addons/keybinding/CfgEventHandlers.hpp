@@ -13,6 +13,6 @@ class Extended_PreInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayConfigure {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(configureDisplayLoad)'));
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayConfigure)'));
     };
 };

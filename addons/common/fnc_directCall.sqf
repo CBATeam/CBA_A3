@@ -22,12 +22,12 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_CBA_code", {}, [{}]], ["_CBA_arguments", []]];
+params [["_CBA_code", {}, [{}]], ["_this", []]];
 
 private "_CBA_return";
 
 isNil {
-    _CBA_return = _CBA_arguments call _CBA_code;
+    _CBA_return = [_x] apply _CBA_code select 0;
 };
 
 if (!isNil "_CBA_return") then {_CBA_return};

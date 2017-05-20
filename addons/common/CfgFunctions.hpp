@@ -91,6 +91,7 @@ class CfgFunctions {
             PATHTO_FNC(mapRelPos);
             PATHTO_FNC(mapDirTo);
             PATHTO_FNC(getTerrainProfile);
+            PATHTO_FNC(isTerrainObject);
         };
 
         class Positions {
