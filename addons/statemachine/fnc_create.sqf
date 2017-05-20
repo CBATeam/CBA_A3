@@ -35,6 +35,11 @@ if (isNil QGVAR(stateMachines)) then {
     GVAR(nextUniqueID) = 0;
 };
 
+#ifdef STATEMACHINE_PERFORMANCE_COUNTERS
+if (isNil QGVAR(performanceCounters)) then {GVAR(performanceCounters) = [];};
+GVAR(performanceCounters) pushBack [];
+#endif
+
 private _updateCode = {};
 if (_list isEqualType {}) then {
     _updateCode = _list;
