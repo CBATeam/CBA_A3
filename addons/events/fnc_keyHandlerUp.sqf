@@ -1,7 +1,9 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandlerUp
+
 Description:
     Executes the key's handler
+
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
@@ -11,40 +13,42 @@ SCRIPT(keyHandlerUp);
 
 params ["", "_inputKey"];
 
-if (_inputKey == 0) exitWith {};
+if (_inputKey isEqualTo 0) exitWith {};
 
-private _blockedUpKeys = [];
+// handle modifiers
+switch (true) do {
+    case (_inputKey in [DIK_LSHIFT, DIK_RSHIFT]): {
+        GVAR(shift) = false;
+    };
+    case (_inputKey in [DIK_LCONTROL, DIK_RCONTROL]): {
+        GVAR(control) = false;
+    };
+    case (_inputKey in [DIK_LMENU, DIK_RMENU]): {
+        GVAR(alt) = false;
+    };
+};
+
 private _removeHandlers = [];
 
 {
     private _keybindParams = GVAR(keyHandlersUp) getVariable _x;
 
-    _keybindParams params ["_keybind", "_keybindSettings", "_code"];
+    _keybindParams params ["_keybind", "_keybindModifiers", "_code"];
 
     // Verify if the required modifier keys are present
-    if (_inputKey in [_keybind, DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) then {
-        if !(_keybind in _blockedUpKeys) then {
-            if (
-                _inputKey == _keybind
-                || {(_keybindSettings select 0 && {_inputKey in [DIK_LSHIFT, DIK_RSHIFT]})
-                || {(_keybindSettings select 1 && {_inputKey in [DIK_LCONTROL, DIK_RCONTROL]})
-                || {(_keybindSettings select 2 && {_inputKey in [DIK_LMENU, DIK_RMENU]})}}}
-            ) then {
-                private _params = + _this;
-                _params pushBack + _keybindParams;
-                _params pushBack _x;
+    if (
+        _inputKey isEqualTo _keybind
+        || {(_keybindModifiers select 0 && {_inputKey in [DIK_LSHIFT, DIK_RSHIFT]})
+        || {(_keybindModifiers select 1 && {_inputKey in [DIK_LCONTROL, DIK_RCONTROL]})
+        || {(_keybindModifiers select 2 && {_inputKey in [DIK_LMENU, DIK_RMENU]})}}}
+    ) then {
+        private _params = + _this;
+        _params pushBack + _keybindParams;
+        _params pushBack _x;
 
-                private _blockInput = _params call _code;
+        _params call _code;
 
-                if (_blockInput isEqualTo true) then {
-                    _blockedUpKeys pushBack _keybind;
-                };
-
-                _removeHandlers pushBack _x;
-            };
-        } else {
-            _removeHandlers pushBack _x;
-        };
+        _removeHandlers pushBack _x;
     };
 } forEach GVAR(keyDownActiveList);
 
