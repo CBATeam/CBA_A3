@@ -71,8 +71,8 @@ params [
     ["_addon", "", [""]],
     ["_addonAction", "", [""]],
     ["_title", "", ["", []]],
-    ["_downCode", {}, [{}]],
-    ["_upCode", {}, [{}]],
+    ["_downCode", {}, [{}, ""]],
+    ["_upCode", {}, [{}, ""]],
     ["_defaultKeybind", KEYBIND_NULL, [KEYBIND_NULL]],
     ["_holdKey", false, [false]],
     ["_holdDelay", 0, [0]],
@@ -87,6 +87,10 @@ if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
     _defaultKeybind params ["_defaultKey", "_defaultShift", "_defaultControl", "_defaultAlt"];
     _defaultKeybind = [_defaultKey, [_defaultShift, _defaultControl, _defaultAlt]];
 };
+
+// Handle empty strings to indicated no code
+if (_downCode isEqualType "") then {_downCode = {};};
+if (_upCode isEqualType "") then {_upCode = {};};
 
 // Make sure modifer is set to true, if base key is a modifier
 _defaultKeybind params [["_defaultKey", 0, [0]], ["_defaultModifiers", [], [[]]]];
