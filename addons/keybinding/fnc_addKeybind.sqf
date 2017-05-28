@@ -71,8 +71,8 @@ params [
     ["_addon", "", [""]],
     ["_addonAction", "", [""]],
     ["_title", "", ["", []]],
-    ["_downCode", {}, [{}]],
-    ["_upCode", {}, [{}]],
+    ["_downCode", {}, [{}, ""]],
+    ["_upCode", {}, [{}, ""]],
     ["_defaultKeybind", KEYBIND_NULL, [KEYBIND_NULL]],
     ["_holdKey", false, [false]],
     ["_holdDelay", 0, [0]],
@@ -86,6 +86,16 @@ private _action = toLower format ["%1$%2", _addon, _addonAction];
 if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
     _defaultKeybind params ["_defaultKey", "_defaultShift", "_defaultControl", "_defaultAlt"];
     _defaultKeybind = [_defaultKey, [_defaultShift, _defaultControl, _defaultAlt]];
+};
+
+// Handle non-code type being passed for up/down code args
+if (!(_downCode isEqualType {})) then {
+    if (!(_downCode isEqualTo "")) then {WARNING_1("_downCode: Non code type [%1] will be ignored",_downCode);};
+    _downCode = {};
+};
+if (!(_upCode isEqualType {})) then {
+    if (!(_upCode isEqualTo "")) then {WARNING_1("_upCode: Non code type [%1] will be ignored",_upCode);};
+    _upCode = {};
 };
 
 // Make sure modifer is set to true, if base key is a modifier
