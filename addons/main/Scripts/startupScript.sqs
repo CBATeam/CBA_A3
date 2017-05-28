@@ -1,0 +1,10 @@
+~1
+1 cutRsc ["SplashBohemia", "PLAIN"];
+0 cutRsc ["SplashNoise","PLAIN"];
+~4
+if (isClass (configfile >> "CfgPatches" >> "A3_Map_Tanoabuka")) then {1 cutRsc ["SplashArma3Apex", "PLAIN"];} else {1 cutRsc ["SplashArma3", "PLAIN"];};
+~4
+1 cutRsc ["SplashCopyright", "PLAIN"];
+~3
+titleText ["", "PLAIN"];
+exit

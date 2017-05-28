@@ -1,0 +1,5 @@
+[missionnamespace,"teamSwitched",_this] call bis_fnc_callScriptedEventHandler;
+~0.1
+0.5 fadeSound 1
+
+exit;

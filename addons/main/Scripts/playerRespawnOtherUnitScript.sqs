@@ -1,0 +1,1 @@
+["playerRespawnOtherUnitScript",_this] call (uinamespace getvariable "bis_fnc_selectRespawnTemplate");
