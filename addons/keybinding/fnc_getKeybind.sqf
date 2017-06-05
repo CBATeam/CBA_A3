@@ -55,4 +55,3 @@ TRACE_2("",_keybinds,_defaultKeybind);
 private _oldKeyBind = _keybinds param [0, [-1,[false,false,false]]];
 
 [_addon, _addonAction, _displayName, _downCode, _upCode, _oldKeyBind, _holdKey, _holdDelay, _keybinds]
-     
