@@ -48,8 +48,8 @@ if (isNil "_actionInfo") exitWith {
     nil
 };
 
-_actionInfo params ["_displayName", "_tooltip", "_keybinds", "_defaultKeybind", "_downCode", "_upCode", "_holdKey", "_holdDelay"];
-TRACE_2("",_keybinds,_defaultKeybind);
+_actionInfo params ["_displayName", "", "_keybinds", "", "_downCode", "_upCode", "_holdKey", "_holdDelay"];
+TRACE_2("",_displayName,_keybinds);
 
 // Select a single keybind (first one) for the 5th element return to keep compatiblity with old code
 private _oldKeyBind = _keybinds param [0, [-1,[false,false,false]]];
