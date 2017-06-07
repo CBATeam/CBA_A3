@@ -66,7 +66,7 @@ private _prevButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_PRE
 _prevButton ctrlSetPosition [
     0 * GUI_GRID_W,
     9.25 * GUI_GRID_H + safezoneH - 26.25 * GUI_GRID_H,
-    11.25 * GUI_GRID_W,
+    10.875 * GUI_GRID_W,
     1 * GUI_GRID_H
 ];
 _prevButton ctrlCommit 0;
@@ -78,9 +78,9 @@ _prevButton ctrlAddEventHandler ["MouseButtonUp", {_this call FUNC(prevStatement
 private _nextButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_NEXT, _debugConsole];
 
 _nextButton ctrlSetPosition [
-    11.5 * GUI_GRID_W,
+    11.125 * GUI_GRID_W,
     9.25 * GUI_GRID_H + safezoneH - 26.25 * GUI_GRID_H,
-    11.25 * GUI_GRID_W,
+    10.875 * GUI_GRID_W,
     1 * GUI_GRID_H
 ];
 _nextButton ctrlCommit 0;

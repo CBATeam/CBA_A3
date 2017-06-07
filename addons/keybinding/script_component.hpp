@@ -1,10 +1,5 @@
 #define COMPONENT keybinding
 #include "\x\cba\addons\main\script_mod.hpp"
-#include "\x\cba\addons\main\script_macros.hpp"
-
-#include "\a3\ui_f\hpp\defineDIKCodes.inc"
-
-//#define DEBUG_ENABLED_KEYBINDING
 
 #ifdef DEBUG_ENABLED_KEYBINDING
     #define DEBUG_MODE_FULL
@@ -14,10 +9,22 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_KEYBINDING
 #endif
 
-#define PATHTO_SUB(var1,var2,var3,var4) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3\##var4.sqf
-#define COMPILE_FILE_SUB(var1,var2,var3,var4) COMPILE_FILE2(PATHTO_SUB(var1,var2,var3,var4))
-#define PREP_SYS_SUB(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SUB(var1,var2,var3,DOUBLES(fnc,var4))
-#define PREP_SUB(var1,var2) PREP_SYS_SUB(PREFIX,COMPONENT_F,var1,var2)
+#include "\x\cba\addons\main\script_macros.hpp"
+
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+#include "\a3\ui_f\hpp\defineResincl.inc"
+
+#define IDC_ADDONS_GROUP 4301
+#define IDC_BTN_CONFIGURE_ADDONS 4302
+#define IDC_BTN_KEYBOARD_FAKE 8000
+#define IDC_ADDON_LIST 9000
+#define IDC_KEY_LIST 9001
+
+#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
+#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
+#define POS_W(N) ((N) * GUI_GRID_W)
+#define POS_H(N) ((N) * GUI_GRID_H)
 
 #define DIK_XBOX_A 327680
 #define DIK_XBOX_B 327681
@@ -43,3 +50,7 @@
 #define DIK_XBOX_LEFT_THUMB_Y_DOWN 327701
 #define DIK_XBOX_RIGHT_THUMB_X_LEFT 327702
 #define DIK_XBOX_RIGHT_THUMB_Y_DOWN 327703
+
+#define NAMESPACE_NULL objNull
+#define HASH_NULL ([] call CBA_fnc_hashCreate)
+#define KEYBIND_NULL [0, [false, false, false]]

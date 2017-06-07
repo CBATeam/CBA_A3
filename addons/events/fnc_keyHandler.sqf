@@ -1,7 +1,9 @@
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandler
+
 Description:
     Executes the key's handler, bwc for ace interaction menu
+
 Author:
     commy2
 ---------------------------------------------------------------------------- */

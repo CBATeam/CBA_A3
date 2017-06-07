@@ -22,12 +22,10 @@ Examples:
         _displayName = _entry select 2; // Pretty name for the key action or an array with ["pretty name", "tool tip"]
         _downCode    = _entry select 3; // Code to execute on keyDown
         _upCode      = _entry select 4; // Code to execute on keyUp
-        _keyBind     = _entry select 5; // [DIK code, [shift, ctrl, alt]]
+        _firstKeybind= _entry select 5; // [DIK code, [shift, ctrl, alt]] (Only the first one)
         _holdKey     = _entry select 6; // Will the key fire every frame while held down? (bool)
         _holdDelay   = _entry select 7; // How long after keydown will the key event fire, in seconds (float)
-
-        ...
-        ...
+        _keybinds    = _entry select 8; // All keybinds (array)
     };
     (end example)
 
@@ -37,33 +35,23 @@ Author:
 
 #include "script_component.hpp"
 
-params ["_modName","_actionName"];
+params ["_addon","_addonAction"];  
+TRACE_2("getKeybind",_addon,_addonAction);
 
-_modId = (GVAR(handlers) select 0) find _modName;
-if(_modId == -1) exitWith {nil};
+if (!hasInterface) exitWith {nil};
 
-_modRegistry = (GVAR(handlers) select 1) select _modId;
+private _action = toLower format ["%1$%2", _addon, _addonAction];
+private _actionInfo = GVAR(actions) getVariable _action;
 
-_actionEntryId = (_modRegistry select 0) find _actionName;
-if(_actionEntryId == -1) exitWith {nil};
-_actionEntry = (_modRegistry select 1) select _actionEntryId;
+if (isNil "_actionInfo") exitWith {
+    TRACE_2("Action not found",_action,_actionInfo);
+    nil
+};
 
-_hashDown = format["%1_%2_down", _modName, _actionName];
-_entryIndex = (GVAR(defaultKeybinds) select 0) find _hashDown;
-if(_entryIndex == -1) exitWith {nil};
-_defaultEntry = (GVAR(defaultKeybinds) select 1) select _entryIndex;
+_actionInfo params ["_displayName", "", "_keybinds", "", "_downCode", "_upCode", "_holdKey", "_holdDelay"];
+TRACE_2("",_displayName,_keybinds);
 
-_entry = [
-    _modName,
-    _actionName,
-    _actionEntry select 0,
-    _defaultEntry select 0,
-    _defaultEntry select 1,
-    _actionEntry select 1,
-    _defaultEntry select 2,
-    _defaultEntry select 3
-];
+// Select a single keybind (first one) for the 5th element return to keep compatiblity with old code
+private _oldKeyBind = _keybinds param [0, [-1,[false,false,false]]];
 
-
-// Return the index into the registry.
-_entry;
+[_addon, _addonAction, _displayName, _downCode, _upCode, _oldKeyBind, _holdKey, _holdDelay, _keybinds]

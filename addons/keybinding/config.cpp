@@ -16,4 +16,4 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
-#include "gui\gui.hpp"
+#include "gui.hpp"

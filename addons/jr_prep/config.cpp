@@ -25,6 +25,17 @@ class CfgWeapons {
         class WeaponSlotsInfo;
     };
 
+    class Launcher;
+    class Launcher_Base_F : Launcher {
+        class WeaponSlotsInfo;
+    };
+
+    class launch_Titan_base : Launcher_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete PointerSlot;
+        };
+    };
+
     class EBR_base_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo;
     };
@@ -224,6 +235,7 @@ class CfgWeapons {
     class hgun_ACPC2_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
+            delete PointerSlot;
         };
    };
 
@@ -236,6 +248,14 @@ class CfgWeapons {
     class hgun_Pistol_heavy_01_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete MuzzleSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class hgun_Pistol_heavy_02_F : Pistol_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete PointerSlot;
         };
     };
 
