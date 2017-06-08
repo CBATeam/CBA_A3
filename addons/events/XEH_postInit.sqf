@@ -33,7 +33,7 @@ if (isServer) then {
 [QGVAR(chatMessageSent), {
     params ["_message"];
 
-    if ((_message select [0,1]) isEqualTo "#") then {
+    if (((_message select [0,1]) isEqualTo "#") && {!isNil QGVAR(customChatCommands)}) then {
         private _index = _message find " ";
 
         // no argument
@@ -55,7 +55,7 @@ if (isServer) then {
             _access pushBack "adminlogged";
         };
 
-        (GVAR(customChatCommands) getVariable _command) params ["_code", "_availableFor"];
+        (GVAR(customChatCommands) getVariable _command) params ["_code", "_availableFor", "_thisArgs"];
 
         if (_availableFor in _access) then {
             [[_argument], _code] call {

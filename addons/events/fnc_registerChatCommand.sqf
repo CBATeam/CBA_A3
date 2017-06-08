@@ -8,6 +8,7 @@ Parameters:
     _command      - Chat command <STRING>
     _code         - Code to execute after command was entered. <CODE>
     _availableFor - "all", "admin" or "adminLogged" (optional, default: "admin") <STRING>
+    _thisArgs - Variables available to the function <ANY>
 
 Returns:
     _return - true: Success, false: Error <BOOLEAN>
@@ -31,7 +32,8 @@ if (isNil QGVAR(customChatCommands)) then {
 params [
     ["_command", "", [""]],
     ["_code", {}, [{}]],
-    ["_availableFor", "admin", [""]]
+    ["_availableFor", "admin", [""]],
+    ["_thisArgs", []]
 ];
 
 if (_command isEqualTo "") exitWith {
@@ -51,5 +53,5 @@ if !(_availableFor in ["all", "admin", "adminlogged"]) exitWith {
     false
 };
 
-GVAR(customChatCommands) setVariable [_command, [_code, _availableFor]];
+GVAR(customChatCommands) setVariable [_command, [_code, _availableFor, _thisArgs]];
 true
