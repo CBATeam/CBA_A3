@@ -875,6 +875,10 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_01_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            class CowsSlot : asdg_PistolOpticMount {
+                iconPosition[] = {0.6, 0.27};
+                iconScale = 0.15;
+            };
             class MuzzleSlot : asdg_MuzzleSlot_45ACP {
                 iconPosition[] = {0.24, 0.35};
                 iconScale = 0.2;
@@ -888,6 +892,10 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_02_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            class CowsSlot : asdg_PistolOpticRail1913 {
+                iconPosition[] = {0.4, 0.3};
+                iconScale = 0.15;
+            };
             class PointerSlot : asdg_PistolUnderRail {
                 iconPosition[] = {0.35, 0.6};
                 iconScale = 0.3;

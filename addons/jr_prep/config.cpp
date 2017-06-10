@@ -247,6 +247,7 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_01_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete CowsSlot;
             delete MuzzleSlot;
             delete PointerSlot;
         };
@@ -254,6 +255,7 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_02_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete CowsSlot;
             delete MuzzleSlot;
             delete PointerSlot;
         };
