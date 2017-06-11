@@ -51,6 +51,12 @@ case "cameraview": {
 case "visiblemap": {
     [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
 };
+case "group": {
+    [QGVAR(groupEvent), _id] call CBA_fnc_removeEventHandler;
+};
+case "leader": {
+    [QGVAR(leaderEvent), _id] call CBA_fnc_removeEventHandler;
+};
 default {nil};
 };
 

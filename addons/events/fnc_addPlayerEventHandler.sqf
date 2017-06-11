@@ -13,6 +13,8 @@ Description:
         "visionMode" - player changed to normal/night/thermal view
         "cameraView" - camera mode changed ("Internal", "External", "Gunner" etc.)
         "visibleMap" - opened or closed map
+        "group"      - player group changes
+        "leader"     - leader of player changes
 
 Parameters:
     _type      - Event handler type. <STRING>
@@ -88,6 +90,18 @@ case "visiblemap": {
     };
     [QGVAR(visibleMapEvent), _function] call CBA_fnc_addEventHandler // return id
 };
+case "group": {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
+    };
+    [QGVAR(groupEvent), _function] call CBA_fnc_addEventHandler // return id
+};
+case "leader": {
+    if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
+    };
+    [QGVAR(leaderEvent), _function] call CBA_fnc_addEventHandler // return id
+};
 default {-1};
 };
 
@@ -97,6 +111,8 @@ if (_id != -1) then {
         GVAR(playerEHInfo) = [];
 
         GVAR(oldUnit) = objNull;
+        GVAR(oldGroup) = grpNull;
+        GVAR(oldLeader) = objNull;
         GVAR(oldWeapon) = "";
         GVAR(oldLoadout) = [];
         GVAR(oldLoadoutNoAmmo) = [];
@@ -112,6 +128,18 @@ if (_id != -1) then {
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
+            };
+
+            private _data = group _player;
+            if !(_data isEqualTo GVAR(oldGroup)) then {
+                [QGVAR(groupEvent), [_player, GVAR(oldGroup)]] call CBA_fnc_localEvent;
+                GVAR(oldGroup) = _data;
+            };
+
+            private _data = leader _player;
+            if !(_data isEqualTo GVAR(oldLeader)) then {
+                [QGVAR(leaderEvent), [_player, GVAR(oldLeader)]] call CBA_fnc_localEvent;
+                GVAR(oldLeader) = _data;
             };
 
             private _data = currentWeapon _player;
