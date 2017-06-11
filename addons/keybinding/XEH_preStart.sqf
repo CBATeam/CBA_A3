@@ -167,7 +167,14 @@ private _supportedKeys = [
 
 _supportedKeys = _supportedKeys apply {
     // strip away additional quote marks
-    private _keyName = parseSimpleArray format ["[%1]", keyName _x] select 0;
+    // Turkish keyboard which has a double quotes key (41), will throw an error in parseSimpleArray
+
+    private _formatedKeyname = format ["[%1]", keyName _x];
+    private _keyName = if (_formatedKeyname != "[""""""]") then {
+        (parseSimpleArray _formatedKeyname) select 0;
+    } else {
+        "''"
+    };
 
     [str _x, _keyName]
 };
