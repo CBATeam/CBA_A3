@@ -64,12 +64,13 @@ _defendPos = [_defendLocType, _defendPos] call CBA_fnc_getPosFromString;
 if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol
-_canPatrol = _logic getVariable ["canPatrol",true];
+_canPatrol = _logic getVariable ["canPatrol",0.1];
+_shouldHold = _logic getVariable ["shouldHold",0];
 
 // Command local group leaders to defend area
 _defendRadius = _logic getVariable ["defendRadius",25];
 _threshold = _logic getVariable ["threshold",2];
 {
     if (_defendSetPos) then {_defendPos = getPos _x;};
-    [_x, _defendPos, _defendRadius, _threshold, _canPatrol] call CBA_fnc_taskDefend;
+    [_x, _defendPos, _defendRadius, _threshold, _canPatrol, _shouldHold] call CBA_fnc_taskDefend;
 } forEach _localGroups;
