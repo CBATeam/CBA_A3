@@ -8,7 +8,7 @@ Parameters:
     _command      - Chat command <STRING>
     _code         - Code to execute after command was entered. <CODE>
     _availableFor - "all", "admin" or "adminLogged" (optional, default: "admin") <STRING>
-    _thisArgs     - Variables available to the function <ANY>
+    _thisArgs     - Arguments to pass to event chat handler code <ANY>
 
 Returns:
     _return - true: Success, false: Error <BOOLEAN>
@@ -17,6 +17,9 @@ Examples:
     (begin example)
         // '#skipTime 12' will make it night
         ["skipTime", { parseNumber (_this select 0) remoteExec ["skipTime"]; }, "admin"] call CBA_fnc_registerChatCommand;
+
+        // "Detonate" will blow up the charge
+        ["Detonate", {_thisArgs setDamage 1}, "admin", _placedDemoCharge] call CBA_fnc_registerChatCommand;
     (end)
 
 Author:
