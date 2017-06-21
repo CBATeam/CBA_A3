@@ -4,6 +4,9 @@ Function: CBA_fnc_removeWeaponCargo
 Description:
     Removes specific weapon(s) from cargo space.
 
+    Passing a non-preset weapon when there is a preset (classname with preset attachments/magazine)
+    weapon in cargo of that class will remove weapon only, leaving attachments and magazine.
+
     Warning: All weapon attachments/magazines in container will become detached.
 
 Parameters:
@@ -64,6 +67,7 @@ clearWeaponCargoGlobal _container;
 
 {
     _x params ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_magazineGL", "_bipod"];
+
     // weaponsItems magazineGL does not exist if not loaded (not even as empty array)
     if (count _x < 7) then {
         _bipod = _magazineGL;
@@ -74,8 +78,14 @@ clearWeaponCargoGlobal _container;
         // Process removal
         _count = _count - 1;
     } else {
-        _weapon = [_weapon] call CBA_fnc_getNonPresetClass;
-        _container addWeaponCargoGlobal [_weapon, 1];
+        private _weaponNonPreset = [_weapon] call CBA_fnc_getNonPresetClass;
+
+        if (_count != 0 && {_weaponNonPreset == _item}) then {
+            // Process removal of non-preset weapon, simply detach attachments on the weapon
+            _count = _count - 1;
+        } else {
+            _container addWeaponCargoGlobal [_weaponNonPreset, 1];
+        };
 
         _container addItemCargoGlobal [_muzzle, 1];
         _container addItemCargoGlobal [_pointer, 1];
