@@ -4,6 +4,8 @@ Function: CBA_fnc_removeItemCargo
 Description:
     Removes specific item(s) from cargo space.
 
+    Warning: All weapon attachments/magazines in containers in container will become detached.
+
 Parameters:
     _container - Object with cargo <OBJECT>
     _item      - Classname of item(s) to remove <STRING>
