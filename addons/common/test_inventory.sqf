@@ -107,6 +107,15 @@ TEST_TRUE(_result,_funcName);
 TEST_TRUE(count (itemCargo _container) == 2,_funcName);
 clearItemCargoGlobal _container;
 
+_container addItemCargoGlobal ["V_PlateCarrier1_rgr", 1];
+{
+    (_x select 1) addItemCargoGlobal ["FirstAidKit", 5];
+} forEach (everyContainer _container);
+_container addItemCargoGlobal ["FirstAidKit", 5];
+_result = [_container, "FirstAidKit", 5] call CBA_fnc_removeItemCargo;
+TEST_TRUE(count (itemCargo _container) == 1 && count (itemCargo (((everyContainer _container) select 0) select 1)) == 5,_funcName);
+clearItemCargoGlobal _container;
+
 
 _funcName = "CBA_fnc_removeMagazineCargo";
 LOG("Testing " + _funcName);

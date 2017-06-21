@@ -97,6 +97,7 @@ clearBackpackCargoGlobal _container;
         // Put attachments next to weapon, no command to put it directly onto a weapon when weapon is in a container
         {
             _x params ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_magazineGL", "_bipod"];
+
             // weaponsItems magazineGL does not exist if not loaded (not even as empty array)
             if (count _x < 7) then {
                 _bipod = _magazineGL;
