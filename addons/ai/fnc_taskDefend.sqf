@@ -15,6 +15,7 @@ Optional:
     - Defend Radius (Scalar)
     - Building Size Threshold (Integer, default 2)
     - Can patrol (boolean)
+    - Ratio of Garrison/Patroling units. Higher means more garrison (Float, default 0.8)
 
 Example:
     (begin example)
@@ -34,7 +35,8 @@ params [
     ["_position",[],[[],objNull,grpNull,locationNull],3],
     ["_radius",50,[0]],
     ["_threshold",2,[0]],
-    ["_patrol",true,[true]]
+    ["_patrol",true,[true]],
+    ["_garrisonratio",0.8,[0]]
 ];
 
 _group = _group call CBA_fnc_getGroup;
@@ -74,8 +76,8 @@ if (_patrol && {count _units > 1}) then {
         _x assignAsGunner (_statics deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        // 93% chance to occupy a random nearby building position (100% when no patrol)
-        if ((!_patrol || {random 1 < 0.93}) && { !(_buildings isEqualto []) }) then {
+        // Default of 80% chance to occupy a random nearby building position (100% when no patrol)
+        if ((!_patrol || {random 1 < _garrisonratio}) && { !(_buildings isEqualto []) }) then {
             private _building = _buildings call BIS_fnc_selectRandom;
             private _array = _building getVariable ["CBA_taskDefend_positions",[]];
 
