@@ -19,7 +19,10 @@ class CfgVehicles {
         XEH_DISABLED;
     };
 
-    class Module_F;
+    class Logic;
+    class Module_F: Logic {
+        XEH_ENABLED
+    };
     class BIS_Effect_FilmGrain: Module_F {
         XEH_ENABLED;
     };
@@ -83,7 +86,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class Logic;
     class LogicSectorBase_F: Logic {
         XEH_ENABLED;
     };
@@ -351,6 +353,12 @@ class CfgVehicles {
         XEH_ENABLED;
     };
     class Land_PowerLine_01_pole_transformer_F: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+
+    // ARGO
+    class Land_Laptop_02_F;
+    class Land_Laptop_02_unfolded_F: Land_Laptop_02_F {
         XEH_ENABLED;
     };
 };
