@@ -158,11 +158,11 @@ class CfgVehicles {
                     class two {
                         name = "2";
                         value = 2;
-                        default = 1;
                     };
                     class three {
                         name = "3";
                         value = 3;
+                        default = 1;
                     };
                     class four {
                         name = "4";
@@ -182,8 +182,15 @@ class CfgVehicles {
             class canPatrol {
                 displayName = CSTRING(CanPatrol);
                 description = CSTRING(CanPatrol_Desc);
-                typeName = "BOOL";
-                defaultValue = 1;
+                typeName = "NUMBER";
+                defaultValue = 0.1;
+            };
+
+            class shouldHold {
+                displayName = CSTRING(ShouldHold);
+                description = CSTRING(ShouldHold_Desc);
+                typeName = "NUMBER";
+                defaultValue = 0;
             };
         };
 

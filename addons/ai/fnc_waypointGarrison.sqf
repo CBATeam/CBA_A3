@@ -31,7 +31,7 @@ private _buildings = (_position nearObjects ["Building", 50]) apply {_x building
         _x assignAsGunner (_staticWeapons deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        if (count _buildings > 0 && {random 1 < 0.93}) then {
+        if (count _buildings > 0 && {random 1 < 0.90}) then {
             private _building = selectRandom _buildings;
             private _position = POP_RAND(_building);
 

@@ -114,12 +114,16 @@
             <Japanese>小さい数字ではより多くの建物が利用できます</Japanese>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
-            <English>Allow Patrolling</English>
-            <Japanese>哨戒を許可</Japanese>
+            <English>Patrol Chance</English>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
-            <English>AI will be able to patrol the area they are defending</English>
-            <Japanese>防衛のために AI が哨戒するのを許可します</Japanese>
+            <English>Chance for each unit to patrol instead of garrison</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ShouldHold">
+            <English>Hold Chance</English>
+        </Key>
+        <Key ID="STR_CBA_Modules_ShouldHold_Desc">
+            <English>Chance for each unit to hold their garrison in combat</English>
         </Key>
         <Key ID="STR_CBA_Modules_DefendModuleDescription">
             <English>Sync to leader of group to defend a parsed location</English>
