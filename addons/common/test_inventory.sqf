@@ -133,5 +133,10 @@ TEST_TRUE(_result,_funcName);
 TEST_TRUE(count (weaponCargo _container) == 2,_funcName);
 clearWeaponCargoGlobal _container;
 
+_container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
+_result = [_container, "arifle_MX_F"] call CBA_fnc_removeWeaponCargo;
+TEST_TRUE(count (weaponCargo _container) == 0 && count (itemCargo _container) == 2,_funcName);
+clearWeaponCargoGlobal _container;
+
 
 deleteVehicle _container;
