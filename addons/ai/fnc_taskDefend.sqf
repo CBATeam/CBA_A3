@@ -2,47 +2,56 @@
 Function: CBA_fnc_taskDefend
 
 Description:
-    A function for a group to defend a parsed location.
+    A function for a group to defend a parsed location. Should be ran locally.
 
-    Units will mount nearby static machine guns and bunker in nearby buildings.
-    They may also patrol the radius unless otherwise specified.
+    Units will mount nearby static machine guns and garrison in nearby buildings.
+    10% chance to patrol the radius unless specified differently (100% when no available building positions).
+    0% chance to hold defensive positions in combat unless specified differently.
 
 Parameters:
-    - Group (Group or Object)
-
-Optional:
-    - Position (XYZ, Object, Location or Group)
-    - Defend Radius (Scalar)
-    - Building Size Threshold (Integer, default 2)
-    - Can patrol (boolean)
-
-Example:
-    (begin example)
-    [this] call CBA_fnc_taskDefend
-    (end)
+    _group      - the group <GROUP, OBJECT>
+    _position   - centre of area to defend <ARRAY, OBJECT, LOCATION, GROUP> (Default: _group)
+    _radius     - radius of area to defend <NUMBER> (Default: 50)
+    _threshold  - minimum building positions required to be considered for garrison <NUMBER> (Default: 3)
+    _patrol     - chance for each unit to patrol instead of garrison, true for default, false for 0% <NUMBER, BOOLEAN> (Default: 0.1)
+    _hold       - chance for each unit to hold their garrison in combat, true for 100%, false for 0% <NUMBER, BOOLEAN> (Default: 0)
 
 Returns:
-    Nil
+    None
+
+Examples:
+    (begin example)
+        [this] call CBA_fnc_taskDefend
+    (end)
 
 Author:
     Rommel, SilentSpike
-
 ---------------------------------------------------------------------------- */
-
 params [
     ["_group",grpNull,[grpNull,objNull]],
     ["_position",[],[[],objNull,grpNull,locationNull],3],
     ["_radius",50,[0]],
-    ["_threshold",2,[0]],
-    ["_patrol",true,[true]]
+    ["_threshold",3,[0]],
+    ["_patrol",0.1,[true,0]],
+    ["_hold",0,[true,0]]
 ];
 
+// Input validation stuff here
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 _position = [_position,_group] select (_position isEqualTo []);
 _position = _position call CBA_fnc_getPos;
 
+if (_patrol isEqualType true) then {
+    _patrol = [0, 0.1] select _patrol;
+};
+
+if (_hold isEqualType true) then {
+    _hold = [0,1] select _hold;
+};
+
+// Start of the actual function
 [_group] call CBA_fnc_clearWaypoints;
 
 private _statics = _position nearObjects ["StaticWeapon", _radius];
@@ -59,12 +68,12 @@ _buildings = _buildings select {
         _x setVariable ["CBA_taskDefend_positions", _positions];
     };
 
-    count (_positions) > _threshold
+    count (_positions) >= _threshold
 };
 
 // If patrolling is enabled then the leader must be free to lead it
 private _units = units _group;
-if (_patrol && {count _units > 1}) then {
+if (_patrol > 0 && {count _units > 1}) then {
     _units deleteAt (_units find (leader _group));
 };
 
@@ -74,9 +83,9 @@ if (_patrol && {count _units > 1}) then {
         _x assignAsGunner (_statics deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        // 93% chance to occupy a random nearby building position (100% when no patrol)
-        if ((!_patrol || {random 1 < 0.93}) && { !(_buildings isEqualto []) }) then {
-            private _building = _buildings call BIS_fnc_selectRandom;
+        // Respect chance to patrol, or force if no building positions left
+        if !((_buildings isEqualto []) || { (random 1 < _patrol) }) then {
+            private _building = selectRandom _buildings;
             private _array = _building getVariable ["CBA_taskDefend_positions",[]];
 
             if !(_array isEqualTo []) then {
@@ -91,13 +100,17 @@ if (_patrol && {count _units > 1}) then {
                 };
 
                 // Wait until AI is in position then force them to stay
-                [_x, _pos] spawn {
-                    params ["_unit","_pos"];
+                [_x, _pos, _hold] spawn {
+                    params ["_unit","_pos","_hold"];
                     if (surfaceIsWater _pos) exitwith {};
 
                     _unit doMove _pos;
                     waituntil {unitReady _unit};
-                    doStop _unit;
+                    if (random 1 < _hold) then {
+                        _unit disableAI "PATH";
+                    } else {
+                        doStop _unit;
+                    };
 
                     // This command causes AI to repeatedly attempt to crouch when engaged
                     // If ever fixed by BI then consider uncommenting
@@ -108,7 +121,5 @@ if (_patrol && {count _units > 1}) then {
     };
 } forEach _units;
 
-// Unassigned units will patrol if enabled
-if (_patrol) then {
-    [_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskPatrol;
-};
+// Unassigned (or combat reacted) units will patrol
+[_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskPatrol;

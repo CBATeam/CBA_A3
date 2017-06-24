@@ -31,6 +31,9 @@ Examples:
 
         // COLOR PICKER --- extra argument: _color
         ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0]] call cba_settings_fnc_init;
+
+        // EDITBOX --- extra argument: default value
+        ["Test_Setting_5", "EDITBOX", ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
     (end)
 
 Author:

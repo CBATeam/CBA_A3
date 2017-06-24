@@ -12,7 +12,11 @@
 
 
 // MINIMAL required version for the Mod. Components can specify others..
+<<<<<<< HEAD
 #define REQUIRED_VERSION 1.70
+=======
+#define REQUIRED_VERSION 1.72
+>>>>>>> origin/master
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)
