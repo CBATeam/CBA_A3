@@ -42,6 +42,7 @@ if (_zRef isEqualType "") then {
         if !((triggerArea _zRef) isEqualTo []) then {
             _area pushBack (getPos _zRef);
             _area append (triggerArea _zRef);
+            _area resize 5;
         };
     } else {
         if (_zRef isEqualType locationNull) then {
