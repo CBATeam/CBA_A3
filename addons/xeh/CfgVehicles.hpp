@@ -21,7 +21,7 @@ class CfgVehicles {
 
     class Logic;
     class Module_F: Logic {
-        XEH_ENABLED
+        XEH_ENABLED;
     };
     class BIS_Effect_FilmGrain: Module_F {
         XEH_ENABLED;
