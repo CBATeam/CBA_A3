@@ -1,6 +1,8 @@
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getArea
 
+DEPRECATED - Please use <BIS_fnc_getArea at https://community.bistudio.com/wiki/BIS_fnc_getArea> added in Arma 3 1.58
+
 Description:
     Returns the array form of any area construct: [center, a, b, angle, isRectangle]
 
