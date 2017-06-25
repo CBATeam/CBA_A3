@@ -136,13 +136,13 @@ if (_id != -1) then {
                 GVAR(oldGroup) = _data;
             };
 
-            private _data = leader _player;
+            _data = leader _player;
             if !(_data isEqualTo GVAR(oldLeader)) then {
                 [QGVAR(leaderEvent), [_player, GVAR(oldLeader)]] call CBA_fnc_localEvent;
                 GVAR(oldLeader) = _data;
             };
 
-            private _data = currentWeapon _player;
+            _data = currentWeapon _player;
             if !(_data isEqualTo GVAR(oldWeapon)) then {
                 GVAR(oldWeapon) = _data;
                 [QGVAR(weaponEvent), [_player, _data]] call CBA_fnc_localEvent;
