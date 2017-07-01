@@ -69,7 +69,6 @@ if (!isNil QGVAR(playerEHInfo)) then {
     if (count GVAR(playerEHInfo) == 3) then {
         removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
         removeMissionEventHandler ["Map",       GVAR(playerEHInfo) select 1];
-        (GVAR(playerEHInfo) select 2) call CBA_fnc_removePerFrameHandler;
         GVAR(playerEHInfo) = nil;
     };
 };
