@@ -7,14 +7,14 @@ Description:
     Possible events:
         "unit"       - player controlled unit changed
         "weapon"     - currently selected weapon change
-        "loadout"    - players loadout changed (Only Checks every 5 sec)
+        "loadout"    - players loadout changed (Only Checks every 1 sec)
         "vehicle"    - players current vehicle changed
         "turret"     - position in vehicle changed
         "visionMode" - player changed to normal/night/thermal view
         "cameraView" - camera mode changed ("Internal", "External", "Gunner" etc.)
         "visibleMap" - opened or closed map
-        "group"      - player group changes (Only Checks every 5 sec)
-        "leader"     - leader of player changes (Only Checks every 5 sec)
+        "group"      - player group changes (Only Checks every 1 sec)
+        "leader"     - leader of player changes (Only Checks every 1 sec)
 
 Parameters:
     _type      - Event handler type. <STRING>
