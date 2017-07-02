@@ -102,6 +102,10 @@ if (!(_upCode isEqualType {})) then {
 _defaultKeybind params [["_defaultKey", 0, [0]], ["_defaultModifiers", [], [[]]]];
 _defaultModifiers params [["_defaultShift", false, [false]], ["_defaultControl", false, [false]], ["_defaultAlt", false, [false]]];
 
+if (_defaultKey >= 255) then {
+    WARNING_2("Keybind %1's default keybind is invalid [DIK: %2]",_action,_defaultKey);
+    _defaultKey = 0;
+};
 _defaultKey = _defaultKey max 0;
 
 if (_defaultKey in [DIK_LSHIFT, DIK_RSHIFT]) then {
