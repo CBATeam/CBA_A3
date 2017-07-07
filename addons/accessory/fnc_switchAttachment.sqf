@@ -47,7 +47,7 @@ private _configs = if (_switchTo == "next") then {
 } else {
     configProperties [__currItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
 };
-if ((count _configs) > 0) then {
+if (!(_configs isEqualTo [])) then {
     _switchItem = getText (_configs select 0);
 };
 TRACE_3("",_currItem,_switchTo,_switchItem);
