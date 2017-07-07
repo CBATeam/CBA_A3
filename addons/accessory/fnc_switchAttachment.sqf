@@ -41,7 +41,16 @@ if (_currWeaponType < 0) exitWith {hint "You are not holding a weapon!"; false};
 #define __cfgWeapons configfile >> "CfgWeapons"
 #define __currItem __cfgWeapons >> _currItem
 
-_switchItem = if (_switchTo == "next") then {(__currItem >> "MRT_SwitchItemNextClass") call bis_fnc_getcfgdata} else {(__currItem >> "MRT_SwitchItemPrevClass") call bis_fnc_getcfgdata};
+// Get the next/previous item from the attachement's config, but ignore inherited values
+private _configs = if (_switchTo == "next") then {
+    configProperties [__currItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
+} else {
+    configProperties [__currItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
+};
+if ((count _configs) > 0) then {
+    _switchItem = getText (_configs select 0);
+};
+TRACE_3("",_currItem,_switchTo,_switchItem);
 
 if (!isNil "_switchItem") then {
     switch (_currWeaponType) do {
