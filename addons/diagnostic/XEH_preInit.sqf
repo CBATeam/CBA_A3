@@ -18,7 +18,8 @@ GVAR(projectileTrackedUnits) = [];
 
 ADDON = true;
 
-if (getMissionConfigValue ["EnableTargetDebug", 0] isEqualTo 1) then {
+private _cfg = configFile >> "EnableTargetDebug";
+if (1 isEqualTo ([getMissionConfigValue ["EnableTargetDebug", 0], getNumber _cfg] select isNumber _cfg)) then {
     INFO("EnableTargetDebug is enabled");
 
     [QGVAR(watchVariable), {
