@@ -139,13 +139,34 @@ TEST_FALSE(_result,_funcName);
 _container addWeaponCargoGlobal ["srifle_EBR_F", 5];
 _result = [_container, "srifle_EBR_F", 3] call CBA_fnc_removeWeaponCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (weaponCargo _container) == 2,_funcName);
+TEST_TRUE(count (weaponCargo _container) == 2 && count (itemCargo _container) == 0,_funcName);
 clearWeaponCargoGlobal _container;
+clearItemCargoGlobal _container;
 
 _container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
 _result = [_container, "arifle_MX_F"] call CBA_fnc_removeWeaponCargo;
+TEST_TRUE(count (weaponCargo _container) == 0 && count (itemCargo _container) == 0,_funcName);
+clearWeaponCargoGlobal _container;
+clearItemCargoGlobal _container;
+
+_container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
+_result = [_container, "arifle_MX_F", 1, true] call CBA_fnc_removeWeaponCargo;
 TEST_TRUE(count (weaponCargo _container) == 0 && count (itemCargo _container) == 2,_funcName);
 clearWeaponCargoGlobal _container;
+clearItemCargoGlobal _container;
+
+_container addWeaponCargoGlobal ["arifle_MX_SW_F", 1]; // arifle_MX_SW_F has no non-preset parent class
+_result = [_container, "arifle_MX_SW_F", 1, true] call CBA_fnc_removeWeaponCargo;
+TEST_TRUE(count (weaponCargo _container) == 0 && count (itemCargo _container) == 1,_funcName);
+clearWeaponCargoGlobal _container;
+clearItemCargoGlobal _container;
+
+_container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
+_container addWeaponCargoGlobal ["arifle_MX_SW_F", 1]; // arifle_MX_SW_F has no non-preset parent class
+_result = [_container, "arifle_MX_ACO_pointer_F", 1] call CBA_fnc_removeWeaponCargo;
+TEST_TRUE(count (weaponCargo _container) == 1 && count (itemCargo _container) == 0,_funcName);
+clearWeaponCargoGlobal _container;
+clearItemCargoGlobal _container;
 
 
 deleteVehicle _container;
