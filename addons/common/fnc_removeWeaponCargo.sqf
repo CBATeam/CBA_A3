@@ -24,7 +24,7 @@ Examples:
     // Remove 2 M16A2 from a box
     _success = [myCoolWeaponBox, "M16A2", 2] call CBA_fnc_removeWeaponCargo;
 
-    // Remove 1 MX (with ACO and IR pointer) and keep attachments
+    // Remove 1 MX (with ACO and IR pointer) from a box and keep attachments
     _success = [myCoolWeaponBox, "arifle_MX_ACO_pointer_F", 1, true] call CBA_fnc_removeWeaponCargo;
     (end)
 
