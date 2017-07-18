@@ -4,9 +4,6 @@ Function: CBA_fnc_removeWeaponCargo
 Description:
     Removes specific weapon(s) from cargo space.
 
-    Passing a non-preset weapon when there is a preset (classname with preset attachments/magazine)
-    weapon in cargo of that class will remove weapon only, leaving attachments and magazine.
-
     Warning: All weapon attachments/magazines in container will become detached.
     Warning: Preset weapons without non-preset parents will get their attachments readded (engine limitation).
 
