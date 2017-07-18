@@ -107,8 +107,6 @@ clearWeaponCargoGlobal _container;
         private _presetAttachments = [];
         if (_weaponNonPreset == _weapon) then {
             _presetAttachments = _weapon call CBA_fnc_weaponComponents;
-            systemChat _weapon;
-            systemChat str _presetAttachments;
         } else {
             _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", ""]];
             _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];

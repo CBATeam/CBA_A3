@@ -5,6 +5,7 @@ Description:
     Removes specific backpack(s) from cargo space.
 
     Warning: All weapon attachments/magazines in all backpacks in container will become detached.
+    Warning: Preset weapons without non-preset parents will get their attachments readded (engine limitation).
 
 Parameters:
     _container - Object with cargo <OBJECT>
@@ -104,19 +105,40 @@ clearBackpackCargoGlobal _container;
                 _magazineGL = "";
             };
 
-            private _weapon = [_weapon] call CBA_fnc_getNonPresetClass;
-            _backpack addWeaponCargoGlobal [_weapon, 1];
+            // Some weapons don't have non-preset parents
+            private _weaponNonPreset = [_weapon] call CBA_fnc_getNonPresetClass;
+            if (_weaponNonPreset == "") then {
+                _weaponNonPreset = _weapon;
+            };
 
-            _backpack addItemCargoGlobal [_muzzle, 1];
-            _backpack addItemCargoGlobal [_pointer, 1];
-            _backpack addItemCargoGlobal [_optic, 1];
-            _backpack addItemCargoGlobal [_bipod, 1];
+            _backpack addWeaponCargoGlobal [_weaponNonPreset, 1];
 
-            _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", ""]];
-            _backpack addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
+            // If weapon does not have a non-preset parent, only add attachments that were custom added
+            // Removed attachments cannot be handled (engine limitation) and will be readded due to having to readd preset weapon
 
-            _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", ""]];
-            _backpack addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
+            private _presetAttachments = [];
+            if (_weaponNonPreset == _weapon) then {
+                _presetAttachments = _weapon call CBA_fnc_weaponComponents;
+            } else {
+                _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", ""]];
+                _backpack addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
+
+                _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", ""]];
+                _backpack addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
+            };
+
+            if !(toLower _muzzle in _presetAttachments) then {
+                _backpack addItemCargoGlobal [_muzzle, 1];
+            };
+            if !(toLower _pointer in _presetAttachments) then {
+                _backpack addItemCargoGlobal [_pointer, 1];
+            };
+            if !(toLower _optic in _presetAttachments) then {
+                _backpack addItemCargoGlobal [_optic, 1];
+            };
+            if !(toLower _bipod in _presetAttachments) then {
+                _backpack addItemCargoGlobal [_bipod, 1];
+            };
         } forEach _weaponsItemsCargo;
     };
 } forEach _backpackData;
