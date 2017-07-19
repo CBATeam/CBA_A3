@@ -1,132 +1,186 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Package name="CBA">
     <Key ID="STR_cba_settings_Component">
         <English>Community Base Addons - Settings Component</English>
         <Japanese>Community Base Addons - 設定要素</Japanese>
+        <Chinese>社群基礎模組 - 設定組件</Chinese>
+        <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_configureAddons">
         <English>Configure Addons</English>
         <German>Modifikationen anpassen</German>
         <Polish>Konfiguracja addonów</Polish>
         <Japanese>アドオン設定</Japanese>
+        <Chinese>模組設定</Chinese>
+        <Chinesesimp>模组设定</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_configureBase">
         <English>Configure Base</English>
         <German>Hauptspiel anpassen</German>
         <Polish>Konfiguracja bazy</Polish>
         <Japanese>基本設定</Japanese>
+        <Chinese>基礎設定</Chinese>
+        <Chinesesimp>基础设定</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_menu_button">
         <English>Addon Options</English>
         <German>Mod-Optionen</German>
         <Japanese>アドオン オプション</Japanese>
+        <Chinese>模組設定選項</Chinese>
+        <Chinesesimp>模组设定选项</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_3den_shortcut">
         <English>Addon Options...</English>
         <German>Mod-Optionen...</German>
         <Japanese>アドオン オプション...</Japanese>
+        <Chinese>模組設定選項...</Chinese>
+        <Chinesesimp>模组设定选项...</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonServer">
         <English>Server</English>
         <German>Server</German>
         <Japanese>サーバー</Japanese>
+        <Chinese>伺服器</Chinese>
+        <Chinesesimp>伺服器</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonServer_tooltip">
         <English>Look at the servers settings. Log in as admin to change.</English>
         <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
         <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
+        <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
+        <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonMission">
         <English>Mission</English>
         <German>Mission</German>
         <Japanese>ミッション</Japanese>
+        <Chinese>任務</Chinese>
+        <Chinesesimp>任务</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonMission_tooltip">
         <English>Look at the missions settings.</English>
         <German>Missionseinstellungen ansehen.</German>
         <Japanese>ミッションの設定を確認します。</Japanese>
+        <Chinese>查看任務的設定。</Chinese>
+        <Chinesesimp>查看任务的设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
         <English>Edit the missions settings.</English>
         <German>Missionseinstellungen bearbeiten.</German>
         <Japanese>ミッションの設定を編集します。</Japanese>
+        <Chinese>編輯任務的設定。</Chinese>
+        <Chinesesimp>编辑任务的设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonClient">
         <English>Client</English>
         <German>Client</German>
         <Japanese>クライアント</Japanese>
+        <Chinese>客戶端</Chinese>
+        <Chinesesimp>客户端</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonClient_tooltip">
         <English>Edit your local settings.</English>
         <German>Lokale Einstellungen bearbeiten.</German>
         <Japanese>ローカル設定を編集します。</Japanese>
+        <Chinese>編輯你本地端的設定。</Chinese>
+        <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonLocal">
         <English>Local</English>
         <German>Lokal</German>
         <Japanese>ローカル</Japanese>
+        <Chinese>本地端</Chinese>
+        <Chinesesimp>本地端</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonSave_tooltip">
         <English>Save current settings as preset.</English>
         <German>Derzeitige Einstellungen als Vorlage speichern.</German>
         <Japanese>現在の設定をプリセットとして保存します。</Japanese>
+        <Chinese>保存當前的設定為預設。</Chinese>
+        <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonLoad_tooltip">
         <English>Load settings from preset.</English>
         <German>Einstellungen aus Vorlage laden.</German>
         <Japanese>プリセットから設定を読み込みます。</Japanese>
+        <Chinese>載入預設的設定。</Chinese>
+        <Chinesesimp>载入预设的设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonImport">
         <English>Import</English>
         <German>Import</German>
         <Japanese>取り込み</Japanese>
+        <Chinese>匯入</Chinese>
+        <Chinesesimp>汇入</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonImport_tooltip">
         <English>Import settings from clipboard.</English>
         <German>Einstellungen aus Zwischenablage einfügen.</German>
         <Japanese>クリップボードから設定を取り込みします。</Japanese>
+        <Chinese>從剪貼簿匯入設定。</Chinese>
+        <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonExport">
         <English>Export</English>
         <German>Export</German>
         <Japanese>出力</Japanese>
+        <Chinese>匯出</Chinese>
+        <Chinesesimp>汇出</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_ButtonExport_tooltip">
         <English>Export settings to clipboard.</English>
         <German>Einstellungen in Zwischenablage speichern.</German>
         <Japanese>クリップボードに設定を出力します。</Japanese>
+        <Chinese>匯出設定到剪貼簿。</Chinese>
+        <Chinesesimp>汇出设定到剪贴簿。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_default_tooltip">
         <English>Reset to default value.</English>
         <German>Zur Standardeinstellung zurücksetzen.</German>
         <Japanese>デフォルトにリセットします。</Japanese>
+        <Chinese>重設成預設數值。</Chinese>
+        <Chinesesimp>重设成预设数值。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwrite_clients">
         <English>Overwrite\nClients</English>
         <German>Clients\nüberschreiben</German>
+        <Chinese>覆寫\n客戶端</Chinese>
+        <Chinesesimp>覆写\n客户端</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwrite_mission">
         <English>Overwrite\nMission</English>
         <German>Mission\nüberschreiben</German>
+        <Chinese>覆寫\n任務</Chinese>
+        <Chinesesimp>覆写\n任务</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwrite_server">
         <English>Overwrite\nServer</English>
         <German>Server\nüberschreiben</German>
+        <Chinese>覆寫\n伺服器</Chinese>
+        <Chinesesimp>覆写\n伺服器</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
         <English>This setting is overwritten by the clients.</English>
         <German>Diese Einstellung wird von den Clients überschrieben.</German>
+        <Chinese>此項設定被客戶端給覆寫。</Chinese>
+        <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
         <English>This setting is overwritten by the mission.</English>
         <German>Diese Einstellung wird von der Mission überschrieben.</German>
+        <Chinese>此項設定被任務給覆寫。</Chinese>
+        <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
         <English>This setting is overwritten by the server.</English>
         <German>Diese Einstellung wird vom Server überschrieben.</German>
+        <Chinese>此項設定被伺服器給覆寫。</Chinese>
+        <Chinesesimp>此项设定被伺服器给覆写。</Chinesesimp>
     </Key>
     <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
         <English>This setting is overwritten by the clients and only applies to the server.</English>
         <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
+        <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
+        <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
     </Key>
 </Package>
