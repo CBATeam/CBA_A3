@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="JR">
         <Key ID="STR_CBA_JR_Component">
             <English>Community Base Addons - Joint Rails</English>
             <Japanese>Community Base Addons - ジョイント レール</Japanese>
+            <Chinese>社群基礎模組 - 共用導軌</Chinese>
+            <Chinesesimp>社群基础模组 - 共用导轨</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
             <Original>Sound Suppressor MG</Original>
@@ -17,6 +19,8 @@
             <Russian>Глушитель для пулемета</Russian>
             <Spanish>Silenciador MG</Spanish>
             <Japanese>MG用消音器</Japanese>
+            <Chinese>機槍用消音器</Chinese>
+            <Chinesesimp>机枪用消音器</Chinesesimp>
         </Key>
     </Package>
 </Project>
