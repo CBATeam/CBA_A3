@@ -24,7 +24,7 @@ Examples:
     // Remove 2 Compasses from a box
     _success = [myCoolItemBox, "ItemCompass", 2] call CBA_fnc_removeItemCargo;
 
-    // Remove 1 Vest from a box and keep conents
+    // Remove 1 Vest from a box and keep contents
     _success = [myCoolWeaponBox, "V_PlateCarrier1_rgr", 1, true] call CBA_fnc_removeItemCargo;
     (end)
 

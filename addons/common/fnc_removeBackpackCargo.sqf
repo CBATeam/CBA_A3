@@ -24,7 +24,7 @@ Examples:
     // Remove 2 Carryall Desert Camo backpacks from a box
     _success = [myCoolBackpackBox, "B_Carryall_ocamo", 2] call CBA_fnc_removeBackpackCargo;
 
-    // Remove 1 Backpack from a box and keep conents
+    // Remove 1 Backpack from a box and keep contents
     _success = [myCoolWeaponBox, "B_AssaultPack_khk", 1, true] call CBA_fnc_removeBackpackCargo;
     (end)
 
