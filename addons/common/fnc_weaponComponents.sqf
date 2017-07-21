@@ -42,24 +42,24 @@ if (isNil "_components") then {
 
     // get attachments
     private _attachments = [];
-
     {
         _attachments pushBack toLower getText (_x >> "item");
     } forEach ("true" configClasses (_config >> "LinkedItems")); // inheritance is apparently disabled for these
 
     // get first parent without attachments
+    private _baseWeapon = "";
     while {isClass _config && {getNumber (_config >> "scope") == 2}} do {
         if (count (_config >> "LinkedItems") == 0) exitWith {
-            _weapon = configName _config;
+            _baseWeapon = configName _config;
         };
 
         _config = inheritsFrom _config;
     };
 
-    _components = [toLower _weapon];
+    _components = [toLower _baseWeapon];
     _components append _attachments;
 
     GVAR(weaponComponentsCache) setVariable [_weapon, _components];
 };
 
-+ _components
++_components

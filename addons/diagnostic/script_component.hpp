@@ -13,3 +13,8 @@
 
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "\a3\ui_f\hpp\defineResincl.inc"
+// #include "\a3\ui_f\hpp\defineResinclDesign.inc" // moved to sqf to handle undef error
+
+#define IDC_DEBUGCONSOLE_PREV 90110
+#define IDC_DEBUGCONSOLE_NEXT 90111

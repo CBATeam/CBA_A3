@@ -28,3 +28,41 @@ if (isServer) then {
         };
     }];
 };
+
+// custom chat command system
+[QGVAR(chatMessageSent), {
+    params ["_message"];
+
+    if (((_message select [0,1]) isEqualTo "#") && {!isNil QGVAR(customChatCommands)}) then {
+        private _index = _message find " ";
+
+        // no argument
+        if (_index isEqualTo -1) then {
+            _index = count _message;
+        };
+
+        private _command = _message select [1, _index - 1];
+        private _argument = _message select [_index + 1];
+
+        // check if command is available
+        private _access = ["all"];
+
+        if (IS_ADMIN || isServer) then {
+            _access pushBack "admin";
+        };
+
+        if (IS_ADMIN_LOGGED || isServer) then {
+            _access pushBack "adminlogged";
+        };
+
+        (GVAR(customChatCommands) getVariable _command) params ["_code", "_availableFor", "_thisArgs"];
+
+        if (_availableFor in _access) then {
+            [[_argument], _code] call {
+                // prevent bad code from overwriting protected variables
+                private ["_message", "_index", "_command", "_argument", "_access", "_code", "_availableFor"];
+                (_this select 0) call (_this select 1);
+            };
+        };
+    };
+}] call CBA_fnc_addEventHandler;

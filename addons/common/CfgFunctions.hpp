@@ -9,6 +9,7 @@ class CfgFunctions {
             PATHTO_FNC(getWeaponModes);
             PATHTO_FNC(inheritsFrom);
             PATHTO_FNC(getTurret);
+            PATHTO_FNC(getNonPresetClass);
         };
 
         class Entities {
@@ -90,6 +91,7 @@ class CfgFunctions {
             PATHTO_FNC(mapRelPos);
             PATHTO_FNC(mapDirTo);
             PATHTO_FNC(getTerrainProfile);
+            PATHTO_FNC(isTerrainObject);
         };
 
         class Positions {
@@ -114,6 +116,7 @@ class CfgFunctions {
             PATHTO_FNC(removePlayerAction);
             PATHTO_FNC(createNamespace);
             PATHTO_FNC(deleteNamespace);
+            PATHTO_FNC(allNamespaces);
             PATHTO_FNC(directCall);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);

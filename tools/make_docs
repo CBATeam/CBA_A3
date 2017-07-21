@@ -20,6 +20,8 @@ cp overview.txt CBA_logo_large.png ../addons
 cp -a ../addons/xeh /tmp/
 rm ../addons/xeh/*
 cp -a /tmp/xeh/fnc_addClassEventHandler.sqf ../addons/xeh
+cp -a /tmp/xeh/fnc_compileEventHandlers.sqf ../addons/xeh
+cp -a /tmp/xeh/fnc_compileFunction.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_isRecompileEnabled.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_isScheduled.sqf ../addons/xeh
 

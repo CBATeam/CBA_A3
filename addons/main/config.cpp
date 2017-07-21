@@ -56,7 +56,7 @@ class CfgSettings {
         };
         class Registry {
             class PREFIX {
-                removed[] = {"cba_linux"};
+                removed[] = {"cba_linux","cba_static_settings_addon","cba_auto_load_settings_file"};
             };
         };
     };

@@ -85,7 +85,7 @@ class Extended_Deleted_EventHandlers {};
 // display xeh
 class Extended_DisplayLoad_EventHandlers {
     class Display3DEN {
-        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(3DENDisplayLoad)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
     };
 };
 class Extended_DisplayUnload_EventHandlers {};

@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Main">
         <Key ID="STR_CBA_Author">
             <English>CBA Team</English>
             <German>CBA-Team</German>
             <Japanese>CBA チーム</Japanese>
+            <Chinese>CBA製作組</Chinese>
+            <Chinesesimp>CBA制作组</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
             <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
+            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
             <Japanese>Community Base Addons - メイン要素</Japanese>
+            <Chinese>社群基礎模組 - 主要組件</Chinese>
+            <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
             <Japanese>Community Base Addons - オプション要素</Japanese>
+            <Chinese>社群基礎模組 - 可選組件</Chinese>
+            <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
         </Key>
     </Package>
 </Project>

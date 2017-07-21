@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Help">
         <Key ID="STR_CBA_Help_Component">
             <English>Community Base Addons - Help</English>
             <Japanese>Community Base Addons - ヘルプ</Japanese>
+            <Chinese>社群基礎模組 - 幫助</Chinese>
+            <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
         </Key>
-
         <Key ID="STR_DN_CBA_HELP_KEYS">
             <English>Keybindings</English>
             <German>Tastendruckzuweisung</German>
@@ -17,6 +18,8 @@
             <French>Keybindings</French>
             <Hungarian>Keybindings</Hungarian>
             <Japanese>キー割り当て</Japanese>
+            <Chinese>按鍵綁定</Chinese>
+            <Chinesesimp>按键绑定</Chinesesimp>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE">
             <English>Bugtracker</English>
@@ -29,6 +32,8 @@
             <French>Bugtracker</French>
             <Hungarian>Bugtracker</Hungarian>
             <Japanese>バグトラッカー</Japanese>
+            <Chinese>臭蟲追蹤器</Chinese>
+            <Chinesesimp>臭虫追踪器</Chinesesimp>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE_WIKI">
             <English>Wiki (Documentation)</English>
@@ -41,6 +46,8 @@
             <French>Wiki (Documentation)</French>
             <Hungarian>Wiki (Documentation)</Hungarian>
             <Japanese>ウィキ (ドキュメント)</Japanese>
+            <Chinese>維基 (文件)</Chinese>
+            <Chinesesimp>维基 (文件)</Chinesesimp>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS">
             <English>Credits</English>
@@ -53,6 +60,8 @@
             <French>Credits</French>
             <Hungarian>Credits</Hungarian>
             <Japanese>クレジット</Japanese>
+            <Chinese>製作組</Chinese>
+            <Chinesesimp>制作组</Chinesesimp>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS_ADDONS">
             <English>Credits - Addons</English>
@@ -65,6 +74,8 @@
             <French>Credits - Addons</French>
             <Hungarian>Credits - Addons</Hungarian>
             <Japanese>クレジット - アドオン</Japanese>
+            <Chinese>製作組 - 模組</Chinese>
+            <Chinesesimp>制作组 - 模组</Chinesesimp>
         </Key>
     </Package>
 </Project>

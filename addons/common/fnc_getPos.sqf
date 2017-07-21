@@ -13,7 +13,13 @@ Example:
     (end)
 
 Returns:
-    Position (AGL) - [X,Y,Z]
+    Position (AGLS) - [X,Y,Z]
+    Z will always be 0 for MARKER, LOCATION and TASK.
+    If entity is GROUP, the position of the group leader will be reported.
+    For OBJECT and GROUP, the z will be relative to the first RoadWay LOD
+    below the object (AGLS format).
+    If POSITION was provided, the position array will be copied.
+    Defaults to [0,0,0] if the entity is null or undefined.
 
 Author:
     Rommel
@@ -26,23 +32,25 @@ params [
 ];
 
 switch (typeName _entity) do {
-    case "OBJECT" : {
+    case "OBJECT": {
         getPos _entity
     };
-    case "GROUP" : {
+    case "GROUP": {
         getPos (leader _entity)
     };
-    case "STRING" : {
+    case "STRING": {
         getMarkerPos _entity
     };
-    case "LOCATION" : {
+    case "LOCATION": {
         position _entity
     };
-    case "TASK" : {
+    case "TASK": {
         taskDestination _entity
     };
-    case "ARRAY" : {
-        _entity
+    case "ARRAY": {
+        + _entity
     };
-    default {_this}; // in case of position being passed not in array
+    case "SCALAR": { // in case of position being passed not in array
+        + _this
+    };
 };

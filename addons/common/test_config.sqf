@@ -163,3 +163,16 @@ TEST_TRUE(_result == 0,_funcName);
 
 _result = {!isNull _x} count ([[0],[1],[2],[3],[4]] apply {["B_Heli_Transport_03_F", _x] call CBA_fnc_getTurret});
 TEST_TRUE(_result == 5,_funcName);*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+_funcName = "CBA_fnc_getNonPresetClass";
+LOG("Testing " + _funcName);
+
+TEST_DEFINED("CBA_fnc_getNonPresetClass","");
+
+_result = ["arifle_MX_ACO_pointer_F"] call CBA_fnc_getNonPresetClass;
+TEST_TRUE(_result isEqualTo "arifle_mx_f",_funcName);
+
+_result = ["B_AssaultPack_mcamo_Ammo", "CfgVehicles"] call CBA_fnc_getNonPresetClass;
+TEST_TRUE(_result isEqualTo "B_Carryall_mcamo",_funcName);

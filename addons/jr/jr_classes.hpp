@@ -50,7 +50,35 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
     };
 };
 
-// Picattiny rails for optic mounts
+class asdg_PistolUnderRail: asdg_SlotInfo { // under rail for handguns
+    linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
+    displayName = "$STR_A3_PointerSlot0";
+    iconPicture = "\a3\weapons_f_mark\Data\UI\attachment_under";
+    iconPinpoint = "Bottom";
+    class compatibleItems {
+        acc_flashlight_pistol = 1;
+    };
+};
+
+class asdg_PistolOpticMount: asdg_OpticRail { // common handgun optic mount
+    class compatibleItems {
+        optic_MRD = 1;
+    };
+};
+
+// Picatinny rails for optic mounts
+
+class asdg_PistolOpticRail1913: asdg_OpticRail { // MIL-STD-1913 handgun optic rail
+    class compatibleItems {
+        optic_Yorris = 1;
+        optic_Holosight = 1;
+        optic_Holosight_smg = 1;
+        optic_Holosight_blk_F = 1;
+        optic_Holosight_khk_F = 1;
+        optic_Holosight_smg_blk_F = 1;
+        optic_Holosight_smg_khk_F = 1;
+    };
+};
 
 class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to fit any optic, but not enough to attach a clip-on NVS in front of a long scope.
     class compatibleItems {
@@ -75,6 +103,7 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_Holosight_blk_F = 1;
         optic_Holosight_khk_F = 1;
         optic_Holosight_smg_blk_F = 1;
+        optic_Holosight_smg_khk_F = 1;
         optic_DMS = 1;
         optic_DMS_ghex_F = 1;
         optic_LRPS = 1;
@@ -90,6 +119,7 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_ERCO_blk_F = 1;
         optic_ERCO_khk_F = 1;
         optic_ERCO_snd_F = 1;
+        optic_Yorris = 1;
     };
 };
 

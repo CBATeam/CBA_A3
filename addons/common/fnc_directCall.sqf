@@ -22,12 +22,13 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_CBA_code", {}, [{}]], ["_CBA_arguments", []]];
+params [["_CBA_code", {}, [{}]], ["_this", []]];
 
 private "_CBA_return";
 
 isNil {
-    _CBA_return = _CBA_arguments call _CBA_code;
+    // Wrap the _CBA_code in an extra call block to prevent problems with exitWith and apply
+    _CBA_return = ([_x] apply {call _CBA_code}) select 0;
 };
 
 if (!isNil "_CBA_return") then {_CBA_return};

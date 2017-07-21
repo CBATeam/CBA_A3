@@ -37,13 +37,13 @@ class CfgFunctions
         class ProjectileTracking
         {
             // CBA_fnc_addUnitTrackProjectiles
-            class fnc_addUnitTrackProjectiles
+            class addUnitTrackProjectiles
             {
                 description = "Adds projectile tracking to a given unit or vehicle.";
                 file = "\x\cba\addons\diagnostic\fnc_addUnitTrackProjectiles.sqf";
             };
-            // CBA_removeUnitTrackProjectiles
-            class fnc_removeUnitTrackProjectiles
+            // CBA_fnc_removeUnitTrackProjectiles
+            class removeUnitTrackProjectiles
             {
                 description = "Removes projectile tracking from a given unit or vehicle.";
                 file = "\x\cba\addons\diagnostic\fnc_removeUnitTrackProjectiles.sqf";

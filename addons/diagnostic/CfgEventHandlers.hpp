@@ -13,14 +13,16 @@ class Extended_PreInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayDebugPublic {
-        CBA_extendedDebug = QUOTE(_this call COMPILE_FILE(fnc_initExtendedDebug));
+        GVAR(extendedDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
         // remove scripted cancel button.
-        CBA_removeCancelBtn = "((_this select 0) displayCtrl 2) ctrlEnable false; ((_this select 0) displayCtrl 2) ctrlShow false;";
+        GVAR(removeCancelButton) = "((_this select 0) displayCtrl 2) ctrlEnable false; ((_this select 0) displayCtrl 2) ctrlShow false;";
     };
     class RscDisplayInterrupt {
-        CBA_extendedDebug = QUOTE(_this call COMPILE_FILE(fnc_initExtendedDebug));
+        GVAR(extendedDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
+        GVAR(targetDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initTargetDebugConsole)'));
     };
     class RscDisplayMPInterrupt {
-        CBA_extendedDebug = QUOTE(_this call COMPILE_FILE(fnc_initExtendedDebug));
+        GVAR(extendedDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
+        GVAR(targetDebug) = QUOTE(_this call (uiNamespace getVariable 'FUNC(initTargetDebugConsole)'));
     };
 };

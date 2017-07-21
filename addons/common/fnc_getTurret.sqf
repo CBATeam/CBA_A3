@@ -5,7 +5,7 @@ Description:
     A function used to find out which config turret is turretpath.
 
 Parameters:
-    _vehicle    - Vehicle or vehicle class name <STRING, OBJECT>
+    _vehicle    - Vehicle or vehicle class name or vehicle config <STRING, OBJECT, CONFIG>
     _turretPath - Turret path <ARRAY>
 
 Example:
@@ -22,13 +22,15 @@ Author:
 #include "script_component.hpp"
 SCRIPT(getTurret);
 
-params [["_vehicle", "", ["", objNull]], ["_turretPath", [], [[]]]];
+params [["_config", "", ["", objNull, configNull]], ["_turretPath", [], [[]]]];
 
-if (_vehicle isEqualType objNull) then {
-    _vehicle = typeOf _vehicle;
+if (_config isEqualType objNull) then {
+    _config = typeOf _config;
 };
 
-private _config = configFile >> "CfgVehicles" >> _vehicle;
+if (_config isEqualType "") then {
+    _config = configFile >> "CfgVehicles" >> _config;
+};
 
 // this is used by BI to indicate "driver turrets"
 if (_turretPath isEqualTo [-1]) exitWith {_config};

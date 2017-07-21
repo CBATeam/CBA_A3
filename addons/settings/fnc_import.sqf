@@ -5,8 +5,8 @@ Description:
     Import all setting info from string.
 
 Parameters:
-    _info   - Formated settings info, (from CBA_settings_fnc_export), (optional, default: clipboard) <STRING>
-    _source - Can be "client", "server" or "mission" (optional, default: "client") <STRING>
+    _info   - Formated settings info, (from CBA_settings_fnc_export) <STRING>
+    _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:
     None
@@ -18,13 +18,15 @@ Author:
 
 params [["_info", "", [""]], ["_source", "client", [""]]];
 
-_info = _info call FUNC(parse);
+_info = [_info, true] call FUNC(parse);
 
 {
-    _x params ["_setting", "_value", "_force"];
+    _x params ["_setting", "_value", "_priority"];
+
+    _priority = _priority min ([0,1,2] param [["client", "mission", "server"] find toLower _source, 0]);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
-    SET_TEMP_NAMESPACE_FORCED(_setting,_force,_source);
+    SET_TEMP_NAMESPACE_PRIORITY(_setting,_priority,_source);
 } forEach _info;
 
 if (!isNull (uiNamespace getVariable [QGVAR(display), displayNull])) then {

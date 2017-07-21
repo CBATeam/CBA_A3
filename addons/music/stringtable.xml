@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package name="CBA">
+    <Key ID="STR_cba_music_Component">
+        <English>Community Base Addons - Music</English>
+        <Chinese>社群基礎模組 - 音樂</Chinese>
+        <Chinesesimp>社群基础模组 - 音乐</Chinesesimp>
+    </Key>
+</Package>

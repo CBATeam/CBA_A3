@@ -2,9 +2,9 @@
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions  (or both, depending on wishes!)
 #define MAJOR 3
-#define MINOR 1
-#define PATCHLVL 2
-#define BUILD 161105
+#define MINOR 4
+#define PATCHLVL 0
+#define BUILD 170627
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
@@ -12,7 +12,8 @@
 
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.64
+#define REQUIRED_VERSION 1.72
+
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)
