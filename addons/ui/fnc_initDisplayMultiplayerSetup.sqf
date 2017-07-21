@@ -5,7 +5,16 @@
 params ["_display"];
 
 private _fnc_update = {
-    params ["_display"];
+    params [["_display", findDisplay IDD_MP_SETUP, [displayNull]]];
+
+    if (isNil QGVAR(update_EHID)) then {
+        GVAR(update_EHID) = addMissionEventHandler ["EachFrame", _display getVariable QFUNC(update)];
+    };
+
+    if (isNull _display) exitWith {
+        removeMissionEventHandler ["EachFrame", GVAR(update_EHID)];
+    };
+
     private _playerList = _display displayCtrl IDC_MPSETUP_ROLES;
 
     for "-" from 1 to lbSize _playerList do {
@@ -34,6 +43,8 @@ private _fnc_update = {
         _playerList lbSetValue [_playerList lbAdd _text, _value];
     };
 };
+
+_display setVariable [QFUNC(update), _fnc_update];
 
 _display call _fnc_update;
 
