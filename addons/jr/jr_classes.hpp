@@ -171,7 +171,7 @@ class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount supp
     };
 };
 
-class asdg_MuzzleSlot_65: asdg_MuzzleSlot_762 { // for 6.5 weapons, mostly to deal with BIS vanilla compatibility
+class asdg_MuzzleSlot_65: asdg_MuzzleSlot { // for 6.5 weapons, mostly to deal with BIS vanilla compatibility
     class compatibleItems: compatibleItems {
         muzzle_snds_h = 1;
         muzzle_snds_h_khk_F = 1;
