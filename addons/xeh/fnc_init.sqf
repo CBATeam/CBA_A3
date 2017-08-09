@@ -47,6 +47,28 @@ if !(ISINITIALIZED(_this)) then {
         GVAR(initPostStack) pushBack _this;
     };
 
+    // fix for respawnVehicle clearig the object namespace
+    _this addEventHandler ["respawn", {
+        params ["_vehicle", "_wreck"];
+
+        if (ISINITIALIZED(_vehicle)) exitWith {};
+        SETINITIALIZED(_vehicle);
+
+        {
+            private ["_vehicle", "_wreck"];
+            call _x;
+        } forEach (_wreck getVariable QGVAR(respawn));
+
+        {
+            private _varName = format [QGVAR(%1), _x];
+            private _events = _vehicle getVariable _varName;
+
+            if (!isNil "_events") then {
+                _vehicle setVariable [_varName, _events, true];
+            };
+        } forEach [XEH_EVENTS];
+    }];
+
     #ifdef DEBUG_MODE_FULL
         diag_log ["Init", _unit, local _unit, typeOf _unit];
     #endif
