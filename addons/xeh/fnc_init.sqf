@@ -47,11 +47,11 @@ if !(ISINITIALIZED(_this)) then {
         GVAR(initPostStack) pushBack _this;
     };
 
-    // fix for respawnVehicle clearig the object namespace
+    // fix for respawnVehicle clearing the object namespace
     _this addEventHandler ["respawn", {
         params ["_vehicle", "_wreck"];
 
-        if (ISINITIALIZED(_vehicle)) exitWith {};
+        if (ISINITIALIZED(_vehicle)) exitWith {}; // Exit if unit respawned normaly with copied variables (e.g. humans)
         SETINITIALIZED(_vehicle);
 
         {
