@@ -7,14 +7,14 @@ Description:
     Possible events:
         "unit"       - player controlled unit changed
         "weapon"     - currently selected weapon change
-        "loadout"    - players loadout changed
+        "loadout"    - players loadout changed (Only Checks every 1 sec)
         "vehicle"    - players current vehicle changed
         "turret"     - position in vehicle changed
         "visionMode" - player changed to normal/night/thermal view
         "cameraView" - camera mode changed ("Internal", "External", "Gunner" etc.)
         "visibleMap" - opened or closed map
-        "group"      - player group changes
-        "leader"     - leader of player changes
+        "group"      - player group changes (Only Checks every 1 sec)
+        "leader"     - leader of player changes (Only Checks every 1 sec)
 
 Parameters:
     _type      - Event handler type. <STRING>
@@ -121,6 +121,7 @@ if (_id != -1) then {
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
         GVAR(oldVisibleMap) = false;
+        GVAR(nextSlowCheck) = 0;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
@@ -130,43 +131,10 @@ if (_id != -1) then {
                 GVAR(oldUnit) = _player;
             };
 
-            private _data = group _player;
-            if !(_data isEqualTo GVAR(oldGroup)) then {
-                [QGVAR(groupEvent), [_player, GVAR(oldGroup)]] call CBA_fnc_localEvent;
-                GVAR(oldGroup) = _data;
-            };
-
-            _data = leader _player;
-            if !(_data isEqualTo GVAR(oldLeader)) then {
-                [QGVAR(leaderEvent), [_player, GVAR(oldLeader)]] call CBA_fnc_localEvent;
-                GVAR(oldLeader) = _data;
-            };
-
-            _data = currentWeapon _player;
+            private _data = currentWeapon _player;
             if !(_data isEqualTo GVAR(oldWeapon)) then {
                 GVAR(oldWeapon) = _data;
                 [QGVAR(weaponEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
-
-            _data = getUnitLoadout _player;
-            if !(_data isEqualTo GVAR(oldLoadout)) then {
-                GVAR(oldLoadout) = _data;
-
-                // we don't want to trigger this just because your ammo counter decreased.
-                _data = + GVAR(oldLoadout);
-
-                {
-                    private _weaponInfo = _data param [_forEachIndex, []];
-                    if !(_weaponInfo isEqualTo []) then {
-                        _weaponInfo set [4, _x];
-                        _weaponInfo deleteAt 5;
-                    };
-                } forEach [primaryWeaponMagazine _player, secondaryWeaponMagazine _player, handgunMagazine _player];
-
-                if !(_data isEqualTo GVAR(oldLoadoutNoAmmo)) then {
-                    GVAR(oldLoadoutNoAmmo) = _data;
-                    [QGVAR(loadoutEvent), [_player, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
-                };
             };
 
             _data = vehicle _player;
@@ -192,6 +160,41 @@ if (_id != -1) then {
                 GVAR(oldCameraView) = _data;
                 [QGVAR(cameraViewEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
+
+            if (GVAR(nextSlowCheck) < CBA_missionTime) then {
+                GVAR(nextSlowCheck) = GVAR(nextSlowCheck) + 1;
+                _data = group _player;
+                if !(_data isEqualTo GVAR(oldGroup)) then {
+                    [QGVAR(groupEvent), [_player, GVAR(oldGroup)]] call CBA_fnc_localEvent;
+                    GVAR(oldGroup) = _data;
+                };
+                _data = leader _player;
+                if !(_data isEqualTo GVAR(oldLeader)) then {
+                    [QGVAR(leaderEvent), [_player, GVAR(oldLeader)]] call CBA_fnc_localEvent;
+                    GVAR(oldLeader) = _data;
+                };
+
+                _data = getUnitLoadout _player;
+                if !(_data isEqualTo GVAR(oldLoadout)) then {
+                    GVAR(oldLoadout) = _data;
+
+                    // we don't want to trigger this just because your ammo counter decreased.
+                    _data = + GVAR(oldLoadout);
+
+                    {
+                        private _weaponInfo = _data param [_forEachIndex, []];
+                        if !(_weaponInfo isEqualTo []) then {
+                            _weaponInfo set [4, _x];
+                            _weaponInfo deleteAt 5;
+                        };
+                    } forEach [primaryWeaponMagazine _player, secondaryWeaponMagazine _player, handgunMagazine _player];
+
+                    if !(_data isEqualTo GVAR(oldLoadoutNoAmmo)) then {
+                        GVAR(oldLoadoutNoAmmo) = _data;
+                        [QGVAR(loadoutEvent), [_player, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
+                    };
+                };
+            };
         }] call CBA_fnc_compileFinal;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {call FUNC(playerEH_Map)}];
@@ -202,6 +205,11 @@ if (_id != -1) then {
                 [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
         }] call CBA_fnc_compileFinal;
+
+        GVAR(playerEHInfo) pushBack ([{call FUNC(playerEH_EachFrameSlow)}, [], 5] call CBA_fnc_addPerFrameHandler);
+        [QFUNC(playerEH_EachFrameSlow), {
+        }] call CBA_fnc_compileFinal;
+
 
         // emulate change to first value from default one frame later
         // using spawn-dc to not having to wait for postInit to complete

@@ -66,7 +66,7 @@ if (!isNil QGVAR(playerEHInfo)) then {
     // First two entries are mission eventhandler ids. Rest are framework
     // specific ids in array form. If all playerChanged eventhandlers were
     // removed, then also clean up the mission eventhandlers.
-    if (count GVAR(playerEHInfo) == 2) then {
+    if (count GVAR(playerEHInfo) == 3) then {
         removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
         removeMissionEventHandler ["Map",       GVAR(playerEHInfo) select 1];
         GVAR(playerEHInfo) = nil;
