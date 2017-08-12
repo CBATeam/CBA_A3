@@ -361,4 +361,34 @@ class CfgVehicles {
     class Land_Laptop_02_unfolded_F: Land_Laptop_02_F {
         XEH_ENABLED;
     };
+
+    // Orange
+    class Land_Orange_01_Base_F;
+    class Land_Orange_01_F: Land_Orange_01_Base_F {
+        XEH_ENABLED;
+    };
+
+    class Land_Pumpkin_01_Base_F;
+    class Land_Pumpkin_01_F: Land_Pumpkin_01_Base_F {
+        XEH_ENABLED;
+    };
+
+    class B_G_Soldier_F;
+    class B_G_Story_Guerilla_01_F: B_G_Soldier_F {
+        XEH_ENABLED;
+    };
+
+    class I_officer_F;
+    class I_Story_Officer_01_F: I_officer_F {
+        XEH_ENABLED;
+    };
+
+    class C_IDAP_Man_EOD_01_F;
+    class C_Story_EOD_01_F: C_IDAP_Man_EOD_01_F {
+        XEH_ENABLED;
+    };
+
+    class C_Story_Mechanic_01_F: Civilian_F {
+        XEH_ENABLED;
+    };
 };
