@@ -111,7 +111,7 @@ _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
 _nextButton ctrlEnable (_statementIndex > 0);
 
 // --- EXEC buttons
-private _execButtonLocal = _display displayCtrl IDC_OK;
+private _execButtonLocal = _display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
 _execButtonLocal ctrlAddEventHandler ["MouseButtonUp", {
     _this call FUNC(logStatement);
     false
