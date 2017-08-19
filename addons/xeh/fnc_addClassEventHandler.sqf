@@ -73,7 +73,7 @@ _entities = _entities arrayIntersect _entities; // entities can return duplicate
 
             //Run initReto now if the unit has already been initialized
             if (_applyInitRetroactively && {ISINITIALIZED(_unit)}) then {
-                // If PostInit has not finisehd exit as it will be run via initPostStack
+                // If PostInit has not finished exit as it will be run via initPostStack
                 if ((_eventName == "initpost") && {!(SLX_XEH_MACHINE select 8)}) exitWith {};
                 [_unit] call _eventFunc;
             };
