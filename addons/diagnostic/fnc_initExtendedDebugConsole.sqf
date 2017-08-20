@@ -206,3 +206,14 @@ FUNC(nextStatement) = {
     _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
     _nextButton ctrlEnable (_statementIndex > 0);
 };
+
+// remove forced pause for watch fields
+{
+    (_display displayCtrl _x) ctrlAddEventHandler ["SetFocus", {
+        _this spawn {
+            isNil {
+                (_this select 0) setVariable ["RscDebugConsole_watchPaused", false];
+            };
+        };
+    }];
+} forEach [IDC_RSCDEBUGCONSOLE_WATCHINPUT1, IDC_RSCDEBUGCONSOLE_WATCHINPUT2, IDC_RSCDEBUGCONSOLE_WATCHINPUT3, IDC_RSCDEBUGCONSOLE_WATCHINPUT4];
