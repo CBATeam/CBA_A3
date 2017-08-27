@@ -46,18 +46,17 @@ private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddons
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
-private _categories = [];
-
-// ----- create settings lists
-#include "gui_createMenu.sqf"
+// ----- Add lists
+_display setVariable [QGVAR(lists),[]];
 
 // ----- fill addons list
 {
-    private _category = _x;
+    (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
+
     private _index = _ctrlAddonList lbAdd _category;
     _ctrlAddonList lbSetData [_index, str _index];
     _display setVariable [str _index, _category];
-} forEach _categories;
+} forEach GVAR(allSettings);
 
 lbSort _ctrlAddonList;
 _ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);

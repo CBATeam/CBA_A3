@@ -8,6 +8,8 @@ private _display = ctrlParent _control;
 
 private _selectedAddon = _display getVariable (_control lbData _index);
 
+#include "gui_createCategory.sqf"
+
 if (_selectedAddon isEqualType "") then {
     uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 };
