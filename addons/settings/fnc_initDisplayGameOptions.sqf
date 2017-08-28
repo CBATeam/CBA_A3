@@ -50,12 +50,17 @@ _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonCh
 _display setVariable [QGVAR(lists),[]];
 
 // ----- fill addons list
+private _categories = [];
 {
     (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
 
-    private _index = _ctrlAddonList lbAdd _category;
-    _ctrlAddonList lbSetData [_index, str _index];
-    _display setVariable [str _index, _category];
+    if !(_category in _categories) then {
+        private _index = _ctrlAddonList lbAdd _category;
+        _ctrlAddonList lbSetData [_index, str _index];
+        _display setVariable [str _index, _category];
+
+        _categories pushBack _category;
+    };
 } forEach GVAR(allSettings);
 
 lbSort _ctrlAddonList;
