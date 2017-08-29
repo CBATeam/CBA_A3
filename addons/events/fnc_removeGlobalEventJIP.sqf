@@ -6,7 +6,7 @@ Description:
 
 Parameters:
     _jipID  - A unique ID from CBA_fnc_globalEventJIP. <STRING>
-    _object - Object, will remove jip EH when object is deleted. Or pass nil to ignore and remove immediately [optional] <OBJECT>or<NIL>
+    _object - Will remove jip EH when object is deleted or immediately if object is null [optional] <OBJECT>
 
 Returns:
     Nothing
@@ -17,9 +17,9 @@ Author:
 #include "script_component.hpp"
 SCRIPT(removeGlobalEventJIP);
 
-params [["_jipID", "", [""]], ["_object", nil, [nil, objNull]]];
+params [["_jipID", "", [""]], ["_object", objNull, [objNull]]];
 
-if ((isNil "_object") || {isNull _object}) then {
+if (isNull _object) then {
     GVAR(eventNamespaceJIP) setVariable [_jipID, nil, true];
 } else {
     [_object, "Deleted", {
