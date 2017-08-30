@@ -6,7 +6,7 @@ Description:
 
 Parameters:
     _jipID  - A unique ID from CBA_fnc_globalEventJIP. <STRING>
-    _object - Will remove jip EH when object is deleted or immediately if object is null [optional] <OBJECT>
+    _object - Will remove jip EH when object is deleted or immediately if omitted [optional] <OBJECT>
 
 Returns:
     Nothing
