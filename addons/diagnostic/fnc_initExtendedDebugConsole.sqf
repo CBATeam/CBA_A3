@@ -17,7 +17,7 @@ _debugConsole ctrlSetPosition [
 _debugConsole ctrlCommit 0;
 
 // --- adjust positions of all but a few controls
-#define EXCLUDE [0, IDC_RSCDEBUGCONSOLE_LINK, IDC_RSCDEBUGCONSOLE_TITLE, IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND, IDC_RSCDEBUGCONSOLE_EXPRESSIONTEXT, IDC_RSCDEBUGCONSOLE_EXPRESSION]
+#define EXCLUDE [0, IDC_RSCDEBUGCONSOLE_LINK, IDC_RSCDEBUGCONSOLE_TITLE, IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND, IDC_RSCDEBUGCONSOLE_EXPRESSIONTEXT, IDC_RSCDEBUGCONSOLE_EXPRESSION, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUT, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUTBACKGROUND]
 
 {
     if (ctrlParentControlsGroup _x == _debugConsole && {!(ctrlIDC _x in EXCLUDE)}) then {
@@ -37,7 +37,7 @@ _title ctrlSetText localize LSTRING(ExtendedDebugConsole);
 private _expression = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION;
 
 private _position = ctrlPosition _expression;
-_position set [3, safezoneH - 19.25 * GUI_GRID_H];
+_position set [3, safezoneH - 20.25 * GUI_GRID_H];
 
 _expression ctrlSetPosition _position;
 _expression ctrlCommit 0;
@@ -59,6 +59,17 @@ _position set [3, safezoneH - 18.25 * GUI_GRID_H];
 
 _expressionBackground ctrlSetPosition _position;
 _expressionBackground ctrlCommit 0;
+
+// --- EXPRESSION box output
+{
+    private _expressionOutput = _display displayCtrl _x;
+
+    _position = ctrlPosition _expressionOutput;
+    _position set [1, (_position select 1) + safezoneH - 26.05 * GUI_GRID_H];
+
+    _expressionOutput ctrlSetPosition _position;
+    _expressionOutput ctrlCommit 0;
+} forEach [IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUT, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUTBACKGROUND];
 
 // --- PREV button
 private _prevButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_PREV, _debugConsole];
@@ -96,7 +107,7 @@ _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
 _nextButton ctrlEnable (_statementIndex > 0);
 
 // --- EXEC buttons
-private _execButtonLocal = _display displayCtrl IDC_OK;
+private _execButtonLocal = _display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
 _execButtonLocal ctrlAddEventHandler ["MouseButtonUp", {
     _this call FUNC(logStatement);
     false
