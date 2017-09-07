@@ -8,6 +8,9 @@ private _display = ctrlParent _control;
 
 private _selectedAddon = _display getVariable (_control lbData _index);
 
+// fix error when no addons present
+if (isNil "_selectedAddon") exitWith {};
+
 if (_selectedAddon isEqualType "") then {
     uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 };
