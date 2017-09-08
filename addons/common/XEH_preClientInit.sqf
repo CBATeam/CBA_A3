@@ -8,4 +8,7 @@ if (hasInterface) then {
     GVAR(actionListUpdated) = false; // Set true to force recreation of actions.
     GVAR(nextActionIndex) = 0; // Next index that will be given out.
     GVAR(actionListPFEH) = false;
+
+    // Add CBA_MiscItems to VirtualArsenal
+    [missionnamespace, "arsenalOpened", {call CBA_fnc_handleArsenalOpened}] call bis_fnc_addscriptedeventhandler;
 };
