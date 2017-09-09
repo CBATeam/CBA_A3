@@ -17,8 +17,7 @@ Author:
 
 #define COUNT_WATCH_BOXES 8
 
-private _cfg = configFile >> "EnableTargetDebug";
-if !(1 isEqualTo ([getMissionConfigValue ["EnableTargetDebug", 0], getNumber _cfg] select isNumber _cfg)) exitWith {};
+if !(1 == getMissionConfigValue ["EnableTargetDebug", 0] || {1 == getNumber (configFile >> "EnableTargetDebug")}) exitWith {};
 
 params ["_display"];
 TRACE_1("adding server watch debug",_display);
