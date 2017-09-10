@@ -144,10 +144,10 @@ class RscPicture;
 
 class RscCheckBox;
 class GVAR(CheckboxSound): RscCheckBox {
-    soundEnter[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",0.090000004,1};
-    soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundPush",0.090000004,1};
-    soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.090000004,1};
-    soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.090000004,1};
+    soundEnter[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEnter",0.090000004,1};
+    soundPush[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundPush",0.090000004,1};
+    soundClick[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundClick",0.090000004,1};
+    soundEscape[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEscape",0.090000004,1};
 };
 
 class GVAR(Row_Base): RscControlsGroupNoScrollbars {
