@@ -1,0 +1,81 @@
+/*
+Description:
+    Adds items that inherit from CBA_MiscItem to the arsenal under "Miscellaneous Items" for uniform/vest/backpack.
+    Much of this code is directly from BIS's fn_arsenal.sqf -> "ListAdd"
+
+Author:
+    PabstMirror (mostly just modified BIS code)
+ */
+
+// #define DEBUG_MODE_FULL
+
+#include "script_component.hpp"
+#include "\a3\ui_f\hpp\defineResinclDesign.inc"
+// IDC_RSCDISPLAYARSENAL_LIST            960
+// IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC   24
+
+
+[missionNameSpace, "arsenalOpened", {
+    params ["_display"];
+    TRACE_1("arsenalOpened",_display);
+
+    // We only need to directly add the items to the display list once per mission as we also modify the data array
+    if (missionNameSpace getVariable [QGVAR(arsenalDataModified), false]) exitWith {
+        TRACE_1("Already set", bis_fnc_arsenal_data select 24)
+    };
+
+
+    // Get properly scoped items that inherit from CBA_MiscItem
+    private _cbaMiscItems = [];
+    {
+        private _class = _x;
+        private _scope = if (isnumber (_class >> "scopeArsenal")) then {getnumber (_class >> "scopeArsenal")} else {getnumber (_class >> "scope")};
+        TRACE_2("",_class,_scope);
+        if (_scope == 2 && {gettext (_class >> "model") != ""}) then {
+            _cbaMiscItems pushBack (configName _class);
+        };
+    } forEach (configProperties [configFile >> "CfgWeapons", "(isClass _x) && {(configName _x) isKindOf ['CBA_MiscItem', configFile >> 'CfgWeapons']}"]);
+    TRACE_2("Items to add",count _cbaMiscItems,_cbaMiscItems);
+
+
+    // BIS code to determine which items should be shown in the list (all items will still be added to the data array)
+    private _fullVersion = missionNameSpace getVariable ["BIS_fnc_arsenal_fullArsenal",false];
+    private _center = (missionNameSpace getVariable ["BIS_fnc_arsenal_center",player]);
+    private _cargo = (missionNameSpace getVariable ["BIS_fnc_arsenal_cargo",objNull]);
+
+    private _virtualItemCargo =
+    (missionNameSpace call bis_fnc_getVirtualItemCargo) +
+    (_cargo call bis_fnc_getVirtualItemCargo) +
+    items _center +
+    assigneditems _center +
+    primaryweaponitems _center +
+    secondaryweaponitems _center +
+    handgunitems _center +
+    [uniform _center,vest _center,headgear _center,goggles _center];
+
+    private _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC);
+    private _virtualCargo = _virtualItemCargo;
+    private _virtualAll = _fullVersion || {"%ALL" in _virtualCargo};
+    private _columns = count lnbGetColumnsPosition _ctrlList;
+    TRACE_2("",_virtualAll,_virtualCargo);
+    {
+        // Add item to display list if allowed
+        if (_virtualAll || {_x in _virtualCargo}) then {
+            private _xCfg = configfile >> "cfgweapons" >> _x;
+            private _lbAdd = _ctrlList lnbaddrow ["",gettext (_xCfg >> "displayName"),str 0];
+            _ctrlList lnbsetdata [[_lbAdd,0],_x];
+            _ctrlList lnbsetpicture [[_lbAdd,0],gettext (_xCfg >> "picture")];
+            _ctrlList lnbsetvalue [[_lbAdd,0],getnumber (_xCfg >> "itemInfo" >> "mass")];
+            _ctrlList lbsettooltip [_lbAdd * _columns,format ["%1\n%2",gettext (_xCfg >> "displayName"),_x]];
+        };
+
+        // Add item to main list (will be used on next arsenalOpened automaticly)
+        (bis_fnc_arsenal_data select IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC) pushBack _x;
+    } foreach _cbaMiscItems;
+
+
+    missionNameSpace setVariable [QGVAR(arsenalDataModified), true];
+    TRACE_1("finished",GVAR(arsenalDataModified));
+
+    nil
+}] call bis_fnc_addScriptedEventHandler;
