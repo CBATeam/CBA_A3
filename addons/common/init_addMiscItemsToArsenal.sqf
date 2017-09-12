@@ -15,16 +15,16 @@ Author:
 // IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC   24
 
 
-[missionNameSpace, "arsenalOpened", {
-    // If this code takes too long to finish, we could randomly get kicked out of missionNameSpace
-    // For safety, spawn and then directCall to prevent problems because we are called from fn_arsenal via `with missionnamespace do {`
+[missionNamespace, "arsenalOpened", {
+    // If this code takes too long to finish, we could randomly get kicked out of missionNamespace
+    // For safety, spawn and then directCall to prevent problems because we are called from fn_arsenal via `with missionNamespace do {`
     _this spawn {
         [{
             params ["_display"];
             TRACE_1("arsenalOpened",_display);
 
             // We only need to directly add the items to the display list once per mission as we also modify the data array
-            if (missionNameSpace getVariable [QGVAR(arsenalDataModified), false]) exitWith {
+            if (missionNamespace getVariable [QGVAR(arsenalDataModified), false]) exitWith {
                 TRACE_1("Already set", bis_fnc_arsenal_data select 24);
             };
 
@@ -43,12 +43,12 @@ Author:
 
 
             // BIS code to determine which items should be shown in the list (all items will still be added to the data array)
-            private _fullVersion = missionNameSpace getVariable ["BIS_fnc_arsenal_fullArsenal",false];
-            private _center = (missionNameSpace getVariable ["BIS_fnc_arsenal_center",player]);
-            private _cargo = (missionNameSpace getVariable ["BIS_fnc_arsenal_cargo",objNull]);
+            private _fullVersion = missionNamespace getVariable ["BIS_fnc_arsenal_fullArsenal",false];
+            private _center = (missionNamespace getVariable ["BIS_fnc_arsenal_center",player]);
+            private _cargo = (missionNamespace getVariable ["BIS_fnc_arsenal_cargo",objNull]);
 
             private _virtualItemCargo =
-            (missionNameSpace call bis_fnc_getVirtualItemCargo) +
+            (missionNamespace call bis_fnc_getVirtualItemCargo) +
             (_cargo call bis_fnc_getVirtualItemCargo) +
             items _center +
             assigneditems _center +
@@ -80,7 +80,7 @@ Author:
             // Sort the list:
             _ctrlList lnbSort [1,false];
 
-            missionNameSpace setVariable [QGVAR(arsenalDataModified), true];
+            missionNamespace setVariable [QGVAR(arsenalDataModified), true];
             TRACE_1("finished",GVAR(arsenalDataModified));
 
         }, _this] call CBA_fnc_directCall;
