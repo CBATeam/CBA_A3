@@ -20,3 +20,4 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgLocationTypes.hpp"
+#include "CfgWeapons.hpp"

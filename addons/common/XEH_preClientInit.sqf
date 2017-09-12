@@ -8,4 +8,6 @@ if (hasInterface) then {
     GVAR(actionListUpdated) = false; // Set true to force recreation of actions.
     GVAR(nextActionIndex) = 0; // Next index that will be given out.
     GVAR(actionListPFEH) = false;
+
+    call COMPILE_FILE(init_addMiscItemsToArsenal); // Add CBA_MiscItems to VirtualArsenal
 };
