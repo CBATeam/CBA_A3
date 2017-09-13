@@ -159,6 +159,7 @@ Group: Functions  {
       File: CBA_fnc_inheritsFrom  (common/fnc_inheritsFrom.sqf)
       File: CBA_fnc_isAlive  (common/fnc_isAlive.sqf)
       File: CBA_fnc_isPerson  (common/fnc_isPerson.sqf)
+      File: CBA_fnc_isTerrainObject  (common/fnc_isTerrainObject.sqf)
       File: CBA_fnc_isTurnedOut  (common/fnc_isTurnedOut.sqf)
       File: CBA_fnc_isUnitGetOutAnim  (common/fnc_isUnitGetOutAnim.sqf)
       File: CBA_fnc_mapDirTo  (common/fnc_mapDirTo.sqf)
@@ -199,6 +200,7 @@ Group: Functions  {
 
    Group: Diagnostic  {
 
+      File: CBA_diagnostic_fnc_initTargetDebugConsole  (diagnostic/fnc_initTargetDebugConsole.sqf)
       File: CBA_fnc_addUnitTrackProjectiles  (diagnostic/fnc_addUnitTrackProjectiles.sqf)
       File: CBA_fnc_debug  (diagnostic/fnc_debug.sqf)
       File: CBA_fnc_test  (diagnostic/fnc_test.sqf)
@@ -225,6 +227,7 @@ Group: Functions  {
       File: CBA_fnc_remoteEvent  (events/fnc_remoteEvent.sqf)
       File: CBA_fnc_removeDisplayHandler  (events/fnc_removeDisplayHandler.sqf)
       File: CBA_fnc_removeEventHandler  (events/fnc_removeEventHandler.sqf)
+      File: CBA_fnc_removeGlobalEventJIP  (events/fnc_removeGlobalEventJIP.sqf)
       File: CBA_fnc_removeKeyHandler  (events/fnc_removeKeyHandler.sqf)
       File: CBA_fnc_removeMarkerEventHandler  (events/fnc_removeMarkerEventHandler.sqf)
       File: CBA_fnc_removePlayerEventHandler  (events/fnc_removePlayerEventHandler.sqf)
@@ -265,6 +268,7 @@ Group: Functions  {
       File: CBA_fnc_addKeybind  (keybinding/fnc_addKeybind.sqf)
       File: CBA_fnc_addKeybindToFleximenu  (keybinding/fnc_addKeybindToFleximenu.sqf)
       File: CBA_fnc_getKeybind  (keybinding/fnc_getKeybind.sqf)
+      File: CBA_fnc_localizeKey  (keybinding/fnc_localizeKey.sqf)
       File: CBA_fnc_registerKeybind  (keybinding/fnc_registerKeybind.sqf)
       File: CBA_fnc_registerKeybindModPrettyName  (keybinding/fnc_registerKeybindModPrettyName.sqf)
       File: CBA_fnc_registerKeybindToFleximenu  (keybinding/fnc_registerKeybindToFleximenu.sqf)
@@ -286,6 +290,18 @@ Group: Functions  {
       File: CBA_fnc_moduleDefend  (modules/fnc_moduleDefend.sqf)
       File: CBA_fnc_modulePatrol  (modules/fnc_modulePatrol.sqf)
       }  # Group: Modules
+
+   Group: Music  {
+
+      File: CBA_fnc_compileMusic  (music/fnc_compileMusic.sqf)
+      File: CBA_fnc_findMusic  (music/fnc_findMusic.sqf)
+      File: CBA_fnc_getMusicData  (music/fnc_getMusicData.sqf)
+      File: CBA_fnc_getMusicPath  (music/fnc_getMusicPath.sqf)
+      File: CBA_fnc_getMusicPlaying  (music/fnc_getMusicPlaying.sqf)
+      File: CBA_fnc_isMusicPlaying  (music/fnc_isMusicPlaying.sqf)
+      File: CBA_fnc_playMusic  (music/fnc_playMusic.sqf)
+      File: CBA_fnc_stopMusic  (music/fnc_stopMusic.sqf)
+      }  # Group: Music
 
    Group: Settings  {
 
@@ -361,6 +377,7 @@ Group: Statemachine  {
    File: CBA_statemachine_fnc_create  (statemachine/fnc_create.sqf)
    File: CBA_statemachine_fnc_createFromConfig  (statemachine/fnc_createFromConfig.sqf)
    File: CBA_statemachine_fnc_delete  (statemachine/fnc_delete.sqf)
+   File: CBA_statemachine_fnc_dumpPerformanceCounters  (statemachine/fnc_dumpPerformanceCounters.sqf)
    File: CBA_statemachine_fnc_getCurrentState  (statemachine/fnc_getCurrentState.sqf)
    File: CBA_statemachine_fnc_manualTransition  (statemachine/fnc_manualTransition.sqf)
    File: CBA_statemachine_fnc_toString  (statemachine/fnc_toString.sqf)
