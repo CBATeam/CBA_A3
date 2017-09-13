@@ -12,7 +12,7 @@
 
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.72
+#define REQUIRED_VERSION 1.76
 
 
 /*
