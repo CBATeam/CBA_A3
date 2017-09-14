@@ -107,18 +107,10 @@ private _fnc_addContents = {
 
         // If weapon does not have a non-preset parent, only add attachments that were custom added
         // Removed attachments cannot be handled (engine limitation) and will be readded due to having to readd preset weapon
-
         private _presetAttachments = [];
         if (_weaponNonPreset == _weapon) then {
             _presetAttachments = _weapon call CBA_fnc_weaponComponents;
-        } else {
-            _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", ""]];
-            _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
-
-            _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", ""]];
-            _container addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
         };
-
         if !(toLower _muzzle in _presetAttachments) then {
             _container addItemCargoGlobal [_muzzle, 1];
         };
@@ -130,6 +122,16 @@ private _fnc_addContents = {
         };
         if !(toLower _bipod in _presetAttachments) then {
             _container addItemCargoGlobal [_bipod, 1];
+        };
+
+        _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", 0]];
+        if (_magazineClass != "") then {
+            _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
+        };
+
+        _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", 0]];
+        if (_magazineGLClass != "") then {
+            _container addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
         };
     } forEach _weaponsItemsCargo;
 };
