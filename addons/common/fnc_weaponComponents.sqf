@@ -37,8 +37,10 @@ private _components = GVAR(weaponComponentsCache) getVariable _weapon;
 if (isNil "_components") then {
     private _config = configfile >> "CfgWeapons" >> _weapon;
 
-    // return empty array if the weapon doesn't exist
-    if (!isClass _config) exitWith {[]};
+    // Return empty array if the weapon doesn't exist
+    if (!isClass _config) exitWith {
+        _components = [];
+    };
 
     // get attachments
     private _attachments = [];
