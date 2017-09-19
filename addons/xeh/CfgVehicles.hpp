@@ -149,11 +149,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class FlagCarrierCore;
-    class FlagChecked_F: FlagCarrierCore {
-        XEH_ENABLED;
-    };
-
     class ThingX;
     class ReammoBox_F: ThingX {
         XEH_ENABLED;
