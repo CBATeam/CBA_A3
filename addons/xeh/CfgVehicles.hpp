@@ -149,11 +149,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class FlagCarrierCore;
-    class FlagChecked_F: FlagCarrierCore {
-        XEH_ENABLED;
-    };
-
     class C_man_w_worker_F;
     class C_scientist_F: C_man_w_worker_F {
         XEH_ENABLED;
