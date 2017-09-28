@@ -54,7 +54,8 @@ _targetWatchText ctrlCommit 0;
 
 
 // Add target selector list
-private _clientList = _display ctrlCreate ["RscCombo", -1, _debugConsole];
+private _clientList = _display ctrlCreate ["RscXListBox", -1, _debugConsole];
+// Note: RscCombo is a better choice for this, but seems to have stopped working with 1.76, try to switch back in the future
 _clientList ctrlSetPosition _basePosition;
 _clientList ctrlCommit 0;
 _basePosition set [1, (_basePosition select 1) + 1.5 * GUI_GRID_H];
