@@ -24,13 +24,15 @@ SCRIPT(randPos);
 
 params [
     ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull, []]],
-    ["_radius", 0, [0]]
+    ["_radius", 0, [0]],
+    ["_direction", 0, [0]],
+    ["_amplitude", 360, [0]]
 ];
 
 private _position = _entity call CBA_fnc_getPos;
 private _doResize = _position isEqualTypeArray [0,0];
 
-_position = _position getPos [_radius * sqrt random 1, random 360];
+_position = _position getPos [_radius * sqrt random 1, _direction - 0.5*_amplitude + random _amplitude];
 
 if (_doResize) then {
     _position resize 2;
