@@ -12,7 +12,7 @@ class CfgFunctions
             // CBA_fnc_hashCreate
             class hashCreate
             {
-                description = "Check if a Hash has a value defined for a key.";
+                description = "Creates a new Hash.";
                 file = "\x\cba\addons\hashes\fnc_hashCreate.sqf";
             };
             // CBA_fnc_hashEachPair

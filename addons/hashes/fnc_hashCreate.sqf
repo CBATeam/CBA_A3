@@ -2,7 +2,7 @@
 Function: CBA_fnc_hashCreate
 
 Description:
-    Check if a Hash has a value defined for a key.
+    Creates a new Hash
 
 Parameters:
     _array - Array of key-value pairs to create Hash from [Array, defaults to []]
