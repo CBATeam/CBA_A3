@@ -187,7 +187,7 @@
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
         <English>This setting is overwritten by the clients and only applies to the server.</English>
         <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
-            <Japanese>この設定はクライアントによって上書きされ、サーバーにのみ適用されます。</Japanese>
+        <Japanese>この設定はクライアントによって上書きされ、サーバーにのみ適用されます。</Japanese>
         <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
         <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
     </Key>
