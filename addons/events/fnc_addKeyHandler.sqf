@@ -54,10 +54,17 @@ if !(_type in ["keydown", "keyup"]) exitWith {
 
 // create random hash if none was supplied
 if (_hashKey isEqualTo "") then {
-    _hashKey = format ["%1%2%3%4%5%6%7%8", floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100, floor random 100];
+    _hashKey = format ["%1%2%3%4", floor random 1E4, floor random 1E4, floor random 1E4, floor random 1E4];
 };
 
 _hashKey = toLower _hashKey;
+
+private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
+
+// fix using addKeyHander twice on different keys makes old handler unremovable
+if (!isNil {_hash getVariable _hashKey}) then {
+    [_hashKey, _type] call CBA_fnc_removeKeyHandler;
+};
 
 // add default keyup handler to keydown
 if (_type isEqualTo "keydown") then {
@@ -68,7 +75,6 @@ if (_type isEqualTo "keydown") then {
     _params call CBA_fnc_addKeyHandler;
 };
 
-private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
 _hash setVariable [_hashKey, [_key, _settings, _code, _allowHold, _holdDelay]];
 
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");

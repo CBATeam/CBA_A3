@@ -5,20 +5,14 @@ Description:
     Set the value of a setting.
 
 Parameters:
-    _setting - Name of the setting <STRING>
-    _value   - Value of the setting <ANY>
-    _forced  - Force setting? <BOOLEAN>
-    _source  - Can be "client", "server" or "mission" (optional, default: "client") <STRING>
+    _setting  - Name of the setting <STRING>
+    _value    - Value of the setting <ANY>
+    _priority - New setting priority <NUMBER, BOOLEAN>
+    _source   - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
+    _store    - Store changed setting in profile or mission (optional, default: false) <BOOLEAN>
 
 Returns:
-    _return - Error code <NUMBER>
-        0: succes
-        1: invalid value for setting
-        2: new setting and forced state are the same as the previous ones
-        10: invalid source
-        11: server source, but in SP
-        12: server source, but no access
-        13: mission source, but not in 3DEN editor
+    _return - Success <BOOL>
 
 Examples:
     (begin example)
@@ -30,74 +24,96 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_setting", "", [""]], "_value", ["_forced", nil, [false]], ["_source", "client", [""]]];
+// prevent race conditions. function could be called from scheduled env.
+if (canSuspend) exitWith {
+    [FUNC(set), _this] call CBA_fnc_directCall;
+};
 
-if (!isNil "_value" && {!([_setting, _value] call FUNC(check))}) exitWith {
-    WARNING_2("Value %1 is invalid for setting %2.",_value,str _setting);
-    1
+params [["_setting", "", [""]], "_value", ["_priority", 0, [false, 0]], ["_source", "client", [""]], ["_store", false, [false]]];
+
+if (isNil "_value") then {
+    _value = [_setting, "default"] call FUNC(get);
+};
+
+if !([_setting, _value] call FUNC(check)) exitWith {
+    WARNING_2("Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
+    false
 };
 
 private _currentValue = [_setting, _source] call FUNC(get);
-private _currentForced = [_setting, _source] call FUNC(isForced);
+private _currentPriority = [_setting, _source] call FUNC(priority);
 
-if (isNil "_forced") then {
-    _forced = _currentForced;
+if (_value isEqualTo _currentValue && {_priority isEqualTo _currentPriority}) exitWith {
+    WARNING_3("Value %1 and priority %2 are the same as previously for setting %3.",TO_STRING(_value),_priority,_setting);
+    false
 };
 
-if (!isNil "_currentValue" && {_value isEqualTo _currentValue} && {_forced isEqualTo _currentForced}) exitWith {2};
-
-private _return = 0;
+private _return = true;
 
 switch (toLower _source) do {
-    case ("client"): {
-        // flag is used for server settings exclusively, keep previous state
-        _forced = [_setting, _source] call FUNC(isForced);
+    case "client": {
+        GVAR(client) setVariable [_setting, [_value, _priority]];
 
-        GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
+        if (_store) then {
+            if (!isNil {GVAR(userconfig) getVariable _setting}) exitWith {
+                WARNING_1("Cannot change setting %1 defined in userconfig file.",_setting);
+            };
 
-        private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
-        [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
-        profileNamespace setVariable [QGVAR(hash), _settingsHash];
+            private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+            [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+            profileNamespace setVariable [QGVAR(hash), _settingsHash];
+        };
 
         [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
     };
-    case ("server"): {
-        if (!isMultiplayer) exitWith {
-            _return = 11;
+    case "mission": {
+        GVAR(mission) setVariable [_setting, [_value, _priority]];
+
+        if (_store) then {
+            if (!is3DEN) exitWith {
+                WARNING_1("Source is mission, but not in 3DEN editor. Setting: %1",_setting);
+            };
+
+            if (!isNil {GVAR(missionConfig) getVariable _setting}) exitWith {
+                WARNING_1("Cannot change setting %1 defined in mission settings file.",_setting);
+            };
+
+            private _settingsHash = "Scenario" get3DENMissionAttribute QGVAR(hash);
+            [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+            set3DENMissionAttributes [["Scenario", QGVAR(hash), _settingsHash]];
+            findDisplay 313 setVariable [QGVAR(hash), _settingsHash];
         };
 
+        [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+    };
+    case "server": {
         if (isServer) then {
-            GVAR(clientSettings) setVariable [_setting, [_value, _forced]];
-            GVAR(serverSettings) setVariable [_setting, [_value, _forced], true];
+            GVAR(client) setVariable [_setting, [_value, _priority]];
+            GVAR(server) setVariable [_setting, [_value, _priority], true];
 
-            private _settingsHash = profileNamespace getVariable [QGVAR(hash), NULL_HASH];
-            [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
-            profileNamespace setVariable [QGVAR(hash), _settingsHash];
+            if (_store) then {
+                if (!isNil {GVAR(serverConfig) getVariable _setting}) exitWith {
+                    WARNING_1("Cannot change setting %1 defined in server config file.",_setting);
+                };
+
+                private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+                [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+                profileNamespace setVariable [QGVAR(hash), _settingsHash];
+            };
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
             if (IS_ADMIN_LOGGED) then {
-                [QGVAR(setSettingServer), [_setting, _value, _forced]] call CBA_fnc_serverEvent;
+                [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
             } else {
-                _return = 12;
+                WARNING_1("Source is server, but no admin access. Setting: %1",_setting);
+                _return = false;
             };
         };
     };
-    case ("mission"): {
-        if (!is3DEN) exitWith {
-            _return = 13;
-        };
-
-        GVAR(missionSettings) setVariable [_setting, [_value, _forced]];
-
-        private _settingsHash = "Scenario" get3DENMissionAttribute QGVAR(hash);
-        [_settingsHash, toLower _setting, [_value, _forced]] call CBA_fnc_hashSet;
-        set3DENMissionAttributes [["Scenario", QGVAR(hash), _settingsHash]];
-
-        [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
-    };
     default {
-        _return = 10;
+        WARNING_2("Invalid source %1 for setting %2",_source,_setting);
+        _return = false;
     };
 };
 

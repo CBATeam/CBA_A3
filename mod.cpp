@@ -1,4 +1,4 @@
-name = "Community Base Addons v3.2.1";
+name = "Community Base Addons v3.4.1";
 picture = "logo_cba_ca.paa";
 actionName = "Website";
 action = "https://github.com/CBATeam/CBA_A3/wiki";

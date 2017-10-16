@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="Main">
+    <Package name="Keybinding">
         <Key ID="STR_CBA_Keybinding_Component">
             <English>Community Base Addons - Keybinding</English>
             <Japanese>Community Base Addons - キー割り当て</Japanese>
+            <Chinese>社群基礎模組 - 按鍵綁定</Chinese>
+            <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
+            <German>Modifikationen anpassen</German>
             <Polish>Konfiguracja addonów</Polish>
             <Japanese>アドオンの設定</Japanese>
+            <Chinese>模組設定</Chinese>
+            <Chinesesimp>模组设定</Chinesesimp>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
+            <German>Hauptspiel anpassen</German>
             <Polish>Konfiguracja bazy</Polish>
             <Japanese>基本設定</Japanese>
+            <Chinese>基礎設定</Chinese>
+            <Chinesesimp>基础设定</Chinesesimp>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
-            <English>Unknown Code %1</English>
+            <English>Unknown Key %1</English>
+            <German>Unbekannte Taste %1</German>
             <Polish>Nieznany klawisz %1</Polish>
             <Japanese>%1のコードは不明です</Japanese>
-        </Key>
-        <Key ID="STR_cba_keybinding_canNotEdit">
-            <English>You must load an intro/world/mission to view/change.</English>
-            <Polish>Musisz wczytać intro/świat/misję by móc zmieniać/podglądać klawisze.</Polish>
-            <Japanese>閲覧や変更にはイントロかワールド、ミッションを読み込む必要があります。</Japanese>
-        </Key>
-        <Key ID="STR_cba_keybinding_doubleClickToStart">
-            <English>Double click any action to change its binding</English>
-            <Polish>Naciśnij dwukrotnie na daną akcję aby zmienić jej klawisz</Polish>
-            <Japanese>ダブル クリックで割り当てを変更できます</Japanese>
+            <Chinese>未知按鍵%1</Chinese>
+            <Chinesesimp>未知按键%1</Chinesesimp>
         </Key>
     </Package>
 </Project>

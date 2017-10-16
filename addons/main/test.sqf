@@ -5,7 +5,7 @@
 
 #include "script_component.hpp"
 
-#define CATEGORIES ["arrays", "common", "diagnostic", "hashes", "network", "strings", "vectors", "jr"]
+#define CATEGORIES ["arrays", "common", "diagnostic", "events", "hashes", "network", "strings", "vectors", "jr"]
 
 SCRIPT(test);
 

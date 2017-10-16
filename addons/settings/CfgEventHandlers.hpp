@@ -18,10 +18,13 @@ class Extended_PostInit_EventHandlers {
 };
 
 class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayMain {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMain)'));
+    };
     class RscDisplayGameOptions {
-        ADDON = QUOTE(if (isNil 'ADDON') then {_this call (uiNamespace getVariable 'FUNC(gui_initDisplay_disabled)')} else {_this call (uiNamespace getVariable 'FUNC(gui_initDisplay)')};);
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayGameOptions)'));
     };
     class Display3DEN {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(init3DEN)'));
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
     };
 };

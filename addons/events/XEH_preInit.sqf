@@ -49,15 +49,16 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
     GVAR(handlerHash) = [[], []] call CBA_fnc_hashCreate;
 };
 
+// Key Handlers
 PREP(keyHandler);
 PREP(keyHandlerDown);
 PREP(keyHandlerUp);
-
-["keyDown", FUNC(keyHandlerDown)] call CBA_fnc_addDisplayHandler;
-["keyUp", FUNC(keyHandlerUp)] call CBA_fnc_addDisplayHandler;
+PREP(mouseHandlerDown);
+PREP(mouseHandlerUp);
+PREP(mouseWheelHandler);
 
 private _keyHandlers = [];
-_keyHandlers resize 250;
+_keyHandlers resize 0xFF;
 
 GVAR(keyDownStates) = _keyHandlers apply {[]};
 GVAR(keyUpStates) = + GVAR(keyDownStates);
@@ -78,3 +79,7 @@ GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 
     false
 }] call CBA_fnc_compileFinal;
+
+GVAR(shift) = false;
+GVAR(control) = false;
+GVAR(alt) = false;
