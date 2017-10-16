@@ -138,51 +138,58 @@
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
             <German>Zur Standardeinstellung zurücksetzen.</German>
-            <Japanese>デフォルトにリセットします。</Japanese>
+            <Japanese>標準値へ初期化します。</Japanese>
             <Chinese>重設成預設數值。</Chinese>
             <Chinesesimp>重设成预设数值。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
             <German>Clients\nüberschreiben</German>
+            <Japanese>上書き\nクライアント</Japanese>
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <German>Mission\nüberschreiben</German>
+            <Japanese>上書き\nミッション</Japanese>
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <German>Server\nüberschreiben</German>
+            <Japanese>上書き\nサポート</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n伺服器</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
             <German>Diese Einstellung wird von den Clients überschrieben.</German>
+            <Japanese>この設定はクライアントによって上書きされます。</Japanese>
             <Chinese>此項設定被客戶端給覆寫。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
             <German>Diese Einstellung wird von der Mission überschrieben.</German>
+            <Japanese>この設定はミッションによって上書きされます。</Japanese>
             <Chinese>此項設定被任務給覆寫。</Chinese>
             <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
             <German>Diese Einstellung wird vom Server überschrieben.</German>
+            <Japanese>この設定はサーバーによって上書きされます。</Japanese>
             <Chinese>此項設定被伺服器給覆寫。</Chinese>
             <Chinesesimp>此项设定被伺服器给覆写。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
-        <English>This setting is overwritten by the clients and only applies to the server.</English>
-        <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
-        <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
-        <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
-    </Key>
+            <English>This setting is overwritten by the clients and only applies to the server.</English>
+            <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
+            <Japanese>この設定はクライアントによって上書きされ、サーバーにのみ適用されます。</Japanese>
+            <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
+            <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
+        </Key>
     </Package>
 </Project>

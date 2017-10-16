@@ -51,7 +51,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_ArrayLoc">
             <English>Array</English>
-            <Japanese>アライ</Japanese>
+            <Japanese>アレイ</Japanese>
             <Chinese>陣列</Chinese>
             <Chinesesimp>阵列</Chinesesimp>
         </Key>
@@ -81,7 +81,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <Japanese>空白のアライか、引用符を付けずに名前を入力します</Japanese>
+            <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
         </Key>
@@ -141,7 +141,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <Japanese>空白のアライか、引用符を付けずに名前を入力します</Japanese>
+            <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
         </Key>
@@ -165,27 +165,31 @@
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
-            <Japanese>小さい数字ではより多くの建物が利用できます</Japanese>
+            <Japanese>小さい数字でより多くの建物を利用できます</Japanese>
             <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
             <English>Patrol Chance</English>
+            <Japanese>巡回率</Japanese>
             <Chinese>巡邏機率</Chinese>
             <Chinesesimp>巡逻机率</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
+            <Japanese>各ユニットが歩哨のために巡回する確率を設定</Japanese>
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
+            <Japanese>停止率</Japanese>
             <Chinese>停留機率</Chinese>
             <Chinesesimp>停留机率</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
+            <Japanese>各ユニットが戦闘中に歩哨所で留まる確率を設定</Japanese>
             <Chinese>設定當駐軍開始交戰時每個單位有多少機率會原地不動</Chinese>
             <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
         </Key>
@@ -197,13 +201,13 @@
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
-            <Japanese>哨戒</Japanese>
+            <Japanese>巡回</Japanese>
             <Chinese>巡邏</Chinese>
             <Chinesesimp>巡逻</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
-            <Japanese>哨戒場所の種類</Japanese>
+            <Japanese>巡回場所の種類</Japanese>
             <Chinese>巡邏區類型</Chinese>
             <Chinesesimp>巡逻区类型</Chinesesimp>
         </Key>
@@ -221,13 +225,13 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <Japanese>空白のアライか、引用符を付けずに名前を入力します</Japanese>
+            <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius">
             <English>Patrol Radius</English>
-            <Japanese>哨戒範囲</Japanese>
+            <Japanese>巡回範囲</Japanese>
             <Chinese>巡邏半徑</Chinese>
             <Chinesesimp>巡逻半径</Chinesesimp>
         </Key>
@@ -245,7 +249,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
-            <Japanese>作成するウェイポイント数を</Japanese>
+            <Japanese>作成するウェイポイント数</Japanese>
             <Chinese>設定會產出多少個路徑點</Chinese>
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
         </Key>
@@ -383,13 +387,13 @@
         </Key>
         <Key ID="STR_CBA_Modules_SpeedNormal">
             <English>Normal(Jog-Stays in formation)</English>
-            <Japanese>通常 ()</Japanese>
+            <Japanese>通常 (駆け足 - 隊形維持)</Japanese>
             <Chinese>普通 (慢跑-不破壞隊形)</Chinese>
             <Chinesesimp>普通 (慢跑-不破坏队形)</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedFull">
             <English>Full(Run-No formation)</English>
-            <Japanese>全速 ()</Japanese>
+            <Japanese>全速 (疾走 - 隊形なし)</Japanese>
             <Chinese>全速 (衝刺-破壞隊形)</Chinese>
             <Chinesesimp>全速 (冲刺-破坏队形)</Chinesesimp>
         </Key>
