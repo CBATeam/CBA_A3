@@ -10,33 +10,39 @@
         <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
             <English>Extended Debug Console</English>
             <German>Erweiterte Debug-Konsole</German>
+            <Japanese>拡張デバッグ コンソール</Japanese>
             <Chinese>擴展除錯控制台</Chinese>
             <Chinesesimp>扩展除错控制台</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Diagnostic_PrevStatement">
             <English>Previous Statement</English>
             <German>Vorheriger Ausdruck</German>
+            <Japanese>前のコード</Japanese>
             <Chinese>上個陳述式</Chinese>
             <Chinesesimp>上个陈述式</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
             <German>Nächster Ausdruck</German>
+            <Japanese>次のコード</Japanese>
             <Chinese>下個陳述式</Chinese>
             <Chinesesimp>下个陈述式</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
+            <Japanese>対象へ実行</Japanese>
             <Chinese>在目標執行</Chinese>
             <Chinesesimp>在目标执行</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debuging</English>
+            <Japanese>対象デバッキングを有効化</Japanese>
             <Chinese>開啟目標除錯模式</Chinese>
             <Chinesesimp>开启目标除错模式</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
+            <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
             <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
             <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
         </Key>
