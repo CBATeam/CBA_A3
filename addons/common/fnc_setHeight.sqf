@@ -26,17 +26,17 @@ SCRIPT(setHeight);
 params [["_object", objNull, [objNull]], ["_height", 0, [0]], ["_type", 1, [0]]];
 
 private _position = switch (_type) do {
-    case 0 : {getPos _object};
-    case 1 : {getPosASL _object};
-    case 2 : {getPosATL _object};
+    case 0: {getPos _object};
+    case 1: {getPosASL _object};
+    case 2: {getPosATL _object};
 };
 
 _position set [2, _height];
 
 switch (_type) do {
-    case 0 : {_object setPos _position};
-    case 1 : {_object setPosASL _position};
-    case 2 : {_object setPosATL _position};
+    case 0: {_object setPos _position};
+    case 1: {_object setPosASL _position};
+    case 2: {_object setPosATL _position};
 };
 
 _object setDir (getDir _object);

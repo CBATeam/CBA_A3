@@ -27,12 +27,12 @@ Author:
     SilentSpike
 ---------------------------------------------------------------------------- */
 
-params [ ["_zRef", [], ["",objNull,locationNull,[]], 5] ];
+params [["_zRef", [], ["",objNull,locationNull,[]], 5]];
 
 private _area = [];
 if (_zRef isEqualType "") then {
     // Validate that marker exists and is correct shape
-    if ((markerShape _zRef) in ["RECTANGLE","ELLIPSE"]) then {
+    if ((markerShape _zRef) in ["RECTANGLE", "ELLIPSE"]) then {
         _area pushBack (markerPos _zRef);
         _area append (markerSize _zRef);
         _area pushBack (markerDir _zRef);
@@ -54,7 +54,7 @@ if (_zRef isEqualType "") then {
             _area pushBack (rectangular _zRef);
         } else {
             // Validate that area is of correct form
-            if (_zRef isEqualTypeArray [[],0,0,0,true]) then {
+            if (_zRef isEqualTypeArray [[], 0, 0, 0, true]) then {
                 _area = _zRef;
             };
         };

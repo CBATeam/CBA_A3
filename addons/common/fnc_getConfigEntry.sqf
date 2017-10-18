@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [configFile >> "CfgJellies" >> "Wobbliness", "number", 0] call _f
+        [configFile >> "CfgJellies" >> "Wobbliness", "number", 0] call CBA_fnc_getConfigEntry
     (end)
 
 Author:
@@ -28,7 +28,8 @@ Author:
 SCRIPT(getConfigEntry);
 
 private ["_r"];
-switch (toLower(_this select 1)) do {
+
+switch (toLower (_this select 1)) do {
     case "text": {
         if (isText (_this select 0)) then {
             _r = getText (_this select 0);
@@ -46,6 +47,8 @@ switch (toLower(_this select 1)) do {
     };
 };
 
-if (isNil "_r") then { _r = _this select 2 };
+if (isNil "_r") then {
+    _r = _this select 2;
+};
 
 _r

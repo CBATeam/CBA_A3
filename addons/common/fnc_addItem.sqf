@@ -57,7 +57,7 @@ if (_verify) then {
         private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
         if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
-            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+            _weaponHolder = createVehicle ["GroundWeaponHolder", [0, 0, 0], [], 0, "NONE"];
             _weaponHolder setPosASL getPosASL _unit;
         };
 

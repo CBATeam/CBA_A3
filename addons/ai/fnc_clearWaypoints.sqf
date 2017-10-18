@@ -20,13 +20,13 @@ Author:
 
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-params [["_group", grpNull, [grpNull,objNull]]];
+params [["_group", grpNull, [grpNull, objNull]]];
 _group = _group call CBA_fnc_getGroup;
 
 private _waypoints = waypoints _group;
 {
     // Waypoint index changes with each deletion, so don't delete _x
-    deleteWaypoint [_group,0];
+    deleteWaypoint [_group, 0];
 } forEach _waypoints;
 
 // Create a self-deleting waypoint at the leader position to halt all planned movement (based on old waypoints)

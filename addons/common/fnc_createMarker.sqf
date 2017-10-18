@@ -24,13 +24,13 @@ Returns:
 Examples:
     (begin example)
         // simple marker creation
-        _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_createMarker;
+        _marker = ["markername", [positionX, positionY], "Rectangle", [sizeX, sizeY]] call CBA_fnc_createMarker;
         // Color yellow
-        _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow"] call CBA_fnc_createMarker;
+        _marker = ["markername", [positionX, positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow"] call CBA_fnc_createMarker;
         // Global marker - will be visible to all players currently ingame
-        _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "GLOBAL"] call CBA_fnc_createMarker;
+        _marker = ["markername", [positionX, positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "GLOBAL"] call CBA_fnc_createMarker;
         // Global persistent marker - will be visible to all players currently ingame, and also to JIP players
-        _marker = ["markername", [positionX,positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "PERSIST"] call CBA_fnc_createMarker;
+        _marker = ["markername", [positionX, positionY], "Rectangle", [sizeX, sizeY], "COLOR:", "ColorYellow", "PERSIST"] call CBA_fnc_createMarker;
     (end)
 
 Author:
@@ -55,18 +55,18 @@ if (_global) then {
     _m = createMarker [_this select 0, _this select 1];
     _m setMarkerShape (_this select 2);
     _m setMarkerSize (_this select 3);
-    if (_br!= "") then { _m setMarkerBrush _br };
-    if (_ty!= "") then { _m setMarkerType _ty };
-    if (_co!= "") then { _m setMarkerColor _co };
-    if (_tx!= "") then { _m setMarkerText _tx };
+    if (_br!= "") then {_m setMarkerBrush _br};
+    if (_ty!= "") then {_m setMarkerType _ty};
+    if (_co!= "") then {_m setMarkerColor _co};
+    if (_tx!= "") then {_m setMarkerText _tx};
 } else {
     _m = createMarkerLocal [_this select 0, _this select 1];
     _m setMarkerShapeLocal (_this select 2);
     _m setMarkerSizeLocal (_this select 3);
-    if (_br!= "") then { _m setMarkerBrushLocal _br };
-    if (_ty!= "") then { _m setMarkerTypeLocal _ty };
-    if (_co!= "") then { _m setMarkerColorLocal _co };
-    if (_tx!= "") then { _m setMarkerTextLocal _tx };
+    if (_br!= "") then {_m setMarkerBrushLocal _br};
+    if (_ty!= "") then {_m setMarkerTypeLocal _ty};
+    if (_co!= "") then {_m setMarkerColorLocal _co};
+    if (_tx!= "") then {_m setMarkerTextLocal _tx};
 };
 
 _m;

@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _distance = [Player, [0,0,0]] call CBA_fnc_getDistance
+    _distance = [Player, [0, 0, 0]] call CBA_fnc_getDistance
     (end)
 
 Returns:

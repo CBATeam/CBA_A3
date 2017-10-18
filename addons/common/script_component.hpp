@@ -1,7 +1,6 @@
 #define COMPONENT common
 #include "\x\cba\addons\main\script_mod.hpp"
 
-
 #ifdef DEBUG_ENABLED_COMMON
     #define DEBUG_MODE_FULL
 #endif

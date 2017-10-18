@@ -25,9 +25,9 @@ SCRIPT(getAnimType);
 
 private ["_anim", "_weapon", "_pos"];
 
-params ["_man","_array"];
+params ["_man", "_array"];
 _anim = "";
-_weapon = format["%1", currentWeapon _man];
+_weapon = format ["%1", currentWeapon _man];
 _pos = "";
 
 if (_weapon != "") then {
@@ -35,7 +35,7 @@ if (_weapon != "") then {
 
     if (isClass _class) then {
         _temp = "";
-        while { isClass _class && {_temp == ""} } do {
+        while {isClass _class && {_temp == ""}} do {
             _temp = switch (configName _class) do {
                 case "RifleCore": {"rfl"};
                 case "LauncherCore": {"lnr"};
@@ -61,7 +61,7 @@ if (typeName (_array select 0) == "ARRAY") then {
         default {0};
     };
     private "_num";
-    _num = switch ( _weapon ) do {
+    _num = switch (_weapon) do {
         case "rfl": {0};
         case "lnr": {1};
         case "pst": {2};
@@ -70,17 +70,21 @@ if (typeName (_array select 0) == "ARRAY") then {
     _array = (_array select _num) select _pos;
     _anim = _array call BIS_fnc_selectRandom;
 
-    if ( _anim == "") then { _anim = "AdthPercMstpSnonWnonDnon_1"; };
+    if (_anim == "") then {
+        _anim = "AdthPercMstpSnonWnonDnon_1";
+    };
 } else {
     private "_num";
-    _num = switch ( _weapon ) do {
+    _num = switch (_weapon) do {
         case "rfl": {0};
         case "lnr": {2};
         case "pst": {1};
         default {2};
     };
     _anim = _array select _num;
-    if ( _anim == "") then { _anim = "AmovPpneMstpSrasWrflDnon_healed"; };
+    if ( _anim == "") then {
+        _anim = "AmovPpneMstpSrasWrflDnon_healed";
+    };
 };
 
 // Debug

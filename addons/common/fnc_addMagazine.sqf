@@ -51,7 +51,7 @@ if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
 if (_verify) then {
     if (_unit canAdd _item) then {
         if (_ammo < 0) then {
-            _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is.
+            _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is. Wtf BI?
         } else {
             _unit addMagazine [_item, _ammo];
         };
@@ -63,7 +63,7 @@ if (_verify) then {
         private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
         if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
-            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+            _weaponHolder = createVehicle ["GroundWeaponHolder", [0, 0, 0], [], 0, "NONE"];
             _weaponHolder setPosASL getPosASL _unit;
         };
 

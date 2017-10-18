@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        [{player sideChat format ["5s later! _this: %1", _this];}, ["some","params",1,2,3], 5] call CBA_fnc_waitAndExecute;
+        [{player sideChat format ["5s later! _this: %1", _this];}, ["some", "params", 1, 2, 3], 5] call CBA_fnc_waitAndExecute;
     (end)
 
 Author:

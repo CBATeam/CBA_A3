@@ -19,13 +19,13 @@ Returns:
 
 Examples:
     (begin example)
-        _result = [[1, 2, 3], "", { _accumulator + (str _x) }] call CBA_fnc_inject;
+        _result = [[1, 2, 3], "", {_accumulator + (str _x)}] call CBA_fnc_inject;
         // _result ==> "123"
 
-        _result = [[1, 2, 3], " frogs", { (str _x) + _accumulator }] call CBA_fnc_inject;
+        _result = [[1, 2, 3], " frogs", {(str _x) + _accumulator}] call CBA_fnc_inject;
         // _result ==> "321 frogs"
 
-        _result = [[1, 2, 3], 0, { _accumulator + _x }] call CBA_fnc_inject;
+        _result = [[1, 2, 3], 0, {_accumulator + _x}] call CBA_fnc_inject;
         // _result ==> 6
     (end)
 
@@ -39,7 +39,7 @@ SCRIPT(inject);
 
 // -----------------------------------------------------------------------------
 
-params ["_array","_initial","_function"];
+params ["_array", "_initial", "_function"];
 
 private "_accumulator";
 

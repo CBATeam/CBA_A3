@@ -52,4 +52,5 @@ if !(configName _config in itemsWithMagazines _unit) exitWith {
 };
 
 _unit removeItem _item;
+
 true

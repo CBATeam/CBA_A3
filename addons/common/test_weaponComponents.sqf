@@ -20,15 +20,15 @@ _expected = ["arifle_mx_f"];
 TESTEXP;
 
 _result = "arifle_MXC_Holo_pointer_snds_F" call _fnc;
-_expected = ["arifle_mxc_f","optic_holosight","muzzle_snds_h","acc_pointer_ir"];
+_expected = ["arifle_mxc_f", "optic_holosight", "muzzle_snds_h", "acc_pointer_ir"];
 TESTEXP;
 
 _result = ["arifle_MXM_DMS_LP_BI_snds_F"] call _fnc;
-_expected = ["arifle_mxm_f","optic_dms","acc_pointer_ir","bipod_01_f_snd","muzzle_snds_h"];
+_expected = ["arifle_mxm_f", "optic_dms", "acc_pointer_ir", "bipod_01_f_snd", "muzzle_snds_h"];
 TESTEXP;
 
 _result = ["arifle_ARX_ghex_ARCO_Pointer_Snds_F"] call _fnc; // scope = 1
-_expected = ["arifle_arx_ghex_f","optic_arco_ghex_f","acc_pointer_ir","muzzle_snds_65_ti_ghex_f"];
+_expected = ["arifle_arx_ghex_f", "optic_arco_ghex_f", "acc_pointer_ir", "muzzle_snds_65_ti_ghex_f"];
 TESTEXP;
 
 _result = "arifle_MXC_Black_F" call _fnc;

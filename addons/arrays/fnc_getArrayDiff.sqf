@@ -9,11 +9,11 @@ Parameters:
 
 Example:
     (begin example)
-    _distance = [[0,0,1], [0,0,0]] call CBA_fnc_getArrayDiff
+    _distance = [[0, 0, 1], [0, 0, 0]] call CBA_fnc_getArrayDiff
     (end example)
 
 Returns:
-    Array Differences (for above example, return is [[1],[0]])
+    Array Differences (for above example, return is [[1], [0]])
 
 Author:
     Rommel
@@ -24,7 +24,7 @@ Author:
 
 #define NULL "$null$"
 
-params ["_arrayA","_arrayB"];
+params ["_arrayA", "_arrayB"];
 
 private ["_elmsA", "_elmsB", "_return", "_item", "_idx", "_cA", "_cB", "_case", "_cT"];
 
@@ -46,7 +46,7 @@ for "_i" from 1 to (count _elmsA) step 2 do {
         _cT = _cA - _cB;
         if (_cT < 0) then {
             _case = 1; //Missing from B
-            _cT = abs(_cT);
+            _cT = abs (_cT);
         } else {
             if (_cT > 0) then {
                 _case = 0; //Missing from A
@@ -79,5 +79,6 @@ for "_i" from 0 to (count _elmsB - 1) step 2 do {
         (_return select 1) pushBack _item; // Fills array
     };
 };
+
 // Now we're done, return the work done
 _return

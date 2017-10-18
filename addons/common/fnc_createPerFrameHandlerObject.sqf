@@ -39,13 +39,13 @@ Returns:
 Examples:
     (begin example)
         [
-            { systemChat format ["frame! params: %1", _this getVariable "params"]; },
+            {systemChat format ["frame! params: %1", _this getVariable "params"];},
             0,
             ["some_params", [1,2,3]],
-            { systemChat format ["start! params: %1", _this getVariable "params"]; _test = 127; },
-            { systemChat format ["end! params: %1",   _this getVariable "params"]; systemChat str [_test] },
-            { random 1 > 0.5 },
-            { random 1 > 0.8 },
+            {systemChat format ["start! params: %1", _this getVariable "params"]; _test = 127;},
+            {systemChat format ["end! params: %1",   _this getVariable "params"]; systemChat str [_test]},
+            {random 1 > 0.5},
+            {random 1 > 0.8},
             "_test"
         ] call CBA_fnc_createPerFrameHandlerObject;
     (end)

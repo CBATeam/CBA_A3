@@ -1,4 +1,3 @@
-
 class CfgVehicles {
     class Static;
     class CBA_NamespaceDummy: Static {

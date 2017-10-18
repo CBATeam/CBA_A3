@@ -26,7 +26,6 @@ SCRIPT(getWeaponModes);
 params [["_weapon", "", [""]], ["_includeHidden", false, [false]]];
 
 private _config = configFile >> "CfgWeapons" >> _weapon;
-
 private _modes = [];
 
 {

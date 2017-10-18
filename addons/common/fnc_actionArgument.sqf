@@ -10,7 +10,7 @@ Returns:
 
 Examples:
     (begin example)
-        captive addaction ["rescue",CBA_fnc_actionargument_path,[[],{[_target] join (group _caller)},true]] //captive joins action callers group, action is removed (true)
+        captive addaction ["rescue", CBA_fnc_actionargument_path, [[], {[_target] join (group _caller)}, true]] //captive joins action callers group, action is removed (true)
     (end)
 
 Author:

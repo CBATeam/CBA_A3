@@ -15,7 +15,7 @@ Parameters:
 Example:
     (begin example)
         _nearestVeh = [player, vehicles] call CBA_fnc_getNearest
-        _nearestGroups = [[0,0,0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest
+        _nearestGroups = [[0, 0, 0], allGroups, 50, {count (units _x) > 1}] call CBA_fnc_getNearest
     (end)
 
 Returns:

@@ -30,7 +30,7 @@ params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];
 
 // random mag mode
 if (_ammo < 0) then {
-    _ammo = (selectRandom (magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform","vest","backpack"]}})) param [1, "null"];
+    _ammo = (selectRandom (magazinesAmmoFull _unit select {_x select 0 == _item && {toLower (_x select 4) in ["uniform", "vest", "backpack"]}})) param [1, "null"];
 };
 
 // no mag of this type in units inventory
@@ -47,7 +47,7 @@ if (_return) then {
     private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
     if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
-        _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+        _weaponHolder = createVehicle ["GroundWeaponHolder", [0, 0, 0], [], 0, "NONE"];
         _weaponHolder setPosASL getPosASL _unit;
     };
 

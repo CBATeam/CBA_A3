@@ -38,23 +38,23 @@ if (_radius > 0) then {
 };
 
 switch (typeName _entity) do {
-    case "OBJECT" : {
+    case "OBJECT": {
         _entity setPos _position;
     };
-    case "GROUP" : {
+    case "GROUP": {
         private _leaderPos = getPos (leader _entity);
 
         {
             _x setPos (_position vectorAdd (_x worldToModel _leaderPos));
         } forEach (units _entity);
     };
-    case "STRING" : {
+    case "STRING": {
         _entity setMarkerPos _position;
     };
-    case "LOCATION" : {
+    case "LOCATION": {
         _entity setPosition _position;
     };
-    case "TASK" : {
+    case "TASK": {
         _entity setSimpleTaskDestination _position;
     };
     default {};

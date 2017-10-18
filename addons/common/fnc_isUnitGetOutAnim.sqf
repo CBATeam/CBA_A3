@@ -24,6 +24,7 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(isUnitGetOutAnim);
+
 params ["_unit"];
 private [
     "_animationState",
@@ -34,8 +35,9 @@ private [
 ];
 
 _animationState = animationState _unit;
-_moves = configFile >> getText ( configFile >> "CfgVehicles" >> typeof _unit >> "moves" );
-_actions = _moves >> "Actions" >> getText( _moves >> "States" >> _animationState >> "actions" );
-_getOutAction = getText( configFile >> "CfgVehicles" >> typeof vehicle _unit >> "getOutAction" );
-_getOutState = getText ( _actions >> _getOutAction );
+_moves = configFile >> getText (configFile >> "CfgVehicles" >> typeof _unit >> "moves");
+_actions = _moves >> "Actions" >> getText (_moves >> "States" >> _animationState >> "actions");
+_getOutAction = getText (configFile >> "CfgVehicles" >> typeof vehicle _unit >> "getOutAction");
+_getOutState = getText (_actions >> _getOutAction);
+
 _animationState == _getOutState;

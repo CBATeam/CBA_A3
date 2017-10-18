@@ -13,11 +13,11 @@ Returns:
 
 Examples:
     (begin example)
-        _dir = [[024,015], [025,014]] call CBA_fnc_mapDirTo;
+        _dir = [[024, 015], [025, 014]] call CBA_fnc_mapDirTo;
         // _dir will be 45 degrees
     (end)
     (begin example)
-        _dir = [["024","015"], ["025","014"]] call CBA_fnc_mapDirTo;
+        _dir = [["024", "015"], ["025", "014"]] call CBA_fnc_mapDirTo;
         // _dir will be 45 degrees
     (end)
     (begin example)
@@ -33,7 +33,8 @@ Author:
 
 SCRIPT(mapDirTo);
 
-params ["_pos1","_pos2"];
+params ["_pos1", "_pos2"];
+
 _pos1 = _pos1 call CBA_fnc_mapGridToPos;
 _pos2 = _pos2 call CBA_fnc_mapGridToPos;
 

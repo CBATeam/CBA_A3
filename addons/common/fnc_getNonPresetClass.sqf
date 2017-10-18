@@ -37,7 +37,6 @@ if (isNil QGVAR(nonPresetClassesCache)) then {
 
 private _cachedAncestor = GVAR(nonPresetClassesCache) getVariable _class;
 
-
 if (isNil "_cachedAncestor") then {
     _cachedAncestor = "";
 
