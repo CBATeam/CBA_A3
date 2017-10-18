@@ -33,7 +33,7 @@ if (isServer) then {
 [QGVAR(chatMessageSent), {
     params ["_message"];
 
-    if (((_message select [0,1]) isEqualTo "#") && {!isNil QGVAR(customChatCommands)}) then {
+    if (((_message select [0, 1]) isEqualTo "#") && {!isNil QGVAR(customChatCommands)}) then {
         private _index = _message find " ";
 
         // no argument

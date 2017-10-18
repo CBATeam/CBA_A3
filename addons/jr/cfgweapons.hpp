@@ -1,7 +1,5 @@
 class CfgWeapons {
-
     class Rifle;
-
     class Rifle_Base_F : Rifle {
         class WeaponSlotsInfo;
     };
@@ -9,13 +7,12 @@ class CfgWeapons {
     class Rifle_Short_Base_F : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
-        
+
     class Rifle_Long_Base_F : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
 
     class Launcher;
-
     class Launcher_Base_F : Launcher {
         class WeaponSlotsInfo;
     };
@@ -55,7 +52,6 @@ class CfgWeapons {
     };
 
     class GM6_base_F: Rifle_Long_Base_F {};
-
     class srifle_GM6_F : GM6_base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class CowsSlot: asdg_OpticRail1913 {
@@ -66,7 +62,6 @@ class CfgWeapons {
     };
 
     class LRR_base_F: Rifle_Long_Base_F {};
-
     class srifle_LRR_F : LRR_base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class CowsSlot: asdg_OpticRail1913 {

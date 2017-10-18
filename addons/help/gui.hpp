@@ -1,7 +1,5 @@
-
 class RscText;
 class RscButton;
-
 class RscStructuredText {
     class Attributes;
 };
@@ -42,13 +40,13 @@ class RscDisplayMain: RscStandardDisplay {
         class GVAR(CreditsVersionButton): RscButton {
             onMouseButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(setVersionLine)'));
             idc = IDC_VERSION_BUTTON;
-            colorText[] = {1,1,1,0};
-            colorDisabled[] = {1,1,1,0};
-            colorBackground[] = {0,0,0,0};
-            colorBackgroundDisabled[] = {0,0,0,0};
-            colorBackgroundActive[] = {0,0,0,0};
-            colorFocused[] = {0,0,0,0};
-            soundClick[] = {"",1,1};
+            colorText[] = {1, 1, 1, 0};
+            colorDisabled[] = {1, 1, 1, 0};
+            colorBackground[] = {0, 0, 0, 0};
+            colorBackgroundDisabled[] = {0, 0, 0, 0};
+            colorBackgroundActive[] = {0, 0, 0, 0};
+            colorFocused[] = {0, 0, 0, 0};
+            soundClick[] = {"", 1, 1};
 
             x = POS_X_RIGHT(12);
             y = POS_Y(24.1);
