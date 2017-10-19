@@ -1,4 +1,3 @@
-
 class CfgFunctions {
     class CBA {
         class Config {

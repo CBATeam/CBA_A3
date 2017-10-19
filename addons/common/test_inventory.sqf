@@ -81,7 +81,6 @@ clearItemCargoGlobal _container;
 clearMagazineCargoGlobal _container;
 clearWeaponCargoGlobal _container;
 
-
 _funcName = "CBA_fnc_removeBackpackCargo";
 LOG("Testing " + _funcName);
 
@@ -167,7 +166,6 @@ TEST_TRUE(_result,_funcName);
 TEST_TRUE(count (magazineCargo _container) == 2,_funcName);
 clearMagazineCargoGlobal _container;
 
-
 _funcName = "CBA_fnc_removeWeaponCargo";
 LOG("Testing " + _funcName);
 
@@ -205,6 +203,5 @@ _result = [_container, "arifle_MX_ACO_pointer_F", 1] call CBA_fnc_removeWeaponCa
 TEST_TRUE(count (weaponCargo _container) == 1 && count (itemCargo _container) == 0,_funcName);
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;
-
 
 deleteVehicle _container;

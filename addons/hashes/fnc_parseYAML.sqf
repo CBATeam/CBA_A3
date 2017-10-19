@@ -49,7 +49,7 @@ private _raiseError = {
     _lastLine pushBack _lastChar;
 
     _pos = _pos + 1;
-    while { _pos < (count _yaml) } do {
+    while {_pos < (count _yaml)} do {
         _char = _yaml select _pos;
 
         if (_char in [ASCII_YAML_COMMENT, ASCII_CR, ASCII_NEWLINE]) exitWith {};

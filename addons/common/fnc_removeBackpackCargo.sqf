@@ -70,7 +70,6 @@ private _backpackData = [];
 // Clear cargo space and readd the items as long it's not the type in question
 clearBackpackCargoGlobal _container;
 
-
 // Add contents to backpack or box helper function
 private _fnc_addContents = {
     params ["_container", "_itemCargo", "_magazinesAmmoCargo", "_weaponsItemsCargo"];

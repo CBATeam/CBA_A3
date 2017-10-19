@@ -34,7 +34,6 @@ params [["_unit", objNull, [objNull]], ["_weapon", "", [""]], ["_mode", "", [""]
 if (!local _unit) exitWith {false};
 
 private _vehicle = [vehicle _unit, _unit] select (_unit call CBA_fnc_canUseWeapon);
-
 private _index = 0;
 
 if (_mode isEqualTo "") then {

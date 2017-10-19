@@ -9,7 +9,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_common"};
         version = VERSION;
-        authors[] = {"Spooner","Sickboy","Xeno","commy2"};
+        authors[] = {"Spooner", "Sickboy", "Xeno", "commy2"};
     };
 };
 

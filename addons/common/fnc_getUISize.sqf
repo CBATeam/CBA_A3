@@ -10,7 +10,7 @@ Parameters:
 Returns:
     If the desired output format is
 
-    "NUMBER" : an index into ["verysmall","small","normal","large"]
+    "NUMBER" : an index into ["verysmall", "small", "normal", "large"]
     "STRING" : one of "verysmall", "small", "normal" or "large"
 
     If an error occurs, the function returns either the number -1 or

@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    [car1,car2,car3] call CBA_fnc_deleteEntity
+    [car1, car2, car3] call CBA_fnc_deleteEntity
     (end)
 
 Returns:
@@ -32,7 +32,7 @@ switch (typeName _entity) do {
     case "OBJECT" : {
         if (vehicle _entity != _entity) then {
             unassignVehicle _entity;
-            _entity setPosASL [0,0,0];
+            _entity setPosASL [0, 0, 0];
         } else {
             if ({_x != _entity} count (crew _entity) > 0) then {
                 (crew _entity) call CBA_fnc_deleteEntity;

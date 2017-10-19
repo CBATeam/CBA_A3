@@ -32,7 +32,6 @@ GVAR(waitUntilAndExecArray) = [];
         };
     } count GVAR(perFrameHandlerArray);
 
-
     // Execute wait and execute functions
     // Sort the queue if necessary
     if (!GVAR(waitAndExecArrayIsSorted)) then {
@@ -54,7 +53,6 @@ GVAR(waitUntilAndExecArray) = [];
         _delete = false;
     };
 
-
     // Execute the exec next frame functions
     {
         (_x select 0) call (_x select 1);
@@ -64,7 +62,6 @@ GVAR(waitUntilAndExecArray) = [];
     GVAR(nextFrameBufferA) = GVAR(nextFrameBufferB);
     GVAR(nextFrameBufferB) = [];
     GVAR(nextFrameNo) = diag_frameno + 1;
-
 
     // Execute the waitUntilAndExec functions:
     {

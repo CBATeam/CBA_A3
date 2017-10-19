@@ -7,7 +7,6 @@
 
 if !(isNil "CBA_GAUSS_INIT") exitWith {};
 CBA_GAUSS_INIT = true;
-
 CBA_PARAM_R = 3.44428647676;
 
 /* tabulated values for the height of the Ziggurat levels */

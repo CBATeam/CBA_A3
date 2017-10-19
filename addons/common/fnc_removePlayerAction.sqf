@@ -35,7 +35,7 @@ private _return = if (isDedicated) then {
     false;
 } else {
     if ([GVAR(actionList), _actionIndex] call CBA_fnc_hashHasKey) then {
-        [GVAR(actionlist),_actionIndex, nil] call CBA_fnc_hashSet;
+        [GVAR(actionlist), _actionIndex, nil] call CBA_fnc_hashSet;
         GVAR(actionListUpdated) = true;
         true;
     } else {
@@ -45,4 +45,3 @@ private _return = if (isDedicated) then {
 };
 
 _return;
-

@@ -22,7 +22,6 @@ Author:
 SCRIPT(objectRandom);
 
 params ["_o"];
-
 private ["_r", "_v", "_s", "_a", "_b", "_c"];
 
 _r = 0;

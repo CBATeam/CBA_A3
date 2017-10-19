@@ -16,11 +16,11 @@ Returns:
 
 Examples:
     (begin example)
-        _endPos = [[024,015], 20, 45] call CBA_fnc_mapRelPos;
+        _endPos = [[024, 015], 20, 45] call CBA_fnc_mapRelPos;
     (end)
     (begin example)
         // preferred
-        _endPos = [["024","015"], 20, 45] call CBA_fnc_mapRelPos;
+        _endPos = [["024", "015"], 20, 45] call CBA_fnc_mapRelPos;
     (end)
 Author:
     Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
@@ -29,56 +29,55 @@ Author:
 
 SCRIPT(mapRelPos);
 
-private ["_pos","_dist","_dir","_northing","_easting","_northingSize",
-         "_eastingSize","_e","_n","_posArray","_ea","_na","_reversed"];
+private ["_pos", "_dist", "_dir", "_northing", "_easting", "_northingSize", "_eastingSize", "_e", "_n", "_posArray", "_ea", "_na", "_reversed"];
+params ["_pos", "_dist", "_dir"];
 
-_pos  = _this select 0;
-_dist = _this select 1;
-_dir  = _this select 2;
 _reversed = [] call CBA_fnc_northingReversed;
+
 if (IS_STRING(_pos)) then {
     _posArray = toArray _pos;
     _pos = [];
     _ea = [];
-    for "_i" from 0 to (((count _posArray)/2)-1) do {
+    for "_i" from 0 to (((count _posArray) / 2) - 1) do {
         _ea pushBack (_posArray select _i);
     };
+
     _na = [];
-    for "_i" from (((count _posArray)/2)) to (((count _posArray))-1) do {
+    for "_i" from (((count _posArray) / 2)) to (((count _posArray)) - 1) do {
         _na pushBack (_posArray select _i);
     };
-    _pos set[0, (toString _ea)];
-    _pos set[1, (toString _na)];
+    _pos set [0, (toString _ea)];
+    _pos set [1, (toString _na)];
 };
 
 _easting = _pos select 0;
 _northing = _pos select 1;
 
 if (IS_NUMBER(_easting)) then {
-    _easting = format["%1", _easting];
+    _easting = format ["%1", _easting];
 };
 if (IS_NUMBER(_northing)) then {
-    _northing = format["%1", _northing];
+    _northing = format ["%1", _northing];
 };
 
 _eastingSize = (count (toArray _easting)) min 5;
 _northingSize = (count (toArray _northing)) min 5;
 
 // Convert the numbers into 5 digits out of a 10 digit ref
-_e = (parseNumber _easting)*(10^((10-(_eastingSize*2))/2));
-_n = (parseNumber _northing)*(10^((10-(_northingSize*2))/2));
+_e = (parseNumber _easting) * (10 ^ ((10 - (_eastingSize * 2)) / 2));
+_n = (parseNumber _northing) * (10 ^ ((10 - (_northingSize * 2))/2));
 
 _pos = [_e, _n];
 
 if (_reversed) then {
     // flip the Y position into its negative value (to compensate for the northings
     // going down)
-    _pos set [1, ((_pos select 1)*-1)];
+    _pos set [1, ((_pos select 1) * -1)];
 };
 
 //find position relative to passed position
-_pos = [floor ((_pos select 0) + _dist*sin _dir), floor ((_pos select 1) + _dist*cos _dir)];
-_pos set [1, ((_pos select 1)*-1)];
+_pos = [floor ((_pos select 0) + _dist * sin _dir), floor ((_pos select 1) + _dist * cos _dir)];
+_pos set [1, ((_pos select 1) * -1)];
 
 _pos set [0, ([_pos select 0, 5] call CBA_fnc_formatNumber)];
 _pos set [1, ([_pos select 1, 5] call CBA_fnc_formatNumber)];

@@ -26,6 +26,6 @@ scriptName "fnc_scaleVectTo.sqf";
 #include "script_component.hpp"
 SCRIPT(scaleVectTo);
 
-params ["_vect","_newMagn"];
+params ["_vect", "_newMagn"];
 
 (vectorNormalized _vect) vectorMultiply _newMagn

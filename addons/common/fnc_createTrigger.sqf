@@ -46,15 +46,15 @@ private
 ];
 
 params ["_pos"];
-_area = ["AREA:", "area:", [],_this] call CBA_fnc_getArg;
-_activation = ["ACT:", "act:", [],_this] call CBA_fnc_getArg;
-_statements = ["STATE:", "state:", [],_this] call CBA_fnc_getArg;
+_area = ["AREA:", "area:", [], _this] call CBA_fnc_getArg;
+_activation = ["ACT:", "act:", [], _this] call CBA_fnc_getArg;
+_statements = ["STATE:", "state:", [], _this] call CBA_fnc_getArg;
 _name = ["NAME:", "name:", "", _this] call CBA_fnc_getArg;
 
-_trg = createTrigger["EmptyDetector", _pos];
-if (count _area>0) then { _trg setTriggerArea _area };
-if (count _activation>0) then { _trg setTriggerActivation _activation };
-if (count _statements>0) then { _trg setTriggerStatements _statements };
-if (_name != "") then { missionNamespace setVariable[format["%1",_name],_trg]; };
+_trg = createTrigger ["EmptyDetector", _pos];
+if (count _area>0) then {_trg setTriggerArea _area};
+if (count _activation>0) then {_trg setTriggerActivation _activation};
+if (count _statements>0) then {_trg setTriggerStatements _statements};
+if (_name != "") then {missionNamespace setVariable [format ["%1", _name], _trg];};
 
 [_trg, _this]

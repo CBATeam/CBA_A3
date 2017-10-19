@@ -1,4 +1,3 @@
-
 class CfgLocationTypes {
     class CBA_NamespaceDummy {
         name = "";

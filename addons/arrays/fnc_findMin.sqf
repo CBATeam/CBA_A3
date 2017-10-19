@@ -9,7 +9,7 @@ Parameters:
 
 Example:
     (begin example)
-    _result = [0,4,3,-2] call CBA_fnc_findMin
+    _result = [0, 4, 3, -2] call CBA_fnc_findMin
     (end)
 
 Returns:

@@ -65,7 +65,7 @@ if (_verify) then {
         private _weaponHolder = nearestObject [_container, "WeaponHolder"];
 
         if (isNull _weaponHolder || {_container distance _weaponHolder > 2}) then {
-            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+            _weaponHolder = createVehicle ["GroundWeaponHolder", [0, 0, 0], [], 0, "NONE"];
             _weaponHolder setPosATL (getPosATL _container vectorAdd [random 2 - 1, random 2 - 1, 0]);
         };
 

@@ -28,7 +28,7 @@ SCRIPT(viewDir);
 
 params [["_vehicle", objNull, [objNull]], ["_weapon", nil, [""]]];
 
-private _viewVector = [0,0,0];
+private _viewVector = [0, 0, 0];
 
 if (isNil "_weapon") then {
     // no weapon mode

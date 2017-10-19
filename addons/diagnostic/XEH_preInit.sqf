@@ -26,7 +26,7 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] isEqualTo 1) then {
         TRACE_3("targetWatchVariable",_clientID,_varIndex,_statementText);
 
         private _timeStart = diag_tickTime;
-        private _returnString = _statementText call{
+        private _returnString = _statementText call {
             private ["_clientID", "_statementText", "_varName", "_timeStart", "_x"];
             _this = ([nil] apply compile _this) select 0;
             if (isNil "_this") exitWith {"#NIL"};
@@ -37,7 +37,10 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] isEqualTo 1) then {
 
         private _varName = format ["CBA_targetWatchVar_%1_%2", _clientID, _varIndex];
         (missionNamespace getVariable [_varName, []]) params [["_responseStatement", "", [""]], ["_responseReturn", "", [""]], ["_lastDuration", 0, [0]]];
-        if (_responseStatement isEqualTo _statementText) then {_duration = 0.1 * _duration + 0.9 * _lastDuration;}; // if statement is the same, get an average
+
+        if (_responseStatement isEqualTo _statementText) then {
+            _duration = 0.1 * _duration + 0.9 * _lastDuration; // if statement is the same, get an average
+        };
 
         missionNamespace setVariable [_varName, [_statementText, _returnString, _duration]];
         if (_clientID != CBA_clientID) then {

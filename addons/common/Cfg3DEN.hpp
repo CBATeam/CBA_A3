@@ -1,4 +1,3 @@
-
 #define POS_H_GROUP(N) (5 + N * 3.5) * (pixelH * pixelGrid * 0.50)
 #define POS_H_BACKGROUND(N) (N * 3.5 + 0.6 * 5) * (pixelH * pixelGrid * 0.50)
 #define POS_H_TITLE(N) (N * 3.5 + 1 * 5) * (pixelH * pixelGrid * 0.50)
@@ -39,7 +38,7 @@ class Cfg3DEN {
                     // the usage of local variables and return values.
                     onLoad = "_this spawn {\
                         private _code = ctrlText (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100);\
-                        if (_code select [0, 5] == 'call{' && {_code select [count _code - 1] == '}'}) then {\
+                        if (_code select [0, 5] == 'call {' && {_code select [count _code - 1] == '}'}) then {\
                             _code = _code select [5, count _code - 6];\
                         };\
                         (_this select 0) ctrlSetText _code;\
@@ -47,7 +46,7 @@ class Cfg3DEN {
                     onKillFocus = "\
                         private _code = ctrlText (_this select 0);\
                         if (_code != '') then {\
-                            _code = 'call{' + _code + '}';\
+                            _code = 'call {' + _code + '}';\
                         };\
                         (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
                     ";

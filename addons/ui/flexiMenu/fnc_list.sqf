@@ -3,16 +3,17 @@ disableSerialization;
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ["_msg", "_menuSources", "_menuDefs", "_idc", "_iconFolder"];
-private["_menuOption", "_caption", "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];
+private ["_msg", "_menuSources", "_menuDefs", "_idc", "_iconFolder", "_menuOption", "_caption", "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];
 
 _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 private "_disp";
+
 _disp = uiNamespace getVariable QGVAR(display);
 _disp displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
-_menuSources = _this select 1;
+params ["", "_menuSources"];
+
 GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown",
     format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
@@ -24,7 +25,8 @@ _iconFolder = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_iconFo
 _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource;
 _msg = "";
 _msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
-if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
+
+if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
 if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
 
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
@@ -32,7 +34,7 @@ if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRs
 };
 
 // TODO: Support missionConfigFile too
-_width = getNumber(ConfigFile >> _menuRsc >> "flexiMenu_subMenuCaptionWidth");
+_width = getNumber (ConfigFile >> _menuRsc >> "flexiMenu_subMenuCaptionWidth");
 if (_width == 0) then {
     player sideChat format ["Error: missing flexiMenu_subMenuCaptionWidth: %1", _menuRsc];
     _width = __SMW_default;
@@ -41,6 +43,7 @@ if (_width == 0) then {
 _idc = _flexiMenu_IDC_listMenuDesc;
 _ctrl = _disp displayCtrl _idc;
 _array = ctrlPosition _ctrl;
+
 if ({_x == 0} count _array != 4 && {_array select 2 == 0}) then {
     _array = [_array select 0, _array select 1, _width, _array select 3];
     _ctrl ctrlSetPosition _array;
@@ -50,18 +53,18 @@ if ({_x == 0} count _array != 4 && {_array select 2 == 0}) then {
 _ctrl ctrlShow true;
 
 // TODO: For merged menus, _menuRsc must come from the first merged menu, not secondary.
-_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+_width = getNumber (missionConfigFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
 if (_width == 0) then {
-    _width = getNumber(configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
+    _width = getNumber (configFile >> _menuRsc >> "flexiMenu_subMenuControlWidth");
     if (_width == 0) then {
         player sideChat format ["Error: missing flexiMenu_subMenuControlWidth: %1", _menuRsc];
         _width = __SMW_default;
     };
 };
 
-GVAR(hotKeyColor) = getText(missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+GVAR(hotKeyColor) = getText (missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
 if (GVAR(hotKeyColor) == "") then {
-    GVAR(hotKeyColor) = getText(configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+    GVAR(hotKeyColor) = getText (configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
     if (GVAR(hotKeyColor) == "") then {
         GVAR(hotKeyColor) = __defaultHotkeyColor;
     };

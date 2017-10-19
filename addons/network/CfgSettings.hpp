@@ -1,4 +1,3 @@
-
 class CfgSettings {
     class CBA {
         class COMPONENT {

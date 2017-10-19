@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        _id = [47, [true, false, false], { _this call myAction }] call CBA_fnc_addKeyHandler;
+        _id = [47, [true, false, false], {_this call myAction}] call CBA_fnc_addKeyHandler;
     (end)
 
 Author:

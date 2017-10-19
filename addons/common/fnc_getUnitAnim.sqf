@@ -31,7 +31,7 @@ SCRIPT(getUnitAnim);
 private ["_unit", "_anim", "_upos", "_umov", "_dthstr", "_posstr", "_movstr"];
 
 _unit = _this;
-_anim = toArray(toLower(animationState _unit));
+_anim = toArray (toLower (animationState _unit));
 _upos = "unknown";
 _umov = "stop";
 
@@ -46,19 +46,19 @@ if (vehicle _unit!= _unit) then {
         _upos = "prone";
     } else {
         _upos = switch (_posstr) do {
-            case "ppne": { "prone" };
-            case "pknl": { "kneel" };
-            case "perc": { "stand" };
-            default { "kneel" };
+            case "ppne": {"prone"};
+            case "pknl": {"kneel"};
+            case "perc": {"stand"};
+            default {"kneel"};
         };
     };
     _umov = switch (_movstr) do {
-        case "mstp": { "stop" };
-        case "mwlk": { "slow" };
-        case "mrun": { "normal" };
-        case "meva": { "fast" };
-        default { "stop" };
+        case "mstp": {"stop"};
+        case "mwlk": {"slow"};
+        case "mrun": {"normal"};
+        case "meva": {"fast"};
+        default {"stop"};
     };
 };
 
-[_upos,_umov]
+[_upos, _umov]

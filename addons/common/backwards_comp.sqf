@@ -1,4 +1,3 @@
-
 ["CBA_fnc_createCenter", {
     WARNING('Deprecated function used: CBA_fnc_createCenter');
     params ["_side"];
@@ -75,7 +74,7 @@
 ["CBA_fnc_inArea", {
     WARNING('Deprecated function used: CBA_fnc_inArea (new: inArea)');
     params ["_position", ["_zRef", objNull, ["", objNull, locationNull, []], 5]];
-    
+
     _position = _position call CBA_fnc_getPos;
     _position inArea _zRef;
 }] call CBA_fnc_compileFinal;

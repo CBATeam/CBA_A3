@@ -52,4 +52,5 @@ if !(configName _config in weapons _unit) exitWith {
 };
 
 _unit removeWeaponGlobal _item; // removeWeapon fails on remote units
+
 true
