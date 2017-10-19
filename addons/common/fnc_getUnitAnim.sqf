@@ -57,7 +57,7 @@ if (vehicle _unit!= _unit) then {
         case "mwlk": {"slow"};
         case "mrun": {"normal"};
         case "meva": {"fast"};
-        default  "stop"};
+        default {"stop"};
     };
 };
 
