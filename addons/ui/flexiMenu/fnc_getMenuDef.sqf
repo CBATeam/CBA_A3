@@ -14,18 +14,22 @@ _menuDefs = [];
     private ["_params", "_menuSource", "_menuParams", "_array", "_menuDef"]; // declare locally to safe guard variables after _menuSource call, which is beyond our control of correctness.
 
     _params = _x;
-    if (isNil "_params") then { diag_log format ["%1:%2: CBA WARNING: Menu sources item is nil! Check Source: %3", __FILE__, __LINE__, _params]; };
+    if (isNil "_params") then {
+        diag_log format ["%1:%2: CBA WARNING: Menu sources item is nil! Check Source: %3", __FILE__, __LINE__, _params];
+    };
 
     _menuSource = "";
     _menuParams = [_target];
+
     // Syntax 1
     if (typeName _params == typeName "") then {
         _menuSource = _params;
     };
+
     // Syntax 2
     if (typeName _params == typeName [] && {count _params > 0}) then {
         _menuSource = _params select 0;
-        if (typeName _menuSource == typeName "") then {// check for syntax: function, code string or sqf filename
+        if (typeName _menuSource == typeName "") then { // check for syntax: function, code string or sqf filename
             _menuParams = if (count _params > 1) then {[_target, _params select 1]};
         } else {
             _menuSource = _params;
@@ -67,5 +71,6 @@ _menuDefs = [];
        diag_log format ["%1:%2: Warning: Expected Type Array but received nil. Check MenuSource: %3", __FILE__, __LINE__, _menuSource];
     };
 } forEach _menuSources;
+
 TRACE_1("",_menuDefs);
 _menuDefs

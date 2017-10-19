@@ -1,4 +1,3 @@
-
 class CfgVehicles {
     class All {
         XEH_ENABLED;

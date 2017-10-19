@@ -31,16 +31,16 @@ Author:
  ViperMaul
 ---------------------------------------------------------------------------- */
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\keybinding\script_component.hpp"
+#include "script_component.hpp"
 
 // Clients only.
 if (isDedicated) exitWith {};
 
-_nullKeybind = [-1,[false,false,false]];
+_nullKeybind = [-1, [false, false, false]];
 
-params ["_modName","_actionId","_displayName","_fleximenuDef", ["_defaultKeybind",_nullKeybind], ["_holdKey",true], ["_holdDelay",0], ["_overwrite",false]];
+params ["_modName", "_actionId", "_displayName", "_fleximenuDef", ["_defaultKeybind", _nullKeybind], ["_holdKey", true], ["_holdDelay", 0], ["_overwrite", false]];
 
-if (typeName(_fleximenuDef) != "Array") then { WARNING("Fleximenu definition passed is not in Array format") };
+if (typeName (_fleximenuDef) != "Array") then {WARNING("Fleximenu definition passed is not in Array format")};
 
 // Help the user out by always setting the keycode param of the fleximenu
 // def array to []. Give them a warning if it wasn't.
@@ -57,6 +57,6 @@ _downCode = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _flexime
 _upCode = {};
 
 // Pass everything to the new API cba_fnc_addKeybind.
-_keybind = [_modName, _actionId, _displayName, _downCode, _upCode, _defaultKeybind, _holdKey, _holdDelay, _overwrite] call cba_fnc_addKeybind;
+_keybind = [_modName, _actionId, _displayName, _downCode, _upCode, _defaultKeybind, _holdKey, _holdDelay, _overwrite] call CBA_fnc_addKeybind;
 
 _keybind;

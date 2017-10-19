@@ -25,7 +25,6 @@ if (!isMultiplayer && {getNumber (missionConfigFile >> "replaceAbortButton") > 0
     ];
 
     _button ctrlCommit 0;
-
     _buttons pushBack _button;
 } forEach [
     IDC_OPTIONS_VIDEO,
@@ -55,7 +54,6 @@ if (!isMultiplayer && {getNumber (missionConfigFile >> "replaceAbortButton") > 0
     ];
 
     _button ctrlCommit 0;
-
     _buttons pushBack _button;
 } forEach GVAR(MenuButtons);
 

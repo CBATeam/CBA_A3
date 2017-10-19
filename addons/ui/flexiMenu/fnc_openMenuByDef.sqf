@@ -1,7 +1,7 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
-#define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4+(sizeOf typeOf _var)/2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
+#define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4 + (sizeOf typeOf _var) / 2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
 private["_target", "_menuSource", "_potentialTarget", "_isTypeTarget", "_potentialMenuSources", "_vehicleTarget", "_typesList", "_keys", "_settings"];
 

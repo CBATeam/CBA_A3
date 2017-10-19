@@ -1,4 +1,3 @@
-
 class Cfg3DEN {
     class Attributes {
         class Default;

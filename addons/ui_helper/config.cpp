@@ -9,7 +9,7 @@ class CfgPatches {
         weapons[] = {};
         worlds[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_common","A3_UI_F"};
+        requiredAddons[] = {"CBA_common", "A3_UI_F"};
     };
 };
 
