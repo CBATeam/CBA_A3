@@ -14,8 +14,8 @@ Returns:
 
 Example:
     (begin example)
-        _result = [" commy smells of fish   "] call CBA_fnc_trim;
-        // _result => "commy smells of fish"
+        _result = [" frogs are fishy   "] call CBA_fnc_trim;
+        // _result => "frogs are fishy"
     (end)
 
 Author:

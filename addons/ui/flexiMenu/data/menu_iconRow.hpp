@@ -1,20 +1,20 @@
 ﻿ //#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
-#define _SX (safeZoneX + safeZoneW / 2)  // screen centre x
-#define _SY (safeZoneY + safeZoneH / 2)  // screen centre y
-#define _BW 0.04 * safeZoneW  // button width
-#define _BH 0.04 * safeZoneH  // button height
+#define _SX (safeZoneX + safeZoneW / 2) // screen centre x
+#define _SY (safeZoneY + safeZoneH / 2) // screen centre y
+#define _BW 0.04 * safeZoneW // button width
+#define _BH 0.04 * safeZoneH // button height
 #define _BH2 _BH * 1.52  // button height adjust for some paa's which only use 66% of hgt
 #define _StandardBH 0.033 * safeZoneH  // button height
-#define _SMW 0.15 * safeZoneW  // sub-menu width
-#define _LBH 0.033 * safeZoneH  // list button height
+#define _SMW 0.15 * safeZoneW // sub-menu width
+#define _LBH 0.033 * safeZoneH // list button height
 #define _gapW 0.01 * safeZoneW
 #define _gapH 0.01 * safeZoneH
-#define _buttonsBeforeCenter 6  // buttons before screen centre, allowing menu to appear centred.
+#define _buttonsBeforeCenter 6 // buttons before screen centre, allowing menu to appear centred.
 #define _buttonsPerRow 5
-#define _captionColorBG 58 / 256, 80 / 256, 55 / 256  // BIS mid green (button over colour)
-#define _captionColorFG 138 / 256, 146 / 256, 105 / 256  // BIS greenish text
+#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 // BIS mid green (button over colour)
+#define _captionColorFG 138 / 256, 146 / 256, 105 / 256 // BIS greenish text
 #define _captionHgt 0.75
 
 class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
@@ -25,7 +25,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
     class controlsBackground {};
     class objects {};
 
-     // custom flexiMenu properties
+    // custom flexiMenu properties
     flexiMenu_primaryMenuControlWidth = _BW;
     flexiMenu_subMenuControlWidth = _SMW;
     flexiMenu_subMenuCaptionWidth = 0.40;
@@ -36,15 +36,15 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
     class listButton: _flexiMenu_RscShortcutButton {
         x = 0.5;
         y = 0.5;
-        w = 0;  //_SMW;  // hide initially
+        w = 0;  //_SMW; // hide initially
         h = _LBH;
         sizeEx = _LBH;
         size = _LBH * 0.75;
 
         color[] = {_captionColorFG, 1};
-        color2[] = {1, 1, 1, 0.8};  //{1, 1, 1, 0.4};
+        color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
         colorBackground[] = {1, 1, 1, 1};
-        colorbackground2[] = {1, 1, 1, 1};  //{1, 1, 1, 0.4};
+        colorbackground2[] = {1, 1, 1, 1}; // {1, 1, 1, 0.4};
         colorDisabled[] = {1, 1, 1, 0.25};
         class TextPos {
             left = 0.02;
@@ -67,18 +67,18 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
         animTextureNoShortcut = _imagePath2(normal);
     };
 
-  class button: _flexiMenu_RscShortcutButton {
-        x = _SX-_BW;
+    class button: _flexiMenu_RscShortcutButton {
+        x = _SX - _BW;
         y = _SY;
-        w = 0;  //_BW;  // hide initially
+        w = 0; //_BW; // hide initially
         h = _BH2;
         sizeEx = _BH;
-        size = _BH;  // * 0.85;
+        size = _BH; // * 0.85;
 
         color[] = {_captionColorFG, 1};
-        color2[] = {1, 1, 1, 0.8};  //{1, 1, 1, 0.4};
+        color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
         colorBackground[] = {1, 1, 1, 1};
-        colorbackground2[] = {1, 1, 1, 1};  //{1, 1, 1, 0.4};
+        colorbackground2[] = {1, 1, 1, 1}; // {1, 1, 1, 0.4};
         colorDisabled[] = {1, 1, 1, 0.25};
         class TextPos {
             left = 0.0055;
@@ -101,12 +101,12 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
         animTextureNoShortcut = _imagePath(mid_button_normal);  // used?
         //action = _eval_action(-1);
     };
-     //---------------------------------
+    //---------------------------------
     class controls {
         class caption: rscText {
             idc = _flexiMenu_IDC_menuDesc;
-            x = _SX-_buttonsBeforeCenter * _BW;
-            y = _SY-_gapH-_StandardBH * _captionHgt;
+            x = _SX - _buttonsBeforeCenter * _BW;
+            y = _SY - _gapH-_StandardBH * _captionHgt;
             w = 0.50 * safeZoneW;
             h = _StandardBH * _captionHgt;
             sizeEx = _StandardBH * _captionHgt;
@@ -118,7 +118,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
         class button##ID: button {\
             idc = _flexiMenu_baseIDC_button + ID;\
             x = _SX-_buttonsBeforeCenter * _BW + (##ID mod _buttonsPerRow) * _BW;\
-            y = _SY + floor (##ID  /  _buttonsPerRow) * (_gapH + _BH2);\
+            y = _SY + floor (##ID / _buttonsPerRow) * (_gapH + _BH2);\
         }
 
         ExpandMacro_RowControls(00);
@@ -144,7 +144,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
         //-----------------------
         class caption2: caption {
             idc = _flexiMenu_IDC_listMenuDesc;
-            x = _SX-_buttonsBeforeCenter * _BW + (_buttonsPerRow + 1) * _BW;
+            x = _SX - _buttonsBeforeCenter * _BW + (_buttonsPerRow + 1) * _BW;
             y = _SY;
             w = 0;  //flexiMenu_subMenuCaptionWidth;  // hide initially
         };
@@ -153,7 +153,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
         idc = _flexiMenu_baseIDC_listButton + ID;\
-        x = _SX-_buttonsBeforeCenter * _BW + (_buttonsPerRow + 1) * _BW;\
+        x = _SX - _buttonsBeforeCenter * _BW + (_buttonsPerRow + 1) * _BW;\
         y = _SY + ##ID * _LBH;\
     }
 

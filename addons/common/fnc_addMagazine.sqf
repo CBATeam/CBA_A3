@@ -51,7 +51,7 @@ if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
 if (_verify) then {
     if (_unit canAdd _item) then {
         if (_ammo < 0) then {
-            _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is. Wtf BI?
+            _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is.
         } else {
             _unit addMagazine [_item, _ammo];
         };

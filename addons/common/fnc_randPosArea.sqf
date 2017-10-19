@@ -54,7 +54,7 @@ if (_isRect) then {
 
         _posVector = [(_x1 - _x2) - _a, (_y1 - _y2) - _b, 0];
     } else {
-        _posVector = [random(_2a) - _a, random(_2b) - _b, 0];
+        _posVector = [random (_2a) - _a, random (_2b) - _b, 0];
     };
 } else {
     // Generate point on circle of R=1
@@ -62,8 +62,8 @@ if (_isRect) then {
     private _phi = random 360;
 
     // Scale circle to dimensions of the ellipse
-    private _x = sqrt(_rho) * cos (_phi);
-    private _y = sqrt(_rho) * sin (_phi);
+    private _x = sqrt (_rho) * cos (_phi);
+    private _y = sqrt (_rho) * sin (_phi);
 
     _posVector = [_x * _a, _y * _b, 0];
 };

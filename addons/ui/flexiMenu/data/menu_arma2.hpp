@@ -55,9 +55,9 @@ class CBA_flexiMenu_rscArma2 {
         size = _LBH * 0.75;
 
         color[] = {_captionColorFG, 1};
-        color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
+        color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
         colorBackground[] = {1, 1, 1, 1};
-        colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
+        colorbackground2[] = {1, 1, 1, 1}; // {1, 1, 1, 0.4};
         colorDisabled[] = {1, 1, 1, 0.25};
         class TextPos {
             left = 0.02;
@@ -71,13 +71,13 @@ class CBA_flexiMenu_rscArma2 {
             align = "left";
             shadow = "true";
         };
-    animTextureNormal = _imagePath2(normal);
-    animTextureDisabled = _imagePath2(disabled);
-    animTextureOver = _imagePath2(over);
-    animTextureFocused = _imagePath2(focused);
-    animTexturePressed = _imagePath2(down);
-    animTextureDefault = _imagePath2(default);
-    animTextureNoShortcut = _imagePath2(normal);
+        animTextureNormal = _imagePath2(normal);
+        animTextureDisabled = _imagePath2(disabled);
+        animTextureOver = _imagePath2(over);
+        animTextureFocused = _imagePath2(focused);
+        animTexturePressed = _imagePath2(down);
+        animTextureDefault = _imagePath2(default);
+        animTextureNoShortcut = _imagePath2(normal);
     };
 
     class button: _flexiMenu_RscShortcutButton {
@@ -87,9 +87,9 @@ class CBA_flexiMenu_rscArma2 {
         size = _BH * 0.85;
 
         color[] = {_captionColorFG, 1};
-        color2[] = {1, 1, 1, 0.8}; //{1, 1, 1, 0.4};
+        color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
         colorBackground[] = {1, 1, 1, 1};
-        colorbackground2[] = {1, 1, 1, 1}; //{1, 1, 1, 0.4};
+        colorbackground2[] = {1, 1, 1, 1}; // {1, 1, 1, 0.4};
         colorDisabled[] = {1, 1, 1, 0.25};
         //action = _eval_action(-1);
 
@@ -113,7 +113,7 @@ class CBA_flexiMenu_rscArma2 {
             //x = _SX - _BW;
             x = _leftButtonLevel1X;
             //y = _SY - _buttonsBeforeCenter * _BH - _gapH - _BH * _captionHgt;
-            y = _SY-(_CH / 2 + _gapH) - _BH - _gapH - _BH * _captionHgt;
+            y = _SY - (_CH / 2 + _gapH) - _BH - _gapH - _BH * _captionHgt;
             w = 0.50 * safeZoneW;
             h = _BH * _captionHgt;
             sizeEx = _BH * _captionHgt;
@@ -123,15 +123,15 @@ class CBA_flexiMenu_rscArma2 {
 
         class button01: button {
             idc = _flexiMenu_baseIDC_button + 0;
-            x = _SX-_CW / 2 + _CX_correction;
-            y = _SY-_CH / 2;
+            x = _SX - _CW / 2 + _CX_correction;
+            y = _SY - _CH / 2;
             w = _CW;
             h = _CH;
             sizeEx = _CH;
             //size = _BH * 0.8;
             class TextPos {
                 left = -_CX_correction * 2; // not sure if logic is correct, but seems close enough
-                top = _CH / 2 -_BH / 2;
+                top = _CH / 2 - _BH / 2;
                 right = 0; //0.002;
                 bottom = 0.0;
             };
@@ -143,25 +143,25 @@ class CBA_flexiMenu_rscArma2 {
                 shadow = "true";
             };
             */
-      animTextureNormal = _imagePath(mid_button_normal);
-      animTextureDisabled = _imagePath(mid_button_disabled);
-      animTextureOver = _imagePath(mid_button_over);
-      animTextureFocused = _imagePath(mid_button_focus);
-      animTexturePressed = _imagePath(mid_button_down);
-      animTextureDefault = _imagePath(mid_button_normal); // used?
-      animTextureNoShortcut = _imagePath(mid_button_normal); // used?
+            animTextureNormal = _imagePath(mid_button_normal);
+            animTextureDisabled = _imagePath(mid_button_disabled);
+            animTextureOver = _imagePath(mid_button_over);
+            animTextureFocused = _imagePath(mid_button_focus);
+            animTexturePressed = _imagePath(mid_button_down);
+            animTextureDefault = _imagePath(mid_button_normal); // used?
+            animTextureNoShortcut = _imagePath(mid_button_normal); // used?
         };
         class button02: button {
             idc = _flexiMenu_baseIDC_button + 1;
             x = _SX - _BW / 2;
             y = _SY - (_CH / 2 + _gapH) - _BH;
-      animTextureNormal = _imagePathUI(normal_ca);
-      animTextureDisabled = _imagePathUI(disabled_ca);
-      animTextureOver = _imagePathUI(over_ca);
-      animTextureFocused = _imagePathUI(focus_ca);
-      animTexturePressed = _imagePathUI(down_ca);
-      animTextureDefault = _imagePathUI(normal_ca);
-      animTextureNoShortcut = _imagePathUI(normal_ca);
+            animTextureNormal = _imagePathUI(normal_ca);
+            animTextureDisabled = _imagePathUI(disabled_ca);
+            animTextureOver = _imagePathUI(over_ca);
+            animTextureFocused = _imagePathUI(focus_ca);
+            animTexturePressed = _imagePathUI(down_ca);
+            animTextureDefault = _imagePathUI(normal_ca);
+            animTextureNoShortcut = _imagePathUI(normal_ca);
         };
         class button03: button02 {
             idc = _flexiMenu_baseIDC_button + 2;
@@ -172,7 +172,7 @@ class CBA_flexiMenu_rscArma2 {
         class button04: button02 {
             idc = _flexiMenu_baseIDC_button + 3;
             x = _leftButtonLevel1X;
-            y = _SY-_gapH / 2 - _BH - _gapH - _BH;
+            y = _SY - _gapH / 2 - _BH - _gapH - _BH;
         };
         class button05: button02 {
             idc = _flexiMenu_baseIDC_button + 4;
@@ -215,17 +215,17 @@ class CBA_flexiMenu_rscArma2 {
             idc = _flexiMenu_IDC_listMenuDesc;
             x = _SX-(_SMW/2);
             y = _SY + (_CH/2 + _gapH) + _BH + _gapH + 0*_LBH;
-            w = 0; //flexiMenu_subMenuCaptionWidth; // hide initially
+            w = 0; // flexiMenu_subMenuCaptionWidth; // hide initially
         };
 
-//#include "common_listControls.hpp"
-// Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
-#define ExpandMacro_ListControls(ID)\
-    class listButton##ID: listButton {\
-        idc = _flexiMenu_baseIDC_listButton+ID;\
-        x = _SX - ((_SMW+_gapW) * 1.5) + floor (((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
-        y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH;\
-    }
+        //#include "common_listControls.hpp"
+        // Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
+        #define ExpandMacro_ListControls(ID)\
+        class listButton##ID: listButton {\
+            idc = _flexiMenu_baseIDC_listButton+ID;\
+            x = _SX - ((_SMW+_gapW) * 1.5) + floor (((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
+            y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH;\
+        }
 
         ExpandMacro_ListControls(00);
         ExpandMacro_ListControls(01);

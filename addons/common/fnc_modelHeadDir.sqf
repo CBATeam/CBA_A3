@@ -43,7 +43,7 @@ Author:
 #include "script_component.hpp"
 SCRIPT(modelHeadDir);
 
-private["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
+private ["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 params ["_unit"];
 
 _return = [];

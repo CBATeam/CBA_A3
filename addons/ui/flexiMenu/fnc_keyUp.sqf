@@ -1,7 +1,7 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
-private ["_handled", /* "_ctrl", */ "_dikCode", "_shift", "_ctrlKey", "_alt", "_active", "_potentialKeyMatch"];
+private ["_handled", /* "_ctrl", */ "_active", "_potentialKeyMatch"];
 params ["", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 
 _handled = false;
