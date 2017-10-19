@@ -17,7 +17,7 @@ class RscTitles {
                 y =  5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y;
                 w = 40 * GUI_GRID_CENTER_W;
                 h = 10 * GUI_GRID_CENTER_H;
-                colorBackground[] = {1, 0.2, 0, 0.8};
+                colorBackground[] = {1,0.2,0,0.8};
             };
         };
     };
@@ -44,6 +44,6 @@ class GVAR(watchOutput): RscEdit {
     y = 12 * GUI_GRID_H;
     w = 21 * GUI_GRID_W;
     h = 1 * GUI_GRID_H;
-    colorBackground[] = {0, 0, 0, 0.75};
+    colorBackground[] = {0,0,0,0.75};
     sizeEx = 0.7 * GUI_GRID_H;
 };
