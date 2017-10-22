@@ -1,6 +1,4 @@
-
 class RscStructuredText;
-
 class RscTitles {
     class GVAR(Error) {
         idd = -1;
