@@ -25,10 +25,10 @@ scriptName "fnc_vect2Polar.sqf";
 SCRIPT(vect2Polar);
 
 
-params ["_vx","_vy","_vz"];
+params ["_vx", "_vy", "_vz"];
 
 private _mag = vectorMagnitude _this;
-private _elev = if (_mag > 0) then { asin (_vz / _mag) } else { 0 };
+private _elev = if (_mag > 0) then {asin (_vz / _mag)} else {0};
 private _dir = _this call CBA_fnc_vectDir;
 
 [_mag, _dir, _elev];
