@@ -22,9 +22,9 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params ["_itemType","_switchTo"];
+params ["_itemType", "_switchTo"];
 
-private ["_currWeaponType","_currItem","_switchItem"];
+private ["_currWeaponType", "_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
 private _cw = currentWeapon _unit;
 
@@ -67,9 +67,9 @@ if (!isNil "_switchItem") then {
             _unit addSecondaryWeaponItem _switchItem;
         };
     };
-    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call bis_fnc_getcfgdata;
+    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call BIS_fnc_getCfgData;
     if (!isNil "_switchItemHintText") then {
-        hintSilent format ["%1",_switchItemHintText];
+        hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";
     ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
