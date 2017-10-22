@@ -41,7 +41,7 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     false, // 7 - PreInit passed
     false, // 8 - PostInit passed
     isMultiplayer, // 9 - Multiplayer && respawn
-    if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
+    if (isDedicated) then {0} else {if (isServer) then {1} else {2}}, // 10 - Machine type (only 3 possible configurations)
     0, // 11 - SESSION_ID
     0, // 12 - LEVEL - Used for version determination
     false, // 13 - TIMEOUT - PostInit timedOut, always false
