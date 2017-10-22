@@ -34,7 +34,7 @@ private _fnc_resetMissionSettings = {
             _settingInfo params ["_value", "_priority"];
 
             // convert boolean to number
-            _priority = [0,1,2] select _priority;
+            _priority = [0, 1, 2] select _priority;
 
             if ([_setting, _value] call FUNC(check)) then {
                 GVAR(mission) setVariable [_setting, [_value, _priority]];

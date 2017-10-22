@@ -75,10 +75,10 @@
 
 #define TABLE_LINE_SPACING POS_H(0.4)
 
-#define COLOR_TEXT_ENABLED [1,1,1,1]
-#define COLOR_TEXT_DISABLED [1,1,1,0.4]
-#define COLOR_BUTTON_ENABLED [1,1,1,1]
-#define COLOR_BUTTON_DISABLED [0,0,0,1]
+#define COLOR_TEXT_ENABLED [1, 1, 1, 1]
+#define COLOR_TEXT_DISABLED [1, 1, 1, 0.4]
+#define COLOR_BUTTON_ENABLED [1, 1, 1, 1]
+#define COLOR_BUTTON_DISABLED [0, 0, 0, 1]
 
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
 
