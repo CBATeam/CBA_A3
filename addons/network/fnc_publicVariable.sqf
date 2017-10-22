@@ -39,9 +39,11 @@ private _currentValue = missionNamespace getVariable _varName;
 if (isNil "_currentValue") then {
     if (isNil "_value") then {
         TRACE_1("Not broadcasting. Current and new value are undefined",_varName);
+
         false // return
     } else {
         TRACE_2("Broadcasting previously undefined value",_varName,_value);
+
         missionNamespace setVariable [_varName, _value];
         publicVariable _varName;
         true // return
@@ -49,15 +51,18 @@ if (isNil "_currentValue") then {
 } else {
     if (isNil "_value") then {
         TRACE_1("Broadcasting nil",_varName);
+
         missionNamespace setVariable [_varName, nil];
         publicVariable _varName;
         true // return
     } else {
         if (_value isEqualTo _currentValue) then {
             TRACE_3("Not broadcasting. Current and new value are equal",_varName,_currentValue,_value);
+
             false // return
         } else {
             TRACE_2("Broadcasting",_varName,_value);
+
             missionNamespace setVariable [_varName, _value];
             publicVariable _varName;
             true // return
