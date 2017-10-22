@@ -1,7 +1,6 @@
 #define COMPONENT versioning
 #include "\x\cba\addons\main\script_mod.hpp"
 
-
 #ifdef DEBUG_ENABLED_VERSIONING
     #define DEBUG_MODE_FULL
 #endif
