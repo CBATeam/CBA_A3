@@ -8,4 +8,3 @@
 #define DEFAULT_SONG_TAGS  ["undefinedTags"]
 
 #include "\x\cba\addons\main\script_macros.hpp"
-
