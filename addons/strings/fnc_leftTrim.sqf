@@ -31,7 +31,7 @@ SCRIPT(leftTrim);
 
 params ["_string"];
 
-private ["_chars","_charCount"];
+private ["_chars", "_charCount"];
 
 // Convert String to Array for Find White Spaces
 _chars = ToArray _string;
@@ -45,7 +45,7 @@ if (_charCount > 0) then {
 
     // find Last White Space
     for "_i" from 0 to (_charCount - 1) do {
-        if !((_chars select _i) in WHITE_SPACE) exitWith { _numWhiteSpaces = _i };
+        if !((_chars select _i) in WHITE_SPACE) exitWith {_numWhiteSpaces = _i};
     };
     // if a White space exist than they are deselected
     if (_numWhiteSpaces > 0) then {
