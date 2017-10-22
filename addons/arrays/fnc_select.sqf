@@ -13,8 +13,8 @@ Returns:
 
 Example:
     (begin example)
-        _result = [[1,2,3], {_this in [2,3]}] call CBA_fnc_select;
-        // _result => [2,3]
+        _result = [[1, 2, 3], {_this in [2, 3]}] call CBA_fnc_select;
+        // _result => [2, 3]
     (end)
 
 Author:
