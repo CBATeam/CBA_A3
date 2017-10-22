@@ -18,7 +18,7 @@ SCRIPT(clockwork);
 
 {
     #ifdef STATEMACHINE_PERFORMANCE_COUNTERS
-    private _perfStartTime = diag_tickTime;
+        private _perfStartTime = diag_tickTime;
     #endif
     private _stateMachine = _x;
     private _list = _stateMachine getVariable QGVAR(list);
@@ -98,8 +98,8 @@ SCRIPT(clockwork);
     };
 
     #ifdef STATEMACHINE_PERFORMANCE_COUNTERS
-    private _perfRunTime = diag_tickTime - _perfStartTime;
-    (GVAR(performanceCounters) select _id) pushBack _perfRunTime;
+        private _perfRunTime = diag_tickTime - _perfStartTime;
+        (GVAR(performanceCounters) select _id) pushBack _perfRunTime;
     #endif
 
     false
