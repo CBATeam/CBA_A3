@@ -28,16 +28,16 @@ if !(local _group) exitWith {}; // Don't create waypoints on each machine
 private _building = nearestBuilding (leader _group);
 if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
-[_group,_building] spawn {
-    params ["_group","_building"];
+[_group, _building] spawn {
+    params ["_group", "_building"];
     private _leader = leader _group;
 
     // Add a waypoint to regroup after the search
     _group lockWP true;
     private _wp = _group addWaypoint [getPos _leader, 0, currentWaypoint _group];
     private _cond = "({unitReady _x || !(alive _x)} count thisList) == count thisList";
-    private _comp = format ["this setFormation '%1'; this setBehaviour '%2'; deleteWaypoint [group this, currentWaypoint (group this)];",formation _group,behaviour _leader];
-    _wp setWaypointStatements [_cond,_comp];
+    private _comp = format ["this setFormation '%1'; this setBehaviour '%2'; deleteWaypoint [group this, currentWaypoint (group this)];", formation _group, behaviour _leader];
+    _wp setWaypointStatements [_cond, _comp];
 
     // Prepare group to search
     _group setBehaviour "Combat";
@@ -67,6 +67,5 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
             };
         } forEach _units;
     };
-
     _group lockWP false;
 };
