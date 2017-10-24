@@ -1,5 +1,6 @@
 class RscListBox;
 class RscButtonMenuOK;
+
 class RscStandardDisplay;
 class RscDisplayMultiplayer: RscStandardDisplay {
     class Controls {
