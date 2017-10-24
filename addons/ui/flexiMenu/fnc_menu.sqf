@@ -82,7 +82,9 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 ]
 */
 //-----------------------------------------------------------------------------
-private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i", "_t", "_w", "_idcIndex", "_idc", "_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_params", "_useListBox", "_menuOption", "_commitList", "_source", "_width", "_list"];
+private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_t",
+    "_w", "_idcIndex", "_idc", "_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK",
+    "_visible", "_enabled", "_params", "_useListBox", "_menuOption", "_commitList", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
 TRACE_1("INPUT Params []",_this);

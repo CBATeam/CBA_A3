@@ -18,7 +18,8 @@ _potentialKeyMatch = false;
         if ((_x select 0 == _dikCode) &&
             {((!_shift && {!(_settings select 0)}) || {(_shift && {(_settings select 0)})})} &&
             {((!_ctrlKey && {!(_settings select 1)}) || {(_ctrlKey && {(_settings select 1)})})} &&
-            {((!_alt && {!(_settings select 2)}) || {(_alt && {(_settings select 2)})})}) exitWith {
+            {((!_alt && {!(_settings select 2)}) || {(_alt && {(_settings select 2)})})}) exitWith
+        {
             _potentialKeyMatch = true;
         };
     } forEach _keys;

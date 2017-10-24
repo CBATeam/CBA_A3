@@ -9,7 +9,7 @@ in order to avoid the millions of Deprecated function warnings:
     WARNING: Deprecated function used: KRON_StrToArray (new: cba_fnc_split) in cba_common
 */
 
-private ["_captionArray", "_i", "_len", "_array2"];
+private ["_captionArray", "_len", "_array2"];
 params ["_array", "_index", "_offset", "_hotKeyColor_ST"]; // (ST=structured text) "<t color='#f07EB27E'>"
 
 _captionArray = [];

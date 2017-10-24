@@ -5,8 +5,9 @@
 
 if (isDedicated || !dialog) exitWith {};
 
-private ["_handled", "_menuDefs", "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"];
-param [0] params ["_control", "_dikCode", "_shiftKey", "_ctrlKey", "_altKey"];
+private ["_handled", "_menuDefs", "_caption", "_action", "_icon",
+    "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"];
+(_this select 0) params ["_control", "_dikCode", "_shiftKey", "_ctrlKey", "_altKey"];
 
 _handled = false;
 
