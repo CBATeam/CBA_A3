@@ -3,6 +3,7 @@ class RscControlsGroupNoScrollbars;
 class RscText;
 class RscCombo;
 class RscListNBox;
+
 class RscDisplayConfigure {
     class controls {
         class CBA_ButtonConfigureAddons: RscButtonMenu {
