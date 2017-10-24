@@ -52,6 +52,7 @@ class CfgWeapons {
     };
 
     class GM6_base_F: Rifle_Long_Base_F {};
+
     class srifle_GM6_F: GM6_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             class CowsSlot: asdg_OpticRail1913 {
@@ -62,6 +63,7 @@ class CfgWeapons {
     };
 
     class LRR_base_F: Rifle_Long_Base_F {};
+
     class srifle_LRR_F: LRR_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             class CowsSlot: asdg_OpticRail1913 {
@@ -241,7 +243,7 @@ class CfgWeapons {
 
     class LMG_Zafir_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-/*            class MuzzleSlot: asdg_MuzzleSlot_762MG { //this would work but there is no sound config for a suppressed variant
+/*            class MuzzleSlot: asdg_MuzzleSlot_762MG { // this would work but there is no sound config for a suppressed variant
                 iconPosition[] = {0.05,0.4};
                 iconScale = 0.2;
             };
@@ -909,17 +911,17 @@ class CfgWeapons {
     class muzzle_snds_H;
     class muzzle_snds_H_MG: muzzle_snds_H { // we were seriously lacking a MG suppressor since BI hid these (1.64)
         scope = 2;
-        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG,can also be used on 6.5 and 5.56 MGs
+        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
         picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_tan_ca.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_tan_F";
     };
     class muzzle_snds_H_MG_blk_F: muzzle_snds_H_MG {
-        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG,can also be used on 6.5 and 5.56 MGs
+        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
         picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_black_ca.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_black_F";
     };
     class muzzle_snds_H_MG_khk_F: muzzle_snds_H_MG {
-        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG,can also be used on 6.5 and 5.56 MGs
+        displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
         picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_green_ca.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_green_F";
     };
