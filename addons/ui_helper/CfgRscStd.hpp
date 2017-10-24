@@ -1,7 +1,7 @@
 class RscListBox;
 class RscButtonMenuOK;
-class RscStandardDisplay;
 
+class RscStandardDisplay;
 class RscDisplayMultiplayer: RscStandardDisplay {
     class Controls {
         class CA_Join: RscButtonMenuOK {
