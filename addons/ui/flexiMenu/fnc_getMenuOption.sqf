@@ -7,12 +7,16 @@
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>" //<t size='1'> </t>  <t underline='true'>a    c</t>
 
-private ["_menuDefs0", "_menuDef", "_fastPartialResult", "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled", "_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect", "_keyName", "_offset", "_arrayID"];
+private ["_fastPartialResult",
+    "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",
+    "_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
+    "_keyName", "_offset", "_arrayID"];
 params ["_menuDefs0", "_menuDef"];
-IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
 
+IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
 IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
 IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
+
 if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1} else {0}}; // convert boolean to integer
 
 _caption = "";
