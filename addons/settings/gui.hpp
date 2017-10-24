@@ -1,6 +1,7 @@
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
+
 class RscDisplayGameOptions {
     class controls {
         class CBA_ButtonConfigureAddons: RscButtonMenu {
@@ -139,6 +140,7 @@ class GVAR(AddonsList): RscCombo {
 
 class RscButton;
 class RscPicture;
+
 class RscCheckBox;
 class GVAR(CheckboxSound): RscCheckBox {
     soundEnter[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEnter",0.090000004,1};
@@ -224,6 +226,7 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
 };
 
 class RscEdit;
+
 class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);
 
@@ -263,6 +266,7 @@ class GVAR(Row_List): GVAR(Row_Base) {
 };
 
 class RscXSliderH;
+
 class GVAR(Row_Slider): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingSlider);
 
@@ -406,6 +410,7 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
 class RscControlsGroup;
 class RscTitle;
 class RscListBox;
+
 class GVAR(presets) {
     idd = -1;
     movingEnable = 1;
