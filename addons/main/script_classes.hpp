@@ -1,4 +1,3 @@
-
 // Cfg
 class CfgMods;
 class CfgExperience;
