@@ -1,5 +1,6 @@
 class RscText;
 class RscButton;
+
 class RscStructuredText {
     class Attributes;
 };
