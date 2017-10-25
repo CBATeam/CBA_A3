@@ -64,7 +64,7 @@ Author:
 
 SCRIPT(formatNumber);
 
-params ["_number", ["_integerWidth", DEFAULT_INTEGER_WIDTH], ["_decimalPlaces", DEFAULT_DECIMAL_PLACES], ["_separateThousands",DEFAULT_SEPARATE_THOUSANDS]];
+params ["_number", ["_integerWidth", DEFAULT_INTEGER_WIDTH], ["_decimalPlaces", DEFAULT_DECIMAL_PLACES], ["_separateThousands", DEFAULT_SEPARATE_THOUSANDS]];
 
 private _isNegative = _number < 0;
 private _return = (abs _number) toFixed _decimalPlaces;
