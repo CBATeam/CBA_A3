@@ -36,8 +36,8 @@ if (isNil QGVAR(stateMachines)) then {
 };
 
 #ifdef STATEMACHINE_PERFORMANCE_COUNTERS
-    if (isNil QGVAR(performanceCounters)) then {GVAR(performanceCounters) = [];};
-    GVAR(performanceCounters) pushBack [];
+if (isNil QGVAR(performanceCounters)) then {GVAR(performanceCounters) = [];};
+GVAR(performanceCounters) pushBack [];
 #endif
 
 private _updateCode = {};

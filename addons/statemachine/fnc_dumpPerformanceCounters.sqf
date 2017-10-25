@@ -23,7 +23,7 @@ Author:
 #include "script_component.hpp"
 
 #ifndef STATEMACHINE_PERFORMANCE_COUNTERS
-    if (true) exitWith {WARNING("Requires `STATEMACHINE_PERFORMANCE_COUNTERS` in script_component.hpp");};
+if (true) exitWith {WARNING("Requires `STATEMACHINE_PERFORMANCE_COUNTERS` in script_component.hpp");};
 #endif
 
 diag_log text format ["CBA State Machine Results:"];
