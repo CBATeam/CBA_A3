@@ -6,6 +6,7 @@
             <Japanese>Community Base Addons - キー割り当て</Japanese>
             <Chinese>社群基礎模組 - 按鍵綁定</Chinese>
             <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -14,6 +15,7 @@
             <Japanese>アドオンの設定</Japanese>
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
+            <Portuguese>Configure as Extensões</Portuguese>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -22,6 +24,7 @@
             <Japanese>基本設定</Japanese>
             <Chinese>基礎設定</Chinese>
             <Chinesesimp>基础设定</Chinesesimp>
+            <Portuguese>Configure as Bases</Portuguese>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
@@ -30,6 +33,7 @@
             <Japanese>%1のコードは不明です</Japanese>
             <Chinese>未知按鍵%1</Chinese>
             <Chinesesimp>未知按键%1</Chinesesimp>
+            <Portuguese>Chave desconhecida %1</Portuguese>
         </Key>
     </Package>
 </Project>
