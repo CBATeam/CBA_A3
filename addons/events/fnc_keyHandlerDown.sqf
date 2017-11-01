@@ -41,7 +41,6 @@ if !(_this select 4) then {
 };
 
 private _inputModifiers = [GVAR(shift), GVAR(control), GVAR(alt)];
-
 private _blockInput = false;
 
 {

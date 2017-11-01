@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["cba_sys_nvg", "nvgon", { _this call myAction }] call CBA_fnc_addKeyHandlerFromConfig
+        ["cba_sys_nvg", "nvgon", {_this call myAction}] call CBA_fnc_addKeyHandlerFromConfig
     (end)
 
 Author:
