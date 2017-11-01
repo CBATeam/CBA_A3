@@ -60,6 +60,6 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
     _ctrlKeyList lnbSetData [[_index, 0], str [_action, _displayName, _keybinds, _defaultKeybind]];
 
     if (_isDuplicated) then {
-        _ctrlKeyList lnbSetColor [[_index, 1], [1,0,0,1]];
+        _ctrlKeyList lnbSetColor [[_index, 1], [1, 0, 0, 1]];
     };
 } forEach _addonActions;

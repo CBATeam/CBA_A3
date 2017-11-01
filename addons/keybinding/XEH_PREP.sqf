@@ -1,4 +1,3 @@
-
 PREP(initDisplayConfigure);
 
 PREP(gui_configure);

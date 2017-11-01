@@ -198,7 +198,6 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
-
             private _index = (_ctrlKeyList getVariable QGVAR(index)) - 1;
 
             if (_index < 0) then {
@@ -239,7 +238,6 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
-
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) + 1;
 

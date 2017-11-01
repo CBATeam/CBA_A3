@@ -32,11 +32,11 @@ Author:
 
 // Clients only.
 if (isDedicated) exitWith {};
-diag_log text format["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKeybindToFleximenu is no longer a valid function and has been replaced with CBA_fnc_addKeybindToFleximenu. Contact the developer of mod %1 to change the code to use the new function.",_this select 0,_this select 1];
+diag_log text format ["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKeybindToFleximenu is no longer a valid function and has been replaced with CBA_fnc_addKeybindToFleximenu. Contact the developer of mod %1 to change the code to use the new function.", _this select 0,_this select 1];
 
-_nullKeybind = [-1,false,false,false];
+_nullKeybind = [-1, false, false, false];
 
-params ["_modName","_actionName","_fleximenuDef", ["_defaultKeybind",_nullKeybind], ["_overwrite",false], ["_keypressType","KeyDown"]];
+params ["_modName", "_actionName", "_fleximenuDef", ["_defaultKeybind", _nullKeybind], ["_overwrite", false], ["_keypressType", "KeyDown"]];
 
 // Help the user out by always setting the keycode param of the fleximenu
 // def array to []. Give them a warning if it wasn't.
@@ -52,6 +52,6 @@ _fleximenuDef call cba_fnc_flexiMenu_add;
 _code = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDef];
 
 // Pass everything to the real cba_fnc_registerKeybind.
-_keybind = [_modName, _actionName, _code, _defaultKeybind, _overwrite, _keypressType] call cba_fnc_registerKeybind;
+_keybind = [_modName, _actionName, _code, _defaultKeybind, _overwrite, _keypressType] call CBA_fnc_registerKeybind;
 
 _keybind;
