@@ -33,30 +33,30 @@ Author:
 #include "script_component.hpp"
 params [
     ["_group", objNull, [objNull,grpNull]],
-    ["_area", "", ["",objNull,locationNull,[]], 5],
+    ["_area", "", ["",objNull, locationNull,[]], 5],
     ["_behaviour", "UNCHANGED", [""]],
     ["_combat", "NO CHANGE", [""]],
     ["_speed", "UNCHANGED", [""]],
     ["_formation", "NO CHANGE", [""]],
     ["_onComplete", "", [""]],
-    ["_timeout", [0,0,0], [[]], 3]
+    ["_timeout", [0, 0, 0], [[]], 3]
 ];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
 // Collect arguments for use in recursive calls (not using `select` to include default values)
-private _args = [_area,_behaviour,_combat,_speed,_formation,_onComplete,_timeout];
+private _args = [_area, _behaviour, _combat, _speed, _formation, _onComplete, _timeout];
 
 // Retrieve cached arguments in case of recursive call
 if (isNil {param [1]}) then {
-    _args = _group getVariable [QGVAR(taskSearch),_args];
+    _args = _group getVariable [QGVAR(taskSearch), _args];
 } else {
     // Clear existing waypoints and cache arguments upon first call
     [_group] call CBA_fnc_clearWaypoints;
-    _group setVariable [QGVAR(taskSearch),_args];
+    _group setVariable [QGVAR(taskSearch), _args];
 };
-_args params ["_area","_behaviour","_combat","_speed","_formation","_onComplete","_timeout"];
+_args params ["_area", "_behaviour", "_combat", "_speed", "_formation", "_onComplete", "_timeout"];
 
 // Select a random position in the area
 private _pos = [_area] call CBA_fnc_randPosArea;
