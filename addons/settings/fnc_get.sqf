@@ -25,13 +25,13 @@ params [["_setting", "", [""]], ["_source", "priority", [""]]];
 
 private _value = switch (toLower _source) do {
     case "client": {
-        GVAR(client)  getVariable [_setting, [nil, nil]] select 0
+        GVAR(client) getVariable [_setting, [nil, nil]] select 0
     };
     case "mission": {
         GVAR(mission) getVariable [_setting, [nil, nil]] select 0
     };
     case "server": {
-        GVAR(server)  getVariable [_setting, [nil, nil]] select 0
+        GVAR(server) getVariable [_setting, [nil, nil]] select 0
     };
     case "priority": {
         private _source = _setting call FUNC(priority);

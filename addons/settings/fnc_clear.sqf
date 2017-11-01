@@ -38,7 +38,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(client) setVariable [_setting, [_value, _priority]];
             };
@@ -65,7 +65,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(mission) setVariable [_setting, [_value, _priority]];
             };
@@ -93,7 +93,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(client) setVariable [_setting, [_value, _priority]];
                 GVAR(server) setVariable [_setting, [_value, _priority], true];
