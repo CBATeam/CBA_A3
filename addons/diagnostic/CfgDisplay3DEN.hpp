@@ -1,4 +1,5 @@
 class ctrlMenuStrip;
+
 class Display3DEN {
     class Controls {
         class MenuStrip: ctrlMenuStrip {
