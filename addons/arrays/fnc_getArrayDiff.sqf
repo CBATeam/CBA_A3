@@ -46,7 +46,7 @@ for "_i" from 1 to (count _elmsA) step 2 do {
         _cT = _cA - _cB;
         if (_cT < 0) then {
             _case = 1; //Missing from B
-            _cT = abs (_cT);
+            _cT = abs _cT;
         } else {
             if (_cT > 0) then {
                 _case = 0; //Missing from A
