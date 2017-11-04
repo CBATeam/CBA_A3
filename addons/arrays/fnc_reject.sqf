@@ -13,7 +13,7 @@ Returns:
 
 Example:
     (begin example)
-        _result = [[1,2,3], {_this in [2,3]}] call CBA_fnc_reject;
+        _result = [[1, 2, 3], {_this in [2, 3]}] call CBA_fnc_reject;
         // _result => [1]
     (end)
 
