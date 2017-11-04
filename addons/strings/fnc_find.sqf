@@ -37,11 +37,11 @@ SCRIPT(find);
 
 params ["_haystack", "_needle", ["_initialIndex", 0]];
 
+if !(_haystack isEqualType "") exitWith {-1};
+if !(_needle isEqualType "") exitWith {-1};
+
 private _start = -1;
 private _return = -1;
-
-if (typeName _haystack != "STRING") exitWith {-1};
-if (typeName _needle != "STRING") exitWith {-1};
 
 if (_initialIndex < 1) then {
     _return = _haystack find _needle;
