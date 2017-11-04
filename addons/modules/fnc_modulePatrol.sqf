@@ -36,7 +36,7 @@ Optional:
 
 Example:
     (begin example)
-    [Logic, [group1,group2,...,groupN]] call CBA_fnc_modulePatrol;
+    [Logic, [group1, group2, ..., groupN]] call CBA_fnc_modulePatrol;
     (end)
 
 Returns:
@@ -50,8 +50,8 @@ Author:
 #include "script_component.hpp"
 
 params [
-    ["_logic",objNull,[objNull]],
-    ["_groups",[],[[]]],
+    ["_logic", objNull, [objNull]],
+    ["_groups", [], [[]]],
     "_localGroups",
     "_patrolPos",
     "_patrolRadius",
@@ -68,13 +68,13 @@ params [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_localGroups = _groups select { local _x };
+_localGroups = _groups select {local _x};
 
 if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_patrolLocType = _logic getVariable ["patrolLocType",""];
-_patrolPos = _logic getVariable ["patrolPosition",objNull];
+_patrolLocType = _logic getVariable ["patrolLocType", ""];
+_patrolPos = _logic getVariable ["patrolPosition", objNull];
 _patrolSetPos = false;
 
 // Parse patrol position from string
@@ -82,17 +82,17 @@ _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getPosFromString;
 if (isNil "_patrolPos") then {_patrolSetPos = true;};
 
 // Parse timeout using getStringPos
-_timeout = [_logic getVariable ["timeout","[1,5,10]"]] call BIS_fnc_parseNumber;
+_timeout = [_logic getVariable ["timeout", "[1, 5, 10]"]] call BIS_fnc_parseNumber;
 
 // Define remaining variables and command local group leaders to patrol area
-_patrolRadius = _logic getVariable ["patrolRadius",25];
-_waypointCount = _logic getVariable ["waypointCount",4];
-_waypointType = _logic getVariable ["waypointType","MOVE"];
-_behaviour = _logic getVariable ["behaviour","CARELESS"];
-_combatMode = _logic getVariable ["combatMode","YELLOW"];
-_speedMode = _logic getVariable ["speedMode","LIMITED"];
-_formation = _logic getVariable ["formation","COLUMN"];
-_codeToRun = _logic getVariable ["executableCode",""];
+_patrolRadius = _logic getVariable ["patrolRadius", 25];
+_waypointCount = _logic getVariable ["waypointCount", 4];
+_waypointType = _logic getVariable ["waypointType", "MOVE"];
+_behaviour = _logic getVariable ["behaviour", "CARELESS"];
+_combatMode = _logic getVariable ["combatMode", "YELLOW"];
+_speedMode = _logic getVariable ["speedMode", "LIMITED"];
+_formation = _logic getVariable ["formation", "COLUMN"];
+_codeToRun = _logic getVariable ["executableCode", ""];
 {
     if (_patrolSetPos) then {_patrolPos = getPos _x;};
     [

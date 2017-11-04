@@ -36,8 +36,8 @@ Author:
 #include "script_component.hpp"
 
 params [
-    ["_logic",objNull,[objNull]],
-    ["_groups",[],[[]]],
+    ["_logic", objNull, [objNull]],
+    ["_groups", [], [[]]],
     "_localGroups",
     "_defendPos",
     "_defendLocType",
@@ -50,13 +50,13 @@ params [
 // Only server, dedicated, or headless beyond this point
 if (hasInterface && !isServer) exitWith {};
 
-_localGroups = _groups select { local _x };
+_localGroups = _groups select {local _x};
 
 if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_defendLocType = _logic getVariable ["defendLocType",""];
-_defendPos = _logic getVariable ["defendPosition",objNull];
+_defendLocType = _logic getVariable ["defendLocType", ""];
+_defendPos = _logic getVariable ["defendPosition", objNull];
 _defendSetPos = false;
 
 // Parse defend position from string
@@ -64,12 +64,12 @@ _defendPos = [_defendLocType, _defendPos] call CBA_fnc_getPosFromString;
 if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol
-_canPatrol = _logic getVariable ["canPatrol",0.1];
-_shouldHold = _logic getVariable ["shouldHold",0];
+_canPatrol = _logic getVariable ["canPatrol", 0.1];
+_shouldHold = _logic getVariable ["shouldHold", 0];
 
 // Command local group leaders to defend area
-_defendRadius = _logic getVariable ["defendRadius",25];
-_threshold = _logic getVariable ["threshold",2];
+_defendRadius = _logic getVariable ["defendRadius", 25];
+_threshold = _logic getVariable ["threshold", 2];
 {
     if (_defendSetPos) then {_defendPos = getPos _x;};
     [_x, _defendPos, _defendRadius, _threshold, _canPatrol, _shouldHold] call CBA_fnc_taskDefend;
