@@ -35,31 +35,26 @@ SCRIPT(find);
 
 // ----------------------------------------------------------------------------
 
-params ["_haystack","_needle", ["_initialIndex",0]];
+params ["_haystack", "_needle", ["_initialIndex", 0]];
+
+if !(_haystack isEqualType "") exitWith {-1};
+if !(_needle isEqualType "") exitWith {-1};
 
 private _start = -1;
-private _ret = -1;
+private _return = -1;
 
-if (typeName _haystack != "STRING") exitWith {
-    -1
-};
-if (typeName _needle != "STRING") exitWith {
-    -1
-};
-
-if(_initialIndex < 1) then {
-    _ret = _haystack find _needle;
+if (_initialIndex < 1) then {
+    _return = _haystack find _needle;
 } else {
-    if(_initialIndex > (count _haystack) ) exitWith {
-        -1
-    };
+    if (_initialIndex > (count _haystack)) exitWith {-1};
     private _tempString = [_haystack, _initialIndex] call CBA_fnc_substr;
-    _ret = _tempString find _needle;
-    if(_ret > -1) then {
-        _ret = _ret + _initialIndex;
+    _return = _tempString find _needle;
+
+    if (_return > -1) then {
+        _return = _return + _initialIndex;
     } else {
-        _ret = -1;
+        _return = -1;
     };
 };
 
-_ret
+_return
