@@ -17,7 +17,7 @@ Author:
 
 #define COUNT_WATCH_BOXES 8
 
-if !(1 == getMissionConfigValue ["EnableTargetDebug", 0] || {1 == getNumber (configFile >> "EnableTargetDebug")}) exitWith {};
+if !(getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) exitWith {};
 
 params ["_display"];
 TRACE_1("adding server watch debug",_display);
