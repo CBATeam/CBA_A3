@@ -16,7 +16,7 @@ Parameters:
 Example:
     (begin example)
     ["OBJECT", "player"] call CBA_fnc_getPosFromString;
-    ["MARKER","myMarker"] call CBA_fnc_getPosFromString;
+    ["MARKER", "myMarker"] call CBA_fnc_getPosFromString;
     (end)
 
 Returns:

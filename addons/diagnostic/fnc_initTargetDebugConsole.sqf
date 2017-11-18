@@ -25,6 +25,7 @@ TRACE_1("adding server watch debug",_display);
 // adjust position of the main controls group to make it wider (may be slightly cut off with "Very-Large" text size)
 private _debugConsole = _display displayCtrl IDC_RSCDEBUGCONSOLE_RSCDEBUGCONSOLE;
 private _debugConsolePos = ctrlPosition _debugConsole;
+
 _debugConsolePos set [2, (_debugConsolePos select 2) + 22.5 * GUI_GRID_W];
 _debugConsole ctrlSetPosition _debugConsolePos;
 _debugConsole ctrlCommit 0;
@@ -33,16 +34,17 @@ private _basePosition = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_W
 _basePosition set [0, (_basePosition select 0) + 22.5 * GUI_GRID_W];
 _basePosition set [1, (_basePosition select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
 
-
 // Add background and "Target Watch" text:
 private _targetWatchBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
-_targetWatchBackground ctrlSetBackgroundColor [0,0,0,0.7];
+_targetWatchBackground ctrlSetBackgroundColor [0, 0, 0, 0.7];
+
 private _ctrlPos = ctrlPosition (_display displayCtrl IDC_RSCDEBUGCONSOLE_WATCHBACKGROUND);
 _ctrlPos set [0, (_ctrlPos select 0) + 22.5 * GUI_GRID_W];
 _ctrlPos set [1, (_ctrlPos select 1) - (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
 _ctrlPos set [3, (_ctrlPos select 3) + (1.5 + 2 * (COUNT_WATCH_BOXES - 4)) * GUI_GRID_H];
 _targetWatchBackground ctrlSetPosition _ctrlPos;
 _targetWatchBackground ctrlCommit 0;
+
 private _targetWatchText = _display ctrlCreate ["RscText", -1, _debugConsole];
 _targetWatchText ctrlSetText format ["%1 %2", localize "str_watch_target", localize "STR_A3_RscDebugConsole_WatchText"];
 _targetWatchText ctrlSetFontHeight (0.7 * GUI_GRID_H);
@@ -50,8 +52,6 @@ _ctrlPos set [0, (_ctrlPos select 0) + 0.2 * GUI_GRID_W];
 _ctrlPos set [3, 0.5 * GUI_GRID_W];
 _targetWatchText ctrlSetPosition _ctrlPos;
 _targetWatchText ctrlCommit 0;
-
-
 
 // Add target selector list
 private _clientList = _display ctrlCreate ["RscXListBox", -1, _debugConsole];
@@ -109,7 +109,7 @@ for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
     private _outputBackground = _display ctrlCreate ["RscText", -1, _debugConsole];
     private _outputEditBox = _display ctrlCreate [QGVAR(watchOutput), -1, _debugConsole];
 
-    _outputBackground ctrlSetBackgroundColor [0,0,0,0.75];
+    _outputBackground ctrlSetBackgroundColor [0, 0, 0, 0.75];
     _inputEditbox ctrlSetText _savedStatement;
 
     _inputEditbox ctrlSetPosition _basePosition;
@@ -125,7 +125,6 @@ for "_varIndex" from 0 to (COUNT_WATCH_BOXES - 1) do {
     _watchVars pushBack [_inputEditbox, _outputBackground, _outputEditBox, -1];
 };
 _display setVariable [QGVAR(watchVars), _watchVars];
-
 
 // Runs constantly, sends statement to target and parses the result back in the output window
 private _fnc_updateWatchInfo = {
@@ -150,10 +149,16 @@ private _fnc_updateWatchInfo = {
         };
 
         private _bgColor = switch (true) do {
-            case (_duration < 0.0015): {[linearConversion [0.0001, 0.0015, _duration, 0, 0.4, true], linearConversion [0.0005, 0.0015, _duration, 0, 0.4, true], 0, 0.4]};
-            case (_duration < 0.003): {[linearConversion [0.0015, 0.003, _duration, 0.4, 0.8, true], linearConversion [0.0015, 0.003, _duration, 0.4, 0.5, true], 0, 0.5]};
-            case (_duration < 0.1): {[linearConversion [0.003, 0.05, _duration, 0.8, 1, true], linearConversion [0.003, 0.05, _duration, 0.5, 0.1, true], 0, 0.8]};
-            default {[1,0,0,1]};
+            case (_duration < 0.0015): {
+                [linearConversion [0.0001, 0.0015, _duration, 0, 0.4, true], linearConversion [0.0005, 0.0015, _duration, 0, 0.4, true], 0, 0.4];
+            };
+            case (_duration < 0.003): {
+                [linearConversion [0.0015, 0.003, _duration, 0.4, 0.8, true], linearConversion [0.0015, 0.003, _duration, 0.4, 0.5, true], 0, 0.5];
+            };
+            case (_duration < 0.1): {
+                [linearConversion [0.003, 0.05, _duration, 0.8, 1, true], linearConversion [0.003, 0.05, _duration, 0.5, 0.1, true], 0, 0.8];
+            };
+            default {[1, 0, 0, 1]};
         };
         _outputEditBox ctrlSetText _responseReturn;
         _outputBackground ctrlSetBackgroundColor _bgColor;

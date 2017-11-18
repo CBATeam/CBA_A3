@@ -1,4 +1,3 @@
-
 class RscStructuredText;
 
 class RscTitles {

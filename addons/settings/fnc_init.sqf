@@ -24,13 +24,13 @@ Examples:
         ["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
 
         // LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
-        ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
+        ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 
         // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals]
         ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 
         // COLOR PICKER --- extra argument: _color
-        ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0]] call cba_settings_fnc_init;
+        ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call cba_settings_fnc_init;
 
         // EDITBOX --- extra argument: default value
         ["Test_Setting_5", "EDITBOX", ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
@@ -77,7 +77,7 @@ if (_displayName isEqualTo "") then {
 };
 
 // --- who can edit the setting
-_isGlobal = [0,1,2] select _isGlobal;
+_isGlobal = [0, 1, 2] select _isGlobal;
 
 // --- setting possible values and default ("data")
 private "_defaultValue";
@@ -123,7 +123,7 @@ switch (toUpper _settingType) do {
         _settingData append [_min, _max, _trailingDecimals];
     };
     case "COLOR": {
-        _defaultValue = [_valueInfo] param [0, [1,1,1], [[]], [3,4]];
+        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3,4]];
     };
     default {/* _defaultValue undefined, exit below */};
 };
@@ -157,7 +157,7 @@ if (!isNil "_settingInfo") then {
     };
 
     // convert boolean to number
-    _priority = [0,1,2] select _priority;
+    _priority = [0, 1, 2] select _priority;
 
     GVAR(client) setVariable [_setting, [_value, _priority]];
 
@@ -178,7 +178,7 @@ if (!isNil "_settingInfo") then {
     _settingInfo params ["_value", "_priority"];
 
     // convert boolean to number
-    _priority = [0,1,2] select _priority;
+    _priority = [0, 1, 2] select _priority;
 
     if ([_setting, _value] call FUNC(check)) then {
         GVAR(mission) setVariable [_setting, [_value, _priority]];

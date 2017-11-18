@@ -37,6 +37,7 @@ if (isNull _object) exitWith {
 
 if (_varName isEqualTo "") exitWith {
     WARNING("Variable name is wrong type or undefined");
+
     false
 };
 
@@ -45,23 +46,28 @@ private _currentValue = _object getVariable _varName;
 if (isNil "_currentValue") then {
     if (isNil "_value") then {
         TRACE_2("Not broadcasting. Current and new value are undefined",_object,_varName);
+
         false // return
     } else {
         TRACE_3("Broadcasting previously undefined value",_object,_varName,_value);
+
         _object setVariable [_varName, _value, true];
         true // return
     };
 } else {
     if (isNil "_value") then {
         TRACE_2("Broadcasting nil",_object,_varName);
+
         _object setVariable [_varName, nil, true];
         true // return
     } else {
         if (_value isEqualTo _currentValue) then {
             TRACE_4("Not broadcasting. Current and new value are equal",_object,_varName,_currentValue,_value);
+
             false // return
         } else {
             TRACE_3("Broadcasting",_object,_varName,_value);
+
             _object setVariable [_varName, _value, true];
             true // return
         };

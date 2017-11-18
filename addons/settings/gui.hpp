@@ -1,4 +1,3 @@
-
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
