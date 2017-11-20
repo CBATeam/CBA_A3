@@ -5,15 +5,9 @@
 
 if (isDedicated || !dialog) exitWith {};
 
-private['_handled', '_EHParams', '_control', '_dikCode', '_shiftKey', '_ctrlKey', '_altKey'];
-private['_menuDefs', "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"];
-_EHParams = _this select 0;
-
-_control = _EHParams select 0;
-_dikCode = _EHParams select 1;
-_shiftKey = _EHParams select 2;
-_ctrlKey = _EHParams select 3;
-_altKey = _EHParams select 4;
+private ["_handled", "_menuDefs", "_caption", "_action", "_icon",
+    "_tooltip", "_subMenu", "_shortcut", "_visible", "_enabled"];
+(_this select 0) params ["_control", "_dikCode", "_shiftKey", "_ctrlKey", "_altKey"];
 
 _handled = false;
 

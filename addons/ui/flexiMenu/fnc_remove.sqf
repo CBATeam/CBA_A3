@@ -1,14 +1,15 @@
 ﻿//#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ['_msg', '_i'];
+private ["_msg", "_i"];
 
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 
 // validate params
 _msg = "";
 _msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__ ];
-if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_remove.sqf"};
+
+if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_remove.sqf"};
 if (isNil QGVAR(typeMenuSources)) exitWith {diag_log _msg};
 if (typeName _this != typeName []) exitWith {diag_log _msg};
 if (count _this != 4) exitWith {diag_log _msg};

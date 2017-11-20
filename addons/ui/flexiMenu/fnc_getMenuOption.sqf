@@ -5,20 +5,19 @@
 #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 #include "DIKASCIIMap.hpp"
 
-#define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>"//<t size='1'> </t>  <t underline='true'>a    c</t>
+#define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>" //<t size='1'> </t>  <t underline='true'>a    c</t>
 
-private["_menuDefs0", "_menuDef", "_fastPartialResult",
+private ["_fastPartialResult",
     "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",
     "_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
     "_keyName", "_offset", "_arrayID"];
+params ["_menuDefs0", "_menuDef"];
 
-_menuDefs0 = _this select 0;
-_menuDef = _this select 1;
 IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.
-
 IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
 IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
-if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1}else{0}}; // convert boolean to integer
+
+if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1} else {0}}; // convert boolean to integer
 
 _caption = "";
 IfCountDefault(_action,_menuDef,_flexiMenu_menuDef_ID_action,"");
@@ -36,7 +35,7 @@ IfCountDefault(_tooltip,_menuDef,_flexiMenu_menuDef_ID_tooltip,"");
 // enabled
 IfCountDefault(_enabled,_menuDef,_flexiMenu_menuDef_ID_enabled,1);
 if (isNil "_enabled") then {
-    hint ("Error logged: 'enabled' menu property returned nil.\n\n" + format["Source data: %1", _this]);
+    hint ("Error logged: 'enabled' menu property returned nil.\n\n" + format ["Source data: %1", _this]);
     ERROR_WITH_TITLE("'enabled' menu property returned nil.", str _this);
     _enabled = 0;
     _caption = "Error: " + _caption;
@@ -165,6 +164,7 @@ if (_caption != "") then {
 };
 //-----------------------------------------------------------------------------
 _result = [];
+
 _result resize _flexiMenu_menuDef_ID_totalIDs;
 _result set [_flexiMenu_menuDef_ID_caption, _caption];
 _result set [_flexiMenu_menuDef_ID_action, _action];
@@ -174,4 +174,5 @@ _result set [_flexiMenu_menuDef_ID_subMenuSource, _subMenu];
 _result set [_flexiMenu_menuDef_ID_shortcut, _shortcut_DIK];
 _result set [_flexiMenu_menuDef_ID_enabled, _enabled];
 _result set [_flexiMenu_menuDef_ID_visible, _visible];
+
 _result

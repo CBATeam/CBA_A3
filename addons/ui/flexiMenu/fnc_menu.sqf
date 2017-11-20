@@ -82,16 +82,17 @@ Note: visible allows value -1 (instead of 0) to make the current button be re-us
 ]
 */
 //-----------------------------------------------------------------------------
-private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_i",     "_t", "_w", "_idcIndex", "_idc"];
-private ["_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK", "_visible", "_enabled"];
-private ["_params", "_useListBox", "_menuOption", "_commitList", "_source", "_width", "_list"];
+private ["_msg", "_valid", "_menuSources", "_menuDefs", "_menuParams", "_menuRsc", "_array", "_t",
+    "_w", "_idcIndex", "_idc", "_caption", "_action", "_icon", "_subMenu", "_tooltip", "_shortcut_DIK",
+    "_visible", "_enabled", "_params", "_useListBox", "_menuOption", "_commitList", "_source", "_width", "_list"];
 
 #define _MenuOption_NoOptions ["No options", "<No options>", "", "", "", -1, 0, 1]
 TRACE_1("INPUT Params []",_this);
 //-----------------------------------------------------------------------------
 _msg = "";
 _msg = format ["%1: Invalid params type: %2", __FILE__, _this];
-if (isNil "_msg") then  { _msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
+
+if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
 if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log _msg};
 TRACE_2("INPUT Params",_this select 0, _this select 1);
 
@@ -105,9 +106,9 @@ if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid p
 
 // Empty Array is allowed to signify that nothing should happen
 if (count _menuDefs == 0) exitWith {
-  #ifdef DEBUG_MODE_FULL
-    diag_log format ["%1: _menuDefs is an empty, nothing to do. params c1: %2", __FILE__, _this];
-  #endif
+    #ifdef DEBUG_MODE_FULL
+        diag_log format ["%1: _menuDefs is an empty, nothing to do. params c1: %2", __FILE__, _this];
+    #endif
 };
 
 if (count _menuDefs < 2) exitWith {diag_log format ["%1: Invalid params c2: %2", __FILE__, _this]};
@@ -118,7 +119,7 @@ TRACE_2("Determined which dialog to show",_flexiMenu_menuProperty_ID_menuResourc
 
 if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
-    _menuRsc = __menuRscPrefix+_menuRsc; // attach standard flexi menu prefix
+    _menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
 if (!createDialog _menuRsc) exitWith {hint format ["%1: createDialog failed: %2", __FILE__, _menuRsc]};
 setMousePosition [0.5, 0.5];
@@ -140,18 +141,18 @@ _disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(
 
 _idcIndex = 0;
 
-_width = getNumber(missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+_width = getNumber (missionConfigFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
 if (_width == 0) then {
-    _width = getNumber(configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
+    _width = getNumber (configFile >> _menuRsc >> "flexiMenu_primaryMenuControlWidth");
     if (_width == 0) then {
         player sideChat format ["Error: missing flexiMenu_primaryMenuControlWidth: %1", _menuRsc];
         _width = __SMW_default;
     };
 };
 
-GVAR(hotKeyColor) = getText(missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+GVAR(hotKeyColor) = getText (missionConfigFile >> _menuRsc >> "flexiMenu_hotKeyColor");
 if (GVAR(hotKeyColor) == "") then {
-    GVAR(hotKeyColor) = getText(configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
+    GVAR(hotKeyColor) = getText (configFile >> _menuRsc >> "flexiMenu_hotKeyColor");
     if (GVAR(hotKeyColor) == "") then {
         GVAR(hotKeyColor) = __defaultHotkeyColor;
     };
@@ -199,7 +200,7 @@ _commitList = [];
             // _visible==1 means: button used, go to next button.
             // _visible==0 means: button hidden and unused, so re-use this idc for next menu option.
             // _visible==-1 means: button hidden but reserved, so skip this idc and use next idc for next menu option.
-            if (_visible != 0) then { // i.e. in [-1,1]
+            if (_visible != 0) then { // i.e. in [-1, 1]
                 _idcIndex = _idcIndex + 1;
             };
         };
@@ -212,10 +213,12 @@ if (_idcIndex == 0) then {
     _idc = _flexiMenu_baseIDC_button + _idcIndex;
     _ctrl = _disp displayCtrl _idc;
     _array = ctrlPosition _ctrl;
+
     if (_array select 2 == 0) then {
         _array = [_array select 0, _array select 1, _width, _array select 3];
         _ctrl ctrlSetPosition _array;
     };
+
     _ctrl ctrlCommit 0; // commit pos/size before showing
     _ctrl ctrlSetStructuredText parseText "No options";
     _commitList pushBack [_idc, 0, 1];
@@ -243,4 +246,3 @@ for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
     _ctrl ctrlShow false;
     _ctrl ctrlEnable false;
 };
-
