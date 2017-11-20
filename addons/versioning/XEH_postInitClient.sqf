@@ -5,7 +5,9 @@ SLX_XEH_STR spawn {
     if (!SLX_XEH_DisableLogging) then {
         private "_logMsg";
         _logMsg = "CBA_VERSIONING_SERVER: ";
-        [GVAR(versions_serv), { _logMsg = (_logMsg + format["%1=%2, ", _key, (_value select 0) joinString "."])}] call CBA_fnc_hashEachPair;
+        [GVAR(versions_serv), {
+            _logMsg = (_logMsg + format["%1=%2, ", _key, (_value select 0) joinString "."])}
+        ] call CBA_fnc_hashEachPair;
 
         diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
     };
