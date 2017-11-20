@@ -3,8 +3,10 @@ disableSerialization;
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ["_msg", "_menuSources", "_menuDefs", "_idc", "_iconFolder", "_menuOption", "_caption",
-    "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"];
+private [
+    "_msg", "_menuSources", "_menuDefs", "_idc", "_iconFolder", "_menuOption", "_caption",
+    "_action", "_icon", "_tooltip", "_shortcut_DIK", "_visible", "_enabled", "_array"
+];
 
 _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------

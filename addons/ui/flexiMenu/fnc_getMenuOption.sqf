@@ -7,10 +7,11 @@
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>" //<t size='1'> </t>  <t underline='true'>a    c</t>
 
-private ["_fastPartialResult",
-    "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip", "_subMenu", "_shortcut_DIK", "_visible", "_enabled",
-    "_array", "_index", "_containCaret", "_asciiKey", "_iconFolder", "_multiReselect",
-    "_keyName", "_offset", "_arrayID"];
+private [
+    "_fastPartialResult", "_result", "_caption", "_action", "_actionOptions", "_icon", "_tooltip",
+    "_subMenu", "_shortcut_DIK", "_visible", "_enabled", "_array", "_index", "_containCaret",
+    "_asciiKey", "_iconFolder", "_multiReselect", "_keyName", "_offset", "_arrayID"
+];
 params ["_menuDefs0", "_menuDef"];
 
 IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial result, which ignores CPU intensive code like highlightCaretKey.

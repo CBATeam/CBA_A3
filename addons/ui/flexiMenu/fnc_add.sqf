@@ -3,7 +3,7 @@
 
 TRACE_1("",_this);
 
-private ["_msg", "_exit", "_list", "_i", "_key"];
+private ["_msg", "_exit", "_list", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 // Note: calling script may require this file for dik codes: #include "\x\cba\addons\ui_helper\script_dikCodes.hpp"
 
