@@ -4,6 +4,7 @@ ADDON = false;
 
 #include "XEH_PREP.sqf"
 
+#define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
     ["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
     ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", "null"] call cba_settings_fnc_init;
