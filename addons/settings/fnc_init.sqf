@@ -89,6 +89,7 @@ switch (toUpper _settingType) do {
     };
     case "EDITBOX": {
         _defaultValue = _valueInfo param [0, "", [""]]; // don't use params - we want these variables to be private to the main scope
+        _settingData pushBack (_valueInfo param [1, false]);
     };
     case "LIST": {
         _valueInfo params [["_values", [], [[]]], ["_labels", [], [[]]], ["_defaultIndex", 0, [0]]];
