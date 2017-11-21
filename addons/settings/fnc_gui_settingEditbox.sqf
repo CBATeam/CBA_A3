@@ -4,7 +4,7 @@ params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"
 _settingData params ["_isPassword"];
 
 if (_isPassword isEqualTo true) then {
-    if (_source isEqualTo "server" && {!CAN_SET_SERVER_SETTINGS} || {_source isEqualTo "mission" && {!CAN_SET_MISSION_SETTINGS}}) then {
+    if ((_source isEqualTo "server" && {!CAN_SET_SERVER_SETTINGS}) || {_source isEqualTo "mission" && {!CAN_SET_MISSION_SETTINGS}}) then {
         _currentValue = "********";
     };
 };
