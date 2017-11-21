@@ -33,8 +33,9 @@ ADDON = false;
     if (isNil QGVAR(ready)) exitWith {};
 
     private _script = (GVAR(default) getVariable [_setting, []]) param [8, {}];
-    [_value, _script] call {
+    [_value, _script, _setting] call {
         private ["_setting", "_value", "_script"]; // prevent these variables from being overwritten
+        private _thisSetting = _this select 2;
         (_this select 0) call (_this select 1);
     };
 
