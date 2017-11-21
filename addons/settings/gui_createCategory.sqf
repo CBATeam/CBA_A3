@@ -32,6 +32,9 @@ private _lists = _display getVariable QGVAR(lists);
         if (isLocalized _tooltip) then {
             _tooltip = localize _tooltip;
         };
+        if (_tooltip != _setting) then { // Append setting name to bottom line
+            _tooltip = format ["%1\n%2",_tooltip, _setting];
+        };
 
         private _settingControlsGroups = [];
 
