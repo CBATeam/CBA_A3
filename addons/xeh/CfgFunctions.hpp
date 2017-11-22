@@ -66,5 +66,13 @@ class CfgFunctions {
                 file = PATHTOF(fnc_initDisplay.sqf);
             };
         };
+        class Misc {
+            class startLoadingScreen {
+                file = PATHTOF(fnc_startLoadingScreen.sqf);
+            };
+            class endLoadingScreen {
+                file = PATHTOF(fnc_endLoadingScreen.sqf);
+            };
+        };
     };
 };

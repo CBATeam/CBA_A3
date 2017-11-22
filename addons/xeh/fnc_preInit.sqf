@@ -129,4 +129,10 @@ GVAR(initPostStack) = [];
 
 SLX_XEH_MACHINE set [7, true]; // PreInit passed
 
+#define DEBUG_MODE_FULL
+#ifdef DEBUG_MODE_FULL
+    ["CBA_LoadingScreenStarted", {diag_log ["CBA_LoadingScreenStarted", _this]}] call CBA_fnc_addEventHandler;
+    ["CBA_LoadingScreenEnded", {diag_log ["CBA_LoadingScreenEnded", _this]}] call CBA_fnc_addEventHandler;
+#endif
+
 XEH_LOG("XEH: PreInit finished.");
