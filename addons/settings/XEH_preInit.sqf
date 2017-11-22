@@ -7,8 +7,8 @@ ADDON = false;
 #define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
     ["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
-    ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", "null"] call cba_settings_fnc_init;
-    ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
+    ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", ["null", false]] call cba_settings_fnc_init;
+    ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled", "disabled"], 1]] call cba_settings_fnc_init;
     ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
     ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1 ,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
     ["Test_Setting_5", "COLOR",    ["-test alpha-",    "-tooltip-"], "My Category", [1, 0, 0, 0.5], false] call cba_settings_fnc_init;
@@ -34,8 +34,9 @@ ADDON = false;
     if (isNil QGVAR(ready)) exitWith {};
 
     private _script = (GVAR(default) getVariable [_setting, []]) param [8, {}];
-    [_value, _script] call {
+    [_value, _script, _setting] call {
         private ["_setting", "_value", "_script"]; // prevent these variables from being overwritten
+        private _thisSetting = _this select 2;
         (_this select 0) call (_this select 1);
     };
 

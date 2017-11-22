@@ -73,7 +73,7 @@ _result = [];
                 ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
             };
 
-            _priority = SANITIZE_PRIORITY(_setting,_priority);
+            _priority = SANITIZE_PRIORITY(_setting,_priority,"");
             _result pushBack [_setting, _value, _priority];
         };
     };
