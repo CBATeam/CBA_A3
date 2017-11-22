@@ -23,15 +23,15 @@ params [["_setting", "", [""]], ["_source", "priority", [""]]];
 switch (toLower _source) do {
     case "client": {
         private _priority = GVAR(client)  getVariable [_setting, [nil, 0]] select 1;
-        SANITIZE_PRIORITY(_setting,_priority) min 0
+        SANITIZE_PRIORITY(_setting,_priority,_source) min 0
     };
     case "mission": {
         private _priority = GVAR(mission) getVariable [_setting, [nil, 0]] select 1;
-        SANITIZE_PRIORITY(_setting,_priority) min 1
+        SANITIZE_PRIORITY(_setting,_priority,_source) min 1
     };
     case "server": {
         private _priority = GVAR(server)  getVariable [_setting, [nil, 0]] select 1;
-        SANITIZE_PRIORITY(_setting,_priority) min 2
+        SANITIZE_PRIORITY(_setting,_priority,_source) min 2
     };
     case "priority": {
         private _arr = [

@@ -124,12 +124,17 @@ _ctrlOverwriteClient setVariable [QGVAR(state), cbChecked _ctrlOverwriteClient];
 
 // disable certain checkboxes
 if (_isGlobal > 0) then {
-    _ctrlOverwriteClient ctrlEnable false;
-    _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
+    if (_source != "mission") then {
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
+    };
 
     if (_isGlobal > 1) then {
+        _ctrlOverwriteClient ctrlEnable false;
         _ctrlOverwriteClient ctrlSetPosition [0, 0, -1, -1];
         _ctrlOverwriteClient ctrlCommit 0;
+
+        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
 
         _ctrlOverwriteMission ctrlEnable false;
         _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
