@@ -5,7 +5,7 @@ private _return = call {
 };
 
 isNil {
-    ["CBA_LoadingScreenStarted", _this] call CBA_fnc_localEvent;
+    [QGVAR(LoadingScreenStarted), _this] call CBA_fnc_localEvent;
 };
 
-_return
+RETNIL(_return) //scheduler safe

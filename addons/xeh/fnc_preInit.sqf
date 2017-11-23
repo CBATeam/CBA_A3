@@ -131,8 +131,35 @@ SLX_XEH_MACHINE set [7, true]; // PreInit passed
 
 #define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
-    ["CBA_LoadingScreenStarted", {diag_log ["CBA_LoadingScreenStarted", _this]}] call CBA_fnc_addEventHandler;
-    ["CBA_LoadingScreenEnded", {diag_log ["CBA_LoadingScreenEnded", _this]}] call CBA_fnc_addEventHandler;
+    [QGVAR(LoadingScreenStarted), {diag_log [QGVAR(LoadingScreenStarted), _this]}] call CBA_fnc_addEventHandler;
+    [QGVAR(LoadingScreenEnded), {diag_log [QGVAR(LoadingScreenEnded), _this]}] call CBA_fnc_addEventHandler;
+#endif
+
+// CBA_loadingScreenDone event
+GVAR(expectedLoadingScreens) = ["bis_fnc_preload", "bis_fnc_initRespawn"];
+
+if (!isServer) then { // only on client
+    GVAR(expectedLoadingScreens) pushBack "bis_fnc_initFunctions";
+};
+
+// check if this was the last loading screen, if so, fire event
+[QGVAR(LoadingScreenEnded), {
+    params ["_loadingScreen"];
+
+    if (!isNil QGVAR(expectedLoadingScreens)) then {
+        GVAR(expectedLoadingScreens) deleteAt (GVAR(expectedLoadingScreens) find _loadingScreen);
+
+        if (count GVAR(expectedLoadingScreens) == 0) then {
+            GVAR(expectedLoadingScreens) = nil;
+            ["CBA_loadingScreenDone", []] call CBA_fnc_localEvent;
+        };
+    };
+}] call CBA_fnc_addEventHandler;
+
+#ifdef DEBUG_MODE_FULL
+    ["CBA_loadingScreenDone", {
+        playSound "Beep_Target";
+    }] call CBA_fnc_addEventHandler;
 #endif
 
 XEH_LOG("XEH: PreInit finished.");
