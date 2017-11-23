@@ -1,21 +1,13 @@
 #include "script_component.hpp"
 
 params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"];
-_settingData params ["_isPassword", ["_fnc_sanitizeValue", {_this}]];
+_settingData params ["_isPassword", "_fnc_sanitizeValue"];
 
-if (_isPassword isEqualTo true) then {
+if (_isPassword) then {
     if ((_source isEqualTo "server" && {!CAN_SET_SERVER_SETTINGS}) || {_source isEqualTo "mission" && {!CAN_SET_MISSION_SETTINGS}}) then {
         _currentValue = "********";
     };
 };
-
-/*_fnc_sanitizeValue = {
-    params ["_value"];
-
-    _value = toArray _value;
-    _value = _value - toArray "0123456789"; // remove all numbers
-    toString _value
-};*/
 
 private _ctrlEditbox = _controlsGroup controlsGroupCtrl IDC_SETTING_EDITBOX;
 _ctrlEditbox ctrlSetText _currentValue;

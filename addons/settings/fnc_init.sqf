@@ -88,8 +88,9 @@ switch (toUpper _settingType) do {
         _defaultValue = _valueInfo param [0, false, [false]]; // don't use params - we want these variables to be private to the main scope
     };
     case "EDITBOX": {
-        _defaultValue = _valueInfo param [0, "", [""]]; // don't use params - we want these variables to be private to the main scope
-        _settingData pushBack (_valueInfo param [1, false]);
+        _valueInfo params [["_default", "", [""]], ["_isPassword", false, [false]], ["_fnc_sanitizeValue", {_this}, [{}]]];
+        _defaultValue = _default; // don't use params - we want these variables to be private to the main scope
+        _settingData append [_isPassword, _fnc_sanitizeValue];
     };
     case "LIST": {
         _valueInfo params [["_values", [], [[]]], ["_labels", [], [[]]], ["_defaultIndex", 0, [0]]];
