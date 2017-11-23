@@ -136,9 +136,9 @@
 #define IS_GLOBAL_SETTING(setting) (GVAR(default) getVariable [setting, []] param [7, 0] == 1)
 #define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == 2)
 
-#define SANITIZE_PRIORITY(setting,priority) (call {\
+#define SANITIZE_PRIORITY(setting,priority,source) (call {\
     private priority = [0,1,2] select priority;\
-    if IS_GLOBAL_SETTING(setting) exitWith {priority max 1};\
-    if IS_LOCAL_SETTING(setting)  exitWith {priority min 0};\
+    if (IS_GLOBAL_SETTING(setting) && {source != "mission"}) exitWith {priority max 1};\
+    if (IS_LOCAL_SETTING(setting)) exitWith {priority min 0};\
     priority\
 })
