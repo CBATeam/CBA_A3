@@ -10,7 +10,7 @@ private _fnc_resetMissionSettings = {
 
     private _missionConfig = "";
 
-    if (getMissionConfigValue [QGVAR(hasSettingsFile), false]) then {
+    if (getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]) then {
         INFO("Loading mission settings file ...");
         _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
     };
