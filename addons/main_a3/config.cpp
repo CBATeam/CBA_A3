@@ -34,6 +34,6 @@ class CfgMods {
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
-        action = "http://dev-heaven.net/projects/cca";
+        action = "$STR_CBA_URL";
     };
 };
