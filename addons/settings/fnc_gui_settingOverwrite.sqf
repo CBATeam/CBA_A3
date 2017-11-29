@@ -18,6 +18,10 @@ if !(_source isEqualTo "server") then {
 };
 
 _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
+    _this call ((_this select 0) getVariable QFUNC(event));
+}];
+
+_ctrlOverwriteClient setVariable [QFUNC(event), {
     params ["_ctrlOverwriteClient", "_state"];
     private _controlsGroup = ctrlParentControlsGroup _ctrlOverwriteClient;
     private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
@@ -27,6 +31,19 @@ _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
     SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
+
+_controlsGroup setVariable [QFUNC(auto_check_overwrite), {
+    params ["_controlsGroup", "_source"];
+
+    if (_source isEqualTo "mission") then {
+        private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
+
+        if (!cbChecked _ctrlOverwriteClient) then {
+            _ctrlOverwriteClient cbSetChecked true;
+            [_ctrlOverwriteClient, true] call (_ctrlOverwriteClient getVariable QFUNC(event));
+        };
+    };
 }];
 
 _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
