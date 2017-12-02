@@ -3,6 +3,10 @@ class RscControlsGroupNoScrollbars;
 class RscText;
 
 class RscDisplayGameOptions {
+    // pause game in SP while this menu is shown
+    // usually paused by other displays present for the vanilla options menu
+    enableSimulation = 0;
+
     class controls {
         class CBA_ButtonConfigureAddons: RscButtonMenu {
             idc = IDC_BTN_CONFIGURE_ADDONS;
