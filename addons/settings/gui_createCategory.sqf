@@ -21,10 +21,6 @@ private _lists = _display getVariable QGVAR(lists);
     (GVAR(default) getVariable _x) params ["_defaultValue", "_setting", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
 
     if (_category == _selectedAddon) then {
-        if (isLocalized _category) then {
-            _category = localize _category;
-        };
-
         if (isLocalized _displayName) then {
             _displayName = localize _displayName;
         };
