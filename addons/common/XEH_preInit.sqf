@@ -46,10 +46,10 @@ GVAR(addons) = _addons;
 
         if (!local _unit) then {
             private _dir = getDir _unit;
-            [_unit, _dir] remoteExec ["setDir"];
+            [_unit, _dir] remoteExec ["setDir", _unit];
 
             if (_unit == formLeader _unit) then {
-                [_unit, _dir] remoteExec ["setFormDir"];
+                [_unit, _dir] remoteExec ["setFormDir", _unit];
             };
         };
     }];
