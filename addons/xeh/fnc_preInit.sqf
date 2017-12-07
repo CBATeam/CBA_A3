@@ -129,7 +129,6 @@ GVAR(initPostStack) = [];
 
 SLX_XEH_MACHINE set [7, true]; // PreInit passed
 
-#define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
     [QGVAR(LoadingScreenStarted), {diag_log [QGVAR(LoadingScreenStarted), _this]}] call CBA_fnc_addEventHandler;
     [QGVAR(LoadingScreenEnded), {diag_log [QGVAR(LoadingScreenEnded), _this]}] call CBA_fnc_addEventHandler;
