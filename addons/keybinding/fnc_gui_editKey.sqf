@@ -347,6 +347,11 @@ _ctrlKeyList setVariable [QFUNC(showDuplicates), {
 
             if (_keybind in _duplicateKeybinds && {_action != _duplicateAction}) then {
                 private _duplicateActionName = GVAR(actions) getVariable _duplicateAction select 0;
+
+                if (isLocalized _duplicateActionName) then {
+                    _duplicateActionName = localize _duplicateActionName;
+                };
+
                 _keyName = _keyName + format [" [%1]", _duplicateActionName];
                 _isDuplicated = true;
             };

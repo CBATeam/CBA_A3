@@ -32,6 +32,10 @@ private _ctrlAddonList = _display displayCtrl IDC_ADDON_LIST;
     private _addonInfo = GVAR(addons) getVariable _x;
     private _addonName = GVAR(modPrettyNames) getVariable [_x, _addonInfo select 0];
 
+    if (isLocalized _addonName) then {
+        _addonName = localize _addonName;
+    };
+
     _ctrlAddonList lbSetData [_ctrlAddonList lbAdd _addonName, _x];
 } forEach allVariables GVAR(addons);
 
