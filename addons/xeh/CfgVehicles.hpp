@@ -50,6 +50,26 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class Timeline_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Curve_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Key_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class ControlPoint_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Camera_F: Module_F {
+        XEH_ENABLED;
+    };
+
     class Items_base_F;
     class Skeet_Clay_F: Items_base_F {
         XEH_ENABLED;

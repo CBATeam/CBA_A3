@@ -18,6 +18,9 @@ _ctrlCheckbox ctrlAddEventHandler ["CheckedChanged", {
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
     _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+
+    // automatically check "overwrite client" for mission makers qol
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
 }];
 
 // set setting ui manually to new value
