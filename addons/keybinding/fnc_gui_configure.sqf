@@ -66,3 +66,5 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     //--- change button text
     _ctrlToggleButton ctrlSetText localize LSTRING(configureAddons);
 };
+
+ctrlSetFocus _ctrlToggleButton;
