@@ -11,6 +11,9 @@ class CfgPatches {
         version = VERSION;
         authors[] = {"Dr Eyeball", "commy2"};
     };
+
+    // Backwards compatibility
+    class cba_ui_helper: ADDON {author = "";};
 };
 
 #include "CfgEventHandlers.hpp"
