@@ -33,7 +33,7 @@ At the start of the game functions will be cached and loading times for function
 
 ## Known Issues
 
-* CBA Keybindings and settings require a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Commandline parameters like `-world=empty` or `-skipIntro` will cause Keybindings and Settings to work ONLY in-game but NOT in the main menu.
+* CBA Keybindings and Settings require a mission to be initialized to function properly. This includes working in the main menu of Arma 3. Commandline parameters like `-world=empty` or `-skipIntro` will cause Keybindings and Settings to work ONLY in-game but NOT in the main menu.
 
 ## License
 
