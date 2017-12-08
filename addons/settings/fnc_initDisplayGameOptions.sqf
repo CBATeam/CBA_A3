@@ -55,7 +55,12 @@ private _categories = [];
     (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
 
     if !(_category in _categories) then {
-        private _index = _ctrlAddonList lbAdd _category;
+        private _categoryLocalized = _category;
+        if (isLocalized _category) then {
+            _categoryLocalized = localize _category;
+        };
+
+        private _index = _ctrlAddonList lbAdd _categoryLocalized;
         _ctrlAddonList lbSetData [_index, str _index];
         _display setVariable [str _index, _category];
 
