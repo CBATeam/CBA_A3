@@ -51,7 +51,7 @@ private _fnc_soundSource = {
     _soundSource
 };
 
-if (isEmpty) then {
+if (_isEmpty) then {
     private _sound = getText (_config >> "soundEmpty");
     private _soundLocation = getText (_config >> "soundLocationEmpty");
 
