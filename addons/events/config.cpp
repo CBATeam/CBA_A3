@@ -24,3 +24,23 @@ class RscDisplayChat {
         false\
     );
 };
+
+#define DEBUG_MODE_FULL
+#ifdef DEBUG_MODE_FULL
+class CfgWeapons {
+    class arifle_MX_Base_F;
+    class arifle_MX_F: arifle_MX_Base_F {
+        class EventHandlers {
+            fired = "_this call CBA_fnc_weaponEvents";
+        };
+
+        class CBA_weaponEvents {
+            onEmpty = 0;
+            handAction = "gestureNo";
+            sound = "Alarm"; // from CfgSounds
+            soundLocation = "LeftHandMiddle1"; // alternative: "RightHandMiddle1"
+            delay = 0.5; // in seconds
+        };
+    };
+};
+#endif

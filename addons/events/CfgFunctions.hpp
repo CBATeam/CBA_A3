@@ -88,6 +88,7 @@ class CfgFunctions {
             PATHTO_FNC(addMarkerEventHandler);
             PATHTO_FNC(removeMarkerEventHandler);
             PATHTO_FNC(registerChatCommand);
+            PATHTO_FNC(weaponEvents);
         };
     };
 };
