@@ -9,6 +9,8 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+if (GVAR(checkUserActions) == 0) exitWith {};
+
 params ["_display"];
 
 private _userKeyStates = [

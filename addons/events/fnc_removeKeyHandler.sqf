@@ -60,4 +60,9 @@ if (count _keyHandlers > _key) then {
     _keyHandlers set [_key, _hashKeys];
 };
 
+if ((_key >= 0xFA) && {_key <= 0x10D}) then {
+    GVAR(checkUserActions) = GVAR(checkUserActions) - 1;
+    diag_log text format ["[CBA] UserAction Key [%1] removed, GVAR(checkUserActions): %2", _key, GVAR(checkUserActions)];
+};
+
 nil

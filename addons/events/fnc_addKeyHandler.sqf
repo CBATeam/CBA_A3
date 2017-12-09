@@ -84,4 +84,10 @@ _hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander t
 
 _keyHandlers set [_key, _hashKeys];
 
+if ((_key >= 0xFA) && {_key <= 0x10D}) then {
+    GVAR(checkUserActions) = GVAR(checkUserActions) + 1;
+    diag_log text format ["[CBA] UserAction Key [%1] added, GVAR(checkUserActions): %2", _key, GVAR(checkUserActions)];
+};
+
+
 _hashKey
