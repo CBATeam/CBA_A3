@@ -56,9 +56,10 @@ PREP(keyHandlerUp);
 PREP(mouseHandlerDown);
 PREP(mouseHandlerUp);
 PREP(mouseWheelHandler);
+PREP(userKeyHandler);
 
 private _keyHandlers = [];
-_keyHandlers resize 0xFF;
+_keyHandlers resize 270;
 
 GVAR(keyDownStates) = _keyHandlers apply {[]};
 GVAR(keyUpStates) = + GVAR(keyDownStates);
@@ -83,3 +84,7 @@ GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 GVAR(shift) = false;
 GVAR(control) = false;
 GVAR(alt) = false;
+
+private _states = [];
+_states resize 20;
+GVAR(userKeyStates) = _states apply {false};
