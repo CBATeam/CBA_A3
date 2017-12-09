@@ -200,8 +200,8 @@ GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
 ];
 
 // manually add user action keys
-for "_i" from 1 to 20 do {
-    [GVAR(keyNamesHash), str (0xF9 + _i), actionName format ["User%1", _i]] call CBA_fnc_hashSet;
+for "_i" from 0 to 19 do {
+    [GVAR(keyNamesHash), str (0xFA + _i), actionName format ["User%1", _i]] call CBA_fnc_hashSet;
 };
 
 GVAR(forbiddenKeys) = [
