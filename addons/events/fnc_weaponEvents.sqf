@@ -43,7 +43,9 @@ private _fnc_soundSource = {
     private _soundSource = _unit getVariable [_soundSourceName, objNull];
 
     if !(_soundSource in attachedObjects _unit) then {
-        _soundSource = "#particlesource" createVehicleLocal [0,0,0];
+        if (isNull _soundSource) then {
+            _soundSource = "#particlesource" createVehicleLocal [0,0,0];
+        };
         _soundSource attachTo [_unit, [0,0,0], _soundLocation];
         _unit setVariable [_soundSourceName, _soundSource];
     };
