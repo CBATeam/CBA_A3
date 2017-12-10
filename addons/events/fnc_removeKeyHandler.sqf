@@ -61,8 +61,11 @@ if (count _keyHandlers > _key) then {
 };
 
 if ((_key >= 0xFA) && {_key <= 0x10D}) then {
-    GVAR(checkUserActions) = GVAR(checkUserActions) - 1;
-    diag_log text format ["[CBA] UserAction Key [%1] removed, GVAR(checkUserActions): %2", _key, GVAR(checkUserActions)];
+    private _hasUserActionsBound = {count _x > 0} count (GVAR(keyDownStates) select [0xFA, 20]) > 0;
+
+    if (!_hasUserActionsBound) then {
+        GVAR(checkUserActions) = false;
+    };
 };
 
 nil

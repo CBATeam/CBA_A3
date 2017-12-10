@@ -9,7 +9,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-if (GVAR(checkUserActions) == 0) exitWith {};
+if (!GVAR(checkUserActions)) exitWith {};
 
 params ["_display"];
 
