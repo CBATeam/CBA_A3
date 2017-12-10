@@ -30,7 +30,7 @@ ADDON = true;
 
 if (!hasInterface) exitWith {};
 
-GVAR(checkUserActions) = false;
+GVAR(skipCheckingUserActions) = true;
 
 // Display Event Handlers
 // Pressing "Restart" in the editor starts a completely new mission (preInit etc. are executed). The main display is never deleted though!
