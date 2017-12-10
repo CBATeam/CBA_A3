@@ -4,7 +4,7 @@ ADDON = false;
 
 #include "XEH_PREP.sqf"
 
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
     private _fnc_sanitizeValue = {
         params ["_value"];
