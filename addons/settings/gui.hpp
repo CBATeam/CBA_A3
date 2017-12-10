@@ -514,3 +514,71 @@ class GVAR(MainMenuHelper): RscDisplayEmpty {
         (_this select 0) closeDisplay 0;\
     );
 };
+
+class GVAR(export) {
+    idd = -1;
+    movingEnable = 1;
+    enableSimulation = 0;
+
+    class controls {
+        class Presets: RscControlsGroup {
+            idc = IDC_EXPORT_GROUP;
+            x = POS_X(5);
+            y = POS_Y(-5.1);
+            w = POS_W(30);
+            h = POS_H(32.2);
+
+            class controls {
+                class Title: RscTitle {
+                    colorBackground[] = {
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
+                    };
+                    idc = IDC_EXPORT_TITLE;
+                    text = "";
+                    x = POS_W(0);
+                    y = POS_H(0);
+                    w = POS_W(30);
+                    h = POS_H(1);
+                };
+                class Background: RscText {
+                    idc = -1;
+                    colorBackground[] = {0,0,0,0.8};
+                    x = POS_W(0);
+                    y = POS_H(1.1);
+                    w = POS_W(30);
+                    h = POS_H(30);
+                };
+                class Value: RscEdit {
+                    idc = IDC_EXPORT_VALUE;
+                    style = ST_MULTI + ST_NO_RECT;
+                    colorDisabled[] = {0.95,0.95,0.95,1};
+                    colorBackground[] = {1,1,1,0.2};
+                    x = POS_W(0.5);
+                    y = POS_H(1.6);
+                    w = POS_W(29);
+                    h = POS_H(29);
+                    sizeEx = POS_H(0.8);
+                };
+                class ButtonOK: RscButtonMenu {
+                    idc = IDC_EXPORT_OK;
+                    text = "$STR_DISP_OK";
+                    x = POS_W(20);
+                    y = POS_H(31.2);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+                class ButtonCancel: RscButtonMenu {
+                    idc = IDC_EXPORT_CANCEL;
+                    text = "$STR_DISP_CANCEL";
+                    x = POS_W(0);
+                    y = POS_H(31.2);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+            };
+        };
+    };
+};
