@@ -24,7 +24,7 @@ if !(_userKeyStates isEqualTo GVAR(userKeyStates)) then {
     {
         if !(_x isEqualTo (GVAR(userKeyStates) select _forEachIndex)) then {
             GVAR(userKeyStates) set [_forEachIndex, _x];
-            [_display, 0xFA + _forEachIndex, false, false, false] call ([FUNC(keyHandlerUp), FUNC(keyHandlerDown)] select _x);
+            [_display, USERACTION_OFFSET + _forEachIndex, false, false, false] call ([FUNC(keyHandlerUp), FUNC(keyHandlerDown)] select _x);
         };
     } forEach _userKeyStates;
 };
