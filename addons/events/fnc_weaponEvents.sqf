@@ -68,8 +68,13 @@ if (!_isEmpty || _onEmpty) then {
     private _soundLocation = getText (_config >> "soundLocation");
     private _delay = getNumber (_config >> "delay");
 
+    private _expectedMagazineCount = count magazines _unit;
+
     [{
-        params ["_unit", "_handAction", "_sound", "_soundSource"];
+        params ["_unit", "_handAction", "_sound", "_soundSource", "_expectedMagazineCount"];
+
+        // exit if unit started reloading
+        if (count magazines _unit != _expectedMagazineCount) exitWith {};
 
         if (local _unit) then {
             _unit playAction _handAction;
@@ -78,5 +83,5 @@ if (!_isEmpty || _onEmpty) then {
         if (_sound != "") then {
             _soundSource say3D _sound;
         };
-    }, [_unit, _handAction, _sound, call _fnc_soundSource], _delay] call CBA_fnc_waitAndExecute;
+    }, [_unit, _handAction, _sound, call _fnc_soundSource, _expectedMagazineCount], _delay] call CBA_fnc_waitAndExecute;
 };
