@@ -9,10 +9,17 @@ private _ctrlTitle = _display displayCtrl IDC_EXPORT_TITLE;
 private _ctrlValue = _display displayCtrl IDC_EXPORT_VALUE;
 private _ctrlOK = _display displayCtrl IDC_EXPORT_OK;
 private _ctrlCancel = _display displayCtrl IDC_EXPORT_CANCEL;
+private _ctrlToggleDefault = _display displayCtrl IDC_EXPORT_TOGGLE_DEFAULT;
+private _ctrlToggleDefaultText = _display displayCtrl IDC_EXPORT_TOGGLE_DEFAULT_TEXT;
 
 // --- scripted buttons
 if (_mode == "import") then {
     _ctrlTitle ctrlSetText localize LSTRING(ButtonImport);
+
+    _ctrlToggleDefault ctrlEnable false;
+    _ctrlToggleDefault ctrlShow false;
+    _ctrlToggleDefaultText ctrlEnable false;
+    _ctrlToggleDefaultText ctrlShow false;
 
     _ctrlOK ctrlAddEventHandler ["ButtonClick", {
         params ["_control"];
@@ -25,7 +32,19 @@ if (_mode == "import") then {
     }];
 } else {
     _ctrlTitle ctrlSetText localize LSTRING(ButtonExport);
-    _ctrlValue ctrlSetText ([uiNamespace getVariable QGVAR(source)] call FUNC(export));
+
+    _ctrlToggleDefault cbSetChecked (uiNamespace getVariable [QGVAR(showDefault), true]);
+    _ctrlToggleDefault ctrlAddEventHandler ["CheckedChanged", {
+        params ["_ctrlToggleDefault", "_state"];
+        _state = _state isEqualTo 1;
+
+        uiNamespace setVariable [QGVAR(showDefault), _state];
+
+        private _ctrlValue = ctrlParent _ctrlToggleDefault displayCtrl IDC_EXPORT_VALUE;
+        _ctrlValue ctrlSetText ([uiNamespace getVariable QGVAR(source), _state] call FUNC(export));
+    }];
+
+    _ctrlValue ctrlSetText ([uiNamespace getVariable QGVAR(source), cbChecked _ctrlToggleDefault] call FUNC(export));
 
     if (isServer) then {
         _ctrlOK ctrlSetText localize LSTRING(copy_to_clipboard);

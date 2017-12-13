@@ -15,7 +15,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_source", "client", [""]]];
+params [["_source", "client", [""]], ["_skipDefault", false, [false]]];
 
 private _info = "";
 private _temp = [];
@@ -40,7 +40,12 @@ private _temp = [];
         _category = localize _category;
     };
 
-    _temp pushBack [_category, _setting, _value, _priority];
+    if (_skipDefault || {
+        !(_value isEqualTo _defaultValue) ||
+        _priority > [0,1] select IS_GLOBAL_SETTING(_setting)
+    }) then {
+        _temp pushBack [_category, _setting, _value, _priority];
+    };
 } forEach GVAR(allSettings);
 
 _temp sort true;

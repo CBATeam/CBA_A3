@@ -578,6 +578,22 @@ class GVAR(export) {
                     w = POS_W(10);
                     h = POS_H(1);
                 };
+                class ToggleDefaultText: RscText {
+                    idc = IDC_EXPORT_TOGGLE_DEFAULT_TEXT;
+                    style = ST_RIGHT;
+                    text = CSTRING(show_default);
+                    x = POS_W(19);
+                    y = POS_H(0);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+                class ToggleDefault: GVAR(CheckboxSound) {
+                    idc = IDC_EXPORT_TOGGLE_DEFAULT;
+                    x = POS_W(29);
+                    y = POS_H(0);
+                    w = POS_W(1);
+                    h = POS_H(1);
+                };
             };
         };
     };
