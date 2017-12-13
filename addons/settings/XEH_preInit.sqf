@@ -4,6 +4,11 @@ ADDON = false;
 
 #include "XEH_PREP.sqf"
 
+["Test_1", "EDITBOX", "setting 1", "Test Category 1", "a", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
+["Test_2", "EDITBOX", "setting 2", "Test Category 2", "b", nil, {systemChat str [2, _this]}] call cba_settings_fnc_init;
+["Test_3", "EDITBOX", "setting 3", "Test Category 3", "c", nil, {systemChat str [3, _this]}] call cba_settings_fnc_init;
+["Test_4", "EDITBOX", "setting 4", "Test Category 4", "d", nil, {systemChat str [4, _this]}] call cba_settings_fnc_init;
+
 //#define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
     private _fnc_sanitizeValue = {
