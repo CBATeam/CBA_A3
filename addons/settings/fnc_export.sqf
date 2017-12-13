@@ -18,6 +18,7 @@ Author:
 params [["_source", "client", [""]]];
 
 private _info = "";
+private _temp = [];
 
 {
     private _setting = _x;
@@ -33,7 +34,28 @@ private _info = "";
         _priority = [_setting, _source] call FUNC(priority);
     };
 
-    _info = _info + ((["", "force ", "force force "] select _priority) + _setting + " = " + str _value + ";" + NEWLINE);
+    (GVAR(default) getVariable _setting) params ["_defaultValue", "", "", "", "_category"];
+
+    if (isLocalized _category) then {
+        _category = localize _category;
+    };
+
+    _temp pushBack [_category, _setting, _value, _priority];
 } forEach GVAR(allSettings);
 
-_info
+_temp sort true;
+
+private _last = "";
+
+{
+    _x params ["_category", "_setting", "_value", "_priority"];
+
+    if (_category != _last) then {
+        _last = _category;
+        _info = _info + NEWLINE + "// " + _category + NEWLINE;
+    };
+
+    _info = _info + ((["", "force ", "force force "] select _priority) + _setting + " = " + str _value + ";" + NEWLINE);
+} forEach _temp;
+
+_info select [1] // return
