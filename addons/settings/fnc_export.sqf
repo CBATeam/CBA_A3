@@ -6,6 +6,8 @@ Description:
 
 Parameters:
     _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
+    _exportDefault - true: export all settings,
+                    false: only changed settings (optional, default: false) <BOOL>
 
 Returns:
     Formatted setting info. <STRING>
@@ -15,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_source", "client", [""]], ["_skipDefault", false, [false]]];
+params [["_source", "client", [""]], ["_exportDefault", false, [false]]];
 
 private _info = "";
 private _temp = [];
@@ -40,7 +42,7 @@ private _temp = [];
         _category = localize _category;
     };
 
-    if (_skipDefault || {
+    if (_exportDefault || {
         !(_value isEqualTo _defaultValue) ||
         _priority > [0,1] select IS_GLOBAL_SETTING(_setting)
     }) then {
