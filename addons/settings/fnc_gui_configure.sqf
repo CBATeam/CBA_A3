@@ -74,14 +74,14 @@ if !(ctrlShown _ctrlAddonsGroup) then {
 
     //--- emulate default scope selection
     switch (true) do {
-        case CAN_SET_SERVER_SETTINGS: {
-            _ctrlServerButton call FUNC(gui_sourceChanged);
+        case CAN_SET_CLIENT_SETTINGS: {
+            _ctrlClientButton call FUNC(gui_sourceChanged);
         };
         case CAN_SET_MISSION_SETTINGS: {
             _ctrlMissionButton call FUNC(gui_sourceChanged);
         };
-        case CAN_SET_CLIENT_SETTINGS: {
-            _ctrlClientButton call FUNC(gui_sourceChanged);
+        case CAN_SET_SERVER_SETTINGS: {
+            _ctrlServerButton call FUNC(gui_sourceChanged);
         };
     };
 } else {
