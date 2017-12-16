@@ -153,6 +153,14 @@ class GVAR(CheckboxSound): RscCheckBox {
     soundEscape[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEscape",0.090000004,1};
 };
 
+class GVAR(Row_Empty): RscText {
+    GVAR(script) = "";
+    x = POS_W(1);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(0);
+};
+
 class GVAR(Row_Base): RscControlsGroupNoScrollbars {
     GVAR(script) = "";
     x = POS_W(1);

@@ -5,6 +5,7 @@
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
+//#define DEBUG_MODE_FULL
 //#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_SETTINGS
 
