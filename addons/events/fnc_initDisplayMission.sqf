@@ -28,3 +28,5 @@ _display displayAddEventHandler ["KeyUp", {call FUNC(keyHandlerUp)}];
 _display displayAddEventHandler ["MouseButtonDown", {call FUNC(mouseHandlerDown)}];
 _display displayAddEventHandler ["MouseButtonUp", {call FUNC(mouseHandlerUp)}];
 _display displayAddEventHandler ["MouseZChanged", {call FUNC(mouseWheelHandler)}];
+_display displayAddEventHandler ["MouseMoving", {call FUNC(userKeyHandler)}];
+_display displayAddEventHandler ["MouseHolding", {call FUNC(userKeyHandler)}];
