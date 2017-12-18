@@ -45,6 +45,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
 
         // Get cursortarget.
         _potentialTarget = cursorTarget;
+        if (isNull _potentialTarget) then {_potentialTarget = cursorObject};
 
         // If the cursortarget is null and their are no object within the minObjDist,
         // there's no potential target (so _potentialTarget = objNull)

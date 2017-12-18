@@ -69,6 +69,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             (group player) reveal _x;
         } forEach _objects;
         _potentialTarget = cursorTarget;
+        if (isNull _potentialTarget) then {_potentialTarget = cursorObject};
         if (!isNull _potentialTarget && {_potentialTarget distance player > _minObjDist(_potentialTarget)}) then {_potentialTarget = objNull};
         _vehicleTarget = vehicle player;
 
