@@ -44,8 +44,16 @@ private _lists = _display getVariable QGVAR(lists);
 
         {
             private _source = toLower _x;
-            private _currentValue = [_setting, _source] call FUNC(get);
-            private _currentPriority = [_setting, _source] call FUNC(priority);
+
+            private _currentValue = GET_TEMP_NAMESPACE_VALUE(_setting,_source);
+            if (isNil "_currentValue") then {
+                _currentValue = [_setting, _source] call FUNC(get);
+            };
+
+            private _currentPriority = GET_TEMP_NAMESPACE_PRIORITY(_setting,_source);
+            if (isNil "_currentPriority") then {
+                _currentPriority = [_setting, _source] call FUNC(priority);
+            };
 
             // ----- create or retrieve options "list" controls group
             private _list = [QGVAR(list), _category, _source] joinString "$";

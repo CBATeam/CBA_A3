@@ -16,6 +16,7 @@ if (hasInterface) then {
     PREP(gui_refresh);
     PREP(gui_preset);
     PREP(gui_saveTempData);
+    PREP(gui_export);
 
     PREP(gui_settingCheckbox);
     PREP(gui_settingEditbox);
