@@ -105,47 +105,41 @@ _ctrlButtonLoad ctrlShow false;
 _ctrlButtonLoad ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "load"] call FUNC(gui_preset)}];
 
 // ----- create export and import buttons
-// copyFromClipboard has no effect in MP, so only add button in SP
-if (!isMultiplayer) then {
-    private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
+private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
 
-    _ctrlButtonImport ctrlSetPosition [
-        POS_X(26.4),
-        POS_Y(20.5),
-        POS_W(6),
-        POS_H(1)
-    ];
+_ctrlButtonImport ctrlSetPosition [
+    POS_X(26.4),
+    POS_Y(20.5),
+    POS_W(6),
+    POS_H(1)
+];
 
-    _ctrlButtonImport ctrlCommit 0;
-    _ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
-    _ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
-    _ctrlButtonImport ctrlEnable false;
-    _ctrlButtonImport ctrlShow false;
-    _ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {
-        [copyFromClipboard, uiNamespace getVariable QGVAR(source)] call FUNC(import);
-    }];
-};
+_ctrlButtonImport ctrlCommit 0;
+_ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
+_ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
+_ctrlButtonImport ctrlEnable false;
+_ctrlButtonImport ctrlShow false;
+_ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {
+    [ctrlParent (_this select 0), "import"] call FUNC(gui_export);
+}];
 
-// copyToClipboard only works in SP or on the server, so only add button if isServer
-if (isServer) then {
-    private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
+private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
 
-    _ctrlButtonExport ctrlSetPosition [
-        POS_X(32.5),
-        POS_Y(20.5),
-        POS_W(6),
-        POS_H(1)
-    ];
+_ctrlButtonExport ctrlSetPosition [
+    POS_X(32.5),
+    POS_Y(20.5),
+    POS_W(6),
+    POS_H(1)
+];
 
-    _ctrlButtonExport ctrlCommit 0;
-    _ctrlButtonExport ctrlSetText localize LSTRING(ButtonExport);
-    _ctrlButtonExport ctrlSetTooltip localize LSTRING(ButtonExport_tooltip);
-    _ctrlButtonExport ctrlEnable false;
-    _ctrlButtonExport ctrlShow false;
-    _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
-        copyToClipboard ([uiNamespace getVariable QGVAR(source)] call FUNC(export));
-    }];
-};
+_ctrlButtonExport ctrlCommit 0;
+_ctrlButtonExport ctrlSetText localize LSTRING(ButtonExport);
+_ctrlButtonExport ctrlSetTooltip localize LSTRING(ButtonExport_tooltip);
+_ctrlButtonExport ctrlEnable false;
+_ctrlButtonExport ctrlShow false;
+_ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
+    [ctrlParent (_this select 0), "export"] call FUNC(gui_export);
+}];
 
 // ----- source buttons (server, mission, client)
 {

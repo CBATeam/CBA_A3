@@ -90,6 +90,29 @@ private _specialKeys = [
     [true, true, true]
 ];
 
+_specialKeys append [
+    [USER_1, [false, false, false]],
+    [USER_2, [false, false, false]],
+    [USER_3, [false, false, false]],
+    [USER_4, [false, false, false]],
+    [USER_5, [false, false, false]],
+    [USER_6, [false, false, false]],
+    [USER_7, [false, false, false]],
+    [USER_8, [false, false, false]],
+    [USER_9, [false, false, false]],
+    [USER_10, [false, false, false]],
+    [USER_11, [false, false, false]],
+    [USER_12, [false, false, false]],
+    [USER_13, [false, false, false]],
+    [USER_14, [false, false, false]],
+    [USER_15, [false, false, false]],
+    [USER_16, [false, false, false]],
+    [USER_17, [false, false, false]],
+    [USER_18, [false, false, false]],
+    [USER_19, [false, false, false]],
+    [USER_20, [false, false, false]]
+];
+
 {
     _ctrlSpecialKeyList lbSetData [_ctrlSpecialKeyList lbAdd (_x call CBA_fnc_localizeKey), str _x];
 } forEach _specialKeys;

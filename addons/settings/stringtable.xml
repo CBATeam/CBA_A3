@@ -218,5 +218,13 @@
             <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
         </Key>
+        <Key ID="STR_cba_settings_copy_to_clipboard">
+            <English>Copy to clipboard</English>
+            <German>In Zwischenablage</German>
+        </Key>
+        <Key ID="STR_cba_settings_show_default">
+            <English>Show default values:</English>
+            <German>Zeige Standardeinstellungen:</German>
+        </Key>
     </Package>
 </Project>

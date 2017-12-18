@@ -84,4 +84,12 @@ _hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander t
 
 _keyHandlers set [_key, _hashKeys];
 
+if ((_key >= USERACTION_OFFSET) && {_key <= USERACTION_OFFSET + 19}) then {
+    private _hasUserActionsBound = {count _x > 0} count (GVAR(keyDownStates) select [USERACTION_OFFSET, 20]) > 0;
+
+    if (_hasUserActionsBound) then {
+        GVAR(skipCheckingUserActions) = false;
+    };
+};
+
 _hashKey
