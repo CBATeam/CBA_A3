@@ -25,7 +25,7 @@ class RscDisplayChat {
     );
 };
 
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #ifdef DEBUG_MODE_FULL
 class CfgWeapons {
     class arifle_MX_Base_F;

@@ -27,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params ["_unit", "_weapon"];
+params ["_unit", "_weapon", "_muzzle"];
 
 private _config = configFile >> "CfgWeapons" >> _weapon >> "CBA_WeaponEvents";
 
@@ -70,12 +70,30 @@ if (!_isEmpty || _onEmpty) then {
     private _delay = getNumber (_config >> "delay");
 
     private _expectedMagazineCount = count magazines _unit;
+    private _optic = weaponsItems _unit select {_x select 0 == _weapon} param [0, []] param [3, ""];
 
     [{
-        params ["_unit", "_handAction", "_sound", "_soundSource", "_expectedMagazineCount"];
+        params [
+            "_unit", "_weapon", "_muzzle", "_optic",
+            "_handAction", "_sound", "_soundSource",
+            "_expectedMagazineCount", "_time", "_delay"
+        ];
+
+        // exit if unit switched weapon
+        if (currentWeapon _unit != _weapon) exitWith {true};
 
         // exit if unit started reloading
-        if (count magazines _unit != _expectedMagazineCount) exitWith {};
+        if (count magazines _unit != _expectedMagazineCount) exitWith {true};
+
+        // while in gunner view, keep waiting
+        if (cameraView == "GUNNER" && _optic != "") exitWith {
+            _this set [8, CBA_missionTime];
+            _unit setWeaponReloadingTime [_unit, _muzzle, 1];
+            false
+        };
+
+        // keep waiting until time over
+        if (CBA_missionTime < _time + _delay) exitWith {false};
 
         if (local _unit) then {
             _unit playAction _handAction;
@@ -84,5 +102,11 @@ if (!_isEmpty || _onEmpty) then {
         if (_sound != "") then {
             _soundSource say3D _sound;
         };
-    }, [_unit, _handAction, _sound, call _fnc_soundSource, _expectedMagazineCount], _delay] call CBA_fnc_waitAndExecute;
+
+        true // exit loop
+    }, {}, [
+        _unit, _weapon, _muzzle, _optic,
+        _handAction, _sound, call _fnc_soundSource,
+        _expectedMagazineCount, CBA_missionTime, _delay
+    ]] call CBA_fnc_waitUntilAndExecute;
 };
