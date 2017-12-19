@@ -68,9 +68,14 @@ if (!_isEmpty || _onEmpty) then {
     private _sound = getText (_config >> "sound");
     private _soundLocation = getText (_config >> "soundLocation");
     private _delay = getNumber (_config >> "delay");
+    private _hasOptic = getNumber (_config >> "hasOptic") == 1;
 
     private _expectedMagazineCount = count magazines _unit;
     private _optic = weaponsItems _unit select {_x select 0 == _weapon} param [0, []] param [3, ""];
+
+    if (_optic isEqualTo "" && _hasOptic) then {
+        _optic = _weapon;
+    };
 
     [{
         params [
