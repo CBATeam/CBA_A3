@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Catenary">
+        <Key ID="STR_CBA_Catenary_Component">
+            <English>Community Base Addons - Catenary</English>
+            <German>Community Base Addons - Kettenkurve</German>
+        </Key>
+    </Package>
+</Project>
