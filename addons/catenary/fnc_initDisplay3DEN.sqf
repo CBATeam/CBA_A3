@@ -38,6 +38,7 @@ add3DENEventHandler ["OnSelectionChange", {
         if !(_display getVariable [QGVAR(hintShown), false]) then {
             _display setVariable [QGVAR(hintShown), true];
             systemChat "Press P to place the catenary module at the first intersection with the crosshair.";
+            systemChat "Press O to replace the catenary module with a rope.";
         };
 
         _horizontal ctrlCommit 0;
@@ -72,5 +73,13 @@ _display displayAddEventHandler ["KeyDown", {
         };
 
         _selected set3DENAttribute ["position", ASLToAGL _position];
-    };    
+    };
+
+    if (_key isEqualTo DIK_O) then {
+        private _selected = get3DENSelected "logic" select {typeOf _x == QGVAR(start)};
+
+        {
+            _x call FUNC(commit);
+        } forEach _selected;
+    };
 }];

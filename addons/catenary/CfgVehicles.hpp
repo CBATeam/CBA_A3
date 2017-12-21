@@ -30,19 +30,48 @@ class CfgVehicles {
                 displayName = "Segment Count";
                 description = "Number of straight segments that approximate the catenary.\nUse negative values to generate a variable segment count with constant length.";
                 typeName = "NUMBER";
-                defaultValue = -1;
+                defaultValue = -0.3;
             };
-        };
 
-        class ModuleDescription: ModuleDescription {
-            description = "Press P to center the logic to the first intersection with the center of the screen.";
-            sync[] = {"LocationArea_F"};
+            class Model {
+                displayName = "Segment Classname";
+                description = "Classname of a segment.";
+                typeName = "STRING";
+                defaultValue = "Rope";
+            };
 
-            class LocationArea_F {
-                position = 0;
-                optional = 0;
-                duplicate = 1;
-                synced[] = {"Anything"};
+            class Upwards {
+                displayName = "Model Points Upwards";
+                description = "Yes: Model points upwards in Object Builder.\nNo: Model points forwards in Object Builder.";
+                typeName = "BOOL";
+                class Values {
+                    class Yes {
+                        name = "Yes";
+                        value = 1;
+                        default = 1;
+                    };
+                    class No {
+                        name = "No";
+                        value = 0;
+                    };
+                };
+            };
+
+            class IsSimple {
+                displayName = "Segment Object Type";
+                description = "Create simple object or 3DEN-Entity.";
+                typeName = "BOOL";
+                class Values {
+                    class Yes {
+                        name = "Simple";
+                        value = 1;
+                        default = 1;
+                    };
+                    class No {
+                        name = "3DEN-Entity";
+                        value = 0;
+                    };
+                };
             };
         };
     };
