@@ -91,6 +91,8 @@ if (isServer) then {
 [QGVAR(setSettingMission), {
     params ["_setting", "_value", ["_priority", 0], ["_store", false]];
 
+    private _settingType = (GVAR(default) getVariable [_setting, []]) param [2, ""];
+    if ((_settingType == "CHECKBOX") && {_value isEqualType 0}) then { _value = _value > 0; };
     [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
 
