@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_removeUnitTrackProjectiles
+Function: CBA_fnc_removeUnitTrackProjectiles
 
 Description:
     Removes projectile tracking from a given unit or vehicle.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [vehicle player] call CBA_removeUnitTrackProjectiles;
+        [vehicle player] call CBA_fnc_removeUnitTrackProjectiles;
     (end)
 
 Author:
