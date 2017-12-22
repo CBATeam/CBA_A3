@@ -44,9 +44,23 @@ _expression ctrlCommit 0;
 
 // Save expression when hitting enter key inside expression text field
 _expression ctrlAddEventHandler ["KeyDown", {
-    params ["", "_key", "_shift"];
+    params ["_expression", "_key", "_shift"];
 
     if (_key in [DIK_RETURN, DIK_NUMPADENTER] && {!_shift}) then { // shift + enter is newline
+        // fix for enter key not working in MP
+        private _buttonLocalExec = ctrlParentControlsGroup _expression controlsGroupCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
+
+        if (isMultiplayer && {ctrlEnabled _buttonLocalExec}) then {
+            [
+                "executeButton",
+                [ctrlParent _buttonLocalExec, _buttonLocalExec],
+                "RscDisplayDebugPublic",
+                0
+            ] call compile preprocessFileLineNumbers "\A3\Ui_f\scripts\GUI\RscDebugConsole.sqf";
+
+            playSound "SoundClick";
+        };
+
         _this call FUNC(logStatement);
     };
     false
