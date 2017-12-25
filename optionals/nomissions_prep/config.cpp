@@ -10,7 +10,6 @@ class CfgPatches {
         requiredAddons[] = {
             "CBA_common",
             "A3_Missions_F",
-            "A3_Missions_F_Data",
             "A3_Missions_F_Beta",
             "A3_Missions_F_Gamma",
             "A3_Missions_F_EPA",
