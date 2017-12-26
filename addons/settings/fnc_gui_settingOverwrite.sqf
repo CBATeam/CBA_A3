@@ -41,7 +41,7 @@ _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
 
         if (!cbChecked _ctrlOverwriteClient) then {
             _ctrlOverwriteClient cbSetChecked true;
-            [_ctrlOverwriteClient, true] call (_ctrlOverwriteClient getVariable QFUNC(event));
+            [_ctrlOverwriteClient, 1] call (_ctrlOverwriteClient getVariable QFUNC(event));
         };
     };
 }];
