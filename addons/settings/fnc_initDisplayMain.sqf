@@ -16,7 +16,6 @@ if (isClass (configFile >> "CfgPatches" >> QGVAR(userconfig))) then {
 private _userconfig = "";
 
 if (_file != "") then {
-    INFO("Loading userconfig file ...");
     private _fileExists = false;
 
     if (!isNull _display) then {
@@ -29,8 +28,13 @@ if (_file != "") then {
     };
 
     if (_fileExists) then {
+        INFO_1("Userconfig: Loading file [%1]",_file);
         _userconfig = preprocessFile _file;
+    } else {
+        INFO_1("Userconfig: Could not open file [%1]",_file);
     };
+} else {
+    INFO("Userconfig: Ignored");
 };
 
 uiNamespace setVariable [QGVAR(userconfig), compileFinal str _userconfig];
