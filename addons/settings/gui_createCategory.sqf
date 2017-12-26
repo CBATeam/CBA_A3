@@ -104,7 +104,7 @@ private _lists = _display getVariable QGVAR(lists);
 
             // ----- padding to make listboxes work
             if (_settingType == "LIST") then {
-                private _ctrlEmpty = _display ctrlCreate [QGVAR(Row_Empty), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup];
+                private _ctrlEmpty = _display ctrlCreate [QGVAR(Row_Empty), -1, _ctrlOptionsGroup];
                 private _height = POS_H(count (_settingData select 0)) + TABLE_LINE_SPACING;
                 [_ctrlEmpty, _tablePosY, _height] call _fnc_controlSetTablePosY;
             };
