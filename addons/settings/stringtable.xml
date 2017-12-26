@@ -7,6 +7,7 @@
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente das Configurações</Portuguese>
+            <Russian>Community Base Addons - Компонент Настроек</Russian>
         </Key>
         <Key ID="STR_cba_settings_configureAddons">
             <English>Configure Addons</English>
@@ -16,6 +17,7 @@
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
             <Portuguese>Configurar as Extensões</Portuguese>
+            <Russian>Настроить Дополнения</Russian>
         </Key>
         <Key ID="STR_cba_settings_configureBase">
             <English>Configure Base</English>
@@ -25,6 +27,7 @@
             <Chinese>基礎設定</Chinese>
             <Chinesesimp>基础设定</Chinesesimp>
             <Portuguese>Configurar as Bases</Portuguese>
+            <Russian>Основные Настройки</Russian>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -33,6 +36,7 @@
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
             <Portuguese>Opções de Extensão</Portuguese>
+            <Russian>Опции Дополнения</Russian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -41,6 +45,7 @@
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
             <Portuguese>Opções ded Extensão...</Portuguese>
+            <Russian>Опции Дополнения...</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -49,6 +54,7 @@
             <Chinese>伺服器</Chinese>
             <Chinesesimp>伺服器</Chinesesimp>
             <Portuguese>Servidor</Portuguese>
+            <Russian>Сервер</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
             <English>Look at the servers settings. Log in as admin to change.</English>
@@ -57,6 +63,7 @@
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
             <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
+            <Russian>Посмотрите настройки сервера.. Зайдите как администратор для редактирования.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -65,6 +72,7 @@
             <Chinese>任務</Chinese>
             <Chinesesimp>任务</Chinesesimp>
             <Portuguese>Missão</Portuguese>
+            <Russian>Миссия</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip">
             <English>Look at the missions settings.</English>
@@ -73,6 +81,7 @@
             <Chinese>查看任務的設定。</Chinese>
             <Chinesesimp>查看任务的设定。</Chinesesimp>
             <Portuguese>Olhe as configurações de missão.</Portuguese>
+            <Russian>Посмотрите на настройки миссиии.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
             <English>Edit the missions settings.</English>
@@ -81,6 +90,7 @@
             <Chinese>編輯任務的設定。</Chinese>
             <Chinesesimp>编辑任务的设定。</Chinesesimp>
             <Portuguese>Edite as configurações de missões.</Portuguese>
+            <Russian>Редактировать настройки миссии.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient">
             <English>Client</English>
@@ -89,6 +99,7 @@
             <Chinese>客戶端</Chinese>
             <Chinesesimp>客户端</Chinesesimp>
             <Portuguese>Cliente</Portuguese>
+            <Russian>Клиент</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient_tooltip">
             <English>Edit your local settings.</English>
@@ -97,6 +108,7 @@
             <Chinese>編輯你本地端的設定。</Chinese>
             <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
             <Portuguese>Edite as configurações locais.</Portuguese>
+            <Russian>Изменить локальные настройки.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLocal">
             <English>Local</English>
@@ -105,6 +117,7 @@
             <Chinese>本地端</Chinese>
             <Chinesesimp>本地端</Chinesesimp>
             <Portuguese>Local</Portuguese>
+            <Russian>Локальные настройки</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonSave_tooltip">
             <English>Save current settings as preset.</English>
@@ -113,6 +126,7 @@
             <Chinese>保存當前的設定為預設。</Chinese>
             <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
             <Portuguese>Salvar as configurações atuais como padrões.</Portuguese>
+            <Russian>Сохранить текущие настройки как предустановки.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLoad_tooltip">
             <English>Load settings from preset.</English>
@@ -121,6 +135,7 @@
             <Chinese>載入預設的設定。</Chinese>
             <Chinesesimp>载入预设的设定。</Chinesesimp>
             <Portuguese>Carregue as configurações padrão.</Portuguese>
+            <Russian>Загрузить настройки из предустановок.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport">
             <English>Import</English>
@@ -129,6 +144,7 @@
             <Chinese>匯入</Chinese>
             <Chinesesimp>汇入</Chinesesimp>
             <Portuguese>Importar</Portuguese>
+            <Russian>Импортирование</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport_tooltip">
             <English>Import settings from clipboard.</English>
@@ -137,6 +153,7 @@
             <Chinese>從剪貼簿匯入設定。</Chinese>
             <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
             <Portuguese>Importar configurações da prancheta.</Portuguese>
+            <Russian>Импортирование настроек из буфера обмена.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -145,6 +162,7 @@
             <Chinese>匯出</Chinese>
             <Chinesesimp>汇出</Chinesesimp>
             <Portuguese>Exportar</Portuguese>
+            <Russian>Экспортирование</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport_tooltip">
             <English>Export settings to clipboard.</English>
@@ -153,6 +171,7 @@
             <Chinese>匯出設定到剪貼簿。</Chinese>
             <Chinesesimp>汇出设定到剪贴簿。</Chinesesimp>
             <Portuguese>Exportar configurações para a prancheta.</Portuguese>
+            <Russian>Экспортировать настройки в буфер обмена.</Russian>
         </Key>
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
@@ -161,6 +180,7 @@
             <Chinese>重設成預設數值。</Chinese>
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Portuguese>Resetar para os valores padrões.</Portuguese>
+            <Russian>Сбросить на значение по умолчанию.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
@@ -169,6 +189,7 @@
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Portuguese>Sobrescrever \nClientes</Portuguese>
+            <Russian>Перезапись\nКлиент</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
@@ -177,6 +198,7 @@
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Portuguese>Sobrescrever \nMissão</Portuguese>
+            <Russian>Перезапись\nМиссия</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
@@ -185,6 +207,7 @@
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n伺服器</Chinesesimp>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
+            <Russian>Перезапись\nСервер</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -193,6 +216,7 @@
             <Chinese>此項設定被客戶端給覆寫。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes.</Portuguese>
+            <Russian>Этот параметр перезаписан клиентом.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
@@ -201,6 +225,7 @@
             <Chinese>此項設定被任務給覆寫。</Chinese>
             <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pela missão.</Portuguese>
+            <Russian>Этот параметр перезаписан миссией.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
@@ -209,6 +234,7 @@
             <Chinese>此項設定被伺服器給覆寫。</Chinese>
             <Chinesesimp>此项设定被伺服器给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelo servidor.</Portuguese>
+            <Russian>Этот параметр перезаписан сервером.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
             <English>This setting is overwritten by the clients and only applies to the server.</English>
@@ -217,14 +243,17 @@
             <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
+            <Russian>Этот параметр перезаписан клиентом, и приминяется исключительно к серверу.</Russian>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
             <German>In Zwischenablage</German>
+            <Russian>Скопировать в буфер обмена</Russian>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
             <German>Zeige Standardeinstellungen:</German>
+            <Russian>Показать настройки по умолчанию:</Russian>
         </Key>
     </Package>
 </Project>
