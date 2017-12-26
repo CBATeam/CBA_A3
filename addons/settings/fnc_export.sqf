@@ -17,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params [["_source", "client", [""]], ["_exportDefault", false, [false]]];
+params [["_source", "client", [""]], ["_exportDefault", true, [false]]];
 
 private _info = "";
 private _temp = [];
