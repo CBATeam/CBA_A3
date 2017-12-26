@@ -28,13 +28,13 @@ if (_file != "") then {
     };
 
     if (_fileExists) then {
-        INFO_1("Userconfig: Loading file [%1]",_file);
+        INFO_1("Userconfig: File [%1] loaded successfully.",_file);
         _userconfig = preprocessFile _file;
     } else {
-        INFO_1("Userconfig: Could not open file [%1]",_file);
+        INFO_1("Userconfig: File [%1] not found or empty.",_file);
     };
 } else {
-    INFO("Userconfig: Ignored");
+    INFO("Userconfig: Ignored.");
 };
 
 uiNamespace setVariable [QGVAR(userconfig), compileFinal str _userconfig];
