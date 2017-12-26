@@ -39,6 +39,12 @@ private _result = [];
     _result pushBack (_x call CBA_fnc_trim);
 } forEach (_info splitString NEWLINE);
 
+{
+    if (_x select [count _x - 1] != ";") then {
+        _result set [_forEachIndex, _x + ";"];
+    };
+} forEach _result;
+
 _info = (_result joinString NEWLINE) + NEWLINE;
 
 // separate statements (setting = value)
@@ -61,7 +67,7 @@ _result = [];
         _priority = _priority + 1;
     };
 
-    if !(_setting isEqualTo "") then {
+    if (_setting != "") then {
         if !(_validate) then {
             _result pushBack [_setting, _value, _priority];
         } else {
