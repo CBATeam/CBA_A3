@@ -80,6 +80,18 @@ private _fnc_updateSize = {
     _position set [3, (ctrlTextHeight _ctrlValue + 2*_lineHeight) max _minHeight];
     _ctrlValue ctrlSetPosition _position;
     _ctrlValue ctrlCommit 0;
+
+    // auto scroll
+    private _text = ctrlText _ctrlValue;
+    private _prevText = _ctrlValue getVariable [QGVAR(prevText), _text];
+    _ctrlValue setVariable [QGVAR(prevText), _text];
+
+    if (_text != _prevText && {_ctrlValue ctrlSetText _text; _text find _prevText == 0}) then {
+        _ctrlValueGroup ctrlSetAutoScrollSpeed 0.00001;
+        _ctrlValueGroup ctrlSetAutoScrollDelay 0;
+    } else {
+        _ctrlValueGroup ctrlSetAutoScrollSpeed -1;
+    };
 };
 
 _display displayAddEventHandler ["MouseMoving", _fnc_updateSize];
