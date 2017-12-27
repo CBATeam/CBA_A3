@@ -63,6 +63,11 @@ if (_mode == "import") then {
     };
 };
 
+private _position = ctrlPosition _ctrlValue;
+_position set [3, (ctrlTextHeight _ctrlValue) + (_position select 3)];
+_ctrlValue ctrlSetPosition _position;
+_ctrlValue ctrlCommit 0;
+
 _ctrlCancel ctrlAddEventHandler ["ButtonClick", {
     params ["_control"];
     private _display = ctrlParent _control;
