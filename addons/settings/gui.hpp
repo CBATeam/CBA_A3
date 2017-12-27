@@ -559,16 +559,26 @@ class GVAR(export) {
                     w = POS_W(30);
                     h = POS_H(30);
                 };
-                class Value: RscEdit {
-                    idc = IDC_EXPORT_VALUE;
-                    style = ST_MULTI + ST_NO_RECT;
-                    colorDisabled[] = {0.95,0.95,0.95,1};
-                    colorBackground[] = {1,1,1,0.2};
+                class ValueGroup: RscControlsGroup {
+                    idc = IDC_EXPORT_VALUE_GROUP;
                     x = POS_W(0.5);
                     y = POS_H(1.6);
                     w = POS_W(29);
                     h = POS_H(29);
-                    sizeEx = POS_H(0.8);
+
+                    class controls {
+                        class Value: RscEdit {
+                            idc = IDC_EXPORT_VALUE;
+                            style = ST_MULTI + ST_NO_RECT;
+                            colorDisabled[] = {0.95,0.95,0.95,1};
+                            colorBackground[] = {1,1,1,0.2};
+                            x = POS_W(0);
+                            y = POS_H(0);
+                            w = POS_W(29);
+                            h = POS_H(0.8);
+                            sizeEx = POS_H(0.8);
+                        };
+                    };
                 };
                 class ButtonOK: RscButtonMenu {
                     idc = IDC_EXPORT_OK;
