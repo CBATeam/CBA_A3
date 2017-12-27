@@ -6,7 +6,7 @@
             <Japanese>Community Base Addons - 設定要素</Japanese>
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Componente das Configurações</Portuguese>
+            <Portuguese>Community Base Addons - Componente de Configurações</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_configureAddons">
             <English>Configure Addons</English>
@@ -15,7 +15,7 @@
             <Japanese>アドオン設定</Japanese>
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
-            <Portuguese>Configurar as Extensões</Portuguese>
+            <Portuguese>Configurar Addons</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_configureBase">
             <English>Configure Base</English>
@@ -24,7 +24,7 @@
             <Japanese>基本設定</Japanese>
             <Chinese>基礎設定</Chinese>
             <Chinesesimp>基础设定</Chinesesimp>
-            <Portuguese>Configurar as Bases</Portuguese>
+            <Portuguese>Configurar base</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -32,7 +32,7 @@
             <Japanese>アドオン オプション</Japanese>
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
-            <Portuguese>Opções de Extensão</Portuguese>
+            <Portuguese>Opções de Addons</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -40,7 +40,7 @@
             <Japanese>アドオン オプション...</Japanese>
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
-            <Portuguese>Opções ded Extensão...</Portuguese>
+            <Portuguese>Configurar Addons...</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -56,7 +56,7 @@
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
             <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
-            <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
+            <Portuguese>Ver as configurações de servidor. Entre como admin para alterar.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -72,7 +72,7 @@
             <Japanese>ミッションの設定を確認します。</Japanese>
             <Chinese>查看任務的設定。</Chinese>
             <Chinesesimp>查看任务的设定。</Chinesesimp>
-            <Portuguese>Olhe as configurações de missão.</Portuguese>
+            <Portuguese>Ver configurações de missões.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
             <English>Edit the missions settings.</English>
@@ -80,7 +80,7 @@
             <Japanese>ミッションの設定を編集します。</Japanese>
             <Chinese>編輯任務的設定。</Chinese>
             <Chinesesimp>编辑任务的设定。</Chinesesimp>
-            <Portuguese>Edite as configurações de missões.</Portuguese>
+            <Portuguese>Editar configurações de missões.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient">
             <English>Client</English>
@@ -96,7 +96,7 @@
             <Japanese>ローカル設定を編集します。</Japanese>
             <Chinese>編輯你本地端的設定。</Chinese>
             <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
-            <Portuguese>Edite as configurações locais.</Portuguese>
+            <Portuguese>Editar suas configurações locais.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonLocal">
             <English>Local</English>
@@ -112,7 +112,7 @@
             <Japanese>現在の設定をプリセットとして保存します。</Japanese>
             <Chinese>保存當前的設定為預設。</Chinese>
             <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
-            <Portuguese>Salvar as configurações atuais como padrões.</Portuguese>
+            <Portuguese>Salvar configurações atuais como padrão.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonLoad_tooltip">
             <English>Load settings from preset.</English>
@@ -120,7 +120,7 @@
             <Japanese>プリセットから設定を読み込みます。</Japanese>
             <Chinese>載入預設的設定。</Chinese>
             <Chinesesimp>载入预设的设定。</Chinesesimp>
-            <Portuguese>Carregue as configurações padrão.</Portuguese>
+            <Portuguese>Importar cofigurações padrão.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport">
             <English>Import</English>
@@ -136,7 +136,7 @@
             <Japanese>クリップボードから設定を取り込みします。</Japanese>
             <Chinese>從剪貼簿匯入設定。</Chinese>
             <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
-            <Portuguese>Importar configurações da prancheta.</Portuguese>
+            <Portuguese>Importar cofigurações da área de transferência.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -152,7 +152,7 @@
             <Japanese>クリップボードに設定を出力します。</Japanese>
             <Chinese>匯出設定到剪貼簿。</Chinese>
             <Chinesesimp>汇出设定到剪贴簿。</Chinesesimp>
-            <Portuguese>Exportar configurações para a prancheta.</Portuguese>
+            <Portuguese>Exportar configurações da área de transferência.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
@@ -160,7 +160,7 @@
             <Japanese>標準値へ初期化します。</Japanese>
             <Chinese>重設成預設數值。</Chinese>
             <Chinesesimp>重设成预设数值。</Chinesesimp>
-            <Portuguese>Resetar para os valores padrões.</Portuguese>
+            <Portuguese>Resetar para o valor padrão.</Portuguese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
