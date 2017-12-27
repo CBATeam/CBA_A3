@@ -63,10 +63,27 @@ if (_mode == "import") then {
     };
 };
 
-private _position = ctrlPosition _ctrlValue;
-_position set [3, (ctrlTextHeight _ctrlValue) + (_position select 3)];
-_ctrlValue ctrlSetPosition _position;
-_ctrlValue ctrlCommit 0;
+private _fnc_updateSize = {
+    params ["_display"];
+    private _ctrlValueGroup = _display displayCtrl IDC_EXPORT_VALUE_GROUP;
+    private _ctrlValue = _display displayCtrl IDC_EXPORT_VALUE;
+
+    private _config = configFile >> QGVAR(export)
+        >> "controls" >> ctrlClassName ctrlParentControlsGroup _ctrlValueGroup
+        >> "controls" >> ctrlClassName _ctrlValueGroup
+        >> "controls" >> ctrlClassName _ctrlValue;
+
+    private _minHeight = getNumber (_config >> "h");
+    private _lineHeight = getNumber (_config >> "sizeEx");
+
+    private _position = ctrlPosition _ctrlValue;
+    _position set [3, (ctrlTextHeight _ctrlValue + 2*_lineHeight) max _minHeight];
+    _ctrlValue ctrlSetPosition _position;
+    _ctrlValue ctrlCommit 0;
+};
+
+_display displayAddEventHandler ["MouseMoving", _fnc_updateSize];
+_display displayAddEventHandler ["MouseHolding", _fnc_updateSize];
 
 _ctrlCancel ctrlAddEventHandler ["ButtonClick", {
     params ["_control"];
