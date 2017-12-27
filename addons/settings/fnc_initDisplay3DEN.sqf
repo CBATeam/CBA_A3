@@ -11,8 +11,13 @@ private _fnc_resetMissionSettings = {
     private _missionConfig = "";
 
     if (getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]) then {
-        INFO("Loading mission settings file ...");
         _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+        if (_missionConfig isEqualTo "") then {
+            INFO_1("Mission Config: File [%1] not found or empty.",MISSION_SETTINGS_FILE);
+        } else {
+            INFO_1("Mission Config: File [%1] loaded successfully.",MISSION_SETTINGS_FILE);
+        };
     };
 
     {

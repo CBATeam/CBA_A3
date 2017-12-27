@@ -34,12 +34,20 @@ if (isServer) then {
     _ctrlClientButton ctrlSetTooltip "";
 };
 
-// ----- reload settings file
-if (is3DEN && {getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]}) then {
+// ----- reload settings file if in editor
+#define FILE_EXISTS(file) \
+call {\
+    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
+    _control htmlLoad file;\
+    private _return = ctrlHTMLLoaded _control;\
+    ctrlDelete _control;\
+    _return\
+};
+
+if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
     GVAR(missionConfig) call CBA_fnc_deleteNamespace;
     GVAR(missionConfig) = [] call CBA_fnc_createNamespace;
 
-    INFO("Loading mission settings file ...");
     private _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
 
     {

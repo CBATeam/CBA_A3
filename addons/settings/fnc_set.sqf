@@ -43,8 +43,8 @@ if !([_setting, _value] call FUNC(check)) exitWith {
 private _currentValue = [_setting, _source] call FUNC(get);
 private _currentPriority = [_setting, _source] call FUNC(priority);
 
-if (_value isEqualTo _currentValue && {_priority isEqualTo _currentPriority}) exitWith {
-    WARNING_3("Value %1 and priority %2 are the same as previously for setting %3.",TO_STRING(_value),_priority,_setting);
+if ([_value, _priority] isEqualTo [_currentValue, _currentPriority]) exitWith {
+    //WARNING_3("Value %1 and priority %2 are the same as previously for setting %3.",TO_STRING(_value),_priority,_setting);
     false
 };
 
