@@ -51,7 +51,7 @@
             <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
             <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
             <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
-            <Russian>[CBA] Разрешает отладку дистанционной цели. Требует Консоль Отладки.</Russian>
+            <Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
         </Key>
     </Package>
 </Project>

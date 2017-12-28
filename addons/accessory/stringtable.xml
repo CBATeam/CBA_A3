@@ -62,7 +62,7 @@
             <Japanese>アタッチメントの照準器アイテムを前のモードに変更します</Japanese>
             <Chinese>循環切換到上個可用的瞄鏡模式</Chinese>
             <Chinesesimp>循环切换到上个可用的瞄镜模式</Chinesesimp>
-            <Russian>Переключает на предыдущее режим доступный для оптики на оружии</Russian>
+            <Russian>Переключает на предыдущий режим доступный для оптики на оружии</Russian>
         </Key>
     </Package>
 </Project>
