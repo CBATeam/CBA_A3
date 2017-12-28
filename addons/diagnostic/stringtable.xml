@@ -22,7 +22,7 @@
             <Japanese>前のコード</Japanese>
             <Chinese>上個陳述式</Chinese>
             <Chinesesimp>上个陈述式</Chinesesimp>
-            <Russian>Предыдущий Термин</Russian>
+            <Russian>Пред. команда</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
@@ -30,14 +30,14 @@
             <Japanese>次のコード</Japanese>
             <Chinese>下個陳述式</Chinese>
             <Chinesesimp>下个陈述式</Chinesesimp>
-            <Russian>Следующий Термин</Russian>
+            <Russian>След. команда</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
             <Japanese>対象へ実行</Japanese>
             <Chinese>在目標執行</Chinese>
             <Chinesesimp>在目标执行</Chinesesimp>
-            <Russian>Целевое Исполнение</Russian>
+            <Russian>Вып. на цели</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debuging</English>
