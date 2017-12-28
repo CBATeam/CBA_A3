@@ -37,7 +37,7 @@
             <Japanese>対象へ実行</Japanese>
             <Chinese>在目標執行</Chinese>
             <Chinesesimp>在目标执行</Chinesesimp>
-            <Russian>Вып. на цели</Russian>
+            <Russian>На цели</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debuging</English>
