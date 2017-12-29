@@ -29,7 +29,7 @@ if (_file != "") then {
 
     if (_fileExists) then {
         INFO_1("Userconfig: File [%1] loaded successfully.",_file);
-        _userconfig = preprocessFile _file;
+        _userconfig = _file;
     } else {
         INFO_1("Userconfig: File [%1] not found or empty.",_file);
     };

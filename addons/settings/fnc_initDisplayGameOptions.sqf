@@ -34,6 +34,36 @@ if (isServer) then {
     _ctrlClientButton ctrlSetTooltip "";
 };
 
+// ----- reload settings file if in editor
+#define FILE_EXISTS(file) \
+call {\
+    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
+    _control htmlLoad file;\
+    private _return = ctrlHTMLLoaded _control;\
+    ctrlDelete _control;\
+    _return\
+};
+
+if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
+    GVAR(missionConfig) call CBA_fnc_deleteNamespace;
+    GVAR(missionConfig) = [] call CBA_fnc_createNamespace;
+
+    private _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+    {
+        _x params ["_setting", "_value", "_priority"];
+
+        GVAR(missionConfig) setVariable [_setting, [_value, _priority]];
+    } forEach ([_missionConfig, false] call FUNC(parse));
+
+    {
+        private _setting = _x;
+
+        (GVAR(missionConfig) getVariable [_setting, []]) params ["_value", "_priority"];
+        [_setting, _value, _priority, "mission"] call FUNC(set);
+    } forEach GVAR(allSettings);
+};
+
 // ----- create temporary setting namespaces
 with uiNamespace do {
     GVAR(clientTemp)  = _display ctrlCreate ["RscText", -1];

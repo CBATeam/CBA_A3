@@ -27,7 +27,7 @@ if (isNil QGVAR(default)) then {
         missionNamespace setVariable [QGVAR(serverConfig), true call CBA_fnc_createNamespace, true];
     };
 
-    private _userconfig = call (uiNamespace getVariable QGVAR(userconfig));
+    private _userconfig = preprocessFile call (uiNamespace getVariable QGVAR(userconfig));
 
     {
         _x params ["_setting", "_value", "_priority"];
@@ -45,8 +45,13 @@ if (isNil QGVAR(default)) then {
     private _missionConfig = "";
 
     if (getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]) then {
-        INFO("Loading mission settings file ...");
         _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+        if (_missionConfig isEqualTo "") then {
+            INFO_1("Mission Config: File [%1] not found or empty.",MISSION_SETTINGS_FILE);
+        } else {
+            INFO_1("Mission Config: File [%1] loaded successfully.",MISSION_SETTINGS_FILE);
+        };
     };
 
     {

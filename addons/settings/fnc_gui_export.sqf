@@ -14,7 +14,7 @@ private _ctrlToggleDefaultText = _display displayCtrl IDC_EXPORT_TOGGLE_DEFAULT_
 
 // --- scripted buttons
 if (_mode == "import") then {
-    _ctrlTitle ctrlSetText localize LSTRING(ButtonImport);
+    _ctrlTitle ctrlSetText format ["%1 (%2)", localize LSTRING(ButtonImport), localize STR_SOURCE];
 
     _ctrlToggleDefault ctrlEnable false;
     _ctrlToggleDefault ctrlShow false;
@@ -31,7 +31,7 @@ if (_mode == "import") then {
         _display closeDisplay IDC_OK;
     }];
 } else {
-    _ctrlTitle ctrlSetText localize LSTRING(ButtonExport);
+    _ctrlTitle ctrlSetText format ["%1 (%2)", localize LSTRING(ButtonExport), localize STR_SOURCE];
 
     _ctrlToggleDefault cbSetChecked (uiNamespace getVariable [QGVAR(showDefault), true]);
     _ctrlToggleDefault ctrlAddEventHandler ["CheckedChanged", {

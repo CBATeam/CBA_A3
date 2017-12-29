@@ -153,3 +153,5 @@
     if (IS_LOCAL_SETTING(setting)) exitWith {_priority min 0};\
     _priority\
 })
+
+#define STR_SOURCE ([LSTRING(ButtonMission),LSTRING(ButtonClient)] param [["mission","client"] find (uiNamespace getVariable QGVAR(source)), LSTRING(ButtonServer)])
