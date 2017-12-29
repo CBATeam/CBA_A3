@@ -575,7 +575,7 @@ class GVAR(export) {
                             x = POS_W(0);
                             y = POS_H(0);
                             w = POS_W(29);
-                            h = POS_H(0.8);
+                            h = POS_H(29);
                             sizeEx = POS_H(0.8);
                         };
                     };
