@@ -34,7 +34,7 @@
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
-            <Russian>Указите какой объект передаётся как центральная точка</Russian>
+            <Russian>Укажите какой объект передаётся как центральная точка</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_ModuleLoc">
             <English>Module Position</English>
@@ -48,7 +48,7 @@
             <Japanese>オブジェクト/場所</Japanese>
             <Chinese>物件/地點</Chinese>
             <Chinesesimp>物件/地点</Chinesesimp>
-            <Russian>Объект/Расположение</Russian>
+            <Russian>Объект/Локация</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_GroupLoc">
             <English>Group</English>
@@ -90,14 +90,14 @@
             <Japanese>攻撃場所</Japanese>
             <Chinese>攻擊位置</Chinese>
             <Chinesesimp>攻击位置</Chinesesimp>
-            <Russian>Позация Атаки</Russian>
+            <Russian>Позиция Атаки</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
-            <Russian>Введите массив с помощью скобок или имя без ковычек</Russian>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius">
             <English>Search Radius</English>
@@ -118,7 +118,7 @@
             <Japanese>グループのリーダーに同期し、攻撃地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組攻擊/搜索指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
-            <Russian>Синхронизируйте с лидером группы что бы атаковать указанное местоположение</Russian>
+            <Russian>Синхронизируйте с лидером группы, чтобы атаковать указанное местоположение</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride">
             <English>Allow Override</English>
@@ -132,14 +132,14 @@
             <Japanese>モジュールにより古いウェイポイントの削除と、新しい攻撃ウェイポイントの指定を許可します</Japanese>
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
-            <Russian>Разрешить модулу удалять старые путевые точки и назначать путевую точку атаки</Russian>
+            <Russian>Разрешить модулю удалять старые путевые точки и назначать путевую точку атаки</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
             <Japanese>防衛</Japanese>
             <Chinese>防禦</Chinese>
             <Chinesesimp>防御</Chinesesimp>
-            <Russian>Защита</Russian>
+            <Russian>Оборона</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
@@ -167,7 +167,7 @@
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
-            <Russian>Введите массив с помощью скобок или имя без ковычек</Russian>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius">
             <English>Defend Radius</English>
@@ -202,21 +202,21 @@
             <Japanese>巡回率</Japanese>
             <Chinese>巡邏機率</Chinese>
             <Chinesesimp>巡逻机率</Chinesesimp>
-            <Russian>Шанс Патруля</Russian>
+            <Russian>Шанс Патрулирования</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
             <Japanese>各ユニットが歩哨のために巡回する確率を設定</Japanese>
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
-            <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, что бы находиьтся в гарнизоне</Russian>
+            <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, чтобы находиться в гарнизоне</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
             <Japanese>停止率</Japanese>
             <Chinese>停留機率</Chinese>
             <Chinesesimp>停留机率</Chinesesimp>
-            <Russian>Шанс Задержки</Russian>
+            <Russian>Шанс Удерживания</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
@@ -230,21 +230,21 @@
             <Japanese>グループのリーダーに同期し、防衛地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組防禦指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
-            <Russian>Синхронизируйте с лидером группы что бы защищать указанное местоположение</Russian>
+            <Russian>Синхронизируйте с лидером группы, чтобы защищать указанное местоположение</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
             <Japanese>巡回</Japanese>
             <Chinese>巡邏</Chinese>
             <Chinesesimp>巡逻</Chinesesimp>
-            <Russian>Патруль</Russian>
+            <Russian>Патрулирование</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
             <Japanese>巡回場所の種類</Japanese>
             <Chinese>巡邏區類型</Chinese>
             <Chinesesimp>巡逻区类型</Chinesesimp>
-            <Russian>Патруль - Тип Центра</Russian>
+            <Russian>Патрулирование - Тип Центра</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -265,7 +265,7 @@
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
-            <Russian>Введите массив с помощью скобок или имя без ковычек</Russian>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius">
             <English>Patrol Radius</English>
@@ -314,7 +314,7 @@
             <Japanese>移動</Japanese>
             <Chinese>移動</Chinese>
             <Chinesesimp>移动</Chinesesimp>
-            <Russian>Перемещение</Russian>
+            <Russian>Выдвинуться</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_SAD">
             <English>Seek and Destroy</English>
@@ -363,7 +363,7 @@
             <Japanese>警戒</Japanese>
             <Chinese>警戒</Chinese>
             <Chinesesimp>警戒</Chinesesimp>
-            <Russian>Предостережённо</Russian>
+            <Russian>Начеку</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Combat">
             <English>Combat</English>
@@ -377,7 +377,7 @@
             <Japanese>隠密</Japanese>
             <Chinese>隱蔽</Chinese>
             <Chinesesimp>隐蔽</Chinesesimp>
-            <Russian>Стелс</Russian>
+            <Russian>Скрытно</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_CombatMode">
             <English>Combat Mode</English>
@@ -454,7 +454,7 @@
             <Japanese>通常 (駆け足 - 隊形維持)</Japanese>
             <Chinese>普通 (慢跑-不破壞隊形)</Chinese>
             <Chinesesimp>普通 (慢跑-不破坏队形)</Chinesesimp>
-            <Russian>Нормальныя (Без трусцой в строю)</Russian>
+            <Russian>Нормальный (Бег трусцой, оставаться в строю)</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedFull">
             <English>Full(Run-No formation)</English>
@@ -489,7 +489,7 @@
             <Japanese>千鳥縦隊</Japanese>
             <Chinese>雙縱隊形</Chinese>
             <Chinesesimp>双纵队形</Chinesesimp>
-            <Russian>Двойная колонна</Russian>
+            <Russian>Колонна в шахматном порядке</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Wedge">
             <English>Wedge</English>
@@ -503,21 +503,21 @@
             <Japanese>左梯形</Japanese>
             <Chinese>左梯隊形</Chinese>
             <Chinesesimp>左梯队形</Chinesesimp>
-            <Russian>Левый ешелон</Russian>
+            <Russian>Левый эшелон</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_EchRight">
             <English>Ech Right</English>
             <Japanese>右梯形</Japanese>
             <Chinese>右梯隊形</Chinese>
             <Chinesesimp>右梯队形</Chinesesimp>
-            <Russian>Правый ешелон</Russian>
+            <Russian>Правый эшелон</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Vee">
             <English>Vee</English>
             <Japanese>V字隊形</Japanese>
             <Chinese>V字隊形</Chinese>
             <Chinesesimp>V字队形</Chinesesimp>
-            <Russian>V-образный строй</Russian>
+            <Russian>V-образный</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Line">
             <English>Line</English>
@@ -531,14 +531,14 @@
             <Japanese>縦列</Japanese>
             <Chinese>緊湊縱隊</Chinese>
             <Chinesesimp>紧凑纵队</Chinesesimp>
-            <Russian>Компактная колонна</Russian>
+            <Russian>Ряд</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_Diamond">
             <English>Diamond</English>
             <Japanese>ダイヤモンド</Japanese>
             <Chinese>菱形隊形</Chinese>
             <Chinesesimp>菱形队形</Chinesesimp>
-            <Russian>Формирование алмазом</Russian>
+            <Russian>Ромб</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
@@ -566,14 +566,14 @@
             <Japanese>[最低,中間,最大] ウェイポイントで待機する時間</Japanese>
             <Chinese>[最小值, 中間值, 最大值] 用來設定在路徑點所需等待的時間</Chinese>
             <Chinesesimp>[最小值, 中间值, 最大值] 用来设定在路径点所需等待的时间</Chinesesimp>
-            <Russian>[Минимум, Середина, Максимум] Тайм-аут ожидания на путевых точках</Russian>
+            <Russian>[Минимум, Средний, Максимум] Тайм-аут ожидания на путевых точках</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolModuleDescription">
             <English>Sync to leader of group to patrol a parsed location</English>
             <Japanese>グループのリーダーに同期し、地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組巡邏指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
-            <Russian>Синхронизируйте с лидером группы что бы патрулировать указанное местоположение</Russian>
+            <Russian>Синхронизируйте с лидером группы, чтобы патрулировать указанное местоположение</Russian>
         </Key>
     </Package>
 </Project>

@@ -36,7 +36,7 @@
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
             <Portuguese>Opções de Extensão</Portuguese>
-            <Russian>Опции Дополнения</Russian>
+            <Russian>Настройки Дополнения</Russian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -45,7 +45,7 @@
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
             <Portuguese>Opções ded Extensão...</Portuguese>
-            <Russian>Опции Дополнения...</Russian>
+            <Russian>Настройки Дополнения...</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -63,7 +63,7 @@
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
             <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
-            <Russian>Посмотрите настройки сервера.. Зайдите как администратор для редактирования.</Russian>
+            <Russian>Смотреть настройки сервера. Войдите под администратором, чтобы менять.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -81,7 +81,7 @@
             <Chinese>查看任務的設定。</Chinese>
             <Chinesesimp>查看任务的设定。</Chinesesimp>
             <Portuguese>Olhe as configurações de missão.</Portuguese>
-            <Russian>Посмотрите на настройки миссиии.</Russian>
+            <Russian>Смотреть настройки миссиии.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
             <English>Edit the missions settings.</English>
@@ -144,7 +144,7 @@
             <Chinese>匯入</Chinese>
             <Chinesesimp>汇入</Chinesesimp>
             <Portuguese>Importar</Portuguese>
-            <Russian>Импортирование</Russian>
+            <Russian>Импорт</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport_tooltip">
             <English>Import settings from clipboard.</English>
@@ -153,7 +153,7 @@
             <Chinese>從剪貼簿匯入設定。</Chinese>
             <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
             <Portuguese>Importar configurações da prancheta.</Portuguese>
-            <Russian>Импортирование настроек из буфера обмена.</Russian>
+            <Russian>Импортировать настройки из буфера обмена.</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -162,7 +162,7 @@
             <Chinese>匯出</Chinese>
             <Chinesesimp>汇出</Chinesesimp>
             <Portuguese>Exportar</Portuguese>
-            <Russian>Экспортирование</Russian>
+            <Russian>Экспорт</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport_tooltip">
             <English>Export settings to clipboard.</English>
