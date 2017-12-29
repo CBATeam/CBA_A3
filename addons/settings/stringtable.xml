@@ -36,7 +36,7 @@
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
             <Portuguese>Opções de Extensão</Portuguese>
-            <Russian>Настройки Дополнения</Russian>
+            <Russian>Настройки Дополнений</Russian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -45,7 +45,7 @@
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
             <Portuguese>Opções ded Extensão...</Portuguese>
-            <Russian>Настройки Дополнения...</Russian>
+            <Russian>Настройки Дополнений...</Russian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
