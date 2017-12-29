@@ -27,7 +27,7 @@ if (isNil QGVAR(default)) then {
         missionNamespace setVariable [QGVAR(serverConfig), true call CBA_fnc_createNamespace, true];
     };
 
-    private _userconfig = call (uiNamespace getVariable QGVAR(userconfig));
+    private _userconfig = preprocessFile call (uiNamespace getVariable QGVAR(userconfig));
 
     {
         _x params ["_setting", "_value", "_priority"];
