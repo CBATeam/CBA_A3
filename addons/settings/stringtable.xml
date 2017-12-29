@@ -243,7 +243,7 @@
             <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
-            <Russian>Этот параметр перезаписан клиентом и приминяется исключительно к серверу.</Russian>
+            <Russian>Этот параметр перезаписан клиентом и применяется исключительно к серверу.</Russian>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
