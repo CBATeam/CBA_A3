@@ -251,7 +251,7 @@
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
-            <Russian>Укажите какой тип объекта будет передан как центральная точка</Russian>
+            <Russian>Укажите, какой тип объекта будет передан как центральная точка</Russian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
             <English>Center Point</English>
