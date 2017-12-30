@@ -33,6 +33,7 @@
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
             <German>ADDON:</German>
+            <Russian>Дополнение:</Russian>
         </Key>
     </Package>
 </Project>
