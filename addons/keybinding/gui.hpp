@@ -43,7 +43,7 @@ class RscDisplayConfigure {
                 };
                 class AddonText: RscText {
                     style = ST_RIGHT;
-                    text = "ADDON:";
+                    text = ECSTRING(main,AddonText);
                     x = POS_W(0.5);
                     y = POS_H(1);
                     w = POS_W(4);
