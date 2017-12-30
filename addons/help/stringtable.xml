@@ -7,13 +7,14 @@
             <Chinese>社群基礎模組 - 幫助</Chinese>
             <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Ajuda</Portuguese>
+            <Russian>Community Base Addons - Помощь</Russian>
         </Key>
         <Key ID="STR_DN_CBA_HELP_KEYS">
             <English>Keybindings</English>
             <German>Tastendruckzuweisung</German>
             <Spanish>Keybindings</Spanish>
             <Czech>Keybindings</Czech>
-            <Russian>Keybindings</Russian>
+            <Russian>Назначения клавиш</Russian>
             <Italian>Keybindings</Italian>
             <Polish>Klawisze</Polish>
             <French>Keybindings</French>
@@ -27,7 +28,7 @@
             <German>Bugtracker</German>
             <Spanish>Bugtracker</Spanish>
             <Czech>Bugtracker</Czech>
-            <Russian>Bugtracker</Russian>
+            <Russian>Баг трэкер</Russian>
             <Italian>Bugtracker</Italian>
             <Polish>Zgłaszanie błędów</Polish>
             <French>Bugtracker</French>
@@ -41,7 +42,7 @@
             <German>Wiki (Documentation)</German>
             <Spanish>Wiki (Documentation)</Spanish>
             <Czech>Wiki (Documentation)</Czech>
-            <Russian>Wiki (Documentation)</Russian>
+            <Russian>Wiki (Документация)</Russian>
             <Italian>Wiki (Documentation)</Italian>
             <Polish>Wiki (dokumentacja)</Polish>
             <French>Wiki (Documentation)</French>
@@ -55,7 +56,7 @@
             <German>Credits</German>
             <Spanish>Credits</Spanish>
             <Czech>Credits</Czech>
-            <Russian>Credits</Russian>
+            <Russian>Кредиты</Russian>
             <Italian>Credits</Italian>
             <Polish>Twórcy</Polish>
             <French>Credits</French>
@@ -69,7 +70,7 @@
             <German>Credits - Addons</German>
             <Spanish>Credits - Addons</Spanish>
             <Czech>Credits - Addons</Czech>
-            <Russian>Credits - Addons</Russian>
+            <Russian>Кредиты - Дополнения</Russian>
             <Italian>Credits - Addons</Italian>
             <Polish>Twórcy - Addons</Polish>
             <French>Credits - Addons</French>
