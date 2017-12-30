@@ -30,5 +30,9 @@
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
         </Key>
+        <Key ID="STR_CBA_Main_AddonText">
+            <English>ADDON:</English>
+            <German>ADDON:</German>
+        </Key>
     </Package>
 </Project>

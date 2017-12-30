@@ -28,7 +28,7 @@
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
-            <German>Mod-Optionen</German>
+            <German>Addon-Optionen</German>
             <Japanese>アドオン オプション</Japanese>
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
@@ -36,7 +36,7 @@
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
-            <German>Mod-Optionen...</German>
+            <German>Addon-Optionen...</German>
             <Japanese>アドオン オプション...</Japanese>
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
