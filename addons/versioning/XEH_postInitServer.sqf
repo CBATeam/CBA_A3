@@ -21,7 +21,7 @@ FUNC(paranoid) = {
 QGVAR(versions_serv) addPublicVariableEventHandler { (_this select 1) call FUNC(paranoid) };
 
 // Skip missing mod check if it is disabled.
-if (isNumber (configFile >> "CBA_skipMissingModCheck") && {getNumber (configFile >> "CBA_skipMissingModCheck") == 1}) exitWith {};
+if (getNumber (configFile >> "CBA_skipMissingModCheck") == 1) exitWith {};
 
 // Missing Modfolder check
 FUNC(handleMismatch) = {
