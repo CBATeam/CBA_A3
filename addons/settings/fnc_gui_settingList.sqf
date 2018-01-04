@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"];
-_settingData params ["_values", "_labels"];
+_settingData params ["_values", "_labels", "_tooltips"];
 
 private _ctrlList = _controlsGroup controlsGroupCtrl IDC_SETTING_LIST;
 
@@ -9,14 +9,24 @@ private _lbData = [];
 
 {
     private _label = _labels select _forEachIndex;
+    private _tooltip = _tooltips select _forEachIndex;
 
     if (isLocalized _label) then {
         _label = localize _label;
     };
 
+    if (isLocalized _tooltip) then {
+        _tooltip = localize _tooltip;
+    };
+
     private _index = _ctrlList lbAdd _label;
+    _ctrlList lbSetTooltip [_index, _tooltip];
     _lbData set [_index, _x];
 } forEach _values;
+
+// Don't show tooltip if lb is not expanded. It's bugged and shows the wrong one
+// if the item was changed by command. E.g. by clicking the "Default"-button.
+_ctrlList ctrlSetTooltip "";
 
 _ctrlList lbSetCurSel (_values find _currentValue);
 
