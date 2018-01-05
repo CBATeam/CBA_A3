@@ -102,21 +102,29 @@ switch (toUpper _settingType) do {
         };
 
         _labels resize count _values;
+        private _tooltips = [];
 
         {
             if (isNil "_x") then {
                 _x = _values select _forEachIndex;
             };
 
-            if !(_x isEqualType "") then {
-                _x = str _x;
+            _x params ["_label", ["_tooltip", ""]];
+
+            if !(_label isEqualType "") then {
+                _label = str _label;
             };
 
-            _labels set [_forEachIndex, _x];
+            if !(_tooltip isEqualType "") then {
+                _tooltip = str _tooltip;
+            };
+
+            _labels set [_forEachIndex, _label];
+            _tooltips pushBack _tooltip;
         } forEach _labels;
 
         _defaultValue = _values param [_defaultIndex];
-        _settingData append [_values, _labels];
+        _settingData append [_values, _labels, _tooltips];
     };
     case "SLIDER": {
         _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]]];

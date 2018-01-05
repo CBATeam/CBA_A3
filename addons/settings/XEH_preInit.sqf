@@ -16,7 +16,7 @@ ADDON = false;
 
     ["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
     ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", ["null", false, _fnc_sanitizeValue]] call cba_settings_fnc_init;
-    ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled", "disabled"], 1]] call cba_settings_fnc_init;
+    ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], [["enabled", "tooltip 1"], ["disabled", "tooltip 2"]], 1]] call cba_settings_fnc_init;
     ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
     ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1 ,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
     ["Test_Setting_5", "COLOR",    ["-test alpha-",    "-tooltip-"], "My Category", [1, 0, 0, 0.5], false] call cba_settings_fnc_init;
