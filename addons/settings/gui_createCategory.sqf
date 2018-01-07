@@ -21,10 +21,30 @@ private _fnc_controlSetTablePosY = {
 
 private _lists = _display getVariable QGVAR(lists);
 
-{
-    (GVAR(default) getVariable _x) params ["_defaultValue", "_setting", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
+private _categorySettings = [];
 
+{
+    (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
     if (_category == _selectedAddon) then {
+        _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
+    };
+} forEach GVAR(allSettings);
+
+_categorySettings sort true;
+private _lastSubCategory = "$START";
+
+{
+    _x params ["_subCategory", "", "_setting"];
+    private _createHeader = false;
+    if (_subCategory != _lastSubCategory) then {
+        _lastSubCategory = _subCategory;
+        if (_subCategory == "") exitWith {};
+        _createHeader = true;
+    };
+
+    (GVAR(default) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
+
+    if (true) then { // remove
         if (isLocalized _displayName) then {
             _displayName = localize _displayName;
         };
@@ -69,6 +89,16 @@ private _lists = _display getVariable QGVAR(lists);
                 _display setVariable [_list, _ctrlOptionsGroup];
             } else {
                 _ctrlOptionsGroup = _display getVariable _list;
+            };
+
+            // Add sub-category header:
+            if (_createHeader) then {
+                private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
+                (_header controlsGroupCtrl IDC_SETTING_NAME) ctrlSetText format ["%1:", _subCategory];
+
+                private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
+                _tablePosY = [_header, _tablePosY] call _fnc_controlSetTablePosY;
+                _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
             };
 
             // ----- create setting group
@@ -143,4 +173,4 @@ private _lists = _display getVariable QGVAR(lists);
             };
         } forEach ["client", "mission", "server"];
     };
-} forEach GVAR(allSettings);
+} forEach _categorySettings;
