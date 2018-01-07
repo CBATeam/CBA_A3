@@ -28,7 +28,7 @@ ADDON = false;
     ["Test_4", "EDITBOX", "setting 4", ["Test Category", "Evens"], "null", nil, {systemChat str [4, _this]}] call cba_settings_fnc_init;
     ["Test_5", "EDITBOX", "setting 5", "Test Category", "null",   1, {systemChat str [5, _this]}] call cba_settings_fnc_init;
     ["Test_6", "EDITBOX", "setting 6", ["Test Category", "Evens"], "null",   2, {systemChat str [6, _this]}] call cba_settings_fnc_init;
-    ["Test_6", "EDITBOX", "setting 7", ["Test Category", "Seven"], "null",   2, {systemChat str [7, _this]}] call cba_settings_fnc_init;
+    ["Test_7", "EDITBOX", "setting 7", ["Test Category", "Seven"], "null",   2, {systemChat str [7, _this]}] call cba_settings_fnc_init;
 
     ["Test_A", "EDITBOX", "setting 1", "Test Category 1", "a", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
     ["Test_B", "EDITBOX", "setting 2", "Test Category 1", "b", nil, {systemChat str [2, _this]}] call cba_settings_fnc_init;
