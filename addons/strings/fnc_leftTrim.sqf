@@ -43,7 +43,7 @@ if (_trim == "") then {
 };
 
 // We have to process the string in array form because it could differ in length (if there are non-ASCII characters)
-private _trimIndex = 0;
+private _trimIndex = _numChars;
 {
     if !(_x in _trim) exitWith { _trimIndex = _forEachIndex; };
 } forEach _chars;

@@ -184,6 +184,10 @@ TEST_OP(_str,==,"",_fn);
 _str = [" x "] call CBA_fnc_trim;
 TEST_OP(_str,==,"x",_fn);
 
+// Cyrillic letters (count "РґРµР" = 10)
+_str = ["РґРµР", "Р"] call CBA_fnc_trim;
+TEST_OP(_str,==,"ґРµ",_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (capitalize)
 _fn = "CBA_fnc_capitalize";
