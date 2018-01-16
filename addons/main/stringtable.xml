@@ -25,6 +25,7 @@
             <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Principal</Portuguese>
             <Russian>Community Base Addons - Основной Компонент</Russian>
+            <German>Community Base Addons - Hauptkomponente</German>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -33,6 +34,7 @@
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
             <Russian>Community Base Addons - Опциональный Компонент</Russian>
+            <German>Community Base Addons - Optionale Komponente</German>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
