@@ -2,9 +2,9 @@
 #define PREFIX cba
 // TODO: Consider Mod-wide or Component-narrow versions  (or both, depending on wishes!)
 #define MAJOR 3
-#define MINOR 5
+#define MINOR 6
 #define PATCHLVL 0
-#define BUILD 171204
+#define BUILD 180116
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
