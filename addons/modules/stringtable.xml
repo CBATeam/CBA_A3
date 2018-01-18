@@ -14,6 +14,7 @@
             <Chinese>CBA模塊</Chinese>
             <Chinesesimp>CBA模块</Chinesesimp>
             <Russian>Модули CBA</Russian>
+            <German>CBA Module</German>
         </Key>
         <Key ID="STR_CBA_Modules_Attack">
             <English>Attack</English>
@@ -21,6 +22,7 @@
             <Chinese>攻擊</Chinese>
             <Chinesesimp>攻击</Chinesesimp>
             <Russian>Атака</Russian>
+            <German>Angriff</German>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType">
             <English>Attack Location Type</English>
@@ -42,6 +44,7 @@
             <Chinese>模塊的位置</Chinese>
             <Chinesesimp>模块的位置</Chinesesimp>
             <Russian>Расположение Модуля</Russian>
+            <German>Modul Position</German>
         </Key>
         <Key ID="STR_CBA_Modules_ObjectLoc">
             <English>Object/Location</English>
@@ -49,6 +52,7 @@
             <Chinese>物件/地點</Chinese>
             <Chinesesimp>物件/地点</Chinesesimp>
             <Russian>Объект/Локация</Russian>
+            <German>Objekt/Standort</German>
         </Key>
         <Key ID="STR_CBA_Modules_GroupLoc">
             <English>Group</English>
@@ -56,6 +60,7 @@
             <Chinese>群組</Chinese>
             <Chinesesimp>群组</Chinesesimp>
             <Russian>Группа</Russian>
+            <German>Gruppe</German>
         </Key>
         <Key ID="STR_CBA_Modules_ArrayLoc">
             <English>Array</English>
@@ -63,6 +68,7 @@
             <Chinese>陣列</Chinese>
             <Chinesesimp>阵列</Chinesesimp>
             <Russian>Массив</Russian>
+            <German>Array</German>
         </Key>
         <Key ID="STR_CBA_Modules_MarkerLoc">
             <English>Marker</English>
@@ -105,6 +111,7 @@
             <Chinese>搜索半徑</Chinese>
             <Chinesesimp>搜索半径</Chinesesimp>
             <Russian>Радиус Поиска</Russian>
+            <German>Suchradius</German>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius_Desc">
             <English>Enter a number for size of the radius to search</English>
@@ -112,6 +119,7 @@
             <Chinese>輸入一個數字來定義搜索區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义搜索区域的半径大小</Chinesesimp>
             <Russian>Введите число для задания размера радиуса поиска</Russian>
+            <German>Gebe eine Nummer für den Suchradius ein</German>
         </Key>
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
@@ -126,6 +134,7 @@
             <Chinese>允許覆寫</Chinese>
             <Chinesesimp>允许覆写</Chinesesimp>
             <Russian>Разрешить Переопределение</Russian>
+            <German>Überschreiben erlauben</German>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
@@ -133,6 +142,7 @@
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
             <Russian>Разрешить модулю удалять старые путевые точки и назначать путевую точку атаки</Russian>
+            <German>Erlaubt dem Modul alte Wegpunkte zu entfernen und einen Angriffswegpunkt zu setzen</German>
         </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
@@ -140,6 +150,7 @@
             <Chinese>防禦</Chinese>
             <Chinesesimp>防御</Chinesesimp>
             <Russian>Оборона</Russian>
+            <German>Verteidigen</German>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
@@ -175,6 +186,7 @@
             <Chinese>防禦半徑</Chinese>
             <Chinesesimp>防御半径</Chinesesimp>
             <Russian>Радиус Защиты</Russian>
+            <German>Verteidigungsradius</German>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius_Desc">
             <English>The max distance to defend from the center point</English>
@@ -189,6 +201,7 @@
             <Chinese>可使用的建築物大小</Chinese>
             <Chinesesimp>可使用的建筑物大小</Chinesesimp>
             <Russian>Порог Размера Здания</Russian>
+            <German>Grenzwert Gebäudegröße</German>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
@@ -196,6 +209,7 @@
             <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
             <Russian>Чем меньше число, тем больше доступных зданий</Russian>
+            <German>Je kleiner der Wert, desto mehr verfügbare Gebäude</German>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
             <English>Patrol Chance</English>
@@ -203,6 +217,7 @@
             <Chinese>巡邏機率</Chinese>
             <Chinesesimp>巡逻机率</Chinesesimp>
             <Russian>Шанс Патрулирования</Russian>
+            <German>Wahrscheinlichkeit Patrouillieren</German>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
@@ -210,6 +225,7 @@
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
             <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, чтобы находиться в гарнизоне</Russian>
+            <German>Wahrscheinlichkeit für jede Einheit zu Patrouillieren anstatt sich zu Verbarrikadieren</German>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
@@ -217,6 +233,7 @@
             <Chinese>停留機率</Chinese>
             <Chinesesimp>停留机率</Chinesesimp>
             <Russian>Шанс Удерживания</Russian>
+            <German>Wahrscheinlichkeit Warten</German>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
@@ -238,6 +255,7 @@
             <Chinese>巡邏</Chinese>
             <Chinesesimp>巡逻</Chinesesimp>
             <Russian>Патрулирование</Russian>
+            <German>Patrouillie</German>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
@@ -287,6 +305,7 @@
             <Chinese>路徑點數量</Chinese>
             <Chinesesimp>路径点数量</Chinesesimp>
             <Russian>Количество Путевых Точек</Russian>
+            <German>Anzahl Wegpunkte</German>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
@@ -294,6 +313,7 @@
             <Chinese>設定會產出多少個路徑點</Chinese>
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
             <Russian>Сколько создать путевых точек</Russian>
+            <German>Die Anzahl Wegpunkte die erstellt werden</German>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType">
             <English>Waypoint Type</English>
@@ -301,6 +321,7 @@
             <Chinese>路徑點類型</Chinese>
             <Chinesesimp>路径点类型</Chinesesimp>
             <Russian>Тип Путевой Точки</Russian>
+            <German>Wegpunkttyp</German>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType_Desc">
             <English>The type of waypoint to be used</English>
@@ -315,6 +336,7 @@
             <Chinese>移動</Chinese>
             <Chinesesimp>移动</Chinesesimp>
             <Russian>Выдвинуться</Russian>
+            <German>Bewegen</German>
         </Key>
         <Key ID="STR_CBA_Modules_SAD">
             <English>Seek and Destroy</English>
@@ -322,6 +344,7 @@
             <Chinese>搜索並摧毀</Chinese>
             <Chinesesimp>搜索并摧毁</Chinesesimp>
             <Russian>Найти и Уничтожить</Russian>
+            <German>Suchen und Zerstören</German>
         </Key>
         <Key ID="STR_CBA_Modules_Loiter">
             <English>Loiter</English>
@@ -329,6 +352,7 @@
             <Chinese>盤旋</Chinese>
             <Chinesesimp>盘旋</Chinesesimp>
             <Russian>Слоняться без дела</Russian>
+            <German>Herumlungern</German>
         </Key>
         <Key ID="STR_CBA_Modules_Behaviour">
             <English>Behaviour</English>
@@ -336,6 +360,7 @@
             <Chinese>行為</Chinese>
             <Chinesesimp>行为</Chinesesimp>
             <Russian>Поведение</Russian>
+            <German>Verhalten</German>
         </Key>
         <Key ID="STR_CBA_Modules_Behaviour_Desc">
             <English>The behaviour of the group</English>
@@ -343,6 +368,7 @@
             <Chinese>設定群組的行為</Chinese>
             <Chinesesimp>设定群组的行为</Chinesesimp>
             <Russian>Поведение группы</Russian>
+            <German>Das Verhalten der Gruppe</German>
         </Key>
         <Key ID="STR_CBA_Modules_Careless">
             <English>Careless</English>
@@ -350,6 +376,7 @@
             <Chinese>漫不經心</Chinese>
             <Chinesesimp>漫不经心</Chinesesimp>
             <Russian>Беспечно</Russian>
+            <German>Sorglos</German>
         </Key>
         <Key ID="STR_CBA_Modules_Safe">
             <English>Safe</English>
@@ -357,6 +384,7 @@
             <Chinese>安全</Chinese>
             <Chinesesimp>安全</Chinesesimp>
             <Russian>Безопасно</Russian>
+            <German>Sicher</German>
         </Key>
         <Key ID="STR_CBA_Modules_Aware">
             <English>Aware</English>
@@ -364,6 +392,7 @@
             <Chinese>警戒</Chinese>
             <Chinesesimp>警戒</Chinesesimp>
             <Russian>Начеку</Russian>
+            <German>Gewarnt</German>
         </Key>
         <Key ID="STR_CBA_Modules_Combat">
             <English>Combat</English>
@@ -371,6 +400,7 @@
             <Chinese>交戰</Chinese>
             <Chinesesimp>交战</Chinesesimp>
             <Russian>Бой</Russian>
+            <German>Gefecht</German>
         </Key>
         <Key ID="STR_CBA_Modules_Stealth">
             <English>Stealth</English>
@@ -378,6 +408,7 @@
             <Chinese>隱蔽</Chinese>
             <Chinesesimp>隐蔽</Chinesesimp>
             <Russian>Скрытно</Russian>
+            <German>Heimlich</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatMode">
             <English>Combat Mode</English>
@@ -385,6 +416,7 @@
             <Chinese>交戰模式</Chinese>
             <Chinesesimp>交战模式</Chinesesimp>
             <Russian>Режим Боя</Russian>
+            <German>Gefechtsmodus</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatMode_Desc">
             <English>How fast the group is to engage</English>
@@ -392,6 +424,7 @@
             <Chinese>設定群組多快會進入交戰狀態</Chinese>
             <Chinesesimp>设定群组多快会进入交战状态</Chinesesimp>
             <Russian>Как быстро группа должна вступать в бой</Russian>
+            <German>Wie schnell die Gruppe angreift</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatYellow">
             <English>Yellow (Fire at will)</English>
@@ -399,6 +432,7 @@
             <Chinese>黃色 (主動開火-保持隊形)</Chinese>
             <Chinesesimp>黄色 (主动开火-保持队形)</Chinesesimp>
             <Russian>Жёлтый (Огонь по желанию)</Russian>
+            <German>Gelb (Feuern nach Ermessen)</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatBlue">
             <English>Blue (Never fire)</English>
@@ -406,6 +440,7 @@
             <Chinese>藍色 (永不開火)</Chinese>
             <Chinesesimp>蓝色 (永不开火)</Chinesesimp>
             <Russian>Синий (Запретить огонь)</Russian>
+            <German>Blau (Niemals feuern)</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatGreen">
             <English>Green (Hold Fire-Defend Only)</English>
@@ -413,6 +448,7 @@
             <Chinese>綠色 (被動開火-保持隊形)</Chinese>
             <Chinesesimp>绿色 (被动开火-保持队形)</Chinesesimp>
             <Russian>Зелёный (Огонь только для защиты)</Russian>
+            <German>Grün (Feuer halten-Nur verteidigen)</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatWhite">
             <English>White (Hold Fire-Engage at will)</English>
@@ -420,6 +456,7 @@
             <Chinese>白色 (被動開火)</Chinese>
             <Chinesesimp>白色 (被动开火)</Chinesesimp>
             <Russian>Белый (Вступать в бой по желанию)</Russian>
+            <German>Weiß (Feuer halten-Angrefen nach Ermessen)</German>
         </Key>
         <Key ID="STR_CBA_Modules_CombatRed">
             <English>Red (Fire at will-Engage at will)</English>
@@ -427,6 +464,7 @@
             <Chinese>紅色 (主動開火)</Chinese>
             <Chinesesimp>红色 (主动开火)</Chinesesimp>
             <Russian>Красный (Огонь по желанию - вступление в бой по желанию)</Russian>
+            <German>Rot (Feuern nach Ermessen-Angreifen nach Ermessen)</German>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode">
             <English>Speed Mode</English>
@@ -434,6 +472,7 @@
             <Chinese>速度模式</Chinese>
             <Chinesesimp>速度模式</Chinesesimp>
             <Russian>Скоростной Режим</Russian>
+            <German>Geschwindigkeitsmodus</German>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode_Desc">
             <English>Walk, jog, or run to each waypoint</English>
@@ -448,6 +487,7 @@
             <Chinese>慢速 (步行)</Chinese>
             <Chinesesimp>慢速 (步行)</Chinesesimp>
             <Russian>Ограниченный (Ходьба)</Russian>
+            <German>Limitiert(Gehen)</German>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedNormal">
             <English>Normal(Jog-Stays in formation)</English>
@@ -455,6 +495,7 @@
             <Chinese>普通 (慢跑-不破壞隊形)</Chinese>
             <Chinesesimp>普通 (慢跑-不破坏队形)</Chinesesimp>
             <Russian>Нормальный (Бег трусцой, оставаться в строю)</Russian>
+            <German>Normal(Joggen-Bleibt in Formation)</German>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedFull">
             <English>Full(Run-No formation)</English>
@@ -462,6 +503,7 @@
             <Chinese>全速 (衝刺-破壞隊形)</Chinese>
             <Chinesesimp>全速 (冲刺-破坏队形)</Chinesesimp>
             <Russian>Полная (Бег, вне строя)</Russian>
+            <German>Voll(Rennen-Keine Formation)</German>
         </Key>
         <Key ID="STR_CBA_Modules_Formation">
             <English>Formation</English>
@@ -469,6 +511,7 @@
             <Chinese>隊形</Chinese>
             <Chinesesimp>队形</Chinesesimp>
             <Russian>Строй</Russian>
+            <German>Formation</German>
         </Key>
         <Key ID="STR_CBA_Modules_Formation_Desc">
             <English>The formation to be used when moving</English>
@@ -476,6 +519,7 @@
             <Chinese>移動時所使用的隊形</Chinese>
             <Chinesesimp>移动时所使用的队形</Chinesesimp>
             <Russian>Какой режим строя будет использовать при перемещении</Russian>
+            <German>Für Bewegung genutzte Formation.</German>
         </Key>
         <Key ID="STR_CBA_Modules_Column">
             <English>Column</English>
@@ -483,6 +527,7 @@
             <Chinese>單縱隊形</Chinese>
             <Chinesesimp>单纵队形</Chinesesimp>
             <Russian>Колонна</Russian>
+            <German>Kolonne</German>
         </Key>
         <Key ID="STR_CBA_Modules_StagColumn">
             <English>Stag Column</English>
@@ -490,6 +535,7 @@
             <Chinese>雙縱隊形</Chinese>
             <Chinesesimp>双纵队形</Chinesesimp>
             <Russian>Колонна в шахматном порядке</Russian>
+            <German>Gestaffelte Kolonne</German>
         </Key>
         <Key ID="STR_CBA_Modules_Wedge">
             <English>Wedge</English>
@@ -497,6 +543,7 @@
             <Chinese>楔形</Chinese>
             <Chinesesimp>楔形</Chinesesimp>
             <Russian>Клин</Russian>
+            <German>Keil</German>
         </Key>
         <Key ID="STR_CBA_Modules_EchLeft">
             <English>Ech Left</English>
@@ -504,6 +551,7 @@
             <Chinese>左梯隊形</Chinese>
             <Chinesesimp>左梯队形</Chinesesimp>
             <Russian>Левый эшелон</Russian>
+            <German>Staffel Links</German>
         </Key>
         <Key ID="STR_CBA_Modules_EchRight">
             <English>Ech Right</English>
@@ -511,6 +559,7 @@
             <Chinese>右梯隊形</Chinese>
             <Chinesesimp>右梯队形</Chinesesimp>
             <Russian>Правый эшелон</Russian>
+            <German>Staffel Rechts</German>
         </Key>
         <Key ID="STR_CBA_Modules_Vee">
             <English>Vee</English>
@@ -518,6 +567,7 @@
             <Chinese>V字隊形</Chinese>
             <Chinesesimp>V字队形</Chinesesimp>
             <Russian>V-образный</Russian>
+            <German>V-förmig</German>
         </Key>
         <Key ID="STR_CBA_Modules_Line">
             <English>Line</English>
@@ -525,6 +575,7 @@
             <Chinese>一字隊形</Chinese>
             <Chinesesimp>一字队形</Chinesesimp>
             <Russian>Линия</Russian>
+            <German>Linie</German>
         </Key>
         <Key ID="STR_CBA_Modules_File">
             <English>File</English>
@@ -532,6 +583,7 @@
             <Chinese>緊湊縱隊</Chinese>
             <Chinesesimp>紧凑纵队</Chinesesimp>
             <Russian>Ряд</Russian>
+            <German>In Reih und Glied</German>
         </Key>
         <Key ID="STR_CBA_Modules_Diamond">
             <English>Diamond</English>
@@ -539,6 +591,7 @@
             <Chinese>菱形隊形</Chinese>
             <Chinesesimp>菱形队形</Chinesesimp>
             <Russian>Ромб</Russian>
+            <German>Raute</German>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
@@ -546,6 +599,7 @@
             <Chinese>會執行的腳本代碼</Chinese>
             <Chinesesimp>会执行的脚本代码</Chinesesimp>
             <Russian>Код для Выполнения</Russian>
+            <German>Programmcode ausführen</German>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
             <English>Any code to run at waypoints</English>
@@ -553,6 +607,7 @@
             <Chinese>在路徑點時會執行的腳本代碼</Chinese>
             <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
             <Russian>Любой код для запуска в путевых точках</Russian>
+            <German>Programmcode der an disem Wegpunkt ausgeführt wird</German>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout">
             <English>Timeout</English>
