@@ -71,6 +71,7 @@ switch (toLower _source) do {
             };
 
             profileNamespace setVariable [QGVAR(hash), _settingsHash];
+            saveProfileNamespace;
         };
 
         [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
@@ -126,6 +127,7 @@ switch (toLower _source) do {
                 };
 
                 profileNamespace setVariable [QGVAR(hash), _settingsHash];
+                saveProfileNamespace;
             };
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
