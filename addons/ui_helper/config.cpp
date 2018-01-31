@@ -12,5 +12,3 @@ class CfgPatches {
         requiredAddons[] = {"CBA_common", "A3_UI_F"};
     };
 };
-
-#include "CfgRscStd.hpp"
