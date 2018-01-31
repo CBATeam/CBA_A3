@@ -3,7 +3,7 @@
 // TODO: Consider Mod-wide or Component-narrow versions  (or both, depending on wishes!)
 #define MAJOR 3
 #define MINOR 6
-#define PATCHLVL 0
+#define PATCHLVL 1
 #define BUILD 180131
 //We will use the DATE for the BUILD# in the format YYMMDD - VM
 
