@@ -1,6 +1,6 @@
 release/*
 @*
-CBA_A3_*.zip
+*.zip
 *.cache
 *.pbo
 texHeaders.bin

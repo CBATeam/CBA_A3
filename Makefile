@@ -1,13 +1,30 @@
+VERSION = $(shell cat "VERSION")
 PREFIX = cba
 BIN = @CBA_A3
 ZIP = CBA_A3
 FLAGS = -i include -w unquoted-string -w redefinition-wo-undef
+VERSION_FILES = mod.cpp
 
-MAJOR = $(shell grep "^\#define[[:space:]]*MAJOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-MINOR = $(shell grep "^\#define[[:space:]]*MINOR" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-PATCH = $(shell grep "^\#define[[:space:]]*PATCHLVL" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-BUILD = $(shell grep "^\#define[[:space:]]*BUILD" addons/main/script_mod.hpp | egrep -m 1 -o '[[:digit:]]+')
-VERSION = $(MAJOR).$(MINOR).$(PATCH).$(BUILD)
+MAJOR = $(word 1, $(subst ., ,$(VERSION)))
+MINOR = $(word 2, $(subst ., ,$(VERSION)))
+PATCH = $(word 3, $(subst ., ,$(VERSION)))
+BUILD = $(word 4, $(subst ., ,$(VERSION)))
+VERSION_S = $(MAJOR).$(MINOR).$(PATCH)
+GIT_HASH = $(shell git log -1 --pretty=format:"%H" | head -c 8)
+
+ifeq ($(OS), Windows_NT)
+	ifeq ($(PROCESSOR_ARCHITEW6432), AMD64)
+		ARMAKE = ./tools/armake_w64.exe
+	else
+		ifeq ($(PROCESSOR_ARCHITECTURE), AMD64)
+			ARMAKE = ./tools/armake_w64.exe
+		else
+			ARMAKE = ./tools/armake_w32.exe
+		endif
+	endif
+else
+	ARMAKE = armake
+endif
 
 $(BIN)/addons/$(PREFIX)_%.pbo: addons/%
 	@mkdir -p $(BIN)/addons
@@ -34,25 +51,41 @@ $(BIN)/keys/%.biprivatekey:
 	@echo "  KEY  $@"
 	@armake keygen -f $(patsubst $(BIN)/keys/%.biprivatekey, $(BIN)/keys/%, $@)
 
-$(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION).bisign: $(BIN)/addons/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
+$(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign: $(BIN)/addons/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
 	@echo "  SIG  $@"
 	@armake sign -f $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
+	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
 
-$(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION).bisign: $(BIN)/optionals/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
+$(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign: $(BIN)/optionals/$(PREFIX)_%.pbo $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey
 	@echo "  SIG  $@"
 	@armake sign -f $(BIN)/keys/$(PREFIX)_$(VERSION).biprivatekey $<
+	@mv "$(subst -$(GIT_HASH),,$@)" $@ # armake does not take bisign name as parameter yet
 
-signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION).bisign, $(wildcard addons/*)) \
-		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION).bisign, $(wildcard optionals/*))
+signatures: $(patsubst addons/%, $(BIN)/addons/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign, $(wildcard addons/*)) \
+		$(patsubst optionals/%, $(BIN)/optionals/$(PREFIX)_%.pbo.$(PREFIX)_$(VERSION)-$(GIT_HASH).bisign, $(wildcard optionals/*))
+
+version:
+	@echo "  VER  $(VERSION)"
+	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/$(VERSION)/g' $(VERSION_FILES))
+	$(shell sed -i -r -s 's/[0-9]+\.[0-9]+\.[0-9]+/$(VERSION_S)/g' $(VERSION_FILES))
+	@echo "#define MAJOR $(MAJOR)\n#define MINOR $(MINOR)\n#define PATCHLVL $(PATCH)\n#define BUILD $(BUILD)" > "addons/main/script_version.hpp"
+
+commit:
+	@echo "  GIT  commit release preparation"
+	@git add -A
+	@git diff-index --quiet HEAD || git commit -am "Prepare release $(VERSION_S)" -q
+
+push: commit
+	@echo "  GIT  push release preparation"
+	@git push -q
+
+release: clean version commit
+	@"$(MAKE)" $(MAKEFLAGS) signatures
+	@echo "  ZIP  $(ZIP)_v$(VERSION_S).zip"
+	@cp LICENSE.md logo_cba_ca.paa meta.cpp mod.cpp README.md $(BIN)
+	@zip -qr $(ZIP)_v$(VERSION_S).zip $(BIN)
 
 clean:
 	rm -rf $(BIN) $(ZIP)_*.zip
 
-release:
-	@"$(MAKE)" clean
-	@"$(MAKE)" $(MAKEFLAGS) signatures
-	@echo "  ZIP  $(ZIP)_v$(VERSION).zip"
-	@cp LICENSE.md logo_cba_ca.paa meta.cpp mod.cpp README.md $(BIN)
-	@zip -r $(ZIP)_v$(VERSION).zip $(BIN) &> /dev/null
-
-.PHONY: release
+.PHONY: all filepatching signatures extensions extensions-win64 version commit push release clean
