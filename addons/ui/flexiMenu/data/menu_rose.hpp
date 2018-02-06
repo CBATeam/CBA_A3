@@ -141,8 +141,8 @@ class CBA_flexiMenu_rscRose {
         #define ExpandMacro_RowControls(ID,newX,newY,imageTag)\
         class button##ID: button {\
             idc = _flexiMenu_baseIDC_button + (ID-1);\
-            x = ##newX;\
-            y = ##newY;\
+            x = newX;\
+            y = newY;\
             text = "";\
             action = "";\
             animTextureNormal = _imagePath(DOUBLES(normal,imageTag));\
@@ -177,8 +177,8 @@ class CBA_flexiMenu_rscRose {
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
         idc = _flexiMenu_baseIDC_listButton + ID;\
-        x = _SX - ((_SMW + _gapW) * 1.5) + floor(((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
-        y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH;\
+        x = _SX - ((_SMW + _gapW) * 1.5) + floor(((ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
+        y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (ID mod _listButtonsPerRow)) * _LBH;\
     }
 
         ExpandMacro_ListControls(00);

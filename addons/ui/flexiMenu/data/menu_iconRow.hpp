@@ -1,4 +1,4 @@
-﻿ //#include "\x\cba\addons\ui\script_component.hpp"
+ //#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) // screen centre x
@@ -117,8 +117,8 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
         #define ExpandMacro_RowControls(ID)\
         class button##ID: button {\
             idc = _flexiMenu_baseIDC_button + ID;\
-            x = _SX-_buttonsBeforeCenter * _BW + (##ID mod _buttonsPerRow) * _BW;\
-            y = _SY + floor (##ID / _buttonsPerRow) * (_gapH + _BH2);\
+            x = _SX-_buttonsBeforeCenter * _BW + (ID mod _buttonsPerRow) * _BW;\
+            y = _SY + floor (ID / _buttonsPerRow) * (_gapH + _BH2);\
         }
 
         ExpandMacro_RowControls(00);
@@ -154,7 +154,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
     class listButton##ID: listButton {\
         idc = _flexiMenu_baseIDC_listButton + ID;\
         x = _SX - _buttonsBeforeCenter * _BW + (_buttonsPerRow + 1) * _BW;\
-        y = _SY + ##ID * _LBH;\
+        y = _SY + ID * _LBH;\
     }
 
         ExpandMacro_ListControls(00);

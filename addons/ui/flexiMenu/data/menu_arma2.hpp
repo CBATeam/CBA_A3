@@ -1,4 +1,4 @@
-﻿//#include "\x\cba\addons\ui\script_component.hpp"
+//#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _DefaultAspectRatio 3 / 4
 #define _SX (safeZoneX+safeZoneW / 2) // screen centre x
@@ -223,8 +223,8 @@ class CBA_flexiMenu_rscArma2 {
         #define ExpandMacro_ListControls(ID)\
         class listButton##ID: listButton {\
             idc = _flexiMenu_baseIDC_listButton+ID;\
-            x = _SX - ((_SMW+_gapW) * 1.5) + floor (((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
-            y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH;\
+            x = _SX - ((_SMW+_gapW) * 1.5) + floor (((ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
+            y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (ID mod _listButtonsPerRow)) * _LBH;\
         }
 
         ExpandMacro_ListControls(00);

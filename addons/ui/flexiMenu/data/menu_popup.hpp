@@ -1,4 +1,4 @@
-﻿// #include "\x\cba\addons\ui\script_component.hpp"
+// #include "\x\cba\addons\ui\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\popup\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
@@ -76,7 +76,7 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
         #define ExpandMacro_RowControls(ID) \
         class button##ID: listButton {\
             idc = _flexiMenu_baseIDC_button + ID;\
-            y = safeZoneY + 0.30 * safeZoneH + ##ID * _BH;\
+            y = safeZoneY + 0.30 * safeZoneH + ID * _BH;\
         }
 
         ExpandMacro_RowControls(00);
@@ -112,7 +112,7 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
         class listButton##ID: listButton {\
             idc = _flexiMenu_baseIDC_listButton + ID;\
             x = _SX;\
-            y = safeZoneY + 0.30 * safeZoneH + _BH + ##ID * _BH;\
+            y = safeZoneY + 0.30 * safeZoneH + _BH + ID * _BH;\
         }
 
         ExpandMacro_ListControls(00);
