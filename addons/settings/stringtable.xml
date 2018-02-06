@@ -249,11 +249,15 @@
             <English>Copy to clipboard</English>
             <German>In Zwischenablage</German>
             <Russian>Скопировать в буфер обмена</Russian>
+            <Chinese>複製到剪貼簿</Chinese>
+            <Chinesesimp>复制到剪贴簿</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
             <German>Zeige Standardeinstellungen:</German>
             <Russian>Показать настройки по умолчанию:</Russian>
+            <Chinese>顯示預設值:</Chinese>
+            <Chinesesimp>显示预设值:</Chinesesimp>
         </Key>
     </Package>
 </Project>

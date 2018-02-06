@@ -38,6 +38,8 @@
             <English>ADDON:</English>
             <German>ADDON:</German>
             <Russian>Дополнение:</Russian>
+            <Chinese>模組:</Chinese>
+            <Chinesesimp>模组:</Chinesesimp>
         </Key>
     </Package>
 </Project>
