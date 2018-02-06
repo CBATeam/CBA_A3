@@ -10,7 +10,7 @@ Parameters:
  _elev the elevation of the vector to create
 
 Returns:
- a vector in the form [x,z,y].
+ a vector in the form [x, z, y].
 
 Examples:
     (begin example)
@@ -25,7 +25,7 @@ scriptName "fnc_polar2vect.sqf";
 #include "script_component.hpp"
 SCRIPT(polar2vect);
 
-params ["_mag","_dir","_elev"];
+params ["_mag", "_dir", "_elev"];
 
-private _magCosElev = _mag * cos(_elev);
-[_magCosElev * sin(_dir), _magCosElev * cos(_dir), _mag * sin(_elev)];
+private _magCosElev = _mag * cos (_elev);
+[_magCosElev * sin (_dir), _magCosElev * cos (_dir), _mag * sin (_elev)];

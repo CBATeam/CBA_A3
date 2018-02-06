@@ -41,7 +41,7 @@ _channel = [
 if (_channel isEqualTo BI_SEND_TO_CLIENTS_ONLY) then {
     _channel = BI_SEND_TO_ALL;
     _parameters = [_parameters, _code];
-    _code = {if (!isDedicated) then {(_this select 0) call (_this select 1)}};
+    _code = {if (!isDedicated) then {(_this select 0) call (_this select 1)};};
 };
 
 // we want to have this executed in suspendable environment for bwc

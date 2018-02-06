@@ -16,7 +16,7 @@ Returns:
 Examples:
     (begin example)
         // '#skipTime 12' will make it night
-        ["skipTime", { parseNumber (_this select 0) remoteExec ["skipTime"]; }, "admin"] call CBA_fnc_registerChatCommand;
+        ["skipTime", {parseNumber (_this select 0) remoteExec ["skipTime"];}, "admin"] call CBA_fnc_registerChatCommand;
 
         // "Detonate" will blow up the charge
         ["Detonate", {_thisArgs setDamage 1}, "admin", _placedDemoCharge] call CBA_fnc_registerChatCommand;

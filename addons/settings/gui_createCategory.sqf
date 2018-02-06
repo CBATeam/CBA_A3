@@ -1,29 +1,48 @@
 // inline function, don't include script_component.hpp
 
 private _fnc_controlSetTablePosY = {
-    params ["_control", "_tablePosY"];
+    params ["_control", "_tablePosY", "_height"];
 
     private _config = configFile >> ctrlClassName _control;
 
     private _posX = getNumber (_config >> "x");
     private _posY = getNumber (_config >> "y") + _tablePosY;
-    private _posH = getNumber (_config >> "h");
+    private _width = getNumber (_config >> "w");
 
-    _control ctrlSetPosition [_posX, _posY];
+    if (isNil "_height") then {
+        _height = getNumber (_config >> "h");
+    };
+
+    _control ctrlSetPosition [_posX, _posY, _width, _height];
     _control ctrlCommit 0;
 
-    _posY + _posH
+    _posY + _height
 };
 
-private _lists = [];
-_display setVariable [QGVAR(lists), _lists];
+private _lists = _display getVariable QGVAR(lists);
+
+private _categorySettings = [];
 
 {
-    (GVAR(default) getVariable _x) params ["_defaultValue", "_setting", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
-
-    if (isLocalized _category) then {
-        _category = localize _category;
+    (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
+    if (_category == _selectedAddon) then {
+        _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
     };
+} forEach GVAR(allSettings);
+
+_categorySettings sort true;
+private _lastSubCategory = "$START";
+
+{
+    _x params ["_subCategory", "", "_setting"];
+    private _createHeader = false;
+    if (_subCategory != _lastSubCategory) then {
+        _lastSubCategory = _subCategory;
+        if (_subCategory == "") exitWith {};
+        _createHeader = true;
+    };
+
+    (GVAR(default) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
 
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
@@ -32,15 +51,28 @@ _display setVariable [QGVAR(lists), _lists];
     if (isLocalized _tooltip) then {
         _tooltip = localize _tooltip;
     };
-
-    _categories pushBackUnique _category;
+    if (_tooltip != _setting) then { // Append setting name to bottom line
+        if (_tooltip isEqualTo "") then {
+            _tooltip = _setting;
+        } else {
+            _tooltip = format ["%1\n%2", _tooltip, _setting];
+        };
+    };
 
     private _settingControlsGroups = [];
 
     {
         private _source = toLower _x;
-        private _currentValue = [_setting, _source] call FUNC(get);
-        private _currentPriority = [_setting, _source] call FUNC(priority);
+
+        private _currentValue = GET_TEMP_NAMESPACE_VALUE(_setting,_source);
+        if (isNil "_currentValue") then {
+            _currentValue = [_setting, _source] call FUNC(get);
+        };
+
+        private _currentPriority = GET_TEMP_NAMESPACE_PRIORITY(_setting,_source);
+        if (isNil "_currentPriority") then {
+            _currentPriority = [_setting, _source] call FUNC(priority);
+        };
 
         // ----- create or retrieve options "list" controls group
         private _list = [QGVAR(list), _category, _source] joinString "$";
@@ -56,6 +88,16 @@ _display setVariable [QGVAR(lists), _lists];
             _display setVariable [_list, _ctrlOptionsGroup];
         } else {
             _ctrlOptionsGroup = _display getVariable _list;
+        };
+
+        // Add sub-category header:
+        if (_createHeader) then {
+            private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
+            (_header controlsGroupCtrl IDC_SETTING_NAME) ctrlSetText format ["%1:", _subCategory];
+
+            private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
+            _tablePosY = [_header, _tablePosY] call _fnc_controlSetTablePosY;
+            _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
         };
 
         // ----- create setting group
@@ -88,6 +130,13 @@ _display setVariable [QGVAR(lists), _lists];
         private _tablePosY = _ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2];
         _tablePosY = [_ctrlSettingGroup, _tablePosY] call _fnc_controlSetTablePosY;
         _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
+
+        // ----- padding to make listboxes work
+        if (_settingType == "LIST") then {
+            private _ctrlEmpty = _display ctrlCreate [QGVAR(Row_Empty), -1, _ctrlOptionsGroup];
+            private _height = POS_H(count (_settingData select 0)) + TABLE_LINE_SPACING;
+            [_ctrlEmpty, _tablePosY, _height] call _fnc_controlSetTablePosY;
+        };
 
         // ----- set setting name
         private _ctrlSettingName = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_NAME;
@@ -122,4 +171,4 @@ _display setVariable [QGVAR(lists), _lists];
             } forEach _ctrlSettingGroupControls;
         };
     } forEach ["client", "mission", "server"];
-} forEach GVAR(allSettings);
+} forEach _categorySettings;

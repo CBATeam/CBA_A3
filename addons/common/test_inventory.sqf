@@ -97,7 +97,7 @@ clearBackpackCargoGlobal _container;
 _container addBackpackCargoGlobal ["B_AssaultPack_mcamo_Ammo", 1];
 _result = [_container, "B_AssaultPack_mcamo_Ammo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (itemCargo _container) == 4 && count (magazineCargo _container) == 20,_funcName);
+TEST_TRUE(count (backpackCargo _container) == 0 && count (itemCargo _container) == 4 && count (magazineCargo _container) == 19,_funcName);
 clearBackpackCargoGlobal _container;
 clearItemCargoGlobal _container;
 clearMagazineCargoGlobal _container;

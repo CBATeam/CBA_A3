@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_removeUnitTrackProjectiles
+Function: CBA_fnc_removeUnitTrackProjectiles
 
 Description:
     Removes projectile tracking from a given unit or vehicle.
@@ -12,7 +12,7 @@ Returns:
 
 Examples:
     (begin example)
-        [vehicle player] call CBA_removeUnitTrackProjectiles;
+        [vehicle player] call CBA_fnc_removeUnitTrackProjectiles;
     (end)
 
 Author:
@@ -34,7 +34,6 @@ if (_eventId == -1) exitWith {
 
 // reset
 _unit setVariable ["cba_projectile_firedEhId", -1];
-
 _unit removeEventHandler ["Fired", _eventId];
 
 private _arrayIndex = GVAR(projectileTrackedUnits) find _unit;
@@ -57,5 +56,4 @@ if (_arrayIndex >= 0) then {
         GVAR(projectileIndex) = 0;
         GVAR(projectileStartedDrawing) = false;
     };
-
 };

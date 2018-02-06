@@ -4,7 +4,10 @@
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private["_arrayID", "_actionData", "_action", "_subMenu", "_multiReselect", "_useListBox", "_subMenuSource", "_params", "_pathName", "_actionCode", "_actionParams"];
+private [
+    "_arrayID", "_actionData", "_action", "_subMenu", "_multiReselect", "_useListBox",
+    "_subMenuSource", "_params", "_pathName", "_actionCode", "_actionParams"
+];
 
 _arrayID = _this;
 _actionData = GVAR(menuActionData) select _arrayID;

@@ -6,6 +6,7 @@
             <Japanese>Community Base Addons - ジョイント レール</Japanese>
             <Chinese>社群基礎模組 - 共用導軌</Chinese>
             <Chinesesimp>社群基础模组 - 共用导轨</Chinesesimp>
+            <Russian>Community Base Addons - Система Joint Rails</Russian>
         </Key>
         <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
             <Original>Sound Suppressor MG</Original>
@@ -16,7 +17,7 @@
             <Italian>Silenziatore MG</Italian>
             <Polish>Tłumik KM</Polish>
             <Portuguese>Metralhadora silenciador</Portuguese>
-            <Russian>Глушитель для пулемета</Russian>
+            <Russian>Глушитель для пулемёта</Russian>
             <Spanish>Silenciador MG</Spanish>
             <Japanese>MG用消音器</Japanese>
             <Chinese>機槍用消音器</Chinese>

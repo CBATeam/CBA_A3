@@ -3,13 +3,13 @@ Function: CBA_fnc_isMusicPlaying
 
 Description:
     Function that checks if music is currently playing
-    
+
 Parameters:
     none
 
 Returns:
     BOOL- true if music is playing
-    
+
 Example:
     (begin example)
         _isPlaying = [] call CBA_fnc_isMusicPlaying;
@@ -21,4 +21,3 @@ Author:
 #include "script_component.hpp"
 
 !isNil QGVAR(track)
-

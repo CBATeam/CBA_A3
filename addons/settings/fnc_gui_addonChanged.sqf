@@ -8,6 +8,9 @@ private _display = ctrlParent _control;
 
 private _selectedAddon = _display getVariable (_control lbData _index);
 
+// fix error when no addons present
+if (isNil "_selectedAddon") exitWith {};
+
 if (_selectedAddon isEqualType "") then {
     uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 };
@@ -16,6 +19,11 @@ uiNamespace setVariable [QGVAR(addonIndex), _index];
 
 // toggle lists
 private _selectedSource = uiNamespace getVariable QGVAR(source);
+
+if !(_display getVariable [_selectedAddon, false]) then {
+    #include "gui_createCategory.sqf"
+    _display setVariable [_selectedAddon, true];
+};
 
 {
     (_x splitString "$") params ["", "_addon", "_source"];

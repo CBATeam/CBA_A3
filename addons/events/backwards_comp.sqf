@@ -1,4 +1,3 @@
-
 // imitate deprecated clientToServerEvent
 ["CBA_fnc_addClientToServerEventhandler", {
     WARNING('Deprecated function used: CBA_fnc_addClientToServerEventhandler');

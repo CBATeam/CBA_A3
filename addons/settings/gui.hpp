@@ -1,9 +1,12 @@
-
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
 
 class RscDisplayGameOptions {
+    // pause game in SP while this menu is shown
+    // usually paused by other displays present for the vanilla options menu
+    enableSimulation = 0;
+
     class controls {
         class CBA_ButtonConfigureAddons: RscButtonMenu {
             idc = IDC_BTN_CONFIGURE_ADDONS;
@@ -58,7 +61,7 @@ class RscDisplayGameOptions {
                 class AddonText: RscText {
                     idc = -1;
                     style = ST_RIGHT;
-                    text = "Addon:";
+                    text = ECSTRING(main,AddonText);
                     x = POS_W(0.5);
                     y = POS_H(1);
                     w = POS_W(4);
@@ -144,12 +147,52 @@ class RscPicture;
 
 class RscCheckBox;
 class GVAR(CheckboxSound): RscCheckBox {
-    soundEnter[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",0.090000004,1};
-    soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundPush",0.090000004,1};
-    soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.090000004,1};
-    soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.090000004,1};
+    soundEnter[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEnter",0.090000004,1};
+    soundPush[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundPush",0.090000004,1};
+    soundClick[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundClick",0.090000004,1};
+    soundEscape[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEscape",0.090000004,1};
 };
 
+class GVAR(Row_Empty): RscText {
+    GVAR(script) = "";
+    x = POS_W(1);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(0);
+};
+
+class GVAR(subCat): RscControlsGroupNoScrollbars {
+    x = POS_W(1);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(0.75);
+    class controls {
+        class Background: RscText {
+            colorBackground[] = {0.25,0.25,0.25,0.4};
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(36);
+            h = POS_H(1);
+        };
+        class Name: RscText {
+            idc = IDC_SETTING_NAME;
+            style = ST_LEFT;
+            SizeEx = POS_H(0.75);
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(15.5);
+            h = POS_H(0.75);
+        };
+        class Bar: RscText {
+            colorBackground[] = {1,1,1,1};
+            style = ST_LEFT;
+            x = POS_W(0);
+            y = POS_H(0.75) - 2 * pixelH;
+            w = POS_W(36);
+            h = pixelH;
+        };
+    };
+};
 class GVAR(Row_Base): RscControlsGroupNoScrollbars {
     GVAR(script) = "";
     x = POS_W(1);
@@ -510,4 +553,98 @@ class GVAR(MainMenuHelper): RscDisplayEmpty {
         (_this select 0) call FUNC(openSettingsMenu);\
         (_this select 0) closeDisplay 0;\
     );
+};
+
+class GVAR(export) {
+    idd = -1;
+    movingEnable = 1;
+    enableSimulation = 0;
+
+    class controls {
+        class Presets: RscControlsGroup {
+            idc = IDC_EXPORT_GROUP;
+            x = POS_X(5);
+            y = POS_Y(-5.1);
+            w = POS_W(30);
+            h = POS_H(32.2);
+
+            class controls {
+                class Title: RscTitle {
+                    colorBackground[] = {
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
+                    };
+                    idc = IDC_EXPORT_TITLE;
+                    text = "";
+                    x = POS_W(0);
+                    y = POS_H(0);
+                    w = POS_W(30);
+                    h = POS_H(1);
+                };
+                class Background: RscText {
+                    idc = -1;
+                    colorBackground[] = {0,0,0,0.8};
+                    x = POS_W(0);
+                    y = POS_H(1.1);
+                    w = POS_W(30);
+                    h = POS_H(30);
+                };
+                class ValueGroup: RscControlsGroup {
+                    idc = IDC_EXPORT_VALUE_GROUP;
+                    x = POS_W(0.5);
+                    y = POS_H(1.6);
+                    w = POS_W(29);
+                    h = POS_H(29);
+
+                    class controls {
+                        class Value: RscEdit {
+                            idc = IDC_EXPORT_VALUE;
+                            style = ST_MULTI + ST_NO_RECT;
+                            colorDisabled[] = {0.95,0.95,0.95,1};
+                            colorBackground[] = {1,1,1,0.2};
+                            x = POS_W(0);
+                            y = POS_H(0);
+                            w = POS_W(29);
+                            h = POS_H(29);
+                            sizeEx = POS_H(0.8);
+                        };
+                    };
+                };
+                class ButtonOK: RscButtonMenu {
+                    idc = IDC_EXPORT_OK;
+                    text = "$STR_DISP_OK";
+                    x = POS_W(20);
+                    y = POS_H(31.2);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+                class ButtonCancel: RscButtonMenu {
+                    idc = IDC_EXPORT_CANCEL;
+                    text = "$STR_DISP_CANCEL";
+                    x = POS_W(0);
+                    y = POS_H(31.2);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+                class ToggleDefaultText: RscText {
+                    idc = IDC_EXPORT_TOGGLE_DEFAULT_TEXT;
+                    style = ST_RIGHT;
+                    text = CSTRING(show_default);
+                    x = POS_W(19);
+                    y = POS_H(0);
+                    w = POS_W(10);
+                    h = POS_H(1);
+                };
+                class ToggleDefault: GVAR(CheckboxSound) {
+                    idc = IDC_EXPORT_TOGGLE_DEFAULT;
+                    x = POS_W(29);
+                    y = POS_H(0);
+                    w = POS_W(1);
+                    h = POS_H(1);
+                };
+            };
+        };
+    };
 };

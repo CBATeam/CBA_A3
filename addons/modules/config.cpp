@@ -5,12 +5,12 @@ class CfgPatches {
         author = "$STR_CBA_Author";
         name = CSTRING(component);
         url = "$STR_CBA_URL";
-        units[] = {"CBA_ModuleAttack","CBA_ModuleDefend","CBA_ModulePatrol"};
+        units[] = {"CBA_ModuleAttack", "CBA_ModuleDefend", "CBA_ModulePatrol"};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Modules_F","CBA_common"};
+        requiredAddons[] = {"A3_Modules_F", "CBA_common"};
         version = VERSION;
         authors[] = {"WiredTiger"};
-        
+
     };
 };
 

@@ -10,7 +10,7 @@ Parameters:
 
 Example:
     (begin example)
-    _index = ["OBJECT",["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
+    _index = ["OBJECT", ["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
     (end)
 
 Returns:

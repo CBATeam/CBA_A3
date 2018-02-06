@@ -27,4 +27,4 @@ Author:
     Nou
 ---------------------------------------------------------------------------- */
 
-str parseNumber (str (_this%_this) + str floor abs _this) + "." + (str (abs _this-floor abs _this) select [2]) + "0";
+str parseNumber (str (_this % _this) + str floor abs _this) + "." + (str (abs _this - floor abs _this) select [2]) + "0";

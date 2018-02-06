@@ -19,7 +19,7 @@ class CfgSettings {
         class Versioning {
             class PREFIX {
                 class Dependencies {
-                    CBA[] = {"cba_main", { 1,0,0 },"(true)"};
+                    CBA[] = {"cba_main", {1, 0, 0}, "(true)"};
                 };
             };
         };
@@ -34,6 +34,6 @@ class CfgMods {
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
-        action = "http://dev-heaven.net/projects/cca";
+        action = "$STR_CBA_URL";
     };
 };

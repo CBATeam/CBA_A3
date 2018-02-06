@@ -1,4 +1,3 @@
-
 class CfgFunctions {
     class CBA {
         class Events {
@@ -66,6 +65,10 @@ class CfgFunctions {
                 description = "Raises a CBA event on all machines. Event is put on a stack that is executed on every future JIP machine. Stack can be overwritten by using the same JIP-Stack-ID.";
                 file = "\x\cba\addons\events\fnc_globalEventJIP.sqf";
             };
+            class removeGlobalEventJIP {
+                description = "Removes a globalEventJIP ID. Optionaly will wait until an object is deleted.";
+                file = "\x\cba\addons\events\fnc_removeGlobalEventJIP.sqf";
+            };
             class serverEvent {
                 description = "Raises a CBA event on the server machine.";
                 file = "\x\cba\addons\events\fnc_serverEvent.sqf";
@@ -85,6 +88,7 @@ class CfgFunctions {
             PATHTO_FNC(addMarkerEventHandler);
             PATHTO_FNC(removeMarkerEventHandler);
             PATHTO_FNC(registerChatCommand);
+            PATHTO_FNC(weaponEvents);
         };
     };
 };

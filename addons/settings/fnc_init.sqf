@@ -8,7 +8,7 @@ Parameters:
     _setting     - Unique setting name. Matches resulting variable name <STRING>
     _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
     _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
-    _category    - Category for the settings menu <STRING>
+    _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
     _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     _script      - Script to execute when setting is changed. (optional) <CODE>
@@ -24,13 +24,13 @@ Examples:
         ["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
 
         // LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
-        ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1,0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
+        ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 
         // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals]
         ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 
         // COLOR PICKER --- extra argument: _color
-        ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1,1,0]] call cba_settings_fnc_init;
+        ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call cba_settings_fnc_init;
 
         // EDITBOX --- extra argument: default value
         ["Test_Setting_5", "EDITBOX", ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
@@ -53,7 +53,7 @@ params [
     ["_setting", "", [""]],
     ["_settingType", "", [""]],
     ["_title", [], ["", []]],
-    ["_category", "", [""]],
+    ["_categoryArg", "", ["", []]],
     ["_valueInfo", []],
     ["_isGlobal", false, [false, 0]],
     ["_script", {}, [{}]]
@@ -64,6 +64,7 @@ if (_setting isEqualTo "") exitWith {
     1
 };
 
+_categoryArg params [["_category", "", [""]], ["_subCategory", "", [""]]];
 if (_category isEqualTo "") exitWith {
     WARNING_1("Empty menu category for setting %1",_setting);
     1
@@ -77,7 +78,7 @@ if (_displayName isEqualTo "") then {
 };
 
 // --- who can edit the setting
-_isGlobal = [0,1,2] select _isGlobal;
+_isGlobal = [0, 1, 2] select _isGlobal;
 
 // --- setting possible values and default ("data")
 private "_defaultValue";
@@ -88,7 +89,9 @@ switch (toUpper _settingType) do {
         _defaultValue = _valueInfo param [0, false, [false]]; // don't use params - we want these variables to be private to the main scope
     };
     case "EDITBOX": {
-        _defaultValue = _valueInfo param [0, "", [""]]; // don't use params - we want these variables to be private to the main scope
+        _valueInfo params [["_default", "", [""]], ["_isPassword", false, [false]], ["_fnc_sanitizeValue", {_this}, [{}]]];
+        _defaultValue = _default; // don't use params - we want these variables to be private to the main scope
+        _settingData append [_isPassword, _fnc_sanitizeValue];
     };
     case "LIST": {
         _valueInfo params [["_values", [], [[]]], ["_labels", [], [[]]], ["_defaultIndex", 0, [0]]];
@@ -100,21 +103,29 @@ switch (toUpper _settingType) do {
         };
 
         _labels resize count _values;
+        private _tooltips = [];
 
         {
             if (isNil "_x") then {
                 _x = _values select _forEachIndex;
             };
 
-            if !(_x isEqualType "") then {
-                _x = str _x;
+            _x params ["_label", ["_tooltip", ""]];
+
+            if !(_label isEqualType "") then {
+                _label = str _label;
             };
 
-            _labels set [_forEachIndex, _x];
+            if !(_tooltip isEqualType "") then {
+                _tooltip = str _tooltip;
+            };
+
+            _labels set [_forEachIndex, _label];
+            _tooltips pushBack _tooltip;
         } forEach _labels;
 
         _defaultValue = _values param [_defaultIndex];
-        _settingData append [_values, _labels];
+        _settingData append [_values, _labels, _tooltips];
     };
     case "SLIDER": {
         _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]]];
@@ -123,7 +134,7 @@ switch (toUpper _settingType) do {
         _settingData append [_min, _max, _trailingDecimals];
     };
     case "COLOR": {
-        _defaultValue = [_valueInfo] param [0, [1,1,1], [[]], [3,4]];
+        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3,4]];
     };
     default {/* _defaultValue undefined, exit below */};
 };
@@ -138,7 +149,7 @@ if (isNil {GVAR(default) getVariable _setting}) then {
     GVAR(allSettings) pushBack _setting;
 };
 
-GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script]];
+GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script, _subCategory]];
 
 // --- read previous setting values from profile
 private _settingInfo = GVAR(userconfig) getVariable _setting;
@@ -157,7 +168,7 @@ if (!isNil "_settingInfo") then {
     };
 
     // convert boolean to number
-    _priority = [0,1,2] select _priority;
+    _priority = [0, 1, 2] select _priority;
 
     GVAR(client) setVariable [_setting, [_value, _priority]];
 
@@ -178,7 +189,7 @@ if (!isNil "_settingInfo") then {
     _settingInfo params ["_value", "_priority"];
 
     // convert boolean to number
-    _priority = [0,1,2] select _priority;
+    _priority = [0, 1, 2] select _priority;
 
     if ([_setting, _value] call FUNC(check)) then {
         GVAR(mission) setVariable [_setting, [_value, _priority]];

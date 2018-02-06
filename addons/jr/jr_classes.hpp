@@ -1,7 +1,6 @@
 //ASDG prefixed original classes preserved to ensure compatibility
 
 class asdg_SlotInfo { // Base class
-    access = ReadAndWrite;
     scope = private;
     linkProxy = "defaultProxy";
     iconPosition[] = {0.0, 0.0};

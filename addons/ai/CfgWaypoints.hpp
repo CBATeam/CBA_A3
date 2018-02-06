@@ -1,4 +1,3 @@
-
 class CfgWaypoints {
     class A3 { // called "Advanced"
         class CBA_Task_Garrison {

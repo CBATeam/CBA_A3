@@ -20,6 +20,15 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
 {
     private _action = format ["%1$%2", _addon, _x];
     (GVAR(actions) getVariable _action) params ["_displayName", "_tooltip", "_keybinds", "_defaultKeybind"];
+
+    if (isLocalized _displayName) then {
+        _displayName = localize _displayName;
+    };
+
+    if (isLocalized _tooltip) then {
+        _tooltip = localize _tooltip;
+    };
+
     _keybinds = _tempNamespace getVariable [_action, _keybinds];
 
     private _keyNames = [];
@@ -60,6 +69,6 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
     _ctrlKeyList lnbSetData [[_index, 0], str [_action, _displayName, _keybinds, _defaultKeybind]];
 
     if (_isDuplicated) then {
-        _ctrlKeyList lnbSetColor [[_index, 1], [1,0,0,1]];
+        _ctrlKeyList lnbSetColor [[_index, 1], [1, 0, 0, 1]];
     };
 } forEach _addonActions;

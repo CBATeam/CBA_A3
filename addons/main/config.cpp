@@ -10,7 +10,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         // "CBA_XEH",  would create circular dependency, however XEH is required by CBA common in any case :)
-        requiredAddons[] = {"cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_ui", "cba_ui_helper", "cba_help"};
+        requiredAddons[] = {"cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_ui", "cba_help"};
         versionDesc = "C.B.A.";
         VERSION_CONFIG;
         authors[] = {};
@@ -48,15 +48,15 @@ class CfgSettings {
                         CBA_TOH[] = {"cba_toh_main", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'United_States_H')"};
                     */
                     // CBA requiring CBA_A3, if A3 is found
-                    CBA_A3[] = {"cba_main_a3", {1,0,0}, "isClass(configFile >> 'CfgPatches' >> 'A3_Map_Stratis')"};
+                    CBA_A3[] = {"cba_main_a3", {1, 0, 0}, "isClass(configFile >> 'CfgPatches' >> 'A3_Map_Stratis')"};
 
-                    XEH[] = {"cba_xeh", {1,0,0}, "(true)"};
+                    XEH[] = {"cba_xeh", {1, 0, 0}, "(true)"};
                 };
             };
         };
         class Registry {
             class PREFIX {
-                removed[] = {"cba_linux","cba_static_settings_addon","cba_auto_load_settings_file"};
+                removed[] = {"cba_linux", "cba_static_settings_addon", "cba_auto_load_settings_file"};
             };
         };
     };

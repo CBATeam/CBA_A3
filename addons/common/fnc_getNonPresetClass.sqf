@@ -5,7 +5,7 @@ Description:
     Get ancestor class of a weapon or container which has no preset attachments/contents.
 
 Parameters:
-    _item       - Lower-cased classname of weapon/container <STRING>
+    _item       - Classname of weapon/container <STRING>
     _configRoot - Root config ("CfgWeapons", "CfgVehicles", ...) <STRING> (Default: "CfgWeapons")
 
 Returns:

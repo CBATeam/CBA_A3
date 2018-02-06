@@ -12,8 +12,8 @@ _ctrlAddonsGroup ctrlEnable false;
 private _ctrlKeyboardButtonFake = _display displayCtrl IDC_BTN_KEYBOARD_FAKE;
 
 // Always highlight fake button
-_ctrlKeyboardButtonFake ctrlSetTextColor [0,0,0,1];
-_ctrlKeyboardButtonFake ctrlSetBackgroundColor [1,1,1,1];
+_ctrlKeyboardButtonFake ctrlSetTextColor [0, 0, 0, 1];
+_ctrlKeyboardButtonFake ctrlSetBackgroundColor [1, 1, 1, 1];
 
 _ctrlKeyboardButtonFake ctrlShow false;
 _ctrlKeyboardButtonFake ctrlEnable false;
@@ -32,6 +32,10 @@ private _ctrlAddonList = _display displayCtrl IDC_ADDON_LIST;
     private _addonInfo = GVAR(addons) getVariable _x;
     private _addonName = GVAR(modPrettyNames) getVariable [_x, _addonInfo select 0];
 
+    if (isLocalized _addonName) then {
+        _addonName = localize _addonName;
+    };
+
     _ctrlAddonList lbSetData [_ctrlAddonList lbAdd _addonName, _x];
 } forEach allVariables GVAR(addons);
 
@@ -42,7 +46,7 @@ _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call (uiNamespace get
 
 private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;
 
-_ctrlKeyList ctrlSetTooltipColorShade [0,0,0,0.5];
+_ctrlKeyList ctrlSetTooltipColorShade [0, 0, 0, 0.5];
 _ctrlKeyList ctrlAddEventHandler ["LBSelChanged", {_this call (uiNamespace getVariable QFUNC(gui_editKey))}];
 
 // ----- namespace for temp changed keybinds

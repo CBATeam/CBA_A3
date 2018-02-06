@@ -31,7 +31,6 @@ _type = toLower _type;
 if (_id < 0) exitWith {};
 
 private _handlers = [GVAR(handlerHash), _type] call CBA_fnc_hashGet;
-
 private _handler = _handlers param [_id];
 
 if (!isNil "_handler") then {

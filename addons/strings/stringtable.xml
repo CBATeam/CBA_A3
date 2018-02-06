@@ -6,6 +6,8 @@
             <Japanese>Community Base Addons - ストリングス</Japanese>
             <Chinese>社群基礎模組 - 字串</Chinese>
             <Chinesesimp>社群基础模组 - 字串</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Palavras</Portuguese>
+            <Russian>Community Base Addons - Строки</Russian>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_DECIMAL_POINT">
             <English>.</English>
@@ -19,6 +21,7 @@
             <Japanese>,</Japanese>
             <Chinese>.</Chinese>
             <Chinesesimp>.</Chinesesimp>
+            <Portuguese>,</Portuguese>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
@@ -32,6 +35,7 @@
             <Japanese>,</Japanese>
             <Chinese>,</Chinese>
             <Chinesesimp>,</Chinesesimp>
+            <Portuguese>.</Portuguese>
         </Key>
     </Package>
 </Project>

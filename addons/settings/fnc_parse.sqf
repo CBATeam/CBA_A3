@@ -30,7 +30,7 @@ private _fnc_parseAny = {
     parseSimpleArray format ["[%1]", _string] select 0
 };
 
-params [["_info", "", [""]], ["_validate", false, [false]]];
+params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];
 
 // remove whitespace at start and end of each line
 private _result = [];
@@ -38,6 +38,12 @@ private _result = [];
 {
     _result pushBack (_x call CBA_fnc_trim);
 } forEach (_info splitString NEWLINE);
+
+{
+    if (_x select [count _x - 1] != ";") then {
+        _result set [_forEachIndex, _x + ";"];
+    };
+} forEach _result;
 
 _info = (_result joinString NEWLINE) + NEWLINE;
 
@@ -61,19 +67,19 @@ _result = [];
         _priority = _priority + 1;
     };
 
-    if !(_setting isEqualTo "") then {
+    if (_setting != "") then {
         if !(_validate) then {
             _result pushBack [_setting, _value, _priority];
         } else {
             if (isNil {[_setting, "default"] call FUNC(get)}) exitWith {
-                ERROR_1("Error parsing settings file. Setting %1 does not exist.",_setting);
+                ERROR_1("Setting %1 does not exist.",_setting);
             };
 
             if !([_setting, _value] call FUNC(check)) exitWith {
-                ERROR_2("Error parsing settings file. Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
+                ERROR_2("Value %1 is invalid for setting %2.",TO_STRING(_value),_setting);
             };
 
-            _priority = SANITIZE_PRIORITY(_setting,_priority);
+            _priority = SANITIZE_PRIORITY(_setting,_priority,_source);
             _result pushBack [_setting, _value, _priority];
         };
     };
