@@ -20,6 +20,9 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayMission {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMission)'));
     };
+    class RscDiary {
+        ADDON = QUOTE(if (ctrlIDD (_this select 0) == 12) then {_this call (uiNamespace getVariable 'FUNC(initDisplayMainMap)')};);
+    };
     class RscDisplayCurator {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayCurator)'));
     };
