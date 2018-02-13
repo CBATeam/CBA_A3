@@ -2,6 +2,7 @@
 
 if (hasInterface) then {
     PREP(initDisplayMission);
+    PREP(initDisplayMainMap);
     PREP(initDisplayCurator);
 
     PREP(keyHandler);
