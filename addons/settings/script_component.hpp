@@ -5,8 +5,8 @@
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
-//#define DEBUG_MODE_FULL
-//#define DISABLE_COMPILE_CACHE
+#define DEBUG_MODE_FULL
+#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_SETTINGS
 
 #ifdef DEBUG_ENABLED_SETTINGS
@@ -93,7 +93,7 @@
 
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
 
-#define CAN_SET_SERVER_SETTINGS ((isServer || {IS_ADMIN_LOGGED}) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
+#define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
 #define CAN_SET_MISSION_SETTINGS (is3den && {!(missionName in ["", "tempMissionSP", "tempMissionMP"])}) // in editor with existing mission.sqm
 

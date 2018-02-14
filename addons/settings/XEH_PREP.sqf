@@ -7,6 +7,7 @@ PREP(import);
 PREP(export);
 PREP(clear);
 PREP(priority);
+PREP(whitelisted);
 
 if (hasInterface) then {
     PREP(openSettingsMenu);
