@@ -14,4 +14,4 @@ class CfgPatches {
     };
 };
 
-CBA_skipMissingModCheck = 1;
+CBA_disableMissingModCheck = 1;
