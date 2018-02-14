@@ -5,8 +5,8 @@
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
-//#define DEBUG_MODE_FULL
-//#define DISABLE_COMPILE_CACHE
+#define DEBUG_MODE_FULL
+#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_SETTINGS
 
 #ifdef DEBUG_ENABLED_SETTINGS
@@ -92,6 +92,13 @@
 #define COLOR_BUTTON_DISABLED [0, 0, 0, 1]
 
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
+#define ICON_APPLIES QPATHTOF(applies_ca.paa)
+#define ICON_OVERWRITTEN QPATHTOF(overwritten_ca.paa)
+#define ICON_NEED_RESTART QPATHTOF(need_restart_ca.paa)
+
+#define COLOR_APPLIES [0, 0.95, 0, 1]
+#define COLOR_OVERWRITTEN [0.95, 0, 0, 1]
+#define COLOR_NEED_RESTART [0.95, 0.95, 0, 1]
 
 #define CAN_SET_SERVER_SETTINGS ((isServer || {IS_ADMIN_LOGGED}) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client

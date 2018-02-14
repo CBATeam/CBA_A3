@@ -229,8 +229,6 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
         };
         class Locked: RscPicture {
             idc = IDC_SETTING_LOCKED;
-            text = QPATHTOF(locked_ca.paa);
-            colorText[] = {1,0,0,1};
             x = POS_W(28);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
