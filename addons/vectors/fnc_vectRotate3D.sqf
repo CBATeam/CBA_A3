@@ -1,12 +1,21 @@
- /* ----------------------------------------------------------------------------
-Function: CBA_fnc_vectRotate3D
+/* ----------------------------------------------------------------------------
+Function: CBA_vectors_fnc_vectRotate3D
 Description:
-    Rotates the first vector around the second, clockwise by theta degrees
-
+    Rotates the first vector around the second, clockwise by theta degrees.
 Parameters:
-    Vector, Rotation Axis, Angle
+    _vector       - 3D vector that is to be rotated <ARRAY>
+    _rotationAxis - 3D vector that the first argument is rotated around <ARRAY>
+    _theta        - Angle, in degrees clockwise, about which the first vector is rotated <NUMBER>
 Returns:
-    The rotated vector
+    _returnVector - 3D vector returned after rotation <ARRAY>
+Examples:
+    (begin example)
+    //Rotate 25 degrees right of player weapon direction;
+    [weaponDirection player, [0,0,1], 25] call CBA_vectors_fnc_vectRotate3D;
+
+    //Pitch a projectile's velocity down 10 degrees;
+    [velocity _projectile, (velocity _projectile) vectorCrossProduct [0,0,1], 10] call CBA_vectors_fnc_vectRotate3D;
+    (end)
 Author:
     LorenLuke
 ---------------------------------------------------------------------------- */
