@@ -1,26 +1,22 @@
-/*
- * Author: LorenLuke
- * Rotates the first vector around the second, clockwise by angle theta
- *
- * Arguments:
- * 0: Vector <ARRAY>
- * 1: Rotation Axis <ARRAY>
- * 2: Angle (degrees) <NUMBER>
- *
- * Return Value:
- * Transformed Vector <ARRAY>
- *
- * [weaponDir player, [0,0,1], 25] call CBA_fnc_vectorRotate3D
- *
- * Public: No
- */
+ /* ----------------------------------------------------------------------------
+Function: CBA_fnc_vectRotate3D
+Description:
+    Rotates the first vector around the second, clockwise by theta degrees
+
+Parameters:
+    Vector, Rotation Axis, Angle
+Returns:
+    The rotated vector
+Author:
+    LorenLuke
+---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
 params ["vector", "_rotationAxis", "_theta"];
 
 private _normalVector = vectorNormalized _rotationAxis;
-private = _s_theta = sin(_theta);
-private = _c_theta = cos(_theta);
+private _s_theta = sin(_theta);
+private _c_theta = cos(_theta);
 
 // Rodrigues Rotation Formula;
 // https://wikimedia.org/api/rest_v1/media/math/render/svg/2d63efa533bdbd776434af1a7af3cdafaff1d578
