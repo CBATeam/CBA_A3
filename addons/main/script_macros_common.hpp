@@ -1730,7 +1730,7 @@ Author:
 Macro: FILE_EXISTS
     Check if a file exists
 
-    Reports "false" if the file does not exist.
+    Reports "false" if the file does not exist and throws an error in RPT.
 
 Parameters:
     FILE - Path to the file
