@@ -1728,7 +1728,7 @@ Author:
 
 /* -------------------------------------------
 Macro: FILE_EXISTS
-    Check if a file exists
+    Check if a file exists on machines with interface
 
     Reports "false" if the file does not exist and throws an error in RPT.
 
@@ -1747,6 +1747,9 @@ Author:
 #define FILE_EXISTS(FILE) \
 call {\
     private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
+    if (isNull _control) then {\
+        _control = findDisplay 0 ctrlCreate ["RscHTML", -1];\
+    };\
     _control htmlLoad FILE;\
     private _return = ctrlHTMLLoaded _control;\
     ctrlDelete _control;\
