@@ -1750,6 +1750,9 @@ call {\
     if (isNull _control) then {\
         _control = findDisplay 0 ctrlCreate ["RscHTML", -1];\
     };\
+    if (isNull _control) exitWith {\
+        loadFile FILE != "";\
+    };\
     _control htmlLoad FILE;\
     private _return = ctrlHTMLLoaded _control;\
     ctrlDelete _control;\
