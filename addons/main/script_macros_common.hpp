@@ -1726,7 +1726,6 @@ Author:
 ------------------------------------------- */
 #define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
 
-
 /* -------------------------------------------
 Macro: FILE_EXISTS
     Check if a file exists
