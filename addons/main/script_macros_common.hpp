@@ -1725,3 +1725,31 @@ Author:
     commy2
 ------------------------------------------- */
 #define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
+
+
+/* -------------------------------------------
+Macro: FILE_EXISTS
+    Check if a file exists
+
+    Reports "false" if the file does not exist.
+
+Parameters:
+    FILE - Path to the file
+
+Example:
+    (begin example)
+        // print "true" if file exists
+        systemChat str FILE_EXISTS("\A3\ui_f\data\igui\cfg\cursors\weapon_ca.paa");
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define FILE_EXISTS(FILE) \
+call {\
+    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
+    _control htmlLoad FILE;\
+    private _return = ctrlHTMLLoaded _control;\
+    ctrlDelete _control;\
+    _return\
+};
