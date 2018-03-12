@@ -1744,12 +1744,8 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define FILE_EXISTS(FILE) \
-call {\
-    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
-    if (isNull _control) then {\
-        _control = findDisplay 0 ctrlCreate ["RscHTML", -1];\
-    };\
+#define FILE_EXISTS(FILE) (call {\
+    private _control = (uiNamespace getVariable ["RscDisplayMain", displayNull]) ctrlCreate ["RscHTML", -1];\
     if (isNull _control) exitWith {\
         loadFile FILE != "";\
     };\
@@ -1757,4 +1753,4 @@ call {\
     private _return = ctrlHTMLLoaded _control;\
     ctrlDelete _control;\
     _return\
-};
+})
