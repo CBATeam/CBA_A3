@@ -43,8 +43,8 @@ if !([_setting, _value] call FUNC(check)) exitWith {
 private _currentValue = [_setting, _source] call FUNC(get);
 private _currentPriority = [_setting, _source] call FUNC(priority);
 
-if (_value isEqualTo _currentValue && {_priority isEqualTo _currentPriority}) exitWith {
-    WARNING_3("Value %1 and priority %2 are the same as previously for setting %3.",TO_STRING(_value),_priority,_setting);
+if ([_value, _priority] isEqualTo [_currentValue, _currentPriority]) exitWith {
+    //WARNING_3("Value %1 and priority %2 are the same as previously for setting %3.",TO_STRING(_value),_priority,_setting);
     false
 };
 
@@ -59,9 +59,19 @@ switch (toLower _source) do {
                 WARNING_1("Cannot change setting %1 defined in userconfig file.",_setting);
             };
 
+            private _defaultValue = [_setting, "default"] call FUNC(get);
+            private _defaultPriority = SANITIZE_PRIORITY(_setting,0,_source);
+
             private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
-            [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+
+            if ([_value, _priority] isEqualTo [_defaultValue, _defaultPriority]) then {
+                [_settingsHash, toLower _setting] call CBA_fnc_hashRem;
+            } else {
+                [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+            };
+
             profileNamespace setVariable [QGVAR(hash), _settingsHash];
+            saveProfileNamespace;
         };
 
         [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
@@ -78,8 +88,17 @@ switch (toLower _source) do {
                 WARNING_1("Cannot change setting %1 defined in mission settings file.",_setting);
             };
 
+            private _defaultValue = [_setting, "default"] call FUNC(get);
+            private _defaultPriority = SANITIZE_PRIORITY(_setting,0,_source);
+
             private _settingsHash = "Scenario" get3DENMissionAttribute QGVAR(hash);
-            [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+
+            if ([_value, _priority] isEqualTo [_defaultValue, _defaultPriority]) then {
+                [_settingsHash, toLower _setting] call CBA_fnc_hashRem;
+            } else {
+                [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+            };
+
             set3DENMissionAttributes [["Scenario", QGVAR(hash), _settingsHash]];
             findDisplay 313 setVariable [QGVAR(hash), _settingsHash];
         };
@@ -96,9 +115,19 @@ switch (toLower _source) do {
                     WARNING_1("Cannot change setting %1 defined in server config file.",_setting);
                 };
 
+                private _defaultValue = [_setting, "default"] call FUNC(get);
+                private _defaultPriority = SANITIZE_PRIORITY(_setting,0,_source);
+
                 private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
-                [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+
+                if ([_value, _priority] isEqualTo [_defaultValue, _defaultPriority]) then {
+                    [_settingsHash, toLower _setting] call CBA_fnc_hashRem;
+                } else {
+                    [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
+                };
+
                 profileNamespace setVariable [QGVAR(hash), _settingsHash];
+                saveProfileNamespace;
             };
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;

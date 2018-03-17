@@ -1,11 +1,12 @@
+// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_weaponComponents.sqf";
 
 #define LOGF diag_log text format
 #define TESTEXP if (!isNil "_result" && {_result isEqualTo _expected}) then {LOGF ["TEST: OK - %1 result", _result]} else {LOGF ["TEST: FAIL - %1 result; %2 expected", _result, _expected]}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-_fnc_name = "CBA_fnc_weaponComponents";
-_fnc = call compile _fnc_name;
+private _fnc_name = "CBA_fnc_weaponComponents";
+private _fnc = call compile _fnc_name;
 
 LOGF ["========== TEST ========== - %1 -", _fnc_name];
 if (!isNil "_fnc") then {LOGF ["TEST: OK - %1 defined", _fnc_name]} else {LOGF ["TEST: FAIL - %1 undefined"]};
@@ -24,6 +25,10 @@ TESTEXP;
 
 _result = ["arifle_MXM_DMS_LP_BI_snds_F"] call _fnc;
 _expected = ["arifle_mxm_f","optic_dms","acc_pointer_ir","bipod_01_f_snd","muzzle_snds_h"];
+TESTEXP;
+
+_result = ["arifle_ARX_ghex_ARCO_Pointer_Snds_F"] call _fnc; // scope = 1
+_expected = ["arifle_arx_ghex_f","optic_arco_ghex_f","acc_pointer_ir","muzzle_snds_65_ti_ghex_f"];
 TESTEXP;
 
 _result = "arifle_MXC_Black_F" call _fnc;

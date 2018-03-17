@@ -167,7 +167,14 @@ private _supportedKeys = [
 
 _supportedKeys = _supportedKeys apply {
     // strip away additional quote marks
-    private _keyName = parseSimpleArray format ["[%1]", keyName _x] select 0;
+    // Turkish keyboard which has a double quotes key (41), will throw an error in parseSimpleArray
+
+    private _formatedKeyname = format ["[%1]", keyName _x];
+    private _keyName = if (_formatedKeyname != "[""""""]") then {
+        (parseSimpleArray _formatedKeyname) select 0;
+    } else {
+        "''"
+    };
 
     [str _x, _keyName]
 };
@@ -191,6 +198,11 @@ GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
     [84, DIK_SYSRQ],
     [198, DIK_PAUSE]
 ];
+
+// manually add user action keys
+for "_i" from 0 to 19 do {
+    [GVAR(keyNamesHash), str (USER_1 + _i), actionName format ["User%1", _i + 1]] call CBA_fnc_hashSet;
+};
 
 GVAR(forbiddenKeys) = [
     DIK_XBOX_LEFT_TRIGGER,

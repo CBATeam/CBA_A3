@@ -8,6 +8,7 @@ Parameters:
     _command      - Chat command <STRING>
     _code         - Code to execute after command was entered. <CODE>
     _availableFor - "all", "admin" or "adminLogged" (optional, default: "admin") <STRING>
+    _thisArgs     - Arguments to pass to event chat handler code <ANY>
 
 Returns:
     _return - true: Success, false: Error <BOOLEAN>
@@ -15,7 +16,10 @@ Returns:
 Examples:
     (begin example)
         // '#skipTime 12' will make it night
-        ["skipTime", { parseNumber (_this select 0) remoteExec ["skipTime"]; }, "admin"] call CBA_fnc_registerChatCommand;
+        ["skipTime", {parseNumber (_this select 0) remoteExec ["skipTime"];}, "admin"] call CBA_fnc_registerChatCommand;
+
+        // "Detonate" will blow up the charge
+        ["Detonate", {_thisArgs setDamage 1}, "admin", _placedDemoCharge] call CBA_fnc_registerChatCommand;
     (end)
 
 Author:
@@ -31,7 +35,8 @@ if (isNil QGVAR(customChatCommands)) then {
 params [
     ["_command", "", [""]],
     ["_code", {}, [{}]],
-    ["_availableFor", "admin", [""]]
+    ["_availableFor", "admin", [""]],
+    ["_thisArgs", []]
 ];
 
 if (_command isEqualTo "") exitWith {
@@ -51,5 +56,5 @@ if !(_availableFor in ["all", "admin", "adminlogged"]) exitWith {
     false
 };
 
-GVAR(customChatCommands) setVariable [_command, [_code, _availableFor]];
+GVAR(customChatCommands) setVariable [_command, [_code, _availableFor, _thisArgs]];
 true

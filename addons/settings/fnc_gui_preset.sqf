@@ -15,7 +15,7 @@ private _ctrlCancel = _display displayCtrl IDC_PRESETS_CANCEL;
 private _ctrlDelete = _display displayCtrl IDC_PRESETS_DELETE;
 
 if (_mode == "save") then {
-    _ctrlTitle ctrlSetText localize "STR_DISP_INT_SAVE";
+    _ctrlTitle ctrlSetText format ["%1 (%2)", localize "STR_DISP_INT_SAVE", localize STR_SOURCE];
 
     // --- generate default name
     _ctrlEdit ctrlSetText format ["New: %1",
@@ -36,7 +36,7 @@ if (_mode == "save") then {
 
     ctrlSetFocus _ctrlEdit;
 } else {
-    _ctrlTitle ctrlSetText localize "STR_DISP_INT_LOAD";
+    _ctrlTitle ctrlSetText format ["%1 (%2)", localize "STR_DISP_INT_LOAD", localize STR_SOURCE];
 
     // --- hide edit box in "load" mode
     _ctrlName ctrlEnable false;

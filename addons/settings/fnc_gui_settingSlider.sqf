@@ -19,7 +19,7 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
     private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
+    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
@@ -27,10 +27,13 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
     _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+
+    // automatically check "overwrite client" for mission makers qol
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
 }];
 
 private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
-_ctrlSliderEdit ctrlSetText ([_currentValue, 1, _trailingDecimals] call CBA_fnc_formatNumber);
+_ctrlSliderEdit ctrlSetText ([_currentValue, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
 
 _ctrlSliderEdit setVariable [QGVAR(params), [_setting, _source, _trailingDecimals]];
 _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
@@ -55,6 +58,9 @@ _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
     _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+
+    // automatically check "overwrite client" for mission makers qol
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
 }];
 
 _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
@@ -70,7 +76,7 @@ _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
         _value = round _value;
     };
 
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
+    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
 
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
@@ -87,7 +93,7 @@ _controlsGroup setVariable [QFUNC(updateUI), {
     private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
 
     _ctrlSlider sliderSetPosition _value;
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals] call CBA_fnc_formatNumber);
+    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
 
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;

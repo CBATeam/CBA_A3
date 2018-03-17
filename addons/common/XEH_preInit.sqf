@@ -37,4 +37,22 @@ GVAR(addons) = _addons;
 // BWC
 #include "backwards_comp.sqf"
 
+// fix changing direction of remote units not working with zeus
+["ModuleCurator_F", "init", {
+    params ["_logic"];
+
+    _logic addEventHandler ["CuratorObjectEdited", {
+        params ["", "_unit"];
+
+        if (!local _unit) then {
+            private _dir = getDir _unit;
+            [_unit, _dir] remoteExec ["setDir", _unit];
+
+            if (_unit == formLeader _unit) then {
+                [_unit, _dir] remoteExec ["setFormDir", _unit];
+            };
+        };
+    }];
+}] call CBA_fnc_addClassEventHandler;
+
 ADDON = true;

@@ -41,8 +41,7 @@ private _return = [[], objNull] select (isNil {param [2]});
 
     if (_distance < _radius) then {
         if !(call _code) exitWith {}; // don't move up. condition has to return false, vs. has to return true. Can be nil!
-
-        if !(_return isEqualType objNull) then {
+        if (count _this > 2) then {
             _return pushBack _x;
         } else {
             _radius = _distance;

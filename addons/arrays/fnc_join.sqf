@@ -35,6 +35,6 @@ SCRIPT(join);
 
 // ----------------------------------------------------------------------------
 
-params [["_array",[]], ["_separator",""]];
+params [["_array", []], ["_separator", ""]];
 
 _array joinString _separator

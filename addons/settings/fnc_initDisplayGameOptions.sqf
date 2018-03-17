@@ -34,6 +34,36 @@ if (isServer) then {
     _ctrlClientButton ctrlSetTooltip "";
 };
 
+// ----- reload settings file if in editor
+#define FILE_EXISTS(file) \
+call {\
+    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
+    _control htmlLoad file;\
+    private _return = ctrlHTMLLoaded _control;\
+    ctrlDelete _control;\
+    _return\
+};
+
+if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
+    GVAR(missionConfig) call CBA_fnc_deleteNamespace;
+    GVAR(missionConfig) = [] call CBA_fnc_createNamespace;
+
+    private _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+    {
+        _x params ["_setting", "_value", "_priority"];
+
+        GVAR(missionConfig) setVariable [_setting, [_value, _priority]];
+    } forEach ([_missionConfig, false] call FUNC(parse));
+
+    {
+        private _setting = _x;
+
+        (GVAR(missionConfig) getVariable [_setting, []]) params ["_value", "_priority"];
+        [_setting, _value, _priority, "mission"] call FUNC(set);
+    } forEach GVAR(allSettings);
+};
+
 // ----- create temporary setting namespaces
 with uiNamespace do {
     GVAR(clientTemp)  = _display ctrlCreate ["RscText", -1];
@@ -46,18 +76,27 @@ private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddons
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
-private _categories = [];
-
-// ----- create settings lists
-#include "gui_createMenu.sqf"
+// ----- Add lists
+_display setVariable [QGVAR(lists),[]];
 
 // ----- fill addons list
+private _categories = [];
 {
-    private _category = _x;
-    private _index = _ctrlAddonList lbAdd _category;
-    _ctrlAddonList lbSetData [_index, str _index];
-    _display setVariable [str _index, _category];
-} forEach _categories;
+    (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
+
+    if !(_category in _categories) then {
+        private _categoryLocalized = _category;
+        if (isLocalized _category) then {
+            _categoryLocalized = localize _category;
+        };
+
+        private _index = _ctrlAddonList lbAdd _categoryLocalized;
+        _ctrlAddonList lbSetData [_index, str _index];
+        _display setVariable [str _index, _category];
+
+        _categories pushBack _category;
+    };
+} forEach GVAR(allSettings);
 
 lbSort _ctrlAddonList;
 _ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);
@@ -96,47 +135,41 @@ _ctrlButtonLoad ctrlShow false;
 _ctrlButtonLoad ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "load"] call FUNC(gui_preset)}];
 
 // ----- create export and import buttons
-// copyFromClipboard has no effect in MP, so only add button in SP
-if (!isMultiplayer) then {
-    private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
+private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
 
-    _ctrlButtonImport ctrlSetPosition [
-        POS_X(26.4),
-        POS_Y(20.5),
-        POS_W(6),
-        POS_H(1)
-    ];
+_ctrlButtonImport ctrlSetPosition [
+    POS_X(26.4),
+    POS_Y(20.5),
+    POS_W(6),
+    POS_H(1)
+];
 
-    _ctrlButtonImport ctrlCommit 0;
-    _ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
-    _ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
-    _ctrlButtonImport ctrlEnable false;
-    _ctrlButtonImport ctrlShow false;
-    _ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {
-        [copyFromClipboard, uiNamespace getVariable QGVAR(source)] call FUNC(import);
-    }];
-};
+_ctrlButtonImport ctrlCommit 0;
+_ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
+_ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
+_ctrlButtonImport ctrlEnable false;
+_ctrlButtonImport ctrlShow false;
+_ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {
+    [ctrlParent (_this select 0), "import"] call FUNC(gui_export);
+}];
 
-// copyToClipboard only works in SP or on the server, so only add button if isServer
-if (isServer) then {
-    private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
+private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT];
 
-    _ctrlButtonExport ctrlSetPosition [
-        POS_X(32.5),
-        POS_Y(20.5),
-        POS_W(6),
-        POS_H(1)
-    ];
+_ctrlButtonExport ctrlSetPosition [
+    POS_X(32.5),
+    POS_Y(20.5),
+    POS_W(6),
+    POS_H(1)
+];
 
-    _ctrlButtonExport ctrlCommit 0;
-    _ctrlButtonExport ctrlSetText localize LSTRING(ButtonExport);
-    _ctrlButtonExport ctrlSetTooltip localize LSTRING(ButtonExport_tooltip);
-    _ctrlButtonExport ctrlEnable false;
-    _ctrlButtonExport ctrlShow false;
-    _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
-        copyToClipboard ([uiNamespace getVariable QGVAR(source)] call FUNC(export));
-    }];
-};
+_ctrlButtonExport ctrlCommit 0;
+_ctrlButtonExport ctrlSetText localize LSTRING(ButtonExport);
+_ctrlButtonExport ctrlSetTooltip localize LSTRING(ButtonExport_tooltip);
+_ctrlButtonExport ctrlEnable false;
+_ctrlButtonExport ctrlShow false;
+_ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
+    [ctrlParent (_this select 0), "export"] call FUNC(gui_export);
+}];
 
 // ----- source buttons (server, mission, client)
 {

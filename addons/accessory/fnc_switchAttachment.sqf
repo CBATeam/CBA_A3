@@ -22,9 +22,9 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params ["_itemType","_switchTo"];
+params ["_itemType", "_switchTo"];
 
-private ["_currWeaponType","_currItem","_switchItem"];
+private ["_currWeaponType", "_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
 private _cw = currentWeapon _unit;
 
@@ -41,7 +41,16 @@ if (_currWeaponType < 0) exitWith {hint "You are not holding a weapon!"; false};
 #define __cfgWeapons configfile >> "CfgWeapons"
 #define __currItem __cfgWeapons >> _currItem
 
-_switchItem = if (_switchTo == "next") then {(__currItem >> "MRT_SwitchItemNextClass") call bis_fnc_getcfgdata} else {(__currItem >> "MRT_SwitchItemPrevClass") call bis_fnc_getcfgdata};
+// Get the next/previous item from the attachement's config, but ignore inherited values
+private _configs = if (_switchTo == "next") then {
+    configProperties [__currItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
+} else {
+    configProperties [__currItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
+};
+if (!(_configs isEqualTo [])) then {
+    _switchItem = getText (_configs select 0);
+};
+TRACE_3("",_currItem,_switchTo,_switchItem);
 
 if (!isNil "_switchItem") then {
     switch (_currWeaponType) do {
@@ -58,9 +67,9 @@ if (!isNil "_switchItem") then {
             _unit addSecondaryWeaponItem _switchItem;
         };
     };
-    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call bis_fnc_getcfgdata;
+    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call BIS_fnc_getCfgData;
     if (!isNil "_switchItemHintText") then {
-        hintSilent format ["%1",_switchItemHintText];
+        hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";
     ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;

@@ -36,7 +36,7 @@ if !(ISPROCESSED(_unit)) then {
     if (!isClass _eventClass) then {
         {
             _unit addEventHandler [_x, format ['call FUNC(%1)', _x]];
-        } forEach [XEH_EVENTS];
+        } forEach ([XEH_EVENTS] - ["FiredBis", "InitPost"]);
     };
 
     while {isClass _class} do {

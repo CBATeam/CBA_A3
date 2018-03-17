@@ -1,4 +1,3 @@
-
 class RscStructuredText;
 
 class RscTitles {
@@ -20,27 +19,6 @@ class RscTitles {
                 w = 40 * GUI_GRID_CENTER_W;
                 h = 10 * GUI_GRID_CENTER_H;
                 colorBackground[] = {1,0.2,0,0.8};
-            };
-        };
-    };
-};
-
-// debug console in virtual arsenal
-class RscControlsGroupNoScrollbars;
-
-class RscStandardDisplay;
-class RscDisplayMain: RscStandardDisplay {
-    class controls {
-        class GroupSingleplayer: RscControlsGroupNoScrollbars {
-            class Controls;
-        };
-
-        class GroupTutorials: GroupSingleplayer {
-            class Controls: Controls {
-                class Bootcamp;
-                class Arsenal: Bootcamp {
-                    onButtonClick = QUOTE(playMission [ARR_2('','PATHTOF(Scenarios\Arsenal.VR)')]);
-                };
             };
         };
     };

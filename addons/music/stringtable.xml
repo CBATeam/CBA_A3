@@ -1,6 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Package name="CBA">
-    <Key ID="STR_cba_music_Component">
-        <English>Community Base Addons - Music</English>
-    </Key>
-</Package>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Keybinding">
+        <Key ID="STR_cba_music_Component">
+            <English>Community Base Addons - Music</English>
+            <Japanese>Community Base Addons - 音楽</Japanese>
+            <Chinese>社群基礎模組 - 音樂</Chinese>
+            <Chinesesimp>社群基础模组 - 音乐</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Música</Portuguese>
+            <Russian>Community Base Addons - Музыка</Russian>
+        </Key>
+    </Package>
+</Project>

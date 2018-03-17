@@ -38,6 +38,9 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
         _ctrlDefault ctrlEnable !(_currentValue isEqualTo _defaultValue);
+
+        // automatically check "overwrite client" for mission makers qol
+        [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
     }];
 
     private _ctrlColorEdit = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _index);
@@ -68,6 +71,9 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
         _ctrlDefault ctrlEnable !(_currentValue isEqualTo _defaultValue);
+
+        // automatically check "overwrite client" for mission makers qol
+        [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
     }];
 
     _ctrlColorEdit ctrlAddEventHandler ["KillFocus", {

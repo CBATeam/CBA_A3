@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_waypointGarrison
+Script: fnc_waypointGarrison
 
 Description:
     Scripted waypoint that makes group garrision nearby buildings and static weapons.
@@ -10,6 +10,13 @@ Parameters:
 
 Returns:
     true <BOOLEAN>
+
+Examples:
+   (begin example)
+   _group addWaypoint [_position, 0] setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf []";
+
+   [_group, _position] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
+   (end)
 
 Author:
     commy2
@@ -31,7 +38,7 @@ private _buildings = (_position nearObjects ["Building", 50]) apply {_x building
         _x assignAsGunner (_staticWeapons deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        if (count _buildings > 0 && {random 1 < 0.93}) then {
+        if (count _buildings > 0 && {random 1 < 0.90}) then {
             private _building = selectRandom _buildings;
             private _position = POP_RAND(_building);
 

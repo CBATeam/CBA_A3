@@ -17,7 +17,7 @@ _debugConsole ctrlSetPosition [
 _debugConsole ctrlCommit 0;
 
 // --- adjust positions of all but a few controls
-#define EXCLUDE [0, IDC_RSCDEBUGCONSOLE_LINK, IDC_RSCDEBUGCONSOLE_TITLE, IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND, IDC_RSCDEBUGCONSOLE_EXPRESSIONTEXT, IDC_RSCDEBUGCONSOLE_EXPRESSION]
+#define EXCLUDE [0, IDC_RSCDEBUGCONSOLE_LINK, IDC_RSCDEBUGCONSOLE_TITLE, IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND, IDC_RSCDEBUGCONSOLE_EXPRESSIONTEXT, IDC_RSCDEBUGCONSOLE_EXPRESSION, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUT, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUTBACKGROUND]
 
 {
     if (ctrlParentControlsGroup _x == _debugConsole && {!(ctrlIDC _x in EXCLUDE)}) then {
@@ -37,16 +37,30 @@ _title ctrlSetText localize LSTRING(ExtendedDebugConsole);
 private _expression = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION;
 
 private _position = ctrlPosition _expression;
-_position set [3, safezoneH - 19.25 * GUI_GRID_H];
+_position set [3, safezoneH - 20.25 * GUI_GRID_H];
 
 _expression ctrlSetPosition _position;
 _expression ctrlCommit 0;
 
 // Save expression when hitting enter key inside expression text field
 _expression ctrlAddEventHandler ["KeyDown", {
-    params ["", "_key", "_shift"];
+    params ["_expression", "_key", "_shift"];
 
     if (_key in [DIK_RETURN, DIK_NUMPADENTER] && {!_shift}) then { // shift + enter is newline
+        // fix for enter key not working in MP
+        private _buttonLocalExec = ctrlParentControlsGroup _expression controlsGroupCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
+
+        if (isMultiplayer && {ctrlEnabled _buttonLocalExec}) then {
+            [
+                "executeButton",
+                [ctrlParent _buttonLocalExec, _buttonLocalExec],
+                "RscDisplayDebugPublic",
+                0
+            ] call compile preprocessFileLineNumbers "\A3\Ui_f\scripts\GUI\RscDebugConsole.sqf";
+
+            playSound "SoundClick";
+        };
+
         _this call FUNC(logStatement);
     };
     false
@@ -59,6 +73,17 @@ _position set [3, safezoneH - 18.25 * GUI_GRID_H];
 
 _expressionBackground ctrlSetPosition _position;
 _expressionBackground ctrlCommit 0;
+
+// --- EXPRESSION box output
+{
+    private _expressionOutput = _display displayCtrl _x;
+
+    _position = ctrlPosition _expressionOutput;
+    _position set [1, (_position select 1) + safezoneH - 26.05 * GUI_GRID_H];
+
+    _expressionOutput ctrlSetPosition _position;
+    _expressionOutput ctrlCommit 0;
+} forEach [IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUT, IDC_RSCDEBUGCONSOLE_EXPRESSIONOUTPUTBACKGROUND];
 
 // --- PREV button
 private _prevButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_PREV, _debugConsole];
@@ -96,7 +121,7 @@ _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
 _nextButton ctrlEnable (_statementIndex > 0);
 
 // --- EXEC buttons
-private _execButtonLocal = _display displayCtrl IDC_OK;
+private _execButtonLocal = _display displayCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
 _execButtonLocal ctrlAddEventHandler ["MouseButtonUp", {
     _this call FUNC(logStatement);
     false
@@ -191,3 +216,14 @@ FUNC(nextStatement) = {
     _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
     _nextButton ctrlEnable (_statementIndex > 0);
 };
+
+// remove forced pause for watch fields
+{
+    (_display displayCtrl _x) ctrlAddEventHandler ["SetFocus", {
+        _this spawn {
+            isNil {
+                (_this select 0) setVariable ["RscDebugConsole_watchPaused", false];
+            };
+        };
+    }];
+} forEach [IDC_RSCDEBUGCONSOLE_WATCHINPUT1, IDC_RSCDEBUGCONSOLE_WATCHINPUT2, IDC_RSCDEBUGCONSOLE_WATCHINPUT3, IDC_RSCDEBUGCONSOLE_WATCHINPUT4];

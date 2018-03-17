@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Strings">
         <Key ID="STR_CBA_Strings_Component">
             <English>Community Base Addons - Strings</English>
             <Japanese>Community Base Addons - ストリングス</Japanese>
+            <Chinese>社群基礎模組 - 字串</Chinese>
+            <Chinesesimp>社群基础模组 - 字串</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Palavras</Portuguese>
+            <Russian>Community Base Addons - Строки</Russian>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_DECIMAL_POINT">
             <English>.</English>
@@ -15,6 +19,9 @@
             <Spanish>,</Spanish>
             <Italian>,</Italian>
             <Japanese>,</Japanese>
+            <Chinese>.</Chinese>
+            <Chinesesimp>.</Chinesesimp>
+            <Portuguese>,</Portuguese>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
@@ -26,6 +33,9 @@
             <Spanish> </Spanish>
             <Italian> </Italian>
             <Japanese>,</Japanese>
+            <Chinese>,</Chinese>
+            <Chinesesimp>,</Chinesesimp>
+            <Portuguese>.</Portuguese>
         </Key>
     </Package>
 </Project>

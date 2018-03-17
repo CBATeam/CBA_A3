@@ -5,7 +5,7 @@ Description:
  Returns the magnitude of a 3D vector with the given i, j and k coordinates.
 
 Parameters:
- _vect a 3D vector [i,k,j]
+ _vect a 3D vector [i, k, j]
 
 Returns:
  the magnitude of the vector.

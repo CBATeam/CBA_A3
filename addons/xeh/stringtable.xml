@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="XEH">
         <Key ID="STR_CBA_XEH_Component">
             <English>Community Base Addons - Extended Event Handlers</English>
             <Japanese>Community Base Addons - 拡張型イベント ハンドラ</Japanese>
+            <Chinese>社群基礎模組 - 擴展事件處理器</Chinese>
+            <Chinesesimp>社群基础模组 - 扩展事件处理器</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Manipuladores Extendidos de Eventos</Portuguese>
+            <Russian>Community Base Addons - Расширенные Обработчики Событий</Russian>
         </Key>
     </Package>
 </Project>

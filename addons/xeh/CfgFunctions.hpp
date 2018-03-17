@@ -1,4 +1,3 @@
-
 class CfgFunctions {
     class CBA {
         class XEH {
@@ -65,6 +64,14 @@ class CfgFunctions {
         class GUI {
             class initDisplay {
                 file = PATHTOF(fnc_initDisplay.sqf);
+            };
+        };
+        class Misc {
+            class startLoadingScreen {
+                file = PATHTOF(fnc_startLoadingScreen.sqf);
+            };
+            class endLoadingScreen {
+                file = PATHTOF(fnc_endLoadingScreen.sqf);
             };
         };
     };

@@ -26,15 +26,11 @@ Author:
 private _maxLines = GVAR(projectileMaxLines) min 20;
 
 for "_index" from 0 to _maxLines do {
-
     if (_index <= (count GVAR(projectileData) - 1) ) then {
-
         private _currentEntry = GVAR(projectileData) select _index;
 
         if (!(isNil {_currentEntry})) then {
-
             private _projectileData = _currentEntry select 1;
-
             private _arrCount = count _projectileData;
             private _startSpeed = 0;
 
@@ -53,7 +49,6 @@ for "_index" from 0 to _maxLines do {
                 };
 
                 private _currentSpeed = _currentProjectileData select 1;
-
                 private _green = _currentSpeed / _startSpeed;
                 private _red = 1 - _green;
 

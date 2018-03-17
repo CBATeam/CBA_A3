@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Vectors">
         <Key ID="STR_CBA_Vectors_Component">
             <English>Community Base Addons - Vectors</English>
             <Japanese>Community Base Addons - ベクター</Japanese>
+            <Chinese>社群基礎模組 - 向量</Chinese>
+            <Chinesesimp>社群基础模组 - 向量</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Vetores</Portuguese>
+            <Russian>Community Base Addons - Векторы</Russian>
         </Key>
     </Package>
 </Project>

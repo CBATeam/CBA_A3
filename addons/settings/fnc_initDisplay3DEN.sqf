@@ -10,9 +10,14 @@ private _fnc_resetMissionSettings = {
 
     private _missionConfig = "";
 
-    if (getMissionConfigValue [QGVAR(hasSettingsFile), false]) then {
-        INFO("Loading mission settings file ...");
+    if (getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]) then {
         _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+        if (_missionConfig isEqualTo "") then {
+            INFO_1("Mission Config: File [%1] not found or empty.",MISSION_SETTINGS_FILE);
+        } else {
+            INFO_1("Mission Config: File [%1] loaded successfully.",MISSION_SETTINGS_FILE);
+        };
     };
 
     {
@@ -34,7 +39,7 @@ private _fnc_resetMissionSettings = {
             _settingInfo params ["_value", "_priority"];
 
             // convert boolean to number
-            _priority = [0,1,2] select _priority;
+            _priority = [0, 1, 2] select _priority;
 
             if ([_setting, _value] call FUNC(check)) then {
                 GVAR(mission) setVariable [_setting, [_value, _priority]];
