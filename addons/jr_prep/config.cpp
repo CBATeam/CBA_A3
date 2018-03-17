@@ -128,6 +128,22 @@ class CfgWeapons {
         };
     };
 
+    class mk20_base_F: Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
+
+    class arifle_Mk20C_F : mk20_base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
+    class arifle_Mk20_GL_F : mk20_base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete MuzzleSlot;
+        };
+    };
+
     class Tavor_base_F: Rifle_Base_F {
         class WeaponSlotsInfo;
     };
@@ -252,6 +268,7 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_01_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete CowsSlot;
             delete MuzzleSlot;
             delete PointerSlot;
         };
@@ -259,6 +276,7 @@ class CfgWeapons {
 
     class hgun_Pistol_heavy_02_F : Pistol_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete CowsSlot;
             delete MuzzleSlot;
             delete PointerSlot;
         };
