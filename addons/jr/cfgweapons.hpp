@@ -25,6 +25,14 @@ class CfgWeapons {
             };
         };
     };
+    class launch_MRAWS_base_F: Launcher_Base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.15, 0.5};
+                iconScale = 0.25;
+            };
+        };
+    };
 
     class EBR_base_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo;
