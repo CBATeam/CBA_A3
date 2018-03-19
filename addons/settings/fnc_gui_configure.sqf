@@ -70,7 +70,7 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlButtonLoad ctrlShow true;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureBase);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureBase);
 
     //--- emulate default scope selection
     switch (true) do {
@@ -126,5 +126,5 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlButtonLoad ctrlShow false;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureAddons);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureAddons);
 };
