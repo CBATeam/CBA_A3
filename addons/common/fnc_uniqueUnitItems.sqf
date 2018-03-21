@@ -2,7 +2,7 @@
 Function: CBA_fnc_uniqueUnitItems
 
 Description:
-    A function used to retrieve a unique list of items in the units inventory
+    Retrievs a unique list of items in the units inventory.
 
 Parameters:
     _unit           - Unit to retrieve the items from
