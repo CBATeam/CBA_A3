@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_unitItemsUnique
+Function: CBA_fnc_uniqueUnitItems
 
 Description:
     A function used to retrieve a unique list of items in the units inventory
@@ -13,7 +13,7 @@ Parameters:
 
 Example:
     (begin example)
-    _allItems = [player, true, false] call CBA_fnc_unitItemsUnique
+    _allItems = [player, true, false] call CBA_fnc_uniqueUnitItems
     (end)
 
 Returns:
@@ -23,7 +23,7 @@ Author:
     Dedmen
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-SCRIPT(unitItemsUnique);
+SCRIPT(uniqueUnitItems);
 
 params [["_unit", objNull, [objNull]], ["_weaponItems", true, [true]], ["_backpack", true, [true]], ["_vest", true, [true]], ["_uniform", true, [true]]];
 
@@ -37,9 +37,9 @@ if (_weaponItems) then {
     _allItems append (secondaryWeaponItems _unit);
     _allItems append (handgunItems _unit);
     _allItems append [
-                        primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit,
-                        primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit
-                     ];
+        primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit,
+        primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit
+     ];
 };
 
 _allItems arrayIntersect _allItems //Remove duplicates

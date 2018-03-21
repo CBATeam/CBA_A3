@@ -65,7 +65,7 @@ class CfgFunctions {
             PATHTO_FNC(removeWeapon);
             PATHTO_FNC(removeMagazine);
             PATHTO_FNC(removeItem);
-            PATHTO_FNC(unitItemsUnique);
+            PATHTO_FNC(uniqueUnitItems);
             PATHTO_FNC(weaponComponents);
             PATHTO_FNC(dropWeapon);
             PATHTO_FNC(dropMagazine);
