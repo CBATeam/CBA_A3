@@ -17,7 +17,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Data_F_Tank_Loadorder", "CBA_jr_prep"};
+        requiredAddons[] = {"CBA_jr_prep"};
         version = VERSION;
         authors[] = {"Robalo"};
     };
