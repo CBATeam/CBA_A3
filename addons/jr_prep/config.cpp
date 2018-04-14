@@ -8,7 +8,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F", "A3_Weapons_F_Mark", "A3_Weapons_F_Exp"};
+        requiredAddons[] = {"A3_Data_F_Tank_Loadorder"};
         version = VERSION;
     };
 };
@@ -31,6 +31,11 @@ class CfgWeapons {
     };
 
     class launch_Titan_base : Launcher_Base_F {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete PointerSlot;
+        };
+    };
+    class launch_MRAWS_base_F : Launcher_Base_F {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             delete PointerSlot;
         };
