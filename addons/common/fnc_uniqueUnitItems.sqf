@@ -40,6 +40,7 @@ if (_weaponItems) then {
         primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit,
         primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit
      ];
+     _allItems pushBack (_unit call CBA_fnc_binocularMagazine);
 };
 
 _allItems arrayIntersect _allItems //Remove duplicates
