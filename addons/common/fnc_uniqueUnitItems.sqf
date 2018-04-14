@@ -36,9 +36,11 @@ if (_weaponItems) then {
     _allItems append (primaryWeaponItems _unit);
     _allItems append (secondaryWeaponItems _unit);
     _allItems append (handgunItems _unit);
+    _allItems append (primaryWeaponMagazine _unit);
+    _allItems append (secondaryWeaponMagazine _unit);
+    _allItems append (handgunMagazine _unit);
     _allItems append [
-        primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit,
-        primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit
+        primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit
      ];
      _allItems pushBack (_unit call CBA_fnc_binocularMagazine);
 };
