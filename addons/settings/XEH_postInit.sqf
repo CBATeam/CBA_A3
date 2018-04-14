@@ -23,7 +23,7 @@ private _autosavedPresets = profileNamespace getVariable [QGVAR(autosavedPresets
 
 if !(allVariables GVAR(mission) isEqualTo []) then {
     private _preset = "mission" call FUNC(export);
-    private _presetName = format ["Autosave: %1 (%2)", localize LSTRING(ButtonMission), missionName];
+    private _presetName = format ["Autosave: %1 (%2)", LLSTRING(ButtonMission), missionName];
 
     [_presetsHash, _presetName, _preset] call CBA_fnc_hashSet;
 
@@ -37,7 +37,7 @@ if !(allVariables GVAR(mission) isEqualTo []) then {
 
 if (serverName != "") then {
     private _preset = "server" call FUNC(export);
-    private _presetName = format ["Autosave: %1 (%2)", localize LSTRING(ButtonServer), serverName];
+    private _presetName = format ["Autosave: %1 (%2)", LLSTRING(ButtonServer), serverName];
 
     [_presetsHash, _presetName, _preset] call CBA_fnc_hashSet;
 

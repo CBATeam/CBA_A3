@@ -35,7 +35,7 @@ _modifier params [["_shift", false, [false]], ["_ctrl", false, [false]], ["_alt"
 private _keyName = GVAR(keyNames) getVariable str _key;
 
 if (isNil "_keyName") then {
-    _keyName = format [localize LSTRING(unkownKey), _key];
+    _keyName = format [LLSTRING(unkownKey), _key];
 };
 
 // Build the full key combination name.

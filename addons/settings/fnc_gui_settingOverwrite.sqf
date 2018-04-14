@@ -111,16 +111,16 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 case ["client", "server"];
                 case ["mission", "server"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_server_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_server_tooltip);
                 };
                 case ["client", "mission"];
                 case ["server", "mission"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_mission_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_mission_tooltip);
                 };
                 case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_client_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip);
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
@@ -128,7 +128,7 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                         _ctrlLocked ctrlSetTooltip "";
                     } else {
                         _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                        _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_client_tooltip_server);
+                        _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                     };
                 };
             };

@@ -98,6 +98,6 @@ if (isServer) then {
     [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
 
-[[localize LSTRING(menu_button)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
+[[LLSTRING(menu_button)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
 
 ADDON = true;
