@@ -920,17 +920,17 @@ class CfgWeapons {
     class muzzle_snds_H_MG: muzzle_snds_H { // we were seriously lacking a MG suppressor since BI hid these (1.64)
         scope = 2;
         displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
-        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_tan_ca.paa";
+        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_tan_CA.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_tan_F";
     };
     class muzzle_snds_H_MG_blk_F: muzzle_snds_H_MG {
         displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
-        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_black_ca.paa";
+        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_black_CA.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_black_F";
     };
     class muzzle_snds_H_MG_khk_F: muzzle_snds_H_MG {
         displayName = "$STR_CBA_JR_cfgweapons_muzzle_snds_h_mg"; // 7.62 MG, can also be used on 6.5 and 5.56 MGs
-        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_green_ca.paa";
+        picture = "\a3\weapons_f_mark\Data\UI\gear_acca_snds_338_green_CA.paa";
         model = "\a3\weapons_f\acc\acca_snds_338_green_F";
     };
 };
