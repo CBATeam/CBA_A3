@@ -1725,3 +1725,36 @@ Author:
     commy2
 ------------------------------------------- */
 #define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
+
+/* -------------------------------------------
+Macro: FILE_EXISTS
+    Check if a file exists on machines with interface
+
+    Reports "false" if the file does not exist and throws an error in RPT.
+
+Parameters:
+    FILE - Path to the file
+
+Example:
+    (begin example)
+        // print "true" if file exists
+        systemChat str FILE_EXISTS("\A3\ui_f\data\igui\cfg\cursors\weapon_ca.paa");
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define FILE_EXISTS(FILE) (call {\
+    private _return = false;\
+    isNil {\
+        private _control = (uiNamespace getVariable ["RscDisplayMain", displayNull]) ctrlCreate ["RscHTML", -1];\
+        if (isNull _control) then {\
+            _return = loadFile (FILE) != "";\
+        } else {\
+            _control htmlLoad (FILE);\
+            _return = ctrlHTMLLoaded _control;\
+            ctrlDelete _control;\
+        };\
+    };\
+    _return\
+})

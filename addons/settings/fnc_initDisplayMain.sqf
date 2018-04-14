@@ -16,18 +16,7 @@ if (isClass (configFile >> "CfgPatches" >> QGVAR(userconfig))) then {
 private _userconfig = "";
 
 if (_file != "") then {
-    private _fileExists = false;
-
-    if (!isNull _display) then {
-        private _control = _display ctrlCreate ["RscHTML", -1];
-        _control htmlLoad _file;
-        _fileExists = ctrlHTMLLoaded _control;
-        ctrlDelete _control;
-    } else {
-        _fileExists = loadFile _file != "";
-    };
-
-    if (_fileExists) then {
+    if (FILE_EXISTS(_file)) then {
         INFO_1("Userconfig: File [%1] loaded successfully.",_file);
         _userconfig = _file;
     } else {
