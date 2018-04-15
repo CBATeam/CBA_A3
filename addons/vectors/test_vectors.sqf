@@ -247,6 +247,33 @@ _result = [[5,-5],[-10,0],-270] call CBA_fnc_vectRotate2D;
 _expected = [0,-20];
 TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
 
+// UNIT TESTS (vectRotate3D)
+_fn = "CBA_fnc_vectRotate3D";
+TEST_DEFINED("CBA_fnc_vectRotate3D","");
+
+_result = [[0,0,1],[0,0,1],0] call CBA_fnc_vectRotate3D;
+_expected = [0,0,1];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
+
+_result = [[0,0,1],[0,0,1],90] call CBA_fnc_vectRotate3D;
+_expected = [0,0,1];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
+
+_result = [[0,1,0],[0,0,-1],90] call CBA_fnc_vectRotate3D;
+_expected = [1,0,0];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
+
+_result = [[0,1,0],[0,0,-10],90] call CBA_fnc_vectRotate3D;
+_expected = [1,0,0];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
+
+_result = [[0,1,0],[1,0,0],90] call CBA_fnc_vectRotate3D;
+_expected = [0,0,1];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
+
+_result = [[0,1,0],[0,0,1],-45] call CBA_fnc_vectRotate3D;
+_expected = [0,sqrt(2)/2,sqrt(2)/2];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals,_fn);
 
 // UNIT TESTS (vectSubtract)
 _fn = "CBA_fnc_vectSubtract";
