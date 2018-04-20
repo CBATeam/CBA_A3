@@ -37,11 +37,11 @@ params [
     ["_condition", {}, [{}]],
     ["_statement", {}, [{}]],
     ["_args", []],
-    ["_timeout", 0, [0]],
+    ["_timeout", -1, [0]],
     ["_timeoutCode", {}, [{}]]
 ];
 
-if (_timeout == 0) then {
+if (_timeout < 0) then {
     GVAR(waitUntilAndExecArray) pushBack [_condition, _statement, _args];
 } else {
     GVAR(waitUntilAndExecArray) pushBack [{
