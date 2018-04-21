@@ -82,7 +82,12 @@ if (!isNull _display) then {
 };
 
 // create new progress bar
-_display = (uiNamespace getVariable "RscDisplayMission") createDisplay QGVAR(ProgressBar);
+if (_blockInput) then {
+    _display = (uiNamespace getVariable "RscDisplayMission") createDisplay QGVAR(ProgressBar);
+} else {
+    QGVAR(ProgressBar) cutRsc [QGVAR(ProgressBar), "PLAIN"];
+    _display = uiNamespace getVariable QGVAR(ProgressBar);
+};
 
 _display displayAddEventHandler ["KeyDown", {
     params ["_display", "_key", "_shift", "_control", "_alt"];

@@ -40,3 +40,11 @@ class GVAR(ProgressBar) {
         h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
     };
 };
+
+class RscTitles {
+    class GVAR(ProgressBar): GVAR(ProgressBar) {
+        duration = 1e+011;
+        fadeIn = 0;
+        fadeOut = 0;
+    };
+};
