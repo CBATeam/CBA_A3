@@ -5,6 +5,7 @@ Description:
     Opens a progress bar. Closes the currently active progress bar.
 
 Parameters:
+    _title      - Title of the progress bar <STRING>
     _condition  - Execute every frame. If reports false, close the progress bar <CODE>
     _time       - Time for the progress bar to complete
     _onSuccess  - Script to execute if the progress bar completed <CODE>
@@ -75,17 +76,21 @@ if (isNull _display) then {
 
         private _arguments = _display getVariable QGVAR(arguments);
         private _onFailure = _display getVariable QGVAR(onFailure);
+        private _allowClose = _display getVariable QGVAR(allowClose);
+        private _blockInput = _display getVariable QGVAR(blockInput);
 
-        if (_key isEqualTo DIK_ESCAPE) then {
+        if (_allowClose && {_key isEqualTo DIK_ESCAPE}) then {
+            _display closeDisplay 0;
+
             // close display, execute on failure script
-            [_display, _arguments, _onFailure] spawn {
-                isNil {
-                    _this#0 closeDisplay 0;
-                    _this#1 call _this#2;
-                };
+            [_arguments, _onFailure] spawn {
+                isNil {_this#0 call _this#1};
             };
+
+            _blockInput = true;
         };
-        true
+
+        _blockInput
     }];
 
     private _fnc_check = {
@@ -103,12 +108,11 @@ if (isNull _display) then {
         private _onFailure = _display getVariable QGVAR(onFailure);
 
         if (!_continue) exitWith {
+            _display closeDisplay 0;
+
             // close display, execute on failure script
-            [_display, _arguments, _onFailure] spawn {
-                isNil {
-                    _this#0 closeDisplay 0;
-                    _this#1 call _this#2;
-                };
+            [_arguments, _onFailure] spawn {
+                isNil {_this#0 call _this#1};
             };
         };
 
@@ -117,12 +121,11 @@ if (isNull _display) then {
         private _runTime = CBA_missionTime - _startTime;
 
         if (_runTime > _duration) exitWith {
+            _display closeDisplay 0;
+
             // close display, execute on success script
-            [_display, _arguments, _onSuccess] spawn {
-                isNil {
-                    _this#0 closeDisplay 0;
-                    _this#1 call _this#2;
-                };
+            [_arguments, _onSuccess] spawn {
+                isNil {_this#0 call _this#1};
             };
         };
 
@@ -139,9 +142,7 @@ if (isNull _display) then {
 
     // close display, execute on failure script
     [_arguments, _onFailure] spawn {
-        isNil {
-            _this#1 call _this#2;
-        };
+        isNil {_this#0 call _this#1};
     };
 };
 
@@ -154,3 +155,5 @@ _display setVariable [QGVAR(arguments), _arguments];
 _display setVariable [QGVAR(condition), _condition];
 _display setVariable [QGVAR(onSuccess), _onSuccess];
 _display setVariable [QGVAR(onFailure), _onFailure];
+_display setVariable [QGVAR(allowClose), _allowClose];
+_display setVariable [QGVAR(blockInput), _blockInput];
