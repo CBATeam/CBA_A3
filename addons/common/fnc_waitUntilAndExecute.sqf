@@ -3,7 +3,8 @@ Function: CBA_fnc_waitUntilAndExecute
 
 Description:
     Executes a code once in unscheduled environment after a condition is true.
-    It's also possible to add a timeout, in which case a different code is executed.
+    It's also possible to add a timeout >= 0, in which case a different code is executed.
+    Then it will be waited until _timeout time has elapsed or _condition evaluates to true.
 
 Parameters:
     _condition   - The function to evaluate as condition. <CODE>
