@@ -2,6 +2,7 @@ class RscText;
 class RscProgress;
 
 class GVAR(ProgressBar) {
+    onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];
     idd = -1;
     controls[] = {"Background", "TitleBackground", "ProgressBar", "TitleText"};
 
