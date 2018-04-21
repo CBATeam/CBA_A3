@@ -16,10 +16,10 @@ class GVAR(ProgressBar) {
         style = ST_CENTER;
         sizeEx = 1 * GUI_GRID_CENTER_H;
         colorBackground[] = {0,0,0,0.5};
-        x = 1 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X;
-        y = 0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y;
-        w = 38 * GUI_GRID_CENTER_W;
-        h = 1 * GUI_GRID_CENTER_H;
+        x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),X)', 0];
+        y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),Y)', 0];
+        w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),W)', 0];
+        h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
     };
 
     class TitleText: TitleBackground {
@@ -33,9 +33,9 @@ class GVAR(ProgressBar) {
         colorFrame[] = {0,0,0,0.5};
         colorBar[] = GUI_BCG_COLOR;
         texture = "#(argb,8,8,3)color(1,1,1,0.7)";
-        x = 1 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X;
-        y = 0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y;
-        w = 38 * GUI_GRID_CENTER_W;
-        h = 1 * GUI_GRID_CENTER_H;
+        x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),X)', 0];
+        y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),Y)', 0];
+        w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),W)', 0];
+        h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
     };
 };

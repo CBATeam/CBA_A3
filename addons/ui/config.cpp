@@ -20,6 +20,7 @@ class CfgPatches {
 #include "CfgFunctions.hpp"
 
 #include "ProgressBar.hpp"
+#include "CfgUIGrids.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
