@@ -21,9 +21,9 @@ Author:
 #include "script_component.hpp"
 
 private _uid = getPlayerUID player;
-private _whitelist = getArray configFile/QGVAR(whitelist);
+private _whitelist = getArray (configFile >> QGVAR(whitelist));
 
-private _cfgMissionList = missionConfigFile/QGVAR(whitelist);
+private _cfgMissionList = missionConfigFile >> QGVAR(whitelist);
 if (isArray _cfgMissionList) then {
     _whitelist append getArray _cfgMissionList;
 };
