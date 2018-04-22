@@ -12,7 +12,8 @@ Parameters:
     _onFailure  - Script to execute if the progress bar was aborted prematurely <CODE>
     _arguments  - Arguments passed to the scripts (optional, default: []) <ANY>
     _allowClose - Allow ESC key to abort the progress bar (optional, default: true) <BOOLEAN>
-    _blockInput - (optional, default: true) <BOOLEAN>
+    _blockInput - true: block keyboard + mouse,
+        false: block mouse, but only if _allowClose is true (optional, default: true) <BOOLEAN>
 
 Arguments:
     _this:
@@ -75,50 +76,52 @@ if (!isNull _display) then {
     private _arguments = _display getVariable QGVAR(arguments);
     private _onFailure = _display getVariable QGVAR(onFailure);
 
-    // close display, execute on failure script
-    _display closeDisplay 0;
+    private _startTime = _display getVariable QGVAR(startTime);
+    private _totalTime = _display getVariable QGVAR(totalTime);
+    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
 
-    [_arguments, _onFailure] spawn {
-        isNil {
-            _this#0 call _this#1;
-        };
-    };
+    _display closeDisplay 0;
+    [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
 };
 
 // create new progress bar
-if (_blockInput) then {
+private _blockMouse = _blockInput || _allowClose;
+
+if (_blockMouse) then {
     _display = (uiNamespace getVariable "RscDisplayMission") createDisplay QGVAR(ProgressBar);
+
+    _display displayAddEventHandler ["KeyDown", {
+        params ["_display", "_key", "_shift", "_control", "_alt"];
+
+        private _arguments = _display getVariable QGVAR(arguments);
+        private _onFailure = _display getVariable QGVAR(onFailure);
+        private _allowClose = _display getVariable QGVAR(allowClose);
+        private _blockInput = _display getVariable QGVAR(blockInput);
+
+        if (_allowClose && {_key isEqualTo DIK_ESCAPE}) then {
+            private _startTime = _display getVariable QGVAR(startTime);
+            private _totalTime = _display getVariable QGVAR(totalTime);
+            private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+            _display closeDisplay 0;
+            [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+
+            _blockInput = true;
+        };
+
+        _blockInput
+    }];
 } else {
     QGVAR(ProgressBar) cutRsc [QGVAR(ProgressBar), "PLAIN"];
     _display = uiNamespace getVariable QGVAR(ProgressBar);
 };
 
-_display displayAddEventHandler ["KeyDown", {
-    params ["_display", "_key", "_shift", "_control", "_alt"];
-
-    private _arguments = _display getVariable QGVAR(arguments);
-    private _onFailure = _display getVariable QGVAR(onFailure);
-    private _allowClose = _display getVariable QGVAR(allowClose);
-    private _blockInput = _display getVariable QGVAR(blockInput);
-
-    if (_allowClose && {_key isEqualTo DIK_ESCAPE}) then {
-        private _startTime = _display getVariable QGVAR(startTime);
-        private _totalTime = _display getVariable QGVAR(totalTime);
-        private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
-
-        // close display, execute on failure script
-        _display closeDisplay 0;
-
-        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
-
-        _blockInput = true;
-    };
-
-    _blockInput
-}];
-
 private _fnc_check = {
-    params ["_display"];
+    private _display = uiNamespace getVariable [QGVAR(ProgressBar), displayNull];
+
+    if (isNull _display) exitWith {
+        removeMissionEventHandler ["Draw3D", _thisEventHandler];
+    };
 
     private _arguments = _display getVariable QGVAR(arguments);
     private _condition = _display getVariable QGVAR(condition);
@@ -136,16 +139,12 @@ private _fnc_check = {
     private _onFailure = _display getVariable QGVAR(onFailure);
 
     if (!_continue) exitWith {
-        // close display, execute on failure script
         _display closeDisplay 0;
-
         [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
 
     if (_elapsedTime > _totalTime) exitWith {
-        // close display, execute on success script
         _display closeDisplay 0;
-
         [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
 
@@ -153,8 +152,12 @@ private _fnc_check = {
     _ctrlBar progressSetPosition (_elapsedTime / _totalTime);
 };
 
-_display displayAddEventHandler ["MouseMoving", _fnc_check];
-_display displayAddEventHandler ["MouseHolding", _fnc_check];
+if (_blockMouse) then {
+    _display displayAddEventHandler ["MouseMoving", _fnc_check];
+    _display displayAddEventHandler ["MouseHolding", _fnc_check];
+} else {
+    addMissionEventHandler ["Draw3D", _fnc_check];
+};
 
 private _ctrlTitle = _display displayCtrl IDC_PROGRESSBAR_TITLE;
 _ctrlTitle ctrlSetText _title;
