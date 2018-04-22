@@ -7,7 +7,7 @@ Description:
 Parameters:
     _title      - Title of the progress bar <STRING>
     _condition  - Execute every frame. If reports false, close the progress bar <CODE>
-    _time       - Time for the progress bar to complete
+    _totalTime  - Time for the progress bar to complete
     _onSuccess  - Script to execute if the progress bar completed <CODE>
     _onFailure  - Script to execute if the progress bar was aborted prematurely <CODE>
     _arguments  - Arguments passed to the scripts (optional, default: []) <ANY>
@@ -15,7 +15,11 @@ Parameters:
     _blockInput - (optional, default: true) <BOOLEAN>
 
 Arguments:
-    _this - same as _arguments <ANY>
+    _this:
+        #0 - same as _arguments <ANY>
+        #1 - true: success, false: failure <BOOLEAN>
+        #2 - elapsed time, not more than _totalTime <NUMBER>
+        #3 - total time, same as _totalTime <NUMBER>
 
 Returns:
     Nothing
@@ -40,7 +44,7 @@ if (canSuspend) exitWith {
 params [
     ["_title", "", [""]],
     ["_condition", {}, [{}, ""]],
-    ["_time", 0, [0]],
+    ["_totalTime", 0, [0]],
     ["_onSuccess", {}, [{}, ""]],
     ["_onFailure", {}, [{}, ""]],
     ["_arguments", []],
@@ -98,14 +102,14 @@ _display displayAddEventHandler ["KeyDown", {
     private _blockInput = _display getVariable QGVAR(blockInput);
 
     if (_allowClose && {_key isEqualTo DIK_ESCAPE}) then {
+        private _startTime = _display getVariable QGVAR(startTime);
+        private _totalTime = _display getVariable QGVAR(totalTime);
+        private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
         // close display, execute on failure script
         _display closeDisplay 0;
 
-        [_arguments, _onFailure] spawn {
-            isNil {
-                _this#0 call _this#1;
-            };
-        };
+        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
 
         _blockInput = true;
     };
@@ -119,8 +123,12 @@ private _fnc_check = {
     private _arguments = _display getVariable QGVAR(arguments);
     private _condition = _display getVariable QGVAR(condition);
 
-    private _continue = [_arguments, _condition] call {
-        private ["_display", "_arguments", "_condition"];
+    private _startTime = _display getVariable QGVAR(startTime);
+    private _totalTime = _display getVariable QGVAR(totalTime);
+    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+    private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
+        private ["_display", "_arguments", "_condition", "_startTime", "_totalTime", "_elapsedTime"];
         _this#0 call _this#1;
     };
 
@@ -131,30 +139,18 @@ private _fnc_check = {
         // close display, execute on failure script
         _display closeDisplay 0;
 
-        [_arguments, _onFailure] spawn {
-            isNil {
-                _this#0 call _this#1;
-            };
-        };
+        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
 
-    private _startTime = _display getVariable QGVAR(start);
-    private _duration = _display getVariable QGVAR(duration);
-    private _runTime = CBA_missionTime - _startTime;
-
-    if (_runTime > _duration) exitWith {
+    if (_elapsedTime > _totalTime) exitWith {
         // close display, execute on success script
         _display closeDisplay 0;
 
-        [_arguments, _onSuccess] spawn {
-            isNil {
-                _this#0 call _this#1;
-            };
-        };
+        [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
 
     private _ctrlBar = _display displayCtrl IDC_PROGRESSBAR_BAR;
-    _ctrlBar progressSetPosition (_runTime / _duration);
+    _ctrlBar progressSetPosition (_elapsedTime / _totalTime);
 };
 
 _display displayAddEventHandler ["MouseMoving", _fnc_check];
@@ -163,8 +159,8 @@ _display displayAddEventHandler ["MouseHolding", _fnc_check];
 private _ctrlTitle = _display displayCtrl IDC_PROGRESSBAR_TITLE;
 _ctrlTitle ctrlSetText _title;
 
-_display setVariable [QGVAR(start), CBA_missionTime];
-_display setVariable [QGVAR(duration), _time];
+_display setVariable [QGVAR(startTime), CBA_missionTime];
+_display setVariable [QGVAR(totalTime), _totalTime];
 _display setVariable [QGVAR(arguments), _arguments];
 _display setVariable [QGVAR(condition), _condition];
 _display setVariable [QGVAR(onSuccess), _onSuccess];
