@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_display
+Function: CBA_fnc_progressBar
 
 Description:
     Opens a progress bar. Closes the currently active progress bar.
@@ -22,7 +22,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["progress bar", {true}, 5, {hint "done"}, {hint "aborted"}] call CBA_fnc_display;
+        ["progress bar", {true}, 5, {hint "done"}, {hint "aborted"}] call CBA_fnc_progressBar;
     (end)
 
 Author:
