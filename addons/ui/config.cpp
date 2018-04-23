@@ -19,7 +19,7 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
-#include "RscTitles.hpp"
+#include "ProgressBar.hpp"
 #include "CfgUIGrids.hpp"
 
 //-----------------------------------------------------------------------------
