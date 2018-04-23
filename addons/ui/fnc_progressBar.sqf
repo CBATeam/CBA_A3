@@ -38,8 +38,7 @@ Author:
 if (!hasInterface) exitWith {};
 
 if (canSuspend) exitWith {
-    isNil (uiNamespace getVariable _fnc_scriptName);
-    nil;
+    [CBA_fnc_progressBar, _this] call CBA_fnc_directCall;
 };
 
 params [
@@ -143,7 +142,7 @@ private _fnc_check = {
         [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
 
-    if (_elapsedTime > _totalTime) exitWith {
+    if (_elapsedTime >= _totalTime) exitWith {
         _display closeDisplay 0;
         [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
     };
