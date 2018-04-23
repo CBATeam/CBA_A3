@@ -7,7 +7,7 @@ Description:
 Parameters:
     _title      - Title of the progress bar <STRING>
     _condition  - Execute every frame. If reports false, close the progress bar <CODE>
-    _totalTime  - Time for the progress bar to complete
+    _totalTime  - Time for the progress bar to complete <NUMBER>
     _onSuccess  - Script to execute if the progress bar completed <CODE>
     _onFailure  - Script to execute if the progress bar was aborted prematurely <CODE>
     _arguments  - Arguments passed to the scripts (optional, default: []) <ANY>
