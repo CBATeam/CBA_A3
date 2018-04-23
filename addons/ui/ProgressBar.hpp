@@ -1,6 +1,7 @@
 class RscControlsGroupNoScrollbars;
 class RscText;
 class RscProgress;
+class RscMapControl;
 
 class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
     onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];
@@ -35,6 +36,12 @@ class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
             idc = IDC_PROGRESSBAR_TITLE;
             colorBackground[] = {0,0,0,0};
             colorText[] = {1,1,1,1};
+        };
+
+        class Update: RscMapControl {
+            onDraw = QUOTE(call (ctrlParentControlsGroup (_this select 0) getVariable 'GVAR(EachFrame)'));
+            w = 0;
+            h = 0;
         };
     };
 };
