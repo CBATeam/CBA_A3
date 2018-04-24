@@ -20,9 +20,9 @@
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
-#define IDD_PROGRESSBAR 127400
 #define IDC_PROGRESSBAR_TITLE 10
 #define IDC_PROGRESSBAR_BAR 11
+#define IDC_PROGRESSBAR_BACKGROUND 12
 
 #define IDC_ADDON_CONTROLS 127303
 #define IDC_ADDON_OPTIONS 127307
@@ -31,15 +31,6 @@
 #define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
-
-#define CLOSE(control) call {\
-    private _display = ctrlParent (control);\
-    if (ctrlIDD _display isEqualTo IDD_PROGRESSBAR) then {\
-        _display closeDisplay 0;\
-    } else {\
-        ctrlDelete (control);\
-    };\
-};
 
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"

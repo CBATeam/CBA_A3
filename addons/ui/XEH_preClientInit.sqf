@@ -5,4 +5,4 @@ LOG(MSG_INIT);
 call COMPILE_FILE(flexiMenu\init);
 
 private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
-CLOSE(_control);
+_control ctrlShow false;

@@ -72,94 +72,74 @@ if (_onFailure isEqualType "") then {
     _onFailure = compile _onFailure;
 };
 
-private _display = uiNamespace getVariable "RscDisplayMission";
+// show progress bar with new title
 private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
-
-if (!isNull _control) then {
-    // run failure code on previous progress bar
-    private _arguments = _control getVariable QGVAR(arguments);
-    private _onFailure = _control getVariable QGVAR(onFailure);
-
-    private _startTime = _control getVariable QGVAR(startTime);
-    private _totalTime = _control getVariable QGVAR(totalTime);
-    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
-
-    CLOSE(_control);
-    [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
-};
-
-// create new progress bar
-if (_blockMouse) then {
-    private _progressBar = _display createDisplay QGVAR(ProgressBarDisplay);
-
-    _progressBar displayAddEventHandler ["KeyDown", {
-        params ["", "_key", "_shift", "_control", "_alt"];
-        private _control = uiNamespace getVariable QGVAR(ProgressBar);
-
-        private _arguments = _control getVariable QGVAR(arguments);
-        private _onFailure = _control getVariable QGVAR(onFailure);
-        private _allowClose = _control getVariable QGVAR(allowClose);
-        private _blockKeys = _control getVariable QGVAR(blockKeys);
-
-        if (_allowClose && {_key isEqualTo DIK_ESCAPE}) then {
-            private _startTime = _control getVariable QGVAR(startTime);
-            private _totalTime = _control getVariable QGVAR(totalTime);
-            private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
-
-            CLOSE(_control);
-            [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
-
-            _blockKeys = true;
-        };
-
-        _blockKeys
-    }];
-} else {
-    _display ctrlCreate [QGVAR(ProgressBar), -1];
-};
-
-_control = uiNamespace getVariable QGVAR(ProgressBar);
-
-_control setVariable [QGVAR(EachFrame), {
-    private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
-
-    private _arguments = _control getVariable QGVAR(arguments);
-    private _condition = _control getVariable QGVAR(condition);
-
-    private _startTime = _control getVariable QGVAR(startTime);
-    private _totalTime = _control getVariable QGVAR(totalTime);
-    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
-
-    private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
-        private ["_control", "_arguments", "_condition", "_startTime", "_totalTime", "_elapsedTime"];
-        _this#0 call _this#1;
-    };
-
-    private _onSuccess = _control getVariable QGVAR(onSuccess);
-    private _onFailure = _control getVariable QGVAR(onFailure);
-
-    if (!_continue) exitWith {
-        CLOSE(_control);
-        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
-    };
-
-    if (_elapsedTime >= _totalTime) exitWith {
-        CLOSE(_control);
-        [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
-    };
-
-    private _ctrlBar = _control controlsGroupCtrl IDC_PROGRESSBAR_BAR;
-    _ctrlBar progressSetPosition (_elapsedTime / _totalTime);
-}];
+_control ctrlShow true;
 
 private _ctrlTitle = _control controlsGroupCtrl IDC_PROGRESSBAR_TITLE;
 _ctrlTitle ctrlSetText _title;
 
-_control setVariable [QGVAR(startTime), CBA_missionTime];
-_control setVariable [QGVAR(totalTime), _totalTime];
-_control setVariable [QGVAR(arguments), _arguments];
-_control setVariable [QGVAR(condition), _condition];
-_control setVariable [QGVAR(onSuccess), _onSuccess];
-_control setVariable [QGVAR(onFailure), _onFailure];
-_control setVariable [QGVAR(allowClose), _allowClose];
-_control setVariable [QGVAR(blockKeys), _blockKeys];
+if (isNil QGVAR(ProgressBarParams)) then {
+    // update progress bar, run condition
+    addMissionEventHandler ["EachFrame", {
+        private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
+
+        GVAR(ProgressBarParams) params ["_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime"];
+        private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+        private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
+            private ["_control", "_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime", "_elapsedTime"];
+            _this#0 call _this#1;
+        };
+
+        if (!_continue) exitWith {
+            removeMissionEventHandler ["EachFrame", _thisEventHandler];
+            GVAR(ProgressBarParams) = nil;
+            _control ctrlShow false;
+            [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+        };
+
+        if (_elapsedTime >= _totalTime) exitWith {
+            removeMissionEventHandler ["EachFrame", _thisEventHandler];
+            GVAR(ProgressBarParams) = nil;
+            _control ctrlShow false;
+            [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+        };
+
+        private _ctrlBar = _control controlsGroupCtrl IDC_PROGRESSBAR_BAR;
+        _ctrlBar progressSetPosition (_elapsedTime / _totalTime);
+    }];
+} else {
+    // run failure code on previous progress bar
+    GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime"];
+    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+    [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+};
+
+GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTime, _totalTime, _blockMouse, _blockKeys, _allowClose];
+
+// create empty display to block input
+if (_blockMouse) then {
+    private _blockInputDisplay = ctrlParent _control createDisplay "RscDisplayEmpty";
+
+    _blockInputDisplay displayAddEventHandler ["KeyDown", {
+        params ["", "_key", "_shift", "_control", "_alt"];
+        private _control = uiNamespace getVariable QGVAR(ProgressBar);
+
+        GVAR(ProgressBarParams) params ["", "", "", "", "", "", "_blockMouse", "_blockKeys", "_allowClose"];
+        private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+        if (_key isEqualTo DIK_ESCAPE) then {
+            if (_allowClose) then {
+                // let progressbar handler fail next frame
+                GVAR(ProgressBarParams) set [1, {false}];
+                _blockKeys = true;
+            } else {
+                _blockKeys = false;
+            };
+        };
+
+        _blockKeys
+    }];
+};

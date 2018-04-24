@@ -2,3 +2,4 @@
 
 PREP(initDisplayInterrupt);
 PREP(initDisplayMultiplayerSetup);
+PREP(initDisplayMission);

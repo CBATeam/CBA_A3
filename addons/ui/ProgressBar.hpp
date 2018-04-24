@@ -1,10 +1,8 @@
 class RscControlsGroupNoScrollbars;
 class RscText;
 class RscProgress;
-class RscMapControl;
 
 class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
-    onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];
     x = "safezoneXAbs";
     y = "safezoneY";
     w = "safezoneWAbs";
@@ -12,6 +10,7 @@ class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
 
     class controls {
         class TitleBackground: RscText {
+            idc = IDC_PROGRESSBAR_BACKGROUND;
             style = ST_CENTER;
             sizeEx = 1 * GUI_GRID_CENTER_H;
             colorBackground[] = {0,0,0,0.5};
@@ -37,19 +36,5 @@ class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
             colorBackground[] = {0,0,0,0};
             colorText[] = {1,1,1,1};
         };
-
-        class Update: RscMapControl {
-            onDraw = QUOTE(call (ctrlParentControlsGroup (_this select 0) getVariable 'GVAR(EachFrame)'));
-            w = 0;
-            h = 0;
-        };
-    };
-};
-
-class GVAR(ProgressBarDisplay) {
-    idd = IDD_PROGRESSBAR;
-
-    class controls {
-        class GVAR(ProgressBar): GVAR(ProgressBar) {};
     };
 };
