@@ -1,14 +1,25 @@
-class RscControlsGroupNoScrollbars;
 class RscText;
 class RscProgress;
+class RscMapControl;
 
-class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
-    x = "safezoneXAbs";
-    y = "safezoneY";
-    w = "safezoneWAbs";
-    h = "safezoneH";
+class RscTitles {
+    class GVAR(ProgressBar) {
+        onLoad = call (uiNamespace getVariable 'FUNC(initProgressBar)');
+        idd = -1;
+        duration = 1e+11;
+        fadeIn = 0.2;
+        fadeOut = 0.2;
 
-    class controls {
+        controls[] = {"Background", "TitleBackground", "ProgressBar", "TitleText", "Script"};
+
+        class Background: RscText {
+            colorBackground[] = {0,0,0,0};
+            x = "safezoneXAbs";
+            y = "safezoneY";
+            w = "safezoneWAbs";
+            h = "safezoneH";
+        };
+
         class TitleBackground: RscText {
             idc = IDC_PROGRESSBAR_BACKGROUND;
             style = ST_CENTER;
@@ -18,6 +29,12 @@ class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
             y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),Y)', 0];
             w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),W)', 0];
             h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
+        };
+
+        class TitleText: TitleBackground {
+            idc = IDC_PROGRESSBAR_TITLE;
+            colorBackground[] = {0,0,0,0};
+            colorText[] = {1,1,1,1};
         };
 
         class ProgressBar: RscProgress {
@@ -31,10 +48,10 @@ class GVAR(ProgressBar): RscControlsGroupNoScrollbars {
             h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
         };
 
-        class TitleText: TitleBackground {
-            idc = IDC_PROGRESSBAR_TITLE;
-            colorBackground[] = {0,0,0,0};
-            colorText[] = {1,1,1,1};
+        class Script: RscMapControl {
+            onDraw = call (ctrlParent (_this select 0) getVariable 'GVAR(script)');
+            w = 0;
+            h = 0;
         };
     };
 };
