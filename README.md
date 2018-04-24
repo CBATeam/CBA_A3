@@ -1,5 +1,5 @@
 # Community Base Addons
-[![](https://travis-ci.org/CBATeam/CBA_A3.svg?style=flat-square)](https://travis-ci.org/CBATeam/CBA_A3)
+[![](https://img.shields.io/travis/CBATeam/CBA_A3.svg?style=flat-square)](https://travis-ci.org/CBATeam/CBA_A3)
 [![](https://img.shields.io/badge/Changelog-Link-orange.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/issues?q=milestone%3A3.6+is%3Aclosed)
 [![](https://img.shields.io/badge/Release-3.6.0-blue.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/releases/tag/v3.6.1.180131)
 [![](https://img.shields.io/badge/Github-Wiki-lightgrey.svg?style=flat-square)](https://github.com/CBATeam/CBA_A3/wiki)

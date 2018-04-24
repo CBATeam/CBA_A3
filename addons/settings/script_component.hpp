@@ -93,13 +93,13 @@
 
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
 
-#define CAN_SET_SERVER_SETTINGS ((isServer || {IS_ADMIN_LOGGED}) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
+#define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
-#define CAN_SET_MISSION_SETTINGS (is3den && {!(missionName in ["", "tempMissionSP", "tempMissionMP"])}) // in editor with existing mission.sqm
+#define CAN_SET_MISSION_SETTINGS is3den // in editor
 
 #define CAN_VIEW_SERVER_SETTINGS !isNull GVAR(server) // everyone can peak at those in multiplayer
 #define CAN_VIEW_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
-#define CAN_VIEW_MISSION_SETTINGS ((is3den || {missionVersion >= 15}) && {!(missionName in ["", "tempMissionSP", "tempMissionMP"])}) // can view those in 3den or 3den missions
+#define CAN_VIEW_MISSION_SETTINGS (is3den || {missionVersion >= 15}) // can view those in 3den or 3den missions
 
 #define HASH_NULL ([] call CBA_fnc_hashCreate)
 #define NAMESPACE_NULL objNull

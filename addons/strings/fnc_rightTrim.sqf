@@ -2,12 +2,13 @@
 Function: CBA_fnc_rightTrim
 
 Description:
-    Trims white-space (space, tab, newline) from the right end of a string.
+    Trims specified characters (all whitespace by default) from the right end of a string.
 
     See <CBA_fnc_leftTrim> and <CBA_fnc_trim>.
 
 Parameters:
     _string - String to trim [String]
+    _trim - Characters to trim [String] (default: "")
 
 Returns:
     Trimmed string [String]
@@ -19,7 +20,7 @@ Example:
     (end)
 
 Author:
-    Spooner, joko // Jonas
+    Spooner, joko // Jonas, SilentSpike
 ---------------------------------------------------------------------------- */
 
 #include "script_component.hpp"
@@ -29,25 +30,28 @@ SCRIPT(rightTrim);
 
 // ----------------------------------------------------------------------------
 
-params ["_string"];
+params ["_string", ["_trim", "", [""]]];
 
-private ["_char", "_charCount", "_charCount2", "_pos", "_numWhiteSpaces"];
-// Convert String to Array for Find White Spaces
-_char = toArray _string;
+private _chars = toArray _string;
+private _numChars = count _chars;
 
-// Count String Lenth
-_charCount = count _string;
+// Trim from the right
+reverse _chars;
 
-// substract 1 for faster for(L46)
-_charCount2 = _charCount - 1;
-
-// find White Spaces and count than
-for "_i" from _charCount2 to 0 step -1 do {
-    if !((_char select _i) in WHITE_SPACE) exitWith {_numWhiteSpaces = _charCount2 - _i};
+// Trim all whitespace characters by default
+if (_trim == "") then {
+    _trim = WHITE_SPACE;
+} else {
+    _trim = toArray _trim;
 };
 
-// exit if every tab is White Space
-if (isNil "_numWhiteSpaces") exitWith {""};
+// We have to process the string in array form because it could differ in length (if there are non-ASCII characters)
+private _trimIndex = count _chars;
+{
+    if !(_x in _trim) exitWith { _trimIndex = _forEachIndex; };
+} forEach _chars;
 
-// select Only None White Space Part
-_string select [0, _charCount - _numWhiteSpaces]; // Return.
+// Convert string back to original order
+reverse _chars;
+
+toString (_chars select [0, _numChars - _trimIndex])

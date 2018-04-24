@@ -31,7 +31,7 @@ _debugConsole ctrlCommit 0;
 
 // flavor title
 private _title = _display displayCtrl IDC_RSCDEBUGCONSOLE_TITLE;
-_title ctrlSetText localize LSTRING(ExtendedDebugConsole);
+_title ctrlSetText LLSTRING(ExtendedDebugConsole);
 
 // --- EXPRESSION edit box
 private _expression = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION;
@@ -96,7 +96,7 @@ _prevButton ctrlSetPosition [
 ];
 _prevButton ctrlCommit 0;
 
-_prevButton ctrlSetText localize LSTRING(PrevStatement);
+_prevButton ctrlSetText LLSTRING(PrevStatement);
 _prevButton ctrlAddEventHandler ["MouseButtonUp", {_this call FUNC(prevStatement); true}];
 
 // --- NEXT button
@@ -110,7 +110,7 @@ _nextButton ctrlSetPosition [
 ];
 _nextButton ctrlCommit 0;
 
-_nextButton ctrlSetText localize LSTRING(NextStatement);
+_nextButton ctrlSetText LLSTRING(NextStatement);
 _nextButton ctrlAddEventHandler ["MouseButtonUp", {_this call FUNC(nextStatement); true}];
 
 // disable PREV and/or NEXT button if needed
