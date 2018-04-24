@@ -6,4 +6,4 @@ private _control = _display ctrlCreate [QGVAR(ProgressBar), -1];
 
 _control ctrlShow false;
 
-uiNamespace setVariable [QGVAR(ProgressBar), _control];
+_display setVariable [QGVAR(ProgressBar), _control];

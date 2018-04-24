@@ -73,7 +73,8 @@ if (_onFailure isEqualType "") then {
 };
 
 // show progress bar with new title
-private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
+private _display = uiNamespace getVariable ["RscDisplayMission", displayNull];
+private _control = _display getVariable [QGVAR(ProgressBar), controlNull];
 _control ctrlShow true;
 
 private _ctrlTitle = _control controlsGroupCtrl IDC_PROGRESSBAR_TITLE;
@@ -82,13 +83,14 @@ _ctrlTitle ctrlSetText _title;
 if (isNil QGVAR(ProgressBarParams)) then {
     // update progress bar, run condition
     addMissionEventHandler ["EachFrame", {
-        private _control = uiNamespace getVariable [QGVAR(ProgressBar), controlNull];
+        private _display = uiNamespace getVariable ["RscDisplayMission", displayNull];
+        private _control = _display getVariable [QGVAR(ProgressBar), controlNull];
 
         GVAR(ProgressBarParams) params ["_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime"];
         private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
 
         private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
-            private ["_control", "_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime", "_elapsedTime"];
+            private ["_display", "_control", "_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime", "_elapsedTime"];
             _this#0 call _this#1;
         };
 
@@ -119,13 +121,15 @@ if (isNil QGVAR(ProgressBarParams)) then {
 
 GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTime, _totalTime, _blockMouse, _blockKeys, _allowClose];
 
+/*
 // create empty display to block input
 if (_blockMouse) then {
-    private _blockInputDisplay = ctrlParent _control createDisplay "RscDisplayEmpty";
+    private _display = ctrlParent _control createDisplay "RscDisplayEmpty";
 
-    _blockInputDisplay displayAddEventHandler ["KeyDown", {
+    _display displayAddEventHandler ["KeyDown", {
         params ["", "_key", "_shift", "_control", "_alt"];
-        private _control = uiNamespace getVariable QGVAR(ProgressBar);
+        private _display = uiNamespace getVariable ["RscDisplayMission", displayNull];
+        private _control = _display getVariable QGVAR(ProgressBar);
 
         GVAR(ProgressBarParams) params ["", "", "", "", "", "", "_blockMouse", "_blockKeys", "_allowClose"];
         private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
@@ -142,4 +146,9 @@ if (_blockMouse) then {
 
         _blockKeys
     }];
+
+    private _control = _display ctrlCreate [QGVAR(ProgressBar), -1];
+    _display setVariable [QGVAR(ProgressBar), _control];
+    uiNamespace setVariable [QGVAR(ProgressBar), _display];
 };
+*/
