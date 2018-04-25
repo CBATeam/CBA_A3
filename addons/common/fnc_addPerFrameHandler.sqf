@@ -43,6 +43,6 @@ if (count GVAR(PFHhandles) >= 999999) exitWith {
 
 private _handle = GVAR(PFHhandles) pushBack count GVAR(perFrameHandlerArray);
 
-GVAR(perFrameHandlerArray) pushBack [_function, _delay, diag_tickTime, diag_tickTime, _args, _handle, false];
+GVAR(perFrameHandlerArray) pushBack [_function, _delay, diag_tickTime, diag_tickTime, _args, _handle, true];
 
 _handle
