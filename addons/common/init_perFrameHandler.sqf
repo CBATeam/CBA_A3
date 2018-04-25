@@ -15,7 +15,7 @@ GVAR(nextFrameNo) = diag_frameno + 1;
 GVAR(nextFrameBufferA) = [[[], {GVAR(nextFrameNo) = diag_frameno;}]];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
-
+GVAR(deletedPFHIndices) = [];
 // per frame handler system
 [QFUNC(onFrame), {
     private _tickTime = diag_tickTime;
@@ -23,15 +23,28 @@ GVAR(waitUntilAndExecArray) = [];
 
     // Execute per frame handlers
     {
-        _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
+        _x params ["_function", "_delay", "_delta", "", "_args", "_handle", "_isDeleted"];
 
-        if (diag_tickTime > _delta) then {
+        if (diag_tickTime > _delta && !_isDeleted) then {
             _x set [2, _delta + _delay];
             [_args, _handle] call _function;
             false
         };
     } count GVAR(perFrameHandlerArray);
 
+    if !(GVAR(deletedIndices) isEqualTo []) then {
+        {
+            GVAR(perFrameHandlerArray) set [_x, objNull];
+        } count GVAR(deletedIndices);
+
+        GVAR(perFrameHandlerArray) = GVAR(perFrameHandlerArray) - [objNull];
+
+        {
+            _x params ["", "", "", "", "", "_handle"];
+            GVAR(PFHhandles) set [_handle, _forEachIndex];
+        } forEach GVAR(perFrameHandlerArray);
+        GVAR(deletedIndices) = [];
+    };
 
     // Execute wait and execute functions
     // Sort the queue if necessary

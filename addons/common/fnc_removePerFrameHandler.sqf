@@ -28,14 +28,17 @@ if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
 
 [{
     params ["_handle"];
+    private _index = GVAR(PFHhandles) select _handle;
 
-    GVAR(perFrameHandlerArray) deleteAt (GVAR(PFHhandles) select _handle);
+    if (isNil "_index") exitWith {};
+    GVAR(deletedPFHIndices) pushback _index;
+
+    private _oldData = GVAR(perFrameHandlerArray) select _index;
+    _oldData set [5, true];
+
+    GVAR(perFrameHandlerArray) set [_index, _oldData];
+
     GVAR(PFHhandles) set [_handle, nil];
-
-    {
-        _x params ["", "", "", "", "", "_handle"];
-        GVAR(PFHhandles) set [_handle, _forEachIndex];
-    } forEach GVAR(perFrameHandlerArray);
 }, _handle] call CBA_fnc_directCall;
 
 nil
