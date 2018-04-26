@@ -4,11 +4,11 @@ class RscMapControl;
 
 class RscTitles {
     class GVAR(ProgressBar) {
-        onLoad = call (uiNamespace getVariable 'FUNC(initProgressBar)');
+        onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];
         idd = -1;
         duration = 1e+11;
-        fadeIn = 0.2;
-        fadeOut = 0.2;
+        fadeIn = 0;
+        fadeOut = 0;
 
         controls[] = {"Background", "TitleBackground", "ProgressBar", "TitleText", "Script"};
 
@@ -49,7 +49,7 @@ class RscTitles {
         };
 
         class Script: RscMapControl {
-            onDraw = call (ctrlParent (_this select 0) getVariable 'GVAR(script)');
+            idc = IDC_PROGRESSBAR_SCRIPT
             w = 0;
             h = 0;
         };

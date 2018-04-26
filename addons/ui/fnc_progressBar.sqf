@@ -38,18 +38,21 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
+// no progress bar without interface
 if (!hasInterface) exitWith {};
 
+// execute in unscheduled environment
 if (canSuspend) exitWith {
     [CBA_fnc_progressBar, _this] call CBA_fnc_directCall;
 };
 
+// arguments
 params [
     ["_title", "", [""]],
     ["_totalTime", 0, [0]],
-    ["_condition", {}, [{}, ""]],
-    ["_onSuccess", {}, [{}, ""]],
-    ["_onFailure", {}, [{}, ""]],
+    ["_condition", {}, [{true}]],
+    ["_onSuccess", {}, [{}]],
+    ["_onFailure", {}, [{}]],
     ["_arguments", []],
     ["_blockMouse", true, [false]],
     ["_blockKeys", true, [false]],
@@ -58,18 +61,6 @@ params [
 
 if (isLocalized _title) then {
     _title = localize _title;
-};
-
-if (_condition isEqualType "") then {
-    _condition = compile _condition;
-};
-
-if (_onSuccess isEqualType "") then {
-    _onSuccess = compile _onSuccess;
-};
-
-if (_onFailure isEqualType "") then {
-    _onFailure = compile _onFailure;
 };
 
 // show progress bar and set title
@@ -88,5 +79,71 @@ if (!isNil QGVAR(ProgressBarParams)) then {
 };
 
 GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTime, _totalTime, _blockMouse, _blockKeys, _allowClose];
+
+// update bar, check condition, execute success or failure scripts
+private _ctrlScript = _display displayCtrl IDC_PROGRESSBAR_SCRIPT;
+_ctrlScript ctrlAddEventHandler ["Draw", {
+    params ["_ctrlScript"];
+    private _display = ctrlParent _ctrlScript;
+
+    GVAR(ProgressBarParams) params ["_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime"];
+    private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+    private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
+        private ["_ctrlScript", "_display", "_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime", "_elapsedTime"];
+        _this#0 call _this#1;
+    };
+
+    private _blockInputDisplay = uiNamespace getVariable [QGVAR(BlockInputDisplay), displayNull];
+
+    if (!_continue) exitWith {
+        GVAR(ProgressBarParams) = nil;
+        {QGVAR(ProgressBar) cutText ["", "PLAIN"]} call CBA_fnc_execNextFrame; // game would crash if display is killed from Draw event
+        _blockInputDisplay closeDisplay 0;
+        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+    };
+
+    if (_elapsedTime >= _totalTime) exitWith {
+        GVAR(ProgressBarParams) = nil;
+        {QGVAR(ProgressBar) cutText ["", "PLAIN"]} call CBA_fnc_execNextFrame; // game would crash if display is killed from Draw event
+        _blockInputDisplay closeDisplay 0;
+        [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+    };
+
+    private _ctrlBar = _display displayCtrl IDC_PROGRESSBAR_BAR;
+    _ctrlBar progressSetPosition (_elapsedTime / _totalTime);
+}];
+
+// block input while the bar is shown
+private _blockInputDisplay = uiNamespace getVariable [QGVAR(BlockInputDisplay), displayNull];
+_blockInputDisplay closeDisplay 0;
+
+if (_blockMouse) then {
+    private _mission = uiNamespace getVariable "RscDisplayMission";
+    _blockInputDisplay = _mission createDisplay "RscDisplayEmpty";
+    uiNamespace setVariable [QGVAR(BlockInputDisplay), _blockInputDisplay];
+
+    _blockInputDisplay displayAddEventHandler ["KeyDown", {
+        params ["_blockInputDisplay", "_key", "_shift", "_control", "_alt"];
+
+        GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime", "_blockMouse", "_blockKeys", "_allowClose"];
+        private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
+
+        if (_key isEqualTo DIK_ESCAPE) then {
+            if (_allowClose) then {
+                GVAR(ProgressBarParams) = nil;
+                QGVAR(ProgressBar) cutText ["", "PLAIN"];
+                _blockInputDisplay closeDisplay 0;
+                [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+
+                _blockKeys = false;
+            } else {
+                _blockKeys = true;
+            };
+        };
+
+        _blockKeys
+    }];
+};
 
 nil

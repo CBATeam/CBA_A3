@@ -2,4 +2,3 @@
 
 PREP(initDisplayInterrupt);
 PREP(initDisplayMultiplayerSetup);
-PREP(initProgressBar);
