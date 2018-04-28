@@ -43,7 +43,15 @@ switch (typeName _entity) do {
     case "GROUP" : {
         (units _entity) call CBA_fnc_deleteEntity;
         {deleteWaypoint _x} forEach (wayPoints _entity);
-        deleteGroup _entity;
+        if (local _entity) then {
+            deleteGroup _entity;
+        } else {
+            if (isServer) then {
+                _entity remoteExecCall ["CBA_fnc_deleteEntity", groupOwner _entity];
+            } else {
+                _entity remoteExecCall ["CBA_fnc_deleteEntity", 2];
+            };
+        };
     };
     case "LOCATION" : {
         deleteLocation _entity;
