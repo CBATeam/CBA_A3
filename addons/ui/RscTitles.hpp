@@ -49,7 +49,7 @@ class RscTitles {
         };
 
         class Script: RscMapControl {
-            idc = IDC_PROGRESSBAR_SCRIPT
+            idc = IDC_PROGRESSBAR_SCRIPT;
             w = 0;
             h = 0;
         };
