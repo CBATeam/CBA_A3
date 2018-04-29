@@ -9,5 +9,13 @@
             <Portuguese>Extensões de Base Comunitária - Interface ao Usuário</Portuguese>
             <Russian>Community Base Addons - Пользовательский Интерфейс</Russian>
         </Key>
+        <Key ID="STR_CBA_Ui_ProgressBarPositionName">
+            <English>Progress Bar</English>
+            <German>Fortschrittsanzeige</German>
+        </Key>
+        <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
+            <English>Position of the progress bar.</English>
+            <German>Position der Fortschrittsanzeige.</German>
+        </Key>
     </Package>
 </Project>
