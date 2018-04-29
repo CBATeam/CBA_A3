@@ -24,9 +24,9 @@ GVAR(deletedPFHIndices) = [];
 
     // Execute per frame handlers
     {
-        _x params ["_function", "_delay", "_delta", "", "_args", "_handle", "_isActiv"];
+        _x params ["_function", "_delay", "_delta", "", "_args", "_handle", "_isActive"];
 
-        if (diag_tickTime > _delta && _isActiv) then {
+        if (diag_tickTime > _delta && _isActive) then {
             _x set [2, _delta + _delay];
             [_args, _handle] call _function;
             false

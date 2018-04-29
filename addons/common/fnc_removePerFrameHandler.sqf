@@ -34,9 +34,7 @@ if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
     GVAR(deletedPFHIndices) pushback _index;
 
     private _oldData = GVAR(perFrameHandlerArray) select _index;
-    _oldData set [5, false];
-
-    GVAR(perFrameHandlerArray) set [_index, _oldData];
+    _oldData set [6, false];
 
     GVAR(PFHhandles) set [_handle, nil];
 }, _handle] call CBA_fnc_directCall;
