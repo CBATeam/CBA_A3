@@ -31,7 +31,7 @@ if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
     private _index = GVAR(PFHhandles) select _handle;
 
     if (isNil "_index") exitWith {};
-    GVAR(deletedPFHIndices) pushback _index;
+    GVAR(deletedPFHIndices) pushBack _index;
 
     (GVAR(perFrameHandlerArray) select _index) set [0, {}];
 
