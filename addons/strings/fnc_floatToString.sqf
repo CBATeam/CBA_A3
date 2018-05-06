@@ -1,6 +1,8 @@
 /* -----------------------------------------------------------------------------
 Function: CBA_fnc_floatToString
 
+DEPRECATED - Please use <toFixed at https://community.bistudio.com/wiki/toFixed> added in Arma 3 1.66
+
 Description:
     Returns a higher precision string representation of a IEEE 754 floating point
     number than the str function.
@@ -27,4 +29,4 @@ Author:
     Nou
 ---------------------------------------------------------------------------- */
 
-str parseNumber (str (_this%_this) + str floor abs _this) + "." + (str (abs _this-floor abs _this) select [2]) + "0";
+if (_this == 0) then {"0"} else {str parseNumber (str (_this % _this) + str floor abs _this) + "." + (str (abs _this - floor abs _this) select [2]) + "0"};

@@ -43,5 +43,5 @@
 #define _flexiMenu_menuDef_ID_totalIDs 8
 
 #define __menuRscPrefix "CBA_flexiMenu_rsc"
-#define __SMW_default 0.15*safeZoneW // common sub-menu width, used in script
+#define __SMW_default 0.15 * safeZoneW // common sub-menu width, used in script
 #define __defaultHotkeyColor "#f07EB27E"

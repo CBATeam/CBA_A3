@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [_id, 44, [false,false,false]] call CBA_fnc_changeKeyHandler;
+        [_id, 44, [false, false, false]] call CBA_fnc_changeKeyHandler;
     (end)
 
 Author:
@@ -50,11 +50,11 @@ _hashKey = toLower _hashKey;
 private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
 private _keyData = _hash getVariable _hashKey;
 private _key = _keyData select 0;
-
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
 
 if (count _keyHandlers > _key) then {
     private _hashKeys = _keyHandlers select _key;
+
     _hashKeys = _hashKeys - [_hashKey];
     _hashKeys pushBack _hashKey;
     _keyHandlers set [_key, _hashKeys];

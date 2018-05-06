@@ -1,4 +1,3 @@
-
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
@@ -36,7 +35,7 @@ class RscDisplayConfigure {
 
             class controls {
                 class Background: RscText {
-                    colorBackground[] = {0,0,0,0.4};
+                    colorBackground[] = {0, 0, 0, 0.4};
                     x = POS_W(0.5);
                     y = POS_H(3.5);
                     w = POS_W(37);
@@ -44,7 +43,7 @@ class RscDisplayConfigure {
                 };
                 class AddonText: RscText {
                     style = ST_RIGHT;
-                    text = "ADDON:";
+                    text = ECSTRING(main,AddonText);
                     x = POS_W(0.5);
                     y = POS_H(1);
                     w = POS_W(4);
@@ -61,7 +60,7 @@ class RscDisplayConfigure {
                 };
                 class CA_ValueKeys: RscListNBox {
                     idc = IDC_KEY_LIST;
-                    columns[] = {0,0.459459459}; //17/37
+                    columns[] = {0, 0.459459459}; //17/37
                     x = POS_W(0.5);
                     y = POS_H(3.5);
                     w = POS_W(37);
@@ -74,7 +73,7 @@ class RscDisplayConfigure {
                     y = POS_H(2.5);
                     w = POS_W(17);
                     h = POS_H(1);
-                    colorBackground[] = {0,0,0,1};
+                    colorBackground[] = {0, 0, 0, 1};
                 };
                 class TextAssignedKeys: RscText {
                     onLoad = "(_this select 0) ctrlSetText toUpper ctrlText (_this select 0)";
@@ -83,7 +82,7 @@ class RscDisplayConfigure {
                     y = POS_H(2.5);
                     w = POS_W(20);
                     h = POS_H(1);
-                    colorBackground[] = {0,0,0,1};
+                    colorBackground[] = {0, 0, 0, 1};
                 };
             };
         };

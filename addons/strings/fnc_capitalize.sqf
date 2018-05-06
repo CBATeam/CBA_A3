@@ -34,7 +34,7 @@ params ["_string"];
 private _charCount = count _string;
 if (_charCount > 0) then {
     // Take first Char and Upper case
-    private _string1 = (toUpper _string) select [0,1];
+    private _string1 = (toUpper _string) select [0, 1];
     // Take rest and lower it
     private _string2 = (toLower _string) select [1];
     // Compile String

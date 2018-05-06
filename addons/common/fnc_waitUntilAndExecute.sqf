@@ -3,13 +3,15 @@ Function: CBA_fnc_waitUntilAndExecute
 
 Description:
     Executes a code once in unscheduled environment after a condition is true.
-    It's also possible to add a timeout, in which case a different code is executed.
+    It's also possible to add a timeout >= 0, in which case a different code is executed.
+    Then it will be waited until _timeout time has elapsed or _condition evaluates to true.
 
 Parameters:
     _condition   - The function to evaluate as condition. <CODE>
     _statement   - The function to run once the condition is true. <CODE>
     _args        - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
-    _timeout     - Timeout for the condition in seconds. (optional) <NUMBER>
+    _timeout     - If >= 0, timeout for the condition in seconds.  If < 0, no timeout.
+                   Exactly 0 means timeout immediately on the next iteration.(optional, default -1) <NUMBER>
     _timeoutCode - Will execute instead of _statement if the condition times out. (optional) <CODE>
 
 Passed Arguments:
@@ -37,11 +39,11 @@ params [
     ["_condition", {}, [{}]],
     ["_statement", {}, [{}]],
     ["_args", []],
-    ["_timeout", 0, [0]],
+    ["_timeout", -1, [0]],
     ["_timeoutCode", {}, [{}]]
 ];
 
-if (_timeout == 0) then {
+if (_timeout < 0) then {
     GVAR(waitUntilAndExecArray) pushBack [_condition, _statement, _args];
 } else {
     GVAR(waitUntilAndExecArray) pushBack [{

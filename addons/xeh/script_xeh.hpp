@@ -56,8 +56,7 @@ turnIn = "call cba_xeh_fnc_turnIn"; \
 turnOut = "call cba_xeh_fnc_turnOut"; \
 deleted = "call cba_xeh_fnc_deleted";
 
-
-/* 
+/*
    MACRO: DELETE_EVENTHANDLERS
 
     Removes all event handlers.

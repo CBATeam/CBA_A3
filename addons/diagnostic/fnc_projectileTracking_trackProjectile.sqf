@@ -33,7 +33,7 @@ if (!isNull _projectile) then {
     private _bulletData = [];
 
     // array has an entry at this position but is not nil
-    if (_index <= (count GVAR(projectileData) - 1) && { !(isNil{(GVAR(projectileData) select _index)}) }) then {
+    if (_index <= (count GVAR(projectileData) - 1) && {!(isNil{(GVAR(projectileData) select _index)})}) then {
         _data = GVAR(projectileData) select _index;
         _bulletData = _data select 1;
     } else {

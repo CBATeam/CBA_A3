@@ -48,7 +48,7 @@ private _fnc_splitLines = {
 
 // create a logic than can use the chat
 if (isNil QGVAR(logic)) then {
-    GVAR(logic) = "Logic" createVehicleLocal [0,0,0];
+    GVAR(logic) = "Logic" createVehicleLocal [0, 0, 0];
 };
 
 // input

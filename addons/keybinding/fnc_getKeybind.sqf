@@ -35,7 +35,7 @@ Author:
 
 #include "script_component.hpp"
 
-params ["_addon","_addonAction"];  
+params ["_addon", "_addonAction"];
 TRACE_2("getKeybind",_addon,_addonAction);
 
 if (!hasInterface) exitWith {nil};
@@ -52,6 +52,6 @@ _actionInfo params ["_displayName", "", "_keybinds", "", "_downCode", "_upCode",
 TRACE_2("",_displayName,_keybinds);
 
 // Select a single keybind (first one) for the 5th element return to keep compatiblity with old code
-private _oldKeyBind = _keybinds param [0, [-1,[false,false,false]]];
+private _oldKeyBind = _keybinds param [0, [-1, [false, false, false]]];
 
 [_addon, _addonAction, _displayName, _downCode, _upCode, _oldKeyBind, _holdKey, _holdDelay, _keybinds]

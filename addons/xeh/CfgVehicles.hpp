@@ -1,4 +1,3 @@
-
 class CfgVehicles {
     class All {
         XEH_ENABLED;
@@ -48,6 +47,26 @@ class CfgVehicles {
     };
 
     class Site_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Timeline_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Curve_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Key_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class ControlPoint_F: Module_F {
+        XEH_ENABLED;
+    };
+
+    class Camera_F: Module_F {
         XEH_ENABLED;
     };
 
@@ -202,6 +221,11 @@ class CfgVehicles {
 
     class Land_Sleeping_bag_brown_F;
     class Respawn_Sleeping_bag_brown_F: Land_Sleeping_bag_brown_F {
+        XEH_ENABLED;
+    };
+    
+    class ReammoBox_F;
+    class Land_RepairDepot_01_base_F: ReammoBox_F {
         XEH_ENABLED;
     };
 

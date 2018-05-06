@@ -9,7 +9,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_main"};
-        authors[] = {"da12thMonkey","Robalo","Tupolov"};
+        authors[] = {"da12thMonkey", "Robalo", "Tupolov"};
         version = VERSION;
         versionDesc = "MRT Attachment Functions";
     };

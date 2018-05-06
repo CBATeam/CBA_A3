@@ -1,6 +1,8 @@
 ﻿#define COMPONENT ui
 #include "\x\cba\addons\main\script_mod.hpp"
 
+//#define DEBUG_MODE_FULL
+//#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_UI
 
 #ifdef DEBUG_ENABLED_UI
@@ -14,7 +16,13 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "\a3\ui_f\hpp\defineCommonColors.inc"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
+
+#define IDC_PROGRESSBAR_TITLE 10
+#define IDC_PROGRESSBAR_BAR 11
+#define IDC_PROGRESSBAR_SCRIPT 12
 
 #define IDC_ADDON_CONTROLS 127303
 #define IDC_ADDON_OPTIONS 127307
@@ -68,7 +76,7 @@
 #define _flexiMenu_menuDef_ID_totalIDs 8
 
 #define __menuRscPrefix "CBA_flexiMenu_rsc"
-#define __SMW_default 0.15*safeZoneW // common sub-menu width, used in script
+#define __SMW_default 0.15 * safeZoneW // common sub-menu width, used in script
 #define __defaultHotkeyColor "#f07EB27E"
 
 // additional "_SUB" macros to handle sub folders
@@ -78,4 +86,4 @@
 #define PREP_SUB(var1,var2) PREP_SYS_SUB(PREFIX,COMPONENT_F,var1,var2)
 
 // array select with bounds check (for optional parameters)
-#define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then { ##array2 select ##index3 } else { ##default4 };
+#define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then {##array2 select ##index3} else {##default4};

@@ -1,4 +1,3 @@
-
 class ctrlMenuStrip;
 
 class Display3DEN {

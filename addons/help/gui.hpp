@@ -1,4 +1,3 @@
-
 class RscText;
 class RscButton;
 

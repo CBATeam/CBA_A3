@@ -42,6 +42,7 @@ if (!isNil QGVAR(keys)) then {
 
         {
             (EGVAR(keybinding,actions) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
+            if (isLocalized _displayName) then { _displayName = localize _displayName; };
 
             private _keyName = (_registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 

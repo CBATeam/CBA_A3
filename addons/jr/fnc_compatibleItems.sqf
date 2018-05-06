@@ -61,7 +61,7 @@ if (isNil "_compatibleItems") then {
 
         GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
     } else {
-        ["'%1' not found in CfgWeapons", _weapon] call bis_fnc_error;
+        ["'%1' not found in CfgWeapons", _weapon] call BIS_fnc_error;
     };
 };
 

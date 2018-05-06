@@ -41,7 +41,7 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     false, // 7 - PreInit passed
     false, // 8 - PostInit passed
     isMultiplayer, // 9 - Multiplayer && respawn
-    if (isDedicated) then { 0 } else { if (isServer) then { 1 } else { 2 } }, // 10 - Machine type (only 3 possible configurations)
+    if (isDedicated) then {0} else {if (isServer) then {1} else {2}}, // 10 - Machine type (only 3 possible configurations)
     0, // 11 - SESSION_ID
     0, // 12 - LEVEL - Used for version determination
     false, // 13 - TIMEOUT - PostInit timedOut, always false
@@ -128,5 +128,37 @@ GVAR(initPostStack) = [];
 #endif
 
 SLX_XEH_MACHINE set [7, true]; // PreInit passed
+
+#ifdef DEBUG_MODE_FULL
+    [QGVAR(LoadingScreenStarted), {diag_log [QGVAR(LoadingScreenStarted), _this]}] call CBA_fnc_addEventHandler;
+    [QGVAR(LoadingScreenEnded), {diag_log [QGVAR(LoadingScreenEnded), _this]}] call CBA_fnc_addEventHandler;
+#endif
+
+// CBA_loadingScreenDone event
+GVAR(expectedLoadingScreens) = ["bis_fnc_preload", "bis_fnc_initRespawn"];
+
+if (!isServer) then { // only on client
+    GVAR(expectedLoadingScreens) pushBack "bis_fnc_initFunctions";
+};
+
+// check if this was the last loading screen, if so, fire event
+[QGVAR(LoadingScreenEnded), {
+    params ["_loadingScreen"];
+
+    if (!isNil QGVAR(expectedLoadingScreens)) then {
+        GVAR(expectedLoadingScreens) deleteAt (GVAR(expectedLoadingScreens) find _loadingScreen);
+
+        if (count GVAR(expectedLoadingScreens) == 0) then {
+            GVAR(expectedLoadingScreens) = nil;
+            ["CBA_loadingScreenDone", []] call CBA_fnc_localEvent;
+        };
+    };
+}] call CBA_fnc_addEventHandler;
+
+#ifdef DEBUG_MODE_FULL
+    ["CBA_loadingScreenDone", {
+        playSound "Beep_Target";
+    }] call CBA_fnc_addEventHandler;
+#endif
 
 XEH_LOG("XEH: PreInit finished.");

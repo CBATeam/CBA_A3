@@ -19,13 +19,13 @@ Examples:
     (begin example)
         // Filter to create a new array.
         _original = [1, 2, 3];
-        _filtered = [_original, { _x + 1 }] call CBA_fnc_filter;
+        _filtered = [_original, {_x + 1}] call CBA_fnc_filter;
         // _original ==> [1, 2, 3]
         // _filtered ==> [2, 3, 4]
 
         // Filter original array in place.
         _original = [1, 2, 3];
-        [_original, { _x * 10 }, true] call CBA_fnc_filter;
+        [_original, {_x * 10}, true] call CBA_fnc_filter;
         // _original ==> [10, 20, 30]
     (end)
 

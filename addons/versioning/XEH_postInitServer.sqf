@@ -11,14 +11,17 @@ publicVariable QGVAR(versions_server); // TODO: Deprecate?
 // Paranoid; yet pretty annoying gamebreaking issue :-)
 FUNC(paranoid) = {
     diag_log [diag_frameNo, diag_tickTime, time, _this, "WARNING: Some client seems to have overriden the versions array; please report to CBA devs!"];
-    diag_log [GVAR(versions), GVAR(version_serv)];
-    if (isDedicated) then {
-        GVAR(versions_serv) = GVAR(versions);
+    diag_log [GVAR(versions), GVAR(versions_serv)];
+    if (isMultiplayer) then {
+        GVAR(versions_serv) = + GVAR(versions);
         publicVariable QGVAR(versions_serv);
     };
 };
 
 QGVAR(versions_serv) addPublicVariableEventHandler { (_this select 1) call FUNC(paranoid) };
+
+// Skip missing mod check if it is disabled.
+if (getNumber (configFile >> "CBA_disableMissingModCheck") == 1) exitWith {};
 
 // Missing Modfolder check
 FUNC(handleMismatch) = {

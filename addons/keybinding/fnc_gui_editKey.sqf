@@ -90,6 +90,29 @@ private _specialKeys = [
     [true, true, true]
 ];
 
+_specialKeys append [
+    [USER_1, [false, false, false]],
+    [USER_2, [false, false, false]],
+    [USER_3, [false, false, false]],
+    [USER_4, [false, false, false]],
+    [USER_5, [false, false, false]],
+    [USER_6, [false, false, false]],
+    [USER_7, [false, false, false]],
+    [USER_8, [false, false, false]],
+    [USER_9, [false, false, false]],
+    [USER_10, [false, false, false]],
+    [USER_11, [false, false, false]],
+    [USER_12, [false, false, false]],
+    [USER_13, [false, false, false]],
+    [USER_14, [false, false, false]],
+    [USER_15, [false, false, false]],
+    [USER_16, [false, false, false]],
+    [USER_17, [false, false, false]],
+    [USER_18, [false, false, false]],
+    [USER_19, [false, false, false]],
+    [USER_20, [false, false, false]]
+];
+
 {
     _ctrlSpecialKeyList lbSetData [_ctrlSpecialKeyList lbAdd (_x call CBA_fnc_localizeKey), str _x];
 } forEach _specialKeys;
@@ -198,7 +221,6 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
-
             private _index = (_ctrlKeyList getVariable QGVAR(index)) - 1;
 
             if (_index < 0) then {
@@ -239,7 +261,6 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
-
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) + 1;
 
@@ -349,6 +370,11 @@ _ctrlKeyList setVariable [QFUNC(showDuplicates), {
 
             if (_keybind in _duplicateKeybinds && {_action != _duplicateAction}) then {
                 private _duplicateActionName = GVAR(actions) getVariable _duplicateAction select 0;
+
+                if (isLocalized _duplicateActionName) then {
+                    _duplicateActionName = localize _duplicateActionName;
+                };
+
                 _keyName = _keyName + format [" [%1]", _duplicateActionName];
                 _isDuplicated = true;
             };

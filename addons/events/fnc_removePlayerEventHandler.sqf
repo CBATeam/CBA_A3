@@ -27,37 +27,37 @@ params [["_type", "", [""]], ["_id", -1, [0]]];
 _type = toLower _type;
 
 switch (_type) do {
-case "unit": {
-    [QGVAR(unitEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "weapon": {
-    [QGVAR(weaponEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "loadout": {
-    [QGVAR(loadoutEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "vehicle": {
-    [QGVAR(vehicleEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "turret": {
-    [QGVAR(turretEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "visionmode": {
-    [QGVAR(visionModeEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "cameraview": {
-    [QGVAR(cameraViewEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "visiblemap": {
-    [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "group": {
-    [QGVAR(groupEvent), _id] call CBA_fnc_removeEventHandler;
-};
-case "leader": {
-    [QGVAR(leaderEvent), _id] call CBA_fnc_removeEventHandler;
-};
-default {nil};
+    case "unit": {
+        [QGVAR(unitEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "weapon": {
+        [QGVAR(weaponEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "loadout": {
+        [QGVAR(loadoutEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "vehicle": {
+        [QGVAR(vehicleEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "turret": {
+        [QGVAR(turretEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "visionmode": {
+        [QGVAR(visionModeEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "cameraview": {
+        [QGVAR(cameraViewEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "visiblemap": {
+        [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "group": {
+        [QGVAR(groupEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    case "leader": {
+        [QGVAR(leaderEvent), _id] call CBA_fnc_removeEventHandler;
+    };
+    default {nil};
 };
 
 if (!isNil QGVAR(playerEHInfo)) then {

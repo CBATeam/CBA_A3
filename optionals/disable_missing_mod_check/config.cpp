@@ -3,14 +3,15 @@
 class CfgPatches {
     class ADDON {
         author = "$STR_CBA_Author";
-        name = ECSTRING(ui,component);
+        name = ECSTRING(Optional,Component);
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
-        worlds[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_common","A3_UI_F"};
+        requiredAddons[] = {"CBA_extended_eventhandlers", "CBA_versioning"};
+        version = VERSION;
+        authors[] = {"Dedmen"};
     };
 };
 
-#include "CfgRscStd.hpp"
+CBA_disableMissingModCheck = 1;

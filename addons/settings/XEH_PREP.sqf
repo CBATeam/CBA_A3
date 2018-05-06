@@ -1,4 +1,3 @@
-
 PREP(init);
 PREP(set);
 PREP(get);
@@ -8,6 +7,7 @@ PREP(import);
 PREP(export);
 PREP(clear);
 PREP(priority);
+PREP(whitelisted);
 
 if (hasInterface) then {
     PREP(openSettingsMenu);
@@ -17,6 +17,7 @@ if (hasInterface) then {
     PREP(gui_refresh);
     PREP(gui_preset);
     PREP(gui_saveTempData);
+    PREP(gui_export);
 
     PREP(gui_settingCheckbox);
     PREP(gui_settingEditbox);

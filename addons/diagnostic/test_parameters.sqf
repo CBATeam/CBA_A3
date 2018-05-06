@@ -8,7 +8,7 @@ SCRIPT(test_parameters);
 
 LOG("Testing parameters");
 
-private ["_expected","_result","_this"];
+private ["_expected", "_result", "_this"];
 
 // Test default params.
 _this = [5];

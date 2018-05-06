@@ -7,17 +7,21 @@ private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVE
 
 if (_source isEqualTo "client") then {
     _ctrlOverwriteClient ctrlEnable false;
-    _ctrlOverwriteClient ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteClient ctrlSetPosition [0, 0, -1, -1];
     _ctrlOverwriteClient ctrlCommit 0;
 };
 
 if !(_source isEqualTo "server") then {
     _ctrlOverwriteMission ctrlEnable false;
-    _ctrlOverwriteMission ctrlSetPosition [0,0,-1,-1];
+    _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
     _ctrlOverwriteMission ctrlCommit 0;
 };
 
 _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
+    _this call ((_this select 0) getVariable QFUNC(event));
+}];
+
+_ctrlOverwriteClient setVariable [QFUNC(event), {
     params ["_ctrlOverwriteClient", "_state"];
     private _controlsGroup = ctrlParentControlsGroup _ctrlOverwriteClient;
     private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
@@ -27,6 +31,19 @@ _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
     SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
+
+_controlsGroup setVariable [QFUNC(auto_check_overwrite), {
+    params ["_controlsGroup", "_source"];
+
+    if (_source isEqualTo "mission") then {
+        private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
+
+        if (!cbChecked _ctrlOverwriteClient) then {
+            _ctrlOverwriteClient cbSetChecked true;
+            [_ctrlOverwriteClient, 1] call (_ctrlOverwriteClient getVariable QFUNC(event));
+        };
+    };
 }];
 
 _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
@@ -47,7 +64,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
         _ctrlOverwriteClient cbSetChecked _wasChecked;
         _ctrlOverwriteClient ctrlEnable (_ctrlOverwriteClient getVariable [QGVAR(enabled), true]);
 
-        _state = [0,1] select _wasChecked;
+        _state = [0, 1] select _wasChecked;
         SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
     };
 
@@ -91,27 +108,27 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
             _ctrlLocked ctrlSetTooltip "";
         } else {
             switch [_source, _priority] do {
-                case ["client","server"];
-                case ["mission","server"]: {
+                case ["client", "server"];
+                case ["mission", "server"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_server_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_server_tooltip);
                 };
-                case ["client","mission"];
-                case ["server","mission"]: {
+                case ["client", "mission"];
+                case ["server", "mission"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_mission_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_mission_tooltip);
                 };
-                case ["mission","client"]: {
+                case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                    _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_client_tooltip);
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip);
                 };
-                case ["server","client"]: {
+                case ["server", "client"]: {
                     if (isServer) then {
                         _ctrlLocked ctrlSetText "";
                         _ctrlLocked ctrlSetTooltip "";
                     } else {
                         _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
-                        _ctrlLocked ctrlSetTooltip localize LSTRING(overwritten_by_client_tooltip_server);
+                        _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                     };
                 };
             };
@@ -124,15 +141,20 @@ _ctrlOverwriteClient setVariable [QGVAR(state), cbChecked _ctrlOverwriteClient];
 
 // disable certain checkboxes
 if (_isGlobal > 0) then {
-    _ctrlOverwriteClient ctrlEnable false;
-    _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
+    if (_source != "mission") then {
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
+    };
 
     if (_isGlobal > 1) then {
-        _ctrlOverwriteClient ctrlSetPosition [0,0,-1,-1];
+        _ctrlOverwriteClient ctrlEnable false;
+        _ctrlOverwriteClient ctrlSetPosition [0, 0, -1, -1];
         _ctrlOverwriteClient ctrlCommit 0;
 
+        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
+
         _ctrlOverwriteMission ctrlEnable false;
-        _ctrlOverwriteMission ctrlSetPosition [0,0,-1,-1];
+        _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
         _ctrlOverwriteMission ctrlCommit 0;
     };
 };

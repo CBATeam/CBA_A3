@@ -30,6 +30,8 @@ ADDON = true;
 
 if (!hasInterface) exitWith {};
 
+GVAR(skipCheckingUserActions) = true;
+
 // Display Event Handlers
 // Pressing "Restart" in the editor starts a completely new mission (preInit etc. are executed). The main display is never deleted though!
 // This would cause douplicate display events to be added, because the old ones carry over while the new ones are added again.
@@ -56,9 +58,10 @@ PREP(keyHandlerUp);
 PREP(mouseHandlerDown);
 PREP(mouseHandlerUp);
 PREP(mouseWheelHandler);
+PREP(userKeyHandler);
 
 private _keyHandlers = [];
-_keyHandlers resize 0xFF;
+_keyHandlers resize 270;
 
 GVAR(keyDownStates) = _keyHandlers apply {[]};
 GVAR(keyUpStates) = + GVAR(keyDownStates);
@@ -83,3 +86,7 @@ GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 GVAR(shift) = false;
 GVAR(control) = false;
 GVAR(alt) = false;
+
+private _states = [];
+_states resize 20;
+GVAR(userKeyStates) = _states apply {false};

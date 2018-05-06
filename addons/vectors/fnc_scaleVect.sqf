@@ -24,6 +24,6 @@ scriptName "fnc_scaleVect.sqf";
 #include "script_component.hpp"
 SCRIPT(scaleVect);
 
-params ["_vect","_factor"];
+params ["_vect", "_factor"];
 
 _vect vectorMultiply _factor;

@@ -24,6 +24,7 @@ switch (toLower _source) do {
         };
 
         profileNamespace setVariable [QGVAR(hash), HASH_NULL];
+        saveProfileNamespace;
         GVAR(client) call CBA_fnc_deleteNamespace;
         GVAR(client) = [] call CBA_fnc_createNamespace;
 
@@ -38,7 +39,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(client) setVariable [_setting, [_value, _priority]];
             };
@@ -65,7 +66,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(mission) setVariable [_setting, [_value, _priority]];
             };
@@ -77,6 +78,7 @@ switch (toLower _source) do {
         if (!isServer) exitWith {};
 
         profileNamespace setVariable [QGVAR(hash), HASH_NULL];
+        saveProfileNamespace;
         GVAR(client) call CBA_fnc_deleteNamespace;
         GVAR(client) = [] call CBA_fnc_createNamespace;
         GVAR(server) call CBA_fnc_deleteNamespace;
@@ -93,7 +95,7 @@ switch (toLower _source) do {
                 };
 
                 // convert boolean to number
-                _priority = [0,1,2] select _priority;
+                _priority = [0, 1, 2] select _priority;
 
                 GVAR(client) setVariable [_setting, [_value, _priority]];
                 GVAR(server) setVariable [_setting, [_value, _priority], true];

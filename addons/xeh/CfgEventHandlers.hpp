@@ -1,4 +1,3 @@
-
 class XEH_CLASS_BASE {
     EXTENDED_EVENTHANDLERS
 };

@@ -7,20 +7,24 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = 1;
-        requiredAddons[] = {"CBA_common","CBA_arrays","A3_Ui_F"};
+        requiredAddons[] = {"CBA_common", "CBA_arrays", "A3_Ui_F"};
         version = VERSION;
-        authors[] = {"Dr Eyeball","commy2"};
+        authors[] = {"Dr Eyeball", "commy2"};
     };
+
+    // Backwards compatibility
+    class cba_ui_helper: ADDON {author = "";};
 };
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 
+#include "RscTitles.hpp"
+#include "CfgUIGrids.hpp"
+
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
-class RscText;
 class RscShortcutButton;
-//-------------------------------------
 class _flexiMenu_RscShortcutButton: RscShortcutButton {
     class HitZone {
         left = 0.002;

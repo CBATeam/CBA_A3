@@ -32,11 +32,12 @@ SCRIPT(split);
 // ----------------------------------------------------------------------------
 
 private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
-params [["_input",""], ["_separator",""]];
+params [["_input", ""], ["_separator", ""]];
 _split = [];
 _index = 0;
 _inputCount = count _input;
 _separatorCount = count _separator;
+
 // Corner cases
 if (_separatorCount == 0 && _inputCount == 0) exitWith {[]};
 if (_separatorCount == 0) exitWith {_input splitString ""};
@@ -46,12 +47,15 @@ if (_input == _separator) exitWith {["",""]};
 _lastWasSeperator = true;
 while {_index < _inputCount} do {
     _find = (_input select [_index]) find _separator;
+
     if (_find == 0) then {
         _index = _index + _separatorCount;
+
         if (_lastWasSeperator) then {_split pushBack "";};
         _lastWasSeperator = true;
     } else {
         _lastWasSeperator = false;
+
         if (_find == -1) then {
             _split pushBack (_input select [_index]);
             _index = _inputCount;
@@ -65,5 +69,5 @@ while {_index < _inputCount} do {
 if ((_inputCount >= _separatorCount) && _lastWasSeperator && {(_input select [(_inputCount - _separatorCount)]) isEqualTo _separator}) then {
     _split pushBack "";
 };
-_split
 
+_split

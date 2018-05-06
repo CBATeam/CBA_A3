@@ -1,4 +1,3 @@
-
 class CfgFunctions {
     class CBA {
         class UI {
@@ -19,6 +18,7 @@ class CfgFunctions {
                 file = QUOTE(PATHTOF(flexiMenu\fnc_openMenuByDef.sqf));
             };
             PATHTO_FNC(addPauseMenuOption);
+            PATHTO_FNC(progressBar);
         };
     };
 };
