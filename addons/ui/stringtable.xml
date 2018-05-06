@@ -12,10 +12,12 @@
         <Key ID="STR_CBA_Ui_ProgressBarPositionName">
             <English>Progress Bar</English>
             <German>Fortschrittsanzeige</German>
+            <Japanese>プログレス バー</Japanese>
         </Key>
         <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
             <German>Position der Fortschrittsanzeige.</German>
+            <Japanese>プログレス バーの位置。</Japanese>
         </Key>
     </Package>
 </Project>
