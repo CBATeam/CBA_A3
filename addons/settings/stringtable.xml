@@ -185,7 +185,7 @@
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
             <German>Clients\nüberschreiben</German>
-            <Japanese>上書き\nクライアント</Japanese>
+            <Japanese>クライアント側から\n上書き</Japanese>
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Portuguese>Sobrescrever \nClientes</Portuguese>
@@ -194,7 +194,7 @@
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <German>Mission\nüberschreiben</German>
-            <Japanese>上書き\nミッション</Japanese>
+            <Japanese>ミッション側から\n上書き</Japanese>
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Portuguese>Sobrescrever \nMissão</Portuguese>
@@ -203,7 +203,7 @@
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <German>Server\nüberschreiben</German>
-            <Japanese>上書き\nサポート</Japanese>
+            <Japanese>サーバー側から\n上書き</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n伺服器</Chinesesimp>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
@@ -251,6 +251,7 @@
             <Russian>Скопировать в буфер обмена</Russian>
             <Chinese>複製到剪貼簿</Chinese>
             <Chinesesimp>复制到剪贴簿</Chinesesimp>
+            <Japanese>クリップボードへコピー</Japanese>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
@@ -258,6 +259,7 @@
             <Russian>Показать настройки по умолчанию:</Russian>
             <Chinese>顯示預設值:</Chinese>
             <Chinesesimp>显示预设值:</Chinesesimp>
+            <Japanese>標準の変数を表示:</Japanese>
         </Key>
     </Package>
 </Project>
