@@ -15,6 +15,7 @@
             <Chinese>擴展除錯控制台</Chinese>
             <Chinesesimp>扩展除错控制台</Chinesesimp>
             <Russian>Расширенная Консоль Отладки</Russian>
+            <French>Console de débogage étendue</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_PrevStatement">
             <English>Previous Statement</English>
@@ -23,6 +24,7 @@
             <Chinese>上個陳述式</Chinese>
             <Chinesesimp>上个陈述式</Chinesesimp>
             <Russian>Пред. команда</Russian>
+            <French>Déclaration précédente</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
@@ -31,6 +33,7 @@
             <Chinese>下個陳述式</Chinese>
             <Chinesesimp>下个陈述式</Chinesesimp>
             <Russian>След. команда</Russian>
+            <French>Déclaration suivante</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
