@@ -8,7 +8,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_common", "CBA_events"};
+        requiredAddons[] = {"cba_common", "cba_events"};
         version = VERSION;
         authors[] = {"Sickboy"};
     };
