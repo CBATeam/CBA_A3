@@ -57,7 +57,7 @@
             <Chinesesimp>伺服器</Chinesesimp>
             <Portuguese>Servidor</Portuguese>
             <Russian>Сервер</Russian>
-            <French>Server</French>
+            <French>Serveur</French>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
             <English>Look at the servers settings. Log in as admin to change.</English>
