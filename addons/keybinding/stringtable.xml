@@ -18,6 +18,7 @@
             <Chinesesimp>模组设定</Chinesesimp>
             <Portuguese>Configure as Extensões</Portuguese>
             <Russian>Настроить Дополнения</Russian>
+            <French>Configurer les addons</French>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -38,6 +39,7 @@
             <Chinesesimp>未知按键%1</Chinesesimp>
             <Portuguese>Chave desconhecida %1</Portuguese>
             <Russian>Неизвестная Клавиша %1</Russian>
+            <French>Touche inconnue %1</French>
         </Key>
     </Package>
 </Project>
