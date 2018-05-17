@@ -29,11 +29,7 @@ if (CBA_DisableCredits) exitWith {};
 
 // find addon with author
 private _config = configFile >> "CfgPatches";
-private _entry = selectRandom ("
-    isText (_x >> 'author') &&
-    {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
-    {getText (_x >> 'author') != ''}
-" configClasses _config);
+private _entry = selectRandom (uiNamespace getVariable [QGVAR(creditsCache), []]);
 
 if (isNil "_entry") exitWith {};
 
