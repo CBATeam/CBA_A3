@@ -10,7 +10,7 @@ Parameters:
     _backpack       - Include items in backpack (Default: true)
     _vest           - Include items in vest     (Default: true)
     _uniform        - Include items in uniform  (Default: true)
-    _assignedItems        - Include assigned items  (Default: true)
+    _assignedItems  - Include assigned items    (Default: true)
 
 Example:
     (begin example)
