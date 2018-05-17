@@ -9,6 +9,6 @@ if (!isClass (configFile >> "CfgPatches" >> "CBA_DisableCredits")) then {
         "isText (_x >> 'author') &&
         {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
         {getText (_x >> 'author') != ''}
-        " configClasses (configFile >> "CfgPatches");
+        " configClasses (configFile >> "CfgPatches")
     ];
 };
