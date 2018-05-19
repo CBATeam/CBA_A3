@@ -85,7 +85,7 @@ _serverExec ctrlEnable false;
 private _targetExec = _display ctrlCreate ["RscButtonMenu", -1, _debugConsole];
 _targetExec ctrlSetPosition ctrlPosition _serverExec;
 _targetExec ctrlCommit 0;
-_targetExec ctrlSetText toUpper localize LSTRING(TargetExec);
+_targetExec ctrlSetText toUpper LLSTRING(TargetExec);
 
 _targetExec ctrlAddEventHandler ["ButtonClick", {
     params ["_targetExec"];

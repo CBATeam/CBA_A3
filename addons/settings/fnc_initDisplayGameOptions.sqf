@@ -23,11 +23,11 @@ if (isNil QUOTE(ADDON)) exitWith {
 
 // ----- situational tooltips
 if (!isMultiplayer) then {
-    _ctrlServerButton ctrlSetTooltip localize LSTRING(ButtonClient_tooltip);
+    _ctrlServerButton ctrlSetTooltip LLSTRING(ButtonClient_tooltip);
 };
 
 if (is3DEN) then {
-    _ctrlMissionButton ctrlSetTooltip localize LSTRING(ButtonMission_tooltip_3den);
+    _ctrlMissionButton ctrlSetTooltip LLSTRING(ButtonMission_tooltip_3den);
 };
 
 if (isServer) then {
@@ -35,15 +35,6 @@ if (isServer) then {
 };
 
 // ----- reload settings file if in editor
-#define FILE_EXISTS(file) \
-call {\
-    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
-    _control htmlLoad file;\
-    private _return = ctrlHTMLLoaded _control;\
-    ctrlDelete _control;\
-    _return\
-};
-
 if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
     GVAR(missionConfig) call CBA_fnc_deleteNamespace;
     GVAR(missionConfig) = [] call CBA_fnc_createNamespace;
@@ -113,7 +104,7 @@ _ctrlButtonSave ctrlSetPosition [
 
 _ctrlButtonSave ctrlCommit 0;
 _ctrlButtonSave ctrlSetText localize "STR_DISP_INT_SAVE";
-_ctrlButtonSave ctrlSetTooltip localize LSTRING(ButtonSave_tooltip);
+_ctrlButtonSave ctrlSetTooltip LLSTRING(ButtonSave_tooltip);
 _ctrlButtonSave ctrlEnable false;
 _ctrlButtonSave ctrlShow false;
 _ctrlButtonSave ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "save"] call FUNC(gui_preset)}];
@@ -129,7 +120,7 @@ _ctrlButtonLoad ctrlSetPosition [
 
 _ctrlButtonLoad ctrlCommit 0;
 _ctrlButtonLoad ctrlSetText localize "STR_DISP_INT_LOAD";
-_ctrlButtonLoad ctrlSetTooltip localize LSTRING(ButtonLoad_tooltip);
+_ctrlButtonLoad ctrlSetTooltip LLSTRING(ButtonLoad_tooltip);
 _ctrlButtonLoad ctrlEnable false;
 _ctrlButtonLoad ctrlShow false;
 _ctrlButtonLoad ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "load"] call FUNC(gui_preset)}];
@@ -145,8 +136,8 @@ _ctrlButtonImport ctrlSetPosition [
 ];
 
 _ctrlButtonImport ctrlCommit 0;
-_ctrlButtonImport ctrlSetText localize LSTRING(ButtonImport);
-_ctrlButtonImport ctrlSetTooltip localize LSTRING(ButtonImport_tooltip);
+_ctrlButtonImport ctrlSetText LLSTRING(ButtonImport);
+_ctrlButtonImport ctrlSetTooltip LLSTRING(ButtonImport_tooltip);
 _ctrlButtonImport ctrlEnable false;
 _ctrlButtonImport ctrlShow false;
 _ctrlButtonImport ctrlAddEventHandler ["ButtonClick", {
@@ -163,8 +154,8 @@ _ctrlButtonExport ctrlSetPosition [
 ];
 
 _ctrlButtonExport ctrlCommit 0;
-_ctrlButtonExport ctrlSetText localize LSTRING(ButtonExport);
-_ctrlButtonExport ctrlSetTooltip localize LSTRING(ButtonExport_tooltip);
+_ctrlButtonExport ctrlSetText LLSTRING(ButtonExport);
+_ctrlButtonExport ctrlSetTooltip LLSTRING(ButtonExport_tooltip);
 _ctrlButtonExport ctrlEnable false;
 _ctrlButtonExport ctrlShow false;
 _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
