@@ -10,15 +10,11 @@ class CfgPatches {
 		magazines[] = {};
 		ammo[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Mark","A3_Weapons_F_Exp"};
+        requiredAddons[] = {"CBA_main"};
         version = VERSION;
         authors[] = {"Robalo"};
-		authorUrl = "http://dev-heaven.net/projects/cca";
     };
 };
 
-PRELOAD_ADDONS;
-
-#include "CfgAmmo.hpp"
-#include "CfgMagazines.hpp"
+#include "CfgMagazineWells.hpp"
 #include "CfgWeapons.hpp"
