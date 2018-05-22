@@ -9,6 +9,7 @@
             <Chinesesimp>CBA制作组</Chinesesimp>
             <Portuguese>Time CBA</Portuguese>
             <Russian>Команда CBA</Russian>
+            <French>CBA-Team</French>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
@@ -17,6 +18,7 @@
             <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
             <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
             <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
+            <French>https://www.github.com/CBATeam/CBA_A3</French>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
@@ -25,6 +27,7 @@
             <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Principal</Portuguese>
             <Russian>Community Base Addons - Основной Компонент</Russian>
+            <French>Community Base Addons - Composante principale</French>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -33,6 +36,7 @@
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
             <Russian>Community Base Addons - Опциональный Компонент</Russian>
+            <French>Community Base Addons - Composant facultatif</French>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
@@ -40,6 +44,8 @@
             <Russian>Дополнение:</Russian>
             <Chinese>模組:</Chinese>
             <Chinesesimp>模组:</Chinesesimp>
+            <Japanese>アドオン:</Japanese>
+            <French>ADDON:</French>
         </Key>
     </Package>
 </Project>
