@@ -7,8 +7,8 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
-		magazines[] = {};
-		ammo[] = {};
+        magazines[] = {};
+        ammo[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"CBA_main"};
         version = VERSION;
