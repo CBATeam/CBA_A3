@@ -28,6 +28,16 @@ class CfgMagazineWells {
             "20Rnd_762x51_Mag"
         };
     };
+    class CBA_762x51_HK417 {
+        BI_mags[] = {
+            "20Rnd_762x51_Mag"
+        };
+    };
+    class CBA_762x51_SR25 {};
+    class CBA_762x51_SCAR {};
+    class CBA_762x51_FAL {};
+    class CBA_762x51_G3 {};
+
     class CBA_40mm_M203 {
         BI_grenades[] = {
             "1Rnd_HE_Grenade_shell",
@@ -68,6 +78,8 @@ class CfgMagazineWells {
             "10Rnd_762x54_Mag"
         };
     };
+    class CBA_9x39_VSS {};
+
     class CBA_580x42_TYPE95 {
         BI_mags[] = {
             "30Rnd_580x42_Mag_F",
