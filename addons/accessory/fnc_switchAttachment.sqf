@@ -18,7 +18,7 @@ Examples:
     (end)
 
 Author:
-    Robalo
+    Robalo, optimized by Anton
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
@@ -67,8 +67,8 @@ if (!isNil "_switchItem") then {
             _unit addSecondaryWeaponItem _switchItem;
         };
     };
-    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call BIS_fnc_getCfgData;
-    if (!isNil "_switchItemHintText") then {
+    private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
+    if !(_switchItemHintText isEqualTo "") then {
         hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";
