@@ -11,4 +11,4 @@ overview = "What does the name Community Base Addons mean? It is a system that o
 author = "CBA Team";
 overviewPicture = "logo_cba_ca.paa";
 overviewText = "Community Base Addons overviewText";
-overviewFootnote = "<br /><br /><t color='#3.7.0'>This content is under GPLv2 License.<br />Press <t /><t color='#19d3ff'>Left Shift + P<t /><t color='#3.7.0'> to open the store page for more information.<t />";
+overviewFootnote = "<br /><br /><t color='#999999'>This content is under GPLv2 License.<br />Press <t /><t color='#19d3ff'>Left Shift + P<t /><t color='#999999'> to open the store page for more information.<t />";
