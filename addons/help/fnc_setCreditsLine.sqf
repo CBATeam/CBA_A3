@@ -27,8 +27,7 @@ if !(ctrlText _control isEqualTo "") exitWith {};
 
 if (CBA_DisableCredits) exitWith {};
 
-// find addon with author
-private _config = configFile >> "CfgPatches";
+// find random addon with author
 private _entry = selectRandom (uiNamespace getVariable [QGVAR(creditsCache), []]);
 
 if (isNil "_entry") exitWith {};
