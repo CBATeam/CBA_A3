@@ -1,18 +1,3 @@
-#include "script_component.hpp"
-
-class CfgPatches {
-    class ADDON {
-        author = "$STR_CBA_Author";
-        name = ECSTRING(jr,component);
-        url = "$STR_CBA_URL";
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Data_F_Tank_Loadorder"};
-        version = VERSION;
-    };
-};
-
 class CfgWeapons {
     class Rifle;
     class Rifle_Base_F : Rifle {
@@ -248,7 +233,6 @@ class CfgWeapons {
     };
 
     class Pistol;
-
     class Pistol_Base_F : Pistol {
         class WeaponSlotsInfo;
     };
