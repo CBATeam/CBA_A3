@@ -34,10 +34,10 @@ for "_i" from 0 to (count _matrixA -1) do
 {
     private _returnRow = [];
     private _rowA = _matrixA select _i;
-	  for "_j" from 0 to (count _matrixB -1) do
-	  {
-	      _returnRow pushBack (_rowA vectorDotProduct ( _matrixB select _j));
-	  };
-	  _returnMatrix pushBack _returnRow;
+    for "_j" from 0 to (count _matrixB -1) do
+    {
+        _returnRow pushBack (_rowA vectorDotProduct ( _matrixB select _j));
+    };
+    _returnMatrix pushBack _returnRow;
 };
 _returnMatrix;
