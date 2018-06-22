@@ -28,16 +28,7 @@ Author:
 params [["_matrixA", [], [[]], 3], ["_matrixB", [], [[]], 3]];
 
 _matrixB = [_matrixB] call CBA_fnc_matrixTranspose;
-
-private _returnMatrix = [];
-for "_i" from 0 to (count _matrixA -1) do
-{
-    private _returnRow = [];
-    private _rowA = _matrixA select _i;
-    for "_j" from 0 to (count _matrixB -1) do
-    {
-        _returnRow pushBack (_rowA vectorDotProduct ( _matrixB select _j));
-    };
-    _returnMatrix pushBack _returnRow;
+_matrixA apply {
+    private _rowA = _x; 
+    _matrixB apply {_rowA vectorDotProduct _x};
 };
-_returnMatrix;

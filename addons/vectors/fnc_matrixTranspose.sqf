@@ -26,19 +26,10 @@ Author:
 
 params [["_matrix", [], [[]]]];
 
-private _m = count _matrix;
-private _n = count (_matrix select 0);
-
 private _returnMatrix = [];
 
-for "_j" from 0 to (_n - 1) do
-{
-    private _returnRow = [];
-    for "_i" from 0 to (_m - 1) do
-    {
-        _returnRow pushBack ((_matrix select _i) select _j);
-    };
-    _returnMatrix pushBack _returnRow;
+for "_j" from 0 to (count (_matrix select 0) -1) do {
+    _returnMatrix pushBack (_matrix apply {_x select _j});
 };
 
 _returnMatrix;
