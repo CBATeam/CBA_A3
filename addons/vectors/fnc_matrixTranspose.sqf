@@ -2,15 +2,15 @@
 Function: CBA_fnc_matrixTranspose
 
 Description:
-   Returns the transposed matrix.
+    Returns the transposed matrix.
 
-   Accepts any mxn matrix.
+    Accepts any mxn matrix.
 
 Parameters:
-    _matrix        - mxn matrix to transpose. <ARRAY>
+    _matrix       - mxn matrix to transpose. <ARRAY>
 
 Returns:
-     _returnMatrix - nxm matrix <ARRAY>
+    _returnMatrix - nxm matrix <ARRAY>
 
 Examples:
     (begin example)

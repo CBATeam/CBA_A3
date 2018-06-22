@@ -2,16 +2,16 @@
 Function: CBA_fnc_matrixProduct3D
 
 Description:
-   Returns the resulting matrix from the matrix-matrix product.
+    Returns the resulting matrix from the matrix-matrix product.
 
-   Only accepts a 3x3 matrices.
+    Only accepts a 3x3 matrices.
 
 Parameters:
-    _matrixA       - first 3x3 matrix. <ARRAY>
-    _matrixB       - second 3x3 matrix. <ARRAY>
+    _matrixA      - first 3x3 matrix. <ARRAY>
+    _matrixB      - second 3x3 matrix. <ARRAY>
 
 Returns:
-     _returnMatrix - 3x3 matrix returned after matrix multiplication <ARRAY>
+    _returnMatrix - 3x3 matrix returned after matrix multiplication <ARRAY>
 
 Examples:
     (begin example)

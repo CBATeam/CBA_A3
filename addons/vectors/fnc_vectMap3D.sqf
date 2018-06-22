@@ -2,16 +2,16 @@
 Function: CBA_fnc_vectMap3D
 
 Description:
-   Returns the resulting vector of the product matrix-vector product.
+    Returns the resulting vector of the product matrix-vector product.
 
-   Only accepts a 3x3 matrices and 3D vector.
+    Only accepts a 3x3 matrices and 3D vector.
 
 Parameters:
     _matrix       - 3x3 matrix, which serves as a map. <ARRAY>
     _vector       - 3D vector that is mapped. <ARRAY>
 
 Returns:
-     _returnVector - 3D vector returned after matrix multiplication <ARRAY>
+    _returnVector - 3D vector returned after matrix multiplication <ARRAY>
 
 Examples:
     (begin example)
