@@ -12,10 +12,25 @@ private _fnc_vectorEquals = {
     if ((count _vector1) != (count _vector2)) exitWith {false};
     private _equal = true;
     {
-        if ((abs (_x - (_vector2 select _forEachIndex))) > 0.00001) then {
+        if ((abs (_x - (_vector2 select _forEachIndex))) > 0.00001) exitWith {
             _equal = false;
         };
     } forEach _vector1;
+    _equal
+};
+
+//Need custom func to compare matrices to handle floating point errors
+private _fnc_matrixEquals = {
+    params ["_matrix1", "_matrix2"];
+    if ((isNil "_matrix1") || {isNil "_matrix2"}) exitWith {false};
+    if (!(_matrix1 isEqualTypeArray _matrix2)) exitWith {false};
+    if ((count _matrix1) != (count _matrix2)) exitWith {false};
+    private _equal = true;
+    {
+        if !([ARR_2(_x, _matrix2 select _forEachIndex)] call _fnc_vectorEquals) exitWith {
+            _equal = false;
+        };
+    } forEach _matrix1;
     _equal
 };
 
