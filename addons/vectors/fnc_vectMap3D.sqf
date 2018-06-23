@@ -22,8 +22,8 @@ Examples:
 Author:
     Kex
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 
-params[["_matrix", [], [[]], 3], ["_vector", [], [[]], 3]];
-_matrix apply {_x vectorDotProduct _vector};
+params [["_matrix", [], [[]], 3], ["_vector", [], [[]], 3]];
+
+_matrix apply {_x vectorDotProduct _vector} // return
