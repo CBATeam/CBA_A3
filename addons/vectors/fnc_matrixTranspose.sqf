@@ -21,7 +21,6 @@ Examples:
 Author:
     Kyle Kotowick, Kex
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 
 params [["_matrix", [], [[]]]];
