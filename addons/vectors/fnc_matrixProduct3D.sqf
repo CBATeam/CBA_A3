@@ -4,7 +4,7 @@ Function: CBA_fnc_matrixProduct3D
 Description:
     Returns the resulting matrix from the matrix-matrix product.
 
-    Only accepts a 3x3 matrices.
+    Only accepts 3x3 matrices.
 
 Parameters:
     _matrixA      - first 3x3 matrix. <ARRAY>
