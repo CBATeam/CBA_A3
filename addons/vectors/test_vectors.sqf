@@ -311,4 +311,39 @@ _result = _temp call CBA_fnc_polar2vect;
 TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, "complex polar 2");
 
 
+// UNIT TESTS (vectMap3D)
+_fn = "CBA_fnc_vectMap3D";
+TEST_DEFINED("CBA_fnc_vectMap3D","");
+
+_result = [[[0,1,0],[0,0,1],[1,0,0]], [1,2,3]] call CBA_fnc_vectMap3D;
+_expected = [2,3,1];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, _fn);
+
+_result = [[[1,2,5],[2,-1,3],[5,6,-1]], [1,2,3]] call CBA_fnc_vectMap3D;
+_expected = [20,9,14];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, _fn);
+
+// UNIT TESTS (matrixTranspose)
+_fn = "CBA_fnc_matrixTranspose";
+TEST_DEFINED("CBA_fnc_matrixTranspose","");
+
+_result = [[[1,2,5],[-2,4,3],[5,6,8]]] call CBA_fnc_matrixTranspose;
+_expected = [[1,-2,5],[2,4,6],[5,3,8]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
+
+// UNIT TESTS (matrixProduct3D)
+_fn = "CBA_fnc_matrixProduct3D";
+TEST_DEFINED("CBA_fnc_matrixProduct3D","");
+
+_result = [[[1,2,5],[2,-1,3],[5,6,-1]], [[1,2,3],[3,1,2],[2,3,1]]] call CBA_fnc_matrixProduct3D;
+_expected = [[17,19,12],[5,12,7],[21,13,26]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
+
+private _orthogonalMatrix = [[2/3,-1/3,2/3],[2/3,2/3,-1/3],[-1/3,2/3,2/3]];
+private _orthogonalMatrixTransposed = [_orthogonalMatrix] call CBA_fnc_matrixTranspose;
+_result = [_orthogonalMatrix, _orthogonalMatrixTransposed] call CBA_fnc_matrixProduct3D;
+_expected = [[1,0,0],[0,1,0],[0,0,1]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
+
+
 nil;
