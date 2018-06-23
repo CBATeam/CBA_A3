@@ -51,7 +51,7 @@ switch (typeName _entity) do {
                 if (_groupOwner isEqualTo 0) then {
                     [{groupOwner _this != 0}, {
                         _this call CBA_fnc_deleteEntity;
-                    }, _entity, 1] call CBA_fnc_waitUntilAndExecute;
+                    }, _entity] call CBA_fnc_waitUntilAndExecute;
                 } else {
                    _entity remoteExecCall ["CBA_fnc_deleteEntity", _groupOwner];
                 };
