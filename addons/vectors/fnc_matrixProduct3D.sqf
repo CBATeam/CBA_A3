@@ -22,7 +22,6 @@ Examples:
 Author:
     Kex
 ---------------------------------------------------------------------------- */
-
 #include "script_component.hpp"
 
 params [["_matrixA", [], [[]], 3], ["_matrixB", [], [[]], 3]];
