@@ -40,14 +40,13 @@ Author:
 #include "script_component.hpp"
 SCRIPT(createMarker);
 
-private ["_m", "_br", "_ty", "_co", "_tx", "_persist", "_global"];
-
-_br = ["BRUSH:", "brush:", "", _this] call CBA_fnc_getArg;
-_ty = ["TYPE:", "type:", "", _this] call CBA_fnc_getArg;
-_co = ["COLOR:", "color:", "", _this] call CBA_fnc_getArg;
-_tx = ["TEXT:", "text:", "", _this] call CBA_fnc_getArg;
-_persist = "PERSIST" in _this;
-_global = "GLOBAL" in _this || _persist;
+private _m = "";
+private _br = ["BRUSH:", "brush:", "", _this] call CBA_fnc_getArg;
+private _ty = ["TYPE:", "type:", "", _this] call CBA_fnc_getArg;
+private _co = ["COLOR:", "color:", "", _this] call CBA_fnc_getArg;
+private _tx = ["TEXT:", "text:", "", _this] call CBA_fnc_getArg;
+private _persist = "PERSIST" in _this;
+private _global = "GLOBAL" in _this || _persist;
 TRACE_6("",_br,_ty,_co,_tx,_persist,_global);
 
 

@@ -83,21 +83,18 @@ private _config = configFile >> "CfgSettings" >> "CBA" >> "events";
 
         _actionName = [_actionName, "_", " "] call CBA_fnc_replace;
 
-        private ["_key", "_shift", "_ctrl", "_alt"];
-
-        if (isNumber _entry) then {
-            _key = getNumber _entry;
-            _shift = 0;
-            _ctrl = 0;
-            _alt = 0;
+        private _keyState = if (isNumber _entry) then {
+            [getNumber _entry, 0, 0, 0 ]
         } else {
-            _key = getNumber (_entry >> "key");
-            _shift = getNumber (_entry >> "shift");
-            _ctrl = getNumber (_entry >> "ctrl");
-            _alt = getNumber (_entry >> "alt");
+            [
+                getNumber (_entry >> "key"),
+                getNumber (_entry >> "shift"),
+                getNumber (_entry >> "ctrl"),
+                getNumber (_entry >> "alt")
+            ]
         };
 
-        private _keyName = [_key, _shift, _ctrl, _alt] call _fnc_getKeyName;
+        private _keyName = _keyState call _fnc_getKeyName;
 
         _actionName = format ["    %1: %2", _actionName, _keyName];
 

@@ -33,13 +33,12 @@ Author:
 #include "script_component.hpp"
 SCRIPT(switchPlayer);
 
-private ["_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];
 params ["_type"];
-_oldUnit = player;
+private _oldUnit = player;
 
-_ar = [weapons _oldUnit, magazines _oldUnit, rank _oldUnit, score _oldUnit, group _oldUnit, getPos _oldUnit, (leader _oldUnit) == _oldUnit, vehicleVarName _oldUnit];
+private _ar = [weapons _oldUnit, magazines _oldUnit, rank _oldUnit, score _oldUnit, group _oldUnit, getPos _oldUnit, (leader _oldUnit) == _oldUnit, vehicleVarName _oldUnit];
 
-_dummyGroup = createGroup (side _oldUnit);
+private _dummyGroup = createGroup (side _oldUnit);
 if (isNull _dummyGroup) exitWith { hint "Sorry, something went wrong, dummyGroup is null" };
 _dummyUnit = (_ar select 4) createUnit [_type, [0, 0, 0], [], 0, "NONE"]; // Join in the old group incase there was only 1 member
 if (isNull _dummyUnit) exitWith { hint "Sorry, something went wrong, dummyUnit is null" };
@@ -47,7 +46,7 @@ if (isNull _dummyUnit) exitWith { hint "Sorry, something went wrong, dummyUnit i
 
 LOG(format["1.Dummy created, State saved and put oldUnit in new group: %1", _dummyGroup]);
 
-_newUnit = _dummyGroup createUnit [_type, _ar select 5, [], 0, "NONE"];
+private _newUnit = _dummyGroup createUnit [_type, _ar select 5, [], 0, "NONE"];
 
 if (isNull _newUnit) exitWith { hint "Sorry, something went wrong, newUnit is null" };
 

@@ -28,20 +28,18 @@ Author:
 #include "script_component.hpp"
 SCRIPT(getUnitAnim);
 
-private ["_unit", "_anim", "_upos", "_umov", "_dthstr", "_posstr", "_movstr"];
-
-_unit = _this;
-_anim = toArray(toLower(animationState _unit));
-_upos = "unknown";
-_umov = "stop";
+private _unit = _this;
+private _anim = toArray(toLower(animationState _unit));
+private _upos = "unknown";
+private _umov = "stop";
 
 if (vehicle _unit!= _unit) then {
     _upos = "vehicle";
 } else {
     if (count _anim < 12) exitWith {};
-    _dthstr = toString [_anim select 0, _anim select 1, _anim select 2, _anim select 3];
-    _posstr = toString [_anim select 4, _anim select 5, _anim select 6, _anim select 7];
-    _movstr = toString [_anim select 8, _anim select 9, _anim select 10, _anim select 11];
+    private _dthstr = toString [_anim select 0, _anim select 1, _anim select 2, _anim select 3];
+    private _posstr = toString [_anim select 4, _anim select 5, _anim select 6, _anim select 7];
+    private _movstr = toString [_anim select 8, _anim select 9, _anim select 10, _anim select 11];
     if (_dthstr == "adth" || {_dthstr == "slx_"}) then {
         _upos = "prone";
     } else {

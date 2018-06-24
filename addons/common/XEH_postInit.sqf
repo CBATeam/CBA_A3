@@ -23,9 +23,9 @@ LOG(MSG_INIT);
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
 TRACE_1("Upgrade Check",nil);
 #define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
-private ["_entry"];
+
 for "_i" from 0 to ((count (CFG)) - 1) do {
-    _entry = (CFG) select _i;
+    private _entry = (CFG) select _i;
     if (isClass(_entry) && {isArray(_entry >> "removed")}) then {
         {
             if (isClass(configFile >> "CfgPatches" >> _x)) then {

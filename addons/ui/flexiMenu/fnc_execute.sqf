@@ -4,17 +4,12 @@
 //-----------------------------------------------------------------------------
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private [
-    "_arrayID", "_actionData", "_action", "_subMenu", "_multiReselect", "_useListBox",
-    "_subMenuSource", "_params", "_pathName", "_actionCode", "_actionParams"
-];
+private _arrayID = _this;
+private _actionData = GVAR(menuActionData) select _arrayID;
 
-_arrayID = _this;
-_actionData = GVAR(menuActionData) select _arrayID;
-
-_action = _actionData select 0;
-_subMenu = _actionData select 1;
-_multiReselect = _actionData select 2;
+private _action = _actionData select 0;
+private _subMenu = _actionData select 1;
+private _multiReselect = _actionData select 2;
 //-----------------------------------------------------------------------------
 // indicates an option/button was selected, (to allow menu to close upon release of interact key), except if _multiReselect enabled.
 if (_multiReselect == 0) then {
@@ -22,10 +17,10 @@ if (_multiReselect == 0) then {
 };
 
 // determine optional sub menu source
-_subMenuSource = "";
-_params = ["?"];
-_useListBox = 0;
-if (typeName _subMenu == typeName []) then {
+private _subMenuSource = "";
+private _params = ["?"];
+private _useListBox = 0;
+if (_subMenu isEqualType []) then {
     IfCountDefault(_subMenuSource,_subMenu,0,"");
     IfCountDefault(_params,_subMenu,1,[]);
     IfCountDefault(_useListBox,_subMenu,2,0);
@@ -42,18 +37,19 @@ if (_useListBox == 0 && {_multiReselect == 0}) then { // if using embedded listB
 };
 //-----------------------------------------------------------------------------
 // execute main menu action (unless submenu)
-if (typeName _action == typename []) then {
+
+private _actionParams = 1;
+private _actionCode = _action;
+
+if (_action isEqualType []) then {
     _actionParams = _action select 0;
     _actionCode = _action select 1;
-} else {
-    _actionParams = 1;
-    _actionCode = _action;
 };
 
-if (typeName _actionCode == typename {}) then {
+if (_actionCode isEqualType {}) then {
     _actionParams call _actionCode
 } else {
-    if (typename _actionCode == typename "") then {
+    if (_actionCode isEqualType "") then {
         if(_actionCode != "") then {
             _actionParams call compile _actionCode;
         };
@@ -63,7 +59,7 @@ if (typeName _actionCode == typename {}) then {
 // show sub menu
 if (_subMenuSource != "") then {
     // TODO: Find a way to combine the menu and list scripts together.
-    _pathName = QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,%1));
+    private _pathName = QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,%1));
     _pathName = format [_pathName, if (_useListBox == 0) then {'fnc_menu'} else {'fnc_list'}];
 
     [GVAR(target), [[_subMenuSource, _params]]] call COMPILE_FILE2_SYS(_pathName);

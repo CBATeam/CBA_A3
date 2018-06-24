@@ -29,23 +29,21 @@ Authors:
 #define __dist 10000
 #define __xOff 5000
 
-private ["_zoomRef", "_widthReal", "_safeZoneAspectRatio", "_screenAspectRatio", "_pos", "_xPos", "_deltaX", "_trigRatio", "_fovH", "_fovV", "_fovVRads", "_configFov", "_zoom"];
+private _zoomRef = if (IS_SCALAR(_this)) then {_this} else {0.75};
 
-_zoomRef = if (IS_SCALAR(_this)) then {_this} else {0.75};
+private _widthReal = safeZoneW / 2;
+private _safeZoneAspectRatio = (safeZoneW / safeZoneH);
+private _screenAspectRatio = _safeZoneAspectRatio * (4 / 3);
 
-_widthReal = safeZoneW / 2;
-_safeZoneAspectRatio = (safeZoneW / safeZoneH);
-_screenAspectRatio = _safeZoneAspectRatio * (4 / 3);
+private _pos = positionCameraToWorld [__xOff, 0, __dist];
+private _xPos = (worldToScreen _pos) select 0;
+private _deltaX = _xPos - 0.5;
 
-_pos = positionCameraToWorld [__xOff, 0, __dist];
-_xPos = (worldToScreen _pos) select 0;
-_deltaX = _xPos - 0.5;
-
-_trigRatio = ((_widthReal * __xOff) / (__dist * _deltaX));
-_fovH = 2 * atan _trigRatio;
-_fovV = _fovH / _screenAspectRatio;
-_fovVRads = _fovV * pi / 180;
-_configFov = _trigRatio / _safeZoneAspectRatio;
-_zoom = _zoomRef / _configFov;
+private _trigRatio = ((_widthReal * __xOff) / (__dist * _deltaX));
+private _fovH = 2 * atan _trigRatio;
+private _fovV = _fovH / _screenAspectRatio;
+private _fovVRads = _fovV * pi / 180;
+private _configFov = _trigRatio / _safeZoneAspectRatio;
+private _zoom = _zoomRef / _configFov;
 
 [_fovVRads, _zoom]

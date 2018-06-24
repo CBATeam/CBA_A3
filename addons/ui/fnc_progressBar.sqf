@@ -90,6 +90,7 @@ _ctrlScript ctrlAddEventHandler ["Draw", {
     private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
 
     private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
+        // prevent these variables from being overwritten
         private ["_ctrlScript", "_display", "_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime", "_elapsedTime"];
         _this#0 call _this#1;
     };

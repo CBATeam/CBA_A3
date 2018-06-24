@@ -4,13 +4,9 @@
 
 if (isDedicated || !dialog) exitWith {};
 
-private [
-    "_handled", "_menuDefs", "_caption", "_action", "_icon", "_tooltip", "_subMenu", "_shortcut",
-    "_visible", "_enabled"
-];
 (_this select 0) params ["_control", "_dikCode", "_shiftKey", "_ctrlKey", "_altKey"];
 
-_handled = false;
+private _handled = false;
 
 // prevent unneeded cpu usage due to key down causing repeated event trigger
 if (GVAR(holdKeyDown)) then {
@@ -23,19 +19,19 @@ if (!GVAR(holdKeyDown) && {(_dikCode in (actionKeys "menuBack"))}) exitWith {
     true
 };
 
-_menuDefs = (_this select 1) call FUNC(getMenuDef);
+private _menuDefs = (_this select 1) call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 { // forEach
-    _menuOption = [_menuDefs select 0, _x, true] call FUNC(getMenuOption); // get fast partial record
+    private _menuOption = [_menuDefs select 0, _x, true] call FUNC(getMenuOption); // get fast partial record
 
-    //_caption = _menuOption select _flexiMenu_menuDef_ID_caption;
-    //_action = _menuOption select _flexiMenu_menuDef_ID_action;
-    //_icon = _menuOption select _flexiMenu_menuDef_ID_icon;
-    //_tooltip = _menuOption select _flexiMenu_menuDef_ID_tooltip;
-    //_subMenu = _menuOption select _flexiMenu_menuDef_ID_subMenuSource;
-    _shortcut = _menuOption select _flexiMenu_menuDef_ID_shortcut;
-    _enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
-    _visible = _menuOption select _flexiMenu_menuDef_ID_visible;
+    //private _caption = _menuOption select _flexiMenu_menuDef_ID_caption;
+    //private _action = _menuOption select _flexiMenu_menuDef_ID_action;
+    //private _icon = _menuOption select _flexiMenu_menuDef_ID_icon;
+    //private _tooltip = _menuOption select _flexiMenu_menuDef_ID_tooltip;
+    //private _subMenu = _menuOption select _flexiMenu_menuDef_ID_subMenuSource;
+    private _shortcut = _menuOption select _flexiMenu_menuDef_ID_shortcut;
+    private _enabled = _menuOption select _flexiMenu_menuDef_ID_enabled;
+    private _visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
     if (_dikCode == _shortcut && {_enabled != 0} && {_visible > 0}) exitWith {
         _menuOption = [_menuDefs select 0, _x, false] call FUNC(getMenuOption); // get complete same record

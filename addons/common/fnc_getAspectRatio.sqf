@@ -24,16 +24,12 @@ Author:
 #include "script_component.hpp"
 SCRIPT(getAspectRatio);
 
+private _output = toUpper _this;
+private _aspectStr = "";
+private _aspectArr = [];
+private _return = 0;
+private _ratio = (round ((safeZoneW / safeZoneH) * 1000)) / 1000;
 
- private ["_output","_aspectStr","_aspectArr","_ratio","_return"];
-
-_output = toUpper _this;
-
-_aspectStr = "";
-_aspectArr = [];
-_return = 0;
-
-_ratio = (round ((safeZoneW / safeZoneH) * 1000)) / 1000;
 switch (_ratio) do {
     case 1: {
             _aspectStr = "4:3";
@@ -72,4 +68,4 @@ if (_output == "ARRAY") then {_return = _aspectArr;};
 if (_output == "STRING") then {_return = _aspectStr;};
 if (_output == "NUMBER") then {_return = _ratio;};
 
-_return;;
+_return;
