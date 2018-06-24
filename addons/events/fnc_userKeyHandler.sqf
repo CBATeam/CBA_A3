@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_userKeyHandler
 
@@ -7,7 +8,6 @@ Description:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 if (GVAR(skipCheckingUserActions)) exitWith {};
 

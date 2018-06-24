@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerChatCommand
 
@@ -25,7 +26,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(registerChatCommand);
 
 if (isNil QGVAR(customChatCommands)) then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addEventHandler
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     Spooner, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addEventHandler);
 
 [{
