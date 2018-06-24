@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Script: fnc_waypointGarrison
 
@@ -21,7 +22,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 #define POP_RAND(array) (array deleteAt floor random count array)
 

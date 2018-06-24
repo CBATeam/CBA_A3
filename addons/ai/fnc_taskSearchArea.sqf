@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_taskSearchArea
 
@@ -30,7 +31,6 @@ Examples:
 Author:
     SilentSpike 2015-08-17
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 params [
     ["_group", objNull, [objNull,grpNull]],
     ["_area", "", ["",objNull, locationNull,[]], 5],
