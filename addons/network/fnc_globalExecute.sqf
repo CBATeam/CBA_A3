@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_globalExecute
 
@@ -22,7 +23,6 @@ Example:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_channel", CBA_SEND_TO_ALL, [CBA_SEND_TO_ALL]], ["_code", {}, [{}]], ["_parameters", []]];
 
