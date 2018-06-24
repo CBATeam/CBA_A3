@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_progressBar
 
@@ -36,7 +37,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // no progress bar without interface
 if (!hasInterface) exitWith {};
