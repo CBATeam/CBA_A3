@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_hashSize
 
@@ -22,8 +23,6 @@ Examples:
 Author:
     Killswitch
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 #include "script_hashes.hpp"
 
 SCRIPT(hashSize);

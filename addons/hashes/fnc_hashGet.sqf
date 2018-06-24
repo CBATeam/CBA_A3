@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_hashGet
 
@@ -16,8 +17,6 @@ Returns:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 #include "script_hashes.hpp"
 
 SCRIPT(hashGet);
