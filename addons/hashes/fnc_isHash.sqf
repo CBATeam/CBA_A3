@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#include "script_hashes.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isHash
 
@@ -16,7 +17,6 @@ Returns:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-#include "script_hashes.hpp"
 
 SCRIPT(isHash);
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerKeybind
 
@@ -6,9 +7,6 @@ This function is deprecated, please use CBA_fnc_addKeybind. This function will N
 Author:
  Nou
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
-
 
 // Clients only.
 if (isDedicated) exitWith {};

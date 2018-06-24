@@ -1,3 +1,5 @@
+#define DEBUG_SYNCHRONOUS
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_init
 
@@ -19,8 +21,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#define DEBUG_SYNCHRONOUS
-#include "script_component.hpp"
 
 params ["_this"];
 

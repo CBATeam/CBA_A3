@@ -1,3 +1,5 @@
+#include "\a3\ui_f\hpp\defineResinclDesign.inc"
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_diagnostic_fnc_initTargetDebugConsole
 
@@ -10,10 +12,6 @@ Author:
     PabstMirror
     commy2
 ---------------------------------------------------------------------------- */
-
-//#define DEBUG_MODE_FULL
-#include "\a3\ui_f\hpp\defineResinclDesign.inc"
-#include "script_component.hpp"
 
 #define COUNT_WATCH_BOXES 8
 

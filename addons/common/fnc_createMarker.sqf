@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_createMarker
 
@@ -36,8 +37,6 @@ Examples:
 Author:
     Sickboy (sb_at_dev-heaven.net) 6thSense.eu Mod
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
-#include "script_component.hpp"
 SCRIPT(createMarker);
 
 private ["_m", "_br", "_ty", "_co", "_tx", "_persist", "_global"];

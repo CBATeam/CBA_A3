@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_help_fnc_setVersionLine
 
@@ -14,8 +15,6 @@ Parameters:
 Returns:
     None
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 params ["_control", ["_key", 0]];
 
