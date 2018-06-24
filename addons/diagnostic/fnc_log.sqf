@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_fnc_log
 
@@ -15,7 +16,6 @@ Returns:
 Author:
     Spooner, Rommel, commy2
 -----------------------------------------------------------------------------*/
-#include "script_component.hpp"
 SCRIPT(log);
 
 params [["_message", "", [""]]];
