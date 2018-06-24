@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_inject
 
@@ -32,8 +33,6 @@ Examples:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(inject);
 

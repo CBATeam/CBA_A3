@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findTypeOf
 
@@ -21,7 +22,6 @@ Returns:
 Author:
     joko // Jonas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 scopeName "main";
 
