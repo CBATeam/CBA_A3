@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_randPosArea
 
@@ -27,7 +28,6 @@ Examples:
 Author:
     SilentSpike 2015-07-06
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(randPosArea);
 
 params [

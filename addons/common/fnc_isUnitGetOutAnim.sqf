@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isUnitGetOutAnim
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     (c) Denisko-Redisko
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(isUnitGetOutAnim);
 
 params ["_unit"];

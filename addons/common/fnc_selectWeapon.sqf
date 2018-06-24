@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_selectWeapon
 
@@ -24,7 +25,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(selectWeapon);
 
 #define MAXIMUM_TRIES 100

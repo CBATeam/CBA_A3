@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getNearest
 
@@ -24,7 +25,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getNearest);
 
 params [

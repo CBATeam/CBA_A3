@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getConfigEntry
 
@@ -23,8 +24,6 @@ Examples:
 Author:
     Sickboy (sb_at_dev-heaven.net)
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getConfigEntry);
 
 private ["_r"];

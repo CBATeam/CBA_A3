@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_mapRelPos
 
@@ -25,7 +26,6 @@ Examples:
 Author:
     Nou (with credit to Headspace, Rommel & Meat187 for the real math :p)
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 SCRIPT(mapRelPos);
 

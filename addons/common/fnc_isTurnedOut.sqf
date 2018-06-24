@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isTurnedOut
 
@@ -27,8 +28,6 @@ Examples:
 Author:
     Nou, courtesy of ACRE project.
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(isTurnedOut);
 
 private ["_turn","_out","_vehicle","_cfg","_forceHideDriver","_phase","_assignedRole","_turretPath","_turret","_canHideGunner",

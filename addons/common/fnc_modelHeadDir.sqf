@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_modelHeadDir
 
@@ -39,8 +40,6 @@ ImplementationNote:
 Author:
     Nou
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(modelHeadDir);
 private["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 

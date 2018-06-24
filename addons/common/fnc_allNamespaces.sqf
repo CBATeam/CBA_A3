@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_allNamespaces
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(allNamespaces);
 
 nearestLocations [DUMMY_POSITION, ["CBA_NamespaceDummy"], 1] + (nearestObjects [ASLToAGL DUMMY_POSITION, [], 1] select {typeOf _x isEqualTo "CBA_NamespaceDummy"})

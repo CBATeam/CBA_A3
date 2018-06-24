@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_switchPlayer
 
@@ -29,8 +30,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(switchPlayer);
 
 private ["_ar", "_oldUnit", "_newUnit", "_dummyUnit", "_dummyGroup"];

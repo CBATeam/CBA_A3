@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getUnitDeathAnim
 
@@ -18,8 +19,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getUnitDeathAnim);
 
 private ["_unit", "_curAnim", "_deathAnim", "_deathAnimCfg"];

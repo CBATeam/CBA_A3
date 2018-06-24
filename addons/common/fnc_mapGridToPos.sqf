@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_mapGridToPos
 
@@ -25,7 +26,6 @@ Examples:
 Author:
     Nou
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 SCRIPT(mapGridToPos);
 

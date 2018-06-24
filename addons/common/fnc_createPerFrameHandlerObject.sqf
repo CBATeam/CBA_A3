@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_createPerFrameHandlerObject
 
@@ -53,7 +54,6 @@ Examples:
 Author:
     Nou & Jaynus, donated from ACRE project code for use by the community; commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [
     ["_function", {}, [{}]],

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_deleteEntity
 
@@ -18,7 +19,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(deleteEntity);
 
 [_this] params [["_entity", objNull, [objNull, grpNull, locationNull, "", []]]];

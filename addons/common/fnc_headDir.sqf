@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_headDir
 
@@ -50,8 +51,6 @@ ImplementationNote:
 Author:
     rocko
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(headDir);
 
 params [

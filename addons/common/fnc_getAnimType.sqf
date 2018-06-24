@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getAnimType
 
@@ -19,8 +20,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getAnimType);
 
 private ["_anim", "_weapon", "_pos"];

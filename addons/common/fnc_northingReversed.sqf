@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_northingReversed
 
@@ -19,7 +20,6 @@ Author:
     Nou
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 private ["_test", "_reversed", "_start", "_check", "_plus"];
 _reversed = false;
