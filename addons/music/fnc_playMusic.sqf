@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_playMusic
 
@@ -20,7 +21,6 @@ Example:
 Author:
     Fishy, Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_className", "", ["", configFile]], ["_time", 0, [0]], ["_overWrite", true, [true]]];
 
