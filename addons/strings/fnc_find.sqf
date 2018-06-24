@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_find
 
@@ -28,8 +29,6 @@ Examples:
 Author:
     jaynus
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(find);
 

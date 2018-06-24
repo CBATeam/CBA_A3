@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_substr
 
@@ -23,8 +24,6 @@ Example:
 Author:
     joko // Jonas
 --------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(substr);
 

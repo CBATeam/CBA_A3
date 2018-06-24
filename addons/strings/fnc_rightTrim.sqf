@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_rightTrim
 
@@ -22,8 +23,6 @@ Example:
 Author:
     Spooner, joko // Jonas, SilentSpike
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 #include "script_strings.hpp"
 
 SCRIPT(rightTrim);

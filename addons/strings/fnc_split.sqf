@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_split
 
@@ -24,8 +25,6 @@ Examples:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(split);
 

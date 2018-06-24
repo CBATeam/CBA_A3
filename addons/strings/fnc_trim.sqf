@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_trim
 
@@ -22,8 +23,6 @@ Example:
 Author:
     Spooner, SilentSpike
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(trim);
 
