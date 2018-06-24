@@ -55,7 +55,7 @@ if !(ISINITIALIZED(_this)) then {
         SETINITIALIZED(_vehicle);
 
         {
-            private ["_vehicle", "_wreck"];
+            private ["_vehicle", "_wreck"]; // prevent these variables from being overwritten
             call _x;
         } forEach (_wreck getVariable QGVAR(respawn));
 
