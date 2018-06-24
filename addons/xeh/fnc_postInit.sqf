@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_postInit
 
@@ -14,6 +15,5 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 CBA_fnc_postInit_unscheduled call CBA_fnc_directCall;
