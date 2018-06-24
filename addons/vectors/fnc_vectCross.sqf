@@ -23,4 +23,6 @@ Author:
 ---------------------------------------------------------------------------- */
 
 //Function is complete replica, deprecated
-_this call BIS_fnc_crossProduct
+params ["_v1", "_v2"];
+
+_v1 vectorCrossProduct _v2
