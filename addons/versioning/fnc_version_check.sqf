@@ -7,8 +7,7 @@ TRACE_3("Version Check",_key,_value,_localValue);
 
 private _failed = false;
 private _localVersion = _localValue select 0;
-private _remoteVersion = _value select 0;
-private _level = _value select 1;
+_value params ["_remoteVersion", "_level"];
 private _lc = count _localVersion; private _rc = count _remoteVersion;
 switch _level do {
     case -1: { _level = _rc }; // All must match
