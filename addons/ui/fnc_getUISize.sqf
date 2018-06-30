@@ -35,7 +35,7 @@ params [["_returnType", "STRING", [""]]];
 private _uiScale = getResolution select 5;
 
 if (_returnType == "STRING") exitWith {
-    UI_SCALES_NAMES select (UI_SCALES find _uiScale) // return
+    UI_SCALES_NAMES param [UI_SCALES find _uiScale, "error"] // return
 };
 
 if (_returnType == "NUMBER") exitWith {
