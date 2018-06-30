@@ -5,11 +5,10 @@
 GVAR(d) = [];
 
 [QFUNC(addTriggerHandler), {
-        private ["_c"];
     // #include "script_component.hpp"
     // #define DEBUG_MODE_FULL
     // [[_param1, _param2], { _param1 = _this select 0; _param2 = _this select 1; /* do stuff */}] call cba_fnc_addTriggerHandler;
-    _c = GVAR(d) pushBack _this;
+    private _c = GVAR(d) pushBack _this;
 
     // Create the trigger, only on first use
     if (isNil QGVAR(d_trigger)) then {

@@ -24,11 +24,11 @@ Author:
 
 params ["_itemType", "_switchTo"];
 
-private ["_currWeaponType", "_currItem", "_switchItem"];
+private ["_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
 private _cw = currentWeapon _unit;
 
-_currWeaponType = call {
+private _currWeaponType = call {
     if (_cw == "") exitWith {_currItem = ""; -1};
     if (_cw == primaryWeapon _unit) exitWith {_currItem = (primaryWeaponItems _unit) select _itemType; 0};
     if (_cw == handgunWeapon _unit) exitWith {_currItem = (handgunItems _unit) select _itemType; 1};

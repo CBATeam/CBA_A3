@@ -23,12 +23,10 @@ Author:
 #include "script_component.hpp"
 SCRIPT(getAnimType);
 
-private ["_anim", "_weapon", "_pos"];
-
 params ["_man","_array"];
-_anim = "";
-_weapon = format["%1", currentWeapon _man];
-_pos = "";
+private _anim = "";
+private _weapon = format["%1", currentWeapon _man];
+private _pos = "";
 
 if (_weapon != "") then {
     _class = configFile >> "CfgWeapons" >> _weapon;

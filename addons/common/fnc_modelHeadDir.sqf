@@ -42,22 +42,19 @@ Author:
 
 #include "script_component.hpp"
 SCRIPT(modelHeadDir);
-private["_pilotPos", "_neckPos", "_polar", "_pitch", "_abs", "_dif", "_world", "_return"];
 
 params ["_unit"];
 
-_return = [];
+private _return = [];
 
 if (_unit isKindOf "CAManBase" ) then {
-    _pilotPos = (_unit selectionPosition "pilot");
-    _neckPos = (_unit selectionPosition "neck");
-    _polar = ([_neckPos, _pilotPos] call BIS_fnc_vectorFromXToY) call CBA_fnc_vect2polar;
-    _pitch = (_polar select 2) - 23; // Subtract to compensate for mem point height dif
-    _abs = _polar select 1;
-    _dif = 0;
-
-    _dif = if (_abs > 180) then {_abs - 360} else {_abs};
-    _world = (getDir _unit) + _dif mod 360;
+    private _pilotPos = (_unit selectionPosition "pilot");
+    private _neckPos = (_unit selectionPosition "neck");
+    private _polar = ([_neckPos, _pilotPos] call BIS_fnc_vectorFromXToY) call CBA_fnc_vect2polar;
+    private _pitch = (_polar select 2) - 23; // Subtract to compensate for mem point height dif
+    private _abs = _polar select 1;
+    private _dif = if (_abs > 180) then {_abs - 360} else {_abs};
+    private _world = (getDir _unit) + _dif mod 360;
     _return = [_world, _dif, _pitch];
 };
 

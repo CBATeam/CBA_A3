@@ -9,11 +9,10 @@ in order to avoid the millions of Deprecated function warnings:
     WARNING: Deprecated function used: KRON_StrToArray (new: cba_fnc_split) in cba_common
 */
 
-private ["_captionArray", "_len", "_array2"];
 params ["_array", "_index", "_offset", "_hotKeyColor_ST"]; // (ST=structured text) "<t color='#f07EB27E'>"
 
-_captionArray = [];
-_len = 0;
+private _captionArray = [];
+private _len = 0;
 
 // ([_caption, _index] call KRON_StrLeft)+
 for "_i" from 0 to (_index - 1) do {
@@ -33,7 +32,7 @@ for "_i" from (_index + _offset) to (_index + _offset) do {
     _len = _len + 1;
 };
 
-_array2 = toArray "</t>";
+private _array2 = toArray "</t>";
 for "_i" from 0 to (count _array2 - 1) do {
     _captionArray set [_len, _array2 select _i];
     _len = _len + 1;
