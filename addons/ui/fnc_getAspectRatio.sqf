@@ -23,17 +23,23 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(getAspectRatio);
 
-#define ASPECT_RATIOS [4/3, 5/4, 16/9, 16/10, 12/3]
-#define ASPECT_RATIOS_NAMES ["4:3", "5:4", "16:9", "16:10", "12:3"]
-#define ASPECT_RATIOS_ARRAYS [[4,3], [5,4], [16,9], [16,10], [12,3]]
+#define ASPECT_RATIOS [\
+    [4/3, "4:3", [4,3]],\
+    [5/4, "5:4", [5,4]],\
+    [16/9, "16:9", [16,9]],\
+    [16/10, "16:10", [16,10]],\
+    [12/3, "12:3", [12,3]]\
+]
 
 params [["_returnType", "STRING", [""]]];
 
 private _aspectRatio = getResolution select 4;
 
-if (_returnType == "STRING") exitWith {
-    private _sort = [ASPECT_RATIOS, ASPECT_RATIOS_NAMES] apply {
-        [abs (_aspectRatio - _x#0), _x#1]
+if (toUpper _returnType in ["STRING", "ARRAY"]) exitWith {
+    private _index = [1, 2] select (_returnType == "ARRAY");
+
+    private _sort = ASPECT_RATIOS apply {
+        [abs (_aspectRatio - _x#0), _x#_index]
     };
 
     _sort sort true;
@@ -42,15 +48,6 @@ if (_returnType == "STRING") exitWith {
 
 if (_returnType == "NUMBER") exitWith {
     _aspectRatio / (4/3) // return
-};
-
-if (_returnType == "ARRAY") exitWith {
-    private _sort = [ASPECT_RATIOS, ASPECT_RATIOS_ARRAYS] apply {
-        [abs (_aspectRatio - _x#0), _x#1]
-    };
-
-    _sort sort true;
-    _sort#0#1 // return
 };
 
 nil
