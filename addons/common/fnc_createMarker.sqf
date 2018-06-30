@@ -68,4 +68,4 @@ if (_global) then {
     if (_tx!= "") then { _m setMarkerTextLocal _tx };
 };
 
-_m;
+_m
