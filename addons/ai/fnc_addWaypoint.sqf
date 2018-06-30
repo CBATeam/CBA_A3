@@ -48,8 +48,7 @@ params [
 _group = _group call CBA_fnc_getGroup;
 _position = _position call CBA_fnc_getPos;
 
-private ["_waypoint"];
-_waypoint = _group addWaypoint [_position, _radius];
+private _waypoint = _group addWaypoint [_position, _radius];
 
 _waypoint setWaypointType _type;
 _waypoint setWaypointBehaviour _behaviour;

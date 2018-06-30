@@ -3,12 +3,11 @@
 
 TRACE_1("",_this);
 
-private ["_msg", "_exit", "_list", "_key"];
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 // Note: calling script may require this file for dik codes: #include "\a3\editor_f\Data\Scripts\dikCodes.h"
 
-_msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"; //Initialize
-_key = [];
+private _msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"; //Initialize
+private _key = [];
 
 // validate params
 _msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
@@ -53,7 +52,7 @@ GVAR(typeMenuSources) pushBack _this;
 [GVAR(typeMenuSources), _flexiMenu_typeMenuSources_ID_priority] call CBA_fnc_sortNestedArray;
 
 // reverse the order of sorting, so highest priority is at the top
-_list = [];
+private _list = [];
 for "_e" from (count GVAR(typeMenuSources) - 1) to 0 step -1 do {
     _list pushBack (GVAR(typeMenuSources) select _e);
 };

@@ -26,25 +26,26 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(getConfigEntry);
 
-private ["_r"];
-switch (toLower(_this select 1)) do {
+params ["_configEntry", "_entryType", "_defaultValue"];
+
+private _r = _defaultValue;
+
+switch (toLower _entryType) do {
     case "text": {
-        if (isText (_this select 0)) then {
-            _r = getText (_this select 0);
+        if (isText _configEntry) then {
+            _r = getText _configEntry;
         };
     };
     case "array": {
-        if (isArray (_this select 0)) then {
-            _r = getArray (_this select 0);
+        if (isArray _configEntry) then {
+            _r = getArray _configEntry;
         };
     };
     case "number": {
-        if (isNumber (_this select 0)) then {
-            _r = getNumber (_this select 0);
+        if (isNumber _configEntry) then {
+            _r = getNumber _configEntry;
         };
     };
 };
-
-if (isNil "_r") then { _r = _this select 2 };
 
 _r
