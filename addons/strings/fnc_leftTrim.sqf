@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#include "script_strings.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_leftTrim
 
@@ -23,11 +24,7 @@ Example:
 Author:
     Spooner, joko // Jonas, SilentSpike
 ---------------------------------------------------------------------------- */
-#include "script_strings.hpp"
-
 SCRIPT(leftTrim);
-
-// ----------------------------------------------------------------------------
 
 params ["_string", ["_trim", "", [""]]];
 
