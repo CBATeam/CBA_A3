@@ -23,7 +23,6 @@ Authors:
     q1184 (original code and calculation method)
     ceeeb (improved code and new zoom calculation method)
     streamlined by commy2
-
 ---------------------------------------------------------------------------- */
 
 params [["_baseFOV", 0.75, [0]]];
