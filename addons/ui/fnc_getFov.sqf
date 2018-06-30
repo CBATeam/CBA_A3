@@ -31,6 +31,6 @@ params [["_baseFOV", 0.75, [0]]];
 private _trigRatio = safeZoneW / 2 / ((worldToScreen positionCameraToWorld [10000, 0, 10000] select 0) - 0.5);
 
 [
-    rad (2 * atan _trigRatio / getResolution#4),
+    rad (2 * atan _trigRatio / (getResolution select 4)),
     _baseFOV * (safeZoneW / safeZoneH) / _trigRatio
 ]
