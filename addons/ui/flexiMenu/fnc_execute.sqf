@@ -7,9 +7,7 @@
 private _arrayID = _this;
 private _actionData = GVAR(menuActionData) select _arrayID;
 
-private _action = _actionData select 0;
-private _subMenu = _actionData select 1;
-private _multiReselect = _actionData select 2;
+_actionData params ["_action", "_subMenu", "_multiReselect"];
 //-----------------------------------------------------------------------------
 // indicates an option/button was selected, (to allow menu to close upon release of interact key), except if _multiReselect enabled.
 if (_multiReselect == 0) then {
