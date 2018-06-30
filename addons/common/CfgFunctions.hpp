@@ -126,12 +126,6 @@ class CfgFunctions {
             PATHTO_FNC(compileFinal);
         };
 
-        class Ui {
-            PATHTO_FNC(getFov);
-            PATHTO_FNC(getAspectRatio);
-            PATHTO_FNC(getUISize);
-        };
-
         class Broken {
             PATHTO_FNC(actionArgument);
         };
