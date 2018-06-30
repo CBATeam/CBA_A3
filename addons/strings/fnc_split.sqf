@@ -25,10 +25,7 @@ Examples:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-
 SCRIPT(split);
-
-// ----------------------------------------------------------------------------
 
 private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
 params [["_input", ""], ["_separator", ""]];
