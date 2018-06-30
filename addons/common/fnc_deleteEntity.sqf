@@ -47,7 +47,14 @@ switch (typeName _entity) do {
             deleteGroup _entity;
         } else {
             if (isServer) then {
-                _entity remoteExecCall ["CBA_fnc_deleteEntity", groupOwner _entity];
+                private _groupOwner = groupOwner _entity;
+                if (_groupOwner isEqualTo 0) then {
+                    [{groupOwner _this != 0 || isNull _this}, {
+                        _this call CBA_fnc_deleteEntity;
+                    }, _entity] call CBA_fnc_waitUntilAndExecute;
+                } else {
+                   _entity remoteExecCall ["CBA_fnc_deleteEntity", _groupOwner];
+                };
             } else {
                 _entity remoteExecCall ["CBA_fnc_deleteEntity", 2];
             };
@@ -57,7 +64,7 @@ switch (typeName _entity) do {
         deleteLocation _entity;
     };
     case "STRING" : {
-        deleteMarker _entity
+        deleteMarker _entity;
     };
     default {};
 };
