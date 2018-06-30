@@ -37,4 +37,4 @@ if (_charCount > 0) then {
     _string = _string1 + _string2;
 };
 
-_string; // Return.
+_string
