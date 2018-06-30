@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_turretDir
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(turretDir);
 
 params [["_vehicle", objNull, [objNull]], ["_turret", [-1], [[]]], ["_relativeToModel", false, [false]]];

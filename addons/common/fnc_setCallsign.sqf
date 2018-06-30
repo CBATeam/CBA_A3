@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_setCallsign
 
@@ -21,7 +22,6 @@ Example:
 Author:
     snippers, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(setCallsign);
 
 params [["_group", grpNull, [grpNull, objNull]], ["_callsign", "", [""]]];

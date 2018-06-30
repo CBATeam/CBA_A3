@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getFov
 
@@ -25,7 +26,6 @@ Authors:
 
 ---------------------------------------------------------------------------- */
 
-#include <script_component.hpp>
 #define __dist 10000
 #define __xOff 5000
 

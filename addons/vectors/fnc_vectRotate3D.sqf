@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectRotate3D
 
@@ -24,7 +25,6 @@ Examples:
 Author:
     LorenLuke
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_vector", "_rotationAxis", "_theta"];
 

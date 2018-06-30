@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_accessory_fnc_switchAttachment
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     Robalo, optimized by Anton
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_itemType", "_switchTo"];
 

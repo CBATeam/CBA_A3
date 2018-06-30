@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getGroupIndex
 
@@ -20,7 +21,6 @@ Returns:
 Author:
     ?, A3: commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getGroupIndex);
 
 params [["_unit", objNull, [objNull]]];

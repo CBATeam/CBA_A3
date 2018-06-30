@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addWeaponCargo
 
@@ -28,7 +29,6 @@ Examples:
 Author:
     Sickboy
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addWeaponCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_verify", false, [false]]];

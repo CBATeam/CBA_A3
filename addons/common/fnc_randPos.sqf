@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_randPos
 
@@ -21,7 +22,6 @@ Returns:
 Author:
     Rommel, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(randPos);
 
 params [

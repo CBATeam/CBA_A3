@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectDir
 
@@ -20,7 +21,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectDir.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectDir);
 
 

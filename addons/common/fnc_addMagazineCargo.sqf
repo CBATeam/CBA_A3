@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addMagazineCargo
 
@@ -28,7 +29,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addMagazineCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_verify", false, [false]]];

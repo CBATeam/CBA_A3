@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_mapDirTo
 
@@ -29,7 +30,6 @@ Examples:
 Author:
     Nou (with credit to Headspace for the real math :p)
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 SCRIPT(mapDirTo);
 

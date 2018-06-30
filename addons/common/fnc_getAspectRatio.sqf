@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getAspectRatio
 
@@ -20,8 +21,6 @@ Examples:
 Author:
   Deadfast @ Skypechat 090909, inspired and made CBA compliant by Vigilante
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getAspectRatio);
 
 private _output = toUpper _this;

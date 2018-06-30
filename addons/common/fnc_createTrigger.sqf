@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_createTrigger
 
@@ -26,8 +27,6 @@ Examples:
 Author:
     Sickboy (sb_at_dev-heaven.net)
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(createTrigger);
 
 /*

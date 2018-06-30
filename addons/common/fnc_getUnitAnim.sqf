@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getUnitAnim
 
@@ -24,8 +25,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getUnitAnim);
 
 private _unit = _this;

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getTerrainProfile
 
@@ -20,7 +21,6 @@ Author:
     Rommel && Noubernou
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_posA","_posB"];
 _posA = _posA call CBA_fnc_getPos;

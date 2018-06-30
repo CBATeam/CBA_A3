@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectElev
 
@@ -20,9 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectElev.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectElev);
-
 
 params ["_pos1", "_pos2"];
 

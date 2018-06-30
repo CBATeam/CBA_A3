@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_select
 
@@ -20,8 +21,6 @@ Example:
 Author:
     MuzzleFlash
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(select);
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_help_fnc_setCreditsLine
 
@@ -11,8 +12,6 @@ Parameters:
 Returns:
     None
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 params ["_control"];
 

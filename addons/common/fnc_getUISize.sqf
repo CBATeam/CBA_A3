@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getUISize
 
@@ -24,8 +25,6 @@ Examples:
 Author:
     Written by Deadfast and made CBA compliant by Vigilante
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getUISize);
 
 #define C_4to3 [1.818, 1.429, 1.176, 1]

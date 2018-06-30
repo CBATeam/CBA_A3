@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_scaleVectTo
 
@@ -23,7 +24,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_scaleVectTo.sqf";
 
-#include "script_component.hpp"
 SCRIPT(scaleVectTo);
 
 params ["_vect", "_newMagn"];

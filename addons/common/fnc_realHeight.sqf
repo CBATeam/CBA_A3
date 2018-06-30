@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_realHeight
 
@@ -18,7 +19,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(realHeight);
 
 params [["_object", objNull, [objNull]]];

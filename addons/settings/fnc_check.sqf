@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_check
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_setting", "", [""]], "_value"];
 

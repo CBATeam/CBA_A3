@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_polar2vect
 
@@ -22,7 +23,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_polar2vect.sqf";
 
-#include "script_component.hpp"
 SCRIPT(polar2vect);
 
 params ["_mag", "_dir", "_elev"];

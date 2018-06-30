@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerKeybindToFleximenu
 
@@ -27,8 +28,6 @@ Examples:
 Author:
  Taosenai
 ---------------------------------------------------------------------------- */
-
-#include "\x\cba\addons\keybinding\script_component.hpp"
 
 // Clients only.
 if (isDedicated) exitWith {};

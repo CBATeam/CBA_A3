@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_northingReversed
 
@@ -19,7 +20,6 @@ Author:
     Nou
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 private _reversed = false;
 if (isNil QGVAR(mapReversed)) then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_weaponComponents
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     commy2, based on BIS_fnc_weaponComponents by Jiri Wainar
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(weaponComponents);
 
 params [["_weapon", "", [""]]];

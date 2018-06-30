@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_taskPatrol
 
@@ -32,8 +33,6 @@ Author:
     Rommel
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params [
     ["_group", grpNull, [grpNull, objNull]],

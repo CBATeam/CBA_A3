@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_objectRandom
 
@@ -18,7 +19,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(objectRandom);
 
 params ["_o"];

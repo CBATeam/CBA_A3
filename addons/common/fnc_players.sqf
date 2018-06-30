@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_players
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(players);
 
 (allUnits + allDeadMen) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}

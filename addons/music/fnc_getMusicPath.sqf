@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getMusicPath
 
@@ -18,7 +19,6 @@ Example:
 Authors:
     Fishy, Dorbedo
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 if (!params [["_className", "", ["", configFile]]]) exitWith {WARNING('No classname was provided'); nil};
 

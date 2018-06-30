@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getArrayDiff
 
@@ -19,8 +20,6 @@ Author:
     Rommel
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 #define NULL "$null$"
 

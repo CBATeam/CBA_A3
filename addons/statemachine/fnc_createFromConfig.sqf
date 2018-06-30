@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_statemachine_fnc_createFromConfig
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(createFromConfig);
 params [["_config", configNull, [configNull]]];
 

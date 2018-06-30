@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_initEvents
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_unit"];
 

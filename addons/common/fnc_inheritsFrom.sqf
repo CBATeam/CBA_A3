@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_inheritsFrom
 
@@ -25,7 +26,6 @@ Examples:
 Author:
     Sickboy
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(inheritsFrom);
 
 params [["_config", configNull, [configNull]], ["_baseConfig", configNull, [configNull]]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getVolume
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getVolume);
 
 params [["_object", objNull, [objNull]]];

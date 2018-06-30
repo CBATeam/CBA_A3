@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getArg
 
@@ -16,8 +17,6 @@ Examples:
 Author:
     Kronzky (www.kronzky.info)
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 SCRIPT(getArg);
 
 params ["_cLC", "_cUC", "_arg", "_list"]

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeyHandler
 
@@ -24,7 +25,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addKeyHandler);
 
 if (!hasInterface) exitWith {""};
