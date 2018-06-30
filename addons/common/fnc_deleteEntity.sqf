@@ -49,7 +49,7 @@ switch (typeName _entity) do {
             if (isServer) then {
                 private _groupOwner = groupOwner _entity;
                 if (_groupOwner isEqualTo 0) then {
-                    [{groupOwner _this != 0}, {
+                    [{groupOwner _this != 0 || isNull _this}, {
                         _this call CBA_fnc_deleteEntity;
                     }, _entity] call CBA_fnc_waitUntilAndExecute;
                 } else {
@@ -64,7 +64,7 @@ switch (typeName _entity) do {
         deleteLocation _entity;
     };
     case "STRING" : {
-        deleteMarker _entity
+        deleteMarker _entity;
     };
     default {};
 };
