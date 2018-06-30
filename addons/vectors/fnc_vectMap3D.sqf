@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectMap3D
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     Kex
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_matrix", [], [[]], 3], ["_vector", [], [[]], 3]];
 
