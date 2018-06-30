@@ -22,7 +22,6 @@ Example:
 Author:
     BaerMitUmlaut
 --------------------------------------------------------------------------- */
-
 SCRIPT(replace);
 
 params [["_string", "", [""]], ["_find", "", [""]], ["_replace", "", [""]]];
