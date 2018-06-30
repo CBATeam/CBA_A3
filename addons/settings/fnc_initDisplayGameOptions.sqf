@@ -51,7 +51,10 @@ if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
         private _setting = _x;
 
         (GVAR(missionConfig) getVariable [_setting, []]) params ["_value", "_priority"];
-        [_setting, _value, _priority, "mission"] call FUNC(set);
+
+        if (!isNil "_value") then {
+            [_setting, _value, _priority, "mission"] call FUNC(set);
+        };
     } forEach GVAR(allSettings);
 };
 
