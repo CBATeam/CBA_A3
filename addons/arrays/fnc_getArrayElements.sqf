@@ -20,7 +20,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private _array =+ _this;
+private _array = +_this;
 private _return = [];
 private _countA = count _array;
 
