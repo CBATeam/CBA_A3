@@ -43,6 +43,7 @@ switch (typeName _entity) do {
     case "GROUP" : {
         (units _entity) call CBA_fnc_deleteEntity;
         {deleteWaypoint _x} forEach (wayPoints _entity);
+        if (isNull _entity) exitWith {};
         if (local _entity) then {
             deleteGroup _entity;
         } else {
