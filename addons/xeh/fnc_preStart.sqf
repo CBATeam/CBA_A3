@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_preStart
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // mission namespace does not exist yet.
 // spawned threads will not continue.

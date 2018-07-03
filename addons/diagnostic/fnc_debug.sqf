@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_debug
 
@@ -26,7 +27,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // function to split lines into multiple lines with a maxium length
 #define MAX_LINE_LENGTH 120

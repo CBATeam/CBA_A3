@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeybindToFleximenu
 
@@ -30,8 +31,6 @@ Examples:
 Author:
  ViperMaul
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 // Clients only.
 if (isDedicated) exitWith {};

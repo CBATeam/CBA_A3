@@ -8,6 +8,7 @@
             <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
             <Russian>Community Base Addons - Назначения Клавиш</Russian>
+            <Polish>Community Base Addons - Klawisze</Polish>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -18,6 +19,7 @@
             <Chinesesimp>模组设定</Chinesesimp>
             <Portuguese>Configure as Extensões</Portuguese>
             <Russian>Настроить Дополнения</Russian>
+            <French>Configurer les addons</French>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -33,11 +35,12 @@
             <English>Unknown Key %1</English>
             <German>Unbekannte Taste %1</German>
             <Polish>Nieznany klawisz %1</Polish>
-            <Japanese>%1のコードは不明です</Japanese>
+            <Japanese>%1キーは不明です</Japanese>
             <Chinese>未知按鍵%1</Chinese>
             <Chinesesimp>未知按键%1</Chinesesimp>
             <Portuguese>Chave desconhecida %1</Portuguese>
             <Russian>Неизвестная Клавиша %1</Russian>
+            <French>Touche inconnue %1</French>
         </Key>
     </Package>
 </Project>

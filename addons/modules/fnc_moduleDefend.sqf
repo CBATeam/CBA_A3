@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_moduleDefend
 
@@ -32,8 +33,6 @@ Author:
     WiredTiger
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params [
     ["_logic", objNull, [objNull]],

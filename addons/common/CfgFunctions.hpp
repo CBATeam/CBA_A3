@@ -65,6 +65,7 @@ class CfgFunctions {
             PATHTO_FNC(removeWeapon);
             PATHTO_FNC(removeMagazine);
             PATHTO_FNC(removeItem);
+            PATHTO_FNC(uniqueUnitItems);
             PATHTO_FNC(weaponComponents);
             PATHTO_FNC(dropWeapon);
             PATHTO_FNC(dropMagazine);
@@ -123,12 +124,6 @@ class CfgFunctions {
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
-        };
-
-        class Ui {
-            PATHTO_FNC(getFov);
-            PATHTO_FNC(getAspectRatio);
-            PATHTO_FNC(getUISize);
         };
 
         class Broken {

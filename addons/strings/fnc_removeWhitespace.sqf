@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+#include "script_strings.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeWhitespace
 
@@ -23,8 +25,6 @@ Example:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
-#include "script_strings.hpp"
 SCRIPT(removeWhitespace);
 
 params [["_string", "", [""]], ["_seperate", false, [true]]];

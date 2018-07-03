@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_readKeyFromConfig
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(readKeyFromConfig);
 
 params [["_component", "", [""]], ["_action", "", [""]]];

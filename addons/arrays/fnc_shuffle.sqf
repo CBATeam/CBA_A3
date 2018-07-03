@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_shuffle
 
@@ -24,7 +25,6 @@ Author:
     toadlife (version 1.01) http://toadlife.net
     rewritten by Spooner, Dorbedo
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(shuffle);
 
 params [["_array", [], [[]]], ["_inPlace", false, [false]]];

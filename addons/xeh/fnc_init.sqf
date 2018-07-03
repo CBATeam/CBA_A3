@@ -1,3 +1,5 @@
+#define DEBUG_SYNCHRONOUS
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_init
 
@@ -19,8 +21,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#define DEBUG_SYNCHRONOUS
-#include "script_component.hpp"
 
 params ["_this"];
 
@@ -55,7 +55,7 @@ if !(ISINITIALIZED(_this)) then {
         SETINITIALIZED(_vehicle);
 
         {
-            private ["_vehicle", "_wreck"];
+            private ["_vehicle", "_wreck"]; // prevent these variables from being overwritten
             call _x;
         } forEach (_wreck getVariable QGVAR(respawn));
 

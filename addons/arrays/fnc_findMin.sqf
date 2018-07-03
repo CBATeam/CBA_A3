@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findMin
 
@@ -21,7 +22,6 @@ Author:
     joko // Jonas, commy2, Dorbedo
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(findMin);
 
 [_this] params [["_array", [], [[]]]];

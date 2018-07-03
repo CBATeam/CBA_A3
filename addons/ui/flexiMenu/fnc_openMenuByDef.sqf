@@ -79,10 +79,8 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
         // If a matching target was found, open the highest priority menu associated with it
         // by calling FUNC(menu).
         if (!isNull _target) then {
-            private ["_menuSources", "_menuSource"];
-
-            _menuSources = [];
-            _menuSource = _target getVariable QGVAR(flexiMenu_source);
+            private _menuSources = [];
+            private _menuSource = _target getVariable QGVAR(flexiMenu_source);
             if (isNil "_menuSource") then {_menuSource = []} else {_menuSources pushBack _menuSource};
             {
                 _menuSources pushBack _x;

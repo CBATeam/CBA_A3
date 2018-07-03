@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getMusicPlaying
 
@@ -18,7 +19,6 @@ Example:
 Author:
     Fishy, Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 if (isNil QGVAR(track)) exitWith {["", 0, 0]};
 

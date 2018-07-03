@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_targetEvent
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(targetEvent);
 
 params [["_eventName", "", [""]], ["_params", []], ["_targets", objNull, [objNull, grpNull, []]]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_statemachine_fnc_addTransition
 
@@ -30,7 +31,6 @@ Examples:
 Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addTransition);
 params [
     ["_stateMachine", locationNull, [locationNull]],

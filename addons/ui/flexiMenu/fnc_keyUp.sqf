@@ -1,14 +1,13 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ["_handled", /* "_ctrl", */ "_active", "_potentialKeyMatch"];
 params ["", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 
-_handled = false;
+private _handled = false;
 
 if (!GVAR(holdKeyDown)) exitWith {_handled}; // key release monitoring not required.
 
 // scan typeMenuSources key list (optimise overhead)
-_potentialKeyMatch = false;
+private _potentialKeyMatch = false;
 {
     // syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
     _keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
@@ -31,7 +30,7 @@ if !(_potentialKeyMatch) exitWith {
     _handled
 };
 //-----------------------------------------------------------------------------
-_active = (!isNil {uiNamespace getVariable QGVAR(display)});
+private _active = (!isNil {uiNamespace getVariable QGVAR(display)});
 if (_active) then {
     _active = (!isNull (uiNamespace getVariable QGVAR(display)));
 };

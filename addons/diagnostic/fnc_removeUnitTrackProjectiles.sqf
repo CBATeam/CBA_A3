@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeUnitTrackProjectiles
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_unit", objNull]];
 

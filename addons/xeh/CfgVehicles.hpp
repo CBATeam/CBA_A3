@@ -223,6 +223,11 @@ class CfgVehicles {
     class Respawn_Sleeping_bag_brown_F: Land_Sleeping_bag_brown_F {
         XEH_ENABLED;
     };
+    
+    class ReammoBox_F;
+    class Land_RepairDepot_01_base_F: ReammoBox_F {
+        XEH_ENABLED;
+    };
 
     // backwards comp, inert
     class SLX_XEH_Logic: Logic {
@@ -293,6 +298,10 @@ class CfgVehicles {
     };
 
     class C_Story_Mechanic_01_F: Civilian_F {
+        XEH_ENABLED;
+    };
+    // Encore
+    class Land_Destroyer_01_Boat_Rack_01_Base_F: Items_base_F {
         XEH_ENABLED;
     };
 };

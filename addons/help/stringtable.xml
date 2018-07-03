@@ -8,6 +8,7 @@
             <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Ajuda</Portuguese>
             <Russian>Community Base Addons - Помощь</Russian>
+            <Polish>Community Base Addons - Pomoc</Polish>
         </Key>
         <Key ID="STR_DN_CBA_HELP_KEYS">
             <English>Keybindings</English>
@@ -17,7 +18,7 @@
             <Russian>Назначения клавиш</Russian>
             <Italian>Keybindings</Italian>
             <Polish>Klawisze</Polish>
-            <French>Keybindings</French>
+            <French>Raccourcis clavier</French>
             <Hungarian>Keybindings</Hungarian>
             <Japanese>キー割り当て</Japanese>
             <Chinese>按鍵綁定</Chinese>

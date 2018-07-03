@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_createNamespace
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(createNamespace);
 
 params [["_isGlobal", false]];

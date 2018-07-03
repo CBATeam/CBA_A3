@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_insert
 
@@ -24,7 +25,6 @@ Examples:
 Author:
     654wak654
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 #define ARRAY_ELEMENT_LIMIT 1E7
 SCRIPT(insert);
 

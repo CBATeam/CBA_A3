@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_postInit_unscheduled
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 XEH_LOG("XEH: PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
 

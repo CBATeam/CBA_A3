@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_modulePatrol
 
@@ -46,8 +47,6 @@ Author:
     WiredTiger
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params [
     ["_logic", objNull, [objNull]],

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_stopMusic
 
@@ -18,7 +19,6 @@ Example:
 Author:
     Fishy
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 playMusic ["", 0];
 GVAR(track) = nil;

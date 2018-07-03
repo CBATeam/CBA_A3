@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_gui_refresh
 
@@ -13,7 +14,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 private _display = uiNamespace getVariable [QGVAR(display), displayNull];
 private _controls = allControls _display select {ctrlIDC _x isEqualTo IDC_SETTING_CONTROLS_GROUP};

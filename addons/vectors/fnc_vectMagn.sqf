@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectMagn
 
@@ -20,7 +21,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectMagn.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectMagn);
 
 vectorMagnitude _this

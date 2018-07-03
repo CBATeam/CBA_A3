@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_statemachine_fnc_create
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(create);
 params [
     ["_list", [], [[], {}]],

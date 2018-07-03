@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getMusicData
 
@@ -20,7 +21,6 @@ Example:
 Author:
     Fishy, Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [
     ["_config", "", ["", configFile]],

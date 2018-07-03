@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_compileMusic
 
@@ -18,7 +19,6 @@ Example:
 Author:
     Fishy, Dorbedo, Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 if (isNil QGVARMAIN(compiledMusic)) then {
     private _allMusic = configProperties [MissionConfigFile >> "CfgMusic", "(getNumber (_x >> 'duration')) > 0", true];

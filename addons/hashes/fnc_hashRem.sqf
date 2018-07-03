@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+#include "script_hashes.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_hashRem
 
@@ -16,9 +18,6 @@ Returns:
 Author:
     Sickboy
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-#include "script_hashes.hpp"
 
 SCRIPT(hashRem);
 

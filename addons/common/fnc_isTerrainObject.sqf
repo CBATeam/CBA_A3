@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isTerrainObject
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(isTerrainObject);
 
 params [["_object", objNull, [objNull]]];

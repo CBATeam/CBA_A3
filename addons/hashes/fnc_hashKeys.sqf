@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+#include "script_hashes.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_hashKeys
 
@@ -15,10 +17,6 @@ Returns:
 Author:
     Dedmen
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-#include "script_hashes.hpp"
-
 SCRIPT(hashKeys);
 
 // -----------------------------------------------------------------------------

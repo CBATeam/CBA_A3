@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isMusicPlaying
 
@@ -18,6 +19,5 @@ Example:
 Author:
     Dedmen, Commy2, Fishy
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 !isNil QGVAR(track)

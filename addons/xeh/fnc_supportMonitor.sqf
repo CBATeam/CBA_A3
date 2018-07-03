@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_supportMonitor
 
@@ -21,7 +22,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_addAddonToOutput", false, [false]], ["_includeDuplicates", false, [false]], ["_includeDisabled", false, [false]], ["_classFilter", "", [""]]];
 

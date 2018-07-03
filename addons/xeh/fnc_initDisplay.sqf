@@ -12,7 +12,7 @@ _event = ["", "DisplayLoad", "DisplayUnload"] param [["", "onload", "onunload"] 
 if !(_event isEqualTo "") then {
     {
         {
-            private ["_event", "_className"];
+            private ["_event", "_className"]; // prevent these variables from being overwritten
             _args call compile getText _x;
         } forEach configProperties [_x >> XEH_FORMAT_CONFIG_NAME(_event) >> _className, "isText _x"];
     } forEach XEH_MAIN_CONFIGS;

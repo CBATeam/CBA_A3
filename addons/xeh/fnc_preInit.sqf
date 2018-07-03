@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_preInit
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 if (ISPROCESSED(missionNamespace)) exitWith {
     diag_log text "[XEH]: preInit already executed. Abort preInit.";
