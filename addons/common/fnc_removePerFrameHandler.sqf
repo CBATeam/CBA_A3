@@ -29,13 +29,19 @@ if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
 [{
     params ["_handle"];
 
-    GVAR(perFrameHandlerArray) deleteAt (GVAR(PFHhandles) select _handle);
-    GVAR(PFHhandles) set [_handle, nil];
+    GVAR(perFrameHandlerArray) set [GVAR(PFHhandles) select _handle select 0, {}];
 
-    {
-        _x params ["", "", "", "", "", "_handle"];
-        GVAR(PFHhandles) set [_handle, _forEachIndex];
-    } forEach GVAR(perFrameHandlerArray);
+    [{
+        params ["_handle"];
+
+        GVAR(perFrameHandlerArray) deleteAt (GVAR(PFHhandles) select _handle);
+        GVAR(PFHhandles) set [_handle, nil];
+
+        {
+            _x params ["", "", "", "", "", "_handle"];
+            GVAR(PFHhandles) set [_handle, _forEachIndex];
+        } forEach GVAR(perFrameHandlerArray);
+    }, _handle] call CBA_fnc_execNextFrame;
 }, _handle] call CBA_fnc_directCall;
 
 nil
