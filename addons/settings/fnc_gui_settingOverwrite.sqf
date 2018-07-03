@@ -104,8 +104,14 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
         private _ctrlLocked = _x controlsGroupCtrl IDC_SETTING_LOCKED;
 
         if (_source isEqualTo _priority) then {
-            _ctrlLocked ctrlSetText ICON_APPLIES;
-            _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+            if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+                _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+                _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+            } else {
+                _ctrlLocked ctrlSetText ICON_APPLIES;
+                _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+            };
+
             _ctrlLocked ctrlSetTooltip "";
         } else {
             switch [_source, _priority] do {
@@ -128,8 +134,13 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
-                        _ctrlLocked ctrlSetText ICON_APPLIES;
-                        _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                        if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+                            _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+                            _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                        } else {
+                            _ctrlLocked ctrlSetText ICON_APPLIES;
+                            _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                        };
                         _ctrlLocked ctrlSetTooltip "";
                     } else {
                         _ctrlLocked ctrlSetText ICON_OVERWRITTEN;

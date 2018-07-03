@@ -115,8 +115,9 @@
 #define GET_TEMP_NAMESPACE_VALUE(setting,source)    (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 0)
 #define GET_TEMP_NAMESPACE_PRIORITY(setting,source) (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 1)
 
-#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       (GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]])
-#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) (GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]])
+#define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart)) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
+#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
+#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 
 #define TEMP_PRIORITY(setting) (call {private _arr = [\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [nil, [setting,  "client"] call FUNC(priority)]] select 1,\

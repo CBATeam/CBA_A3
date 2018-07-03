@@ -56,7 +56,8 @@ params [
     ["_categoryArg", "", ["", []]],
     ["_valueInfo", []],
     ["_isGlobal", false, [false, 0]],
-    ["_script", {}, [{}]]
+    ["_script", {}, [{}]],
+    ["_needRestart", false, [false]]
 ];
 
 if (_setting isEqualTo "") exitWith {
@@ -203,6 +204,10 @@ if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+};
+
+if (_needRestart) then {
+    GVAR(needRestart) pushBackUnique toLower _setting;
 };
 
 0

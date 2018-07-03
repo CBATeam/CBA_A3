@@ -36,3 +36,6 @@ Author:
         };
     } forEach ["client", "mission", "server"];
 } forEach GVAR(allSettings);
+
+GVAR(awaitingRestart) = GVAR(awaitingRestartTemp);
+nil
