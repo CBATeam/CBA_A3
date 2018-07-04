@@ -107,12 +107,12 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
             if (toLower _setting in GVAR(awaitingRestartTemp)) then {
                 _ctrlLocked ctrlSetText ICON_NEED_RESTART;
                 _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
             } else {
                 _ctrlLocked ctrlSetText ICON_APPLIES;
                 _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                _ctrlLocked ctrlSetTooltip LLSTRING(applies);
             };
-
-            _ctrlLocked ctrlSetTooltip "";
         } else {
             switch [_source, _priority] do {
                 case ["client", "server"];
@@ -137,11 +137,12 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                         if (toLower _setting in GVAR(awaitingRestartTemp)) then {
                             _ctrlLocked ctrlSetText ICON_NEED_RESTART;
                             _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                            _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
                         } else {
                             _ctrlLocked ctrlSetText ICON_APPLIES;
                             _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                            _ctrlLocked ctrlSetTooltip LLSTRING(applies);
                         };
-                        _ctrlLocked ctrlSetTooltip "";
                     } else {
                         _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                         _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
