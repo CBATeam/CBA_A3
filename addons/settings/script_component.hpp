@@ -5,8 +5,8 @@
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
-//#define DEBUG_MODE_FULL
-//#define DISABLE_COMPILE_CACHE
+#define DEBUG_MODE_FULL
+#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_SETTINGS
 
 #ifdef DEBUG_ENABLED_SETTINGS
@@ -87,7 +87,7 @@
 #define TABLE_LINE_SPACING POS_H(0.4)
 
 #define COLOR_TEXT_ENABLED [1, 1, 1, 1]
-#define COLOR_TEXT_ENABLED_WAS_EDITED [0.95, 0.95, 0, 1]
+#define COLOR_TEXT_ENABLED_WAS_EDITED [0.95, 0.95, 0.1, 1]
 #define COLOR_TEXT_DISABLED [1, 1, 1, 0.4]
 #define COLOR_BUTTON_ENABLED [1, 1, 1, 1]
 #define COLOR_BUTTON_DISABLED [0, 0, 0, 1]

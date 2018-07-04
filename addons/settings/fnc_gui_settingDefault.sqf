@@ -18,6 +18,9 @@ _ctrlDefault ctrlAddEventHandler ["ButtonClick", {
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlDefault;
     [_controlsGroup, _defaultValue] call (_controlsGroup getVariable QFUNC(updateUI));
+
+    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
+    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
 }];
 
 if (_currentValue isEqualTo _defaultValue) then {
