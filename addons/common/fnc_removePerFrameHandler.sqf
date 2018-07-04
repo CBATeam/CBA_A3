@@ -34,7 +34,7 @@ params [["_handle", -1, [0]]];
     (GVAR(perFrameHandlerArray) select _index) set [0, {}];
 
     if (GVAR(perFrameHandlersToRemove) isEqualTo []) then {
-        [{
+        {
             {
                 GVAR(perFrameHandlerArray) set [_x, objNull];
             } forEach GVAR(perFrameHandlersToRemove);
@@ -46,7 +46,7 @@ params [["_handle", -1, [0]]];
                 _x params ["", "", "", "", "", "_index"];
                 GVAR(PFHhandles) set [_index, _forEachIndex];
             } forEach GVAR(perFrameHandlerArray);
-        }] call CBA_fnc_execNextFrame;
+        } call CBA_fnc_execNextFrame;
     };
 
     GVAR(perFrameHandlersToRemove) pushBackUnique _index;
