@@ -300,8 +300,4 @@ class CfgVehicles {
     class C_Story_Mechanic_01_F: Civilian_F {
         XEH_ENABLED;
     };
-    // Encore
-    class Land_Destroyer_01_Boat_Rack_01_Base_F: Items_base_F {
-        XEH_ENABLED;
-    };
 };
