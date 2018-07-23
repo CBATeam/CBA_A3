@@ -299,5 +299,11 @@ class CfgVehicles {
 
     class C_Story_Mechanic_01_F: Civilian_F {
         XEH_ENABLED;
+    }; 
+
+    // Encore
+    class Snake_random_F;
+    class Snake_vipera_random_F: Snake_random_F {
+        XEH_ENABLED;
     };
 };
