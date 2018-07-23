@@ -65,13 +65,19 @@ private _lastSubCategory = "$START";
         private _source = toLower _x;
 
         private _currentValue = GET_TEMP_NAMESPACE_VALUE(_setting,_source);
+        private _wasEdited = false;
+
         if (isNil "_currentValue") then {
             _currentValue = [_setting, _source] call FUNC(get);
+        } else {
+            _wasEdited = true;
         };
 
         private _currentPriority = GET_TEMP_NAMESPACE_PRIORITY(_setting,_source);
         if (isNil "_currentPriority") then {
             _currentPriority = [_setting, _source] call FUNC(priority);
+        } else {
+            _wasEdited = true;
         };
 
         // ----- create or retrieve options "list" controls group
@@ -142,6 +148,11 @@ private _lastSubCategory = "$START";
         private _ctrlSettingName = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_NAME;
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
+
+        // change color if setting was edited
+        if (_wasEdited) then {
+            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+        };
 
         // ----- execute setting script
         private _script = getText (configFile >> ctrlClassName _ctrlSettingGroup >> QGVAR(script));
