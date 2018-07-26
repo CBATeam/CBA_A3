@@ -13,6 +13,7 @@ Parameters:
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
     _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     _script      - Script to execute when setting is changed. (optional) <CODE>
+    _needRestart - Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 
 Returns:
     _return - Error code <NUMBER>
@@ -56,7 +57,8 @@ params [
     ["_categoryArg", "", ["", []]],
     ["_valueInfo", []],
     ["_isGlobal", false, [false, 0]],
-    ["_script", {}, [{}]]
+    ["_script", {}, [{}]],
+    ["_needRestart", false, [false]]
 ];
 
 if (_setting isEqualTo "") exitWith {
@@ -203,6 +205,10 @@ if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+};
+
+if (_needRestart) then {
+    GVAR(needRestart) pushBackUnique toLower _setting;
 };
 
 0

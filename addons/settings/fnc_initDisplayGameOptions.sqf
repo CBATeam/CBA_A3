@@ -65,6 +65,8 @@ with uiNamespace do {
     GVAR(serverTemp)  = _display ctrlCreate ["RscText", -1];
 };
 
+GVAR(awaitingRestartTemp) = + GVAR(awaitingRestart);
+
 // ----- create addons list (filled later)
 private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddonsGroup];
 

@@ -250,6 +250,14 @@
             <French>Overwrite\nServer</French>
             <Polish>Nadpisz\nSerwer</Polish>
         </Key>
+        <Key ID="STR_cba_settings_applies">
+            <English>This setting applies.</English>
+            <German>Diese Einstellung gilt.</German>
+        </Key>
+        <Key ID="STR_cba_settings_need_restart">
+            <English>This setting applies after the next mission restart.</English>
+            <German>Diese Einstellung gilt nach dem nächsten Neustart der Mission.</German>
+        </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
             <German>Diese Einstellung wird von den Clients überschrieben.</German>
