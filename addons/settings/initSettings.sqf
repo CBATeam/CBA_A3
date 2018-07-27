@@ -59,4 +59,7 @@ if (isNil QGVAR(default)) then {
 
         GVAR(missionConfig) setVariable [_setting, [_value, _priority]];
     } forEach ([_missionConfig, false] call FUNC(parse));
+
+    GVAR(needRestart) = [];
+    GVAR(awaitingRestart) = [];
 };
