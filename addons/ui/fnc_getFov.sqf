@@ -25,7 +25,7 @@ Authors:
     streamlined by commy2
 ---------------------------------------------------------------------------- */
 
-params [["_baseFOV", 0.75, [0]]];
+private _baseFOV = if (IS_SCALAR(_this)) then {_this} else {0.75};
 
 private _trigRatio = safeZoneW / 2 / ((worldToScreen positionCameraToWorld [10000, 0, 10000] select 0) - 0.5);
 
