@@ -34,6 +34,7 @@ class CfgMagazineWells {
     class CBA_556x45_STEYR {};        // AUG
     class CBA_556x45_HK33 {};         // H&K 33/53/93
     class CBA_556x45_G36 {};
+    class CBA_556x45_SG550 {};
 
     class CBA_580x42_TYPE95 {
         BI_mags[] = {
@@ -108,6 +109,7 @@ class CfgMagazineWells {
     class CBA_792x57_LINKS {};      // MG42
     class CBA_300WM_AI {};          // AI .300 Winchester Magnum
     class CBA_338LM_AI {};          // AI .338 Lapua Magnum
+    class CBA_50BMG_M107 {};        // M82, M107, G82
 
     class CBA_9x19_MP5 {};          // H&K MP5
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
