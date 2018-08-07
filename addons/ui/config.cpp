@@ -30,7 +30,7 @@ class RscDisplayOptionsLayout {
             onMouseMoving = "with uinamespace do {['mouseMoving',_this,''] call RscDisplayOptionsLayout_script;};";\
             onMouseButtonDown = "with uinamespace do {['mouseButtonDown',_this,''] call RscDisplayOptionsLayout_script;};";\
             onMouseButtonUp = "with uinamespace do {['mouseButtonUp',_this,''] call RscDisplayOptionsLayout_script;};";\
-        };
+        }
         ADD_ELEMENT(022);
         ADD_ELEMENT(023);
         ADD_ELEMENT(024);
