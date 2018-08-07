@@ -6,6 +6,7 @@
 #define DELAY_MONITOR_THRESHOLD 1 // Frames
 
 GVAR(perFrameHandlerArray) = [];
+GVAR(perFrameHandlersToRemove) = [];
 GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];

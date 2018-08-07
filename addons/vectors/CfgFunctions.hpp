@@ -2,6 +2,8 @@
 class CfgFunctions {
     class CBA {
         class Vectors {
+            PATHTO_FNC(matrixProduct3D);
+            PATHTO_FNC(matrixTranspose);
             PATHTO_FNC(polar2vect);
             PATHTO_FNC(scaleVect);
             PATHTO_FNC(scaleVectTo);
@@ -16,6 +18,7 @@ class CfgFunctions {
             PATHTO_FNC(vectElev);
             PATHTO_FNC(vectMagn);
             PATHTO_FNC(vectMagn2D);
+            PATHTO_FNC(vectMap3D);
             PATHTO_FNC(vectRotate2D);
             PATHTO_FNC(vectRotate3D);
             PATHTO_FNC(vectSubtract);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeMagazineCargo
 
@@ -28,7 +29,6 @@ Examples:
 Author:
     silencer.helling3r 2012-12-22, Jonpas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeMagazineCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_ammo", -1, [0]]];

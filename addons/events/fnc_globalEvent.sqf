@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_globalEvent
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     Spooner, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(globalEvent);
 
 params [["_eventName", "", [""]], ["_params", []]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_parseYAML
 
@@ -15,7 +16,6 @@ Returns:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(parseYAML);
 
 #include "\x\cba\addons\strings\script_strings.hpp"

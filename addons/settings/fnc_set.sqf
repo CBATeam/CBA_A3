@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_set
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // prevent race conditions. function could be called from scheduled env.
 if (canSuspend) exitWith {

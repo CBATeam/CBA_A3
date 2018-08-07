@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_dropMagazine
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     ?, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(dropMagazine);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];

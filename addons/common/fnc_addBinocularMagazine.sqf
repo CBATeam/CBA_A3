@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addBinocularMagazine
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addBinocularMagazine);
 
 params [["_unit", objNull, [objNull]], ["_magazine", "", [""]], ["_ammo", nil, [0]]];

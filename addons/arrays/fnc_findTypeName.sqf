@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findTypeName
 
@@ -19,7 +20,6 @@ Returns:
 Author:
     joko // Jonas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 #define TYPENAMES ["ARRAY", "BOOL", "CODE", "CONFIG", "CONTROL", "DISPLAY", "GROUP", "LOCATION", "OBJECT", "SCALAR", "SCRIPT", "SIDE", "STRING", "TASK", "TEXT", "TEAM_MEMBER", "NAMESPACE"]
 

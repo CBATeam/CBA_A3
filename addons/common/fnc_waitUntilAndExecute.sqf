@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_waitUntilAndExecute
 
@@ -33,7 +34,6 @@ Examples:
 Author:
     joko // Jonas, donated from ACE3
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [
     ["_condition", {}, [{}]],

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_setVarNet
 
@@ -25,8 +26,6 @@ Example:
 Author:
     Xeno, commy2
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 params [["_object", objNull, [objNull, grpNull]], ["_varName", "", [""]], "_value"];
 

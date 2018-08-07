@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_serializeNamespace
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(serializeNamespace);
 
 params [["_namespace", locationNull, [locationNull, objNull]]];

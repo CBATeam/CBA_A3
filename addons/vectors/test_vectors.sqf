@@ -12,10 +12,25 @@ private _fnc_vectorEquals = {
     if ((count _vector1) != (count _vector2)) exitWith {false};
     private _equal = true;
     {
-        if ((abs (_x - (_vector2 select _forEachIndex))) > 0.00001) then {
+        if ((abs (_x - (_vector2 select _forEachIndex))) > 0.00001) exitWith {
             _equal = false;
         };
     } forEach _vector1;
+    _equal
+};
+
+//Need custom func to compare matrices to handle floating point errors
+private _fnc_matrixEquals = {
+    params ["_matrix1", "_matrix2"];
+    if ((isNil "_matrix1") || {isNil "_matrix2"}) exitWith {false};
+    if (!(_matrix1 isEqualTypeArray _matrix2)) exitWith {false};
+    if ((count _matrix1) != (count _matrix2)) exitWith {false};
+    private _equal = true;
+    {
+        if !([ARR_2(_x, _matrix2 select _forEachIndex)] call _fnc_vectorEquals) exitWith {
+            _equal = false;
+        };
+    } forEach _matrix1;
     _equal
 };
 
@@ -294,6 +309,41 @@ _expected = [1,4,-9];
 _temp = (+_expected) call CBA_fnc_vect2Polar;
 _result = _temp call CBA_fnc_polar2vect;
 TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, "complex polar 2");
+
+
+// UNIT TESTS (vectMap3D)
+_fn = "CBA_fnc_vectMap3D";
+TEST_DEFINED("CBA_fnc_vectMap3D","");
+
+_result = [[[0,1,0],[0,0,1],[1,0,0]], [1,2,3]] call CBA_fnc_vectMap3D;
+_expected = [2,3,1];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, _fn);
+
+_result = [[[1,2,5],[2,-1,3],[5,6,-1]], [1,2,3]] call CBA_fnc_vectMap3D;
+_expected = [20,9,14];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_vectorEquals, _fn);
+
+// UNIT TESTS (matrixTranspose)
+_fn = "CBA_fnc_matrixTranspose";
+TEST_DEFINED("CBA_fnc_matrixTranspose","");
+
+_result = [[[1,2,5],[-2,4,3],[5,6,8]]] call CBA_fnc_matrixTranspose;
+_expected = [[1,-2,5],[2,4,6],[5,3,8]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
+
+// UNIT TESTS (matrixProduct3D)
+_fn = "CBA_fnc_matrixProduct3D";
+TEST_DEFINED("CBA_fnc_matrixProduct3D","");
+
+_result = [[[1,2,5],[2,-1,3],[5,6,-1]], [[1,2,3],[3,1,2],[2,3,1]]] call CBA_fnc_matrixProduct3D;
+_expected = [[17,19,12],[5,12,7],[21,13,26]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
+
+private _orthogonalMatrix = [[2/3,-1/3,2/3],[2/3,2/3,-1/3],[-1/3,2/3,2/3]];
+private _orthogonalMatrixTransposed = [_orthogonalMatrix] call CBA_fnc_matrixTranspose;
+_result = [_orthogonalMatrix, _orthogonalMatrixTransposed] call CBA_fnc_matrixProduct3D;
+_expected = [[1,0,0],[0,1,0],[0,0,1]];
+TEST_TRUE([ARR_2(_result,_expected)] call _fnc_matrixEquals, _fn);
 
 
 nil;

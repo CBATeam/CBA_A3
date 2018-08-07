@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removePerFrameHandler
 
@@ -8,7 +9,7 @@ Parameters:
     _handle - The function handle you wish to remove. <NUMBER>
 
 Returns:
-    None
+    true if removed successful, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
@@ -20,22 +21,34 @@ Examples:
 Author:
     Nou & Jaynus, donated from ACRE project code for use by the community; commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_handle", -1, [0]]];
-
-if (_handle < 0 || {_handle >= count GVAR(PFHhandles)}) exitWith {};
 
 [{
     params ["_handle"];
 
-    GVAR(perFrameHandlerArray) deleteAt (GVAR(PFHhandles) select _handle);
+    private _index = GVAR(PFHhandles) param [_handle];
+    if (isNil "_index") exitWith {false};
+
     GVAR(PFHhandles) set [_handle, nil];
+    (GVAR(perFrameHandlerArray) select _index) set [0, {}];
 
-    {
-        _x params ["", "", "", "", "", "_handle"];
-        GVAR(PFHhandles) set [_handle, _forEachIndex];
-    } forEach GVAR(perFrameHandlerArray);
+    if (GVAR(perFrameHandlersToRemove) isEqualTo []) then {
+        {
+            {
+                GVAR(perFrameHandlerArray) set [_x, objNull];
+            } forEach GVAR(perFrameHandlersToRemove);
+
+            GVAR(perFrameHandlerArray) = GVAR(perFrameHandlerArray) - [objNull];
+            GVAR(perFrameHandlersToRemove) = [];
+
+            {
+                _x params ["", "", "", "", "", "_index"];
+                GVAR(PFHhandles) set [_index, _forEachIndex];
+            } forEach GVAR(perFrameHandlerArray);
+        } call CBA_fnc_execNextFrame;
+    };
+
+    GVAR(perFrameHandlersToRemove) pushBackUnique _index;
+    true
 }, _handle] call CBA_fnc_directCall;
-
-nil

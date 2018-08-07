@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addWeapon
 
@@ -23,7 +24,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addWeapon);
 
 #define TYPE_RIFLE 1

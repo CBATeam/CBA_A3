@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getPosFromString
 
@@ -26,8 +27,6 @@ Author:
     WiredTiger
 
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params [
     ["_type",""],

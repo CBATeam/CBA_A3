@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_northingReversed
 
@@ -19,16 +20,14 @@ Author:
     Nou
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
-private ["_test", "_reversed", "_start", "_check", "_plus"];
-_reversed = false;
+private _reversed = false;
 if (isNil QGVAR(mapReversed)) then {
-    _test = getNumber (configFile >> "CfgWorlds" >> worldName >> "Grid" >> "Zoom1" >> "stepY");
+    private _test = getNumber (configFile >> "CfgWorlds" >> worldName >> "Grid" >> "Zoom1" >> "stepY");
     if (_test > 0) then {
-        _check = parseNumber(format["%1", mapGridPosition [0, 0]]);
-        _start = _check;
-        _plus = 0;
+        private _check = parseNumber(format["%1", mapGridPosition [0, 0]]);
+        private _start = _check;
+        private _plus = 0;
         diag_log text "---------------------";
         while {_check == _start} do {
             _check = parseNumber(format["%1", mapGridPosition [0, _plus]]);

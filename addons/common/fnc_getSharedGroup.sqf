@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getSharedGroup
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getSharedGroup);
 
 #define SIDES [east, west, resistance, civilian, sideLogic]

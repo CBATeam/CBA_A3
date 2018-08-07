@@ -19,6 +19,9 @@ class CfgFunctions {
             };
             PATHTO_FNC(addPauseMenuOption);
             PATHTO_FNC(progressBar);
+            PATHTO_FNC(getFov);
+            PATHTO_FNC(getAspectRatio);
+            PATHTO_FNC(getUISize);
         };
     };
 };

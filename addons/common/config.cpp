@@ -8,7 +8,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_BaseConfig_F","A3_3DEN"};
+        requiredAddons[] = {"A3_Data_F_Tank_Loadorder"};
         version = VERSION;
         authors[] = {"Spooner","Sickboy","Rocko"};
     };

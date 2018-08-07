@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_globalSay3d
 
@@ -22,7 +23,6 @@ Example:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]]];
 

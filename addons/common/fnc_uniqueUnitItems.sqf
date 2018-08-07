@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_uniqueUnitItems
 
@@ -23,7 +24,6 @@ Returns:
 Author:
     Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(uniqueUnitItems);
 
 params [["_unit", objNull, [objNull]], ["_weaponItems", false, [true]], ["_backpack", true, [true]], ["_vest", true, [true]], ["_uniform", true, [true]], ["_assignedItems", true, [true]]];

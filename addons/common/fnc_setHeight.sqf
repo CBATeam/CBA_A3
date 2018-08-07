@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_setHeight
 
@@ -20,7 +21,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(setHeight);
 
 params [["_object", objNull, [objNull]], ["_height", 0, [0]], ["_type", 1, [0]]];

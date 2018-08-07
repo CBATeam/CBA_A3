@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_substring
 
@@ -21,12 +22,8 @@ Example:
 Author:
     jaynus, joko // Jonas
 --------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-
 SCRIPT(substring);
 
-// ----------------------------------------------------------------------------
 params ["_string", "_startIndex", "_endIndex"];
 
 // Check if _start is Larger than _endIndex to Prevent Issues
@@ -36,4 +33,4 @@ if (_startIndex > _endIndex) exitWith {""};
 _endIndex = _endIndex + 1 - _startIndex;
 
 // Cut out String
-_string select [_startIndex, _endIndex]; // Return
+_string select [_startIndex, _endIndex] // return

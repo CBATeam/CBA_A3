@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getKeybind
 
@@ -32,8 +33,6 @@ Examples:
 Author:
  Taosenai
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params ["_addon", "_addonAction"];
 TRACE_2("getKeybind",_addon,_addonAction);

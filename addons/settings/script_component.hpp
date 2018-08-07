@@ -87,11 +87,19 @@
 #define TABLE_LINE_SPACING POS_H(0.4)
 
 #define COLOR_TEXT_ENABLED [1, 1, 1, 1]
+#define COLOR_TEXT_ENABLED_WAS_EDITED [0.95, 0.95, 0.1, 1]
 #define COLOR_TEXT_DISABLED [1, 1, 1, 0.4]
 #define COLOR_BUTTON_ENABLED [1, 1, 1, 1]
 #define COLOR_BUTTON_DISABLED [0, 0, 0, 1]
 
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
+#define ICON_APPLIES QPATHTOF(applies_ca.paa)
+#define ICON_OVERWRITTEN QPATHTOF(overwritten_ca.paa)
+#define ICON_NEED_RESTART QPATHTOF(need_restart_ca.paa)
+
+#define COLOR_APPLIES [0, 0.95, 0, 1]
+#define COLOR_OVERWRITTEN [0.95, 0, 0, 1]
+#define COLOR_NEED_RESTART [0.95, 0.95, 0, 1]
 
 #define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
@@ -108,8 +116,9 @@
 #define GET_TEMP_NAMESPACE_VALUE(setting,source)    (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 0)
 #define GET_TEMP_NAMESPACE_PRIORITY(setting,source) (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 1)
 
-#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       (GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]])
-#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) (GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]])
+#define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart) && {!is3den}) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
+#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
+#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 
 #define TEMP_PRIORITY(setting) (call {private _arr = [\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [nil, [setting,  "client"] call FUNC(priority)]] select 1,\

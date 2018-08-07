@@ -3,23 +3,20 @@
 //#define DEBUG_MODE_FULL
 #include "\x\cba\addons\ui\script_component.hpp"
 
-private ["_menuDefs", "_target", "_menuSources"];
-
-_target = _this select 0;
-_menuSources = _this select 1; // [_target, _menuSources];
-
-_menuDefs = [];
+private _target = _this select 0;
+private _menuSources = _this select 1; // [_target, _menuSources];
+private _menuDefs = [];
 
 { // forEach
-    private ["_params", "_menuSource", "_menuParams", "_array", "_menuDef"]; // declare locally to safe guard variables after _menuSource call, which is beyond our control of correctness.
+    private ["_menuDef"]; // declare locally to safe guard variables after _menuSource call, which is beyond our control of correctness.
 
-    _params = _x;
+    private _params = _x;
     if (isNil "_params") then {
         diag_log format ["%1:%2: CBA WARNING: Menu sources item is nil! Check Source: %3", __FILE__, __LINE__, _params];
     };
 
-    _menuSource = "";
-    _menuParams = [_target];
+    private _menuSource = "";
+    private _menuParams = [_target];
 
     // Syntax 1
     if (typeName _params == typeName "") then {
@@ -46,7 +43,7 @@ _menuDefs = [];
     } else {
         // check which string syntax was used: function, code string or sqf filename
         LOG("_menuSource alternate format");
-        _array = toArray _menuSource;
+        private _array = toArray _menuSource;
         _menuDef = if (_array find 46 >= 0 && {_array find 34 < 0} && {_array find 39 < 0}) then { // 46='.',34=("),39=(') (eg: as in 'path\file.sqf')
             // sqf filename. Eg: 'path\file.sqf'
             _menuParams call COMPILE_FILE2_SYS(_menuSource);

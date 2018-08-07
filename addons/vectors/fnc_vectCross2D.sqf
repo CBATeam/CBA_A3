@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectCross2D
 
@@ -24,7 +25,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectCross2D.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectCross2D);
 
 params ["_u", "_v"];

@@ -8,16 +8,9 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_main"};
+        requiredAddons[] = {"cba_common", "cba_events"};
         authors[] = {"da12thMonkey", "Robalo", "Tupolov"};
         version = VERSION;
-        versionDesc = "MRT Attachment Functions";
-    };
-    class MRT_AccFncs { //compat
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_main"};
     };
 };
 

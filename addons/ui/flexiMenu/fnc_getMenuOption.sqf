@@ -114,12 +114,10 @@ if (_enabled != 0 && {_visible > 0}) then {
 
 // remove "^" from caption and substitute coloured shortcut letter if enabled.
 if (_index >= 0) then {
-    if (_enabled != 0) then {
-        private ["_offset"];
+    if (_enabled != 0) then {  
+        // TODO: Read an appropriate color from the menu class.
 
-// TODO: Read an appropriate color from the menu class.
-
-        _offset = (if (_containCaret) then {1} else {0});
+        private _offset = (if (_containCaret) then {1} else {0});
         if (!_fastPartialResult) then {
             _caption = [_array, _index, _offset, format ["<t color='%1'>", GVAR(hotKeyColor)]] call FUNC(highlightCaretKey);
         };
@@ -131,8 +129,7 @@ if (_index >= 0) then {
     // map menu shortcut DIK code
     // Note: don't append shortcut to empty caption, which is usually an "icon only" menu, without text captions.
     if (_shortcut_DIK != -1 && {_caption != ""}) then {
-        private ["_keyName"];
-        _keyName = keyName _shortcut_DIK;
+        private _keyName = keyName _shortcut_DIK;
         _array = toArray _keyName;
         if (count _array > 2) then {
             _array = _array - [34]; // 34=("). Strip off leading and trailing quotes.

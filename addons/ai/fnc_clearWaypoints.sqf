@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_clearWaypoints
 
@@ -19,7 +20,6 @@ Author:
     SilentSpike
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 params [["_group", grpNull, [grpNull, objNull]]];
 _group = _group call CBA_fnc_getGroup;
 

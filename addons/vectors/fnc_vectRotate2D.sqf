@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectRotate2D
 
@@ -15,8 +16,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params ["_center", "_vector", "_angle"];
 _center params ["_x", "_y"];

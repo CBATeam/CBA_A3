@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeGlobalEventJIP
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     PabstMirror (idea from Dystopian)
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeGlobalEventJIP);
 
 params [["_jipID", "", [""]], ["_object", objNull, [objNull]]];

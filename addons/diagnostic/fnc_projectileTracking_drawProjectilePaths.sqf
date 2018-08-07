@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_diagnostic_fnc_projectileTracking_drawProjectilePaths
 
@@ -21,7 +22,6 @@ Examples:
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 private _maxLines = GVAR(projectileMaxLines) min 20;
 

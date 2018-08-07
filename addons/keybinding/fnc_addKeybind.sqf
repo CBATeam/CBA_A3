@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeybind
 
@@ -57,7 +58,6 @@ Examples:
 Author:
     Taosenai & Nou, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // clients only.
 if (!hasInterface) exitWith {};

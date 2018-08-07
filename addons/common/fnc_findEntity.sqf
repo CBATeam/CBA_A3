@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findEntity
 
@@ -22,7 +23,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(findEntity);
 
 params [["_type", "", [objNull, ""]], ["_position", objNull], ["_radius", 50, [0]]];

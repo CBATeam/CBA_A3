@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeEventHandler
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     Spooner, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeEventHandler);
 
 params [["_eventName", "", [""]], ["_eventId", -1, [0]]];

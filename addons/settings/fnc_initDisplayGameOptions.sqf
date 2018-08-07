@@ -51,7 +51,10 @@ if (is3DEN && {FILE_EXISTS(MISSION_SETTINGS_FILE)}) then {
         private _setting = _x;
 
         (GVAR(missionConfig) getVariable [_setting, []]) params ["_value", "_priority"];
-        [_setting, _value, _priority, "mission"] call FUNC(set);
+
+        if (!isNil "_value") then {
+            [_setting, _value, _priority, "mission"] call FUNC(set);
+        };
     } forEach GVAR(allSettings);
 };
 
@@ -61,6 +64,8 @@ with uiNamespace do {
     GVAR(missionTemp) = _display ctrlCreate ["RscText", -1];
     GVAR(serverTemp)  = _display ctrlCreate ["RscText", -1];
 };
+
+GVAR(awaitingRestartTemp) = + GVAR(awaitingRestart);
 
 // ----- create addons list (filled later)
 private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddonsGroup];

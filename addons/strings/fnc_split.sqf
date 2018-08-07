@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_split
 
@@ -24,19 +25,14 @@ Examples:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-
 SCRIPT(split);
 
-// ----------------------------------------------------------------------------
-
-private ["_split", "_index", "_inputCount", "_separatorCount", "_find", "_lastWasSeperator"];
 params [["_input", ""], ["_separator", ""]];
-_split = [];
-_index = 0;
-_inputCount = count _input;
-_separatorCount = count _separator;
+
+private _split = [];
+private _index = 0;
+private _inputCount = count _input;
+private _separatorCount = count _separator;
 
 // Corner cases
 if (_separatorCount == 0 && _inputCount == 0) exitWith {[]};
@@ -44,9 +40,9 @@ if (_separatorCount == 0) exitWith {_input splitString ""};
 if (_inputCount > 0 && _separatorCount > _inputCount) exitWith {[_input]};
 if (_input == _separator) exitWith {["",""]};
 
-_lastWasSeperator = true;
+private _lastWasSeperator = true;
 while {_index < _inputCount} do {
-    _find = (_input select [_index]) find _separator;
+    private _find = (_input select [_index]) find _separator;
 
     if (_find == 0) then {
         _index = _index + _separatorCount;

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findNil
 
@@ -18,7 +19,6 @@ Returns:
 Author:
     joko // Jonas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 [_this] params [["_array", [], [[]]]];
 

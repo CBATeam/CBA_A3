@@ -25,35 +25,38 @@ _ctrlKeyList setVariable [QGVAR(defaultKeybind), _defaultKeybind];
 
 // --- record keys
 _display displayAddEventHandler ["KeyDown", {
-    params ["_display", "_key", "_shift", "_control", "_alt"];
-    private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
+    call {
+        params ["_display", "_key", "_shift", "_control", "_alt"];
+        private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
-    if (_key <= DIK_ESCAPE) exitWith {};
-    if (_key in [DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) exitWith {};
-    if (!isNil {_ctrlKeyList getVariable QGVAR(lock)}) exitWith {};
+        if (_key <= DIK_ESCAPE) exitWith {false};
+        if (_key in [DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) exitWith {true};
+        if (!isNil {_ctrlKeyList getVariable QGVAR(lock)}) exitWith {true};
 
-    private _keybind = [_key, [_shift, _control, _alt]];
-    private _keyName = _keybind call CBA_fnc_localizeKey;
+        private _keybind = [_key, [_shift, _control, _alt]];
+        private _keyName = _keybind call CBA_fnc_localizeKey;
 
-    // if key already in list, remove instead
-    private _doAdd = true;
+        // if key already in list, remove instead
+        private _doAdd = true;
 
-    for "_index" from 0 to (lbSize _ctrlKeyList - 1) do {
-        if (_ctrlKeyList lbData _index == str _keybind) exitWith {
-            _ctrlKeyList lbDelete _index;
-            _doAdd = false;
+        for "_index" from 0 to (lbSize _ctrlKeyList - 1) do {
+            if (_ctrlKeyList lbData _index == str _keybind) exitWith {
+                _ctrlKeyList lbDelete _index;
+                _doAdd = false;
+            };
         };
+
+        if (_doAdd) then {
+            private _index = _ctrlKeyList lbAdd _keyName;
+            _ctrlKeyList lbSetData [_index, str _keybind];
+            _ctrlKeyList lbSetCurSel _index;
+        };
+
+        _ctrlKeyList call (_ctrlKeyList getVariable QFUNC(showDuplicates));
+
+        _ctrlKeyList setVariable [QGVAR(lock), true];
+        true
     };
-
-    if (_doAdd) then {
-        private _index = _ctrlKeyList lbAdd _keyName;
-        _ctrlKeyList lbSetData [_index, str _keybind];
-        _ctrlKeyList lbSetCurSel _index;
-    };
-
-    _ctrlKeyList call (_ctrlKeyList getVariable QFUNC(showDuplicates));
-
-    _ctrlKeyList setVariable [QGVAR(lock), true];
 }];
 
 _display displayAddEventHandler ["KeyUp", {
