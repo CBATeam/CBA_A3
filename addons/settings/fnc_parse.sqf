@@ -27,7 +27,7 @@ private _fnc_parseAny = {
         _string = _string splitString WHITESPACE joinString "";
     };
 
-    parseSimpleArray format ["[%1]", _string] select 0
+    parseSimpleArray str (formatText ["[%1]", _string]) select 0
 };
 
 params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];
