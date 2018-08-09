@@ -2,16 +2,18 @@
 class RscDisplayOptionsLayout {
     class controlsBackground {
         class Element021;
-        #define ADD_ELEMENT(var1) class Element##var1: Element021 {\
+        class Element022: Element021 {
+            idc = 12022;
+            onMouseEnter = "with uinamespace do {['mouseEnter',_this,''] call RscDisplayOptionsLayout_script;};";
+            onMouseExit = "with uinamespace do {['mouseExit',_this,''] call RscDisplayOptionsLayout_script;};";
+            onMouseHolding = "with uinamespace do {['mouseMoving',_this,''] call RscDisplayOptionsLayout_script;};";
+            onMouseMoving = "with uinamespace do {['mouseMoving',_this,''] call RscDisplayOptionsLayout_script;};";
+            onMouseButtonDown = "with uinamespace do {['mouseButtonDown',_this,''] call RscDisplayOptionsLayout_script;};";
+            onMouseButtonUp = "with uinamespace do {['mouseButtonUp',_this,''] call RscDisplayOptionsLayout_script;};";
+        };
+        #define ADD_ELEMENT(var1) class Element##var1: Element022 {\
             idc = __EVAL(12000 + var1);\
-            onMouseEnter = "with uinamespace do {['mouseEnter',_this,''] call RscDisplayOptionsLayout_script;};";\
-            onMouseExit = "with uinamespace do {['mouseExit',_this,''] call RscDisplayOptionsLayout_script;};";\
-            onMouseHolding = "with uinamespace do {['mouseMoving',_this,''] call RscDisplayOptionsLayout_script;};";\
-            onMouseMoving = "with uinamespace do {['mouseMoving',_this,''] call RscDisplayOptionsLayout_script;};";\
-            onMouseButtonDown = "with uinamespace do {['mouseButtonDown',_this,''] call RscDisplayOptionsLayout_script;};";\
-            onMouseButtonUp = "with uinamespace do {['mouseButtonUp',_this,''] call RscDisplayOptionsLayout_script;};";\
         }
-        ADD_ELEMENT(022);
         ADD_ELEMENT(023);
         ADD_ELEMENT(024);
         ADD_ELEMENT(025);
