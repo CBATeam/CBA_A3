@@ -10,5 +10,9 @@
             <French>Community Base Addons - Composants communs</French>
             <Polish>Community Base Addons - Ogólne Komponenty</Polish>
         </Key>
+        <Key ID="STR_cba_common_need_mission_start">
+            <English>You must first start a mission.</English>
+            <German>Sie müssen zuerst eine Mission starten.</German>
+        </Key>
     </Package>
 </Project>
