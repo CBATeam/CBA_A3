@@ -41,6 +41,10 @@
             <French>Addon Options</French>
             <Polish>Ustawienia addonów</Polish>
         </Key>
+        <Key ID="STR_cba_settings_menu_button_tooltip">
+            <English>Adjust addon settings.</English>
+            <German>Addon-Einstellungen anpassen.</German>
+        </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
             <German>Addon-Optionen...</German>
