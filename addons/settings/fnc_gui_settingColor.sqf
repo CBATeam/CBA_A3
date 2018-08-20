@@ -16,6 +16,7 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
 
     _ctrlColor sliderSetRange [0, 1];
     _ctrlColor sliderSetPosition (_currentValue param [_index, 0]);
+    _ctrlColor sliderSetSpeed [0.05, 0.1];
 
     _ctrlColor setVariable [QGVAR(params), [_setting, _source, _currentValue, _color, _index]];
     _ctrlColor ctrlAddEventHandler ["SliderPosChanged", {
