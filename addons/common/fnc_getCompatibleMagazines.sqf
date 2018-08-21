@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _weapon           - Weapon configName or config
+    _filterList       - Verify magazines exist, are correct capitalization and remove duplicates (Default: true)
 
 Example:
     (begin example)
@@ -14,14 +15,14 @@ Example:
     (end)
 
 Returns:
-    Array of magazine classnames (in config capitalization) <ARRAY>
+    Array of magazine classnames <ARRAY>
 
 Author:
     PabstMirror, based on code from Dedmen
 ---------------------------------------------------------------------------- */
 SCRIPT(getCompatibleMagazines);
 
-params [["_weapon", "", ["", configNull]]];
+params [["_weapon", "", ["", configNull]], ["_filterList", true, [true]]];
 
 if (_weapon isEqualType "") then {
     _weapon = configFile >> "CfgWeapons" >> _weapon;
@@ -36,8 +37,11 @@ private _returnMags = getArray (_weapon >> "magazines");
     } forEach configProperties [_wellConfig, "isArray _x", true];
 } forEach (getArray (_weapon >> "magazineWell"));
 
-private _cfgMagazines = configFile >> "CfgMagazines";
-_returnMags = _returnMags select {isClass (_cfgMagazines >> _x)};
-_returnMags = _returnMags apply {configName (_cfgMagazines >> _x)};
-
-_returnMags arrayIntersect _returnMags
+if (_filterList) then {
+    private _cfgMagazines = configFile >> "CfgMagazines";
+    _returnMags = _returnMags select {isClass (_cfgMagazines >> _x)};
+    _returnMags = _returnMags apply {configName (_cfgMagazines >> _x)};
+    _returnMags arrayIntersect _returnMags
+} else {
+    _returnMags
+};
