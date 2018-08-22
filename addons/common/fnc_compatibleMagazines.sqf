@@ -3,7 +3,7 @@
 Function: CBA_fnc_compatibleMagazines
 
 Description:
-    Retrievs a list of magazines that are compatible with a weapon.
+    Retrieves a list of magazines that are compatible with a weapon.
 
 Parameters:
     _weapon           - Weapon configName or config
@@ -11,10 +11,11 @@ Parameters:
 Example:
     (begin example)
     _mags = ["arifle_MX_SW_F"] call CBA_fnc_compatibleMagazines
+    _mags = [configFile >> "CfgWeapons" >> _rifle >> _glMuzzle] call CBA_fnc_compatibleMagazines
     (end)
 
 Returns:
-    Array of magazine classnames <ARRAY>
+    Array of magazine classnames in config capitalization  <ARRAY>
 
 Author:
     PabstMirror, based on code from Dedmen
