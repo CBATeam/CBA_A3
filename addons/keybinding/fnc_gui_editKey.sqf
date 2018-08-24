@@ -3,7 +3,7 @@
 params ["_control"];
 
 private _parentDisplay = ctrlParent _control;
-(_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+(_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind", "_index"];
 
 private _display = _parentDisplay createDisplay "RscDisplayConfigureAction";
 
@@ -18,7 +18,7 @@ _ctrlAction ctrlSetText _displayName;
     _ctrlKeyList lbSetData [_ctrlKeyList lbAdd (_x call CBA_fnc_localizeKey), str _x];
 } forEach _keybinds;
 
-//_ctrlKeyList setVariable [QGVAR(index), _index]; @todo
+_ctrlKeyList setVariable [QGVAR(index), _index];
 _ctrlKeyList setVariable [QGVAR(action), _action];
 _ctrlKeyList setVariable [QGVAR(undoKeybinds), _keybinds];
 _ctrlKeyList setVariable [QGVAR(defaultKeybind), _defaultKeybind];
@@ -220,7 +220,7 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _display = ctrlParent _control;
             private _parentDisplay = displayParent _display;
 
-            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST; // @todo
+            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
@@ -230,7 +230,9 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
                 _index = (lnbSize _ctrlActionList select 0) - 1
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _ctrlActionList getVariable QGVAR(KeyListSubcontrols) select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];
@@ -261,7 +263,7 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _display = ctrlParent _control;
             private _parentDisplay = displayParent _display;
 
-            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST; // @todo
+            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
@@ -271,7 +273,9 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
                 _index = 0;
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _ctrlActionList getVariable QGVAR(KeyListSubcontrols) select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];
