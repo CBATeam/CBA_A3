@@ -77,13 +77,10 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
     _edit ctrlSetText _displayName;
     _edit ctrlSetTooltip _tooltip;
     _edit ctrlSetTooltipColorShade [0,0,0,0.5];
+    _edit setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind]];
 
     private _assigned = _subcontrol controlsGroupCtrl IDC_KEY_ASSIGNED;
     _assigned ctrlSetText (_keyNames joinString ", ");
-    _assigned ctrlSetTooltip _tooltip;
-    _assigned ctrlSetTooltipColorShade [0,0,0,0.5];
-
-    _subcontrol setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind]];
 
     if (_isDuplicated) then {
         _edit ctrlSetTextColor [1,0,0,1];

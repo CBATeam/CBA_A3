@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-params ["_control", "_index"];
+params ["_control"];
 
 private _parentDisplay = ctrlParent _control;
 (_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
@@ -18,7 +18,7 @@ _ctrlAction ctrlSetText _displayName;
     _ctrlKeyList lbSetData [_ctrlKeyList lbAdd (_x call CBA_fnc_localizeKey), str _x];
 } forEach _keybinds;
 
-_ctrlKeyList setVariable [QGVAR(index), _index];
+//_ctrlKeyList setVariable [QGVAR(index), _index]; @todo
 _ctrlKeyList setVariable [QGVAR(action), _action];
 _ctrlKeyList setVariable [QGVAR(undoKeybinds), _keybinds];
 _ctrlKeyList setVariable [QGVAR(defaultKeybind), _defaultKeybind];
