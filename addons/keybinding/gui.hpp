@@ -1,8 +1,42 @@
-class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
+class RscButton;
+class RscButtonMenu;
 class RscText;
 class RscCombo;
-class RscListNBox;
+
+class GVAR(key): RscControlsGroupNoScrollbars {
+    idc = -1;
+    enableDisplay = 0;
+    x = POS_W(0);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(1);
+
+    class controls {
+        class EditButton: RscButton {
+            idc = IDC_KEY_EDIT;
+            onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
+            style = ST_LEFT;
+            colorFocused[] = {0,0,0,0};
+            colorBackground[] = {0,0,0,0};
+            colorBackgroundActive[] = {1,1,1,1};
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(17);
+            h = POS_H(1);
+        };
+
+        class AssignedKey: RscText {
+            idc = IDC_KEY_ASSIGNED;
+            shadow = 2;
+            colorShadow[] = {0,0,0,0};
+            x = POS_W(17);
+            y = POS_H(0);
+            w = POS_W(20);
+            h = POS_H(1);
+        };
+    };
+};
 
 class RscDisplayConfigure {
     class controls {
@@ -58,9 +92,8 @@ class RscDisplayConfigure {
                     h = POS_H(1);
                     wholeHeight = POS_H(12);
                 };
-                class CA_ValueKeys: RscListNBox {
+                class KeyList: RscControlsGroupNoScrollbars {
                     idc = IDC_KEY_LIST;
-                    columns[] = {0, 0.459459459}; //17/37
                     x = POS_W(0.5);
                     y = POS_H(3.5);
                     w = POS_W(37);

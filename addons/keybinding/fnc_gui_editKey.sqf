@@ -3,7 +3,7 @@
 params ["_control", "_index"];
 
 private _parentDisplay = ctrlParent _control;
-parseSimpleArray (_control lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+(_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
 
 private _display = _parentDisplay createDisplay "RscDisplayConfigureAction";
 
@@ -220,7 +220,7 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _display = ctrlParent _control;
             private _parentDisplay = displayParent _display;
 
-            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
+            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST; // @todo
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
@@ -261,7 +261,7 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _display = ctrlParent _control;
             private _parentDisplay = displayParent _display;
 
-            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST;
+            private _ctrlActionList = _parentDisplay displayCtrl IDC_KEY_LIST; // @todo
             private _ctrlAction = _display displayCtrl IDC_CONFIGURE_ACTION_TITLE;
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 

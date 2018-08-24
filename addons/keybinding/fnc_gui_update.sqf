@@ -6,7 +6,15 @@ if (isNull _display) exitWith {};
 private _ctrlAddonList = _display displayCtrl IDC_ADDON_LIST;
 private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;
 
-lnbClear _ctrlKeyList;
+// clear key list
+private _subcontrols = _ctrlKeyList getVariable [QGVAR(KeyListSubcontrols), []];
+
+{
+    ctrlDelete _x;
+} forEach _subcontrols;
+
+_subcontrols = [];
+_ctrlKeyList setVariable [QGVAR(KeyListSubcontrols), _subcontrols];
 
 private _index = lbCurSel _ctrlAddonList;
 private _addon = _ctrlAddonList lbData _index;
@@ -59,16 +67,28 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
         };
     } forEach _keybinds;
 
-    // add keybinds to action list
-    private _index = _ctrlKeyList lnbAddRow [_displayName, _keyNames joinString ", "];
-
     // tooltips bugged for lnb
-    _ctrlKeyList lbSetTooltip [2 * _index, _tooltip];
-    _ctrlKeyList lbSetTooltip [2 * _index + 1, _tooltip];
+    private _subcontrol = _display ctrlCreate [QGVAR(key), -1, _ctrlKeyList];
 
-    _ctrlKeyList lnbSetData [[_index, 0], str [_action, _displayName, _keybinds, _defaultKeybind]];
+    _subcontrol ctrlSetPosition [POS_W(0), _forEachIndex * POS_H(1)];
+    _subcontrol ctrlCommit 0;
+
+    private _edit = _subcontrol controlsGroupCtrl IDC_KEY_EDIT;
+    _edit ctrlSetText _displayName;
+    _edit ctrlSetTooltip _tooltip;
+    _edit ctrlSetTooltipColorShade [0,0,0,0.5];
+
+    private _assigned = _subcontrol controlsGroupCtrl IDC_KEY_ASSIGNED;
+    _assigned ctrlSetText (_keyNames joinString ", ");
+    _assigned ctrlSetTooltip _tooltip;
+    _assigned ctrlSetTooltipColorShade [0,0,0,0.5];
+
+    _subcontrol setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind]];
 
     if (_isDuplicated) then {
-        _ctrlKeyList lnbSetColor [[_index, 1], [1, 0, 0, 1]];
+        _edit ctrlSetTextColor [1,0,0,1];
+        _assigned ctrlSetTextColor [1,0,0,1];
     };
+
+    _subcontrols pushBack _subcontrol;
 } forEach _addonActions;
