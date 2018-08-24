@@ -17,9 +17,9 @@ class GVAR(key): RscControlsGroupNoScrollbars {
             idc = IDC_KEY_EDIT;
             onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
             style = ST_LEFT;
-            colorFocused[] = {0,0,0,0};
             colorBackground[] = {0,0,0,0};
             colorBackgroundActive[] = {1,1,1,1};
+            colorFocused[] = {1,1,1,1};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(17);
