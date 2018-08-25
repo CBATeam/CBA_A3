@@ -16,6 +16,9 @@ private _subcontrols = _ctrlKeyList getVariable [QGVAR(KeyListSubcontrols), []];
 _subcontrols = [];
 _ctrlKeyList setVariable [QGVAR(KeyListSubcontrols), _subcontrols];
 
+private _editableSubcontrols = [];
+_ctrlKeyList setVariable [QGVAR(KeyListEditableSubcontrols), _editableSubcontrols];
+
 private _index = lbCurSel _ctrlAddonList;
 private _addon = _ctrlAddonList lbData _index;
 
@@ -88,4 +91,5 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
     };
 
     _subcontrols pushBack _subcontrol;
+    _editableSubcontrols pushBack _subcontrol;
 } forEach _addonActions;

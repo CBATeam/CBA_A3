@@ -225,7 +225,7 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) - 1;
-            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListSubcontrols);
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
             if (_index < 0) then {
                 _index = count _subcontrols - 1
@@ -269,7 +269,7 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) + 1;
-            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListSubcontrols);
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
             if (_index >= count _subcontrols) then {
                 _index = 0;

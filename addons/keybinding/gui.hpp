@@ -1,7 +1,7 @@
 class RscControlsGroupNoScrollbars;
+class RscText;
 class RscButton;
 class RscButtonMenu;
-class RscText;
 class RscCombo;
 
 class GVAR(key): RscControlsGroupNoScrollbars {
@@ -34,6 +34,42 @@ class GVAR(key): RscControlsGroupNoScrollbars {
             y = POS_H(0);
             w = POS_W(20);
             h = POS_H(1);
+        };
+    };
+};
+
+class GVAR(subCat): RscControlsGroupNoScrollbars {
+    x = POS_W(1);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(0.75);
+
+    class controls {
+        class Background: RscText {
+            colorBackground[] = {0.25,0.25,0.25,0.4};
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(36);
+            h = POS_H(1);
+        };
+
+        class Name: RscText {
+            idc = IDC_SUBCATEGORY_NAME;
+            style = ST_LEFT;
+            SizeEx = POS_H(0.75);
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(15.5);
+            h = POS_H(0.75);
+        };
+
+        class Bar: RscText {
+            colorBackground[] = {1,1,1,1};
+            style = ST_LEFT;
+            x = POS_W(0);
+            y = POS_H(0.75) - 2 * pixelH;
+            w = POS_W(36);
+            h = pixelH;
         };
     };
 };
