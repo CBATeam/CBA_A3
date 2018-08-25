@@ -1,3 +1,4 @@
+class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
 class RscText;
 class RscButton;
@@ -128,7 +129,7 @@ class RscDisplayConfigure {
                     h = POS_H(1);
                     wholeHeight = POS_H(12);
                 };
-                class KeyList: RscControlsGroupNoScrollbars {
+                class KeyList: RscControlsGroup {
                     idc = IDC_KEY_LIST;
                     x = POS_W(0.5);
                     y = POS_H(3.5);
