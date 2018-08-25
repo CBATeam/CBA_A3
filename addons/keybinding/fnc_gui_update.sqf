@@ -28,8 +28,29 @@ uiNamespace setVariable [QGVAR(addonIndex), _index];
 
 private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
 
+private _categoryKeyActions = [];
+
 {
     private _action = format ["%1$%2", _addon, _x];
+    private _subcategory = (GVAR(actions) getVariable _action) param [8, "", [""]];
+
+    _categoryKeyActions pushBack [_subcategory, _forEachIndex, _x];
+} forEach _addonActions;
+
+_categoryKeyActions sort true;
+private _lastSubcategory = "$START";
+private _tablePosY = 0;
+
+{
+    _x params ["_subcategory", "", "_keyAction"];
+
+    private _createHeader = false;
+    if (_subcategory != _lastSubcategory) then {
+        _lastSubcategory = _subcategory;
+        _createHeader = _subcategory != "";
+    };
+
+    private _action = format ["%1$%2", _addon, _keyAction];
     (GVAR(actions) getVariable _action) params ["_displayName", "_tooltip", "_keybinds", "_defaultKeybind"];
 
     if (isLocalized _displayName) then {
@@ -70,11 +91,29 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
         };
     } forEach _keybinds;
 
+    // add subcategory header
+    if (_createHeader) then {
+        private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlKeyList];
+
+        if (isLocalized _subcategory) then {
+            _subcategory = localize _subcategory;
+        };
+
+        (_header controlsGroupCtrl IDC_SUBCATEGORY_NAME) ctrlSetText format ["%1:", _subcategory];
+        _header ctrlSetPosition [POS_W(0), _tablePosY];
+        _header ctrlCommit 0;
+
+        _tablePosY = _tablePosY + getNumber (configFile >> QGVAR(subCat) >> "h");
+        _subcontrols pushBack _header;
+    };
+
     // tooltips bugged for lnb
     private _subcontrol = _display ctrlCreate [QGVAR(key), -1, _ctrlKeyList];
 
-    _subcontrol ctrlSetPosition [POS_W(0), _forEachIndex * POS_H(1)];
+    _subcontrol ctrlSetPosition [POS_W(0), _tablePosY];
     _subcontrol ctrlCommit 0;
+
+    _tablePosY = _tablePosY + POS_H(1);
 
     private _edit = _subcontrol controlsGroupCtrl IDC_KEY_EDIT;
     _edit ctrlSetText _displayName;
@@ -92,4 +131,4 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
 
     _subcontrols pushBack _subcontrol;
     _editableSubcontrols pushBack _subcontrol;
-} forEach _addonActions;
+} forEach _categoryKeyActions;
