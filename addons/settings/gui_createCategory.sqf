@@ -123,6 +123,9 @@ private _lastSubCategory = "$START";
             case "COLOR": {
                 _display ctrlCreate [[QGVAR(Row_Color), QGVAR(Row_ColorAlpha)] select (count _defaultValue > 3), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
             };
+            case "TIME": {
+                _display ctrlCreate [QGVAR(Row_Time), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
             default {controlNull};
         };
 

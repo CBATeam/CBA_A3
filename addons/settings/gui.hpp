@@ -449,6 +449,78 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
     };
 };
 
+class RscFrame;
+
+class GVAR(Row_Time): GVAR(Row_Base) {
+    GVAR(script) = QFUNC(gui_settingTime);
+    h = POS_H(2) + TABLE_LINE_SPACING;
+
+    class controls: controls {
+        class Name: Name {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class Slider: RscXSliderH {
+            idc = IDC_SETTING_TIME_SLIDER;
+            x = POS_W(16);
+            y = POS_H(0) + TABLE_LINE_SPACING / 2;
+            w = POS_W(10);
+            h = POS_H(1);
+        };
+        class Frame: RscFrame {
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(6);
+            h = POS_H(0.9);
+        };
+        class Separator: RscText {
+            style = ST_CENTER;
+            text = ":   :";
+            font = "EtelkaMonospaceProBold";
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(6);
+            h = POS_H(0.9);
+            sizeEx = POS_H(1);
+            colorBackground[] = {0, 0, 0, 0.2};
+        };
+        class Hours: RscEdit {
+            idc = IDC_SETTING_TIME_HOURS;
+            style = ST_CENTER + ST_NO_RECT;
+            text = "00";
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
+            font = "EtelkaMonospaceProBold";
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(2);
+            h = POS_H(0.9);
+            sizeEx = POS_H(0.9);
+            maxChars = 2;
+        };
+        class Minutes: Hours {
+            idc = IDC_SETTING_TIME_MINUTES;
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Minute_tooltip";
+            x = POS_W(20);
+        };
+        class Seconds: Hours {
+            idc = IDC_SETTING_TIME_SECONDS;
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Second_tooltip";
+            x = POS_W(22);
+        };
+        class Default: Default {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class Locked: Locked {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class OverwriteClients: OverwriteClients {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class OverwriteMission: OverwriteMission {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+    };
+};
+
 class RscControlsGroup;
 class RscTitle;
 class RscListBox;
