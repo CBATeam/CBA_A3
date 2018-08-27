@@ -9,6 +9,7 @@
             <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
             <Russian>Community Base Addons - Назначения Клавиш</Russian>
             <Polish>Community Base Addons - Klawisze</Polish>
+            <French>Community Base Addons - Configurations des touches</French>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -30,6 +31,7 @@
             <Chinesesimp>基础设定</Chinesesimp>
             <Portuguese>Configure as Bases</Portuguese>
             <Russian>Основные Настройки</Russian>
+            <French>Configurer la base</French>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
