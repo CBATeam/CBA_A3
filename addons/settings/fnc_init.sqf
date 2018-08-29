@@ -37,7 +37,7 @@ Examples:
         // EDITBOX --- extra argument: default value
         ["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
 
-        // TIME PICKER --- extra arguments: [_min, _max, _default]
+        // TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
         ["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call cba_settings_fnc_init;
     (end)
 

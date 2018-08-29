@@ -17,18 +17,9 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     _value = round _value;
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
-
-    {
-        _x params ["_idc", "_value"];
-
-        private _ctrlEdit = _controlsGroup controlsGroupCtrl _idc;
-        private _editText = if (_value < 10) then {format ["0%1", _value]} else {str _value};
-        _ctrlEdit ctrlSetText _editText;
-    } forEach [
-        [IDC_SETTING_TIME_HOURS, floor (_value / 3600)],
-        [IDC_SETTING_TIME_MINUTES, floor (_value / 60 % 60)],
-        [IDC_SETTING_TIME_SECONDS, floor (_value % 60)]
-    ];
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_HOURS) ctrlSetText ([floor (_value / 3600), 2] call CBA_fnc_formatNumber);
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_MINUTES) ctrlSetText ([floor (_value / 60 % 60), 2] call CBA_fnc_formatNumber);
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SECONDS) ctrlSetText ([floor (_value % 60), 2] call CBA_fnc_formatNumber);
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
@@ -46,8 +37,7 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 
     private _ctrlEdit = _controlsGroup controlsGroupCtrl _idc;
     _ctrlEdit setVariable [QGVAR(params), [_setting, _source]];
-    private _editText = if (_value < 10) then {format ["0%1", _value]} else {str _value};
-    _ctrlEdit ctrlSetText _editText;
+    _ctrlEdit ctrlSetText ([_value, 2] call CBA_fnc_formatNumber);
 
     _ctrlEdit ctrlAddEventHandler ["KillFocus", {
         params ["_ctrlEdit"];
@@ -63,17 +53,9 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
         _ctrlSlider sliderSetPosition _value;
         _value = sliderPosition _ctrlSlider;
 
-        {
-            _x params ["_idc", "_value"];
-
-            private _ctrlEdit = _controlsGroup controlsGroupCtrl _idc;
-            private _editText = if (_value < 10) then {format ["0%1", _value]} else {str _value};
-            _ctrlEdit ctrlSetText _editText;
-        } forEach [
-            [IDC_SETTING_TIME_HOURS, floor (_value / 3600)],
-            [IDC_SETTING_TIME_MINUTES, floor (_value / 60 % 60)],
-            [IDC_SETTING_TIME_SECONDS, floor (_value % 60)]
-        ];
+        _ctrlEditHours ctrlSetText ([floor (_value / 3600), 2] call CBA_fnc_formatNumber);
+        _ctrlEditMinutes ctrlSetText ([floor (_value / 60 % 60), 2] call CBA_fnc_formatNumber);
+        _ctrlEditSeconds ctrlSetText ([floor (_value % 60), 2] call CBA_fnc_formatNumber);
 
         SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
@@ -81,6 +63,9 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
         _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+
+        // automatically check "overwrite client" for mission makers qol
+        [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
     }];
 } forEach [
     [IDC_SETTING_TIME_HOURS, floor (_currentValue / 3600)],
@@ -92,20 +77,10 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 _controlsGroup setVariable [QFUNC(updateUI), {
     params ["_controlsGroup", "_value"];
 
-    private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SLIDER;
-    _ctrlSlider sliderSetPosition _value;
-
-    {
-        _x params ["_idc", "_value"];
-
-        private _ctrlEdit = _controlsGroup controlsGroupCtrl _idc;
-        private _editText = if (_value < 10) then {format ["0%1", _value]} else {str _value};
-        _ctrlEdit ctrlSetText _editText;
-    } forEach [
-        [IDC_SETTING_TIME_HOURS, floor (_value / 3600)],
-        [IDC_SETTING_TIME_MINUTES, floor (_value / 60 % 60)],
-        [IDC_SETTING_TIME_SECONDS, floor (_value % 60)]
-    ];
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SLIDER) sliderSetPosition _value;
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_HOURS) ctrlSetText ([floor (_value / 3600), 2] call CBA_fnc_formatNumber);
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_MINUTES) ctrlSetText ([floor (_value / 60 % 60), 2] call CBA_fnc_formatNumber);
+    (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SECONDS) ctrlSetText ([floor (_value % 60), 2] call CBA_fnc_formatNumber);
 
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;

@@ -486,7 +486,6 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         class Hours: RscEdit {
             idc = IDC_SETTING_TIME_HOURS;
             style = ST_CENTER + ST_NO_RECT;
-            text = "00";
             tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
             font = "EtelkaMonospaceProBold";
             x = POS_W(18);
