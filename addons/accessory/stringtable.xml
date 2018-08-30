@@ -17,7 +17,7 @@
             <Chinesesimp>下个导轨物品状态</Chinesesimp>
             <Russian>Следующее состояние приспособления на оружии</Russian>
             <Polish>Następny tryb akcesoria na szynie</Polish>
-            <French>Mode de l'accessoire sur rail suivant </French>
+            <French>Mode de l'accessoire sur rail suivant</French>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -35,7 +35,7 @@
             <Chinesesimp>上个导轨物品状态</Chinesesimp>
             <Russian>Предыдущее состояние приспособления на планке</Russian>
             <Polish>Poprzedni tryb akcesoria na szynie</Polish>
-            <French>Mode de l'accessoire sur rail précèdent </French>
+            <French>Mode de l'accessoire sur rail précèdent</French>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -53,7 +53,7 @@
             <Chinesesimp>下个瞄镜模式</Chinesesimp>
             <Russian>Следующий режим оптики</Russian>
             <Polish>Następny tryb optyki</Polish>
-            <French>Mode de l'optique suivant </French>
+            <French>Mode de l'optique suivant</French>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -71,7 +71,7 @@
             <Chinesesimp>上个瞄镜模式</Chinesesimp>
             <Russian>Предыдущее состояние оптики</Russian>
             <Polish>Poprzedni tryb optyki</Polish>
-            <French>Mode de l'optique sur rail précèdent </French>
+            <French>Mode de l'optique sur rail précèdent</French>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
