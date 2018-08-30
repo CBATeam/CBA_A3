@@ -13,6 +13,7 @@
         <Key ID="STR_cba_common_need_mission_start">
             <English>You must first start a mission.</English>
             <German>Sie müssen zuerst eine Mission starten.</German>
+            <French>Vous devez d'abord commencer une mission.</French>
         </Key>
     </Package>
 </Project>

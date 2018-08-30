@@ -9,7 +9,7 @@
             <Chinesesimp>CBA制作组</Chinesesimp>
             <Portuguese>Time CBA</Portuguese>
             <Russian>Команда CBA</Russian>
-            <French>CBA-Team</French>
+            <French>Equipe CBA</French>
             <Polish>Zespół CBA</Polish>
         </Key>
         <Key ID="STR_CBA_URL">
@@ -49,7 +49,7 @@
             <Chinese>模組:</Chinese>
             <Chinesesimp>模组:</Chinesesimp>
             <Japanese>アドオン:</Japanese>
-            <French>ADDON:</French>
+            <French>ADDON :</French>
             <Polish>ADDON:</Polish>
         </Key>
     </Package>

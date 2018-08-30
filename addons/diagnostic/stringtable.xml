@@ -8,6 +8,7 @@
             <Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
             <Russian>Community Base Addons - Диагностика</Russian>
             <Polish>Community Base Addons - Diagnostyka</Polish>
+            <French>Community Base Addons - Diagnostics</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
             <English>Extended Debug Console</English>
@@ -46,6 +47,7 @@
             <Chinesesimp>在目标执行</Chinesesimp>
             <Russian>На цели</Russian>
             <Polish>Wykonaj na celu</Polish>
+            <French>Cible Exec</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debuging</English>
@@ -54,6 +56,7 @@
             <Chinesesimp>开启目标除错模式</Chinesesimp>
             <Russian>Включить Отладку Цели</Russian>
             <Polish>Włącz debugowanie na celu</Polish>
+            <French>Activer le débogage de la cible</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
@@ -62,6 +65,7 @@
             <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
             <Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
             <Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
+            <French>[CBA] Permet le débogage de la cible distante. Nécessite la console de débogage.</French>
         </Key>
     </Package>
 </Project>

@@ -9,6 +9,7 @@
             <Portuguese>Extensões de Base Comunitária - Ajuda</Portuguese>
             <Russian>Community Base Addons - Помощь</Russian>
             <Polish>Community Base Addons - Pomoc</Polish>
+            <French>Community Base Addons - Aide</French>
         </Key>
         <Key ID="STR_DN_CBA_HELP_KEYS">
             <English>Keybindings</English>
@@ -32,7 +33,7 @@
             <Russian>Баг трэкер</Russian>
             <Italian>Bugtracker</Italian>
             <Polish>Zgłaszanie błędów</Polish>
-            <French>Bugtracker</French>
+            <French>traqueur de bugs</French>
             <Hungarian>Bugtracker</Hungarian>
             <Japanese>バグトラッカー</Japanese>
             <Chinese>臭蟲追蹤器</Chinese>
