@@ -24,6 +24,7 @@ if (hasInterface) then {
     PREP(gui_settingList);
     PREP(gui_settingSlider);
     PREP(gui_settingColor);
+    PREP(gui_settingTime);
     PREP(gui_SettingDefault);
     PREP(gui_settingOverwrite);
 };

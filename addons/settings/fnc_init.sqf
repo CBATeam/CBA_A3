@@ -35,7 +35,10 @@ Examples:
         ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call cba_settings_fnc_init;
 
         // EDITBOX --- extra argument: default value
-        ["Test_Setting_5", "EDITBOX", ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
+        ["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
+
+        // TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
+        ["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call cba_settings_fnc_init;
     (end)
 
 Author:
@@ -136,7 +139,13 @@ switch (toUpper _settingType) do {
         _settingData append [_min, _max, _trailingDecimals];
     };
     case "COLOR": {
-        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3,4]];
+        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3, 4]];
+    };
+    case "TIME": {
+        _valueInfo params [["_min", 0, [0]], ["_max", 86400, [0]], ["_default", 0, [0]]];
+
+        _defaultValue = _default;
+        _settingData append [_min, _max];
     };
     default {/* _defaultValue undefined, exit below */};
 };
