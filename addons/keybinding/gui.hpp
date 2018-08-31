@@ -51,7 +51,7 @@ class GVAR(subCat): RscControlsGroupNoScrollbars {
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(36);
-            h = POS_H(1);
+            h = POS_H(0.75);
         };
 
         class Name: RscText {
