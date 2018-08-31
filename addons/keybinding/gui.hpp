@@ -17,10 +17,13 @@ class GVAR(key): RscControlsGroupNoScrollbars {
         class EditButton: RscButton {
             idc = IDC_KEY_EDIT;
             onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
+            onMouseEnter = "(_this select 0) ctrlSetTextColor [0,0,0,1]";
+            onMouseExit = "(_this select 0) ctrlSetTextColor [1,1,1,1]";
             style = ST_LEFT;
+            shadow = 0;
             colorBackground[] = {0,0,0,0};
             colorBackgroundActive[] = {1,1,1,1};
-            colorFocused[] = {1,1,1,1};
+            colorFocused[] = {0.5,0.5,0.5,0.5};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(17);
@@ -29,7 +32,6 @@ class GVAR(key): RscControlsGroupNoScrollbars {
 
         class AssignedKey: RscText {
             idc = IDC_KEY_ASSIGNED;
-            shadow = 2;
             colorShadow[] = {0,0,0,0};
             x = POS_W(17);
             y = POS_H(0);
