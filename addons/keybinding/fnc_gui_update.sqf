@@ -6,7 +6,18 @@ if (isNull _display) exitWith {};
 private _ctrlAddonList = _display displayCtrl IDC_ADDON_LIST;
 private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;
 
-lnbClear _ctrlKeyList;
+// clear key list
+private _subcontrols = _ctrlKeyList getVariable [QGVAR(KeyListSubcontrols), []];
+
+{
+    ctrlDelete _x;
+} forEach _subcontrols;
+
+_subcontrols = [];
+_ctrlKeyList setVariable [QGVAR(KeyListSubcontrols), _subcontrols];
+
+private _editableSubcontrols = [];
+_ctrlKeyList setVariable [QGVAR(KeyListEditableSubcontrols), _editableSubcontrols];
 
 private _index = lbCurSel _ctrlAddonList;
 private _addon = _ctrlAddonList lbData _index;
@@ -17,8 +28,29 @@ uiNamespace setVariable [QGVAR(addonIndex), _index];
 
 private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
 
+private _categoryKeyActions = [];
+
 {
     private _action = format ["%1$%2", _addon, _x];
+    private _subcategory = (GVAR(actions) getVariable _action) param [8, "", [""]];
+
+    _categoryKeyActions pushBack [_subcategory, _forEachIndex, _x];
+} forEach _addonActions;
+
+_categoryKeyActions sort true;
+private _lastSubcategory = "$START";
+private _tablePosY = 0;
+
+{
+    _x params ["_subcategory", "", "_keyAction"];
+
+    private _createHeader = false;
+    if (_subcategory != _lastSubcategory) then {
+        _lastSubcategory = _subcategory;
+        _createHeader = _subcategory != "";
+    };
+
+    private _action = format ["%1$%2", _addon, _keyAction];
     (GVAR(actions) getVariable _action) params ["_displayName", "_tooltip", "_keybinds", "_defaultKeybind"];
 
     if (isLocalized _displayName) then {
@@ -59,16 +91,44 @@ private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
         };
     } forEach _keybinds;
 
-    // add keybinds to action list
-    private _index = _ctrlKeyList lnbAddRow [_displayName, _keyNames joinString ", "];
+    // add subcategory header
+    if (_createHeader) then {
+        private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlKeyList];
+
+        if (isLocalized _subcategory) then {
+            _subcategory = localize _subcategory;
+        };
+
+        (_header controlsGroupCtrl IDC_SUBCATEGORY_NAME) ctrlSetText format ["%1:", _subcategory];
+        _header ctrlSetPosition [POS_W(0), _tablePosY];
+        _header ctrlCommit 0;
+
+        _tablePosY = _tablePosY + getNumber (configFile >> QGVAR(subCat) >> "h");
+        _subcontrols pushBack _header;
+    };
 
     // tooltips bugged for lnb
-    _ctrlKeyList lbSetTooltip [2 * _index, _tooltip];
-    _ctrlKeyList lbSetTooltip [2 * _index + 1, _tooltip];
+    private _subcontrol = _display ctrlCreate [QGVAR(key), -1, _ctrlKeyList];
 
-    _ctrlKeyList lnbSetData [[_index, 0], str [_action, _displayName, _keybinds, _defaultKeybind]];
+    _subcontrol ctrlSetPosition [POS_W(0), _tablePosY];
+    _subcontrol ctrlCommit 0;
+
+    _tablePosY = _tablePosY + POS_H(1);
+
+    private _edit = _subcontrol controlsGroupCtrl IDC_KEY_EDIT;
+    _edit ctrlSetText _displayName;
+    _edit ctrlSetTooltip _tooltip;
+    _edit ctrlSetTooltipColorShade [0,0,0,0.5];
+    _edit setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind, _forEachIndex]];
+
+    private _assigned = _subcontrol controlsGroupCtrl IDC_KEY_ASSIGNED;
+    _assigned ctrlSetText (_keyNames joinString ", ");
 
     if (_isDuplicated) then {
-        _ctrlKeyList lnbSetColor [[_index, 1], [1, 0, 0, 1]];
+        _edit ctrlSetTextColor [1,0,0,1];
+        _assigned ctrlSetTextColor [1,0,0,1];
     };
-} forEach _addonActions;
+
+    _subcontrols pushBack _subcontrol;
+    _editableSubcontrols pushBack _subcontrol;
+} forEach _categoryKeyActions;

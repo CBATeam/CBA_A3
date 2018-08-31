@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
-params ["_control", "_index"];
+params ["_control"];
 
 private _parentDisplay = ctrlParent _control;
-parseSimpleArray (_control lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+(_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind", "_index"];
 
 private _display = _parentDisplay createDisplay "RscDisplayConfigureAction";
 
@@ -225,12 +225,15 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) - 1;
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
             if (_index < 0) then {
-                _index = (lnbSize _ctrlActionList select 0) - 1
+                _index = count _subcontrols - 1
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _subcontrols select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];
@@ -266,12 +269,15 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) + 1;
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
-            if (_index >= lnbSize _ctrlActionList select 0) then {
+            if (_index >= count _subcontrols) then {
                 _index = 0;
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _subcontrols select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];
