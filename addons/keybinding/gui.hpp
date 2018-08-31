@@ -17,10 +17,13 @@ class GVAR(key): RscControlsGroupNoScrollbars {
         class EditButton: RscButton {
             idc = IDC_KEY_EDIT;
             onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
+            onMouseEnter = "(_this select 0) ctrlSetTextColor [0,0,0,1]";
+            onMouseExit = "(_this select 0) ctrlSetTextColor [1,1,1,1]";
             style = ST_LEFT;
+            shadow = 0;
             colorBackground[] = {0,0,0,0};
             colorBackgroundActive[] = {1,1,1,1};
-            colorFocused[] = {1,1,1,1};
+            colorFocused[] = {0.5,0.5,0.5,0.5};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(17);
@@ -29,7 +32,6 @@ class GVAR(key): RscControlsGroupNoScrollbars {
 
         class AssignedKey: RscText {
             idc = IDC_KEY_ASSIGNED;
-            shadow = 2;
             colorShadow[] = {0,0,0,0};
             x = POS_W(17);
             y = POS_H(0);
@@ -43,32 +45,32 @@ class GVAR(subCat): RscControlsGroupNoScrollbars {
     x = POS_W(1);
     y = POS_H(0);
     w = POS_W(37);
-    h = POS_H(0.75);
+    h = POS_H(1);
 
     class controls {
         class Background: RscText {
-            colorBackground[] = {0.25,0.25,0.25,0.4};
+            colorBackground[] = {0.15,0.15,0.15,0.4};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(36);
-            h = POS_H(0.75);
+            h = POS_H(1);
         };
 
         class Name: RscText {
             idc = IDC_SUBCATEGORY_NAME;
             style = ST_LEFT;
-            SizeEx = POS_H(0.75);
+            SizeEx = POS_H(1);
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(15.5);
-            h = POS_H(0.75);
+            h = POS_H(1);
         };
 
         class Bar: RscText {
             colorBackground[] = {1,1,1,1};
             style = ST_LEFT;
             x = POS_W(0);
-            y = POS_H(0.75) - 2 * pixelH;
+            y = POS_H(1) - 2 * pixelH;
             w = POS_W(36);
             h = pixelH;
         };
