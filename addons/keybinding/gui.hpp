@@ -25,6 +25,9 @@ class GVAR(key): RscControlsGroupNoScrollbars {
             colorBackground[] = {0,0,0,0};
             colorBackgroundActive[] = {1,1,1,1};
             colorFocused[] = {0.5,0.5,0.5,0.5};
+            tooltipColorBox[] = {1,1,1,1};
+            tooltipColorShade[] = {0,0,0,0.7};
+            tooltipColorText[] = {1,1,1,1};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(17);
@@ -34,6 +37,9 @@ class GVAR(key): RscControlsGroupNoScrollbars {
         class AssignedKey: RscStructuredText {
             idc = IDC_KEY_ASSIGNED;
             shadow = 0;
+            tooltipColorBox[] = {1,1,1,1};
+            tooltipColorShade[] = {0,0,0,0.7};
+            tooltipColorText[] = {1,1,1,1};
             x = POS_W(17);
             y = POS_H(0);
             w = POS_W(20);

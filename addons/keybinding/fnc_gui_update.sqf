@@ -116,15 +116,11 @@ private _tablePosY = 0;
     private _edit = _subcontrol controlsGroupCtrl IDC_KEY_EDIT;
     _edit ctrlSetText _displayName;
     _edit ctrlSetTooltip _tooltip;
-    _edit ctrlSetTooltipColorBox [1,1,1,1];
-    _edit ctrlSetTooltipColorShade [0,0,0,0.7];
     _edit setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind, _forEachIndex]];
 
     private _assigned = _subcontrol controlsGroupCtrl IDC_KEY_ASSIGNED;
     _assigned ctrlSetStructuredText parseText (_keyNames joinString ", ");
     _assigned ctrlSetTooltip _tooltip;
-    _assigned ctrlSetTooltipColorBox [1,1,1,1];
-    _assigned ctrlSetTooltipColorShade [0,0,0,0.7];
 
     _subcontrols pushBack _subcontrol;
     _editableSubcontrols pushBack _subcontrol;
