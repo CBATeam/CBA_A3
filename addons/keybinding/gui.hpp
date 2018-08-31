@@ -4,6 +4,7 @@ class RscText;
 class RscButton;
 class RscButtonMenu;
 class RscCombo;
+class RscStructuredText;
 
 class GVAR(key): RscControlsGroupNoScrollbars {
     idc = -1;
@@ -30,9 +31,9 @@ class GVAR(key): RscControlsGroupNoScrollbars {
             h = POS_H(1);
         };
 
-        class AssignedKey: RscText {
+        class AssignedKey: RscStructuredText {
             idc = IDC_KEY_ASSIGNED;
-            colorShadow[] = {0,0,0,0};
+            shadow = 0;
             x = POS_W(17);
             y = POS_H(0);
             w = POS_W(20);

@@ -64,8 +64,6 @@ private _tablePosY = 0;
     _keybinds = _tempNamespace getVariable [_action, _keybinds];
 
     private _keyNames = [];
-    private _isDuplicated = false;
-
     {
         private _keybind = _x;
         private _keyName = _keybind call CBA_fnc_localizeKey;
@@ -77,17 +75,17 @@ private _tablePosY = 0;
 
         // search the addon for any other keybinds using this key.
         if (_keybind select 0 > DIK_ESCAPE) then {
-            {
+            if (_addonActions findIf {
                 private _duplicateAction = format ["%1$%2", _addon, _x];
                 private _duplicateKeybinds = GVAR(actions) getVariable _duplicateAction select 2;
                 _duplicateKeybinds = _tempNamespace getVariable [_duplicateAction, _duplicateKeybinds];
 
-                if (_keybind in _duplicateKeybinds && {_action != _duplicateAction}) exitWith {
-                    _isDuplicated = true;
-                };
-            } forEach _addonActions;
-
-            _keyNames pushBack _keyName;
+                _keybind in _duplicateKeybinds && {_action != _duplicateAction}
+            } > -1) then {
+                _keyNames pushBack format ["<t color='#FF0000'>%1</t>", _keyName];
+            } else {
+                _keyNames pushBack format ["<t color='#FFFFFF'>%1</t>", _keyName];
+            };
         };
     } forEach _keybinds;
 
@@ -123,12 +121,10 @@ private _tablePosY = 0;
     _edit setVariable [QGVAR(data), [_action, _displayName, _keybinds, _defaultKeybind, _forEachIndex]];
 
     private _assigned = _subcontrol controlsGroupCtrl IDC_KEY_ASSIGNED;
-    _assigned ctrlSetText (_keyNames joinString ", ");
+    _assigned ctrlSetStructuredText parseText (_keyNames joinString ", ");
     _assigned ctrlSetTooltip _tooltip;
-
-    if (_isDuplicated) then {
-        _assigned ctrlSetTextColor [1,0,0,1];
-    };
+    _assigned ctrlSetTooltipColorBox [1,1,1,1];
+    _assigned ctrlSetTooltipColorShade [0,0,0,0.7];
 
     _subcontrols pushBack _subcontrol;
     _editableSubcontrols pushBack _subcontrol;
