@@ -75,13 +75,15 @@ private _tablePosY = 0;
 
         // search the addon for any other keybinds using this key.
         if (_keybind select 0 > DIK_ESCAPE) then {
-            if (_addonActions findIf {
+            private _isDuplicated = _addonActions findIf {
                 private _duplicateAction = format ["%1$%2", _addon, _x];
                 private _duplicateKeybinds = GVAR(actions) getVariable _duplicateAction select 2;
                 _duplicateKeybinds = _tempNamespace getVariable [_duplicateAction, _duplicateKeybinds];
 
                 _keybind in _duplicateKeybinds && {_action != _duplicateAction}
-            } > -1) then {
+            } > -1;
+
+            if (_isDuplicated) then {
                 _keyNames pushBack format ["<t color='#FF0000'>%1</t>", _keyName];
             } else {
                 _keyNames pushBack format ["<t color='#FFFFFF'>%1</t>", _keyName];
