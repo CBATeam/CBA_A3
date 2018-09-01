@@ -80,7 +80,7 @@ private _tablePosY = 0;
                 private _duplicateKeybinds = GVAR(actions) getVariable _duplicateAction select 2;
                 _duplicateKeybinds = _tempNamespace getVariable [_duplicateAction, _duplicateKeybinds];
 
-                _keybind in _duplicateKeybinds && {_action != _duplicateAction};
+                _keybind in _duplicateKeybinds && {_action != _duplicateAction}
             };
 
             if (_isDuplicated > -1) then {
