@@ -81,9 +81,9 @@ private _tablePosY = 0;
                 _duplicateKeybinds = _tempNamespace getVariable [_duplicateAction, _duplicateKeybinds];
 
                 _keybind in _duplicateKeybinds && {_action != _duplicateAction};
-            } > -1;
+            };
 
-            if (_isDuplicated) then {
+            if (_isDuplicated > -1) then {
                 _keyNames pushBack format ["<t color='#FF0000'>%1</t>", _keyName];
             } else {
                 _keyNames pushBack format ["<t color='#FFFFFF'>%1</t>", _keyName];
