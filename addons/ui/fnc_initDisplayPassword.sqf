@@ -21,7 +21,7 @@ _ctrlConfirm ctrlAddEventHandler ["ButtonClick", {
     if (_index isEqualTo -1) then {
         _index = (_passwordCache select 0) pushBack _server;
     };
-    (_passwordCache#1) set [_index, _password];
+    (_passwordCache select 1) set [_index, _password];
     profileNamespace setVariable [QGVAR(ServerPasswords), _passwordCache];
     saveProfileNamespace;
 }];
