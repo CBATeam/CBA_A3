@@ -20,4 +20,7 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayMultiplayerSetup {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMultiplayerSetup)'));
     };
+    class RscDisplayPassword {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayPassword)'));
+    };
 };
