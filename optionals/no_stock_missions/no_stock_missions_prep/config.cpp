@@ -3,16 +3,16 @@
 class CfgPatches {
     class ADDON {
         author = "$STR_CBA_Author";
-        name = CSTRING(component);
+        name = ECSTRING(no_stock_missions,component);
         url = "$STR_CBA_URL";
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_nomissions_prep"};
+        requiredAddons[] = {"cba_common"};
         version = VERSION;
-        authors[] = {"commy2"};
     };
 };
 
 class CfgMissions {
-    class MPMissions {};
+    delete MPMissions;
 };

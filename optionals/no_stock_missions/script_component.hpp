@@ -1,4 +1,4 @@
-#define COMPONENT nomissions_prep
+#define COMPONENT no_stock_missions
 #include "\x\cba\addons\main\script_mod.hpp"
 
 #include "\x\cba\addons\main\script_macros.hpp"
