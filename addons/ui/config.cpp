@@ -18,6 +18,7 @@ class CfgPatches {
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
+#include "RscDisplayPassword.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
