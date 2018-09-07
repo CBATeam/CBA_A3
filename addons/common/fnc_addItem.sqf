@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addItem
 
@@ -23,7 +24,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addItem);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getTurret
 
@@ -19,7 +20,6 @@ Returns:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getTurret);
 
 params [["_config", "", ["", objNull, configNull]], ["_turretPath", [], [[]]]];

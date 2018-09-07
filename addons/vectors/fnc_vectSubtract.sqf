@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectSubtract
 
@@ -21,7 +22,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vectSubtract.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectSubtract);
 
 

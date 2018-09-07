@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_join
 
@@ -28,8 +29,6 @@ Example:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 SCRIPT(join);
 

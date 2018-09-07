@@ -1,13 +1,16 @@
+#include "script_component.hpp"
+#include "script_strings.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_leftTrim
 
 Description:
-    Trims white-space (space, tab, newline) from the left end of a string.
+    Trims specified characters (all whitespace by default) from the left end of a string.
 
     See <CBA_fnc_rightTrim> and <CBA_fnc_trim>.
 
 Parameters:
     _string - String to trim [String]
+    _trim - Characters to trim [String] (default: "")
 
 Returns:
     Trimmed string [String]
@@ -19,38 +22,26 @@ Example:
     (end)
 
 Author:
-    Spooner, joko // Jonas
+    Spooner, joko // Jonas, SilentSpike
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-#include "script_strings.hpp"
-
 SCRIPT(leftTrim);
 
-// ----------------------------------------------------------------------------
+params ["_string", ["_trim", "", [""]]];
 
-params ["_string"];
+private _chars = toArray _string;
+private _numChars = count _chars;
 
-private ["_chars", "_charCount"];
-
-// Convert String to Array for Find White Spaces
-_chars = ToArray _string;
-// count String input
-_charCount = count _string;
-
-if (_charCount > 0) then {
-    private "_numWhiteSpaces";
-    // Set Base number for White Spaces
-    _numWhiteSpaces = _charCount;
-
-    // find Last White Space
-    for "_i" from 0 to (_charCount - 1) do {
-        if !((_chars select _i) in WHITE_SPACE) exitWith {_numWhiteSpaces = _i};
-    };
-    // if a White space exist than they are deselected
-    if (_numWhiteSpaces > 0) then {
-        _string = _string select [_numWhiteSpaces];
-    };
+// Trim all whitespace characters by default
+if (_trim == "") then {
+    _trim = WHITE_SPACE;
+} else {
+    _trim = toArray _trim;
 };
 
-_string; // Return.
+// We have to process the string in array form because it could differ in length (if there are non-ASCII characters)
+private _trimIndex = count _chars;
+{
+    if !(_x in _trim) exitWith { _trimIndex = _forEachIndex; };
+} forEach _chars;
+
+toString (_chars select [_trimIndex, _numChars - _trimIndex])

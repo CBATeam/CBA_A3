@@ -20,6 +20,9 @@
 #define IDC_BTN_KEYBOARD_FAKE 8000
 #define IDC_ADDON_LIST 9000
 #define IDC_KEY_LIST 9001
+#define IDC_KEY_EDIT 9002
+#define IDC_KEY_ASSIGNED 9003
+#define IDC_SUBCATEGORY_NAME 9004
 
 #define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
 #define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
@@ -50,6 +53,27 @@
 #define DIK_XBOX_LEFT_THUMB_Y_DOWN 327701
 #define DIK_XBOX_RIGHT_THUMB_X_LEFT 327702
 #define DIK_XBOX_RIGHT_THUMB_Y_DOWN 327703
+
+#define USER_1 0xFA
+#define USER_2 0xFB
+#define USER_3 0xFC
+#define USER_4 0xFD
+#define USER_5 0xFE
+#define USER_6 0xFF
+#define USER_7 0x100
+#define USER_8 0x101
+#define USER_9 0x102
+#define USER_10 0x103
+#define USER_11 0x104
+#define USER_12 0x105
+#define USER_13 0x106
+#define USER_14 0x107
+#define USER_15 0x108
+#define USER_16 0x109
+#define USER_17 0x10A
+#define USER_18 0x10B
+#define USER_19 0x10C
+#define USER_20 0x10D
 
 #define NAMESPACE_NULL objNull
 #define HASH_NULL ([] call CBA_fnc_hashCreate)

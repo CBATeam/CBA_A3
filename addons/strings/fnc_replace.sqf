@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_replace
 
@@ -21,9 +22,6 @@ Example:
 Author:
     BaerMitUmlaut
 --------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-
 SCRIPT(replace);
 
 params [["_string", "", [""]], ["_find", "", [""]], ["_replace", "", [""]]];

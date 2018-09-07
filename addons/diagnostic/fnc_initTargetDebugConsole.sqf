@@ -1,3 +1,5 @@
+#include "\a3\ui_f\hpp\defineResinclDesign.inc"
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_diagnostic_fnc_initTargetDebugConsole
 
@@ -10,10 +12,6 @@ Author:
     PabstMirror
     commy2
 ---------------------------------------------------------------------------- */
-
-//#define DEBUG_MODE_FULL
-#include "\a3\ui_f\hpp\defineResinclDesign.inc"
-#include "script_component.hpp"
 
 #define COUNT_WATCH_BOXES 8
 
@@ -85,7 +83,7 @@ _serverExec ctrlEnable false;
 private _targetExec = _display ctrlCreate ["RscButtonMenu", -1, _debugConsole];
 _targetExec ctrlSetPosition ctrlPosition _serverExec;
 _targetExec ctrlCommit 0;
-_targetExec ctrlSetText toUpper localize LSTRING(TargetExec);
+_targetExec ctrlSetText toUpper LLSTRING(TargetExec);
 
 _targetExec ctrlAddEventHandler ["ButtonClick", {
     params ["_targetExec"];

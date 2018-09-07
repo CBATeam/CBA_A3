@@ -6,6 +6,9 @@
             <Japanese>Community Base Addons - 診断</Japanese>
             <Chinese>社群基礎模組 - 診斷</Chinese>
             <Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
+            <Russian>Community Base Addons - Диагностика</Russian>
+            <Polish>Community Base Addons - Diagnostyka</Polish>
+            <French>Community Base Addons - Diagnostics</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
             <English>Extended Debug Console</English>
@@ -13,6 +16,9 @@
             <Japanese>拡張デバッグ コンソール</Japanese>
             <Chinese>擴展除錯控制台</Chinese>
             <Chinesesimp>扩展除错控制台</Chinesesimp>
+            <Russian>Расширенная Консоль Отладки</Russian>
+            <French>Console de débogage étendue</French>
+            <Polish>Rozszerzona Konsola Debugowania</Polish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_PrevStatement">
             <English>Previous Statement</English>
@@ -20,6 +26,9 @@
             <Japanese>前のコード</Japanese>
             <Chinese>上個陳述式</Chinese>
             <Chinesesimp>上个陈述式</Chinesesimp>
+            <Russian>Пред. команда</Russian>
+            <French>Déclaration précédente</French>
+            <Polish>Poprzednie polecenie</Polish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
@@ -27,24 +36,36 @@
             <Japanese>次のコード</Japanese>
             <Chinese>下個陳述式</Chinese>
             <Chinesesimp>下个陈述式</Chinesesimp>
+            <Russian>След. команда</Russian>
+            <French>Déclaration suivante</French>
+            <Polish>Następne polecenie</Polish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
             <Japanese>対象へ実行</Japanese>
             <Chinese>在目標執行</Chinese>
             <Chinesesimp>在目标执行</Chinesesimp>
+            <Russian>На цели</Russian>
+            <Polish>Wykonaj na celu</Polish>
+            <French>Cible Exec</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debuging</English>
             <Japanese>対象デバッキングを有効化</Japanese>
             <Chinese>開啟目標除錯模式</Chinese>
             <Chinesesimp>开启目标除错模式</Chinesesimp>
+            <Russian>Включить Отладку Цели</Russian>
+            <Polish>Włącz debugowanie na celu</Polish>
+            <French>Activer le débogage de la cible</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
             <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
             <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
             <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
+            <Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
+            <Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
+            <French>[CBA] Permet le débogage de la cible distante. Nécessite la console de débogage.</French>
         </Key>
     </Package>
 </Project>

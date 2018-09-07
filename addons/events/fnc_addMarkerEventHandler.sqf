@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addMarkerEventHandler
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addMarkerEventHandler);
 
 params [["_eventType", "", [""]], ["_function", {}, [{}]]];

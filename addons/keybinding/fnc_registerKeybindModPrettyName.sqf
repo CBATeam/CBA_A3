@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_registerKeybindModPrettyName
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     Nou
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_addonName", "_prettyName"];
 

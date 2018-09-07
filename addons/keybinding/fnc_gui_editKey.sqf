@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
-params ["_control", "_index"];
+params ["_control"];
 
 private _parentDisplay = ctrlParent _control;
-parseSimpleArray (_control lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+(_control getVariable QGVAR(data)) params ["_action", "_displayName", "_keybinds", "_defaultKeybind", "_index"];
 
 private _display = _parentDisplay createDisplay "RscDisplayConfigureAction";
 
@@ -25,35 +25,38 @@ _ctrlKeyList setVariable [QGVAR(defaultKeybind), _defaultKeybind];
 
 // --- record keys
 _display displayAddEventHandler ["KeyDown", {
-    params ["_display", "_key", "_shift", "_control", "_alt"];
-    private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
+    call {
+        params ["_display", "_key", "_shift", "_control", "_alt"];
+        private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
-    if (_key <= DIK_ESCAPE) exitWith {};
-    if (_key in [DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) exitWith {};
-    if (!isNil {_ctrlKeyList getVariable QGVAR(lock)}) exitWith {};
+        if (_key <= DIK_ESCAPE) exitWith {false};
+        if (_key in [DIK_LSHIFT, DIK_RSHIFT, DIK_LCONTROL, DIK_RCONTROL, DIK_LMENU, DIK_RMENU]) exitWith {true};
+        if (!isNil {_ctrlKeyList getVariable QGVAR(lock)}) exitWith {true};
 
-    private _keybind = [_key, [_shift, _control, _alt]];
-    private _keyName = _keybind call CBA_fnc_localizeKey;
+        private _keybind = [_key, [_shift, _control, _alt]];
+        private _keyName = _keybind call CBA_fnc_localizeKey;
 
-    // if key already in list, remove instead
-    private _doAdd = true;
+        // if key already in list, remove instead
+        private _doAdd = true;
 
-    for "_index" from 0 to (lbSize _ctrlKeyList - 1) do {
-        if (_ctrlKeyList lbData _index == str _keybind) exitWith {
-            _ctrlKeyList lbDelete _index;
-            _doAdd = false;
+        for "_index" from 0 to (lbSize _ctrlKeyList - 1) do {
+            if (_ctrlKeyList lbData _index == str _keybind) exitWith {
+                _ctrlKeyList lbDelete _index;
+                _doAdd = false;
+            };
         };
+
+        if (_doAdd) then {
+            private _index = _ctrlKeyList lbAdd _keyName;
+            _ctrlKeyList lbSetData [_index, str _keybind];
+            _ctrlKeyList lbSetCurSel _index;
+        };
+
+        _ctrlKeyList call (_ctrlKeyList getVariable QFUNC(showDuplicates));
+
+        _ctrlKeyList setVariable [QGVAR(lock), true];
+        true
     };
-
-    if (_doAdd) then {
-        private _index = _ctrlKeyList lbAdd _keyName;
-        _ctrlKeyList lbSetData [_index, str _keybind];
-        _ctrlKeyList lbSetCurSel _index;
-    };
-
-    _ctrlKeyList call (_ctrlKeyList getVariable QFUNC(showDuplicates));
-
-    _ctrlKeyList setVariable [QGVAR(lock), true];
 }];
 
 _display displayAddEventHandler ["KeyUp", {
@@ -88,6 +91,29 @@ private _specialKeys = [
     [true, false, true],
     [false, true, true],
     [true, true, true]
+];
+
+_specialKeys append [
+    [USER_1, [false, false, false]],
+    [USER_2, [false, false, false]],
+    [USER_3, [false, false, false]],
+    [USER_4, [false, false, false]],
+    [USER_5, [false, false, false]],
+    [USER_6, [false, false, false]],
+    [USER_7, [false, false, false]],
+    [USER_8, [false, false, false]],
+    [USER_9, [false, false, false]],
+    [USER_10, [false, false, false]],
+    [USER_11, [false, false, false]],
+    [USER_12, [false, false, false]],
+    [USER_13, [false, false, false]],
+    [USER_14, [false, false, false]],
+    [USER_15, [false, false, false]],
+    [USER_16, [false, false, false]],
+    [USER_17, [false, false, false]],
+    [USER_18, [false, false, false]],
+    [USER_19, [false, false, false]],
+    [USER_20, [false, false, false]]
 ];
 
 {
@@ -199,12 +225,15 @@ _ctrlButtonPrev ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) - 1;
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
             if (_index < 0) then {
-                _index = (lnbSize _ctrlActionList select 0) - 1
+                _index = count _subcontrols - 1
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _subcontrols select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];
@@ -240,12 +269,15 @@ _ctrlButtonNext ctrlAddEventHandler ["ButtonClick", {
             private _ctrlKeyList = _display displayCtrl IDC_CONFIGURE_ACTION_KEYS;
 
             private _index = (_ctrlKeyList getVariable QGVAR(index)) + 1;
+            private _subcontrols = _ctrlActionList getVariable QGVAR(KeyListEditableSubcontrols);
 
-            if (_index >= lnbSize _ctrlActionList select 0) then {
+            if (_index >= count _subcontrols) then {
                 _index = 0;
             };
 
-            parseSimpleArray (_ctrlActionList lnbData [_index, 0]) params ["_action", "_displayName", "_keybinds", "_defaultKeybind"];
+            _subcontrols select _index controlsGroupCtrl IDC_KEY_EDIT getVariable QGVAR(data) params [
+                "_action", "_displayName", "_keybinds", "_defaultKeybind"
+            ];
 
             private _tempNamespace = uiNamespace getVariable QGVAR(tempKeybinds);
             _keybinds = _tempNamespace getVariable [_action, _keybinds];

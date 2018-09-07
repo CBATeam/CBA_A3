@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getNearestBuilding
 
@@ -18,7 +19,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getNearestBuilding);
 
 [_this] params [["_position", objNull, [objNull, []]]];

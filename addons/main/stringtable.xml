@@ -8,6 +8,9 @@
             <Chinese>CBA製作組</Chinese>
             <Chinesesimp>CBA制作组</Chinesesimp>
             <Portuguese>Time CBA</Portuguese>
+            <Russian>Команда CBA</Russian>
+            <French>Equipe CBA</French>
+            <Polish>Zespół CBA</Polish>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
@@ -15,6 +18,9 @@
             <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
             <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
             <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
+            <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
+            <French>https://www.github.com/CBATeam/CBA_A3</French>
+            <Polish>https://www.github.com/CBATeam/CBA_A3</Polish>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
@@ -22,6 +28,9 @@
             <Chinese>社群基礎模組 - 主要組件</Chinese>
             <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Principal</Portuguese>
+            <Russian>Community Base Addons - Основной Компонент</Russian>
+            <French>Community Base Addons - Composante principale</French>
+            <Polish>Community Base Addons - Główny Komponent</Polish>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -29,6 +38,19 @@
             <Chinese>社群基礎模組 - 可選組件</Chinese>
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
+            <Russian>Community Base Addons - Опциональный Компонент</Russian>
+            <French>Community Base Addons - Composant facultatif</French>
+            <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
+        </Key>
+        <Key ID="STR_CBA_Main_AddonText">
+            <English>ADDON:</English>
+            <German>ADDON:</German>
+            <Russian>Дополнение:</Russian>
+            <Chinese>模組:</Chinese>
+            <Chinesesimp>模组:</Chinesesimp>
+            <Japanese>アドオン:</Japanese>
+            <French>ADDON :</French>
+            <Polish>ADDON:</Polish>
         </Key>
     </Package>
 </Project>

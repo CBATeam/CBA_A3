@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_filter
 
@@ -32,7 +33,6 @@ Examples:
 Author:
     Spooner, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(filter);
 
 params [["_array", [], [[]]], ["_filter", {_x}, [{}]], ["_inPlace", false, [false]]];

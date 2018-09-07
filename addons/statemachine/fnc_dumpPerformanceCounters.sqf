@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_statemachine_fnc_dumpPerformanceCounters
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 #ifndef STATEMACHINE_PERFORMANCE_COUNTERS
 if (true) exitWith {WARNING("Requires `STATEMACHINE_PERFORMANCE_COUNTERS` in script_component.hpp");};

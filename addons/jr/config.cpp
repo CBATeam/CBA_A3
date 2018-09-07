@@ -17,21 +17,9 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F", "A3_Weapons_F_Mark", "A3_Weapons_F_Exp", "CBA_jr_prep"};
+        requiredAddons[] = {"cba_jr_prep"};
         version = VERSION;
         authors[] = {"Robalo"};
-    };
-    class asdg_jointrails { //compat
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F", "A3_Weapons_F_Mark"};
-    };
-    class asdg_jointmuzzles { //compat
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Weapons_F", "A3_Weapons_F_Mark"};
     };
 };
 

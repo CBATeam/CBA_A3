@@ -9,28 +9,35 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        // "CBA_XEH",  would create circular dependency, however XEH is required by CBA common in any case :)
-        requiredAddons[] = {"cba_common", "cba_arrays", "cba_hashes", "cba_strings", "cba_events", "cba_diagnostic", "cba_network", "cba_ai", "cba_vectors", "cba_ui", "cba_help"};
+        requiredAddons[] = {
+            "cba_common",
+            "cba_events",
+            "cba_hashes",
+            "cba_jr_prep",
+            "cba_keybinding",
+            "cba_modules",
+            "cba_music",
+            "cba_network",
+            "cba_settings",
+            "cba_statemachine",
+            "cba_strings",
+            "cba_vectors",
+            "cba_xeh",
+            "cba_accessory",
+            "cba_ai",
+            "cba_arrays",
+            "cba_diagnostic",
+            "cba_help",
+            "cba_jr",
+            "cba_ui",
+            "cba_versioning"
+        };
         versionDesc = "C.B.A.";
         VERSION_CONFIG;
         authors[] = {};
     };
 };
 
-/*
-class CfgMods {
-    class PREFIX {
-        dir = "@CBA";
-        name = "Community Base Addons";
-        picture = "x\cba\addons\main\logo_cba_ca.paa";
-        hidePicture = "true";
-        hideName = "true";
-        actionName = "Website";
-        action = "http://dev-heaven.net/projects/cca";
-        description = "Bugtracker: http://dev-heaven.net/projects/cca<br />Documentation: http://dev-heaven.net/projects/cca";
-    };
-};
-*/
 class CfgSettings {
     class CBA {
         class Caching {

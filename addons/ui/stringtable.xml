@@ -7,6 +7,27 @@
             <Chinese>社群基礎模組 - 使用者介面</Chinese>
             <Chinesesimp>社群基础模组 - 使用者介面</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Interface ao Usuário</Portuguese>
+            <Russian>Community Base Addons - Пользовательский Интерфейс</Russian>
+            <French>Community Base Addons - Interface utilisateur</French>
+            <Polish>Community Base Addons - Interfejs Użytkownika</Polish>
+        </Key>
+        <Key ID="STR_CBA_Ui_ProgressBarPositionName">
+            <English>Progress Bar</English>
+            <German>Fortschrittsanzeige</German>
+            <Japanese>プログレス バー</Japanese>
+            <French>Barre de progression</French>
+            <Chinese>進度條</Chinese>
+            <Chinesesimp>进度条</Chinesesimp>
+            <Polish>Pasek postępu</Polish>
+        </Key>
+        <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
+            <English>Position of the progress bar.</English>
+            <German>Position der Fortschrittsanzeige.</German>
+            <Japanese>プログレス バーの位置。</Japanese>
+            <French>Position de la barre de progression.</French>
+            <Chinese>進度條的位置。</Chinese>
+            <Chinesesimp>进度条的位置。</Chinesesimp>
+            <Polish>Pozycja paska postępu.</Polish>
         </Key>
     </Package>
 </Project>

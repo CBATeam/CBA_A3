@@ -22,16 +22,16 @@ LOG(MSG_INIT);
 // Upgrade check - Registry for removed addons, warn the user if found
 // TODO: Evaluate registry of 'current addons' and verifying that against available CfgPatches
 TRACE_1("Upgrade Check",nil);
-#define CFG configFile >> "CfgSettings" >> "CBA" >> "registry"
-private ["_entry"];
-for "_i" from 0 to ((count (CFG)) - 1) do {
-    _entry = (CFG) select _i;
-    if (isClass(_entry) && {isArray(_entry >> "removed")}) then {
+private _config = configFile >> "CfgSettings" >> "CBA" >> "registry";
+
+for "_i" from 0 to (count _config - 1) do {
+    private _entry = _config select _i;
+    if (isClass _entry && {isArray (_entry >> "removed")}) then {
         {
-            if (isClass(configFile >> "CfgPatches" >> _x)) then {
-                format["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] call FUNC(log);
+            if (isClass (configFile >> "CfgPatches" >> _x)) then {
+                format ["WARNING: Found addon that should be removed: %1; Please remove and restart game", _x] call FUNC(log);
             };
-        } forEach (getArray(_entry >> "removed"));
+        } forEach getArray (_entry >> "removed");
     };
 };
 

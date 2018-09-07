@@ -7,7 +7,7 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {"CBA_ModuleAttack", "CBA_ModuleDefend", "CBA_ModulePatrol"};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Modules_F", "CBA_common"};
+        requiredAddons[] = {"cba_common"};
         version = VERSION;
         authors[] = {"WiredTiger"};
 

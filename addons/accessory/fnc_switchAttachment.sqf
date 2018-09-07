@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_accessory_fnc_switchAttachment
 
@@ -18,17 +19,16 @@ Examples:
     (end)
 
 Author:
-    Robalo
+    Robalo, optimized by Anton
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_itemType", "_switchTo"];
 
-private ["_currWeaponType", "_currItem", "_switchItem"];
+private ["_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
 private _cw = currentWeapon _unit;
 
-_currWeaponType = call {
+private _currWeaponType = call {
     if (_cw == "") exitWith {_currItem = ""; -1};
     if (_cw == primaryWeapon _unit) exitWith {_currItem = (primaryWeaponItems _unit) select _itemType; 0};
     if (_cw == handgunWeapon _unit) exitWith {_currItem = (handgunItems _unit) select _itemType; 1};
@@ -67,8 +67,8 @@ if (!isNil "_switchItem") then {
             _unit addSecondaryWeaponItem _switchItem;
         };
     };
-    private _switchItemHintText = (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText") call BIS_fnc_getCfgData;
-    if (!isNil "_switchItemHintText") then {
+    private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
+    if !(_switchItemHintText isEqualTo "") then {
         hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";

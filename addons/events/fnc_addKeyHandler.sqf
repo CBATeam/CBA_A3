@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeyHandler
 
@@ -24,7 +25,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addKeyHandler);
 
 if (!hasInterface) exitWith {""};
@@ -83,5 +83,13 @@ private _hashKeys = _keyHandlers param [_key, []];
 _hashKeys pushBackUnique _hashKey; // pushBackUnique. Fixes using addKeyHander twice with the same keyHash/id executing the newly added action twice.
 
 _keyHandlers set [_key, _hashKeys];
+
+if ((_key >= USERACTION_OFFSET) && {_key <= USERACTION_OFFSET + 19}) then {
+    private _hasUserActionsBound = {count _x > 0} count (GVAR(keyDownStates) select [USERACTION_OFFSET, 20]) > 0;
+
+    if (_hasUserActionsBound) then {
+        GVAR(skipCheckingUserActions) = false;
+    };
+};
 
 _hashKey

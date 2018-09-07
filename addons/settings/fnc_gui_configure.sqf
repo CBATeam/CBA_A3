@@ -70,18 +70,18 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlButtonLoad ctrlShow true;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureBase);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureBase);
 
     //--- emulate default scope selection
     switch (true) do {
-        case CAN_SET_SERVER_SETTINGS: {
-            _ctrlServerButton call FUNC(gui_sourceChanged);
+        case CAN_SET_CLIENT_SETTINGS: {
+            _ctrlClientButton call FUNC(gui_sourceChanged);
         };
         case CAN_SET_MISSION_SETTINGS: {
             _ctrlMissionButton call FUNC(gui_sourceChanged);
         };
-        case CAN_SET_CLIENT_SETTINGS: {
-            _ctrlClientButton call FUNC(gui_sourceChanged);
+        case CAN_SET_SERVER_SETTINGS: {
+            _ctrlServerButton call FUNC(gui_sourceChanged);
         };
     };
 } else {
@@ -126,5 +126,5 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlButtonLoad ctrlShow false;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureAddons);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureAddons);
 };

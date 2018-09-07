@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_capitalize
 
@@ -22,12 +23,7 @@ Examples:
 Author:
     Spooner, joko // Jonas
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-
 SCRIPT(capitalize);
-
-// ----------------------------------------------------------------------------
 
 params ["_string"];
 
@@ -41,4 +37,4 @@ if (_charCount > 0) then {
     _string = _string1 + _string2;
 };
 
-_string; // Return.
+_string

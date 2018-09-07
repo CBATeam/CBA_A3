@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
 Function: CBA_fnc_removePlayerAction
 
@@ -24,8 +25,6 @@ Author:
     Sickboy
 
 */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 params ["_actionIndex"];
 TRACE_1(_this);

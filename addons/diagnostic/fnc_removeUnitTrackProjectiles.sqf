@@ -1,5 +1,6 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_removeUnitTrackProjectiles
+Function: CBA_fnc_removeUnitTrackProjectiles
 
 Description:
     Removes projectile tracking from a given unit or vehicle.
@@ -12,13 +13,12 @@ Returns:
 
 Examples:
     (begin example)
-        [vehicle player] call CBA_removeUnitTrackProjectiles;
+        [vehicle player] call CBA_fnc_removeUnitTrackProjectiles;
     (end)
 
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_unit", objNull]];
 

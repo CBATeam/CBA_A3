@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_deleteEntity
 
@@ -18,7 +19,6 @@ Returns:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(deleteEntity);
 
 [_this] params [["_entity", objNull, [objNull, grpNull, locationNull, "", []]]];
@@ -43,13 +43,29 @@ switch (typeName _entity) do {
     case "GROUP" : {
         (units _entity) call CBA_fnc_deleteEntity;
         {deleteWaypoint _x} forEach (wayPoints _entity);
-        deleteGroup _entity;
+        if (isNull _entity) exitWith {};
+        if (local _entity) then {
+            deleteGroup _entity;
+        } else {
+            if (isServer) then {
+                private _groupOwner = groupOwner _entity;
+                if (_groupOwner isEqualTo 0) then {
+                    [{groupOwner _this != 0 || isNull _this}, {
+                        _this call CBA_fnc_deleteEntity;
+                    }, _entity] call CBA_fnc_waitUntilAndExecute;
+                } else {
+                   _entity remoteExecCall ["CBA_fnc_deleteEntity", _groupOwner];
+                };
+            } else {
+                _entity remoteExecCall ["CBA_fnc_deleteEntity", 2];
+            };
+        };
     };
     case "LOCATION" : {
         deleteLocation _entity;
     };
     case "STRING" : {
-        deleteMarker _entity
+        deleteMarker _entity;
     };
     default {};
 };

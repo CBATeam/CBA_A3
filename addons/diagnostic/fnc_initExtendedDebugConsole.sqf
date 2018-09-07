@@ -31,7 +31,7 @@ _debugConsole ctrlCommit 0;
 
 // flavor title
 private _title = _display displayCtrl IDC_RSCDEBUGCONSOLE_TITLE;
-_title ctrlSetText localize LSTRING(ExtendedDebugConsole);
+_title ctrlSetText LLSTRING(ExtendedDebugConsole);
 
 // --- EXPRESSION edit box
 private _expression = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION;
@@ -44,9 +44,23 @@ _expression ctrlCommit 0;
 
 // Save expression when hitting enter key inside expression text field
 _expression ctrlAddEventHandler ["KeyDown", {
-    params ["", "_key", "_shift"];
+    params ["_expression", "_key", "_shift"];
 
     if (_key in [DIK_RETURN, DIK_NUMPADENTER] && {!_shift}) then { // shift + enter is newline
+        // fix for enter key not working in MP
+        private _buttonLocalExec = ctrlParentControlsGroup _expression controlsGroupCtrl IDC_RSCDEBUGCONSOLE_BUTTONEXECUTELOCAL;
+
+        if (isMultiplayer && {ctrlEnabled _buttonLocalExec}) then {
+            [
+                "executeButton",
+                [ctrlParent _buttonLocalExec, _buttonLocalExec],
+                "RscDisplayDebugPublic",
+                0
+            ] call compile preprocessFileLineNumbers "\A3\Ui_f\scripts\GUI\RscDebugConsole.sqf";
+
+            playSound "SoundClick";
+        };
+
         _this call FUNC(logStatement);
     };
     false
@@ -82,7 +96,7 @@ _prevButton ctrlSetPosition [
 ];
 _prevButton ctrlCommit 0;
 
-_prevButton ctrlSetText localize LSTRING(PrevStatement);
+_prevButton ctrlSetText LLSTRING(PrevStatement);
 _prevButton ctrlAddEventHandler ["MouseButtonUp", {_this call FUNC(prevStatement); true}];
 
 // --- NEXT button
@@ -96,7 +110,7 @@ _nextButton ctrlSetPosition [
 ];
 _nextButton ctrlCommit 0;
 
-_nextButton ctrlSetText localize LSTRING(NextStatement);
+_nextButton ctrlSetText LLSTRING(NextStatement);
 _nextButton ctrlAddEventHandler ["MouseButtonUp", {_this call FUNC(nextStatement); true}];
 
 // disable PREV and/or NEXT button if needed

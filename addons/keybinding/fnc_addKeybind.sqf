@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addKeybind
 
@@ -21,7 +22,7 @@ Description:
         0xF9: Mouse wheel down
 
 Parameters:
-    _addon          - Name of the registering mod <STRING>
+    _addon          - Name of the registering mod + optional sub-category <STRING, ARRAY>
     _action         - Id of the key action. <STRING>
     _title          - Pretty name, or an array of pretty name and tooltip <STRING>
     _downCode       - Code for down event, empty string for no code. <CODE>
@@ -57,7 +58,6 @@ Examples:
 Author:
     Taosenai & Nou, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // clients only.
 if (!hasInterface) exitWith {};
@@ -68,7 +68,7 @@ if (canSuspend) exitWith {
 };
 
 params [
-    ["_addon", "", [""]],
+    ["_addonArg", "", ["", []]],
     ["_addonAction", "", [""]],
     ["_title", "", ["", []]],
     ["_downCode", {}, [{}, ""]],
@@ -79,6 +79,7 @@ params [
     ["_overwrite", false, [false]]
 ];
 
+_addonArg params [["_addon", "", [""]], ["_subcategory", "", [""]]];
 _title params [["_displayName", _addonAction, [""]], ["_tooltip", "", [""]]];
 private _action = toLower format ["%1$%2", _addon, _addonAction];
 
@@ -156,7 +157,7 @@ if (isNil "_addonInfo") then {
 
 (_addonInfo select 1) pushBackUnique toLower _addonAction;
 
-GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _defaultKeybind, _downCode, _upCode, _holdKey, _holdDelay]];
+GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _defaultKeybind, _downCode, _upCode, _holdKey, _holdDelay, _subcategory]];
 
 // add this action to all keybinds
 {

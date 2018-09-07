@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_turretPathWeapon
 
@@ -21,7 +22,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(turretPathWeapon);
 
 params [["_vehicle", objNull, [objNull]], ["_weapon", "", [""]]];

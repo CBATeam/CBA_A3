@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_mouseHandlerUp
 
@@ -7,8 +8,6 @@ Description:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
-#include "script_component.hpp"
 SCRIPT(mouseHandlerUp);
 
 params ["_display", "_inputButton"];

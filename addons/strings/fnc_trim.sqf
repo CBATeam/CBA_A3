@@ -1,13 +1,15 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_trim
 
 Description:
-    Trims white-space (space, tab, newline) from the both ends of a string.
+    Trims specified characters (all whitespace by default) from the both ends of a string.
 
     See <CBA_fnc_leftTrim> and <CBA_fnc_rightTrim>.
 
 Parameters:
     _string - String to trim [String]
+    _trim - Characters to trim [String] (default: "")
 
 Returns:
     Trimmed string [String]
@@ -19,18 +21,12 @@ Example:
     (end)
 
 Author:
-    Spooner
+    Spooner, SilentSpike
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
-
 SCRIPT(trim);
 
-// ----------------------------------------------------------------------------
+params ["_string", ["_trim", "", [""]]];
 
-params ["_string"];
+_string = [_string, _trim] call CBA_fnc_rightTrim;
 
-// Rtrim first for efficiency.
-_string = [_string] call CBA_fnc_rightTrim;
-
-[_string] call CBA_fnc_leftTrim; // Return.
+[_string, _trim] call CBA_fnc_leftTrim

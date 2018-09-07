@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getFirer
 
@@ -23,7 +24,6 @@ Returns:
 Author:
     Rocko, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getFirer);
 
 params [["_vehicle", objNull, [objNull]], ["_weapon", "", [""]]];

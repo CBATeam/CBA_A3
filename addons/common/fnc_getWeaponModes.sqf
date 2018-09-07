@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getWeaponModes
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getWeaponModes);
 
 params [["_weapon", "", [""]], ["_includeHidden", false, [false]]];

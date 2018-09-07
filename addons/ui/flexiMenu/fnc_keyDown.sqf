@@ -69,6 +69,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             (group player) reveal _x;
         } forEach _objects;
         _potentialTarget = cursorTarget;
+        if (isNull _potentialTarget) then {_potentialTarget = cursorObject};
         if (!isNull _potentialTarget && {_potentialTarget distance player > _minObjDist(_potentialTarget)}) then {_potentialTarget = objNull};
         _vehicleTarget = vehicle player;
 
@@ -110,9 +111,8 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
         } forEach GVAR(typeMenuSources);
 
         if (!isNull _target) then {
-            private ["_menuSources", "_menuSource"]; // sometimes nil
-            _menuSources = [];
-            _menuSource = _target getVariable QGVAR(flexiMenu_source);
+            private _menuSources = [];
+            private _menuSource = _target getVariable QGVAR(flexiMenu_source);
             if (isNil "_menuSource") then {_menuSource = []} else {_menuSources pushBack _menuSource};
             TRACE_2("",_menuSource,_menuSources);
             {

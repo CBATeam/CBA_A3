@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_diagnostic_fnc_projectileTracking_trackProjectile
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_args", "_handle"];
 _args params ["_projectile", "_index", "_initialProjectileData"];

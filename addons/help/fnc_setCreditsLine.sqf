@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_help_fnc_setCreditsLine
 
@@ -11,8 +12,6 @@ Parameters:
 Returns:
     None
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
 
 params ["_control"];
 
@@ -27,13 +26,8 @@ if !(ctrlText _control isEqualTo "") exitWith {};
 
 if (CBA_DisableCredits) exitWith {};
 
-// find addon with author
-private _config = configFile >> "CfgPatches";
-private _entry = selectRandom ("
-    isText (_x >> 'author') &&
-    {getText (_x >> 'author') != localize 'STR_A3_Bohemia_Interactive'} &&
-    {getText (_x >> 'author') != ''}
-" configClasses _config);
+// find random addon with author
+private _entry = selectRandom (uiNamespace getVariable [QGVAR(creditsCache), []]);
 
 if (isNil "_entry") exitWith {};
 

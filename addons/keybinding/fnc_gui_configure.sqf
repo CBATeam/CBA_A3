@@ -43,7 +43,7 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlAddonsGroup ctrlShow true;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureBase);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureBase);
 } else {
     //--- enable and show default menu
     _ctrlKeyboardGroup ctrlEnable true;
@@ -64,7 +64,7 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     _ctrlAddonsGroup ctrlShow false;
 
     //--- change button text
-    _ctrlToggleButton ctrlSetText localize LSTRING(configureAddons);
+    _ctrlToggleButton ctrlSetText LLSTRING(configureAddons);
 };
 
 ctrlSetFocus _ctrlToggleButton;

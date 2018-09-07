@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_diagnostic_fnc_projectileTracking_handleFired
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["", "", "", "", "", "", "_projectile"];
 

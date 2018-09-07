@@ -6,492 +6,738 @@
             <Japanese>Community Base Addons - モジュール要素</Japanese>
             <Chinese>社群基礎模組 - 模塊組件</Chinese>
             <Chinesesimp>社群基础模组 - 模块组件</Chinesesimp>
+            <Russian>Community Base Addons - Компонент Модулей</Russian>
+            <Polish>Community Base Addons - Komponent Modułów</Polish>
+            <French>Community Base Addons - Composant des modules</French>
         </Key>
         <Key ID="STR_CBA_Modules_Category_DisplayName">
             <English>CBA Modules</English>
             <Japanese>CBA モジュール</Japanese>
             <Chinese>CBA模塊</Chinese>
             <Chinesesimp>CBA模块</Chinesesimp>
+            <Russian>Модули CBA</Russian>
+            <Polish>Moduły CBA</Polish>
+            <French>Modules de CBA</French>
         </Key>
         <Key ID="STR_CBA_Modules_Attack">
             <English>Attack</English>
             <Japanese>攻撃</Japanese>
             <Chinese>攻擊</Chinese>
             <Chinesesimp>攻击</Chinesesimp>
+            <Russian>Атака</Russian>
+            <Polish>Atak</Polish>
+            <French>Attaquer</French>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType">
             <English>Attack Location Type</English>
             <Japanese>攻撃場所の種類</Japanese>
             <Chinese>攻擊地點類型</Chinese>
             <Chinesesimp>攻击地点类型</Chinesesimp>
+            <Russian>Тип Местоположения Атаки</Russian>
+            <Polish>Typ lokalizacji ataku</Polish>
+            <French>Type d'emplacement de l'attaque</French>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Russian>Укажите, какой объект передаётся как центральная точка</Russian>
+            <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny</Polish>
+            <French>Définir quel type d'objet est passé en tant que point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_ModuleLoc">
             <English>Module Position</English>
             <Japanese>モジュール位置</Japanese>
             <Chinese>模塊的位置</Chinese>
             <Chinesesimp>模块的位置</Chinesesimp>
+            <Russian>Расположение Модуля</Russian>
+            <Polish>Pozycja Modułu</Polish>
+            <French>Position du module</French>
         </Key>
         <Key ID="STR_CBA_Modules_ObjectLoc">
             <English>Object/Location</English>
             <Japanese>オブジェクト/場所</Japanese>
             <Chinese>物件/地點</Chinese>
             <Chinesesimp>物件/地点</Chinesesimp>
+            <Russian>Объект/Локация</Russian>
+            <Polish>Obiekt/Lokacja</Polish>
+            <French>Objet/Lieu</French>
         </Key>
         <Key ID="STR_CBA_Modules_GroupLoc">
             <English>Group</English>
             <Japanese>グループ</Japanese>
             <Chinese>群組</Chinese>
             <Chinesesimp>群组</Chinesesimp>
+            <Russian>Группа</Russian>
+            <Polish>Grupa</Polish>
+            <French>Groupe</French>
         </Key>
         <Key ID="STR_CBA_Modules_ArrayLoc">
             <English>Array</English>
             <Japanese>アレイ</Japanese>
             <Chinese>陣列</Chinese>
             <Chinesesimp>阵列</Chinesesimp>
+            <Russian>Массив</Russian>
+            <Polish>Tablica</Polish>
+            <French>Tableau</French>
         </Key>
         <Key ID="STR_CBA_Modules_MarkerLoc">
             <English>Marker</English>
             <Japanese>マーカー</Japanese>
             <Chinese>標誌</Chinese>
             <Chinesesimp>标志</Chinesesimp>
+            <Russian>Маркер</Russian>
+            <Polish>Marker</Polish>
+            <French>Marqueur</French>
         </Key>
         <Key ID="STR_CBA_Modules_TaskLoc">
             <English>Task</English>
             <Japanese>タスク</Japanese>
             <Chinese>目標</Chinese>
             <Chinesesimp>目标</Chinesesimp>
+            <Russian>Задача</Russian>
+            <Polish>Zadanie</Polish>
+            <French>Tâche</French>
         </Key>
         <Key ID="STR_CBA_Modules_SetLoc">
             <English>Set Position</English>
             <Japanese>設定位置</Japanese>
             <Chinese>設定位置</Chinese>
             <Chinesesimp>设定位置</Chinesesimp>
+            <Russian>Укажите Позицию</Russian>
+            <Polish>Ustaw Pozycję</Polish>
+            <French>Configurer la position</French>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition">
             <English>Attack Position</English>
             <Japanese>攻撃場所</Japanese>
             <Chinese>攻擊位置</Chinese>
             <Chinesesimp>攻击位置</Chinesesimp>
+            <Russian>Позиция Атаки</Russian>
+            <Polish>Pozycja Ataku</Polish>
+            <French>Position de l'attaque</French>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
+            <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
+            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius">
             <English>Search Radius</English>
             <Japanese>捜索範囲</Japanese>
             <Chinese>搜索半徑</Chinese>
             <Chinesesimp>搜索半径</Chinesesimp>
+            <Russian>Радиус Поиска</Russian>
+            <Polish>Obszar Przeszukania</Polish>
+            <French>Rayon de recherche</French>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius_Desc">
             <English>Enter a number for size of the radius to search</English>
             <Japanese>捜索する範囲の大きさを数値で入力します</Japanese>
             <Chinese>輸入一個數字來定義搜索區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义搜索区域的半径大小</Chinesesimp>
+            <Russian>Введите число для задания размера радиуса поиска</Russian>
+            <Polish>Wprowadź liczbę jako rozmiar obszaru do przeszukania</Polish>
+            <French>Entrez un nombre pour la taille du rayon à rechercher</French>
         </Key>
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
             <Japanese>グループのリーダーに同期し、攻撃地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組攻擊/搜索指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
+            <Russian>Синхронизируйте с лидером группы, чтобы атаковать указанное местоположение</Russian>
+            <Polish>Zsynchronizuj z liderem grupy aby zaatakować określoną lokalizacje</Polish>
+            <French>Synchroniser avec le chef du groupe pour attaquer un emplacement désigné</French>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride">
             <English>Allow Override</English>
             <Japanese>上書きを許可</Japanese>
             <Chinese>允許覆寫</Chinese>
             <Chinesesimp>允许覆写</Chinesesimp>
+            <Russian>Разрешить Переопределение</Russian>
+            <Polish>Zezwalaj na nadpisanie</Polish>
+            <French>Autoriser l'écrasement</French>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
             <Japanese>モジュールにより古いウェイポイントの削除と、新しい攻撃ウェイポイントの指定を許可します</Japanese>
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
+            <Russian>Разрешить модулю удалять старые путевые точки и назначать путевую точку атаки</Russian>
+            <Polish>Zezwalaj aby moduł nadpisał stare punkty nawigacyjnych rozkazem ataku</Polish>
+            <French>Autoriser le module à supprimer les anciens points de passage et attribuer un points de passage d'attaque</French>
         </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
             <Japanese>防衛</Japanese>
             <Chinese>防禦</Chinese>
             <Chinesesimp>防御</Chinesesimp>
+            <Russian>Оборона</Russian>
+            <Polish>Obrona</Polish>
+            <French>Défendre</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
             <Japanese>防衛場所の種類</Japanese>
             <Chinese>防禦地點類型</Chinese>
             <Chinesesimp>防御地点类型</Chinesesimp>
+            <Russian>Тип Позиции Защиты</Russian>
+            <Polish>Rodzaj Pozycji Obronnej</Polish>
+            <French>Type d'emplacement de la défense</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Russian>Установить, какой тип объекта будет передан как центральная точка</Russian>
+            <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny obrony</Polish>
+            <French>Définir quel type d'objet est passé comme point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition">
             <English>Defend Position</English>
             <Japanese>防衛場所</Japanese>
             <Chinese>防禦位置</Chinese>
             <Chinesesimp>防御位置</Chinesesimp>
+            <Russian>Защищать Позицию</Russian>
+            <Polish>Pozycja Obronna</Polish>
+            <French>Position de la défense</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
+            <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
+            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius">
             <English>Defend Radius</English>
             <Japanese>防衛範囲</Japanese>
             <Chinese>防禦半徑</Chinese>
             <Chinesesimp>防御半径</Chinesesimp>
+            <Russian>Радиус Защиты</Russian>
+            <Polish>Obszar Obrony</Polish>
+            <French>Rayon de la défense</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius_Desc">
             <English>The max distance to defend from the center point</English>
             <Japanese>中央地点からの最大防衛範囲</Japanese>
             <Chinese>輸入一個數字來定義防禦區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义防御区域的半径大小</Chinesesimp>
+            <Russian>Максимальное расстояние для защиты от центральной точки</Russian>
+            <Polish>Maksymalny dystans od punktu centralnego na jakim będzie prowadzona obrona</Polish>
+            <French>La distance maximale à défendre depuis le point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold">
             <English>Building Size Threshold</English>
             <Japanese>建物の大きさのしきい値</Japanese>
             <Chinese>可使用的建築物大小</Chinese>
             <Chinesesimp>可使用的建筑物大小</Chinesesimp>
+            <Russian>Порог Размера Здания</Russian>
+            <Polish>Próg Rozmiaru Budynku</Polish>
+            <French>Seuil de taille du bâtiment</French>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
             <Japanese>小さい数字でより多くの建物を利用できます</Japanese>
             <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
+            <Russian>Чем меньше число, тем больше доступных зданий</Russian>
+            <Polish>Im mniejsza wartość tym więcej budynków będzie dostępnych</Polish>
+            <French>Plus le nombre est petit, plus il y'a de bâtiments disponibles</French>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
             <English>Patrol Chance</English>
             <Japanese>巡回率</Japanese>
             <Chinese>巡邏機率</Chinese>
             <Chinesesimp>巡逻机率</Chinesesimp>
+            <Russian>Шанс Патрулирования</Russian>
+            <Polish>Szasna na Patrol</Polish>
+            <French>Possibilité de patrouille</French>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
             <Japanese>各ユニットが歩哨のために巡回する確率を設定</Japanese>
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
+            <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, чтобы находиться в гарнизоне</Russian>
+            <Polish>Szansa dla każdej jednostki na to że przeprowadzi patrol zamiast garnizonowania budynku</Polish>
+            <French>Possibilité pour chaque unité de patrouiller au lieu d'être en garnison</French>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
             <Japanese>停止率</Japanese>
             <Chinese>停留機率</Chinese>
             <Chinesesimp>停留机率</Chinesesimp>
+            <Russian>Шанс Удерживания</Russian>
+            <Polish>Szansa na Utrzymanie</Polish>
+            <French>Chance de tenir</French>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
             <Japanese>各ユニットが戦闘中に歩哨所で留まる確率を設定</Japanese>
             <Chinese>設定當駐軍開始交戰時每個單位有多少機率會原地不動</Chinese>
             <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
+            <Russian>Шанс для каждого подразделения удерживать свой гарнизон в бою</Russian>
+            <Polish>Szansa dla każdej jednostki że będzie utrzymywać swój garnizon w trakcie walki</Polish>
+            <French>Possibilité pour chaque unité de tenir sa garnison au combat</French>
         </Key>
         <Key ID="STR_CBA_Modules_DefendModuleDescription">
             <English>Sync to leader of group to defend a parsed location</English>
             <Japanese>グループのリーダーに同期し、防衛地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組防禦指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
+            <Russian>Синхронизируйте с лидером группы, чтобы защищать указанное местоположение</Russian>
+            <Polish>Zsynchronizuj z liderem grupy aby bronić określonej lokalizacji</Polish>
+            <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
             <Japanese>巡回</Japanese>
             <Chinese>巡邏</Chinese>
             <Chinesesimp>巡逻</Chinesesimp>
+            <Russian>Патрулирование</Russian>
+            <Polish>Patrol</Polish>
+            <French>Patrouille</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
             <Japanese>巡回場所の種類</Japanese>
             <Chinese>巡邏區類型</Chinese>
             <Chinesesimp>巡逻区类型</Chinesesimp>
+            <Russian>Патрулирование - Тип Центра</Russian>
+            <Polish>Patrol - rodzaj centrum</Polish>
+            <French>Type d'emplacement de la patrouille</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Russian>Укажите, какой тип объекта будет передан как центральная точка</Russian>
+            <Polish>Określ jaki obiekt jest przekazowany jako punkt centralny patrolu</Polish>
+            <French>Définir quel type d'objet est passé comme point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
             <English>Center Point</English>
             <Japanese>中央地点</Japanese>
             <Chinese>中央地點</Chinese>
             <Chinesesimp>中央地点</Chinesesimp>
+            <Russian>Центральная Точка</Russian>
+            <Polish>Punkt Centralny</Polish>
+            <French>Point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
+            <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
+            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius">
             <English>Patrol Radius</English>
             <Japanese>巡回範囲</Japanese>
             <Chinese>巡邏半徑</Chinese>
             <Chinesesimp>巡逻半径</Chinesesimp>
+            <Russian>Радиус Патрулирования</Russian>
+            <Polish>Obszar Patrolu</Polish>
+            <French>Rayon de patrouille</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius_Desc">
             <English>The distance to patrol from the center point</English>
             <Japanese>中央地点からの哨戒範囲を決定します</Japanese>
             <Chinese>輸入一個數字來定義巡邏區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义巡逻区域的半径大小</Chinesesimp>
+            <Russian>На какое расстояние будет происходить патрулирование от центральной точки</Russian>
+            <Polish>Rozmar obszaru do Patrolowania w okół punktu centralnego</Polish>
+            <French>La distance à parcourir en patrouille depuis le point central</French>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount">
             <English>Waypoint Count</English>
             <Japanese>ウェイポイント数</Japanese>
             <Chinese>路徑點數量</Chinese>
             <Chinesesimp>路径点数量</Chinesesimp>
+            <Russian>Количество Путевых Точек</Russian>
+            <Polish>Ilosć punktów nawigacyjnych</Polish>
+            <French>Nombre de points de passage</French>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
             <Japanese>作成するウェイポイント数</Japanese>
             <Chinese>設定會產出多少個路徑點</Chinese>
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
+            <Russian>Сколько создать путевых точек</Russian>
+            <Polish>Ilość punktu nawigacyjnych do utworzenia</Polish>
+            <French>La quantité de points de passage à créer</French>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType">
             <English>Waypoint Type</English>
             <Japanese>ウェイポイントの種類</Japanese>
             <Chinese>路徑點類型</Chinese>
             <Chinesesimp>路径点类型</Chinesesimp>
+            <Russian>Тип Путевой Точки</Russian>
+            <Polish>Rodzaj Punktu nawigacyjnego</Polish>
+            <French>Type de point de passage</French>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType_Desc">
             <English>The type of waypoint to be used</English>
             <Japanese>使用されるウェイポイントの種類</Japanese>
             <Chinese>設定會被使用的路徑點類型</Chinese>
             <Chinesesimp>设定会被使用的路径点类型</Chinesesimp>
+            <Russian>Тип используемой путевой точки</Russian>
+            <Polish>Rodzaj Punktu nawigacyjnego do wykorzystania</Polish>
+            <French>Le type de point de passage à utiliser</French>
         </Key>
         <Key ID="STR_CBA_Modules_Move">
             <English>Move</English>
             <Japanese>移動</Japanese>
             <Chinese>移動</Chinese>
             <Chinesesimp>移动</Chinesesimp>
+            <Russian>Выдвинуться</Russian>
+            <Polish>Przemieść</Polish>
+            <French>Sé déplacer</French>
         </Key>
         <Key ID="STR_CBA_Modules_SAD">
             <English>Seek and Destroy</English>
             <Japanese>索敵と破壊</Japanese>
             <Chinese>搜索並摧毀</Chinese>
             <Chinesesimp>搜索并摧毁</Chinesesimp>
+            <Russian>Найти и Уничтожить</Russian>
+            <Polish>Znajdź i zniszcz</Polish>
+            <French>Rechercher et détruire</French>
         </Key>
         <Key ID="STR_CBA_Modules_Loiter">
             <English>Loiter</English>
             <Japanese>周回</Japanese>
             <Chinese>盤旋</Chinese>
             <Chinesesimp>盘旋</Chinesesimp>
+            <Russian>Слоняться без дела</Russian>
+            <Polish>Krąż</Polish>
+            <French>Flâner</French>
         </Key>
         <Key ID="STR_CBA_Modules_Behaviour">
             <English>Behaviour</English>
             <Japanese>挙動</Japanese>
             <Chinese>行為</Chinese>
             <Chinesesimp>行为</Chinesesimp>
+            <Russian>Поведение</Russian>
+            <Polish>Zachowanie</Polish>
+            <French>Comportement</French>
         </Key>
         <Key ID="STR_CBA_Modules_Behaviour_Desc">
             <English>The behaviour of the group</English>
             <Japanese>グループの挙動</Japanese>
             <Chinese>設定群組的行為</Chinese>
             <Chinesesimp>设定群组的行为</Chinesesimp>
+            <Russian>Поведение группы</Russian>
+            <Polish>Zachowanie grupy</Polish>
+            <French>Le comportement du groupe</French>
         </Key>
         <Key ID="STR_CBA_Modules_Careless">
             <English>Careless</English>
             <Japanese>無警戒</Japanese>
             <Chinese>漫不經心</Chinese>
             <Chinesesimp>漫不经心</Chinesesimp>
+            <Russian>Беспечно</Russian>
+            <Polish>Beztroski</Polish>
+            <French>Imprudence</French>
         </Key>
         <Key ID="STR_CBA_Modules_Safe">
             <English>Safe</English>
             <Japanese>安全</Japanese>
             <Chinese>安全</Chinese>
             <Chinesesimp>安全</Chinesesimp>
+            <Russian>Безопасно</Russian>
+            <Polish>Bezpieczny</Polish>
+            <French>Prudence</French>
         </Key>
         <Key ID="STR_CBA_Modules_Aware">
             <English>Aware</English>
             <Japanese>警戒</Japanese>
             <Chinese>警戒</Chinese>
             <Chinesesimp>警戒</Chinesesimp>
+            <Russian>Начеку</Russian>
+            <Polish>Uważny</Polish>
+            <French>Vigilance</French>
         </Key>
         <Key ID="STR_CBA_Modules_Combat">
             <English>Combat</English>
             <Japanese>戦闘</Japanese>
             <Chinese>交戰</Chinese>
             <Chinesesimp>交战</Chinesesimp>
+            <Russian>Бой</Russian>
+            <Polish>Walka</Polish>
+            <French>Combat</French>
         </Key>
         <Key ID="STR_CBA_Modules_Stealth">
             <English>Stealth</English>
             <Japanese>隠密</Japanese>
             <Chinese>隱蔽</Chinese>
             <Chinesesimp>隐蔽</Chinesesimp>
+            <Russian>Скрытно</Russian>
+            <Polish>Ukryty</Polish>
+            <French>Furtivité</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatMode">
             <English>Combat Mode</English>
             <Japanese>戦闘状態</Japanese>
             <Chinese>交戰模式</Chinese>
             <Chinesesimp>交战模式</Chinesesimp>
+            <Russian>Режим Боя</Russian>
+            <Polish>Tryb walki</Polish>
+            <French>Mode de combat</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatMode_Desc">
             <English>How fast the group is to engage</English>
             <Japanese>グループが交戦時における状態</Japanese>
             <Chinese>設定群組多快會進入交戰狀態</Chinese>
             <Chinesesimp>设定群组多快会进入交战状态</Chinesesimp>
+            <Russian>Как быстро группа должна вступать в бой</Russian>
+            <Polish>Jak szybko grupa przejdzie do ataku</Polish>
+            <French>Définit quand et comment le groupe choisira d'engager des cibles ennemies</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatYellow">
             <English>Yellow (Fire at will)</English>
             <Japanese>イエロー (各個射撃)</Japanese>
             <Chinese>黃色 (主動開火-保持隊形)</Chinese>
             <Chinesesimp>黄色 (主动开火-保持队形)</Chinesesimp>
+            <Russian>Жёлтый (Огонь по желанию)</Russian>
+            <Polish>Żółty (Strzelaj bez rozkazu)</Polish>
+            <French>Jaune (Feu à volonté)</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatBlue">
             <English>Blue (Never fire)</English>
             <Japanese>ブルー (射撃禁止)</Japanese>
             <Chinese>藍色 (永不開火)</Chinese>
             <Chinesesimp>蓝色 (永不开火)</Chinesesimp>
+            <Russian>Синий (Запретить огонь)</Russian>
+            <Polish>Niebieski (Nigdy nie strzelaj)</Polish>
+            <French>Bleu (Ne pas tirer)</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatGreen">
             <English>Green (Hold Fire-Defend Only)</English>
             <Japanese>グリーン (射撃禁止 - 防衛時のみ)</Japanese>
             <Chinese>綠色 (被動開火-保持隊形)</Chinese>
             <Chinesesimp>绿色 (被动开火-保持队形)</Chinesesimp>
+            <Russian>Зелёный (Огонь только для защиты)</Russian>
+            <Polish>Zielony (Wstrzmaj ogień-Tylko się broń)</Polish>
+            <French>Vert (Ne pas tirer-En défense seulement)</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatWhite">
             <English>White (Hold Fire-Engage at will)</English>
             <Japanese>ホワイト (射撃禁止 - 各個射撃)</Japanese>
             <Chinese>白色 (被動開火)</Chinese>
             <Chinesesimp>白色 (被动开火)</Chinesesimp>
+            <Russian>Белый (Вступать в бой по желанию)</Russian>
+            <Polish>Biały (Wstrzmaj ogień-Nacieraj bez rozkazu)</Polish>
+            <French>Blanc (Ne pas tirer-engagé a volonté)</French>
         </Key>
         <Key ID="STR_CBA_Modules_CombatRed">
             <English>Red (Fire at will-Engage at will)</English>
             <Japanese>レッド (射撃許可 - 各個射撃)</Japanese>
             <Chinese>紅色 (主動開火)</Chinese>
             <Chinesesimp>红色 (主动开火)</Chinesesimp>
+            <Russian>Красный (Огонь по желанию - вступление в бой по желанию)</Russian>
+            <Polish>Czerwony (Strzelaj bez rozkazu-Nacieraj bez rozkazu)</Polish>
+            <French>Rouge (Feu à volonté-engagé a volonté)</French>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode">
             <English>Speed Mode</English>
             <Japanese>移動速度</Japanese>
             <Chinese>速度模式</Chinese>
             <Chinesesimp>速度模式</Chinesesimp>
+            <Russian>Скоростной Режим</Russian>
+            <Polish>Prędkość poruszania</Polish>
+            <French>Vitesse</French>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode_Desc">
             <English>Walk, jog, or run to each waypoint</English>
             <Japanese>各ウェイポイントまで歩きや駆け足、疾走を指定できます</Japanese>
             <Chinese>設定單位前往路徑點的移動速度</Chinese>
             <Chinesesimp>设定单位前往路径点的移动速度</Chinesesimp>
+            <Russian>Ходьба, бег трусцой или бег к каждой путевой точке</Russian>
+            <Polish>Chodzenie, trucht lub bieganie do każdego punktu nawigacyjnego</Polish>
+            <French>Marcher, trottiner, ou courir à chaque point de passage</French>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedLimited">
             <English>Limited(Walking)</English>
             <Japanese>微速 (歩行)</Japanese>
             <Chinese>慢速 (步行)</Chinese>
             <Chinesesimp>慢速 (步行)</Chinesesimp>
+            <Russian>Ограниченный (Ходьба)</Russian>
+            <Polish>Ograniczony(Chodzenie)</Polish>
+            <French>Limité (Marcher)</French>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedNormal">
             <English>Normal(Jog-Stays in formation)</English>
             <Japanese>通常 (駆け足 - 隊形維持)</Japanese>
             <Chinese>普通 (慢跑-不破壞隊形)</Chinese>
             <Chinesesimp>普通 (慢跑-不破坏队形)</Chinesesimp>
+            <Russian>Нормальный (Бег трусцой, оставаться в строю)</Russian>
+            <Polish>Normalny(Trucht-Utrzymuj formację)</Polish>
+            <French>Normal (Trottiner-Rester en formation)</French>
         </Key>
         <Key ID="STR_CBA_Modules_SpeedFull">
             <English>Full(Run-No formation)</English>
             <Japanese>全速 (疾走 - 隊形なし)</Japanese>
             <Chinese>全速 (衝刺-破壞隊形)</Chinese>
             <Chinesesimp>全速 (冲刺-破坏队形)</Chinesesimp>
+            <Russian>Полная (Бег, вне строя)</Russian>
+            <Polish>Pełna(Bieg-Bez formacji)</Polish>
+            <French>Maximale (Courrir-Pas de formation)</French>
         </Key>
         <Key ID="STR_CBA_Modules_Formation">
             <English>Formation</English>
             <Japanese>隊形</Japanese>
             <Chinese>隊形</Chinese>
             <Chinesesimp>队形</Chinesesimp>
+            <Russian>Строй</Russian>
+            <Polish>Formacja</Polish>
+            <French>Formation</French>
         </Key>
         <Key ID="STR_CBA_Modules_Formation_Desc">
             <English>The formation to be used when moving</English>
             <Japanese>移動時に使う隊形</Japanese>
             <Chinese>移動時所使用的隊形</Chinese>
             <Chinesesimp>移动时所使用的队形</Chinesesimp>
+            <Russian>Какой режим строя будет использовать при перемещении</Russian>
+            <Polish>Formacja utrzymywana podczas poruszania</Polish>
+            <French>La formation à utiliser lors du déplacement</French>
         </Key>
         <Key ID="STR_CBA_Modules_Column">
             <English>Column</English>
             <Japanese>縦隊</Japanese>
             <Chinese>單縱隊形</Chinese>
             <Chinesesimp>单纵队形</Chinesesimp>
+            <Russian>Колонна</Russian>
+            <Polish>Kolumna</Polish>
+            <French>Colonne</French>
         </Key>
         <Key ID="STR_CBA_Modules_StagColumn">
             <English>Stag Column</English>
             <Japanese>千鳥縦隊</Japanese>
             <Chinese>雙縱隊形</Chinese>
             <Chinesesimp>双纵队形</Chinesesimp>
+            <Russian>Колонна в шахматном порядке</Russian>
+            <Polish>Kolumna Podwójna</Polish>
+            <French>Colonne décalée</French>
         </Key>
         <Key ID="STR_CBA_Modules_Wedge">
             <English>Wedge</English>
             <Japanese>傘型隊形</Japanese>
             <Chinese>楔形</Chinese>
             <Chinesesimp>楔形</Chinesesimp>
+            <Russian>Клин</Russian>
+            <Polish>Klin</Polish>
+            <French>Coin</French>
         </Key>
         <Key ID="STR_CBA_Modules_EchLeft">
             <English>Ech Left</English>
             <Japanese>左梯形</Japanese>
             <Chinese>左梯隊形</Chinese>
             <Chinesesimp>左梯队形</Chinesesimp>
+            <Russian>Левый эшелон</Russian>
+            <Polish>Eszelon Lewy</Polish>
+            <French>Echelon gauche</French>
         </Key>
         <Key ID="STR_CBA_Modules_EchRight">
             <English>Ech Right</English>
             <Japanese>右梯形</Japanese>
             <Chinese>右梯隊形</Chinese>
             <Chinesesimp>右梯队形</Chinesesimp>
+            <Russian>Правый эшелон</Russian>
+            <Polish>Eszelon Prawy</Polish>
+            <French>Echelon droite</French>
         </Key>
         <Key ID="STR_CBA_Modules_Vee">
             <English>Vee</English>
             <Japanese>V字隊形</Japanese>
             <Chinese>V字隊形</Chinese>
             <Chinesesimp>V字队形</Chinesesimp>
+            <Russian>V-образный</Russian>
+            <Polish>V-kształtna</Polish>
+            <French>V</French>
         </Key>
         <Key ID="STR_CBA_Modules_Line">
             <English>Line</English>
             <Japanese>横隊</Japanese>
             <Chinese>一字隊形</Chinese>
             <Chinesesimp>一字队形</Chinesesimp>
+            <Russian>Линия</Russian>
+            <Polish>Linia</Polish>
+            <French>Ligne</French>
         </Key>
         <Key ID="STR_CBA_Modules_File">
             <English>File</English>
             <Japanese>縦列</Japanese>
             <Chinese>緊湊縱隊</Chinese>
             <Chinesesimp>紧凑纵队</Chinesesimp>
+            <Russian>Ряд</Russian>
+            <Polish>Szyk</Polish>
+            <French>File</French>
         </Key>
         <Key ID="STR_CBA_Modules_Diamond">
             <English>Diamond</English>
             <Japanese>ダイヤモンド</Japanese>
             <Chinese>菱形隊形</Chinese>
             <Chinesesimp>菱形队形</Chinesesimp>
+            <Russian>Ромб</Russian>
+            <Polish>Diament</Polish>
+            <French>Losange</French>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
             <Japanese>コードの実行</Japanese>
             <Chinese>會執行的腳本代碼</Chinese>
             <Chinesesimp>会执行的脚本代码</Chinesesimp>
+            <Russian>Код для Выполнения</Russian>
+            <Polish>Kod do wykonania</Polish>
+            <French>Code à exécuter</French>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
             <English>Any code to run at waypoints</English>
             <Japanese>ウェイポイントで実行されるコード</Japanese>
             <Chinese>在路徑點時會執行的腳本代碼</Chinese>
             <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
+            <Russian>Любой код для запуска в путевых точках</Russian>
+            <Polish>Kod do wykonania po osiągnięciu punktów nawigacyjnych</Polish>
+            <French>Tout code à exécuter aux points de passage</French>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout">
             <English>Timeout</English>
             <Japanese>時間設定</Japanese>
             <Chinese>計時器</Chinese>
             <Chinesesimp>计时器</Chinesesimp>
+            <Russian>Тайм-аут</Russian>
+            <Polish>Czas przerwania</Polish>
+            <French>Pause</French>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout_Desc">
             <English>[Min, Med, Max] Time to wait at waypoints</English>
             <Japanese>[最低,中間,最大] ウェイポイントで待機する時間</Japanese>
             <Chinese>[最小值, 中間值, 最大值] 用來設定在路徑點所需等待的時間</Chinese>
             <Chinesesimp>[最小值, 中间值, 最大值] 用来设定在路径点所需等待的时间</Chinesesimp>
+            <Russian>[Минимум, Средний, Максимум] Тайм-аут ожидания на путевых точках</Russian>
+            <Polish>[Minimalny, Średni, Maksymalny] Czas oczekiwania na punktach nawigacyjnych</Polish>
+            <French>[Min, Moy, Max] Temps d'attente aux points de passage</French>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolModuleDescription">
             <English>Sync to leader of group to patrol a parsed location</English>
             <Japanese>グループのリーダーに同期し、地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組巡邏指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
+            <Russian>Синхронизируйте с лидером группы, чтобы патрулировать указанное местоположение</Russian>
+            <Polish>Zsynchronizuj z liderem grupy aby patrolować określoną lokalizację</Polish>
+            <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
         </Key>
     </Package>
 </Project>

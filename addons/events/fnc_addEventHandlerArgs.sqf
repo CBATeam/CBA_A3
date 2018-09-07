@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addEventHandlerArgs
 
@@ -32,7 +33,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addEventHandlerArgs);
 
 params [["_eventName", "", [""]], ["_eventFunc", nil, [{}]], ["_arguments", []]];

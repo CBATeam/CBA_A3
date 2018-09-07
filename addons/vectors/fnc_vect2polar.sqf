@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vect2Polar
 
@@ -21,7 +22,6 @@ Author:
 ---------------------------------------------------------------------------- */
 scriptName "fnc_vect2Polar.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vect2Polar);
 
 

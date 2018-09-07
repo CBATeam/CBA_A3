@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeKeyHandler
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeKeyHandler);
 
 if (!hasInterface) exitWith {};
@@ -58,6 +58,14 @@ if (count _keyHandlers > _key) then {
     private _hashKeys = _keyHandlers select _key;
     _hashKeys = _hashKeys - [_hashKey];
     _keyHandlers set [_key, _hashKeys];
+};
+
+if ((_key >= USERACTION_OFFSET) && {_key <= USERACTION_OFFSET + 19}) then {
+    private _hasUserActionsBound = {count _x > 0} count (GVAR(keyDownStates) select [USERACTION_OFFSET, 20]) > 0;
+
+    if (!_hasUserActionsBound) then {
+        GVAR(skipCheckingUserActions) = true;
+    };
 };
 
 nil

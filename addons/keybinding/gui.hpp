@@ -1,8 +1,88 @@
-class RscButtonMenu;
+class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
 class RscText;
+class RscButton;
+class RscButtonMenu;
 class RscCombo;
-class RscListNBox;
+class RscStructuredText;
+
+class GVAR(key): RscControlsGroupNoScrollbars {
+    idc = -1;
+    enableDisplay = 0;
+    x = POS_W(0);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(1);
+
+    class controls {
+        class EditButton: RscButton {
+            idc = IDC_KEY_EDIT;
+            onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
+            onMouseEnter = "(_this select 0) ctrlSetTextColor [0,0,0,1]";
+            onMouseExit = "(_this select 0) ctrlSetTextColor [1,1,1,1]";
+            style = ST_LEFT;
+            shadow = 0;
+            colorBackground[] = {0,0,0,0};
+            colorBackgroundActive[] = {1,1,1,1};
+            colorFocused[] = {0.5,0.5,0.5,0.5};
+            tooltipColorBox[] = {1,1,1,1};
+            tooltipColorShade[] = {0,0,0,0.7};
+            tooltipColorText[] = {1,1,1,1};
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(17);
+            h = POS_H(1);
+        };
+
+        class AssignedKey: RscStructuredText {
+            idc = IDC_KEY_ASSIGNED;
+            shadow = 0;
+            tooltipColorBox[] = {1,1,1,1};
+            tooltipColorShade[] = {0,0,0,0.7};
+            tooltipColorText[] = {1,1,1,1};
+            x = POS_W(17);
+            y = POS_H(0);
+            w = POS_W(20);
+            h = POS_H(1);
+        };
+    };
+};
+
+class GVAR(subCat): RscControlsGroupNoScrollbars {
+    x = POS_W(1);
+    y = POS_H(0);
+    w = POS_W(37);
+    h = POS_H(1);
+
+    class controls {
+        class Background: RscText {
+            colorBackground[] = {0.15,0.15,0.15,0.4};
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(36);
+            h = POS_H(1);
+        };
+
+        class Name: RscText {
+            idc = IDC_SUBCATEGORY_NAME;
+            style = ST_LEFT;
+            SizeEx = POS_H(1);
+            x = POS_W(0);
+            y = POS_H(0);
+            w = POS_W(15.5);
+            h = POS_H(1);
+        };
+
+        class Bar: RscText {
+            colorBackground[] = {1,1,1,1};
+            style = ST_LEFT;
+            x = POS_W(0);
+            y = POS_H(1) - 2 * pixelH;
+            w = POS_W(36);
+            h = pixelH;
+        };
+    };
+};
 
 class RscDisplayConfigure {
     class controls {
@@ -43,7 +123,7 @@ class RscDisplayConfigure {
                 };
                 class AddonText: RscText {
                     style = ST_RIGHT;
-                    text = "ADDON:";
+                    text = ECSTRING(main,AddonText);
                     x = POS_W(0.5);
                     y = POS_H(1);
                     w = POS_W(4);
@@ -58,9 +138,8 @@ class RscDisplayConfigure {
                     h = POS_H(1);
                     wholeHeight = POS_H(12);
                 };
-                class CA_ValueKeys: RscListNBox {
+                class KeyList: RscControlsGroup {
                     idc = IDC_KEY_LIST;
-                    columns[] = {0, 0.459459459}; //17/37
                     x = POS_W(0.5);
                     y = POS_H(3.5);
                     w = POS_W(37);

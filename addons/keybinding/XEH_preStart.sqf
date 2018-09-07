@@ -199,6 +199,11 @@ GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
     [198, DIK_PAUSE]
 ];
 
+// manually add user action keys
+for "_i" from 0 to 19 do {
+    [GVAR(keyNamesHash), str (USER_1 + _i), actionName format ["User%1", _i + 1]] call CBA_fnc_hashSet;
+};
+
 GVAR(forbiddenKeys) = [
     DIK_XBOX_LEFT_TRIGGER,
     DIK_XBOX_RIGHT_TRIGGER,

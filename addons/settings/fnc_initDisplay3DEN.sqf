@@ -11,8 +11,13 @@ private _fnc_resetMissionSettings = {
     private _missionConfig = "";
 
     if (getMissionConfigValue [QGVAR(hasSettingsFile), false] in [true, 1]) then {
-        INFO("Loading mission settings file ...");
         _missionConfig = preprocessFile MISSION_SETTINGS_FILE;
+
+        if (_missionConfig isEqualTo "") then {
+            INFO_1("Mission Config: File [%1] not found or empty.",MISSION_SETTINGS_FILE);
+        } else {
+            INFO_1("Mission Config: File [%1] loaded successfully.",MISSION_SETTINGS_FILE);
+        };
     };
 
     {
@@ -65,15 +70,6 @@ add3DENEventHandler ["OnMissionLoad", _fnc_resetMissionSettingsMissionChanged];
 #define MESSGAE_AUTOSAVED 1
 #define MESSAGE_EXPORTED_SP 5
 #define MESSAGE_EXPORTED_MP 6
-
-#define FILE_EXISTS(file) \
-call {\
-    private _control = findDisplay 313 ctrlCreate ["RscHTML", -1];\
-    _control htmlLoad file;\
-    private _return = ctrlHTMLLoaded _control;\
-    ctrlDelete _control;\
-    _return\
-};
 
 add3DENEventHandler ["OnMessage", {
     params ["_message"];
