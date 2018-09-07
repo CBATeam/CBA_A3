@@ -77,6 +77,8 @@ _display setVariable [QFUNC(filter), {
             _ctrlMissions lbSetColor [_index, _color];
         };
     } forEach _missions;
+
+    _ctrlMissions lbSetCurSel 0;
 }];
 
 // update every time search parameters are changed
