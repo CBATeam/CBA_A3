@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (profileNamespace getVariable [QGVAR(StorePasswords), 1] < 1) exitWith {};
+
 params ["_display"];
 private _ctrlConfirm = _display displayCtrl IDC_OK;
 private _ctrlPassword = _display displayCtrl IDC_PASSWORD;
