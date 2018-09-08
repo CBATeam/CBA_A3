@@ -101,4 +101,9 @@ if (isServer) then {
 
 [[LLSTRING(menu_button), LLSTRING(menu_button_tooltip)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
 
+private _ctrlAddonOptions = (uiNamespace getVariable "RscDisplayMain") displayCtrl IDC_MAIN_ADDONOPTIONS;
+
+_ctrlAddonOptions ctrlEnable true;
+_ctrlAddonOptions ctrlSetTooltip LLSTRING(menu_button_tooltip);
+
 ADDON = true;

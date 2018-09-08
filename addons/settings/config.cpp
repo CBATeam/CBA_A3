@@ -18,3 +18,4 @@ class CfgPatches {
 #include "Cfg3DEN.hpp"
 #include "Display3DEN.hpp"
 #include "gui.hpp"
+#include "RscDisplayMain.hpp"
