@@ -2,12 +2,12 @@
 
 [
     QGVAR(StorePasswords), "LIST",
-    ["STR_CBA_Ui_StoreServerPasswords", "STR_CBA_Ui_StoreServerPasswordsTooltip"],
-    "STR_CBA_Ui_Category",
+    [LLSTRING(StoreServerPasswords), LLSTRING(StoreServerPasswordsTooltip)],
+    LLSTRING(Category),
     [[1, 0, -1], [
-        ["STR_CBA_Ui_SavePasswords", "STR_CBA_Ui_SavePasswordsTooltip"],
-        ["STR_CBA_Ui_DoNotSavePasswords", "STR_CBA_Ui_DoNotSavePasswordsTooltip"],
-        ["STR_CBA_Ui_DeletePasswords", "STR_CBA_Ui_DeletePasswordsTooltip"]
+        [LLSTRING(SavePasswords), LLSTRING(SavePasswordsTooltip)],
+        [LLSTRING(DoNotSavePasswords), LLSTRING(DoNotSavePasswordsTooltip)],
+        [LLSTRING(DeletePasswords), LLSTRING(DeletePasswordsTooltip)]
     ], 0],
     2,
     {
