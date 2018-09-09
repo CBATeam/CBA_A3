@@ -132,7 +132,7 @@ switch (toLower _source) do {
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
-            if (IS_ADMIN_LOGGED) then {
+            if (FUNC(whitelisted)) then {
                 [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
             } else {
                 WARNING_1("Source is server, but no admin access. Setting: %1",_setting);
