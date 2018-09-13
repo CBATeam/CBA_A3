@@ -23,4 +23,7 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayPassword {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayPassword)'));
     };
+    class RscDisplayRemoteMissions {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayRemoteMissions)'));
+    };
 };
