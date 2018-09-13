@@ -3,19 +3,16 @@
 class CfgPatches {
     class ADDON {
         author = "$STR_CBA_Author";
-        name = CSTRING(component);
+        name = ECSTRING(no_stock_missions,component);
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common", "cba_events"};
+        requiredAddons[] = {"cba_common"};
         version = VERSION;
-        authors[] = {"commy2"};
     };
 };
 
-#include "CfgEventHandlers.hpp"
-#include "Cfg3DEN.hpp"
-#include "Display3DEN.hpp"
-#include "gui.hpp"
-#include "RscDisplayMain.hpp"
+class CfgMissions {
+    delete MPMissions;
+};

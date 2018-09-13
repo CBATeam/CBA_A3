@@ -8,14 +8,12 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common", "cba_events"};
+        requiredAddons[] = {"cba_no_stock_missions_prep"};
         version = VERSION;
         authors[] = {"commy2"};
     };
 };
 
-#include "CfgEventHandlers.hpp"
-#include "Cfg3DEN.hpp"
-#include "Display3DEN.hpp"
-#include "gui.hpp"
-#include "RscDisplayMain.hpp"
+class CfgMissions {
+    class MPMissions {};
+};
