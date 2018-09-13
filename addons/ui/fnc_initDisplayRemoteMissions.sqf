@@ -12,7 +12,7 @@ _ctrlSearch ctrlSetPosition [
     _left + 0.1 * GUI_GRID_W,
     _top,
     _width - 1.2 * GUI_GRID_W,
-    0.9 * GUI_GRID_H
+    GUI_GRID_H
 ];
 _ctrlSearch ctrlCommit 0;
 
@@ -27,9 +27,9 @@ _ctrlSearchButton ctrlCommit 0;
 
 _ctrlMissions ctrlSetPosition [
     _left,
-    _top + GUI_GRID_H,
+    _top + 1.1 * GUI_GRID_H,
     _width,
-    _height - GUI_GRID_H
+    _height - 1.1 * GUI_GRID_H
 ];
 _ctrlMissions ctrlCommit 0;
 
