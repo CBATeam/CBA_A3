@@ -3,6 +3,7 @@
     <Package name="Diagnostics">
         <Key ID="STR_CBA_Diagnostic_Component">
             <English>Community Base Addons - Diagnostics</English>
+            <German>Community Base Addons - Diagnose</German>
             <Japanese>Community Base Addons - 診断</Japanese>
             <Chinese>社群基礎模組 - 診斷</Chinese>
             <Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
@@ -42,6 +43,7 @@
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
+            <German>Ziel Ausf.</German>
             <Japanese>対象へ実行</Japanese>
             <Chinese>在目標執行</Chinese>
             <Chinesesimp>在目标执行</Chinesesimp>
@@ -50,7 +52,8 @@
             <French>Cible Exec</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
-            <English>Enable Target Debuging</English>
+            <English>Enable Target Debugging</English>
+            <German>Ziel-Debugging aktivieren</German>
             <Japanese>対象デバッキングを有効化</Japanese>
             <Chinese>開啟目標除錯模式</Chinese>
             <Chinesesimp>开启目标除错模式</Chinesesimp>
@@ -60,6 +63,7 @@
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
+            <German>[CBA] Erlaubt Remote-Ziel-Debugging. Benötigt Debug-Konsole.</German>
             <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
             <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
             <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
