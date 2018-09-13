@@ -9,10 +9,10 @@ ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
 private _ctrlSearch = _display ctrlCreate ["RscEdit", IDC_SEARCH];
 _ctrlSearch ctrlSetPosition [
-    _left,
+    _left + 0.1 * GUI_GRID_W,
     _top,
-    _width - GUI_GRID_W,
-    GUI_GRID_H
+    _width - 1.2 * GUI_GRID_W,
+    0.9 * GUI_GRID_H
 ];
 _ctrlSearch ctrlCommit 0;
 
