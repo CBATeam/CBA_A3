@@ -10,7 +10,7 @@ Parameters:
     _callback - Activity check (should return true if active, false otherwise) <CODE>
 
 Returns:
-    None
+    Successfully registered <BOOL>
 
 Examples:
     (begin example)
@@ -25,4 +25,16 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(registerFeatureCamera);
 
-GVAR(featureCameras) pushBackUnique _this;
+params [["_name", "", [""]], ["_callback", false, [{}]]];
+
+if (_name isEqualTo "") exitWith {
+    TRACE_1("Name empty",_name);
+    false
+};
+
+if (_callback isEqualTo false) exitWith {
+    TRACE_1("Callback not code",_name);
+    false
+};
+
+(GVAR(featureCameras) pushBackUnique _this) != -1 // return
