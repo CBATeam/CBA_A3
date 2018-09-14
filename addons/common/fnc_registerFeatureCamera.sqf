@@ -37,4 +37,7 @@ if (_callback isEqualTo false) exitWith {
     false
 };
 
-(GVAR(featureCameras) pushBackUnique _this) != -1 // return
+GVAR(featureCamerasNames) pushBack _name;
+GVAR(featureCamerasCode) pushBack _callback;
+
+true

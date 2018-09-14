@@ -32,9 +32,4 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(getActiveFeatureCamera);
 
-{
-     _x params ["_name", "_callback"];
-
-    if (call _callback) exitWith {_name};
-    ""
-} forEach GVAR(featureCameras);
+GVAR(featureCamerasNames) param [GVAR(featureCamerasCode) findIf {call _x}, "none"]
