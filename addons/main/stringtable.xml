@@ -14,14 +14,19 @@
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
-            <German>https://www.github.com/CBATeam/CBA_A3</German>
-            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
-            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
-            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
-            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
-            <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
             <French>https://www.github.com/CBATeam/CBA_A3</French>
+            <Spanish>https://www.github.com/CBATeam/CBA_A3</Spanish>
+            <Italian>https://www.github.com/CBATeam/CBA_A3</Italian>
             <Polish>https://www.github.com/CBATeam/CBA_A3</Polish>
+            <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
+            <German>https://www.github.com/CBATeam/CBA_A3</German>
+            <Czech>https://www.github.com/CBATeam/CBA_A3</Czech>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
+            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
+            <Korean>https://www.github.com/CBATeam/CBA_A3</Korean>
+            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
+            <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
+            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
