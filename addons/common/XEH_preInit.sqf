@@ -23,6 +23,15 @@ GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
 
 // Initialize Components
 GVAR(groups) = [grpNull, grpNull, grpNull, grpNull, grpNull];
+GVAR(featureCameras) = [
+    ["curator", {!isNull curatorCamera}], // Curator
+    ["nexus", {!isNull (missionNamespace getVariable ["BIS_EGSpectatorCamera_camera", objNull])}], // BIS Nexus Spectator
+    ["arsenal", {!isNull (uiNamespace getVariable ["BIS_fnc_arsenal_cam", objNull])}], // Arsenal camera
+    ["establishing", {!isNull (missionNamespace getVariable ["BIS_fnc_establishingShot_fakeUAV", objNull])}], // Establishing shot camera
+    ["splendid", {!isNull (missionNamespace getVariable ["BIS_fnc_camera_cam", objNull])}], // Splendid camera
+    ["animViewer", {!isNull (uiNamespace getVariable ["BIS_fnc_animViewer_cam", objNull])}], // Animation viewer camera
+    ["classic", {!isNull (missionNamespace getVariable ["BIS_DEBUG_CAM", objNull])}] // Classic camera
+];
 
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_perFrameHandler);

@@ -48,6 +48,9 @@ switch (_type) do {
     case "cameraview": {
         [QGVAR(cameraViewEvent), _id] call CBA_fnc_removeEventHandler;
     };
+    case "featurecamera": {
+        [QGVAR(featureCameraEvent), _id] call CBA_fnc_removeEventHandler;
+    };
     case "visiblemap": {
         [QGVAR(visibleMapEvent), _id] call CBA_fnc_removeEventHandler;
     };

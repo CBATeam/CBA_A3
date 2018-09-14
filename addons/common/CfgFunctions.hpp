@@ -27,6 +27,8 @@ class CfgFunctions {
             PATHTO_FNC(getMagazineIndex);
             PATHTO_FNC(currentMagazineIndex);
             PATHTO_FNC(setCallsign);
+            PATHTO_FNC(getActiveFeatureCamera);
+            PATHTO_FNC(registerFeatureCamera);
         };
 
         class Soldiers {
