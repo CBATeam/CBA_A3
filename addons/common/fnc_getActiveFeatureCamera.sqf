@@ -32,4 +32,4 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(getActiveFeatureCamera);
 
-GVAR(featureCamerasNames) param [GVAR(featureCamerasCode) findIf {call _x}, "none"]
+GVAR(featureCamerasNames) param [GVAR(featureCamerasCode) findIf {call _x}, ""]
