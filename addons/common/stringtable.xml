@@ -14,6 +14,7 @@
             <English>You must first start a mission.</English>
             <German>Sie müssen zuerst eine Mission starten.</German>
             <French>Vous devez d'abord commencer une mission.</French>
+            <Polish>Należy najpierw uruchomić misję.</Polish>
         </Key>
     </Package>
 </Project>
