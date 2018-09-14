@@ -13,7 +13,7 @@
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
-            <German>Nächster Zustand Schienenaufsatz</German>
+            <German>Nächster Zustand des Schienenaufsatzes</German>
             <Japanese>レイル アイテムを次モード</Japanese>
             <Chinese>下個導軌物品狀態</Chinese>
             <Chinesesimp>下个导轨物品状态</Chinesesimp>
@@ -33,7 +33,7 @@
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
-            <German>Vorheriger Zustand Schienenaufsatz</German>
+            <German>Vorheriger Zustand des Schienenaufsatzes</German>
             <Japanese>レイル アイテムを前モード</Japanese>
             <Chinese>上個導軌物品狀態</Chinese>
             <Chinesesimp>上个导轨物品状态</Chinesesimp>
@@ -53,7 +53,7 @@
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
-            <German>Nächster Zustand Optik</German>
+            <German>Nächster Zustand der Optik</German>
             <Japanese>照準器を次モード</Japanese>
             <Chinese>下個瞄鏡模式</Chinese>
             <Chinesesimp>下个瞄镜模式</Chinesesimp>
@@ -73,7 +73,7 @@
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
-            <German>Vorheriger Zustand Optik</German>
+            <German>Vorheriger Zustand der Optik</German>
             <Japanese>照準器を前モード</Japanese>
             <Chinese>上個瞄鏡模式</Chinese>
             <Chinesesimp>上个瞄镜模式</Chinesesimp>
