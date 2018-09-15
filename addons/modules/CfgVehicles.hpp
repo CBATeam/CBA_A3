@@ -359,16 +359,16 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class limited {
-                        name = CSTRING(SpeedLimited);
+                        name = "$str_speed_limited";
                         value = "LIMITED";
                         default = 1;
                     };
                     class normal {
-                        name = CSTRING(SpeedNormal);
+                        name = "$str_speed_normal";
                         value = "NORMAL";
                     };
                     class full {
-                        name = CSTRING(SpeedFull);
+                        name = "$str_speed_full";
                         value = "FULL";
                     };
                 };
@@ -380,40 +380,40 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class column {
-                        name = CSTRING(Column);
+                        name = "$str_column";
                         value = "COLUMN";
                         default = 1;
                     };
                     class stagColumn {
-                        name = CSTRING(StagColumn);
+                        name = "$str_staggered";
                         value = "STAG COLUMN";
                     };
                     class wedge {
-                        name = CSTRING(Wedge);
+                        name = "$str_wedge";
                         value = "WEDGE";
                     };
                     class echLeft {
-                        name = CSTRING(EchLeft);
+                        name = "$str_echl";
                         value = "ECH LEFT";
                     };
                     class echRight {
-                        name = CSTRING(EchRight);
+                        name = "$str_echr";
                         value = "ECH RIGHT";
                     };
                     class vee {
-                        name = CSTRING(Vee);
+                        name = "$str_vee";
                         value = "VEE";
                     };
                     class line {
-                        name = CSTRING(Line);
+                        name = "$str_line";
                         value = "LINE";
                     };
                     class file {
-                        name = CSTRING(File);
+                        name = "$str_file";
                         value = "FILE";
                     };
                     class diamond {
-                        name = CSTRING(Diamond);
+                        name = "$str_diamond";
                         value = "DIAMOND";
                     };
                 };

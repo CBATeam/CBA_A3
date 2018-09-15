@@ -512,7 +512,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CombatYellow">
             <English>Yellow (Fire at will)</English>
-            <German>?????</German>
+            <German>Gelb (Nach eigenem Ermessen feuern)</German>
             <Japanese>イエロー (各個射撃)</Japanese>
             <Chinese>黃色 (主動開火-保持隊形)</Chinese>
             <Chinesesimp>黄色 (主动开火-保持队形)</Chinesesimp>
@@ -522,7 +522,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CombatBlue">
             <English>Blue (Never fire)</English>
-            <German>?????</German>
+            <German>Blau (Feuerpause)</German>
             <Japanese>ブルー (射撃禁止)</Japanese>
             <Chinese>藍色 (永不開火)</Chinese>
             <Chinesesimp>蓝色 (永不开火)</Chinesesimp>
@@ -532,7 +532,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CombatGreen">
             <English>Green (Hold Fire-Defend Only)</English>
-            <German>?????</German>
+            <German>Grün (Feuerpause-nur verteidigen)</German>
             <Japanese>グリーン (射撃禁止 - 防衛時のみ)</Japanese>
             <Chinese>綠色 (被動開火-保持隊形)</Chinese>
             <Chinesesimp>绿色 (被动开火-保持队形)</Chinesesimp>
@@ -542,7 +542,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CombatWhite">
             <English>White (Hold Fire-Engage at will)</English>
-            <German>?????</German>
+            <German>Weiß (Feuer einstellen, Angriff n. eig. Ermessen)</German>
             <Japanese>ホワイト (射撃禁止 - 各個射撃)</Japanese>
             <Chinese>白色 (被動開火)</Chinese>
             <Chinesesimp>白色 (被动开火)</Chinesesimp>
@@ -552,7 +552,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CombatRed">
             <English>Red (Fire at will-Engage at will)</English>
-            <German>?????</German>
+            <German>Rot (Feuer eröffnen, Eigenständiger Angriff)</German>
             <Japanese>レッド (射撃許可 - 各個射撃)</Japanese>
             <Chinese>紅色 (主動開火)</Chinese>
             <Chinesesimp>红色 (主动开火)</Chinesesimp>
@@ -562,7 +562,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode">
             <English>Speed Mode</English>
-            <German>?????</German>
+            <German>Geschwindigkeitsmodus</German>
             <Japanese>移動速度</Japanese>
             <Chinese>速度模式</Chinese>
             <Chinesesimp>速度模式</Chinesesimp>
@@ -572,7 +572,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_SpeedMode_Desc">
             <English>Walk, jog, or run to each waypoint</English>
-            <German>?????</German>
+            <German>Zu jedem Wegpunkt gehen, joggen oder rennen.</German>
             <Japanese>各ウェイポイントまで歩きや駆け足、疾走を指定できます</Japanese>
             <Chinese>設定單位前往路徑點的移動速度</Chinese>
             <Chinesesimp>设定单位前往路径点的移动速度</Chinesesimp>
@@ -580,37 +580,7 @@
             <Polish>Chodzenie, trucht lub bieganie do każdego punktu nawigacyjnego</Polish>
             <French>Marcher, trottiner, ou courir à chaque point de passage</French>
         </Key>
-        <Key ID="STR_CBA_Modules_SpeedLimited">
-            <English>Limited(Walking)</English>
-            <German>?????</German>
-            <Japanese>微速 (歩行)</Japanese>
-            <Chinese>慢速 (步行)</Chinese>
-            <Chinesesimp>慢速 (步行)</Chinesesimp>
-            <Russian>Ограниченный (Ходьба)</Russian>
-            <Polish>Ograniczony(Chodzenie)</Polish>
-            <French>Limité (Marcher)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_SpeedNormal">
-            <English>Normal(Jog-Stays in formation)</English>
-            <German>?????</German>
-            <Japanese>通常 (駆け足 - 隊形維持)</Japanese>
-            <Chinese>普通 (慢跑-不破壞隊形)</Chinese>
-            <Chinesesimp>普通 (慢跑-不破坏队形)</Chinesesimp>
-            <Russian>Нормальный (Бег трусцой, оставаться в строю)</Russian>
-            <Polish>Normalny(Trucht-Utrzymuj formację)</Polish>
-            <French>Normal (Trottiner-Rester en formation)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_SpeedFull">
-            <English>Full(Run-No formation)</English>
-            <German>?????</German>
-            <Japanese>全速 (疾走 - 隊形なし)</Japanese>
-            <Chinese>全速 (衝刺-破壞隊形)</Chinese>
-            <Chinesesimp>全速 (冲刺-破坏队形)</Chinesesimp>
-            <Russian>Полная (Бег, вне строя)</Russian>
-            <Polish>Pełna(Bieg-Bez formacji)</Polish>
-            <French>Maximale (Courrir-Pas de formation)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Formation">
+        <Key ID="STR_CBA_Modules_Formation"><!--str_formation/-->
             <English>Formation</English>
             <German>?????</German>
             <Japanese>隊形</Japanese>
@@ -629,96 +599,6 @@
             <Russian>Какой режим строя будет использовать при перемещении</Russian>
             <Polish>Formacja utrzymywana podczas poruszania</Polish>
             <French>La formation à utiliser lors du déplacement</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Column">
-            <English>Column</English>
-            <German>?????</German>
-            <Japanese>縦隊</Japanese>
-            <Chinese>單縱隊形</Chinese>
-            <Chinesesimp>单纵队形</Chinesesimp>
-            <Russian>Колонна</Russian>
-            <Polish>Kolumna</Polish>
-            <French>Colonne</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_StagColumn">
-            <English>Stag Column</English>
-            <German>?????</German>
-            <Japanese>千鳥縦隊</Japanese>
-            <Chinese>雙縱隊形</Chinese>
-            <Chinesesimp>双纵队形</Chinesesimp>
-            <Russian>Колонна в шахматном порядке</Russian>
-            <Polish>Kolumna Podwójna</Polish>
-            <French>Colonne décalée</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Wedge">
-            <English>Wedge</English>
-            <German>?????</German>
-            <Japanese>傘型隊形</Japanese>
-            <Chinese>楔形</Chinese>
-            <Chinesesimp>楔形</Chinesesimp>
-            <Russian>Клин</Russian>
-            <Polish>Klin</Polish>
-            <French>Coin</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_EchLeft">
-            <English>Ech Left</English>
-            <German>?????</German>
-            <Japanese>左梯形</Japanese>
-            <Chinese>左梯隊形</Chinese>
-            <Chinesesimp>左梯队形</Chinesesimp>
-            <Russian>Левый эшелон</Russian>
-            <Polish>Eszelon Lewy</Polish>
-            <French>Echelon gauche</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_EchRight">
-            <English>Ech Right</English>
-            <German>?????</German>
-            <Japanese>右梯形</Japanese>
-            <Chinese>右梯隊形</Chinese>
-            <Chinesesimp>右梯队形</Chinesesimp>
-            <Russian>Правый эшелон</Russian>
-            <Polish>Eszelon Prawy</Polish>
-            <French>Echelon droite</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Vee">
-            <English>Vee</English>
-            <German>?????</German>
-            <Japanese>V字隊形</Japanese>
-            <Chinese>V字隊形</Chinese>
-            <Chinesesimp>V字队形</Chinesesimp>
-            <Russian>V-образный</Russian>
-            <Polish>V-kształtna</Polish>
-            <French>V</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Line">
-            <English>Line</English>
-            <German>?????</German>
-            <Japanese>横隊</Japanese>
-            <Chinese>一字隊形</Chinese>
-            <Chinesesimp>一字队形</Chinesesimp>
-            <Russian>Линия</Russian>
-            <Polish>Linia</Polish>
-            <French>Ligne</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_File">
-            <English>File</English>
-            <German>?????</German>
-            <Japanese>縦列</Japanese>
-            <Chinese>緊湊縱隊</Chinese>
-            <Chinesesimp>紧凑纵队</Chinesesimp>
-            <Russian>Ряд</Russian>
-            <Polish>Szyk</Polish>
-            <French>File</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Diamond">
-            <English>Diamond</English>
-            <German>?????</German>
-            <Japanese>ダイヤモンド</Japanese>
-            <Chinese>菱形隊形</Chinese>
-            <Chinesesimp>菱形队形</Chinesesimp>
-            <Russian>Ромб</Russian>
-            <Polish>Diament</Polish>
-            <French>Losange</French>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
