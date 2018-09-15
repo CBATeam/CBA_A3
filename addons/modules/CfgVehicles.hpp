@@ -330,24 +330,24 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class yellow {
-                        name = CSTRING(CombatYellow);
+                        name = "$str_3den_attributes_combatmode_yellow_text";
                         value = "YELLOW";
                         default = 1;
                     };
                     class blue {
-                        name = CSTRING(CombatBlue);
+                        name = "$str_3den_attributes_combatmode_blue_text";
                         value = "BLUE";
                     };
                     class green {
-                        name = CSTRING(CombatGreen);
+                        name = "$str_3den_attributes_combatmode_green_text";
                         value = "GREEN";
                     };
                     class white {
-                        name = CSTRING(CombatWhite);
+                        name = "$str_3den_attributes_combatmode_white_text";
                         value = "WHITE";
                     };
                     class red {
-                        name = CSTRING(CombatRed);
+                        name = "$str_3den_attributes_combatmode_red_text";
                         value = "RED";
                     };
                 };

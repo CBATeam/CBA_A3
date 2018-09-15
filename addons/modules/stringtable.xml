@@ -510,56 +510,6 @@
             <Polish>Jak szybko grupa przejdzie do ataku</Polish>
             <French>Définit quand et comment le groupe choisira d'engager des cibles ennemies</French>
         </Key>
-        <Key ID="STR_CBA_Modules_CombatYellow">
-            <English>Yellow (Fire at will)</English>
-            <German>Gelb (Nach eigenem Ermessen feuern)</German>
-            <Japanese>イエロー (各個射撃)</Japanese>
-            <Chinese>黃色 (主動開火-保持隊形)</Chinese>
-            <Chinesesimp>黄色 (主动开火-保持队形)</Chinesesimp>
-            <Russian>Жёлтый (Огонь по желанию)</Russian>
-            <Polish>Żółty (Strzelaj bez rozkazu)</Polish>
-            <French>Jaune (Feu à volonté)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatBlue">
-            <English>Blue (Never fire)</English>
-            <German>Blau (Feuerpause)</German>
-            <Japanese>ブルー (射撃禁止)</Japanese>
-            <Chinese>藍色 (永不開火)</Chinese>
-            <Chinesesimp>蓝色 (永不开火)</Chinesesimp>
-            <Russian>Синий (Запретить огонь)</Russian>
-            <Polish>Niebieski (Nigdy nie strzelaj)</Polish>
-            <French>Bleu (Ne pas tirer)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatGreen">
-            <English>Green (Hold Fire-Defend Only)</English>
-            <German>Grün (Feuerpause-nur verteidigen)</German>
-            <Japanese>グリーン (射撃禁止 - 防衛時のみ)</Japanese>
-            <Chinese>綠色 (被動開火-保持隊形)</Chinese>
-            <Chinesesimp>绿色 (被动开火-保持队形)</Chinesesimp>
-            <Russian>Зелёный (Огонь только для защиты)</Russian>
-            <Polish>Zielony (Wstrzmaj ogień-Tylko się broń)</Polish>
-            <French>Vert (Ne pas tirer-En défense seulement)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatWhite">
-            <English>White (Hold Fire-Engage at will)</English>
-            <German>Weiß (Feuer einstellen, Angriff n. eig. Ermessen)</German>
-            <Japanese>ホワイト (射撃禁止 - 各個射撃)</Japanese>
-            <Chinese>白色 (被動開火)</Chinese>
-            <Chinesesimp>白色 (被动开火)</Chinesesimp>
-            <Russian>Белый (Вступать в бой по желанию)</Russian>
-            <Polish>Biały (Wstrzmaj ogień-Nacieraj bez rozkazu)</Polish>
-            <French>Blanc (Ne pas tirer-engagé a volonté)</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatRed">
-            <English>Red (Fire at will-Engage at will)</English>
-            <German>Rot (Feuer eröffnen, Eigenständiger Angriff)</German>
-            <Japanese>レッド (射撃許可 - 各個射撃)</Japanese>
-            <Chinese>紅色 (主動開火)</Chinese>
-            <Chinesesimp>红色 (主动开火)</Chinesesimp>
-            <Russian>Красный (Огонь по желанию - вступление в бой по желанию)</Russian>
-            <Polish>Czerwony (Strzelaj bez rozkazu-Nacieraj bez rozkazu)</Polish>
-            <French>Rouge (Feu à volonté-engagé a volonté)</French>
-        </Key>
         <Key ID="STR_CBA_Modules_SpeedMode">
             <English>Speed Mode</English>
             <German>Geschwindigkeitsmodus</German>
