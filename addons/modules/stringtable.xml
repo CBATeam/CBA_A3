@@ -133,7 +133,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <German>?????</German>
+            <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
@@ -183,7 +183,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
-            <German>?????</German>
+            <German>Ermöglicht dem Modul, alte Wegpunkte zu entfernen und einen Angreifen-Wegpunkt zuzuweisen</German>
             <Japanese>モジュールにより古いウェイポイントの削除と、新しい攻撃ウェイポイントの指定を許可します</Japanese>
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
@@ -223,7 +223,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition">
             <English>Defend Position</English>
-            <German>Position verteidigen</German>
+            <German>Verteidigungsposition</German>
             <Japanese>防衛場所</Japanese>
             <Chinese>防禦位置</Chinese>
             <Chinesesimp>防御位置</Chinesesimp>
@@ -233,7 +233,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <German>?????</German>
+            <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
@@ -253,7 +253,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius_Desc">
             <English>The max distance to defend from the center point</English>
-            <German>?????</German>
+            <German>Die maximale Entfernung zum Verteidigen vom Mittelpunkt.</German>
             <Japanese>中央地点からの最大防衛範囲</Japanese>
             <Chinese>輸入一個數字來定義防禦區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义防御区域的半径大小</Chinesesimp>
@@ -363,7 +363,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
             <English>Center Point</English>
-            <German>Mittelpunkt</German>
+            <German>Patrouillenzentrum</German>
             <Japanese>中央地点</Japanese>
             <Chinese>中央地點</Chinese>
             <Chinesesimp>中央地点</Chinesesimp>
@@ -373,7 +373,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
-            <German>?????</German>
+            <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
@@ -393,7 +393,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius_Desc">
             <English>The distance to patrol from the center point</English>
-            <German>?????</German>
+            <German>Die Entfernung zum Patrouillieren vom Mittelpunkt.</German>
             <Japanese>中央地点からの哨戒範囲を決定します</Japanese>
             <Chinese>輸入一個數字來定義巡邏區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义巡逻区域的半径大小</Chinesesimp>
@@ -423,7 +423,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType">
             <English>Waypoint Type</English>
-            <German>Wegpunktart</German>
+            <German>Wegpunkttyp</German>
             <Japanese>ウェイポイントの種類</Japanese>
             <Chinese>路徑點類型</Chinese>
             <Chinesesimp>路径点类型</Chinesesimp>
