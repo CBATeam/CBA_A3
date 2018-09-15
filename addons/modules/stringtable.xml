@@ -183,7 +183,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
-            <German>Ermöglicht dem Modul, alte Wegpunkte zu entfernen und einen Angreifen-Wegpunkt zuzuweisen</German>
+            <German>Ermöglicht dem Modul, alte Wegpunkte zu entfernen und einen Angreifen-Wegpunkt zuzuweisen.</German>
             <Japanese>モジュールにより古いウェイポイントの削除と、新しい攻撃ウェイポイントの指定を許可します</Japanese>
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
@@ -413,7 +413,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
-            <German>Die Menge der zu erstellenden Wegpunkte</German>
+            <German>Die Menge der zu erstellenden Wegpunkte.</German>
             <Japanese>作成するウェイポイント数</Japanese>
             <Chinese>設定會產出多少個路徑點</Chinese>
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
@@ -433,7 +433,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType_Desc">
             <English>The type of waypoint to be used</English>
-            <German>Die Art des zu verwendenden Wegpunkts</German>
+            <German>Die Art des zu verwendenden Wegpunkts.</German>
             <Japanese>使用されるウェイポイントの種類</Japanese>
             <Chinese>設定會被使用的路徑點類型</Chinese>
             <Chinesesimp>设定会被使用的路径点类型</Chinesesimp>
