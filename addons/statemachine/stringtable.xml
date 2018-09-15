@@ -2,8 +2,8 @@
 <Project name="CBA_A3">
     <Package name="Statemachine">
         <Key ID="STR_cba_statemachine_Component">
-            <English>Community Base Addons - State Machine Component</English>
-            <German>Community Base Addons - State Machine-Komponente</German>
+            <English>Community Base Addons - State Machine</English>
+            <German>Community Base Addons - State Machine</German>
             <Japanese>Community Base Addons - ステート マシーン要素</Japanese>
             <Chinese>社群基礎模組 - 狀態機組件</Chinese>
             <Chinesesimp>社群基础模组 - 状态机组件</Chinesesimp>
