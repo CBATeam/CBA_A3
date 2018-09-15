@@ -263,7 +263,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_Threshold">
             <English>Building Size Threshold</English>
-            <German>?????</German>
+            <German>Größenschwelle der Gebäudes</German>
             <Japanese>建物の大きさのしきい値</Japanese>
             <Chinese>可使用的建築物大小</Chinese>
             <Chinesesimp>可使用的建筑物大小</Chinesesimp>
@@ -273,7 +273,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
-            <German>?????</German>
+            <German>Je kleiner die Zahl, desto mehr Gebäude sind verfügbar.</German>
             <Japanese>小さい数字でより多くの建物を利用できます</Japanese>
             <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
@@ -293,7 +293,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
-            <German>?????</German>
+            <German>Wahrscheinlichkeit jeder Einheit zu patrouillieren, anstatt ein Gebäude zu besetzen.</German>
             <Japanese>各ユニットが歩哨のために巡回する確率を設定</Japanese>
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
@@ -313,7 +313,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
-            <German>?????</German>
+            <German>Wahrscheinlichkeit jeder Einheit den Standort im Kampf zu halten.</German>
             <Japanese>各ユニットが戦闘中に歩哨所で留まる確率を設定</Japanese>
             <Chinese>設定當駐軍開始交戰時每個單位有多少機率會原地不動</Chinese>
             <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
