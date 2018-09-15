@@ -462,93 +462,13 @@
         </Key>
         <Key ID="STR_CBA_Modules_Loiter">
             <English>Loiter</English>
-            <German>Trödeln</German>
+            <German>Untätig</German>
             <Japanese>周回</Japanese>
             <Chinese>盤旋</Chinese>
             <Chinesesimp>盘旋</Chinesesimp>
             <Russian>Слоняться без дела</Russian>
             <Polish>Krąż</Polish>
             <French>Flâner</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Behaviour">
-            <English>Behaviour</English>
-            <German>Verhalten</German>
-            <Japanese>挙動</Japanese>
-            <Chinese>行為</Chinese>
-            <Chinesesimp>行为</Chinesesimp>
-            <Russian>Поведение</Russian>
-            <Polish>Zachowanie</Polish>
-            <French>Comportement</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Behaviour_Desc">
-            <English>The behaviour of the group</English>
-            <German>Das Verhalten der Gruppe</German>
-            <Japanese>グループの挙動</Japanese>
-            <Chinese>設定群組的行為</Chinese>
-            <Chinesesimp>设定群组的行为</Chinesesimp>
-            <Russian>Поведение группы</Russian>
-            <Polish>Zachowanie grupy</Polish>
-            <French>Le comportement du groupe</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatMode">
-            <English>Combat Mode</English>
-            <German>Kampfmodus</German>
-            <Japanese>戦闘状態</Japanese>
-            <Chinese>交戰模式</Chinese>
-            <Chinesesimp>交战模式</Chinesesimp>
-            <Russian>Режим Боя</Russian>
-            <Polish>Tryb walki</Polish>
-            <French>Mode de combat</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_CombatMode_Desc">
-            <English>How fast the group is to engage</English>
-            <German>?????</German>
-            <Japanese>グループが交戦時における状態</Japanese>
-            <Chinese>設定群組多快會進入交戰狀態</Chinese>
-            <Chinesesimp>设定群组多快会进入交战状态</Chinesesimp>
-            <Russian>Как быстро группа должна вступать в бой</Russian>
-            <Polish>Jak szybko grupa przejdzie do ataku</Polish>
-            <French>Définit quand et comment le groupe choisira d'engager des cibles ennemies</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_SpeedMode">
-            <English>Speed Mode</English>
-            <German>Geschwindigkeitsmodus</German>
-            <Japanese>移動速度</Japanese>
-            <Chinese>速度模式</Chinese>
-            <Chinesesimp>速度模式</Chinesesimp>
-            <Russian>Скоростной Режим</Russian>
-            <Polish>Prędkość poruszania</Polish>
-            <French>Vitesse</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_SpeedMode_Desc">
-            <English>Walk, jog, or run to each waypoint</English>
-            <German>Zu jedem Wegpunkt gehen, joggen oder rennen.</German>
-            <Japanese>各ウェイポイントまで歩きや駆け足、疾走を指定できます</Japanese>
-            <Chinese>設定單位前往路徑點的移動速度</Chinese>
-            <Chinesesimp>设定单位前往路径点的移动速度</Chinesesimp>
-            <Russian>Ходьба, бег трусцой или бег к каждой путевой точке</Russian>
-            <Polish>Chodzenie, trucht lub bieganie do każdego punktu nawigacyjnego</Polish>
-            <French>Marcher, trottiner, ou courir à chaque point de passage</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Formation"><!--str_formation/-->
-            <English>Formation</English>
-            <German>?????</German>
-            <Japanese>隊形</Japanese>
-            <Chinese>隊形</Chinese>
-            <Chinesesimp>队形</Chinesesimp>
-            <Russian>Строй</Russian>
-            <Polish>Formacja</Polish>
-            <French>Formation</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Formation_Desc">
-            <English>The formation to be used when moving</English>
-            <German>?????</German>
-            <Japanese>移動時に使う隊形</Japanese>
-            <Chinese>移動時所使用的隊形</Chinese>
-            <Chinesesimp>移动时所使用的队形</Chinesesimp>
-            <Russian>Какой режим строя будет использовать при перемещении</Russian>
-            <Polish>Formacja utrzymywana podczas poruszania</Polish>
-            <French>La formation à utiliser lors du déplacement</French>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>

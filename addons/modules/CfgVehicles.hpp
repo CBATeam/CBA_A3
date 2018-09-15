@@ -296,8 +296,8 @@ class CfgVehicles {
             };
 
             class behaviour {
-                displayName = CSTRING(Behaviour);
-                description = CSTRING(Behaviour_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_BEHAVIOUR_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_BEHAVIOUR_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class careless {
@@ -325,8 +325,8 @@ class CfgVehicles {
             };
 
             class combatMode {
-                displayName = CSTRING(CombatMode);
-                description = CSTRING(CombatMode_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_COMBATMODE_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_COMBATMODE_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class yellow {
@@ -354,8 +354,8 @@ class CfgVehicles {
             };
 
             class speedMode {
-                displayName = CSTRING(SpeedMode);
-                description = CSTRING(SpeedMode_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_SPEEDMODE_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_SPEEDMODE_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class limited {
@@ -375,8 +375,8 @@ class CfgVehicles {
             };
 
             class formation {
-                displayName = CSTRING(Formation);
-                description = CSTRING(Formation_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_TOOLTIP";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_DISPLAYNAME";
                 typeName = "STRING";
                 class values {
                     class column {
