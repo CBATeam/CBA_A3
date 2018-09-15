@@ -301,24 +301,24 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class careless {
-                        name = "$str_combat_careless";
+                        name = "$STR_COMBAT_CARELESS";
                         value = "CARELESS";
                         default = 1;
                     };
                     class safe {
-                        name = "$str_combat_safe";
+                        name = "$STR_COMBAT_SAFE";
                         value = "SAFE";
                     };
                     class aware {
-                        name = "$str_combat_aware";
+                        name = "$STR_COMBAT_AWARE";
                         value = "AWARE";
                     };
                     class combat {
-                        name = "$str_combat_combat";
+                        name = "$STR_COMBAT_COMBAT";
                         value = "COMBAT";
                     };
                     class stealth {
-                        name = "$str_combat_stealth";
+                        name = "$STR_COMBAT_STEALTH";
                         value = "STEALTH";
                     };
                 };
@@ -330,24 +330,24 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class yellow {
-                        name = "$str_3den_attributes_combatmode_yellow_text";
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_YELLOW_TEXT";
                         value = "YELLOW";
                         default = 1;
                     };
                     class blue {
-                        name = "$str_3den_attributes_combatmode_blue_text";
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_BLUE_TEXT";
                         value = "BLUE";
                     };
                     class green {
-                        name = "$str_3den_attributes_combatmode_green_text";
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_GREEN_TEXT";
                         value = "GREEN";
                     };
                     class white {
-                        name = "$str_3den_attributes_combatmode_white_text";
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_WHITE_TEXT";
                         value = "WHITE";
                     };
                     class red {
-                        name = "$str_3den_attributes_combatmode_red_text";
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_RED_TEXT";
                         value = "RED";
                     };
                 };
@@ -359,16 +359,16 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class limited {
-                        name = "$str_speed_limited";
+                        name = "$STR_SPEED_LIMITED";
                         value = "LIMITED";
                         default = 1;
                     };
                     class normal {
-                        name = "$str_speed_normal";
+                        name = "$STR_SPEED_NORMAL";
                         value = "NORMAL";
                     };
                     class full {
-                        name = "$str_speed_full";
+                        name = "$STR_SPEED_FULL";
                         value = "FULL";
                     };
                 };
@@ -380,40 +380,40 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class column {
-                        name = "$str_column";
+                        name = "$STR_COLUMN";
                         value = "COLUMN";
                         default = 1;
                     };
                     class stagColumn {
-                        name = "$str_staggered";
+                        name = "$STR_STAGGERED";
                         value = "STAG COLUMN";
                     };
                     class wedge {
-                        name = "$str_wedge";
+                        name = "$STR_WEDGE";
                         value = "WEDGE";
                     };
                     class echLeft {
-                        name = "$str_echl";
+                        name = "$STR_ECHL";
                         value = "ECH LEFT";
                     };
                     class echRight {
-                        name = "$str_echr";
+                        name = "$STR_ECHR";
                         value = "ECH RIGHT";
                     };
                     class vee {
-                        name = "$str_vee";
+                        name = "$STR_VEE";
                         value = "VEE";
                     };
                     class line {
-                        name = "$str_line";
+                        name = "$STR_LINE";
                         value = "LINE";
                     };
                     class file {
-                        name = "$str_file";
+                        name = "$STR_FILE";
                         value = "FILE";
                     };
                     class diamond {
-                        name = "$str_diamond";
+                        name = "$STR_DIAMOND";
                         value = "DIAMOND";
                     };
                 };
