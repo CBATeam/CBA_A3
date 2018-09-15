@@ -375,8 +375,8 @@ class CfgVehicles {
             };
 
             class formation {
-                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_TOOLTIP";
-                description = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_DISPLAYNAME";
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class column {
