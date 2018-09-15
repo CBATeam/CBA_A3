@@ -490,56 +490,6 @@
             <Polish>Zachowanie grupy</Polish>
             <French>Le comportement du groupe</French>
         </Key>
-        <Key ID="STR_CBA_Modules_Careless">
-            <English>Careless</English>
-            <German>Achtlos</German>
-            <Japanese>無警戒</Japanese>
-            <Chinese>漫不經心</Chinese>
-            <Chinesesimp>漫不经心</Chinesesimp>
-            <Russian>Беспечно</Russian>
-            <Polish>Beztroski</Polish>
-            <French>Imprudence</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Safe">
-            <English>Safe</English>
-            <German>Sicher</German>
-            <Japanese>安全</Japanese>
-            <Chinese>安全</Chinese>
-            <Chinesesimp>安全</Chinesesimp>
-            <Russian>Безопасно</Russian>
-            <Polish>Bezpieczny</Polish>
-            <French>Prudence</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Aware">
-            <English>Aware</English>
-            <German>Bewusst</German>
-            <Japanese>警戒</Japanese>
-            <Chinese>警戒</Chinese>
-            <Chinesesimp>警戒</Chinesesimp>
-            <Russian>Начеку</Russian>
-            <Polish>Uważny</Polish>
-            <French>Vigilance</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Combat">
-            <English>Combat</English>
-            <German>Kampf</German>
-            <Japanese>戦闘</Japanese>
-            <Chinese>交戰</Chinese>
-            <Chinesesimp>交战</Chinesesimp>
-            <Russian>Бой</Russian>
-            <Polish>Walka</Polish>
-            <French>Combat</French>
-        </Key>
-        <Key ID="STR_CBA_Modules_Stealth">
-            <English>Stealth</English>
-            <German>Versteckt</German>
-            <Japanese>隠密</Japanese>
-            <Chinese>隱蔽</Chinese>
-            <Chinesesimp>隐蔽</Chinesesimp>
-            <Russian>Скрытно</Russian>
-            <Polish>Ukryty</Polish>
-            <French>Furtivité</French>
-        </Key>
         <Key ID="STR_CBA_Modules_CombatMode">
             <English>Combat Mode</English>
             <German>Kampfmodus</German>

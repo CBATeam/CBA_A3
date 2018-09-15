@@ -301,24 +301,24 @@ class CfgVehicles {
                 typeName = "STRING";
                 class values {
                     class careless {
-                        name = CSTRING(Careless);
+                        name = "$str_combat_careless";
                         value = "CARELESS";
                         default = 1;
                     };
                     class safe {
-                        name = CSTRING(Safe);
+                        name = "$str_combat_safe";
                         value = "SAFE";
                     };
                     class aware {
-                        name = CSTRING(Aware);
+                        name = "$str_combat_aware";
                         value = "AWARE";
                     };
                     class combat {
-                        name = CSTRING(Combat);
+                        name = "$str_combat_combat";
                         value = "COMBAT";
                     };
                     class stealth {
-                        name = CSTRING(Stealth);
+                        name = "$str_combat_stealth";
                         value = "STEALTH";
                     };
                 };
