@@ -2,8 +2,8 @@
 <Project name="CBA_A3">
     <Package name="Modules">
         <Key ID="STR_CBA_Modules_Component">
-            <English>Community Base Addons - Modules Component</English>
-            <German>Community Base Addons - Modulkomponente</German>
+            <English>Community Base Addons - Modules</English>
+            <German>Community Base Addons - Module</German>
             <Japanese>Community Base Addons - モジュール要素</Japanese>
             <Chinese>社群基礎模組 - 模塊組件</Chinese>
             <Chinesesimp>社群基础模组 - 模块组件</Chinesesimp>
