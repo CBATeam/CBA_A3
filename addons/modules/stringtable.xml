@@ -33,7 +33,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType">
             <English>Attack Location Type</English>
-            <German>?????</German>
+            <German>Typ der Angriffsposition</German>
             <Japanese>攻撃場所の種類</Japanese>
             <Chinese>攻擊地點類型</Chinese>
             <Chinesesimp>攻击地点类型</Chinesesimp>
@@ -43,7 +43,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
-            <German>?????</German>
+            <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
@@ -203,7 +203,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
-            <German>Art der Verteidigungsposition</German>
+            <German>Typ der Verteidigungsposition</German>
             <Japanese>防衛場所の種類</Japanese>
             <Chinese>防禦地點類型</Chinese>
             <Chinesesimp>防御地点类型</Chinesesimp>
@@ -213,7 +213,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
-            <German>?????</German>
+            <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
@@ -343,7 +343,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
-            <German>?????</German>
+            <German>Typ des Patrouillenzentrums</German>
             <Japanese>巡回場所の種類</Japanese>
             <Chinese>巡邏區類型</Chinese>
             <Chinesesimp>巡逻区类型</Chinesesimp>
@@ -353,6 +353,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
+            <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
