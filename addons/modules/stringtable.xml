@@ -163,7 +163,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
-            <German>?????</German>
+            <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort anzugreifen.</German>
             <Japanese>グループのリーダーに同期し、攻撃地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組攻擊/搜索指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
@@ -323,7 +323,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_DefendModuleDescription">
             <English>Sync to leader of group to defend a parsed location</English>
-            <German>?????</German>
+            <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort zu verteidigen.</German>
             <Japanese>グループのリーダーに同期し、防衛地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組防禦指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
@@ -472,7 +472,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
-            <German>?????</German>
+            <German>Auszuführendes Skript</German>
             <Japanese>コードの実行</Japanese>
             <Chinese>會執行的腳本代碼</Chinese>
             <Chinesesimp>会执行的脚本代码</Chinesesimp>
@@ -482,7 +482,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
             <English>Any code to run at waypoints</English>
-            <German>?????</German>
+            <German>Skript, das an den Wegpunkten ausgeführt wird.</German>
             <Japanese>ウェイポイントで実行されるコード</Japanese>
             <Chinese>在路徑點時會執行的腳本代碼</Chinese>
             <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
@@ -492,7 +492,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_Timeout">
             <English>Timeout</English>
-            <German>?????</German>
+            <German>Zeitüberschreitung</German>
             <Japanese>時間設定</Japanese>
             <Chinese>計時器</Chinese>
             <Chinesesimp>计时器</Chinesesimp>
@@ -502,7 +502,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_Timeout_Desc">
             <English>[Min, Med, Max] Time to wait at waypoints</English>
-            <German>?????</German>
+            <German>[Min, Mittel, Max] Am Wegpunkt zu wartende Zeit.</German>
             <Japanese>[最低,中間,最大] ウェイポイントで待機する時間</Japanese>
             <Chinese>[最小值, 中間值, 最大值] 用來設定在路徑點所需等待的時間</Chinese>
             <Chinesesimp>[最小值, 中间值, 最大值] 用来设定在路径点所需等待的时间</Chinesesimp>
@@ -512,7 +512,7 @@
         </Key>
         <Key ID="STR_CBA_Modules_PatrolModuleDescription">
             <English>Sync to leader of group to patrol a parsed location</English>
-            <German>?????</German>
+            <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort zu überwachen.</German>
             <Japanese>グループのリーダーに同期し、地点を捜索させます</Japanese>
             <Chinese>同步到群組的隊長身上，使該群組巡邏指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
