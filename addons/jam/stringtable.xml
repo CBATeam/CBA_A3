@@ -3,6 +3,7 @@
     <Package name="JAM">
         <Key ID="STR_CBA_JR_Component">
             <English>Community Base Addons - Joint Ammo Magazines</English>
+            <German>Community Base Addons - Joint Ammo Magazines</German>
         </Key>
     </Package>
 </Project>
