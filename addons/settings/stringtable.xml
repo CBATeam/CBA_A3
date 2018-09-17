@@ -48,6 +48,7 @@
             <English>Adjust addon settings.</English>
             <German>Addon-Einstellungen anpassen.</German>
             <French>Adjust addon settings.</French>
+            <Polish>Zmień ustawienia addonów.</Polish>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -262,11 +263,13 @@
             <English>This setting applies.</English>
             <German>Diese Einstellung gilt.</German>
             <French>Ce paramètre s'applique.</French>
+            <Polish>To ustawienie dotyczy.</Polish>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
             <German>Diese Einstellung gilt nach dem nächsten Neustart der Mission.</German>
             <French>Ce paramètre s'applique après le prochain redémarrage de la mission.</French>
+            <Polish>To ustawienie zostanie zastosowanie po restarcie misji.</Polish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
