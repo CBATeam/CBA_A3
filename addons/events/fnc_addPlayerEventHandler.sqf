@@ -200,12 +200,6 @@ if (_id != -1) then {
                 GVAR(oldCameraView) = _data;
                 [QGVAR(cameraViewEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
-
-            _data = call CBA_fnc_getActiveFeatureCamera;
-            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
-                GVAR(oldFeatureCamera) = _data;
-                [QGVAR(featureCameraEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
         }] call CBA_fnc_compileFinal;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {call FUNC(playerEH_Map)}];
@@ -228,6 +222,15 @@ if (_id != -1) then {
                 };
             } call CBA_fnc_directCall;
         };
+
+        GVAR(playerEHInfo) pushBack ([{call FUNC(playerEH_HalfSecond)}, 0.5] call CBA_fnc_addPerFrameHandler);
+        [QFUNC(playerEH_HalfSecond), {
+            private _data = call CBA_fnc_getActiveFeatureCamera;
+            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
+                GVAR(oldFeatureCamera) = _data;
+                [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
+            };
+        }] call CBA_fnc_compileFinal;
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];

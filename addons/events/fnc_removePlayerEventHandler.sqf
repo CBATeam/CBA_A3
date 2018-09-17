@@ -66,12 +66,13 @@ switch (_type) do {
 if (!isNil QGVAR(playerEHInfo)) then {
     GVAR(playerEHInfo) deleteAt (GVAR(playerEHInfo) find [_type, _id]);
 
-    // First two entries are mission eventhandler ids. Rest are framework
-    // specific ids in array form. If all playerChanged eventhandlers were
-    // removed, then also clean up the mission eventhandlers.
-    if (count GVAR(playerEHInfo) == 2) then {
+    // First two entries are Mission EH IDs, third is PFH ID. Rest are framework
+    // specific IDs in array form. If all playerChanged eventhandlers were
+    // removed, then also clean up the Mission EHs and PFHs.
+    if (count GVAR(playerEHInfo) == 3) then {
         removeMissionEventHandler ["EachFrame", GVAR(playerEHInfo) select 0];
         removeMissionEventHandler ["Map",       GVAR(playerEHInfo) select 1];
+        [GVAR(playerEHInfo) select 2] call CBA_fnc_removePerFrameHandler;
         GVAR(playerEHInfo) = nil;
     };
 };
