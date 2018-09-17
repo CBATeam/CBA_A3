@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        volume = _vehicle call CBA_fnc_getVolume
+        private _volume = _vehicle call CBA_fnc_getVolume
     (end)
 
 Author:
