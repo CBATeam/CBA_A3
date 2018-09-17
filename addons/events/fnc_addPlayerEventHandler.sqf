@@ -223,14 +223,14 @@ if (_id != -1) then {
             } call CBA_fnc_directCall;
         };
 
-        GVAR(playerEHInfo) pushBack ([{call FUNC(playerEH_HalfSecond)}, 0.5] call CBA_fnc_addPerFrameHandler);
-        [QFUNC(playerEH_HalfSecond), {
+        GVAR(playerEHInfo) pushBack ([{
             private _data = call CBA_fnc_getActiveFeatureCamera;
             if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
                 GVAR(oldFeatureCamera) = _data;
                 [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
-        }] call CBA_fnc_compileFinal;
+        }, 0.5] call CBA_fnc_addPerFrameHandler);
+
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];
