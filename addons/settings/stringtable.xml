@@ -2,7 +2,8 @@
 <Project name="CBA_A3">
     <Package name="Settings">
         <Key ID="STR_cba_settings_Component">
-            <English>Community Base Addons - Settings Component</English>
+            <English>Community Base Addons - Settings</English>
+            <German>Community Base Addons - Einstellungen</German>
             <Japanese>Community Base Addons - 設定要素</Japanese>
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
@@ -72,7 +73,7 @@
             <Polish>Serwer</Polish>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
-            <English>Look at the servers settings. Log in as admin to change.</English>
+            <English>Look at the server's settings. Log in as admin to change.</English>
             <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
@@ -94,7 +95,7 @@
             <French>Mission</French>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip">
-            <English>Look at the missions settings.</English>
+            <English>Look at the mission's settings.</English>
             <German>Missionseinstellungen ansehen.</German>
             <Japanese>ミッションの設定を確認します。</Japanese>
             <Chinese>查看任務的設定。</Chinese>
@@ -105,7 +106,7 @@
             <Polish>Zobacz ustawienia misji.</Polish>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
-            <English>Edit the missions settings.</English>
+            <English>Edit the mission's settings.</English>
             <German>Missionseinstellungen bearbeiten.</German>
             <Japanese>ミッションの設定を編集します。</Japanese>
             <Chinese>編輯任務的設定。</Chinese>
