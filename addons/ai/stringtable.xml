@@ -3,6 +3,7 @@
     <Package name="AI">
         <Key ID="STR_CBA_AI_Component">
             <English>Community Base Addons - Artificial Intelligence</English>
+            <German>Community Base Addons - Künstliche Intelligenz</German>
             <Japanese>Community Base Addons - 人工知能</Japanese>
             <Chinese>社群基礎模組 - 人工智能</Chinese>
             <Chinesesimp>社群基础模组 - 人工智能</Chinesesimp>

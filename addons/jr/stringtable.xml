@@ -3,6 +3,7 @@
     <Package name="JR">
         <Key ID="STR_CBA_JR_Component">
             <English>Community Base Addons - Joint Rails</English>
+            <German>Community Base Addons - Gemeinsame Montageschienen</German>
             <Japanese>Community Base Addons - ジョイント レール</Japanese>
             <Chinese>社群基礎模組 - 共用導軌</Chinese>
             <Chinesesimp>社群基础模组 - 共用导轨</Chinesesimp>
@@ -11,7 +12,6 @@
             <French>Community Base Addons - Rails d'accessoires</French>
         </Key>
         <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
-            <Original>Sound Suppressor MG</Original>
             <English>Sound Suppressor MG</English>
             <Czech>Tlumič hluku MG</Czech>
             <French>Silencieux pour mitrailleuse</French>

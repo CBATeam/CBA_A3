@@ -3,26 +3,27 @@
 Function: CBA_fnc_getVolume
 
 Description:
-    Return the volume of an object based on the object's model's bounding box.
+    Return the volume of the bounding box of an object's model.
+    The bounding box is retrieved using boundingBoxReal instead of boundingBox for more precise measurements.
 
 Parameters:
-    _object - an object to calculate the volume of <OBJECT>
+    _object - Object to calculate the volume of <OBJECT>
 
 Returns:
-    _volume - the volume <NUMBER>
+    _volume - Volume of the bounding box <NUMBER>
 
 Examples:
     (begin example)
-        _volume = _vehicle call CBA_fnc_getVolume
+        private _volume = _vehicle call CBA_fnc_getVolume
     (end)
 
 Author:
-    Rommel
+    Anton
 ---------------------------------------------------------------------------- */
 SCRIPT(getVolume);
 
 params [["_object", objNull, [objNull]]];
 
-private _bounds = (boundingBox _object) select 1;
-
-(_bounds select 0) * (_bounds select 1) * (_bounds select 2)
+(boundingBoxReal _object) params ["_leftBackBottom", "_rightFrontTop"];
+(_rightFrontTop vectorDiff _leftBackBottom) params ["_width", "_length", "_height"];
+_width * _length * _height

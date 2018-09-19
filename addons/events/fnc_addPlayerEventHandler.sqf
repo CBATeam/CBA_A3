@@ -6,20 +6,21 @@ Description:
     Adds a player event handler.
 
     Possible events:
-        "unit"       - player controlled unit changed
-        "weapon"     - currently selected weapon change
-        "loadout"    - players loadout changed
-        "vehicle"    - players current vehicle changed
-        "turret"     - position in vehicle changed
-        "visionMode" - player changed to normal/night/thermal view
-        "cameraView" - camera mode changed ("Internal", "External", "Gunner" etc.)
-        "visibleMap" - opened or closed map
-        "group"      - player group changes
-        "leader"     - leader of player changes
+        "unit"          - player controlled unit changed
+        "weapon"        - currently selected weapon change
+        "loadout"       - players loadout changed
+        "vehicle"       - players current vehicle changed
+        "turret"        - position in vehicle changed
+        "visionMode"    - player changed to normal/night/thermal view
+        "cameraView"    - camera mode changed ("Internal", "External", "Gunner" etc.)
+        "featureCamera" - camera changed (Curator, Arsenal, Spectator etc.)
+        "visibleMap"    - opened or closed map
+        "group"         - player group changes
+        "leader"        - leader of player changes
 
 Parameters:
-    _type      - Event handler type. <STRING>
-    _function  - Function to add to event. <CODE>
+    _type               - Event handler type. <STRING>
+    _function           - Function to add to event. <CODE>
     _applyRetroactively - Call function immediately if player is defined already (optional, default: false) <BOOL>
 
 Returns:
@@ -84,6 +85,12 @@ private _id = switch (_type) do {
         };
         [QGVAR(cameraViewEvent), _function] call CBA_fnc_addEventHandler // return id
     };
+    case "featurecamera": {
+        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+            [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera] call _function;
+        };
+        [QGVAR(featureCameraEvent), _function] call CBA_fnc_addEventHandler // return id
+    };
     case "visiblemap": {
         if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
             [GVAR(oldUnit), visibleMap] call _function;
@@ -120,6 +127,7 @@ if (_id != -1) then {
         GVAR(oldTurret) = [];
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
+        GVAR(oldFeatureCamera) = "";
         GVAR(oldVisibleMap) = false;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
@@ -214,6 +222,15 @@ if (_id != -1) then {
                 };
             } call CBA_fnc_directCall;
         };
+
+        GVAR(playerEHInfo) pushBack ([{
+            private _data = call CBA_fnc_getActiveFeatureCamera;
+            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
+                GVAR(oldFeatureCamera) = _data;
+                [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
+            };
+        }, 0.5] call CBA_fnc_addPerFrameHandler);
+
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];
