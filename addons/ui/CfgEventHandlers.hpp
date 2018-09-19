@@ -6,7 +6,7 @@ class Extended_PreStart_EventHandlers {
 
 class Extended_PreInit_EventHandlers {
     class ADDON {
-        clientInit = QUOTE(call COMPILE_FILE(XEH_preClientInit));
+        init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
 };
 
@@ -19,5 +19,11 @@ class Extended_DisplayLoad_EventHandlers {
     };
     class RscDisplayMultiplayerSetup {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMultiplayerSetup)'));
+    };
+    class RscDisplayPassword {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayPassword)'));
+    };
+    class RscDisplayRemoteMissions {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayRemoteMissions)'));
     };
 };

@@ -40,5 +40,9 @@ switch (toUpper _settingType) do {
     case "COLOR": {
         _value isEqualType [] && {count _value == count _defaultValue} && {_value isEqualTypeAll 0} && {{_x < 0 || _x > 1} count _value == 0}
     };
+    case "TIME": {
+        _settingData params ["_min", "_max"];
+        _value isEqualType 0 && {_value >= _min} && {_value <= _max} && {round _value == _value} 
+    };
     default {false};
 };

@@ -23,6 +23,7 @@ if (isNil QUOTE(ADDON)) exitWith {
     private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
 
     _ctrlToggleButton ctrlEnable false;
+    _ctrlToggleButton ctrlSetTooltip LELSTRING(common,need_mission_start);
 };
 
 // ----- fill addon combo box
@@ -43,11 +44,6 @@ lbSort _ctrlAddonList;
 
 _ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call (uiNamespace getVariable QFUNC(gui_update))}];
-
-private _ctrlKeyList = _display displayCtrl IDC_KEY_LIST;
-
-_ctrlKeyList ctrlSetTooltipColorShade [0, 0, 0, 0.5];
-_ctrlKeyList ctrlAddEventHandler ["LBSelChanged", {_this call (uiNamespace getVariable QFUNC(gui_editKey))}];
 
 // ----- namespace for temp changed keybinds
 uiNamespace setVariable [QGVAR(tempKeybinds), _display ctrlCreate ["RscText", -1]];

@@ -3,12 +3,19 @@
     <Package name="Common">
         <Key ID="STR_CBA_Common_Component">
             <English>Community Base Addons - Common Component</English>
+            <German>Community Base Addons - Gemeinsame Komponente</German>
             <Japanese>Community Base Addons - 全般要素</Japanese>
             <Chinese>社群基礎模組 - 通用組件</Chinese>
             <Chinesesimp>社群基础模组 - 通用组件</Chinesesimp>
             <Russian>Community Base Addons - Общие Компоненты</Russian>
             <French>Community Base Addons - Composants communs</French>
             <Polish>Community Base Addons - Ogólne Komponenty</Polish>
+        </Key>
+        <Key ID="STR_cba_common_need_mission_start">
+            <English>You must first start a mission.</English>
+            <German>Sie müssen zuerst eine Mission starten.</German>
+            <French>Vous devez d'abord commencer une mission.</French>
+            <Polish>Należy najpierw uruchomić misję.</Polish>
         </Key>
     </Package>
 </Project>

@@ -3,12 +3,14 @@
     <Package name="XEH">
         <Key ID="STR_CBA_XEH_Component">
             <English>Community Base Addons - Extended Event Handlers</English>
+            <German>Community Base Addons - Erweiterte Ereignishandler</German>
             <Japanese>Community Base Addons - 拡張型イベント ハンドラ</Japanese>
             <Chinese>社群基礎模組 - 擴展事件處理器</Chinese>
             <Chinesesimp>社群基础模组 - 扩展事件处理器</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Manipuladores Extendidos de Eventos</Portuguese>
             <Russian>Community Base Addons - Расширенные Обработчики Событий</Russian>
             <Polish>Community Base Addons - Rozszerzona Obsługa Zdarzeń</Polish>
+            <French>Community Base Addons - Gestionnaires d'évènement étendus</French>
         </Key>
     </Package>
 </Project>

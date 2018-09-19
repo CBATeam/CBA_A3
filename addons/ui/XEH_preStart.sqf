@@ -2,3 +2,5 @@
 
 PREP(initDisplayInterrupt);
 PREP(initDisplayMultiplayerSetup);
+PREP(initDisplayPassword);
+PREP(initDisplayRemoteMissions);
