@@ -27,13 +27,21 @@ Author:
 private _editor = uiNamespace getVariable "Display3DEN";
 private _display = _editor createDisplay QGVAR(GroupManager);
 
-private _ctrlGroups = _display displayCtrl IDC_GM_GROUPS;
-private _ctrlUnits = _display displayCtrl IDC_GM_UNITS;
+private _ctrlGroups = _display displayCtrl IDC_LM_SLOTS;
 
-for "_i" from 1 to 3 do {
+for "_i" from 1 to 30 do {
     _ctrlGroups lbAdd format ["dummy group %1", _i];
-    _ctrlUnits lbAdd format ["dummy unit %1", _i];
 };
 
 systemChat str _display;
 _display
+
+
+
+
+//groupId (allGroups#0)
+
+
+
+
+

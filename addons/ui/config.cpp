@@ -19,7 +19,7 @@ class RscTitle;
 class RscText;
 class RscEdit;
 class RscListBox;
-class RscButton;
+class ctrlButtonPicture;
 class RscButtonMenu;
 class RscButtonMenuOK;
 class RscButtonMenuCancel;
@@ -32,7 +32,7 @@ class RscMapControl;
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
 
-#include "GroupManager.hpp"
+#include "LobbyManager.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.

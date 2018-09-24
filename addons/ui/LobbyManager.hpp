@@ -37,58 +37,51 @@ class GVAR(GroupManager) {
                     w = WIDTH;
                     h = 20 * GUI_GRID_H;
                 };
-                class Groups: RscListBox {
-                    idc = IDC_GM_GROUPS;
+                class Slots: RscListBox {
+                    idc = IDC_LM_SLOTS;
                     //colorBackground[] = {1,1,1,0.2};
                     x = 0 * GUI_GRID_W;
                     y = 1.1 * GUI_GRID_H;
                     w = 12 * GUI_GRID_W;
-                    h = 17 * GUI_GRID_H;
+                    h = 19.9 * GUI_GRID_H;
                 };
-                class Units: Groups {
-                    idc = IDC_GM_UNITS;
-                    x = 12.1 * GUI_GRID_W;
-                };
-                class Group_ButtonUp: RscButtonMenu {
-                    idc = IDC_GM_GROUPS_UP;
+                class ButtonUp: ctrlButtonPicture {
+                    idc = IDC_LM_MOVE_UP;
                     text = QPATHTOF(arrow_up_ca.paa);
-                    x = 0 * GUI_GRID_W;
-                    y = 18.1 * GUI_GRID_H;
+                    x = 12.1 * GUI_GRID_W;
+                    y = 1.1 * GUI_GRID_H;
                     w = 1 * GUI_GRID_W;
                     h = 1 * GUI_GRID_H;
                 };
-                class Group_ButtonDown: Group_ButtonUp {
-                    idc = IDC_GM_GROUPS_DOWN;
+                class ButtonDown: ButtonUp {
+                    idc = IDC_LM_MOVE_DOWN;
                     text = QPATHTOF(arrow_down_ca.paa);
-                    y = 19.1 * GUI_GRID_H;
+                    y = 2.1 * GUI_GRID_H;
                 };
-                class Group_Name: RscEdit {
-                    idc = IDC_GM_GROUPS_NAME;
-                    x = 1 * GUI_GRID_W;
-                    y = 18.1 * GUI_GRID_H;
-                    w = 11 * GUI_GRID_W;
+                class Name: RscText {
+                    text = "$STR_3DEN_OBJECT_ATTRIBUTE_DESCRIPTION_DISPLAYNAME";
+                    tooltip = "$STR_3DEN_OBJECT_ATTRIBUTE_DESCRIPTION_TOOLTIP";
+                    sizeEx = 0.7 * GUI_GRID_H;
+                    x = 12.1 * GUI_GRID_W;
+                    y = 3.5 * GUI_GRID_H;
+                    w = 12 * GUI_GRID_W;
+                    h = 0.7 * GUI_GRID_H;
+                };
+                class ValueName: RscEdit {
+                    idc = IDC_LM_NAME;
+                    x = 12.1 * GUI_GRID_W;
+                    y = 4.2 * GUI_GRID_H;
+                    w = 12 * GUI_GRID_W;
                     h = 1 * GUI_GRID_H;
                 };
-                class Group_VarName: Group_Name {
-                    idc = IDC_GM_GROUPS_VARNAME;
-                    x = 1 * GUI_GRID_W;
-                    y = 19.1 * GUI_GRID_H;
+                class VarName: Name {
+                    text = "$STR_3DEN_OBJECT_ATTRIBUTE_NAME_DISPLAYNAME";
+                    tooltip = "$STR_3DEN_OBJECT_ATTRIBUTE_NAME_TOOLTIP";
+                    y = 5.5 * GUI_GRID_H;
                 };
-                class Unit_ButtonUp: Group_ButtonUp {
-                    idc = IDC_GM_UNITS_UP;
-                    x = 12.1 * GUI_GRID_W;
-                };
-                class Unit_ButtonDown: Group_ButtonDown {
-                    idc = IDC_GM_UNITS_DOWN;
-                    x = 12.1 * GUI_GRID_W;
-                };
-                class Unit_Name: Group_Name {
-                    idc = IDC_GM_GROUPS_NAME;
-                    x = 13.1 * GUI_GRID_W;
-                };
-                class Unit_VarName: Group_VarName {
-                    idc = IDC_GM_GROUPS_VARNAME;
-                    x = 13.1 * GUI_GRID_W;
+                class ValueVarName: ValueName {
+                    idc = IDC_LM_VARNAME;
+                    y = 6.2 * GUI_GRID_H;
                 };
                 class ButtonOK: RscButtonMenuOK {
                     x = WIDTH - 10.1 * GUI_GRID_W;
