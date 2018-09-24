@@ -1,7 +1,3 @@
-class RscText;
-class RscProgress;
-class RscMapControl;
-
 class RscTitles {
     class GVAR(ProgressBar) {
         onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];

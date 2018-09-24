@@ -32,6 +32,18 @@
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
 
+// Group Manager
+#define IDC_GM_GROUPS 3000
+#define IDC_GM_GROUPS_UP 3001
+#define IDC_GM_GROUPS_DOWN 3002
+#define IDC_GM_GROUPS_NAME 3010
+#define IDC_GM_GROUPS_VARNAME 3011
+#define IDC_GM_UNITS 3100
+#define IDC_GM_UNITS_UP 3101
+#define IDC_GM_UNITS_DOWN 3102
+#define IDC_GM_UNITS_NAME 3110
+#define IDC_GM_UNITS_VARNAME 3111
+
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
 

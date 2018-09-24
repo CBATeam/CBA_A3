@@ -13,11 +13,26 @@ class CfgPatches {
     };
 };
 
+// ui base classes
+class RscControlsGroup;
+class RscTitle;
+class RscText;
+class RscEdit;
+class RscListBox;
+class RscButton;
+class RscButtonMenu;
+class RscButtonMenuOK;
+class RscButtonMenuCancel;
+class RscProgress;
+class RscMapControl;
+
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
+
+#include "GroupManager.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
