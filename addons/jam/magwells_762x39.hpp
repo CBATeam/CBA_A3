@@ -6,3 +6,4 @@
             "30Rnd_762x39_Mag_Tracer_Green_F"
         };
     };
+    class CBA_762x39_RPK {};   // 40/45rnd
