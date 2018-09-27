@@ -7,4 +7,4 @@
         };
     };
 
-    class CBA_545x39_AK_L {};    // 45rnd RPK-74
+    class CBA_545x39_RPK {};    // 45rnd RPK-74
