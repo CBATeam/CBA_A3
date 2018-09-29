@@ -1,2 +1,5 @@
-    class CBA_380ACP_PP {};         // Walther PP in .380 ACP (9x17mm/9mm Short/9mm Browning)
-    class CBA_380ACP_PPK {};        // Walther PPK in .380 ACP (9x17mm/9mm Short/9mm Browning)
+    class CBA_380ACP_Glock_Slim {};     // Slimline Glock in .380 ACP (Glock 42)
+    class CBA_380ACP_Glock_SubC {};     // Subcompact Glock in .380 ACP (Glock 28)
+    class CBA_380ACP_Glock_Cpct {};     // Compact Glock in .380 ACP (Glock 25)
+    class CBA_380ACP_PP {};             // Walther PP in .380 ACP (9x17mm/9mm Short/9mm Browning)
+    class CBA_380ACP_PPK {};            // Walther PPK in .380 ACP (9x17mm/9mm Short/9mm Browning)
