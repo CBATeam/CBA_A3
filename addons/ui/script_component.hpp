@@ -34,10 +34,12 @@
 
 // Group Manager
 #define IDC_LM_SLOTS 3001
-#define IDC_LM_MOVE_UP 3001
-#define IDC_LM_MOVE_DOWN 3002
-#define IDC_LM_NAME 3010
-#define IDC_LM_VARNAME 3011
+#define IDC_LM_MOVE_UP 3011
+#define IDC_LM_MOVE_DOWN 3012
+#define IDC_LM_NAME 3021
+#define IDC_LM_VARNAME 3022
+
+#define SEPARATORS "@"
 
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"

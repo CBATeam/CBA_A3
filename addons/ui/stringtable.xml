@@ -75,5 +75,9 @@
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
         </Key>
+        <Key ID="STR_CBA_Ui_LobbyManager">
+            <English>Lobby Manager</English>
+            <German>Lobby Manager</German>
+        </Key>
     </Package>
 </Project>

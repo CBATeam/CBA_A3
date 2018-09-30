@@ -1,13 +1,14 @@
 #define WIDTH (24.1 * GUI_GRID_W)
 #define HEIGHT (22.2 * GUI_GRID_H)
 
+//class RscButton;
+
 class GVAR(GroupManager) {
     idd = -1;
     movingEnable = 1;
 
     class controls {
         class Presets: RscControlsGroup {
-            idc = IDC_PRESETS_GROUP;
             x = 0.5 - WIDTH/2;
             y = 0.5 - HEIGHT/2;
             w = WIDTH;
@@ -21,16 +22,14 @@ class GVAR(GroupManager) {
                         "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
                         "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
                     };
-                    idc = -1;
                     moving = 1;
-                    text = "Group Manager"; // @todo translate
+                    text = CSTRING(LobbyManager);
                     x = 0 * GUI_GRID_W;
                     y = 0 * GUI_GRID_H;
                     w = WIDTH;
                     h = 1 * GUI_GRID_H;
                 };
                 class Background: RscText {
-                    idc = -1;
                     colorBackground[] = {0,0,0,0.8};
                     x = 0 * GUI_GRID_W;
                     y = 1.1 * GUI_GRID_H;
@@ -39,13 +38,12 @@ class GVAR(GroupManager) {
                 };
                 class Slots: RscListBox {
                     idc = IDC_LM_SLOTS;
-                    //colorBackground[] = {1,1,1,0.2};
                     x = 0 * GUI_GRID_W;
                     y = 1.1 * GUI_GRID_H;
                     w = 12 * GUI_GRID_W;
                     h = 19.9 * GUI_GRID_H;
                 };
-                class ButtonUp: ctrlButtonPicture {
+                class ButtonUp: ctrlButtonPicture {//RscButton {//ctrlButtonPicture {
                     idc = IDC_LM_MOVE_UP;
                     text = QPATHTOF(arrow_up_ca.paa);
                     x = 12.1 * GUI_GRID_W;

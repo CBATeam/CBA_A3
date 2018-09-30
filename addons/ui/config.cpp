@@ -31,6 +31,7 @@ class RscMapControl;
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
+#include "CfgDisplay3DEN.hpp"
 
 #include "LobbyManager.hpp"
 
