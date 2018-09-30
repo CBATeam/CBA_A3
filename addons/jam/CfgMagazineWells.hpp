@@ -24,7 +24,7 @@ class CfgMagazineWells {
     #include "magwells_300WM.hpp"       // .300 Winchester Magnum | .300 Win Mag | 300WM
     #include "magwells_303B.hpp"        // .303 British | 7.7x56mmR
     #include "magwells_338LM.hpp"       // .338 Lapua Magnum
-    #include "magwells_408CT.hpp"       // .408 Cheyenne Tactical | 408 Chey Tac | 10.36×77mm
+    #include "magwells_408CT.hpp"       // .408 Cheyenne Tactical | 408 Chey Tac | 10.36x77mm
     #include "magwells_50BMG.hpp"       // .50 BMG | .50 Browning Machine Gun | 12.7x99mm NATO
 
     // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
@@ -34,6 +34,7 @@ class CfgMagazineWells {
     #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic
     #include "magwells_765x21.hpp"      // 7.65x21mm Parabellum | 7,65 Parabellum | 7.65mm Luger | .30 Luger
     #include "magwells_8x22.hpp"        // 8x22mm Nambu
+    #include "magwells_9x18.hpp"        // 9x18mm Makarov | 9mm Makarov | 9x18mm PM
     #include "magwells_9x19.hpp"        // 9x19mm Parabellum | 9mm Luger
 
     #include "magwells_22LR.hpp"        // .22 LR | .22 Long Rifle | 5.6x15mmR
