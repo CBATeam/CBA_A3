@@ -8,4 +8,5 @@
     class CBA_12g_2rnds {};         // 2 loose rounds
     class CBA_12g_1rnd {};          // 1 loose round
 
-    class CBA_12g_SAIGA {};
+    class CBA_12g_SAIGA {};         // Saiga Stick Magazines
+    class CBA_12g_SAIGA_XL {};      // Saiga Drum Magazines
