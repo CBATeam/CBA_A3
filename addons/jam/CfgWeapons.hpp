@@ -14,10 +14,10 @@ class CfgWeapons {
         magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D"};
     };
     class arifle_SPAR_01_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D", "CBA_556x45_STANAG_2D_XL"};
+        magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D"};
     };
     class arifle_SPAR_02_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D", "CBA_556x45_STANAG_2D_XL"};
+        magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D"};
     };
 
     class UGL_F : GrenadeLauncher {

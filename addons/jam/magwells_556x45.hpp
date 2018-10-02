@@ -14,7 +14,7 @@
     class CBA_556x45_TYPE97_XL {};      // QBB-97 LSW Drums
     class CBA_556x45_SG550 {};
 
-    class CBA_556x45_STANAG {
+    class CBA_556x45_STANAG {           // STANAG mags, standard length, including small drums
         BI_mags[] = {
             "30Rnd_556x45_Stanag",
             "30Rnd_556x45_Stanag_green",
@@ -25,11 +25,9 @@
         };
     };
 
-    class CBA_556x45_STANAG_L {};       // Magpul PMAG 40, Surefire MAG5-60
-    class CBA_556x45_STANAG_XL {};      // Surefire MAG5-100
-    class CBA_556x45_STANAG_2D {};          // twin-drum 100rnd Beta C-MAG
-
-    class CBA_556x45_STANAG_2D_XL {     // twin-drum 150rnd Armatac SAW-MAG
+    class CBA_556x45_STANAG_L {};       // STANAG mags, long stick or coffin (40/60 rounds, Magpul PMAG 40, Surefire MAG5-60)
+    class CBA_556x45_STANAG_XL {};      // STANAG mags, extra long stick or coffin (80/100 rounds, Surefire MAG5-100)
+    class CBA_556x45_STANAG_2D {        // STANAG mags, twin-drum (100rnd Beta C-MAG, 150rnd Armatac SAW-MAG)
         BI_mags[] = {
             "150Rnd_556x45_Drum_Mag_F",
             "150Rnd_556x45_Drum_Mag_Tracer_F"
@@ -37,3 +35,6 @@
     };
 
     class CBA_556x45_STEYR {};          // Steyr AUG
+
+    //Deprecated classes do not use
+    class CBA_556x45_STANAG_2D_XL {};  // DEPRECATED, use CBA_556x45_STANAG_2D for all twin drums
