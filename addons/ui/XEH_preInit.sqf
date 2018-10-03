@@ -23,21 +23,21 @@
 [
     QGVAR(NotificationSpeed), "LIST",
     LLSTRING(NotificationSpeed),
-    LLSTRING(Category),
+    [LLSTRING(Category), LLSTRING(NotificationCategory)],
     [[0, 0.2, 0.5, 0.8], ["Instant","Fast","Regular","Slow"], 2]
 ] call cba_settings_fnc_init;
 
 [
     QGVAR(NotificationLifetime), "SLIDER",
     LLSTRING(NotificationLifetime),
-    LLSTRING(Category),
+    [LLSTRING(Category), LLSTRING(NotificationCategory)],
     [2, 7, 4, 1]
 ] call cba_settings_fnc_init;
 
 [
     QGVAR(NotificationMax), "LIST",
     LLSTRING(NotificationMax),
-    LLSTRING(Category),
+    [LLSTRING(Category), LLSTRING(NotificationCategory)],
     [[1, 2, 3, 4], ["1","2","3","4"], 1]
 ] call cba_settings_fnc_init;
 

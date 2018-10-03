@@ -75,16 +75,20 @@
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
         </Key>
+        <Key ID="STR_CBA_Ui_NotificationCategory">
+            <English>Notifications</English>
+            <French>Notifications</French>
+        </Key>
         <Key ID="STR_CBA_Ui_NotificationSpeed">
-            <English>Notification Speed</English>
-            <French>Vitesse de Notification</French>
+            <English>Speed</English>
+            <French>Vitesse</French>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationLifetime">
-            <English>Notification Lifetime</English>
-            <French>Durée de vie de Notification</French>
+            <English>Duration</English>
+            <French>Durée</French>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationMax">
-            <English>Maximum Notifications</English>
+            <English>Max Notifications</English>
             <French>Notifications Maximales</French>
         </Key>
     </Package>
