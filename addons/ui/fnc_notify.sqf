@@ -77,10 +77,10 @@ _ctrlTitle ctrlCommit 0;
 private _ctrlNotification = _display ctrlCreate ["RscStructuredText", 30];
 _ctrlNotification ctrlSetPosition
 [
-	_safezoneX,
-	(0.26 + (_position * 0.08)) * safezoneH + (safezoneY * -0.5),
-	0.1 * safezoneW,
-	0.06 * safezoneH
+    _safezoneX,
+    (0.26 + (_position * 0.08)) * safezoneH + (safezoneY * -0.5),
+    0.1 * safezoneW,
+    0.06 * safezoneH
 ];
 _ctrlNotification ctrlSetStructuredText parseText _message;
 _ctrlNotification ctrlCommit 0;
