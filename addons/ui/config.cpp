@@ -7,7 +7,7 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {};
         requiredVersion = 1;
-        requiredAddons[] = {"cba_common", "cba_arrays"};
+        requiredAddons[] = {"cba_common", "cba_arrays", "cba_settings"};
         version = VERSION;
         authors[] = {"Dr Eyeball", "commy2"};
     };
