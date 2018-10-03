@@ -78,18 +78,22 @@
         <Key ID="STR_CBA_Ui_NotificationCategory">
             <English>Notifications</English>
             <French>Notifications</French>
+            <Polish>Powiadomienia</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationSpeed">
             <English>Speed</English>
             <French>Vitesse</French>
+            <Polish>Prędkość</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationLifetime">
             <English>Duration</English>
             <French>Durée</French>
+            <Polish>Czas trwania</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationMax">
             <English>Max Notifications</English>
             <French>Notifications Maximales</French>
+            <Polish>Maksymalna ilość powiadomień</Polish>
         </Key>
     </Package>
 </Project>
