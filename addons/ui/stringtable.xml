@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Ui">
         <Key ID="STR_CBA_Ui_Component">
@@ -34,46 +34,55 @@
             <English>CBA UI</English>
             <German>CBA UI</German>
             <Polish>CBA UI</Polish>
+            <French>CBA IU</French>
         </Key>
         <Key ID="STR_CBA_Ui_StoreServerPasswords">
             <English>Store server passwords</English>
             <German>Serverpasswörter speichern</German>
             <Polish>Zapamiętuj hasła serwerów</Polish>
+            <French>Enregistrer les mots de passe serveur</French>
         </Key>
         <Key ID="STR_CBA_Ui_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
             <German>Einstellung zum Speichern der beim Betreten eines Mehrspielerservers eingegebenen Passwörter.</German>
             <Polish>Opcja zapamiętywania wprowadzonych haseł do serwerów.</Polish>
+            <French>Paramètre pour enregistrer les mots de passe entrés quand vous vous connectez à un serveur multijoueur</French>
         </Key>
         <Key ID="STR_CBA_Ui_SavePasswords">
             <English>Save passwords</English>
             <German>Passwörter speichern</German>
             <Polish>Zapisuj hasła</Polish>
+            <French>Sauvegarder mots de passe</French>
         </Key>
         <Key ID="STR_CBA_Ui_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver gespeichert.</German>
             <Polish>Hasła są zapisywane podczas łaczenia do serwerów.</Polish>
+            <French>Les mots de passe sont enregistrés quand vous vous connectez à un serveur multijoueur</French>
         </Key>
         <Key ID="STR_CBA_Ui_DoNotSavePasswords">
             <English>Do not save passwords</English>
             <German>Passwörter nicht speichern</German>
             <Polish>Nie zapisuj haseł</Polish>
+            <French>Ne pas enregistrer les mots de passe</French>
         </Key>
         <Key ID="STR_CBA_Ui_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden nicht automatisch eingegeben.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła nie bedą wykorzystywane.</Polish>
+            <French>Les mots de passe ne sont pas enregistrés quand vous vous connectez à un serveur multijoueur.Les mots de passe déjà enregistrés ne seront pas entrés automatiquement.</French>
         </Key>
         <Key ID="STR_CBA_Ui_DeletePasswords">
             <English>Delete passwords</English>
             <German>Passwörter löschen</German>
             <Polish>Usuń hasła</Polish>
+            <French>Supprimer les mots de passe</French>
         </Key>
         <Key ID="STR_CBA_Ui_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
+            <French>Les mots de passe ne sont pas enregistrés quand vous vous connectez à un serveur multijoueur.Les mots de passe déjà enregistrés vont être supprimés du profile.</French>
         </Key>
     </Package>
 </Project>

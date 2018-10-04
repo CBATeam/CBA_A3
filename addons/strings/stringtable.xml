@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Strings">
         <Key ID="STR_CBA_Strings_Component">
@@ -28,13 +28,8 @@
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
-            <Czech> </Czech>
             <German>.</German>
-            <Polish> </Polish>
-            <Russian> </Russian>
-            <French> </French>
-            <Spanish> </Spanish>
-            <Italian> </Italian>
+            <French>,</French>
             <Japanese>,</Japanese>
             <Chinese>,</Chinese>
             <Chinesesimp>,</Chinesesimp>
