@@ -1,3 +1,4 @@
+    class CBA_556x45_FAMAS {};          // H&K G36
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
 
@@ -27,7 +28,8 @@
 
     class CBA_556x45_STANAG_L {};       // STANAG mags, long stick or coffin (40/60 rounds, Magpul PMAG 40, Surefire MAG5-60)
     class CBA_556x45_STANAG_XL {};      // STANAG mags, extra long stick or coffin (80/100 rounds, Surefire MAG5-100)
-    class CBA_556x45_STANAG_2D {        // STANAG mags, twin-drum (100rnd Beta C-MAG, 150rnd Armatac SAW-MAG)
+    class CBA_556x45_STANAG_2D {};      // STANAG mags, twin drums (100rnd Beta C-MAG)
+    class CBA_556x45_STANAG_2D_XL {     // STANAG mags, extra large twin-drums (150rnd Armatac SAW-MAG)
         BI_mags[] = {
             "150Rnd_556x45_Drum_Mag_F",
             "150Rnd_556x45_Drum_Mag_Tracer_F"
@@ -35,6 +37,3 @@
     };
 
     class CBA_556x45_STEYR {};          // Steyr AUG
-
-    //Deprecated classes do not use
-    class CBA_556x45_STANAG_2D_XL {};  // DEPRECATED, use CBA_556x45_STANAG_2D for all twin drums
