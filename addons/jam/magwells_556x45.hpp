@@ -1,4 +1,4 @@
-    class CBA_556x45_FAMAS {};          // H&K G36
+    class CBA_556x45_FAMAS {};          // FAMAS F1
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
 
