@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="AI">
         <Key ID="STR_CBA_AI_Component">
@@ -10,6 +10,7 @@
             <Russian>Community Base Addons - Искуственный Интеллект</Russian>
             <French>Community Base Addons - Intelligence artificielle</French>
             <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
+            <Turkish>Community Base Addons - Yapay Zeka</Turkish>
         </Key>
     </Package>
 </Project>
