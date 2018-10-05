@@ -114,7 +114,7 @@ private _fnc_buttonScript = {
 
     // apply sort to list via value, with value being the index in the sorted array
     {
-        _ctrlSlots lbSetValue [_x#2, _forEachIndex];
+        _ctrlSlots lbSetValue [_x select 2, _forEachIndex];
     } forEach _sort;
 
     lbSortByValue _ctrlSlots;
