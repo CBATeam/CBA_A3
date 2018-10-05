@@ -99,6 +99,7 @@
         <Key ID="STR_CBA_Ui_LobbyManager">
             <English>Lobby Manager</English>
             <German>Lobby Manager</German>
+            <Polish>Menadżer Lobby</Polish>
         </Key>
     </Package>
 </Project>
