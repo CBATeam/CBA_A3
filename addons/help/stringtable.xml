@@ -11,6 +11,7 @@
             <Russian>Community Base Addons - Помощь</Russian>
             <Polish>Community Base Addons - Pomoc</Polish>
             <French>Community Base Addons - Aide</French>
+            <Turkish>Community Base Addons - Yardım</Turkish>
         </Key>
         <Key ID="STR_DN_CBA_HELP_KEYS">
             <English>Keybindings</English>
@@ -25,6 +26,7 @@
             <Japanese>キー割り当て</Japanese>
             <Chinese>按鍵綁定</Chinese>
             <Chinesesimp>按键绑定</Chinesesimp>
+            <Turkish>Klavye Tuşları</Turkish>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE">
             <English>Bugtracker</English>
@@ -39,6 +41,7 @@
             <Japanese>バグトラッカー</Japanese>
             <Chinese>臭蟲追蹤器</Chinese>
             <Chinesesimp>臭虫追踪器</Chinesesimp>
+            <Turkish>Sorun Takibi</Turkish>
         </Key>
         <Key ID="STR_DN_CBA_WEBSITE_WIKI">
             <English>Wiki (Documentation)</English>
@@ -53,6 +56,7 @@
             <Japanese>ウィキ (ドキュメント)</Japanese>
             <Chinese>維基 (文件)</Chinese>
             <Chinesesimp>维基 (文件)</Chinesesimp>
+            <Turkish>Wiki (Dökümantasyon)</Turkish>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS">
             <English>Credits</English>
@@ -67,6 +71,7 @@
             <Japanese>クレジット</Japanese>
             <Chinese>製作組</Chinese>
             <Chinesesimp>制作组</Chinesesimp>
+            <Turkish>Yapımcılar</Turkish>
         </Key>
         <Key ID="STR_DN_CBA_CREDITS_ADDONS">
             <English>Credits - Addons</English>
@@ -81,6 +86,7 @@
             <Japanese>クレジット - アドオン</Japanese>
             <Chinese>製作組 - 模組</Chinese>
             <Chinesesimp>制作组 - 模组</Chinesesimp>
+            <Turkish>Yapımcılar - Modüller</Turkish>
         </Key>
     </Package>
 </Project>
