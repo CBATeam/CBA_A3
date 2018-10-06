@@ -88,25 +88,32 @@ private _fnc_buttonScript = {
     private _sort = [];
     private _groupCounter = 0;
     private _unitCounter = 0;
+    private "_sortModifierGroup";
 
     for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
         private _item = _ctrlSlots getVariable (_ctrlSlots lbData _index);
-
-        // Button Up decrements position, Button Down increments position
-        private _sortModifier = 0;
-        if (_index isEqualTo _currentIndex) then {
-            _sortModifier = _sortModifier + ([1.5, -1.5] select _isButtonUp);
-        };
 
         if (_item isEqualType grpNull) then {
             INC(_groupCounter);
             _unitCounter = 0;
 
-            _sort pushBack [_groupCounter + _sortModifier, _unitCounter, _index];
+            // Button Up decrements position, Button Down increments position
+            _sortModifierGroup = 0;
+            if (_index isEqualTo _currentIndex) then {
+                _sortModifierGroup = _sortModifierGroup + ([1.5, -1.5] select _isButtonUp);
+            };
+
+            _sort pushBack [_groupCounter + _sortModifierGroup, _unitCounter - 2, _index];
         } else {
             INC(_unitCounter);
 
-            _sort pushBack [_groupCounter, _unitCounter + _sortModifier, _index];
+            // Button Up decrements position, Button Down increments position
+            private _sortModifierUnit = 0;
+            if (_index isEqualTo _currentIndex) then {
+                _sortModifierUnit = _sortModifierUnit + ([1.5, -1.5] select _isButtonUp);
+            };
+
+            _sort pushBack [_groupCounter + _sortModifierGroup, _unitCounter + _sortModifierUnit, _index];
         };
     };
 
@@ -119,13 +126,14 @@ private _fnc_buttonScript = {
 
     lbSortByValue _ctrlSlots;
 
-    // move cursor as well
-    if (_isButtonUp) then {
-        _currentIndex = (_currentIndex - 1) max 0;
-    } else {
-        _currentIndex = (_currentIndex + 1) min (lbSize _ctrlSlots - 1);
+    // select old entry
+    for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
+        private _item = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+
+        if (_item isEqualTo _currentItem) exitWith {
+            _ctrlSlots lbSetCurSel _index;
+        };
     };
-    _ctrlSlots lbSetCurSel _currentIndex;
 };
 
 _ctrlButtonUp ctrlAddEventHandler ["ButtonClick", _fnc_buttonScript];
