@@ -72,15 +72,6 @@ class GVAR(GroupManager) {
                     w = 12 * GUI_GRID_W;
                     h = 1 * GUI_GRID_H;
                 };
-                class VarName: Name {
-                    text = "$STR_3DEN_OBJECT_ATTRIBUTE_NAME_DISPLAYNAME";
-                    tooltip = "$STR_3DEN_OBJECT_ATTRIBUTE_NAME_TOOLTIP";
-                    y = 5.5 * GUI_GRID_H;
-                };
-                class ValueVarName: ValueName {
-                    idc = IDC_LM_VARNAME;
-                    y = 6.2 * GUI_GRID_H;
-                };
                 class ButtonOK: RscButtonMenuOK {
                     x = WIDTH - 10.1 * GUI_GRID_W;
                     y = HEIGHT - 1 * GUI_GRID_H;

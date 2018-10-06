@@ -37,7 +37,6 @@
 #define IDC_LM_MOVE_UP 3011
 #define IDC_LM_MOVE_DOWN 3012
 #define IDC_LM_NAME 3021
-#define IDC_LM_VARNAME 3022
 
 #define SEPARATORS "@"
 
