@@ -80,7 +80,7 @@ private _fnc_buttonScript = {
     private _isButtonUp = ctrlIDC _ctrlButton isEqualTo IDC_LM_MOVE_UP;
 
     private _currentIndex = lbCurSel _ctrlSlots;
-    private _currentItem = _ctrlSlots getVariable (_ctrlSlots lbData _currentIndex); // OBJECT or GROUP
+    private _currentEntity = _ctrlSlots getVariable (_ctrlSlots lbData _currentIndex); // OBJECT or GROUP
 
     // sort, array format [[groupIndex1, unitIndex1, listboxIndex1], [groupIndex2, unitIndex2, listboxIndex2], ...]
     // unitIndexN starts over at 0 for each new group.
@@ -91,11 +91,11 @@ private _fnc_buttonScript = {
     private "_sortModifierGroup";
 
     for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
-        private _item = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+        private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
 
-        if (_item isEqualType grpNull) then {
-            INC(_groupCounter);
+        if (_entity isEqualType grpNull) then {
             _unitCounter = 0;
+            INC(_groupCounter);
 
             // Button Up decrements position, Button Down increments position
             _sortModifierGroup = 0;
@@ -128,9 +128,9 @@ private _fnc_buttonScript = {
 
     // select old entry
     for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
-        private _item = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+        private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
 
-        if (_item isEqualTo _currentItem) exitWith {
+        if (_entity isEqualTo _currentEntity) exitWith {
             _ctrlSlots lbSetCurSel _index;
         };
     };
@@ -138,3 +138,48 @@ private _fnc_buttonScript = {
 
 _ctrlButtonUp ctrlAddEventHandler ["ButtonClick", _fnc_buttonScript];
 _ctrlButtonDown ctrlAddEventHandler ["ButtonClick", _fnc_buttonScript];
+
+// OK button - apply changes
+private _ctrlButtonOK = _display displayCtrl IDC_OK;
+
+_ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
+    collect3DENHistory {
+        params ["_ctrlButtonOK"];
+        private _display = ctrlParent _ctrlButtonOK;
+        private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
+
+        private _group = grpNull;
+        private _leader = objNull;
+        private _units = [];
+        private _currentSelected = get3DENSelected "";
+
+        for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
+            private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+
+            if (_entity isEqualType grpNull) then {
+                _group = _entity;
+                _leader = leader _group;
+                _units = [];
+
+                _group deleteGroupWhenEmpty false;
+
+                /*set3DENSelected [_group];
+                do3DENAction "CutUnit";
+                do3DENAction "PasteUnitOrig";*/
+            } else {
+                set3DENSelected [_entity];
+                do3DENAction "CutUnit";
+                do3DENAction "PasteUnitOrig";
+
+                // new entity, old references ghost entity
+                _entity = get3DENSelected "Object" select 0;
+
+                _units pushBack _entity;
+                add3DENConnection ["Group", _units, _group];
+                _group selectLeader _leader;
+            };
+        };
+
+        set3DENSelected _currentSelected;
+    };
+}];
