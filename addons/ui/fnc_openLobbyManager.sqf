@@ -43,8 +43,10 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
             };
 
             if (isNil "_slotName" || {_slotName isEqualTo ""}) then {
-                _slotName = getText (configFile >> "CfgVehicles" >> typeOf _unit >> "displayName");
+                _slotName = format ["%1: %2", _forEachIndex, getText (configFile >> "CfgVehicles" >> typeOf _unit >> "displayName")];
             };
+
+            _unit setVariable [QGVAR(description), _slotName];
 
             _slots pushBack [_slotName, _unit];
         };
@@ -52,6 +54,9 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
 
     if (isNil "_groupName" || {_groupName isEqualTo ""}) then {
         _groupName = groupId _group;
+        _group setVariable [QGVAR(description), ""];
+    } else {
+        _group setVariable [QGVAR(description), _groupName];
     };
 
     if (count _slots > 0) then {
@@ -139,6 +144,37 @@ private _fnc_buttonScript = {
 _ctrlButtonUp ctrlAddEventHandler ["ButtonClick", _fnc_buttonScript];
 _ctrlButtonDown ctrlAddEventHandler ["ButtonClick", _fnc_buttonScript];
 
+// update edit boxes when listbox selection changes
+_ctrlSlots ctrlAddEventHandler ["LBSelChanged", {
+    params ["_ctrlSlots", "_index"];
+    private _display = ctrlParent _ctrlSlots;
+    private _ctrlName = _display displayCtrl IDC_LM_NAME;
+
+    private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+    private _description = _entity getVariable [QGVAR(description), ""];
+
+    _ctrlName ctrlSetText _description;
+}];
+
+private _ctrlName = _display displayCtrl IDC_LM_NAME;
+
+_ctrlName ctrlAddEventHandler ["KeyUp", {
+    params ["_ctrlName"];
+    private _display = ctrlParent _ctrlName;
+    private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
+
+    private _description = ctrlText _ctrlName;
+    private _index = lbCurSel _ctrlSlots;
+    private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
+    _entity setVariable [QGVAR(description), _description];
+
+    if (_entity isEqualType objNull) then {
+        _description = format ["    %1", _description];
+    };
+
+    _ctrlSlots lbSetText [_index, _description];
+}];
+
 // OK button - apply changes
 private _ctrlButtonOK = _display displayCtrl IDC_OK;
 
@@ -166,6 +202,13 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
 
                 _group deleteGroupWhenEmpty false;
             } else {
+                private _slotName = _entity getVariable QGVAR(description);
+                private _groupName = _group getVariable [QGVAR(description), ""];
+
+                if (_groupName != "") then {
+                    _slotName = format ["%1@%2", _slotName, _groupName];
+                };
+
                 set3DENSelected [_entity];
                 do3DENAction "CutUnit";
                 do3DENAction "PasteUnitOrig";
@@ -176,6 +219,7 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                 _units pushBack _entity;
                 add3DENConnection ["Group", _units, _group];
                 _group selectLeader _leader;
+                _entity set3DENAttribute ["description", _slotName];
             };
         };
 
