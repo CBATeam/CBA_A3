@@ -151,8 +151,10 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         private _group = grpNull;
         private _leader = objNull;
         private _units = [];
+        private _groups = [];
         private _currentSelected = get3DENSelected "";
 
+        // adjust unit order
         for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
             private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
 
@@ -160,12 +162,9 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                 _group = _entity;
                 _leader = leader _group;
                 _units = [];
+                _groups pushBack _group;
 
                 _group deleteGroupWhenEmpty false;
-
-                /*set3DENSelected [_group];
-                do3DENAction "CutUnit";
-                do3DENAction "PasteUnitOrig";*/
             } else {
                 set3DENSelected [_entity];
                 do3DENAction "CutUnit";
@@ -179,6 +178,13 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                 _group selectLeader _leader;
             };
         };
+
+        // adjust group order
+        {
+            set3DENSelected [_x];
+            do3DENAction "CutUnit";
+            do3DENAction "PasteUnitOrig";
+        } forEach _groups;
 
         set3DENSelected _currentSelected;
     };
