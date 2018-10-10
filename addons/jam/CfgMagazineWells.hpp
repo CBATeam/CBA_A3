@@ -1,170 +1,69 @@
 class CfgMagazineWells {
-    class CBA_545x39_AK {
-        BI_mags[] = {
-            "30Rnd_545x39_Mag_F",
-            "30Rnd_545x39_Mag_Green_F",
-            "30Rnd_545x39_Mag_Tracer_F",
-            "30Rnd_545x39_Mag_Tracer_Green_F"
-        };
-    };
 
-    class CBA_556x45_MINIMI {
-        BI_boxes[] = {
-            "200Rnd_556x45_Box_F",
-            "200Rnd_556x45_Box_Red_F",
-            "200Rnd_556x45_Box_Tracer_F",
-            "200Rnd_556x45_Box_Tracer_Red_F"
-        };
-    };
-    class CBA_556x45_STANAG {
-        BI_mags[] = {
-            "30Rnd_556x45_Stanag",
-            "30Rnd_556x45_Stanag_green",
-            "30Rnd_556x45_Stanag_red",
-            "30Rnd_556x45_Stanag_Tracer_Red",
-            "30Rnd_556x45_Stanag_Tracer_Green",
-            "30Rnd_556x45_Stanag_Tracer_Yellow"
-        };
-        BI_drums[] = {
-            "150Rnd_556x45_Drum_Mag_F",
-            "150Rnd_556x45_Drum_Mag_Tracer_F"
-        };
-    };
+    // Rifle calibre magwells, ordered lexicographically in metric and imperial groups
+    #include "magwells_11x59R.hpp"      // 11x59mmR Gras | 11mm Vickers
+    #include "magwells_145x114.hpp"     // 14.5x114mm
+    #include "magwells_545x39.hpp"      // 5.45x39mm
+    #include "magwells_556x45.hpp"      // 5.56x45mm | .223
+    #include "magwells_580x42.hpp"      // 5.8x42mm
+    #include "magwells_65C.hpp"         // 6.5mm Creedmoor | 6.5 Creedmoor | 6,5 Creedmoor | 6.5 CM | 6.5 CRDMR
+    #include "magwells_65G.hpp"         // 6.5mm Grendel | 6.5x39mm Grendel
+    #include "magwells_65x39.hpp"       // 6.5x39mm Caseless
+    #include "magwells_68SPC.hpp"       // 6.8mm Remington SPC | 6.8 SPC | 6.8x43mm
+    #include "magwells_75x55.hpp"       // 7.5x55mm Swiss | 7.5x55mm Schmidt–Rubin
+    #include "magwells_762x39.hpp"      // 7.62x39mm | 7.62 Soviet | .30 Russian Short
+    #include "magwells_762x51.hpp"      // 7.62x51mm | .308
+    #include "magwells_762x54.hpp"      // 7.62x54mmR
+    #include "magwells_77x58.hpp"       // 7.7x58mm Arisaka | Type 99 rimless 7.7 mm | 7.7mm Japanese
+    #include "magwells_792x33.hpp"      // 7.92x33mm Kurz | 7.92 x 33 kurz | 7.9mm Kurz | 7.9 Kurz | 7.9mmK | 8x33 Polte
+    #include "magwells_792x57.hpp"      // 7.92x57mm Mauser | 8mm Mauser | 8x57mm | 8 x 57 IS
+    #include "magwells_9x39.hpp"        // 9x39mm
 
-    class CBA_556x45_STEYR {};        // AUG
-    class CBA_556x45_HK33 {};         // H&K 33/53/93
-    class CBA_556x45_G36 {};
-    class CBA_556x45_SG550 {};
+    #include "magwells_3006.hpp"        // .30-06 Springfield | 7.62x63mm
+    #include "magwells_300BLK.hpp"      // .300 AAC Blackout | 300 BLK | .300 Blackout | 7.62x35mm
+    #include "magwells_300WM.hpp"       // .300 Winchester Magnum | .300 Win Mag | 300WM
+    #include "magwells_303B.hpp"        // .303 British | 7.7x56mmR
+    #include "magwells_338LM.hpp"       // .338 Lapua Magnum
+    #include "magwells_408CT.hpp"       // .408 Cheyenne Tactical | 408 Chey Tac | 10.36x77mm
+    #include "magwells_50BMG.hpp"       // .50 BMG | .50 Browning Machine Gun | 12.7x99mm NATO
 
-    class CBA_580x42_TYPE95 {
-        BI_mags[] = {
-            "30Rnd_580x42_Mag_F",
-            "30Rnd_580x42_Mag_Tracer_F"
-        };
-        BI_drums[] = {
-            "100Rnd_580x42_Mag_F",
-            "100Rnd_580x42_Mag_Tracer_F"
-        };
-    };
+    // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
+    #include "magwells_10mmAuto.hpp"    // 10mm Auto | 10mm Automatic | 10x25mm
+    #include "magwells_762x25.hpp"      // 7.62x25mm Tokarev
+    #include "magwells_762x38R.hpp"     // 7.62x38mmR | 7.62 mm Nagant
+    #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic
+    #include "magwells_765x21.hpp"      // 7.65x21mm Parabellum | 7,65 Parabellum | 7.65mm Luger | .30 Luger
+    #include "magwells_8x22.hpp"        // 8x22mm Nambu
+    #include "magwells_9x18.hpp"        // 9x18mm Makarov | 9mm Makarov | 9x18mm PM
+    #include "magwells_9x19.hpp"        // 9x19mm Parabellum | 9mm Luger
 
-    class CBA_65x39_MX {
-        BI_mags[] = {
-            "30Rnd_65x39_caseless_mag",
-            "30Rnd_65x39_caseless_green",
-            "30Rnd_65x39_caseless_mag_Tracer",
-            "30Rnd_65x39_caseless_green_mag_Tracer",
-            "100Rnd_65x39_caseless_mag",
-            "100Rnd_65x39_caseless_mag_Tracer"
-        };
-    };
+    #include "magwells_22LR.hpp"        // .22 LR | .22 Long Rifle | 5.6x15mmR
+    #include "magwells_32ACP.hpp"       // .32 ACP | .32 Automatic | 7.65x17mmSR Browning | 7.65 mm Browning Short
+    #include "magwells_357Mag.hpp"      // .375 Magnum | .357 S&W Magnum | 9x33mmR
+    #include "magwells_357SIG.hpp"      // .357 SIG
+    #include "magwells_380ACP.hpp"      // .380 ACP | .380 Auto | 9mm Browning | 9mm Corto | 9mm Kurz | 9mm Short | 9x17mm | 9 mm Browning Court
+    #include "magwells_38Spec.hpp"      // .38 Smith & Wesson Special | .38 Special | .38 Spl | .38 Spc | 9x29.5mmR | 9.1x29mmR
+    #include "magwells_38_200.hpp"      // .38/200 | 9x20mmR
+    #include "magwells_40SW.hpp"        // .40 S&W
+    #include "magwells_455W.hpp"        // .455 Webley | .455 Eley | .455 Colt
+    #include "magwells_45ACP.hpp"       // .45 ACP | .45 Automatic Colt Pistol | .45 Auto | 11.43x23mm
+    #include "magwells_45GAP.hpp"       // .45 GAP | .45 "GAP" | .45 Glock Auto Pistol
 
-    class CBA_68x43_ACR {};         // 6.8mm Remington SPC
-    class CBA_75x55_STGW57 {};      // SIG SG 510-1, Stgw. 57
-    class CBA_762x35_STANAG {};     // .300 Blackout
+    // Shotgun calibre magwells, ordered lexicographically
+    #include "magwells_10gauge.hpp"     // 10 Gauge
+    #include "magwells_12gauge.hpp"     // 12 Gauge
+    #include "magwells_16gauge.hpp"     // 16 Gauge
+    #include "magwells_20gauge.hpp"     // 20 Gauge
 
-    class CBA_762x39_AK {
-        BI_mags[] = {
-            "30Rnd_762x39_Mag_F",
-            "30Rnd_762x39_Mag_Green_F",
-            "30Rnd_762x39_Mag_Tracer_F",
-            "30Rnd_762x39_Mag_Tracer_Green_F"
-        };
-    };
 
-    class CBA_762x51_M14 {
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
-    class CBA_762x51_HK417 {
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
-    class CBA_762x51_SR25 {};       // M110, SIG716
-    class CBA_762x51_SCAR {};
-    class CBA_762x51_FAL {};
-    class CBA_762x51_G3 {};
-    class CBA_762x51_SIGAMT {};    // SIG 510-4, AMT
+    // Grenade/Flare Launchers, ordered lexicographically
+    #include "magwells_35mm.hpp"
+    #include "magwells_40mm.hpp"
 
-    class CBA_762x51_LINKS {
-        BI_belts[] = {
-            "150Rnd_762x51_Box",
-            "150Rnd_762x51_Box_Tracer"
-        };
-    };
-
-    class CBA_762x54R_SVD {
-        BI_mags[] = {
-            "10Rnd_762x54_Mag"
-        };
-    };
-    class CBA_762x54R_LINKS {
-        BI_belts[] = {
-            "150Rnd_762x54_Box",
-            "150Rnd_762x54_Box_Tracer"
-        };
-    };
-
-    class CBA_792x57_LINKS {};      // MG42
-    class CBA_300WM_AI {};          // AI .300 Winchester Magnum
-    class CBA_338LM_AI {};          // AI .338 Lapua Magnum
-    class CBA_50BMG_M107 {};        // M82, M107, G82
-
-    class CBA_9x19_MP5 {};          // H&K MP5
-    class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
-    class CBA_9x19_P226 {};         // SIG P226
-    class CBA_9x19_P228 {};         // SIG P228
-    class CBA_9x19_P239 {};         // SIG P239
-
-    class CBA_9x39_VSS {};          // Vintorez, Val
-
-    class CBA_357SIG_P226 {};       // SIG P226
-    class CBA_357SIG_P229 {};       // SIG P229
-    class CBA_357SIG_P239 {};       // SIG P239
-
-    class CBA_40SW_P226 {};         // SIG P226 .40 S&W
-    class CBA_40SW_P229 {};         // SIG P229 .40 S&W
-    class CBA_40SW_P239 {};         // SIG P239 .40 S&W
-
-    class CBA_10x25_MP5 {};         // H&K MP5/10 10mm Auto
-    class CBA_12g_SAIGA {};
-
-    class CBA_40mm_M203 {
-        BI_grenades[] = {
-            "1Rnd_HE_Grenade_shell",
-            "1Rnd_Smoke_Grenade_shell",
-            "1Rnd_SmokeRed_Grenade_shell",
-            "1Rnd_SmokeGreen_Grenade_shell",
-            "1Rnd_SmokeYellow_Grenade_shell",
-            "1Rnd_SmokePurple_Grenade_shell",
-            "1Rnd_SmokeBlue_Grenade_shell",
-            "1Rnd_SmokeOrange_Grenade_shell",
-            "UGL_FlareWhite_F",
-            "UGL_FlareGreen_F",
-            "UGL_FlareRed_F",
-            "UGL_FlareYellow_F",
-            "UGL_FlareCIR_F"
-        };
-    };
-    class CBA_40mm_3GL {
-        BI_grenades[] = {
-            "3Rnd_HE_Grenade_shell",
-            "3Rnd_Smoke_Grenade_shell",
-            "3Rnd_SmokeRed_Grenade_shell",
-            "3Rnd_SmokeGreen_Grenade_shell",
-            "3Rnd_SmokeYellow_Grenade_shell",
-            "3Rnd_SmokePurple_Grenade_shell",
-            "3Rnd_SmokeBlue_Grenade_shell",
-            "3Rnd_SmokeOrange_Grenade_shell",
-            "3Rnd_UGL_FlareWhite_F",
-            "3Rnd_UGL_FlareGreen_F",
-            "3Rnd_UGL_FlareRed_F",
-            "3Rnd_UGL_FlareYellow_F",
-            "3Rnd_UGL_FlareCIR_F"
-        };
-    };
-    class CBA_40mm_GP {};
+    // AT and AA Launchers, ordered lexicographically
+    class CBA_Bazooka {};       // M1, M1A1 Bazooka
+    class CBA_Panzerschreck {}; // Panzerschreck RPzB 54
+    class CBA_PIAT {};          // PIAT
 
     class CBA_RPG7 {
         BI_rockets[] = {

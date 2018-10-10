@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Events">
         <Key ID="STR_CBA_Events_Component">
@@ -10,6 +10,7 @@
             <Russian>Community Base Addons - События</Russian>
             <French>Community Base Addons - Événements</French>
             <Polish>Community Base Addons - Zdarzenia</Polish>
+            <Turkish>Community Base Addons - Durumlar</Turkish>
         </Key>
     </Package>
 </Project>
