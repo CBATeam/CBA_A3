@@ -138,6 +138,7 @@ if (_id != -1) then {
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
+                GVAR(oldUAVControl) = []; // force update
             };
 
             private _data = group _player;
@@ -192,11 +193,10 @@ if (_id != -1) then {
             };
 
             // handle controlling UAV, UAV entity needed for visionMode
-            _data = [_player, UAVControl getConnectedUAV _player];
+            _data = UAVControl getConnectedUAV _player;
             if !(_data isEqualTo GVAR(oldUAVControl)) then {
                 GVAR(oldUAVControl) = _data;
 
-                _data = _data select 1;
                 private _role = _data param [(_data find _player) + 1, ""];
                 if (_role isEqualTo "DRIVER") exitWith {
                     GVAR(controlledEntity) = driver getConnectedUAV _player;
