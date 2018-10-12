@@ -59,10 +59,35 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
         _group setVariable [QGVAR(description), _groupName];
     };
 
+    private "_color";
+
     if (count _slots > 0) then {
         private _index = _ctrlSlots lbAdd _groupName;
         _ctrlSlots lbSetData [_index, str _index];
         _ctrlSlots setVariable [str _index, _group];
+
+        private _side = side _group;
+        if (side _group isEqualTo west) exitWith {
+            _color = call compile format ["[%1,%2,%3,1]", Map_BLUFOR_RGB];
+            _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\b_unknown.paa"];
+            _ctrlSlots lbSetPictureColor [_index, _color];
+        };
+
+        if (side _group isEqualTo east) exitWith {
+            _color = call compile format ["[%1,%2,%3,1]", Map_OPFOR_RGB];
+            _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\o_unknown.paa"];
+            _ctrlSlots lbSetPictureColor [_index, _color];
+        };
+
+        if (side _group isEqualTo resistance) exitWith {
+            _color = call compile format ["[%1,%2,%3,1]", Map_Independent_RGB];
+            _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\n_unknown.paa"];
+            _ctrlSlots lbSetPictureColor [_index, _color];
+        };
+
+        _color = call compile format ["[%1,%2,%3,1]", Map_Civilian_RGB];
+        _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\n_unknown.paa"];
+        _ctrlSlots lbSetPictureColor [_index, _color];
     };
 
     {
@@ -71,6 +96,11 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
         private _index = _ctrlSlots lbAdd format ["    %1", _slotName];
         _ctrlSlots lbSetData [_index, str _index];
         _ctrlSlots setVariable [str _index, _unit];
+
+        private _iconType = getText (configFile >> "CfgVehicles" >> typeOf _unit >> "icon");
+        private _icon = getText (configFile >> "CfgVehicleIcons" >> _iconType);
+        _ctrlSlots lbSetPicture [_index, _icon];
+        _ctrlSlots lbSetPictureColor [_index, _color];
     } forEach _slots;
 } forEach allGroups;
 
