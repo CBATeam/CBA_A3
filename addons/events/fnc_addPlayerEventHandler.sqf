@@ -192,11 +192,12 @@ if (_id != -1) then {
             };
 
             // handle controlling UAV, UAV entity needed for visionMode
-            _data = UAVControl getConnectedUAV _player;
+            _data = [_player, UAVControl getConnectedUAV _player];
             if !(_data isEqualTo GVAR(oldUAVControl)) then {
                 GVAR(oldUAVControl) = _data;
 
-                private _role = _data param [(_data find _player) + 1];
+                _data = _data select 1;
+                private _role = _data param [(_data find _player) + 1, ""];
                 if (_role isEqualTo "DRIVER") exitWith {
                     GVAR(controlledEntity) = driver getConnectedUAV _player;
                 };
