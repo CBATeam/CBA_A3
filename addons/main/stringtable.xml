@@ -39,7 +39,7 @@
             <Russian>Community Base Addons - Основной Компонент</Russian>
             <French>Community Base Addons - Composante principale</French>
             <Polish>Community Base Addons - Główny Komponent</Polish>
-            <Turkish>Community Base Addons - Ana Komponent</Turkish>
+            <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -51,7 +51,7 @@
             <Russian>Community Base Addons - Опциональный Компонент</Russian>
             <French>Community Base Addons - Composant facultatif</French>
             <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
-            <Turkish>Community Base Addons - Opsiyonel Komponent</Turkish>
+            <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
