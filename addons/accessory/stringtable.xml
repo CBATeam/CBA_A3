@@ -65,7 +65,7 @@
             <Russian>Следующий режим оптики</Russian>
             <Polish>Następny tryb optyki</Polish>
             <French>Mode de l'optique suivant</French>
-            <Turkish>Sonraki dürbün modu</Turkish>
+            <Turkish>Sonraki nişangah modu</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -76,7 +76,7 @@
             <Russian>Переключает на следующий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na następny dostępny tryb optyki</Polish>
             <French>Passe au prochain mode disponible de votre optique</French>
-            <Turkish>Varolan dürbününüzü sonraki moduna geçirir</Turkish>
+            <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -87,7 +87,7 @@
             <Russian>Предыдущее состояние оптики</Russian>
             <Polish>Poprzedni tryb optyki</Polish>
             <French>Mode de l'optique sur rail précèdent</French>
-            <Turkish>Önceki dürbün modu</Turkish>
+            <Turkish>Önceki nişangah modu</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -98,7 +98,7 @@
             <Russian>Переключает на предыдущий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na poprzedni dostępny tryb optyki</Polish>
             <French>Passe au précèdent mode disponible de votre optique</French>
-            <Turkish>Varolan dürbününüzü önceki moduna geçirir</Turkish>
+            <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
         </Key>
     </Package>
 </Project>
