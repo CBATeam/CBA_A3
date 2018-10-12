@@ -67,19 +67,19 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
         _ctrlSlots setVariable [str _index, _group];
 
         private _side = side _group;
-        if (side _group isEqualTo west) exitWith {
+        if (_side isEqualTo west) exitWith {
             _color = call compile format ["[%1,%2,%3,1]", Map_BLUFOR_RGB];
             _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\b_unknown.paa"];
             _ctrlSlots lbSetPictureColor [_index, _color];
         };
 
-        if (side _group isEqualTo east) exitWith {
+        if (_side isEqualTo east) exitWith {
             _color = call compile format ["[%1,%2,%3,1]", Map_OPFOR_RGB];
             _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\o_unknown.paa"];
             _ctrlSlots lbSetPictureColor [_index, _color];
         };
 
-        if (side _group isEqualTo resistance) exitWith {
+        if (_side isEqualTo resistance) exitWith {
             _color = call compile format ["[%1,%2,%3,1]", Map_Independent_RGB];
             _ctrlSlots lbSetPicture [_index, "\a3\Ui_f\data\Map\Markers\NATO\n_unknown.paa"];
             _ctrlSlots lbSetPictureColor [_index, _color];
