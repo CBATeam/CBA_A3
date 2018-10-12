@@ -153,7 +153,9 @@ _ctrlSlots ctrlAddEventHandler ["LBSelChanged", {
     private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
     private _description = _entity getVariable [QGVAR(description), ""];
 
+    _ctrlName ctrlSetText ""; // reset cursor position
     _ctrlName ctrlSetText _description;
+    ctrlSetFocus _ctrlName;
 }];
 
 private _ctrlName = _display displayCtrl IDC_LM_NAME;
