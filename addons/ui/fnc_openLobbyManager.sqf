@@ -220,7 +220,9 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         private _leader = objNull;
         private _units = [];
         private _groups = [];
-        private _currentSelected = get3DENSelected "";
+
+        private _dummies = [];
+        private _dummyGroup = createGroup civilian;
 
         // adjust unit order
         for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
@@ -232,7 +234,8 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                 _units = [];
                 _groups pushBack _group;
 
-                _group deleteGroupWhenEmpty false;
+                private _dummy = _dummyGroup createUnit ["C_man_1", [0,0,0], [], 0, "NONE"];
+                [_dummy] joinSilent _group;
             } else {
                 private _slotName = _entity getVariable QGVAR(description);
                 private _groupName = _group getVariable [QGVAR(description), ""];
@@ -257,11 +260,26 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
 
         // adjust group order
         {
-            set3DENSelected [_x];
+            diag_log [0, count allGroups];
+            diag_log get3DENSelected "";
+            diag_log ["units: ", _x, units _x];
+            set3DENSelected ([_x] + units _x);diag_log ["select: ", _x];
+            diag_log get3DENSelected "";
             do3DENAction "CutUnit";
             do3DENAction "PasteUnitOrig";
+            diag_log [1, count allGroups];
+            diag_log get3DENSelected "";
         } forEach _groups;
 
-        set3DENSelected _currentSelected;
+        {
+            deleteVehicle _x;
+        } forEach _dummies;
+        deleteGroup _dummyGroup;
+
+        set3DENSelected [];
     };
 }];
+
+
+
+
