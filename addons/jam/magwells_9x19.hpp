@@ -26,3 +26,4 @@
     class CBA_9x19_Vityaz {};       // Vityaz-SN
     class CBA_9x19_Vz68 {};         // Škorpion (vz. 68)
     class CBA_9x19_Welrod {};       // Welrod pistol in 9x19mm
+    class CBA_9x19_PP2000 {};       // PP-2000 SMG
