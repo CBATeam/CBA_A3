@@ -67,6 +67,10 @@ class CfgWeapons {
         magazineWell[] = {"CBA_556x45_MINIMI"};
     };
 
+    class LMG_Mk200_F : Rifle_Long_Base_F {
+        magazineWell[] = {"CBA_65x39_Mk200"};
+    };
+
     class launch_RPG7_F : Launcher_Base_F {
         magazineWell[] = {"CBA_RPG7"};
     };
