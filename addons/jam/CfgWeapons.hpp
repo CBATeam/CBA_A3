@@ -38,7 +38,7 @@ class CfgWeapons {
         magazineWell[] = {"CBA_762x51_M14"};
     };
     class arifle_SPAR_03_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_762x51_HK417"};
+        magazineWell[] = {"CBA_762x51_HK417", "CBA_762x51_HK417_L", "CBA_762x51_HK417_XL"};
     };
 
     class DMR_01_base_F : Rifle_Long_Base_F {
