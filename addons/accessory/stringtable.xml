@@ -10,6 +10,7 @@
             <Russian>Community Base Addons - Функционал Аксессуаров</Russian>
             <Polish>Community Base Addons - Funkcje Akcesoriów</Polish>
             <French>Community Base Addons - Fonctions des accessoires</French>
+            <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
@@ -20,6 +21,7 @@
             <Russian>Следующее состояние приспособления на оружии</Russian>
             <Polish>Następny tryb akcesoria na szynie</Polish>
             <French>Mode de l'accessoire sur rail suivant</French>
+            <Turkish>Sonraki ray aksesuarı</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -30,6 +32,7 @@
             <Russian>Переключает на следующий режим, доступный для приспособления на планке</Russian>
             <Polish>Przełącza na następny tryb akcesoria na szynie</Polish>
             <French>Passe au prochain mode disponible de votre accessoire sur rail</French>
+            <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
@@ -40,6 +43,7 @@
             <Russian>Предыдущее состояние приспособления на планке</Russian>
             <Polish>Poprzedni tryb akcesoria na szynie</Polish>
             <French>Mode de l'accessoire sur rail précèdent</French>
+            <Turkish>Önceki ray aksesuarı</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -50,6 +54,7 @@
             <Russian>Переключает на предыдущий режим, доступный для приспособления на планке</Russian>
             <Polish>Przełącza na poprzedni tryb akcesoria na szynie</Polish>
             <French>Passe au précèdent mode disponible de votre accessoire sur rail</French>
+            <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
@@ -60,6 +65,7 @@
             <Russian>Следующий режим оптики</Russian>
             <Polish>Następny tryb optyki</Polish>
             <French>Mode de l'optique suivant</French>
+            <Turkish>Sonraki nişangah modu</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -70,6 +76,7 @@
             <Russian>Переключает на следующий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na następny dostępny tryb optyki</Polish>
             <French>Passe au prochain mode disponible de votre optique</French>
+            <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -80,6 +87,7 @@
             <Russian>Предыдущее состояние оптики</Russian>
             <Polish>Poprzedni tryb optyki</Polish>
             <French>Mode de l'optique sur rail précèdent</French>
+            <Turkish>Önceki nişangah modu</Turkish>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -90,6 +98,7 @@
             <Russian>Переключает на предыдущий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na poprzedni dostępny tryb optyki</Polish>
             <French>Passe au précèdent mode disponible de votre optique</French>
+            <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
         </Key>
     </Package>
 </Project>

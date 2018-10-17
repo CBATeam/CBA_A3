@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Strings">
         <Key ID="STR_CBA_Strings_Component">
@@ -11,6 +11,7 @@
             <Russian>Community Base Addons - Строки</Russian>
             <Polish>Community Base Addons - Ciągi znaków</Polish>
             <French>Community Base Addons - Textes</French>
+            <Turkish>Community Base Addons - Yazılar</Turkish>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_DECIMAL_POINT">
             <English>.</English>
@@ -25,6 +26,7 @@
             <Chinese>.</Chinese>
             <Chinesesimp>.</Chinesesimp>
             <Portuguese>,</Portuguese>
+            <Turkish>,</Turkish>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
@@ -39,6 +41,7 @@
             <Chinese>,</Chinese>
             <Chinesesimp>,</Chinesesimp>
             <Portuguese>.</Portuguese>
+            <Turkish>.</Turkish>
         </Key>
     </Package>
 </Project>
