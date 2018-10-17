@@ -35,10 +35,13 @@
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
     class CBA_762x51_MG3 {};        // MG3 DM1 link belts
+
     class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62 mm magazines
         BI_mags[] = {
             "20Rnd_762x51_Mag"
         };
+    };
+
     class CBA_762x51_SCAR {};       // SCAR-H
     class CBA_762x51_SIGAMT {};     // SIG 510-4, AMT
 
