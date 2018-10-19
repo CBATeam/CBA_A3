@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="JAM">
-        <Key ID="STR_CBA_JR_Component">
+        <Key ID="STR_CBA_JAM_Component">
             <English>Community Base Addons - Joint Ammo Magazines</English>
             <German>Community Base Addons - Gemeinsame Munition und Magazine</German>
             <Polish>Community Base Addons - Wspólna Amunicja oraz Magazynki</Polish>
