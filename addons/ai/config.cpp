@@ -14,4 +14,6 @@ class CfgPatches {
 };
 
 #include "CfgFunctions.hpp"
+#include "CfgVehicles.hpp"
+#include "CfgVehicleIcons.hpp"
 #include "CfgWaypoints.hpp"
