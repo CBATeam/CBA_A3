@@ -3,6 +3,7 @@ class CfgMagazineWells {
     // Rifle calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_11x59R.hpp"      // 11x59mmR Gras | 11mm Vickers
     #include "magwells_145x114.hpp"     // 14.5x114mm
+    #include "magwells_46x30.hpp"       // 4.6x30mm
     #include "magwells_545x39.hpp"      // 5.45x39mm
     #include "magwells_556x45.hpp"      // 5.56x45mm | .223
     #include "magwells_580x42.hpp"      // 5.8x42mm
