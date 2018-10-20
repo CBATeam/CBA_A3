@@ -1,3 +1,5 @@
+    class CBA_762x51_5rnds {};      // 5 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_AICS {};       // AICS short action mag (5/10 rounds)
 
     class CBA_762x51_AR10 {};       // AR-10 standard mag (20 rounds)
     class CBA_762x51_AR10_L {};     // AR-10 long mag (25/30 rounds)
