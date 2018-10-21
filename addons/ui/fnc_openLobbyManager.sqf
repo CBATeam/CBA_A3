@@ -220,9 +220,12 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         private _leader = objNull;
         private _units = [];
         private _groups = [];
-        private _currentSelected = get3DENSelected "";
+        private _groupHasMultipleUnits = false;
 
         // adjust unit order
+        private _currentSelected = get3DENSelected "";
+        set3DENSelected [];//diag_log ["", count allUnits];
+
         for "_index" from 0 to (lbSize _ctrlSlots - 1) do {
             private _entity = _ctrlSlots getVariable (_ctrlSlots lbData _index);
 
@@ -232,7 +235,7 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                 _units = [];
                 _groups pushBack _group;
 
-                _group deleteGroupWhenEmpty false;
+                _groupHasMultipleUnits = count units _group > 1;
             } else {
                 private _slotName = _entity getVariable QGVAR(description);
                 private _groupName = _group getVariable [QGVAR(description), ""];
@@ -241,9 +244,12 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                     _slotName = format ["%1@%2", _slotName, _groupName];
                 };
 
-                set3DENSelected [_entity];
-                do3DENAction "CutUnit";
-                do3DENAction "PasteUnitOrig";
+                set3DENSelected [_entity];//diag_log ["0", count allUnits];
+
+                if (_groupHasMultipleUnits) then {
+                    do3DENAction "CutUnit";//diag_log ["cut", count allUnits];
+                    do3DENAction "PasteUnitOrig";//diag_log ["paste", count allUnits];
+                };
 
                 // new entity, old references ghost entity
                 _entity = get3DENSelected "Object" select 0;
@@ -257,9 +263,9 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
 
         // adjust group order
         {
-            set3DENSelected [_x];
-            do3DENAction "CutUnit";
-            do3DENAction "PasteUnitOrig";
+            set3DENSelected [_x];//diag_log ["0", count allUnits];
+            do3DENAction "CutUnit";//diag_log ["cut", count allUnits];
+            do3DENAction "PasteUnitOrig";//diag_log ["paste", count allUnits];
         } forEach _groups;
 
         set3DENSelected _currentSelected;
