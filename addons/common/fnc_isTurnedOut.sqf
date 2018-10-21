@@ -70,9 +70,7 @@ if (_role in ["Turret", "gunner"]) exitWith {
 if (_role == "cargo") exitWith {
     private _attenuateCargo = getArray (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "soundAttenuationCargo");
     if !(_attenuateCargo isEqualTo []) then {
-        private _count = count _attenuateCargo;
-        private _cargoIndex = _vehicle getCargoIndex _unit;
-        _return = (_attenuateCargo select (if (_cargoIndex >= _count) then {_count - 1} else {_cargoIndex})) == 0;
+        _return = (_attenuateCargo select ((_vehicle getCargoIndex _unit) min (count _attenuateCargo - 1))) == 0;
     };
     
     _return;
