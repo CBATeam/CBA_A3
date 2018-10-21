@@ -27,6 +27,7 @@ Examples:
 
 Author:
     Nou, courtesy of ACRE project.
+    shukari
 ---------------------------------------------------------------------------- */
 SCRIPT(isTurnedOut);
 
