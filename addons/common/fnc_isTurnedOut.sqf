@@ -56,9 +56,9 @@ if (driver _vehicle == _unit) then {
         if (_position == "Cargo") then {
             private _cargoIndex = _vehicle getCargoIndex _unit;
             private _window = ['ani_window_1', 'ani_window_2', 'ani_window_4', 'ani_window_3'] select (_cargoIndex + 1);
-            if ((_vehicle doorPhase _window) > 0) exitWith {_out = true};
+            if ((_vehicle doorPhase _window) > 0) exitWith {_return = true};
             
-            if ([_unit] call ace_common_fnc_getTurretIndex in ([_vehicle] call ace_common_fnc_getTurretsFFV)) exitWith {_out = true};
+            if ([_unit] call ace_common_fnc_getTurretIndex in ([_vehicle] call ace_common_fnc_getTurretsFFV)) exitWith {_return = true};
             
             private _attenuateCargo = getArray (_cfg >> "soundAttenuationCargo");
             if !(_attenuateCargo isEqualTo []) then {
