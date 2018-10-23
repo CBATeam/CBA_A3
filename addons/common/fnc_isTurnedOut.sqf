@@ -24,7 +24,6 @@ Examples:
 Author:
     shukari
 ---------------------------------------------------------------------------- */
-
 params ["_unit"];
 
 if (isNull objectParent _unit) exitWith {true};
@@ -35,21 +34,20 @@ private _role = toLower (_unit call CBA_fnc_vehicleRole);
 private _isFFV = fullCrew [_vehicle, "turret"] findIf {_x select 0 == _unit && {_x select 4}} != -1;
 
 // special condition for RHS car windows
-private _windowsOpen = false;
 if (_vehicle isKindOf "rhsusf_m1025_w" && {_role in ["driver", "turret"]}) then {
-    // will override _isFFV if window is closed
+    //will override _isFFV if window is closed
     _isFFV = switch (_vehicle getCargoIndex _unit) do {
         case -1: { // not in cargo
-            _vehicle doorPhase "ani_window_1" < 1
+            _vehicle doorPhase "ani_window_1" > 0
         };
         case 0: { // cargo position 0
-            _vehicle doorPhase "ani_window_2" < 1
+            _vehicle doorPhase "ani_window_2" > 0
         };
         case 1: { // cargo position 1
-            _vehicle doorPhase "ani_window_4" < 1
+            _vehicle doorPhase "ani_window_4" > 0
         };
         default { // any other cargo position
-            _vehicle doorPhase "ani_window_3" < 1
+            _vehicle doorPhase "ani_window_3" > 0
         };
     };
 };
@@ -71,7 +69,7 @@ if (_role in ["gunner", "turret"]) exitWith {
     _vehicle animationPhase _hatchAnimation > 0 || {animationState _unit == _gunnerAction} // return
 };
 
-private _cfgAttCargo = getArray (configFile >> "CfgVehicles" >> typeOf _vehicle >> "soundAttenuationCargo");
+private _attenuateCargo = getArray (configFile >> "CfgVehicles" >> typeOf _vehicle >> "soundAttenuationCargo");
 
 if (_role isEqualTo "driver") exitWith {
     // if _attenuateCargo = [0] the vehicle is all open
