@@ -38,7 +38,7 @@ private _isFFV = fullCrew [_vehicle, "turret"] findIf {_x select 0 == _unit && {
 if (_isFFV) exitWith {true};
 
 // special condition for RHS car windows
-if (_vehicle isKindOf "rhsusf_m1025_w" && {_role in ["driver", "turret"]}) then {
+if (_vehicle isKindOf "rhsusf_m1025_w" && {_role in ["driver", "turret"]}) exitWith {
     switch (_vehicle getCargoIndex _unit) do {
         case -1: { // not in cargo
             _vehicle doorPhase "ani_window_1" > 0 // return
