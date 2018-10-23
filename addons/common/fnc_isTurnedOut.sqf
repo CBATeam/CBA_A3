@@ -6,7 +6,7 @@ Description:
     Checks whether a unit is turned out in a vehicle or not.
 
 Parameters:
-    _unit - Unit to check <Object>
+    _unit - Unit to check <OBJECT>
 
 Returns:
     "true" for turned out or "false" for not turned out <BOOL>
