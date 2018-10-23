@@ -32,7 +32,7 @@ if (isTurnedOut _unit) exitWith {true};
 
 private _vehicle = vehicle _unit;
 private _role = toLower (_unit call CBA_fnc_vehicleRole);
-private _isFFV = fullCrew [_vehicle, "turret"] findIf {_x select 0 == _unit && {_x select 4}} != -1
+private _isFFV = fullCrew [_vehicle, "turret"] findIf {_x select 0 == _unit && {_x select 4}} != -1;
 
 // FFVs are allways outside
 if (_isFFV) exitWith {true};
