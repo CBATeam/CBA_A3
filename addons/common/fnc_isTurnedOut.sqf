@@ -29,8 +29,8 @@ params ["_unit"];
 if (isNull objectParent _unit) exitWith {true};
 if (isTurnedOut _unit) exitWith {true};
 
-private _cfg = configFile >> "CfgVehicles" >> typeOf _vehicle;
-private _attenuationType = getText (_cfg >> "attenuationEffectType");
+private _config = configFile >> "CfgVehicles" >> typeOf _vehicle;
+private _attenuationType = getText (_config >> "attenuationEffectType");
 if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation"]) exitWith {true};
 
 private _vehicle = vehicle _unit;
@@ -68,7 +68,7 @@ if (_role in ["gunner", "turret"]) exitWith {
     _vehicle animationPhase _hatchAnimation > 0 || {animationState _unit == _gunnerAction} // return
 };
 
-private _attenuateCargo = getArray (_cfg >> "soundAttenuationCargo");
+private _attenuateCargo = getArray (_config >> "soundAttenuationCargo");
 
 if (_role isEqualTo "driver") exitWith {
     // if _attenuateCargo = [0] the vehicle is all open
