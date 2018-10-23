@@ -59,11 +59,6 @@ if (_vehicle isKindOf "rhsusf_m1025_w" && {_role in ["driver", "turret"]}) then 
 // FFVs are always outside
 if (_isFFV) exitWith {true};
 
-if (_role isEqualTo "commander") exitWith {
-    // nothing atm but so _cfgAttCargo will not executed
-    false // return
-};
-
 if (_role in ["gunner", "turret"]) exitWith {
     private _turret = [_vehicle, _unit call CBA_fnc_turretPath] call CBA_fnc_getTurret;
 
