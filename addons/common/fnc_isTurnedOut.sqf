@@ -55,7 +55,7 @@ if (_role == "driver") exitWith {
     // if _attenuateCargo = [0] the vehicle is all open
     private _attenuateCargo = getArray (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "soundAttenuationCargo");
 
-    (_vehicle animationPhase "hatchDriver") > 0 || _attenuateCargo isEqualTo [0]; // return
+    (_vehicle animationPhase "hatchDriver") > 0 || {_attenuateCargo isEqualTo [0]}; // return
 };
 
 if (_role in ["Turret", "gunner"]) exitWith {
@@ -64,7 +64,7 @@ if (_role in ["Turret", "gunner"]) exitWith {
     private _gunnerAction = getText (_turret >> "gunnerAction");
     private _hatchAnimation = getText (_turret >> "animationSourceHatch");
     
-    (_vehicle animationPhase _hatchAnimation) > 0 || animationState player == _gunnerAction; // return
+    (_vehicle animationPhase _hatchAnimation) > 0 || {animationState player == _gunnerAction}; // return
 };
 
 if (_role == "cargo") exitWith {
