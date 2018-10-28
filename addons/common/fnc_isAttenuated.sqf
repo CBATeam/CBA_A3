@@ -9,12 +9,12 @@ Parameters:
     _unit - Unit to check <OBJECT>
 
 Returns:
-    "true" for inside unit that cant hear the outside <BOOL>
+    true - for inside unit that cant hear the outside <BOOL>
 
 Examples:
     (begin example)
         if ([player] call CBA_fnc_isAttenuated) then {
-            player sideChat "I can hear you outside guy!";
+            player sideChat "I cant hear you outside guy!";
         };
     (end)
     

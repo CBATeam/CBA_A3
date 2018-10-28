@@ -8,7 +8,7 @@ Parameters:
     _unit - Unit to check <OBJECT>
 
 Returns:
-    "true" for turned out or "false" for not turned out <BOOL>
+    true - for turned out <BOOL>
     Turned out means out of a hatch or something similar.
 
 Examples:
