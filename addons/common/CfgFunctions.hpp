@@ -49,6 +49,7 @@ class CfgFunctions {
             PATHTO_FNC(turretPathWeapon);
             PATHTO_FNC(viewDir);
             PATHTO_FNC(turretDir);
+            PATHTO_FNC(isAttenuated);
         };
 
         class Anims {
