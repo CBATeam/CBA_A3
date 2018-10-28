@@ -17,6 +17,10 @@ Examples:
             player sideChat "I can hear you outside guy!";
         };
     (end)
+    
+ToDos:
+    - API
+    - enabledByAnimationSource didnt help the driver of the "special testcase for RHS car windows"
 
 Author:
     shukari
@@ -36,12 +40,12 @@ if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation"]) exitWith 
 private _fullCrew = fullCrew _vehicle;
 (_fullCrew select (_fullCrew findIf {_unit == _x select 0})) params ["", "_role", "_cargoIndex", "_turretPath", "_isFFV"];
 _role = toLower _role;
+private _return = true;
 
-// API try
+// override for enabledByAnimationSource FFVs
 private _turret = [_vehicle, _turretPath] call CBA_fnc_getTurret;
 private _enabledAnim = getText (_turret >> "enabledByAnimationSource");
-
-if (!(_enabledAnim isEqualTo "") && {_vehicle animationSourcePhase _enabledAnim > 0}) then {
+if (!(_enabledAnim isEqualTo "") && {_vehicle animationSourcePhase _enabledAnim < 1}) then {
     _isFFV = false;
 };
 
@@ -51,28 +55,22 @@ if (!(_enabledAnim isEqualTo "") && {_vehicle animationSourcePhase _enabledAnim 
     // _isFFV = _vehicle animationSourcePhase (["ani_window_1", "ani_window_2", "ani_window_4"] param [_cargoIndex + 1, "ani_window_3"]) > 0
 // };
 
+// API ???
+
 // FFVs are always outside
 if (_isFFV) exitWith {false};
 
-if (_role in ["gunner", "turret"]) exitWith {
-    private _gunnerAction = getText (_turret >> "gunnerAction");
-    private _hatchAnimation = getText (_turret >> "animationSourceHatch");
-
-    _vehicle animationPhase _hatchAnimation < 1 || {animationState _unit != _gunnerAction} // return
-};
-
-private _attenuateCargo = getArray (_config >> "soundAttenuationCargo");
-
 if (_role isEqualTo "driver") exitWith {
-    // if _attenuateCargo = [0] the vehicle is all open
-    _vehicle animationPhase "hatchDriver" < 1 || {!(_attenuateCargo isEqualTo [0])} // return
+    // check for some kind of enabledByAnimationSource
 };
 
 if (_role isEqualTo "cargo") exitWith {
+    private _attenuateCargo = getArray (_config >> "soundAttenuationCargo");
+
     // if attenuate array has less elements than the current cargo index, use the last value of the array
     private _cargoIndex = _cargoIndex min (count _attenuateCargo - 1);
 
     _attenuateCargo param [_cargoIndex, 1] != 0 // return
 };
 
-true
+_return
