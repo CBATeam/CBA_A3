@@ -35,7 +35,7 @@ if (isNil QGVAR(PFHhandles)) then {
     GVAR(PFHhandles) = [];
 };
 
-if (count GVAR(PFHhandles) >= 999999) exitWith {
+if (count GVAR(PFHhandles) >= 9999999) exitWith {
     WARNING("Maximum amount of per frame handlers reached!");
     diag_log _function;
     -1
