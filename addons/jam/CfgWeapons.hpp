@@ -74,4 +74,12 @@ class CfgWeapons {
     class launch_RPG7_F : Launcher_Base_F {
         magazineWell[] = {"CBA_RPG7"};
     };
+
+    class MMG_01_base_F : Rifle_Long_Base_F {
+        magazineWell[] = {"CBA_93x64_LINKS"};
+    };
+
+    class MMG_02_base_F : Rifle_Long_Base_F {
+        magazineWell[] = {"CBA_338NM_LINKS"};
+    };
 };
