@@ -31,6 +31,10 @@ class CfgWeapons {
         };
     };
 
+    class arifle_Katiba_Base_F : Rifle_Base_F {
+        magazineWell[] = {"CBA_65x39_Katiba"};
+    };
+
     class EBR_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_762x51_M14"};
     };
