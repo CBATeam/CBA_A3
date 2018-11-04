@@ -18,12 +18,14 @@ class CfgMagazineWells {
     #include "magwells_792x33.hpp"      // 7.92x33mm Kurz | 7.92 x 33 kurz | 7.9mm Kurz | 7.9 Kurz | 7.9mmK | 8x33 Polte
     #include "magwells_792x57.hpp"      // 7.92x57mm Mauser | 8mm Mauser | 8x57mm | 8 x 57 IS
     #include "magwells_9x39.hpp"        // 9x39mm
+    #include "magwells_93x64.hpp"       // 9.3x64mm
 
     #include "magwells_3006.hpp"        // .30-06 Springfield | 7.62x63mm
     #include "magwells_300BLK.hpp"      // .300 AAC Blackout | 300 BLK | .300 Blackout | 7.62x35mm
     #include "magwells_300WM.hpp"       // .300 Winchester Magnum | .300 Win Mag | 300WM
     #include "magwells_303B.hpp"        // .303 British | 7.7x56mmR
     #include "magwells_338LM.hpp"       // .338 Lapua Magnum
+    #include "magwells_338NM.hpp"       // .338 Norma Magnum
     #include "magwells_408CT.hpp"       // .408 Cheyenne Tactical | 408 Chey Tac | 10.36x77mm
     #include "magwells_50BMG.hpp"       // .50 BMG | .50 Browning Machine Gun | 12.7x99mm NATO
 
