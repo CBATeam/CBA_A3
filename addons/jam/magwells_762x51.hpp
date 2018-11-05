@@ -18,11 +18,7 @@
     class CBA_762x51_G3_L {};       // H&K G3 long mag (25/30 rounds)
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
-    class CBA_762x51_HK417 {        // H&K 417
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
+    class CBA_762x51_HK417 {};      // H&K 417
     class CBA_762x51_417_L {};      // H&K417 long mag (25/30 rounds)
     class CBA_762x51_417_XL {};     // H&K417 drum mag (50 rounds)
 
@@ -33,11 +29,7 @@
         };
     };
 
-    class CBA_762x51_M14 {          // M14
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
+    class CBA_762x51_M14 {};        // M14
     class CBA_762x51_M14_L {};      // M14 long mag (25/30 rounds)
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
