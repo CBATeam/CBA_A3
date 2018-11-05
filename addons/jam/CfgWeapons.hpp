@@ -83,7 +83,7 @@ class CfgWeapons {
     };
 
     class LMG_Zafir_F : Rifle_Long_Base_F {
-        magazineWell[] = {"CBA_762x51_LINKS", "CBA_762x54R_LINKS"}
+        magazineWell[] = {"CBA_762x54R_LINKS"};
     };
 
     class launch_RPG7_F : Launcher_Base_F {
