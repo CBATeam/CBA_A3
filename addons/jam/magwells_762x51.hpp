@@ -1,5 +1,9 @@
 
-    class CBA_762x51_AR10 {};       // AR-10 standard mag (20 rounds)
+    class CBA_762x51_AR10 {         // AR-10 standard mag (20 rounds)
+        BI_mags[] = {
+            "20Rnd_762x51_Mag"
+        };
+    };
     class CBA_762x51_AR10_L {};     // AR-10 long mag (25/30 rounds)
     class CBA_762x51_AR10_XL {};    // AR-10 drum mag (X-Products 50 round)
 
