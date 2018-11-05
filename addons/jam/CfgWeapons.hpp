@@ -57,7 +57,7 @@ class CfgWeapons {
     };
 
     class arifle_CTAR_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_580x42_TYPE95"};
+        magazineWell[] = {"CBA_580x42_TYPE95", "CBA_580x42_TYPE95_XL"};
     };
     class arifle_CTARS_base_F : Rifle_Base_F {
         magazineWell[] = {"CBA_580x42_TYPE95", "CBA_580x42_TYPE95_XL"};
