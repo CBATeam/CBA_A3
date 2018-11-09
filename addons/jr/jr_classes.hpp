@@ -151,12 +151,27 @@ class asdg_OpticRail1913_long: asdg_OpticRail1913 {
     };
 };
 
-// AK-style optic mount
-
 class asdg_OpticSideMount: asdg_OpticRail {
     class compatibleItems {
-        //by default we have none, because there's no vanilla accessory that would fit here
-        //but there are plenty Russian weapon mods out there that could benefit from this standardized base slot class
+        // deprecated, the following 3 classes should be used instead
+    };
+};
+
+class asdg_OpticSideRail_AK: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        // AK-style optic side mount
+    };
+};
+
+class asdg_OpticSideRail_SVD: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        // SVD-style optic side mount
+    };
+};
+
+class asdg_OpticSideRail_AKSVD: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        // side plate that fits both AK and SVD style mounts
     };
 };
 
