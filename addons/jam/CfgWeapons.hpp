@@ -31,6 +31,14 @@ class CfgWeapons {
         };
     };
 
+    class arifle_Katiba_Base_F : Rifle_Base_F {
+        magazineWell[] = {"CBA_65x39_Katiba"};
+    };
+
+    class arifle_ARX_base_F : Rifle_Base_F {
+        magazineWell[] = {"CBA_65x39_Katiba"};
+    };
+
     class EBR_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_762x51_M14"};
     };
@@ -49,10 +57,10 @@ class CfgWeapons {
     };
 
     class arifle_CTAR_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_580x42_TYPE95"};
+        magazineWell[] = {"CBA_580x42_TYPE95", "CBA_580x42_TYPE95_XL"};
     };
     class arifle_CTARS_base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_580x42_TYPE95"};
+        magazineWell[] = {"CBA_580x42_TYPE95", "CBA_580x42_TYPE95_XL"};
     };
 
     class arifle_AK12_base_F : Rifle_Base_F {
@@ -72,6 +80,10 @@ class CfgWeapons {
 
     class LMG_Mk200_F : Rifle_Long_Base_F {
         magazineWell[] = {"CBA_65x39_Mk200"};
+    };
+
+    class LMG_Zafir_F : Rifle_Long_Base_F {
+        magazineWell[] = {"CBA_762x54R_LINKS"};
     };
 
     class launch_RPG7_F : Launcher_Base_F {
