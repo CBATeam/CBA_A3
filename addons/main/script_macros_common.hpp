@@ -905,7 +905,7 @@ Description:
     The PREP macro should be placed in a script run by a XEH preStart and XEH preInit event.
 
     The PREP macro allows for CBA function caching, which drastically speeds up load times.
-    Beware though that function caching is enabled by default and as such to disable it you, need to
+    Beware though that function caching is enabled by default and as such to disable it, you need to
     #define DISABLE_COMPILE_CACHE above your #include "script_components.hpp" include!
 
     The function will be defined in ui and mission namespace. It can not be overwritten without
