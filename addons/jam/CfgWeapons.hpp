@@ -34,6 +34,9 @@ class CfgWeapons {
     class EBR_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_762x51_M14"};
     };
+    class DMR_03_base_F: Rifle_Long_Base_F {
+        magazineWell[] = {"CBA_762x51_MkI_EMR"};
+    };
     class DMR_06_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_762x51_M14"};
     };
