@@ -30,7 +30,7 @@ params ["_group", "_position"];
 // leader should not issue attack orders
 _group enableAttack false;
 
-private _staticWeapons = _position nearObjects ["StaticWeapon", 50] select {_x emptyPositions "gunner" > 0};
+private _staticWeapons = _position nearObjects ["StaticWeapon", 50] select {locked _x != 2 && {_x emptyPositions "gunner" > 0}};
 private _buildings = (_position nearObjects ["Building", 50]) apply {_x buildingPos -1} select {count _x > 0};
 
 {

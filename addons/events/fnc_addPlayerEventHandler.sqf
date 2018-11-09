@@ -129,13 +129,16 @@ if (_id != -1) then {
         GVAR(oldCameraView) = "";
         GVAR(oldFeatureCamera) = "";
         GVAR(oldVisibleMap) = false;
+        GVAR(oldUAVControl) = [];
+        GVAR(controlledEntity) = objNull;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
-            private _player = call CBA_fnc_currentUnit;
+            private _player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
+                GVAR(oldUAVControl) = []; // force update
             };
 
             private _data = group _player;
@@ -189,7 +192,24 @@ if (_id != -1) then {
                 [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
 
-            _data = currentVisionMode _player;
+            // handle controlling UAV, UAV entity needed for visionMode
+            _data = UAVControl getConnectedUAV _player;
+            if !(_data isEqualTo GVAR(oldUAVControl)) then {
+                GVAR(oldUAVControl) = _data;
+
+                private _role = _data param [(_data find _player) + 1, ""];
+                if (_role isEqualTo "DRIVER") exitWith {
+                    GVAR(controlledEntity) = driver getConnectedUAV _player;
+                };
+
+                if (_role isEqualTo "GUNNER") exitWith {
+                    GVAR(controlledEntity) = gunner getConnectedUAV _player;
+                };
+
+                GVAR(controlledEntity) = _player;
+            };
+
+            _data = currentVisionMode GVAR(controlledEntity);
             if !(_data isEqualTo GVAR(oldVisionMode)) then {
                 GVAR(oldVisionMode) = _data;
                 [QGVAR(visionModeEvent), [_player, _data]] call CBA_fnc_localEvent;

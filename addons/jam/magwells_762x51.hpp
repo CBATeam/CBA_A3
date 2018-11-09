@@ -19,8 +19,8 @@
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
     class CBA_762x51_HK417 {};      // H&K 417
-    class CBA_762x51_417_L {};      // H&K417 long mag (25/30 rounds)
-    class CBA_762x51_417_XL {};     // H&K417 drum mag (50 rounds)
+    class CBA_762x51_HK417_L {};    // H&K417 long mag (25/30 rounds)
+    class CBA_762x51_HK417_XL {};   // H&K417 drum mag (50 rounds)
 
     class CBA_762x51_LINKS {        // M13 Links for M60, M240, MG3 (DM6/DM60)
         BI_belts[] = {
@@ -34,6 +34,13 @@
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
     class CBA_762x51_MG3 {};        // MG3 DM1 link belts
+
+    class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62 mm magazines
+        BI_mags[] = {
+            "20Rnd_762x51_Mag"
+        };
+    };
+
     class CBA_762x51_SCAR {};       // SCAR-H
     class CBA_762x51_SIGAMT {};     // SIG 510-4, AMT
 
