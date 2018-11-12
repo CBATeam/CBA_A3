@@ -271,4 +271,15 @@ class CfgWeapons {
             delete MuzzleSlot;
         };
     };
+
+    class SMG_03_TR_BASE : Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
+    class SMG_03C_BASE : SMG_03_TR_BASE {};
+    class SMG_03C_TR_black : SMG_03C_BASE {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
 };
