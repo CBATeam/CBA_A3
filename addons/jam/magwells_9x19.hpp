@@ -19,6 +19,7 @@
     class CBA_9x19_PM63 {};         // FB PM-63 RAK
     class CBA_9x19_PM84 {};         // FB PM-84 Glauberyt
     class CBA_9x19_PP19 {};         // PP-19 Bizon-2-01
+    class CBA_9x19_PP2000 {};       // PP-2000 SMG
     class CBA_9x19_STEN {};         // STEN
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)

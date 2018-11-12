@@ -3,6 +3,7 @@ class CfgMagazineWells {
     // Rifle calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_11x59R.hpp"      // 11x59mmR Gras | 11mm Vickers
     #include "magwells_145x114.hpp"     // 14.5x114mm
+    #include "magwells_46x30.hpp"       // 4.6x30mm
     #include "magwells_545x39.hpp"      // 5.45x39mm
     #include "magwells_556x45.hpp"      // 5.56x45mm | .223
     #include "magwells_580x42.hpp"      // 5.8x42mm
@@ -38,6 +39,7 @@ class CfgMagazineWells {
     #include "magwells_8x22.hpp"        // 8x22mm Nambu
     #include "magwells_9x18.hpp"        // 9x18mm Makarov | 9mm Makarov | 9x18mm PM
     #include "magwells_9x19.hpp"        // 9x19mm Parabellum | 9mm Luger
+    #include "magwells_9x21.hpp"        // 9x21mm IMI | 9x21mm Gyurza
 
     #include "magwells_22LR.hpp"        // .22 LR | .22 Long Rifle | 5.6x15mmR
     #include "magwells_32ACP.hpp"       // .32 ACP | .32 Automatic | 7.65x17mmSR Browning | 7.65 mm Browning Short
