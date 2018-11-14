@@ -3,19 +3,17 @@ Function: CBA_fnc_isTurnedOut
 
 Description:
     Checks whether a unit is turned out in a vehicle or not.
+    Turned out means out of a hatch or something similar.
 
 Parameters:
     _unit - Unit to check <OBJECT>
 
 Returns:
-    true - for turned out <BOOL>
-    Turned out means out of a hatch or something similar.
+    true if turned out, false otherwise <BOOL>
 
 Examples:
     (begin example)
-        if ([player] call CBA_fnc_isTurnedOut) then {
-            player sideChat "I am turned out of my commander hatch!";
-        };
+        _isTurnedOut = [player] call CBA_fnc_isTurnedOut;
     (end)
 
 Author:

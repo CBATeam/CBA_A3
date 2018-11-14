@@ -2,13 +2,13 @@
 Function: CBA_fnc_isAttenuated
 
 Description:
-    Checks whether a unit is attenuated.
+    Checks whether a unit is attenuated, meaning in another compartment outside of outside voice range.
 
 Parameters:
     _unit - Unit to check <OBJECT>
 
 Returns:
-    true - for inside unit that cant hear the outside <BOOL>
+    true if attenuated, false otherwise <BOOL>
 
 Examples:
     (begin example)
@@ -24,9 +24,9 @@ Config & Variable API:
     Attributes
         role
         cargoindex or turretPath
-        animation for attenuated
+        animation for attenuated ("" for allways NOT attenuated)
     Info
-        variable is override config
+        variable overrides config
 
 Author:
     shukari
