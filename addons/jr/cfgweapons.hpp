@@ -937,18 +937,7 @@ class CfgWeapons {
     class SMG_03_TR_BASE : Rifle_Base_F {
         class WeaponSlotsInfo;
     };
-    class SMG_03C_BASE : SMG_03_TR_BASE {
-        class WeaponSlotsInfo : WeaponSlotsInfo {
-            class CowsSlot : asdg_OpticRail1913_short {
-                iconPosition[] = {0.4, 0.3};
-                iconScale = 0.2;
-            };
-            class PointerSlot : asdg_FrontSideRail {
-                iconPosition[] = {0.33, 0.37};
-                iconScale = 0.25;
-            };
-        };
-    };
+    class SMG_03C_BASE : SMG_03_TR_BASE {};
     class SMG_03_TR_black : SMG_03_TR_BASE {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class CowsSlot : asdg_OpticRail1913_short {
@@ -962,6 +951,18 @@ class CfgWeapons {
         };
     };
     class SMG_03_TR_hex : SMG_03_TR_BASE {
+        class WeaponSlotsInfo : WeaponSlotsInfo {
+            class CowsSlot : asdg_OpticRail1913_short {
+                iconPosition[] = {0.4, 0.3};
+                iconScale = 0.2;
+            };
+            class PointerSlot : asdg_FrontSideRail {
+                iconPosition[] = {0.33, 0.37};
+                iconScale = 0.25;
+            };
+        };
+    };
+    class SMG_03C_TR_black : SMG_03C_BASE {
         class WeaponSlotsInfo : WeaponSlotsInfo {
             class CowsSlot : asdg_OpticRail1913_short {
                 iconPosition[] = {0.4, 0.3};
