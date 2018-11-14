@@ -1,6 +1,6 @@
-#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_isTurnedOut
+
 Description:
     Checks whether a unit is turned out in a vehicle or not.
 
