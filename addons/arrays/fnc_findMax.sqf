@@ -32,5 +32,4 @@ private _reverse = + _array;
 reverse _reverse;
 
 private _max = selectMax _reverse;
-
 [_max, count _array - (_reverse find _max) - 1]
