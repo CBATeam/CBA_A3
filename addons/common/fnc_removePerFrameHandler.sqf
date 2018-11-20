@@ -23,6 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params [["_handle", -1, [0]]];
+if (_handle isEqualTo -1) exitWith {false};
 
 [{
     params ["_handle"];
