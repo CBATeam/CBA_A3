@@ -176,7 +176,4 @@ _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
 (_display displayCtrl IDC_BTN_CONFIGURE_ADDONS) ctrlAddEventHandler ["ButtonClick", {_this call FUNC(gui_configure)}];
 
 // ----- scripted OK button
-(_display displayCtrl 999) ctrlAddEventHandler ["ButtonClick", {
-    call FUNC(gui_saveTempData);
-    ctrlParent (_this select 0) closeDisplay IDC_OK;
-}];
+(_display displayCtrl 999) ctrlAddEventHandler ["ButtonClick", {call FUNC(gui_saveTempData)}];
