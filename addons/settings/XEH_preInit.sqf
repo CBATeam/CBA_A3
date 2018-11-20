@@ -20,6 +20,7 @@ ADDON = false;
     ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
     ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1 ,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call cba_settings_fnc_init;
     ["Test_Setting_5", "COLOR",    ["-test alpha-",    "-tooltip-"], "My Category", [1, 0, 0, 0.5], false] call cba_settings_fnc_init;
+    ["Test_Setting_6", "TIME",     ["-test time-",     "-tooltip-"], "My Category", [0, 3600, 60], false] call cba_settings_fnc_init;
     ["Test_Padding", "LIST", "Padding test", "My Category", [[0,1,2,3,4,5,6,7,8,9,10], []]] call cba_settings_fnc_init;
 
     ["Test_1", "EDITBOX", "setting 1", "Test Category", "null", nil, {systemChat str [1, _this]}] call cba_settings_fnc_init;
@@ -98,6 +99,11 @@ if (isServer) then {
     [_setting, _value, _priority, "mission", _store] call FUNC(set);
 }] call CBA_fnc_addEventHandler;
 
-[[LLSTRING(menu_button)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
+[[LLSTRING(menu_button), LLSTRING(menu_button_tooltip)], QGVAR(MainMenuHelper)] call CBA_fnc_addPauseMenuOption;
+
+private _ctrlAddonOptions = (uiNamespace getVariable "RscDisplayMain") displayCtrl IDC_MAIN_ADDONOPTIONS;
+
+_ctrlAddonOptions ctrlEnable true;
+_ctrlAddonOptions ctrlSetTooltip LLSTRING(menu_button_tooltip);
 
 ADDON = true;

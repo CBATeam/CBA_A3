@@ -1,14 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Keybinding">
         <Key ID="STR_CBA_Keybinding_Component">
             <English>Community Base Addons - Keybinding</English>
+            <German>Community Base Addons - Tastenbelegung</German>
             <Japanese>Community Base Addons - キー割り当て</Japanese>
             <Chinese>社群基礎模組 - 按鍵綁定</Chinese>
             <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
             <Russian>Community Base Addons - Назначения Клавиш</Russian>
             <Polish>Community Base Addons - Klawisze</Polish>
+            <French>Community Base Addons - Configurations des touches</French>
+            <Turkish>Community Base Addons - Klavye Tuşları</Turkish>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -20,6 +23,7 @@
             <Portuguese>Configure as Extensões</Portuguese>
             <Russian>Настроить Дополнения</Russian>
             <French>Configurer les addons</French>
+            <Turkish>Eklentileri Düzenle</Turkish>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -30,6 +34,8 @@
             <Chinesesimp>基础设定</Chinesesimp>
             <Portuguese>Configure as Bases</Portuguese>
             <Russian>Основные Настройки</Russian>
+            <French>Configurer la base</French>
+            <Turkish>Temeli Düzenle</Turkish>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
@@ -41,6 +47,7 @@
             <Portuguese>Chave desconhecida %1</Portuguese>
             <Russian>Неизвестная Клавиша %1</Russian>
             <French>Touche inconnue %1</French>
+            <Turkish>Bilinmeyen Tuş %1</Turkish>
         </Key>
     </Package>
 </Project>

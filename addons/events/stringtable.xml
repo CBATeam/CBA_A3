@@ -1,14 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Events">
         <Key ID="STR_CBA_Events_Component">
             <English>Community Base Addons - Events</English>
+            <German>Community Base Addons - Events</German>
             <Japanese>Community Base Addons - イベント</Japanese>
             <Chinese>社群基礎模組 - 事件</Chinese>
             <Chinesesimp>社群基础模组 - 事件</Chinesesimp>
             <Russian>Community Base Addons - События</Russian>
             <French>Community Base Addons - Événements</French>
             <Polish>Community Base Addons - Zdarzenia</Polish>
+            <Turkish>Community Base Addons - Durumlar</Turkish>
         </Key>
     </Package>
 </Project>

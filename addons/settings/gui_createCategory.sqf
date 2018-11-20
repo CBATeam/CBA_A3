@@ -26,6 +26,9 @@ private _categorySettings = [];
 {
     (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
     if (_category == _selectedAddon) then {
+        if (isLocalized _subCategory) then {
+            _subCategory = localize _subCategory;
+        };
         _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
     };
 } forEach GVAR(allSettings);
@@ -96,13 +99,14 @@ private _lastSubCategory = "$START";
             _ctrlOptionsGroup = _display getVariable _list;
         };
 
-        // Add sub-category header:
+        // Add sub-category header
         if (_createHeader) then {
-            private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
-            (_header controlsGroupCtrl IDC_SETTING_NAME) ctrlSetText format ["%1:", _subCategory];
+            private _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
+            private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
+            _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
 
             private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
-            _tablePosY = [_header, _tablePosY] call _fnc_controlSetTablePosY;
+            _tablePosY = [_ctrlHeaderGroup, _tablePosY] call _fnc_controlSetTablePosY;
             _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
         };
 
@@ -122,6 +126,9 @@ private _lastSubCategory = "$START";
             };
             case "COLOR": {
                 _display ctrlCreate [[QGVAR(Row_Color), QGVAR(Row_ColorAlpha)] select (count _defaultValue > 3), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "TIME": {
+                _display ctrlCreate [QGVAR(Row_Time), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
             };
             default {controlNull};
         };

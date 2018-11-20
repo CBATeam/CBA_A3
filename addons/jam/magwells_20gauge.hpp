@@ -1,0 +1,9 @@
+    class CBA_20g_9rnds {};         // 9 loose rounds
+    class CBA_20g_8rnds {};         // 8 loose rounds
+    class CBA_20g_7rnds {};         // 7 loose rounds
+    class CBA_20g_6rnds {};         // 6 loose rounds
+    class CBA_20g_5rnds {};         // 5 loose rounds
+    class CBA_20g_4rnds {};         // 4 loose rounds
+    class CBA_20g_3rnds {};         // 3 loose rounds
+    class CBA_20g_2rnds {};         // 2 loose rounds
+    class CBA_20g_1rnd {};          // 1 loose round

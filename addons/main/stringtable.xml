@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Main">
         <Key ID="STR_CBA_Author">
@@ -9,21 +9,29 @@
             <Chinesesimp>CBA制作组</Chinesesimp>
             <Portuguese>Time CBA</Portuguese>
             <Russian>Команда CBA</Russian>
-            <French>CBA-Team</French>
+            <French>Equipe CBA</French>
             <Polish>Zespół CBA</Polish>
+            <Turkish>CBA Takımı</Turkish>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
-            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
-            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
-            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
-            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
-            <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
             <French>https://www.github.com/CBATeam/CBA_A3</French>
+            <Spanish>https://www.github.com/CBATeam/CBA_A3</Spanish>
+            <Italian>https://www.github.com/CBATeam/CBA_A3</Italian>
             <Polish>https://www.github.com/CBATeam/CBA_A3</Polish>
+            <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
+            <German>https://www.github.com/CBATeam/CBA_A3</German>
+            <Czech>https://www.github.com/CBATeam/CBA_A3</Czech>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
+            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
+            <Korean>https://www.github.com/CBATeam/CBA_A3</Korean>
+            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
+            <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
+            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
+            <German>Community Base Addons - Hauptkomponente</German>
             <Japanese>Community Base Addons - メイン要素</Japanese>
             <Chinese>社群基礎模組 - 主要組件</Chinese>
             <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
@@ -31,9 +39,11 @@
             <Russian>Community Base Addons - Основной Компонент</Russian>
             <French>Community Base Addons - Composante principale</French>
             <Polish>Community Base Addons - Główny Komponent</Polish>
+            <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
+            <German>Community Base Addons - Optionale Komponente</German>
             <Japanese>Community Base Addons - オプション要素</Japanese>
             <Chinese>社群基礎模組 - 可選組件</Chinese>
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
@@ -41,6 +51,7 @@
             <Russian>Community Base Addons - Опциональный Компонент</Russian>
             <French>Community Base Addons - Composant facultatif</French>
             <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
+            <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
@@ -49,8 +60,9 @@
             <Chinese>模組:</Chinese>
             <Chinesesimp>模组:</Chinesesimp>
             <Japanese>アドオン:</Japanese>
-            <French>ADDON:</French>
+            <French>ADDON :</French>
             <Polish>ADDON:</Polish>
+            <Turkish>EKLENTİ:</Turkish>
         </Key>
     </Package>
 </Project>

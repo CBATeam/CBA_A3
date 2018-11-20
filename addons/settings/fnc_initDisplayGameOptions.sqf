@@ -19,6 +19,7 @@ if (isNil QUOTE(ADDON)) exitWith {
     private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
 
     _ctrlToggleButton ctrlEnable false;
+    _ctrlToggleButton ctrlSetTooltip LELSTRING(common,need_mission_start);
 };
 
 // ----- situational tooltips

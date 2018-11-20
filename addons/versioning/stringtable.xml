@@ -3,12 +3,15 @@
     <Package name="Versioning">
         <Key ID="STR_CBA_Versioning_Component">
             <English>Community Base Addons - Versioning</English>
+            <German>Community Base Addons - Versionierung</German>
             <Japanese>Community Base Addons - バージョニング</Japanese>
             <Chinese>社群基礎模組 - 版本</Chinese>
             <Chinesesimp>社群基础模组 - 版本</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Versionamento</Portuguese>
             <Russian>Community Base Addons - Версионность</Russian>
             <Polish>Community Base Addons - Wersjonowanie</Polish>
+            <French>Community Base Addons - Version</French>
+            <Turkish>Community Base Addons - Versiyonlama</Turkish>
         </Key>
     </Package>
 </Project>

@@ -296,124 +296,124 @@ class CfgVehicles {
             };
 
             class behaviour {
-                displayName = CSTRING(Behaviour);
-                description = CSTRING(Behaviour_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_BEHAVIOUR_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_BEHAVIOUR_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class careless {
-                        name = CSTRING(Careless);
+                        name = "$STR_COMBAT_CARELESS";
                         value = "CARELESS";
                         default = 1;
                     };
                     class safe {
-                        name = CSTRING(Safe);
+                        name = "$STR_COMBAT_SAFE";
                         value = "SAFE";
                     };
                     class aware {
-                        name = CSTRING(Aware);
+                        name = "$STR_COMBAT_AWARE";
                         value = "AWARE";
                     };
                     class combat {
-                        name = CSTRING(Combat);
+                        name = "$STR_COMBAT_COMBAT";
                         value = "COMBAT";
                     };
                     class stealth {
-                        name = CSTRING(Stealth);
+                        name = "$STR_COMBAT_STEALTH";
                         value = "STEALTH";
                     };
                 };
             };
 
             class combatMode {
-                displayName = CSTRING(CombatMode);
-                description = CSTRING(CombatMode_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_COMBATMODE_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_COMBATMODE_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class yellow {
-                        name = CSTRING(CombatYellow);
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_YELLOW_TEXT";
                         value = "YELLOW";
                         default = 1;
                     };
                     class blue {
-                        name = CSTRING(CombatBlue);
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_BLUE_TEXT";
                         value = "BLUE";
                     };
                     class green {
-                        name = CSTRING(CombatGreen);
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_GREEN_TEXT";
                         value = "GREEN";
                     };
                     class white {
-                        name = CSTRING(CombatWhite);
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_WHITE_TEXT";
                         value = "WHITE";
                     };
                     class red {
-                        name = CSTRING(CombatRed);
+                        name = "$STR_3DEN_ATTRIBUTES_COMBATMODE_RED_TEXT";
                         value = "RED";
                     };
                 };
             };
 
             class speedMode {
-                displayName = CSTRING(SpeedMode);
-                description = CSTRING(SpeedMode_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_SPEEDMODE_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_SPEEDMODE_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class limited {
-                        name = CSTRING(SpeedLimited);
+                        name = "$STR_SPEED_LIMITED";
                         value = "LIMITED";
                         default = 1;
                     };
                     class normal {
-                        name = CSTRING(SpeedNormal);
+                        name = "$STR_SPEED_NORMAL";
                         value = "NORMAL";
                     };
                     class full {
-                        name = CSTRING(SpeedFull);
+                        name = "$STR_SPEED_FULL";
                         value = "FULL";
                     };
                 };
             };
 
             class formation {
-                displayName = CSTRING(Formation);
-                description = CSTRING(Formation_Desc);
+                displayName = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_DISPLAYNAME";
+                description = "$STR_3DEN_GROUP_ATTRIBUTE_FORMATION_TOOLTIP";
                 typeName = "STRING";
                 class values {
                     class column {
-                        name = CSTRING(Column);
+                        name = "$STR_COLUMN";
                         value = "COLUMN";
                         default = 1;
                     };
                     class stagColumn {
-                        name = CSTRING(StagColumn);
+                        name = "$STR_STAGGERED";
                         value = "STAG COLUMN";
                     };
                     class wedge {
-                        name = CSTRING(Wedge);
+                        name = "$STR_WEDGE";
                         value = "WEDGE";
                     };
                     class echLeft {
-                        name = CSTRING(EchLeft);
+                        name = "$STR_ECHL";
                         value = "ECH LEFT";
                     };
                     class echRight {
-                        name = CSTRING(EchRight);
+                        name = "$STR_ECHR";
                         value = "ECH RIGHT";
                     };
                     class vee {
-                        name = CSTRING(Vee);
+                        name = "$STR_VEE";
                         value = "VEE";
                     };
                     class line {
-                        name = CSTRING(Line);
+                        name = "$STR_LINE";
                         value = "LINE";
                     };
                     class file {
-                        name = CSTRING(File);
+                        name = "$STR_FILE";
                         value = "FILE";
                     };
                     class diamond {
-                        name = CSTRING(Diamond);
+                        name = "$STR_DIAMOND";
                         value = "DIAMOND";
                     };
                 };
