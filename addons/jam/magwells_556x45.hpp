@@ -19,6 +19,20 @@
     class CBA_556x45_TYPE97_XL {};      // QBB-97 LSW Drums
     class CBA_556x45_SG550 {};
 
+    
+    class CBA_556x45_STANAG {           //This is DEPRECATED! Don't use it! Use the vanilla one instead
+        BI_mags[] = {
+            "30Rnd_556x45_Stanag",
+            "30Rnd_556x45_Stanag_green",
+            "30Rnd_556x45_Stanag_red",
+            "30Rnd_556x45_Stanag_Tracer_Red",
+            "30Rnd_556x45_Stanag_Tracer_Green",
+            "30Rnd_556x45_Stanag_Tracer_Yellow"
+        };
+    };
+
+    class CBA_556x45_STANAG_L {};       //This is DEPRECATED! Don't use it! Use the vanilla one instead
+
     class STANAG_556x45 {};         // STANAG mags, standard length, including small drums
 
     class STANAG_556x45_Large {};       // STANAG mags, long stick or coffin (40/60 rounds, Magpul PMAG 40, Surefire MAG5-60)
