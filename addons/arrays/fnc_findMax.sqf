@@ -28,5 +28,8 @@ SCRIPT(findMax);
 
 if !(_array isEqualTypeAll 0) exitWith {nil};
 
-private _max = selectMax _array;
-[_max, _array find _max]
+private _reverse = + _array;
+reverse _reverse;
+
+private _max = selectMax _reverse;
+[_max, count _array - (_reverse find _max) - 1]
