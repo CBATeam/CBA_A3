@@ -14,3 +14,5 @@
     class CBA_762x39_STANAG_XL {};      // 762x39mm in an extra long STANAG stick or coffin mag
     class CBA_762x39_STANAG_2D {};      // 762x39mm in a twin-drum STANAG mag
     class CBA_762x39_STANAG_2D_XL {};   // 762x39mm in an extra large twin-drum STANAG mag
+
+    class CBA_762x39_VZ58 {};           // 762x39mm VZ58 magazine, cannot be used in AKs or vice versa
