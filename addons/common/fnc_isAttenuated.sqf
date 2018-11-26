@@ -44,7 +44,7 @@ private _config = configFile >> "CfgVehicles" >> typeOf _vehicle;
 
 // class CfgSoundEffects >> class AttenuationsEffects
 private _attenuationType = getText (_config >> "attenuationEffectType");
-if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation", "jsrs_OpenCar_Attenuation", "jsrs_SemiOpenCar_Attenuation"]) exitWith {false};
+if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation"]) exitWith {false};
 
 private _fullCrew = fullCrew _vehicle;
 (_fullCrew select (_fullCrew findIf {_unit isEqualTo (_x param [0, objNull])})) params ["", "_role", "_cargoIndex", "_turretPath", "_isFFV"];
