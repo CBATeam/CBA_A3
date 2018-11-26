@@ -41,11 +41,13 @@ if (_turnedOut) exitWith {false};
 // open vehicle
 private _vehicle = vehicle _unit;
 private _config = configFile >> "CfgVehicles" >> typeOf _vehicle;
+
+// class CfgSoundEffects >> class AttenuationsEffects
 private _attenuationType = getText (_config >> "attenuationEffectType");
-if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation"]) exitWith {false};
+if (_attenuationType in ["OpenCarAttenuation", "OpenHeliAttenuation", "jsrs_OpenCar_Attenuation", "jsrs_SemiOpenCar_Attenuation"]) exitWith {false};
 
 private _fullCrew = fullCrew _vehicle;
-(_fullCrew select (_fullCrew findIf {_unit == _x select 0})) params ["", "_role", "_cargoIndex", "_turretPath", "_isFFV"];
+(_fullCrew select (_fullCrew findIf {_unit isEqualTo (_x param [0, objNull])})) params ["", "_role", "_cargoIndex", "_turretPath", "_isFFV"];
 _role = toLower _role;
 private _return = _isFFV;
 
@@ -80,6 +82,10 @@ if (_return && {_role isEqualTo "commander"} && {!_turnedOut}) exitWith {true};
 // This exit is crucial for the difference between FFV and Override and normale roles
 if (_return) exitWith {false}; // return
 private _return = true;
+
+if (_role in ["gunner", "turret"]) exitWith {
+    animationState _unit != getText (_turret >> "gunnerAction") // return
+};
 
 if (_role isEqualTo "cargo") exitWith {
     private _attenuateCargo = getArray (_config >> "soundAttenuationCargo");
