@@ -91,7 +91,6 @@ private _fnc_processQueue = {
     _control ctrlSetStructuredText composeText _composition;
     _control ctrlSetBackgroundColor [0,0,0,0.5];
 
-    private _spacingY = 1 * GUI_GRID_H;
     private _left = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),x)', safezoneX + safezoneW - 16 * GUI_GRID_W];
     private _top = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),y)', safezoneY + 6 * GUI_GRID_H];
     private _width = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),w)', 15 * GUI_GRID_W];
