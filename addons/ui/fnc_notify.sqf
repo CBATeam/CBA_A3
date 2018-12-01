@@ -135,7 +135,7 @@ private _fnc_processQueue = {
     _control ctrlSetFade 1;
     _control ctrlCommit 0;
     _control ctrlSetFade 0;
-    _control ctrlCommit FADE_IN_TIME;
+    _control ctrlCommit (FADE_IN_TIME);
 
     // pop queue
     [{
@@ -148,7 +148,7 @@ private _fnc_processQueue = {
             _composition call _fnc_processQueue;
         } else {
             _control ctrlSetFade 1;
-            _control ctrlCommit FADE_OUT_TIME;
+            _control ctrlCommit (FADE_OUT_TIME);
         };
     }, [_control, _fnc_processQueue], LIFE_TIME] call CBA_fnc_waitAndExecute;
 };
