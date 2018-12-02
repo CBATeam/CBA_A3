@@ -99,10 +99,12 @@
         <Key ID="STR_CBA_Ui_NotificationPositionName">
             <English>Notification</English>
             <German>Benachrichtigung</German>
+            <Polish>Powiadomienie</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
             <German>Textrückmeldung an den Spieler.</German>
+            <Polish>Tekstowa informacja dla gracza.</Polish>
         </Key>
     </Package>
 </Project>
