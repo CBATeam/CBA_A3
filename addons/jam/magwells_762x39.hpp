@@ -6,8 +6,8 @@
             "30Rnd_762x39_Mag_Tracer_Green_F"
         };
     };
-	
-	class AK_762x39 {};                 // Standard AK-47/AKM magazines
+
+    class AK_762x39 {};                 // Standard AK-47/AKM magazines
 
     class CBA_762x39_RPK {};            // 40/45/75rnd RPK magazines
 

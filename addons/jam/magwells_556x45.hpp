@@ -19,7 +19,7 @@
     class CBA_556x45_TYPE97_XL {};      // QBB-97 LSW Drums
     class CBA_556x45_SG550 {};
 
-    
+
     class CBA_556x45_STANAG {           //This is DEPRECATED! Don't use it! Use the vanilla one instead
         BI_mags[] = {
             "30Rnd_556x45_Stanag",
