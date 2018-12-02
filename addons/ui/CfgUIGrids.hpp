@@ -16,10 +16,10 @@ class CfgUIGrids {
 
                     GVAR(notify)[] = {
                         {
-                            safezoneX + safezoneW - 16 * GUI_GRID_W,
-                            safeZoneY + 6 * GUI_GRID_H,
-                            15 * GUI_GRID_W,
-                            3 * GUI_GRID_H
+                            NOTIFY_DEFAULT_X,
+                            NOTIFY_DEFAULT_Y,
+                            NOTIFY_MIN_WIDTH,
+                            NOTIFY_MIN_HEIGHT
                         },
                         GUI_GRID_W,
                         GUI_GRID_H
@@ -32,15 +32,15 @@ class CfgUIGrids {
             class GVAR(grid) {
                 displayName = CSTRING(ProgressBarPositionName);
                 description = CSTRING(ProgressBarPositionDescription);
-                preview = "#(argb,8,8,3)color(0,0,0,0.5)";
+                preview = "#(argb,8,8,3)color(0,0,0,0.25)";
                 saveToProfile[] = {0,1,2,3};
                 canResize = 1;
             };
 
             class GVAR(notify) {
-                displayName = "CBA Notify";
-                description = "Textual in game feedback to the player.";
-                preview = "#(argb,8,8,3)color(0,0,0,0.5)";
+                displayName = CSTRING(NotificationPositionName);
+                description = CSTRING(NotificationPositionDescription);
+                preview = "#(argb,8,8,3)color(0,0,0,0.25)";
                 saveToProfile[] = {0,1};
             };
         };

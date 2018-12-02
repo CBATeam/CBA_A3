@@ -49,6 +49,7 @@ private _composition = [];
 
 {
     _composition pushBack lineBreak;
+
     _x params [["_text", "", ["", 0]], ["_size", 1, [0]], ["_color", [], [[]], [3,4]]];
 
     _size = _size * 0.55 / (getResolution select 5);
@@ -87,22 +88,27 @@ private _fnc_processQueue = {
     private _vignette = _display displayCtrl 1202;
     _vignette ctrlShow false;
 
-    private _control = _display ctrlCreate ["RscStructuredText", -1];
-    _control ctrlSetStructuredText composeText _composition;
-    _control ctrlSetBackgroundColor [0,0,0,0.5];
+    private _background = _display ctrlCreate ["RscText", -1];
+    _background ctrlSetBackgroundColor [0,0,0,0.25];
 
-    private _left = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),x)', safezoneX + safezoneW - 16 * GUI_GRID_W];
-    private _top = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),y)', safezoneY + 6 * GUI_GRID_H];
-    private _width = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),w)', 15 * GUI_GRID_W];
-    private _height = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),h)', 3 * GUI_GRID_H];
+    private _text = _display ctrlCreate ["RscStructuredText", -1];
+    _text ctrlSetStructuredText composeText _composition;
 
-    _width = ctrlTextWidth _control max _width;
+    private _controls = [_background, _text];
+
+    private _left = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),x)', NOTIFY_DEFAULT_X];
+    private _top = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),y)', NOTIFY_DEFAULT_Y];
+    private _width = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),w)', NOTIFY_MIN_WIDTH];
+    private _height = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(notify),h)', NOTIFY_MIN_HEIGHT];
+
+    _width = ctrlTextWidth _text max _width;
 
     // need to set this before reading the text height, to get the correct amount of auto line breaks
-    _control ctrlSetPosition [0, 0, _width, _height];
-    _control ctrlCommit 0;
+    _text ctrlSetPosition [0, 0, _width, _height];
+    _text ctrlCommit 0;
 
-    _height = ctrlTextHeight _control max _height;
+    private _textHeight = ctrlTextHeight _text;
+    _height = _textHeight max _height;
 
     // ensure the box not going off screen
     private _right = _left + _width;
@@ -129,17 +135,25 @@ private _fnc_processQueue = {
         _top = _top + (_topEdge - _top);
     };
 
-    _control ctrlSetPosition [_left, _top, _width, _height];
+    _background ctrlSetPosition [_left, _top, _width, _height];
+
+    if (_textHeight < _height) then {
+        _top = _top + (_height - _textHeight) / 2;
+    };
+
+    _text ctrlSetPosition [_left, _top, _width, _textHeight];
 
     // fade in
-    _control ctrlSetFade 1;
-    _control ctrlCommit 0;
-    _control ctrlSetFade 0;
-    _control ctrlCommit (FADE_IN_TIME);
+    {
+        _x ctrlSetFade 1;
+        _x ctrlCommit 0;
+        _x ctrlSetFade 0;
+        _x ctrlCommit (FADE_IN_TIME);
+    } forEach _controls;
 
     // pop queue
     [{
-        params ["_control", "_fnc_processQueue"];
+        params ["_controls", "_fnc_processQueue"];
 
         GVAR(notifyQueue) deleteAt 0;
         private _composition = GVAR(notifyQueue) select 0;
@@ -147,10 +161,13 @@ private _fnc_processQueue = {
         if (!isNil "_composition") then {
             _composition call _fnc_processQueue;
         } else {
-            _control ctrlSetFade 1;
-            _control ctrlCommit (FADE_OUT_TIME);
+            // fade out
+            {
+                _x ctrlSetFade 1;
+                _x ctrlCommit (FADE_OUT_TIME);
+            } forEach _controls;
         };
-    }, [_control, _fnc_processQueue], LIFE_TIME] call CBA_fnc_waitAndExecute;
+    }, [_controls, _fnc_processQueue], LIFE_TIME] call CBA_fnc_waitAndExecute;
 };
 
 if (count GVAR(notifyQueue) isEqualTo 1) then {
