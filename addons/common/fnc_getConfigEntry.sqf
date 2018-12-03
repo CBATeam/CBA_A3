@@ -44,7 +44,7 @@ if (_entryType == "ARRAY") exitWith {
     };
 };
 
-if (_entryType == "ARRAY") exitWith {
+if (_entryType == "NUMBER") exitWith {
     if (isNumber _configEntry || {isText _configEntry}) then {
         getNumber _configEntry // return
     } else {
