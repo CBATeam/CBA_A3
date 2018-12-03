@@ -9,16 +9,16 @@ Description:
     supplied default value.
 
 Parameters:
-    _configEntry - Entry to get value of [Config]
-    _entryType - "text", "number" or "array" [String]
-    _defaultValue - Value to return if config entry unavailable [Any]
+    _configEntry - Entry to get value of <CONFIG>
+    _entryType - "STRING", "NUMBER" or "ARRAY" <STRING>
+    _defaultValue - Value to return if config entry unavailable <ANY>
 
 Returns:
     Value found [String, Number or Array]
 
 Examples:
     (begin example)
-        [configFile >> "CfgJellies" >> "Wobbliness", "number", 0] call _f
+        [configFile >> "CfgJellies" >> "Wobbliness", "NUMBER", 0] call CBA_fnc_getConfigEntry
     (end)
 
 Author:
@@ -28,24 +28,25 @@ SCRIPT(getConfigEntry);
 
 params ["_configEntry", "_entryType", "_defaultValue"];
 
-private _r = _defaultValue;
+private _return = _defaultValue;
 
 switch (toLower _entryType) do {
-    case "text": {
+    case "STRING";
+    case "TEXT": {
         if (isText _configEntry) then {
-            _r = getText _configEntry;
+            _return = getText _configEntry;
         };
     };
-    case "array": {
+    case "ARRAY": {
         if (isArray _configEntry) then {
-            _r = getArray _configEntry;
+            _return = getArray _configEntry;
         };
     };
-    case "number": {
-        if (isNumber _configEntry) then {
-            _r = getNumber _configEntry;
+    case "NUMBER": {
+        if (isNumber _configEntry || {isText _configEntry}) then {
+            _return = getNumber _configEntry;
         };
     };
 };
 
-_r
+_return
