@@ -28,25 +28,28 @@ SCRIPT(getConfigEntry);
 
 params ["_configEntry", "_entryType", "_defaultValue"];
 
-private _return = _defaultValue;
-
-switch (toUpper _entryType) do {
-    case "STRING";
-    case "TEXT": {
-        if (isText _configEntry) then {
-            _return = getText _configEntry;
-        };
-    };
-    case "ARRAY": {
-        if (isArray _configEntry) then {
-            _return = getArray _configEntry;
-        };
-    };
-    case "NUMBER": {
-        if (isNumber _configEntry || {isText _configEntry}) then {
-            _return = getNumber _configEntry;
-        };
+if (toUpper _entryType in ["STRING", "TEXT"]) exitWith {
+    if (isText _configEntry) then {
+        getText _configEntry // return
+    } else {
+        _defaultValue // return
     };
 };
 
-_return
+if (_entryType == "ARRAY") exitWith {
+    if (isArray _configEntry) then {
+        getArray _configEntry // return
+    } else {
+        _defaultValue // return
+    };
+};
+
+if (_entryType == "ARRAY") exitWith {
+    if (isNumber _configEntry || {isText _configEntry}) then {
+        getNumber _configEntry // return
+    } else {
+        _defaultValue // return
+    };
+};
+
+_defaultValue
