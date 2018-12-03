@@ -9,12 +9,12 @@ Description:
     supplied default value.
 
 Parameters:
-    _configEntry - Entry to get value of <CONFIG>
-    _entryType - "STRING", "NUMBER" or "ARRAY" <STRING>
+    _configEntry  - Entry to get value of <CONFIG>
+    _entryType    - "STRING", "NUMBER" or "ARRAY" <STRING>
     _defaultValue - Value to return if config entry unavailable <ANY>
 
 Returns:
-    Value found [String, Number or Array]
+    Value found <STRING, NUMBER or ARRAY>
 
 Examples:
     (begin example)
