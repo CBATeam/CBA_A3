@@ -30,7 +30,7 @@ params ["_configEntry", "_entryType", "_defaultValue"];
 
 private _return = _defaultValue;
 
-switch (toLower _entryType) do {
+switch (toUpper _entryType) do {
     case "STRING";
     case "TEXT": {
         if (isText _configEntry) then {
