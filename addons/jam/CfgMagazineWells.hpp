@@ -69,9 +69,12 @@ class CfgMagazineWells {
     class CBA_Panzerschreck {}; // Panzerschreck RPzB 54
     class CBA_PIAT {};          // PIAT
 
-    class CBA_RPG7 {
+    class RPG7;
+    class CBA_RPG7: RPG7 {
+    /*
         BI_rockets[] = {
             "RPG7_F"
         };
+    */
     };
 };

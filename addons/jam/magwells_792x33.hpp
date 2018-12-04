@@ -1,1 +1,1 @@
-    class CBA_792x33_StG {};        // StG44
+class CBA_792x33_StG {};        // StG44
