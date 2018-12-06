@@ -28,7 +28,7 @@ SCRIPT(getConfigEntry);
 
 params ["_configEntry", "_entryType", "_defaultValue"];
 
-if (toUpper _entryType in ["STRING", "TEXT"]) exitWith {
+if (_entryType == "STRING" || _entryType == "TEXT") exitWith {
     if (isText _configEntry) then {
         getText _configEntry // return
     } else {
