@@ -6,7 +6,7 @@ Description:
     Retrieves a list of magazines that are compatible with a weapon.
 
 Parameters:
-    _weapon           - Weapon configName or config
+    _weapon - Weapon configName or config
 
 Example:
     (begin example)
@@ -41,7 +41,7 @@ if (isNil "_returnMags") then {
         private _wellConfig = configFile >> "CfgMagazineWells" >> _x;
         {
             _returnMags append getArray _x;
-        } forEach configProperties [_wellConfig, "isArray _x", true];
+        } forEach configProperties [_wellConfig, "isArray _x", false];
     } forEach (getArray (_weapon >> "magazineWell"));
 
     private _cfgMagazines = configFile >> "CfgMagazines";
