@@ -25,7 +25,7 @@ SCRIPT(serializeNamespace);
 
 params [["_namespace", locationNull, [locationNull, objNull]], "_defaultValue"];
 
-private _hash = [[], _defaultValue] call CBA_fnc_hashCreate;
+private _hash = [[], RETNIL(_defaultValue)] call CBA_fnc_hashCreate;
 
 {
     [_hash, _x, _namespace getVariable _x] call CBA_fnc_hashSet;
