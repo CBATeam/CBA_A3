@@ -5,6 +5,7 @@ params ["_display"];
 private _ctrlMaps = _display displayCtrl IDC_SERVER_ISLAND;
 private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
 
+lbSort _ctrlMaps;
 ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
 private _ctrlSearch = _display ctrlCreate ["RscEdit", IDC_SEARCH];
