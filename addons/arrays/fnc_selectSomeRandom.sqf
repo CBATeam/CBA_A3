@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_selectRandom
+Function: CBA_fnc_selectSomeRandom
 
 Description:
     Select a specified amount of elements from an array without picking the same element multiple times.
@@ -21,7 +21,7 @@ Example:
 Author:
     NeilZar
 ---------------------------------------------------------------------------- */
-SCRIPT(selectRandom);
+SCRIPT(selectSomeRandom);
 
 params [["_array", [], [[]]], ["_amount", 0, [0]]];
 
