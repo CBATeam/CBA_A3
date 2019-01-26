@@ -31,7 +31,7 @@ _array = + _array;
 private _result = [];
 
 for "_i" from 1 to _amount do {
-    _result pushBack (_array deleteAt floor random count _array)
+    _result pushBack (_array deleteAt floor random count _array);
 };
 
 _result
