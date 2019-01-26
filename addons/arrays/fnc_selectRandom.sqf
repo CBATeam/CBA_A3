@@ -30,8 +30,8 @@ if (_amount <= 0) exitWith { [] };
 
 private _result = [];
 
-for "" from 0 to _amount - 1 do {
-    _result pushBack (_array deleteAt (floor random (count _array)))
+for "_i" from 0 to _amount - 1 do {
+    _result pushBack (_array deleteAt floor random count _array)
 };
 
 _result
