@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _array - Input Array <ARRAY>
-    _amount - Block <NUMBER>
+    _amount - Amount to select <NUMBER>
 
 Returns:
     New array with the specified amount of randomly selected elements <ARRAY>
@@ -25,8 +25,8 @@ SCRIPT(selectRandom);
 
 params [["_array", [], [[]]], ["_amount", 0, [0]]];
 
-if (_amount >= count _array) exitWith { _array };
-if (_amount <= 0) exitWith { [] };
+_amount = _amount max (count _array);
+_array = + _array;
 
 private _result = [];
 
