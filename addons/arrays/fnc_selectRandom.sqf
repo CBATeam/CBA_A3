@@ -25,7 +25,7 @@ SCRIPT(selectRandom);
 
 params [["_array", [], [[]]], ["_amount", 0, [0]]];
 
-_amount = _amount max (count _array);
+_amount = _amount min (count _array);
 _array = + _array;
 
 private _result = [];
