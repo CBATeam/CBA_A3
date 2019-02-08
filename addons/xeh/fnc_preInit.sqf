@@ -89,11 +89,12 @@ private _cfgVehicles = configFile >> "CfgVehicles";
     XEH_LOG("XEH: Compiling XEH START");
 #endif
 
-GVAR(allEventHandlers) = [];
+//Get configFile eventhandlers from cache that was generated at preStart
+GVAR(allEventHandlers) = uiNamespace getVariable [QGVAR(configFileEventHandlers), []];
 
 {
     GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
-} forEach XEH_MAIN_CONFIGS;
+} forEach (XEH_MAIN_CONFIGS - [configFile]);
 
 #ifdef DEBUG_MODE_FULL
     XEH_LOG("XEH: Compiling XEH END");
