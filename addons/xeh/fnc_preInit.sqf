@@ -73,16 +73,16 @@ GVAR(EventsLowercase) = [];
 
 // generate list of incompatible classes
 GVAR(incompatible) = [] call CBA_fnc_createNamespace;
-
+private _cfgVehicles = configFile >> "CfgVehicles";
 {
-    private _class = configFile >> "CfgVehicles" >> _x;
+    private _class = _cfgVehicles >> _x;
 
     while {isClass _class && {!ISINCOMP(configName _class)}} do {
         SETINCOMP(configName _class);
 
         _class = inheritsFrom _class;
     };
-} forEach ([false, true] call CBA_fnc_supportMonitor);
+} forEach call (uiNamespace getVariable [QGVAR(incompatibleClasses), {[]}]);
 
 // always recompile extended event handlers
 #ifdef DEBUG_MODE_FULL
