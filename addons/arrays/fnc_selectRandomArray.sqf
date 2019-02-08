@@ -21,7 +21,7 @@ Example:
 Author:
     NeilZar
 ---------------------------------------------------------------------------- */
-SCRIPT(selectSomeRandom);
+SCRIPT(selectRandomArray);
 
 params [["_array", [], [[]]], ["_amount", 0, [0]]];
 
