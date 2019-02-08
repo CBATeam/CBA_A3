@@ -13,7 +13,7 @@ private _addonsSparse = _addonsFull select {
 LOG("addonsSparse1: " + str count _addonsSparse);
 
 //Filter out addons defined in CfgAddons as they are always activated
-private _cfgAddonsCategories = ("true" configClasses (configFile >> "CfgAddons"));
+private _cfgAddonsCategories = "true" configClasses (configFile >> "CfgAddons");
 
 private _cfgAddonsMods = [];
 

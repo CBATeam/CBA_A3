@@ -48,7 +48,7 @@ call COMPILE_FILE(init_delayLess);
 
 // Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
 activateAddons (uiNamespace getVariable [QGVAR(addonsSparse), []]);
-GVAR(addons) = (uiNamespace getVariable [QGVAR(addons), []]);
+GVAR(addons) = uiNamespace getVariable [QGVAR(addons), []];
 
 // BWC
 #include "backwards_comp.sqf"
