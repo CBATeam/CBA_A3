@@ -65,4 +65,8 @@ with uiNamespace do {
             diag_log text format ["[XEH]: %1 does not support Extended Event Handlers! Addon: %2", _classname, _addon];
         };
     } forEach (true call CBA_fnc_supportMonitor);
+
+    // cache incompatible classes that are needed in preInit
+    private _cfgVehicles = configFile >> "CfgVehicles"; //We need classes in preInit anyway
+    GVAR(incompatibleClasses) = ([false, true] call CBA_fnc_supportMonitor) apply {_cfgVehicles >> _x};
 };
