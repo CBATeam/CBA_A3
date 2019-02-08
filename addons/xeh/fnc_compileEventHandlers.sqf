@@ -71,15 +71,10 @@ private _resultNames = [];
         if !(_eventFunc isEqualTo "") then {
 
             //Optimize "QUOTE(call COMPILE_FILE(XEH_preInit));" down to just the content of the EH script
-            if (!(["compile"] call CBA_fnc_isRecompileEnabled) && //Users might expect their preInit script to be reloaded everytime when debugging
-                {
-                    (toLower (_eventFunc select [0,40])) isEqualTo "call compile preprocessfilelinenumbers '"
-                    &&
-                    {
-                            (_eventFunc select [count _eventFunc -2]) isEqualTo "';"
-                    }
-                }
-            ) then {
+            if (!(["compile"] call CBA_fnc_isRecompileEnabled) && { //Users might expect their preInit script to be reloaded everytime when debugging
+                    (toLower (_eventFunc select [0,40])) isEqualTo "call compile preprocessfilelinenumbers '" && {
+					(_eventFunc select [count _eventFunc -2]) isEqualTo "';"
+			}}) then {
                 private _funcPath = _eventFunc select [40, count _eventFunc - 42];
                 //If there is a quote mark in the path, then something went wrong and we got multiple paths, just skip optimization
                 //Example cause: "call COMPILE_FILE(XEH_preInit);call COMPILE_FILE(XEH_preClientInit)"
