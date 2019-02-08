@@ -68,4 +68,5 @@ with uiNamespace do {
 
     // cache incompatible classes that are needed in preInit
     GVAR(incompatibleClasses) = compileFinal str ([false, true] call CBA_fnc_supportMonitor);
+    nil // needs return value [a3\functions_f\initfunctions.sqf Line 499]
 };
