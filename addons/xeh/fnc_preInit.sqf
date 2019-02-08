@@ -90,7 +90,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
 #endif
 
 //Get configFile eventhandlers from cache that was generated at preStart
-GVAR(allEventHandlers) = uiNamespace getVariable [QGVAR(configFileEventHandlers), []];
+GVAR(allEventHandlers) = call (uiNamespace getVariable [QGVAR(configFileEventHandlers), {[]}]);
 
 {
     GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
