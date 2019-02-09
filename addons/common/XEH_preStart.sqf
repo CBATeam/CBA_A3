@@ -2,23 +2,22 @@
 
 //See usage in XEH_preInit
 private _cfgPatches = configFile >> "CfgPatches";
-private _addonsFull = ("true" configClasses _cfgPatches) apply {configName _x};
+private _allComponents = "true" configClasses _cfgPatches apply {configName _x};
 
 //Filter out addons that don't have any units defined as we don't need to activate these
-private _addonsSparse = _addonsFull select {
-    !(getArray(_cfgPatches >> _x >> "units") isEqualTo [])
+private _unitAddons = _addonsFull select {
+    !(getArray (_cfgPatches >> _x >> "units") isEqualTo [])
 };
 
 //Filter out addons defined in CfgAddons as they are always activated
-private _cfgAddonsCategories = "true" configClasses (configFile >> "CfgAddons");
-
-private _cfgAddonsMods = [];
+private _allAddons = "true" configClasses (configFile >> "CfgAddons");
+private _preloadedAddons = [];
 
 {
-    _cfgAddonsMods append (getArray (_x >> "list"));
-} forEach _cfgAddonsCategories;
+    _preloadedAddons append getArray (_x >> "list");
+} forEach _allAddons;
 
-_addonsSparse = _addonsSparse - _cfgAddonsMods;
+_unitAddons = _unitAddons - _preloadedAddons;
 
-uiNamespace setVariable [QGVAR(addons), _addonsFull];
-uiNamespace setVariable [QGVAR(addonsSparse), _addonsSparse];
+uiNamespace setVariable [QGVAR(addons), _allComponents];
+uiNamespace setVariable [QGVAR(unitAddons), _unitAddons];
