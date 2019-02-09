@@ -147,14 +147,14 @@ private _resultNames = [];
                 };
 
                 // client only events
-                _entry = _x >> "clientInit";
+                _entry = _x >> format ["client%1", _entryName];
 
                 if (isText _entry) then {
                     _eventFunc = _eventFunc + "if (!isDedicated) then {" + getText _entry + "};";
                 };
 
                 // server only events
-                _entry = _x >> "serverInit";
+                _entry = _x >> format ["server%1", _entryName];
 
                 if (isText _entry) then {
                     _eventFunc = _eventFunc + "if (isServer) then {" + getText _entry + "};";
