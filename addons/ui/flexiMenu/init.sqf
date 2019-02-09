@@ -1,5 +1,7 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 
+if (isDedicated) exitWith {false};
+
 FUNC(keyDown) = CBA_fnc_flexiMenu_keyDown;
 FUNC(keyUp) = CBA_fnc_flexiMenu_keyUp;
 FUNC(menu) = CBA_fnc_flexiMenu_menu;
@@ -13,8 +15,6 @@ FUNC(execute) = CBA_fnc_flexiMenu_execute;
 FUNC(add) = CBA_fnc_flexiMenu_add;
 FUNC(remove) = CBA_fnc_flexiMenu_remove;
 FUNC(setObjectMenuSource) = CBA_fnc_setObjectMenuSource;
-
-if (isDedicated) exitWith {false};
 
 // list of all menu activation keys and associated types
 GVAR(typeMenuSources) = []; // types, keys and menu sources data
