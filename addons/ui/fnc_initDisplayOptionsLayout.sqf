@@ -7,7 +7,7 @@ params ["_display"];
 for "_idc" from IDCBASE to (IDCBASE + 99) do {
     private _control = _display displayCtrl _idc;
 
-    _fnc_keepAspectRatio = {
+    private _fnc_keepAspectRatio = {
         params ["_control"];
         uiNamespace getVariable "RscDisplayOptionsLayout_data" select (ctrlIDC _control - IDCBASE) params ["_tagName", "_varName", "", "_canResize", "_grid"];
         if !(_canResize) exitWith {};
