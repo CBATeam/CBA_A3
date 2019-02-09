@@ -1,5 +1,19 @@
 #include "\x\cba\addons\ui\script_component.hpp"
 
+FUNC(keyDown) = CBA_fnc_flexiMenu_keyDown;
+FUNC(keyUp) = CBA_fnc_flexiMenu_keyUp;
+FUNC(menu) = CBA_fnc_flexiMenu_menu;
+FUNC(list) = CBA_fnc_flexiMenu_list;
+FUNC(getMenuDef) = CBA_fnc_flexiMenu_getMenuDef;
+FUNC(getMenuOption) = CBA_fnc_flexiMenu_getMenuOption;
+FUNC(menuShortcut) = CBA_fnc_flexiMenu_menuShortcut;
+FUNC(mouseButtonDown) = CBA_fnc_flexiMenu_mouseButtonDown;
+FUNC(highlightCaretKey) = CBA_fnc_flexiMenu_highlightCaretKey;
+FUNC(execute) = CBA_fnc_flexiMenu_execute;
+FUNC(add) = CBA_fnc_flexiMenu_add;
+FUNC(remove) = CBA_fnc_flexiMenu_remove;
+FUNC(setObjectMenuSource) = CBA_fnc_setObjectMenuSource;
+
 if (isDedicated) exitWith {false};
 
 // list of all menu activation keys and associated types
@@ -15,19 +29,5 @@ GVAR(lastAccessCheck) = [0, -1];
 
 GVAR(keyDown_EHID) = ["keyDown", QUOTE(_this call FUNC(keyDown))] call CBA_fnc_addDisplayHandler;
 GVAR(keyUp_EHID) = ["keyUp", QUOTE(_this call FUNC(keyUp))] call CBA_fnc_addDisplayHandler;
-
-FUNC(keyDown) = CBA_fnc_flexiMenu_keyDown;
-FUNC(keyUp) = CBA_fnc_flexiMenu_keyUp;
-FUNC(menu) = CBA_fnc_flexiMenu_menu;
-FUNC(list) = CBA_fnc_flexiMenu_list;
-FUNC(getMenuDef) = CBA_fnc_flexiMenu_getMenuDef;
-FUNC(getMenuOption) = CBA_fnc_flexiMenu_getMenuOption;
-FUNC(menuShortcut) = CBA_fnc_flexiMenu_menuShortcut;
-FUNC(mouseButtonDown) = CBA_fnc_flexiMenu_mouseButtonDown;
-FUNC(highlightCaretKey) = CBA_fnc_flexiMenu_highlightCaretKey;
-FUNC(execute) = CBA_fnc_flexiMenu_execute;
-FUNC(add) = CBA_fnc_flexiMenu_add;
-FUNC(remove) = CBA_fnc_flexiMenu_remove;
-FUNC(setObjectMenuSource) = CBA_fnc_setObjectMenuSource;
 
 true;
