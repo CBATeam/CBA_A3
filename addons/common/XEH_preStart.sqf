@@ -5,7 +5,7 @@ private _cfgPatches = configFile >> "CfgPatches";
 private _allComponents = "true" configClasses _cfgPatches apply {configName _x};
 
 //Filter out addons that don't have any units defined as we don't need to activate these
-private _unitAddons = _addonsFull select {
+private _unitAddons = _allComponents select {
     !(getArray (_cfgPatches >> _x >> "units") isEqualTo [])
 };
 
