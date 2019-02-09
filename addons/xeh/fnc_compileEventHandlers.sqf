@@ -45,21 +45,17 @@ private _resultNames = [];
             };
 
             // client only events
-            if (!isDedicated) then {
-                _entry = _x >> "clientInit";
+            _entry = _x >> "clientInit";
 
-                if (isText _entry) then {
-                    _eventFunc = _eventFunc + getText _entry + ";";
-                };
+            if (isText _entry) then {
+                _eventFunc = _eventFunc + "if (!isDedicated) then {" + getText _entry + "};";
             };
 
             // server only events
-            if (isServer) then {
-                _entry = _x >> "serverInit";
+            _entry = _x >> "serverInit";
 
-                if (isText _entry) then {
-                    _eventFunc = _eventFunc + getText _entry + ";";
-                };
+            if (isText _entry) then {
+                _eventFunc = _eventFunc + "if (isServer) then {" + getText _entry + "};";
             };
         } else {
             // global events
@@ -151,21 +147,17 @@ private _resultNames = [];
                 };
 
                 // client only events
-                if (!isDedicated) then {
-                    _entry = _x >> format ["client%1", _entryName];
+                _entry = _x >> "clientInit";
 
-                    if (isText _entry) then {
-                        _eventFunc = _eventFunc + getText _entry + ";";
-                    };
+                if (isText _entry) then {
+                    _eventFunc = _eventFunc + "if (!isDedicated) then {" + getText _entry + "};";
                 };
 
                 // server only events
-                if (isServer) then {
-                    _entry = _x >> format ["server%1", _entryName];
+                _entry = _x >> "serverInit";
 
-                    if (isText _entry) then {
-                        _eventFunc = _eventFunc + getText _entry + ";";
-                    };
+                if (isText _entry) then {
+                    _eventFunc = _eventFunc + "if (isServer) then {" + getText _entry + "};";
                 };
 
                 // init event handlers that should run on respawn again, onRespawn = 1
