@@ -14,7 +14,7 @@ private _allAddons = "true" configClasses (configFile >> "CfgAddons");
 private _preloadedAddons = [];
 
 {
-    _preloadedAddons append getArray (_x >> "list");
+    _preloadedAddons append (getArray (_x >> "list") apply {configName (_cfgPatches >> _x)});
 } forEach _allAddons;
 
 _unitAddons = _unitAddons - _preloadedAddons;
