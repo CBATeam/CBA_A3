@@ -96,5 +96,15 @@
             <French>Les mots de passe ne sont pas enregistrés quand vous vous connectez à un serveur multijoueur.Les mots de passe déjà enregistrés vont être supprimés du profile.</French>
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler bilgisayardan silinir.</Turkish>
         </Key>
+        <Key ID="STR_CBA_Ui_NotificationPositionName">
+            <English>Notification</English>
+            <German>Benachrichtigung</German>
+            <Polish>Powiadomienie</Polish>
+        </Key>
+        <Key ID="STR_CBA_Ui_NotificationPositionDescription">
+            <English>Textual feedback to the player.</English>
+            <German>Textrückmeldung an den Spieler.</German>
+            <Polish>Tekstowa informacja dla gracza.</Polish>
+        </Key>
     </Package>
 </Project>

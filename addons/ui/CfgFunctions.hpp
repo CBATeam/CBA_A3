@@ -22,6 +22,7 @@ class CfgFunctions {
             PATHTO_FNC(getFov);
             PATHTO_FNC(getAspectRatio);
             PATHTO_FNC(getUISize);
+            PATHTO_FNC(notify);
         };
     };
 };

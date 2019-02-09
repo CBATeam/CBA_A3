@@ -32,6 +32,12 @@
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
 
+// notify
+#define NOTIFY_DEFAULT_X (safezoneX + safezoneW - 13 * GUI_GRID_W)
+#define NOTIFY_DEFAULT_Y (safezoneY + 6 * GUI_GRID_H)
+#define NOTIFY_MIN_WIDTH (12 * GUI_GRID_W)
+#define NOTIFY_MIN_HEIGHT (3 * GUI_GRID_H)
+
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
 
