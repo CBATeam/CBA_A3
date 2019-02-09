@@ -25,10 +25,13 @@ class CfgWeapons {
     };
 
     class arifle_MX_Base_F : Rifle_Base_F {
-        magazineWell[] = {"CBA_65x39_MX", "CBA_65x39_MX_XL"};
+        magazineWell[] = {"CBA_65x39_MX"};
         class GL_3GL_F : UGL_F {
             magazineWell[] = {"CBA_40mm_3GL", "CBA_40mm_M203", "CBA_40mm_EGLM"};
         };
+    };
+    class arifle_MX_SW_F: arifle_MX_Base_F {
+        magazineWell[] = {"CBA_65x39_MX", "CBA_65x39_MX_XL"};
     };
 
     class arifle_Katiba_Base_F : Rifle_Base_F {
