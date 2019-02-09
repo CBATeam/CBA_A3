@@ -20,4 +20,4 @@ private _preloadedAddons = [];
 _unitAddons = _unitAddons - _preloadedAddons;
 
 uiNamespace setVariable [QGVAR(addons), _allComponents];
-uiNamespace setVariable [QGVAR(unitAddons), _unitAddons];
+uiNamespace setVariable [QGVAR(unitAddons), compileFinal str _unitAddons];
