@@ -6,7 +6,6 @@ class CfgMagazineWells {
     #include "magwells_46x30.hpp"       // 4.6x30mm
     #include "magwells_545x39.hpp"      // 5.45x39mm
     #include "magwells_556x45.hpp"      // 5.56x45mm | .223
-    #include "magwells_570x28.hpp"      // 5.70x28mm
     #include "magwells_580x42.hpp"      // 5.8x42mm
     #include "magwells_65C.hpp"         // 6.5mm Creedmoor | 6.5 Creedmoor | 6,5 Creedmoor | 6.5 CM | 6.5 CRDMR
     #include "magwells_65G.hpp"         // 6.5mm Grendel | 6.5x39mm Grendel
@@ -33,6 +32,7 @@ class CfgMagazineWells {
 
     // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_10mmAuto.hpp"    // 10mm Auto | 10mm Automatic | 10x25mm
+    #include "magwells_570x28.hpp"      // 5.70x28mm
     #include "magwells_762x25.hpp"      // 7.62x25mm Tokarev
     #include "magwells_762x38R.hpp"     // 7.62x38mmR | 7.62 mm Nagant
     #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic
