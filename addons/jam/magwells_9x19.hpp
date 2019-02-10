@@ -7,6 +7,7 @@
     class CBA_9x19_Glock_Cpct {};   // Compact Glock in 9x19mm (Glock 19, 46)
     class CBA_9x19_Glock_Full {};   // Fullsize Glock in 9x19mm (Glock 17, 18, 34, 45)
     class CBA_9x19_HiPower {};      // Browning HiPower
+    class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MP40 {};         // MP40, MP38
     class CBA_9x19_MP443 {};        // MP-443 Grach
     class CBA_9x19_MP5 {};          // H&K MP5
@@ -23,6 +24,7 @@
     class CBA_9x19_STEN {};         // STEN
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
+    class CBA_9x19_UMP {};          // HK UMP 9
     class CBA_9x19_Vis {};          // wz. 35 Vis (Radom)
     class CBA_9x19_Vityaz {};       // Vityaz-SN
     class CBA_9x19_Vz68 {};         // Škorpion (vz. 68)
