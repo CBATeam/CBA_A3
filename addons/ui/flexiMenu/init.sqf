@@ -14,7 +14,7 @@ FUNC(highlightCaretKey) = CBA_fnc_flexiMenu_highlightCaretKey;
 FUNC(execute) = CBA_fnc_flexiMenu_execute;
 FUNC(add) = CBA_fnc_flexiMenu_add;
 FUNC(remove) = CBA_fnc_flexiMenu_remove;
-FUNC(setObjectMenuSource) = CBA_fnc_setObjectMenuSource;
+FUNC(setObjectMenuSource) = CBA_fnc_flexiMenu_setObjectMenuSource;
 
 // list of all menu activation keys and associated types
 GVAR(typeMenuSources) = []; // types, keys and menu sources data
