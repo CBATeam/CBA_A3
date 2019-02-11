@@ -36,7 +36,6 @@ class CfgMagazineWells {
     #include "magwells_762x25.hpp"      // 7.62x25mm Tokarev
     #include "magwells_762x38R.hpp"     // 7.62x38mmR | 7.62 mm Nagant
     #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic
-    #include "magwells_765x17.hpp"      // 7.65x17mm
     #include "magwells_765x21.hpp"      // 7.65x21mm Parabellum | 7,65 Parabellum | 7.65mm Luger | .30 Luger
     #include "magwells_8x22.hpp"        // 8x22mm Nambu
     #include "magwells_9x18.hpp"        // 9x18mm Makarov | 9mm Makarov | 9x18mm PM
