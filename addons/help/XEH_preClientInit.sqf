@@ -38,7 +38,7 @@ private _fnc_getKeyName = {
     private _result = "^";
 
     {
-        private _keyName = call compile format ["format ['%1', %2]", "%1", keyName _x];
+        private _keyName = format ["%1", keyName _x];
         _keyName = [_keyName, " "] call CBA_fnc_split;
 
         private _keyText = "^";
