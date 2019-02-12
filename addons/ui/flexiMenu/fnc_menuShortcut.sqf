@@ -37,7 +37,7 @@ private _menuDefs = (_this select 1) call FUNC(getMenuDef);
         _menuOption = [_menuDefs select 0, _x, false] call FUNC(getMenuOption); // get complete same record
         _action = _menuOption select _flexiMenu_menuDef_ID_action;
 
-        if (typeName _action == "CODE") then {call _action} else {call compile _action};
+        if (_action isEqualType {}) then {call _action} else {call compile _action};
         _handled = true;
     };
 } forEach (_menuDefs select 1);

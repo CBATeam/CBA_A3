@@ -19,14 +19,14 @@ private _menuDefs = [];
     private _menuParams = [_target];
 
     // Syntax 1
-    if (typeName _params == typeName "") then {
+    if (_params isEqualType "") then {
         _menuSource = _params;
     };
 
     // Syntax 2
-    if (typeName _params == typeName [] && {count _params > 0}) then {
+    if (_params isEqualType [] && {count _params > 0}) then {
         _menuSource = _params select 0;
-        if (typeName _menuSource == typeName "") then { // check for syntax: function, code string or sqf filename
+        if (_menuSource isEqualType "") then { // check for syntax: function, code string or sqf filename
             _menuParams = if (count _params > 1) then {[_target, _params select 1]};
         } else {
             _menuSource = _params;
@@ -36,7 +36,7 @@ private _menuDefs = [];
     TRACE_1("",_menuSource);
     //-----------------------------------------------------------------------------
     // determine if string represents an executable statement or actual data (via variable).
-    if (typeName _menuSource == typeName []) then {
+    if (_menuSource isEqualType []) then {
         // _menuSource is _menuDefs. a single menuDef array
         LOG("_menuSource Single Definition");
         _menuDef = _menuSource; //somtimes Nil
@@ -57,7 +57,7 @@ private _menuDefs = [];
 
     // merge menuDef's - keeping original header array [0] and merging data array [1]
     if !(isNil "_menuDef") then {
-        if (count _menuDefs == 0) then {
+        if (_menuDefs isEqualTo []) then {
             _menuDefs = _menuDef;
         } else {
             if (count _menuDef > 0) then {
