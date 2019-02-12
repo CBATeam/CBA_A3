@@ -34,10 +34,10 @@ params [
 ];
 
 switch (_type) do {
-    case "OBJECT": {getPos (call compile _string);};
-    case "GROUP": {getPos (leader (call compile _string));};
-    case "ARRAY": {[_string] call BIS_fnc_parseNumber;};
-    case "MARKER": {getMarkerPos _string;};
-    case "TASK": {taskDestination (call compile _string)};
+    case "OBJECT": {getPos (missionNamespace getVariable _string)};
+    case "GROUP": {getPos (leader (missionNamespace getVariable _string))};
+    case "ARRAY": {[_string] call BIS_fnc_parseNumber};
+    case "MARKER": {getMarkerPos _string};
+    case "TASK": {taskDestination (missionNamespace getVariable _string)};
     default {nil};
 };
