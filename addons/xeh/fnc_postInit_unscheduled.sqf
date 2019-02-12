@@ -26,7 +26,7 @@ if (CBA_missionTime == -1) then {
 // call PostInit events
 {
     if (_x select 1 == "postInit") then {
-        [] call (_x select 2);
+        [] call ((_x select 2) select 0); //todo
     };
 } forEach GVAR(allEventHandlers);
 

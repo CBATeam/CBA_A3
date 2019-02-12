@@ -88,7 +88,7 @@ private _resultNames = [];
             TRACE_2("does NOT do something",_customName,_eventName);
         };
 
-        _result pushBack ["", _eventName, _eventFunc];
+        _result pushBack ["", _eventName, [_eventFunc, {}, {}]]; //todo
         _resultNames pushBack _customName;
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName)];
 } forEach ["preInit", "postInit"];
@@ -119,6 +119,9 @@ private _resultNames = [];
             private _customName = configName _x;
             private _allowInheritance = true;
             private _excludedClasses = [];
+            private _funcAll = "";
+            private _funcClient = "";
+            private _funcServer = "";
 
             if (isClass _x) then {
                 // allow inheritance of this event?
@@ -127,6 +130,9 @@ private _resultNames = [];
                 if (isNumber _scope) then {
                     _allowInheritance = getNumber _scope != 0;
                 };
+                
+                // init event handlers that should run on respawn again, onRespawn = 1
+                private _onRespawn = toLower _eventName in ["init", "initpost"] && {getNumber (_x >> "onRespawn") == 1};
 
                 // classes excluded from this event
                 private _exclude = _x >> "exclude";
@@ -141,33 +147,28 @@ private _resultNames = [];
 
                 // events on clients and server
                 private _entry = _x >> _entryName;
-
                 if (isText _entry) then {
-                    _eventFunc = _eventFunc + getText _entry + ";";
+                    _funcAll = _eventFuncBase + getText _entry + ";";
+                    if (_onRespawn) then { _funcAll = _funcAll + "(_this select 0) addEventHandler ['Respawn', " + str _funcAll + "];"; };
                 };
 
                 // client only events
-                _entry = _x >> format ["client%1", _entryName];
-
+               _entry = _x >> format ["client%1", _entryName];
                 if (isText _entry) then {
-                    _eventFunc = _eventFunc + "if (!isDedicated) then {" + getText _entry + "};";
+                    _funcClient = _eventFuncBase + getText _entry + ";";
+                    if (_onRespawn) then { _funcClient = _funcClient + "(_this select 0) addEventHandler ['Respawn', " + str _funcClient + "];"; };
                 };
 
                 // server only events
                 _entry = _x >> format ["server%1", _entryName];
-
                 if (isText _entry) then {
-                    _eventFunc = _eventFunc + "if (isServer) then {" + getText _entry + "};";
-                };
-
-                // init event handlers that should run on respawn again, onRespawn = 1
-                if (toLower _eventName in ["init", "initpost"] && {getNumber (_x >> "onRespawn") == 1}) then {
-                    _eventFunc = _eventFunc + "(_this select 0) addEventHandler ['Respawn', " + str _eventFunc + "];";
+                    _funcServer = _eventFuncBase + getText _entry + ";";
+                    if (_onRespawn) then { _funcServer = _funcServer + "(_this select 0) addEventHandler ['Respawn', " + str _funcServer + "];"; };
                 };
             } else {
                 // global events
                 if (isText _x) then {
-                    _eventFunc = _eventFunc + getText _x + ";";
+                    _funcAll = _eventFuncBase + getText _x + ";";
                 };
             };
 
@@ -189,19 +190,20 @@ private _resultNames = [];
                 };
             } forEach _resultNames;
 
-            // only add event on machines where it exists
-            if !(_eventFunc isEqualTo _eventFuncBase) then {
-                _eventFunc = compile _eventFunc;
-                TRACE_3("does something",_customName,_className,_eventName);
-            } else {
-                _eventFunc = {};
-                TRACE_3("does NOT do something",_customName,_className,_eventName);
+            private _eventFunc = [_funcAll, _funcClient, _funcServer]  apply {
+                // only add event on machines where it exists
+                if (_x == "") then {
+                    TRACE_3("does NOT do something",_customName,_className,_eventName);
+                    {}
+                } else {
+                    TRACE_3("does something",_customName,_className,_eventName);
+                    compile _x
+                };
             };
-
             _result pushBack [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses];
             _resultNames pushBack _customName;
         } forEach configProperties [_x];
     } forEach configProperties [_baseConfig >> XEH_FORMAT_CONFIG_NAME(_eventName), "isClass _x"];
 } forEach [XEH_EVENTS];
 
-_result select {!((_x select 2) isEqualTo {})}
+_result select {!((_x select 2) isEqualTo [{},{},{}])}

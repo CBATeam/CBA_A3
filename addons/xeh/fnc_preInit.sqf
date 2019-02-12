@@ -107,7 +107,7 @@ GVAR(fallbackRunning) = false;
 {
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
-            [] call (_x select 2);
+            [] call ((_x select 2) select 0); // ToDo
         };
     } else {
         _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];
@@ -116,9 +116,19 @@ GVAR(fallbackRunning) = false;
         if (_eventName == "firedBis") then {
             _eventName = "fired";
         };
-
-        private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
-        TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        _eventFunc params ["_funcAll", "_funcClient", "_funcServer"];
+        if (!(_funcAll isEqualTo {})) then {
+            private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
+        if ((hasInterface) && {!(_funcClient isEqualTo {})}) then {
+            private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
+        if ((isServer) && {!(_funcServer isEqualTo {})}) then {
+            private _success = [_className, _eventName, _funcServer, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
     };
 } forEach GVAR(allEventHandlers);
 
