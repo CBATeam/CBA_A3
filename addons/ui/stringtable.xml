@@ -106,5 +106,13 @@
             <German>Textrückmeldung an den Spieler.</German>
             <Polish>Tekstowa informacja dla gracza.</Polish>
         </Key>
+        <Key ID="STR_CBA_Ui_AllMissions">
+            <English>Show all missions</English>
+            <German>Alle Missionen anzeigen</German>
+        </Key>
+        <Key ID="STR_CBA_Ui_CustomMissions">
+            <English>Show custom missions</English>
+            <German>Eigene Missionen anzeigen</German>
+        </Key>
     </Package>
 </Project>
