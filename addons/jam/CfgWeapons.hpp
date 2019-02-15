@@ -100,4 +100,8 @@ class CfgWeapons {
     class MMG_02_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_338NM_LINKS"};
     };
+
+    class SMG_03_TR_BASE: Rifle_Base_F {
+        magazineWell[] = {"CBA_570x28_P90"};
+    };
 };

@@ -3,6 +3,7 @@
     class CBA_556x45_FAMAS {};          // FAMAS F1
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
+    class CBA_556x45_M21 {};            // Zastava M21
 
     class CBA_556x45_MINIMI {
         BI_boxes[] = {

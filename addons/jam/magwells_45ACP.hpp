@@ -8,3 +8,4 @@
     class CBA_45ACP_Reising {};         // M50/M55 Reising
     class CBA_45ACP_Thompson_Stick {};  // Thompson stick magazines
     class CBA_45ACP_Thompson_Drum {};   // Thompson drum magazines
+    class CBA_45ACP_UMP {};             // HK UMP 45
