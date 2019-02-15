@@ -21,7 +21,6 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_polar2vect.sqf";
 
 SCRIPT(polar2vect);
 
