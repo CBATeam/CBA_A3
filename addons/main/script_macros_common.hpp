@@ -942,6 +942,7 @@ Description:
     Full file path in addons:
         '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
     Define 'RECOMPILE' to enable recompiling.
+    Define 'SKIP_FUNCTION_HEADER' to skip adding function header.
 
 Parameters:
     FUNCTION NAME - Name of the function, unquoted <STRING>
@@ -968,9 +969,16 @@ Author:
 #else
     #define RECOMPILE recompile = 0
 #endif
+// Set function header type: -1 - no header; 0 - default header; 1 - system header.
+#ifdef SKIP_FUNCTION_HEADER
+    #define CFGFUNCTION_HEADER headerType = -1
+#else
+    #define CFGFUNCTION_HEADER headerType = 0
+#endif
 
 #define PATHTO_FNC(func) class func {\
     file = QPATHTOF(DOUBLES(fnc,func).sqf);\
+    CFGFUNCTION_HEADER;\
     RECOMPILE;\
 }
 
@@ -1119,6 +1127,7 @@ Author:
 /* -------------------------------------------
 Macro: SCRIPT()
     Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+    Define 'SKIP_SCRIPT_NAME' to skip adding scriptName.
 
 Parameters:
     NAME - Name of script [Indentifier]
@@ -1131,8 +1140,11 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define SCRIPT(NAME) \
-    scriptName 'PREFIX\COMPONENT\NAME'
+#ifndef SKIP_SCRIPT_NAME
+    #define SCRIPT(NAME) scriptName 'PREFIX\COMPONENT\NAME'
+#else
+    #define SCRIPT(NAME) /* nope */
+#endif
 
 /* -------------------------------------------
 Macros: EXPLODE_n()
