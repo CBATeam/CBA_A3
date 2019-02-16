@@ -5,6 +5,23 @@ params ["_display"];
 private _ctrlMaps = _display displayCtrl IDC_SERVER_ISLAND;
 private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
 
+// find all stock missions
+private _stockMissions = [];
+
+private _fnc_findMissions = {
+    {
+        if (isText (_x >> "directory")) then {
+            _stockMissions pushBack configName _x;
+        };
+
+        _x call _fnc_findMissions;
+    } forEach configProperties [_this, "isClass _x"];
+};
+
+(configFile >> "CfgMissions" >> "MPMissions") call _fnc_findMissions;
+
+_display setVariable [QGVAR(stockMissions), _stockMissions];
+
 lbSort _ctrlMaps;
 ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
@@ -12,19 +29,42 @@ private _ctrlSearch = _display ctrlCreate ["RscEdit", IDC_SEARCH];
 _ctrlSearch ctrlSetPosition [
     _left + 0.1 * GUI_GRID_W,
     _top,
-    _width - 1.2 * GUI_GRID_W,
+    _width - 21.2 * GUI_GRID_W,
     GUI_GRID_H
 ];
 _ctrlSearch ctrlCommit 0;
 
 private _ctrlSearchButton = _display ctrlCreate ["RscButtonSearch", IDC_SEARCH_BUTTON];
 _ctrlSearchButton ctrlSetPosition [
-    _left + _width - GUI_GRID_W,
+    _left + _width - 21 * GUI_GRID_W,
     _top,
     GUI_GRID_W,
     GUI_GRID_H
 ];
 _ctrlSearchButton ctrlCommit 0;
+
+private _ctrlShowStockMissions = _display ctrlCreate ["RscButton", -1];
+_ctrlShowStockMissions ctrlSetPosition [
+    _left + _width - 10 * GUI_GRID_W,
+    _top,
+    10 * GUI_GRID_W,
+    GUI_GRID_H
+];
+_ctrlShowStockMissions ctrlCommit 0;
+_ctrlShowStockMissions ctrlSetFont "PuristaLight";
+
+_ctrlShowStockMissions ctrlAddEventHandler ["ButtonClick", {
+    params ["_ctrlShowStockMissions"];
+
+    private _showStockMissions = !(profileNamespace getVariable [QGVAR(ShowStockMissions), true]);
+    profileNamespace setVariable [QGVAR(ShowStockMissions), _showStockMissions];
+    saveProfileNamespace;
+
+    _ctrlShowStockMissions ctrlSetText toUpper localize (["STR_CBA_Ui_CustomMissions", "STR_CBA_Ui_AllMissions"] select _showStockMissions);
+}];
+
+private _showStockMissions = profileNamespace getVariable [QGVAR(ShowStockMissions), true];
+_ctrlShowStockMissions ctrlSetText toUpper localize (["STR_CBA_Ui_CustomMissions", "STR_CBA_Ui_AllMissions"] select _showStockMissions);
 
 _ctrlMissions ctrlSetPosition [
     _left,
@@ -65,13 +105,15 @@ _display setVariable [QFUNC(filter), {
 
     private _filter = toLower ctrlText _ctrlSearch;
     private _missions = _ctrlMissions getVariable QGVAR(missions);
+    private _stockMissions = _display getVariable QGVAR(stockMissions);
+    private _showStockMissions = profileNamespace getVariable [QGVAR(ShowStockMissions), true];
 
     lbClear _ctrlMissions;
 
     {
         _x params ["_name", "_value", "_data", "_color"];
 
-        if (toLower _name find _filter != -1) then {
+        if (toLower _name find _filter != -1 && {_showStockMissions || {!(_data in _stockMissions)}}) then {
             private _index = _ctrlMissions lbAdd _name;
             _ctrlMissions lbSetValue [_index, _value];
             _ctrlMissions lbSetData [_index, _data];
@@ -92,3 +134,4 @@ private _fnc_update = {_this spawn {isNil { // delay a frame
 _ctrlSearch ctrlAddEventHandler ["KeyDown", _fnc_update];
 _ctrlSearch ctrlAddEventHandler ["KeyUp", _fnc_update];
 _ctrlSearchButton ctrlAddEventHandler ["ButtonClick", _fnc_update];
+_ctrlShowStockMissions ctrlAddEventHandler ["ButtonClick", _fnc_update];
