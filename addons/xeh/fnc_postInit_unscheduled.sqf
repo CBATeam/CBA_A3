@@ -26,7 +26,16 @@ if (CBA_missionTime == -1) then {
 // call PostInit events
 {
     if (_x select 1 == "postInit") then {
-        [] call ((_x select 2) select 0); //todo
+        (_x select 2)  params ["_funcAll", "_funcClient", "_funcServer"];
+        if (!(_funcAll isEqualTo {})) then {
+            [] call _funcAll;
+        };
+        if ((!isDedicated) && {!(_funcClient isEqualTo {})}) then {
+            [] call _funcClient;
+        };
+        if ((isServer) && {!(_funcServer isEqualTo {})}) then {
+            [] call _funcServer;
+        };
     };
 } forEach GVAR(allEventHandlers);
 

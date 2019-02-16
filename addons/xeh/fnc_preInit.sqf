@@ -107,7 +107,16 @@ GVAR(fallbackRunning) = false;
 {
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
-            [] call ((_x select 2) select 0); // ToDo
+            (_x select 2)  params ["_funcAll", "_funcClient", "_funcServer"];
+            if (!(_funcAll isEqualTo {})) then {
+                [] call _funcAll;
+            };
+            if ((!isDedicated) && {!(_funcClient isEqualTo {})}) then {
+                [] call _funcClient;
+            };
+            if ((isServer) && {!(_funcServer isEqualTo {})}) then {
+                [] call _funcServer;
+            };
         };
     } else {
         _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];
@@ -121,7 +130,7 @@ GVAR(fallbackRunning) = false;
             private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
-        if ((hasInterface) && {!(_funcClient isEqualTo {})}) then {
+        if ((!isDedicated) && {!(_funcClient isEqualTo {})}) then {
             private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
