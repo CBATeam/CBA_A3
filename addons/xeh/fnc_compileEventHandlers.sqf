@@ -89,7 +89,7 @@ if (_allowRecompile) then {
                             TRACE_2("eventfunction redirected",_customName,_funcPath);
                         };
                     };
-                    if (_eventFunc isEqualTo _x) then { diag_log text format ["XEH: Could not recompile [%1-%2]: %3", _eventName, _customName, _eventFunc]; };
+                    // if (_eventFunc isEqualTo _x) then { diag_log text format ["XEH: Could not recompile [%1-%2]: %3", _eventName, _customName, _eventFunc]; };
                 };
                 compile _eventFunc // apply return
             };
