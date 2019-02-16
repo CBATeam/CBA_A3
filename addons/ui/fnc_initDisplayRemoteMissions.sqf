@@ -10,7 +10,10 @@ private _stockMissions = [];
 
 private _fnc_findMissions = {
     {
-        _stockMissions pushBack configName _x;
+        if (isText (_x >> "directory")) then {
+            _stockMissions pushBack configName _x;
+        };
+
         _x call _fnc_findMissions;
     } forEach configProperties [_this, "isClass _x"];
 };
