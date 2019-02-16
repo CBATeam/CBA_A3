@@ -29,3 +29,7 @@
     #define DEBUG_ENABLED_STRINGS
     #define DEBUG_ENABLED_VERSIONING
 */
+
+// Remove CfgFunction adding headers and disable SCRIPT macro (comment out to enable for debugging)
+#define SKIP_FUNCTION_HEADER
+#define SKIP_SCRIPT_NAME

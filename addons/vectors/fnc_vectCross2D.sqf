@@ -23,7 +23,6 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectCross2D.sqf";
 
 SCRIPT(vectCross2D);
 
