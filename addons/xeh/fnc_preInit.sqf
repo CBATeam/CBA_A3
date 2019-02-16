@@ -73,9 +73,9 @@ GVAR(EventsLowercase) = [];
 
 // generate list of incompatible classes
 GVAR(incompatible) = [] call CBA_fnc_createNamespace;
-private _cfgVehicles = configFile >> "CfgVehicles";
+
 {
-    private _class = _cfgVehicles >> _x;
+    private _class = configFile >> "CfgVehicles" >> _x;
 
     while {isClass _class && {!ISINCOMP(configName _class)}} do {
         SETINCOMP(configName _class);
@@ -94,7 +94,7 @@ GVAR(allEventHandlers) = call (uiNamespace getVariable [QGVAR(configFileEventHan
 
 {
     GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
-} forEach (XEH_MAIN_CONFIGS - [configFile]);
+} forEach [campaignConfigFile, missionConfigFile];
 
 #ifdef DEBUG_MODE_FULL
     XEH_LOG("XEH: Compiling XEH END");
@@ -107,15 +107,18 @@ GVAR(fallbackRunning) = false;
 {
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
-            (_x select 2)  params ["_funcAll", "_funcClient", "_funcServer"];
-            if (!(_funcAll isEqualTo {})) then {
-                [] call _funcAll;
-            };
-            if ((!isDedicated) && {!(_funcClient isEqualTo {})}) then {
-                [] call _funcClient;
-            };
-            if ((isServer) && {!(_funcServer isEqualTo {})}) then {
-                [] call _funcServer;
+            (_x select 2) call {
+                private "_x";
+
+                [] call (_this select 0);
+
+                if (!isDedicated) then {
+                    [] call (_this select 1);
+                };
+
+                if (isServer) then {
+                    [] call (_this select 2);
+                };
             };
         };
     } else {
@@ -125,16 +128,20 @@ GVAR(fallbackRunning) = false;
         if (_eventName == "firedBis") then {
             _eventName = "fired";
         };
+
         _eventFunc params ["_funcAll", "_funcClient", "_funcServer"];
-        if (!(_funcAll isEqualTo {})) then {
+
+        if !(_funcAll isEqualTo {}) then {
             private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
-        if ((!isDedicated) && {!(_funcClient isEqualTo {})}) then {
+
+        if (!isDedicated && {!(_funcClient isEqualTo {})}) then {
             private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
-        if ((isServer) && {!(_funcServer isEqualTo {})}) then {
+
+        if (isServer && {!(_funcServer isEqualTo {})}) then {
             private _success = [_className, _eventName, _funcServer, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };

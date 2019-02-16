@@ -50,10 +50,6 @@ class CfgFunctions {
                 description = "Occurs once per mission after objects and functions are initialized.";
                 file = PATHTOF(fnc_postInit.sqf);
             };
-            class postInit_unscheduled {
-                description = "Occurs once per mission after objects and functions are initialized.";
-                file = PATHTOF(fnc_postInit_unscheduled.sqf);
-            };
             class startFallbackLoop {
                 description = "Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.";
                 file = PATHTOF(fnc_startFallbackLoop.sqf);
