@@ -26,9 +26,11 @@ params [["_baseConfig", configNull, [configNull]]];
 
 private _result = [];
 private _resultNames = [];
-private _allowRecompile = (_baseConfig isEqualTo configFile);
+
+private _allowRecompile = _baseConfig isEqualTo configFile;
+
 if (_allowRecompile) then {
-    if ((["compile"] call CBA_fnc_isRecompileEnabled) || {isFilePatchingEnabled}) then {
+    if ("compile" call CBA_fnc_isRecompileEnabled || {isFilePatchingEnabled}) then {
         XEH_LOG("XEH: init function preProcessing disabled [recompile or filepatching enabled]");
         _allowRecompile = false;
     };
@@ -48,6 +50,7 @@ if (_allowRecompile) then {
         if (isClass _x) then {
             // events on clients and server
             private _entry = _x >> "init";
+
             if (isText _entry) then {
                 _funcAll = getText _entry;
             };
@@ -80,8 +83,9 @@ if (_allowRecompile) then {
 
                 //Optimize "QUOTE(call COMPILE_FILE(XEH_preInit));" down to just the content of the EH script
                 if (_allowRecompile) then {
-                    if (((toLower (_eventFunc select [0,40])) isEqualTo "call compile preprocessfilelinenumbers '")&& {(_eventFunc select [count _eventFunc - 1]) isEqualTo "'"}) then {
+                    if (toLower (_eventFunc select [0,40]) isEqualTo "call compile preprocessfilelinenumbers '" && {(_eventFunc select [count _eventFunc - 1]) isEqualTo "'"}) then {
                         private _funcPath = _eventFunc select [40, count _eventFunc - 41];
+
                         //If there is a quote mark in the path, then something went wrong and we got multiple paths, just skip optimization
                         //Example cause: "call COMPILE_FILE(XEH_preInit);call COMPILE_FILE(XEH_preClientInit)"
                         if (_funcPath find "'" == -1) then {
@@ -91,6 +95,7 @@ if (_allowRecompile) then {
                     };
                     // if (_eventFunc isEqualTo _x) then { diag_log text format ["XEH: Could not recompile [%1-%2]: %3", _eventName, _customName, _eventFunc]; };
                 };
+
                 compile _eventFunc // apply return
             };
         };
@@ -153,23 +158,35 @@ if (_allowRecompile) then {
 
                 // events on clients and server
                 private _entry = _x >> _entryName;
+
                 if (isText _entry) then {
                     _funcAll = _eventFuncBase + getText _entry + ";";
-                    if (_onRespawn) then { _funcAll = _funcAll + "(_this select 0) addEventHandler ['Respawn', " + str _funcAll + "];"; };
+
+                    if (_onRespawn) then {
+                        _funcAll = _funcAll + "(_this select 0) addEventHandler ['Respawn', " + str _funcAll + "];";
+                    };
                 };
 
                 // client only events
                 _entry = _x >> format ["client%1", _entryName];
+
                 if (isText _entry) then {
                     _funcClient = _eventFuncBase + getText _entry + ";";
-                    if (_onRespawn) then { _funcClient = _funcClient + "(_this select 0) addEventHandler ['Respawn', " + str _funcClient + "];"; };
+
+                    if (_onRespawn) then {
+                        _funcClient = _funcClient + "(_this select 0) addEventHandler ['Respawn', " + str _funcClient + "];";
+                    };
                 };
 
                 // server only events
                 _entry = _x >> format ["server%1", _entryName];
+
                 if (isText _entry) then {
                     _funcServer = _eventFuncBase + getText _entry + ";";
-                    if (_onRespawn) then { _funcServer = _funcServer + "(_this select 0) addEventHandler ['Respawn', " + str _funcServer + "];"; };
+
+                    if (_onRespawn) then {
+                        _funcServer = _funcServer + "(_this select 0) addEventHandler ['Respawn', " + str _funcServer + "];";
+                    };
                 };
             } else {
                 // global events
