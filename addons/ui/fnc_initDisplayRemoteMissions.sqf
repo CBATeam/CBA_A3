@@ -23,6 +23,8 @@ private _fnc_findMissions = {
 _display setVariable [QGVAR(stockMissions), _stockMissions];
 
 lbSort _ctrlMaps;
+_ctrlMaps lbSetCurSel 0;
+
 ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
 private _ctrlSearch = _display ctrlCreate ["RscEdit", IDC_SEARCH];
@@ -33,6 +35,9 @@ _ctrlSearch ctrlSetPosition [
     GUI_GRID_H
 ];
 _ctrlSearch ctrlCommit 0;
+
+private _filter = profileNamespace getVariable [QGVAR(Filter), ""];
+_ctrlSearch ctrlSetText _filter;
 
 private _ctrlSearchButton = _display ctrlCreate ["RscButtonSearch", IDC_SEARCH_BUTTON];
 _ctrlSearchButton ctrlSetPosition [
@@ -103,7 +108,15 @@ _display setVariable [QFUNC(filter), {
     private _ctrlSearch = _display displayCtrl IDC_SEARCH;
     private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
 
-    private _filter = toLower ctrlText _ctrlSearch;
+    private _filter = ctrlText _ctrlSearch;
+
+    if (_filter != profileNamespace getVariable [QGVAR(Filter), ""]) then {
+        profileNamespace setVariable [QGVAR(Filter), _filter];
+        saveProfileNamespace;
+    };
+
+    _filter = toLower _filter;
+
     private _missions = _ctrlMissions getVariable QGVAR(missions);
     private _stockMissions = _display getVariable QGVAR(stockMissions);
     private _showStockMissions = profileNamespace getVariable [QGVAR(ShowStockMissions), true];
