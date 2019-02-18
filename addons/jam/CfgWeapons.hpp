@@ -89,6 +89,10 @@ class CfgWeapons {
         magazineWell[] = {"CBA_762x54R_LINKS"};
     };
 
+    class launch_MRAWS_base_F: Launcher_Base_F {
+        magazineWell[] = {"CBA_Carl_Gustaf"};
+    };
+
     class launch_RPG7_F: Launcher_Base_F {
         magazineWell[] = {"CBA_RPG7"};
     };
