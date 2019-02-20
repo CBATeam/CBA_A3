@@ -29,6 +29,38 @@
             <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
             <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
         </Key>
+        <Key ID="STR_CBA_URL_Bugtracker">
+            <English>https://www.github.com/CBATeam/CBA_A3/issues</English>
+            <French>https://www.github.com/CBATeam/CBA_A3/issues</French>
+            <Spanish>https://www.github.com/CBATeam/CBA_A3/issues</Spanish>
+            <Italian>https://www.github.com/CBATeam/CBA_A3/issues</Italian>
+            <Polish>https://www.github.com/CBATeam/CBA_A3/issues</Polish>
+            <Russian>https://www.github.com/CBATeam/CBA_A3/issues</Russian>
+            <German>https://www.github.com/CBATeam/CBA_A3/issues</German>
+            <Czech>https://www.github.com/CBATeam/CBA_A3/issues</Czech>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3/issues</Chinese>
+            <Portuguese>https://www.github.com/CBATeam/CBA_A3/issues</Portuguese>
+            <Korean>https://www.github.com/CBATeam/CBA_A3/issues</Korean>
+            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3/issues</Chinesesimp>
+            <Turkish>https://www.github.com/CBATeam/CBA_A3/issues</Turkish>
+            <Japanese>https://www.github.com/CBATeam/CBA_A3/issues</Japanese>
+        </Key>
+        <Key ID="STR_CBA_URL_Wiki">
+            <English>https://www.github.com/CBATeam/CBA_A3/wiki</English>
+            <French>https://www.github.com/CBATeam/CBA_A3/wiki</French>
+            <Spanish>https://www.github.com/CBATeam/CBA_A3/wiki</Spanish>
+            <Italian>https://www.github.com/CBATeam/CBA_A3/wiki</Italian>
+            <Polish>https://www.github.com/CBATeam/CBA_A3/wiki</Polish>
+            <Russian>https://www.github.com/CBATeam/CBA_A3/wiki</Russian>
+            <German>https://www.github.com/CBATeam/CBA_A3/wiki</German>
+            <Czech>https://www.github.com/CBATeam/CBA_A3/wiki</Czech>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3/wiki</Chinese>
+            <Portuguese>https://www.github.com/CBATeam/CBA_A3/wiki</Portuguese>
+            <Korean>https://www.github.com/CBATeam/CBA_A3/wiki</Korean>
+            <Chinesesimp>https://www.github.com/CBATeam/CBA_A3/wiki</Chinesesimp>
+            <Turkish>https://www.github.com/CBATeam/CBA_A3/wiki</Turkish>
+            <Japanese>https://www.github.com/CBATeam/CBA_A3/wiki</Japanese>
+        </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
             <German>Community Base Addons - Hauptkomponente</German>

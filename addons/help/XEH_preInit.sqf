@@ -1,31 +1,11 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-LOG(MSG_INIT);
+if (!hasInterface) exitWith {};
 
 ADDON = false;
 
 [QFUNC(help), {call BIS_fnc_help}] call CBA_fnc_compileFinal;
-
-[QFUNC(process), {
-    params ["_hash1", "_hash2", "_hash3"];
-
-    private _result = [];
-
-    {
-        private _entry = format [
-            "%1, v%2, (%3)<br/>Author: %4",
-            _x,
-            _hash3 getVariable _x,
-            _hash2 getVariable _x,
-            (_hash1 getVariable _x) joinString ", "
-        ];
-
-        _result pushBack _entry;
-    } forEach allVariables _hash1;
-
-    _result joinString "<br/><br/>";
-}] call CBA_fnc_compileFinal;
 
 // keys
 private _fnc_getKeyName = {
@@ -105,33 +85,6 @@ private _config = configFile >> "CfgSettings" >> "CBA" >> "events";
 } forEach ("true" configClasses _config);
 
 GVAR(keys) = _text;
-
-// credits
-GVAR(credits) = call CBA_fnc_createNamespace;
-
-private _fnc_readCreditsFromConfig = {
-    params ["_type"];
-
-    private _config = configFile >> _type;
-
-    private _hash1 = call CBA_fnc_createNamespace;
-    private _hash2 = call CBA_fnc_createNamespace;
-    private _hash3 = call CBA_fnc_createNamespace;
-
-    {
-        private _entry = _x;
-
-        _hash1 setVariable [configName _entry, getArray (_entry >> "author")];
-        _hash2 setVariable [configName _entry, getText (_entry >> "authorUrl")];
-        _hash3 setVariable [configName _entry, getText (_entry >> "version")];
-    } forEach ("isArray (_x >> 'author')" configClasses _config);
-
-    [_hash1, _hash2, _hash3]
-};
-
-{
-    GVAR(credits) setVariable [_x, _x call _fnc_readCreditsFromConfig];
-} forEach ["CfgPatches"]; //, "CfgVehicles", "CfgWeapons"];
 
 // docs
 GVAR(docs) = "";

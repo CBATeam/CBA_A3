@@ -8,11 +8,10 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common", "cba_hashes", "cba_keybinding"};
+        requiredAddons[] = {"cba_common", "cba_keybinding"};
         version = VERSION;
         authors[] = {"alef", "Rocko", "Sickboy"};
     };
 };
 
 #include "CfgEventhandlers.hpp"
-#include "gui.hpp"
