@@ -33,19 +33,3 @@ private _credits = [];
 _credits = _credits joinString "<br/>";
 
 uiNamespace setVariable [QGVAR(credits), compileFinal str _credits];
-
-// docs
-private _mods = "true" configClasses (configFile >> "CfgMods");// select {isText (_x >> "description")};
-
-private _docs = [];
-
-{
-    private _name = getText (_x >> "name");
-    private _description = getText (_x >> "description");
-
-    _docs pushBack format ["* %1 - %2<br />%3<br /><br />", configName _x, _name, _description];
-} forEach _mods;
-
-_docs = _docs joinString "<br/>";
-
-uiNamespace setVariable [QGVAR(docs), compileFinal str _docs];
