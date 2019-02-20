@@ -3,11 +3,11 @@
 
 if (!hasInterface) exitWith {};
 
-// create diary, entries added in reverse order
-player createDiarySubject ["CBA_docs", "CBA"];
-
-// add diary for scripted keybinds
 {
+    // create diary, entries added in reverse order
+    player createDiarySubject ["CBA_docs", "CBA"];
+
+    // add diary for scripted keybinds
     private _text = GVAR(keys);
 
     private _activeMods = allVariables EGVAR(keybinding,addons);
@@ -20,7 +20,10 @@ player createDiarySubject ["CBA_docs", "CBA"];
 
         {
             (EGVAR(keybinding,actions) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
-            if (isLocalized _displayName) then { _displayName = localize _displayName; };
+
+            if (isLocalized _displayName) then {
+                _displayName = localize _displayName;
+            };
 
             private _keyName = (_registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 
@@ -31,7 +34,7 @@ player createDiarySubject ["CBA_docs", "CBA"];
     } forEach _activeMods;
 
     // delete last line break
-    _text = _text select [0, count _text - 5];
+    _text = _text select [0, count _text - 10];
 
     player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Help_Keys", _text]];
     player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
