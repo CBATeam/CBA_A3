@@ -86,15 +86,4 @@ private _config = configFile >> "CfgSettings" >> "CBA" >> "events";
 
 GVAR(keys) = _text;
 
-// docs
-GVAR(docs) = "";
-
-private _config = configFile >> "CfgMods";
-
-{
-    private _entry = format ["* %1 - %2<br />%3<br /><br />", configName _x, getText (_x >> "name"), getText (_x >> "description")];
-
-    GVAR(docs) + _entry;
-} forEach ("isText (_x >> 'description')" configClasses _config);
-
 ADDON = true;

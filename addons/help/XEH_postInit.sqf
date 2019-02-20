@@ -34,14 +34,8 @@ player createDiarySubject ["CBA_docs", "CBA"];
     _text = _text select [0, count _text - 5];
 
     player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Help_Keys", _text]];
-
-    if (!isNil QGVAR(docs)) then {
-        player createDiaryRecord ["CBA_docs", ["Docs", GVAR(docs)]];
-    };
-
-    // "<url='https://www.arma3.com'>ARMA 3</url>"
+    player createDiaryRecord ["CBA_docs", ["Docs", call (uiNamespace getVariable QGVAR(docs))]];
     player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
-
-    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Bugtracker", localize "STR_CBA_URL_Bugtracker"]];
+    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Bugtracker", localize "STR_CBA_URL_Bugtracker"]]; //"<url='https://www.arma3.com'>ARMA 3</url>"
     player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Wiki", localize "STR_CBA_URL_Wiki"]];
 } call CBA_fnc_execNextFrame;
