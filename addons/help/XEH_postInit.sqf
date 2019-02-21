@@ -26,7 +26,7 @@ if (!hasInterface) exitWith {};
                 _displayName = localize _displayName;
             };
 
-            private _keyName = _keybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey} joinString "    ";
+            private _keyName = (_keybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 
             _keys = _keys + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
         } forEach _addonActions;
