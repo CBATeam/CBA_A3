@@ -5,7 +5,8 @@ if (!hasInterface) exitWith {};
 
 ADDON = false;
 
-[QFUNC(help), {call BIS_fnc_help}] call CBA_fnc_compileFinal;
+// bwc
+QFUNC(help) = BIS_fnc_help;
 
 // keys
 private _fnc_getKeyName = {
