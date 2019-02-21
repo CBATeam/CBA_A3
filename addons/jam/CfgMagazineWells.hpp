@@ -32,6 +32,7 @@ class CfgMagazineWells {
 
     // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_10mmAuto.hpp"    // 10mm Auto | 10mm Automatic | 10x25mm
+    #include "magwells_570x28.hpp"      // 5.70x28mm
     #include "magwells_762x25.hpp"      // 7.62x25mm Tokarev
     #include "magwells_762x38R.hpp"     // 7.62x38mmR | 7.62 mm Nagant
     #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic

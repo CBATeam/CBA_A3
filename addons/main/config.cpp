@@ -29,6 +29,7 @@ class CfgPatches {
             "cba_diagnostic",
             "cba_help",
             "cba_jr",
+            "cba_jam",
             "cba_ui",
             "cba_versioning"
         };

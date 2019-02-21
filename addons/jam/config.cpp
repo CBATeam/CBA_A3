@@ -10,7 +10,7 @@ class CfgPatches {
         magazines[] = {};
         ammo[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_main"};
+        requiredAddons[] = {"cba_common"};
         version = VERSION;
         authors[] = {"Robalo"};
     };

@@ -8,22 +8,6 @@ GVAR(target) = objNull; // current object for interaction
 GVAR(holdKeyDown) = false; // default global behaviour of requiring holding key down. Can be overriden by menus.
 GVAR(hotKeyColor) = ""; // override colour of hotkey. It is set from rsc menu file, upon opening either the "menu" or "list". If not present, a default will be used.
 
-PREP_SUB(flexiMenu,keyDown);
-PREP_SUB(flexiMenu,keyUp);
-PREP_SUB(flexiMenu,menu);
-PREP_SUB(flexiMenu,list);
-PREP_SUB(flexiMenu,getMenuDef);
-PREP_SUB(flexiMenu,getMenuOption);
-PREP_SUB(flexiMenu,menuShortcut);
-PREP_SUB(flexiMenu,mouseButtonDown);
-PREP_SUB(flexiMenu,highlightCaretKey);
-PREP_SUB(flexiMenu,execute);
-
-// TODO: move these to public CfgFunctions soon.
-PREP_SUB(flexiMenu,add);
-PREP_SUB(flexiMenu,remove);
-PREP_SUB(flexiMenu,setObjectMenuSource);
-
 // prevent instant reactivation of menu after selection was made, while key still held down. Value is reset upon key release.
 GVAR(optionSelected) = false;
 // prevent multiple activations of menu due to key press via keyDown. onLoad can sometimes take a few milliseconds to init.

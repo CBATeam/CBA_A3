@@ -775,7 +775,7 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
+#define COMPILE_FILE2_CFG_SYS(var1) compile preprocessFileLineNumbers var1
 #define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
@@ -942,6 +942,7 @@ Description:
     Full file path in addons:
         '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
     Define 'RECOMPILE' to enable recompiling.
+    Define 'SKIP_FUNCTION_HEADER' to skip adding function header.
 
 Parameters:
     FUNCTION NAME - Name of the function, unquoted <STRING>
@@ -968,9 +969,16 @@ Author:
 #else
     #define RECOMPILE recompile = 0
 #endif
+// Set function header type: -1 - no header; 0 - default header; 1 - system header.
+#ifdef SKIP_FUNCTION_HEADER
+    #define CFGFUNCTION_HEADER headerType = -1
+#else
+    #define CFGFUNCTION_HEADER headerType = 0
+#endif
 
 #define PATHTO_FNC(func) class func {\
     file = QPATHTOF(DOUBLES(fnc,func).sqf);\
+    CFGFUNCTION_HEADER;\
     RECOMPILE;\
 }
 
@@ -1119,6 +1127,7 @@ Author:
 /* -------------------------------------------
 Macro: SCRIPT()
     Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+    Define 'SKIP_SCRIPT_NAME' to skip adding scriptName.
 
 Parameters:
     NAME - Name of script [Indentifier]
@@ -1131,8 +1140,11 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define SCRIPT(NAME) \
-    scriptName 'PREFIX\COMPONENT\NAME'
+#ifndef SKIP_SCRIPT_NAME
+    #define SCRIPT(NAME) scriptName 'PREFIX\COMPONENT\NAME'
+#else
+    #define SCRIPT(NAME) /* nope */
+#endif
 
 /* -------------------------------------------
 Macros: EXPLODE_n()
@@ -1740,7 +1752,7 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN serverCommandAvailable "#kick"
+#define IS_ADMIN serverCommandAvailable '#kick'
 
 /* -------------------------------------------
 Macro: IS_ADMIN_LOGGED
@@ -1760,7 +1772,7 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
+#define IS_ADMIN_LOGGED serverCommandAvailable '#shutdown'
 
 /* -------------------------------------------
 Macro: FILE_EXISTS
