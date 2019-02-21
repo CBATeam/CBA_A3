@@ -73,5 +73,20 @@
             <Chinesesimp>制作组</Chinesesimp>
             <Turkish>Yapımcılar</Turkish>
         </Key>
+        <Key ID="STR_CBA_Addons">
+            <English>Addons</English>
+            <German>Addons</German>
+            <Spanish>Addons</Spanish>
+            <Czech>Addons</Czech>
+            <Russian>Дополнения</Russian>
+            <Italian>Addons</Italian>
+            <Polish>Addons</Polish>
+            <French>Addons</French>
+            <Hungarian>Addons</Hungarian>
+            <Japanese>アドオン</Japanese>
+            <Chinese>模組</Chinese>
+            <Chinesesimp>模组</Chinesesimp>
+            <Turkish>Modüller</Turkish>
+        </Key>
     </Package>
 </Project>
