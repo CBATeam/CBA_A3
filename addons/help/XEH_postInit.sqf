@@ -5,39 +5,40 @@ if (!hasInterface) exitWith {};
 
 {
     // create diary, entries added in reverse order
-    player createDiarySubject ["CBA_docs", "CBA"];
+    private _unit = player;
+    _unit createDiarySubject [QGVAR(docs), "CBA"];
 
     // add diary for scripted keybinds
-    private _text = GVAR(keys);
+    private _keys = GVAR(keys);
 
-    private _activeMods = allVariables EGVAR(keybinding,addons);
-    _activeMods sort true;
+    private _addons = allVariables EGVAR(keybinding,addons);
+    _addons sort true;
 
     {
-        (EGVAR(keybinding,addons) getVariable _x) params ["_addonName", "_addonActions"];
+        (EGVAR(keybinding,addons) getVariable _x) params ["_addon", "_addonActions"];
 
-        _text = _text + format ["%1:<br/>", _addonName];
+        _keys = _keys + format ["%1:<br/>", _addon];
 
         {
-            (EGVAR(keybinding,actions) getVariable (_addonName + "$" + _x)) params ["_displayName", "", "_registryKeybinds"];
+            (EGVAR(keybinding,actions) getVariable (_addon + "$" + _x)) params ["_displayName", "", "_keybinds"];
 
             if (isLocalized _displayName) then {
                 _displayName = localize _displayName;
             };
 
-            private _keyName = (_registryKeybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
+            private _keyName = _keybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey} joinString "    ";
 
-            _text = _text + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
+            _keys = _keys + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
         } forEach _addonActions;
 
-        _text = _text + "<br/>";
-    } forEach _activeMods;
+        _keys = _keys + "<br/>";
+    } forEach _addons;
 
-    // delete last line break
-    _text = _text select [0, count _text - 10];
+    // delete last line breaks
+    _keys = _keys select [0, count _keys - 10];
 
-    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Help_Keys", _text]];
-    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
-    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Bugtracker", localize "STR_CBA_URL_Bugtracker"]]; //"<url='https://www.arma3.com'>ARMA 3</url>"
-    player createDiaryRecord ["CBA_docs", [localize "STR_CBA_Wiki", localize "STR_CBA_URL_Wiki"]];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", _keys]];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Bugtracker", localize "STR_CBA_URL_Bugtracker"]]; //"<url='https://www.arma3.com'>ARMA 3</url>"
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Wiki", localize "STR_CBA_URL_Wiki"]];
 } call CBA_fnc_execNextFrame;
