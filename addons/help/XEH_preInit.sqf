@@ -6,7 +6,7 @@ if (!hasInterface) exitWith {};
 ADDON = false;
 
 // bwc
-QFUNC(help) = BIS_fnc_help;
+FUNC(help) = BIS_fnc_help;
 
 // keys
 private _fnc_getKeyName = {
