@@ -15,6 +15,9 @@ private _credits = [];
 
     if (isText (_x >> "name")) then {
         _name = getText (_x >> "name");
+        _name = [_name, "<", "&lt;"] call CBA_fnc_replace;
+        _name = [_name, ">", "&gt;"] call CBA_fnc_replace;
+        _name = [_name, "&", "&amp;"] call CBA_fnc_replace;
     };
 
     _name = format ["<font color='#99cccc'>%1</font>", _name];
