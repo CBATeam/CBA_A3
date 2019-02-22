@@ -28,36 +28,6 @@
             <Chinesesimp>按键绑定</Chinesesimp>
             <Turkish>Klavye Tuşları</Turkish>
         </Key>
-        <Key ID="STR_CBA_Bugtracker">
-            <English>Bugtracker</English>
-            <German>Bugtracker</German>
-            <Spanish>Bugtracker</Spanish>
-            <Czech>Bugtracker</Czech>
-            <Russian>Баг трэкер</Russian>
-            <Italian>Bugtracker</Italian>
-            <Polish>Zgłaszanie błędów</Polish>
-            <French>traqueur de bugs</French>
-            <Hungarian>Bugtracker</Hungarian>
-            <Japanese>バグトラッカー</Japanese>
-            <Chinese>臭蟲追蹤器</Chinese>
-            <Chinesesimp>臭虫追踪器</Chinesesimp>
-            <Turkish>Sorun Takibi</Turkish>
-        </Key>
-        <Key ID="STR_CBA_Wiki">
-            <English>Wiki (Documentation)</English>
-            <German>Wiki (Documentation)</German>
-            <Spanish>Wiki (Documentation)</Spanish>
-            <Czech>Wiki (Documentation)</Czech>
-            <Russian>Wiki (Документация)</Russian>
-            <Italian>Wiki (Documentation)</Italian>
-            <Polish>Wiki (dokumentacja)</Polish>
-            <French>Wiki (Documentation)</French>
-            <Hungarian>Wiki (Documentation)</Hungarian>
-            <Japanese>ウィキ (ドキュメント)</Japanese>
-            <Chinese>維基 (文件)</Chinese>
-            <Chinesesimp>维基 (文件)</Chinesesimp>
-            <Turkish>Wiki (Dökümantasyon)</Turkish>
-        </Key>
         <Key ID="STR_CBA_Credits">
             <English>Credits</English>
             <German>Credits</German>

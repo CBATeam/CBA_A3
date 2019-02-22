@@ -40,6 +40,4 @@ if (!hasInterface) exitWith {};
     _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", _keys]];
     _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
     _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]];
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Bugtracker", localize "STR_CBA_URL_Bugtracker"]]; //"<url='https://www.arma3.com'>ARMA 3</url>"
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Wiki", localize "STR_CBA_URL_Wiki"]];
 } call CBA_fnc_execNextFrame;
