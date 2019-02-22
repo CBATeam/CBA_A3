@@ -14,10 +14,7 @@ private _credits = [];
     private _name = configName _x;
 
     if (isText (_x >> "name")) then {
-        _name = getText (_x >> "name");
-        _name = [_name, "<", "&lt;"] call CBA_fnc_replace;
-        _name = [_name, ">", "&gt;"] call CBA_fnc_replace;
-        _name = [_name, "&", "&amp;"] call CBA_fnc_replace;
+        _name = getText (_x >> "name") call CBA_fnc_sanitizeHTML;
     };
 
     _name = format ["<font color='#99cccc'>%1</font>", _name];
@@ -28,10 +25,7 @@ private _credits = [];
         _version = format [" v%1", getText (_x >> "version")];
     };
 
-    private _author = getText (_x >> "author");
-    _author = [_author, "<", "&lt;"] call CBA_fnc_replace;
-    _author = [_author, ">", "&gt;"] call CBA_fnc_replace;
-    _author = [_author, "&", "&amp;"] call CBA_fnc_replace;
+    private _author = getText (_x >> "author") call CBA_fnc_sanitizeHTML;
 
     _credits pushBack format ["<font color='#bdcc9c'>%1%2 by %3</font>", _name, _version, _author];
 } forEach _addons;
@@ -47,19 +41,13 @@ _mods = (_mods arrayIntersect _mods select {!isNumber (configfile >> "CfgMods" >
 _mods = _mods apply {
     private _entry = configfile >> "CfgMods" >> _x;
 
-    private _name = getText (_entry >> "name");
-    _name = [_name, "<", "&lt;"] call CBA_fnc_replace;
-    _name = [_name, ">", "&gt;"] call CBA_fnc_replace;
-    _name = [_name, "&", "&amp;"] call CBA_fnc_replace;
+    private _name = getText (_entry >> "name") call CBA_fnc_sanitizeHTML;
 
     if (isClass _entry) then {
         _x = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, _name];
 
         if (isText (_entry >> "description")) then {
-            private _description = getText (_entry >> "description");
-            _description = [_description, "<", "&lt;"] call CBA_fnc_replace;
-            _description = [_description, ">", "&gt;"] call CBA_fnc_replace;
-            _description = [_description, "&", "&amp;"] call CBA_fnc_replace;
+            private _description = getText (_entry >> "description") call CBA_fnc_sanitizeHTML;
 
             _x = _x + format ["<br/>%1", _description];
         };

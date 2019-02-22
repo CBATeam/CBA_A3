@@ -8,7 +8,7 @@ class CfgMods {
         hideName = 1;
         actionName = "Website";
         action = "$STR_CBA_URL";
-        description = "Bugtracker: https://github.com/CBATeam/CBA_A3/issues<br />Documentation: https://github.com/CBATeam/CBA_A3/wiki";
+        description = "Bugtracker: https://github.com/CBATeam/CBA_A3/issues<br/>Documentation: https://github.com/CBATeam/CBA_A3/wiki";
         logo = "logo_cba_ca.paa";
         logoOver = "logo_cba_ca.paa";
         tooltip = "Community Base Addons";
