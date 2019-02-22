@@ -66,9 +66,19 @@ class CfgMagazineWells {
     #include "magwells_40mm.hpp"
 
     // AT and AA Launchers, ordered lexicographically
-    class CBA_Bazooka {};       // M1, M1A1 Bazooka
-    class CBA_Panzerschreck {}; // Panzerschreck RPzB 54
-    class CBA_PIAT {};          // PIAT
+
+    class CBA_Bazooka {};               // M1, M1A1 Bazooka
+    class CBA_Panzerschreck {};         // Panzerschreck RPzB 54
+    class CBA_PIAT {};                  // PIAT
+    class CBA_SMAW {};                  // Mk 153 Shoulder-Launched Multipurpose Assault Weapon
+    class CBA_SMAW_Spotting_Rifle {};   // Mk 153 Shoulder-Launched Multipurpose Assault Weapon - Spotting Rifle
+
+    class CBA_Carl_Gustaf {             // MAAWS, RAWS
+        BI_rounds[] = {
+            "MRAWS_HEAT_F",
+            "MRAWS_HE_F"
+        };
+    };
 
     class CBA_RPG7 {
         BI_rockets[] = {
