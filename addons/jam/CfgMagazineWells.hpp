@@ -67,6 +67,12 @@ class CfgMagazineWells {
 
     // AT and AA Launchers, ordered lexicographically
     class CBA_Bazooka {};       // M1, M1A1 Bazooka
+    class CBA_Carl_Gustaf {     // MAAWS, RAWS
+        BI_rounds[] = {
+            "MRAWS_HEAT_F",
+            "MRAWS_HE_F"
+        };
+    };
     class CBA_Panzerschreck {}; // Panzerschreck RPzB 54
     class CBA_PIAT {};          // PIAT
 
