@@ -101,19 +101,19 @@ class CfgWeapons {
         magazineWell[] = {"CBA_338NM_LINKS"};
     };
 
-    class SMG_01_Base : Rifle_Short_Base_F {
+    class SMG_01_Base: Rifle_Short_Base_F {
         magazineWell[] = {"CBA_45ACP_Glock_Full"};
     };
 
-    class SMG_02_base_F : Rifle_Short_Base_F {
+    class SMG_02_base_F: Rifle_Short_Base_F {
         magazineWell[] = {"CBA_9x19_ScorpionEvo3"};
     };
 
-    class SMG_03_TR_BASE : Rifle_Base_F {
+    class SMG_03_TR_BASE: Rifle_Base_F {
         magazineWell[] = {"CBA_57x28_FNP90"};
     };
 
-    class SMG_05_base_F : Rifle_Short_Base_F {
+    class SMG_05_base_F: Rifle_Short_Base_F {
         magazineWell[] = {"CBA_9x19_MP5"};
     };
 
