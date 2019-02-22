@@ -30,7 +30,7 @@ private _credits = [];
     _credits pushBack format ["<font color='#bdcc9c'>%1%2 by %3</font>", _name, _version, _author];
 } forEach _addons;
 
-_credits = _credits joinString "<br/>";
+_credits = (_credits arrayIntersect _credits) joinString "<br/>";
 
 uiNamespace setVariable [QGVAR(credits), compileFinal str _credits];
 
@@ -42,10 +42,10 @@ _mods = _mods apply {
     private _entry = configfile >> "CfgMods" >> _x;
 
     if (isClass _entry) then {
-        _x = format ["%1 - %2", configName _entry, getText (_entry >> "name")];
+        _x = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, getText (_entry >> "name")];
 
         if (isText (_entry >> "description")) then {
-            _x = _x + format ["<br/>    %1", getText (_entry >> "description")];
+            _x = _x + format ["<br/>%1", getText (_entry >> "description")];
         };
     };
 
