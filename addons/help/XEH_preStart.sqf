@@ -45,13 +45,13 @@ _mods = _mods apply {
         _x = format ["%1 - %2", configName _entry, getText (_entry >> "name")];
 
         if (isText (_entry >> "description")) then {
-            _x = _x + format ["<br/>%1", getText (_entry >> "description")];
+            _x = _x + format ["<br/>    %1", getText (_entry >> "description")];
         };
     };
 
     _x
 };
 
-_mods = _mods joinString "<br/>";
+_mods = _mods joinString "<br/><br/>";
 
 uiNamespace setVariable [QGVAR(mods), compileFinal str _mods];
