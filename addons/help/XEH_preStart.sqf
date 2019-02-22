@@ -29,6 +29,9 @@ private _credits = [];
     };
 
     private _author = getText (_x >> "author");
+    _author = [_author, "<", "&lt;"] call CBA_fnc_replace;
+    _author = [_author, ">", "&gt;"] call CBA_fnc_replace;
+    _author = [_author, "&", "&amp;"] call CBA_fnc_replace;
 
     _credits pushBack format ["<font color='#bdcc9c'>%1%2 by %3</font>", _name, _version, _author];
 } forEach _addons;
