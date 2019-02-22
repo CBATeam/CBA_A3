@@ -42,8 +42,14 @@ _mods = _mods apply {
     private _entry = configfile >> "CfgMods" >> _x;
 
     if (isClass _entry) then {
-        _x = format ["* %1 - %2<br/>%3", configName _entry, getText (_entry >> "name"), getText (_entry >> "description")];
-    } else {_x};
+        _x = format ["%1 - %2", configName _entry, getText (_entry >> "name")];
+
+        if (isText (_entry >> "description")) then {
+            _x = _x + format ["<br/>%1", getText (_entry >> "description")];
+        };
+    };
+
+    _x
 };
 
 _mods = _mods joinString "<br/>";
