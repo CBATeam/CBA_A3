@@ -76,7 +76,6 @@ class CfgWeapons {
     class arifle_AKS_base_F: Rifle_Base_F {
         magazineWell[] = {"CBA_545x39_AK", "CBA_545x39_RPK"};
     };
-
     class LMG_03_base_F: Rifle_Long_Base_F {
         magazineWell[] = {"CBA_556x45_MINIMI"};
     };
@@ -101,7 +100,20 @@ class CfgWeapons {
         magazineWell[] = {"CBA_338NM_LINKS"};
     };
 
-    class SMG_03_TR_BASE: Rifle_Base_F {
-        magazineWell[] = {"CBA_570x28_P90"};
+    class SMG_01_Base : Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_45ACP_Glock_Full"};
     };
+
+    class SMG_02_base_F : Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_9x19_ScorpionEvo3"};
+    };
+
+    class SMG_03_TR_BASE : Rifle_Base_F {
+        magazineWell[] = {"CBA_57x28_FNP90"};
+    };
+
+    class SMG_05_base_F : Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_9x19_MP5"};
+    };
+
 };
