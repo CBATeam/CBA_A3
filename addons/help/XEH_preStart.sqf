@@ -41,11 +41,21 @@ _mods = (_mods arrayIntersect _mods select {!isNumber (configfile >> "CfgMods" >
 _mods = _mods apply {
     private _entry = configfile >> "CfgMods" >> _x;
 
+    private _name = getText (_entry >> "name");
+    _name = [_name, "<", "&lt;"] call CBA_fnc_replace;
+    _name = [_name, ">", "&gt;"] call CBA_fnc_replace;
+    _name = [_name, "&", "&amp;"] call CBA_fnc_replace;
+
     if (isClass _entry) then {
-        _x = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, getText (_entry >> "name")];
+        _x = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, _name];
 
         if (isText (_entry >> "description")) then {
-            _x = _x + format ["<br/>%1", getText (_entry >> "description")];
+            private _description = getText (_entry >> "description");
+            _description = [_description, "<", "&lt;"] call CBA_fnc_replace;
+            _description = [_description, ">", "&gt;"] call CBA_fnc_replace;
+            _description = [_description, "&", "&amp;"] call CBA_fnc_replace;
+
+            _x = _x + format ["<br/>%1", _description];
         };
     };
 
