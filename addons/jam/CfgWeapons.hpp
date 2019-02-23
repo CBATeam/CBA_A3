@@ -3,6 +3,7 @@ class CfgWeapons {
     class Rifle_Base_F;
     class Rifle_Long_Base_F;
     class Launcher_Base_F;
+    class Rifle_Short_Base_F;
 
     class mk20_base_F: Rifle_Base_F {
         magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D"};
