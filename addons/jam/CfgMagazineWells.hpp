@@ -32,7 +32,7 @@ class CfgMagazineWells {
 
     // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_10mmAuto.hpp"    // 10mm Auto | 10mm Automatic | 10x25mm
-    #include "magwells_570x28.hpp"      // 5.70x28mm
+    #include "magwells_57x28.hpp"       // 5.7x28mm
     #include "magwells_762x25.hpp"      // 7.62x25mm Tokarev
     #include "magwells_762x38R.hpp"     // 7.62x38mmR | 7.62 mm Nagant
     #include "magwells_763x25.hpp"      // 7.63x25mm Mauser | .30 Mauser Automatic
@@ -66,9 +66,19 @@ class CfgMagazineWells {
     #include "magwells_40mm.hpp"
 
     // AT and AA Launchers, ordered lexicographically
-    class CBA_Bazooka {};       // M1, M1A1 Bazooka
-    class CBA_Panzerschreck {}; // Panzerschreck RPzB 54
-    class CBA_PIAT {};          // PIAT
+
+    class CBA_Bazooka {};               // M1, M1A1 Bazooka
+    class CBA_Panzerschreck {};         // Panzerschreck RPzB 54
+    class CBA_PIAT {};                  // PIAT
+    class CBA_SMAW {};                  // Mk 153 Shoulder-Launched Multipurpose Assault Weapon
+    class CBA_SMAW_Spotting_Rifle {};   // Mk 153 Shoulder-Launched Multipurpose Assault Weapon - Spotting Rifle
+
+    class CBA_Carl_Gustaf {             // MAAWS, RAWS
+        BI_rounds[] = {
+            "MRAWS_HEAT_F",
+            "MRAWS_HE_F"
+        };
+    };
 
     class CBA_RPG7 {
         BI_rockets[] = {

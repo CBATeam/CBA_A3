@@ -4,6 +4,12 @@
 
 params ["_display"];
 
+private _ok = _display displayCtrl IDC_OK;
+
+_ok ctrlAddEventHandler ["ButtonClick", {
+    ["CBA_layoutEditorSaved", []] call CBA_fnc_localEvent;
+}];
+
 for "_idc" from IDCBASE to (IDCBASE + 99) do {
     private _control = _display displayCtrl _idc;
 

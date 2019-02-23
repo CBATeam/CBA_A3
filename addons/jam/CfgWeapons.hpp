@@ -3,6 +3,7 @@ class CfgWeapons {
     class Rifle_Base_F;
     class Rifle_Long_Base_F;
     class Launcher_Base_F;
+    class Rifle_Short_Base_F;
 
     class mk20_base_F: Rifle_Base_F {
         magazineWell[] = {"CBA_556x45_STANAG", "CBA_556x45_STANAG_L", "CBA_556x45_STANAG_XL", "CBA_556x45_STANAG_2D"};
@@ -89,6 +90,10 @@ class CfgWeapons {
         magazineWell[] = {"CBA_762x54R_LINKS"};
     };
 
+    class launch_MRAWS_base_F: Launcher_Base_F {
+        magazineWell[] = {"CBA_Carl_Gustaf"};
+    };
+
     class launch_RPG7_F: Launcher_Base_F {
         magazineWell[] = {"CBA_RPG7"};
     };
@@ -101,7 +106,20 @@ class CfgWeapons {
         magazineWell[] = {"CBA_338NM_LINKS"};
     };
 
-    class SMG_03_TR_BASE: Rifle_Base_F {
-        magazineWell[] = {"CBA_570x28_P90"};
+    class SMG_01_Base: Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_45ACP_Glock_Full"};
     };
+
+    class SMG_02_base_F: Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_9x19_ScorpionEvo3"};
+    };
+
+    class SMG_03_TR_BASE: Rifle_Base_F {
+        magazineWell[] = {"CBA_57x28_FNP90"};
+    };
+
+    class SMG_05_base_F: Rifle_Short_Base_F {
+        magazineWell[] = {"CBA_9x19_MP5"};
+    };
+
 };
