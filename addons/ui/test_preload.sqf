@@ -3,6 +3,7 @@
 
 isNil {
     with uiNamespace do {
+        // 3DEN
         TEST_DEFINED(QFUNC(preload3DEN),"");
 
         AmmoBox_list = nil;
@@ -14,5 +15,8 @@ isNil {
         private _cba = AmmoBox_list;
 
         TEST_TRUE(_vanilla isEqualTo _cba,QFUNC(preload3DEN));
+
+        // Curator
+        TEST_DEFINED(QFUNC(preloadCurator),"");
     };
 };
