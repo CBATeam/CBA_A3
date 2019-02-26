@@ -56,12 +56,12 @@ private _magazines = [];
 
 {
     private _patchConfig = _cfgPatches >> _x;
-    _addon = tolower _x;
+    _addon = toLower _x;
 
     private _addonList = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
     {
-        private _item = tolower _x;
+        private _item = toLower _x;
         (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
 
         private _index = -1;
@@ -116,7 +116,7 @@ private _magazines = [];
                     };
 
                     {
-                        private _item = tolower _x;
+                        private _item = toLower _x;
 
                         if ({_x select 0 == _item} count _listItem == 0) then {
                             private _magazineConfig = _cfgMagazines >> _item;

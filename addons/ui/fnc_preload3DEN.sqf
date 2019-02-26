@@ -99,7 +99,7 @@ private _magazines = [];
                 };
 
                 {
-                    private _item = tolower _x;
+                    private _item = toLower _x;
 
                     if ({_x select 1 == _item} count _listItem == 0) then {
                         private _magazineConfig = _cfgMagazines >> _item;
