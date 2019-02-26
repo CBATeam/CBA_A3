@@ -29,4 +29,6 @@ if (hasInterface) then {
             QGVAR(ProgressBar) cutRsc [QGVAR(ProgressBar), "PLAIN"];
         };
     }];
+
+    RscAttrbuteInventory_weaponAddons = uiNamespace getVariable QGVAR(curatorItemCache); // spelling is "Attrbute"
 };

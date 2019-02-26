@@ -17,23 +17,22 @@ Examples:
     (end)
 
 Notes:
-    - curator needs a similar function
-    - function can be run without adjustments to the ui init script (opposed to curator)
-    - BIS_fnc_itemType caching
-    //"\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf"
+    To disable cache use in init.sqf: RscAttrbuteInventory_weaponAddons = nil;
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+if (!isNil {uiNamespace getVariable QGVAR(curatorItemCache)}) exitWith {
+    INFO("Curator item list already preloaded.");
+    false
+};
 
-
-
-
+private _weaponAddons = [];
+uiNamespace setVariable [QGVAR(curatorItemCache), _weaponAddons];
 
 //--- Get weapons and magazines from curator addons
 _curator = getassignedcuratorlogic player;
-_weaponAddons = missionnamespace getvariable ["RscAttrbuteInventory_weaponAddons",[]];
 _types = [
     ["AssaultRifle","Shotgun","Rifle","SubmachineGun"],
     ["MachineGun"],
@@ -49,7 +48,7 @@ _types = [
     ["Binocular","Compass","FirstAidKit","GPS","LaserDesignator","Map","Medikit","MineDetector","NVGoggles","Radio","Toolkit","Watch","UAVTerminal"]
 ];
 _typeMagazine = _types find "Magazine";
-_list = [[],[],[],[],[],[],[],[],[],[],[],[]];
+
 _magazines = []; //--- Store magazines in an array and mark duplicates, so nthey don't appear in the list of all items
 {
     _addon = tolower _x;
@@ -132,10 +131,6 @@ _magazines = []; //--- Store magazines in an array and mark duplicates, so nthey
     } else {
         _addonList = _weaponAddons select (_addonID + 1);
     };
-    {
-        _current = _list select _foreachindex;
-        _list set [_foreachindex,_current + (_x - _current)];
-    } foreach _addonList;
-} foreach (curatoraddons _curator);
-missionnamespace setvariable ["RscAttrbuteInventory_weaponAddons",_weaponAddons];
-RscAttributeInventory_list = _list;
+} forEach call EGVAR(common,addons);
+
+true
