@@ -16,6 +16,9 @@ Examples:
         call cba_ui_fnc_preload3DEN
     (end)
 
+Notes:
+    To disable cache use: uiNamespace setVariable ["AmmoBox_list", nil];
+
 Author:
     commy2
 ---------------------------------------------------------------------------- */
