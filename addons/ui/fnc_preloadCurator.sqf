@@ -28,12 +28,10 @@ if (!isNil {uiNamespace getVariable QGVAR(curatorItemCache)}) exitWith {
     false
 };
 
-private _weaponAddons = [];
-uiNamespace setVariable [QGVAR(curatorItemCache), _weaponAddons];
+private _list = [];
+uiNamespace setVariable [QGVAR(curatorItemCache), _list];
 
-//--- Get weapons and magazines from curator addons
-_curator = getassignedcuratorlogic player;
-_types = [
+private _types = [
     ["AssaultRifle","Shotgun","Rifle","SubmachineGun"],
     ["MachineGun"],
     ["SniperRifle"],
@@ -47,90 +45,133 @@ _types = [
     ["Headgear","Glasses"],
     ["Binocular","Compass","FirstAidKit","GPS","LaserDesignator","Map","Medikit","MineDetector","NVGoggles","Radio","Toolkit","Watch","UAVTerminal"]
 ];
-_typeMagazine = _types find "Magazine";
 
-_magazines = []; //--- Store magazines in an array and mark duplicates, so nthey don't appear in the list of all items
+//--- Weapons, Magazines and Items
+private _cfgPatches = configFile >> "CfgPatches";
+private _cfgVehicles = configFile >> "CfgVehicles";
+private _cfgWeapons = configFile >> "CfgWeapons";
+private _cfgMagazines = configFile >> "CfgMagazines";
+
+private _magazines = [];
+
 {
+    private _patchConfig = _cfgPatches >> _x;
     _addon = tolower _x;
-    _addonList = [[],[],[],[],[],[],[],[],[],[],[],[]];
-    _addonID = _weaponAddons find _addon;
-    if (_addonID < 0) then {
+
+    private _addonList = [[],[],[],[],[],[],[],[],[],[],[],[]];
+
+    {
+        private _item = tolower _x;
+        (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
+
+        private _index = -1;
         {
-            _weapon = tolower _x;
-            _weaponType = (_weapon call bis_fnc_itemType);
-            _weaponTypeCategory = _weaponType select 0;
-            _weaponTypeSpecific = _weaponType select 1;
-            _weaponTypeID = -1;
-            {
-                if (_weaponTypeSpecific in _x) exitwith {_weaponTypeID = _foreachindex;};
-            } foreach _types;
-            //_weaponTypeID = _types find (_weaponType select 0);
-            if (_weaponTypeCategory != "VehicleWeapon" && _weaponTypeID >= 0) then {
-                _weaponCfg = configfile >> "cfgweapons" >> _weapon;
-                _weaponPublic = getnumber (_weaponCfg >> "scope") == 2;
-                _addonListType = _addonList select _weaponTypeID;
-                if (_weaponPublic) then {
-                    _displayName = gettext (_weaponCfg >> "displayName");
-                    _picture = gettext (_weaponCfg >> "picture");
-                    {
-                        _item = gettext (_x >> "item");
-                        _itemName = gettext (configfile >> "cfgweapons" >> _item >> "displayName");
-                        _displayName = _displayName + " + " + _itemName;
-                    } foreach ((_weaponCfg >> "linkeditems") call bis_fnc_returnchildren);
-                    _displayNameShort = _displayName;
-                    _displayNameShortArray = toarray _displayNameShort;
-                    if (count _displayNameShortArray > 41) then { //--- Cut when the name is too long (41 chars is approximate)
-                        _displayNameShortArray resize 41;
-                        _displayNameShort = tostring _displayNameShortArray + "...";
+            if (_itemType in _x) exitWith {
+                _index = _forEachIndex;
+            };
+        } forEach _types;
+
+        if (_index >= 0 && {_itemCategory != "VehicleWeapon"}) then {
+            private _weaponConfig = _cfgWeapons >> _item;
+            private _isPublic = getNumber (_weaponConfig >> "scope") == 2;
+            private _listItem = _addonList select _index;
+
+            if (_isPublic) then {
+                _displayName = getText (_weaponConfig >> "displayName");
+
+                // append display name with attachment names
+                {
+                    _displayName = format [
+                        "%1 + %2",
+                        _displayName,
+                        getText (_cfgWeapons >> getText (_x >> "item") >> "displayName")
+                    ];
+                } forEach ("true" configClasses (_weaponConfig >> "linkeditems")); //configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
+
+                private _displayNameShort = _displayName;
+                private _displayNameShortArray = toArray _displayNameShort;
+
+                if (count _displayNameShortArray > 41) then {
+                    _displayNameShortArray resize 41;
+                    _displayNameShort = format ["%1...", toString _displayNameShortArray];
+                };
+
+                _listItem pushBack [
+                    _item,
+                    _displayName,
+                    _displayNameShort,
+                    getText (_weaponConfig >> "picture"),
+                    parseNumber (getNumber (_weaponConfig >> "type") in [4096, 131072]),
+                    false
+                ];
+            };
+
+            //--- Magazines
+            if (_isPublic || {_item in ["throw","put"]}) then {
+                {
+                    private _muzzleConfig = _weaponConfig;
+
+                    if (_x != "this") then {
+                        _muzzleConfig = _weaponConfig >> _x;
                     };
-                    _type = if (getnumber (configfile >> "cfgweapons" >> _weapon >> "type") in [4096,131072]) then {1} else {0};
-                    _addonListType pushback [_weapon,_displayName,_displayNameShort,_picture,_type,false];
-                };
-                //--- Add magazines compatible with the weapon
-                if (_weaponPublic || _weapon in ["throw","put"]) then {
-                    //_addonListType = _addonList select _typeMagazine;
+
                     {
-                        _muzzle = if (_x == "this") then {_weaponCfg} else {_weaponCfg >> _x};
-                        {
-                            _mag = tolower _x;
-                            if ({(_x select 0) == _mag} count _addonListType == 0) then {
-                                _magCfg = configfile >> "cfgmagazines" >> _mag;
-                                if (getnumber (_magCfg >> "scope") == 2) then {
-                                    _displayName = gettext (_magCfg >> "displayName");
-                                    _picture = gettext (_magCfg >> "picture");
-                                    _addonListType pushback [_mag,_displayName,_displayName,_picture,2,_mag in _magazines];
-                                    _magazines pushback _mag;
-                                };
+                        private _item = tolower _x;
+
+                        if ({_x select 0 == _item} count _listItem == 0) then {
+                            private _magazineConfig = _cfgMagazines >> _item;
+
+                            if (getNumber (_magazineConfig >> "scope") == 2) then {
+                                private _displayName = getText (_magazineConfig >> "displayName");
+
+                                _listItem pushBack [
+                                    _item,
+                                    _displayName,
+                                    _displayName,
+                                    getText (_magazineConfig >> "picture"),
+                                    2,
+                                    _item in _magazines
+                                ];
+
+                                _magazines pushBack _item;
                             };
-                        } foreach getarray (_muzzle >> "magazines");
-                    } foreach getarray (_weaponCfg >> "muzzles");
-                };
+                        };
+                    } forEach getArray (_muzzleConfig >> "magazines");
+                } forEach getArray (_weaponConfig >> "muzzles");
             };
-        } foreach getarray (configfile >> "cfgpatches" >> _x >> "weapons");
+        };
+    } forEach getArray (_patchConfig >> "weapons");
+
+    {
+        private _item = toLower _x;
+        private _itemType = _item call BIS_fnc_itemType select 1;
+
+        private _index = -1;
         {
-            _weapon = tolower _x;
-            _weaponType = _weapon call bis_fnc_itemType;
-            _weaponTypeSpecific = _weaponType select 1;
-            _weaponTypeID = -1;
-            {
-                if (_weaponTypeSpecific in _x) exitwith {_weaponTypeID = _foreachindex;};
-            } foreach _types;
-            //_weaponTypeID = _types find (_weaponType select 0);
-            if (_weaponTypeID >= 0) then {
-                _weaponCfg = configfile >> "cfgvehicles" >> _weapon;
-                if (getnumber (_weaponCfg >> "scope") == 2) then {
-                    _displayName = gettext (_weaponCfg >> "displayName");
-                    _picture = gettext (_weaponCfg >> "picture");
-                    _addonListType = _addonList select _weaponTypeID;
-                    _addonListType pushback [_weapon,_displayName,_displayName,_picture,3,false];
-                };
+            if (_itemType in _x) exitWith {
+                _index = _forEachIndex;
             };
-        } foreach getarray (configfile >> "cfgpatches" >> _x >> "units");
-        _weaponAddons set [count _weaponAddons,_addon];
-        _weaponAddons set [count _weaponAddons,_addonList];
-    } else {
-        _addonList = _weaponAddons select (_addonID + 1);
-    };
-} forEach call EGVAR(common,addons);
+        } forEach _types;
+
+        if (_index >= 0) then {
+            private _weaponConfig = _cfgVehicles >> _item;
+
+            if (getNumber (_weaponConfig >> "scope") == 2) then {
+                private _displayName = getText (_weaponConfig >> "displayName");
+
+                (_addonList select _index) pushBack [
+                    _item,
+                    _displayName,
+                    _displayName,
+                    getText (_weaponConfig >> "picture"),
+                    3,
+                    false
+                ];
+            };
+        };
+    } forEach getArray (_patchConfig >> "units");
+
+    _list append [_addon, _addonList];
+} forEach call (uiNamespace getVariable QEGVAR(common,addons));
 
 true

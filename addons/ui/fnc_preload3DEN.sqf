@@ -64,11 +64,12 @@ private _magazines = [];
     } forEach _types;
 
     if (_index >= 0 && {_itemCategory != "VehicleWeapon"}) then {
-        private _isPublic = getNumber (_x >> "scope") == 2;
+        private _weaponConfig = _x;
+        private _isPublic = getNumber (_weaponConfig >> "scope") == 2;
         private _listItem = _list select _index;
 
         if (_isPublic) then {
-            _displayName = getText (_x >> "displayName");
+            _displayName = getText (_weaponConfig >> "displayName");
 
             // append display name with attachment names
             {
@@ -77,21 +78,19 @@ private _magazines = [];
                     _displayName,
                     getText (_cfgWeapons >> getText (_x >> "item") >> "displayName")
                 ];
-            } forEach ("true" configClasses (_x >> "linkeditems")); //configProperties [_x >> "linkeditems", "isClass _x"];
+            } forEach ("true" configClasses (_weaponConfig >> "linkeditems")); //configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
 
             _listItem pushBack [
                 _displayName,
                 _item,
-                getText (_x >> "picture"),
-                parseNumber (getNumber (_x >> "type") in [4096, 131072]),
+                getText (_weaponConfig >> "picture"),
+                parseNumber (getNumber (_weaponConfig >> "type") in [4096, 131072]),
                 false
             ];
         };
 
         //--- Magazines
         if (_isPublic || {_item in ["throw","put"]}) then {
-            private _weaponConfig = _x;
-
             {
                 private _muzzleConfig = _weaponConfig;
 

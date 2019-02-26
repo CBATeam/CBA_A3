@@ -24,16 +24,11 @@ isNil {
 
         if (isNull _curator) then {
             _curator = createGroup sideLogic createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-            _curator spawn {
-                private _group = group _this;
-                deleteVehicle _this;
-                deleteGroup _group;
-            };
-
             _unit assignCurator _curator;
-            _curator removeCuratorAddons call EGVAR(common,addons);
-            _curator addCuratorAddons call EGVAR(common,addons);
         };
+
+        _curator removeCuratorAddons call EGVAR(common,addons);
+        _curator addCuratorAddons call EGVAR(common,addons);
 
         missionNamespace setVariable ["RscAttrbuteInventory_weaponAddons", nil];
         ["onLoad", [displayNull], objNull] call compile preprocessFile "\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf";
