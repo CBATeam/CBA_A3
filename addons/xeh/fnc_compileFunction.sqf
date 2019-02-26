@@ -9,6 +9,7 @@ Description:
 Parameters:
     0: _funcFile - Path to function sqf file <STRING>
     1: _funcName - Final function name <STRING>
+    2: _force    - Force recompiling <BOOL>
 
 Returns:
     None
@@ -22,7 +23,7 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_funcFile", "", [""]], ["_funcName", "", [""]]];
+params [["_funcFile", "", [""]], ["_funcName", "", [""]], ["_force", false]];
 
 private _cachedFunc = uiNamespace getVariable _funcName;
 
@@ -30,7 +31,7 @@ if (isNil "_cachedFunc") then {
     uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
 } else {
-    if (["compile"] call CBA_fnc_isRecompileEnabled) then {
+    if (_force || {["compile"] call CBA_fnc_isRecompileEnabled}) then {
         missionNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     } else {
         missionNamespace setVariable [_funcName, _cachedFunc];
