@@ -144,19 +144,19 @@ private _magazines = [];
 
     {
         private _item = toLower _x;
-        private _itemType = _item call BIS_fnc_itemType select 1;
+        private _weaponConfig = _cfgVehicles >> _item;
 
-        private _index = -1;
-        {
-            if (_itemType in _x) exitWith {
-                _index = _forEachIndex;
-            };
-        } forEach _types;
+        if (getNumber (_weaponConfig >> "isBackpack") == 1 && {getNumber (_weaponConfig >> "scope") == 2}) then {
+            private _itemType = _item call BIS_fnc_itemType select 1;
 
-        if (_index >= 0) then {
-            private _weaponConfig = _cfgVehicles >> _item;
+            private _index = -1;
+            {
+                if (_itemType in _x) exitWith {
+                    _index = _forEachIndex;
+                };
+            } forEach _types;
 
-            if (getNumber (_weaponConfig >> "scope") == 2) then {
+            if (_index >= 0) then {
                 private _displayName = getText (_weaponConfig >> "displayName");
 
                 (_addonList select _index) pushBack [
