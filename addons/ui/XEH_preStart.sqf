@@ -11,11 +11,11 @@ if (hasInterface) then {
     PREP(preload3DEN);
     PREP(preloadCurator);
 
-    _timeStart = diag_tickTime;
+    private _timeStart = diag_tickTime;
     call FUNC(preload3DEN);
     INFO_1("3DEN item list preloaded. Time: %1 ms",round ((diag_tickTime - _timeStart) * 1000));
 
-    private _timeStart = diag_tickTime;
+    _timeStart = diag_tickTime;
     call FUNC(preloadCurator);
     INFO_1("Curator item list preloaded. Time: %1 ms",round ((diag_tickTime - _timeStart) * 1000));
 };
