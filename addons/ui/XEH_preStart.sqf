@@ -1,12 +1,12 @@
 #include "script_component.hpp"
 
-PREP(initDisplayInterrupt);
-PREP(initDisplayMultiplayerSetup);
-PREP(initDisplayOptionsLayout);
-PREP(initDisplayPassword);
-PREP(initDisplayRemoteMissions);
-
 if (hasInterface) then {
+    PREP(initDisplayInterrupt);
+    PREP(initDisplayMultiplayerSetup);
+    PREP(initDisplayOptionsLayout);
+    PREP(initDisplayPassword);
+    PREP(initDisplayRemoteMissions);
+
     // preload 3den and curator item lists
     PREP(preload3DEN);
     PREP(preloadCurator);

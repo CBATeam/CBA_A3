@@ -31,19 +31,34 @@ if (!isNil {uiNamespace getVariable "AmmoBox_list"}) exitWith {
 private _list = [[],[],[],[],[],[],[],[],[],[],[],[]];
 uiNamespace setVariable ["AmmoBox_list", _list];
 
+private _itemTypes = [
+    "AssaultRifle","Shotgun","Rifle","SubmachineGun",
+    "MachineGun",
+    "SniperRifle",
+    "Launcher","MissileLauncher","RocketLauncher",
+    "Handgun",
+    "UnknownWeapon",
+    "AccessoryMuzzle","AccessoryPointer","AccessorySights","AccessoryBipod",
+    "Uniform",
+    "Vest",
+    "Backpack",
+    "Headgear","Glasses",
+    "Binocular","Compass","FirstAidKit","GPS","LaserDesignator","Map","Medikit","MineDetector","NVGoggles","Radio","Toolkit","Watch","UAVTerminal"
+];
+
 private _types = [
-    ["AssaultRifle","Shotgun","Rifle","SubmachineGun"],
-    ["MachineGun"],
-    ["SniperRifle"],
-    ["Launcher","MissileLauncher","RocketLauncher"],
-    ["Handgun"],
-    ["UnknownWeapon"],
-    ["AccessoryMuzzle","AccessoryPointer","AccessorySights","AccessoryBipod"],
-    ["Uniform"],
-    ["Vest"],
-    ["Backpack"],
-    ["Headgear","Glasses"],
-    ["Binocular","Compass","FirstAidKit","GPS","LaserDesignator","Map","Medikit","MineDetector","NVGoggles","Radio","Toolkit","Watch","UAVTerminal"]
+    0,0,0,0,
+    1,
+    2,
+    3,3,3,
+    4,
+    5,
+    6,6,6,6,
+    7,
+    8,
+    9,
+    10,10,
+    11,11,11,11,11,11,11,11,11,11,11,11,11
 ];
 
 //--- Weapons, Magazines and Items
@@ -56,13 +71,7 @@ private _magazines = [];
     private _item = toLower configName _x;
     (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
 
-    private _index = -1;
-    {
-        if (_itemType in _x) exitWith {
-            _index = _forEachIndex;
-        };
-    } forEach _types;
-
+    private _index = _types param [_itemTypes find _itemType, -1];
     if (_index >= 0 && {_itemCategory != "VehicleWeapon"}) then {
         private _weaponConfig = _x;
         private _isPublic = getNumber (_weaponConfig >> "scope") == 2;
@@ -128,13 +137,7 @@ private _magazines = [];
         private _item = toLower configName _x;
         private _itemType = _item call BIS_fnc_itemType select 1;
 
-        private _index = -1;
-        {
-            if (_itemType in _x) exitWith {
-                _index = _forEachIndex;
-            };
-        } forEach _types;
-
+        private _index = _types param [_itemTypes find _itemType, -1];
         if (_index >= 0) then {
             (_list select _index) pushBack [
                 getText (_x >> "displayName"),
