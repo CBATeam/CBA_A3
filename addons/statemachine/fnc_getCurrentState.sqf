@@ -3,7 +3,7 @@
 Function: CBA_statemachine_fnc_getCurrentState
 
 Description:
-    Manually triggers a transition.
+    Returns an item's current state
 
 Parameters:
     _listItem       - item to get the state of <any namespace type>

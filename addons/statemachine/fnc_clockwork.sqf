@@ -59,7 +59,7 @@ SCRIPT(clockwork);
         private _thisState = _current getVariable (QGVAR(state) + str _id);
 
         if (isNil "_thisState") then {
-            // Item is new and gets set to the intial state, onStateEntered
+            // Item is new and gets set to the initial state, onStateEntered
             // function of initial state gets executed as well.
             _thisState = _stateMachine getVariable QGVAR(initialState);
             _current setVariable [QGVAR(state) + str _id, _thisState];
