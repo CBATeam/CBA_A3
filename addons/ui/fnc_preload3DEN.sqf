@@ -28,8 +28,12 @@ if (!isNil {uiNamespace getVariable "AmmoBox_list"}) exitWith {
     false
 };
 
+[] spawn {
+diag_log "x: preload started";
+
+private _iterationsLeft = 10;
+
 private _list = [[],[],[],[],[],[],[],[],[],[],[],[]];
-uiNamespace setVariable ["AmmoBox_list", _list];
 
 private _itemTypes = [
     "AssaultRifle","Shotgun","Rifle","SubmachineGun",
@@ -68,6 +72,14 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 private _magazines = [];
 
 {
+    _iterationsLeft = _iterationsLeft - 1;
+    if (_iterationsLeft <= 0) then {
+        systemChat format ["Tick: %1", diag_tickTime]; 
+        uiSleep 0.01;
+        _iterationsLeft = 10;
+    };
+    isNil {
+
     private _item = toLower configName _x;
     (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
 
@@ -129,7 +141,9 @@ private _magazines = [];
             } forEach getArray (_weaponConfig >> "muzzles");
         };
     };
+    };
 } forEach ("true" configClasses _cfgWeapons);
+if (!isNil {uiNamespace getVariable "AmmoBox_list"}) exitWith {diag_log "x: alredy built"};
 
 //--- Backpacks
 {
@@ -149,6 +163,7 @@ private _magazines = [];
         };
     };
 } forEach ("true" configClasses (configFile >> "CfgVehicles"));
+if (!isNil {uiNamespace getVariable "AmmoBox_list"}) exitWith {diag_log "x: alredy built"};
 
 //--- Glasses
 private _listHeadgear = _list select 10;
@@ -169,4 +184,8 @@ private _listHeadgear = _list select 10;
     _x sort true;
 } forEach _list;
 
+diag_log "x: preload finished";
+if (!isNil {uiNamespace getVariable "AmmoBox_list"}) exitWith {diag_log "x: alredy built"};
+uiNamespace setVariable ["AmmoBox_list", _list];
+};
 true

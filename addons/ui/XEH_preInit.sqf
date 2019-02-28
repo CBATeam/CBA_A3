@@ -1,5 +1,10 @@
 #include "script_component.hpp"
 
+PREP(preload3DEN);
+[] spawn {
+if (is3den) then { call FUNC(preload3DEN); };
+};
+    
 [
     QGVAR(StorePasswords), "LIST",
     [LLSTRING(StoreServerPasswords), LLSTRING(StoreServerPasswordsTooltip)],
