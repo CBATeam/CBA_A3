@@ -37,7 +37,7 @@ if (_index != -1) then {
     };
 
     {
-        _currentState = [_x, _stateMachine] call CBA_statemachine_fnc_getCurrentState;
+        _thisState = [_x, _stateMachine] call CBA_statemachine_fnc_getCurrentState;
         _x call (_stateMachine getVariable ONSTATELEAVING(_currentState));
         false
     } count _list;
