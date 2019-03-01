@@ -145,7 +145,7 @@ private _magazinesLists = [];
 #ifdef DEBUG_MODE_FULL
     if (getNumber (_x >> "scope") == 2) then {
 #else
-    if (getNumber (_x >> "isBackpack") == 1 && {getNumber (_x >> "scope") == 2}) then {
+    if (getNumber (_x >> "isBackpack") == 1 && {getNumber (_x >> "scope") == 2}) then { //}
 #endif
         private _item = toLower configName _x;
         private _itemType = _item call BIS_fnc_itemType select 1;
