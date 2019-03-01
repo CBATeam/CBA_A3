@@ -191,4 +191,6 @@ private _magazinesLists = [];
     _list append [_addon, _addonList];
 } forEach call (uiNamespace getVariable QEGVAR(common,addons));
 
+_itemTypes call CBA_fnc_deleteNamespace;
+
 true
