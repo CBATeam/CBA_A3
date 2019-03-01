@@ -165,10 +165,11 @@ private _magazinesLists = [];
 // use the same classname in CfgVehicles and CfgWeapons this isBackpack
 // optimization prevents the item from added by twice.
 #ifdef DEBUG_MODE_FULL
-        if (getNumber (_weaponConfig >> "scope") == 2) then {
+        if (getNumber (_weaponConfig >> "scope") == 2)
 #else
-        if (getNumber (_weaponConfig >> "isBackpack") == 1 && {getNumber (_weaponConfig >> "scope") == 2}) then { //}
+        if (getNumber (_weaponConfig >> "isBackpack") == 1 && {getNumber (_weaponConfig >> "scope") == 2})
 #endif
+        then {
             private _itemType = _item call BIS_fnc_itemType select 1;
 
             private _index = _itemTypes getVariable [_itemType, -1];
