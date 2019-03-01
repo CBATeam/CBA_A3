@@ -31,35 +31,40 @@ if (!isNil {uiNamespace getVariable QGVAR(curatorItemCache)}) exitWith {
 private _list = [];
 uiNamespace setVariable [QGVAR(curatorItemCache), _list];
 
-private _itemTypes = [
-    "AssaultRifle","Shotgun","Rifle","SubmachineGun",
-    "MachineGun",
-    "SniperRifle",
-    "Launcher","MissileLauncher","RocketLauncher",
-    "Handgun",
-    "UnknownWeapon",
-    "AccessoryMuzzle","AccessoryPointer","AccessorySights","AccessoryBipod",
-    "Uniform",
-    "Vest",
-    "Backpack",
-    "Headgear","Glasses",
-    "Binocular","Compass","FirstAidKit","GPS","LaserDesignator","Map","Medikit","MineDetector","NVGoggles","Radio","Toolkit","Watch","UAVTerminal"
-];
-
-private _types = [
-    0,0,0,0,
-    1,
-    2,
-    3,3,3,
-    4,
-    5,
-    6,6,6,6,
-    7,
-    8,
-    9,
-    10,10,
-    11,11,11,11,11,11,11,11,11,11,11,11,11
-];
+private _itemTypes = call CBA_fnc_createNamespace;
+_itemTypes setVariable ["AssaultRifle", 0];
+_itemTypes setVariable ["Shotgun", 0];
+_itemTypes setVariable ["Rifle", 0];
+_itemTypes setVariable ["SubmachineGun", 0];
+_itemTypes setVariable ["MachineGun", 1];
+_itemTypes setVariable ["SniperRifle", 2];
+_itemTypes setVariable ["Launcher", 3];
+_itemTypes setVariable ["MissileLauncher", 3];
+_itemTypes setVariable ["RocketLauncher", 3];
+_itemTypes setVariable ["Handgun", 4];
+_itemTypes setVariable ["UnknownWeapon", 5];
+_itemTypes setVariable ["AccessoryMuzzle", 6];
+_itemTypes setVariable ["AccessoryPointer", 6];
+_itemTypes setVariable ["AccessorySights", 6];
+_itemTypes setVariable ["AccessoryBipod", 6];
+_itemTypes setVariable ["Uniform", 7];
+_itemTypes setVariable ["Vest", 8];
+_itemTypes setVariable ["Backpack", 9];
+_itemTypes setVariable ["Headgear", 10];
+_itemTypes setVariable ["Glasses", 10];
+_itemTypes setVariable ["Binocular", 11];
+_itemTypes setVariable ["Compass", 11];
+_itemTypes setVariable ["FirstAidKit", 11];
+_itemTypes setVariable ["GPS", 11];
+_itemTypes setVariable ["LaserDesignator", 11];
+_itemTypes setVariable ["Map", 11];
+_itemTypes setVariable ["Medikit", 11];
+_itemTypes setVariable ["MineDetector", 11];
+_itemTypes setVariable ["NVGoggles", 11];
+_itemTypes setVariable ["Radio", 11];
+_itemTypes setVariable ["Toolkit", 11];
+_itemTypes setVariable ["Watch", 11];
+_itemTypes setVariable ["UAVTerminal", 11];
 
 //--- Weapons, Magazines and Items
 private _cfgPatches = configFile >> "CfgPatches";
@@ -79,7 +84,7 @@ private _magazines = [];
         private _item = toLower _x;
         (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
 
-        private _index = _types param [_itemTypes find _itemType, -1];
+        private _index = _itemTypes getVariable [_itemType, -1];
         if (_index >= 0 && {_itemCategory != "VehicleWeapon"}) then {
             private _weaponConfig = _cfgWeapons >> _item;
             private _isPublic = getNumber (_weaponConfig >> "scope") == 2;
@@ -158,7 +163,7 @@ private _magazines = [];
         if (getNumber (_weaponConfig >> "isBackpack") == 1 && {getNumber (_weaponConfig >> "scope") == 2}) then {
             private _itemType = _item call BIS_fnc_itemType select 1;
 
-            private _index = _types param [_itemTypes find _itemType, -1];
+            private _index = _itemTypes getVariable [_itemType, -1];
             if (_index >= 0) then {
                 private _displayName = getText (_weaponConfig >> "displayName");
 
