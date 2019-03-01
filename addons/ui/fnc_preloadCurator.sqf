@@ -73,6 +73,7 @@ private _cfgWeapons = configFile >> "CfgWeapons";
 private _cfgMagazines = configFile >> "CfgMagazines";
 
 private _magazines = [];
+private _magazinesLists = [];
 
 {
     private _patchConfig = _cfgPatches >> _x;
@@ -132,7 +133,7 @@ private _magazines = [];
                     {
                         private _item = toLower _x;
 
-                        if ({_x select 0 == _item} count _listItem == 0) then {
+                        if (_magazinesLists pushBackUnique [_item, _listItem] != -1) then {
                             private _magazineConfig = _cfgMagazines >> _item;
 
                             if (getNumber (_magazineConfig >> "scope") == 2) then {
@@ -160,7 +161,14 @@ private _magazines = [];
         private _item = toLower _x;
         private _weaponConfig = _cfgVehicles >> _item;
 
+// In case you are executing the unit test with addons loaded, should an addon
+// use the same classname in CfgVehicles and CfgWeapons this isBackpack
+// optimization prevents the item from added by twice.
+#ifdef DEBUG_MODE_FULL
+        if (getNumber (_weaponConfig >> "scope") == 2) then {
+#else
         if (getNumber (_weaponConfig >> "isBackpack") == 1 && {getNumber (_weaponConfig >> "scope") == 2}) then {
+#endif
             private _itemType = _item call BIS_fnc_itemType select 1;
 
             private _index = _itemTypes getVariable [_itemType, -1];
