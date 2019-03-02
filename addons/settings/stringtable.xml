@@ -366,11 +366,10 @@
             <Russian>Показать настройки по умолчанию:</Russian>
             <Chinese>顯示預設值:</Chinese>
             <Chinesesimp>显示预设值:</Chinesesimp>
-            <Japanese>標準の変数を表示:</Japanese>
+            <Japanese>標準値を表示:</Japanese>
             <French>Afficher les valeurs par défaut :</French>
             <Polish>Pokaż domyślnę wartości:</Polish>
             <Turkish>Varsayılan değerleri göster:</Turkish>
-            <Japanese>標準値を表示:</Japanese>
         </Key>
     </Package>
 </Project>
