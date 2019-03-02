@@ -19,9 +19,6 @@ class CfgFunctions {
             class flexiMenu_keyUp {
                 file = QUOTE(PATHTOF(flexiMenu\fnc_keyUp.sqf));
             };
-            class menu {
-                file = QUOTE(PATHTOF(flexiMenu\fnc_menu.sqf));
-            };
             class flexiMenu_menu {
                 file = QUOTE(PATHTOF(flexiMenu\fnc_menu.sqf));
             };
