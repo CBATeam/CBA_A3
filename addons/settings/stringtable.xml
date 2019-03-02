@@ -17,7 +17,7 @@
             <English>Configure Addons</English>
             <German>Modifikationen anpassen</German>
             <Polish>Konfiguracja addonów</Polish>
-            <Japanese>アドオン設定</Japanese>
+            <Japanese>アドオンの設定</Japanese>
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
             <Portuguese>Configurar as Extensões</Portuguese>
@@ -55,6 +55,7 @@
             <French>Adjust addon settings.</French>
             <Polish>Zmień ustawienia addonów.</Polish>
             <Turkish>Eklenti ayarlarını değiştir.</Turkish>
+            <Japanese>アドオンの設定を調整します。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -251,7 +252,7 @@
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
             <German>Clients\nüberschreiben</German>
-            <Japanese>クライアント側から\n上書き</Japanese>
+            <Japanese>ｸﾗｲｱﾝﾄ側で\n上書き</Japanese>
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Portuguese>Sobrescrever \nClientes</Portuguese>
@@ -263,7 +264,7 @@
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <German>Mission\nüberschreiben</German>
-            <Japanese>ミッション側から\n上書き</Japanese>
+            <Japanese>ﾐｯｼｮﾝ側で\n上書き</Japanese>
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Portuguese>Sobrescrever \nMissão</Portuguese>
@@ -275,7 +276,7 @@
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <German>Server\nüberschreiben</German>
-            <Japanese>サーバー側から\n上書き</Japanese>
+            <Japanese>ｻｰﾊﾞｰ側で\n上書き</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n伺服器</Chinesesimp>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
@@ -290,6 +291,7 @@
             <French>Ce paramètre s'applique.</French>
             <Polish>To ustawienie dotyczy.</Polish>
             <Turkish>Bu ayar geçerli.</Turkish>
+            <Japanese>設定を適用します。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
@@ -297,6 +299,7 @@
             <French>Ce paramètre s'applique après le prochain redémarrage de la mission.</French>
             <Polish>To ustawienie zostanie zastosowanie po restarcie misji.</Polish>
             <Turkish>Bu ayar oyun baştan başladıktan sonra geçerli olur.</Turkish>
+            <Japanese>この設定は次のミッション開始後に適用されます。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -367,6 +370,7 @@
             <French>Afficher les valeurs par défaut :</French>
             <Polish>Pokaż domyślnę wartości:</Polish>
             <Turkish>Varsayılan değerleri göster:</Turkish>
+            <Japanese>標準値を表示:</Japanese>
         </Key>
     </Package>
 </Project>
