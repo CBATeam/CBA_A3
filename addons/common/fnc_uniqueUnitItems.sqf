@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_uniqueUnitItems
 
@@ -10,6 +11,7 @@ Parameters:
     _backpack       - Include items in backpack (Default: true)
     _vest           - Include items in vest     (Default: true)
     _uniform        - Include items in uniform  (Default: true)
+    _assignedItems  - Include assigned items    (Default: true)
 
 Example:
     (begin example)
@@ -22,15 +24,14 @@ Returns:
 Author:
     Dedmen
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(uniqueUnitItems);
 
-params [["_unit", objNull, [objNull]], ["_weaponItems", true, [true]], ["_backpack", true, [true]], ["_vest", true, [true]], ["_uniform", true, [true]]];
+params [["_unit", objNull, [objNull]], ["_weaponItems", false, [true]], ["_backpack", true, [true]], ["_vest", true, [true]], ["_uniform", true, [true]], ["_assignedItems", true, [true]]];
 
-private _allItems = (assignedItems _unit);
-if (_uniform) then {_allItems append ((getItemCargo (uniformContainer _unit)) select 0);};
-if (_vest) then {_allItems append ((getItemCargo (vestContainer _unit)) select 0);};
-if (_backpack) then {_allItems append ((getItemCargo (backpackContainer _unit)) select 0);};
+private _allItems = if (_assignedItems) then {assignedItems _unit} else {[]};
+if (_uniform) then {_allItems append ((getItemCargo (uniformContainer _unit)) select 0)};
+if (_vest) then {_allItems append ((getItemCargo (vestContainer _unit)) select 0)};
+if (_backpack) then {_allItems append ((getItemCargo (backpackContainer _unit)) select 0)};
 
 if (_weaponItems) then {
     _allItems append (primaryWeaponItems _unit);

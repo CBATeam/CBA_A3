@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_findMusic
 
@@ -20,7 +21,6 @@ Example:
 Author:
     Fishy, Dedmen, Dorbedo
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_searchType", "any", ["", []]], ["_searchTags", "any", ["", []]], ["_searchTracks", ([] call CBA_fnc_compileMusic), [[]]]];
 

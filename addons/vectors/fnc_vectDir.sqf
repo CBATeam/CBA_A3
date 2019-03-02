@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectDir
 
@@ -18,9 +19,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectDir.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectDir);
 
 

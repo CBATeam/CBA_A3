@@ -1,13 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Settings">
         <Key ID="STR_cba_settings_Component">
-            <English>Community Base Addons - Settings Component</English>
+            <English>Community Base Addons - Settings</English>
+            <German>Community Base Addons - Einstellungen</German>
             <Japanese>Community Base Addons - 設定要素</Japanese>
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
             <Portuguese>Extensões de Base Comunitária - Componente das Configurações</Portuguese>
             <Russian>Community Base Addons - Компонент Настроек</Russian>
+            <Polish>Community Base Addons - Komponent Ustawień</Polish>
+            <French>Community Base Addons - Configurations des composants</French>
+            <Turkish>Community Base Addons - Ayarlar</Turkish>
         </Key>
         <Key ID="STR_cba_settings_configureAddons">
             <English>Configure Addons</English>
@@ -18,6 +22,8 @@
             <Chinesesimp>模组设定</Chinesesimp>
             <Portuguese>Configurar as Extensões</Portuguese>
             <Russian>Настроить Дополнения</Russian>
+            <French>Configurer les addons</French>
+            <Turkish>Eklenti Ayarları</Turkish>
         </Key>
         <Key ID="STR_cba_settings_configureBase">
             <English>Configure Base</English>
@@ -28,6 +34,8 @@
             <Chinesesimp>基础设定</Chinesesimp>
             <Portuguese>Configurar as Bases</Portuguese>
             <Russian>Основные Настройки</Russian>
+            <French>Configurer la base</French>
+            <Turkish>Oyun Ayarları</Turkish>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -37,6 +45,16 @@
             <Chinesesimp>模组设定选项</Chinesesimp>
             <Portuguese>Opções de Extensão</Portuguese>
             <Russian>Настройки Дополнений</Russian>
+            <French>Options des addons</French>
+            <Polish>Ustawienia addonów</Polish>
+            <Turkish>Eklenti Ayarları</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_menu_button_tooltip">
+            <English>Adjust addon settings.</English>
+            <German>Addon-Einstellungen anpassen.</German>
+            <French>Adjust addon settings.</French>
+            <Polish>Zmień ustawienia addonów.</Polish>
+            <Turkish>Eklenti ayarlarını değiştir.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -46,6 +64,9 @@
             <Chinesesimp>模组设定选项...</Chinesesimp>
             <Portuguese>Opções ded Extensão...</Portuguese>
             <Russian>Настройки Дополнений...</Russian>
+            <French>Ajuster les paramètres des addons...</French>
+            <Polish>Ustawienia addonów...</Polish>
+            <Turkish>Eklenti Ayarları...</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -55,15 +76,21 @@
             <Chinesesimp>伺服器</Chinesesimp>
             <Portuguese>Servidor</Portuguese>
             <Russian>Сервер</Russian>
+            <French>Serveur</French>
+            <Polish>Serwer</Polish>
+            <Turkish>Sunucu</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
-            <English>Look at the servers settings. Log in as admin to change.</English>
+            <English>Look at the server's settings. Log in as admin to change.</English>
             <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
             <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
             <Russian>Смотреть настройки сервера. Войдите под администратором, чтобы менять.</Russian>
+            <French>Regarder les paramètres des serveurs. Connectez-vous en tant qu'administrateur pour les changer.</French>
+            <Polish>Zobacz ustawienia serwera. Zaloguj się jako administrator aby zmienić.</Polish>
+            <Turkish>Sunucu ayarlarına bak. Değiştirmek için admin olarak giriş yapın.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -73,24 +100,33 @@
             <Chinesesimp>任务</Chinesesimp>
             <Portuguese>Missão</Portuguese>
             <Russian>Миссия</Russian>
+            <Polish>Misja</Polish>
+            <French>Mission</French>
+            <Turkish>Görev</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip">
-            <English>Look at the missions settings.</English>
+            <English>Look at the mission's settings.</English>
             <German>Missionseinstellungen ansehen.</German>
             <Japanese>ミッションの設定を確認します。</Japanese>
             <Chinese>查看任務的設定。</Chinese>
             <Chinesesimp>查看任务的设定。</Chinesesimp>
             <Portuguese>Olhe as configurações de missão.</Portuguese>
             <Russian>Смотреть настройки миссии.</Russian>
+            <French>Regarder les paramètres des missions.</French>
+            <Polish>Zobacz ustawienia misji.</Polish>
+            <Turkish>Görev'in ayarlarına bak.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
-            <English>Edit the missions settings.</English>
+            <English>Edit the mission's settings.</English>
             <German>Missionseinstellungen bearbeiten.</German>
             <Japanese>ミッションの設定を編集します。</Japanese>
             <Chinese>編輯任務的設定。</Chinese>
             <Chinesesimp>编辑任务的设定。</Chinesesimp>
             <Portuguese>Edite as configurações de missões.</Portuguese>
             <Russian>Редактировать настройки миссии.</Russian>
+            <French>Editer les paramètres des missions.</French>
+            <Polish>Edytuj ustawienia misji.</Polish>
+            <Turkish>Görev'in ayarlarını değiştir.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient">
             <English>Client</English>
@@ -100,6 +136,9 @@
             <Chinesesimp>客户端</Chinesesimp>
             <Portuguese>Cliente</Portuguese>
             <Russian>Клиент</Russian>
+            <Polish>Klient</Polish>
+            <French>Client</French>
+            <Turkish>Oyuncu</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient_tooltip">
             <English>Edit your local settings.</English>
@@ -109,6 +148,9 @@
             <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
             <Portuguese>Edite as configurações locais.</Portuguese>
             <Russian>Изменить локальные настройки.</Russian>
+            <French>Modifier vos paramètres locaux</French>
+            <Polish>Edytuj swoje lokalne ustawienia.</Polish>
+            <Turkish>Yerel ayarlarınızı değiştirin.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonLocal">
             <English>Local</English>
@@ -118,6 +160,9 @@
             <Chinesesimp>本地端</Chinesesimp>
             <Portuguese>Local</Portuguese>
             <Russian>Локальные настройки</Russian>
+            <Polish>Lokalne</Polish>
+            <French>Local</French>
+            <Turkish>Yerel</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonSave_tooltip">
             <English>Save current settings as preset.</English>
@@ -127,6 +172,9 @@
             <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
             <Portuguese>Salvar as configurações atuais como padrões.</Portuguese>
             <Russian>Сохранить текущие настройки как предустановки.</Russian>
+            <French>Enregistrer les paramètres actuels comme préréglage.</French>
+            <Polish>Zapisz obecne ustawienia do szablonu.</Polish>
+            <Turkish>Şuanki ayaları şablon olarak kaydet.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonLoad_tooltip">
             <English>Load settings from preset.</English>
@@ -136,6 +184,9 @@
             <Chinesesimp>载入预设的设定。</Chinesesimp>
             <Portuguese>Carregue as configurações padrão.</Portuguese>
             <Russian>Загрузить настройки из предустановок.</Russian>
+            <French>Charger les paramètres du préréglage.</French>
+            <Polish>Załaduj ustawienia z szablonu.</Polish>
+            <Turkish>Şablondan ayarları yükle.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport">
             <English>Import</English>
@@ -145,6 +196,9 @@
             <Chinesesimp>汇入</Chinesesimp>
             <Portuguese>Importar</Portuguese>
             <Russian>Импорт</Russian>
+            <French>Importer</French>
+            <Polish>Import</Polish>
+            <Turkish>Import</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport_tooltip">
             <English>Import settings from clipboard.</English>
@@ -154,6 +208,9 @@
             <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
             <Portuguese>Importar configurações da prancheta.</Portuguese>
             <Russian>Импортировать настройки из буфера обмена.</Russian>
+            <French>Importer les paramètres du presse-papiers</French>
+            <Polish>Import ustawień ze schowka.</Polish>
+            <Turkish>Ayarları panodan çek.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -163,6 +220,9 @@
             <Chinesesimp>汇出</Chinesesimp>
             <Portuguese>Exportar</Portuguese>
             <Russian>Экспорт</Russian>
+            <French>Exporter</French>
+            <Polish>Eksport</Polish>
+            <Turkish>Export</Turkish>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport_tooltip">
             <English>Export settings to clipboard.</English>
@@ -172,6 +232,9 @@
             <Chinesesimp>汇出设定到剪贴簿。</Chinesesimp>
             <Portuguese>Exportar configurações para a prancheta.</Portuguese>
             <Russian>Экспортировать настройки в буфер обмена.</Russian>
+            <French>Exporter les paramètres dans le presse-papiers</French>
+            <Polish>Eksport ustawień do schowka.</Polish>
+            <Turkish>Ayarları panoya kopyala.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
@@ -181,33 +244,59 @@
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Portuguese>Resetar para os valores padrões.</Portuguese>
             <Russian>Сбросить на значение по умолчанию.</Russian>
+            <French>Réinitialiser à la valeur par défaut.</French>
+            <Polish>Przywróć domyślne wartości.</Polish>
+            <Turkish>Varsayılan ayarlara geri dön.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
             <German>Clients\nüberschreiben</German>
-            <Japanese>上書き\nクライアント</Japanese>
+            <Japanese>クライアント側から\n上書き</Japanese>
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Portuguese>Sobrescrever \nClientes</Portuguese>
             <Russian>Перезапись\nКлиент</Russian>
+            <French>Ecraser\nClients</French>
+            <Polish>Nadpisz\nKlienci</Polish>
+            <Turkish>Oyunculara\nAyar Zorla</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <German>Mission\nüberschreiben</German>
-            <Japanese>上書き\nミッション</Japanese>
+            <Japanese>ミッション側から\n上書き</Japanese>
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Portuguese>Sobrescrever \nMissão</Portuguese>
             <Russian>Перезапись\nМиссия</Russian>
+            <French>Ecraser\nMission</French>
+            <Polish>Nadpisz\nMisja</Polish>
+            <Turkish>Göreve\nAyar Zorla</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <German>Server\nüberschreiben</German>
-            <Japanese>上書き\nサポート</Japanese>
+            <Japanese>サーバー側から\n上書き</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n伺服器</Chinesesimp>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
             <Russian>Перезапись\nСервер</Russian>
+            <French>Ecraser\nServeur</French>
+            <Polish>Nadpisz\nSerwer</Polish>
+            <Turkish>Sunucuya\nAyar Zorla</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_applies">
+            <English>This setting applies.</English>
+            <German>Diese Einstellung gilt.</German>
+            <French>Ce paramètre s'applique.</French>
+            <Polish>To ustawienie dotyczy.</Polish>
+            <Turkish>Bu ayar geçerli.</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_need_restart">
+            <English>This setting applies after the next mission restart.</English>
+            <German>Diese Einstellung gilt nach dem nächsten Neustart der Mission.</German>
+            <French>Ce paramètre s'applique après le prochain redémarrage de la mission.</French>
+            <Polish>To ustawienie zostanie zastosowanie po restarcie misji.</Polish>
+            <Turkish>Bu ayar oyun baştan başladıktan sonra geçerli olur.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -217,6 +306,9 @@
             <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes.</Portuguese>
             <Russian>Этот параметр перезаписан клиентом.</Russian>
+            <Polish>Ta wartość została nadpisana przez klientów.</Polish>
+            <French>Ce paramètre est écrasé par les clients.</French>
+            <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
@@ -226,6 +318,9 @@
             <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pela missão.</Portuguese>
             <Russian>Этот параметр перезаписан миссией.</Russian>
+            <Polish>Ta wartośc została nadpisana przez misję.</Polish>
+            <French>Ce paramètre est écrasé par la mission.</French>
+            <Turkish>Görev tarafından bu ayarın üstüne yazılmış.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
@@ -235,6 +330,9 @@
             <Chinesesimp>此项设定被伺服器给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelo servidor.</Portuguese>
             <Russian>Этот параметр перезаписан сервером.</Russian>
+            <Polish>Ta wartość została nadpisana przez serwer.</Polish>
+            <French>Ce paramètre est écrasé par le serveur.</French>
+            <Turkish>Sunucu tarafından bu ayarın üstüne yazılmış.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
             <English>This setting is overwritten by the clients and only applies to the server.</English>
@@ -244,6 +342,9 @@
             <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
             <Russian>Этот параметр перезаписан клиентом и применяется исключительно к серверу.</Russian>
+            <Polish>Ta wartość zostałą nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
+            <French>Ce paramètre est écrasé par les clients et s'applique seulement au serveur.</French>
+            <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış, ayar sadece sunucuda geçerli.</Turkish>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
@@ -251,6 +352,10 @@
             <Russian>Скопировать в буфер обмена</Russian>
             <Chinese>複製到剪貼簿</Chinese>
             <Chinesesimp>复制到剪贴簿</Chinesesimp>
+            <Japanese>クリップボードへコピー</Japanese>
+            <French>Copier dans le presse-papier</French>
+            <Polish>Skopiuj do schowka</Polish>
+            <Turkish>Panoya kopyala</Turkish>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
@@ -258,6 +363,10 @@
             <Russian>Показать настройки по умолчанию:</Russian>
             <Chinese>顯示預設值:</Chinese>
             <Chinesesimp>显示预设值:</Chinesesimp>
+            <Japanese>標準の変数を表示:</Japanese>
+            <French>Afficher les valeurs par défaut :</French>
+            <Polish>Pokaż domyślnę wartości:</Polish>
+            <Turkish>Varsayılan değerleri göster:</Turkish>
         </Key>
     </Package>
 </Project>

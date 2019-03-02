@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_execNextFrame
 
@@ -19,7 +20,6 @@ Examples:
 Author:
     esteldunedain and PabstMirror, donated from ACE3
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_function", {}, [{}]], ["_args", []]];
 

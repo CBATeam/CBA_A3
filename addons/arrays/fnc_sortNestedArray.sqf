@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_sortNestedArray
 
@@ -23,7 +24,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(sortNestedArray);
 
 params [["_array", [], [[]]], ["_index", 0, [0]], ["_order", true, [false]]];

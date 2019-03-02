@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vect2Polar
 
@@ -19,9 +20,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vect2Polar.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vect2Polar);
 
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getNonPresetClass
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     Jonpas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getNonPresetClass);
 
 params [["_class", "", [""]], ["_rootConfig", "CfgWeapons", [""]]];

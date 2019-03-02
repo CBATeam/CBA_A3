@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_dropWeapon
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     ?, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(dropWeapon);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]]];

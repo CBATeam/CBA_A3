@@ -27,3 +27,10 @@ if (_file != "") then {
 };
 
 uiNamespace setVariable [QGVAR(userconfig), compileFinal str _userconfig];
+
+private _ctrlAddonOptions = _display displayCtrl IDC_MAIN_ADDONOPTIONS;
+
+if (isNil QUOTE(ADDON)) then {
+    _ctrlAddonOptions ctrlEnable false;
+    _ctrlAddonOptions ctrlSetTooltip LELSTRING(common,need_mission_start);
+};

@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (isServer) exitWith {};
+
 SLX_XEH_STR spawn {
     waitUntil {!(isNil QGVAR(versions_serv))};
     if (!SLX_XEH_DisableLogging) then {

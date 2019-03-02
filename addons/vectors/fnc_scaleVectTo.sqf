@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_scaleVectTo
 
@@ -21,9 +22,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_scaleVectTo.sqf";
 
-#include "script_component.hpp"
 SCRIPT(scaleVectTo);
 
 params ["_vect", "_newMagn"];

@@ -27,12 +27,10 @@ SCRIPT(formatElapsedTime);
 
 params ["_seconds", ["_format", "H:MM:SS"]];
 
-private ["_minutes", "_hours", "_secondsDecimals"];
-
 // Discover all the digits to use.
-_hours = floor (_seconds / 3600);
+private _hours = floor (_seconds / 3600);
 _seconds = _seconds - (_hours * 3600);
-_minutes = floor (_seconds / 60);
+private _minutes = floor (_seconds / 60);
 _seconds = _seconds - (_minutes * 60);
 
 // Add the milliseconds if required.

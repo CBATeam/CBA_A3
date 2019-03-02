@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_ownerEvent
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(ownerEvent);
 
 params [["_eventName", "", [""]], ["_params", []], ["_targetOwner", -1, [0]]];

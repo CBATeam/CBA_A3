@@ -1,12 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="AI">
         <Key ID="STR_CBA_AI_Component">
             <English>Community Base Addons - Artificial Intelligence</English>
+            <German>Community Base Addons - Künstliche Intelligenz</German>
             <Japanese>Community Base Addons - 人工知能</Japanese>
             <Chinese>社群基礎模組 - 人工智能</Chinese>
             <Chinesesimp>社群基础模组 - 人工智能</Chinesesimp>
             <Russian>Community Base Addons - Искуственный Интеллект</Russian>
+            <French>Community Base Addons - Intelligence artificielle</French>
+            <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
+            <Turkish>Community Base Addons - Yapay Zeka</Turkish>
         </Key>
     </Package>
 </Project>

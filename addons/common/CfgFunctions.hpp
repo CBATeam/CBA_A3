@@ -27,6 +27,8 @@ class CfgFunctions {
             PATHTO_FNC(getMagazineIndex);
             PATHTO_FNC(currentMagazineIndex);
             PATHTO_FNC(setCallsign);
+            PATHTO_FNC(getActiveFeatureCamera);
+            PATHTO_FNC(registerFeatureCamera);
         };
 
         class Soldiers {
@@ -62,6 +64,7 @@ class CfgFunctions {
             PATHTO_FNC(addWeapon);
             PATHTO_FNC(addMagazine);
             PATHTO_FNC(addItem);
+            PATHTO_FNC(compatibleMagazines);
             PATHTO_FNC(removeWeapon);
             PATHTO_FNC(removeMagazine);
             PATHTO_FNC(removeItem);
@@ -124,12 +127,6 @@ class CfgFunctions {
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
-        };
-
-        class Ui {
-            PATHTO_FNC(getFov);
-            PATHTO_FNC(getAspectRatio);
-            PATHTO_FNC(getUISize);
         };
 
         class Broken {

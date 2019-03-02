@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_serializeNamespace
 
@@ -6,6 +7,7 @@ Description:
 
 Parameters:
     _namespace - a namespace <LOCATION, OBJECT>
+    _defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
 
 Returns:
     _hash - a hash <ARRAY>
@@ -19,12 +21,11 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(serializeNamespace);
 
-params [["_namespace", locationNull, [locationNull, objNull]]];
+params [["_namespace", locationNull, [locationNull, objNull]], "_defaultValue"];
 
-private _hash = [] call CBA_fnc_hashCreate;
+private _hash = [[], RETNIL(_defaultValue)] call CBA_fnc_hashCreate;
 
 {
     [_hash, _x, _namespace getVariable _x] call CBA_fnc_hashSet;

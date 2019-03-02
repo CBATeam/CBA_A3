@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+#include "script_hashes.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_hashFilter
 
@@ -31,9 +33,6 @@ Example:
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-//#define DEBUG_MODE_FULL
-#include "script_component.hpp"
-#include "script_hashes.hpp"
 
 SCRIPT(hashFilter);
 

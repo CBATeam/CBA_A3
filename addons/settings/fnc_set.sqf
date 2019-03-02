@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_set
 
@@ -22,7 +23,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // prevent race conditions. function could be called from scheduled env.
 if (canSuspend) exitWith {
@@ -132,7 +132,7 @@ switch (toLower _source) do {
 
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
-            if (IS_ADMIN_LOGGED) then {
+            if ([] call FUNC(whitelisted)) then {
                 [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
             } else {
                 WARNING_1("Source is server, but no admin access. Setting: %1",_setting);

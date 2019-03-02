@@ -7,6 +7,8 @@ private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
 
 _ctrlSlider sliderSetRange [_min, _max];
 _ctrlSlider sliderSetPosition _currentValue;
+private _range = _max - _min;
+_ctrlSlider sliderSetSpeed [0.05 * _range, 0.1 * _range];
 
 _ctrlSlider setVariable [QGVAR(params), [_setting, _source, _trailingDecimals]];
 _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {

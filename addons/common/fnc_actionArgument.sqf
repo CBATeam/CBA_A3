@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_actionArgument
 
@@ -16,7 +17,6 @@ Examples:
 Author:
     Rommel
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(actionArgument);
 
 params ["_target", "_caller", "_id", "_arguments"];

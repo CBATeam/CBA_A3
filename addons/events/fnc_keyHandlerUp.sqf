@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_keyHandlerUp
 
@@ -7,8 +8,6 @@ Description:
 Author:
     Sickboy, commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
-#include "script_component.hpp"
 SCRIPT(keyHandlerUp);
 
 params ["", "_inputKey"];

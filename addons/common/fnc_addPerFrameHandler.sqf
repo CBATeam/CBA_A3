@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addPerFrameHandler
 
@@ -25,7 +26,6 @@ Examples:
 Author:
     Nou & Jaynus, donated from ACRE project code for use by the community; commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params [["_function", {}, [{}]], ["_delay", 0, [0]], ["_args", []]];
 
@@ -35,7 +35,7 @@ if (isNil QGVAR(PFHhandles)) then {
     GVAR(PFHhandles) = [];
 };
 
-if (count GVAR(PFHhandles) >= 999999) exitWith {
+if (count GVAR(PFHhandles) >= 9999999) exitWith {
     WARNING("Maximum amount of per frame handlers reached!");
     diag_log _function;
     -1

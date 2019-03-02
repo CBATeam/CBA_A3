@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_events_fnc_mouseWheelHandler
 
@@ -7,8 +8,6 @@ Description:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-// #define DEBUG_MODE_FULL
-#include "script_component.hpp"
 SCRIPT(mouseWheelHandler);
 
 params ["_display", "_inputDirection"];

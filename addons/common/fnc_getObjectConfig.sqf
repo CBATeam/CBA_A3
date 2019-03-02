@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getObjectConfig
 
@@ -20,7 +21,6 @@ Example:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(getObjectConfig);
 
 params [["_object", "", ["", objNull]]];

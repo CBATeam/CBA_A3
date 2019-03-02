@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_compatibleItems
 
@@ -20,7 +21,6 @@ Examples:
 Author:
     Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(compatibleItems);
 
 params [["_weapon", "", [""]], ["_typefilter", nil, ["", 0]]];

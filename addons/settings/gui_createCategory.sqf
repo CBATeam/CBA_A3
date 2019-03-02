@@ -26,6 +26,9 @@ private _categorySettings = [];
 {
     (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
     if (_category == _selectedAddon) then {
+        if (isLocalized _subCategory) then {
+            _subCategory = localize _subCategory;
+        };
         _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
     };
 } forEach GVAR(allSettings);
@@ -65,13 +68,19 @@ private _lastSubCategory = "$START";
         private _source = toLower _x;
 
         private _currentValue = GET_TEMP_NAMESPACE_VALUE(_setting,_source);
+        private _wasEdited = false;
+
         if (isNil "_currentValue") then {
             _currentValue = [_setting, _source] call FUNC(get);
+        } else {
+            _wasEdited = true;
         };
 
         private _currentPriority = GET_TEMP_NAMESPACE_PRIORITY(_setting,_source);
         if (isNil "_currentPriority") then {
             _currentPriority = [_setting, _source] call FUNC(priority);
+        } else {
+            _wasEdited = true;
         };
 
         // ----- create or retrieve options "list" controls group
@@ -90,13 +99,14 @@ private _lastSubCategory = "$START";
             _ctrlOptionsGroup = _display getVariable _list;
         };
 
-        // Add sub-category header:
+        // Add sub-category header
         if (_createHeader) then {
-            private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
-            (_header controlsGroupCtrl IDC_SETTING_NAME) ctrlSetText format ["%1:", _subCategory];
+            private _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
+            private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
+            _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
 
             private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
-            _tablePosY = [_header, _tablePosY] call _fnc_controlSetTablePosY;
+            _tablePosY = [_ctrlHeaderGroup, _tablePosY] call _fnc_controlSetTablePosY;
             _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
         };
 
@@ -116,6 +126,9 @@ private _lastSubCategory = "$START";
             };
             case "COLOR": {
                 _display ctrlCreate [[QGVAR(Row_Color), QGVAR(Row_ColorAlpha)] select (count _defaultValue > 3), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
+            };
+            case "TIME": {
+                _display ctrlCreate [QGVAR(Row_Time), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
             };
             default {controlNull};
         };
@@ -142,6 +155,11 @@ private _lastSubCategory = "$START";
         private _ctrlSettingName = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_NAME;
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
+
+        // change color if setting was edited
+        if (_wasEdited) then {
+            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+        };
 
         // ----- execute setting script
         private _script = getText (configFile >> ctrlClassName _ctrlSettingGroup >> QGVAR(script));

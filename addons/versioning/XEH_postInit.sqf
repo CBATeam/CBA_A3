@@ -6,9 +6,8 @@ SCRIPT(XEH_postInit);
 */
 
 if (!SLX_XEH_DisableLogging) then {
-    private ["_logMsg", "_filter"];
-    _logMsg = "CBA_VERSIONING: ";
-    _filter = {if (_x isEqualType 1) then {[_x] call CBA_fnc_formatNumber} else {_x}};
+    private _logMsg = "CBA_VERSIONING: ";
+    private _filter = {if (_x isEqualType 1) then {[_x] call CBA_fnc_formatNumber} else {_x}};
     [GVAR(versions), { _logMsg = (_logMsg + format["%1=%2, ", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."])}] call CBA_fnc_hashEachPair;
 
     diag_log [diag_frameNo, diag_tickTime, time, _logMsg];
@@ -16,16 +15,15 @@ if (!SLX_XEH_DisableLogging) then {
 
 // Dependency check and warn
 [GVAR(dependencies), {
-    private ["_mod", "_dependencyInfo", "_class", "_f","_dependencyIsPresent"];
-    _f = {
+     private _f = {
         diag_log text _this;
         sleep 1;
         CBA_logic globalChat _this;
     };
     {
-        _mod = _x select 0;
-        _dependencyInfo = _x select 1;
-        _class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
+        private _mod = _x select 0;
+        private _dependencyInfo = _x select 1;
+        private _class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
         private _dependencyIsPresent = call compile format ["%1", (_dependencyInfo select 2)];
         if ((isNil "_dependencyIsPresent") || {!(_dependencyIsPresent isEqualType false)}) then {
             //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" durring binarization

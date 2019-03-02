@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_addPlayerEventHandler
 
@@ -5,20 +6,21 @@ Description:
     Adds a player event handler.
 
     Possible events:
-        "unit"       - player controlled unit changed
-        "weapon"     - currently selected weapon change
-        "loadout"    - players loadout changed
-        "vehicle"    - players current vehicle changed
-        "turret"     - position in vehicle changed
-        "visionMode" - player changed to normal/night/thermal view
-        "cameraView" - camera mode changed ("Internal", "External", "Gunner" etc.)
-        "visibleMap" - opened or closed map
-        "group"      - player group changes
-        "leader"     - leader of player changes
+        "unit"          - player controlled unit changed
+        "weapon"        - currently selected weapon change
+        "loadout"       - players loadout changed
+        "vehicle"       - players current vehicle changed
+        "turret"        - position in vehicle changed
+        "visionMode"    - player changed to normal/night/thermal view
+        "cameraView"    - camera mode changed ("Internal", "External", "Gunner" etc.)
+        "featureCamera" - camera changed (Curator, Arsenal, Spectator etc.)
+        "visibleMap"    - opened or closed map
+        "group"         - player group changes
+        "leader"        - leader of player changes
 
 Parameters:
-    _type      - Event handler type. <STRING>
-    _function  - Function to add to event. <CODE>
+    _type               - Event handler type. <STRING>
+    _function           - Function to add to event. <CODE>
     _applyRetroactively - Call function immediately if player is defined already (optional, default: false) <BOOL>
 
 Returns:
@@ -32,7 +34,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(addPlayerEventHandler);
 
 if (!hasInterface) exitWith {-1};
@@ -84,6 +85,12 @@ private _id = switch (_type) do {
         };
         [QGVAR(cameraViewEvent), _function] call CBA_fnc_addEventHandler // return id
     };
+    case "featurecamera": {
+        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+            [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera] call _function;
+        };
+        [QGVAR(featureCameraEvent), _function] call CBA_fnc_addEventHandler // return id
+    };
     case "visiblemap": {
         if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
             [GVAR(oldUnit), visibleMap] call _function;
@@ -120,14 +127,18 @@ if (_id != -1) then {
         GVAR(oldTurret) = [];
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
+        GVAR(oldFeatureCamera) = "";
         GVAR(oldVisibleMap) = false;
+        GVAR(oldUAVControl) = [];
+        GVAR(controlledEntity) = objNull;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
-            private _player = call CBA_fnc_currentUnit;
+            private _player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
+                GVAR(oldUAVControl) = []; // force update
             };
 
             private _data = group _player;
@@ -181,7 +192,24 @@ if (_id != -1) then {
                 [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
             };
 
-            _data = currentVisionMode _player;
+            // handle controlling UAV, UAV entity needed for visionMode
+            _data = UAVControl getConnectedUAV _player;
+            if !(_data isEqualTo GVAR(oldUAVControl)) then {
+                GVAR(oldUAVControl) = _data;
+
+                private _role = _data param [(_data find _player) + 1, ""];
+                if (_role isEqualTo "DRIVER") exitWith {
+                    GVAR(controlledEntity) = driver getConnectedUAV _player;
+                };
+
+                if (_role isEqualTo "GUNNER") exitWith {
+                    GVAR(controlledEntity) = gunner getConnectedUAV _player;
+                };
+
+                GVAR(controlledEntity) = _player;
+            };
+
+            _data = currentVisionMode GVAR(controlledEntity);
             if !(_data isEqualTo GVAR(oldVisionMode)) then {
                 GVAR(oldVisionMode) = _data;
                 [QGVAR(visionModeEvent), [_player, _data]] call CBA_fnc_localEvent;
@@ -214,6 +242,15 @@ if (_id != -1) then {
                 };
             } call CBA_fnc_directCall;
         };
+
+        GVAR(playerEHInfo) pushBack ([{
+            private _data = call CBA_fnc_getActiveFeatureCamera;
+            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
+                GVAR(oldFeatureCamera) = _data;
+                [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
+            };
+        }, 0.5] call CBA_fnc_addPerFrameHandler);
+
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_settings_fnc_init
 
@@ -12,6 +13,7 @@ Parameters:
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
     _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     _script      - Script to execute when setting is changed. (optional) <CODE>
+    _needRestart - Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 
 Returns:
     _return - Error code <NUMBER>
@@ -33,13 +35,15 @@ Examples:
         ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1, 0]] call cba_settings_fnc_init;
 
         // EDITBOX --- extra argument: default value
-        ["Test_Setting_5", "EDITBOX", ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
+        ["Test_Setting_5", "EDITBOX",  ["-test editbox-", "-tooltip-"], "My Category", "defaultValue"] call cba_settings_fnc_init;
+
+        // TIME PICKER (time in seconds) --- extra arguments: [_min, _max, _default]
+        ["Test_Setting_6", "TIME",     ["-test time-",    "-tooltip-"], "My Category", [0, 3600, 60]] call cba_settings_fnc_init;
     (end)
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // prevent race conditions. function could be called from scheduled env.
 if (canSuspend) exitWith {
@@ -56,7 +60,8 @@ params [
     ["_categoryArg", "", ["", []]],
     ["_valueInfo", []],
     ["_isGlobal", false, [false, 0]],
-    ["_script", {}, [{}]]
+    ["_script", {}, [{}]],
+    ["_needRestart", false, [false]]
 ];
 
 if (_setting isEqualTo "") exitWith {
@@ -134,7 +139,13 @@ switch (toUpper _settingType) do {
         _settingData append [_min, _max, _trailingDecimals];
     };
     case "COLOR": {
-        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3,4]];
+        _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3, 4]];
+    };
+    case "TIME": {
+        _valueInfo params [["_min", 0, [0]], ["_max", 86400, [0]], ["_default", 0, [0]]];
+
+        _defaultValue = _default;
+        _settingData append [_min, _max];
     };
     default {/* _defaultValue undefined, exit below */};
 };
@@ -203,6 +214,10 @@ if (isServer) then {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
 } else {
     [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+};
+
+if (_needRestart) then {
+    GVAR(needRestart) pushBackUnique toLower _setting;
 };
 
 0

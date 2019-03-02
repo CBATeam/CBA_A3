@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_parse
 
@@ -14,7 +15,6 @@ Returns:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 // parses bool, number, string
 private _fnc_parseAny = {
@@ -27,7 +27,7 @@ private _fnc_parseAny = {
         _string = _string splitString WHITESPACE joinString "";
     };
 
-    parseSimpleArray format ["[%1]", _string] select 0
+    parseSimpleArray (["[", _string, "]"] joinString "") select 0
 };
 
 params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];

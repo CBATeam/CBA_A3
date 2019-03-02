@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_diagnostic_fnc_projectileTracking_trackProjectile
 
@@ -22,12 +23,15 @@ Examples:
 Author:
     bux578
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 params ["_args", "_handle"];
 _args params ["_projectile", "_index", "_initialProjectileData"];
 
 if (!isNull _projectile) then {
+    private _speed = vectorMagnitude velocity _projectile;
+    if (_speed < 0.1) then { // If projectile is slowed down, stop tracking after this run
+        [_handle] call CBA_fnc_removePerFrameHandler;
+    };
 
     private _data = [];
     private _bulletData = [];
@@ -39,13 +43,9 @@ if (!isNull _projectile) then {
     } else {
         _bulletData = [_initialProjectileData];
         _data = [_handle, _bulletData];
+        GVAR(projectileData) set [_index, _data];
     };
-
-    _bulletData pushBack [(getPos _projectile), vectorMagnitude (velocity _projectile)];
-
-    _data set [1, _bulletData];
-
-    GVAR(projectileData) set [_index, _data];
+    _bulletData pushBack [(getPos _projectile), _speed];
 
 } else {
     [_handle] call CBA_fnc_removePerFrameHandler;

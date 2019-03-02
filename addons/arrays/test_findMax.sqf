@@ -41,7 +41,7 @@ TEST_OP(_result,isEqualTo,_expected,_fn);
 
 // Test unordered array with duplicate max values
 _result = [2, 15, 15, -3, -3] call CBA_fnc_findMax;
-_expected = [15, 1];
+_expected = [15, 2];
 TEST_OP(_result,isEqualTo,_expected,_fn);
 
 // Test invalid parameter array with bool

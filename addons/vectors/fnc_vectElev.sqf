@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectElev
 
@@ -18,11 +19,8 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectElev.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectElev);
-
 
 params ["_pos1", "_pos2"];
 

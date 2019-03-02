@@ -31,6 +31,9 @@ _ctrlOverwriteClient setVariable [QFUNC(event), {
     SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+
+    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
+    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
 }];
 
 _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
@@ -44,6 +47,9 @@ _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
             [_ctrlOverwriteClient, 1] call (_ctrlOverwriteClient getVariable QFUNC(event));
         };
     };
+
+    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
+    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
 }];
 
 _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
@@ -69,6 +75,9 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
     };
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
+
+    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
+    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
 }];
 
 // update overwrite checkboxes
@@ -104,30 +113,48 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
         private _ctrlLocked = _x controlsGroupCtrl IDC_SETTING_LOCKED;
 
         if (_source isEqualTo _priority) then {
-            _ctrlLocked ctrlSetText "";
-            _ctrlLocked ctrlSetTooltip "";
+            if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+                _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+                _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
+            } else {
+                _ctrlLocked ctrlSetText ICON_APPLIES;
+                _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                _ctrlLocked ctrlSetTooltip LLSTRING(applies);
+            };
         } else {
             switch [_source, _priority] do {
                 case ["client", "server"];
                 case ["mission", "server"]: {
-                    _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
+                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                    _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
                     _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_server_tooltip);
                 };
                 case ["client", "mission"];
                 case ["server", "mission"]: {
-                    _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
+                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                    _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
                     _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_mission_tooltip);
                 };
                 case ["mission", "client"]: {
-                    _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
+                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                    _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
                     _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip);
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
-                        _ctrlLocked ctrlSetText "";
-                        _ctrlLocked ctrlSetTooltip "";
+                        if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+                            _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+                            _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                            _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
+                        } else {
+                            _ctrlLocked ctrlSetText ICON_APPLIES;
+                            _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                            _ctrlLocked ctrlSetTooltip LLSTRING(applies);
+                        };
                     } else {
-                        _ctrlLocked ctrlSetText QPATHTOF(locked_ca.paa);
+                        _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                        _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
                         _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                     };
                 };

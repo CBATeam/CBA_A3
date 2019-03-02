@@ -20,16 +20,14 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-private ["_array", "_return", "_countA", "_var", "_countB"];
-
-_array =+ _this;
-_return = [];
-_countA = count _array;
+private _array = +_this;
+private _return = [];
+private _countA = count _array;
 
 while {_countA > 0} do {
-     _var = _array select 0;
+     private _var = _array select 0;
      _array = _array - [_var];
-     _countB = count _array;
+     private _countB = count _array;
      _return = _return + [_var, _countA - _countB];
      _countA = _countB;
 };

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_viewDir
 
@@ -23,7 +24,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(viewDir);
 
 params [["_vehicle", objNull, [objNull]], ["_weapon", nil, [""]]];

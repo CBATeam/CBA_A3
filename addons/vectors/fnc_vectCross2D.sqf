@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_vectCross2D
 
@@ -22,9 +23,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectCross2D.sqf";
 
-#include "script_component.hpp"
 SCRIPT(vectCross2D);
 
 params ["_u", "_v"];

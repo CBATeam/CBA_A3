@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeWeapon
 
@@ -22,7 +23,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeWeapon);
 
 params [["_unit", objNull, [objNull]], ["_item", "", [""]]];

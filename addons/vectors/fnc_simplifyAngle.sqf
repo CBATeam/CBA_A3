@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_simplifyAngle
 
@@ -20,8 +21,6 @@ Examples:
 Author:
     SilentSpike 2015-27-07
 ---------------------------------------------------------------------------- */
-
-#include "script_component.hpp"
 
 params ["_angle"];
 

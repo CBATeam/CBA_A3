@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_removeItemCargo
 
@@ -31,7 +32,6 @@ Examples:
 Author:
     Jonpas
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(removeItemCargo);
 
 params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_keepContents", false, [true]]];

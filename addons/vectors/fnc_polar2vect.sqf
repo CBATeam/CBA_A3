@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_polar2vect
 
@@ -20,9 +21,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_polar2vect.sqf";
 
-#include "script_component.hpp"
 SCRIPT(polar2vect);
 
 params ["_mag", "_dir", "_elev"];

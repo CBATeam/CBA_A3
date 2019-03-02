@@ -165,29 +165,29 @@ class GVAR(subCat): RscControlsGroupNoScrollbars {
     x = POS_W(1);
     y = POS_H(0);
     w = POS_W(37);
-    h = POS_H(0.75);
+    h = POS_H(1);
     class controls {
         class Background: RscText {
-            colorBackground[] = {0.25,0.25,0.25,0.4};
+            colorBackground[] = {0.15,0.15,0.15,0.4};
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(36);
-            h = POS_H(0.75);
+            h = POS_H(1);
         };
         class Name: RscText {
             idc = IDC_SETTING_NAME;
             style = ST_LEFT;
-            SizeEx = POS_H(0.75);
+            SizeEx = POS_H(1);
             x = POS_W(0);
             y = POS_H(0);
             w = POS_W(15.5);
-            h = POS_H(0.75);
+            h = POS_H(1);
         };
         class Bar: RscText {
             colorBackground[] = {1,1,1,1};
             style = ST_LEFT;
             x = POS_W(0);
-            y = POS_H(0.75) - 2 * pixelH;
+            y = POS_H(1) - 2 * pixelH;
             w = POS_W(36);
             h = pixelH;
         };
@@ -229,8 +229,6 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
         };
         class Locked: RscPicture {
             idc = IDC_SETTING_LOCKED;
-            text = QPATHTOF(locked_ca.paa);
-            colorText[] = {1,0,0,1};
             x = POS_W(28);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
@@ -447,6 +445,77 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         };
         class OverwriteMission: OverwriteMission {
             y = POS_H(1.5) + TABLE_LINE_SPACING/2;
+        };
+    };
+};
+
+class RscFrame;
+
+class GVAR(Row_Time): GVAR(Row_Base) {
+    GVAR(script) = QFUNC(gui_settingTime);
+    h = POS_H(2) + TABLE_LINE_SPACING;
+
+    class controls: controls {
+        class Name: Name {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class Slider: RscXSliderH {
+            idc = IDC_SETTING_TIME_SLIDER;
+            x = POS_W(16);
+            y = POS_H(0) + TABLE_LINE_SPACING / 2;
+            w = POS_W(10);
+            h = POS_H(1);
+        };
+        class Frame: RscFrame {
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(6);
+            h = POS_H(0.9);
+        };
+        class Separator: RscText {
+            style = ST_CENTER;
+            text = ":   :";
+            font = "EtelkaMonospaceProBold";
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(6);
+            h = POS_H(0.9);
+            sizeEx = POS_H(1);
+            colorBackground[] = {0, 0, 0, 0.2};
+        };
+        class Hours: RscEdit {
+            idc = IDC_SETTING_TIME_HOURS;
+            style = ST_CENTER + ST_NO_RECT;
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
+            font = "EtelkaMonospaceProBold";
+            x = POS_W(18);
+            y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
+            w = POS_W(2);
+            h = POS_H(0.9);
+            sizeEx = POS_H(0.9);
+            maxChars = 2;
+        };
+        class Minutes: Hours {
+            idc = IDC_SETTING_TIME_MINUTES;
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Minute_tooltip";
+            x = POS_W(20);
+        };
+        class Seconds: Hours {
+            idc = IDC_SETTING_TIME_SECONDS;
+            tooltip = "$STR_3DEN_Attributes_SliderTime_Second_tooltip";
+            x = POS_W(22);
+        };
+        class Default: Default {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class Locked: Locked {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class OverwriteClients: OverwriteClients {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
+        };
+        class OverwriteMission: OverwriteMission {
+            y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
         };
     };
 };

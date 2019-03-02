@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_nearPlayer
 
@@ -19,7 +20,6 @@ Examples:
 Author:
 
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 SCRIPT(nearPlayer);
 
 params [["_entity", objNull], ["_distance", 0, [0]]];

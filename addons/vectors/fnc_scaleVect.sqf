@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_scaleVect
 
@@ -19,9 +20,7 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_scaleVect.sqf";
 
-#include "script_component.hpp"
 SCRIPT(scaleVect);
 
 params ["_vect", "_factor"];

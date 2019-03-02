@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Internal Function: CBA_settings_fnc_whitelisted
 
@@ -18,7 +19,6 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-#include "script_component.hpp"
 
 private _uid = getPlayerUID player;
 private _whitelist = getArray (configFile >> QGVAR(whitelist));
