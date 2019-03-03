@@ -10,7 +10,7 @@ if (_name in ["introexp.stratis", "introorange.altis", "introexp.vr", "malden_in
     addMusicEventHandler ["MusicStart", {
         params ["_music"];
 
-        if !(_music in GVAR(MainMenuMusic)) then {
+        if (_music != GVAR(MainMenuMusic)) then {
             playMusic GVAR(MainMenuMusic);
         };
     }];
