@@ -56,6 +56,6 @@ _mods = _mods apply {
     _x
 };
 
-_mods = _mods joinString "<br/>";
+_mods = _mods joinString "<br/><br/>";
 
 uiNamespace setVariable [QGVAR(mods), compileFinal str _mods];
