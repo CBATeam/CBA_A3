@@ -19,5 +19,5 @@ if (_name in ["introexp.stratis", "introorange.altis", "introexp.vr", "malden_in
         playMusic GVAR(MainMenuMusic);
     }];
 
-    playMusic GVAR(MainMenuMusic);
+    //playMusic GVAR(MainMenuMusic);
 };
