@@ -7,7 +7,7 @@ Description:
     a function with that keybind being pressed.
 
     This file should be included for readable DIK codes:
-        #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+        #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
     Additional DIK codes usable with this function:
         0xF0: Left mouse button
