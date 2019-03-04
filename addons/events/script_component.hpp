@@ -39,7 +39,7 @@
 
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 
-#include "\a3\editor_f\Data\Scripts\dikCodes.h"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // key handler system
 #define MOUSE_OFFSET 0xF0
