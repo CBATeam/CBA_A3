@@ -40,7 +40,7 @@ Returns:
 Examples:
     (begin example)
         // Register a simple keypress to an action
-        #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+        #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
         ["MyMod", "MyKey", ["My Pretty Key Name", "My Pretty Tool Tip"], {
             _this call mymod_fnc_keyDown
