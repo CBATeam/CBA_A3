@@ -134,6 +134,7 @@ if (_id != -1) then {
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
+            SCRIPT(playerEH_EachFrame);
             private _player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
@@ -224,6 +225,7 @@ if (_id != -1) then {
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {call FUNC(playerEH_Map)}];
         [QFUNC(playerEH_Map), {
+            SCRIPT(playerEH_Map);
             params ["_data"]; // visibleMap is updated one frame later
             if !(_data isEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
@@ -244,6 +246,7 @@ if (_id != -1) then {
         };
 
         GVAR(playerEHInfo) pushBack ([{
+            SCRIPT(playerEH_featureCamera);
             private _data = call CBA_fnc_getActiveFeatureCamera;
             if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
                 GVAR(oldFeatureCamera) = _data;

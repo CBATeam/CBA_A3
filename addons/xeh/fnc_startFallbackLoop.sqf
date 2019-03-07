@@ -34,6 +34,7 @@ GVAR(fallbackRunning) = true;
 GVAR(entities) = [];
 
 [{
+    SCRIPT(fallbackLoopPFEH);
     private _entities = entities [[], [], true, true];
 
     if !(_entities isEqualTo GVAR(entities)) then {

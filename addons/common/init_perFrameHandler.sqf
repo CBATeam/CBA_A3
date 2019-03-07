@@ -19,6 +19,7 @@ GVAR(waitUntilAndExecArray) = [];
 
 // per frame handler system
 [QFUNC(onFrame), {
+    SCRIPT(onFrame);
     private _tickTime = diag_tickTime;
     call FUNC(missionTimePFH);
 
@@ -103,6 +104,7 @@ if (isMultiplayer) then {
     if (isServer) then {
         // multiplayer server
         [QFUNC(missionTimePFH), {
+            SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
                 CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                 GVAR(lastTime) = time; // used to detect paused game
@@ -126,6 +128,7 @@ if (isMultiplayer) then {
                     GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
 
                     [QFUNC(missionTimePFH), {
+                        SCRIPT(missionTimePFH_client);
                         if (time != GVAR(lastTime)) then {
                             CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                             GVAR(lastTime) = time; // used to detect paused game
@@ -148,6 +151,7 @@ if (isMultiplayer) then {
 } else {
     // single player
     [QFUNC(missionTimePFH), {
+        SCRIPT(missionTimePFH_sp);
         if (time != GVAR(lastTime)) then {
             CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
             GVAR(lastTime) = time; // used to detect paused game
