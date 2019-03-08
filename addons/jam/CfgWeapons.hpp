@@ -115,7 +115,7 @@ class CfgWeapons {
     };
 
     class SMG_03_TR_BASE: Rifle_Base_F {
-        magazineWell[] = {"CBA_57x28_FNP90"};
+        magazineWell[] = {"CBA_57x28_P90"};
     };
 
     class SMG_05_base_F: Rifle_Short_Base_F {
