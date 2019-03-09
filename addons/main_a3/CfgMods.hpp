@@ -2,7 +2,7 @@ class CfgMods {
     class PREFIX {
         author = "$STR_CBA_Author";
         dir = "@CBA_A3";
-        name = "Community Base Addons";
+        name = "Community Base Addons v0.0.0";
         picture = "x\cba\addons\main\logo_cba_ca.paa";
         hidePicture = 1;
         hideName = 1;
