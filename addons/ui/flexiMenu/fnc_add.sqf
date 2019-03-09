@@ -4,7 +4,7 @@
 TRACE_1("",_this);
 
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
-// Note: calling script may require this file for dik codes: #include "\a3\editor_f\Data\Scripts\dikCodes.h"
+// Note: calling script may require this file for dik codes: #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 private _msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"; //Initialize
 private _key = [];

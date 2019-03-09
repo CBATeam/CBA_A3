@@ -13,6 +13,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_UI
 #endif
 
+#define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
