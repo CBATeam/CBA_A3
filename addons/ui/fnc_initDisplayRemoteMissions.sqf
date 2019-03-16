@@ -128,7 +128,7 @@ _display setVariable [QFUNC(filter), {
 
     {
         _x params ["_name", "_value", "_data", "_color"];
-        private _classname = _data splitString "." select 0;
+        private _classname = _data splitString "." param [0, ""];
 
         if (toLower _name find _filter != -1 && {_showStockMissions || {!(_classname in _stockMissions)}}) then {
             private _index = _ctrlMissions lbAdd _name;
