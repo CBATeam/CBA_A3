@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="2DOptics">
+        <Key ID="STR_CBA_2DOptics_Component">
+            <English>Community Base Addons - 2D Optics</English>
+            <German>Community Base Addons - 2D-Optiken</German>
+        </Key>
+    </Package>
+</Project>
