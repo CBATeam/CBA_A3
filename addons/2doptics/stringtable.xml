@@ -10,9 +10,9 @@
             <German>CBA 2D-Optiken</German>
         </Key>
         <Key ID="STR_cba_2doptics_UsePIP">
-            <English>Use picture in picture optics</English>
-            <German>Bild in Bild-Optiken verwenden</German>
-            <Japanese>Picture in Picture 照準器を使う</Japanese>
+            <English>Use picture in picture optics.</English>
+            <German>Bild in Bild-Optiken verwenden.</German>
+            <Japanese>Picture in Picture 照準器を使う。</Japanese>
         </Key>
     </Package>
 </Project>
