@@ -30,17 +30,17 @@ _ctrlMagnification ctrlShow _isUsingOptic;
 
 if !(_isUsingOptic) exitWith {};
 
-BWA3_optics_camera setPos positionCameraToWorld [0,0,0.4];
-BWA3_optics_camera camPrepareTarget positionCameraToWorld [0,0,50];
-BWA3_optics_camera camCommitPrepared 0;
+GVAR(camera) setPosASL AGLToASL positionCameraToWorld [0,0,0.4];
+GVAR(camera) camPrepareTarget positionCameraToWorld [0,0,50];
+GVAR(camera) camCommitPrepared 0;
 
 // @todo, check if that needs to be done at all
 if (cameraView == "GUNNER") then {
-    BWA3_optics_camera camSetFOV 0.7;
-    BWA3_optics_camera camCommit 0;
+    GVAR(camera) camSetFOV 0.7;
+    GVAR(camera) camCommit 0;
 } else {
-    BWA3_optics_camera camSetFOV 0.01;
-    BWA3_optics_camera camCommit 0;
+    GVAR(camera) camSetFOV 0.01;
+    GVAR(camera) camCommit 0;
 };
 
 // add magnification to zeroing control

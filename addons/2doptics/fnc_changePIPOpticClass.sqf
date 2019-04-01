@@ -30,7 +30,7 @@ if (BWA3_usePipOptics && {!_forceBase}) then {
             _unit addWeaponItem [_pipGun, _x];
         } forEach _gunMagazine;
 
-        BWA3_LOGINFO_2("Switched %1 to %2.",_gun,_pipGun);
+        INFO_2("Switched %1 to %2.",_gun,_pipGun);
     };
 
     // switch to pip optics
@@ -41,7 +41,7 @@ if (BWA3_usePipOptics && {!_forceBase}) then {
 
         if (!isNil "_pipOptic") then {
             _unit addWeaponItem [_weapon, _pipOptic];
-            BWA3_LOGINFO_2("Switched %1 to %2.",_optic,_pipOptic);
+            INFO_2("Switched %1 to %2.",_optic,_pipOptic);
         };
     } forEach weaponsItems _unit;
 } else {
@@ -65,7 +65,7 @@ if (BWA3_usePipOptics && {!_forceBase}) then {
             _unit addWeaponItem [_normalGun, _x];
         } forEach _gunMagazine;
 
-        BWA3_LOGINFO_2("Switched %1 to %2.",_gun,_normalGun);
+        INFO_2("Switched %1 to %2.",_gun,_normalGun);
     };
 
     // switch to normal / 2d optics
@@ -76,7 +76,7 @@ if (BWA3_usePipOptics && {!_forceBase}) then {
 
         if (!isNil "_normalOptic") then {
             _unit addWeaponItem [_weapon, _normalOptic];
-            BWA3_LOGINFO_2("Switched %1 to %2.",_optic,_normalOptic);
+            INFO_2("Switched %1 to %2.",_optic,_normalOptic);
         };
     } forEach weaponsItems _unit;
 };

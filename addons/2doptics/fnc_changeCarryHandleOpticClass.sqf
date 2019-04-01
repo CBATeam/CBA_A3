@@ -26,7 +26,7 @@ if (HAS_CARRY_HANDLE(_gun) && {!_forceBase}) then {
 };
 
 if (!isNil "_gunOptic") then {
-    BWA3_LOGINFO_1("Switched rifle optic to %1.",_gunOptic);
+    INFO_1("Switched rifle optic to %1.",_gunOptic);
     _unit addPrimaryWeaponItem _gunOptic;
 };
 
@@ -38,7 +38,7 @@ if (HAS_CARRY_HANDLE(_launcher) && {!_forceBase}) then {
 };
 
 if (!isNil "_launcherOptic") then {
-    BWA3_LOGINFO_1("Switched launcher optic to %1.",_launcherOptic);
+    INFO_1("Switched launcher optic to %1.",_launcherOptic);
     _unit addSecondaryWeaponItem _launcherOptic;
 };
 
@@ -50,6 +50,6 @@ if (HAS_CARRY_HANDLE(_pistol) && {!_forceBase}) then {
 };
 
 if (!isNil "_pistolOptic") then {
-    BWA3_LOGINFO_1("Switched pistol optic to %1.",_pistolOptic);
+    INFO_1("Switched pistol optic to %1.",_pistolOptic);
     _unit addHandgunItem _pistolOptic;
 };

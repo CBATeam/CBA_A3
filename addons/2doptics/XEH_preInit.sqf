@@ -4,8 +4,13 @@ if (!hasInterface) exitWith {};
 
 ADDON = false;
 
-BWA3_optics_camera = objNull;
-//["bwa3_camera", {!isNull BWA3_optics_camera}] call CBA_fnc_registerFeatureCamera;
+GVAR(camera) = objNull;
+[QGVAR(camera), {!isNull GVAR(camera)}] call CBA_fnc_registerFeatureCamera;
+
+
+
+
+
 
 // scripted optic data cache
 BWA3_currentOptic = "";
@@ -57,7 +62,7 @@ private _fnc_arsenalOpened = {
 private _fnc_arsenalClosed = {
     BWA3_inArsenal = false;
     //call CBA_fnc_currentUnit call BWA3_fnc_changeCarryHandleOpticClass;
-    [BWA3_fnc_restartCamera, [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
+    [CBA_fnc_restartCamera, [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
 };
 
 [missionNamespace, "arsenalClosed", _fnc_arsenalClosed] call BIS_fnc_addScriptedEventHandler;
