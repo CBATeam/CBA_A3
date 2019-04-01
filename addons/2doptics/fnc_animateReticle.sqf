@@ -72,7 +72,7 @@ private _detailScaleFactor = 1;
         _texture = [_textureX, _textureXNight] select (_dayOpacity < 0.5);
         _detailScaleFactor = _detailScaleFactorX;
     };
-} forEach BWA3_OpticReticleDetailTextures;
+} forEach GVAR(OpticReticleDetailTextures);
 
 _display setVariable ["BWA3_detailScaleFactor", _detailScaleFactor];
 
@@ -84,8 +84,8 @@ _ctrlBlackScope ctrlShow (BWA3_usePipOptics && !isPipEnabled);
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
 
-BWA3_ReticleAdjust set [2, _zoom];
-private _reticleAdjust = linearConversion BWA3_ReticleAdjust;
+GVAR(ReticleAdjust) set [2, _zoom];
+private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
 
 private _sizeReticle = _reticleAdjust /** (_display getVariable "BWA3_sizeReticle")*/ * _detailScaleFactor;
 
@@ -102,9 +102,9 @@ if (ctrlCommitted _ctrlBody) then {
     _ctrlReticle ctrlCommit 0;
 };
 
-if (_zoom > BWA3_HideRedDotMagnification) then {
+if (_zoom > GVAR(HideRedDotMagnification)) then {
     _ctrlRedDot ctrlShow false;
 };
 
-BWA3_FadeReticleInterval set [2, _zoom];
-_ctrlReticle ctrlSetTextColor [1,1,1,linearConversion BWA3_FadeReticleInterval];
+GVAR(FadeReticleInterval) set [2, _zoom];
+_ctrlReticle ctrlSetTextColor [1,1,1,linearConversion GVAR(FadeReticleInterval)];

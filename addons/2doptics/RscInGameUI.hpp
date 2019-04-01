@@ -9,8 +9,8 @@ class RscInGameUI {
         class CA_Zeroing;
     };
 
-    class GVAR(ScriptedOptic): RscWeaponZeroing {
-        onLoad = "call CBA_fnc_loadScriptedScope";
+    class CBA_ScriptedOptic: RscWeaponZeroing {
+        onLoad = QUOTE(call FUNC(loadScriptedScope));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification"};
 
         class CA_FOVMode: RscOpticsValue {
@@ -66,7 +66,7 @@ class RscInGameUI {
         };
     };
 
-    class GVAR(ScriptedOptic_zooming): GVAR(ScriptedOptic) {
+    class CBA_ScriptedOptic_zooming: CBA_ScriptedOptic {
         controls[] = {"CA_FOVMode","ScopeBlack","ReticleSafeZone","RedDot","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","EnableAutoZoom","CA_Zeroing","Magnification"};
 
         class RedDot: RscPicture {

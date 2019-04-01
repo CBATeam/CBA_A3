@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_currentOptic
+Internal Function: cba_2doptics_fnc_currentOptic
 
 Description:
     Creates a new setting for that session.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call CBA_fnc_currentOptic
+        player call cba_2doptics_fnc_currentOptic
     (end)
 
 Author:

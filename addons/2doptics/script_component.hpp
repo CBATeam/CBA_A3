@@ -73,7 +73,7 @@
 #define CARRY_HANDLE(optic,weapon) class DOUBLES(optic,weapon): optic {\
     scope = 1;\
 \
-    class GVAR(ScriptedOptic): GVAR(CarryHandleScriptedOptic_base) {};\
+    class CBA_ScriptedOptic: GVAR(CarryHandleScriptedOptic_base) {};\
     weaponInfoType = "RscWeaponZeroing";\
 \
     class ItemInfo: ItemInfo {\

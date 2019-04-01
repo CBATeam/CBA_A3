@@ -15,5 +15,4 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgFunctions.hpp"
 #include "RscInGameUI.hpp"

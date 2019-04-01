@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-if (isNil "BWA3_OpticReticleDetailTextures" || {BWA3_OpticReticleDetailTextures isEqualTo []}) then {
+if (isNil QGVAR(OpticReticleDetailTextures) || {GVAR(OpticReticleDetailTextures) isEqualTo []}) then {
     BWA3_LOGWARNING("No scripted reticle info found.");
     private _unit = call CBA_fnc_currentUnit;
     _unit call BWA3_fnc_updateOpticInfo;
@@ -26,7 +26,7 @@ _ctrlBlackLeft ctrlShow false;
 _ctrlBlackRight ctrlShow false;
 _ctrlMagnification ctrlShow false;
 
-private _reticleSize = BWA3_OpticReticleDetailTextures#0#2;
+private _reticleSize = GVAR(OpticReticleDetailTextures)#0#2;
 private _reticlePosition = [
     POS_X(_reticleSize),
     POS_Y(_reticleSize),
@@ -38,17 +38,17 @@ _ctrlReticle ctrlSetPosition _reticlePosition;
 _ctrlReticle ctrlCommit 0;
 
 private _bodyPosition = [
-    POS_X(BWA3_OpticBodyTextureSize),
-    POS_Y(BWA3_OpticBodyTextureSize),
-    POS_W(BWA3_OpticBodyTextureSize),
-    POS_H(BWA3_OpticBodyTextureSize)
+    POS_X(GVAR(OpticBodyTexture)Size),
+    POS_Y(GVAR(OpticBodyTexture)Size),
+    POS_W(GVAR(OpticBodyTexture)Size),
+    POS_H(GVAR(OpticBodyTexture)Size)
 ];
 
-_ctrlBody ctrlSetText BWA3_OpticBodyTexture;
+_ctrlBody ctrlSetText GVAR(OpticBodyTexture);
 _ctrlBody ctrlSetPosition _bodyPosition;
 _ctrlBody ctrlCommit 0;
 
-_ctrlBodyNight ctrlSetText BWA3_OpticBodyTextureNight;
+_ctrlBodyNight ctrlSetText GVAR(OpticBodyTextureNight);
 _ctrlBodyNight ctrlSetPosition _bodyPosition;
 _ctrlBodyNight ctrlCommit 0;
 

@@ -53,7 +53,7 @@ private _scopeShiftX = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHI
 private _scopeShiftY = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHIFT_Y_MIN, SCOPE_SHIFT_Y_MAX, false];
 
 // read default sizes from display
-private _sizeBody = BWA3_OpticBodyTextureSize;
+private _sizeBody = GVAR(OpticBodyTexture)Size;
 
 // Create and commit recoil effect
 private _reticleAdjust = 1;
@@ -61,7 +61,7 @@ private _reticleSafeZoneOffsetLeft = 0;
 private _reticleSafeZoneOffsetTop = 0;
 
 if (!isNull (_display displayCtrl IDC_RETICLE_SAFEZONE)) then {
-    _reticleAdjust = linearConversion BWA3_ReticleAdjust;
+    _reticleAdjust = linearConversion GVAR(ReticleAdjust);
     _reticleSafeZoneOffsetLeft = - RETICLE_SAFEZONE_LEFT;
     _reticleSafeZoneOffsetTop = - RETICLE_SAFEZONE_TOP;
 };

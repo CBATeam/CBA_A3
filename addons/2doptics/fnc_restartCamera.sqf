@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_restartCamera
+Internal Function: cba_2doptics_fnc_restartCamera
 
 Description:
     Restarts the PIP camera for scripted 2D optics.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call CBA_fnc_restartCamera
+        player call cba_2doptics_fnc_restartCamera;
     (end)
 
 Author:
@@ -36,5 +36,5 @@ if (_reset) then {
     QGVAR(rendertarget0) setPiPEffect [2, 1.0, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0]];
     GVAR(camera) cameraEffect ["INTERNAL", "BACK", QGVAR(rendertarget0)];
 
-    INFO("Scripted camera restarted");
+    INFO("Scripted camera restarted.");
 };

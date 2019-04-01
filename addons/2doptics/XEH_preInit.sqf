@@ -4,40 +4,41 @@ if (!hasInterface) exitWith {};
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
+#include "initSettings.sqf"
+
 GVAR(camera) = objNull;
 [QGVAR(camera), {!isNull GVAR(camera)}] call CBA_fnc_registerFeatureCamera;
 
-
-
-
-
-
 // scripted optic data cache
-BWA3_currentOptic = "";
-BWA3_ReticleAdjust = [1,1,nil,1,1];
-BWA3_HideRedDotMagnification = 1e+11;
-BWA3_FadeReticleInterval = [0,0,nil,0,0];
-BWA3_OpticReticleDetailTextures = [];
-BWA3_OpticBodyTexture = "";
-BWA3_OpticBodyTextureScale = "";
-BWA3_OpticBodyTextureNight = "";
+GVAR(currentOptic) = "";
+GVAR(ReticleAdjust) = [1,1,nil,1,1];
+GVAR(HideRedDotMagnification) = 1e+11;
+GVAR(FadeReticleInterval) = [0,0,nil,0,0];
+GVAR(OpticReticleDetailTextures) = [];
+GVAR(OpticBodyTexture) = "";
+GVAR(OpticBodyTextureNight) = "";
 
-["weapon", {_this call BWA3_fnc_updateOpticInfo}] call CBA_fnc_addPlayerEventHandler;
+["weapon", {
+    params ["_unit"];
+    _unit call FUNC(updateOpticInfo);
+}] call CBA_fnc_addPlayerEventHandler;
+
 ["loadout", {
-    _this call BWA3_fnc_updateOpticInfo;
+    params ["_unit"];
+    _unit call FUNC(updateOpticInfo);
 
-    //params ["_unit"];
     //_unit call BWA3_fnc_changeCarryHandleOpticClass;
 }] call CBA_fnc_addPlayerEventHandler;
 
-// handle PIP optics setting
-[
-    "BWA3_usePipOptics",
-    "CHECKBOX",
-    "STR_BWA3_Setting_UsePIP",
-    "STR_BWA3_FactionClassBundeswehrName",
-    true
-] call cba_settings_fnc_init;
+
+
+
+
+
+
+
+
 
 // swap in pip versions
 ["cameraView", {
@@ -62,7 +63,7 @@ private _fnc_arsenalOpened = {
 private _fnc_arsenalClosed = {
     BWA3_inArsenal = false;
     //call CBA_fnc_currentUnit call BWA3_fnc_changeCarryHandleOpticClass;
-    [CBA_fnc_restartCamera, [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
+    [FUNC(restartCamera), [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
 };
 
 [missionNamespace, "arsenalClosed", _fnc_arsenalClosed] call BIS_fnc_addScriptedEventHandler;
