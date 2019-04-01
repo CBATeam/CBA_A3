@@ -2,14 +2,12 @@
 
 // force unscheduled environment
 if (canSuspend) exitWith {
-    isNil BWA3_fnc_changePIPOpticClass;
+    isNil FUNC(changePIPOpticClass);
 };
 
 params ["_unit"];
 
-private _forceBase = BWA3_inArsenal;
-
-if (BWA3_usePipOptics && {!_forceBase}) then {
+if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // switch to pip weapon
     private _gun = primaryWeapon _unit;
     private _gunItems = primaryWeaponItems _unit;

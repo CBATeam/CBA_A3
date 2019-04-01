@@ -19,6 +19,7 @@ GVAR(OpticReticleDetailTextures) = [];
 GVAR(OpticBodyTexture) = "";
 GVAR(OpticBodyTextureNight) = "";
 
+// update optic info
 ["weapon", {
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
@@ -27,48 +28,45 @@ GVAR(OpticBodyTextureNight) = "";
 ["loadout", {
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
-
-    //_unit call BWA3_fnc_changeCarryHandleOpticClass;
+    //_unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 
-
-
-
-
-
-
-
-
-
-// swap in pip versions
+// switch to pip class
 ["cameraView", {
     params ["_unit", "_view"];
-    if (_view != "GUNNER") exitWith {};
-
-    _unit call BWA3_fnc_changePIPOpticClass;
+    if (_view isEqualTo "GUNNER") then {
+        _unit call FUNC(changePIPOpticClass);
+    };
 }] call CBA_fnc_addPlayerEventHandler;
 
 // handle arsenal
-BWA3_inArsenal = false;
+GVAR(inArsenal) = false;
 
 private _fnc_arsenalOpened = {
-    BWA3_inArsenal = true;
-    call CBA_fnc_currentUnit call BWA3_fnc_changePIPOpticClass;
-    //call CBA_fnc_currentUnit call BWA3_fnc_changeCarryHandleOpticClass;
+    GVAR(inArsenal) = true;
+    private _unit = call CBA_fnc_currentUnit;
+    _unit call FUNC(changePIPOpticClass);
+    //_unit call FUNC(changeCarryHandleOpticClass);
 };
 
 [missionNamespace, "arsenalOpened", _fnc_arsenalOpened] call BIS_fnc_addScriptedEventHandler;
-["ace_arsenal_displayOpened", _fnc_arsenalOpened] call CBA_fnc_addEventHandler;
+["ace_arsenal_displayOpened", _fnc_arsenalOpened] call CBA_fnc_addEventHandler; // @todo, move to ACE
 
 private _fnc_arsenalClosed = {
-    BWA3_inArsenal = false;
-    //call CBA_fnc_currentUnit call BWA3_fnc_changeCarryHandleOpticClass;
-    [FUNC(restartCamera), [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
+    GVAR(inArsenal) = false;
+    private _unit = call CBA_fnc_currentUnit;
+    //_unit call FUNC(changeCarryHandleOpticClass);
+    [FUNC(restartCamera), [_unit, true]] call CBA_fnc_execNextFrame;
 };
 
 [missionNamespace, "arsenalClosed", _fnc_arsenalClosed] call BIS_fnc_addScriptedEventHandler;
-["ace_arsenal_displayClosed", _fnc_arsenalClosed] call CBA_fnc_addEventHandler;
+["ace_arsenal_displayClosed", _fnc_arsenalClosed] call CBA_fnc_addEventHandler; // @todo, move to ACE
 
+
+
+
+
+// link classes by config
 BWA3_PIPOptics = [] call CBA_fnc_createNamespace;
 BWA3_NonPIPOptics = [] call CBA_fnc_createNamespace;
 

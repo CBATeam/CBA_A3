@@ -2,12 +2,10 @@
 
 // force unscheduled environment
 if (canSuspend) exitWith {
-    isNil BWA3_fnc_changeCarryHandleOpticClass;
+    isNil FUNC(changeCarryHandleOpticClass);
 };
 
 params ["_unit"];
-
-private _forceBase = BWA3_inArsenal;
 
 private _gun = primaryWeapon _unit;
 private _gunOptic = primaryWeaponItems _unit select 2;
@@ -19,7 +17,7 @@ private _pistolOptic = handgunItems _unit select 2;
 private _config = configFile >> "CfgWeapons";
 
 // primary weapon
-if (HAS_CARRY_HANDLE(_gun) && {!_forceBase}) then {
+if (HAS_CARRY_HANDLE(_gun) && {!GVAR(inArsenal)}) then {
     _gunOptic = BWA3_CarryHandleOptics getVariable _gunOptic;
 } else {
     _gunOptic = BWA3_NonCarryHandleOptics getVariable _gunOptic;
@@ -31,7 +29,7 @@ if (!isNil "_gunOptic") then {
 };
 
 // secondary weapon
-if (HAS_CARRY_HANDLE(_launcher) && {!_forceBase}) then {
+if (HAS_CARRY_HANDLE(_launcher) && {!GVAR(inArsenal)}) then {
     _launcherOptic = BWA3_CarryHandleOptics getVariable _launcherOptic;
 } else {
     _launcherOptic = BWA3_NonCarryHandleOptics getVariable _launcherOptic;
@@ -43,7 +41,7 @@ if (!isNil "_launcherOptic") then {
 };
 
 // handgun
-if (HAS_CARRY_HANDLE(_pistol) && {!_forceBase}) then {
+if (HAS_CARRY_HANDLE(_pistol) && {!GVAR(inArsenal)}) then {
     _pistolOptic = BWA3_CarryHandleOptics getVariable _pistolOptic;
 } else {
     _pistolOptic = BWA3_NonCarryHandleOptics getVariable _pistolOptic;

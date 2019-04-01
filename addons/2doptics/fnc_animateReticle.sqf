@@ -79,7 +79,7 @@ _display setVariable ["BWA3_detailScaleFactor", _detailScaleFactor];
 _ctrlReticle ctrlSetText _texture;
 _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
-_ctrlBlackScope ctrlShow (BWA3_usePipOptics && !isPipEnabled);
+_ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
 
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
