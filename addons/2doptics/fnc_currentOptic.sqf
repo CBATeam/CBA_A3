@@ -14,6 +14,7 @@ Returns:
         This never reports a muzzle, but the actual weapon.
         Will report the binocular if selected.
         If no weapon is equipped or selected, it reports the empty string "".
+        Reports the empty string "" for vehicles and the null object.
 
 Examples:
     (begin example)
@@ -30,35 +31,23 @@ private _weapon = currentWeapon _unit;
 
 private _gun = primaryWeapon _unit;
 if (_weapon isEqualTo _gun) exitWith {
-    private _optic = primaryWeaponItems _unit select 2;
-
-    if (_optic isEqualTo "") then {
-        _optic = _gun;
-    };
-
-    _optic
+    private _optic = [primaryWeaponItems _unit] param [0, [nil, nil, ""]] select 2;
+    if (_optic != "") exitWith {_optic};
+    _gun
 };
 
 private _launcher = secondaryWeapon _unit;
 if (_weapon isEqualTo _launcher) exitWith {
-    private _optic = secondaryWeaponItems _unit select 2;
-
-    if (_optic isEqualTo "") then {
-        _optic = _launcher;
-    };
-
-    _optic
+    private _optic = [secondaryWeaponItems _unit] param [0, [nil, nil, ""]] select 2;
+    if (_optic != "") exitWith {_optic};
+    _launcher
 };
 
 private _pistol = handgunWeapon _unit;
 if (_weapon isEqualTo _pistol) exitWith {
-    private _optic = handgunItems _unit select 2;
-
-    if (_optic isEqualTo "") then {
-        _optic = _pistol;
-    };
-
-    _optic
+    private _optic = [handgunItems _unit] param [0, [nil, nil, ""]] select 2;
+    if (_optic != "") exitWith {_optic};
+    _pistol
 };
 
 private _binocular = binocular _unit;
