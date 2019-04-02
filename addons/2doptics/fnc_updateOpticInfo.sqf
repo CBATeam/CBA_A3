@@ -22,7 +22,7 @@ Author:
 
 params ["_unit"];
 
-// update scripted optic cache
+// Update scripted optic cache.
 private _optic = _unit call FUNC(currentOptic);
 if (_optic isEqualTo GVAR(currentOptic)) exitWith {};
 GVAR(currentOptic) = _optic;

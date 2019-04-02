@@ -1,6 +1,26 @@
 #include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: cba_2doptics_fnc_changeCarryHandleOpticClass
 
-// force unscheduled environment
+Description:
+    Switch scripted optic class to class with integrated carry handle optic.
+
+Parameters:
+    _unit - The avatar <OBJECT>
+
+Returns:
+    Nothing.
+
+Examples:
+    (begin example)
+        player call cba_2doptics_fnc_changeCarryHandleOpticClass;
+    (end)
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
+
+// Force unscheduled environment.
 if (canSuspend) exitWith {
     isNil FUNC(changeCarryHandleOpticClass);
 };

@@ -58,10 +58,10 @@ _ctrlReticle ctrlSetPosition _reticlePosition;
 _ctrlReticle ctrlCommit 0;
 
 private _bodyPosition = [
-    POS_X(GVAR(OpticBodyTexture)Size),
-    POS_Y(GVAR(OpticBodyTexture)Size),
-    POS_W(GVAR(OpticBodyTexture)Size),
-    POS_H(GVAR(OpticBodyTexture)Size)
+    POS_X(GVAR(OpticBodyTextureSize)),
+    POS_Y(GVAR(OpticBodyTextureSize)),
+    POS_W(GVAR(OpticBodyTextureSize)),
+    POS_H(GVAR(OpticBodyTextureSize))
 ];
 
 _ctrlBody ctrlSetText GVAR(OpticBodyTexture);

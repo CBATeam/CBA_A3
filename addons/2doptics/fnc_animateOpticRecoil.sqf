@@ -1,24 +1,28 @@
-/*
- * Author: Taosenai, KoffeinFlummi, commy2
- * Animates 2D scope when firing.
- *
- * Arguments:
- * 0: Unit (Object)
- * 1: Weapon (String)
- * 2: Muzzle (String)
- * 3: Mode (String)
- * 4: Ammo (Object)
- * 5: Magazine (String)
- * 6: Projectile (Object)
- *
- * Return Value:
- * None
- *
- * Public: No
- */
 #include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: cba_2doptics_fnc_animateOpticRecoil
+
+Description:
+    Animates the 2D optic when firing.
+
+Parameters:
+    _unit   - The avatar <OBJECT>
+    _weapon - Fired weapon <STRING>
+
+Returns:
+    Nothing.
+
+Examples:
+    (begin example)
+        [player, currentWeapon player] call cba_2doptics_fnc_animateOpticRecoil;
+    (end)
+
+Author:
+    commy2, (Taosenai, KoffeinFlummi)
+---------------------------------------------------------------------------- */
 
 params ["_unit", "_weapon"];
+if (_unit != call CBA_fnc_currentUnit) exitWith {};
 
 // Check if compatible scope is used.
 private _display = uiNamespace getVariable [QGVAR(ScriptedOpticDisplay), displayNull];
@@ -33,17 +37,17 @@ private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
 
 // Reduce the reticle movement as the player drops into lower, supported stances.
-private _recoilCoef = 1;
+private _recoilCoef = SCOPE_RECOIL_COEF;
 
 if (isWeaponDeployed _unit) then {
-    _recoilCoef = 0.1;
+    _recoilCoef = SCOPE_RECOIL_COEF_DEPLOYED;
 } else {
     if (isWeaponRested _unit) then {
-        _recoilCoef = 0.4;
+        _recoilCoef = SCOPE_RECOIL_COEF_RESTED;
     };
 };
 
-// Constants which determine how the scope recoils
+// Constants which determine how the scope recoils.
 private _recoilScope = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_RECOIL_MIN, SCOPE_RECOIL_MAX, false];
 
 private _reticleShiftX = _recoilCoef * linearConversion [0, 1, random 1, RETICLE_SHIFT_X_MIN, RETICLE_SHIFT_X_MAX, false];
@@ -53,7 +57,7 @@ private _scopeShiftX = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHI
 private _scopeShiftY = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHIFT_Y_MIN, SCOPE_SHIFT_Y_MAX, false];
 
 // Read default sizes from display.
-private _sizeBody = GVAR(OpticBodyTexture)Size;
+private _sizeBody = GVAR(OpticBodyTextureSize);
 
 // Create and commit recoil effect.
 private _reticleAdjust = 1;

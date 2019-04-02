@@ -39,6 +39,8 @@ GVAR(OpticBodyTextureNight) = "";
     };
 }] call CBA_fnc_addPlayerEventHandler;
 
+["CAManBase", "Fired", FUNC(animateOpticRecoil)] call CBA_fnc_addClassEventHandler;
+
 // handle arsenal
 GVAR(inArsenal) = false;
 

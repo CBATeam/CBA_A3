@@ -1,6 +1,26 @@
 #include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: cba_2doptics_fnc_changePIPOpticClass
 
-// force unscheduled environment
+Description:
+    Switch scripted optic class to PIP class.
+
+Parameters:
+    _unit - The avatar <OBJECT>
+
+Returns:
+    Nothing.
+
+Examples:
+    (begin example)
+        player call cba_2doptics_fnc_changePIPOpticClass;
+    (end)
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
+
+// Force unscheduled environment.
 if (canSuspend) exitWith {
     isNil FUNC(changePIPOpticClass);
 };
@@ -8,7 +28,7 @@ if (canSuspend) exitWith {
 params ["_unit"];
 
 if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
-    // switch to pip weapon
+    // Switch to pip weapon.
     private _gun = primaryWeapon _unit;
     private _gunItems = primaryWeaponItems _unit;
     private _gunMagazine = primaryWeaponMagazine _unit;
@@ -31,7 +51,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         INFO_2("Switched %1 to %2.",_gun,_pipGun);
     };
 
-    // switch to pip optics
+    // Switch to pip optics.
     {
         _x params ["_weapon", "", "", "_optic"]; // ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_bipod"]
 
@@ -43,7 +63,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         };
     } forEach weaponsItems _unit;
 } else {
-    // switch to normal weapon
+    // Switch to normal weapon.
     private _gun = primaryWeapon _unit;
     private _gunItems = primaryWeaponItems _unit;
     private _gunMagazine = primaryWeaponMagazine _unit;
@@ -66,7 +86,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         INFO_2("Switched %1 to %2.",_gun,_normalGun);
     };
 
-    // switch to normal / 2d optics
+    // Switch to normal / 2d optics.
     {
         _x params ["_weapon", "", "", "_optic"];
 
