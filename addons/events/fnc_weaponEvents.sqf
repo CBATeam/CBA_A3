@@ -102,7 +102,7 @@ if (!_isEmpty || _onEmpty) then {
 
         if (_wait) exitWith {
             if (GVAR(weaponEventMode) == 2) then {
-                _trigger = CBA_triggerPressed;
+                _this set [9, CBA_triggerPressed];
             };
 
             _this set [8, CBA_missionTime];
