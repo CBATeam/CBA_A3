@@ -1,8 +1,27 @@
-// by commy2
 #include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: cba_2doptics_fnc_animateScriptedOptic
+
+Description:
+    Executed every draw frame to update the scripted weapon info display.
+
+Parameters:
+    _display - CBA weapon info display <DISPLAY>
+
+Returns:
+    Nothing.
+
+Examples:
+    (begin example)
+        _weaponInfoDisplay call cba_2doptics_fnc_animateScriptedOptic;
+    (end)
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
 
 params ["_display"];
-uiNamespace setVariable ["BWA3_dlgAnimatedReticle", _display];
+uiNamespace setVariable [QGVAR(ScriptedOpticDisplay), _display];
 
 private _ctrlRedDot = _display displayCtrl IDC_RED_DOT;
 private _ctrlReticle = _display displayCtrl IDC_RETICLE;
@@ -14,8 +33,7 @@ private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
 private _ctrlZeroing = _display displayCtrl 168;
 private _ctrlMagnification = _display displayCtrl IDC_MAGNIFICATION;
 
-// check if optics are used
-// hide all controls otherwise
+// Check if optics are used, hide all controls otherwise.
 private _isUsingOptic = ctrlShown (_display displayCtrl 154);
 
 _ctrlRedDot ctrlShow _isUsingOptic;
@@ -43,7 +61,7 @@ if (cameraView == "GUNNER") then {
     GVAR(camera) camCommit 0;
 };
 
-// add magnification to zeroing control
+// Add magnification to zeroing control.
 private _zoom = 0.25 call CBA_fnc_getFov select 1;
 
 _ctrlMagnification ctrlSetText format [
@@ -57,11 +75,11 @@ _positionMagnification set [0, _positionMagnification#0 + ctrlTextWidth _ctrlZer
 _ctrlMagnification ctrlSetPosition _positionMagnification;
 _ctrlMagnification ctrlCommit 0;
 
-// calculate lighting
-private _dayOpacity = call BWA3_fnc_ambientBrightness;
+// Calculate lighting.
+private _dayOpacity = AMBIENT_BRIGHTNESS;
 private _nightOpacity = [1,0] select (_dayOpacity == 1);
 
-// Apply lighting and make layers visible
+// Apply lighting and make layers visible.
 private _texture = "";
 private _detailScaleFactor = 1;
 
@@ -74,7 +92,7 @@ private _detailScaleFactor = 1;
     };
 } forEach GVAR(OpticReticleDetailTextures);
 
-_display setVariable ["BWA3_detailScaleFactor", _detailScaleFactor];
+_display setVariable [QGVAR(DetailScaleFactor), _detailScaleFactor];
 
 _ctrlReticle ctrlSetText _texture;
 _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
@@ -87,7 +105,7 @@ if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
 
-private _sizeReticle = _reticleAdjust /** (_display getVariable "BWA3_sizeReticle")*/ * _detailScaleFactor;
+private _sizeReticle = _reticleAdjust * _detailScaleFactor;
 
 private _positionReticle = [
     POS_X(_sizeReticle) - RETICLE_SAFEZONE_LEFT,

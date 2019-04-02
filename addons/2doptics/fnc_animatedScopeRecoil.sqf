@@ -20,8 +20,8 @@
 
 params ["_unit", "_weapon"];
 
-// check if compatible scope is used
-private _display = uiNamespace getVariable ["BWA3_dlgAnimatedReticle", displayNull];
+// Check if compatible scope is used.
+private _display = uiNamespace getVariable [QGVAR(ScriptedOpticDisplay), displayNull];
 
 if (isNull _display) exitWith {};
 
@@ -52,10 +52,10 @@ private _reticleShiftY = _recoilCoef * linearConversion [0, 1, random 1, RETICLE
 private _scopeShiftX = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHIFT_X_MIN, SCOPE_SHIFT_X_MAX, false];
 private _scopeShiftY = _recoilCoef * linearConversion [0, 1, random 1, SCOPE_SHIFT_Y_MIN, SCOPE_SHIFT_Y_MAX, false];
 
-// read default sizes from display
+// Read default sizes from display.
 private _sizeBody = GVAR(OpticBodyTexture)Size;
 
-// Create and commit recoil effect
+// Create and commit recoil effect.
 private _reticleAdjust = 1;
 private _reticleSafeZoneOffsetLeft = 0;
 private _reticleSafeZoneOffsetTop = 0;
@@ -66,7 +66,7 @@ if (!isNull (_display displayCtrl IDC_RETICLE_SAFEZONE)) then {
     _reticleSafeZoneOffsetTop = - RETICLE_SAFEZONE_TOP;
 };
 
-private _detailScaleFactor = _display getVariable ["BWA3_detailScaleFactor", 1];
+private _detailScaleFactor = _display getVariable [QGVAR(DetailScaleFactor), 1];
 private _size = _reticleAdjust * _detailScaleFactor + _recoilScope;
 
 private _positionReticle = [
@@ -94,7 +94,7 @@ _ctrlReticle ctrlCommit 0;
 _ctrlBody ctrlCommit 0;
 _ctrlBodyNight ctrlCommit 0;
 
-// Bring them all back
+// Bring them all back.
 private _sizeReticle = _reticleAdjust * _detailScaleFactor;
 
 _positionReticle = [

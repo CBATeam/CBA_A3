@@ -10,7 +10,7 @@ class RscInGameUI {
     };
 
     class CBA_ScriptedOptic: RscWeaponZeroing {
-        onLoad = QUOTE(call FUNC(loadScriptedScope));
+        onLoad = QUOTE(call FUNC(loadScriptedOptic));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification"};
 
         class CA_FOVMode: RscOpticsValue {

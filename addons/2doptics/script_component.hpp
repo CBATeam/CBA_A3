@@ -13,22 +13,24 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_2DOPTICS
 #endif
 
+#define DEBUG_MODE_NORMAL
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #define PARSE(value) (call compile format ["%1", value])
+#define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
 
 // control ids
-#define IDC_RETICLE 10000
-#define IDC_BODY 10001
-#define IDC_BODY_NIGHT 10002
-#define IDC_RETICLE_SAFEZONE 10010
-#define IDC_BLACK_SCOPE 10020
-#define IDC_BLACK_LEFT 10021
-#define IDC_BLACK_RIGHT 10022
-#define IDC_RED_DOT 10030
-#define IDC_MAGNIFICATION 10040
-#define IDC_ENABLE_ZOOM 99999
+#define IDC_RETICLE 1000
+#define IDC_BODY 1001
+#define IDC_BODY_NIGHT 1002
+#define IDC_RETICLE_SAFEZONE 1010
+#define IDC_BLACK_SCOPE 1020
+#define IDC_BLACK_LEFT 1021
+#define IDC_BLACK_RIGHT 1022
+#define IDC_RED_DOT 1030
+#define IDC_MAGNIFICATION 1040
+#define IDC_ENABLE_ZOOM 9999
 
 // control positions
 #define POS_W(size) ((size) / (getResolution select 5))

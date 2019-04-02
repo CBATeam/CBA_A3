@@ -1,9 +1,29 @@
 #include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: cba_2doptics_fnc_loadScriptedOptic
+
+Description:
+    Sets up the CBA_ScriptedOptic weapon info display and adds the draw script.
+
+Parameters:
+    _display - CBA weapon info display <DISPLAY>
+
+Returns:
+    Nothing.
+
+Examples:
+    (begin example)
+        _weaponInfoDisplay call cba_2doptics_fnc_loadScriptedOptic;
+    (end)
+
+Author:
+    commy2
+---------------------------------------------------------------------------- */
 
 if (isNil QGVAR(OpticReticleDetailTextures) || {GVAR(OpticReticleDetailTextures) isEqualTo []}) then {
-    BWA3_LOGWARNING("No scripted reticle info found.");
+    WARNING("No scripted reticle info found.");
     private _unit = call CBA_fnc_currentUnit;
-    _unit call BWA3_fnc_updateOpticInfo;
+    _unit call FUNC(updateOpticInfo);
 };
 
 params ["_display"];
@@ -57,5 +77,7 @@ _ctrlBodyNight ctrlCommit 0;
         removeMissionEventHandler ["Draw3D", _thisId];
     };
 
-    _thisArgs call BWA3_fnc_animateReticle;
+    _thisArgs call FUNC(animateScriptedOptic);
 }, _display] call CBA_fnc_addBISEventHandler;
+
+nil
