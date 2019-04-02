@@ -12,5 +12,32 @@
             <Polish>Community Base Addons - Zdarzenia</Polish>
             <Turkish>Community Base Addons - Durumlar</Turkish>
         </Key>
+        <Key ID="STR_CBA_Events_Category">
+            <English>CBA Events</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventMode">
+            <English>Weapon Event Mode</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeTooltip">
+            <English>Mode of bolting or pumping weapons supporting Weapon Animations Framework.</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeOptic">
+            <English>Leave Optics View</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeOpticTooltip">
+            <English>Bolt or rack weapon by leaving optics view.</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeTriggerRelease">
+            <English>Release Trigger</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeTriggerReleaseTooltip">
+            <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeTriggerPress">
+            <English>Press Trigger</English>
+        </Key>
+        <Key ID="STR_CBA_Events_WeaponEventModeTriggerPressTooltip">
+            <English>Bolt or rack weapon by pressing the trigger again.</English>
+        </Key>
     </Package>
 </Project>
