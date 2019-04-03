@@ -2,6 +2,7 @@
 
 #include "initSettings.sqf"
 
+if (getNumber (configFile >> "CBA_useScriptedOpticsFramework") != 1) exitWith {};
 if (!hasInterface) exitWith {};
 
 ADDON = false;
@@ -45,25 +46,31 @@ GVAR(OpticBodyTextureNight) = "";
 // Handle Arsenal: Switch back to normal classes.
 GVAR(inArsenal) = false;
 
-private _fnc_arsenalOpened = {
+[QGVAR(arsenalOpened), {
     GVAR(inArsenal) = true;
     private _unit = call CBA_fnc_currentUnit;
     _unit call FUNC(changePIPOpticClass);
     _unit call FUNC(changeCarryHandleOpticClass);
-};
+}] call CBA_fnc_addEventHandler;
 
-[missionNamespace, "arsenalOpened", _fnc_arsenalOpened] call BIS_fnc_addScriptedEventHandler;
-["ace_arsenal_displayOpened", _fnc_arsenalOpened] call CBA_fnc_addEventHandler; // @todo, move to ACE
+[missionNamespace, "arsenalOpened", {
+    isNil {
+        QGVAR(arsenalOpened) call CBA_fnc_localEvent;
+    };
+}] call BIS_fnc_addScriptedEventHandler;
 
-private _fnc_arsenalClosed = {
+[QGVAR(arsenalClosed), {
     GVAR(inArsenal) = false;
     private _unit = call CBA_fnc_currentUnit;
     _unit call FUNC(changeCarryHandleOpticClass);
     [FUNC(restartCamera), [_unit, true]] call CBA_fnc_execNextFrame;
-};
+}] call CBA_fnc_addEventHandler;
 
-[missionNamespace, "arsenalClosed", _fnc_arsenalClosed] call BIS_fnc_addScriptedEventHandler;
-["ace_arsenal_displayClosed", _fnc_arsenalClosed] call CBA_fnc_addEventHandler; // @todo, move to ACE
+[missionNamespace, "arsenalClosed",
+    isNil {
+        QGVAR(arsenalClosed) call CBA_fnc_localEvent;
+    };
+}] call BIS_fnc_addScriptedEventHandler;
 
 // Link classes by config.
 GVAR(PIPOptics) = [] call CBA_fnc_createNamespace;

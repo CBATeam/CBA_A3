@@ -18,3 +18,5 @@ class CfgPatches {
 #include "CfgPIPItems.hpp"
 #include "CfgCarryHandleOptics.hpp"
 #include "RscInGameUI.hpp"
+
+CBA_useScriptedOpticsFramework = 1;

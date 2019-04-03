@@ -1,5 +1,6 @@
 #include "script_component.hpp"
 
+if (getNumber (configFile >> "CBA_useScriptedOpticsFramework") != 1) exitWith {};
 if (!hasInterface) exitWith {};
 
 // Init pip camera.
@@ -7,8 +8,3 @@ if (!hasInterface) exitWith {};
     params ["_unit", "_camera"];
     [_unit, _camera isEqualTo ""] call FUNC(restartCamera);
 }, true] call CBA_fnc_addPlayerEventHandler;
-
-// @todo, move to ACE
-//["ace_arsenal_displayClosed", {
-//    [FUNC(restartCamera), [[] call CBA_fnc_currentUnit, true]] call CBA_fnc_execNextFrame;
-//}] call CBA_fnc_addEventHandler;
