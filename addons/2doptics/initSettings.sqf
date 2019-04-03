@@ -3,8 +3,9 @@
     "CHECKBOX",
     LSTRING(UsePIP),
     LSTRING(Category),
-    true, {
+    true, // default value
+    2, // isGlobal
+    {
 
-    },
-    2
+    }
 ] call EFUNC(settings,init);

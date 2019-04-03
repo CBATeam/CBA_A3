@@ -5,4 +5,4 @@ PREP(loadScriptedOptic);
 PREP(animateScriptedOptic);
 PREP(animateOpticRecoil);
 PREP(changePIPOpticClass);
-PREP(changeCarryHandleOticClass);
+PREP(changeCarryHandleOpticClass);
