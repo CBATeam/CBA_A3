@@ -21,6 +21,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+if (!GVAR(usePipOptics)) exitWith {};
+
 params ["_unit", ["_reset", true]];
 
 if (_reset) then {

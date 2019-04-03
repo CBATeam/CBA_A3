@@ -20,11 +20,6 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-// Force unscheduled environment.
-if (canSuspend) exitWith {
-    isNil FUNC(changeCarryHandleOpticClass);
-};
-
 params ["_unit"];
 
 private _gun = primaryWeapon _unit;

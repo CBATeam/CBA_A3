@@ -20,11 +20,6 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-// Force unscheduled environment.
-if (canSuspend) exitWith {
-    isNil FUNC(changePIPOpticClass);
-};
-
 params ["_unit"];
 
 if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
