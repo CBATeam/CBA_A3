@@ -41,6 +41,11 @@ GVAR(OpticBodyTextureNight) = "";
     };
 }] call CBA_fnc_addPlayerEventHandler;
 
+["featureCamera", {
+    params ["_unit", "_camera"];
+    [_unit, _camera isEqualTo ""] call FUNC(restartCamera);
+}] call CBA_fnc_addPlayerEventHandler;
+
 ["CAManBase", "Fired", FUNC(animateOpticRecoil)] call CBA_fnc_addClassEventHandler;
 
 // Handle Arsenal: Switch back to normal classes.
