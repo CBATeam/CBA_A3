@@ -14,7 +14,7 @@ class Stage1 {
     class uvTransform {
         aside[] = {1,0,0};
         up[] = {0,1,0};
-        dir[] = {0,0,0};
+        dir[] = {0,0,1};
         pos[] = {0,0,0};
     };
 };
