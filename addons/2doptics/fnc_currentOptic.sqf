@@ -3,7 +3,7 @@
 Internal Function: cba_2doptics_fnc_currentOptic
 
 Description:
-    Creates a new setting for that session.
+    Reports the currently selected optic classname of a person.
 
 Parameters:
     _unit - A unit with weapon <OBJECT>
