@@ -38,9 +38,9 @@ private _config = configFile >> "CfgWeapons";
 
 // primary weapon
 if (HAS_CARRY_HANDLE(_gun) && {!GVAR(inArsenal)}) then {
-    _gunOptic = BWA3_CarryHandleOptics getVariable _gunOptic;
+    _gunOptic = GVAR(CarryHandleOptics) getVariable _gunOptic;
 } else {
-    _gunOptic = BWA3_NonCarryHandleOptics getVariable _gunOptic;
+    _gunOptic = GVAR(NonCarryHandleOptics) getVariable _gunOptic;
 };
 
 if (!isNil "_gunOptic") then {
@@ -50,9 +50,9 @@ if (!isNil "_gunOptic") then {
 
 // secondary weapon
 if (HAS_CARRY_HANDLE(_launcher) && {!GVAR(inArsenal)}) then {
-    _launcherOptic = BWA3_CarryHandleOptics getVariable _launcherOptic;
+    _launcherOptic = GVAR(CarryHandleOptics) getVariable _launcherOptic;
 } else {
-    _launcherOptic = BWA3_NonCarryHandleOptics getVariable _launcherOptic;
+    _launcherOptic = GVAR(NonCarryHandleOptics) getVariable _launcherOptic;
 };
 
 if (!isNil "_launcherOptic") then {
@@ -62,9 +62,9 @@ if (!isNil "_launcherOptic") then {
 
 // handgun
 if (HAS_CARRY_HANDLE(_pistol) && {!GVAR(inArsenal)}) then {
-    _pistolOptic = BWA3_CarryHandleOptics getVariable _pistolOptic;
+    _pistolOptic = GVAR(CarryHandleOptics) getVariable _pistolOptic;
 } else {
-    _pistolOptic = BWA3_NonCarryHandleOptics getVariable _pistolOptic;
+    _pistolOptic = GVAR(NonCarryHandleOptics) getVariable _pistolOptic;
 };
 
 if (!isNil "_pistolOptic") then {

@@ -64,7 +64,7 @@
 
 #define RECENTER_TIME 0.09
 
-// CfgWeapons classes
+// CfgWeapons classes, @todo, move to doc
 #define PIP(optic) class DOUBLES(optic,pip): optic {\
     GVAR(nonPIPOptic) = #optic;\
     scope = 1;\
@@ -74,19 +74,18 @@
     };\
 }
 
-/*
- //BWA3_G36CarryHandleScriptedOptic_base
-#define CARRY_HANDLE(optic,weapon) class DOUBLES(optic,weapon): optic {\
+// @todo, support multiple carry handle optic weapons
+#define CARRY_HANDLE(optic) class optic##_G36A2: optic {\
     scope = 1;\
 \
-    class CBA_ScriptedOptic: GVAR(CarryHandleScriptedOptic_base) {};\
+    class CBA_ScriptedOptic: CBA_G36CarryHandleScriptedOptic_base {};\
     weaponInfoType = "RscWeaponZeroing";\
 \
     class ItemInfo: ItemInfo {\
         modelOptics = QPATHTOF(cba_optic_big_90.p3d);\
 \
         class OpticsModes: OpticsModes {\
-            class Scope: BWA3_G36CarryHandleScope_base {};\
+            class Scope: CBA_G36CarryHandleScope_base {};\
             class Kolimator: Kolimator {};\
         };\
     };\
@@ -94,4 +93,4 @@
 \
 PIP(classname##_G36A2)
 
-#define HAS_CARRY_HANDLE(weapon) (getNumber (configFile >> "CfgWeapons" >> (weapon) >> "BWA3_useCarryHandleOptics") isEqualTo 1)
+#define HAS_CARRY_HANDLE(weapon) (getNumber (configFile >> "CfgWeapons" >> (weapon) >> "CBA_useCarryHandleOptics") isEqualTo 1)

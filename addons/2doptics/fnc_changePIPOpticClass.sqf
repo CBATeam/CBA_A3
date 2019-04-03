@@ -33,7 +33,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     private _gunItems = primaryWeaponItems _unit;
     private _gunMagazine = primaryWeaponMagazine _unit;
 
-    private _pipGun = BWA3_PIPOptics getVariable _gun;
+    private _pipGun = GVAR(PIPOptics) getVariable _gun;
 
     if (!isNil "_pipGun") then {
         private _muzzle = currentMuzzle _unit;
@@ -55,7 +55,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     {
         _x params ["_weapon", "", "", "_optic"]; // ["_weapon", "_muzzle", "_pointer", "_optic", "_magazine", "_bipod"]
 
-        private _pipOptic = BWA3_PIPOptics getVariable _optic;
+        private _pipOptic = GVAR(PIPOptics) getVariable _optic;
 
         if (!isNil "_pipOptic") then {
             _unit addWeaponItem [_weapon, _pipOptic];
@@ -68,7 +68,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     private _gunItems = primaryWeaponItems _unit;
     private _gunMagazine = primaryWeaponMagazine _unit;
 
-    private _normalGun = BWA3_NonPIPOptics getVariable _gun;
+    private _normalGun = GVAR(NonPIPOptics) getVariable _gun;
 
     if (!isNil "_normalGun") then {
         private _muzzle = currentMuzzle _unit;
@@ -90,7 +90,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     {
         _x params ["_weapon", "", "", "_optic"];
 
-        private _normalOptic = BWA3_NonPIPOptics getVariable _optic;
+        private _normalOptic = GVAR(NonPIPOptics) getVariable _optic;
 
         if (!isNil "_normalOptic") then {
             _unit addWeaponItem [_weapon, _normalOptic];

@@ -6,7 +6,7 @@ Description:
     Caches the current optic's parameters in mission namespace variables.
 
 Parameters:
-    _unit  - The avatar <OBJECT>
+    _unit - The avatar <OBJECT>
 
 Returns:
     Nothing.

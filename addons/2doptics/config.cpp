@@ -15,4 +15,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "CfgPIPItems.hpp"
+#include "CfgCarryHandleOptics.hpp"
 #include "RscInGameUI.hpp"

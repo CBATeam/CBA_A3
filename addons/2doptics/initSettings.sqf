@@ -3,5 +3,8 @@
     "CHECKBOX",
     LSTRING(UsePIP),
     LSTRING(Category),
-    true
+    true, {
+
+    },
+    2
 ] call EFUNC(settings,init);
