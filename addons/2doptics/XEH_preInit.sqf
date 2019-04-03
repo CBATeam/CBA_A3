@@ -66,7 +66,7 @@ GVAR(inArsenal) = false;
     [FUNC(restartCamera), [_unit, true]] call CBA_fnc_execNextFrame;
 }] call CBA_fnc_addEventHandler;
 
-[missionNamespace, "arsenalClosed",
+[missionNamespace, "arsenalClosed", {
     isNil {
         QGVAR(arsenalClosed) call CBA_fnc_localEvent;
     };
