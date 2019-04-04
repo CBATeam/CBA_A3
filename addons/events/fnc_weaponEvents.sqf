@@ -77,14 +77,14 @@ if (!_isEmpty || _onEmpty) then {
         _optic = _weapon;
     };
 
-    private _trigger = CBA_triggerPressed;
+    private _triggerReleased = false;
 
     [{
         params [
             "_unit", "_weapon", "_muzzle", "_optic",
             "_handAction", "_sound", "_soundSource",
             "_expectedMagazineCount", "_time", "_delay",
-            "_trigger"
+            "_triggerReleased"
         ];
 
         // exit if unit switched weapon
@@ -96,13 +96,18 @@ if (!_isEmpty || _onEmpty) then {
         // mode 0: while in gunner view, keep waiting
         // mode 1: while holding trigger, keep waiting
         // mode 2: while holding trigger and not pressing it, keep waiting
-        private _wait = (GVAR(weaponEventMode) == 0 && cameraView == "GUNNER" && _optic != "") ||
-                        {GVAR(weaponEventMode) == 1 && CBA_triggerPressed} ||
-                        {GVAR(weaponEventMode) == 2 && (_trigger || !CBA_triggerPressed)};
+        private _wait = call ([{
+            cameraView == "GUNNER" && _optic != ""
+        }, {
+            GVAR(triggerPressed)
+        }, {
+            !_triggerReleased || !GVAR(triggerPressed)
+        }] select GVAR(weaponEventMode));
 
         if (_wait) exitWith {
-            if (GVAR(weaponEventMode) == 2) then {
-                _this set [9, CBA_triggerPressed];
+            // Detect trigger release
+            if (GVAR(weaponEventMode) == 2 && !GVAR(triggerPressed) then {
+                _this set [9, true];
             };
 
             _this set [8, CBA_missionTime];
@@ -126,6 +131,6 @@ if (!_isEmpty || _onEmpty) then {
         _unit, _weapon, _muzzle, _optic,
         _handAction, _sound, call _fnc_soundSource,
         _expectedMagazineCount, CBA_missionTime, _delay,
-        _trigger
+        _triggerReleased
     ]] call CBA_fnc_waitUntilAndExecute;
 };
