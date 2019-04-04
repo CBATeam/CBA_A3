@@ -73,7 +73,7 @@ if (isServer) then {
     params ["", "_button"];
 
     // TODO Support non-LMB (?)
-    if (_button == 0) {
+    if (_button == 0) then {
         GVAR(triggerPressed) = true;
     };
 }] call CBA_fnc_addDisplayHandler;
@@ -82,7 +82,7 @@ if (isServer) then {
     params ["", "_button"];
 
     // TODO Support non-LMB (?)
-    if (_button == 0) {
+    if (_button == 0) then {
         GVAR(triggerPressed) = false;
     };
 }] call CBA_fnc_addDisplayHandler;

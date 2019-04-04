@@ -106,8 +106,8 @@ if (!_isEmpty || _onEmpty) then {
 
         if (_wait) exitWith {
             // Detect trigger release
-            if (GVAR(weaponEventMode) == 2 && !GVAR(triggerPressed) then {
-                _this set [9, true];
+            if (GVAR(weaponEventMode) == 2 && !GVAR(triggerPressed)) then {
+                _this set [10, true];
             };
 
             _this set [8, CBA_missionTime];

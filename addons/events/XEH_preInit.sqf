@@ -25,7 +25,12 @@ if (isServer) then {
 };
 
 #include "backwards_comp.sqf"
-#include "initSettings.sqf"
+
+["CBA_settingsInitialized", {
+    // Events required by settings
+    // make sure we load events settings after
+    #include "initSettings.sqf"
+}] call CBA_fnc_addEventHandler;
 
 ADDON = true;
 
