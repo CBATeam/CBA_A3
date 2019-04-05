@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 if (!hasInterface) exitWith {};
-if (configProperties [configFile >> "CBA_CfgPIPItems"] isEqualTo []) exitWith {};
-if (configProperties [configFile >> "CBA_CfgCarryHandleTypes"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []) exitWith {};
 
 #include "XEH_PREP.sqf"

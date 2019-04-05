@@ -3,8 +3,8 @@
 #include "initSettings.sqf"
 
 if (!hasInterface) exitWith {};
-if (configProperties [configFile >> "CBA_CfgPIPItems"] isEqualTo []) exitWith {};
-if (configProperties [configFile >> "CBA_CfgCarryHandleTypes"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []) exitWith {};
 
 ADDON = false;
 
@@ -91,7 +91,7 @@ GVAR(NonPIPOptics) = [] call CBA_fnc_createNamespace;
     if (isNil {GVAR(NonPIPOptics) getVariable _pipOptic}) then {
         GVAR(NonPIPOptics) setVariable [_pipOptic, _normalOptic];
     };
-} forEach configProperties [configFile >> "CBA_CfgPIPItems", "isText _x"];
+} forEach configProperties [configFile >> "CBA_PIPItems", "isText _x"];
 
 GVAR(CarryHandleOptics) = [] call CBA_fnc_createNamespace;
 GVAR(NonCarryHandleOptics) = [] call CBA_fnc_createNamespace;
@@ -109,6 +109,6 @@ GVAR(NonCarryHandleOptics) = [] call CBA_fnc_createNamespace;
             GVAR(NonCarryHandleOptics) setVariable [_carryHandleOptic, _normalOptic];
         };
     } forEach configProperties [_x, "isText _x"];
-} forEach ("true" configClasses (configFile >> "CBA_CfgCarryHandleTypes"));
+} forEach ("true" configClasses (configFile >> "CBA_CarryHandleTypes"));
 
 ADDON = true;
