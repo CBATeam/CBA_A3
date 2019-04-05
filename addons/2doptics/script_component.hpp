@@ -63,32 +63,3 @@
 #define RETICLE_SHIFT_Y_MAX -0.014
 
 #define RECENTER_TIME 0.09
-
-// CfgWeapons classes, @todo, move to doc
-#define PIP(optic) class DOUBLES(optic,pip): optic {\
-    GVAR(nonPIPOptic) = #optic;\
-    scope = 1;\
-\
-    class ItemInfo: ItemInfo {\
-        modelOptics = QPATHTOF(cba_optic_big_pip.p3d);\
-    };\
-}
-
-// @todo, support multiple carry handle optic weapons
-#define CARRY_HANDLE(optic) class optic##_G36A2: optic {\
-    scope = 1;\
-\
-    class CBA_ScriptedOptic: CBA_G36CarryHandleScriptedOptic_base {};\
-    weaponInfoType = "RscWeaponZeroing";\
-\
-    class ItemInfo: ItemInfo {\
-        modelOptics = QPATHTOF(cba_optic_big_90.p3d);\
-\
-        class OpticsModes: OpticsModes {\
-            class Scope: CBA_G36CarryHandleScope_base {};\
-            class Kolimator: Kolimator {};\
-        };\
-    };\
-};\
-\
-PIP(classname##_G36A2)
