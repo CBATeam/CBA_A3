@@ -2,8 +2,9 @@
 
 #include "initSettings.sqf"
 
-if (getNumber (configFile >> "CBA_useScriptedOpticsFramework") != 1) exitWith {};
 if (!hasInterface) exitWith {};
+if (configProperties [configFile >> "CBA_CfgPIPItems"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_CfgCarryHandleTypes"] isEqualTo []) exitWith {};
 
 ADDON = false;
 
@@ -90,20 +91,24 @@ GVAR(NonPIPOptics) = [] call CBA_fnc_createNamespace;
     if (isNil {GVAR(NonPIPOptics) getVariable _pipOptic}) then {
         GVAR(NonPIPOptics) setVariable [_pipOptic, _normalOptic];
     };
-} forEach configProperties [configFile >> "CBA_CfgPIPItems"];
+} forEach configProperties [configFile >> "CBA_CfgPIPItems", "isText _x"];
 
 GVAR(CarryHandleOptics) = [] call CBA_fnc_createNamespace;
 GVAR(NonCarryHandleOptics) = [] call CBA_fnc_createNamespace;
 
 {
-    private _normalOptic = configName _x;
-    private _carryHandleOptic = getText _x;
+    private _carryHandleType = configName _x;
 
-    GVAR(CarryHandleOptics) setVariable [_normalOptic, _carryHandleOptic];
+    {
+        private _normalOptic = configName _x;
+        private _carryHandleOptic = getText _x;
 
-    if (isNil {GVAR(NonCarryHandleOptics) getVariable _carryHandleOptic}) then {
-        GVAR(NonCarryHandleOptics) setVariable [_carryHandleOptic, _normalOptic];
-    };
-} forEach configProperties [configFile >> "CBA_CfgCarryHandleOptics"];
+        GVAR(CarryHandleOptics) setVariable [format ["%1@%2", _normalOptic, _carryHandleType], _carryHandleOptic];
+
+        if (isNil {GVAR(NonCarryHandleOptics) getVariable _carryHandleOptic}) then {
+            GVAR(NonCarryHandleOptics) setVariable [_carryHandleOptic, _normalOptic];
+        };
+    } forEach configProperties [_x, "isText _x"];
+} forEach ("true" configClasses (configFile >> "CBA_CfgCarryHandleOptics"));
 
 ADDON = true;

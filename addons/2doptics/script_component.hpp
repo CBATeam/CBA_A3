@@ -92,5 +92,3 @@
 };\
 \
 PIP(classname##_G36A2)
-
-#define HAS_CARRY_HANDLE(weapon) (getNumber (configFile >> "CfgWeapons" >> (weapon) >> "CBA_useCarryHandleOptics") isEqualTo 1)

@@ -22,18 +22,22 @@ Author:
 
 params ["_unit"];
 
-private _gun = primaryWeapon _unit;
-private _gunOptic = primaryWeaponItems _unit select 2;
-private _launcher = secondaryWeapon _unit;
-private _launcherOptic = secondaryWeaponItems _unit select 2;
-private _pistol = handgunWeapon _unit;
-private _pistolOptic = handgunItems _unit select 2;
-
 private _config = configFile >> "CfgWeapons";
 
+private _gun = primaryWeapon _unit;
+private _gunOptic = primaryWeaponItems _unit select 2;
+private _gunCarryHandleType = getText (_config >> _gun >> "CBA_CarryHandleType");
+private _launcher = secondaryWeapon _unit;
+private _launcherOptic = secondaryWeaponItems _unit select 2;
+private _launcherCarryHandleType = getText (_config >> _launcher >> "CBA_CarryHandleType");
+private _pistol = handgunWeapon _unit;
+private _pistolOptic = handgunItems _unit select 2;
+private _pistolCarryHandleType = getText (_config >> _pistol >> "CBA_CarryHandleType");
+
 // primary weapon
-if (HAS_CARRY_HANDLE(_gun) && {!GVAR(inArsenal)}) then {
-    _gunOptic = GVAR(CarryHandleOptics) getVariable _gunOptic;
+if (_gunCarryHandleType != "" && {!GVAR(inArsenal)}) then {
+    _gunOptic = GVAR(NonCarryHandleOptics) getVariable [_gunOptic, ""];
+    _gunOptic = GVAR(CarryHandleOptics) getVariable format ["%1@%2", _gunOptic, _gunCarryHandleType];
 } else {
     _gunOptic = GVAR(NonCarryHandleOptics) getVariable _gunOptic;
 };
@@ -44,8 +48,9 @@ if (!isNil "_gunOptic") then {
 };
 
 // secondary weapon
-if (HAS_CARRY_HANDLE(_launcher) && {!GVAR(inArsenal)}) then {
-    _launcherOptic = GVAR(CarryHandleOptics) getVariable _launcherOptic;
+if (_launcherCarryHandleType != "" && {!GVAR(inArsenal)}) then {
+    _launcherOptic = GVAR(NonCarryHandleOptics) getVariable [_launcherOptic, ""];
+    _launcherOptic = GVAR(CarryHandleOptics) getVariable format ["%1@%2", _launcherOptic, _launcherCarryHandleType];
 } else {
     _launcherOptic = GVAR(NonCarryHandleOptics) getVariable _launcherOptic;
 };
@@ -56,8 +61,9 @@ if (!isNil "_launcherOptic") then {
 };
 
 // handgun
-if (HAS_CARRY_HANDLE(_pistol) && {!GVAR(inArsenal)}) then {
-    _pistolOptic = GVAR(CarryHandleOptics) getVariable _pistolOptic;
+if (_pistolCarryHandleType != "" && {!GVAR(inArsenal)}) then {
+    _pistolOptic = GVAR(NonCarryHandleOptics) getVariable [_pistolOptic, ""];
+    _pistolOptic = GVAR(CarryHandleOptics) getVariable format ["%1@%2", _pistolOptic, _pistolCarryHandleType];
 } else {
     _pistolOptic = GVAR(NonCarryHandleOptics) getVariable _pistolOptic;
 };

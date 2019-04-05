@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 
-if (getNumber (configFile >> "CBA_useScriptedOpticsFramework") != 1) exitWith {};
 if (!hasInterface) exitWith {};
+if (configProperties [configFile >> "CBA_CfgPIPItems"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_CfgCarryHandleTypes"] isEqualTo []) exitWith {};
 
 #include "XEH_PREP.sqf"

@@ -22,6 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (!GVAR(usePipOptics)) exitWith {};
+if (configProperties [configFile >> "CBA_CfgPIPItems"] isEqualTo []) exitWith {};
 
 params ["_unit", ["_reset", true]];
 
