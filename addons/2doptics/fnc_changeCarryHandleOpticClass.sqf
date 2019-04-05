@@ -22,16 +22,16 @@ Author:
 
 params ["_unit"];
 
-private _config = configFile >> "CfgWeapons";
-
 private _gun = primaryWeapon _unit;
 private _gunOptic = primaryWeaponItems _unit select 2;
-private _gunCarryHandleType = getText (_config >> _gun >> "CBA_CarryHandleType");
 private _launcher = secondaryWeapon _unit;
 private _launcherOptic = secondaryWeaponItems _unit select 2;
-private _launcherCarryHandleType = getText (_config >> _launcher >> "CBA_CarryHandleType");
 private _pistol = handgunWeapon _unit;
 private _pistolOptic = handgunItems _unit select 2;
+
+private _config = configFile >> "CfgWeapons";
+private _gunCarryHandleType = getText (_config >> _gun >> "CBA_CarryHandleType");
+private _launcherCarryHandleType = getText (_config >> _launcher >> "CBA_CarryHandleType");
 private _pistolCarryHandleType = getText (_config >> _pistol >> "CBA_CarryHandleType");
 
 // primary weapon
