@@ -109,6 +109,6 @@ GVAR(NonCarryHandleOptics) = [] call CBA_fnc_createNamespace;
             GVAR(NonCarryHandleOptics) setVariable [_carryHandleOptic, _normalOptic];
         };
     } forEach configProperties [_x, "isText _x"];
-} forEach ("true" configClasses (configFile >> "CBA_CfgCarryHandleOptics"));
+} forEach ("true" configClasses (configFile >> "CBA_CfgCarryHandleTypes"));
 
 ADDON = true;
