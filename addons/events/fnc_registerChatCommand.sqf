@@ -52,7 +52,7 @@ if (_code isEqualTo {}) exitWith {
 _availableFor = toLower _availableFor;
 
 if !(_availableFor in ["all", "admin", "adminlogged"]) exitWith {
-    WARNING_1("wrong argument %2 for chat command %1.",str _command,str _availableFor);
+    WARNING_2("wrong argument %2 for chat command %1.",str _command,str _availableFor);
     false
 };
 
