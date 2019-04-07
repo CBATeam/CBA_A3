@@ -102,11 +102,11 @@ if (!_isEmpty || _onEmpty) then {
             GVAR(triggerPressed)
         }, {
             !_triggerReleased || !GVAR(triggerPressed)
-        }] select GVAR(weaponEventMode));
+        }] select GVAR(repetitionMode));
 
         if (_wait) exitWith {
             // Detect trigger release
-            if (GVAR(weaponEventMode) == 2 && !GVAR(triggerPressed)) then {
+            if (GVAR(repetitionMode) == 2 && !GVAR(triggerPressed)) then {
                 _this set [10, true];
             };
 
