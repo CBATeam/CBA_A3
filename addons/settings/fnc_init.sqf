@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_settings_fnc_init
+Internal Function: CBA_settings_fnc_init
 
 Description:
     Creates a new setting for that session.
