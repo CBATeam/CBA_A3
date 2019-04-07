@@ -9,4 +9,4 @@
         [LLSTRING(WeaponEventModeTriggerPress), LLSTRING(WeaponEventModeTriggerPressTooltip)] // Click trigger again
     ], 1],
     2
-] call (uiNamespace getVariable "cba_settings_fnc_init");
+] call CBA_fnc_addSetting;
