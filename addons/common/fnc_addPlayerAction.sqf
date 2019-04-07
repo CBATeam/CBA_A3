@@ -27,7 +27,7 @@ Author:
 */
 
 params ["_actionArray"];
-TRACE_1(_this);
+TRACE_1("",_this);
 
 private _return = if (isDedicated) then {
     WARNING("Function ran on a dedicated server. Function only usable on a client. Action: " + str _actionArray);
