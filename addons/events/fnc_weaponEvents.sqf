@@ -77,11 +77,14 @@ if (!_isEmpty || _onEmpty) then {
         _optic = _weapon;
     };
 
+    private _triggerReleased = false;
+
     [{
         params [
             "_unit", "_weapon", "_muzzle", "_optic",
             "_handAction", "_sound", "_soundSource",
-            "_expectedMagazineCount", "_time", "_delay"
+            "_expectedMagazineCount", "_time", "_delay",
+            "_triggerReleased"
         ];
 
         // exit if unit switched weapon
@@ -90,8 +93,23 @@ if (!_isEmpty || _onEmpty) then {
         // exit if unit started reloading
         if (count magazines _unit != _expectedMagazineCount) exitWith {true};
 
-        // while in gunner view, keep waiting
-        if (cameraView == "GUNNER" && _optic != "") exitWith {
+        // mode 0: while in gunner view, keep waiting
+        // mode 1: while holding trigger, keep waiting
+        // mode 2: while holding trigger and not pressing it, keep waiting
+        private _wait = call ([{
+            cameraView == "GUNNER" && _optic != ""
+        }, {
+            GVAR(triggerPressed)
+        }, {
+            !_triggerReleased || !GVAR(triggerPressed)
+        }] select GVAR(repetitionMode));
+
+        if (_wait) exitWith {
+            // Detect trigger release
+            if (GVAR(repetitionMode) == 2 && !GVAR(triggerPressed)) then {
+                _this set [10, true];
+            };
+
             _this set [8, CBA_missionTime];
             _unit setWeaponReloadingTime [_unit, _muzzle, 1];
             false
@@ -112,6 +130,7 @@ if (!_isEmpty || _onEmpty) then {
     }, {}, [
         _unit, _weapon, _muzzle, _optic,
         _handAction, _sound, call _fnc_soundSource,
-        _expectedMagazineCount, CBA_missionTime, _delay
+        _expectedMagazineCount, CBA_missionTime, _delay,
+        _triggerReleased
     ]] call CBA_fnc_waitUntilAndExecute;
 };

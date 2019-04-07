@@ -12,5 +12,41 @@
             <Polish>Community Base Addons - Zdarzenia</Polish>
             <Turkish>Community Base Addons - Durumlar</Turkish>
         </Key>
+        <Key ID="STR_CBA_Events_WeaponsCategory">
+            <English>CBA Weapons</English>
+            <German>CBA Waffen</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionMode">
+            <English>Weapon Repetition Mode</English>
+            <German>Repetierwaffe laden</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeTooltip">
+            <English>Mode of bolting or pumping weapons.</English>
+            <German>Art eine Waffe zu repetieren.</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeOptic">
+            <English>Leave Optics View</English>
+            <German>Optikansicht verlassen</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
+            <English>Bolt or rack weapon by leaving optics view.</English>
+            <German>Waffe beim Verlassen der Optikansicht repetieren.</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
+            <English>Release Trigger</English>
+            <German>Abzug losslassen</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
+            <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
+            <German>Waffe beim Loslassen des Abzugs repetieren (Abzug halten, um Repetieren zu verzögern).</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
+            <English>Press Trigger</English>
+            <German>Abzug betätigen</German>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
+            <English>Bolt or rack weapon by pressing the trigger again.</English>
+            <German>Waffe beim erneuten Betätigen des Abzugs repetieren.</German>
+        </Key>
     </Package>
 </Project>
