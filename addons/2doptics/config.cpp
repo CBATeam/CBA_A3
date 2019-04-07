@@ -8,7 +8,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common"};
+        requiredAddons[] = {"cba_common","cba_jr"};
         version = VERSION;
         authors[] = {"commy2"};
     };
@@ -18,3 +18,4 @@ class CfgPatches {
 #include "CfgPIPItems.hpp"
 #include "CfgCarryHandleTypes.hpp"
 #include "RscInGameUI.hpp"
+#include "CfgWeapons.hpp"
