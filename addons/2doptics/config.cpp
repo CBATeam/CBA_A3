@@ -18,4 +18,3 @@ class CfgPatches {
 #include "CfgPIPItems.hpp"
 #include "CfgCarryHandleTypes.hpp"
 #include "RscInGameUI.hpp"
-#include "CfgWeapons.hpp"
