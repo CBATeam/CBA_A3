@@ -21,15 +21,15 @@
 #define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
 
 // control ids
-#define IDC_RETICLE 1000
-#define IDC_BODY 1001
-#define IDC_BODY_NIGHT 1002
-#define IDC_RETICLE_SAFEZONE 1010
-#define IDC_BLACK_SCOPE 1020
-#define IDC_BLACK_LEFT 1021
-#define IDC_BLACK_RIGHT 1022
-#define IDC_RED_DOT 1030
-#define IDC_MAGNIFICATION 1040
+#define IDC_RETICLE 4000
+#define IDC_BODY 4001
+#define IDC_BODY_NIGHT 4002
+#define IDC_RETICLE_SAFEZONE 4010
+#define IDC_BLACK_SCOPE 4020
+#define IDC_BLACK_LEFT 4021
+#define IDC_BLACK_RIGHT 4022
+#define IDC_RED_DOT 4030
+#define IDC_MAGNIFICATION 4040
 #define IDC_ENABLE_ZOOM 9999
 
 // control positions

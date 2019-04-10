@@ -46,6 +46,11 @@ _ctrlBlackRight ctrlShow _isUsingOptic;
 //_ctrlZeroing ctrlShow _isUsingOptic;
 _ctrlMagnification ctrlShow _isUsingOptic;
 
+if !(_isUsingOptic isEqualTo GVAR(IsUsingOptic)) then {
+    GVAR(IsUsingOptic) = _isUsingOptic;
+    [QGVAR(UsingOptic), [_display, _isUsingOptic]] call CBA_fnc_localEvent;
+};
+
 if !(_isUsingOptic) exitWith {};
 
 GVAR(camera) setPosASL AGLToASL positionCameraToWorld [0,0,0.4];

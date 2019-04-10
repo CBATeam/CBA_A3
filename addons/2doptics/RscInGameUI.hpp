@@ -13,6 +13,7 @@ class RscInGameUI {
         onLoad = QUOTE(call FUNC(loadScriptedOptic));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification"};
 
+        // Idea by Taosenai. This control can be used to determine whether the scope or the kolimator is used.
         class CA_FOVMode: RscOpticsValue {
             idc = 154;
             w = 0;
@@ -44,8 +45,8 @@ class RscInGameUI {
             h = POS_H(2);
         };
 
-        // These are just black side panels to cover the areas that the optics p3d doesn't cover
-        // It will ONLY effect tripple head users as (safeZoneX == safeZoneXAbs) for everyone else
+        // These are just black side panels to cover the areas that the optics p3d doesn't cover.
+        // It will ONLY effect tripple head users, as (safeZoneX == safeZoneXAbs) for everyone else.
         class TrippleHeadLeft: RscText {
             idc = IDC_BLACK_LEFT;
             x = "safeZoneXAbs";
@@ -90,7 +91,7 @@ class RscInGameUI {
             };
         };
 
-        class EnableAutoZoom: RscText { // idea by Taosenai. Apparently this can be used via isNil check to determine wheter the scope or the kolimator is used
+        class EnableAutoZoom: RscText {
             idc = IDC_ENABLE_ZOOM;
             w = 0;
             h = 0;

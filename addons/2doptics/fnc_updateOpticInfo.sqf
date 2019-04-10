@@ -69,6 +69,6 @@ if (GVAR(OpticBodyTextureNight) isEqualTo "") then {
     GVAR(OpticBodyTextureNight) = GVAR(OpticBodyTexture);
 };
 
-INFO_1("Updated optic info %1.",_optic);
+//INFO_1("Updated optic info %1.",_optic);
 
 nil
