@@ -24,12 +24,10 @@ Author:
 if (!isNil {parsingNamespace getVariable QGVAR(magnification)}) exitWith {};
 
 params ["_unit", "_magnification"];
+private _weapon = currentWeapon _unit;
 private _optic = _unit call FUNC(currentOptic);
 
 // store zeroing
-private _unit = call CBA_fnc_currentUnit;
-private _optic = _unit call FUNC(currentOptic);
-
 private "_discreteZeroingDistances";
 
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
@@ -44,15 +42,15 @@ if (_zeroing isEqualTo -1) then {
 };
 
 parsingNamespace setVariable [QGVAR(magnification), _magnification];
-_unit addPrimaryWeaponItem _optic;
+_unit addWeaponItem [_weapon, _optic];
 parsingNamespace setVariable [QGVAR(zeroing), _zeroing];
 
 [{
-    params ["_unit", "_optic"];
+    params ["_unit", "_weapon", "_optic"];
 
     parsingNamespace setVariable [QGVAR(magnification), nil];
-    _unit addPrimaryWeaponItem _optic;
+    _unit addWeaponItem [_weapon, _optic];
     parsingNamespace setVariable [QGVAR(zeroing), nil];
-}, [_unit, _optic]] call CBA_fnc_execNextFrame;
+}, [_unit, _weapon, _optic]] call CBA_fnc_execNextFrame;
 
 // @todo, rifle, pistol, launcher, plus optics
