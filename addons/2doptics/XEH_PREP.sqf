@@ -8,3 +8,4 @@ PREP(changePIPOpticClass);
 PREP(changeCarryHandleOpticClass);
 PREP(setOpticMagnification);
 PREP(setOpticMagnificationHelper);
+PREP(setOpticMagnificationHelperZeroing);

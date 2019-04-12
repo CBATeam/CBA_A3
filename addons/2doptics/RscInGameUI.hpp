@@ -11,7 +11,7 @@ class RscInGameUI {
 
     class CBA_ScriptedOptic: RscWeaponZeroing {
         onLoad = QUOTE(call FUNC(loadScriptedOptic));
-        controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification"};
+        controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification","ActiveDisplayHelper"};
 
         // Idea by Taosenai. This control can be used to determine whether the scope or the kolimator is used.
         class CA_FOVMode: RscOpticsValue {
@@ -65,10 +65,16 @@ class RscInGameUI {
             idc = IDC_MAGNIFICATION;
             text = "";
         };
+
+        class ActiveDisplayHelper: RscText {
+            idc = IDC_ACTIVE_DISPLAY;
+            w = 0;
+            h = 0;
+        };
     };
 
     class CBA_ScriptedOptic_zooming: CBA_ScriptedOptic {
-        controls[] = {"CA_FOVMode","ScopeBlack","ReticleSafeZone","RedDot","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","EnableAutoZoom","CA_Zeroing","Magnification"};
+        controls[] = {"CA_FOVMode","ScopeBlack","ReticleSafeZone","RedDot","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","EnableAutoZoom","CA_Zeroing","Magnification","ActiveDisplayHelper"};
 
         class RedDot: RscPicture {
             idc = IDC_RED_DOT;

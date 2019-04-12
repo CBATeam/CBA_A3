@@ -30,6 +30,7 @@
 #define IDC_BLACK_RIGHT 4022
 #define IDC_RED_DOT 4030
 #define IDC_MAGNIFICATION 4040
+#define IDC_ACTIVE_DISPLAY 8888
 #define IDC_ENABLE_ZOOM 9999
 
 // control positions

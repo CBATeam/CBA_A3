@@ -50,7 +50,6 @@ GVAR(OpticBodyTextureNight) = "";
             [_unit, GVAR(magnificationCache)] call FUNC(setOpticMagnification);
         };
     };
-    systemChat str _isUsingOptic;
 }] call CBA_fnc_addEventHandler;
 
 ["featureCamera", {

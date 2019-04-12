@@ -21,6 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_display"];
+if (!ctrlShown (_display displayCtrl IDC_ACTIVE_DISPLAY)) exitWith {};
 uiNamespace setVariable [QGVAR(ScriptedOpticDisplay), _display];
 
 private _ctrlRedDot = _display displayCtrl IDC_RED_DOT;
@@ -45,9 +46,6 @@ _ctrlBlackLeft ctrlShow _isUsingOptic;
 _ctrlBlackRight ctrlShow _isUsingOptic;
 //_ctrlZeroing ctrlShow _isUsingOptic;
 _ctrlMagnification ctrlShow _isUsingOptic;
-
-//diag_log [diag_frameNo, _isUsingOptic];
-//systemChat str _isUsingOptic;
 
 if !(_isUsingOptic isEqualTo GVAR(IsUsingOptic)) then {
     GVAR(IsUsingOptic) = _isUsingOptic;

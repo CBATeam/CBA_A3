@@ -53,7 +53,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         private _pipOptic = GVAR(PIPOptics) getVariable _optic;
 
         if (!isNil "_pipOptic") then {
-            //_unit addWeaponItem [_weapon, _pipOptic];
+            _unit addWeaponItem [_weapon, _pipOptic];
             INFO_2("Switched %1 to %2.",_optic,_pipOptic);
         };
     } forEach weaponsItems _unit;
@@ -88,7 +88,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         private _normalOptic = GVAR(NonPIPOptics) getVariable _optic;
 
         if (!isNil "_normalOptic") then {
-            //_unit addWeaponItem [_weapon, _normalOptic];
+            _unit addWeaponItem [_weapon, _normalOptic];
             INFO_2("Switched %1 to %2.",_optic,_normalOptic);
         };
     } forEach weaponsItems _unit;
