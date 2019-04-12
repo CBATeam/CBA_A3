@@ -66,3 +66,23 @@ if (isServer) then {
         };
     };
 }] call CBA_fnc_addEventHandler;
+
+// trigger pressed
+// using display EH due to better reliance compared to inputAction
+["MouseButtonDown", {
+    params ["", "_button"];
+
+    // TODO Support non-LMB (?)
+    if (_button == 0) then {
+        GVAR(triggerPressed) = true;
+    };
+}] call CBA_fnc_addDisplayHandler;
+
+["MouseButtonUp", {
+    params ["", "_button"];
+
+    // TODO Support non-LMB (?)
+    if (_button == 0) then {
+        GVAR(triggerPressed) = false;
+    };
+}] call CBA_fnc_addDisplayHandler;

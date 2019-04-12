@@ -121,11 +121,13 @@
             <English>Show all missions</English>
             <German>Alle Missionen anzeigen</German>
             <Japanese>全ミッションを表示</Japanese>
+            <Polish>Pokaż wszystkie misje</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_CustomMissions">
             <English>Show custom missions</English>
             <German>Eigene Missionen anzeigen</German>
             <Japanese>カスタム ミッションを表示</Japanese>
+            <Polish>Pokaż własne/wgrane misje</Polish>
         </Key>
     </Package>
 </Project>
