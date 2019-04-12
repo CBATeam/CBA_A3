@@ -13,7 +13,7 @@ class RscInGameUI {
         onLoad = QUOTE(call FUNC(loadScriptedOptic));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification","ActiveDisplayHelper"};
 
-        // Idea by Taosenai. This control can be used to determine whether the scope or the kolimator is used.
+        // Idea by Taosenai. This control can be used to determine whether the scope or the collimator is used.
         class CA_FOVMode: RscOpticsValue {
             idc = 154;
             w = 0;
