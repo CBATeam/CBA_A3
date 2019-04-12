@@ -18,6 +18,7 @@ GVAR(camera) = objNull;
 // scripted optic data cache
 GVAR(currentOptic) = "";
 GVAR(IsUsingOptic) = false;
+GVAR(magnificationCache) = -1;
 GVAR(ReticleAdjust) = [1,1,nil,1,1];
 GVAR(HideRedDotMagnification) = 1e+11;
 GVAR(FadeReticleInterval) = [0,0,nil,0,0];
@@ -37,13 +38,19 @@ GVAR(OpticBodyTextureNight) = "";
     _unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 
-// Switch to pip class.
 [QGVAR(UsingOptic), {
     params ["_display", "_isUsingOptic"];
     if (_isUsingOptic) then {
+        // Switch to pip class.
         private _unit = call CBA_fnc_currentUnit;
         _unit call FUNC(changePIPOpticClass);
+
+        // Restore previous magnification.
+        if (GVAR(magnificationCache) > 0) then {
+            [_unit, GVAR(magnificationCache)] call FUNC(setOpticMagnification);
+        };
     };
+    systemChat str _isUsingOptic;
 }] call CBA_fnc_addEventHandler;
 
 ["featureCamera", {

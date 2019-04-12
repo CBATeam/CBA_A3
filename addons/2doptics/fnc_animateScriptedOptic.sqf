@@ -46,6 +46,9 @@ _ctrlBlackRight ctrlShow _isUsingOptic;
 //_ctrlZeroing ctrlShow _isUsingOptic;
 _ctrlMagnification ctrlShow _isUsingOptic;
 
+//diag_log [diag_frameNo, _isUsingOptic];
+//systemChat str _isUsingOptic;
+
 if !(_isUsingOptic isEqualTo GVAR(IsUsingOptic)) then {
     GVAR(IsUsingOptic) = _isUsingOptic;
     [QGVAR(UsingOptic), [_display, _isUsingOptic]] call CBA_fnc_localEvent;
@@ -73,6 +76,8 @@ _ctrlMagnification ctrlSetText format [
     "(%1x)",
     [_zoom, 1, 1] call CBA_fnc_formatNumber
 ];
+
+_ctrlMagnification ctrlShow (_zoom >= 1);
 
 private _positionMagnification = ctrlPosition _ctrlZeroing;
 _positionMagnification set [0, _positionMagnification#0 + ctrlTextWidth _ctrlZeroing];
@@ -106,6 +111,10 @@ _ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
 
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
+
+if (_zoom >= 1) then {
+    GVAR(magnificationCache) = _zoom;
+};
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);

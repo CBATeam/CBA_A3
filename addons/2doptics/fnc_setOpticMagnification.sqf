@@ -21,6 +21,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+if (!isNil {parsingNamespace getVariable QGVAR(magnification)}) exitWith {};
+
 params ["_unit", "_magnification"];
 private _optic = _unit call FUNC(currentOptic);
 
