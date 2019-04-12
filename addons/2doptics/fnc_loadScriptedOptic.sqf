@@ -20,11 +20,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-if (isNil QGVAR(OpticReticleDetailTextures) || {GVAR(OpticReticleDetailTextures) isEqualTo []}) then {
-    WARNING("No scripted reticle info found.");
-    private _unit = call CBA_fnc_currentUnit;
-    _unit call FUNC(updateOpticInfo);
-};
+private _unit = call CBA_fnc_currentUnit;
+_unit call FUNC(updateOpticInfo);
 
 params ["_display"];
 
@@ -79,5 +76,7 @@ _ctrlBodyNight ctrlCommit 0;
 
     _thisArgs call FUNC(animateScriptedOptic);
 }, _display] call CBA_fnc_addBISEventHandler;
+
+//INFO("Scripted optic weapon info display loaded.");
 
 nil
