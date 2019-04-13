@@ -28,13 +28,6 @@ private _weapon = currentWeapon _unit;
 private _optic = _unit call FUNC(currentOptic);
 
 // store zeroing
-private "_discreteZeroingDistances";
-
-configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
-    _discreteZeroingDistances = _x >> "discreteDistance";
-    !isNil "_discreteZeroingDistances"
-};
-
 private _zeroing = GVAR(ZeroingDistances) find currentZeroing _unit;
 
 if (_zeroing isEqualTo -1) then {
