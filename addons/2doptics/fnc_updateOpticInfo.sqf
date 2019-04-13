@@ -69,6 +69,12 @@ if (GVAR(OpticBodyTextureNight) isEqualTo "") then {
     GVAR(OpticBodyTextureNight) = GVAR(OpticBodyTexture);
 };
 
+// zeroing distances
+configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
+    GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");
+    !(GVAR(ZeroingDistances) isEqualTo [])
+};
+
 //INFO_1("Updated optic info %1.",_optic);
 
 nil

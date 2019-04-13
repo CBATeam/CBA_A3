@@ -35,7 +35,7 @@ configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsM
     !isNil "_discreteZeroingDistances"
 };
 
-private _zeroing = getArray ([_discreteZeroingDistances] param [0, configNull]) find currentZeroing _unit;
+private _zeroing = GVAR(ZeroingDistances) find currentZeroing _unit;
 
 if (_zeroing isEqualTo -1) then {
     _zeroing = nil;
