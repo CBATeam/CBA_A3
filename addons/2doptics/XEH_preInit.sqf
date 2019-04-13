@@ -25,6 +25,7 @@ GVAR(FadeReticleInterval) = [0,0,nil,0,0];
 GVAR(OpticReticleDetailTextures) = [];
 GVAR(OpticBodyTexture) = "";
 GVAR(OpticBodyTextureNight) = "";
+GVAR(ppEffects) = [];
 
 // Update optic info.
 ["weapon", {

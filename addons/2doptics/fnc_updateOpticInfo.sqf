@@ -75,6 +75,24 @@ configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsM
     !(GVAR(ZeroingDistances) isEqualTo [])
 };
 
+// pp effects
+ppEffectDestroy GVAR(ppEffects);
+
+GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
+    private _config = configFile >> "CfgOpticsEffect" >> _x;
+    private _type = getText (_config >> "type");
+    private _priority = getNumber (_config >> "priority");
+    private _params = getArray (_config >> "params");
+
+    private _ppEffect = ppEffectCreate [_type, _priority];
+    _ppEffect ppEffectAdjust _params;
+
+    _ppEffect ppEffectEnable false;
+    _ppEffect ppEffectForceInNVG true;
+    _ppEffect ppEffectCommit 0;
+    _ppEffect
+};
+
 //INFO_1("Updated optic info %1.",_optic);
 
 nil
