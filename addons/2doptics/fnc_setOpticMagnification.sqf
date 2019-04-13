@@ -42,8 +42,8 @@ if (_zeroing isEqualTo -1) then {
 };
 
 parsingNamespace setVariable [QGVAR(magnification), _magnification];
-_unit addWeaponItem [_weapon, _optic];
 parsingNamespace setVariable [QGVAR(zeroing), _zeroing];
+_unit addWeaponItem [_weapon, _optic];
 
 [{
     params ["_unit", "_weapon", "_optic"];
