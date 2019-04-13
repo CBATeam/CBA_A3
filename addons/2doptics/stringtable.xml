@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="2DOptics">
+        <Key ID="STR_cba_2doptics_Component">
+            <English>Community Base Addons - 2D Optics</English>
+            <German>Community Base Addons - 2D-Optiken</German>
+            <Polish>Community Base Addons - Optyka 2D</Polish>
+        </Key>
+        <Key ID="STR_cba_2doptics_Category">
+            <English>CBA 2D Optics</English>
+            <German>CBA 2D-Optiken</German>
+            <Polish>CBA Optyka 2D</Polish>
+        </Key>
+        <Key ID="STR_cba_2doptics_UsePIP">
+            <English>Use picture in picture optics</English>
+            <German>Bild in Bild-Optiken verwenden</German>
+            <Japanese>Picture in Picture 照準器を使う</Japanese>
+            <Polish>Używaj optyki typu Obraz w obrazie (PIP)</Polish>
+        </Key>
+    </Package>
+</Project>
