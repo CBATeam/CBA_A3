@@ -32,7 +32,7 @@ class CfgPatches {
             "cba_jam",
             "cba_ui",
             "cba_versioning",
-            "cba_2doptics"
+            "cba_optics"
         };
         versionDesc = "C.B.A.";
         VERSION_CONFIG;
