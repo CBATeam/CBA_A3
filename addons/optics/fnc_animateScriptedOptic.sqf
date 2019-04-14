@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_animateScriptedOptic
+Internal Function: cba_optics_fnc_animateScriptedOptic
 
 Description:
     Executed every draw frame to update the scripted weapon info display.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _weaponInfoDisplay call cba_2doptics_fnc_animateScriptedOptic;
+        _weaponInfoDisplay call cba_optics_fnc_animateScriptedOptic;
     (end)
 
 Author:

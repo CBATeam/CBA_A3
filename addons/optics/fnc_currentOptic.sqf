@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_currentOptic
+Internal Function: cba_optics_fnc_currentOptic
 
 Description:
     Reports the currently selected optic classname of a person.
@@ -18,7 +18,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call cba_2doptics_fnc_currentOptic
+        player call cba_optics_fnc_currentOptic
     (end)
 
 Author:

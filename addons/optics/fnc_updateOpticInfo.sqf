@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_updateOpticInfo
+Internal Function: cba_optics_fnc_updateOpticInfo
 
 Description:
     Caches the current optic's parameters in mission namespace variables.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call cba_2doptics_fnc_updateOpticInfo;
+        player call cba_optics_fnc_updateOpticInfo;
     (end)
 
 Author:

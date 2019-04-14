@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_loadScriptedOptic
+Internal Function: cba_optics_fnc_loadScriptedOptic
 
 Description:
     Sets up the CBA_ScriptedOptic weapon info display and adds the draw script.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _weaponInfoDisplay call cba_2doptics_fnc_loadScriptedOptic;
+        _weaponInfoDisplay call cba_optics_fnc_loadScriptedOptic;
     (end)
 
 Author:
