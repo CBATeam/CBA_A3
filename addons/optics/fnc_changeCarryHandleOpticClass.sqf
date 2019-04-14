@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_changeCarryHandleOpticClass
+Internal Function: cba_optics_fnc_changeCarryHandleOpticClass
 
 Description:
     Switch scripted optic class to class with integrated carry handle optic.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call cba_2doptics_fnc_changeCarryHandleOpticClass;
+        player call cba_optics_fnc_changeCarryHandleOpticClass;
     (end)
 
 Author:

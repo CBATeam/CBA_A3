@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_animateScriptedOpticRecoil
+Internal Function: cba_optics_fnc_animateScriptedOpticRecoil
 
 Description:
     Animates the 2D optic when firing.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, currentWeapon player] call cba_2doptics_fnc_animateScriptedOpticRecoil;
+        [player, currentWeapon player] call cba_optics_fnc_animateScriptedOpticRecoil;
     (end)
 
 Author:
