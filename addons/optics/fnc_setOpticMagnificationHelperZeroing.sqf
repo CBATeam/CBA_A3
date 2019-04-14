@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: cba_2doptics_fnc_setOpticMagnificationHelperZeroing
+Function: cba_optics_fnc_setOpticMagnificationHelperZeroing
 
 Description:
     Helper function used in config to remember the zeroing of a zooming optic.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        2 call (uiNamespace getVariable 'cba_2doptics_fnc_setOpticMagnificationHelperZeroing')
+        2 call (uiNamespace getVariable 'cba_optics_fnc_setOpticMagnificationHelperZeroing')
     (end)
 
 Author:

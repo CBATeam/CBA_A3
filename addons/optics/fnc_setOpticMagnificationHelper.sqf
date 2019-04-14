@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: cba_2doptics_fnc_setOpticMagnificationHelper
+Function: cba_optics_fnc_setOpticMagnificationHelper
 
 Description:
     Helper function used in config to set the magnification of a zooming optic.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        2 call (uiNamespace getVariable 'cba_2doptics_fnc_setOpticMagnificationHelper')
+        2 call (uiNamespace getVariable 'cba_optics_fnc_setOpticMagnificationHelper')
     (end)
 
 Author:

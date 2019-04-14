@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_changePIPOpticClass
+Internal Function: cba_optics_fnc_changePIPOpticClass
 
 Description:
     Switch scripted optic class to PIP class.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call cba_2doptics_fnc_changePIPOpticClass;
+        player call cba_optics_fnc_changePIPOpticClass;
     (end)
 
 Author:
@@ -173,7 +173,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
         INFO_2("Switched %1 to %2.",_pistol,_normalPistol);
     };
 
-    // Switch to normal / 2d optic attchments.
+    // Switch to normal optic attchments.
     {
         _x params ["_weapon", "", "", "_optic"];
 

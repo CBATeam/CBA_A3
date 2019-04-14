@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_2doptics_fnc_restartCamera
+Internal Function: cba_optics_fnc_restartCamera
 
 Description:
-    Restarts the PIP camera for scripted 2D optics.
+    Restarts the PIP camera for scripted optics.
 
 Parameters:
     _unit  - The avatar <OBJECT>
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        player call cba_2doptics_fnc_restartCamera;
+        player call cba_optics_fnc_restartCamera;
     (end)
 
 Author:
