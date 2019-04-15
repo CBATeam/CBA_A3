@@ -47,9 +47,6 @@ _script ctrlSetPosition [0,0,0,0];
 _script ctrlCommit 0;
 
 _script ctrlAddEventHandler ["Draw", {
-    params ["_script"];
-    private _counter = ctrlParent _script getVariable "commy_fpsCounter";
-
     if (isNull (uiNamespace getVariable ["RscDisplayInterrupt", displayNull])) then {
         {
             QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
