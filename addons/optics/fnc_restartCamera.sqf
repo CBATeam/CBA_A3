@@ -23,6 +23,7 @@ Author:
 
 if (!GVAR(usePipOptics)) exitWith {};
 if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
+if (isNull (uiNamespace getVariable ["RscDisplayMission", displayNull])) exitWith {};
 
 params ["_unit", ["_reset", true]];
 

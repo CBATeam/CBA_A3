@@ -54,8 +54,6 @@ private _fnc_update = {
     };
 }] call BIS_fnc_addScriptedEventHandler;
 
-//["ace_arsenal_displayOpened", _fnc_arsenalOpened] call CBA_fnc_addEventHandler;
-
 GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
