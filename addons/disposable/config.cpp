@@ -6,8 +6,9 @@ class CfgPatches {
         name = CSTRING(component);
         url = "$STR_CBA_URL";
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common"};
+        requiredAddons[] = {"cba_common","cba_events"};
         version = VERSION;
         authors[] = {"commy2"};
     };

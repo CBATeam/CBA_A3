@@ -1,12 +1,12 @@
 #include "script_component.hpp"
 
+ADDON = false;
+
 #include "initSettings.sqf"
 
 if (!hasInterface) exitWith {};
 if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
 if (configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []) exitWith {};
-
-ADDON = false;
 
 #include "XEH_PREP.sqf"
 
