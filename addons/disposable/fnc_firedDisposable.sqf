@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _unit       - Unit that fired the disposable weapon <OBEJCT>
-    _weapon     - Disposable weapon <STRING>
+    _launcher   - Disposable weapon <STRING>
     _muzzle     - Muzzle fired by the disposable weapon <STRING>
     _mode       - Current weapon mode of the disposable weapon <STRING>
     _ammo       - Ammo fired by the disposable weapon <STRING>
@@ -29,32 +29,73 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params ["_unit", "_weapon", "_muzzle"];
+params ["_unit", "_launcher", "_muzzle", "", "", "", "_projectile"];
 
-private _usedLauncher = GVAR(UsedLaunchers) getVariable _weapon;
+private _usedLauncher = GVAR(UsedLaunchers) getVariable _launcher;
 if (isNil "_usedLauncher") exitWith {};
 
 [{
-    params ["_unit", "_launcher", "_usedLauncher"];
-    if (!local _unit) exitWith {};
+    params ["_unit", "_launcher", "_usedLauncher", "_projectile"];
 
-    private _isSelected = currentWeapon _unit == _launcher;
+    // switch to used tube
+    if (local _unit) then {
+        private _isSelected = currentWeapon _unit == _launcher;
 
-    private _launcherItems = secondaryWeaponItems _unit;
-    private _launcherMagazines = secondaryWeaponMagazine _unit;
+        private _launcherItems = secondaryWeaponItems _unit;
+        private _launcherMagazines = secondaryWeaponMagazine _unit;
 
-    _unit addWeapon _usedLauncher;
-    {
-        _unit addSecondaryWeaponItem _x;
-    } forEach _launcherItems;
+        _unit addWeapon _usedLauncher;
+        {
+            _unit addSecondaryWeaponItem _x;
+        } forEach _launcherItems;
 
-    {
-        _unit addWeaponItem [_usedLauncher, _x];
-    } forEach _launcherMagazines;
+        {
+            _unit addWeaponItem [_usedLauncher, _x];
+        } forEach _launcherMagazines;
 
-    if (_isSelected) then {
-        _unit selectWeapon _usedLauncher;
+        if (_isSelected) then {
+            _unit selectWeapon _usedLauncher;
+        };
     };
-}, [_unit, _weapon, _usedLauncher], 1] call CBA_fnc_waitAndExecute;
 
-// @todo drop
+    // automatically drop
+    [{
+        params ["_unit", "_usedLauncher", "_projectile"];
+
+        // quit if dead or weapon is gone
+        if (!alive _unit || secondaryWeapon _unit != _usedLauncher) exitWith {true};
+
+        if (local _unit && {
+            if (_unit == call CBA_fnc_currentUnit) then {
+                cameraView != "GUNNER"
+            } else {
+                isNull _projectile
+            };
+        }) exitWith {
+            _unit removeWeapon _usedLauncher;
+
+            private _dir = getDir _unit - 180;
+
+            private _container = createVehicle ["WeaponHolderSimulated", [0,0,0], [], 0, "CAN_COLLIDE"];
+            _container addWeaponCargoGlobal [_usedLauncher, 1];
+
+            _container setDir (_dir + 90);
+            _container setPosASL AGLToASL (_unit modelToWorld (_unit selectionPosition "rightshoulder" vectorAdd [0, 0.2, 0.1]));
+            _container setVelocity (velocity _unit vectorAdd ([sin _dir, cos _dir, 0] vectorMultiply 1.5));
+
+            /*
+            addWeaponWithAttachmentsCargoGlobal [
+                _usedLauncher,
+                _silencer, _pointer, _optic, _bipod, [
+                    _magazine1, _ammo1,
+                    _magazine2, _ammo2
+                ],
+            1];
+            */
+
+            true // quit
+        };
+
+        false // continue
+    }, {}, [_unit, _usedLauncher, _projectile]] call CBA_fnc_waitUntilAndExecute;
+}, [_unit, _launcher, _usedLauncher, _projectile], 1] call CBA_fnc_waitAndExecute;
