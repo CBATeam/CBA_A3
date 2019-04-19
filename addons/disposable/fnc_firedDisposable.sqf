@@ -31,24 +31,30 @@ Author:
 
 params ["_unit", "_weapon", "_muzzle"];
 
-systemChat str [_unit, _weapon];
+private _usedLauncher = GVAR(UsedLaunchers) getVariable _weapon;
+if (isNil "_usedLauncher") exitWith {};
 
-/*
 [{
-    params ["_params", "_usedLauncher"];
-    _params params ["_unit", "_launcher"];
-
+    params ["_unit", "_launcher", "_usedLauncher"];
     if (!local _unit) exitWith {};
 
-    private _launcherItems = secondaryWeaponItems _unit select {_x != ""};
+    private _isSelected = currentWeapon _unit == _launcher;
 
-    _unit removeWeapon _launcher;
+    private _launcherItems = secondaryWeaponItems _unit;
+    private _launcherMagazines = secondaryWeaponMagazine _unit;
+
     _unit addWeapon _usedLauncher;
-
     {
         _unit addSecondaryWeaponItem _x;
     } forEach _launcherItems;
 
-    _unit selectWeapon _usedLauncher;
-}, _this, 1] call CBA_fnc_waitAndExecute;
-*/
+    {
+        _unit addWeaponItem [_usedLauncher, _x];
+    } forEach _launcherMagazines;
+
+    if (_isSelected) then {
+        _unit selectWeapon _usedLauncher;
+    };
+}, [_unit, _weapon, _usedLauncher], 1] call CBA_fnc_waitAndExecute;
+
+// @todo drop

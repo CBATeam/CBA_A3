@@ -29,7 +29,7 @@ private _fnc_update = {
 ["CAManBase", "Take", _fnc_update] call CBA_fnc_addClassEventHandler;
 
 // Arsenal
-[QGVAR(arsenalOpened), {
+/*[QGVAR(arsenalOpened), {
     private _unit = call CBA_fnc_currentUnit;
     private _launcher = GVAR(LoadedLaunchers) getVariable secondaryWeapon _unit;
 
@@ -52,7 +52,7 @@ private _fnc_update = {
     isNil {
         QGVAR(arsenalOpened) call CBA_fnc_localEvent;
     };
-}] call BIS_fnc_addScriptedEventHandler;
+}] call BIS_fnc_addScriptedEventHandler;*/
 
 GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
