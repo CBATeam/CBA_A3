@@ -16,3 +16,5 @@
 #define DEBUG_MODE_NORMAL
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#include "\a3\ui_f\hpp\defineResincl.inc"
