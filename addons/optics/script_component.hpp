@@ -22,23 +22,29 @@
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
 
 // addWeapon, but without leeching magazines
-#define ADD_GUN(unit,gun) (call {\
-    private _loadout = getUnitLoadout (unit);\
-    _loadout select 0 set [0, gun];\
-    (unit) setUnitLoadout _loadout;\
-})
+#define ADD_GUN(unit,gun) (unit) setUnitLoadout [\
+    [gun, nil, nil, nil, nil, nil, nil],\
+    nil,\
+    nil,\
+    nil, nil, nil,\
+    nil, nil, nil, nil\
+]
 
-#define ADD_LAUNCHER(unit,launcher) (call {\
-    private _loadout = getUnitLoadout (unit);\
-    _loadout select 1 set [0, launcher];\
-    (unit) setUnitLoadout _loadout;\
-})
+#define ADD_LAUNCHER(unit,launcher) (unit) setUnitLoadout [\
+    nil,\
+    [launcher, nil, nil, nil, nil, nil, nil],\
+    nil,\
+    nil, nil, nil,\
+    nil, nil, nil, nil\
+]
 
-#define ADD_PISTOL(unit,pistol) (call {\
-    private _loadout = getUnitLoadout (unit);\
-    _loadout select 2 set [0, pistol];\
-    (unit) setUnitLoadout _loadout;\
-})
+#define ADD_PISTOL(unit,pistol) (unit) setUnitLoadout [\
+    nil,\
+    nil,\
+    [pistol, nil, nil, nil, nil, nil, nil],\
+    nil, nil, nil,\
+    nil, nil, nil, nil\
+]
 
 // control ids
 #define IDC_RETICLE 4000
