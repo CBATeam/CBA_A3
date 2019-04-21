@@ -28,32 +28,6 @@ private _fnc_update = {
 ["CAManBase", "InitPost", _fnc_update] call CBA_fnc_addClassEventHandler;
 ["CAManBase", "Take", _fnc_update] call CBA_fnc_addClassEventHandler;
 
-// Arsenal
-/*[QGVAR(arsenalOpened), {
-    private _unit = call CBA_fnc_currentUnit;
-    private _launcher = GVAR(LoadedLaunchers) getVariable secondaryWeapon _unit;
-
-    if (!isNil "_launcher") then {
-        private _launcherItems = secondaryWeaponItems _unit;
-        private _launcherMagazines = secondaryWeaponMagazine _unit select [1, 1e7];
-
-        _unit addWeapon _launcher;
-        {
-            _unit addSecondaryWeaponItem _x;
-        } forEach _launcherItems;
-
-        {
-            _unit addWeaponItem [_launcher, _x];
-        } forEach _launcherMagazines;
-    };
-}] call CBA_fnc_addEventHandler;
-
-[missionNamespace, "arsenalOpened", {
-    isNil {
-        QGVAR(arsenalOpened) call CBA_fnc_localEvent;
-    };
-}] call BIS_fnc_addScriptedEventHandler;*/
-
 GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;

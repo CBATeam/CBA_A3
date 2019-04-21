@@ -10,7 +10,7 @@ class RscInGameUI {
     };
 
     class CBA_ScriptedOptic: RscWeaponZeroing {
-        onLoad = QUOTE(call FUNC(loadScriptedOptic));
+        onLoad = QUOTE([ARR_2(_this select 0, true)] call FUNC(loadScriptedOptic));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification","ActiveDisplayHelper"};
 
         // Idea by Taosenai. This control can be used to determine whether the scope or the collimator is used.
