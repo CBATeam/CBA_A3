@@ -18,3 +18,5 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineResincl.inc"
+
+#define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})

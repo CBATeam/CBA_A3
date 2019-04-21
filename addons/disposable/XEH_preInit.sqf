@@ -11,16 +11,13 @@ private _fnc_update = {
 
     if (!isNil "_launcher") then {
         private _launcherItems = secondaryWeaponItems _unit;
-        private _launcherMagazines = [_magazine] + (secondaryWeaponMagazine _unit select [1, 1e7]);
 
         _unit addWeapon _launcher;
         {
             _unit addSecondaryWeaponItem _x;
         } forEach _launcherItems;
 
-        {
-            _unit addWeaponItem [_launcher, _x];
-        } forEach _launcherMagazines;
+        _unit addWeaponItem [_launcher, _magazine];
     };
 };
 

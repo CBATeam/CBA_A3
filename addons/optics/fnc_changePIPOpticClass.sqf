@@ -26,13 +26,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Gun, switch to pip weapon.
     private _gun = primaryWeapon _unit;
     private _gunItems = primaryWeaponItems _unit;
-    private _gunMagazine = primaryWeaponMagazine _unit;
+    private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
 
     private _pipGun = GVAR(PIPOptics) getVariable _gun;
 
     if (!isNil "_pipGun") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _pipGun;
+        ADD_GUN(_unit,_pipGun);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -41,7 +41,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_pipGun, _x];
-        } forEach _gunMagazine;
+        } forEach _gunMagazines;
 
         INFO_2("Switched %1 to %2.",_gun,_pipGun);
     };
@@ -49,13 +49,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Launcher, switch to pip weapon.
     private _launcher = secondaryWeapon _unit;
     private _launcherItems = secondaryWeaponItems _unit;
-    private _launcherMagazine = secondaryWeaponMagazine _unit;
+    private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
 
     private _pipLauncher = GVAR(PIPOptics) getVariable _launcher;
 
     if (!isNil "_pipLauncher") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _pipLauncher;
+        ADD_LAUNCHER(_unit,_pipLauncher);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -64,7 +64,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_pipLauncher, _x];
-        } forEach _launcherMagazine;
+        } forEach _launcherMagazines;
 
         INFO_2("Switched %1 to %2.",_launcher,_pipLauncher);
     };
@@ -72,13 +72,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Pistol, switch to pip weapon.
     private _pistol = handgunWeapon _unit;
     private _pistolItems = handgunItems _unit;
-    private _pistolMagazine = handgunMagazine _unit;
+    private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
 
     private _pipPistol = GVAR(PIPOptics) getVariable _pistol;
 
     if (!isNil "_pipPistol") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _pipPistol;
+        ADD_PISTOL(_unit,_pipPistol);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -87,7 +87,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_pipPistol, _x];
-        } forEach _pistolMagazine;
+        } forEach _pistolMagazines;
 
         INFO_2("Switched %1 to %2.",_pistol,_pipPistol);
     };
@@ -107,13 +107,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Gun, switch to normal weapon.
     private _gun = primaryWeapon _unit;
     private _gunItems = primaryWeaponItems _unit;
-    private _gunMagazine = primaryWeaponMagazine _unit;
+    private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
 
     private _normalGun = GVAR(NonPIPOptics) getVariable _gun;
 
     if (!isNil "_normalGun") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _normalGun;
+        ADD_GUN(_unit,_normalGun);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -122,7 +122,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_normalGun, _x];
-        } forEach _gunMagazine;
+        } forEach _gunMagazines;
 
         INFO_2("Switched %1 to %2.",_gun,_normalGun);
     };
@@ -130,13 +130,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Launcher, switch to normal weapon.
     private _launcher = secondaryWeapon _unit;
     private _launcherItems = secondaryWeaponItems _unit;
-    private _launcherMagazine = secondaryWeaponMagazine _unit;
+    private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
 
     private _normalLauncher = GVAR(NonPIPOptics) getVariable _launcher;
 
     if (!isNil "_normalLauncher") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _normalLauncher;
+        ADD_LAUNCHER(_unit,_normalLauncher);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -145,7 +145,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_normalLauncher, _x];
-        } forEach _launcherMagazine;
+        } forEach _launcherMagazines;
 
         INFO_2("Switched %1 to %2.",_launcher,_normalLauncher);
     };
@@ -153,13 +153,13 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Pistol, switch to normal weapon.
     private _pistol = handgunWeapon _unit;
     private _pistolItems = handgunItems _unit;
-    private _pistolMagazine = handgunMagazine _unit;
+    private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
 
     private _normalPistol = GVAR(NonPIPOptics) getVariable _pistol;
 
     if (!isNil "_normalPistol") then {
         private _muzzle = currentMuzzle _unit;
-        _unit addWeapon _normalPistol;
+        ADD_PISTOL(_unit,_normalPistol);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -168,7 +168,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
         {
             _unit addWeaponItem [_normalPistol, _x];
-        } forEach _pistolMagazine;
+        } forEach _pistolMagazines;
 
         INFO_2("Switched %1 to %2.",_pistol,_normalPistol);
     };

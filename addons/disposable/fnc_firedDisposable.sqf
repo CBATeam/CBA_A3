@@ -42,7 +42,7 @@ if (isNil "_usedLauncher") exitWith {};
         private _isSelected = currentWeapon _unit == _launcher;
 
         private _launcherItems = secondaryWeaponItems _unit;
-        private _launcherMagazines = secondaryWeaponMagazine _unit;
+        private _launcherMagazines = WEAPON_MAGAZINES(_unit,secondaryWeapon _unit);
 
         _unit addWeapon _usedLauncher;
         {
