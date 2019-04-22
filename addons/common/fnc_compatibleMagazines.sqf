@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _weapon - Weapon configName or config
+    _allMuzzles - Get magazines for all muzzles on this weapon (default: false)
 
 Example:
     (begin example)
@@ -22,56 +23,42 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(compatibleMagazines);
 
-params [["_weapon", "", ["", configNull]]];
+params [["_weapon", "", ["", configNull]], ["_allMuzzles", false, [false]]];
 
 if (_weapon isEqualType "") then {
     _weapon = configFile >> "CfgWeapons" >> _weapon;
 };
 
-private _cacheKey = str _weapon;
+private _cacheKey = format ["%1#%2",_weapon,_allMuzzles];
 
-if (_cacheKey == "") exitWith {
-    ERROR_1("Weapon Does Not Exist %1",_this);
-    []
-};
+private _returnMags = GVAR(magNamespace) getVariable _cacheKey;
 
-if (isNil QGVAR(magNamespace)) then {
-    GVAR(magNamespace) = call CBA_fnc_createNamespace;
-};
-
-private _compatibleMagazines = GVAR(magNamespace) getVariable _cacheKey;
-
-if (isNil "_compatibleMagazines") then {
-    _compatibleMagazines = [];
-
-    private _fnc_appendMagazines = {
-        params ["_muzzle"];
-
-        _compatibleMagazines append getArray (_muzzle >> "magazines");
-
+if (isNil "_returnMags") then {
+    if (_allMuzzles) then {
+        _returnMags = []; // get all mags from all muzzles
+        {
+            if (_x == "this") then {
+                _returnMags append (_weapon call CBA_fnc_compatibleMagazines);
+            } else {
+                _returnMags append ((_weapon >> _x) call CBA_fnc_compatibleMagazines);
+            };
+        } forEach getArray (_weapon >> "muzzles");
+        _returnMags = _returnMags arrayIntersect _returnMags;
+    } else {
+        _returnMags = getArray (_weapon >> "magazines"); // get mags just for a specific muzzle
         {
             private _wellConfig = configFile >> "CfgMagazineWells" >> _x;
-
             {
-                _compatibleMagazines append getArray _x;
+                _returnMags append getArray _x;
             } forEach configProperties [_wellConfig, "isArray _x", false];
-        } forEach getArray (_muzzle >> "magazineWell");
+        } forEach (getArray (_weapon >> "magazineWell"));
+
+        private _cfgMagazines = configFile >> "CfgMagazines";
+        _returnMags = _returnMags select {isClass (_cfgMagazines >> _x)};
+        _returnMags = _returnMags apply {configName (_cfgMagazines >> _x)};
+        _returnMags = _returnMags arrayIntersect _returnMags;
     };
-
-    {
-        if (_x == "this") then {
-            _weapon call _fnc_appendMagazines;
-        } else {
-            (_weapon >> _x) call _fnc_appendMagazines
-        };
-    } forEach getArray (_weapon >> "muzzles");
-
-    private _cfgMagazines = configFile >> "CfgMagazines";
-    _compatibleMagazines = _compatibleMagazines select {isClass (_cfgMagazines >> _x)};
-    _compatibleMagazines = _compatibleMagazines apply {configName (_cfgMagazines >> _x)};
-    _compatibleMagazines = _compatibleMagazines arrayIntersect _compatibleMagazines;
-
-    GVAR(magNamespace) setVariable [_cacheKey, _compatibleMagazines];
+    GVAR(magNamespace) setVariable [_cacheKey, _returnMags];
 };
 
-+_compatibleMagazines
++_returnMags

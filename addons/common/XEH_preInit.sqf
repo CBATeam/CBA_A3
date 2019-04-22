@@ -71,4 +71,6 @@ activateAddons GVAR(addons);
     }];
 }] call CBA_fnc_addClassEventHandler;
 
+GVAR(magNamespace) = call CBA_fnc_createNamespace; // namespace used for CBA_fnc_compatibleMagazines
+
 ADDON = true;
