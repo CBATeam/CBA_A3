@@ -38,6 +38,7 @@ GVAR(entities) = [];
     private _entities = entities [[], [], true, true];
 
     if !(_entities isEqualTo GVAR(entities)) then {
+        private _newEntities = _entities - GVAR(entities);
         GVAR(entities) = _entities;
 
         {
@@ -48,7 +49,6 @@ GVAR(entities) = [];
                     _x call CBA_fnc_init;
                 };
             };
-            nil
-        } count _entities;
+        } forEach _newEntities;
     };
 }, 0.1, []] call CBA_fnc_addPerFrameHandler;
