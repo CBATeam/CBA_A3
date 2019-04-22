@@ -21,31 +21,6 @@
 #define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
 
-// addWeapon, but without leeching magazines
-#define ADD_GUN(unit,gun) (unit) setUnitLoadout [\
-    [gun, nil, nil, nil, nil, nil, nil],\
-    nil,\
-    nil,\
-    nil, nil, nil,\
-    nil, nil, nil, nil\
-]
-
-#define ADD_LAUNCHER(unit,launcher) (unit) setUnitLoadout [\
-    nil,\
-    [launcher, nil, nil, nil, nil, nil, nil],\
-    nil,\
-    nil, nil, nil,\
-    nil, nil, nil, nil\
-]
-
-#define ADD_PISTOL(unit,pistol) (unit) setUnitLoadout [\
-    nil,\
-    nil,\
-    [pistol, nil, nil, nil, nil, nil, nil],\
-    nil, nil, nil,\
-    nil, nil, nil, nil\
-]
-
 // control ids
 #define IDC_RETICLE 4000
 #define IDC_BODY 4001

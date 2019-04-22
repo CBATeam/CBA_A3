@@ -32,7 +32,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_pipGun") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_GUN(_unit,_pipGun);
+        [_unit, _pipGun] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -55,7 +55,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_pipLauncher") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_LAUNCHER(_unit,_pipLauncher);
+        [_unit, _pipLauncher] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -78,7 +78,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_pipPistol") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_PISTOL(_unit,_pipPistol);
+        [_unit, _pipPistol] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -113,7 +113,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_normalGun") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_GUN(_unit,_normalGun);
+        [_unit, _normalGun] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -136,7 +136,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_normalLauncher") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_LAUNCHER(_unit,_normalLauncher);
+        [_unit, _normalLauncher] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
@@ -159,7 +159,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     if (!isNil "_normalPistol") then {
         private _muzzle = currentMuzzle _unit;
-        ADD_PISTOL(_unit,_normalPistol);
+        [_unit, _normalPistol] call FUNC(addWeapon);
         if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
 
         {
