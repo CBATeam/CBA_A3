@@ -17,9 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        class EventHandlers {
-            [player, "arifle_mx_F"] CBA_optics_fnc_addWeapon;
-        };
+        [player, "arifle_mx_F"] CBA_optics_fnc_addWeapon;
     (end)
 
 Author:
