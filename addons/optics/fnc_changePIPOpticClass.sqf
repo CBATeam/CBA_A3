@@ -25,15 +25,21 @@ params ["_unit"];
 if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Gun, switch to pip weapon.
     private _gun = primaryWeapon _unit;
-    private _gunItems = primaryWeaponItems _unit;
-    private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
-
     private _pipGun = GVAR(PIPOptics) getVariable _gun;
 
     if (!isNil "_pipGun") then {
+        private _gunItems = primaryWeaponItems _unit;
+        private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _pipGun;
+        };
+
         [_unit, _pipGun] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addPrimaryWeaponItem _x;
@@ -48,15 +54,21 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     // Launcher, switch to pip weapon.
     private _launcher = secondaryWeapon _unit;
-    private _launcherItems = secondaryWeaponItems _unit;
-    private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
-
     private _pipLauncher = GVAR(PIPOptics) getVariable _launcher;
 
     if (!isNil "_pipLauncher") then {
+        private _launcherItems = secondaryWeaponItems _unit;
+        private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _pipLauncher;
+        };
+
         [_unit, _pipLauncher] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addSecondaryWeaponItem _x;
@@ -71,15 +83,21 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     // Pistol, switch to pip weapon.
     private _pistol = handgunWeapon _unit;
-    private _pistolItems = handgunItems _unit;
-    private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
-
     private _pipPistol = GVAR(PIPOptics) getVariable _pistol;
 
     if (!isNil "_pipPistol") then {
+        private _pistolItems = handgunItems _unit;
+        private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _pipPistol;
+        };
+
         [_unit, _pipPistol] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addHandgunItem _x;
@@ -106,15 +124,21 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 } else {
     // Gun, switch to normal weapon.
     private _gun = primaryWeapon _unit;
-    private _gunItems = primaryWeaponItems _unit;
-    private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
-
     private _normalGun = GVAR(NonPIPOptics) getVariable _gun;
 
     if (!isNil "_normalGun") then {
+        private _gunItems = primaryWeaponItems _unit;
+        private _gunMagazines = WEAPON_MAGAZINES(_unit,_gun);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _normalGun;
+        };
+
         [_unit, _normalGun] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addPrimaryWeaponItem _x;
@@ -129,15 +153,21 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     // Launcher, switch to normal weapon.
     private _launcher = secondaryWeapon _unit;
-    private _launcherItems = secondaryWeaponItems _unit;
-    private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
-
     private _normalLauncher = GVAR(NonPIPOptics) getVariable _launcher;
 
     if (!isNil "_normalLauncher") then {
+        private _launcherItems = secondaryWeaponItems _unit;
+        private _launcherMagazines = WEAPON_MAGAZINES(_unit,_launcher);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _normalLauncher;
+        };
+
         [_unit, _normalLauncher] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addSecondaryWeaponItem _x;
@@ -152,15 +182,21 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
 
     // Pistol, switch to normal weapon.
     private _pistol = handgunWeapon _unit;
-    private _pistolItems = handgunItems _unit;
-    private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
-
     private _normalPistol = GVAR(NonPIPOptics) getVariable _pistol;
 
     if (!isNil "_normalPistol") then {
+        private _pistolItems = handgunItems _unit;
+        private _pistolMagazines = WEAPON_MAGAZINES(_unit,_pistol);
+
         private _muzzle = currentMuzzle _unit;
+        private _mode = currentWeaponMode _unit;
+
+        if (_muzzle == currentWeapon _unit) then {
+            _muzzle = _normalPistol;
+        };
+
         [_unit, _normalPistol] call FUNC(addWeapon);
-        if (_muzzle isEqualType "") then {_unit selectWeapon _muzzle};
+        [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
             _unit addHandgunItem _x;
