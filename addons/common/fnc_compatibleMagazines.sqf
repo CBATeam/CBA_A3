@@ -29,27 +29,49 @@ if (_weapon isEqualType "") then {
 };
 
 private _cacheKey = str _weapon;
-if (_cacheKey == "") exitWith { ERROR_1("Weapon Does Not Exist %1",_this); [] };
 
-if (isNil QGVAR(magNamespace)) then { GVAR(magNamespace) = call CBA_fnc_createNamespace; };
-
-private _returnMags = GVAR(magNamespace) getVariable _cacheKey;
-
-if (isNil "_returnMags") then {
-    _returnMags = getArray (_weapon >> "magazines");
-    {
-        private _wellConfig = configFile >> "CfgMagazineWells" >> _x;
-        {
-            _returnMags append getArray _x;
-        } forEach configProperties [_wellConfig, "isArray _x", false];
-    } forEach (getArray (_weapon >> "magazineWell"));
-
-    private _cfgMagazines = configFile >> "CfgMagazines";
-    _returnMags = _returnMags select {isClass (_cfgMagazines >> _x)};
-    _returnMags = _returnMags apply {configName (_cfgMagazines >> _x)};
-    _returnMags = _returnMags arrayIntersect _returnMags;
-
-    GVAR(magNamespace) setVariable [_cacheKey, _returnMags];
+if (_cacheKey == "") exitWith {
+    ERROR_1("Weapon Does Not Exist %1",_this);
+    []
 };
 
-+_returnMags
+if (isNil QGVAR(magNamespace)) then {
+    GVAR(magNamespace) = call CBA_fnc_createNamespace;
+};
+
+private _compatibleMagazines = GVAR(magNamespace) getVariable _cacheKey;
+
+if (isNil "_compatibleMagazines") then {
+    _compatibleMagazines = [];
+
+    private _fnc_appendMagazines = {
+        params ["_muzzle"];
+
+        _compatibleMagazines append getArray (_muzzle >> "magazines");
+
+        {
+            private _wellConfig = configFile >> "CfgMagazineWells" >> _x;
+
+            {
+                _compatibleMagazines append getArray _x;
+            } forEach configProperties [_wellConfig, "isArray _x", false];
+        } forEach getArray (_muzzle >> "magazineWell");
+    };
+
+    {
+        if (_x == "this") then {
+            _weapon call _fnc_appendMagazines;
+        } else {
+            (_weapon >> _x) call _fnc_appendMagazines
+        };
+    } forEach getArray (_weapon >> "muzzles");
+
+    private _cfgMagazines = configFile >> "CfgMagazines";
+    _compatibleMagazines = _compatibleMagazines select {isClass (_cfgMagazines >> _x)};
+    _compatibleMagazines = _compatibleMagazines apply {configName (_cfgMagazines >> _x)};
+    _compatibleMagazines = _compatibleMagazines arrayIntersect _compatibleMagazines;
+
+    GVAR(magNamespace) setVariable [_cacheKey, _compatibleMagazines];
+};
+
++_compatibleMagazines
