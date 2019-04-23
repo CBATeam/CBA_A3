@@ -11,11 +11,13 @@
             <French>Community Base Addons - Événements</French>
             <Polish>Community Base Addons - Zdarzenia</Polish>
             <Turkish>Community Base Addons - Durumlar</Turkish>
+            <Italian>Community Base Addons - Eventi</Italian>
         </Key>
         <Key ID="STR_CBA_Events_WeaponsCategory">
             <English>CBA Weapons</English>
             <German>CBA Waffen</German>
             <Polish>CBA Bronie</Polish>
+            <Italian>Armi CBA</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionMode">
             <English>Weapon Repetition Mode</English>

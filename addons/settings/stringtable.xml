@@ -12,6 +12,7 @@
             <Polish>Community Base Addons - Komponent Ustawień</Polish>
             <French>Community Base Addons - Configurations des composants</French>
             <Turkish>Community Base Addons - Ayarlar</Turkish>
+            <Italian>Community Base Addons - Impostazioni</Italian>
         </Key>
         <Key ID="STR_cba_settings_configureAddons">
             <English>Configure Addons</English>
@@ -24,6 +25,7 @@
             <Russian>Настроить Дополнения</Russian>
             <French>Configurer les addons</French>
             <Turkish>Eklenti Ayarları</Turkish>
+            <Italian>Configura gli addon</Italian>
         </Key>
         <Key ID="STR_cba_settings_configureBase">
             <English>Configure Base</English>
@@ -36,6 +38,7 @@
             <Russian>Основные Настройки</Russian>
             <French>Configurer la base</French>
             <Turkish>Oyun Ayarları</Turkish>
+            <Italian>Configura il gioco base</Italian>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -48,6 +51,7 @@
             <French>Options des addons</French>
             <Polish>Ustawienia addonów</Polish>
             <Turkish>Eklenti Ayarları</Turkish>
+            <Italian>Opzioni degli addon</Italian>
         </Key>
         <Key ID="STR_cba_settings_menu_button_tooltip">
             <English>Adjust addon settings.</English>
@@ -56,6 +60,7 @@
             <Polish>Zmień ustawienia addonów.</Polish>
             <Turkish>Eklenti ayarlarını değiştir.</Turkish>
             <Japanese>アドオンの設定を調整します。</Japanese>
+            <Italian>Aggiusta le impostazioni per gli addon</Italian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -68,6 +73,7 @@
             <French>Ajuster les paramètres des addons...</French>
             <Polish>Ustawienia addonów...</Polish>
             <Turkish>Eklenti Ayarları...</Turkish>
+            <Italian>Opzioni per gli addon ...</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -80,6 +86,7 @@
             <French>Serveur</French>
             <Polish>Serwer</Polish>
             <Turkish>Sunucu</Turkish>
+            <Italian>Server</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
             <English>Look at the server's settings. Log in as admin to change.</English>
@@ -92,6 +99,7 @@
             <French>Regarder les paramètres des serveurs. Connectez-vous en tant qu'administrateur pour les changer.</French>
             <Polish>Zobacz ustawienia serwera. Zaloguj się jako administrator aby zmienić.</Polish>
             <Turkish>Sunucu ayarlarına bak. Değiştirmek için admin olarak giriş yapın.</Turkish>
+            <Italian>Visualizza le impostazioni del server. Entra come amministratore per cambiarle.</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -104,6 +112,7 @@
             <Polish>Misja</Polish>
             <French>Mission</French>
             <Turkish>Görev</Turkish>
+            <Italian>Missione</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip">
             <English>Look at the mission's settings.</English>
@@ -116,6 +125,7 @@
             <French>Regarder les paramètres des missions.</French>
             <Polish>Zobacz ustawienia misji.</Polish>
             <Turkish>Görev'in ayarlarına bak.</Turkish>
+            <Italian>Visualizza le impostazioni della missione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
             <English>Edit the mission's settings.</English>
@@ -128,6 +138,7 @@
             <French>Editer les paramètres des missions.</French>
             <Polish>Edytuj ustawienia misji.</Polish>
             <Turkish>Görev'in ayarlarını değiştir.</Turkish>
+            <Italian>Cambia le impostazioni della missione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient">
             <English>Client</English>
@@ -140,6 +151,7 @@
             <Polish>Klient</Polish>
             <French>Client</French>
             <Turkish>Oyuncu</Turkish>
+            <Italian>Client</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient_tooltip">
             <English>Edit your local settings.</English>
@@ -152,6 +164,7 @@
             <French>Modifier vos paramètres locaux</French>
             <Polish>Edytuj swoje lokalne ustawienia.</Polish>
             <Turkish>Yerel ayarlarınızı değiştirin.</Turkish>
+            <Italian>Cambia le tue impostazioni locali.</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLocal">
             <English>Local</English>
@@ -164,6 +177,7 @@
             <Polish>Lokalne</Polish>
             <French>Local</French>
             <Turkish>Yerel</Turkish>
+            <Italian>Locale</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonSave_tooltip">
             <English>Save current settings as preset.</English>
@@ -176,6 +190,7 @@
             <French>Enregistrer les paramètres actuels comme préréglage.</French>
             <Polish>Zapisz obecne ustawienia do szablonu.</Polish>
             <Turkish>Şuanki ayaları şablon olarak kaydet.</Turkish>
+            <Italian>Salva le impostazioni attuali come predefinite</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLoad_tooltip">
             <English>Load settings from preset.</English>
@@ -188,6 +203,7 @@
             <French>Charger les paramètres du préréglage.</French>
             <Polish>Załaduj ustawienia z szablonu.</Polish>
             <Turkish>Şablondan ayarları yükle.</Turkish>
+            <Italian>Carica le impostazioni da quelle predefinite</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport">
             <English>Import</English>
@@ -200,6 +216,7 @@
             <French>Importer</French>
             <Polish>Import</Polish>
             <Turkish>Import</Turkish>
+            <Italian>Importa</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport_tooltip">
             <English>Import settings from clipboard.</English>
@@ -212,6 +229,7 @@
             <French>Importer les paramètres du presse-papiers</French>
             <Polish>Import ustawień ze schowka.</Polish>
             <Turkish>Ayarları panodan çek.</Turkish>
+            <Italian>Importa le impostazioni dagli appunti.</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -224,6 +242,7 @@
             <French>Exporter</French>
             <Polish>Eksport</Polish>
             <Turkish>Export</Turkish>
+            <Italian>Esporta</Italian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport_tooltip">
             <English>Export settings to clipboard.</English>
@@ -236,6 +255,7 @@
             <French>Exporter les paramètres dans le presse-papiers</French>
             <Polish>Eksport ustawień do schowka.</Polish>
             <Turkish>Ayarları panoya kopyala.</Turkish>
+            <Italian>Esporta le impostazioni negli appunti.</Italian>
         </Key>
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
@@ -248,6 +268,7 @@
             <French>Réinitialiser à la valeur par défaut.</French>
             <Polish>Przywróć domyślne wartości.</Polish>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
+            <Italian>Reimposta ai valori originali.</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
@@ -260,6 +281,7 @@
             <French>Ecraser\nClients</French>
             <Polish>Nadpisz\nKlienci</Polish>
             <Turkish>Oyunculara\nAyar Zorla</Turkish>
+            <Italian>Sovrascrive\ni client</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
@@ -272,6 +294,7 @@
             <French>Ecraser\nMission</French>
             <Polish>Nadpisz\nMisja</Polish>
             <Turkish>Göreve\nAyar Zorla</Turkish>
+            <Italian>Sovrascrive\nla missione</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
@@ -284,6 +307,7 @@
             <French>Ecraser\nServeur</French>
             <Polish>Nadpisz\nSerwer</Polish>
             <Turkish>Sunucuya\nAyar Zorla</Turkish>
+            <Italian>Sovrascrive\nil server</Italian>
         </Key>
         <Key ID="STR_cba_settings_applies">
             <English>This setting applies.</English>
@@ -292,6 +316,7 @@
             <Polish>To ustawienie dotyczy.</Polish>
             <Turkish>Bu ayar geçerli.</Turkish>
             <Japanese>設定を適用します。</Japanese>
+            <Italian>Prevale questa impostazione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
@@ -300,6 +325,7 @@
             <Polish>To ustawienie zostanie zastosowanie po restarcie misji.</Polish>
             <Turkish>Bu ayar oyun baştan başladıktan sonra geçerli olur.</Turkish>
             <Japanese>この設定は次のミッション開始後に適用されます。</Japanese>
+            <Italian>Questa impostazione sarà valida dopo il riavvio della missione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -312,6 +338,7 @@
             <Polish>Ta wartość została nadpisana przez klientów.</Polish>
             <French>Ce paramètre est écrasé par les clients.</French>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Italian>I client sovrascrivono questa impostazione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
@@ -324,6 +351,7 @@
             <Polish>Ta wartośc została nadpisana przez misję.</Polish>
             <French>Ce paramètre est écrasé par la mission.</French>
             <Turkish>Görev tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Italian>La missione sovrascrive questa impostazione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
@@ -336,6 +364,7 @@
             <Polish>Ta wartość została nadpisana przez serwer.</Polish>
             <French>Ce paramètre est écrasé par le serveur.</French>
             <Turkish>Sunucu tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Italian>Il server sovrascrive questa impostazione.</Italian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
             <English>This setting is overwritten by the clients and only applies to the server.</English>
@@ -348,6 +377,7 @@
             <Polish>Ta wartość zostałą nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
             <French>Ce paramètre est écrasé par les clients et s'applique seulement au serveur.</French>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış, ayar sadece sunucuda geçerli.</Turkish>
+            <Italian>Questa impostazione è sovrascritta dai client e si applica solo al server.</Italian>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
@@ -359,6 +389,7 @@
             <French>Copier dans le presse-papier</French>
             <Polish>Skopiuj do schowka</Polish>
             <Turkish>Panoya kopyala</Turkish>
+            <Italian>Copia negli appunti</Italian>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
@@ -370,6 +401,7 @@
             <French>Afficher les valeurs par défaut :</French>
             <Polish>Pokaż domyślnę wartości:</Polish>
             <Turkish>Varsayılan değerleri göster:</Turkish>
+            <Italian>Mostra i valori originali:</Italian>
         </Key>
     </Package>
 </Project>

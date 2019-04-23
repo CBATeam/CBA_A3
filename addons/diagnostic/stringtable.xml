@@ -11,6 +11,7 @@
             <Polish>Community Base Addons - Diagnostyka</Polish>
             <French>Community Base Addons - Diagnostics</French>
             <Turkish>Community Base Addons - Teşhis</Turkish>
+            <Italian>Community Base Addons - Diagnostica</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
             <English>Extended Debug Console</English>
@@ -22,6 +23,7 @@
             <French>Console de débogage étendue</French>
             <Polish>Rozszerzona Konsola Debugowania</Polish>
             <Turkish>Geliştirilmiş Debug Konsolu</Turkish>
+            <Italian>Console debug estesa</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_PrevStatement">
             <English>Previous Statement</English>
@@ -33,6 +35,7 @@
             <French>Déclaration précédente</French>
             <Polish>Poprzednie polecenie</Polish>
             <Turkish>Önceki İfade</Turkish>
+            <Italian>Espressione Prec.</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
@@ -44,6 +47,7 @@
             <French>Déclaration suivante</French>
             <Polish>Następne polecenie</Polish>
             <Turkish>Sonraki İfade</Turkish>
+            <Italian>Espressione Succ.</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
@@ -55,6 +59,7 @@
             <Polish>Wykonaj na celu</Polish>
             <French>Cible Exec</French>
             <Turkish>Hedefte Çalıştır</Turkish>
+            <Italian>Esegui Remoto</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debugging</English>
@@ -66,6 +71,7 @@
             <Polish>Włącz debugowanie na celu</Polish>
             <French>Activer le débogage de la cible</French>
             <Turkish>Hedefte Çalıştırmayı Aktifleştir</Turkish>
+            <Italian>Attiva il debug remoto</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
@@ -77,6 +83,7 @@
             <Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
             <French>[CBA] Permet le débogage de la cible distante. Nécessite la console de débogage.</French>
             <Turkish>[CBA] Başka hedefte çalıştırmayı aktifleştirir. Debug konsolu gerektirir.</Turkish>
+            <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
         </Key>
     </Package>
 </Project>

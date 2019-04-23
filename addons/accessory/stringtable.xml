@@ -11,6 +11,7 @@
             <Polish>Community Base Addons - Funkcje Akcesoriów</Polish>
             <French>Community Base Addons - Fonctions des accessoires</French>
             <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
+            <Italian>Community Base Addons - Funzioni per Accessori</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
@@ -22,6 +23,7 @@
             <Polish>Następny tryb akcesoria na szynie</Polish>
             <French>Mode de l'accessoire sur rail suivant</French>
             <Turkish>Sonraki ray aksesuarı</Turkish>
+            <Italian>Stato successivo dell'oggetto sulla slitta</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -33,6 +35,7 @@
             <Polish>Przełącza na następny tryb akcesoria na szynie</Polish>
             <French>Passe au prochain mode disponible de votre accessoire sur rail</French>
             <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
+            <Italian>Passa alla modalità successiva del tuo accessorio sulla slitta</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
@@ -44,6 +47,7 @@
             <Polish>Poprzedni tryb akcesoria na szynie</Polish>
             <French>Mode de l'accessoire sur rail précèdent</French>
             <Turkish>Önceki ray aksesuarı</Turkish>
+            <Italian>Stato precedente dell'oggetto sulla slitta</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -55,6 +59,7 @@
             <Polish>Przełącza na poprzedni tryb akcesoria na szynie</Polish>
             <French>Passe au précèdent mode disponible de votre accessoire sur rail</French>
             <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
+            <Italian>Passa alla modalità precedente del tuo accessorio sulla slitta</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
@@ -66,6 +71,7 @@
             <Polish>Następny tryb optyki</Polish>
             <French>Mode de l'optique suivant</French>
             <Turkish>Sonraki nişangah modu</Turkish>
+            <Italian>Stato successivo dell'ottica</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -77,6 +83,7 @@
             <Polish>Przełącza na następny dostępny tryb optyki</Polish>
             <French>Passe au prochain mode disponible de votre optique</French>
             <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
+            <Italian>Passa alla modalità successiva della tua ottica</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -88,6 +95,7 @@
             <Polish>Poprzedni tryb optyki</Polish>
             <French>Mode de l'optique sur rail précèdent</French>
             <Turkish>Önceki nişangah modu</Turkish>
+            <Italian>Stato precedente dell'ottica</Italian>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -99,6 +107,7 @@
             <Polish>Przełącza na poprzedni dostępny tryb optyki</Polish>
             <French>Passe au précèdent mode disponible de votre optique</French>
             <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
+            <Italian>Passa alla modalità precedenta della tua ottica</Italian>
         </Key>
     </Package>
 </Project>
