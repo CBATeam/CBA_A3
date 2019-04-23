@@ -30,6 +30,7 @@ if (_weapon isEqualType "") then {
 };
 
 private _cacheKey = format ["%1#%2",_weapon,_allMuzzles];
+if (isNil QGVAR(magNamespace)) then { GVAR(magNamespace) = call CBA_fnc_createNamespace; };
 
 private _returnMags = GVAR(magNamespace) getVariable _cacheKey;
 
