@@ -115,7 +115,7 @@
             <French>Les mots de passe ne sont pas enregistrés quand vous vous connectez à un serveur multijoueur.Les mots de passe déjà enregistrés vont être supprimés du profile.</French>
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler bilgisayardan silinir.</Turkish>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードはプロフィールから削除します。</Japanese>
-            <Italian>Quando ci si collega ad un servermultiplayer, le password non verranno salvate. Non saranno usate password precedentemente salvate.</Italian>
+            <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Non saranno usate password precedentemente salvate.</Italian>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationPositionName">
             <English>Notification</English>
