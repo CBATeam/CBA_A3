@@ -27,7 +27,7 @@ Author:
 params ["_unit", "_weapon"];
 
 // config case
-private _compatibleMagazines = _weapon call CBA_fnc_compatibleMagazines;
+private _compatibleMagazines = [_weapon, true] call CBA_fnc_compatibleMagazines;
 
 private _uniform = uniformContainer _unit;
 private _uniformMagazines = magazinesAmmoCargo _uniform select {
