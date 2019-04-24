@@ -12,6 +12,7 @@
             <Polish>Community Base Addons - Pomoc</Polish>
             <French>Community Base Addons - Aide</French>
             <Turkish>Community Base Addons - Yardım</Turkish>
+            <Italian>Community Base Addons - Aiuto</Italian>
         </Key>
         <Key ID="STR_CBA_Help_Keys">
             <English>Keybindings</English>
@@ -19,7 +20,7 @@
             <Spanish>Keybindings</Spanish>
             <Czech>Keybindings</Czech>
             <Russian>Назначения клавиш</Russian>
-            <Italian>Keybindings</Italian>
+            <Italian>Tasti</Italian>
             <Polish>Klawisze</Polish>
             <French>Raccourcis clavier</French>
             <Hungarian>Keybindings</Hungarian>
@@ -34,7 +35,7 @@
             <Spanish>Credits</Spanish>
             <Czech>Credits</Czech>
             <Russian>Кредиты</Russian>
-            <Italian>Credits</Italian>
+            <Italian>Riconoscimenti</Italian>
             <Polish>Twórcy</Polish>
             <French>Credits</French>
             <Hungarian>Credits</Hungarian>

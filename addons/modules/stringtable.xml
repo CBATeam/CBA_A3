@@ -11,6 +11,7 @@
             <Polish>Community Base Addons - Komponent Modułów</Polish>
             <French>Community Base Addons - Composant des modules</French>
             <Turkish>Community Base Addons - Modüller</Turkish>
+            <Italian>Community Base Addons - Moduli</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Category_DisplayName">
             <English>CBA Modules</English>
@@ -22,6 +23,7 @@
             <Polish>Moduły CBA</Polish>
             <French>Modules de CBA</French>
             <Turkish>CBA Modülleri</Turkish>
+            <Italian>CBA - Moduli</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Attack">
             <English>Attack</English>
@@ -33,6 +35,7 @@
             <Polish>Atak</Polish>
             <French>Attaquer</French>
             <Turkish>Saldır</Turkish>
+            <Italian>Attaccare</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType">
             <English>Attack Location Type</English>
@@ -44,6 +47,7 @@
             <Polish>Typ lokalizacji ataku</Polish>
             <French>Type d'emplacement de l'attaque</French>
             <Turkish>Saldırı Konum Tipi</Turkish>
+            <Italian>Tipo di posizione per l'attacco</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -55,6 +59,7 @@
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny</Polish>
             <French>Définir quel type d'objet est passé en tant que point central</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ModuleLoc">
             <English>Module Position</English>
@@ -66,6 +71,7 @@
             <Polish>Pozycja Modułu</Polish>
             <French>Position du module</French>
             <Turkish>Modül Konumu</Turkish>
+            <Italian>Posizione del modulo</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ObjectLoc">
             <English>Object/Location</English>
@@ -77,6 +83,7 @@
             <Polish>Obiekt/Lokacja</Polish>
             <French>Objet/Lieu</French>
             <Turkish>Obje/Konum</Turkish>
+            <Italian>Posizione oggetto</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_GroupLoc">
             <English>Group</English>
@@ -88,6 +95,7 @@
             <Polish>Grupa</Polish>
             <French>Groupe</French>
             <Turkish>Grup</Turkish>
+            <Italian>Gruppo</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ArrayLoc">
             <English>Array</English>
@@ -99,6 +107,7 @@
             <Polish>Tablica</Polish>
             <French>Tableau</French>
             <Turkish>Liste</Turkish>
+            <Italian>Array</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_MarkerLoc">
             <English>Marker</English>
@@ -110,6 +119,7 @@
             <Polish>Marker</Polish>
             <French>Marqueur</French>
             <Turkish>İşaret</Turkish>
+            <Italian>Indicatore</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_TaskLoc">
             <English>Task</English>
@@ -121,6 +131,7 @@
             <Polish>Zadanie</Polish>
             <French>Tâche</French>
             <Turkish>Görev</Turkish>
+            <Italian>Incarico</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_SetLoc">
             <English>Set Position</English>
@@ -132,6 +143,7 @@
             <Polish>Ustaw Pozycję</Polish>
             <French>Configurer la position</French>
             <Turkish>Konum Belirle</Turkish>
+            <Italian>Posiziona</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition">
             <English>Attack Position</English>
@@ -143,6 +155,7 @@
             <Polish>Pozycja Ataku</Polish>
             <French>Position de l'attaque</French>
             <Turkish>Saldırı Konumu</Turkish>
+            <Italian>Posizione per l'attacco</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -154,6 +167,7 @@
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius">
             <English>Search Radius</English>
@@ -165,6 +179,7 @@
             <Polish>Obszar Przeszukania</Polish>
             <French>Rayon de recherche</French>
             <Turkish>Arama Menzili</Turkish>
+            <Italian>Raggio di ricerca</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius_Desc">
             <English>Enter a number for size of the radius to search</English>
@@ -176,6 +191,7 @@
             <Polish>Wprowadź liczbę jako rozmiar obszaru do przeszukania</Polish>
             <French>Entrez un nombre pour la taille du rayon à rechercher</French>
             <Turkish>Aranıcak alanın çapı için bir sayı girin</Turkish>
+            <Italian>Immettere un numero per la dimensione del raggio in cui cercare</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
@@ -187,6 +203,7 @@
             <Polish>Zsynchronizuj z liderem grupy aby zaatakować określoną lokalizacje</Polish>
             <French>Synchroniser avec le chef du groupe pour attaquer un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konuma saldırtın</Turkish>
+            <Italian>Sincronizza con un capogruppo per attaccare una posizione designata.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride">
             <English>Allow Override</English>
@@ -198,6 +215,7 @@
             <Polish>Zezwalaj na nadpisanie</Polish>
             <French>Autoriser l'écrasement</French>
             <Turkish>Üstüne Yazmayı Etkinleştir</Turkish>
+            <Italian>Permettere Sovrascrittura</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
@@ -209,6 +227,7 @@
             <Polish>Zezwalaj aby moduł nadpisał stare punkty nawigacyjnych rozkazem ataku</Polish>
             <French>Autoriser le module à supprimer les anciens points de passage et attribuer un points de passage d'attaque</French>
             <Turkish>Modülün eski waypoint'leri silip saldırı waypoint'i koymasına izin ver</Turkish>
+            <Italian>Permette al modulo di togliere waypoint precedenti e assegnarne uno di attacco.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
@@ -220,6 +239,7 @@
             <Polish>Obrona</Polish>
             <French>Défendre</French>
             <Turkish>Savun</Turkish>
+            <Italian>Difendere</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
@@ -231,6 +251,7 @@
             <Polish>Rodzaj Pozycji Obronnej</Polish>
             <French>Type d'emplacement de la défense</French>
             <Turkish>Savunma Konum Tipi</Turkish>
+            <Italian>Tipo di posizione per la difesa</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -242,6 +263,7 @@
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny obrony</Polish>
             <French>Définir quel type d'objet est passé comme point central</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition">
             <English>Defend Position</English>
@@ -253,6 +275,7 @@
             <Polish>Pozycja Obronna</Polish>
             <French>Position de la défense</French>
             <Turkish>Konumu Savun</Turkish>
+            <Italian>Difendere Posizione</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -264,6 +287,7 @@
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius">
             <English>Defend Radius</English>
@@ -275,6 +299,7 @@
             <Polish>Obszar Obrony</Polish>
             <French>Rayon de la défense</French>
             <Turkish>Belli Bir Çapı Savun</Turkish>
+            <Italian>Raggio di Difesa</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius_Desc">
             <English>The max distance to defend from the center point</English>
@@ -286,6 +311,7 @@
             <Polish>Maksymalny dystans od punktu centralnego na jakim będzie prowadzona obrona</Polish>
             <French>La distance maximale à défendre depuis le point central</French>
             <Turkish>Merkez noktadan savunulacak maksimum uzaklık</Turkish>
+            <Italian>Distanza massima dal punto centrale entro cui difendere.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold">
             <English>Building Size Threshold</English>
@@ -297,6 +323,7 @@
             <Polish>Próg Rozmiaru Budynku</Polish>
             <French>Seuil de taille du bâtiment</French>
             <Turkish>Bina Boyutu Limiti</Turkish>
+            <Italian>Soglia Dimensione Edificio</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
@@ -308,6 +335,7 @@
             <Polish>Im mniejsza wartość tym więcej budynków będzie dostępnych</Polish>
             <French>Plus le nombre est petit, plus il y'a de bâtiments disponibles</French>
             <Turkish>Sayı küçüldükçe daha fazla sayıda bina mümkün olur</Turkish>
+            <Italian>Più piccolo il numero più edifici saranno disponibili</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
             <English>Patrol Chance</English>
@@ -319,6 +347,7 @@
             <Polish>Szasna na Patrol</Polish>
             <French>Possibilité de patrouille</French>
             <Turkish>Devriye İhtimali</Turkish>
+            <Italian>Probabilità di pattugliare</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
@@ -330,6 +359,7 @@
             <Polish>Szansa dla każdej jednostki na to że przeprowadzi patrol zamiast garnizonowania budynku</Polish>
             <French>Possibilité pour chaque unité de patrouiller au lieu d'être en garnison</French>
             <Turkish>Devriye İhtimali</Turkish>
+            <Italian>Probabilità per ogni unità di pattugliare invece che presidiare.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
@@ -341,6 +371,7 @@
             <Polish>Szansa na Utrzymanie</Polish>
             <French>Chance de tenir</French>
             <Turkish>Tutma İhtimali</Turkish>
+            <Italian>Probabilità di tenuta</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
@@ -352,6 +383,7 @@
             <Polish>Szansa dla każdej jednostki że będzie utrzymywać swój garnizon w trakcie walki</Polish>
             <French>Possibilité pour chaque unité de tenir sa garnison au combat</French>
             <Turkish>Birimlerin çatışma sırasında konumlarını koruma şansı</Turkish>
+            <Italian>Probabilità per ogni unità di tenere il presidio durante il combattimento.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendModuleDescription">
             <English>Sync to leader of group to defend a parsed location</English>
@@ -363,6 +395,7 @@
             <Polish>Zsynchronizuj z liderem grupy aby bronić określonej lokalizacji</Polish>
             <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu savundurun</Turkish>
+            <Italian>Sincronizza con un capogruppo per difendere una posizione designata.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
@@ -374,6 +407,7 @@
             <Polish>Patrol</Polish>
             <French>Patrouille</French>
             <Turkish>Devriye</Turkish>
+            <Italian>Pattugliare</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
@@ -385,6 +419,7 @@
             <Polish>Patrol - rodzaj centrum</Polish>
             <French>Type d'emplacement de la patrouille</French>
             <Turkish>Devriye Merkez Tipi</Turkish>
+            <Italian>Tipo del centro del pattugliamento</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -396,6 +431,7 @@
             <Polish>Określ jaki obiekt jest przekazowany jako punkt centralny patrolu</Polish>
             <French>Définir quel type d'objet est passé comme point central</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Italian>Imposta il tipo di oggetto che viene usato come punto centrale.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
             <English>Center Point</English>
@@ -407,6 +443,7 @@
             <Polish>Punkt Centralny</Polish>
             <French>Point central</French>
             <Turkish>Merkez Nokta</Turkish>
+            <Italian>Punto Centrale</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -418,6 +455,7 @@
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius">
             <English>Patrol Radius</English>
@@ -429,6 +467,7 @@
             <Polish>Obszar Patrolu</Polish>
             <French>Rayon de patrouille</French>
             <Turkish>Devriye Çapı</Turkish>
+            <Italian>Raggio di Pattugliamento</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius_Desc">
             <English>The distance to patrol from the center point</English>
@@ -440,6 +479,7 @@
             <Polish>Rozmar obszaru do Patrolowania w okół punktu centralnego</Polish>
             <French>La distance à parcourir en patrouille depuis le point central</French>
             <Turkish>Merkez noktadan devriyeye çıkılacak uzaklık</Turkish>
+            <Italian>La distanza da pattugliare dal punto centrale.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount">
             <English>Waypoint Count</English>
@@ -451,6 +491,7 @@
             <Polish>Ilosć punktów nawigacyjnych</Polish>
             <French>Nombre de points de passage</French>
             <Turkish>Waypoint Sayısı</Turkish>
+            <Italian>Numero di destinazioni</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
@@ -462,6 +503,7 @@
             <Polish>Ilość punktu nawigacyjnych do utworzenia</Polish>
             <French>La quantité de points de passage à créer</French>
             <Turkish>Oluşturulacak Waypoint Sayısı</Turkish>
+            <Italian>Quantità di destinazioni da creare.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType">
             <English>Waypoint Type</English>
@@ -473,6 +515,7 @@
             <Polish>Rodzaj Punktu nawigacyjnego</Polish>
             <French>Type de point de passage</French>
             <Turkish>Waypoint Tipi</Turkish>
+            <Italian>Tipo di destinazioni</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType_Desc">
             <English>The type of waypoint to be used</English>
@@ -484,6 +527,7 @@
             <Polish>Rodzaj Punktu nawigacyjnego do wykorzystania</Polish>
             <French>Le type de point de passage à utiliser</French>
             <Turkish>Kullanılacak waypoint tipi</Turkish>
+            <Italian>Il tipo di destinazione da usare.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Move">
             <English>Move</English>
@@ -495,6 +539,7 @@
             <Polish>Przemieść</Polish>
             <French>Sé déplacer</French>
             <Turkish>Hareket Et</Turkish>
+            <Italian>Muovere</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_SAD">
             <English>Seek and Destroy</English>
@@ -506,6 +551,7 @@
             <Polish>Znajdź i zniszcz</Polish>
             <French>Rechercher et détruire</French>
             <Turkish>Bul ve Yok Et</Turkish>
+            <Italian>Cercare e Distruggere</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Loiter">
             <English>Loiter</English>
@@ -517,6 +563,7 @@
             <Polish>Krąż</Polish>
             <French>Flâner</French>
             <Turkish>Bekle</Turkish>
+            <Italian>Indulgiare</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
@@ -528,6 +575,7 @@
             <Polish>Kod do wykonania</Polish>
             <French>Code à exécuter</French>
             <Turkish>Çalıştırılacak Kod</Turkish>
+            <Italian>Codice da eseguire</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
             <English>Any code to run at waypoints</English>
@@ -539,6 +587,7 @@
             <Polish>Kod do wykonania po osiągnięciu punktów nawigacyjnych</Polish>
             <French>Tout code à exécuter aux points de passage</French>
             <Turkish>Waypoint'lerde çalıştırılacak herhangi kod</Turkish>
+            <Italian>Codice da eseguire alla destinazione.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout">
             <English>Timeout</English>
@@ -550,6 +599,7 @@
             <Polish>Czas przerwania</Polish>
             <French>Pause</French>
             <Turkish>Zaman Aşımı</Turkish>
+            <Italian>Tempo di attesa</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout_Desc">
             <English>[Min, Med, Max] Time to wait at waypoints</English>
@@ -561,6 +611,7 @@
             <Polish>[Minimalny, Średni, Maksymalny] Czas oczekiwania na punktach nawigacyjnych</Polish>
             <French>[Min, Moy, Max] Temps d'attente aux points de passage</French>
             <Turkish>[Minimum, Orta, Maksimum] Waypoint'lerde beklenecek zaman</Turkish>
+            <Italian>[Min, Med, Mass] Tempo di attesa alla destinazione.</Italian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolModuleDescription">
             <English>Sync to leader of group to patrol a parsed location</English>
@@ -572,6 +623,7 @@
             <Polish>Zsynchronizuj z liderem grupy aby patrolować określoną lokalizację</Polish>
             <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu devriye ettirin</Turkish>
+            <Italian>Sincronizza con un capogruppo per pattugliare una posizione designata.</Italian>
         </Key>
     </Package>
 </Project>
