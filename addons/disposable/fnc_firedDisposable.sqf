@@ -73,6 +73,9 @@ if (isNil "_usedLauncher") exitWith {};
                 isNull _projectile
             };
         }) exitWith {
+            private _launcherItems = secondaryWeaponItems _unit;
+            private _launcherMagazines = WEAPON_MAGAZINES(_unit,secondaryWeapon _unit);
+
             _unit removeWeapon _usedLauncher;
 
             private _dir = getDir _unit - 180;
@@ -85,7 +88,7 @@ if (isNil "_usedLauncher") exitWith {};
             _container setVelocity (velocity _unit vectorAdd ([sin _dir, cos _dir, 0] vectorMultiply 1.5));
 
             /*
-            addWeaponWithAttachmentsCargoGlobal [
+            _container addWeaponWithAttachmentsCargoGlobal [
                 _usedLauncher,
                 _silencer, _pointer, _optic, _bipod, [
                     _magazine1, _ammo1,
@@ -93,6 +96,18 @@ if (isNil "_usedLauncher") exitWith {};
                 ],
             1];
             */
+
+            {
+                _container addItemCargoGlobal [_x, 1];
+            } forEach _launcherItems;
+
+            {
+                _x params ["_magazine", "_ammo"];
+
+                if (_ammo > 0) then {
+                    _container addMagazineAmmoCargo [_x, 1, _ammo];
+                };
+            } forEach _launcherMagazines;
 
             true // quit
         };
