@@ -38,6 +38,10 @@ if (!isNull _backpackContainer) then {
     _backpackContainer call FUNC(replaceMagazineCargo);
 };
 
+{
+    _x call FUNC(replaceMagazineCargo);
+} forEach everyBackpack _box;
+
 if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
 
 private _magazines = magazinesAmmoCargo _box;
