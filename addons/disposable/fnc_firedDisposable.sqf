@@ -44,7 +44,7 @@ if (isNil "_usedLauncher") exitWith {};
         private _launcherItems = secondaryWeaponItems _unit;
         private _launcherMagazines = WEAPON_MAGAZINES(_unit,secondaryWeapon _unit);
 
-        [_unit, _usedLauncher] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _usedLauncher] call CBA_fnc_addWeaponWithoutItems;
 
         if (_isSelected) then {
             _unit selectWeapon _usedLauncher;

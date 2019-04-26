@@ -14,7 +14,7 @@ private _fnc_update = {
     if (!isNil "_launcher") then {
         private _launcherItems = secondaryWeaponItems _unit;
 
-        [_unit, _launcher] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _launcher] call CBA_fnc_addWeaponWithoutItems;
 
         {
             _unit addSecondaryWeaponItem _x;

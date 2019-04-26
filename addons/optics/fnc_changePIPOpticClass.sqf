@@ -38,7 +38,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _pipGun;
         };
 
-        [_unit, _pipGun] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _pipGun] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
@@ -67,7 +67,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _pipLauncher;
         };
 
-        [_unit, _pipLauncher] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _pipLauncher] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
@@ -96,7 +96,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _pipPistol;
         };
 
-        [_unit, _pipPistol] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _pipPistol] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
@@ -137,7 +137,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _normalGun;
         };
 
-        [_unit, _normalGun] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _normalGun] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
@@ -166,7 +166,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _normalLauncher;
         };
 
-        [_unit, _normalLauncher] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _normalLauncher] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {
@@ -195,7 +195,7 @@ if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
             _muzzle = _normalPistol;
         };
 
-        [_unit, _normalPistol] call CBA_fnc_addWeaponWithoutMagazines;
+        [_unit, _normalPistol] call CBA_fnc_addWeaponWithoutItems;
         [_unit, _muzzle, _mode] call CBA_fnc_selectWeapon;
 
         {

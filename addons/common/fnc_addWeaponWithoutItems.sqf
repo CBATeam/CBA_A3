@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addWeaponWithoutMagazines
+Function: CBA_fnc_addWeaponWithoutItems
 
 Description:
-    Adds weapon to unit without taking a magazine.
+    Adds weapon to unit without attachments and without taking a magazine.
 
     Does not work on vehicles.
     Attempts to keep magazine ids for unrelated magazines.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, "arifle_mx_F"] CBA_fnc_addWeaponWithoutMagazines;
+        [player, "arifle_mx_F"] CBA_fnc_addWeaponWithoutItems;
     (end)
 
 Author:
@@ -49,6 +49,21 @@ private _backpackMagazines = magazinesAmmoCargo _backpack select {
 } forEach _compatibleMagazines;
 
 _unit addWeapon _weapon;
+
+if (primaryWeapon _unit == _weapon) then {
+    removeAllPrimaryWeaponItems _unit;
+};
+
+if (secondaryWeapon _unit == _weapon) then {
+    // 'removeAllSecondaryWeaponItems' does not exist
+    {
+        _unit removeSecondaryWeaponItem _x;
+    } forEach secondaryWeaponItems _unit;
+};
+
+if (handgunWeapon _unit == _weapon) then {
+    removeAllHandgunItems _unit;
+};
 
 {
     _x params ["_magazine", "_ammo"];
