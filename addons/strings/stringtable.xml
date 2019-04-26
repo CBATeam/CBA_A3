@@ -12,6 +12,7 @@
             <Polish>Community Base Addons - Ciągi znaków</Polish>
             <French>Community Base Addons - Textes</French>
             <Turkish>Community Base Addons - Yazılar</Turkish>
+            <Italian>Community Base Addons - Stringhe</Italian>
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_DECIMAL_POINT">
             <English>.</English>
@@ -36,7 +37,7 @@
             <Russian> </Russian>
             <French> </French>
             <Spanish> </Spanish>
-            <Italian> </Italian>
+            <Italian>,</Italian>
             <Japanese>,</Japanese>
             <Chinese>,</Chinese>
             <Chinesesimp>,</Chinesesimp>
