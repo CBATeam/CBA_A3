@@ -21,6 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_unit"];
+if (!local _unit) exitWith {};
 
 if (GVAR(usePipOptics) && {!GVAR(inArsenal)}) then {
     // Gun, switch to pip weapon.

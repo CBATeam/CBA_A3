@@ -8,27 +8,20 @@ if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exi
 
 #include "XEH_PREP.sqf"
 
-private _fnc_update = {
+["loadout", {
     params ["_unit"];
-    if (!local _unit) exitWith {};
-    (GVAR(NormalLaunchers) getVariable secondaryWeapon _unit) params ["_launcher", "_magazine"];
+    _unit call FUNC(changeDisposableLauncherClass);
+}] call CBA_fnc_addPlayerEventHandler;
 
-    if (!isNil "_launcher") then {
-        private _launcherItems = secondaryWeaponItems _unit;
+["CAManBase", "InitPost", {
+    params ["_unit"];
+    _unit call FUNC(changeDisposableLauncherClass);
+}] call CBA_fnc_addClassEventHandler;
 
-        [_unit, _launcher] call CBA_fnc_addWeaponWithoutItems;
-
-        {
-            _unit addSecondaryWeaponItem _x;
-        } forEach _launcherItems;
-
-        _unit addWeaponItem [_launcher, _magazine];
-    };
-};
-
-["loadout", _fnc_update] call CBA_fnc_addPlayerEventHandler;
-["CAManBase", "InitPost", _fnc_update] call CBA_fnc_addClassEventHandler;
-["CAManBase", "Take", _fnc_update] call CBA_fnc_addClassEventHandler;
+["CAManBase", "Take", {
+    params ["_unit"];
+    _unit call FUNC(changeDisposableLauncherClass);
+}] call CBA_fnc_addClassEventHandler;
 
 GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
