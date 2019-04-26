@@ -55,5 +55,6 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
 ["All", "InitPost", FUNC(replaceMagazineCargo)] call CBA_fnc_addClassEventHandler;
+["CAManBase", "Take", FUNC(replaceMagazineCargo)] call CBA_fnc_addClassEventHandler;
 
 ADDON = true;
