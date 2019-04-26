@@ -4,6 +4,8 @@ ADDON = false;
 
 if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {};
 
+#include "XEH_PREP.sqf"
+
 private _fnc_update = {
     params ["_unit"];
     if (!local _unit) exitWith {};
@@ -28,10 +30,15 @@ private _fnc_update = {
 GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
+GVAR(magazines) = [];
+GVAR(MagazineLaunchers) = [] call CBA_fnc_createNamespace;
+
+private _cfgWeapons = configFile >> "CfgWeapons";
+private _cfgMagazines = configFile >> "CfgMagazines";
 
 {
     private _launcher = configName _x;
-    private _magazine = getArray (configFile >> "CfgWeapons" >> _launcher >> "magazines") select 0;
+    private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
     getArray _x params ["_loadedLauncher", "_usedLauncher"];
 
     GVAR(LoadedLaunchers) setVariable [_launcher, _loadedLauncher];
@@ -40,6 +47,12 @@ GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
     if (isNil {GVAR(NormalLaunchers) getVariable _loadedLauncher}) then {
         GVAR(NormalLaunchers) setVariable [_loadedLauncher, [_launcher, _magazine]];
     };
+
+    if (GVAR(magazines) pushBackUnique _magazine != -1) then {
+        GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
+    };
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
+
+["All", "InitPost", FUNC(replaceMagazineCargo)] call CBA_fnc_addClassEventHandler;
 
 ADDON = true;

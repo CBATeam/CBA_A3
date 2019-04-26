@@ -4,11 +4,13 @@ ADDON = false;
 
 #include "initSettings.sqf"
 
-if (!hasInterface) exitWith {};
-if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
-if (configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
+    configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
+}) exitWith {};
 
 #include "XEH_PREP.sqf"
+
+if (!hasInterface) exitWith {};
 
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
