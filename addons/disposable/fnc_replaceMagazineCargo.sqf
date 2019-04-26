@@ -23,6 +23,21 @@ Author:
 params ["_box"];
 if (!local _box) exitWith {};
 
+private _uniformContainer = uniformContainer _box;
+if (!isNull _uniformContainer) then {
+    _uniformContainer call FUNC(replaceMagazineCargo);
+};
+
+private _vestContainer = vestContainer _box;
+if (!isNull _vestContainer) then {
+    _vestContainer call FUNC(replaceMagazineCargo);
+};
+
+private _backpackContainer = backpackContainer _box;
+if (!isNull _backpackContainer) then {
+    _backpackContainer call FUNC(replaceMagazineCargo);
+};
+
 if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
 
 private _magazines = magazinesAmmoCargo _box;
