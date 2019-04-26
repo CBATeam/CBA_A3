@@ -47,11 +47,15 @@ if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
 private _magazines = magazinesAmmoCargo _box;
 clearMagazineCargoGlobal _box;
 
+private _isBackpack = getNumber (configFile >> "CfgVehicles" >> typeOf _box >> "isBackpack") != -1;
+
 {
     _x params ["_magazine", "_ammo"];
 
     if (_magazine in GVAR(magazines)) then {
-        _box addWeaponCargoGlobal [GVAR(MagazineLaunchers) getVariable _magazine, 1];
+        if !(_isBackpack) then {
+            _box addWeaponCargoGlobal [GVAR(MagazineLaunchers) getVariable _magazine, 1];
+        };
     } else {
         _box addMagazineAmmoCargo [_magazine, 1, _ammo];
     };
