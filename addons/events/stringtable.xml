@@ -12,11 +12,6 @@
             <Polish>Community Base Addons - Zdarzenia</Polish>
             <Turkish>Community Base Addons - Durumlar</Turkish>
         </Key>
-        <Key ID="STR_CBA_Events_WeaponsCategory">
-            <English>CBA Weapons</English>
-            <German>CBA Waffen</German>
-            <Polish>CBA Bronie</Polish>
-        </Key>
         <Key ID="STR_CBA_Events_RepetitionMode">
             <English>Weapon Repetition Mode</English>
             <German>Repetierwaffe laden</German>

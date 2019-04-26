@@ -2,6 +2,8 @@
 
 ADDON = false;
 
+#include "initSettings.sqf"
+
 if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {};
 
 #include "XEH_PREP.sqf"

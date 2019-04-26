@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Disposable">
-        <Key ID="STR_CBA_Disposable_Component">
+        <Key ID="STR_CBA_disposable_Component">
             <English>Community Base Addons - Disposable Weapons</English>
             <German>Community Base Addons - Einwegwaffen</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_DropUsedLauncher">
+            <English>Drop Used Disposable Launcher</English>
+            <German>Benutzten Einwegwerfer ablegen</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_DropNever">
+            <English>Never</English>
+            <German>Niemals</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_DropAIOnly">
+            <English>AI Only</English>
+            <German>Nur KI</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
+            <English>Selected Another Weapon</English>
+            <German>Andere Waffe ausgewählt</German>
         </Key>
     </Package>
 </Project>

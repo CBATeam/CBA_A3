@@ -20,5 +20,10 @@
             <Turkish>Önce bir görev başlatmalısınız.</Turkish>
             <Japanese>ミッションを開始しておく必要があります。</Japanese>
         </Key>
+        <Key ID="STR_cba_common_WeaponsCategory">
+            <English>CBA Weapons</English>
+            <German>CBA Waffen</German>
+            <Polish>CBA Bronie</Polish>
+        </Key>
     </Package>
 </Project>

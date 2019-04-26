@@ -60,6 +60,8 @@ if (isNil "_usedLauncher") exitWith {};
     };
 
     // automatically drop
+    if (GVAR(dropUsedLauncher) isEqualTo 0) exitWith {};
+
     [{
         params ["_unit", "_usedLauncher", "_projectile"];
 
@@ -73,6 +75,8 @@ if (isNil "_usedLauncher") exitWith {};
                 isNull _projectile
             };
         }) exitWith {
+            if (GVAR(dropUsedLauncher) isEqualTo 1 && {_unit == call CBA_fnc_currentUnit}) exitWith {true};
+
             private _launcherItems = secondaryWeaponItems _unit;
             private _launcherMagazines = WEAPON_MAGAZINES(_unit,secondaryWeapon _unit);
 

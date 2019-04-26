@@ -1,8 +1,8 @@
 [
     QGVAR(usePipOptics),
     "CHECKBOX",
-    LSTRING(UsePIP),
-    LSTRING(Category),
+    LLSTRING(UsePIP),
+    ELSTRING(common,WeaponsCategory),
     true, // default value
     2, // isGlobal
     {

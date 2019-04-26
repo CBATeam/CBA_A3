@@ -6,11 +6,6 @@
             <German>Community Base Addons - Optiken</German>
             <Polish>Community Base Addons - Optyka</Polish>
         </Key>
-        <Key ID="STR_cba_optics_Category">
-            <English>CBA Optics</English>
-            <German>CBA Optiken</German>
-            <Polish>CBA Optyka</Polish>
-        </Key>
         <Key ID="STR_cba_optics_UsePIP">
             <English>Use picture in picture optics</English>
             <German>Bild in Bild-Optiken verwenden</German>
