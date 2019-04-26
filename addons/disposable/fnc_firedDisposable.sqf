@@ -44,7 +44,12 @@ if (isNil "_usedLauncher") exitWith {};
         private _launcherItems = secondaryWeaponItems _unit;
         private _launcherMagazines = WEAPON_MAGAZINES(_unit,secondaryWeapon _unit);
 
-        _unit addWeapon _usedLauncher;
+        [_unit, _usedLauncher] call CBA_fnc_addWeaponWithoutMagazines;
+
+        if (_isSelected) then {
+            _unit selectWeapon _usedLauncher;
+        };
+
         {
             _unit addSecondaryWeaponItem _x;
         } forEach _launcherItems;
@@ -52,10 +57,6 @@ if (isNil "_usedLauncher") exitWith {};
         {
             _unit addWeaponItem [_usedLauncher, _x];
         } forEach _launcherMagazines;
-
-        if (_isSelected) then {
-            _unit selectWeapon _usedLauncher;
-        };
     };
 
     // automatically drop

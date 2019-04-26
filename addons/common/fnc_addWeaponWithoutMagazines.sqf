@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_optics_fnc_addWeapon
+Function: CBA_fnc_addWeaponWithoutMagazines
 
 Description:
     Adds weapon to unit without taking a magazine.
@@ -17,7 +17,7 @@ Returns:
 
 Examples:
     (begin example)
-        [player, "arifle_mx_F"] CBA_optics_fnc_addWeapon;
+        [player, "arifle_mx_F"] CBA_fnc_addWeaponWithoutMagazines;
     (end)
 
 Author:

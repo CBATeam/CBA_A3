@@ -62,6 +62,7 @@ class CfgFunctions {
 
         class Inventory {
             PATHTO_FNC(addWeapon);
+            PATHTO_FNC(addWeaponWithoutMagazines);
             PATHTO_FNC(addMagazine);
             PATHTO_FNC(addItem);
             PATHTO_FNC(compatibleMagazines);
