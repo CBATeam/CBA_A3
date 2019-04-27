@@ -28,7 +28,11 @@ if (_optic isEqualTo GVAR(currentOptic)) exitWith {};
 GVAR(currentOptic) = _optic;
 
 private _config = configFile >> "CfgWeapons" >> _optic >> "CBA_ScriptedOptic";
-if (!isClass _config) exitWith {};
+if (!isClass _config) exitWith {
+    GVAR(OpticReticleDetailTextures) = [[0,"",1,""]];
+    GVAR(OpticBodyTexture) = "";
+    ppEffectDestroy GVAR(ppEffects);
+};
 
 getArray (_config >> "minMagnificationReticleScale") apply {PARSE(_x)} params [["_minMagnification", 1], ["_minMagnificationReticleScale", 1]];
 getArray (_config >> "maxMagnificationReticleScale") apply {PARSE(_x)} params [["_maxMagnification", 1], ["_maxMagnificationReticleScale", 1]];
