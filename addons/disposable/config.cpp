@@ -1,4 +1,4 @@
-﻿#include "script_component.hpp"
+#include "script_component.hpp"
 
 class CfgPatches {
     class ADDON {
@@ -8,14 +8,13 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common","cba_events","cba_jr"};
+        requiredAddons[] = {"cba_common","cba_events"};
         version = VERSION;
         authors[] = {"commy2"};
     };
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgPIPItems.hpp"
-#include "CfgCarryHandleTypes.hpp"
-#include "CfgOpticsEffect.hpp"
-#include "RscInGameUI.hpp"
+#include "CfgFunctions.hpp"
+#include "CfgDisposableLaunchers.hpp"
+#include "CfgMagazines.hpp"

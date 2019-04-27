@@ -2,7 +2,7 @@
     QGVAR(repetitionMode),
     "LIST",
     [LLSTRING(RepetitionMode), LLSTRING(RepetitionModeTooltip)],
-    LLSTRING(WeaponsCategory),
+    ELSTRING(common,WeaponsCategory),
     [[0, 1, 2], [
         [LLSTRING(RepetitionModeOptic), LLSTRING(RepetitionModeOpticTooltip)], // Exit optic view
         [LLSTRING(RepetitionModeTriggerRelease), LLSTRING(RepetitionModeTriggerReleaseTooltip)], // Stop holding trigger

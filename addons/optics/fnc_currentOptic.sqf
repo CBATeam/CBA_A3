@@ -27,6 +27,16 @@ Author:
 
 params ["_unit"];
 
+private _vehicle = vehicle _unit;
+private _vehicleOptic = "";
+
+if (_vehicle != _unit) then {
+    // todo: turrets
+    _vehicleOptic = getText (configFile >> "CfgVehicles" >> typeOf _vehicle >> "CBA_ScriptedOpticClass");
+};
+
+if (_vehicleOptic != "") exitWith {_vehicleOptic};
+
 private _weapon = currentWeapon _unit;
 
 private _gun = primaryWeapon _unit;

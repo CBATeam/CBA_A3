@@ -93,6 +93,8 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     _ppEffect
 };
 
+[uiNamespace getVariable QGVAR(ScriptedOpticDisplay), false] call FUNC(loadScriptedOptic);
+
 //INFO_1("Updated optic info %1.",_optic);
 
 nil

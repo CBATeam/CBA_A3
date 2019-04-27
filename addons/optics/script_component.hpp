@@ -19,6 +19,7 @@
 
 #define PARSE(value) (call compile format ["%1", value])
 #define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
+#define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
 
 // control ids
 #define IDC_RETICLE 4000

@@ -20,10 +20,13 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-private _unit = call CBA_fnc_currentUnit;
-_unit call FUNC(updateOpticInfo);
+params [["_display", displayNull], ["_initDisplay", false]];
 
-params ["_display"];
+if (_initDisplay) then {
+    private _unit = call CBA_fnc_currentUnit;
+
+    _unit call FUNC(updateOpticInfo);
+};
 
 private _ctrlRedDot = _display displayCtrl IDC_RED_DOT;
 private _ctrlReticle = _display displayCtrl IDC_RETICLE;
@@ -69,13 +72,15 @@ _ctrlBodyNight ctrlSetText GVAR(OpticBodyTextureNight);
 _ctrlBodyNight ctrlSetPosition _bodyPosition;
 _ctrlBodyNight ctrlCommit 0;
 
-[missionNamespace, "Draw3D", {
-    if (isNull _thisArgs) exitWith {
-        removeMissionEventHandler ["Draw3D", _thisId];
-    };
+if (_initDisplay) then {
+    [missionNamespace, "Draw3D", {
+        if (isNull _thisArgs) exitWith {
+            removeMissionEventHandler ["Draw3D", _thisId];
+        };
 
-    _thisArgs call FUNC(animateScriptedOptic);
-}, _display] call CBA_fnc_addBISEventHandler;
+        _thisArgs call FUNC(animateScriptedOptic);
+    }, _display] call CBA_fnc_addBISEventHandler;
+};
 
 //INFO("Scripted optic weapon info display loaded.");
 

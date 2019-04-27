@@ -21,6 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_unit"];
+if (!local _unit) exitWith {};
 
 private _gun = primaryWeapon _unit;
 private _gunOptic = primaryWeaponItems _unit select 2;

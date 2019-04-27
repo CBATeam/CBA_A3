@@ -1,14 +1,16 @@
 #include "script_component.hpp"
 
-#include "initSettings.sqf"
-
-if (!hasInterface) exitWith {};
-if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
-if (configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []) exitWith {};
-
 ADDON = false;
 
+#include "initSettings.sqf"
+
+if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
+    configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
+}) exitWith {};
+
 #include "XEH_PREP.sqf"
+
+if (!hasInterface) exitWith {};
 
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
@@ -37,6 +39,11 @@ GVAR(ppEffects) = [];
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
     _unit call FUNC(changeCarryHandleOpticClass);
+}] call CBA_fnc_addPlayerEventHandler;
+
+["vehicle", {
+    params ["_unit"];
+    _unit call FUNC(updateOpticInfo);
 }] call CBA_fnc_addPlayerEventHandler;
 
 [QGVAR(UsingOptic), {
