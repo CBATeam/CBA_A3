@@ -22,6 +22,7 @@ Author:
 
 params ["_box"];
 if (!local _box) exitWith {};
+if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};
 
 private _uniformContainer = uniformContainer _box;
 if (!isNull _uniformContainer) then {
