@@ -41,6 +41,11 @@ GVAR(ppEffects) = [];
     _unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 
+["vehicle", {
+    params ["_unit"];
+    _unit call FUNC(updateOpticInfo);
+}] call CBA_fnc_addPlayerEventHandler;
+
 [QGVAR(UsingOptic), {
     params ["_display", "_isUsingOptic"];
     if (_isUsingOptic) then {
