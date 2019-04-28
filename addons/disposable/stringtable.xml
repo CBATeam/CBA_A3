@@ -33,5 +33,13 @@
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
             <German>Benutzten Einwegwerfer automatisch ablegen, sobald eine andere Waffe ausgewählt wurde.</German>
         </Key>
+        <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
+            <English>Replace Disposable Launcher</English>
+            <German>Einwegwerfer ersetzten</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_ReplaceDisposableLauncherTooltip">
+            <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
+            <German>Wenn aktiviert, dann können Einwegwerfer nur einmal benutzt werden. Munition für Einwegwerfer in Kisten und Fahrzeugen wird durch geladene Einwegwerfer ersetzt. Wenn deaktiviert, dann können Einwegwerfer nach der Benutzung nachgeladen werden.</German>
+        </Key>
     </Package>
 </Project>

@@ -1,4 +1,13 @@
 [
+    QGVAR(replaceDisposableLauncher),
+    "CHECKBOX",
+    [LLSTRING(ReplaceDisposableLauncher), LLSTRING(ReplaceDisposableLauncherTooltip)],
+    ELSTRING(common,WeaponsCategory),
+    true, // default value
+    1 // isGlobal
+] call EFUNC(settings,init);
+
+[
     QGVAR(dropUsedLauncher),
     "LIST",
     LLSTRING(DropUsedLauncher),
