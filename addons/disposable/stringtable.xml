@@ -13,13 +13,25 @@
             <English>Never</English>
             <German>Niemals</German>
         </Key>
+        <Key ID="STR_CBA_disposable_DropNeverTooltip">
+            <English>Don't automatically drop the used disposable launcher.</English>
+            <German>Benutzten Einwegwerfer nicht automatisch ablegen.</German>
+        </Key>
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
             <German>Nur KI</German>
         </Key>
+        <Key ID="STR_CBA_disposable_DropAIOnlyTooltip">
+            <English>Only AI drops the used disposable launcher.</English>
+            <German>Nur KI legt den benutzten Einwegwerfer ab.</German>
+        </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
             <German>Andere Waffe ausgewählt</German>
+        </Key>
+        <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
+            <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
+            <German>Benutzten Einwegwerfer automatisch ablegen, sobald eine andere Waffe ausgewählt wurde.</German>
         </Key>
     </Package>
 </Project>
