@@ -17,6 +17,7 @@ Parameters:
 
 Examples:
     (begin example)
+        ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
     (end)
 
 Returns:
@@ -51,6 +52,10 @@ private _composition = [];
     _composition pushBack lineBreak;
 
     _x params [["_text", "", ["", 0]], ["_size", 1, [0]], ["_color", [], [[]], [3,4]]];
+
+    if (_text isEqualType 0) then {
+        _text = str _text;
+    };
 
     _size = _size * 0.55 / (getResolution select 5);
 

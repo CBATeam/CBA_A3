@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 call {
-    #include "\a3\functions_f\GUI\fn_initDisplay.sqf";
+    #include "\a3\functions_f\GUI\fn_initDisplay.sqf"
 };
 
 params [["_event", "", [""]], ["_args", []], ["_className", "", [""]]];

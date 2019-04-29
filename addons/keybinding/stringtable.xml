@@ -12,6 +12,7 @@
             <Polish>Community Base Addons - Klawisze</Polish>
             <French>Community Base Addons - Configurations des touches</French>
             <Turkish>Community Base Addons - Klavye Tuşları</Turkish>
+            <Italian>Community Base Addons - Configurazione Tasti</Italian>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -24,6 +25,7 @@
             <Russian>Настроить Дополнения</Russian>
             <French>Configurer les addons</French>
             <Turkish>Eklentileri Düzenle</Turkish>
+            <Italian>Configura gli addon</Italian>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -36,6 +38,7 @@
             <Russian>Основные Настройки</Russian>
             <French>Configurer la base</French>
             <Turkish>Temeli Düzenle</Turkish>
+            <Italian>Configura il gioco base</Italian>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
@@ -48,6 +51,7 @@
             <Russian>Неизвестная Клавиша %1</Russian>
             <French>Touche inconnue %1</French>
             <Turkish>Bilinmeyen Tuş %1</Turkish>
+            <Italian>"%1" è un tasto sconosciuto</Italian>
         </Key>
     </Package>
 </Project>

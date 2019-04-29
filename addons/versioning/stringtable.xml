@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Versioning">
         <Key ID="STR_CBA_Versioning_Component">
@@ -12,6 +12,7 @@
             <Polish>Community Base Addons - Wersjonowanie</Polish>
             <French>Community Base Addons - Version</French>
             <Turkish>Community Base Addons - Versiyonlama</Turkish>
+            <Italian>Community Base Addons - Versionamento</Italian>
         </Key>
     </Package>
 </Project>

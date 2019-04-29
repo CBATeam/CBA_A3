@@ -1,6 +1,9 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineResinclDesign.inc" // can't have this in config, because it redefines some entries, and that makes Mikero's shits its pants
 
+// Function shouldn't be preped, but exit just to be safe because Headless Clients will trigger RscDisplayRemoteMissions and have problems with this
+if (!hasInterface) exitWith {};
+
 params ["_display"];
 private _ctrlMaps = _display displayCtrl IDC_SERVER_ISLAND;
 private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
@@ -125,8 +128,9 @@ _display setVariable [QFUNC(filter), {
 
     {
         _x params ["_name", "_value", "_data", "_color"];
+        private _classname = _data splitString "." param [0, ""];
 
-        if (toLower _name find _filter != -1 && {_showStockMissions || {!(_data in _stockMissions)}}) then {
+        if (toLower _name find _filter != -1 && {_showStockMissions || {!(_classname in _stockMissions)}}) then {
             private _index = _ctrlMissions lbAdd _name;
             _ctrlMissions lbSetValue [_index, _value];
             _ctrlMissions lbSetData [_index, _data];

@@ -74,7 +74,7 @@ prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
 importantFiles = ["mod.cpp", "meta.cpp", "README.md", "LICENSE.md", "logo_cba_ca.paa"]
-versionFiles = ["mod.cpp"]
+versionFiles = ["mod.cpp","addons\main_a3\CfgMods.hpp"]
 
 ciBuild = False # Used for CI builds
 

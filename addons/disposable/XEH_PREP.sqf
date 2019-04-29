@@ -1,0 +1,2 @@
+PREP(replaceMagazineCargo);
+PREP(changeDisposableLauncherClass);

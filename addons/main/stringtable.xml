@@ -12,6 +12,7 @@
             <French>Equipe CBA</French>
             <Polish>Zespół CBA</Polish>
             <Turkish>CBA Takımı</Turkish>
+            <Italian>Squadra CBA</Italian>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
@@ -40,6 +41,7 @@
             <French>Community Base Addons - Composante principale</French>
             <Polish>Community Base Addons - Główny Komponent</Polish>
             <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
+            <Italian>Community Base Addons - Componente Principale</Italian>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -52,6 +54,7 @@
             <French>Community Base Addons - Composant facultatif</French>
             <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
             <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
+            <Italian>Community Base Addons - Componente Opzionale</Italian>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
@@ -63,6 +66,7 @@
             <French>ADDON :</French>
             <Polish>ADDON:</Polish>
             <Turkish>EKLENTİ:</Turkish>
+            <Italian>ADDON:</Italian>
         </Key>
     </Package>
 </Project>

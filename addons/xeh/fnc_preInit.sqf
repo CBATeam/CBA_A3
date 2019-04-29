@@ -54,16 +54,20 @@ CBA_isHeadlessClient = !hasInterface && !isDedicated;
 // make case insensitive list of all supported events
 GVAR(EventsLowercase) = [];
 {
+    private _header = "";
+    #ifndef SKIP_SCRIPT_NAME
+        _header = format ["scriptName 'XEH:%1';", _x];
+    #endif
     // generate event functions
     if (_x isEqualTo "Init") then {
-        FUNC(Init) = compileFinal "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init";
+        FUNC(Init) = compileFinal (_header + "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init");
     } else {
         if (_x isEqualTo "HitPart") then {
-            FUNC(HitPart) = compileFinal format ['{call _x; nil} count ((_this select 0 select 0) getVariable QGVAR(%1))', _x];
+            FUNC(HitPart) = compileFinal (_header + format ['{call _x; nil} count ((_this select 0 select 0) getVariable QGVAR(%1))', _x]);
         } else {
             missionNamespace setVariable [
                 format [QFUNC(%1), _x],
-                compileFinal format ['{call _x; nil} count ((_this select 0) getVariable QGVAR(%1))', _x]
+                compileFinal (_header + format ['{call _x; nil} count ((_this select 0) getVariable QGVAR(%1))', _x])
             ];
         };
     };

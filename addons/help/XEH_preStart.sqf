@@ -49,13 +49,13 @@ _mods = _mods apply {
         if (isText (_entry >> "description")) then {
             private _description = getText (_entry >> "description") call CBA_fnc_sanitizeHTML;
 
-            _x = _x + format ["<br/>%1", _description];
+            _x = _x + format ["<br/>%1<br/>", _description];
         };
     };
 
     _x
 };
 
-_mods = _mods joinString "<br/><br/>";
+_mods = _mods joinString "<br/>";
 
 uiNamespace setVariable [QGVAR(mods), compileFinal str _mods];
