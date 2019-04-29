@@ -24,7 +24,7 @@
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
             <German>Andere Waffe ausgewählt</German>
-            <Japanese>別の武器が選択されました</Japanese>
+            <Japanese>別の武器が選択後</Japanese>
         </Key>
     </Package>
 </Project>
