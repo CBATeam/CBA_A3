@@ -26,7 +26,7 @@ class CfgWeapons {
     };
 
     class arifle_MX_Base_F: Rifle_Base_F {
-        magazineWell[] = {"MX_65x39", "MX_65x39_Large", "CBA_65x39_MX"};
+        magazineWell[] = {"MX_65x39", "MX_65x39_Large", "CBA_65x39_MX", "CBA_65x39_MX_XL"};
         class GL_3GL_F: UGL_F {
             magazineWell[] = {"CBA_40mm_3GL", "CBA_40mm_M203", "CBA_40mm_EGLM"};
         };
