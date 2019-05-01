@@ -17,41 +17,49 @@
             <English>Weapon Repetition Mode</English>
             <German>Repetierwaffe laden</German>
             <Polish>Tryb powtarzania strzału</Polish>
+            <Japanese>武器反復モード</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
             <German>Art eine Waffe zu repetieren.</German>
             <Polish>Tryb przeładowania/ryglowania broni po wystrzale.</Polish>
+            <Japanese>ボルト、またはポンプ式武器のモードを決定します。</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOptic">
             <English>Leave Optics View</English>
             <German>Optikansicht verlassen</German>
             <Polish>Opuszczenie optyki</Polish>
+            <Japanese>照準画面を離れる</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
             <German>Waffe beim Verlassen der Optikansicht repetieren.</German>
             <Polish>Przeładowanie/ryglowanie broni nastąpi po opuszczeniu widoku optyki.</Polish>
+            <Japanese>ボルトかポンプ動作時は照準画面から離れます</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
             <English>Release Trigger</English>
             <German>Abzug losslassen</German>
             <Polish>Puszczenie spustu</Polish>
+            <Japanese>トリガー解放時</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
             <German>Waffe beim Loslassen des Abzugs repetieren (Abzug halten, um Repetieren zu verzögern).</German>
             <Polish>Przeładowanie/ryglowanie nastąpi po puszczeniu spustu (przytrzymaj spust aby nie przełdowywać).</Polish>
+            <Japanese>トリガーを離してボルトかポンプ動作を行います。(トリガー長押しで即時動作を防止)</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
             <English>Press Trigger</English>
             <German>Abzug betätigen</German>
             <Polish>Wciśnięcie spustu</Polish>
+            <Japanese>トリガー引いた時</Japanese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
             <English>Bolt or rack weapon by pressing the trigger again.</English>
             <German>Waffe beim erneuten Betätigen des Abzugs repetieren.</German>
             <Polish>Przeładowanie/ryglowanie nastąpi po ponownym wciśnięciu spustu.</Polish>
+            <Japanese>トリガーを再度引いてボルトかポンプ動作を行います。</Japanese>
         </Key>
     </Package>
 </Project>
