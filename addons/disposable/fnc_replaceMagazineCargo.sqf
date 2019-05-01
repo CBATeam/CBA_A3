@@ -20,6 +20,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+if (!GVAR(replaceDisposableLauncher)) exitWith {};
+
 params ["_box"];
 if (!local _box) exitWith {};
 if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};

@@ -65,7 +65,7 @@ if (_unit != call CBA_fnc_currentUnit) then {
 } else {
     private _camPos = AGLToASL positionCameraToWorld [0, 0, 0];
     _isExternalCam = (_camPos vectorDistance getPosASL _unit) > 2;
-    private _viewPos = AGLToASL positionCameraToWorld [0, 0, 99999999];
+    private _viewPos = AGLToASL positionCameraToWorld [0, 0, 10000];
     private _vector = _viewPos vectorDiff _camPos;
     _vector = _vector vectorMultiply (1 / vectorMagnitude _vector);
     _azimuth = (_vector select 0) atan2 (_vector select 1);

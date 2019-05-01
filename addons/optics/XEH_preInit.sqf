@@ -15,7 +15,7 @@ if (!hasInterface) exitWith {};
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
 GVAR(camera) = objNull;
-[QGVAR(camera), {!isNull GVAR(camera)}] call CBA_fnc_registerFeatureCamera;
+//[QGVAR(camera), {!isNull GVAR(camera)}] call CBA_fnc_registerFeatureCamera;
 
 // scripted optic data cache
 GVAR(currentOptic) = "";

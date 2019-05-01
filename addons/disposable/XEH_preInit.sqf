@@ -49,6 +49,8 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     };
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
-["All", "InitPost", FUNC(replaceMagazineCargo)] call CBA_fnc_addClassEventHandler;
+["CBA_settingsInitialized", {
+    ["All", "InitPost", FUNC(replaceMagazineCargo), nil, nil, true] call CBA_fnc_addClassEventHandler;
+}] call CBA_fnc_addEventHandler;
 
 ADDON = true;
