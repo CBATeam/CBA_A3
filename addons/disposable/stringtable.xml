@@ -19,6 +19,7 @@
         <Key ID="STR_CBA_disposable_DropNeverTooltip">
             <English>Don't automatically drop the used disposable launcher.</English>
             <German>Benutzten Einwegwerfer nicht automatisch ablegen.</German>
+            <Japanese>使った使い捨てランチャーを自動的に落とさないようにします。</Japanese>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
@@ -28,6 +29,7 @@
         <Key ID="STR_CBA_disposable_DropAIOnlyTooltip">
             <English>Only AI drops the used disposable launcher.</English>
             <German>Nur KI legt den benutzten Einwegwerfer ab.</German>
+            <Japanese>AI のみ使った使い捨てランチャーを落とすようにします。</Japanese>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
@@ -37,14 +39,17 @@
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
             <German>Benutzten Einwegwerfer automatisch ablegen, sobald eine andere Waffe ausgewählt wurde.</German>
+            <Japanese>他の武器を選択すると即時に使った使い捨てランチャーを自動的に落とすようにします。</Japanese>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
             <German>Einwegwerfer ersetzten</German>
+            <Japanese>使い捨てランチャーを置換</Japanese>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncherTooltip">
             <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
             <German>Wenn aktiviert, dann können Einwegwerfer nur einmal benutzt werden. Munition für Einwegwerfer in Kisten und Fahrzeugen wird durch geladene Einwegwerfer ersetzt. Wenn deaktiviert, dann können Einwegwerfer nach der Benutzung nachgeladen werden.</German>
+            <Japanese>有効化すると、使い捨てランチャーは一度のみ使用できます。コンテナ内にある使い捨てランチャーは装填された使い捨てランチャーに置き換えられます。無効化すると、使用後に使い捨てランチャーをリロードできます。</Japanese>
         </Key>
     </Package>
 </Project>
