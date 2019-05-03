@@ -29,8 +29,14 @@ if (isNil QGVAR(default)) then {
 
     private _userconfig = preprocessFile call (uiNamespace getVariable QGVAR(userconfig));
 
+    INFO("Reading settings from settings file.");
+
     {
         _x params ["_setting", "_value", "_priority"];
+
+        #ifdef DEBUG_MODE_FULL
+        INFO_3("Setting %1 with value %2 and priority %3 set in userconfig.",_setting,_value,_priority);
+        #endif
 
         GVAR(userconfig) setVariable [_setting, [_value, _priority]];
 
@@ -38,6 +44,8 @@ if (isNil QGVAR(default)) then {
             GVAR(serverConfig) setVariable [_setting, true, true];
         };
     } forEach ([_userconfig, false] call FUNC(parse));
+
+    INFO("Finished reading settings from settings file.");
 
     // --- read mission settings file
     GVAR(missionConfig) = [] call CBA_fnc_createNamespace;

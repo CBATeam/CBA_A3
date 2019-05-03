@@ -45,4 +45,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-call (uiNamespace getVariable QFUNC(init)) == 0
+if (isNil QFUNC(init)) then {
+    #include "XEH_PREP.sqf"
+};
+
+call FUNC(init) == 0

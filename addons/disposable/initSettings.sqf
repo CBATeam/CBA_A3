@@ -5,7 +5,7 @@
     ELSTRING(common,WeaponsCategory),
     true, // default value
     1 // isGlobal
-] call EFUNC(settings,init);
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(dropUsedLauncher),
@@ -22,4 +22,4 @@
         2
     ],
     0 // isGlobal
-] call EFUNC(settings,init);
+] call CBA_fnc_addSetting;
