@@ -45,6 +45,7 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+// Prep functions if not yet prepped to avoid race condition.
 if (isNil QFUNC(init)) then {
     #include "XEH_PREP.sqf"
 };

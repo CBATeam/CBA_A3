@@ -2,6 +2,7 @@
 
 ADDON = false;
 
+// Don't prep functions if already prepped by CBA_fnc_addSetting to avoid log spam.
 if (isNil QFUNC(init)) then {
     #include "XEH_PREP.sqf"
 };
