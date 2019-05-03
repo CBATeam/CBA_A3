@@ -45,4 +45,9 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-call (uiNamespace getVariable QFUNC(init)) == 0
+// Prep functions if not yet prepped to avoid race condition.
+if (isNil QFUNC(init)) then {
+    #include "XEH_PREP.sqf"
+};
+
+call FUNC(init) == 0
