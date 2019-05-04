@@ -36,7 +36,7 @@ class CfgVehicles {
         displayName = CSTRING(BuildingPos);
         model = QPATHTOF(BuildingPos.p3d);
         icon = "iconObject_circle";
-        editorCategory = "EdCat_Structures";
-        editorSubcategory = "EdSubcat_Military";
+        editorCategory = "EdCat_VRObjects";
+        editorSubcategory = "EdSubcat_Helpers";
     };
 };
