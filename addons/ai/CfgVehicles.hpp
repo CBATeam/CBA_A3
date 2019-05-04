@@ -28,4 +28,15 @@ class CfgVehicles {
 
         class HitPoints {};
     };
+
+    class Strategic;
+    class CBA_BuildingPos: Strategic {
+        scope = 2;
+        scopeArsenal = 0;
+        displayName = CSTRING(BuildingPos);
+        model = QPATHTOF(BuildingPos.p3d);
+        icon = "iconObject_circle";
+        editorCategory = "EdCat_Structures";
+        editorSubcategory = "EdSubcat_Military";
+    };
 };
