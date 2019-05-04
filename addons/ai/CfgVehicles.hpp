@@ -1,6 +1,7 @@
 class CfgVehicles {
     class B_TargetSoldier;
     class CBA_B_InvisibleTarget: B_TargetSoldier {
+        author = "$STR_CBA_Author";
         scope = 2;
         scopeArsenal = 0;
         model = QPATHTOF(InvisibleTarget.p3d);
@@ -11,6 +12,7 @@ class CfgVehicles {
 
     class O_TargetSoldier;
     class CBA_O_InvisibleTarget: O_TargetSoldier {
+        author = "$STR_CBA_Author";
         scope = 2;
         scopeArsenal = 0;
         model = QPATHTOF(InvisibleTarget.p3d);
@@ -21,6 +23,7 @@ class CfgVehicles {
 
     class I_TargetSoldier;
     class CBA_I_InvisibleTarget: I_TargetSoldier {
+        author = "$STR_CBA_Author";
         scope = 2;
         scopeArsenal = 0;
         model = QPATHTOF(InvisibleTarget.p3d);
@@ -31,6 +34,7 @@ class CfgVehicles {
 
     class Strategic;
     class CBA_BuildingPos: Strategic {
+        author = "$STR_CBA_Author";
         scope = 2;
         scopeArsenal = 0;
         displayName = CSTRING(BuildingPos);
