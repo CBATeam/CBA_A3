@@ -25,7 +25,10 @@ isNil {
         call FUNC(preload3DEN);
         private _cba = AmmoBox_list;
 
-        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preload3DEN));  copyToClipboard str [_vanilla, _cba];
+        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preload3DEN));
+        if !([_vanilla] isEqualTo [_cba]) then {
+            copyToClipboard ("3DEN" + endl + str _vanilla + endl + str _cba);
+        };
 
         // Curator
         TEST_DEFINED(QFUNC(preloadCurator),"");
@@ -51,6 +54,9 @@ isNil {
         ["onLoad", [displayNull], objNull] call compile preprocessFile "\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf";
         _cba = RscAttributeInventory_list;
 
-        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preloadCurator));   copyToClipboard str [_vanilla, _cba];
+        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preloadCurator));
+        if !([_vanilla] isEqualTo [_cba]) then {
+            copyToClipboard ("Curator" + endl + str _vanilla + endl + str _cba);
+        };
     };
 };

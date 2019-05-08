@@ -112,9 +112,9 @@ private _magazinesLists = [];
                 };
 
                 _listItem pushBack [
-                    _item,
                     _displayName,
                     _displayNameShort,
+                    _item,
                     getText (_weaponConfig >> "picture"),
                     parseNumber (getNumber (_weaponConfig >> "type") in [4096, 131072]),
                     false
@@ -130,6 +130,13 @@ private _magazinesLists = [];
                         _muzzleConfig = _weaponConfig >> _x;
                     };
 
+                    private _compatibleMagazines = getArray (_muzzleConfig >> "magazines");
+                    {
+                        {
+                            _compatibleMagazines append getArray _x;
+                        } forEach configProperties [configFile >> "CfgMagazineWells" >> _x, "isArray _x"];
+                    } foreach getArray (_muzzleConfig >> "magazineWell");
+
                     {
                         private _item = toLower _x;
 
@@ -140,9 +147,9 @@ private _magazinesLists = [];
                                 private _displayName = getText (_magazineConfig >> "displayName");
 
                                 _listItem pushBack [
+                                    _displayName,
+                                    _displayName,
                                     _item,
-                                    _displayName,
-                                    _displayName,
                                     getText (_magazineConfig >> "picture"),
                                     2,
                                     _item in _magazines
@@ -151,7 +158,7 @@ private _magazinesLists = [];
                                 _magazines pushBack _item;
                             };
                         };
-                    } forEach getArray (_muzzleConfig >> "magazines");
+                    } forEach _compatibleMagazines;
                 } forEach getArray (_weaponConfig >> "muzzles");
             };
         };
@@ -177,9 +184,9 @@ private _magazinesLists = [];
                 private _displayName = getText (_weaponConfig >> "displayName");
 
                 (_addonList select _index) pushBack [
+                    _displayName,
+                    _displayName,
                     _item,
-                    _displayName,
-                    _displayName,
                     getText (_weaponConfig >> "picture"),
                     3,
                     false

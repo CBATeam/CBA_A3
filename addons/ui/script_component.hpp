@@ -1,7 +1,7 @@
 ﻿#define COMPONENT ui
 #include "\x\cba\addons\main\script_mod.hpp"
 
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 //#define DISABLE_COMPILE_CACHE
 //#define DEBUG_ENABLED_UI
 
