@@ -186,10 +186,6 @@ private _listHeadgear = _list select 10;
     };
 } forEach ("true" configClasses (configFile >> "CfgGlasses"));
 
-{
-    _x sort true;
-} forEach _list;
-
 _itemTypes call CBA_fnc_deleteNamespace;
 
 true
