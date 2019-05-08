@@ -113,6 +113,13 @@ private _magazinesLists = [];
                     _muzzleConfig = _weaponConfig >> _x;
                 };
 
+                private _compatibleMagazines = getArray (_muzzleConfig >> "magazines");
+                {
+                    {
+                        _compatibleMagazines append getArray _x;
+                    } forEach configProperties [configFile >> "CfgMagazineWells" >> _x, "isArray _x"];
+                } foreach getArray (_muzzleConfig >> "magazineWell");
+
                 {
                     private _item = toLower _x;
 
@@ -131,7 +138,7 @@ private _magazinesLists = [];
                             _magazines pushBack _item;
                         };
                     };
-                } forEach getArray (_muzzleConfig >> "magazines");
+                } forEach _compatibleMagazines;
             } forEach getArray (_weaponConfig >> "muzzles");
         };
     };
@@ -178,10 +185,6 @@ private _listHeadgear = _list select 10;
         ];
     };
 } forEach ("true" configClasses (configFile >> "CfgGlasses"));
-
-{
-    _x sort true;
-} forEach _list;
 
 _itemTypes call CBA_fnc_deleteNamespace;
 

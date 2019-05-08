@@ -1,6 +1,10 @@
 #include "script_component.hpp"
 // execVM "\x\cba\addons\ui\test_preload.sqf";
 
+if (!canSuspend) exitWith {
+    execVM __FILE__;
+};
+
 isNil {
     with uiNamespace do {
         // 3DEN
@@ -8,13 +12,23 @@ isNil {
 
         AmmoBox_list = nil;
         ["onLoad", [controlNull]] call compile preprocessFile "\a3\3den\UI\Attributes\AmmoBox.sqf";
+    };
+};
+
+waitUntil {!isNil {uiNamespace getVariable "AmmoBox_list"}};
+
+isNil {
+    with uiNamespace do {
         private _vanilla = AmmoBox_list;
 
         AmmoBox_list = nil;
         call FUNC(preload3DEN);
         private _cba = AmmoBox_list;
 
-        TEST_TRUE(_vanilla isEqualTo _cba,QFUNC(preload3DEN));
+        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preload3DEN));
+        if !([_vanilla] isEqualTo [_cba]) then {
+            copyToClipboard ("3DEN" + endl + str _vanilla + endl + str _cba);
+        };
 
         // Curator
         TEST_DEFINED(QFUNC(preloadCurator),"");
@@ -40,6 +54,9 @@ isNil {
         ["onLoad", [displayNull], objNull] call compile preprocessFile "\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf";
         _cba = RscAttributeInventory_list;
 
-        TEST_TRUE(_vanilla isEqualTo _cba,QFUNC(preloadCurator));
+        TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preloadCurator));
+        if !([_vanilla] isEqualTo [_cba]) then {
+            copyToClipboard ("Curator" + endl + str _vanilla + endl + str _cba);
+        };
     };
 };
