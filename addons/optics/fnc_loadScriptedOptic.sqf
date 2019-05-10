@@ -7,6 +7,7 @@ Description:
 
 Parameters:
     _display - CBA weapon info display <DISPLAY>
+    _init    - Begin draw script, true when called from onLoad event <BOOLEAN>
 
 Returns:
     Nothing.
@@ -20,9 +21,9 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_display", displayNull], ["_initDisplay", false]];
+params [["_display", displayNull], ["_init", false]];
 
-if (_initDisplay) then {
+if (_init) then {
     private _unit = call CBA_fnc_currentUnit;
 
     _unit call FUNC(updateOpticInfo);
@@ -35,6 +36,7 @@ private _ctrlBodyNight = _display displayCtrl IDC_BODY_NIGHT;
 private _ctrlBlackScope = _display displayCtrl IDC_BLACK_SCOPE;
 private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
+private _ctrlReticleSafezone = _display displayCtrl IDC_RETICLE_SAFEZONE;
 private _ctrlMagnification = _display displayCtrl IDC_MAGNIFICATION;
 
 _ctrlRedDot ctrlShow false;
@@ -72,7 +74,28 @@ _ctrlBodyNight ctrlSetText GVAR(OpticBodyTextureNight);
 _ctrlBodyNight ctrlSetPosition _bodyPosition;
 _ctrlBodyNight ctrlCommit 0;
 
-if (_initDisplay) then {
+_ctrlReticleSafezone ctrlSetPosition [
+    POS_X(GVAR(reticleSafezoneSize)),
+    POS_Y(GVAR(reticleSafezoneSize)),
+    POS_W(GVAR(reticleSafezoneSize)),
+    POS_H(GVAR(reticleSafezoneSize))
+];
+_ctrlReticleSafezone ctrlCommit 0;
+
+private _width = THIRD_SCREEN_WIDTH;
+
+if (GVAR(hidePeripheralVision)) then {
+    _width = 0.5 - (_bodyPosition select 2)/2 - safezoneXAbs;
+};
+
+_ctrlBlackLeft ctrlSetPositionW _width;
+_ctrlBlackLeft ctrlCommit 0;
+
+_ctrlBlackRight ctrlSetPositionW _width;
+_ctrlBlackRight ctrlSetPositionX (safezoneXAbs + safezoneWAbs - _width);
+_ctrlBlackRight ctrlCommit 0;
+
+if (_init) then {
     [missionNamespace, "Draw3D", {
         if (isNull _thisArgs) exitWith {
             removeMissionEventHandler ["Draw3D", _thisId];

@@ -49,16 +49,16 @@ class RscInGameUI {
         // It will ONLY effect tripple head users, as (safeZoneX == safeZoneXAbs) for everyone else.
         class TrippleHeadLeft: RscText {
             idc = IDC_BLACK_LEFT;
-            x = "safeZoneXAbs";
-            y = "safeZoneY";
-            w = "(safeZoneX - safeZoneXAbs) * ((getResolution select 4)/(16/3))";
-            h = "safeZoneH";
+            x = safezoneXAbs;
+            y = safezoneY;
+            w = THIRD_SCREEN_WIDTH;
+            h = safezoneH;
             colorBackground[] = {0,0,0,1};
         };
 
         class TrippleHeadRight: TrippleHeadLeft {
             idc = IDC_BLACK_RIGHT;
-            x = "safeZoneXAbs + safeZoneWAbs - (safeZoneX - safeZoneXAbs) * ((getResolution select 4)/(16/3))";
+            x = safezoneXAbs + safezoneWAbs - THIRD_SCREEN_WIDTH;
         };
 
         class Magnification: CA_Zeroing {
@@ -87,10 +87,10 @@ class RscInGameUI {
 
         class ReticleSafeZone: RscControlsGroupNoScrollbars {
             idc = IDC_RETICLE_SAFEZONE;
-            x = RETICLE_SAFEZONE_LEFT;
-            y = RETICLE_SAFEZONE_TOP;
-            w = RETICLE_SAFEZONE_WIDTH;
-            h = RETICLE_SAFEZONE_HEIGHT;
+            x = RETICLE_SAFEZONE_DEFAULT_LEFT;
+            y = RETICLE_SAFEZONE_DEFAULT_TOP;
+            w = RETICLE_SAFEZONE_DEFAULT_WIDTH;
+            h = RETICLE_SAFEZONE_DEFAULT_HEIGHT;
 
             class controls {
                 class Reticle: Reticle {};

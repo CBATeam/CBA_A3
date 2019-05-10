@@ -34,6 +34,7 @@ private _ctrlBodyNight = _display displayCtrl IDC_BODY_NIGHT;
 private _ctrlBlackScope = _display displayCtrl IDC_BLACK_SCOPE;
 private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
+private _ctrlReticleSafezone = _display displayCtrl IDC_RETICLE_SAFEZONE;
 
 // Reduce the reticle movement as the player drops into lower, supported stances.
 private _recoilCoef = SCOPE_RECOIL_COEF;
@@ -60,21 +61,18 @@ private _sizeBody = GVAR(OpticBodyTextureSize);
 
 // Create and commit recoil effect.
 private _reticleAdjust = 1;
-private _reticleSafeZoneOffsetLeft = 0;
-private _reticleSafeZoneOffsetTop = 0;
+ctrlPosition _ctrlReticleSafezone params ["_reticleSafeZonePositionLeft", "_reticleSafeZonePositionTop"];
 
-if (!isNull (_display displayCtrl IDC_RETICLE_SAFEZONE)) then {
+if (!isNull _ctrlReticleSafezone) then {
     _reticleAdjust = linearConversion GVAR(ReticleAdjust);
-    _reticleSafeZoneOffsetLeft = - RETICLE_SAFEZONE_LEFT;
-    _reticleSafeZoneOffsetTop = - RETICLE_SAFEZONE_TOP;
 };
 
 private _detailScaleFactor = _display getVariable [QGVAR(DetailScaleFactor), 1];
 private _size = _reticleAdjust * _detailScaleFactor + _recoilScope;
 
 private _positionReticle = [
-    POS_X(_size + _reticleShiftX) + _reticleSafeZoneOffsetLeft,
-    POS_Y(_size + _reticleShiftY) + _reticleSafeZoneOffsetTop,
+    POS_X(_size + _reticleShiftX) - _reticleSafeZonePositionLeft,
+    POS_Y(_size + _reticleShiftY) - _reticleSafeZonePositionTop,
     POS_W(_size),
     POS_H(_size)
 ];
@@ -101,8 +99,8 @@ _ctrlBodyNight ctrlCommit 0;
 private _sizeReticle = _reticleAdjust * _detailScaleFactor;
 
 _positionReticle = [
-    POS_X(_sizeReticle) + _reticleSafeZoneOffsetLeft,
-    POS_Y(_sizeReticle) + _reticleSafeZoneOffsetTop,
+    POS_X(_sizeReticle) - _reticleSafeZonePositionLeft,
+    POS_Y(_sizeReticle) - _reticleSafeZonePositionTop,
     POS_W(_sizeReticle),
     POS_H(_sizeReticle)
 ];
