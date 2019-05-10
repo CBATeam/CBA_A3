@@ -8,8 +8,6 @@ if (!canSuspend) exitWith {
 isNil {
     with uiNamespace do {
         // 3DEN
-        TEST_DEFINED(QFUNC(preload3DEN),"");
-
         AmmoBox_list = nil;
         ["onLoad", [controlNull]] call compile preprocessFile "\a3\3den\UI\Attributes\AmmoBox.sqf";
     };
@@ -19,6 +17,9 @@ waitUntil {!isNil {uiNamespace getVariable "AmmoBox_list"}};
 
 isNil {
     with uiNamespace do {
+        // 3DEN
+        TEST_DEFINED(QFUNC(preload3DEN),"");
+
         private _vanilla = AmmoBox_list;
 
         AmmoBox_list = nil;
