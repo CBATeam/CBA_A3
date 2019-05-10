@@ -82,6 +82,19 @@ _ctrlReticleSafezone ctrlSetPosition [
 ];
 _ctrlReticleSafezone ctrlCommit 0;
 
+private _width = THIRD_SCREEN_WIDTH;
+
+if (GVAR(hidePeripheralVision)) then {
+    _width = 0.5 - (_bodyPosition select 2)/2 - safezoneXAbs;
+};
+
+_ctrlBlackLeft ctrlSetPositionW _width;
+_ctrlBlackLeft ctrlCommit 0;
+
+_ctrlBlackRight ctrlSetPositionW _width;
+_ctrlBlackRight ctrlSetPositionX (safezoneXAbs + safezoneWAbs - _width);
+_ctrlBlackRight ctrlCommit 0;
+
 if (_init) then {
     [missionNamespace, "Draw3D", {
         if (isNull _thisArgs) exitWith {

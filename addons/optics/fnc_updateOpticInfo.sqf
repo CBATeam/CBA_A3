@@ -81,6 +81,8 @@ if (isNumber (_config >> "reticleSafezoneSize")) then {
     GVAR(reticleSafezoneSize) = getNumber (_config >> "reticleSafezoneSize");
 };
 
+GVAR(hidePeripheralVision) = getNumber (_config >> "hidePeripheralVision") != 0;
+
 // zeroing distances
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
     GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");

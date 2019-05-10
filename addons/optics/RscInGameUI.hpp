@@ -49,16 +49,16 @@ class RscInGameUI {
         // It will ONLY effect tripple head users, as (safeZoneX == safeZoneXAbs) for everyone else.
         class TrippleHeadLeft: RscText {
             idc = IDC_BLACK_LEFT;
-            x = "safeZoneXAbs";
-            y = "safeZoneY";
-            w = "(safeZoneX - safeZoneXAbs) * ((getResolution select 4)/(16/3))";
-            h = "safeZoneH";
+            x = safezoneXAbs;
+            y = safezoneY;
+            w = THIRD_SCREEN_WIDTH;
+            h = safezoneH;
             colorBackground[] = {0,0,0,1};
         };
 
         class TrippleHeadRight: TrippleHeadLeft {
             idc = IDC_BLACK_RIGHT;
-            x = "safeZoneXAbs + safeZoneWAbs - (safeZoneX - safeZoneXAbs) * ((getResolution select 4)/(16/3))";
+            x = safezoneXAbs + safezoneWAbs - THIRD_SCREEN_WIDTH;
         };
 
         class Magnification: CA_Zeroing {
