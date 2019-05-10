@@ -118,7 +118,7 @@ private _cache = [];
                         _displayName,
                         getText (_cfgWeapons >> getText (_x >> "item") >> "displayName")
                     ];
-                } forEach ("true" configClasses (_weaponConfig >> "linkeditems")); //configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
+                } forEach configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
 
                 private _displayNameShort = _displayName;
                 private _displayNameShortArray = toArray _displayNameShort;
