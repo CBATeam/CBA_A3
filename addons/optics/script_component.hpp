@@ -17,9 +17,13 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 #define PARSE(value) (call compile format ["%1", value])
 #define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
+
+#define SOUND_RETICLE_SWITCH ["A3\Sounds_F\arsenal\weapons\UGL\Firemode_ugl",0.31622776,1,5]
 
 // control ids
 #define IDC_RETICLE 4000

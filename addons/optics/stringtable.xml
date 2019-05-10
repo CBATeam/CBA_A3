@@ -15,5 +15,13 @@
             <Polish>Używaj optyki typu Obraz w obrazie (PIP)</Polish>
             <Italian>Usa ottiche on Picture-in-Picture</Italian>
         </Key>
+        <Key ID="STR_cba_optics_manual_reticle_switch">
+            <English>Toggle Reticle</English>
+            <German>Absehen umschalten</German>
+        </Key>
+        <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
+            <English>Manually switch the reticle of the optic.</English>
+            <German>Absehen der Optik manuell umschalten.</German>
+        </Key>
     </Package>
 </Project>

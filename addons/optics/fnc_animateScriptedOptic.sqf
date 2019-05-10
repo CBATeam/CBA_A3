@@ -89,6 +89,12 @@ _ctrlMagnification ctrlCommit 0;
 private _dayOpacity = AMBIENT_BRIGHTNESS;
 private _nightOpacity = [1,0] select (_dayOpacity == 1);
 
+private _useReticleNight = GVAR(useReticleNight);
+
+if (!GVAR(manualReticleNightSwitch)) then {
+    _useReticleNight = _dayOpacity < 0.5;
+};
+
 // Apply lighting and make layers visible.
 private _texture = "";
 private _detailScaleFactor = 1;
@@ -97,7 +103,7 @@ private _detailScaleFactor = 1;
     _x params ["_zoomX", "_textureX", "_detailScaleFactorX", "_textureXNight"];
 
     if (_zoom > _zoomX) then {
-        _texture = [_textureX, _textureXNight] select (_dayOpacity < 0.5);
+        _texture = [_textureX, _textureXNight] select _useReticleNight;
         _detailScaleFactor = _detailScaleFactorX;
     };
 } forEach GVAR(OpticReticleDetailTextures);

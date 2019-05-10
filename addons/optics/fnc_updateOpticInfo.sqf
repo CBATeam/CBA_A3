@@ -73,6 +73,8 @@ if (GVAR(OpticBodyTextureNight) isEqualTo "") then {
     GVAR(OpticBodyTextureNight) = GVAR(OpticBodyTexture);
 };
 
+GVAR(manualReticleNightSwitch) = getNumber (_config >> "manualReticleNightSwitch") != 0;
+
 // zeroing distances
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
     GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");
