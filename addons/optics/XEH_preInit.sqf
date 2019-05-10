@@ -12,6 +12,8 @@ if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
 
 if (!hasInterface) exitWith {};
 
+#include "initKeybinds.sqf"
+
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
 GVAR(camera) = objNull;
@@ -28,6 +30,10 @@ GVAR(OpticReticleDetailTextures) = [];
 GVAR(OpticBodyTexture) = "";
 GVAR(OpticBodyTextureNight) = "";
 GVAR(ppEffects) = [];
+GVAR(manualReticleNightSwitch) = false;
+GVAR(useReticleNight) = false;
+GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
+GVAR(hidePeripheralVision) = false;
 
 // Update optic info.
 ["weapon", {

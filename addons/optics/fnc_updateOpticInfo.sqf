@@ -73,6 +73,16 @@ if (GVAR(OpticBodyTextureNight) isEqualTo "") then {
     GVAR(OpticBodyTextureNight) = GVAR(OpticBodyTexture);
 };
 
+GVAR(manualReticleNightSwitch) = getNumber (_config >> "manualReticleNightSwitch") != 0;
+
+GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
+
+if (isNumber (_config >> "reticleSafezoneSize")) then {
+    GVAR(reticleSafezoneSize) = getNumber (_config >> "reticleSafezoneSize");
+};
+
+GVAR(hidePeripheralVision) = getNumber (_config >> "hidePeripheralVision") != 0;
+
 // zeroing distances
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
     GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");

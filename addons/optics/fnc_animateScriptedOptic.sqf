@@ -31,6 +31,7 @@ private _ctrlBodyNight = _display displayCtrl IDC_BODY_NIGHT;
 private _ctrlBlackScope = _display displayCtrl IDC_BLACK_SCOPE;
 private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
+private _ctrlReticleSafezone = _display displayCtrl IDC_RETICLE_SAFEZONE;
 private _ctrlZeroing = _display displayCtrl 168;
 private _ctrlMagnification = _display displayCtrl IDC_MAGNIFICATION;
 
@@ -89,6 +90,12 @@ _ctrlMagnification ctrlCommit 0;
 private _dayOpacity = AMBIENT_BRIGHTNESS;
 private _nightOpacity = [1,0] select (_dayOpacity == 1);
 
+private _useReticleNight = GVAR(useReticleNight);
+
+if (!GVAR(manualReticleNightSwitch)) then {
+    _useReticleNight = _dayOpacity < 0.5;
+};
+
 // Apply lighting and make layers visible.
 private _texture = "";
 private _detailScaleFactor = 1;
@@ -97,7 +104,7 @@ private _detailScaleFactor = 1;
     _x params ["_zoomX", "_textureX", "_detailScaleFactorX", "_textureXNight"];
 
     if (_zoom > _zoomX) then {
-        _texture = [_textureX, _textureXNight] select (_dayOpacity < 0.5);
+        _texture = [_textureX, _textureXNight] select _useReticleNight;
         _detailScaleFactor = _detailScaleFactorX;
     };
 } forEach GVAR(OpticReticleDetailTextures);
@@ -118,12 +125,12 @@ if (_zoom >= 1) then {
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
-
 private _sizeReticle = _reticleAdjust * _detailScaleFactor;
+ctrlPosition _ctrlReticleSafezone params ["_reticleSafeZonePositionLeft", "_reticleSafeZonePositionTop"];
 
 private _positionReticle = [
-    POS_X(_sizeReticle) - RETICLE_SAFEZONE_LEFT,
-    POS_Y(_sizeReticle) - RETICLE_SAFEZONE_TOP,
+    POS_X(_sizeReticle) - _reticleSafeZonePositionLeft,
+    POS_Y(_sizeReticle) - _reticleSafeZonePositionTop,
     POS_W(_sizeReticle),
     POS_H(_sizeReticle)
 ];
