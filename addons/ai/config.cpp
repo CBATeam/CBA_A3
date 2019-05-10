@@ -5,7 +5,7 @@ class CfgPatches {
         author = "$STR_CBA_Author";
         name = CSTRING(component);
         url = "$STR_CBA_URL";
-        units[] = {"CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget"};
+        units[] = {"CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget","CBA_BuildingPos"};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common"};
         version = VERSION;
@@ -17,3 +17,4 @@ class CfgPatches {
 #include "CfgVehicles.hpp"
 #include "CfgVehicleIcons.hpp"
 #include "CfgWaypoints.hpp"
+#include "CfgAddons.hpp"

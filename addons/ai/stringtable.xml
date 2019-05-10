@@ -13,5 +13,9 @@
             <Turkish>Community Base Addons - Yapay Zeka</Turkish>
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
         </Key>
+        <Key ID="STR_CBA_AI_BuildingPos">
+            <English>AI Building Position</English>
+            <German>KI Gebäudeposition</German>
+        </Key>
     </Package>
 </Project>
