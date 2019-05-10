@@ -87,10 +87,10 @@ class RscInGameUI {
 
         class ReticleSafeZone: RscControlsGroupNoScrollbars {
             idc = IDC_RETICLE_SAFEZONE;
-            x = RETICLE_SAFEZONE_LEFT;
-            y = RETICLE_SAFEZONE_TOP;
-            w = RETICLE_SAFEZONE_WIDTH;
-            h = RETICLE_SAFEZONE_HEIGHT;
+            x = RETICLE_SAFEZONE_DEFAULT_LEFT;
+            y = RETICLE_SAFEZONE_DEFAULT_TOP;
+            w = RETICLE_SAFEZONE_DEFAULT_WIDTH;
+            h = RETICLE_SAFEZONE_DEFAULT_HEIGHT;
 
             class controls {
                 class Reticle: Reticle {};

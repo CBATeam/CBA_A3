@@ -32,6 +32,7 @@ GVAR(OpticBodyTextureNight) = "";
 GVAR(ppEffects) = [];
 GVAR(manualReticleNightSwitch) = false;
 GVAR(useReticleNight) = false;
+GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
 
 // Update optic info.
 ["weapon", {

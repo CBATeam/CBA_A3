@@ -75,6 +75,12 @@ if (GVAR(OpticBodyTextureNight) isEqualTo "") then {
 
 GVAR(manualReticleNightSwitch) = getNumber (_config >> "manualReticleNightSwitch") != 0;
 
+GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
+
+if (isNumber (_config >> "reticleSafezoneSize")) then {
+    GVAR(reticleSafezoneSize) = getNumber (_config >> "reticleSafezoneSize");
+};
+
 // zeroing distances
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
     GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");

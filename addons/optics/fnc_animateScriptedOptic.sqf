@@ -31,6 +31,7 @@ private _ctrlBodyNight = _display displayCtrl IDC_BODY_NIGHT;
 private _ctrlBlackScope = _display displayCtrl IDC_BLACK_SCOPE;
 private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
+private _ctrlReticleSafezone = _display displayCtrl IDC_RETICLE_SAFEZONE;
 private _ctrlZeroing = _display displayCtrl 168;
 private _ctrlMagnification = _display displayCtrl IDC_MAGNIFICATION;
 
@@ -124,12 +125,12 @@ if (_zoom >= 1) then {
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
-
 private _sizeReticle = _reticleAdjust * _detailScaleFactor;
+ctrlPosition _ctrlReticleSafezone params ["_reticleSafeZonePositionLeft", "_reticleSafeZonePositionTop"];
 
 private _positionReticle = [
-    POS_X(_sizeReticle) - RETICLE_SAFEZONE_LEFT,
-    POS_Y(_sizeReticle) - RETICLE_SAFEZONE_TOP,
+    POS_X(_sizeReticle) - _reticleSafeZonePositionLeft,
+    POS_Y(_sizeReticle) - _reticleSafeZonePositionTop,
     POS_W(_sizeReticle),
     POS_H(_sizeReticle)
 ];
