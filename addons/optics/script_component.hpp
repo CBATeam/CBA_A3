@@ -24,6 +24,7 @@
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
 
 #define SOUND_RETICLE_SWITCH ["A3\Sounds_F\arsenal\weapons\UGL\Firemode_ugl",0.31622776,1,5]
+#define THIRD_SCREEN_WIDTH ((safezoneX - safezoneXAbs) * ((getResolution select 4)/(16/3)))
 
 // control ids
 #define IDC_RETICLE 4000
