@@ -38,6 +38,7 @@ isNil {
         private _curator = getAssignedCuratorLogic _unit;
 
         if (isNull _curator) then {
+            activateAddons call EGVAR(common,addons);
             _curator = createGroup sideLogic createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
             _unit assignCurator _curator;
         };
