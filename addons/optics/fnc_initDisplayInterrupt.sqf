@@ -40,6 +40,33 @@ _ctrlBody ctrlSetText GVAR(OpticBodyTexture);
 _ctrlBody ctrlSetPosition _bodyPosition;
 _ctrlBody ctrlCommit 0;
 
+private _ctrlBlackLeft = _display ctrlCreate ["RscText", IDC_BLACK_LEFT];
+private _ctrlBlackRight = _display ctrlCreate ["RscText", IDC_BLACK_RIGHT];
+
+private _width = THIRD_SCREEN_WIDTH;
+
+if (GVAR(hidePeripheralVision)) then {
+    _width = 0.5 - (_bodyPosition select 2)/2 - safezoneXAbs;
+};
+
+_ctrlBlackLeft ctrlSetBackgroundColor [0,0,0,1];
+_ctrlBlackLeft ctrlSetPosition [
+    safezoneXAbs,
+    safezoneY,
+    _width,
+    safezoneH
+];
+_ctrlBlackLeft ctrlCommit 0;
+
+_ctrlBlackRight ctrlSetBackgroundColor [0,0,0,1];
+_ctrlBlackRight ctrlSetPosition [
+    safezoneXAbs + safezoneWAbs - _width,
+    safezoneY,
+    _width,
+    safezoneH
+];
+_ctrlBlackRight ctrlCommit 0;
+
 // Automatically hide when pause menu is closed.
 private _script = _display ctrlCreate ["RscMapControl", -1];
 
