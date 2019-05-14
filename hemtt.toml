@@ -1,0 +1,19 @@
+name = "CBA_A3"
+prefix = "cba"
+author = "CBATeam"
+files = [
+    "mod.cpp",
+    "README.md",
+    "LICENSE.md",
+    "logo_cba_ca.paa",
+    "meta.cpp"
+]
+headerexts = [
+    "version={{git \"id 8\"}}"
+]
+keyname = "cba_{{version}}"
+signame = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+releasebuild = [
+    "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+]
