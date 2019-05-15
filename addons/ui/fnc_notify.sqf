@@ -85,7 +85,7 @@ if (_queue) then {
     // if queue param is true add the notify to the queue
     GVAR(notifyQueue) pushBack _composition;
 } else {
-    // otherwise resete the queue to force show the notify
+    // otherwise reset the queue to force show the notify
     GVAR(notifyQueue) = [];
 };
 
