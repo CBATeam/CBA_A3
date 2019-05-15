@@ -6,15 +6,16 @@ Description:
     Display a text message. Multiple incoming messages are queued.
 
 Parameters:
-    _content - ARRAY
-        _line1 - ARRAY
-        _line2 - ARRAY
+    _content    - ARRAY
+        _line1      - ARRAY
+        _line2      - ARRAY
         ...
-        _lineN - ARRAY
-            _text  - STRING, NUMBER: Text to display or path to .paa or .jpg image.
-            _size  - NUMBER: Text or image size multiplier, optional, default: 1
-            _color - ARRAY: RGB or RGBA color (range 0-1), optional, default: [1,1,1,1]
-    _queue  - BOOL: Defines if the notify will be queued or force shown, optional, default: true (queued)
+        _lineN      - ARRAY
+            _text       - STRING, NUMBER: Text to display or path to .paa or .jpg image.
+            _size       - NUMBER: Text or image size multiplier, optional, default: 1
+            _color      - ARRAY: RGB or RGBA color (range 0-1), optional, default: [1,1,1,1]
+    _queue      - BOOL: Defines if the notify will be queued or force shown, optional, default: true (queued)
+    _lifetime   - NUMBER: Defines the lifetime of the notify, optional, default: 4
 
 Examples:
     (begin example)
@@ -30,10 +31,11 @@ Authors:
 
 params [
     ["_content", [], [[]]],
-    ["_queue", true, [false]]
+    ["_queue", true, [false]],
+    ["_lifetime", 4, [0]]
 ];
 
-#define LIFE_TIME 4
+#define LIFE_TIME _lifetime
 #define FADE_IN_TIME 0.2
 #define FADE_OUT_TIME 1
 
