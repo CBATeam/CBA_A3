@@ -35,7 +35,6 @@ params [
     ["_lifetime", 4, [0]]
 ];
 
-#define LIFE_TIME _lifetime
 #define FADE_IN_TIME 0.2
 #define FADE_OUT_TIME 1
 
@@ -177,7 +176,7 @@ private _fnc_processQueue = {
                 _x ctrlCommit (FADE_OUT_TIME);
             } forEach _controls;
         };
-    }, [_controls, _fnc_processQueue], LIFE_TIME] call CBA_fnc_waitAndExecute;
+    }, [_controls, _fnc_processQueue], _lifetime] call CBA_fnc_waitAndExecute;
 };
 
 if (count GVAR(notifyQueue) isEqualTo 1) then {
