@@ -14,10 +14,11 @@ Parameters:
             _text  - STRING, NUMBER: Text to display or path to .paa or .jpg image.
             _size  - NUMBER: Text or image size multiplier, optional, default: 1
             _color - ARRAY: RGB or RGBA color (range 0-1), optional, default: [1,1,1,1]
+    _queue  - BOOL: Defines if the notify will be queued or force shown, optional, default: true (queued)
 
 Examples:
     (begin example)
-        ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
+        [["Banana", 1.5, [1, 1, 0, 1]], false] call CBA_fnc_notify;
     (end)
 
 Returns:
@@ -26,6 +27,11 @@ Returns:
 Authors:
     commy2
 ---------------------------------------------------------------------------- */
+
+params [
+    ["_content", [], [[]]],
+    ["_queue", true, [false]]
+];
 
 #define LIFE_TIME 4
 #define FADE_IN_TIME 0.2
@@ -36,15 +42,6 @@ if (canSuspend) exitWith {
 };
 
 if (!hasInterface) exitWith {};
-
-// compose structured text
-if !(_this isEqualType []) then {
-    _this = [_this];
-};
-
-if !(_this select 0 isEqualType []) then {
-    _this = [_this];
-};
 
 private _composition = [];
 
@@ -73,7 +70,7 @@ private _composition = [];
     } else {
         _composition pushBack parseText format ["<t align='center' size='%2' color='%3'>%1</t>", _text, _size, _color];
     };
-} forEach _this;
+} forEach _content;
 
 _composition deleteAt 0;
 
@@ -82,7 +79,13 @@ if (isNil QGVAR(notifyQueue)) then {
     GVAR(notifyQueue) = [];
 };
 
-GVAR(notifyQueue) pushBack _composition;
+if (_queue) then {
+    // if queue param is true add the notify to the queue
+    GVAR(notifyQueue) pushBack _composition;
+} else {
+    // otherwise resete the queue to force show the notify
+    GVAR(notifyQueue) = [];
+};
 
 private _fnc_processQueue = {
     private _composition = _this;
