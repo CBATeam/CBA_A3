@@ -89,8 +89,10 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
     private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
 
     private _missions = [];
+    private _fnc_replace = uiNamespace getVariable "CBA_fnc_replace";
+
     for "_i" from 0 to (lbSize _ctrlMissions - 1) do {
-        private _name = _ctrlMissions lbText _i;
+        private _name = [_ctrlMissions lbText _i, "%20", " "] call _fnc_replace; // replace %20 with space
         private _value = _ctrlMissions lbValue _i;
         private _data = _ctrlMissions lbData _i;
         private _color = _ctrlMissions lbColor _i;
