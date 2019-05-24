@@ -10,7 +10,7 @@
             <Japanese>Community Base Addons - 統合的弾倉</Japanese>
         </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_tracer_description">
-            <Original>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</Original>
+            <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
             <Chinese>口徑：7.62x51 mm 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
             <French>Calibre : 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions : 150</French>
             <Spanish>Calibre: 7,62x51 mm trazadora (verde)&lt;br/&gt;Cargas: 150</Spanish>
@@ -19,7 +19,6 @@
             <Russian>Калибр: 7,62x51 мм Трассер - зеленый&lt;br/&gt;Количество патронов: 150</Russian>
             <German>Kaliber: 7,62x51 mm Leuchtspur - grün&lt;br/&gt;Patronen: 150</German>
             <Czech>Ráže: 7.62x51 mm stopovky - zelené&lt;br/&gt;Munice: 150</Czech>
-            <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
             <Portuguese>Calibre: Traçante 7,62 x 51 mm – Verde&lt;br/&gt;Balas: 150r</Portuguese>
             <Korean>구경: 7.62x51mm 예광탄 - 녹색&lt;br /&gt;탄 수: 150</Korean>
             <Chinesesimp>口径：7.62x51 毫米曳光弹 - 绿色&lt;br/&gt;容弹量：150</Chinesesimp>
@@ -27,7 +26,7 @@
             <Turkish>Kalibre: 7.62x51 mm İzli - Yeşil&lt;br/&gt;Mermi: 150</Turkish>
         </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_description">
-            <Original>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</Original>
+            <English>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</English>
             <Chinese>口徑：7.62x51 mm&lt;br/&gt;個數：150</Chinese>
             <French>Calibre : 7,62x51 mm&lt;br/&gt;Munitions : 150</French>
             <Spanish>Calibre: 7,62x51 mm&lt;br/&gt;Cargas: 150</Spanish>
@@ -36,7 +35,6 @@
             <Russian>Калибр: 7,62x51 мм&lt;br/&gt;Количество патронов: 150</Russian>
             <German>Kaliber: 7,62x51 mm&lt;br/&gt;Patronen: 150</German>
             <Czech>Ráže: 7.62x51 mm&lt;br/&gt;Munice: 150</Czech>
-            <English>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</English>
             <Portuguese>Calibre: 7,62 x 51 mm&lt;br/&gt;Balas: 150r</Portuguese>
             <Korean>구경: 7.62x51mm&lt;br /&gt;탄 수: 150</Korean>
             <Chinesesimp>口径：7.62x51 毫米&lt;br/&gt;容弹量：150</Chinesesimp>
