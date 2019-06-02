@@ -56,15 +56,15 @@ if (!isNil "_switchItem") then {
     switch (_currWeaponType) do {
         case 0: {
             _unit removePrimaryWeaponItem _currItem;
-            _unit addPrimaryWeaponItem _switchItem;
+            [{_this#0 addPrimaryWeaponItem _this#1}, [_unit, _switchItem]] call CBA_fnc_execNextFrame;
         };
         case 1: {
             _unit removeHandgunItem _currItem;
-            _unit addHandgunItem _switchItem;
+            [{_this#0 addHandgunItem _this#1}, [_unit, _switchItem]] call CBA_fnc_execNextFrame;
         };
         case 2: {
             _unit removeSecondaryWeaponItem _currItem;
-            _unit addSecondaryWeaponItem _switchItem;
+            [{_this#0 addSecondaryWeaponItem _this#1}, [_unit, _switchItem]] call CBA_fnc_execNextFrame;
         };
     };
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
