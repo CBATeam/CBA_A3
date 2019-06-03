@@ -14,6 +14,8 @@ class CfgPatches {
     };
 };
 
+class ctrlCombo;
+
 #include "Cfg3DEN.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"

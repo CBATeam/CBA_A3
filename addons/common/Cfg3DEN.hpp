@@ -6,6 +6,20 @@
 
 class Cfg3DEN {
     class Attributes {
+
+        class Default;
+        class Title: Default {
+            class Controls;
+        };
+
+        class Date: Title {
+            class Controls: Controls {
+                class ValueYear : ctrlCombo {
+                    onLoad="_ctrlYear = _this select 0;    for '_y' from 1900 to 2050 do { _lbadd = _ctrlYear lbadd str _y; _ctrlYear lbsetvalue [_lbadd,_y]; };    _ctrlYear lbsetcursel 53;";
+                };
+            };
+        };
+
         class Edit;
         class EditMulti3: Edit {
             class Controls;
