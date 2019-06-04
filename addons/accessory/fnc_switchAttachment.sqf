@@ -72,7 +72,7 @@ if (!isNil "_switchItem") then {
         hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";
-    ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
+    [{["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent}, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
 } else {
     playSound "ClickSoft";
 };
