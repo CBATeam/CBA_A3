@@ -56,15 +56,27 @@ if (!isNil "_switchItem") then {
     switch (_currWeaponType) do {
         case 0: {
             _unit removePrimaryWeaponItem _currItem;
-            _unit addPrimaryWeaponItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addPrimaryWeaponItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
         case 1: {
             _unit removeHandgunItem _currItem;
-            _unit addHandgunItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addHandgunItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
         case 2: {
             _unit removeSecondaryWeaponItem _currItem;
-            _unit addSecondaryWeaponItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addSecondaryWeaponItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
     };
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
@@ -72,7 +84,6 @@ if (!isNil "_switchItem") then {
         hintSilent format ["%1", _switchItemHintText];
     };
     playSound "click";
-    ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
 } else {
     playSound "ClickSoft";
 };
