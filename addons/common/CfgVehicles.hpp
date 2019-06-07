@@ -7,7 +7,6 @@ class CfgVehicles {
     };
 
     class Module_F;
-
     class ModuleDate_F: Module_F {
         class Arguments {
             class Year {
