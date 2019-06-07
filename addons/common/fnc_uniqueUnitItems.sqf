@@ -54,8 +54,7 @@ if (_weaponItems) then {
     _allItems append [
         primaryWeapon _unit,
         secondaryWeapon _unit,
-        handgunWeapon _unit,
-        binocular _unit
+        handgunWeapon _unit // binocular covered by assignedItems
     ];
 
     _allItems append primaryWeaponItems _unit;
