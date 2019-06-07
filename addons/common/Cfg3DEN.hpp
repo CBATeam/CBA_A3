@@ -8,7 +8,6 @@ class ctrlCombo;
 
 class Cfg3DEN {
     class Attributes {
-
         class Default;
         class Title: Default {
             class Controls;
