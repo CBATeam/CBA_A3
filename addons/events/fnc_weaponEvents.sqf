@@ -84,7 +84,7 @@ if (!_isEmpty || _onEmpty) then {
             "_unit", "_weapon", "_muzzle", "_optic",
             "_handAction", "_sound", "_soundSource",
             "_expectedMagazineCount", "_time", "_delay",
-            "_triggerReleased"
+            "_triggerReleased", "_config"
         ];
 
         // exit if unit switched weapon
@@ -126,11 +126,64 @@ if (!_isEmpty || _onEmpty) then {
             _soundSource say3D _sound;
         };
 
+        // eject cartidge on repeat
+        private _cartridgeType = getText (_config >> "cartridgeType");
+
+        if (_cartridgeType != "") then {
+            private _cartridgeEjectPosition = getArray (_config >> "cartridgeEjectPosition");
+            private _cartridgeEjectVelocity = getArray (_config >> "cartridgeEjectVelocity");
+            private _cartridgeEjectDelay = getNumber (_config >> "cartridgeEjectDelay");
+
+            if (_cartridgeEjectPosition isEqualTo []) then {
+                _cartridgeEjectPosition = [0,0,0];
+            };
+
+            if (_cartridgeEjectVelocity isEqualTo []) then {
+                _cartridgeEjectVelocity = [0,1,0];
+            };
+
+            [{
+                params ["_unit", "_weapon", "_cartridgeType", "_cartridgeEjectPosition", "_cartridgeEjectVelocity"];
+
+                private _aim = _unit modelToWorldVisualWorld (_unit selectionPosition "aimPoint");
+                private _cam = _unit modelToWorldVisualWorld (_unit selectionPosition "camera");
+                private _uUp = _aim vectorFromTo _cam;
+
+                private _wDir = _unit weaponDirection _weapon;
+                private _wLat = vectorNormalized (_wDir vectorCrossProduct _uUp);
+                private _wUp = _wLat vectorCrossProduct _wDir;
+
+                private _origin = _unit modelToWorldVisualWorld (_unit selectionPosition "proxy:\a3\characters_f\proxies\weapon.001");
+
+                private _position = _origin vectorAdd
+                    (_wDir vectorMultiply _cartridgeEjectPosition#0) vectorAdd
+                    (_wLat vectorMultiply _cartridgeEjectPosition#1) vectorAdd
+                    (_wUp  vectorMultiply _cartridgeEjectPosition#2);
+
+                private _cartridge = _cartridgeType createVehicleLocal [0,0,0];
+                _cartridge setPosWorld _position;
+
+                _cartridge setVectorDirAndUp [
+                    vectorNormalized _wDir,
+                    vectorNormalized _wUp
+                ];
+
+                private _velocity = velocity _unit vectorAdd
+                    (_wDir vectorMultiply _cartridgeEjectVelocity#0) vectorAdd
+                    (_wLat vectorMultiply _cartridgeEjectVelocity#1) vectorAdd
+                    (_wUp  vectorMultiply _cartridgeEjectVelocity#2);
+
+                _cartridge setVelocity _velocity;
+            }, [
+                _unit, _weapon, _cartridgeType, _cartridgeEjectPosition, _cartridgeEjectVelocity
+            ], _cartridgeEjectDelay] call CBA_fnc_waitAndExecute;
+        };
+
         true // exit loop
     }, {}, [
         _unit, _weapon, _muzzle, _optic,
         _handAction, _sound, call _fnc_soundSource,
         _expectedMagazineCount, CBA_missionTime, _delay,
-        _triggerReleased
+        _triggerReleased, _config
     ]] call CBA_fnc_waitUntilAndExecute;
 };
