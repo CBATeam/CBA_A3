@@ -160,8 +160,7 @@ if (!_isEmpty || _onEmpty) then {
                     (_wLat vectorMultiply _cartridgeEjectPosition#1) vectorAdd
                     (_wUp  vectorMultiply _cartridgeEjectPosition#2);
 
-                private _cartridge = _cartridgeType createVehicleLocal [0,0,0];
-                _cartridge setPosWorld _position;
+                private _cartridge = _cartridgeType createVehicleLocal ASLToAGL _position;
 
                 _cartridge setVectorDirAndUp [
                     vectorNormalized _wDir,
