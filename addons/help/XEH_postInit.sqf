@@ -3,6 +3,8 @@
 
 if (!hasInterface) exitWith {};
 
+if !(profileNamespace getVariable QGVAR(ShowDiaryRecords)) exitWith {};
+
 {
     // create diary, entries added in reverse order
     private _unit = player;
@@ -37,7 +39,7 @@ if (!hasInterface) exitWith {};
     // delete last line breaks
     _keys = _keys select [0, count _keys - 10];
 
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", _keys]];
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]];
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Help_Keys", _keys]], taskNull, "", false];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]], taskNull, "", false];
+    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]], taskNull, "", false];
 } call CBA_fnc_execNextFrame;

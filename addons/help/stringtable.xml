@@ -59,5 +59,14 @@
             <Chinesesimp>模组</Chinesesimp>
             <Turkish>Modüller</Turkish>
         </Key>
+        <Key ID="STR_CBA_Help_Category">
+            <English>CBA Help</English>
+        </Key>
+        <Key ID="STR_CBA_Help_ShowDiaryRecords">
+            <English>Create helper diary records</English>
+        </Key>
+        <Key ID="STR_CBA_Help_ShowDiaryRecordsTooltip">
+            <English>Setting to create helper diary record on mission start; key bindings, credits and addons.</English>
+        </Key>
     </Package>
 </Project>
