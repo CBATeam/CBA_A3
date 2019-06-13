@@ -145,7 +145,7 @@ if (!_isEmpty || _onEmpty) then {
             [{
                 params ["_unit", "_weapon", "_cartridgeType", "_cartridgeEjectPosition", "_cartridgeEjectVelocity"];
 
-                private _aim = _unit modelToWorldVisualWorld (_unit selectionPosition "aimPoint");
+                private _aim = _unit modelToWorldVisualWorld (_unit selectionPosition "Pelvis");
                 private _cam = _unit modelToWorldVisualWorld (_unit selectionPosition "camera");
                 private _uUp = _aim vectorFromTo _cam;
 
@@ -172,7 +172,10 @@ if (!_isEmpty || _onEmpty) then {
                     (_wLat vectorMultiply _cartridgeEjectVelocity#1) vectorAdd
                     (_wUp  vectorMultiply _cartridgeEjectVelocity#2);
 
-                _cartridge setVelocity _velocity;
+                [{
+                    params ["_cartridge", "_velocity"];
+                    _cartridge setVelocity _velocity;
+                }, [_cartridge, _velocity]] call CBA_fnc_execNextFrame;
             }, [
                 _unit, _weapon, _cartridgeType, _cartridgeEjectPosition, _cartridgeEjectVelocity
             ], _cartridgeEjectDelay] call CBA_fnc_waitAndExecute;
