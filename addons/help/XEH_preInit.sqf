@@ -1,15 +1,6 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-[
-    QGVAR(ShowDiaryRecords), "CHECKBOX",
-    [LLSTRING(ShowDiaryRecords), LLSTRING(ShowDiaryRecordsTooltip)],
-    LLSTRING(Category),
-    true,
-    nil,
-    {profileNamespace setVariable [QGVAR(ShowDiaryRecords), _this];}
-] call CBA_fnc_addSetting;
-
 if (!hasInterface) exitWith {};
 
 ADDON = false;

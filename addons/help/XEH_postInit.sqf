@@ -3,8 +3,6 @@
 
 if (!hasInterface) exitWith {};
 
-if !(profileNamespace getVariable QGVAR(ShowDiaryRecords)) exitWith {};
-
 {
     // create diary, entries added in reverse order
     private _unit = player;
