@@ -26,7 +26,7 @@ private _aim = _unit modelToWorldVisualWorld (_unit selectionPosition "Pelvis");
 private _cam = _unit modelToWorldVisualWorld (_unit selectionPosition "camera");
 private _up = _aim vectorFromTo _cam;
 
-private _wDir = _unit weaponDirection primaryWeapon _unit;
+private _wDir = _unit weaponDirection currentWeapon _unit;
 private _wLat = vectorNormalized (_wDir vectorCrossProduct _up);
 private _wUp = _wLat vectorCrossProduct _wDir;
 
