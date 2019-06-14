@@ -116,6 +116,11 @@ _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
 _ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
 
+private _bank = call FUNC(gunBank);
+_ctrlReticle ctrlSetAngle [_bank, 0.5, 0.5];
+_ctrlBody ctrlSetAngle [_bank, 0.5, 0.5];
+_ctrlBodyNight ctrlSetAngle [_bank, 0.5, 0.5];
+
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
 
