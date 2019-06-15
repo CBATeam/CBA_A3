@@ -20,4 +20,4 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-[1, random 360, acos (random 2 - 1) - 90] call CBA_fnc_polar2vect // return
+[1, random 360, asin (random 2 - 1)] call CBA_fnc_polar2vect // return
