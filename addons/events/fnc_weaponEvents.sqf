@@ -145,32 +145,32 @@ if (!_isEmpty || _onEmpty) then {
             [{
                 params ["_unit", "_weapon", "_cartridgeType", "_cartridgeEjectPosition", "_cartridgeEjectVelocity"];
 
-                private _aim = _unit modelToWorldVisualWorld (_unit selectionPosition "Pelvis");
-                private _cam = _unit modelToWorldVisualWorld (_unit selectionPosition "camera");
-                private _uUp = _aim vectorFromTo _cam;
+                private _pelvis = _unit modelToWorldVisualWorld (_unit selectionPosition "Pelvis");
+                private _camera = _unit modelToWorldVisualWorld (_unit selectionPosition "camera");
+                private _bodyUp = _pelvis vectorFromTo _camera;
 
-                private _wDir = _unit weaponDirection _weapon;
-                private _wLat = vectorNormalized (_wDir vectorCrossProduct _uUp);
-                private _wUp = _wLat vectorCrossProduct _wDir;
+                private _weaponDir = _unit weaponDirection _weapon;
+                private _weaponLat = vectorNormalized (_weaponDir vectorCrossProduct _bodyUp);
+                private _weaponUp = _weaponLat vectorCrossProduct _weaponDir;
 
                 private _origin = _unit modelToWorldVisualWorld (_unit selectionPosition "proxy:\a3\characters_f\proxies\weapon.001");
 
                 private _position = _origin vectorAdd
-                    (_wDir vectorMultiply _cartridgeEjectPosition#0) vectorAdd
-                    (_wLat vectorMultiply _cartridgeEjectPosition#1) vectorAdd
-                    (_wUp  vectorMultiply _cartridgeEjectPosition#2);
+                    (_weaponDir vectorMultiply _cartridgeEjectPosition#0) vectorAdd
+                    (_weaponLat vectorMultiply _cartridgeEjectPosition#1) vectorAdd
+                    (_weaponUp  vectorMultiply _cartridgeEjectPosition#2);
 
                 private _cartridge = _cartridgeType createVehicleLocal ASLToAGL _position;
 
                 _cartridge setVectorDirAndUp [
-                    vectorNormalized _wDir,
-                    vectorNormalized _wUp
+                    vectorNormalized _weaponDir,
+                    vectorNormalized _weaponUp
                 ];
 
                 private _velocity = velocity _unit vectorAdd
-                    (_wDir vectorMultiply _cartridgeEjectVelocity#0) vectorAdd
-                    (_wLat vectorMultiply _cartridgeEjectVelocity#1) vectorAdd
-                    (_wUp  vectorMultiply _cartridgeEjectVelocity#2);
+                    (_weaponDir vectorMultiply _cartridgeEjectVelocity#0) vectorAdd
+                    (_weaponLat vectorMultiply _cartridgeEjectVelocity#1) vectorAdd
+                    (_weaponUp  vectorMultiply _cartridgeEjectVelocity#2);
 
                 [{
                     params ["_cartridge", "_velocity"];
