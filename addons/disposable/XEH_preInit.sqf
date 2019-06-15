@@ -47,6 +47,23 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     if (GVAR(magazines) pushBackUnique _magazine != -1) then {
         GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
     };
+
+    // check if mass entries add up
+    private _massLauncher = getNumber (_cfgWeapons >> _launcher >> "WeaponSlotsInfo" >> "mass");
+    private _massMagazine = getNumber (_cfgMagazines >> _magazine >> "mass");
+    private _massLoadedLauncher = getNumber (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "mass");
+    private _massUsedLauncher = getNumber (_cfgWeapons >> _usedLauncher >> "WeaponSlotsInfo" >> "mass");
+
+    if (_massLauncher != _massUsedLauncher) then {
+        WARNING_4("Mass of launcher %1 (%2) is different from mass of used launcher %3 (%4).", _launcher, _massLauncher, _usedLauncher, _massUsedLauncher);
+    };
+
+    if (_massLauncher + _massMagazine != _massLoadedLauncher) then {
+        WARNING_7("Sum of mass of launcher %1 and mass of magazine %2 (%3+%4=%5) is different from mass of loaded launcher %6 (%7).",
+            _launcher, _magazine, _massLauncher, _massMagazine, _massLauncher + _massMagazine,
+            _loadedLauncher, _massLoadedLauncher
+        );
+    };
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
 ["CBA_settingsInitialized", {
