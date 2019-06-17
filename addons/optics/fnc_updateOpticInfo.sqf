@@ -96,7 +96,11 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     private _config = configFile >> "CfgOpticsEffect" >> _x;
     private _type = getText (_config >> "type");
     private _priority = getNumber (_config >> "priority");
-    private _params = getArray (_config >> "params");
+    private _params = getArray (_config >> "params") apply {
+        if (_x isEqualType "") then {
+            call compile _x
+        } else {_x};
+    };
 
     private _ppEffect = ppEffectCreate [_type, _priority];
     _ppEffect ppEffectAdjust _params;
