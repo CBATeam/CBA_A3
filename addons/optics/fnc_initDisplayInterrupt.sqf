@@ -74,7 +74,7 @@ _script ctrlSetPosition [0,0,0,0];
 _script ctrlCommit 0;
 
 _script ctrlAddEventHandler ["Draw", {
-    if (isNull (uiNamespace getVariable ["RscDisplayInterrupt", displayNull])) then {
+    if (isNull (uiNamespace getVariable [["RscDisplayInterrupt", "RscDisplayMPInterrupt"] select isMultiplayer, displayNull])) then {
         {
             QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
         } call CBA_fnc_execNextFrame;
