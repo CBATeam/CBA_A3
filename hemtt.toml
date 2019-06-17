@@ -11,7 +11,7 @@ files = [
 headerexts = [
     "version={{git \"id 8\"}}"
 ]
-keyname = "cba_{{version}}"
+keyname = "{{prefix}}_{{version}}"
 signame = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
 releasebuild = [
