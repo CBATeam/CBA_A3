@@ -45,7 +45,7 @@ private _fnc_update = {
 
     // replace %20 with space
     private _missionName = _display displayCtrl IDC_MPSETUP_NAME;
-    private _text = [ctrlText _missionName, "%20", " "] call (uiNamespace getVariable "CBA_fnc_replace");
+    private _text = ctrlText _missionName call (uiNamespace getVariable "CBA_fnc_decodeHTML");
     _missionName ctrlSetText _text;
 };
 
