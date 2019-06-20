@@ -16,7 +16,7 @@ class CfgFunctions {
             PATHTO_FNC(strLen);
             PATHTO_FNC(trim);
             PATHTO_FNC(sanitizeHTML);
-            PATHTO_FNC(decodeHTML);
+            PATHTO_FNC(decodeURL);
         };
     };
 };

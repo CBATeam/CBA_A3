@@ -1,44 +1,29 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_decodeHTML
+Function: CBA_fnc_decodeURL
 
 Description:
-    Reverse HTML encoded text to readable text.
+    Reverse URL encoded text to readable text.
 
 Parameters:
-    _string - HTML encoded text <STRING>
+    _string - URL encoded text <STRING>
 
 Returns:
     _return - Human readable text <STRING>
 
 Examples:
     (begin example)
-        "Mission%20Name" call CBA_fnc_decodeHTML; // "Mission Name"
+        "Mission%20Name" call CBA_fnc_decodeURL; // "Mission Name"
     (end)
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-#define UTF8_TABLE [\
-    ["%e4","ä"],\
-    ["%f6","ö"],\
-    ["%fc","ü"],\
-    ["%c4","Ä"],\
-    ["%d6","Ö"],\
-    ["%dc","Ü"],\
-    ["%df","ß"],\
-    ["%20"," "],\
-    ["%21","!"],\
-    ["%3F","?"],\
-    ["%2e","."],\
-    ["%25","%"]\
-]
-
 params [["_string", "", [""]]];
 if (_string isEqualTo "") exitWith {""};
 
-private _cache = missionNamespace getVariable [QGVAR(HTMLCache), objNull];
+private _cache = missionNamespace getVariable [QGVAR(URLCache), objNull];
 private _return = _cache getVariable _string;
 
 if (isNil "_return") then {
@@ -50,7 +35,7 @@ if (isNil "_return") then {
 
     if (isNull _cache) then {
         _cache = [] call CBA_fnc_createNamespace;
-        missionNamespace setVariable [QGVAR(HTMLCache), _cache];
+        missionNamespace setVariable [QGVAR(URLCache), _cache];
     };
 
     _cache setVariable [_string, _return];

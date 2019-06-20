@@ -5,7 +5,7 @@ _this spawn {
         params ["_display"];
 
         private _missionName = _display displayCtrl IDC_DIARY_MISSION_NAME;
-        private _text = ctrlText _missionName call CBA_fnc_decodeHTML;
+        private _text = ctrlText _missionName call CBA_fnc_decodeURL;
         _missionName ctrlSetText _text;
     };
 };
