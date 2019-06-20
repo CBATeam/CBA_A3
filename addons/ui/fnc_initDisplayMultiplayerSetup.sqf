@@ -43,9 +43,14 @@ private _fnc_update = {
         _playerList lbSetValue [_playerList lbAdd _text, _value];
     };
 
-    // replace %20 with space
+    // replace URL encoding
     private _missionName = _display displayCtrl IDC_MPSETUP_NAME;
-    private _text = [ctrlText _missionName, "%20", " "] call (uiNamespace getVariable "CBA_fnc_replace");
+
+    private _text = ctrlText _missionName;
+    with uiNamespace do {
+        _text = _text call CBA_fnc_decodeURL;
+    };
+
     _missionName ctrlSetText _text;
 };
 
