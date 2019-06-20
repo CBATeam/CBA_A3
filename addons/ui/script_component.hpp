@@ -1,4 +1,4 @@
-﻿#define COMPONENT ui
+#define COMPONENT ui
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_MODE_FULL
