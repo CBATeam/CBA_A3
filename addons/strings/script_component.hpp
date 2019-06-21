@@ -12,6 +12,7 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #define UTF8_TABLE [\
+    ["%20"," "],\
     ["%21","!"],\
     ["%22",""""],\
     ["%23","#"],\
