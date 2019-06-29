@@ -97,7 +97,7 @@ clearBackpackCargoGlobal _container;
 _container addBackpackCargoGlobal ["B_AssaultPack_mcamo_Ammo", 1];
 _result = [_container, "B_AssaultPack_mcamo_Ammo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (itemCargo _container) == 4 && count (magazineCargo _container) == 19,_funcName);
+TEST_TRUE(count (backpackCargo _container) == 0 && count (itemCargo _container) == 4 && count (magazineCargo _container) == 20,_funcName);
 clearBackpackCargoGlobal _container;
 clearItemCargoGlobal _container;
 clearMagazineCargoGlobal _container;
@@ -139,6 +139,11 @@ _container addItemCargoGlobal ["FirstAidKit", 5];
 _result = [_container, "FirstAidKit", 3] call CBA_fnc_removeItemCargo;
 TEST_TRUE(_result,_funcName);
 TEST_TRUE(count (itemCargo _container) == 2,_funcName);
+clearItemCargoGlobal _container;
+
+_container addItemCargoGlobal ["V_PlateCarrier1_rgr", 5];
+_result = [_container, "V_PlateCarrier1_rgr", 1] call CBA_fnc_removeItemCargo;
+TEST_TRUE(count (itemCargo _container) == 4,_funcName);
 clearItemCargoGlobal _container;
 
 _container addItemCargoGlobal ["V_PlateCarrier1_rgr", 1];
