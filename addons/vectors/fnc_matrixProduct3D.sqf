@@ -7,6 +7,8 @@ Description:
 
     Only accepts 3x3 matrices.
 
+    DEPRECATED. Use matrixMultiply instead.
+
 Parameters:
     _matrixA      - first 3x3 matrix. <ARRAY>
     _matrixB      - second 3x3 matrix. <ARRAY>

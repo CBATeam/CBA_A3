@@ -7,6 +7,8 @@ Description:
 
     Accepts any mxn matrix.
 
+    DEPRECATED. Use matrixTranspose instead.
+
 Parameters:
     _matrix       - mxn matrix to transpose. <ARRAY>
 
