@@ -25,10 +25,4 @@ Author:
 
 params [["_matrix", [], [[]]]];
 
-private _returnMatrix = [];
-
-for "_j" from 0 to (count (_matrix select 0) - 1) do {
-    _returnMatrix pushBack (_matrix apply {_x select _j});
-};
-
-_returnMatrix
+matrixTranspose _matrix
