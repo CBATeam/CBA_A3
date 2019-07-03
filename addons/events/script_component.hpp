@@ -45,3 +45,5 @@
 #define MOUSE_OFFSET 0xF0
 #define MOUSE_WHEEL_OFFSET 0xF8 // MOUSE_OFFSET + 8 possible mouse keys
 #define USERACTION_OFFSET 0xFA
+
+#define SPEED_OF_SOUND 343 // in meters per second

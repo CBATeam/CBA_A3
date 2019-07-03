@@ -27,5 +27,11 @@ class CfgFunctions {
             PATHTO_FNC(registerChatCommand);
             PATHTO_FNC(weaponEvents);
         };
+
+        class Sounds {
+            PATHTO_FNC(executeWhenSoundWaveArrived);
+            PATHTO_FNC(playSoundSOS);
+            PATHTO_FNC(stopSoundSOS);
+        };
     };
 };
