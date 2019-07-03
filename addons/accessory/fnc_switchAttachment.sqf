@@ -36,7 +36,7 @@ private _currWeaponType = call {
     _currItem = "";
     -1
 };
-if (_currWeaponType < 0) exitWith {hint "You are not holding a weapon!"; false};
+if (_currWeaponType < 0) exitWith { false };
 
 #define __cfgWeapons configfile >> "CfgWeapons"
 #define __currItem __cfgWeapons >> _currItem
@@ -68,8 +68,9 @@ if (!isNil "_switchItem") then {
         };
     };
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
+    private _switchItemHintImage = getText (__cfgWeapons >> _switchItem >> "picture");
     if !(_switchItemHintText isEqualTo "") then {
-        hintSilent format ["%1", _switchItemHintText];
+        [[_switchItemHintImage], [_switchItemHintText], true] call CBA_fnc_notify;
     };
     playSound "click";
     ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
