@@ -16,7 +16,7 @@
         profileNamespace setVariable [QGVAR(StorePasswords), _this];
         saveProfileNamespace;
     }
-] call cba_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(notifyLifetime),
