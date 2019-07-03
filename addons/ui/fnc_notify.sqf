@@ -185,22 +185,29 @@ private _fnc_processQueue = {
         _x ctrlCommit (FADE_IN_TIME);
     } forEach _controls;
 
-    // pop queue
+    // pop queue - waitUntilAndExecute for skippable, waitAndExecute for non-skippable for less wasted condition checking
     TRACE_3("Pop wait",_composition,_skippable,GVAR(notifyQueue));
-    [{
-        // Show next notification immediately if current one is skippable
-        _this select 3 && {count GVAR(notifyQueue) > 1}
-    }, {
-        // Skip current notification
-        LOG("Skipped queue process");
-        params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
-        [_controls, _fnc_processQueue] call _fnc_popQueue;
-    }, [_fnc_popQueue, _controls, _fnc_processQueue, _skippable], GVAR(notifyLifetime), {
-        // Normally move to next notification
-        LOG("Normal queue process");
-        params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
-        [_controls, _fnc_processQueue] call _fnc_popQueue;
-    }] call CBA_fnc_waitUntilAndExecute;
+    if (_skippable) then {
+        [{
+            // Wait for another notification to be added
+            count GVAR(notifyQueue) > 1
+        }, {
+            // Condition met - Show next notification immediately
+            LOG("Skipped queue process");
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }, [_fnc_popQueue, _controls, _fnc_processQueue], GVAR(notifyLifetime), {
+            // Timeout - Normally move to next notification
+            LOG("Normal queue process");
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }] call CBA_fnc_waitUntilAndExecute;
+    } else {
+        [{
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }, [_fnc_popQueue, _controls, _fnc_processQueue], GVAR(notifyLifetime)] call CBA_fnc_waitAndExecute;
+    };
 };
 
 if (count GVAR(notifyQueue) isEqualTo 1) then {
