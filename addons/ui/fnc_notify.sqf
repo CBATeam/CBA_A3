@@ -20,7 +20,7 @@ Examples:
     (begin example)
         "Banana" call CBA_fnc_notify;
         ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
-        [["Banana", 1.5, [1, 1, 0, 1]], false] call CBA_fnc_notify;
+        [["Banana", 1.5, [1, 1, 0, 1]], ["Not Apple"], true] call CBA_fnc_notify;
     (end)
 
 Returns:
@@ -30,11 +30,8 @@ Authors:
     commy2
 ---------------------------------------------------------------------------- */
 
-#define LIFE_TIME 4
 #define FADE_IN_TIME 0.2
 #define FADE_OUT_TIME 1
-
-params ["_content", ["_skippable", false, [false]]];
 
 if (canSuspend) exitWith {
     [CBA_fnc_notify, _this] call CBA_fnc_directCall;
@@ -43,17 +40,25 @@ if (canSuspend) exitWith {
 if (!hasInterface) exitWith {};
 
 // compose structured text
-if !(_content isEqualType []) then {
-    _content = [_content];
+if !(_this isEqualType []) then {
+    _this = [_this];
 };
 
-if !(_content select 0 isEqualType []) then {
-    _content = [_content];
+if !(_this select 0 isEqualType []) then {
+    _this = [_this];
 };
 
 private _composition = [];
+private _skippable = false;
 
 {
+    // Additional arguments at the end
+    if (_x isEqualType true) exitWith {
+        TRACE_1("Skippable argument",_x);
+        _skippable = _x;
+    };
+
+    // Line
     _composition pushBack lineBreak;
 
     _x params [["_text", "", ["", 0]], ["_size", 1, [0]], ["_color", [], [[]], [3,4]]];
@@ -78,7 +83,7 @@ private _composition = [];
     } else {
         _composition pushBack parseText format ["<t align='center' size='%2' color='%3'>%1</t>", _text, _size, _color];
     };
-} forEach _content;
+} forEach _this;
 
 _composition deleteAt 0;
 
@@ -190,7 +195,7 @@ private _fnc_processQueue = {
         LOG("Skipped queue process");
         params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
         [_controls, _fnc_processQueue] call _fnc_popQueue;
-    }, [_fnc_popQueue, _controls, _fnc_processQueue, _skippable], LIFE_TIME, {
+    }, [_fnc_popQueue, _controls, _fnc_processQueue, _skippable], GVAR(notifyLifetime), {
         // Normally move to next notification
         LOG("Normal queue process");
         params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
