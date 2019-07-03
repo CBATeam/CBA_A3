@@ -70,7 +70,7 @@ if (!isNil "_switchItem") then {
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
     private _switchItemHintImage = getText (__cfgWeapons >> _switchItem >> "picture");
     if !(_switchItemHintText isEqualTo "") then {
-        [[_switchItemHintImage], [_switchItemHintText], true] call CBA_fnc_notify;
+        [[_switchItemHintImage, 2.0], [_switchItemHintText], true] call CBA_fnc_notify;
     };
     playSound "click";
     ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
