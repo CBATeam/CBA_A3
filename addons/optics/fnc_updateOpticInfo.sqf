@@ -23,7 +23,7 @@ Author:
 params ["_unit"];
 
 // Update scripted optic cache.
-private _optic = _unit call FUNC(currentOptic);systemChat str [_optic, diag_frameNo];
+private _optic = _unit call FUNC(currentOptic);
 if (_optic isEqualTo GVAR(currentOptic)) exitWith {};
 GVAR(currentOptic) = _optic;
 
