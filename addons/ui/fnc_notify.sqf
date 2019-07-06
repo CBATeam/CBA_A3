@@ -6,18 +6,21 @@ Description:
     Display a text message. Multiple incoming messages are queued.
 
 Parameters:
-    _content - ARRAY
-        _line1 - ARRAY
-        _line2 - ARRAY
+    _content   - Notifications content (lines). <ARRAY>
+        _line1 - First content line. <ARRAY>
+        _line2 - Second content line. <ARRAY>
         ...
-        _lineN - ARRAY
-            _text  - STRING, NUMBER: Text to display or path to .paa or .jpg image.
-            _size  - NUMBER: Text or image size multiplier, optional, default: 1
-            _color - ARRAY: RGB or RGBA color (range 0-1), optional, default: [1,1,1,1]
+        _lineN - N-th content line (may be passed directly if only 1 line is required). <ARRAY>
+            _text  - Text to display or path to .paa or .jpg image (may be passed directly if only text is required). <STRING, NUMBER>
+            _size  - Text or image size multiplier. (optional, default: 1) <NUMBER>
+            _color - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1]) <ARRAY>
+    _skippable - Skip or overwrite this notification if another entered the queue. (optional, default: false) <BOOL>
 
 Examples:
     (begin example)
+        "Banana" call CBA_fnc_notify;
         ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
+        [["Banana", 1.5, [1, 1, 0, 1]], ["Not Apple"], true] call CBA_fnc_notify;
     (end)
 
 Returns:
@@ -27,7 +30,6 @@ Authors:
     commy2
 ---------------------------------------------------------------------------- */
 
-#define LIFE_TIME 4
 #define FADE_IN_TIME 0.2
 #define FADE_OUT_TIME 1
 
@@ -47,8 +49,16 @@ if !(_this select 0 isEqualType []) then {
 };
 
 private _composition = [];
+private _skippable = false;
 
 {
+    // Additional arguments at the end
+    if (_x isEqualType true) exitWith {
+        TRACE_1("Skippable argument",_x);
+        _skippable = _x;
+    };
+
+    // Line
     _composition pushBack lineBreak;
 
     _x params [["_text", "", ["", 0]], ["_size", 1, [0]], ["_color", [], [[]], [3,4]]];
@@ -77,15 +87,34 @@ private _composition = [];
 
 _composition deleteAt 0;
 
+private _notification = [_composition, _skippable];
+
 // add the queue
 if (isNil QGVAR(notifyQueue)) then {
     GVAR(notifyQueue) = [];
 };
 
-GVAR(notifyQueue) pushBack _composition;
+GVAR(notifyQueue) pushBack _notification;
+
+private _fnc_popQueue = {
+    params ["_controls", "_fnc_processQueue"];
+
+    GVAR(notifyQueue) deleteAt 0;
+    private _notification = GVAR(notifyQueue) select 0;
+
+    if (!isNil "_notification") then {
+        _notification call _fnc_processQueue;
+    } else {
+        // fade out
+        {
+            _x ctrlSetFade 1;
+            _x ctrlCommit (FADE_OUT_TIME);
+        } forEach _controls;
+    };
+};
 
 private _fnc_processQueue = {
-    private _composition = _this;
+    params ["_composition", "_skippable"];
 
     QGVAR(notify) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 0, true];
     private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
@@ -156,27 +185,33 @@ private _fnc_processQueue = {
         _x ctrlCommit (FADE_IN_TIME);
     } forEach _controls;
 
-    // pop queue
-    [{
-        params ["_controls", "_fnc_processQueue"];
-
-        GVAR(notifyQueue) deleteAt 0;
-        private _composition = GVAR(notifyQueue) select 0;
-
-        if (!isNil "_composition") then {
-            _composition call _fnc_processQueue;
-        } else {
-            // fade out
-            {
-                _x ctrlSetFade 1;
-                _x ctrlCommit (FADE_OUT_TIME);
-            } forEach _controls;
-        };
-    }, [_controls, _fnc_processQueue], LIFE_TIME] call CBA_fnc_waitAndExecute;
+    // pop queue - waitUntilAndExecute for skippable, waitAndExecute for non-skippable for less wasted condition checking
+    TRACE_3("Pop wait",_composition,_skippable,GVAR(notifyQueue));
+    if (_skippable) then {
+        [{
+            // Wait for another notification to be added
+            count GVAR(notifyQueue) > 1
+        }, {
+            // Condition met - Show next notification immediately
+            LOG("Skipped queue process");
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }, [_fnc_popQueue, _controls, _fnc_processQueue], GVAR(notifyLifetime), {
+            // Timeout - Normally move to next notification
+            LOG("Normal queue process");
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }] call CBA_fnc_waitUntilAndExecute;
+    } else {
+        [{
+            params ["_fnc_popQueue", "_controls", "_fnc_processQueue"];
+            [_controls, _fnc_processQueue] call _fnc_popQueue;
+        }, [_fnc_popQueue, _controls, _fnc_processQueue], GVAR(notifyLifetime)] call CBA_fnc_waitAndExecute;
+    };
 };
 
 if (count GVAR(notifyQueue) isEqualTo 1) then {
-    _composition call _fnc_processQueue;
+    _notification call _fnc_processQueue;
 };
 
 nil

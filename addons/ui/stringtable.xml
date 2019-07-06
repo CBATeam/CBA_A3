@@ -145,5 +145,11 @@
             <Polish>Pokaż własne/wgrane misje</Polish>
             <Italian>Mostra missioni custom</Italian>
         </Key>
+        <Key ID="STR_CBA_Ui_NotifyLifetime">
+            <English>Notification Lifetime</English>
+        </Key>
+        <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
+            <English>Notification display duration in seconds.</English>
+        </Key>
     </Package>
 </Project>
