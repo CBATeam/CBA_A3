@@ -111,6 +111,9 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     _ppEffect
 };
 
+GVAR(hideMagnification) = getNumber (_config >> "hideMagnification") != 0;
+GVAR(disableTilt) = getNumber (_config >> "disableTilt") != 0;
+
 [uiNamespace getVariable QGVAR(ScriptedOpticDisplay), false] call FUNC(loadScriptedOptic);
 
 //INFO_1("Updated optic info %1.",_optic);
