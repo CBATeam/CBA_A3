@@ -23,7 +23,7 @@ Author:
 params ["_unit"];
 
 // Update scripted optic cache.
-private _optic = _unit call FUNC(currentOptic);
+private _optic = _unit call FUNC(currentOptic);systemChat str [_optic, diag_frameNo];
 if (_optic isEqualTo GVAR(currentOptic)) exitWith {};
 GVAR(currentOptic) = _optic;
 
@@ -110,6 +110,8 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     _ppEffect ppEffectCommit 0;
     _ppEffect
 };
+
+GVAR(hideMagnification) = getNumber (_config >> "hideMagnification") != 0;
 
 [uiNamespace getVariable QGVAR(ScriptedOpticDisplay), false] call FUNC(loadScriptedOptic);
 

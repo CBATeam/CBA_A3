@@ -78,7 +78,7 @@ _ctrlMagnification ctrlSetText format [
     [_zoom, 1, 1] call CBA_fnc_formatNumber
 ];
 
-_ctrlMagnification ctrlShow (_zoom >= 1);
+_ctrlMagnification ctrlShow (_zoom >= 1 && {!GVAR(hideMagnification)});
 
 private _positionMagnification = ctrlPosition _ctrlZeroing;
 _positionMagnification set [0, _positionMagnification#0 + ctrlTextWidth _ctrlZeroing];
