@@ -46,6 +46,7 @@ GVAR(disableTilt) = false;
 ["loadout", {
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
+    _unit call FUNC(changePIPOpticClass);
     _unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 
