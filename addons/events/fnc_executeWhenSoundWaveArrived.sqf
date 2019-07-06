@@ -36,7 +36,7 @@ params [
 ];
 
 [{
-    params ["_code", "_origin", "_startTime"];
+    params ["_code", "_origin", "_arguments", "_startTime"];
 
     // Abort if origin of sound was deleted.
     if (_origin isEqualTo objNull) exitWith {
@@ -60,6 +60,6 @@ params [
     };
 
     false // continue
-}, {}, [_code, _origin, CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
+}, {}, [_code, _origin, _arguments, CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
 
 nil
