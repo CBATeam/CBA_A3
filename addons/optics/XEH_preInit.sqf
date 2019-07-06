@@ -35,6 +35,7 @@ GVAR(useReticleNight) = false;
 GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
 GVAR(hidePeripheralVision) = false;
 GVAR(hideMagnification) = false;
+GVAR(disableTilt) = false;
 
 // Update optic info.
 ["weapon", {
