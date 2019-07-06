@@ -19,11 +19,11 @@ if (hasInterface) then {
     ["CBA_stopSoundSOS", {
         params ["_handler"];
 
-        (GVAR(publicSounds) getVarible [_handler, [nil, objNull]]) params ["", "_origin"];
+        (GVAR(publicSounds) getVariable [_handler, [nil, objNull]]) params ["", "_origin"];
 
         [_origin, {
             params ["", "", "_handler"];
-            (GVAR(publicSounds) getVarible _handler) params ["_source"];
+            (GVAR(publicSounds) getVariable _handler) params ["_source"];
 
             deleteVehicle _source;
         }, _handler] call CBA_fnc_executeWhenSoundWaveArrived;
@@ -68,11 +68,11 @@ if (hasInterface) then {
     ["CBA_stopSoundSOSLooped", {
         params ["_handler"];
 
-        (GVAR(publicSounds) getVarible [_handler, [nil, objNull]]) params ["", "_origin"];
+        (GVAR(publicSounds) getVariable [_handler, [nil, objNull]]) params ["", "_origin"];
 
         [_origin, {
             params ["", "", "_handler"];
-            (GVAR(publicSounds) getVarible _handler) params ["_source", "_dummy"];
+            (GVAR(publicSounds) getVariable _handler) params ["_source", "_dummy"];
 
             deleteVehicle _source;
             deleteVehicle _dummy;

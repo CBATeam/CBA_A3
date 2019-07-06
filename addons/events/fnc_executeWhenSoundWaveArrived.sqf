@@ -20,7 +20,7 @@
 
     Examples:
     (begin example)
-        [{playSound "Alarm"}, cursorTarget] call CBA_fnc_executeWhenSoundWaveArrived;
+        [cursorTarget, {playSound _this}, "Alarm"] call CBA_fnc_executeWhenSoundWaveArrived;
     (end)
 
     Author:
