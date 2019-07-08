@@ -25,6 +25,11 @@ Arguments:
         #1 - true: success, false: failure <BOOLEAN>
         #2 - elapsed time, not more than _totalTime <NUMBER>
         #3 - total time, same as _totalTime <NUMBER>
+        #4 - failure code <NUMBER>
+                0 - no failure
+                1 - user hit ESC key
+                2 - condition was false
+                3 - progressbar closed by new progressbar
 
 Returns:
     Nothing
@@ -75,7 +80,7 @@ if (!isNil QGVAR(ProgressBarParams)) then {
     GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime"];
     private _elapsedTime = (CBA_missionTime - _startTime) min _totalTime;
 
-    [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+    [_onFailure, [_arguments, false, _elapsedTime, _totalTime, 3]] call CBA_fnc_execNextFrame;
 };
 
 GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTime, _totalTime, _blockMouse, _blockKeys, _allowClose];
@@ -101,14 +106,14 @@ _ctrlScript ctrlAddEventHandler ["Draw", {
         GVAR(ProgressBarParams) = nil;
         {QGVAR(ProgressBar) cutText ["", "PLAIN"]} call CBA_fnc_execNextFrame; // game would crash if display is killed from Draw event
         _blockInputDisplay closeDisplay 0;
-        [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+        [_onFailure, [_arguments, false, _elapsedTime, _totalTime, 2]] call CBA_fnc_execNextFrame;
     };
 
     if (_elapsedTime >= _totalTime) exitWith {
         GVAR(ProgressBarParams) = nil;
         {QGVAR(ProgressBar) cutText ["", "PLAIN"]} call CBA_fnc_execNextFrame; // game would crash if display is killed from Draw event
         _blockInputDisplay closeDisplay 0;
-        [_onSuccess, [_arguments, true, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+        [_onSuccess, [_arguments, true, _elapsedTime, _totalTime, 0]] call CBA_fnc_execNextFrame;
     };
 
     private _ctrlBar = _display displayCtrl IDC_PROGRESSBAR_BAR;
@@ -135,7 +140,7 @@ if (_blockMouse) then {
                 GVAR(ProgressBarParams) = nil;
                 QGVAR(ProgressBar) cutText ["", "PLAIN"];
                 _blockInputDisplay closeDisplay 0;
-                [_onFailure, [_arguments, false, _elapsedTime, _totalTime]] call CBA_fnc_execNextFrame;
+                [_onFailure, [_arguments, false, _elapsedTime, _totalTime, 1]] call CBA_fnc_execNextFrame;
 
                 _blockKeys = false;
             } else {
