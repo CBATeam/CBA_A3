@@ -16,6 +16,7 @@
 
     class CBA_556x45_TYPE97 {};         // QBZ-97 Stick Mags
     class CBA_556x45_TYPE97_XL {};      // QBB-97 LSW Drums
+    class CBA_556x45_SCAR_EGLM {};      // SCAR-L with EGLM/FN40GL/Mk 13 Mod 0 grenage launcher (This extends the length of the magwell and prevents mags that are too short or wide from being used)
     class CBA_556x45_SG550 {};
 
     class CBA_556x45_STANAG {           // STANAG mags, standard length, including small drums
