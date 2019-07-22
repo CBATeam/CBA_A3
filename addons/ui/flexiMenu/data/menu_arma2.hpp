@@ -1,28 +1,28 @@
-//#include "\x\cba\addons\ui\script_component.hpp"
+﻿//#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _DefaultAspectRatio 3 / 4
-#define _SX (safeZoneX+safeZoneW / 2)
-#define _SY (safeZoneY+safeZoneH / 2)
-#define _BW 0.21 * safeZoneW
-#define _BH (_CH / 5.5)
+#define _SX (safeZoneX+safeZoneW / 2) // screen centre x
+#define _SY (safeZoneY+safeZoneH / 2) // screen centre y
+#define _BW 0.21 * safeZoneW // button width
+#define _BH (_CH / 5.5) // button height
 #define _CX_correction 0.011 * safeZoneW
-#define _CW 0.15 * safeZoneW * _DefaultAspectRatio
-#define _CH 0.15 * safeZoneH
-#define _SMW 0.21 * safeZoneW
-#define _LBH 0.033 * safeZoneH
-#define _LBH_overlap 0.0375 * safeZoneH
+#define _CW 0.15 * safeZoneW * _DefaultAspectRatio // _CH // exception // 0.10 * safeZoneW // circle (button) width
+#define _CH 0.15 * safeZoneH // 0.15 * safeZoneW // exception safeZoneH // circle (button) height
+#define _SMW 0.21 * safeZoneW // sub-menu width
+#define _LBH 0.033 * safeZoneH // list button height
+#define _LBH_overlap 0.0375 * safeZoneH // button height with 1 pixel overlap for type "popup" menu
 #define _listButtonsPerRow 10
-//#define _captionColorBG 58 / 256, 80 / 256, 55 / 256
-#define _captionColorFG 138 / 256, 146 / 256, 105 / 256
+//#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 // BIS mid green (button over colour)
+#define _captionColorFG 138 / 256, 146 / 256, 105 / 256 // BIS greenish text
 #define _captionHgt 0.85
-#define _gapW 0.01 * safeZoneW
-#define _gapH ((_CH / 2 - 2 * _BH) * 2 / 3)
+#define _gapW 0.01 * safeZoneW // Horizontal gap "width" between circle button and side buttons
+#define _gapH ((_CH / 2 - 2 * _BH) * 2 / 3) // Button "height" vertical spacing
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\arma2\TOKEN.paa)
 #define _imagePathCA(TOKEN) QUOTE(\ca\ui\data\TOKEN.paa)
 #define _imagePathUI(TOKEN) QUOTE(\a3\ui_f\data\GUI\RscCommon\RscShortcutButtonMain\TOKEN.paa)
-#define _gapWLevel1 (0.01 * safeZoneW)
-#define _gapWLevel2 (0.01 * safeZoneW)
-#define _gapWRight (-0.015 * safeZoneW - _gapW)
+#define _gapWLevel1 (0.01 * safeZoneW) // extra indentation required for side buttons on row 1 and 4 to reach circle edge
+#define _gapWLevel2 (0.01 * safeZoneW) // extra indentation required for side buttons on row 2 and 3 to reach circle edge
+#define _gapWRight (-0.015 * safeZoneW - _gapW) // extra indentation required for all right side buttons to reach circle edge
 
 #define _leftButtonLevel1X (_SX - (_CW / 2 + _gapW + _gapWLevel1) - _BW - _gapWRight)
 #define _leftButtonLevel2X (_SX - (_CW / 2 + _gapW + _gapWLevel2) - _BW - _gapWRight)
