@@ -39,7 +39,7 @@ jobs:
           name: Update documentation and translation statistics
           command:  |
             if [ "${CIRCLE_BRANCH}" == "master" ] && [ "${CIRCLE_PROJECT_USERNAME}" == "CBATeam" ]; then
-              python3 tools/deploy.py
+              echo python3 tools/deploy.py # Done via Travis-CI
             else
               echo "Skipping, not on CBATeam/CBA_A3 master branch..."
             fi
