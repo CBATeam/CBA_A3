@@ -96,7 +96,11 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     private _config = configFile >> "CfgOpticsEffect" >> _x;
     private _type = getText (_config >> "type");
     private _priority = getNumber (_config >> "priority");
-    private _params = getArray (_config >> "params");
+    private _params = getArray (_config >> "params") apply {
+        if (_x isEqualType "") then {
+            call compile _x
+        } else {_x};
+    };
 
     private _ppEffect = ppEffectCreate [_type, _priority];
     _ppEffect ppEffectAdjust _params;
@@ -106,6 +110,9 @@ GVAR(ppEffects) = getArray (_config >> "opticsPPEffects") apply {
     _ppEffect ppEffectCommit 0;
     _ppEffect
 };
+
+GVAR(hideMagnification) = getNumber (_config >> "hideMagnification") != 0;
+GVAR(disableTilt) = getNumber (_config >> "disableTilt") != 0;
 
 [uiNamespace getVariable QGVAR(ScriptedOpticDisplay), false] call FUNC(loadScriptedOptic);
 

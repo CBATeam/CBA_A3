@@ -78,7 +78,7 @@ _ctrlMagnification ctrlSetText format [
     [_zoom, 1, 1] call CBA_fnc_formatNumber
 ];
 
-_ctrlMagnification ctrlShow (_zoom >= 1);
+_ctrlMagnification ctrlShow (_zoom >= 1 && {!GVAR(hideMagnification)});
 
 private _positionMagnification = ctrlPosition _ctrlZeroing;
 _positionMagnification set [0, _positionMagnification#0 + ctrlTextWidth _ctrlZeroing];
@@ -116,7 +116,13 @@ _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
 _ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
 
-private _bank = call FUNC(gunBank);
+// tilt while leaning
+private _bank = 0;
+
+if (!GVAR(disableTilt)) then {
+    _bank = call FUNC(gunBank);
+};
+
 _ctrlReticle ctrlSetAngle [_bank, 0.5, 0.5];
 _ctrlBody ctrlSetAngle [_bank, 0.5, 0.5];
 _ctrlBodyNight ctrlSetAngle [_bank, 0.5, 0.5];
