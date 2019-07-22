@@ -1,4 +1,4 @@
-﻿//#include "\x\cba\addons\ui\script_component.hpp"
+//#include "\x\cba\addons\ui\script_component.hpp"
 
 #define _DefaultAspectRatio 3 / 4
 #define _SX (safeZoneX+safeZoneW / 2) // screen centre x
