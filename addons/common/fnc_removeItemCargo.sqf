@@ -62,21 +62,30 @@ if (_count <= 0) exitWith {
 _count = round _count;
 
 // Save containers and contents
-private _containerData = []; // [object1, object2, ...]
-private _containerNames = [];
+private _containerData = [];
 {
     _x params ["_class", "_object"];
     if !(_object in (everyBackpack _container)) then {
-        _containerData pushBack [getItemCargo _object, magazinesAmmoCargo _object, weaponsItemsCargo _object];
-        _containerNames pushBack _class;
+        _containerData pushBack [_class, getItemCargo _object, magazinesAmmoCargo _object, weaponsItemsCargo _object];
     };
 } forEach (everyContainer _container); // [["class1", object1], ["class2", object2]]
 
-// [[type1, typeN, ...], [count1, countN, ...]]
-(getItemCargo _container) params ["_allItemsType", "_allItemsCount"];
+// Save non-container items
+(getItemCargo _container) params ["_allItemsType", "_allItemsCount"]; // [[type1, typeN, ...], [count1, countN, ...]]
+{
+    private _class = _x;
+    private _count = _allItemsCount select _forEachIndex;
+
+    private _sameData = _containerData select {_x select 0 == _class};
+    if (_sameData isEqualTo []) then {
+        _containerData pushBack [_class, _count];
+    };
+} forEach _allItemsType;
 
 // Clear cargo space and readd the items as long it's not the type in question
 clearItemCargoGlobal _container;
+
+TRACE_1("Old cargo",_containerData);
 
 
 // Add contents to backpack or box helper function
@@ -146,47 +155,46 @@ private _fnc_addContents = {
 
 // Process removal
 {
-    private _itemCount = _allItemsCount select _forEachIndex;
-    private _containerIndex = _containerNames find _x;
+    _x params ["_itemClass", "_itemCargoOrCount", "_magazinesAmmoCargo", "_weaponsItemsCargo"];
 
-    if (_count != 0 && {_x == _item}) then {
+    if (_count != 0 && {_itemClass == _item}) then {
         // Process removal
-        if (_containerIndex < 0) then {
-            _itemCount = _itemCount - _count;
-            if (_itemCount > 0) then {
-                // Add with new count
-                _container addItemCargoGlobal [_x, _itemCount];
-            };
-        } else {
-            if (_keepContents) then {
-                (_containerData select _containerIndex) params ["_itemCargo", "_magazinesAmmoCargo", "_weaponsItemsCargo"];
-                [_container, _itemCargo, _magazinesAmmoCargo, _weaponsItemsCargo] call _fnc_addContents;
-            };
+        if (count _x < 4) then {
+            // Non-container item
+            // Add with new count
+            _container addItemCargoGlobal [_itemClass, _itemCargoOrCount - _count]; // Silently fails on 'count < 1'
+            TRACE_2("Readding",_itemClass,_itemCargoOrCount - _count);
 
-            _containerData deleteAt _containerIndex;
-            _containerNames deleteAt _containerIndex;
+            _count = 0;
+        } else {
+            // Container item
+            _count = _count - 1;
+
+            if (_keepContents) then {
+                [_container, _itemCargoOrCount, _magazinesAmmoCargo, _weaponsItemsCargo] call _fnc_addContents;
+            };
         };
-        _count = 0;
     } else {
         // Readd only
-        if (_containerIndex < 0) then {
-            _container addItemCargoGlobal [_x, _itemCount];
+        if (count _x < 4) then {
+            // Non-container item
+            _container addItemCargoGlobal [_itemClass, _itemCargoOrCount];
+            TRACE_2("Readding",_itemClass,_itemCargoOrCount);
         } else {
-            (_containerData select _containerIndex) params ["_itemCargo", "_magazinesAmmoCargo", "_weaponsItemsCargo"];
-
+            // Container item
             // Save all containers for finding the one we readd after this
             private _addedContainers = ((everyContainer _container) apply {_x select 1}) - everyBackpack _container;
 
             // Readd
-            private _addedContainer = [_containerNames select _containerIndex] call CBA_fnc_getNonPresetClass;
+            private _addedContainer = [_itemClass] call CBA_fnc_getNonPresetClass;
             _container addItemCargoGlobal [_addedContainer, 1];
 
             // Find just added container and add contents (no command returns reference when adding)
             private _addedContainer = ((((everyContainer _container) apply {_x select 1}) - everyBackpack _container) - _addedContainers) select 0;
 
-            [_addedContainer, _itemCargo, _magazinesAmmoCargo, _weaponsItemsCargo] call _fnc_addContents;
+            [_addedContainer, _itemCargoOrCount, _magazinesAmmoCargo, _weaponsItemsCargo] call _fnc_addContents;
         };
     };
-} forEach _allItemsType;
+} forEach _containerData;
 
 (_count == 0)

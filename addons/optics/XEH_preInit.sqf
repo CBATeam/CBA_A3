@@ -34,6 +34,8 @@ GVAR(manualReticleNightSwitch) = false;
 GVAR(useReticleNight) = false;
 GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
 GVAR(hidePeripheralVision) = false;
+GVAR(hideMagnification) = false;
+GVAR(disableTilt) = false;
 
 // Update optic info.
 ["weapon", {
@@ -44,6 +46,7 @@ GVAR(hidePeripheralVision) = false;
 ["loadout", {
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
+    _unit call FUNC(changePIPOpticClass);
     _unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 
