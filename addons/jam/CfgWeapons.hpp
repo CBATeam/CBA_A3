@@ -29,7 +29,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_65x39_MX","CBA_65x39_MX_XL"};
 
         class GL_3GL_F: UGL_F {
-            magazineWell[] += {"CBA_40mm_3GL","CBA_40mm_M203","CBA_40mm_EGLM"}; // [] in vanilla
+            // handled in subconfig because of limitations of +=
         };
     };
 
