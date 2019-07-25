@@ -223,7 +223,7 @@ class CfgVehicles {
     class Respawn_Sleeping_bag_brown_F: Land_Sleeping_bag_brown_F {
         XEH_ENABLED;
     };
-    
+
     class ReammoBox_F;
     class Land_RepairDepot_01_base_F: ReammoBox_F {
         XEH_ENABLED;
@@ -304,6 +304,22 @@ class CfgVehicles {
     // Encore
     class Snake_random_F;
     class Snake_vipera_random_F: Snake_random_F {
+        XEH_ENABLED;
+    };
+
+    // Contact 1.94
+    class Land_PortableDesk_01_base_F;
+    class Land_PortableDesk_01_animated_base_F: Land_PortableDesk_01_base_F {
+        XEH_ENABLED;
+    };
+    class DecontaminationSimulated_base_F;
+    class DeconShower_01_base_F: DecontaminationSimulated_base_F {
+        XEH_ENABLED;
+    };
+    class DeconShower_02_base_F: DecontaminationSimulated_base_F {
+        XEH_ENABLED;
+    };
+    class SCBACylinder_01_base_F: DecontaminationSimulated_base_F {
         XEH_ENABLED;
     };
 };
