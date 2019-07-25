@@ -307,11 +307,18 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    // GM
+    class ReammoBox_F;
+    class gm_AmmoBox_base: ReammoBox_F {
+        XEH_ENABLED;
+    };
+
     // Contact 1.94
     class Land_PortableDesk_01_base_F;
     class Land_PortableDesk_01_animated_base_F: Land_PortableDesk_01_base_F {
         XEH_ENABLED;
     };
+
     class DecontaminationSimulated_base_F;
     class DeconShower_01_base_F: DecontaminationSimulated_base_F {
         XEH_ENABLED;
