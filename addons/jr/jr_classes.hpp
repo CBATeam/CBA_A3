@@ -46,8 +46,8 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
         bipod_03_F_blk = 1;
         bipod_03_F_oli = 1;
         bipod_01_F_khk = 1;
-        bipod_02_F_lush = 1; // Contact DLC
-        bipod_02_F_arid = 1; // Contact DLC
+        bipod_02_F_arid = 1; // Enoch
+        bipod_02_F_lush = 1; // Enoch
     };
 };
 
@@ -64,7 +64,7 @@ class asdg_PistolUnderRail: asdg_SlotInfo { // under rail for handguns
 class asdg_PistolOpticMount: asdg_OpticRail { // common handgun optic mount
     class compatibleItems {
         optic_MRD = 1;
-        optic_MRD_black = 1; // Contact DLC
+        optic_MRD_black = 1; // Enoch
     };
 };
 
@@ -74,13 +74,13 @@ class asdg_PistolOpticRail1913: asdg_OpticRail { // MIL-STD-1913 handgun optic r
     class compatibleItems {
         optic_Yorris = 1;
         optic_Holosight = 1;
-        optic_Holosight_smg = 1;
         optic_Holosight_blk_F = 1;
         optic_Holosight_khk_F = 1;
+        optic_Holosight_arid_F = 1; // Enoch
+        optic_Holosight_lush_F = 1; // Enoch
+        optic_Holosight_smg = 1;
         optic_Holosight_smg_blk_F = 1;
         optic_Holosight_smg_khk_F = 1;
-        optic_Holosight_lush_F = 1; // Contact DLC
-        optic_Holosight_arid_F = 1; // Contact DLC
     };
 };
 
@@ -96,29 +96,30 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_Arco = 1;
         optic_Arco_ghex_F = 1;
         optic_Arco_blk_F = 1;
-        optic_Arco_AK_blk_F = 1; // Contact DLC
-        optic_Arco_AK_lush_F = 1; // Contact DLC
-        optic_Arco_AK_arid_F = 1; // Contact DLC
-        optic_Arco_arid_F = 1; // Contact DLC
-        optic_Arco_lush_F = 1; // Contact DLC
+        optic_Arco_AK_arid_F = 1; // Enoch
+        optic_Arco_AK_blk_F = 1; // Enoch
+        optic_Arco_AK_lush_F = 1; // Enoch
+        optic_Arco_arid_F = 1; // Enoch
+        optic_Arco_lush_F = 1; // Enoch
         optic_aco = 1;
         optic_ACO_grn = 1;
         optic_aco_smg = 1;
         optic_ACO_grn_smg = 1;
+      //optic_Aco_broken = 1;
         optic_hamr = 1;
         optic_Hamr_khk_F = 1;
         optic_Holosight = 1;
-        optic_Holosight_smg = 1;
         optic_Holosight_blk_F = 1;
         optic_Holosight_khk_F = 1;
+        optic_Holosight_arid_F = 1; // Enoch
+        optic_Holosight_lush_F = 1; // Enoch
+        optic_Holosight_smg = 1;
         optic_Holosight_smg_blk_F = 1;
         optic_Holosight_smg_khk_F = 1;
-        optic_Holosight_arid_F = 1; // Contact DLC
-        optic_Holosight_lush_F = 1; // Contact DLC
         optic_DMS = 1;
         optic_DMS_ghex_F = 1;
-        optic_DMS_weathered_F = 1; // Contact DLC
-        optic_DMS_weathered_Kir_F = 1; // Contact DLC
+        optic_DMS_weathered_F = 1; // Enoch
+        optic_DMS_weathered_Kir_F = 1; // Enoch
         optic_LRPS = 1;
         optic_LRPS_ghex_F = 1;
         optic_LRPS_tna_F = 1;
@@ -196,6 +197,8 @@ class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount supp
         muzzle_snds_B = 1;
         muzzle_snds_B_khk_F = 1;
         muzzle_snds_B_snd_F = 1;
+        muzzle_snds_B_arid_F = 1;
+        muzzle_snds_B_lush_F = 1;
     };
 };
 
@@ -207,7 +210,7 @@ class asdg_MuzzleSlot_65: asdg_MuzzleSlot_762 { // for 6.5 weapons, mostly to de
         muzzle_snds_65_TI_blk_F = 1;
         muzzle_snds_65_TI_hex_F = 1;
         muzzle_snds_65_TI_ghex_F = 1;
-        muzzle_tma_65 = 1; // Contact DLC
+        muzzle_tma_65 = 1; // Enoch
     };
 };
 
