@@ -971,4 +971,34 @@ class CfgWeapons {
             };
         };
     };
+
+    // Contact DLC dummies
+    class ItemCore;
+    class acc_esd_01_flashlight: ItemCore {};
+    class muzzleflash_tma: ItemCore {};
+
+    class acc_flashlight;
+    class acc_flashlight_broken: acc_flashlight {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')"; // Inherits from a public base class. Downgrade to protected if Contact component is not loaded.
+    };
+
+    class acc_pointer_IR;
+    class acc_pointer_IR_broken: acc_pointer_IR {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+
+    class optic_Aco;
+    class optic_Aco_broken: optic_Aco {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+
+    class optic_Hamr;
+    class optic_Hamr_broken: optic_Hamr {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+
+    class optic_MRCO;
+    class optic_MRCO_broken: optic_MRCO {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
 };

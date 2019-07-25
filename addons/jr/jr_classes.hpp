@@ -28,7 +28,9 @@ class asdg_FrontSideRail: asdg_SlotInfo { // Laser / flashlight rail
     iconPicture = "\a3\weapons_f\Data\ui\attachment_side";
     class compatibleItems {
         acc_flashlight = 1;
+        acc_flashlight_broken = 1; // Contact
         acc_pointer_IR = 1;
+        acc_pointer_IR_broken = 1; // Contact
     };
 };
 
@@ -93,6 +95,7 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_SOS = 1;
         optic_SOS_khk_F = 1;
         optic_MRCO = 1;
+        optic_MRCO_broken = 1; // Contact
         optic_Arco = 1;
         optic_Arco_ghex_F = 1;
         optic_Arco_blk_F = 1;
@@ -103,11 +106,12 @@ class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to 
         optic_Arco_lush_F = 1; // Enoch
         optic_aco = 1;
         optic_ACO_grn = 1;
+        optic_Aco_broken = 1; // Contact
         optic_aco_smg = 1;
         optic_ACO_grn_smg = 1;
-      //optic_Aco_broken = 1;
         optic_hamr = 1;
         optic_Hamr_khk_F = 1;
+        optic_Hamr_broken = 1; // Contact
         optic_Holosight = 1;
         optic_Holosight_blk_F = 1;
         optic_Holosight_khk_F = 1;
