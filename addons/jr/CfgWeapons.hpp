@@ -433,34 +433,18 @@ class CfgWeapons {
 
     class arifle_MXC_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_65 {
-                iconPosition[] = {0,0.4};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.3};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.2,0.4};
-                iconScale = 0.25;
             };
         };
     };
 
     class arifle_MX_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_65 {
-                iconPosition[] = {0,0.45};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.35};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.2,0.45};
-                iconScale = 0.25;
             };
             class UnderBarrelSlot: asdg_UnderSlot {
                 iconPosition[] = {0.2,0.7};
@@ -471,34 +455,18 @@ class CfgWeapons {
 
     class arifle_MX_GL_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_65 {
-                iconPosition[] = {0,0.45};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.35};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.2,0.45};
-                iconScale = 0.25;
             };
         };
     };
 
     class arifle_MX_SW_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_65 {
-                iconPosition[] = {0,0.45};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.35};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.2,0.45};
-                iconScale = 0.25;
             };
             class UnderBarrelSlot: asdg_UnderSlot {
                 iconPosition[] = {0.2,0.7};
@@ -509,17 +477,9 @@ class CfgWeapons {
 
     class arifle_MXM_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_65 {
-                iconPosition[] = {0,0.4};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.35};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.2,0.45};
-                iconScale = 0.25;
             };
             class UnderBarrelSlot: asdg_UnderSlot {
                 iconPosition[] = {0.2,0.7};
@@ -694,19 +654,6 @@ class CfgWeapons {
             class CowsSlot: asdg_OpticRail1913 {
                 iconPosition[] = {0.5,0.25};
                 iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.3,0.35};
-                iconScale = 0.2;
-            };
-        };
-    };
-
-    class arifle_AK12_F: arifle_AK12_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            class UnderBarrelSlot: asdg_UnderSlot {
-                iconPosition[] = {0.35,0.7};
-                iconScale = 0.3;
             };
         };
     };
@@ -931,41 +878,41 @@ class CfgWeapons {
         model = "\a3\weapons_f\acc\acca_snds_338_green_F";
     };
 
-    class SMG_03_TR_BASE : Rifle_Base_F {
+    class SMG_03_TR_BASE: Rifle_Base_F {
         class WeaponSlotsInfo;
     };
-    class SMG_03C_BASE : SMG_03_TR_BASE {};
-    class SMG_03_TR_black : SMG_03_TR_BASE {
-        class WeaponSlotsInfo : WeaponSlotsInfo {
-            class CowsSlot : asdg_OpticRail1913_short {
+    class SMG_03C_BASE: SMG_03_TR_BASE {};
+    class SMG_03_TR_black: SMG_03_TR_BASE {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class CowsSlot: asdg_OpticRail1913_short {
                 iconPosition[] = {0.4, 0.3};
                 iconScale = 0.2;
             };
-            class PointerSlot : asdg_FrontSideRail {
+            class PointerSlot: asdg_FrontSideRail {
                 iconPosition[] = {0.33, 0.37};
                 iconScale = 0.25;
             };
         };
     };
-    class SMG_03_TR_hex : SMG_03_TR_BASE {
-        class WeaponSlotsInfo : WeaponSlotsInfo {
-            class CowsSlot : asdg_OpticRail1913_short {
+    class SMG_03_TR_hex: SMG_03_TR_BASE {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class CowsSlot: asdg_OpticRail1913_short {
                 iconPosition[] = {0.4, 0.3};
                 iconScale = 0.2;
             };
-            class PointerSlot : asdg_FrontSideRail {
+            class PointerSlot: asdg_FrontSideRail {
                 iconPosition[] = {0.33, 0.37};
                 iconScale = 0.25;
             };
         };
     };
-    class SMG_03C_TR_black : SMG_03C_BASE {
-        class WeaponSlotsInfo : WeaponSlotsInfo {
-            class CowsSlot : asdg_OpticRail1913_short {
+    class SMG_03C_TR_black: SMG_03C_BASE {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class CowsSlot: asdg_OpticRail1913_short {
                 iconPosition[] = {0.4, 0.3};
                 iconScale = 0.2;
             };
-            class PointerSlot : asdg_FrontSideRail {
+            class PointerSlot: asdg_FrontSideRail {
                 iconPosition[] = {0.33, 0.37};
                 iconScale = 0.25;
             };
