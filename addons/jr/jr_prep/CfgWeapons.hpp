@@ -91,15 +91,31 @@ class CfgWeapons {
         };
     };
 
-    class arifle_MXM_F: arifle_MX_Base_F {
+    class arifle_MX_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             delete MuzzleSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_MX_GL_F: arifle_MX_Base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete PointerSlot;
         };
     };
 
     class arifle_MX_SW_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             delete MuzzleSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_MXM_F: arifle_MX_Base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete MuzzleSlot;
+            delete PointerSlot;
         };
     };
 
@@ -178,6 +194,12 @@ class CfgWeapons {
             delete MuzzleSlot;
             delete CowsSlot;
             delete PointerSlot;
+        };
+    };
+
+    class arifle_AK12_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete UnderBarrelSlot;
         };
     };
 
