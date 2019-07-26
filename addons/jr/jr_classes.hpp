@@ -201,8 +201,8 @@ class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount supp
         muzzle_snds_B = 1;
         muzzle_snds_B_khk_F = 1;
         muzzle_snds_B_snd_F = 1;
-        muzzle_snds_B_arid_F = 1;
-        muzzle_snds_B_lush_F = 1;
+        muzzle_snds_B_arid_F = 1; // Enoch
+        muzzle_snds_B_lush_F = 1; // Enoch
     };
 };
 
