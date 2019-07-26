@@ -445,10 +445,6 @@ class CfgWeapons {
 
     class arifle_TRG21_F: Tavor_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_556 {
-                iconPosition[] = {0,0.4};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913_short {
                 iconPosition[] = {0.45,0.28};
                 iconScale = 0.2;
@@ -462,10 +458,6 @@ class CfgWeapons {
 
     class arifle_TRG20_F: Tavor_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_556 {
-                iconPosition[] = {0.1,0.4};
-                iconScale = 0.2;
-            };
             class CowsSlot: asdg_OpticRail1913_short {
                 iconPosition[] = {0.45,0.28};
                 iconScale = 0.2;
@@ -592,18 +584,58 @@ class CfgWeapons {
     };
 */
     class arifle_AK12_base_F: Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
+
+    class arifle_AK12_F: arifle_AK12_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            class MuzzleSlot: asdg_MuzzleSlot_762R {
-                iconPosition[] = {0,0.35};
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
                 iconScale = 0.2;
-                class compatibleItems: compatibleItems {
-                    muzzle_snds_B = 1;
-                    muzzle_snds_B_khk_F = 1;
-                    muzzle_snds_B_snd_F = 1;
-                };
             };
-            class CowsSlot: asdg_OpticRail1913 {
-                iconPosition[] = {0.5,0.25};
+        };
+    };
+
+    class arifle_AK12_lush_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class arifle_AK12_arid_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class arifle_AK12_GL_base_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class arifle_AK12U_base_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
+                iconScale = 0.2;
+            };
+        };
+    };
+
+    class arifle_RPK12_base_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class PointerSlot: asdg_FrontSideRail {
+                iconPosition[] = {0.3,0.35};
                 iconScale = 0.2;
             };
         };

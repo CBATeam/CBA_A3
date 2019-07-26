@@ -123,9 +123,18 @@ class CfgWeapons {
     };
 */
     class arifle_AK12_base_F: Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
+
+    class arifle_AK12U_base_F: arifle_AK12_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_RPK12_base_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete PointerSlot;
         };
     };
 
