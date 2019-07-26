@@ -73,16 +73,10 @@ clearWeaponCargoGlobal _container;
     // weaponsItems magazineGL does not exist if not loaded (not even as empty array)
     if (count _x < 7) then {
         _bipod = _magazineGL;
-        _magazineGL = "";
+        _magazineGL = [];
     };
 
-    // Some weapons don't have non-preset parents
-    private _weaponNonPreset = [_weapon] call CBA_fnc_getNonPresetClass;
-    if (_weaponNonPreset == "") then {
-        _weaponNonPreset = _weapon;
-    };
-
-    if (_count != 0 && {_weapon == _item || _weaponNonPreset == _item}) then {
+    if (_count != 0 && {_weapon == _item}) then {
         // Process removal
         _count = _count - 1;
 
@@ -103,36 +97,14 @@ clearWeaponCargoGlobal _container;
             };
         };
     } else {
-        _container addWeaponCargoGlobal [_weaponNonPreset, 1];
-
-        // If weapon does not have a non-preset parent, only add attachments that were custom added
-        // Removed attachments cannot be handled (engine limitation) and will be readded due to having to readd preset weapon
-        private _presetAttachments = [];
-        if (_weaponNonPreset == _weapon) then {
-            _presetAttachments = _weapon call CBA_fnc_weaponComponents;
-        };
-        if !(toLower _muzzle in _presetAttachments) then {
-            _container addItemCargoGlobal [_muzzle, 1];
-        };
-        if !(toLower _pointer in _presetAttachments) then {
-            _container addItemCargoGlobal [_pointer, 1];
-        };
-        if !(toLower _optic in _presetAttachments) then {
-            _container addItemCargoGlobal [_optic, 1];
-        };
-        if !(toLower _bipod in _presetAttachments) then {
-            _container addItemCargoGlobal [_bipod, 1];
-        };
-
-        _magazine params [["_magazineClass", ""], ["_magazineAmmoCount", 0]];
-        if (_magazineClass != "") then {
-            _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmoCount];
-        };
-
-        _magazineGL params [["_magazineGLClass", ""], ["_magazineGLAmmoCount", 0]];
-        if (_magazineGLClass != "") then {
-            _container addMagazineAmmoCargo [_magazineGLClass, 1, _magazineGLAmmoCount];
-        };
+        _container addWeaponWithAttachmentsCargoGlobal [
+            [
+                _weapon,
+                _muzzle, _pointer, _optic,
+                _magazine, _magazineGL,
+                _bipod
+            ], 1
+        ];
     };
 } forEach _weaponsItemsCargo;
 
