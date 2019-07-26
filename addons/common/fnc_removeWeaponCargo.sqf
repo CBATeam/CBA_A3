@@ -76,7 +76,13 @@ clearWeaponCargoGlobal _container;
         _magazineGL = [];
     };
 
-    if (_count != 0 && {_weapon == _item}) then {
+    // Some weapons don't have non-preset parents
+    private _weaponNonPreset = [_weapon] call CBA_fnc_getNonPresetClass;
+    if (_weaponNonPreset == "") then {
+        _weaponNonPreset = _weapon;
+    };
+
+    if (_count != 0 && {_weapon == _item || _weaponNonPreset == _item}) then {
         // Process removal
         _count = _count - 1;
 
@@ -99,7 +105,7 @@ clearWeaponCargoGlobal _container;
     } else {
         _container addWeaponWithAttachmentsCargoGlobal [
             [
-                _weapon,
+                _weaponNonPreset,
                 _muzzle, _pointer, _optic,
                 _magazine, _magazineGL,
                 _bipod
