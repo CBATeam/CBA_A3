@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Legacy_JR">
+        <Key ID="STR_CBA_Legacy_JR_Component">
+            <English>Community Base Addons - Legacy Joint Rails</English>
+            <German>Community Base Addons - Legacy-Joint Rails</German>
+        </Key>
+    </Package>
+</Project>

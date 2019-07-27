@@ -24,5 +24,5 @@ class CfgPatches {
 };
 
 #include "jr_classes.hpp"
-#include "cfgweapons.hpp"
+#include "CfgWeapons.hpp"
 #include "CfgFunctions.hpp"
