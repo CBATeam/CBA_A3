@@ -62,7 +62,6 @@ class CfgWeapons {
         };
     };
 
-//////////
     class arifle_AK12_base_F: Rifle_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             delete MuzzleSlot;
@@ -129,17 +128,6 @@ class CfgWeapons {
             delete CowsSlot;
         };
     };
-
-//////////
-
-
-
-
-
-
-
-
-
 
     class LMG_Mk200_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
