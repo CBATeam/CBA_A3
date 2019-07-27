@@ -64,7 +64,6 @@ class CfgWeapons {
 
     class LMG_Mk200_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
             delete CowsSlot;
             delete PointerSlot;
             delete UnderBarrelSlot;
@@ -85,57 +84,7 @@ class CfgWeapons {
 
     class arifle_MXC_F: arifle_MX_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
             delete CowsSlot;
-            delete PointerSlot;
-        };
-    };
-
-    class arifle_MXM_F: arifle_MX_Base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-        };
-    };
-
-    class arifle_MX_SW_F: arifle_MX_Base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-        };
-    };
-
-    class arifle_Katiba_Base_F: Rifle_Base_F {
-        class WeaponSlotsInfo;
-    };
-
-    class arifle_Katiba_C_F: arifle_Katiba_Base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-        };
-    };
-
-    class mk20_base_F: Rifle_Base_F {
-        class WeaponSlotsInfo;
-    };
-
-    class arifle_Mk20C_F: mk20_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-        };
-    };
-
-    class arifle_Mk20_GL_F: mk20_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-        };
-    };
-
-    class Tavor_base_F: Rifle_Base_F {
-        class WeaponSlotsInfo;
-    };
-
-    class arifle_TRG20_F: Tavor_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
         };
     };
 
@@ -174,9 +123,17 @@ class CfgWeapons {
     };
 */
     class arifle_AK12_base_F: Rifle_Base_F {
+        class WeaponSlotsInfo;
+    };
+
+    class arifle_AK12U_base_F: arifle_AK12_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
-            delete MuzzleSlot;
-            delete CowsSlot;
+            delete PointerSlot;
+        };
+    };
+
+    class arifle_RPK12_base_F: arifle_AK12_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
             delete PointerSlot;
         };
     };
