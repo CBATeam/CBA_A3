@@ -222,25 +222,25 @@ class CfgMusic
     class LeadTrack01_F_Bootcamp
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "bootcamp"};
     };
     class LeadTrack01b_F_Bootcamp
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "bootcamp"};
     };
     class LeadTrack02_F_Bootcamp
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "bootcamp"};
     };
     class LeadTrack03_F_Bootcamp
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "bootcamp"};
     };
     
@@ -250,73 +250,73 @@ class CfgMusic
     class LeadTrack01_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class LeadTrack02_F_EPA
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epa"};
     };
     class LeadTrack02a_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class LeadTrack02b_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class LeadTrack03_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class LeadTrack03a_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack01_F_EPA
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack01a_F_EPA
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack02_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack02a_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack03_F_EPA
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epa"};
     };
     class EventTrack03a_F_EPA
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epa"};
     };
     /* ----------------------------------------------
@@ -325,31 +325,31 @@ class CfgMusic
     class LeadTrack01_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack01a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack02_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack02a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack02b_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack03_F_EPB
@@ -361,25 +361,25 @@ class CfgMusic
     class LeadTrack03a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class LeadTrack04_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class EventTrack01_F_EPB
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epb"};
     };
     class EventTrack01a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class EventTrack02_F_EPB
@@ -391,7 +391,7 @@ class CfgMusic
     class EventTrack02a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class EventTrack03_F_EPB
@@ -409,13 +409,13 @@ class CfgMusic
     class EventTrack04a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class EventTrack03a_F_EPB
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epb"};
     };
     class ambientTrack01_F_EPB
@@ -436,13 +436,13 @@ class CfgMusic
     class LeadTrack01_F_EPC
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epc"};
     };
     class LeadTrack02_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class LeadTrack03_F_EPC
@@ -454,25 +454,25 @@ class CfgMusic
     class LeadTrack04_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class LeadTrack05_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class LeadTrack06_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class LeadTrack06b_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class EventTrack01_F_EPC
@@ -484,19 +484,19 @@ class CfgMusic
     class EventTrack02_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class EventTrack02b_F_EPC
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class EventTrack03_F_EPC
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epc"};
     };
     class BackgroundTrack01_F_EPC
@@ -508,13 +508,13 @@ class CfgMusic
     class BackgroundTrack02_F_EPC
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epc"};
     };
     class BackgroundTrack03_F_EPC
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "epc"};
     };
     class BackgroundTrack04_F_EPC
@@ -526,25 +526,25 @@ class CfgMusic
     class C_EA_RadioBroadcast1
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class C_EA_RadioBroadcast2
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class C_EA_RadioMusic1
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     class C_EA_RadioMusic2
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "epc"};
     };
     /* ----------------------------------------------
@@ -553,7 +553,7 @@ class CfgMusic
     class LeadTrack01_F_Heli
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "heli"};
     };
     /* ----------------------------------------------
@@ -562,19 +562,19 @@ class CfgMusic
     class LeadTrack01_F_Mark
     {
         type = "soundtrack";
-        theme = ""action"";
+        theme = "action";
         tags[] = {"bis", "lead", "mark"};
     };
     class LeadTrack02_F_Mark
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "mark"};
     };
     class LeadTrack03_F_Mark
     {
         type = "soundtrack";
-        theme = ""calm"";
+        theme = "calm";
         tags[] = {"bis", "lead", "mark"};
     };
     /* ----------------------------------------------
