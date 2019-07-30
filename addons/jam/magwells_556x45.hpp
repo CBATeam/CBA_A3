@@ -1,6 +1,9 @@
+    class CBA_556x45_AK {};             // AK mags for 5.56 AK type rifles, AK-101, AK-102, etc.
+    class CBA_556x45_RPK {};            // 45rnd RPK mags for 5.56 RPK-201
     class CBA_556x45_FAMAS {};          // FAMAS F1
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
+    class CBA_556x45_M21 {};            // Zastava M21
 
     class CBA_556x45_MINIMI {
         BI_boxes[] = {
@@ -13,6 +16,7 @@
 
     class CBA_556x45_TYPE97 {};         // QBZ-97 Stick Mags
     class CBA_556x45_TYPE97_XL {};      // QBB-97 LSW Drums
+    class CBA_556x45_SCAR_EGLM {};      // SCAR-L with EGLM/FN40GL/Mk 13 Mod 0 grenage launcher (This extends the length of the magwell and prevents mags that are too short or wide from being used)
     class CBA_556x45_SG550 {};
 
     class CBA_556x45_STANAG {           // STANAG mags, standard length, including small drums

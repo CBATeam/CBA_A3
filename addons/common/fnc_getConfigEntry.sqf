@@ -9,16 +9,16 @@ Description:
     supplied default value.
 
 Parameters:
-    _configEntry - Entry to get value of [Config]
-    _entryType - "text", "number" or "array" [String]
-    _defaultValue - Value to return if config entry unavailable [Any]
+    _configEntry  - Entry to get value of <CONFIG>
+    _entryType    - "STRING", "NUMBER" or "ARRAY" <STRING>
+    _defaultValue - Value to return if config entry unavailable <ANY>
 
 Returns:
-    Value found [String, Number or Array]
+    Value found <STRING, NUMBER or ARRAY>
 
 Examples:
     (begin example)
-        [configFile >> "CfgJellies" >> "Wobbliness", "number", 0] call _f
+        [configFile >> "CfgJellies" >> "Wobbliness", "NUMBER", 0] call CBA_fnc_getConfigEntry
     (end)
 
 Author:
@@ -28,24 +28,28 @@ SCRIPT(getConfigEntry);
 
 params ["_configEntry", "_entryType", "_defaultValue"];
 
-private _r = _defaultValue;
-
-switch (toLower _entryType) do {
-    case "text": {
-        if (isText _configEntry) then {
-            _r = getText _configEntry;
-        };
-    };
-    case "array": {
-        if (isArray _configEntry) then {
-            _r = getArray _configEntry;
-        };
-    };
-    case "number": {
-        if (isNumber _configEntry) then {
-            _r = getNumber _configEntry;
-        };
+if (_entryType == "STRING" || _entryType == "TEXT") exitWith {
+    if (isText _configEntry) then {
+        getText _configEntry // return
+    } else {
+        _defaultValue // return
     };
 };
 
-_r
+if (_entryType == "ARRAY") exitWith {
+    if (isArray _configEntry) then {
+        getArray _configEntry // return
+    } else {
+        _defaultValue // return
+    };
+};
+
+if (_entryType == "NUMBER") exitWith {
+    if (isNumber _configEntry || {isText _configEntry}) then {
+        getNumber _configEntry // return
+    } else {
+        _defaultValue // return
+    };
+};
+
+_defaultValue

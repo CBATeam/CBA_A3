@@ -40,6 +40,16 @@ private _fnc_update = {
         // value determines which slot is linked to the lb entry
         _playerList lbSetValue [_playerList lbAdd _text, _value];
     };
+
+    // replace URL encoding
+    private _missionName = _display displayCtrl IDC_MPSETUP_NAME;
+
+    private _text = ctrlText _missionName;
+    with uiNamespace do {
+        _text = _text call CBA_fnc_decodeURL;
+    };
+
+    _missionName ctrlSetText _text;
 };
 
 _display setVariable [QFUNC(update), _fnc_update];

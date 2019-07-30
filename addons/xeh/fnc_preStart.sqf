@@ -65,4 +65,12 @@ with uiNamespace do {
             diag_log text format ["[XEH]: %1 does not support Extended Event Handlers! Addon: %2", _classname, _addon];
         };
     } forEach (true call CBA_fnc_supportMonitor);
+
+    // cache incompatible classes that are needed in preInit
+    GVAR(incompatibleClasses) = compileFinal str ([false, true] call CBA_fnc_supportMonitor);
+
+    // compile and cache configFile eventhandlers as they won't change from here on
+    GVAR(configFileEventHandlers) = compileFinal str (configFile call CBA_fnc_compileEventHandlers);
+
+    nil // needs return value [a3\functions_f\initfunctions.sqf Line 499]
 };

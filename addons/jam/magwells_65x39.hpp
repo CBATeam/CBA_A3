@@ -19,3 +19,10 @@
             "200Rnd_65x39_cased_Box_Tracer"
         };
     };
+
+    class CBA_65x39_Katiba {
+        BI_mags[] = {
+            "30Rnd_65x39_caseless_green",
+            "30Rnd_65x39_caseless_green_mag_Tracer"
+        };
+    };

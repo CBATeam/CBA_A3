@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 private _return = call {
-    #include "\a3\functions_f\Misc\fn_startLoadingScreen.sqf";
+    #include "\a3\functions_f\Misc\fn_startLoadingScreen.sqf"
 };
 
 isNil {

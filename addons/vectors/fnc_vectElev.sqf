@@ -19,7 +19,6 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vectElev.sqf";
 
 SCRIPT(vectElev);
 

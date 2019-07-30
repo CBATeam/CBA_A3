@@ -20,7 +20,6 @@ Examples:
 Author:
     Vigilante, courtesy by -=ACE=- of Simcentric
 ---------------------------------------------------------------------------- */
-scriptName "fnc_vect2Polar.sqf";
 
 SCRIPT(vect2Polar);
 

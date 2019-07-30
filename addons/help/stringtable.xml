@@ -12,14 +12,15 @@
             <Polish>Community Base Addons - Pomoc</Polish>
             <French>Community Base Addons - Aide</French>
             <Turkish>Community Base Addons - Yardım</Turkish>
+            <Italian>Community Base Addons - Aiuto</Italian>
         </Key>
-        <Key ID="STR_DN_CBA_HELP_KEYS">
+        <Key ID="STR_CBA_Help_Keys">
             <English>Keybindings</English>
             <German>Tastendruckzuweisung</German>
             <Spanish>Keybindings</Spanish>
             <Czech>Keybindings</Czech>
             <Russian>Назначения клавиш</Russian>
-            <Italian>Keybindings</Italian>
+            <Italian>Tasti</Italian>
             <Polish>Klawisze</Polish>
             <French>Raccourcis clavier</French>
             <Hungarian>Keybindings</Hungarian>
@@ -28,43 +29,13 @@
             <Chinesesimp>按键绑定</Chinesesimp>
             <Turkish>Klavye Tuşları</Turkish>
         </Key>
-        <Key ID="STR_DN_CBA_WEBSITE">
-            <English>Bugtracker</English>
-            <German>Bugtracker</German>
-            <Spanish>Bugtracker</Spanish>
-            <Czech>Bugtracker</Czech>
-            <Russian>Баг трэкер</Russian>
-            <Italian>Bugtracker</Italian>
-            <Polish>Zgłaszanie błędów</Polish>
-            <French>traqueur de bugs</French>
-            <Hungarian>Bugtracker</Hungarian>
-            <Japanese>バグトラッカー</Japanese>
-            <Chinese>臭蟲追蹤器</Chinese>
-            <Chinesesimp>臭虫追踪器</Chinesesimp>
-            <Turkish>Sorun Takibi</Turkish>
-        </Key>
-        <Key ID="STR_DN_CBA_WEBSITE_WIKI">
-            <English>Wiki (Documentation)</English>
-            <German>Wiki (Documentation)</German>
-            <Spanish>Wiki (Documentation)</Spanish>
-            <Czech>Wiki (Documentation)</Czech>
-            <Russian>Wiki (Документация)</Russian>
-            <Italian>Wiki (Documentation)</Italian>
-            <Polish>Wiki (dokumentacja)</Polish>
-            <French>Wiki (Documentation)</French>
-            <Hungarian>Wiki (Documentation)</Hungarian>
-            <Japanese>ウィキ (ドキュメント)</Japanese>
-            <Chinese>維基 (文件)</Chinese>
-            <Chinesesimp>维基 (文件)</Chinesesimp>
-            <Turkish>Wiki (Dökümantasyon)</Turkish>
-        </Key>
-        <Key ID="STR_DN_CBA_CREDITS">
+        <Key ID="STR_CBA_Credits">
             <English>Credits</English>
             <German>Credits</German>
             <Spanish>Credits</Spanish>
             <Czech>Credits</Czech>
             <Russian>Кредиты</Russian>
-            <Italian>Credits</Italian>
+            <Italian>Riconoscimenti</Italian>
             <Polish>Twórcy</Polish>
             <French>Credits</French>
             <Hungarian>Credits</Hungarian>
@@ -73,20 +44,20 @@
             <Chinesesimp>制作组</Chinesesimp>
             <Turkish>Yapımcılar</Turkish>
         </Key>
-        <Key ID="STR_DN_CBA_CREDITS_ADDONS">
-            <English>Credits - Addons</English>
-            <German>Credits - Addons</German>
-            <Spanish>Credits - Addons</Spanish>
-            <Czech>Credits - Addons</Czech>
-            <Russian>Кредиты - Дополнения</Russian>
-            <Italian>Credits - Addons</Italian>
-            <Polish>Twórcy - Addons</Polish>
-            <French>Credits - Addons</French>
-            <Hungarian>Credits - Addons</Hungarian>
-            <Japanese>クレジット - アドオン</Japanese>
-            <Chinese>製作組 - 模組</Chinese>
-            <Chinesesimp>制作组 - 模组</Chinesesimp>
-            <Turkish>Yapımcılar - Modüller</Turkish>
+        <Key ID="STR_CBA_Addons">
+            <English>Addons</English>
+            <German>Addons</German>
+            <Spanish>Addons</Spanish>
+            <Czech>Addons</Czech>
+            <Russian>Дополнения</Russian>
+            <Italian>Addons</Italian>
+            <Polish>Addons</Polish>
+            <French>Addons</French>
+            <Hungarian>Addons</Hungarian>
+            <Japanese>アドオン</Japanese>
+            <Chinese>模組</Chinese>
+            <Chinesesimp>模组</Chinesesimp>
+            <Turkish>Modüller</Turkish>
         </Key>
     </Package>
 </Project>

@@ -1,3 +1,10 @@
+    class CBA_762x51_1rnd {};       // 1 loose round of 7.62x51mm NATO
+    class CBA_762x51_2rnds {};      // 2 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_3rnds {};      // 3 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_4rnds {};      // 4 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_5rnds {};      // 5 loose rounds of 7.62x51mm NATO
+
+    class CBA_762x51_AICS {};       // AICS short action mag (5/10 rounds)
 
     class CBA_762x51_AR10 {};       // AR-10 standard mag (20 rounds)
     class CBA_762x51_AR10_L {};     // AR-10 long mag (25/30 rounds)
@@ -11,13 +18,9 @@
     class CBA_762x51_G3_L {};       // H&K G3 long mag (25/30 rounds)
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
-    class CBA_762x51_HK417 {        // H&K 417
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
-    class CBA_762x51_417_L {};      // H&K417 long mag (25/30 rounds)
-    class CBA_762x51_417_XL {};     // H&K417 drum mag (50 rounds)
+    class CBA_762x51_HK417 {};      // H&K 417
+    class CBA_762x51_HK417_L {};    // H&K417 long mag (25/30 rounds)
+    class CBA_762x51_HK417_XL {};   // H&K417 drum mag (50 rounds)
 
     class CBA_762x51_LINKS {        // M13 Links for M60, M240, MG3 (DM6/DM60)
         BI_belts[] = {
@@ -26,16 +29,20 @@
         };
     };
 
-    class CBA_762x51_M14 {          // M14
-        BI_mags[] = {
-            "20Rnd_762x51_Mag"
-        };
-    };
+    class CBA_762x51_M14 {};        // M14
     class CBA_762x51_M14_L {};      // M14 long mag (25/30 rounds)
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
     class CBA_762x51_MG3 {};        // MG3 DM1 link belts
+
+    class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62 mm magazines
+        BI_mags[] = {
+            "20Rnd_762x51_Mag"
+        };
+    };
+
     class CBA_762x51_SCAR {};       // SCAR-H
+    class CBA_762x51_SCAR_EGLM {};  // SCAR-H with EGLM/FN40GL/Mk 13 Mod 0 grenage launcher (This extends the length of the magwell and prevents mags that are too short or wide from being used)
     class CBA_762x51_SIGAMT {};     // SIG 510-4, AMT
 
     //Deprecated classes do not use

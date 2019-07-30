@@ -29,8 +29,11 @@ class CfgPatches {
             "cba_diagnostic",
             "cba_help",
             "cba_jr",
+            "cba_jam",
             "cba_ui",
-            "cba_versioning"
+            "cba_versioning",
+            "cba_optics",
+            "cba_disposable"
         };
         versionDesc = "C.B.A.";
         VERSION_CONFIG;

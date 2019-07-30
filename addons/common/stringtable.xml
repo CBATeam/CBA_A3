@@ -11,6 +11,7 @@
             <French>Community Base Addons - Composants communs</French>
             <Polish>Community Base Addons - Ogólne Komponenty</Polish>
             <Turkish>Community Base Addons - Ortak Bileşenler</Turkish>
+            <Italian>Community Base Addons - Componenti Comuni</Italian>
         </Key>
         <Key ID="STR_cba_common_need_mission_start">
             <English>You must first start a mission.</English>
@@ -18,6 +19,15 @@
             <French>Vous devez d'abord commencer une mission.</French>
             <Polish>Należy najpierw uruchomić misję.</Polish>
             <Turkish>Önce bir görev başlatmalısınız.</Turkish>
+            <Japanese>ミッションを開始しておく必要があります。</Japanese>
+            <Italian>Prima deve far partire una missione.</Italian>
+        </Key>
+        <Key ID="STR_cba_common_WeaponsCategory">
+            <English>CBA Weapons</English>
+            <German>CBA Waffen</German>
+            <Polish>CBA Bronie</Polish>
+            <Italian>Armi CBA</Italian>
+            <Japanese>CBA 武器</Japanese>
         </Key>
     </Package>
 </Project>

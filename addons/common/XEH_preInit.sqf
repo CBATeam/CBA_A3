@@ -47,10 +47,8 @@ call COMPILE_FILE(init_perFrameHandler);
 call COMPILE_FILE(init_delayLess);
 
 // Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
-private _addons = ("true" configClasses (configFile >> "CfgPatches")) apply {configName _x};
-
-activateAddons _addons;
-GVAR(addons) = _addons;
+GVAR(addons) = call (uiNamespace getVariable [QGVAR(addons), {[]}]);
+activateAddons GVAR(addons);
 
 // BWC
 #include "backwards_comp.sqf"

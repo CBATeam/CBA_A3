@@ -775,7 +775,7 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
+#define COMPILE_FILE2_CFG_SYS(var1) compile preprocessFileLineNumbers var1
 #define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
@@ -890,6 +890,39 @@ Author:
 #define SETVARMAIN SETVARMAINS(PREFIX)
 #define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
 
+/* -------------------------------------------
+Macro: PREP()
+
+Description:
+    Defines a function.
+
+    Full file path:
+        '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
+
+    Resulting function name:
+        'PREFIX_COMPONENT_<FNC>'
+
+    The PREP macro should be placed in a script run by a XEH preStart and XEH preInit event.
+
+    The PREP macro allows for CBA function caching, which drastically speeds up load times.
+    Beware though that function caching is enabled by default and as such to disable it, you need to
+    #define DISABLE_COMPILE_CACHE above your #include "script_components.hpp" include!
+
+    The function will be defined in ui and mission namespace. It can not be overwritten without
+    a mission restart.
+
+Parameters:
+    FUNCTION NAME - Name of the function, unquoted <STRING>
+
+Examples:
+    (begin example)
+        PREP(banana);
+        call FUNC(banana);
+    (end)
+
+Author:
+    dixon13
+ ------------------------------------------- */
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 
 #ifdef DISABLE_COMPILE_CACHE
@@ -898,13 +931,6 @@ Author:
 #else
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
-#endif
-
-#ifdef RECOMPILE
-    #undef RECOMPILE
-    #define RECOMPILE recompile = 1
-#else
-    #define RECOMPILE recompile = 0
 #endif
 
 /* -------------------------------------------
@@ -916,6 +942,7 @@ Description:
     Full file path in addons:
         '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
     Define 'RECOMPILE' to enable recompiling.
+    Define 'SKIP_FUNCTION_HEADER' to skip adding function header.
 
 Parameters:
     FUNCTION NAME - Name of the function, unquoted <STRING>
@@ -936,8 +963,22 @@ Examples:
 Author:
     dixon13, commy2
  ------------------------------------------- */
+#ifdef RECOMPILE
+    #undef RECOMPILE
+    #define RECOMPILE recompile = 1
+#else
+    #define RECOMPILE recompile = 0
+#endif
+// Set function header type: -1 - no header; 0 - default header; 1 - system header.
+#ifdef SKIP_FUNCTION_HEADER
+    #define CFGFUNCTION_HEADER headerType = -1
+#else
+    #define CFGFUNCTION_HEADER headerType = 0
+#endif
+
 #define PATHTO_FNC(func) class func {\
     file = QPATHTOF(DOUBLES(fnc,func).sqf);\
+    CFGFUNCTION_HEADER;\
     RECOMPILE;\
 }
 
@@ -1086,6 +1127,7 @@ Author:
 /* -------------------------------------------
 Macro: SCRIPT()
     Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+    Define 'SKIP_SCRIPT_NAME' to skip adding scriptName.
 
 Parameters:
     NAME - Name of script [Indentifier]
@@ -1098,8 +1140,11 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define SCRIPT(NAME) \
-    scriptName 'PREFIX\COMPONENT\NAME'
+#ifndef SKIP_SCRIPT_NAME
+    #define SCRIPT(NAME) scriptName 'PREFIX\COMPONENT\NAME'
+#else
+    #define SCRIPT(NAME) /* nope */
+#endif
 
 /* -------------------------------------------
 Macros: EXPLODE_n()
@@ -1707,7 +1752,8 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN serverCommandAvailable "#kick"
+#define IS_ADMIN_SYS(x) x##kick
+#define IS_ADMIN serverCommandAvailable 'IS_ADMIN_SYS(#)'
 
 /* -------------------------------------------
 Macro: IS_ADMIN_LOGGED
@@ -1727,7 +1773,8 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
+#define IS_ADMIN_LOGGED_SYS(x) x##shutdown
+#define IS_ADMIN_LOGGED serverCommandAvailable 'IS_ADMIN_LOGGED_SYS(#)'
 
 /* -------------------------------------------
 Macro: FILE_EXISTS

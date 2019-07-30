@@ -163,7 +163,10 @@
 #define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == 2)
 
 #define SANITIZE_PRIORITY(setting,priority,source) (call {\
-    private _priority = [0,1,2] select priority;\
+    private _priority = priority;\
+    if (_priority isEqualType false) then {\
+        _priority = parseNumber _priority;\
+    };\
     if (IS_GLOBAL_SETTING(setting) && {source != "mission"}) exitWith {_priority max 1};\
     if (IS_LOCAL_SETTING(setting)) exitWith {_priority min 0};\
     _priority\

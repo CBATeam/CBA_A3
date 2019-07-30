@@ -19,6 +19,7 @@ GVAR(waitUntilAndExecArray) = [];
 
 // per frame handler system
 [QFUNC(onFrame), {
+    SCRIPT(onFrame);
     private _tickTime = diag_tickTime;
     call FUNC(missionTimePFH);
 
@@ -103,6 +104,7 @@ if (isMultiplayer) then {
     if (isServer) then {
         // multiplayer server
         [QFUNC(missionTimePFH), {
+            SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
                 CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                 GVAR(lastTime) = time; // used to detect paused game
@@ -119,25 +121,37 @@ if (isMultiplayer) then {
 
         // multiplayer client
         0 spawn {
-            "CBA_missionTime" addPublicVariableEventHandler {
-                CBA_missionTime = _this select 1;
+            isNil {
+                private _fnc_init = {
+                    CBA_missionTime = _this select 1;
 
-                GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
+                    GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
 
-                [QFUNC(missionTimePFH), {
-                    if (time != GVAR(lastTime)) then {
-                        CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
-                        GVAR(lastTime) = time; // used to detect paused game
-                    };
+                    [QFUNC(missionTimePFH), {
+                        SCRIPT(missionTimePFH_client);
+                        if (time != GVAR(lastTime)) then {
+                            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                            GVAR(lastTime) = time; // used to detect paused game
+                        };
 
-                    GVAR(lastTickTime) = _tickTime;
-                }] call CBA_fnc_compileFinal;
+                        GVAR(lastTickTime) = _tickTime;
+                    }] call CBA_fnc_compileFinal;
+
+                };
+
+                "CBA_missionTime" addPublicVariableEventHandler _fnc_init;
+
+                if (CBA_missionTime != -1) then {
+                    WARNING_1("CBA_missionTime packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTime);
+                    [nil, CBA_missionTime] call _fnc_init;
+                };
             };
         };
     };
 } else {
     // single player
     [QFUNC(missionTimePFH), {
+        SCRIPT(missionTimePFH_sp);
         if (time != GVAR(lastTime)) then {
             CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
             GVAR(lastTime) = time; // used to detect paused game

@@ -7,14 +7,13 @@ class CfgPatches {
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
-        magazines[] = {};
-        ammo[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_main"};
+        requiredAddons[] = {"cba_common"};
         version = VERSION;
         authors[] = {"Robalo"};
     };
 };
 
+#include "CfgMagazines.hpp"
 #include "CfgMagazineWells.hpp"
 #include "CfgWeapons.hpp"

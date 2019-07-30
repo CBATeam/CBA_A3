@@ -223,7 +223,7 @@ class CfgVehicles {
     class Respawn_Sleeping_bag_brown_F: Land_Sleeping_bag_brown_F {
         XEH_ENABLED;
     };
-    
+
     class ReammoBox_F;
     class Land_RepairDepot_01_base_F: ReammoBox_F {
         XEH_ENABLED;
@@ -304,6 +304,92 @@ class CfgVehicles {
     // Encore
     class Snake_random_F;
     class Snake_vipera_random_F: Snake_random_F {
+        XEH_ENABLED;
+    };
+
+    // GM
+    class gm_AmmoBox_base: ReammoBox_F {
+        XEH_ENABLED;
+    };
+
+    // Enoch
+    class Land_PortableDesk_01_base_F;
+    class Land_PortableDesk_01_animated_base_F: Land_PortableDesk_01_base_F {
+        XEH_ENABLED;
+    };
+
+    class Car;
+    class SoundSetSource_01_base_F: Car {
+        XEH_DISABLED;
+    };
+
+    class DecontaminationSimulated_base_F;
+    class DeconShower_01_base_F: DecontaminationSimulated_base_F {
+        XEH_ENABLED;
+    };
+    class DeconShower_02_base_F: DecontaminationSimulated_base_F {
+        XEH_ENABLED;
+    };
+    class SCBACylinder_01_base_F: DecontaminationSimulated_base_F {
+        XEH_ENABLED;
+    };
+
+    // Contact
+    class VirtualAISquad: Logic {
+        XEH_ENABLED;
+    };
+
+    class Particle_Base_F: Thing {
+        XEH_ENABLED;
+    };
+
+    class Alien_Extractor_01_base_F: Items_base_F {}; // Class does not exist without optional Contact component. Recreate inheritance tree up to mandatory base class.
+    class Alien_Extractor_01_generic_base_F: Alien_Extractor_01_base_F {
+        XEH_ENABLED;
+    };
+
+    class ThingX;
+    class Alien_MatterBall_01_base_F: ThingX {
+        XEH_ENABLED;
+    };
+    class Alien_MatterBall_01_falling_F: Alien_MatterBall_01_base_F {
+        XEH_ENABLED;
+    };
+
+    class B_W_Soldier_F;
+    class B_W_Story_Protagonist_01_F: B_W_Soldier_F {
+        XEH_ENABLED;
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')"; // Inherits from a public base class. Downgrade to protected if Contact component is not loaded.
+    };
+    class B_W_Story_Major_01_F: B_W_Soldier_F {
+        XEH_ENABLED;
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+    class B_W_Story_Instructor_01_F: B_W_Soldier_F {
+        XEH_ENABLED;
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+    class B_W_Story_Soldier_01_F: B_W_Soldier_F {
+        XEH_ENABLED;
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+    class B_W_Story_Leader_01_F: B_W_Soldier_F {
+        XEH_ENABLED;
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
+    };
+
+    class O_R_Soldier_Base_F;
+    class O_R_Story_Capitan_01_F: O_R_Soldier_Base_F {
+        XEH_ENABLED;
+    };
+    class O_R_Story_TL_01_F: O_R_Soldier_Base_F {
+        XEH_ENABLED;
+    };
+
+    class C_Story_Scientist_01_F: Civilian_F {
+        XEH_ENABLED;
+    };
+    class C_Story_Scientist_02_F: Civilian_F {
         XEH_ENABLED;
     };
 };

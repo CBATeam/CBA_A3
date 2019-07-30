@@ -58,7 +58,7 @@ private _statics = _position nearObjects ["StaticWeapon", _radius];
 private _buildings = _position nearObjects ["Building", _radius];
 
 // Filter out occupied statics
-_statics = _statics select {(_x emptyPositions "Gunner") > 0};
+_statics = _statics select {locked _x != 2 && {(_x emptyPositions "Gunner") > 0}};
 
 // Filter out buildings below the size threshold (and store positions for later use)
 _buildings = _buildings select {

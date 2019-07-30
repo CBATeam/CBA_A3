@@ -5,7 +5,7 @@ branches:
 dist: trusty
 language: python
 python:
-  - '3.5'
+  - '3.6'
 install: true
 before_script:
   - if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then

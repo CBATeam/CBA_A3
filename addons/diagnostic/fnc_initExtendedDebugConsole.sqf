@@ -159,6 +159,8 @@ FUNC(logStatement) = {
     private _prevStatements = profileNamespace getVariable [QGVAR(statements), []];
 
     if !((_prevStatements param [0, ""]) isEqualTo _statement) then {
+        _prevStatements deleteAt (_prevStatements find _statement);
+
         // pushFront
         reverse _prevStatements;
         _prevStatements pushBack _statement;

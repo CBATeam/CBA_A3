@@ -16,8 +16,9 @@
         };
     };
 
-    class CBA_40mm_EGLM {};     // for longer grenades that can only fit side breech-loading
-    class CBA_40mm_GP {};       // GP-25, GP-30
+    class CBA_40mm_EGLM {};         // for longer grenades that can only fit side breech-loading
+    class CBA_40mm_GP {};           // single grenade for GP-25/GP-30/GP-34
+    class CBA_40mm_GP_6rnds {};     // 6 loose GP type grenades for RG-6/6G30
 
     class CBA_40mm_M203 {
         BI_grenades[] = {
@@ -36,3 +37,4 @@
             "UGL_FlareCIR_F"
         };
     };
+    class CBA_40mm_M203_6rnds {};   // 6 loose M203 type grenades for M32 MGL

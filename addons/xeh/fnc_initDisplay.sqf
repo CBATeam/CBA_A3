@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 call {
-    #include "\a3\functions_f\GUI\fn_initDisplay.sqf";
+    #include "\a3\functions_f\GUI\fn_initDisplay.sqf"
 };
 
 params [["_event", "", [""]], ["_args", []], ["_className", "", [""]]];
@@ -15,5 +15,5 @@ if !(_event isEqualTo "") then {
             private ["_event", "_className"]; // prevent these variables from being overwritten
             _args call compile getText _x;
         } forEach configProperties [_x >> XEH_FORMAT_CONFIG_NAME(_event) >> _className, "isText _x"];
-    } forEach XEH_MAIN_CONFIGS;
+    } forEach [configFile, campaignConfigFile, missionConfigFile];
 };

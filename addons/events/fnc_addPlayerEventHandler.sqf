@@ -124,18 +124,23 @@ if (_id != -1) then {
         GVAR(oldLoadout) = [];
         GVAR(oldLoadoutNoAmmo) = [];
         GVAR(oldVehicle) = objNull;
+        GVAR(inVehicle) = false;
         GVAR(oldTurret) = [];
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
         GVAR(oldFeatureCamera) = "";
         GVAR(oldVisibleMap) = false;
+        GVAR(oldUAVControl) = [];
+        GVAR(controlledEntity) = objNull;
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
-            private _player = call CBA_fnc_currentUnit;
+            SCRIPT(playerEH_EachFrame);
+            private _player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
             if !(_player isEqualTo GVAR(oldUnit)) then {
                 [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                 GVAR(oldUnit) = _player;
+                GVAR(oldUAVControl) = []; // force update
             };
 
             private _data = group _player;
@@ -181,15 +186,41 @@ if (_id != -1) then {
             if !(_data isEqualTo GVAR(oldVehicle)) then {
                 GVAR(oldVehicle) = _data;
                 [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
+                GVAR(inVehicle) = _data != _player;
+                if (!GVAR(inVehicle)) then {
+                    _data = _player call CBA_fnc_turretPath;
+                    if !(_data isEqualTo GVAR(oldTurret)) then {
+                        GVAR(oldTurret) = _data;
+                        [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
+                    };
+                };
+            };
+            if (GVAR(inVehicle)) then {
+                _data = _player call CBA_fnc_turretPath;
+                if !(_data isEqualTo GVAR(oldTurret)) then {
+                    GVAR(oldTurret) = _data;
+                    [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
+                };
             };
 
-            _data = _player call CBA_fnc_turretPath;
-            if !(_data isEqualTo GVAR(oldTurret)) then {
-                GVAR(oldTurret) = _data;
-                [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
+            // handle controlling UAV, UAV entity needed for visionMode
+            _data = UAVControl getConnectedUAV _player;
+            if !(_data isEqualTo GVAR(oldUAVControl)) then {
+                GVAR(oldUAVControl) = _data;
+
+                private _role = _data param [(_data find _player) + 1, ""];
+                if (_role isEqualTo "DRIVER") exitWith {
+                    GVAR(controlledEntity) = driver getConnectedUAV _player;
+                };
+
+                if (_role isEqualTo "GUNNER") exitWith {
+                    GVAR(controlledEntity) = gunner getConnectedUAV _player;
+                };
+
+                GVAR(controlledEntity) = _player;
             };
 
-            _data = currentVisionMode _player;
+            _data = currentVisionMode GVAR(controlledEntity);
             if !(_data isEqualTo GVAR(oldVisionMode)) then {
                 GVAR(oldVisionMode) = _data;
                 [QGVAR(visionModeEvent), [_player, _data]] call CBA_fnc_localEvent;
@@ -204,6 +235,7 @@ if (_id != -1) then {
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["Map", {call FUNC(playerEH_Map)}];
         [QFUNC(playerEH_Map), {
+            SCRIPT(playerEH_Map);
             params ["_data"]; // visibleMap is updated one frame later
             if !(_data isEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
@@ -224,6 +256,7 @@ if (_id != -1) then {
         };
 
         GVAR(playerEHInfo) pushBack ([{
+            SCRIPT(playerEH_featureCamera);
             private _data = call CBA_fnc_getActiveFeatureCamera;
             if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
                 GVAR(oldFeatureCamera) = _data;
