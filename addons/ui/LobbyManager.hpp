@@ -1,90 +1,109 @@
-#define WIDTH (24.1 * GUI_GRID_W)
-#define HEIGHT (22.2 * GUI_GRID_H)
-
-//class RscButton;
-
-class GVAR(GroupManager) {
+class GVAR(LobbyManager) {
     idd = -1;
+    enableDisplay = 1;
     movingEnable = 1;
-
+    class controlsBackground {
+        class Disable: ctrlStaticBackgroundDisable {};
+        class DisableTiles: ctrlStaticBackgroundDisableTiles {};
+    };
     class controls {
-        class Presets: RscControlsGroup {
-            x = 0.5 - WIDTH/2;
-            y = 0.5 - HEIGHT/2;
-            w = WIDTH;
-            h = HEIGHT;
-
-            class controls {
-                class Title: RscTitle {
-                    colorBackground[] = {
-                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
-                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
-                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
-                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
-                    };
-                    moving = 1;
-                    text = CSTRING(LobbyManager);
-                    x = 0 * GUI_GRID_W;
-                    y = 0 * GUI_GRID_H;
-                    w = WIDTH;
-                    h = 1 * GUI_GRID_H;
-                };
-                class Background: RscText {
-                    colorBackground[] = {0,0,0,0.8};
-                    x = 0 * GUI_GRID_W;
-                    y = 1.1 * GUI_GRID_H;
-                    w = WIDTH;
-                    h = 20 * GUI_GRID_H;
-                };
-                class Slots: RscListBox {
-                    idc = IDC_LM_SLOTS;
-                    x = 0 * GUI_GRID_W;
-                    y = 1.1 * GUI_GRID_H;
-                    w = 12 * GUI_GRID_W;
-                    h = 19.9 * GUI_GRID_H;
-                };
-                class ButtonUp: ctrlButtonPicture {//RscButton {//ctrlButtonPicture {
-                    idc = IDC_LM_MOVE_UP;
-                    text = QPATHTOF(arrow_up_ca.paa);
-                    x = 12.1 * GUI_GRID_W;
-                    y = 1.1 * GUI_GRID_H;
-                    w = 1 * GUI_GRID_W;
-                    h = 1 * GUI_GRID_H;
-                };
-                class ButtonDown: ButtonUp {
-                    idc = IDC_LM_MOVE_DOWN;
-                    text = QPATHTOF(arrow_down_ca.paa);
-                    y = 2.1 * GUI_GRID_H;
-                };
-                class Name: RscText {
-                    text = "$STR_3DEN_OBJECT_ATTRIBUTE_DESCRIPTION_DISPLAYNAME";
-                    tooltip = "$STR_3DEN_OBJECT_ATTRIBUTE_DESCRIPTION_TOOLTIP";
-                    sizeEx = 0.7 * GUI_GRID_H;
-                    x = 12.1 * GUI_GRID_W;
-                    y = 3.5 * GUI_GRID_H;
-                    w = 12 * GUI_GRID_W;
-                    h = 0.7 * GUI_GRID_H;
-                };
-                class ValueName: RscEdit {
-                    idc = IDC_LM_NAME;
-                    x = 12.1 * GUI_GRID_W;
-                    y = 4.2 * GUI_GRID_H;
-                    w = 12 * GUI_GRID_W;
-                    h = 1 * GUI_GRID_H;
-                };
-                class ButtonOK: RscButtonMenuOK {
-                    x = WIDTH - 10.1 * GUI_GRID_W;
-                    y = HEIGHT - 1 * GUI_GRID_H;
-                    w = 5 * GUI_GRID_W;
-                    h = 1 * GUI_GRID_H;
-                };
-                class ButtonCancel: RscButtonMenuCancel {
-                    x = WIDTH - 5 * GUI_GRID_W;
-                    y = HEIGHT - 1 * GUI_GRID_H;
-                    w = 5 * GUI_GRID_W;
-                    h = 1 * GUI_GRID_H;
-                };
-            };
+        class Background: ctrlStaticBackground {
+            x = (getResolution select 2) * 0.5 * pixelW - (140/2) * GRID_3DEN_W;
+            y = 0.5 - (120/2 - 5) * GRID_3DEN_H;
+            w = 140 * GRID_3DEN_W;
+            h = (120 - 10) * GRID_3DEN_H;
+        };
+        class BackgroundButtons: ctrlStaticFooter {
+            x = (getResolution select 2) * 0.5 * pixelW - (140/2) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 2) * GRID_3DEN_H;
+            w = 140 * GRID_3DEN_W;
+            h = 7 * GRID_3DEN_H;
+        };
+        class Title: ctrlStaticTitle {
+            text = CSTRING(LobbyManager);
+            x = (getResolution select 2) * 0.5 * pixelW - (140/2) * GRID_3DEN_W;
+            y = 0.5 - (120/2 - 5) * GRID_3DEN_H;
+            w = 140 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+        };
+        class Slots: ctrlTree {
+            idc = IDC_LM_SLOTS;
+            x = (getResolution select 2) * 0.5 * pixelW - (140/2 - 1) * GRID_3DEN_W;
+            y = 0.5 - (120/2 - 10 - 1) * GRID_3DEN_H;
+            w = 88 * GRID_3DEN_W;
+            h = (120 - 10 - 5 - 7 - 2) * GRID_3DEN_H;
+            sizeEx = 3.96 * (1 / (getResolution select 3)) * pixelGrid * 0.5;
+            colorBackground[] = {0, 0, 0, 0.3};
+            disableKeyboardSearch = 1;
+        };
+        class CallsignLabel: ctrlStatic {
+            text = "$STR_3DEN_Group_Attribute_Callsign_displayName";
+            tooltip = "$STR_3DEN_Group_Attribute_Callsign_tooltip";
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50) * GRID_3DEN_W;
+            y = 0.5 - (120/2 - 10 - 1) * GRID_3DEN_H;
+            w = 49 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+        };
+        class Callsign: ctrlEdit {
+            idc = IDC_LM_CALLSIGN;
+            onLoad = QUOTE((_this select 0) ctrlEnable false);
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50) * GRID_3DEN_W;
+            y = 0.5 - (120/2 - 10 - 1 - 5) * GRID_3DEN_H;
+            w = 49 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+            colorDisabled[] = {1, 1, 1, 1};
+            colorBackground[] = {0, 0, 0, 0.25};
+        };
+        class DescriptionLabel: CallsignLabel {
+            text = "$STR_3DEN_Object_Attribute_Description_displayName";
+            tooltip = "$STR_3DEN_Object_Attribute_Description_tooltip";
+            y = 0.5 - (120/2 - 10 - 1 - 10) * GRID_3DEN_H;
+        };
+        class Description: Callsign {
+            idc = IDC_LM_DESCRIPTION;
+            y = 0.5 - (120/2 - 10 - 1 - 5 - 10) * GRID_3DEN_H;
+        };
+        class MoveUp: ctrlButtonPictureKeepAspect {
+            idc = IDC_LM_MOVE_UP;
+            text = QPATHTOF(arrow_up_ca.paa);
+            tooltip = CSTRING(MoveUp);
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 7 - 1) * GRID_3DEN_H;
+            w = 5 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+            colorBackground[] = {0, 0, 0, 0};
+        };
+        class MoveDown: MoveUp {
+            idc = IDC_LM_MOVE_DOWN;
+            text = QPATHTOF(arrow_down_ca.paa);
+            tooltip = CSTRING(MoveDown);
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 + 5) * GRID_3DEN_W;
+        };
+        class Collapse: ctrlButtonCollapseAll {
+            idc = IDC_LM_COLLAPSE;
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 + 10) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 7 - 1) * GRID_3DEN_H;
+            w = 5 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+        };
+        class Expand: ctrlButtonExpandAll {
+            idc = IDC_LM_EXPAND;
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 + 15) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 7 - 1) * GRID_3DEN_H;
+            w = 5 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+        };
+        class ButtonOK: ctrlButtonOK {
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 - 2) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 1) * GRID_3DEN_H;
+            w = 25 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
+        };
+        class ButtonCancel: ctrlButtonCancel {
+            x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 25 - 1) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 1) * GRID_3DEN_H;
+            w = 25 * GRID_3DEN_W;
+            h = 5 * GRID_3DEN_H;
         };
     };
 };

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Ui">
-        <Key ID="STR_CBA_Ui_Component">
+        <Key ID="STR_CBA_UI_Component">
             <English>Community Base Addons - User Interface</English>
             <German>Community Base Addons - Benutzeroberfläche</German>
             <Japanese>Community Base Addons - ユーザー インターフェイス</Japanese>
@@ -14,7 +14,7 @@
             <Turkish>Community Base Addons - Kullanıcı Arayüzü</Turkish>
             <Italian>Community Base Addons - Interfaccia utente</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_ProgressBarPositionName">
+        <Key ID="STR_CBA_UI_ProgressBarPositionName">
             <English>Progress Bar</English>
             <German>Fortschrittsanzeige</German>
             <Japanese>プログレス バー</Japanese>
@@ -25,7 +25,7 @@
             <Turkish>Yükleme Çubuğu</Turkish>
             <Italian>Barra di avanzamento</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
+        <Key ID="STR_CBA_UI_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
             <German>Position der Fortschrittsanzeige.</German>
             <Japanese>プログレス バーの位置。</Japanese>
@@ -36,7 +36,7 @@
             <Turkish>Yükleme çubuğunun konumu.</Turkish>
             <Italian>Posizione della barra di avanzamento</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_Category">
+        <Key ID="STR_CBA_UI_Category">
             <English>CBA UI</English>
             <German>CBA UI</German>
             <Polish>CBA UI</Polish>
@@ -45,7 +45,7 @@
             <Japanese>CBA UI</Japanese>
             <Italian>CBA IU</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_StoreServerPasswords">
+        <Key ID="STR_CBA_UI_StoreServerPasswords">
             <English>Store server passwords</English>
             <German>Serverpasswörter speichern</German>
             <Polish>Zapamiętuj hasła serwerów</Polish>
@@ -54,7 +54,7 @@
             <Japanese>サーバーのパスワードを保存</Japanese>
             <Italian>Salva le password per i server</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_StoreServerPasswordsTooltip">
+        <Key ID="STR_CBA_UI_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
             <German>Einstellung zum Speichern der beim Betreten eines Mehrspielerservers eingegebenen Passwörter.</German>
             <Polish>Opcja zapamiętywania wprowadzonych haseł do serwerów.</Polish>
@@ -63,7 +63,7 @@
             <Japanese>マルチプレイヤーのサーバーへ接続時に入力されたパスワードの保存設定を行います。</Japanese>
             <Italian>Impostazione per salvare le password immesse quando ci si collega a server multiplayer.</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_SavePasswords">
+        <Key ID="STR_CBA_UI_SavePasswords">
             <English>Save passwords</English>
             <German>Passwörter speichern</German>
             <Polish>Zapisuj hasła</Polish>
@@ -72,7 +72,7 @@
             <Japanese>パスワードを保存</Japanese>
             <Italian>Salva le password</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_SavePasswordsTooltip">
+        <Key ID="STR_CBA_UI_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver gespeichert.</German>
             <Polish>Hasła są zapisywane podczas łaczenia do serwerów.</Polish>
@@ -81,7 +81,7 @@
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存します。</Japanese>
             <Italian>Quando ci si connette ad un server multiplayer, le password verranno salvate.</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_DoNotSavePasswords">
+        <Key ID="STR_CBA_UI_DoNotSavePasswords">
             <English>Do not save passwords</English>
             <German>Passwörter nicht speichern</German>
             <Polish>Nie zapisuj haseł</Polish>
@@ -90,7 +90,7 @@
             <Japanese>パスワードを保存しない</Japanese>
             <Italian>Non salvare le password</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_DoNotSavePasswordsTooltip">
+        <Key ID="STR_CBA_UI_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden nicht automatisch eingegeben.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła nie bedą wykorzystywane.</Polish>
@@ -99,7 +99,7 @@
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードも自動的に入力されません。</Japanese>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Le password precedentemente salvate non verranno immesse automaticamente.</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_DeletePasswords">
+        <Key ID="STR_CBA_UI_DeletePasswords">
             <English>Delete passwords</English>
             <German>Passwörter löschen</German>
             <Polish>Usuń hasła</Polish>
@@ -108,7 +108,7 @@
             <Japanese>パスワードを削除</Japanese>
             <Italian>Cancella le password</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_DeletePasswordsTooltip">
+        <Key ID="STR_CBA_UI_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
@@ -117,44 +117,53 @@
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードはプロフィールから削除します。</Japanese>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Non saranno usate password precedentemente salvate.</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotificationPositionName">
+        <Key ID="STR_CBA_UI_NotificationPositionName">
             <English>Notification</English>
             <German>Benachrichtigung</German>
             <Polish>Powiadomienie</Polish>
             <Japanese>通知</Japanese>
             <Italian>Notifica</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotificationPositionDescription">
+        <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
             <German>Textrückmeldung an den Spieler.</German>
             <Polish>Tekstowa informacja dla gracza.</Polish>
             <Japanese>文章でプレイヤーに通知します。</Japanese>
             <Italian>Notifica testuale al giocatore.</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_AllMissions">
+        <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
             <German>Alle Missionen anzeigen</German>
             <Japanese>全ミッションを表示</Japanese>
             <Polish>Pokaż wszystkie misje</Polish>
             <Italian>Mostra tutte le missioni</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_CustomMissions">
+        <Key ID="STR_CBA_UI_CustomMissions">
             <English>Show custom missions</English>
             <German>Eigene Missionen anzeigen</German>
             <Japanese>カスタム ミッションを表示</Japanese>
             <Polish>Pokaż własne/wgrane misje</Polish>
             <Italian>Mostra missioni custom</Italian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotifyLifetime">
+        <Key ID="STR_CBA_UI_NotifyLifetime">
             <English>Notification Lifetime</English>
         </Key>
-        <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
+        <Key ID="STR_CBA_UI_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
         </Key>
-        <Key ID="STR_CBA_Ui_LobbyManager">
+        <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
             <German>Lobby Manager</German>
             <Polish>Menadżer Lobby</Polish>
+        </Key>
+        <Key ID="STR_CBA_UI_MoveUp">
+            <English>Move Up</English>
+        </Key>
+        <Key ID="STR_CBA_UI_MoveDown">
+            <English>Move Down</English>
+        </Key>
+        <Key ID="STR_CBA_UI_AdjustingGroupOrder">
+            <English>Adjusting group order...</English>
         </Key>
     </Package>
 </Project>

@@ -1,38 +1,53 @@
-﻿#include "script_component.hpp"
+#include "script_component.hpp"
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
-        name = CSTRING(component);
-        url = "$STR_CBA_URL";
+        name = CSTRING(Component);
         units[] = {};
-        requiredVersion = 1;
+        weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common", "cba_arrays"};
-        version = VERSION;
-        authors[] = {"Dr Eyeball", "commy2"};
+        author = "$STR_CBA_Author";
+        authors[] = {"Dr Eyeball", "commy2", "mharis001"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 
-// ui base classes
-class RscControlsGroup;
-class RscTitle;
+// UI base classes
 class RscText;
 class RscEdit;
+class RscTitle;
 class RscListBox;
-class ctrlButtonPicture;
-class RscButtonMenu;
-class RscButtonMenuOK;
-class RscButtonMenuCancel;
 class RscProgress;
 class RscMapControl;
+class RscButtonMenu;
+class RscButtonMenuOK;
+class RscControlsGroup;
+class RscButtonMenuCancel;
+
+class ctrlTree;
+class ctrlEdit;
+class ctrlStatic;
+class ctrlStaticTitle;
+class ctrlStaticFooter;
+class ctrlMenuStrip;
+class ctrlButtonOK;
+class ctrlButtonCancel;
+class ctrlButtonPicture;
+class ctrlButtonExpandAll;
+class ctrlButtonCollapseAll;
+class ctrlButtonPictureKeepAspect;
+class ctrlStaticBackground;
+class ctrlStaticBackgroundDisable;
+class ctrlStaticBackgroundDisableTiles;
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
-#include "CfgDisplay3DEN.hpp"
-
+#include "Display3DEN.hpp"
 #include "LobbyManager.hpp"
 
 //-----------------------------------------------------------------------------
