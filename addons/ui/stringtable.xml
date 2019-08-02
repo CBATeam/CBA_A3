@@ -158,6 +158,7 @@
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
+            <German>Reihenfolge der Gruppen wird angepasst...</German>
         </Key>
     </Package>
 </Project>
