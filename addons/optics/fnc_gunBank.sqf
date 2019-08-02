@@ -20,6 +20,8 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+if !(cameraOn isKindOf "CAManBase") exitWith {0};
+
 private _unit = [] call CBA_fnc_currentUnit;
 
 private _pelvis = _unit modelToWorldVisualWorld (_unit selectionPosition "Pelvis");
