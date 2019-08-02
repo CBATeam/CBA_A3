@@ -66,7 +66,7 @@ class GVAR(LobbyManager) {
         class MoveUp: ctrlButtonPictureKeepAspect {
             idc = IDC_LM_MOVE_UP;
             text = QPATHTOF(arrow_up_ca.paa);
-            tooltip = CSTRING(MoveUp);
+            tooltip = "$STR_CONTROLS_TOOLTIPS_CAMERA_MOVE_UP";
             x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50) * GRID_3DEN_W;
             y = 0.5 + (120/2 - 10 - 7 - 1) * GRID_3DEN_H;
             w = 5 * GRID_3DEN_W;
@@ -76,7 +76,7 @@ class GVAR(LobbyManager) {
         class MoveDown: MoveUp {
             idc = IDC_LM_MOVE_DOWN;
             text = QPATHTOF(arrow_down_ca.paa);
-            tooltip = CSTRING(MoveDown);
+            tooltip = "$STR_CONTROLS_TOOLTIPS_CAMERA_MOVE_DOWN";
             x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 + 5) * GRID_3DEN_W;
         };
         class Collapse: ctrlButtonCollapseAll {

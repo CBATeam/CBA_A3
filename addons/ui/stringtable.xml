@@ -156,12 +156,6 @@
             <German>Lobby Manager</German>
             <Polish>Menadżer Lobby</Polish>
         </Key>
-        <Key ID="STR_CBA_UI_MoveUp">
-            <English>Move Up</English>
-        </Key>
-        <Key ID="STR_CBA_UI_MoveDown">
-            <English>Move Down</English>
-        </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
         </Key>
