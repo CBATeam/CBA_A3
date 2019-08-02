@@ -14,18 +14,9 @@ class CfgPatches {
     };
 };
 
-// UI base classes
 class RscText;
-class RscEdit;
-class RscTitle;
-class RscListBox;
 class RscProgress;
 class RscMapControl;
-class RscButtonMenu;
-class RscButtonMenuOK;
-class RscControlsGroup;
-class RscButtonMenuCancel;
-
 class ctrlTree;
 class ctrlEdit;
 class ctrlStatic;
@@ -34,7 +25,6 @@ class ctrlStaticFooter;
 class ctrlMenuStrip;
 class ctrlButtonOK;
 class ctrlButtonCancel;
-class ctrlButtonPicture;
 class ctrlButtonExpandAll;
 class ctrlButtonCollapseAll;
 class ctrlButtonPictureKeepAspect;
