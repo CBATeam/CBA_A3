@@ -2,10 +2,12 @@ class GVAR(LobbyManager) {
     idd = -1;
     enableDisplay = 1;
     movingEnable = 1;
+
     class controlsBackground {
         class Disable: ctrlStaticBackgroundDisable {};
         class DisableTiles: ctrlStaticBackgroundDisableTiles {};
     };
+
     class controls {
         class Background: ctrlStaticBackground {
             x = (getResolution select 2) * 0.5 * pixelW - (140/2) * GRID_3DEN_W;

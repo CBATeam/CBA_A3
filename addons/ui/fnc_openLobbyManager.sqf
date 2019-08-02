@@ -366,35 +366,42 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         };
 
         // Need frame delaying to avoid duplication bugs
-        [_groups, _selected] spawn {
-            params ["_groups", "_selected"];
+        private _total = count _groups;
+        startLoadingScreen [localize LSTRING(AdjustingGroupOrder)];
 
-            private _total = count _groups;
-            startLoadingScreen [localize LSTRING(AdjustingGroupOrder)];
+        {
+            private _group = _x;
+            private _callsign = _group getVariable QGVAR(callsign);
 
-            {
-                private _group = _x;
-                private _callsign = _group getVariable QGVAR(callsign);
+            GVAR(ExecStack) append [
+                [[_group], {set3DENSelected _this}],
+                [nil, {do3DENAction "CutUnit"}],
+                [nil, {do3DENAction "PasteUnitOrig"}],
+                [[_callsign, _forEachIndex, _total], {
+                    params ["_callsign", "_forEachIndex", "_total"];
 
-                set3DENSelected [_group];
+                    private _group = get3DENSelected "Group" select 0;
+                    _group set3DENAttribute ["groupID", _callsign];
+                    progressLoadingScreen ((_forEachIndex + 1) / _total);
+                }]
+            ];
+        } forEach _groups;
 
-                private _handle = 0 spawn {do3DENAction "CutUnit"};
-                waitUntil {scriptDone _handle};
-
-                private _handle = 0 spawn {do3DENAction "PasteUnitOrig"};
-                waitUntil {scriptDone _handle};
-
-                _group = get3DENSelected "Group" select 0;
-                _group set3DENAttribute ["groupID", _callsign];
-
-                progressLoadingScreen ((_forEachIndex + 1) / _total);
-            } forEach _groups;
-
-            set3DENSelected _selected;
+        GVAR(ExecStack) pushBack [_selected, {
+            set3DENSelected _this;
             endLoadingScreen;
-        };
+        }];
     };
 }];
+
+if (isNil QGVAR(ExecStack)) then {
+    addMissionEventHandler ["EachFrame", {
+        (GVAR(ExecStack) deleteAt 0) params [["_arg", []], ["_code", {}]];
+        _arg call _code;
+    }];
+};
+
+GVAR(ExecStack) = [];
 
 // Open with tree fully expanded
 tvExpandAll _ctrlSlots;
