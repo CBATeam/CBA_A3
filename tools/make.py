@@ -73,7 +73,7 @@ dssignfile = ""
 prefix = "cba"
 pbo_name_prefix = "cba_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "meta.cpp", "README.md", "LICENSE.md", "logo_cba_ca.paa"]
+importantFiles = ["mod.cpp", "meta.cpp", "README.md", "LICENSE.md", "logo_cba_ca.paa", "userconfig"]
 versionFiles = ["mod.cpp","addons\main_a3\CfgMods.hpp"]
 
 ciBuild = False # Used for CI builds
@@ -326,8 +326,12 @@ def copy_important_files(source_dir,destination_dir):
         for file in importantFiles:
             filePath = os.path.join(module_root_parent, file)
             if os.path.exists(filePath):
-                print_green("Copying file => {}".format(filePath))
-                shutil.copy(os.path.join(source_dir,filePath), destination_dir)
+                if os.path.isdir(filePath):
+                    print_green("Copying directory => {}".format(filePath))
+                    shutil.copytree(os.path.join(source_dir, filePath), os.path.join(destination_dir, file))
+                else:
+                    print_green("Copying file => {}".format(filePath))
+                    shutil.copy(os.path.join(source_dir,filePath), destination_dir)
             else:
                 missingFiles.append("{}".format(filePath))
                 print_error("Failed copying file => {}".format(filePath))
