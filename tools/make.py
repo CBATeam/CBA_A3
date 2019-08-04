@@ -328,6 +328,7 @@ def copy_important_files(source_dir,destination_dir):
             if os.path.exists(filePath):
                 if os.path.isdir(filePath):
                     print_green("Copying directory => {}".format(filePath))
+                    shutil.rmtree(os.path.join(destination_dir, file), True)
                     shutil.copytree(os.path.join(source_dir, filePath), os.path.join(destination_dir, file))
                 else:
                     print_green("Copying file => {}".format(filePath))
