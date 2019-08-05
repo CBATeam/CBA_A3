@@ -6,6 +6,7 @@ class CfgPatches {
         units[] = {};
     };
 };
+class XEH_CLASS_BASE;
 
 class CfgVehicles {
     class B_W_Soldier_F;
