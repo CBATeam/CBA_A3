@@ -4,7 +4,7 @@ Function: CBA_fnc_randomizeFacewear
 
 Description:
     Add config defined weighted random facewear to unit.
-    Working 'allowedFacewear' replacement for BIS_fnc_unitHeadgear. 
+    Uses same config as headgearList[].
 
 Parameters:
     _unit - unit <OBJECT>
@@ -31,13 +31,13 @@ if (isNull _unit) exitWith {
 
 if (!local _unit || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
 
-private _allowedFacewear = getArray (configFile >> "CfgVehicles" >> typeOf _unit >> "allowedFacewear");
+private _allowedFacewear = getArray (configFile >> "CfgVehicles" >> typeOf _unit >> "CBA_allowedFacewear");
 
 if (_allowedFacewear isEqualTo []) exitWith {true};
 
 private _facewear = selectRandomWeighted _allowedFacewear;
 
-if (_facewear == "None") then {
+if (_facewear == "") then {
     removeGoggles _unit;
 } else {
     _unit addGoggles _facewear;
