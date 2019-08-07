@@ -14,13 +14,12 @@ Returns:
 
 Examples:
     (begin example)
-        [unit] call CBA_fnc_randomizeFacewear
+        [unit] call CBA_fnc_randomizeFacewear;
     (end)
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
-SCRIPT(randomizeFacewear);
 
 params [["_unit", objNull]];
 
