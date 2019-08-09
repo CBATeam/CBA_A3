@@ -1,15 +1,21 @@
     class CBA_65x39_MX {
         BI_mags[] = {
             "30Rnd_65x39_caseless_mag",
-            "30Rnd_65x39_caseless_green",
             "30Rnd_65x39_caseless_mag_Tracer",
-            "30Rnd_65x39_caseless_green_mag_Tracer"
+            "30Rnd_65x39_caseless_khaki_mag_Tracer",
+            "30Rnd_65x39_caseless_khaki_mag",
+            "30Rnd_65x39_caseless_black_mag_Tracer",
+            "30Rnd_65x39_caseless_black_mag",
         };
     };
     class CBA_65x39_MX_XL {
         BI_mags[] = {
             "100Rnd_65x39_caseless_mag",
-            "100Rnd_65x39_caseless_mag_Tracer"
+            "100Rnd_65x39_caseless_mag_Tracer",
+            "100Rnd_65x39_caseless_khaki_mag_Tracer",
+            "100Rnd_65x39_caseless_khaki_mag",
+            "100Rnd_65x39_caseless_black_mag_Tracer",
+            "100Rnd_65x39_caseless_black_mag",
         };
     };
 
