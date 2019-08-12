@@ -220,7 +220,7 @@
             <French>Synchroniser avec le chef du groupe pour attaquer un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konuma saldırtın</Turkish>
             <Italian>Sincronizza con un capogruppo per attaccare una posizione designata.</Italian>
-            <Czech>Přikázat veliteli skupiny zaútočit na danou lokaci</Czech>
+            <Czech>Synchronizovat s velitelem skupiny k útoku na danou lokaci</Czech>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride">
             <English>Allow Override</English>
@@ -428,7 +428,7 @@
             <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu savundurun</Turkish>
             <Italian>Sincronizza con un capogruppo per difendere una posizione designata.</Italian>
-            <Czech>Přikázat veliteli skupiny bránit danou lokaci</Czech>
+            <Czech>Synchronizovat s velitelem skupiny k obraně dané lokace</Czech>
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
@@ -675,7 +675,7 @@
             <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu devriye ettirin</Turkish>
             <Italian>Sincronizza con un capogruppo per pattugliare una posizione designata.</Italian>
-            <Czech>Přikázat veliteli skupiny hlídkovat v dané lokaci</Czech>
+            <Czech>Synchronizovat s velitelem skupiny k hlídkování v dané lokaci</Czech>
         </Key>
     </Package>
 </Project>
