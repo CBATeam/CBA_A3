@@ -12,10 +12,12 @@
             <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
             <Turkish>Community Base Addons - Yapay Zeka</Turkish>
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
+            <Czech>Community Base Addons - Umělá inteligence</Czech>
         </Key>
         <Key ID="STR_CBA_AI_BuildingPos">
             <English>AI Building Position</English>
             <German>KI Gebäudeposition</German>
+            <Czech>Poloha stavby AI</Czech>
         </Key>
     </Package>
 </Project>
