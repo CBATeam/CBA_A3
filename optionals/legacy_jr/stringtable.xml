@@ -4,6 +4,7 @@
         <Key ID="STR_CBA_Legacy_JR_Component">
             <English>Community Base Addons - Legacy Joint Rails</English>
             <German>Community Base Addons - Legacy-Joint Rails</German>
+            <Czech>Community Base Addons - Legacy Joint Rails</Czech>
         </Key>
     </Package>
 </Project>

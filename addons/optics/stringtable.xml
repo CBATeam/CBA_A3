@@ -7,6 +7,7 @@
             <Polish>Community Base Addons - Optyka</Polish>
             <Italian>Community Base Addons - Ottiche</Italian>
             <Japanese>Community Base Addons - 照準器</Japanese>
+            <Czech>Community Base Addons - Optika</Czech>
         </Key>
         <Key ID="STR_cba_optics_UsePIP">
             <English>Use picture in picture optics</English>
@@ -14,14 +15,17 @@
             <Japanese>ピクチャー イン ピクチャー照準器を使う</Japanese>
             <Polish>Używaj optyki typu Obraz w obrazie (PIP)</Polish>
             <Italian>Usa ottiche on Picture-in-Picture</Italian>
+            <Czech>Používat PiP (obraz-v-obrazu) optiky</Czech>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch">
             <English>Toggle Reticle</English>
             <German>Absehen umschalten</German>
+            <Czech>Zapnout retikulum</Czech>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
             <German>Absehen der Optik manuell umschalten.</German>
+            <Czech>Manuálně přepnout retikulum optiky</Czech>
         </Key>
     </Package>
 </Project>

@@ -12,6 +12,7 @@
             <French>Community Base Addons - Fonctions des accessoires</French>
             <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
             <Italian>Community Base Addons - Funzioni per Accessori</Italian>
+            <Czech>Community Base Addons - Funkce doplňků</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
@@ -24,6 +25,7 @@
             <French>Mode de l'accessoire sur rail suivant</French>
             <Turkish>Sonraki ray aksesuarı</Turkish>
             <Italian>Stato successivo dell'oggetto sulla slitta</Italian>
+            <Czech>Další režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -36,6 +38,7 @@
             <French>Passe au prochain mode disponible de votre accessoire sur rail</French>
             <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
             <Italian>Passa alla modalità successiva del tuo accessorio sulla slitta</Italian>
+            <Czech>Přepíná na další možný režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
@@ -48,6 +51,7 @@
             <French>Mode de l'accessoire sur rail précèdent</French>
             <Turkish>Önceki ray aksesuarı</Turkish>
             <Italian>Stato precedente dell'oggetto sulla slitta</Italian>
+            <Czech>Předchozí režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -60,6 +64,7 @@
             <French>Passe au précèdent mode disponible de votre accessoire sur rail</French>
             <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
             <Italian>Passa alla modalità precedente del tuo accessorio sulla slitta</Italian>
+            <Czech>Přepíná na předchozí možný režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
@@ -72,6 +77,7 @@
             <French>Mode de l'optique suivant</French>
             <Turkish>Sonraki nişangah modu</Turkish>
             <Italian>Stato successivo dell'ottica</Italian>
+            <Czech>Další režim zaměřovače</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -84,6 +90,7 @@
             <French>Passe au prochain mode disponible de votre optique</French>
             <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
             <Italian>Passa alla modalità successiva della tua ottica</Italian>
+            <Czech>Přepíná na další možný režim doplňku slotu pro zaměřovač</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -96,6 +103,7 @@
             <French>Mode de l'optique sur rail précèdent</French>
             <Turkish>Önceki nişangah modu</Turkish>
             <Italian>Stato precedente dell'ottica</Italian>
+            <Czech>Předchozí režim zaměřovače</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -108,6 +116,7 @@
             <French>Passe au précèdent mode disponible de votre optique</French>
             <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
             <Italian>Passa alla modalità precedenta della tua ottica</Italian>
+            <Czech>Přepíná na předchozí možný režim doplňku slotu pro zaměřovač</Czech>
         </Key>
     </Package>
 </Project>
