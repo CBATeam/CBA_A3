@@ -151,5 +151,9 @@
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
         </Key>
+        <Key ID="STR_CBA_Ui_ContactServerAdmin">
+            <English>Contact the server admin.</English>
+            <German>Serveradministrator benachrichtigen.</German>
+        </Key>
     </Package>
 </Project>
