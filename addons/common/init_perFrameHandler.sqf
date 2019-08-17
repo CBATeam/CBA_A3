@@ -56,7 +56,10 @@ GVAR(waitUntilAndExecArray) = [];
         _delete = false;
     };
 
-
+    if (diag_frameno != GVAR(nextFrameNo)) then { // in case we skipped a frame, ensure we don't add to nextFrameBufferA while iterating
+        TRACE_2("frame mismatch",diag_frameno,GVAR(nextFrameNo));
+        GVAR(nextFrameNo) = diag_frameno;
+    };
     // Execute the exec next frame functions
     {
         (_x select 0) call (_x select 1);
