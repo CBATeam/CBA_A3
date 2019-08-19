@@ -1,6 +1,7 @@
 #!/bin/sh
 
-NATURALDOCS=`which NaturalDocs 2>/dev/null`
+NATURALDOCS=`which NaturalDocs 2>/dev/null || which naturaldocs 2>/dev/null`
+# Debian package uses a script wrapper that is lower case
 
 if [ -z $NATURALDOCS ]
 then
@@ -8,7 +9,7 @@ then
   exit 1
 fi
 
-echo -e "\n=== Compiling documentation ===\n"
+echo "\n=== Compiling documentation ===\n"
 if [ ! -d ../docs ]
 then
   mkdir ../docs
@@ -18,7 +19,7 @@ cp overview.txt CBA_logo_large.png ../addons
 # Move the documented, but internal-only functions out of the way
 # while compiling the documentation
 cp -a ../addons/xeh /tmp/
-rm ../addons/xeh/*
+rm -r ../addons/xeh/*
 cp -a /tmp/xeh/fnc_addClassEventHandler.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_compileEventHandlers.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_compileFunction.sqf ../addons/xeh
@@ -26,13 +27,16 @@ cp -a /tmp/xeh/fnc_isRecompileEnabled.sqf ../addons/xeh
 cp -a /tmp/xeh/fnc_isScheduled.sqf ../addons/xeh
 
 $NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
-rm ../addons/{overview.txt,CBA_logo_large.png}
+find ../addons/ \
+	-name overview.txt -o \
+	-name CBA_logo_large.png | \
+xargs rm
 
 # Restore xeh
 cp -a /tmp/xeh/* ../addons/xeh/
 rm -rf /tmp/xeh
 
-echo -e "\n=== Packaging documentation ===\n"
+echo "\n=== Packaging documentation ===\n"
 rm -f ../store/function_library.tar
 fakeroot tar -C ../ -cf ../store/function_library.tar docs
 

@@ -1,4 +1,4 @@
-Format: 1.52
+Format: 1.51
 
 
 Title: CBA
@@ -67,13 +67,14 @@ Group: Functions  {
    Group: Ai  {
 
       File: CBA_fnc_addWaypoint  (ai/fnc_addWaypoint.sqf)
+      File: CBA_fnc_buildingPositions  (ai/fnc_buildingPositions.sqf)
       File: CBA_fnc_clearWaypoints  (ai/fnc_clearWaypoints.sqf)
       File: CBA_fnc_searchNearby  (ai/fnc_searchNearby.sqf)
       File: CBA_fnc_taskAttack  (ai/fnc_taskAttack.sqf)
       File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
       File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
       File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
-      File: CBA_fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
+      File: fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
       }  # Group: Ai
 
    Group: Arrays  {
@@ -92,6 +93,7 @@ Group: Functions  {
       File: CBA_fnc_join  (arrays/fnc_join.sqf)
       File: CBA_fnc_reject  (arrays/fnc_reject.sqf)
       File: CBA_fnc_select  (arrays/fnc_select.sqf)
+      File: CBA_fnc_selectRandomArray  (arrays/fnc_selectRandomArray.sqf)
       File: CBA_fnc_shuffle  (arrays/fnc_shuffle.sqf)
       File: CBA_fnc_sortNestedArray  (arrays/fnc_sortNestedArray.sqf)
       }  # Group: Arrays
@@ -109,9 +111,11 @@ Group: Functions  {
       File: CBA_fnc_addPlayerAction  (common/fnc_addPlayerAction.sqf)
       File: CBA_fnc_addWeapon  (common/fnc_addWeapon.sqf)
       File: CBA_fnc_addWeaponCargo  (common/fnc_addWeaponCargo.sqf)
+      File: CBA_fnc_addWeaponWithoutItems  (common/fnc_addWeaponWithoutItems.sqf)
       File: CBA_fnc_allNamespaces  (common/fnc_allNamespaces.sqf)
       File: CBA_fnc_binocularMagazine  (common/fnc_binocularMagazine.sqf)
       File: CBA_fnc_canUseWeapon  (common/fnc_canUseWeapon.sqf)
+      File: CBA_fnc_compatibleMagazines  (common/fnc_compatibleMagazines.sqf)
       File: CBA_fnc_compileFinal  (common/fnc_compileFinal.sqf)
       File: CBA_fnc_createMarker  (common/fnc_createMarker.sqf)
       File: CBA_fnc_createNamespace  (common/fnc_createNamespace.sqf)
@@ -128,15 +132,14 @@ Group: Functions  {
       File: CBA_fnc_dropWeapon  (common/fnc_dropWeapon.sqf)
       File: CBA_fnc_execNextFrame  (common/fnc_execNextFrame.sqf)
       File: CBA_fnc_findEntity  (common/fnc_findEntity.sqf)
+      File: CBA_fnc_getActiveFeatureCamera  (common/fnc_getActiveFeatureCamera.sqf)
       File: CBA_fnc_getAlive  (common/fnc_getAlive.sqf)
       File: CBA_fnc_getAnimType  (common/fnc_getAnimType.sqf)
       File: CBA_fnc_getArea  (common/fnc_getArea.sqf)
       File: CBA_fnc_getArg  (common/fnc_getArg.sqf)
-      File: CBA_fnc_getAspectRatio  (common/fnc_getAspectRatio.sqf)
       File: CBA_fnc_getConfigEntry  (common/fnc_getConfigEntry.sqf)
       File: CBA_fnc_getDistance  (common/fnc_getDistance.sqf)
       File: CBA_fnc_getFirer  (common/fnc_getFirer.sqf)
-      File: CBA_fnc_getFov  (common/fnc_getFov.sqf)
       File: CBA_fnc_getGroup  (common/fnc_getGroup.sqf)
       File: CBA_fnc_getGroupIndex  (common/fnc_getGroupIndex.sqf)
       File: CBA_fnc_getItemConfig  (common/fnc_getItemConfig.sqf)
@@ -150,7 +153,6 @@ Group: Functions  {
       File: CBA_fnc_getSharedGroup  (common/fnc_getSharedGroup.sqf)
       File: CBA_fnc_getTerrainProfile  (common/fnc_getTerrainProfile.sqf)
       File: CBA_fnc_getTurret  (common/fnc_getTurret.sqf)
-      File: CBA_fnc_getUISize  (common/fnc_getUISize.sqf)
       File: CBA_fnc_getUnitAnim  (common/fnc_getUnitAnim.sqf)
       File: CBA_fnc_getUnitDeathAnim  (common/fnc_getUnitDeathAnim.sqf)
       File: CBA_fnc_getVolume  (common/fnc_getVolume.sqf)
@@ -173,6 +175,7 @@ Group: Functions  {
       File: CBA_fnc_randPos  (common/fnc_randPos.sqf)
       File: CBA_fnc_randPosArea  (common/fnc_randPosArea.sqf)
       File: CBA_fnc_realHeight  (common/fnc_realHeight.sqf)
+      File: CBA_fnc_registerFeatureCamera  (common/fnc_registerFeatureCamera.sqf)
       File: CBA_fnc_removeBackpackCargo  (common/fnc_removeBackpackCargo.sqf)
       File: CBA_fnc_removeBinocularMagazine  (common/fnc_removeBinocularMagazine.sqf)
       File: CBA_fnc_removeItem  (common/fnc_removeItem.sqf)
@@ -191,6 +194,7 @@ Group: Functions  {
       File: CBA_fnc_turretDir  (common/fnc_turretDir.sqf)
       File: CBA_fnc_turretPath  (common/fnc_turretPath.sqf)
       File: CBA_fnc_turretPathWeapon  (common/fnc_turretPathWeapon.sqf)
+      File: CBA_fnc_uniqueUnitItems  (common/fnc_uniqueUnitItems.sqf)
       File: CBA_fnc_vehicleRole  (common/fnc_vehicleRole.sqf)
       File: CBA_fnc_viewDir  (common/fnc_viewDir.sqf)
       File: CBA_fnc_waitAndExecute  (common/fnc_waitAndExecute.sqf)
@@ -203,9 +207,14 @@ Group: Functions  {
       File: CBA_diagnostic_fnc_initTargetDebugConsole  (diagnostic/fnc_initTargetDebugConsole.sqf)
       File: CBA_fnc_addUnitTrackProjectiles  (diagnostic/fnc_addUnitTrackProjectiles.sqf)
       File: CBA_fnc_debug  (diagnostic/fnc_debug.sqf)
+      File: CBA_fnc_removeUnitTrackProjectiles  (diagnostic/fnc_removeUnitTrackProjectiles.sqf)
       File: CBA_fnc_test  (diagnostic/fnc_test.sqf)
-      File: CBA_removeUnitTrackProjectiles  (diagnostic/fnc_removeUnitTrackProjectiles.sqf)
       }  # Group: Diagnostic
+
+   Group: Disposable  {
+
+      File: CBA_disposable_fnc_firedDisposable  (disposable/fnc_firedDisposable.sqf)
+      }  # Group: Disposable
 
    Group: Events  {
 
@@ -233,6 +242,7 @@ Group: Functions  {
       File: CBA_fnc_removePlayerEventHandler  (events/fnc_removePlayerEventHandler.sqf)
       File: CBA_fnc_serverEvent  (events/fnc_serverEvent.sqf)
       File: CBA_fnc_targetEvent  (events/fnc_targetEvent.sqf)
+      File: CBA_fnc_weaponEvents  (events/fnc_weaponEvents.sqf)
       }  # Group: Events
 
    Group: Hashes  {
@@ -251,12 +261,6 @@ Group: Functions  {
       File: CBA_fnc_parseYAML  (hashes/fnc_parseYAML.sqf)
       File: CBA_fnc_serializeNamespace  (hashes/fnc_serializeNamespace.sqf)
       }  # Group: Hashes
-
-   Group: Help  {
-
-      File: CBA_help_fnc_setCreditsLine  (help/fnc_setCreditsLine.sqf)
-      File: CBA_help_fnc_setVersionLine  (help/fnc_setVersionLine.sqf)
-      }  # Group: Help
 
    Group: Joint Rails  {
 
@@ -303,14 +307,10 @@ Group: Functions  {
       File: CBA_fnc_stopMusic  (music/fnc_stopMusic.sqf)
       }  # Group: Music
 
-   Group: Settings  {
-
-      File: CBA_settings_fnc_init  (settings/fnc_init.sqf)
-      }  # Group: Settings
-
    Group: Strings  {
 
       File: CBA_fnc_capitalize  (strings/fnc_capitalize.sqf)
+      File: CBA_fnc_decodeURL  (strings/fnc_decodeURL.sqf)
       File: CBA_fnc_find  (strings/fnc_find.sqf)
       File: CBA_fnc_floatToString  (strings/fnc_floatToString.sqf)
       File: CBA_fnc_formatElapsedTime  (strings/fnc_formatElapsedTime.sqf)
@@ -319,6 +319,7 @@ Group: Functions  {
       File: CBA_fnc_removeWhitespace  (strings/fnc_removeWhitespace.sqf)
       File: CBA_fnc_replace  (strings/fnc_replace.sqf)
       File: CBA_fnc_rightTrim  (strings/fnc_rightTrim.sqf)
+      File: CBA_fnc_sanitizeHTML  (strings/fnc_sanitizeHTML.sqf)
       File: CBA_fnc_split  (strings/fnc_split.sqf)
       File: CBA_fnc_strLen  (strings/fnc_strLen.sqf)
       File: CBA_fnc_substr  (strings/fnc_substr.sqf)
@@ -328,7 +329,10 @@ Group: Functions  {
 
    Group: Vectors  {
 
+      File: CBA_fnc_matrixProduct3D  (vectors/fnc_matrixProduct3D.sqf)
+      File: CBA_fnc_matrixTranspose  (vectors/fnc_matrixTranspose.sqf)
       File: CBA_fnc_polar2vect  (vectors/fnc_polar2vect.sqf)
+      File: CBA_fnc_randomVector3D  (vectors/fnc_randomVector3D.sqf)
       File: CBA_fnc_scaleVect  (vectors/fnc_scaleVect.sqf)
       File: CBA_fnc_scaleVectTo  (vectors/fnc_scaleVectTo.sqf)
       File: CBA_fnc_simplifyAngle  (vectors/fnc_simplifyAngle.sqf)
@@ -342,13 +346,20 @@ Group: Functions  {
       File: CBA_fnc_vectElev  (vectors/fnc_vectElev.sqf)
       File: CBA_fnc_vectMagn  (vectors/fnc_vectMagn.sqf)
       File: CBA_fnc_vectMagn2D  (vectors/fnc_vectMagn2D.sqf)
+      File: CBA_fnc_vectMap3D  (vectors/fnc_vectMap3D.sqf)
       File: CBA_fnc_vectRotate2D  (vectors/fnc_vectRotate2D.sqf)
+      File: CBA_fnc_vectRotate3D  (vectors/fnc_vectRotate3D.sqf)
       File: CBA_fnc_vectSubtract  (vectors/fnc_vectSubtract.sqf)
       }  # Group: Vectors
 
    Group: Ui  {
 
       File: CBA_fnc_addPauseMenuOption  (ui/fnc_addPauseMenuOption.sqf)
+      File: CBA_fnc_getAspectRatio  (ui/fnc_getAspectRatio.sqf)
+      File: CBA_fnc_getFov  (ui/fnc_getFov.sqf)
+      File: CBA_fnc_getUISize  (ui/fnc_getUISize.sqf)
+      File: CBA_fnc_notify  (ui/fnc_notify.sqf)
+      File: CBA_fnc_progressBar  (ui/fnc_progressBar.sqf)
       }  # Group: Ui
 
    Group: Xeh  {
@@ -360,6 +371,7 @@ Group: Functions  {
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
       }  # Group: Xeh
 
+   File: CBA_fnc_addSetting  (settings/fnc_addSetting.sqf)
    }  # Group: Functions
 
 Group: Macros  {
@@ -367,6 +379,13 @@ Group: Macros  {
    File: script_macros_common.hpp  (main/script_macros_common.hpp)
    File: script_macros_mission.hpp  (main/script_macros_mission.hpp)
    }  # Group: Macros
+
+Group: Optics  {
+
+   File: CBA_fnc_setOpticMagnification  (optics/fnc_setOpticMagnification.sqf)
+   File: CBA_fnc_setOpticMagnificationHelper  (optics/fnc_setOpticMagnificationHelper.sqf)
+   File: CBA_fnc_setOpticMagnificationHelperZeroing  (optics/fnc_setOpticMagnificationHelperZeroing.sqf)
+   }  # Group: Optics
 
 Group: Statemachine  {
 
