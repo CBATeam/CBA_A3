@@ -74,7 +74,7 @@ Group: Functions  {
       File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
       File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
       File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
-      File: fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
+      File: CBA_fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
       }  # Group: Ai
 
    Group: Arrays  {
@@ -213,7 +213,7 @@ Group: Functions  {
 
    Group: Disposable  {
 
-      File: CBA_disposable_fnc_firedDisposable  (disposable/fnc_firedDisposable.sqf)
+      File: CBA_fnc_firedDisposable  (disposable/fnc_firedDisposable.sqf)
       }  # Group: Disposable
 
    Group: Events  {
