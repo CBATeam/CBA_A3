@@ -3,8 +3,6 @@
 
 #include "script_component.hpp"
 
-#define DELAY_MONITOR_THRESHOLD 1 // Frames
-
 GVAR(perFrameHandlerArray) = [];
 GVAR(perFrameHandlersToRemove) = [];
 GVAR(lastTickTime) = diag_tickTime;
@@ -12,8 +10,7 @@ GVAR(lastTickTime) = diag_tickTime;
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
 GVAR(nextFrameNo) = diag_frameno + 1;
-// PostInit can be 2 frames after preInit, need to manually set nextFrameNo, so new items get added to buffer B while processing A for the first time:
-GVAR(nextFrameBufferA) = [[[], {GVAR(nextFrameNo) = diag_frameno;}]];
+GVAR(nextFrameBufferA) = [];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 
@@ -22,6 +19,13 @@ GVAR(waitUntilAndExecArray) = [];
     SCRIPT(onFrame);
     private _tickTime = diag_tickTime;
     call FUNC(missionTimePFH);
+
+    // frame number does not match expected; can happen between pre and postInit, save-game load and on closing map
+    // need to manually set nextFrameNo, so new items get added to buffer B and are not executed this frame
+    if (diag_frameno != GVAR(nextFrameNo)) then {
+        TRACE_2("frame mismatch",diag_frameno,GVAR(nextFrameNo));
+        GVAR(nextFrameNo) = diag_frameno;
+    };
 
     // Execute per frame handlers
     {
@@ -56,10 +60,6 @@ GVAR(waitUntilAndExecArray) = [];
         _delete = false;
     };
 
-    if (diag_frameno != GVAR(nextFrameNo)) then { // in case we skipped a frame, ensure we don't add to nextFrameBufferA while iterating
-        TRACE_2("frame mismatch",diag_frameno,GVAR(nextFrameNo));
-        GVAR(nextFrameNo) = diag_frameno;
-    };
     // Execute the exec next frame functions
     {
         (_x select 0) call (_x select 1);
