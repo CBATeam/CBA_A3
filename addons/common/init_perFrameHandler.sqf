@@ -60,6 +60,7 @@ GVAR(waitUntilAndExecArray) = [];
         _delete = false;
     };
 
+
     // Execute the exec next frame functions
     {
         (_x select 0) call (_x select 1);
