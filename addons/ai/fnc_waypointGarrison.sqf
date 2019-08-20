@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_waypointGarrison
+Internal Script: CBA_fnc_waypointGarrison
 
 Description:
     Scripted waypoint that makes group garrision nearby buildings and static weapons.

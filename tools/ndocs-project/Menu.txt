@@ -74,7 +74,6 @@ Group: Functions  {
       File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
       File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
       File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
-      File: CBA_fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
       }  # Group: Ai
 
    Group: Arrays  {
@@ -382,9 +381,9 @@ Group: Macros  {
 
 Group: Optics  {
 
-   File: CBA_fnc_setOpticMagnification  (optics/fnc_setOpticMagnification.sqf)
-   File: CBA_fnc_setOpticMagnificationHelper  (optics/fnc_setOpticMagnificationHelper.sqf)
-   File: CBA_fnc_setOpticMagnificationHelperZeroing  (optics/fnc_setOpticMagnificationHelperZeroing.sqf)
+   File: cba_optics_fnc_setOpticMagnification  (optics/fnc_setOpticMagnification.sqf)
+   File: cba_optics_fnc_setOpticMagnificationHelper  (optics/fnc_setOpticMagnificationHelper.sqf)
+   File: cba_optics_fnc_setOpticMagnificationHelperZeroing  (optics/fnc_setOpticMagnificationHelperZeroing.sqf)
    }  # Group: Optics
 
 Group: Statemachine  {
