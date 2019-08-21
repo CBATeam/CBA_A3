@@ -45,7 +45,10 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
     private _state = configName _x;
     {
         private _transition = configName _x;
-        private _targetState = [_x,"targetState",_transition] call BIS_fnc_returnConfigEntry;
+        private _targetState = _transition;
+        if (isText (_x >> "targetState")) then {
+            _targetState = getText (_x >> "targetState");
+        };
         GET_FUNCTION(_condition,_x >> "condition");
         GET_FUNCTION(_onTransition,_x >> "onTransition");
         private _events = getArray (_x >> "events");
