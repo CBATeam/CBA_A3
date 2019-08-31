@@ -51,8 +51,14 @@
     #define MAINLOGIC main
 #endif
 
+// TODO Document VERSION_CONFIG
+// VERSION should always be a number (eg. float)
 #ifndef VERSION
     #define VERSION 0
+#endif
+
+#ifndef VERSION_STR
+    #define VERSION_STR VERSION
 #endif
 
 #ifndef VERSION_AR
@@ -60,7 +66,7 @@
 #endif
 
 #ifndef VERSION_CONFIG
-    #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION); versionAr[] = {VERSION_AR}
+    #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 #endif
 
 #define ADDON DOUBLES(PREFIX,COMPONENT)
