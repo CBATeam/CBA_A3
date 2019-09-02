@@ -9,7 +9,7 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {"cba_common"};
         requiredVersion = 0.1;
-        version = "4.0.0"; // Due to older mod versions requiring > 3,3,3 etc
+        version = 4.0; // Due to older mod versions requiring > 3,3,3 etc
         versionStr = "4.0.0";
         versionAr[] = {4, 0, 0};
         authors[] = {"Solus", "Killswitch", "commy2"};
