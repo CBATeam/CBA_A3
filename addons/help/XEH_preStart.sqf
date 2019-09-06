@@ -24,8 +24,12 @@ private _credits = [];
     if (isText (_x >> "versionStr")) then {
         _version = format [" v%1", getText (_x >> "versionStr")];
     } else {
-        if (isText (_x >> "version")) then {
-            _version = format [" v%1", getText (_x >> "version")];
+        if (isNumber (_x >> "version")) then {
+            _version = format [" v%1", getNumber (_x >> "version")];
+        } else {
+            if (isText (_x >> "version")) then {
+                _version = format [" v%1", getText (_x >> "version")];
+            };
         };
     };
 
