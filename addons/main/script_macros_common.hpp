@@ -51,8 +51,39 @@
     #define MAINLOGIC main
 #endif
 
-// TODO Document VERSION_CONFIG
-// VERSION should always be a number (eg. float)
+#define ADDON DOUBLES(PREFIX,COMPONENT)
+#define MAIN_ADDON DOUBLES(PREFIX,main)
+
+/* -------------------------------------------
+Macro: VERSION_CONFIG
+    Define CBA Versioning System config entries.
+
+    VERSION should be a floating-point number (1 separator).
+    VERSION_STR is a string representation of the version.
+    VERSION_AR is an array representation of the version.
+
+    VERSION must always be defined, otherwise it is 0.
+    VERSION_STR and VERSION_AR default to VERSION if undefined.
+
+Parameters:
+    None
+
+Example:
+    (begin example)
+        #define VERSION 1.0
+        #define VERSION_STR 1.0.1
+        #define VERSION_AR 1,0,1
+
+        class CfgPatches {
+            class MyMod_main {
+                VERSION_CONFIG;
+            };
+        };
+    (end)
+
+Author:
+    ?, Jonpas
+------------------------------------------- */
 #ifndef VERSION
     #define VERSION 0
 #endif
@@ -68,9 +99,6 @@
 #ifndef VERSION_CONFIG
     #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 #endif
-
-#define ADDON DOUBLES(PREFIX,COMPONENT)
-#define MAIN_ADDON DOUBLES(PREFIX,main)
 
 /* -------------------------------------------
 Group: Debugging
