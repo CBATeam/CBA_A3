@@ -3,9 +3,7 @@
 // Simply a package which requires other addons.
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -35,9 +33,11 @@ class CfgPatches {
             "cba_optics",
             "cba_disposable"
         };
-        versionDesc = "C.B.A.";
-        VERSION_CONFIG;
+        author = "$STR_CBA_Author";
         authors[] = {};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
+        versionDesc = "C.B.A.";
     };
 };
 
