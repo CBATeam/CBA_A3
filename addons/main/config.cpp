@@ -37,7 +37,6 @@ class CfgPatches {
         authors[] = {};
         url = "$STR_CBA_URL";
         VERSION_CONFIG;
-        versionDesc = "C.B.A.";
     };
 };
 
