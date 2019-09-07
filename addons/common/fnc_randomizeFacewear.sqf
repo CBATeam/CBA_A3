@@ -33,14 +33,21 @@ if (isNull _unit) exitWith {
     false
 };
 
-if (!local _unit || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
+// Disabled conditions
+if (!local _unit) exitWith {true};
 
+private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomization") findIf {
+    _unit isKindOf _x || {(vehicleVarName _unit) isEqualTo _x}
+} != -1;
+
+if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
+
+// Get list
 private _facewearList = getArray (configFile >> "CfgVehicles" >> typeOf _unit >> "CBA_facewearList");
-
 if (_facewearList isEqualTo []) exitWith {true};
 
+// Apply
 private _facewear = selectRandomWeighted _facewearList;
-
 if (_facewear == "") then {
     removeGoggles _unit;
 } else {
