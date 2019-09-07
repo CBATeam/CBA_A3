@@ -48,7 +48,7 @@ if (_facewearList isEqualTo []) exitWith {true};
 
 // Apply
 private _facewear = selectRandomWeighted _facewearList;
-if (_facewear == "") then {
+if ((toLower _facewear) in ["", "none"]) then {
     removeGoggles _unit;
 } else {
     _unit addGoggles _facewear;
