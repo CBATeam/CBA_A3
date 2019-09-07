@@ -2,17 +2,15 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common"};
-        requiredVersion = 0.1;
-        version = 4.0; // Due to older mod versions requiring > 3,3,3 etc
-        versionStr = "4.0.0";
-        versionAr[] = {4, 0, 0};
+        author = "$STR_CBA_Author";
         authors[] = {"Solus", "Killswitch", "commy2"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
 
         // this prevents any patched class from requiring XEH
         addonRootClass = "A3_Characters_F";
