@@ -1,674 +1,565 @@
-class CfgMusic
-{
+class CfgMusic {
     /* ----------------------------------------------
     a3\music_f
     ---------------------------------------------- */
-    class LeadTrack01_F
-    {
+    class LeadTrack01_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class LeadTrack01a_F
-    {
+    class LeadTrack01a_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class LeadTrack01b_F
-    {
+    class LeadTrack01b_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class LeadTrack01c_F
-    {
+    class LeadTrack01c_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class LeadTrack02_F
-    {
+    class LeadTrack02_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class LeadTrack03_F
-    {
+    class LeadTrack03_F {
         type = "soundtrack";
         theme = "combat";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
         
     };
-    class LeadTrack04_F
-    {
+    class LeadTrack04_F {
         type = "soundtrack";
         theme = "combat";
-        tags[] = {bis, lead, action};
+        tags[] = {"bis", "lead", "action"};
     };
-    class LeadTrack04a_F
-    {
+    class LeadTrack04a_F {
         type = "soundtrack";
         theme = "combat";
-        tags[] = {bis, lead, action};
+        tags[] = {"bis", "lead", "action"};
     };
-    class LeadTrack05_F
-    { 
+    class LeadTrack05_F { 
         type = "soundtrack";
         theme = "combat";
-        tags[] = {bis, lead, action};
+        tags[] = {"bis", "lead", "action"};
     };
-    class LeadTrack06_F
-    {
+    class LeadTrack06_F {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead};
+        tags[] = {"bis", "lead"};
     };
-    class ambientTrack01_F
-    {
+    class ambientTrack01_F {
         type = "ambient";
         theme = "stealth";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class ambientTrack01a_F
-    {
+    class ambientTrack01a_F {
         type = "ambient";
         theme = "stealth";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class ambientTrack01b_F
-    {
+    class ambientTrack01b_F {
         type = "ambient";
         theme = "stealth";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class ambientTrack03_F
-    {
+    class ambientTrack03_F {
         type = "ambient";
         theme = "safe";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class ambientTrack04a_F
-    {
+    class ambientTrack04a_F {
         type = "ambient";
         theme = "stealth";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class ambientTrack04_F
-    {
+    class ambientTrack04_F {
         type = "ambient";
         theme = "stealth";
-        tags[] = {bis};
+        tags[] = {"bis"};
     };
-    class BackgroundTrack03_F
-    {
+    class BackgroundTrack03_F {
         type = "soundtrack";
         theme = "combat";
-        tags[] = {bis, background, action};
+        tags[] = {"bis", "background", "action"};
     };
-    class BackgroundTrack01_F
-    {
+    class BackgroundTrack01_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, background, calm};
+        tags[] = {"bis", "background", "calm"};
     };
-    class BackgroundTrack01a_F
-    {
+    class BackgroundTrack01a_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, background, calm};
+        tags[] = {"bis", "background", "calm"};
     };
-    class BackgroundTrack02_F
-    {
+    class BackgroundTrack02_F {
         type = "soundtrack";
         theme = "safe";
-        tags[] = {bis, background, calm};
+        tags[] = {"bis", "background", "calm"};
     };
-    class Track01_Proteus
-    {
+    class Track01_Proteus {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track02_SolarPower
-    {
+    class Track02_SolarPower {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track03_OnTheRoad
-    {
+    class Track03_OnTheRoad {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track04_Underwater1
-    {
+    class Track04_Underwater1 {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track05_Underwater2
-    {
+    class Track05_Underwater2 {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track06_CarnHeli
-    {
+    class Track06_CarnHeli {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track07_actionDark
-    {
+    class Track07_actionDark {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track08_Night_ambient
-    {
+    class Track08_Night_ambient {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track09_Night_percussions
-    {
+    class Track09_Night_percussions {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track10_StageB_action
-    {
+    class Track10_StageB_action {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track11_StageB_stealth
-    {
+    class Track11_StageB_stealth {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track12_StageC_action
-    {
+    class Track12_StageC_action {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track13_StageC_negative
-    {
+    class Track13_StageC_negative {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track14_MainMenu
-    {
+    class Track14_MainMenu {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
-    class Track15_MainTheme
-    {
+    class Track15_MainTheme {
         type = "soundtrack";
         theme = "electronic";
-        tags[] = {bis, background};
+        tags[] = {"bis", "background"};
     };
     
     /* ----------------------------------------------
     a3\music_f_bootcamp
     ---------------------------------------------- */
     
-    class LeadTrack01_F_Bootcamp
-    {
+    class LeadTrack01_F_Bootcamp {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, bootcamp};
+        tags[] = {"bis", "lead", "bootcamp"};
     };
-    class LeadTrack01b_F_Bootcamp
-    {
+    class LeadTrack01b_F_Bootcamp {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, bootcamp};
+        tags[] = {"bis", "lead", "bootcamp"};
     };
-    class LeadTrack02_F_Bootcamp
-    {
+    class LeadTrack02_F_Bootcamp {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, bootcamp};
+        tags[] = {"bis", "lead", "bootcamp"};
     };
-    class LeadTrack03_F_Bootcamp
-    {
+    class LeadTrack03_F_Bootcamp {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, bootcamp};
+        tags[] = {"bis", "lead", "bootcamp"};
     };
     
     /* ----------------------------------------------
     a3\music_f_epa
     ---------------------------------------------- */
-    class LeadTrack01_F_EPA
-    {
+    class LeadTrack01_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class LeadTrack02_F_EPA
-    {
+    class LeadTrack02_F_EPA {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class LeadTrack02a_F_EPA
-    {
+    class LeadTrack02a_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class LeadTrack02b_F_EPA
-    {
+    class LeadTrack02b_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class LeadTrack03_F_EPA
-    {
+    class LeadTrack03_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class LeadTrack03a_F_EPA
-    {
+    class LeadTrack03a_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack01_F_EPA
-    {
+    class EventTrack01_F_EPA {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack01a_F_EPA
-    {
+    class EventTrack01a_F_EPA {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack02_F_EPA
-    {
+    class EventTrack02_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack02a_F_EPA
-    {
+    class EventTrack02a_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack03_F_EPA
-    {
+    class EventTrack03_F_EPA {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
-    class EventTrack03a_F_EPA
-    {
+    class EventTrack03a_F_EPA {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epa};
+        tags[] = {"bis", "lead", "epa"};
     };
     /* ----------------------------------------------
     a3\music_f_epb
     ---------------------------------------------- */
-    class LeadTrack01_F_EPB
-    {
+    class LeadTrack01_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack01a_F_EPB
-    {
+    class LeadTrack01a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack02_F_EPB
-    {
+    class LeadTrack02_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack02a_F_EPB
-    {
+    class LeadTrack02a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack02b_F_EPB
-    {
+    class LeadTrack02b_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack03_F_EPB
-    {
+    class LeadTrack03_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack03a_F_EPB
-    {
+    class LeadTrack03a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class LeadTrack04_F_EPB
-    {
+    class LeadTrack04_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack01_F_EPB
-    {
+    class EventTrack01_F_EPB {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack01a_F_EPB
-    {
+    class EventTrack01a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack02_F_EPB
-    {
+    class EventTrack02_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack02a_F_EPB
-    {
+    class EventTrack02a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack03_F_EPB
-    {
+    class EventTrack03_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack04_F_EPB
-    {
+    class EventTrack04_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack04a_F_EPB
-    {
+    class EventTrack04a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class EventTrack03a_F_EPB
-    {
+    class EventTrack03a_F_EPB {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class ambientTrack01_F_EPB
-    {
+    class ambientTrack01_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
-    class BackgroundTrack01_F_EPB
-    {
+    class BackgroundTrack01_F_EPB {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epb};
+        tags[] = {"bis", "lead", "epb"};
     };
     /* ----------------------------------------------
      a3\music_f_epc
     ---------------------------------------------- */
-    class LeadTrack01_F_EPC
-    {
+    class LeadTrack01_F_EPC {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack02_F_EPC
-    {
+    class LeadTrack02_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack03_F_EPC
-    {
+    class LeadTrack03_F_EPC {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack04_F_EPC
-    {
+    class LeadTrack04_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack05_F_EPC
-    {
+    class LeadTrack05_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack06_F_EPC
-    {
+    class LeadTrack06_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class LeadTrack06b_F_EPC
-    {
+    class LeadTrack06b_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class EventTrack01_F_EPC
-    {
+    class EventTrack01_F_EPC {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class EventTrack02_F_EPC
-    {
+    class EventTrack02_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class EventTrack02b_F_EPC
-    {
+    class EventTrack02b_F_EPC {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class EventTrack03_F_EPC
-    {
+    class EventTrack03_F_EPC {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class BackgroundTrack01_F_EPC
-    {
+    class BackgroundTrack01_F_EPC {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class BackgroundTrack02_F_EPC
-    {
+    class BackgroundTrack02_F_EPC {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class BackgroundTrack03_F_EPC
-    {
+    class BackgroundTrack03_F_EPC {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class BackgroundTrack04_F_EPC
-    {
+    class BackgroundTrack04_F_EPC {
         type = "soundtrack";
         theme = "stealth";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class C_EA_RadioBroadcast1
-    {
+    class C_EA_RadioBroadcast1 {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class C_EA_RadioBroadcast2
-    {
+    class C_EA_RadioBroadcast2 {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class C_EA_RadioMusic1
-    {
+    class C_EA_RadioMusic1 {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
-    class C_EA_RadioMusic2
-    {
+    class C_EA_RadioMusic2 {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, epc};
+        tags[] = {"bis", "lead", "epc"};
     };
     /* ----------------------------------------------
     a3\music_f_heli
     ---------------------------------------------- */
-    class LeadTrack01_F_Heli
-    {
+    class LeadTrack01_F_Heli {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, heli};
+        tags[] = {"bis", "lead", "heli"};
     };
     /* ----------------------------------------------
     a3\music_f_mark
     ---------------------------------------------- */
-    class LeadTrack01_F_Mark
-    {
+    class LeadTrack01_F_Mark {
         type = "soundtrack";
         theme = "action";
-        tags[] = {bis, lead, mark};
+        tags[] = {"bis", "lead", "mark"};
     };
-    class LeadTrack02_F_Mark
-    {
+    class LeadTrack02_F_Mark {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, mark};
+        tags[] = {"bis", "lead", "mark"};
     };
-    class LeadTrack03_F_Mark
-    {
+    class LeadTrack03_F_Mark {
         type = "soundtrack";
         theme = "calm";
-        tags[] = {bis, lead, mark};
+        tags[] = {"bis", "lead", "mark"};
     };
     /* ----------------------------------------------
     a3\music_f_exp (APEX)
     ---------------------------------------------- */
-    class LeadTrack01_F_EXP
-    {
+    class LeadTrack01_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack01a_F_EXP
-    {
+    class LeadTrack01a_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack01b_F_EXP
-    {
+    class LeadTrack01b_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack01c_F_EXP
-    {
+    class LeadTrack01c_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack02_F_EXP
-    {
+    class LeadTrack02_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack03_F_EXP
-    {
+    class LeadTrack03_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class LeadTrack04_F_EXP
-    {
+    class LeadTrack04_F_EXP {
         type = "soundtrack";
         theme = "Action";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack01_F_EXP
-    {
+    class AmbientTrack01_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack01a_F_EXP
-    {
+    class AmbientTrack01a_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack01b_F_EXP
-    {
+    class AmbientTrack01b_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack02_F_EXP
-    {
+    class AmbientTrack02_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack02a_F_EXP
-    {
+    class AmbientTrack02a_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack02b_F_EXP
-    {
+    class AmbientTrack02b_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack02c_F_EXP
-    {
+    class AmbientTrack02c_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    class AmbientTrack02d_F_EXP
-    {
+    class AmbientTrack02d_F_EXP {
         type = "soundtrack";
         theme = "Stealth";
-        tags[] = {bis, apex};
+        tags[] = {"bis", "apex"};
     };
-    
 };
