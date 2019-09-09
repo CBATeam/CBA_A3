@@ -170,5 +170,9 @@
             <English>Notification display duration in seconds.</English>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
         </Key>
+        <Key ID="STR_CBA_Ui_ContactServerAdmin">
+            <English>Contact the server admin.</English>
+            <German>Serveradministrator benachrichtigen.</German>
+        </Key>
     </Package>
 </Project>
