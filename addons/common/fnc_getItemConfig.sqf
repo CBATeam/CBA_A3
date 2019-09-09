@@ -35,10 +35,12 @@ private _result = configNull;
     };
 } forEach ["CfgWeapons", "CfgMagazines", "CfgGlasses"];
 
-private _config = configFile >> "CfgVehicles" >> _item;
+if (isNull _result) then {
+    private _config = configFile >> "CfgVehicles" >> _item;
 
-if (getNumber (_config >> "isBackpack") isEqualTo 1) then {
-    _result = _config;
+    if (getNumber (_config >> "isBackpack") isEqualTo 1) then {
+        _result = _config;
+    };
 };
 
 _result
