@@ -280,6 +280,15 @@ class asdg_MuzzleSlot_762R: asdg_MuzzleSlot { // for 7.62x39 suppressors
     class compatibleItems {};
 };
 
+
+class asdg_MuzzleSlot_762R_PK: asdg_MuzzleSlot { // for 7.62x54R PK mount suppressors
+    class compatibleItems {};
+};
+
+class asdg_MuzzleSlot_762R_SVD: asdg_MuzzleSlot { // for 7.62x54R SVD mount suppressors
+    class compatibleItems {};
+};
+
 class asdg_MuzzleSlot_58: asdg_MuzzleSlot { // for 5.8x42 suppressors
     class compatibleItems {
         muzzle_snds_58_blk_F = 1;
@@ -287,4 +296,8 @@ class asdg_MuzzleSlot_58: asdg_MuzzleSlot { // for 5.8x42 suppressors
         muzzle_snds_58_ghex_F = 1;
         muzzle_snds_58_hex_F = 1;
     };
+};
+
+class asdg_MuzzleSlot_46: asdg_MuzzleSlot { // for 4.6x30 suppressors
+    class compatibleItems {};
 };
