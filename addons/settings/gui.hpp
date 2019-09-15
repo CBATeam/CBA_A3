@@ -130,6 +130,7 @@ class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
     w = POS_W(37.5);
     h = POS_H(13.8);
     lineHeight = POS_H(1);
+
     class VScrollbar: VScrollbar {
         thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
         border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
@@ -141,9 +142,11 @@ class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
 class RscCombo {
     class ComboScrollBar;
 };
+
 class GVAR(RscCombo): RscCombo {
     arrowFull = "\a3\3DEN\Data\Controls\ctrlCombo\arrowFull_ca.paa";
     arrowEmpty = "\a3\3DEN\Data\Controls\ctrlCombo\arrowEmpty_ca.paa";
+
     class ComboScrollBar: ComboScrollBar {
         thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
         border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
