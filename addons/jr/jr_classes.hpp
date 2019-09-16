@@ -280,11 +280,9 @@ class asdg_MuzzleSlot_762R: asdg_MuzzleSlot { // for 7.62x39 suppressors
     class compatibleItems {};
 };
 
-
 class asdg_MuzzleSlot_762R_PK: asdg_MuzzleSlot { // for 7.62x54R PK mount suppressors
     class compatibleItems {};
 };
-
 class asdg_MuzzleSlot_762R_SVD: asdg_MuzzleSlot { // for 7.62x54R SVD mount suppressors
     class compatibleItems {};
 };
