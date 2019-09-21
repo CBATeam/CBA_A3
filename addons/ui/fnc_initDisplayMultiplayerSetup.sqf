@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 
-#define SEPARATORS "@"
+#define SEPARATOR_GROUP_NAME "@"
+#define SEPARATOR_UID "§"
 
 params ["_display"];
 
@@ -15,19 +16,21 @@ private _fnc_update = {
         removeMissionEventHandler ["EachFrame", GVAR(update_EHID)];
     };
 
-    private _playerList = _display displayCtrl IDC_MPSETUP_ROLES;
+    private _playerList = _display displayCtrl IDC_MPSETUP_POOL;
+    private _slotList = _display displayCtrl IDC_MPSETUP_ROLES;
 
-    for "-" from 1 to lbSize _playerList do {
-        private _text = _playerList lbText 0;
-        private _value = _playerList lbValue 0;
+    for "-" from 1 to lbSize _slotList do {
+        private _uid = "";
+        private _text = _slotList lbText 0;
+        private _value = _slotList lbValue 0;
 
         // delete old lb entry
-        _playerList lbDelete 0;
+        _slotList lbDelete 0;
 
         if (_value == -1) then {
             // lb entry was group name
             // look up first unit role and check for hidden callsign
-            private _callsign = _playerList lbText 0 splitString SEPARATORS param [1, ""];
+            private _callsign = _slotList lbText 0 splitString SEPARATOR_GROUP_NAME param [1, ""] splitString SEPARATOR_UID select 0;
 
             if (_callsign != "") then {
                 _text = _callsign;
@@ -35,12 +38,21 @@ private _fnc_update = {
         } else {
             // lb entry was role name
             // remove hidden callsign if present
-            _text = _text splitString SEPARATORS select 0;
+            _uid = _text splitString SEPARATOR_UID param [1, ""];
+            _text = _text splitString SEPARATOR_GROUP_NAME select 0;
+        };
+
+        // set UID requirement for slot index
+        if (_uid != "") then {
+            _playerList ctrlEnable false;
+            _slotList setVariable [format [QGVAR(RequiredUID_%1), _value], _uid];
+            _text = _text + " RESERVED";
         };
 
         // create new lb entry
         // value determines which slot is linked to the lb entry
-        _playerList lbSetValue [_playerList lbAdd _text, _value];
+        private _index = _slotList lbAdd _text;
+        _slotList lbSetValue [_index, _value];
     };
 
     // replace URL encoding
@@ -61,3 +73,21 @@ _display call _fnc_update;
 // lb is refreshed every frame, so we have to adjust every frame too
 _display displayAddEventHandler ["MouseMoving", _fnc_update];
 _display displayAddEventHandler ["MouseHolding", _fnc_update];
+
+// check UID requirement
+private _slotList = _display displayCtrl IDC_MPSETUP_ROLES;
+
+_slotList ctrlAddEventHandler ["LBSelChanged", {
+    params ["_slotList", "_index"];
+    private _value = _slotList lbValue _index;
+
+    private _localUID = profileNamespace getVariable [QGVAR(SteamUID), ""];
+    private _requiredUID = _slotList getVariable [format [QGVAR(RequiredUID_%1), _value], ""];
+
+    if !(_requiredUID in ["", _localUID]) then {
+        // prevent selection
+        private _temp = _slotList lbAdd "";
+        _slotList lbSetValue [_temp, -1];
+        _slotList lbSetCurSel _temp;
+    };
+}];

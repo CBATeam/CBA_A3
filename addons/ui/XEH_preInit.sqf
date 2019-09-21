@@ -31,4 +31,24 @@ FUNC(mouseButtonDown) = CBA_fnc_flexiMenu_mouseButtonDown;
 FUNC(highlightCaretKey) = CBA_fnc_flexiMenu_highlightCaretKey;
 FUNC(execute) = CBA_fnc_flexiMenu_execute;
 
+// reserved slots
+["CBA_loadingScreenDone", {
+    private _storedUID = profileNamespace getVariable [QGVAR(SteamUID), ""];
+    private _currentUID = getPlayerUID player;
+
+    if (_storedUID != _currentUID) then {
+        // Store UID in profile for reserved slots framework.
+        if !(_currentUID in ["", "_SP_AI_", "_SP_PLAYER_"]) then {
+            profileNamespace setVariable [QGVAR(SteamUID), _currentUID];
+            saveProfileNamespace;
+
+            // End the mission if the UID has been modified.
+            if (_storedUID != "") then {
+                ERROR_2("Mismatching UID in profile. Profile: %1, Unit: %2", _storedUID, _currentUID);
+                uiNamespace getVariable "RscDisplayMission" closeDisplay 0;
+            };
+        };
+    };
+}] call CBA_fnc_addEventHandler;
+
 ADDON = true;
