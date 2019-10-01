@@ -336,36 +336,6 @@ class CfgWeapons {
     };
 
     class mk20_base_F: Rifle_Base_F {
-        class WeaponSlotsInfo;
-    };
-
-    class arifle_Mk20_F: mk20_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            class CowsSlot: asdg_OpticRail1913 {
-                iconPosition[] = {0.45,0.25};
-                iconScale = 0.2;
-            };
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.35,0.35};
-                iconScale = 0.25;
-            };
-        };
-    };
-
-    class arifle_Mk20C_F: mk20_base_F {
-        class WeaponSlotsInfo: WeaponSlotsInfo {
-            class PointerSlot: asdg_FrontSideRail {
-                iconPosition[] = {0.35,0.35};
-                iconScale = 0.25;
-            };
-            class CowsSlot: asdg_OpticRail1913 {
-                iconPosition[] = {0.45,0.25};
-                iconScale = 0.2;
-            };
-        };
-    };
-
-    class arifle_Mk20_GL_F: mk20_base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             class PointerSlot: asdg_FrontSideRail {
                 iconPosition[] = {0.35,0.35};
