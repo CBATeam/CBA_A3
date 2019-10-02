@@ -26,13 +26,12 @@ SCRIPT(turretEvent);
 
 params [["_eventName", "", [""]], ["_params", []], ["_vehicle", objNull, [objNull]], ["_turretPath", [-1], [[]]]];
 
-// Execute locally if turret is local
 if (_vehicle turretLocal _turretPath) exitWith {
     CALL_EVENT(_params,_eventName);
 };
 
 if (isServer) then {
-    // Retrieve turretOwner and send the event to the owner
+    // retrieve the turret owner and send the event
     private _turretOwner = _vehicle turretOwner _turretPath;
 
     if (_turretOwner == 0) then {
@@ -41,7 +40,7 @@ if (isServer) then {
 
     SEND_EVENT_TO_CLIENT(_params,_eventName,_turretOwner);
 } else {
-    // only server knows object owners. let server handle the event.
+    // only server knows turret owners. let server handle the event.
     SEND_TUEVENT_TO_SERVER(_params,_eventName,_vehicle,_turretPath);
 };
 
