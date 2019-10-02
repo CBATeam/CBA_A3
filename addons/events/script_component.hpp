@@ -32,7 +32,7 @@
 #define SEND_TEVENT_TO_SERVER(params,name,targets) TEVENT_PVAR = [name, params, targets]; publicVariableServer TEVENT_PVAR_STR
 
 // turret events
-#define TUEVENT_PVAR CBAr
+#define TUEVENT_PVAR CBAv
 #define TUEVENT_PVAR_STR QUOTE(TUEVENT_PVAR)
 
 #define SEND_TUEVENT_TO_SERVER(params,name,vehicle,turret) TUEVENT_PVAR = [name, params, vehicle, turret]; publicVariableServer TUEVENT_PVAR_STR
