@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["test", ["target"], cursorObject, [-1]] call CBA_fnc_turretEvent;
+        ["test", ["turret"], cursorObject, [-1]] call CBA_fnc_turretEvent;
     (end)
 
 Author:
@@ -42,7 +42,7 @@ if (isServer) then {
     SEND_EVENT_TO_CLIENT(_params,_eventName,_turretOwner);
 } else {
     // only server knows object owners. let server handle the event.
-    SEND_TEVENT_TO_SERVER(_params,_eventName,_remoteTargets);
+    SEND_TUEVENT_TO_SERVER(_params,_eventName,_vehicle,_turretPath);
 };
 
 nil
