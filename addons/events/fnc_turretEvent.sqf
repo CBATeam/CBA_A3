@@ -35,7 +35,7 @@ if (isServer) then {
     private _turretOwner = _vehicle turretOwner _turretPath;
 
     if (_turretOwner == 0) then {
-        private _turretOwner = owner _vehicle;
+        _turretOwner = owner _vehicle;
     };
 
     SEND_EVENT_TO_CLIENT(_params,_eventName,_turretOwner);
