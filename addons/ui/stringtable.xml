@@ -137,6 +137,7 @@
             <Japanese>通知</Japanese>
             <Italian>Notifica</Italian>
             <Czech>Upozornění</Czech>
+            <Turkish>Bildirim</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
@@ -145,6 +146,7 @@
             <Japanese>文章でプレイヤーに通知します。</Japanese>
             <Italian>Notifica testuale al giocatore.</Italian>
             <Czech>Textová zpětná vazba hráči.</Czech>
+            <Turkish>Yazıyla geri bildirim.</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_AllMissions">
             <English>Show all missions</English>
@@ -153,6 +155,7 @@
             <Polish>Pokaż wszystkie misje</Polish>
             <Italian>Mostra tutte le missioni</Italian>
             <Czech>Ukázat všechny mise</Czech>
+            <Turkish>Tüm görevleri göster</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_CustomMissions">
             <English>Show custom missions</English>
@@ -161,18 +164,22 @@
             <Polish>Pokaż własne/wgrane misje</Polish>
             <Italian>Mostra missioni custom</Italian>
             <Czech>Ukázat vlastní mise</Czech>
+            <Turkish>Sonradan eklenen görevleri göster</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetime">
             <English>Notification Lifetime</English>
             <Czech>Doba trvání upozornění</Czech>
+            <Turkish>Bildirim Süresi</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
+            <Turkish>Bildirim gözükme süresi (saniye olarak)</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
             <German>Serveradministrator benachrichtigen.</German>
+            <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
         </Key>
     </Package>
 </Project>

@@ -6,60 +6,70 @@
             <German>Community Base Addons - Einwegwaffen</German>
             <Japanese>Community Base Addons - 使い捨て武器</Japanese>
             <Czech>Community Base Addons - Jednorázové zbraně</Czech>
+            <Turkish>Community Base Addons - Tek Kullanımlık Silahlar</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropUsedLauncher">
             <English>Drop Used Disposable Launcher</English>
             <German>Benutzten Einwegwerfer ablegen</German>
             <Japanese>使った使い捨てランチャーを落とす</Japanese>
             <Czech>Odhodit použitý jednorázový raketomet</Czech>
+            <Turkish>Kullanılan Tek Kullanımlık Roketleri At</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropNever">
             <English>Never</English>
             <German>Niemals</German>
             <Japanese>行わない</Japanese>
             <Czech>Nikdy</Czech>
+            <Turkish>Asla</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropNeverTooltip">
             <English>Don't automatically drop the used disposable launcher.</English>
             <German>Benutzten Einwegwerfer nicht automatisch ablegen.</German>
             <Japanese>使った使い捨てランチャーを自動的に落とさないようにします。</Japanese>
             <Czech>Automaticky neodhazovat použitý jednorázový raketomet.</Czech>
+            <Turkish>Otomatik olarak tek kullanımlık roketleri atma.</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
             <German>Nur KI</German>
             <Japanese>AI のみ</Japanese>
             <Czech>Pouze AI</Czech>
+            <Turkish>Sadece AI</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnlyTooltip">
             <English>Only AI drops the used disposable launcher.</English>
             <German>Nur KI legt den benutzten Einwegwerfer ab.</German>
             <Japanese>AI のみ使った使い捨てランチャーを落とすようにします。</Japanese>
             <Czech>Pouze AI odhodí použitý jednorázový raketomet.</Czech>
+            <Turkish>Sadece yapay zeka tek kullanımlık roketleri atar.</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
             <German>Andere Waffe ausgewählt</German>
             <Japanese>別の武器が選択後</Japanese>
             <Czech>Vybrána jiná zbraň</Czech>
+            <Turkish>Başka Bir Silah Seçince</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
             <German>Benutzten Einwegwerfer automatisch ablegen, sobald eine andere Waffe ausgewählt wurde.</German>
             <Japanese>他の武器を選択すると即時に使った使い捨てランチャーを自動的に落とすようにします。</Japanese>
             <Czech>Automaticky odhodit použitý jednorázový raketomet, jakmile je zvolena jiná zbraň.</Czech>
+            <Turkish>Başka bir silah seçildiği zaman otomatik olarak tek kullanımlık roketleri at.</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
             <German>Einwegwerfer ersetzten</German>
             <Japanese>使い捨てランチャーを置換</Japanese>
             <Czech>Vyměnit jednorázový raketomet</Czech>
+            <Turkish>Tek Kullanımlık Roketleri Değiştir</Turkish>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncherTooltip">
             <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
             <German>Wenn aktiviert, dann können Einwegwerfer nur einmal benutzt werden. Munition für Einwegwerfer in Kisten und Fahrzeugen wird durch geladene Einwegwerfer ersetzt. Wenn deaktiviert, dann können Einwegwerfer nach der Benutzung nachgeladen werden.</German>
             <Japanese>有効化すると、使い捨てランチャーは一度のみ使用できます。コンテナ内にある使い捨てランチャーは装填された使い捨てランチャーに置き換えられます。無効化すると、使用後に使い捨てランチャーをリロードできます。</Japanese>
             <Czech>Pokud je tato možnost zapnuta, jednorázové raketomety mohou být použity pouze jednou. Munice pro jednorázové raketomety v bednách a vozidlech budou vyměněny za nabité jednorázové raketomety. Pokud je tato možnost vypnuta, jednorázové raketomety mohou být přebity po použití.</Czech>
+            <Turkish>Eğer bu ayar açıksa, tek kullanımlık roketler sadece bir kere kullanılabilir. Tek kullanımlık rokeyler için cephane başka tek kullanımlık roketler ile değiştirilir. Bu ayar kapalıyken tek kullanımlık roketler de birçok kez kullanılabilir.</Turkish>
         </Key>
     </Package>
 </Project>
