@@ -3,14 +3,14 @@
 Function: CBA_fnc_filterLoadout
 
 Description:
-    Used to filter a getUnitLoadout array
+    Used to filter a getUnitLoadout array.
 
 Parameters:
     _loadout - getUnitLoadout array <ARRAY>
 
 Example:
     (begin example)
-        _loadout = [getUnitLoadout player] call CBA_fnc_filterLoadout
+        _loadout = [getUnitLoadout player] call CBA_fnc_filterLoadout;
     (end)
 
 Returns:

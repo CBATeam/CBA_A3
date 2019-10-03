@@ -3,7 +3,7 @@
 Function: CBA_fnc_getUnitLoadout
 
 Description:
-    Return the loadout of a unit with `CBA_fnc_filterLoadout` applied
+    Return the loadout of a unit with CBA_fnc_filterLoadout applied.
 
 Parameters:
     _unit - Unit to get loadout of <OBJECT>
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        private _loadout = [player] call CBA_fnc_getUnitLoadout
+        private _loadout = [player] call CBA_fnc_getUnitLoadout;
     (end)
 
 Author:

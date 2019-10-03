@@ -3,7 +3,7 @@
 Function: CBA_fnc_addLoadoutFilter
 
 Description:
-    Add a filter for CBA_fnc_getUnitLoadout
+    Add a filter for CBA_fnc_getUnitLoadout.
 
 Parameters:
     _function - The function you wish to execute. <CODE>
