@@ -23,7 +23,7 @@ SETPROCESSED(missionNamespace);
 
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
-XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version"));
+XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
