@@ -27,7 +27,7 @@ SCRIPT(turretEvent);
 params [["_eventName", "", [""]], ["_params", []], ["_vehicle", objNull, [objNull]], ["_turretPath", [-1], [[]]]];
 
 if (_turretPath isEqualTo []) then {
-   _turretPath = [-1];
+    _turretPath = [-1];
 };
 
 if (_vehicle turretLocal _turretPath) exitWith {
