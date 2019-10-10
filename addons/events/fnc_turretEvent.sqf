@@ -32,10 +32,10 @@ if (_vehicle turretLocal _turretPath) exitWith {
 
 if (isServer) then {
     // retrieve the turret owner and send the event
-    private _turretOwner = _vehicle turretOwner _turretPath;
-
-    if (_turretOwner == 0) then {
-        _turretOwner = owner _vehicle;
+    private _turretOwner = if (_turretPath isEqualTo [-1]) then {
+        owner _vehicle;
+    } else {
+        _vehicle turretOwner _turretPath;
     };
 
     SEND_EVENT_TO_CLIENT(_params,_eventName,_turretOwner);
