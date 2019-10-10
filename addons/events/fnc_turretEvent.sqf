@@ -9,7 +9,7 @@ Parameters:
     _eventName  - Type of event to publish. <STRING>
     _params     - Parameters to pass to the event handlers. <ANY>
     _vehicle    - Vehicle to which the turret belongs. <OBJECT>
-    _turretPath - The turret to execute on. <ARRAY>
+    _turretPath - The turret to execute on. Will accept both [] and [-1] for driver's turret. <ARRAY>
 
 Returns:
     None
