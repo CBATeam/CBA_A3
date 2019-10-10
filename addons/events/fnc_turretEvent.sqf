@@ -26,16 +26,21 @@ SCRIPT(turretEvent);
 
 params [["_eventName", "", [""]], ["_params", []], ["_vehicle", objNull, [objNull]], ["_turretPath", [-1], [[]]]];
 
+if (_turretPath isEqualTo []) then {
+   _turretPath = [-1];
+};
+
 if (_vehicle turretLocal _turretPath) exitWith {
     CALL_EVENT(_params,_eventName);
 };
 
 if (isServer) then {
     // retrieve the turret owner and send the event
-    private _turretOwner = if (_turretPath isEqualTo [-1]) then {
-        owner _vehicle;
+    private "_turretOwner";
+    if (_turretPath isEqualTo [-1]) then {
+        _turretOwner = owner _vehicle;
     } else {
-        _vehicle turretOwner _turretPath;
+        _turretOwner = _vehicle turretOwner _turretPath;
     };
 
     SEND_EVENT_TO_CLIENT(_params,_eventName,_turretOwner);
