@@ -44,20 +44,17 @@ if (isNil "_compatibleItems") then {
             if (isArray _cfgCompatibleItems) then {
                 {
                     _compatibleItems pushBackUnique _x;
-                    nil
-                } count getArray _cfgCompatibleItems;
+                } forEach getArray _cfgCompatibleItems;
             } else {
                 if (isClass _cfgCompatibleItems) then {
                     {
                         if (getNumber _x > 0) then {
                             _compatibleItems pushBackUnique configName _x;
                         };
-                        nil
-                    } count configProperties [_cfgCompatibleItems, "isNumber _x"];
+                    } forEach configProperties [_cfgCompatibleItems, "isNumber _x"];
                 };
             };
-            nil
-        } count configProperties [_cfgWeapon >> "WeaponSlotsInfo", "isclass _x"];
+        } forEach configProperties [_cfgWeapon >> "WeaponSlotsInfo", "isclass _x"];
 
         GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
     } else {
