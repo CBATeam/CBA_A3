@@ -37,8 +37,7 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
     GET_FUNCTION(_onStateLeaving,_x >> "onStateLeaving");
     [_stateMachine, _onState, _onStateEntered, _onStateLeaving, _state] call FUNC(addState);
 
-    false
-} count (configProperties [_config, "isClass _x", true]);
+} forEach (configProperties [_config, "isClass _x", true]);
 
 // We need to add the transitions in a second loop to make sure the states exist already
 {
@@ -59,10 +58,8 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
             [_stateMachine, _state, _targetState, _events, _condition, _onTransition, _transition] call FUNC(addEventTransition);
         };
 
-        false
-    } count (configProperties [_x, "isClass _x", true]);
+    } forEach (configProperties [_x, "isClass _x", true]);
 
-    false
-} count (configProperties [_config, "isClass _x", true]);
+} forEach (configProperties [_config, "isClass _x", true]);
 
 _stateMachine

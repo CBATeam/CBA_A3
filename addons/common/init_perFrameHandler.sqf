@@ -34,9 +34,8 @@ GVAR(waitUntilAndExecArray) = [];
         if (diag_tickTime > _delta) then {
             _x set [2, _delta + _delay];
             [_args, _handle] call _function;
-            false
         };
-    } count GVAR(perFrameHandlerArray);
+    } forEach GVAR(perFrameHandlerArray);
 
 
     // Execute wait and execute functions
@@ -64,8 +63,7 @@ GVAR(waitUntilAndExecArray) = [];
     // Execute the exec next frame functions
     {
         (_x select 0) call (_x select 1);
-        false
-    } count GVAR(nextFrameBufferA);
+    } forEach GVAR(nextFrameBufferA);
     // Swap double-buffer:
     GVAR(nextFrameBufferA) = GVAR(nextFrameBufferB);
     GVAR(nextFrameBufferB) = [];
