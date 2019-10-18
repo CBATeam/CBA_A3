@@ -23,7 +23,6 @@ SCRIPT(clockwork);
     private _stateMachine = _x;
     private _list = _stateMachine getVariable QGVAR(list);
     private _skipNull = _stateMachine getVariable QGVAR(skipNull);
-    private _updateCode = _stateMachine getVariable QGVAR(updateCode);
     private _id = _stateMachine getVariable QGVAR(ID);
     private _tick = _stateMachine getVariable QGVAR(tick);
 
@@ -36,6 +35,7 @@ SCRIPT(clockwork);
 
     // When the list was iterated through, jump back to start and update it
     if (_tick >= count _list) then {
+        private _updateCode = _stateMachine getVariable QGVAR(updateCode);
         _tick = 0;
         if !(_updateCode isEqualTo {}) then {
             _list = [] call _updateCode;
@@ -102,5 +102,4 @@ SCRIPT(clockwork);
     (GVAR(performanceCounters) select _id) pushBack _perfRunTime;
     #endif
 
-    false
-} count GVAR(stateMachines);
+} forEach GVAR(stateMachines);
