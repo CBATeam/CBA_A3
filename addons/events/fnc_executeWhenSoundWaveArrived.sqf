@@ -3,7 +3,7 @@
     Function: CBA_fnc_executeWhenSoundWaveArrived
 
     Description:
-        Executes code snippet if sound from an origin has arrived at the camera.
+        Executes code snippet if sound from an origin has arrived at the camera. Local effects.
 
     Parameters:
         _origin    - Object or position from where sound emits <OBJECT, PosASL>

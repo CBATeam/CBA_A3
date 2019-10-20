@@ -1,3 +1,11 @@
+
+GVAR(activeSounds)
+GVAR(activeSounds) = [] call CBA_fnc_createNamespace;
+
+
+
+/*
+
 if (hasInterface) then {
     ["CBA_playSoundSOS", {
         params ["_origin", "_sound", "_handler"];
@@ -79,3 +87,46 @@ if (hasInterface) then {
         }, _handler] call CBA_fnc_executeWhenSoundWaveArrived;
     }] call CBA_fnc_addEventHandler;
 };
+
+*/
+
+
+/*start
+params [["_origin", objNull], ["_sound", "", ["", []]]];
+
+if (!isNil QGVAR(publicSounds)) then {
+    GVAR(publicSounds) = [] call CBA_fnc_createNamespace;
+};
+
+private _id = (GVAR(publicSounds) getVariable ["#id", -1]) + 1;
+
+if (_id > 1E7) exitWith {
+    ERROR_1("Maximum amount of sound ids reached. Sound was %1.", _sound);
+    nil
+};
+
+GVAR(publicSounds) setVariable ["#id", _id];
+
+private _handler = format ["%1:%2", CBA_clientID, _id];
+
+if (_origin isEqualType objNull && {typeOf _origin isEqualTo ""}) then {
+    // Origin is dummy.
+    ["CBA_playSoundSOS", [_origin, _sound, _handler]] call CBA_fnc_globalEvent;
+} else {
+    // Origin is position or proper object, @todo CfgAmmo?
+    ["CBA_playSoundSOS_createDummy", [_origin, _sound, _handler]] call CBA_fnc_globalEvent;
+};
+
+_handler
+
+
+
+
+
+
+/*stop
+params [["_handler", "empty", [""]]];
+
+["CBA_stopSoundSOS", _handler] call CBA_fnc_globalEvent;
+
+nil

@@ -3,7 +3,7 @@
     Function: CBA_fnc_stopSoundSOS
 
     Description:
-        Stops sound from object or position with speed of sound delay.
+        Stops sound from object or position with speed of sound delay. Global effects.
 
     Parameters:
         _handler - Sound handler reported by CBA_fnc_playSoundSOS <ARRAY>
@@ -19,9 +19,3 @@
     Author:
         commy2
 ---------------------------------------------------------------------------- */
-
-params [["_handler", "empty", [""]]];
-
-["CBA_stopSoundSOS", _handler] call CBA_fnc_globalEvent;
-
-nil
