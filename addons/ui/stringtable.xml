@@ -13,6 +13,7 @@
             <Polish>Community Base Addons - Interfejs Użytkownika</Polish>
             <Turkish>Community Base Addons - Kullanıcı Arayüzü</Turkish>
             <Italian>Community Base Addons - Interfaccia utente</Italian>
+            <Czech>Community Base Addons - Uživatelské prostředí</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_ProgressBarPositionName">
             <English>Progress Bar</English>
@@ -24,6 +25,7 @@
             <Polish>Pasek postępu</Polish>
             <Turkish>Yükleme Çubuğu</Turkish>
             <Italian>Barra di avanzamento</Italian>
+            <Czech>Ukazatel průběhu</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
@@ -35,6 +37,7 @@
             <Polish>Pozycja paska postępu.</Polish>
             <Turkish>Yükleme çubuğunun konumu.</Turkish>
             <Italian>Posizione della barra di avanzamento</Italian>
+            <Czech>Pozici ukazatele průběhu.</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_Category">
             <English>CBA UI</English>
@@ -44,6 +47,8 @@
             <Turkish>CBA UI</Turkish>
             <Japanese>CBA UI</Japanese>
             <Italian>CBA IU</Italian>
+            <Czech>CBA UI</Czech>
+            <Spanish>CBA Interfaz</Spanish>
         </Key>
         <Key ID="STR_CBA_Ui_StoreServerPasswords">
             <English>Store server passwords</English>
@@ -53,6 +58,7 @@
             <Turkish>Sunucu şifrelerini kaydet</Turkish>
             <Japanese>サーバーのパスワードを保存</Japanese>
             <Italian>Salva le password per i server</Italian>
+            <Czech>Ukládat hesla serveru</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
@@ -62,6 +68,7 @@
             <Turkish>Çok oyunculu bir sunucuya bağlanırken girilen şifreleri kaydetme ayarı.</Turkish>
             <Japanese>マルチプレイヤーのサーバーへ接続時に入力されたパスワードの保存設定を行います。</Japanese>
             <Italian>Impostazione per salvare le password immesse quando ci si collega a server multiplayer.</Italian>
+            <Czech>Uloží zadané heslo, když se připojujete k multiplayerovému serveru.</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_SavePasswords">
             <English>Save passwords</English>
@@ -71,6 +78,7 @@
             <Turkish>Şifreleri kaydet</Turkish>
             <Japanese>パスワードを保存</Japanese>
             <Italian>Salva le password</Italian>
+            <Czech>Ukládat hesla</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
@@ -80,6 +88,7 @@
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilir.</Turkish>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存します。</Japanese>
             <Italian>Quando ci si connette ad un server multiplayer, le password verranno salvate.</Italian>
+            <Czech>Hesla jsou uložena, když se připojujete k multiplayerovému serveru.</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_DoNotSavePasswords">
             <English>Do not save passwords</English>
@@ -89,6 +98,7 @@
             <Turkish>Şifreleri kaydetme</Turkish>
             <Japanese>パスワードを保存しない</Japanese>
             <Italian>Non salvare le password</Italian>
+            <Czech>Neukládat hesla</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
@@ -98,6 +108,7 @@
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler otomatik olarak doldurulmaz.</Turkish>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードも自動的に入力されません。</Japanese>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Le password precedentemente salvate non verranno immesse automaticamente.</Italian>
+            <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, nebudou automaticky zadávána.</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_DeletePasswords">
             <English>Delete passwords</English>
@@ -107,6 +118,7 @@
             <Turkish>Şifreleri sil</Turkish>
             <Japanese>パスワードを削除</Japanese>
             <Italian>Cancella le password</Italian>
+            <Czech>Smazat hesla</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
@@ -116,6 +128,7 @@
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler bilgisayardan silinir.</Turkish>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードはプロフィールから削除します。</Japanese>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Non saranno usate password precedentemente salvate.</Italian>
+            <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, jsou smazána z profilu.</Czech>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationPositionName">
             <English>Notification</English>
@@ -123,6 +136,8 @@
             <Polish>Powiadomienie</Polish>
             <Japanese>通知</Japanese>
             <Italian>Notifica</Italian>
+            <Czech>Upozornění</Czech>
+            <Turkish>Bildirim</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
@@ -130,6 +145,8 @@
             <Polish>Tekstowa informacja dla gracza.</Polish>
             <Japanese>文章でプレイヤーに通知します。</Japanese>
             <Italian>Notifica testuale al giocatore.</Italian>
+            <Czech>Textová zpětná vazba hráči.</Czech>
+            <Turkish>Yazıyla geri bildirim.</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_AllMissions">
             <English>Show all missions</English>
@@ -137,6 +154,8 @@
             <Japanese>全ミッションを表示</Japanese>
             <Polish>Pokaż wszystkie misje</Polish>
             <Italian>Mostra tutte le missioni</Italian>
+            <Czech>Ukázat všechny mise</Czech>
+            <Turkish>Tüm görevleri göster</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_CustomMissions">
             <English>Show custom missions</English>
@@ -144,12 +163,23 @@
             <Japanese>カスタム ミッションを表示</Japanese>
             <Polish>Pokaż własne/wgrane misje</Polish>
             <Italian>Mostra missioni custom</Italian>
+            <Czech>Ukázat vlastní mise</Czech>
+            <Turkish>Sonradan eklenen görevleri göster</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetime">
             <English>Notification Lifetime</English>
+            <Czech>Doba trvání upozornění</Czech>
+            <Turkish>Bildirim Süresi</Turkish>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
+            <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
+            <Turkish>Bildirim gözükme süresi (saniye olarak)</Turkish>
+        </Key>
+        <Key ID="STR_CBA_Ui_ContactServerAdmin">
+            <English>Contact the server admin.</English>
+            <German>Serveradministrator benachrichtigen.</German>
+            <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
         </Key>
     </Package>
 </Project>

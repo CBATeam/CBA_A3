@@ -21,6 +21,7 @@ class CfgFunctions {
             PATHTO_FNC(serverEvent);
             PATHTO_FNC(remoteEvent);
             PATHTO_FNC(targetEvent);
+            PATHTO_FNC(turretEvent);
             PATHTO_FNC(ownerEvent);
             PATHTO_FNC(addMarkerEventHandler);
             PATHTO_FNC(removeMarkerEventHandler);

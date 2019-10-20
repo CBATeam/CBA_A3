@@ -42,6 +42,7 @@
     };
 
     class CBA_762x51_SCAR {};       // SCAR-H
+    class CBA_762x51_SCAR_EGLM {};  // SCAR-H with EGLM/FN40GL/Mk 13 Mod 0 grenage launcher (This extends the length of the magwell and prevents mags that are too short or wide from being used)
     class CBA_762x51_SIGAMT {};     // SIG 510-4, AMT
 
     //Deprecated classes do not use

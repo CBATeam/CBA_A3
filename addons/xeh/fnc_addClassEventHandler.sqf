@@ -79,8 +79,7 @@ _entities = _entities arrayIntersect _entities; // entities can return duplicate
             };
         };
     };
-    true
-} count _entities;
+} forEach _entities;
 
 // define for units that are created later
 private _events = EVENTHANDLERS(_eventName,_className);

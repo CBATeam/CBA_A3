@@ -52,6 +52,8 @@
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9
+    class CBA_9x19_UZI {};          // UZI
+    class CBA_9x19_UZI_Pro {};      // UZI Pro
     class CBA_9x19_Vis {};          // wz. 35 Vis (Radom)
     class CBA_9x19_Vityaz {};       // Vityaz-SN
     class CBA_9x19_Vz68 {};         // Škorpion (vz. 68)
