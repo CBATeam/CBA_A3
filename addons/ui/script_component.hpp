@@ -88,3 +88,6 @@
 
 // array select with bounds check (for optional parameters)
 #define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then {##array2 select ##index3} else {##default4};
+
+#define IDC_GRAPH_BACKGROUND 1000
+#define IDC_GRAPH_SCRIPT 1001

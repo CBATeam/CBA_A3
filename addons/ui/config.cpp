@@ -49,3 +49,23 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
 #include "flexiMenu\data\menu_buttonList.hpp"
 #include "flexiMenu\data\menu_iconRow.hpp"
 #include "flexiMenu\data\menu_popup.hpp"
+
+class RscControlsGroupNoScrollbars;
+class CBA_ctrlGraph: RscControlsGroupNoScrollbars {
+    onLoad = QUOTE(call (uiNamespace getVariable 'FUNC(initScriptedGraph)'));
+
+    class controls {
+        class GVAR(Background): RscText {
+            idc = IDC_GRAPH_BACKGROUND;
+        };
+
+        class GVAR(Script): RscMapControl {
+            onDraw = QUOTE(call (uiNamespace getVariable 'FUNC(updateScriptedGraph)'));
+            idc = IDC_GRAPH_SCRIPT;
+            x = 0;
+            y = 0;
+            w = 0;
+            h = 0;
+        };
+    };
+};

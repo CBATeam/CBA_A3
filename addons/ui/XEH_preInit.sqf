@@ -13,6 +13,9 @@ if (hasInterface) then {
             QGVAR(ProgressBar) cutRsc [QGVAR(ProgressBar), "PLAIN"];
         };
     }];
+
+    PREP(initScriptedGraph);
+    PREP(updateScriptedGraph);
 };
 
 // legacy function names
