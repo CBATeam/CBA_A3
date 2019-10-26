@@ -1,5 +1,4 @@
 
-GVAR(activeSounds)
 GVAR(activeSounds) = [] call CBA_fnc_createNamespace;
 
 
