@@ -33,7 +33,7 @@ if (_reset) then {
 
     // PIP technique by BadBenson
     GVAR(camera) = "camera" camCreate positionCameraToWorld [0,0,0];
-    GVAR(camera) camSetFov 1.02;
+    GVAR(camera) camSetFov 0.75;
     GVAR(camera) camSetTarget _unit;
     GVAR(camera) camCommit 1;
 

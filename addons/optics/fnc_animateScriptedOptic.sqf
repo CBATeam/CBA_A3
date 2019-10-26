@@ -63,7 +63,7 @@ GVAR(camera) camCommitPrepared 0;
 
 // @todo, check if that needs to be done at all
 if (cameraView == "GUNNER") then {
-    GVAR(camera) camSetFOV 1.02;
+    GVAR(camera) camSetFOV 0.75;
     GVAR(camera) camCommit 0;
 } else {
     GVAR(camera) camSetFOV 0.01;
