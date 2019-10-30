@@ -17,7 +17,12 @@ if (!hasInterface) exitWith {};
     {
         (EGVAR(keybinding,addons) getVariable _x) params ["_addon", "_addonActions"];
 
-        _keys = _keys + format ["%1:<br/>", _addon];
+        private _name = _addon;
+        if (isLocalized _name) then {
+            _name = localize _name;
+        };
+
+        _keys = _keys + format ["%1:<br/>", _name];
 
         {
             (EGVAR(keybinding,actions) getVariable (_addon + "$" + _x)) params ["_displayName", "", "_keybinds"];
@@ -37,7 +42,7 @@ if (!hasInterface) exitWith {};
     // delete last line breaks
     _keys = _keys select [0, count _keys - 10];
 
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Help_Keys", _keys]], taskNull, "", false];
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]], taskNull, "", false];
-    _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]], taskNull, "", false];
+    GVAR(DiaryRecordKeys) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Help_Keys", _keys]], taskNull, "", false];
+    GVAR(DiaryRecordCredits) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]], taskNull, "", false];
+    GVAR(DiaryRecordAddons) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]], taskNull, "", false];
 } call CBA_fnc_execNextFrame;
