@@ -229,6 +229,16 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class ReammoBox;
+    class WeaponHolder: ReammoBox {
+        XEH_ENABLED;
+    };
+
+    class ThingX;
+    class WeaponHolderSimulated: ThingX {
+        XEH_ENABLED;
+    };
+
     // backwards comp, inert
     class SLX_XEH_Logic: Logic {
         scope = 1;
@@ -348,7 +358,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class ThingX;
     class Alien_MatterBall_01_base_F: ThingX {
         XEH_ENABLED;
     };
