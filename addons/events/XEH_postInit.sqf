@@ -88,7 +88,7 @@ if (isServer) then {
 }] call CBA_fnc_addDisplayHandler;
 
 addMissionEventHandler ["ExtensionCallback", {
-	params ["_name", "_function", "_data"];
+    params ["_name", "_function", "_data"];
 
     if !(_name isEqualTo "cba_events") exitWith {};
 
