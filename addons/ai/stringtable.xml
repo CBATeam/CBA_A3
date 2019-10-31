@@ -19,6 +19,7 @@
             <German>KI Gebäudeposition</German>
             <Czech>Poloha stavby AI</Czech>
             <Turkish>AI Bina Pozisyonu</Turkish>
+            <Japanese>AI の建物内での位置</Japanese>
         </Key>
     </Package>
 </Project>

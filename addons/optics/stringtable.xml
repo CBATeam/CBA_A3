@@ -24,12 +24,14 @@
             <German>Absehen umschalten</German>
             <Czech>Zapnout retikulum</Czech>
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
+            <Japanese>照準線切り替え</Japanese>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
             <German>Absehen der Optik manuell umschalten.</German>
             <Czech>Manuálně přepnout retikulum optiky</Czech>
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
+            <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
         </Key>
     </Package>
 </Project>

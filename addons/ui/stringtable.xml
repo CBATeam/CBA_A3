@@ -170,16 +170,19 @@
             <English>Notification Lifetime</English>
             <Czech>Doba trvání upozornění</Czech>
             <Turkish>Bildirim Süresi</Turkish>
+            <Japanese>通知の表示時間</Japanese>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
             <Turkish>Bildirim gözükme süresi (saniye olarak)</Turkish>
+            <Japanese>通知が表示される時間を秒で変更できます。</Japanese>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
             <German>Serveradministrator benachrichtigen.</German>
             <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
+            <Japanese>サーバー管理者に連絡をして下さい。</Japanese>
         </Key>
     </Package>
 </Project>
