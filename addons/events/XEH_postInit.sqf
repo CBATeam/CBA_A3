@@ -86,3 +86,32 @@ if (isServer) then {
         GVAR(triggerPressed) = false;
     };
 }] call CBA_fnc_addDisplayHandler;
+
+addMissionEventHandler ["ExtensionCallback", {
+	params ["_name", "_function", "_data"];
+
+    if !(_name isEqualTo "cba_events") exitWith {};
+
+    private _data = parseSimpleArray _data;
+    _data params ["_event", "_params", "_targets"];
+    switch (_function) do {
+        case "localEvent": {
+            [_event, _params] call CBA_fnc_localEvent;
+        };
+        case "targetEvent": {
+            [_event, _params, _targets] call CBA_fnc_targetEvent;
+        };
+        case "serverEvent": {
+            [_event, _params] call CBA_fnc_serverEvent;
+        };
+        case "remoteEvent": {
+            [_event, _params] call CBA_fnc_remoteEvent;
+        };
+        case "globalEvent": {
+            [_event, _params] call CBA_fnc_globalEvent;
+        };
+        case "globalEventJIP": {
+            [_event, _params] call CBA_fnc_globalEventJIP;
+        };
+    };
+}];
