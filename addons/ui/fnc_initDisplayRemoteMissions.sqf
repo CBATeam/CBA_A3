@@ -30,11 +30,13 @@ _ctrlMaps lbSetCurSel 0;
 
 ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
+private _widthSearchBar = (_width - 11 * GUI_GRID_W) min (10 * GUI_GRID_W);
+
 private _ctrlSearch = _display ctrlCreate ["RscEdit", IDC_SEARCH];
 _ctrlSearch ctrlSetPosition [
     _left + 0.1 * GUI_GRID_W,
     _top,
-    _width - 21.2 * GUI_GRID_W,
+    _widthSearchBar,
     GUI_GRID_H
 ];
 _ctrlSearch ctrlCommit 0;
@@ -44,7 +46,7 @@ _ctrlSearch ctrlSetText _filter;
 
 private _ctrlSearchButton = _display ctrlCreate ["RscButtonSearch", IDC_SEARCH_BUTTON];
 _ctrlSearchButton ctrlSetPosition [
-    _left + _width - 21 * GUI_GRID_W,
+    _left + 0.1 * GUI_GRID_W + _widthSearchBar,
     _top,
     GUI_GRID_W,
     GUI_GRID_H
@@ -91,6 +93,10 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
     private _missions = [];
     for "_i" from 0 to (lbSize _ctrlMissions - 1) do {
         private _name = _ctrlMissions lbText _i;
+        with uiNamespace do {
+            _name = _name call CBA_fnc_decodeURL;
+        };
+
         private _value = _ctrlMissions lbValue _i;
         private _data = _ctrlMissions lbData _i;
         private _color = _ctrlMissions lbColor _i;

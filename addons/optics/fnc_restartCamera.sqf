@@ -33,12 +33,12 @@ if (_reset) then {
 
     // PIP technique by BadBenson
     GVAR(camera) = "camera" camCreate positionCameraToWorld [0,0,0];
-    GVAR(camera) camSetFov 0.7;
+    GVAR(camera) camSetFov 0.75;
     GVAR(camera) camSetTarget _unit;
     GVAR(camera) camCommit 1;
 
-    QGVAR(rendertarget0) setPiPEffect [2, 1.0, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0], [0.199, 0.587, 0.114, 0.0]];
     GVAR(camera) cameraEffect ["INTERNAL", "BACK", QGVAR(rendertarget0)];
+    QGVAR(rendertarget0) setPiPEffect [0];
 
     INFO("Scripted camera restarted.");
 };

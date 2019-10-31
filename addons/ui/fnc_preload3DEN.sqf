@@ -73,6 +73,23 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 private _magazines = [];
 private _magazinesLists = [];
 
+// cache magwells
+private _magwells = call CBA_fnc_createNamespace;
+
+{
+    private _magazines = [];
+
+    {
+        if (isArray _x) then {
+            _magazines append getArray _x;
+        };
+    } forEach configProperties [_x];
+
+    _magwells setVariable [configName _x, _magazines];
+} forEach ("true" configClasses (configFile >> "CfgMagazineWells"));
+
+private _cache = [];
+
 {
     private _item = toLower configName _x;
     (_item call BIS_fnc_itemType) params ["_itemCategory", "_itemType"];
@@ -93,7 +110,7 @@ private _magazinesLists = [];
                     _displayName,
                     getText (_cfgWeapons >> getText (_x >> "item") >> "displayName")
                 ];
-            } forEach ("true" configClasses (_weaponConfig >> "linkeditems")); //configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
+            } forEach configProperties [_weaponConfig >> "linkeditems", "isClass _x"];
 
             _listItem pushBack [
                 _displayName,
@@ -113,25 +130,42 @@ private _magazinesLists = [];
                     _muzzleConfig = _weaponConfig >> _x;
                 };
 
-                {
-                    private _item = toLower _x;
+                private _compatibleMagazines = getArray (_muzzleConfig >> "magazines");
 
-                    if (_magazinesLists pushBackUnique [_item, _listItem] != -1) then {
-                        private _magazineConfig = _cfgMagazines >> _item;
+                private _magWell = getArray (_muzzleConfig >> "magazineWell");
+                if (isNil {_magwells getVariable str _magWell}) then {
+                    private _magazines = [];
 
-                        if (getNumber (_magazineConfig >> "scope") == 2) then {
-                            _listItem pushBack [
-                                getText (_magazineConfig >> "displayName"),
-                                _item,
-                                getText (_magazineConfig >> "picture"),
-                                2,
-                                _item in _magazines
-                            ];
+                    {
+                        _magazines append (_magwells getVariable [_x, []]);
+                    } forEach _magWell;
 
-                            _magazines pushBack _item;
+                    _magwells setVariable [str _magWell, _magazines];
+                };
+
+                _compatibleMagazines append (_magwells getVariable str _magWell);
+
+                if (_cache pushBackUnique [_compatibleMagazines, _listItem] != -1) then {
+                    {
+                        private _item = toLower _x;
+
+                        if (_magazinesLists pushBackUnique [_item, _listItem] != -1) then {
+                            private _magazineConfig = _cfgMagazines >> _item;
+
+                            if (getNumber (_magazineConfig >> "scope") == 2) then {
+                                _listItem pushBack [
+                                    getText (_magazineConfig >> "displayName"),
+                                    _item,
+                                    getText (_magazineConfig >> "picture"),
+                                    2,
+                                    _item in _magazines
+                                ];
+
+                                _magazines pushBack _item;
+                            };
                         };
-                    };
-                } forEach getArray (_muzzleConfig >> "magazines");
+                    } forEach _compatibleMagazines;
+                };
             } forEach getArray (_weaponConfig >> "muzzles");
         };
     };
@@ -179,10 +213,7 @@ private _listHeadgear = _list select 10;
     };
 } forEach ("true" configClasses (configFile >> "CfgGlasses"));
 
-{
-    _x sort true;
-} forEach _list;
-
 _itemTypes call CBA_fnc_deleteNamespace;
+_magwells call CBA_fnc_deleteNamespace;
 
 true

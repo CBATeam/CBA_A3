@@ -7,8 +7,10 @@ PREP(initDisplayMultiplayerSetup);
 PREP(initDisplayOptionsLayout);
 PREP(initDisplayPassword);
 PREP(initDisplayRemoteMissions);
+PREP(initDisplayDiary);
 PREP(initDisplay3DEN);
 PREP(initDisplayCurator);
+PREP(initDisplayMessageBox);
 
 PREP(preload3DEN);
 PREP(preloadCurator);

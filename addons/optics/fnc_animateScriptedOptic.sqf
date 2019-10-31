@@ -31,6 +31,7 @@ private _ctrlBodyNight = _display displayCtrl IDC_BODY_NIGHT;
 private _ctrlBlackScope = _display displayCtrl IDC_BLACK_SCOPE;
 private _ctrlBlackLeft = _display displayCtrl IDC_BLACK_LEFT;
 private _ctrlBlackRight = _display displayCtrl IDC_BLACK_RIGHT;
+private _ctrlReticleSafezone = _display displayCtrl IDC_RETICLE_SAFEZONE;
 private _ctrlZeroing = _display displayCtrl 168;
 private _ctrlMagnification = _display displayCtrl IDC_MAGNIFICATION;
 
@@ -62,7 +63,7 @@ GVAR(camera) camCommitPrepared 0;
 
 // @todo, check if that needs to be done at all
 if (cameraView == "GUNNER") then {
-    GVAR(camera) camSetFOV 0.7;
+    GVAR(camera) camSetFOV 0.75;
     GVAR(camera) camCommit 0;
 } else {
     GVAR(camera) camSetFOV 0.01;
@@ -77,7 +78,7 @@ _ctrlMagnification ctrlSetText format [
     [_zoom, 1, 1] call CBA_fnc_formatNumber
 ];
 
-_ctrlMagnification ctrlShow (_zoom >= 1);
+_ctrlMagnification ctrlShow (_zoom >= 1 && {!GVAR(hideMagnification)});
 
 private _positionMagnification = ctrlPosition _ctrlZeroing;
 _positionMagnification set [0, _positionMagnification#0 + ctrlTextWidth _ctrlZeroing];
@@ -89,6 +90,12 @@ _ctrlMagnification ctrlCommit 0;
 private _dayOpacity = AMBIENT_BRIGHTNESS;
 private _nightOpacity = [1,0] select (_dayOpacity == 1);
 
+private _useReticleNight = GVAR(useReticleNight);
+
+if (!GVAR(manualReticleNightSwitch)) then {
+    _useReticleNight = _dayOpacity < 0.5;
+};
+
 // Apply lighting and make layers visible.
 private _texture = "";
 private _detailScaleFactor = 1;
@@ -97,7 +104,7 @@ private _detailScaleFactor = 1;
     _x params ["_zoomX", "_textureX", "_detailScaleFactorX", "_textureXNight"];
 
     if (_zoom > _zoomX) then {
-        _texture = [_textureX, _textureXNight] select (_dayOpacity < 0.5);
+        _texture = [_textureX, _textureXNight] select _useReticleNight;
         _detailScaleFactor = _detailScaleFactorX;
     };
 } forEach GVAR(OpticReticleDetailTextures);
@@ -109,6 +116,17 @@ _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
 _ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
 
+// tilt while leaning
+private _bank = 0;
+
+if (!GVAR(disableTilt)) then {
+    _bank = call FUNC(gunBank);
+};
+
+_ctrlReticle ctrlSetAngle [_bank, 0.5, 0.5];
+_ctrlBody ctrlSetAngle [_bank, 0.5, 0.5];
+_ctrlBodyNight ctrlSetAngle [_bank, 0.5, 0.5];
+
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
 
@@ -118,12 +136,12 @@ if (_zoom >= 1) then {
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
-
 private _sizeReticle = _reticleAdjust * _detailScaleFactor;
+ctrlPosition _ctrlReticleSafezone params ["_reticleSafeZonePositionLeft", "_reticleSafeZonePositionTop"];
 
 private _positionReticle = [
-    POS_X(_sizeReticle) - RETICLE_SAFEZONE_LEFT,
-    POS_Y(_sizeReticle) - RETICLE_SAFEZONE_TOP,
+    POS_X(_sizeReticle) - _reticleSafeZonePositionLeft,
+    POS_Y(_sizeReticle) - _reticleSafeZonePositionTop,
     POS_W(_sizeReticle),
     POS_H(_sizeReticle)
 ];

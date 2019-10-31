@@ -17,9 +17,14 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 #define PARSE(value) (call compile format ["%1", value])
 #define AMBIENT_BRIGHTNESS (sunOrMoon * sunOrMoon * (1 - overcast * 0.25) + moonIntensity / 5 * (1 - overcast) min 1) // idea by Falke
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
+
+#define SOUND_RETICLE_SWITCH ["A3\Sounds_F\arsenal\weapons\UGL\Firemode_ugl",0.31622776,1,5]
+#define THIRD_SCREEN_WIDTH ((safezoneX - safezoneXAbs) * ((getResolution select 4)/(16/3)))
 
 // control ids
 #define IDC_RETICLE 4000
@@ -40,11 +45,11 @@
 #define POS_X(size) (0.5 - 0.5 * POS_W(size))
 #define POS_Y(size) (0.5 - 0.5 * POS_H(size))
 
-#define RETICLE_SAFEZONE_SIZE 0.84
-#define RETICLE_SAFEZONE_WIDTH POS_W(RETICLE_SAFEZONE_SIZE)
-#define RETICLE_SAFEZONE_HEIGHT POS_H(RETICLE_SAFEZONE_SIZE)
-#define RETICLE_SAFEZONE_LEFT POS_X(RETICLE_SAFEZONE_SIZE)
-#define RETICLE_SAFEZONE_TOP POS_Y(RETICLE_SAFEZONE_SIZE)
+#define RETICLE_SAFEZONE_DEFAULT_SIZE 0.84
+#define RETICLE_SAFEZONE_DEFAULT_WIDTH POS_W(RETICLE_SAFEZONE_DEFAULT_SIZE)
+#define RETICLE_SAFEZONE_DEFAULT_HEIGHT POS_H(RETICLE_SAFEZONE_DEFAULT_SIZE)
+#define RETICLE_SAFEZONE_DEFAULT_LEFT POS_X(RETICLE_SAFEZONE_DEFAULT_SIZE)
+#define RETICLE_SAFEZONE_DEFAULT_TOP POS_Y(RETICLE_SAFEZONE_DEFAULT_SIZE)
 
 // scope animation config
 #define SCOPE_RECOIL_COEF 1

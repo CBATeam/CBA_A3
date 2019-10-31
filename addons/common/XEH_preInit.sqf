@@ -71,4 +71,7 @@ activateAddons GVAR(addons);
     }];
 }] call CBA_fnc_addClassEventHandler;
 
+// Facewear randomization
+["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
+
 ADDON = true;

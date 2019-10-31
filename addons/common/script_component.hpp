@@ -13,3 +13,8 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #define DUMMY_POSITION [-1000, -1000, 0]
+
+#define YEAR(x) class Number##x {\
+    name = QUOTE(x);\
+    value = x;\
+}

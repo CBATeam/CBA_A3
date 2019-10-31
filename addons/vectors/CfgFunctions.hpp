@@ -22,6 +22,7 @@ class CfgFunctions {
             PATHTO_FNC(vectRotate2D);
             PATHTO_FNC(vectRotate3D);
             PATHTO_FNC(vectSubtract);
+            PATHTO_FNC(randomVector3D);
         };
     };
 };

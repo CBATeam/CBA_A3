@@ -5,11 +5,12 @@
 // We will use the DATE for the BUILD# in the format YYMMDD - VM
 #include "script_version.hpp"
 
-#define VERSION MAJOR.MINOR.PATCHLVL.BUILD
-#define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
+#define VERSION     MAJOR.MINOR
+#define VERSION_STR MAJOR.MINOR.PATCHLVL.BUILD
+#define VERSION_AR  MAJOR,MINOR,PATCHLVL,BUILD
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.84
+#define REQUIRED_VERSION 1.94
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)

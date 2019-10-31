@@ -9,3 +9,4 @@ PREP(changeCarryHandleOpticClass);
 PREP(setOpticMagnification);
 PREP(setOpticMagnificationHelper);
 PREP(setOpticMagnificationHelperZeroing);
+PREP(gunBank);

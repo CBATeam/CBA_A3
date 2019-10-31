@@ -12,6 +12,8 @@ if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
 
 if (!hasInterface) exitWith {};
 
+#include "initKeybinds.sqf"
+
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
 GVAR(camera) = objNull;
@@ -28,6 +30,12 @@ GVAR(OpticReticleDetailTextures) = [];
 GVAR(OpticBodyTexture) = "";
 GVAR(OpticBodyTextureNight) = "";
 GVAR(ppEffects) = [];
+GVAR(manualReticleNightSwitch) = false;
+GVAR(useReticleNight) = false;
+GVAR(reticleSafezoneSize) = RETICLE_SAFEZONE_DEFAULT_SIZE;
+GVAR(hidePeripheralVision) = false;
+GVAR(hideMagnification) = false;
+GVAR(disableTilt) = false;
 
 // Update optic info.
 ["weapon", {
@@ -38,6 +46,7 @@ GVAR(ppEffects) = [];
 ["loadout", {
     params ["_unit"];
     _unit call FUNC(updateOpticInfo);
+    _unit call FUNC(changePIPOpticClass);
     _unit call FUNC(changeCarryHandleOpticClass);
 }] call CBA_fnc_addPlayerEventHandler;
 

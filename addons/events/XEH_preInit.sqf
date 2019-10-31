@@ -21,6 +21,7 @@ if (isServer) then {
 
     if (isServer) then {
         TEVENT_PVAR_STR addPublicVariableEventHandler {(_this select 1) call CBA_fnc_targetEvent};
+        TUEVENT_PVAR_STR addPublicVariableEventHandler {(_this select 1) call CBA_fnc_turretEvent};
     };
 };
 
