@@ -37,4 +37,4 @@ private _bestScore = -1e99;
     };
 } forEach _array;
 
-_return
+RETNIL(_return)
