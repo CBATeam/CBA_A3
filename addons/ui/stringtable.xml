@@ -168,12 +168,14 @@
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetime">
             <English>Notification Lifetime</English>
+            <German>Benachrichtigung-Anzeigedauer</German>
             <Czech>Doba trvání upozornění</Czech>
             <Turkish>Bildirim Süresi</Turkish>
             <Japanese>通知の表示時間</Japanese>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
+            <German>Anzeigedauer der Benachrichtigungen in Sekunden.</German>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
             <Turkish>Bildirim gözükme süresi (saniye olarak)</Turkish>
             <Japanese>通知が表示される時間を秒で変更できます。</Japanese>
