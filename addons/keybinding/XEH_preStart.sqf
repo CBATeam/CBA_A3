@@ -165,25 +165,13 @@ private _supportedKeys = [
     DIK_XBOX_RIGHT_THUMB
 ];
 
-_supportedKeys = _supportedKeys apply {
-    // strip away additional quote marks
-    // Turkish keyboard which has a double quotes key (41), will throw an error in parseSimpleArray
-
-    private _formatedKeyname = format ["[%1]", keyName _x];
-    private _keyName = if (_formatedKeyname != "[""""""]") then {
-        (parseSimpleArray _formatedKeyname) select 0;
-    } else {
-        "''"
-    };
-
-    [str _x, _keyName]
-};
+_supportedKeys = _supportedKeys apply {[str _x, KEY_NAME(_x)]};
 
 GVAR(keyNamesHash) = [_supportedKeys] call CBA_fnc_hashCreate;
 
 // manually add mouse key localizations to our inofficial DIK codes
 {
-    [GVAR(keyNamesHash), str (_x select 0), parseSimpleArray format ["[%1]", keyName (_x select 1)] select 0] call CBA_fnc_hashSet;
+    [GVAR(keyNamesHash), str (_x select 0), KEY_NAME(_x select 1)] call CBA_fnc_hashSet;
 } forEach [
     [0xF0, 0x10000], // LMB
     [0xF1, 0x10081], // RMB
