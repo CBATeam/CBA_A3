@@ -53,6 +53,9 @@ if (_hold isEqualType true) then {
 
 // Start of the actual function
 [_group] call CBA_fnc_clearWaypoints;
+{
+    _x enableAI "PATH";
+} forEach units _group;
 
 private _statics = _position nearObjects ["StaticWeapon", _radius];
 private _buildings = _position nearObjects ["Building", _radius];
