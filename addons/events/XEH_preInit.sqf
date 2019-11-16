@@ -13,6 +13,8 @@ GVAR(eventHashes) = call CBA_fnc_createNamespace;
 if (isServer) then {
     GVAR(eventNamespaceJIP) = true call CBA_fnc_createNamespace;
     publicVariable QGVAR(eventNamespaceJIP);
+
+    [QGVAR(removeGlobalEventJIP), CBA_fnc_removeGlobalEventJIP] call CBA_fnc_addEventHandler;
 };
 
 // can't add at preInit
