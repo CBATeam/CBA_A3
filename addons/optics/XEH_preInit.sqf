@@ -96,7 +96,7 @@ GVAR(inArsenal) = false;
     GVAR(inArsenal) = false;
     private _unit = call CBA_fnc_currentUnit;
     _unit call FUNC(changeCarryHandleOpticClass);
-    [FUNC(restartCamera), [_unit, isNull curatorCamera]] call CBA_fnc_execNextFrame;
+    [FUNC(restartCamera), [_unit, true]] call CBA_fnc_execNextFrame;
 }] call CBA_fnc_addEventHandler;
 
 [missionNamespace, "arsenalClosed", {
