@@ -21,9 +21,12 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-if (!GVAR(usePipOptics)) exitWith {};
-if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo []) exitWith {};
-if (isNull (uiNamespace getVariable ["RscDisplayMission", displayNull])) exitWith {};
+if (
+    !GVAR(usePipOptics)
+    || {configProperties [configFile >> "CBA_PIPItems"] isEqualTo []}
+    || {isNull (uiNamespace getVariable ["RscDisplayMission", displayNull])}
+    || {!isNull (uiNamespace getVariable ["RscDisplayCurator", displayNull])}
+) exitWith {};
 
 params ["_unit", ["_reset", true]];
 
