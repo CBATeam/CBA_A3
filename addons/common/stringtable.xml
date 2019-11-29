@@ -23,6 +23,7 @@
             <Japanese>ミッションを開始しておく必要があります。</Japanese>
             <Italian>Prima deve far partire una missione.</Italian>
             <Czech>První musíte zapnout misi.</Czech>
+            <Chinese>你必須先加載世界或執行一個任務。</Chinese>
         </Key>
         <Key ID="STR_cba_common_WeaponsCategory">
             <English>CBA Weapons</English>
