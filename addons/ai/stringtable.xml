@@ -20,6 +20,7 @@
             <Czech>Poloha stavby AI</Czech>
             <Turkish>AI Bina Pozisyonu</Turkish>
             <Japanese>AI の建物内での位置</Japanese>
+            <Chinese>AI在建築物內位置</Chinese>
         </Key>
     </Package>
 </Project>
