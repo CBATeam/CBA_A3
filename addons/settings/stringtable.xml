@@ -66,6 +66,7 @@
             <Japanese>アドオンの設定を調整します。</Japanese>
             <Italian>Aggiusta le impostazioni per gli addon</Italian>
             <Czech>Upravit nastavení addonu.</Czech>
+            <Chinese>調整插件設定。</Chinese>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -342,6 +343,7 @@
             <Japanese>設定を適用します。</Japanese>
             <Italian>Prevale questa impostazione.</Italian>
             <Czech>Toto nastavení je aktuální.</Czech>
+            <Chinese>設定已套用。</Chinese>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
@@ -352,6 +354,7 @@
             <Japanese>この設定は次のミッション開始後に適用されます。</Japanese>
             <Italian>Questa impostazione sarà valida dopo il riavvio della missione.</Italian>
             <Czech>Toto nastavení bude aplikováno po restartu mise.</Czech>
+            <Chinese>這個設定將會在任務重置後生效</Chinese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>

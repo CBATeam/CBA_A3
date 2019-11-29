@@ -18,6 +18,7 @@
             <Italian>Usa ottiche on Picture-in-Picture</Italian>
             <Czech>Používat PiP (obraz-v-obrazu) optiky</Czech>
             <Turkish>PIP optikler kullan</Turkish>
+            <Chinese>使用PiP(畫中畫)鏡頭</Chinese>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch">
             <English>Toggle Reticle</English>
@@ -25,6 +26,7 @@
             <Czech>Zapnout retikulum</Czech>
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
             <Japanese>照準線切り替え</Japanese>
+            <Chinese>切換瞄準線</Chinese>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
@@ -32,6 +34,7 @@
             <Czech>Manuálně přepnout retikulum optiky</Czech>
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
             <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
+            <Chinese>手動切換瞄具的瞄準線</Chinese>
         </Key>
     </Package>
 </Project>
