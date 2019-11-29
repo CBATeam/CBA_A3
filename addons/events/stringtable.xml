@@ -21,6 +21,7 @@
             <Japanese>武器反復モード</Japanese>
             <Czech>Mód opakování zbraně</Czech>
             <Turkish>Silah Tekrar Modu</Turkish>
+            <Chinese>武器反作模式</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
@@ -29,6 +30,7 @@
             <Japanese>ボルト、またはポンプ式武器のモードを決定します。</Japanese>
             <Czech>Mód natahování nebo pumpování zbraní.</Czech>
             <Turkish>Silahın sürgülü ya da pompalı modda olması.</Turkish>
+            <Chinese>設定武器如何拉栓及退膛</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOptic">
             <English>Leave Optics View</English>
@@ -37,6 +39,7 @@
             <Japanese>照準画面を離れる</Japanese>
             <Czech>Opustit pohled optiky</Czech>
             <Turkish>Dürbünden Çık</Turkish>
+            <Chinese>放下瞄具</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
@@ -45,6 +48,7 @@
             <Japanese>ボルトかポンプ動作時は照準画面から離れます</Japanese>
             <Czech>Natáhnout zbraň opuštěním pohledu optiky.</Czech>
             <Turkish>Silahı sürgülerken dürbünü kapat.</Turkish>
+            <Chinese>當拉栓以及退膛武器時是否離開瞄準狀態</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
             <English>Release Trigger</English>
@@ -53,6 +57,7 @@
             <Japanese>トリガー解放時</Japanese>
             <Czech>Pustit spoušť</Czech>
             <Turkish>Tetiği Bırak</Turkish>
+            <Chinese>放開板機</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
@@ -61,6 +66,7 @@
             <Japanese>トリガーを離してボルトかポンプ動作を行います。(トリガー長押しで即時動作を防止)</Japanese>
             <Czech>Natáhnout zbraň puštěním spouště (podržte spoušť k zabránění okamžitému natáhnutí zbraně).</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiği bırak (Tetiğe basılı tutarak sürgülemeyi engelle).</Turkish>
+            <Chinese>當鬆開板機後拉栓或退膛（握住板機以避免突然的動作）。</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
             <English>Press Trigger</English>
@@ -69,6 +75,7 @@
             <Japanese>トリガー引いた時</Japanese>
             <Czech>Zmáčknout spoušť</Czech>
             <Turkish>Tetiğe Bas</Turkish>
+            <Chinese>按下扳機</Chinese>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
             <English>Bolt or rack weapon by pressing the trigger again.</English>
@@ -77,6 +84,7 @@
             <Japanese>トリガーを再度引いてボルトかポンプ動作を行います。</Japanese>
             <Czech>Natáhnout zbraň dalším zmáčkutím spouště.</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiğe bas.</Turkish>
+            <Chinese>按下板機才拉栓或退膛</Chinese>
         </Key>
     </Package>
 </Project>
