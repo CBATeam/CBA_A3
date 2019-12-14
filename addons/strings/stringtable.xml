@@ -32,7 +32,12 @@
         </Key>
         <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
             <English>,</English>
+            <Czech> </Czech>
             <German>.</German>
+            <Polish> </Polish>
+            <Russian> </Russian>
+            <French> </French>
+            <Spanish> </Spanish>
             <Italian>,</Italian>
             <Japanese>,</Japanese>
             <Chinese>,</Chinese>
