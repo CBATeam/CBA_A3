@@ -21,6 +21,7 @@
             <Turkish>AI Bina Pozisyonu</Turkish>
             <Japanese>AI の建物内での位置</Japanese>
             <Chinese>AI在建築物內位置</Chinese>
+            <French>L'IA se positionne dans les bâtiments</French>
         </Key>
     </Package>
 </Project>
