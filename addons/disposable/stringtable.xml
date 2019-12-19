@@ -62,7 +62,7 @@
             <Czech>Vybrána jiná zbraň</Czech>
             <Turkish>Başka Bir Silah Seçince</Turkish>
             <Chinese>選擇其他武器</Chinese>
-            <French>Autre arme sélectionnée</French>
+            <French>Si autre arme sélectionnée</French>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
@@ -89,7 +89,7 @@
             <Czech>Pokud je tato možnost zapnuta, jednorázové raketomety mohou být použity pouze jednou. Munice pro jednorázové raketomety v bednách a vozidlech budou vyměněny za nabité jednorázové raketomety. Pokud je tato možnost vypnuta, jednorázové raketomety mohou být přebity po použití.</Czech>
             <Turkish>Eğer bu ayar açıksa, tek kullanımlık roketler sadece bir kere kullanılabilir. Tek kullanımlık rokeyler için cephane başka tek kullanımlık roketler ile değiştirilir. Bu ayar kapalıyken tek kullanımlık roketler de birçok kez kullanılabilir.</Turkish>
             <Chinese>啟用時，將會把載具或容器裡面給於一次性發射器的彈藥換成一次性發射器本身，並且使其只能使用一次。如果關閉，一次性發射器即可再度裝填</Chinese>
-            <French>Si activé, les lanceurs à usage unique ne peuvent être utilisés qu'une seule fois. Les munitions pour lanceurs à usage unique situés dans les containers et les véhicules seront remplacées par des lanceurs à usage unique chargés. Si désactivé, les lanceurs à usage unique peuvent être rechargés après emploi.</French>
+            <French>Si activé, les lanceurs à usage unique ne peuvent être utilisés qu'une seule fois. Les munitions pour lanceurs à usage unique situés dans les conteneurs et les véhicules seront remplacées par des lanceurs à usage unique chargés. Si désactivé, les lanceurs à usage unique peuvent être rechargés après emploi.</French>
         </Key>
     </Package>
 </Project>
