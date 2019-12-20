@@ -9,8 +9,9 @@ if (!SLX_XEH_DisableLogging) then {
     private _logMsgs = [];
     private _filter = {if (_x isEqualType 1) then {[_x] call CBA_fnc_formatNumber} else {_x}};
     [GVAR(versions), { _logMsgs pushBack format["%1=%2", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."]}] call CBA_fnc_hashEachPair;
+    private _logMsg = _logMsgs joinString ", ";
 
-     diag_log text format ["[CBA] (versioning) [%1,%2,%3] %4", diag_frameNo, diag_tickTime, time, _logMsgs joinString ", "];
+    INFO_2("%1 VERSIONING:%2", [ARR_3(diag_frameNo, diag_tickTime, time)], _logMsg);
 };
 
 // Dependency check and warn

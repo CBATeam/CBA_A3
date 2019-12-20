@@ -17,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (ISPROCESSED(missionNamespace)) exitWith {
-    diag_log text "[CBA] (XEH): preInit already executed. Abort preInit.";
+    XEH_LOG("preInit already executed. Abort preInit.");
 };
 SETPROCESSED(missionNamespace);
 
