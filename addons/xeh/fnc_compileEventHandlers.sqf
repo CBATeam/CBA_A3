@@ -123,7 +123,7 @@ if (_allowRecompile) then {
         if (_eventName == "fired") then {
             // generate backwards compatible format of _this
             _eventFuncBase = "private _this = [_this select 0, _this select 1, _this select 2, _this select 3, _this select 4, _this select 6, _this select 5];";
-            WARNING_4("Usage of deprecated Extended Event Handler ""fired"". Use ""firedBIS"" instead. Path: %1\%2\%3\%4.", configSourceMod _x, _baseConfig, XEH_FORMAT_CONFIG_NAME(_eventName), _className);
+            LOG_SYS("WARNING",FORMAT_4("Usage of deprecated Extended Event Handler ""fired"". Use ""firedBIS"" instead. Path: %1\%2\%3\%4.", configSourceMod _x, _baseConfig, XEH_FORMAT_CONFIG_NAME(_eventName), _className));
         };
 
         {
