@@ -33,7 +33,7 @@ private _config = configFile >> "CfgVehicles" >> _className;
 
 // init fallback loop when executing on incompatible class for the first time
 if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
-    diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Event Handlers. Fall back to loop.", configName _config];
+    diag_log text format ["[CBA] (XEH): One or more children of class %1 do not support Extended Event Handlers. Fall back to loop.", configName _config];
     call CBA_fnc_startFallbackLoop;
 };
 

@@ -14,7 +14,7 @@
 
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, msg] }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log text format ['[CBA] (XEH) [%1,%2,%3] %4', diag_frameNo, diag_tickTime, time, msg] }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])

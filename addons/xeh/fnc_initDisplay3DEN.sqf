@@ -4,7 +4,7 @@ params ["_display"];
 
 private _fnc_watchDog = {
     if (!ISPROCESSED(missionNamespace)) then {
-        diag_log text format ["XEH: missionNamespace processed [%1]", ISPROCESSED(missionNamespace)];
+        diag_log text format ["[CBA] (XEH): missionNamespace processed [%1]", ISPROCESSED(missionNamespace)];
         [] call CBA_fnc_preInit;
     };
 };
