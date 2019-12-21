@@ -45,6 +45,7 @@ GVAR(featureCamerasNames) = [
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_perFrameHandler);
 call COMPILE_FILE(init_delayLess);
+call COMPILE_FILE(init_filteredLoadout);
 
 // Due to activateAddons being overwritten by eachother (only the last executed command will be active), we apply this bandaid
 GVAR(addons) = call (uiNamespace getVariable [QGVAR(addons), {[]}]);
