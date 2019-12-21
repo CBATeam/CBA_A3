@@ -49,7 +49,6 @@ private _fnc_parse = {
     params ["_charArray", "_pos", "_mode", "_type"];
     TRACE_1("Parse",toString _charArray);
 
-    private _origType = _type;
     private _key = "";
 
     if (isNil {_charArray select _pos}) exitWith {
@@ -70,7 +69,6 @@ private _fnc_parse = {
         };
     };
 
-    private "_value";
     LOOP {
         private _continue = true;
 
@@ -121,18 +119,15 @@ private _fnc_parse = {
 
                 switch (_char) do {
                 case JSON_OBJECT_START: {
-                    _mode = JSON_MODE_KEY;
-                    _type = JSON_TYPE_OBJECT;
                     _pos = _pos + 1;
                     TRACE_1("Starting hash",_pos);
 
-                    private _temp = [_charArray, _pos, _mode, _type] call _fnc_parse;
+                    private _temp = [_charArray, _pos, JSON_MODE_KEY, JSON_TYPE_OBJECT] call _fnc_parse;
                     _value = _temp select 0;
                     _pos = _temp select 1;
                     TRACE_1("Got hash",_value);
 
                     _mode = JSON_MODE_VALUE;
-                    _type = _origType;
                     _continue = false;
                 };
 
@@ -146,15 +141,14 @@ private _fnc_parse = {
                 };
 
                 case JSON_ARRAY_START: {
-                    _mode = JSON_MODE_VALUE;
-                    _type = JSON_TYPE_ARRAY;
                     _pos = _pos + 1;
                     TRACE_1("Starting array",_pos);
 
-                    private _temp = [_charArray, _pos, _mode, _type] call _fnc_parse;
+                    private _temp = [_charArray, _pos, JSON_MODE_VALUE, JSON_TYPE_ARRAY] call _fnc_parse;
                     _value = _temp select 0;
                     _pos = _temp select 1;
-                    _type = _origType;
+
+                    _mode = JSON_MODE_VALUE;
                     _continue = false;
                 };
 
@@ -181,9 +175,10 @@ private _fnc_parse = {
                         case JSON_TYPE_OBJECT: {
                             TRACE_2("Setting hash",_key,_value);
                             [_tempHash, _key, _value] call CBA_fnc_hashSet;
+                            _value = "";
+
                             _mode = JSON_MODE_KEY;
                             _continue = false;
-                            _value = "";
                         };
 
                         case JSON_TYPE_ARRAY: {
@@ -196,6 +191,7 @@ private _fnc_parse = {
                         default {
                             TRACE_2("Setting value",_key,_value);
                             _value = toString _tempValue;
+
                             _mode = JSON_MODE_KEY;
                             _continue = false;
                         };
@@ -231,11 +227,7 @@ if (toUpper _file in ["", " ", "ERROR", "UNAUTHORISED!"]) exitWith {"ERROR"};
 // Create an array of characters from the JSON string.
 private _charArray = toArray _file;
 
-// Set position to start with (skip " character).
+// Set position to start with (skip " character) and start parsing.
+private "_value";
 private _pos = 1;
-
-private _mode = JSON_MODE_KEY;
-private _type = JSON_TYPE_OBJECT;
-
-// Start parsing.
-[_charArray, _pos, _mode, _type] call _fnc_parse select 0 // return
+[_charArray, _pos, JSON_MODE_KEY, JSON_TYPE_OBJECT] call _fnc_parse select 0 // return
