@@ -13,7 +13,6 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_DISPOSABLE
 #endif
 
-#define DEBUG_MODE_NORMAL
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 

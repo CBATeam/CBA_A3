@@ -1,5 +1,4 @@
 #define COMPONENT xeh
-
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_XEH
