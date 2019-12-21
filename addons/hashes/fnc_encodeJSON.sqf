@@ -78,12 +78,12 @@ switch (typeName _this) do
 
         { // forEach
             if (_forEachIndex > 0) then {_output = _output + ","};
-            _output = _output + (_x call ALiVE_fnc_encodeJSON);
+            _output = _output + (_x call CBA_fnc_encodeJSON);
         } forEach _this;
 
         (_output + "]") // Return
     };
 
     // For all other types, just convert to string
-    default {str(_this) call ALiVE_fnc_encodeJSON};
+    default {str(_this) call CBA_fnc_encodeJSON};
 };
