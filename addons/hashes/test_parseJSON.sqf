@@ -2,18 +2,18 @@
 
 #include "script_component.hpp"
 
-SCRIPT(test_parseYaml);
+SCRIPT(test_parseJSON);
 
 // ----------------------------------------------------------------------------
 
 private ["_expected", "_result", "_fn", "_data"];
 
-_fn = "CBA_fnc_parseYAML";
+_fn = "CBA_fnc_parseJSON";
 LOG("Testing " + _fn);
 
-TEST_DEFINED("CBA_fnc_parseYAML",_fn);
+TEST_DEFINED("CBA_fnc_parseJSON",_fn);
 
-_data = ["\x\cba\addons\hashes\test_parseYaml_config.yml"] call CBA_fnc_parseYAML;
+/*_data = ["\x\cba\addons\hashes\test_parseJSON_config.json"] call CBA_fnc_parseJSON;
 
 TEST_TRUE([_data] call CBA_fnc_isHash,_fn);
 

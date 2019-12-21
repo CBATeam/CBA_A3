@@ -12,6 +12,8 @@ class CfgFunctions {
             PATHTO_FNC(hashSize);
             PATHTO_FNC(isHash);
             PATHTO_FNC(parseYAML);
+            PATHTO_FNC(encodeJSON);
+            PATHTO_FNC(parseJSON);
             PATHTO_FNC(serializeNamespace);
             PATHTO_FNC(deserializeNamespace);
         };

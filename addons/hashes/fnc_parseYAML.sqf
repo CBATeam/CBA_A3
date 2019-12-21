@@ -16,8 +16,6 @@ Returns:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-SCRIPT(parseYAML);
-
 #include "\x\cba\addons\strings\script_strings.hpp"
 
 #define YAML_MODE_STRING 0
