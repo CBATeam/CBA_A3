@@ -60,9 +60,9 @@ with uiNamespace do {
         _x params ["_classname", "_addon"];
 
         if (_addon == "") then {
-            LOG_SYS("WARNING",FORMAT_1("%1 does not support Extended Event Handlers!", _classname));
+            WARNING_1("%1 does not support Extended Event Handlers!", _classname);
         } else {
-            LOG_SYS("WARNING",FORMAT_2("%1 does not support Extended Event Handlers! Addon: %2", _classname, _addon));
+            WARNING_2("%1 does not support Extended Event Handlers! Addon: %2", _classname, _addon);
         };
     } forEach (true call CBA_fnc_supportMonitor);
 
