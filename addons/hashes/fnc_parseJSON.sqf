@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_parseJSON
@@ -6,14 +7,14 @@ Description:
     Converts a JSON formatted string into a CBA Hash array.
 
 Parameters:
-    _file - The JSON string <STRING>.
+    _file - The JSON string. <STRING>
 
 Returns:
     Hash data structure taken from the file, or nil if file had syntax errors.
 
 Examples:
 (begin example)
-    _hash = [_input] call CBA_fnc_parseJSON;
+    _hash = _file call CBA_fnc_parseJSON;
 (end)
 
 Author:
@@ -35,7 +36,6 @@ Author:
 // JSON terminators - colon for end of key, comma for end of value.
 #define ASCII_COLON 58
 #define ASCII_COMMA 44
-#define ASCII_QUOTES 34
 // ----------------------------------------------------------------------------
 
 private _fnc_parse = {
@@ -50,6 +50,7 @@ private _fnc_parse = {
     TRACE_1("Parse",toString _charArray);
 
     private _key = "";
+    private _value = nil;
 
     if (isNil {_charArray select _pos}) exitWith {
         ERROR_2("charArray too small. pos = %1, charArray = %2",_pos,_charArray);
@@ -167,15 +168,10 @@ private _fnc_parse = {
 
                 case ASCII_COMMA: {
                     // Means end of value.
-                    if (isNil "_value") then {
-                        _value = "";
-                    };
-
                     switch (_type) do {
                         case JSON_TYPE_OBJECT: {
                             TRACE_2("Setting hash",_key,_value);
                             [_tempHash, _key, _value] call CBA_fnc_hashSet;
-                            _value = "";
 
                             _mode = JSON_MODE_KEY;
                             _continue = false;
@@ -185,28 +181,22 @@ private _fnc_parse = {
                             TRACE_2("Setting array",_tempArray,_value);
                             _tempArray pushBack _value;
                             _tempValue = [];
-                            _value = "";
-                        };
-
-                        default {
-                            TRACE_2("Setting value",_key,_value);
-                            _value = toString _tempValue;
-
-                            _mode = JSON_MODE_KEY;
-                            _continue = false;
                         };
                     };
                 };
 
                 default {
-                    // Must be a string value.
-                    if (_char != ASCII_QUOTES) then {
-                        _tempValue pushBack _char;
-                        _value = toString _tempValue;
+                    _tempValue pushBack _char;
+                    _value = toString _tempValue call CBA_fnc_trim;
 
-                        if (_value == "any") then {
-                            _value = "nil";
-                        };
+                    // Remove quotes.
+                    if (_value select [0,1] == """" && _value select [count _value - 1] == """") then {
+                        _value = _value select [1, count _value - 2];
+                    };
+                    //parseSimpleArray format ["[%1]", _thing] select 0
+
+                    if (_value == "any") then {
+                        _value = "nil";
                     };
                 };
                 };
@@ -228,6 +218,5 @@ if (toUpper _file in ["", " ", "ERROR", "UNAUTHORISED!"]) exitWith {"ERROR"};
 private _charArray = toArray _file;
 
 // Set position to start with (skip " character) and start parsing.
-private "_value";
 private _pos = 1;
 [_charArray, _pos, JSON_MODE_KEY, JSON_TYPE_OBJECT] call _fnc_parse select 0 // return
