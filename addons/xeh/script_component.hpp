@@ -1,5 +1,4 @@
 #define COMPONENT xeh
-
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_XEH
@@ -12,9 +11,10 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
+#define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, msg] }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo, diag_tickTime, time)], msg); }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
