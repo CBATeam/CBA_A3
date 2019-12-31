@@ -9,7 +9,7 @@
             <Chinesesimp>社群基础模组 - 模块组件</Chinesesimp>
             <Russian>Community Base Addons - Компонент Модулей</Russian>
             <Polish>Community Base Addons - Komponent Modułów</Polish>
-            <French>Community Base Addons - Composant des modules</French>
+            <French>Community Base Addons - Modules</French>
             <Turkish>Community Base Addons - Modüller</Turkish>
             <Italian>Community Base Addons - Moduli</Italian>
             <Czech>Community Base Addons - Moduly</Czech>
@@ -22,7 +22,7 @@
             <Chinesesimp>CBA模块</Chinesesimp>
             <Russian>Модули CBA</Russian>
             <Polish>Moduły CBA</Polish>
-            <French>Modules de CBA</French>
+            <French>CBA - Modules</French>
             <Turkish>CBA Modülleri</Turkish>
             <Italian>CBA - Moduli</Italian>
             <Czech>CBA Moduly</Czech>
@@ -48,7 +48,7 @@
             <Chinesesimp>攻击地点类型</Chinesesimp>
             <Russian>Тип Местоположения Атаки</Russian>
             <Polish>Typ lokalizacji ataku</Polish>
-            <French>Type d'emplacement de l'attaque</French>
+            <French>Type du lieu d'attaque</French>
             <Turkish>Saldırı Konum Tipi</Turkish>
             <Italian>Tipo di posizione per l'attacco</Italian>
             <Czech>Typ lokace útoku</Czech>
@@ -61,7 +61,7 @@
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Russian>Укажите, какой объект передаётся как центральная точка</Russian>
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny</Polish>
-            <French>Définir quel type d'objet est passé en tant que point central</French>
+            <French>Définit quel type d'objet est passé comme point central.</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
@@ -178,7 +178,7 @@
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
-            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
+            <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
@@ -204,7 +204,7 @@
             <Chinesesimp>输入一个数字来定义搜索区域的半径大小</Chinesesimp>
             <Russian>Введите число для задания размера радиуса поиска</Russian>
             <Polish>Wprowadź liczbę jako rozmiar obszaru do przeszukania</Polish>
-            <French>Entrez un nombre pour la taille du rayon à rechercher</French>
+            <French>Définit la taille du rayon de recherche.</French>
             <Turkish>Aranıcak alanın çapı için bir sayı girin</Turkish>
             <Italian>Immettere un numero per la dimensione del raggio in cui cercare</Italian>
             <Czech>Vložte číslo pro velikost rádiu hledání</Czech>
@@ -217,7 +217,7 @@
             <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
             <Russian>Синхронизируйте с лидером группы, чтобы атаковать указанное местоположение</Russian>
             <Polish>Zsynchronizuj z liderem grupy aby zaatakować określoną lokalizacje</Polish>
-            <French>Synchroniser avec le chef du groupe pour attaquer un emplacement désigné</French>
+            <French>Synchroniser avec un chef du groupe pour attaquer un emplacement désigné.</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konuma saldırtın</Turkish>
             <Italian>Sincronizza con un capogruppo per attaccare una posizione designata.</Italian>
             <Czech>Synchronizovat s velitelem skupiny k útoku na danou lokaci</Czech>
@@ -243,7 +243,7 @@
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
             <Russian>Разрешить модулю удалять старые путевые точки и назначать путевую точку атаки</Russian>
             <Polish>Zezwalaj aby moduł nadpisał stare punkty nawigacyjnych rozkazem ataku</Polish>
-            <French>Autoriser le module à supprimer les anciens points de passage et attribuer un points de passage d'attaque</French>
+            <French>Permettre au module de supprimer les anciens points de passage et à attribuer un point de passage d'attaque.</French>
             <Turkish>Modülün eski waypoint'leri silip saldırı waypoint'i koymasına izin ver</Turkish>
             <Italian>Permette al modulo di togliere waypoint precedenti e assegnarne uno di attacco.</Italian>
             <Czech>Povolit modulu odstranit staré waypointy a přiřadit waypoint k útoku</Czech>
@@ -269,7 +269,7 @@
             <Chinesesimp>防御地点类型</Chinesesimp>
             <Russian>Тип Позиции Защиты</Russian>
             <Polish>Rodzaj Pozycji Obronnej</Polish>
-            <French>Type d'emplacement de la défense</French>
+            <French>Type du lieu à défendre</French>
             <Turkish>Savunma Konum Tipi</Turkish>
             <Italian>Tipo di posizione per la difesa</Italian>
             <Czech>Typ pozice útoku</Czech>
@@ -282,7 +282,7 @@
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Russian>Установить, какой тип объекта будет передан как центральная точка</Russian>
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny obrony</Polish>
-            <French>Définir quel type d'objet est passé comme point central</French>
+            <French>Définit quel type d'objet est passé comme point central.</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
@@ -308,7 +308,7 @@
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
-            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
+            <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
@@ -321,7 +321,7 @@
             <Chinesesimp>防御半径</Chinesesimp>
             <Russian>Радиус Защиты</Russian>
             <Polish>Obszar Obrony</Polish>
-            <French>Rayon de la défense</French>
+            <French>Rayon de défense</French>
             <Turkish>Belli Bir Çapı Savun</Turkish>
             <Italian>Raggio di Difesa</Italian>
             <Czech>Rádius obrany</Czech>
@@ -334,7 +334,7 @@
             <Chinesesimp>输入一个数字来定义防御区域的半径大小</Chinesesimp>
             <Russian>Максимальное расстояние для защиты от центральной точки</Russian>
             <Polish>Maksymalny dystans od punktu centralnego na jakim będzie prowadzona obrona</Polish>
-            <French>La distance maximale à défendre depuis le point central</French>
+            <French>Définit la distance maximale à défendre, en partant du point central.</French>
             <Turkish>Merkez noktadan savunulacak maksimum uzaklık</Turkish>
             <Italian>Distanza massima dal punto centrale entro cui difendere.</Italian>
             <Czech>Maximální vzdálenost obrany od centrálního bodu</Czech>
@@ -360,7 +360,7 @@
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
             <Russian>Чем меньше число, тем больше доступных зданий</Russian>
             <Polish>Im mniejsza wartość tym więcej budynków będzie dostępnych</Polish>
-            <French>Plus le nombre est petit, plus il y'a de bâtiments disponibles</French>
+            <French>Plus le nombre est petit, plus il y'a de bâtiments disponibles.</French>
             <Turkish>Sayı küçüldükçe daha fazla sayıda bina mümkün olur</Turkish>
             <Italian>Più piccolo il numero più edifici saranno disponibili</Italian>
             <Czech>Čím menší číslo tím více budov je k dispozici</Czech>
@@ -373,7 +373,7 @@
             <Chinesesimp>巡逻机率</Chinesesimp>
             <Russian>Шанс Патрулирования</Russian>
             <Polish>Szasna na Patrol</Polish>
-            <French>Possibilité de patrouille</French>
+            <French>Chance de patrouiller</French>
             <Turkish>Devriye İhtimali</Turkish>
             <Italian>Probabilità di pattugliare</Italian>
             <Czech>Šance hlídky</Czech>
@@ -386,7 +386,7 @@
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
             <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, чтобы находиться в гарнизоне</Russian>
             <Polish>Szansa dla każdej jednostki na to że przeprowadzi patrol zamiast garnizonowania budynku</Polish>
-            <French>Possibilité pour chaque unité de patrouiller au lieu d'être en garnison</French>
+            <French>Probabilité pour chaque unité de patrouiller au lieu de rester en garnison.</French>
             <Turkish>Devriye İhtimali</Turkish>
             <Italian>Probabilità per ogni unità di pattugliare invece che presidiare.</Italian>
             <Czech>Šance, že bude jednotka hlídkovat (místo tvorby opevnění)</Czech>
@@ -412,7 +412,7 @@
             <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
             <Russian>Шанс для каждого подразделения удерживать свой гарнизон в бою</Russian>
             <Polish>Szansa dla każdej jednostki że będzie utrzymywać swój garnizon w trakcie walki</Polish>
-            <French>Possibilité pour chaque unité de tenir sa garnison au combat</French>
+            <French>Possibilité pour chaque unité de maintenir sa garnison au combat.</French>
             <Turkish>Birimlerin çatışma sırasında konumlarını koruma şansı</Turkish>
             <Italian>Probabilità per ogni unità di tenere il presidio durante il combattimento.</Italian>
             <Czech>Šance, že bude jednotka držet své opevnění v boji</Czech>
@@ -425,7 +425,7 @@
             <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
             <Russian>Синхронизируйте с лидером группы, чтобы защищать указанное местоположение</Russian>
             <Polish>Zsynchronizuj z liderem grupy aby bronić określonej lokalizacji</Polish>
-            <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
+            <French>Synchroniser avec un chef du groupe pour défendre un emplacement désigné.</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu savundurun</Turkish>
             <Italian>Sincronizza con un capogruppo per difendere una posizione designata.</Italian>
             <Czech>Synchronizovat s velitelem skupiny k obraně dané lokace</Czech>
@@ -451,7 +451,7 @@
             <Chinesesimp>巡逻区类型</Chinesesimp>
             <Russian>Патрулирование - Тип Центра</Russian>
             <Polish>Patrol - rodzaj centrum</Polish>
-            <French>Type d'emplacement de la patrouille</French>
+            <French>Type du centre de patrouille</French>
             <Turkish>Devriye Merkez Tipi</Turkish>
             <Italian>Tipo del centro del pattugliamento</Italian>
             <Czech>Typ centra hlídky</Czech>
@@ -464,7 +464,7 @@
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Russian>Укажите, какой тип объекта будет передан как центральная точка</Russian>
             <Polish>Określ jaki obiekt jest przekazowany jako punkt centralny patrolu</Polish>
-            <French>Définir quel type d'objet est passé comme point central</French>
+            <French>Définit quel type d'objet est passé comme point central.</French>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Italian>Imposta il tipo di oggetto che viene usato come punto centrale.</Italian>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
@@ -490,7 +490,7 @@
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
-            <French>Entrez un tableau avec des parenthèses ou un nom sans guillemets</French>
+            <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
@@ -516,7 +516,7 @@
             <Chinesesimp>输入一个数字来定义巡逻区域的半径大小</Chinesesimp>
             <Russian>На какое расстояние будет происходить патрулирование от центральной точки</Russian>
             <Polish>Rozmar obszaru do Patrolowania w okół punktu centralnego</Polish>
-            <French>La distance à parcourir en patrouille depuis le point central</French>
+            <French>La distance à parcourir en patrouille depuis le point central.</French>
             <Turkish>Merkez noktadan devriyeye çıkılacak uzaklık</Turkish>
             <Italian>La distanza da pattugliare dal punto centrale.</Italian>
             <Czech>Nastavit vzdálenost od centrálního bodu k hlídce</Czech>
@@ -542,7 +542,7 @@
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
             <Russian>Сколько создать путевых точек</Russian>
             <Polish>Ilość punktu nawigacyjnych do utworzenia</Polish>
-            <French>La quantité de points de passage à créer</French>
+            <French>La quantité de points de passage à créer.</French>
             <Turkish>Oluşturulacak Waypoint Sayısı</Turkish>
             <Italian>Quantità di destinazioni da creare.</Italian>
             <Czech>Kolik waypointů bude vytvořeno</Czech>
@@ -568,7 +568,7 @@
             <Chinesesimp>设定会被使用的路径点类型</Chinesesimp>
             <Russian>Тип используемой путевой точки</Russian>
             <Polish>Rodzaj Punktu nawigacyjnego do wykorzystania</Polish>
-            <French>Le type de point de passage à utiliser</French>
+            <French>Le type de point de passage à utiliser.</French>
             <Turkish>Kullanılacak waypoint tipi</Turkish>
             <Italian>Il tipo di destinazione da usare.</Italian>
             <Czech>Typ waypointu, který bude použit</Czech>
@@ -581,7 +581,7 @@
             <Chinesesimp>移动</Chinesesimp>
             <Russian>Выдвинуться</Russian>
             <Polish>Przemieść</Polish>
-            <French>Sé déplacer</French>
+            <French>Se déplacer</French>
             <Turkish>Hareket Et</Turkish>
             <Italian>Muovere</Italian>
             <Czech>Pohyb</Czech>
@@ -633,7 +633,7 @@
             <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
             <Russian>Любой код для запуска в путевых точках</Russian>
             <Polish>Kod do wykonania po osiągnięciu punktów nawigacyjnych</Polish>
-            <French>Tout code à exécuter aux points de passage</French>
+            <French>Tout code à exécuter aux points de passage.</French>
             <Turkish>Waypoint'lerde çalıştırılacak herhangi kod</Turkish>
             <Italian>Codice da eseguire alla destinazione.</Italian>
             <Czech>Jakýkoliv kód, který bude vykonán na waypointech</Czech>
@@ -646,7 +646,7 @@
             <Chinesesimp>计时器</Chinesesimp>
             <Russian>Тайм-аут</Russian>
             <Polish>Czas przerwania</Polish>
-            <French>Pause</French>
+            <French>Temporisation</French>
             <Turkish>Zaman Aşımı</Turkish>
             <Italian>Tempo di attesa</Italian>
             <Czech>Přestávka</Czech>
@@ -659,7 +659,7 @@
             <Chinesesimp>[最小值, 中间值, 最大值] 用来设定在路径点所需等待的时间</Chinesesimp>
             <Russian>[Минимум, Средний, Максимум] Тайм-аут ожидания на путевых точках</Russian>
             <Polish>[Minimalny, Średni, Maksymalny] Czas oczekiwania na punktach nawigacyjnych</Polish>
-            <French>[Min, Moy, Max] Temps d'attente aux points de passage</French>
+            <French>[Min, Moy, Max] Temps d'attente aux points de passage.</French>
             <Turkish>[Minimum, Orta, Maksimum] Waypoint'lerde beklenecek zaman</Turkish>
             <Italian>[Min, Med, Mass] Tempo di attesa alla destinazione.</Italian>
             <Czech>[Min., Stř., Max.] Čas čekání na waypointech</Czech>
@@ -672,7 +672,7 @@
             <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
             <Russian>Синхронизируйте с лидером группы, чтобы патрулировать указанное местоположение</Russian>
             <Polish>Zsynchronizuj z liderem grupy aby patrolować określoną lokalizację</Polish>
-            <French>Synchroniser avec le chef du groupe pour défendre un emplacement désigné</French>
+            <French>Synchroniser avec un chef du groupe pour défendre un emplacement désigné.</French>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu devriye ettirin</Turkish>
             <Italian>Sincronizza con un capogruppo per pattugliare una posizione designata.</Italian>
             <Czech>Synchronizovat s velitelem skupiny k hlídkování v dané lokaci</Czech>

@@ -10,6 +10,7 @@
             <Czech>Community Base Addons - Optika</Czech>
             <Turkish>Community Base Addons - Optikler</Turkish>
             <Chinese>社群基礎模組 - 瞄具</Chinese>
+            <French>Community Base Addons - Optiques</French>
         </Key>
         <Key ID="STR_cba_optics_UsePIP">
             <English>Use picture in picture optics</English>
@@ -20,6 +21,7 @@
             <Czech>Používat PiP (obraz-v-obrazu) optiky</Czech>
             <Turkish>PIP optikler kullan</Turkish>
             <Chinese>使用PiP(畫中畫)鏡頭</Chinese>
+            <French>Utiliser les optiques "picture in picture"</French>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch">
             <English>Toggle Reticle</English>
@@ -28,6 +30,7 @@
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
             <Japanese>照準線切り替え</Japanese>
             <Chinese>切換瞄準線</Chinese>
+            <French>Commuter le réticule</French>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
@@ -36,6 +39,7 @@
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
             <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
             <Chinese>手動切換瞄具的瞄準線</Chinese>
+            <French>Commuter manuellement le réticule de l'optique.</French>
         </Key>
     </Package>
 </Project>
