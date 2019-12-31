@@ -24,6 +24,14 @@ _result sort true;
 _expected = ["address","age","companyname","firstname","lastname","newsubscription","phonenumber"]; //all lower case
 TEST_OP(_result,isEqualTo,_expected,_fn);
 
+_result = _data getVariable "lastName";
+_expected = "Smith";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = _data getVariable "age";
+_expected = 25;
+TEST_OP(_result,==,_expected,_fn);
+
 _result = _data getVariable "address" getVariable "city";
 _expected = "New York";
 TEST_OP(_result,==,_expected,_fn);
@@ -52,6 +60,14 @@ _result = [_data] call CBA_fnc_hashKeys;
 _result sort true;
 _expected = ["address","age","companyName","firstName","lastName","newSubscription","phoneNumber"]; //camel case
 TEST_OP(_result,isEqualTo,_expected,_fn);
+
+_result = [_data, "lastName"] call CBA_fnc_hashGet;
+_expected = "Smith";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = [_data, "age"] call CBA_fnc_hashGet;
+_expected = 25;
+TEST_OP(_result,==,_expected,_fn);
 
 _result = [[_data, "address"] call CBA_fnc_hashGet, "city"] call CBA_fnc_hashGet;
 _expected = "New York";
