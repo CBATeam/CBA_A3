@@ -19,6 +19,9 @@ Examples:
         private _json = "{ ""enabled"": true }";
         private _settings = [_json] call CBA_fnc_parseJSON;
         private _enabled = _settings getVariable "enabled";
+
+        loadFile "data\config.json" call CBA_fnc_parseJSON
+        [preprocessFile "data\config.json", true] call CBA_fnc_parseJSON
     (end)
 
 Author:
