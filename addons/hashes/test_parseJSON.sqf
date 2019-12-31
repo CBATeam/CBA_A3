@@ -1,9 +1,77 @@
+// ----------------------------------------------------------------------------
+
 #include "script_component.hpp"
 
 SCRIPT(test_parseJSON);
 
-LOG("Testing CBA_fnc_parseJSON");
+// ----------------------------------------------------------------------------
 
+private ["_expected", "_result", "_fn", "_data"];
+
+_fn = "CBA_fnc_parseJSON";
+LOG("Testing " + _fn);
+
+TEST_DEFINED("CBA_fnc_parseJSON",_fn);
+
+// Namespace syntax
+_data = [preprocessFile "\x\cba\addons\hashes\test_parseJSON_config.json"] call CBA_fnc_parseJSON;
+
+_result = [_data] call CBA_fnc_isHash;
+TEST_FALSE(_result,_fn);
+
+_result = allVariables _data;
+_result sort true;
+_expected = ["address","age","companyname","firstname","lastname","newsubscription","phonenumber"]; //all lower case
+TEST_OP(_result,isEqualTo,_expected,_fn);
+
+_result = _data getVariable "address" getVariable "city";
+_expected = "New York";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = _data getVariable "phoneNumber" select 0 getVariable "type";
+_expected = "home";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = _data getVariable "phoneNumber" select 1 getVariable "type";
+_expected = "fax";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = _data getVariable "newSubscription";
+TEST_FALSE(_result,_fn);
+
+_result = _data getVariable "companyName";
+TEST_TRUE(isNull _result,_fn);
+
+// Hash syntax
+_data = [preprocessFile "\x\cba\addons\hashes\test_parseJSON_config.json", true] call CBA_fnc_parseJSON;
+
+_result = [_data] call CBA_fnc_isHash;
+TEST_TRUE(_result,_fn);
+
+_result = [_data] call CBA_fnc_hashKeys;
+_result sort true;
+_expected = ["address","age","companyName","firstName","lastName","newSubscription","phoneNumber"]; //camel case
+TEST_OP(_result,isEqualTo,_expected,_fn);
+
+_result = [[_data, "address"] call CBA_fnc_hashGet, "city"] call CBA_fnc_hashGet;
+_expected = "New York";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = [[_data, "phoneNumber"] call CBA_fnc_hashGet select 0, "type"] call CBA_fnc_hashGet;
+_expected = "home";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = [[_data, "phoneNumber"] call CBA_fnc_hashGet select 1, "type"] call CBA_fnc_hashGet;
+_expected = "fax";
+TEST_OP(_result,==,_expected,_fn);
+
+_result = [_data, "newSubscription"] call CBA_fnc_hashGet;
+TEST_FALSE(_result,_fn);
+
+_result = [_data, "companyName"] call CBA_fnc_hashGet;
+TEST_TRUE(isNull _result,_fn);
+
+/* ???
 private _testCases = [
     "null",
     "true",
