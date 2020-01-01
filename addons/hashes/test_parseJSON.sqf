@@ -87,7 +87,6 @@ TEST_FALSE(_result,_fn);
 _result = [_data, "companyName"] call CBA_fnc_hashGet;
 TEST_TRUE(isNull _result,_fn);
 
-/* ???
 private _testCases = [
     "null",
     "true",

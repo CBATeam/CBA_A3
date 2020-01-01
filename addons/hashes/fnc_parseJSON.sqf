@@ -89,11 +89,14 @@ private _tokenize = {
             // Valid numbers are all parsed correctly though
             case (_c in _numeric): {
                 private _numStr = _c;
-                while { _c = _input deleteAt 0; _c in _numeric } do {
+                while { _c = _input deleteAt 0; !isNil "_c" && {_c in _numeric} } do {
                     _numStr = _numStr + _c;
                 };
                 _tokens pushBack parseNumber _numStr;
-                _input = [_c] + _input;
+
+                if (!isNil "_c") then {
+                    _input = [_c] + _input;
+                };
             };
 
             // true, false and null
