@@ -87,6 +87,15 @@ TEST_FALSE(_result,_fn);
 _result = [_data, "companyName"] call CBA_fnc_hashGet;
 TEST_TRUE(isNull _result,_fn);
 
+// ----------------------------------------------------------------------------
+
+_fn = "CBA_fnc_encodeJSON";
+LOG("Testing " + _fn);
+
+TEST_DEFINED("CBA_fnc_encodeJSON",_fn);
+
+// ----------------------------------------------------------------------------
+
 private _testCases = [
     "null",
     "true",
