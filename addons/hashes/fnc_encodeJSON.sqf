@@ -16,6 +16,7 @@ Description:
     - STRING
     - TASK
     - TEAM_MEMBER
+    - Everything else will simply be stringified.
 
 Parameters:
     _object - Object to serialize. <ARRAY, ...>
@@ -48,15 +49,16 @@ switch (typeName _object) do {
         {
             _object = [_object, _x#0, _x#1] call CBA_fnc_replace;
         } forEach [
-            ["""", "\"""],
             ["\", "\\"],
+            ["""", "\"""],
             [toString [8], "\b"],
             [toString [12], "\f"],
             [endl, "\n"],
+            [toString [10], "\n"],
             [toString [13], "\r"],
             [toString [9], "\t"]
         ];
-        str _object
+        """" + _object + """"
     };
 
     case "ARRAY": {
@@ -75,6 +77,10 @@ switch (typeName _object) do {
     };
 
     default {
+        if !(typename _object in (supportinfo "u:allVariables*" apply {_x splitString " " select 1})) exitWith {
+            [str _object] call CBA_fnc_encodeJSON
+        };
+
         if (isNull _object) exitWith { "null" };
 
         private _json = ((allVariables _object) apply {
