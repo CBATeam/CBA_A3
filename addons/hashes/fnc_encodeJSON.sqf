@@ -77,7 +77,7 @@ switch (typeName _object) do {
     };
 
     default {
-        if !(typename _object in (supportinfo "u:allVariables*" apply {_x splitString " " select 1})) exitWith {
+        if !(typeName _object in (supportInfo "u:allVariables*" apply {_x splitString " " select 1})) exitWith {
             [str _object] call CBA_fnc_encodeJSON
         };
 
