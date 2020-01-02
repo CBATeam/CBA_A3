@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-
+#define DEBUG_SYNCHRONOUS
 #include "script_component.hpp"
 
 SCRIPT(test_parseJSON);
