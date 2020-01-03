@@ -58,6 +58,7 @@ switch (typeName _object) do {
             [toString [13], "\r"],
             [toString [9], "\t"]
         ];
+        // Stringify without escaping inter string quote marks.
         """" + _object + """"
     };
 
