@@ -34,7 +34,7 @@ if (isNil "_return") then {
         {
             _return = ([_return] + _x) call CBA_fnc_replace;
         } forEach UTF8_TABLE;
-    }
+    };
     if (isNull _cache) then {
         _cache = [] call CBA_fnc_createNamespace;
         missionNamespace setVariable [QGVAR(URLCache), _cache];
