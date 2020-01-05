@@ -29,7 +29,7 @@ private _return = _cache getVariable _string;
 if (isNil "_return") then {
     _return = _string;
     
-    //Only need to check if there is atleast one character to replace in the stirng
+    // Only replace if there is at least one character to replace
     if ("%" in _return) then {
         {
             _return = ([_return] + _x) call CBA_fnc_replace;
