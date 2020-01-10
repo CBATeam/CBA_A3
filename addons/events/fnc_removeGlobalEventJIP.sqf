@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _jipID  - A unique ID from CBA_fnc_globalEventJIP. <STRING>
-    _object - Will remove jip EH when object is deleted or immediately if omitted [optional] <OBJECT>
+    _object - Will remove JIP EH when object is deleted or immediately if omitted. (optional, default: objNull) <OBJECT>
 
 Returns:
     Nothing
@@ -19,10 +19,14 @@ SCRIPT(removeGlobalEventJIP);
 
 params [["_jipID", "", [""]], ["_object", objNull, [objNull]]];
 
-if (isNull _object) then {
-    GVAR(eventNamespaceJIP) setVariable [_jipID, nil, true];
+if (isServer) then {
+    if (isNull _object) then {
+        GVAR(eventNamespaceJIP) setVariable [_jipID, nil, true];
+    } else {
+        [_object, "Deleted", {
+            GVAR(eventNamespaceJIP) setVariable [_thisArgs, nil, true];
+        }, _jipID] call CBA_fnc_addBISEventHandler;
+    };
 } else {
-    [_object, "Deleted", {
-        GVAR(eventNamespaceJIP) setVariable [_thisArgs, nil, true];
-    }, _jipID] call CBA_fnc_addBISEventHandler;
+    [QGVAR(removeGlobalEventJIP), [_jipID, _object]] call CBA_fnc_serverEvent;
 };

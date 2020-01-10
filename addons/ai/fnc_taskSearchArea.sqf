@@ -54,6 +54,10 @@ if (isNil {param [1]}) then {
 } else {
     // Clear existing waypoints and cache arguments upon first call
     [_group] call CBA_fnc_clearWaypoints;
+    {
+        _x enableAI "PATH";
+    } forEach units _group;
+
     _group setVariable [QGVAR(taskSearch), _args];
 };
 _args params ["_area", "_behaviour", "_combat", "_speed", "_formation", "_onComplete", "_timeout"];

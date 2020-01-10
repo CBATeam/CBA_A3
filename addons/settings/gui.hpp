@@ -119,20 +119,46 @@ class RscDisplayClientGetReady: RscDisplayGetReady {
     };
 };
 
-class RscControlsGroupNoHScrollbars;
+class RscControlsGroup;
+class RscControlsGroupNoHScrollbars: RscControlsGroup {
+    class VScrollbar;
+};
+
 class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
     x = POS_W(0);
     y = POS_H(3.5);
     w = POS_W(37.5);
     h = POS_H(13.8);
     lineHeight = POS_H(1);
+
+    class VScrollbar: VScrollbar {
+        thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
+        border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
+        arrowFull = "\a3\3DEN\Data\Controls\ctrlDefault\arrowFull_ca.paa";
+        arrowEmpty = "\a3\3DEN\Data\Controls\ctrlDefault\arrowEmpty_ca.paa";
+    };
+};
+
+class RscCombo {
+    class ComboScrollBar;
+};
+
+class GVAR(RscCombo): RscCombo {
+    arrowFull = "\a3\3DEN\Data\Controls\ctrlCombo\arrowFull_ca.paa";
+    arrowEmpty = "\a3\3DEN\Data\Controls\ctrlCombo\arrowEmpty_ca.paa";
+
+    class ComboScrollBar: ComboScrollBar {
+        thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
+        border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
+        arrowFull = "\a3\3DEN\Data\Controls\ctrlDefault\arrowFull_ca.paa";
+        arrowEmpty = "\a3\3DEN\Data\Controls\ctrlDefault\arrowEmpty_ca.paa";
+    };
 };
 
 // Has to be created dynamically for every options group, because they would
 // interfere with the controls groups otherwise. Scripted controls are always
 // placed below config controls.
-class RscCombo;
-class GVAR(AddonsList): RscCombo {
+class GVAR(AddonsList): GVAR(RscCombo) {
     linespacing = 1;
     text = "";
     wholeHeight = POS_H(12);
@@ -293,7 +319,7 @@ class GVAR(Row_List): GVAR(Row_Base) {
 
     class controls: controls {
         class Name: Name {};
-        class List: RscCombo {
+        class List: GVAR(RscCombo) {
             idc = IDC_SETTING_LIST;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
@@ -307,18 +333,18 @@ class GVAR(Row_List): GVAR(Row_Base) {
     };
 };
 
-class RscXSliderH;
+class ctrlXSliderH;
 
 class GVAR(Row_Slider): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingSlider);
 
     class controls: controls {
         class Name: Name {};
-        class Slider: RscXSliderH {
+        class Slider: ctrlXSliderH {
             idc = IDC_SETTING_SLIDER;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(7.9);
             h = POS_H(1);
         };
         class Edit: RscEdit {
@@ -350,14 +376,14 @@ class GVAR(Row_Color): GVAR(Row_Base) {
             w = POS_W(6);
             h = POS_H(1);
         };
-        class Red: RscXSliderH {
+        class Red: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_RED;
             color[] = {1,0,0,0.6};
             colorActive[] = {1,0,0,1};
             colorDisable[] = {1,0,0,0.4};
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(7.9);
             h = POS_H(1);
         };
         class Red_Edit: RscEdit {
@@ -420,11 +446,11 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         class Green_Edit: Green_Edit {};
         class Blue: Blue {};
         class Blue_Edit: Blue_Edit {};
-        class Alpha: RscXSliderH {
+        class Alpha: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_ALPHA;
             x = POS_W(16);
             y = POS_H(3) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(7.9);
             h = POS_H(1);
         };
         class Alpha_Edit: RscEdit {
@@ -459,7 +485,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         class Name: Name {
             y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
         };
-        class Slider: RscXSliderH {
+        class Slider: ctrlXSliderH {
             idc = IDC_SETTING_TIME_SLIDER;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING / 2;
@@ -520,7 +546,6 @@ class GVAR(Row_Time): GVAR(Row_Base) {
     };
 };
 
-class RscControlsGroup;
 class RscTitle;
 class RscListBox;
 

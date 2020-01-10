@@ -3,7 +3,7 @@
 Function: CBA_fnc_removeWeapon
 
 Description:
-    Remove a weapon.
+    Remove a weapon (including binocular).
 
     Function which verifies existence of _item and _unit, returns false in case
     of trouble, or when able to remove _item from _unit true in case of success.

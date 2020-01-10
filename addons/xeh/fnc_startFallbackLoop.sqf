@@ -28,8 +28,7 @@ GVAR(fallbackRunning) = true;
 {
     // don't run init and initPost event handlers on objects that already exist
     SETINITIALIZED(_x);
-    true
-} count (entities [[], [], true, true]);
+} count (entities [[], [], true, true]); // count is safe here because SETINITIALIZED is a setVariable, which returns nil
 
 GVAR(entities) = [];
 

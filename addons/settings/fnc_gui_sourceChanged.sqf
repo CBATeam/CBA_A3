@@ -26,7 +26,7 @@ private _selectedAddon = uiNamespace getVariable QGVAR(addon);
 // toggle source buttons
 {
     private _ctrlX = _display displayCtrl _x;
-    _ctrlX ctrlSetTextColor ([COLOR_BUTTON_ENABLED, COLOR_BUTTON_DISABLED] select (_control == _ctrlX));
+    _ctrlX ctrlSetTextColor ([COLOR_BUTTON_ENABLED, COLOR_BUTTON_DISABLED] select (_control == _ctrlX && {!isClass (configFile >> "CfgPatches" >> "A3_Data_F_Contact")}));
     _ctrlX ctrlSetBackgroundColor ([COLOR_BUTTON_DISABLED, COLOR_BUTTON_ENABLED] select (_control == _ctrlX));
 } forEach [IDC_BTN_SERVER, IDC_BTN_MISSION, IDC_BTN_CLIENT];
 
