@@ -3,9 +3,9 @@
 Function: CBA_fnc_sortNestedArray
 
 Description:
-    Used to sort a nested array from lowest to highest using quick sort.
+    Sorts the given nested array in either ascending or descending order based on the
+    numerical value at specified index of sub arrays.
 
-    Sorting is based on the specified column, which must have numerical data.
     Original array is modified.
 
 Parameters:
@@ -22,20 +22,23 @@ Returns:
     Sorted array <ARRAY>
 
 Author:
-    commy2
+    commy2, mharis001
 ---------------------------------------------------------------------------- */
 SCRIPT(sortNestedArray);
 
 params [["_array", [], [[]]], ["_index", 0, [0]], ["_order", true, [false]]];
 
-private _helperArray = _array apply {
-    [_x select _index, _x]
-};
+private _helperArray = [];
+private _coefficient = [-1, 1] select _order;
+
+{
+    _helperArray pushBack [_x select _index, _coefficient * _forEachIndex, _x];
+} forEach _array;
 
 _helperArray sort _order;
 
 {
-    _array set [_forEachIndex, _x select 1];
+    _array set [_forEachIndex, _x select 2];
 } forEach _helperArray;
 
 _array
