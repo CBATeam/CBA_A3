@@ -139,7 +139,7 @@ private _lastSubCategory = "$START";
                 (_settingData param [1, []]) param [_defaultValue, ""]
             };
             case "COLOR": {
-                private _template = (["R: %1","%G: %2", "B: %3", "A: %4"] select [0, 4]) joinString "\n";
+                private _template = (["R: %1","%G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
                 format ([_template] + _defaultValue)
             };
             case "TIME": {
