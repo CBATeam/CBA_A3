@@ -247,7 +247,6 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             idc = IDC_SETTING_DEFAULT;
             style = ST_PICTURE;
             text = ICON_DEFAULT;
-            tooltip = CSTRING(default_tooltip);
             x = POS_W(26.5);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
