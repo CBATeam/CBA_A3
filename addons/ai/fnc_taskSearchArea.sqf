@@ -89,7 +89,7 @@ _onComplete = _statements joinString ";";
 [
     _group,
     _pos,
-    0,
+    -1,
     "MOVE",
     _behaviour,
     _combat,

@@ -30,5 +30,5 @@ private _waypoints = waypoints _group;
 } forEach _waypoints;
 
 // Create a self-deleting waypoint at the leader position to halt all planned movement (based on old waypoints)
-private _wp = _group addWaypoint [getPosATL (leader _group), 0];
+private _wp = _group addWaypoint [getPosATL (leader _group), -1];
 _wp setWaypointStatements ["true", "deleteWaypoint [group this,currentWaypoint (group this)]"];
