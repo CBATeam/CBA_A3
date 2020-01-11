@@ -46,4 +46,5 @@ private _id = _stateMachine getVariable QGVAR(ID);
 _listItem call (_stateMachine getVariable ONSTATELEAVING(_thisOrigin));
 _listItem call _onTransition;
 _listItem setVariable [QGVAR(state) + str _id, _thisTarget];
+_listItem setVariable [QGVAR(lastCheck) + str _id, CBA_missionTime];
 _listItem call (_stateMachine getVariable ONSTATEENTERED(_thisTarget));

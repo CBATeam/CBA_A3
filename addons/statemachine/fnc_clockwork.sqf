@@ -57,12 +57,14 @@ SCRIPT(clockwork);
 
         private _current = _list select _tick;
         private _thisState = _current getVariable (QGVAR(state) + str _id);
+        private _lastCheck = _current getVariable [(QGVAR(lastCheck) + str _id),CBA_missionTime];
 
         if (isNil "_thisState") then {
             // Item is new and gets set to the intial state, onStateEntered
             // function of initial state gets executed as well.
             _thisState = _stateMachine getVariable QGVAR(initialState);
             _current setVariable [QGVAR(state) + str _id, _thisState];
+            _current setVariable [QGVAR(lastCheck) + str _id, CBA_missionTime];
             _current call (_stateMachine getVariable ONSTATEENTERED(_thisState));
         };
 
@@ -74,7 +76,8 @@ SCRIPT(clockwork);
 
         private _thisOrigin = _thisState;
         {
-            _x params ["_thisTransition", "_condition", "_thisTarget", "_onTransition"];
+            _x params ["_thisTransition", "_condition", "_thisTarget", "_onTransition", "_condFrequency"];
+            private _timeCheck = (CBA_missionTime >= (_lastCheck + _condFrequency));
             // Transition conditions, onTransition, onStateLeaving and
             // onStateEntered functions can use:
             //   _stateMachine   - the state machine
@@ -88,10 +91,11 @@ SCRIPT(clockwork);
             //       _thisTarget variable.
             // Note: onStateEntered functions of initial states won't have
             //       some of these variables defined.
-            if (_current call _condition) exitWith {
+            if ((CBA_missionTime >= (_lastCheck + _condFrequency)) && {_current call _condition}) exitWith {
                 _current call (_stateMachine getVariable ONSTATELEAVING(_thisOrigin));
                 _current call _onTransition;
                 _current setVariable [QGVAR(state) + str _id, _thisTarget];
+                _current setVariable [QGVAR(lastCheck) + str _id, CBA_missionTime];
                 _current call (_stateMachine getVariable ONSTATEENTERED(_thisTarget));
             };
         } forEach (_stateMachine getVariable TRANSITIONS(_thisState));

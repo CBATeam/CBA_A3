@@ -14,6 +14,7 @@ Parameters:
                       (Default: {})
     _name           - name for this specific transition <STRING>
                       (Default: "NONAME")
+    _condFrequency  - time needed between transition condition checks <NUMBER>
 
 Returns:
     _wasCreated     - check if the transition was created <BOOL>
@@ -38,7 +39,8 @@ params [
     ["_targetState", "", [""]],
     ["_condition", {}, [{}]],
     ["_onTransition", {}, [{}]],
-    ["_name", "NONAME", [""]]
+    ["_name", "NONAME", [""]],
+    ["_condFrequency", 0, [0]]
 ];
 
 private _states = _stateMachine getVariable QGVAR(states);
@@ -50,7 +52,7 @@ if (isNull _stateMachine
 ) exitWith {false};
 
 private _transitions = _stateMachine getVariable TRANSITIONS(_originalState);
-_transitions pushBack [_name, _condition, _targetState, _onTransition];
+_transitions pushBack [_name, _condition, _targetState, _onTransition, _condFrequency];
 _stateMachine setVariable [TRANSITIONS(_originalState), _transitions];
 
 true
