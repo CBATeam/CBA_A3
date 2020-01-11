@@ -133,6 +133,9 @@ private _lastSubCategory = "$START";
             default {controlNull};
         };
 
+        // ----- set tooltip on "Reset to default" button
+        (_ctrlSettingGroup controlsGroupCtrl IDC_SETTING_DEFAULT) ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValue]);
+
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
         _ctrlSettingGroup setVariable [QGVAR(source), _source];
         _ctrlSettingGroup setVariable [QGVAR(params), _settingData];
