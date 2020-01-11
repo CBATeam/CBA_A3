@@ -28,11 +28,13 @@ private _return = _cache getVariable _string;
 
 if (isNil "_return") then {
     _return = _string;
-
-    {
-        _return = ([_return] + _x) call CBA_fnc_replace;
-    } forEach UTF8_TABLE;
-
+    
+    // Only replace if there is at least one character to replace
+    if ("%" in _return) then {
+        {
+            _return = ([_return] + _x) call CBA_fnc_replace;
+        } forEach UTF8_TABLE;
+    };
     if (isNull _cache) then {
         _cache = [] call CBA_fnc_createNamespace;
         missionNamespace setVariable [QGVAR(URLCache), _cache];
