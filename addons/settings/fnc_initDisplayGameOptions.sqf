@@ -173,6 +173,7 @@ _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
     _x ctrlAddEventHandler ["ButtonClick", FUNC(gui_sourceChanged)];
 } forEach [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton];
 
+// ----- configure addons/base button
 (_display displayCtrl IDC_BTN_CONFIGURE_ADDONS) ctrlAddEventHandler ["ButtonClick", {_this call FUNC(gui_configure)}];
 
 // ----- scripted OK button

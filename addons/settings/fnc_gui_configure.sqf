@@ -72,18 +72,33 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     //--- change button text
     _ctrlToggleButton ctrlSetText LLSTRING(configureBase);
 
-    //--- emulate default scope selection
-    switch (true) do {
-        case CAN_SET_CLIENT_SETTINGS: {
-            _ctrlClientButton call FUNC(gui_sourceChanged);
-        };
-        case CAN_SET_MISSION_SETTINGS: {
-            _ctrlMissionButton call FUNC(gui_sourceChanged);
-        };
-        case CAN_SET_SERVER_SETTINGS: {
-            _ctrlServerButton call FUNC(gui_sourceChanged);
+    //--- emulate scope selection
+    private _previousSelectedSource = uiNamespace getVariable QGVAR(source);
+
+    if (isNil "_previousSelectedSource") then {
+        switch (true) do {
+            case CAN_SET_CLIENT_SETTINGS: {
+                _previousSelectedSource = "client";
+            };
+            case CAN_SET_MISSION_SETTINGS: {
+                _previousSelectedSource = "mission";
+            };
+            case CAN_SET_SERVER_SETTINGS: {
+                _previousSelectedSource = "server";
+            };
+            default {
+                _previousSelectedSource = "";
+            };
         };
     };
+
+    private _ctrlPreviousButton = [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton] param [
+        ["server", "mission", "client"] find _previousSelectedSource,
+        _ctrlServerButton
+    ];
+
+    _ctrlPreviousButton call FUNC(gui_sourceChanged);
+    ctrlSetFocus _ctrlPreviousButton;
 } else {
     //--- enable and show default menu
     _ctrlGeneralGroup ctrlEnable true;
