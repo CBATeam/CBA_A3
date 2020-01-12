@@ -76,7 +76,7 @@ SCRIPT(clockwork);
 
         private _thisOrigin = _thisState;
         {
-            _x params ["_thisTransition", "_condition", "_thisTarget", "_onTransition", "_condFrequency"];
+            _x params ["_thisTransition", "_condition", "_thisTarget", "_onTransition", ["_condFrequency",0,[0]]];
             // Transition conditions, onTransition, onStateLeaving and
             // onStateEntered functions can use:
             //   _stateMachine   - the state machine
