@@ -77,7 +77,6 @@ SCRIPT(clockwork);
         private _thisOrigin = _thisState;
         {
             _x params ["_thisTransition", "_condition", "_thisTarget", "_onTransition", "_condFrequency"];
-            private _timeCheck = (CBA_missionTime >= (_lastCheck + _condFrequency));
             // Transition conditions, onTransition, onStateLeaving and
             // onStateEntered functions can use:
             //   _stateMachine   - the state machine
