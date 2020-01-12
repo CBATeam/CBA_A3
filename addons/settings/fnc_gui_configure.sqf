@@ -92,6 +92,18 @@ if !(ctrlShown _ctrlAddonsGroup) then {
         };
     };
 
+    if (_previousSelectedSource == "client" && {!CAN_VIEW_CLIENT_SETTINGS}) then {
+        _previousSelectedSource = "mission";
+    };
+
+    if (_previousSelectedSource == "mission" && {!CAN_VIEW_MISSION_SETTINGS}) then {
+        _previousSelectedSource = "server";
+    };
+
+    if (_previousSelectedSource == "server" && {!CAN_VIEW_SERVER_SETTINGS}) then {
+        _previousSelectedSource = "";
+    };
+
     private _ctrlPreviousButton = [_ctrlServerButton, _ctrlMissionButton, _ctrlClientButton] param [
         ["server", "mission", "client"] find _previousSelectedSource,
         _ctrlServerButton
