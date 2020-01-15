@@ -340,18 +340,17 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
                     private _unit = _ctrlSlots getVariable (_ctrlSlots tvData _unitPath);
                     private _description = _unit getVariable QGVAR(description);
 
-                    set3DENSelected [_unit];
-
                     if (_multipleUnits) then {
+                        set3DENSelected [_unit];
                         do3DENAction "CutUnit";
                         do3DENAction "PasteUnitOrig";
+
+                        _unit = get3DENSelected "Object" select 0;
+                        _units pushBack _unit;
+
+                        add3DENConnection ["Group", _units, _group];
+                        _group selectLeader _leader;
                     };
-
-                    _unit = get3DENSelected "Object" select 0;
-                    _units pushBack _unit;
-
-                    add3DENConnection ["Group", _units, _group];
-                    _group selectLeader _leader;
 
                     _unit set3DENAttribute ["description", _description];
                 };
