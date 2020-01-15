@@ -322,14 +322,7 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
 
         private _display = ctrlParent _ctrlButtonOK;
         private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
-
         private _groups = [];
-        private _selected = [];
-
-        // set3DENSelected takes flattened array
-        {
-            _selected append _x;
-        } forEach get3DENSelected "";
 
         for "_sideIndex" from 0 to ((_ctrlSlots tvCount []) - 1) do {
             for "_groupIndex" from 0 to ((_ctrlSlots tvCount [_sideIndex]) - 1) do {
@@ -372,36 +365,37 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         {
             private _group = _x;
             private _callsign = _group getVariable QGVAR(callsign);
+            private _progress = (_forEachIndex + 1) / _total;
 
-            GVAR(ExecStack) append [
+            GVAR(execStack) append [
                 [[_group], {set3DENSelected _this}],
                 [nil, {do3DENAction "CutUnit"}],
                 [nil, {do3DENAction "PasteUnitOrig"}],
-                [[_callsign, _forEachIndex, _total], {
-                    params ["_callsign", "_forEachIndex", "_total"];
+                [[_callsign, _progress], {
+                    params ["_callsign", "_progress"];
 
                     private _group = get3DENSelected "Group" select 0;
                     _group set3DENAttribute ["groupID", _callsign];
-                    progressLoadingScreen ((_forEachIndex + 1) / _total);
+                    progressLoadingScreen _progress;
                 }]
             ];
         } forEach _groups;
 
-        GVAR(ExecStack) pushBack [_selected, {
-            set3DENSelected _this;
-            endLoadingScreen;
-        }];
+        GVAR(execStack) pushBack [nil, {set3DENSelected []; endLoadingScreen}];
     };
 }];
 
-if (isNil QGVAR(ExecStack)) then {
+if (isNil QGVAR(execStack)) then {
     addMissionEventHandler ["EachFrame", {
-        (GVAR(ExecStack) deleteAt 0) params [["_arg", []], ["_code", {}]];
-        _arg call _code;
+        private _nextExec = GVAR(execStack) deleteAt 0;
+        if (isNil "_nextExec") exitWith {};
+
+        _nextExec params [["_args", []], ["_code", {}]];
+        _args call _code;
     }];
 };
 
-GVAR(ExecStack) = [];
+GVAR(execStack) = [];
 
 // Open with tree fully expanded
 tvExpandAll _ctrlSlots;
