@@ -14,6 +14,8 @@ class CfgFunctions {
             PATHTO_FNC(parseYAML);
             PATHTO_FNC(serializeNamespace);
             PATHTO_FNC(deserializeNamespace);
+            PATHTO_FNC(encodeJSON);
+            PATHTO_FNC(parseJSON);
         };
     };
 };

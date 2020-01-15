@@ -17,13 +17,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (ISPROCESSED(missionNamespace)) exitWith {
-    diag_log text "[XEH]: preInit already executed. Abort preInit.";
+    XEH_LOG("preInit already executed. Abort preInit.");
 };
 SETPROCESSED(missionNamespace);
 
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
-XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version"));
+XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
@@ -63,11 +63,11 @@ GVAR(EventsLowercase) = [];
         FUNC(Init) = compileFinal (_header + "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init");
     } else {
         if (_x isEqualTo "HitPart") then {
-            FUNC(HitPart) = compileFinal (_header + format ['{call _x; nil} count ((_this select 0 select 0) getVariable QGVAR(%1))', _x]);
+            FUNC(HitPart) = compileFinal (_header + format ['{call _x} forEach ((_this select 0 select 0) getVariable QGVAR(%1))', _x]);
         } else {
             missionNamespace setVariable [
                 format [QFUNC(%1), _x],
-                compileFinal (_header + format ['{call _x; nil} count ((_this select 0) getVariable QGVAR(%1))', _x])
+                compileFinal (_header + format ['{call _x} forEach ((_this select 0) getVariable QGVAR(%1))', _x])
             ];
         };
     };
@@ -90,7 +90,7 @@ GVAR(incompatible) = [] call CBA_fnc_createNamespace;
 
 // always recompile extended event handlers
 #ifdef DEBUG_MODE_FULL
-    XEH_LOG("XEH: Compiling XEH START");
+    XEH_LOG("Compiling XEH START");
 #endif
 
 //Get configFile eventhandlers from cache that was generated at preStart
@@ -101,7 +101,7 @@ GVAR(allEventHandlers) = call (uiNamespace getVariable [QGVAR(configFileEventHan
 } forEach [campaignConfigFile, missionConfigFile];
 
 #ifdef DEBUG_MODE_FULL
-    XEH_LOG("XEH: Compiling XEH END");
+    XEH_LOG("Compiling XEH END");
 #endif
 
 // add extended event handlers to classes
@@ -192,4 +192,4 @@ if (!isServer) then { // only on client
     }] call CBA_fnc_addEventHandler;
 #endif
 
-XEH_LOG("XEH: PreInit finished.");
+XEH_LOG("PreInit finished.");

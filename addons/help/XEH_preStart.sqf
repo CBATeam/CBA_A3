@@ -21,8 +21,16 @@ private _credits = [];
 
     private _version = "";
 
-    if (isText (_x >> "version")) then {
-        _version = format [" v%1", getText (_x >> "version")];
+    if (isText (_x >> "versionStr")) then {
+        _version = format [" v%1", getText (_x >> "versionStr")];
+    } else {
+        if (isNumber (_x >> "version")) then {
+            _version = format [" v%1", getNumber (_x >> "version")];
+        } else {
+            if (isText (_x >> "version")) then {
+                _version = format [" v%1", getText (_x >> "version")];
+            };
+        };
     };
 
     private _author = getText (_x >> "author") call CBA_fnc_sanitizeHTML;

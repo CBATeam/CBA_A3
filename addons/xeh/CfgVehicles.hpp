@@ -229,6 +229,16 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class ReammoBox;
+    class WeaponHolder: ReammoBox {
+        XEH_ENABLED;
+    };
+
+    class ThingX;
+    class WeaponHolderSimulated: ThingX {
+        XEH_ENABLED;
+    };
+
     // backwards comp, inert
     class SLX_XEH_Logic: Logic {
         scope = 1;
@@ -348,34 +358,11 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class ThingX;
     class Alien_MatterBall_01_base_F: ThingX {
         XEH_ENABLED;
     };
     class Alien_MatterBall_01_falling_F: Alien_MatterBall_01_base_F {
         XEH_ENABLED;
-    };
-
-    class B_W_Soldier_F;
-    class B_W_Story_Protagonist_01_F: B_W_Soldier_F {
-        XEH_ENABLED;
-        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')"; // Inherits from a public base class. Downgrade to protected if Contact component is not loaded.
-    };
-    class B_W_Story_Major_01_F: B_W_Soldier_F {
-        XEH_ENABLED;
-        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
-    };
-    class B_W_Story_Instructor_01_F: B_W_Soldier_F {
-        XEH_ENABLED;
-        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
-    };
-    class B_W_Story_Soldier_01_F: B_W_Soldier_F {
-        XEH_ENABLED;
-        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
-    };
-    class B_W_Story_Leader_01_F: B_W_Soldier_F {
-        XEH_ENABLED;
-        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'A3_Data_F_Contact')";
     };
 
     class O_R_Soldier_Base_F;
