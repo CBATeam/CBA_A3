@@ -317,84 +317,88 @@ _ctrlButtonCollapse ctrlAddEventHandler ["ButtonClick", {
 
 private _ctrlButtonOK = _display displayCtrl IDC_OK;
 _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
-    collect3DENHistory {
-        params ["_ctrlButtonOK"];
+    params ["_ctrlButtonOK"];
 
-        private _display = ctrlParent _ctrlButtonOK;
-        private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
-        private _groups = [];
+    private _display = ctrlParent _ctrlButtonOK;
+    private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
 
-        for "_sideIndex" from 0 to ((_ctrlSlots tvCount []) - 1) do {
-            for "_groupIndex" from 0 to ((_ctrlSlots tvCount [_sideIndex]) - 1) do {
-                private _groupPath = [_sideIndex, _groupIndex];
-                private _group = _ctrlSlots getVariable (_ctrlSlots tvData _groupPath);
-                _groups pushBack _group;
+    // Need frame delaying to avoid duplication bugs
+    private _execQueue = [];
+    private _groups = [];
 
-                private _leader = leader _group;
-                private _multipleUnits = count units _group > 1;
+    for "_sideIndex" from 0 to ((_ctrlSlots tvCount []) - 1) do {
+        for "_groupIndex" from 0 to ((_ctrlSlots tvCount [_sideIndex]) - 1) do {
+            private _groupPath = [_sideIndex, _groupIndex];
+            private _group = _ctrlSlots getVariable (_ctrlSlots tvData _groupPath);
+            _groups pushBack _group;
 
-                private _units = [];
+            private _units = [];
+            private _multipleUnits = count units _group > 1;
 
-                for "_unitIndex" from 0 to ((_ctrlSlots tvCount _groupPath) - 1) do {
-                    private _unitPath = [_sideIndex, _groupIndex, _unitIndex];
-                    private _unit = _ctrlSlots getVariable (_ctrlSlots tvData _unitPath);
-                    private _description = _unit getVariable QGVAR(description);
+            for "_unitIndex" from 0 to ((_ctrlSlots tvCount _groupPath) - 1) do {
+                private _unitPath = [_sideIndex, _groupIndex, _unitIndex];
+                private _unit = _ctrlSlots getVariable (_ctrlSlots tvData _unitPath);
 
-                    if (_multipleUnits) then {
-                        set3DENSelected [_unit];
-                        do3DENAction "CutUnit";
-                        do3DENAction "PasteUnitOrig";
+                private _description = _unit getVariable QGVAR(description);
+                _unit set3DENAttribute ["description", _description];
 
-                        _unit = get3DENSelected "Object" select 0;
-                        _units pushBack _unit;
+                // Only rearrange groups with multiple units
+                if (_multipleUnits) then {
+                    _execQueue append [
+                        [{set3DENSelected _this}, [_unit]],
+                        {do3DENAction "CutUnit"},
+                        {do3DENAction "PasteUnitOrig"},
+                        [{
+                            params ["_group", "_units"];
 
-                        add3DENConnection ["Group", _units, _group];
-                        _group selectLeader _leader;
+                            private _unit = get3DENSelected "Object" select 0;
+                            _units pushBack _unit;
+
+                            add3DENConnection ["Group", _units, _group];
+                        }, [_group, _units]]
+                    ];
+
+                    if (_unitIndex == 0) then {
+                        _execQueue pushBack [{_this selectLeader (get3DENSelected "Object" select 0)}, _group];
                     };
-
-                    _unit set3DENAttribute ["description", _description];
                 };
             };
         };
-
-        // Need frame delaying to avoid duplication bugs
-        private _total = count _groups;
-        startLoadingScreen [localize LSTRING(AdjustingGroupOrder)];
-
-        {
-            private _group = _x;
-            private _callsign = _group getVariable QGVAR(callsign);
-            private _progress = (_forEachIndex + 1) / _total;
-
-            GVAR(execStack) append [
-                [[_group], {set3DENSelected _this}],
-                [nil, {do3DENAction "CutUnit"}],
-                [nil, {do3DENAction "PasteUnitOrig"}],
-                [[_callsign, _progress], {
-                    params ["_callsign", "_progress"];
-
-                    private _group = get3DENSelected "Group" select 0;
-                    _group set3DENAttribute ["groupID", _callsign];
-                    progressLoadingScreen _progress;
-                }]
-            ];
-        } forEach _groups;
-
-        GVAR(execStack) pushBack [nil, {set3DENSelected []; endLoadingScreen}];
     };
-}];
 
-if (isNil QGVAR(execStack)) then {
-    addMissionEventHandler ["EachFrame", {
-        private _nextExec = GVAR(execStack) deleteAt 0;
-        if (isNil "_nextExec") exitWith {};
+    private _total = count _groups;
+    startLoadingScreen [localize LSTRING(AdjustingGroupOrder)];
 
-        _nextExec params [["_args", []], ["_code", {}]];
+    {
+        private _group = _x;
+        private _callsign = _group getVariable QGVAR(callsign);
+        private _progress = (_forEachIndex + 1) / _total;
+
+        _execQueue append [
+            [{set3DENSelected _this}, [_group]],
+            {do3DENAction "CutUnit"},
+            {do3DENAction "PasteUnitOrig"},
+            [{
+                params ["_callsign", "_progress"];
+
+                private _group = get3DENSelected "Group" select 0;
+                _group set3DENAttribute ["groupID", _callsign];
+                progressLoadingScreen _progress;
+            }, [_callsign, _progress]]
+        ];
+    } forEach _groups;
+
+    _execQueue pushBack {set3DENSelected []; endLoadingScreen};
+
+    [missionNamespace, "EachFrame", {
+        if (_thisArgs isEqualTo []) exitWith {
+            removeMissionEventHandler [_thisType, _thisID];
+        };
+
+        (_thisArgs deleteAt 0) params [["_code", {}], ["_args", []]];
         _args call _code;
-    }];
-};
-
-GVAR(execStack) = [];
+    }, _execQueue] call CBA_fnc_addBISEventHandler;
+}];
 
 // Open with tree fully expanded
 tvExpandAll _ctrlSlots;
