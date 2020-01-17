@@ -133,6 +133,24 @@ private _lastSubCategory = "$START";
             default {controlNull};
         };
 
+        // ----- determine display string for default value
+        private _defaultValueToolTip = switch (toUpper _settingType) do {
+            case "LIST": {
+                (_settingData param [1, []]) param [_defaultValue, ""]
+            };
+            case "COLOR": {
+                private _template = (["R: %1","%G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
+                format ([_template] + _defaultValue)
+            };
+            case "TIME": {
+                _defaultValue call CBA_fnc_formatElapsedTime
+            };
+            default {_defaultValue};
+        };
+
+        // ----- set tooltip on "Reset to default" button
+        (_ctrlSettingGroup controlsGroupCtrl IDC_SETTING_DEFAULT) ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValueToolTip]);
+
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
         _ctrlSettingGroup setVariable [QGVAR(source), _source];
         _ctrlSettingGroup setVariable [QGVAR(params), _settingData];

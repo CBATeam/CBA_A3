@@ -26,7 +26,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_group", "_position", ["_radius", 0], ["_override", false]];
+params ["_group", "_position", ["_radius", -1], ["_override", false]];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
