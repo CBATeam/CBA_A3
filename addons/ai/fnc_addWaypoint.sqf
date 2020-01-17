@@ -35,7 +35,7 @@ Author:
 params [
     "_group",
     "_position",
-    ["_radius", 0, [0]],
+    ["_radius", -1, [0]],
     ["_type", "MOVE", [""]],
     ["_behaviour", "UNCHANGED", [""]],
     ["_combat", "NO CHANGE", [""]],
