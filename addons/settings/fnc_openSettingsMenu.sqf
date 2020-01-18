@@ -26,12 +26,3 @@ private _ctrlConfirm = _dlgSettings ctrlCreate ["RscButtonMenuOK", IDC_CANCEL];
 _ctrlConfirm ctrlSetPosition ctrlPosition _ctrlScriptedOK;
 _ctrlConfirm ctrlCommit 0;
 _ctrlConfirm ctrlAddEventHandler ["ButtonClick", {call FUNC(gui_saveTempData)}];
-
-// then switch right to missions tab if in 3den
-if (ctrlIDD _display isEqualTo 313) then {
-    private _ctrlMissionButton = _dlgSettings displayCtrl IDC_BTN_MISSION;
-
-    if (ctrlEnabled _ctrlMissionButton) then {
-        _ctrlMissionButton call FUNC(gui_sourceChanged);
-    };
-};
