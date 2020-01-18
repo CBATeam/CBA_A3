@@ -136,7 +136,9 @@ private _lastSubCategory = "$START";
         // ----- determine display string for default value
         private _defaultValueToolTip = switch (toUpper _settingType) do {
             case "LIST": {
-                (_settingData param [1, []]) param [_defaultValue, ""]
+                private _label = (_settingData param [1, []]) param [_defaultValue, ""];
+                if (isLocalized _label) then { _label = localize _label; };
+                _label
             };
             case "COLOR": {
                 private _template = (["R: %1","%G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
