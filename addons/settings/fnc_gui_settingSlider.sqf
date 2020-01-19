@@ -32,6 +32,8 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+    // refresh priority to update overwrite color if current value is equal to overwrite
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
 private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
@@ -63,6 +65,8 @@ _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+    // refresh priority to update overwrite color if current value is equal to overwrite
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
 _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {

@@ -105,6 +105,7 @@
 
 #define COLOR_APPLIES [0, 0.95, 0, 1]
 #define COLOR_OVERWRITTEN [0.95, 0, 0, 1]
+#define COLOR_OVERWRITTEN_EQUAL [0.95, 0.55, 0, 1]
 #define COLOR_NEED_RESTART [0.95, 0.95, 0, 1]
 
 #define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
@@ -137,6 +138,12 @@
     (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [[setting,  "server"] call FUNC(get), nil]] select 0\
 ] select (["client", "mission", "server"] find TEMP_PRIORITY(setting)))
+
+#define SOURCE_VALUE(setting,source) ([\
+    (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [[setting,  "client"] call FUNC(get), nil]] select 0,\
+    (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
+    (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [[setting,  "server"] call FUNC(get), nil]] select 0\
+] select (["client", "mission", "server"] find source))
 
 #define ASCII_NEWLINE 10
 #define ASCII_CARRIAGE_RETURN 13
