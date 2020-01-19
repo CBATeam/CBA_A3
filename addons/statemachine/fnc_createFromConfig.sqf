@@ -48,13 +48,13 @@ private _stateMachine = [_list, _skipNull] call FUNC(create);
         if (isText (_x >> "targetState")) then {
             _targetState = getText (_x >> "targetState");
         };
-        private _condFrequency = getNumber (_x >> "condFrequency");
+        private _conditionFrequency = getNumber (_x >> "conditionFrequency");
         GET_FUNCTION(_condition,_x >> "condition");
         GET_FUNCTION(_onTransition,_x >> "onTransition");
         private _events = getArray (_x >> "events");
 
         if (_events isEqualTo []) then {
-            [_stateMachine, _state, _targetState, _condition, _onTransition, _transition, _condFrequency] call FUNC(addTransition);
+            [_stateMachine, _state, _targetState, _condition, _onTransition, _transition, _conditionFrequency] call FUNC(addTransition);
         } else {
             [_stateMachine, _state, _targetState, _events, _condition, _onTransition, _transition] call FUNC(addEventTransition);
         };

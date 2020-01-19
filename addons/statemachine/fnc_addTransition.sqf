@@ -14,7 +14,6 @@ Parameters:
                       (Default: {})
     _name           - name for this specific transition <STRING>
                       (Default: "NONAME")
-    _condFrequency  - time needed between transition condition checks <NUMBER>
 
 Returns:
     _wasCreated     - check if the transition was created <BOOL>
@@ -40,7 +39,7 @@ params [
     ["_condition", {}, [{}]],
     ["_onTransition", {}, [{}]],
     ["_name", "NONAME", [""]],
-    ["_condFrequency", 0, [0]]
+    ["_conditionFrequency", 0, [0]]
 ];
 
 private _states = _stateMachine getVariable QGVAR(states);
@@ -51,8 +50,32 @@ if (isNull _stateMachine
     || {_condition isEqualTo {}}
 ) exitWith {false};
 
+if (_conditionFrequency > 0) then {
+    _condition = compile format [QUOTE( \
+        true && \
+        { \
+            private _return = false; \
+            if ((_current getVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), '')]) isEqualTo _thisState) then { \
+                private _lastCheckedTime = _current getVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)]; \
+                if (CBA_MissionTime >= (_lastCheckedTime + %2)) then { \
+                    _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)]; \
+                    _return = true; \
+                } else { \
+                    _return = false; \
+                }; \
+            } else { \
+                _current setVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), _thisState)]; \
+                _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)]; \
+                _return = false; \
+            }; \
+            _return \
+        } && \
+        %1 \
+    ), _condition, _conditionFrequency];
+};
+
 private _transitions = _stateMachine getVariable TRANSITIONS(_originalState);
-_transitions pushBack [_name, _condition, _targetState, _onTransition, _condFrequency];
+_transitions pushBack [_name, _condition, _targetState, _onTransition];
 _stateMachine setVariable [TRANSITIONS(_originalState), _transitions];
 
 true
