@@ -52,25 +52,21 @@ if (isNull _stateMachine
 
 if (_conditionFrequency > 0) then {
     _condition = compile format [QUOTE(\
-        true &&\
-        {\
-            private _return = false;\
-            if ((_current getVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), '')]) isEqualTo _thisState) then {\
-                private _lastCheckedTime = _current getVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
-                if (CBA_MissionTime >= (_lastCheckedTime + %2)) then {\
-                    _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
-                    _return = true;\
-                } else {\
-                    _return = false;\
-                };\
-            } else {\
-                _current setVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), _thisState)];\
+        private _return = false;\
+        if ((_current getVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), '')]) isEqualTo _thisState) then {\
+            private _lastCheckedTime = _current getVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+            if (CBA_MissionTime >= (_lastCheckedTime + %2)) then {\
                 _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+                _return = true;\
+            } else {\
                 _return = false;\
             };\
-            _return\
-        } &&\
-        %1\
+        } else {\
+            _current setVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), _thisState)];\
+            _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+            _return = false;\
+        };\
+        _return && %1\
     ), _condition, _conditionFrequency];
 };
 
