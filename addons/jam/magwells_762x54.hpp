@@ -10,7 +10,7 @@
 
     class CBA_762x54R_Maxim {};     // Maxim gun in 7.62x54R
     class CBA_762x54R_Mosin {};     // M91/30, M38, M44 Mosin
-    
+
     class CBA_762x54R_RP46 {};      // RP-46
 
     class CBA_762x54R_SVD {         // SVD
@@ -20,3 +20,5 @@
     };
 
     class CBA_762x54R_SVT {};       // SVT-38, SVT-40
+
+    class CBA_762x54R_Vz59_LINKS {};    //Uk vz. 59, UK59, vz 59

@@ -10,6 +10,8 @@
     class CBA_762x51_AR10_L {};     // AR-10 long mag (25/30 rounds)
     class CBA_762x51_AR10_XL {};    // AR-10 drum mag (X-Products 50 round)
 
+    class CBA_762x51_CZ750 {};      // CZ-750
+
     class CBA_762x51_FAL {};        // FN FAL
     class CBA_762x51_FAL_L {};      // FN FAL long mag (25/30 rounds)
     class CBA_762x51_FAL_XL {};     // FN FAL drum mag (X-Products 50 round)
