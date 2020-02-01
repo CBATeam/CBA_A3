@@ -8,6 +8,8 @@ Description:
     Possible events:
         "unit"          - player controlled unit changed
         "weapon"        - currently selected weapon change
+        "muzzle"        - currently selected muzzle change
+        "weaponMode"    - currently selected weapon mode change
         "loadout"       - players loadout changed
         "vehicle"       - players current vehicle changed
         "turret"        - position in vehicle changed
@@ -54,6 +56,18 @@ private _id = switch (_type) do {
             [GVAR(oldUnit), currentWeapon GVAR(oldUnit)] call _function;
         };
         [QGVAR(weaponEvent), _function] call CBA_fnc_addEventHandler // return id
+    };
+    case "muzzle": {
+        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+            [GVAR(oldUnit), currentMuzzle GVAR(oldUnit)] call _function;
+        };
+        [QGVAR(muzzleEvent), _function] call CBA_fnc_addEventHandler // return id
+    };
+    case "weaponmode": {
+        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+            [GVAR(oldUnit), currentWeaponMode GVAR(oldUnit)] call _function;
+        };
+        [QGVAR(weaponModeEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "loadout": {
         if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
@@ -121,115 +135,121 @@ if (_id != -1) then {
         GVAR(oldGroup) = grpNull;
         GVAR(oldLeader) = objNull;
         GVAR(oldWeapon) = "";
+        GVAR(oldMuzzle) = "";
+        GVAR(oldWeaponMode) = "";
         GVAR(oldLoadout) = [];
         GVAR(oldLoadoutNoAmmo) = [];
         GVAR(oldVehicle) = objNull;
-        GVAR(inVehicle) = false;
         GVAR(oldTurret) = [];
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
         GVAR(oldFeatureCamera) = "";
         GVAR(oldVisibleMap) = false;
-        GVAR(oldUAVControl) = [];
-        GVAR(controlledEntity) = objNull;
+        GVAR(oldState) = [];
 
         GVAR(playerEHInfo) pushBack addMissionEventHandler ["EachFrame", {call FUNC(playerEH_EachFrame)}];
         [QFUNC(playerEH_EachFrame), {
             SCRIPT(playerEH_EachFrame);
-            private _player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-            if !(_player isEqualTo GVAR(oldUnit)) then {
-                [QGVAR(unitEvent), [_player, GVAR(oldUnit)]] call CBA_fnc_localEvent;
-                GVAR(oldUnit) = _player;
-                GVAR(oldUAVControl) = []; // force update
+            private _unit = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
+            private _controlledEntity = _unit;
+
+            private _uavControl = UAVControl getConnectedUAV _unit;
+            _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""];
+            if (_uavControl isEqualTo "DRIVER") then {
+                _controlledEntity = driver getConnectedUAV _unit;
             };
 
-            private _data = group _player;
-            if !(_data isEqualTo GVAR(oldGroup)) then {
-                [QGVAR(groupEvent), [_player, GVAR(oldGroup)]] call CBA_fnc_localEvent;
-                GVAR(oldGroup) = _data;
+            if (_uavControl isEqualTo "GUNNER") then {
+                _controlledEntity = gunner getConnectedUAV _unit;
             };
 
-            _data = leader _player;
-            if !(_data isEqualTo GVAR(oldLeader)) then {
-                [QGVAR(leaderEvent), [_player, GVAR(oldLeader)]] call CBA_fnc_localEvent;
-                GVAR(oldLeader) = _data;
-            };
+            private _state = [
+                _unit, group _unit, leader _unit,
+                currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
+                getUnitLoadout _unit,
+                vehicle _unit, _unit call CBA_fnc_turretPath,
+                currentVisionMode _controlledEntity, cameraView
+            ];
 
-            _data = currentWeapon _player;
-            if !(_data isEqualTo GVAR(oldWeapon)) then {
-                GVAR(oldWeapon) = _data;
-                [QGVAR(weaponEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
+            if !(_state isEqualTo GVAR(oldState)) then {
+                GVAR(oldState) = _state;
 
-            _data = getUnitLoadout _player;
-            if !(_data isEqualTo GVAR(oldLoadout)) then {
-                GVAR(oldLoadout) = _data;
+                _state params [
+                    "_newunit", "_newGroup", "_newLeader",
+                    "_newWeapon", "_newMuzzle", "_newWeaponMode",
+                    "_newLoadout", "_newVehicle", "_newTurret",
+                    "_newVisionMode", "_newCameraView"
+                ];
 
-                // we don't want to trigger this just because your ammo counter decreased.
-                _data = + GVAR(oldLoadout);
+                if !(_newunit isEqualTo GVAR(oldUnit)) then {
+                    [QGVAR(unitEvent), [_unit, GVAR(oldUnit)]] call CBA_fnc_localEvent;
+                    GVAR(oldUnit) = _unit;
+                };
 
-                {
-                    private _weaponInfo = _data param [_forEachIndex, []];
-                    if !(_weaponInfo isEqualTo []) then {
-                        _weaponInfo set [4, _x];
-                        _weaponInfo deleteAt 5;
+                if !(_newGroup isEqualTo GVAR(oldGroup)) then {
+                    [QGVAR(groupEvent), [_unit, GVAR(oldGroup)]] call CBA_fnc_localEvent;
+                    GVAR(oldGroup) = _newGroup;
+                };
+
+                if !(_newLeader isEqualTo GVAR(oldLeader)) then {
+                    [QGVAR(leaderEvent), [_unit, GVAR(oldLeader)]] call CBA_fnc_localEvent;
+                    GVAR(oldLeader) = _newLeader;
+                };
+
+                if !(_newWeapon isEqualTo GVAR(oldWeapon)) then {
+                    [QGVAR(weaponEvent), [_unit, _newWeapon]] call CBA_fnc_localEvent;
+                    GVAR(oldWeapon) = _newWeapon;
+                };
+
+                if !(_newMuzzle isEqualTo GVAR(oldMuzzle)) then {
+                    [QGVAR(muzzleEvent), [_unit, _newMuzzle]] call CBA_fnc_localEvent;
+                    GVAR(oldMuzzle) = _newMuzzle;
+                };
+
+                if !(_newWeaponMode isEqualTo GVAR(oldWeaponMode)) then {
+                    [QGVAR(weaponModeEvent), [_unit, _newWeaponMode]] call CBA_fnc_localEvent;
+                    GVAR(oldWeaponMode) = _newWeaponMode;
+                };
+
+                if !(_newLoadout isEqualTo GVAR(oldLoadout)) then {
+                    // We don't want to trigger this just because your ammo counter decreased.
+                    _newLoadoutNoAmmo = + _newLoadout;
+
+                    {
+                        private _weaponInfo = _newLoadoutNoAmmo param [_forEachIndex, []];
+                        if !(_weaponInfo isEqualTo []) then {
+                            _weaponInfo set [4, _x];
+                            _weaponInfo deleteAt 5;
+                        };
+                    } forEach [primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit];
+
+                    if !(_newLoadoutNoAmmo isEqualTo GVAR(oldLoadoutNoAmmo)) then {
+                        [QGVAR(loadoutEvent), [_unit, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
+                        GVAR(oldLoadoutNoAmmo) = _newLoadoutNoAmmo;
                     };
-                } forEach [primaryWeaponMagazine _player, secondaryWeaponMagazine _player, handgunMagazine _player];
 
-                if !(_data isEqualTo GVAR(oldLoadoutNoAmmo)) then {
-                    GVAR(oldLoadoutNoAmmo) = _data;
-                    [QGVAR(loadoutEvent), [_player, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
-                };
-            };
-
-            _data = vehicle _player;
-            if !(_data isEqualTo GVAR(oldVehicle)) then {
-                GVAR(oldVehicle) = _data;
-                [QGVAR(vehicleEvent), [_player, _data]] call CBA_fnc_localEvent;
-                GVAR(inVehicle) = _data != _player;
-                if (!GVAR(inVehicle)) then {
-                    _data = _player call CBA_fnc_turretPath;
-                    if !(_data isEqualTo GVAR(oldTurret)) then {
-                        GVAR(oldTurret) = _data;
-                        [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
-                    };
-                };
-            };
-            if (GVAR(inVehicle)) then {
-                _data = _player call CBA_fnc_turretPath;
-                if !(_data isEqualTo GVAR(oldTurret)) then {
-                    GVAR(oldTurret) = _data;
-                    [QGVAR(turretEvent), [_player, _data]] call CBA_fnc_localEvent;
-                };
-            };
-
-            // handle controlling UAV, UAV entity needed for visionMode
-            _data = UAVControl getConnectedUAV _player;
-            if !(_data isEqualTo GVAR(oldUAVControl)) then {
-                GVAR(oldUAVControl) = _data;
-
-                private _role = _data param [(_data find _player) + 1, ""];
-                if (_role isEqualTo "DRIVER") exitWith {
-                    GVAR(controlledEntity) = driver getConnectedUAV _player;
+                    GVAR(oldLoadout) = _newLoadout;
                 };
 
-                if (_role isEqualTo "GUNNER") exitWith {
-                    GVAR(controlledEntity) = gunner getConnectedUAV _player;
+                if !(_newVehicle isEqualTo GVAR(oldVehicle)) then {
+                    [QGVAR(vehicleEvent), [_unit, _newVehicle]] call CBA_fnc_localEvent;
+                    GVAR(oldVehicle) = _newVehicle;
                 };
 
-                GVAR(controlledEntity) = _player;
-            };
+                if !(_newTurret isEqualTo GVAR(oldTurret)) then {
+                    [QGVAR(turretEvent), [_unit, _newTurret]] call CBA_fnc_localEvent;
+                    GVAR(oldTurret) = _newTurret;
+                };
 
-            _data = currentVisionMode GVAR(controlledEntity);
-            if !(_data isEqualTo GVAR(oldVisionMode)) then {
-                GVAR(oldVisionMode) = _data;
-                [QGVAR(visionModeEvent), [_player, _data]] call CBA_fnc_localEvent;
-            };
+                if !(_newVisionMode isEqualTo GVAR(oldVisionMode)) then {
+                    [QGVAR(visionModeEvent), [_unit, _newVisionMode]] call CBA_fnc_localEvent;
+                    GVAR(oldVisionMode) = _newVisionMode;
+                };
 
-            _data = cameraView;
-            if !(_data isEqualTo GVAR(oldCameraView)) then {
-                GVAR(oldCameraView) = _data;
-                [QGVAR(cameraViewEvent), [_player, _data]] call CBA_fnc_localEvent;
+                if !(_newCameraView isEqualTo GVAR(oldCameraView)) then {
+                    [QGVAR(cameraViewEvent), [_unit, _newCameraView]] call CBA_fnc_localEvent;
+                    GVAR(oldCameraView) = _newCameraView;
+                };
             };
         }] call CBA_fnc_compileFinal;
 
