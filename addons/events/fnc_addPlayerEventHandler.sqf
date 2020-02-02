@@ -174,8 +174,7 @@ if (_id != -1) then {
             private _state = [
                 _unit, group _unit, leader _unit,
                 currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
-                getUnitLoadout _unit,
-                _vehicle, _turret,
+                getUnitLoadout _unit, _vehicle, _turret,
                 currentVisionMode _controlledEntity, cameraView
             ];
 
@@ -183,13 +182,13 @@ if (_id != -1) then {
                 GVAR(oldState) = _state;
 
                 _state params [
-                    "_newunit", "_newGroup", "_newLeader",
+                    "", "_newGroup", "_newLeader",
                     "_newWeapon", "_newMuzzle", "_newWeaponMode",
-                    "_newLoadout", "_newVehicle", "_newTurret",
+                    "_newLoadout", "", "",
                     "_newVisionMode", "_newCameraView"
                 ];
 
-                if !(_newunit isEqualTo GVAR(oldUnit)) then {
+                if !(_unit isEqualTo GVAR(oldUnit)) then {
                     [QGVAR(unitEvent), [_unit, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                     GVAR(oldUnit) = _unit;
                 };
@@ -221,7 +220,7 @@ if (_id != -1) then {
 
                 if !(_newLoadout isEqualTo GVAR(oldLoadout)) then {
                     // We don't want to trigger this just because your ammo counter decreased.
-                    _newLoadoutNoAmmo = + _newLoadout;
+                    private _newLoadoutNoAmmo = + _newLoadout;
 
                     {
                         private _weaponInfo = _newLoadoutNoAmmo param [_forEachIndex, []];
@@ -239,14 +238,14 @@ if (_id != -1) then {
                     GVAR(oldLoadout) = _newLoadout;
                 };
 
-                if !(_newVehicle isEqualTo GVAR(oldVehicle)) then {
-                    [QGVAR(vehicleEvent), [_unit, _newVehicle]] call CBA_fnc_localEvent;
-                    GVAR(oldVehicle) = _newVehicle;
+                if !(_vehicle isEqualTo GVAR(oldVehicle)) then {
+                    [QGVAR(vehicleEvent), [_unit, _vehicle]] call CBA_fnc_localEvent;
+                    GVAR(oldVehicle) = _vehicle;
                 };
 
-                if !(_newTurret isEqualTo GVAR(oldTurret)) then {
-                    [QGVAR(turretEvent), [_unit, _newTurret]] call CBA_fnc_localEvent;
-                    GVAR(oldTurret) = _newTurret;
+                if !(_turret isEqualTo GVAR(oldTurret)) then {
+                    [QGVAR(turretEvent), [_unit, _turret]] call CBA_fnc_localEvent;
+                    GVAR(oldTurret) = _turret;
                 };
 
                 if !(_newVisionMode isEqualTo GVAR(oldVisionMode)) then {
