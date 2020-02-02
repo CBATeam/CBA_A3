@@ -199,27 +199,27 @@ if (_id != -1) then {
                 };
 
                 if !(_newGroup isEqualTo GVAR(oldGroup)) then {
-                    [QGVAR(groupEvent), [_unit, GVAR(oldGroup)]] call CBA_fnc_localEvent;
+                    [QGVAR(groupEvent), [_unit, GVAR(oldGroup), _newGroup]] call CBA_fnc_localEvent;
                     GVAR(oldGroup) = _newGroup;
                 };
 
                 if !(_newLeader isEqualTo GVAR(oldLeader)) then {
-                    [QGVAR(leaderEvent), [_unit, GVAR(oldLeader)]] call CBA_fnc_localEvent;
+                    [QGVAR(leaderEvent), [_unit, GVAR(oldLeader), _newLeader]] call CBA_fnc_localEvent;
                     GVAR(oldLeader) = _newLeader;
                 };
 
                 if !(_newWeapon isEqualTo GVAR(oldWeapon)) then {
-                    [QGVAR(weaponEvent), [_unit, _newWeapon]] call CBA_fnc_localEvent;
+                    [QGVAR(weaponEvent), [_unit, _newWeapon, GVAR(oldWeapon)]] call CBA_fnc_localEvent;
                     GVAR(oldWeapon) = _newWeapon;
                 };
 
                 if !(_newMuzzle isEqualTo GVAR(oldMuzzle)) then {
-                    [QGVAR(muzzleEvent), [_unit, _newMuzzle]] call CBA_fnc_localEvent;
+                    [QGVAR(muzzleEvent), [_unit, _newMuzzle, GVAR(oldMuzzle)]] call CBA_fnc_localEvent;
                     GVAR(oldMuzzle) = _newMuzzle;
                 };
 
                 if !(_newWeaponMode isEqualTo GVAR(oldWeaponMode)) then {
-                    [QGVAR(weaponModeEvent), [_unit, _newWeaponMode]] call CBA_fnc_localEvent;
+                    [QGVAR(weaponModeEvent), [_unit, _newWeaponMode, GVAR(oldWeaponMode)]] call CBA_fnc_localEvent;
                     GVAR(oldWeaponMode) = _newWeaponMode;
                 };
 
@@ -236,7 +236,7 @@ if (_id != -1) then {
                     } forEach [primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit];
 
                     if !(_newLoadoutNoAmmo isEqualTo GVAR(oldLoadoutNoAmmo)) then {
-                        [QGVAR(loadoutEvent), [_unit, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
+                        [QGVAR(loadoutEvent), [_unit, GVAR(oldLoadout), _newLoadout]] call CBA_fnc_localEvent;
                         GVAR(oldLoadoutNoAmmo) = _newLoadoutNoAmmo;
                     };
 
@@ -244,22 +244,22 @@ if (_id != -1) then {
                 };
 
                 if !(_vehicle isEqualTo GVAR(oldVehicle)) then {
-                    [QGVAR(vehicleEvent), [_unit, _vehicle]] call CBA_fnc_localEvent;
+                    [QGVAR(vehicleEvent), [_unit, _vehicle, GVAR(oldVehicle)]] call CBA_fnc_localEvent;
                     GVAR(oldVehicle) = _vehicle;
                 };
 
                 if !(_turret isEqualTo GVAR(oldTurret)) then {
-                    [QGVAR(turretEvent), [_unit, _turret]] call CBA_fnc_localEvent;
+                    [QGVAR(turretEvent), [_unit, _turret, GVAR(oldTurret)]] call CBA_fnc_localEvent;
                     GVAR(oldTurret) = _turret;
                 };
 
                 if !(_newVisionMode isEqualTo GVAR(oldVisionMode)) then {
-                    [QGVAR(visionModeEvent), [_unit, _newVisionMode]] call CBA_fnc_localEvent;
+                    [QGVAR(visionModeEvent), [_unit, _newVisionMode, GVAR(oldVisionMode)]] call CBA_fnc_localEvent;
                     GVAR(oldVisionMode) = _newVisionMode;
                 };
 
                 if !(_newCameraView isEqualTo GVAR(oldCameraView)) then {
-                    [QGVAR(cameraViewEvent), [_unit, _newCameraView]] call CBA_fnc_localEvent;
+                    [QGVAR(cameraViewEvent), [_unit, _newCameraView, GVAR(oldCameraView)]] call CBA_fnc_localEvent;
                     GVAR(oldCameraView) = _newCameraView;
                 };
             };
