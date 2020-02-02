@@ -412,10 +412,6 @@
             <Italian>Questa impostazione è sovrascritta dai client e si applica solo al server.</Italian>
             <Czech>Toto nastavení je přepsáno klienty a platí pouze na serveru.</Czech>
         </Key>
-        <Key ID="STR_cba_settings_overwritten_equal">
-            <English>\nOverwriting value is equal.</English>
-            <Polish>\nNadpisująca wartość jest identyczna.</Polish>
-        </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by clients with the same value.</English>
             <German>Mit gleichem Wert durch Clients überschrieben.</German>
