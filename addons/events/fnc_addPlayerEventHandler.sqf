@@ -140,8 +140,8 @@ if (_id != -1) then {
         GVAR(oldGroup) = grpNull;
         GVAR(oldLeader) = objNull;
         GVAR(oldWeapon) = "";
-        GVAR(oldMuzzle) = "";
-        GVAR(oldWeaponMode) = "";
+        GVAR(oldMuzzle) = [objNull, "", ""];
+        GVAR(oldWeaponMode) = [objNull, GVAR(oldMuzzle), ""];
         GVAR(oldLoadout) = [];
         GVAR(oldLoadoutNoAmmo) = [];
         GVAR(oldVehicle) = objNull;
@@ -193,6 +193,12 @@ if (_id != -1) then {
                     "_newVisionMode", "_newCameraView"
                 ];
 
+                // These events should fire if the context of the state has changed.
+                // I.e. switching to a different weapon with "Single" fire mode is an implicit weapon mode switch
+                // The modes just happen to share the same name.
+                _newMuzzle = [_unit, _newWeapon, _newMuzzle];
+                _newWeaponMode = [_unit, _newMuzzle, _newWeaponMode];
+
                 if !(_unit isEqualTo GVAR(oldUnit)) then {
                     [QGVAR(unitEvent), [_unit, GVAR(oldUnit)]] call CBA_fnc_localEvent;
                     GVAR(oldUnit) = _unit;
@@ -214,12 +220,12 @@ if (_id != -1) then {
                 };
 
                 if !(_newMuzzle isEqualTo GVAR(oldMuzzle)) then {
-                    [QGVAR(muzzleEvent), [_unit, _newMuzzle, GVAR(oldMuzzle)]] call CBA_fnc_localEvent;
+                    [QGVAR(muzzleEvent), [_newMuzzle select 2, GVAR(oldMuzzle) select 2]] call CBA_fnc_localEvent;
                     GVAR(oldMuzzle) = _newMuzzle;
                 };
 
                 if !(_newWeaponMode isEqualTo GVAR(oldWeaponMode)) then {
-                    [QGVAR(weaponModeEvent), [_unit, _newWeaponMode, GVAR(oldWeaponMode)]] call CBA_fnc_localEvent;
+                    [QGVAR(weaponModeEvent), [_unit, _newWeaponMode select 2, GVAR(oldWeaponMode) select 2]] call CBA_fnc_localEvent;
                     GVAR(oldWeaponMode) = _newWeaponMode;
                 };
 
