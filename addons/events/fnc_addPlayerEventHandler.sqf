@@ -151,23 +151,31 @@ if (_id != -1) then {
         [QFUNC(playerEH_EachFrame), {
             SCRIPT(playerEH_EachFrame);
             private _unit = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-            private _controlledEntity = _unit;
+            private _vehicle = vehicle _unit;
 
-            private _uavControl = UAVControl getConnectedUAV _unit;
-            _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""];
-            if (_uavControl isEqualTo "DRIVER") then {
-                _controlledEntity = driver getConnectedUAV _unit;
+            private _controlledEntity = _unit;
+            if (!isNull getConnectedUAV _unit) then {
+                private _uavControl = UAVControl getConnectedUAV _unit;
+                _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""];
+                if (_uavControl isEqualTo "DRIVER") exitWith {
+                    _controlledEntity = driver getConnectedUAV _unit;
+                };
+
+                if (_uavControl isEqualTo "GUNNER") exitWith {
+                    _controlledEntity = gunner getConnectedUAV _unit;
+                };
             };
 
-            if (_uavControl isEqualTo "GUNNER") then {
-                _controlledEntity = gunner getConnectedUAV _unit;
+            private _turret = [];
+            if (_unit != _vehicle) then {
+                _turret = allTurrets [_vehicle, true] select {_vehicle turretUnit _x == _unit} param [0, []];
             };
 
             private _state = [
                 _unit, group _unit, leader _unit,
                 currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
                 getUnitLoadout _unit,
-                vehicle _unit, _unit call CBA_fnc_turretPath,
+                _vehicle, _turret,
                 currentVisionMode _controlledEntity, cameraView
             ];
 
