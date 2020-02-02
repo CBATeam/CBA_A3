@@ -125,25 +125,26 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 _ctrlLocked ctrlSetTooltip LLSTRING(applies);
             };
         } else {
-            private _overwriteColor = ([COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select (_sourceValue isEqualTo _tempValue));
+            private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select (_sourceValue isEqualTo _tempValue);
+            private _overwriteTooltipEqual = ["", LLSTRING(overwritten_equal)] select (_sourceValue isEqualTo _tempValue);
 
             switch [_source, _priority] do {
                 case ["client", "server"];
                 case ["mission", "server"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_server_tooltip);
+                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_server_tooltip) + _overwriteTooltipEqual);
                 };
                 case ["client", "mission"];
                 case ["server", "mission"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_mission_tooltip);
+                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_mission_tooltip) + _overwriteTooltipEqual);
                 };
                 case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip);
+                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_client_tooltip) + _overwriteTooltipEqual);
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
@@ -158,8 +159,8 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                         };
                     } else {
                         _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                        _ctrlLocked ctrlSetTextColor ([COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select (_sourceValue isEqualTo _tempValue));
-                        _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
+                        _ctrlLocked ctrlSetTextColor _overwriteColor;
+                        _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_client_tooltip_server) + _overwriteTooltipEqual);
                     };
                 };
             };

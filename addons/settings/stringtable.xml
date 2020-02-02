@@ -406,11 +406,15 @@
             <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
             <Russian>Этот параметр перезаписан клиентом и применяется исключительно к серверу.</Russian>
-            <Polish>Ta wartość zostałą nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
+            <Polish>Ta wartość została nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
             <French>Ce paramètre est écrasé par les clients et ne s'applique qu'au serveur.</French>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış, ayar sadece sunucuda geçerli.</Turkish>
             <Italian>Questa impostazione è sovrascritta dai client e si applica solo al server.</Italian>
             <Czech>Toto nastavení je přepsáno klienty a platí pouze na serveru.</Czech>
+        </Key>
+        <Key ID="STR_cba_settings_overwritten_equal">
+            <English>\nOverwriting value is equal.</English>
+            <Polish>\nNadpisująca wartość jest identyczna.</Polish>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
