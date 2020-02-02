@@ -161,7 +161,7 @@ if (_id != -1) then {
             private _controlledEntity = _unit;
             if (!isNull getConnectedUAV _unit) then {
                 private _uavControl = UAVControl getConnectedUAV _unit;
-                _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""];
+                _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""]; // will be position string if actively controlling, or object if not
                 if (_uavControl isEqualTo "DRIVER") exitWith {
                     _controlledEntity = driver getConnectedUAV _unit;
                 };
