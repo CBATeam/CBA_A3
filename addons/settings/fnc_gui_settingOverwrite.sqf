@@ -144,7 +144,7 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip [(LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual;
+                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual;
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
