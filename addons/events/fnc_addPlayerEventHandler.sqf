@@ -44,81 +44,86 @@ params [["_type", "", [""]], ["_function", {}, [{}]], ["_applyRetroactively", fa
 
 _type = toLower _type;
 
+// Skip retroactive execution if no current unit.
+if (!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])) then {
+    _applyRetroactively = false;
+};
+
 private _id = switch (_type) do {
     case "unit": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), objNull] call _function;
         };
         [QGVAR(unitEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "weapon": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), currentWeapon GVAR(oldUnit)] call _function;
         };
         [QGVAR(weaponEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "muzzle": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), currentMuzzle GVAR(oldUnit)] call _function;
         };
         [QGVAR(muzzleEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "weaponmode": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), currentWeaponMode GVAR(oldUnit)] call _function;
         };
         [QGVAR(weaponModeEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "loadout": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), getUnitLoadout GVAR(oldUnit)] call _function;
         };
         [QGVAR(loadoutEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "vehicle": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), vehicle GVAR(oldUnit)] call _function;
         };
         [QGVAR(vehicleEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "turret": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), GVAR(oldUnit) call CBA_fnc_turretPath] call _function;
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "visionmode": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), currentVisionMode GVAR(oldUnit)] call _function;
         };
         [QGVAR(visionModeEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "cameraview": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), cameraView] call _function;
         };
         [QGVAR(cameraViewEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "featurecamera": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera] call _function;
         };
         [QGVAR(featureCameraEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "visiblemap": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), visibleMap] call _function;
         };
         [QGVAR(visibleMapEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "group": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
         };
         [QGVAR(groupEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "leader": {
-        if (_applyRetroactively && {!isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
+        if (_applyRetroactively) then {
             [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
         };
         [QGVAR(leaderEvent), _function] call CBA_fnc_addEventHandler // return id
