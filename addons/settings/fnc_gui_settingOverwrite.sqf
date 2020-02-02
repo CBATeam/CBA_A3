@@ -159,8 +159,8 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                         };
                     } else {
                         _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                        _ctrlLocked ctrlSetTextColor _overwriteColor;
-                        _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_client_tooltip_server) + _overwriteTooltipEqual);
+                        _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
+                        _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                     };
                 };
             };
