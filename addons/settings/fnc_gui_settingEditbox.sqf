@@ -40,7 +40,7 @@ _ctrlEditbox ctrlAddEventHandler ["KeyUp", {
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
     // refresh priority to update overwrite color if current value is equal to overwrite
-    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(updateUI_locked));
+    [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
 // set setting ui manually to new value
