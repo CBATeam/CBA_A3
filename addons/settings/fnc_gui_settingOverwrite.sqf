@@ -125,26 +125,26 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 _ctrlLocked ctrlSetTooltip LLSTRING(applies);
             };
         } else {
-            private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select (_sourceValue isEqualTo _tempValue);
-            private _overwriteTooltipEqual = ["", LLSTRING(overwritten_equal)] select (_sourceValue isEqualTo _tempValue);
+            private _overwriteEqual = _sourceValue isEqualTo _tempValue;
+            private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select _overwriteEqual;
 
             switch [_source, _priority] do {
                 case ["client", "server"];
                 case ["mission", "server"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_server_tooltip) + _overwriteTooltipEqual);
+                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual;
                 };
                 case ["client", "mission"];
                 case ["server", "mission"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_mission_tooltip) + _overwriteTooltipEqual);
+                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual;
                 };
                 case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip (LLSTRING(overwritten_by_client_tooltip) + _overwriteTooltipEqual);
+                    _ctrlLocked ctrlSetTooltip [(LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual;
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
