@@ -414,7 +414,7 @@
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by clients with the same value.</English>
-            <German>Mit gleichem Wert durch Clients überschrieben.</German>
+            <German>Mit gleichem Wert durch Client überschrieben.</German>
             <Polish>Nadpisane przez klientów z taką samą wartością.</Polish>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
@@ -424,8 +424,8 @@
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
-            <German>Mit gleichem Wert durch server überschrieben.</German>
-            <Polish>Nadpisane przez server z taką samą wartością.</Polish>
+            <German>Mit gleichem Wert durch Server überschrieben.</German>
+            <Polish>Nadpisane przez serwer z taką samą wartością.</Polish>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
