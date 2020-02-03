@@ -413,9 +413,9 @@
             <Czech>Toto nastavení je přepsáno klienty a platí pouze na serveru.</Czech>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
-            <English>Overwritten by clients with the same value.</English>
+            <English>Overwritten by client with the same value.</English>
             <German>Mit gleichem Wert durch Client überschrieben.</German>
-            <Polish>Nadpisane przez klientów z taką samą wartością.</Polish>
+            <Polish>Nadpisane przez klienta z taką samą wartością.</Polish>
             <French>Écrasé par le client, avec la même valeur.</French>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
