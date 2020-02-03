@@ -111,7 +111,7 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
 
     {
         private _source = _x getVariable QGVAR(source);
-        private _sourceValue = SOURCE_VALUE(_setting,_source);
+        private _sourceValue = TEMP_VALUE_SOURCE(_setting,_source);
         private _ctrlLocked = _x controlsGroupCtrl IDC_SETTING_LOCKED;
 
         if (_source isEqualTo _priority) then {
