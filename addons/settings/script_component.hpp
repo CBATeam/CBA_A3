@@ -137,7 +137,7 @@
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [[setting,  "client"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [[setting,  "server"] call FUNC(get), nil]] select 0\
-] select (["client", "mission", "server"] find source))
+] select (["client", "mission", "server"] find (source)))
 
 #define TEMP_VALUE(setting) TEMP_VALUE_SOURCE(setting,TEMP_PRIORITY(setting))
 
