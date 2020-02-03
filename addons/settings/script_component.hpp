@@ -133,12 +133,6 @@
     (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [nil, [setting,  "server"] call FUNC(priority)]] select 1\
 ]; ["client", "mission", "server"] select (_arr find selectMax _arr)})
 
-#define TEMP_VALUE(setting) ([\
-    (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [[setting,  "client"] call FUNC(get), nil]] select 0,\
-    (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
-    (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [[setting,  "server"] call FUNC(get), nil]] select 0\
-] select (["client", "mission", "server"] find TEMP_PRIORITY(setting)))
-
 #define TEMP_VALUE_SOURCE(setting,source) ([\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [[setting,  "client"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
