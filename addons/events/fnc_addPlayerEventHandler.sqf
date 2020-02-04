@@ -45,7 +45,7 @@ params [["_type", "", [""]], ["_function", {}, [{}]], ["_applyRetroactively", fa
 _type = toLower _type;
 
 // Skip retroactive execution if no current unit.
-if (isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])) then {
+if (_applyRetroactively && {isNull (missionNamespace getVariable [QGVAR(oldUnit), objNull])}) then {
     _applyRetroactively = false;
 };
 
