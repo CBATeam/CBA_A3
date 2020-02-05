@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_playerEvent
+Function: CBA_events_fnc_playerEvent
 
 Description:
     Poll player event states and possibly raise events on state change.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        call CBA_fnc_playerEvent;
+        call CBA_events_fnc_playerEvent;
     (end)
 
 Author:
