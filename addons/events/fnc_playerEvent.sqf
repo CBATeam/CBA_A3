@@ -45,7 +45,7 @@ if (_unit != _vehicle) then {
 private _state = [
     _unit, group _unit, leader _unit,
     currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
-    getUnitLoadout _unit, _vehicle, _turret,
+    getUnitLoadout _unit, _vehicle, _turret, _vehicle currentWeaponTurret _turret,
     currentVisionMode _controlledEntity, cameraView
 ];
 
@@ -55,7 +55,7 @@ if !(_state isEqualTo GVAR(oldState)) then {
     _state params [
         "", "_newGroup", "_newLeader",
         "_newWeapon", "_newMuzzle", "_newWeaponMode",
-        "_newLoadout", "", "",
+        "_newLoadout", "", "", "_newTurretWeapon",
         "_newVisionMode", "_newCameraView"
     ];
 
@@ -83,6 +83,11 @@ if !(_state isEqualTo GVAR(oldState)) then {
     if !(_newWeapon isEqualTo GVAR(oldWeapon)) then {
         [QGVAR(weaponEvent), [_unit, _newWeapon, GVAR(oldWeapon)]] call CBA_fnc_localEvent;
         GVAR(oldWeapon) = _newWeapon;
+    };
+
+    if !(_newTurretWeapon isEqualTo GVAR(oldTurretWeapon)) then {
+        [QGVAR(turretWeaponEvent), [_unit, _newTurretWeapon, GVAR(oldTurretWeapon)]] call CBA_fnc_localEvent;
+        GVAR(oldTurretWeapon) = _newTurretWeapon;
     };
 
     if !(_newMuzzle isEqualTo GVAR(oldMuzzle)) then {

@@ -33,6 +33,9 @@ switch (_type) do {
     case "weapon": {
         [QGVAR(weaponEvent), _id] call CBA_fnc_removeEventHandler;
     };
+    case "weapon": {
+        [QGVAR(turretWeaponEvent), _id] call CBA_fnc_removeEventHandler;
+    };
     case "muzzle": {
         [QGVAR(muzzleEvent), _id] call CBA_fnc_removeEventHandler;
     };

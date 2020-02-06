@@ -8,6 +8,7 @@ Description:
     Possible events:
         "unit"          - player controlled unit changed
         "weapon"        - currently selected weapon change
+        "turretweapon"  - currently selected turret weapon change
         "muzzle"        - currently selected muzzle change
         "weaponMode"    - currently selected weapon mode change
         "loadout"       - players loadout changed
@@ -58,49 +59,55 @@ private _id = switch (_type) do {
     };
     case "weapon": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), currentWeapon GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), currentWeapon GVAR(oldUnit), ""] call _function;
         };
         [QGVAR(weaponEvent), _function] call CBA_fnc_addEventHandler // return id
     };
+    case "turretweapon": {
+        if (_applyRetroactively) then {
+            [GVAR(oldUnit), GVAR(oldUnit) currentWeaponTurret (GVAR(oldUnit) call CBA_fnc_turretPath), ""] call _function;
+        };
+        [QGVAR(turretWeaponEvent), _function] call CBA_fnc_addEventHandler // return id
+    };
     case "muzzle": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), currentMuzzle GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), currentMuzzle GVAR(oldUnit), ""] call _function;
         };
         [QGVAR(muzzleEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "weaponmode": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), currentWeaponMode GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), currentWeaponMode GVAR(oldUnit), ""] call _function;
         };
         [QGVAR(weaponModeEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "loadout": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), getUnitLoadout GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), getUnitLoadout GVAR(oldUnit), []] call _function;
         };
         [QGVAR(loadoutEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "vehicle": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), vehicle GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), vehicle GVAR(oldUnit), objNull] call _function;
         };
         [QGVAR(vehicleEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "turret": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), GVAR(oldUnit) call CBA_fnc_turretPath] call _function;
+            [GVAR(oldUnit), GVAR(oldUnit) call CBA_fnc_turretPath, []] call _function;
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "visionmode": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), currentVisionMode GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), currentVisionMode GVAR(oldUnit), -1] call _function;
         };
         [QGVAR(visionModeEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "cameraview": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), cameraView] call _function;
+            [GVAR(oldUnit), cameraView, ""] call _function;
         };
         [QGVAR(cameraViewEvent), _function] call CBA_fnc_addEventHandler // return id
     };
@@ -118,13 +125,13 @@ private _id = switch (_type) do {
     };
     case "group": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), group GVAR(oldUnit), grpNull] call _function;
         };
         [QGVAR(groupEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "leader": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), group GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), leader GVAR(oldUnit), objNull] call _function;
         };
         [QGVAR(leaderEvent), _function] call CBA_fnc_addEventHandler // return id
     };
@@ -140,6 +147,7 @@ if (_id != -1) then {
         GVAR(oldGroup) = grpNull;
         GVAR(oldLeader) = objNull;
         GVAR(oldWeapon) = "";
+        GVAR(oldTurretWeapon) = "";
         GVAR(oldMuzzle) = [objNull, "", ""];
         GVAR(oldWeaponMode) = [objNull, GVAR(oldMuzzle), ""];
         GVAR(oldLoadout) = [];
