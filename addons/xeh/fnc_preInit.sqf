@@ -65,7 +65,7 @@ GVAR(EventsLowercase) = [];
         };
         // This prevents double execution of the Killed event on the same unit.
         case "Killed": {
-            FUNC(Killed) = compileFinal (_header + format ['
+            FUNC(Killed) = compileFinal (_header + format ['\
                 params ["_unit"];\
                 if (_unit getVariable [QGVAR(killedBody), objNull] != _unit) then {\
                     _unit setVariable [QGVAR(killedBody), _unit];\
