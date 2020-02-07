@@ -133,18 +133,18 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                 case ["mission", "server"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual;
+                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual);
                 };
                 case ["client", "mission"];
                 case ["server", "mission"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual;
+                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual);
                 };
                 case ["mission", "client"]: {
                     _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
                     _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip [LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual;
+                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual);
                 };
                 case ["server", "client"]: {
                     if (isServer) then {
