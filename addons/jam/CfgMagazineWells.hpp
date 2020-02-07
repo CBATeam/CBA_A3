@@ -2,6 +2,7 @@ class CfgMagazineWells {
 
     // Rifle calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_11x59R.hpp"                  // 11x59mmR Gras | 11mm Vickers
+    #include "magwells_127x108.hpp"                 // 12.7x108mm (Russian .50 Cal)
     #include "magwells_145x114.hpp"                 // 14.5x114mm
     #include "magwells_46x30.hpp"                   // 4.6x30mm
     #include "magwells_545x39.hpp"                  // 5.45x39mm
@@ -33,7 +34,7 @@ class CfgMagazineWells {
     #include "magwells_338NM.hpp"                   // .338 Norma Magnum
     #include "magwells_30Carbine.hpp"               // .30 Carbine | 7.62x33mm
     #include "magwells_408CT.hpp"                   // .408 Cheyenne Tactical | 408 Chey Tac | 10.36x77mm
-    #include "magwells_50BMG.hpp"                   // .50 BMG | .50 Browning Machine Gun | 12.7x99mm NATO
+    #include "magwells_50BMG.hpp"                   // .50 BMG | .50 Browning Machine Gun | 12.7x99mm NATO (Western .50 Cal)
 
     // Pistol calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_10mmAuto.hpp"                // 10mm Auto | 10mm Automatic | 10x25mm
