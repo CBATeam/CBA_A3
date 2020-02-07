@@ -59,12 +59,25 @@ GVAR(EventsLowercase) = [];
         _header = format ["scriptName 'XEH:%1';", _x];
     #endif
     // generate event functions
-    if (_x isEqualTo "Init") then {
-        FUNC(Init) = compileFinal (_header + "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init");
-    } else {
-        if (_x isEqualTo "HitPart") then {
+    switch _x do {
+        case "Init": {
+            FUNC(Init) = compileFinal (_header + "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init");
+        };
+        // This prevents double execution of the Killed event on the same unit.
+        case "Killed": {
+            FUNC(Killed) = compileFinal (_header + format ['\
+                params ["_unit"];\
+                if (_unit getVariable [QGVAR(killedBody), objNull] != _unit) then {\
+                    _unit setVariable [QGVAR(killedBody), _unit];\
+                    private "_unit";\
+                    {call _x} forEach ((_this select 0) getVariable QGVAR(%1));\
+                };',
+            _x]);
+        };
+        case "HitPart": {
             FUNC(HitPart) = compileFinal (_header + format ['{call _x} forEach ((_this select 0 select 0) getVariable QGVAR(%1))', _x]);
-        } else {
+        };
+        default {
             missionNamespace setVariable [
                 format [QFUNC(%1), _x],
                 compileFinal (_header + format ['{call _x} forEach ((_this select 0) getVariable QGVAR(%1))', _x])
