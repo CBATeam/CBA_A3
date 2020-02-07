@@ -33,6 +33,7 @@ if (isServer) then {
 ADDON = true;
 
 if (!hasInterface) exitWith {};
+PREP(playerEvent);
 
 GVAR(skipCheckingUserActions) = true;
 
