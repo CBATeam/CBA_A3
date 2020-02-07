@@ -1,27 +1,33 @@
 #include "script_component.hpp"
 
 params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"];
-_settingData params ["_min", "_max", "_trailingDecimals"];
+_settingData params ["_min", "_max", "_trailingDecimals", "_isPercentage"];
+
+private _range = _max - _min;
 
 private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
-
 _ctrlSlider sliderSetRange [_min, _max];
 _ctrlSlider sliderSetPosition _currentValue;
-private _range = _max - _min;
 _ctrlSlider sliderSetSpeed [0.05 * _range, 0.1 * _range];
 
-_ctrlSlider setVariable [QGVAR(params), [_setting, _source, _trailingDecimals]];
+_ctrlSlider setVariable [QGVAR(params), [_setting, _source, _trailingDecimals, _isPercentage]];
 _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     params ["_ctrlSlider", "_value"];
-    (_ctrlSlider getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals"];
+    (_ctrlSlider getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals", "_isPercentage"];
 
-    if (_trailingDecimals < 0) then {
-        _value = round _value;
+    private _editText = if (_isPercentage) then {
+        format [localize "STR_3DEN_percentageUnit", round (_value * 100), "%"]
+    } else {
+        if (_trailingDecimals < 0) then {
+            _value = round _value;
+        };
+
+        [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
     };
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
     private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
+    _ctrlSliderEdit ctrlSetText _editText;
 
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
@@ -36,18 +42,28 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
-private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
-_ctrlSliderEdit ctrlSetText ([_currentValue, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
+private _editText = if (_isPercentage) then {
+    format [localize "STR_3DEN_percentageUnit", round (_currentValue * 100), "%"]
+} else {
+    [_currentValue, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
+};
 
-_ctrlSliderEdit setVariable [QGVAR(params), [_setting, _source, _trailingDecimals]];
+private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
+_ctrlSliderEdit ctrlSetText _editText;
+
+_ctrlSliderEdit setVariable [QGVAR(params), [_setting, _source, _trailingDecimals, _isPercentage]];
 _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
     params ["_ctrlSliderEdit"];
-    (_ctrlSliderEdit getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals"];
+    (_ctrlSliderEdit getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals", "_isPercentage"];
 
     private _value = parseNumber ctrlText _ctrlSliderEdit;
 
-    if (_trailingDecimals < 0) then {
-        _value = round _value;
+    if (_isPercentage) then {
+        _value = _value / 100;
+    } else {
+        if (_trailingDecimals < 0) then {
+            _value = round _value;
+        };
     };
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSliderEdit;
@@ -71,18 +87,24 @@ _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
 
 _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
     params ["_ctrlSliderEdit"];
-    (_ctrlSliderEdit getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals"];
+    (_ctrlSliderEdit getVariable QGVAR(params)) params ["_setting", "_source", "_trailingDecimals", "_isPercentage"];
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSliderEdit;
     private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
 
     private _value = sliderPosition _ctrlSlider;
 
-    if (_trailingDecimals < 0) then {
-        _value = round _value;
+    private _editText = if (_isPercentage) then {
+        format [localize "STR_3DEN_percentageUnit", round (_value * 100), "%"]
+    } else {
+        if (_trailingDecimals < 0) then {
+            _value = round _value;
+        };
+
+        [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
     };
 
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
+    _ctrlSliderEdit ctrlSetText _editText;
 
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
@@ -93,13 +115,20 @@ _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
 // set setting ui manually to new value
 _controlsGroup setVariable [QFUNC(updateUI), {
     params ["_controlsGroup", "_value"];
-    (_controlsGroup getVariable QGVAR(params)) params ["_min", "_max", "_trailingDecimals"];
+    (_controlsGroup getVariable QGVAR(params)) params ["_min", "_max", "_trailingDecimals", "_isPercentage"];
 
     private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
     private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
 
     _ctrlSlider sliderSetPosition _value;
-    _ctrlSliderEdit ctrlSetText ([_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber);
+
+    private _editText = if (_isPercentage) then {
+        format [localize "STR_3DEN_percentageUnit", round (_value * 100), "%"]
+    } else {
+        [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
+    };
+
+    _ctrlSliderEdit ctrlSetText _editText;
 
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
