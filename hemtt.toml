@@ -6,14 +6,16 @@ files = [
     "README.md",
     "LICENSE.md",
     "logo_cba_ca.paa",
-    "meta.cpp"
+    "meta.cpp",
+    "userconfig"
 ]
-headerexts = [
-    "version={{git \"id 8\"}}"
-]
-keyname = "{{prefix}}_{{version}}"
-signame = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+key_name = "{{prefix}}_{{version}}"
+sig_name = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
 releasebuild = [
     "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
 ]
+
+[header_exts]
+version = "{{git \"id 8\"}}"
