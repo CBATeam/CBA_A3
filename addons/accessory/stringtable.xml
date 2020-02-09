@@ -12,6 +12,7 @@
             <French>Community Base Addons - Fonctions des accessoires</French>
             <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
             <Italian>Community Base Addons - Funzioni per Accessori</Italian>
+            <Czech>Community Base Addons - Funkce doplňků</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
@@ -21,9 +22,10 @@
             <Chinesesimp>下个导轨物品状态</Chinesesimp>
             <Russian>Следующее состояние приспособления на оружии</Russian>
             <Polish>Następny tryb akcesoria na szynie</Polish>
-            <French>Mode de l'accessoire sur rail suivant</French>
+            <French>Mode suivant de l'accessoire sur rail</French>
             <Turkish>Sonraki ray aksesuarı</Turkish>
             <Italian>Stato successivo dell'oggetto sulla slitta</Italian>
+            <Czech>Další režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -33,9 +35,10 @@
             <Chinesesimp>循环切换到下个可用的导轨物品模式</Chinesesimp>
             <Russian>Переключает на следующий режим, доступный для приспособления на планке</Russian>
             <Polish>Przełącza na następny tryb akcesoria na szynie</Polish>
-            <French>Passe au prochain mode disponible de votre accessoire sur rail</French>
+            <French>Basculer sur le mode suivant de l'accessoire du rail.</French>
             <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
             <Italian>Passa alla modalità successiva del tuo accessorio sulla slitta</Italian>
+            <Czech>Přepíná na další možný režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
@@ -45,9 +48,10 @@
             <Chinesesimp>上个导轨物品状态</Chinesesimp>
             <Russian>Предыдущее состояние приспособления на планке</Russian>
             <Polish>Poprzedni tryb akcesoria na szynie</Polish>
-            <French>Mode de l'accessoire sur rail précèdent</French>
+            <French>Mode précédent de l'accessoire sur rail</French>
             <Turkish>Önceki ray aksesuarı</Turkish>
             <Italian>Stato precedente dell'oggetto sulla slitta</Italian>
+            <Czech>Předchozí režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -57,9 +61,10 @@
             <Chinesesimp>循环切换到上个可用的导轨物品模式</Chinesesimp>
             <Russian>Переключает на предыдущий режим, доступный для приспособления на планке</Russian>
             <Polish>Przełącza na poprzedni tryb akcesoria na szynie</Polish>
-            <French>Passe au précèdent mode disponible de votre accessoire sur rail</French>
+            <French>Basculer sur le mode précédent de l'accessoire du rail.</French>
             <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
             <Italian>Passa alla modalità precedente del tuo accessorio sulla slitta</Italian>
+            <Czech>Přepíná na předchozí možný režim doplňku na liště</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
@@ -69,9 +74,10 @@
             <Chinesesimp>下个瞄镜模式</Chinesesimp>
             <Russian>Следующий режим оптики</Russian>
             <Polish>Następny tryb optyki</Polish>
-            <French>Mode de l'optique suivant</French>
+            <French>Mode suivant de l'optique</French>
             <Turkish>Sonraki nişangah modu</Turkish>
             <Italian>Stato successivo dell'ottica</Italian>
+            <Czech>Další režim zaměřovače</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -81,9 +87,10 @@
             <Chinesesimp>循环切换到下个可用的瞄镜模式</Chinesesimp>
             <Russian>Переключает на следующий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na następny dostępny tryb optyki</Polish>
-            <French>Passe au prochain mode disponible de votre optique</French>
+            <French>Basculer sur le mode suivant de l'optique.</French>
             <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
             <Italian>Passa alla modalità successiva della tua ottica</Italian>
+            <Czech>Přepíná na další možný režim doplňku slotu pro zaměřovač</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -93,9 +100,10 @@
             <Chinesesimp>上个瞄镜模式</Chinesesimp>
             <Russian>Предыдущее состояние оптики</Russian>
             <Polish>Poprzedni tryb optyki</Polish>
-            <French>Mode de l'optique sur rail précèdent</French>
+            <French>Mode précédent de l'optique</French>
             <Turkish>Önceki nişangah modu</Turkish>
             <Italian>Stato precedente dell'ottica</Italian>
+            <Czech>Předchozí režim zaměřovače</Czech>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -105,9 +113,10 @@
             <Chinesesimp>循环切换到上个可用的瞄镜模式</Chinesesimp>
             <Russian>Переключает на предыдущий режим доступный для оптики на оружии</Russian>
             <Polish>Przełącza na poprzedni dostępny tryb optyki</Polish>
-            <French>Passe au précèdent mode disponible de votre optique</French>
+            <French>Basculer sur le mode précédent de l'optique.</French>
             <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
             <Italian>Passa alla modalità precedenta della tua ottica</Italian>
+            <Czech>Přepíná na předchozí možný režim doplňku slotu pro zaměřovač</Czech>
         </Key>
     </Package>
 </Project>

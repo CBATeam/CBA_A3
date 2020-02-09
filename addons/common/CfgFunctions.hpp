@@ -77,6 +77,7 @@ class CfgFunctions {
             PATHTO_FNC(binocularMagazine);
             PATHTO_FNC(addBinocularMagazine);
             PATHTO_FNC(removeBinocularMagazine);
+            PATHTO_FNC(randomizeFacewear);
         };
 
         class Cargo {

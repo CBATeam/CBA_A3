@@ -5,14 +5,16 @@
             <English>Community Base Addons - Joint Ammo Magazines</English>
             <German>Community Base Addons - Gemeinsame Munition und Magazine</German>
             <Polish>Community Base Addons - Wspólna Amunicja oraz Magazynki</Polish>
-            <French>Community Base Addons - Munitions et Chargeurs joints</French>
+            <French>Community Base Addons - Munitions et chargeurs</French>
             <Turkish>Community Base Addons - Birleştirilmiş Cephane Şarjörleri</Turkish>
             <Japanese>Community Base Addons - 統合的弾倉</Japanese>
+            <Czech>Community Base Addons - Společné zásobníky a munice</Czech>
+            <Chinese>社群基礎模組 - 聯合彈匣</Chinese>
         </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_tracer_description">
             <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
-            <Chinese>口徑：7.62x51 mm 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
-            <French>Calibre : 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions : 150</French>
+            <Chinese>口徑：7.62x51 毫米 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
+            <French>Calibre: 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions: 150</French>
             <Spanish>Calibre: 7,62x51 mm trazadora (verde)&lt;br/&gt;Cargas: 150</Spanish>
             <Italian>Calibro: tracciante 7,62x51 mm - verde&lt;br /&gt;Munizioni: 150</Italian>
             <Polish>Kaliber: 7,62x51 mm smugowy - zielony&lt;br/&gt;Pociski: 150</Polish>
@@ -27,8 +29,8 @@
         </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_description">
             <English>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</English>
-            <Chinese>口徑：7.62x51 mm&lt;br/&gt;個數：150</Chinese>
-            <French>Calibre : 7,62x51 mm&lt;br/&gt;Munitions : 150</French>
+            <Chinese>口徑：7.62x51 毫米&lt;br/&gt;個數：150</Chinese>
+            <French>Calibre: 7,62x51 mm&lt;br/&gt;Munitions: 150</French>
             <Spanish>Calibre: 7,62x51 mm&lt;br/&gt;Cargas: 150</Spanish>
             <Italian>Calibro: 7,62x51 mm&lt;br/&gt;Munizioni: 150</Italian>
             <Polish>Kaliber: 7,62x51 mm&lt;br/&gt;Pociski: 150</Polish>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Legacy_JR">
+        <Key ID="STR_CBA_Legacy_JR_Component">
+            <English>Community Base Addons - Legacy Joint Rails</English>
+            <German>Community Base Addons - Legacy-Joint Rails</German>
+            <Czech>Community Base Addons - Legacy Joint Rails</Czech>
+            <Turkish>Community Base Addons - Legacy Joint Rails</Turkish>
+            <Chinese>社群基礎模組 - Legacy版共用導軌</Chinese>
+        </Key>
+    </Package>
+</Project>

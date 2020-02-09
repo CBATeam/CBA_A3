@@ -115,7 +115,7 @@ _container addBackpackCargoGlobal ["B_AssaultPack_mcamo", 1];
 ((everyBackpack _container) select 0) addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
 _result = [_container, "B_AssaultPack_mcamo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (weaponCargo _container) == 1 && count (itemCargo _container) == 2,_funcName);
+TEST_TRUE(count (backpackCargo _container) == 0 && count (weaponCargo _container) == 1 && count (itemCargo _container) == 0,_funcName);
 clearBackpackCargoGlobal _container;
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;

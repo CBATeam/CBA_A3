@@ -38,4 +38,7 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayCurator {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayCurator)'));
     };
+    class RscMsgBox {
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMessageBox)'));
+    };
 };

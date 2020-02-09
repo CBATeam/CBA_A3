@@ -17,7 +17,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 isNil {
-    XEH_LOG("XEH: PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
+    XEH_LOG("PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
 
     // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
     if (CBA_missionTime == -1) then {
@@ -60,7 +60,7 @@ isNil {
 
     SLX_XEH_MACHINE set [8, true]; // PostInit passed
 
-    XEH_LOG("XEH: PostInit finished.");
+    XEH_LOG("PostInit finished.");
 };
 
 nil

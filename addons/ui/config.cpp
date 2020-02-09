@@ -1,15 +1,16 @@
-﻿#include "script_component.hpp"
+#include "script_component.hpp"
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
-        requiredVersion = 1;
+        weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common", "cba_arrays"};
-        version = VERSION;
+        author = "$STR_CBA_Author";
         authors[] = {"Dr Eyeball", "commy2"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 

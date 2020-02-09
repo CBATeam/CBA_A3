@@ -119,20 +119,46 @@ class RscDisplayClientGetReady: RscDisplayGetReady {
     };
 };
 
-class RscControlsGroupNoHScrollbars;
+class RscControlsGroup;
+class RscControlsGroupNoHScrollbars: RscControlsGroup {
+    class VScrollbar;
+};
+
 class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
     x = POS_W(0);
     y = POS_H(3.5);
     w = POS_W(37.5);
     h = POS_H(13.8);
     lineHeight = POS_H(1);
+
+    class VScrollbar: VScrollbar {
+        thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
+        border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
+        arrowFull = "\a3\3DEN\Data\Controls\ctrlDefault\arrowFull_ca.paa";
+        arrowEmpty = "\a3\3DEN\Data\Controls\ctrlDefault\arrowEmpty_ca.paa";
+    };
+};
+
+class RscCombo {
+    class ComboScrollBar;
+};
+
+class GVAR(RscCombo): RscCombo {
+    arrowFull = "\a3\3DEN\Data\Controls\ctrlCombo\arrowFull_ca.paa";
+    arrowEmpty = "\a3\3DEN\Data\Controls\ctrlCombo\arrowEmpty_ca.paa";
+
+    class ComboScrollBar: ComboScrollBar {
+        thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
+        border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
+        arrowFull = "\a3\3DEN\Data\Controls\ctrlDefault\arrowFull_ca.paa";
+        arrowEmpty = "\a3\3DEN\Data\Controls\ctrlDefault\arrowEmpty_ca.paa";
+    };
 };
 
 // Has to be created dynamically for every options group, because they would
 // interfere with the controls groups otherwise. Scripted controls are always
 // placed below config controls.
-class RscCombo;
-class GVAR(AddonsList): RscCombo {
+class GVAR(AddonsList): GVAR(RscCombo) {
     linespacing = 1;
     text = "";
     wholeHeight = POS_H(12);
@@ -221,15 +247,14 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
             idc = IDC_SETTING_DEFAULT;
             style = ST_PICTURE;
             text = ICON_DEFAULT;
-            tooltip = CSTRING(default_tooltip);
-            x = POS_W(26.5);
+            x = POS_W(27);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
         };
         class Locked: RscPicture {
             idc = IDC_SETTING_LOCKED;
-            x = POS_W(28);
+            x = POS_W(28.5);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
             w = POS_W(1);
             h = POS_H(1);
@@ -278,7 +303,7 @@ class GVAR(Row_Editbox): GVAR(Row_Base) {
             idc = IDC_SETTING_EDITBOX;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(10);
+            w = POS_W(10.5);
             h = POS_H(1);
         };
         class Default: Default {};
@@ -293,11 +318,11 @@ class GVAR(Row_List): GVAR(Row_Base) {
 
     class controls: controls {
         class Name: Name {};
-        class List: RscCombo {
+        class List: GVAR(RscCombo) {
             idc = IDC_SETTING_LIST;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(10);
+            w = POS_W(10.5);
             h = POS_H(1);
         };
         class Default: Default {};
@@ -307,25 +332,25 @@ class GVAR(Row_List): GVAR(Row_Base) {
     };
 };
 
-class RscXSliderH;
+class ctrlXSliderH;
 
 class GVAR(Row_Slider): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingSlider);
 
     class controls: controls {
         class Name: Name {};
-        class Slider: RscXSliderH {
+        class Slider: ctrlXSliderH {
             idc = IDC_SETTING_SLIDER;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(8.2);
             h = POS_H(1);
         };
         class Edit: RscEdit {
             idc = IDC_SETTING_SLIDER_EDIT;
-            x = POS_W(24);
+            x = POS_W(24.3);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(2);
+            w = POS_W(2.2);
             h = POS_H(1);
         };
         class Default: Default {};
@@ -350,21 +375,21 @@ class GVAR(Row_Color): GVAR(Row_Base) {
             w = POS_W(6);
             h = POS_H(1);
         };
-        class Red: RscXSliderH {
+        class Red: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_RED;
             color[] = {1,0,0,0.6};
             colorActive[] = {1,0,0,1};
             colorDisable[] = {1,0,0,0.4};
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(8.2);
             h = POS_H(1);
         };
         class Red_Edit: RscEdit {
             idc = IDC_SETTING_COLOR_RED_EDIT;
-            x = POS_W(24);
+            x = POS_W(24.3);
             y = POS_H(0) + TABLE_LINE_SPACING/2;
-            w = POS_W(2);
+            w = POS_W(2.2);
             h = POS_H(1);
         };
         class Green: Red {
@@ -420,18 +445,18 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         class Green_Edit: Green_Edit {};
         class Blue: Blue {};
         class Blue_Edit: Blue_Edit {};
-        class Alpha: RscXSliderH {
+        class Alpha: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_ALPHA;
             x = POS_W(16);
             y = POS_H(3) + TABLE_LINE_SPACING/2;
-            w = POS_W(8);
+            w = POS_W(8.2);
             h = POS_H(1);
         };
         class Alpha_Edit: RscEdit {
             idc = IDC_SETTING_COLOR_ALPHA_EDIT;
-            x = POS_W(24);
+            x = POS_W(24.3);
             y = POS_H(3) + TABLE_LINE_SPACING/2;
-            w = POS_W(2);
+            w = POS_W(2.2);
             h = POS_H(1);
         };
         class Default: Default {
@@ -459,15 +484,15 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         class Name: Name {
             y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
         };
-        class Slider: RscXSliderH {
+        class Slider: ctrlXSliderH {
             idc = IDC_SETTING_TIME_SLIDER;
             x = POS_W(16);
             y = POS_H(0) + TABLE_LINE_SPACING / 2;
-            w = POS_W(10);
+            w = POS_W(10.5);
             h = POS_H(1);
         };
         class Frame: RscFrame {
-            x = POS_W(18);
+            x = POS_W(18.25);
             y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
             w = POS_W(6);
             h = POS_H(0.9);
@@ -476,7 +501,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
             style = ST_CENTER;
             text = ":   :";
             font = "EtelkaMonospaceProBold";
-            x = POS_W(18);
+            x = POS_W(18.25);
             y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
             w = POS_W(6);
             h = POS_H(0.9);
@@ -488,7 +513,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
             style = ST_CENTER + ST_NO_RECT;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
             font = "EtelkaMonospaceProBold";
-            x = POS_W(18);
+            x = POS_W(18.25);
             y = POS_H(1.1) + TABLE_LINE_SPACING / 2;
             w = POS_W(2);
             h = POS_H(0.9);
@@ -498,12 +523,12 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         class Minutes: Hours {
             idc = IDC_SETTING_TIME_MINUTES;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Minute_tooltip";
-            x = POS_W(20);
+            x = POS_W(20.25);
         };
         class Seconds: Hours {
             idc = IDC_SETTING_TIME_SECONDS;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Second_tooltip";
-            x = POS_W(22);
+            x = POS_W(22.25);
         };
         class Default: Default {
             y = POS_H(0.5) + TABLE_LINE_SPACING / 2;
@@ -520,7 +545,6 @@ class GVAR(Row_Time): GVAR(Row_Base) {
     };
 };
 
-class RscControlsGroup;
 class RscTitle;
 class RscListBox;
 

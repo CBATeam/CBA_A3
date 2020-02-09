@@ -49,10 +49,13 @@ _position = _position call CBA_fnc_getPos;
 
 // Clear existing waypoints first
 [_group] call CBA_fnc_clearWaypoints;
+{
+    _x enableAI "PATH";
+} forEach units _group;
 
 // Can pass parameters straight through to addWaypoint
 _this =+ _this;
-_this set [2,0];
+_this set [2,-1];
 if (count _this > 3) then {
     _this deleteAt 3;
 };
