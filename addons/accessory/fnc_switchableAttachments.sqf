@@ -31,6 +31,7 @@ while {
     isClass _config && {_forward pushBackUnique configName _config != -1}
 } do {};
 
+_config = _cfgWeapons >> _item;
 private _backward = [];
 while {
     _config = _cfgWeapons >> getText (_config >> "MRT_SwitchItemPrevClass");
