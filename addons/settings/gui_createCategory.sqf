@@ -134,9 +134,11 @@ private _lastSubCategory = "$START";
         };
 
         // ----- determine display string for default value
-        private _defaultValueToolTip = switch (toUpper _settingType) do {
+        private _defaultValueTooltip = switch (toUpper _settingType) do {
             case "LIST": {
-                private _label = (_settingData param [1, []]) param [_defaultValue, ""];
+                _settingData params ["_values", "_labels"];
+
+                private _label = _labels param [_values find _defaultValue, ""];
 
                 if (isLocalized _label) then {
                     _label = localize _label;
@@ -152,7 +154,7 @@ private _lastSubCategory = "$START";
                 };
             };
             case "COLOR": {
-                private _template = (["R: %1","%G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
+                private _template = (["R: %1", "G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
                 format ([_template] + _defaultValue)
             };
             case "TIME": {
@@ -163,7 +165,7 @@ private _lastSubCategory = "$START";
 
         // ----- set tooltip on "Reset to default" button
         private _ctrlDefault = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
-        _ctrlDefault ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValueToolTip]);
+        _ctrlDefault ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValueTooltip]);
 
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
         _ctrlSettingGroup setVariable [QGVAR(source), _source];
