@@ -113,7 +113,7 @@ private _id = switch (_type) do {
     };
     case "featurecamera": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), GVAR(oldFeatureCamera), GVAR(oldFeatureCamera)] call _function;
+            [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera] call _function;
         };
         [QGVAR(featureCameraEvent), _function] call CBA_fnc_addEventHandler // return id
     };
