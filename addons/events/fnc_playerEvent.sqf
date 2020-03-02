@@ -113,7 +113,7 @@ if !(_state isEqualTo GVAR(oldState)) then {
         } forEach [primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit];
 
         if !(_newLoadoutNoAmmo isEqualTo GVAR(oldLoadoutNoAmmo)) then {
-            [QGVAR(loadoutEvent), [_unit, GVAR(oldLoadout), _newLoadout]] call CBA_fnc_localEvent;
+            [QGVAR(loadoutEvent), [_unit, _newLoadout, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
             GVAR(oldLoadoutNoAmmo) = _newLoadoutNoAmmo;
         };
 
