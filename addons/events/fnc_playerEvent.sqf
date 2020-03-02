@@ -71,12 +71,12 @@ if !(_state isEqualTo GVAR(oldState)) then {
     };
 
     if !(_newGroup isEqualTo GVAR(oldGroup)) then {
-        [QGVAR(groupEvent), [_unit, GVAR(oldGroup), _newGroup]] call CBA_fnc_localEvent;
+        [QGVAR(groupEvent), [_unit, GVAR(oldGroup), _newGroup]] call CBA_fnc_localEvent; // intentionally reversed order for backwards compatiblity
         GVAR(oldGroup) = _newGroup;
     };
 
     if !(_newLeader isEqualTo GVAR(oldLeader)) then {
-        [QGVAR(leaderEvent), [_unit, GVAR(oldLeader), _newLeader]] call CBA_fnc_localEvent;
+        [QGVAR(leaderEvent), [_unit, GVAR(oldLeader), _newLeader]] call CBA_fnc_localEvent; // intentionally reversed order for backwards compatiblity
         GVAR(oldLeader) = _newLeader;
     };
 

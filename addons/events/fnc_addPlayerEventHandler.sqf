@@ -113,7 +113,7 @@ private _id = switch (_type) do {
     };
     case "featurecamera": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera] call _function;
+            [GVAR(oldUnit), call CBA_fnc_getActiveFeatureCamera, ""] call _function;
         };
         [QGVAR(featureCameraEvent), _function] call CBA_fnc_addEventHandler // return id
     };
@@ -125,13 +125,13 @@ private _id = switch (_type) do {
     };
     case "group": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), group GVAR(oldUnit), grpNull] call _function;
+            [GVAR(oldUnit), grpNull, group GVAR(oldUnit)] call _function; // intentionally reversed order for backwards compatiblity
         };
         [QGVAR(groupEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "leader": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), leader GVAR(oldUnit), objNull] call _function;
+            [GVAR(oldUnit), objNull, leader GVAR(oldUnit)] call _function; // intentionally reversed order for backwards compatiblity
         };
         [QGVAR(leaderEvent), _function] call CBA_fnc_addEventHandler // return id
     };
