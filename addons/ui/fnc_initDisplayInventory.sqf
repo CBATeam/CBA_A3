@@ -1,5 +1,8 @@
 #include "script_component.hpp"
 
+// Do nothing if no context menu options exist.
+if (isNil QGVAR(ContextMenuOptions)) exitWith {};
+
 params ["_display"];
 
 // Slots
@@ -211,7 +214,7 @@ private _vestItems = _display displayCtrl IDC_FG_VEST_CONTAINER;
 private _backpackItems = _display displayCtrl IDC_FG_BACKPACK_CONTAINER;
 
 _groundItems setVariable [QGVAR(containerType), "GROUND"];
-_containerItems setVariable [QGVAR(containerType), "CONTAINER"];
+_containerItems setVariable [QGVAR(containerType), "CARGO"];
 _uniformItems setVariable [QGVAR(containerType), "UNIFORM_CONTAINER"];
 _vestItems setVariable [QGVAR(containerType), "VEST_CONTAINER"];
 _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
@@ -226,7 +229,7 @@ private _fnc_selected = {
         case "GROUND": {
             _container = GVAR(CurrentGroundItemHolder);
         };
-        case "CONTAINER": {
+        case "CARGO": {
             _container = GVAR(CurrentContainer);
         };
         case "UNIFORM_CONTAINER": {

@@ -14,19 +14,8 @@ if (hasInterface) then {
         };
     }];
 
-    ["CAManBase", "InventoryOpened", {
-        params ["_unit", "_container1", "_container2"];
-        if (_unit != call CBA_fnc_currentUnit) exitWith {};
-
-        if (isNull _container2) then {
-            GVAR(CurrentGroundItemHolder) = _container1;
-        } else {
-            GVAR(CurrentContainer) = _container1;
-            GVAR(CurrentGroundItemHolder) = _container2;
-        };
-    }] call CBA_fnc_addClassEventHandler;
-
     PREP(initDisplayInventory);
+    PREP(addItemContextMenuOption);
     PREP(openItemContextMenu);
 };
 
