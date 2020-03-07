@@ -25,6 +25,8 @@ if (hasInterface) then {
             GVAR(CurrentGroundItemHolder) = _container2;
         };
     }] call CBA_fnc_addClassEventHandler;
+
+    PREP(openItemContextMenu);
 };
 
 // legacy function names

@@ -23,6 +23,7 @@ GVAR(camera) = objNull;
 GVAR(currentOptic) = "";
 GVAR(IsUsingOptic) = false;
 GVAR(magnificationCache) = -1;
+GVAR(OpticBodyTextureSize) = 0;
 GVAR(ReticleAdjust) = [1,1,nil,1,1];
 GVAR(HideRedDotMagnification) = 1e+11;
 GVAR(FadeReticleInterval) = [0,0,nil,0,0];
