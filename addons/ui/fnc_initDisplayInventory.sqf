@@ -195,7 +195,7 @@ _watchSlot setVariable [QGVAR(slotType), "WATCH"];
             };
         };
 
-        [ctrlParent _control, _classname, _slotType] call FUNC(openItemContextMenu);
+        [ctrlParent _control, _unit, _classname, _slotType] call FUNC(openItemContextMenu);
     }];
 } forEach [
     _uniformSlot, _vestSlot, _backpackSlot,
@@ -257,7 +257,7 @@ private _fnc_selected = {
         _classname = _items param [_index, ""];
     };
 
-    [ctrlParent _control, _classname, _containerType] call FUNC(openItemContextMenu);
+    [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
 };
 
 _groundItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];

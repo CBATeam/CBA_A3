@@ -8,6 +8,10 @@ Description:
 Parameters:
     _item           - Item classname <STRING>
                       Can be base class.
+                      Wildcards:
+                        #All
+                        #AllItems
+                        #AllMagazines
 
     _slots          - Relevant slots <ARRAY, STRING>
                       Values:
@@ -83,7 +87,11 @@ Returns:
 
 Examples:
     (begin example)
-        call CBA_fnc_addItemContextMenuOption;
+        ["#All", "ALL", ">DEBUG ACTION<", {true}, {
+            params ["_unit", "_container", "_item", "_slot", "_params"];
+            systemChat str [name _unit, typeOf _container, _item, _slot, _params];
+            true
+        }, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:

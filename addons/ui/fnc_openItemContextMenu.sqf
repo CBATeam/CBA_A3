@@ -21,8 +21,10 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params ["_display", "_item", "_slot"];
+params ["_display", "_container", "_item", "_slot"];
+if (_item isEqualTo "") exitWith {};
 
+// ---
 // Read context menu options.
 private _config = _item call CBA_fnc_getItemConfig;
 private _superclass = configName (configHierarchy _config param [1, configNull]);
@@ -37,35 +39,46 @@ while {
 switch (toUpper _superclass) do {
     // magazines
     case "CFGMAGAZINES": {
-        _options pushBack (GVAR(ContextMenuOptions) getVariable "AllMagazines");
+        _options pushBack (GVAR(ContextMenuOptions) getVariable "#AllMagazines");
     };
 
     // Other items, weapons
     case "CFGGLASSES";
     case "CFGWEAPONS": {
-        _options pushBack (GVAR(ContextMenuOptions) getVariable "AllItems");
+        _options pushBack (GVAR(ContextMenuOptions) getVariable "#AllItems");
     };
 };
 
-_options pushBack (GVAR(ContextMenuOptions) getVariable "All");
+_options pushBack (GVAR(ContextMenuOptions) getVariable "#All");
 
 // Skip menu if no options.
 if (count _options isEqualTo 0) exitWith {};
 
+// ---
+// Create context menu.
 private _list = _display ctrlCreate ["RscListBox", -1];
 _list ctrlSetBackgroundColor [0.1,0.1,0.1,0.9]; //@todo
 
+// ---
 // Populate context menu with options. @todo
 {
     _x params ["_slots", "_displayName", "_tooltip", "_condition", "_statement", "_params"];
+    private _args = [_unit, _container, _item, _slot, _params];
+    if (isLocalized _displayName) then {
+        _displayName = localize _displayName;
+    };
 
-    if ((_slot in _slots || {"ALL" in _slots}) && {[_params] call _condition}) then { // grey out instead?
+    if (isLocalized _tooltip) then {
+        _tooltip = localize _tooltip;
+    };
+
+    if ((_slot in _slots || {"ALL" in _slots}) && {_args call _condition}) then { // grey out instead?
         private _index = _list lbAdd _displayName;
-        _list lbSetTooltip [_index, _tooltip];
+        _list lbSetTooltip [_index, _tooltip]; // broken, @todo
 
         private _key = format [QGVAR(OptionData%1), _index];
         _list lbSetData [_index, _key];
-        _list setVariable [_key, [_condition, _statement, _params]];
+        _list setVariable [_key, [_condition, _statement, _args]];
     };
 } forEach _options;
 
@@ -73,13 +86,13 @@ _list ctrlSetBackgroundColor [0.1,0.1,0.1,0.9]; //@todo
 // Execute context menu option statement on selection.
 _list ctrlAddEventHandler ["lbDblClick", {
     params ["_list", "_index"];
-    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_params"];
+    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_this"];
 
-    if (_params call _condition) then {
+    if (_this call _condition) then {
         // Call statement and safe check return value.
         private _keepOpen = [nil] apply {
             private ["_list", "_index"]; // Others are acceptable magic variables.
-            _params call _statement // return
+            _this call _statement // return
         } param [0, false] isEqualTo true;
 
         // If statement returned true, keep context menu open, otherwise close.
