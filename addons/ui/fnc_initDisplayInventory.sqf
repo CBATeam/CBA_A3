@@ -54,7 +54,7 @@ _rifleSilencerSlot setVariable [QGVAR(slotType), "RIFLE_SILENCER"];
 _rifleBipodSlot setVariable [QGVAR(slotType), "RIFLE_BIPOD"];
 _rifleOpticSlot setVariable [QGVAR(slotType), "RIFLE_OPTIC"];
 _riflePointerSlot setVariable [QGVAR(slotType), "RIFLE_POINTER"];
-_rifleMagazine2Slot setVariable [QGVAR(slotType), "RIFLE_MAGAZINE"];
+_rifleMagazine2Slot setVariable [QGVAR(slotType), "RIFLE_MAGAZINE_GL"];
 _rifleMagazineSlot setVariable [QGVAR(slotType), "RIFLE_MAGAZINE"];
 
 _launcherSlot setVariable [QGVAR(slotType), "LAUNCHER"];
@@ -71,11 +71,11 @@ _pistolOpticSlot setVariable [QGVAR(slotType), "PISTOL_OPTIC"];
 _pistolPointerSlot setVariable [QGVAR(slotType), "PISTOL_POINTER"];
 _pistolMagazineSlot setVariable [QGVAR(slotType), "PISTOL_MAGAZINE"];
 
-_mapSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
-_gpsSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
-_radioSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
-_compassSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
-_watchSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
+_mapSlot setVariable [QGVAR(slotType), "MAP"];
+_gpsSlot setVariable [QGVAR(slotType), "GPS"];
+_radioSlot setVariable [QGVAR(slotType), "RADIO"];
+_compassSlot setVariable [QGVAR(slotType), "COMPASS"];
+_watchSlot setVariable [QGVAR(slotType), "WATCH"];
 
 {
     _x ctrlAddEventHandler ["MouseButtonDblClick", {
@@ -128,7 +128,10 @@ _watchSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
                 _classname = primaryWeaponItems _unit select 2;
             };
             case "RIFLE_MAGAZINE": {
-                _classname = primaryWeaponMagazine _unit select 0; //@todo
+                _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 4 param [0, ""];
+            };
+            case "RIFLE_MAGAZINE_GL": {
+                _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 5 param [0, ""];
             };
 
             // launcher
@@ -172,8 +175,20 @@ _watchSlot setVariable [QGVAR(slotType), "ASSIGNED_ITEM"];
             };
 
             // items
-            case "ASSIGNED_ITEM": {
-                _classname = "@TODO";
+            case "MAP": {
+                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 0;
+            };
+            case "GPS": {
+                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 1;
+            };
+            case "RADIO": {
+                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 2;
+            };
+            case "COMPASS": {
+                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 3;
+            };
+            case "WATCH": {
+                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 4;
             };
         };
 
