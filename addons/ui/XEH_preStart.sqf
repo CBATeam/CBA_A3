@@ -14,3 +14,5 @@ PREP(initDisplayMessageBox);
 
 PREP(preload3DEN);
 PREP(preloadCurator);
+
+PREP(openItemContextMenu);
