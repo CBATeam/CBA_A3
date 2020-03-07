@@ -26,6 +26,7 @@ if (hasInterface) then {
         };
     }] call CBA_fnc_addClassEventHandler;
 
+    PREP(initDisplayInventory);
     PREP(openItemContextMenu);
 };
 
