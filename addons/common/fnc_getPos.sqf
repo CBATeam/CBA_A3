@@ -6,7 +6,7 @@ Description:
     A function used to get the position of an entity.
 
 Parameters:
-    _entity - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
+    _entity - <MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT or POSITION>
 
 Example:
     (begin example)
@@ -36,7 +36,11 @@ switch (typeName _entity) do {
         getPos _entity
     };
     case "GROUP": {
-        getPos (leader _entity)
+        if (_this isEqualType [] && {_this isEqualTypeArray [grpNull, 0]}) then {
+            getWPPos _this;
+        } else {
+            getPos (leader _entity);
+        };
     };
     case "STRING": {
         getMarkerPos _entity
@@ -48,7 +52,11 @@ switch (typeName _entity) do {
         taskDestination _entity
     };
     case "ARRAY": {
-        + _entity
+        if (_entity isEqualTypeArray [grpNull, 0]) then {
+            getWPPos _entity;
+        } else {
+            + _entity;
+        };
     };
     case "SCALAR": { // in case of position being passed not in array
         + _this
