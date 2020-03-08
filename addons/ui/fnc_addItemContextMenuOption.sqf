@@ -6,81 +6,93 @@ Description:
     Adds context menu option to inventory display.
 
 Parameters:
-    _item           - Item classname <STRING>
-                      Can be base class.
-                      Wildcards:
-                        #All
-                        #AllItems
-                        #AllMagazines
+    _item                   - Item classname <STRING>
+                              Can be base class.
+                              Wildcards:
+                                #All
+                                #AllItems
+                                #AllMagazines
 
-    _slots          - Relevant slots <ARRAY, STRING>
-                      Values:
-                        ALL
-                            GROUND
-                            CARGO
-                            CONTAINER
-                                UNIFORM_CONTAINER
-                                VEST_CONTAINER
-                                BACKPACK_CONTAINER
+    _slots                  - Relevant slots <ARRAY, STRING>
+                              Values:
+                                ALL
+                                    GROUND
+                                    CARGO
+                                    CONTAINER
+                                        UNIFORM_CONTAINER
+                                        VEST_CONTAINER
+                                        BACKPACK_CONTAINER
 
-                            CLOTHES
-                                UNIFORM
-                                VEST
-                                BACKPACK
-                                HEADGEAR
-                                GOGGLES
+                                    CLOTHES
+                                        UNIFORM
+                                        VEST
+                                        BACKPACK
+                                        HEADGEAR
+                                        GOGGLES
 
-                            WEAPON
-                                RIFLE
-                                LAUNCHER
-                                PISTOL
-                                BINOCULAR
+                                    WEAPON
+                                        RIFLE
+                                        LAUNCHER
+                                        PISTOL
+                                        BINOCULAR
 
-                            SILENCER
-                                RIFLE_SILENCER
-                                LAUNCHER_SILENCER
-                                PISTOL_SILENCER
+                                    SILENCER
+                                        RIFLE_SILENCER
+                                        LAUNCHER_SILENCER
+                                        PISTOL_SILENCER
 
-                            BIPOD
-                                RIFLE_BIPOD
-                                LAUNCHER_BIPOD
-                                PISTOL_BIPOD
+                                    BIPOD
+                                        RIFLE_BIPOD
+                                        LAUNCHER_BIPOD
+                                        PISTOL_BIPOD
 
-                            OPTIC
-                                RIFLE_OPTIC
-                                LAUNCHER_OPTIC
-                                PISTOL_OPTIC
+                                    OPTIC
+                                        RIFLE_OPTIC
+                                        LAUNCHER_OPTIC
+                                        PISTOL_OPTIC
 
-                            POINTER
-                                RIFLE_POINTER
-                                LAUNCHER_POINTER
-                                PISTOL_POINTER
+                                    POINTER
+                                        RIFLE_POINTER
+                                        LAUNCHER_POINTER
+                                        PISTOL_POINTER
 
-                            MAGAZINE
-                                RIFLE_MAGAZINE
-                                RIFLE_MAGAZINE_GL
-                                LAUNCHER_MAGAZINE
-                                PISTOL_MAGAZINE
+                                    MAGAZINE
+                                        RIFLE_MAGAZINE
+                                        RIFLE_MAGAZINE_GL
+                                        LAUNCHER_MAGAZINE
+                                        PISTOL_MAGAZINE
 
-                            ASSIGNED_ITEM
-                                MAP
-                                GPS
-                                RADIO
-                                COMPASS
-                                WATCH
-                                HMD
+                                    ASSIGNED_ITEM
+                                        MAP
+                                        GPS
+                                        RADIO
+                                        COMPASS
+                                        WATCH
+                                        HMD
 
-    _displayName    - Option display name, or display name and tooltip <STRING, ARRAY>
-                      String keys are automatically translated.
+    _displayName            String keys are automatically translated. <STRING, ARRAY>
+        0: _displayName     - Option display name <STRING>
+        1: _tooltip         - Option tooltip <STRING>
 
-    _condition      - Option condition (default: {true}) <CODE>
-                      Menu option is shown and executed only if this condition reports 'true'
+    _color                  - Option text color. Default alpha is 1.
+                              (default: [] = default color) <ARRAY>
 
-    _statement      - Option statement (default: {}) <CODE>
-                      Return true to keep context menu opened.
+    _icon                   - Path to icon. (default: "" = no icon) <STRING>
 
-    _params         - Arguments passed as '_this select X' to condition and
-                      statement (optional, default: []) <ANY>
+    _condition              <CODE, ARRAY>
+        0: _conditionEnable - Menu option is enabled and executed only if this
+                              condition reports 'true' (default: {true}) <CODE>
+        1: _conditionShow   - Menu option is shown only if this condition
+                              reports 'true'. (optional, default: {true}) <CODE>
+
+    _statement              - Option statement (default: {}) <CODE>
+                              Return true to keep context menu opened.
+
+    _consume                - Remove the item before executing the statement
+                            code. (default: false) <BOOLEAN>
+
+    _params                 - Arguments passed as '_this select X' to condition and
+                              statement (optional, default: []) <ANY>
 
 Returns:
     Nothing/Undefined.
@@ -125,9 +137,12 @@ if (isNil QGVAR(ContextMenuOptions)) then {
 params [
     ["_item", "All", [""]],
     ["_slots", [], [[], ""]],
-    ["_displayName", "<default>", ["", []]],
-    ["_condition", {true}, [{}]],
+    ["_displayName", [], ["", []]],
+    ["_color", [], [[]], [0,3,4]],
+    ["_icon", "", [""]],
+    ["_condition", [], [{}, []]],
     ["_statement", {}, [{}]],
+    ["_consume", false, [false]],
     ["_params", []]
 ];
 
@@ -174,6 +189,18 @@ if ("ASSIGNED_ITEM" in _slots) then {
     _slots append ["MAP", "GPS", "RADIO", "COMPASS", "WATCH", "HMD"];
 };
 
-_displayName params ["_displayName", ["_tooltip", ""]];
+_displayName params [
+    ["_displayName", "<default>", [""]],
+    ["_tooltip", "", [""]]
+];
 
-GVAR(ContextMenuOptions) setVariable [_item, [_slots, _displayName, _tooltip, _condition, _statement, _params]];
+_condition params [
+    ["_conditionEnable", {true}, [{}]],
+    ["_conditionShow", {true}, [{}]]
+];
+
+if (count _color isEqualTo 3) then {
+    _color = _color + [1]; // Need to copy.
+};
+
+GVAR(ContextMenuOptions) setVariable [_item, [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]];

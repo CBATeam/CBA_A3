@@ -2,6 +2,11 @@ class RscText;
 class RscProgress;
 class RscMapControl;
 
+class RscListBox;
+class GVAR(ItemContextMenu): RscListBox {
+    colorBackground[] = {0.05,0.05,0.05,0.95};
+};
+
 class RscTitles {
     class GVAR(ProgressBar) {
         onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];

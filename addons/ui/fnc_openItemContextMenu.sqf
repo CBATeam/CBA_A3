@@ -56,13 +56,14 @@ if (count _options isEqualTo 0) exitWith {};
 
 // ---
 // Create context menu.
-private _list = _display ctrlCreate ["RscListBox", -1];
-_list ctrlSetBackgroundColor [0.1,0.1,0.1,0.9]; //@todo
+// ctrlSetBackgroundColor command does not seem to work for RscListBox.
+private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
 // ---
-// Populate context menu with options. @todo
+// Populate context menu with options.
 {
-    _x params ["_slots", "_displayName", "_tooltip", "_condition", "_statement", "_params"];
+    _x params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
+
     private _args = [_unit, _container, _item, _slot, _params];
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
@@ -72,21 +73,41 @@ _list ctrlSetBackgroundColor [0.1,0.1,0.1,0.9]; //@todo
         _tooltip = localize _tooltip;
     };
 
-    if ((_slot in _slots || {"ALL" in _slots}) && {_args call _condition}) then { // grey out instead?
+    if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
         private _index = _list lbAdd _displayName;
         _list lbSetTooltip [_index, _tooltip]; // broken, @todo
 
         private _key = format [QGVAR(OptionData%1), _index];
+
+        if (_color isEqualTo []) then {
+            _color = getArray (configFile >> ctrlClassName _list >> "colorText");
+        };
+
+        _list lbSetColor [_index, _color];
         _list lbSetData [_index, _key];
-        _list setVariable [_key, [_condition, _statement, _args]];
+        _list lbSetPicture [_index, _icon];
+
+        if !([_args call _conditionEnable] param [0, false]) then {
+            // Gray out.
+            _color = getArray (configFile >> ctrlClassName _list >> "colorDisabled");
+            _list lbSetColor [_index, _color];
+            _list lbSetSelectColor [_index, _color];
+
+            // Keep open, but do nothing. Also don't consume.
+            _conditionEnable = {true};
+            _statement = {true};
+            _consume = false;
+        };
+
+        _list setVariable [_key, [_conditionEnable, _statement, _consume, _args]];
     };
 } forEach _options;
 
 // ---
 // Execute context menu option statement on selection.
-_list ctrlAddEventHandler ["lbDblClick", {
+_list setVariable [QFUNC(activate), {
     params ["_list", "_index"];
-    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_this"];
+    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_this"];
 
     if (_this call _condition) then {
         // Call statement and safe check return value.
@@ -96,9 +117,27 @@ _list ctrlAddEventHandler ["lbDblClick", {
         } param [0, false] isEqualTo true;
 
         // If statement returned true, keep context menu open, otherwise close.
-        if !(_keepOpen) then {
+        if (_keepOpen) then {
+            // Keep focus to prevent auto closing.
+            ctrlSetFocus _list;
+        } else {
             [{ctrlDelete _this}, _list] call CBA_fnc_execNextFrame;
         };
+    };
+}];
+
+_list ctrlAddEventHandler ["lbDblClick", {
+    params ["_list"];
+    _this call (_list getVariable QFUNC(activate));
+}];
+
+_list ctrlAddEventHandler ["KeyDown", {
+    params ["_list", "_key"];
+    if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then {
+        [_list getVariable QFUNC(activate), [_list, lbCurSel _list]] call CBA_fnc_execNextFrame;
+
+        // Set focus on background to prevent the inventory menu from auto closing.
+        ctrlSetFocus (ctrlParent _list displayCtrl IDC_FG_GROUND_TAB);
     };
 }];
 

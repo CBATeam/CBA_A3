@@ -10,6 +10,10 @@ private _uniformSlot = _display displayCtrl IDC_FG_UNIFORM_TAB;
 private _vestSlot = _display displayCtrl IDC_FG_VEST_TAB;
 private _backpackSlot = _display displayCtrl IDC_FG_BACKPACK_TAB;
 
+private _uniformSlotBackground = _display displayCtrl IDC_FG_UNIFORM_TEXT;
+private _vestSlotBackground = _display displayCtrl IDC_FG_VEST_TEXT;
+private _backpackSlotBackground = _display displayCtrl IDC_FG_BACKPACK_TEXT;
+
 private _headgearSlot = _display displayCtrl IDC_FG_HEADGEAR;
 private _glassesSlot = _display displayCtrl IDC_FG_GOGGLES;
 private _hmdSlot = _display displayCtrl IDC_FG_HMD;
@@ -46,6 +50,10 @@ private _watchSlot = _display displayCtrl IDC_FG_WATCH;
 _uniformSlot setVariable [QGVAR(slotType), "UNIFORM"];
 _vestSlot setVariable [QGVAR(slotType), "VEST"];
 _backpackSlot setVariable [QGVAR(slotType), "BACKPACK"];
+
+_uniformSlotBackground setVariable [QGVAR(slotType), "UNIFORM"];
+_vestSlotBackground setVariable [QGVAR(slotType), "VEST"];
+_backpackSlotBackground setVariable [QGVAR(slotType), "BACKPACK"];
 
 _headgearSlot setVariable [QGVAR(slotType), "HEADGEAR"];
 _glassesSlot setVariable [QGVAR(slotType), "GOGGLES"];
@@ -199,6 +207,7 @@ _watchSlot setVariable [QGVAR(slotType), "WATCH"];
     }];
 } forEach [
     _uniformSlot, _vestSlot, _backpackSlot,
+    _uniformSlotBackground, _vestSlotBackground, _backpackSlotBackground,
     _headgearSlot, _glassesSlot, _hmdSlot, _binocularSlot,
     _rifleSlot, _rifleSilencerSlot, _rifleBipodSlot, _rifleOpticSlot, _riflePointerSlot, _rifleMagazine2Slot, _rifleMagazineSlot,
     _launcherSlot, _launcherSilencerSlot, _launcherBipodSlot, _launcherOpticSlot, _launcherPointerSlot, _launcherMagazineSlot,
@@ -219,49 +228,48 @@ _uniformItems setVariable [QGVAR(containerType), "UNIFORM_CONTAINER"];
 _vestItems setVariable [QGVAR(containerType), "VEST_CONTAINER"];
 _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
 
-private _fnc_selected = {
-    params ["_control", "_index"];
-    private _unit = call CBA_fnc_currentUnit;
+{
+    _x ctrlAddEventHandler ["lbDblClick", {
+        params ["_control", "_index"];
+        private _unit = call CBA_fnc_currentUnit;
 
-    private _container = objNull;
-    private _containerType = _control getVariable QGVAR(containerType);
-    switch _containerType do {
-        case "GROUND": {
-            _container = GVAR(CurrentGroundItemHolder);
-        };
-        case "CARGO": {
-            _container = GVAR(CurrentContainer);
-        };
-        case "UNIFORM_CONTAINER": {
-            _container = uniformContainer _unit;
-        };
-        case "VEST_CONTAINER": {
-            _container = vestContainer _unit;
-        };
-        case "BACKPACK_CONTAINER": {
-            _container = backpackContainer _unit;
-        };
-    };
-
-    // Reports classname, but only for magazines.
-    private _classname = _control lbData _index;
-    if (_classname isEqualTo "") then {
-        // For weapons, items and glasses, use the display name to guess the classname.
-        private _displayName = _control lbText _index;
-
-        private _items = weaponCargo _container + itemCargo _container;
-        private _index = _items findIf {
-            _displayName isEqualTo getText (_x call CBA_fnc_getItemConfig >> "displayName");
+        private _container = objNull;
+        private _containerType = _control getVariable QGVAR(containerType);
+        switch _containerType do {
+            case "GROUND": {
+                _container = GVAR(CurrentGroundItemHolder);
+            };
+            case "CARGO": {
+                _container = GVAR(CurrentContainer);
+            };
+            case "UNIFORM_CONTAINER": {
+                _container = uniformContainer _unit;
+            };
+            case "VEST_CONTAINER": {
+                _container = vestContainer _unit;
+            };
+            case "BACKPACK_CONTAINER": {
+                _container = backpackContainer _unit;
+            };
         };
 
-        _classname = _items param [_index, ""];
-    };
+        // Reports classname, but only for magazines.
+        private _classname = _control lbData _index;
+        if (_classname isEqualTo "") then {
+            // For weapons, items and glasses, use the display name to guess the classname.
+            private _displayName = _control lbText _index;
 
-    [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
-};
+            private _items = weaponCargo _container + itemCargo _container;
+            private _index = _items findIf {
+                _displayName isEqualTo getText (_x call CBA_fnc_getItemConfig >> "displayName");
+            };
 
-_groundItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];
-_containerItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];
-_uniformItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];
-_vestItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];
-_backpackItems ctrlAddEventHandler ["lbDblClick", _fnc_selected];
+            _classname = _items param [_index, ""];
+        };
+
+        [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
+    }];
+} forEach [
+    _groundItems, _containerItems,
+    _uniformItems, _vestItems, _backpackItems
+];
