@@ -89,7 +89,11 @@ Parameters:
                               Return true to keep context menu opened.
 
     _consume                - Remove the item before executing the statement
-                            code. (default: false) <BOOLEAN>
+                              code. (default: false) <BOOLEAN>
+                              This only works for the following slots:
+                                UNIFORM_CONTAINER
+                                VEST_CONTAINER
+                                BACKPACK_CONTAINER
 
     _params                 - Arguments passed as '_this select X' to condition and
                               statement (optional, default: []) <ANY>
@@ -99,11 +103,11 @@ Returns:
 
 Examples:
     (begin example)
-        ["#All", "ALL", ">DEBUG ACTION<", {true}, {
+        ["#All", "ALL", ">DEBUG ACTION<", nil, nil, {true}, {
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:
@@ -118,8 +122,8 @@ if (canSuspend) exitWith {
 if (!hasInterface) exitWith {};
 
 // Initialize system on first execution.
-if (isNil QGVAR(ContextMenuOptions)) then {
-    GVAR(ContextMenuOptions) = false call CBA_fnc_createNamespace;
+if (isNil QGVAR(ItemContextMenuOptions)) then {
+    GVAR(ItemContextMenuOptions) = false call CBA_fnc_createNamespace;
 
     ["CAManBase", "InventoryOpened", {
         params ["_unit", "_container1", "_container2"];
@@ -203,4 +207,9 @@ if (count _color isEqualTo 3) then {
     _color = _color + [1]; // Need to copy.
 };
 
-GVAR(ContextMenuOptions) setVariable [_item, [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]];
+// Due to the lack of suitable commands, items can not be consumed from the ground or cargo.
+if (_consume) then {
+    _slots = _slots arrayIntersect ["UNIFORM_CONTAINER", "VEST_CONTAINER", "BACKPACK_CONTAINER"];
+};
+
+GVAR(ItemContextMenuOptions) setVariable [_item, [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]];

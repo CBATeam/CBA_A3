@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 // Do nothing if no context menu options exist.
-if (isNil QGVAR(ContextMenuOptions)) exitWith {};
+if (isNil QGVAR(ItemContextMenuOptions)) exitWith {};
 
 params ["_display"];
 

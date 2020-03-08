@@ -31,7 +31,7 @@ private _superclass = configName (configHierarchy _config param [1, configNull])
 
 private _options = [];
 while {
-    _options pushBack (GVAR(ContextMenuOptions) getVariable configName _config);
+    _options pushBack (GVAR(ItemContextMenuOptions) getVariable configName _config);
     _config = inheritsFrom _config;
     !isNull _config
 } do {};
@@ -39,17 +39,17 @@ while {
 switch (toUpper _superclass) do {
     // magazines
     case "CFGMAGAZINES": {
-        _options pushBack (GVAR(ContextMenuOptions) getVariable "#AllMagazines");
+        _options pushBack (GVAR(ItemContextMenuOptions) getVariable "#AllMagazines");
     };
 
     // Other items, weapons
     case "CFGGLASSES";
     case "CFGWEAPONS": {
-        _options pushBack (GVAR(ContextMenuOptions) getVariable "#AllItems");
+        _options pushBack (GVAR(ItemContextMenuOptions) getVariable "#AllItems");
     };
 };
 
-_options pushBack (GVAR(ContextMenuOptions) getVariable "#All");
+_options pushBack (GVAR(ItemContextMenuOptions) getVariable "#All");
 
 // Skip menu if no options.
 if (count _options isEqualTo 0) exitWith {};
@@ -110,6 +110,25 @@ _list setVariable [QFUNC(activate), {
     _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_this"];
 
     if (_this call _condition) then {
+        if (_consume) then {
+            params ["_unit", "_container", "_item", "_slot"];
+            switch _slot do {
+                case "UNIFORM_CONTAINER": {
+                    _unit removeItemFromUniform _item;
+                };
+                case "VEST_CONTAINER": {
+                    _unit removeItemFromVest _item;
+                };
+                case "BACKPACK_CONTAINER": {
+                    _unit removeItemFromBackpack _item;
+                };
+                default {
+                    ERROR_2("Cannot consume item %1 from %2.",_item,_slot);
+                    _statement = {true};
+                };
+            };
+        };
+
         // Call statement and safe check return value.
         private _keepOpen = [nil] apply {
             private ["_list", "_index"]; // Others are acceptable magic variables.
