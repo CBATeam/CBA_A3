@@ -40,7 +40,7 @@ switch (typeName _entity) do {
         getPos _entity
     };
     case "GROUP": {
-        getPos (leader _entity);
+        getPos (leader _entity)
     };
     case "STRING": {
         getMarkerPos _entity
