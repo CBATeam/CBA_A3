@@ -30,17 +30,15 @@ SCRIPT(getPos);
 params [
     ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull, [], 0]] // [] and 0 to handle position
 ];
-
+if (_this isEqualType [] && {_this isEqualTypeArray [grpNull, 0]}) then {
+    _entity = _this:
+};
 switch (typeName _entity) do {
     case "OBJECT": {
         getPos _entity
     };
     case "GROUP": {
-        if (_this isEqualType [] && {_this isEqualTypeArray [grpNull, 0]}) then {
-            getWPPos _this;
-        } else {
-            getPos (leader _entity);
-        };
+        getPos (leader _entity);
     };
     case "STRING": {
         getMarkerPos _entity
