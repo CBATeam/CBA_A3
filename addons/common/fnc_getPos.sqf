@@ -30,9 +30,11 @@ SCRIPT(getPos);
 params [
     ["_entity", objNull, [objNull, grpNull, "", locationNull, taskNull, [], 0]] // [] and 0 to handle position
 ];
+
 if (_this isEqualType [] && {_this isEqualTypeArray [grpNull, 0]}) then {
-    _entity = _this:
+    _entity = _this;
 };
+
 switch (typeName _entity) do {
     case "OBJECT": {
         getPos _entity
@@ -51,9 +53,9 @@ switch (typeName _entity) do {
     };
     case "ARRAY": {
         if (_entity isEqualTypeArray [grpNull, 0]) then {
-            getWPPos _entity;
+            getWPPos _entity
         } else {
-            + _entity;
+            + _entity
         };
     };
     case "SCALAR": { // in case of position being passed not in array
