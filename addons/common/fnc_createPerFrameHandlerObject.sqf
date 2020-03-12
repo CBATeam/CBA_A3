@@ -102,7 +102,7 @@ private _handle = [{
     params ["_logic"];
 
     if (isNil "_logic" || {isNull _logic}) exitWith {
-        (_logic getVariable "handle") call CBA_fnc_removePerFrameHandler;
+        [_this # 1] call CBA_fnc_removePerFrameHandler;
     };
 
     // deserialize
