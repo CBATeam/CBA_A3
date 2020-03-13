@@ -71,12 +71,12 @@ if !(_state isEqualTo GVAR(oldState)) then {
     };
 
     if !(_newGroup isEqualTo GVAR(oldGroup)) then {
-        [QGVAR(groupEvent), [_unit, GVAR(oldGroup), _newGroup]] call CBA_fnc_localEvent;
+        [QGVAR(groupEvent), [_unit, GVAR(oldGroup), _newGroup]] call CBA_fnc_localEvent; // intentionally reversed order for backwards compatiblity
         GVAR(oldGroup) = _newGroup;
     };
 
     if !(_newLeader isEqualTo GVAR(oldLeader)) then {
-        [QGVAR(leaderEvent), [_unit, GVAR(oldLeader), _newLeader]] call CBA_fnc_localEvent;
+        [QGVAR(leaderEvent), [_unit, GVAR(oldLeader), _newLeader]] call CBA_fnc_localEvent; // intentionally reversed order for backwards compatiblity
         GVAR(oldLeader) = _newLeader;
     };
 
@@ -113,7 +113,7 @@ if !(_state isEqualTo GVAR(oldState)) then {
         } forEach [primaryWeaponMagazine _unit, secondaryWeaponMagazine _unit, handgunMagazine _unit];
 
         if !(_newLoadoutNoAmmo isEqualTo GVAR(oldLoadoutNoAmmo)) then {
-            [QGVAR(loadoutEvent), [_unit, GVAR(oldLoadout), _newLoadout]] call CBA_fnc_localEvent;
+            [QGVAR(loadoutEvent), [_unit, _newLoadout, GVAR(oldLoadout)]] call CBA_fnc_localEvent;
             GVAR(oldLoadoutNoAmmo) = _newLoadoutNoAmmo;
         };
 
