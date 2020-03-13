@@ -31,7 +31,7 @@ private _superclass = configName (configHierarchy _config param [1, configNull])
 
 private _options = [];
 while {
-    _options pushBack (GVAR(ItemContextMenuOptions) getVariable configName _config);
+    _options append (GVAR(ItemContextMenuOptions) getVariable configName _config);
     _config = inheritsFrom _config;
     !isNull _config
 } do {};
@@ -39,20 +39,20 @@ while {
 switch (toUpper _superclass) do {
     // magazines
     case "CFGMAGAZINES": {
-        _options pushBack (GVAR(ItemContextMenuOptions) getVariable "#AllMagazines");
+        _options append (GVAR(ItemContextMenuOptions) getVariable "#AllMagazines");
     };
 
     // Other items, weapons
     case "CFGGLASSES";
     case "CFGWEAPONS": {
-        _options pushBack (GVAR(ItemContextMenuOptions) getVariable "#AllItems");
+        _options append (GVAR(ItemContextMenuOptions) getVariable "#AllItems");
     };
 };
 
-_options pushBack (GVAR(ItemContextMenuOptions) getVariable "#All");
+_options append (GVAR(ItemContextMenuOptions) getVariable "#All");
 
 // Skip menu if no options.
-if (count _options isEqualTo 0) exitWith {};
+if (_options isEqualTo []) exitWith {};
 
 // ---
 // Create context menu.

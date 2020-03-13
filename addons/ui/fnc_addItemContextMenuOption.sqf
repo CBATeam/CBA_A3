@@ -213,4 +213,11 @@ if (_consume) then {
     _slots = _slots arrayIntersect ["UNIFORM_CONTAINER", "VEST_CONTAINER", "BACKPACK_CONTAINER"];
 };
 
-GVAR(ItemContextMenuOptions) setVariable [_item, [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]];
+private _options = GVAR(ItemContextMenuOptions) getVariable _item;
+
+if (isNil "_options") then {
+    _options = [];
+    GVAR(ItemContextMenuOptions) setVariable [_item, _options];
+};
+
+_options pushBack [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params];
