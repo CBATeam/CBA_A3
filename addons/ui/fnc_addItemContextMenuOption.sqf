@@ -203,8 +203,9 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-if (count _color isEqualTo 3) then {
-    _color = _color + [1]; // Need to copy.
+if !(_color isEqualTo []) then {
+    _color params [["_r", 1, [0]], ["_g", 1, [0]], ["_b", 1, [0]], ["_a", 1, [0]]];
+    _color = [_r, _g, _b, _a];
 };
 
 // Due to the lack of suitable commands, items can not be consumed from the ground or cargo.
