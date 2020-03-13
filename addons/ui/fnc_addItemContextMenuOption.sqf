@@ -8,10 +8,14 @@ Description:
 Parameters:
     _item                   - Item classname <STRING>
                               Can be base class.
-                              Wildcards:
+
+                              Can be item type as reported by BIS_fnc_itemType:
+                                ["Equipment","Headgear"]
+                                ->
+                                "#Equipment" and/or "##Headgear"
+
+                              Wildcard:
                                 #All
-                                #AllItems
-                                #AllMagazines
 
     _slots                  - Relevant slots <ARRAY, STRING>
                               Values:
@@ -85,17 +89,23 @@ Parameters:
         1: _conditionShow   - Menu option is shown only if this condition
                               reports 'true'. (optional, default: {true}) <CODE>
 
+                            - Passed arguments:
+                              params ["_unit", "_container", "_item", "_slot", "_params"];
+
     _statement              - Option statement (default: {}) <CODE>
                               Return true to keep context menu opened.
 
+                            - Passed arguments:
+                              params ["_unit", "_container", "_item", "_slot", "_params"];
+
     _consume                - Remove the item before executing the statement
                               code. (default: false) <BOOLEAN>
-                              This only works for the following slots:
-                                UNIFORM_CONTAINER
-                                VEST_CONTAINER
-                                BACKPACK_CONTAINER
 
-    _params                 - Arguments passed as '_this select X' to condition and
+                            - This does NOT work for the following slots:
+                                GROUND
+                                CARGO
+
+    _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
 
 Returns:
@@ -107,7 +117,7 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2]] call cba_ui_fnc_addItemContextMenuOption;
     (end)
 
 Author:

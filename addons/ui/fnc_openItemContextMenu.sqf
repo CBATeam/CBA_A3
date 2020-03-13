@@ -27,7 +27,6 @@ if (_item isEqualTo "") exitWith {};
 // ---
 // Read context menu options.
 private _config = _item call CBA_fnc_getItemConfig;
-private _superclass = configName (configHierarchy _config param [1, configNull]);
 
 private _options = [];
 while {
@@ -36,21 +35,11 @@ while {
     !isNull _config
 } do {};
 
-switch (toUpper _superclass) do {
-    // magazines
-    case "CFGMAGAZINES": {
-        _options append (GVAR(ItemContextMenuOptions) getVariable "#AllMagazines");
-    };
-
-    // Other items, weapons
-    case "CFGGLASSES";
-    case "CFGWEAPONS": {
-        _options append (GVAR(ItemContextMenuOptions) getVariable "#AllItems");
-    };
-};
-
-_options append (GVAR(ItemContextMenuOptions) getVariable "#All");
-
+_item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
+_options append (GVAR(ItemContextMenuOptions) getVariable [format ["##%1", _itemType2], []]);systemChat format ["##%1", _itemType2];
+_options append (GVAR(ItemContextMenuOptions) getVariable [format ["#%1", _itemType1], []]); systemChat format ["#%1", _itemType1];
+_options append (GVAR(ItemContextMenuOptions) getVariable ["#All", []]);
+systemChat str _options;
 // Skip menu if no options.
 if (_options isEqualTo []) exitWith {};
 
