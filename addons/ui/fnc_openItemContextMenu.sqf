@@ -87,6 +87,7 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
         _list lbSetData [_index, _key];
         _list lbSetPicture [_index, _icon];
 
+        // Since this condition is negated, it should interpret nil return as "false" to avoid non-true return to not grey out.
         if !([_args call _conditionEnable] param [0, false]) then {
             // Gray out.
             _color = getArray (configFile >> ctrlClassName _list >> "colorDisabled");
