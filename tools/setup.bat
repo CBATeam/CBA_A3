@@ -12,5 +12,5 @@ function Unzip {
 $client = New-Object Net.WebClient
 
 Write-Output "=> Downloading HEMTT (Windows) ..."
-$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/q7sdpqlnbb6b628n/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
+$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/cy1n39shjje529li/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
 $client.dispose()

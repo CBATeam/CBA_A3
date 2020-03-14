@@ -6,8 +6,8 @@ files = [
     "README.md",
     "LICENSE.md",
     "logo_cba_ca.paa",
-    "meta.cpp"
-    # "userconfig" # TODO in HEMTT
+    "meta.cpp",
+    "userconfig"
 ]
 
 modname = "{{name}}"
