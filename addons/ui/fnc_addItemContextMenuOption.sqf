@@ -222,11 +222,6 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-// Due to the lack of suitable commands, items can not be consumed from the ground or cargo.
-if (_consume) then {
-    _slots = _slots - ["GROUND", "CARGO"];
-};
-
 private _options = GVAR(ItemContextMenuOptions) getVariable _item;
 
 if (isNil "_options") then {

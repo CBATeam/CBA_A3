@@ -76,6 +76,11 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
         _list lbSetData [_index, _key];
         _list lbSetPicture [_index, _icon];
 
+        // Due to the lack of suitable commands, items can not be consumed from the ground or cargo.
+        if (_consume && {_slot in ["GROUND", "CARGO"]}) then {
+            _conditionEnable = {false};
+        };
+
         // Since this condition is negated, it should interpret nil return as "false" to avoid non-true return to not grey out.
         if !([_args call _conditionEnable] param [0, false]) then {
             // Gray out.
