@@ -256,15 +256,11 @@ _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
         // Reports classname, but only for magazines.
         private _classname = _control lbData _index;
         if (_classname isEqualTo "") then {
-            // For weapons, items and glasses, use the display name to guess the classname.
-            private _displayName = _control lbText _index;
+            // For weapons, items and glasses, use the lb index and compare with cargo item list.
+            private _cargoItems = weaponCargo _container + itemCargo _container + magazineCargo _container;
+            _cargoItems = _cargoItems arrayIntersect _cargoItems;
 
-            private _items = weaponCargo _container + itemCargo _container;
-            private _index = _items findIf {
-                _displayName isEqualTo getText (_x call CBA_fnc_getItemConfig >> "displayName");
-            };
-
-            _classname = _items param [_index, ""];
+            _classname = _cargoItems param [_index, ""];
         };
 
         [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);

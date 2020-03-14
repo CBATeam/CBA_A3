@@ -145,9 +145,9 @@ _list ctrlAddEventHandler ["KeyDown", {
 // Set context menu position and size.
 getMousePosition params ["_left", "_top"];
 
-// Move slightly right and down to prevent accidental execution on triple click.
-//_left = _left + pixelW;
-//_top = _top + pixelH;
+// Move slightly left and up.
+_left = _left - pixelW;
+_top = _top - pixelH;
 
 private _width = ctrlPosition _list select 2;
 private _height = lbSize _list * getNumber (configFile >> ctrlClassName _list >> "sizeEx");
