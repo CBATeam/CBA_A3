@@ -42,6 +42,6 @@ class Extended_DisplayLoad_EventHandlers {
         ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMessageBox)'));
     };
     class RscDisplayInventory {
-        ADDON = QUOTE(_this call (missionNamespace getVariable 'FUNC(initDisplayInventory)'));
+        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInventory)'));
     };
 };

@@ -16,5 +16,4 @@ PREP(initDisplayInventory);
 PREP(preload3DEN);
 PREP(preloadCurator);
 
-PREP(addItemContextMenuOption);
 PREP(openItemContextMenu);

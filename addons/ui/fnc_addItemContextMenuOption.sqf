@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addItemContextMenuOption (@todo currently: cba_ui_fnc_addItemContextMenuOption)
+Function: CBA_fnc_addItemContextMenuOption
 
 Description:
     Adds context menu option to inventory display.
@@ -117,7 +117,7 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2]] call cba_ui_fnc_addItemContextMenuOption;
+        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:

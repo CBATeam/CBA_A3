@@ -14,8 +14,6 @@ if (hasInterface) then {
         };
     }];
 
-    PREP(initDisplayInventory);
-    PREP(addItemContextMenuOption);
     PREP(openItemContextMenu);
 };
 
