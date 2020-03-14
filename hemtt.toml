@@ -6,10 +6,11 @@ files = [
     "README.md",
     "LICENSE.md",
     "logo_cba_ca.paa",
-    "meta.cpp",
-    "userconfig"
+    "meta.cpp"
+    # "userconfig" # TODO in HEMTT
 ]
 
+modname = "{{name}}"
 key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
