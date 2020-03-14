@@ -125,13 +125,13 @@ private _id = switch (_type) do {
     };
     case "group": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), group GVAR(oldUnit), grpNull] call _function;
+            [GVAR(oldUnit), GVAR(oldGroup), GVAR(oldGroup)] call _function; // backwards compatiblity
         };
         [QGVAR(groupEvent), _function] call CBA_fnc_addEventHandler // return id
     };
     case "leader": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), leader GVAR(oldUnit), objNull] call _function;
+            [GVAR(oldUnit), GVAR(oldLeader), GVAR(oldLeader)] call _function; //backwards compatiblity
         };
         [QGVAR(leaderEvent), _function] call CBA_fnc_addEventHandler // return id
     };

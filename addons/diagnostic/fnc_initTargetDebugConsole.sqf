@@ -14,6 +14,9 @@ Author:
 ---------------------------------------------------------------------------- */
 
 #define COUNT_WATCH_BOXES 8
+#define EXEC_RESULT ([nil] apply {[] call _this} param [0, text "<any>"])
+#define EXEC_RESULT_CTRL (parsingNamespace getVariable ["BIS_RscDebugConsoleExpressionResultCtrl", controlNull])
+#define EXEC_SEND_RESULT {[EXEC_RESULT, {EXEC_RESULT_CTRL ctrlSetText str _this}] remoteExec ["call", remoteExecutedOwner]}
 
 if !(getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) exitWith {};
 
@@ -88,7 +91,8 @@ _targetExec ctrlSetText toUpper LLSTRING(TargetExec);
 _targetExec ctrlAddEventHandler ["ButtonClick", {
     params ["_targetExec"];
     private _statement = ctrlText (ctrlParentControlsGroup _targetExec controlsGroupCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION);
-    compile _statement remoteExec ["call", GVAR(selectedClientID)];
+
+    [compile _statement, EXEC_SEND_RESULT] remoteExec ["call", GVAR(selectedClientID)];
 }];
 
 _targetExec ctrlAddEventHandler ["MouseButtonUp", {
