@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - hemtt
   pull_request:
 
 jobs:
