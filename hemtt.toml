@@ -11,7 +11,7 @@ files = [
 ]
 
 key_name = "{{prefix}}_{{version}}"
-sig_name = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
 releasebuild = [
     "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
