@@ -1,3 +1,4 @@
+# HEMTT: https://github.com/synixebrett/HEMTT/pull/295/commits/95e808c6714068dac0cb204cff6fc9c2ff388e83
 name = "CBA_A3"
 prefix = "cba"
 author = "CBATeam"
@@ -14,9 +15,37 @@ modname = "{{name}}"
 key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
+prebuild = [
+    "!version_set"
+]
+postbuild = [
+    "!version_unset"
+]
 releasebuild = [
     "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
 ]
 
 [header_exts]
 version = "{{git \"id 8\"}}"
+
+[scripts.version_set]
+steps_linux = [
+    "echo 'Setting version'",
+    "sed -i -r -s 's/[0-9]+\\.[0-9]+\\.[0-9]+/{{semver.major}}.{{semver.minor}}.{{semver.patch}}/g' mod.cpp addons/main_a3/CfgMods.hpp"
+]
+steps_windows = [
+    "echo 'Setting version'",
+    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '[0-9]+\\.[0-9]+\\.[0-9]+', '{{semver.major}}.{{semver.minor}}.{{semver.patch}}' ^| Set-Content $f}"
+]
+show_output = true
+
+[scripts.version_unset]
+steps_linux = [
+    "echo 'Unsetting version'",
+    "sed -i -r -s 's/{{semver.major}}.{{semver.minor}}.{{semver.patch}}/0.0.0/g' mod.cpp addons/main_a3/CfgMods.hpp",
+]
+steps_windows = [
+    "echo 'Unsetting version'",
+    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' ^| Set-Content $f}"
+]
+show_output = true
