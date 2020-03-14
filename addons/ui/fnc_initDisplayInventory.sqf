@@ -133,10 +133,10 @@ _watchSlot setVariable [QGVAR(slotType), "WATCH"];
                 _classname = primaryWeaponItems _unit select 3;
             };
             case "RIFLE_OPTIC": {
-                _classname = primaryWeaponItems _unit select 1;
+                _classname = primaryWeaponItems _unit select 2;
             };
             case "RIFLE_POINTER": {
-                _classname = primaryWeaponItems _unit select 2;
+                _classname = primaryWeaponItems _unit select 1;
             };
             case "RIFLE_MAGAZINE": {
                 _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 4 param [0, ""];
@@ -156,10 +156,10 @@ _watchSlot setVariable [QGVAR(slotType), "WATCH"];
                 _classname = secondaryWeaponItems _unit select 3;
             };
             case "LAUNCHER_OPTIC": {
-                _classname = secondaryWeaponItems _unit select 1;
+                _classname = secondaryWeaponItems _unit select 2;
             };
             case "LAUNCHER_POINTER": {
-                _classname = secondaryWeaponItems _unit select 2;
+                _classname = secondaryWeaponItems _unit select 1;
             };
             case "LAUNCHER_MAGAZINE": {
                 _classname = secondaryWeaponMagazine _unit select 0;
@@ -176,10 +176,10 @@ _watchSlot setVariable [QGVAR(slotType), "WATCH"];
                 _classname = handgunItems _unit select 3;
             };
             case "PISTOL_OPTIC": {
-                _classname = handgunItems _unit select 1;
+                _classname = handgunItems _unit select 2;
             };
             case "PISTOL_POINTER": {
-                _classname = handgunItems _unit select 2;
+                _classname = handgunItems _unit select 1;
             };
             case "PISTOL_MAGAZINE": {
                 _classname = handgunMagazine _unit select 0;

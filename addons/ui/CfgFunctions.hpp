@@ -51,5 +51,9 @@ class CfgFunctions {
             PATHTO_FNC(getUISize);
             PATHTO_FNC(notify);
         };
+
+        class ItemContextMenu {
+            PATHTO_FNC(consumeItem);
+        };
     };
 };

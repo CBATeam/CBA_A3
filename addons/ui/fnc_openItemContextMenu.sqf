@@ -36,10 +36,10 @@ while {
 } do {};
 
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["##%1", _itemType2], []]);systemChat format ["##%1", _itemType2];
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["#%1", _itemType1], []]); systemChat format ["#%1", _itemType1];
+_options append (GVAR(ItemContextMenuOptions) getVariable [format ["##%1", _itemType2], []]);
+_options append (GVAR(ItemContextMenuOptions) getVariable [format ["#%1", _itemType1], []]);
 _options append (GVAR(ItemContextMenuOptions) getVariable ["#All", []]);
-systemChat str _options;
+
 // Skip menu if no options.
 if (_options isEqualTo []) exitWith {};
 
@@ -64,7 +64,7 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
         private _index = _list lbAdd _displayName;
-        _list lbSetTooltip [_index, _tooltip]; // broken, @todo
+        _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
         private _key = format [QGVAR(OptionData%1), _index];
 
@@ -102,20 +102,10 @@ _list setVariable [QFUNC(activate), {
     if (_this call _condition) then {
         if (_consume) then {
             params ["_unit", "_container", "_item", "_slot"];
-            switch _slot do {
-                case "UNIFORM_CONTAINER": {
-                    _unit removeItemFromUniform _item;
-                };
-                case "VEST_CONTAINER": {
-                    _unit removeItemFromVest _item;
-                };
-                case "BACKPACK_CONTAINER": {
-                    _unit removeItemFromBackpack _item;
-                };
-                default {
-                    ERROR_2("Cannot consume item %1 from %2.",_item,_slot);
-                    _statement = {true};
-                };
+
+            if !([_unit, _item, _slot, _container] call CBA_fnc_consumeItem) then {
+                ERROR_2("Cannot consume item %1 from %2.",_item,_slot);
+                _statement = {true};
             };
         };
 

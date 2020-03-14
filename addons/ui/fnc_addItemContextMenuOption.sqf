@@ -208,19 +208,23 @@ _displayName params [
     ["_tooltip", "", [""]]
 ];
 
-_condition params [
-    ["_conditionEnable", {true}, [{}]],
-    ["_conditionShow", {true}, [{}]]
-];
-
 if !(_color isEqualTo []) then {
     _color params [["_r", 1, [0]], ["_g", 1, [0]], ["_b", 1, [0]], ["_a", 1, [0]]];
     _color = [_r, _g, _b, _a];
 };
 
+if (_icon isEqualTo "") then {
+    _icon = "#(argb,8,8,3)color(0,0,0,0)";
+};
+
+_condition params [
+    ["_conditionEnable", {true}, [{}]],
+    ["_conditionShow", {true}, [{}]]
+];
+
 // Due to the lack of suitable commands, items can not be consumed from the ground or cargo.
 if (_consume) then {
-    _slots = _slots arrayIntersect ["UNIFORM_CONTAINER", "VEST_CONTAINER", "BACKPACK_CONTAINER"];
+    _slots = _slots - ["GROUND", "CARGO"];
 };
 
 private _options = GVAR(ItemContextMenuOptions) getVariable _item;
