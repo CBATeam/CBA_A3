@@ -35,7 +35,7 @@ steps_linux = [
 ]
 steps_windows = [
     "echo 'Setting version'",
-    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '[0-9]+\\.[0-9]+\\.[0-9]+', '{{semver.major}}.{{semver.minor}}.{{semver.patch}}' ^| Set-Content $f}"
+    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '[0-9]+\\.[0-9]+\\.[0-9]+', '{{semver.major}}.{{semver.minor}}.{{semver.patch}}' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}"
 ]
 show_output = true
 
@@ -46,6 +46,6 @@ steps_linux = [
 ]
 steps_windows = [
     "echo 'Unsetting version'",
-    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' ^| Set-Content $f}"
+    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}"
 ]
 show_output = true

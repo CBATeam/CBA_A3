@@ -1,4 +1,4 @@
-;@Findstr -bv ;@F "%~f0" | powershell -command - & goto:eof
+;@Findstr -bv ;@F "%~f0" | powershell -Command - & pause & goto:eof
 
 # Unzip backwards compatibility (Windows 8)
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -11,6 +11,8 @@ function Unzip {
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $client = New-Object Net.WebClient
 
-Write-Output "=> Downloading HEMTT (Windows) ..."
-$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/cy1n39shjje529li/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
+Write-Output "=> Downloading HEMTT (Windows) ...`n"
+#$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/cy1n39shjje529li/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
 $client.dispose()
+
+Write-Output "HEMTT successfully installed to project!`n"
