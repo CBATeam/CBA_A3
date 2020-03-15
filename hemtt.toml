@@ -37,6 +37,7 @@ steps_windows = [
     "echo 'Setting version'",
     "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '[0-9]+\\.[0-9]+\\.[0-9]+', '{{semver.major}}.{{semver.minor}}.{{semver.patch}}' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}"
 ]
+only_release = true
 show_output = true
 
 [scripts.version_unset]
@@ -48,4 +49,5 @@ steps_windows = [
     "echo 'Unsetting version'",
     "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}"
 ]
+only_release = true
 show_output = true
