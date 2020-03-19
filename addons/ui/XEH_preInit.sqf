@@ -13,6 +13,8 @@ if (hasInterface) then {
             QGVAR(ProgressBar) cutRsc [QGVAR(ProgressBar), "PLAIN"];
         };
     }];
+
+    PREP(openItemContextMenu);
 };
 
 // legacy function names
