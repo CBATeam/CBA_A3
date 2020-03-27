@@ -65,7 +65,7 @@ private _id = switch (_type) do {
     };
     case "turretweapon": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), GVAR(oldUnit) currentWeaponTurret (GVAR(oldUnit) call CBA_fnc_turretPath), ""] call _function;
+            [GVAR(oldUnit), GVAR(oldTurretWeapon), ""] call _function;
         };
         [QGVAR(turretWeaponEvent), _function] call CBA_fnc_addEventHandler // return id
     };
@@ -95,7 +95,7 @@ private _id = switch (_type) do {
     };
     case "turret": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), GVAR(oldUnit) call CBA_fnc_turretPath, []] call _function;
+            [GVAR(oldUnit), GVAR(oldTurret), []] call _function;
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
     };
