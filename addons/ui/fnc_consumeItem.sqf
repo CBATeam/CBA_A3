@@ -25,7 +25,7 @@ Author:
 
 // Force unscheduled environment to prevent race conditions.
 if (canSuspend) exitWith {
-    [CBA_fnc_addItemContextMenuOption, _this] call CBA_fnc_directCall;
+    [CBA_fnc_consumeItem, _this] call CBA_fnc_directCall;
 };
 
 params [
