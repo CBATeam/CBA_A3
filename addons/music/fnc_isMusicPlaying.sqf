@@ -20,4 +20,19 @@ Author:
     Dedmen, Commy2, Fishy
 ---------------------------------------------------------------------------- */
 
-!isNil QGVAR(track)
+#define MINIMUM_WAIT 0.1
+
+if (isNil QGVAR(track)) exitWith {false};
+
+GVAR(track) params ["_className", "_startTime", "_playPos", "_duration"];
+
+private _return = true;
+
+// Check if theres a track playing, since `playMusic ""` doesn't trigger an event
+private _trackTime = getMusicPlayedTime;
+if (CBA_missionTime > (_startTime + MINIMUM_WAIT) && {_trackTime == 0}) then {
+    GVAR(track) = nil;
+    _return = false;
+};
+
+_return
