@@ -24,7 +24,7 @@ Author:
 
 if (isNil QGVAR(track)) exitWith {false};
 
-GVAR(track) params ["_className", "_startTime", "_playPos", "_duration"];
+GVAR(track) params ["_class", "_startTime", "_playPos", "_duration"];
 
 private _return = true;
 
