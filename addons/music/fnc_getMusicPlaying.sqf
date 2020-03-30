@@ -26,5 +26,6 @@ GVAR(track) params ["_class", "_startTime", "_playPos", "_duration"];
 
 private _trackTime = getMusicPlayedTime;
 private _remainingTime = _duration - _trackTime;
+_remainingTime = _remainingTime max 0;
 
 [_class, _trackTime, _remainingTime]
