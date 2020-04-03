@@ -12,7 +12,7 @@ class RscDisplayOptionsLayout {
             onMouseButtonUp = "with uiNamespace do {['mouseButtonUp',_this,''] call RscDisplayOptionsLayout_script;};";
         };
         #define ADD_ELEMENT(var1) class Element##var1: Element022 {\
-            idc = __EVAL(12000 + var1);\
+            idc = QUOTE(12000 + var1);\
         }
         ADD_ELEMENT(023);
         ADD_ELEMENT(024);
