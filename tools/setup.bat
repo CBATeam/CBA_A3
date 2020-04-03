@@ -15,4 +15,5 @@ Write-Output "=> Downloading HEMTT (Windows) ...`n"
 $client.DownloadFile("https://ci.appveyor.com/api/buildjobs/w02cqm8vq7rhjpy6/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
 $client.dispose()
 
+Write-Output ("Version Check: {0}`n" -f (iex "..\hemtt.exe --version"))
 Write-Output "HEMTT successfully installed to project!`n"
