@@ -108,11 +108,14 @@ if (isMultiplayer) then {
         [QFUNC(missionTimePFH), {
             SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
-                CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
+                CBA_missionTime = _additionCheckPrecision;
                 GVAR(lastTime) = time; // used to detect paused game
+                GVAR(lastTickTime) = _tickTime;
+            } else {
+                GVAR(lastTickTime) = _tickTime;
             };
-
-            GVAR(lastTickTime) = _tickTime;
         }] call CBA_fnc_compileFinal;
 
         addMissionEventHandler ["PlayerConnected", {
@@ -132,11 +135,14 @@ if (isMultiplayer) then {
                     [QFUNC(missionTimePFH), {
                         SCRIPT(missionTimePFH_client);
                         if (time != GVAR(lastTime)) then {
-                            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                            private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+                            if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
+                            CBA_missionTime = _additionCheckPrecision;
                             GVAR(lastTime) = time; // used to detect paused game
+                            GVAR(lastTickTime) = _tickTime;
+                        } else {
+                            GVAR(lastTickTime) = _tickTime;
                         };
-
-                        GVAR(lastTickTime) = _tickTime;
                     }] call CBA_fnc_compileFinal;
 
                 };
@@ -155,10 +161,13 @@ if (isMultiplayer) then {
     [QFUNC(missionTimePFH), {
         SCRIPT(missionTimePFH_sp);
         if (time != GVAR(lastTime)) then {
-            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
+            private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
+            if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
+            CBA_missionTime = _additionCheckPrecision;
             GVAR(lastTime) = time; // used to detect paused game
+            GVAR(lastTickTime) = _tickTime;
+        } else {
+            GVAR(lastTickTime) = _tickTime;
         };
-
-        GVAR(lastTickTime) = _tickTime;
     }] call CBA_fnc_compileFinal;
 };
