@@ -19,6 +19,8 @@ private _lbData = [];
         _tooltip = localize _tooltip;
     };
 
+    _tooltip =  format ["%1 - %2", _x, _tooltip];
+
     private _index = _ctrlList lbAdd _label;
     _ctrlList lbSetTooltip [_index, _tooltip];
     _lbData set [_index, _x];
