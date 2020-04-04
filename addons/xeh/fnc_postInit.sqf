@@ -20,8 +20,8 @@ isNil {
     XEH_LOG("PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
 
     // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
-    if (CBA_missionTime == -1) then {
-        CBA_missionTime = 0;
+    if (CBA_missionTime isEqualTo []) then {
+        CBA_missionTime = [0, 0, 0];
     };
 
     // call PostInit events

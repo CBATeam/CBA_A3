@@ -75,7 +75,7 @@ _message set [0, format [
     "(%3) %1 - %2",
     _title,
     _message select 0,
-    [CBA_missionTime, "H:MM:SS"] call CBA_fnc_formatElapsedTime
+    [CBA_missionTime#0 * 1e6 + CBA_missionTime#1 * 1e3 + CBA_missionTime#2, "H:MM:SS"] call CBA_fnc_formatElapsedTime
 ]];
 
 _message = _message call _fnc_splitLines;

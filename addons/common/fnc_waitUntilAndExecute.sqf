@@ -49,7 +49,14 @@ if (_timeout < 0) then {
     GVAR(waitUntilAndExecArray) pushBack [{
         params ["_condition", "_statement", "_args", "_timeout", "_timeoutCode", "_startTime"];
 
-        if (CBA_missionTime - _startTime > _timeout) exitWith {
+        _startTime = [
+            floor(_startTime/1e6),
+            floor(_startTime/1e3) - floor(_startTime/1e6) * 1e6,
+            _startTime - floor(_startTime/1e3) * 1e3 - floor(_startTime/1e6) * 1e6
+        ];
+        private _timeDiff = CBA_missionTime vectorDiff _startTime;
+
+        if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 > _timeout) exitWith {
             _args call _timeoutCode;
             true
         };

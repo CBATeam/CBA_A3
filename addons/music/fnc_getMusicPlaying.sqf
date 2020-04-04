@@ -24,7 +24,13 @@ if (isNil QGVAR(track)) exitWith {["", 0, 0]};
 
 GVAR(track) params ["_class", "_startTime", "_playPos", "_duration"];
 
-private _trackTime = (CBA_missionTime - _startTime) + _playPos;
+_startTime = [
+    floor(_startTime/1e6),
+    floor(_startTime/1e3) - floor(_startTime/1e6) * 1e6,
+    _startTime - floor(_startTime/1e3) * 1e3 - floor(_startTime/1e6) * 1e6
+];
+private _timeDiff = CBA_missionTime vectorDiff _startTime;
+private _trackTime = _timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 + _playPos;
 private _remainingTime = _duration - _trackTime;
 
 if (_remainingTime <= 0) then {

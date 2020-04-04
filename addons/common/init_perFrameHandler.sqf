@@ -46,9 +46,10 @@ GVAR(waitUntilAndExecArray) = [];
     };
     private _delete = false;
     {
-        if (_x select 0 > CBA_missionTime) exitWith {};
+        private _timeDiff = (_x select [0,3]) vectorDiff CBA_missionTime;
+        if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 > 0) exitWith {};
 
-        (_x select 2) call (_x select 1);
+        (_x select 4) call (_x select 3);
 
         // Mark the element for deletion so it's not executed ever again
         GVAR(waitAndExecArray) set [_forEachIndex, objNull];
@@ -97,7 +98,7 @@ addMissionEventHandler ["Loaded", {
     GVAR(lastTickTime) = _tickTime;
 }];
 
-CBA_missionTime = 0;
+CBA_missionTime = [0, 0, 0]; // [999,999,999.99] = 999999999.99
 GVAR(lastTime) = time;
 
 // increase CBA_missionTime variable every frame
@@ -108,21 +109,25 @@ if (isMultiplayer) then {
         [QFUNC(missionTimePFH), {
             SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
-                private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
-                if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
-                CBA_missionTime = _additionCheckPrecision;
+                CBA_missionTime = CBA_missionTime vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
+                if (selectMax CBA_missionTime > 1000) then {
+                    private _limitReach = CBA_missionTime findIf {_x > 1000};
+                    private _diff = [0, 0, 0];
+                    _diff set [_limitReach, -1000];
+                    _diff set [_limitReach - 1, 1];
+                    CBA_missionTime = CBA_missionTime vectorAdd _diff;
+                };
                 GVAR(lastTime) = time; // used to detect paused game
-                GVAR(lastTickTime) = _tickTime;
-            } else {
-                GVAR(lastTickTime) = _tickTime;
             };
+
+            GVAR(lastTickTime) = _tickTime;
         }] call CBA_fnc_compileFinal;
 
         addMissionEventHandler ["PlayerConnected", {
             (_this select 4) publicVariableClient "CBA_missionTime";
         }];
     } else {
-        CBA_missionTime = -1;
+        CBA_missionTime = [];
 
         // multiplayer client
         0 spawn {
@@ -135,21 +140,25 @@ if (isMultiplayer) then {
                     [QFUNC(missionTimePFH), {
                         SCRIPT(missionTimePFH_client);
                         if (time != GVAR(lastTime)) then {
-                            private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
-                            if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
-                            CBA_missionTime = _additionCheckPrecision;
+                            CBA_missionTime = CBA_missionTime vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
+                            if (selectMax CBA_missionTime > 1000) then {
+                                private _limitReach = CBA_missionTime findIf {_x > 1000};
+                                private _diff = [0, 0, 0];
+                                _diff set [_limitReach, -1000];
+                                _diff set [_limitReach - 1, 1];
+                                CBA_missionTime = CBA_missionTime vectorAdd _diff;
+                            };
                             GVAR(lastTime) = time; // used to detect paused game
-                            GVAR(lastTickTime) = _tickTime;
-                        } else {
-                            GVAR(lastTickTime) = _tickTime;
                         };
+
+                        GVAR(lastTickTime) = _tickTime;
                     }] call CBA_fnc_compileFinal;
 
                 };
 
                 "CBA_missionTime" addPublicVariableEventHandler _fnc_init;
 
-                if (CBA_missionTime != -1) then {
+                if !(CBA_missionTime isEqualTo []) then {
                     WARNING_1("CBA_missionTime packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTime);
                     [nil, CBA_missionTime] call _fnc_init;
                 };
@@ -161,13 +170,17 @@ if (isMultiplayer) then {
     [QFUNC(missionTimePFH), {
         SCRIPT(missionTimePFH_sp);
         if (time != GVAR(lastTime)) then {
-            private _additionCheckPrecision = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
-            if (CBA_missionTime == _additionCheckPrecision) exitWith {}; // used to detect floating point precision error
-            CBA_missionTime = _additionCheckPrecision;
+            CBA_missionTime = CBA_missionTime vectorAdd [0, 0, (_tickTime - GVAR(lastTickTime)) * accTime];
+            if (selectMax CBA_missionTime > 1000) then {
+                private _limitReach = CBA_missionTime findIf {_x > 1000};
+                private _diff = [0, 0, 0];
+                _diff set [_limitReach, -1000];
+                _diff set [_limitReach - 1, 1];
+                CBA_missionTime = CBA_missionTime vectorAdd _diff;
+            };
             GVAR(lastTime) = time; // used to detect paused game
-            GVAR(lastTickTime) = _tickTime;
-        } else {
-            GVAR(lastTickTime) = _tickTime;
         };
+
+        GVAR(lastTickTime) = _tickTime;
     }] call CBA_fnc_compileFinal;
 };

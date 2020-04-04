@@ -28,5 +28,12 @@ Author:
 
 params [["_function", {}, [{}]], ["_args", []], ["_delay", 0, [0]]];
 
-GVAR(waitAndExecArray) pushBack [CBA_missionTime + _delay, _function, _args];
+_delay = [
+    floor(_delay/1e6),
+    floor(_delay/1e3) - floor(_delay/1e6) * 1e6,
+    _delay - floor(_delay/1e3) * 1e3 - floor(_delay/1e6) * 1e6
+];
+private _timeOfExec = CBA_missionTime vectorAdd _delay;
+
+GVAR(waitAndExecArray) pushBack (_timeOfExec + [_function, _args]);
 GVAR(waitAndExecArrayIsSorted) = false;
