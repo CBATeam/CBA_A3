@@ -30,8 +30,8 @@ Returns:
 
 Author:
     Rommel
-
 ---------------------------------------------------------------------------- */
+
 params [
     "_group",
     "_position",
@@ -45,8 +45,15 @@ params [
     ["_timeout", [0,0,0], [[]], 3],
     ["_compRadius", 0, [0]]
 ];
+
 _group = _group call CBA_fnc_getGroup;
 _position = _position call CBA_fnc_getPos;
+
+// addWaypoint expects ASL when a negative radius is provided for exact placement
+// otherwise waypoints will be placed under the ground
+if (_radius < 0) then {
+    _position = AGLtoASL _position;
+};
 
 private _waypoint = _group addWaypoint [_position, _radius];
 
