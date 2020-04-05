@@ -47,7 +47,7 @@ GVAR(waitUntilAndExecArray) = [];
     private _delete = false;
     {
         private _timeDiff = [_x select [0, 3], CBA_missionTime];
-        _timeDiff sort false;
+        _timeDiff sort true;
         if (_timeDiff#0 isEqualTo CBA_missionTime) exitWith {};
 
         (_x select 4) call (_x select 3);
