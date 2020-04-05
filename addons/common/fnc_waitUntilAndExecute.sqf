@@ -50,8 +50,7 @@ if (_timeout < 0) then {
         params ["_condition", "_statement", "_args", "_timeout", "_timeoutCode", "_startTime"];
 
         private _timeDiff = CBA_missionTime vectorDiff _startTime;
-
-        if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 > _timeout) exitWith {
+        if (_timeDiff vectorDotProduct [1e6 , 1e3, 1]) exitWith {
             _args call _timeoutCode;
             true
         };

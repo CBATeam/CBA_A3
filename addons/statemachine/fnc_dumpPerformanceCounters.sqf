@@ -27,7 +27,7 @@ if (true) exitWith {WARNING("Requires `STATEMACHINE_PERFORMANCE_COUNTERS` in scr
 #endif
 
 diag_log text format ["CBA State Machine Results:"];
-diag_log text format ["------------------ [Time: %1] -------------------------", (CBA_missionTime#0 * 1e6 + CBA_missionTime#1 * 1e3 + CBA_missionTime#2) toFixed 1];
+diag_log text format ["------------------ [Time: %1] -------------------------", (CBA_missionTime vectorDotProduct [1e6 , 1e3, 1]) toFixed 1];
 
 {
     // _x is an array of small individual run times from FUNC(clockwork)

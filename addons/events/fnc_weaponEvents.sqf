@@ -117,7 +117,7 @@ if (!_isEmpty || _onEmpty) then {
 
         // keep waiting until time over
         private _timeDiff = CBA_missionTime vectorDiff _time;
-        if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 < _delay) exitWith {false};
+        if (_timeDiff vectorDotProduct [1e6 , 1e3, 1] < _delay) exitWith {false};
 
         if (local _unit) then {
             _unit playAction _handAction;
