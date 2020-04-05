@@ -34,7 +34,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
     // Add a waypoint to regroup after the search
     _group lockWP true;
-    private _wp = _group addWaypoint [getPos _leader, -1, currentWaypoint _group];
+    private _wp = _group addWaypoint [getPosASL _leader, -1, currentWaypoint _group];
     private _cond = "({unitReady _x || !(alive _x)} count thisList) == count thisList";
     private _comp = format ["this setFormation '%1'; this setBehaviour '%2'; deleteWaypoint [group this, currentWaypoint (group this)];", formation _group, behaviour _leader];
     _wp setWaypointStatements [_cond, _comp];
