@@ -19,7 +19,11 @@ private _lbData = [];
         _tooltip = localize _tooltip;
     };
 
-    _tooltip =  format ["%1 - %2", _x, _tooltip];
+    if (_tooltip isEqualTo "") then {
+        _tooltip = str _x;
+    } else {
+        _tooltip = _tooltip + endl + str _x;
+    };
 
     private _index = _ctrlList lbAdd _label;
     _ctrlList lbSetTooltip [_index, _tooltip];
