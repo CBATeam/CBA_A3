@@ -46,8 +46,9 @@ GVAR(waitUntilAndExecArray) = [];
     };
     private _delete = false;
     {
-        private _timeDiff = (_x select [0,3]) vectorDiff CBA_missionTime;
-        if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 > 0) exitWith {};
+        private _timeDiff = [_x select [0, 3], CBA_missionTime];
+        _timeDiff sort false;
+        if (_timeDiff#0 isEqualTo CBA_missionTime) exitWith {};
 
         (_x select 4) call (_x select 3);
 

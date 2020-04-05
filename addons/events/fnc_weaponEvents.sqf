@@ -116,11 +116,6 @@ if (!_isEmpty || _onEmpty) then {
         };
 
         // keep waiting until time over
-        _time = [
-            floor(_time/1e6),
-            floor(_time/1e3) - floor(_time/1e6) * 1e6,
-            _time - floor(_time/1e3) * 1e3 - floor(_time/1e6) * 1e6
-        ];
         private _timeDiff = CBA_missionTime vectorDiff _time;
         if (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2 < _delay) exitWith {false};
 

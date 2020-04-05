@@ -78,11 +78,6 @@ _ctrlTitle ctrlSetText _title;
 // run failure code on previous progress bar
 if (!isNil QGVAR(ProgressBarParams)) then {
     GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime"];
-    _startTime = [
-        floor(_startTime/1e6),
-        floor(_startTime/1e3) - floor(_startTime/1e6) * 1e6,
-        _startTime - floor(_startTime/1e3) * 1e3 - floor(_startTime/1e6) * 1e6
-    ];
     private _timeDiff = CBA_missionTime vectorDiff _startTime;
     private _elapsedTime = (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2) min _totalTime;
 
@@ -98,11 +93,6 @@ _ctrlScript ctrlAddEventHandler ["Draw", {
     private _display = ctrlParent _ctrlScript;
 
     GVAR(ProgressBarParams) params ["_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime"];
-    _startTime = [
-        floor(_startTime/1e6),
-        floor(_startTime/1e3) - floor(_startTime/1e6) * 1e6,
-        _startTime - floor(_startTime/1e3) * 1e3 - floor(_startTime/1e6) * 1e6
-    ];
     private _timeDiff = CBA_missionTime vectorDiff _startTime;
     private _elapsedTime = (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2) min _totalTime;
 
@@ -145,11 +135,6 @@ if (_blockMouse) then {
         params ["_blockInputDisplay", "_key", "_shift", "_control", "_alt"];
 
         GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime", "_blockMouse", "_blockKeys", "_allowClose"];
-        _startTime = [
-            floor(_startTime/1e6),
-            floor(_startTime/1e3) - floor(_startTime/1e6) * 1e6,
-            _startTime - floor(_startTime/1e3) * 1e3 - floor(_startTime/1e6) * 1e6
-        ];
         private _timeDiff = CBA_missionTime vectorDiff _startTime;
         private _elapsedTime = (_timeDiff#0 * 1e6 + _timeDiff#1 * 1e3 + _timeDiff#2) min _totalTime;
 
