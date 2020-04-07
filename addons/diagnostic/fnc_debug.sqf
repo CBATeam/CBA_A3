@@ -75,7 +75,7 @@ _message set [0, format [
     "(%3) %1 - %2",
     _title,
     _message select 0,
-    [CBA_missionTime vectorDotProduct [1e6 , 1e3, 1], "H:MM:SS"] call CBA_fnc_formatElapsedTime
+    [CBA_missionTimeTriple vectorDotProduct [1e6 , 1e3, 1], "H:MM:SS"] call CBA_fnc_formatElapsedTime
 ]];
 
 _message = _message call _fnc_splitLines;

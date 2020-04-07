@@ -46,9 +46,9 @@ GVAR(waitUntilAndExecArray) = [];
     };
     private _delete = false;
     {
-        private _timeDiff = [_x select [0, 3], CBA_missionTime];
+        private _timeDiff = [_x select [0, 3], CBA_missionTimeTriple];
         _timeDiff sort true;
-        if (_timeDiff#0 isEqualTo CBA_missionTime) exitWith {};
+        if (_timeDiff#0 isEqualTo CBA_missionTimeTriple) exitWith {};
 
         (_x select 4) call (_x select 3);
 
@@ -99,10 +99,10 @@ addMissionEventHandler ["Loaded", {
     GVAR(lastTickTime) = _tickTime;
 }];
 
-CBA_missionTime = [0, 0, 0]; // [999,999,999.99] = 999999999.99
+CBA_missionTimeTriple = [0, 0, 0]; // [999,999,999.99] = 999999999.99
 GVAR(lastTime) = time;
 
-// increase CBA_missionTime variable every frame
+// increase CBA_missionTimeTriple variable every frame
 if (isMultiplayer) then {
     // multiplayer - no accTime in MP
     if (isServer) then {
@@ -110,14 +110,15 @@ if (isMultiplayer) then {
         [QFUNC(missionTimePFH), {
             SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
-                CBA_missionTime = CBA_missionTime vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
-                if (selectMax CBA_missionTime > 1000) then {
-                    private _limitReach = CBA_missionTime findIf {_x > 1000};
+                CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
+                if (selectMax CBA_missionTimeTriple > 1e3) then {
+                    private _limitReach = CBA_missionTimeTriple findIf {_x > 1e3};
                     private _diff = [0, 0, 0];
-                    _diff set [_limitReach, -1000];
+                    _diff set [_limitReach, -1e3];
                     _diff set [_limitReach - 1, 1];
-                    CBA_missionTime = CBA_missionTime vectorAdd _diff;
+                    CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd _diff;
                 };
+                CBA_missionTime = CBA_missionTimeTriple vectorDotProduct [1e6 , 1e3, 1];
                 GVAR(lastTime) = time; // used to detect paused game
             };
 
@@ -125,30 +126,31 @@ if (isMultiplayer) then {
         }] call CBA_fnc_compileFinal;
 
         addMissionEventHandler ["PlayerConnected", {
-            (_this select 4) publicVariableClient "CBA_missionTime";
+            (_this select 4) publicVariableClient "CBA_missionTimeTriple";
         }];
     } else {
-        CBA_missionTime = [];
+        CBA_missionTimeTriple = [];
 
         // multiplayer client
         0 spawn {
             isNil {
                 private _fnc_init = {
-                    CBA_missionTime = _this select 1;
+                    CBA_missionTimeTriple = _this select 1;
 
                     GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
 
                     [QFUNC(missionTimePFH), {
                         SCRIPT(missionTimePFH_client);
                         if (time != GVAR(lastTime)) then {
-                            CBA_missionTime = CBA_missionTime vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
-                            if (selectMax CBA_missionTime > 1000) then {
-                                private _limitReach = CBA_missionTime findIf {_x > 1000};
+                            CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd [0, 0, _tickTime - GVAR(lastTickTime)];
+                            if (selectMax CBA_missionTimeTriple > 1e3) then {
+                                private _limitReach = CBA_missionTimeTriple findIf {_x > 1e3};
                                 private _diff = [0, 0, 0];
-                                _diff set [_limitReach, -1000];
+                                _diff set [_limitReach, -1e3];
                                 _diff set [_limitReach - 1, 1];
-                                CBA_missionTime = CBA_missionTime vectorAdd _diff;
+                                CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd _diff;
                             };
+                            CBA_missionTime = CBA_missionTimeTriple vectorDotProduct [1e6 , 1e3, 1];
                             GVAR(lastTime) = time; // used to detect paused game
                         };
 
@@ -157,11 +159,11 @@ if (isMultiplayer) then {
 
                 };
 
-                "CBA_missionTime" addPublicVariableEventHandler _fnc_init;
+                "CBA_missionTimeTriple" addPublicVariableEventHandler _fnc_init;
 
-                if !(CBA_missionTime isEqualTo []) then {
-                    WARNING_1("CBA_missionTime packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTime);
-                    [nil, CBA_missionTime] call _fnc_init;
+                if !(CBA_missionTimeTriple isEqualTo []) then {
+                    WARNING_1("CBA_missionTimeTriple packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTimeTriple);
+                    [nil, CBA_missionTimeTriple] call _fnc_init;
                 };
             };
         };
@@ -171,14 +173,15 @@ if (isMultiplayer) then {
     [QFUNC(missionTimePFH), {
         SCRIPT(missionTimePFH_sp);
         if (time != GVAR(lastTime)) then {
-            CBA_missionTime = CBA_missionTime vectorAdd [0, 0, (_tickTime - GVAR(lastTickTime)) * accTime];
-            if (selectMax CBA_missionTime > 1000) then {
-                private _limitReach = CBA_missionTime findIf {_x > 1000};
+            CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd [0, 0, (_tickTime - GVAR(lastTickTime)) * accTime];
+            if (selectMax CBA_missionTimeTriple > 1e3) then {
+                private _limitReach = CBA_missionTimeTriple findIf {_x > 1e3};
                 private _diff = [0, 0, 0];
-                _diff set [_limitReach, -1000];
+                _diff set [_limitReach, -1e3];
                 _diff set [_limitReach - 1, 1];
-                CBA_missionTime = CBA_missionTime vectorAdd _diff;
+                CBA_missionTimeTriple = CBA_missionTimeTriple vectorAdd _diff;
             };
+            CBA_missionTime = CBA_missionTimeTriple vectorDotProduct [1e6 , 1e3, 1];
             GVAR(lastTime) = time; // used to detect paused game
         };
 

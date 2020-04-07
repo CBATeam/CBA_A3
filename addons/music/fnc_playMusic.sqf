@@ -37,7 +37,7 @@ private _duration = [_className, "duration"] call CBA_fnc_getMusicData;
 if (!isNil "_duration") then {
     if (_time < _duration) then {
         playMusic [_className, _time];
-        GVAR(track) = [_className, CBA_missionTime, _time, _duration];
+        GVAR(track) = [_className, CBA_missionTimeTriple, _time, _duration];
         _return = true;
     } else {
         WARNING("Time is greater than song length");

@@ -4,7 +4,7 @@ Function: CBA_fnc_waitAndExecute
 
 Description:
     Executes a code once in unscheduled environment with a given game time delay.
-    Note that unlike PFEH, the delay is in CBA_missionTime not diag_tickTime (will be adjusted for time accl).
+    Note that unlike PFEH, the delay is in CBA_missionTimeTriple not diag_tickTime (will be adjusted for time accl).
 
 Parameters:
     _function - The function you wish to execute. <CODE>
@@ -33,7 +33,7 @@ _delay = [
     floor((_delay % 1e6)/1e3),
     _delay % 1e3
 ];
-private _timeOfExec = CBA_missionTime vectorAdd _delay;
+private _timeOfExec = CBA_missionTimeTriple vectorAdd _delay;
 
 GVAR(waitAndExecArray) pushBack (_timeOfExec + [_function, _args]);
 GVAR(waitAndExecArrayIsSorted) = false;

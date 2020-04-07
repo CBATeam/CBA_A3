@@ -78,13 +78,13 @@ _ctrlTitle ctrlSetText _title;
 // run failure code on previous progress bar
 if (!isNil QGVAR(ProgressBarParams)) then {
     GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime"];
-    private _timeDiff = CBA_missionTime vectorDiff _startTime;
+    private _timeDiff = CBA_missionTimeTriple vectorDiff _startTime;
     private _elapsedTime = (_timeDiff vectorDotProduct [1e6 , 1e3, 1]) min _totalTime;
 
     [_onFailure, [_arguments, false, _elapsedTime, _totalTime, 3]] call CBA_fnc_execNextFrame;
 };
 
-GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTime, _totalTime, _blockMouse, _blockKeys, _allowClose];
+GVAR(ProgressBarParams) = [_arguments, _condition, _onSuccess, _onFailure, CBA_missionTimeTriple, _totalTime, _blockMouse, _blockKeys, _allowClose];
 
 // update bar, check condition, execute success or failure scripts
 private _ctrlScript = _display displayCtrl IDC_PROGRESSBAR_SCRIPT;
@@ -93,7 +93,7 @@ _ctrlScript ctrlAddEventHandler ["Draw", {
     private _display = ctrlParent _ctrlScript;
 
     GVAR(ProgressBarParams) params ["_arguments", "_condition", "_onSuccess", "_onFailure", "_startTime", "_totalTime"];
-    private _timeDiff = CBA_missionTime vectorDiff _startTime;
+    private _timeDiff = CBA_missionTimeTriple vectorDiff _startTime;
     private _elapsedTime = (_timeDiff vectorDotProduct [1e6 , 1e3, 1]) min _totalTime;
 
     private _continue = [[_arguments, true, _elapsedTime, _totalTime], _condition] call {
@@ -135,7 +135,7 @@ if (_blockMouse) then {
         params ["_blockInputDisplay", "_key", "_shift", "_control", "_alt"];
 
         GVAR(ProgressBarParams) params ["_arguments", "", "", "_onFailure", "_startTime", "_totalTime", "_blockMouse", "_blockKeys", "_allowClose"];
-        private _timeDiff = CBA_missionTime vectorDiff _startTime;
+        private _timeDiff = CBA_missionTimeTriple vectorDiff _startTime;
         private _elapsedTime = (_timeDiff vectorDotProduct [1e6 , 1e3, 1]) min _totalTime;
 
         if (_key isEqualTo DIK_ESCAPE) then {

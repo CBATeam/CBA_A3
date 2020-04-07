@@ -49,7 +49,7 @@ if (_timeout < 0) then {
     GVAR(waitUntilAndExecArray) pushBack [{
         params ["_condition", "_statement", "_args", "_timeout", "_timeoutCode", "_startTime"];
 
-        private _timeDiff = CBA_missionTime vectorDiff _startTime;
+        private _timeDiff = CBA_missionTimeTriple vectorDiff _startTime;
         if (_timeDiff vectorDotProduct [1e6 , 1e3, 1] > _timeout) exitWith {
             _args call _timeoutCode;
             true
@@ -59,7 +59,7 @@ if (_timeout < 0) then {
             true
         };
         false
-    }, {}, [_condition, _statement, _args, _timeout, _timeoutCode, CBA_missionTime]];
+    }, {}, [_condition, _statement, _args, _timeout, _timeoutCode, CBA_missionTimeTriple]];
 };
 
 nil

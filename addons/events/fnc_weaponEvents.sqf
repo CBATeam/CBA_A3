@@ -110,13 +110,13 @@ if (!_isEmpty || _onEmpty) then {
                 _this set [10, true];
             };
 
-            _this set [8, CBA_missionTime];
+            _this set [8, CBA_missionTimeTriple];
             _unit setWeaponReloadingTime [_unit, _muzzle, 1];
             false
         };
 
         // keep waiting until time over
-        private _timeDiff = CBA_missionTime vectorDiff _time;
+        private _timeDiff = CBA_missionTimeTriple vectorDiff _time;
         if (_timeDiff vectorDotProduct [1e6 , 1e3, 1] < _delay) exitWith {false};
 
         if (local _unit) then {
@@ -186,7 +186,7 @@ if (!_isEmpty || _onEmpty) then {
     }, {}, [
         _unit, _weapon, _muzzle, _optic,
         _handAction, _sound, call _fnc_soundSource,
-        _expectedMagazineCount, CBA_missionTime, _delay,
+        _expectedMagazineCount, CBA_missionTimeTriple, _delay,
         _triggerReleased, _config
     ]] call CBA_fnc_waitUntilAndExecute;
 };
