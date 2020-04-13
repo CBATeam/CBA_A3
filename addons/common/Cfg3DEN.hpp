@@ -168,6 +168,8 @@ class Cfg3DEN {
         };
 
         class GVAR(InitAttribute): GVAR(EditCodeMulti3) {
+            h = 0;
+
             class Controls: Controls {
                 class Background: Background {};
                 class Title: Title {};
