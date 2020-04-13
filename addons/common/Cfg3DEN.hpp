@@ -129,6 +129,42 @@ class Cfg3DEN {
                 };
             };
         };
+
+        class GVAR(EditCodeMulti10_Init): GVAR(EditCodeMulti10) {
+            class Controls: Controls {
+                class Background: Background {};
+                class Title: Title {};
+                class Value: Value {};
+                class GVAR(ValueInit): GVAR(Value) {
+                    // Copies contents of editable init box into the hidden
+                    // variant and into CBA_Init attribute.
+                    // Automatically adds call-block wrapper to enable
+                    // the usage of local variables and return values.
+                    onKillFocus = QUOTE(\
+                        private _code = ctrlText (_this select 0);\
+                        (uiNamespace getVariable [ARR_2('GVAR(InitAttributeValue)', controlNull)]) ctrlSetText _code;\
+                        if (_code != '') then {\
+                            _code = 'call{' + _code + '}';\
+                        };\
+                        (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
+                    );
+                };
+            };
+        };
+
+        class GVAR(InitAttribute): GVAR(EditCodeMulti3) {
+            class Controls: Controls {
+                class Background: Background {};
+                class Title: Title {};
+                class Value: Value {
+                    onLoad = QUOTE(\
+                        uiNamespace setVariable [ARR_2('GVAR(InitAttributeValue'), _this select 0)];\
+                        (_this select 0) ctrlEnable false;\
+                    );
+                    h = 0;
+                };
+            };
+        };
     };
 
     class Object {
@@ -136,7 +172,13 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti10);
+                        control = QGVAR(EditCodeMulti10_Init);
+                    };
+                    class CBA_Init {
+                        control = QGVAR(InitAttribute);
+                        property = "CBA_Init"; // Unique config property name saved in SQM
+                        expression = "_this setVariable ['%s', _value, true];";
+                        defaultValue = "''";
                     };
                 };
             };
