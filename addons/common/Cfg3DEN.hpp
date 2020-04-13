@@ -130,7 +130,7 @@ class Cfg3DEN {
             };
         };
 
-        class GVAR(EditCodeMulti10_Init): GVAR(EditCodeMulti10) {
+        class GVAR(EditCodeMulti6_Init): GVAR(EditCodeMulti6) {
             class Controls: Controls {
                 class Background: Background {};
                 class Title: Title {};
@@ -149,6 +149,21 @@ class Cfg3DEN {
                         (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
                     );
                 };
+            };
+        };
+
+        class GVAR(EditCodeMulti10_Init): GVAR(EditCodeMulti6_Init) {
+            h = POS_H_GROUP(10);
+
+            class Controls: Controls {
+                class Background: Background {
+                    h = POS_H_BACKGROUND(10);
+                };
+                class Title: Title {
+                    h = POS_H_TITLE(10);
+                };
+                class Value: Value {};
+                class GVAR(ValueInit): GVAR(ValueInit) {};
             };
         };
 
