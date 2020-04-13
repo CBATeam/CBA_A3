@@ -142,7 +142,7 @@ class Cfg3DEN {
                     // the usage of local variables and return values.
                     onKillFocus = QUOTE(\
                         private _code = ctrlText (_this select 0);\
-                        (uiNamespace getVariable [ARR_2('GVAR(InitAttributeValue)', controlNull)]) ctrlSetText _code;\
+                        (ctrlParent (_this select 0) getVariable [ARR_2('GVAR(InitAttributeValue)', controlNull)]) ctrlSetText _code;\
                         if (_code != '') then {\
                             _code = 'call{' + _code + '}';\
                         };\
@@ -158,7 +158,7 @@ class Cfg3DEN {
                 class Title: Title {};
                 class Value: Value {
                     onLoad = QUOTE(\
-                        uiNamespace setVariable [ARR_2('GVAR(InitAttributeValue'), _this select 0)];\
+                        ctrlParent (_this select 0) setVariable [ARR_2('GVAR(InitAttributeValue)', _this select 0)];\
                         (_this select 0) ctrlEnable false;\
                     );
                     h = 0;
@@ -190,7 +190,7 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti6);
+                        control = QGVAR(EditCodeMulti6_Init);
                     };
                     class Callsign {
                         expression = "[_this, _value] call CBA_fnc_setCallsign";
@@ -238,7 +238,7 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti6);
+                        control = QGVAR(EditCodeMulti6_Init);
                     };
                 };
             };
