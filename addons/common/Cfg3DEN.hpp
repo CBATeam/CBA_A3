@@ -257,6 +257,12 @@ class Cfg3DEN {
                     class Init {
                         control = QGVAR(EditCodeMulti6_Init);
                     };
+                    class CBA_Init {
+                        control = QGVAR(InitAttribute);
+                        property = "CBA_Init";
+                        expression = "_this setVariable ['%s', _value, true];";
+                        defaultValue = "''";
+                    };
                 };
             };
         };
