@@ -191,7 +191,7 @@ class Cfg3DEN {
                     };
                     class CBA_Init {
                         control = QGVAR(InitAttribute);
-                        property = "CBA_Init"; // Unique config property name saved in SQM
+                        property = "CBA_Init";
                         expression = "_this setVariable ['%s', _value, true];";
                         defaultValue = "''";
                     };
