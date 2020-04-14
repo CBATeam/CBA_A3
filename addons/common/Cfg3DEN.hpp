@@ -130,7 +130,7 @@ class Cfg3DEN {
             };
         };
 
-        class GVAR(EditCodeMulti6_Init): GVAR(EditCodeMulti6) {
+        class GVAR(EditCodeMulti10_InitObject): GVAR(EditCodeMulti10) {
             class Controls: Controls {
                 class Background: Background {};
                 class Title: Title {};
@@ -142,7 +142,7 @@ class Cfg3DEN {
                     // the usage of local variables and return values.
                     onKillFocus = QUOTE(\
                         private _code = ctrlText (_this select 0);\
-                        (ctrlParent (_this select 0) getVariable [ARR_2('GVAR(InitAttributeValue)', controlNull)]) ctrlSetText _code;\
+                        (ctrlParent (_this select 0) getVariable [ARR_2('GVAR(InitAttributeValue_Object)', controlNull)]) ctrlSetText _code;\
                         if (_code != '') then {\
                             _code = 'call{' + _code + '}';\
                         };\
@@ -152,22 +152,51 @@ class Cfg3DEN {
             };
         };
 
-        class GVAR(EditCodeMulti10_Init): GVAR(EditCodeMulti6_Init) {
-            h = POS_H_GROUP(10);
-
+        class GVAR(EditCodeMulti6_InitGroup): GVAR(EditCodeMulti6) {
             class Controls: Controls {
-                class Background: Background {
-                    h = POS_H_BACKGROUND(10);
-                };
-                class Title: Title {
-                    h = POS_H_TITLE(10);
-                };
+                class Background: Background {};
+                class Title: Title {};
                 class Value: Value {};
-                class GVAR(ValueInit): GVAR(ValueInit) {};
+                class GVAR(ValueInit): GVAR(Value) {
+                    // Copies contents of editable init box into the hidden
+                    // variant and into CBA_Init attribute.
+                    // Automatically adds call-block wrapper to enable
+                    // the usage of local variables and return values.
+                    onKillFocus = QUOTE(\
+                        private _code = ctrlText (_this select 0);\
+                        (ctrlParent (_this select 0) getVariable [ARR_2('GVAR(InitAttributeValue_Group)', controlNull)]) ctrlSetText _code;\
+                        if (_code != '') then {\
+                            _code = 'call{' + _code + '}';\
+                        };\
+                        (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
+                    );
+                };
             };
         };
 
-        class GVAR(InitAttribute): GVAR(EditCodeMulti3) {
+        class GVAR(EditCodeMulti6_InitLogic): GVAR(EditCodeMulti6) {
+            class Controls: Controls {
+                class Background: Background {};
+                class Title: Title {};
+                class Value: Value {};
+                class GVAR(ValueInit): GVAR(Value) {
+                    // Copies contents of editable init box into the hidden
+                    // variant and into CBA_Init attribute.
+                    // Automatically adds call-block wrapper to enable
+                    // the usage of local variables and return values.
+                    onKillFocus = QUOTE(\
+                        private _code = ctrlText (_this select 0);\
+                        (ctrlParent (_this select 0) getVariable [ARR_2('GVAR(InitAttributeValue_Logic)', controlNull)]) ctrlSetText _code;\
+                        if (_code != '') then {\
+                            _code = 'call{' + _code + '}';\
+                        };\
+                        (ctrlParentControlsGroup (_this select 0) controlsGroupCtrl 100) ctrlSetText _code;\
+                    );
+                };
+            };
+        };
+
+        class GVAR(InitAttribute_Object): GVAR(EditCodeMulti3) {
             h = 0;
 
             class Controls: Controls {
@@ -175,10 +204,35 @@ class Cfg3DEN {
                 class Title: Title {};
                 class Value: Value {
                     onLoad = QUOTE(\
-                        ctrlParent (_this select 0) setVariable [ARR_2('GVAR(InitAttributeValue)', _this select 0)];\
+                        ctrlParent (_this select 0) setVariable [ARR_2('GVAR(InitAttributeValue_Object)', _this select 0)];\
                         (_this select 0) ctrlEnable false;\
                     );
-                    h = 0;
+                };
+            };
+        };
+
+        class GVAR(InitAttribute_Group): GVAR(InitAttribute_Object) {
+            class Controls: Controls {
+                class Background: Background {};
+                class Title: Title {};
+                class Value: Value {
+                    onLoad = QUOTE(\
+                        ctrlParent (_this select 0) setVariable [ARR_2('GVAR(InitAttributeValue_Group)', _this select 0)];\
+                        (_this select 0) ctrlEnable false;\
+                    );
+                };
+            };
+        };
+
+        class GVAR(InitAttribute_Logic): GVAR(InitAttribute_Object) {
+            class Controls: Controls {
+                class Background: Background {};
+                class Title: Title {};
+                class Value: Value {
+                    onLoad = QUOTE(\
+                        ctrlParent (_this select 0) setVariable [ARR_2('GVAR(InitAttributeValue_Logic)', _this select 0)];\
+                        (_this select 0) ctrlEnable false;\
+                    );
                 };
             };
         };
@@ -189,10 +243,10 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti10_Init);
+                        control = QGVAR(EditCodeMulti10_InitObject);
                     };
                     class CBA_Init {
-                        control = QGVAR(InitAttribute);
+                        control = QGVAR(InitAttribute_Object);
                         property = "CBA_Init";
                         expression = "_this setVariable ['%s', _value, true];";
                         defaultValue = "''";
@@ -207,7 +261,13 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti6_Init);
+                        control = QGVAR(EditCodeMulti6_InitGroup);
+                    };
+                    class CBA_Init {
+                        control = QGVAR(InitAttribute_Group);
+                        property = "CBA_Init";
+                        expression = "_this setVariable ['%s', _value, true];";
+                        defaultValue = "''";
                     };
                     class Callsign {
                         expression = "[_this, _value] call CBA_fnc_setCallsign";
@@ -255,10 +315,10 @@ class Cfg3DEN {
             class Init {
                 class Attributes {
                     class Init {
-                        control = QGVAR(EditCodeMulti6_Init);
+                        control = QGVAR(EditCodeMulti6_InitLogic);
                     };
                     class CBA_Init {
-                        control = QGVAR(InitAttribute);
+                        control = QGVAR(InitAttribute_Logic);
                         property = "CBA_Init";
                         expression = "_this setVariable ['%s', _value, true];";
                         defaultValue = "''";
