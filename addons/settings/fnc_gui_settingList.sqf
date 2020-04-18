@@ -20,9 +20,9 @@ private _lbData = [];
     };
 
     if (_tooltip isEqualTo "") then {
-        _tooltip = localize "str_a3_firing_drills_hint_time_raw" + str _x;
+        _tooltip = str _x;
     } else {
-        _tooltip = _tooltip + endl + localize "str_a3_firing_drills_hint_time_raw" + str _x;
+        _tooltip = _tooltip + endl + str _x;
     };
 
     private _index = _ctrlList lbAdd _label;
