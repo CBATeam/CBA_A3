@@ -36,7 +36,7 @@ CBA_missionTimeStr = "0";
         CBA_missionTimeStr = format [
             "%1%2",
             GVAR(missionTimeThousands) toFixed 0,
-            (1000 + GVAR(missionTimePrecise)) toFixed 6 select [1],
+            (1000 + GVAR(missionTimePrecise)) toFixed 6 select [1]
         ];
 
         CBA_missionTime = parseNumber CBA_missionTimeStr;
