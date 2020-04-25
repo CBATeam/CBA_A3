@@ -38,10 +38,6 @@ private _temp = [];
 
     (GVAR(default) getVariable _setting) params ["_defaultValue", "", "", "", "_category"];
 
-    if (isLocalized _category) then {
-        _category = localize _category;
-    };
-
     if (_exportDefault || {
         !(_value isEqualTo _defaultValue) ||
         SANITIZE_PRIORITY(_setting,_priority,_source) > SANITIZE_PRIORITY(_setting,0,_source)

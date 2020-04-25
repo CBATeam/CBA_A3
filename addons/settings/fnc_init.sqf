@@ -74,6 +74,9 @@ if (_category isEqualTo "") exitWith {
     WARNING_1("Empty menu category for setting %1",_setting);
     1
 };
+if (isLocalized _category) then {
+    _category = localize _category;
+};
 
 // --- setting title and tooltip
 _title params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
