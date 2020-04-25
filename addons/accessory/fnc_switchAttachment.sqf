@@ -10,7 +10,7 @@ Parameters:
     1: _switchTo         - Switch to "next" or "prev" attachement <STRING>
 
 Returns:
-    _success - If switching was possible and keybind should be handeled <BOOLEAN>
+    _success - If switching was possible and keybind should be handled <BOOLEAN>
 
 Examples:
     (begin example)
