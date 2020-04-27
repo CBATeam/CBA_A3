@@ -15,12 +15,15 @@ if (hasInterface) then {
     }];
 
     PREP(openItemContextMenu);
+    PREP(getInventoryClassname);
 };
 
 if (isServer) then {
     GVAR(renamedItems) = call CBA_fnc_createNamespace;
     publicVariable QGVAR(renamedItems);
 };
+
+GVAR(inventoryPFH) = [];
 
 // legacy function names
 FUNC(Add) = CBA_fnc_flexiMenu_Add;
