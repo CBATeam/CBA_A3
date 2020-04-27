@@ -19,7 +19,7 @@ SCRIPT(filterLoadout);
 params [["_loadout", [], [[]]]];
 
 {
-    _loadout = [_loadout] call (GVAR(loadoutFilters) getVariable [_x, {}]);
-} forEach allVariables GVAR(loadoutFilters);
+    _loadout = [_loadout] call _x;
+} forEach GVAR(loadoutFilters);
 
 _loadout

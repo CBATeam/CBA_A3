@@ -8,14 +8,13 @@ Parameters:
 Passed Arguments:
     _this <ARRAY>
         0: _loadout - A getUnitLoadout array
-        1: _handle - A number representing the handle of the function. Same as '_handle' returned by this function. <NUMBER>
 Returns:
-    _handle - A number representing the handle of the function. Use this to remove the filter. <NUMBER>
+    Nothing.
 Examples:
     Remove the radio from loadouts
     (begin example)
-        _handle = [{
-            params ["_loadout", "_handle"];
+        [{
+            params ["_loadout"];
             if ((_loadout select 9) select 2 == "ItemRadio") then {
                 (_loadout select 9) set [2, ""];
             };
@@ -30,7 +29,4 @@ params [["_function", {}, [{}]]];
 
 if (_function isEqualTo {}) exitWith {-1};
 
-GVAR(loadoutFilterId) = GVAR(loadoutFilterId) + 1;
-GVAR(loadoutFilters) setVariable [str GVAR(loadoutFilterId), _function];
-
-GVAR(loadoutFilterId)
+GVAR(loadoutFilters) pushBack [ _function];
