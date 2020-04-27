@@ -1,6 +1,7 @@
 # HEMTT: https://github.com/synixebrett/HEMTT/commit/d828af84613f6725732a4c42c8b4611ae2a0cf81
 name = "CBA_A3"
 prefix = "cba"
+mainprefix = "x"
 author = "CBATeam"
 files = [
     "mod.cpp",

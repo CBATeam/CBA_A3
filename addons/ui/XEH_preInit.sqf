@@ -17,6 +17,11 @@ if (hasInterface) then {
     PREP(openItemContextMenu);
 };
 
+if (isServer) then {
+    GVAR(renamedItems) = call CBA_fnc_createNamespace;
+    publicVariable QGVAR(renamedItems);
+};
+
 // legacy function names
 FUNC(Add) = CBA_fnc_flexiMenu_Add;
 FUNC(Remove) = CBA_fnc_flexiMenu_Remove;
