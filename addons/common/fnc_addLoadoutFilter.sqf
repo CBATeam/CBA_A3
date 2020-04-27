@@ -29,4 +29,4 @@ params [["_function", {}, [{}]]];
 
 if (_function isEqualTo {}) exitWith {-1};
 
-GVAR(loadoutFilters) pushBack [ _function];
+GVAR(loadoutFilters) pushBack [_function];
