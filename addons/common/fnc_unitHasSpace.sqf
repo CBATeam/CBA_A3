@@ -96,29 +96,29 @@ if (_mass == -1) exitWith {false}; // item doesn't exist
 
 if (
     _checkUniform
+    && {TYPE_UNIFORM in _allowedSlots}
     && {
         private _maxLoad = getContainerMaxLoad uniform _unit;
         _maxLoad >= _mass * _count + _maxLoad * loadUniform _unit
     }
-    && {TYPE_UNIFORM in _allowedSlots}
 ) exitWith {true};
 
 if (
     _checkVest
+    && {TYPE_VEST in _allowedSlots}
     && {
         private _maxLoad = getContainerMaxLoad vest _unit;
         _maxLoad >= _mass * _count + _maxLoad * loadVest _unit
     }
-    && {TYPE_VEST in _allowedSlots}
 ) exitWith {true};
 
 if (
     _checkBackpack
+    && {TYPE_BACKPACK in _allowedSlots}
     && {
         private _maxLoad = getContainerMaxLoad backpack _unit;
         _maxLoad >= _mass * _count + _maxLoad * loadBackpack _unit
     }
-    && {TYPE_BACKPACK in _allowedSlots}
 ) exitWith {true};
 
 false
