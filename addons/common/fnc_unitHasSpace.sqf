@@ -47,14 +47,9 @@ if (isNil QGVAR(itemMassAllowedSlots)) then {
     GVAR(itemMassAllowedSlots) = [] call CBA_fnc_createNamespace;
 };
 
-private ["_mass", "_allowedSlots"];
-private _itemMassAllowedSlots = GVAR(itemMassAllowedSlots) getVariable _item;
+(GVAR(itemMassAllowedSlots) getVariable [_item, []]) params ["_mass", "_allowedSlots"];
 
-if (!isNil "_itemMassAllowedSlots") then {
-    _mass = _itemMassAllowedSlots # 0;
-    _allowedSlots = _itemMassAllowedSlots # 1;
-    TRACE_3("cache found",_item,_mass,_allowedSlots);
-} else {
+if (isNil "_mass") then {
     _allowedSlots = [TYPE_UNIFORM, TYPE_VEST, TYPE_BACKPACK];
     private _cfgWeaponsItem = configFile >> "CfgWeapons" >> _item;
     if (isClass _cfgWeaponsItem) then {
@@ -90,14 +85,14 @@ if (!isNil "_itemMassAllowedSlots") then {
             } else {
                 _mass = -1;
                 _allowedSlots = [];
-            }
+            };
         };
     };
     TRACE_3("caching",_item,_mass,_allowedSlots);
     GVAR(itemMassAllowedSlots) setVariable [_item, [_mass, _allowedSlots]];
 };
 
-if (_mass == -1) exitWith {false};
+if (_mass == -1) exitWith {false}; // item doesn't exist
 
 if (
     _checkUniform
