@@ -38,7 +38,7 @@ params [
     ["_checkBackpack", true, [false]]
 ];
 
-if (_unit isEqualTo objNull || {_item isEqualTo ""}) exitWith {false};
+if (isNull _unit || {_item isEqualTo ""}) exitWith {false};
 
 #define TYPE_VEST 701
 #define TYPE_UNIFORM 801
