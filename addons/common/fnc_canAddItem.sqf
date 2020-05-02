@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_unitHasSpace
+Function: CBA_fnc_canAddItem
 
 Description:
     Checks if unit has enough free space in inventory to store item.
@@ -20,14 +20,14 @@ Returns:
 
 Examples:
     (begin example)
-        [player, "acc_flashlight"] call CBA_fnc_unitHasSpace
-        [player, "30Rnd_556x45_Stanag", 7, false, true, false] call CBA_fnc_unitHasSpace
+        [player, "acc_flashlight"] call CBA_fnc_canAddItem
+        [player, "30Rnd_556x45_Stanag", 7, false, true, false] call CBA_fnc_canAddItem
     (end)
 
 Author:
     Dystopian
 ---------------------------------------------------------------------------- */
-SCRIPT(unitHasSpace);
+SCRIPT(canAddItem);
 
 params [
     ["_unit", objNull, [objNull]],
