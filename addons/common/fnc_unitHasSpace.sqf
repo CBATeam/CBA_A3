@@ -43,7 +43,6 @@ params [
 #define TYPE_BACKPACK 901
 
 if (isNil QGVAR(itemMassAllowedSlots)) then {
-    LOG("create ns");
     GVAR(itemMassAllowedSlots) = [] call CBA_fnc_createNamespace;
 };
 
@@ -52,40 +51,41 @@ if (isNil QGVAR(itemMassAllowedSlots)) then {
 if (isNil "_mass") then {
     _allowedSlots = [TYPE_UNIFORM, TYPE_VEST, TYPE_BACKPACK];
     private _cfgWeaponsItem = configFile >> "CfgWeapons" >> _item;
-    if (isClass _cfgWeaponsItem) then {
-        private _cfgItemInfo = _cfgWeaponsItem >> "ItemInfo";
-        private _cfgWeaponSlotsInfo = _cfgWeaponsItem >> "WeaponSlotsInfo";
-        if (isNumber (_cfgItemInfo >> "mass")) then {
-            _mass = getNumber (_cfgItemInfo >> "mass");
-        } else {
-            _mass = getNumber (_cfgWeaponSlotsInfo >> "mass");
-        };
-
-        {
-            if (isArray _x) exitWith {
-                _allowedSlots = getArray _x;
+    private _cfgMagazinesItem = configFile >> "CfgMagazines" >> _item;
+    private _cfgGlassesItem = configFile >> "CfgGlasses" >> _item;
+    switch true do {
+        case (isClass _cfgWeaponsItem): {
+            private _cfgItemInfo = _cfgWeaponsItem >> "ItemInfo";
+            private _cfgWeaponSlotsInfo = _cfgWeaponsItem >> "WeaponSlotsInfo";
+            if (isNumber (_cfgItemInfo >> "mass")) then {
+                _mass = getNumber (_cfgItemInfo >> "mass");
+            } else {
+                _mass = getNumber (_cfgWeaponSlotsInfo >> "mass");
             };
-        } forEach [
-            _cfgWeaponsItem >> "allowedSlots",
-            _cfgItemInfo >> "allowedSlots",
-            _cfgWeaponSlotsInfo >> "allowedSlots"
-        ];
-    } else {
-        private _cfgMagazinesItem = configFile >> "CfgMagazines" >> _item;
-        if (isClass _cfgMagazinesItem) then {
+
+            {
+                if (isArray _x) exitWith {
+                    _allowedSlots = getArray _x;
+                };
+            } forEach [
+                _cfgWeaponsItem >> "allowedSlots",
+                _cfgItemInfo >> "allowedSlots",
+                _cfgWeaponSlotsInfo >> "allowedSlots"
+            ];
+        };
+        case (isClass _cfgMagazinesItem): {
             _mass = getNumber (_cfgMagazinesItem >> "mass");
             private _cfgAllowedSlots = _cfgMagazinesItem >> "allowedSlots";
             if (isArray _cfgAllowedSlots) then {
                 _allowedSlots = getArray _cfgAllowedSlots;
             };
-        } else {
-            private _cfgGlassesItem = configFile >> "CfgGlasses" >> _item;
-            if (isClass _cfgGlassesItem) then {
-                _mass = getNumber (_cfgGlassesItem >> "mass");
-            } else {
-                _mass = -1;
-                _allowedSlots = [];
-            };
+        };
+        case (isClass _cfgGlassesItem): {
+            _mass = getNumber (_cfgGlassesItem >> "mass");
+        };
+        default {
+            _mass = -1;
+            _allowedSlots = [];
         };
     };
     TRACE_3("caching",_item,_mass,_allowedSlots);
