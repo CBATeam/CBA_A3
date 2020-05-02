@@ -30,13 +30,15 @@ Author:
 SCRIPT(unitHasSpace);
 
 params [
-    "_unit",
-    "_item",
-    ["_count", 1],
-    ["_checkUniform", true],
-    ["_checkVest", true],
-    ["_checkBackpack", true]
+    ["_unit", objNull, [objNull]],
+    ["_item", "", [""]],
+    ["_count", 1, [0]],
+    ["_checkUniform", true, [false]],
+    ["_checkVest", true, [false]],
+    ["_checkBackpack", true, [false]]
 ];
+
+if (_unit isEqualTo objNull || {_item isEqualTo ""}) exitWith {false};
 
 #define TYPE_VEST 701
 #define TYPE_UNIFORM 801
