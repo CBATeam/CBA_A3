@@ -100,8 +100,9 @@ if (
     _checkUniform
     && {TYPE_UNIFORM in _allowedSlots}
     && {
-        private _maxLoad = getContainerMaxLoad uniform _unit;
-        _maxLoad >= _mass * _count + _maxLoad * loadUniform _unit
+        // each time subtract whole number of items which can be put in container
+        _count = _count - floor (getContainerMaxLoad uniform _unit * (1 - loadUniform _unit) / _mass);
+        _count <= 0
     }
 ) exitWith {true};
 
@@ -109,8 +110,8 @@ if (
     _checkVest
     && {TYPE_VEST in _allowedSlots}
     && {
-        private _maxLoad = getContainerMaxLoad vest _unit;
-        _maxLoad >= _mass * _count + _maxLoad * loadVest _unit
+        _count = _count - floor (getContainerMaxLoad vest _unit * (1 - loadVest _unit) / _mass);
+        _count <= 0
     }
 ) exitWith {true};
 
@@ -118,8 +119,8 @@ if (
     _checkBackpack
     && {TYPE_BACKPACK in _allowedSlots}
     && {
-        private _maxLoad = getContainerMaxLoad backpack _unit;
-        _maxLoad >= _mass * _count + _maxLoad * loadBackpack _unit
+        _count = _count - floor (getContainerMaxLoad backpack _unit * (1 - loadBackpack _unit) / _mass);
+        _count <= 0
     }
 ) exitWith {true};
 
