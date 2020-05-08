@@ -222,7 +222,7 @@ string write(string setting, string value, int force) {
         item = trim_right(item);
 
         if (_stricmp(item.c_str(), setting.c_str()) == 0) {
-            // Upade matching lines.
+            // Updade matching lines.
             line = "";
             while (force-- > 0)
                 line = line + "force ";
