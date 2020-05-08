@@ -27,309 +27,309 @@ return (val)
 using namespace std;
 
 string version() {
-	return VERSION;
+    return VERSION;
 }
 
 string clear() {
-	ofstream file;
-	file.open(SETTINGS_FILE, ios::out);
-	file.close();
-	return "true";
+    ofstream file;
+    file.open(SETTINGS_FILE, ios::out);
+    file.close();
+    return "true";
 }
 
 string load(int strlen) {
-	string result = "";
+    string result = "";
 
-	ifstream file;
-	file.open(SETTINGS_FILE, ios::in);
+    ifstream file;
+    file.open(SETTINGS_FILE, ios::in);
 
-	string line;
-	while (file.good()) {
-		getline(file, line);
-		if (file.good() || line.length() != 0) // Don't explode file by appending duplicate additional newlines.
-			result = result + trim(line) + "\n";
-	}
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (file.good() || line.length() != 0) // Don't explode file by appending duplicate additional newlines.
+            result = result + trim(line) + "\n";
+    }
 
-	file.close();
+    file.close();
 
-	if (strlen * MAX_CALLBACK_LENGTH > result.length())
-		return "";
+    if (strlen * MAX_CALLBACK_LENGTH > result.length())
+        return "";
 
-	result = result.substr(strlen * MAX_CALLBACK_LENGTH, MAX_CALLBACK_LENGTH);
-	return result;
+    result = result.substr(strlen * MAX_CALLBACK_LENGTH, MAX_CALLBACK_LENGTH);
+    return result;
 }
 
 string parse(int strlen) {
-	string result = "[";
+    string result = "[";
 
-	ifstream file;
-	file.open(SETTINGS_FILE, ios::in);
+    ifstream file;
+    file.open(SETTINGS_FILE, ios::in);
 
-	string line;
-	while (file.good()) {
-		getline(file, line);
-		line = trim_left(line);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        line = trim_left(line);
 
-		// Ignore commented out lines.
-		if (line.substr(0, 2) == "//")
-			continue;
+        // Ignore commented out lines.
+        if (line.substr(0, 2) == "//")
+            continue;
 
-		// Count force tags.
-		int force = 0;
-		while (line.substr(0, 6) == "force ") {
-			force++;
-			line = line.substr(6);
-			line = trim_left(line);
-		}
+        // Count force tags.
+        int force = 0;
+        while (line.substr(0, 6) == "force ") {
+            force++;
+            line = line.substr(6);
+            line = trim_left(line);
+        }
 
-		// Get setting.
-		size_t i = line.find("=");
-		if (i == string::npos) // Ignore ill-formed line.
-			continue;
+        // Get setting.
+        size_t i = line.find("=");
+        if (i == string::npos) // Ignore ill-formed line.
+            continue;
 
-		string item = line.substr(0, i);
-		item = trim_right(item);
+        string item = line.substr(0, i);
+        item = trim_right(item);
 
-		// Get value.
-		string value = line.substr(i + 1);
-		value = trim(value);
+        // Get value.
+        string value = line.substr(i + 1);
+        value = trim(value);
 
-		while (value.back() == ';')
-			value.pop_back();
+        while (value.back() == ';')
+            value.pop_back();
 
-		value = trim_right(value);
+        value = trim_right(value);
 
-		result = result + "[\"" + item + "\"," + value + "," + to_string(force) + "],";
-	}
+        result = result + "[\"" + item + "\"," + value + "," + to_string(force) + "],";
+    }
 
-	file.close();
+    file.close();
 
-	result.pop_back();
-	result.push_back(']');
+    result.pop_back();
+    result.push_back(']');
 
-	if (strlen * MAX_CALLBACK_LENGTH > result.length())
-		return "";
+    if (strlen * MAX_CALLBACK_LENGTH > result.length())
+        return "";
 
-	result = result.substr(strlen * MAX_CALLBACK_LENGTH, MAX_CALLBACK_LENGTH);
-	return result;
+    result = result.substr(strlen * MAX_CALLBACK_LENGTH, MAX_CALLBACK_LENGTH);
+    return result;
 }
 
 string read(string setting) {
-	string result = "[\"\",false,-1]";
+    string result = "[\"\",false,-1]";
 
-	ifstream file;
-	file.open(SETTINGS_FILE, ios::in);
+    ifstream file;
+    file.open(SETTINGS_FILE, ios::in);
 
-	string line;
-	while (file.good()) {
-		getline(file, line);
-		line = trim_left(line);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        line = trim_left(line);
 
-		// Ignore commented out lines.
-		if (line.substr(0, 2) == "//")
-			continue;
+        // Ignore commented out lines.
+        if (line.substr(0, 2) == "//")
+            continue;
 
-		// Count force tags.
-		int force = 0;
-		while (line.substr(0, 6) == "force ") {
-			force++;
-			line = line.substr(6);
-			line = trim_left(line);
-		}
+        // Count force tags.
+        int force = 0;
+        while (line.substr(0, 6) == "force ") {
+            force++;
+            line = line.substr(6);
+            line = trim_left(line);
+        }
 
-		// Get setting.
-		size_t i = line.find("=");
-		if (i == string::npos) // Ignore ill-formed line.
-			continue;
+        // Get setting.
+        size_t i = line.find("=");
+        if (i == string::npos) // Ignore ill-formed line.
+            continue;
 
-		string item = line.substr(0, i);
-		item = trim_right(item);
+        string item = line.substr(0, i);
+        item = trim_right(item);
 
-		if (_stricmp(item.c_str(), setting.c_str()) == 0) {
-			// Get value.
-			string value = line.substr(i + 1);
-			value = trim(value);
+        if (_stricmp(item.c_str(), setting.c_str()) == 0) {
+            // Get value.
+            string value = line.substr(i + 1);
+            value = trim(value);
 
-			while (value.back() == ';')
-				value.pop_back();
+            while (value.back() == ';')
+                value.pop_back();
 
-			value = trim_right(value);
+            value = trim_right(value);
 
-			result = "[\"" + item + "\"," + value + "," + to_string(force) + "]";
-			break;
-		}
-	}
+            result = "[\"" + item + "\"," + value + "," + to_string(force) + "]";
+            break;
+        }
+    }
 
-	file.close();
-	return result;
+    file.close();
+    return result;
 }
 
 string append(string setting, string value, int force) {
-	ofstream file;
-	file.open(SETTINGS_FILE, ios::app);
+    ofstream file;
+    file.open(SETTINGS_FILE, ios::app);
 
-	string line = "";
-	while (force-- > 0)
-		line = line + "force ";
+    string line = "";
+    while (force-- > 0)
+        line = line + "force ";
 
-	line = line + setting + " = " + value + ";";
+    line = line + setting + " = " + value + ";";
 
-	file << line << endl;
-	file.close();
-	return "true";
+    file << line << endl;
+    file.close();
+    return "true";
 }
 
 string write(string setting, string value, int force) {
-	string result = "false";
+    string result = "false";
 
-	ofstream temp;
-	temp.open(string(TEMP_FILE).c_str(), ios::out);
+    ofstream temp;
+    temp.open(string(TEMP_FILE).c_str(), ios::out);
 
-	ifstream file;
-	file.open(SETTINGS_FILE, ios::in);
+    ifstream file;
+    file.open(SETTINGS_FILE, ios::in);
 
-	string line;
-	while (file.good()) {
-		getline(file, line);
-		line = trim_left(line);
-		string orig = trim_right(line);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        line = trim_left(line);
+        string orig = trim_right(line);
 
-		if (line.length() == 0 || result == "true") {
-			if (file.good()) // Don't explode file by appending duplicate additional newlines.
-				temp << orig << endl;
+        if (line.length() == 0 || result == "true") {
+            if (file.good()) // Don't explode file by appending duplicate additional newlines.
+                temp << orig << endl;
 
-			continue;
-		}
+            continue;
+        }
 
-		// Keep commented out lines.
-		if (line.substr(0, 2) == "//") {
-			temp << orig << endl;
-			continue;
-		}
+        // Keep commented out lines.
+        if (line.substr(0, 2) == "//") {
+            temp << orig << endl;
+            continue;
+        }
 
-		// Strip force tags.
-		while (line.substr(0, 6) == "force ") {
-			line = line.substr(6);
-			line = trim_left(line);
-		}
+        // Strip force tags.
+        while (line.substr(0, 6) == "force ") {
+            line = line.substr(6);
+            line = trim_left(line);
+        }
 
-		// Get setting.
-		size_t i = line.find("=");
-		if (i == string::npos) // Remove ill-formed line.
-			continue;
+        // Get setting.
+        size_t i = line.find("=");
+        if (i == string::npos) // Remove ill-formed line.
+            continue;
 
-		string item = line.substr(0, i);
-		item = trim_right(item);
+        string item = line.substr(0, i);
+        item = trim_right(item);
 
-		if (_stricmp(item.c_str(), setting.c_str()) == 0) {
-			// Upade matching lines.
-			line = "";
-			while (force-- > 0)
-				line = line + "force ";
+        if (_stricmp(item.c_str(), setting.c_str()) == 0) {
+            // Upade matching lines.
+            line = "";
+            while (force-- > 0)
+                line = line + "force ";
 
-			line = line + setting + " = " + value + ";";
+            line = line + setting + " = " + value + ";";
 
-			temp << line << endl;
-			result = "true";
-		} else {
-			// Keep non-matching lines.
-			temp << orig << endl;
-		}
-	}
+            temp << line << endl;
+            result = "true";
+        } else {
+            // Keep non-matching lines.
+            temp << orig << endl;
+        }
+    }
 
-	temp.close();
-	file.close();
+    temp.close();
+    file.close();
 
-	if (result == "true") {
-		remove(SETTINGS_FILE);
-		rename(TEMP_FILE, SETTINGS_FILE);
-	} else {
-		remove(TEMP_FILE);
-		result = append(setting, value, force);
-	};
+    if (result == "true") {
+        remove(SETTINGS_FILE);
+        rename(TEMP_FILE, SETTINGS_FILE);
+    } else {
+        remove(TEMP_FILE);
+        result = append(setting, value, force);
+    };
 
-	return result;
+    return result;
 }
 
 extern "C" {
-	__declspec(dllexport) void __stdcall RVExtensionVersion(char* output, int outputSize);
-	__declspec(dllexport) void __stdcall RVExtension(char* output, int outputSize, const char* function);
-	__declspec(dllexport) int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** args, int argsCnt);
+    __declspec(dllexport) void __stdcall RVExtensionVersion(char* output, int outputSize);
+    __declspec(dllexport) void __stdcall RVExtension(char* output, int outputSize, const char* function);
+    __declspec(dllexport) int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** args, int argsCnt);
 }
 
 void __stdcall RVExtensionVersion(char* output, int outputSize) {
-	strncpy_s(output, outputSize, VERSION, _TRUNCATE);
+    strncpy_s(output, outputSize, VERSION, _TRUNCATE);
 }
 
 void __stdcall RVExtension(char* output, int outputSize, const char* function) {
-	string result = "false";
+    string result = "false";
 
-	if (_stricmp(function, "version") == 0) {
-		result = version();
-		RET;
-	}
+    if (_stricmp(function, "version") == 0) {
+        result = version();
+        RET;
+    }
 
-	RET;
+    RET;
 }
 
 int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** args, int argsCnt) {
-	string result = "false";
+    string result = "false";
 
-	if (argsCnt > 3) {
-		RETURN(PARAMS_ERROR_TOO_MANY_ARGS);
-	}
+    if (argsCnt > 3) {
+        RETURN(PARAMS_ERROR_TOO_MANY_ARGS);
+    }
 
-	string setting = "";
-	if (argsCnt >= 1) {
-		setting = args[0];
-		if (setting.substr(0, 1) == "\"") // Strip extra quote marks.
-			setting = setting.substr(1, setting.length() - 2);
-	}
+    string setting = "";
+    if (argsCnt >= 1) {
+        setting = args[0];
+        if (setting.substr(0, 1) == "\"") // Strip extra quote marks.
+            setting = setting.substr(1, setting.length() - 2);
+    }
 
-	string value = "";
-	if (argsCnt >= 2)
-		value = args[1];
+    string value = "";
+    if (argsCnt >= 2)
+        value = args[1];
 
-	int force = 0;
-	if (argsCnt >= 3)
-		force = min(stoi(args[2]), 2);
+    int force = 0;
+    if (argsCnt >= 3)
+        force = min(stoi(args[2]), 2);
 
-	if (_stricmp(function, "version") == 0) {
-		result = version();
-		RETURN(0);
-	}
+    if (_stricmp(function, "version") == 0) {
+        result = version();
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "clear") == 0) {
-		result = clear();
-		RETURN(0);
-	}
+    if (_stricmp(function, "clear") == 0) {
+        result = clear();
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "load") == 0) {
-		int strlen = stoi(setting);
-		result = load(strlen);
-		RETURN(0);
-	}
+    if (_stricmp(function, "load") == 0) {
+        int strlen = stoi(setting);
+        result = load(strlen);
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "parse") == 0) {
-		int strlen = stoi(setting);
-		result = parse(strlen);
-		RETURN(0);
-	}
+    if (_stricmp(function, "parse") == 0) {
+        int strlen = stoi(setting);
+        result = parse(strlen);
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "read") == 0) {
-		result = read(setting);
-		RETURN(0);
-	}
+    if (_stricmp(function, "read") == 0) {
+        result = read(setting);
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "append") == 0) {
-		result = append(setting, value, force);
-		RETURN(0);
-	}
+    if (_stricmp(function, "append") == 0) {
+        result = append(setting, value, force);
+        RETURN(0);
+    }
 
-	if (_stricmp(function, "write") == 0) {
-		result = write(setting, value, force);
-		RETURN(0);
-	}
+    if (_stricmp(function, "write") == 0) {
+        result = write(setting, value, force);
+        RETURN(0);
+    }
 
-	RETURN(1);
+    RETURN(1);
 }
