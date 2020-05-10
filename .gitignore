@@ -23,3 +23,7 @@ Thumbs.db
 
 *~
 *#
+
+
+extensions/build/
+*.dll

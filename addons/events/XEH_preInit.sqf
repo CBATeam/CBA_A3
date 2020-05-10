@@ -95,3 +95,28 @@ GVAR(alt) = false;
 private _states = [];
 _states resize 20;
 GVAR(userKeyStates) = _states apply {false};
+
+
+
+"CBA_JoyKeys" callExtension "test"; // activate the extension? make this a user setting??
+
+addMissionEventHandler ["ExtensionCallback", {
+    params ["_name", "_data"];
+    if (_name != "CBAX_joyButton") exitWith {};
+    systemChat format ["JoyKey: %1", _data];
+
+    (parseSimpleArray _data) params [["_buttonID", -1, [0]], ["_pressed", false, [false]]];
+    if (_pressed) then {
+        [displayNull, USERACTION_OFFSET + _buttonID, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerDown);
+    } else {
+        [displayNull, USERACTION_OFFSET + _buttonID, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerUp);
+    };
+}];
+// ToDo: instead of USERACTION_OFFSET, add actual joy keys?
+
+["Test", "Joy Test 1", ["My Pretty Key Name", "My Pretty Tool Tip"], {
+    systemChat "TestDown"
+}, {
+    systemChat "TestUp"
+}, [0xFA, [false, false, false]]] call CBA_fnc_addKeybind;
+
