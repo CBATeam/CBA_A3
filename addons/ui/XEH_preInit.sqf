@@ -19,7 +19,7 @@ if (hasInterface) then {
 };
 
 if (isServer) then {
-    GVAR(renamedItems) = call CBA_fnc_createNamespace;
+    GVAR(renamedItems) = true call CBA_fnc_createNamespace;
     publicVariable QGVAR(renamedItems);
 };
 

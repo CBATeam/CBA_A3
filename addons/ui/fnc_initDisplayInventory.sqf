@@ -228,23 +228,13 @@ _uniformItems setVariable [QGVAR(containerType), "UNIFORM_CONTAINER"];
 _vestItems setVariable [QGVAR(containerType), "VEST_CONTAINER"];
 _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
 
+private _controls = [];
+_display setVariable [QGVAR(controls), _controls];
+
 {
-    GVAR(inventoryPFH) pushBack ([{
-        (_this select 0) params ["_control"];
-        if !(ctrlShown _control) exitWith {};
-        // Item Rename Framework
-        for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do
-        {
-            private _classname = ([_control, _i] call FUNC(getInventoryClassname)) select 0;
-            private _name = GVAR(renamedItems) getVariable [_classname, ""];
-            if !(_name isEqualTo "") then {
-                _control lbSetText [_i, _name];
-            };
-        };
-    }, 0, [_x]] call CBA_fnc_addPerFrameHandler);
+    _controls pushBack _x;
 
     // Item Context Menu Framework
-
     _x ctrlAddEventHandler ["lbDblClick", {
         params ["_control", "_index"];
         ([_control, _index] call FUNC(getInventoryClassname)) params ["_classname", "_container", "_containerType"];
@@ -255,9 +245,24 @@ _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
     _uniformItems, _vestItems, _backpackItems
 ];
 
-_display displayAddEventHandler ["unload", {
-    {
-        _x call CBA_fnc_removePerFrameHandler;
-    } forEach GVAR(inventoryPFH);
-    GVAR(inventoryPFH) = [];
-}];
+private _fnc_update = {
+    params ["_display"];
+    systemChat str _this;
+
+   {
+        _x params ["_control"];
+        if !(ctrlShown _control) exitWith {};
+
+        // Item Rename Framework
+        for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do
+        {
+            private _classname = ([_control, _i] call FUNC(getInventoryClassname)) select 0;
+            private _name = GVAR(renamedItems) getVariable [_classname, ""];
+            if !(_name isEqualTo "") then {
+                _control lbSetText [_i, _name];
+            };
+        };
+    } forEach (_display getVariable QGVAR(controls));
+};
+_display displayAddEventHandler ["MouseMoving", _fnc_update];
+_display displayAddEventHandler ["MouseHolding", _fnc_update];
