@@ -15,7 +15,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgFunctions.hpp"
 
 class RscDisplayChat {
     onKeyDown = QUOTE(\
