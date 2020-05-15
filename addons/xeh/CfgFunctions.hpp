@@ -18,10 +18,12 @@ class CfgFunctions {
             class preInit {
                 preInit = 1;
                 file = PATHTOF(fnc_preInit.sqf);
+                // This file cannot be recompiled or it will be undefined at preInit
             };
             class postInit {
                 postInit = 1;
                 file = PATHTOF(fnc_postInit.sqf);
+                RECOMPILE;
             };
         };
     };
