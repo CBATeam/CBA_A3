@@ -2,7 +2,7 @@
 
 #include "XEH_PREP.sqf"
 
-if (!hasInterface) then {};
+if (!hasInterface) exitWith {};
 
 [ELSTRING(common,WeaponsCategory), "MRT_SwitchItemNextClass_R", [LSTRING(railNext), LSTRING(railNext_tooltip)], {
     [1, "next"] call FUNC(switchAttachment) // return
