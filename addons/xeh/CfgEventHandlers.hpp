@@ -10,19 +10,11 @@ class DefaultEventhandlers {
 
 // The PreStart handlers run once when the game is started
 // this could be used to precompile functions.
-class Extended_PreStart_EventHandlers {
-    class ADDON {
-        init = QUOTE(call COMPILE_FILE(XEH_preStart));
-    };
-};
+class Extended_PreStart_EventHandlers {};
 
 // Class for "pre-init", run-once event handlers. Code in here runs before any
 // Extended_Init_Eventhandlers code.
-class Extended_PreInit_EventHandlers {
-    class ADDON {
-        init = QUOTE(call COMPILE_FILE(XEH_preInit));
-    };
-};
+class Extended_PreInit_EventHandlers {};
 
 // The PostInit handlers also run once, but after all the extended init EH:s
 // have run and after all mission.sqm "init lines" have been processed.
