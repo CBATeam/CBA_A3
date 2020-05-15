@@ -25,12 +25,18 @@ SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", fals
 
 XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
+SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
+SLX_XEH_DUMMY = "Logic"; // backwards comp
+SLX_XEH_COMPILE = uiNamespace getVariable "SLX_XEH_COMPILE"; //backwards comps
+SLX_XEH_COMPILE_NEW = uiNamespace getVariable "SLX_XEH_COMPILE_NEW"; //backwards comp
+
+// @todo fix "Attempt to override final function"
+CBA_fnc_isRecompileEnabled = uiNamespace getVariable "CBA_fnc_isRecompileEnabled";
+
 #include "XEH_PREP.sqf"
 
-SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
-SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
-SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
-SLX_XEH_DUMMY = "Logic"; // backwards comp
+diag_log ["SLX_XEH_COMPILE", !isNil "SLX_XEH_COMPILE"];
+diag_log ["SLX_XEH_COMPILE_NEW", !isNil "SLX_XEH_COMPILE_NEW"];
 
 SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     !isDedicated, // 0 - isClient (and thus has player)

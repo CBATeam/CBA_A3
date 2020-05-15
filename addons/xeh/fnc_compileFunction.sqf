@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_compileFunction
@@ -27,12 +28,15 @@ params [["_funcFile", "", [""]], ["_funcName", "", [""]]];
 private _cachedFunc = uiNamespace getVariable _funcName;
 
 if (isNil "_cachedFunc") then {
+    LOG_1("COMPILE - %1", _funcName);
     uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
 } else {
     if (["compile"] call CBA_fnc_isRecompileEnabled) then {
+        LOG_1("RECOMPILE - %1", _funcName);
         missionNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     } else {
+        LOG_1("COPY CACHE - %1", _funcName);
         missionNamespace setVariable [_funcName, _cachedFunc];
     };
 };
