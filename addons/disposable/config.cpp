@@ -15,6 +15,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgFunctions.hpp"
 #include "CfgDisposableLaunchers.hpp"
 #include "CfgMagazines.hpp"
