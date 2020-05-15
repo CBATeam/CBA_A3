@@ -43,18 +43,6 @@ class CfgFunctions {
             class flexiMenu_execute {
                 file = QUOTE(PATHTOF(flexiMenu\fnc_execute.sqf));
             };
-
-            PATHTO_FNC(addPauseMenuOption);
-            PATHTO_FNC(progressBar);
-            PATHTO_FNC(getFov);
-            PATHTO_FNC(getAspectRatio);
-            PATHTO_FNC(getUISize);
-            PATHTO_FNC(notify);
-        };
-
-        class ItemContextMenu {
-            PATHTO_FNC(addItemContextMenuOption);
-            PATHTO_FNC(consumeItem);
         };
     };
 };
