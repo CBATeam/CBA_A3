@@ -1,2 +1,5 @@
+PREPMAIN(switchableAttachments);
 
-PREP(switchAttachment);
+if (hasInterface) then {
+    PREP(switchAttachment);
+};
