@@ -26,14 +26,14 @@ PREPMAIN(registerChatCommand);
 PREPMAIN(weaponEvents);
 
 if (hasInterface) then {
-      PREP(playerEvent);
+    PREP(playerEvent);
 
-      // Key Handlers
-      PREP(keyHandler);
-      PREP(keyHandlerDown);
-      PREP(keyHandlerUp);
-      PREP(mouseHandlerDown);
-      PREP(mouseHandlerUp);
-      PREP(mouseWheelHandler);
-      PREP(userKeyHandler);
+    // Key Handlers
+    PREP(keyHandler);
+    PREP(keyHandlerDown);
+    PREP(keyHandlerUp);
+    PREP(mouseHandlerDown);
+    PREP(mouseHandlerUp);
+    PREP(mouseWheelHandler);
+    PREP(userKeyHandler);
 };
