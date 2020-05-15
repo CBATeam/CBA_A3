@@ -1,8 +1,5 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
-SCRIPT(XEH_preInit);
-
-LOG(MSG_INIT);
 
 ADDON = false;
 

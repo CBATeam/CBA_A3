@@ -1,6 +1,6 @@
 class CfgFunctions {
     class CBA {
-        class UI {
+        class FlexiMenu {
             class flexiMenu_Add {
                 file = QUOTE(PATHTOF(flexiMenu\fnc_add.sqf));
             };

@@ -1,16 +1,9 @@
 #include "script_component.hpp"
 
-if (hasInterface) then {
-    PREP(playerEvent);
+#include "XEH_PREP.sqf"
 
+if (hasInterface) then {
     PREP(initDisplayMission);
     PREP(initDisplayMainMap);
     PREP(initDisplayCurator);
-
-    PREP(keyHandler);
-    PREP(keyHandlerDown);
-    PREP(keyHandlerUp);
-    PREP(mouseHandlerDown);
-    PREP(mouseHandlerUp);
-    PREP(mouseWheelHandler);
 };
