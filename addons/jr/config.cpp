@@ -23,6 +23,8 @@ class CfgPatches {
     };
 };
 
+#include "CfgEventHandlers.hpp"
+#include "CfgFunctions.hpp"
+
 #include "jr_classes.hpp"
 #include "CfgWeapons.hpp"
-#include "CfgFunctions.hpp"

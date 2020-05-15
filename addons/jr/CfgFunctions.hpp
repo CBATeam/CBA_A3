@@ -7,12 +7,4 @@ class CfgFunctions {
             };
         };
     };
-    class CBA {
-        class Inventory {
-            class compatibleItems {
-                description = "Get list of compatible attachments for a weapon";
-                file = QPATHTOF(fnc_compatibleItems.sqf);
-            };
-        };
-    };
 };
