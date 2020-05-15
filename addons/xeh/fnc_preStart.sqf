@@ -24,7 +24,7 @@ with uiNamespace do {
     XEH_LOG("PreStart started.");
 
     SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
-    SLX_XEH_COMPILE_NEW = compile preprocessFileLineNumbers QPATHTOF(fnc_compileFunction.sqf); //backwards comp
+    SLX_XEH_COMPILE_NEW = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_compileFunction.sqf); //backwards comp
 
     #include "XEH_PREP.sqf"
     PREP(initDisplay3DEN);
