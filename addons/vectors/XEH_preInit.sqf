@@ -3,6 +3,8 @@ SCRIPT(XEH_preInit);
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
+
 // Since the following causes RPT spam of "Attempting to Override, we are no longer supporting this method of deprication code. -VM
 // TODO: Update the existing CBA_vect functions to contain the same code as the their BIS_fnc_ equivalents. -VM
 // DEPRECATE_SYS(DOUBLES(PREFIX,fnc_vectSubtract),BIS_fnc_vectorDiff);
