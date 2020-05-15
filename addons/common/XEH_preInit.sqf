@@ -6,6 +6,8 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
+
 CBA_logic = objNull;
 
 [QFUNC(log), {
