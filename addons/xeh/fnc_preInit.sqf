@@ -1,3 +1,4 @@
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_preInit
@@ -28,15 +29,12 @@ XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_commo
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_DUMMY = "Logic"; // backwards comp
 SLX_XEH_COMPILE = uiNamespace getVariable "SLX_XEH_COMPILE"; //backwards comps
-SLX_XEH_COMPILE_NEW = uiNamespace getVariable "SLX_XEH_COMPILE_NEW"; //backwards comp
+SLX_XEH_COMPILE_NEW = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_compileFunction.sqf); //backwards comp
 
 // @todo fix "Attempt to override final function"
 CBA_fnc_isRecompileEnabled = uiNamespace getVariable "CBA_fnc_isRecompileEnabled";
 
 #include "XEH_PREP.sqf"
-
-diag_log ["SLX_XEH_COMPILE", !isNil "SLX_XEH_COMPILE"];
-diag_log ["SLX_XEH_COMPILE_NEW", !isNil "SLX_XEH_COMPILE_NEW"];
 
 SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     !isDedicated, // 0 - isClient (and thus has player)
@@ -133,6 +131,7 @@ GVAR(fallbackRunning) = false;
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
             (_x select 2) call {
+                LOG_1("RUN PREINIT - %1", _x);
                 private "_x";
 
                 [] call (_this select 0);

@@ -1,4 +1,6 @@
 class CfgFunctions {
+    init = QPATHTO_R(XEH_initFunctions.sqf);
+
     class CBA {
         class XEH {
             class preStart {

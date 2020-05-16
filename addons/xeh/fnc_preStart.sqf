@@ -23,6 +23,8 @@ with uiNamespace do {
 
     XEH_LOG("PreStart started.");
 
+    GVAR(PREP_list) = [];
+
     SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
     SLX_XEH_COMPILE_NEW = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_compileFunction.sqf); //backwards comp
 
@@ -49,6 +51,8 @@ with uiNamespace do {
             [] call compile _eventFunc;
         };
     } forEach configProperties [configFile >> XEH_FORMAT_CONFIG_NAME("preStart")];
+
+    GVAR(PREP_list) = compileFinal str GVAR(PREP_list);
 
     #ifdef DEBUG_MODE_FULL
         diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
