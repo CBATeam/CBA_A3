@@ -29,10 +29,7 @@ XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_commo
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_DUMMY = "Logic"; // backwards comp
 SLX_XEH_COMPILE = uiNamespace getVariable "SLX_XEH_COMPILE"; //backwards comps
-SLX_XEH_COMPILE_NEW = compileFinal preprocessFileLineNumbers QPATHTOF(fnc_compileFunction.sqf); //backwards comp
-
-// @todo fix "Attempt to override final function"
-CBA_fnc_isRecompileEnabled = uiNamespace getVariable "CBA_fnc_isRecompileEnabled";
+SLX_XEH_COMPILE_NEW = uiNamespace getVariable "SLX_XEH_COMPILE_NEW"; //backwards comps
 
 #include "XEH_PREP.sqf"
 

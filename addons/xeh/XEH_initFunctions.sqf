@@ -1,14 +1,25 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-SLX_XEH_DisableLogging = false;
-XEH_LOG("Reading function cache.");
+LOG("Compiling PREP'd functions.");
 
-diag_log [uiNamespace getVariable [QGVAR(PREP_list), []]];
-{
-    XEH_LOG(ARR_2(format ["Read - %1", _x]));
-    missionNamespace setVariable [_x, uiNamespace getVariable _x];
-} forEach call (uiNamespace getVariable [QGVAR(PREP_list), {[]}]);
+private _config = configFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
+private _missionConfig = missionConfigFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;
 
-XEH_LOG("Done reading function cache.");
+if ((isNumber _config && {getNumber _config == 0}) || {isNumber _missionConfig && {getNumber _missionConfig == 0}}) then {
+    // Recompile enabled.
+    {
+        _x params ["_funcName", "_funcFile"];
+        missionNamespace setVariable [_x, compile/*Final*/ preprocessFileLineNumbers _funcFile];
+    } forEach call (uiNamespace getVariable [QGVAR(PREP_list), {[]}]);
+} else {
+    // Recompile disabled.
+    {
+        _x params ["_funcName"];
+        missionNamespace setVariable [_x, uiNamespace getVariable _x];
+    } forEach call (uiNamespace getVariable [QGVAR(PREP_list), {[]}]);
+};
+
+LOG("Done compiling PREP'd functions.");
 
 #include "\A3\functions_f\initFunctions.sqf"
