@@ -30,7 +30,7 @@ private _return = true;
 
 // Check if theres a track playing, since `playMusic ""` doesn't trigger an event
 private _trackTime = getMusicPlayedTime;
-if (CBA_missionTime > (_startTime + MINIMUM_WAIT) && {_trackTime == 0}) then {
+if (time > (_startTime + MINIMUM_WAIT) && {_trackTime == 0}) then {
     GVAR(track) = nil;
     _return = false;
 };
