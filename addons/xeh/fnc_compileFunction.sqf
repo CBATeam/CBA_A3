@@ -35,4 +35,7 @@ if (isNil "_cachedFunc") then {
     } else {
         missionNamespace setVariable [_funcName, _cachedFunc];
     };
+#ifdef COMPILE_TO_FILE
+    GVAR(compiledFunctions) pushBack [toLower _funcName, _funcFile];
+#endif
 };

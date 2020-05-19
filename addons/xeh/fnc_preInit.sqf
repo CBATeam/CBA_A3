@@ -51,6 +51,22 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
 
 CBA_isHeadlessClient = !hasInterface && !isDedicated;
 
+#ifdef COMPILE_TO_FILE
+GVAR(compiledFunctions) = [];
+FUNC(compileToFile) = {
+    params ["_addon"];
+    _addon = toLower _addon;
+    INFO_1("compileToFile: %1", _addon);
+    {
+        _x params ["_funcName", "_filePath"];
+        if ((_funcName find _addon) == 0) then {
+            private _ret = "CBA_CompileFunctions" callExtension [_filePath, [uiNamespace getVariable _funcName]];
+            INFO_2("- %1 - %2", _funcName, _ret);
+        };
+    } forEach GVAR(compiledFunctions);
+};
+#endif
+
 // make case insensitive list of all supported events
 GVAR(EventsLowercase) = [];
 {

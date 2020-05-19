@@ -2,6 +2,7 @@
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_XEH
+#define COMPILE_TO_FILE
 
 #ifdef DEBUG_ENABLED_XEH
     #define DEBUG_MODE_FULL
