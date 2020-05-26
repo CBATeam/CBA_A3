@@ -23,18 +23,18 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params [["_queue","diag_tickTime",[""]]["_command","diag_tickTime",[""]],["_inverse",false,[true]]];
+params [["_queue","diag_tickTime",[""]],["_command","diag_tickTime",[""]],["_inverse",false,[true]]];
 
 LOG_2("Registering waitAndExecPFH for command", _command, _inverse);
 
 private _handle = [compile format [QUOTE(                                                      \
     if (!GVAR(TRIPLES(waitAndExec,%1,ArrayIsSorted))) then {                                   \
-        GVAR(TRIPLES(waitAndExec,%1,Array)) sort %3;                                           \
+        GVAR(TRIPLES(waitAndExec,%1,Array)) sort %4;                                           \
         GVAR(TRIPLES(waitAndExec,%1,ArrayIsSorted)) = true;                                    \
     };                                                                                         \
     private _delete = false;                                                                   \
     {                                                                                          \
-        if (_x select 0 %3 (%2)) exitWith {};                                                    \
+        if (_x select 0 %3 (%2)) exitWith {};                                                  \
                                                                                                \
         (_x select 2) call (_x select 1);                                                      \
                                                                                                \

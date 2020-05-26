@@ -38,6 +38,9 @@ Examples:
         // Does not take new years into account.
         [{player sideChat "1 month later";}, [], 0.1, "dateToNumber"] call CBA_fnc_waitAndExecute;
     (end)
+    (begin example)
+        [{player sideChat "5 units of time later"}, [], ([] call getMyTime) + 5, {[] call getMyTime}] call CBA_fnc_waitAndExecute
+    (end)
 
 Author:
     esteldunedain and PabstMirror, donated from ACE3
@@ -50,12 +53,12 @@ if !(_getter isEqualType {}) then {
             GVAR(waitAndExecArray) pushBack [CBA_missionTime + _delay, _function, _args];
             GVAR(waitAndExecArrayIsSorted) = false;
         };
-        #define CASE(id,command,inverse) case QUOTE(id): {                                                \
-            GVAR(TRIPLES(waitAndExec,id,Array)) pushBack [command + _delay, _function, _args];            \
-            if (isNil QGVAR(TRIPLES(waitAndExec,id,handle))) then {                                       \
-                GVAR(TRIPLES(waitAndExec,id,handle)) = [_getter,inverse] call CBA_fnc_initWaitAndExecPFH; \
-            };                                                                                            \
-        }
+        #define CASE(id,command,inverse) case QUOTE(id): {                                                                 \
+            GVAR(TRIPLES(waitAndExec,id,Array)) pushBack [command + _delay, _function, _args];                             \
+            if (isNil QGVAR(TRIPLES(waitAndExec,id,handle))) then {                                                        \
+                GVAR(TRIPLES(waitAndExec,id,handle)) = [QUOTE(id),QUOTE(command),inverse] call CBA_fnc_initWaitAndExecPFH; \
+            };                                                                                                             \
+        }//;
         CASE(diag_ticktime,diag_tickTime,false);
         CASE(diag_frameno,diag_frameno,false);
         CASE(time,time,false);
