@@ -6,7 +6,8 @@ Description:
     Initialises a PFH observing a queue of a certain command type
 
 Parameters:
-    _command - Array that defines the action, as used in addAction command [Array]
+    _queue   - Which queue this function will be assigned to [String]
+    _command - Command evaluated to get the current value [String]
     _inverse - Whether to inverse the conditions and sorting order. [Boolean]
 
 Returns:
@@ -14,7 +15,7 @@ Returns:
 
 Example:
     (begin example)
-        _handle = ["diag_tickTime",false] call CBA_fnc_initWaitAndExecPFH;
+        _handle = ["_queue","diag_tickTime",false] call CBA_fnc_initWaitAndExecPFH;
     (end)
 
 Author:
@@ -22,7 +23,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params [["_command","diag_tickTime",[""]],["_inverse",false,[true]]];
+params [["_queue","diag_tickTime",[""]]["_command","diag_tickTime",[""]],["_inverse",false,[true]]];
 
 LOG_2("Registering waitAndExecPFH for command", _command, _inverse);
 
@@ -33,7 +34,7 @@ private _handle = [compile format [QUOTE(                                       
     };                                                                                         \
     private _delete = false;                                                                   \
     {                                                                                          \
-        if (_x select 0 %2 %1) exitWith {};                                                    \
+        if (_x select 0 %3 (%2)) exitWith {};                                                    \
                                                                                                \
         (_x select 2) call (_x select 1);                                                      \
                                                                                                \
@@ -44,6 +45,6 @@ private _handle = [compile format [QUOTE(                                       
         GVAR(TRIPLES(waitAndExec,%1,Array)) = GVAR(TRIPLES(waitAndExec,%1,Array)) - [objNull]; \
         _delete = false;                                                                       \
     };                                                                                         \
-),_command, [">","<"] select _inverse, !_inverse]] call CBA_fnc_addPerFrameHandler;
+),_queue,_command, [">","<"] select _inverse, !_inverse]] call CBA_fnc_addPerFrameHandler;
 
 _handle
