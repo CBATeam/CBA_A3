@@ -128,6 +128,7 @@ class CfgFunctions {
             PATHTO_FNC(execNextFrame);
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
+            PATHTO_FNC(initWaitAndExecPFH);
             PATHTO_FNC(compileFinal);
         };
 

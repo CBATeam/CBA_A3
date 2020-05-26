@@ -7,8 +7,23 @@ GVAR(perFrameHandlerArray) = [];
 GVAR(perFrameHandlersToRemove) = [];
 GVAR(lastTickTime) = diag_tickTime;
 
-GVAR(waitAndExecArray) = [];
-GVAR(waitAndExecArrayIsSorted) = false;
+GVAR(waitAndExecArray)                                      = [];
+GVAR(waitAndExecArrayIsSorted)                              = false;
+GVAR(TRIPLES(waitAndExec,diag_ticktime,Array))              = [];
+GVAR(TRIPLES(waitAndExec,diag_ticktime,ArrayIsSorted))      = false;
+GVAR(TRIPLES(waitAndExec,diag_frameno,Array))               = [];
+GVAR(TRIPLES(waitAndExec,diag_frameno,ArrayIsSorted))       = false;
+GVAR(TRIPLES(waitAndExec,time,Array))                       = [];
+GVAR(TRIPLES(waitAndExec,time,ArrayIsSorted))               = false;
+GVAR(TRIPLES(waitAndExec,servertime,Array))                 = [];
+GVAR(TRIPLES(waitAndExec,servertime,ArrayIsSorted))         = false;
+GVAR(TRIPLES(waitAndExec,getmusicplayedtime,Array))         = [];
+GVAR(TRIPLES(waitAndExec,getmusicplayedtime,ArrayIsSorted)) = false;
+GVAR(TRIPLES(waitAndExec,datetonumber,Array))               = [];
+GVAR(TRIPLES(waitAndExec,datetonumber,ArrayIsSorted))       = false;
+GVAR(TRIPLES(waitAndExec,playerrespawntime,Array))          = [];
+GVAR(TRIPLES(waitAndExec,playerrespawntime,ArrayIsSorted))  = false;
+
 GVAR(nextFrameNo) = diag_frameno + 1;
 GVAR(nextFrameBufferA) = [];
 GVAR(nextFrameBufferB) = [];

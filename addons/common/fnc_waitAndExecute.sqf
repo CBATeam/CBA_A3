@@ -26,7 +26,34 @@ Author:
     esteldunedain and PabstMirror, donated from ACE3
 ---------------------------------------------------------------------------- */
 
-params [["_function", {}, [{}]], ["_args", []], ["_delay", 0, [0]]];
+params [["_function", {}, [{}]], ["_args", []], ["_delay", 0, [0]],["_getter","cba_missiontime",["",{}]]];
+if !(_getter isEqualType {}) then {
+	switch (toLower _getter) do {
+		case "cba_missiontime": {
+			GVAR(waitAndExecArray) pushBack [CBA_missionTime + _delay, _function, _args];
+			GVAR(waitAndExecArrayIsSorted) = false;
+		};
+		#define CASE(command,inverse) case QUOTE(command): {                                                   \
+			GVAR(TRIPLES(waitAndExec,command,Array)) pushBack [command + _delay, _function, _args];            \
+			if (isNil QGVAR(TRIPLES(waitAndExec,command,handle))) then {                                       \
+                GVAR(TRIPLES(waitAndExec,command,handle)) = [_getter,inverse] call CBA_fnc_initWaitAndExecPFH; \
+			};                                                                                                 \
+		}
+		CASE(diag_ticktime,false);
+		CASE(diag_frameno,false);
+		CASE(time,false);
+		CASE(servertime,false);
+		CASE(getmusicplayedtime,false);
+		CASE(datetonumber,false);
+        CASE(playerrespawntime,true);
+	};
+} else {
+	// Scripted getter, convert it to waitUntilAndExecute
+	[{
+		([] call _this # 0) > (_this # 1)
+	},{
+		(_this # 2) call (_this # 3);
+	},[_getter, ([] call _getter) + _delay, _args, _function]] call CBA_fnc_waitUntilAndExecute;
+};
 
-GVAR(waitAndExecArray) pushBack [CBA_missionTime + _delay, _function, _args];
-GVAR(waitAndExecArrayIsSorted) = false;
+nil
