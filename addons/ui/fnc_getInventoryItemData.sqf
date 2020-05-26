@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: cba_ui_fnc_getInventoryClassname
+Internal Function: cba_ui_fnc_getInventoryItemData
 
 Description:
-    Opens the item context menu on the inventory screen.
+    Returns item data from inventory display control
 
 Parameters:
     _control - RscDisplayInventory control <CONTROL>
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [_groundContainer, 5] call cba_ui_fnc_getInventoryClassname;
+        [_groundContainer, 5] call cba_ui_fnc_getInventoryItemData;
     (end)
 
 Author:

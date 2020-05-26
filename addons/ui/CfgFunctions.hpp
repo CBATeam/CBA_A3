@@ -45,7 +45,7 @@ class CfgFunctions {
             };
 
             PATHTO_FNC(addPauseMenuOption);
-            PATHTO_FNC(addRenamedItem);
+            PATHTO_FNC(renameInventoryItem);
             PATHTO_FNC(progressBar);
             PATHTO_FNC(getFov);
             PATHTO_FNC(getAspectRatio);

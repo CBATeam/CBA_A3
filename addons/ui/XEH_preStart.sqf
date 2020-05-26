@@ -18,4 +18,4 @@ PREP(preloadCurator);
 
 PREP(openItemContextMenu);
 
-PREP(getInventoryClassname);
+PREP(getInventoryItemData);
