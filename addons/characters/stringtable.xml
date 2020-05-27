@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Characters">
+        <Key ID="STR_CBA_Characters_Component">
+            <English>Community Base Addons - Characters</English>
+            <German>Community Base Addons - Charaktere</German>
+            <French>Community Base Addons - Caractères</French>
+        </Key>
+        <Key ID="STR_CBA_Characters_MenMalariaInfected">
+            <English>Men (Malaria-Infected)</English>
+            <German>Männer (Malariainfiziert)</German>
+            <French>Hommes (Infectés par la malaria)</French>
+        </Key>
+    </Package>
+</Project>
