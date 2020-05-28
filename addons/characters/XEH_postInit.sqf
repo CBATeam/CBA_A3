@@ -4,4 +4,4 @@
     params ["_unit", "_identity"];
 
     _unit setIdentity _identity;
-}] call FUNC(addEventHandler);
+}] call FUNCMAIN(addEventHandler);

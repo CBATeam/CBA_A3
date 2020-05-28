@@ -18,7 +18,7 @@
             [ARR_2( \
                 QQGVAR(broadcastIdentity), \
                 [ARR_2(_unit, _identity)] \
-            )] call FUNC(globalEventJIP); \
+            )] call FUNCMAIN(globalEventJIP); \
             _unit setDamage 0.45; \
         }); \
     }
