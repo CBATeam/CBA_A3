@@ -6,7 +6,7 @@
         init = QUOTE(params ['_unit']; \
         if (local _unit) then { \
             _unit setDamage 0.475; \
-            [ \
+            [ARR_2( \
                 { \
                     params ['_unit']; \
                     private _identity = selectRandom [ARR_8( \
@@ -25,7 +25,7 @@
                     )] call FUNCMAIN(globalEventJIP); \
                 }, \
                 _unit \
-            ] call FUNCMAIN(execNextFrame); \
+            )] call FUNCMAIN(execNextFrame); \
         }); \
     }
 
