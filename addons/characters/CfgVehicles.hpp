@@ -16,7 +16,7 @@
                 'BIS_Renly_sick' \
             )]; \
             [ARR_2( \
-                QGVAR(broadcastIdentity), \
+                QQGVAR(broadcastIdentity), \
                 [ARR_2(_unit, _identity)] \
             )] call FUNC(globalEventJIP); \
             _unit setDamage 0.45; \
