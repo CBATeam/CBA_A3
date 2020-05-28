@@ -5,7 +5,7 @@
     class EventHandlers { \
         init = QUOTE(params ['_unit']; \
         if (local _unit) then { \
-            private _identity = setIdentity selectRandom [ARR_8( \
+            private _identity = selectRandom [ARR_8( \
                 'BIS_Ambient01_sick', \
                 'BIS_Ambient02_sick', \
                 'BIS_Ambient03_sick', \
