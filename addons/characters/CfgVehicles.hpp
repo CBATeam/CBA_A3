@@ -1,19 +1,26 @@
-#define UNLOCK_MALARIA_INFECTED_CIVILIAN  \
+#define UNLOCK_MALARIA_INFECTED_CIVILIAN \
     editorSubcategory = "EdSubcat_Personnel_MalariaInfected"; \
     scope = 2; \
     scopeCurator = 2; \
     class EventHandlers { \
-        init = "(_this select 0) setIdentity selectRandom [ \
-            'BIS_Ambient01_sick', \
-            'BIS_Ambient02_sick', \
-            'BIS_Ambient03_sick', \
-            'BIS_Arthur_sick', \
-            'BIS_Howard_sick', \
-            'BIS_John_sick', \
-            'BIS_Lucas_sick', \
-            'BIS_Renly_sick' \
-        ]; \
-        (_this select 0) setDamage 0.45"; \
+        init = QUOTE(params ['_unit']; \
+        if (local _unit) then { \
+            private _identity = setIdentity selectRandom [ARR_8( \
+                'BIS_Ambient01_sick', \
+                'BIS_Ambient02_sick', \
+                'BIS_Ambient03_sick', \
+                'BIS_Arthur_sick', \
+                'BIS_Howard_sick', \
+                'BIS_John_sick', \
+                'BIS_Lucas_sick', \
+                'BIS_Renly_sick' \
+            )]; \
+            [ARR_2( \
+                QGVAR(broadcastIdentity), \
+                [ARR_2(_unit, _identity)] \
+            )] call FUNC(globalEventJIP); \
+            _unit setDamage 0.45; \
+        }); \
     }
 
 class CfgVehicles {
