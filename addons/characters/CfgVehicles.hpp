@@ -5,21 +5,27 @@
     class EventHandlers { \
         init = QUOTE(params ['_unit']; \
         if (local _unit) then { \
-            private _identity = selectRandom [ARR_8( \
-                'BIS_Ambient01_sick', \
-                'BIS_Ambient02_sick', \
-                'BIS_Ambient03_sick', \
-                'BIS_Arthur_sick', \
-                'BIS_Howard_sick', \
-                'BIS_John_sick', \
-                'BIS_Lucas_sick', \
-                'BIS_Renly_sick' \
-            )]; \
-            [ARR_2( \
-                QQGVAR(broadcastIdentity), \
-                [ARR_2(_unit, _identity)] \
-            )] call FUNCMAIN(globalEventJIP); \
-            _unit setDamage 0.45; \
+            _unit setDamage 0.475; \
+            [ \
+                { \
+                    params ['_unit']; \
+                    private _identity = selectRandom [ARR_8( \
+                        'BIS_Ambient01_sick', \
+                        'BIS_Ambient02_sick', \
+                        'BIS_Ambient03_sick', \
+                        'BIS_Arthur_sick', \
+                        'BIS_Howard_sick', \
+                        'BIS_John_sick', \
+                        'BIS_Lucas_sick', \
+                        'BIS_Renly_sick' \
+                    )]; \
+                    [ARR_2( \
+                        QQGVAR(broadcastIdentity), \
+                        [ARR_2(_unit, _identity)] \
+                    )] call FUNCMAIN(globalEventJIP); \
+                }, \
+                _unit \
+            ] call FUNCMAIN(execNextFrame); \
         }); \
     }
 
