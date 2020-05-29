@@ -11,9 +11,6 @@ class CfgPatches {
         authors[] = {"Kex"};
         url = "$STR_CBA_URL";
         VERSION_CONFIG;
-
-        // This prevents any patched class from requiring this addon
-        addonRootClass = "A3_Characters_F";
     };
 };
 

@@ -10,3 +10,9 @@
 #endif
 
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#define UNLOCK_MALARIA_INFECTED_CIVILIAN\
+    author = "$STR_A3_Bohemia_Interactive";\
+    scope = 2;\
+    scopeCurator = 2;\
+    editorSubcategory = "EdSubcat_Personnel_MalariaInfected"
