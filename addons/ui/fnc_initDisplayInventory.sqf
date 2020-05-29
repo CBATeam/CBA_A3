@@ -259,16 +259,18 @@ if !(isNil QGVAR(renamedItems)) then {
             if (ctrlShown _control) then {
                 for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do {
                     private _classname = ([_control, _i] call FUNC(getInventoryItemData)) select 0;
-                    private _renameParams = GVAR(renamedItems) getVariable [_classname, []];
+                    if !(isNil "_classname") then {
+                        private _renameParams = GVAR(renamedItems) getVariable [_classname, []];
 
-                    if !(_renameParams isEqualTo []) then {
-                        _renameParams params ["_name", "_picture"];
+                        if !(_renameParams isEqualTo []) then {
+                            _renameParams params ["_name", "_picture"];
 
-                        if !(_name isEqualTo "") then {
-                            _control lbSetText [_i, _name];
-                        };
-                        if !(_picture isEqualTo "") then {
-                            _control lbSetPicture [_i, _picture];
+                            if !(_name isEqualTo "") then {
+                                _control lbSetText [_i, _name];
+                            };
+                            if !(_picture isEqualTo "") then {
+                                _control lbSetPicture [_i, _picture];
+                            };
                         };
                     };
                 };
