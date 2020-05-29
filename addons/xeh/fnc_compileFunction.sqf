@@ -10,6 +10,7 @@ Description:
 Parameters:
     0: _funcFile - Path to function sqf file <STRING>
     1: _funcName - Final function name <STRING>
+    2: _autoPrep - If true, function is read from cache before preInit (Default: false) <BOOL>
 
 Returns:
     None
@@ -23,7 +24,7 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_funcFile", "", [""]], ["_funcName", "", [""]]];
+params [["_funcFile", "", [""]], ["_funcName", "", [""]], ["_autoPrep", false, [false]]];
 
 private _cachedFunc = uiNamespace getVariable _funcName;
 
@@ -33,7 +34,7 @@ if (isNil "_cachedFunc") then {
     uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
     missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
 
-    if (GVAR(PREP_list) isEqualType []) then {
+    if (_autoPrep && {GVAR(PREP_list) isEqualType []}) then {
         GVAR(PREP_list) pushBack [_funcName, _funcFile];
     };
 } else {

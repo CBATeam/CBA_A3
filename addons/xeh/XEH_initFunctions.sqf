@@ -13,12 +13,14 @@ if (!ISINITIALIZED(missionNamespace)) then {
         // Recompile enabled.
         {
             _x params ["_funcName", "_funcFile"];
+            LOG_1("RECOMPILE - %1", _funcName);
             missionNamespace setVariable [_funcName, compile/*Final*/ preprocessFileLineNumbers _funcFile];
         } forEach call (uiNamespace getVariable [QGVAR(PREP_list), {[]}]);
     } else {
         // Recompile disabled.
         {
             _x params ["_funcName"];
+            LOG_1("COPY CACHE - %1", _funcName);
             missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
         } forEach call (uiNamespace getVariable [QGVAR(PREP_list), {[]}]);
     };
