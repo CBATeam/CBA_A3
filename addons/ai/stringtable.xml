@@ -23,5 +23,13 @@
             <Chinese>AI在建築物內位置</Chinese>
             <French>Position IA bâtiment</French>
         </Key>
+        <Key ID="STR_CBA_AI_InvisibleVehicleTarget">
+            <English>Invisible Vehicle Target</English>
+            <German>Unsichtbares Ziel - Fahrzeug</German>
+        </Key>
+        <Key ID="STR_CBA_AI_InvisibleAirTarget">
+            <English>Invisible Air Target</English>
+            <German>Unsichtbares Ziel - Flugzeug</German>
+        </Key>
     </Package>
 </Project>

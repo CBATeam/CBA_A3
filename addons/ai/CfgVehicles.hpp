@@ -35,6 +35,54 @@ class CfgVehicles {
         class HitPoints {};
     };
 
+    class CBA_B_InvisibleVehicleTarget: CBA_B_InvisibleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleVehicleTarget);
+        model = QPATHTOF(InvisibleTargetVehicle.p3d);
+        crewVulnerable = 0;
+        type = 1;
+        cost = 1000000;
+    };
+
+    class CBA_O_InvisibleVehicleTarget: CBA_O_InvisibleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleVehicleTarget);
+        model = QPATHTOF(InvisibleTargetVehicle.p3d);
+        crewVulnerable = 0;
+        type = 1;
+        cost = 1000000;
+    };
+
+    class CBA_I_InvisibleVehicleTarget: CBA_I_InvisibleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleVehicleTarget);
+        model = QPATHTOF(InvisibleTargetVehicle.p3d);
+        crewVulnerable = 0;
+        type = 1;
+        cost = 1000000;
+    };
+
+    class CBA_B_InvisibleAirTarget: CBA_B_InvisibleVehicleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleAirTarget);
+        type = 2;
+        cost = 10000000;
+    };
+
+    class CBA_O_InvisibleAirTarget: CBA_O_InvisibleVehicleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleAirTarget);
+        type = 2;
+        cost = 10000000;
+    };
+
+    class CBA_I_InvisibleAirTarget: CBA_I_InvisibleVehicleTarget {
+        author = "$STR_CBA_Author";
+        displayName = CSTRING(InvisibleAirTarget);
+        type = 2;
+        cost = 10000000;
+    };
+
     class Strategic;
     class CBA_BuildingPos: Strategic {
         author = "$STR_CBA_Author";

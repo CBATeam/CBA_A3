@@ -3,7 +3,12 @@
 class CfgPatches {
     class ADDON {
         name = CSTRING(component);
-        units[] = {"CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget","CBA_BuildingPos"};
+        units[] = {
+            "CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget",
+            "CBA_B_InvisibleVehicleTarget", "CBA_O_InvisibleVehicleTarget", "CBA_I_InvisibleVehicleTarget",
+            "CBA_B_InvisibleAirTarget", "CBA_O_InvisibleAirTarget", "CBA_I_InvisibleAirTarget",
+            "CBA_BuildingPos"
+        };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common"};
