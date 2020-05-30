@@ -7,7 +7,7 @@ ADDON = false;
         params ["_unit"];
 
         if (isServer) then {
-            _unit setDamage 0.475;
+            _unit setDamage 0.46;
         };
     }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 } forEach [
