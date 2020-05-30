@@ -86,5 +86,8 @@ class Extended_DisplayLoad_EventHandlers {
     class Display3DEN {
         ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
     };
+    class RscDisplayFunctionsViewer {
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayFunctionsViewer)'));
+    };
 };
 class Extended_DisplayUnload_EventHandlers {};

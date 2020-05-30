@@ -30,6 +30,7 @@ with uiNamespace do {
 
     #include "XEH_PREP.sqf"
     PREP(initDisplay3DEN);
+    PREP(initDisplayFunctionsViewer);
 
     // call PreStart events
     {
