@@ -15,4 +15,4 @@
     author = "$STR_A3_Bohemia_Interactive";\
     scope = 2;\
     scopeCurator = 2;\
-    editorSubcategory = "EdSubcat_Personnel_MalariaInfected"
+    editorSubcategory = QGVARMAIN(EdSubcat_Personnel_MalariaInfected)
