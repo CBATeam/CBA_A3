@@ -14,14 +14,18 @@ Returns:
 
 Examples:
     (begin example)
-        _elapsedTime = [nil, CBA_missionTimeStr] call CBA_fnc_missionTimeDelta;
+        _elapsedTime = my_oldTimeString call CBA_fnc_missionTimeDelta;
+
+        _deltaTime = [my_oldTimeString, my_newTimeString] call CBA_fnc_missionTimeDelta;
+
+        _missionTime = [] call CBA_fnc_missionTimeDelta;
     (end)
 
 Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_t0", "0000.000000", [""]], ["_t1", "0000.000000", [""]]];
+params [["_t0", "0000.000000", [""]], ["_t1", CBA_missionTimeStr, [""]]];
 
 private _len0 = count _t0 - 10;
 private _len1 = count _t1 - 10;
