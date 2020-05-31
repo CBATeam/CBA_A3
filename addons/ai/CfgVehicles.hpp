@@ -35,50 +35,50 @@ class CfgVehicles {
         class HitPoints {};
     };
 
-    class CBA_B_InvisibleVehicleTarget: CBA_B_InvisibleTarget {
+    class CBA_B_InvisibleTargetVehicle: CBA_B_InvisibleTarget {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleVehicleTarget);
+        displayName = CSTRING(InvisibleTargetVehicle);
         model = QPATHTOF(InvisibleTargetVehicle.p3d);
         crewVulnerable = 0;
         type = 1;
         cost = 1000000;
     };
 
-    class CBA_O_InvisibleVehicleTarget: CBA_O_InvisibleTarget {
+    class CBA_O_InvisibleTargetVehicle: CBA_O_InvisibleTarget {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleVehicleTarget);
+        displayName = CSTRING(InvisibleTargetVehicle);
         model = QPATHTOF(InvisibleTargetVehicle.p3d);
         crewVulnerable = 0;
         type = 1;
         cost = 1000000;
     };
 
-    class CBA_I_InvisibleVehicleTarget: CBA_I_InvisibleTarget {
+    class CBA_I_InvisibleTargetVehicle: CBA_I_InvisibleTarget {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleVehicleTarget);
+        displayName = CSTRING(InvisibleTargetVehicle);
         model = QPATHTOF(InvisibleTargetVehicle.p3d);
         crewVulnerable = 0;
         type = 1;
         cost = 1000000;
     };
 
-    class CBA_B_InvisibleAirTarget: CBA_B_InvisibleVehicleTarget {
+    class CBA_B_InvisibleTargetAir: CBA_B_InvisibleTargetVehicle {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleAirTarget);
+        displayName = CSTRING(InvisibleTargetAir);
         type = 2;
         cost = 10000000;
     };
 
-    class CBA_O_InvisibleAirTarget: CBA_O_InvisibleVehicleTarget {
+    class CBA_O_InvisibleTargetAir: CBA_O_InvisibleTargetVehicle {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleAirTarget);
+        displayName = CSTRING(InvisibleTargetAir);
         type = 2;
         cost = 10000000;
     };
 
-    class CBA_I_InvisibleAirTarget: CBA_I_InvisibleVehicleTarget {
+    class CBA_I_InvisibleTargetAir: CBA_I_InvisibleTargetVehicle {
         author = "$STR_CBA_Author";
-        displayName = CSTRING(InvisibleAirTarget);
+        displayName = CSTRING(InvisibleTargetAir);
         type = 2;
         cost = 10000000;
     };
