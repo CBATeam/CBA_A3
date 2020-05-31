@@ -17,7 +17,7 @@ GVAR(missionTimeSynchronized) = false;
 GVAR(missionTimePrecise) = 0;
 GVAR(missionTimeThousands) = 0;
 CBA_missionTime = 0;
-CBA_missionTimeStr = "0";
+CBA_missionTimeStr = "0000.000000";
 
 // per frame handler system
 [QFUNC(onFrame), {
@@ -116,7 +116,7 @@ if (isMultiplayer) then {
         GVAR(missionTimeSynchronized) = true;
 
         addMissionEventHandler ["PlayerConnected", {
-            (_this select 4) publicVariableClient "CBA_missionTime";
+            (_this select 4) publicVariableClient "CBA_missionTimeStr";
         }];
     } else {
         CBA_missionTime = -1;
@@ -125,15 +125,19 @@ if (isMultiplayer) then {
         0 spawn {
             isNil {
                 private _fnc_init = {
-                    CBA_missionTime = _this select 1;
+                    params ["", "_timestamp"];
+                    private _length = count _timestamp - 10;
+
+                    GVAR(missionTimePrecise) = parseNumber (_timestamp select [_length]);
+                    GVAR(missionTimeThousands) = parseNumber (_timestamp select [0, _length]);
                     GVAR(missionTimeSynchronized) = true;
                 };
 
-                "CBA_missionTime" addPublicVariableEventHandler _fnc_init;
+                "CBA_missionTimeStr" addPublicVariableEventHandler _fnc_init;
 
                 if (CBA_missionTime != -1) then {
                     WARNING_1("CBA_missionTime packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTime);
-                    [nil, CBA_missionTime] call _fnc_init;
+                    [nil, CBA_missionTimeStr] call _fnc_init;
                 };
             };
         };
