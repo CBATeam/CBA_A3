@@ -11,6 +11,9 @@ PREP(initDisplayDiary);
 PREP(initDisplay3DEN);
 PREP(initDisplayCurator);
 PREP(initDisplayMessageBox);
+PREP(initDisplayInventory);
 
 PREP(preload3DEN);
 PREP(preloadCurator);
+
+PREP(openItemContextMenu);

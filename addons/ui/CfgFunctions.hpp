@@ -52,5 +52,10 @@ class CfgFunctions {
             PATHTO_FNC(openLobbyManager);
             PATHTO_FNC(progressBar);
         };
+
+        class ItemContextMenu {
+            PATHTO_FNC(addItemContextMenuOption);
+            PATHTO_FNC(consumeItem);
+        };
     };
 };
