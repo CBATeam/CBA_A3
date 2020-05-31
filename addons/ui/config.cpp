@@ -32,6 +32,11 @@ class ctrlStaticBackground;
 class ctrlStaticBackgroundDisable;
 class ctrlStaticBackgroundDisableTiles;
 
+class RscListBox;
+class GVAR(ItemContextMenu): RscListBox {
+    colorBackground[] = {0.05, 0.05, 0.05, 0.95};
+};
+
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 #include "RscTitles.hpp"
