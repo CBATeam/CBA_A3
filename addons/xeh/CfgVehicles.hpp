@@ -379,4 +379,22 @@ class CfgVehicles {
     class C_Story_Scientist_02_F: Civilian_F {
         XEH_ENABLED;
     };
+
+    // Oldman (1.98)
+    class O_UAV_01_F;
+    class O_UAV_01_Mine_F: O_UAV_01_F {
+        XEH_ENABLED;
+    };
+    class Land_MapBoard_01_Wall_F;
+    class Land_MapBoard_01_Wall_Syndikat_Tanoa_F: Land_MapBoard_01_Wall_F {
+        XEH_ENABLED;
+    };
+    class Land_MapBoard_F;
+    class Land_MapBoard_01_Tripod_Syndikat_Tanoa_F: Land_MapBoard_F {
+        XEH_ENABLED;
+    };
+    class Land_Map_blank_F;
+    class Land_MapBoard_01_Map_Syndikat_Tanoa_F: Land_Map_blank_F {
+        XEH_ENABLED;
+    };
 };
