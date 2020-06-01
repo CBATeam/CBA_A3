@@ -23,6 +23,7 @@
             <Turkish>Silah Tekrar Modu</Turkish>
             <Chinese>武器反作模式</Chinese>
             <French>Mode de réarmement</French>
+            <Russian>Режим повторной стрельбы</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
@@ -33,6 +34,7 @@
             <Turkish>Silahın sürgülü ya da pompalı modda olması.</Turkish>
             <Chinese>設定武器如何拉栓及退膛</Chinese>
             <French>Mode de réarmement des armes à verrou et à pompe.</French>
+            <Russian>Режим повторной стрельбы помпового оружия или оружия с продольно-скользящим затвором.</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOptic">
             <English>Leave Optics View</English>
@@ -43,6 +45,7 @@
             <Turkish>Dürbünden Çık</Turkish>
             <Chinese>放下瞄具</Chinese>
             <French>Maintenir vue lunette</French>
+            <Russian>Выход из прицела</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
@@ -53,6 +56,7 @@
             <Turkish>Silahı sürgülerken dürbünü kapat.</Turkish>
             <Chinese>當拉栓以及退膛武器時是否離開瞄準狀態</Chinese>
             <French>Réarme l'arme tout en maintenant la visée dans la lunette.</French>
+            <Russian>Перезаряжать оружие после выхода из прицела.</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
             <English>Release Trigger</English>
@@ -63,6 +67,7 @@
             <Turkish>Tetiği Bırak</Turkish>
             <Chinese>放開板機</Chinese>
             <French>Relâcher la détente</French>
+            <Russian>Отпускание курка</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
@@ -73,6 +78,7 @@
             <Turkish>Silahın sürgüsünü çekmek için tetiği bırak (Tetiğe basılı tutarak sürgülemeyi engelle).</Turkish>
             <Chinese>當鬆開板機後拉栓或退膛（握住板機以避免突然的動作）。</Chinese>
             <French>Réarme l'arme au relâchement de la détente (maintenir la détente enfoncée pour éviter le réarmement immédiat).</French>
+            <Russian>Перезаряжать оружие после отпускания курка (держите курок чтобы не перезаряжать).</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
             <English>Press Trigger</English>
@@ -83,6 +89,7 @@
             <Turkish>Tetiğe Bas</Turkish>
             <Chinese>按下扳機</Chinese>
             <French>Presser la détente</French>
+            <Russian>Нажатие курка</Russian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
             <English>Bolt or rack weapon by pressing the trigger again.</English>
@@ -93,6 +100,7 @@
             <Turkish>Silahın sürgüsünü çekmek için tetiğe bas.</Turkish>
             <Chinese>按下板機才拉栓或退膛</Chinese>
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
+            <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
         </Key>
     </Package>
 </Project>

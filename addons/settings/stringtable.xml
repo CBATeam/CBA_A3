@@ -67,6 +67,7 @@
             <Italian>Aggiusta le impostazioni per gli addon</Italian>
             <Czech>Upravit nastavení addonu.</Czech>
             <Chinese>調整插件設定。</Chinese>
+            <Russian>Отрегулировать настройки дополнений.</Russian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
             <English>Addon Options...</English>
@@ -344,6 +345,7 @@
             <Italian>Prevale questa impostazione.</Italian>
             <Czech>Toto nastavení je aktuální.</Czech>
             <Chinese>設定已套用。</Chinese>
+            <Russian>Этот параметр применён.</Russian>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
@@ -355,6 +357,7 @@
             <Italian>Questa impostazione sarà valida dopo il riavvio della missione.</Italian>
             <Czech>Toto nastavení bude aplikováno po restartu mise.</Czech>
             <Chinese>這個設定將會在任務重置後生效</Chinese>
+            <Russian>Этот параметр будет применён после рестарта миссии.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -417,18 +420,21 @@
             <German>Mit gleichem Wert durch Client überschrieben.</German>
             <Polish>Nadpisane przez klienta z taką samą wartością.</Polish>
             <French>Écrasé par le client, avec la même valeur.</French>
+            <Russian>Перезаписано клиентом с таким же значением.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
             <English>Overwritten by mission with the same value.</English>
             <German>Mit gleichem Wert durch Mission überschrieben.</German>
             <Polish>Nadpisane przez misję z taką samą wartością.</Polish>
             <French>Écrasé par la mission, avec la même valeur.</French>
+            <Russian>Перезаписано миссией с таким же значением.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
             <German>Mit gleichem Wert durch Server überschrieben.</German>
             <Polish>Nadpisane przez serwer z taką samą wartością.</Polish>
             <French>Écrasé par le serveur, avec la même valeur.</French>
+            <Russian>Перезаписано сервером с таким же значением.</Russian>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
