@@ -24,6 +24,7 @@
             <Italian>Prima deve far partire una missione.</Italian>
             <Czech>První musíte zapnout misi.</Czech>
             <Chinese>你必須先加載世界或執行一個任務。</Chinese>
+            <Russian>Вначале необходимо запустить миссию.</Russian>
         </Key>
         <Key ID="STR_cba_common_WeaponsCategory">
             <English>CBA Weapons</English>
@@ -35,6 +36,7 @@
             <Turkish>CBA Silahları</Turkish>
             <Chinese>CBA 武器</Chinese>
             <French>CBA Armes</French>
+            <Russian>CBA Оружие</Russian>
         </Key>
     </Package>
 </Project>
