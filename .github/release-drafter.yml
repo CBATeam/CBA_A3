@@ -1,0 +1,40 @@
+branches:
+  - master
+  - release-drafter  # for testing edits to this configuration
+
+name-template: 'CBA_A3 v$NEXT_PATCH_VERSION.xxxxxx'
+tag-template: 'v$NEXT_PATCH_VERSION.000000'
+
+categories:
+  - title: '**ADDED:**'
+    labels:
+      - 'Feature'
+  - title: '**FIXED:**'
+    labels:
+      - 'Bug Fix'
+  - title: '**IMPROVED:**'
+    labels:
+      - 'Enhancement'
+  - title: '**CHANGED:**'
+    labels:
+      - 'Cleanup'
+  - title: '**TRANSLATIONS:**'
+    labels:
+      - 'Translation'
+
+exclude-labels:
+  - 'ignore changelog'
+
+change-template: '- $TITLE (#$NUMBER)'
+change-template: '- CATEGORY_TITLE: $TITLE (#$NUMBER) __$AUTHOR__'
+template: |
+  DESCRIPTION HERE
+
+  **CHANGE LOG SUMMARY:**
+
+  $CHANGES
+
+replacers:
+  # Category titles
+  - search: '/\#\# (\*\*(ADDED|FIXED|IMPROVED|CHANGED|TRANSLATIONS):\*\*)/g'
+    replace: '$1'
