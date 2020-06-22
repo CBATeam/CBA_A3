@@ -207,6 +207,7 @@
             <Chinese>通知時長</Chinese>
             <French>Durée de vie des notifications</French>
             <Russian>Продолжительность уведомления</Russian>
+            <Polish>Długość żywotności powiadomień</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
@@ -217,6 +218,7 @@
             <Chinese>設定通知的顯示時間（秒數）。</Chinese>
             <French>Durée d'affichage des notifications, en secondes.</French>
             <Russian>Время в секундах, в течении которого будет видно уведомление.</Russian>
+            <Polish>Ilość czasu przez który widoczne jest powiadomienie</Polish>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
@@ -226,6 +228,7 @@
             <Chinese>聯絡伺服器的管理員</Chinese>
             <French>Contacter l'administrateur du serveur.</French>
             <Russian>Уведомить администратора сервера.</Russian>
+            <Polish>Kontakt z administratorem serwera</Polish>
         </Key>
     </Package>
 </Project>
