@@ -34,6 +34,7 @@
             <Chinese>切換瞄準線</Chinese>
             <French>Commuter le réticule</French>
             <Russian>Переключение сетки</Russian>
+            <Polish>Przełącz siatke przyrządu</Polish>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
@@ -44,6 +45,7 @@
             <Chinese>手動切換瞄具的瞄準線</Chinese>
             <French>Commuter manuellement le réticule de l'optique.</French>
             <Russian>Вручную переключать сетку оптического прицела.</Russian>
+            <Polish>Ręcznie przełącz siatkę przyrządu optycznego</Polish>
         </Key>
     </Package>
 </Project>
