@@ -43,7 +43,7 @@
             <Chinese>不要自動丟棄一次性使用之發射器</Chinese>
             <French>Ne lâche jamais automatiquement le lanceur usagé.</French>
             <Russian>Не выбрасывать автоматически использованный одноразовый гранатомёт.</Russian>
-            <Polish>Nie wyrzucaj automatycznie wyrzutni.</Polish>
+            <Polish>Nie wyrzucaj automatycznie wyrzutni jednorazowej.</Polish>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
@@ -87,7 +87,7 @@
             <Chinese>當切換別的武器時自動丟棄一次性發射器。</Chinese>
             <French>Lâche automatiquement le lanceur usagé dès qu'une autre arme est sélectionnée.</French>
             <Russian>Автоматически выбрасывать использованный одноразовый гранатомёт, как только будет выбрано другие оружие.</Russian>
-            <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową  gdy tylko zostanie wybrana kolejna broń.</Polish>
+            <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową gdy tylko zostanie wybrana kolejna broń.</Polish>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
