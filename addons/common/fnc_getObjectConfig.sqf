@@ -27,13 +27,19 @@ SCRIPT(getObjectConfig);
 params [["_object", "", ["", objNull]]];
 
 private _isObject = _object isEqualType objNull;
-private _result = if _isObject then {_object getVariable ["CBA_config", configNull]} else {configNull};
+private _result = configNull;
+if _isObject then {
+    _result = _object getVariable ["CBA_config", configNull];
+};
 
 // Cached value has been found
 if (isClass _result) exitWith {_result};
 
 // Convert object to classname to be found if needed
-private _className = if _isObject then {typeOf _object} else {_object};
+private _className = _object;
+if _isObject then {
+    _className = typeOf _object;
+};
 
 // Invalid class
 if (count _className == 0) exitWith {_result};
