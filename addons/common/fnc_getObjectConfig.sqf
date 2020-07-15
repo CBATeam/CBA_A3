@@ -42,7 +42,7 @@ if _isObject then {
 };
 
 // Invalid class
-if (count _className == 0) exitWith {_result};
+if (_className isEqualTo "") exitWith {_result};
 
 {
     private _config = configFile >> _x >> _className;
