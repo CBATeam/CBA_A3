@@ -10,7 +10,7 @@ Parameters:
     _object - Any kind of object or class name <STRING, OBJECT>
 
 Returns:
-    _config - Objects config. <CONFIG>
+    _result - Objects config. <CONFIG>
 
 Example:
     (begin example)
@@ -26,33 +26,27 @@ SCRIPT(getObjectConfig);
 
 params [["_object", "", ["", objNull]]];
 
-private _isObject = _object isEqualType objNull;
 private _result = configNull;
-if _isObject then {
-    _result = _object getVariable ["CBA_config", configNull];
+
+if (_object isEqualType objNull) exitWith {
+    _result = _object getVariable "CBA_config";
+
+    if (isNil "_result") then {
+        _result = typeOf _object call CBA_fnc_getObjectConfig;
+        _object setVariable ["CBA_config", _result];
+    };
+
+    _result
 };
 
-// Cached value has been found
-if (isClass _result) exitWith {_result};
-
-// Convert object to classname to be found if needed
-private _className = _object;
-if _isObject then {
-    _className = typeOf _object;
-};
-
-// Invalid class
-if (_className isEqualTo "") exitWith {_result};
+if (_object isEqualTo "") exitWith {_result};
 
 {
-    private _config = configFile >> _x >> _className;
+    private _config = configFile >> _x >> _object;
 
     if (isClass _config) exitWith {
         _result = _config;
     };
 } forEach ["CfgVehicles", "CfgAmmo", "CfgNonAIVehicles"];
-
-// Cache result for future use, if object supports it
-if _isObject then {_object setVariable ["CBA_config", _result]};
 
 _result
