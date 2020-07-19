@@ -92,5 +92,21 @@
             <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
             <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
         </Key>
+        <Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
+            <English>Debug console indentation</English>
+            <Polish>Indentacja w konsoli debugowania</Polish>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
+            <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
+            <Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
+            <English>4 Spaces</English>
+            <Polish>4 Spacje</Polish>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_ConsoleIndentTab">
+            <English>Tab</English>
+            <Polish>Tab</Polish>
+        </Key>
     </Package>
 </Project>
