@@ -2,6 +2,7 @@
 #include "script_component.hpp"
 
 #define MAX_STATEMENTS 50
+#define INDENT_SPACES "    "
 
 params ["_display"];
 
@@ -63,6 +64,43 @@ _expression ctrlAddEventHandler ["KeyDown", {
 
         _this call FUNC(logStatement);
     };
+
+    if (_key isEqualTo DIK_TAB) then {
+        _expression setVariable [QGVAR(tabDown), true];
+    };
+
+    false
+}];
+
+// Reset Tab status on autocomplete
+_expression ctrlAddEventHandler ["KeyUp", {
+    params ["_expression", "_key"];
+
+    if (_key isEqualTo DIK_TAB) then {
+        _expression setVariable [QGVAR(tabDown), false];
+    };
+}];
+
+// Tab without autocomplete will move focus to another control, add whitespace
+_expression ctrlAddEventHandler ["KillFocus", {
+    params ["_expression"];
+
+    if (_expression getVariable [QGVAR(tabDown), false]) then {
+        _expression setVariable [QGVAR(tabDown), false];
+
+        (ctrlTextSelection _expression) params ["_selStart", "_selLength"];
+        private _text = ctrlText _expression;
+
+        // replace selection with whitespace
+        _expression ctrlSetText ([_text select [0, _selStart], _text select [_selStart + _selLength, count _text - 1]] joinString INDENT_SPACES);
+        _expression ctrlSetTextSelection [_selStart + 4, 0];
+
+        // change focus on next frame, using spawn as CBA_fnc_execNextFrame will not work in editor
+        _expression spawn {
+            ctrlSetFocus _this;
+        };
+    };
+
     false
 }];
 
