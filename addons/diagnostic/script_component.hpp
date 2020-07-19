@@ -1,6 +1,9 @@
 #define COMPONENT diagnostic
 #include "\x\cba\addons\main\script_mod.hpp"
 
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+
 #ifdef DEBUG_ENABLED_DIAGNOSTIC
     #define DEBUG_MODE_FULL
 #endif
