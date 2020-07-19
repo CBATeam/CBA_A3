@@ -104,9 +104,5 @@
             <English>4 Spaces</English>
             <Polish>4 Spacje</Polish>
         </Key>
-        <Key ID="STR_CBA_Diagnostic_ConsoleIndentTab">
-            <English>Tab</English>
-            <Polish>Tab</Polish>
-        </Key>
     </Package>
 </Project>

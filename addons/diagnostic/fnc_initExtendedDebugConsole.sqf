@@ -3,7 +3,6 @@
 
 #define MAX_STATEMENTS 50
 #define INDENT_SPACES "    "
-#define INDENT_TAB (toString [ASCII_TAB])
 
 params ["_display"];
 
