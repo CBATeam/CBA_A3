@@ -93,7 +93,7 @@ _expression ctrlAddEventHandler ["KillFocus", {
         private _text = ctrlText _expression;
 
         // replace selection with whitespace
-        private _indentType = [INDENT_SPACES, INDENT_TAB] select GVAR(ConsoleIndentType);
+        private _indentType = [INDENT_SPACES] select GVAR(ConsoleIndentType);
         _expression ctrlSetText ([_text select [0, _selStart], _text select [_selStart + _selLength, count _text - 1]] joinString _indentType);
         _expression ctrlSetTextSelection [_selStart + count _indentType, 0];
 
