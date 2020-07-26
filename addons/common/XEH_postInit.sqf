@@ -51,7 +51,7 @@ for "_i" from 0 to (count _config - 1) do {
 addMissionEventHandler ["ExtensionCallback", {
     params ["_name", "_function", "_data"];
 
-    if !(_name isEqualTo "cba") exitWith {};
+    if !((tolower _name) isEqualTo "cba") exitWith {};
 
     private _data = parseSimpleArray _data;
     switch (tolower _function) do {
