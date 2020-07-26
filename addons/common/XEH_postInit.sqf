@@ -47,3 +47,49 @@ for "_i" from 0 to (count _config - 1) do {
     _oldVeh setVehicleVarName "";
     _newVeh setVehicleVarName _vehName;
 }] call CBA_fnc_addEventHandler;
+
+addMissionEventHandler ["ExtensionCallback", {
+    params ["_name", "_function", "_data"];
+
+    if !(_name isEqualTo "cba") exitWith {};
+
+    private _data = parseSimpleArray _data;
+    switch (tolower _function) do {
+        // Events
+        case "localevent": {
+            _data call CBA_fnc_localEvent;
+        };
+        case "targetevent": {
+            _data call CBA_fnc_targetEvent;
+        };
+        case "serverevent": {
+            _data call CBA_fnc_serverEvent;
+        };
+        case "remoteevent": {
+            _data call CBA_fnc_remoteEvent;
+        };
+        case "globalevent": {
+            _data call CBA_fnc_globalEvent;
+        };
+        case "globaleventjip": {
+            _data call CBA_fnc_globalEventJIP;
+        };
+
+        // Logging
+        case "log": {
+            LOG_SYS('LOG',_data select 0);
+        };
+        case "info": {
+            LOG_SYS('INFO',_data select 0);
+        };
+        case "warning": {
+            LOG_SYS('WARNING',_data select 0);
+        };
+        case "error": {
+            LOG_SYS('ERROR',_data select 0);
+        };
+        case "trace": {
+            LOG_SYS('TRACE',_data select 0);
+        };
+    };
+}];
