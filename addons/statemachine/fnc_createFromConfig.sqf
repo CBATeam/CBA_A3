@@ -28,8 +28,7 @@ if (isNull _config) exitWith {};
 
 private _list = compile getText (_config >> "list");
 private _skipNull = (getNumber (_config >> "skipNull")) > 0;
-private _ticksPerFrame = getNumber (_config >> "ticksPerFrame");
-_ticksPerFrame = [_ticksPerFrame, 1] select (_ticksPerFrame == 0);
+private _ticksPerFrame = (getNumber (_config >> "ticksPerFrame")) max 1;
 private _stateMachine = [_list, _skipNull, _ticksPerFrame] call FUNC(create);
 
 {
