@@ -5,6 +5,8 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
+#include "initSettings.sqf"
+
 #include "XEH_PREP.sqf"
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
@@ -18,7 +20,7 @@ GVAR(projectileTrackedUnits) = [];
 
 ADDON = true;
 
-if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) then {
+if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1} || {GVAR(forceTargetDebug)}) then {
     INFO("EnableTargetDebug is enabled.");
 
     [QGVAR(watchVariable), {

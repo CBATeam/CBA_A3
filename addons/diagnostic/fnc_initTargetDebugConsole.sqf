@@ -18,7 +18,7 @@ Author:
 #define EXEC_RESULT_CTRL (parsingNamespace getVariable ["BIS_RscDebugConsoleExpressionResultCtrl", controlNull])
 #define EXEC_SEND_RESULT {[EXEC_RESULT, {EXEC_RESULT_CTRL ctrlSetText str _this}] remoteExec ["call", remoteExecutedOwner]}
 
-if !(getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) exitWith {};
+if !(getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1} || {GVAR(forceTargetDebug)}) exitWith {};
 
 params ["_display"];
 TRACE_1("adding server watch debug",_display);

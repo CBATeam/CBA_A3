@@ -92,5 +92,9 @@
             <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
             <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
         </Key>
+        <Key ID="STR_cba_diagnostic_ForceTargetDebug">
+            <English>Force target debugging for all missions</English>
+            <French>Forcer le débogage de la cible pour toutes les missions</French>
+        </Key>
     </Package>
 </Project>

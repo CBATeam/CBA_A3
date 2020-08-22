@@ -38,5 +38,9 @@
             <French>CBA Armes</French>
             <Russian>CBA Оружие</Russian>
         </Key>
+        <Key ID="STR_cba_common_ToolsCategory">
+            <English>CBA Tools</English>
+            <French>CBA Outils</French>
+        </Key>
     </Package>
 </Project>
