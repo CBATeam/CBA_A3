@@ -102,6 +102,8 @@ if (!_isEmpty || _onEmpty) then {
             GVAR(triggerPressed)
         }, {
             !_triggerReleased || !GVAR(triggerPressed)
+        }, {
+            false
         }] select GVAR(repetitionMode));
 
         if (_wait) exitWith {
