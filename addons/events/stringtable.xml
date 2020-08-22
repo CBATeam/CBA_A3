@@ -102,5 +102,13 @@
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
             <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
         </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeAuto">
+            <English>Automatic</English>
+            <Polish>Automatycznie</Polish>
+        </Key>
+        <Key ID="STR_CBA_Events_RepetitionModeAutoTooltip">
+            <English>Bolt or rack weapon automaticaly after firing.</English>
+            <Polish>Przeładowanie/ryglowanie nastąpi automatycznie po wystrzale.</Polish>
+        </Key>
     </Package>
 </Project>
