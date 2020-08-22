@@ -112,7 +112,7 @@ if (!_isEmpty || _onEmpty) then {
 
         if (_wait) exitWith {
             // Detect trigger release
-            if (GVAR(repetitionMode) == 2 && !GVAR(triggerPressed)) then {
+            if (_repetitionMode == 2 && !GVAR(triggerPressed)) then {
                 _this set [10, true];
             };
 
