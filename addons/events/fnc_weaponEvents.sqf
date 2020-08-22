@@ -69,6 +69,7 @@ if (!_isEmpty || _onEmpty) then {
     private _soundLocation = getText (_config >> "soundLocation");
     private _delay = getNumber (_config >> "delay");
     private _hasOptic = getNumber (_config >> "hasOptic") == 1;
+    private _isPumpAction = getNumber (_config >> "isPumpAction") == 1;
 
     private _expectedMagazineCount = count magazines _unit;
     private _optic = weaponsItems _unit select {_x select 0 == _weapon} param [0, []] param [3, ""];
@@ -84,7 +85,7 @@ if (!_isEmpty || _onEmpty) then {
             "_unit", "_weapon", "_muzzle", "_optic",
             "_handAction", "_sound", "_soundSource",
             "_expectedMagazineCount", "_time", "_delay",
-            "_triggerReleased", "_config"
+            "_triggerReleased", "_config", "_isPumpAction"
         ];
 
         // exit if unit switched weapon
@@ -93,9 +94,12 @@ if (!_isEmpty || _onEmpty) then {
         // exit if unit started reloading
         if (count magazines _unit != _expectedMagazineCount) exitWith {true};
 
+
+        private _repetitionMode = [GVAR(repetitionMode), GVAR(repetitionModePumpAction)] select _isPumpAction;
         // mode 0: while in gunner view, keep waiting
         // mode 1: while holding trigger, keep waiting
         // mode 2: while holding trigger and not pressing it, keep waiting
+        // mode 3: auto cycle, do not wait
         private _wait = call ([{
             cameraView == "GUNNER" && _optic != ""
         }, {
@@ -104,7 +108,7 @@ if (!_isEmpty || _onEmpty) then {
             !_triggerReleased || !GVAR(triggerPressed)
         }, {
             false
-        }] select GVAR(repetitionMode));
+        }] select _repetitionMode);
 
         if (_wait) exitWith {
             // Detect trigger release
@@ -188,6 +192,6 @@ if (!_isEmpty || _onEmpty) then {
         _unit, _weapon, _muzzle, _optic,
         _handAction, _sound, call _fnc_soundSource,
         _expectedMagazineCount, CBA_missionTime, _delay,
-        _triggerReleased, _config
+        _triggerReleased, _config, _isPumpAction
     ]] call CBA_fnc_waitUntilAndExecute;
 };
