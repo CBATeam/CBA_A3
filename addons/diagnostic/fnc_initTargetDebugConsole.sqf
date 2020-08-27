@@ -5,7 +5,7 @@ Function: CBA_diagnostic_fnc_initTargetDebugConsole
 
 Description:
     Adds additional watch statements that are run on a remote target and have their values returned to the client.
-    Requires `EnableTargetDebug = 1;` in addon root config or description.ext or 3den scenario attribute with the same name
+    Requires `EnableTargetDebug = 1;` in addon root config or description.ext or 3den scenario attribute with the same name or in server/mission's config
 
 Author:
     (based on BIS's RscDebugConsole.sqf)
@@ -18,7 +18,12 @@ Author:
 #define EXEC_RESULT_CTRL (parsingNamespace getVariable ["BIS_RscDebugConsoleExpressionResultCtrl", controlNull])
 #define EXEC_SEND_RESULT {[EXEC_RESULT, {EXEC_RESULT_CTRL ctrlSetText str _this}] remoteExec ["call", remoteExecutedOwner]}
 
-if !(getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1} || {GVAR(forceTargetDebug)}) exitWith {};
+waitUntil{!isNil QGVAR(settingsInitialized)};
+if !(
+    getMissionConfigValue ["EnableTargetDebug", 0] == 1
+    || {getNumber (configFile >> "EnableTargetDebug") == 1}
+    || {GVAR(enableTargetDebug)}
+) exitWith {};
 
 params ["_display"];
 TRACE_1("adding server watch debug",_display);

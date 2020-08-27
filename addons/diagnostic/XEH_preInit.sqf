@@ -20,7 +20,17 @@ GVAR(projectileTrackedUnits) = [];
 
 ADDON = true;
 
-if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1} || {GVAR(forceTargetDebug)}) then {
+// Wait initializion of settings to set global variable
+["CBA_settingsInitialized", {
+    GVAR(settingsInitialized) = true;
+}] call CBA_fnc_addEventHandler;
+
+waitUntil{!isNil QGVAR(settingsInitialized)};
+if (
+    getMissionConfigValue ["EnableTargetDebug", 0] == 1
+    || {getNumber (configFile >> "EnableTargetDebug") == 1}
+    || {GVAR(enableTargetDebug)}
+) then {
     INFO("EnableTargetDebug is enabled.");
 
     [QGVAR(watchVariable), {

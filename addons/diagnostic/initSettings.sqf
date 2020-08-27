@@ -1,8 +1,8 @@
 
 [
-    QGVAR(forceTargetDebug),
+    QGVAR(enableTargetDebug),
     "CHECKBOX",
-    LLSTRING(ForceTargetDebug),
+    LLSTRING(EnableTargetDebug),
     ELSTRING(common,ToolsCategory),
     false, // default value
     1, // isGlobal
