@@ -22,9 +22,9 @@ Author:
 
 if !(call CBA_fnc_isMusicPlaying) exitWith {["", 0, 0]};
 
-GVAR(track) params ["_class", "_startTime", "_playPos", "_duration"];
+GVAR(track) params ["_class", "_startTime", "_startPos", "_duration"];
 
-private _trackTime = getMusicPlayedTime min _duration;
-private _remainingTime = _duration - _trackTime;
+private _currentPos = getMusicPlayedTime min _duration;
+private _remainingTime = _duration - _currentPos;
 
-[_class, _trackTime, _remainingTime]
+[_class, _currentPos, _remainingTime]

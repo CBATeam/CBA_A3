@@ -1,16 +1,17 @@
 #include "script_component.hpp"
 
 addMusicEventHandler ["MusicStart", {
-    params ["_className", "_eventId"];
+    params ["_class", "_eventId"];
 
-    private _playPos = getMusicPlayedTime;
-    private _duration = [_className, "duration"] call CBA_fnc_getMusicData;
+    private _startPos = getMusicPlayedTime;
+    private _startTime = time;
+    private _duration = [_class, "duration"] call CBA_fnc_getMusicData;
 
-    GVAR(track) = [_className, time, _playPos, _duration];
+    GVAR(track) = [_class, _startTime, _startPos, _duration];
 }];
 
 addMusicEventHandler ["MusicStop", {
-    params ["_className", "_eventId"];
+    params ["_class", "_eventId"];
 
     GVAR(track) = nil;
 }];
