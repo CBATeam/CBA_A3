@@ -1,6 +1,7 @@
     class CBA_556x45_AK {};             // AK mags for 5.56 AK type rifles, AK-101, AK-102, etc.
     class CBA_556x45_RPK {};            // 45rnd RPK mags for 5.56 RPK-201
     class CBA_556x45_FAMAS {};          // FAMAS F1
+    class CBA_556x45_GALIL {};          // IMI Galil
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
     class CBA_556x45_M21 {};            // Zastava M21
