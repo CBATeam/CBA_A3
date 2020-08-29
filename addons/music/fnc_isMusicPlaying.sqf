@@ -47,7 +47,7 @@ if (getMusicPlayedTime != 0) exitWith {true};
  * | 120 | 0.120972           | 0.106157               |
  * | --- | ------------------ | ---------------------- |
  * This data was collected from 2 machines on a locally hosted server with only one player */
-private _miniumWaitTime = [WAIT_HIGH_FPS, WAIT_LOW_FPS] select (diag_fpsMin < WAIT_SWITCH_FPS);
+private _miniumWaitTime = [WAIT_HIGH_FPS, WAIT_LOW_FPS] select (diag_fps < WAIT_SWITCH_FPS);
 
 if (time > (_startTime + _miniumWaitTime)) exitWith {
     GVAR(track) = nil;
