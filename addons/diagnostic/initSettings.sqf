@@ -3,7 +3,7 @@
     QGVAR(enableTargetDebug),
     "CHECKBOX",
     LLSTRING(EnableTargetDebug),
-    ELSTRING(common,ToolsCategory),
+    LLSTRING(Category),
     false, // default value
     1, // isGlobal
     nil,
