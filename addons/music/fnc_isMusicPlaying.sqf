@@ -46,6 +46,7 @@ if (getMusicPlayedTime != 0) exitWith {true};
  * | --- | ------------------ | ---------------------- |
  * This data was collected from 2 machines on a locally hosted server with only one player */
 if (time > (_startTime + MINIMUM_WAIT)) exitWith {
+    playMusic ""; // In case of false positive stop music to stay in sync.
     GVAR(track) = nil;
     false
 };
