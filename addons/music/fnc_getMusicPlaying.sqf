@@ -3,7 +3,7 @@
 Function: CBA_fnc_getMusicPlaying
 
 Description:
-    A function used to return the current time on playing music. Must have been started with CBA_fnc_playMusic
+    A function used to return the current time on playing music
 
 Parameters:
     none
