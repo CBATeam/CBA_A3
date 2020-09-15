@@ -56,7 +56,7 @@ class asdg_UnderSlot: asdg_SlotInfo { // Base under barrel slot
 class asdg_PistolUnderRail: asdg_SlotInfo { // under rail for handguns
     linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
     displayName = "$STR_A3_PointerSlot0";
-    iconPicture = "\a3\weapons_f_mark\Data\UI\attachment_under";
+    iconPicture = "\a3\weapons_f\Data\ui\attachment_side";
     iconPinpoint = "Bottom";
     class compatibleItems {
         acc_flashlight_pistol = 1;
