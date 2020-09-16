@@ -1,0 +1,16 @@
+PREPMAIN(capitalize);
+PREPMAIN(substring);
+PREPMAIN(substr);
+PREPMAIN(find);
+PREPMAIN(floatToString);
+PREPMAIN(formatElapsedTime);
+PREPMAIN(formatNumber);
+PREPMAIN(leftTrim);
+PREPMAIN(removeWhitespace);
+PREPMAIN(replace);
+PREPMAIN(rightTrim);
+PREPMAIN(split);
+PREPMAIN(strLen);
+PREPMAIN(trim);
+PREPMAIN(sanitizeHTML);
+PREPMAIN(decodeURL);

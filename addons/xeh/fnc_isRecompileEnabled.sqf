@@ -22,7 +22,7 @@ Author:
 
 params ["_compileType"];
 
-private _return = missionNamespace getVariable (format [QGVAR(isRecompileEnabled_%1), _compileType]);
+private _return = missionNamespace getVariable format [QGVAR(isRecompileEnabled_%1), _compileType];
 
 if (isNil "_return") then {
     private _config = configFile >> "CfgSettings" >> "CBA" >> "caching" >> _compileType;

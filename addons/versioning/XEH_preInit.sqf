@@ -1,15 +1,13 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
-// So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
-
 #include "script_component.hpp"
-SCRIPT(XEH_preInit);
+
+ADDON = false;
+
+#include "XEH_PREP.sqf"
+
 /*
     Basic, Generic Version Checking System - By Sickboy <sb_at_dev-heaven.net>
 
 */
-LOG(MSG_INIT);
-ADDON = false;
-
 if (isNil "CBA_display_ingame_warnings") then { CBA_display_ingame_warnings = true };
 if (isNil QGVAR(mismatch)) then { GVAR(mismatch) = [] };
 
@@ -42,7 +40,6 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
     };
 };
 
-PREP(version_check);
 FUNC(version_compare) = {
     params ["_value","_localValue"];
 

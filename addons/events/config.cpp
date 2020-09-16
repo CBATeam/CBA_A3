@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common"};
+        requiredAddons[] = {"cba_common", "cba_hashes"};
         author = "$STR_CBA_Author";
         authors[] = {"Spooner", "Sickboy", "Xeno", "commy2"};
         url = "$STR_CBA_URL";
@@ -15,7 +15,6 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgFunctions.hpp"
 
 class RscDisplayChat {
     onKeyDown = QUOTE(\

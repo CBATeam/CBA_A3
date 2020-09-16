@@ -1,3 +1,4 @@
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_preInit
@@ -26,9 +27,11 @@ SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", fals
 XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
-SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
-SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 SLX_XEH_DUMMY = "Logic"; // backwards comp
+SLX_XEH_COMPILE = uiNamespace getVariable "SLX_XEH_COMPILE"; //backwards comps
+SLX_XEH_COMPILE_NEW = uiNamespace getVariable "SLX_XEH_COMPILE_NEW"; //backwards comps
+
+#include "XEH_PREP.sqf"
 
 SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     !isDedicated, // 0 - isClient (and thus has player)
@@ -125,6 +128,7 @@ GVAR(fallbackRunning) = false;
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
             (_x select 2) call {
+                LOG_1("RUN PREINIT - %1", _x);
                 private "_x";
 
                 [] call (_this select 0);

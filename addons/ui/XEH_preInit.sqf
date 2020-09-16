@@ -2,6 +2,7 @@
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
 #include "initSettings.sqf"
 
 if (hasInterface) then {

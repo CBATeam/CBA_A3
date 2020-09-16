@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
-
 #include "XEH_PREP.sqf"
+
+if (!hasInterface) exitWith {};
 
 private _supportedKeys = [
     DIK_ESCAPE,

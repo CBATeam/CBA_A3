@@ -1,5 +1,15 @@
-PREP(initDisplayConfigure);
+PREPMAIN(getKeybind);
+PREPMAIN(registerKeybind);
+PREPMAIN(addKeybind);
+PREPMAIN(registerKeybindToFleximenu);
+PREPMAIN(addKeybindToFleximenu);
+PREPMAIN(registerKeybindModPrettyName);
+PREPMAIN(localizeKey);
 
-PREP(gui_configure);
-PREP(gui_update);
-PREP(gui_editKey);
+if (hasInterface) then {
+    PREP(initDisplayConfigure);
+
+    PREP(gui_configure);
+    PREP(gui_update);
+    PREP(gui_editKey);
+};

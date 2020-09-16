@@ -1,0 +1,9 @@
+PREPMAIN(isScheduled);
+PREPMAIN(isRecompileEnabled);
+PREPMAIN(addClassEventHandler);
+PREPMAIN(init);
+PREPMAIN(initEvents);
+PREPMAIN(supportMonitor);
+PREPMAIN(compileEventHandlers);
+PREPMAIN(compileFunction);
+PREPMAIN(startFallbackLoop);

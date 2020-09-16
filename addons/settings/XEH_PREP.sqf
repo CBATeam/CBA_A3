@@ -1,3 +1,5 @@
+PREPMAIN(addSetting);
+
 PREP(init);
 PREP(set);
 PREP(get);

@@ -1,16 +1,8 @@
 class CfgFunctions {
+    init = QPATHTO_R(XEH_initFunctions.sqf);
+
     class CBA {
         class XEH {
-            PATHTO_FNC(isScheduled);
-            PATHTO_FNC(isRecompileEnabled);
-            PATHTO_FNC(addClassEventHandler);
-            PATHTO_FNC(init);
-            PATHTO_FNC(initEvents);
-            PATHTO_FNC(supportMonitor);
-            PATHTO_FNC(compileEventHandlers);
-            PATHTO_FNC(compileFunction);
-            PATHTO_FNC(startFallbackLoop);
-
             class preStart {
                 preStart = 1;
                 file = PATHTOF(fnc_preStart.sqf);

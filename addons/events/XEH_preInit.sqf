@@ -2,6 +2,8 @@
 
 ADDON = false;
 
+#include "XEH_PREP.sqf"
+
 //ClientOwner command is unreliable in saved games
 //CBA_clientID will hold the correct value for the client's owner (needed for publicVariableClient and remoteExec)
 CBA_clientID = -1; //Will be -1 until real value recieved from server
@@ -33,7 +35,6 @@ if (isServer) then {
 ADDON = true;
 
 if (!hasInterface) exitWith {};
-PREP(playerEvent);
 
 GVAR(skipCheckingUserActions) = true;
 
@@ -57,14 +58,6 @@ if (!isNull (uiNamespace getVariable ["CBA_missionDisplay", displayNull])) then 
 };
 
 // Key Handlers
-PREP(keyHandler);
-PREP(keyHandlerDown);
-PREP(keyHandlerUp);
-PREP(mouseHandlerDown);
-PREP(mouseHandlerUp);
-PREP(mouseWheelHandler);
-PREP(userKeyHandler);
-
 private _keyHandlers = [];
 _keyHandlers resize 270;
 
