@@ -28,6 +28,8 @@ Author:
 
 params ["_vector", "_rotationAxis", "_theta"];
 
+if (_theta == 0) exitWith {_vector};
+
 private _normalVector = vectorNormalized _rotationAxis;
 private _sinTheta = sin _theta;
 private _cosTheta = cos _theta;
