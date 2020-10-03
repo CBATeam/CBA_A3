@@ -40,7 +40,7 @@ params [["_eventName", "", [""]], ["_eventId", -1, [0]]];
 
         // decrement all higher internal ids, to adjust to new array position, _key == _eventId, _value == _internalId
         [_eventHash, {
-            if (_value > _internalId && {!(_key isEqualTo "#lastId")}) then {
+            if (_value > _internalId && {_key isNotEqualTo "#lastId"}) then {
                 [_eventHash, _key, _value - 1] call CBA_fnc_hashSet;
             };
         }] call CBA_fnc_hashEachPair;

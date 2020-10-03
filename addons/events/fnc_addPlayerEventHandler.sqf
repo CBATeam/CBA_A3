@@ -175,7 +175,7 @@ if (_id != -1) then {
             SCRIPT(playerEvent_Map);
 
             params ["_data"]; // visibleMap is updated one frame later
-            if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+            if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
                 [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
@@ -186,7 +186,7 @@ if (_id != -1) then {
         0 spawn {
             {
                 private _data = visibleMap;
-                if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
                     GVAR(oldVisibleMap) = _data;
                     [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
                 };
@@ -197,7 +197,7 @@ if (_id != -1) then {
             SCRIPT(playerEH_featureCamera);
 
             private _data = call CBA_fnc_getActiveFeatureCamera;
-            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
+            if (_data isNotEqualTo GVAR(oldFeatureCamera)) then {
                 GVAR(oldFeatureCamera) = _data;
                 [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };

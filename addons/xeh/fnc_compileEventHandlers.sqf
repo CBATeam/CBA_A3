@@ -231,4 +231,4 @@ if (_allowRecompile) then {
 
 TRACE_2("compiled",_baseConfig,count _result);
 
-_result select {!((_x select 2) isEqualTo [{},{},{}])}
+_result select {(_x select 2) isNotEqualTo [{},{},{}]}

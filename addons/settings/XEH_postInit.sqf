@@ -21,7 +21,7 @@
 private _presetsHash = profileNamespace getVariable [QGVAR(presetsHash), HASH_NULL];
 private _autosavedPresets = profileNamespace getVariable [QGVAR(autosavedPresets), [[],[]]];
 
-if !(allVariables GVAR(mission) isEqualTo []) then {
+if (allVariables GVAR(mission) isNotEqualTo []) then {
     private _preset = "mission" call FUNC(export);
     private _presetName = format ["Autosave: %1 (%2)", LLSTRING(ButtonMission), missionName];
 

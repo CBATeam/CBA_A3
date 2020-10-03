@@ -50,7 +50,7 @@ _ctrlMagnification ctrlShow _isUsingOptic;
 
 GVAR(ppEffects) ppEffectEnable _isUsingOptic;
 
-if !(_isUsingOptic isEqualTo GVAR(IsUsingOptic)) then {
+if (_isUsingOptic isNotEqualTo GVAR(IsUsingOptic)) then {
     GVAR(IsUsingOptic) = _isUsingOptic;
     [QGVAR(UsingOptic), [_display, _isUsingOptic]] call CBA_fnc_localEvent;
 };

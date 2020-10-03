@@ -49,7 +49,7 @@ private _configs = if (_switchTo == "next") then {
 } else {
     configProperties [__currItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
 };
-if (!(_configs isEqualTo [])) then {
+if (_configs isNotEqualTo []) then {
     _switchItem = getText (_configs select 0);
 };
 TRACE_3("",_currItem,_switchTo,_switchItem);
@@ -83,7 +83,7 @@ if (!isNil "_switchItem") then {
     };
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
     private _switchItemHintImage = getText (__cfgWeapons >> _switchItem >> "picture");
-    if !(_switchItemHintText isEqualTo "") then {
+    if (_switchItemHintText isNotEqualTo "") then {
         [[_switchItemHintImage, 2.0], [_switchItemHintText], true] call CBA_fnc_notify;
     };
     playSound "click";

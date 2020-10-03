@@ -91,11 +91,11 @@ if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
 
 // Handle non-code type being passed for up/down code args
 if (!(_downCode isEqualType {})) then {
-    if (!(_downCode isEqualTo "")) then {WARNING_1("_downCode: Non code type [%1] will be ignored",_downCode);};
+    if (_downCode isNotEqualTo "") then {WARNING_1("_downCode: Non code type [%1] will be ignored",_downCode);};
     _downCode = {};
 };
 if (!(_upCode isEqualType {})) then {
-    if (!(_upCode isEqualTo "")) then {WARNING_1("_upCode: Non code type [%1] will be ignored",_upCode);};
+    if (_upCode isNotEqualTo "") then {WARNING_1("_upCode: Non code type [%1] will be ignored",_upCode);};
     _upCode = {};
 };
 
@@ -163,11 +163,11 @@ GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _default
 {
     _keybind = _x;
 
-    if !(_downCode isEqualTo {}) then {
+    if (_downCode isNotEqualTo {}) then {
         [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1_down_%2", _action, _forEachIndex], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
     };
 
-    if !(_upCode isEqualTo {}) then {
+    if (_upCode isNotEqualTo {}) then {
         [_keybind select 0, _keybind select 1, _upCode, "keyUp", format ["%1_up_%2", _action, _forEachIndex]] call CBA_fnc_addKeyHandler;
     };
 } forEach _keybinds;

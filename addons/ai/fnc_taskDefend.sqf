@@ -82,7 +82,7 @@ if (_patrol > 0 && {count _units > 1}) then {
 
 {
     // 31% chance to occupy nearest free static weapon
-    if ((random 1 < 0.31) && { !(_statics isEqualto []) }) then {
+    if ((random 1 < 0.31) && {_statics isNotEqualTo []}) then {
         _x assignAsGunner (_statics deleteAt 0);
         [_x] orderGetIn true;
     } else {
@@ -91,7 +91,7 @@ if (_patrol > 0 && {count _units > 1}) then {
             private _building = selectRandom _buildings;
             private _array = _building getVariable ["CBA_taskDefend_positions", []];
 
-            if !(_array isEqualTo []) then {
+            if (_array isNotEqualTo []) then {
                 private _pos = _array deleteAt (floor (random (count _array)));
 
                 // If building positions are all taken remove from possible buildings

@@ -171,7 +171,7 @@ private _reduce = {
             private _array = [];
 
             // Empty arrays need special handling
-            if !(_parseStack#(count _parseStack - 2) isEqualTo "[") then {
+            if (_parseStack#(count _parseStack - 2) isNotEqualTo "[") then {
                 // Get next token, if [ beginning is reached, otherwise assume
                 // valid JSON and that the token is a comma
                 while {_parseStack deleteAt (count _parseStack - 1) != "["} do {
@@ -200,7 +200,7 @@ private _reduce = {
             private _object = [] call _createObject;
 
             // Empty objects need special handling
-            if !(_parseStack#(count _parseStack - 2) isEqualTo "{") then {
+            if (_parseStack#(count _parseStack - 2) isNotEqualTo "{") then {
                 // Get next token, if { beginning is reached, otherwise assume
                 // valid JSON and that token is comma
                 while {_parseStack deleteAt (count _parseStack - 1) != "{"} do {
