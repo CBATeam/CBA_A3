@@ -20,6 +20,8 @@
     class CBA_762x51_G3_L {};       // H&K G3 long mag (25/30 rounds)
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
+    class CBA_762x51_GALIL {};      // IMI Galil
+
     class CBA_762x51_HK417 {};      // H&K 417
     class CBA_762x51_HK417_L {};    // H&K417 long mag (25/30 rounds)
     class CBA_762x51_HK417_XL {};   // H&K417 drum mag (50 rounds)
@@ -46,7 +48,6 @@
     class CBA_762x51_SCAR {};       // SCAR-H
     class CBA_762x51_SCAR_EGLM {};  // SCAR-H with EGLM/FN40GL/Mk 13 Mod 0 grenage launcher (This extends the length of the magwell and prevents mags that are too short or wide from being used)
     class CBA_762x51_SIGAMT {};     // SIG 510-4, AMT
-    class CBA_762x51_GALIL {};      // IMI Galil
 
     //Deprecated classes do not use
     class CBA_762x51_SR25 {};       // DEPRECATED, use CBA_762x51_AR10 instead.
