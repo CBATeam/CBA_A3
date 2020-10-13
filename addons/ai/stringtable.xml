@@ -25,5 +25,13 @@
             <Russian>ИИ Место строительства</Russian>
             <Polish>Pozycja AI w budynku</Polish>
         </Key>
+        <Key ID="STR_CBA_AI_InvisibleTargetVehicle">
+            <English>Invisible Target Vehicle</English>
+            <German>Unsichtbares Ziel - Fahrzeug</German>
+        </Key>
+        <Key ID="STR_CBA_AI_InvisibleTargetAir">
+            <English>Invisible Target Airplane</English>
+            <German>Unsichtbares Ziel - Flugzeug</German>
+        </Key>
     </Package>
 </Project>
