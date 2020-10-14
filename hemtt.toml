@@ -12,7 +12,7 @@ files = [
     "userconfig"
 ]
 
-version = "3.15.1.000000"
+version = "3.15.1"
 
 modname = "{{name}}"
 key_name = "{{prefix}}_{{version}}"
