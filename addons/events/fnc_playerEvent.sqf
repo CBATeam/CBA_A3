@@ -37,11 +37,8 @@ if (!isNull getConnectedUAV _unit) then {
     };
 };
 
-private _turret = [];
-if (_unit != _vehicle) then {
-    // Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
-    _turret = ([[-1]] + allTurrets [_vehicle, true]) select {_vehicle turretUnit _x == _unit} param [0, []];
-};
+// Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
+private _turret = _vehicle unitTurret _unit;
 
 private _state = [
     _unit, group _unit, leader _unit,
