@@ -2,6 +2,7 @@
 name = "CBA_A3"
 prefix = "cba"
 author = "CBATeam"
+mainprefix = "x"
 files = [
     "mod.cpp",
     "README.md",
@@ -10,6 +11,8 @@ files = [
     "meta.cpp",
     "userconfig"
 ]
+
+version = "3.15.1.000000"
 
 modname = "{{name}}"
 key_name = "{{prefix}}_{{version}}"
