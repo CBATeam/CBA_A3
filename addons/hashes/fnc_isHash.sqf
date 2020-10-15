@@ -23,4 +23,4 @@ SCRIPT(isHash);
 // -----------------------------------------------------------------------------
 params ["_hash"];
 
-_hash isEqualType [] && {count _hash == 5} && {(_hash select HASH_ID) isEqualTo TYPE_HASH}
+_hash isEqualType [] && {(count _hash) in [4, 5]} && {(_hash select HASH_ID) isEqualTo TYPE_HASH}
