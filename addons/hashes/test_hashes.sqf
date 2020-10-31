@@ -129,6 +129,16 @@ TEST_OP(_keys,isEqualTo,[],"hashKeys");
 _keys = [_hash] call CBA_fnc_hashKeys;
 TEST_OP(_keys,isEqualTo,[ARR_3("123","124",125)],"hashKeys");
 
+// Using an array as a key
+_hash = [] call CBA_fnc_hashCreate;
+private _arrayKey = [];
+[_hash, _arrayKey, "whyWouldYouDoThis"] call CBA_fnc_hashSet;
+_keys = [_hash] call CBA_fnc_hashKeys;
+(_keys select 0) pushBack 7;
+TEST_OP(_arrayKey,isEqualTo,[7],"hashKeysDepth");
+_result = [_hash, [7]] call CBA_fnc_hashGet;
+TEST_OP(_result,==,"whyWouldYouDoThis","hashKeysDepth");
+
 // Test CBA_fnc_hashValues
 _hash = [] call CBA_fnc_hashCreate;
 private _values = [_hash] call CBA_fnc_hashValues;
