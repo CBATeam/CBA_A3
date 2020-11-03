@@ -22,4 +22,4 @@ SCRIPT(hashValues);
 // -----------------------------------------------------------------------------
 params [["_hash", [[], []], [[]]]];
 
-+(_hash select HASH_VALUES)
+ [] + (_hash select HASH_VALUES) // flat-copy
