@@ -20,7 +20,7 @@
 #define ONSTATEENTERED(var) (var + "_onStateEntered")
 #define ONSTATELEAVING(var) (var + "_onStateLeaving")
 #define GET_FUNCTION(var,cfg) private var = getText (cfg); \
-    if (isNil var) then { \
+    if (isNil var || {!((missionNamespace getVariable var) isEqualType {})}) then { \
         var = compile var; \
     } else { \
         var = missionNamespace getVariable var;\
