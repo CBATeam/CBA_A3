@@ -22,6 +22,7 @@ Examples:
     _animalCounts = [_pairs, 0] call CBA_fnc_hashCreate;
     [_animalCounts, "frog"] call CBA_fnc_hashGet; // => 12
     [_animalCounts, "monkey"] call CBA_fnc_hashGet; // => 0
+    [_animalCounts, "monkey", 25] call CBA_fnc_hashGet; // => 25
 (end code)
 
 Author:
