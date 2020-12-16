@@ -28,12 +28,12 @@
         <Key ID="STR_CBA_AI_InvisibleTargetVehicle">
             <English>Invisible Target Vehicle</English>
             <German>Unsichtbares Ziel - Fahrzeug</German>
-            <French>Véhicule cible invisible</French>
+            <French>Cible invisible - Véhicule</French>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
             <German>Unsichtbares Ziel - Flugzeug</German>
-            <French>Avion cible invisible</French>
+            <French>Cible invisible - Avion</French>
         </Key>
     </Package>
 </Project>
