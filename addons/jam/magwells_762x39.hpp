@@ -7,7 +7,7 @@
         };
     };
 
-    class CBA_762x39_CZ807 {};             // 762x39mm CZ 807 magazines
+    class CBA_762x39_CZ807 {};          // 762x39mm CZ 807 magazines
 
     class CBA_762x39_RPK {};            // 40/45/75rnd RPK magazines
 
