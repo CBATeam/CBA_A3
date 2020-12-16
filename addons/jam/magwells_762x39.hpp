@@ -19,3 +19,5 @@
 
     class CBA_762x39_SKS {};            // 762x39mm SKS magazines
     class CBA_762x39_SKS_Clip {};       // 762x39mm SKS clip
+
+    class CBA_762x39_CZ {};             // 762x39mm CZ 807 magazines
