@@ -27,7 +27,13 @@
             "30Rnd_556x45_Stanag_red",
             "30Rnd_556x45_Stanag_Tracer_Red",
             "30Rnd_556x45_Stanag_Tracer_Green",
-            "30Rnd_556x45_Stanag_Tracer_Yellow"
+            "30Rnd_556x45_Stanag_Tracer_Yellow",
+            "30Rnd_556x45_Stanag_Sand",
+            "30Rnd_556x45_Stanag_Sand_green",
+            "30Rnd_556x45_Stanag_Sand_red",
+            "30Rnd_556x45_Stanag_Sand_Tracer_Red",
+            "30Rnd_556x45_Stanag_Sand_Tracer_Green",
+            "30Rnd_556x45_Stanag_Sand_Tracer_Yellow"
         };
     };
 
