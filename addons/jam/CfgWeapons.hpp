@@ -123,4 +123,9 @@ class CfgWeapons {
     class SMG_05_base_F: Rifle_Short_Base_F {
         magazineWell[] += {"CBA_9x19_MP5"}; // empty in vanilla
     };
+
+    class Pistol_Base_F;
+    class hgun_ACPC2_F: Pistol_Base_F {
+        magazineWell[] += {"CBA_45ACP_1911"};
+    };
 };
