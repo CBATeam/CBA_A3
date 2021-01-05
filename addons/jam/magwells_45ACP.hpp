@@ -1,4 +1,8 @@
-    class CBA_45ACP_1911 {};            // Colt M1911
+    class CBA_45ACP_1911 {              // Colt M1911
+        BI_mags[] = {
+            "9Rnd_45ACP_Mag"
+        };
+    };
     class CBA_45ACP_C96 {};             // Mauser C-96 in .45 ACP
     class CBA_9x19_CZ97 {};             // CZ 97 in .45 ACP
     class CBA_45ACP_Delisle {};         // De Lisle Carbine
