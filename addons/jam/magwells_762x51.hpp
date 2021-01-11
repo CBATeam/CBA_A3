@@ -20,6 +20,8 @@
     class CBA_762x51_G3_L {};       // H&K G3 long mag (25/30 rounds)
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
+    class CBA_762x51_GALIL {};      // IMI Galil
+
     class CBA_762x51_HK417 {};      // H&K 417
     class CBA_762x51_HK417_L {};    // H&K417 long mag (25/30 rounds)
     class CBA_762x51_HK417_XL {};   // H&K417 drum mag (50 rounds)

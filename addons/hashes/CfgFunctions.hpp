@@ -10,6 +10,7 @@ class CfgFunctions {
             PATHTO_FNC(hashRem);
             PATHTO_FNC(hashSet);
             PATHTO_FNC(hashSize);
+            PATHTO_FNC(hashValues);
             PATHTO_FNC(isHash);
             PATHTO_FNC(parseYAML);
             PATHTO_FNC(serializeNamespace);
