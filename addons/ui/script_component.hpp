@@ -1,9 +1,9 @@
-﻿#define COMPONENT ui
+#define COMPONENT ui
 #include "\x\cba\addons\main\script_mod.hpp"
 
-//#define DEBUG_MODE_FULL
-//#define DISABLE_COMPILE_CACHE
-//#define DEBUG_ENABLED_UI
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define DEBUG_ENABLED_UI
 
 #ifdef DEBUG_ENABLED_UI
     #define DEBUG_MODE_FULL
@@ -13,6 +13,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_UI
 #endif
 
+#define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
@@ -31,6 +32,12 @@
 #define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
+
+// notify
+#define NOTIFY_DEFAULT_X (safezoneX + safezoneW - 13 * GUI_GRID_W)
+#define NOTIFY_DEFAULT_Y (safezoneY + 6 * GUI_GRID_H)
+#define NOTIFY_MIN_WIDTH (12 * GUI_GRID_W)
+#define NOTIFY_MIN_HEIGHT (3 * GUI_GRID_H)
 
 // Warning: this block below is a duplicate copy of the contents from common.hpp
 // #include "\x\cba\addons\ui\flexiMenu\data\common.hpp"
@@ -78,12 +85,6 @@
 #define __menuRscPrefix "CBA_flexiMenu_rsc"
 #define __SMW_default 0.15 * safeZoneW // common sub-menu width, used in script
 #define __defaultHotkeyColor "#f07EB27E"
-
-// additional "_SUB" macros to handle sub folders
-#define PATHTO_SUB(var1,var2,var3,var4) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3\##var4.sqf
-#define COMPILE_FILE_SUB(var1,var2,var3,var4) COMPILE_FILE2(PATHTO_SUB(var1,var2,var3,var4))
-#define PREP_SYS_SUB(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SUB(var1,var2,var3,DOUBLES(fnc,var4))
-#define PREP_SUB(var1,var2) PREP_SYS_SUB(PREFIX,COMPONENT_F,var1,var2)
 
 // array select with bounds check (for optional parameters)
 #define IfCountDefault(var1,array2,index3,default4) ##var1 = if (count ##array2 > ##index3) then {##array2 select ##index3} else {##default4};

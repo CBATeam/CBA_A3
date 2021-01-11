@@ -2,14 +2,15 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common"};
-        version = VERSION;
+        author = "$STR_CBA_Author";
         authors[] = {"Spooner", "Sickboy", "Xeno", "commy2"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 
@@ -46,3 +47,32 @@ class CfgWeapons {
     };
 };
 #endif
+
+//["testcomponent1", "test1", {systemChat str 11}] call CBA_fnc_addKeyHandlerFromConfig;
+//["testcomponent1", "test2", {systemChat str 12}] call CBA_fnc_addKeyHandlerFromConfig;
+//["testcomponent2", "test1", {systemChat str 21}] call CBA_fnc_addKeyHandlerFromConfig;
+//["testcomponent2", "test2", {systemChat str 22}] call CBA_fnc_addKeyHandlerFromConfig;
+
+/*class CfgSettings {
+    class CBA {
+        class events {
+            class testcomponent1 {
+                test1 = 15;
+
+                class test2 {
+                    key = 15;
+                    shift = 1;
+                };
+            };
+
+            class testcomponent2 {
+                test1 = 19;
+
+                class test2 {
+                    key = 19;
+                    ctrl = 1;
+                };
+            };
+        };
+    };
+};*/

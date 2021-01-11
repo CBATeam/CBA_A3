@@ -11,6 +11,8 @@
             <French>Community Base Addons - Tableaux</French>
             <Polish>Community Base Addons - Tablice</Polish>
             <Turkish>Community Base Addons - Diziler</Turkish>
+            <Italian>Community Base Addons - Array</Italian>
+            <Czech>Community Base Addons - Pole</Czech>
         </Key>
     </Package>
 </Project>

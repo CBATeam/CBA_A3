@@ -133,6 +133,40 @@ private _lastSubCategory = "$START";
             default {controlNull};
         };
 
+        // ----- determine display string for default value
+        private _defaultValueTooltip = switch (toUpper _settingType) do {
+            case "LIST": {
+                _settingData params ["_values", "_labels"];
+
+                private _label = _labels param [_values find _defaultValue, ""];
+
+                if (isLocalized _label) then {
+                    _label = localize _label;
+                };
+
+                _label
+            };
+            case "SLIDER": {
+                if (_settingData param [3, false]) then {
+                    format [localize "STR_3DEN_percentageUnit", round (_defaultValue * 100), "%"]
+                } else {
+                    _defaultValue
+                };
+            };
+            case "COLOR": {
+                private _template = (["R: %1", "G: %2", "B: %3", "A: %4"] select [0, count _defaultValue]) joinString "\n";
+                format ([_template] + _defaultValue)
+            };
+            case "TIME": {
+                _defaultValue call CBA_fnc_formatElapsedTime
+            };
+            default {_defaultValue};
+        };
+
+        // ----- set tooltip on "Reset to default" button
+        private _ctrlDefault = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
+        _ctrlDefault ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValueTooltip]);
+
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
         _ctrlSettingGroup setVariable [QGVAR(source), _source];
         _ctrlSettingGroup setVariable [QGVAR(params), _settingData];

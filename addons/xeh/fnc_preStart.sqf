@@ -21,7 +21,7 @@ Author:
 with uiNamespace do {
     SLX_XEH_DisableLogging = isClass (configFile >> "CfgPatches" >> "Disable_XEH_Logging");
 
-    XEH_LOG("XEH: PreStart started.");
+    XEH_LOG("PreStart started.");
 
     SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
     SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
@@ -53,16 +53,24 @@ with uiNamespace do {
         diag_log text format ["isScheduled = %1", call CBA_fnc_isScheduled];
     #endif
 
-    XEH_LOG("XEH: PreStart finished.");
+    XEH_LOG("PreStart finished.");
 
     // check extended event handlers compatibility
     {
         _x params ["_classname", "_addon"];
 
         if (_addon == "") then {
-            diag_log text format ["[XEH]: %1 does not support Extended Event Handlers!", _classname];
+            WARNING_1("%1 does not support Extended Event Handlers!", _classname);
         } else {
-            diag_log text format ["[XEH]: %1 does not support Extended Event Handlers! Addon: %2", _classname, _addon];
+            WARNING_2("%1 does not support Extended Event Handlers! Addon: %2", _classname, _addon);
         };
     } forEach (true call CBA_fnc_supportMonitor);
+
+    // cache incompatible classes that are needed in preInit
+    GVAR(incompatibleClasses) = compileFinal str ([false, true] call CBA_fnc_supportMonitor);
+
+    // compile and cache configFile eventhandlers as they won't change from here on
+    GVAR(configFileEventHandlers) = compileFinal str (configFile call CBA_fnc_compileEventHandlers);
+
+    nil // needs return value [a3\functions_f\initfunctions.sqf Line 499]
 };

@@ -26,4 +26,4 @@ Author:
 
 params [["_matrix", [], [[]], 3], ["_vector", [], [[]], 3]];
 
-_matrix apply {_x vectorDotProduct _vector} // return
+([_vector] matrixMultiply matrixTranspose _matrix) select 0

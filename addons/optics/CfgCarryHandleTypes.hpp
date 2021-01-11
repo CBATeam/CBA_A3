@@ -1,0 +1,1 @@
+class CBA_CarryHandleTypes {};

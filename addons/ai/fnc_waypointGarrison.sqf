@@ -14,7 +14,7 @@ Returns:
 
 Examples:
    (begin example)
-   _group addWaypoint [_position, 0] setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf []";
+   _group addWaypoint [_position, -1] setWaypointScript "\x\cba\addons\ai\fnc_waypointGarrison.sqf []";
 
    [_group, _position] execVM "\x\cba\addons\ai\fnc_waypointGarrison.sqf";
    (end)

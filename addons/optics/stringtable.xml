@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Optics">
+        <Key ID="STR_cba_optics_Component">
+            <English>Community Base Addons - Optics</English>
+            <German>Community Base Addons - Optiken</German>
+            <Polish>Community Base Addons - Optyka</Polish>
+            <Italian>Community Base Addons - Ottiche</Italian>
+            <Japanese>Community Base Addons - 照準器</Japanese>
+            <Czech>Community Base Addons - Optika</Czech>
+            <Turkish>Community Base Addons - Optikler</Turkish>
+            <Chinese>社群基礎模組 - 瞄具</Chinese>
+            <French>Community Base Addons - Optiques</French>
+            <Russian>Community Base Addons - Оптика</Russian>
+        </Key>
+        <Key ID="STR_cba_optics_UsePIP">
+            <English>Use picture in picture optics</English>
+            <German>Bild in Bild-Optiken verwenden</German>
+            <Japanese>ピクチャー イン ピクチャー照準器を使う</Japanese>
+            <Polish>Używaj optyki typu Obraz w obrazie (PIP)</Polish>
+            <Italian>Usa ottiche on Picture-in-Picture</Italian>
+            <Czech>Používat PiP (obraz-v-obrazu) optiky</Czech>
+            <Turkish>PIP optikler kullan</Turkish>
+            <Chinese>使用PiP(畫中畫)鏡頭</Chinese>
+            <French>Utiliser les optiques "picture in picture"</French>
+            <Russian>Использовать оптические прицелы в режиме «картинка в картинке» (PIP)</Russian>
+        </Key>
+        <Key ID="STR_cba_optics_manual_reticle_switch">
+            <English>Toggle Reticle</English>
+            <German>Absehen umschalten</German>
+            <Czech>Zapnout retikulum</Czech>
+            <Turkish>Dürbün çizgilerini değiştir</Turkish>
+            <Japanese>照準線切り替え</Japanese>
+            <Chinese>切換瞄準線</Chinese>
+            <French>Commuter le réticule</French>
+            <Russian>Переключение сетки</Russian>
+            <Polish>Przełącz siatke przyrządu</Polish>
+        </Key>
+        <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
+            <English>Manually switch the reticle of the optic.</English>
+            <German>Absehen der Optik manuell umschalten.</German>
+            <Czech>Manuálně přepnout retikulum optiky</Czech>
+            <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
+            <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
+            <Chinese>手動切換瞄具的瞄準線</Chinese>
+            <French>Commuter manuellement le réticule de l'optique.</French>
+            <Russian>Вручную переключать сетку оптического прицела.</Russian>
+            <Polish>Ręcznie przełącz siatkę przyrządu optycznego</Polish>
+        </Key>
+    </Package>
+</Project>

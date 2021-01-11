@@ -2,19 +2,18 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
-        magazines[] = {};
-        ammo[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"CBA_main"};
-        version = VERSION;
+        requiredAddons[] = {"cba_common"};
+        author = "$STR_CBA_Author";
         authors[] = {"Robalo"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 
+#include "CfgMagazines.hpp"
 #include "CfgMagazineWells.hpp"
 #include "CfgWeapons.hpp"

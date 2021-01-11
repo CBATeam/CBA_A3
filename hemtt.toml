@@ -1,0 +1,60 @@
+# HEMTT: https://github.com/synixebrett/HEMTT/commit/d828af84613f6725732a4c42c8b4611ae2a0cf81
+name = "CBA_A3"
+prefix = "cba"
+author = "CBATeam"
+mainprefix = "x"
+files = [
+    "mod.cpp",
+    "README.md",
+    "LICENSE.md",
+    "logo_cba_ca.paa",
+    "meta.cpp",
+    "userconfig"
+]
+
+version = "3.15.1"
+
+modname = "{{name}}"
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+check = [
+    "!version_set"
+]
+releasebuild = [
+    "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}",
+    "!version_unset"
+]
+
+[header_exts]
+version = "{{git \"id 8\"}}"
+
+[scripts.version_set]
+steps_linux = [
+    "echo Setting version",
+    "sed -i -r -s 's/[0-9]+\\.[0-9]+\\.[0-9]+/{{semver.major}}.{{semver.minor}}.{{semver.patch}}/g' mod.cpp README.md addons/main_a3/CfgMods.hpp",
+    "sed -i -r -s 's/#define BUILD 000000/#define BUILD {{date \"%y%m%d\"}}/g' addons/main/script_version.hpp"
+]
+steps_windows = [
+    "echo Setting version",
+    "powershell -Command foreach ($f in 'mod.cpp', 'README.md', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '[0-9]+\\.[0-9]+\\.[0-9]+', '{{semver.major}}.{{semver.minor}}.{{semver.patch}}' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}",
+    "powershell -Command foreach ($f in 'addons/main/script_version.hpp') {(Get-Content $f) -replace '#define BUILD 000000', '#define BUILD {{date \"%y%m%d\"}}' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}"
+]
+only_release = true
+show_output = true
+
+[scripts.version_unset]
+steps_linux = [
+    "echo 'Unsetting version'",
+    "sed -i -r -s 's/{{semver.major}}.{{semver.minor}}.{{semver.patch}}/0.0.0/g' mod.cpp addons/main_a3/CfgMods.hpp",
+    "sed -i -r -s 's/#define BUILD {{date \"%y%m%d\"}}/#define BUILD 000000/g' addons/main/script_version.hpp",
+    "echo '-> README.md version ready for commit (ignore until release)!'"
+]
+steps_windows = [
+    "echo Unsetting version",
+    "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}",
+    "powershell -Command foreach ($f in 'addons/main/script_version.hpp') {(Get-Content $f) -replace '#define BUILD {{date \"%y%m%d\"}}', '#define BUILD 000000' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}",
+    "echo -^> README.md version ready for commit (ignore until release)!"
+]
+only_release = true
+show_output = true

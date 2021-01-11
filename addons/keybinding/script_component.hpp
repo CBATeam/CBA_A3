@@ -78,3 +78,4 @@
 #define NAMESPACE_NULL objNull
 #define HASH_NULL ([] call CBA_fnc_hashCreate)
 #define KEYBIND_NULL [0, [false, false, false]]
+#define KEY_NAME(x) (call {private _s = keyName (x); _s select [1, count _s - 2]})

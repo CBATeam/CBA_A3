@@ -19,6 +19,12 @@ private _lbData = [];
         _tooltip = localize _tooltip;
     };
 
+    if (_tooltip isEqualTo "") then {
+        _tooltip = str _x;
+    } else {
+        _tooltip = _tooltip + endl + str _x;
+    };
+
     private _index = _ctrlList lbAdd _label;
     _ctrlList lbSetTooltip [_index, _tooltip];
     _lbData set [_index, _x];
@@ -47,6 +53,8 @@ _ctrlList ctrlAddEventHandler ["LBSelChanged", {
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+    // refresh priority to update overwrite color if current value is equal to overwrite
+    [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
 // set setting ui manually to new value

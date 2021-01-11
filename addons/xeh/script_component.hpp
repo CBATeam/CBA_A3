@@ -1,5 +1,4 @@
 #define COMPONENT xeh
-
 #include "\x\cba\addons\main\script_mod.hpp"
 
 //#define DEBUG_ENABLED_XEH
@@ -12,9 +11,10 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_XEH
 #endif
 
+#define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { diag_log [diag_frameNo, diag_tickTime, time, msg] }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo, diag_tickTime, time)], msg); }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
@@ -37,8 +37,6 @@
 #define ISKINDOF(object,classname,allowInherit,excluded) ((allowInherit || {typeOf object == classname}) && {{object isKindOf _x} count (excluded) == 0})
 
 #include "script_xeh.hpp"
-
-#define XEH_MAIN_CONFIGS [configFile, campaignConfigFile, missionConfigFile]
 
 #undef XEH_ENABLED
 #define XEH_ENABLED class EventHandlers {class XEH_CLASS: XEH_CLASS_BASE {};}; SLX_XEH_DISABLED = 0
@@ -91,4 +89,5 @@
     "FiredMan", \
     "TurnIn", \
     "TurnOut", \
-    "Deleted"
+    "Deleted", \
+    "Disassembled"

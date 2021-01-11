@@ -1,5 +1,15 @@
 #include "script_component.hpp"
 
+_this spawn {
+    isNil {
+        params ["_display"];
+
+        private _missionName = _display displayCtrl IDC_INT_MISSIONNAME;
+        private _text = ctrlText _missionName call CBA_fnc_decodeURL;
+        _missionName ctrlSetText _text;
+    };
+};
+
 if (isNil QGVAR(MenuButtons)) exitWith {};
 
 params ["_display"];
@@ -34,11 +44,13 @@ if (!isMultiplayer && {getNumber (missionConfigFile >> "replaceAbortButton") > 0
 ];
 
 // --- create custom buttons
+private _buttonType = ["RscButtonMenu", "RscButtonMenuLeft"] select isClass (configFile >> "CfgPatches" >> "A3_Data_F_Contact");
+
 {
     _offset = _offset + 1.1;
     _x params ["_displayName", "_tooltip", "_dialog"];
 
-    private _button = _display ctrlCreate ["RscButtonMenu", -1];
+    private _button = _display ctrlCreate [_buttonType, -1];
 
     _button ctrlSetText toUpper _displayName;
     _button ctrlSetTooltip _tooltip;

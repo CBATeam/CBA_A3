@@ -18,6 +18,7 @@ TEST_DEFINED("CBA_fnc_hashHasKey","");
 TEST_DEFINED("CBA_fnc_isHash","");
 TEST_DEFINED("CBA_fnc_hashSize","");
 TEST_DEFINED("CBA_fnc_hashKeys","");
+TEST_DEFINED("CBA_fnc_hashValues","");
 
 TEST_FALSE([[]] call CBA_fnc_isHash,"CBA_fnc_isHash");
 _hash = [5, [4], [1], 2]; // Not a real hash.
@@ -127,5 +128,39 @@ TEST_OP(_keys,isEqualTo,[],"hashKeys");
 [_hash, 125, 3] call CBA_fnc_hashSet;
 _keys = [_hash] call CBA_fnc_hashKeys;
 TEST_OP(_keys,isEqualTo,[ARR_3("123","124",125)],"hashKeys");
+
+// Using an array as a key
+_hash = [] call CBA_fnc_hashCreate;
+private _arrayKey = [];
+[_hash, _arrayKey, "whyWouldYouDoThis"] call CBA_fnc_hashSet;
+_keys = [_hash] call CBA_fnc_hashKeys;
+(_keys select 0) pushBack 7;
+TEST_OP(_arrayKey,isEqualTo,[7],"hashKeysDepth");
+_result = [_hash, [7]] call CBA_fnc_hashGet;
+TEST_OP(_result,==,"whyWouldYouDoThis","hashKeysDepth");
+
+// Test CBA_fnc_hashValues
+_hash = [] call CBA_fnc_hashCreate;
+private _values = [_hash] call CBA_fnc_hashValues;
+TEST_OP(_values,isEqualTo,[],"hashValues - empty");
+
+[_hash, "a", 1] call CBA_fnc_hashSet;
+[_hash, "b", 2] call CBA_fnc_hashSet;
+_values = [_hash] call CBA_fnc_hashValues;
+TEST_OP(_values,isEqualTo,[ARR_2(1,2)],"hashValues - values");
+
+[_hash, "a"] call CBA_fnc_hashRem;
+_values = [_hash] call CBA_fnc_hashValues;
+TEST_OP(_values,isEqualTo,[2],"hashValues - removed");
+
+_hash = [] call CBA_fnc_hashCreate;
+private _data = [3];
+[_hash, "c", _data] call CBA_fnc_hashSet;
+_values = [_hash] call CBA_fnc_hashValues;
+TEST_OP(_values,isEqualTo,[[3]],"hashValues - array");
+
+_data pushBack [7];
+TEST_OP(_values,isEqualTo,[[ARR_2(3,[7])]],"hashValues - deep array copy");
+
 
 nil;

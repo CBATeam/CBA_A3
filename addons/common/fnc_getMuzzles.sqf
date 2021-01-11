@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _muzzles = "M4A1_RCO_GL" call CBA_fnc_determineMuzzles
+        _muzzles = "M4A1_RCO_GL" call CBA_fnc_getMuzzles
         -> ["M4_ACOG_Muzzle", "M203Muzzle"]
     (end)
 

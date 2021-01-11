@@ -3,9 +3,7 @@
 // Simply a package which requires other addons.
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -29,12 +27,16 @@ class CfgPatches {
             "cba_diagnostic",
             "cba_help",
             "cba_jr",
+            "cba_jam",
             "cba_ui",
-            "cba_versioning"
+            "cba_versioning",
+            "cba_optics",
+            "cba_disposable"
         };
-        versionDesc = "C.B.A.";
-        VERSION_CONFIG;
+        author = "$STR_CBA_Author";
         authors[] = {};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 

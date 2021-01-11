@@ -33,7 +33,7 @@ private _config = configFile >> "CfgVehicles" >> _className;
 
 // init fallback loop when executing on incompatible class for the first time
 if (!GVAR(fallbackRunning) && {ISINCOMP(_className)}) then {
-    diag_log text format ["[XEH]: One or more children of class %1 do not support Extended Event Handlers. Fall back to loop.", configName _config];
+    WARNING_1("One or more children of class %1 do not support Extended Event Handlers. Fall back to loop.", configName _config);
     call CBA_fnc_startFallbackLoop;
 };
 
@@ -44,7 +44,7 @@ _eventName = toLower _eventName;
 
 // no such event
 if (_eventName == "FiredBIS") exitWith {
-    WARNING("Cannot add 'FiredBIS' - Use 'Fired' instead");
+    WARNING("Cannot add ""FiredBIS"" - Use ""Fired"" instead.");
     false
 };
 if !(_eventName in GVAR(EventsLowercase)) exitWith {false};
@@ -79,8 +79,7 @@ _entities = _entities arrayIntersect _entities; // entities can return duplicate
             };
         };
     };
-    true
-} count _entities;
+} forEach _entities;
 
 // define for units that are created later
 private _events = EVENTHANDLERS(_eventName,_className);

@@ -17,13 +17,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (ISPROCESSED(missionNamespace)) exitWith {
-    diag_log text "[XEH]: preInit already executed. Abort preInit.";
+    XEH_LOG("preInit already executed. Abort preInit.");
 };
 SETPROCESSED(missionNamespace);
 
 SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", false]; // get from preStart
 
-XEH_LOG("XEH: PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "version"));
+XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
@@ -54,16 +54,33 @@ CBA_isHeadlessClient = !hasInterface && !isDedicated;
 // make case insensitive list of all supported events
 GVAR(EventsLowercase) = [];
 {
+    private _header = "";
+    #ifndef SKIP_SCRIPT_NAME
+        _header = format ["scriptName 'XEH:%1';", _x];
+    #endif
     // generate event functions
-    if (_x isEqualTo "Init") then {
-        FUNC(Init) = compileFinal "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init";
-    } else {
-        if (_x isEqualTo "HitPart") then {
-            FUNC(HitPart) = compileFinal format ['{call _x; nil} count ((_this select 0 select 0) getVariable QGVAR(%1))', _x];
-        } else {
+    switch _x do {
+        case "Init": {
+            FUNC(Init) = compileFinal (_header + "(_this select 0) call CBA_fnc_initEvents; (_this select 0) call CBA_fnc_init");
+        };
+        // This prevents double execution of the Killed event on the same unit.
+        case "Killed": {
+            FUNC(Killed) = compileFinal (_header + format ['\
+                params ["_unit"];\
+                if (_unit getVariable [QGVAR(killedBody), objNull] != _unit) then {\
+                    _unit setVariable [QGVAR(killedBody), _unit];\
+                    private "_unit";\
+                    {call _x} forEach ((_this select 0) getVariable QGVAR(%1));\
+                };',
+            _x]);
+        };
+        case "HitPart": {
+            FUNC(HitPart) = compileFinal (_header + format ['{call _x} forEach ((_this select 0 select 0) getVariable QGVAR(%1))', _x]);
+        };
+        default {
             missionNamespace setVariable [
                 format [QFUNC(%1), _x],
-                compileFinal format ['{call _x; nil} count ((_this select 0) getVariable QGVAR(%1))', _x]
+                compileFinal (_header + format ['{call _x} forEach ((_this select 0) getVariable QGVAR(%1))', _x])
             ];
         };
     };
@@ -82,21 +99,22 @@ GVAR(incompatible) = [] call CBA_fnc_createNamespace;
 
         _class = inheritsFrom _class;
     };
-} forEach ([false, true] call CBA_fnc_supportMonitor);
+} forEach call (uiNamespace getVariable [QGVAR(incompatibleClasses), {[]}]);
 
 // always recompile extended event handlers
 #ifdef DEBUG_MODE_FULL
-    XEH_LOG("XEH: Compiling XEH START");
+    XEH_LOG("Compiling XEH START");
 #endif
 
-GVAR(allEventHandlers) = [];
+//Get configFile eventhandlers from cache that was generated at preStart
+GVAR(allEventHandlers) = call (uiNamespace getVariable [QGVAR(configFileEventHandlers), {[]}]);
 
 {
     GVAR(allEventHandlers) append (_x call CBA_fnc_compileEventHandlers);
-} forEach XEH_MAIN_CONFIGS;
+} forEach [campaignConfigFile, missionConfigFile];
 
 #ifdef DEBUG_MODE_FULL
-    XEH_LOG("XEH: Compiling XEH END");
+    XEH_LOG("Compiling XEH END");
 #endif
 
 // add extended event handlers to classes
@@ -106,7 +124,19 @@ GVAR(fallbackRunning) = false;
 {
     if (_x select 0 == "") then {
         if (_x select 1 == "preInit") then {
-            [] call (_x select 2);
+            (_x select 2) call {
+                private "_x";
+
+                [] call (_this select 0);
+
+                if (!isDedicated) then {
+                    [] call (_this select 1);
+                };
+
+                if (isServer) then {
+                    [] call (_this select 2);
+                };
+            };
         };
     } else {
         _x params ["_className", "_eventName", "_eventFunc", "_allowInheritance", "_excludedClasses"];
@@ -116,8 +146,22 @@ GVAR(fallbackRunning) = false;
             _eventName = "fired";
         };
 
-        private _success = [_className, _eventName, _eventFunc, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
-        TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        _eventFunc params ["_funcAll", "_funcClient", "_funcServer"];
+
+        if !(_funcAll isEqualTo {}) then {
+            private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
+
+        if (!isDedicated && {!(_funcClient isEqualTo {})}) then {
+            private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
+
+        if (isServer && {!(_funcServer isEqualTo {})}) then {
+            private _success = [_className, _eventName, _funcServer, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
+            TRACE_3("addClassEventHandler",_className,_eventName,_success);
+        };
     };
 } forEach GVAR(allEventHandlers);
 
@@ -161,4 +205,4 @@ if (!isServer) then { // only on client
     }] call CBA_fnc_addEventHandler;
 #endif
 
-XEH_LOG("XEH: PreInit finished.");
+XEH_LOG("PreInit finished.");

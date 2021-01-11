@@ -62,6 +62,7 @@ class CfgFunctions {
 
         class Inventory {
             PATHTO_FNC(addWeapon);
+            PATHTO_FNC(addWeaponWithoutItems);
             PATHTO_FNC(addMagazine);
             PATHTO_FNC(addItem);
             PATHTO_FNC(compatibleMagazines);
@@ -76,6 +77,8 @@ class CfgFunctions {
             PATHTO_FNC(binocularMagazine);
             PATHTO_FNC(addBinocularMagazine);
             PATHTO_FNC(removeBinocularMagazine);
+            PATHTO_FNC(randomizeFacewear);
+            PATHTO_FNC(canAddItem);
         };
 
         class Cargo {

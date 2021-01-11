@@ -54,7 +54,6 @@ _result = [];
     private _indexEqualSign = _x find "=";
 
     private _setting = (_x select [0, _indexEqualSign]) call CBA_fnc_rightTrim;
-    private _value = ((_x select [_indexEqualSign + 1]) call CBA_fnc_trim) call _fnc_parseAny;
     private _priority = 0;
 
     if (_setting select [0, count "force"] == "force") then {
@@ -68,6 +67,8 @@ _result = [];
     };
 
     if (_setting != "") then {
+        private _value = ((_x select [_indexEqualSign + 1]) call CBA_fnc_trim) call _fnc_parseAny;
+
         if !(_validate) then {
             _result pushBack [_setting, _value, _priority];
         } else {

@@ -30,6 +30,8 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+    // refresh priority to update overwrite color if current value is equal to overwrite
+    [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 }];
 
 {
@@ -66,6 +68,8 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 
         // automatically check "overwrite client" for mission makers qol
         [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+        // refresh priority to update overwrite color if current value is equal to overwrite
+        [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
     }];
 } forEach [
     [IDC_SETTING_TIME_HOURS, floor (_currentValue / 3600)],

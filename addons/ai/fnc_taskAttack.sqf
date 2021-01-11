@@ -26,7 +26,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_group", "_position", ["_radius", 0], ["_override", false]];
+params ["_group", "_position", ["_radius", -1], ["_override", false]];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
@@ -34,6 +34,9 @@ if !(local _group) exitWith {}; // Don't create waypoints on each machine
 // Allow TaskAttack to override other set waypoints
 if (_override) then {
     [_group] call CBA_fnc_clearWaypoints;
+    {
+        _x enableAI "PATH";
+    } forEach units _group;
 };
 
 [_group, _position, _radius, "SAD", "COMBAT", "RED"] call CBA_fnc_addWaypoint;

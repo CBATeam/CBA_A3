@@ -10,7 +10,7 @@ Parameters:
     1: _switchTo         - Switch to "next" or "prev" attachement <STRING>
 
 Returns:
-    _success - If switching was possible and keybind should be handeled <BOOLEAN>
+    _success - If switching was possible and keybind should be handled <BOOLEAN>
 
 Examples:
     (begin example)
@@ -28,6 +28,8 @@ private ["_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
 private _cw = currentWeapon _unit;
 
+if !(_unit call CBA_fnc_canUseWeapon) exitWith {false};
+
 private _currWeaponType = call {
     if (_cw == "") exitWith {_currItem = ""; -1};
     if (_cw == primaryWeapon _unit) exitWith {_currItem = (primaryWeaponItems _unit) select _itemType; 0};
@@ -36,7 +38,7 @@ private _currWeaponType = call {
     _currItem = "";
     -1
 };
-if (_currWeaponType < 0) exitWith {hint "You are not holding a weapon!"; false};
+if (_currWeaponType < 0) exitWith {false};
 
 #define __cfgWeapons configfile >> "CfgWeapons"
 #define __currItem __cfgWeapons >> _currItem
@@ -56,23 +58,35 @@ if (!isNil "_switchItem") then {
     switch (_currWeaponType) do {
         case 0: {
             _unit removePrimaryWeaponItem _currItem;
-            _unit addPrimaryWeaponItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addPrimaryWeaponItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
         case 1: {
             _unit removeHandgunItem _currItem;
-            _unit addHandgunItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addHandgunItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
         case 2: {
             _unit removeSecondaryWeaponItem _currItem;
-            _unit addSecondaryWeaponItem _switchItem;
+            [{
+                params ["_unit", "", "_switchItem"];
+                _unit addSecondaryWeaponItem _switchItem;
+                ["CBA_attachmentSwitched", _this] call CBA_fnc_localEvent;
+            }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
     };
     private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
+    private _switchItemHintImage = getText (__cfgWeapons >> _switchItem >> "picture");
     if !(_switchItemHintText isEqualTo "") then {
-        hintSilent format ["%1", _switchItemHintText];
+        [[_switchItemHintImage, 2.0], [_switchItemHintText], true] call CBA_fnc_notify;
     };
     playSound "click";
-    ["CBA_attachmentSwitched", [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_localEvent;
 } else {
     playSound "ClickSoft";
 };

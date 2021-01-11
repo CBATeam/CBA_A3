@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Vectors">
         <Key ID="STR_CBA_Vectors_Component">
@@ -12,6 +12,8 @@
             <French>Community Base Addons - Vecteurs</French>
             <Polish>Community Base Addons - Wektory</Polish>
             <Turkish>Community Base Addons - Vektörler</Turkish>
+            <Italian>Community Base Addons - Vettori</Italian>
+            <Czech>Community Base Addons - Vektory</Czech>
         </Key>
     </Package>
 </Project>

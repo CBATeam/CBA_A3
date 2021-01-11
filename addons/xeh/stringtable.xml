@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="XEH">
         <Key ID="STR_CBA_XEH_Component">
@@ -10,8 +10,10 @@
             <Portuguese>Extensões de Base Comunitária - Manipuladores Extendidos de Eventos</Portuguese>
             <Russian>Community Base Addons - Расширенные Обработчики Событий</Russian>
             <Polish>Community Base Addons - Rozszerzona Obsługa Zdarzeń</Polish>
-            <French>Community Base Addons - Gestionnaires d'évènement étendus</French>
+            <French>Community Base Addons - Gestionnaires d'événements étendu</French>
             <Turkish>Community Base Addons - Geliştirmiş Durum İşlenimi</Turkish>
+            <Italian>Community Base Addons - Gestore di Eventi Esteso</Italian>
+            <Czech>Community Base Addons - Rozšířené ovladače událostí</Czech>
         </Key>
     </Package>
 </Project>

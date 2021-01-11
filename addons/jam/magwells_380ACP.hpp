@@ -1,4 +1,4 @@
-    class CBA_380ACP_CZ82 {};           // CZ 83
+    class CBA_380ACP_CZ82 {};           // CZ 82, CZ-83
     class CBA_380ACP_Fort12 {};         // Fort-12
     class CBA_380ACP_Glock_Slim {};     // Slimline Glock in .380 ACP (Glock 42)
     class CBA_380ACP_Glock_SubC {};     // Subcompact Glock in .380 ACP (Glock 28)
@@ -12,4 +12,7 @@
     class CBA_380ACP_PP {};             // Walther PP in .380 ACP
     class CBA_380ACP_PP19 {};           // PP-19 Bizon-2-02
     class CBA_380ACP_PPK {};            // Walther PPK in .380 ACP
+    class CBA_380ACP_Vz22Pistol {};     // vz. 22, vz. 24 pistols
+    class CBA_380ACP_Vz38Pistol {};     // vz. 38 pistol
+    class CBA_380ACP_Vz38SMG {};        // vz. 38 SMG
     class CBA_380ACP_Vz64 {};           // Škorpion (vz. 64, vz. 83)

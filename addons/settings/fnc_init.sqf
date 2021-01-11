@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_settings_fnc_init
+Internal Function: CBA_settings_fnc_init
 
 Description:
     Creates a new setting for that session.
@@ -28,7 +28,7 @@ Examples:
         // LIST --- extra arguments: [_values, _valueTitles, _defaultIndex]
         ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], ["enabled","disabled"], 1]] call cba_settings_fnc_init;
 
-        // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals]
+        // SLIDER --- extra arguments: [_min, _max, _default, _trailingDecimals, _isPercentage]
         ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call cba_settings_fnc_init;
 
         // COLOR PICKER --- extra argument: _color
@@ -133,10 +133,10 @@ switch (toUpper _settingType) do {
         _settingData append [_values, _labels, _tooltips];
     };
     case "SLIDER": {
-        _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]]];
+        _valueInfo params [["_min", 0, [0]], ["_max", 1, [0]], ["_default", 0, [0]], ["_trailingDecimals", 2, [0]], ["_isPercentage", false, [false]]];
 
         _defaultValue = _default;
-        _settingData append [_min, _max, _trailingDecimals];
+        _settingData append [_min, _max, _trailingDecimals, _isPercentage];
     };
     case "COLOR": {
         _defaultValue = [_valueInfo] param [0, [1, 1, 1], [[]], [3, 4]];

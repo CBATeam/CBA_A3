@@ -15,6 +15,8 @@ class CfgFunctions {
             PATHTO_FNC(join);
             PATHTO_FNC(reject);
             PATHTO_FNC(select);
+            PATHTO_FNC(selectBest);
+            PATHTO_FNC(selectRandomArray);
             PATHTO_FNC(shuffle);
             PATHTO_FNC(sortNestedArray);
         };

@@ -2,14 +2,20 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_CBA_Author";
         name = CSTRING(component);
-        url = "$STR_CBA_URL";
-        units[] = {"CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget"};
+        units[] = {
+            "CBA_B_InvisibleTarget","CBA_O_InvisibleTarget","CBA_I_InvisibleTarget",
+            "CBA_B_InvisibleTargetVehicle","CBA_O_InvisibleTargetVehicle","CBA_I_InvisibleTargetVehicle",
+            "CBA_B_InvisibleTargetAir","CBA_O_InvisibleTargetAir","CBA_I_InvisibleTargetAir",
+            "CBA_BuildingPos"
+        };
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common"};
-        version = VERSION;
+        author = "$STR_CBA_Author";
         authors[] = {"Rommel"};
+        url = "$STR_CBA_URL";
+        VERSION_CONFIG;
     };
 };
 
@@ -17,3 +23,4 @@ class CfgPatches {
 #include "CfgVehicles.hpp"
 #include "CfgVehicleIcons.hpp"
 #include "CfgWaypoints.hpp"
+#include "CfgAddons.hpp"

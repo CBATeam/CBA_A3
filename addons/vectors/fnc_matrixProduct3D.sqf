@@ -7,6 +7,8 @@ Description:
 
     Only accepts 3x3 matrices.
 
+    DEPRECATED. Use matrixMultiply instead.
+
 Parameters:
     _matrixA      - first 3x3 matrix. <ARRAY>
     _matrixB      - second 3x3 matrix. <ARRAY>
@@ -26,8 +28,4 @@ Author:
 
 params [["_matrixA", [], [[]], 3], ["_matrixB", [], [[]], 3]];
 
-_matrixB = [_matrixB] call CBA_fnc_matrixTranspose;
-_matrixA apply {
-    private _rowA = _x; 
-    _matrixB apply {_rowA vectorDotProduct _x}
-} // return
+_matrixA matrixMultiply _matrixB

@@ -105,6 +105,7 @@
 
 #define COLOR_APPLIES [0, 0.95, 0, 1]
 #define COLOR_OVERWRITTEN [0.95, 0, 0, 1]
+#define COLOR_OVERWRITTEN_EQUAL [0.95, 0.55, 0, 1]
 #define COLOR_NEED_RESTART [0.95, 0.95, 0, 1]
 
 #define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
@@ -132,11 +133,13 @@
     (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [nil, [setting,  "server"] call FUNC(priority)]] select 1\
 ]; ["client", "mission", "server"] select (_arr find selectMax _arr)})
 
-#define TEMP_VALUE(setting) ([\
+#define TEMP_VALUE_SOURCE(setting,source) ([\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [[setting,  "client"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(missionTemp)) getVariable [setting, [[setting, "mission"] call FUNC(get), nil]] select 0,\
     (uiNamespace getVariable QGVAR(serverTemp))  getVariable [setting, [[setting,  "server"] call FUNC(get), nil]] select 0\
-] select (["client", "mission", "server"] find TEMP_PRIORITY(setting)))
+] select (["client", "mission", "server"] find (source)))
+
+#define TEMP_VALUE(setting) TEMP_VALUE_SOURCE(setting,TEMP_PRIORITY(setting))
 
 #define ASCII_NEWLINE 10
 #define ASCII_CARRIAGE_RETURN 13
@@ -163,7 +166,10 @@
 #define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == 2)
 
 #define SANITIZE_PRIORITY(setting,priority,source) (call {\
-    private _priority = [0,1,2] select priority;\
+    private _priority = priority;\
+    if (_priority isEqualType false) then {\
+        _priority = parseNumber _priority;\
+    };\
     if (IS_GLOBAL_SETTING(setting) && {source != "mission"}) exitWith {_priority max 1};\
     if (IS_LOCAL_SETTING(setting)) exitWith {_priority min 0};\
     _priority\
