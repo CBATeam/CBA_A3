@@ -7,19 +7,19 @@ Description:
     of the array elements.
 
 Parameters:
-    _array       - The array from which the standard deviation is computed. <ARRAY>
-    _ddof        - The delta degrees of freedom (see description above). [optional] <SCALAR> (default: 0)
-                    The population standard deviation is returned for _ddof = 0.
-                    The sample standard deviation is returned for _ddof = 1.
+    _array  - The array from which the standard deviation is computed <ARRAY>
+    _ddof   - The delta degrees of freedom [optional] <SCALAR> (default: 0)
+              _ddof = 0 - Population standard deviation
+              _ddof = 1 - Sample standard deviation
 
 Returns:
-    _stdDev      - The standard deviation <SCALAR>
+    _stdDev - The standard deviation <SCALAR>
 
 Examples:
     (begin example)
-    // returns roughly 5.564...
+    // returns roughly 5.564
     [[1,4,16,4,1]] call CBA_fnc_stdDev;
-    // returns roughly 6.221...
+    // returns roughly 6.221
     [[1,4,16,4,1], 1] call CBA_fnc_stdDev;
     (end)
 
@@ -30,7 +30,6 @@ Author:
 params [["_array", [], [[]]], ["_ddof", 0, [0]]];
 
 private _N = (count _array) - _ddof;
-// Prevent zero division and negative root error
 if (_N <= 0) exitWith {0};
 
 private _sqrResSum = 0;
