@@ -92,5 +92,15 @@
             <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
             <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
         </Key>
+        <Key ID="STR_CBA_Diagnostic_Category">
+            <English>CBA Diagnostics</English>
+            <German>CBA Diagnose</German>
+            <Polish>CBA Diagnostyka</Polish>
+            <Italian>Armi Diagnostica</Italian>
+            <Czech>Diagnostika CBA</Czech>
+            <Turkish>CBA Teşhis</Turkish>
+            <French>CBA Diagnostics</French>
+            <Russian>CBA Диагностика</Russian>
+        </Key>
     </Package>
 </Project>
