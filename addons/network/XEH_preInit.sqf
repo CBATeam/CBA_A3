@@ -33,9 +33,25 @@ ADDON = false;
 
 ["CAManBase", "Local", {
     params ["_unit", "_local"];
-    if !(_local) then {
-        private _loadout = getUnitLoadout _unit;
-        [QGVAR(restoreLoadout), [_unit, _loadout], _unit] call CBA_fnc_targetEvent;
+    if (_local) then {
+        // Enable loadout restoration for units transferred to the machine
+        _unit setVariable [QGVAR(enableRestoreLoadout), true];
+    } else {
+        // Broadcast loadout to new owner if local was not triggered by init
+        if !(_unit getVariable [QGVAR(enableRestoreLoadout), false]) then {
+            _unit setVariable [QGVAR(enableRestoreLoadout), true];
+        } else {
+            private _loadout = getUnitLoadout _unit;
+            [QGVAR(restoreLoadout), [_unit, _loadout], _unit] call CBA_fnc_targetEvent;
+        };
+    };
+}] call CBA_fnc_addClassEventHandler;
+
+// Enable loadout restoration for units spawned on the machine
+["CAManBase", "Init", {
+    params ["_unit"];
+    if (local _unit) then {
+        _unit setVariable [QGVAR(enableRestoreLoadout), true];
     };
 }] call CBA_fnc_addClassEventHandler;
 
