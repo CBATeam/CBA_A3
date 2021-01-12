@@ -29,7 +29,7 @@ private _vehicle = vehicle _unit;
 
 private _turret = _vehicle unitTurret _unit;
 
-// driver will be returned as [] to be consistant with previous behaviour
+// driver will be returned as [] to be consistent with previous behaviour
 if (_turret isEqualTo [-1]) exitWith { [] };
 
 _turret
