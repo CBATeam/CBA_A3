@@ -38,9 +38,7 @@ ADDON = false;
         _unit setVariable [QGVAR(enableRestoreLoadout), true];
     } else {
         // Broadcast loadout to new owner if local was not triggered by init
-        if !(_unit getVariable [QGVAR(enableRestoreLoadout), false]) then {
-            _unit setVariable [QGVAR(enableRestoreLoadout), true];
-        } else {
+        if (_unit getVariable [QGVAR(enableRestoreLoadout), false]) then {
             private _loadout = getUnitLoadout _unit;
             [QGVAR(restoreLoadout), [_unit, _loadout], _unit] call CBA_fnc_targetEvent;
         };
