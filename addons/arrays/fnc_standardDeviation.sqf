@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_stdDev
+Function: CBA_fnc_standardDeviation
 
 Description:
     Returns the standard deviation, a measure of the spread of a distribution,
@@ -18,9 +18,9 @@ Returns:
 Examples:
     (begin example)
     // returns roughly 5.564
-    [[1,4,16,4,1]] call CBA_fnc_stdDev;
+    [[1,4,16,4,1]] call CBA_fnc_standardDeviation;
     // returns roughly 6.221
-    [[1,4,16,4,1], 1] call CBA_fnc_stdDev;
+    [[1,4,16,4,1], 1] call CBA_fnc_standardDeviation;
     (end)
 
 Author:
@@ -29,13 +29,16 @@ Author:
 
 params [["_array", [], [[]]], ["_ddof", 0, [0]]];
 
-private _N = (count _array) - _ddof;
-if (_N <= 0) exitWith {0};
+private _count = count _array;
+if (_count <= _ddof) exitWith {0};
 
-private _sqrResSum = 0;
-private _mean = _array call BIS_fnc_arithmeticMean;
+private _mean = 0;
+{_mean = _mean + _x} forEach _array;
+_mean = _mean / _count;
+
+private _resSumSqrs = 0;
 {
-    _sqrResSum = _sqrResSum + (_x - _mean)^2;
+    _resSumSqrs = _resSumSqrs + (_x - _mean)^2;
 } forEach _array;
 
-sqrt (_sqrResSum / _N) // return
+sqrt (_resSumSqrs / (_count - _ddof)) // return
