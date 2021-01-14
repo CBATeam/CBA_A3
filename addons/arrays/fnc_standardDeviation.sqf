@@ -7,10 +7,10 @@ Description:
     of the array elements.
 
 Parameters:
-    _array  - The array from which the standard deviation is computed <ARRAY>
-    _ddof   - The delta degrees of freedom [optional] <SCALAR> (default: 0)
-              _ddof = 0 - Population standard deviation
-              _ddof = 1 - Sample standard deviation
+    _numbers - The array from which the standard deviation is computed <ARRAY>
+    _ddof    - The delta degrees of freedom [optional] <SCALAR> (default: 0)
+               _ddof = 0 - Population standard deviation
+               _ddof = 1 - Sample standard deviation
 
 Returns:
     _stdDev - The standard deviation <SCALAR>
@@ -27,18 +27,18 @@ Author:
     Kex
 ---------------------------------------------------------------------------- */
 
-params [["_array", [], [[]]], ["_ddof", 0, [0]]];
+params [["_numbers", [], [[]]], ["_ddof", 0, [0]]];
 
-private _count = count _array;
+private _count = count _numbers;
 if (_count <= _ddof) exitWith {0};
 
 private _mean = 0;
-{_mean = _mean + _x} forEach _array;
+{_mean = _mean + _x} forEach _numbers;
 _mean = _mean / _count;
 
 private _resSumSqrs = 0;
 {
     _resSumSqrs = _resSumSqrs + (_x - _mean)^2;
-} forEach _array;
+} forEach _numbers;
 
 sqrt (_resSumSqrs / (_count - _ddof)) // return
