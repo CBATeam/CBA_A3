@@ -34,9 +34,4 @@ _result = [] call CBA_fnc_findNil;
 _expected = -1;
 TEST_OP(_result,==,_expected,_fn);
 
-// Return a not found when a non array is given
-_result = "not an array" call CBA_fnc_findNil;
-_expected = -1;
-TEST_OP(_result,==,_expected,_fn);
-
 nil;
