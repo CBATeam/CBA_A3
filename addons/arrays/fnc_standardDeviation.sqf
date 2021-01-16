@@ -33,12 +33,12 @@ private _count = count _numbers;
 if (_count <= _ddof) exitWith {0};
 
 private _mean = 0;
-{_mean = _mean + _x} count _numbers;
+{_mean = _mean + _x} forEach _numbers;
 _mean = _mean / _count;
 
 private _resSumSqrs = 0;
 {
     _resSumSqrs = _resSumSqrs + (_x - _mean)^2;
-} count _numbers;
+} forEach _numbers;
 
 sqrt (_resSumSqrs / (_count - _ddof)) // return
