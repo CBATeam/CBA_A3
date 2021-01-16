@@ -7,7 +7,7 @@ SCRIPT(test_standardDeviation);
 
 // ----------------------------------------------------------------------------
 
-private ["_original", "_expected", "_result", "_fn"];
+private ["_expected", "_result", "_fn"];
 
 _fn = "CBA_fnc_standardDeviation";
 LOG("Testing " + _fn);
