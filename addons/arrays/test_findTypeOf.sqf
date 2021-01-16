@@ -43,6 +43,16 @@ _result = [[], typeOf player] call CBA_fnc_findTypeOf;
 _expected = -1;
 TEST_OP(_result,==,_expected,_fn);
 
+// Return not found, when a non array is passed
+_result = ["not an array", typeOf player] call CBA_fnc_findTypeOf;
+_expected = -1;
+TEST_OP(_result,==,_expected,_fn);
+
+// Return not found, when search parameter is not an object or string
+_result = [["", player, 5, objNull], 5] call CBA_fnc_findTypeOf;
+_expected = -1;
+TEST_OP(_result,==,_expected,_fn);
+
 // Return not found, when parameters are nil
 _result = [nil, nil] call CBA_fnc_findTypeOf;
 _expected = -1;

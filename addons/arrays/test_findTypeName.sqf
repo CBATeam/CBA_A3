@@ -106,6 +106,11 @@ _result = [[], "STRING"] call CBA_fnc_findTypeName;
 _expected = -1;
 TEST_OP(_result,==,_expected,_fn);
 
+// Return not found if non array is given
+_result = ["not an array", "STRING"] call CBA_fnc_findTypeName;
+_expected = -1;
+TEST_OP(_result,==,_expected,_fn);
+
 // Return not found if parameters are nil
 _result = [nil, nil] call CBA_fnc_findTypeName;
 _expected = -1;

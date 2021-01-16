@@ -21,6 +21,10 @@ TEST_OP(count _result,==,count _original,_fn);
     TEST_OP(_x,in,_original,_fn);
 } forEach _result;
 
+_original = [1, 2, 3];
+_result = _original call CBA_fnc_shuffle;
+TEST_OP(count _result,==,1,_fn);
+
 _original = [];
 _result = [_original] call CBA_fnc_shuffle;
 TEST_OP(count _result,==,count _original,_fn);

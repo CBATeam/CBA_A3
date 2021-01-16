@@ -56,6 +56,10 @@ TEST_TRUE(isNil "_result",_fn);
 _result = [1, "not a number", 3, 4, 5] call CBA_fnc_findMax;
 TEST_TRUE(isNil "_result",_fn);
 
+// Test invalid array given
+_result = "not an array" call CBA_fnc_findMax;
+TEST_TRUE(isNil "_result",_fn);
+
 // Test empty array given
 _result = [] call CBA_fnc_findMax;
 TEST_TRUE(isNil "_result",_fn);
