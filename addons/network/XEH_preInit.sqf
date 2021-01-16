@@ -15,15 +15,14 @@ ADDON = false;
 
 ["CAManBase", "Local", {
     params ["_unit", "_local"];
-    if (_local) then {
-        _unit setVariable [QGVAR(wasLocal), true];
-    } else {
+    if !(_local) then {
         // Broadcast loadout to new owner if unit was once local on this machine
         if (GVAR(enableLoadoutValidation) && {_unit getVariable [QGVAR(wasLocal), false]}) then {
             private _loadout = getUnitLoadout _unit;
             [QGVAR(validateLoadout), [_unit, _loadout], _unit] call CBA_fnc_targetEvent;
         };
     };
+    _unit setVariable [QGVAR(wasLocal), _local];
 }] call CBA_fnc_addClassEventHandler;
 
 ["CAManBase", "Init", {
