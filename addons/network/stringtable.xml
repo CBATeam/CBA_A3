@@ -15,5 +15,15 @@
             <Italian>Community Base Addons - Rete</Italian>
             <Czech>Community Base Addons - Síť</Czech>
         </Key>
+        <Key ID="STR_CBA_Network_EnableLoadoutValidation">
+            <English>Enable loadout validation</English>
+            <German>Überprüfung von Ausrüstungen aktivieren</German>
+            <French>Activer la validation des équipements</French>
+        </Key>
+        <Key ID="STR_CBA_Network_EnableLoadoutValidationDescription">
+            <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
+            <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
+            <French>Valider l'équipement des unités. Correction pour l'erreur suivante: Les unités sont nues après changer la localité</French>
+        </Key>
     </Package>
 </Project>
