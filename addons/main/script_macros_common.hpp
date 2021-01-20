@@ -1814,7 +1814,7 @@ Author:
 Macro: FILE_EXISTS
     Check if a file exists on machines with interface
 
-    Reports "false" if the file does not exist and throws an error in RPT.
+    Reports "false" if the file does not exist.
 
 Parameters:
     FILE - Path to the file
