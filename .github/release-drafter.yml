@@ -25,11 +25,9 @@ categories:
 exclude-labels:
   - 'ignore changelog'
 
-change-template: '- $TITLE (#$NUMBER) __$AUTHOR__'
+change-template: '- $TITLE (#$NUMBER) $AUTHOR'
 template: |
   DESCRIPTION HERE
-
-  **CHANGE LOG SUMMARY:**
 
   $CHANGES
 
