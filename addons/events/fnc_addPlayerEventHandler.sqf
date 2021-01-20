@@ -66,10 +66,7 @@ private _id = switch (_type) do {
     case "turretweapon": {
         if (_applyRetroactively) then {
             private _vehicle = vehicle GVAR(oldUnit);
-            private _turret = [];
-            if (GVAR(oldUnit) != _vehicle) then {
-                _turret = ([[-1]] + allTurrets [_vehicle, true]) select {_vehicle turretUnit _x == GVAR(oldUnit)} param [0, []];
-            };
+            private _turret = _vehicle unitTurret GVAR(oldUnit);
             [GVAR(oldUnit), _vehicle currentWeaponTurret _turret, ""] call _function;
         };
         [QGVAR(turretWeaponEvent), _function] call CBA_fnc_addEventHandler // return id
@@ -101,10 +98,7 @@ private _id = switch (_type) do {
     case "turret": {
         if (_applyRetroactively) then {
             private _vehicle = vehicle GVAR(oldUnit);
-            private _turret = [];
-            if (GVAR(oldUnit) != _vehicle) then {
-                _turret = ([[-1]] + allTurrets [_vehicle, true]) select {_vehicle turretUnit _x == GVAR(oldUnit)} param [0, []];
-            };
+            private _turret = _vehicle unitTurret GVAR(oldUnit);
             [GVAR(oldUnit), _turret, []] call _function;
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id

@@ -89,4 +89,5 @@
     "FiredMan", \
     "TurnIn", \
     "TurnOut", \
-    "Deleted"
+    "Deleted", \
+    "Disassembled"
