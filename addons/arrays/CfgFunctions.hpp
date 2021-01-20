@@ -19,6 +19,7 @@ class CfgFunctions {
             PATHTO_FNC(selectRandomArray);
             PATHTO_FNC(shuffle);
             PATHTO_FNC(sortNestedArray);
+            PATHTO_FNC(standardDeviation);
         };
     };
 };
