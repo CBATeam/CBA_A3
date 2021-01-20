@@ -8,9 +8,9 @@ on:
 jobs:
   draft:
     runs-on: ubuntu-latest
+    if: github.repository == 'CBATeam/CBA_A3'
     steps:
-      - name: Release Drafter
-        if: github.repository == 'CBATeam/CBA_A3'
-        uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Release Drafter
+      uses: release-drafter/release-drafter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
