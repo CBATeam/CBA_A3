@@ -1828,17 +1828,4 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define FILE_EXISTS(FILE) (call {\
-    private _return = false;\
-    isNil {\
-        private _control = (uiNamespace getVariable ["RscDisplayMain", displayNull]) ctrlCreate ["RscHTML", -1];\
-        if (isNull _control) then {\
-            _return = loadFile (FILE) != "";\
-        } else {\
-            _control htmlLoad (FILE);\
-            _return = ctrlHTMLLoaded _control;\
-            ctrlDelete _control;\
-        };\
-    };\
-    _return\
-})
+#define FILE_EXISTS(FILE) (fileExists FILE)
