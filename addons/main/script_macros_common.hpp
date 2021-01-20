@@ -1828,4 +1828,4 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define FILE_EXISTS(FILE) (fileExists FILE)
+#define FILE_EXISTS(FILE) (fileExists (FILE))
