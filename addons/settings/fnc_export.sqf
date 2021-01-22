@@ -43,7 +43,7 @@ private _temp = [];
     };
 
     if (_exportDefault || {
-        (_value isNotEqualTo _defaultValue) ||
+        _value isNotEqualTo _defaultValue ||
         SANITIZE_PRIORITY(_setting,_priority,_source) > SANITIZE_PRIORITY(_setting,0,_source)
     }) then {
         _temp pushBack [_category, _setting, _value, _priority];
