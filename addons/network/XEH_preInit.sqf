@@ -8,7 +8,7 @@ ADDON = false;
 [QGVAR(validateLoadout), {
     params ["_unit", "_loadout"];
 
-    if (GVAR(enableLoadoutValidation) && !(getUnitLoadout _unit isEqualTo _loadout)) then {
+    if (GVAR(LoadoutValidation) > 0 && !(getUnitLoadout _unit isEqualTo _loadout)) then {
         _unit setUnitLoadout _loadout;
     };
 }] call CBA_fnc_addEventHandler;
@@ -17,7 +17,8 @@ ADDON = false;
     params ["_unit", "_local"];
     if !(_local) then {
         // Broadcast loadout to new owner if unit was once local on this machine
-        if (GVAR(enableLoadoutValidation) && {_unit getVariable [QGVAR(wasLocal), false]}) then {
+        if (GVAR(LoadoutValidation) > 0 && {_unit getVariable [QGVAR(wasLocal), false]}) then {
+            if (GVAR(LoadoutValidation) == 1 && {playableUnits findIf {_x == _unit} == -1}) exitWith {};
             private _loadout = getUnitLoadout _unit;
             [QGVAR(validateLoadout), [_unit, _loadout], _unit] call CBA_fnc_targetEvent;
         };
