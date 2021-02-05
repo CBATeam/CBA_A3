@@ -8,7 +8,7 @@ Description:
 
 Parameters:
     _id - the promise ID, local to the sender.
-    _mthd - The method to execute, either string (var name) or code.
+    _method - The method to execute, either string (var name) or code.
     _args - Arguments to pass to the method.
 
 Returns:
@@ -22,11 +22,11 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 
-params ["_id", "_mthd", "_args"];
-private _res = if (_mthd isEqualType "") then {
-    _args call (missionNamespace getVariable _mthd);
+params ["_id", "_method", "_args"];
+private _res = if (_method isEqualType "") then {
+    _args call (missionNamespace getVariable _method);
 } else {
-    _args call _mthd;
+    _args call _method;
 };
 [_id, _res] remoteExec [QGVAR(requests), remoteExecutedOwner, false];
 nil
