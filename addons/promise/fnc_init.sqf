@@ -2,7 +2,7 @@
 Function: CBA_fnc_promise_init
 
 Description:
-    Initializes the required variabels for the promise system.
+    Initializes the required variables for the promise system.
 
 Parameters:
     Nothing
