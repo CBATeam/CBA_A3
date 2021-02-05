@@ -28,5 +28,5 @@ private _res = if (_mthd isEqualType "") then {
 } else {
     _args call _mthd;
 };
-[_id, _res] remoteExec ["Promise_Callback", remoteExecutedOwner, false];
+[_id, _res] remoteExec [QGVAR(requests), remoteExecutedOwner, false];
 nil

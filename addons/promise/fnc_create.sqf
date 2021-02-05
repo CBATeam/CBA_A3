@@ -47,5 +47,5 @@ isNil {
     { _index = GVAR(requests) pushBack [_args, _cb, _stamp]; }
     else { GVAR(requests) set [_index, [_args, _cb, _stamp]]; }
 };
-[_index, _mthd, _mthdArgs] remoteExec ["Promise_Receiver", _rcv, false];
+[_index, _mthd, _mthdArgs] remoteExec [QGVAR(requests), _rcv, false];
 [_index, _stamp]
