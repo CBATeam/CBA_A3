@@ -6,8 +6,8 @@ Description:
 
 Parameters:
     _receiver - remoteExecCall target. <NUMBER, OBJECT, STRING, SIDE, GROUP, ARRAY>
-    _method - either string (methodname) or code to execute on target. <STRING, CODE>
-    _methodArgs - custom arguments to pass to the target. <ANY>
+    _function - either string (functionname) or code to execute on target. <STRING, CODE>
+    _functionArgs - custom arguments to pass to the target. <ANY>
     _args - args to pass to the callback (see next param) <ANY>
     _callback - callback for the promise (executed on current machine). <CODE>
           Will receive an array, with index 0 being what is passed include
@@ -20,7 +20,7 @@ Returns:
 Example:
     (begin example)
         [
-            random_player, "random_method", [],
+            random_player, "random_function", [],
             [_someLocalVariable], {
                 params ["_args", "_result"];
                 _args params  ["_someLocalVariable"];
@@ -34,7 +34,7 @@ Author:
     X39
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
-params ["_receiver", "_method", "_methodArgs", "_args", "_callback"];
+params ["_receiver", "_function", "_functionArgs", "_args", "_callback"];
 private _stamp = diag_tickTime;
 private _index = 0;
 isNil {
@@ -46,5 +46,5 @@ isNil {
         GVAR(requests) set [_index, [_args, _callback, _stamp]];
     }
 };
-[_index, _method, _methodArgs] remoteExec [QGVAR(requests), _receiver, false];
+[_index, _function, _functionArgs] remoteExec [QGVAR(requests), _receiver, false];
 [_index, _stamp]
