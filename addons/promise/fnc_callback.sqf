@@ -3,9 +3,9 @@ Function: CBA_fnc_promise_callback
 
 Description:
     Method that gets called when the receiver is done.
-	Will in the end execute the promise-code locally.
-	
-	WARNING! Not intended to be called by client-code!
+    Will in the end execute the promise-code locally.
+    
+    WARNING! Not intended to be called by client-code!
 
 Parameters:
     _id - The Promise-ID of the now finished promise.

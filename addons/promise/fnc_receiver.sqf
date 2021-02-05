@@ -3,8 +3,8 @@ Function: CBA_fnc_promise_receiver
 
 Description:
     Method that gets called when a sender has a request.
-	
-	WARNING! Not intended to be called by client-code!
+    
+    WARNING! Not intended to be called by client-code!
 
 Parameters:
     _id - the promise ID, local to the sender.
@@ -24,9 +24,9 @@ Author:
 
 params ["_id", "_mthd", "_args"];
 private _res = if (_mthd isEqualType "") then {
-	_args call (missionNamespace getVariable _mthd);
+    _args call (missionNamespace getVariable _mthd);
 } else {
-	_args call _mthd;
+    _args call _mthd;
 };
 [_id, _res] remoteExec ["Promise_Callback", remoteExecutedOwner, false];
 nil

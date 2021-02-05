@@ -20,9 +20,9 @@ Author:
 ---------------------------------------------------------------------------- */
 #include "script_component.hpp"
 isNil {
-	if isNil QGVAR(requests) then {
-		GVAR(requests) = [];
-	};
+    if isNil QGVAR(requests) then {
+        GVAR(requests) = [];
+    };
 };
 
 nil
