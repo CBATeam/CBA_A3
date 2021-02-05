@@ -5,9 +5,6 @@ Description:
     Creates and executes a new Promise.
 
 Parameters:
-    _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
-    _params  - [sound, maxTitlesDistance,speed] or "sound" <ARRAY, STRING>
-
     _rcv - remoteExecCall target.
     _mthd - either string (methodname) or code to execute on target.
     _mthdArgs - custom arguments to pass to the target.
