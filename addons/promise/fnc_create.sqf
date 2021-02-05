@@ -5,18 +5,17 @@ Description:
     Creates and executes a new Promise.
 
 Parameters:
-    _rcv - remoteExecCall target.
-    _mthd - either string (methodname) or code to execute on target.
-    _mthdArgs - custom arguments to pass to the target.
-    _args - args to pass to the callback (see next param)
-    _cb - callback for the promise (executed on current machine).
+    _rcv - remoteExecCall target. <NUMBER, OBJECT, STRING, SIDE, GROUP, ARRAY>
+    _mthd - either string (methodname) or code to execute on target. <STRING, CODE>
+    _mthdArgs - custom arguments to pass to the target. <ANY>
+    _args - args to pass to the callback (see next param) <ANY>
+    _cb - callback for the promise (executed on current machine). <CODE>
           Will receive an array, with index 0 being what is passed include
           _args and index 1 being whatever is returned by the target invokation
           [_args, _mthdResult]
 
 Returns:
-    Identifier that allows to check if a promise is yet done.
-    See CBA_fnc_promise_done.
+    Identifier that allows to check if a promise is yet done. See CBA_fnc_promise_done. <ARRAY>
 
 Example:
     (begin example)

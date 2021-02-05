@@ -7,9 +7,9 @@ Description:
     WARNING! Not intended to be called by client-code!
 
 Parameters:
-    _id - the promise ID, local to the sender.
-    _method - The method to execute, either string (var name) or code.
-    _args - Arguments to pass to the method.
+    _id - the promise ID, local to the sender. <ARRAY>
+    _method - The method to execute, either string (var name) or code. <STRING, CODE>
+    _args - Arguments to pass to the method. <ANY>
 
 Returns:
     Nothing

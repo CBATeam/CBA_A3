@@ -8,8 +8,8 @@ Description:
     WARNING! Not intended to be called by client-code!
 
 Parameters:
-    _id - The Promise-ID of the now finished promise.
-    _data  - The result data of the now finished promise.
+    _id - The Promise-ID of the now finished promise. <ARRAY>
+    _data  - The result data of the now finished promise. <ANY>
 
 Returns:
     Nothing
