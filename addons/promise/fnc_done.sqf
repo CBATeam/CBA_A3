@@ -21,4 +21,4 @@ Author:
 #include "script_component.hpp"
 params ["_index", "_stamp"];
 private _promise = GVAR(requests) select 0;
-if (_promise isEqualTo 0) { true } else { _promise select 2 != _stamp }
+_promise isEqualTo 0 || {_promise select 2 != _stamp}
