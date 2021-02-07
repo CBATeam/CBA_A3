@@ -7,7 +7,6 @@ import fnmatch
 import os
 import sys
 
-
 if sys.version_info.major == 2:
     import codecs
     open = codecs.open # pylint: disable=invalid-name,redefined-builtin
