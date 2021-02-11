@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3_Data_F_Oldman_Loadorder", "A3_Data_F_Mod_Loadorder"};
+        requiredAddons[] = {"A3_Data_F_AoW_Loadorder", "A3_Data_F_Mod_Loadorder"};
         author = "$STR_CBA_Author";
         authors[] = {"Spooner","Sickboy","Rocko"};
         url = "$STR_CBA_URL";
