@@ -23,7 +23,7 @@ with uiNamespace do {
 
     XEH_LOG("PreStart started.");
 
-    SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
+    SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compile preprocessFileLineNumbers _this"; //backwards comps  
     SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 
     PREP(initDisplay3DEN);
