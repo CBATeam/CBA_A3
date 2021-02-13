@@ -25,8 +25,8 @@ SCRIPT(getObjectConfig);
 
 params [["_object", "", ["", objNull]]];
 
-if (_object isEqualType objNull) then {
-    _object = typeOf _object;
+if (_object isEqualType objNull) exitWith {
+    configOf _object
 };
 
 private _result = configNull;
