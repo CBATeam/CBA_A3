@@ -35,9 +35,10 @@ private _compatibleItems = GVAR(namespace) getVariable _weapon;
 
 if (isNil "_compatibleItems") then {
     _compatibleItems = [];
-    private _cfgWeapon = configFile >> "CfgWeapons" >> _weapon;
+    private _cfgWeapons = configFile >> "CfgWeapons";
+    private _weaponConfig = _cfgWeapons >> _weapon;
 
-    if (isClass _cfgWeapon) then {
+    if (isClass _weaponConfig) then {
         {
             private _cfgCompatibleItems = _x >> "compatibleItems";
 
@@ -54,9 +55,12 @@ if (isNil "_compatibleItems") then {
                     } forEach configProperties [_cfgCompatibleItems, "isNumber _x"];
                 };
             };
-        } forEach configProperties [_cfgWeapon >> "WeaponSlotsInfo", "isclass _x"];
+        } forEach configProperties [_weaponConfig >> "WeaponSlotsInfo", "isClass _x"];
 
-        GVAR(namespace) setVariable [_weapon, _compatibleItems]; //save entry in cache
+        // Ensure item class names are in config case
+        _compatibleItems = _compatibleItems apply {configName (_cfgWeapons >> _x)};
+
+        GVAR(namespace) setVariable [_weapon, _compatibleItems]; // save entry in cache
     } else {
         ["'%1' not found in CfgWeapons", _weapon] call BIS_fnc_error;
     };

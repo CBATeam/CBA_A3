@@ -2,6 +2,7 @@
 #include "script_component.hpp"
 
 #define MAX_STATEMENTS 50
+#define INDENT_SPACES "    "
 
 params ["_display"];
 
@@ -63,7 +64,59 @@ _expression ctrlAddEventHandler ["KeyDown", {
 
         _this call FUNC(logStatement);
     };
+
+    if (_key isEqualTo DIK_TAB) then {
+        _expression setVariable [QGVAR(tabKey), [true, _shift]];
+    };
+
     false
+}];
+
+// Reset Tab status on autocomplete
+_expression ctrlAddEventHandler ["KeyUp", {
+    params ["_expression", "_key"];
+
+    if (_key isEqualTo DIK_TAB) then {
+        _expression setVariable [QGVAR(tabKey), nil];
+    };
+}];
+
+// Tab without autocomplete will move focus to another control, add whitespace
+_expression ctrlAddEventHandler ["KillFocus", {
+    params ["_expression"];
+
+    if (GVAR(ConsoleIndentType) == -1) exitWith {};
+
+    private _tabKey = _expression getVariable [QGVAR(tabKey), [false, false]];
+    if (_tabKey isEqualTo [true, false]) then {
+        (ctrlTextSelection _expression) params ["_selStart", "_selLength"];
+        private _text = ctrlText _expression;
+
+        // replace selection with whitespace
+        private _indentType = [INDENT_SPACES] select GVAR(ConsoleIndentType);
+        _expression ctrlSetText ([_text select [0, _selStart], _text select [_selStart + _selLength, count _text - 1]] joinString _indentType);
+        _expression ctrlSetTextSelection [_selStart + count _indentType, 0];
+
+        // change focus on next frame, using spawn as CBA_fnc_execNextFrame will not work in editor
+        _expression spawn {
+            ctrlSetFocus _this;
+        };
+    };
+
+    if (_tabKey isEqualTo [true, true]) then {
+        (ctrlTextSelection _expression) params ["_selStart"];
+        private _text = ctrlText _expression;
+
+        [_expression, _text, _selStart] call FUNC(removeIndentation);
+
+        // change focus on next frame, using spawn as CBA_fnc_execNextFrame will not work in editor
+        _expression spawn {
+            ctrlSetFocus _this;
+        };
+
+    };
+
+    _expression setVariable [QGVAR(tabDown), nil];
 }];
 
 private _expressionBackground = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND;
@@ -217,6 +270,37 @@ FUNC(nextStatement) = {
     // enable or disable PREV and NEXT button if needed
     _prevButton ctrlEnable (_statementIndex < count _prevStatements - 1);
     _nextButton ctrlEnable (_statementIndex > 0);
+};
+
+FUNC(removeIndentation) = {
+    params ["_control", "_text", "_index"];
+
+    private _chars = toArray _text;
+    private _indexRev = count _chars - _index;
+
+    reverse _chars;
+
+    private _stepBack = 0;
+    // whitespace type to remove
+    private _whitespace = [ASCII_SPACE, ASCII_TAB];
+    {
+        if !(_x in _whitespace) exitWith {};
+        // do not remove mixed whitespace types
+        _whitespace = [_x];
+
+        _chars set [_indexRev + _forEachIndex, -1];
+        INC(_stepBack);
+
+        // remove only one Tab
+        if (_x == ASCII_TAB) exitWith {};
+    } forEach (_chars select [_indexRev, count INDENT_SPACES]);
+
+    _chars = _chars - [-1];
+
+    reverse _chars;
+
+    _expression ctrlSetText toString _chars;
+    _expression ctrlSetTextSelection [_index - _stepBack, 0];
 };
 
 // remove forced pause for watch fields

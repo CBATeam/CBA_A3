@@ -32,7 +32,7 @@ private _vehicleOptic = "";
 
 if (_vehicle != _unit) then {
     // todo: turrets
-    _vehicleOptic = getText (configFile >> "CfgVehicles" >> typeOf _vehicle >> "CBA_ScriptedOpticClass");
+    _vehicleOptic = getText (configOf _vehicle >> "CBA_ScriptedOpticClass");
 };
 
 if (_vehicleOptic != "") exitWith {_vehicleOptic};

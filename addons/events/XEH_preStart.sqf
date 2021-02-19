@@ -13,4 +13,5 @@ if (hasInterface) then {
     PREP(mouseHandlerDown);
     PREP(mouseHandlerUp);
     PREP(mouseWheelHandler);
+    PREP(userKeyHandler);
 };

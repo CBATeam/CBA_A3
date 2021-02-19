@@ -7,6 +7,8 @@
         };
     };
 
+    class CBA_762x39_CZ807 {};          // 762x39mm CZ 807 magazines
+
     class CBA_762x39_RPK {};            // 40/45/75rnd RPK magazines
 
     class CBA_762x39_STANAG {};         // 762x39mm in a normal length STANAG mag, including small drums
