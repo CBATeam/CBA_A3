@@ -1812,9 +1812,9 @@ Author:
 
 /* -------------------------------------------
 Macro: FILE_EXISTS
-    Check if a file exists on machines with interface
+    Check if a file exists
 
-    Reports "false" if the file does not exist and throws an error in RPT.
+    Reports "false" if the file does not exist.
 
 Parameters:
     FILE - Path to the file
@@ -1828,17 +1828,4 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define FILE_EXISTS(FILE) (call {\
-    private _return = false;\
-    isNil {\
-        private _control = (uiNamespace getVariable ["RscDisplayMain", displayNull]) ctrlCreate ["RscHTML", -1];\
-        if (isNull _control) then {\
-            _return = loadFile (FILE) != "";\
-        } else {\
-            _control htmlLoad (FILE);\
-            _return = ctrlHTMLLoaded _control;\
-            ctrlDelete _control;\
-        };\
-    };\
-    _return\
-})
+#define FILE_EXISTS(FILE) (fileExists (FILE))
