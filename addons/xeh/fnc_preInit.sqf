@@ -148,17 +148,17 @@ GVAR(fallbackRunning) = false;
 
         _eventFunc params ["_funcAll", "_funcClient", "_funcServer"];
 
-        if !(_funcAll isEqualTo {}) then {
+        if (_funcAll isNotEqualTo {}) then {
             private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
 
-        if (!isDedicated && {!(_funcClient isEqualTo {})}) then {
+        if (!isDedicated && {_funcClient isNotEqualTo {}}) then {
             private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
 
-        if (isServer && {!(_funcServer isEqualTo {})}) then {
+        if (isServer && {_funcServer isNotEqualTo {}}) then {
             private _success = [_className, _eventName, _funcServer, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };

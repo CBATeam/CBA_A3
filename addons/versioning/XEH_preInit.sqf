@@ -47,8 +47,8 @@ FUNC(version_compare) = {
     params ["_value","_localValue"];
 
     //Handle non-number arrays - eg. {"mod", {"1.0"}, "(true)"}
-    if ((!(_value isEqualTo [])) && {!(_value isEqualTypeAll 0)}) exitWith {true};
-    if ((!(_localValue isEqualTo [])) && {!(_localValue isEqualTypeAll 0)}) exitWith {true};
+    if ((_value isNotEqualTo []) && {!(_value isEqualTypeAll 0)}) exitWith {true};
+    if ((_localValue isNotEqualTo []) && {!(_localValue isEqualTypeAll 0)}) exitWith {true};
 
     private _failed = false;
     private _c = count _localValue;

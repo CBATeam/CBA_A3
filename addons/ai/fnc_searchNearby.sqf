@@ -50,7 +50,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
     // Search while there are still available positions
     private _positions = _building buildingPos -1;
-    while {!(_positions isEqualTo [])} do {
+    while {_positions isNotEqualTo []} do {
         // Update units in case of death
         private _units = (units _group) - [_leader];
 

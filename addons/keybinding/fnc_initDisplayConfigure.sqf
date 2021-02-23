@@ -67,11 +67,11 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
         {
             _keybind = _x;
 
-            if !(_downCode isEqualTo {}) then {
+            if (_downCode isNotEqualTo {}) then {
                 [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1_down_%2", _action, _forEachIndex], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
             };
 
-            if !(_upCode isEqualTo {}) then {
+            if (_upCode isNotEqualTo {}) then {
                 [_keybind select 0, _keybind select 1, _upCode, "keyUp", format ["%1_up_%2", _action, _forEachIndex]] call CBA_fnc_addKeyHandler;
             };
         } forEach _keybinds;

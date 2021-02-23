@@ -11,7 +11,7 @@ if (_source isEqualTo "client") then {
     _ctrlOverwriteClient ctrlCommit 0;
 };
 
-if !(_source isEqualTo "server") then {
+if (_source isNotEqualTo "server") then {
     _ctrlOverwriteMission ctrlEnable false;
     _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
     _ctrlOverwriteMission ctrlCommit 0;

@@ -38,7 +38,7 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
         // if new value is same as default value, grey out the default button
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable !(_currentValue isEqualTo _defaultValue);
+        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
 
         // automatically check "overwrite client" for mission makers qol
         [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
@@ -73,7 +73,7 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
         // if new value is same as default value, grey out the default button
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable !(_currentValue isEqualTo _defaultValue);
+        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
 
         // automatically check "overwrite client" for mission makers qol
         [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
@@ -98,7 +98,7 @@ for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
         // if new value is same as default value, grey out the default button
         private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
         private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable !(_currentValue isEqualTo _defaultValue);
+        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
     }];
 };
 
@@ -127,5 +127,5 @@ _controlsGroup setVariable [QFUNC(updateUI), {
 
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
 }];

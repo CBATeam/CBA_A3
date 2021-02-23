@@ -44,7 +44,7 @@ with uiNamespace do {
             };
         };
 
-        if !(_eventFunc isEqualTo "") then {
+        if (_eventFunc isNotEqualTo "") then {
             [] call compile _eventFunc;
         };
     } forEach configProperties [configFile >> XEH_FORMAT_CONFIG_NAME("preStart")];

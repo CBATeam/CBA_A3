@@ -36,7 +36,7 @@ GVAR(entities) = [];
     SCRIPT(fallbackLoopPFEH);
     private _entities = entities [[], [], true, true];
 
-    if !(_entities isEqualTo GVAR(entities)) then {
+    if (_entities isNotEqualTo GVAR(entities)) then {
         private _newEntities = _entities - GVAR(entities);
         GVAR(entities) = _entities;
 

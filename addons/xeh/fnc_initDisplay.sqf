@@ -9,7 +9,7 @@ params [["_event", "", [""]], ["_args", []], ["_className", "", [""]]];
 // translate BI event names to CBA event names
 _event = ["", "DisplayLoad", "DisplayUnload"] param [["", "onload", "onunload"] find toLower _event, ""];
 
-if !(_event isEqualTo "") then {
+if (_event isNotEqualTo "") then {
     {
         {
             private ["_event", "_className"]; // prevent these variables from being overwritten

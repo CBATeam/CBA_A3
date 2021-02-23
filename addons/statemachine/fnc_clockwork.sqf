@@ -37,7 +37,7 @@ SCRIPT(clockwork);
     if (_tick >= count _list) then {
         private _updateCode = _stateMachine getVariable QGVAR(updateCode);
         _tick = 0;
-        if !(_updateCode isEqualTo {}) then {
+        if (_updateCode isNotEqualTo {}) then {
             _list = [] call _updateCode;
 
             // Make sure list contains no null elements in case the code doesn't filter them
@@ -52,7 +52,7 @@ SCRIPT(clockwork);
 
     // If the list has no items, we can stop checking this state machine
     // No need to set the tick when it will get reset next frame anyways
-    if !(_list isEqualTo []) then {
+    if (_list isNotEqualTo []) then {
         _stateMachine setVariable [QGVAR(tick), _tick + 1];
 
         private _current = _list select _tick;

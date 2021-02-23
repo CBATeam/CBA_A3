@@ -27,7 +27,7 @@ isNil {
         private _cba = AmmoBox_list;
 
         TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preload3DEN));
-        if !([_vanilla] isEqualTo [_cba]) then {
+        if ([_vanilla] isNotEqualTo [_cba]) then {
             copyToClipboard ("3DEN" + endl + str _vanilla + endl + str _cba);
         };
 
@@ -57,7 +57,7 @@ isNil {
         _cba = RscAttributeInventory_list;
 
         TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preloadCurator));
-        if !([_vanilla] isEqualTo [_cba]) then {
+        if ([_vanilla] isNotEqualTo [_cba]) then {
             copyToClipboard ("Curator" + endl + str _vanilla + endl + str _cba);
         };
     };

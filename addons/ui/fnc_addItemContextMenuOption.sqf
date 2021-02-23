@@ -208,7 +208,7 @@ _displayName params [
     ["_tooltip", "", [""]]
 ];
 
-if !(_color isEqualTo []) then {
+if (_color isNotEqualTo []) then {
     _color params [["_r", 1, [0]], ["_g", 1, [0]], ["_b", 1, [0]], ["_a", 1, [0]]];
     _color = [_r, _g, _b, _a];
 };

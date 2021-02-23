@@ -74,7 +74,7 @@ if (_unit != call CBA_fnc_currentUnit) then {
 
 private _diff = -_azimuth;
 
-if !(_offset isEqualTo "") then {
+if (_offset isNotEqualTo "") then {
     ADD(_diff,_unit getDir ([_offset] call CBA_fnc_getPos));
 };
 
