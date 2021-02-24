@@ -397,4 +397,9 @@ class CfgVehicles {
     class Land_MapBoard_01_Map_Syndikat_Tanoa_F: Land_Map_blank_F {
         XEH_ENABLED;
     };
+
+    // AOW (2.02)
+    class GalleryDioramaUnit_01_base_F: Items_base_F {
+        XEH_ENABLED;
+    };
 };
