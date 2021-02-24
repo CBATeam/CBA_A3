@@ -1,5 +1,5 @@
 [
-    QGVAR(LoadoutValidation),
+    QGVAR(loadoutValidation),
     "LIST",
     [LLSTRING(LoadoutValidation), LLSTRING(LoadoutValidationTooltip)],
     LSTRING(Component),
