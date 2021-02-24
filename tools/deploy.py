@@ -13,7 +13,6 @@ import os
 import sys
 import traceback
 import subprocess as sp
-from subprocess import SubprocessError
 try:
     from pygithub3 import Github
 except ImportError:
@@ -53,7 +52,7 @@ def main(): # pylint: disable=missing-function-docstring
     print("\nUpdating translation issue ...")
     try:
         update_translations(token)
-    except (SubprocessError, Exception): # pylint: disable=broad-except
+    except Exception: # pylint: disable=broad-except
         print("Failed to update translation issue.")
         print(traceback.format_exc())
         return 1
