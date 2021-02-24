@@ -8,7 +8,7 @@ ADDON = false;
 [QGVAR(validateLoadout), {
     params ["_unit", "_loadout"];
 
-    if (GVAR(LoadoutValidation) > 0 && !(getUnitLoadout _unit isEqualTo _loadout)) then {
+    if (GVAR(loadoutValidation) > 0 && {(getUnitLoadout _unit) isNotEqualTo _loadout}) then {
         _unit setUnitLoadout _loadout;
     };
 }] call CBA_fnc_addEventHandler;
