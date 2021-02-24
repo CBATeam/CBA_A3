@@ -322,6 +322,21 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    // Base classes do not exist without GM components. Recreate inheritance tree
+    // up to existing private/protected base class to pass down necessary entries.
+    class gm_thingX_base: ThingX {};
+    class gm_object_base: gm_thingX_base {};
+    class gm_logistics_object_base: gm_object_base {
+        XEH_ENABLED;
+    };
+
+    class gm_staticWeapon_base: StaticWeapon {};
+    class gm_staticMG_base: gm_staticWeapon_base {};
+    class gm_mg3_aatripod_base: gm_staticMG_base {};
+    class gm_mg3_aatripod_empty: gm_mg3_aatripod_base {
+        XEH_ENABLED;
+    };
+
     // Enoch
     class Land_PortableDesk_01_base_F;
     class Land_PortableDesk_01_animated_base_F: Land_PortableDesk_01_base_F {
@@ -353,7 +368,8 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class Alien_Extractor_01_base_F: Items_base_F {}; // Class does not exist without optional Contact component. Recreate inheritance tree up to mandatory base class.
+    // Class does not exist without optional Contact component. Recreate inheritance tree up to existing base class.
+    class Alien_Extractor_01_base_F: Items_base_F {};
     class Alien_Extractor_01_generic_base_F: Alien_Extractor_01_base_F {
         XEH_ENABLED;
     };
