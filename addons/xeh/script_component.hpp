@@ -90,4 +90,5 @@
     "TurnIn", \
     "TurnOut", \
     "Deleted", \
-    "Disassembled"
+    "Disassembled", \
+    "Suppressed"
