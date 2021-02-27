@@ -1,4 +1,4 @@
-// inline function, don't include script_component.hpp
+//pragma SKIP_COMPILE - inline function, don't include script_component.hpp
 
 private _fnc_controlSetTablePosY = {
     params ["_control", "_tablePosY", "_height"];
