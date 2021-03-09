@@ -27,7 +27,7 @@ params [["_funcFile", "", [""]], ["_funcName", "", [""]]];
 private _cachedFunc = uiNamespace getVariable _funcName;
 
 if (isNil "_cachedFunc") then {
-    uiNamespace setVariable [_funcName, compileFinal preprocessFileLineNumbers _funcFile];
+    uiNamespace setVariable [_funcName, compileScript [_funcFile, true]];
     missionNamespace setVariable [_funcName, uiNamespace getVariable _funcName];
 } else {
     if (["compile"] call CBA_fnc_isRecompileEnabled) then {
