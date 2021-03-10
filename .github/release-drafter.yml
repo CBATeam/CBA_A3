@@ -22,7 +22,7 @@ categories:
       - 'Translation'
 
 exclude-labels:
-  - 'ignore changelog'
+  - 'Ignore Changelog'
 
 change-template: '- $TITLE (#$NUMBER) **$AUTHOR**'
 template: |
