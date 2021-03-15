@@ -14,9 +14,14 @@ then
   mkdir ../docs
 fi
 
+mkdir temp
+
 echo "\n=== move files to addons ===\n"
 cp overview.txt CBA_logo_large.png ../addons
 
+echo "\n=== move script_xeh.hpp out of xeh ===\n"
+
+mv ../addons/xeh/script_xeh.hpp .
 
 echo "\n=== Compiling documentation ===\n"
 
@@ -25,6 +30,8 @@ $NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default c
 echo "\n=== Cleanup ===\n"
 rm ../addons/overview.txt
 rm ../addons/CBA_logo_large.png
+
+mv script_xeh.hpp ../addons/xeh/
 
 echo "\n=== Packaging documentation ===\n"
 rm -f ../store/function_library.tar

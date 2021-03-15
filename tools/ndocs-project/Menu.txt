@@ -324,6 +324,11 @@ Group: Functions  {
       File: CBA_fnc_stopMusic  (music/fnc_stopMusic.sqf)
       }  # Group: Music
 
+   Group: Settings  {
+
+      File: CBA_fnc_addSetting  (settings/fnc_addSetting.sqf)
+      }  # Group: Settings
+
    Group: Strings  {
 
       File: CBA_fnc_capitalize  (strings/fnc_capitalize.sqf)
@@ -388,10 +393,8 @@ Group: Functions  {
       File: CBA_fnc_compileFunction  (xeh/fnc_compileFunction.sqf)
       File: CBA_fnc_isRecompileEnabled  (xeh/fnc_isRecompileEnabled.sqf)
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
-      File: script_xeh.hpp  (xeh/script_xeh.hpp)
       }  # Group: Xeh
 
-   File: CBA_fnc_addSetting  (settings/fnc_addSetting.sqf)
    }  # Group: Functions
 
 Group: Macros  {
