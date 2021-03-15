@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_init
+Internal Function: CBA_fnc_init
 
 Description:
     Runs Init and InitPost event handlers on this object.

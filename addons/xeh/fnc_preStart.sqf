@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_preStart
+Internal Function: CBA_fnc_preStart
 
 Description:
     Occurs once during game start.
