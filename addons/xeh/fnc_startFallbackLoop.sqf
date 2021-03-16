@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_fnc_startFallbackLoop
+Function: CBA_fnc_startFallbackLoop
 
 Description:
     Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.

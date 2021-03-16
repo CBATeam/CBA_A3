@@ -75,7 +75,7 @@ Group: Functions  {
       File: CBA_fnc_taskDefend  (ai/fnc_taskDefend.sqf)
       File: CBA_fnc_taskPatrol  (ai/fnc_taskPatrol.sqf)
       File: CBA_fnc_taskSearchArea  (ai/fnc_taskSearchArea.sqf)
-      File: CBA_fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
+      File: fnc_waypointGarrison  (ai/fnc_waypointGarrison.sqf)
       }  # Group: Ai
 
    Group: Arrays  {
@@ -288,22 +288,6 @@ Group: Functions  {
       File: CBA_fnc_registerKeybindToFleximenu  (keybinding/fnc_registerKeybindToFleximenu.sqf)
       }  # Group: Keybinding
 
-   Group: Network  {
-
-      File: CBA_fnc_globalExecute  (network/fnc_globalExecute.sqf)
-      File: CBA_fnc_globalSay  (network/fnc_globalSay.sqf)
-      File: CBA_fnc_globalSay3d  (network/fnc_globalSay3d.sqf)
-      File: CBA_fnc_publicVariable  (network/fnc_publicVariable.sqf)
-      File: CBA_fnc_setVarNet  (network/fnc_setVarNet.sqf)
-      }  # Group: Network
-
-   Group: Optics  {
-
-      File: cba_optics_fnc_setOpticMagnification  (optics/fnc_setOpticMagnification.sqf)
-      File: cba_optics_fnc_setOpticMagnificationHelper  (optics/fnc_setOpticMagnificationHelper.sqf)
-      File: cba_optics_fnc_setOpticMagnificationHelperZeroing  (optics/fnc_setOpticMagnificationHelperZeroing.sqf)
-      }  # Group: Optics
-
    Group: Modules  {
 
       File: CBA_fnc_getPosFromString  (modules/fnc_getPosFromString.sqf)
@@ -324,10 +308,42 @@ Group: Functions  {
       File: CBA_fnc_stopMusic  (music/fnc_stopMusic.sqf)
       }  # Group: Music
 
+   Group: Network  {
+
+      File: CBA_fnc_globalExecute  (network/fnc_globalExecute.sqf)
+      File: CBA_fnc_globalSay  (network/fnc_globalSay.sqf)
+      File: CBA_fnc_globalSay3d  (network/fnc_globalSay3d.sqf)
+      File: CBA_fnc_publicVariable  (network/fnc_publicVariable.sqf)
+      File: CBA_fnc_setVarNet  (network/fnc_setVarNet.sqf)
+      }  # Group: Network
+
+   Group: Optics  {
+
+      File: CBA_optics_fnc_setOpticMagnification  (optics/fnc_setOpticMagnification.sqf)
+      File: CBA_optics_fnc_setOpticMagnificationHelper  (optics/fnc_setOpticMagnificationHelper.sqf)
+      File: CBA_optics_fnc_setOpticMagnificationHelperZeroing  (optics/fnc_setOpticMagnificationHelperZeroing.sqf)
+      }  # Group: Optics
+
    Group: Settings  {
 
       File: CBA_fnc_addSetting  (settings/fnc_addSetting.sqf)
       }  # Group: Settings
+
+   Group: Statemachine  {
+
+      File: CBA_statemachine_fnc_addEventTransition  (statemachine/fnc_addEventTransition.sqf)
+      File: CBA_statemachine_fnc_addState  (statemachine/fnc_addState.sqf)
+      File: CBA_statemachine_fnc_addTransition  (statemachine/fnc_addTransition.sqf)
+      File: CBA_statemachine_fnc_clockwork  (statemachine/fnc_clockwork.sqf)
+      File: CBA_statemachine_fnc_create  (statemachine/fnc_create.sqf)
+      File: CBA_statemachine_fnc_createFromConfig  (statemachine/fnc_createFromConfig.sqf)
+      File: CBA_statemachine_fnc_delete  (statemachine/fnc_delete.sqf)
+      File: CBA_statemachine_fnc_dumpPerformanceCounters  (statemachine/fnc_dumpPerformanceCounters.sqf)
+      File: CBA_statemachine_fnc_getCurrentState  (statemachine/fnc_getCurrentState.sqf)
+      File: CBA_statemachine_fnc_manualTransition  (statemachine/fnc_manualTransition.sqf)
+      File: CBA_statemachine_fnc_toString  (statemachine/fnc_toString.sqf)
+      File: CBA_statemachine_fnc_updateList  (statemachine/fnc_updateList.sqf)
+      }  # Group: Statemachine
 
    Group: Strings  {
 
@@ -348,6 +364,18 @@ Group: Functions  {
       File: CBA_fnc_substring  (strings/fnc_substring.sqf)
       File: CBA_fnc_trim  (strings/fnc_trim.sqf)
       }  # Group: Strings
+
+   Group: Ui  {
+
+      File: CBA_fnc_addItemContextMenuOption  (ui/fnc_addItemContextMenuOption.sqf)
+      File: CBA_fnc_addPauseMenuOption  (ui/fnc_addPauseMenuOption.sqf)
+      File: CBA_fnc_consumeItem  (ui/fnc_consumeItem.sqf)
+      File: CBA_fnc_getAspectRatio  (ui/fnc_getAspectRatio.sqf)
+      File: CBA_fnc_getFov  (ui/fnc_getFov.sqf)
+      File: CBA_fnc_getUISize  (ui/fnc_getUISize.sqf)
+      File: CBA_fnc_notify  (ui/fnc_notify.sqf)
+      File: CBA_fnc_progressBar  (ui/fnc_progressBar.sqf)
+      }  # Group: Ui
 
    Group: Vectors  {
 
@@ -374,18 +402,6 @@ Group: Functions  {
       File: CBA_fnc_vectSubtract  (vectors/fnc_vectSubtract.sqf)
       }  # Group: Vectors
 
-   Group: Ui  {
-
-      File: CBA_fnc_addItemContextMenuOption  (ui/fnc_addItemContextMenuOption.sqf)
-      File: CBA_fnc_addPauseMenuOption  (ui/fnc_addPauseMenuOption.sqf)
-      File: CBA_fnc_consumeItem  (ui/fnc_consumeItem.sqf)
-      File: CBA_fnc_getAspectRatio  (ui/fnc_getAspectRatio.sqf)
-      File: CBA_fnc_getFov  (ui/fnc_getFov.sqf)
-      File: CBA_fnc_getUISize  (ui/fnc_getUISize.sqf)
-      File: CBA_fnc_notify  (ui/fnc_notify.sqf)
-      File: CBA_fnc_progressBar  (ui/fnc_progressBar.sqf)
-      }  # Group: Ui
-
    Group: Xeh  {
 
       File: CBA_fnc_addClassEventHandler  (xeh/fnc_addClassEventHandler.sqf)
@@ -393,6 +409,7 @@ Group: Functions  {
       File: CBA_fnc_compileFunction  (xeh/fnc_compileFunction.sqf)
       File: CBA_fnc_isRecompileEnabled  (xeh/fnc_isRecompileEnabled.sqf)
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
+      File: CBA_fnc_startFallbackLoop  (xeh/fnc_startFallbackLoop.sqf)
       }  # Group: Xeh
 
    }  # Group: Functions
@@ -402,20 +419,4 @@ Group: Macros  {
    File: script_macros_common.hpp  (main/script_macros_common.hpp)
    File: script_macros_mission.hpp  (main/script_macros_mission.hpp)
    }  # Group: Macros
-
-Group: Statemachine  {
-
-   File: CBA_statemachine_fnc_addEventTransition  (statemachine/fnc_addEventTransition.sqf)
-   File: CBA_statemachine_fnc_addState  (statemachine/fnc_addState.sqf)
-   File: CBA_statemachine_fnc_addTransition  (statemachine/fnc_addTransition.sqf)
-   File: CBA_statemachine_fnc_clockwork  (statemachine/fnc_clockwork.sqf)
-   File: CBA_statemachine_fnc_create  (statemachine/fnc_create.sqf)
-   File: CBA_statemachine_fnc_createFromConfig  (statemachine/fnc_createFromConfig.sqf)
-   File: CBA_statemachine_fnc_delete  (statemachine/fnc_delete.sqf)
-   File: CBA_statemachine_fnc_dumpPerformanceCounters  (statemachine/fnc_dumpPerformanceCounters.sqf)
-   File: CBA_statemachine_fnc_getCurrentState  (statemachine/fnc_getCurrentState.sqf)
-   File: CBA_statemachine_fnc_manualTransition  (statemachine/fnc_manualTransition.sqf)
-   File: CBA_statemachine_fnc_toString  (statemachine/fnc_toString.sqf)
-   File: CBA_statemachine_fnc_updateList  (statemachine/fnc_updateList.sqf)
-   }  # Group: Statemachine
 
