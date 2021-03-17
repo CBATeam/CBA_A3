@@ -45,7 +45,7 @@ _expression ctrlCommit 0;
 
 // Save expression when hitting enter key inside expression text field
 _expression ctrlAddEventHandler ["KeyDown", {
-    params ["_expression", "_key", "_shift"];
+    params ["_expression", "_key", "_shift", "", "_alt"];
 
     if (_key in [DIK_RETURN, DIK_NUMPADENTER] && {!_shift}) then { // shift + enter is newline
         // fix for enter key not working in MP
@@ -65,7 +65,7 @@ _expression ctrlAddEventHandler ["KeyDown", {
         _this call FUNC(logStatement);
     };
 
-    if (_key isEqualTo DIK_TAB) then {
+    if (_key isEqualTo DIK_TAB && {!_alt}) then {
         _expression setVariable [QGVAR(tabKey), [true, _shift]];
     };
 
