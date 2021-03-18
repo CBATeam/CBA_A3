@@ -1,5 +1,7 @@
 #!/bin/sh
 
+shopt -s xpg_echo 2>/dev/null || :
+
 NATURALDOCS=`which naturaldocs 2>/dev/null`
 
 if [ -z $NATURALDOCS ]
@@ -13,8 +15,6 @@ if [ ! -d ../docs ]
 then
   mkdir ../docs
 fi
-
-mkdir temp
 
 echo "\n=== move files to addons ===\n"
 cp overview.txt CBA_logo_large.png ../addons
