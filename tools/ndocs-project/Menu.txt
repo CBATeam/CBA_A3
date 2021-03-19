@@ -409,7 +409,7 @@ Group: Functions  {
       File: CBA_fnc_compileFunction  (xeh/fnc_compileFunction.sqf)
       File: CBA_fnc_isRecompileEnabled  (xeh/fnc_isRecompileEnabled.sqf)
       File: CBA_fnc_isScheduled  (xeh/fnc_isScheduled.sqf)
-      File: CBA_fnc_startFallbackLoop  (xeh/fnc_startFallbackLoop.sqf)
+      File: CBA_fnc_supportMonitor  (xeh/fnc_supportMonitor.sqf)
       }  # Group: Xeh
 
    }  # Group: Functions

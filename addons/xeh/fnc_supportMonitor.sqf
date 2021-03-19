@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Internal Function: CBA_fnc_supportMonitor
+Function: CBA_fnc_supportMonitor
 
 Description:
     Iterate through all vehicle classes and find those who don't support extended event handlers.
