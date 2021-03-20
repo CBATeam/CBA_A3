@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_initEvents
+Internal Function: CBA_fnc_initEvents
 
 Description:
     Adds all event handlers to this object.

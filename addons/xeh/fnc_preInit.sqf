@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_preInit
+Internal Function: CBA_fnc_preInit
 
 Description:
     Occurs once per mission before objects are initialized.

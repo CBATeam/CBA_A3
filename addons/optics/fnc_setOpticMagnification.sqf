@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: cba_optics_fnc_setOpticMagnification
+Function: CBA_optics_fnc_setOpticMagnification
 
 Description:
     Set magnification of the current optic of the unit.
