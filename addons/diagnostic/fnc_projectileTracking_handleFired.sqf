@@ -35,7 +35,7 @@ if (_index <= (count GVAR(projectileData) - 1)) then {
 };
 
 // using 0.1 to improve performance, we don't need that many bullet position to draw a line
-[FUNC(projectileTracking_trackProjectile), 0.1, [_projectile, _index, [(getPos _projectile), vectorMagnitude (velocity _projectile)]]] call CBA_fnc_addPerFrameHandler;
+[FUNC(projectileTracking_trackProjectile), 0.1, [_projectile, _index, [getPosASL _projectile, vectorMagnitude velocity _projectile]]] call CBA_fnc_addPerFrameHandler;
 
 private _maxLines = GVAR(projectileMaxLines) min 20;
 
