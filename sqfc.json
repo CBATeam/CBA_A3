@@ -1,0 +1,17 @@
+{
+    "inputDirs": [
+        "P:/x/cba/addons/"
+    ],
+    "includePaths": [
+        "P:/"
+    ],
+    "excludeList": [
+        "\\initsettings.sqf",
+        "\\initkeybinds.sqf",
+        "\\xeh_prep.sqf",
+        "\\backwards_comp.sqf",
+        "settings\\gui_createCategory.sqf"
+    ],
+    "outputDir": "P:/",
+    "workerThreads": 12
+}

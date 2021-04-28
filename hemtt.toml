@@ -21,9 +21,11 @@ authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 check = [
     "!version_set"
 ]
+prebuild = ["!compile_sqf"]
 releasebuild = [
     "@zip CBA_A3_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}",
     "!version_unset"
+	,"!compile_sqf_cleanup"
 ]
 
 [header_exts]
@@ -55,6 +57,22 @@ steps_windows = [
     "powershell -Command foreach ($f in 'mod.cpp', 'addons/main_a3/CfgMods.hpp') {(Get-Content $f) -replace '{{semver.major}}.{{semver.minor}}.{{semver.patch}}', '0.0.0' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}",
     "powershell -Command foreach ($f in 'addons/main/script_version.hpp') {(Get-Content $f) -replace '#define BUILD {{date \"%y%m%d\"}}', '#define BUILD 000000' -join \"`n\" ^| Set-Content -NoNewline $f; Add-Content -NoNewline \"`n\" $f}",
     "echo -^> README.md version ready for commit (ignore until release)!"
+]
+only_release = true
+show_output = true
+
+[scripts.compile_sqf]
+steps_windows = [
+    "echo 'compile_sqf'",
+    "py tools/compile_sqf.py cleanup build"
+]
+only_release = true
+show_output = true
+
+[scripts.compile_sqf_cleanup]
+steps_windows = [
+    "echo 'compile_sqf_cleanup'",
+    "py tools/compile_sqf.py cleanup"
 ]
 only_release = true
 show_output = true
