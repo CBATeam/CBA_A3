@@ -39,12 +39,12 @@ _elapsed = switch (_format) do {
         format ["%1:%2:%3",
             _hours,
             [_minutes, 2] call CBA_fnc_formatNumber,
-            [_seconds, 2, 0] call CBA_fnc_formatNumber];
+            [floor _seconds, 2] call CBA_fnc_formatNumber];
     };
     case "M:SS": {
         format ["%1:%2",
             _minutes,
-            [_seconds, 2, 0] call CBA_fnc_formatNumber];
+            [floor _seconds, 2] call CBA_fnc_formatNumber];
     };
     case "H:MM:SS.mmm": {
         format ["%1:%2:%3",
