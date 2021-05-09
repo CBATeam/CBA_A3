@@ -1,0 +1,65 @@
+name: pboProject
+
+on:
+  push:
+    branches:
+    - master
+  pull_request_target:
+
+jobs:
+  pboproject:
+    runs-on: windows-2019
+    steps:
+    - name: Install Arma 3 Tools
+      uses: arma-actions/arma3-tools@master
+      with:
+        toolsUrl: ${{ secrets.ARMA3_TOOLS_URL }}
+    - name: Install Mikero Tools
+      uses: arma-actions/mikero-tools@2021-04-10
+    - name: Download game data
+      run: |
+        Invoke-WebRequest "$env:ARMA3_DATA_URL" -OutFile arma3.zip
+        $files = @("arma3.zip")
+        ForEach ($file in $files) {
+          Extract-7Zip -Path $file -DestinationPath .
+          Remove-Item $file
+        }
+      env:
+        ARMA3_DATA_URL: ${{ secrets.ARMA3_DATA_URL }}
+    - name: Checkout CBA A3
+      uses: actions/checkout@v2
+      with:
+        path: x\cba
+        persist-credentials: false
+    - name: Checkout pull request
+      uses: actions/checkout@v2
+      if: ${{ github.event_name == 'pull_request_target' }}
+      with:
+        path: pullrequest
+        ref: 'refs/pull/${{ github.event.number }}/merge'
+    - name: Replace addons with pull request addons
+      if: ${{ github.event_name == 'pull_request_target' }}
+      run: |
+        rm -r x\cba\addons\
+        rm -r x\cba\optionals\
+        xcopy /e /h /q pullrequest\addons x\cba\addons\
+        xcopy /e /h /q pullrequest\optionals x\cba\optionals\
+    - name: Setup build environment
+      run: |
+        subst P: .
+        pboproject -P
+    - name: Build
+      run: py P:\x\cba\tools\make.py ci
+      env:
+        PYTHONUNBUFFERED: 1
+    - name: Archive logs
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: logs
+        path: temp/*.log
+    - name: Archive @cba_a3
+      uses: actions/upload-artifact@v2
+      with:
+        name: '@cba_a3-${{ github.sha }}'
+        path: x\cba\release\@cba_a3
