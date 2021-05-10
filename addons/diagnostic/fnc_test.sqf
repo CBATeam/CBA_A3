@@ -42,8 +42,7 @@ DEFAULT_PARAM(1,_component,"main");
 
 LOG('===== STARTING TESTS =====');
 
-call compile preprocessFileLineNumbers format ["\x\%1\addons\%2\test.sqf", _addon, _component];
+private _test = execVM format ["\x\%1\addons\%2\test.sqf", _addon, _component];
+waitUntil { scriptDone _test };
 
 LOG('===== COMPLETED TESTS =====');
-
-nil;

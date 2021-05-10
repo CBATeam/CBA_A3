@@ -14,7 +14,6 @@ SCRIPT(test);
 LOG("===--- Testing ---===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\%1\test.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\%1\test.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach CATEGORIES;
-
-nil;
