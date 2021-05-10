@@ -23,7 +23,7 @@ TEST_OP(count _result,==,count _original,_fn);
 
 _original = [1, 2, 3];
 _result = _original call CBA_fnc_shuffle;
-TEST_OP(count _result,==,1,_fn);
+TEST_OP(_result,isEqualTo,[],_fn);
 
 _original = [];
 _result = [_original] call CBA_fnc_shuffle;
