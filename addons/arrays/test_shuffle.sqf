@@ -21,6 +21,7 @@ TEST_OP(count _result,==,count _original,_fn);
     TEST_OP(_x,in,_original,_fn);
 } forEach _result;
 
+// Result will be empty array because the function expects an array as the first param (test throws a param error)
 _original = [1, 2, 3];
 _result = _original call CBA_fnc_shuffle;
 TEST_OP(_result,isEqualTo,[],_fn);
