@@ -14,7 +14,6 @@ SCRIPT(test-diagnostic);
 LOG("=== Testing Diagnostic ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\diagnostic\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\diagnostic\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;

@@ -1,4 +1,4 @@
-// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_weaponComponents.sqf";
+// execVM "\x\cba\addons\common\test_weaponComponents.sqf";
 
 #define LOGF diag_log text format
 #define TESTEXP if (!isNil "_result" && {_result isEqualTo _expected}) then {LOGF ["TEST: OK - %1 result", _result]} else {LOGF ["TEST: FAIL - %1 result; %2 expected", _result, _expected]}

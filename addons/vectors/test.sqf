@@ -14,7 +14,6 @@ SCRIPT(test-vectors);
 LOG("=== Testing Vectors ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\vectors\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\vectors\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;

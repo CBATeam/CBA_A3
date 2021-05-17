@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(test_network);
 
-// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\network\test_network.sqf";
+// execVM "\x\cba\addons\network\test_network.sqf";
 // test has to be done with an existing "player" object (not 3den!!)
 
 private ["_funcName", "_result"];

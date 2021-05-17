@@ -14,7 +14,6 @@ SCRIPT(test-hashes);
 LOG("=== Testing Hashes ===");
 
 {
-    0 spawn compile preprocessFileLineNumbers format ["\x\cba\addons\hashes\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\hashes\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil

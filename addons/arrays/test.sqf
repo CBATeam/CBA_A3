@@ -13,7 +13,6 @@ SCRIPT(test-arrays);
 LOG("=== Testing Arrays ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;
