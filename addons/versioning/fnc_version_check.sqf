@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 
-// _key, _value  are injected by the CBA_fnc_hashEachPair
+params ["_key", "_value"];
 
-private _localValue = [GVAR(versions), _key] call CBA_fnc_hashGet;
+private _localValue = GVAR(versions) getOrDefault [_key, VERSION_DEFAULT];
 TRACE_3("Version Check",_key,_value,_localValue);
 
 private _failed = false;
