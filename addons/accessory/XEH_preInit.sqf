@@ -25,7 +25,8 @@ if (!hasInterface) exitWith {};
         params ["", "", "_item"];
         count (_item call CBA_fnc_switchableAttachments) > 1 // return
     }, {
-        [1, "next"] call FUNC(switchAttachment) // return
+        [1, "next"] call FUNC(switchAttachment);
+        false
     }
 ] call CBA_fnc_addItemContextMenuOption;
 
@@ -34,6 +35,7 @@ if (!hasInterface) exitWith {};
         params ["", "", "_item"];
         count (_item call CBA_fnc_switchableAttachments) > 1 // return
     }, {
-        [2, "next"] call FUNC(switchAttachment) // return
+        [2, "next"] call FUNC(switchAttachment);
+        false
     }
 ] call CBA_fnc_addItemContextMenuOption;
