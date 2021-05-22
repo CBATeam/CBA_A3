@@ -2,28 +2,28 @@
 <Project name="CBA_A3">
     <Package name="Network">
         <Key ID="STR_CBA_Network_Component">
-            <English>Community Base Addons - Network</English>
-            <German>Community Base Addons - Netzwerk</German>
-            <Japanese>Community Base Addons - ネットワーク</Japanese>
-            <Chinese>社群基礎模組 - 網路</Chinese>
-            <Chinesesimp>社群基础模组 - 网路</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Rede</Portuguese>
-            <Russian>Community Base Addons - Сеть</Russian>
-            <French>Community Base Addons - Réseau</French>
-            <Polish>Community Base Addons - Sieć</Polish>
-            <Turkish>Community Base Addons - Ağ</Turkish>
-            <Italian>Community Base Addons - Rete</Italian>
-            <Czech>Community Base Addons - Síť</Czech>
+            <English>CBA Network</English>
+            <German>CBA Netzwerk</German>
+            <Japanese>CBA ネットワーク</Japanese>
+            <Chinese>CBA 網路</Chinese>
+            <Chinesesimp>CBA 网路</Chinesesimp>
+            <Portuguese>CBA Rede</Portuguese>
+            <Russian>CBA Сеть</Russian>
+            <French>CBA Réseau</French>
+            <Polish>CBA Sieć</Polish>
+            <Turkish>CBA Ağ</Turkish>
+            <Italian>CBA Rete</Italian>
+            <Czech>CBA Síť</Czech>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidation">
             <English>Loadout validation</English>
             <German>Überprüfung von Ausrüstungen</German>
-            <French>Validation des équipements</French>
+            <French>Vérification de l'équipement</French>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
             <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
-            <French>Valider l'équipement des unités. Correction pour l'erreur suivante: Les unités sont nues après changer la localité</French>
+            <French>Vérifie l'équipement des unités. Correction d'un bug où les unités se retrouvaient nues après avoir changé de localité.</French>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
@@ -33,27 +33,27 @@
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
             <German>Überprüfe niemals Ausrüstungen</German>
-            <French>Ne valider jamais des équipements</French>
+            <French>Ne jamais vérifier les équipements</French>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
             <English>Playable units only</English>
             <German>Nur spielbare Einheiten</German>
-            <French>Seulement les unités jouables</French>
+            <French>Pour les unités jouables</French>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
             <English>Validate only loadout of playable units</English>
             <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
-            <French>Valider seulement l'équipements des unités jouables</French>
+            <French>Vérifier uniquement l'équipement des unités jouables</French>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
             <German>Alle Einheiten</German>
-            <French>Toutes les unités</French>
+            <French>Pour toutes les unités</French>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
             <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
-            <French>Valider l'équipement de toutes les unités</French>
+            <French>Vérifier l'équipement de toutes les unités</French>
         </Key>
     </Package>
 </Project>
