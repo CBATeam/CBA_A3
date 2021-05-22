@@ -40,10 +40,11 @@ QGVAR(mismatch) addPublicVariableEventHandler {
     };
 };
 
+private _cfgVersioning = configFile >> "CfgSettings" >> "CBA" >> "Versioning";
 private _components = [];
 
 {
-    private _config = configFile >> "CfgSettings" >> "CBA" >> "Versioning" >> _x;
+    private _config = _cfgVersioning >> _x;
 
     if (isClass _config && {isText (_config >> "main_addon")}) then {
         _components pushBack getText (_config >> "main_addon");
