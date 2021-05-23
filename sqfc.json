@@ -10,11 +10,11 @@
         "\\initkeybinds.sqf",
         "\\xeh_prep.sqf",
         "\\backwards_comp.sqf",
-        "settings\\gui_createCategory.sqf",
-        "diagnostic\\fnc_initExtendedDebugConsole.sqf",
-        "xeh\\fnc_initDisplay.sqf",
-        "xeh\\fnc_startLoadingScreen.sqf",
-        "xeh\\fnc_endLoadingScreen.sqf"
+        "settings\\gui_createcategory.sqf",
+        "diagnostic\\fnc_initextendeddebugconsole.sqf",
+        "xeh\\fnc_initdisplay.sqf",
+        "xeh\\fnc_startloadingscreen.sqf",
+        "xeh\\fnc_endloadingscreen.sqf"
     ],
     "outputDir": "P:/",
     "workerThreads": 12
