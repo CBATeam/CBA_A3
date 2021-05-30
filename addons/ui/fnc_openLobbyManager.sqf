@@ -59,7 +59,7 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
         };
     } forEach units _group;
 
-    if !(_slots isEqualTo []) then {
+    if (_slots isNotEqualTo []) then {
         private _side = side _group;
         private _sideIndex = [west, east, independent, civilian] find _side;
         private _color = [_side] call BIS_fnc_sideColor;
@@ -309,7 +309,7 @@ _ctrlButtonCollapse ctrlAddEventHandler ["ButtonClick", {
 
     private _fnc_collapse = {
         // Collapsing [] path causes tree to disappear
-        if !(_this isEqualTo []) then {
+        if (_this isNotEqualTo []) then {
             _ctrlSlots tvCollapse _this;
         };
 
