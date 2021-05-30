@@ -123,10 +123,7 @@ _ctrlSlots ctrlAddEventHandler ["TreeSelChanged", {
     _dataIndices params ["_sideIndex", "_groupIndex", "_unitIndex"];
 
     private _ctrlCallsign = _display displayCtrl IDC_LM_CALLSIGN;
-    _ctrlCallsign ctrlSetText ""; // reset cursor
-
     private _ctrlDescription = _display displayCtrl IDC_LM_DESCRIPTION;
-    _ctrlDescription ctrlSetText ""; // reset cursor
 
     if (_pathCount >= 2) then {
         private _group = _ctrlSlots getVariable ([_sideIndex, _groupIndex] joinString SEPARATORS);
@@ -136,6 +133,7 @@ _ctrlSlots ctrlAddEventHandler ["TreeSelChanged", {
         _ctrlCallsign ctrlSetBackgroundColor [0, 0, 0, 0.5];
         _ctrlCallsign ctrlEnable true;
     } else {
+        _ctrlCallsign ctrlSetText "";
         _ctrlCallsign ctrlSetBackgroundColor [0, 0, 0, 0.25];
         _ctrlCallsign ctrlEnable false;
     };
@@ -148,6 +146,7 @@ _ctrlSlots ctrlAddEventHandler ["TreeSelChanged", {
         _ctrlDescription ctrlSetBackgroundColor [0, 0, 0, 0.5];
         _ctrlDescription ctrlEnable true;
     } else {
+        _ctrlDescription ctrlSetText "";
         _ctrlDescription ctrlSetBackgroundColor [0, 0, 0, 0.25];
         _ctrlDescription ctrlEnable false;
     };
@@ -155,8 +154,10 @@ _ctrlSlots ctrlAddEventHandler ["TreeSelChanged", {
     if (_pathCount > 1) then {
         if (_pathCount > 2) then {
             ctrlSetFocus _ctrlDescription;
+            _ctrlDescription ctrlSetTextSelection [count toArray ctrlText _ctrlDescription, 0];
         } else {
             ctrlSetFocus _ctrlCallsign;
+            _ctrlCallsign ctrlSetTextSelection [count toArray ctrlText _ctrlCallsign, 0];
         };
     };
 }];
