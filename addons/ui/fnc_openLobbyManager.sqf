@@ -25,6 +25,12 @@ Author:
 private _display3DEN = uiNamespace getVariable "Display3DEN";
 private _display = _display3DEN createDisplay QGVAR(LobbyManager);
 
+// Initialize warning label
+private _ctrlWarning = _display displayCtrl IDC_LM_WARNING;
+_ctrlWarning ctrlSetStructuredText parseText format ["<img image='%1'/><t> %2</t>", ICON_WARNING, LLSTRING(LobbyManager_Warning)];
+_ctrlWarning ctrlSetPositionW ctrlTextWidth _ctrlWarning;
+_ctrlWarning ctrlCommit 0;
+
 private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
 
 // Add root level nodes to categorize groups by side

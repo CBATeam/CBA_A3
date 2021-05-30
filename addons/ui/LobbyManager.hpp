@@ -95,6 +95,12 @@ class GVAR(LobbyManager) {
             w = 5 * GRID_3DEN_W;
             h = 5 * GRID_3DEN_H;
         };
+        class WarningLabel: ctrlStructuredText {
+            idc = IDC_LM_WARNING;
+            x = (getResolution select 2) * 0.5 * pixelW - (140/2) * GRID_3DEN_W;
+            y = 0.5 + (120/2 - 10 - 1) * GRID_3DEN_H;
+            h = 5 * GRID_3DEN_H;
+        };
         class ButtonOK: ctrlButtonOK {
             x = (getResolution select 2) * 0.5 * pixelW + (140/2 - 50 - 2) * GRID_3DEN_W;
             y = 0.5 + (120/2 - 10 - 1) * GRID_3DEN_H;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="Ui">
+    <Package name="UI">
         <Key ID="STR_CBA_UI_Component">
             <English>Community Base Addons - User Interface</English>
             <German>Community Base Addons - Benutzeroberfläche</German>
@@ -217,6 +217,9 @@
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
+        </Key>
+        <Key ID="STR_CBA_UI_LobbyManager_Warning">
+            <English>Back up mission before using this tool.</English>
         </Key>
     </Package>
 </Project>

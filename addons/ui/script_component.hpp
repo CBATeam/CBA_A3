@@ -44,14 +44,14 @@
 #define IDC_LM_COLLAPSE 54
 #define IDC_LM_MOVE_UP 55
 #define IDC_LM_MOVE_DOWN 56
-#define IDC_LM_OK 57
-#define IDC_LM_CANCEL 58
+#define IDC_LM_WARNING 57
 
 #define ICON_FOLDER      "\a3\3den\data\cfg3den\layer\icondefault_ca.paa"
 #define ICON_BLUFOR      "\a3\ui_f\data\map\markers\nato\b_unknown.paa"
 #define ICON_OPFOR       "\a3\ui_f\data\map\markers\nato\o_unknown.paa"
 #define ICON_INDEPENDENT "\a3\ui_f\data\map\markers\nato\n_unknown.paa"
 #define ICON_CIVILIAN    "\a3\ui_f\data\map\markers\nato\n_unknown.paa"
+#define ICON_WARNING     "\a3\3den\data\displays\display3denmsgbox\picture_ca.paa"
 
 #define SEPARATORS "@"
 

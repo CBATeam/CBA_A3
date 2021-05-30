@@ -22,6 +22,7 @@ class ctrlEdit;
 class ctrlStatic;
 class ctrlStaticTitle;
 class ctrlStaticFooter;
+class ctrlStructuredText;
 class ctrlMenuStrip;
 class ctrlButtonOK;
 class ctrlButtonCancel;
