@@ -220,6 +220,7 @@
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
+            <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
         </Key>
     </Package>
 </Project>
