@@ -374,7 +374,7 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
     };
 
     private _total = count _groups;
-    startLoadingScreen [localize LSTRING(AdjustingGroupOrder)];
+    startLoadingScreen [LLSTRING(AdjustingGroupOrder)];
 
     {
         private _group = _x;
