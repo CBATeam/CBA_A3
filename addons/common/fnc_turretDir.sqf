@@ -32,6 +32,16 @@ private _turretConfig = [_vehicle, _turret] call CBA_fnc_getTurret;
 private _gunBeg = _vehicle selectionPosition getText (_turretConfig >> "gunBeg");
 private _gunEnd = _vehicle selectionPosition getText (_turretConfig >> "gunEnd");
 
+if (_gunEnd isEqualTo _gunBeg) then {
+    private _vehicleConfig = configOf _vehicle;
+    if (((getNumber (_vehicleConfig >> "isUAV")) == 1) && {_turret isEqualto [0]}) then {
+        _gunBeg = _vehicle selectionPosition getText (_vehicleConfig >> "uavCameraGunnerDir");
+        _gunEnd = _vehicle selectionPosition getText (_vehicleConfig >> "uavCameraGunnerPos");
+    } else {
+        WARNING_2("Vehicle %1 has invalid gun configs on turret %2",configName _vehicleConfig,_turret);
+    };
+};
+
 if !(_relativeToModel) then {
     _gunBeg = AGLToASL (_vehicle modelToWorld _gunBeg);
     _gunEnd = AGLToASL (_vehicle modelToWorld _gunEnd);
