@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="Ui">
-        <Key ID="STR_CBA_Ui_Component">
+    <Package name="UI">
+        <Key ID="STR_CBA_UI_Component">
             <English>Community Base Addons - User Interface</English>
             <German>Community Base Addons - Benutzeroberfläche</German>
             <Japanese>Community Base Addons - ユーザー インターフェイス</Japanese>
@@ -15,7 +15,7 @@
             <Italian>Community Base Addons - Interfaccia utente</Italian>
             <Czech>Community Base Addons - Uživatelské prostředí</Czech>
         </Key>
-        <Key ID="STR_CBA_Ui_ProgressBarPositionName">
+        <Key ID="STR_CBA_UI_ProgressBarPositionName">
             <English>Progress Bar</English>
             <German>Fortschrittsanzeige</German>
             <Japanese>プログレス バー</Japanese>
@@ -28,7 +28,7 @@
             <Czech>Ukazatel průběhu</Czech>
             <Russian>Индикатор выполнения</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_ProgressBarPositionDescription">
+        <Key ID="STR_CBA_UI_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
             <German>Position der Fortschrittsanzeige.</German>
             <Japanese>プログレス バーの位置。</Japanese>
@@ -41,7 +41,7 @@
             <Czech>Pozici ukazatele průběhu.</Czech>
             <Russian>Позиция индикатора выполнения.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_Category">
+        <Key ID="STR_CBA_UI_Category">
             <English>CBA UI</English>
             <German>CBA UI</German>
             <Polish>CBA UI</Polish>
@@ -54,7 +54,7 @@
             <Chinese>社群基礎模組 界面</Chinese>
             <Russian>CBA Пользовательский интерфейс</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_StoreServerPasswords">
+        <Key ID="STR_CBA_UI_StoreServerPasswords">
             <English>Store server passwords</English>
             <German>Serverpasswörter speichern</German>
             <Polish>Zapamiętuj hasła serwerów</Polish>
@@ -66,7 +66,7 @@
             <Chinese>儲存伺服器密碼</Chinese>
             <Russian>Запоминать пароли серверов</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_StoreServerPasswordsTooltip">
+        <Key ID="STR_CBA_UI_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
             <German>Einstellung zum Speichern der beim Betreten eines Mehrspielerservers eingegebenen Passwörter.</German>
             <Polish>Opcja zapamiętywania wprowadzonych haseł do serwerów.</Polish>
@@ -78,7 +78,7 @@
             <Chinese>設定是否當連線到伺服器時儲存密碼</Chinese>
             <Russian>Параметр запоминания паролей сервера при входе на них.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_SavePasswords">
+        <Key ID="STR_CBA_UI_SavePasswords">
             <English>Save passwords</English>
             <German>Passwörter speichern</German>
             <Polish>Zapisuj hasła</Polish>
@@ -90,7 +90,7 @@
             <Chinese>記住密碼</Chinese>
             <Russian>Сохранять пароли</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_SavePasswordsTooltip">
+        <Key ID="STR_CBA_UI_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver gespeichert.</German>
             <Polish>Hasła są zapisywane podczas łaczenia do serwerów.</Polish>
@@ -102,7 +102,7 @@
             <Chinese>連線到伺服器時將記住密碼</Chinese>
             <Russian>Пароли будут сохраняться при входе на сервера.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_DoNotSavePasswords">
+        <Key ID="STR_CBA_UI_DoNotSavePasswords">
             <English>Do not save passwords</English>
             <German>Passwörter nicht speichern</German>
             <Polish>Nie zapisuj haseł</Polish>
@@ -114,7 +114,7 @@
             <Chinese>不保存密碼</Chinese>
             <Russian>Не сохранять пароли</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_DoNotSavePasswordsTooltip">
+        <Key ID="STR_CBA_UI_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden nicht automatisch eingegeben.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła nie bedą wykorzystywane.</Polish>
@@ -126,7 +126,7 @@
             <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將不會自動填入。</Chinese>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли не будут автоматически вставлены.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_DeletePasswords">
+        <Key ID="STR_CBA_UI_DeletePasswords">
             <English>Delete passwords</English>
             <German>Passwörter löschen</German>
             <Polish>Usuń hasła</Polish>
@@ -138,7 +138,7 @@
             <Chinese>刪除密碼</Chinese>
             <Russian>Удалить пароли</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_DeletePasswordsTooltip">
+        <Key ID="STR_CBA_UI_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
@@ -150,7 +150,7 @@
             <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將會刪除。</Chinese>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли будут удалены.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotificationPositionName">
+        <Key ID="STR_CBA_UI_NotificationPositionName">
             <English>Notification</English>
             <German>Benachrichtigung</German>
             <Polish>Powiadomienie</Polish>
@@ -162,7 +162,7 @@
             <French>Notification</French>
             <Russian>Уведомление</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotificationPositionDescription">
+        <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
             <German>Textrückmeldung an den Spieler.</German>
             <Polish>Tekstowa informacja dla gracza.</Polish>
@@ -174,7 +174,7 @@
             <French>Notification textuelle au joueur.</French>
             <Russian>Текстовая информация для игрока.</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_AllMissions">
+        <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
             <German>Alle Missionen anzeigen</German>
             <Japanese>全ミッションを表示</Japanese>
@@ -186,7 +186,7 @@
             <French>Afficher toutes les missions</French>
             <Russian>Показать все миссии</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_CustomMissions">
+        <Key ID="STR_CBA_UI_CustomMissions">
             <English>Show custom missions</English>
             <German>Eigene Missionen anzeigen</German>
             <Japanese>カスタム ミッションを表示</Japanese>
@@ -198,7 +198,7 @@
             <French>Afficher les missions personnalisées</French>
             <Russian>Показать пользовательские миссии</Russian>
         </Key>
-        <Key ID="STR_CBA_Ui_NotifyLifetime">
+        <Key ID="STR_CBA_UI_NotifyLifetime">
             <English>Notification Lifetime</English>
             <German>Benachrichtigung-Anzeigedauer</German>
             <Czech>Doba trvání upozornění</Czech>
@@ -209,7 +209,7 @@
             <Russian>Продолжительность уведомления</Russian>
             <Polish>Długość żywotności powiadomień</Polish>
         </Key>
-        <Key ID="STR_CBA_Ui_NotifyLifetimeTooltip">
+        <Key ID="STR_CBA_UI_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
             <German>Anzeigedauer der Benachrichtigungen in Sekunden.</German>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
@@ -229,6 +229,19 @@
             <French>Contacter l'administrateur du serveur.</French>
             <Russian>Уведомить администратора сервера.</Russian>
             <Polish>Kontakt z administratorem serwera</Polish>
+        </Key>
+        <Key ID="STR_CBA_UI_LobbyManager">
+            <English>Lobby Manager</English>
+            <German>Lobby Manager</German>
+            <Polish>Menadżer Lobby</Polish>
+        </Key>
+        <Key ID="STR_CBA_UI_AdjustingGroupOrder">
+            <English>Adjusting group order...</English>
+            <German>Reihenfolge der Gruppen wird angepasst ...</German>
+        </Key>
+        <Key ID="STR_CBA_UI_LobbyManager_Warning">
+            <English>Back up mission before using this tool.</English>
+            <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
         </Key>
     </Package>
 </Project>
