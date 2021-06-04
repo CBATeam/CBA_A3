@@ -234,14 +234,17 @@
             <English>Lobby Manager</English>
             <German>Lobby Manager</German>
             <Polish>Menadżer Lobby</Polish>
+            <French>Gestionnaire de Lobby</French>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
+            <French>Modification de l'ordre des groupes...</French>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
             <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
+            <French>Sauvegardez la mission avant d'utiliser cet outil.</French>
         </Key>
     </Package>
 </Project>
