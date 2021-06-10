@@ -31,6 +31,20 @@
             <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
             <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
         </Key>
+        <Key ID="STR_CBA_Main_DisplayName">
+            <English>Community Base Addons</English>
+            <German>Community Base Addons</German>
+            <Japanese>Community Base Addons</Japanese>
+            <Chinese>社群基礎模組</Chinese>
+            <Chinesesimp>社群基础模组</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária</Portuguese>
+            <Russian>Community Base Addons</Russian>
+            <French>Community Base Addons</French>
+            <Polish>Community Base Addons</Polish>
+            <Turkish>Community Base Addons</Turkish>
+            <Italian>Community Base Addons</Italian>
+            <Czech>Community Base Addons</Czech>
+        </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
             <German>Community Base Addons - Hauptkomponente</German>
