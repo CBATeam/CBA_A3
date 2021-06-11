@@ -2,7 +2,7 @@
 [
     QGVAR(ConsoleIndentType), "LIST",
     [LLSTRING(ConsoleIndentType), LLSTRING(ConsoleIndentTypeTooltip)],
-    LELSTRING(Ui,Category),
+    [LELSTRING(main,DisplayName), LELSTRING(UI,Category)],
     [
         [-1, 0],
         [localize "STR_A3_OPTIONS_DISABLED", LLSTRING(ConsoleIndentSpaces)],

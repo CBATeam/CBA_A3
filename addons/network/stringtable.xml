@@ -15,8 +15,22 @@
             <Italian>CBA Rete</Italian>
             <Czech>CBA Síť</Czech>
         </Key>
+        <Key ID="STR_CBA_Network_Category">
+            <English>Network</English>
+            <German>Netzwerk</German>
+            <Japanese>ネットワーク</Japanese>
+            <Chinese>網路</Chinese>
+            <Chinesesimp>网路</Chinesesimp>
+            <Portuguese>Rede</Portuguese>
+            <Russian>Сеть</Russian>
+            <French>Réseau</French>
+            <Polish>Sieć</Polish>
+            <Turkish>Ağ</Turkish>
+            <Italian>Rete</Italian>
+            <Czech>Síť</Czech>
+        </Key>
         <Key ID="STR_CBA_Network_LoadoutValidation">
-            <English>Loadout validation</English>
+            <English>Loadout Validation</English>
             <German>Überprüfung von Ausrüstungen</German>
             <French>Vérification de l'équipement</French>
         </Key>

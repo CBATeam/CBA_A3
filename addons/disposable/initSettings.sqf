@@ -2,7 +2,7 @@
     QGVAR(replaceDisposableLauncher),
     "CHECKBOX",
     [LLSTRING(ReplaceDisposableLauncher), LLSTRING(ReplaceDisposableLauncherTooltip)],
-    ELSTRING(common,WeaponsCategory),
+    [LELSTRING(main,DisplayName), "str_a3_firing1"],
     true, // default value
     1 // isGlobal
 ] call CBA_fnc_addSetting;
@@ -11,7 +11,7 @@
     QGVAR(dropUsedLauncher),
     "LIST",
     LLSTRING(DropUsedLauncher),
-    ELSTRING(common,WeaponsCategory),
+    [LELSTRING(main,DisplayName), "str_a3_firing1"],
     [
         [0,1,2],
         [

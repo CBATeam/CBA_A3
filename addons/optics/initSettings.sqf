@@ -2,7 +2,7 @@
     QGVAR(usePipOptics),
     "CHECKBOX",
     LLSTRING(UsePIP),
-    ELSTRING(common,WeaponsCategory),
+    [LELSTRING(main,DisplayName), "str_a3_firing1"],
     true, // default value
     2, // isGlobal
     {

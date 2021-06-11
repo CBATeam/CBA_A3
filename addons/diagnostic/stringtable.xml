@@ -93,7 +93,7 @@
             <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
-            <English>Debug console indentation</English>
+            <English>Debug Console Indentation</English>
             <Polish>Indentacja w konsoli debugowania</Polish>
             <French>Indentation dans la console de débogage</French>
         </Key>

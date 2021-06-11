@@ -15,6 +15,22 @@
             <Italian>Community Base Addons - Interfaccia utente</Italian>
             <Czech>Community Base Addons - Uživatelské prostředí</Czech>
         </Key>
+        <Key ID="STR_CBA_UI_Category">
+            <English>User Interface</English>
+            <Czech>Uživatelské rozhraní</Czech>
+            <Portuguese>Interface do usuário</Portuguese>
+            <French>Interface Utilisateur</French>
+            <Russian>Интерфейс</Russian>
+            <Japanese>ユーザ インタフェイス</Japanese>
+            <Polish>Interfejs użytkownika</Polish>
+            <German>Benutzeroberfläche</German>
+            <Korean>사용자 인터페이스</Korean>
+            <Italian>Interfaccia Utente</Italian>
+            <Chinesesimp>使用者介面</Chinesesimp>
+            <Chinese>使用者介面</Chinese>
+            <Spanish>Interfaz de usuario</Spanish>
+            <Turkish>Kullanıcı Arayüzü</Turkish>
+        </Key>
         <Key ID="STR_CBA_UI_ProgressBarPositionName">
             <English>Progress Bar</English>
             <German>Fortschrittsanzeige</German>
@@ -41,21 +57,8 @@
             <Czech>Pozici ukazatele průběhu.</Czech>
             <Russian>Позиция индикатора выполнения.</Russian>
         </Key>
-        <Key ID="STR_CBA_UI_Category">
-            <English>CBA UI</English>
-            <German>CBA UI</German>
-            <Polish>CBA UI</Polish>
-            <French>CBA IU</French>
-            <Turkish>CBA UI</Turkish>
-            <Japanese>CBA UI</Japanese>
-            <Italian>CBA IU</Italian>
-            <Czech>CBA UI</Czech>
-            <Spanish>CBA Interfaz</Spanish>
-            <Chinese>社群基礎模組 界面</Chinese>
-            <Russian>CBA Пользовательский интерфейс</Russian>
-        </Key>
         <Key ID="STR_CBA_UI_StoreServerPasswords">
-            <English>Store server passwords</English>
+            <English>Store Server Passwords</English>
             <German>Serverpasswörter speichern</German>
             <Polish>Zapamiętuj hasła serwerów</Polish>
             <French>Enregistrer les mots de passe serveur</French>
