@@ -30,7 +30,8 @@ GVAR(featureCamerasCode) = [
     {!isNull (missionNamespace getVariable ["BIS_fnc_establishingShot_fakeUAV", objNull])}, // Establishing shot camera
     {!isNull (missionNamespace getVariable ["BIS_fnc_camera_cam", objNull])}, // Splendid camera
     {!isNull (uiNamespace getVariable ["BIS_fnc_animViewer_cam", objNull])}, // Animation viewer camera
-    {!isNull (missionNamespace getVariable ["BIS_DEBUG_CAM", objNull])} // Classic camera
+    {!isNull (missionNamespace getVariable ["BIS_DEBUG_CAM", objNull])}, // Classic camera
+    {missionNamespace getVariable ["vn_cinematic_running", false]} // VN Cinematic camera
 ];
 GVAR(featureCamerasNames) = [
     "curator", // Curator
@@ -39,7 +40,8 @@ GVAR(featureCamerasNames) = [
     "establishing", // Establishing shot camera
     "splendid", // Splendid camera
     "animViewer", // Animation viewer camera
-    "classic" // Classic camera
+    "classic", // Classic camera
+    "vn_cinematic" // VN Cinematic camera
 ];
 
 call COMPILE_FILE(init_gauss);
