@@ -30,8 +30,7 @@ GVAR(featureCamerasCode) = [
     {!isNull (missionNamespace getVariable ["BIS_fnc_establishingShot_fakeUAV", objNull])}, // Establishing shot camera
     {!isNull (missionNamespace getVariable ["BIS_fnc_camera_cam", objNull])}, // Splendid camera
     {!isNull (uiNamespace getVariable ["BIS_fnc_animViewer_cam", objNull])}, // Animation viewer camera
-    {!isNull (missionNamespace getVariable ["BIS_DEBUG_CAM", objNull])}, // Classic camera
-    {missionNamespace getVariable ["vn_cinematic_running", false]} // VN Cinematic camera
+    {!isNull (missionNamespace getVariable ["BIS_DEBUG_CAM", objNull])} // Classic camera
 ];
 GVAR(featureCamerasNames) = [
     "curator", // Curator
@@ -40,9 +39,11 @@ GVAR(featureCamerasNames) = [
     "establishing", // Establishing shot camera
     "splendid", // Splendid camera
     "animViewer", // Animation viewer camera
-    "classic", // Classic camera
-    "vn_cinematic" // VN Cinematic camera
+    "classic" // Classic camera
 ];
+if (isClass (configFile >> "CfgPatches" >> "missions_f_vietnam")) then { // Add SOG Cinematic module camera if CDLC loaded
+    ["vn_cinematic", {missionNamespace getVariable ["vn_cinematic_running", false]}] call CBA_fnc_registerFeatureCamera;
+};
 
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_perFrameHandler);
