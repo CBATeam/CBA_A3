@@ -1,7 +1,7 @@
 [
     QGVAR(StorePasswords), "LIST",
     [LLSTRING(StoreServerPasswords), LLSTRING(StoreServerPasswordsTooltip)],
-    LLSTRING(Category),
+    [LELSTRING(main,DisplayName), LLSTRING(Category)],
     [[1, 0, -1], [
         [LLSTRING(SavePasswords), LLSTRING(SavePasswordsTooltip)],
         [LLSTRING(DoNotSavePasswords), LLSTRING(DoNotSavePasswordsTooltip)],
@@ -22,7 +22,7 @@
     QGVAR(notifyLifetime),
     "SLIDER",
     [LLSTRING(NotifyLifetime), LLSTRING(NotifyLifetimeTooltip)],
-    LLSTRING(Category),
+    [LELSTRING(main,DisplayName), LLSTRING(Category)],
     [1, 10, 4, 1], // default value
     2 // global
 ] call CBA_fnc_addSetting;

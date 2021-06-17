@@ -2,7 +2,7 @@
     QGVAR(repetitionMode),
     "LIST",
     [LLSTRING(RepetitionMode), LLSTRING(RepetitionModeTooltip)],
-    ELSTRING(common,WeaponsCategory),
+    [LELSTRING(main,DisplayName), "str_a3_firing1"],
     [
         [0, 1, 2],
         [

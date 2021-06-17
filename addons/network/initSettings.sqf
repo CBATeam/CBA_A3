@@ -2,7 +2,7 @@
     QGVAR(loadoutValidation),
     "LIST",
     [LLSTRING(LoadoutValidation), LLSTRING(LoadoutValidationTooltip)],
-    LSTRING(Component),
+    [LELSTRING(main,DisplayName), LSTRING(Category)],
     [
         [0, 1, 2],
         [

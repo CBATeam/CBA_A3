@@ -41,6 +41,9 @@ GVAR(featureCamerasNames) = [
     "animViewer", // Animation viewer camera
     "classic" // Classic camera
 ];
+if (isClass (configFile >> "CfgPatches" >> "missions_f_vietnam")) then { // Add SOG Cinematic module camera if CDLC loaded
+    ["vn_cinematic", {missionNamespace getVariable ["vn_cinematic_running", false]}] call CBA_fnc_registerFeatureCamera;
+};
 
 call COMPILE_FILE(init_gauss);
 call COMPILE_FILE(init_perFrameHandler);

@@ -13,6 +13,7 @@ Description:
     - Splendid camera (BIS_fnc_camera)
     - Animation viewer (BIS_fnc_animViewer)
     - Classic camera (BIS_fnc_cameraOld)
+    - SOG Cinematic module camera
 
     And cameras registered via CBA_fnc_registerFeatureCamera.
 
