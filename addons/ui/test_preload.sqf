@@ -9,7 +9,7 @@ isNil {
     with uiNamespace do {
         // 3DEN
         AmmoBox_list = nil;
-        ["onLoad", [controlNull]] call compile preprocessFile "\a3\3den\UI\Attributes\AmmoBox.sqf";
+        ["onLoad", [controlNull]] call compileScript ["\a3\3den\UI\Attributes\AmmoBox.sqf"];
     };
 };
 
@@ -47,13 +47,13 @@ isNil {
         _curator addCuratorAddons call EGVAR(common,addons);
 
         missionNamespace setVariable ["RscAttrbuteInventory_weaponAddons", nil];
-        ["onLoad", [displayNull], objNull] call compile preprocessFile "\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf";
+        ["onLoad", [displayNull], objNull] call compileScript ["\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf"];
         _vanilla = RscAttributeInventory_list;
 
         GVAR(curatorItemCache) = nil;
         call FUNC(preloadCurator);
         missionNamespace setVariable ["RscAttrbuteInventory_weaponAddons", GVAR(curatorItemCache)];
-        ["onLoad", [displayNull], objNull] call compile preprocessFile "\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf";
+        ["onLoad", [displayNull], objNull] call compileScript ["\a3\ui_f_curator\UI\RscCommon\RscAttributeInventory.sqf"];
         _cba = RscAttributeInventory_list;
 
         TEST_TRUE([_vanilla] isEqualTo [_cba],QFUNC(preloadCurator));
