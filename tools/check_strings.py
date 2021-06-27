@@ -26,7 +26,7 @@ def getStringUsage(filepath):
     # print("Checking {0} from {1}".format(filepath,selfmodule))
     fileStrings = []
 
-    with open(filepath, 'r') as file:
+    with open(filepath, 'r', encoding="latin-1") as file:
         content = file.read()
 
         srch = re.compile(r'(STR_CBA_[_a-zA-Z0-9]*)', re.IGNORECASE)
