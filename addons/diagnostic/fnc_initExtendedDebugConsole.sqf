@@ -57,7 +57,7 @@ _expression ctrlAddEventHandler ["KeyDown", {
                 [ctrlParent _buttonLocalExec, _buttonLocalExec],
                 "RscDisplayDebugPublic",
                 0
-            ] call compile preprocessFileLineNumbers "\A3\Ui_f\scripts\GUI\RscDebugConsole.sqf";
+            ] call compileScript ["\A3\Ui_f\scripts\GUI\RscDebugConsole.sqf"];
 
             playSound "SoundClick";
         };
