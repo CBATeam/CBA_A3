@@ -14,6 +14,7 @@
             <Turkish>Community Base Addons - Kullanıcı Arayüzü</Turkish>
             <Italian>Community Base Addons - Interfaccia utente</Italian>
             <Czech>Community Base Addons - Uživatelské prostředí</Czech>
+            <Spanish>Community Base Addons - Interfaz de usuario</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_Category">
             <English>User Interface</English>
@@ -43,6 +44,7 @@
             <Italian>Barra di avanzamento</Italian>
             <Czech>Ukazatel průběhu</Czech>
             <Russian>Индикатор выполнения</Russian>
+            <Spanish>Barra de progreso</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
@@ -56,6 +58,7 @@
             <Italian>Posizione della barra di avanzamento</Italian>
             <Czech>Pozici ukazatele průběhu.</Czech>
             <Russian>Позиция индикатора выполнения.</Russian>
+            <Spanish>Posición de la barra de progreso.</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_StoreServerPasswords">
             <English>Store Server Passwords</English>
@@ -68,6 +71,7 @@
             <Czech>Ukládat hesla serveru</Czech>
             <Chinese>儲存伺服器密碼</Chinese>
             <Russian>Запоминать пароли серверов</Russian>
+            <Spanish>Almacenar contraseñas del servidor</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
@@ -80,6 +84,7 @@
             <Czech>Uloží zadané heslo, když se připojujete k multiplayerovému serveru.</Czech>
             <Chinese>設定是否當連線到伺服器時儲存密碼</Chinese>
             <Russian>Параметр запоминания паролей сервера при входе на них.</Russian>
+            <Spanish>Configuración para almacenar las contraseñas ingresadas al conectarse a un servidor multijugador.</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_SavePasswords">
             <English>Save passwords</English>
@@ -92,6 +97,7 @@
             <Czech>Ukládat hesla</Czech>
             <Chinese>記住密碼</Chinese>
             <Russian>Сохранять пароли</Russian>
+            <Spanish>Guardar contraseñas</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
@@ -104,6 +110,7 @@
             <Czech>Hesla jsou uložena, když se připojujete k multiplayerovému serveru.</Czech>
             <Chinese>連線到伺服器時將記住密碼</Chinese>
             <Russian>Пароли будут сохраняться при входе на сервера.</Russian>
+            <Spanish>Las contraseñas se almacenan cuando se conecta a un servidor multijugador</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_DoNotSavePasswords">
             <English>Do not save passwords</English>
@@ -116,6 +123,7 @@
             <Czech>Neukládat hesla</Czech>
             <Chinese>不保存密碼</Chinese>
             <Russian>Не сохранять пароли</Russian>
+            <Spanish>No guarde las contraseñas</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
@@ -128,6 +136,7 @@
             <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, nebudou automaticky zadávána.</Czech>
             <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將不會自動填入。</Chinese>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли не будут автоматически вставлены.</Russian>
+            <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas no se ingresarán automáticamente.</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_DeletePasswords">
             <English>Delete passwords</English>
@@ -140,6 +149,7 @@
             <Czech>Smazat hesla</Czech>
             <Chinese>刪除密碼</Chinese>
             <Russian>Удалить пароли</Russian>
+            <Spanish>Eliminar contraseñas</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
@@ -152,6 +162,7 @@
             <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, jsou smazána z profilu.</Czech>
             <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將會刪除。</Chinese>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли будут удалены.</Russian>
+            <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas se eliminan del perfil.</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionName">
             <English>Notification</English>
@@ -164,6 +175,7 @@
             <Chinese>通知</Chinese>
             <French>Notification</French>
             <Russian>Уведомление</Russian>
+            <Spanish>Notificación</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
@@ -176,6 +188,7 @@
             <Chinese>回饋文字給玩家</Chinese>
             <French>Notification textuelle au joueur.</French>
             <Russian>Текстовая информация для игрока.</Russian>
+            <Spanish>Comentarios textuales para el jugador</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
@@ -188,6 +201,7 @@
             <Chinese>顯示所有任務</Chinese>
             <French>Afficher toutes les missions</French>
             <Russian>Показать все миссии</Russian>
+            <Spanish>Mostrar todas las misiones</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_CustomMissions">
             <English>Show custom missions</English>
@@ -200,6 +214,7 @@
             <Chinese>顯示目前任務</Chinese>
             <French>Afficher les missions personnalisées</French>
             <Russian>Показать пользовательские миссии</Russian>
+            <Spanish>Mostrar misiones personalizadas</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_NotifyLifetime">
             <English>Notification Lifetime</English>
@@ -211,6 +226,7 @@
             <French>Durée de vie des notifications</French>
             <Russian>Продолжительность уведомления</Russian>
             <Polish>Długość żywotności powiadomień</Polish>
+            <Spanish>Duración de la notificación</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
@@ -222,6 +238,7 @@
             <French>Durée d'affichage des notifications, en secondes.</French>
             <Russian>Время в секундах, в течении которого будет видно уведомление.</Russian>
             <Polish>Ilość czasu przez który widoczne jest powiadomienie</Polish>
+            <Spanish>Duración de la visualización de notificaciones en segundos</Spanish>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
@@ -232,22 +249,26 @@
             <French>Contacter l'administrateur du serveur.</French>
             <Russian>Уведомить администратора сервера.</Russian>
             <Polish>Kontakt z administratorem serwera</Polish>
+            <Spanish>Póngase en contacto con el administrador del servidor</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
             <German>Lobby Manager</German>
             <Polish>Menadżer Lobby</Polish>
             <French>Gestionnaire de Lobby</French>
+            <Spanish>Gerente de lobby</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
             <French>Modification de l'ordre des groupes...</French>
+            <Spanish>Ajustar el orden del grupo...</Spanish>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
             <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
             <French>Sauvegardez la mission avant d'utiliser cet outil.</French>
+            <Spanish>Haga una copia de seguridad de la misión antes de usar esta herramienta</Spanish>
         </Key>
     </Package>
 </Project>
