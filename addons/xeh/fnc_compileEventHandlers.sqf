@@ -89,14 +89,16 @@ if (_allowRecompile) then {
                         //If there is a quote mark in the path, then something went wrong and we got multiple paths, just skip optimization
                         //Example cause: "call COMPILE_FILE(XEH_preInit);call COMPILE_FILE(XEH_preClientInit)"
                         if (_funcPath find "'" == -1) then {
-                            _eventFunc = preprocessFileLineNumbers _funcPath;
+                            _eventFunc = compileScript [_funcPath];
                             TRACE_2("eventfunction redirected",_customName,_funcPath);
                         };
                     };
                     // if (_eventFunc isEqualTo _x) then { diag_log text format ["XEH: Could not recompile [%1-%2]: %3", _eventName, _customName, _eventFunc]; };
                 };
-
-                compile _eventFunc // apply return
+                if (_eventFunc isEqualType "") then {
+                    _eventFunc = compile _eventFunc;
+                };
+                _eventFunc // apply return
             };
         };
 
