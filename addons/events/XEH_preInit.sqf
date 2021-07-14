@@ -29,6 +29,7 @@ if (isServer) then {
 
 #include "backwards_comp.sqf"
 #include "initSettings.sqf"
+#include "initSounds.sqf"
 
 ADDON = true;
 
