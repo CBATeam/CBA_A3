@@ -8,15 +8,21 @@ SCRIPT(XEH_postInit);
 if (!SLX_XEH_DisableLogging) then {
     private _logMsgs = [];
     private _filter = {if (_x isEqualType 1) then {[_x] call CBA_fnc_formatNumber} else {_x}};
-    [GVAR(versions), { _logMsgs pushBack format["%1=%2", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."]}] call CBA_fnc_hashEachPair;
+
+    {
+        _logMsgs pushBack format["%1=%2", _x, ([_y select 0, _filter] call CBA_fnc_filter) joinString "."];
+    } forEach GVAR(versions);
+
     private _logMsg = _logMsgs joinString ", ";
 
     INFO_2("%1 VERSIONING:%2", [ARR_3(diag_frameNo, diag_tickTime, time)], _logMsg);
 };
 
 // Dependency check and warn
-[GVAR(dependencies), {
-     private _f = {
+{
+    private _key = _x;
+    private _value = _y;
+    private _f = {
         diag_log text _this;
         sleep 1;
         CBA_logic globalChat _this;
@@ -45,4 +51,4 @@ if (!SLX_XEH_DisableLogging) then {
             };
         };
     } forEach _value;
-}] call CBA_fnc_hashEachPair;
+} forEach GVAR(dependencies);

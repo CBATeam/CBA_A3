@@ -33,8 +33,8 @@ private _return = if (isDedicated) then {
     WARNING("Function ran on a dedicated server. Function only usable on a client. Index was: " + str _actionIndex);
     false;
 } else {
-    if ([GVAR(actionList), _actionIndex] call CBA_fnc_hashHasKey) then {
-        [GVAR(actionlist),_actionIndex, nil] call CBA_fnc_hashSet;
+    if (_actionIndex in GVAR(actionList)) then {
+        GVAR(actionlist) deleteAt _actionIndex;
         GVAR(actionListUpdated) = true;
         true;
     } else {
