@@ -130,6 +130,7 @@ class CfgFunctions {
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
+            PATHTO_FNC(createUUID);
         };
 
         class Broken {
