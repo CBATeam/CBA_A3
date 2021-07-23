@@ -16,6 +16,7 @@ Thumbs.db
 *.log
 /store/function_library/*
 /store/wiki/*
+.vscode/*
 
 *.7z
 
