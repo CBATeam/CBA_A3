@@ -10,7 +10,7 @@
 #define VERSION_AR  MAJOR,MINOR,PATCHLVL,BUILD
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 2.04
+#define REQUIRED_VERSION 2.02
 
 /*
 // Defined DEBUG_MODE_NORMAL in a few CBA_fncs to prevent looped logging :)
