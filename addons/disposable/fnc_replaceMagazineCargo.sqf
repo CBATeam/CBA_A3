@@ -56,7 +56,7 @@ private _isBackpack = getNumber (configOf _box >> "isBackpack") != -1;
     _x params ["_magazine", "_ammo"];
 
     if (_magazine in GVAR(magazines)) then {
-        if !(_isBackpack) then {
+        if (!_isBackpack || _magazine in GVAR(BackpackReplaceableMagazines)) then {
             _box addWeaponCargoGlobal [GVAR(MagazineLaunchers) getVariable _magazine, 1];
         };
     } else {
