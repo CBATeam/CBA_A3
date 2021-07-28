@@ -131,12 +131,10 @@ _list setVariable [QFUNC(activate), {
     };
 }];
 
-_list ctrlAddEventHandler ["lbDblClick", {
-    params ["_list"];
-    _this call (_list getVariable QFUNC(activate));
-}];
-
-_list ctrlAddEventHandler ["KeyDown", {
+// Selecting context menu interaction mode:
+// Mouse double click + keyboard (Default)
+private _optionSelectHandlerType = "LBDblClick";
+private _optionListKeyHandlerCode = {
     params ["_list", "_key"];
     if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then {
         [_list getVariable QFUNC(activate), [_list, lbCurSel _list]] call CBA_fnc_execNextFrame;
@@ -144,7 +142,24 @@ _list ctrlAddEventHandler ["KeyDown", {
         // Set focus on background to prevent the inventory menu from auto closing.
         ctrlSetFocus (ctrlParent _list displayCtrl IDC_FG_GROUND_TAB);
     };
+};
+
+if (GVAR(contextMenuSelectionMode) == 1) then {
+    // Mouse only (single click) mode
+    // keyboard's Up/Down events intercepted to prevent LBSelChanged event
+    _optionSelectHandlerType = "LBSelChanged";
+    _optionListKeyHandlerCode = {
+        params ["", "_key"];
+        if !(_key in [DIK_UP, DIK_DOWN]) exitWith {};
+        true
+    };
+};
+
+_list ctrlAddEventHandler [_optionSelectHandlerType, {
+    params ["_list"];
+    _this call (_list getVariable QFUNC(activate));
 }];
+_list ctrlAddEventHandler ["KeyDown", _optionListKeyHandlerCode];
 
 // ---
 // Set context menu position and size.
