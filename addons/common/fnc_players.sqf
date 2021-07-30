@@ -23,4 +23,4 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(players);
 
-(allUnits + allDeadMen) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}
+(units sideLogic + allUnits + allDeadMen) select {isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}}
