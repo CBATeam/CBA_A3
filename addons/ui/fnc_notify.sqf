@@ -119,10 +119,12 @@ private _fnc_processQueue = {
 
     // Notification is skippable and the queue is not empty - skip to the next one immediately
     if (_skippable && {count GVAR(notifyQueue) > 1}) exitWith {
+        LOG("Skipped queue process");
         [[], _fnc_processQueue] call _fnc_popQueue;
     };
 
     if _sound then {
+        LOG("Played sound");
         playSound "hint";
     };
 
