@@ -15,7 +15,7 @@ Parameters:
             _size  - Text or image size multiplier. (optional, default: 1) <NUMBER>
             _color - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1]) <ARRAY>
     _skippable - Skip or overwrite this notification if another entered the queue. (optional, default: false) <BOOL>
-    _sound     - Play notification sound when hint is displayed (optional, default: false)
+    _sound     - Play notification sound when hint is displayed (optional, default: false) <BOOL>
 
 Examples:
     (begin example)
