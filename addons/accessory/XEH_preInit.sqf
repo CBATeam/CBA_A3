@@ -31,7 +31,7 @@ if (!hasInterface) exitWith {};
 ] call CBA_fnc_addItemContextMenuOption;
 
 [
-    "##AccessorySights", "POINTER", [LSTRING(opticNext), LSTRING(opticNext_tooltip)], nil, nil, {
+    "##AccessorySights", "OPTIC", [LSTRING(opticNext), LSTRING(opticNext_tooltip)], nil, nil, {
         params ["", "", "_item"];
         count (_item call CBA_fnc_switchableAttachments) > 1 // return
     }, {
