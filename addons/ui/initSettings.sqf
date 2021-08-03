@@ -26,15 +26,3 @@
     [1, 10, 4, 1], // default value
     2 // global
 ] call CBA_fnc_addSetting;
-
-[
-    QGVAR(contextMenuSelectionMode),
-    "LIST",
-    [LLSTRING(ContextMenuSelectionMode), LLSTRING(ContextMenuSelectionModeTooltip)],
-    [LELSTRING(main,DisplayName), LLSTRING(Category)],
-    [[0,1], [
-        [LLSTRING(ContextMenuMouseAndKeyboard), LLSTRING(ContextMenuMouseAndKeyboardTooltip)],
-        [LLSTRING(ContextMenuMouseOnly), LLSTRING(ContextMenuMouseOnlyTooltip)]
-    ], 0],
-    2
-] call CBA_fnc_addSetting;

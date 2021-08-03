@@ -190,30 +190,6 @@
             <Russian>Текстовая информация для игрока.</Russian>
             <Spanish>Comentarios textuales para el jugador</Spanish>
         </Key>
-        <Key ID="STR_CBA_UI_ContextMenuSelectionMode">
-            <English>Item Context Menu Selection Type</English>
-            <Russian>Режим контекстного меню предметов</Russian>
-        </Key>
-        <Key ID="STR_CBA_UI_ContextMenuSelectionModeTooltip">
-            <English>Sets selection mode of the options in the inventory item context menu (e.g. attachements options).</English>
-            <Russian>Задает способ выбора опций в контекстом меню предметов в инвентаре (например, режим работы лазера и фонарика).</Russian>
-        </Key>
-        <Key ID="STR_CBA_UI_ContextMenuMouseAndKeyboard">
-            <English>Double Click + Keyboard</English>
-            <Russian>Двойной клик + Клавиатура</Russian>
-        </Key>
-        <Key ID="STR_CBA_UI_ContextMenuMouseAndKeyboardTooltip">
-            <English>Selects option by double click. Keyboard allows to focus (arrow up and down keys) and select (enter key) option.</English>
-            <Russian>Двойной клик для выбора опции. Клавиатура также позволяет выбрать (стрелки вверх и вниз) и применить (ввод) опцию.</Russian>
-        </Key>
-        <Key ID="STR_CBA_UI_ContextMenuMouseOnly">
-            <English>Single Click</English>
-            <Russian>Одиночный клик</Russian>
-        </Key>
-        <Key ID="STR_CBA_UI_ContextMenuMouseOnlyTooltip">
-            <English>Selects option by single click. Keyboard selection is disabled.</English>
-            <Russian>Одиночный клик для выбора опции. Клавиатура не поддерживается.</Russian>
-        </Key>
         <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
             <German>Alle Missionen anzeigen</German>
