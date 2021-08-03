@@ -156,8 +156,10 @@ if (GVAR(contextMenuSelectionMode) == 1) then {
 };
 
 _list ctrlAddEventHandler [_optionSelectHandlerType, {
-    params ["_list"];
-    _this call (_list getVariable QFUNC(activate));
+    [{
+        params ["_list"];
+        _this call (_list getVariable QFUNC(activate));
+    }, _this] call CBA_fnc_execNextFrame;
 }];
 _list ctrlAddEventHandler ["KeyDown", _optionListKeyHandlerCode];
 
