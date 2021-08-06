@@ -48,6 +48,10 @@ if (_options isEqualTo []) exitWith {};
 // ctrlSetBackgroundColor command does not seem to work for RscListBox.
 private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
+private _font = getText (configfile >> QGVAR(ItemContextMenu) >> "font");
+private _fontSize = getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _longestName = "";
+
 // ---
 // Populate context menu with options.
 {
@@ -56,6 +60,9 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
     private _args = [_unit, _container, _item, _slot, _params];
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
+    };
+    if (count _longestName < count _displayName) then {
+        _longestName = _displayName;
     };
 
     if (isLocalized _tooltip) then {
@@ -154,8 +161,8 @@ getMousePosition params ["_left", "_top"];
 _left = _left - pixelW;
 _top = _top - pixelH;
 
-private _width = ctrlPosition _list select 2;
-private _height = lbSize _list * getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _width = (ctrlPosition _list select 2) max 1.1 * (_longestName getTextWidth [_font, _fontSize]);
+private _height = lbSize _list * _fontSize;
 
 _list ctrlSetPosition [_left, _top, _width, _height];
 _list ctrlCommit 0;
