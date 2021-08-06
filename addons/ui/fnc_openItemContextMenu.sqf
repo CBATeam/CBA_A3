@@ -47,6 +47,7 @@ if (_options isEqualTo []) exitWith {};
 // Create context menu.
 // ctrlSetBackgroundColor command does not seem to work for RscListBox.
 private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
+private _tooltips = [];
 
 // ---
 // Populate context menu with options.
@@ -65,6 +66,7 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
         private _index = _list lbAdd _displayName;
         _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
+        _tooltips pushBack _tooltip;
 
         private _key = format [QGVAR(OptionData%1), _index];
 
@@ -99,6 +101,10 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 } forEach _options;
 
 // ---
+// Save tooltip text (workaround until https://community.bistudio.com/wiki/lbTooltip released)
+_list setVariable [QGVAR(TooltipsData), _tooltips];
+
+// ---
 // Execute context menu option statement on selection.
 _list setVariable [QFUNC(activate), {
     params ["_list", "_index"];
@@ -126,7 +132,10 @@ _list setVariable [QFUNC(activate), {
             // Keep focus to prevent auto closing.
             ctrlSetFocus _list;
         } else {
-            [{ctrlDelete _this}, _list] call CBA_fnc_execNextFrame;
+            [{
+                ctrlDelete (_this getVariable [QGVAR(MenuTooltip), controlNull]);
+                ctrlDelete _this
+            }, _list] call CBA_fnc_execNextFrame;
         };
     };
 }];
@@ -171,8 +180,68 @@ _list ctrlAddEventHandler ["KillFocus", {
     [{
         params ["_list"];
 
+        private _tooltip = _list getVariable [QGVAR(MenuTooltip), controlNull];
+        if (focusedCtrl (ctrlParent _list) isEqualto _tooltip) exitWith {};
+
         if (diag_frameNo > _list getVariable [QGVAR(FocusFrame), 0]) then {
+            ctrlDelete _tooltip;
             ctrlDelete _list;
         };
     }, _this] call CBA_fnc_execNextFrame;
+}];
+
+
+// ---
+// Handle context menu's tooltip
+_list ctrlAddEventHandler ["MouseMoving", {
+    params ["_list", "_xPos", "_yPos", "_mouseOver"];
+
+    private _tooltip = _list getVariable [QGVAR(MenuTooltip), nil];
+
+    // --- When mouse moved out of menu - delete tooltip and switch focus back to menu
+    if (!_mouseOver) exitWith {
+        ctrlDelete _tooltip;
+        _list setVariable [QGVAR(MenuTooltip), nil];
+        ctrlSetFocus _list;
+    };
+
+    // --- Create tooltip if none
+    if (isNil "_tooltip") then {
+        // Creates a listbox as we need something focusable to make tooltip overlay menu
+        _tooltip = ctrlParent _list ctrlCreate [QGVAR(ItemContextMenu_Tooltip), -1];
+
+        _list setVariable [QGVAR(MenuTooltip), _tooltip];
+        _tooltip lbAdd "";
+
+        _tooltip setVariable ["FontsInfo", [
+            getText (configFile >> "RscListBox" >> "font"),
+            getNumber (configFile >> ctrlClassName _tooltip >> "sizeEx"),
+            getNumber (configFile >> ctrlClassName _list >> "sizeEx")
+        ]];
+
+        // Intercepts keyboard interactions with list
+        _tooltip ctrlAddEventHandler ["KeyDown", {
+            params ["", "_key"];
+            if !(_key in [DIK_UP, DIK_DOWN]) exitWith {};
+            true
+        }];
+    };
+
+    (_tooltip getVariable "FontsInfo") params ["_font","_fontSize","_listFontSize"];
+
+    // --- Calculating index of list item under the mouse cursor
+    private _listHeight = _yPos - (ctrlPosition _list select 1);
+    private _listIndex = floor (_listHeight / _listFontSize);
+    private _text = (_list getVariable QGVAR(TooltipsData)) # _listIndex;
+
+    _tooltip lbSetText [0, _text];
+
+    _xPos = _xPos + 15 * pixelW;
+    _yPos = _yPos + 15 * pixelH;
+    private _w = 1.1 * (_text getTextWidth [_font, _fontSize]);
+    private _h = 1.1 * _fontSize;
+
+    _tooltip ctrlSetPosition [_xPos, _yPos, _w, _h];
+    _tooltip ctrlCommit 0;
+    ctrlSetFocus _tooltip;
 }];

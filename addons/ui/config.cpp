@@ -38,6 +38,11 @@ class GVAR(ItemContextMenu): RscListBox {
     colorBackground[] = {0.05, 0.05, 0.05, 0.95};
 };
 
+class GVAR(ItemContextMenu_Tooltip): GVAR(ItemContextMenu) {
+    colorBackground[] = {0, 0, 0, 1};
+    sizeEx = 0.0325;
+};
+
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
 #include "RscTitles.hpp"
