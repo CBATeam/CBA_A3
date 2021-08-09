@@ -13,6 +13,7 @@
             <Turkish>Community Base Addons - Teşhis</Turkish>
             <Italian>Community Base Addons - Diagnostica</Italian>
             <Czech>Community Base Addons - Diagnostika</Czech>
+            <Spanish>Community Base Addons - Diagnósticos</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
             <English>Extended Debug Console</English>
@@ -26,6 +27,7 @@
             <Turkish>Geliştirilmiş Debug Konsolu</Turkish>
             <Italian>Console debug estesa</Italian>
             <Czech>Rozšířená ladící konzole</Czech>
+            <Spanish>Consola Extendida de Depuración</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_PrevStatement">
             <English>Previous Statement</English>
@@ -39,6 +41,7 @@
             <Turkish>Önceki İfade</Turkish>
             <Italian>Espressione Prec.</Italian>
             <Czech>Předchozí zpráva</Czech>
+            <Spanish>Expresión Anterior</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_NextStatement">
             <English>Next Statement</English>
@@ -52,6 +55,7 @@
             <Turkish>Sonraki İfade</Turkish>
             <Italian>Espressione Succ.</Italian>
             <Czech>Následující zpráva</Czech>
+            <Spanish>Expresión Siguiente</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_TargetExec">
             <English>Target Exec</English>
@@ -65,6 +69,7 @@
             <Turkish>Hedefte Çalıştır</Turkish>
             <Italian>Esegui Remoto</Italian>
             <Czech>Cílový exec</Czech>
+            <Spanish>Ejecutiva de Objetivo</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debugging</English>
@@ -78,6 +83,7 @@
             <Turkish>Hedefte Çalıştırmayı Aktifleştir</Turkish>
             <Italian>Attiva il debug remoto</Italian>
             <Czech>Zapnout cílové ladění</Czech>
+            <Spanish>Activar Depuración de Objetivo</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
             <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
@@ -91,21 +97,25 @@
             <Turkish>[CBA] Başka hedefte çalıştırmayı aktifleştirir. Debug konsolu gerektirir.</Turkish>
             <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
             <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
+            <Spanish>[CBA] Permite la depuración de objetivos remotos. Requiere consola de depuración.</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
             <English>Debug Console Indentation</English>
             <Polish>Indentacja w konsoli debugowania</Polish>
             <French>Indentation dans la console de débogage</French>
+            <Spanish>Espaciado de la Consola de Depuración</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
             <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
             <Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
             <French>Type d'indentation qui peut être employée dans la console de débogage.\nTab ajoute une indentation, et Shift + Tab en supprime une.</French>
+            <Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
             <English>4 Spaces</English>
             <Polish>4 Spacje</Polish>
             <French>4 espaces</French>
+            <Spanish>4 Espacios</Spanish>
         </Key>
     </Package>
 </Project>
