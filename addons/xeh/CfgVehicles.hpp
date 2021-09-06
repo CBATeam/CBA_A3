@@ -329,11 +329,20 @@ class CfgVehicles {
     class gm_logistics_object_base: gm_object_base {
         XEH_ENABLED;
     };
+    class gm_deployablebridge_base: gm_logistics_object_base {
+        XEH_ENABLED;
+    };
 
     class gm_staticWeapon_base: StaticWeapon {};
     class gm_staticMG_base: gm_staticWeapon_base {};
     class gm_mg3_aatripod_base: gm_staticMG_base {};
     class gm_mg3_aatripod_empty: gm_mg3_aatripod_base {
+        XEH_ENABLED;
+    };
+
+    class ModuleOrdnanceRocket_F;
+    class gm_ModuleOrdnanceRocket_base: ModuleOrdnanceRocket_F {};
+    class gm_ModuleOrdnanceRocket_rocket_luna_nuc_3r10: gm_ModuleOrdnanceRocket_base {
         XEH_ENABLED;
     };
 
