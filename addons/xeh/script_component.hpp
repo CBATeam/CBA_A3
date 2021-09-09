@@ -91,4 +91,6 @@
     "TurnOut", \
     "Deleted", \
     "Disassembled", \
-    "Suppressed"
+    "Suppressed", \
+    "GestureChanged", \
+    "GestureDone"
