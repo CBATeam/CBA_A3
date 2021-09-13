@@ -66,7 +66,8 @@ clearMagazineCargoGlobal _container;
 
 // Engine will agressively cleanup "empty" ground containers, even if magazines are re-added in same frame, so re-create a new container
 private _containerType = typeOf _container;
-if (((toLower _containerType) in ["groundweaponholder", "weaponholdersimulated"]) 
+if ((_containerType isKindOf "WeaponHolder")
+    && {([configOf _container >> "forceSupply", "NUMBER", 0] call CBA_fnc_getConfigEntry) != 0}
     && {(weaponCargo _container) isEqualTo []}
     && {(itemCargo _container) isEqualTo []}
     && {(backpackCargo _container) isEqualTo []}) then {
