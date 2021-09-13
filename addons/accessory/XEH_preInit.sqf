@@ -21,7 +21,7 @@ if (!hasInterface) exitWith {};
 }, {}, [DIK_SUBTRACT, [true, false, false]]] call CBA_fnc_addKeybind;
 
 [
-    "##AccessoryPointer", "ALL", [LSTRING(railNext), LSTRING(railNext_tooltip)], nil, nil, {
+    "##AccessoryPointer", "POINTER", [LSTRING(railNext), LSTRING(railNext_tooltip)], nil, nil, {
         params ["", "", "_item"];
         count (_item call CBA_fnc_switchableAttachments) > 1 // return
     }, {
@@ -31,7 +31,7 @@ if (!hasInterface) exitWith {};
 ] call CBA_fnc_addItemContextMenuOption;
 
 [
-    "##AccessorySights", "ALL", [LSTRING(opticNext), LSTRING(opticNext_tooltip)], nil, nil, {
+    "##AccessorySights", "OPTIC", [LSTRING(opticNext), LSTRING(opticNext_tooltip)], nil, nil, {
         params ["", "", "_item"];
         count (_item call CBA_fnc_switchableAttachments) > 1 // return
     }, {
