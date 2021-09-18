@@ -73,7 +73,7 @@ private _id = switch (_type) do {
     };
     case "muzzle": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), currentMuzzle GVAR(oldUnit), ""] call _function;
+            [currentMuzzle GVAR(oldUnit), ""] call _function;
         };
         [QGVAR(muzzleEvent), _function] call CBA_fnc_addEventHandler // return id
     };
