@@ -23,7 +23,7 @@ params [
     ["_fullMagazines", false, [false]]
 ];
 
-if (_unit isEqualTo objNull) exitWith {};
+if (isNull _unit) exitWith {};
 
 _unit setUnitLoadout [_loadout select 0, _fullMagazines];
 
@@ -33,10 +33,6 @@ private _extendedInfo = createHashMapFromArray (_loadout select 1);
     private _id = _x;
     {
         _x params ["_function", "_default"];
-        if (_id in _extendedInfo) then {
-            [_unit, _extendedInfo get _id] call _function;
-        } else {
-            [_unit, _default] call _function;
-        };
-    } forEach (GVAR(setHandlers) get _id);
-} forEach (keys GVAR(setHandlers));
+        [_unit, _extendedInfo getOrDefault [_id, _default] call _function;
+    } forEach _y;
+} forEach GVAR(setHandlers);

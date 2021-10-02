@@ -6,6 +6,7 @@ Description:
 Parameters:
     _id - The id of the handler. <STRING>
     _function - The function you wish to execute. <CODE>
+    _default - The default value when the get handler return nil <ANY>
 Passed Arguments:
     _this <ARRAY>
         0: _unit - The unit to set the loadout on. <UNIT>
