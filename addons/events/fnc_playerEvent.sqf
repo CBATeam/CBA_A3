@@ -89,7 +89,7 @@ if (_state isNotEqualTo GVAR(oldState)) then {
     };
 
     if (_newMuzzle isNotEqualTo GVAR(oldMuzzle)) then {
-        [QGVAR(muzzleEvent), [_newMuzzle select 2, GVAR(oldMuzzle) select 2]] call CBA_fnc_localEvent;
+        [QGVAR(muzzleEvent), [_unit, _newMuzzle select 2, GVAR(oldMuzzle) select 2]] call CBA_fnc_localEvent;
         GVAR(oldMuzzle) = _newMuzzle;
     };
 
