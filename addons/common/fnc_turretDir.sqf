@@ -33,6 +33,9 @@ private _gunBeg = _vehicle selectionPosition getText (_turretConfig >> "gunBeg")
 private _gunEnd = _vehicle selectionPosition getText (_turretConfig >> "gunEnd");
 
 if (_gunEnd isEqualTo _gunBeg) then {
+    if ((getNumber (_turretConfig >> "primaryObserver")) == 1) exitWith {
+        _gunBeg = _gunEnd vectorAdd (_vehicle vectorWorldToModel eyeDirection _vehicle);
+    };
     private _vehicleConfig = configOf _vehicle;
     if (((getNumber (_vehicleConfig >> "isUAV")) == 1) && {_turret isEqualto [0]}) then {
         _gunBeg = _vehicle selectionPosition getText (_vehicleConfig >> "uavCameraGunnerDir");
@@ -43,8 +46,8 @@ if (_gunEnd isEqualTo _gunBeg) then {
 };
 
 if !(_relativeToModel) then {
-    _gunBeg = AGLToASL (_vehicle modelToWorld _gunBeg);
-    _gunEnd = AGLToASL (_vehicle modelToWorld _gunEnd);
+    _gunBeg = _vehicle modelToWorldWorld _gunBeg;
+    _gunEnd = _vehicle modelToWorldWorld _gunEnd;
 };
 
 private _turretDir = _gunEnd vectorFromTo _gunBeg;
