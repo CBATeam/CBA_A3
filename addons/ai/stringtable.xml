@@ -45,11 +45,13 @@
             <English>Invisible Target Vehicle</English>
             <German>Unsichtbares Ziel - Fahrzeug</German>
             <French>Cible invisible - Véhicule</French>
+            <Polish>Pojazd - niewidoczny cel</Polish>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
             <German>Unsichtbares Ziel - Flugzeug</German>
             <French>Cible invisible - Avion</French>
+            <Polish>Samolot - niewidoczny cel</Polish>
         </Key>
     </Package>
 </Project>
