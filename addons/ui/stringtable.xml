@@ -263,12 +263,14 @@
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
             <French>Modification de l'ordre des groupes...</French>
             <Spanish>Ajustar el orden del grupo...</Spanish>
+            <Polish>Dostosowywanie kolejności w lobby...</Polish>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
             <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
             <French>Sauvegardez la mission avant d'utiliser cet outil.</French>
             <Spanish>Haga una copia de seguridad de la misión antes de usar esta herramienta</Spanish>
+            <Polish>Wykonaj kopię zapasową misji przed użyciem tego narzędzia.</Polish>
         </Key>
     </Package>
 </Project>

@@ -33,41 +33,49 @@
             <English>Loadout Validation</English>
             <German>Überprüfung von Ausrüstungen</German>
             <French>Vérification de l'équipement</French>
+            <Polish>Sprawdzenie wyposażenia</Polish>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
             <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
             <French>Vérifie l'équipement des unités. Correction d'un bug où les unités se retrouvaient nues après avoir changé de localité.</French>
+            <Polish>Sprawdza wyposażenie jednostek. Naprawia problem, który powodował pojawianie się jednostek nagich, przy zmianie lokalności.</Polish>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
             <German>Niemals</German>
             <French>Jamais</French>
+            <Polish>Nigdy</Polish>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
             <German>Überprüfe niemals Ausrüstungen</German>
             <French>Ne jamais vérifier les équipements</French>
+            <Polish>Nigdy nie sprawdzaj wyposażenia</Polish>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
             <English>Playable units only</English>
             <German>Nur spielbare Einheiten</German>
             <French>Pour les unités jouables</French>
+            <Polish>Tylko grywalne jednostki</Polish>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
             <English>Validate only loadout of playable units</English>
             <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
             <French>Vérifier uniquement l'équipement des unités jouables</French>
+            <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
             <German>Alle Einheiten</German>
             <French>Pour toutes les unités</French>
+            <Polish>Wszystkie jednostki</Polish>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
             <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
             <French>Vérifier l'équipement de toutes les unités</French>
+            <Polish>Sprawdza wyposażenie wszystkich jednostek</Polish>
         </Key>
     </Package>
 </Project>
