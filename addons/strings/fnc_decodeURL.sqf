@@ -24,7 +24,8 @@ params [["_string", "", [""]]];
 if (_string isEqualTo "") exitWith {""};
 
 private _cache = missionNamespace getVariable [QGVAR(URLCache), objNull];
-private _return = _cache getVariable _string;
+private _return = nil;
+if (!isNull _cache) then { _return = _cache getVariable _string; };
 
 if (isNil "_return") then {
     _return = _string;
