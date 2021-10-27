@@ -86,7 +86,7 @@ switch (typeName _object) do {
 
         private _json = ((allVariables _object) apply {
             private _name = _x;
-            private _value = _object getVariable _name;
+            private _value = _object getVariable [_name, objNull];
 
             format ["%1: %2", [_name] call CBA_fnc_encodeJSON, [_value] call CBA_fnc_encodeJSON]
         }) joinString ", ";
