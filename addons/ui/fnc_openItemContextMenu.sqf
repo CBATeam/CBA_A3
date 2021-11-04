@@ -30,15 +30,19 @@ private _config = _item call CBA_fnc_getItemConfig;
 
 private _options = [];
 while {
-    _options append (GVAR(ItemContextMenuOptions) getVariable configName _config);
+    _options append (GVAR(ItemContextMenuOptions) get configName _config);
     _config = inheritsFrom _config;
     !isNull _config
 } do {};
 
+// Read unique class options (not inherited)
+_options append (GVAR(ItemContextMenuOptions) getOrDefault [format["!%1", _item], []]);
+
+// Read type and wildcard options
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["##%1", _itemType2], []]);
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["#%1", _itemType1], []]);
-_options append (GVAR(ItemContextMenuOptions) getVariable ["#All", []]);
+_options append (GVAR(ItemContextMenuOptions) getOrDefault [format ["##%1", _itemType2], []]);
+_options append (GVAR(ItemContextMenuOptions) getOrDefault [format ["#%1", _itemType1], []]);
+_options append (GVAR(ItemContextMenuOptions) getOrDefault ["#All", []]);
 
 // Skip menu if no options.
 if (_options isEqualTo []) exitWith {};

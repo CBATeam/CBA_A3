@@ -9,6 +9,9 @@ Parameters:
     _item                   - Item classname <STRING>
                               Can be base class.
 
+                              Can be specific class without being inherited by child classes:
+                                 "!MyMod_Class1"
+
                               Can be item type as reported by BIS_fnc_itemType:
                                 ["Equipment","Headgear"]
                                 ->
@@ -133,7 +136,7 @@ if (!hasInterface) exitWith {};
 
 // Initialize system on first execution.
 if (isNil QGVAR(ItemContextMenuOptions)) then {
-    GVAR(ItemContextMenuOptions) = false call CBA_fnc_createNamespace;
+    GVAR(ItemContextMenuOptions) = createHashMap;
 
     ["CAManBase", "InventoryOpened", {
         params ["_unit", "_container1", "_container2"];
@@ -222,11 +225,11 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-private _options = GVAR(ItemContextMenuOptions) getVariable _item;
+private _options = GVAR(ItemContextMenuOptions) get _item;
 
 if (isNil "_options") then {
     _options = [];
-    GVAR(ItemContextMenuOptions) setVariable [_item, _options];
+    GVAR(ItemContextMenuOptions) set [_item, _options];
 };
 
 _options pushBack [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params];
