@@ -10,7 +10,7 @@ Parameters:
                               Can be base class.
 
                               Can be specific class without being inherited by child classes:
-                                 "!MyMod_Class1"
+                                 "$MyMod_Class1"
 
                               Can be item type as reported by BIS_fnc_itemType:
                                 ["Equipment","Headgear"]

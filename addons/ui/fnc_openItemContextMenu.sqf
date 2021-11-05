@@ -36,7 +36,7 @@ while {
 } do {};
 
 // Read unique class options (not inherited)
-_options append (GVAR(ItemContextMenuOptions) getOrDefault [format["!%1", _item], []]);
+_options append (GVAR(ItemContextMenuOptions) getOrDefault [format ["$%1", _item], []]);
 
 // Read type and wildcard options
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
