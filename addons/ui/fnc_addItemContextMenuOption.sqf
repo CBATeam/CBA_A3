@@ -9,9 +9,6 @@ Parameters:
     _item                   - Item classname <STRING>
                               Can be base class.
 
-                              Can be specific class without being inherited by child classes:
-                                 "$MyMod_Class1"
-
                               Can be item type as reported by BIS_fnc_itemType:
                                 ["Equipment","Headgear"]
                                 ->
@@ -111,6 +108,11 @@ Parameters:
     _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
 
+    _isItemSpecific         - if true, then option is only available for given
+                              item class and won't be available for child classes.
+                              Does nothing if _item is a type or wildcard
+                              (optional, default: false) <BOOLEAN>
+
 Returns:
     Nothing/Undefined.
 
@@ -120,7 +122,7 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2], false] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:
@@ -160,7 +162,8 @@ params [
     ["_condition", [], [{}, []]],
     ["_statement", {}, [{}]],
     ["_consume", false, [false]],
-    ["_params", []]
+    ["_params", []],
+    ["_isItemSpecific", false, [false]]
 ];
 
 if (_item isEqualTo "") exitWith {};
@@ -224,6 +227,10 @@ _condition params [
     ["_conditionEnable", {true}, [{}]],
     ["_conditionShow", {true}, [{}]]
 ];
+
+if (_isItemSpecific) then {
+    _item = format ["$%1", _item];
+};
 
 private _options = GVAR(ItemContextMenuOptions) get _item;
 
