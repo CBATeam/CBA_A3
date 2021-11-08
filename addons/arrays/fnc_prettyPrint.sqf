@@ -26,7 +26,7 @@ Examples:
         //          []
         //      ],
         //      4
-        //  ]" 
+        //  ]"
         _return = [ [0, 1, ["22", 33, []], 4], ">---" ] call CBA_fnc_prettyPrint;
         // _return ==>
         // [
@@ -42,7 +42,7 @@ Examples:
     (end)
 
 Author:
-   Terra 
+   Terra
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyPrint);
 params [["_array", [], [[]]], ["_tab", toString[9], [""]], ["_depth", 0, [0]]];
