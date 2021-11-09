@@ -45,7 +45,7 @@ Author:
    Terra
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyPrint);
-params [["_array", [], [[]]], ["_tab", toString[9], [""]], ["_depth", 0, [0]]];
+params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
 if (_array isEqualTo []) exitWith {
     "[]"
 };
