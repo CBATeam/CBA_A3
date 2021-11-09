@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_prettyPrint
+Function: CBA_fnc_prettyFormat
 
 Description:
     Makes an array easier to read.
@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        _return = [ [0, 1, ["22", 33, []], 4] ] call CBA_fnc_prettyPrint;
+        _return = [ [0, 1, ["22", 33, []], 4] ] call CBA_fnc_prettyFormat;
         // _return ==>
         // "[
         //      0,
@@ -27,7 +27,7 @@ Examples:
         //      ],
         //      4
         //  ]"
-        _return = [ [0, 1, ["22", 33, []], 4], ">---" ] call CBA_fnc_prettyPrint;
+        _return = [ [0, 1, ["22", 33, []], 4], ">---" ] call CBA_fnc_prettyFormat;
         // _return ==>
         // [
         // >---0,
@@ -44,7 +44,7 @@ Examples:
 Author:
    Terra
 ---------------------------------------------------------------------------- */
-SCRIPT(prettyPrint);
+SCRIPT(prettyFormat);
 params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
 private _tabs = [];
 _tabs resize _depth;
@@ -57,7 +57,7 @@ private _lastIndex = count _array - 1;
 {
     private _line = "";
     if (_x isEqualType []) then {
-        _line = _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyPrint);
+        _line = _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
     } else {
         _line = _tab + _tabs + _line + str _x;
     };
