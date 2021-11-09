@@ -50,7 +50,7 @@ if (_array isEqualTo []) exitWith {
     "[]"
 };
 private _lines = ["["];
-
+private _lastIndex = count _array - 1;
 {
     private _line = "";
     for "_i" from 1 to (_depth + 1) do {
@@ -61,7 +61,7 @@ private _lines = ["["];
     } else {
         _line + str _x;
     };
-    if (_forEachIndex != count _array - 1) then {
+    if (_forEachIndex != _lastIndex) then {
         _line = _line + ",";
     };
     _lines pushBack _line;
