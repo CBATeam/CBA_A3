@@ -46,20 +46,20 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyPrint);
 params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
+private _tabs = [];
+_tabs resize _depth;
+_tabs = _tabs apply {_tab} joinString "";
 if (_array isEqualTo []) exitWith {
-    "[]"
+    _tabs + "[]"
 };
-private _lines = ["["];
+private _lines = [_tabs + "["];
 private _lastIndex = count _array - 1;
 {
     private _line = "";
-    for "_i" from 1 to (_depth + 1) do {
-        _line = _tab + _line;
-    };
     _line = if (_x isEqualType []) then {
         _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyPrint);
     } else {
-        _line + str _x;
+        _tab + _tabs + _line + str _x;
     };
     if (_forEachIndex != _lastIndex) then {
         _line = _line + ",";
@@ -67,9 +67,5 @@ private _lastIndex = count _array - 1;
     _lines pushBack _line;
 } forEach _array;
 
-private _closingBracket = "";
-for "_i" from 1 to _depth do {
-    _closingBracket = _tab + _closingBracket;
-};
-_lines pushBack (_closingBracket + "]");
+_lines pushBack (_tabs + "]");
 _lines joinString endl
