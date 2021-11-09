@@ -56,10 +56,10 @@ private _lines = [_tabs + "["];
 private _lastIndex = count _array - 1;
 {
     private _line = "";
-    _line = if (_x isEqualType []) then {
-        _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyPrint);
+    if (_x isEqualType []) then {
+        _line = _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyPrint);
     } else {
-        _tab + _tabs + _line + str _x;
+        _line = _tab + _tabs + _line + str _x;
     };
     if (_forEachIndex != _lastIndex) then {
         _line = _line + ",";
