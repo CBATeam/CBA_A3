@@ -13,7 +13,7 @@ class CfgFunctions {
             PATHTO_FNC(inject);
             PATHTO_FNC(insert);
             PATHTO_FNC(join);
-            PATHTO_FNC(prettyPrint);
+            PATHTO_FNC(prettyFormat);
             PATHTO_FNC(reject);
             PATHTO_FNC(select);
             PATHTO_FNC(selectBest);
