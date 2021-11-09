@@ -46,7 +46,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyPrint);
 params [["_array", [], [[]]], ["_tab", toString[9], [""]], ["_depth", 0, [0]]];
-if (count _array == 0) exitWith {
+if (_array isEqualTo []) exitWith {
     "[]"
 };
 private _lines = ["["];
