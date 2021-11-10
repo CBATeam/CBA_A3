@@ -55,11 +55,10 @@ if (_array isEqualTo []) exitWith {
 private _lines = [_tabs + "["];
 private _lastIndex = count _array - 1;
 {
-    private _line = "";
-    if (_x isEqualType []) then {
-        _line = _line + ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
+    private _line = if (_x isEqualType []) then {
+        ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
     } else {
-        _line = _tab + _tabs + _line + str _x;
+        _tab + _tabs + str _x;
     };
     if (_forEachIndex != _lastIndex) then {
         _line = _line + ",";
