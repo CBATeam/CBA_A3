@@ -48,7 +48,7 @@ SCRIPT(prettyFormat);
 params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
 private _tabs = [];
 _tabs resize _depth;
-_tabs = _tabs apply {_tab} joinString "";
+_tabs = (_tabs apply {_tab}) joinString "";
 
 if (_array isEqualTo []) exitWith {
     _tabs + "[]"
