@@ -49,22 +49,13 @@ params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
 private _tabs = [];
 _tabs resize _depth;
 _tabs = _tabs apply {_tab} joinString "";
-if (_array isEqualTo []) exitWith {
-    _tabs + "[]"
-};
-private _lines = [_tabs + "["];
-private _lastIndex = count _array - 1;
-{
-    private _line = if (_x isEqualType []) then {
+
+private _lines = {
+    if (_x isEqualType []) then {
         ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
     } else {
         _tab + _tabs + str _x;
     };
-    if (_forEachIndex != _lastIndex) then {
-        _line = _line + ",";
-    };
-    _lines pushBack _line;
 } forEach _array;
 
-_lines pushBack (_tabs + "]");
-_lines joinString endl
+_tabs + "[" + endl + (_lines joinString ("," + endl)) + endl + _tabs + "]"
