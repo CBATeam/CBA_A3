@@ -115,7 +115,7 @@
             <English>Refresh rate target watcher field</English>
         </Key>
         <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
-            <English>Sets the refresh rate in seconds for the CBA target watcher fields to the right of the debug console</English>
+            <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
             <English>4 Spaces</English>
