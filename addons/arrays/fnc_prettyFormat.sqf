@@ -45,7 +45,7 @@ Author:
    Terra, Dystopian, commy2
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyFormat);
-params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
+params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_lineBreak", endl, [""]], ["_depth", 0, [0]]];
 private _tabs = [];
 _tabs resize _depth;
 _tabs = (_tabs apply {_tab}) joinString "";
@@ -56,10 +56,10 @@ if (_array isEqualTo []) exitWith {
 
 private _lines = _array apply {
     if (_x isEqualType []) then {
-        [_x, _tab, _depth + 1] call CBA_fnc_prettyFormat
+        [_x, _tab, _lineBreak, _depth + 1] call CBA_fnc_prettyFormat
     } else {
         _tab + _tabs + str _x
     };
 };
 
-_tabs + "[" + endl + (_lines joinString ("," + endl)) + endl + _tabs + "]"
+_tabs + "[" + _lineBreak + (_lines joinString ("," + _lineBreak)) + _lineBreak + _tabs + "]"
