@@ -50,12 +50,12 @@ private _tabs = [];
 _tabs resize _depth;
 _tabs = _tabs apply {_tab} joinString "";
 
-private _lines = {
+private _lines = _array apply {
     if (_x isEqualType []) then {
         ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
     } else {
         _tab + _tabs + str _x;
     };
-} forEach _array;
+};
 
 _tabs + "[" + endl + (_lines joinString ("," + endl)) + endl + _tabs + "]"
