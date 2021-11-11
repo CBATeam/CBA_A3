@@ -42,7 +42,7 @@ Examples:
     (end)
 
 Author:
-   Terra
+   Terra, Dystopian, commy2
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyFormat);
 params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_depth", 0, [0]]];
