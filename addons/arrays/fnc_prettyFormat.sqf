@@ -50,6 +50,10 @@ private _tabs = [];
 _tabs resize _depth;
 _tabs = _tabs apply {_tab} joinString "";
 
+if (_array isEqualTo []) exitWith {
+    _tabs + "[]"
+};
+
 private _lines = _array apply {
     if (_x isEqualType []) then {
         ([_x, _tab, _depth + 1] call CBA_fnc_prettyFormat);
