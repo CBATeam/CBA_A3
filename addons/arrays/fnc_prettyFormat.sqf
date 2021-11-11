@@ -56,9 +56,9 @@ if (_array isEqualTo []) exitWith {
 
 private _lines = _array apply {
     if (_x isEqualType []) then {
-        [_x, _tab, _depth + 1] call CBA_fnc_prettyFormat;
+        [_x, _tab, _depth + 1] call CBA_fnc_prettyFormat
     } else {
-        _tab + _tabs + str _x;
+        _tab + _tabs + str _x
     };
 };
 
