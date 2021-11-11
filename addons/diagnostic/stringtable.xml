@@ -111,6 +111,12 @@
             <French>Type d'indentation qui peut être employée dans la console de débogage.\nTab ajoute une indentation, et Shift + Tab en supprime une.</French>
             <Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
         </Key>
+        <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRate">
+            <English>Refresh rate target watcher field</English>
+        </Key>
+        <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
+            <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
+        </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
             <English>4 Spaces</English>
             <Polish>4 Spacje</Polish>
