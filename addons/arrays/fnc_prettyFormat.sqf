@@ -8,6 +8,7 @@ Description:
 Parameters:
     _array - The array to format <ARRAY>
     _tab   - The tab char to use (optional, default: tab) <STRING>
+    _lineBreak - The char to use for line breaks (optional, default: endl) <STRING>
     _depth - Starting indent (optional, default: 0) <NUMBER>
 
 Returns:
@@ -39,6 +40,8 @@ Examples:
         // >---],
         // >---4
         // ]
+        _return = [[0, 1, ["22", 33, []], 4], ">---", "\n"] call CBA_fnc_prettyFormat;
+        // _return ==> "[\n>---0,\n>---1,\n>---[\n>--->---""22"",\n>--->---33,\n>--->---[]\n>---],\n>---4\n]"
     (end)
 
 Author:
