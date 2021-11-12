@@ -49,20 +49,20 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyFormat);
 params [["_array", [], [[]]], ["_tab", "    ", [""]], ["_lineBreak", endl, [""]], ["_depth", 0, [0]]];
-private _tabs = [];
-_tabs resize _depth;
-_tabs = (_tabs apply {_tab}) joinString "";
+private _indents = [];
+_indents resize _depth;
+_indents = (_indents apply {_tab}) joinString "";
 
 if (_array isEqualTo []) exitWith {
-    _tabs + "[]"
+    _indents + "[]"
 };
 
 private _lines = _array apply {
     if (_x isEqualType []) then {
         [_x, _tab, _lineBreak, _depth + 1] call CBA_fnc_prettyFormat
     } else {
-        _tab + _tabs + str _x
+        _tab + _indents + str _x
     };
 };
 
-_tabs + "[" + _lineBreak + (_lines joinString ("," + _lineBreak)) + _lineBreak + _tabs + "]"
+_indents + "[" + _lineBreak + (_lines joinString ("," + _lineBreak)) + _lineBreak + _indents + "]"
