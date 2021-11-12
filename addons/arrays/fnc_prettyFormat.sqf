@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _array - The array to format <ARRAY>
-    _tab   - The tab char to use (optional, default: tab) <STRING>
+    _tab   - The tab char to use (optional, default: "    ") <STRING>
     _lineBreak - The char to use for line breaks (optional, default: endl) <STRING>
     _depth - Starting indent (optional, default: 0) <NUMBER>
 
@@ -48,7 +48,7 @@ Author:
    Terra, Dystopian, commy2
 ---------------------------------------------------------------------------- */
 SCRIPT(prettyFormat);
-params [["_array", [], [[]]], ["_tab", toString [9], [""]], ["_lineBreak", endl, [""]], ["_depth", 0, [0]]];
+params [["_array", [], [[]]], ["_tab", "    ", [""]], ["_lineBreak", endl, [""]], ["_depth", 0, [0]]];
 private _tabs = [];
 _tabs resize _depth;
 _tabs = (_tabs apply {_tab}) joinString "";
