@@ -497,7 +497,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class C_journalist_F;
     class C_Journalist_lxWS: C_journalist_F {
         scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
         XEH_ENABLED;
@@ -523,7 +522,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    class I_officer_F;
     class I_SFIA_officer_lxWS: I_officer_F {
         scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
     };
