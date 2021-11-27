@@ -3,7 +3,7 @@
 Function: CBA_fnc_canAddItem
 
 Description:
-    Checks if unit has enough free space in inventory to store item.
+    Checks if unit or object has enough free space in inventory to store item.
 
     Doesn't take current unit load into account unlike canAdd command.
 
@@ -16,7 +16,7 @@ Parameters:
     _checkBackpack - Check space in backpack <BOOLEAN> (Default: true)
 
 Returns:
-    True if unit has free space, false otherwise <BOOLEAN>
+    True if unit or object has free space, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
@@ -45,10 +45,10 @@ if (isNull _unit || {_item isEqualTo ""}) exitWith {false};
 #define TYPE_BACKPACK 901
 
 if (isNil QGVAR(itemMassAllowedSlots)) then {
-    GVAR(itemMassAllowedSlots) = [] call CBA_fnc_createNamespace;
+    GVAR(itemMassAllowedSlots) = createHashMap;
 };
 
-(GVAR(itemMassAllowedSlots) getVariable [_item, []]) params ["_mass", "_allowedSlots"];
+(GVAR(itemMassAllowedSlots) getOrDefault [_item, []]) params ["_mass", "_allowedSlots"];
 
 if (isNil "_mass") then {
     _allowedSlots = [TYPE_UNIFORM, TYPE_VEST, TYPE_BACKPACK];
@@ -91,46 +91,56 @@ if (isNil "_mass") then {
         };
     };
     TRACE_3("caching",_item,_mass,_allowedSlots);
-    GVAR(itemMassAllowedSlots) setVariable [_item, [_mass, _allowedSlots]];
+    GVAR(itemMassAllowedSlots) set [_item, [_mass, _allowedSlots]];
 };
 
 if (_mass == -1) exitWith {false}; // item doesn't exist
 
-if (
-    _checkUniform
-    && {TYPE_UNIFORM in _allowedSlots}
-    && {
-        _mass == 0
-        || {
-            // each time subtract whole number of items which can be put in container
-            _count = _count - floor (getContainerMaxLoad uniform _unit * (1 - loadUniform _unit) / _mass);
-            _count <= 0
+if (_unit isKindOf "CAManBase") then {
+    // is a person
+    if (
+        _checkUniform
+        && {TYPE_UNIFORM in _allowedSlots}
+        && {
+            _mass == 0
+            || {
+                // each time subtract whole number of items which can be put in container
+                _count = _count - floor (getContainerMaxLoad uniform _unit * (1 - loadUniform _unit) / _mass);
+                _count <= 0
+            }
         }
-    }
-) exitWith {true};
+    ) exitWith {true};
 
-if (
-    _checkVest
-    && {TYPE_VEST in _allowedSlots}
-    && {
-        _mass == 0
-        || {
-            _count = _count - floor (getContainerMaxLoad vest _unit * (1 - loadVest _unit) / _mass);
-            _count <= 0
+    if (
+        _checkVest
+        && {TYPE_VEST in _allowedSlots}
+        && {
+            _mass == 0
+            || {
+                _count = _count - floor (getContainerMaxLoad vest _unit * (1 - loadVest _unit) / _mass);
+                _count <= 0
+            }
         }
-    }
-) exitWith {true};
+    ) exitWith {true};
 
-if (
-    _checkBackpack
-    && {TYPE_BACKPACK in _allowedSlots}
-    && {
-        _mass == 0
-        || {
-            _count = _count - floor (getContainerMaxLoad backpack _unit * (1 - loadBackpack _unit) / _mass);
-            _count <= 0
+    if (
+        _checkBackpack
+        && {TYPE_BACKPACK in _allowedSlots}
+        && {
+            _mass == 0
+            || {
+                _count = _count - floor (getContainerMaxLoad backpack _unit * (1 - loadBackpack _unit) / _mass);
+                _count <= 0
+            }
         }
-    }
-) exitWith {true};
+    ) exitWith {true};
 
-false
+    false
+} else {
+    // is a vehicle, crate etc.
+    _mass == 0
+    || {
+        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass);
+        _count <= 0
+    }
+};
