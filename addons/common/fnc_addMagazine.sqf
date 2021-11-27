@@ -58,8 +58,8 @@ if (_verify) then {
 
         _return = true;
     } else {
-        private _vehicleUnit = vehicle _unit;
-        if (_vehicleUnit isEqualTo _unit) then {
+        private _vehicle = vehicle _unit;
+        if (_vehicle isEqualTo _unit) then {
             _unit switchMove "ainvpknlmstpslaywrfldnon_1";
 
             private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
@@ -71,7 +71,7 @@ if (_verify) then {
 
             _return = [_weaponHolder, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
         } else {
-            _return = [_vehicleUnit, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
+            _return = [_vehicle, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
         };
     };
 } else {
