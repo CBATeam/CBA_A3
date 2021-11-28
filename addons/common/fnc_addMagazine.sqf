@@ -49,7 +49,7 @@ if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
 };
 
 if (_verify) then {
-    if (_unit canAdd _item || {[_unit, _item, 1, true, true, true] call CBA_fnc_canAddItem}) then { // canAdd works for vehicles and units, CBA_fnc_canAddItem is more precise for units, but only try if canAdd fails for them
+    if ([_unit, _item, 1, true, true, true] call CBA_fnc_canAddItem) then {
         if (_ammo < 0) then {
             _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is.
         } else {
