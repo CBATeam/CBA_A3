@@ -64,7 +64,7 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
         private _index = _list lbAdd _displayName;
-        _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
+        _list lbSetTooltip [_index, _tooltip]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
         private _key = format [QGVAR(OptionData%1), _index];
 
