@@ -34,48 +34,64 @@
             <German>Überprüfung von Ausrüstungen</German>
             <French>Vérification de l'équipement</French>
             <Polish>Sprawdzenie wyposażenia</Polish>
+            <Chinese>驗證加載</Chinese>
+            <Chinesesimp>验证加载</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
             <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
             <French>Vérifie l'équipement des unités. Correction d'un bug où les unités se retrouvaient nues après avoir changé de localité.</French>
             <Polish>Sprawdza wyposażenie jednostek. Naprawia problem, który powodował pojawianie się jednostek nagich, przy zmianie lokalności.</Polish>
+            <Chinese>驗證單位加載。修復單位在更改大廳位置後顯示為裸體的問題。</Chinese>
+            <Chinesesimp>验证单位加载。修复单位在更改大厅位置后显示为裸体的问题。</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
             <German>Niemals</German>
             <French>Jamais</French>
             <Polish>Nigdy</Polish>
+            <Chinese>從不</Chinese>
+            <Chinesesimp>从不</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
             <German>Überprüfe niemals Ausrüstungen</German>
             <French>Ne jamais vérifier les équipements</French>
             <Polish>Nigdy nie sprawdzaj wyposażenia</Polish>
+            <Chinese>從不驗證加載</Chinese>
+            <Chinesesimp>从不验证加载</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
             <English>Playable units only</English>
             <German>Nur spielbare Einheiten</German>
             <French>Pour les unités jouables</French>
             <Polish>Tylko grywalne jednostki</Polish>
+            <Chinese>僅可玩單位</Chinese>
+            <Chinesesimp>仅可玩单位</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
             <English>Validate only loadout of playable units</English>
             <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
             <French>Vérifier uniquement l'équipement des unités jouables</French>
             <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
+            <Chinese>僅驗證可玩單位的加載</Chinese>
+            <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
             <German>Alle Einheiten</German>
             <French>Pour toutes les unités</French>
             <Polish>Wszystkie jednostki</Polish>
+            <Chinese>所有單位</Chinese>
+            <Chinesesimp>所有单位</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
             <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
             <French>Vérifier l'équipement de toutes les unités</French>
             <Polish>Sprawdza wyposażenie wszystkich jednostek</Polish>
+            <Chinese>驗證所有單位的加載</Chinese>
+            <Chinesesimp>验证所有单位的加载</Chinesesimp>
         </Key>
     </Package>
 </Project>
