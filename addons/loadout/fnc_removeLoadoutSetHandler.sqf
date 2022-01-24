@@ -18,7 +18,7 @@ Examples:
                 [_unit] call my_earplug_mod_fnc_removeEarplugs;
             };
             ["earplugs", MY_HANDLER] call CBA_fnc_removeLoadoutSetHandler;
-        }] call CBA_fnc_removeLoadoutSetHandler;
+        }] call CBA_fnc_addLoadoutSetHandler;
     (end)
 Author:
     Brett Mayson
