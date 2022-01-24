@@ -9,6 +9,7 @@
             <Turkish>Community Base Addons - Tek Kullanımlık Silahlar</Turkish>
             <French>Community Base Addons - Armes à usage unique</French>
             <Chinese>社群基礎模組 - 一次性武器</Chinese>
+            <Chinesesimp>社群基础模组 - 一次性武器</Chinesesimp>
             <Russian>Community Base Addons - Одноразовое оружие</Russian>
             <Polish>Community Base Addons - Bronie jednorazowe</Polish>
         </Key>
@@ -19,6 +20,7 @@
             <Czech>Odhodit použitý jednorázový raketomet</Czech>
             <Turkish>Kullanılan Tek Kullanımlık Roketleri At</Turkish>
             <Chinese>丟棄使用過的一次性發射器</Chinese>
+            <Chinesesimp>丢弃使用过的一次性发射器</Chinesesimp>
             <French>Lâcher le lanceur usagé</French>
             <Russian>Выбрасывать использованный одноразовый гранатомёт</Russian>
             <Polish>Wyrzuć zużyty przedmiot</Polish>
@@ -30,6 +32,7 @@
             <Czech>Nikdy</Czech>
             <Turkish>Asla</Turkish>
             <Chinese>永不</Chinese>
+            <Chinesesimp>从不</Chinesesimp>
             <French>Jamais</French>
             <Russian>Никогда</Russian>
             <Polish>Nigdy</Polish>
@@ -41,6 +44,7 @@
             <Czech>Automaticky neodhazovat použitý jednorázový raketomet.</Czech>
             <Turkish>Otomatik olarak tek kullanımlık roketleri atma.</Turkish>
             <Chinese>不要自動丟棄一次性使用之發射器</Chinese>
+            <Chinesesimp>不自动丢弃使用过的一次性发射器。</Chinesesimp>
             <French>Ne lâche jamais automatiquement le lanceur usagé.</French>
             <Russian>Не выбрасывать автоматически использованный одноразовый гранатомёт.</Russian>
             <Polish>Nie wyrzucaj automatycznie wyrzutni jednorazowej.</Polish>
@@ -52,6 +56,7 @@
             <Czech>Pouze AI</Czech>
             <Turkish>Sadece AI</Turkish>
             <Chinese>只有AI</Chinese>
+            <Chinesesimp>仅AI</Chinesesimp>
             <French>IA seulement</French>
             <Russian>Только ИИ</Russian>
             <Polish>Tylko AI</Polish>
@@ -63,6 +68,7 @@
             <Czech>Pouze AI odhodí použitý jednorázový raketomet.</Czech>
             <Turkish>Sadece yapay zeka tek kullanımlık roketleri atar.</Turkish>
             <Chinese>只有AI才會丟棄使用過的一次性發射器</Chinese>
+            <Chinesesimp>只有AI会丢弃使用过的一次性发射器</Chinesesimp>
             <French>Seules les unités IA lâchent leur lanceur après emploi.</French>
             <Russian>Только ИИ выбрасывает использованный одноразовый гранатомёт.</Russian>
             <Polish>Tylko AI wyrzuca wyrzutnie jednorazową.</Polish>
@@ -74,6 +80,7 @@
             <Czech>Vybrána jiná zbraň</Czech>
             <Turkish>Başka Bir Silah Seçince</Turkish>
             <Chinese>選擇其他武器</Chinese>
+            <Chinesesimp>选择其他武器</Chinesesimp>
             <French>Si autre arme sélectionnée</French>
             <Russian>Выбрано другое оружие</Russian>
             <Polish>Wybierz inną Broń</Polish>
@@ -85,6 +92,7 @@
             <Czech>Automaticky odhodit použitý jednorázový raketomet, jakmile je zvolena jiná zbraň.</Czech>
             <Turkish>Başka bir silah seçildiği zaman otomatik olarak tek kullanımlık roketleri at.</Turkish>
             <Chinese>當切換別的武器時自動丟棄一次性發射器。</Chinese>
+            <Chinesesimp>当切换其他武器时，就会自动丢弃使用过的一次性发射器。</Chinesesimp>
             <French>Lâche automatiquement le lanceur usagé dès qu'une autre arme est sélectionnée.</French>
             <Russian>Автоматически выбрасывать использованный одноразовый гранатомёт, как только будет выбрано другие оружие.</Russian>
             <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową gdy tylko zostanie wybrana kolejna broń.</Polish>
@@ -96,6 +104,7 @@
             <Czech>Vyměnit jednorázový raketomet</Czech>
             <Turkish>Tek Kullanımlık Roketleri Değiştir</Turkish>
             <Chinese>替換掉一次性發射器</Chinese>
+            <Chinesesimp>替换一次性发射器</Chinesesimp>
             <French>Remplacer le lanceur à usage unique</French>
             <Russian>Заменять одноразовые гранатомёты</Russian>
             <Polish>Zamien wyrzutnie jednorazową</Polish>
@@ -107,6 +116,7 @@
             <Czech>Pokud je tato možnost zapnuta, jednorázové raketomety mohou být použity pouze jednou. Munice pro jednorázové raketomety v bednách a vozidlech budou vyměněny za nabité jednorázové raketomety. Pokud je tato možnost vypnuta, jednorázové raketomety mohou být přebity po použití.</Czech>
             <Turkish>Eğer bu ayar açıksa, tek kullanımlık roketler sadece bir kere kullanılabilir. Tek kullanımlık rokeyler için cephane başka tek kullanımlık roketler ile değiştirilir. Bu ayar kapalıyken tek kullanımlık roketler de birçok kez kullanılabilir.</Turkish>
             <Chinese>啟用時，將會把載具或容器裡面給於一次性發射器的彈藥換成一次性發射器本身，並且使其只能使用一次。如果關閉，一次性發射器即可再度裝填</Chinese>
+            <Chinesesimp>如果启用，一次性发射器将只能使用一次。库存和车辆中的一次性发射器的弹药将被替换为已装填的一次性发射器。如果禁用，一次性发射器在使用后可以重新装填。</Chinesesimp>
             <French>Si activé, les lanceurs à usage unique ne peuvent être utilisés qu'une seule fois. Les munitions pour lanceurs à usage unique situés dans les conteneurs et les véhicules seront remplacées par des lanceurs à usage unique chargés. Si désactivé, les lanceurs à usage unique peuvent être rechargés après emploi.</French>
             <Russian>Если включено, одноразовые гранатомёты могут быть использованы лишь один раз. Боеприпасы для них в контейнерах и технике будут заменены на соответствующие им заряженные одноразовые гранатомёты. Если выключено, одноразовые гранатомёты могут быть перезаряжены и использованы повторно.</Russian>
             <Polish>Gdy ta opcja jest włączona wyrzutnie jednorazowe mogą być użyte tylko raz, Amunicja do wyrzutni jednorazowych dostępna w kontenerach i pojazdach zostanie zamieniona w załadowaną wyrzutnie jednorazową. Jeżeli ta opcja jest wyłączona, wtedy wyrzutnie jednorazowe nie zostaną przeładowane po użyciu.</Polish>
