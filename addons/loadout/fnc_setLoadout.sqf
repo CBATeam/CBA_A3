@@ -33,6 +33,6 @@ private _extendedInfo = createHashMapFromArray (_loadout select 1);
     private _id = _x;
     {
         _x params ["_function", "_default"];
-        [_unit, _extendedInfo getOrDefault [_id, _default] call _function;
+        [_unit, _extendedInfo getOrDefault [_id, _default]] call _function;
     } forEach _y;
 } forEach GVAR(setHandlers);
