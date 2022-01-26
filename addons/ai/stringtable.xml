@@ -6,7 +6,7 @@
             <German>Community Base Addons - Künstliche Intelligenz</German>
             <Japanese>Community Base Addons - 人工知能</Japanese>
             <Chinese>社群基礎模組 - 人工智能</Chinese>
-            <Chinesesimp>社群基础模组 - 人工智能</Chinesesimp>
+            <Chinesesimp>社群基础模组 - AI</Chinesesimp>
             <Russian>Community Base Addons - Искуственный Интеллект</Russian>
             <French>Community Base Addons - Intelligence artificielle</French>
             <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
@@ -21,6 +21,7 @@
             <Turkish>AI Bina Pozisyonu</Turkish>
             <Japanese>AI の建物内での位置</Japanese>
             <Chinese>AI在建築物內位置</Chinese>
+			<Chinesesimp>AI在建筑内部位置</Chinesesimp>
             <French>Position IA bâtiment</French>
             <Russian>ИИ Место строительства</Russian>
             <Polish>Pozycja AI w budynku</Polish>
@@ -28,7 +29,7 @@
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
             <German>Unsichtbares Ziel - Soldat</German>
-            <Chinese>隱形目標士兵</Chinese>
+            <Chinese>隱形目標（士兵）</Chinese>
             <French>Cible invisible - Soldat</French>
             <Spanish>Soldado objetivo invisible</Spanish>
             <Italian>Soldato obiettivo invisibile</Italian>
@@ -37,7 +38,7 @@
             <Czech>Neviditelný cíl (voják)</Czech>
             <Portuguese>Soldado alvo invisível</Portuguese>
             <Korean>보이지 않는 표적 병사</Korean>
-            <Chinesesimp>看不见的目标士兵</Chinesesimp>
+            <Chinesesimp>隐形目标（士兵）</Chinesesimp>
             <Japanese>隠れた標的兵士</Japanese>
             <Turkish>Görünmez Hedef Asker</Turkish>
         </Key>
@@ -46,12 +47,16 @@
             <German>Unsichtbares Ziel - Fahrzeug</German>
             <French>Cible invisible - Véhicule</French>
             <Polish>Pojazd - niewidoczny cel</Polish>
+			<Chinese>隱形目標（車輛）</Chinese>
+			<Chinesesimp>隐形目标（车辆）</Chinesesimp>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
             <German>Unsichtbares Ziel - Flugzeug</German>
             <French>Cible invisible - Avion</French>
             <Polish>Samolot - niewidoczny cel</Polish>
+			<Chinese>隱形目標（飛機）</Chinese>
+			<Chinesesimp>隐形目标（飞机）</Chinesesimp>
         </Key>
     </Package>
 </Project>

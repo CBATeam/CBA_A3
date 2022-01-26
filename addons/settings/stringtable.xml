@@ -67,6 +67,7 @@
             <Italian>Aggiusta le impostazioni per gli addon</Italian>
             <Czech>Upravit nastavení addonu.</Czech>
             <Chinese>調整插件設定。</Chinese>
+            <Chinesesimp>调整插件设置。</Chinesesimp>
             <Russian>Отрегулировать настройки дополнений.</Russian>
         </Key>
         <Key ID="STR_cba_settings_3den_shortcut">
@@ -88,7 +89,7 @@
             <German>Server</German>
             <Japanese>サーバー</Japanese>
             <Chinese>伺服器</Chinese>
-            <Chinesesimp>伺服器</Chinesesimp>
+            <Chinesesimp>服务器</Chinesesimp>
             <Portuguese>Servidor</Portuguese>
             <Russian>Сервер</Russian>
             <French>Serveur</French>
@@ -102,7 +103,7 @@
             <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
-            <Chinesesimp>查看伺服器的设定。必须登入成管理员才能编辑设定。</Chinesesimp>
+            <Chinesesimp>查看服务器的设定。必须登入管理员才能编辑设定。</Chinesesimp>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
             <Russian>Смотреть настройки сервера. Войдите под администратором, чтобы менять.</Russian>
             <French>Permet de visualiser les paramètres du serveur. Se connecter en tant qu'administrateur pour les changer.</French>
@@ -228,7 +229,7 @@
             <German>Import</German>
             <Japanese>取り込み</Japanese>
             <Chinese>匯入</Chinese>
-            <Chinesesimp>汇入</Chinesesimp>
+            <Chinesesimp>导入</Chinesesimp>
             <Portuguese>Importar</Portuguese>
             <Russian>Импорт</Russian>
             <French>Importer</French>
@@ -242,7 +243,7 @@
             <German>Einstellungen aus Zwischenablage einfügen.</German>
             <Japanese>クリップボードから設定を取り込みします。</Japanese>
             <Chinese>從剪貼簿匯入設定。</Chinese>
-            <Chinesesimp>从剪贴簿汇入设定。</Chinesesimp>
+            <Chinesesimp>从剪贴板导入设定。</Chinesesimp>
             <Portuguese>Importar configurações da prancheta.</Portuguese>
             <Russian>Импортировать настройки из буфера обмена.</Russian>
             <French>Importer les paramètres depuis le presse-papier.</French>
@@ -256,7 +257,7 @@
             <German>Export</German>
             <Japanese>出力</Japanese>
             <Chinese>匯出</Chinese>
-            <Chinesesimp>汇出</Chinesesimp>
+            <Chinesesimp>导出</Chinesesimp>
             <Portuguese>Exportar</Portuguese>
             <Russian>Экспорт</Russian>
             <French>Exporter</French>
@@ -270,7 +271,7 @@
             <German>Einstellungen in Zwischenablage speichern.</German>
             <Japanese>クリップボードに設定を出力します。</Japanese>
             <Chinese>匯出設定到剪貼簿。</Chinese>
-            <Chinesesimp>汇出设定到剪贴簿。</Chinesesimp>
+            <Chinesesimp>导出设定到剪贴板。</Chinesesimp>
             <Portuguese>Exportar configurações para a prancheta.</Portuguese>
             <Russian>Экспортировать настройки в буфер обмена.</Russian>
             <French>Exporter les paramètres dans le presse-papier.</French>
@@ -326,7 +327,7 @@
             <German>Server\nüberschreiben</German>
             <Japanese>ｻｰﾊﾞｰ側で\n上書き</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
-            <Chinesesimp>覆写\n伺服器</Chinesesimp>
+            <Chinesesimp>覆写\n服务器</Chinesesimp>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
             <Russian>Перезапись\nСервер</Russian>
             <French>Ecraser\nServeur</French>
@@ -345,6 +346,7 @@
             <Italian>Prevale questa impostazione.</Italian>
             <Czech>Toto nastavení je aktuální.</Czech>
             <Chinese>設定已套用。</Chinese>
+            <Chinesesimp>设置已套用。</Chinesesimp>
             <Russian>Этот параметр применён.</Russian>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
@@ -357,6 +359,7 @@
             <Italian>Questa impostazione sarà valida dopo il riavvio della missione.</Italian>
             <Czech>Toto nastavení bude aplikováno po restartu mise.</Czech>
             <Chinese>這個設定將會在任務重置後生效</Chinese>
+            <Chinesesimp>该设定将在任务重启后生效。</Chinesesimp>
             <Russian>Этот параметр будет применён после рестарта миссии.</Russian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
@@ -392,7 +395,7 @@
             <German>Diese Einstellung wird vom Server überschrieben.</German>
             <Japanese>この設定はサーバーによって上書きされます。</Japanese>
             <Chinese>此項設定被伺服器給覆寫。</Chinese>
-            <Chinesesimp>此项设定被伺服器给覆写。</Chinesesimp>
+            <Chinesesimp>此项设定被服务器给覆写。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelo servidor.</Portuguese>
             <Russian>Этот параметр перезаписан сервером.</Russian>
             <Polish>Ta wartość została nadpisana przez serwer.</Polish>
@@ -406,7 +409,7 @@
             <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
             <Japanese>この設定はクライアントによって上書きされ、サーバーにのみ適用されます。</Japanese>
             <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
-            <Chinesesimp>此项设定被客户端给覆写并仅适用于伺服器。</Chinesesimp>
+            <Chinesesimp>此项设定被客户端给覆写并仅适用于服务器。</Chinesesimp>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
             <Russian>Этот параметр перезаписан клиентом и применяется исключительно к серверу.</Russian>
             <Polish>Ta wartość została nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
@@ -421,6 +424,8 @@
             <Polish>Nadpisane przez klienta z taką samą wartością.</Polish>
             <French>Écrasé par le client, avec la même valeur.</French>
             <Russian>Перезаписано клиентом с таким же значением.</Russian>
+            <Chinese>被客戶端以相同的值覆蓋。</Chinese>
+            <Chinesesimp>被客户端以相同的值覆盖。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
             <English>Overwritten by mission with the same value.</English>
@@ -428,6 +433,8 @@
             <Polish>Nadpisane przez misję z taką samą wartością.</Polish>
             <French>Écrasé par la mission, avec la même valeur.</French>
             <Russian>Перезаписано миссией с таким же значением.</Russian>
+            <Chinese>被任務以相同的值覆蓋。</Chinese>
+            <Chinesesimp>被任务以相同的值覆盖。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
@@ -435,13 +442,15 @@
             <Polish>Nadpisane przez serwer z taką samą wartością.</Polish>
             <French>Écrasé par le serveur, avec la même valeur.</French>
             <Russian>Перезаписано сервером с таким же значением.</Russian>
+            <Chinese>被伺服器以相同的值覆蓋。</Chinese>
+            <Chinesesimp>被服务器以相同的值覆盖。</Chinesesimp>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
             <German>In Zwischenablage</German>
             <Russian>Скопировать в буфер обмена</Russian>
             <Chinese>複製到剪貼簿</Chinese>
-            <Chinesesimp>复制到剪贴簿</Chinesesimp>
+            <Chinesesimp>复制到剪贴板</Chinesesimp>
             <Japanese>クリップボードへコピー</Japanese>
             <French>Copier</French>
             <Polish>Skopiuj do schowka</Polish>

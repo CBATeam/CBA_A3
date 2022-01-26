@@ -22,6 +22,7 @@
             <Czech>Mód opakování zbraně</Czech>
             <Turkish>Silah Tekrar Modu</Turkish>
             <Chinese>武器反作模式</Chinese>
+            <Chinesesimp>武器连发模式</Chinesesimp>
             <French>Mode de réarmement</French>
             <Russian>Режим повторной стрельбы</Russian>
         </Key>
@@ -33,6 +34,7 @@
             <Czech>Mód natahování nebo pumpování zbraní.</Czech>
             <Turkish>Silahın sürgülü ya da pompalı modda olması.</Turkish>
             <Chinese>設定武器如何拉栓及退膛</Chinese>
+            <Chinesesimp>设置武器拉栓及退膛状态</Chinesesimp>
             <French>Mode de réarmement des armes à verrou et à pompe.</French>
             <Russian>Режим повторной стрельбы помпового оружия или оружия с продольно-скользящим затвором.</Russian>
         </Key>
@@ -44,6 +46,7 @@
             <Czech>Opustit pohled optiky</Czech>
             <Turkish>Dürbünden Çık</Turkish>
             <Chinese>放下瞄具</Chinese>
+            <Chinesesimp>离开瞄准视野</Chinesesimp>
             <French>Maintenir vue lunette</French>
             <Russian>Выход из прицела</Russian>
         </Key>
@@ -55,6 +58,7 @@
             <Czech>Natáhnout zbraň opuštěním pohledu optiky.</Czech>
             <Turkish>Silahı sürgülerken dürbünü kapat.</Turkish>
             <Chinese>當拉栓以及退膛武器時是否離開瞄準狀態</Chinese>
+            <Chinesesimp>当武器拉栓以及退膛时是否离开瞄准视野</Chinesesimp>
             <French>Réarme l'arme tout en maintenant la visée dans la lunette.</French>
             <Russian>Перезаряжать оружие после выхода из прицела.</Russian>
         </Key>
@@ -66,6 +70,7 @@
             <Czech>Pustit spoušť</Czech>
             <Turkish>Tetiği Bırak</Turkish>
             <Chinese>放開板機</Chinese>
+            <Chinesesimp>松开板机</Chinesesimp>
             <French>Relâcher la détente</French>
             <Russian>Отпускание курка</Russian>
         </Key>
@@ -77,6 +82,7 @@
             <Czech>Natáhnout zbraň puštěním spouště (podržte spoušť k zabránění okamžitému natáhnutí zbraně).</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiği bırak (Tetiğe basılı tutarak sürgülemeyi engelle).</Turkish>
             <Chinese>當鬆開板機後拉栓或退膛（握住板機以避免突然的動作）。</Chinese>
+            <Chinesesimp>当松开板机后拉栓或退膛（扣住板机以避免突然的动作）。</Chinesesimp>
             <French>Réarme l'arme au relâchement de la détente (maintenir la détente enfoncée pour éviter le réarmement immédiat).</French>
             <Russian>Перезаряжать оружие после отпускания курка (держите курок чтобы не перезаряжать).</Russian>
         </Key>
@@ -88,6 +94,7 @@
             <Czech>Zmáčknout spoušť</Czech>
             <Turkish>Tetiğe Bas</Turkish>
             <Chinese>按下扳機</Chinese>
+            <Chinesesimp>按下板机</Chinesesimp>
             <French>Presser la détente</French>
             <Russian>Нажатие курка</Russian>
         </Key>
@@ -99,6 +106,7 @@
             <Czech>Natáhnout zbraň dalším zmáčkutím spouště.</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiğe bas.</Turkish>
             <Chinese>按下板機才拉栓或退膛</Chinese>
+            <Chinesesimp>再次按下板机才能拉栓或退膛</Chinesesimp>
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
             <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
         </Key>
