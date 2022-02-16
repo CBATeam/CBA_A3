@@ -115,7 +115,7 @@ class CfgFunctions {
         };
 
         class DateTime {
-            PATHTO_FNC(getWeekDay);
+            PATHTO_FNC(weekDay);
         };
 
         class Misc {

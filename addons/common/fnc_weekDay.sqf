@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getWeekDay
+Function: CBA_fnc_weekDay
 
 Description:
     Calculates date's day of the week using a modified Rata Die method with fractional years.
@@ -13,9 +13,9 @@ Returns:
 
 Examples:
     (begin example)
-        [systemTimeUTC] call CBA_fnc_getWeekDay;
-        [date] call CBA_fnc_getWeekDay;
-        [[2022, 2, 16]] call CBA_fnc_getWeekDay;
+        [systemTimeUTC] call CBA_fnc_weekDay;
+        [date] call CBA_fnc_weekDay;
+        [[2022, 2, 16]] call CBA_fnc_weekDay;
     (end)
 
 Author:
