@@ -114,6 +114,10 @@ class CfgFunctions {
             PATHTO_FNC(getNearestBuilding);
         };
 
+        class DateTime {
+            PATHTO_FNC(weekDay);
+        };
+
         class Misc {
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
