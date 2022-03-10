@@ -25,6 +25,10 @@ params [
 
 if (isNull _unit) exitWith {};
 
+if (count _loadout == 10) exitWith {
+    _unit setUnitLoadout [_loadout, _fullMagazines];
+};
+
 _unit setUnitLoadout [_loadout select 0, _fullMagazines];
 
 private _extendedInfo = createHashMapFromArray (_loadout select 1);
