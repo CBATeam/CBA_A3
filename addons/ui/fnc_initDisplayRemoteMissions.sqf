@@ -25,6 +25,19 @@ private _fnc_findMissions = {
 
 _display setVariable [QGVAR(stockMissions), _stockMissions];
 
+// Show worldnames as tooltips on map list
+private _worldNames = createHashMap;
+{
+    private _worldName = configName _x;
+    private _description = getText (configFile >> "CfgWorlds" >> _worldName >> "description");
+    _worldNames set [_description, _worldname];
+} forEach (configProperties [configfile >> "CfgWorldList", "isClass _x"]);
+for "_index" from 0 to ((lbSize _ctrlMaps) - 1) do {
+    private _description = _ctrlMaps lbText _index;
+    private _worldName = _worldNames getOrDefault [_description, ""];
+    _ctrlMaps lbSetTooltip [_index, _worldName];
+};
+
 lbSort _ctrlMaps;
 _ctrlMaps lbSetCurSel 0;
 
