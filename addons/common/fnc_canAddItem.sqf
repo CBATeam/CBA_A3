@@ -105,7 +105,7 @@ if (_unit isKindOf "CAManBase") then {
             _mass == 0
             || {
                 // each time subtract whole number of items which can be put in container
-                _count = _count - floor (getContainerMaxLoad uniform _unit * (1 - loadUniform _unit) / _mass);
+                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass);
                 _count <= 0
             }
         }
@@ -117,7 +117,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (getContainerMaxLoad vest _unit * (1 - loadVest _unit) / _mass);
+                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass);
                 _count <= 0
             }
         }
@@ -129,7 +129,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (getContainerMaxLoad backpack _unit * (1 - loadBackpack _unit) / _mass);
+                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass);
                 _count <= 0
             }
         }
