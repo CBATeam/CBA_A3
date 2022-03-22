@@ -2,6 +2,9 @@
         BI_mags[] = {
             "9Rnd_45ACP_Mag"
         };
+        VN_mags[] = {
+            "vn_m1911_mag"
+        };
     };
     class CBA_45ACP_C96 {};             // Mauser C-96 in .45 ACP
     class CBA_9x19_CZ97 {};             // CZ 97 in .45 ACP
@@ -16,8 +19,23 @@
             "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"
         };
     };
-    class CBA_45ACP_Grease {};          // Grease Gun
+    class CBA_45ACP_Grease {            // Grease Gun
+        VN_mags[] = {
+            "vn_m3a1_mag",
+            "vn_m3a1_t_mag"
+        };
+    };
     class CBA_45ACP_Reising {};         // M50/M55 Reising
-    class CBA_45ACP_Thompson_Stick {};  // Thompson stick magazines
-    class CBA_45ACP_Thompson_Drum {};   // Thompson drum magazines
+    class CBA_45ACP_Thompson_Stick {    // Thompson stick magazines
+        VN_mags[] = {
+            "vn_m1a1_20_mag",
+            "vn_m1a1_20_t_mag",
+            "vn_m1a1_30_mag",
+            "vn_m1a1_30_t_mag"
+        };
+    };
+    class CBA_45ACP_Thompson_Drum {     // Thompson drum magazines
+        "vn_m1928_mag",
+        "vn_m1928_t_mag"
+    };
     class CBA_45ACP_UMP {};             // HK UMP 45

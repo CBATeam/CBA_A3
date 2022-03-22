@@ -92,5 +92,8 @@ class CfgMagazineWells {
         BI_rockets[] = {
             "RPG7_F"
         };
+        VN_rockets[] = {
+            "vn_rpg7_mag"
+        };
     };
 };

@@ -9,7 +9,11 @@
     class CBA_9x18_P64 {};      // FB P-64 CZAK
     class CBA_9x18_P83 {};      // FB P-83 Wanad
     class CBA_9x18_PA63 {};     // FEG PA-63
-    class CBA_9x18_PM {};       // Makarov PM
+    class CBA_9x18_PM {         // Makarov PM
+        VN_mags[] = {
+            "vn_pm_mag"
+        };
+    };
     class CBA_9x18_PM63 {};     // FB PM-63 RAK
     class CBA_9x18_PM84 {};     // FB PM-84 Glauberyt
     class CBA_9x18_PMM {};      // Makarov PMM

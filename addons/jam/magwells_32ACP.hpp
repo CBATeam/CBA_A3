@@ -5,5 +5,13 @@
     class CBA_32ACP_PP {};          // Walther PP in .32 ACP (7.65x17mm Browning)
     class CBA_32ACP_PPK {};         // Walther PPK in .32 ACP (7.65x17mm Browning)
     class CBA_32ACP_Vz27 {};        // vz. 27
-    class CBA_32ACP_Vz61 {};        // Škorpion (vz. 61), M84
-    class CBA_32ACP_Welrod {};      // Welrod MkII in .32 ACP (7.65x17mm Browning)
+    class CBA_32ACP_Vz61 {          // Škorpion (vz. 61), M84
+        VN_mags[] = {
+            "vn_vz61_mag"
+        };
+    };
+    class CBA_32ACP_Welrod {      // Welrod MkII in .32 ACP (7.65x17mm Browning)
+        VN_mags[] = {
+            "vn_welrod_mag"
+        };
+    };

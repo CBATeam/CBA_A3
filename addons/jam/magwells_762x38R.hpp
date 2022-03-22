@@ -1,1 +1,5 @@
-    class CBA_762x38R_Nagant {};    // Nagant M1895 Revolver
+    class CBA_762x38R_Nagant {      // Nagant M1895 Revolver
+        VN_rounds[] = {
+            "vn_m1895_mag"
+        };
+    };

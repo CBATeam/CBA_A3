@@ -2,7 +2,12 @@
     class CBA_762x51_2rnds {};      // 2 loose rounds of 7.62x51mm NATO
     class CBA_762x51_3rnds {};      // 3 loose rounds of 7.62x51mm NATO
     class CBA_762x51_4rnds {};      // 4 loose rounds of 7.62x51mm NATO
-    class CBA_762x51_5rnds {};      // 5 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_5rnds {        // 5 loose rounds of 7.62x51mm NATO
+        VN_rounds[] = {
+            "vn_m40a1_mag",
+            "vn_m40a1_t_mag"
+        };
+    };
 
     class CBA_762x51_AICS {};       // AICS short action mag (5/10 rounds)
 
@@ -31,9 +36,19 @@
             "150Rnd_762x51_Box",
             "150Rnd_762x51_Box_Tracer"
         };
+        VN_belts[] = {
+            "vn_m60_100_mag"
+        };
     };
 
-    class CBA_762x51_M14 {};        // M14
+    class CBA_762x51_M14 {          // M14
+        VN_mags[] = {
+            "vn_m14_10_mag",
+            "vn_m14_10_t_mag",
+            "vn_m14_mag",
+            "vn_m14_t_mag"
+        };
+    };
     class CBA_762x51_M14_L {};      // M14 long mag (25/30 rounds)
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
