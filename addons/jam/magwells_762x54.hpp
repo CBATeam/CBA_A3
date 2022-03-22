@@ -17,7 +17,7 @@
 
     class CBA_762x54R_Maxim {};         // Maxim gun in 7.62x54R
     class CBA_762x54R_Mosin {           // M91/30, M38, M44 Mosin
-        VN_clips = {
+        VN_clips[] = {
             "vn_m38_mag",
             "vn_m38_t_mag"
         };
