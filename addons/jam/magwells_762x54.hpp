@@ -6,6 +6,12 @@
             "150Rnd_762x54_Box",
             "150Rnd_762x54_Box_Tracer"
         };
+        GM_belts[] = {
+            "gm_100Rnd_762x54mm_api_b32_pk_grn",
+            "gm_100Rnd_762x54mm_b_t_t46_pk_grn",
+            "gm_100Rnd_762x54mmR_api_7bz3_pk_grn",
+            "gm_100Rnd_762x54mmR_b_t_7t2_pk_grn"
+        };
     };
 
     class CBA_762x54R_Maxim {};         // Maxim gun in 7.62x54R
@@ -16,6 +22,11 @@
     class CBA_762x54R_SVD {             // SVD
         BI_mags[] = {
             "10Rnd_762x54_Mag"
+        };
+        GM_mags[] = {
+            "gm_10Rnd_762x54mmR_ap_7n1_svd_blk",
+            "gm_10Rnd_762x54mmR_api_7bz3_svd_blk",
+            "gm_10Rnd_762x54mmR_b_t_7t2_svd_blk"
         };
     };
 

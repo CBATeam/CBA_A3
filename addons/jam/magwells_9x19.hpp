@@ -25,13 +25,26 @@
             "30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",
             "30Rnd_9x21_Mag_SMG_02_Tracer_Green"
         };
+        GM_mags[] = {
+            "gm_30Rnd_9x19mm_ap_DM91_mp5_blk",
+            "gm_30Rnd_9x19mm_ap_DM91_mp5a3_blk",
+            "gm_30Rnd_9x19mm_b_DM11_mp5_blk",
+            "gm_30Rnd_9x19mm_b_DM11_mp5a3_blk",
+            "gm_30Rnd_9x19mm_b_DM51_mp5_blk",
+            "gm_30Rnd_9x19mm_b_DM51_mp5a3_blk"
+        };
     };
     class CBA_9x19_Ots27 {};        // OTs-27 Berdysh
     class CBA_9x19_P08 {};          // Luger P08, MP18
     class CBA_9x19_P226 {};         // SIG P226
     class CBA_9x19_P228 {};         // SIG P228
     class CBA_9x19_P239 {};         // SIG P239
-    class CBA_9x19_P38 {};          // Walther P38
+    class CBA_9x19_P38 {            // Walther P38
+        GM_mags[] = {
+            "gm_8rnd_9x19mm_b_dm11_p1_blk",
+            "gm_8rnd_9x19mm_b_dm51_p1_blk"
+        };
+    };
     class CBA_9x19_PM63 {};         // FB PM-63 RAK
     class CBA_9x19_PM84 {};         // FB PM-84 Glauberyt
     class CBA_9x19_PP19 {};         // PP-19 Bizon-2-01
@@ -52,7 +65,13 @@
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9
-    class CBA_9x19_UZI {};          // UZI
+    class CBA_9x19_UZI {            // UZI
+        GM_mags[] = {
+            "gm_32Rnd_9x19mm_ap_DM91_mp2_blk",
+            "gm_32Rnd_9x19mm_b_DM11_mp2_blk",
+            "gm_32Rnd_9x19mm_b_DM51_mp2_blk"
+        };
+    };
     class CBA_9x19_UZI_Pro {};      // UZI Pro
     class CBA_9x19_Vis {};          // wz. 35 Vis (Radom)
     class CBA_9x19_Vityaz {};       // Vityaz-SN

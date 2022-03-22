@@ -2,7 +2,14 @@
     class CBA_556x45_RPK {};            // 45rnd RPK mags for 5.56 RPK-201
     class CBA_556x45_FAMAS {};          // FAMAS F1
     class CBA_556x45_GALIL {};          // IMI Galil
-    class CBA_556x45_G36 {};            // H&K G36
+    class CBA_556x45_G36 {              // H&K G36
+        GM_mags[] = {
+            "gm_30Rnd_556x45mm_b_dm11_g36_blk",
+            "gm_30Rnd_556x45mm_b_dm11_g36_des",
+            "gm_30Rnd_556x45mm_b_t_dm21_g36_blk",
+            "gm_30Rnd_556x45mm_b_t_dm21_g36_des"
+        };
+    };
     class CBA_556x45_HK33 {};           // H&K 33/53/93
     class CBA_556x45_M21 {};            // Zastava M21
 
@@ -49,6 +56,16 @@
             "30Rnd_556x45_Stanag_Sand_Tracer_Red",
             "30Rnd_556x45_Stanag_Sand_Tracer_Green",
             "30Rnd_556x45_Stanag_Sand_Tracer_Yellow"
+        };
+        GM_mags[] = {
+            "gm_20Rnd_556x45mm_b_M193_stanag_gry",
+            "gm_20Rnd_556x45mm_b_M855_stanag_gry",
+            "gm_20Rnd_556x45mm_b_t_M196_stanag_gry",
+            "gm_20Rnd_556x45mm_b_t_M856_stanag_gry",
+            "gm_30Rnd_556x45mm_b_M193_stanag_gry",
+            "gm_30Rnd_556x45mm_b_M855_stanag_gry",
+            "gm_30Rnd_556x45mm_b_t_M196_stanag_gry",
+            "gm_30Rnd_556x45mm_b_t_M856_stanag_gry"
         };
     };
 
