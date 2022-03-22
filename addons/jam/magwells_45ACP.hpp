@@ -35,7 +35,9 @@
         };
     };
     class CBA_45ACP_Thompson_Drum {     // Thompson drum magazines
-        "vn_m1928_mag",
-        "vn_m1928_t_mag"
+        VN_mags[] = {
+            "vn_m1928_mag",
+            "vn_m1928_t_mag"
+        };
     };
     class CBA_45ACP_UMP {};             // HK UMP 45
