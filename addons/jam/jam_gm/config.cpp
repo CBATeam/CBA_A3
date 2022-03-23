@@ -1,4 +1,4 @@
-#if __has_include(\gm\gm_core\config.bin")
+#if __has_include("\gm\gm_core\config.bin")
 
 #include "script_component.hpp"
 
