@@ -9,8 +9,8 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-        	"cba_jam",
-        	"Weapons_F_lxWS_Rifles"
+            "cba_jam",
+            "Weapons_F_lxWS_Rifles"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
