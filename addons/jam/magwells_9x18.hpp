@@ -1,5 +1,10 @@
     class CBA_9x18_APS {};      // Stechkin automatic pistol (APS)
-    class CBA_9x18_CZ82 {};     // CZ 82, CZ 83
+    class CBA_9x18_CZ82 {       // CZ 82, CZ 83
+        CSLA_mags[] = {
+            "CSLA_Pi82_12rnd_9Pi82",
+            "CSLA_Pi82_12rnd_9PiCv82"
+        };
+    };
     class CBA_9x18_Fort12 {};   // Fort-12
     class CBA_9x18_GPP9M {};    // Grand Power K100 P9M
     class CBA_9x18_Ots01 {};    // OTs-01 Kobalt

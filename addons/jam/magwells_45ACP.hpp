@@ -2,6 +2,9 @@
         BI_mags[] = {
             "9Rnd_45ACP_Mag"
         };
+        CSLA_mags[] = {
+            "US85_1911_7Rnd_045ACP"
+        };
     };
     class CBA_45ACP_C96 {};             // Mauser C-96 in .45 ACP
     class CBA_9x19_CZ97 {};             // CZ 97 in .45 ACP
