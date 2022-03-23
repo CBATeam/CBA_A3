@@ -1,7 +1,12 @@
     class CBA_556x45_AK {};             // AK mags for 5.56 AK type rifles, AK-101, AK-102, etc.
     class CBA_556x45_RPK {};            // 45rnd RPK mags for 5.56 RPK-201
     class CBA_556x45_FAMAS {};          // FAMAS F1
-    class CBA_556x45_GALIL {};          // IMI Galil
+    class CBA_556x45_GALIL {            // IMI Galil
+        WS_mags[] = {
+            "35Rnd_556x45_Velko_lxWS",
+            "50Rnd_556x45_Velko_lxWS"
+        };
+    };
     class CBA_556x45_G36 {};            // H&K G36
     class CBA_556x45_HK33 {};           // H&K 33/53/93
     class CBA_556x45_M21 {};            // Zastava M21
@@ -53,7 +58,13 @@
     };
 
     class CBA_556x45_STANAG_L {};       // STANAG mags, long stick or coffin (40/60 rounds, Magpul PMAG 40, Surefire MAG5-60)
-    class CBA_556x45_STANAG_XL {};      // STANAG mags, extra long stick or coffin (80/100 rounds, Surefire MAG5-100)
+    class CBA_556x45_STANAG_XL {        // STANAG mags, extra long stick or coffin (80/100 rounds, Surefire MAG5-100)
+        WS_mags[] = {
+            "75Rnd_556x45_Stanag_lxWS",
+            "75Rnd_556x45_Stanag_green_lxWS",
+            "75Rnd_556x45_Stanag_red_lxWS"
+        };
+    };
     class CBA_556x45_STANAG_2D {};      // STANAG mags, twin drums (100rnd Beta C-MAG)
     class CBA_556x45_STANAG_2D_XL {     // STANAG mags, extra large twin-drums (150rnd Armatac SAW-MAG)
         BI_mags[] = {

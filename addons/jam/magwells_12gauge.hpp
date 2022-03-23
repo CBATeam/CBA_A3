@@ -5,7 +5,12 @@
     class CBA_12g_5rnds {};         // 5 loose rounds
     class CBA_12g_4rnds {};         // 4 loose rounds
     class CBA_12g_3rnds {};         // 3 loose rounds
-    class CBA_12g_2rnds {};         // 2 loose rounds
+    class CBA_12g_2rnds {           // 2 loose rounds
+        WS_rounds[] = {
+            "2rnd_HE_Mag_lxWS",
+            "2rnd_Smoke_Mag_lxWS"
+        };
+    };
     class CBA_12g_1rnd {};          // 1 loose round
 
     class CBA_12g_AA12 {};          // AA-12 Stick Magazines

@@ -12,8 +12,18 @@
 
     class CBA_762x51_CZ750 {};      // CZ-750
 
-    class CBA_762x51_FAL {};        // FN FAL
-    class CBA_762x51_FAL_L {};      // FN FAL long mag (25/30 rounds)
+    class CBA_762x51_FAL {          // FN FAL
+        WS_mags[] = {
+            "20Rnd_762x51_slr_lxWS",
+            "20Rnd_762x51_slr_lxWS_desert"
+        };
+    };
+    class CBA_762x51_FAL_L {        // FN FAL long mag (25/30 rounds)
+        WS_mags[] = {
+            "30Rnd_762x51_slr_lxWS",
+            "30Rnd_762x51_slr_lxWS_desert"
+        };
+    };
     class CBA_762x51_FAL_XL {};     // FN FAL drum mag (X-Products 50 round)
 
     class CBA_762x51_G3 {};         // H&K G3
