@@ -10,7 +10,7 @@
             "vn_vz61_mag"
         };
     };
-    class CBA_32ACP_Welrod {      // Welrod MkII in .32 ACP (7.65x17mm Browning)
+    class CBA_32ACP_Welrod {        // Welrod MkII in .32 ACP (7.65x17mm Browning)
         VN_mags[] = {
             "vn_welrod_mag"
         };
