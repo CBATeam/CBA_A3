@@ -1,15 +1,15 @@
 class CSLA_baseWeapon: Rifle_Base_F {};
 
 class CSLA_OP63_Base: CSLA_baseWeapon {
-    magazineWell += {"CBA_762x54R_SVD"};
+    magazineWell[] += {"CBA_762x54R_SVD"};
 };
 
 class CSLA_rSa61: CSLA_baseWeapon {
-    magazineWell += {"CBA_32ACP_Vz61"};
+    magazineWell[] += {"CBA_32ACP_Vz61"};
 };
 
 class CSLA_Sa58_Base: CSLA_baseWeapon {
-    magazineWell += {"CBA_762x39_AK"};
+    magazineWell[] += {"CBA_762x39_AK"};
 };
 
 class CSLA_MachinegunBase_5_56: CSLA_baseWeapon {};
@@ -17,7 +17,7 @@ class CSLA_MachinegunBase_5_56: CSLA_baseWeapon {};
 class CSLA_MachinegunBase_7_62: CSLA_MachinegunBase_5_56 {};
 
 class CSLA_UK59L: CSLA_MachinegunBase_7_62 {
-    magazineWell += {"CBA_762x54R_Vz59_LINKS"};
+    magazineWell[] += {"CBA_762x54R_Vz59_LINKS"};
 };
 
 class CSLA_PistolBase: Pistol_Base_F {};
@@ -31,7 +31,7 @@ class CSLA_Pi82: CSLA_Pi52 {
 };
 
 class CSLA_Sa61: CSLA_Pi52 {
-    magazineWell += {"CBA_32ACP_Vz61"};
+    magazineWell[] += {"CBA_32ACP_Vz61"};
 };
 
 class CSLA_LauncherBase: Launcher_Base_F {};
