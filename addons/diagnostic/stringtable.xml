@@ -1,137 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="Diagnostics">
-        <Key ID="STR_CBA_Diagnostic_Component">
-            <English>Community Base Addons - Diagnostics</English>
-            <German>Community Base Addons - Diagnose</German>
-            <Japanese>Community Base Addons - 診断</Japanese>
-            <Chinese>社群基礎模組 - 診斷</Chinese>
-            <Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
-            <Russian>Community Base Addons - Диагностика</Russian>
-            <Polish>Community Base Addons - Diagnostyka</Polish>
-            <French>Community Base Addons - Diagnostics</French>
-            <Turkish>Community Base Addons - Teşhis</Turkish>
-            <Italian>Community Base Addons - Diagnostica</Italian>
-            <Czech>Community Base Addons - Diagnostika</Czech>
-            <Spanish>Community Base Addons - Diagnósticos</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
-            <English>Extended Debug Console</English>
-            <German>Erweiterte Debug-Konsole</German>
-            <Japanese>拡張デバッグ コンソール</Japanese>
-            <Chinese>擴展除錯控制台</Chinese>
-            <Chinesesimp>扩展除错控制台</Chinesesimp>
-            <Russian>Расширенная Консоль Отладки</Russian>
-            <French>Console de débogage étendue</French>
-            <Polish>Rozszerzona Konsola Debugowania</Polish>
-            <Turkish>Geliştirilmiş Debug Konsolu</Turkish>
-            <Italian>Console debug estesa</Italian>
-            <Czech>Rozšířená ladící konzole</Czech>
-            <Spanish>Consola Extendida de Depuración</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_PrevStatement">
-            <English>Previous Statement</English>
-            <German>Vorheriger Ausdruck</German>
-            <Japanese>前のコード</Japanese>
-            <Chinese>上個陳述式</Chinese>
-            <Chinesesimp>上个陈述式</Chinesesimp>
-            <Russian>Пред. команда</Russian>
-            <French>Déclaration précédente</French>
-            <Polish>Poprzednie polecenie</Polish>
-            <Turkish>Önceki İfade</Turkish>
-            <Italian>Espressione Prec.</Italian>
-            <Czech>Předchozí zpráva</Czech>
-            <Spanish>Expresión Anterior</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_NextStatement">
-            <English>Next Statement</English>
-            <German>Nächster Ausdruck</German>
-            <Japanese>次のコード</Japanese>
-            <Chinese>下個陳述式</Chinese>
-            <Chinesesimp>下个陈述式</Chinesesimp>
-            <Russian>След. команда</Russian>
-            <French>Déclaration suivante</French>
-            <Polish>Następne polecenie</Polish>
-            <Turkish>Sonraki İfade</Turkish>
-            <Italian>Espressione Succ.</Italian>
-            <Czech>Následující zpráva</Czech>
-            <Spanish>Expresión Siguiente</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_TargetExec">
-            <English>Target Exec</English>
-            <German>Ziel Ausf.</German>
-            <Japanese>対象へ実行</Japanese>
-            <Chinese>在目標執行</Chinese>
-            <Chinesesimp>目标执行</Chinesesimp>
-            <Russian>На цели</Russian>
-            <Polish>Wykonaj na celu</Polish>
-            <French>Cible Exec</French>
-            <Turkish>Hedefte Çalıştır</Turkish>
-            <Italian>Esegui Remoto</Italian>
-            <Czech>Cílový exec</Czech>
-            <Spanish>Ejecutiva de Objetivo</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
-            <English>Enable Target Debugging</English>
-            <German>Ziel-Debugging aktivieren</German>
-            <Japanese>対象デバッキングを有効化</Japanese>
-            <Chinese>開啟目標除錯模式</Chinese>
-            <Chinesesimp>开启目标除错模式</Chinesesimp>
-            <Russian>Включить Отладку Цели</Russian>
-            <Polish>Włącz debugowanie na celu</Polish>
-            <French>Activer le débogage de la cible</French>
-            <Turkish>Hedefte Çalıştırmayı Aktifleştir</Turkish>
-            <Italian>Attiva il debug remoto</Italian>
-            <Czech>Zapnout cílové ladění</Czech>
-            <Spanish>Activar Depuración de Objetivo</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
-            <English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
-            <German>[CBA] Erlaubt Remote-Ziel-Debugging. Benötigt Debug-Konsole.</German>
-            <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
-            <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
-            <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
-            <Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
-            <Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
-            <French>[CBA] Permet le débogage de la cible distante. Nécessite la console de débogage.</French>
-            <Turkish>[CBA] Başka hedefte çalıştırmayı aktifleştirir. Debug konsolu gerektirir.</Turkish>
-            <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
-            <Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
-            <Spanish>[CBA] Permite la depuración de objetivos remotos. Requiere consola de depuración.</Spanish>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
-            <English>Debug Console Indentation</English>
-            <Polish>Indentacja w konsoli debugowania</Polish>
-            <French>Indentation dans la console de débogage</French>
-            <Spanish>Espaciado de la Consola de Depuración</Spanish>
+	<Package name="Diagnostics">
+		<Key ID="STR_CBA_Diagnostic_Component">
+			<English>Community Base Addons - Diagnostics</English>
+			<German>Community Base Addons - Diagnose</German>
+			<Japanese>Community Base Addons - 診断</Japanese>
+			<Chinese>社群基礎模組 - 診斷</Chinese>
+			<Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
+			<Russian>Community Base Addons - Диагностика</Russian>
+			<Polish>Community Base Addons - Diagnostyka</Polish>
+			<French>Community Base Addons - Diagnostics</French>
+			<Turkish>Community Base Addons - Teşhis</Turkish>
+			<Italian>Community Base Addons - Diagnostica</Italian>
+			<Czech>Community Base Addons - Diagnostika</Czech>
+			<Spanish>Community Base Addons - Diagnósticos</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_ExtendedDebugConsole">
+			<English>Extended Debug Console</English>
+			<German>Erweiterte Debug-Konsole</German>
+			<Japanese>拡張デバッグ コンソール</Japanese>
+			<Chinese>擴展除錯控制台</Chinese>
+			<Chinesesimp>扩展除错控制台</Chinesesimp>
+			<Russian>Расширенная Консоль Отладки</Russian>
+			<French>Console de débogage étendue</French>
+			<Polish>Rozszerzona Konsola Debugowania</Polish>
+			<Turkish>Geliştirilmiş Debug Konsolu</Turkish>
+			<Italian>Console debug estesa</Italian>
+			<Czech>Rozšířená ladící konzole</Czech>
+			<Spanish>Consola Extendida de Depuración</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_PrevStatement">
+			<English>Previous Statement</English>
+			<German>Vorheriger Ausdruck</German>
+			<Japanese>前のコード</Japanese>
+			<Chinese>上個陳述式</Chinese>
+			<Chinesesimp>上个陈述式</Chinesesimp>
+			<Russian>Пред. команда</Russian>
+			<French>Déclaration précédente</French>
+			<Polish>Poprzednie polecenie</Polish>
+			<Turkish>Önceki İfade</Turkish>
+			<Italian>Espressione Prec.</Italian>
+			<Czech>Předchozí zpráva</Czech>
+			<Spanish>Expresión Anterior</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_NextStatement">
+			<English>Next Statement</English>
+			<German>Nächster Ausdruck</German>
+			<Japanese>次のコード</Japanese>
+			<Chinese>下個陳述式</Chinese>
+			<Chinesesimp>下个陈述式</Chinesesimp>
+			<Russian>След. команда</Russian>
+			<French>Déclaration suivante</French>
+			<Polish>Następne polecenie</Polish>
+			<Turkish>Sonraki İfade</Turkish>
+			<Italian>Espressione Succ.</Italian>
+			<Czech>Následující zpráva</Czech>
+			<Spanish>Expresión Siguiente</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_TargetExec">
+			<English>Target Exec</English>
+			<German>Ziel Ausf.</German>
+			<Japanese>対象へ実行</Japanese>
+			<Chinese>在目標執行</Chinese>
+			<Chinesesimp>目标执行</Chinesesimp>
+			<Russian>На цели</Russian>
+			<Polish>Wykonaj na celu</Polish>
+			<French>Cible Exec</French>
+			<Turkish>Hedefte Çalıştır</Turkish>
+			<Italian>Esegui Remoto</Italian>
+			<Czech>Cílový exec</Czech>
+			<Spanish>Ejecutiva de Objetivo</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
+			<English>Enable Target Debugging</English>
+			<German>Ziel-Debugging aktivieren</German>
+			<Japanese>対象デバッキングを有効化</Japanese>
+			<Chinese>開啟目標除錯模式</Chinese>
+			<Chinesesimp>开启目标除错模式</Chinesesimp>
+			<Russian>Включить Отладку Цели</Russian>
+			<Polish>Włącz debugowanie na celu</Polish>
+			<French>Activer le débogage de la cible</French>
+			<Turkish>Hedefte Çalıştırmayı Aktifleştir</Turkish>
+			<Italian>Attiva il debug remoto</Italian>
+			<Czech>Zapnout cílové ladění</Czech>
+			<Spanish>Activar Depuración de Objetivo</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_EnableTargetDebug_tooltip">
+			<English>[CBA] Allows remote target debugging. Requires Debug Console.</English>
+			<German>[CBA] Erlaubt Remote-Ziel-Debugging. Benötigt Debug-Konsole.</German>
+			<Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
+			<Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
+			<Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
+			<Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
+			<Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
+			<French>[CBA] Permet le débogage de la cible distante. Nécessite la console de débogage.</French>
+			<Turkish>[CBA] Başka hedefte çalıştırmayı aktifleştirir. Debug konsolu gerektirir.</Turkish>
+			<Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
+			<Czech>[CBA] Povoluje ladění vzdáleného cíle. Vyžaduje ladící konzoli.</Czech>
+			<Spanish>[CBA] Permite la depuración de objetivos remotos. Requiere consola de depuración.</Spanish>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
+			<English>Debug Console Indentation</English>
+			<Polish>Indentacja w konsoli debugowania</Polish>
+			<French>Indentation dans la console de débogage</French>
+			<Spanish>Espaciado de la Consola de Depuración</Spanish>
 			<Chinese>調試控制台縮進</Chinese>
 			<Chinesesimp>调试控制台缩进</Chinesesimp>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
-            <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
-            <Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
-            <French>Type d'indentation qui peut être employée dans la console de débogage.\nTab ajoute une indentation, et Shift + Tab en supprime une.</French>
-            <Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
+			<Czech>Odsazení ladící konzole</Czech>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
+			<English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
+			<Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
+			<French>Type d'indentation qui peut être employée dans la console de débogage.\nTab ajoute une indentation, et Shift + Tab en supprime une.</French>
+			<Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
 			<Chinese>可以通過按 Tab 鍵為添加到調試控制台中的表達式縮進或通過按 Shift + Tab 鍵為其刪除縮進。</Chinese>
 			<Chinesesimp>可以通过按 Tab 键为添加到调试控制台中的表达式缩进或通过按 Shift + Tab 键为其删除缩进。</Chinesesimp>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRate">
-            <English>Refresh rate target watcher field</English>
+			<Czech>Typ odsazení, které lze přidat do výrazu v ladicí konzoli stisknutím klávesy Tab nebo odstranit stisknutím Shift + Tab.</Czech>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRate">
+			<English>Refresh rate target watcher field</English>
 			<Chinese>刷新率</Chinese>
 			<Chinesesimp>刷新率</Chinesesimp>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
-            <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
+			<Czech>Pole cílového sledování obnovovací frekvence</Czech>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
+			<English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
 			<Chinese>調試控制台右側的 CBA 目標監視器字段的刷新率（以秒為單位）。</Chinese>
 			<Chinesesimp>调试控制台右侧的 CBA 目标监视器字段的刷新率（以秒为单位）。</Chinesesimp>
-        </Key>
-        <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
-            <English>4 Spaces</English>
-            <Polish>4 Spacje</Polish>
-            <French>4 espaces</French>
-            <Spanish>4 Espacios</Spanish>
+			<Czech>Obnovovací frekvence (v sekundách) pro pole sledování cíle CBA napravo od konzole ladění.</Czech>
+		</Key>
+		<Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
+			<English>4 Spaces</English>
+			<Polish>4 Spacje</Polish>
+			<French>4 espaces</French>
+			<Spanish>4 Espacios</Spanish>
 			<Chinese>4 個空格</Chinese>
 			<Chinesesimp>4 个空格</Chinesesimp>
-        </Key>
-    </Package>
+			<Czech>4 mezery</Czech>
+		</Key>
+	</Package>
 </Project>
