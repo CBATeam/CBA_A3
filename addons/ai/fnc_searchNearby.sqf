@@ -50,6 +50,12 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
     // Search while there are still available positions
     private _positions = _building buildingPos -1;
+
+    // Create Limiters For Each Unit
+    private _timeout = (count(_positions) * 15) min 120;
+    private _timetag = "CBASearchTime";
+    (units _group) apply {_x setVariable [_timetag,time]};
+
     while {_positions isNotEqualTo []} do {
         // Update units in case of death
         private _units = (units _group) - [_leader];
@@ -59,12 +65,17 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
         // Send all available units to the next available position
         {
+            private _starttime = _x getVariable _timetag;
+
             if (_positions isEqualTo []) exitWith {};
-            if (unitReady _x) then {
+            if (unitReady _x or (_starttime + _timeout) < time) then {
                 private _pos = _positions deleteAt 0;
                 _x commandMove _pos;
+                _x setVariable [_timetag,time];
                 sleep 2;
             };
+
+            sleep .25;
         } forEach _units;
     };
     _group lockWP false;
