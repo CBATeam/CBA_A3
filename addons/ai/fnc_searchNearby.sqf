@@ -54,7 +54,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
     // Create Limiters For Each Unit
     private _timeout = (count(_positions) * 15) min 120;
     private _timetag = "CBASearchTime";
-    (units _group) apply {_x setVariable [_timetag,time]};
+    {_x setVariable [_timetag,time]} forEach units _group;
 
     while {_positions isNotEqualTo []} do {
         // Update units in case of death
