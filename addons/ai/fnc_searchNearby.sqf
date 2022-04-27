@@ -68,7 +68,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
             private _starttime = _x getVariable _timetag;
 
             if (_positions isEqualTo []) exitWith {};
-            if (unitReady _x or (_starttime + _timeout) < time) then {
+            if (unitReady _x || {_starttime + _timeout < time}) then {
                 private _pos = _positions deleteAt 0;
                 _x commandMove _pos;
                 _x setVariable [_timetag,time];
