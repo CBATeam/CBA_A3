@@ -51,7 +51,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
     // Search while there are still available positions
     private _positions = _building buildingPos -1;
 
-    // Create Limiters For Each Unit
+    // Create limiters for each unit
     private _timeout = (count(_positions) * 15) min 120;
     private _timetag = "CBASearchTime";
     {_x setVariable [_timetag,time]} forEach units _group;
