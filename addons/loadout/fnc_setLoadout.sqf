@@ -25,6 +25,7 @@ params [
 
 if (isNull _unit) exitWith {};
 
+// A regular loadout array was passed in
 if (count _loadout == 10) exitWith {
     _unit setUnitLoadout [_loadout, _fullMagazines];
 };
@@ -33,10 +34,4 @@ _unit setUnitLoadout [_loadout select 0, _fullMagazines];
 
 private _extendedInfo = createHashMapFromArray (_loadout select 1);
 
-{
-    private _id = _x;
-    {
-        _x params ["_function", "_default"];
-        [_unit, _extendedInfo getOrDefault [_id, _default]] call _function;
-    } forEach _y;
-} forEach GVAR(setHandlers);
+["CBA_loadoutSet", [_unit, _loadout, _extendedInfo]] call CBA_fnc_localEvent;
