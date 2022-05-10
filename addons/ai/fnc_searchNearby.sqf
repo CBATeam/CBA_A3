@@ -20,7 +20,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_group",["_timeoutcoef",-1],["_maxtimeout",-1]];
+params ["_group",["_timeoutCoef",-1],["_maxTimeout",-1]];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
@@ -28,8 +28,8 @@ if !(local _group) exitWith {}; // Don't create waypoints on each machine
 private _building = nearestBuilding (leader _group);
 if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
-[_group, _building] spawn {
-    params ["_group", "_building","_timeoutcoef","_maxtimeout"];
+[_group, _building, _timeoutCoef, _maxTimeout] spawn {
+    params ["_group", "_building","_timeoutCoef","_maxTimeout"];
     private _leader = leader _group;
 
     // Add a waypoint to regroup after the search
@@ -52,8 +52,8 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
     private _positions = _building buildingPos -1;
 
     // Create limiters for each unit
-    private _timeout = if (_timeoutcoef > -1 && _maxtimeout > -1) then {(
-        count _positions * _timeoutcoef) min _maxtimeout
+    private _timeout = if (_timeoutCoef > -1 && _maxTimeout > -1) then {(
+        count _positions * _timeoutCoef) min _maxTimeout
     } else {
         -1 
     };
