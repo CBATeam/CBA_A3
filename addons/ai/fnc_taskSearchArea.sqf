@@ -39,7 +39,9 @@ params [
     ["_speed", "UNCHANGED", [""]],
     ["_formation", "NO CHANGE", [""]],
     ["_onComplete", "", [""]],
-    ["_timeout", [0, 0, 0], [[]], 3]
+    ["_timeout", [0, 0, 0], [[]], 3],
+    ["_timeoutCoef",-1],
+    ["_maxTimeout", -1]
 ];
 
 _group = _group call CBA_fnc_getGroup;
@@ -77,7 +79,7 @@ if ((_building distanceSqr _pos) < 400) then {
     // Clear waypoint to prevent getting stuck in a search loop
     _statements append [
         "deleteWaypoint [group this, currentWaypoint (group this)]",
-        "[group this] call CBA_fnc_searchNearby"
+        format["[group this,%1,%2] call CBA_fnc_searchNearby",_timeoutCoef,_maxTimeout]
     ];
 };
 

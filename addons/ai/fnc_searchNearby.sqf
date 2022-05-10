@@ -20,7 +20,7 @@ Author:
 
 ---------------------------------------------------------------------------- */
 
-params ["_group"];
+params ["_group",["_timeoutcoef",-1],["_maxtimeout",-1]];
 
 _group = _group call CBA_fnc_getGroup;
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
@@ -29,7 +29,7 @@ private _building = nearestBuilding (leader _group);
 if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
 [_group, _building] spawn {
-    params ["_group", "_building"];
+    params ["_group", "_building","_timeoutcoef","_maxtimeout"];
     private _leader = leader _group;
 
     // Add a waypoint to regroup after the search
@@ -52,8 +52,12 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
     private _positions = _building buildingPos -1;
 
     // Create limiters for each unit
-    private _timeout = (count _positions * 15) min 120;
-    private _timetag = "CBASearchTime";
+    private _timeout = if (_timeoutcoef > -1 && _maxtimeout > -1) then {(
+        count _positions * _timeoutcoef) min _maxtimeout
+    } else {
+        -1 
+    };
+    private _timetag = QGVAR(StartSearchTime);
     {_x setVariable [_timetag,time]} forEach units _group;
 
     while {_positions isNotEqualTo []} do {
@@ -65,10 +69,8 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
 
         // Send all available units to the next available position
         {
-            private _starttime = _x getVariable _timetag;
-
             if (_positions isEqualTo []) exitWith {};
-            if (unitReady _x || {_starttime + _timeout < time}) then {
+            if (unitReady _x || {if (_timeout > -1) then {(_x getVariable _timetag) + _timeout < time} else {false}) then {
                 private _pos = _positions deleteAt 0;
                 _x commandMove _pos;
                 _x setVariable [_timetag,time];
