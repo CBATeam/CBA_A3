@@ -265,6 +265,7 @@
             <Russian>Уведомить администратора сервера.</Russian>
             <Polish>Kontakt z administratorem serwera</Polish>
             <Spanish>Póngase en contacto con el administrador del servidor</Spanish>
+            <Czech>Kontaktujte správce serveru.</Czech>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
@@ -274,6 +275,7 @@
             <Spanish>Gerente de lobby</Spanish>
             <Chinese>角色大廳管理</Chinese>
             <Chinesesimp>角色大厅管理</Chinesesimp>
+            <Czech>Manažer lobby</Czech>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
@@ -283,6 +285,7 @@
             <Polish>Dostosowywanie kolejności w lobby...</Polish>
             <Chinese>調整小隊順序</Chinese>
             <Chinesesimp>调整小队顺序</Chinesesimp>
+            <Czech>Upravuji pořadí skupiny...</Czech>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -292,6 +295,7 @@
             <Polish>Wykonaj kopię zapasową misji przed użyciem tego narzędzia.</Polish>
             <Chinese>使用此工具前，請備份任務。</Chinese>
             <Chinesesimp>使用此工具之前，请备份任务。</Chinesesimp>
+            <Czech>Zálohujte misi před použitím tohoto nástroje.</Czech>
         </Key>
     </Package>
 </Project>

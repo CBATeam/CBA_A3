@@ -426,6 +426,7 @@
             <Russian>Перезаписано клиентом с таким же значением.</Russian>
             <Chinese>被客戶端以相同的值覆蓋。</Chinese>
             <Chinesesimp>被客户端以相同的值覆盖。</Chinesesimp>
+            <Czech>Toto nastavení je přepsáno klienty stejnou hodnotou.</Czech>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
             <English>Overwritten by mission with the same value.</English>
@@ -435,6 +436,7 @@
             <Russian>Перезаписано миссией с таким же значением.</Russian>
             <Chinese>被任務以相同的值覆蓋。</Chinese>
             <Chinesesimp>被任务以相同的值覆盖。</Chinesesimp>
+            <Czech>Toto nastavení je přepsáno misí stejnou hodnotou.</Czech>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
@@ -444,6 +446,7 @@
             <Russian>Перезаписано сервером с таким же значением.</Russian>
             <Chinese>被伺服器以相同的值覆蓋。</Chinese>
             <Chinesesimp>被服务器以相同的值覆盖。</Chinesesimp>
+            <Czech>Toto nastavení je přepsáno serverem stejnou hodnotou.</Czech>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>

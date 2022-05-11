@@ -44,6 +44,7 @@
             <Polish>Sprawdza wyposażenie jednostek. Naprawia problem, który powodował pojawianie się jednostek nagich, przy zmianie lokalności.</Polish>
             <Chinese>驗證單位加載。修復單位在更改大廳位置後顯示為裸體的問題。</Chinese>
             <Chinesesimp>验证单位加载。修复单位在更改大厅位置后显示为裸体的问题。</Chinesesimp>
+            <Czech>Ověřovat výbavu jednotek. Opravuje problém s nahými jednotkami když mění lokálnost.</Czech>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
@@ -52,6 +53,7 @@
             <Polish>Nigdy</Polish>
             <Chinese>從不</Chinese>
             <Chinesesimp>从不</Chinesesimp>
+            <Czech>Nikdy</Czech>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
@@ -60,6 +62,7 @@
             <Polish>Nigdy nie sprawdzaj wyposażenia</Polish>
             <Chinese>從不驗證加載</Chinese>
             <Chinesesimp>从不验证加载</Chinesesimp>
+            <Czech>Nikdy neověřovat výbavu</Czech>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
             <English>Playable units only</English>
@@ -68,6 +71,7 @@
             <Polish>Tylko grywalne jednostki</Polish>
             <Chinese>僅可玩單位</Chinese>
             <Chinesesimp>仅可玩单位</Chinesesimp>
+            <Czech>Pouze hratelné jednotky</Czech>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
             <English>Validate only loadout of playable units</English>
@@ -76,6 +80,7 @@
             <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
             <Chinese>僅驗證可玩單位的加載</Chinese>
             <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
+            <Czech>Ověřovat pouze výbavu hratelných jednotek</Czech>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
@@ -84,6 +89,7 @@
             <Polish>Wszystkie jednostki</Polish>
             <Chinese>所有單位</Chinese>
             <Chinesesimp>所有单位</Chinesesimp>
+            <Czech>Všechny jednotky</Czech>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
@@ -92,6 +98,7 @@
             <Polish>Sprawdza wyposażenie wszystkich jednostek</Polish>
             <Chinese>驗證所有單位的加載</Chinese>
             <Chinesesimp>验证所有单位的加载</Chinesesimp>
+            <Czech>Ověřovat výbavu všech jednotek</Czech>
         </Key>
     </Package>
 </Project>
