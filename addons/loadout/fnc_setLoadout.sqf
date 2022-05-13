@@ -32,6 +32,7 @@ if (count _loadout == 10) exitWith {
 
 _unit setUnitLoadout [_loadout select 0, _fullMagazines];
 
-private _extendedInfo = createHashMapFromArray (_loadout select 1);
+private _extendedInfo = _loadout select 1;
+if (_extendedInfo isEqualType []) then { _extendedInfo = createHashMapFromArray _extendedInfo; };
 
 ["CBA_loadoutSet", [_unit, _loadout, _extendedInfo]] call CBA_fnc_localEvent;
