@@ -2,7 +2,7 @@
 
 class CfgPatches {
     class ADDON {
-        name = "Community Base Addons - Loadout Framework"
+        name = "Community Base Addons - Loadout Framework";
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common", "cba_events"};
