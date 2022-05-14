@@ -30,7 +30,7 @@ if (count _loadout == 10) exitWith {
     _unit setUnitLoadout [_loadout, _fullMagazines];
 };
 
-_loadout params ["_loadoutArray", "extendedInfo"];
+_loadout params ["_loadoutArray", "_extendedInfo"];
 
 _unit setUnitLoadout [_loadoutArray, _fullMagazines];
 
