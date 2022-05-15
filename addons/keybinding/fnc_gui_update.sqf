@@ -34,6 +34,10 @@ private _categoryKeyActions = [];
     private _action = format ["%1$%2", _addon, _x];
     private _subcategory = (GVAR(actions) getVariable _action) param [8, "", [""]];
 
+    if (isLocalized _subcategory) then {
+        _subcategory = localize _subcategory;
+    };
+
     _categoryKeyActions pushBack [_subcategory, _forEachIndex, _x];
 } forEach _addonActions;
 
@@ -94,11 +98,6 @@ private _tablePosY = 0;
     // add subcategory header
     if (_createHeader) then {
         private _header = _display ctrlCreate [QGVAR(subCat), -1, _ctrlKeyList];
-
-        if (isLocalized _subcategory) then {
-            _subcategory = localize _subcategory;
-        };
-
         (_header controlsGroupCtrl IDC_SUBCATEGORY_NAME) ctrlSetText format ["%1:", _subcategory];
         _header ctrlSetPosition [POS_W(0), _tablePosY];
         _header ctrlCommit 0;
