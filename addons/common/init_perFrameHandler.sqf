@@ -5,7 +5,6 @@
 
 GVAR(perFrameHandlerArray) = [];
 GVAR(perFrameHandlersToRemove) = [];
-GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
@@ -14,11 +13,34 @@ GVAR(nextFrameBufferA) = [];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
 
+GVAR(missionTimeSynchronized) = false;
+GVAR(missionTimePrecise) = 0;
+GVAR(missionTimeThousands) = 0;
+CBA_missionTime = 0;
+CBA_missionTimeStr = "0000.000000";
+
 // per frame handler system
 [QFUNC(onFrame), {
     SCRIPT(onFrame);
     private _tickTime = diag_tickTime;
-    call FUNC(missionTimePFH);
+
+    // Update CBA_missionTime when synchronized, time has started, and game is not paused.
+    if ([GVAR(missionTimeSynchronized), time > 0, isGamePaused] isEqualTo [true, true, false]) then {
+        GVAR(missionTimePrecise) = GVAR(missionTimePrecise) + diag_deltaTime * accTime;
+
+        while {GVAR(missionTimePrecise) >= 1000} do {
+            GVAR(missionTimePrecise) = GVAR(missionTimePrecise) - 1000;
+            GVAR(missionTimeThousands) = GVAR(missionTimeThousands) + 1;
+        };
+
+        CBA_missionTimeStr = format [
+            "%1%2",
+            GVAR(missionTimeThousands) toFixed 0,
+            (1000 + GVAR(missionTimePrecise)) toFixed 6 select [1]
+        ];
+
+        CBA_missionTime = parseNumber CBA_missionTimeStr;
+    };
 
     // frame number does not match expected; can happen between pre and postInit, save-game load and on closing map
     // need to manually set nextFrameNo, so new items get added to buffer B and are not executed this frame
@@ -86,37 +108,15 @@ GVAR(waitUntilAndExecArray) = [];
     };
 }] call CBA_fnc_compileFinal;
 
-// fix for save games. subtract last tickTime from ETA of all PFHs after mission was loaded
-addMissionEventHandler ["Loaded", {
-    private _tickTime = diag_tickTime;
-
-    {
-        _x set [2, (_x select 2) - GVAR(lastTickTime) + _tickTime];
-    } forEach GVAR(perFrameHandlerArray);
-
-    GVAR(lastTickTime) = _tickTime;
-}];
-
-CBA_missionTime = 0;
-GVAR(lastTime) = time;
-
 // increase CBA_missionTime variable every frame
 if (isMultiplayer) then {
     // multiplayer - no accTime in MP
     if (isServer) then {
         // multiplayer server
-        [QFUNC(missionTimePFH), {
-            SCRIPT(missionTimePFH_server);
-            if (time != GVAR(lastTime)) then {
-                CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
-                GVAR(lastTime) = time; // used to detect paused game
-            };
-
-            GVAR(lastTickTime) = _tickTime;
-        }] call CBA_fnc_compileFinal;
+        GVAR(missionTimeSynchronized) = true;
 
         addMissionEventHandler ["PlayerConnected", {
-            (_this select 4) publicVariableClient "CBA_missionTime";
+            (_this select 4) publicVariableClient "CBA_missionTimeStr";
         }];
     } else {
         CBA_missionTime = -1;
@@ -125,40 +125,24 @@ if (isMultiplayer) then {
         0 spawn {
             isNil {
                 private _fnc_init = {
-                    CBA_missionTime = _this select 1;
+                    params ["", "_timestamp"];
+                    private _length = count _timestamp - 10;
 
-                    GVAR(lastTickTime) = diag_tickTime; // prevent time skip on clients
-
-                    [QFUNC(missionTimePFH), {
-                        SCRIPT(missionTimePFH_client);
-                        if (time != GVAR(lastTime)) then {
-                            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
-                            GVAR(lastTime) = time; // used to detect paused game
-                        };
-
-                        GVAR(lastTickTime) = _tickTime;
-                    }] call CBA_fnc_compileFinal;
-
+                    GVAR(missionTimePrecise) = parseNumber (_timestamp select [_length]);
+                    GVAR(missionTimeThousands) = parseNumber (_timestamp select [0, _length]);
+                    GVAR(missionTimeSynchronized) = true;
                 };
 
-                "CBA_missionTime" addPublicVariableEventHandler _fnc_init;
+                "CBA_missionTimeStr" addPublicVariableEventHandler _fnc_init;
 
                 if (CBA_missionTime != -1) then {
                     WARNING_1("CBA_missionTime packet arrived prematurely. Installing update handler manually. Transferred value was %1.",CBA_missionTime);
-                    [nil, CBA_missionTime] call _fnc_init;
+                    [nil, CBA_missionTimeStr] call _fnc_init;
                 };
             };
         };
     };
 } else {
     // single player
-    [QFUNC(missionTimePFH), {
-        SCRIPT(missionTimePFH_sp);
-        if (time != GVAR(lastTime)) then {
-            CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime)) * accTime;
-            GVAR(lastTime) = time; // used to detect paused game
-        };
-
-        GVAR(lastTickTime) = _tickTime;
-    }] call CBA_fnc_compileFinal;
+    GVAR(missionTimeSynchronized) = true;
 };
