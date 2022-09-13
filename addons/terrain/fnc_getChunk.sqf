@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-    private _chunkData = [getPos player] call CBA_fnc_getChunk;
+    private _chunkData = [getPos player] call CBA_terrain_fnc_getChunk;
     (end)
 
 Author:
