@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_chunkOrigin
+Function: CBA_terrain_fnc_chunkOrigin
 
 Description:
     Returns the origin (south-west) corner position of the chunk containing the provided position
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        _origin = [getPos player] call CBA_fnc_chunkOrigin
+        _origin = [getPos player] call CBA_terrain_fnc_chunkOrigin
         systemchat str ["The origin of your chunk is:", _origin]
     (end)
 

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getChunk
+Function: CBA_terrain_fnc_getChunk
 
 Description:
     Given a a coordinate, return all terrain points in the chunk containing the coordinate. 

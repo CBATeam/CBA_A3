@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_positionsAndHeightsToChunks
+Function: CBA_terrain_fnc_positionsAndHeightsToChunks
 
 Description:
     Given a set of coordinates, [[x1,y1,z1], [x2,y2,z2]...], this function will return a complete
@@ -25,7 +25,7 @@ Examples:
             [1000, 1005, 25], 
             [1005, 1005, 25]
         ]
-    ] call CBA_fnc_positionsAndHeightsToChunks;
+    ] call CBA_terrain_fnc_positionsAndHeightsToChunks;
     {
         private _origin = parseSimpleArray _x;
         private _chunkPositionsAndHeights = _y;
