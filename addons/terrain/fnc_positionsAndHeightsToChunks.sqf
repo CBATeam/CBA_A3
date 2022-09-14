@@ -63,7 +63,6 @@ private _chunksData = createHashMap;
     _indices params ["_indexX", "_indexY"];
     // List of points is a flat array but is ordered so calc and set index
     private _index = CHUNKSIZE*_indexX + _indexY;
-    systemChat str _index;
     _chunkPositionsAndHeights set [_index, _pos];
 } forEach _positionsAndHeights;
 
