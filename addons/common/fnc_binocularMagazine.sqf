@@ -23,4 +23,4 @@ SCRIPT(binocularMagazine);
 
 params [["_unit", objNull, [objNull]]];
 
-binocularMagazine _unit
+(binocularMagazine _unit) param [0, ""]
