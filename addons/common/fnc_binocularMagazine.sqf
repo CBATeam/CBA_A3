@@ -17,20 +17,10 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(binocularMagazine);
 
 params [["_unit", objNull, [objNull]]];
 
-private _binocular = binocular _unit;
-private _magazine = "";
-
-{
-    if ((_x select 0) isEqualTo _binocular) exitWith {
-        // note: if there is no magazine, _x(4,0) will be nil
-        _magazine = (_x select 4) param [0, ""];
-    };
-} forEach weaponsitems _unit;
-
-_magazine
+binocularMagazine _unit
