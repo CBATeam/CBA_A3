@@ -5,8 +5,10 @@ Function: CBA_fnc_removeBinocularMagazine
 Description:
     Removes the magazine of the units rangefinder.
 
+    Has to be executed on the machine where the unit is local.
+
 Parameters:
-    _unit - A unit (must be local) <OBJECT>
+    _unit - A unit <OBJECT>
 
 Returns:
     None
@@ -17,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(removeBinocularMagazine);
 
