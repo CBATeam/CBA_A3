@@ -27,4 +27,4 @@ params [["_unit", objNull, [objNull]]];
 
 if (!local _unit) exitWith {};
 
-_unit removeBinocularItem (binocularMagazine _unit);
+_unit removeBinocularItem (_unit call CBA_fnc_binocularMagazine);
