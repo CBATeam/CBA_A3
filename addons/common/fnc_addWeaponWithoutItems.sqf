@@ -3,31 +3,33 @@
 Function: CBA_fnc_addWeaponWithoutItems
 
 Description:
-    Adds weapon to unit without attachments and without taking a magazine.
+    Adds weapon to unit without taking a magazine. Attachments will be removed by default, but can be kept by setting a parameter.
 
     Does not work on vehicles.
     Attempts to keep magazine ids for unrelated magazines.
 
 Parameters:
-    _unit   - Unit to add the weapon to <OBEJCT>
-    _weapon - Weapon to add <STRING>
+    _unit               - Unit to add the weapon to <OBEJCT>
+    _weapon             - Weapon to add <STRING>
+    _removeLinkedItems  - If linked items should be removed or not <BOOLEAN>
 
 Returns:
     Nothing.
 
 Examples:
     (begin example)
-        [player, "arifle_mx_F"] CBA_fnc_addWeaponWithoutItems;
+        [player, "arifle_mx_F"] call CBA_fnc_addWeaponWithoutItems;
+        [player, "arifle_AK12_lush_arco_snds_pointer_bipod_F", false] call CBA_fnc_addWeaponWithoutItems;
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 
-params ["_unit", "_weapon"];
+params ["_unit", "_weapon", ["_removeLinkedItems", true, [true]]];
 
 // config case
-private _compatibleMagazines = [_weapon, true] call CBA_fnc_compatibleMagazines;
+private _compatibleMagazines = compatibleMagazines _weapon;
 
 private _uniform = uniformContainer _unit;
 private _uniformMagazines = magazinesAmmoCargo _uniform select {
@@ -50,19 +52,16 @@ private _backpackMagazines = magazinesAmmoCargo _backpack select {
 
 _unit addWeapon _weapon;
 
-if (primaryWeapon _unit == _weapon) then {
-    removeAllPrimaryWeaponItems _unit;
-};
-
-if (secondaryWeapon _unit == _weapon) then {
-    // 'removeAllSecondaryWeaponItems' does not exist
-    {
-        _unit removeSecondaryWeaponItem _x;
-    } forEach secondaryWeaponItems _unit;
-};
-
-if (handgunWeapon _unit == _weapon) then {
-    removeAllHandgunItems _unit;
+if (_removeLinkedItems) then {
+    if (primaryWeapon _unit == _weapon) then {
+        removeAllPrimaryWeaponItems _unit;
+    };
+    if (secondaryWeapon _unit == _weapon) then {
+        removeAllSecondaryWeaponItems _unit;
+    };
+    if (handgunWeapon _unit == _weapon) then {
+        removeAllHandgunItems _unit;
+    };
 };
 
 {
