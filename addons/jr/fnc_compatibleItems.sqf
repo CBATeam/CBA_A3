@@ -19,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2
+    Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(compatibleItems);
 
@@ -27,51 +27,27 @@ params [["_weapon", "", [""]], ["_typefilter", nil, ["", 0]]];
 
 if (_weapon == "") exitWith {[]};
 
-if (isNil QGVAR(namespace)) then {
-    GVAR(namespace) = call CBA_fnc_createNamespace;
+if (isNil "_typefilter") exitWith {
+	compatibleItems _weapon
 };
 
-private _compatibleItems = GVAR(namespace) getVariable _weapon;
+if (_typefilter isEqualType "") then {
+	_typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] findIf {_x == _typefilter}, -1];
+};
+
+if (_typefilter == -1) exitWith {[]};
+
+if (isNil QGVAR(namespace)) then {
+	GVAR(namespace) = createHashMap;
+};
+
+_compatibleItems = GVAR(namespace) get (_weapon + "___" + str _typeFilter);
 
 if (isNil "_compatibleItems") then {
-    _compatibleItems = [];
     private _cfgWeapons = configFile >> "CfgWeapons";
-    private _weaponConfig = _cfgWeapons >> _weapon;
+    _compatibleItems = (compatibleItems _weapon) select {_typefilter == getNumber (_cfgWeapons >> _x >> "itemInfo" >> "type")};
 
-    if (isClass _weaponConfig) then {
-        {
-            private _cfgCompatibleItems = _x >> "compatibleItems";
-
-            if (isArray _cfgCompatibleItems) then {
-                {
-                    _compatibleItems pushBackUnique _x;
-                } forEach getArray _cfgCompatibleItems;
-            } else {
-                if (isClass _cfgCompatibleItems) then {
-                    {
-                        if (getNumber _x > 0) then {
-                            _compatibleItems pushBackUnique configName _x;
-                        };
-                    } forEach configProperties [_cfgCompatibleItems, "isNumber _x"];
-                };
-            };
-        } forEach configProperties [_weaponConfig >> "WeaponSlotsInfo", "isClass _x"];
-
-        // Ensure item class names are in config case
-        _compatibleItems = _compatibleItems apply {configName (_cfgWeapons >> _x)};
-
-        GVAR(namespace) setVariable [_weapon, _compatibleItems]; // save entry in cache
-    } else {
-        ["'%1' not found in CfgWeapons", _weapon] call BIS_fnc_error;
-    };
+    GVAR(namespace) set [_weapon + "___" + str _typeFilter, _compatibleItems];
 };
 
-if (isNil "_typefilter") then { //return
-    + _compatibleItems
-} else {
-    if (_typefilter isEqualType "") then {
-        _typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] find _typefilter, -1];
-    };
-
-    _compatibleItems select {_typefilter == getNumber (configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type")}
-};
+_compatibleItems
