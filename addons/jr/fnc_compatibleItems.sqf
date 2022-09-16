@@ -41,13 +41,14 @@ if (isNil QGVAR(namespace)) then {
 	GVAR(namespace) = createHashMap;
 };
 
-_compatibleItems = GVAR(namespace) get (_weapon + "___" + str _typeFilter);
+private _cacheKey = format ["%1#%2", _weapon, _typeFilter];
+_compatibleItems = GVAR(namespace) get _cacheKey;
 
 if (isNil "_compatibleItems") then {
     private _cfgWeapons = configFile >> "CfgWeapons";
     _compatibleItems = (compatibleItems _weapon) select {_typefilter == getNumber (_cfgWeapons >> _x >> "itemInfo" >> "type")};
 
-    GVAR(namespace) set [_weapon + "___" + str _typeFilter, _compatibleItems];
+    GVAR(namespace) set [_cacheKey, _compatibleItems];
 };
 
 _compatibleItems
