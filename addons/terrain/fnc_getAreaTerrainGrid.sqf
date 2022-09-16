@@ -19,7 +19,7 @@ Returns:
 
 Examples:
     (begin example)
-        _allPoints = ["marker1"] call CBA_fnc_getAreaTerrainGrid;
+        _allPoints = "marker1" call CBA_fnc_getAreaTerrainGrid;
     (end)
 
 Author:
