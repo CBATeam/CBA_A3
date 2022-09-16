@@ -11,7 +11,7 @@ Description:
 Parameters:
     _unit               - Unit to add the weapon to <OBEJCT>
     _weapon             - Weapon to add <STRING>
-    _removeLinkedItems  - If linked items should be removed or not <BOOLEAN>
+    _removeLinkedItems  - If linked items should be removed or not <BOOLEAN> (Default: true)
 
 Returns:
     Nothing.
