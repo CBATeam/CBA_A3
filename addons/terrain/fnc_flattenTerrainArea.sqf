@@ -29,7 +29,7 @@ Returns:
 
 Examples:
     (BEGIN EXAMPLE)
-        [[player, 150], (getPosASL player)#2, true, 1, 3, 2] call CBA_fnc_flattenTerrainArea
+        [[player, 500], (getPosASL player)#2, true, 0.5, 3, 2] call CBA_fnc_flattenTerrainArea
     (END EXAMPLE)
 
 Author:
