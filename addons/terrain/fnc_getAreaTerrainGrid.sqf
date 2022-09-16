@@ -19,16 +19,14 @@ Returns:
 
 Examples:
     (begin example)
-        _allPoints = "marker1" call CBA_fnc_getAreaTerrainGrid;
+        _allPoints = ["marker1"] call CBA_fnc_getAreaTerrainGrid;
     (end)
 
 Author:
     Seb
 ---------------------------------------------------------------------------- */
 
-params [
-    "_areaArg"
-];
+private _areaArg = _this;
 
 getTerrainInfo params ["", "", "_cellSize", "_resolution", ""];
 private _area = _areaArg call BIS_fnc_getArea;

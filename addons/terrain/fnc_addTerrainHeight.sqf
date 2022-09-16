@@ -28,7 +28,9 @@ Returns:
     Whether the terrain was succesfully changed
 
 Examples:
-    ["marker1", 20, false, true] call CBA_fnc_addTerrainHeight
+    (BEGIN EXAMPLE)
+        [[player, 25], -15, true, 1, 2, 2] call CBA_fnc_addTerrainHeight
+    (END EXAMPLE)
 
 Author:
     Seb
@@ -42,7 +44,7 @@ params [
     "_smoothPower"
 ];
 _edgeSize = 0 max (1 min _edgeSize);
-private _positionsAndHeightsCurrent = [_area] call CBA_fnc_getAreaTerrainGrid;
+private _positionsAndHeightsCurrent = _area call CBA_fnc_getAreaTerrainGrid;
 private _positionsAndHeightsNew = if (_edgeSize != 0) then {
     (_area call BIS_fnc_getArea) params ["_centre", "_a", "_b", "_angle", "_isRectangle", ""];
     private _fnc_interpolate = switch (_smoothMode) do {

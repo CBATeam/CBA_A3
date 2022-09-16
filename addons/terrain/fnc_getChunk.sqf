@@ -33,7 +33,7 @@ for "_cellX" from 0 to CHUNKSIZE - 1 do {
 // If this is the first time getting this chunk, save original terrain.
 private _key = str _pos;
 if (isServer && {!(_key in GVAR(originalTerrainChunks))}) then {
-    GVAR(originalTerrainChunks) set [_key, _chunkPositionsAndHeights];
+    GVAR(originalTerrainChunks) set [_key, +_chunkPositionsAndHeights];
 };
 
 _chunkPositionsAndHeights
