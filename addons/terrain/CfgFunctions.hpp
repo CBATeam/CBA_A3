@@ -5,6 +5,7 @@ class CfgFunctions {
             PATHTO_FNC(nearestTerrainPoint);
             PATHTO_FNC(setTerrainHeight);
             PATHTO_FNC(getAreaTerrainGrid);
+            PATHTO_FNC(flattenTerrainArea);
         };
     };
 };
