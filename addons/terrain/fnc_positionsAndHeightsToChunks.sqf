@@ -14,7 +14,7 @@ Parameters:
 
 Returns:
     Hashmap where the key is a string of origin position and the value is the [[x1,y1,z1], [x2,y2,z2]...]
-    in chunk data format.
+    in chunk data format. [HASHMAP]
 
 Examples:
     (begin example)

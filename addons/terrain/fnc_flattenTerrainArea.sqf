@@ -36,7 +36,7 @@ Author:
     Seb
 ---------------------------------------------------------------------------- */
 params [
-    "_area",
+    "_areaArg",
     "_height",
     "_adjustObjects",
     "_edgeSize",
@@ -44,9 +44,10 @@ params [
     "_smoothPower"
 ];
 _edgeSize = 0 max (1 min _edgeSize);
-private _positionsAndHeightsCurrent = _area call CBA_fnc_getAreaTerrainGrid;
+private _positionsAndHeightsCurrent = [_areaArg] call CBA_fnc_getAreaTerrainGrid;
 private _positionsAndHeightsNew = if (_edgeSize != 0) then {
-    (_area call BIS_fnc_getArea) params ["_centre", "_a", "_b", "_angle", "_isRectangle", ""];
+    private _area = (_areaArg call BIS_fnc_getArea);
+    _area params ["_centre", "_a", "_b", "_angle", "_isRectangle", ""];
     private _fnc_interpolate = switch (_smoothMode) do {
         // https://www.desmos.com/calculator/3lr40hyzkk
         case 0: {
@@ -95,43 +96,12 @@ private _positionsAndHeightsNew = if (_edgeSize != 0) then {
     private _blendedSize = (_edgeSize) * _shortestEdge;
     _positionsAndHeightsCurrent apply {
         private _pos = _x;
-        private _distance = _centre distance2D _pos;
-        private _alpha = if (_isRectangle) then {
-            // Direction this terrain point to centre of area
-            private _dirTo = (_pos getDir _centre) - _angle;
-            // Orthogonal distance in coordspace of the area.
-            private _distA = abs (sin _dirTo) * _distance;
-            private _distB = abs (cos _dirTo) * _distance;
-            if (_mode) then {
-                // Smooth off end of longest side at same ratio as shortest
-                private _factorA = 0 max (( _distA - _delta - _flatSize )/ _blendedSize );
-                // Smooth between edge of shortest edge and centre
-                private _factorB = 0 max (( _distB - _flatSize )/ _blendedSize );
-                1-(_factorA max _factorB)
-            } else {
-                // Inverse of above when side lengths are reversed
-                private _factorA = 0 max (( _distA - _flatSize ) / _blendedSize );
-                private _factorB = 0 max (( _distB - _delta - _flatSize ) / _blendedSize );
-                1-(_factorA max _factorB)
-            }
-        } else {
-            // Find point that lies on an ellipse at the angle to the curent point
-            // Divide distance to current by point by to centre by distance to edge to get factor
-            private _theta = (_centre getDir _pos) - _angle + 90;
-            private _sinSquare = (1 - cos(2*_theta))/2;
-            private _cosSquare = 1-_sinSquare;
-            // Radius of ellipse at the current angle
-            private _r = (_a*_b)/(sqrt (((_a^2)*_sinSquare)+((_b^2)*_cosSquare)));
-            // Size of blended area
-            private _edgeDist = _edgeSize * _r;
-            // 1..0 in blended area, clamped to 1.
-            1 min ((_r-_distance)/_edgeDist);
-        };
+        private _alpha = [_area, _pos, _mode, _delta, _flatSize, _blendedSize, _edgeSize] call FUNC(shapePositionAlpha);
         _alpha = [_alpha, _smoothPower] call _fnc_interpolate;
         private _currentZ = _pos#2;
         private _heightChange = (_height - _currentZ) * _alpha;
         _pos vectorAdd [0, 0, _heightChange]
-    }
+    };
 } else {
     _positionsAndHeightsCurrent apply {
         _x set [2, _height];
