@@ -37,12 +37,12 @@ Author:
     Seb
 ---------------------------------------------------------------------------- */
 params [
-    "_areaArg",
-    "_height",
-    "_adjustObjects",
-    "_edgeSize",
-    "_smoothMode",
-    "_smoothPower"
+    ["_areaArg", objNull, [objNull, "", locationNull, []]],
+    ["_height" , 0, [0]],
+    ["_adjustObjects", true, [true]],
+    ["_edgeSize", 1, [1]],
+    ["_smoothMode", 3, [1]],
+    ["_smoothPower", 2, [1]]
 ];
 _edgeSize = 0 max (1 min _edgeSize);
 private _positionsAndHeightsCurrent = [_areaArg] call CBA_fnc_getAreaTerrainGrid;

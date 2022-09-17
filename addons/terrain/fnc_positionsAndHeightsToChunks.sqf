@@ -35,7 +35,9 @@ Examples:
 Author:
     Seb
 ---------------------------------------------------------------------------- */
-params ["_positionsAndHeights"];
+params [
+    ["_positionsAndHeights", [], [[]]]
+];
 
 private _fnc_chunkGetOrDefault = {
     params ["_pos", "_chunksData"];

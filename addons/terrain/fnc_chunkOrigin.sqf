@@ -20,7 +20,9 @@ Examples:
 Author:
     Seb
 ---------------------------------------------------------------------------- */
-params ["_pos"];
+params [
+    ["_pos", [0,0,0], [[]], [2,3]]
+];
 getTerrainInfo params ["", "", "_cellSize", "_resolution", ""];
 private _step = _cellSize*CHUNKSIZE;
 private _origin = _pos apply {(floor (_x/_step))*_step};

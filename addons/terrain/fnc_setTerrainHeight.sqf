@@ -30,8 +30,8 @@ Author:
     Seb
 ---------------------------------------------------------------------------- */
 params [
-    "_positionsAndHeights", 
-    "_adjustObjects"
+    ["_positionsAndHeights", [], [[]]],
+    ["_adjustObjects", true, [true]]
 ];
 if !(isServer) exitWith {false};
 private _chunksData = [_positionsAndHeights] call FUNC(positionsAndHeightsToChunks);

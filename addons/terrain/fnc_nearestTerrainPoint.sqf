@@ -19,7 +19,9 @@ Examples:
 Author:
     Seb
 ---------------------------------------------------------------------------- */
-params ["_position"];
+params [
+    ["_position", [0,0,0], [[]], [2,3]]
+];
 getTerrainInfo params ["", "", "_cellSize", "_resolution", ""];
 private _pos = (_position select [0,2]) apply {
     (round (_x/_cellsize))*_cellSize

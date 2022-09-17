@@ -19,7 +19,9 @@ Examples:
 Author:
     Seb
 ---------------------------------------------------------------------------- */
-params ["_pos"];
+params [
+    ["_pos", [0,0,0], [[]], [2,3]]
+];
 _pos = [_pos] call FUNC(chunkOrigin);
 getTerrainInfo params ["", "", "_cellSize", "_resolution", ""];
 private _chunkPositionsAndHeights = [];
