@@ -67,10 +67,10 @@ private _longestName = "";
     };
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
-		if (count _longestName < count _displayName) then {
-			_longestName = _displayName;
-		};
-	
+        if (count _longestName < count _displayName) then {
+            _longestName = _displayName;
+        };
+
         private _index = _list lbAdd _displayName;
         _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
