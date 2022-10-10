@@ -61,15 +61,16 @@ private _longestName = "";
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
     };
-    if (count _longestName < count _displayName) then {
-        _longestName = _displayName;
-    };
 
     if (isLocalized _tooltip) then {
         _tooltip = localize _tooltip;
     };
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
+		if (count _longestName < count _displayName) then {
+			_longestName = _displayName;
+		};
+	
         private _index = _list lbAdd _displayName;
         _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
@@ -161,7 +162,7 @@ getMousePosition params ["_left", "_top"];
 _left = _left - pixelW;
 _top = _top - pixelH;
 
-private _width = (ctrlPosition _list select 2) max 1.1 * (_longestName getTextWidth [_font, _fontSize]);
+private _width = (ctrlPosition _list select 2) max ((_longestName getTextWidth [_font, _fontSize]) + TEXT_MARGINS_WIDTH + RSCLISTBOX_PICTURE_WIDTH);
 private _height = lbSize _list * _fontSize;
 
 _list ctrlSetPosition [_left, _top, _width, _height];
