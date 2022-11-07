@@ -54,6 +54,7 @@ if (isNil "_mass") then {
     _allowedSlots = [TYPE_UNIFORM, TYPE_VEST, TYPE_BACKPACK];
     private _cfgWeaponsItem = configFile >> "CfgWeapons" >> _item;
     private _cfgMagazinesItem = configFile >> "CfgMagazines" >> _item;
+    private _cfgVehiclesItem = configFile >> "CfgVehicles" >> _item;
     private _cfgGlassesItem = configFile >> "CfgGlasses" >> _item;
     switch true do {
         case (isClass _cfgWeaponsItem): {
@@ -75,9 +76,10 @@ if (isNil "_mass") then {
                 _cfgWeaponSlotsInfo >> "allowedSlots"
             ];
         };
-        case (isClass _cfgMagazinesItem): {
-            _mass = getNumber (_cfgMagazinesItem >> "mass");
-            private _cfgAllowedSlots = _cfgMagazinesItem >> "allowedSlots";
+        case (isClass _cfgMagazinesItem || {isClass _cfgVehiclesItem}): {
+            private _cfgItem = [_cfgVehiclesItem, _cfgMagazinesItem] select isClass _cfgMagazinesItem;
+            _mass = getNumber (_cfgItem >> "mass");
+            private _cfgAllowedSlots = _cfgItem >> "allowedSlots";
             if (isArray _cfgAllowedSlots) then {
                 _allowedSlots = getArray _cfgAllowedSlots;
             };
