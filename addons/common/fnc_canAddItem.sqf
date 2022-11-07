@@ -43,6 +43,7 @@ if (isNull _unit || {_item isEqualTo ""}) exitWith {false};
 #define TYPE_VEST 701
 #define TYPE_UNIFORM 801
 #define TYPE_BACKPACK 901
+#define FLOAT_CORRECTION 0.0001
 
 if (isNil QGVAR(itemMassAllowedSlots)) then {
     GVAR(itemMassAllowedSlots) = createHashMap;
@@ -107,7 +108,7 @@ if (_unit isKindOf "CAManBase") then {
             _mass == 0
             || {
                 // each time subtract whole number of items which can be put in container
-                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass);
+                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -119,7 +120,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass);
+                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -131,7 +132,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass);
+                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -142,7 +143,7 @@ if (_unit isKindOf "CAManBase") then {
     // is a vehicle, crate etc.
     _mass == 0
     || {
-        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass);
+        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass + FLOAT_CORRECTION);
         _count <= 0
     }
 };
