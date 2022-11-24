@@ -52,16 +52,21 @@ if (_verify) then {
         _unit addItem _item;
         _return = true;
     } else {
-        _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+        private _vehicle = vehicle _unit;
+        if (_vehicle isEqualTo _unit) then {
+            _unit switchMove "ainvpknlmstpslaywrfldnon_1";
 
-        private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
+            private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
-        if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
-            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
-            _weaponHolder setPosASL getPosASL _unit;
+            if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
+                _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+                _weaponHolder setPosASL getPosASL _unit;
+            };
+
+            _return = [_weaponHolder, _item, 1, _verify] call CBA_fnc_addItemCargo;
+        } else {
+            _return = [_vehicle, _item, 1, _verify] call CBA_fnc_addItemCargo;
         };
-
-        [_weaponHolder, _item] call CBA_fnc_addItemCargo;
     };
 } else {
     _unit addItem _item;
