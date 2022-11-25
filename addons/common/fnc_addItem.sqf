@@ -11,7 +11,7 @@ Description:
 Parameters:
     _unit   - the unit <OBJECT>
     _item   - name of the weapon to add <STRING>
-    _verify - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -63,9 +63,9 @@ if (_verify) then {
                 _weaponHolder setPosASL getPosASL _unit;
             };
 
-            _return = [_weaponHolder, _item, 1, _verify] call CBA_fnc_addItemCargo;
+            [_weaponHolder, _item, 1, _verify] call CBA_fnc_addItemCargo;
         } else {
-            _return = [_vehicle, _item, 1, _verify] call CBA_fnc_addItemCargo;
+            [_vehicle, _item, 1, _verify] call CBA_fnc_addItemCargo;
         };
     };
 } else {
