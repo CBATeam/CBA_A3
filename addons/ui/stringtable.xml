@@ -240,6 +240,7 @@
             <Russian>Продолжительность уведомления</Russian>
             <Polish>Długość żywotności powiadomień</Polish>
             <Spanish>Duración de la notificación</Spanish>
+            <Italian>Durata notifica</Italian>
         </Key>
         <Key ID="STR_CBA_UI_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
@@ -253,6 +254,7 @@
             <Russian>Время в секундах, в течении которого будет видно уведомление.</Russian>
             <Polish>Ilość czasu przez który widoczne jest powiadomienie</Polish>
             <Spanish>Duración de la visualización de notificaciones en segundos</Spanish>
+            <Italian>Durata della notifica in secondi.</Italian>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
@@ -266,6 +268,7 @@
             <Polish>Kontakt z administratorem serwera</Polish>
             <Spanish>Póngase en contacto con el administrador del servidor</Spanish>
             <Czech>Kontaktujte správce serveru.</Czech>
+            <Italian>Contatta l'amministratore del server.</Italian>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
@@ -276,6 +279,7 @@
             <Chinese>角色大廳管理</Chinese>
             <Chinesesimp>角色大厅管理</Chinesesimp>
             <Czech>Manažer lobby</Czech>
+            <Italian>Gestore lobby.</Italian>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
@@ -286,6 +290,7 @@
             <Chinese>調整小隊順序</Chinese>
             <Chinesesimp>调整小队顺序</Chinesesimp>
             <Czech>Upravuji pořadí skupiny...</Czech>
+            <Italian>Riordinando il gruppo...</Italian>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -296,6 +301,7 @@
             <Chinese>使用此工具前，請備份任務。</Chinese>
             <Chinesesimp>使用此工具之前，请备份任务。</Chinesesimp>
             <Czech>Zálohujte misi před použitím tohoto nástroje.</Czech>
+            <Italian>Salva una copia della missione prima di usare questo strumento.</Italian>
         </Key>
     </Package>
 </Project>

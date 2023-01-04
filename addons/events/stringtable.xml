@@ -25,6 +25,7 @@
             <Chinesesimp>武器连发模式</Chinesesimp>
             <French>Mode de réarmement</French>
             <Russian>Режим повторной стрельбы</Russian>
+            <Italian>Modalità di ricarica dell'arma</Italian>            
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
@@ -37,6 +38,7 @@
             <Chinesesimp>设置武器拉栓及退膛状态</Chinesesimp>
             <French>Mode de réarmement des armes à verrou et à pompe.</French>
             <Russian>Режим повторной стрельбы помпового оружия или оружия с продольно-скользящим затвором.</Russian>
+            <Italian>Modalità di ricarica o riarmo delle armi.</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOptic">
             <English>Leave Optics View</English>
@@ -49,6 +51,7 @@
             <Chinesesimp>离开瞄准视野</Chinesesimp>
             <French>Maintenir vue lunette</French>
             <Russian>Выход из прицела</Russian>
+            <Italian>Esci dalla vista ottica</Italian>            
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
@@ -61,6 +64,7 @@
             <Chinesesimp>当武器拉栓以及退膛时是否离开瞄准视野</Chinesesimp>
             <French>Réarme l'arme tout en maintenant la visée dans la lunette.</French>
             <Russian>Перезаряжать оружие после выхода из прицела.</Russian>
+            <Italian>Ricarica l'arma uscendo dalla vista dell'ottica.</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
             <English>Release Trigger</English>
@@ -73,6 +77,7 @@
             <Chinesesimp>松开板机</Chinesesimp>
             <French>Relâcher la détente</French>
             <Russian>Отпускание курка</Russian>
+            <Italian>Rilascia il grilletto</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
@@ -85,6 +90,7 @@
             <Chinesesimp>当松开板机后拉栓或退膛（扣住板机以避免突然的动作）。</Chinesesimp>
             <French>Réarme l'arme au relâchement de la détente (maintenir la détente enfoncée pour éviter le réarmement immédiat).</French>
             <Russian>Перезаряжать оружие после отпускания курка (держите курок чтобы не перезаряжать).</Russian>
+            <Italian>Ricarica l'arma rilasciando il grilletto (mantieni premuto il grilletto per prevenire la ricarica immediata).</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
             <English>Press Trigger</English>
@@ -97,6 +103,7 @@
             <Chinesesimp>按下板机</Chinesesimp>
             <French>Presser la détente</French>
             <Russian>Нажатие курка</Russian>
+            <Italian>Premi il grilletto</Italian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
             <English>Bolt or rack weapon by pressing the trigger again.</English>
@@ -109,6 +116,7 @@
             <Chinesesimp>再次按下板机才能拉栓或退膛</Chinesesimp>
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
             <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
+            <Italian>Ricarica l'arma premendo nuovamente il grilletto</Italian>            
         </Key>
     </Package>
 </Project>
