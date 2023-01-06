@@ -31,6 +31,7 @@
             <English>Toggle Reticle</English>
             <German>Absehen umschalten</German>
             <Czech>Zapnout retikulum</Czech>
+            <Italian>Cambia reticolo</Italian>            
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
             <Japanese>照準線切り替え</Japanese>
             <Chinese>切換瞄準線</Chinese>
@@ -43,6 +44,7 @@
             <English>Manually switch the reticle of the optic.</English>
             <German>Absehen der Optik manuell umschalten.</German>
             <Czech>Manuálně přepnout retikulum optiky</Czech>
+            <Italian>Cambia manualmente il reticolo dell'ottica.</Italian>            
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
             <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
             <Chinese>手動切換瞄具的瞄準線</Chinese>

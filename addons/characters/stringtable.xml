@@ -8,6 +8,7 @@
             <Polish>Community Base Addons - Postacie</Polish>
 			<Chinese>社區基礎插件 - 角色</Chinese>
 			<Chinesesimp>社区基础插件-角色</Chinesesimp>
+            <Italian>Community Base Addons - Personaggi</Italian>
         </Key>
         <Key ID="STR_CBA_Characters_MenMalariaInfected">
             <English>Men (Malaria-Infected)</English>
@@ -16,6 +17,7 @@
             <Polish>Ludzie (Zainfekowani malarią)</Polish>
 			<Chinese>男子(瘧疾感染者)</Chinese>
 			<Chinesesimp>男子(疟疾感染者)</Chinesesimp>
+            <Italian>Uomo (Infetto da malaria)</Italian>
         </Key>
     </Package>
 </Project>

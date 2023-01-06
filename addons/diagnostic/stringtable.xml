@@ -107,6 +107,7 @@
 			<Chinese>調試控制台縮進</Chinese>
 			<Chinesesimp>调试控制台缩进</Chinesesimp>
             <Czech>Odsazení ladící konzole</Czech>
+            <Italian>Indentazione console di debug</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
             <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
@@ -116,6 +117,7 @@
 			<Chinese>可以通過按 Tab 鍵為添加到調試控制台中的表達式縮進或通過按 Shift + Tab 鍵為其刪除縮進。</Chinese>
 			<Chinesesimp>可以通过按 Tab 键为添加到调试控制台中的表达式缩进或通过按 Shift + Tab 键为其删除缩进。</Chinesesimp>
             <Czech>Typ odsazení, které lze přidat do výrazu v ladicí konzoli stisknutím klávesy Tab nebo odstranit stisknutím Shift + Tab.</Czech>
+            <Italian>Il tipo di intentazione che può essere aggiunta all'espressione nella console di debug premendo il tasto Tab o rimossa premendo Shift + Tab</Italian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRate">
             <English>Refresh rate target watcher field</English>
@@ -137,6 +139,7 @@
 			<Chinese>4 個空格</Chinese>
 			<Chinesesimp>4 个空格</Chinesesimp>
             <Czech>4 mezery</Czech>
+            <Italian>4 Spazi</Italian>
         </Key>
     </Package>
 </Project>
