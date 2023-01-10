@@ -22,7 +22,7 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
             _value = round _value;
         };
 
-        [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
+        _value = [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber;
     };
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
