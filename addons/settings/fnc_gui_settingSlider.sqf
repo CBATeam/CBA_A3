@@ -20,9 +20,11 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     } else {
         if (_trailingDecimals < 0) then {
             _value = round _value;
+        } else {
+            _value = _value toFixed _trailingDecimals;
         };
 
-        _value = [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber;
+        [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber;
     };
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
@@ -63,6 +65,8 @@ _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
     } else {
         if (_trailingDecimals < 0) then {
             _value = round _value;
+        } else {
+            _value = _value toFixed _trailingDecimals;
         };
     };
 
@@ -99,6 +103,8 @@ _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
     } else {
         if (_trailingDecimals < 0) then {
             _value = round _value;
+        } else {
+            _value = _value toFixed _trailingDecimals;
         };
 
         [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
