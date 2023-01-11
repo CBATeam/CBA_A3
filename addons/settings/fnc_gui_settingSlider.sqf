@@ -4,11 +4,13 @@ params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"
 _settingData params ["_min", "_max", "_trailingDecimals", "_isPercentage"];
 
 private _range = _max - _min;
+private _arrowStep = [(0.05 * _range), _trailingDecimals] call BIS_fnc_cutDecimals;
+private _sliderSpeed = [(0.1 * _range), _trailingDecimals] call BIS_fnc_cutDecimals;
 
 private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
 _ctrlSlider sliderSetRange [_min, _max];
 _ctrlSlider sliderSetPosition _currentValue;
-_ctrlSlider sliderSetSpeed [0.05 * _range, 0.1 * _range];
+_ctrlSlider sliderSetSpeed [_arrowStep, _sliderSpeed];
 
 _ctrlSlider setVariable [QGVAR(params), [_setting, _source, _trailingDecimals, _isPercentage]];
 _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
@@ -47,6 +49,12 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 private _editText = if (_isPercentage) then {
     format [localize "STR_3DEN_percentageUnit", round (_currentValue * 100), "%"]
 } else {
+    if (_trailingDecimals < 0) then {
+        _currentValue = round _currentValue;
+    } else {
+        _currentValue = [_currentValue, _trailingDecimals] call BIS_fnc_cutDecimals;
+    };
+
     [_currentValue, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
 };
 
@@ -126,14 +134,19 @@ _controlsGroup setVariable [QFUNC(updateUI), {
     private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER;
     private _ctrlSliderEdit = _controlsGroup controlsGroupCtrl IDC_SETTING_SLIDER_EDIT;
 
-    _ctrlSlider sliderSetPosition _value;
-
     private _editText = if (_isPercentage) then {
         format [localize "STR_3DEN_percentageUnit", round (_value * 100), "%"]
     } else {
+        if (_trailingDecimals < 0) then {
+            _value = round _value;
+        } else {
+            _value = [_value, _trailingDecimals] call BIS_fnc_cutDecimals;
+        };
+
         [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
     };
 
+    _ctrlSlider sliderSetPosition _value;
     _ctrlSliderEdit ctrlSetText _editText;
 
     // if new value is same as default value, grey out the default button
