@@ -21,7 +21,7 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
         if (_trailingDecimals < 0) then {
             _value = round _value;
         } else {
-            _value = _value toFixed _trailingDecimals;
+            _value = [_value, _trailingDecimals] call BIS_fnc_cutDecimals;
         };
 
         [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber;
@@ -66,7 +66,7 @@ _ctrlSliderEdit ctrlAddEventHandler ["KeyUp", {
         if (_trailingDecimals < 0) then {
             _value = round _value;
         } else {
-            _value = _value toFixed _trailingDecimals;
+            _value = [_value, _trailingDecimals] call BIS_fnc_cutDecimals;
         };
     };
 
@@ -104,7 +104,7 @@ _ctrlSliderEdit ctrlAddEventHandler ["KillFocus", {
         if (_trailingDecimals < 0) then {
             _value = round _value;
         } else {
-            _value = _value toFixed _trailingDecimals;
+            _value = [_value, _trailingDecimals] call BIS_fnc_cutDecimals;
         };
 
         [_value, 1, _trailingDecimals max 0] call CBA_fnc_formatNumber
