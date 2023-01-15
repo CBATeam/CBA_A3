@@ -1,6 +1,7 @@
 release/*
 releases/*
 keys/*
+.hemtt
 hemtt
 hemtt.exe
 tools/hemtt*.tar.gz*

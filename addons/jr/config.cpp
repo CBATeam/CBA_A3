@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 
-#define private 0       // hidden
-#define protected 1     // hidden but usable
-#define public 2        // visible
+#define private 0
+#define protected 1
+#define public 2
 
-#define ReadAndWrite 0      //! any modifications enabled
-#define ReadAndCreate 1     //! only adding new class members is allowed
-#define ReadOnly 2          //! no modifications enabled
-#define ReadOnlyVerified 3  //! no modifications enabled, CRC test applied
+#define ReadAndWrite 0
+#define ReadAndCreate 1
+#define ReadOnly 2
+#define ReadOnlyVerified 3
 
 class CfgPatches {
     class ADDON {

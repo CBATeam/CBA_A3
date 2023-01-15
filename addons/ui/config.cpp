@@ -60,7 +60,7 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
         left = -0.006;
         top = -0.007;
         w = 0.0392157;
-        h = 2*(safeZoneH/36); //0.0522876;
+        h = QUOTE(2*(safeZoneH/36)); //0.0522876;
     };
     class TextPos {
         left = 0.01; // indent
@@ -70,8 +70,8 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
     };
 };
 //-----------------------------------------------------------------------------
-#include "flexiMenu\data\menu_rose.hpp"
-#include "flexiMenu\data\menu_arma2.hpp"
-#include "flexiMenu\data\menu_buttonList.hpp"
-#include "flexiMenu\data\menu_iconRow.hpp"
-#include "flexiMenu\data\menu_popup.hpp"
+// #include "flexiMenu\data\menu_rose.hpp"
+// #include "flexiMenu\data\menu_arma2.hpp"
+// #include "flexiMenu\data\menu_buttonList.hpp"
+// #include "flexiMenu\data\menu_iconRow.hpp"
+// #include "flexiMenu\data\menu_popup.hpp"
