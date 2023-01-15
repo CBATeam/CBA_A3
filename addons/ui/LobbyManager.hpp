@@ -36,7 +36,7 @@ class GVAR(LobbyManager) {
             h = QUOTE((120 - 10 - 5 - 7 - 2) * GRID_3DEN_H);
             sizeEx = QUOTE(3.96 * (1 / (getResolution select 3)) * pixelGrid * 0.5);
             colorBackground[] = {0, 0, 0, 0.3};
-            disableKeyboardSearch = QUOTE(1);
+            disableKeyboardSearch = 1;
         };
         class CallsignLabel: ctrlStatic {
             text = "$STR_3DEN_Group_Attribute_Callsign_displayName";

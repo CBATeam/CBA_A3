@@ -125,7 +125,7 @@ class RscDisplayConfigure {
                     style = ST_RIGHT;
                     text = ECSTRING(main,AddonText);
                     x = QUOTE(POS_W(0.5));
-                    y = QUOTE(OS_H(1));
+                    y = QUOTE(POS_H(1));
                     w = QUOTE(POS_W(4));
                     h = QUOTE(POS_H(1));
                     sizeEx = QUOTE(POS_H(1));
