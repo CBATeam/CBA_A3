@@ -3,18 +3,37 @@ name = "CBA_A3"
 prefix = "cba"
 author = "CBATeam"
 mainprefix = "x"
-files = [
-    "mod.cpp",
-    "README.md",
-    "LICENSE.md",
-    "logo_cba_ca.paa",
-    "meta.cpp",
-    "userconfig"
-]
+
 
 modname = "{{name}}"
 key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
+
+
+
+[asc]
+enabled = true
+exclude = [
+        "\\initsettings.sqf",
+        "\\initkeybinds.sqf",
+        "\\xeh_prep.sqf",
+        "\\backwards_comp.sqf",
+        "settings\\gui_createcategory.sqf",
+        "diagnostic\\fnc_isdebugconsoleallowed.sqf",
+        "xeh\\fnc_initdisplay.sqf",
+        "xeh\\fnc_startloadingscreen.sqf",
+        "xeh\\fnc_endloadingscreen.sqf"
+]
+
+
+
+
+
+
+
+
+
+
 
 check = [
     "!version_set"

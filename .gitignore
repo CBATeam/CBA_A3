@@ -1,12 +1,9 @@
 release/*
 releases/*
 keys/*
-.hemtt
+.hemttout
 hemtt
 hemtt.exe
-tools/hemtt*.tar.gz*
-tools/hemtt*.zip*
-.hemtt/local
 *.cache
 *.pbo
 texHeaders.bin
