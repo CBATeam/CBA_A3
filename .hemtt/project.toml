@@ -14,15 +14,15 @@ authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 [asc]
 enabled = true
 exclude = [
-        "\\initsettings.sqf",
-        "\\initkeybinds.sqf",
-        "\\xeh_prep.sqf",
-        "\\backwards_comp.sqf",
-        "settings\\gui_createcategory.sqf",
-        "diagnostic\\fnc_isdebugconsoleallowed.sqf",
-        "xeh\\fnc_initdisplay.sqf",
-        "xeh\\fnc_startloadingscreen.sqf",
-        "xeh\\fnc_endloadingscreen.sqf"
+        "/initsettings.sqf",
+        "/initkeybinds.sqf",
+        "/xeh_prep.sqf",
+        "/backwards_comp.sqf",
+        "settings/gui_createcategory.sqf",
+        "diagnostic/fnc_isdebugconsoleallowed.sqf",
+        "xeh/fnc_initdisplay.sqf",
+        "xeh/fnc_startloadingscreen.sqf",
+        "xeh/fnc_endloadingscreen.sqf"
 ]
 
 
