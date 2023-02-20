@@ -14,7 +14,7 @@
             <Turkish>Community Base Addons - Klavye Tuşları</Turkish>
             <Italian>Community Base Addons - Configurazione Tasti</Italian>
             <Czech>Community Base Addons - Klávesy</Czech>
-			<Korean>커뮤니티 베이스 애드온 - 키 설정<Korean>
+            <Korean>커뮤니티 베이스 애드온 - 키 설정</Korean>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -29,7 +29,7 @@
             <Turkish>Eklentileri Düzenle</Turkish>
             <Italian>Configura gli addon</Italian>
             <Czech>Konfigurovat addony</Czech>
-			<Korean>애드온 설정<Korean>
+            <Korean>애드온 설정</Korean>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -44,7 +44,7 @@
             <Turkish>Temeli Düzenle</Turkish>
             <Italian>Configura il gioco base</Italian>
             <Czech>Konfigurovat základ</Czech>
-			<Korean>기본 설정<Korean>
+            <Korean>기본 설정</Korean>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
@@ -59,7 +59,7 @@
             <Turkish>Bilinmeyen Tuş %1</Turkish>
             <Italian>"%1" è un tasto sconosciuto</Italian>
             <Czech>Neznámá klávesa %1</Czech>
-			<Korean>%1 키는 미지정입니다<Korean>
+            <Korean>%1 키는 미지정입니다</Korean>
         </Key>
     </Package>
 </Project>

@@ -15,7 +15,7 @@
             <Italian>Community Base Addons - Interfaccia utente</Italian>
             <Czech>Community Base Addons - Uživatelské prostředí</Czech>
             <Spanish>Community Base Addons - Interfaz de usuario</Spanish>
-			<Korean>커뮤니티 베이스 애드온 - 유저 인터페이스<Korean>
+            <Korean>커뮤니티 베이스 애드온 - 유저 인터페이스</Korean>
         </Key>
         <Key ID="STR_CBA_UI_Category">
             <English>User Interface</English>
@@ -32,7 +32,7 @@
             <Chinese>玩家界面</Chinese>
             <Spanish>Interfaz de usuario</Spanish>
             <Turkish>Kullanıcı Arayüzü</Turkish>
-			<Korean>유저 인터페이스<Korean>
+            <Korean>유저 인터페이스</Korean>
         </Key>
         <Key ID="STR_CBA_UI_ProgressBarPositionName">
             <English>Progress Bar</English>
@@ -47,7 +47,7 @@
             <Czech>Ukazatel průběhu</Czech>
             <Russian>Индикатор выполнения</Russian>
             <Spanish>Barra de progreso</Spanish>
-			<Korean>상태 표시줄<Korean>
+            <Korean>상태 표시줄</Korean>
         </Key>
         <Key ID="STR_CBA_UI_ProgressBarPositionDescription">
             <English>Position of the progress bar.</English>
@@ -62,7 +62,7 @@
             <Czech>Pozici ukazatele průběhu.</Czech>
             <Russian>Позиция индикатора выполнения.</Russian>
             <Spanish>Posición de la barra de progreso.</Spanish>
-			<Korean>상태 표시줄 위치<Korean>
+            <Korean>상태 표시줄 위치</Korean>
         </Key>
         <Key ID="STR_CBA_UI_StoreServerPasswords">
             <English>Store Server Passwords</English>
@@ -77,7 +77,7 @@
             <Chinesesimp>存储服务器密码</Chinesesimp>
             <Russian>Запоминать пароли серверов</Russian>
             <Spanish>Almacenar contraseñas del servidor</Spanish>
-			<Korean>서버 암호 저장<Korean>
+            <Korean>서버 암호 저장</Korean>
         </Key>
         <Key ID="STR_CBA_UI_StoreServerPasswordsTooltip">
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
@@ -92,7 +92,7 @@
             <Chinesesimp>设置是否存储连接服务器时输入的密码。</Chinesesimp>
             <Russian>Параметр запоминания паролей сервера при входе на них.</Russian>
             <Spanish>Configuración para almacenar las contraseñas ingresadas al conectarse a un servidor multijugador.</Spanish>
-			<Korean>멀티플레이어 서버에 연결할 때 입력한 암호를 저장하도록 설정합니다.<Korean>
+            <Korean>멀티플레이어 서버에 연결할 때 입력한 암호를 저장하도록 설정합니다.</Korean>
         </Key>
         <Key ID="STR_CBA_UI_SavePasswords">
             <English>Save passwords</English>
@@ -107,7 +107,7 @@
             <Chinesesimp>记住密码</Chinesesimp>
             <Russian>Сохранять пароли</Russian>
             <Spanish>Guardar contraseñas</Spanish>
-			<Korean>암호 저장<Korean>
+            <Korean>암호 저장</Korean>
         </Key>
         <Key ID="STR_CBA_UI_SavePasswordsTooltip">
             <English>Passwords are stored when connecting to a multiplayer server.</English>
@@ -122,7 +122,7 @@
             <Chinesesimp>连接到服务器时将记住密码</Chinesesimp>
             <Russian>Пароли будут сохраняться при входе на сервера.</Russian>
             <Spanish>Las contraseñas se almacenan cuando se conecta a un servidor multijugador</Spanish>
-			<Korean>암호는 멀티플레이어 서버에 연결할 때 저장됩니다.<Korean>
+            <Korean>암호는 멀티플레이어 서버에 연결할 때 저장됩니다.</Korean>
         </Key>
         <Key ID="STR_CBA_UI_DoNotSavePasswords">
             <English>Do not save passwords</English>
@@ -137,7 +137,7 @@
             <Chinesesimp>不保存密码</Chinesesimp>
             <Russian>Не сохранять пароли</Russian>
             <Spanish>No guarde las contraseñas</Spanish>
-			<Korean>암호 저장하지 않음<Korean>
+            <Korean>암호 저장하지 않음</Korean>
         </Key>
         <Key ID="STR_CBA_UI_DoNotSavePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
@@ -152,7 +152,7 @@
             <Chinesesimp>当连接到服务器时将不保存密码。已保存的密码将不自动填写。</Chinesesimp>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли не будут автоматически вставлены.</Russian>
             <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas no se ingresarán automáticamente.</Spanish>
-			<Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 자동으로 입력되지 않습니다.<Korean>
+            <Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 자동으로 입력되지 않습니다.</Korean>
         </Key>
         <Key ID="STR_CBA_UI_DeletePasswords">
             <English>Delete passwords</English>
@@ -167,7 +167,7 @@
             <Chinesesimp>删除密码</Chinesesimp>
             <Russian>Удалить пароли</Russian>
             <Spanish>Eliminar contraseñas</Spanish>
-			<Korean>암호 삭제<Korean>
+            <Korean>암호 삭제</Korean>
         </Key>
         <Key ID="STR_CBA_UI_DeletePasswordsTooltip">
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
@@ -182,7 +182,7 @@
             <Chinesesimp>当连接到服务器时将不保存密码。已保存的密码将会删除。</Chinesesimp>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли будут удалены.</Russian>
             <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas se eliminan del perfil.</Spanish>
-			<Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 프로필에서 삭제됩니다.<Korean>
+            <Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 프로필에서 삭제됩니다.</Korean>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionName">
             <English>Notification</English>
@@ -197,7 +197,7 @@
             <French>Notification</French>
             <Russian>Уведомление</Russian>
             <Spanish>Notificación</Spanish>
-			<Korean>알림<Korean>
+            <Korean>알림</Korean>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
@@ -212,7 +212,7 @@
             <French>Notification textuelle au joueur.</French>
             <Russian>Текстовая информация для игрока.</Russian>
             <Spanish>Comentarios textuales para el jugador</Spanish>
-			<Korean>플레이어에 대한 텍스트 피드백입니다,<Korean>
+            <Korean>플레이어에 대한 텍스트 피드백입니다,</Korean>
         </Key>
         <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
@@ -227,7 +227,7 @@
             <French>Afficher toutes les missions</French>
             <Russian>Показать все миссии</Russian>
             <Spanish>Mostrar todas las misiones</Spanish>
-			<Korean>모든 미션 보이기<Korean>
+            <Korean>모든 미션 보이기</Korean>
         </Key>
         <Key ID="STR_CBA_UI_CustomMissions">
             <English>Show custom missions</English>
@@ -242,7 +242,7 @@
             <French>Afficher les missions personnalisées</French>
             <Russian>Показать пользовательские миссии</Russian>
             <Spanish>Mostrar misiones personalizadas</Spanish>
-			<Korean>커스텀 미션 보이기<Korean>
+            <Korean>커스텀 미션 보이기</Korean>
         </Key>
         <Key ID="STR_CBA_UI_NotifyLifetime">
             <English>Notification Lifetime</English>
@@ -257,7 +257,7 @@
             <Polish>Długość żywotności powiadomień</Polish>
             <Spanish>Duración de la notificación</Spanish>
             <Italian>Durata notifica</Italian>
-			<Korean>알림 지속시간<Korean>
+            <Korean>알림 지속시간</Korean>
         </Key>
         <Key ID="STR_CBA_UI_NotifyLifetimeTooltip">
             <English>Notification display duration in seconds.</English>
@@ -272,7 +272,7 @@
             <Polish>Ilość czasu przez który widoczne jest powiadomienie</Polish>
             <Spanish>Duración de la visualización de notificaciones en segundos</Spanish>
             <Italian>Durata della notifica in secondi.</Italian>
-			<Korean>알림이 표시되는 시간입니다. (초 단위)<Korean>
+            <Korean>알림이 표시되는 시간입니다. (초 단위)</Korean>
         </Key>
         <Key ID="STR_CBA_Ui_ContactServerAdmin">
             <English>Contact the server admin.</English>
@@ -287,7 +287,7 @@
             <Spanish>Póngase en contacto con el administrador del servidor</Spanish>
             <Czech>Kontaktujte správce serveru.</Czech>
             <Italian>Contatta l'amministratore del server.</Italian>
-			<Korean>서버 관리자에게 문의하십시오.<Korean>
+            <Korean>서버 관리자에게 문의하십시오.</Korean>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
@@ -299,7 +299,7 @@
             <Chinesesimp>角色大厅管理</Chinesesimp>
             <Czech>Manažer lobby</Czech>
             <Italian>Gestore lobby.</Italian>
-			<Korean>로비 매니저<Korean>
+            <Korean>로비 매니저</Korean>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
@@ -311,7 +311,7 @@
             <Chinesesimp>调整小队顺序</Chinesesimp>
             <Czech>Upravuji pořadí skupiny...</Czech>
             <Italian>Riordinando il gruppo...</Italian>
-			<Korean>그룹 순서 조정 중...<Korean>
+            <Korean>그룹 순서 조정 중...</Korean>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -323,7 +323,7 @@
             <Chinesesimp>使用此工具之前，请备份任务。</Chinesesimp>
             <Czech>Zálohujte misi před použitím tohoto nástroje.</Czech>
             <Italian>Salva una copia della missione prima di usare questo strumento.</Italian>
-			<Korean>이 도구를 사용하기 전에 임무를 백업하십시오.<Korean>
+            <Korean>이 도구를 사용하기 전에 임무를 백업하십시오.</Korean>
         </Key>
     </Package>
 </Project>

@@ -13,7 +13,7 @@
             <Turkish>Community Base Addons - Yapay Zeka</Turkish>
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
             <Czech>Community Base Addons - Umělá inteligence</Czech>
-			<Korean>커뮤니티 베이스 애드온- 인공지능<Korean>
+            <Korean>커뮤니티 베이스 애드온- 인공지능</Korean>
         </Key>
         <Key ID="STR_CBA_AI_BuildingPos">
             <English>AI Building Position</English>
@@ -27,7 +27,7 @@
             <Russian>ИИ Место строительства</Russian>
             <Polish>Pozycja AI w budynku</Polish>
             <Italian>Posizione edificio AI</Italian>
-			<Korean>인공지능 건물 위치<Korean>
+            <Korean>인공지능 건물 위치</Korean>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
@@ -54,7 +54,7 @@
 			<Chinesesimp>隐形目标（车辆）</Chinesesimp>
             <Czech>Neviditelný cíl (Vozidlo)</Czech>
             <Italian>Obiettivo invisibile - Veicolo</Italian>
-			<Korean>보이지 않는 표적 차량<Korean>
+            <Korean>보이지 않는 표적 차량</Korean>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
@@ -65,7 +65,7 @@
 			<Chinesesimp>隐形目标（飞机）</Chinesesimp>
             <Czech>Neviditelný cíl (Letoun)</Czech>
             <Italian>Obiettivo invisibile - Velivolo</Italian>
-			<Korean>보이지 않는 표적 항공기<Korean>
+            <Korean>보이지 않는 표적 항공기</Korean>
         </Key>
     </Package>
 </Project>
