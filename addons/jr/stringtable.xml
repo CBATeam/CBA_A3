@@ -13,6 +13,7 @@
             <Turkish>Community Base Addons - Birleştirilmiş Raylar</Turkish>
             <Italian>Community Base Addons - Joint Rails</Italian>
             <Czech>Community Base Addons - Joint Rails</Czech>
+			<Korean>커뮤니티 베이스 애드온 - 레일 통합<Korean>
         </Key>
         <Key ID="STR_CBA_JR_cfgweapons_muzzle_snds_h_mg">
             <English>Sound Suppressor MG</English>
@@ -28,6 +29,7 @@
             <Chinese>機槍用消音器</Chinese>
             <Chinesesimp>机枪用消音器</Chinesesimp>
             <Turkish>Community Base Addons - MG Susturucusu</Turkish>
+			<Korean>소음기(기관총)<Korean>
         </Key>
     </Package>
 </Project>
