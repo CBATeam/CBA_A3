@@ -112,7 +112,6 @@
             <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową gdy tylko zostanie wybrana kolejna broń.</Polish>
             <Italian>Butta automaticamente il lanciatore usato non appena un'altra arma viene selezionata</Italian>        
             <Korean>다른 무기를 선택하는 즉시 사용한 일회용 발사기를 자동으로 떨어뜨립니다.</Korean>
-			
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
