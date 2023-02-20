@@ -32,7 +32,6 @@
             <Chinese>玩家界面</Chinese>
             <Spanish>Interfaz de usuario</Spanish>
             <Turkish>Kullanıcı Arayüzü</Turkish>
-            <Korean>유저 인터페이스</Korean>
         </Key>
         <Key ID="STR_CBA_UI_ProgressBarPositionName">
             <English>Progress Bar</English>
