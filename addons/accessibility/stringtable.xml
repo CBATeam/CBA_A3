@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Accessibility">
+        <Key ID="STR_cba_accessibility_Component">
+            <English>Community Base Addons - Accessibility</English>
+            <German>Community Base Addons - Barrierefreiheit</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_EnabledVisualHint">
+            <English>Enabled + Visual Hint</English>
+            <German>Aktiviert + Visueller Hinweis</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_DisabledVisualHint">
+            <English>Disabled + Visual Hint</English>
+            <German>Deaktiviert + Visueller Hinweis</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_EpilepsyFriendlyMode">
+            <English>Epilepsy friendly mode</English>
+            <German>Epilepsiefreundlicher Modus</German>
+            <Japanese>けいれん回避モード</Japanese>
+            <Polish>Tryb dla epileptyków</Polish>
+            <French>Mode adapté à l'épilepsie</French>
+            <Chinesesimp>癫痫病友好模式</Chinesesimp>
+            <Korean>광과민 친화적 모드</Korean>
+            <Russian>Режим для эпилептиков</Russian>
+        </Key>
+        <Key ID="STR_cba_accessibility_EpilepsyFriendlyModeTooltip">
+            <English>Disables some flashing light effects to reduce seizure risk.</English>
+            <German>Deaktiviert einige Lichtflackereffekte um das Risiko von Epilepsieanfällen zu reduzieren.</German>
+            <Japanese>点滅する光エフェクトを無効化し、けいれんする恐れを低下させます。</Japanese>
+            <Polish>Wyłącz część migających efektów w celu zredukowania ryzyka napadu epilepsji</Polish>
+            <French>Désactive certains effets de lumière clignotante afin de réduire les risques de crise d'épilepsie.</French>
+            <Chinesesimp>禁用一些闪烁的灯光效果，以降低癫痫发作的风险。</Chinesesimp>
+            <Korean>반짝거리는 빛으로 인해 일어날 발작 상황을 줄여줍니다.</Korean>
+            <Russian>Отключает некоторые вспышки во избежание риска приступа.</Russian>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsHintAll">
+            <English>Visual Hints</English>
+            <German>Visuelle Hinweise</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsHintAllTooltip">
+            <English>Displays visual hints on all supported sounds.</English>
+            <German>Zeigt visuelle Hinweise für alle unterstützten Geräusche.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsHintDuration">
+            <English>Visual Hint Duration</English>
+            <German>Visuelle Hinweis Dauer</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsHintDurationTooltip">
+            <English>How long visual hints are displayed.</English>
+            <German>Wie lange visuelle Hinweise angezeigt werden.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsBreath">
+            <English>Breathing</English>
+            <German>Atemgeräusche</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsBreathTooltip">
+            <English>Disables breathing and coughing sounds.</English>
+            <German>Deaktiviert Atem- und Hustengeräusche.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsBodily">
+            <English>Bodily</English>
+            <German>Körperliche</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsBodilyTooltip">
+            <English>Disables bodily sounds, fluids and breaking.</English>
+            <German>Deaktiviert Körpergeräusche, Flüssigkeiten und Zerbrechen.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsPain">
+            <English>Pain</English>
+            <German>Schmerz</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsPainTooltip">
+            <English>Disables pain sounds.</English>
+            <German>Deaktiviert Schmerzgeräusche.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsScream">
+            <English>Screams</English>
+            <German>Schreie</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsScreamTooltip">
+            <English>Disables screams.</English>
+            <German>Deaktiviert Schreie.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsFood">
+            <English>Food and Drinks</English>
+            <German>Essen und Trinken</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsFoodTooltip">
+            <English>Disables eating and drinking sounds.</English>
+            <German>Deaktiviert Essen und Trinken Geräusche.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsEquipment">
+            <English>Equipment</English>
+            <German>Ausrüstung</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsEquipmentTooltip">
+            <English>Disables equipment sounds, such as zippers.</English>
+            <German>Deaktiviert Ausrüstungsgeräusche, wie Reißverschlüsse.</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsRepetitive">
+            <English>Repetitive</English>
+            <German>Wiederholend</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_SoundsRepetitiveTooltip">
+            <English>Disables repetitive sounds, such as beeping or heartbeats.</English>
+            <German>Deaktiviert wiederholende Geräusche, wie Piepsen oder Herzschläge.</German>
+        </Key>
+    </Package>
+</Project>
