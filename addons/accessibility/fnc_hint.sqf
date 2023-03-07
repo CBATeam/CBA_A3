@@ -38,17 +38,16 @@ if (_hint isEqualType []) then {
 ];
 
 if (_text isEqualTo "") exitWith {};
+private _newHint = [_text, _source, diag_tickTime, diag_tickTime + _duration];
+GVAR(hints) pushBack _newHint;
 
-GVAR(hints) pushBack [_text, _source, diag_tickTime + _duration];
 if (isNil QGVAR(hintsPFH)) then {
     GVAR(hintsPFH) = [FUNC(showHints)] call CBA_fnc_addPerFrameHandler;
 };
 
 [
-    QGVAR(hint),
+    QGVAR(hintCreated),
     [
-        _text,
-        _source,
-        _duration
+        _newHint
     ]
 ] call CBA_fnc_localEvent;

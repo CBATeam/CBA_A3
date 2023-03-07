@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common", "cba_events", "cba_settings"};
         author = "$STR_CBA_Author";
-        authors[] = {"Brett Mayson"};
+        authors[] = {"Brett Mayson", "Cat Harsis"};
         url = "$STR_CBA_URL";
         VERSION_CONFIG;
     };
@@ -16,3 +16,5 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
+#include "CfgUIGrids.hpp"
+#include "RscTitles.hpp"

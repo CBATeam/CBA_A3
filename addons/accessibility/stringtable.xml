@@ -105,5 +105,13 @@
             <English>Disables repetitive sounds, such as beeping or heartbeats.</English>
             <German>Deaktiviert wiederholende Geräusche, wie Piepsen oder Herzschläge.</German>
         </Key>
+        <Key ID="STR_cba_accessibility_HintsPositionName">
+            <English>Visual Hints for sounds</English>
+            <German>Visuelle Hinweise für Geräusche</German>
+        </Key>
+        <Key ID="STR_cba_accessibility_HintsPositionDescription">
+            <English>Position of visual hints for sounds.</English>
+            <German>Position der visuellen Hinweisese für Geräusche.</German>
+        </Key>
     </Package>
 </Project>
