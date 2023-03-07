@@ -5,7 +5,7 @@
 
 params ["_ctrl"];
 uiNamespace setVariable [QGVAR(hintContainer), _ctrl];
-GVAR(hintCount) = 0;
+_ctrl setVariable [QGVAR(boxCtrls), []];
 
 // On new hint
 [
@@ -88,9 +88,7 @@ GVAR(hintCount) = 0;
 
         private _newTextBox = _display ctrlCreate ["RscText", -1, _hintContainerCtrl];
         _newTextBox ctrlSetPosition [_iconWidth, _yCoord, _textBoxWidth, _boxHeight];
-        _newTextBox ctrlSetText format ["%1", _text, _source, _expiresAt - _createdAt, GVAR(hintCount)];
-        _newTextBox setVariable [QGVAR(hintCreated), _hint];
-        INC(GVAR(hintCount));
+        _newTextBox ctrlSetText format ["%1", _text];
         _newTextBox ctrlSetBackgroundColor [0, 0, 0, 0.2];
         _newTextBox ctrlCommit 0;
         _newTextBox ctrlSetFontHeight _boxHeight;
@@ -105,7 +103,6 @@ GVAR(hintCount) = 0;
         _boxCtrls pushBack [_hint, _newIcon, _newTextBox, _newBackground];
     }
 ] call CBA_fnc_addEventHandler;
-_ctrl setVariable [QGVAR(boxCtrls), []];
 
 // On hint expired
 [

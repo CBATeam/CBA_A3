@@ -2,7 +2,7 @@
 #include "\x\cba\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
- #define DISABLE_COMPILE_CACHE
+// #define DISABLE_COMPILE_CACHE
 // #define DEBUG_ENABLED_ACCESSIBILITY
 
 #ifdef DEBUG_ENABLED_ACCESSIBILITY
