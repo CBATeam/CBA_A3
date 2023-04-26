@@ -17,3 +17,9 @@ class Extended_SoundPlayed_EventHandlers {
         };
     };
 };
+
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayMission {
+        ADDON = QUOTE([] call FUNC(createHintDisplay));
+    };
+};

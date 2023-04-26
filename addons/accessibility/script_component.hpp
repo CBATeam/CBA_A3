@@ -14,3 +14,11 @@
 #endif
 
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+
+// lower right of screen
+#define HINT_CONTAINER_X safezoneX + safezoneW - HINT_CONTAINER_W
+#define HINT_CONTAINER_Y safezoneY + safezoneH - HINT_CONTAINER_H
+#define HINT_CONTAINER_W 24 * GUI_GRID_CENTER_W
+#define HINT_CONTAINER_H 10 * GUI_GRID_CENTER_H

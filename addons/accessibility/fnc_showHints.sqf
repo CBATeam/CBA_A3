@@ -1,18 +1,33 @@
 #include "script_component.hpp"
 
-for "_i" from (count GVAR(hints) - 1) to 0 step -1 do {
-    private _hint = GVAR(hints) select _i;
-    _hint params ["_text", "_source", "_expiresAt"];
+private _removedHints = [];
+{
+    private _hint = _x;
+    _hint params ["_text", "_source", "_createdAt", "_expiresAt"];
 
     if (diag_tickTime > _expiresAt) then {
-        GVAR(hints) deleteAt _i;
+        _removedHints pushBack (GVAR(hints) deleteAt _foreachIndex);
         continue;
     };
+} foreach GVAR(hints);
 
-    // TODO show the hint
-};
+{
+    [
+        QGVAR(hintExpired),
+        [
+            _x
+        ]
+    ] call CBA_fnc_localEvent;
+} foreach _removedHints;
 
 if (count GVAR(hints) == 0) then {
     [GVAR(hintsPFH)] call CBA_fnc_removePerFrameHandler;
     GVAR(hintsPFH) = nil;
 };
+
+[
+    QGVAR(hintProgress),
+    [
+        diag_tickTime
+    ]
+] call CBA_fnc_localEvent;
