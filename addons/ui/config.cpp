@@ -70,8 +70,8 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
     };
 };
 //-----------------------------------------------------------------------------
-// #include "flexiMenu\data\menu_rose.hpp"
-// #include "flexiMenu\data\menu_arma2.hpp"
-// #include "flexiMenu\data\menu_buttonList.hpp"
-// #include "flexiMenu\data\menu_iconRow.hpp"
-// #include "flexiMenu\data\menu_popup.hpp"
+#include "flexiMenu\data\menu_rose.hpp"
+#include "flexiMenu\data\menu_arma2.hpp"
+#include "flexiMenu\data\menu_buttonList.hpp"
+#include "flexiMenu\data\menu_iconRow.hpp"
+#include "flexiMenu\data\menu_popup.hpp"
