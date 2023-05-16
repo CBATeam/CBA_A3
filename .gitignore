@@ -16,6 +16,7 @@ Thumbs.db
 /store/wiki/*
 .vscode/*
 
+*.zip
 *.7z
 
 /addons/CBA_Project.sublime-workspace

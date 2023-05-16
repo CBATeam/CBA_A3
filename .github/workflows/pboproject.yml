@@ -27,12 +27,12 @@ jobs:
       env:
         ARMA3_DATA_URL: ${{ secrets.ARMA3_DATA_URL }}
     - name: Checkout CBA A3
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: x\cba
         persist-credentials: false
     - name: Checkout pull request
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       if: ${{ github.event_name == 'pull_request_target' }}
       with:
         path: pullrequest
@@ -53,13 +53,13 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
     - name: Archive logs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
         name: logs
         path: temp/*.log
     - name: Archive @cba_a3
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: '@cba_a3-${{ github.sha }}'
         path: x\cba\release\@cba_a3
