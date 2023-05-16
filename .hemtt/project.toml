@@ -16,7 +16,7 @@ include = [
 git_hash = 0
 
 [asc]
-enabled = false
+enabled = true
 exclude = [
     "/initsettings.sqf",
     "/initkeybinds.sqf",
