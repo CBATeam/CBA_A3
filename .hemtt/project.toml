@@ -9,14 +9,14 @@ include = [
     "LICENSE.md",
     "logo_cba_ca.paa",
     "meta.cpp",
-    "userconfig",
+    "userconfig/**",
 ]
 
 [version]
 git_hash = 0
 
 [asc]
-enabled = true
+enabled = false
 exclude = [
     "/initsettings.sqf",
     "/initkeybinds.sqf",
@@ -32,5 +32,5 @@ exclude = [
 [hemtt.config]
 preset = "Hemtt"
 
-#[hemtt.release]
-#folder = "CBA_A3"
+[hemtt.release]
+folder = "CBA_A3"

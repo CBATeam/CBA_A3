@@ -5,5 +5,5 @@ if (str missionConfigFile == "A3\Missions_F_Bootcamp\Scenarios\Arsenal.VR\descri
 if (!isMultiplayer && {getNumber (missionConfigFile >> "enableDebugConsoleSP") == 1}) exitWith {true};
 
 call {
-    #include "\a3\functions_f\Debug\fn_isDebugConsoleAllowed.sqf";
+    #include "\a3\functions_f\debug\fn_isDebugConsoleAllowed.sqf";
 };
