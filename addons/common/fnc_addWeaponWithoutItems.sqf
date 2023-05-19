@@ -29,7 +29,7 @@ Author:
 params ["_unit", "_weapon", ["_removeLinkedItems", true, [true]]];
 
 // config case
-private _compatibleMagazines = compatibleMagazines _weapon;
+private _compatibleMagazines = [_weapon, true] call CBA_fnc_compatibleMagazines;
 
 private _uniform = uniformContainer _unit;
 private _uniformMagazines = magazinesAmmoCargo _uniform select {
