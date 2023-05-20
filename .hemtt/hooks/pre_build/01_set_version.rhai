@@ -9,6 +9,7 @@ HEMTT_VFS.join("addons").join("main_a3").join("CfgMods.hpp").create_file().write
 print("addons/main_a3/CfgMods.hpp version set");
 
 let scriptversion = HEMTT_VFS.join("addons").join("main").join("script_version.hpp").open_file().read();
-scriptversion.replace("000000", HEMTT.project().version().build().to_string()); // TODO date %y%m%d (eg. 220912)
+let scriptversion_date = date("[year repr:last_two][month][day]");
+scriptversion.replace("000000", scriptversion_date);
 HEMTT_VFS.join("addons").join("main").join("script_version.hpp").create_file().write(scriptversion);
-print("addons/main/script_version.hpp build set");
+print("addons/main/script_version.hpp build set to " + scriptversion_date);
