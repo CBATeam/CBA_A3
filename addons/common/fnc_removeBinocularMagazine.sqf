@@ -5,6 +5,8 @@ Function: CBA_fnc_removeBinocularMagazine
 Description:
     Removes the magazine of the units rangefinder.
 
+    Has to be executed on the machine where the unit is local.
+
 Parameters:
     _unit - A unit <OBJECT>
 
@@ -17,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(removeBinocularMagazine);
 
@@ -25,11 +27,4 @@ params [["_unit", objNull, [objNull]]];
 
 if (!local _unit) exitWith {};
 
-private _binocular = binocular _unit;
-private _selectBinocular = currentWeapon _unit isEqualTo _binocular;
-
-_unit addWeapon _binocular;
-
-if (_selectBinocular) then {
-    _unit selectWeapon _binocular;
-};
+_unit removeBinocularItem (_unit call CBA_fnc_binocularMagazine);
