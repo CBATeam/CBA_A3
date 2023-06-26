@@ -1,0 +1,13 @@
+# HEMTT pre v1
+name = "CBA_A3"
+prefix = "cba"
+author = "CBATeam"
+mainprefix = "x"
+files = [
+    "mod.cpp",
+    "README.md",
+    "LICENSE.md",
+    "logo_cba_ca.paa",
+    "meta.cpp",
+    "userconfig"
+]
