@@ -36,6 +36,9 @@
 #define GRID_3DEN_W (pixelW * pixelGrid * 0.5)
 #define GRID_3DEN_H (pixelH * pixelGrid * 0.5)
 
+#define TEXT_MARGINS_WIDTH (2 * 0.008)  // Hardcoded value, see https://community.bistudio.com/wiki/getTextWidth
+#define RSCLISTBOX_PICTURE_WIDTH 0.05  // Empirical value, RSCListBox's left icon picture width
+
 // Lobby Manager
 #define IDC_LM_SLOTS 50
 #define IDC_LM_CALLSIGN 51
