@@ -73,6 +73,11 @@ if (cameraView == "GUNNER") then {
 // Add magnification to zeroing control.
 private _zoom = 0.25 call CBA_fnc_getFov select 1;
 
+// To avoid flickering of the magnification text, anything above and including 0.995 is rounded to 1
+if (_zoom >= 0.995) then {
+	_zoom = 1 max _zoom;
+};
+
 _ctrlMagnification ctrlSetText format [
     "(%1x)",
     [_zoom, 1, 1] call CBA_fnc_formatNumber
