@@ -85,4 +85,4 @@ if (isNil QGVAR(namespace)) then {
 
         keys _compatibleItems
     };
-}, true]);
+}, true])
