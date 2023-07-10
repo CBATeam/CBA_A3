@@ -9,7 +9,9 @@ GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
-GVAR(nextFrameNo) = diag_frameno + 1;
+GVAR(nextFrameNBuffer) = [];
+GVAR(nextFrameNBufferAIsSorted) = false;
+GVAR(nextFrameNo) = diag_frameNo + 1;
 GVAR(nextFrameBufferA) = [];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
@@ -22,9 +24,9 @@ GVAR(waitUntilAndExecArray) = [];
 
     // frame number does not match expected; can happen between pre and postInit, save-game load and on closing map
     // need to manually set nextFrameNo, so new items get added to buffer B and are not executed this frame
-    if (diag_frameno != GVAR(nextFrameNo)) then {
-        TRACE_2("frame mismatch",diag_frameno,GVAR(nextFrameNo));
-        GVAR(nextFrameNo) = diag_frameno;
+    if (diag_frameNo != GVAR(nextFrameNo)) then {
+        TRACE_2("frame mismatch",diag_frameNo,GVAR(nextFrameNo));
+        GVAR(nextFrameNo) = diag_frameNo;
     };
 
     // Execute per frame handlers
@@ -44,7 +46,9 @@ GVAR(waitUntilAndExecArray) = [];
         GVAR(waitAndExecArray) sort true;
         GVAR(waitAndExecArrayIsSorted) = true;
     };
+
     private _delete = false;
+
     {
         if (_x select 0 > CBA_missionTime) exitWith {};
 
@@ -54,8 +58,31 @@ GVAR(waitUntilAndExecArray) = [];
         GVAR(waitAndExecArray) set [_forEachIndex, objNull];
         _delete = true;
     } forEach GVAR(waitAndExecArray);
+
     if (_delete) then {
         GVAR(waitAndExecArray) = GVAR(waitAndExecArray) - [objNull];
+        _delete = false;
+    };
+
+
+    // Execute the exec next n frame functions
+    if (!GVAR(nextFrameNBufferIsSorted)) then {
+        GVAR(nextFrameNBuffer) sort true;
+        GVAR(nextFrameNBufferIsSorted) = true;
+    };
+
+    {
+        if (_x select 0 > GVAR(nextFrameNo)) exitWith {};
+
+        (_x select 1) call (_x select 2);
+
+        // Mark the element for deletion so it's not executed ever again
+        GVAR(nextFrameNBuffer) set [_forEachIndex, objNull];
+        _delete = true;
+    } forEach GVAR(nextFrameNBuffer);
+
+    if (_delete) then {
+        GVAR(nextFrameNBuffer) = GVAR(nextFrameNBuffer) - [objNull];
         _delete = false;
     };
 
@@ -64,10 +91,12 @@ GVAR(waitUntilAndExecArray) = [];
     {
         (_x select 0) call (_x select 1);
     } forEach GVAR(nextFrameBufferA);
+
     // Swap double-buffer:
     GVAR(nextFrameBufferA) = GVAR(nextFrameBufferB);
     GVAR(nextFrameBufferB) = [];
-    GVAR(nextFrameNo) = diag_frameno + 1;
+
+    GVAR(nextFrameNo) = diag_frameNo + 1;
 
 
     // Execute the waitUntilAndExec functions:
@@ -81,6 +110,7 @@ GVAR(waitUntilAndExecArray) = [];
             _delete = true;
         };
     } forEach GVAR(waitUntilAndExecArray);
+
     if (_delete) then {
         GVAR(waitUntilAndExecArray) = GVAR(waitUntilAndExecArray) - [objNull];
     };
