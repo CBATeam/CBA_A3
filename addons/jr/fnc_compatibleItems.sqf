@@ -51,46 +51,38 @@ if (isNil QGVAR(namespace)) then {
     GVAR(namespace) = createHashMap;
 };
 
-// Get cached result, if it exists
-private _cachekey = format ["%1#%2", _weapon, ["all", _typefilter] select _typeFilterExists];
-private _compatibleItems = GVAR(namespace) get _cachekey;
+// Get cached result, if it exists, otherwise make it
++(GVAR(namespace) getOrDefaultCall [format ["%1#%2", _weapon, ["all", _typefilter] select _typeFilterExists], {
+    if (_typeFilterExists) then {
+        // Get all compatible weapon attachments, then filter
+        (_weapon call CBA_fnc_compatibleItems) select {_typefilter == getNumber (_cfgWeapons >> _x >> "itemInfo" >> "type")}
+    } else {
+        private _compatibleItems = createHashMap;
+        private _cfgCompatibleItems = configNull;
 
-if (!isNil "_compatibleItems") exitWith {
-    +_compatibleItems
-};
+        {
+            _cfgCompatibleItems = _x >> "compatibleItems";
 
-if (_typeFilterExists) then {
-    // Get all compatible weapon attachments, then filter
-    _compatibleItems = _weapon call CBA_fnc_compatibleItems;
-    _compatibleItems = _compatibleItems select {_typefilter == getNumber (_cfgWeapons >> _x >> "itemInfo" >> "type")};
-} else {
-    _compatibleItems = [];
-
-    {
-        private _cfgCompatibleItems = _x >> "compatibleItems";
-
-        if (isArray _cfgCompatibleItems) then {
-            {
-                // Ensure item class name is in config case
-                _compatibleItems pushBackUnique configName (_cfgWeapons >> _x);
-            } forEach getArray _cfgCompatibleItems;
-        } else {
-            if (isClass _cfgCompatibleItems) then {
+            if (isArray _cfgCompatibleItems) then {
                 {
-                    if (getNumber _x > 0) then {
-                        // Ensure item class name is in config case
-                        _compatibleItems pushBackUnique configName (_cfgWeapons >> configName _x);
-                    };
-                } forEach configProperties [_cfgCompatibleItems, "isNumber _x"];
+                    // Ensure item class name is in config case
+                    _compatibleItems set [configName (_cfgWeapons >> _x), nil];
+                } forEach getArray _cfgCompatibleItems;
+            } else {
+                if (isClass _cfgCompatibleItems) then {
+                    {
+                        if (getNumber _x > 0) then {
+                            // Ensure item class name is in config case
+                            _compatibleItems set [configName (_cfgWeapons >> configName _x), nil];
+                        };
+                    } forEach configProperties [_cfgCompatibleItems, "isNumber _x"];
+                };
             };
-        };
-    } forEach configProperties [_weaponConfig >> "WeaponSlotsInfo", "isClass _x"];
+        } forEach configProperties [_weaponConfig >> "WeaponSlotsInfo", "isClass _x"];
 
-    // Remove non-existent item(s)
-    _compatibleItems deleteAt (_compatibleItems find "");
-};
+        // Remove non-existent items
+        _compatibleItems deleteAt "";
 
-// Cache result
-GVAR(namespace) set [_cachekey, _compatibleItems];
-
-+_compatibleItems
+        keys _compatibleItems
+    };
+}, true]);
