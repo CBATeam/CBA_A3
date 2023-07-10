@@ -19,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2
+    Original by Karel Moricky, Enhanced by Robalo, jokoho, commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(compatibleItems);
 
