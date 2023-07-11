@@ -6,17 +6,17 @@ Description:
     Retrieves a list of magazines that are compatible with a weapon.
 
 Parameters:
-    _weapon - Weapon configName or config
-    _allMuzzles - Get magazines for all muzzles on this weapon (default: false)
-
-Example:
-    (begin example)
-    _mags = ["arifle_MX_SW_F"] call CBA_fnc_compatibleMagazines
-    _mags = [configFile >> "CfgWeapons" >> _rifle >> _glMuzzle] call CBA_fnc_compatibleMagazines
-    (end)
+    _weapon     - Weapon class name or config <STRING, CONFIG>
+    _allMuzzles - Get magazines for all muzzles on this weapon (optional, default: false) <BOOLEAN>
 
 Returns:
-    Array of magazine classnames in config capitalization  <ARRAY>
+    Array of magazine classnames in config capitalization <ARRAY>
+
+Examples:
+    (begin example)
+        _mags = ["arifle_MX_SW_F"] call CBA_fnc_compatibleMagazines;
+        _mags = [configFile >> "CfgWeapons" >> _rifle >> _glMuzzle] call CBA_fnc_compatibleMagazines;
+    (end)
 
 Author:
     PabstMirror, johnb43, based on code from Dedmen
