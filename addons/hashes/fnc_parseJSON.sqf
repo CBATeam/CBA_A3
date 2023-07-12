@@ -35,45 +35,29 @@ params [["_json", "", [""]], ["_objectType", 0]];
 // Enable unicode processing
 forceUnicode 0;
 
-/**
- * Helper function returning the code used for object creation based on the "_objectType" parameter.
- */
-private _createObject = {
-    switch (_objectType) do {
-        case false;
-        case 0: {
-            [] call CBA_fnc_createNamespace
-        };
+// Wrappers for creating "objects" and setting values on them
+private ["_createObject", "_objectSet"];
 
-        case true;
-        case 1: {
-            [] call CBA_fnc_hashCreate
-        };
-
-        case 2: {
-            createHashMap
-        };
-    };
-};
-
-/**
- * Helper function to set a key-value pair within an object based on the "_objectType" parameter.
- */
-private _objectSet = {
-    params ["_obj", "_key", "_val"];
-
-    switch (_objectType) do {
-        case false;
-        case 0: {
+switch (_objectType) do {
+    case false;
+    case 0: {
+        _createObject = CBA_fnc_createNamespace;
+        _objectSet = {
+            params ["_obj", "_key", "_val"];
             _obj setVariable [_key, _val];
         };
+    };
 
-        case true;
-        case 1: {
-            [_obj, _key, _val] call CBA_fnc_hashSet;
-        };
+    case true;
+    case 1: {
+        _createObject = CBA_fnc_hashCreate;
+        _objectSet = CBA_fnc_hashSet;
+    };
 
-        case 2: {
+    case 2: {
+        _createObject = { createHashMap };
+        _objectSet = {
+            params ["_obj", "_key", "_val"];
             _obj set [_key, _val];
         };
     };
