@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _weapon     - Weapon class name or config <STRING, CONFIG>
-    _allMuzzles - Get magazines for all muzzles on this weapon (optional, default: false) <BOOLEAN>
+    _allMuzzles - Get magazines for all muzzles on this weapon (optional, default: false) <BOOL>
 
 Returns:
     Array of magazine classnames in config capitalization <ARRAY>
