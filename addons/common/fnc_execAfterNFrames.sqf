@@ -11,7 +11,7 @@ Parameters:
     _frames   - The amount of frames the execution of the function should be delayed by. (optional, default: 0) <NUMBER>
 
 Returns:
-    Nothing
+    Nothing Useful
 
 Examples:
     (begin example)
