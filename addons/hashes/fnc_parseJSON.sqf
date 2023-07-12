@@ -42,16 +42,16 @@ private _createObject = {
     switch (_objectType) do {
         case false;
         case 0: {
-            [] call CBA_fnc_createNamespace;
+            [] call CBA_fnc_createNamespace
         };
 
         case true;
         case 1: {
-            [] call CBA_fnc_hashCreate;
+            [] call CBA_fnc_hashCreate
         };
 
         case 2: {
-            createHashMap;
+            createHashMap
         };
     };
 };
@@ -88,15 +88,15 @@ private _objectSet = {
 private _tokenize = {
     params [["_jsonStr", objNull, [""]]];
 
-    if (!(_jsonStr isEqualType "")) exitWith {
-        objNull;
+    if !(_jsonStr isEqualType "") exitWith {
+        objNull
     };
 
     private _tokens = [];
 
     private _symbolsArr = "{}[]:," splitString "";
     private _numberArr = "-0123456789" splitString "";
-    private _whitespaceArr = [0x9, 0xA, 0xD, 0x20] apply { toString [_x] };
+    private _whitespaceChars = toString [0x9, 0xA, 0xD, 0x20];
 
     private _constRegex = "true|false|null/o";
     private _numberRegex = "(-?(?:(?:[1-9]\d*)|\d)(?:\.\d+)?(?:[eE][+-]?\d+)?).*/o";
@@ -123,12 +123,12 @@ private _tokenize = {
     private _rowIndex = 0;
     private _columnIndex = 0;
 
-    while {(count _codePoints > 0)} do {
+    while {count _codePoints > 0} do {
         // Match against constants
         private _rmatch = flatten (((_codePoints select [0, 5]) joinString "") regexFind [_constRegex]);
         if (count _rmatch > 0) then {
             // Ensure match starts at beginning
-            if ((_rmatch # 1) == 0) then {
+            if (_rmatch # 1 == 0) then {
                 switch (_rmatch # 0) do {
                     case "true": {
                         _tokens pushBack [true, [_rowIndex, _columnIndex]];
@@ -158,7 +158,7 @@ private _tokenize = {
         private _cp = _codePoints # 0;
 
         // Match against whitespace
-        if (_cp in _whitespaceArr) then {
+        if (_cp in _whitespaceChars) then {
             // Omit whitespace from tokenized output
             _codePoints deleteAt 0;
             _columnIndex = _columnIndex + 1;
@@ -195,18 +195,18 @@ private _tokenize = {
                 };
 
                 private _rmatch = ((_numberSym + _ncps) regexFind [_numberRegex, 0]);
-                if ((count _rmatch) == 0) then {
-                    throw (format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1]);
+                if (count _rmatch == 0) then {
+                    throw format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1];
                 };
 
                 _rmatch = _rmatch # 0 # 1;
                 if (_rmatch # 1 != 0) then {
                     // Regex match must be at the beginning to denote a valid number
-                    throw (format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1]);
+                    throw format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1];
                 };
 
                 private _nextNumberSym = _rmatch # 0;
-                private _newCodePointCount = (count _nextNumberSym) - _numberExtent;
+                private _newCodePointCount = count _nextNumberSym - _numberExtent;
 
                 if (_newCodePointCount == 0) then {
                     // We're at the end of our number since we haven't made any forward progress
@@ -219,7 +219,7 @@ private _tokenize = {
 
             // Reject case where the match is a single minus sign
             if (_numberSym == "-") then {
-                throw (format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1]);
+                throw format ["invalid number token at %1:%2", _rowIndex + 1, _columnIndex + 1];
             };
 
             _tokens pushBack [parseNumber _numberSym, [_rowIndex, _columnIndex]];
@@ -240,14 +240,14 @@ private _tokenize = {
 
                 if (isNil "_ncp") then {
                     // End of input reached before string terminated
-                    throw (format ["unterminated string token at %1:%2", _rowIndex + 1, _columnIndex + 1]);
+                    throw format ["unterminated string token at %1:%2", _rowIndex + 1, _columnIndex + 1];
                 };
 
                 _strExtent = _strExtent + 1;
 
                 if (_currentlyEscaping) then {
                     if (!(_ncp in _strEscapeMap) && _ncp != "u") then {
-                        throw (format ["invalid string escape char '%1' at %2:%3", _ncp, _rowIndex + 1, _columnIndex + _strExtent]);
+                        throw format ["invalid string escape char '%1' at %2:%3", _ncp, _rowIndex + 1, _columnIndex + _strExtent];
                     };
 
                     if (_ncp in _strEscapeMap) then {
@@ -256,15 +256,15 @@ private _tokenize = {
                         private _hexStr = _codePoints select [_strExtent, 4];
                         _strExtent = _strExtent + 4;
 
-                        if (!((_hexStr joinString "") regexMatch _hexStrRegex)) then {
+                        if !((_hexStr joinString "") regexMatch _hexStrRegex) then {
                             // Invalid hex string
-                            throw (format ["invalid hex string '%1' at %2:%3", _hexStr, _rowIndex + 1, _columnIndex + 1]);
+                            throw format ["invalid hex string '%1' at %2:%3", _hexStr, _rowIndex + 1, _columnIndex + 1];
                         };
 
                         private _cp = 0;
                         {
                             private _digit = _strHexMap get (toLower _x);
-                            _cp = _cp + (16 ^ ((count _hexStr) - _forEachIndex - 1)) * _digit;
+                            _cp = _cp + (16 ^ (count _hexStr - _forEachIndex - 1)) * _digit;
                         } forEach _hexStr;
 
                         _strSym = _strSym + (toString [_cp]);
@@ -285,7 +285,7 @@ private _tokenize = {
 
                 private _ncpValue = (toArray _ncp) # 0;
                 if (_ncpValue < 0x20 || _ncpValue > 0x10FFFF) then {
-                    throw (format ["invalid string code point at %1:%2", _rowIndex + 1, _columnIndex + _strExtent]);
+                    throw format ["invalid string code point at %1:%2", _rowIndex + 1, _columnIndex + _strExtent];
                 };
 
                 _strSym = _strSym + _ncp;
@@ -297,11 +297,11 @@ private _tokenize = {
             continue;
         };
 
-        throw (format ["unexpected token at %1:%2", _rowIndex + 1, _columnIndex + 1]);
+        throw format ["unexpected token at %1:%2", _rowIndex + 1, _columnIndex + 1];
     };
 
     // Return parsed tokens
-    _tokens;
+    _tokens
 };
 
 /**
@@ -317,9 +317,9 @@ private _shift = {
     if (count _tokens > 0) then {
         // Append token reduction state on to end of each token
         _parseStack pushBack ((_tokens deleteAt 0) + [false]);
-        true;
+        true
     } else {
-        false;
+        false
     };
 };
 
@@ -336,14 +336,14 @@ private _reduce = {
     params [["_parseStack", [], [[]]], ["_reducerState", createHashMap, [createHashMap]]];
 
     if (count _parseStack == 0) exitWith {
-        false;
+        false
     };
 
     // Initialize reducer state if not already initialized
-    if (!("STACK_{" in _reducerState)) then {
+    if !("STACK_{" in _reducerState) then {
         _reducerState set ["STACK_{", []];
     };
-    if (!("STACK_[" in _reducerState)) then {
+    if !("STACK_[" in _reducerState) then {
         _reducerState set ["STACK_[", []];
     };
 
@@ -354,19 +354,19 @@ private _reduce = {
 
     // Handle terminal symbols
     switch (true) do {
-        case ((_topToken # 0) isEqualType 0): {
+        case (_topToken # 0 isEqualType 0): {
             _topToken set [2, true];
         };
 
-        case ((_topToken # 0) isEqualType true): {
+        case (_topToken # 0 isEqualType true): {
             _topToken set [2, true];
         };
 
-        case ((_topToken # 0) isEqualTo objNull): {
+        case (_topToken # 0 isEqualTo objNull): {
             _topToken set [2, true];
         };
 
-        case (((_topToken # 0) select [0, 1]) == "$"): {
+        case ((_topToken # 0 select [0, 1]) == "$"): {
             _topToken set [0, (_topToken # 0) select [1]];
             _topToken set [2, true];
         };
@@ -386,11 +386,11 @@ private _reduce = {
 
         case "}": {
             if (count _objOpenStack == 0) then {
-                throw (format (["invalid '}' token at %1:%2"] + ((_topToken # 1) apply { _x + 1 })));
+                throw format (["invalid '}' token at %1:%2"] + ((_topToken # 1) apply { _x + 1 }));
             };
 
             private _objStart = _objOpenStack deleteAt (count _objOpenStack - 1);
-            private _objLen = (count _parseStack) - _objStart;
+            private _objLen = count _parseStack - _objStart;
 
             private _obj = [] call _createObject;
             private _objEmpty = true;
@@ -402,12 +402,12 @@ private _reduce = {
             {
                 switch (_nextTokenType) do {
                     case 0: {
-                        if (!(_x # 2)) then {
-                            throw (format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 })));
+                        if !(_x # 2) then {
+                            throw format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 }));
                         };
 
-                        if (!(_x # 0 isEqualType "")) then {
-                            throw (format (["invalid key token at %1:%2"] + ((_x # 1) apply { _x + 1 })));
+                        if !(_x # 0 isEqualType "") then {
+                            throw format (["invalid key token at %1:%2"] + ((_x # 1) apply { _x + 1 }));
                         };
 
                         _currentKey = _x # 0;
@@ -415,13 +415,13 @@ private _reduce = {
 
                     case 1: {
                         if (_x # 2 || _x # 0 != ":") then {
-                            throw (format (["missing colon token at %1:%2"] + ((_x # 1) apply { _x + 1 })));
+                            throw format (["missing colon token at %1:%2"] + ((_x # 1) apply { _x + 1 }));
                         };
                     };
 
                     case 2: {
-                        if (!(_x # 2)) then {
-                            throw (format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 })));
+                        if !(_x # 2) then {
+                            throw format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 }));
                         };
 
                         [_obj, _currentKey, _x # 0] call _objectSet;
@@ -430,7 +430,7 @@ private _reduce = {
 
                     case 3: {
                         if (_x # 2 || _x # 0 != ",") then {
-                            throw (format (["missing comma token at %1:%2"] + ((_x # 1) apply { _x + 1 })));
+                            throw format (["missing comma token at %1:%2"] + ((_x # 1) apply { _x + 1 }));
                         };
                     };
                 };
@@ -441,16 +441,16 @@ private _reduce = {
             // Validate object definition state machine is in correct final state
             if (_objEmpty) then {
                 if (_nextTokenType != 0) then {
-                    throw (format (["incomplete object definition at %1:%2"] + ((_topToken # 1) apply { _x + 1 })));
+                    throw format (["incomplete object definition at %1:%2"] + ((_topToken # 1) apply { _x + 1 }));
                 };
             } else {
                 if (_nextTokenType == 0) then {
                     private _commaToken = _parseStack select -2;
-                    throw (format (["extraneous comma at %1:%2"] + ((_commaToken # 1) apply { _x + 1 })));
+                    throw format (["extraneous comma at %1:%2"] + ((_commaToken # 1) apply { _x + 1 }));
                 };
 
                 if (_nextTokenType != 3) then {
-                    throw (format (["incomplete object definition at %1:%2"] + ((_topToken # 1) apply { _x + 1 })));
+                    throw format (["incomplete object definition at %1:%2"] + ((_topToken # 1) apply { _x + 1 }));
                 }
             };
 
@@ -463,26 +463,26 @@ private _reduce = {
 
         case "]": {
             if (count _arrOpenStack == 0) then {
-                throw (format (["invalid ']' token at %1:%2"] + ((_topToken # 1) apply { _x + 1 })));
+                throw format (["invalid ']' token at %1:%2"] + ((_topToken # 1) apply { _x + 1 }));
             };
 
             private _arrStart = _arrOpenStack deleteAt (count _arrOpenStack - 1);
-            private _arrLen = (count _parseStack) - _arrStart;
+            private _arrLen = count _parseStack - _arrStart;
 
             private _arr = [];
             private _nextTokenItem = true;
 
             {
                 if (_nextTokenItem) then {
-                    if (!(_x # 2)) then {
-                        throw (format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 })));
+                    if !(_x # 2) then {
+                        throw format (["invalid '%1' token at %2:%3", _x # 0] + ((_x # 1) apply { _x + 1 }));
                     };
 
                     _arr pushBack (_x # 0);
                     _nextTokenItem = false;
                 } else {
                     if (_x # 2 || _x # 0 != ",") then {
-                        throw (format (["missing comma at %1:%2"] + ((_x # 1) apply { _x + 1 })));
+                        throw format (["missing comma at %1:%2"] + ((_x # 1) apply { _x + 1 }));
                     };
 
                     _nextTokenItem = true;
@@ -491,7 +491,7 @@ private _reduce = {
 
             if (_nextTokenItem && count _arr > 0) then {
                 private _commaToken = _parseStack select -2;
-                throw (format (["extraneous comma at %1:%2"] + ((_commaToken # 1) apply { _x + 1 })));
+                throw format (["extraneous comma at %1:%2"] + ((_commaToken # 1) apply { _x + 1 }));
             };
 
             private _arrToken = _parseStack # _arrStart;
@@ -512,8 +512,8 @@ private _reduce = {
 private _parse = {
     params [["_jsonStr", objNull, [""]]];
 
-    if (!(_jsonStr isEqualType "")) exitWith {
-        objNull;
+    if !(_jsonStr isEqualType "") exitWith {
+        objNull
     };
 
     private _tokens = [_jsonStr] call _tokenize;
@@ -526,7 +526,7 @@ private _parse = {
     private _reducerState = createHashMap;
 
     while {true} do {
-        if (!([_parseStack, _tokens] call _shift)) then {
+        if !([_parseStack, _tokens] call _shift) then {
             break;
         };
 
@@ -535,11 +535,11 @@ private _parse = {
 
     if (count _parseStack > 1) then {
         private _extraneousToken = _parseStack # 1;
-        throw (format (["extraneous '%1' token at %2:%3", _extraneousToken # 0] + ((_extraneousToken # 1) apply { _x + 1 })));
+        throw format (["extraneous '%1' token at %2:%3", _extraneousToken # 0] + ((_extraneousToken # 1) apply { _x + 1 }));
     };
 
     // Extract and return parsed object
-    _parseStack # 0 # 0;
+    _parseStack # 0 # 0
 };
 
 private _jsonValue = [_json] call _parse;
@@ -547,4 +547,4 @@ private _jsonValue = [_json] call _parse;
 // Reset unicode processing
 forceUnicode -1;
 
-_jsonValue;
+_jsonValue
