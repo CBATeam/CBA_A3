@@ -10,7 +10,7 @@ Parameters:
     _args     - Parameters passed to the function executing. This will be the same array every execution. (optional, default: []) <ANY>
 
 Returns:
-    Nothing
+    Nothing Useful
 
 Examples:
     (begin example)
