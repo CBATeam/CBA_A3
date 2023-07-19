@@ -19,7 +19,7 @@ Examples:
     (end)
 
 Author:
-    PabstMirror, johnb43, based on code from Dedmen
+    PabstMirror, based on code from Dedmen
 ---------------------------------------------------------------------------- */
 SCRIPT(compatibleMagazines);
 
@@ -33,35 +33,46 @@ if (isNil QGVAR(magNamespace)) then {
     GVAR(magNamespace) = createHashMap;
 };
 
-+(GVAR(magNamespace) getOrDefaultCall [format ["%1#%2", _weapon, _allMuzzles], {
+private _cacheKey = format ["%1#%2", _weapon, _allMuzzles];
+private _returnMags = GVAR(magNamespace) get _cacheKey;
+
+if (isNil "_returnMags") then {
     if (_allMuzzles) then {
-         // Get all mags from all muzzles
-        private _returnMags = createHashMap;
+        // Get all mags from all muzzles
+        _returnMags = [];
 
         {
             if (_x == "this") then {
-                _returnMags insert [true, _weapon call CBA_fnc_compatibleMagazines, []];
+                _returnMags append (_weapon call CBA_fnc_compatibleMagazines);
             } else {
-                _returnMags insert [true, (_weapon >> _x) call CBA_fnc_compatibleMagazines, []];
+                _returnMags append ((_weapon >> _x) call CBA_fnc_compatibleMagazines);
             };
         } forEach getArray (_weapon >> "muzzles");
 
-        keys _returnMags
+        _returnMags = _returnMags arrayIntersect _returnMags;
     } else {
         // Get mags just for a specific muzzle
         private _cfgMagazines = configFile >> "CfgMagazines";
         private _cfgMagazineWells = configFile >> "CfgMagazineWells";
-        private _returnMags = getArray (_weapon >> "magazines") createHashMapFromArray [];
+
+        _returnMags = getArray (_weapon >> "magazines");
+
+        private _wellConfig = configNull;
 
         {
+            _wellConfig = _cfgMagazineWells >> _x;
+
             {
-                _returnMags insert [true, (getArray _x) apply {configName (_cfgMagazines >> _x)}, []];
-            } forEach configProperties [_cfgMagazineWells >> _x, "isArray _x", false];
+                _returnMags append getArray _x;
+            } forEach configProperties [_wellConfig, "isArray _x", false];
         } forEach (getArray (_weapon >> "magazineWell"));
 
-        // Delete invalid entry
-        _returnMags deleteAt "";
-
-        keys _returnMags
+        _returnMags = _returnMags select {isClass (_cfgMagazines >> _x)};
+        _returnMags = _returnMags apply {configName (_cfgMagazines >> _x)};
+        _returnMags = _returnMags arrayIntersect _returnMags;
     };
-}, true])
+
+    GVAR(magNamespace) set [_cacheKey, _returnMags];
+};
+
++_returnMags
