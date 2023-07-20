@@ -57,10 +57,8 @@ if (isNil "_returnMags") then {
 
         _returnMags = getArray (_weapon >> "magazines");
 
-        private _wellConfig = configNull;
-
         {
-            _wellConfig = _cfgMagazineWells >> _x;
+            private _wellConfig = _cfgMagazineWells >> _x;
 
             {
                 _returnMags append getArray _x;
