@@ -67,7 +67,7 @@ visionModeChanged = "call cba_xeh_fnc_visionModeChanged"; \
 weaponAssembled = "call cba_xeh_fnc_weaponAssembled"; \
 weaponDisassembled = "call cba_xeh_fnc_weaponDisassembled"; \
 weaponDeployed = "call cba_xeh_fnc_weaponDeployed"; \
-weaponRested = "call cba_xeh_fnc_weaponRested"; \
+weaponRested = "call cba_xeh_fnc_weaponRested";
 
 
 /*
@@ -133,4 +133,4 @@ visionModeChanged = ""; \
 weaponAssembled = ""; \
 weaponDisassembled = ""; \
 weaponDeployed = ""; \
-weaponRested = ""; \
+weaponRested = "";

@@ -102,4 +102,4 @@
     "WeaponAssembled", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
-    "WeaponRested", \
+    "WeaponRested"
