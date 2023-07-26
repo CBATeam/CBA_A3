@@ -1293,12 +1293,24 @@ See the make.cfg file for additional build options.
 
                     version_stamp_pboprefix(module,commit_id)
 
-                    if os.path.isfile(nobinFilePath):
+                    skipPreprocessing = False
+                    addonTomlPath = os.path.join(work_drive, prefix, module, "addon.toml")
+                    if os.path.isfile(addonTomlPath):
+                        with open(addonTomlPath, "r") as f:
+                            tomlFile = f.read()
+                            if "preprocess = false" in tomlFile: 
+                                print_error("'preprocess = false' not supported")
+                                raise
+                            skipPreprocessing = "[preprocess]\nenabled = false" in tomlFile
+
+                    if os.path.isfile(os.path.join(work_drive, prefix, module, "$NOBIN$")):
                         print_green("$NOBIN$ Found. Proceeding with non-binarizing!")
                         cmd = [makepboTool, "-P","-A","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
-
+                    elif skipPreprocessing:
+                        print_green("addon.toml set [preprocess.enabled = false]. Proceeding with non-binerized config build!")
+                        cmd = [pboproject, "-B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
                     else:
-                        cmd = [pboproject, "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
+                        cmd = [pboproject, "+B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
 
                     color("grey")
                     if quiet:
