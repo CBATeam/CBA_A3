@@ -97,7 +97,7 @@ Author:
 #endif
 
 #ifndef VERSION_CONFIG
-    #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
+    #define VERSION_CONFIG version = QUOTE(VERSION); versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 #endif
 
 /* -------------------------------------------
