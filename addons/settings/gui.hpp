@@ -73,7 +73,7 @@ class RscDisplayGameOptions {
                     // Disable multiline text to make in unselectable.
                     onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(overwrite_clients)); (_this select 0) ctrlEnable false;);
                     idc = IDC_TXT_OVERWRITE_CLIENT;
-                    style = QUOTE(ST_MULTI + ST_CENTER);
+                    style = ST_MULTI + ST_CENTER;
                     x = QUOTE(POS_W(30));
                     y = QUOTE(POS_H(2));
                     w = QUOTE(POS_W(4));
@@ -510,7 +510,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         };
         class Hours: RscEdit {
             idc = IDC_SETTING_TIME_HOURS;
-            style = QUOTE(ST_CENTER + ST_NO_RECT);
+            style = ST_CENTER + ST_NO_RECT;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
             font = "EtelkaMonospaceProBold";
             x = QUOTE(POS_W(18.25));
@@ -694,7 +694,7 @@ class GVAR(export) {
                     class controls {
                         class Value: RscEdit {
                             idc = IDC_EXPORT_VALUE;
-                            style = QUOTE(ST_MULTI + ST_NO_RECT);
+                            style = ST_MULTI + ST_NO_RECT;
                             colorDisabled[] = {0.95,0.95,0.95,1};
                             colorBackground[] = {1,1,1,0.2};
                             x = QUOTE(POS_W(0));
