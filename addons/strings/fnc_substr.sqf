@@ -4,16 +4,17 @@ Function: CBA_fnc_substr
 
 Description:
     Retrieves a substring of this instance.
-
     The substring starts at a specified character position and has a specified length.
 
+    Reliably supports strings with ANSI characters only.
+
 Parameters:
-    _string - String to extract from [String]
-    _startIndex - Index to start the substring extraction [Number]
-    _length - length of the extracted substring [Number](Optional) if is not set than from _startIndex to end
+    _string     - String to extract from <STRING>
+    _startIndex - Index to start the substring extraction <SCALAR>
+    _length     - Length of the extracted substring, <= 0 means whole string is selected (optional, default: 0) <SCALAR>
 
 Returns:
-    String extracted [String]
+    Extracted string <STRING>
 
 Example:
     (begin example)
@@ -26,10 +27,10 @@ Author:
 --------------------------------------------------------------------------- */
 SCRIPT(substr);
 
-params ["_string", "_startIndex", "_length"];
+params ["_string", "_startIndex", ["_length", 0]];
 
 // Check if _length is set else extract string to end
-if (isNil "_length" || {_length <= 0}) exitWith {_string select [_startIndex];};
+if (_length <= 0) exitWith {_string select [_startIndex]};
 
-// Cut out String
+// Cut out string
 _string select [_startIndex, _length] // return

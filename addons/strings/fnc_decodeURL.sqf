@@ -9,7 +9,7 @@ Parameters:
     _string - URL encoded text <STRING>
 
 Returns:
-    _return - Human readable text <STRING>
+    Human readable text <STRING>
 
 Examples:
     (begin example)
@@ -19,12 +19,14 @@ Examples:
 Author:
     commy2
 ---------------------------------------------------------------------------- */
+SCRIPT(decodeURL);
 
 params [["_string", "", [""]]];
+
 if (_string isEqualTo "") exitWith {""};
 
-private _cache = missionNamespace getVariable [QGVAR(URLCache), objNull];
-private _return = _cache getVariable _string;
+if (isNil QGVAR(URLCache)) then {
+    GVAR(URLCache) = createHashMap;
 
 if (isNil "_return") then {
     _return = _string;
@@ -35,12 +37,8 @@ if (isNil "_return") then {
             _return = ([_return] + _x) call CBA_fnc_replace;
         } forEach UTF8_TABLE;
     };
-    if (isNull _cache) then {
-        _cache = [] call CBA_fnc_createNamespace;
-        missionNamespace setVariable [QGVAR(URLCache), _cache];
-    };
 
-    _cache setVariable [_string, _return];
+    GVAR(URLCache) set [_string, _return];
 };
 
-_return
+_return // return
