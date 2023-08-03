@@ -25,8 +25,6 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(trim);
 
-forceUnicode 0;
-
 params ["_string", ["_trim", "", [""]]];
 
 // Trim all whitespace characters by default
