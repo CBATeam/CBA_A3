@@ -30,7 +30,9 @@ SCRIPT(substr);
 params ["_string", "_startIndex", ["_length", 0]];
 
 // Check if _length is set else extract string to end
-if (_length <= 0) exitWith {_string select [_startIndex]};
+if (_length <= 0) exitWith {
+    _string select [_startIndex] // return
+};
 
 // Cut out string
 _string select [_startIndex, _length] // return
