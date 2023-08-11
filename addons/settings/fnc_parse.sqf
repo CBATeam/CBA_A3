@@ -56,13 +56,13 @@ private _whitespace = WHITESPACE;
     _setting = (_x select [0, _indexEqualSign]) trim [_whitespace, 2];
     _priority = 0;
 
-    // Check if the first entry is "force" and not followed by whitespace
+    // Check if the first entry is "force" and followed by whitespace
     if (_setting select [0, _countForce] == "force" && {(_setting select [_countForce, 1]) in _whitespace}) then {
         _setting = (_setting select [_countForce]) trim [_whitespace, 1];
         _priority = _priority + 1;
     };
 
-    // Check if the second entry is "force" and not followed by whitespace
+    // Check if the second entry is "force" and followed by whitespace
     if (_setting select [0, _countForce] == "force" && {(_setting select [_countForce, 1]) in _whitespace}) then {
         _setting = (_setting select [_countForce]) trim [_whitespace, 1];
         _priority = _priority + 1;
