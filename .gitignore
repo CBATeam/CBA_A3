@@ -29,3 +29,4 @@ tools/ndocs-project/Data/*
 
 ArmaScriptCompiler.exe
 *.sqfc
+sqfvm.exe
