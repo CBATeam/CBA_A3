@@ -432,7 +432,7 @@ class CfgVehicles {
     class Lantern_01_base_F: ThingX {
         XEH_ENABLED;
     };
-    class SpaceshipCapsule_01_F: ThingX{
+    class SpaceshipCapsule_01_F: ThingX {
         XEH_ENABLED;
     };
 
