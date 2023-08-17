@@ -428,6 +428,14 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    // Decade (2.14)
+    class Lantern_01_base_F: ThingX {
+        XEH_ENABLED;
+    };
+    class SpaceshipCapsule_01_F: ThingX {
+        XEH_ENABLED;
+    };
+
     // SOG PF
     class vn_object_b_base_02: Items_base_F {};
     class Land_vn_candle_01: vn_object_b_base_02 {
