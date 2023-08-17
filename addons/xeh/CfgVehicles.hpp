@@ -329,11 +329,20 @@ class CfgVehicles {
     class gm_logistics_object_base: gm_object_base {
         XEH_ENABLED;
     };
+    class gm_deployablebridge_base: gm_logistics_object_base {
+        XEH_ENABLED;
+    };
 
     class gm_staticWeapon_base: StaticWeapon {};
     class gm_staticMG_base: gm_staticWeapon_base {};
     class gm_mg3_aatripod_base: gm_staticMG_base {};
     class gm_mg3_aatripod_empty: gm_mg3_aatripod_base {
+        XEH_ENABLED;
+    };
+
+    class ModuleOrdnanceRocket_F;
+    class gm_ModuleOrdnanceRocket_base: ModuleOrdnanceRocket_F {};
+    class gm_ModuleOrdnanceRocket_rocket_luna_nuc_3r10: gm_ModuleOrdnanceRocket_base {
         XEH_ENABLED;
     };
 
@@ -416,6 +425,125 @@ class CfgVehicles {
 
     // AOW (2.02)
     class GalleryDioramaUnit_01_base_F: Items_base_F {
+        XEH_ENABLED;
+    };
+
+    // SOG PF
+    class vn_object_b_base_02: Items_base_F {};
+    class Land_vn_candle_01: vn_object_b_base_02 {
+        XEH_ENABLED;
+    };
+
+    class vn_krait: Snake_random_F {
+        XEH_ENABLED;
+    };
+
+    class vn_parachute_base: ParachuteBase {
+        XEH_ENABLED;
+    };
+
+    class vn_parachute_02_base: ParachuteBase {};
+    class vn_b_parachute_02: vn_parachute_02_base {};
+    class vn_b_parachute_02_blu82: vn_b_parachute_02 {};
+    class vn_b_parachute_02_blu82_airdrop: vn_b_parachute_02_blu82 {
+        XEH_ENABLED;
+    };
+
+    class vn_o_static_rsna75_wreck: PlaneWreck {
+        XEH_ENABLED;
+    };
+
+    // CSLA
+    class StaticATWeapon;
+    class CSLA_9K113_Stat: StaticATWeapon {
+        XEH_ENABLED;
+    };
+
+    class CSLA_M52_Stat: Mortar_01_base_F {
+        XEH_ENABLED;
+    };
+
+    class CSLA_CIV_AN2_wreck: PlaneWreck {
+        XEH_ENABLED;
+    };
+
+    class CSLA_Plane_base_F: Plane_Base_F {};
+    class CSLA_CIV_Plane_base_F: CSLA_Plane_base_F {};
+    class CSLA_CIV_Plane_base: CSLA_CIV_Plane_base_F {
+        XEH_ENABLED;
+    };
+
+    class StaticMGWeapon;
+    class CSLA_UK59L_Stat: StaticMGWeapon {
+        XEH_ENABLED;
+    };
+
+    class CSLA_UK59T_Stat: StaticMGWeapon {
+        XEH_ENABLED;
+    };
+
+    class US85_M252_Stat: Mortar_01_base_F {
+        XEH_ENABLED;
+    };
+
+    // Western Sahara
+    class Land_PowerPoleWooden_lxWS: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerPoleWooden_L_lxWS: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+    class Land_PowerPoleWooden_L_off_lxWS: PowerLines_Small_base_F {
+        XEH_ENABLED;
+    };
+
+    class Site_Camels_lxWS: Module_F {
+        XEH_ENABLED;
+    };
+
+    class C_Journalist_lxWS: C_journalist_F {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
+        XEH_ENABLED;
+    };
+    
+    class C_Man_casual_1_F_afro;
+    class C_Tak_01_A_lxWS: C_Man_casual_1_F_afro {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
+        XEH_ENABLED;
+    };
+    
+    class B_Soldier_TL_F;
+    class B_ION_Story_Givens_lxWS: B_Soldier_TL_F {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
+        XEH_ENABLED;
+    };
+
+    class B_Soldier_F;
+    class I_PMC_Soldier_01_lxWS: B_Soldier_F {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
+    };
+    class I_PMC_Story_Gustavo_lxWS: I_PMC_Soldier_01_lxWS {
+        XEH_ENABLED;
+    };
+
+    class I_SFIA_officer_lxWS: I_officer_F {
+        scope = "1 + parseNumber isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')";
+    };
+    class I_SFIA_Said_lxWS: I_SFIA_officer_lxWS {
+        XEH_ENABLED;
+    };
+
+    class Truck_02_base_F;
+    class Truck_02_cargo_base_lxWS: Truck_02_base_F {
+        XEH_ENABLED;
+    };
+    class Truck_02_box_base_lxWS: Truck_02_base_F {
+        XEH_ENABLED;
+    };
+    class Truck_02_Ammo_base_lxWS: Truck_02_base_F {
+        XEH_ENABLED;
+    };
+    class Truck_02_aa_base_lxWS: Truck_02_base_F {
         XEH_ENABLED;
     };
 };

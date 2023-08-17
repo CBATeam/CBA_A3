@@ -12,7 +12,7 @@ Parameters:
     _unit   - the unit or vehicle <OBJECT>
     _item   - name of the magazine to add <STRING>
     _ammo   - ammo count <NUMBER>
-    _verify - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -49,7 +49,7 @@ if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
 };
 
 if (_verify) then {
-    if (_unit canAdd _item) then {
+    if ([_unit, _item, 1, true, true, true] call CBA_fnc_canAddItem) then {
         if (_ammo < 0) then {
             _unit addMagazine [_item, 1E6]; // addMagazine STRING is not synched when used on remote units. addMagazine ARRAY is.
         } else {
@@ -58,16 +58,21 @@ if (_verify) then {
 
         _return = true;
     } else {
-        _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+        private _vehicle = vehicle _unit;
+        if (_vehicle isEqualTo _unit) then {
+            _unit switchMove "ainvpknlmstpslaywrfldnon_1";
 
-        private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
+            private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
-        if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
-            _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
-            _weaponHolder setPosASL getPosASL _unit;
+            if (isNull _weaponHolder || {_unit distance _weaponHolder > 2}) then {
+                _weaponHolder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "NONE"];
+                _weaponHolder setPosASL getPosASL _unit;
+            };
+
+            [_weaponHolder, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
+        } else {
+            [_vehicle, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
         };
-
-        [_weaponHolder, _item] call CBA_fnc_addMagazineCargo;
     };
 } else {
     if (_ammo < 0) then {

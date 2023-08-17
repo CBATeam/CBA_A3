@@ -26,7 +26,7 @@ SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", fals
 XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
-SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compile preprocessFileLineNumbers _this"; //backwards compat
+SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compileScript [_this]"; //backwards compat
 SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 SLX_XEH_DUMMY = "Logic"; // backwards comp
 

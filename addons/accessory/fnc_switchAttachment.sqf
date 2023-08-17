@@ -6,7 +6,7 @@ Description:
     Switches weapon accessories for the player.
 
 Parameters:
-    0: _itemType         - Attachment type (0: muzzle, 1: rail, 2: optic). <NUMBER>
+    0: _itemType         - Attachment type (0: muzzle, 1: rail, 2: optic, 3: bipod). <NUMBER>
     1: _switchTo         - Switch to "next" or "prev" attachement <STRING>
 
 Returns:
@@ -23,6 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_itemType", "_switchTo"];
+if (!isNull curatorCamera) exitWith {};
 
 private ["_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;
