@@ -25,6 +25,18 @@ SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", fals
 
 XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
+#ifdef RECOMPILE
+if (isNil "CBA_fnc_compileFunction") then {
+    INFO("Recompiling all CBA Functions [for use in threeden]");
+    { 
+        { 
+            private _fncName = format ["CBA_fnc_%1", configName _x]; 
+            _fncName call BIS_fnc_recompile; 
+        } forEach (configProperties [_x]); 
+    } forEach (configProperties [configFile >> "CfgFunctions" >> "CBA"]); 
+};
+#endif
+
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
 SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compileScript [_this]"; //backwards compat
 SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
