@@ -404,4 +404,12 @@ class CfgVehicles {
     class GalleryDioramaUnit_01_base_F: Items_base_F {
         XEH_ENABLED;
     };
+
+    // Decade (2.14)
+    class Lantern_01_base_F: ThingX {
+        XEH_ENABLED;
+    };
+    class SpaceshipCapsule_01_F: ThingX {
+        XEH_ENABLED;
+    };
 };
