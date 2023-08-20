@@ -16,6 +16,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "cba_xeh", "data_f_lxWS" };
+        skipWhenMissingDependencies = 1;
         author = "$STR_CBA_Author";
         VERSION_CONFIG;
         // this prevents any patched class from requiring XEH
@@ -25,6 +26,7 @@ class CfgPatches {
 class XEH_CLASS_BASE;
 
 class CfgVehicles {
+    class PowerLines_Small_base_F;
     class Land_PowerPoleWooden_lxWS: PowerLines_Small_base_F {
         XEH_ENABLED;
     };
@@ -35,10 +37,12 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class Module_F;
     class Site_Camels_lxWS: Module_F {
         XEH_ENABLED;
     };
 
+    class C_journalist_F;
     class C_Journalist_lxWS: C_journalist_F {
         XEH_ENABLED;
     };
@@ -60,6 +64,7 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
+    class I_officer_F;
     class I_SFIA_officer_lxWS: I_officer_F {
     };
     class I_SFIA_Said_lxWS: I_SFIA_officer_lxWS {

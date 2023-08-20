@@ -16,6 +16,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "cba_xeh", "A3_Data_F_Contact" };
+        skipWhenMissingDependencies = 1;
         author = "$STR_CBA_Author";
         VERSION_CONFIG;
         // this prevents any patched class from requiring XEH
