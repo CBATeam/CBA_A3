@@ -39,4 +39,10 @@ while {
 } do {};
 
 _forward = _forward + _backward;
-_forward arrayIntersect _forward // return
+_forward = _forward arrayIntersect _forward;
+_forward select {
+    private _item = _x;
+    private _useageArray = GVAR(usageHash) getOrDefault [_x, []];
+    (_useageArray findIf {([_item] call _x) isEqualTo false}) == -1 // none returned false
+} // return
+

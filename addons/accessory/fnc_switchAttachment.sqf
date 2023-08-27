@@ -41,17 +41,28 @@ private _currWeaponType = call {
 };
 if (_currWeaponType < 0) exitWith {false};
 
-#define __cfgWeapons configfile >> "CfgWeapons"
-#define __currItem __cfgWeapons >> _currItem
+private _cfgWeapons = configfile >> "CfgWeapons";
 
-// Get the next/previous item from the attachement's config, but ignore inherited values
-private _configs = if (_switchTo == "next") then {
-    configProperties [__currItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
-} else {
-    configProperties [__currItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
-};
-if (_configs isNotEqualTo []) then {
-    _switchItem = getText (_configs select 0);
+private _testItem = _currItem;
+while {_testItem != ""} do {
+    // Get the next/previous item from the attachement's config, but ignore inherited values
+    private _configs = if (_switchTo == "next") then {
+        configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
+    } else {
+        configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
+    };
+    
+    if (_configs isEqualTo []) then {
+        _testItem = "";
+    } else {
+        _testItem = getText (_configs select 0);
+        if (_testItem == "") exitWith {};
+        if (_testItem == _currItem) exitWith { _testItem = ""; }; // same as start (full loop)
+        private _useageArray = GVAR(usageHash) getOrDefault [_testItem, []];
+        if ((_useageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
+            _switchItem = _testItem;
+        };
+    };
 };
 TRACE_3("",_currItem,_switchTo,_switchItem);
 
@@ -82,8 +93,8 @@ if (!isNil "_switchItem") then {
             }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
     };
-    private _switchItemHintText = getText (__cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
-    private _switchItemHintImage = getText (__cfgWeapons >> _switchItem >> "picture");
+    private _switchItemHintText = getText (_cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
+    private _switchItemHintImage = getText (_cfgWeapons >> _switchItem >> "picture");
     if (_switchItemHintText isNotEqualTo "") then {
         [[_switchItemHintImage, 2.0], [_switchItemHintText], true] call CBA_fnc_notify;
     };
