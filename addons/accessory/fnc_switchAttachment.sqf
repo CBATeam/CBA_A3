@@ -93,8 +93,9 @@ if (!isNil "_switchItem") then {
             }, [_unit, _currItem, _switchItem, _currWeaponType]] call CBA_fnc_execNextFrame;
         };
     };
-    private _switchItemHintText = getText (_cfgWeapons >> _switchItem >> "MRT_SwitchItemHintText");
-    private _switchItemHintImage = getText (_cfgWeapons >> _switchItem >> "picture");
+    private _configSwitchItem = _cfgWeapons >> _switchItem;
+    private _switchItemHintText = getText (_configSwitchItem >> "MRT_SwitchItemHintText");
+    private _switchItemHintImage = getText (_configSwitchItem >> "picture");
     if (_switchItemHintText isNotEqualTo "") then {
         [[_switchItemHintImage, 2.0], [_switchItemHintText], true] call CBA_fnc_notify;
     };

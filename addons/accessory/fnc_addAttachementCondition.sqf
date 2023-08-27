@@ -3,7 +3,7 @@
 Function: CBA_fnc_addAttachementCondition
 
 Description:
-    Adds condition to be able to swtich to a attachement.
+    Adds condition to be able to switch to an attachment.
 
 Parameters:
     0: _item - Attachment classname <STRING>
@@ -25,5 +25,5 @@ params [["_item", "", [""]], ["_condition", {true}, [{}]]];
 
 if (!isClass (configfile >> "CfgWeapons" >> _item)) exitWith { ERROR_1("Item not found [%1]", _item); };
 
-private _useageArray = GVAR(usageHash) getOrDefault [_item, [], true];
-_useageArray pushBack _condition;
+private _usageArray = GVAR(usageHash) getOrDefault [_item, [], true];
+_usageArray pushBack _condition;
