@@ -58,8 +58,8 @@ while {_testItem != ""} do {
         _testItem = getText (_configs select 0);
         if (_testItem == "") exitWith {};
         if (_testItem == _currItem) exitWith { _testItem = ""; }; // same as start (full loop)
-        private _useageArray = GVAR(usageHash) getOrDefault [_testItem, []];
-        if ((_useageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
+        private _usageArray = GVAR(usageHash) getOrDefault [_testItem, []];
+        if ((_usageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
             _switchItem = _testItem;
         };
     };
