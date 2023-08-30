@@ -1,6 +1,6 @@
-#include "\x\cba\addons\ee\script_component.hpp"
+#include "\x\cba\addons\xeh\script_component.hpp"
 #undef COMPONENT
-#define COMPONENT ee_compat_csla
+#define COMPONENT xeh_compat_csla
 
 #if __has_include("\csla_cfg\config.bin")
 #else
@@ -8,7 +8,7 @@
 #endif
 
 #ifdef PATCH_SKIP
-CBA_EE_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
+CBA_XEH_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
 #else
 class CfgPatches {
     class ADDON {

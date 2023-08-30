@@ -38,6 +38,16 @@
 
 #include "script_xeh.hpp"
 
+// macro add a dummy cfgPatch - this macro may be removed after 2.14 cleanup!
+#define CBA_XEH_PATCH_NOT_LOADED(NAME,CAUSE) \
+class CfgPatches { \
+    class DOUBLES(NAME,notLoaded) { \
+        units[] = {}; \
+        weapons[] = {}; \
+        cba_not_loaded = CAUSE; \
+    }; \
+};
+
 #undef XEH_ENABLED
 #define XEH_ENABLED class EventHandlers {class XEH_CLASS: XEH_CLASS_BASE {};}; SLX_XEH_DISABLED = 0
 

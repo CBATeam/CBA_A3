@@ -1,6 +1,6 @@
-#include "\x\cba\addons\ee\script_component.hpp"
+#include "\x\cba\addons\xeh\script_component.hpp"
 #undef COMPONENT
-#define COMPONENT ee_compat_contact
+#define COMPONENT xeh_compat_contact
 
 #if __has_include("\a3\Data_F_Contact\config.bin")
 #else
@@ -8,7 +8,7 @@
 #endif
 
 #ifdef PATCH_SKIP
-CBA_EE_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
+CBA_XEH_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
 #else
 class CfgPatches {
     class ADDON {
