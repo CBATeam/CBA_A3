@@ -2,14 +2,6 @@
 #undef COMPONENT
 #define COMPONENT xeh_compat_ws
 
-#if __has_include("\lxWS\data_f_lxWS\config.bin")
-#else
-#define PATCH_SKIP "Western Sahara"
-#endif
-
-#ifdef PATCH_SKIP
-CBA_XEH_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
-#else
 class CfgPatches {
     class ADDON {
         units[] = {};
@@ -85,5 +77,3 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 };
-
-#endif

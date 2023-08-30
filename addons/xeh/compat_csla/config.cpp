@@ -2,14 +2,6 @@
 #undef COMPONENT
 #define COMPONENT xeh_compat_csla
 
-#if __has_include("\csla_cfg\config.bin")
-#else
-#define PATCH_SKIP "CSLA - Iron Curtain"
-#endif
-
-#ifdef PATCH_SKIP
-CBA_XEH_PATCH_NOT_LOADED(ADDON,PATCH_SKIP)
-#else
 class CfgPatches {
     class ADDON {
         units[] = {};
@@ -61,5 +53,3 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 };
-
-#endif
