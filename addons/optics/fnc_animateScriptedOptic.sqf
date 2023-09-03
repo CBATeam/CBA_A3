@@ -73,6 +73,15 @@ if (cameraView == "GUNNER") then {
 // Add magnification to zeroing control.
 private _zoom = 0.25 call CBA_fnc_getFov select 1;
 
+// To avoid flickering of the magnification text, cache magnification and only modify magnification if change is big enough
+if (abs (GVAR(magnificationCache) - _zoom) <= 0.005) then {
+    _zoom = GVAR(magnificationCache);
+} else {
+    if (_zoom >= 1) then {
+        GVAR(magnificationCache) = _zoom;
+    };
+};
+
 _ctrlMagnification ctrlSetText format [
     "(%1x)",
     [_zoom, 1, 1] call CBA_fnc_formatNumber
@@ -129,10 +138,6 @@ _ctrlBodyNight ctrlSetAngle [_bank, 0.5, 0.5];
 
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
-
-if (_zoom >= 1) then {
-    GVAR(magnificationCache) = _zoom;
-};
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
