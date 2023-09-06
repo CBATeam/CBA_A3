@@ -9,6 +9,12 @@ class CfgWeapons {
         magazineWell[] += {"CBA_556x45_GALIL"};
     };
 
+    class Rifle_Long_Base_F;
+
+    class LMG_S77_base_lxWS: Rifle_Long_Base_F {
+        magazineWell[] += {"CBA_762x51_LINKS"};
+    };
+
     class arifle_SPAR_01_base_F;
 
     class arifle_XMS_Base_lxWS: arifle_SPAR_01_base_F {
