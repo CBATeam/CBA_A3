@@ -4,6 +4,8 @@ if (!hasInterface) exitWith {};
 
 #include "XEH_PREP.sqf"
 
+GVAR(usageHash) = createHashMap;
+
 [ELSTRING(common,WeaponsCategory), "MRT_SwitchItemNextClass_R", [LSTRING(railNext), LSTRING(railNext_tooltip)], {
     [1, "next"] call FUNC(switchAttachment) // return
 }, {}, [DIK_L, [false, true, false]]] call CBA_fnc_addKeybind;

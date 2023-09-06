@@ -1,11 +1,9 @@
 release/*
 releases/*
 keys/*
+.hemttout
 hemtt
 hemtt.exe
-tools/hemtt*.tar.gz*
-tools/hemtt*.zip*
-.hemtt/local
 *.cache
 *.pbo
 texHeaders.bin
@@ -18,6 +16,7 @@ Thumbs.db
 /store/wiki/*
 .vscode/*
 
+*.zip
 *.7z
 
 /addons/CBA_Project.sublime-workspace
@@ -29,3 +28,4 @@ tools/ndocs-project/Data/*
 
 ArmaScriptCompiler.exe
 *.sqfc
+sqfvm.exe

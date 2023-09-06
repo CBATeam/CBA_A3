@@ -12,7 +12,7 @@ Parameters:
     _unit   - the unit or vehicle <OBJECT>
     _item   - name of the magazine to add <STRING>
     _ammo   - ammo count <NUMBER>
-    _verify - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -69,9 +69,9 @@ if (_verify) then {
                 _weaponHolder setPosASL getPosASL _unit;
             };
 
-            _return = [_weaponHolder, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
+            [_weaponHolder, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
         } else {
-            _return = [_vehicle, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
+            [_vehicle, _item, 1, _verify, _ammo] call CBA_fnc_addMagazineCargo;
         };
     };
 } else {

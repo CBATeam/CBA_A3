@@ -120,15 +120,15 @@ if (IS_STRING(_pos)) then {
             private _check = _start;
             private _minus = 0;
             while {_check == _start} do {
-                _check = format["%1", mapGridPosition [0, _minus]];
                 _minus = _minus - 1;
+                _check = format["%1", mapGridPosition [0, _minus]];
             };
             _rvOriginY = _rvOriginY+(abs _minus)-1;
             _minus = 0;
             _check = _start;
             while {_check == _start} do {
-                _check = format["%1", mapGridPosition [_minus, 0]];
                 _minus = _minus - 1;
+                _check = format["%1", mapGridPosition [_minus, 0]];
             };
             _rvOriginX = _rvOriginX+(abs _minus)-1;
         };
