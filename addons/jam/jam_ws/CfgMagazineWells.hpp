@@ -105,7 +105,7 @@ class CfgMagazineWells {
     class CBA_762x51_FAL {
         WS_mags[] = {
             "20Rnd_762x51_slr_lxWS",
-            "20Rnd_762x51_slr_desert_lxWS"
+            "20Rnd_762x51_slr_desert_lxWS",
             "20Rnd_762x51_slr_desert_reload_tracer_green_lxWS",
             "20Rnd_762x51_slr_desert_tracer_green_lxWS",
             "20Rnd_762x51_slr_reload_tracer_green_lxWS",
@@ -139,13 +139,13 @@ class CfgMagazineWells {
         WS_mags[] = {
             "10Rnd_Mk14_762x51_Mag_blk_lxWS",
             "10Rnd_Mk14_762x51_Mag_snake_lxWS"
-        }
+        };
     };
 
     class CBA_762x51_MkI_EMR {
         WS_mags[] = {
             "20Rnd_762x51_Mag_blk_lxWS",
             "20Rnd_762x51_Mag_snake_lxWS"
-        }
+        };
     };
 };
