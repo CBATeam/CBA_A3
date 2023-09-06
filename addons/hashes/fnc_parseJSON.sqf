@@ -87,7 +87,7 @@ private _tokenize = {
     _input = toArray _input apply {toString [_x]};
 
     private _tokens  = [];
-    private _numeric = "+-.0123456789e" splitString "";
+    private _numeric = "+-.0123456789eE" splitString "";
     private _symbols = "{}[]:," splitString "";
     private _consts  = "tfn" splitString "";
 

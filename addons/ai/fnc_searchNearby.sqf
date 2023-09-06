@@ -66,6 +66,7 @@ if ((leader _group) distanceSqr _building > 250e3) exitwith {};
                 sleep 2;
             };
         } forEach _units;
+        sleep 0.25;
     };
     _group lockWP false;
 };
