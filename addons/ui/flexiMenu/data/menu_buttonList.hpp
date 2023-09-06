@@ -9,8 +9,8 @@
 #define _LBH 0.033 * safeZoneH // list button height
 #define _gapH 0.01 * safeZoneH
 #define _buttonsBeforeCenter 7 // buttons above screen centre, allowing menu to appear centred.
-#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 // BIS mid green (button over colour)
-#define _captionColorFG 138 / 256, 146 / 256, 105 / 256 // BIS greenish text
+#define _captionColorBG "58 / 256", "80 / 256", "55 / 256" // BIS mid green (button over colour)
+#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" // BIS greenish text
 #define _captionHgt 0.75
 
 class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
@@ -22,8 +22,8 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     class objects {};
 
     // custom flexiMenu properties
-    flexiMenu_primaryMenuControlWidth = _BW;
-    flexiMenu_subMenuControlWidth = _SMW;
+    flexiMenu_primaryMenuControlWidth = QUOTE(_BW);
+    flexiMenu_subMenuControlWidth = QUOTE(_SMW);
     flexiMenu_subMenuCaptionWidth = 0.40;
 
     //#include "common_listClass.hpp"
@@ -32,11 +32,11 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     class listButton: _flexiMenu_RscShortcutButton {
         x = 0.5;
         y = 0.5;
-        w = 0; //_SMW; // hide initially
-        //w = _SMW;
-        h = _LBH;
-        sizeEx = _LBH;
-        size = _LBH * 0.75;
+        w = 0; //QUOTE(_SMW); // hide initially
+        //w = QUOTE(_SMW);
+        h = QUOTE(_LBH);
+        sizeEx = QUOTE(_LBH);
+        size = QUOTE(_LBH * 0.75);
 
         color[] = {_captionColorFG, 1};
         color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
@@ -65,12 +65,12 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     };
 
     class button: _flexiMenu_RscShortcutButton {
-        x = _SX-_BW;
-        y = _SY;
-        w = 0; //_BW; // hide initially
-        h = _BH;
-        sizeEx = _BH;
-        size = _BH * 0.75;
+        x = QUOTE(_SX-_BW);
+        y = QUOTE(_SY);
+        w = 0; //QUOTE(_BW); // hide initially
+        h = QUOTE(_BH);
+        sizeEx = QUOTE(_BH);
+        size = QUOTE(_BH * 0.75);
 
         color[] = {_captionColorFG, 1};
         color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
@@ -102,19 +102,19 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     class controls {
         class caption: rscText {
             idc = _flexiMenu_IDC_menuDesc;
-            x = _SX - _BW;
-            y = _SY - _buttonsBeforeCenter * _BH - _gapH - _BH * _captionHgt;
-            w = 0.50 * safeZoneW;
-            h = _BH * _captionHgt;
-            sizeEx = _BH * _captionHgt;
+            x = QUOTE(_SX - _BW);
+            y = QUOTE(_SY - _buttonsBeforeCenter * _BH - _gapH - _BH * _captionHgt);
+            w = QUOTE(0.50 * safeZoneW);
+            h = QUOTE(_BH * _captionHgt);
+            sizeEx = QUOTE(_BH * _captionHgt);
             colorText[] = {_captionColorFG, 1};
             text = "";
         };
 
     #define ExpandMacro_RowControls(ID) \
     class button##ID: button {\
-        idc = _flexiMenu_baseIDC_button + ID;\
-        y = _SY-_buttonsBeforeCenter * _BH + ID * _BH;\
+        idc = QUOTE(_flexiMenu_baseIDC_button + ID);\
+        y = QUOTE(_SY-_buttonsBeforeCenter * _BH + ID * _BH);\
     }
 
         ExpandMacro_RowControls(00);
@@ -138,17 +138,17 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
         //-----------------------
         class caption2: caption {
             idc = _flexiMenu_IDC_listMenuDesc;
-            x = _SX;
-            y = _SY-_buttonsBeforeCenter * _BH + (-1 * _LBH);
+            x = QUOTE(_SX);
+            y = QUOTE(_SY-_buttonsBeforeCenter * _BH + (-1 * _LBH));
             w = 0; // flexiMenu_subMenuCaptionWidth; // hide initially
         };
 
     //#include "common_listControls.hpp"
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
-        idc = _flexiMenu_baseIDC_listButton + ID;\
-        x = _SX;\
-        y = _SY - _buttonsBeforeCenter * _BH + ID * _LBH;\
+        idc = QUOTE(_flexiMenu_baseIDC_listButton + ID);\
+        x = QUOTE(_SX);\
+        y = QUOTE(_SY - _buttonsBeforeCenter * _BH + ID * _LBH);\
     }
 
         ExpandMacro_ListControls(00);

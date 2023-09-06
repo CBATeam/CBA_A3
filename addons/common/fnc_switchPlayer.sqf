@@ -43,13 +43,13 @@ _dummyUnit = (_ar select 4) createUnit [_type, [0, 0, 0], [], 0, "NONE"]; // Joi
 if (isNull _dummyUnit) exitWith { hint "Sorry, something went wrong, dummyUnit is null" };
 [_oldUnit] join _dummyGroup;
 
-LOG_1("1.Dummy created, State saved and put oldUnit in new group: %1", _dummyGroup);
+LOG_1("1.Dummy created, State saved and put oldUnit in new group: %1",_dummyGroup);
 
 private _newUnit = _dummyGroup createUnit [_type, _ar select 5, [], 0, "NONE"];
 
 if (isNull _newUnit) exitWith { hint "Sorry, something went wrong, newUnit is null" };
 
-LOG_1("2.New unit created, local: %1", local _newUnit);
+LOG_1("2.New unit created, local: %1",local _newUnit);
 sleep 1;
 
 addSwitchableUnit _newUnit;
@@ -58,7 +58,7 @@ selectPlayer _newUnit;
 _newUnit setRank (_ar select 2);
 _newUnit addScore (_ar select 3);
 
-LOG_1("3.State transfered, switched player control to new unit, local: %1", local _newUnit);
+LOG_1("3.State transfered, switched player control to new unit, local: %1",local _newUnit);
 sleep 1;
 if (_ar select 7 != "") then
 {
