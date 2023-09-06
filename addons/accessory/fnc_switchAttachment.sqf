@@ -45,7 +45,7 @@ private _cfgWeapons = configfile >> "CfgWeapons";
 
 private _testItem = _currItem;
 while {_testItem != ""} do {
-    // Get the next/previous item from the attachement's config, but ignore inherited values
+    // Get the next/previous item from the attachment's config, but ignore inherited values
     private _configs = if (_switchTo == "next") then {
         configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
     } else {

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addAttachementCondition
+Function: CBA_fnc_addAttachmentCondition
 
 Description:
     Adds condition to be able to switch to an attachment.
@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["ACE_acc_pointer_red", { false }] call CBA_fnc_addAttachementCondition
+        ["ACE_acc_pointer_red", { false }] call CBA_fnc_addAttachmentCondition
     (end)
 
 Author:
