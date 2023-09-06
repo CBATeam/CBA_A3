@@ -412,31 +412,4 @@ class CfgVehicles {
     class SpaceshipCapsule_01_F: ThingX {
         XEH_ENABLED;
     };
-
-    // Spearhead 1944
-
-    class Tank;
-    class SPE_Armored_Target_Dummy: Tank {
-        class EventHandlers {
-            // This class has an empty CBA_Extended_EventHandlers, repopulate with actual event handlers
-            class CBA_Extended_EventHandlers {
-                EXTENDED_EVENTHANDLERS
-            };
-        };
-        SLX_XEH_DISABLED = 0;
-    };
-
-    class SPE_MineObject_base: ModuleEmpty_F {
-        XEH_ENABLED;
-    };
-    class SPE_Minefield_base: SPE_MineObject_base {};
-    class SPE_MINE_TMI42_Field_30x30: SPE_Minefield_base {
-        XEH_ENABLED;
-    };
-    class SPE_MINE_TMI42_Field_70x30: SPE_Minefield_base {
-        XEH_ENABLED;
-    };
-    class SPE_MINE_US_M1A1_ATMINE_Field_30x30: SPE_Minefield_base {
-        XEH_ENABLED;
-    };
 };
