@@ -8,7 +8,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "cba_jam",
-            "CSLA"
+            "CSLA",
+            "US85"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
