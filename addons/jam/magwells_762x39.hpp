@@ -5,10 +5,6 @@
             "30Rnd_762x39_Mag_Tracer_F",
             "30Rnd_762x39_Mag_Tracer_Green_F"
         };
-        VN_mags[] = {
-            "vn_type56_mag",
-            "vn_type56_t_mag"
-        };
     };
 
     class CBA_762x39_CZ807 {};          // 762x39mm CZ 807 magazines
@@ -24,9 +20,4 @@
     class CBA_762x39_VZ58 {};           // 762x39mm VZ58 magazine, cannot be used in AKs or vice versa
 
     class CBA_762x39_SKS {};            // 762x39mm SKS magazines
-    class CBA_762x39_SKS_Clip {         // 762x39mm SKS clip
-        VN_clips[] = {
-            "vn_sks_mag",
-            "vn_sks_t_mag"
-        };
-    };
+    class CBA_762x39_SKS_Clip {};       // 762x39mm SKS clip

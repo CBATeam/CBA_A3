@@ -50,14 +50,6 @@
             "30Rnd_556x45_Stanag_Sand_Tracer_Green",
             "30Rnd_556x45_Stanag_Sand_Tracer_Yellow"
         };
-        VN_mags[] = {
-            "vn_m16_20_mag",
-            "vn_m16_20_t_mag",
-            "vn_m16_30_mag",
-            "vn_m16_30_t_mag",
-            "vn_m16_40_mag",
-            "vn_m16_40_t_mag"
-        };
     };
 
     class CBA_556x45_STANAG_L {};       // STANAG mags, long stick or coffin (40/60 rounds, Magpul PMAG 40, Surefire MAG5-60)

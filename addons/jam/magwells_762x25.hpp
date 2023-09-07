@@ -4,26 +4,7 @@
     class CBA_762x25_PP19 {};       // PP-19 Bizon-2-07
     class CBA_762x25_PPD_Drum {};   // PPD-40 drum magazines
     class CBA_762x25_PPD_Stick {};  // PPD-40 stick magazines
-    class CBA_762x25_PPS {          // PPS-43
-        VN_mags[] = {
-            "vn_pps_mag",
-            "vn_pps_t_mag"
-        };
-    };
-    class CBA_762x25_PPSh_Drum {    // PPSh-41 drum magazines
-        VN_mags[] = {
-            "vn_ppsh41_71_mag",
-            "vn_ppsh41_71_t_mag"
-        };
-    };
-    class CBA_762x25_PPSh_Stick {   // PPSh-41 stick magazines
-        VN_mags[] = {
-            "vn_ppsh41_35_mag",
-            "vn_ppsh41_35_t_mag"
-        };
-    };
-    class CBA_762x25_TT {           // TT-30, TT-33 Tokarev
-        VN_mags[] = {
-            "vn_tt33_mag"
-        };
-    };
+    class CBA_762x25_PPS {};        // PPS-43
+    class CBA_762x25_PPSh_Drum {};  // PPSh-41 drum magazines
+    class CBA_762x25_PPSh_Stick {}; // PPSh-41 stick magazines
+    class CBA_762x25_TT {};         // TT-30, TT-33 Tokarev
