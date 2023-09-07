@@ -116,7 +116,7 @@ class CfgMagazineWells {
     class CBA_762x51_FAL_L {
         WS_mags[] = {
             "30Rnd_762x51_slr_lxWS",
-            "30Rnd_762x51_slr_lxWS_desert",
+            "30Rnd_762x51_slr_desert_lxWS",
             "30Rnd_762x51_slr_desert_reload_tracer_green_lxWS",
             "30Rnd_762x51_slr_desert_tracer_green_lxWS",
             "30Rnd_762x51_slr_reload_tracer_green_lxWS",
