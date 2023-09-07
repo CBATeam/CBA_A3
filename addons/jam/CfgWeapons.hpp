@@ -128,6 +128,4 @@ class CfgWeapons {
     class hgun_ACPC2_F: Pistol_Base_F {
         magazineWell[] += {"CBA_45ACP_1911"};
     };
-
-    #include "CfgWeapons_VN.hpp"
 };
