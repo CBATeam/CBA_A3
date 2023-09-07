@@ -1,5 +1,3 @@
-#if __has_include("\gm\gm_core\config.bin")
-
 #include "script_component.hpp"
 
 class CfgPatches {
@@ -29,10 +27,9 @@ class CfgPatches {
         author = "$STR_CBA_Author";
         authors[] = {};
         url = "$STR_CBA_URL";
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };
 
 #include "CfgWeapons.hpp"
-
-#endif
