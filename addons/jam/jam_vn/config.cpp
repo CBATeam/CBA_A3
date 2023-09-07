@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "cba_jam",
-            "weapons_v_f_vietnam_c"
+            "loadorder_f_vietnam"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
