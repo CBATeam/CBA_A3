@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Validate SQF
       run: python3 tools/sqf_validator.py
     - name: Validate Config
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Lint (sqflint)
       uses: arma-actions/sqflint@master
       continue-on-error: true # No failure due to many false-positives
@@ -34,13 +34,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
-    - name: Build using HEMTT
-      uses: arma-actions/hemtt@master
-      with:
-        command: build --release --ci
+      uses: actions/checkout@v3
+    - name: Setup HEMTT
+      uses: arma-actions/hemtt@v1
+    - name: Run HEMTT build
+      run: hemtt build
+    - name: Rename build folder
+      run: mv .hemttout/build .hemttout/@CBA_A3
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v3
       with:
-        name: CBA_A3-${{ github.sha }}-nobin
-        path: releases/CBA_A3_*.zip
+        name: CBA_A3_${{ github.sha }}-nobin
+        path: .hemttout/@*

@@ -3,7 +3,7 @@
 import os
 import shutil
 
-include_base_path = os.path.join(os.path.dirname(os.getcwd()), "include")
+include_base_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "include")
 p_drive_path = "P:\\"
 
 if not os.path.exists(p_drive_path):
@@ -19,3 +19,4 @@ for root, _dirs, files in os.walk(include_base_path):
         if not os.path.isfile(file_v_path):
             raise Exception("Missing p-drive file {}".format(file_v_path))
         shutil.copyfile(file_v_path, file_r_path)
+        print(f"copying {file_v_path}")
