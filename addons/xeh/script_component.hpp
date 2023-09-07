@@ -43,12 +43,16 @@
 
 #define XEH_EVENTS \
     "AnimChanged", \
-    "AnimStateChanged", \
     "AnimDone", \
+    "AnimStateChanged", \
+    "CargoLoaded", \
+    "CargoUnloaded", \
     "ContainerClosed", \
     "ContainerOpened", \
     "ControlsShifted", \
     "Dammaged", \
+    "Deleted", \
+    "Disassembled", \
     "Engine", \
     "EpeContact", \
     "EpeContactEnd", \
@@ -56,14 +60,16 @@
     "Explosion", \
     "Fired", \
     "FiredBis", \
+    "FiredMan", \
     "FiredNear", \
     "Fuel", \
     "Gear", \
+    "GestureChanged", \
+    "GestureDone", \
     "GetIn", \
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
-    "HandleHeal", \
     "Hit", \
     "HitPart", \
     "IncomingMissile", \
@@ -75,20 +81,23 @@
     "LandedTouchDown", \
     "LandedStopped", \
     "Local", \
-    "Respawn", \
+    "OpticsModeChanged", \
+    "OpticsSwitch", \
     "Put", \
-    "Take", \
+    "Reloaded", \
+    "Respawn", \
+    "RopeAttach", \
+    "RopeBreak", \
     "SeatSwitched", \
     "SeatSwitchedMan", \
+    "SlotItemChanged", \
     "SoundPlayed", \
+    "Suppressed", \
+    "Take", \
+    "TurnIn", \
+    "TurnOut", \
+    "VisionModeChanged", \
     "WeaponAssembled", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
-    "WeaponRested", \
-    "Reloaded", \
-    "FiredMan", \
-    "TurnIn", \
-    "TurnOut", \
-    "Deleted", \
-    "Disassembled", \
-    "Suppressed"
+    "WeaponRested"

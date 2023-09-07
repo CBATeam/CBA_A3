@@ -6,7 +6,7 @@ LOG(MSG_INIT);
 ADDON = false;
 
 #include "XEH_PREP.sqf"
-#include "initSettings.sqf";
+#include "initSettings.sqf"
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
@@ -45,7 +45,7 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
 
         missionNamespace setVariable [_varName, [_statementText, _returnString, _duration]];
         if (_clientID != CBA_clientID) then {
-            publicVariable _varName; // send back over network
+            _clientID publicVariableClient _varName; // send back over network
         };
     }] call CBA_fnc_addEventHandler;
 

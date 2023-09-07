@@ -294,6 +294,7 @@ enum
 #define CT_CONTROLS_GROUP   15
 #define CT_SHORTCUTBUTTON   16
 #define CT_HITZONES         17
+#define CT_CONTROLS_TABLE   19
 #define CT_XKEYDESC         40
 #define CT_XBUTTON          41
 #define CT_XLISTBOX         42
@@ -311,6 +312,7 @@ enum
 #define CT_LISTNBOX         102
 #define CT_ITEMSLOT         103
 #define CT_CHECKBOX         77
+#define CT_VEHICLE_DIRECTION 105
 
 // Static styles
 #define ST_POS            0x0F
@@ -352,7 +354,7 @@ enum
 
 #define SL_TEXTURES       0x10
 
-// progress bar 
+// progress bar
 #define ST_VERTICAL       0x01
 #define ST_HORIZONTAL     0
 
@@ -488,6 +490,10 @@ enum
 #define IDC_DIARY_MISSION_NAME        112
 #define IDC_DIARY_CURRENT_TASK        113
 #define IDC_DIARY_PLAYER_RANK         116
+//VON/chat muting in Diary
+#define IDC_DIARY_PLAYERS_BUTTON      117
+#define IDC_DIARY_PLAYERS_SORT        118
+#define IDC_DIARY_MUTE_ALL            119
 
 #define IDC_DIARY_TOPIC_BACKGROUND    1021
 #define IDC_DIARY_SUBTOPIC_BACKGROUND 1022
@@ -697,6 +703,8 @@ enum
 #define IDD_CAMPAIGN_MP                  176
 #define IDD_MP_QUICK_PLAY                177
 #define IDD_MP_SERVER_SEARCH             178
+#define IDD_MP_SERVER_FOUND              179
+#define IDD_KEYMAPMSGBOX                 180
 
 // MessageBoxes
 #define IDD_MSG_DELETEPLAYER      200
@@ -792,6 +800,8 @@ enum
 #define IDD_MSG_SAVE_MISSION_BEFORE_PUBLISH  267
 //Message box for asking user to agree with Battleye licence.
 #define IDD_MSG_BATTLEYE_LICENCE             268
+#define IDD_MSG_UPNP_ACTIVATION              269
+//#define IDD_MSG_ACCOUNT_LOGIN_GUIDE        270 - Reserved
 
 // InGameUI
 #define IDD_UNITINFO              300
@@ -800,6 +810,20 @@ enum
 #define IDD_STANCEINFO            303
 #define IDD_AVCAMERA              304
 #define IDD_STAMINA_BAR           305
+
+//Custom Info
+#define IDD_CUSTOMINFO          			310
+#define IDD_CUSTOMINFO_MINIMAP         		311
+#define IDD_CUSTOMINFO_SLA          		312
+#define IDD_CUSTOMINFO_CREW        			313
+#define IDD_CUSTOMINFO_SENS         		314
+#define IDD_CUSTOMINFO_FEEDUAV      		315
+#define IDD_CUSTOMINFO_FEEDDRIVER   		316
+#define IDD_CUSTOMINFO_FEEDPRIMARYGUNNER    317
+#define IDD_CUSTOMINFO_FEEDCOMMANDER        318
+#define IDD_CUSTOMINFO_FEEDMISSILE	        319
+#define IDD_CUSTOMINFO_MINEDETECT	        320
+
 
 // Futura ui
 #define IDD_FUTURAGEAR            602
@@ -901,7 +925,7 @@ enum
 // Arcade Sites
 #define IDD_ARCADE_SITE          700
 
-#define IDC_AS_AZIMUT            701 
+#define IDC_AS_AZIMUT            701
 #define IDC_AS_AZIMUT_PICTURE    702
 
 // ---- combos
@@ -996,6 +1020,7 @@ enum
 #define IDC_MAIN_BOOTCAMP_CHALLENGES     151
 #define IDC_MAIN_BOOTCAMP_VRTRAINING     152
 #define IDC_MAIN_QUICKPLAY          154
+#define IDC_MAIN_UNIT               155
 
 #define IDC_MAIN_CARDAS_CUDL        199 // muj vlastni cudl
 
@@ -1234,58 +1259,20 @@ enum
 #define IDC_CAMPAIGNS_LIST            101
 #define IDC_CAMPAIGNS_CAMPAIGN        102
 #define IDC_CAMPAIGNS_DESCRIPTION     103
-#define IDC_HOST                      104
 
 // Campaign display
 #define IDC_CAMPAIGN_HISTORY          101
-#define IDC_CAMPAIGN_MIS_NAME         102
-#define IDC_CAMPAIGN_MIS_DESC         103
-#define IDC_CAMPAIGN_BOOK             104
-#define IDC_CAMPAIGN_CAMPAIGN         105
-#define IDC_CAMPAIGN_PREV             106
-#define IDC_CAMPAIGN_NEXT             107
-#define IDC_CAMPAIGN_OVERVIEW_DESC    108
-#define IDC_CAMPAIGN_REPLAY           109
-#define IDC_CAMPAIGN_DIFF             110
-#define IDC_CAMPAIGN_MISSION          111
-
-#define IDC_CAMPAIGN_DATE             112
-#define IDC_CAMPAIGN_SCORE            113
-#define IDC_CAMPAIGN_DURATION         114
-#define IDC_CAMPAIGN_CASUALTIES       115
-#define IDC_CAMPAIGN_KILLS_TITLE      116
-#define IDC_CAMPAIGN_ENEMY_ROW        117
-#define IDC_CAMPAIGN_FRIENDLY_ROW     118
-#define IDC_CAMPAIGN_CIVILIAN_ROW     119
-#define IDC_CAMPAIGN_INFANTRY_COLUMN  120
-#define IDC_CAMPAIGN_SOFT_COLUMN      121
-#define IDC_CAMPAIGN_ARMORED_COLUMN   122
-#define IDC_CAMPAIGN_AIRCRAFT_COLUMN  123
-#define IDC_CAMPAIGN_TOTAL_COLUMN     124
-#define IDC_CAMPAIGN_EINF             125
-#define IDC_CAMPAIGN_ESOFT            126
-#define IDC_CAMPAIGN_EARM             127
-#define IDC_CAMPAIGN_EAIR             128
-#define IDC_CAMPAIGN_ETOT             129
-#define IDC_CAMPAIGN_FINF             130
-#define IDC_CAMPAIGN_FSOFT            131
-#define IDC_CAMPAIGN_FARM             132
-#define IDC_CAMPAIGN_FAIR             133
-#define IDC_CAMPAIGN_FTOT             134
-#define IDC_CAMPAIGN_CINF             135
-#define IDC_CAMPAIGN_CSOFT            136
-#define IDC_CAMPAIGN_CARM             137
-#define IDC_CAMPAIGN_CAIR             138
-#define IDC_CAMPAIGN_CTOT             139
-#define IDC_CAMPAIGN_NAME             140
-#define IDC_CAMPAIGN_AUTHOR           141
-#define IDC_CAMPAIGN_PICTURE          142
-#define IDC_CAMPAIGN_DESCRIPTION      143
-#define IDC_CAMPAIGN_TEXT_ESTDEPLOY   144
-#define IDC_CAMPAIGN_RELEASEDATE      145
-#define IDC_CAMPAIGN_BUY_DLC          146
-#define IDC_CAMPAIGN_DLCSTRIPE        147
-#define IDC_CAMPAIGN_DLCICON          148
+#define IDC_CAMPAIGN_REPLAY           102
+#define IDC_CAMPAIGN_DIFF             103
+#define IDC_CAMPAIGN_NAME             104
+#define IDC_CAMPAIGN_AUTHOR           105
+#define IDC_CAMPAIGN_PICTURE          106
+#define IDC_CAMPAIGN_DESCRIPTION      107
+#define IDC_CAMPAIGN_TEXT_ESTDEPLOY   108
+#define IDC_CAMPAIGN_RELEASEDATE      109
+#define IDC_CAMPAIGN_BUY_DLC          110
+#define IDC_CAMPAIGN_DLCSTRIPE        111
+#define IDC_CAMPAIGN_DLCICON          112
 
 // MP campaign display
 #define IDC_CAMPAIGN_MP_LIST          101
@@ -1325,6 +1312,8 @@ enum
 #define IDC_OPTIONS_SHADOW_VISIBILIT_TEXT       313
 #define IDC_OPTIONS_TRAFFIC_VISIBILITY_VALUE    314
 #define IDC_OPTIONS_TRAFFIC_VISIBILITY_SLIDER   315
+#define IDC_OPTIONS_PIP_VISIBILITY_VALUE        316
+#define IDC_OPTIONS_PIP_VISIBILITY_SLIDER       317
 
 #define IDC_OPTIONS_PIP_VALUE                   334
 #define IDC_OPTIONS_SW_VALUE                    335
@@ -1406,6 +1395,7 @@ enum
 #define IDC_OPTIONS_LANGUAGE          135
 
 #define IDC_OPTIONS_IGUISIZE          136
+#define IDC_OPTIONS_IGUISIZE_LABEL    1014
 #define IDC_OPTIONS_IGUISIZE_TEXT     137
 #define IDC_OPTIONS_HEADBOB           138
 
@@ -1445,10 +1435,21 @@ enum
 #define IDC_OPTIONS_PLAYER_VOICE      112
 #define IDC_OPTIONS_VON_VALUE         113
 #define IDC_OPTIONS_VON_SLIDER        114
+//samples setting was replaced by audio output device
 #define IDC_OPTIONS_SAMPLES_VALUE     115
 #define IDC_OPTIONS_SAMPLES_SLIDER    116
+
+#define IDC_OPTIONS_AUDIO_OUTPUT_REFRESH  115
+#define IDC_OPTIONS_AUDIO_OUTPUT_COMBO    116
+
 #define IDC_OPTIONS_MIC_SENS_SLIDER   117
 #define IDC_OPTIONS_MIC_ADJUST        118
+
+#define IDC_OPTIONS_MAPDUCKING_VALUE  119
+#define IDC_OPTIONS_MAPDUCKING_SLIDER 120
+
+#define IDC_OPTIONS_UI_VALUE  121
+#define IDC_OPTIONS_UI_SLIDER 122
 
 // microphone adjustment
 #define IDC_OPTIONS_MIC_PROGRESS_BAR    1001
@@ -1485,10 +1486,15 @@ enum
 #define IDC_DIFF_SCORE_TABLE          1535
 #define IDC_DIFF_KILLED_BY            1536
 #define IDC_DIFF_VON_ID               1537
-#define IDC_DIFF_EXTENDED_MAP         1538
+#define IDC_DIFF_EXTENDED_MAP_FRIENDLY  1538
 #define IDC_DIFF_AUTO_REPORT          1539
 #define IDC_DIFF_MULTIPLE_SAVES       1540
-//#define IDC_DIFF_SQUAD_RADAR          1541
+// #define IDC_DIFF_SQUAD_RADAR          1541
+#define IDC_DIFF_TACTICAL_PING        1542
+#define IDC_DIFF_EXTENDED_MAP_ENEMY   1543
+#define IDC_DIFF_EXTENDED_MAP_MINES   1544
+#define IDC_DIFF_MINIMAP_ALLOWED	  1545
+#define IDC_DIFF_EXTENDED_MAP_PING    1546
 
 // Configure display controls
 #define IDC_CONFIG_DEFAULT            101
@@ -1699,6 +1705,14 @@ enum
 //Server Search dialogue
 #define IDC_MP_SERVER_SEARCH_STATUS   101
 #define IDC_MP_SERVER_SEARCH_PROGRESS 102
+
+//Server Found dialogue
+#define IDC_MP_SERVER_FOUND_COUNTDOWN     101
+#define IDC_MP_SERVER_FOUND_MISSION       102
+#define IDC_MP_SERVER_FOUND_GAME_TYPE     103
+#define IDC_MP_SERVER_FOUND_PLAYERS       104
+#define IDC_MP_SERVER_FOUND_BUTTON_NEXT   105
+#define IDC_MP_SERVER_FOUND_BUTTON_JOIN   106
 
 #define IDC_OPTIMATCH_FILTER_SPEED        101
 #define IDC_OPTIMATCH_FILTER_TYPE         102
@@ -1929,6 +1943,11 @@ enum
 #define IDC_MPSETUP_MISSION_WORKSHOP  130
 #define IDC_MPSETUP_LOGIC             131
 #define IDC_MPSETUP_VIRTUAL           132
+#define IDC_MPSETUP_PLAYERS_BUTTON    133
+#define IDC_MPSETUP_PLAYERS_SORT      134
+#define IDC_MPSETUP_PING_BUTTON       135
+#define IDC_MPSETUP_PING_SORT         136
+#define IDC_MPSETUP_MUTE_ALL          137
 
 #define IDC_MPSETUP_MSG_MESSAGE       101
 #define IDC_MPSETUP_MSG_PROGRESS      102
@@ -2194,6 +2213,8 @@ enum
 // Chat
 #define IDC_CHANNEL                   101
 #define IDC_CHANNEL_VOICE             102
+#define IDC_CHANNEL_MUTE_VON          103
+#define IDC_CHANNEL_MUTE_CHAT         104
 
 #define IDC_CHAT                      101
 
@@ -2227,7 +2248,7 @@ enum
 #define IDC_PUBLISH_BUTTON_DEFAULT_PREVIEW    119
 #define IDC_PUBLISH_STORAGE_SLIDER            120
 // group that is hidden when new mission is selected and shown when already uploaded mission is selected
-#define IDC_PUBLISH_STEAM_HIDE_NEW_MISSION    121 
+#define IDC_PUBLISH_STEAM_HIDE_NEW_MISSION    121
 // group that is shown when new mission is selected and hidden when already uploaded mission is selected
 #define IDC_PUBLISH_STEAM_SHOW_NEW_MISSION    122
 
@@ -2378,60 +2399,60 @@ enum
 #define IDC_GEAR_FILTER_ICON3 151
 #define IDC_GEAR_FILTER_ICON4 152
 #define IDC_GEAR_FILTER_ICON5 153
-#define IDC_GEAR_FILTER_ICON6 154      
+#define IDC_GEAR_FILTER_ICON6 154
 
 #define IDC_GEAR_POOL_GROUP           155
 #define IDC_GEAR_SOURCE_NAME          156
 #define IDC_GEAR_OPEN_BAG             157
-#define IDC_GEAR_CLOSE_BAG            158   
-#define IDC_GEAR_ADD_DEFAULT          255   
-#define IDC_GEAR_CLEAR_ALL            256   
+#define IDC_GEAR_CLOSE_BAG            158
+#define IDC_GEAR_ADD_DEFAULT          255
+#define IDC_GEAR_CLEAR_ALL            256
 #define IDC_BAG_ITEMS_GROUP           159
 #define IDC_UNIT_ITEMS_GROUP          160
 
-#define IDC_GEAR_BAG_EMPTY            5000  
+#define IDC_GEAR_BAG_EMPTY            5000
 /*
-#define IDC_GEAR_BAG_EMPTY_SLOT1      5000  
-#define IDC_GEAR_BAG_EMPTY_SLOT2      5001  
-#define IDC_GEAR_BAG_EMPTY_SLOT3      5002  
+#define IDC_GEAR_BAG_EMPTY_SLOT1      5000
+#define IDC_GEAR_BAG_EMPTY_SLOT2      5001
+#define IDC_GEAR_BAG_EMPTY_SLOT3      5002
 .
 .
 .
-#define IDC_GEAR_BAG_EMPTY_SLOT499    5498  
-#define IDC_GEAR_BAG_EMPTY_SLOT500    5499  
+#define IDC_GEAR_BAG_EMPTY_SLOT499    5498
+#define IDC_GEAR_BAG_EMPTY_SLOT500    5499
 */
-#define IDC_GEAR_BAG_FULL             5500    
+#define IDC_GEAR_BAG_FULL             5500
 
 // Debriefing
 /*
-#define IDC_DEBRIEFING_LEFT           101
-#define IDC_DEBRIEFING_RIGHT          102
+#define IDC_DEBRIEFING_LEFT             101
+#define IDC_DEBRIEFING_RIGHT            102
 */
-#define IDC_DEBRIEFING_STAT           103
-#define IDC_DEBRIEFING_RESTART        104
-#define IDC_DEBRIEFING_PAD2           105
+#define IDC_DEBRIEFING_STAT             103
+#define IDC_DEBRIEFING_RESTART          104
+#define IDC_DEBRIEFING_PAD2             105
 #define IDC_DEBRIEFING_PLAYERS_TITLE_BG 106
-#define IDC_DEBRIEFING_PLAYERS_TITLE  107
-#define IDC_DEBRIEFING_PLAYERS_BG     108
-#define IDC_DEBRIEFING_PLAYERS        109
-#define IDC_DEBRIEFING_TIMEOUT        110
-#define IDC_DEBRIEFING_RESULT         111
-#define IDC_DEBRIEFING_TITLE          112
-#define IDC_DEBRIEFING_DEBRIEFING     113
-#define IDC_DEBRIEFING_OBJECTIVES     114
-#define IDC_DEBRIEFING_INFO           115
-#define IDC_DEBRIEFING_SHOW_PLAYERS   116
-#define IDC_DEBRIEFING_SHOW_PAGE2     117
-#define IDC_DEBRIEFING_LIVE_STATS     118
-#define IDC_DEBRIEFING_PREV_PAGE      119
-#define IDC_DEBRIEFING_NEXT_PAGE      120
-#define IDC_DEBRIEFING_LOAD           121
-
+#define IDC_DEBRIEFING_PLAYERS_TITLE    107
+#define IDC_DEBRIEFING_PLAYERS_BG       108
+#define IDC_DEBRIEFING_PLAYERS          109
+#define IDC_DEBRIEFING_TIMEOUT          110
+#define IDC_DEBRIEFING_RESULT           111
+#define IDC_DEBRIEFING_TITLE            112
+#define IDC_DEBRIEFING_DEBRIEFING       113
+#define IDC_DEBRIEFING_OBJECTIVES       114
+#define IDC_DEBRIEFING_INFO             115
+#define IDC_DEBRIEFING_SHOW_PLAYERS     116
+#define IDC_DEBRIEFING_SHOW_PAGE2       117
+#define IDC_DEBRIEFING_LIVE_STATS       118
+#define IDC_DEBRIEFING_PREV_PAGE        119
+#define IDC_DEBRIEFING_NEXT_PAGE        120
+#define IDC_DEBRIEFING_LOAD             121
 #define IDC_DEBRIEFING_TEXT_GROUP       122
 #define IDC_DEBRIEFING_OBJECTIVES_GROUP 123
 #define IDC_DEBRIEFING_STATS_GROUP      124
-
 #define IDC_DEBRIEFING_MISSION_WORKSHOP 125
+#define IDC_DEBRIEFING_READY            126
+#define IDC_DEBRIEFING_DISCONNECT       127
 
 // Debug display
 #define IDC_DEBUG_EXP                 101
@@ -2619,6 +2640,9 @@ enum
 #define IDC_IGUI_AVC_PIP_DRIVER         100
 #define IDC_IGUI_AVC_PIP_GUNNER         101
 #define IDC_IGUI_AVC_PIP_SINGLE_VIEW    102
+#define IDC_IGUI_AVC_PIP_SOURCE			103
+#define IDC_IGUI_AVC_PIP_HEADING		104
+#define IDC_IGUI_AVC_PIP_MODE			105
 
 //Sling Load Assistant
 #define IDC_SLA_MAP                     100
@@ -2628,6 +2652,30 @@ enum
 #define IDC_SLA_LIFT_PROGRESS           104
 #define IDC_SLA_HEIGHT_BAR              105
 #define IDC_SLA_MAX_ALT                 106
+#define IDC_SLA_VIEWPORT                107
+
+//Sensors Display
+#define IDC_SENS_VIEWPORT               101
+#define IDC_SENS_CIRCLES                102
+#define IDC_SENS_VEHICLE                103
+#define IDC_SENS_RANGE                  104
+#define IDC_SENS_RADARON           		105
+#define IDC_SENS_RADAROFF           	106
+#define IDC_SENS_TARGET                 107
+#define IDC_SENS_TARGETRANGE            108
+#define IDC_SENS_TARGETSPEED            109
+#define IDC_SENS_TARGETALT				110
+#define IDC_SENS_HEADING				111
+
+//Mine detector Display
+#define IDC_MINEDETECT_VIEWPORT               101
+#define IDC_MINEDETECT_CIRCLES                102
+#define IDC_MINEDETECT_VEHICLE                103
+#define IDC_MINEDETECT_RANGE                  104
+
+//Crew list
+#define IDC_CREW_VEHICLE                101
+#define IDC_CREW_LIST					102
 
 //MP Score Table
 #define IDC_MP_SCORE_TABLE_TITLE          101
@@ -2712,7 +2760,6 @@ enum
 #define IDC_IGUI_WEAPON_AMMO            155
 
 // New Arma 3
-#define IDC_IGUI_WEAPON_OPTICS_PITCH    182
 #define IDC_IGUI_STANCE_INDICATOR       188
 #define IDC_IGUI_GPS_PLAYER             189
 #define IDC_IGUI_SPEED2                 190
@@ -2764,6 +2811,28 @@ enum
 #define IDC_IGUI_WEAPON_SPEED           188
 #define IDC_IGUI_WEAPON_ALT             189
 #define IDC_IGUI_WEAPON_TIME            190
+
+#define IDC_IGUI_WEAPON_CAM_TRACK_AREA        	194
+#define IDC_IGUI_WEAPON_CAM_TRACK_TARGET      	195
+
+#define IDC_IGUI_WEAPON_JAVELIN_ATTACK_FROM_TOP 196
+#define IDC_IGUI_WEAPON_JAVELIN_ATTACK_DIRECT  	197
+
+#define IDC_IGUI_WEAPON_LASED_DISTANCE          198
+#define IDC_IGUI_WEAPON_LASED_SPEED             199
+#define IDC_IGUI_WEAPON_LASED_VALID             200
+#define IDC_IGUI_WEAPON_LASED_ERR_LEAD 			201
+#define IDC_IGUI_WEAPON_LASED_ERR_ELEV 			202
+#define IDC_IGUI_WEAPON_LASED_ERR_OBJECT 		203
+#define IDC_IGUI_WEAPON_LASER_ZEROING_DELAY     204
+
+#define IDC_IGUI_THROTTLE						205
+#define IDC_IGUI_VEHICLE_DIRECTION 				206
+#define IDC_IGUI_VEHICLE_DIRECTION2				207
+
+
+
+
 
 // helicopter unit info
 #define  IDC_IGUI_GMETER                      501
@@ -2980,6 +3049,11 @@ enum
 // - miniMap display
 
 #define IDC_MINIMAP                   101
+#define IDC_MINIMAP_VIEWPORT    	  102
+#define IDC_MINIMAP_GRID	    	  197
+#define IDC_MINIMAP_HEADING	    	  198
+#define IDC_MINIMAP_TIME	    	  199
+
 
 // - scripting help display
 #define IDC_SCRITING_HELP             101
@@ -3064,6 +3138,11 @@ enum
 
 // Hitzone types
 #define HZ_AIRPLANE_HULL    0
+#define HZ_AIRPLANE_ENG    22
+#define HZ_AIRPLANE_FUEL   23
+#define HZ_AIRPLANE_GEAR   24
+#define HZ_AIRPLANE_WINGS  25
+#define HZ_AIRPLANE_INST   26
 
 #define HZ_HELICOPTER_HULL  1
 #define HZ_HELICOPTER_ENG   2
@@ -3089,6 +3168,22 @@ enum
 #define HZ_TANK_RTR        19
 #define HZ_TANK_TRRT       20
 
+#define HZ_VEH_GUN        HZ_TANK_GUN
+#define HZ_VEH_TRRT       HZ_TANK_TRRT
+
 #define HZ_SHIP_ENG        21
+
+#define HZ_VEH_TOTAL      27
+
+#define HZ_TANK_CMDGUN     28
+#define HZ_TANK_CMDTRRT    29
+#define HZ_VEH_CMDGUN     HZ_TANK_CMDGUN
+#define HZ_VEH_CMDTRRT    HZ_TANK_CMDTRRT
+
+#define HZ_VEH_TRRT_TOTAL    30
+#define HZ_VEH_CMDTRRT_TOTAL 31
+
+#define HZ_TANK_BOTH_TRACKS 32
+
 
 #endif

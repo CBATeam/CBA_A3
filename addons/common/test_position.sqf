@@ -38,7 +38,7 @@ _result = _value call CBA_fnc_getPos;
 TEST_TRUE(_result isEqualTo EXPECTED,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#undef EXPECTED
 #define EXPECTED [1,2,0] // Pos 3D
 
 _value = EXPECTED;
@@ -50,7 +50,7 @@ _value set [0,-1];
 TEST_TRUE(_result isEqualTo EXPECTED,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#undef EXPECTED
 #define EXPECTED [1,2] // Pos 2D
 
 _value = EXPECTED;
@@ -62,7 +62,7 @@ _value set [0,-1];
 TEST_TRUE(_result isEqualTo EXPECTED,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#undef EXPECTED
 #define EXPECTED [1,1,0] //Pos nearest to [0,0,0]
 
 _value = [[0,0,0], [[10,10,0],[1,1,0], [5,5,0]]];
@@ -71,7 +71,7 @@ _result = _value call CBA_fnc_getNearest;
 TEST_TRUE(_result isEqualTo EXPECTED,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#undef EXPECTED
 #define EXPECTED [[1,1,0], [5,5,0]] //Pos within distance 10
 
 _value = [[0,0,0], [[30,30,0],[1,1,0], [5,5,0]], 10];

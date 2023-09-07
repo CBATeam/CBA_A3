@@ -13,6 +13,7 @@ Parameters:
     _item      - name of magazine to <STRING>
     _count     - number of magazines to add <NUMBER> (Default: 1)
     _verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _ammo      - ammo count <NUMBER> (Default: 1E6)
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -31,7 +32,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addMagazineCargo);
 
-params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_verify", false, [false]]];
+params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [0]], ["_verify", false, [false]], ["_ammo", 1E6, [0]]];
 
 private _return = false;
 
@@ -54,11 +55,11 @@ if (isNull _config || {getNumber (_config >> "scope") < 2}) exitWith {
 
 if (_verify) then {
     if (_container canAdd [_item, _count]) then {
-        _container addMagazineCargoGlobal [_item, _count];
+        _container addMagazineAmmoCargo [_item, _count, _ammo];
         _return = true;
     } else {
         while {_container canAdd _item && {_count > 0}} do {
-            _container addMagazineCargoGlobal [_item, 1];
+            _container addMagazineAmmoCargo [_item, 1, _ammo];
             _count = _count - 1;
         };
 
@@ -69,10 +70,10 @@ if (_verify) then {
             _weaponHolder setPosATL (getPosATL _container vectorAdd [random 2 - 1, random 2 - 1, 0]);
         };
 
-        _weaponHolder addMagazineCargoGlobal [_item, _count];
+        _weaponHolder addMagazineAmmoCargo [_item, _count, _ammo];
     };
 } else {
-    _container addMagazineCargoGlobal [_item, _count];
+    _container addMagazineAmmoCargo [_item, _count, _ammo];
     _return = true;
 };
 

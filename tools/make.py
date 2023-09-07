@@ -40,6 +40,7 @@ if sys.version_info[0] == 2:
 
 import os
 import os.path
+import pathlib
 import shutil
 import platform
 import glob
@@ -228,6 +229,17 @@ def find_bi_tools(work_drive):
     else:
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
+def mikero_windows_registry(path, access=winreg.KEY_READ):
+    try:
+        return winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Mikero\{}".format(path), access=access)
+    except FileNotFoundError:
+        try:
+            return winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Mikero\{}".format(path), access=access)
+        except FileNotFoundError:
+            try:
+                return winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Wow6432Node\Mikero\{}".format(path), access=access)
+            except FileNotFoundError:
+                return winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Wow6432Node\Mikero\{}".format(path), access=access)
 
 def find_depbo_tools():
     """Use registry entries to find DePBO-based tools."""
@@ -236,20 +248,8 @@ def find_depbo_tools():
 
     for tool in requiredToolPaths:
         try:
-            try:
-                k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Mikero\{}".format(tool))
-                path = winreg.QueryValueEx(k, "exe")[0]
-            except FileNotFoundError:
-                try:
-                    k = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Mikero\{}".format(tool))
-                    path = winreg.QueryValueEx(k, "exe")[0]
-                except FileNotFoundError:
-                    try:
-                        k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Wow6432Node\Mikero\{}".format(tool))
-                        path = winreg.QueryValueEx(k, "exe")[0]
-                    except FileNotFoundError:
-                        k = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Wow6432Node\Mikero\{}".format(tool))
-                        path = winreg.QueryValueEx(k, "exe")[0]
+            k = mikero_windows_registry(tool)
+            path = winreg.QueryValueEx(k, "exe")[0]           
         except FileNotFoundError:
             print_error("Could not find {}".format(tool))
             failed = True
@@ -264,6 +264,19 @@ def find_depbo_tools():
         raise Exception("BadDePBO", "DePBO tools not installed correctly")
 
     return requiredToolPaths
+
+def pboproject_settings():
+    """Use registry entries to configure needed pboproject settings."""
+    value_exclude = "thumbs.db,*.txt,*.h,*.dep,*.cpp,*.bak,*.png,*.log,*.pew,source,*.tga"
+
+    try:
+        k = mikero_windows_registry(r"pboProject\Settings", access=winreg.KEY_SET_VALUE)
+        winreg.SetValueEx(k, "m_exclude", 0, winreg.REG_SZ, value_exclude)
+        winreg.SetValueEx(k, "m_exclude2", 0, winreg.REG_SZ, value_exclude)
+        winreg.SetValueEx(k, "wildcard_exclude_from_pbo_normal", 0, winreg.REG_SZ, value_exclude)
+        winreg.SetValueEx(k, "wildcard_exclude_from_pbo_unbinarised_missions", 0, winreg.REG_SZ, value_exclude)
+    except:
+        raise Exception("BadDePBO", "pboProject not installed correctly, make sure to run it at least once")
 
 
 def color(color):
@@ -831,6 +844,7 @@ def main(argv):
     make_target = "DEFAULT" # Which section in make.cfg to use for the build
     new_key = True # Make a new key and use it to sign?
     quiet = False # Suppress output from build tool?
+    sqfc_compiling = True
 
     # Parse arguments
     if "help" in argv or "-h" in argv or "--help" in argv:
@@ -1028,6 +1042,8 @@ See the make.cfg file for additional build options.
             pboproject = depbo_tools["pboProject"]
             rapifyTool = depbo_tools["rapify"]
             makepboTool = depbo_tools["MakePbo"]
+
+            pboproject_settings()
         except:
             raise
             print_error("Could not find dePBO tools. Download the needed tools from: https://dev.withsix.com/projects/mikero-pbodll/files")
@@ -1166,6 +1182,24 @@ See the make.cfg file for additional build options.
                         print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
                         pass
 
+        # Always cleanup old sqfc
+        for root, _dirs, files in os.walk(module_root_parent):
+            for file in files:
+                if file.endswith(".sqfc"):
+                    os.remove(os.path.join(root, file))
+        if sqfc_compiling:
+            print_blue("\nCompiling to sqfc...")
+            compiler_exe = os.path.join(module_root_parent, "ArmaScriptCompiler.exe")
+            if not os.path.isfile(compiler_exe):
+                print_yellow("ArmaScriptCompiler.exe not found in base mod folder - skipping")
+            else:
+                ret = subprocess.call([compiler_exe], cwd=module_root_parent, stdout=False)
+                if ret == 0:
+                    print_green("ArmaScriptCompiler return code == {}".format(str(ret)))
+                else:
+                    print_error("ArmaScriptCompiler return code == {}".format(str(ret)))
+                    raise # probably means something bad happened and we should stop           
+
         # For each module, prep files and then build.
         print_blue("\nBuilding...")
         for module in modules:
@@ -1260,12 +1294,24 @@ See the make.cfg file for additional build options.
 
                     version_stamp_pboprefix(module,commit_id)
 
-                    if os.path.isfile(nobinFilePath):
+                    skipPreprocessing = False
+                    addonTomlPath = os.path.join(work_drive, prefix, module, "addon.toml")
+                    if os.path.isfile(addonTomlPath):
+                        with open(addonTomlPath, "r") as f:
+                            tomlFile = f.read()
+                            if "preprocess = false" in tomlFile: 
+                                print_error("'preprocess = false' not supported")
+                                raise
+                            skipPreprocessing = "[preprocess]\nenabled = false" in tomlFile
+
+                    if os.path.isfile(os.path.join(work_drive, prefix, module, "$NOBIN$")):
                         print_green("$NOBIN$ Found. Proceeding with non-binarizing!")
                         cmd = [makepboTool, "-P","-A","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
-
+                    elif skipPreprocessing:
+                        print_green("addon.toml set [preprocess.enabled = false]. Proceeding with non-binerized config build!")
+                        cmd = [pboproject, "-B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
                     else:
-                        cmd = [pboproject, "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
+                        cmd = [pboproject, "+B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
 
                     color("grey")
                     if quiet:
@@ -1417,6 +1463,14 @@ See the make.cfg file for additional build options.
         except:
             print_error("ERROR: Could not delete pboProject temp files.")
 
+    if sqfc_compiling:
+        print_blue("\nCleaning up sqfc...")
+        # cleanup all old sqfc    
+        for root, _dirs, files in os.walk(module_root_parent):
+            for file in files:
+                if file.endswith(".sqfc"):
+                    os.remove(os.path.join(root, file))
+
     # Make release
     if make_release_zip:
         release_name = "{}_v{}".format(project.lstrip("@"), project_version.rsplit(".", 1)[0])
@@ -1480,6 +1534,16 @@ See the make.cfg file for additional build options.
         if len(failedBuilds) > 0:
             for failedBuild in failedBuilds:
                 print("- {} build failed!".format(failedBuild))
+                failedBuild_path = pathlib.Path(
+                    "P:/temp").joinpath(f"{failedBuild}.packing.log")
+                if (failedBuild_path.exists()):
+                    print(f"  Log {failedBuild_path} tail:")
+                    with open(failedBuild_path) as failedBuild_file:
+                        lines = failedBuild_file.readlines()
+                        for index, line in enumerate(lines[-3:]):
+                            print(f"    {len(lines) + index -2}: {line}", end='')
+                else:
+                    print(f"  Log {failedBuild_path} does not exist")
         if len(missingFiles) > 0:
             for missingFile in missingFiles:
                 print("- {} not found!".format(missingFile))

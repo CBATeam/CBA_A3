@@ -19,3 +19,7 @@
 #include "\a3\ui_f\hpp\defineResincl.inc"
 
 #define WEAPON_MAGAZINES(unit,weapon) (weaponsItems (unit) select {_x select 0 == (weapon)} param [0, []] select {_x isEqualType []})
+
+#define TYPE_VEST 701
+#define TYPE_UNIFORM 801
+#define TYPE_BACKPACK 901

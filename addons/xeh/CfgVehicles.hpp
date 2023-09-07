@@ -329,11 +329,20 @@ class CfgVehicles {
     class gm_logistics_object_base: gm_object_base {
         XEH_ENABLED;
     };
+    class gm_deployablebridge_base: gm_logistics_object_base {
+        XEH_ENABLED;
+    };
 
     class gm_staticWeapon_base: StaticWeapon {};
     class gm_staticMG_base: gm_staticWeapon_base {};
     class gm_mg3_aatripod_base: gm_staticMG_base {};
     class gm_mg3_aatripod_empty: gm_mg3_aatripod_base {
+        XEH_ENABLED;
+    };
+
+    class ModuleOrdnanceRocket_F;
+    class gm_ModuleOrdnanceRocket_base: ModuleOrdnanceRocket_F {};
+    class gm_ModuleOrdnanceRocket_rocket_luna_nuc_3r10: gm_ModuleOrdnanceRocket_base {
         XEH_ENABLED;
     };
 
@@ -359,28 +368,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    // Contact
-    class VirtualAISquad: Logic {
-        XEH_ENABLED;
-    };
-
-    class Particle_Base_F: Thing {
-        XEH_ENABLED;
-    };
-
-    // Class does not exist without optional Contact component. Recreate inheritance tree up to existing base class.
-    class Alien_Extractor_01_base_F: Items_base_F {};
-    class Alien_Extractor_01_generic_base_F: Alien_Extractor_01_base_F {
-        XEH_ENABLED;
-    };
-
-    class Alien_MatterBall_01_base_F: ThingX {
-        XEH_ENABLED;
-    };
-    class Alien_MatterBall_01_falling_F: Alien_MatterBall_01_base_F {
-        XEH_ENABLED;
-    };
-
     class O_R_Soldier_Base_F;
     class O_R_Story_Capitan_01_F: O_R_Soldier_Base_F {
         XEH_ENABLED;
@@ -388,7 +375,6 @@ class CfgVehicles {
     class O_R_Story_TL_01_F: O_R_Soldier_Base_F {
         XEH_ENABLED;
     };
-
     class C_Story_Scientist_01_F: Civilian_F {
         XEH_ENABLED;
     };
@@ -416,6 +402,14 @@ class CfgVehicles {
 
     // AOW (2.02)
     class GalleryDioramaUnit_01_base_F: Items_base_F {
+        XEH_ENABLED;
+    };
+
+    // Decade (2.14)
+    class Lantern_01_base_F: ThingX {
+        XEH_ENABLED;
+    };
+    class SpaceshipCapsule_01_F: ThingX {
         XEH_ENABLED;
     };
 };
