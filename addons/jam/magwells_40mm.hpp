@@ -36,8 +36,5 @@
             "UGL_FlareYellow_F",
             "UGL_FlareCIR_F"
         };
-        CSLA_grenades[] = {
-            "US85_1Rnd_HE"
-        };
     };
     class CBA_40mm_M203_6rnds {};   // 6 loose M203 type grenades for M32 MGL

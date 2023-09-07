@@ -4,11 +4,7 @@
     class CBA_762x51_4rnds {};      // 4 loose rounds of 7.62x51mm NATO
     class CBA_762x51_5rnds {};      // 5 loose rounds of 7.62x51mm NATO
 
-    class CBA_762x51_AICS {         // AICS short action mag (5/10 rounds)
-        CSLA_mags[] = {
-            "US85_10Rnd_762x51"
-        };
-    };
+    class CBA_762x51_AICS {};       // AICS short action mag (5/10 rounds)
 
     class CBA_762x51_AR10 {};       // AR-10 standard mag (20 rounds)
     class CBA_762x51_AR10_L {};     // AR-10 long mag (25/30 rounds)
@@ -34,11 +30,6 @@
         BI_belts[] = {
             "150Rnd_762x51_Box",
             "150Rnd_762x51_Box_Tracer"
-        };
-        CSLA_belts[] = {
-            "US85_50Rnd_762x51",
-            "US85_100Rnd_762x51",
-            "US85_200Rnd_762x51"
         };
     };
 

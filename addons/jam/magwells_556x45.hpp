@@ -13,9 +13,6 @@
             "200Rnd_556x45_Box_Tracer_F",
             "200Rnd_556x45_Box_Tracer_Red_F"
         };
-        CSLA_boxes[] = {
-            "US85_200Rnd_556x45"
-        };
     };
 
     class CBA_556x45_TYPE97 {};         // QBZ-97 Stick Mags
@@ -52,9 +49,6 @@
             "30Rnd_556x45_Stanag_Sand_Tracer_Red",
             "30Rnd_556x45_Stanag_Sand_Tracer_Green",
             "30Rnd_556x45_Stanag_Sand_Tracer_Yellow"
-        };
-        CSLA_mags[] = {
-            "US85_30Rnd_556x45"
         };
     };
 

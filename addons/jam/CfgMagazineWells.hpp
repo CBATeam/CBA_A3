@@ -78,12 +78,7 @@ class CfgMagazineWells {
     class CBA_Bazooka {};                           // M1, M1A1 Bazooka
     class CBA_Panzerschreck {};                     // Panzerschreck RPzB 54
     class CBA_PIAT {};                              // PIAT
-    class CBA_SMAW {                                // Mk 153 Shoulder-Launched Multipurpose Assault Weapon
-        CSLA_rounds[] = {
-            "US85_SMAW_HEAA",
-            "US85_SMAW_HEDP"
-        };
-    };
+    class CBA_SMAW {};                              // Mk 153 Shoulder-Launched Multipurpose Assault Weapon
     class CBA_SMAW_Spotting_Rifle {};               // Mk 153 Shoulder-Launched Multipurpose Assault Weapon - Spotting Rifle
 
     class CBA_Carl_Gustaf {                         // MAAWS, RAWS
@@ -91,19 +86,11 @@ class CfgMagazineWells {
             "MRAWS_HEAT_F",
             "MRAWS_HE_F"
         };
-        CSLA_rounds[] = {
-            "US85_MAAWS_HEAT",
-            "US85_MAAWS_HEDP"
-        };
     };
 
     class CBA_RPG7 {
         BI_rockets[] = {
             "RPG7_F"
-        };
-        CSLA_rockets[] = {
-            "CSLA_PG7M110",
-            "CSLA_PG7M110V"
         };
     };
 };

@@ -13,11 +13,7 @@
     class CBA_9x19_Glock_Cpct {};   // Compact Glock in 9x19mm (Glock 19, 46)
     class CBA_9x19_Glock_Full {};   // Fullsize Glock in 9x19mm (Glock 17, 18, 34, 45)
     class CBA_9x19_HiPower {};      // Browning HiPower
-    class CBA_9x19_M9 {             // Beretta M9
-        CSLA_mags[] = {
-            "US85_M9_15Rnd_9Luger"
-        };
-    };
+    class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MAB38 {};        // Beretta Model 38
     class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28, MP35
     class CBA_9x19_MP40 {};         // MP40, MP38
@@ -28,9 +24,6 @@
             "30Rnd_9x21_Mag_SMG_02_Tracer_Red",
             "30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",
             "30Rnd_9x21_Mag_SMG_02_Tracer_Green"
-        };
-        CSLA_mags[] = {
-            "US85_MPV_30Rnd_9Luger"
         };
     };
     class CBA_9x19_Ots27 {};        // OTs-27 Berdysh

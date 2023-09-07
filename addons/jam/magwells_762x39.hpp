@@ -5,11 +5,6 @@
             "30Rnd_762x39_Mag_Tracer_F",
             "30Rnd_762x39_Mag_Tracer_Green_F"
         };
-        CSLA_mags[] = {
-            "CSLA_Sa58_30rnd_7_62Cv43",
-            "CSLA_Sa58_30rnd_7_62Sv43",
-            "CSLA_Sa58_30rnd_7_62vz43"
-        };
     };
 
     class CBA_762x39_CZ807 {};          // 762x39mm CZ 807 magazines

@@ -17,21 +17,8 @@
         BI_mags[] = {
             "10Rnd_762x54_Mag"
         };
-        CSLA_mags[] = {
-            "CSLA_OP63_10rnd_7_62Odst59",
-            "CSLA_OP63_10rnd_7_62Cv59"
-        };
     };
 
     class CBA_762x54R_SVT {};           // SVT-38, SVT-40
 
-    class CBA_762x54R_Vz59_LINKS {      //Uk vz. 59, UK59, vz 59
-        CSLA_belts[] = {
-            "CSLA_UK59_50rnd_7_62Cv59",
-            "CSLA_UK59_50rnd_7_62PZ59",
-            "CSLA_UK59_50rnd_7_62Sv59",
-            "CSLA_UK59_50rnd_7_62Tz59",
-            "CSLA_UK59_50rnd_7_62TzSv59",
-            "CSLA_UK59_50rnd_7_62vz59"
-        };
-    };
+    class CBA_762x54R_Vz59_LINKS {};    //Uk vz. 59, UK59, vz 59
