@@ -47,7 +47,7 @@ class CfgWeapons {
 
     class gm_pk_base: gm_machineGun_base {
         magazineWell[] += {"CBA_762x54R_LINKS"};
-    }
+    };
 
     class Pistol_Base_F;
 
