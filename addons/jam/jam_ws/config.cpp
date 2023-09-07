@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "cba_jam",
-            "Weapons_F_lxWS_Rifles"
+            "data_f_lxWS_Loadorder"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
