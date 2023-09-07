@@ -32,4 +32,5 @@ class CfgPatches {
     };
 };
 
+#include "CfgMagazineWells.hpp"
 #include "CfgWeapons.hpp"

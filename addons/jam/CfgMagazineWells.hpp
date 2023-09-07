@@ -86,22 +86,11 @@ class CfgMagazineWells {
             "MRAWS_HEAT_F",
             "MRAWS_HE_F"
         };
-        GM_rounds[] = {
-            "gm_1Rnd_84x245mm_heat_t_DM12_carlgustaf",
-            "gm_1Rnd_84x245mm_heat_t_DM12a1_carlgustaf",
-            "gm_1Rnd_84x245mm_heat_t_DM22_carlgustaf",
-            "gm_1Rnd_84x245mm_heat_t_DM32_carlgustaf",
-            "gm_1Rnd_84x245mm_illum_DM16_carlgustaf"
-        };
     };
 
     class CBA_RPG7 {
         BI_rockets[] = {
             "RPG7_F"
-        };
-        GM_rockets[] = {
-            "gm_1Rnd_40mm_heat_pg7v_rpg7",
-            "gm_1Rnd_40mm_heat_pg7vl_rpg7"
         };
     };
 };

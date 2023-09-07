@@ -5,26 +5,11 @@
             "30Rnd_762x39_Mag_Tracer_F",
             "30Rnd_762x39_Mag_Tracer_Green_F"
         };
-        GM_mags[] = {
-            "gm_30Rnd_762x39mm_ap_7N23_ak47_blk",
-            "gm_30Rnd_762x39mm_b_57N231_ak47_blk",
-            "gm_30Rnd_762x39mm_b_M43_ak47_blk",
-            "gm_30Rnd_762x39mm_b_t_57N231P_ak47_blk",
-            "gm_30Rnd_762x39mm_b_t_M43_ak47_blk"
-        };
     };
 
     class CBA_762x39_CZ807 {};          // 762x39mm CZ 807 magazines
 
-    class CBA_762x39_RPK {              // 40/45/75rnd RPK magazines
-        GM_mags[] = {
-            "gm_75Rnd_762x39mm_ap_7N23_ak47_blk",
-            "gm_75Rnd_762x39mm_b_57N231_ak47_blk",
-            "gm_75Rnd_762x39mm_b_M43_ak47_blk",
-            "gm_75Rnd_762x39mm_b_t_57N231P_ak47_blk",
-            "gm_75Rnd_762x39mm_b_t_M43_ak47_blk"
-        };
-    };
+    class CBA_762x39_RPK {};            // 40/45/75rnd RPK magazines
 
     class CBA_762x39_STANAG {};         // 762x39mm in a normal length STANAG mag, including small drums
     class CBA_762x39_STANAG_L {};       // 762x39mm in a long STANAG stick or coffin

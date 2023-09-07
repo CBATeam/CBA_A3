@@ -16,22 +16,7 @@
     class CBA_762x51_FAL_L {};      // FN FAL long mag (25/30 rounds)
     class CBA_762x51_FAL_XL {};     // FN FAL drum mag (X-Products 50 round)
 
-    class CBA_762x51_G3 {           // H&K G3
-        GM_mags[] = {
-            "gm_20Rnd_762x51mm_ap_DM151_g3_blk",
-            "gm_20Rnd_762x51mm_ap_DM151_g3_des",
-            "gm_20Rnd_762x51mm_b_DM111_g3_blk",
-            "gm_20Rnd_762x51mm_b_DM111_g3_des",
-            "gm_20Rnd_762x51mm_b_DM41_g3_blk",
-            "gm_20Rnd_762x51mm_b_DM41_g3_des",
-            "gm_20Rnd_762x51mm_b_t_DM21_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21_g3_des",
-            "gm_20Rnd_762x51mm_b_t_DM21A1_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21A1_g3_des",
-            "gm_20Rnd_762x51mm_b_t_DM21A2_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21A2_g3_des"
-        };
-    };
+    class CBA_762x51_G3 {};         // H&K G3
     class CBA_762x51_G3_L {};       // H&K G3 long mag (25/30 rounds)
     class CBA_762x51_G3_XL {};      // H&K G3 drum mag (X-Products 50 round)
 
@@ -52,13 +37,7 @@
     class CBA_762x51_M14_L {};      // M14 long mag (25/30 rounds)
     class CBA_762x51_M14_XL {};     // M14 drum mag (X-Products 50 round)
 
-    class CBA_762x51_MG3 {          // MG3 DM1 link belts
-        GM_belts[] = {
-            "gm_120Rnd_762x51mm_b_t_DM21_mg3_grn",
-            "gm_120Rnd_762x51mm_b_t_DM21A1_mg3_grn",
-            "gm_120Rnd_762x51mm_b_t_DM21A2_mg3_grn"
-        };
-    };
+    class CBA_762x51_MG3 {};        // MG3 DM1 link belts
 
     class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62 mm magazines
         BI_mags[] = {
