@@ -93,7 +93,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_12g_6rnds", "CBA_12g_5rnds", "CBA_12g_4rnds", "CBA_12g_3rnds", "CBA_12g_2rnds", "CBA_12g_1rnd"};
     };
 
-    class vn_pistol: Pistol_Base_F {};
+    class vn_pistol;
 
     class vn_hd: vn_pistol {};
 
@@ -131,7 +131,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_32ACP_Welrod"};
     };
 
-    class vn_Launcher_Base_F: Launcher_Base_F {};
+    class vn_Launcher_Base_F;
 
     class vn_rpg7: vn_Launcher_Base_F {
         magazineWell[] += {"CBA_RPG7"};
