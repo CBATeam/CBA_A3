@@ -24,7 +24,4 @@ SCRIPT(compileFinal);
 
 params [["_name", "", [""]], ["_function", {}, [{}]]];
 
-_function = str _function;
-_function = _function select [1, count _function - 2];
-
 missionNamespace setVariable [_name, compileFinal _function];

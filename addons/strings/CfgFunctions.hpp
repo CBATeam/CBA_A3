@@ -9,6 +9,7 @@ class CfgFunctions {
             PATHTO_FNC(formatElapsedTime);
             PATHTO_FNC(formatNumber);
             PATHTO_FNC(leftTrim);
+            PATHTO_FNC(prettyFormat);
             PATHTO_FNC(removeWhitespace);
             PATHTO_FNC(replace);
             PATHTO_FNC(rightTrim);

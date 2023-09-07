@@ -13,6 +13,7 @@
             <Chinesesimp>社区基础插件—瞄具</Chinesesimp>
             <French>Community Base Addons - Optiques</French>
             <Russian>Community Base Addons - Оптика</Russian>
+            <Korean>커뮤니티 베이스 애드온 - 광학장치</Korean>
         </Key>
         <Key ID="STR_cba_optics_UsePIP">
             <English>Use Picture-in-Picture Optics</English>
@@ -26,11 +27,13 @@
             <Chinesesimp>使用画中画（PiP）瞄具</Chinesesimp>
             <French>Utiliser les optiques "picture in picture"</French>
             <Russian>Использовать оптические прицелы в режиме «картинка в картинке» (PIP)</Russian>
+            <Korean>PIP 광학장치 사용</Korean>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch">
             <English>Toggle Reticle</English>
             <German>Absehen umschalten</German>
             <Czech>Zapnout retikulum</Czech>
+            <Italian>Cambia reticolo</Italian>            
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
             <Japanese>照準線切り替え</Japanese>
             <Chinese>切換瞄準線</Chinese>
@@ -38,11 +41,13 @@
             <French>Commuter le réticule</French>
             <Russian>Переключение сетки</Russian>
             <Polish>Przełącz siatke przyrządu</Polish>
+            <Korean>조준점 전환</Korean>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
             <German>Absehen der Optik manuell umschalten.</German>
             <Czech>Manuálně přepnout retikulum optiky</Czech>
+            <Italian>Cambia manualmente il reticolo dell'ottica.</Italian>            
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
             <Japanese>照準器の照準線を手動で切り替えます。</Japanese>
             <Chinese>手動切換瞄具的瞄準線</Chinese>
@@ -50,6 +55,7 @@
             <French>Commuter manuellement le réticule de l'optique.</French>
             <Russian>Вручную переключать сетку оптического прицела.</Russian>
             <Polish>Ręcznie przełącz siatkę przyrządu optycznego</Polish>
+            <Korean>광학장치의 조준점을 수동으로 전환합니다.</Korean>
         </Key>
     </Package>
 </Project>

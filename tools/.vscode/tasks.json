@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Validate SQF",
-            "command": "${config:python.pythonPath}",
+            "command": "python",
             "options": {
                 "cwd": "${workspaceFolder}/tools"
             },
@@ -13,7 +13,7 @@
         },
         {
             "label": "Validate Config",
-            "command": "${config:python.pythonPath}",
+            "command": "python",
             "options": {
                 "cwd": "${workspaceFolder}/tools"
             },
@@ -23,7 +23,7 @@
         },
         {
             "label": "Check Strings",
-            "command": "${config:python.pythonPath}",
+            "command": "python",
             "options": {
                 "cwd": "${workspaceFolder}/tools"
             },
@@ -32,11 +32,23 @@
             ]
         },
         {
+            "label": "SQFVM Checker",
+            "command": "${config:python.pythonPath}",
+            "options": {
+                "cwd": "${workspaceFolder}/tools"
+            },
+            "args": [
+                "sqfvmChecker.py"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "Test All",
             "dependsOn": [
                 "Validate SQF",
                 "Validate Config",
-                "Check Strings"
+                "Check Strings",
+                "SQFVM Checker"
             ],
             "group": {
                 "kind": "test",
@@ -45,12 +57,13 @@
         },
         {
             "label": "Build: make.py (pboProject)",
-            "command": "${config:python.pythonPath}",
+            "command": "python",
             "options": {
                 "cwd": "${workspaceFolder}/tools"
             },
             "args": [
-                "make.py", "ci"
+                "make.py",
+                "ci"
             ],
             "group": {
                 "kind": "build",
@@ -58,13 +71,14 @@
             }
         },
         {
-            "label": "Build: Hemtt Release",
+            "label": "Build: Hemtt",
             "command": "hemtt.exe",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
             "args": [
-                "build", "--release", "--ci"
+                "build",
+                "-v"
             ],
             "group": "build"
         }
