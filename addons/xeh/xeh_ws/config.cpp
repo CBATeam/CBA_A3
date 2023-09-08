@@ -9,7 +9,7 @@ class CfgPatches {
         requiredAddons[] = {"cba_xeh", "data_f_lxWS"};
         skipWhenMissingDependencies = 1;
         author = "$STR_CBA_Author";
-        authors[] = {"PabstMirror"};
+        authors[] = {"Dahlgren"};
         url = "$STR_CBA_URL";
         VERSION_CONFIG;
 
