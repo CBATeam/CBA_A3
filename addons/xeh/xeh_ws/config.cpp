@@ -18,4 +18,6 @@ class CfgPatches {
     };
 };
 
+class XEH_CLASS_BASE;
+
 #include "CfgVehicles.hpp"
