@@ -1,5 +1,5 @@
 class CfgPatches {
-    class cba_ui_helper {
+    class SUBADDON {
         requiredAddons[] = {"cba_ui"};
         units[] = {};
     };
