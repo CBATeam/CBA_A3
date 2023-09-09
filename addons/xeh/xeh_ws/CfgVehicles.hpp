@@ -1,22 +1,3 @@
-#include "..\script_component.hpp"
-#undef COMPONENT
-#define COMPONENT xeh_compat_ws
-
-class CfgPatches {
-    class ADDON {
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "cba_xeh", "data_f_lxWS" };
-        skipWhenMissingDependencies = 1;
-        author = "$STR_CBA_Author";
-        VERSION_CONFIG;
-        // this prevents any patched class from requiring XEH
-        addonRootClass = "A3_Characters_F";
-    };
-};
-class XEH_CLASS_BASE;
-
 class CfgVehicles {
     class PowerLines_Small_base_F;
     class Land_PowerPoleWooden_lxWS: PowerLines_Small_base_F {
@@ -38,12 +19,12 @@ class CfgVehicles {
     class C_Journalist_lxWS: C_journalist_F {
         XEH_ENABLED;
     };
-    
+
     class C_Man_casual_1_F_afro;
     class C_Tak_01_A_lxWS: C_Man_casual_1_F_afro {
         XEH_ENABLED;
     };
-    
+
     class B_Soldier_TL_F;
     class B_ION_Story_Givens_lxWS: B_Soldier_TL_F {
         XEH_ENABLED;

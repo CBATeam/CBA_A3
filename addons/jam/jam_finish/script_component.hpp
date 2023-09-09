@@ -1,3 +1,2 @@
-#define COMPONENT jam_finish
-#include "\x\cba\addons\main\script_mod.hpp"
-#include "\x\cba\addons\main\script_macros.hpp"
+#define SUBCOMPONENT finish
+#include "\x\cba\addons\jam\script_component.hpp"
