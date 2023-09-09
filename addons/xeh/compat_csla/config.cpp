@@ -1,4 +1,4 @@
-#include "\x\cba\addons\xeh\script_component.hpp"
+#include "..\script_component.hpp"
 #undef COMPONENT
 #define COMPONENT xeh_compat_csla
 
