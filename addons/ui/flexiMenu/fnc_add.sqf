@@ -1,5 +1,5 @@
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 TRACE_1("",_this);
 

@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 #define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4 + (sizeOf typeOf _var) / 2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
