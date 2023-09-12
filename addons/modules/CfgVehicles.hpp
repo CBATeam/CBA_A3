@@ -19,7 +19,7 @@ class CfgVehicles {
         is3DEN = 0;
 
         class Arguments: ArgumentsBaseUnits {
-            class attackLocType{
+            class attackLocType {
                 displayName = CSTRING(AttackLocType);
                 description = CSTRING(AttackLocType_Desc);
                 typeName = "STRING";
