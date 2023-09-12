@@ -1,4 +1,4 @@
-//#include "\x\cba\addons\ui\script_component.hpp"
+//#include "..\..\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\buttonList\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) // screen centre x

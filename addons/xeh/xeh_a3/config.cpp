@@ -1,4 +1,5 @@
-#include "script_component.hpp"
+#define SUBCOMPONENT a3
+#include "..\script_component.hpp"
 
 class CfgPatches {
     class SUBADDON {
