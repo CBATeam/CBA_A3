@@ -1,2 +1,2 @@
-#define SUBCOMPONENT prep
+#define SUBCOMPONENT contact
 #include "..\script_component.hpp"

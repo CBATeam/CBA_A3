@@ -1,4 +1,4 @@
-// #include "\x\cba\addons\ui\script_component.hpp"
+// #include "..\..\script_component.hpp"
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\popup\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
@@ -12,7 +12,7 @@
 #define _captionColorFG "138 / 256", "146 / 256", "105 / 256" //BIS greenish text
 #define _captionHgt 1 // 0.75
 
-class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
+class CBA_flexiMenu_rscPopup { // _flexiMenu_rscRose
     idd = -1; // _flexiMenu_IDD;
     movingEnable = 0;
     onLoad = QUOTE(with uiNamespace do {GVAR(display) = _this select 0};);

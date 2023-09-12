@@ -1,22 +1,3 @@
-#include "\x\cba\addons\xeh\script_component.hpp"
-#undef COMPONENT
-#define COMPONENT xeh_compat_csla
-
-class CfgPatches {
-    class ADDON {
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "cba_xeh", "CSLA", "US85" };
-        skipWhenMissingDependencies = 1;
-        author = "$STR_CBA_Author";
-        VERSION_CONFIG;
-        // this prevents any patched class from requiring XEH
-        addonRootClass = "A3_Characters_F";
-    };
-};
-class XEH_CLASS_BASE;
-
 class CfgVehicles {
     class StaticATWeapon;
     class CSLA_9K113_Stat: StaticATWeapon {
