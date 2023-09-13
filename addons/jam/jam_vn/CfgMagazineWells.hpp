@@ -230,6 +230,13 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_792x57_LINKS {
+        VN_drums[] = {
+            "vn_mg42_50_mag",
+            "vn_mg42_50_t_mag"
+        };
+    };
+
     class CBA_9x18_PM {
         VN_mags[] = {
             "vn_pm_mag"
