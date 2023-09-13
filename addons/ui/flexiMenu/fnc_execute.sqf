@@ -2,7 +2,7 @@
 
 // Perform menu action execution along with related menu behaviour changes.
 //-----------------------------------------------------------------------------
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 private _arrayID = _this;
 private _actionData = GVAR(menuActionData) select _arrayID;

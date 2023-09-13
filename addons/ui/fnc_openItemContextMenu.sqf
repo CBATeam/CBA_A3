@@ -139,19 +139,17 @@ _list setVariable [QFUNC(activate), {
     };
 }];
 
-_list ctrlAddEventHandler ["lbDblClick", {
-    params ["_list"];
-    _this call (_list getVariable QFUNC(activate));
+_list ctrlAddEventHandler ["LBSelChanged", {
+    [{
+        params ["_list"];
+        _this call (_list getVariable QFUNC(activate));
+    }, _this] call CBA_fnc_execNextFrame;
 }];
-
 _list ctrlAddEventHandler ["KeyDown", {
-    params ["_list", "_key"];
-    if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then {
-        [_list getVariable QFUNC(activate), [_list, lbCurSel _list]] call CBA_fnc_execNextFrame;
-
-        // Set focus on background to prevent the inventory menu from auto closing.
-        ctrlSetFocus (ctrlParent _list displayCtrl IDC_FG_GROUND_TAB);
-    };
+    params ["", "_key"];
+    // keyboard's Up/Down events intercepted to prevent LBSelChanged event
+    if !(_key in [DIK_UP, DIK_DOWN]) exitWith {};
+    true
 }];
 
 // ---
