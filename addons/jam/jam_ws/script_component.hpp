@@ -1,3 +1,2 @@
-#define COMPONENT jam_ws
-#include "\x\cba\addons\main\script_mod.hpp"
-#include "\x\cba\addons\main\script_macros.hpp"
+#define SUBCOMPONENT ws
+#include "..\script_component.hpp"
