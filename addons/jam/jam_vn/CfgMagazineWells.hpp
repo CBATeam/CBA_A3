@@ -23,6 +23,13 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_3006_Garand {
+        VN_clips[] = {
+            "vn_m1_garand_mag",
+            "vn_m1_garand_t_mag"
+        };
+    };
+
     class CBA_32ACP_Vz61 {
         VN_mags[] = {
             "vn_vz61_mag"
