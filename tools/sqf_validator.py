@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import fnmatch
 import os
@@ -7,12 +7,8 @@ import ntpath
 import sys
 import argparse
 
-if sys.version_info.major == 2:
-    import codecs
-    open = codecs.open
-
 def validKeyWordAfterCode(content, index):
-    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch", "param", "select", "apply"];
+    keyWords = ["for", "do", "count", "each", "forEach", "else", "and", "not", "isEqualTo", "in", "call", "spawn", "execVM", "catch", "param", "select", "apply", "findIf", "remoteExec"];
     for word in keyWords:
         try:
             subWord = content.index(word, index, index+len(word))
@@ -51,7 +47,7 @@ def check_sqf_syntax(filepath):
         inStringType = '';
 
         lastIsCurlyBrace = False
-        checkForSemiColon = False
+        checkForSemicolon = False
         onlyWhitespace = True
 
         # Extra information so we know what line we find errors at
@@ -62,7 +58,8 @@ def check_sqf_syntax(filepath):
         for c in content:
             if (lastIsCurlyBrace):
                 lastIsCurlyBrace = False
-                checkForSemiColon = True
+                # Test generates false positives with binary commands that take CODE as 2nd arg (e.g. findIf)
+                checkForSemicolon = not re.search('findIf', content, re.IGNORECASE)
 
             if c == '\n': # Keeping track of our line numbers
                 onlyWhitespace = True # reset so we can see if # is for a preprocessor command
@@ -122,9 +119,9 @@ def check_sqf_syntax(filepath):
                         if (c not in [' ', '\t', '\n']):
                             onlyWhitespace = False
 
-                        if (checkForSemiColon):
+                        if (checkForSemicolon):
                             if (c not in [' ', '\t', '\n', '/']): # keep reading until no white space or comments
-                                checkForSemiColon = False
+                                checkForSemicolon = False
                                 if (c not in [']', ')', '}', ';', ',', '&', '!', '|', '='] and not validKeyWordAfterCode(content, indexOfCharacter)): # , 'f', 'd', 'c', 'e', 'a', 'n', 'i']):
                                     print("ERROR: Possible missing semicolon ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
                                     bad_count_file += 1
@@ -148,6 +145,17 @@ def check_sqf_syntax(filepath):
         if brackets_list.count('{') != brackets_list.count('}'):
             print("ERROR: A possible missing curly brace {{ or }} in file {0} {{ = {1} }} = {2}".format(filepath,brackets_list.count('{'),brackets_list.count('}')))
             bad_count_file += 1
+        pattern = re.compile('\s*(/\*[\s\S]+?\*/)\s*#include')
+        if pattern.match(content):
+            print("ERROR: A found #include after block comment in file {0}".format(filepath))
+            bad_count_file += 1
+        if ("functions" in filepath):
+            if (content.startswith("#include \"script_component.hpp\"")):
+                print(f"ERROR: Using old script_component.hpp in {filepath}")
+                bad_count_file += 1
+
+
+
     return bad_count_file
 
 def main():
@@ -161,14 +169,15 @@ def main():
     parser.add_argument('-m','--module', help='only search specified module addon folder', required=False, default="")
     args = parser.parse_args()
 
-    # Allow running from root directory as well as from inside the tools directory
-    rootDir = "../addons"
-    if (os.path.exists("addons")):
-        rootDir = "addons"
+    for folder in ['addons', 'optionals']:
+        # Allow running from root directory as well as from inside the tools directory
+        rootDir = "../" + folder
+        if (os.path.exists(folder)):
+            rootDir = folder
 
-    for root, dirnames, filenames in os.walk(rootDir + '/' + args.module):
-      for filename in fnmatch.filter(filenames, '*.sqf'):
-        sqf_list.append(os.path.join(root, filename))
+        for root, dirnames, filenames in os.walk(rootDir + '/' + args.module):
+            for filename in fnmatch.filter(filenames, '*.sqf'):
+                sqf_list.append(os.path.join(root, filename))
 
     for filename in sqf_list:
         bad_count = bad_count + check_sqf_syntax(filename)

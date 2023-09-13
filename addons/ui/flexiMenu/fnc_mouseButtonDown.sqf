@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 #define _rightMouseButton 1
 
 params ["_display", "_button", "_x", "_y", "_shiftKey", "_ctrlKey", "_altKey"];;
