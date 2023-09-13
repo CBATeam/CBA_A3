@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-    class SUBADDON  {
+    class SUBADDON {
         name = CSTRING(component);
         units[] = {};
         weapons[] = {};
