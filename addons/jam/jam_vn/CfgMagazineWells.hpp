@@ -122,6 +122,8 @@ class CfgMagazineWells {
 
     class CBA_762x39_AK {
         VN_mags[] = {
+            "vn_kbkg_mag",
+            "vn_kbkg_t_mag",
             "vn_type56_mag",
             "vn_type56_t_mag"
         };
