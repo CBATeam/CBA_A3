@@ -1,2 +1,2 @@
-#define SUBCOMPONENT prep
+#define SUBCOMPONENT sog
 #include "..\script_component.hpp"

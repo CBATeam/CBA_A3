@@ -1,5 +1,5 @@
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 // _this = ["player", [DIK_LSHIFT], -3, ["mission\weapon_menuDef.sqf", ["main"]]]
 

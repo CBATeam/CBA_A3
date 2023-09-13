@@ -1,7 +1,7 @@
 // Desc: determine menuDef to use, based on variable param variations
 //-----------------------------------------------------------------------------
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 private _target = _this select 0;
 private _menuSources = _this select 1; // [_target, _menuSources];

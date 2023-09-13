@@ -1,6 +1,6 @@
 // Desc: "keyDown" EH for menu dialog
 //-----------------------------------------------------------------------------
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 if (isDedicated || !dialog) exitWith {};
 
