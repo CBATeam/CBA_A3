@@ -1,7 +1,7 @@
 // Desc: parse and set menu option record values
 // _this = [_menuDefs select 0, _menuDefs select 1 select N] (header & one menu def)
 //-----------------------------------------------------------------------------
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 #include "DIKASCIIMap.hpp"
 
 #define _flexiMenuSeparatorLine "<img image='\x\cba\addons\ui\flexiMenu\data\popup\separator.paa'/>" //<t size='1'> </t>  <t underline='true'>a    c</t>

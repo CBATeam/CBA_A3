@@ -16,6 +16,9 @@ for root, _dirs, files in os.walk(include_base_path):
             continue
         file_r_path = os.path.join(include_base_path, relative_path, file)
         file_v_path = os.path.join(p_drive_path, relative_path, file)
+        if (file_v_path.endswith(".p3d")):
+            print(f"ignoring p3d {file_v_path}")
+            continue
         if not os.path.isfile(file_v_path):
             raise Exception("Missing p-drive file {}".format(file_v_path))
         shutil.copyfile(file_v_path, file_r_path)

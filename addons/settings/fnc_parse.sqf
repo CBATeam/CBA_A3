@@ -13,65 +13,69 @@ Returns:
     Settings with values and priority states. <ARRAY>
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 
-// parses bool, number, string
+params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];
+
+// Parses bools, numbers, strings
 private _fnc_parseAny = {
     params ["_string"];
 
     // Remove whitespace so parseSimpleArray can handle arrays.
     // Means that strings inside arrays don't support white space chars, but w/e.
     // No such setting exists atm anyway.
-    if (_string find """" != 0) then {
-        _string = _string splitString WHITESPACE joinString "";
-    };
+    _string = _string splitString _whitespace joinString "";
 
     parseSimpleArray (["[", _string, "]"] joinString "") select 0
 };
 
-params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];
+// Remove whitespaces at the start and end of each statement, a statement being defined by the ";" at its end
+private _parsed = [];
 
-// remove whitespace at start and end of each line
+{
+    _parsed pushBack (trim _x);
+} forEach (_info splitString ";");
+
+// Remove empty strings
+_parsed = _parsed - [""];
+
+// Separate statements (setting = value)
 private _result = [];
+private _indexEqualSign = -1;
+private _setting = "";
+private _priority = 0;
+private _value = "";
+private _countForce = count "force";
+private _whitespace = WHITESPACE;
 
 {
-    _result pushBack (_x call CBA_fnc_trim);
-} forEach (_info splitString NEWLINE);
+    _indexEqualSign = _x find "=";
 
-{
-    if (_x select [count _x - 1] != ";") then {
-        _result set [_forEachIndex, _x + ";"];
-    };
-} forEach _result;
+    // Setting name is in front of "="
+    _setting = (_x select [0, _indexEqualSign]) trim [_whitespace, 2];
+    _priority = 0;
 
-_info = (_result joinString NEWLINE) + NEWLINE;
-
-// separate statements (setting = value)
-_result = [];
-
-{
-    private _indexEqualSign = _x find "=";
-
-    private _setting = (_x select [0, _indexEqualSign]) call CBA_fnc_rightTrim;
-    private _priority = 0;
-
-    if (_setting select [0, count "force"] == "force") then {
-        _setting = _setting select [count "force"] call CBA_fnc_leftTrim;
+    // Check if the first entry is "force" and followed by whitespace
+    if (_setting select [0, _countForce] == "force" && {(_setting select [_countForce, 1]) in _whitespace}) then {
+        _setting = (_setting select [_countForce]) trim [_whitespace, 1];
         _priority = _priority + 1;
     };
 
-    if (_setting select [0, count "force"] == "force") then {
-        _setting = _setting select [count "force"] call CBA_fnc_leftTrim;
+    // Check if the second entry is "force" and followed by whitespace
+    if (_setting select [0, _countForce] == "force" && {(_setting select [_countForce, 1]) in _whitespace}) then {
+        _setting = (_setting select [_countForce]) trim [_whitespace, 1];
         _priority = _priority + 1;
     };
 
+    // If setting is valid, get its value
     if (_setting != "") then {
-        private _value = ((_x select [_indexEqualSign + 1]) call CBA_fnc_trim) call _fnc_parseAny;
+        _value = (_x select [_indexEqualSign + 1]) call _fnc_parseAny;
 
         if !(_validate) then {
             _result pushBack [_setting, _value, _priority];
         } else {
+            // Check if setting is valid
             if (isNil {[_setting, "default"] call FUNC(get)}) exitWith {
                 ERROR_1("Setting %1 does not exist.",_setting);
             };
@@ -84,6 +88,6 @@ _result = [];
             _result pushBack [_setting, _value, _priority];
         };
     };
-} forEach ([_info, ";" + NEWLINE] call CBA_fnc_split);
+} forEach _parsed;
 
 _result
