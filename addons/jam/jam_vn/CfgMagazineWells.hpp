@@ -55,6 +55,12 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_380ACP_PPK {
+        VN_mags[] = {
+            "vn_ppk_mag"
+        };
+    };
+
     class CBA_38_Special_6rnds {
         VN_rounds[] = {
             "vn_m10_mag"
