@@ -1,3 +1,2 @@
-#define COMPONENT jam_gm
-#include "\x\cba\addons\main\script_mod.hpp"
-#include "\x\cba\addons\main\script_macros.hpp"
+#define SUBCOMPONENT gm
+#include "..\script_component.hpp"
