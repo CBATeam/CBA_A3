@@ -29,11 +29,11 @@ class CfgWeapons {
     };
 
     class CSLA_Pi82: CSLA_Pi52 {
-        magazineWell[] += {"CBA_9x18_CZ82"};
+        magazineWell[] = {"CBA_9x18_CZ82"};
     };
 
     class CSLA_Sa61: CSLA_Pi52 {
-        magazineWell[] += {"CBA_32ACP_Vz61"};
+        magazineWell[] = {"CBA_32ACP_Vz61"};
     };
 
     class CSLA_Launcher_AT;
