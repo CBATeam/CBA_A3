@@ -14,9 +14,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x39_AK"};
     };
 
-    class CSLA_MachinegunBase_5_56: CSLA_baseWeapon {};
-
-    class CSLA_MachinegunBase_7_62: CSLA_MachinegunBase_5_56 {};
+    class CSLA_MachinegunBase_7_62;
 
     class CSLA_UK59L: CSLA_MachinegunBase_7_62 {
         magazineWell[] += {"CBA_762x54R_Vz59_LINKS"};
