@@ -20,6 +20,7 @@ class CfgMagazineWells {
         };
     };
 
+    /* AA12 proxy is different compared to CUP proxy
     class CBA_12g_AA12 {
         WS_mags[] = {
             "8Rnd_12Gauge_AA40_HE_lxWS",
@@ -54,7 +55,9 @@ class CfgMagazineWells {
             "20Rnd_12Gauge_AA40_Smoke_Tan_lxWS"
         };
     };
+    */
 
+    /* Galil proxy is different compared to CUP proxy
     class CBA_556x45_GALIL {
         WS_mags[] = {
             "35Rnd_556x45_Velko_lxWS",
@@ -87,6 +90,7 @@ class CfgMagazineWells {
             "50Rnd_556x45_Velko_tracer_yellow_lxWS"
         };
     };
+    */
 
     class CBA_556x45_STANAG_XL {
         WS_mags[] = {
@@ -102,6 +106,7 @@ class CfgMagazineWells {
         };
     };
 
+    /* FAL proxy is different compared to CUP proxy
     class CBA_762x51_FAL {
         WS_mags[] = {
             "20Rnd_762x51_slr_lxWS",
@@ -123,6 +128,7 @@ class CfgMagazineWells {
             "30Rnd_762x51_slr_tracer_green_lxWS"
         };
     };
+    */
 
     class CBA_762x51_LINKS {
         WS_belts[] = {

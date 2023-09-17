@@ -5,13 +5,17 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x39_AK"};
     };
 
+    /* WS Galil proxy is different compared to CUP Galil proxy
     class arifle_Velko_base_lxWS: arifle_Galat_base_lxWS {
         magazineWell[] += {"CBA_556x45_GALIL"};
     };
+    */
 
+    /* WS AA12 proxy is different compared to CUP AA12 proxy
     class sgun_aa40_base_lxWS: Rifle_Base_F {
         magazineWell[] += {"CBA_12g_AA12", "CBA_12g_AA12_XL"};
     };
+    */
 
     class Rifle_Long_Base_F;
 
@@ -33,7 +37,9 @@ class CfgWeapons {
 
     class DMR_06_base_F;
 
+    /* WS FAL proxy is different compared to CUP FAL proxy
     class arifle_SLR_lxWS: DMR_06_base_F {
         magazineWell[] += {"CBA_762x51_FAL", "CBA_762x51_FAL_L"};
     };
+    */
 };
