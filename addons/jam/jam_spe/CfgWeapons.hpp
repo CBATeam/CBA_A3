@@ -15,7 +15,7 @@ class CfgWeapons {
     };
 
     class SPE_M1_Garand: SPE_RIFLE {
-        magazineWell[] += {"CBA_30Carbine_M1Carbine"};
+        magazineWell[] += {"CBA_3006_Garand"};
     };
 
     class SPE_M1903A3_Springfield: SPE_RIFLE {
