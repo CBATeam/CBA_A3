@@ -11,6 +11,10 @@ class CfgWeapons {
         magazineWell[] += {"CBA_30Carbine_M1Carbine"};
     };
 
+    class vn_m1_garand: vn_rifle762 {
+        magazineWell[] += {"CBA_3006_Garand"};
+    };
+
     class vn_m14: vn_rifle762 {
         magazineWell[] += {"CBA_762x51_M14", "CBA_762x51_M14_L", "CBA_762x51_M14_XL"};
     };
