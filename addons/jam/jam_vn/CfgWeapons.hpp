@@ -7,6 +7,10 @@ class CfgWeapons {
 
     class vn_rifle762: vn_rifle {};
 
+    class vn_k98k: vn_rifle762 {
+        magazineWell[] += {"CBA_792x57_K98"};
+    };
+
     class vn_m1carbine: vn_rifle762 {
         magazineWell[] += {"CBA_30Carbine_M1Carbine"};
     };
