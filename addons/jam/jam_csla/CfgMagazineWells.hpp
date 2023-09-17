@@ -97,6 +97,13 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_9x19_CZ75_Full {
+        CSLA_mags[] = {
+            "CSLA_Pi75_15Rnd_9Cv48",
+            "CSLA_Pi75_15Rnd_9Luger"
+        };
+    };
+
     class CBA_9x19_M9 {
         CSLA_mags[] = {
             "US85_M9_15Rnd_9Luger"

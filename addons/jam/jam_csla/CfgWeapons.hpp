@@ -26,6 +26,10 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x25_TT"};
     };
 
+    class CSLA_Pi75sr: CSLA_PistolBase {
+        magazineWell[] += {"CBA_9x19_CZ75_Full"};
+    };
+
     class CSLA_Pi82: CSLA_Pi52 {
         magazineWell[] = {"CBA_9x18_CZ82"};
     };
