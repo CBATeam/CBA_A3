@@ -69,7 +69,7 @@ with uiNamespace do {
 GVAR(awaitingRestartTemp) = + GVAR(awaitingRestart);
 
 // ----- create addons list (filled later)
-private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddonsGroup];
+private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), IDC_ADDONS_LIST, _ctrlAddonsGroup];
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
@@ -77,26 +77,18 @@ _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonCh
 _display setVariable [QGVAR(lists),[]];
 
 // ----- fill addons list
-private _categories = [];
-{
-    (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
+[_display, _ctrlAddonList] call FUNC(gui_addonList_fillList);
 
-    if !(_category in _categories) then {
-        private _categoryLocalized = _category;
-        if (isLocalized _category) then {
-            _categoryLocalized = localize _category;
+private _listIndex = 0;
+private _lastAddon = uiNamespace getVariable [QGVAR(addon), ""];
+if (_lastAddon != "") then {
+    for "_lbIndex" from 0 to (lbSize _ctrlAddonList - 1) do {
+        if ((_display getVariable [(_ctrlAddonList lbData _lbIndex), ""]) == _lastAddon) exitWith {
+            _listIndex = _lbIndex;
         };
-
-        private _index = _ctrlAddonList lbAdd _categoryLocalized;
-        _ctrlAddonList lbSetData [_index, str _index];
-        _display setVariable [str _index, _category];
-
-        _categories pushBack _category;
     };
-} forEach GVAR(allSettings);
-
-lbSort _ctrlAddonList;
-_ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);
+};
+_ctrlAddonList lbSetCurSel _listIndex;
 
 // ----- create save and load presets buttons
 private _ctrlButtonSave = _display ctrlCreate ["RscButtonMenu", IDC_BTN_SAVE];
