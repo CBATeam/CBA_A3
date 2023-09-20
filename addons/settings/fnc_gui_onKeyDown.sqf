@@ -11,19 +11,11 @@ switch (_key) do {
             [_display, _display displayCtrl IDC_ADDONS_SEARCHBAR] call FUNC(gui_addonList_handleSearchbar);
             _block = true;
         };
-        if (GVAR(SettingSearchbarFocus)) then {
-            //[_display, _display displayCtrl IDC_SETTINGS_SEARCHBAR] call FUNC(gui_setting_handleSearchbar);
-            _block = true;
-        };
     };
     // Focus search bars
     case DIK_F: {
         if (_ctrl) then {
-            if (GVAR(AddonSearchbarFocus)) then {
-                ctrlSetFocus (_display displayCtrl IDC_SETTINGS_SEARCHBAR);
-            } else {
-                ctrlSetFocus (_display displayCtrl IDC_ADDONS_SEARCHBAR);
-            };
+            ctrlSetFocus (_display displayCtrl IDC_ADDONS_SEARCHBAR);
             _block = true;
         };
     };

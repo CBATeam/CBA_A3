@@ -123,17 +123,6 @@ _ctrlButtonLoad ctrlEnable false;
 _ctrlButtonLoad ctrlShow false;
 _ctrlButtonLoad ctrlAddEventHandler ["ButtonClick", {[ctrlParent (_this select 0), "load"] call FUNC(gui_preset)}];
 
-// ----- create settings search bar
-private _ctrlSearchBarSettings = _display ctrlCreate ["RscEdit", IDC_SETTINGS_SEARCHBAR];
-_ctrlSearchBarSettings ctrlSetPosition [
-    POS_X(13.8),
-    POS_Y(20.45),
-    POS_W(12.4),
-    POS_H(1)
-];
-
-_ctrlSearchBarSettings ctrlCommit 0;
-
 
 // ----- create export and import buttons
 private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT];
