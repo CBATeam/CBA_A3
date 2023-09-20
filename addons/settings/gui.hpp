@@ -1,6 +1,7 @@
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
+class RscEdit;
 class ctrlButtonPicture;
 
 class RscDisplayGameOptions {
@@ -312,8 +313,6 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
         class OverwriteMission: OverwriteMission {};
     };
 };
-
-class RscEdit;
 
 class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);
