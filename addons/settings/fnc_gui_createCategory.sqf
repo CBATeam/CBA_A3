@@ -117,7 +117,7 @@ private _lastSubCategory = "$START";
         if (_settingTypeTemp == "COLOR" && {count _defaultValue > 3}) then {
             _settingTypeTemp = "ColorAlpha";
         };
-        private _ctrlSettingGroup = _display ctrlCreate [format ["%1_%2", QGVAR(Row), _settingTypeTemp]];
+        private _ctrlSettingGroup = _display ctrlCreate [format ["%1_%2", QGVAR(Row), _settingTypeTemp], IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup];
 
         // ----- determine display string for default value
         private _defaultValueTooltip = switch (toUpper _settingType) do {
