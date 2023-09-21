@@ -1,4 +1,6 @@
-// inline function, don't include script_component.hpp
+#include "script_component.hpp"
+
+params ["_display", "_selectedAddon"];
 
 private _fnc_controlSetTablePosY = {
     params ["_control", "_tablePosY", "_height"];
@@ -102,7 +104,7 @@ private _lastSubCategory = "$START";
         // Add sub-category header
         if (_createHeader) then {
             private _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
-            private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
+            private _ctrlHeaderName = GET_CTRL_NAME(_ctrlHeaderGroup);
             _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
 
             private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
@@ -111,27 +113,11 @@ private _lastSubCategory = "$START";
         };
 
         // ----- create setting group
-        private _ctrlSettingGroup = switch (toUpper _settingType) do {
-            case "CHECKBOX": {
-                _display ctrlCreate [QGVAR(Row_Checkbox), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            case "EDITBOX": {
-                _display ctrlCreate [QGVAR(Row_Editbox), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            case "LIST": {
-                _display ctrlCreate [QGVAR(Row_List), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            case "SLIDER": {
-                _display ctrlCreate [QGVAR(Row_Slider), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            case "COLOR": {
-                _display ctrlCreate [[QGVAR(Row_Color), QGVAR(Row_ColorAlpha)] select (count _defaultValue > 3), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            case "TIME": {
-                _display ctrlCreate [QGVAR(Row_Time), IDC_SETTING_CONTROLS_GROUP, _ctrlOptionsGroup]
-            };
-            default {controlNull};
+        private _settingTypeTemp = _settingType;
+        if (_settingTypeTemp == "COLOR" && {count _defaultValue > 3}) then {
+            _settingTypeTemp = "ColorAlpha";
         };
+        private _ctrlSettingGroup = _display ctrlCreate [format ["%1_%2", QGVAR(Row), _settingTypeTemp]];
 
         // ----- determine display string for default value
         private _defaultValueTooltip = switch (toUpper _settingType) do {
@@ -164,7 +150,7 @@ private _lastSubCategory = "$START";
         };
 
         // ----- set tooltip on "Reset to default" button
-        private _ctrlDefault = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
+        private _ctrlDefault = GET_CTRL_DEFAULT(_ctrlSettingGroup);
         _ctrlDefault ctrlSetTooltip (format ["%1\n%2", localize LSTRING(default_tooltip), _defaultValueTooltip]);
 
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
@@ -186,7 +172,7 @@ private _lastSubCategory = "$START";
         };
 
         // ----- set setting name
-        private _ctrlSettingName = _ctrlSettingGroup controlsGroupCtrl IDC_SETTING_NAME;
+        private _ctrlSettingName = GET_CTRL_NAME(_ctrlSettingGroup);
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
 
