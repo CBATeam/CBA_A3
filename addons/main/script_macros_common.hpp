@@ -1275,7 +1275,7 @@ Author:
     #define ELSTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
     #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
-    #define SCSTRING(var) QUOTE(TRIPLES($STR,ADDON##_##COMPONENT,var))
+    #define SCSTRING(var1) QUOTE(TRIPLES($STR,ADDON##_##COMPONENT,var1))
 
     #define LLSTRING(var1) localize QUOTE(TRIPLES(STR,ADDON,var1))
     #define LELSTRING(var1,var2) localize QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
