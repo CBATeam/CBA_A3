@@ -1279,7 +1279,7 @@ Author:
 
     #define LLSTRING(var1) localize QUOTE(TRIPLES(STR,ADDON,var1))
     #define LELSTRING(var1,var2) localize QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
-    #define LSUBCSTRING(var1) localize QUOTE(TRIPLES($STR,SUBADDON,var1))
+    #define LSUBCSTRING(var1) localize QUOTE(TRIPLES(STR,SUBADDON,var1))
 #endif
 
 
