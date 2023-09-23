@@ -108,7 +108,7 @@ class CBA_flexiMenu_rscArma2 {
     };
     //---------------------------------
     class controls {
-        class caption: rscText {
+        class caption: RscText {
             idc = _flexiMenu_IDC_menuDesc;
             //x = QUOTE(_SX - _BW);
             x = QUOTE(_leftButtonLevel1X);
