@@ -42,7 +42,7 @@ class CfgWeapons {
     class gm_machineGun_base: gm_rifle_base {};
 
     class gm_mg3_base: gm_machineGun_base {
-        magazineWell[] += {"gm_mg3_base"};
+        magazineWell[] += {"CBA_762x51_LINKS"};
     };
 
     class gm_pk_base: gm_machineGun_base {
