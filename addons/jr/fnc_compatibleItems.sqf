@@ -37,12 +37,12 @@ if !(isClass _weaponConfig) exitWith {
     []
 };
 
+private _typeFilterExists = !isNil "_typefilter";
+
 // Convert filter into number (if string)
-if (_typefilter isEqualType "") then {
+if (_typeFilterExists && {_typefilter isEqualType ""}) then {
     _typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] find _typefilter, -1];
 };
-
-private _typeFilterExists = !isNil "_typefilter";
 
 // Check if valid type filter
 if (_typeFilterExists && {!(_typefilter in [101, 201, 301, 302])}) exitWith {[]};
