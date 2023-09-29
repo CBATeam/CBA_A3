@@ -27,7 +27,7 @@ _posA = _posA call CBA_fnc_getPos;
 _posB = _posB call CBA_fnc_getPos;
 _posA set [2,0]; _posB set [2,0];
 
-DEFAULT_PARAM(2, _resolution,10);
+DEFAULT_PARAM(2,_resolution,10);
 
 private _angle = [_posA, _posB] call BIS_fnc_dirTo;
 private _2Ddistance = [_posA, _posB] call BIS_fnc_distance2D;
