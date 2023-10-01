@@ -7,7 +7,7 @@ private _fnc_watchDog = {
         INFO_1("missionNamespace processed [%1]", ISPROCESSED(missionNamespace));
         [] call CBA_fnc_preInit;
 
-        // Enable frame related functions (normally enabled in postInit)
+        // Enable frame-related functions (normally enabled in postInit)
         addMissionEventHandler ["EachFrame", {call EFUNC(common,onFrame)}];
     };
 };
