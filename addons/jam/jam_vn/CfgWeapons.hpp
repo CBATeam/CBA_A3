@@ -79,6 +79,10 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x25_PPS"};
     };
 
+    class vn_mc10: vn_pps52 {
+        magazineWell[] = {};
+    };
+
     class vn_ppsh41: vn_smg {
         magazineWell[] += {"CBA_762x25_PPSh_Drum", "CBA_762x25_PPSh_Stick"};
     };
