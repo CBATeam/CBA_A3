@@ -1,5 +1,13 @@
 class CfgWeapons {
-    class vn_rifle;
+    class Rifle_Base_F;
+
+    class UGL_F;
+
+    class vn_rifle: Rifle_Base_F {
+        class vn_ugl: UGL_F {
+            magazineWell[] = {};
+        };
+    };
 
     class vn_m16: vn_rifle {
         magazineWell[] += {"CBA_556x45_STANAG","CBA_556x45_STANAG_L","CBA_556x45_STANAG_XL","CBA_556x45_STANAG_2D","CBA_556x45_STANAG_2D_XL"};
