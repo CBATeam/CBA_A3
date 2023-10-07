@@ -109,6 +109,10 @@ class CfgWeapons {
         magazineWell[] += {"CBA_45ACP_1911"};
     };
 
+    class vn_hp: vn_m1911 {
+        magazineWell[] = {"CBA_9x19_HiPower"};
+    };
+
     class vn_mk22: vn_pistol {};
 
     class vn_m10: vn_mk22 {

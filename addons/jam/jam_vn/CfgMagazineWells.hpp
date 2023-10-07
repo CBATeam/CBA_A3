@@ -243,6 +243,12 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_9x19_HiPower {
+        VN_mags[] = {
+            "vn_hp_mag"
+        };
+    };
+
     class CBA_9x19_MP40 {
         VN_mags[] = {
             "vn_mp40_mag",
