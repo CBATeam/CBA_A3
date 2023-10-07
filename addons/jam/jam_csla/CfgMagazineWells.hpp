@@ -31,11 +31,13 @@ class CfgMagazineWells {
         };
     };
 
+    /* CSLA magazines do not define a modelSpecial
     class CBA_556x45_MINIMI {
         CSLA_boxes[] = {
             "US85_200Rnd_556x45"
         };
     };
+    */
 
     class CBA_556x45_STANAG {
         CSLA_mags[] = {
@@ -50,6 +52,7 @@ class CfgMagazineWells {
         };
     };
 
+    /* CSLA magazines do not define a modelSpecial
     class CBA_762x39_AK {
         CSLA_mags[] = {
             "CSLA_Sa58_30rnd_7_62Cv43",
@@ -57,13 +60,18 @@ class CfgMagazineWells {
             "CSLA_Sa58_30rnd_7_62vz43"
         };
     };
+    */
 
-    class CBA_762x51_AICS {
+    /* CSLA proxy is different compared to CUP proxy
+    class CBA_762x51_FAL {
         CSLA_mags[] = {
-            "US85_10Rnd_762x51"
+            "US85_20Rnd_762M61",
+            "US85_20Rnd_762x51"
         };
     };
+    */
 
+    /* CSLA magazines do not define a modelSpecial
     class CBA_762x51_LINKS {
         CSLA_belts[] = {
             "US85_50Rnd_762x51",
@@ -71,6 +79,7 @@ class CfgMagazineWells {
             "US85_200Rnd_762x51"
         };
     };
+    */
 
     class CBA_762x54R_SVD {
         CSLA_mags[] = {
@@ -97,17 +106,26 @@ class CfgMagazineWells {
         };
     };
 
+    class CBA_9x19_CZ75_Full {
+        CSLA_mags[] = {
+            "CSLA_Pi75_15Rnd_9Cv48",
+            "CSLA_Pi75_15Rnd_9Luger"
+        };
+    };
+
     class CBA_9x19_M9 {
         CSLA_mags[] = {
             "US85_M9_15Rnd_9Luger"
         };
     };
 
+    /* CSLA magazines do not define a modelSpecial
     class CBA_9x19_MP5 {
         CSLA_mags[] = {
             "US85_MPV_30Rnd_9Luger"
         };
     };
+    */
 
     class CBA_SMAW {
         CSLA_rounds[] = {

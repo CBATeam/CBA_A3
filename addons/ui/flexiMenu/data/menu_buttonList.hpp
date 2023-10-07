@@ -100,7 +100,7 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     };
     //---------------------------------
     class controls {
-        class caption: rscText {
+        class caption: RscText {
             idc = _flexiMenu_IDC_menuDesc;
             x = QUOTE(_SX - _BW);
             y = QUOTE(_SY - _buttonsBeforeCenter * _BH - _gapH - _BH * _captionHgt);

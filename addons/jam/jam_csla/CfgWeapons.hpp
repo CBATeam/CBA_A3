@@ -14,9 +14,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x39_AK"};
     };
 
-    class CSLA_MachinegunBase_5_56: CSLA_baseWeapon {};
-
-    class CSLA_MachinegunBase_7_62: CSLA_MachinegunBase_5_56 {};
+    class CSLA_MachinegunBase_7_62;
 
     class CSLA_UK59L: CSLA_MachinegunBase_7_62 {
         magazineWell[] += {"CBA_762x54R_Vz59_LINKS"};
@@ -28,17 +26,21 @@ class CfgWeapons {
         magazineWell[] += {"CBA_762x25_TT"};
     };
 
+    class CSLA_Pi75sr: CSLA_PistolBase {
+        magazineWell[] += {"CBA_9x19_CZ75_Full"};
+    };
+
     class CSLA_Pi82: CSLA_Pi52 {
-        magazineWell[] += {"CBA_9x18_CZ82"};
+        magazineWell[] = {"CBA_9x18_CZ82"};
     };
 
     class CSLA_Sa61: CSLA_Pi52 {
-        magazineWell[] += {"CBA_32ACP_Vz61"};
+        magazineWell[] = {"CBA_32ACP_Vz61"};
     };
 
-    class CSLA_LauncherBase;
+    class CSLA_Launcher_AT;
 
-    class CSLA_RPG7: CSLA_LauncherBase {
+    class CSLA_RPG7: CSLA_Launcher_AT {
         magazineWell[] += {"CBA_RPG7"};
     };
 
@@ -52,7 +54,7 @@ class CfgWeapons {
         magazineWell[] += {"CBA_556x45_STANAG","CBA_556x45_STANAG_L","CBA_556x45_STANAG_XL","CBA_556x45_STANAG_2D","CBA_556x45_STANAG_2D_XL"};
     };
 
-    class US85_M21_Base: US85_weaponBase {
+    class US85_M14_M21_Base: US85_weaponBase {
         magazineWell[] += {"CBA_762x51_M14", "CBA_762x51_M14_L"};
     };
 
@@ -82,9 +84,9 @@ class CfgWeapons {
         magazineWell[] += {"CBA_9x19_M9"};
     };
 
-    class US85_launcherBase;
+    class US85_Launcher_AT;
 
-    class US85_MAAWS: US85_launcherBase {
+    class US85_MAAWS: US85_Launcher_AT {
         magazineWell[] += {"CBA_Carl_Gustaf"};
     };
 

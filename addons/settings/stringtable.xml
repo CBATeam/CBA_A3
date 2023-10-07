@@ -401,7 +401,7 @@
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış.</Turkish>
             <Italian>I client sovrascrivono questa impostazione.</Italian>
             <Czech>Toto nastavení je přepsáno klienty.</Czech>
-            <Korean></Korean>
+            <Korean>이 설정은 클라이언트에 의해 덮어씌워졌습니다.</Korean>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
@@ -416,7 +416,7 @@
             <Turkish>Görev tarafından bu ayarın üstüne yazılmış.</Turkish>
             <Italian>La missione sovrascrive questa impostazione.</Italian>
             <Czech>Toto nastavení je přepsáno misí.</Czech>
-            <Korean></Korean>
+            <Korean>이 설정은 미션에 의해 덮어씌워졌습니다.</Korean>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
