@@ -128,7 +128,7 @@ class CfgWeapons {
     };
 
     class vn_tt33: vn_pm {
-        magazineWell[] += {"CBA_762x25_TT"};
+        magazineWell[] = {"CBA_762x25_TT"};
     };
 
     class vn_vz61_p: vn_pistol {
