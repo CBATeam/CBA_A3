@@ -103,7 +103,7 @@ class CBA_flexiMenu_rscIconRow {  //: _flexiMenu_rscRose
     };
     //---------------------------------
     class controls {
-        class caption: rscText {
+        class caption: RscText {
             idc = _flexiMenu_IDC_menuDesc;
             x = QUOTE(_SX - _buttonsBeforeCenter * _BW);
             y = QUOTE(_SY - _gapH-_StandardBH * _captionHgt);

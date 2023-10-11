@@ -37,12 +37,12 @@ if !(isClass _weaponConfig) exitWith {
     []
 };
 
+private _typeFilterExists = !isNil "_typefilter";
+
 // Convert filter into number (if string)
-if (_typefilter isEqualType "") then {
+if (_typeFilterExists && {_typefilter isEqualType ""}) then {
     _typefilter = [-1, 101, 201, 301, 302] param [["", "muzzle", "optic", "pointer", "bipod"] find _typefilter, -1];
 };
-
-private _typeFilterExists = !isNil "_typefilter";
 
 // Check if valid type filter
 if (_typeFilterExists && {!(_typefilter in [101, 201, 301, 302])}) exitWith {[]};
@@ -52,7 +52,7 @@ if (isNil QGVAR(namespace)) then {
 };
 
 // Get cached result, if it exists
-private _cachekey = format ["%1#%2", _weapon, ["all", _typefilter] select _typeFilterExists];
+private _cachekey = format ["%1#%2", _weapon, if (_typeFilterExists) then {_typefilter} else {"all"} ];
 private _compatibleItems = GVAR(namespace) get _cachekey;
 
 if (!isNil "_compatibleItems") exitWith {
