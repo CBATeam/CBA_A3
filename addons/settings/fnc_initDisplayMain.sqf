@@ -28,6 +28,12 @@ if (_file != "") then {
 
 uiNamespace setVariable [QGVAR(userconfig), compileFinal str _userconfig];
 
+private _volatile = getNumber (configFile >> QGVAR(volatile)) == 1;
+uiNamespace setVariable [QGVAR(volatile), _volatile];
+if (_volatile) then {
+    WARNING("Server settings changes will be lost upon game restart.");
+};
+
 private _ctrlAddonOptions = _display displayCtrl IDC_MAIN_ADDONOPTIONS;
 
 if (isNil QUOTE(ADDON)) then {

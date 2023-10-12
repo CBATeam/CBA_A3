@@ -77,7 +77,7 @@ switch (toLower _source) do {
     case "server": {
         if (!isServer) exitWith {};
 
-        profileNamespace setVariable [QGVAR(hash), HASH_NULL];
+        GVAR(serverHashNamespace) setVariable [QGVAR(hash), HASH_NULL];
         saveProfileNamespace;
         GVAR(client) call CBA_fnc_deleteNamespace;
         GVAR(client) = [] call CBA_fnc_createNamespace;

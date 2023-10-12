@@ -10,6 +10,9 @@ if (isNil QGVAR(default)) then {
 
     if (isNil QGVAR(server)) then {
         GVAR(server) = NAMESPACE_NULL;
+
+        private _volatile = uiNamespace getVariable QGVAR(volatile);
+        GVAR(serverHashNamespace) = [profileNamespace, uiNamespace] select _volatile;
     };
 
     if (isServer) then {
