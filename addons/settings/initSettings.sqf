@@ -1,6 +1,8 @@
 // inline function, don't include script_component.hpp
 
 if (isNil QGVAR(default)) then {
+    private _volatile = uiNamespace getVariable QGVAR(volatile);
+
     GVAR(allSettings) = [];
     GVAR(default) = [] call CBA_fnc_createNamespace;
 
@@ -10,13 +12,12 @@ if (isNil QGVAR(default)) then {
 
     if (isNil QGVAR(server)) then {
         GVAR(server) = NAMESPACE_NULL;
-
-        private _volatile = uiNamespace getVariable QGVAR(volatile);
         GVAR(serverHashNamespace) = [profileNamespace, uiNamespace] select _volatile;
     };
 
     if (isServer) then {
         missionNamespace setVariable [QGVAR(server), true call CBA_fnc_createNamespace, true];
+        missionNamespace setVariable [QGVAR(volatile), _volatile, true];
     };
 
     // --- read userconfig file

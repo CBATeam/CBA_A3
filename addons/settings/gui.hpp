@@ -85,6 +85,15 @@ class RscDisplayGameOptions {
                     idc = IDC_TXT_OVERWRITE_MISSION;
                     x = QUOTE(POS_W(33));
                 };
+                class VolatileWarningText: OverwriteClientText {
+                    onLoad = QUOTE((_this select 0) ctrlEnable true;);
+                    idc = IDC_TXT_VOLATILE_WARNING;
+                    style = ST_LEFT;
+                    text = CSTRING(volatile);
+                    tooltip = CSTRING(volatile_tooltip);
+                    x = QUOTE(POS_W(1));
+                    w = QUOTE(POS_W(24));
+                };
             };
         };
     };
