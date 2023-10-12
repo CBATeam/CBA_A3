@@ -1,4 +1,5 @@
 name = "CBA_A3"
+mainprefix = "x"
 prefix = "cba"
 author = "CBATeam"
 
@@ -35,3 +36,5 @@ preset = "Hemtt"
 
 [hemtt.release]
 folder = "CBA_A3"
+
+[hemtt.launch.default]
