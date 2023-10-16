@@ -320,7 +320,7 @@
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
-            <English>The server is configured to discard all changes to its setting after it will be restarted.\nChanges will persist between mission restarts.</English>
+            <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
