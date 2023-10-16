@@ -28,7 +28,7 @@ SCRIPT(selectBest);
 
 params ["_array", "_criteria", "_return"];
 
-private _bestScore = -1e99;
+private _bestScore = -1e38;
 {
     private _xScore = _x call _criteria;
     if (_xScore > _bestScore) then {
