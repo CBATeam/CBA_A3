@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
 if (isNil QGVAR(default)) then {
-    private _volatile = isServer && {!hasInterface} && {(getNumber (configFile >> QGVAR(volatile))) == 1};
+    private _volatile = isDedicated && {(getNumber (configFile >> QGVAR(volatile))) == 1};
 
     GVAR(allSettings) = [];
     GVAR(default) = [] call CBA_fnc_createNamespace;

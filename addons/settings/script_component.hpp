@@ -128,7 +128,7 @@
 #define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 #define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 
-#define GET_SERVER_NAMESPACE (with missionNamespace do {if (GVAR(volatile)) then {uiNamespace} else {profileNamespace}})
+#define GET_SERVER_NAMESPACE (with missionNamespace do {if (isDedicated && {GVAR(volatile)}) then {uiNamespace} else {profileNamespace}})
 
 #define TEMP_PRIORITY(setting) (call {private _arr = [\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [nil, [setting,  "client"] call FUNC(priority)]] select 1,\
