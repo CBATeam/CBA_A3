@@ -12,13 +12,12 @@ if (isNil QGVAR(default)) then {
 
     if (isNil QGVAR(server)) then {
         GVAR(server) = NAMESPACE_NULL;
-        GVAR(serverHashNamespace) = [profileNamespace, uiNamespace] select _volatile;
-        if (_volatile) then { WARNING("Server settings changes will be lost upon game restart."); };
     };
 
     if (isServer) then {
         missionNamespace setVariable [QGVAR(server), true call CBA_fnc_createNamespace, true];
         missionNamespace setVariable [QGVAR(volatile), _volatile, true];
+        if (_volatile) then {WARNING("Server settings changes will be lost upon game restart.")};
     };
 
     // --- read userconfig file
