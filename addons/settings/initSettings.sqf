@@ -1,7 +1,7 @@
 // inline function, don't include script_component.hpp
 
 if (isNil QGVAR(default)) then {
-    private _volatile = uiNamespace getVariable QGVAR(volatile);
+    private _volatile = isServer && {!hasInterface} && {(getNumber (configFile >> QGVAR(volatile))) == 1};
 
     GVAR(allSettings) = [];
     GVAR(default) = [] call CBA_fnc_createNamespace;
@@ -13,6 +13,7 @@ if (isNil QGVAR(default)) then {
     if (isNil QGVAR(server)) then {
         GVAR(server) = NAMESPACE_NULL;
         GVAR(serverHashNamespace) = [profileNamespace, uiNamespace] select _volatile;
+        if (_volatile) then { WARNING("Server settings changes will be lost upon game restart."); };
     };
 
     if (isServer) then {
