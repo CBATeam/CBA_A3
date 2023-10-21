@@ -118,7 +118,7 @@ switch (toLower _source) do {
                 private _defaultValue = [_setting, "default"] call FUNC(get);
                 private _defaultPriority = SANITIZE_PRIORITY(_setting,0,_source);
 
-                private _settingsHash = GET_SERVER_NAMESPACE getVariable [QGVAR(hash), HASH_NULL];
+                private _settingsHash = GET_LOCAL_SETTINGS_NAMESPACE getVariable [QGVAR(hash), HASH_NULL];
 
                 if ([_value, _priority] isEqualTo [_defaultValue, _defaultPriority]) then {
                     [_settingsHash, toLower _setting] call CBA_fnc_hashRem;
@@ -126,7 +126,7 @@ switch (toLower _source) do {
                     [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
                 };
 
-                GET_SERVER_NAMESPACE setVariable [QGVAR(hash), _settingsHash];
+                GET_LOCAL_SETTINGS_NAMESPACE setVariable [QGVAR(hash), _settingsHash];
                 saveProfileNamespace;
             };
 

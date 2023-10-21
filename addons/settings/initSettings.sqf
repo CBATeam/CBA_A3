@@ -1,8 +1,6 @@
 // inline function, don't include script_component.hpp
 
 if (isNil QGVAR(default)) then {
-    private _volatile = isDedicated && {(getNumber (configFile >> QGVAR(volatile))) == 1};
-
     GVAR(allSettings) = [];
     GVAR(default) = [] call CBA_fnc_createNamespace;
 
@@ -16,6 +14,7 @@ if (isNil QGVAR(default)) then {
 
     if (isServer) then {
         missionNamespace setVariable [QGVAR(server), true call CBA_fnc_createNamespace, true];
+        private _volatile = isDedicated && {(getNumber (configFile >> QGVAR(volatile))) == 1};
         missionNamespace setVariable [QGVAR(volatile), _volatile, true];
         if (_volatile) then {WARNING("Server settings changes will be lost upon game restart.")};
     };
