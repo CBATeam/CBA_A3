@@ -315,6 +315,14 @@
             <Czech>Resetovat na původní hodnotu.</Czech>
             <Korean>기본값으로 초기화합니다.</Korean>
         </Key>
+        <Key ID="STR_cba_settings_volatile">
+            <English>Changes will not persist after server restart</English>
+            <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
+        </Key>
+        <Key ID="STR_cba_settings_volatile_tooltip">
+            <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
+            <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
+        </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
             <German>Clients\nüberschreiben</German>

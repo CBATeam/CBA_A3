@@ -166,7 +166,7 @@ GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _se
 private _settingInfo = GVAR(userconfig) getVariable _setting;
 
 if (isNil "_settingInfo") then {
-    private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+    private _settingsHash = GET_LOCAL_SETTINGS_NAMESPACE getVariable [QGVAR(hash), HASH_NULL];
     _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
 };
 
