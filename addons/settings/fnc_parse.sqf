@@ -8,6 +8,7 @@ Description:
 Parameters:
     _info     - Content of file or clipboard to parse. <STRING>
     _validate - Check if settings are valid. (optional, default: false) <BOOL>
+    _source   - Can be "client", "mission" or "server" (optional, default: "") <STRING>
 
 Returns:
     Settings with values and priority states. <ARRAY>
@@ -22,13 +23,15 @@ params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]
 private _fnc_parseAny = {
     params ["_string"];
 
-    // Remove whitespace so parseSimpleArray can handle arrays.
-    // Means that strings inside arrays don't support white space chars, but w/e.
-    // No such setting exists atm anyway.
-    _string = _string splitString _whitespace joinString "";
-
     parseSimpleArray (["[", _string, "]"] joinString "") select 0
 };
+
+// If string comes from the "import" button, it is not preprocessed
+// Therefore, remove single line comments (//)
+_info = _info regexReplace ["/{2}[^\n\r]*((\n|\r)?)", ""];
+
+// Remove multiline comments too (/* */)
+_info = _info regexReplace ["/\*[^(\*/)]*((\*/)?)", ""];
 
 // Remove whitespaces at the start and end of each statement, a statement being defined by the ";" at its end
 private _parsed = [];

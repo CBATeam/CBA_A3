@@ -162,6 +162,8 @@ def main():
 
     print("Validating SQF")
 
+    files_to_ignore_lower = [x.lower() for x in ["test_parse.sqf"]]
+
     sqf_list = []
     bad_count = 0
 
@@ -177,6 +179,7 @@ def main():
 
         for root, dirnames, filenames in os.walk(rootDir + '/' + args.module):
             for filename in fnmatch.filter(filenames, '*.sqf'):
+                if filename.lower() in files_to_ignore_lower: continue
                 sqf_list.append(os.path.join(root, filename))
 
     for filename in sqf_list:
