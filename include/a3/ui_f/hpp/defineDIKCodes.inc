@@ -1,3 +1,6 @@
+#pragma hemtt suppress pw3_padded_arg file
+#pragma hemtt suppress pw3_padded_arg config
+
 #ifndef DIK_ESCAPE
 
 /****************************************************************************

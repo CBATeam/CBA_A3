@@ -14,8 +14,8 @@ class RscTitles {
                 idc = -1;
                 font = "RobotoCondensedBold";
                 sizeEx = QUOTE(0.55 * GUI_GRID_CENTER_H);
-                x = QUOTE( 0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
-                y = QUOTE( 5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
+                x = QUOTE(0 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X);
+                y = QUOTE(5 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y);
                 w = QUOTE(40 * GUI_GRID_CENTER_W);
                 h = QUOTE(10 * GUI_GRID_CENTER_H);
                 colorBackground[] = {1,0.2,0,0.8};

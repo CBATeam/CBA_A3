@@ -1,5 +1,6 @@
 //#define DEBUG_MODE_FULL
 //#include "..\..\script_component.hpp"
+#pragma hemtt suppress pw3_padded_arg file
 
 #define _DefaultAspectRatio 3 / 4
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
