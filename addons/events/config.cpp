@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#pragma hemtt suppress pw3_padded_arg config
 
 class CfgPatches {
     class ADDON {
