@@ -15,8 +15,7 @@ class Cfg3DEN {
                         for '_y' from 1900 to 2050 do {\
                             _ctrlYear lbSetValue [ARR_2(_ctrlYear lbAdd str _y,_y)];\
                         };\
-                        _ctrlYear lbSetCurSel 53;\
-                    );
+                        _ctrlYear lbSetCurSel 53;);
                 };
             };
         };
@@ -32,8 +31,7 @@ class Cfg3DEN {
                                 _this setGroupID [ARR_1(_value)];\
                             } else {\
                                 [ARR_2(_this,_value)] call CBA_fnc_setCallsign;\
-                            };\
-                        );
+                            };);
                     };
                 };
             };

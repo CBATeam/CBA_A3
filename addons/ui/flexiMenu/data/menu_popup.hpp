@@ -1,4 +1,5 @@
 // #include "..\..\script_component.hpp"
+#pragma hemtt suppress pw3_padded_arg file
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\popup\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
