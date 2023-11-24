@@ -14,6 +14,7 @@
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
             <Czech>Community Base Addons - Umělá inteligence</Czech>
             <Korean>커뮤니티 베이스 애드온- 인공지능</Korean>
+            <Spanish>Community Base Addons - Inteligencia artificial</Spanish>
         </Key>
         <Key ID="STR_CBA_AI_BuildingPos">
             <English>AI Building Position</English>
@@ -28,6 +29,7 @@
             <Polish>Pozycja AI w budynku</Polish>
             <Italian>Posizione edificio AI</Italian>
             <Korean>인공지능 건물 위치</Korean>
+            <Spanish>Posición del edificio de IA</Spanish>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
@@ -44,6 +46,7 @@
             <Chinesesimp>隐形目标（士兵）</Chinesesimp>
             <Japanese>隠れた標的兵士</Japanese>
             <Turkish>Görünmez Hedef Asker</Turkish>
+            <Spanish>Soldado Objetivo Invisible</Spanish>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetVehicle">
             <English>Invisible Target Vehicle</English>
@@ -55,6 +58,7 @@
             <Czech>Neviditelný cíl (Vozidlo)</Czech>
             <Italian>Obiettivo invisibile - Veicolo</Italian>
             <Korean>보이지 않는 표적 차량</Korean>
+            <Spanish>Vehículo objetivo invisible</Spanish>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
@@ -66,6 +70,7 @@
             <Czech>Neviditelný cíl (Letoun)</Czech>
             <Italian>Obiettivo invisibile - Velivolo</Italian>
             <Korean>보이지 않는 표적 항공기</Korean>
+            <Spanish>Avión objetivo invisible</Spanish>
         </Key>
     </Package>
 </Project>
