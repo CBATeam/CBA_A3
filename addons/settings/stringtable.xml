@@ -318,10 +318,12 @@
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
+            <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
+            <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
@@ -467,6 +469,7 @@
             <Czech>Toto nastavení je přepsáno klienty stejnou hodnotou.</Czech>
             <Italian>Sovrascritto dal client con lo stesso valore.</Italian>
             <Korean>동일한 값을 가진 클라이언트에 의해 덮어씌워졌습니다.</Korean>
+            <Japanese>クライアントによって同じ値で上書きされています。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
             <English>Overwritten by mission with the same value.</English>
@@ -479,6 +482,7 @@
             <Czech>Toto nastavení je přepsáno misí stejnou hodnotou.</Czech>
             <Italian>Sovrascritto dalla missione con lo stesso valore.</Italian>
             <Korean>동일한 값을 가진 임무에 의해 덮어씌워졌습니다.</Korean>
+            <Japanese>ミッションによって同じ値で上書きされています。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
@@ -491,6 +495,7 @@
             <Czech>Toto nastavení je přepsáno serverem stejnou hodnotou.</Czech>
             <Italian>Sovrascritto dal server con lo stesso valore.</Italian>
             <Korean>동일한 값을 가진 서버에 의해 덮어씌워졌습니다.</Korean>
+            <Japanese>サーバーによって同じ値で上書きされています。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
