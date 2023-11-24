@@ -3,7 +3,7 @@ SCRIPT(XEH_preInit);
 
 if (!hasInterface) exitWith {};
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"
 
 ADDON = false;
 

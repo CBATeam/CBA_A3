@@ -51,7 +51,7 @@ if (canSuspend) exitWith {
 };
 
 // --- init settings system, makes this function useable in preInit without having to add "CBA_settings" to requiredAddons
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 params [
     ["_setting", "", [""]],

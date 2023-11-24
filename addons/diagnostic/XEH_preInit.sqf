@@ -5,8 +5,8 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-#include "XEH_PREP.sqf"
-#include "initSettings.sqf"
+#include "XEH_PREP.hpp"
+#include "initSettings.inc.sqf"
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 

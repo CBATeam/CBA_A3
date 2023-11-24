@@ -7,4 +7,4 @@ if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
     configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
 }) exitWith {};
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"

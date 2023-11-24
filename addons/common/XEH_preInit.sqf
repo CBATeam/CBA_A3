@@ -54,7 +54,7 @@ GVAR(addons) = call (uiNamespace getVariable [QGVAR(addons), {[]}]);
 activateAddons GVAR(addons);
 
 // BWC
-#include "backwards_comp.sqf"
+#include "backwards_comp.inc.sqf"
 
 // fix changing direction of remote units not working with zeus
 ["ModuleCurator_F", "init", {
