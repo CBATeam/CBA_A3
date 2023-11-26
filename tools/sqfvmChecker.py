@@ -7,7 +7,7 @@ import tomllib
 addon_base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 files_to_ignore_lower = [
-    x.lower() for x in ["initSettings.sqf", "initKeybinds.sqf", "XEH_PREP.sqf", "backwards_comp.sqf", "gui_createCategory.sqf", "test_settings_comments.sqf", "test_settings_comments_eof.sqf", "test_settings_multiline.sqf", "test_settings_regular.sqf", "test_settings_unicode.sqf"]
+    x.lower() for x in ["test_settings_comments.sqf", "test_settings_comments_eof.sqf", "test_settings_multiline.sqf", "test_settings_regular.sqf", "test_settings_unicode.sqf"]
 ]
 sqfvm_exe = os.path.join(addon_base_path, "sqfvm.exe")
 virtual_paths = [
@@ -23,7 +23,7 @@ def get_files_to_process(basePath):
     for root, _dirs, files in os.walk(os.path.join(addon_base_path, "addons")):
         for file in files:
             if file.endswith(".sqf") or file == "config.cpp":
-                if file.lower() in files_to_ignore_lower:
+                if file.endswith(".inc.sqf") or file.lower() in files_to_ignore_lower:
                     continue
                 skipPreprocessing = False
                 for addonTomlPath in [os.path.join(root, "addon.toml"), os.path.join(os.path.dirname(root), "addon.toml")]:
