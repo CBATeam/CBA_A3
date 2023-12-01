@@ -40,6 +40,7 @@ if sys.version_info[0] == 2:
 
 import os
 import os.path
+import pathlib
 import shutil
 import platform
 import glob
@@ -472,6 +473,21 @@ def cleanup_optionals(mod):
         print_error("Cleaning Optionals Failed")
         raise
 
+# mikro tools (before 2023?) don't understand #pragma
+def toggle_config_pragmas(do_restore=False):
+        token_from = "//#pragma-backup-make.py " if do_restore else "#pragma "
+        token_to = "#pragma " if do_restore else "//#pragma-backup-make.py "
+        print_green(f"Checking configs for {token_from}")
+        for root, _dirs, files in os.walk(module_root):
+            for file in files:
+                if file.endswith(".cpp") or file.endswith(".hpp"):
+                    with open(os.path.join(root, file), "r", encoding="utf-8") as f:
+                        content = f.read()
+                    if (not token_from in content): continue
+                    print(f"- Replacing {token_from} in {os.path.join(root, file)}")
+                    content = re.sub(token_from, token_to, content)
+                    with open(os.path.join(root, file), "w", encoding="utf-8") as f:
+                        f.write(content)
 
 def purge(dir, pattern, friendlyPattern="files"):
     print_green("Deleting {} files from directory: {}".format(friendlyPattern,dir))
@@ -1104,6 +1120,9 @@ See the make.cfg file for additional build options.
             optional_files = []
             copy_optionals_for_building(optionals_modules,optional_files)
 
+        # hide #pragma from pboProject's sensitive eyes
+        toggle_config_pragmas(False)
+
         # Get list of subdirs in make root.
         dirs = next(os.walk(module_root))[1]
 
@@ -1293,12 +1312,24 @@ See the make.cfg file for additional build options.
 
                     version_stamp_pboprefix(module,commit_id)
 
-                    if os.path.isfile(nobinFilePath):
+                    skipPreprocessing = False
+                    addonTomlPath = os.path.join(work_drive, prefix, module, "addon.toml")
+                    if os.path.isfile(addonTomlPath):
+                        with open(addonTomlPath, "r") as f:
+                            tomlFile = f.read()
+                            if "preprocess = false" in tomlFile: 
+                                print_error("'preprocess = false' not supported")
+                                raise
+                            skipPreprocessing = "[preprocess]\nenabled = false" in tomlFile
+
+                    if os.path.isfile(os.path.join(work_drive, prefix, module, "$NOBIN$")):
                         print_green("$NOBIN$ Found. Proceeding with non-binarizing!")
                         cmd = [makepboTool, "-P","-A","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
-
+                    elif skipPreprocessing:
+                        print_green("addon.toml set [preprocess.enabled = false]. Proceeding with non-binerized config build!")
+                        cmd = [pboproject, "-B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
                     else:
-                        cmd = [pboproject, "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
+                        cmd = [pboproject, "+B", "-P", os.path.join(work_drive, prefix, module), "+Engine=Arma3", "-S", "+Noisy", "+Clean", "-Warnings", "+Mod="+os.path.join(module_root, release_dir, project), "-Key"]
 
                     color("grey")
                     if quiet:
@@ -1433,6 +1464,8 @@ See the make.cfg file for additional build options.
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
+        #restore #pragma
+        toggle_config_pragmas(True)
         if not version_update:
             restore_version_files()
 
@@ -1521,6 +1554,16 @@ See the make.cfg file for additional build options.
         if len(failedBuilds) > 0:
             for failedBuild in failedBuilds:
                 print("- {} build failed!".format(failedBuild))
+                failedBuild_path = pathlib.Path(
+                    "P:/temp").joinpath(f"{failedBuild}.packing.log")
+                if (failedBuild_path.exists()):
+                    print(f"  Log {failedBuild_path} tail:")
+                    with open(failedBuild_path) as failedBuild_file:
+                        lines = failedBuild_file.readlines()
+                        for index, line in enumerate(lines[-3:]):
+                            print(f"    {len(lines) + index -2}: {line}", end='')
+                else:
+                    print(f"  Log {failedBuild_path} does not exist")
         if len(missingFiles) > 0:
             for missingFile in missingFiles:
                 print("- {} not found!".format(missingFile))

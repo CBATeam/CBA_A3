@@ -1,6 +1,6 @@
 class RscTitles {
     class GVAR(ProgressBar) {
-        onLoad = uiNamespace setVariable ['GVAR(ProgressBar)', _this select 0];
+        onLoad = QUOTE(with uiNameSpace do { GVAR(ProgressBar) = _this select 0 };);
         idd = -1;
         duration = 1e+11;
         fadeIn = 0;
@@ -17,14 +17,14 @@ class RscTitles {
         };
 
         class TitleBackground: RscText {
-            idc = IDC_PROGRESSBAR_BACKGROUND;
+            // idc = IDC_PROGRESSBAR_BACKGROUND;
             style = ST_CENTER;
-            sizeEx = 1 * GUI_GRID_CENTER_H;
+            sizeEx = QUOTE(1 * GUI_GRID_CENTER_H);
             colorBackground[] = {0,0,0,0.5};
-            x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),X)', 0];
-            y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),Y)', 0];
-            w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),W)', 0];
-            h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
+            x = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),X))),0)]);
+            y = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),Y))),0)]);
+            w = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),W))),0)]);
+            h = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),H))),0)]);
         };
 
         class TitleText: TitleBackground {
@@ -38,10 +38,10 @@ class RscTitles {
             colorFrame[] = {0,0,0,0.5};
             colorBar[] = GUI_BCG_COLOR;
             texture = "#(argb,8,8,3)color(1,1,1,0.7)";
-            x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),X)', 0];
-            y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),Y)', 0];
-            w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),W)', 0];
-            h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(grid),H)', 0];
+            x = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),X))),0)]);
+            y = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),Y))),0)]);
+            w = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),W))),0)]);
+            h = QUOTE(profileNamespace getVariable [ARR_2(QUOTE(QUOTE(TRIPLES(IGUI,GVAR(grid),H))),0)]);
         };
 
         class Script: RscMapControl {

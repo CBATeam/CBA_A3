@@ -5,24 +5,24 @@ class CfgUIGrids {
                 class Variables {
                     GVAR(grid)[] = {
                         {
-                            1 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X,
-                            0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y,
-                            38 * GUI_GRID_CENTER_W,
-                            1 * GUI_GRID_CENTER_H
+                            QUOTE(1 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X),
+                            QUOTE(0 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y),
+                            QUOTE(38 * GUI_GRID_CENTER_W),
+                            QUOTE(1 * GUI_GRID_CENTER_H)
                         },
-                        0.5 * GUI_GRID_CENTER_W,
-                        0.5 * GUI_GRID_CENTER_H
+                        QUOTE(0.5 * GUI_GRID_CENTER_W),
+                        QUOTE(0.5 * GUI_GRID_CENTER_H)
                     };
 
                     GVAR(notify)[] = {
                         {
-                            NOTIFY_DEFAULT_X,
-                            NOTIFY_DEFAULT_Y,
-                            NOTIFY_MIN_WIDTH,
-                            NOTIFY_MIN_HEIGHT
+                            QUOTE(NOTIFY_DEFAULT_X),
+                            QUOTE(NOTIFY_DEFAULT_Y),
+                            QUOTE(NOTIFY_MIN_WIDTH),
+                            QUOTE(NOTIFY_MIN_HEIGHT)
                         },
-                        GUI_GRID_W,
-                        GUI_GRID_H
+                        QUOTE(GUI_GRID_W),
+                        QUOTE(GUI_GRID_H)
                     };
                 };
             };

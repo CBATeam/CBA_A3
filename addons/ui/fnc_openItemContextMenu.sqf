@@ -48,6 +48,10 @@ if (_options isEqualTo []) exitWith {};
 // ctrlSetBackgroundColor command does not seem to work for RscListBox.
 private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
+private _font = getText (configfile >> QGVAR(ItemContextMenu) >> "font");
+private _fontSize = getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _longestName = "";
+
 // ---
 // Populate context menu with options.
 {
@@ -63,6 +67,10 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
     };
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
+        if (count _longestName < count _displayName) then {
+            _longestName = _displayName;
+        };
+
         private _index = _list lbAdd _displayName;
         _list lbSetTooltip [_index, _tooltip]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
@@ -131,19 +139,17 @@ _list setVariable [QFUNC(activate), {
     };
 }];
 
-_list ctrlAddEventHandler ["lbDblClick", {
-    params ["_list"];
-    _this call (_list getVariable QFUNC(activate));
+_list ctrlAddEventHandler ["LBSelChanged", {
+    [{
+        params ["_list"];
+        _this call (_list getVariable QFUNC(activate));
+    }, _this] call CBA_fnc_execNextFrame;
 }];
-
 _list ctrlAddEventHandler ["KeyDown", {
-    params ["_list", "_key"];
-    if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then {
-        [_list getVariable QFUNC(activate), [_list, lbCurSel _list]] call CBA_fnc_execNextFrame;
-
-        // Set focus on background to prevent the inventory menu from auto closing.
-        ctrlSetFocus (ctrlParent _list displayCtrl IDC_FG_GROUND_TAB);
-    };
+    params ["", "_key"];
+    // keyboard's Up/Down events intercepted to prevent LBSelChanged event
+    if !(_key in [DIK_UP, DIK_DOWN]) exitWith {};
+    true
 }];
 
 // ---
@@ -154,8 +160,8 @@ getMousePosition params ["_left", "_top"];
 _left = _left - pixelW;
 _top = _top - pixelH;
 
-private _width = ctrlPosition _list select 2;
-private _height = lbSize _list * getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _width = (ctrlPosition _list select 2) max ((_longestName getTextWidth [_font, _fontSize]) + TEXT_MARGINS_WIDTH + RSCLISTBOX_PICTURE_WIDTH);
+private _height = lbSize _list * _fontSize;
 
 _list ctrlSetPosition [_left, _top, _width, _height];
 _list ctrlCommit 0;

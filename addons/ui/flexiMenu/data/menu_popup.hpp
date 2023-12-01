@@ -1,4 +1,5 @@
-// #include "\x\cba\addons\ui\script_component.hpp"
+// #include "..\..\script_component.hpp"
+#pragma hemtt suppress pw3_padded_arg file
 
 #define _imagePath(TOKEN) QUOTE(PATHTOF(flexiMenu)\data\popup\TOKEN.paa)
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
@@ -8,11 +9,11 @@
 #define _BH_overlap 0.0375 * safeZoneH  //button height with 1 pixel overlap for type "popup" menu
 #define _gapH 0.01 * safeZoneH
 #define _buttonsBeforeCenter 7 //buttons above screen centre, allowing menu to appear centred.
-#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 //BIS mid green (button over colour)
-#define _captionColorFG 138 / 256, 146 / 256, 105 / 256 //BIS greenish text
+#define _captionColorBG "58 / 256", "80 / 256", "55 / 256" //BIS mid green (button over colour)
+#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" //BIS greenish text
 #define _captionHgt 1 // 0.75
 
-class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
+class CBA_flexiMenu_rscPopup { // _flexiMenu_rscRose
     idd = -1; // _flexiMenu_IDD;
     movingEnable = 0;
     onLoad = QUOTE(with uiNamespace do {GVAR(display) = _this select 0};);
@@ -20,19 +21,19 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
     class controlsBackground {};
     class objects {};
 
-    flexiMenu_primaryMenuControlWidth = _BW;
-    flexiMenu_subMenuControlWidth = _BW;
-    flexiMenu_subMenuCaptionWidth = _BW;
+    flexiMenu_primaryMenuControlWidth = QUOTE(_BW);
+    flexiMenu_subMenuControlWidth = QUOTE(_BW);
+    flexiMenu_subMenuCaptionWidth = QUOTE(_BW);
 
     // #include "common_listClass.hpp"
 
     class listButton: _flexiMenu_RscShortcutButton {
-        x = _SX - _BW;
-        y = safeZoneY + 0.30 * safeZoneH;
-        w = 0; // _BW; // hide initially
-        h = _BH_overlap;
-        sizeEx = _BH;
-        size = _BH * 0.75;
+        x = QUOTE(_SX - _BW);
+        y = QUOTE(safeZoneY + 0.30 * safeZoneH);
+        w = 0; // QUOTE(_BW); // hide initially
+        h = QUOTE(_BH_overlap);
+        sizeEx = QUOTE(_BH);
+        size = QUOTE(_BH * 0.75);
 
         color[] = {_captionColorFG, 1};
         color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
@@ -61,13 +62,13 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
     };
     // ---------------------------------
     class controls {
-        class caption: rscText {
+        class caption: RscText {
             idc = _flexiMenu_IDC_menuDesc;
-            x = _SX - _BW;
-            y = safeZoneY + 0.30 * safeZoneH-_BH * _captionHgt;
-            w = _BW;
-            h = _BH * _captionHgt;
-            sizeEx = _BH * _captionHgt;
+            x = QUOTE(_SX - _BW);
+            y = QUOTE(safeZoneY + 0.30 * safeZoneH-_BH * _captionHgt);
+            w = QUOTE(_BW);
+            h = QUOTE(_BH * _captionHgt);
+            sizeEx = QUOTE(_BH * _captionHgt);
             colorText[] = {_captionColorFG, 1};
             colorBackground[] = {_captionColorBG, 1};
             text = "";
@@ -75,8 +76,8 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
 
         #define ExpandMacro_RowControls(ID) \
         class button##ID: listButton {\
-            idc = _flexiMenu_baseIDC_button + ID;\
-            y = safeZoneY + 0.30 * safeZoneH + ##ID * _BH;\
+            idc = QUOTE(_flexiMenu_baseIDC_button + ID);\
+            y = QUOTE(safeZoneY + 0.30 * safeZoneH + ##ID * _BH);\
         }
 
         ExpandMacro_RowControls(00);
@@ -102,17 +103,17 @@ class CBA_flexiMenu_rscPopup { // : _flexiMenu_rscRose
         // -----------------------
         class caption2: caption {
             idc = _flexiMenu_IDC_listMenuDesc;
-            x = _SX;
-            y = safeZoneY + 0.30 * safeZoneH + _BH - _BH * _captionHgt;
+            x = QUOTE(_SX);
+            y = QUOTE(safeZoneY + 0.30 * safeZoneH + _BH - _BH * _captionHgt);
             w = 0;  // flexiMenu_subMenuCaptionWidth;  //hide initially
         };
 
         // #include "common_listControls.hpp"
         #define ExpandMacro_ListControls(ID)\
         class listButton##ID: listButton {\
-            idc = _flexiMenu_baseIDC_listButton + ID;\
-            x = _SX;\
-            y = safeZoneY + 0.30 * safeZoneH + _BH + ##ID * _BH;\
+            idc = QUOTE(_flexiMenu_baseIDC_listButton + ID);\
+            x = QUOTE(_SX);\
+            y = QUOTE(safeZoneY + 0.30 * safeZoneH + _BH + ##ID * _BH);\
         }
 
         ExpandMacro_ListControls(00);

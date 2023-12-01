@@ -131,9 +131,11 @@ class CfgFunctions {
             PATHTO_FNC(directCall);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);
+            PATHTO_FNC(execAfterNFrames);
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
+            PATHTO_FNC(createUUID);
         };
 
         class Broken {

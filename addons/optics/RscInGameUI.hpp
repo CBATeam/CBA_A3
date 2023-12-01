@@ -10,7 +10,7 @@ class RscInGameUI {
     };
 
     class CBA_ScriptedOptic: RscWeaponZeroing {
-        onLoad = QUOTE([ARR_2(_this select 0, true)] call FUNC(loadScriptedOptic));
+        onLoad = QUOTE([ARR_2(_this select 0,true)] call FUNC(loadScriptedOptic));
         controls[] = {"CA_FOVMode","ScopeBlack","Reticle","BodyNight","BodyDay","TrippleHeadLeft","TrippleHeadRight","CA_Zeroing","Magnification","ActiveDisplayHelper"};
 
         // Idea by Taosenai. This control can be used to determine whether the scope or the collimator is used.
@@ -39,26 +39,26 @@ class RscInGameUI {
         class ScopeBlack: RscPicture {
             idc = IDC_BLACK_SCOPE;
             text = QPATHTOF(reticles\scopeblack_ca.paa);
-            x = POS_X(2);
-            y = POS_Y(2);
-            w = POS_W(2);
-            h = POS_H(2);
+            x = QUOTE(POS_X(2));
+            y = QUOTE(POS_Y(2));
+            w = QUOTE(POS_W(2));
+            h = QUOTE(POS_H(2));
         };
 
         // These are just black side panels to cover the areas that the optics p3d doesn't cover.
         // It will ONLY effect tripple head users, as (safeZoneX == safeZoneXAbs) for everyone else.
         class TrippleHeadLeft: RscText {
             idc = IDC_BLACK_LEFT;
-            x = safezoneXAbs;
-            y = safezoneY;
-            w = THIRD_SCREEN_WIDTH;
-            h = safezoneH;
+            x = QUOTE(safezoneXAbs);
+            y = QUOTE(safezoneY);
+            w = QUOTE(THIRD_SCREEN_WIDTH);
+            h = QUOTE(safezoneH);
             colorBackground[] = {0,0,0,1};
         };
 
         class TrippleHeadRight: TrippleHeadLeft {
             idc = IDC_BLACK_RIGHT;
-            x = safezoneXAbs + safezoneWAbs - THIRD_SCREEN_WIDTH;
+            x = QUOTE(safezoneXAbs + safezoneWAbs - THIRD_SCREEN_WIDTH);
         };
 
         class Magnification: CA_Zeroing {
@@ -79,18 +79,18 @@ class RscInGameUI {
         class RedDot: RscPicture {
             idc = IDC_RED_DOT;
             text = "\a3\weapons_f\acc\data\collimdot_red_ca.paa"; // alt: green
-            x = POS_X(0.025);
-            y = POS_Y(0.025);
-            w = POS_W(0.025);
-            h = POS_H(0.025);
+            x = QUOTE(POS_X(0.025));
+            y = QUOTE(POS_Y(0.025));
+            w = QUOTE(POS_W(0.025));
+            h = QUOTE(POS_H(0.025));
         };
 
         class ReticleSafeZone: RscControlsGroupNoScrollbars {
             idc = IDC_RETICLE_SAFEZONE;
-            x = RETICLE_SAFEZONE_DEFAULT_LEFT;
-            y = RETICLE_SAFEZONE_DEFAULT_TOP;
-            w = RETICLE_SAFEZONE_DEFAULT_WIDTH;
-            h = RETICLE_SAFEZONE_DEFAULT_HEIGHT;
+            x = QUOTE(RETICLE_SAFEZONE_DEFAULT_LEFT);
+            y = QUOTE(RETICLE_SAFEZONE_DEFAULT_TOP);
+            w = QUOTE(RETICLE_SAFEZONE_DEFAULT_WIDTH);
+            h = QUOTE(RETICLE_SAFEZONE_DEFAULT_HEIGHT);
 
             class controls {
                 class Reticle: Reticle {};

@@ -32,6 +32,7 @@
 #define IDC_BTN_CONFIGURE 9030
 #define IDC_TXT_OVERWRITE_CLIENT 9040
 #define IDC_TXT_OVERWRITE_MISSION 9041
+#define IDC_TXT_VOLATILE_WARNING 9042
 
 #define IDC_SETTING_CONTROLS_GROUP 5000
 #define IDC_SETTING_BACKGROUND 5001
@@ -126,6 +127,8 @@
 #define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart) && {!is3den}) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
 #define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 #define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
+
+#define GET_LOCAL_SETTINGS_NAMESPACE (with missionNamespace do {if (isDedicated && {GVAR(volatile)}) then {uiNamespace} else {profileNamespace}})
 
 #define TEMP_PRIORITY(setting) (call {private _arr = [\
     (uiNamespace getVariable QGVAR(clientTemp))  getVariable [setting, [nil, [setting,  "client"] call FUNC(priority)]] select 1,\
