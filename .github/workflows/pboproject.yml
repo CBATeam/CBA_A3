@@ -21,7 +21,7 @@ jobs:
         Invoke-WebRequest "$env:ARMA3_DATA_URL" -OutFile arma3.zip
         $files = @("arma3.zip")
         ForEach ($file in $files) {
-          Extract-7Zip -Path $file -DestinationPath .
+          Expand-7ZipArchive -Path $file -DestinationPath .
           Remove-Item $file
         }
       env:
