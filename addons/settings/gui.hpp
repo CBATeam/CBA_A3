@@ -1,6 +1,8 @@
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
+class RscEdit;
+class ctrlButtonPicture;
 
 class RscDisplayGameOptions {
     // pause game in SP while this menu is shown
@@ -62,11 +64,31 @@ class RscDisplayGameOptions {
                     idc = -1;
                     style = ST_RIGHT;
                     text = ECSTRING(main,AddonText);
-                    x = QUOTE(POS_W(0.5));
-                    y = QUOTE(POS_H(1));
+                    x = QUOTE(POS_W(0));
+                    y = QUOTE(POS_H(0.8));
                     w = QUOTE(POS_W(4));
                     h = QUOTE(POS_H(1));
                     sizeEx = QUOTE(POS_H(1));
+                };
+                class AddonSearch: RscEdit {
+                    idc = IDC_ADDONS_SEARCHBAR;
+                    onSetFocus = QUOTE(GVAR(AddonSearchbarFocus) = true);
+                    onKillFocus = QUOTE(GVAR(AddonSearchbarFocus) = false);
+                    x = QUOTE(POS_W(20));
+                    y = QUOTE(POS_H(0.8));
+                    w = QUOTE(POS_W(15));
+                    h = QUOTE(POS_H(1));
+                    sizeEx = QUOTE(POS_H(1));
+                };
+                class AddonSearchButton: ctrlButtonPicture {
+                    idc = -1;
+                    text = "\a3\Ui_f\data\GUI\RscCommon\RscButtonSearch\search_start_ca.paa";
+                    colorBackground[] = {0,0,0,0.4};
+                    onButtonClick = QUOTE([ARR_2(ctrlParent (_this select 0), (ctrlParentControlsGroup (_this select 0)) controlsGroupCtrl IDC_ADDONS_SEARCHBAR)] call FUNC(gui_addonList_handleSearchbar));
+                    x = QUOTE(POS_W(34.95));
+                    y = QUOTE(POS_H(0.72));
+                    w = QUOTE(POS_W(1));
+                    h = QUOTE(POS_H(1.1));
                 };
                 class OverwriteClientText: RscText {
                     // Set tooltip per script to avoid it being all upper case.
@@ -171,9 +193,9 @@ class GVAR(AddonsList): GVAR(RscCombo) {
     linespacing = 1;
     text = "";
     wholeHeight = QUOTE(POS_H(12));
-    x = QUOTE(POS_W(4.5));
-    y = QUOTE(POS_H(1));
-    w = QUOTE(POS_W(21));
+    x = QUOTE(POS_W(4));
+    y = QUOTE(POS_H(0.8));
+    w = QUOTE(POS_W(15));
     h = QUOTE(POS_H(1));
 };
 
@@ -300,8 +322,6 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
         class OverwriteMission: OverwriteMission {};
     };
 };
-
-class RscEdit;
 
 class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);

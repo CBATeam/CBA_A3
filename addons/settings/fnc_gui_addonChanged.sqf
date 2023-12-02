@@ -15,8 +15,6 @@ if (_selectedAddon isEqualType "") then {
     uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 };
 
-uiNamespace setVariable [QGVAR(addonIndex), _index];
-
 // toggle lists
 private _selectedSource = uiNamespace getVariable QGVAR(source);
 

@@ -26,3 +26,11 @@ private _ctrlConfirm = _dlgSettings ctrlCreate ["RscButtonMenuOK", IDC_CANCEL];
 _ctrlConfirm ctrlSetPosition ctrlPosition _ctrlScriptedOK;
 _ctrlConfirm ctrlCommit 0;
 _ctrlConfirm ctrlAddEventHandler ["ButtonClick", {call FUNC(gui_saveTempData)}];
+
+// Add keyDown EH for search bar
+GVAR(AddonSearchbarFocus) = false;
+
+_dlgSettings displayAddEventHandler ["KeyDown", {call FUNC(gui_onKeyDown)}];
+_dlgSettings displayAddEventHandler ["Unload", {
+    GVAR(AddonSearchbarFocus) = nil;
+}];

@@ -21,6 +21,8 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 #define IDC_ADDONS_GROUP 4301
+#define IDC_ADDONS_SEARCHBAR 4311
+#define IDC_ADDONS_LIST 4312
 #define IDC_BTN_CONFIGURE_ADDONS 4302
 #define IDC_BTN_CLIENT 9001
 #define IDC_BTN_MISSION 9002
