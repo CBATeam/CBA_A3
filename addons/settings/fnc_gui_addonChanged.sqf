@@ -21,7 +21,7 @@ uiNamespace setVariable [QGVAR(addonIndex), _index];
 private _selectedSource = uiNamespace getVariable QGVAR(source);
 
 if !(_display getVariable [_selectedAddon, false]) then {
-    #include "gui_createCategory.sqf"
+    [_display, _selectedAddon] call FUNC(gui_createCategory);
     _display setVariable [_selectedAddon, true];
 };
 
