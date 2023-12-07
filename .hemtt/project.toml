@@ -16,14 +16,14 @@ include = [
 [version]
 git_hash = 0
 
+# Unused in HEMTT v1.11 or higher, kept for backwards compatibility
 [asc]
 enabled = true
 exclude = [
-    "/initsettings.sqf",
-    "/initkeybinds.sqf",
-    "/xeh_prep.sqf",
-    "/backwards_comp.sqf",
-    "settings/gui_createcategory.sqf",
+    "/initsettings.inc.sqf",
+    "/initkeybinds.inc.sqf",
+    "/backwards_comp.inc.sqf",
+    "settings/gui_createcategory.inc.sqf",
     "diagnostic/fnc_isdebugconsoleallowed.sqf",
     "xeh/fnc_initdisplay.sqf",
     "xeh/fnc_startloadingscreen.sqf",
