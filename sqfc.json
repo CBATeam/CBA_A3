@@ -6,7 +6,10 @@
         "P:/"
     ],
     "excludeList": [
-        ".inc.sqf",
+        "\\initsettings.inc.sqf",
+        "\\initkeybinds.inc.sqf",
+        "\\backwards_comp.inc.sqf",
+        "settings\\gui_createcategory.inc.sqf",
         "diagnostic\\fnc_isdebugconsoleallowed.sqf",
         "xeh\\fnc_initdisplay.sqf",
         "xeh\\fnc_startloadingscreen.sqf",
