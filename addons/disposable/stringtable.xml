@@ -18,7 +18,7 @@
         <Key ID="STR_CBA_disposable_DropUsedLauncher">
             <English>Drop Used Disposable Launcher</English>
             <German>Benutzten Einwegwerfer ablegen</German>
-            <Japanese>使った使い捨てランチャーを落とす</Japanese>
+            <Japanese>使用済の使い捨てランチャーを捨てる</Japanese>
             <Czech>Odhodit použitý jednorázový raketomet</Czech>
             <Turkish>Kullanılan Tek Kullanımlık Roketleri At</Turkish>
             <Chinese>丟棄使用過的一次性發射器</Chinese>
@@ -26,7 +26,7 @@
             <French>Lâcher le lanceur usagé</French>
             <Russian>Выбрасывать использованный одноразовый гранатомёт</Russian>
             <Polish>Wyrzuć zużyty przedmiot</Polish>
-            <Italian>Butta lanciatore usato</Italian>            
+            <Italian>Butta lanciatore usato</Italian>
             <Korean>사용한 일회용 발사기 떨어뜨리기</Korean>
         </Key>
         <Key ID="STR_CBA_disposable_DropNever">
@@ -46,7 +46,7 @@
         <Key ID="STR_CBA_disposable_DropNeverTooltip">
             <English>Don't automatically drop the used disposable launcher.</English>
             <German>Benutzten Einwegwerfer nicht automatisch ablegen.</German>
-            <Japanese>使った使い捨てランチャーを自動的に落とさないようにします。</Japanese>
+            <Japanese>使用済の使い捨てランチャーを自動的に捨てないようにします。</Japanese>
             <Czech>Automaticky neodhazovat použitý jednorázový raketomet.</Czech>
             <Turkish>Otomatik olarak tek kullanımlık roketleri atma.</Turkish>
             <Chinese>不要自動丟棄一次性使用之發射器</Chinese>
@@ -60,7 +60,7 @@
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
             <German>Nur KI</German>
-            <Japanese>AI のみ</Japanese>
+            <Japanese>AIのみ</Japanese>
             <Czech>Pouze AI</Czech>
             <Turkish>Sadece AI</Turkish>
             <Chinese>只有AI</Chinese>
@@ -74,7 +74,7 @@
         <Key ID="STR_CBA_disposable_DropAIOnlyTooltip">
             <English>Only AI drops the used disposable launcher.</English>
             <German>Nur KI legt den benutzten Einwegwerfer ab.</German>
-            <Japanese>AI のみ使った使い捨てランチャーを落とすようにします。</Japanese>
+            <Japanese>AIのみが使用済の使い捨てランチャーを自動的に捨てるようにします。</Japanese>
             <Czech>Pouze AI odhodí použitý jednorázový raketomet.</Czech>
             <Turkish>Sadece yapay zeka tek kullanımlık roketleri atar.</Turkish>
             <Chinese>只有AI才會丟棄使用過的一次性發射器</Chinese>
@@ -88,7 +88,7 @@
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
             <German>Andere Waffe ausgewählt</German>
-            <Japanese>別の武器が選択後</Japanese>
+            <Japanese>別の武器の選択後</Japanese>
             <Czech>Vybrána jiná zbraň</Czech>
             <Turkish>Başka Bir Silah Seçince</Turkish>
             <Chinese>選擇其他武器</Chinese>
@@ -102,7 +102,7 @@
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
             <German>Benutzten Einwegwerfer automatisch ablegen, sobald eine andere Waffe ausgewählt wurde.</German>
-            <Japanese>他の武器を選択すると即時に使った使い捨てランチャーを自動的に落とすようにします。</Japanese>
+            <Japanese>別の武器を選択すると即時に使用済の使い捨てランチャーを自動的に捨てるようにします。</Japanese>
             <Czech>Automaticky odhodit použitý jednorázový raketomet, jakmile je zvolena jiná zbraň.</Czech>
             <Turkish>Başka bir silah seçildiği zaman otomatik olarak tek kullanımlık roketleri at.</Turkish>
             <Chinese>當切換別的武器時自動丟棄一次性發射器。</Chinese>
@@ -110,13 +110,13 @@
             <French>Lâche automatiquement le lanceur usagé dès qu'une autre arme est sélectionnée.</French>
             <Russian>Автоматически выбрасывать использованный одноразовый гранатомёт, как только будет выбрано другие оружие.</Russian>
             <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową gdy tylko zostanie wybrana kolejna broń.</Polish>
-            <Italian>Butta automaticamente il lanciatore usato non appena un'altra arma viene selezionata</Italian>        
+            <Italian>Butta automaticamente il lanciatore usato non appena un'altra arma viene selezionata</Italian>
             <Korean>다른 무기를 선택하는 즉시 사용한 일회용 발사기를 자동으로 떨어뜨립니다.</Korean>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
             <German>Einwegwerfer ersetzten</German>
-            <Japanese>使い捨てランチャーを置換</Japanese>
+            <Japanese>使い捨てランチャーに置換</Japanese>
             <Czech>Vyměnit jednorázový raketomet</Czech>
             <Turkish>Tek Kullanımlık Roketleri Değiştir</Turkish>
             <Chinese>替換掉一次性發射器</Chinese>
@@ -130,7 +130,7 @@
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncherTooltip">
             <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
             <German>Wenn aktiviert, dann können Einwegwerfer nur einmal benutzt werden. Munition für Einwegwerfer in Kisten und Fahrzeugen wird durch geladene Einwegwerfer ersetzt. Wenn deaktiviert, dann können Einwegwerfer nach der Benutzung nachgeladen werden.</German>
-            <Japanese>有効化すると、使い捨てランチャーは一度のみ使用できます。コンテナ内にある使い捨てランチャーは装填された使い捨てランチャーに置き換えられます。無効化すると、使用後に使い捨てランチャーをリロードできます。</Japanese>
+            <Japanese>有効にすると、使い捨てランチャーは1回だけ使用できるようになります。 コンテナや車両に搭載されている使い捨てランチャーの弾薬は、装填済みの使い捨てランチャーに置き換えられます。 無効にすると、使い捨てランチャーは使用後にリロードできます。</Japanese>
             <Czech>Pokud je tato možnost zapnuta, jednorázové raketomety mohou být použity pouze jednou. Munice pro jednorázové raketomety v bednách a vozidlech budou vyměněny za nabité jednorázové raketomety. Pokud je tato možnost vypnuta, jednorázové raketomety mohou být přebity po použití.</Czech>
             <Turkish>Eğer bu ayar açıksa, tek kullanımlık roketler sadece bir kere kullanılabilir. Tek kullanımlık rokeyler için cephane başka tek kullanımlık roketler ile değiştirilir. Bu ayar kapalıyken tek kullanımlık roketler de birçok kez kullanılabilir.</Turkish>
             <Chinese>啟用時，將會把載具或容器裡面給於一次性發射器的彈藥換成一次性發射器本身，並且使其只能使用一次。如果關閉，一次性發射器即可再度裝填</Chinese>

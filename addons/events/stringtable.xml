@@ -19,21 +19,21 @@
             <English>Weapon Repetition Mode</English>
             <German>Repetierwaffe laden</German>
             <Polish>Tryb powtarzania strzału</Polish>
-            <Japanese>武器反復モード</Japanese>
+            <Japanese>武器のリピーターモード</Japanese>
             <Czech>Mód opakování zbraně</Czech>
             <Turkish>Silah Tekrar Modu</Turkish>
             <Chinese>武器反作模式</Chinese>
             <Chinesesimp>武器连发模式</Chinesesimp>
             <French>Mode de réarmement</French>
             <Russian>Режим повторной стрельбы</Russian>
-            <Italian>Modalità di ricarica dell'arma</Italian>            
+            <Italian>Modalità di ricarica dell'arma</Italian>
             <Korean>무기 반복 모드</Korean>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
             <German>Art eine Waffe zu repetieren.</German>
             <Polish>Tryb przeładowania/ryglowania broni po wystrzale.</Polish>
-            <Japanese>ボルト、またはポンプ式武器のモードを決定します。</Japanese>
+            <Japanese>ボルトアクションやポンプアクション武器の動作モード。</Japanese>
             <Czech>Mód natahování nebo pumpování zbraní.</Czech>
             <Turkish>Silahın sürgülü ya da pompalı modda olması.</Turkish>
             <Chinese>設定武器如何拉栓及退膛</Chinese>
@@ -47,21 +47,21 @@
             <English>Leave Optics View</English>
             <German>Optikansicht verlassen</German>
             <Polish>Opuszczenie optyki</Polish>
-            <Japanese>照準画面を離れる</Japanese>
+            <Japanese>照準から離れた時</Japanese>
             <Czech>Opustit pohled optiky</Czech>
             <Turkish>Dürbünden Çık</Turkish>
             <Chinese>放下瞄具</Chinese>
             <Chinesesimp>离开瞄准视野</Chinesesimp>
             <French>Maintenir vue lunette</French>
             <Russian>Выход из прицела</Russian>
-            <Italian>Esci dalla vista ottica</Italian>            
+            <Italian>Esci dalla vista ottica</Italian>
             <Korean>조준 화면 벗어나기</Korean>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
             <German>Waffe beim Verlassen der Optikansicht repetieren.</German>
             <Polish>Przeładowanie/ryglowanie broni nastąpi po opuszczeniu widoku optyki.</Polish>
-            <Japanese>ボルトかポンプ動作時は照準画面から離れます</Japanese>
+            <Japanese>照準画面から離れることでボルトやポンプ動作を行います。</Japanese>
             <Czech>Natáhnout zbraň opuštěním pohledu optiky.</Czech>
             <Turkish>Silahı sürgülerken dürbünü kapat.</Turkish>
             <Chinese>當拉栓以及退膛武器時是否離開瞄準狀態</Chinese>
@@ -75,7 +75,7 @@
             <English>Release Trigger</English>
             <German>Abzug losslassen</German>
             <Polish>Puszczenie spustu</Polish>
-            <Japanese>トリガー解放時</Japanese>
+            <Japanese>トリガーの解放時</Japanese>
             <Czech>Pustit spoušť</Czech>
             <Turkish>Tetiği Bırak</Turkish>
             <Chinese>放開板機</Chinese>
@@ -89,7 +89,7 @@
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
             <German>Waffe beim Loslassen des Abzugs repetieren (Abzug halten, um Repetieren zu verzögern).</German>
             <Polish>Przeładowanie/ryglowanie nastąpi po puszczeniu spustu (przytrzymaj spust aby nie przełdowywać).</Polish>
-            <Japanese>トリガーを離してボルトかポンプ動作を行います。(トリガー長押しで即時動作を防止)</Japanese>
+            <Japanese>トリガーを離すことでボルトやポンプ動作を行います。(トリガー長押しで即時動作を防止)</Japanese>
             <Czech>Natáhnout zbraň puštěním spouště (podržte spoušť k zabránění okamžitému natáhnutí zbraně).</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiği bırak (Tetiğe basılı tutarak sürgülemeyi engelle).</Turkish>
             <Chinese>當鬆開板機後拉栓或退膛（握住板機以避免突然的動作）。</Chinese>
@@ -103,7 +103,7 @@
             <English>Press Trigger</English>
             <German>Abzug betätigen</German>
             <Polish>Wciśnięcie spustu</Polish>
-            <Japanese>トリガー引いた時</Japanese>
+            <Japanese>トリガーを引いた時</Japanese>
             <Czech>Zmáčknout spoušť</Czech>
             <Turkish>Tetiğe Bas</Turkish>
             <Chinese>按下扳機</Chinese>
@@ -117,14 +117,14 @@
             <English>Bolt or rack weapon by pressing the trigger again.</English>
             <German>Waffe beim erneuten Betätigen des Abzugs repetieren.</German>
             <Polish>Przeładowanie/ryglowanie nastąpi po ponownym wciśnięciu spustu.</Polish>
-            <Japanese>トリガーを再度引いてボルトかポンプ動作を行います。</Japanese>
+            <Japanese>トリガーを再度引くことでボルトやポンプ動作を行います。</Japanese>
             <Czech>Natáhnout zbraň dalším zmáčkutím spouště.</Czech>
             <Turkish>Silahın sürgüsünü çekmek için tetiğe bas.</Turkish>
             <Chinese>按下板機才拉栓或退膛</Chinese>
             <Chinesesimp>再次按下板机才能拉栓或退膛</Chinesesimp>
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
             <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
-            <Italian>Ricarica l'arma premendo nuovamente il grilletto</Italian>            
+            <Italian>Ricarica l'arma premendo nuovamente il grilletto</Italian>
             <Korean>발사 키를 다시 누르면 볼트나 펌프 장전을 합니다.</Korean>
         </Key>
     </Package>

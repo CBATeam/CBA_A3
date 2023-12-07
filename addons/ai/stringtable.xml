@@ -23,7 +23,7 @@
             <Turkish>AI Bina Pozisyonu</Turkish>
             <Japanese>AI の建物内での位置</Japanese>
             <Chinese>AI在建築物內位置</Chinese>
-			<Chinesesimp>AI在建筑内部位置</Chinesesimp>
+            <Chinesesimp>AI在建筑内部位置</Chinesesimp>
             <French>Position IA bâtiment</French>
             <Russian>ИИ Место строительства</Russian>
             <Polish>Pozycja AI w budynku</Polish>
@@ -44,7 +44,7 @@
             <Portuguese>Soldado alvo invisível</Portuguese>
             <Korean>보이지 않는 표적 병사</Korean>
             <Chinesesimp>隐形目标（士兵）</Chinesesimp>
-            <Japanese>隠れた標的兵士</Japanese>
+            <Japanese>不可視の標的歩兵</Japanese>
             <Turkish>Görünmez Hedef Asker</Turkish>
             <Spanish>Soldado Objetivo Invisible</Spanish>
         </Key>
@@ -53,24 +53,26 @@
             <German>Unsichtbares Ziel - Fahrzeug</German>
             <French>Cible invisible - Véhicule</French>
             <Polish>Pojazd - niewidoczny cel</Polish>
-			<Chinese>隱形目標（車輛）</Chinese>
-			<Chinesesimp>隐形目标（车辆）</Chinesesimp>
+            <Chinese>隱形目標（車輛）</Chinese>
+            <Chinesesimp>隐形目标（车辆）</Chinesesimp>
             <Czech>Neviditelný cíl (Vozidlo)</Czech>
             <Italian>Obiettivo invisibile - Veicolo</Italian>
             <Korean>보이지 않는 표적 차량</Korean>
             <Spanish>Vehículo objetivo invisible</Spanish>
+            <Japanese>不可視の標的車両</Japanese>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
             <German>Unsichtbares Ziel - Flugzeug</German>
             <French>Cible invisible - Avion</French>
             <Polish>Samolot - niewidoczny cel</Polish>
-			<Chinese>隱形目標（飛機）</Chinese>
-			<Chinesesimp>隐形目标（飞机）</Chinesesimp>
+            <Chinese>隱形目標（飛機）</Chinese>
+            <Chinesesimp>隐形目标（飞机）</Chinesesimp>
             <Czech>Neviditelný cíl (Letoun)</Czech>
             <Italian>Obiettivo invisibile - Velivolo</Italian>
             <Korean>보이지 않는 표적 항공기</Korean>
             <Spanish>Avión objetivo invisible</Spanish>
+            <Japanese>不可視の標的飛行機</Japanese>
         </Key>
     </Package>
 </Project>
