@@ -299,6 +299,7 @@
             <Czech>Manažer lobby</Czech>
             <Italian>Gestore lobby.</Italian>
             <Korean>로비 매니저</Korean>
+            <Japanese>ロビーマネージャー</Japanese>
         </Key>
         <Key ID="STR_CBA_UI_AdjustingGroupOrder">
             <English>Adjusting group order...</English>
@@ -311,6 +312,7 @@
             <Czech>Upravuji pořadí skupiny...</Czech>
             <Italian>Riordinando il gruppo...</Italian>
             <Korean>그룹 순서 조정 중...</Korean>
+            <Japanese>グループ順の調整...</Japanese>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -323,6 +325,7 @@
             <Czech>Zálohujte misi před použitím tohoto nástroje.</Czech>
             <Italian>Salva una copia della missione prima di usare questo strumento.</Italian>
             <Korean>이 도구를 사용하기 전에 임무를 백업하십시오.</Korean>
+            <Japanese>このツールを使用する前にミッションのバックアップを取ってください。</Japanese>
         </Key>
     </Package>
 </Project>
