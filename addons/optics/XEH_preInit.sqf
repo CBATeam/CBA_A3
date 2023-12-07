@@ -2,17 +2,17 @@
 
 ADDON = false;
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
     configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
 }) exitWith {};
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"
 
 if (!hasInterface) exitWith {};
 
-#include "initKeybinds.sqf"
+#include "initKeybinds.inc.sqf"
 
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 

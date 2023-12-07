@@ -47,7 +47,7 @@ Author:
 
 // Prep functions if not yet prepped to avoid race condition.
 if (isNil QFUNC(init)) then {
-    #include "XEH_PREP.sqf"
+    #include "XEH_PREP.hpp"
 };
 
 call FUNC(init) == 0

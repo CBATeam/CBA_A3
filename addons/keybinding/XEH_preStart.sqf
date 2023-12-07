@@ -2,7 +2,7 @@
 
 if (!hasInterface) exitWith {};
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"
 
 private _supportedKeys = [
     DIK_ESCAPE,
