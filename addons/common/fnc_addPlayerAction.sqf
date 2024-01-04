@@ -49,12 +49,12 @@ private _return = if (isDedicated) then {
                     GVAR(actionIndexes) = [];
                 };
                 GVAR(actionListUpdated) = false;
-                [GVAR(actionList), {
-                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
-                    if ((!isNil "_value") && {_value isEqualType []}) then {
-                        GVAR(actionIndexes) pushBack (_curVic addAction _value);
+                {
+                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _y);
+                    if ((!isNil "_y") && {_y isEqualType []}) then {
+                        GVAR(actionIndexes) pushBack (_curVic addAction _y);
                     };
-                }] call CBA_fnc_hashEachPair;
+                } forEach GVAR(actionList);
             };
             _params set [0, (vehicle player)];
         };
@@ -62,7 +62,7 @@ private _return = if (isDedicated) then {
     };
 
     private _index = GVAR(nextActionIndex);
-    [GVAR(actionList), _index, _actionArray] call CBA_fnc_hashSet;
+    GVAR(actionList) set [_index, _actionArray];
     GVAR(actionListUpdated) = true;
     INC(GVAR(nextActionIndex));
     _index;

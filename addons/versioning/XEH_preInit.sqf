@@ -1,6 +1,3 @@
-// Any registered functions used in the PreINIT phase must use the uiNamespace copies of the variable.
-// So uiNamespace getVariable "CBA_fnc_hashCreate" instead of just CBA_fnc_hashCreate -VM
-
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 /*
@@ -14,8 +11,8 @@ if (isNil "CBA_display_ingame_warnings") then { CBA_display_ingame_warnings = tr
 if (isNil QGVAR(mismatch)) then { GVAR(mismatch) = [] };
 
 // Build versions hashes
-GVAR(versions) = [[], [[0, 0, 0], 0]] call (uiNamespace getVariable "CBA_fnc_hashCreate");
-GVAR(dependencies) = [[], ["", [0, 0, 0], "true"]] call (uiNamespace getVariable "CBA_fnc_hashCreate");
+GVAR(versions) = createHashMap;
+GVAR(dependencies) = createHashMap;
 
 #define DATA configName _entry,(getArray(_entry))
 for "_i" from 0 to (count (CFGSETTINGS) - 1) do
@@ -27,7 +24,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
         private _verCfg = (configFile >> "CfgPatches" >> _cfgPatches >> "versionAr");
         private _level = if (isNumber(_prefix >> "level")) then { getNumber(_prefix >> "level") } else { -1 };
         private _version = if (isArray(_verCfg)) then { [getArray(_verCfg), _level] } else { [[0, 0, 0], 0] };
-        [GVAR(versions), toLower(configName _prefix), _version] call (uiNamespace getVariable "CBA_fnc_hashSet");
+        GVAR(versions) set [toLower configName _prefix, _version];
         private _deps = (_prefix >> "dependencies");
         if (isClass(_deps)) then {
             private _dependencies = [];
@@ -37,7 +34,7 @@ for "_i" from 0 to (count (CFGSETTINGS) - 1) do
                     _dependencies pushBack [DATA];
                 };
             };
-            [GVAR(dependencies), toLower(configName _prefix), _dependencies] call (uiNamespace getVariable "CBA_fnc_hashSet");
+            GVAR(dependencies) set [toLower configName _prefix, _dependencies];
         };
     };
 };

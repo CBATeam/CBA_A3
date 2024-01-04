@@ -11,3 +11,6 @@
 
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#define VERSION_DEFAULT [[0, 0, 0], 0]
+#define DEPENDENCY_DEFAULT ["", [0, 0, 0], "true"]
