@@ -136,6 +136,7 @@ class CfgFunctions {
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
             PATHTO_FNC(createUUID);
+            PATHTO_FNC(escapeRegex);
         };
 
         class Broken {
