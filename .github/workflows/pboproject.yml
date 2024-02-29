@@ -53,13 +53,13 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
     - name: Archive logs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
         name: logs
         path: temp/*.log
     - name: Archive @cba_a3
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: '@cba_a3-${{ github.sha }}'
         path: x\cba\release\@cba_a3
