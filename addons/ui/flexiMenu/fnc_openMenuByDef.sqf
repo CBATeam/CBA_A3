@@ -66,8 +66,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
                 if (count _potentialMenuSources == 0) then {
                     _isTypeTarget = true;
-                    _target = if ((_vehicleTarget != player) &&
-                        {({_vehicleTarget isKindOf _x} count _typesList > 0)}) then {_vehicleTarget} else {_potentialTarget};
+                    _target = [_potentialTarget, _vehicleTarget] select ((_vehicleTarget != player) && {({_vehicleTarget isKindOf _x} count _typesList > 0)});
                     if ("player" in _typesList) then {
                         _target = player;
                     };

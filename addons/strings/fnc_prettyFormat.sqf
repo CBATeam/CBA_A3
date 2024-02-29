@@ -55,7 +55,7 @@ params [
     ["_depth", 0, [0]]
 ];
 
-private _indents = STRING_REPEAT(_indent, _depth);
+private _indents = STRING_REPEAT(_indent,_depth);
 
 if (_array isEqualTo []) exitWith {
     _indents + "[]" // return

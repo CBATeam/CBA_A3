@@ -25,7 +25,7 @@ Author:
 
             // We only need to directly add the items to the display list once per mission as we also modify the data array
             if (missionNamespace getVariable [QGVAR(arsenalDataModified), false]) exitWith {
-                TRACE_1("Already set", bis_fnc_arsenal_data select 24);
+                TRACE_1("Already set",bis_fnc_arsenal_data select 24);
             };
 
 

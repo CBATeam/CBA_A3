@@ -48,7 +48,7 @@ if (_patrol isEqualType true) then {
 };
 
 if (_hold isEqualType true) then {
-    _hold = [0,1] select _hold;
+    _hold = parseNumber _hold;
 };
 
 // Start of the actual function

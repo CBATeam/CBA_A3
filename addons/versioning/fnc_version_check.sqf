@@ -11,7 +11,7 @@ _value params ["_remoteVersion", "_level"];
 private _lc = count _localVersion; private _rc = count _remoteVersion;
 switch _level do {
     case -1: { _level = _rc }; // All must match
-    case -2: { _level = if (_lc == 0) then { 0 } else { _rc } }; // All must match, IF the addon is installed, otherwise ignore
+    case -2: { _level = [_rc, 0] select (_lc == 0) }; // All must match, IF the addon is installed, otherwise ignore
 };
 if (_level == 0) exitWith {};
 

@@ -15,7 +15,7 @@ _funcName = QFUNC(parse);
 TEST_DEFINED(QFUNC(parse),"");
 
 // Purposely weird formatting, must remain this way because newlines remain part of result
-_settings = (preprocessFile "x\cba\addons\settings\test_settings_regular.sqf") call FUNC(parse);
+_settings = (preprocessFile "x\cba\addons\settings\test_settings_regular.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
     ["ace_advanced_ballistics_ammoTemperatureEnabled", true, 0],
     ["ace_advanced_ballistics_barrelLengthInfluenceEnabled", false, 2],
@@ -27,7 +27,7 @@ _result = _settings isEqualTo [
 ];
 TEST_TRUE(_result,_funcName);
 
-_settings = (preprocessFile "x\cba\addons\settings\test_settings_multiline.sqf") call FUNC(parse);
+_settings = (preprocessFile "x\cba\addons\settings\test_settings_multiline.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
     ["test1", "[
     ""  item_1  "",
@@ -51,11 +51,11 @@ _result = _settings isEqualTo [
 ];
 TEST_TRUE(_result,_funcName);
 
-_settings = (preprocessFile "x\cba\addons\settings\test_settings_unicode.sqf") call FUNC(parse);
+_settings = (preprocessFile "x\cba\addons\settings\test_settings_unicode.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [["test1", "[Āā, Ăă, Ҙ, привет]", 1]];
 TEST_TRUE(_result,_funcName);
 
-_settings = (preprocessFile "x\cba\addons\settings\test_settings_strings.sqf") call FUNC(parse);
+_settings = (preprocessFile "x\cba\addons\settings\test_settings_strings.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
 	["test1", "", 0],
 	["test2", "", 0],
@@ -75,7 +75,7 @@ _result = _settings isEqualTo [
 TEST_TRUE(_result,_funcName);
 
 // Don't preprocess for testing comments
-_settings = (loadFile "x\cba\addons\settings\test_settings_comments.sqf") call FUNC(parse);
+_settings = (loadFile "x\cba\addons\settings\test_settings_comments.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
     ["test2", "[true,false]", 1],
     ["test4", "[ '  t e s t  ' , ""  T E S T  "" ]", 0],
@@ -85,7 +85,7 @@ _result = _settings isEqualTo [
 ];
 TEST_TRUE(_result,_funcName);
 
-_settings = (loadFile "x\cba\addons\settings\test_settings_comments_eof.sqf") call FUNC(parse);
+_settings = (loadFile "x\cba\addons\settings\test_settings_comments_eof.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
     ["test1", "[""item_1"",""item_2""]", 1]
 ];

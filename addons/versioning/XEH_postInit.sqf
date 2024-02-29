@@ -11,7 +11,7 @@ if (!SLX_XEH_DisableLogging) then {
     [GVAR(versions), { _logMsgs pushBack format["%1=%2", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."]}] call CBA_fnc_hashEachPair;
     private _logMsg = _logMsgs joinString ", ";
 
-    INFO_2("%1 VERSIONING:%2", [ARR_3(diag_frameNo, diag_tickTime, time)], _logMsg);
+    INFO_2("%1 VERSIONING:%2",[ARR_3(diag_frameNo,diag_tickTime,time)],_logMsg);
 };
 
 // Dependency check and warn

@@ -97,7 +97,7 @@ _ctrlMagnification ctrlCommit 0;
 
 // Calculate lighting.
 private _dayOpacity = AMBIENT_BRIGHTNESS;
-private _nightOpacity = [1,0] select (_dayOpacity == 1);
+private _nightOpacity = parseNumber (_dayOpacity != 1);
 
 private _useReticleNight = GVAR(useReticleNight);
 
