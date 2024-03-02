@@ -14,7 +14,7 @@ if (dialog && {!GVAR(holdKeyDown)} && {_button == _rightMouseButton} && {!_shift
 // [interactKey] + shift + right click to toggle menu lock
 if (_button == _rightMouseButton && {_shiftKey}) then {
     GVAR(holdKeyDown) = !GVAR(holdKeyDown);
-    hint format ["Menu lock toggled %1", (if (GVAR(holdKeyDown)) then {"off"} else {"on"})];
+    hint format ["Menu lock toggled %1", ["on", "off"] select GVAR(holdKeyDown)];
     if (dialog) then {
         closeDialog 0;
     };

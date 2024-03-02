@@ -81,7 +81,7 @@ switch (toLower _source) do {
 
         if (_store) then {
             if (!is3DEN) exitWith {
-                WARNING_1("Source is mission, but not in 3DEN editor. Setting: %1",_setting);
+                WARNING_1("Source is mission,but not in 3DEN editor. Setting: %1",_setting);
             };
 
             if (!isNil {GVAR(missionConfig) getVariable _setting}) exitWith {
@@ -135,7 +135,7 @@ switch (toLower _source) do {
             if ([] call FUNC(whitelisted)) then {
                 [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
             } else {
-                WARNING_1("Source is server, but no admin access. Setting: %1",_setting);
+                WARNING_1("Source is server,but no admin access. Setting: %1",_setting);
                 _return = false;
             };
         };

@@ -62,8 +62,10 @@ TEST_TRUE(_result isEqualTo [ARR_2("Single","FullAuto")],_funcName);
 _result = ["arifle_MX_GL_F"] call CBA_fnc_getWeaponModes;
 TEST_TRUE(_result isEqualTo [ARR_2("Single","FullAuto")],_funcName);
 
-_result = ["arifle_MX_F", true] call CBA_fnc_getWeaponModes;
-TEST_TRUE(_result isEqualTo [ARR_5("Single","FullAuto","fullauto_medium","single_medium_optics1","single_far_optics2")],_funcName);
+if (!isClass (configFile >> "CfgPatches" >> "ace_ai")) then { // ace modifies config so don't bother when it's loaded
+    _result = ["arifle_MX_F", true] call CBA_fnc_getWeaponModes;
+    TEST_TRUE(_result isEqualTo [ARR_5("Single","FullAuto","fullauto_medium","single_medium_optics1","single_far_optics2")],_funcName);
+};
 
 _result = ["FirstAidKit", true] call CBA_fnc_getWeaponModes;
 TEST_TRUE(_result isEqualTo ["FirstAidKit"],_funcName);

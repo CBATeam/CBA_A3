@@ -99,8 +99,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
                 if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
                     if (count _potentialMenuSources == 0) then {
                         _isTypeTarget = true;
-                        _target = if ((_vehicleTarget != player) &&
-                            {({_vehicleTarget isKindOf _x} count _typesList > 0)}) then {_vehicleTarget} else {_potentialTarget};
+                        _target = [_potentialTarget, _vehicleTarget] select ((_vehicleTarget != player) && {({_vehicleTarget isKindOf _x} count _typesList > 0)});
                         if ("player" in _typesList) then {
                             _target = player;
                         };
@@ -119,7 +118,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
                 _menuSources pushBack _x;
             } forEach _potentialMenuSources;
 
-            TRACE_2("",_target, _menuSources);
+            TRACE_2("",_target,_menuSources);
             if (count _menuSources > 0) then {
                 // show menu dialog and load menu data
                 GVAR(target) = _target; // global variable used since passing an object as a string is too difficult.
