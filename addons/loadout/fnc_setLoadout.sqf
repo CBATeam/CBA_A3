@@ -32,8 +32,9 @@ if (count _loadout == 10) exitWith {
 
 _loadout params ["_loadoutArray", "_extendedInfo"];
 
-_unit setUnitLoadout [_loadoutArray, _fullMagazines];
-
 if (_extendedInfo isEqualType []) then { _extendedInfo = createHashMapFromArray _extendedInfo; };
+["CBA_preLoadoutSet", [_unit, _loadoutArray, _extendedInfo]] call CBA_fnc_localEvent;
+
+_unit setUnitLoadout [_loadoutArray, _fullMagazines];
 
 ["CBA_loadoutSet", [_unit, _loadoutArray, _extendedInfo]] call CBA_fnc_localEvent;
