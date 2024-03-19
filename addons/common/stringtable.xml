@@ -43,5 +43,23 @@
             <Russian>CBA Оружие</Russian>
             <Korean>CBA 무기</Korean>
         </Key>
+        <Key ID="STR_cba_common_QTEHoldKey">
+            <English>Hold Down Key</English>  
+        </Key>
+        <Key ID="STR_cba_common_QTEInputKeys">
+            <English>Input Keys</English>  
+        </Key>
+        <Key ID="STR_cba_common_QTEInputArrows">
+            <English>Arrows</English>  
+        </Key>
+        <Key ID="STR_cba_common_QTEInputWASD">
+            <English>WASD</English>  
+        </Key>
+        <Key ID="STR_cba_common_QTEInputIJKL">
+            <English>IJKL</English>  
+        </Key>
+        <Key ID="STR_cba_common_QTENumpad">
+            <English>Numpad</English>  
+        </Key>
     </Package>
 </Project>
