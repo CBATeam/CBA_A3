@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: john681611
- * Generates a Quick Time Event seqence (= a random sequence of arrow characters of a given length).
+ * Generates a Quick Time Event sequence (= a random sequence of arrow characters of a given length).
  *
  * Arguments:
  * 0: Code length <NUMBER>
