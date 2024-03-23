@@ -1,41 +1,51 @@
 #include "script_component.hpp"
-#include "\a3\ui_f\hpp\defineDIKCodes.inc"
-/*
-	 * Author: john681611
-	 * Runs a Quick time Event.
-	 *
-	 * Arguments:
-	 * 0: Object QTE is attached to <OBJECT>
-	 * 1: Arguments, passed to condition, fail and finish <ARRAY>
-	     * 2: On Display: Code callback on displayable event. <CODE, STRING>
-	 * 2: On Finish: Code called or STRING raised as event. <CODE, STRING>
-	 * 3: On Failure: Code called or STRING raised as event. <CODE, STRING>
-	 * 4: QTE Seqence <ARRAY>
-	 * 5: max interaction distance from attached object <NUMBER> (default: 10) 
-	 * 6: timout <NUMBER> (default: 30) 
-	 *
-	 * Return Value:
-	 * None
-	 *
-	 * Example:
-	 * [car, [], {
-		hint "Finished!"
-	}, {
-		hint "Failure!"
-	}, ["↑", "↓", "→", "←"]] call ace_common_fnc_runQTE
-	 *
-	 * Public: Yes
- */
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_runQTE
+
+Description:
+	Runs a Quick time Event.
+
+Parameters:
+	_object - <OBJECT>
+	_args - Extra arguments passed to the _on... functions<ARRAY>
+ 	_onDisplay - Code callback on displayable event passed [_args, _qte_seqence, _qte_history]. <CODE, STRING>
+	_onFinish - Code callback on QTE completed passed [_args, _elapsedTime]. <CODE, STRING>
+	_onFinish - Code callback on QTE timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
+ 	_qte_seqence - QTE seqence usually made up of ["↑", "↓", "→", "←"] <ARRAY>
+ 	_max_distance - max interaction distance from attached object <NUMBER> (default: 10) 
+ 	_timeout - ingame timeout <NUMBER> (default: 30)
+
+Example:
+    [
+		car,
+		[], 
+		{ 
+		hint format [
+			"%1 \n %2",
+			[_this select 1] call CBA_fnc_getFormattedQTESequence,
+			[_this select 2] call CBA_fnc_getFormattedQTESequence
+			]
+		}, 
+		{ 
+		hint "Finished!"; 
+		},
+		{ 
+			hint "Failure!"; 
+		},
+		["↑", "↓", "→", "←"]
+	] call CBA_fnc_runQTE
+
+Returns:
+    Nil
+
+Author:
+    john681611
+---------------------------------------------------------------------------- */
+
 
 params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qte_seqence", ["_max_distance", 10], ["_timeout", 30]];
-
-if (!GVAR(settingsInitFinished)) exitWith {
-	// only run this after the settings are initialized
-	GVAR(runAtSettingsInitialized) pushBack [FUNC(runQTE), _this];
-};
-
 if (GVAR(QTERunning)) exitWith {
-	TRACE_1("QTE already running qeueing up", GVAR(QTERunning));
+	TRACE_1("QTE already running qeueing up",GVAR(QTERunning));
 	[{
 		!GVAR(QTERunning)
 	}, {
@@ -43,121 +53,47 @@ if (GVAR(QTERunning)) exitWith {
 	}, _this] call CBA_fnc_waitUntilAndExecute;
 };
 
-private _display = findDisplay 46;
-
-if (isNull _display) exitWith {
-	TRACE_1("Waiting for main display to be ready", isNull (_display));
-	[{
-		!isNull (findDisplay 46)
-	}, {
-		_this call FUNC(runQTE);
-	}, _this] call CBA_fnc_waitUntilAndExecute;
-};
-
-if (_onDisplay isEqualType "") then {
-	[_onDisplay, [_args, [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)], [[], ""]]] call CBA_fnc_localEvent;
-} else {
-	[_args, [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)], [[], ""]] call _onDisplay;
-};
-
 GVAR(QTEHistory) = [];
 GVAR(QTERunning) = true;
 private _start_time = CBA_missionTime;
+private _qteArgsArray = [
+	["object", _object],
+	["args", _args],
+	["onDisplay", _onDisplay],
+	["onFinish", _onFinish],
+	["onFail", _onFail],
+	["max_distance", _max_distance],
+	["qte_seqence", _qte_seqence],
+	["start_time", _start_time],
+	["timeout", _timeout]
+];
+GVAR(QTEArgs) = createHashMapObject [_qteArgsArray];
 
-[_display, "KeyUp", {
-	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
-	_thisArgs params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_max_distance", "_qte_seqence", "_start_time", "_timeout", "_display"];
-	private _elapsedTime = CBA_missionTime - _start_time;
-
-	if (player distance _object > _max_distance || _elapsedTime > _timeout) exitWith {
-		_display displayRemoveEventHandler ["KeyUp", _thisID];
-		GVAR(QTERunning) = false;
-		if (_onFail isEqualType "") then {
-			[_onFail, [_args, _elapsedTime]] call CBA_fnc_localEvent;
-		} else {
-			[_args, _elapsedTime] call _onFail;
-		};
+// Setup 
+[{
+	private _timeout = GVAR(QTEArgs) get "timeout";
+	private _object = GVAR(QTEArgs) get "object";
+	private _max_distance = GVAR(QTEArgs) get "max_distance";
+	private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "start_time");
+	
+	!GVAR(QTERunning) || player distance _object > _max_distance || _elapsedTime > _timeout;
+}, {
+	TRACE_1("QTE ended",GVAR(QTERunning));
+	if(!GVAR(QTERunning)) exitWith {};
+	GVAR(QTERunning) = false;
+	GVAR(QTEHistory) = [];
+	private _onFail = (GVAR(QTEArgs) get "onFail");
+	private _args = (GVAR(QTEArgs) get "args");
+	TRACE_1("QTE Failed",_args);
+	if (_onFail isEqualType "") then {
+		[_onFail, [_args, _elapsedTime]] call CBA_fnc_localEvent;
+	} else {
+		[_args, _elapsedTime] call _onFail;
 	};
+}, _this] call CBA_fnc_waitUntilAndExecute;
 
-	private _inputKeys = [DIK_UP, DIK_DOWN, DIK_LEFT, DIK_RIGHT];
-	switch (GVAR(QTEInputKeys)) do {
-		case 1: {
-			_inputKeys = [DIK_W, DIK_S, DIK_A, DIK_D];
-		};
-		case 2: {
-			_inputKeys = [DIK_I, DIK_K, DIK_J, DIK_L];
-		};
-		case 3: {
-			_inputKeys = [DIK_NUMPAD8, DIK_NUMPAD2, DIK_NUMPAD4, DIK_NUMPAD6];
-		};
-		default {
-			_inputKeys = [DIK_UP, DIK_DOWN, DIK_LEFT, DIK_RIGHT];
-		};
-	};
-
-	if !(_key in _inputKeys) exitWith {};
-
-	if ((GVAR(QTEHoldKey) == 0 && !_ctrl) ||
-	(GVAR(QTEHoldKey) == 1 &&!_alt) ||
-	(GVAR(QTEHoldKey) == 2 &&!_shift)) exitWith {
-		GVAR(QTEHistory) = [];
-		if (_onDisplay isEqualType "") then {
-			[_onDisplay, [
-                _args,
-                [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)],
-                [[GVAR(QTEHistory), [GVAR(QTEHistory)] call FUNC(getFormattedQTESequence)]]
-                ]] call CBA_fnc_localEvent;
-			} else {
-				[_args, [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)], [[GVAR(QTEHistory), [GVAR(QTEHistory)] call FUNC(getFormattedQTESequence)]]] call _onDisplay;
-			};
-		};
-		_override = true;
-
-		if (_key == (_inputKeys select 0)) then {
-			GVAR(QTEHistory) pushBack "↑";
-		};
-
-		if (_key == (_inputKeys select 1)) then {
-			GVAR(QTEHistory) pushBack "↓";
-		};
-
-		if (_key == (_inputKeys select 2)) then {
-			GVAR(QTEHistory) pushBack "←";
-		};
-
-		if (_key == (_inputKeys select 3)) then {
-			GVAR(QTEHistory) pushBack "→";
-		};
-		if (GVAR(QTEHistory) isEqualTo _qte_seqence) exitWith {
-			GVAR(QTEHistory) = [];
-			_display displayRemoveEventHandler ["KeyUp", _thisID];
-			GVAR(QTERunning) = false;
-			if (_onFinish isEqualType "") then {
-				[_onFinish, [_args, _elapsedTime]] call CBA_fnc_localEvent;
-			} else {
-				[_args, _elapsedTime] call _onFinish;
-			};
-		};
-
-		if !(GVAR(QTEHistory) isEqualTo (_qte_seqence select [0, count GVAR(QTEHistory)])) then {
-			GVAR(QTEHistory) = [];
-		};
-
-		if (_onDisplay isEqualType "") then {
-			[_onDisplay, [_args, [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)], [[GVAR(QTEHistory), [GVAR(QTEHistory)] call FUNC(getFormattedQTESequence)]]]] call CBA_fnc_localEvent;
-		} else {
-			[_args, [_qte_seqence, [_qte_seqence] call FUNC(getFormattedQTESequence)], [[GVAR(QTEHistory), [GVAR(QTEHistory)] call FUNC(getFormattedQTESequence)]]] call _onDisplay;
-		};
-		true;
-		}, [
-			_object,
-			_args,
-			_onDisplay,
-			_onFinish,
-			_onFail,
-			_max_distance,
-			_qte_seqence,
-			_start_time,
-			_timeout,
-			_display
-		]] call CBA_fnc_addBISEventHandler;
+if (_onDisplay isEqualType "") then {
+	[_onDisplay, [_args, _qte_seqence, []]] call CBA_fnc_localEvent;
+} else {
+	[_args, _qte_seqence, []] call _onDisplay;
+};

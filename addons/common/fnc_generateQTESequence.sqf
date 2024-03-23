@@ -1,19 +1,23 @@
 #include "script_component.hpp"
-/*
- * Author: john681611
- * Generates a Quick Time Event seqence (= a random sequence of arrow characters of a given length).
- *
- * Arguments:
- * 0: Code length <NUMBER>
- *
- * Return Value:
- * Array of arrow characters <ARRAY>
- *
- * Example:
- * 5 call ace_common_fnc_generateQTESequence
- *
- * Public: Yes
- */
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_generateQTESequence
+
+Description:
+	Generate a QTE sequence of a given length.
+
+Parameters:
+    _length - <NUMBER>
+
+
+Example:
+    [5] call CBA_fnc_generateQTESequence;
+
+Returns:
+    QTE seqence of requested length made up of ["↑", "↓", "→", "←"] <ARRAY>
+
+Author:
+    john681611
+---------------------------------------------------------------------------- */
 
 params [["_length", 0, [0]]];
 

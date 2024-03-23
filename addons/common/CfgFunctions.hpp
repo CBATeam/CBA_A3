@@ -146,6 +146,7 @@ class CfgFunctions {
             PATHTO_FNC(generateQTESequence);
             PATHTO_FNC(getFormattedQTESequence);
             PATHTO_FNC(runQTE);
+            PATHTO_FNC(keyPressedQTE);
         };
     };
 };
