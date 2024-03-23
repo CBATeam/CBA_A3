@@ -21,8 +21,8 @@ Author:
 
 
 params ["_eventQTE"];
-
-if!(GVAR(QTERunning)) exitWith {}; // Continues if undefined :(
+GVAR(QTERunning) = RETDEF(GVAR(QTERunning),false);
+if!(GVAR(QTERunning)) exitWith {};
 if!(_eventQTE in ["↑", "↓", "→", "←"]) exitWith {};
 
 

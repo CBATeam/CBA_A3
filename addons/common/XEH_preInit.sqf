@@ -80,18 +80,18 @@ activateAddons GVAR(addons);
 
 ADDON = true;
 
-["CBA QTE", QGVAR(keyUpQTE), ["↑", "Up key used in QTE events."], {}, {
+["CBA QTE", "QTE_Up_Key", ["↑", "Up key used in QTE events."], {}, {
     ["↑"] call CBA_fnc_keyPressedQTE;
 }, [DIK_UP, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", QGVAR(keyDownQTE), ["↓", "Down key used in QTE events."], {}, {
+["CBA QTE", "QTE_Down_Key", ["↓", "Down key used in QTE events."], {}, {
     ["↓"] call CBA_fnc_keyPressedQTE;
 }, [DIK_DOWN, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", QGVAR(keyLeftQTE), ["←", "Left key used in QTE events."], {}, {
+["CBA QTE", "QTE_Left_Key", ["←", "Left key used in QTE events."], {}, {
     ["←"] call CBA_fnc_keyPressedQTE;
 }, [DIK_LEFT, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", QGVAR(keyRightQTE), ["→", "Right key used in QTE events."], {}, {
+["CBA QTE", "QTE_Right_Key", ["→", "Right key used in QTE events."], {}, {
     ["→"] call CBA_fnc_keyPressedQTE;
 }, [DIK_RIGHT, [false, true, false]]] call CBA_fnc_addKeybind;
