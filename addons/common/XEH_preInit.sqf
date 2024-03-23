@@ -80,18 +80,18 @@ activateAddons GVAR(addons);
 
 ADDON = true;
 
-["CBA QTE", "QTE_Up_Key", ["↑", "Up key used in QTE events."], {}, {
+["CBA Quick-Time Events", "QTE_Up_Key", ["↑", "Up key used in Quick-Time Events."], {}, {
     ["↑"] call CBA_fnc_keyPressedQTE;
 }, [DIK_UP, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", "QTE_Down_Key", ["↓", "Down key used in QTE events."], {}, {
+["CBA Quick-Time Events", "QTE_Down_Key", ["↓", "Down key used in Quick-Time Events."], {}, {
     ["↓"] call CBA_fnc_keyPressedQTE;
 }, [DIK_DOWN, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", "QTE_Left_Key", ["←", "Left key used in QTE events."], {}, {
+["CBA Quick-Time Events", "QTE_Left_Key", ["←", "Left key used in Quick-Time Events."], {}, {
     ["←"] call CBA_fnc_keyPressedQTE;
 }, [DIK_LEFT, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["CBA QTE", "QTE_Right_Key", ["→", "Right key used in QTE events."], {}, {
+["CBA Quick-Time Events", "QTE_Right_Key", ["→", "Right key used in Quick-Time Events."], {}, {
     ["→"] call CBA_fnc_keyPressedQTE;
 }, [DIK_RIGHT, [false, true, false]]] call CBA_fnc_addKeybind;

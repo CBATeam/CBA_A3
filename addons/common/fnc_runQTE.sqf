@@ -8,32 +8,30 @@ Description:
 Parameters:
 	_object - <OBJECT>
 	_args - Extra arguments passed to the _on... functions<ARRAY>
- 	_onDisplay - Code callback on displayable event passed [_args, _qte_seqence, _qte_history]. <CODE, STRING>
-	_onFinish - Code callback on QTE completed passed [_args, _elapsedTime]. <CODE, STRING>
-	_onFinish - Code callback on QTE timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
- 	_qte_seqence - QTE seqence usually made up of ["↑", "↓", "→", "←"] <ARRAY>
+ 	_onDisplay - Code callback on displayable event passed [_args, _qte_sequence, _qte_history]. <CODE, STRING>
+	_onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime]. <CODE, STRING>
+	_onFinish - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
+ 	_qte_sequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
  	_max_distance - max interaction distance from attached object <NUMBER> (default: 10) 
  	_timeout - ingame timeout <NUMBER> (default: 30)
 
 Example:
-    [
-		car,
-		[], 
-		{ 
-		hint format [
-			"%1 \n %2",
-			[_this select 1] call CBA_fnc_getFormattedQTESequence,
-			[_this select 2] call CBA_fnc_getFormattedQTESequence
-			]
-		}, 
-		{ 
-		hint "Finished!"; 
-		},
-		{ 
-			hint "Failure!"; 
-		},
-		["↑", "↓", "→", "←"]
-	] call CBA_fnc_runQTE
+    [car,
+	[], 
+	{ 
+	hint format [
+		"%1 \n %2",
+		[_this select 1] call CBA_fnc_getFormattedQTESequence,
+		[_this select 2] call CBA_fnc_getFormattedQTESequence
+		]
+	}, 
+	{ 
+	hint "Finished!"; 
+	},
+	{ 
+		hint "Failure!"; 
+	},
+	["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
 
 Returns:
     Nil
@@ -43,7 +41,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 
-params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qte_seqence", ["_max_distance", 10], ["_timeout", 30]];
+params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qte_sequence", ["_max_distance", 10], ["_timeout", 30]];
 if (GVAR(QTERunning)) exitWith {
 	TRACE_1("QTE already running qeueing up",GVAR(QTERunning));
 	[{
@@ -63,7 +61,7 @@ private _qteArgsArray = [
 	["onFinish", _onFinish],
 	["onFail", _onFail],
 	["max_distance", _max_distance],
-	["qte_seqence", _qte_seqence],
+	["qte_seqence", _qte_sequence],
 	["start_time", _start_time],
 	["timeout", _timeout]
 ];
@@ -93,7 +91,7 @@ GVAR(QTEArgs) = createHashMapObject [_qteArgsArray];
 }, _this] call CBA_fnc_waitUntilAndExecute;
 
 if (_onDisplay isEqualType "") then {
-	[_onDisplay, [_args, _qte_seqence, []]] call CBA_fnc_localEvent;
+	[_onDisplay, [_args, _qte_sequence, []]] call CBA_fnc_localEvent;
 } else {
-	[_args, _qte_seqence, []] call _onDisplay;
+	[_args, _qte_sequence, []] call _onDisplay;
 };

@@ -1,19 +1,23 @@
 #include "script_component.hpp"
-/*
- * Author: john681611
- * Formats QTE code into something displayable.
- *
- * Argument: 
- * 0: QTE Code <ARRAY>
- * 
- * Return Value:
- * Formatted QTE Code <STRING>
- *
- * Example:
- * [["↑", "↓", "→", "←"]] call ace_common_fnc_getFormattedQTESequence
- *
- * Public: Yes
- */
+/* ----------------------------------------------------------------------------
+Function: CBA_fnc_getFormattedQTESequence
+
+Description:
+	Formats Quick-Time sequence into a displayable string.
+
+Parameters:
+    _code - Quick-Time sequence <ARRAY>
+
+
+Example:
+    [["↑", "↓", "→", "←"]] call CBA_fnc_getFormattedQTESequence;
+
+Returns:
+    Formatted Quick-Time sequence <STRING>
+
+Author:
+    john681611
+---------------------------------------------------------------------------- */
 
 params ["_code"];
 
