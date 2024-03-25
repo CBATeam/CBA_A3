@@ -27,7 +27,7 @@ Examples:
     (end)
 
 Author:
-    silencer.helling3r 2012-12-22, Jonpas
+    silencer.helling3r 2012-12-22, Jonpas, esteldunedain, johnb43 (from ACE)
 ---------------------------------------------------------------------------- */
 SCRIPT(removeMagazineCargo);
 
@@ -35,6 +35,11 @@ params [["_container", objNull, [objNull]], ["_item", "", [""]], ["_count", 1, [
 
 if (isNull _container) exitWith {
     TRACE_2("Container not Object or null",_container,_item);
+    false
+};
+
+if (_container isKindOf "CAManBase") exitWith {
+    TRACE_2("Container is unit",_container,_item);
     false
 };
 
@@ -55,35 +60,43 @@ if (_count <= 0) exitWith {
     false
 };
 
+// Make sure magazine is in config case
+_item = configName _config;
+
 // Ensure proper count
 _count = round _count;
+_ammo = round _ammo;
 
-// [[type1, ammo1], [type2, ammo2], ...]
-private _magazinesAmmo = magazinesAmmoCargo _container;
+if (_ammo < 0) then {
+    (getMagazineCargo _container) params ["_magazines", "_magazinesCount"];
 
-// Clear cargo space and readd the items as long it's not the type in question
-clearMagazineCargoGlobal _container;
+    private _index = _magazines find _item;
 
-// Engine will agressively cleanup "empty" ground containers, even if magazines are re-added in same frame, so re-create a new container
-private _containerType = typeOf _container;
-if ((_containerType isKindOf "WeaponHolder")
-    && {([configOf _container >> "forceSupply", "NUMBER", 0] call CBA_fnc_getConfigEntry) != 0}
-    && {(weaponCargo _container) isEqualTo []}
-    && {(itemCargo _container) isEqualTo []}
-    && {(backpackCargo _container) isEqualTo []}) then {
-    _container = createVehicle [_containerType, getPosATL _container, [], 0, "CAN_COLLIDE"];
-};
+    if (_index == -1) exitWith {};
 
-{
-    _x params ["_magazineClass", "_magazineAmmo"];
+    _container addMagazineCargoGlobal [_item, -_count];
 
-    if (_count != 0 && {_magazineClass == _item} && {_ammo < 0 || {_magazineAmmo == _ammo}}) then {
-        // Process removal
-        _count = _count - 1;
-    } else {
-        // Readd
-        _container addMagazineAmmoCargo [_magazineClass, 1, _magazineAmmo];
+    // Check the amount of mags that were present before removal
+    (_magazinesCount select _index) >= _count // return
+} else {
+    // [[type1, ammo1], [type2, ammo2], ...]
+    private _magazinesAmmo = magazinesAmmoCargo _container;
+    private _index = -1;
+    private _magArray = [_item, _ammo];
+
+    while {_count != 0} do {
+        _index = _magazinesAmmo find _magArray;
+
+        if (_index != -1) then {
+            _container addMagazineAmmoCargo [_item, -1, _ammo];
+
+            // Process removal
+            _magazinesAmmo deleteAt _index;
+            _count = _count - 1;
+        } else {
+            break;
+        };
     };
-} forEach _magazinesAmmo;
 
-(_count == 0)
+    _count == 0 // return
+};
