@@ -20,9 +20,9 @@ Author:
 
 
 params ["_eventQTE"];
-GVAR(QTERunning) = RETDEF(GVAR(QTERunning),false);
-if!(GVAR(QTERunning)) exitWith {};
-if!(_eventQTE in ["↑", "↓", "→", "←"]) exitWith {};
+
+if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {};
+if !(_eventQTE in ["↑", "↓", "→", "←"]) exitWith {};
 
 
 private _object = GVAR(QTEArgs) get "object";
