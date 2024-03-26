@@ -50,7 +50,7 @@ if (GVAR(QTEHistory) isEqualTo _qte_sequence) exitWith {
 	};
 };
 
-if !(GVAR(QTEHistory) isEqualTo (_qte_sequence select [0, count GVAR(QTEHistory)])) then {
+if (GVAR(QTEHistory) isNotEqualTo (_qte_sequence select [0, count GVAR(QTEHistory)])) then {
 	GVAR(QTEHistory) = [];
 };
 
