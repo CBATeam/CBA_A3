@@ -80,18 +80,18 @@ activateAddons GVAR(addons);
 
 ADDON = true;
 
-[ELSTRING(QTEKeybindGroup), "QTE_Up_Key", ["↑", LSTRING(QTEKeybindUpTooltip)], {}, {
+[ELSTRING(QTEKeybindGroup), QGVAR(qteUpKey), ["↑", LSTRING(QTEKeybindUpTooltip)], {}, {
     ["↑"] call CBA_fnc_keyPressedQTE;
 }, [DIK_UP, [false, true, false]]] call CBA_fnc_addKeybind;
 
-[ELSTRING(QTEKeybindGroup), "QTE_Down_Key", ["↓", LSTRING(QTEKeybindDownTooltip)], {}, {
+[ELSTRING(QTEKeybindGroup), QGVAR(qteDownKey), ["↓", LSTRING(QTEKeybindDownTooltip)], {}, {
     ["↓"] call CBA_fnc_keyPressedQTE;
 }, [DIK_DOWN, [false, true, false]]] call CBA_fnc_addKeybind;
 
-[ELSTRING(QTEKeybindGroup), "QTE_Left_Key", ["←", LSTRING(QTEKeybindLeftTooltip)], {}, {
+[ELSTRING(QTEKeybindGroup), QGVAR(qteLeftKey), ["←", LSTRING(QTEKeybindLeftTooltip)], {}, {
     ["←"] call CBA_fnc_keyPressedQTE;
 }, [DIK_LEFT, [false, true, false]]] call CBA_fnc_addKeybind;
 
-[ELSTRING(QTEKeybindGroup), "QTE_Right_Key", ["→", LSTRING(QTEKeybindRightTooltip)], {}, {
+[ELSTRING(QTEKeybindGroup), QGVAR(qteRightKey), ["→", LSTRING(QTEKeybindRightTooltip)], {}, {
     ["→"] call CBA_fnc_keyPressedQTE;
 }, [DIK_RIGHT, [false, true, false]]] call CBA_fnc_addKeybind;
