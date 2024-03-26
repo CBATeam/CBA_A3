@@ -6,8 +6,7 @@ Description:
 	Generate a Quick-Time sequence of a given length.
 
 Parameters:
-    _length - <NUMBER>
-
+    _length - Length of QTE sequence <NUMBER>
 
 Example:
     [5] call CBA_fnc_generateQTESequence;
