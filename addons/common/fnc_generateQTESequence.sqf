@@ -3,7 +3,7 @@
 Function: CBA_fnc_generateQTESequence
 
 Description:
-	Generate a Quick-Time sequence of a given length.
+    Generate a Quick-Time sequence of a given length.
 
 Parameters:
     _length - Length of QTE sequence <NUMBER>

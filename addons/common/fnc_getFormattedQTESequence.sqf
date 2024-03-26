@@ -3,7 +3,7 @@
 Function: CBA_fnc_getFormattedQTESequence
 
 Description:
-	Formats Quick-Time sequence into a displayable string.
+    Formats Quick-Time sequence into a displayable string.
 
 Parameters:
     _code - Quick-Time sequence <ARRAY>
