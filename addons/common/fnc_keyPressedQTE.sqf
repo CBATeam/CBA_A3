@@ -55,7 +55,7 @@ if (GVAR(QTEHistory) isNotEqualTo (_qte_sequence select [0, count GVAR(QTEHistor
 };
 
 if (_onDisplay isEqualType "") then {
-	[_onDisplay, 	[_args, _qte_sequence,  GVAR(QTEHistory)]] call CBA_fnc_localEvent;
+	[_onDisplay, [_args, _qte_sequence, GVAR(QTEHistory)]] call CBA_fnc_localEvent;
 } else {
-	[_args, _qte_sequence,  GVAR(QTEHistory)] call _onDisplay;
+	[_args, _qte_sequence, GVAR(QTEHistory)] call _onDisplay;
 };
