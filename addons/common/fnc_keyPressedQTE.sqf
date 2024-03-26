@@ -8,7 +8,6 @@ Description:
 Parameters:
     _eventQTE - <STRING>
 
-
 Example:
     ["↑"] call CBA_fnc_keyPressedQTE;
 
