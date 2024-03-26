@@ -58,6 +58,5 @@
         <Key ID="STR_cba_common_QTEKeybindRightTooltip">
             <English>Right key used in Quick-Time Events.</English>  
         </Key>
-        
     </Package>
 </Project>
