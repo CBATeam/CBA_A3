@@ -34,7 +34,7 @@ Example:
     ["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
 
 Returns:
-    <BOOELAN> - True if the QTE was started, false if it was already running.
+    True if the QTE was started, false if it was already running <BOOELAN>
 
 Author:
     john681611
