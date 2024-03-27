@@ -29,15 +29,15 @@ class CfgFunctions {
     class A3 {
         class GUI {
             class initDisplay {
-                file = QPATHTOF(fnc_initDisplay.sqf);
+                file = QPATHTOF(fnc_initDisplay.inc.sqf);
             };
         };
         class Misc {
             class startLoadingScreen {
-                file = QPATHTOF(fnc_startLoadingScreen.sqf);
+                file = QPATHTOF(fnc_startLoadingScreen.inc.sqf);
             };
             class endLoadingScreen {
-                file = QPATHTOF(fnc_endLoadingScreen.sqf);
+                file = QPATHTOF(fnc_endLoadingScreen.inc.sqf);
             };
         };
     };
