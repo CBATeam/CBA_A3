@@ -8,12 +8,12 @@ Description:
 Parameters:
     _object - <OBJECT>
     _args - Extra arguments passed to the _on... functions<ARRAY>
-     _onDisplay - Code callback on displayable event passed [_args, _qte_sequence, _qte_history]. <CODE, STRING>
+    _onDisplay - Code callback on displayable event passed [_args, _qte_sequence, _qte_history]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
-     _qte_sequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
-     _max_distance - max interaction distance from attached object <NUMBER> (default: 10) 
-     _timeout - ingame timeout <NUMBER> (default: 30)
+    _qte_sequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
+    _max_distance - max interaction distance from attached object <NUMBER> (default: 10) 
+    _timeout - ingame timeout <NUMBER> (default: 30)
 
 Example:
     [car,
@@ -34,7 +34,7 @@ Example:
     ["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
 
 Returns:
-    Nil
+    <BOOELAN> - True if the QTE was started, false if it was already running.
 
 Author:
     john681611
@@ -83,7 +83,7 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
     } else {
         [_args, _elapsedTime] call _onFail;
     };
-}, _this] call CBA_fnc_waitUntilAndExecute;
+}, []] call CBA_fnc_waitUntilAndExecute;
 
 if (_onDisplay isEqualType "") then {
     [_onDisplay, [_args, _qte_sequence, []]] call CBA_fnc_localEvent;

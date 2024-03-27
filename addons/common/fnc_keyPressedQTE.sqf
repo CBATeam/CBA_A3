@@ -12,7 +12,7 @@ Example:
     ["↑"] call CBA_fnc_keyPressedQTE;
 
 Returns:
-    None
+    <BOOLEAN> - True if QTE is running
 
 Author:
     john681611
@@ -21,8 +21,9 @@ Author:
 
 params ["_eventQTE"];
 
-if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {};
-if !(_eventQTE in ["↑", "↓", "→", "←"]) exitWith {};
+if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {
+    false
+};
 
 
 private _args = GVAR(QTEArgs) get "args";
@@ -42,6 +43,7 @@ if (GVAR(QTEHistory) isEqualTo _qteSequence) exitWith {
     } else {
         [_args, _elapsedTime] call _onFinish;
     };
+    true
 };
 
 if (GVAR(QTEHistory) isNotEqualTo (_qteSequence select [0, count GVAR(QTEHistory)])) then {
@@ -54,3 +56,5 @@ if (_onDisplay isEqualType "") then {
 } else {
     [_args, _qteSequence, GVAR(QTEHistory)] call _onDisplay;
 };
+
+true
