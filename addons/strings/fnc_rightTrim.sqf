@@ -9,11 +9,11 @@ Description:
     See <CBA_fnc_leftTrim> and <CBA_fnc_trim>.
 
 Parameters:
-    _string - String to trim [String]
-    _trim - Characters to trim [String] (default: "")
+    _string - String to trim <STRING>
+    _trim   - Characters to trim (optional, default: "") <STRING>
 
 Returns:
-    Trimmed string [String]
+    Trimmed string <STRING>
 
 Example:
     (begin example)
@@ -28,26 +28,9 @@ SCRIPT(rightTrim);
 
 params ["_string", ["_trim", "", [""]]];
 
-private _chars = toArray _string;
-private _numChars = count _chars;
-
-// Trim from the right
-reverse _chars;
-
 // Trim all whitespace characters by default
 if (_trim == "") then {
-    _trim = WHITE_SPACE;
-} else {
-    _trim = toArray _trim;
+    _trim = toString WHITE_SPACE;
 };
 
-// We have to process the string in array form because it could differ in length (if there are non-ASCII characters)
-private _trimIndex = count _chars;
-{
-    if !(_x in _trim) exitWith { _trimIndex = _forEachIndex; };
-} forEach _chars;
-
-// Convert string back to original order
-reverse _chars;
-
-toString (_chars select [0, _numChars - _trimIndex])
+_string trim [_trim, 2] // return
