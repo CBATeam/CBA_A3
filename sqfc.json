@@ -7,10 +7,6 @@
     ],
     "excludeList": [
         ".inc.sqf",
-        "diagnostic\\fnc_isdebugconsoleallowed.sqf",
-        "xeh\\fnc_initdisplay.sqf",
-        "xeh\\fnc_startloadingscreen.sqf",
-        "xeh\\fnc_endloadingscreen.sqf",
         "\\test_"
     ],
     "outputDir": "P:/",

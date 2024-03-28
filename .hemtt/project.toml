@@ -21,10 +21,6 @@ git_hash = 0
 enabled = true
 exclude = [
     ".inc.sqf",
-    "diagnostic/fnc_isdebugconsoleallowed.sqf",
-    "xeh/fnc_initdisplay.sqf",
-    "xeh/fnc_startloadingscreen.sqf",
-    "xeh/fnc_endloadingscreen.sqf",
     "/test_"
 ]
 

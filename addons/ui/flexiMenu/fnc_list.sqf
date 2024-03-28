@@ -23,7 +23,7 @@ private _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuReso
 private _msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
 
 if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
-if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
+if (typeName _menuRsc != "STRING") exitWith {diag_log _msg};
 
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
     _menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix

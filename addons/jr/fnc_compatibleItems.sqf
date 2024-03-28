@@ -52,7 +52,7 @@ if (isNil QGVAR(namespace)) then {
 };
 
 // Get cached result, if it exists
-private _cachekey = format ["%1#%2", _weapon, if (_typeFilterExists) then {_typefilter} else {"all"} ];
+private _cachekey = format ["%1#%2", _weapon, ["all", _typefilter] select _typeFilterExists];
 private _compatibleItems = GVAR(namespace) get _cachekey;
 
 if (!isNil "_compatibleItems") exitWith {
