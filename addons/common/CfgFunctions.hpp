@@ -142,5 +142,12 @@ class CfgFunctions {
         class Broken {
             PATHTO_FNC(actionArgument);
         };
+
+        class QuickTimeEvent {
+            PATHTO_FNC(generateQTESequence);
+            PATHTO_FNC(getFormattedQTESequence);
+            PATHTO_FNC(runQTE);
+            PATHTO_FNC(keyPressedQTE);
+        };
     };
 };
