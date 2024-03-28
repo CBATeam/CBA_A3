@@ -70,6 +70,7 @@ class CfgMagazineWells {
 
 
     // Grenade/Flare Launchers, ordered lexicographically
+    #include "magwells_22mm.hpp"
     #include "magwells_35mm.hpp"
     #include "magwells_40mm.hpp"
 

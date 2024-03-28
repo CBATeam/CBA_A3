@@ -48,7 +48,8 @@
             "30Rnd_9x21_Green_Mag"
         };
     };
-    class CBA_9x19_STEN {};         // STEN
+    class CBA_9x19_STEN {};         // STEN, Lanchester SMG
+    class CBA_9x19_Sterling {};     // Sterling SMG
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9
