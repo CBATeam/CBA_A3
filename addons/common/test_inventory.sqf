@@ -209,8 +209,8 @@ _result = [_container, "30Rnd_556x45_Stanag", 5] call CBA_fnc_addMagazineCargo;
 TEST_TRUE(_result,_funcName);
 TEST_TRUE(count (magazineCargo _container) == 5,_funcName);
 
-_result = [_container, "30Rnd_556x45_Stanag", 1000, false, 1] call CBA_fnc_addMagazineCargo;
-TEST_FALSE(_result,_funcName);
+_result = [_container, "30Rnd_556x45_Stanag", 10, false, 1] call CBA_fnc_addMagazineCargo;
+TEST_TRUE(_result,_funcName);
 
 
 _funcName = "CBA_fnc_removeMagazineCargo";
@@ -228,12 +228,16 @@ TEST_TRUE(_result,_funcName);
 _result = [_container, "30Rnd_556x45_Stanag", 1, 2] call CBA_fnc_removeMagazineCargo;
 TEST_FALSE(_result,_funcName);
 
-_result = [_container, "30Rnd_556x45_Stanag", 1, 1] call CBA_fnc_removeMagazineCargo;
+_result = [_container, "30Rnd_556x45_Stanag", 2, 1] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 10] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazineCargo;
 TEST_FALSE(_result,_funcName);
 
-_result = [_container, "30Rnd_556x45_Stanag", 1000] call CBA_fnc_removeMagazineCargo;
-TEST_FALSE(_result,_funcName);
-
+// No mags of "30Rnd_556x45_Stanag" left at this point
 _container addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 5];
 _result = [_container, "30Rnd_556x45_Stanag", 3] call CBA_fnc_removeMagazineCargo;
 TEST_TRUE(_result,_funcName);

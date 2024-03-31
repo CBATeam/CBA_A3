@@ -51,22 +51,27 @@ if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
 // Make sure magazine is in config case
 _item = configName _config;
 
-if !(_item in magazines _unit) exitWith {
-    TRACE_2("Item not available on Unit",_unit,_item);
-    _return
-};
-
 // Ensure proper ammo
 _ammo = round _ammo;
 
 if (_ammo < 0) then {
     if (_unit isKindOf "CAManBase") then {
-        _unit removeMagazineGlobal _item; // removeMagazine fails on remote units
-    } else {
-        _unit addMagazineCargoGlobal [_item, -1];
-    };
+        if !(_item in magazines _unit) exitWith {
+            TRACE_2("Item not available on Unit",_unit,_item);
+        };
 
-    _return = true;
+        _unit removeMagazineGlobal _item; // removeMagazine fails on remote units
+
+        _return = true;
+    } else {
+        if !(_item in magazineCargo _unit) exitWith {
+            TRACE_2("Item not available on Unit",_unit,_item);
+        };
+
+        _unit addMagazineCargoGlobal [_item, -1];
+
+        _return = true;
+    };
 } else {
     private _magArray = [_item, _ammo];
 

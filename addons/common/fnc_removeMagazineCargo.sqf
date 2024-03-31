@@ -72,7 +72,9 @@ if (_ammo < 0) then {
 
     private _index = _magazines find _item;
 
-    if (_index == -1) exitWith {};
+    if (_index == -1) exitWith {
+        false // return
+    };
 
     _container addMagazineCargoGlobal [_item, -_count];
 
