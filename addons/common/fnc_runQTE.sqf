@@ -3,7 +3,7 @@
 Function: CBA_fnc_runQTE
 
 Description:
-    Runs a Quick time Event.
+    Runs a Quick-Time Event.
 
 Parameters:
     _object - <OBJECT>
