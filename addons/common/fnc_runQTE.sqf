@@ -19,10 +19,10 @@ Example:
     [car,
     [], 
     { 
-    hint format [
-        "%1 \n %2",
-        [_this select 1] call CBA_fnc_getFormattedQTESequence,
-        [_this select 2] call CBA_fnc_getFormattedQTESequence
+        hint format [
+            "%1 \n %2",
+            [_this select 1] call CBA_fnc_getFormattedQTESequence,
+            [_this select 2] call CBA_fnc_getFormattedQTESequence
         ]
     }, 
     { 
