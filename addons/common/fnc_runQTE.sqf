@@ -26,7 +26,7 @@ Example:
         ]
     }, 
     { 
-    hint "Finished!"; 
+        hint "Finished!"; 
     },
     { 
         hint "Failure!"; 
