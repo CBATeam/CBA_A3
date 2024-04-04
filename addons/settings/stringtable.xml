@@ -320,12 +320,14 @@
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
             <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
             <Korean>서버를 재시작한 후 변경 사항 유지 안함</Korean>
+            <French>Les modifications ne persistent pas après le redémarrage du serveur</French>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
+            <French>Le serveur est configuré pour ne pas conserver les modifications apportées aux paramètres entre les redémarrages du serveur.\nLes modifications seront conservées entre les redémarrages de la mission.</French>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
