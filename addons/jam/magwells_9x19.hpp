@@ -15,7 +15,8 @@
     class CBA_9x19_HiPower {};      // Browning HiPower
     class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MAB38 {};        // Beretta Model 38
-    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28, MP35
+    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28
+    class CBA_9x19_MP35 {};         // MP35
     class CBA_9x19_MP40 {};         // MP40, MP38
     class CBA_9x19_MP443 {};        // MP-443 Grach
     class CBA_9x19_MP5 {            // H&K MP5
