@@ -137,6 +137,7 @@
             <Czech>Pole cílového sledování obnovovací frekvence</Czech>
             <Korean>대상 관찰자 필드 새로 고침 빈도</Korean>
             <Japanese>目標監視フィールドのリフレッシュレート </Japanese>
+            <French>Taux de rafraîchissement champ de l'observateur cible</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
             <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
@@ -145,6 +146,7 @@
             <Czech>Obnovovací frekvence (v sekundách) pro pole sledování cíle CBA napravo od konzole ladění.</Czech>
             <Korean>디버그 콘솔 오른쪽에 있는 CBA의 대상 관찰자 필드의 새로 고침 빈도입니다. (초 단위)</Korean>
             <Japanese>デバッグコンソールの右側にあるCBA目標監視フィールドのリフレッシュレート(秒単位)。</Japanese>
+            <French>Taux de rafraîchissement (en secondes) des champs d'observation de la cible CBA à droite de la console de débogage.</French>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentSpaces">
             <English>4 Spaces</English>
