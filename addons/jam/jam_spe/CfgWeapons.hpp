@@ -53,7 +53,7 @@ class CfgWeapons {
     class SPE_SMG;
 
     class SPE_M1A1_Thompson: SPE_SMG {
-        magazineWell[] += {"CBA_45ACP_Thompson_Stick", "CBA_45ACP_Thompson_Drum"};
+        magazineWell[] += {"CBA_45ACP_Thompson_Stick"};
     };
 
     class SPE_M3_GreaseGun: SPE_SMG {
