@@ -19,7 +19,7 @@ class CfgWeapons {
     };
 
     class SPE_M1903A3_Springfield: SPE_RIFLE {
-        magazineWell[] += {"CBA_3006_Garand"};
+        magazineWell[] += {"CBA_3006_Spring"};
     };
 
     class SPE_STG44: SPE_RIFLE {
@@ -29,7 +29,7 @@ class CfgWeapons {
     class SPE_SRIFLE;
 
     class SPE_K98ZF39: SPE_SRIFLE {
-        magazineWell[] += {"CBA_3006_Spring"};
+        magazineWell[] += {"CBA_792x57_K98"};
     };
 
     class SPE_LMG;
@@ -53,7 +53,7 @@ class CfgWeapons {
     class SPE_SMG;
 
     class SPE_M1A1_Thompson: SPE_SMG {
-        magazineWell[] += {"CBA_45ACP_Thompson_Stick", "CBA_45ACP_Thompson_Drum"};
+        magazineWell[] += {"CBA_45ACP_Thompson_Stick"};
     };
 
     class SPE_M3_GreaseGun: SPE_SMG {
