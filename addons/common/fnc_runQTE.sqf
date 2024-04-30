@@ -8,11 +8,11 @@ Description:
 Parameters:
     _object - <OBJECT>
     _args - Extra arguments passed to the _on... functions<ARRAY>
-    _onDisplay - Code callback on displayable event passed [_args, _qte_sequence, _qte_history]. <CODE, STRING>
+    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qte_history]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
-    _qte_sequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
-    _max_distance - max interaction distance from attached object <NUMBER> (default: 10) 
+    _qteSequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
+    _maxDistance - max interaction distance from attached object <NUMBER> (default: 10) 
     _timeout - ingame timeout <NUMBER> (default: 30)
 
 Example:
@@ -41,23 +41,23 @@ Author:
 ---------------------------------------------------------------------------- */
 
 
-params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qte_sequence", ["_max_distance", 10], ["_timeout", 30]];
+params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qteSequence", ["_maxDistance", 10], ["_timeout", 30]];
 if (GVAR(QTERunning)) exitWith {
     false
 };
 
 GVAR(QTEHistory) = [];
 GVAR(QTERunning) = true;
-private _start_time = CBA_missionTime;
+private _startTime = CBA_missionTime;
 private _qteArgsArray = [
     ["object", _object],
     ["args", _args],
     ["onDisplay", _onDisplay],
     ["onFinish", _onFinish],
     ["onFail", _onFail],
-    ["max_distance", _max_distance],
-    ["qte_seqence", _qte_sequence],
-    ["start_time", _start_time],
+    ["maxDistance", _maxDistance],
+    ["qte_seqence", _qteSequence],
+    ["startTime", _startTime],
     ["timeout", _timeout]
 ];
 GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
@@ -66,10 +66,10 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 [{
     private _timeout = GVAR(QTEArgs) get "timeout";
     private _object = GVAR(QTEArgs) get "object";
-    private _max_distance = GVAR(QTEArgs) get "max_distance";
-    private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "start_time");
+    private _maxDistance = GVAR(QTEArgs) get "maxDistance";
+    private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "startTime");
     
-    !GVAR(QTERunning) || player distance _object > _max_distance || _elapsedTime > _timeout;
+    !GVAR(QTERunning) || player distance _object > _maxDistance || _elapsedTime > _timeout;
 }, {
     TRACE_1("QTE ended",GVAR(QTERunning));
     if(!GVAR(QTERunning)) exitWith {};
@@ -86,9 +86,9 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 }, []] call CBA_fnc_waitUntilAndExecute;
 
 if (_onDisplay isEqualType "") then {
-    [_onDisplay, [_args, _qte_sequence, []]] call CBA_fnc_localEvent;
+    [_onDisplay, [_args, _qteSequence, []]] call CBA_fnc_localEvent;
 } else {
-    [_args, _qte_sequence, []] call _onDisplay;
+    [_args, _qteSequence, []] call _onDisplay;
 };
 
 true
