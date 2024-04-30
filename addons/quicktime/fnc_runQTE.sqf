@@ -8,7 +8,7 @@ Description:
 Parameters:
     _object - <OBJECT>
     _args - Extra arguments passed to the _on... functions<ARRAY>
-    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qte_history]. <CODE, STRING>
+    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qteHistory]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime]. <CODE, STRING>
     _qteSequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
@@ -56,7 +56,7 @@ private _qteArgsArray = [
     ["onFinish", _onFinish],
     ["onFail", _onFail],
     ["maxDistance", _maxDistance],
-    ["qte_seqence", _qteSequence],
+    ["qteSeqence", _qteSequence],
     ["startTime", _startTime],
     ["timeout", _timeout]
 ];

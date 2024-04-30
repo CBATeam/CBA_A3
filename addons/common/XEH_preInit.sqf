@@ -1,6 +1,6 @@
 //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#include "\a3\ui_f\hpp\defineDIKCodes.inc"
+
 SCRIPT(XEH_preInit);
 
 LOG(MSG_INIT);
@@ -79,19 +79,3 @@ activateAddons GVAR(addons);
 ["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
 
 ADDON = true;
-
-[ELSTRING(QTEKeybindGroup), QGVAR(qteUpKey), ["↑", LSTRING(QTEKeybindUpTooltip)], {}, {
-    ["↑"] call CBA_fnc_keyPressedQTE;
-}, [DIK_UP, [false, true, false]]] call CBA_fnc_addKeybind;
-
-[ELSTRING(QTEKeybindGroup), QGVAR(qteDownKey), ["↓", LSTRING(QTEKeybindDownTooltip)], {}, {
-    ["↓"] call CBA_fnc_keyPressedQTE;
-}, [DIK_DOWN, [false, true, false]]] call CBA_fnc_addKeybind;
-
-[ELSTRING(QTEKeybindGroup), QGVAR(qteLeftKey), ["←", LSTRING(QTEKeybindLeftTooltip)], {}, {
-    ["←"] call CBA_fnc_keyPressedQTE;
-}, [DIK_LEFT, [false, true, false]]] call CBA_fnc_addKeybind;
-
-[ELSTRING(QTEKeybindGroup), QGVAR(qteRightKey), ["→", LSTRING(QTEKeybindRightTooltip)], {}, {
-    ["→"] call CBA_fnc_keyPressedQTE;
-}, [DIK_RIGHT, [false, true, false]]] call CBA_fnc_addKeybind;

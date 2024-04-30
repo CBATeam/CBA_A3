@@ -43,20 +43,5 @@
             <Russian>CBA Оружие</Russian>
             <Korean>CBA 무기</Korean>
         </Key>
-        <Key ID="STR_cba_common_QTEKeybindGroup">
-            <English>CBA Quick-Time Events</English>  
-        </Key>
-        <Key ID="STR_cba_common_QTEKeybindUpTooltip">
-            <English>Up key used in Quick-Time Events.</English>  
-        </Key>
-        <Key ID="STR_cba_common_QTEKeybindDownTooltip">
-            <English>Down key used in Quick-Time Events.</English>  
-        </Key>
-        <Key ID="STR_cba_common_QTEKeybindLeftTooltip">
-            <English>Left key used in Quick-Time Events.</English>  
-        </Key>
-        <Key ID="STR_cba_common_QTEKeybindRightTooltip">
-            <English>Right key used in Quick-Time Events.</English>  
-        </Key>
     </Package>
 </Project>
