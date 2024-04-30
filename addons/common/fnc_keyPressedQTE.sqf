@@ -12,7 +12,7 @@ Example:
     ["↑"] call CBA_fnc_keyPressedQTE;
 
 Returns:
-    <BOOLEAN> - True if QTE is running
+    True if QTE is running <BOOLEAN>
 
 Author:
     john681611

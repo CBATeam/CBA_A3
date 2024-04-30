@@ -3,7 +3,7 @@
 Function: CBA_fnc_runQTE
 
 Description:
-    Runs a Quick time Event.
+    Runs a Quick-Time Event.
 
 Parameters:
     _object - <OBJECT>
@@ -19,14 +19,14 @@ Example:
     [car,
     [], 
     { 
-    hint format [
-        "%1 \n %2",
-        [_this select 1] call CBA_fnc_getFormattedQTESequence,
-        [_this select 2] call CBA_fnc_getFormattedQTESequence
+        hint format [
+            "%1 \n %2",
+            [_this select 1] call CBA_fnc_getFormattedQTESequence,
+            [_this select 2] call CBA_fnc_getFormattedQTESequence
         ]
     }, 
     { 
-    hint "Finished!"; 
+        hint "Finished!"; 
     },
     { 
         hint "Failure!"; 
@@ -34,7 +34,7 @@ Example:
     ["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
 
 Returns:
-    <BOOELAN> - True if the QTE was started, false if it was already running.
+    True if the QTE was started, false if it was already running <BOOELAN>
 
 Author:
     john681611
