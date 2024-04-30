@@ -13,7 +13,7 @@ ADDON = false;
     ["↓"] call CBA_fnc_keyPressedQTE // return
 }, {}, [DIK_DOWN, [false, true, false]]] call CBA_fnc_addKeybind;
 
-[LSTRING(QTEKeybindGroup), QGVAR(qteLeftKey), ["←", LSTRING(QTEKeybindLeftTooltip)], {}, {
+[LSTRING(QTEKeybindGroup), QGVAR(qteLeftKey), ["←", LSTRING(QTEKeybindLeftTooltip)], {
     ["←"] call CBA_fnc_keyPressedQTE // return
 }, {}, [DIK_LEFT, [false, true, false]]] call CBA_fnc_addKeybind;
 
