@@ -1,8 +1,10 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
-
 ADDON = false;
+
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
