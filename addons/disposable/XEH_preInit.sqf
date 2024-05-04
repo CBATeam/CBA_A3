@@ -27,7 +27,6 @@ GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(magazines) = [];
-GVAR(BackpackLaunchers) = createHashMap;
 GVAR(MagazineLaunchers) = [] call CBA_fnc_createNamespace;
 
 private _cfgWeapons = configFile >> "CfgWeapons";
@@ -48,10 +47,6 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 
     if (GVAR(magazines) pushBackUnique _magazine != -1) then {
         GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
-    };
-
-    if (_fitsInBackpacks) then {
-        GVAR(BackpackLaunchers) set [_loadedLauncher, true];
     };
 
     // check if mass entries add up

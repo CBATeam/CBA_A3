@@ -6,61 +6,41 @@ Description:
     Replaces disposable launcher magazines with loaded disposable launchers.
 
 Parameters:
-    _box - Any object with cargo <OBJECT>
+    _container - Any object with cargo <OBJECT>
 
 Returns:
     Nothing.
 
 Examples:
     (begin example)
-        _box call cba_disposable_fnc_replaceMagazineCargo
+        _container call cba_disposable_fnc_replaceMagazineCargo
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 
 if (!GVAR(replaceDisposableLauncher)) exitWith {};
 
-params ["_box"];
-if (!local _box) exitWith {};
+params ["_container"];
+
+if (!local _container) exitWith {};
 if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};
 
-private _uniformContainer = uniformContainer _box;
-if (!isNull _uniformContainer) then {
-    _uniformContainer call FUNC(replaceMagazineCargo);
-};
+private _containers = everyBackpack _container;
+_containers append ([uniformContainer _container, vestContainer _container, backpackContainer _container] select {!isNull _x});
 
-private _vestContainer = vestContainer _box;
-if (!isNull _vestContainer) then {
-    _vestContainer call FUNC(replaceMagazineCargo);
-};
-
-private _backpackContainer = backpackContainer _box;
-if (!isNull _backpackContainer) then {
-    _backpackContainer call FUNC(replaceMagazineCargo);
-};
-
+// Replace all magazines recursively
 {
     _x call FUNC(replaceMagazineCargo);
-} forEach everyBackpack _box;
+} forEach _containers;
 
-if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
+private _magazines = (magazineCargo _container) select {_x in GVAR(magazines)};
 
-private _magazines = magazinesAmmoCargo _box;
-clearMagazineCargoGlobal _box;
+if (_magazines isEqualTo []) exitWith {};
 
-private _isBackpack = getNumber (configOf _box >> "isBackpack") != -1;
-
+// Replace magazines with disposable launchers
 {
-    _x params ["_magazine", "_ammo"];
-
-    if (_magazine in GVAR(magazines)) then {
-        private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _magazine;
-        if (!_isBackpack || {_loadedLauncher in GVAR(BackpackLaunchers)}) then {
-            _box addWeaponCargoGlobal [_loadedLauncher, 1];
-        };
-    } else {
-        _box addMagazineAmmoCargo [_magazine, 1, _ammo];
-    };
+    _container addMagazineCargoGlobal [_x, -1];
+    _container addWeaponCargoGlobal [GVAR(MagazineLaunchers) getVariable _x, 1];
 } forEach _magazines;
