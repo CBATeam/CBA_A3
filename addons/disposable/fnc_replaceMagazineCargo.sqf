@@ -28,7 +28,9 @@ if (!local _container) exitWith {};
 if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};
 
 private _containers = everyBackpack _container;
-_containers append ([uniformContainer _container, vestContainer _container, backpackContainer _container] select {!isNull _x});
+if (_container isKindOf "CaManBase") then {
+    _containers append ([uniformContainer _container, vestContainer _container, backpackContainer _container] select {!isNull _x});
+};
 
 // Replace all magazines recursively
 {
