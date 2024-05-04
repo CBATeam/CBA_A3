@@ -23,7 +23,7 @@ Author:
 params ["_unit"];
 if (!local _unit) exitWith {};
 
-private _launcher =  GVAR(NormalLaunchers) getVariable secondaryWeapon _unit;
+private _launcher =  GVAR(NormalLaunchers) get secondaryWeapon _unit;
 
 if (!isNil "_launcher") then {
     _launcher params ["_launcher", "_magazine"];
