@@ -39,9 +39,9 @@ if (GVAR(QTEHistory) isEqualTo _qteSequence) exitWith {
     TRACE_1("QTE Completed",_elapsedTime);
     private _onFinish = GVAR(QTEArgs) get "onFinish";
     if (_onFinish isEqualType "") then {
-        [_onFinish, [_args, _elapsedTime]] call CBA_fnc_localEvent;
+        [_onFinish, [_args, _elapsedTime, GVAR(QTEResetCount)]] call CBA_fnc_localEvent;
     } else {
-        [_args, _elapsedTime] call _onFinish;
+        [_args, _elapsedTime, GVAR(QTEResetCount)] call _onFinish;
     };
     true
 };
@@ -49,13 +49,14 @@ if (GVAR(QTEHistory) isEqualTo _qteSequence) exitWith {
 // If the user failed an input, wipe the previous input from memory
 if (GVAR(QTEHistory) isNotEqualTo (_qteSequence select [0, count GVAR(QTEHistory)])) then {
     GVAR(QTEHistory) = [];
+    GVAR(QTEResetCount) = GVAR(QTEResetCount) + 1;
 };
 
 private _onDisplay = GVAR(QTEArgs) get "onDisplay";
 if (_onDisplay isEqualType "") then {
-    [_onDisplay, [_args, _qteSequence, GVAR(QTEHistory)]] call CBA_fnc_localEvent;
+    [_onDisplay, [_args, _qteSequence, GVAR(QTEHistory), GVAR(QTEResetCount)]] call CBA_fnc_localEvent;
 } else {
-    [_args, _qteSequence, GVAR(QTEHistory)] call _onDisplay;
+    [_args, _qteSequence, GVAR(QTEHistory), GVAR(QTEResetCount)] call _onDisplay;
 };
 
 true
