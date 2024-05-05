@@ -45,5 +45,7 @@ if (_magazines isEqualTo []) exitWith {};
 // Replace magazines with disposable launchers
 {
     _container addMagazineCargoGlobal [_x, -1];
+
+    // Ignores slot restrictions, but that's wanted, as magazines shouldn't just vanish
     _container addWeaponCargoGlobal [GVAR(MagazineLaunchers) getVariable _x, 1];
 } forEach _magazines;
