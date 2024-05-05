@@ -36,7 +36,6 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     private _launcher = configName _x;
     private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
     getArray _x params ["_loadedLauncher", "_usedLauncher"];
-    private _fitsInBackpacks = TYPE_BACKPACK in getArray (configFile >> "CfgWeapons" >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
 
     GVAR(LoadedLaunchers) setVariable [_launcher, _loadedLauncher];
     GVAR(UsedLaunchers) setVariable [_launcher, _usedLauncher];
