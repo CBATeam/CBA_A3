@@ -27,12 +27,12 @@ if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {
 
 
 private _args = GVAR(QTEArgs) get "args";
-private _qteSequence = GVAR(QTEArgs) get "qteSeqence";
+private _qteSequence = GVAR(QTEArgs) get "qteSequence";
 private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "startTime");
 
 GVAR(QTEHistory) pushBack _eventQTE;
 
-
+// Check if the input corresponds to the sequence
 if (GVAR(QTEHistory) isEqualTo _qteSequence) exitWith {
     GVAR(QTEHistory) = [];
     GVAR(QTERunning) = false;
@@ -46,6 +46,7 @@ if (GVAR(QTEHistory) isEqualTo _qteSequence) exitWith {
     true
 };
 
+// If the user failed an input, wipe the previous input from memory
 if (GVAR(QTEHistory) isNotEqualTo (_qteSequence select [0, count GVAR(QTEHistory)])) then {
     GVAR(QTEHistory) = [];
 };

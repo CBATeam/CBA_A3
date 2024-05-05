@@ -39,12 +39,11 @@ Returns:
 Author:
     john681611
 ---------------------------------------------------------------------------- */
-
-
-params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qteSequence", ["_maxDistance", 10], ["_timeout", 30]];
-if (GVAR(QTERunning)) exitWith {
+if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {
     false
 };
+
+params ["_object", "_args", "_onDisplay", "_onFinish", "_onFail", "_qteSequence", ["_maxDistance", 10], ["_timeout", 30]];
 
 GVAR(QTEHistory) = [];
 GVAR(QTERunning) = true;
@@ -56,7 +55,7 @@ private _qteArgsArray = [
     ["onFinish", _onFinish],
     ["onFail", _onFail],
     ["maxDistance", _maxDistance],
-    ["qteSeqence", _qteSequence],
+    ["qteSequence", _qteSequence],
     ["startTime", _startTime],
     ["timeout", _timeout]
 ];
@@ -75,8 +74,8 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
     if(!GVAR(QTERunning)) exitWith {};
     GVAR(QTERunning) = false;
     GVAR(QTEHistory) = [];
-    private _onFail = (GVAR(QTEArgs) get "onFail");
-    private _args = (GVAR(QTEArgs) get "args");
+    private _onFail = GVAR(QTEArgs) get "onFail";
+    private _args = GVAR(QTEArgs) get "args";
     TRACE_1("QTE Failed",_args);
     if (_onFail isEqualType "") then {
         [_onFail, [_args, _elapsedTime]] call CBA_fnc_localEvent;
