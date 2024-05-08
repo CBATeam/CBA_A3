@@ -51,13 +51,8 @@ if (_magazines isEqualTo []) exitWith {};
 _containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then {
     TYPE_BACKPACK
 } else {
-    private _itemType = configFile >> "CfgWeapons" >> _containerType >> "ItemInfo" >> "type";
-
-    if (isClass _itemType) then {
-        getNumber _itemType
-    } else {
-        0
-    };
+    // If uniform or vest, this config will be defined, otherwise it will default to 0
+    getNumber (configFile >> "CfgWeapons" >> _containerType >> "ItemInfo" >> "type")
 };
 
 // Replace magazines with disposable launchers
@@ -66,8 +61,8 @@ _containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then 
 
     private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _x;
 
-    // Ignore slot restrictions if not a uniform, vest or backpack
-    // If slot restrictions apply, don't add weapon but remove magazine
+    // Slot restrictions only apply if uniform, vest or backpack
+    // If slot restrictions apply, remove magazine but don't add weapon
     if (_containerType == 0 || {_containerType in (GVAR(allowedSlotsLaunchers) getOrDefault [_loadedLauncher, []])}) then {
         _container addWeaponCargoGlobal [_loadedLauncher, 1];
     };
