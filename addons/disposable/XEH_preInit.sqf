@@ -27,6 +27,7 @@ GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(magazines) = [];
+GVAR(allowedSlotsLaunchers) = createHashMap;
 GVAR(MagazineLaunchers) = [] call CBA_fnc_createNamespace;
 
 private _cfgWeapons = configFile >> "CfgWeapons";
@@ -48,6 +49,8 @@ private _cfgMagazines = configFile >> "CfgMagazines";
         GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
     };
 
+    GVAR(allowedSlotsLaunchers) set [_loadedLauncher, getArray (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots")];
+
     // check if mass entries add up
     private _massLauncher = getNumber (_cfgWeapons >> _launcher >> "WeaponSlotsInfo" >> "mass");
     private _massMagazine = getNumber (_cfgMagazines >> _magazine >> "mass");
@@ -64,7 +67,11 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
 ["CBA_settingsInitialized", {
-    ["All", "InitPost", {call FUNC(replaceMagazineCargo)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["All", "InitPost", {
+        params ["_object"];
+
+        [typeOf _object, _object] call FUNC(replaceMagazineCargo);
+    }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;
