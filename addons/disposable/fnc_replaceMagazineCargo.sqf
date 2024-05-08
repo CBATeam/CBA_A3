@@ -50,7 +50,7 @@ if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
 private _magazines = magazinesAmmoCargo _box;
 clearMagazineCargoGlobal _box;
 
-private _isBackpack = getNumber (configOf _box >> "isBackpack") != -1;
+private _isBackpack = getNumber (configOf _box >> "isBackpack") == 1;
 
 {
     _x params ["_magazine", "_ammo"];
