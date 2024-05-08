@@ -57,6 +57,8 @@ private _isBackpack = getNumber (configOf _box >> "isBackpack") == 1;
 
     if (_magazine in GVAR(magazines)) then {
         private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _magazine;
+
+        // As addWeaponCargoGlobal ignores allowedSlots, check here if launcher is allowed to be placed in a backpack
         if (!_isBackpack || {_loadedLauncher in GVAR(BackpackLaunchers)}) then {
             _box addWeaponCargoGlobal [_loadedLauncher, 1];
         };
