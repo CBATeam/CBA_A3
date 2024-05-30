@@ -106,7 +106,7 @@ private _id = switch (_type) do {
     };
     case "turretopticsmode": {
         if (_applyRetroactively) then {
-            [GVAR(oldUnit), getTurretOpticsMode GVAR(oldUnit)] call _function;
+            [GVAR(oldUnit), getTurretOpticsMode GVAR(oldUnit), -1] call _function;
         };
         [QGVAR(turretOpticsModeEvent), _function] call CBA_fnc_addEventHandler;
     };
