@@ -6,20 +6,21 @@ Description:
     Adds a player event handler.
 
     Possible events:
-        "unit"          - player controlled unit changed
-        "weapon"        - currently selected weapon change
-        "turretweapon"  - currently selected turret weapon change
-        "muzzle"        - currently selected muzzle change
-        "weaponMode"    - currently selected weapon mode change
-        "loadout"       - players loadout changed
-        "vehicle"       - players current vehicle changed
-        "turret"        - position in vehicle changed
-        "visionMode"    - player changed to normal/night/thermal view
-        "cameraView"    - camera mode changed ("Internal", "External", "Gunner" etc.)
-        "featureCamera" - camera changed (Curator, Arsenal, Spectator etc.)
-        "visibleMap"    - opened or closed map
-        "group"         - player group changes
-        "leader"        - leader of player changes
+        "unit"              - player controlled unit changed
+        "weapon"            - currently selected weapon change
+        "turretweapon"      - currently selected turret weapon change
+        "muzzle"            - currently selected muzzle change
+        "weaponMode"        - currently selected weapon mode change
+        "loadout"           - players loadout changed
+        "vehicle"           - players current vehicle changed
+        "turret"            - position in vehicle changed
+        "turretOpticsMode"  - turret zoom (FOV) changed
+        "visionMode"        - player changed to normal/night/thermal view
+        "cameraView"        - camera mode changed ("Internal", "External", "Gunner" etc.)
+        "featureCamera"     - camera changed (Curator, Arsenal, Spectator etc.)
+        "visibleMap"        - opened or closed map
+        "group"             - player group changes
+        "leader"            - leader of player changes
 
 Parameters:
     _type               - Event handler type. <STRING>
@@ -103,6 +104,12 @@ private _id = switch (_type) do {
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
     };
+    case "turretopticsmode": {
+        if (_applyRetroactively) then {
+            [GVAR(oldUnit), getTurretOpticsMode GVAR(oldUnit)] call _function;
+        };
+        [QGVAR(turretOpticsModeEvent), _function] call CBA_fnc_addEventHandler;
+    };
     case "visionmode": {
         if (_applyRetroactively) then {
             [GVAR(oldUnit), currentVisionMode GVAR(oldUnit), -1] call _function;
@@ -158,6 +165,7 @@ if (_id != -1) then {
         GVAR(oldLoadoutNoAmmo) = [];
         GVAR(oldVehicle) = objNull;
         GVAR(oldTurret) = [];
+        GVAR(oldTurretOpticsMode) = -1;
         GVAR(oldVisionMode) = -1;
         GVAR(oldCameraView) = "";
         GVAR(oldFeatureCamera) = "";
