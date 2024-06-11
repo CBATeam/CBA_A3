@@ -138,9 +138,9 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["KeyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
-_disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
+_disp displayAddEventHandler ["MouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 
