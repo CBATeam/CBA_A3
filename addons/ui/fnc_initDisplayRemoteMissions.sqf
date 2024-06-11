@@ -124,7 +124,7 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
 }}};
 
 _ctrlMaps call _fnc_storeMapMissions;
-_ctrlMaps ctrlAddEventHandler ["lbSelChanged", _fnc_storeMapMissions];
+_ctrlMaps ctrlAddEventHandler ["LBSelChanged", _fnc_storeMapMissions];
 
 // filter out missions we don't want
 _display setVariable [QFUNC(filter), {

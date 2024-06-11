@@ -350,7 +350,7 @@ _ctrlButtonUndo ctrlAddEventHandler ["ButtonClick", {
 }];
 
 // --- update parent display if this one is closed
-_display displayAddEventHandler ["unload", {
+_display displayAddEventHandler ["Unload", {
     [] call FUNC(gui_update);
 }];
 
