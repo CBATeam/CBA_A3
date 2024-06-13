@@ -53,11 +53,11 @@ if (isNull _config || {getNumber (_config >> "scope") < 1} || {getNumber (_confi
 };
 
 if (_verify) then {
-    if (_container canAdd [_item, _count]) then {
+    if ([_container, _item, _count] call CBA_fnc_canAddItem) then {
         _container addBackpackCargoGlobal [_item, _count];
         _return = true;
     } else {
-        while {_container canAdd _item && {_count > 0}} do {
+        while {[_container, _item] call CBA_fnc_canAddItem && {_count > 0}} do {
             _container addBackpackCargoGlobal [_item, 1];
             _count = _count - 1;
         };
