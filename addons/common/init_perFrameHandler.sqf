@@ -98,8 +98,16 @@ addMissionEventHandler ["Loaded", {
 }];
 
 CBA_missionTime = 0;
-GVAR(lastTime) = time;
+if ((getNumber (missionConfigFile >> "CBA_useVanillaMissionTime")) == 1) exitWith {
+    INFO("Using basic time for CBA_MissionTime [max compatiblity]");
+    [QFUNC(missionTimePFH), {
+        SCRIPT(missionTimePFH_vanilla);
+        CBA_missionTime = time;
+        GVAR(lastTickTime) = _tickTime;
+    }] call CBA_fnc_compileFinal;
+};
 
+GVAR(lastTime) = time;
 // increase CBA_missionTime variable every frame
 if (isMultiplayer) then {
     // multiplayer - no accTime in MP
