@@ -29,7 +29,7 @@ GVAR(NormalLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(LoadedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(UsedLaunchers) = [] call CBA_fnc_createNamespace;
 GVAR(magazines) = [];
-GVAR(BackpackLaunchers) = createHashMap;
+GVAR(allowedSlotsLaunchers) = createHashMap;
 GVAR(MagazineLaunchers) = [] call CBA_fnc_createNamespace;
 
 private _cfgWeapons = configFile >> "CfgWeapons";
@@ -39,7 +39,6 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     private _launcher = configName _x;
     private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
     getArray _x params ["_loadedLauncher", "_usedLauncher"];
-    private _fitsInBackpacks = TYPE_BACKPACK in getArray (configFile >> "CfgWeapons" >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
 
     GVAR(LoadedLaunchers) setVariable [_launcher, _loadedLauncher];
     GVAR(UsedLaunchers) setVariable [_launcher, _usedLauncher];
@@ -52,9 +51,7 @@ private _cfgMagazines = configFile >> "CfgMagazines";
         GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
     };
 
-    if (_fitsInBackpacks) then {
-        GVAR(BackpackLaunchers) set [_loadedLauncher, true];
-    };
+    GVAR(allowedSlotsLaunchers) set [_loadedLauncher, getArray (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots")];
 
     // check if mass entries add up
     private _massLauncher = getNumber (_cfgWeapons >> _launcher >> "WeaponSlotsInfo" >> "mass");
@@ -72,7 +69,11 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
 ["CBA_settingsInitialized", {
-    ["All", "InitPost", {call FUNC(replaceMagazineCargo)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["All", "InitPost", {
+        params ["_object"];
+
+        [typeOf _object, _object] call FUNC(replaceMagazineCargo);
+    }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;
