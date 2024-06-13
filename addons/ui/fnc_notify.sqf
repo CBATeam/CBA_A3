@@ -15,12 +15,13 @@ Parameters:
             _size  - Text or image size multiplier. (optional, default: 1) <NUMBER>
             _color - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1]) <ARRAY>
     _skippable - Skip or overwrite this notification if another entered the queue. (optional, default: false) <BOOL>
+    _sound     - Play notification sound when hint is displayed (optional, default: false) <BOOL>
 
 Examples:
     (begin example)
         "Banana" call CBA_fnc_notify;
-        ["Banana", 1.5, [1, 1, 0, 1]] call CBA_fnc_notify;
-        [["Banana", 1.5, [1, 1, 0, 1]], ["Not Apple"], true] call CBA_fnc_notify;
+        ["Banana", 1.5, [1, 1, 0, 1], true, true] call CBA_fnc_notify;
+        [["Banana", 1.5, [1, 1, 0, 1]], ["Not Apple"], true, true] call CBA_fnc_notify;
     (end)
 
 Returns:
@@ -45,19 +46,19 @@ if !(_this isEqualType []) then {
 };
 
 if !(_this select 0 isEqualType []) then {
-    _this = [_this];
+    // Handle booleans at index 3-4
+    _this = [_this select [0, 3]] + (_this select [3, 2]);
 };
 
+// Handle boolean parameters
 private _composition = [];
-private _skippable = false;
+(_this select {_x isEqualType true}) params [
+    ["_skippable", false],
+    ["_sound", false]
+];
+FILTER(_this,!(_x isEqualType true));
 
 {
-    // Additional arguments at the end
-    if (_x isEqualType true) exitWith {
-        TRACE_1("Skippable argument",_x);
-        _skippable = _x;
-    };
-
     // Line
     _composition pushBack lineBreak;
 
@@ -87,7 +88,7 @@ private _skippable = false;
 
 _composition deleteAt 0;
 
-private _notification = [_composition, _skippable];
+private _notification = [_composition, _skippable, _sound];
 
 // add the queue
 if (isNil QGVAR(notifyQueue)) then {
@@ -114,7 +115,18 @@ private _fnc_popQueue = {
 };
 
 private _fnc_processQueue = {
-    params ["_composition", "_skippable"];
+    params ["_composition", "_skippable", "_sound"];
+
+    // Notification is skippable and the queue is not empty - skip to the next one immediately
+    if (_skippable && {count GVAR(notifyQueue) > 1}) exitWith {
+        LOG("Skipped queue process");
+        [[], _fnc_processQueue] call _fnc_popQueue;
+    };
+
+    if _sound then {
+        LOG("Played sound");
+        playSound "hint";
+    };
 
     QGVAR(notify) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 0, true];
     private _display = uiNamespace getVariable "RscTitleDisplayEmpty";
