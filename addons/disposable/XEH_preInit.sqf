@@ -4,7 +4,9 @@ ADDON = false;
 
 #include "initSettings.inc.sqf"
 
-if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
