@@ -38,7 +38,27 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 {
     private _launcher = configName _x;
     private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
-    getArray _x params ["_loadedLauncher", "_usedLauncher"];
+
+    if (_magazine == "") then {
+        ERROR_1("Launcher %1 has an undefined magazine.",_launcher);
+
+        continue;
+    };
+
+    (getArray _x) params [["_loadedLauncher", "", [""]], ["_usedLauncher", "", [""]];
+
+    if (_loadedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined loaded launcher.",_launcher);
+
+        continue;
+    };
+
+    if (_usedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined used launcher.",_launcher);
+
+        continue;
+    };
+
     private _fitsInBackpacks = TYPE_BACKPACK in getArray (configFile >> "CfgWeapons" >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
 
     GVAR(LoadedLaunchers) setVariable [_launcher, _loadedLauncher];
