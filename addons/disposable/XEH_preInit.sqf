@@ -34,10 +34,15 @@ private _cfgWeapons = configFile >> "CfgWeapons";
 private _cfgMagazines = configFile >> "CfgMagazines";
 
 {
-    private _launcher = configName _x;
-    private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
+    // Get case-sensitive config names
+    private _configLauncher = _cfgWeapons >> configName _x;
+    private _launcher = configName _configLauncher;
+    private _magazine = configName (_cfgMagazines >> (getArray (_configLauncher >> "magazines") select 0));
     getArray _x params ["_loadedLauncher", "_usedLauncher"];
-    private _fitsInBackpacks = TYPE_BACKPACK in getArray (configFile >> "CfgWeapons" >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
+
+    private _configLoadedLauncher = _cfgWeapons >> _loadedLauncher;
+    _loadedLauncher = configName _configLoadedLauncher;
+    private _fitsInBackpacks = TYPE_BACKPACK in getArray (_configLoadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
 
     GVAR(LoadedLaunchers) set [_launcher, _loadedLauncher];
     GVAR(UsedLaunchers) set [_launcher, _usedLauncher];
@@ -52,9 +57,9 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     };
 
     // check if mass entries add up
-    private _massLauncher = getNumber (_cfgWeapons >> _launcher >> "WeaponSlotsInfo" >> "mass");
+    private _massLauncher = getNumber (_configLauncher >> "WeaponSlotsInfo" >> "mass");
     private _massMagazine = getNumber (_cfgMagazines >> _magazine >> "mass");
-    private _massLoadedLauncher = getNumber (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "mass");
+    private _massLoadedLauncher = getNumber (_configLoadedLauncher >> "WeaponSlotsInfo" >> "mass");
     private _massUsedLauncher = getNumber (_cfgWeapons >> _usedLauncher >> "WeaponSlotsInfo" >> "mass");
 
     if (_massLauncher != _massUsedLauncher) then {
