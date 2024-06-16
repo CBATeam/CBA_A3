@@ -45,7 +45,7 @@ private _cfgMagazines = configFile >> "CfgMagazines";
         continue;
     };
 
-    (getArray _x) params [["_loadedLauncher", "", [""]], ["_usedLauncher", "", [""]];
+    (getArray _x) params [["_loadedLauncher", "", [""]], ["_usedLauncher", "", [""]]];
 
     if (_loadedLauncher == "") then {
         ERROR_1("Launcher %1 has an undefined loaded launcher.",_launcher);
