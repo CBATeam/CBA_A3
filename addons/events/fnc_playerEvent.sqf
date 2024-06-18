@@ -24,11 +24,6 @@ SCRIPT(playerEvent);
 private _unit = focusOn;
 private _vehicle = vehicle _unit;
 
-private _controlledEntity = getConnectedUAVUnit _unit;
-if (isNull _controlledEntity) then {
-    _controlledEntity = _unit;
-};
-
 // Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
 private _turret = _vehicle unitTurret _unit;
 
@@ -36,7 +31,7 @@ private _state = [
     _unit, group _unit, leader _unit,
     currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
     getUnitLoadout _unit, _vehicle, _turret, _vehicle currentWeaponTurret _turret,
-    currentVisionMode _controlledEntity, cameraView
+    currentVisionMode _unit, cameraView
 ];
 
 if (_state isNotEqualTo GVAR(oldState)) then {
