@@ -21,20 +21,12 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(playerEvent);
 
-private _unit = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
+private _unit = focusOn;
 private _vehicle = vehicle _unit;
 
-private _controlledEntity = _unit;
-if (!isNull getConnectedUAV _unit) then {
-    private _uavControl = UAVControl getConnectedUAV _unit;
-    _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""]; // Will be position STRING if actively controlling, or OBJECT if not.
-    if (_uavControl isEqualTo "DRIVER") exitWith {
-        _controlledEntity = driver getConnectedUAV _unit;
-    };
-
-    if (_uavControl isEqualTo "GUNNER") exitWith {
-        _controlledEntity = gunner getConnectedUAV _unit;
-    };
+private _controlledEntity = getConnectedUAVUnit _unit;
+if (isNull _controlledEntity) then {
+    _controlledEntity = _unit;
 };
 
 // Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
