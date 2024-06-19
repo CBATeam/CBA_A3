@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(playerEvent);
 
-private _unit = focusOn;
+private _unit = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
 private _vehicle = vehicle _unit;
 
 // Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
