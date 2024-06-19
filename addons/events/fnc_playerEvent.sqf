@@ -31,7 +31,7 @@ private _state = [
     _unit, group _unit, leader _unit,
     currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
     getUnitLoadout _unit, _vehicle, _turret, _vehicle currentWeaponTurret _turret,
-    currentVisionMode _unit, cameraView
+    currentVisionMode focusOn, cameraView
 ];
 
 if (_state isNotEqualTo GVAR(oldState)) then {
