@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_addPlayerEngineEvent
+Function: CBA_fnc_addBISPlayerEventHandler
 
 Description:
     Adds an engine event handler just to the controlled entity.
@@ -15,13 +15,13 @@ Returns:
 
 Examples:
     (begin example)
-        ["example", "FiredNear", {systemChat str _this}] call CBA_fnc_addPlayerEngineEvent
+        ["example", "FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
     (end)
 
 Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
-SCRIPT(addPlayerEngineEvent);
+SCRIPT(addBISPlayerEventHandler);
 
 params [
     ["_type", "", [""]],

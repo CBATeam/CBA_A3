@@ -2,6 +2,7 @@ class CfgFunctions {
     class CBA {
         class Events {
             PATHTO_FNC(addBISEventHandler);
+            PATHTO_FNC(addBISPlayerEventHandler);
             PATHTO_FNC(addPlayerEventHandler);
             PATHTO_FNC(removePlayerEventHandler);
             PATHTO_FNC(addDisplayHandler);
