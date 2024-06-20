@@ -63,8 +63,9 @@ if (_key in GVAR(playerEventsHash)) exitWith { ERROR_1("bad key %1",_this); };
 
 GVAR(playerEventsHash) set [_key, [_type, _code, _ignoreVirtual]];
 
-if (_ignoreVirtual && {(unitIsUAV focusOn) || {getNumber (configOf focusOn >> "isPlayableLogic") == 1}}) exitWith {};
+private _player = call CBA_fnc_currentUnit;
+if (_ignoreVirtual && {(unitIsUAV _player ) || {getNumber (configOf _player >> "isPlayableLogic") == 1}}) exitWith {};
 
 // Add event now
-private _newEH = focusOn addEventHandler [_type, _code];
-focusOn setVariable [_key, _newEH];
+private _newEH = _player addEventHandler [_type, _code];
+_player setVariable [_key, _newEH];
