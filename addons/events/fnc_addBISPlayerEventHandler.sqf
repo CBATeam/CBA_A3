@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        ["example", "FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
+        ["FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
     (end)
 
 Author:
