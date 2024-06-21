@@ -6,7 +6,7 @@ Description:
     Adds an engine event handler just to the controlled entity.
 
 Parameters:
-    _eventType     - Type of event to add. Can be any engine (not mission) event. <STRING>
+    _eventType     - Type of event to add. Can be any event supported by addEventHandler. <STRING>
     _eventCode     - Code to run when event is raised. <CODE>
     _ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) [optional] (default: false) <BOOLEAN>
 
