@@ -14,6 +14,7 @@ class CfgFunctions {
             PATHTO_FNC(removeKeyHandler);
             PATHTO_FNC(addEventHandler);
             PATHTO_FNC(addEventHandlerArgs);
+            PATHTO_FNC(removeBISPlayerEventHandler);
             PATHTO_FNC(removeEventHandler);
             PATHTO_FNC(localEvent);
             PATHTO_FNC(globalEvent);

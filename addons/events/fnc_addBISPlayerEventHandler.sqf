@@ -6,16 +6,17 @@ Description:
     Adds an engine event handler just to the controlled entity.
 
 Parameters:
+    _key           - Unique identifier for the event. <STRING>
     _eventType     - Type of event to add. Can be any event supported by addEventHandler. <STRING>
     _eventCode     - Code to run when event is raised. <CODE>
-    _ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) [optional] (default: false) <BOOLEAN>
+    _ignoreVirtual - Ignore virtual units (spectators, virtual zeus, UAV RC) [optional] (default: true) <BOOLEAN>
 
 Returns:
-    None
+    Event was added <BOOLEAN>
 
 Examples:
     (begin example)
-        ["FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
+        ["TAG_MyFiredNearEvent", "FiredNear", {systemChat str _this}] call CBA_fnc_addBISPlayerEventHandler
     (end)
 
 Author:
@@ -23,10 +24,15 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addBISPlayerEventHandler);
 
+if (canSuspend) exitWith {
+    [CBA_fnc_addBISPlayerEventHandler, _this] call CBA_fnc_directCall;
+};
+
 params [
+    ["_key", "", [""]],
     ["_type", "", [""]],
     ["_code", {}, [{}]],
-    ["_ignoreVirtual", false, [false]]
+    ["_ignoreVirtual", true, [true]]
 ];
 
 if (isNil QGVAR(playerEventsHash)) then { // first-run init
@@ -58,8 +64,8 @@ if (isNil QGVAR(playerEventsHash)) then { // first-run init
 };
 
 
-private _key = format [QGVAR(playerEvents_%1), toLowerANSI _type]; // should only have one per event, this isn't public
-if (_key in GVAR(playerEventsHash)) exitWith { ERROR_1("bad key %1",_this); };
+_key = format [QGVAR(playerEvents_%1), toLowerANSI _key];
+if (_key in GVAR(playerEventsHash)) exitWith { ERROR_1("bad key %1",_this); false};
 
 GVAR(playerEventsHash) set [_key, [_type, _code, _ignoreVirtual]];
 
@@ -69,3 +75,5 @@ if (_ignoreVirtual && {(unitIsUAV _player) || {getNumber (configOf _player >> "i
 // Add event now
 private _newEH = _player addEventHandler [_type, _code];
 _player setVariable [_key, _newEH];
+
+true // return
