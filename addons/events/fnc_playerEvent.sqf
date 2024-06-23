@@ -31,7 +31,7 @@ private _state = [
     _unit, group _unit, leader _unit,
     currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
     getUnitLoadout _unit, _vehicle, _turret, _vehicle currentWeaponTurret _turret,
-    currentVisionMode focusOn, cameraView
+    cameraView
 ];
 
 if (_state isNotEqualTo GVAR(oldState)) then {
@@ -41,7 +41,7 @@ if (_state isNotEqualTo GVAR(oldState)) then {
         "", "_newGroup", "_newLeader",
         "_newWeapon", "_newMuzzle", "_newWeaponMode",
         "_newLoadout", "", "", "_newTurretWeapon",
-        "_newVisionMode", "_newCameraView"
+        "_newCameraView"
     ];
 
     // These events should fire if the context of the state has changed.
@@ -123,12 +123,6 @@ if (_state isNotEqualTo GVAR(oldState)) then {
         LOG_2("turret playerEvent - new: %1 - old: %2",_newTurret,GVAR(oldTurret));
         [QGVAR(turretEvent), [_unit, _turret, GVAR(oldTurret)]] call CBA_fnc_localEvent;
         GVAR(oldTurret) = _turret;
-    };
-
-    if (_newVisionMode isNotEqualTo GVAR(oldVisionMode)) then {
-        LOG_2("visionMode playerEvent - new: %1 - old: %2",_newVisionMode,GVAR(oldVisionMode));
-        [QGVAR(visionModeEvent), [_unit, _newVisionMode, GVAR(oldVisionMode)]] call CBA_fnc_localEvent;
-        GVAR(oldVisionMode) = _newVisionMode;
     };
 
     if (_newCameraView isNotEqualTo GVAR(oldCameraView)) then {

@@ -200,6 +200,11 @@ if (_id != -1) then {
             };
         }, 0.5] call CBA_fnc_addPerFrameHandler);
 
+            ["CBA_visionModeChanged", "VisionModeChanged", {
+                params ["", "_newVisionMode", "", "_oldVisionMode"];
+                LOG_2("visionMode playerEvent - new: %1 - old: %2",_newVisionMode,_oldVisionMode);
+                [QGVAR(visionModeEvent), [focusOn, _newVisionMode, _oldVisionMode]] call CBA_fnc_localEvent;
+            }, false] call CBA_fnc_addBISPlayerEventHandler;
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];
