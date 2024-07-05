@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_preStart
+Internal Function: CBA_fnc_preStart
 
 Description:
     Occurs once during game start.
@@ -23,7 +23,7 @@ with uiNamespace do {
 
     XEH_LOG("PreStart started.");
 
-    SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
+    SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compileScript [_this]"; //backwards compat
     SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 
     PREP(initDisplay3DEN);
@@ -44,7 +44,7 @@ with uiNamespace do {
             };
         };
 
-        if !(_eventFunc isEqualTo "") then {
+        if (_eventFunc isNotEqualTo "") then {
             [] call compile _eventFunc;
         };
     } forEach configProperties [configFile >> XEH_FORMAT_CONFIG_NAME("preStart")];
@@ -60,9 +60,9 @@ with uiNamespace do {
         _x params ["_classname", "_addon"];
 
         if (_addon == "") then {
-            WARNING_1("%1 does not support Extended Event Handlers!", _classname);
+            WARNING_1("%1 does not support Extended Event Handlers!",_classname);
         } else {
-            WARNING_2("%1 does not support Extended Event Handlers! Addon: %2", _classname, _addon);
+            WARNING_2("%1 does not support Extended Event Handlers! Addon: %2",_classname,_addon);
         };
     } forEach (true call CBA_fnc_supportMonitor);
 

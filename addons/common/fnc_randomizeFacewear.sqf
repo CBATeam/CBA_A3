@@ -43,7 +43,7 @@ private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomiz
 if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
 
 // Get list
-private _facewearList = getArray (configFile >> "CfgVehicles" >> typeOf _unit >> "CBA_facewearList");
+private _facewearList = getArray (configOf _unit >> "CBA_facewearList");
 if (_facewearList isEqualTo []) exitWith {true};
 
 // Apply

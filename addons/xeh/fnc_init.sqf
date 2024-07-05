@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_init
+Internal Function: CBA_fnc_init
 
 Description:
     Runs Init and InitPost event handlers on this object.
@@ -47,7 +47,7 @@ if !(ISINITIALIZED(_this)) then {
     };
 
     // fix for respawnVehicle clearing the object namespace
-    _this addEventHandler ["respawn", {
+    _this addEventHandler ["Respawn", {
         params ["_vehicle", "_wreck"];
 
         if (ISINITIALIZED(_vehicle)) exitWith {}; // Exit if unit respawned normaly with copied variables (e.g. humans)

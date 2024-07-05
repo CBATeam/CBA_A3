@@ -78,6 +78,7 @@ class CfgFunctions {
             PATHTO_FNC(addBinocularMagazine);
             PATHTO_FNC(removeBinocularMagazine);
             PATHTO_FNC(randomizeFacewear);
+            PATHTO_FNC(canAddItem);
         };
 
         class Cargo {
@@ -113,6 +114,10 @@ class CfgFunctions {
             PATHTO_FNC(getNearestBuilding);
         };
 
+        class DateTime {
+            PATHTO_FNC(weekDay);
+        };
+
         class Misc {
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
@@ -126,9 +131,12 @@ class CfgFunctions {
             PATHTO_FNC(directCall);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);
+            PATHTO_FNC(execAfterNFrames);
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
+            PATHTO_FNC(createUUID);
+            PATHTO_FNC(escapeRegex);
         };
 
         class Broken {

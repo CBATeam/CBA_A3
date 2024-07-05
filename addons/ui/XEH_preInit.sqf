@@ -2,7 +2,7 @@
 
 ADDON = false;
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 if (hasInterface) then {
     call COMPILE_FILE(flexiMenu\init);

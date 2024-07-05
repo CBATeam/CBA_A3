@@ -1,0 +1,14 @@
+{
+    "inputDirs": [
+        "P:/x/cba/addons/"
+    ],
+    "includePaths": [
+        "P:/"
+    ],
+    "excludeList": [
+        ".inc.sqf",
+        "\\test_"
+    ],
+    "outputDir": "P:/",
+    "workerThreads": 12
+}

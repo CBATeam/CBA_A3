@@ -34,7 +34,7 @@ params ["_unit"];
 
 private _out = false;
 private _vehicle = vehicle _unit;
-private _cfg = configFile >> "CfgVehicles" >> typeOf _vehicle;
+private _cfg = configOf _vehicle;
 
 if (_vehicle != _unit) then {
     if (driver _vehicle == _unit) then {

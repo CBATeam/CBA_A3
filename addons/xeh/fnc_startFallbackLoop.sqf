@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_startFallbackLoop
+Internal Function: CBA_fnc_startFallbackLoop
 
 Description:
     Starts a loop to iterate through all objects to initialize event handlers on XEH incompatible objects.
@@ -36,7 +36,7 @@ GVAR(entities) = [];
     SCRIPT(fallbackLoopPFEH);
     private _entities = entities [[], [], true, true];
 
-    if !(_entities isEqualTo GVAR(entities)) then {
+    if (_entities isNotEqualTo GVAR(entities)) then {
         private _newEntities = _entities - GVAR(entities);
         GVAR(entities) = _entities;
 

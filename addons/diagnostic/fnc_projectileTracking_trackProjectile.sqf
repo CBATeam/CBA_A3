@@ -45,7 +45,7 @@ if (!isNull _projectile) then {
         _data = [_handle, _bulletData];
         GVAR(projectileData) set [_index, _data];
     };
-    _bulletData pushBack [(getPos _projectile), _speed];
+    _bulletData pushBack [getPosASL _projectile, _speed];
 
 } else {
     [_handle] call CBA_fnc_removePerFrameHandler;

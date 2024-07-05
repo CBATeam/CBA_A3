@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["filter", "inject", "join", "shuffle", "findNil", "findNull", "findTypeName", "findTypeOf", "findMax", "findMin", "insert"]
+#define TESTS ["filter", "inject", "join", "shuffle", "findNil", "findNull", "findTypeName", "findTypeOf", "findMax", "findMin", "insert", "standardDeviation"]
 SCRIPT(test-arrays);
 
 // ----------------------------------------------------------------------------
@@ -13,7 +13,6 @@ SCRIPT(test-arrays);
 LOG("=== Testing Arrays ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\arrays\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;

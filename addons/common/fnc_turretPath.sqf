@@ -27,4 +27,9 @@ params [["_unit", objNull, [objNull]]];
 
 private _vehicle = vehicle _unit;
 
-(allTurrets [_vehicle, true] select {(_vehicle turretUnit _x) isEqualTo _unit}) param [0, []]
+private _turret = _vehicle unitTurret _unit;
+
+// driver will be returned as [] to be consistent with previous behaviour
+if (_turret isEqualTo [-1]) exitWith { [] };
+
+_turret

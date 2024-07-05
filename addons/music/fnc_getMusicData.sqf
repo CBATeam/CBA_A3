@@ -31,7 +31,7 @@ params [
 if (_config isEqualTo "") exitWith {ERROR("Config not given"); _default};
 if (IS_STRING(_config)) then {_config = [_config] call CBA_fnc_getMusicPath;};
 
-if ((isNil "_config") || {!IS_CONFIG(_config)}) exitWith {ERROR_1("Config not found for %1", _config); nil};
+if ((isNil "_config") || {!IS_CONFIG(_config)}) exitWith {ERROR_1("Config not found for %1",_config); nil};
 
 //Now we have a config, grab the data
 private _return = [_config, _dataType, nil] call BIS_fnc_returnConfigEntry;

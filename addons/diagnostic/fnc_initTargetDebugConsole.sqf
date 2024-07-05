@@ -144,7 +144,7 @@ private _fnc_updateWatchInfo = {
             missionNamespace setVariable [_varName, nil];
         } else {
             if ((_editText isEqualTo _responseStatement) && {_duration > 0.1}) exitWith {}; // don't re-run if statement that took a long time
-            if ((diag_tickTime - _lastSent) > random [0.1, 0.2, 0.3]) then {
+            if ((diag_tickTime - _lastSent) > random GVAR(watchInfoRefreshRateArray)) then {
                 _x set [3, diag_tickTime]; // set last run to now
                 [QGVAR(watchVariable), [CBA_clientID, _varIndex, _editText], GVAR(selectedClientID)] call CBA_fnc_ownerEvent; // send statement to target
             };

@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-#define SEPARATORS "@"
-
 params ["_display"];
 
 private _fnc_update = {

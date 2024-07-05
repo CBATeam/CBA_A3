@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 #define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4 + (sizeOf typeOf _var) / 2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
@@ -66,8 +66,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
                 if (count _potentialMenuSources == 0) then {
                     _isTypeTarget = true;
-                    _target = if ((_vehicleTarget != player) &&
-                        {({_vehicleTarget isKindOf _x} count _typesList > 0)}) then {_vehicleTarget} else {_potentialTarget};
+                    _target = [_potentialTarget, _vehicleTarget] select ((_vehicleTarget != player) && {({_vehicleTarget isKindOf _x} count _typesList > 0)});
                     if ("player" in _typesList) then {
                         _target = player;
                     };

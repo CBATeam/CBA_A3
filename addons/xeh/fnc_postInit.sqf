@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_postInit
+Internal Function: CBA_fnc_postInit
 
 Description:
     Occurs once per mission after objects and functions are initialized.

@@ -86,7 +86,7 @@ GVAR(hidePeripheralVision) = getNumber (_config >> "hidePeripheralVision") != 0;
 // zeroing distances
 configProperties [configFile >> "CfgWeapons" >> _optic >> "ItemInfo" >> "OpticsModes"] findIf {
     GVAR(ZeroingDistances) = getArray (_x >> "discreteDistance");
-    !(GVAR(ZeroingDistances) isEqualTo [])
+    (GVAR(ZeroingDistances) isNotEqualTo [])
 };
 
 // pp effects

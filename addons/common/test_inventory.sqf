@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(test_inventory);
 
-// 0 spawn compile preprocessFileLineNumbers "\x\cba\addons\common\test_inventory.sqf";
+// execVM "\x\cba\addons\common\test_inventory.sqf";
 
 // Note: test requires a player with space in inventory
 
@@ -45,13 +45,19 @@ LOG("Testing " + _funcName);
 
 TEST_DEFINED("CBA_fnc_addMagazine","");
 
-_result = [objNull, "SmokeShell"] call CBA_fnc_addMagazine;
+_result = [objNull, "30Rnd_556x45_Stanag"] call CBA_fnc_addMagazine;
 TEST_FALSE(_result,_funcName);
 
 _result = [player, ""] call CBA_fnc_addMagazine;
 TEST_FALSE(_result,_funcName);
 
-_result = [player, "SmokeShell"] call CBA_fnc_addMagazine;
+_result = [player, "30Rnd_556x45_Stanag"] call CBA_fnc_addMagazine;
+TEST_TRUE(_result,_funcName);
+
+_result = [player, "30Rnd_556x45_Stanag", 1, true] call CBA_fnc_addMagazine;
+TEST_TRUE(_result,_funcName);
+
+_result = [player, "30Rnd_556x45_Stanag", 1, true] call CBA_fnc_addMagazine;
 TEST_TRUE(_result,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,18 +65,21 @@ TEST_TRUE(_result,_funcName);
 _funcName = "CBA_fnc_removeMagazine";
 LOG("Testing " + _funcName);
 
-_result = [objNull, "SmokeShell"] call CBA_fnc_removeMagazine;
+_result = [objNull, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
 TEST_FALSE(_result,_funcName);
 
 _result = [player, ""] call CBA_fnc_removeMagazine;
 TEST_FALSE(_result,_funcName);
 
-_result = [player, "SmokeShell"] call CBA_fnc_removeMagazine;
+_result = [player, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
 TEST_TRUE(_result,_funcName);
 
-player removeMagazines "SmokeShell";
+_result = [player, "30Rnd_556x45_Stanag", 1] call CBA_fnc_removeMagazine;
+TEST_TRUE(_result,_funcName);
 
-_result = [player, "SmokeShell"] call CBA_fnc_removeMagazine;
+player removeMagazines "30Rnd_556x45_Stanag";
+
+_result = [player, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
 TEST_FALSE(_result,_funcName);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,12 +169,75 @@ TEST_TRUE(count (itemCargo _container) == 5,_funcName);
 clearItemCargoGlobal _container;
 
 
+_funcName = "CBA_fnc_removeMagazine";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, ""] call CBA_fnc_removeMagazine;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
+TEST_FALSE(_result,_funcName);
+
+_container addMagazineAmmoCargo ["30Rnd_556x45_Stanag", 2, 1];
+
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 2] call CBA_fnc_removeMagazine;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 1] call CBA_fnc_removeMagazine;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazine;
+TEST_FALSE(_result,_funcName);
+
+
+_funcName = "CBA_fnc_addMagazineCargo";
+LOG("Testing " + _funcName);
+
+_result = [objNull, "30Rnd_556x45_Stanag"] call CBA_fnc_addMagazineCargo;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, ""] call CBA_fnc_addMagazineCargo;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 5] call CBA_fnc_addMagazineCargo;
+TEST_TRUE(_result,_funcName);
+TEST_TRUE(count (magazineCargo _container) == 5,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 10, false, 1] call CBA_fnc_addMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+
 _funcName = "CBA_fnc_removeMagazineCargo";
 LOG("Testing " + _funcName);
 
-_result = [objNull, "SmokeShell"] call CBA_fnc_removeMagazineCargo;
+_result = [objNull, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazineCargo;
 TEST_FALSE(_result,_funcName);
 
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 2] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 1, 2] call CBA_fnc_removeMagazineCargo;
+TEST_FALSE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 2, 1] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag", 10] call CBA_fnc_removeMagazineCargo;
+TEST_TRUE(_result,_funcName);
+
+_result = [_container, "30Rnd_556x45_Stanag"] call CBA_fnc_removeMagazineCargo;
+TEST_FALSE(_result,_funcName);
+
+// No mags of "30Rnd_556x45_Stanag" left at this point
 _container addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 5];
 _result = [_container, "30Rnd_556x45_Stanag", 3] call CBA_fnc_removeMagazineCargo;
 TEST_TRUE(_result,_funcName);

@@ -1,7 +1,7 @@
 // Desc: determine menuDef to use, based on variable param variations
 //-----------------------------------------------------------------------------
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 private _target = _this select 0;
 private _menuSources = _this select 1; // [_target, _menuSources];
@@ -19,14 +19,14 @@ private _menuDefs = [];
     private _menuParams = [_target];
 
     // Syntax 1
-    if (typeName _params == typeName "") then {
+    if (typeName _params == "STRING") then {
         _menuSource = _params;
     };
 
     // Syntax 2
-    if (typeName _params == typeName [] && {count _params > 0}) then {
+    if (typeName _params == "ARRAY" && {count _params > 0}) then {
         _menuSource = _params select 0;
-        if (typeName _menuSource == typeName "") then { // check for syntax: function, code string or sqf filename
+        if (typeName _menuSource == "STRING") then { // check for syntax: function, code string or sqf filename
             _menuParams = if (count _params > 1) then {[_target, _params select 1]};
         } else {
             _menuSource = _params;
@@ -36,7 +36,7 @@ private _menuDefs = [];
     TRACE_1("",_menuSource);
     //-----------------------------------------------------------------------------
     // determine if string represents an executable statement or actual data (via variable).
-    if (typeName _menuSource == typeName []) then {
+    if (typeName _menuSource == "ARRAY") then {
         // _menuSource is _menuDefs. a single menuDef array
         LOG("_menuSource Single Definition");
         _menuDef = _menuSource; //somtimes Nil

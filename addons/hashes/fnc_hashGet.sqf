@@ -11,6 +11,7 @@ Description:
 Parameters:
     _hash - Hash to look for key in [Array which is a Hash structure]
     _key - Key to search for in Hash [Any]
+    _defaultOverwrite - Default Overwrite if key is not defined [Any]
 
 Returns:
     Value associated with the key, or Hash default value if key missing [Any]

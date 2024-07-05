@@ -6,13 +6,15 @@
             <German>Community Base Addons - Künstliche Intelligenz</German>
             <Japanese>Community Base Addons - 人工知能</Japanese>
             <Chinese>社群基礎模組 - 人工智能</Chinese>
-            <Chinesesimp>社群基础模组 - 人工智能</Chinesesimp>
+            <Chinesesimp>社群基础模组 - AI</Chinesesimp>
             <Russian>Community Base Addons - Искуственный Интеллект</Russian>
             <French>Community Base Addons - Intelligence artificielle</French>
             <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
             <Turkish>Community Base Addons - Yapay Zeka</Turkish>
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
             <Czech>Community Base Addons - Umělá inteligence</Czech>
+            <Korean>커뮤니티 베이스 애드온- 인공지능</Korean>
+            <Spanish>Community Base Addons - Inteligencia artificial</Spanish>
         </Key>
         <Key ID="STR_CBA_AI_BuildingPos">
             <English>AI Building Position</English>
@@ -21,7 +23,55 @@
             <Turkish>AI Bina Pozisyonu</Turkish>
             <Japanese>AI の建物内での位置</Japanese>
             <Chinese>AI在建築物內位置</Chinese>
+            <Chinesesimp>AI在建筑内部位置</Chinesesimp>
             <French>Position IA bâtiment</French>
+            <Russian>ИИ Позиция в здании</Russian>
+            <Polish>Pozycja AI w budynku</Polish>
+            <Italian>Posizione edificio AI</Italian>
+            <Korean>인공지능 건물 위치</Korean>
+            <Spanish>Posición del edificio de IA</Spanish>
+        </Key>
+        <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
+            <English>Invisible Target Soldier</English>
+            <German>Unsichtbares Ziel - Soldat</German>
+            <Chinese>隱形目標（士兵）</Chinese>
+            <French>Cible invisible - Soldat</French>
+            <Italian>Obiettivo invisibile - Soldato</Italian>
+            <Polish>Żołnierz - niewidoczny cel</Polish>
+            <Russian>Невидимая цель - солдат</Russian>
+            <Czech>Neviditelný cíl (Voják)</Czech>
+            <Portuguese>Soldado alvo invisível</Portuguese>
+            <Korean>보이지 않는 표적 병사</Korean>
+            <Chinesesimp>隐形目标（士兵）</Chinesesimp>
+            <Japanese>不可視の標的歩兵</Japanese>
+            <Turkish>Görünmez Hedef Asker</Turkish>
+            <Spanish>Soldado Objetivo Invisible</Spanish>
+        </Key>
+        <Key ID="STR_CBA_AI_InvisibleTargetVehicle">
+            <English>Invisible Target Vehicle</English>
+            <German>Unsichtbares Ziel - Fahrzeug</German>
+            <French>Cible invisible - Véhicule</French>
+            <Polish>Pojazd - niewidoczny cel</Polish>
+            <Chinese>隱形目標（車輛）</Chinese>
+            <Chinesesimp>隐形目标（车辆）</Chinesesimp>
+            <Czech>Neviditelný cíl (Vozidlo)</Czech>
+            <Italian>Obiettivo invisibile - Veicolo</Italian>
+            <Korean>보이지 않는 표적 차량</Korean>
+            <Spanish>Vehículo objetivo invisible</Spanish>
+            <Japanese>不可視の標的車両</Japanese>
+        </Key>
+        <Key ID="STR_CBA_AI_InvisibleTargetAir">
+            <English>Invisible Target Airplane</English>
+            <German>Unsichtbares Ziel - Flugzeug</German>
+            <French>Cible invisible - Avion</French>
+            <Polish>Samolot - niewidoczny cel</Polish>
+            <Chinese>隱形目標（飛機）</Chinese>
+            <Chinesesimp>隐形目标（飞机）</Chinesesimp>
+            <Czech>Neviditelný cíl (Letoun)</Czech>
+            <Italian>Obiettivo invisibile - Velivolo</Italian>
+            <Korean>보이지 않는 표적 항공기</Korean>
+            <Spanish>Avión objetivo invisible</Spanish>
+            <Japanese>不可視の標的飛行機</Japanese>
         </Key>
     </Package>
 </Project>

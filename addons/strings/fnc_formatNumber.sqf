@@ -87,7 +87,7 @@ if (_separateThousands) then { // add localized thousands seperator "1,000"
 };
 
 // Re-add negative sign if there is at least one decimal place != 0.
-if (_isNegative && {!(toArray _return arrayIntersect toArray "123456789" isEqualTo [])}) then {
+if (_isNegative && {toArray _return arrayIntersect toArray "123456789" isNotEqualTo []}) then {
     _return = "-" + _return;
 };
 

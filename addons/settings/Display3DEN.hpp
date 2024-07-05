@@ -11,7 +11,7 @@ class Display3DEN {
                     text = CSTRING(3den_shortcut);
                     action = QUOTE(findDisplay 313 call FUNC(openSettingsMenu));
                     data = QUOTE(ADDON);
-                    shortcuts[] = {INPUT_CTRL_OFFSET + INPUT_ALT_OFFSET + DIK_S};
+                    shortcuts[] = {QUOTE(INPUT_CTRL_OFFSET + INPUT_ALT_OFFSET + DIK_S)};
                 };
             };
         };

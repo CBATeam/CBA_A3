@@ -14,7 +14,6 @@ SCRIPT(test-jr);
 LOG("=== Testing JR ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\jr\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\jr\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;

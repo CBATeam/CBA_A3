@@ -25,6 +25,19 @@ private _fnc_findMissions = {
 
 _display setVariable [QGVAR(stockMissions), _stockMissions];
 
+// Show worldnames as tooltips on map list
+private _worldNames = createHashMap;
+{
+    private _worldName = configName _x;
+    private _description = getText (configFile >> "CfgWorlds" >> _worldName >> "description");
+    _worldNames set [_description, _worldname];
+} forEach (configProperties [configfile >> "CfgWorldList", "isClass _x"]);
+for "_index" from 0 to ((lbSize _ctrlMaps) - 1) do {
+    private _description = _ctrlMaps lbText _index;
+    private _worldName = _worldNames getOrDefault [_description, ""];
+    _ctrlMaps lbSetTooltip [_index, _worldName];
+};
+
 lbSort _ctrlMaps;
 _ctrlMaps lbSetCurSel 0;
 
@@ -100,8 +113,10 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
         private _value = _ctrlMissions lbValue _i;
         private _data = _ctrlMissions lbData _i;
         private _color = _ctrlMissions lbColor _i;
+        private _picture = _ctrlMissions lbPicture _i;
+        private _pictureRight = _ctrlMissions lbPictureRight _i;
 
-        _missions pushBack [_name, _value, _data, _color];
+        _missions pushBack [_name, _value, _data, _color, _picture, _pictureRight];
     };
 
     _ctrlMissions setVariable [QGVAR(missions), _missions];
@@ -109,7 +124,7 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
 }}};
 
 _ctrlMaps call _fnc_storeMapMissions;
-_ctrlMaps ctrlAddEventHandler ["lbSelChanged", _fnc_storeMapMissions];
+_ctrlMaps ctrlAddEventHandler ["LBSelChanged", _fnc_storeMapMissions];
 
 // filter out missions we don't want
 _display setVariable [QFUNC(filter), {
@@ -133,7 +148,7 @@ _display setVariable [QFUNC(filter), {
     lbClear _ctrlMissions;
 
     {
-        _x params ["_name", "_value", "_data", "_color"];
+        _x params ["_name", "_value", "_data", "_color", "_picture", "_pictureRight"];
         private _classname = _data splitString "." param [0, ""];
 
         if (toLower _name find _filter != -1 && {_showStockMissions || {!(_classname in _stockMissions)}}) then {
@@ -141,6 +156,8 @@ _display setVariable [QFUNC(filter), {
             _ctrlMissions lbSetValue [_index, _value];
             _ctrlMissions lbSetData [_index, _data];
             _ctrlMissions lbSetColor [_index, _color];
+            _ctrlMissions lbSetPicture [_index, _picture];
+            _ctrlMissions lbSetPictureRight [_index, _pictureRight];
         };
     } forEach _missions;
 

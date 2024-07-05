@@ -5,7 +5,8 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"
+#include "initSettings.inc.sqf"
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
@@ -15,8 +16,6 @@ GVAR(projectileIndex) = 0;
 GVAR(projectileMaxLines) = 20;
 GVAR(projectileStartedDrawing) = false;
 GVAR(projectileTrackedUnits) = [];
-
-ADDON = true;
 
 if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) then {
     INFO("EnableTargetDebug is enabled.");
@@ -44,7 +43,7 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
 
         missionNamespace setVariable [_varName, [_statementText, _returnString, _duration]];
         if (_clientID != CBA_clientID) then {
-            publicVariable _varName; // send back over network
+            _clientID publicVariableClient _varName; // send back over network
         };
     }] call CBA_fnc_addEventHandler;
 
@@ -70,3 +69,5 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
         }];
     };
 };
+
+ADDON = true;

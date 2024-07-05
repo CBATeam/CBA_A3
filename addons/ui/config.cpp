@@ -2,16 +2,40 @@
 
 class CfgPatches {
     class ADDON {
-        name = CSTRING(component);
+        name = CSTRING(Component);
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_common", "cba_arrays"};
         author = "$STR_CBA_Author";
-        authors[] = {"Dr Eyeball", "commy2"};
+        authors[] = {"Dr Eyeball", "commy2", "mharis001"};
         url = "$STR_CBA_URL";
         VERSION_CONFIG;
     };
+};
+
+class RscText;
+class RscProgress;
+class RscMapControl;
+class ctrlTree;
+class ctrlEdit;
+class ctrlStatic;
+class ctrlStaticTitle;
+class ctrlStaticFooter;
+class ctrlStructuredText;
+class ctrlMenuStrip;
+class ctrlButtonOK;
+class ctrlButtonCancel;
+class ctrlButtonExpandAll;
+class ctrlButtonCollapseAll;
+class ctrlButtonPictureKeepAspect;
+class ctrlStaticBackground;
+class ctrlStaticBackgroundDisable;
+class ctrlStaticBackgroundDisableTiles;
+
+class RscListBox;
+class GVAR(ItemContextMenu): RscListBox {
+    colorBackground[] = {0.05, 0.05, 0.05, 0.95};
 };
 
 #include "CfgEventHandlers.hpp"
@@ -19,6 +43,8 @@ class CfgPatches {
 #include "RscTitles.hpp"
 #include "CfgUIGrids.hpp"
 #include "RscDisplayOptionsLayout.hpp"
+#include "Display3DEN.hpp"
+#include "LobbyManager.hpp"
 
 //-----------------------------------------------------------------------------
 // TODO: Delete these rsc/_flexiMenu_RscShortcutButton classes soon and transfer properties to menu classes, if any.
@@ -34,7 +60,7 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
         left = -0.006;
         top = -0.007;
         w = 0.0392157;
-        h = 2*(safeZoneH/36); //0.0522876;
+        h = QUOTE(2*(safeZoneH/36)); //0.0522876;
     };
     class TextPos {
         left = 0.01; // indent

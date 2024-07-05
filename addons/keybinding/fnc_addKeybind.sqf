@@ -21,6 +21,27 @@ Description:
         0xF8: Mouse wheel up
         0xF9: Mouse wheel down
 
+        0xFA: Custom user action 1
+        0xFB: Custom user action 2
+        0xFC: Custom user action 3
+        0xFD: Custom user action 4
+        0xFE: Custom user action 5
+        0xFF: Custom user action 6
+        0x100: Custom user action 7
+        0x101: Custom user action 8
+        0x102: Custom user action 9
+        0x103: Custom user action 10
+        0x104: Custom user action 11
+        0x105: Custom user action 12
+        0x106: Custom user action 13
+        0x107: Custom user action 14
+        0x108: Custom user action 15
+        0x109: Custom user action 16
+        0x10A: Custom user action 17
+        0x10B: Custom user action 18
+        0x10C: Custom user action 19
+        0x10D: Custom user action 20
+
 Parameters:
     _addon          - Name of the registering mod + optional sub-category <STRING, ARRAY>
     _action         - Id of the key action. <STRING>
@@ -91,11 +112,11 @@ if (_defaultKeybind isEqualTypeParams [0, false, false, false]) then {
 
 // Handle non-code type being passed for up/down code args
 if (!(_downCode isEqualType {})) then {
-    if (!(_downCode isEqualTo "")) then {WARNING_1("_downCode: Non code type [%1] will be ignored",_downCode);};
+    if (_downCode isNotEqualTo "") then {WARNING_1("_downCode: Non code type [%1] will be ignored",_downCode);};
     _downCode = {};
 };
 if (!(_upCode isEqualType {})) then {
-    if (!(_upCode isEqualTo "")) then {WARNING_1("_upCode: Non code type [%1] will be ignored",_upCode);};
+    if (_upCode isNotEqualTo "") then {WARNING_1("_upCode: Non code type [%1] will be ignored",_upCode);};
     _upCode = {};
 };
 
@@ -103,7 +124,7 @@ if (!(_upCode isEqualType {})) then {
 _defaultKeybind params [["_defaultKey", 0, [0]], ["_defaultModifiers", [], [[]]]];
 _defaultModifiers params [["_defaultShift", false, [false]], ["_defaultControl", false, [false]], ["_defaultAlt", false, [false]]];
 
-if (_defaultKey >= 255) then {
+if (_defaultKey > 0x10D) then {
     WARNING_2("Keybind %1's default keybind is invalid [DIK: %2]",_action,_defaultKey);
     _defaultKey = 0;
 };
@@ -163,11 +184,11 @@ GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _default
 {
     _keybind = _x;
 
-    if !(_downCode isEqualTo {}) then {
+    if (_downCode isNotEqualTo {}) then {
         [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1_down_%2", _action, _forEachIndex], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
     };
 
-    if !(_upCode isEqualTo {}) then {
+    if (_upCode isNotEqualTo {}) then {
         [_keybind select 0, _keybind select 1, _upCode, "keyUp", format ["%1_up_%2", _action, _forEachIndex]] call CBA_fnc_addKeyHandler;
     };
 } forEach _keybinds;

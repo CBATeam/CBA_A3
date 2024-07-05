@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_preInit
+Internal Function: CBA_fnc_preInit
 
 Description:
     Occurs once per mission before objects are initialized.
@@ -26,7 +26,7 @@ SLX_XEH_DisableLogging = uiNamespace getVariable ["SLX_XEH_DisableLogging", fals
 XEH_LOG("PreInit started. v" + getText (configFile >> "CfgPatches" >> "cba_common" >> "versionStr"));
 
 SLX_XEH_STR = ""; // does nothing, never changes, backwards compatibility
-SLX_XEH_COMPILE = compileFinal "compile preprocessFileLineNumbers _this"; //backwards comps
+SLX_XEH_COMPILE = compileFinal "diag_log text format ['[CBA-XEH] old SLX_XEH_COMPILE macro used on %1', _this]; compileScript [_this]"; //backwards compat
 SLX_XEH_COMPILE_NEW = CBA_fnc_compileFunction; //backwards comp
 SLX_XEH_DUMMY = "Logic"; // backwards comp
 
@@ -41,7 +41,7 @@ SLX_XEH_MACHINE = [ // backwards compatibility, deprecated
     false, // 7 - PreInit passed
     false, // 8 - PostInit passed
     isMultiplayer, // 9 - Multiplayer && respawn
-    if (isDedicated) then {0} else {if (isServer) then {1} else {2}}, // 10 - Machine type (only 3 possible configurations)
+    if (isDedicated) then {0} else {[2, 1] select isServer}, // 10 - Machine type (only 3 possible configurations)
     0, // 11 - SESSION_ID
     0, // 12 - LEVEL - Used for version determination
     false, // 13 - TIMEOUT - PostInit timedOut, always false
@@ -148,17 +148,17 @@ GVAR(fallbackRunning) = false;
 
         _eventFunc params ["_funcAll", "_funcClient", "_funcServer"];
 
-        if !(_funcAll isEqualTo {}) then {
+        if (_funcAll isNotEqualTo {}) then {
             private _success = [_className, _eventName, _funcAll, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
 
-        if (!isDedicated && {!(_funcClient isEqualTo {})}) then {
+        if (!isDedicated && {_funcClient isNotEqualTo {}}) then {
             private _success = [_className, _eventName, _funcClient, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };
 
-        if (isServer && {!(_funcServer isEqualTo {})}) then {
+        if (isServer && {_funcServer isNotEqualTo {}}) then {
             private _success = [_className, _eventName, _funcServer, _allowInheritance, _excludedClasses] call CBA_fnc_addClassEventHandler;
             TRACE_3("addClassEventHandler",_className,_eventName,_success);
         };

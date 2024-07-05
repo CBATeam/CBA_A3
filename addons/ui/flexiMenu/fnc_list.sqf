@@ -1,17 +1,17 @@
 disableSerialization;
 // Desc: Fill and show an embedded listbox on dialog menu.
 //-----------------------------------------------------------------------------
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 private _menuDefs = _this call FUNC(getMenuDef);
 //-----------------------------------------------------------------------------
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 
 private _disp = uiNamespace getVariable QGVAR(display);
-_disp displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
+_disp displayRemoveEventHandler ["KeyDown", GVAR(keyDownEHID)];
 params ["", "_menuSources"];
 
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown",
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["KeyDown",
     format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 private _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
@@ -23,7 +23,7 @@ private _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuReso
 private _msg = format ["%1: Invalid params c4: %2", __FILE__, _this];
 
 if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_list.sqf"};
-if (typeName _menuRsc != typeName "") exitWith {diag_log _msg};
+if (typeName _menuRsc != "STRING") exitWith {diag_log _msg};
 
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
     _menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix

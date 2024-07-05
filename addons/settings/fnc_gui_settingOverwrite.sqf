@@ -11,7 +11,7 @@ if (_source isEqualTo "client") then {
     _ctrlOverwriteClient ctrlCommit 0;
 };
 
-if !(_source isEqualTo "server") then {
+if (_source isNotEqualTo "server") then {
     _ctrlOverwriteMission ctrlEnable false;
     _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
     _ctrlOverwriteMission ctrlCommit 0;
@@ -70,7 +70,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
         _ctrlOverwriteClient cbSetChecked _wasChecked;
         _ctrlOverwriteClient ctrlEnable (_ctrlOverwriteClient getVariable [QGVAR(enabled), true]);
 
-        _state = [0, 1] select _wasChecked;
+        _state = parseNumber _wasChecked;
         SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
     };
 

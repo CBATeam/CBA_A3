@@ -4,7 +4,7 @@ ADDON = false;
 
 // Don't prep functions if already prepped by CBA_fnc_addSetting to avoid log spam.
 if (isNil QFUNC(init)) then {
-    #include "XEH_PREP.sqf"
+    #include "XEH_PREP.hpp"
 };
 
 //#define DEBUG_MODE_FULL
@@ -42,7 +42,7 @@ if (isNil QFUNC(init)) then {
 #endif
 
 // --- init settings namespaces
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 // --- event to refresh missionNamespace value if setting has changed and call public event as well as execute setting script
 [QGVAR(refreshSetting), {

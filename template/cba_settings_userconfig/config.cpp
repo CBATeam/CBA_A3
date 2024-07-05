@@ -12,3 +12,6 @@ class CfgPatches {
         authors[] = {"commy2"};
     };
 };
+
+// Uncommenting this will make any changes to "Server" settings be lost upon game restart, applies only to dedicated servers
+// cba_settings_volatile = 1;

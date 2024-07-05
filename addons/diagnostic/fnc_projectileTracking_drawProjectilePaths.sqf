@@ -52,7 +52,11 @@ for "_index" from 0 to _maxLines do {
                 private _green = _currentSpeed / _startSpeed;
                 private _red = 1 - _green;
 
-                drawLine3D [_currentProjectileData select 0, _nextProjectileData select 0, [_red, _green, 0, 1]];
+                drawLine3D [
+                    ASLToAGL (_currentProjectileData select 0),
+                    ASLToAGL (_nextProjectileData select 0),
+                    [_red, _green, 0, 1]
+                ];
 
             } forEach _projectileData;
         };

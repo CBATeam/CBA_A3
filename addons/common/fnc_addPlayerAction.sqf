@@ -50,7 +50,7 @@ private _return = if (isDedicated) then {
                 };
                 GVAR(actionListUpdated) = false;
                 [GVAR(actionList), {
-                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
+                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes),_value);
                     if ((!isNil "_value") && {_value isEqualType []}) then {
                         GVAR(actionIndexes) pushBack (_curVic addAction _value);
                     };

@@ -33,7 +33,32 @@
 #define POS_W(N) ((N) * GUI_GRID_W)
 #define POS_H(N) ((N) * GUI_GRID_H)
 
-// notify
+#define GRID_3DEN_W (pixelW * pixelGrid * 0.5)
+#define GRID_3DEN_H (pixelH * pixelGrid * 0.5)
+
+#define TEXT_MARGINS_WIDTH (2 * 0.008)  // Hardcoded value, see https://community.bistudio.com/wiki/getTextWidth
+#define RSCLISTBOX_PICTURE_WIDTH 0.05  // Empirical value, RSCListBox's left icon picture width
+
+// Lobby Manager
+#define IDC_LM_SLOTS 50
+#define IDC_LM_CALLSIGN 51
+#define IDC_LM_DESCRIPTION 52
+#define IDC_LM_EXPAND 53
+#define IDC_LM_COLLAPSE 54
+#define IDC_LM_MOVE_UP 55
+#define IDC_LM_MOVE_DOWN 56
+#define IDC_LM_WARNING 57
+
+#define ICON_FOLDER      "\a3\3den\data\cfg3den\layer\icondefault_ca.paa"
+#define ICON_BLUFOR      "\a3\ui_f\data\map\markers\nato\b_unknown.paa"
+#define ICON_OPFOR       "\a3\ui_f\data\map\markers\nato\o_unknown.paa"
+#define ICON_INDEPENDENT "\a3\ui_f\data\map\markers\nato\n_unknown.paa"
+#define ICON_CIVILIAN    "\a3\ui_f\data\map\markers\nato\n_unknown.paa"
+#define ICON_WARNING     "\a3\3den\data\displays\display3denmsgbox\picture_ca.paa"
+
+#define SEPARATORS "@"
+
+// Notify
 #define NOTIFY_DEFAULT_X (safezoneX + safezoneW - 13 * GUI_GRID_W)
 #define NOTIFY_DEFAULT_Y (safezoneY + 6 * GUI_GRID_H)
 #define NOTIFY_MIN_WIDTH (12 * GUI_GRID_W)

@@ -27,12 +27,13 @@ if (isServer) then {
     };
 };
 
-#include "backwards_comp.sqf"
-#include "initSettings.sqf"
+#include "backwards_comp.inc.sqf"
+#include "initSettings.inc.sqf"
 
-ADDON = true;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
-if (!hasInterface) exitWith {};
 PREP(playerEvent);
 
 GVAR(skipCheckingUserActions) = true;
@@ -95,3 +96,5 @@ GVAR(alt) = false;
 private _states = [];
 _states resize 20;
 GVAR(userKeyStates) = _states apply {false};
+
+ADDON = true;

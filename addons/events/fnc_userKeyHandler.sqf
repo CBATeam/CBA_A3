@@ -20,9 +20,9 @@ private _userKeyStates = [
     inputAction "User16" > 0.1, inputAction "User17" > 0.1, inputAction "User18" > 0.1, inputAction "User19" > 0.1, inputAction "User20" > 0.1
 ];
 
-if !(_userKeyStates isEqualTo GVAR(userKeyStates)) then {
+if (_userKeyStates isNotEqualTo GVAR(userKeyStates)) then {
     {
-        if !(_x isEqualTo (GVAR(userKeyStates) select _forEachIndex)) then {
+        if (_x isNotEqualTo (GVAR(userKeyStates) select _forEachIndex)) then {
             GVAR(userKeyStates) set [_forEachIndex, _x];
             [_display, USERACTION_OFFSET + _forEachIndex, false, false, false] call ([FUNC(keyHandlerUp), FUNC(keyHandlerDown)] select _x);
         };

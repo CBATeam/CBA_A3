@@ -49,7 +49,7 @@ _ctrlList ctrlAddEventHandler ["LBSelChanged", {
     private _controlsGroup = ctrlParentControlsGroup _ctrlList;
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
@@ -70,5 +70,5 @@ _controlsGroup setVariable [QFUNC(updateUI), {
     // if new value is same as default value, grey out the default button
     private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable !(_value isEqualTo _defaultValue);
+    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
 }];

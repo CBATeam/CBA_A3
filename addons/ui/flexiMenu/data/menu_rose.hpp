@@ -1,5 +1,6 @@
 //#define DEBUG_MODE_FULL
-//#include "\x\cba\addons\ui\script_component.hpp"
+//#include "..\..\script_component.hpp"
+#pragma hemtt suppress pw3_padded_arg file
 
 #define _DefaultAspectRatio 3 / 4
 #define _SX (safeZoneX + safeZoneW / 2) //screen centre x
@@ -14,7 +15,7 @@
 #define _LBH_overlap 0.0375 * safeZoneH //button height with 1 pixel overlap for type "popup" menu
 #define _listButtonsPerRow 10
 //#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 //BIS mid green (button over colour)
-#define _captionColorFG 138 / 256, 146 / 256, 105 / 256 //BIS greenish text
+#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" //BIS greenish text
 #define _captionHgt 0.85
 #define _gapW 0.01 * safeZoneW //Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH / 2-2 * _BH) * 2 / 3) //Button "height" vertical spacing
@@ -39,8 +40,8 @@ class CBA_flexiMenu_rscRose {
     class objects {};
 
     // custom flexiMenu properties
-    flexiMenu_primaryMenuControlWidth = _BW;
-    flexiMenu_subMenuControlWidth = _SMW;
+    flexiMenu_primaryMenuControlWidth = QUOTE(_BW);
+    flexiMenu_subMenuControlWidth = QUOTE(_SMW);
     flexiMenu_subMenuCaptionWidth = 0.40;
     flexiMenu_hotKeyColor = "#f07EB27E";
 
@@ -50,9 +51,9 @@ class CBA_flexiMenu_rscRose {
         y = 0.5;
         w = 0; //_SMW; //hide initially
         // w = _SMW;
-        h = _LBH_overlap;
-        sizeEx = _LBH;
-        size = _LBH * 0.75;
+        h = QUOTE(_LBH_overlap);
+        sizeEx = QUOTE(_LBH);
+        size = QUOTE(_LBH * 0.75);
 
         color[] = {_captionColorFG, 1};
         color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
@@ -81,10 +82,10 @@ class CBA_flexiMenu_rscRose {
     };
 
     class button: _flexiMenu_RscShortcutButton {
-        w = 0; //_BW; //hide initially
-        h = _BH;
-        sizeEx = _BH;
-        size = _BH * 0.85;
+        w = 0; //QUOTE(_BW); //hide initially
+        h = QUOTE(_BH);
+        sizeEx = QUOTE(_BH);
+        size = QUOTE(_BH * 0.85);
 
         color[] = {_captionColorFG, 1};
         color2[] = {1, 1, 1, 0.8}; // {1, 1, 1, 0.4};
@@ -102,30 +103,30 @@ class CBA_flexiMenu_rscRose {
     };
     //---------------------------------
     class controls {
-        class caption: rscText {
+        class caption: RscText {
             idc = _flexiMenu_IDC_menuDesc;
-            //x = _SX - _BW;
-            x = _leftButtonLevel1X;
-            //y = _SY - _buttonsBeforeCenter * _BH -_ gapH - _BH * _captionHgt;
-            y = _SY - (_CH / 2 + _gapH) - _BH - _gapH - _BH * _captionHgt;
-            w = 0.50 * safeZoneW;
-            h = _BH * _captionHgt;
-            sizeEx = _BH * _captionHgt;
+            //x = QUOTE(_SX - _BW);
+            x = QUOTE(_leftButtonLevel1X);
+            //y = QUOTE(_SY - _buttonsBeforeCenter * _BH -_ gapH - _BH * _captionHgt);
+            y = QUOTE(_SY - (_CH / 2 + _gapH) - _BH - _gapH - _BH * _captionHgt);
+            w = QUOTE(0.50 * safeZoneW);
+            h = QUOTE(_BH * _captionHgt);
+            sizeEx = QUOTE(_BH * _captionHgt);
             colorText[] = {_captionColorFG, 1};
             text = "";
         };
 
         class button01: button {
-            idc = _flexiMenu_baseIDC_button + 0;
-            x = _SX-_CW / 2 + _CX_correction;
-            y = _SY-_CH / 2;
-            w = _CW;
-            h = _CH;
-            sizeEx = _CH;
-            //size = _BH * 0.8;
+            idc = QUOTE(_flexiMenu_baseIDC_button + 0);
+            x = QUOTE(_SX-_CW / 2 + _CX_correction);
+            y = QUOTE(_SY-_CH / 2);
+            w = QUOTE(_CW);
+            h = QUOTE(_CH);
+            sizeEx = QUOTE(_CH);
+            //size = QUOTE(_BH * 0.8);
             class TextPos {
-                left = -_CX_correction * 2;  //not sure if logic is correct, but seems close enough  //0.008
-                top = _CH / 2 - _BH / 2;
+                left = QUOTE(-_CX_correction * 2);  //not sure if logic is correct, but seems close enough  //0.008
+                top = QUOTE(_CH / 2 - _BH / 2);
                 right = 0; // 0.002;
                 bottom = 0.0;
             };
@@ -140,9 +141,9 @@ class CBA_flexiMenu_rscRose {
 
         #define ExpandMacro_RowControls(ID,newX,newY,imageTag)\
         class button##ID: button {\
-            idc = _flexiMenu_baseIDC_button + (ID-1);\
-            x = ##newX;\
-            y = ##newY;\
+            idc = QUOTE(_flexiMenu_baseIDC_button + (ID-1));\
+            x = QUOTE(newX);\
+            y = QUOTE(newY);\
             text = "";\
             action = "";\
             animTextureNormal = _imagePath(DOUBLES(normal,imageTag));\
@@ -167,8 +168,8 @@ class CBA_flexiMenu_rscRose {
         //-----------------------
         class caption2: caption {
             idc = _flexiMenu_IDC_listMenuDesc;
-            x = _SX - (_SMW / 2);
-            y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + 0 * _LBH;
+            x = QUOTE(_SX - (_SMW / 2));
+            y = QUOTE(_SY + (_CH / 2 + _gapH) + _BH + _gapH + 0 * _LBH);
             w = 0; //flexiMenu_subMenuCaptionWidth;  //hide initially
         };
 
@@ -176,9 +177,9 @@ class CBA_flexiMenu_rscRose {
     //Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
-        idc = _flexiMenu_baseIDC_listButton + ID;\
-        x = _SX - ((_SMW + _gapW) * 1.5) + floor(((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW);\
-        y = _SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH;\
+        idc = QUOTE(_flexiMenu_baseIDC_listButton + ID);\
+        x = QUOTE(_SX - ((_SMW + _gapW) * 1.5) + floor(((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW));\
+        y = QUOTE(_SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH);\
     }
 
         ExpandMacro_ListControls(00);

@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 

@@ -80,7 +80,7 @@ add3DENEventHandler ["OnMessage", {
     private _fileExists = FILE_EXISTS(MISSION_SETTINGS_FILE);
     private _fileExistedPreviously = "Scenario" get3DENMissionAttribute QGVAR(hasSettingsFile);
 
-    if !(_fileExists isEqualTo _fileExistedPreviously) then {
+    if (_fileExists isNotEqualTo _fileExistedPreviously) then {
         set3DENMissionAttributes [["Scenario", QGVAR(hasSettingsFile), _fileExists]];
 
         switch (_message) do {

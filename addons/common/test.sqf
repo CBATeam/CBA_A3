@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["config", "inventory", "weaponComponents", "position", "ret", "macro_is_x"]
+#define TESTS ["common", "config", "inventory", "weaponComponents", "position", "ret", "macro_is_x"]
 
 SCRIPT(test-common);
 
@@ -14,7 +14,6 @@ SCRIPT(test-common);
 LOG("=== Testing Common ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\common\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\common\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil;

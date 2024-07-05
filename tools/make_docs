@@ -1,6 +1,8 @@
 #!/bin/sh
 
-NATURALDOCS=`which NaturalDocs 2>/dev/null`
+shopt -s xpg_echo 2>/dev/null || :
+
+NATURALDOCS=`which naturaldocs 2>/dev/null`
 
 if [ -z $NATURALDOCS ]
 then
@@ -8,31 +10,30 @@ then
   exit 1
 fi
 
-echo -e "\n=== Compiling documentation ===\n"
+echo "\n=== Create docs folder ===\n"
 if [ ! -d ../docs ]
 then
   mkdir ../docs
 fi
+
+echo "\n=== move files to addons ===\n"
 cp overview.txt CBA_logo_large.png ../addons
 
-# Move the documented, but internal-only functions out of the way
-# while compiling the documentation
-cp -a ../addons/xeh /tmp/
-rm ../addons/xeh/*
-cp -a /tmp/xeh/fnc_addClassEventHandler.sqf ../addons/xeh
-cp -a /tmp/xeh/fnc_compileEventHandlers.sqf ../addons/xeh
-cp -a /tmp/xeh/fnc_compileFunction.sqf ../addons/xeh
-cp -a /tmp/xeh/fnc_isRecompileEnabled.sqf ../addons/xeh
-cp -a /tmp/xeh/fnc_isScheduled.sqf ../addons/xeh
+echo "\n=== move script_xeh.hpp out of xeh ===\n"
+
+mv ../addons/xeh/script_xeh.hpp .
+
+echo "\n=== Compiling documentation ===\n"
 
 $NATURALDOCS -r -i "../addons" -o HTML "../docs" -p "ndocs-project" -s Default cba
-rm ../addons/{overview.txt,CBA_logo_large.png}
 
-# Restore xeh
-cp -a /tmp/xeh/* ../addons/xeh/
-rm -rf /tmp/xeh
+echo "\n=== Cleanup ===\n"
+rm ../addons/overview.txt
+rm ../addons/CBA_logo_large.png
 
-echo -e "\n=== Packaging documentation ===\n"
+mv script_xeh.hpp ../addons/xeh/
+
+echo "\n=== Packaging documentation ===\n"
 rm -f ../store/function_library.tar
 fakeroot tar -C ../ -cf ../store/function_library.tar docs
 

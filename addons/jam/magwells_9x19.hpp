@@ -15,7 +15,8 @@
     class CBA_9x19_HiPower {};      // Browning HiPower
     class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MAB38 {};        // Beretta Model 38
-    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28, MP35
+    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28
+    class CBA_9x19_MP35 {};         // MP35
     class CBA_9x19_MP40 {};         // MP40, MP38
     class CBA_9x19_MP443 {};        // MP-443 Grach
     class CBA_9x19_MP5 {            // H&K MP5
@@ -48,7 +49,8 @@
             "30Rnd_9x21_Green_Mag"
         };
     };
-    class CBA_9x19_STEN {};         // STEN
+    class CBA_9x19_STEN {};         // STEN, Lanchester SMG
+    class CBA_9x19_Sterling {};     // Sterling SMG
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9

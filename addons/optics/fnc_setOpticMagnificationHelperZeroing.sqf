@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: cba_optics_fnc_setOpticMagnificationHelperZeroing
+Function: CBA_optics_fnc_setOpticMagnificationHelperZeroing
 
 Description:
     Helper function used in config to remember the zeroing of a zooming optic.

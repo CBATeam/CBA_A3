@@ -18,12 +18,12 @@ class CfgPatches {
 #include "CfgFunctions.hpp"
 
 class RscDisplayChat {
+#pragma hemtt suppress pw3_padded_arg line
     onKeyDown = QUOTE(\
         if ((_this select 1) in [ARR_2(DIK_RETURN,DIK_NUMPADENTER)]) then {\
             [ARR_2('GVAR(chatMessageSent)',[ARR_2(ctrlText ((_this select 0) displayctrl 101),_this select 0)])] call CBA_fnc_localEvent;\
         };\
-        false\
-    );
+        false);
 };
 
 //#define DEBUG_MODE_FULL

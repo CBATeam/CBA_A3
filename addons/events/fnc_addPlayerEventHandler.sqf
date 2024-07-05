@@ -66,10 +66,7 @@ private _id = switch (_type) do {
     case "turretweapon": {
         if (_applyRetroactively) then {
             private _vehicle = vehicle GVAR(oldUnit);
-            private _turret = [];
-            if (GVAR(oldUnit) != _vehicle) then {
-                _turret = ([[-1]] + allTurrets [_vehicle, true]) select {_vehicle turretUnit _x == GVAR(oldUnit)} param [0, []];
-            };
+            private _turret = _vehicle unitTurret GVAR(oldUnit);
             [GVAR(oldUnit), _vehicle currentWeaponTurret _turret, ""] call _function;
         };
         [QGVAR(turretWeaponEvent), _function] call CBA_fnc_addEventHandler // return id
@@ -101,10 +98,7 @@ private _id = switch (_type) do {
     case "turret": {
         if (_applyRetroactively) then {
             private _vehicle = vehicle GVAR(oldUnit);
-            private _turret = [];
-            if (GVAR(oldUnit) != _vehicle) then {
-                _turret = ([[-1]] + allTurrets [_vehicle, true]) select {_vehicle turretUnit _x == GVAR(oldUnit)} param [0, []];
-            };
+            private _turret = _vehicle unitTurret GVAR(oldUnit);
             [GVAR(oldUnit), _turret, []] call _function;
         };
         [QGVAR(turretEvent), _function] call CBA_fnc_addEventHandler // return id
@@ -175,7 +169,7 @@ if (_id != -1) then {
             SCRIPT(playerEvent_Map);
 
             params ["_data"]; // visibleMap is updated one frame later
-            if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+            if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
                 GVAR(oldVisibleMap) = _data;
                 [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
@@ -186,7 +180,7 @@ if (_id != -1) then {
         0 spawn {
             {
                 private _data = visibleMap;
-                if !(_data isEqualTo GVAR(oldVisibleMap)) then {
+                if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
                     GVAR(oldVisibleMap) = _data;
                     [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
                 };
@@ -197,7 +191,7 @@ if (_id != -1) then {
             SCRIPT(playerEH_featureCamera);
 
             private _data = call CBA_fnc_getActiveFeatureCamera;
-            if !(_data isEqualTo GVAR(oldFeatureCamera)) then {
+            if (_data isNotEqualTo GVAR(oldFeatureCamera)) then {
                 GVAR(oldFeatureCamera) = _data;
                 [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };

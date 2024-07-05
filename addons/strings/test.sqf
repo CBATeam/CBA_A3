@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["strings"]
+#define TESTS ["strings", "prettyFormat"]
 
 SCRIPT(test-strings);
 
@@ -14,7 +14,6 @@ SCRIPT(test-strings);
 LOG("=== Testing Strings ===");
 
 {
-    call compile preprocessFileLineNumbers format ["\x\cba\addons\strings\test_%1.sqf", _x];
+    private _test = execVM format ["\x\cba\addons\strings\test_%1.sqf", _x];
+    waitUntil { scriptDone _test };
 } forEach TESTS;
-
-nil

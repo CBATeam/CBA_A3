@@ -14,6 +14,7 @@
             <Turkish>Community Base Addons - Yardım</Turkish>
             <Italian>Community Base Addons - Aiuto</Italian>
             <Czech>Community Base Addons - Pomoc</Czech>
+            <Korean>커뮤니티 베이스 애드온 - 도움</Korean>
         </Key>
         <Key ID="STR_CBA_Help_Keys">
             <English>Keybindings</English>
@@ -29,13 +30,14 @@
             <Chinese>按鍵綁定</Chinese>
             <Chinesesimp>按键绑定</Chinesesimp>
             <Turkish>Klavye Tuşları</Turkish>
+            <Korean>키 설정</Korean>
         </Key>
         <Key ID="STR_CBA_Credits">
             <English>Credits</English>
             <German>Credits</German>
             <Spanish>Credits</Spanish>
             <Czech>Tvůrci</Czech>
-            <Russian>Кредиты</Russian>
+            <Russian>Создатели</Russian>
             <Italian>Riconoscimenti</Italian>
             <Polish>Twórcy</Polish>
             <French>Credits</French>
@@ -44,6 +46,7 @@
             <Chinese>製作組</Chinese>
             <Chinesesimp>制作组</Chinesesimp>
             <Turkish>Yapımcılar</Turkish>
+            <Korean>크레딧</Korean>
         </Key>
         <Key ID="STR_CBA_Addons">
             <English>Addons</English>
@@ -59,6 +62,7 @@
             <Chinese>模組</Chinese>
             <Chinesesimp>模组</Chinesesimp>
             <Turkish>Modüller</Turkish>
+            <Korean>애드온</Korean>
         </Key>
     </Package>
 </Project>

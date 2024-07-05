@@ -6,13 +6,15 @@ Description:
     Deserializes a JSON string.
 
 Parameters:
-    _json      - String containing valid JSON. <STRING>
-    _useHashes - Output CBA hashes instead of namespaces
-                 (optional, default: false) <BOOLEAN>
+    _json       - String containing valid JSON. <STRING>
+    _objectType - Selects the type used for deserializing objects (optional) <BOOLEAN or NUMBER>
+                  0, false: CBA namespace (default)
+                  1, true:  CBA hash
+                  2:        Native hash map
 
 Returns:
-    _object    - The deserialized JSON object or nil if JSON is invalid.
-                 <LOCATION, ARRAY, STRING, NUMBER, BOOL, NIL>
+    _object     - The deserialized JSON object or nil if JSON is invalid.
+                  <LOCATION, ARRAY, STRING, NUMBER, BOOL, HASHMAP, NIL>
 
 Examples:
     (begin example)
@@ -28,18 +30,33 @@ Author:
     BaerMitUmlaut
 ---------------------------------------------------------------------------- */
 SCRIPT(parseJSON);
-params ["_json", ["_useHashes", false]];
+params ["_json", ["_objectType", 0]];
 
 // Wrappers for creating "objects" and setting values on them
 private ["_objectSet", "_createObject"];
-if (_useHashes) then {
-    _createObject = CBA_fnc_hashCreate;
-    _objectSet = CBA_fnc_hashSet;
-} else {
-    _createObject = CBA_fnc_createNamespace;
-    _objectSet = {
-        params ["_obj", "_key", "_val"];
-        _obj setVariable [_key, _val];
+
+switch (_objectType) do {
+    case false;
+    case 0: {
+        _createObject = CBA_fnc_createNamespace;
+        _objectSet = {
+            params ["_obj", "_key", "_val"];
+            _obj setVariable [_key, _val];
+        };
+    };
+
+    case true;
+    case 1: {
+        _createObject = CBA_fnc_hashCreate;
+        _objectSet = CBA_fnc_hashSet;
+    };
+
+    case 2: {
+        _createObject = { createHashMap };
+        _objectSet = {
+            params ["_obj", "_key", "_val"];
+            _obj set [_key, _val];
+        };
     };
 };
 
@@ -70,7 +87,7 @@ private _tokenize = {
     _input = toArray _input apply {toString [_x]};
 
     private _tokens  = [];
-    private _numeric = "+-.0123456789e" splitString "";
+    private _numeric = "+-.0123456789eE" splitString "";
     private _symbols = "{}[]:," splitString "";
     private _consts  = "tfn" splitString "";
 
@@ -171,7 +188,7 @@ private _reduce = {
             private _array = [];
 
             // Empty arrays need special handling
-            if !(_parseStack#(count _parseStack - 2) isEqualTo "[") then {
+            if (_parseStack#(count _parseStack - 2) isNotEqualTo "[") then {
                 // Get next token, if [ beginning is reached, otherwise assume
                 // valid JSON and that the token is a comma
                 while {_parseStack deleteAt (count _parseStack - 1) != "["} do {
@@ -200,7 +217,7 @@ private _reduce = {
             private _object = [] call _createObject;
 
             // Empty objects need special handling
-            if !(_parseStack#(count _parseStack - 2) isEqualTo "{") then {
+            if (_parseStack#(count _parseStack - 2) isNotEqualTo "{") then {
                 // Get next token, if { beginning is reached, otherwise assume
                 // valid JSON and that token is comma
                 while {_parseStack deleteAt (count _parseStack - 1) != "{"} do {

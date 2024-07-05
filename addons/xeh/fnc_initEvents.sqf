@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_initEvents
+Internal Function: CBA_fnc_initEvents
 
 Description:
     Adds all event handlers to this object.
@@ -26,7 +26,7 @@ params ["_unit"];
 if !(ISPROCESSED(_unit)) then {
     SETPROCESSED(_unit);
 
-    private _class = configFile >> "CfgVehicles" >> typeOf _unit;
+    private _class = configOf _unit;
     private _eventClass = _class >> "EventHandlers" >> QUOTE(XEH_CLASS);
 
     // adds ability to disable XEH completely on a unit, by manually clearing the CBA event handler class.

@@ -1,0 +1,36 @@
+branches:
+  - master
+
+name-template: 'CBA_A3 v$NEXT_PATCH_VERSION.xxxxxx'
+tag-template: 'v$NEXT_PATCH_VERSION.xxxxxx'
+
+categories:
+  - title: '**ADDED:**'
+    labels:
+      - 'Feature'
+  - title: '**FIXED:**'
+    labels:
+      - 'Bug Fix'
+  - title: '**IMPROVED:**'
+    labels:
+      - 'Enhancement'
+  - title: '**CHANGED:**'
+    labels:
+      - 'Cleanup'
+  - title: '**TRANSLATIONS:**'
+    labels:
+      - 'Translation'
+
+exclude-labels:
+  - 'Ignore Changelog'
+
+change-template: '- $TITLE (#$NUMBER) **$AUTHOR**'
+template: |
+  $CHANGES
+
+  Change log for [CBA v$NEXT_PATCH_VERSION](https://github.com/CBATeam/CBA_A3/milestone/00?closed=1)
+
+replacers:
+  # Category titles
+  - search: '/\#\# (\*\*(ADDED|FIXED|IMPROVED|CHANGED|TRANSLATIONS):\*\*)/g'
+    replace: '$1'

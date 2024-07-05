@@ -28,7 +28,7 @@ private _return = _cache getVariable _string;
 
 if (isNil "_return") then {
     _return = _string;
-    
+
     // Only replace if there is at least one character to replace
     if ("%" in _return) then {
         {

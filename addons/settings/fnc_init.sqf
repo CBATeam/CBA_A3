@@ -11,7 +11,7 @@ Parameters:
     _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
-    _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
+    _isGlobal    - 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <BOOL, NUMBER>
     _script      - Script to execute when setting is changed. (optional) <CODE>
     _needRestart - Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 
@@ -51,7 +51,7 @@ if (canSuspend) exitWith {
 };
 
 // --- init settings system, makes this function useable in preInit without having to add "CBA_settings" to requiredAddons
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 params [
     ["_setting", "", [""]],
@@ -166,7 +166,7 @@ GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _se
 private _settingInfo = GVAR(userconfig) getVariable _setting;
 
 if (isNil "_settingInfo") then {
-    private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+    private _settingsHash = GET_LOCAL_SETTINGS_NAMESPACE getVariable [QGVAR(hash), HASH_NULL];
     _settingInfo = [_settingsHash, toLower _setting] call CBA_fnc_hashGet;
 };
 

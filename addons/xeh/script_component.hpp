@@ -14,7 +14,7 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo, diag_tickTime, time)], msg); }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo,diag_tickTime,time)],msg); }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
@@ -43,12 +43,16 @@
 
 #define XEH_EVENTS \
     "AnimChanged", \
-    "AnimStateChanged", \
     "AnimDone", \
+    "AnimStateChanged", \
+    "CargoLoaded", \
+    "CargoUnloaded", \
     "ContainerClosed", \
     "ContainerOpened", \
     "ControlsShifted", \
     "Dammaged", \
+    "Deleted", \
+    "Disassembled", \
     "Engine", \
     "EpeContact", \
     "EpeContactEnd", \
@@ -56,14 +60,16 @@
     "Explosion", \
     "Fired", \
     "FiredBis", \
+    "FiredMan", \
     "FiredNear", \
     "Fuel", \
     "Gear", \
+    "GestureChanged", \
+    "GestureDone", \
     "GetIn", \
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
-    "HandleHeal", \
     "Hit", \
     "HitPart", \
     "IncomingMissile", \
@@ -75,18 +81,23 @@
     "LandedTouchDown", \
     "LandedStopped", \
     "Local", \
-    "Respawn", \
+    "OpticsModeChanged", \
+    "OpticsSwitch", \
     "Put", \
-    "Take", \
+    "Reloaded", \
+    "Respawn", \
+    "RopeAttach", \
+    "RopeBreak", \
     "SeatSwitched", \
     "SeatSwitchedMan", \
+    "SlotItemChanged", \
     "SoundPlayed", \
+    "Suppressed", \
+    "Take", \
+    "TurnIn", \
+    "TurnOut", \
+    "VisionModeChanged", \
     "WeaponAssembled", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
-    "WeaponRested", \
-    "Reloaded", \
-    "FiredMan", \
-    "TurnIn", \
-    "TurnOut", \
-    "Deleted"
+    "WeaponRested"

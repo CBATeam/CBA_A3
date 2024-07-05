@@ -29,7 +29,7 @@ if (isNil QGVAR(oldMarkers)) then {
 
     [{
         private _newAllMapMarkers = allMapMarkers;
-        if !(_newAllMapMarkers isEqualTo GVAR(oldMarkers)) then {
+        if (_newAllMapMarkers isNotEqualTo GVAR(oldMarkers)) then {
             params ["_events"];
 
             {

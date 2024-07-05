@@ -41,7 +41,7 @@ if (_zRef isEqualType "") then {
 } else {
     if (_zRef isEqualType objNull) then {
         // Validate that object is a trigger
-        if !((triggerArea _zRef) isEqualTo []) then {
+        if ((triggerArea _zRef) isNotEqualTo []) then {
             _area pushBack (getPos _zRef);
             _area append (triggerArea _zRef);
             _area resize 5;

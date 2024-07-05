@@ -207,6 +207,21 @@ class CfgWeapons {
         };
     };
 
+    class DMR_06_hunter_base_F: DMR_06_base_F {};
+
+    class srifle_DMR_06_hunter_F: DMR_06_hunter_base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class CowsSlot: asdg_OpticRail1913_short {
+                iconPosition[] = {0.52,0.36};
+                iconScale = 0.15;
+            };
+            class UnderBarrelSlot: asdg_UnderSlot {
+                iconPosition[] = {0.32,0.8};
+                iconScale = 0.3;
+            };
+        };
+    };
+
     class LMG_Mk200_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo: WeaponSlotsInfo {
             class CowsSlot: asdg_OpticRail1913_short_MG {
