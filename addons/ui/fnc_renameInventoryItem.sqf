@@ -30,11 +30,15 @@ params [
 ];
 
 // Exit if no interface or empty class
-if (!hasInterface || {_class isEqualTo ""}) exitWith {};
+if (!hasInterface || {_class == ""}) exitWith {};
 
 // Create local namespace on first use
 if (isNil QGVAR(renamedItems)) then {
-    GVAR(renamedItems) = false call CBA_fnc_createNamespace;
+    GVAR(renamedItems) = createHashMap;
 };
 
-GVAR(renamedItems) setVariable [_class, [_name, _picture]];
+private _config = _class call CBA_fnc_getItemConfig;
+if (isNull _config) exitWith { ERROR_1("Class [%1] does not exists",_class) };
+_class = configName _config; // Ensure class name is in config case
+
+GVAR(renamedItems) set [_class, [_name, _picture]];

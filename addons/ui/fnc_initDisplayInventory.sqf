@@ -237,10 +237,10 @@ private _controls = [
 ];
 _display setVariable [QGVAR(controls), _controls];
 
-// Item Context Menu Framework - lbDblClick
+// Item Context Menu Framework - LBDblClick
 if !(isNil QGVAR(ItemContextMenuOptions)) then {
     {
-        _x ctrlAddEventHandler ["lbDblClick", {
+        _x ctrlAddEventHandler ["LBDblClick", {
             params ["_control", "_index"];
             ([_control, _index] call FUNC(getInventoryItemData)) params ["_classname", "_container", "_containerType"];
             [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
@@ -259,16 +259,16 @@ if !(isNil QGVAR(renamedItems)) then {
             if (ctrlShown _control) then {
                 for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do {
                     private _classname = ([_control, _i] call FUNC(getInventoryItemData)) select 0;
-                    if !(isNil "_classname") then {
-                        private _renameParams = GVAR(renamedItems) getVariable [_classname, []];
+                    if (!isNil "_classname") then {
+                        private _renameParams = GVAR(renamedItems) getOrDefault [_classname, []];
 
-                        if !(_renameParams isEqualTo []) then {
+                        if (_renameParams isNotEqualTo []) then {
                             _renameParams params ["_name", "_picture"];
 
-                            if !(_name isEqualTo "") then {
+                            if (_name != "") then {
                                 _control lbSetText [_i, _name];
                             };
-                            if !(_picture isEqualTo "") then {
+                            if (_picture != "") then {
                                 _control lbSetPicture [_i, _picture];
                             };
                         };

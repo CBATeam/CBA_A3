@@ -1,7 +1,6 @@
 # HEMTT pre v1
 name = "CBA_A3"
 prefix = "cba"
-mainprefix = "x"
 author = "CBATeam"
 mainprefix = "x"
 files = [
