@@ -33,4 +33,4 @@ for "_i" from 1 to _length do {
     _string = [(selectRandom _array), _string] joinString "";
 };
 
-_string;
+_string
