@@ -16,7 +16,7 @@ Parameters:
 
 Example:
     (begin example)
-    _allItems = [player, true, false] call CBA_fnc_uniqueUnitItems
+        _allItems = [player, true, false] call CBA_fnc_uniqueUnitItems
     (end)
 
 Returns:
