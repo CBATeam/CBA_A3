@@ -43,6 +43,7 @@ if (isNull _unit || {_item isEqualTo ""}) exitWith {false};
 #define TYPE_VEST 701
 #define TYPE_UNIFORM 801
 #define TYPE_BACKPACK 901
+#define FLOAT_CORRECTION 0.0001
 
 if (isNil QGVAR(itemMassAllowedSlots)) then {
     GVAR(itemMassAllowedSlots) = createHashMap;
@@ -54,6 +55,7 @@ if (isNil "_mass") then {
     _allowedSlots = [TYPE_UNIFORM, TYPE_VEST, TYPE_BACKPACK];
     private _cfgWeaponsItem = configFile >> "CfgWeapons" >> _item;
     private _cfgMagazinesItem = configFile >> "CfgMagazines" >> _item;
+    private _cfgVehiclesItem = configFile >> "CfgVehicles" >> _item;
     private _cfgGlassesItem = configFile >> "CfgGlasses" >> _item;
     switch true do {
         case (isClass _cfgWeaponsItem): {
@@ -75,9 +77,10 @@ if (isNil "_mass") then {
                 _cfgWeaponSlotsInfo >> "allowedSlots"
             ];
         };
-        case (isClass _cfgMagazinesItem): {
-            _mass = getNumber (_cfgMagazinesItem >> "mass");
-            private _cfgAllowedSlots = _cfgMagazinesItem >> "allowedSlots";
+        case (isClass _cfgMagazinesItem || {isClass _cfgVehiclesItem}): {
+            private _cfgItem = [_cfgVehiclesItem, _cfgMagazinesItem] select isClass _cfgMagazinesItem;
+            _mass = getNumber (_cfgItem >> "mass");
+            private _cfgAllowedSlots = _cfgItem >> "allowedSlots";
             if (isArray _cfgAllowedSlots) then {
                 _allowedSlots = getArray _cfgAllowedSlots;
             };
@@ -105,7 +108,7 @@ if (_unit isKindOf "CAManBase") then {
             _mass == 0
             || {
                 // each time subtract whole number of items which can be put in container
-                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass);
+                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -117,7 +120,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass);
+                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -129,7 +132,7 @@ if (_unit isKindOf "CAManBase") then {
         && {
             _mass == 0
             || {
-                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass);
+                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass + FLOAT_CORRECTION);
                 _count <= 0
             }
         }
@@ -140,7 +143,7 @@ if (_unit isKindOf "CAManBase") then {
     // is a vehicle, crate etc.
     _mass == 0
     || {
-        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass);
+        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass + FLOAT_CORRECTION);
         _count <= 0
     }
 };

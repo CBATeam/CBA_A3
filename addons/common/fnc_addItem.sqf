@@ -48,7 +48,7 @@ if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
 };
 
 if (_verify) then {
-    if (_unit canAdd _item) then {
+    if ([_unit, _item] call CBA_fnc_canAddItem) then {
         _unit addItem _item;
         _return = true;
     } else {
