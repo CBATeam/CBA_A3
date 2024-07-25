@@ -23,30 +23,38 @@ Examples:
     (end)
 
 Author:
-    Sickboy, commy2
+    Sickboy, commy2, johnb43
 ---------------------------------------------------------------------------- */
 SCRIPT(selectWeapon);
 
-#define MAXIMUM_TRIES 100
-
+// Mode is not guaranteed to be config-case, so no case-sensitive comparisons possible
 params [["_unit", objNull, [objNull]], ["_weapon", "", [""]], ["_mode", "", [""]]];
 
 if (!local _unit) exitWith {false};
 
 private _vehicle = [vehicle _unit, _unit] select (_unit call CBA_fnc_canUseWeapon);
 
-private _index = 0;
+// If on foot or in FFV
+if (_unit isEqualTo _vehicle) then {
+    private _weaponState = (_unit weaponState _weapon) select [0, 3];
 
-if (_mode isEqualTo "") then {
-    while {_index < MAXIMUM_TRIES && {currentMuzzle _unit != _weapon}} do {
-        _unit action ["SwitchWeapon", _vehicle, _unit, _index];
-        _index = _index + 1;
+    if (_mode != "") then {
+        _weaponState set [2, _mode];
     };
+
+    _unit selectWeapon _weaponState // return
 } else {
-    while {_index < MAXIMUM_TRIES && {currentMuzzle _unit != _weapon || {currentWeaponMode _unit != _mode}}} do {
-        _unit action ["SwitchWeapon", _vehicle, _unit, _index];
-        _index = _index + 1;
-    };
-};
+    private _turretPath = _vehicle unitTurret _unit;
+    (weaponState [_vehicle, _turretPath, _weapon]) params ["_weapon", "_muzzle", "_currentMode"];
 
-_index < MAXIMUM_TRIES // return
+    if (_mode == "") then {
+        _mode = _currentMode;
+    };
+
+    _vehicle selectWeaponTurret [_weapon, _turretPath, _muzzle, _mode];
+
+    // Get updated state
+    (weaponState [_vehicle, _turretPath, _weapon]) params ["_newWeapon", "_newMuzzle", "_newMode"];
+
+    _newWeapon == _weapon && {_newMuzzle == _muzzle} && {_newMode == _mode} // return
+};
