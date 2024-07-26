@@ -24,8 +24,6 @@ Author:
 if (!isNil {parsingNamespace getVariable QGVAR(magnification)}) exitWith {};
 
 params ["_unit", "_magnification"];
-private _weapon = currentWeapon _unit;
-private _optic = _unit call FUNC(currentOptic);
 
 // store zeroing
 private _zeroing = GVAR(ZeroingDistances) find currentZeroing _unit;
@@ -36,14 +34,14 @@ if (_zeroing isEqualTo -1) then {
 
 parsingNamespace setVariable [QGVAR(magnification), _magnification];
 parsingNamespace setVariable [QGVAR(zeroing), _zeroing];
-_unit addWeaponItem [_weapon, _optic];
+_unit setOpticsMode GVAR(scriptedOpticsIndex);
 
 [{
-    params ["_unit", "_weapon", "_optic"];
+    params ["_unit", "_opticsMode"];
 
     parsingNamespace setVariable [QGVAR(magnification), nil];
-    _unit addWeaponItem [_weapon, _optic];
+    _unit setOpticsMode _opticsMode;
     parsingNamespace setVariable [QGVAR(zeroing), nil];
-}, [_unit, _weapon, _optic]] call CBA_fnc_execNextFrame;
+}, [_unit, GVAR(scriptedOpticsIndex)]] call CBA_fnc_execNextFrame;
 
 // @todo, rifle, pistol, launcher, plus optics
