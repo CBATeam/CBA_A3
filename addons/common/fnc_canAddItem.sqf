@@ -102,10 +102,12 @@ if (_unit isKindOf "CAManBase") then {
         _checkUniform
         && {TYPE_UNIFORM in _allowedSlots}
         && {
+            private _maxLoad = maxLoad uniformContainer _unit;
+            if (_maxLoad == 0) exitWith { false };
             _mass == 0
             || {
                 // each time subtract whole number of items which can be put in container
-                _count = _count - floor (maxLoad uniformContainer _unit * (1 - loadUniform _unit) / _mass);
+                _count = _count - floor (_maxLoad * (1 - loadUniform _unit) / _mass);
                 _count <= 0
             }
         }
@@ -115,9 +117,11 @@ if (_unit isKindOf "CAManBase") then {
         _checkVest
         && {TYPE_VEST in _allowedSlots}
         && {
+            private _maxLoad = maxLoad vestContainer _unit;
+            if (_maxLoad == 0) exitWith { false };
             _mass == 0
             || {
-                _count = _count - floor (maxLoad vestContainer _unit * (1 - loadVest _unit) / _mass);
+                _count = _count - floor (_maxLoad * (1 - loadVest _unit) / _mass);
                 _count <= 0
             }
         }
@@ -127,9 +131,11 @@ if (_unit isKindOf "CAManBase") then {
         _checkBackpack
         && {TYPE_BACKPACK in _allowedSlots}
         && {
+            private _maxLoad = maxLoad backpackContainer _unit;
+            if (_maxLoad == 0) exitWith { false };
             _mass == 0
             || {
-                _count = _count - floor (maxLoad backpackContainer _unit * (1 - loadBackpack _unit) / _mass);
+                _count = _count - floor (_maxLoad * (1 - loadBackpack _unit) / _mass);
                 _count <= 0
             }
         }
@@ -138,9 +144,11 @@ if (_unit isKindOf "CAManBase") then {
     false
 } else {
     // is a vehicle, crate etc.
+    private _maxLoad = maxLoad _unit;
+    if (_maxLoad == 0) exitWith { false };
     _mass == 0
     || {
-        _count = _count - floor (maxLoad _unit * (1 - load _unit) / _mass);
+        _count = _count - floor (_maxLoad * (1 - load _unit) / _mass);
         _count <= 0
     }
 };

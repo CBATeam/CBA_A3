@@ -1,6 +1,10 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
+ADDON = false;
+
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
@@ -41,3 +45,5 @@ GVAR(usageHash) = createHashMap;
         false
     }
 ] call CBA_fnc_addItemContextMenuOption;
+
+ADDON = true;

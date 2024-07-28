@@ -47,7 +47,7 @@ if !(ISINITIALIZED(_this)) then {
     };
 
     // fix for respawnVehicle clearing the object namespace
-    _this addEventHandler ["respawn", {
+    _this addEventHandler ["Respawn", {
         params ["_vehicle", "_wreck"];
 
         if (ISINITIALIZED(_vehicle)) exitWith {}; // Exit if unit respawned normaly with copied variables (e.g. humans)
