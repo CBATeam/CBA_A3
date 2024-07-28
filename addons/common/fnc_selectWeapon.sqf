@@ -63,5 +63,5 @@ if (_unit isEqualTo _vehicle) then {
     // Get updated state
     (weaponState [_vehicle, _turretPath]) params ["_newWeapon", "_newMuzzle", "_newMode"];
 
-    _newWeapon == _weapon && {_newMuzzle == _muzzle} && {_newMode == _mode} // return
+    _newWeapon != "" && {_newWeapon == _weapon} && {_newMuzzle == _muzzle} && {_newMode == _mode} // return
 };
