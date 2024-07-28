@@ -170,6 +170,7 @@ if (_id != -1) then {
 
             params ["_data"]; // visibleMap is updated one frame later
             if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
+                LOG_2("visibleMap playerEvent - new: %1 - old: %2",_data,GVAR(oldVisibleMap));
                 GVAR(oldVisibleMap) = _data;
                 [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
@@ -181,6 +182,7 @@ if (_id != -1) then {
             {
                 private _data = visibleMap;
                 if (_data isNotEqualTo GVAR(oldVisibleMap)) then {
+                    LOG_2("visibleMap playerEvent - new: %1 - old: %2",_data,GVAR(oldVisibleMap));
                     GVAR(oldVisibleMap) = _data;
                     [QGVAR(visibleMapEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
                 };
@@ -192,11 +194,17 @@ if (_id != -1) then {
 
             private _data = call CBA_fnc_getActiveFeatureCamera;
             if (_data isNotEqualTo GVAR(oldFeatureCamera)) then {
+                LOG_2("featureCamera playerEvent - new: %1 - old: %2",_data,GVAR(oldFeatureCamera));
                 GVAR(oldFeatureCamera) = _data;
                 [QGVAR(featureCameraEvent), [call CBA_fnc_currentUnit, _data]] call CBA_fnc_localEvent;
             };
         }, 0.5] call CBA_fnc_addPerFrameHandler);
 
+            ["CBA_visionModeChanged", "VisionModeChanged", {
+                params ["", "_newVisionMode", "", "_oldVisionMode"];
+                LOG_2("visionMode playerEvent - new: %1 - old: %2",_newVisionMode,_oldVisionMode);
+                [QGVAR(visionModeEvent), [focusOn, _newVisionMode, _oldVisionMode]] call CBA_fnc_localEvent;
+            }, false] call CBA_fnc_addBISPlayerEventHandler;
     };
 
     GVAR(playerEHInfo) pushBack [_type, _id];
