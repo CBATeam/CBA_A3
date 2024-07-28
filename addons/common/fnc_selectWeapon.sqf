@@ -52,7 +52,7 @@ if (_unit isEqualTo _vehicle) then {
     _unit selectWeapon _weaponState // return
 } else {
     private _turretPath = _vehicle unitTurret _unit;
-    (weaponState [_vehicle, _turretPath, _weapon]) params ["", "_muzzle", "_currentMode"];
+    (weaponState [_vehicle, _turretPath, _weapon]) params ["_weapon", "_muzzle", "_currentMode"];
 
     if (_mode == "") then {
         _mode = _currentMode;
