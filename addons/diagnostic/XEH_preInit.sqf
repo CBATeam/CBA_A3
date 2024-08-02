@@ -17,8 +17,6 @@ GVAR(projectileMaxLines) = 20;
 GVAR(projectileStartedDrawing) = false;
 GVAR(projectileTrackedUnits) = [];
 
-ADDON = true;
-
 if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) then {
     INFO("EnableTargetDebug is enabled.");
 
@@ -71,3 +69,5 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
         }];
     };
 };
+
+ADDON = true;

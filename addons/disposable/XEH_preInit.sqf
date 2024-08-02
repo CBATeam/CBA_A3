@@ -4,7 +4,9 @@ ADDON = false;
 
 #include "initSettings.inc.sqf"
 
-if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
@@ -38,7 +40,26 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     private _configLauncher = _cfgWeapons >> configName _x;
     private _launcher = configName _configLauncher;
     private _magazine = configName (_cfgMagazines >> (getArray (_configLauncher >> "magazines") select 0));
-    getArray _x params ["_loadedLauncher", "_usedLauncher"];
+
+    if (_magazine == "") then {
+        ERROR_1("Launcher %1 has an undefined magazine.",_launcher);
+
+        continue;
+    };
+
+    (getArray _x) params [["_loadedLauncher", "", [""]], ["_usedLauncher", "", [""]]];
+
+    if (_loadedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined loaded launcher.",_launcher);
+
+        continue;
+    };
+
+    if (_usedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined used launcher.",_launcher);
+
+        continue;
+    };
 
     private _configLoadedLauncher = _cfgWeapons >> _loadedLauncher;
     _loadedLauncher = configName _configLoadedLauncher;

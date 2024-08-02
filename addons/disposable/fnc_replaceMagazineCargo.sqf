@@ -50,13 +50,15 @@ if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
 private _magazines = magazinesAmmoCargo _box;
 clearMagazineCargoGlobal _box;
 
-private _isBackpack = getNumber (configOf _box >> "isBackpack") != -1;
+private _isBackpack = getNumber (configOf _box >> "isBackpack") == 1;
 
 {
     _x params ["_magazine", "_ammo"];
 
     if (_magazine in GVAR(magazines)) then {
         private _loadedLauncher = GVAR(MagazineLaunchers) get _magazine;
+
+        // As addWeaponCargoGlobal ignores allowedSlots, check here if launcher is allowed to be placed in a backpack
         if (!_isBackpack || {_loadedLauncher in GVAR(BackpackLaunchers)}) then {
             _box addWeaponCargoGlobal [_loadedLauncher, 1];
         };

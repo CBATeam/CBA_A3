@@ -6,11 +6,15 @@ ADDON = false;
 
 if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
     configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
-}) exitWith {};
+}) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 #include "initKeybinds.inc.sqf"
 
