@@ -24,19 +24,6 @@ SCRIPT(playerEvent);
 private _unit = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
 private _vehicle = vehicle _unit;
 
-private _controlledEntity = _unit;
-if (!isNull getConnectedUAV _unit) then {
-    private _uavControl = UAVControl getConnectedUAV _unit;
-    _uavControl = _uavControl param [(_uavControl find _unit) + 1, ""]; // Will be position STRING if actively controlling, or OBJECT if not.
-    if (_uavControl isEqualTo "DRIVER") exitWith {
-        _controlledEntity = driver getConnectedUAV _unit;
-    };
-
-    if (_uavControl isEqualTo "GUNNER") exitWith {
-        _controlledEntity = gunner getConnectedUAV _unit;
-    };
-};
-
 // Unlike CBA_fnc_turretPath, this will return [-1] when player is driver
 private _turret = _vehicle unitTurret _unit;
 
@@ -44,7 +31,7 @@ private _state = [
     _unit, group _unit, leader _unit,
     currentWeapon _unit, currentMuzzle _unit, currentWeaponMode _unit,
     getUnitLoadout _unit, _vehicle, _turret, _vehicle currentWeaponTurret _turret,
-    currentVisionMode _controlledEntity, cameraView
+    currentVisionMode focusOn, cameraView, getTurretOpticsMode _unit
 ];
 
 if (_state isNotEqualTo GVAR(oldState)) then {
@@ -54,7 +41,7 @@ if (_state isNotEqualTo GVAR(oldState)) then {
         "", "_newGroup", "_newLeader",
         "_newWeapon", "_newMuzzle", "_newWeaponMode",
         "_newLoadout", "", "", "_newTurretWeapon",
-        "_newVisionMode", "_newCameraView"
+        "_newVisionMode", "_newCameraView", "_newTurretOpticsMode"
     ];
 
     // These events should fire if the context of the state has changed.
@@ -136,5 +123,10 @@ if (_state isNotEqualTo GVAR(oldState)) then {
     if (_newCameraView isNotEqualTo GVAR(oldCameraView)) then {
         [QGVAR(cameraViewEvent), [_unit, _newCameraView, GVAR(oldCameraView)]] call CBA_fnc_localEvent;
         GVAR(oldCameraView) = _newCameraView; // This assignment may be returned.
+    };
+
+    if (_newTurretOpticsMode isNotEqualTo GVAR(oldTurretOpticsMode)) then {
+        [QGVAR(turretOpticsModeEvent), [_unit, _newTurretOpticsMode, GVAR(oldTurretOpticsMode)]] call CBA_fnc_localEvent;
+        GVAR(oldTurretOpticsMode) = _newTurretOpticsMode;
     };
 };

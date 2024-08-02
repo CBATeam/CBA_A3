@@ -229,7 +229,7 @@ _vestItems setVariable [QGVAR(containerType), "VEST_CONTAINER"];
 _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
 
 {
-    _x ctrlAddEventHandler ["lbDblClick", {
+    _x ctrlAddEventHandler ["LBDblClick", {
         params ["_control", "_index"];
         private _unit = call CBA_fnc_currentUnit;
 

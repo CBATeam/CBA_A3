@@ -4,7 +4,9 @@ ADDON = false;
 
 #include "initSettings.inc.sqf"
 
-if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {};
+if (configProperties [configFile >> "CBA_DisposableLaunchers"] isEqualTo []) exitWith {
+    ADDON = true;
+};
 
 #include "XEH_PREP.hpp"
 
@@ -36,7 +38,29 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 {
     private _launcher = configName _x;
     private _magazine = configName (_cfgMagazines >> (getArray (_cfgWeapons >> _launcher >> "magazines") select 0));
-    getArray _x params ["_loadedLauncher", "_usedLauncher"];
+
+    if (_magazine == "") then {
+        ERROR_1("Launcher %1 has an undefined magazine.",_launcher);
+
+        continue;
+    };
+
+    (getArray _x) params [["_loadedLauncher", "", [""]], ["_usedLauncher", "", [""]]];
+
+    if (_loadedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined loaded launcher.",_launcher);
+
+        continue;
+    };
+
+    if (_usedLauncher == "") then {
+        ERROR_1("Launcher %1 has an undefined used launcher.",_launcher);
+
+        continue;
+    };
+
+    private _configLoadedLauncher = _cfgWeapons >> _loadedLauncher;
+    _loadedLauncher = configName _configLoadedLauncher;
 
     GVAR(LoadedLaunchers) setVariable [_launcher, _loadedLauncher];
     GVAR(UsedLaunchers) setVariable [_launcher, _usedLauncher];
@@ -49,12 +73,12 @@ private _cfgMagazines = configFile >> "CfgMagazines";
         GVAR(MagazineLaunchers) setVariable [_magazine, _loadedLauncher];
     };
 
-    GVAR(allowedSlotsLaunchers) set [_loadedLauncher, getArray (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots")];
+    GVAR(allowedSlotsLaunchers) set [_loadedLauncher, getArray (_configLoadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots")];
 
     // check if mass entries add up
     private _massLauncher = getNumber (_cfgWeapons >> _launcher >> "WeaponSlotsInfo" >> "mass");
     private _massMagazine = getNumber (_cfgMagazines >> _magazine >> "mass");
-    private _massLoadedLauncher = getNumber (_cfgWeapons >> _loadedLauncher >> "WeaponSlotsInfo" >> "mass");
+    private _massLoadedLauncher = getNumber (_configLoadedLauncher >> "WeaponSlotsInfo" >> "mass");
     private _massUsedLauncher = getNumber (_cfgWeapons >> _usedLauncher >> "WeaponSlotsInfo" >> "mass");
 
     if (_massLauncher != _massUsedLauncher) then {

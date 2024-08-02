@@ -8,10 +8,10 @@ private _menuDefs = _this call FUNC(getMenuDef);
 // replace primary menu's key EH and menuDefs with same key EH but using secondary menu's menuDefs
 
 private _disp = uiNamespace getVariable QGVAR(display);
-_disp displayRemoveEventHandler ["keyDown", GVAR(keyDownEHID)];
+_disp displayRemoveEventHandler ["KeyDown", GVAR(keyDownEHID)];
 params ["", "_menuSources"];
 
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown",
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["KeyDown",
     format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
 private _caption = if (count (_menuDefs select 0) > _flexiMenu_menuProperty_ID_menuDesc) then {_menuDefs select 0 select _flexiMenu_menuProperty_ID_menuDesc} else {""};
