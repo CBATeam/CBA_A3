@@ -24,6 +24,15 @@ test8 = "https://github.com/CBATeam/CBA_A3";
 test10 = "https://github.com/CBATeam/CBA_A3";
 */
 
+test11 = "/* test */";
+// test12 = "/* test */";
+
+/*
+test13 = "/* test /";
+*/
+
+test14 = "/* test /";
+
 // ACE Advanced Ballistics
 ace_advanced_ballistics_ammoTemperatureEnabled = true;
 force force ace_advanced_ballistics_barrelLengthInfluenceEnabled = true;

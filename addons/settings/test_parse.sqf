@@ -82,6 +82,8 @@ _result = _settings isEqualTo [
     ["test2", "[true,false]", 1],
     ["test4", "[ '  t e s t  ' , ""  T E S T  "" ]", 0],
     ["test8", "https://github.com/CBATeam/CBA_A3", 0],
+    ["test11", "/* test */", 0],
+    ["test14", "/* test /", 0],
     ["ace_advanced_ballistics_ammoTemperatureEnabled", true, 0],
     ["ace_advanced_ballistics_barrelLengthInfluenceEnabled", true, 2],
     ["ace_advanced_ballistics_bulletTraceEnabled", true, 1]
