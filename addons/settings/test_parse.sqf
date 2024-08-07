@@ -57,35 +57,38 @@ TEST_TRUE(_result,_funcName);
 
 _settings = (preprocessFile "x\cba\addons\settings\test_settings_strings.inc.sqf") call FUNC(parse);
 _result = _settings isEqualTo [
-	["test1", "", 0],
-	["test2", "", 0],
-	["test3", "  T E S T  " , 0],
-	["test4", "  T E S T  ", 0],
-	["test5", "[ '  t e s t  ' , ""  T E S T  "" ]", 0],
-	["test6", "[ ""  t e s t  "" ,
+    ["test1", "", 0],
+    ["test2", "", 0],
+    ["test3", "  T E S T  " , 0],
+    ["test4", "  T E S T  ", 0],
+    ["test5", "[ '  t e s t  ' , ""  T E S T  "" ]", 0],
+    ["test6", "[ ""  t e s t  "" ,
 
 """"  T E S T  """" ]", 0],
-	["test7", "[ true, false ]", 0],
-	["test8", "[ ""  item_1  "" , ""  item_2  "" ]", 0],
-	["test9", "[ '  item_1  ' , '  item_2  ' ]", 0],
-	["test10", "[ '  item_1  ' , ""  item_2  "" ]", 0],
-	["test11", "[ '""  item_1  ""' , '  item_2  ' ]", 0],
-	["test12", "[ '  item_1  ' , ""'  item_2  '"" ]", 0]
+    ["test7", "[ true, false ]", 0],
+    ["test8", "[ ""  item_1  "" , ""  item_2  "" ]", 0],
+    ["test9", "[ '  item_1  ' , '  item_2  ' ]", 0],
+    ["test10", "[ '  item_1  ' , ""  item_2  "" ]", 0],
+    ["test11", "[ '""  item_1  ""' , '  item_2  ' ]", 0],
+    ["test12", "[ '  item_1  ' , ""'  item_2  '"" ]", 0],
+    ["test13", "'", 0],
+    ["test14", "''", 0]
 ];
 TEST_TRUE(_result,_funcName);
 
 // Don't preprocess for testing comments
-_settings = (loadFile "x\cba\addons\settings\test_settings_comments.inc.sqf") call FUNC(parse);
+_settings = [loadFile "x\cba\addons\settings\test_settings_comments.inc.sqf", false, "", false] call FUNC(parse);
 _result = _settings isEqualTo [
     ["test2", "[true,false]", 1],
     ["test4", "[ '  t e s t  ' , ""  T E S T  "" ]", 0],
+    ["test8", "https://github.com/CBATeam/CBA_A3", 0],
     ["ace_advanced_ballistics_ammoTemperatureEnabled", true, 0],
     ["ace_advanced_ballistics_barrelLengthInfluenceEnabled", true, 2],
     ["ace_advanced_ballistics_bulletTraceEnabled", true, 1]
 ];
 TEST_TRUE(_result,_funcName);
 
-_settings = (loadFile "x\cba\addons\settings\test_settings_comments_eof.inc.sqf") call FUNC(parse);
+_settings = [loadFile "x\cba\addons\settings\test_settings_comments_eof.inc.sqf", false, "", false] call FUNC(parse);
 _result = _settings isEqualTo [
     ["test1", "[""item_1"",""item_2""]", 1]
 ];
