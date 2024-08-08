@@ -79,7 +79,7 @@ GVAR(disableTilt) = false;
     [_unit, _camera isEqualTo ""] call FUNC(restartCamera);
 }] call CBA_fnc_addPlayerEventHandler;
 
-["CAManBase", "Fired", FUNC(animateScriptedOpticRecoil)] call CBA_fnc_addClassEventHandler;
+[QUOTE(ADDON), "Fired", FUNC(animateScriptedOpticRecoil), true] call CBA_fnc_addBISPlayerEventHandler;
 
 // Handle Arsenal: Switch back to normal classes.
 GVAR(inArsenal) = false;
