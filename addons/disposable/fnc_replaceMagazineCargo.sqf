@@ -6,6 +6,7 @@ Description:
     Replaces disposable launcher magazines with loaded disposable launchers.
 
 Parameters:
+    _containerType - typeOf _container <STRING>
     _container - Any object with cargo <OBJECT>
 
 Returns:
@@ -13,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [_container] call cba_disposable_fnc_replaceMagazineCargo
+        [typeOf _container, _container] call cba_disposable_fnc_replaceMagazineCargo
     (end)
 
 Author:
@@ -23,7 +24,7 @@ Author:
 if (!GVAR(replaceDisposableLauncher)) exitWith {};
 if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};
 
-params ["_container"];
+params ["_containerType", "_container"];
 
 if (!local _container) exitWith {};
 
@@ -47,11 +48,11 @@ private _magazines = (magazineCargo _container) select {_x in GVAR(magazines)};
 if (_magazines isEqualTo []) exitWith {};
 
 // Check if a uniform, vest, backpack or something else entirely
-private _containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then {
+_containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then {
     TYPE_BACKPACK
 } else {
     // If uniform or vest, this config will be defined, otherwise it will default to 0
-    getNumber (configFile >> "CfgWeapons" >> (typeOf _container) >> "ItemInfo" >> "type")
+    getNumber (configFile >> "CfgWeapons" >> _containerType >> "ItemInfo" >> "type")
 };
 
 // Replace magazines with disposable launchers
