@@ -6,9 +6,10 @@ Description:
     Convert settings in file format into array.
 
 Parameters:
-    _info     - Content of file or clipboard to parse. <STRING>
-    _validate - Check if settings are valid. (optional, default: false) <BOOL>
-    _source   - Can be "client", "mission" or "server" (optional, default: "") <STRING>
+    _info           - Content of file or clipboard to parse. <STRING>
+    _validate       - Check if settings are valid. (optional, default: false) <BOOL>
+    _source         - Can be "client", "mission" or "server" (optional, default: "") <STRING>
+    _isPreprocessed - If the contents have already been preprocessed or not (optional, default: true) <BOOL>
 
 Returns:
     Settings with values and priority states. <ARRAY>
@@ -17,7 +18,7 @@ Author:
     commy2, johnb43
 ---------------------------------------------------------------------------- */
 
-params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]]];
+params [["_info", "", [""]], ["_validate", false, [false]], ["_source", "", [""]], ["_isPreprocessed", true, [false]]];
 
 // Parses bools, numbers, strings
 private _fnc_parseAny = {
@@ -27,11 +28,10 @@ private _fnc_parseAny = {
 };
 
 // If string comes from the "import" button, it is not preprocessed
-// Therefore, remove single line comments (//)
-_info = _info regexReplace ["/{2}[^\n\r]*((\n|\r)?)", ""];
-
-// Remove multiline comments too (/* */)
-_info = _info regexReplace ["/\*[^(\*/)]*((\*/)?)", ""];
+if (!_isPreprocessed) then {
+    // Remove single line and multiline comments, ignoring comments in strings
+    _info = _info regexReplace ["(""(?:\\.|[^""\\])*""|'(?:\\.|[^'\\])*')|(\/{2}.*?$)|(\/\*[\s\S]*?(\*\/))|(\/\*[\s\S]*$)", "$1"];
+};
 
 // Remove whitespaces at the start and end of each statement, a statement being defined by the ";" at its end
 private _parsed = [];

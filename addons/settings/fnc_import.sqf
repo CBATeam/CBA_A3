@@ -18,7 +18,7 @@ Author:
 
 params [["_info", "", [""]], ["_source", "client", [""]]];
 
-_info = [_info, true, _source] call FUNC(parse);
+_info = [_info, true, _source, false] call FUNC(parse);
 
 {
     _x params ["_setting", "_value", "_priority"];
