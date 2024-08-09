@@ -33,7 +33,7 @@ if (!GVAR(replaceDisposableLauncher)) exitWith {};
 
 params ["_unit", "_launcher", "_muzzle", "", "", "", "_projectile"];
 
-private _usedLauncher = GVAR(UsedLaunchers) getVariable _launcher;
+private _usedLauncher = GVAR(UsedLaunchers) get _launcher;
 if (isNil "_usedLauncher") exitWith {};
 
 [{
