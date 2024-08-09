@@ -39,7 +39,7 @@ private _cfgMagazines = configFile >> "CfgMagazines";
     // Get case-sensitive config names
     private _configLauncher = _cfgWeapons >> configName _x;
     private _launcher = configName _configLauncher;
-    private _magazine = configName (_cfgMagazines >> (getArray (_configLauncher >> "magazines") select 0));
+    private _magazine = (compatibleMagazines (configName _x)) select 0;
 
     if (_magazine == "") then {
         ERROR_1("Launcher %1 has an undefined magazine.",_launcher);
