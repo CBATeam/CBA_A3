@@ -29,7 +29,7 @@ GVAR(NormalLaunchers) = createHashMap;
 GVAR(LoadedLaunchers) = createHashMap;
 GVAR(UsedLaunchers) = createHashMap;
 GVAR(magazines) = [];
-GVAR(BackpackLaunchers) = createHashMap;
+GVAR(allowedSlotsLaunchers) = createHashMap;
 GVAR(MagazineLaunchers) = createHashMap;
 
 private _cfgWeapons = configFile >> "CfgWeapons";
@@ -63,7 +63,6 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 
     private _configLoadedLauncher = _cfgWeapons >> _loadedLauncher;
     _loadedLauncher = configName _configLoadedLauncher;
-    private _fitsInBackpacks = TYPE_BACKPACK in getArray (_configLoadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots");
 
     GVAR(LoadedLaunchers) set [_launcher, _loadedLauncher];
     GVAR(UsedLaunchers) set [_launcher, _usedLauncher];
@@ -73,9 +72,7 @@ private _cfgMagazines = configFile >> "CfgMagazines";
         GVAR(MagazineLaunchers) set [_magazine, _loadedLauncher];
     };
 
-    if (_fitsInBackpacks) then {
-        GVAR(BackpackLaunchers) set [_loadedLauncher, true];
-    };
+    GVAR(allowedSlotsLaunchers) set [_loadedLauncher, getArray (_configLoadedLauncher >> "WeaponSlotsInfo" >> "allowedSlots")];
 
     // check if mass entries add up
     private _massLauncher = getNumber (_configLauncher >> "WeaponSlotsInfo" >> "mass");
@@ -93,7 +90,11 @@ private _cfgMagazines = configFile >> "CfgMagazines";
 } forEach configProperties [configFile >> "CBA_DisposableLaunchers", "isArray _x"];
 
 ["CBA_settingsInitialized", {
-    ["All", "InitPost", {call FUNC(replaceMagazineCargo)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["All", "InitPost", {
+        params ["_object"];
+
+        [typeOf _object, _object] call FUNC(replaceMagazineCargo);
+    }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;
