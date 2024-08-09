@@ -6,63 +6,64 @@ Description:
     Replaces disposable launcher magazines with loaded disposable launchers.
 
 Parameters:
-    _box - Any object with cargo <OBJECT>
+    _containerType - typeOf _container <STRING>
+    _container - Any object with cargo <OBJECT>
 
 Returns:
     Nothing.
 
 Examples:
     (begin example)
-        _box call cba_disposable_fnc_replaceMagazineCargo
+        [typeOf _container, _container] call cba_disposable_fnc_replaceMagazineCargo
     (end)
 
 Author:
-    commy2
+    commy2, johnb43
 ---------------------------------------------------------------------------- */
 
 if (!GVAR(replaceDisposableLauncher)) exitWith {};
-
-params ["_box"];
-if (!local _box) exitWith {};
 if (missionNamespace getVariable [QGVAR(disableMagazineReplacement), false]) exitWith {};
 
-private _uniformContainer = uniformContainer _box;
-if (!isNull _uniformContainer) then {
-    _uniformContainer call FUNC(replaceMagazineCargo);
+params ["_containerType", "_container"];
+
+if (!local _container) exitWith {};
+
+private _containers = everyContainer _container;
+
+if (_container isKindOf "CAManBase") then {
+    _containers append ([
+        [uniform _container, uniformContainer _container],
+        [vest _container, vestContainer _container],
+        [backpack _container, backpackContainer _container]
+    ] select {!isNull (_x select 1)});
 };
 
-private _vestContainer = vestContainer _box;
-if (!isNull _vestContainer) then {
-    _vestContainer call FUNC(replaceMagazineCargo);
-};
-
-private _backpackContainer = backpackContainer _box;
-if (!isNull _backpackContainer) then {
-    _backpackContainer call FUNC(replaceMagazineCargo);
-};
-
+// Replace all magazines recursively
 {
     _x call FUNC(replaceMagazineCargo);
-} forEach everyBackpack _box;
+} forEach _containers;
 
-if (magazineCargo _box arrayIntersect GVAR(magazines) isEqualTo []) exitWith {};
+private _magazines = (magazineCargo _container) select {_x in GVAR(magazines)};
 
-private _magazines = magazinesAmmoCargo _box;
-clearMagazineCargoGlobal _box;
+if (_magazines isEqualTo []) exitWith {};
 
-private _isBackpack = getNumber (configOf _box >> "isBackpack") == 1;
+// Check if a uniform, vest, backpack or something else entirely
+_containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then {
+    TYPE_BACKPACK
+} else {
+    // If uniform or vest, this config will be defined, otherwise it will default to 0
+    getNumber (configFile >> "CfgWeapons" >> _containerType >> "ItemInfo" >> "type")
+};
 
+// Replace magazines with disposable launchers
 {
-    _x params ["_magazine", "_ammo"];
+    _container addMagazineCargoGlobal [_x, -1];
 
-    if (_magazine in GVAR(magazines)) then {
-        private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _magazine;
+    private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _x;
 
-        // As addWeaponCargoGlobal ignores allowedSlots, check here if launcher is allowed to be placed in a backpack
-        if (!_isBackpack || {_loadedLauncher in GVAR(BackpackLaunchers)}) then {
-            _box addWeaponCargoGlobal [_loadedLauncher, 1];
-        };
-    } else {
-        _box addMagazineAmmoCargo [_magazine, 1, _ammo];
+    // Slot restrictions only apply if uniform, vest or backpack
+    // If slot restrictions apply, remove magazine but don't add weapon
+    if (_containerType == 0 || {_containerType in (GVAR(allowedSlotsLaunchers) getOrDefault [_loadedLauncher, []])}) then {
+        _container addWeaponCargoGlobal [_loadedLauncher, 1];
     };
 } forEach _magazines;
