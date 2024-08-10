@@ -17,6 +17,21 @@ test6 =  '';       // "settings,";
 test7 = "  T S T  ";
         */
 
+test8 = "https://github.com/CBATeam/CBA_A3";
+// test9 = "https://github.com/CBATeam/CBA_A3";
+
+/*
+test10 = "https://github.com/CBATeam/CBA_A3";
+*/
+
+test11 = "/* test */";
+// test12 = "/* test */";
+
+/*
+test13 = "/* test /";
+*/
+
+test14 = "/* test /";
 
 // ACE Advanced Ballistics
 ace_advanced_ballistics_ammoTemperatureEnabled = true;
