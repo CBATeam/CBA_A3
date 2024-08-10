@@ -59,7 +59,7 @@ _containerType = if (getNumber (configOf _container >> "isBackpack") == 1) then 
 {
     _container addMagazineCargoGlobal [_x, -1];
 
-    private _loadedLauncher = GVAR(MagazineLaunchers) getVariable _x;
+    private _loadedLauncher = GVAR(MagazineLaunchers) get _x;
 
     // Slot restrictions only apply if uniform, vest or backpack
     // If slot restrictions apply, remove magazine but don't add weapon
