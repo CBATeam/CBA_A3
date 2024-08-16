@@ -2,19 +2,19 @@
 <Project name="CBA_A3">
     <Package name="Network">
         <Key ID="STR_CBA_Network_Component">
-            <English>CBA Network</English>
-            <German>CBA Netzwerk</German>
-            <Japanese>CBA ネットワーク</Japanese>
-            <Chinese>CBA 網路</Chinese>
-            <Chinesesimp>CBA 网路</Chinesesimp>
-            <Portuguese>CBA Rede</Portuguese>
-            <Russian>CBA Сеть</Russian>
-            <French>CBA Réseau</French>
-            <Polish>CBA Sieć</Polish>
-            <Turkish>CBA Ağ</Turkish>
-            <Italian>CBA Rete</Italian>
-            <Czech>CBA Síť</Czech>
-            <Korean>CBA 네트워크</Korean>
+            <English>Community Base Addons - Network</English>
+            <German>Community Base Addons - Netzwerk</German>
+            <Japanese>Community Base Addons - ネットワーク</Japanese>
+            <Chinese>社群基礎模組 - 網路</Chinese>
+            <Chinesesimp>社群基础模组 - 网路</Chinesesimp>
+            <Portuguese>Extensões de Base Comunitária - Rede</Portuguese>
+            <Russian>Community Base Addons - Сеть</Russian>
+            <French>Community Base Addons - Réseau</French>
+            <Polish>Community Base Addons - Sieć</Polish>
+            <Turkish>Community Base Addons - Ağ</Turkish>
+            <Italian>Community Base Addons - Rete</Italian>
+            <Czech>Community Base Addons - Síť</Czech>
+            <Korean>커뮤니티 베이스 애드온 - 네트워크</Korean>
         </Key>
         <Key ID="STR_CBA_Network_Category">
             <English>Network</English>
