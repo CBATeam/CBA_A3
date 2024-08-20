@@ -47,25 +47,27 @@ _credits = _credits joinString "<br/>";
 uiNamespace setVariable [QGVAR(credits), compileFinal str _credits];
 
 // mods
-private _mods = "true" configClasses (configFile >> "CfgPatches") apply {configSourceMod _x};
+private _mods = ("true" configClasses (configFile >> "CfgPatches")) apply {configSourceMod _x};
 _mods = ((_mods arrayIntersect _mods) select {!isNumber (configfile >> "CfgMods" >> _x >> "appId")}) - [""];
 
 _mods = _mods apply {
     private _entry = configfile >> "CfgMods" >> _x;
 
-    private _name = getText (_entry >> "name");
-
     if (isClass _entry) then {
-        _x = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, _name];
+        private _name = getText (_entry >> "name") call CBA_fnc_sanitizeHTML;
+
+        _name = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, _name];
 
         if (isText (_entry >> "description")) then {
-            private _description = getText (_entry >> "description");
+            private _description = getText (_entry >> "description") call CBA_fnc_sanitizeHTML;
 
-            _x = _x + format ["<br/>%1<br/>", _description];
+            _name = _name + format ["<br/>%1<br/>", _description];
         };
-    };
 
-    _x call CBA_fnc_sanitizeHTML
+        _name
+    } else {
+        _x call CBA_fnc_sanitizeHTML
+    };
 };
 
 _mods sort true;
