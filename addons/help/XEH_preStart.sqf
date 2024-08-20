@@ -51,23 +51,22 @@ private _mods = ("true" configClasses (configFile >> "CfgPatches")) apply {confi
 _mods = ((_mods arrayIntersect _mods) select {!isNumber (configfile >> "CfgMods" >> _x >> "appId")}) - [""];
 
 _mods = _mods apply {
-    private _entry = configfile >> "CfgMods" >> _x;
+    (modParams [_x, ["name"]]) params ["_name"];
+    if (_name == "") then { _name = _x };
 
+    private _mod = _x call CBA_fnc_sanitizeHTML;
+    _name = _name call CBA_fnc_sanitizeHTML;
+    _name = format ["    <font color='#cc9cbd'>%1 - %2</font>", _mod, _name];
+
+    private _entry = configfile >> "CfgMods" >> _x; // _x may be "@CBA_A3"
     if (isClass _entry) then {
-        private _name = getText (_entry >> "name") call CBA_fnc_sanitizeHTML;
-
-        _name = format ["    <font color='#cc9cbd'>%1 - %2</font>", configName _entry, _name];
-
         if (isText (_entry >> "description")) then {
             private _description = getText (_entry >> "description") call CBA_fnc_sanitizeHTML;
-
             _name = _name + format ["<br/>%1<br/>", _description];
         };
-
-        _name
-    } else {
-        _x call CBA_fnc_sanitizeHTML
     };
+
+    _name
 };
 
 _mods sort true;
