@@ -8,11 +8,40 @@ if (!hasInterface) exitWith {};
     private _unit = player;
     _unit createDiarySubject [QGVAR(docs), "CBA"];
 
-    // add diary for scripted keybinds
-    private _keys = GVAR(keys);
+    // add diary for config & scripted keybinds
+    private _keys = [];
+
+    private _config = configFile >> "CfgSettings" >> "CBA" >> "events";
+
+    {
+        private _addon = configName _x;
+
+        private _addonKeys = [format ["%1:", _addon]];
+
+        {
+            private _action = configName _x;
+
+            private _keybind = if (isNumber _x) then {
+                [getNumber _x, false, false, false]
+            } else {
+                [
+                    getNumber (_x >> "key"),
+                    getNumber (_x >> "shift") > 0,
+                    getNumber (_x >> "ctrl") > 0,
+                    getNumber (_x >> "alt") > 0
+                ]
+            };
+
+            private _keyName = _keybind call CBA_fnc_localizeKey;
+
+            _addonKeys pushBack format ["    %1: <font color='#c48214'>%2</font>", _action, _keyName];
+        } forEach configProperties [_x, "isNumber _x || isClass _x"];
+
+        _addonKeys pushBack "<br/>";
+        _keys pushBack (_addonKeys joinString "<br/>");
+    } forEach ("true" configClasses _config);
 
     private _addons = allVariables EGVAR(keybinding,addons);
-    _addons sort true;
 
     {
         (EGVAR(keybinding,addons) getVariable _x) params ["_addon", "_addonActions"];
@@ -22,7 +51,7 @@ if (!hasInterface) exitWith {};
             _name = localize _name;
         };
 
-        _keys = _keys + format ["%1:<br/>", _name];
+        private _addonKeys = [format ["%1:", _name]];
 
         {
             (EGVAR(keybinding,actions) getVariable (_addon + "$" + _x)) params ["_displayName", "", "_keybinds"];
@@ -33,11 +62,17 @@ if (!hasInterface) exitWith {};
 
             private _keyName = (_keybinds select {_x select 0 > DIK_ESCAPE} apply {_x call CBA_fnc_localizeKey}) joinString "    ";
 
-            _keys = _keys + format ["    %1: <font color='#c48214'>%2</font><br/>", _displayName, _keyName];
+            _addonKeys pushBack format ["    %1: <font color='#c48214'>%2</font>", _displayName, _keyName];
         } forEach _addonActions;
 
-        _keys = _keys + "<br/>";
+        _addonKeys pushBack "<br/>";
+        _keys pushBack (_addonKeys joinString "<br/>");
     } forEach _addons;
+
+    // Get localized categories first, then sort
+    _keys sort true;
+
+    _keys = _keys joinString "";
 
     // delete last line breaks
     _keys = _keys select [0, count _keys - 10];
