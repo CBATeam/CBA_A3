@@ -42,3 +42,5 @@ if (isNull _config) exitWith { ERROR_1("Class [%1] does not exists",_class) };
 _class = configName _config; // Ensure class name is in config case
 
 GVAR(renamedItems) set [_class, [_name, _picture]];
+
+nil

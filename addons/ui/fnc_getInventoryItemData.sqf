@@ -45,14 +45,7 @@ switch _containerType do {
     };
 };
 
-// Reports classname, but only for magazines.
+// Reports classname for every item type except backpacks (https://feedback.bistudio.com/T183096)
 private _classname = _control lbData _index;
-if (_classname isEqualTo "") then {
-    // For weapons, items and glasses, use the lb index and compare with cargo item list.
-    private _cargoItems = weaponCargo _container + itemCargo _container + magazineCargo _container;
-    _cargoItems = _cargoItems arrayIntersect _cargoItems;
-
-    _classname = _cargoItems param [_index, ""];
-};
 
 [_classname, _container, _containerType]
