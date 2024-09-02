@@ -148,10 +148,10 @@ private _fnc_processQueue = {
     private _right = _left + _width;
     private _bottom = _top + _height;
 
-    private _leftEdge = safezoneX;
-    private _rightEdge = safezoneW + safezoneX;
-    private _topEdge = safezoneY;
-    private _bottomEdge = safezoneH + safezoneY;
+    private _leftEdge = safeZoneX;
+    private _rightEdge = safeZoneW + safeZoneX;
+    private _topEdge = safeZoneY;
+    private _bottomEdge = safeZoneH + safeZoneY;
 
     if (_right > _rightEdge) then {
         _left = _left - (_right - _rightEdge);

@@ -48,7 +48,7 @@ uiNamespace setVariable [QGVAR(credits), compileFinal str _credits];
 
 // mods
 private _mods = ("true" configClasses (configFile >> "CfgPatches")) apply {configSourceMod _x};
-_mods = ((_mods arrayIntersect _mods) select {!isNumber (configfile >> "CfgMods" >> _x >> "appId")}) - [""];
+_mods = ((_mods arrayIntersect _mods) select {!isNumber (configFile >> "CfgMods" >> _x >> "appId")}) - [""];
 
 _mods = _mods apply {
     (modParams [_x, ["name"]]) params ["_name"];
@@ -58,7 +58,7 @@ _mods = _mods apply {
     _name = _name call CBA_fnc_sanitizeHTML;
     _name = format ["    <font color='#cc9cbd'>%1 - %2</font>", _mod, _name];
 
-    private _entry = configfile >> "CfgMods" >> _x; // _x may be "@CBA_A3"
+    private _entry = configFile >> "CfgMods" >> _x; // _x may be "@CBA_A3"
     if (isClass _entry) then {
         if (isText (_entry >> "description")) then {
             private _description = getText (_entry >> "description") call CBA_fnc_sanitizeHTML;

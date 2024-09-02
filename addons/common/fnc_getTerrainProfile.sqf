@@ -32,7 +32,7 @@ DEFAULT_PARAM(2,_resolution,10);
 private _angle = [_posA, _posB] call BIS_fnc_dirTo;
 private _2Ddistance = [_posA, _posB] call BIS_fnc_distance2D;
 
-private _logic = "logic" createvehiclelocal _posA;
+private _logic = "logic" createVehicleLocal _posA;
 _logic setPosATL _posA;
 private _z = (getPosASL _logic) select 2;
 private _return = [];
@@ -49,6 +49,6 @@ _logic setPosATL _posB;
 private _alt = ((getPosASL _logic) select 2) - _z;
 _return pushBack [_alt, _2Ddistance, _pos];
 
-deletevehicle _logic;
+deleteVehicle _logic;
 
 [_2Ddistance, _angle, _return]

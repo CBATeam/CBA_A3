@@ -42,7 +42,7 @@ switch (typeName _entity) do {
     };
     case "GROUP" : {
         (units _entity) call CBA_fnc_deleteEntity;
-        {deleteWaypoint _x} forEach (wayPoints _entity);
+        {deleteWaypoint _x} forEach (waypoints _entity);
         if (isNull _entity) exitWith {};
         if (local _entity) then {
             deleteGroup _entity;
@@ -54,7 +54,7 @@ switch (typeName _entity) do {
                         _this call CBA_fnc_deleteEntity;
                     }, _entity] call CBA_fnc_waitUntilAndExecute;
                 } else {
-                   _entity remoteExecCall ["CBA_fnc_deleteEntity", _groupOwner];
+                    _entity remoteExecCall ["CBA_fnc_deleteEntity", _groupOwner];
                 };
             } else {
                 _entity remoteExecCall ["CBA_fnc_deleteEntity", 2];

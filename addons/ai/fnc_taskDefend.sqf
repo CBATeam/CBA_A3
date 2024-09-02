@@ -87,7 +87,7 @@ if (_patrol > 0 && {count _units > 1}) then {
         [_x] orderGetIn true;
     } else {
         // Respect chance to patrol, or force if no building positions left
-        if !((_buildings isEqualto []) || { (random 1 < _patrol) }) then {
+        if !((_buildings isEqualTo []) || { (random 1 < _patrol) }) then {
             private _building = selectRandom _buildings;
             private _array = _building getVariable ["CBA_taskDefend_positions", []];
 
@@ -105,10 +105,10 @@ if (_patrol > 0 && {count _units > 1}) then {
                 // Wait until AI is in position then force them to stay
                 [_x, _pos, _hold] spawn {
                     params ["_unit", "_pos", "_hold"];
-                    if (surfaceIsWater _pos) exitwith {};
+                    if (surfaceIsWater _pos) exitWith {};
 
                     _unit doMove _pos;
-                    waituntil {unitReady _unit};
+                    waitUntil {unitReady _unit};
                     if (random 1 < _hold) then {
                         _unit disableAI "PATH";
                     } else {

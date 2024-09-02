@@ -195,7 +195,7 @@ _commitList = [];
             _ctrl ctrlCommit 0; // commit pos/size before showing
 
             _ctrl ctrlSetStructuredText parseText _caption;
-            _ctrl ctrlSetToolTip _tooltip;
+            _ctrl ctrlSetTooltip _tooltip;
             buttonSetAction [_idc, _action];
 
             _commitList pushBack [_idc, _enabled, _visible];

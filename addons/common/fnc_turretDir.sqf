@@ -37,7 +37,7 @@ if (_gunEnd isEqualTo _gunBeg) then {
         _gunBeg = _gunEnd vectorAdd (_vehicle vectorWorldToModel eyeDirection _vehicle);
     };
     private _vehicleConfig = configOf _vehicle;
-    if (((getNumber (_vehicleConfig >> "isUAV")) == 1) && {_turret isEqualto [0]}) then {
+    if (((getNumber (_vehicleConfig >> "isUAV")) == 1) && {_turret isEqualTo [0]}) then {
         _gunBeg = _vehicle selectionPosition getText (_vehicleConfig >> "uavCameraGunnerDir");
         _gunEnd = _vehicle selectionPosition getText (_vehicleConfig >> "uavCameraGunnerPos");
     } else {

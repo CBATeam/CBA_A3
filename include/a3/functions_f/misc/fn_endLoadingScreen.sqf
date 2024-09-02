@@ -11,11 +11,11 @@
 	BOOL - true when unregistered
 */
 
-with uinamespace do {
+with uiNamespace do {
 	private ["_id","_ids"];
 
 	_id = _this param [0,"",[""]];
-	_ids = missionnamespace getvariable ["BIS_fnc_startLoadingScreen_ids",[]];
+	_ids = missionnamespace getVariable ["BIS_fnc_startLoadingScreen_ids",[]];
 
 	if (_id in _ids) then {
 		_ids = _ids - [_id];

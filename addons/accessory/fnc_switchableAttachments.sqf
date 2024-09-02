@@ -22,7 +22,7 @@ Author:
 
 params ["_item"];
 
-private _cfgWeapons = configfile >> "CfgWeapons";
+private _cfgWeapons = configFile >> "CfgWeapons";
 private _config = _cfgWeapons >> _item;
 
 private _forward = [];

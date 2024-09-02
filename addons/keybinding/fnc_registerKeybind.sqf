@@ -30,7 +30,7 @@ if (count _defaultKeybind != 4) then {
         _warn call BIS_fnc_error;
         diag_log format _warn;
     };
-    diag_log Format ["Converted _defaultKeybind => %1",_defaultKeybind];
+    diag_log format ["Converted _defaultKeybind => %1",_defaultKeybind];
 };
 
 _defaultKeybind params ["_dikCode", "_shift", "_ctrl", "_alt"];

@@ -41,7 +41,7 @@ private _currWeaponType = call {
 };
 if (_currWeaponType < 0) exitWith {false};
 
-private _cfgWeapons = configfile >> "CfgWeapons";
+private _cfgWeapons = configFile >> "CfgWeapons";
 
 private _testItem = _currItem;
 while {_testItem != ""} do {
@@ -51,7 +51,7 @@ while {_testItem != ""} do {
     } else {
         configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
     };
-    
+
     if (_configs isEqualTo []) then {
         _testItem = "";
     } else {

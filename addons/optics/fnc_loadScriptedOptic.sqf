@@ -85,14 +85,14 @@ _ctrlReticleSafezone ctrlCommit 0;
 private _width = THIRD_SCREEN_WIDTH;
 
 if (GVAR(hidePeripheralVision)) then {
-    _width = 0.5 - (_bodyPosition select 2)/2 - safezoneXAbs + pixelW/2;
+    _width = 0.5 - (_bodyPosition select 2)/2 - safeZoneXAbs + pixelW/2;
 };
 
 _ctrlBlackLeft ctrlSetPositionW _width;
 _ctrlBlackLeft ctrlCommit 0;
 
 _ctrlBlackRight ctrlSetPositionW _width;
-_ctrlBlackRight ctrlSetPositionX (safezoneXAbs + safezoneWAbs - _width);
+_ctrlBlackRight ctrlSetPositionX (safeZoneXAbs + safeZoneWAbs - _width);
 _ctrlBlackRight ctrlCommit 0;
 
 if (_init) then {

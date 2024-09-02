@@ -30,8 +30,8 @@ if (IS_STRING(_searchTags)) then {_searchTags = [_searchTags];};
 if (_searchType select 0 isEqualTo "any") then {_searchType = [];};
 if (_searchTags select 0 isEqualTo "any") then {_searchTags = [];};
 
-_searchType = _searchType apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
-_searchTags = _searchTags apply {If (IS_STRING(_x)) then {toLower _x} else {""};};
+_searchType = _searchType apply {if (IS_STRING(_x)) then {toLower _x} else {""};};
+_searchTags = _searchTags apply {if (IS_STRING(_x)) then {toLower _x} else {""};};
 
 _searchType = _searchType - [""];
 _searchTags = _searchTags - [""];

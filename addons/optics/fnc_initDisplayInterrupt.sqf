@@ -46,24 +46,24 @@ private _ctrlBlackRight = _display ctrlCreate ["RscText", IDC_BLACK_RIGHT];
 private _width = THIRD_SCREEN_WIDTH;
 
 if (GVAR(hidePeripheralVision)) then {
-    _width = 0.5 - (_bodyPosition select 2)/2 - safezoneXAbs + pixelW/2;
+    _width = 0.5 - (_bodyPosition select 2)/2 - safeZoneXAbs + pixelW/2;
 };
 
 _ctrlBlackLeft ctrlSetBackgroundColor [0,0,0,1];
 _ctrlBlackLeft ctrlSetPosition [
-    safezoneXAbs,
-    safezoneY,
+    safeZoneXAbs,
+    safeZoneY,
     _width,
-    safezoneH
+    safeZoneH
 ];
 _ctrlBlackLeft ctrlCommit 0;
 
 _ctrlBlackRight ctrlSetBackgroundColor [0,0,0,1];
 _ctrlBlackRight ctrlSetPosition [
-    safezoneXAbs + safezoneWAbs - _width,
-    safezoneY,
+    safeZoneXAbs + safeZoneWAbs - _width,
+    safeZoneY,
     _width,
-    safezoneH
+    safeZoneH
 ];
 _ctrlBlackRight ctrlCommit 0;
 
