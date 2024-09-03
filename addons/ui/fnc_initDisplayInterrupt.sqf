@@ -76,7 +76,7 @@ _button ctrlRemoveEventHandler ["ButtonClick", 0]; // remove vanilla button
 _button ctrlAddEventHandler ["ButtonClick", {
     // this is an edit of a BI script, don't change unnecessarily
     params ["_ctrl"];
-    _display = ctrlparent _ctrl;
+    _display = ctrlParent _ctrl;
 
     if (!ctrlCommitted _ctrl) exitWith {};
 
@@ -91,7 +91,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
     _buttonsTime = 0.05;
 
     //hide buttons and collapse accordion
-    if (uiNamespace getvariable "BIS_DisplayInterrupt_isOptionsExpanded") then {
+    if (uiNamespace getVariable "BIS_DisplayInterrupt_isOptionsExpanded") then {
         //move down - background, title, player's name, play, editor, profile, options
 
         //Title background

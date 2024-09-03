@@ -109,12 +109,12 @@ if (_enabled != 0 && {_visible > 0}) then {
     };
 } else {
     _shortcut_DIK = -1; // disable shortcut for disabled menu options
-    if (_shortcut_DIK != -1) then {player sidechat str [_caption, _shortcut_DIK, _enabled, _visible]};
+    if (_shortcut_DIK != -1) then {player sideChat str [_caption, _shortcut_DIK, _enabled, _visible]};
 };
 
 // remove "^" from caption and substitute coloured shortcut letter if enabled.
 if (_index >= 0) then {
-    if (_enabled != 0) then {  
+    if (_enabled != 0) then {
         // TODO: Read an appropriate color from the menu class.
 
         private _offset = parseNumber _containCaret;

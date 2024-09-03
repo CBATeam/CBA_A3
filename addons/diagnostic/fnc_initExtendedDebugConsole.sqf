@@ -11,9 +11,9 @@ private _debugConsole = _display displayCtrl IDC_RSCDEBUGCONSOLE_RSCDEBUGCONSOLE
 
 _debugConsole ctrlSetPosition [
     ctrlPosition _debugConsole select 0, // keep X
-    safezoneY + 1 * GUI_GRID_H, // top edge of the screen
+    safeZoneY + 1 * GUI_GRID_H, // top edge of the screen
     22 * GUI_GRID_W, // slightly wider
-    1 - 2 * safezoneY // full screen height
+    1 - 2 * safeZoneY // full screen height
 ];
 _debugConsole ctrlCommit 0;
 
@@ -23,7 +23,7 @@ _debugConsole ctrlCommit 0;
 {
     if (ctrlParentControlsGroup _x == _debugConsole && {!(ctrlIDC _x in EXCLUDE)}) then {
         private _position = ctrlPosition _x;
-        _position set [1, (_position select 1) + safezoneH - 25 * GUI_GRID_H];
+        _position set [1, (_position select 1) + safeZoneH - 25 * GUI_GRID_H];
 
         _x ctrlSetPosition _position;
         _x ctrlCommit 0;
@@ -38,7 +38,7 @@ _title ctrlSetText LLSTRING(ExtendedDebugConsole);
 private _expression = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSION;
 
 private _position = ctrlPosition _expression;
-_position set [3, safezoneH - 20.25 * GUI_GRID_H];
+_position set [3, safeZoneH - 20.25 * GUI_GRID_H];
 
 _expression ctrlSetPosition _position;
 _expression ctrlCommit 0;
@@ -122,7 +122,7 @@ _expression ctrlAddEventHandler ["KillFocus", {
 private _expressionBackground = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND;
 
 _position = ctrlPosition _expressionBackground;
-_position set [3, safezoneH - 18.25 * GUI_GRID_H];
+_position set [3, safeZoneH - 18.25 * GUI_GRID_H];
 
 _expressionBackground ctrlSetPosition _position;
 _expressionBackground ctrlCommit 0;
@@ -132,7 +132,7 @@ _expressionBackground ctrlCommit 0;
     private _expressionOutput = _display displayCtrl _x;
 
     _position = ctrlPosition _expressionOutput;
-    _position set [1, (_position select 1) + safezoneH - 26.05 * GUI_GRID_H];
+    _position set [1, (_position select 1) + safeZoneH - 26.05 * GUI_GRID_H];
 
     _expressionOutput ctrlSetPosition _position;
     _expressionOutput ctrlCommit 0;
@@ -143,7 +143,7 @@ private _prevButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_PRE
 
 _prevButton ctrlSetPosition [
     0 * GUI_GRID_W,
-    9.25 * GUI_GRID_H + safezoneH - 26.25 * GUI_GRID_H,
+    9.25 * GUI_GRID_H + safeZoneH - 26.25 * GUI_GRID_H,
     10.875 * GUI_GRID_W,
     1 * GUI_GRID_H
 ];
@@ -157,7 +157,7 @@ private _nextButton = _display ctrlCreate ["RscButtonMenu", IDC_DEBUGCONSOLE_NEX
 
 _nextButton ctrlSetPosition [
     11.125 * GUI_GRID_W,
-    9.25 * GUI_GRID_H + safezoneH - 26.25 * GUI_GRID_H,
+    9.25 * GUI_GRID_H + safeZoneH - 26.25 * GUI_GRID_H,
     10.875 * GUI_GRID_W,
     1 * GUI_GRID_H
 ];

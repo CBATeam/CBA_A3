@@ -48,7 +48,7 @@ if (_options isEqualTo []) exitWith {};
 // ctrlSetBackgroundColor command does not seem to work for RscListBox.
 private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
-private _font = getText (configfile >> QGVAR(ItemContextMenu) >> "font");
+private _font = getText (configFile >> QGVAR(ItemContextMenu) >> "font");
 private _fontSize = getNumber (configFile >> ctrlClassName _list >> "sizeEx");
 private _longestName = "";
 

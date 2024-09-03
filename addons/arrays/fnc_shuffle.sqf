@@ -31,7 +31,7 @@ params [["_array", [], [[]]], ["_inPlace", false, [false]]];
 
 private _tempArray = + _array;
 
-If (_inPlace) then {
+if (_inPlace) then {
     for "_size" from (count _tempArray) to 1 step -1 do {
         _array set [_size - 1, (_tempArray deleteAt (floor random _size))];
     };

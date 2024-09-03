@@ -63,10 +63,10 @@ GVAR(camera) camCommitPrepared 0;
 
 // @todo, check if that needs to be done at all
 if (cameraView == "GUNNER") then {
-    GVAR(camera) camSetFOV 0.75;
+    GVAR(camera) camSetFov 0.75;
     GVAR(camera) camCommit 0;
 } else {
-    GVAR(camera) camSetFOV 0.01;
+    GVAR(camera) camSetFov 0.01;
     GVAR(camera) camCommit 0;
 };
 
@@ -123,7 +123,7 @@ _display setVariable [QGVAR(DetailScaleFactor), _detailScaleFactor];
 _ctrlReticle ctrlSetText _texture;
 _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
-_ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
+_ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPiPEnabled);
 
 // tilt while leaning
 private _bank = 0;

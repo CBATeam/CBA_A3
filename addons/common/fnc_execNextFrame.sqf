@@ -14,7 +14,7 @@ Returns:
 
 Examples:
     (begin example)
-        [{player sideChat format ["This is frame %1, not %2", diag_frameno, _this select 0];}, [diag_frameno]] call CBA_fnc_execNextFrame;
+        [{player sideChat format ["This is frame %1, not %2", diag_frameNo, _this select 0];}, [diag_frameNo]] call CBA_fnc_execNextFrame;
     (end)
 
 Author:
@@ -23,7 +23,7 @@ Author:
 
 params [["_function", {}, [{}]], ["_args", []]];
 
-if (diag_frameno != GVAR(nextFrameNo)) then {
+if (diag_frameNo != GVAR(nextFrameNo)) then {
     GVAR(nextFrameBufferA) pushBack [_args, _function];
 } else {
     GVAR(nextFrameBufferB) pushBack [_args, _function];

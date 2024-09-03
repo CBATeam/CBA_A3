@@ -12,19 +12,19 @@
 	BOOL - true when registered
 */
 disableserialization;
-with uinamespace do {
+with uiNamespace do {
 	private ["_id","_rsc","_ids"];
 	_id = _this param [0,"",[""]];
 	_text = _this param [1,"",[""]];
 	_rsc = _this param [2,"",[""]];
-	_ids = missionnamespace getvariable ["BIS_fnc_startLoadingScreen_ids",[]];
+	_ids = missionnamespace getVariable ["BIS_fnc_startLoadingScreen_ids",[]];
 
 	if !(_id in _ids) then {
 		//--- Array has to be adjusted before loading screen starts, otherwise the rest of the script can be delayed
 		_ids set [count _ids,_id];
 		missionnamespace setvariable ["BIS_fnc_startLoadingScreen_ids",_ids];
 		startloadingscreen [_text,_rsc];
-		progressloadingscreen (uinamespace getvariable ["BIS_fnc_progressloadingscreen_progress",0]);
+		progressloadingscreen (uiNamespace getVariable ["BIS_fnc_progressloadingscreen_progress",0]);
 		//["Start '%1' loading screen for %2",_id,profilename] call bis_fnc_logFormat;
 		true
 	} else {

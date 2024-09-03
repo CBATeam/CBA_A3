@@ -1,5 +1,5 @@
 /*
-	Author: 
+	Author:
 		Karel Moricky, improved by Killzone_Kid
 
 	Description:
@@ -30,26 +30,26 @@ if (_this isEqualTo []) exitWith
 	{
 		{
 			if (getNumber (_x >> "scriptIsInternal") isEqualTo 0) then //--- Ignore internal scripts, they're recompiled first time they're opened
-			{ 
+			{
 				_scriptName = getText (_x >> "scriptName");
 				_scriptPath = getText (_x >> "scriptPath");
-				
-				if (_scriptName isEqualTo "" || _scriptPath isEqualTo "") exitWith 
+
+				if (_scriptName isEqualTo "" || _scriptPath isEqualTo "") exitWith
 				{
 					[
-						'Undefined param(s) [scriptPath: "%2", scriptName: "%3"] while trying to init display "%1"', 
-						configName _x, 
-						_scriptPath, 
+						'Undefined param(s) [scriptPath: "%2", scriptName: "%3"] while trying to init display "%1"',
+						configName _x,
+						_scriptPath,
 						_scriptName
-					] 
+					]
 					call BIS_fnc_logFormat;
 				};
-				
+
 				_script = _scriptName + "_script";
-				
+
 				if (uiNamespace getVariable [_script, 0] isEqualType {}) exitWith {}; //--- already compiled
-				
-				uiNamespace setVariable 
+
+				uiNamespace setVariable
 				[
 					_script,
 					compileScript [
@@ -59,9 +59,9 @@ if (_this isEqualTo []) exitWith
 					]
 				];
 			};
-		} 
+		}
 		forEach ("isText (_x >> 'scriptPath')" configClasses _x);
-	} 
+	}
 	forEach
 	[
 		configFile,
@@ -76,7 +76,7 @@ if (_this isEqualTo []) exitWith
 //--- Register/unregister display
 with uiNamespace do
 {
-	params 
+	params
 	[
 		["_mode", "", [""]],
 		["_params", []],
@@ -89,50 +89,50 @@ with uiNamespace do
 	if (isNull _display) exitWith {nil};
 
 	if (_register isEqualType true) then {_register = parseNumber _register};
-	if (_register > 0) then 
+	if (_register > 0) then
 	{
 		_varDisplays = _path + "_displays";
 		_displays = (uiNamespace getVariable [_varDisplays, []]) - [displayNull];
 
-		if (_mode == "onLoad") exitWith 
+		if (_mode == "onLoad") exitWith
 		{
 			//--- Register current display
 			_display setVariable [CONFIG_CLASS_VAR, _class];
 			uiNamespace setVariable [_class, _display];
-			
+
 			_displays pushBackUnique _display;
 			uiNamespace setVariable [_varDisplays, _displays];
-			
-			if !(uiNamespace getVariable [INIT_GAME_VAR, false]) then 
+
+			if !(uiNamespace getVariable [INIT_GAME_VAR, false]) then
 			{
-				//--- tell loading screen it can stop using ARMA 3 logo which is shown only before main menu 
+				//--- tell loading screen it can stop using ARMA 3 logo which is shown only before main menu
 				//--- and start using the classic terrain picture
 				uiNamespace setVariable [INIT_GAME_VAR, _path == "GUI" && {ctrlIdd _x >= 0} count _displays > 1];
 			};
-			
+
 			[missionNamespace, "OnDisplayRegistered", [_display, _class]] call BIS_fnc_callScriptedEventHandler;
 		};
-		
-		if (_mode == "onUnload") exitWith 
+
+		if (_mode == "onUnload") exitWith
 		{
 			//--- Unregister current display
 			_displays = _displays - [_display];
 			uiNamespace setVariable [_varDisplays, _displays];
-			
+
 			[missionNamespace, "OnDisplayUnregistered", [_display, _class]] call BIS_fnc_callScriptedEventHandler;
 		};
-		
+
 	};
-	
+
 	//--- Call script in public version
-	if (!cheatsEnabled) exitWith 
+	if (!cheatsEnabled) exitWith
 	{
 		[_mode, _params, _class] call (uiNamespace getVariable (_class + "_script"));
 		nil
 	};
 
 	//--- Recompile in the internal version
-	uinamespace setvariable 
+	uiNamespace setvariable
 	[
 		_class + "_script",
 		compileScript [
@@ -141,9 +141,9 @@ with uiNamespace do
 			format ["scriptName '%1'; _fnc_scriptName = '%1'; ", _class] // prefix
 		]
 	];
-	
+
 	//--- Call script in internal version
-	if !(uiNamespace getVariable ["BIS_disableUIscripts", false]) then 
+	if !(uiNamespace getVariable ["BIS_disableUIscripts", false]) then
 	{
 		[_mode, _params, _class] call (uiNamespace getVariable (_class + "_script"));
 		nil

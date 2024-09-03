@@ -50,7 +50,7 @@ _result = IS_CODE(_test);
 TEST_FALSE(_result,"MACRO_IS_CODE");
 
 
-_test = missionconfigfile;
+_test = missionConfigFile;
 _result = IS_CONFIG(_test);
 TEST_TRUE(_result,"MACRO_IS_CONFIG");
 
@@ -89,7 +89,7 @@ _result = IS_SCALAR(_test);
 TEST_FALSE(_result,"MACRO_IS_SCALAR");
 
 
-_test = [] spawn {uisleep 15;};
+_test = [] spawn {uiSleep 15;};
 _result = IS_SCRIPT(_test);
 TEST_TRUE(_result,"MACRO_IS_SCRIPT");
 

@@ -96,7 +96,7 @@ _idc = _flexiMenu_baseIDC_listButton;
     };
 
     _ctrl ctrlSetStructuredText parseText _caption;
-    _ctrl ctrlSetToolTip _tooltip;
+    _ctrl ctrlSetTooltip _tooltip;
     _ctrl buttonSetAction _action;
 
     _ctrl ctrlCommit 0; // commit pos/size before showing

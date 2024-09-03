@@ -10,10 +10,10 @@ class RscTitles {
 
         class Background: RscText {
             colorBackground[] = {0,0,0,0};
-            x = "safezoneXAbs";
-            y = "safezoneY";
-            w = "safezoneWAbs";
-            h = "safezoneH";
+            x = "safeZoneXAbs";
+            y = "safeZoneY";
+            w = "safeZoneWAbs";
+            h = "safeZoneH";
         };
 
         class TitleBackground: RscText {

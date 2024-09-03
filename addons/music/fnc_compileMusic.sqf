@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 if (isNil QGVARMAIN(compiledMusic)) then {
-    private _allMusic = configProperties [MissionConfigFile >> "CfgMusic", "(getNumber (_x >> 'duration')) > 0", true];
+    private _allMusic = configProperties [missionConfigFile >> "CfgMusic", "(getNumber (_x >> 'duration')) > 0", true];
     _allMusic append configProperties [configFile >> "CfgMusic", "(getNumber (_x >> 'duration')) > 0", true];
     private _unsortedSongs = [];
     {

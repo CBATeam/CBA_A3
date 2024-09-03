@@ -52,7 +52,7 @@ _position = _position call CBA_fnc_getPos;
 // addWaypoint expects ASL when a negative radius is provided for exact placement
 // otherwise waypoints will be placed under the ground
 if (_radius < 0) then {
-    _position = AGLtoASL _position;
+    _position = AGLToASL _position;
 };
 
 private _waypoint = _group addWaypoint [_position, _radius];

@@ -59,8 +59,8 @@
 #define SEPARATORS "@"
 
 // Notify
-#define NOTIFY_DEFAULT_X (safezoneX + safezoneW - 13 * GUI_GRID_W)
-#define NOTIFY_DEFAULT_Y (safezoneY + 6 * GUI_GRID_H)
+#define NOTIFY_DEFAULT_X (safeZoneX + safeZoneW - 13 * GUI_GRID_W)
+#define NOTIFY_DEFAULT_Y (safeZoneY + 6 * GUI_GRID_H)
 #define NOTIFY_MIN_WIDTH (12 * GUI_GRID_W)
 #define NOTIFY_MIN_HEIGHT (3 * GUI_GRID_H)
 

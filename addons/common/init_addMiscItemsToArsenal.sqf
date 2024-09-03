@@ -33,9 +33,9 @@ Author:
             private _cbaMiscItems = [];
             {
                 private _class = _x;
-                private _scope = if (isnumber (_class >> "scopeArsenal")) then {getnumber (_class >> "scopeArsenal")} else {getnumber (_class >> "scope")};
+                private _scope = if (isNumber (_class >> "scopeArsenal")) then {getNumber (_class >> "scopeArsenal")} else {getNumber (_class >> "scope")};
                 TRACE_2("",_class,_scope);
-                if (_scope == 2 && {gettext (_class >> "model") != ""}) then {
+                if (_scope == 2 && {getText (_class >> "model") != ""}) then {
                     _cbaMiscItems pushBack (configName _class);
                 };
             } forEach (configProperties [configFile >> "CfgWeapons", "(isClass _x) && {(configName _x) isKindOf ['CBA_MiscItem', configFile >> 'CfgWeapons']}"]);
@@ -51,13 +51,13 @@ Author:
             (missionNamespace call bis_fnc_getVirtualItemCargo) +
             (_cargo call bis_fnc_getVirtualItemCargo) +
             items _center +
-            assigneditems _center +
-            primaryweaponitems _center +
-            secondaryweaponitems _center +
-            handgunitems _center +
+            assignedItems _center +
+            primaryWeaponItems _center +
+            secondaryWeaponItems _center +
+            handgunItems _center +
             [uniform _center,vest _center,headgear _center,goggles _center];
 
-            private _ctrlList = _display displayctrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC);
+            private _ctrlList = _display displayCtrl (IDC_RSCDISPLAYARSENAL_LIST + IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC);
             private _virtualCargo = _virtualItemCargo;
             private _virtualAll = _fullVersion || {"%ALL" in _virtualCargo};
             private _columns = count lnbGetColumnsPosition _ctrlList;
@@ -65,12 +65,12 @@ Author:
             {
                 // Add item to display list if allowed
                 if (_virtualAll || {_x in _virtualCargo}) then {
-                    private _xCfg = configfile >> "cfgweapons" >> _x;
-                    private _lbAdd = _ctrlList lnbaddrow ["",gettext (_xCfg >> "displayName"),str 0];
-                    _ctrlList lnbsetdata [[_lbAdd,0],_x];
-                    _ctrlList lnbsetpicture [[_lbAdd,0],gettext (_xCfg >> "picture")];
-                    _ctrlList lnbsetvalue [[_lbAdd,0],getnumber (_xCfg >> "itemInfo" >> "mass")];
-                    _ctrlList lbsettooltip [_lbAdd * _columns,format ["%1\n%2",gettext (_xCfg >> "displayName"),_x]];
+                    private _xCfg = configFile >> "cfgweapons" >> _x;
+                    private _lbAdd = _ctrlList lnbAddRow ["",getText (_xCfg >> "displayName"),str 0];
+                    _ctrlList lnbSetData [[_lbAdd,0],_x];
+                    _ctrlList lnbSetPicture [[_lbAdd,0],getText (_xCfg >> "picture")];
+                    _ctrlList lnbSetValue [[_lbAdd,0],getNumber (_xCfg >> "itemInfo" >> "mass")];
+                    _ctrlList lbSetTooltip [_lbAdd * _columns,format ["%1\n%2",getText (_xCfg >> "displayName"),_x]];
                 };
 
                 // Add item to main list (will be used on next arsenalOpened automaticly)
