@@ -46,3 +46,4 @@ jobs:
       with:
         name: CBA_A3_${{ github.sha }}-nobin
         path: .hemttout/@*
+        include-hidden-files: true # Because .hemttout is a hidden directory
