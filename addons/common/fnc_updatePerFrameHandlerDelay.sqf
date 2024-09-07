@@ -8,6 +8,7 @@ Description:
 Parameters:
     _handle   - The existing perFrameHandler's handle. <NUMBER>
     _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
+    _updateExecutionTime - <BOOL> When true, adjusts the nextExecution time.
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
@@ -21,14 +22,23 @@ Author:
     Mokka, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExectionTime", false, [false]]];
+params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", false, [false]]];
 
-private _idx = GVAR(PFHhandles) param [_handle];
-if (isNil "_idx") exitWith {false};
-(GVAR(perFrameHandlerArray) select _idx) set [1, _newDelay];
+[{
+    params ["_handle", "_newDelay", "_updateExecutionTime"];
 
-if (_updateExectionTime) then {
-    // Add code here
-};
+    private _idx = GVAR(PFHhandles) param [_handle];
+    if (isNil "_idx") exitWith {false};
+    (GVAR(perFrameHandlerArray) select _idx) set [1, _newDelay];
 
-true
+    if (_updateExecutionTime) then {
+        // Add code here
+
+
+
+
+    };
+
+    true
+
+}, [_handle, _newDelay, _updateExecutionTime]] call CBA_fnc_directCall;
