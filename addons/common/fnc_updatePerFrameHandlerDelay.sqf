@@ -6,11 +6,11 @@ Description:
     Updates the delay of an existing perFrameHandler.
 
 Parameters:
-    _handle   - The function you wish to execute. <CODE>
+    _handle   - The existing perFrameHandler's handle. <NUMBER>
     _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
 
 Returns:
-    true if removed successful, false otherwise <BOOLEAN>
+    true if successful, false otherwise <BOOLEAN>
 
 Examples:
     (begin example)
