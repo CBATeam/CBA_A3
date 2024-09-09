@@ -8,7 +8,6 @@ Description:
 Parameters:
     _handle   - The existing perFrameHandler's handle. <NUMBER>
     _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
-    _updateExecutionTime - When true, adjusts the nextExecution time. (optional, default: true) <BOOL>
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
@@ -22,7 +21,7 @@ Author:
     Mokka, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", true, [false]]];
+params [["_handle", -1, [0]], ["_newDelay", 0, [0]]];
 
 [{
     params ["_handle", "_newDelay", "_updateExecutionTime"];
@@ -33,14 +32,13 @@ params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", tr
     private _prvDelay = _entry#1;
     _entry set [1, _newDelay];
 
-    if (_updateExecutionTime) then {
-        private _newDelta = _entry#2 - _prvDelay + _newDelay;
-        private _tickTime = diag_tickTime;
+    private _newDelta = _entry#2 - _prvDelay + _newDelay;
+    private _tickTime = diag_tickTime;
 
-        // if the next iteration Time with the updated delay would have been in the past, next iteration will be set to "now" so the following iteration will respect the new delay between iterations
-        if (_newDelta < _tickTime) then { _newDelta = _tickTime; };
-        _entry set [2, _newDelta];
-    };
+    // if the next iteration Time with the updated delay would have been in the past, next iteration will be set to "now" so the following iteration will respect the new delay between iterations
+    if (_newDelta < _tickTime) then { _newDelta = _tickTime; };
+    _entry set [2, _newDelta];
+
     true
 
 }, [_handle, _newDelay, _updateExecutionTime]] call CBA_fnc_directCall;
