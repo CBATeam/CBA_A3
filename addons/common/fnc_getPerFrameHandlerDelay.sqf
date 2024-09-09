@@ -27,7 +27,6 @@ params [["_handle", -1, [0]]];
 
     private _index = GVAR(PFHhandles) param [_handle];
     if (isNil "_index") exitWith {-1};
-    private _entry = GVAR(perFrameHandlerArray) select _index;
-    _entry#1
+    GVAR(perFrameHandlerArray) select _index select 1
 
 }, [_handle]] call CBA_fnc_directCall;
