@@ -34,16 +34,12 @@ params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", tr
     _entry set [1, _newDelay];
 
     if (_updateExecutionTime) then {
-        _newDelta = _entry#2 - _prvDelay + _newDelay;
-        
+        private _newDelta = _entry#2 - _prvDelay + _newDelay;
         private _tickTime = diag_tickTime;
 
+        // if the next iteration Time with the updated delay would have been in the past, next iteration will be set to "now" so the following iteration will respect the new delay between iterations
         if (_newDelta < _tickTime) then { _newDelta = _tickTime; };
-
-        _prvDelta = _entry#2;
         _entry set [2, _newDelta];
-        
-        diag_log format ['[CVO](debug)(fnc_updatePerFrameHandlerDelay) _prvDelay: %1 - _newDelay: %2 - _prvDelta: %5 - _newDelta: %3 - _tickTime: %4', _prvDelay , _newDelay , _newDelta , _tickTime, _prvDelta];
     };
     true
 
