@@ -24,7 +24,7 @@ Author:
 params [["_handle", -1, [0]], ["_newDelay", 0, [0]]];
 
 [{
-    params ["_handle", "_newDelay", "_updateExecutionTime"];
+    params ["_handle", "_newDelay"];
 
     private _index = GVAR(PFHhandles) param [_handle];
     if (isNil "_index") exitWith {false};
