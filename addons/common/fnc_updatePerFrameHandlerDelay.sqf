@@ -27,9 +27,9 @@ params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", fa
 [{
     params ["_handle", "_newDelay", "_updateExecutionTime"];
 
-    private _idx = GVAR(PFHhandles) param [_handle];
-    if (isNil "_idx") exitWith {false};
-    (GVAR(perFrameHandlerArray) select _idx) set [1, _newDelay];
+    private _index = GVAR(PFHhandles) param [_handle];
+    if (isNil "_index") exitWith {false};
+    (GVAR(perFrameHandlerArray) select _index) set [1, _newDelay];
 
     if (_updateExecutionTime) then {
         // Add code here
