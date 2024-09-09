@@ -41,4 +41,4 @@ params [["_handle", -1, [0]], ["_newDelay", 0, [0]]];
 
     true
 
-}, [_handle, _newDelay, _updateExecutionTime]] call CBA_fnc_directCall;
+}, [_handle, _newDelay]] call CBA_fnc_directCall;
