@@ -29,14 +29,12 @@ params [["_handle", -1, [0]], ["_newDelay", 0, [0]], ["_updateExecutionTime", fa
 
     private _index = GVAR(PFHhandles) param [_handle];
     if (isNil "_index") exitWith {false};
-    (GVAR(perFrameHandlerArray) select _index) set [1, _newDelay];
+    private _entry = GVAR(perFrameHandlerArray) select _index;
+    private _prevDelay = _entry select 1;
+    _entry set [1, _newDelay];
 
     if (_updateExecutionTime) then {
-        // Add code here
-
-
-
-
+        _entry set [2, _entry#2 - prevDelay + _newDelay];
     };
 
     true
