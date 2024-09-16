@@ -5,6 +5,8 @@ Function: CBA_fnc_updatePerFrameHandlerDelay
 Description:
     Updates the delay of an existing perFrameHandler.
 
+    If the new delay is shorter then the previous delay and the next iteration would have happend in the past, it will execute now and the following iteration will be executed based on current time + new delay.
+
 Parameters:
     _handle   - The existing perFrameHandler's handle. <NUMBER>
     _delay    - The amount of time in seconds between executions, 0 for every frame. (optional, default: 0) <NUMBER>
