@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
-// Do nothing if no context menu options exist.
-if (isNil QGVAR(ItemContextMenuOptions)) exitWith {};
+// Do nothing if no context menu options and renamed items exist.
+if (isNil QGVAR(ItemContextMenuOptions) && {isNil QGVAR(renamedItems)}) exitWith {};
 
 params ["_display"];
 
@@ -88,132 +88,135 @@ _radioSlot setVariable [QGVAR(slotType), "RADIO"];
 _compassSlot setVariable [QGVAR(slotType), "COMPASS"];
 _watchSlot setVariable [QGVAR(slotType), "WATCH"];
 
-{
-    _x ctrlAddEventHandler ["MouseButtonDblClick", {
-        params ["_control", "_button"];
-        if (_button != 0) exitWith {}; // LMB only
-        private _unit = call CBA_fnc_currentUnit;
+// Item Context Menu Framework - MouseButtonDblClick
+if !(isNil QGVAR(ItemContextMenuOptions)) then {
+    {
+        _x ctrlAddEventHandler ["MouseButtonDblClick", {
+            params ["_control", "_button"];
+            if (_button != 0) exitWith {}; // LMB only
+            private _unit = call CBA_fnc_currentUnit;
 
-        private _classname = "";
-        private _slotType = _control getVariable QGVAR(slotType);
-        switch _slotType do {
-            // containers
-            case "UNIFORM": {
-                _classname = uniform _unit;
-            };
-            case "VEST": {
-                _classname = vest _unit;
-            };
-            case "BACKPACK": {
-                _classname = backpack _unit;
+            private _classname = "";
+            private _slotType = _control getVariable QGVAR(slotType);
+            switch _slotType do {
+                // containers
+                case "UNIFORM": {
+                    _classname = uniform _unit;
+                };
+                case "VEST": {
+                    _classname = vest _unit;
+                };
+                case "BACKPACK": {
+                    _classname = backpack _unit;
+                };
+
+                // gear
+                case "HEADGEAR": {
+                    _classname = headgear _unit;
+                };
+                case "GOGGLES": {
+                    _classname = goggles _unit;
+                };
+                case "HMD": {
+                    _classname = hmd _unit;
+                };
+                case "BINOCULAR": {
+                    _classname = binocular _unit;
+                };
+
+                // rifle
+                case "RIFLE": {
+                    _classname = primaryWeapon _unit;
+                };
+                case "RIFLE_SILENCER": {
+                    _classname = primaryWeaponItems _unit select 0;
+                };
+                case "RIFLE_BIPOD": {
+                    _classname = primaryWeaponItems _unit select 3;
+                };
+                case "RIFLE_OPTIC": {
+                    _classname = primaryWeaponItems _unit select 2;
+                };
+                case "RIFLE_POINTER": {
+                    _classname = primaryWeaponItems _unit select 1;
+                };
+                case "RIFLE_MAGAZINE": {
+                    _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 4 param [0, ""];
+                };
+                case "RIFLE_MAGAZINE_GL": {
+                    _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 5 param [0, ""];
+                };
+
+                // launcher
+                case "LAUNCHER": {
+                    _classname = secondaryWeapon _unit;
+                };
+                case "LAUNCHER_SILENCER": {
+                    _classname = secondaryWeaponItems _unit select 0;
+                };
+                case "LAUNCHER_BIPOD": {
+                    _classname = secondaryWeaponItems _unit select 3;
+                };
+                case "LAUNCHER_OPTIC": {
+                    _classname = secondaryWeaponItems _unit select 2;
+                };
+                case "LAUNCHER_POINTER": {
+                    _classname = secondaryWeaponItems _unit select 1;
+                };
+                case "LAUNCHER_MAGAZINE": {
+                    _classname = secondaryWeaponMagazine _unit select 0;
+                };
+
+                // pistol
+                case "PISTOL": {
+                    _classname = handgunWeapon _unit;
+                };
+                case "PISTOL_SILENCER": {
+                    _classname = handgunItems _unit select 0;
+                };
+                case "PISTOL_BIPOD": {
+                    _classname = handgunItems _unit select 3;
+                };
+                case "PISTOL_OPTIC": {
+                    _classname = handgunItems _unit select 2;
+                };
+                case "PISTOL_POINTER": {
+                    _classname = handgunItems _unit select 1;
+                };
+                case "PISTOL_MAGAZINE": {
+                    _classname = handgunMagazine _unit select 0;
+                };
+
+                // items
+                case "MAP": {
+                    _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 0;
+                };
+                case "GPS": {
+                    _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 1;
+                };
+                case "RADIO": {
+                    _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 2;
+                };
+                case "COMPASS": {
+                    _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 3;
+                };
+                case "WATCH": {
+                    _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 4;
+                };
             };
 
-            // gear
-            case "HEADGEAR": {
-                _classname = headgear _unit;
-            };
-            case "GOGGLES": {
-                _classname = goggles _unit;
-            };
-            case "HMD": {
-                _classname = hmd _unit;
-            };
-            case "BINOCULAR": {
-                _classname = binocular _unit;
-            };
-
-            // rifle
-            case "RIFLE": {
-                _classname = primaryWeapon _unit;
-            };
-            case "RIFLE_SILENCER": {
-                _classname = primaryWeaponItems _unit select 0;
-            };
-            case "RIFLE_BIPOD": {
-                _classname = primaryWeaponItems _unit select 3;
-            };
-            case "RIFLE_OPTIC": {
-                _classname = primaryWeaponItems _unit select 2;
-            };
-            case "RIFLE_POINTER": {
-                _classname = primaryWeaponItems _unit select 1;
-            };
-            case "RIFLE_MAGAZINE": {
-                _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 4 param [0, ""];
-            };
-            case "RIFLE_MAGAZINE_GL": {
-                _classname = getUnitLoadout _unit param [0, ["","","","",[],[],""]] select 5 param [0, ""];
-            };
-
-            // launcher
-            case "LAUNCHER": {
-                _classname = secondaryWeapon _unit;
-            };
-            case "LAUNCHER_SILENCER": {
-                _classname = secondaryWeaponItems _unit select 0;
-            };
-            case "LAUNCHER_BIPOD": {
-                _classname = secondaryWeaponItems _unit select 3;
-            };
-            case "LAUNCHER_OPTIC": {
-                _classname = secondaryWeaponItems _unit select 2;
-            };
-            case "LAUNCHER_POINTER": {
-                _classname = secondaryWeaponItems _unit select 1;
-            };
-            case "LAUNCHER_MAGAZINE": {
-                _classname = secondaryWeaponMagazine _unit select 0;
-            };
-
-            // pistol
-            case "PISTOL": {
-                _classname = handgunWeapon _unit;
-            };
-            case "PISTOL_SILENCER": {
-                _classname = handgunItems _unit select 0;
-            };
-            case "PISTOL_BIPOD": {
-                _classname = handgunItems _unit select 3;
-            };
-            case "PISTOL_OPTIC": {
-                _classname = handgunItems _unit select 2;
-            };
-            case "PISTOL_POINTER": {
-                _classname = handgunItems _unit select 1;
-            };
-            case "PISTOL_MAGAZINE": {
-                _classname = handgunMagazine _unit select 0;
-            };
-
-            // items
-            case "MAP": {
-                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 0;
-            };
-            case "GPS": {
-                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 1;
-            };
-            case "RADIO": {
-                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 2;
-            };
-            case "COMPASS": {
-                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 3;
-            };
-            case "WATCH": {
-                _classname = getUnitLoadout _unit param [9, ["","","","","",""]] select 4;
-            };
-        };
-
-        [ctrlParent _control, _unit, _classname, _slotType] call FUNC(openItemContextMenu);
-    }];
-} forEach [
-    _uniformSlot, _vestSlot, _backpackSlot,
-    _uniformSlotBackground, _vestSlotBackground, _backpackSlotBackground,
-    _headgearSlot, _glassesSlot, _hmdSlot, _binocularSlot,
-    _rifleSlot, _rifleSilencerSlot, _rifleBipodSlot, _rifleOpticSlot, _riflePointerSlot, _rifleMagazine2Slot, _rifleMagazineSlot,
-    _launcherSlot, _launcherSilencerSlot, _launcherBipodSlot, _launcherOpticSlot, _launcherPointerSlot, _launcherMagazineSlot,
-    _pistolSlot, _pistolSilencerSlot, _pistolBipodSlot, _pistolOpticSlot, _pistolPointerSlot, _pistolMagazineSlot,
-    _mapSlot, _gpsSlot, _radioSlot, _compassSlot, _watchSlot
-];
+            [ctrlParent _control, _unit, _classname, _slotType] call FUNC(openItemContextMenu);
+        }];
+    } forEach [
+        _uniformSlot, _vestSlot, _backpackSlot,
+        _uniformSlotBackground, _vestSlotBackground, _backpackSlotBackground,
+        _headgearSlot, _glassesSlot, _hmdSlot, _binocularSlot,
+        _rifleSlot, _rifleSilencerSlot, _rifleBipodSlot, _rifleOpticSlot, _riflePointerSlot, _rifleMagazine2Slot, _rifleMagazineSlot,
+        _launcherSlot, _launcherSilencerSlot, _launcherBipodSlot, _launcherOpticSlot, _launcherPointerSlot, _launcherMagazineSlot,
+        _pistolSlot, _pistolSilencerSlot, _pistolBipodSlot, _pistolOpticSlot, _pistolPointerSlot, _pistolMagazineSlot,
+        _mapSlot, _gpsSlot, _radioSlot, _compassSlot, _watchSlot
+    ];
+};
 
 // Containers
 private _groundItems = _display displayCtrl IDC_FG_GROUND_ITEMS;
@@ -228,44 +231,54 @@ _uniformItems setVariable [QGVAR(containerType), "UNIFORM_CONTAINER"];
 _vestItems setVariable [QGVAR(containerType), "VEST_CONTAINER"];
 _backpackItems setVariable [QGVAR(containerType), "BACKPACK_CONTAINER"];
 
-{
-    _x ctrlAddEventHandler ["LBDblClick", {
-        params ["_control", "_index"];
-        private _unit = call CBA_fnc_currentUnit;
-
-        private _container = objNull;
-        private _containerType = _control getVariable QGVAR(containerType);
-        switch _containerType do {
-            case "GROUND": {
-                _container = GVAR(CurrentGroundItemHolder);
-            };
-            case "CARGO": {
-                _container = GVAR(CurrentContainer);
-            };
-            case "UNIFORM_CONTAINER": {
-                _container = uniformContainer _unit;
-            };
-            case "VEST_CONTAINER": {
-                _container = vestContainer _unit;
-            };
-            case "BACKPACK_CONTAINER": {
-                _container = backpackContainer _unit;
-            };
-        };
-
-        // Reports classname, but only for magazines.
-        private _classname = _control lbData _index;
-        if (_classname isEqualTo "") then {
-            // For weapons, items and glasses, use the lb index and compare with cargo item list.
-            private _cargoItems = weaponCargo _container + itemCargo _container + magazineCargo _container;
-            _cargoItems = _cargoItems arrayIntersect _cargoItems;
-
-            _classname = _cargoItems param [_index, ""];
-        };
-
-        [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
-    }];
-} forEach [
+private _controls = [
     _groundItems, _containerItems,
     _uniformItems, _vestItems, _backpackItems
 ];
+_display setVariable [QGVAR(controls), _controls];
+
+// Item Context Menu Framework - LBDblClick
+if !(isNil QGVAR(ItemContextMenuOptions)) then {
+    {
+        _x ctrlAddEventHandler ["LBDblClick", {
+            params ["_control", "_index"];
+            ([_control, _index] call FUNC(getInventoryItemData)) params ["_classname", "_container", "_containerType"];
+            [ctrlParent _control, _container, _classname, _containerType] call FUNC(openItemContextMenu);
+        }];
+    } forEach _controls;
+};
+
+// Item Rename Framework
+if !(isNil QGVAR(renamedItems)) then {
+    private _fnc_updateInventoryControls = {
+        params ["_display"];
+
+        {
+            private _control = _x;
+
+            if (ctrlShown _control) then {
+                for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do {
+                    private _classname = ([_control, _i] call FUNC(getInventoryItemData)) select 0;
+                    if (!isNil "_classname") then {
+                        private _renameParams = GVAR(renamedItems) getOrDefault [_classname, []];
+
+                        if (_renameParams isNotEqualTo []) then {
+                            _renameParams params ["_name", "_picture"];
+
+                            if (_name != "") then {
+                                _control lbSetText [_i, _name];
+                            };
+                            if (_picture != "") then {
+                                _control lbSetPicture [_i, _picture];
+                            };
+                        };
+                    };
+                };
+            };
+        } forEach (_display getVariable QGVAR(controls));
+    };
+
+    _display call _fnc_updateInventoryControls;
+    _display displayAddEventHandler ["MouseMoving", _fnc_updateInventoryControls];
+    _display displayAddEventHandler ["MouseHolding", _fnc_updateInventoryControls];
+};
