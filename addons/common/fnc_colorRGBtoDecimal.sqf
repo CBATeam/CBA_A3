@@ -15,7 +15,7 @@ Returns:
 
 Examples:
     (begin example)
-        [186,38,25] call test_fnc_colorRGBtoDecimal
+        [186,38,25] call CBA_fnc_colorRGBtoDecimal
     (end)
 
 Author:

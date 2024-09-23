@@ -24,5 +24,5 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(colorARGBtoDecimal);
 
-params [["_alpha", 0, [0]],["_red", 0, [0]],["_green", 0, [0]],["_blue", 0, [0]]];
+params [["_alpha", 255, [0]],["_red", 0, [0]],["_green", 0, [0]],["_blue", 0, [0]]];
 [_red,_green,_blue,_alpha] apply {(0 max _x min 255)/255}

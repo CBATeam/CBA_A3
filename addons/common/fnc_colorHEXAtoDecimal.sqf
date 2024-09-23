@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(colorHEXAtoDecimal);
 
-params [["_hexString", "00000000", [""]]];
+params [["_hexString", "000000FF", [""]]];
 
 _hexString = ((toUpperANSI _hexString) trim ["#", 0]) regexReplace ["[^0-9A-F]", "0"];
 
@@ -32,4 +32,4 @@ private _values = _hexString splitString "";
     call compile ("0x"+_values#2+_values#3),
     call compile ("0x"+_values#4+_values#5),
     call compile ("0x"+_values#6+_values#7)
-] call test_fnc_colorRGBAtoDecimal;
+] call CBA_fnc_colorRGBAtoDecimal;

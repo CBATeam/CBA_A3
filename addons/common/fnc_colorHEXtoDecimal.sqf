@@ -31,4 +31,4 @@ private _values = _hexString splitString "";
     call compile ("0x"+_values#0+_values#1),
     call compile ("0x"+_values#2+_values#3),
     call compile ("0x"+_values#4+_values#5)
-] call test_fnc_colorRGBtoDecimal;
+] call CBA_fnc_colorRGBtoDecimal;
