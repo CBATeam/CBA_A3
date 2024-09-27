@@ -10,7 +10,7 @@ Returns:
     Ingame RGB color format <ARRAY>
 Examples:
     (begin example)
-        "chartreuse" call CBA_fnc_colorAHEXtoDecimal
+        "chartreuse" call CBA_fnc_cssColorToDecimal
     (end)
 Author:
     Lambda.Tiger & drofseh
