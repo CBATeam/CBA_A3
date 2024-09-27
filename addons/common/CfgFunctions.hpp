@@ -143,6 +143,9 @@ class CfgFunctions {
             PATHTO_FNC(colorRGBtoDecimal);
             PATHTO_FNC(colorRGBAtoDecimal);
             PATHTO_FNC(colorARGBtoDecimal);
+            PATHTO_FNC(cssColorToDecimal);
+            PATHTO_FNC(cssColorToHEX);
+            PATHTO_FNC(cssColorToTexture);
         };
 
         class Broken {
