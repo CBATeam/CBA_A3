@@ -19,4 +19,4 @@ SCRIPT(cssColorToDecimal);
 
 params [["_colorKeyword", "orchid", [""]]];
 
-(GVAR(cssColorNames)  getOrDefault [toLowerANSI _colorKeyword,  [[0.6, 0.196, 0.8], "#9932CC", "#(rgb,8,8,3)color(0.6,0.196,0.8,1)"]) select 0
+(GVAR(cssColorNames) getOrDefault [toLowerANSI _colorKeyword,  [[0.6, 0.196, 0.8], "#9932CC", "#(rgb,8,8,3)color(0.6,0.196,0.8,1)"]]) select 0
