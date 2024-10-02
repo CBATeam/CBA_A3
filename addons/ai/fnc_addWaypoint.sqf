@@ -26,7 +26,7 @@ Example:
     (end)
 
 Returns:
-    Waypoint
+    [Group,Waypoint]
 
 Author:
     Rommel
