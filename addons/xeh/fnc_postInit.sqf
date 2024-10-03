@@ -19,6 +19,17 @@ Author:
 isNil {
     XEH_LOG("PostInit started. " + PFORMAT_9("MISSIONINIT",missionName,missionVersion,worldName,isMultiplayer,isServer,isDedicated,CBA_isHeadlessClient,hasInterface,didJIP));
 
+    addMissionEventHandler ["EntityCreated", {
+        params ["_entity"];
+        if !(ISPROCESSED(_entity)) then {
+            _entity call CBA_fnc_initEvents;
+
+            if !(ISINITIALIZED(_entity)) then {
+                _entity call CBA_fnc_init;
+            };
+        };
+    }];
+
     // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
     if (CBA_missionTime == -1) then {
         CBA_missionTime = 0;
