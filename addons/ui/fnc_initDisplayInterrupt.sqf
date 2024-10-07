@@ -76,26 +76,26 @@ _button ctrlRemoveEventHandler ["ButtonClick", 0]; // remove vanilla button
 _button ctrlAddEventHandler ["ButtonClick", {
     // this is an edit of a BI script, don't change unnecessarily
     params ["_ctrl"];
-    _display = ctrlParent _ctrl;
+    private _display = ctrlParent _ctrl;
 
     if (!ctrlCommitted _ctrl) exitWith {};
 
-    _buttons = + (_display getVariable QGVAR(MenuButtons));
+    private _buttons = + (_display getVariable QGVAR(MenuButtons));
 
-    _offset = 0;
+    private _offset = 0;
     if (!isMultiplayer && {getNumber (missionConfigFile >> "replaceAbortButton") > 0}) then {
         _offset = 1.1;
     };
 
-    _upperPartTime = 0.05 * count _buttons;
-    _buttonsTime = 0.05;
+    private _upperPartTime = 0.05 * count _buttons;
+    private _buttonsTime = 0.05;
 
     //hide buttons and collapse accordion
     if (uiNamespace getVariable "BIS_DisplayInterrupt_isOptionsExpanded") then {
         //move down - background, title, player's name, play, editor, profile, options
 
         //Title background
-        _control = _display displayCtrl 1050;
+        private _control = _display displayCtrl 1050;
         _control ctrlSetPosition [1 * GUI_GRID_W + GUI_GRID_X, (14.2 - _offset) * GUI_GRID_H + GUI_GRID_Y];
         _control ctrlCommit _upperPartTime;
 
@@ -167,7 +167,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         _offset = _offset + (count _buttons - 4) * 1.1;
 
         //Title background
-        _control = _display displayCtrl 1050;
+        private _control = _display displayCtrl 1050;
         _control ctrlSetPosition [1 * GUI_GRID_W + GUI_GRID_X, (9.8 - _offset) * GUI_GRID_H + GUI_GRID_Y];
         _control ctrlCommit _upperPartTime;
 

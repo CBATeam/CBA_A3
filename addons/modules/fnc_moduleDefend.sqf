@@ -64,7 +64,7 @@ if (isNil "_defendPos") then {_defendSetPos = true;};
 
 // Define if allowed to patrol
 _canPatrol = _logic getVariable ["canPatrol", 0.1];
-_shouldHold = _logic getVariable ["shouldHold", 0];
+private _shouldHold = _logic getVariable ["shouldHold", 0];
 
 // Command local group leaders to defend area
 _defendRadius = _logic getVariable ["defendRadius", 25];

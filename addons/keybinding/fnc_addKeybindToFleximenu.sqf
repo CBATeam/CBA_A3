@@ -35,7 +35,7 @@ Author:
 // Clients only.
 if (isDedicated) exitWith {};
 
-_nullKeybind = [-1, [false, false, false]];
+private _nullKeybind = [-1, [false, false, false]];
 
 params ["_modName", "_actionId", "_displayName", "_fleximenuDef", ["_defaultKeybind", _nullKeybind], ["_holdKey", true], ["_holdDelay", 0], ["_overwrite", false]];
 
@@ -52,10 +52,10 @@ if (count (_fleximenuDef select 1) > 0) then {
 _fleximenuDef call cba_fnc_flexiMenu_add;
 
 // Create the code to open the fleximenu.
-_downCode = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDef];
-_upCode = {};
+private _downCode = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDef];
+private _upCode = {};
 
 // Pass everything to the new API cba_fnc_addKeybind.
-_keybind = [_modName, _actionId, _displayName, _downCode, _upCode, _defaultKeybind, _holdKey, _holdDelay, _overwrite] call CBA_fnc_addKeybind;
+private _keybind = [_modName, _actionId, _displayName, _downCode, _upCode, _defaultKeybind, _holdKey, _holdDelay, _overwrite] call CBA_fnc_addKeybind;
 
 _keybind;

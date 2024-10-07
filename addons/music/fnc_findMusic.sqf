@@ -61,8 +61,8 @@ private _results = [];
 
                 _tags pushBackUnique _theme; //Take the theme if no tags found
 
-                for [{_i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
-                    _tag = toLower (_tags select _i);
+                for [{private _i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
+                    private _tag = toLower (_tags select _i);
                     if (count _searchTags == 0 || {_tag in _searchTags}) then {
                         _i = count _tags;
                         _results pushBackUnique _track;

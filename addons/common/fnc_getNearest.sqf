@@ -37,7 +37,7 @@ params [
 private _return = [[], objNull] select (isNil {param [2]});
 
 {
-    _distance = [_position, _x] call CBA_fnc_getDistance;
+    private _distance = [_position, _x] call CBA_fnc_getDistance;
 
     if (_distance < _radius) then {
         if !(call _code) exitWith {}; // don't move up. condition has to return false, vs. has to return true. Can be nil!
