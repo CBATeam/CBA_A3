@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _setting     - Unique setting name. Matches resulting variable name <STRING>
-    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    _settingType - Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER", "COLOR" or "TIME" <STRING>
     _title       - Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
     _category    - Category for the settings menu + optional sub-category <STRING, ARRAY>
     _valueInfo   - Extra properties of the setting depending of _settingType. See examples below <ANY>
