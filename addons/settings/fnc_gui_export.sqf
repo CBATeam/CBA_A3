@@ -2,7 +2,7 @@
 
 params ["_parentDisplay", "_mode"];
 
-_display = _parentDisplay createDisplay QGVAR(export);
+private _display = _parentDisplay createDisplay QGVAR(export);
 
 private _ctrlPresetsGroup = _display displayCtrl IDC_EXPORT_GROUP;
 private _ctrlTitle = _display displayCtrl IDC_EXPORT_TITLE;
