@@ -30,7 +30,7 @@ isNil {
         };
     }];
     
-    // init object incomp
+    // init object incompatile XEH
     {
         if !(ISPROCESSED(_x)) then {
             _x call CBA_fnc_initEvents;
