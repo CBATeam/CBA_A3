@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(test_ret);
 
-// execVM "\x\cba\addons\common\test_ret.sqf";
+// execVM "\x\cba\addons\common\test_ret.inc.sqf";
 
 private ["_funcName", "_result"];
 

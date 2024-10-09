@@ -108,6 +108,7 @@ if (isMultiplayer) then {
         [QFUNC(missionTimePFH), {
             SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
+                //IGNORE_PRIVATE_WARNING ["_tickTime"];
                 CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                 GVAR(lastTime) = time; // used to detect paused game
             };
