@@ -21,7 +21,7 @@ isNil {
 
     addMissionEventHandler ["EntityCreated", {
         params ["_entity"];
-        if !(ISPROCESSED(_entity)) then {
+        if ((!ISPROCESSED(_entity)) && (ISINCOMP(typeof _entity))) then {
             _entity call CBA_fnc_initEvents;
 
             if !(ISINITIALIZED(_entity)) then {
@@ -29,6 +29,17 @@ isNil {
             };
         };
     }];
+    
+    // init object incomp
+    {
+        if !(ISPROCESSED(_x)) then {
+            _x call CBA_fnc_initEvents;
+
+            if !(ISINITIALIZED(_x)) then {
+                _x call CBA_fnc_init;
+            };
+        };
+    } forEach (entities [(call (uiNamespace getVariable [QGVAR(incompatibleClasses), {[]}])), [], true, true]);
 
     // fix CBA_missionTime being -1 on (non-JIP) clients at mission start.
     if (CBA_missionTime == -1) then {
