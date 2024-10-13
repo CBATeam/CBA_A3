@@ -51,6 +51,7 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 private _font = getText (configFile >> QGVAR(ItemContextMenu) >> "font");
 private _fontSize = getNumber (configFile >> ctrlClassName _list >> "sizeEx");
 private _longestName = "";
+private _unit = call CBA_fnc_currentUnit;
 
 // ---
 // Populate context menu with options.
