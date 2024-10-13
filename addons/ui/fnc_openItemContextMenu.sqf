@@ -58,7 +58,6 @@ private _unit = call CBA_fnc_currentUnit;
 {
     _x params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
 
-    //IGNORE_PRIVATE_WARNING ["_unit"]; // seems to come from upper scopes
     private _args = [_unit, _container, _item, _slot, _params];
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
