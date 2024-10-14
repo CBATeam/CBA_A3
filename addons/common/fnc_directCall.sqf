@@ -28,6 +28,7 @@ private "_CBA_return";
 
 isNil {
     // Wrap the _CBA_code in an extra call block to prevent problems with exitWith and apply
+    //IGNORE_PRIVATE_WARNING ["_x"];
     _CBA_return = ([_x] apply {call _CBA_code}) select 0;
 };
 

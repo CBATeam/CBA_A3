@@ -120,6 +120,7 @@ private _parse = {
                         };
 
                         if !(_error) then {
+                            //IGNORE_PRIVATE_WARNING ["_data"];
                             _data pushBack _value;
                             _mode = YAML_MODE_STRING;
                         };
