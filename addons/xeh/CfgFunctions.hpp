@@ -9,7 +9,6 @@ class CfgFunctions {
             PATHTO_FNC(supportMonitor);
             PATHTO_FNC(compileEventHandlers);
             PATHTO_FNC(compileFunction);
-            PATHTO_FNC(startFallbackLoop);
 
             class preStart {
                 preStart = 1;
