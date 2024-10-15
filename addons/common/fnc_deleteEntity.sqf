@@ -30,7 +30,7 @@ switch (typeName _entity) do {
         } forEach _entity;
     };
     case "OBJECT" : {
-        if (vehicle _entity != _entity) then {
+        if (!isNull objectParent _entity) then {
             unassignVehicle _entity;
             _entity setPosASL [0,0,0];
         } else {

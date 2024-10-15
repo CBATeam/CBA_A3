@@ -23,7 +23,7 @@ SCRIPT(canUseWeapon);
 
 params [["_unit", objNull, [objNull]]];
 
-if (_unit == vehicle _unit) exitWith {true};
+if (isNull objectParent _unit) exitWith {true};
 
 private _config = configFile >> "CfgMovesMaleSdr" >> "States" >> animationState _unit;
 
