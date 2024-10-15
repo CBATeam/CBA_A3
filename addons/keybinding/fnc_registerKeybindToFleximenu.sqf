@@ -33,7 +33,7 @@ Author:
 if (isDedicated) exitWith {};
 diag_log text format ["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKeybindToFleximenu is no longer a valid function and has been replaced with CBA_fnc_addKeybindToFleximenu. Contact the developer of mod %1 to change the code to use the new function.", _this select 0,_this select 1];
 
-_nullKeybind = [-1, false, false, false];
+private _nullKeybind = [-1, false, false, false];
 
 params ["_modName", "_actionName", "_fleximenuDef", ["_defaultKeybind", _nullKeybind], ["_overwrite", false], ["_keypressType", "KeyDown"]];
 
@@ -48,9 +48,9 @@ if (count (_fleximenuDef select 1) > 0) then {
 _fleximenuDef call cba_fnc_flexiMenu_add;
 
 // Create the code to open the fleximenu.
-_code = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDef];
+private _code = compile format ["%1 call cba_fnc_fleximenu_openMenuByDef;", _fleximenuDef];
 
 // Pass everything to the real cba_fnc_registerKeybind.
-_keybind = [_modName, _actionName, _code, _defaultKeybind, _overwrite, _keypressType] call CBA_fnc_registerKeybind;
+private _keybind = [_modName, _actionName, _code, _defaultKeybind, _overwrite, _keypressType] call CBA_fnc_registerKeybind;
 
 _keybind;

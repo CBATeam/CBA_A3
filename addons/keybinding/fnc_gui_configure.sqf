@@ -6,17 +6,17 @@ params ["_control"];
 // get dialog
 private _display = ctrlParent _control;
 
-_ctrlKeyboardGroup = _display displayCtrl 2300;
-_ctrlMouseGroup = _display displayCtrl 2301;
-_ctrlKeyboardButton = _display displayCtrl 2400;
-_ctrlMouseButton = _display displayCtrl 2401;
-_ctrlControllerButton = _display displayCtrl 106;
-_ctrlPresetButton = _display displayCtrl 114;
-_ctrlDefaultButton = _display displayCtrl 101;
+private _ctrlKeyboardGroup = _display displayCtrl 2300;
+private _ctrlMouseGroup = _display displayCtrl 2301;
+private _ctrlKeyboardButton = _display displayCtrl 2400;
+private _ctrlMouseButton = _display displayCtrl 2401;
+private _ctrlControllerButton = _display displayCtrl 106;
+private _ctrlPresetButton = _display displayCtrl 114;
+private _ctrlDefaultButton = _display displayCtrl 101;
 
-_ctrlKeyboardButtonFake = _display displayCtrl IDC_BTN_KEYBOARD_FAKE;
-_ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
-_ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
+private _ctrlKeyboardButtonFake = _display displayCtrl IDC_BTN_KEYBOARD_FAKE;
+private _ctrlAddonsGroup = _display displayCtrl IDC_ADDONS_GROUP;
+private _ctrlToggleButton = _display displayCtrl IDC_BTN_CONFIGURE_ADDONS;
 
 // Toggle displayed groups and buttons.
 if !(ctrlShown _ctrlAddonsGroup) then {
