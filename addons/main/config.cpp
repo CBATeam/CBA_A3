@@ -31,7 +31,8 @@ class CfgPatches {
             "cba_ui",
             "cba_versioning",
             "cba_optics",
-            "cba_disposable"
+            "cba_disposable",
+            "cba_quicktime"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
