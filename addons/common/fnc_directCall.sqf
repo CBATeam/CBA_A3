@@ -22,14 +22,14 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_CBA_code", {}, [{}]], ["_this", []]];
+params [["_CBA_code", {}, [{}]], ["_args", []]];
 
 private "_CBA_return";
 
 isNil {
     // Wrap the _CBA_code in an extra call block to prevent problems with exitWith and apply
     //IGNORE_PRIVATE_WARNING ["_x"];
-    _CBA_return = ([_x] apply {call _CBA_code}) select 0;
+    _CBA_return = ([_x] apply {_args call _CBA_code}) select 0;
 };
 
 if (!isNil "_CBA_return") then {_CBA_return};

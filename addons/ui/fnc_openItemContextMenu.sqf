@@ -111,11 +111,11 @@ private _unit = call CBA_fnc_currentUnit;
 // Execute context menu option statement on selection.
 _list setVariable [QFUNC(activate), {
     params ["_list", "_index"];
-    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_this"];
+    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_args"];
 
-    if (_this call _condition) then {
+    if (_args call _condition) then {
         if (_consume) then {
-            params ["_unit", "_container", "_item", "_slot"];
+            _args params ["_unit", "_container", "_item", "_slot"];
 
             if !([_unit, _item, _slot, _container] call CBA_fnc_consumeItem) then {
                 ERROR_2("Cannot consume item %1 from %2.",_item,_slot);
@@ -125,7 +125,7 @@ _list setVariable [QFUNC(activate), {
 
         // Call statement and safe check return value.
         private _keepOpen = [nil] apply {
-            private _args = [_this, _statement];
+            private _args = [_args, _statement];
             private ["_list", "_index", "_condition", "_statement", "_consume"];
             (_args select 0) call (_args select 1) // return
         } param [0, false] isEqualTo true;
@@ -135,7 +135,7 @@ _list setVariable [QFUNC(activate), {
             // Keep focus to prevent auto closing.
             ctrlSetFocus _list;
         } else {
-            [{ctrlDelete _this}, _list] call CBA_fnc_execNextFrame;
+            [{ctrlDelete _args}, _list] call CBA_fnc_execNextFrame;
         };
     };
 }];
