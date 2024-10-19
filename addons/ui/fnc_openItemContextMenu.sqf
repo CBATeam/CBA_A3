@@ -125,9 +125,9 @@ _list setVariable [QFUNC(activate), {
 
         // Call statement and safe check return value.
         private _keepOpen = [nil] apply {
-            private _this = [_this, _statement];
+            private _args = [_this, _statement];
             private ["_list", "_index", "_condition", "_statement", "_consume"];
-            (_this select 0) call (_this select 1) // return
+            (_args select 0) call (_args select 1) // return
         } param [0, false] isEqualTo true;
 
         // If statement returned true, keep context menu open, otherwise close.

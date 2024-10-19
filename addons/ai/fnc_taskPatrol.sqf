@@ -54,10 +54,10 @@ _position = _position call CBA_fnc_getPos;
 } forEach units _group;
 
 // Can pass parameters straight through to addWaypoint
-_this =+ _this;
-_this set [2,-1];
-if (count _this > 3) then {
-    _this deleteAt 3;
+private _args = +_this;
+_args set [2,-1];
+if (count _args > 3) then {
+    _args deleteAt 3;
 };
 
 // Using angles create better patrol patterns
@@ -71,12 +71,12 @@ for "_i" from 1 to _count do {
     // Alternate sides of circle & modulate offset
     private _theta = (_i % 2) * 180 + sin (deg (_step * _i)) * _offset + _step * _i;
 
-    _this set [1, _position getPos [_rad, _theta]];
-    _this call CBA_fnc_addWaypoint;
+    _args set [1, _position getPos [_rad, _theta]];
+    _args call CBA_fnc_addWaypoint;
 };
 
 // Close the patrol loop
-_this set [1, _position];
-_this set [2, _radius];
-_this set [3, "CYCLE"];
-_this call CBA_fnc_addWaypoint;
+_args set [1, _position];
+_args set [2, _radius];
+_args set [3, "CYCLE"];
+_args call CBA_fnc_addWaypoint;
