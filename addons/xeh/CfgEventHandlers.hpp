@@ -70,6 +70,7 @@ class Extended_LandedStopped_EventHandlers {};
 class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LeaningChanged_EventHandlers {};
 class Extended_Local_EventHandlers {};
+class Extended_MagazineReloading_EventHandlers {};
 class Extended_MagazineUnloaded_EventHandlers {};
 class Extended_OpticsModeChanged_EventHandlers {};
 class Extended_OpticsSwitch_EventHandlers {};
