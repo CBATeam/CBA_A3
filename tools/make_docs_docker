@@ -1,10 +1,12 @@
 #!/bin/bash
 
-docker pull jokoho482/naturaldocs-1-52
+docker build . -t natural-docs-1-52 -f tools/natural-docs.dockerfile
 
-docker run -d -i -t -v "$(pwd)/:/cba" --name CBA_A3_Make_Docs jokoho482/naturaldocs-1-52
+docker run -d -i -t -v "$(pwd)/:/cba" --name CBA_A3_Make_Docs natural-docs-1-52
 
-docker exec CBA_A3_Make_Docs /bin/bash -c "chmod +x cba/tools/make_docs;apt install fakeroot -y;cd cba/tools/;./make_docs"
+docker exec CBA_A3_Make_Docs apt install fakeroot -y;
+docker exec CBA_A3_Make_Docs chmod +x cba/tools/make_docs
+docker exec CBA_A3_Make_Docs /bin/bash -c "cd cba/tools/; ./make_docs"
 
 docker kill CBA_A3_Make_Docs
 
