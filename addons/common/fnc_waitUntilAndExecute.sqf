@@ -9,11 +9,11 @@ Description:
 
 Parameters:
     _condition   - The function to evaluate as condition. <CODE>
-    _statement   - The function to run once the condition is true. <CODE>
+    _statement   - The function to run if the condition is true before timeout. <CODE>
     _args        - Parameters passed to the functions (statement and condition) executing. (optional) <ANY>
     _timeout     - If >= 0, timeout for the condition in seconds.  If < 0, no timeout.
                    Exactly 0 means timeout immediately on the next iteration.(optional, default -1) <NUMBER>
-    _timeoutCode - Will execute instead of _statement if the condition times out. (optional) <CODE>
+    _timeoutCode - Will execute if condition times out. (optional) <CODE>
 
 Passed Arguments:
     _this      - Parameters passed by this function. Same as '_args' above. <ANY>
