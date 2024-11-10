@@ -37,8 +37,7 @@ Author:
 
 // ----------------------------------------------------------------------------
 
-DEFAULT_PARAM(0,_addon,"cba");
-DEFAULT_PARAM(1,_component,"main");
+params [["_addon", "cba"], ["_component", "main"]];
 
 LOG('===== STARTING TESTS =====');
 
