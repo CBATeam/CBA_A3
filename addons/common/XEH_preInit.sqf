@@ -77,4 +77,7 @@ activateAddons GVAR(addons);
 // Facewear randomization
 ["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
 
+// Load preStart css color array
+GVAR(cssColorNames) = uiNamespace getVariable QGVAR(cssColorNames);
+
 ADDON = true;

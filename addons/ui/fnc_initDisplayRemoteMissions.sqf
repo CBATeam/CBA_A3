@@ -158,6 +158,7 @@ _display setVariable [QFUNC(filter), {
             _ctrlMissions lbSetColor [_index, _color];
             _ctrlMissions lbSetPicture [_index, _picture];
             _ctrlMissions lbSetPictureRight [_index, _pictureRight];
+            _ctrlMissions lbSetTooltip [_index, format ["%1", _data]];
         };
     } forEach _missions;
 
