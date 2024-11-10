@@ -271,7 +271,7 @@ if (count _yaml > 0) then
 
 _pos = -1;
 
-_retVal = ([_yaml, _pos, -1, [[]]] call _parse);
+private _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
 _pos = _retVal select 0;
 _value = _retVal select 1;
 _error = _retVal select 2;
