@@ -3,18 +3,18 @@
     <Package name="Statemachine">
         <Key ID="STR_cba_statemachine_Component">
             <English>Community Base Addons - State Machine</English>
+            <Czech>Community Base Addons - State Machine</Czech>
+            <French>Community Base Addons - Machine d'états</French>
+            <Italian>Community Base Addons - Macchina a stati finiti</Italian>
+            <Polish>Community Base Addons - Komponent Maszyny Stanów</Polish>
+            <Portuguese>Extensões de Base Comunitária - Component da Máquina de Estado</Portuguese>
+            <Russian>Community Base Addons - Компонент Машины Состояний</Russian>
             <German>Community Base Addons - State Machine</German>
+            <Korean>커뮤니티 베이스 애드온 - 상태 머신</Korean>
             <Japanese>Community Base Addons - ステート マシーン要素</Japanese>
             <Chinese>社群基礎模組 - 狀態機組件</Chinese>
             <Chinesesimp>社群基础模组 - 状态机组件</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Component da Máquina de Estado</Portuguese>
-            <Russian>Community Base Addons - Компонент Машины Состояний</Russian>
-            <Polish>Community Base Addons - Komponent Maszyny Stanów</Polish>
-            <French>Community Base Addons - Machine d'états</French>
             <Turkish>Community Base Addons - Durum Makinası</Turkish>
-            <Italian>Community Base Addons - Macchina a stati finiti</Italian>
-            <Czech>Community Base Addons - State Machine</Czech>
-            <Korean>커뮤니티 베이스 애드온 - 상태 머신</Korean>
         </Key>
     </Package>
 </Project>
