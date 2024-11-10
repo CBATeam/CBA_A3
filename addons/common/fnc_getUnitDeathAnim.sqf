@@ -27,7 +27,7 @@ private _deathAnim = "";
 private _curAnim = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
 
 if (isText (_curAnim >> "actions")) then {
-    if (vehicle _unit == _unit) then {
+    if (isNull objectParent _unit) then {
         private _deathAnimCfg = (configFile >> "CfgMovesBasic" >> "Actions" >> (getText (_curAnim >> "actions")) >> "die");
         if (isText _deathAnimCfg) then {
             _deathAnim = getText _deathAnimCfg;
