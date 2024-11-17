@@ -1,4 +1,3 @@
-
     class CBA_40SW_CZ2075 {};       // Subcompact CZ 2075 in .40 S&W
     class CBA_40SW_CZ75_Cpct {};    // Compact CZ 75, CZ 85 in .40 S&W
     class CBA_40SW_CZ75_Full {};    // Fullsize CZ 75, CZ 85 in .40 S&W
@@ -12,3 +11,6 @@
     class CBA_40SW_P229 {};         // SIG P229 .40 S&W
     class CBA_40SW_P239 {};         // SIG P239 .40 S&W
     class CBA_40SW_UMP {};          // HK UMP 40
+    class CBA_40SW_USP {};          // HK USP, USP40, USP Tactical in .40S&W
+    class CBA_40SW_USP_C {};        // HK USP Compact in .40S&W
+    class CBA_40SW_USP_E {};        // HK USP Match/Expert in .40S&W

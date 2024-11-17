@@ -38,3 +38,4 @@
         };
     };
     class CBA_40mm_M203_6rnds {};   // 6 loose M203 type grenades for M32 MGL
+    class CBA_40mm_M203_12rnds {};  // 12 loose M203 type grenades for Hawk MM-1
