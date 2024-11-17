@@ -3,93 +3,93 @@
     <Package name="Main">
         <Key ID="STR_CBA_Author">
             <English>CBA Team</English>
+            <Czech>CBA tým</Czech>
+            <French>Équipe CBA</French>
+            <Italian>Squadra CBA</Italian>
+            <Polish>Zespół CBA</Polish>
+            <Portuguese>Time CBA</Portuguese>
+            <Russian>Команда CBA</Russian>
             <German>CBA-Team</German>
+            <Korean>CBA 팀</Korean>
             <Japanese>CBA チーム</Japanese>
             <Chinese>CBA製作組</Chinese>
             <Chinesesimp>CBA制作组</Chinesesimp>
-            <Portuguese>Time CBA</Portuguese>
-            <Russian>Команда CBA</Russian>
-            <French>Équipe CBA</French>
-            <Polish>Zespół CBA</Polish>
             <Turkish>CBA Takımı</Turkish>
-            <Italian>Squadra CBA</Italian>
-            <Czech>CBA tým</Czech>
-            <Korean>CBA 팀</Korean>
+        </Key>
+        <Key ID="STR_CBA_Main_AddonText">
+            <English>ADDON:</English>
+            <Czech>ADDON:</Czech>
+            <French>ADDON:</French>
+            <Italian>ADDON:</Italian>
+            <Polish>ADDON:</Polish>
+            <Russian>Дополнение:</Russian>
+            <German>ADDON:</German>
+            <Korean>애드온:</Korean>
+            <Japanese>アドオン:</Japanese>
+            <Chinese>模組:</Chinese>
+            <Chinesesimp>模组:</Chinesesimp>
+            <Turkish>EKLENTİ:</Turkish>
+        </Key>
+        <Key ID="STR_CBA_Main_Component">
+            <English>Community Base Addons - Main Component</English>
+            <Czech>Community Base Addons - Hlavní součást</Czech>
+            <French>Community Base Addons - Composant principal</French>
+            <Italian>Community Base Addons - Componente Principale</Italian>
+            <Polish>Community Base Addons - Główny Komponent</Polish>
+            <Portuguese>Extensões de Base Comunitária - Componente Principal</Portuguese>
+            <Russian>Community Base Addons - Основной Компонент</Russian>
+            <German>Community Base Addons - Hauptkomponente</German>
+            <Korean>커뮤니티 베이스 애드온 - 메인 구성 요소</Korean>
+            <Japanese>Community Base Addons - メイン要素</Japanese>
+            <Chinese>社群基礎模組 - 主要組件</Chinese>
+            <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
+            <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
+        </Key>
+        <Key ID="STR_CBA_Main_DisplayName">
+            <English>Community Base Addons</English>
+            <Czech>Community Base Addons</Czech>
+            <French>Community Base Addons</French>
+            <Italian>Community Base Addons</Italian>
+            <Polish>Community Base Addons</Polish>
+            <Portuguese>Extensões de Base Comunitária</Portuguese>
+            <Russian>Community Base Addons</Russian>
+            <German>Community Base Addons</German>
+            <Korean>커뮤니티 베이스 애드온</Korean>
+            <Japanese>Community Base Addons</Japanese>
+            <Chinese>社群基礎模組</Chinese>
+            <Chinesesimp>社群基础模组</Chinesesimp>
+            <Turkish>Community Base Addons</Turkish>
+        </Key>
+        <Key ID="STR_CBA_Optional_Component">
+            <English>Community Base Addons - Optional Component</English>
+            <Czech>Community Base Addons - Volitelná součást</Czech>
+            <French>Community Base Addons - Composant facultatif</French>
+            <Italian>Community Base Addons - Componente Opzionale</Italian>
+            <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
+            <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
+            <Russian>Community Base Addons - Опциональный Компонент</Russian>
+            <German>Community Base Addons - Optionale Komponente</German>
+            <Korean>커뮤니티 베이스 애드온 - 선택적 요소</Korean>
+            <Japanese>Community Base Addons - オプション要素</Japanese>
+            <Chinese>社群基礎模組 - 可選組件</Chinese>
+            <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
+            <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
+            <Czech>https://www.github.com/CBATeam/CBA_A3</Czech>
             <French>https://www.github.com/CBATeam/CBA_A3</French>
             <Spanish>https://www.github.com/CBATeam/CBA_A3</Spanish>
             <Italian>https://www.github.com/CBATeam/CBA_A3</Italian>
             <Polish>https://www.github.com/CBATeam/CBA_A3</Polish>
+            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
             <Russian>https://www.github.com/CBATeam/CBA_A3</Russian>
             <German>https://www.github.com/CBATeam/CBA_A3</German>
-            <Czech>https://www.github.com/CBATeam/CBA_A3</Czech>
-            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
-            <Portuguese>https://www.github.com/CBATeam/CBA_A3</Portuguese>
             <Korean>https://www.github.com/CBATeam/CBA_A3</Korean>
+            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
+            <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
             <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
             <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
-            <Japanese>https://www.github.com/CBATeam/CBA_A3</Japanese>
-        </Key>
-        <Key ID="STR_CBA_Main_DisplayName">
-            <English>Community Base Addons</English>
-            <German>Community Base Addons</German>
-            <Japanese>Community Base Addons</Japanese>
-            <Chinese>社群基礎模組</Chinese>
-            <Chinesesimp>社群基础模组</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária</Portuguese>
-            <Russian>Community Base Addons</Russian>
-            <French>Community Base Addons</French>
-            <Polish>Community Base Addons</Polish>
-            <Turkish>Community Base Addons</Turkish>
-            <Italian>Community Base Addons</Italian>
-            <Czech>Community Base Addons</Czech>
-            <Korean>커뮤니티 베이스 애드온</Korean>
-        </Key>
-        <Key ID="STR_CBA_Main_Component">
-            <English>Community Base Addons - Main Component</English>
-            <German>Community Base Addons - Hauptkomponente</German>
-            <Japanese>Community Base Addons - メイン要素</Japanese>
-            <Chinese>社群基礎模組 - 主要組件</Chinese>
-            <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Componente Principal</Portuguese>
-            <Russian>Community Base Addons - Основной Компонент</Russian>
-            <French>Community Base Addons - Composant principal</French>
-            <Polish>Community Base Addons - Główny Komponent</Polish>
-            <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
-            <Italian>Community Base Addons - Componente Principale</Italian>
-            <Czech>Community Base Addons - Hlavní součást</Czech>
-            <Korean>커뮤니티 베이스 애드온 - 메인 구성 요소</Korean>
-        </Key>
-        <Key ID="STR_CBA_Optional_Component">
-            <English>Community Base Addons - Optional Component</English>
-            <German>Community Base Addons - Optionale Komponente</German>
-            <Japanese>Community Base Addons - オプション要素</Japanese>
-            <Chinese>社群基礎模組 - 可選組件</Chinese>
-            <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Componente Opcional</Portuguese>
-            <Russian>Community Base Addons - Опциональный Компонент</Russian>
-            <French>Community Base Addons - Composant facultatif</French>
-            <Polish>Community Base Addons - Komponent Opcjonalny</Polish>
-            <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
-            <Italian>Community Base Addons - Componente Opzionale</Italian>
-            <Czech>Community Base Addons - Volitelná součást</Czech>
-            <Korean>커뮤니티 베이스 애드온 - 선택적 요소</Korean>
-        </Key>
-        <Key ID="STR_CBA_Main_AddonText">
-            <English>ADDON:</English>
-            <German>ADDON:</German>
-            <Russian>Дополнение:</Russian>
-            <Chinese>模組:</Chinese>
-            <Chinesesimp>模组:</Chinesesimp>
-            <Japanese>アドオン:</Japanese>
-            <French>ADDON:</French>
-            <Polish>ADDON:</Polish>
-            <Turkish>EKLENTİ:</Turkish>
-            <Italian>ADDON:</Italian>
-            <Czech>ADDON:</Czech>
-            <Korean>애드온:</Korean>
         </Key>
     </Package>
 </Project>
