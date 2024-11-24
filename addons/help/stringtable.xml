@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Help">
-        <Key ID="STR_CBA_Help_Component">
-            <English>Community Base Addons - Help</English>
-            <German>Community Base Addons - Hilfe</German>
-            <Japanese>Community Base Addons - ヘルプ</Japanese>
-            <Chinese>社群基礎模組 - 幫助</Chinese>
-            <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
-            <Portuguese>Extensões de Base Comunitária - Ajuda</Portuguese>
-            <Russian>Community Base Addons - Помощь</Russian>
-            <Polish>Community Base Addons - Pomoc</Polish>
-            <French>Community Base Addons - Aide</French>
-            <Turkish>Community Base Addons - Yardım</Turkish>
-            <Italian>Community Base Addons - Aiuto</Italian>
-            <Czech>Community Base Addons - Pomoc</Czech>
-            <Korean>커뮤니티 베이스 애드온 - 도움</Korean>
-        </Key>
-        <Key ID="STR_CBA_Help_Keys">
-            <English>Keybindings</English>
-            <German>Tastendruckzuweisung</German>
-            <Spanish>Keybindings</Spanish>
-            <Czech>Klávesy</Czech>
-            <Russian>Назначения клавиш</Russian>
-            <Italian>Tasti</Italian>
-            <Polish>Klawisze</Polish>
-            <French>Raccourcis clavier</French>
-            <Hungarian>Keybindings</Hungarian>
-            <Japanese>キー割り当て</Japanese>
-            <Chinese>按鍵綁定</Chinese>
-            <Chinesesimp>按键绑定</Chinesesimp>
-            <Turkish>Klavye Tuşları</Turkish>
-            <Korean>키 설정</Korean>
-        </Key>
-        <Key ID="STR_CBA_Credits">
-            <English>Credits</English>
-            <German>Credits</German>
-            <Spanish>Credits</Spanish>
-            <Czech>Tvůrci</Czech>
-            <Russian>Создатели</Russian>
-            <Italian>Riconoscimenti</Italian>
-            <Polish>Twórcy</Polish>
-            <French>Credits</French>
-            <Hungarian>Credits</Hungarian>
-            <Japanese>クレジット</Japanese>
-            <Chinese>製作組</Chinese>
-            <Chinesesimp>制作组</Chinesesimp>
-            <Turkish>Yapımcılar</Turkish>
-            <Korean>크레딧</Korean>
-        </Key>
         <Key ID="STR_CBA_Addons">
             <English>Addons</English>
-            <German>Addons</German>
-            <Spanish>Addons</Spanish>
             <Czech>Addony</Czech>
-            <Russian>Дополнения</Russian>
+            <French>Addons</French>
+            <Spanish>Addons</Spanish>
             <Italian>Addons</Italian>
             <Polish>Addons</Polish>
-            <French>Addons</French>
-            <Hungarian>Addons</Hungarian>
+            <Russian>Дополнения</Russian>
+            <German>Addons</German>
+            <Korean>애드온</Korean>
             <Japanese>アドオン</Japanese>
             <Chinese>模組</Chinese>
             <Chinesesimp>模组</Chinesesimp>
             <Turkish>Modüller</Turkish>
-            <Korean>애드온</Korean>
+            <Hungarian>Addons</Hungarian>
+        </Key>
+        <Key ID="STR_CBA_Credits">
+            <English>Credits</English>
+            <Czech>Tvůrci</Czech>
+            <French>Credits</French>
+            <Spanish>Credits</Spanish>
+            <Italian>Riconoscimenti</Italian>
+            <Polish>Twórcy</Polish>
+            <Russian>Создатели</Russian>
+            <German>Credits</German>
+            <Korean>크레딧</Korean>
+            <Japanese>クレジット</Japanese>
+            <Chinese>製作組</Chinese>
+            <Chinesesimp>制作组</Chinesesimp>
+            <Turkish>Yapımcılar</Turkish>
+            <Hungarian>Credits</Hungarian>
+        </Key>
+        <Key ID="STR_CBA_Help_Component">
+            <English>Community Base Addons - Help</English>
+            <Czech>Community Base Addons - Pomoc</Czech>
+            <French>Community Base Addons - Aide</French>
+            <Italian>Community Base Addons - Aiuto</Italian>
+            <Polish>Community Base Addons - Pomoc</Polish>
+            <Portuguese>Extensões de Base Comunitária - Ajuda</Portuguese>
+            <Russian>Community Base Addons - Помощь</Russian>
+            <German>Community Base Addons - Hilfe</German>
+            <Korean>커뮤니티 베이스 애드온 - 도움</Korean>
+            <Japanese>Community Base Addons - ヘルプ</Japanese>
+            <Chinese>社群基礎模組 - 幫助</Chinese>
+            <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
+            <Turkish>Community Base Addons - Yardım</Turkish>
+        </Key>
+        <Key ID="STR_CBA_Help_Keys">
+            <English>Keybindings</English>
+            <Czech>Klávesy</Czech>
+            <French>Raccourcis clavier</French>
+            <Spanish>Keybindings</Spanish>
+            <Italian>Tasti</Italian>
+            <Polish>Klawisze</Polish>
+            <Russian>Назначения клавиш</Russian>
+            <German>Tastendruckzuweisung</German>
+            <Korean>키 설정</Korean>
+            <Japanese>キー割り当て</Japanese>
+            <Chinese>按鍵綁定</Chinese>
+            <Chinesesimp>按键绑定</Chinesesimp>
+            <Turkish>Klavye Tuşları</Turkish>
+            <Hungarian>Keybindings</Hungarian>
         </Key>
     </Package>
 </Project>
