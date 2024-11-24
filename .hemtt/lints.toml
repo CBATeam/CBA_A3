@@ -10,7 +10,7 @@ options.ignore = [
 
 [sqf.undefined]
 enabled = true
-options.check_oprhan_code = true
+options.check_orphan_code = true
 
 [sqf.unused]
 enabled = false
