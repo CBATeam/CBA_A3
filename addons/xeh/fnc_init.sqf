@@ -39,8 +39,8 @@ if !(ISINITIALIZED(_object)) then {
     if (SLX_XEH_MACHINE select 8) then {
         [{
             {
-                [_object] call _x;
-            } forEach (_object getVariable QGVAR(initPost));
+                [_this] call _x;
+            } forEach (_this getVariable QGVAR(initPost));
         }, _object] call CBA_fnc_execNextFrame;
     } else {
         GVAR(initPostStack) pushBack _object;
