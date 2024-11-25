@@ -135,7 +135,7 @@ _list setVariable [QFUNC(activate), {
             // Keep focus to prevent auto closing.
             ctrlSetFocus _list;
         } else {
-            [{ctrlDelete _args}, _list] call CBA_fnc_execNextFrame;
+            [{ctrlDelete _this}, _list] call CBA_fnc_execNextFrame;
         };
     };
 }];
