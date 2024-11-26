@@ -72,9 +72,9 @@ _localGroups = _groups select {local _x};
 if (_localGroups isEqualTo []) exitWith {};
 
 // Define variables
-_patrolLocType = _logic getVariable ["patrolLocType", ""];
+private _patrolLocType = _logic getVariable ["patrolLocType", ""];
 _patrolPos = _logic getVariable ["patrolPosition", objNull];
-_patrolSetPos = false;
+private _patrolSetPos = false;
 
 // Parse patrol position from string
 _patrolPos = [_patrolLocType, _patrolPos] call CBA_fnc_getPosFromString;

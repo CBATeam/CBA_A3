@@ -88,11 +88,11 @@ if (IS_STRING(_pos)) then {
     _height = (_maxNorthing*100) - abs(_minus) + 1;
 } else {
     if (isNil QGVAR(rvOriginX) || {isNil QGVAR(rvOriginY)}) then {
-        _start = format["%1", mapGridPosition [0, 0]];
-        _size = toArray _start;
-        _rvOriginY = 0;
-        _rvOriginX = 0;
-        _ignore = false;
+        private _start = format["%1", mapGridPosition [0, 0]];
+        private _size = toArray _start;
+        private _rvOriginY = 0;
+        private _rvOriginX = 0;
+        private _ignore = false;
         switch (count _size) do {
             case 2: {
                 _rvOriginY = (parseNumber (toString [(_size select 1)]))*10000;
@@ -170,9 +170,8 @@ if (_doOffSet && {(_northingMultiple max _eastingMultiple) > 1}) then {
 };
 
 // Return position.
-_return = if (_reversed) then {
+if (_reversed) then {
     [_posX+_offset, _posY-_offset, 0]
 } else {
     [_posX+_offset-GVAR(rvOriginX), _posY+_offset-GVAR(rvOriginY), 0]
-};
-_return
+}

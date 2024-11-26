@@ -273,7 +273,7 @@ FUNC(nextStatement) = {
 };
 
 FUNC(removeIndentation) = {
-    params ["_control", "_text", "_index"];
+    params ["_expression", "_text", "_index"];
 
     private _chars = toArray _text;
     private _indexRev = count _chars - _index;
