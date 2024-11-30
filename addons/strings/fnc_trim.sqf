@@ -8,11 +8,11 @@ Description:
     See <CBA_fnc_leftTrim> and <CBA_fnc_rightTrim>.
 
 Parameters:
-    _string - String to trim [String]
-    _trim - Characters to trim [String] (default: "")
+    _string - String to trim <STRING>
+    _trim   - Characters to trim (optional, default: "") <STRING>
 
 Returns:
-    Trimmed string [String]
+    Trimmed string <STRING>
 
 Example:
     (begin example)
@@ -27,6 +27,9 @@ SCRIPT(trim);
 
 params ["_string", ["_trim", "", [""]]];
 
-_string = [_string, _trim] call CBA_fnc_rightTrim;
+// Trim all whitespace characters by default
+if (_trim == "") exitWith {
+    trim _string // return
+};
 
-[_string, _trim] call CBA_fnc_leftTrim
+_string trim [_trim, 0] // return

@@ -9,7 +9,7 @@ Parameters:
     _array     - Array to format <ARRAY>
     _indents   - Indentation string (optional, default: "    ") <STRING>
     _lineBreak - Seperator string (optional, default: endl) <STRING>
-    _depth     - Initial indentation count (optional, default: 0) <NUMBER>
+    _depth     - Initial indentation count (optional, default: 0) <SCALAR>
 
 Returns:
     Formatted string <STRING>
@@ -48,6 +48,8 @@ Author:
    Terra, Dystopian, commy2
 
 ---------------------------------------------------------------------------- */
+SCRIPT(prettyFormat);
+
 params [
     ["_array", [], [[]]],
     ["_indent", "    ", [""]],
