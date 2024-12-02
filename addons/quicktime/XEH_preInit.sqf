@@ -5,6 +5,8 @@ SCRIPT(XEH_preInit);
 
 ADDON = false;
 
+#include "initSettings.inc.sqf"
+
 [LSTRING(QTEKeybindGroup), QGVAR(qteUpKey), ["↑", LSTRING(QTEKeybindUpTooltip)], {
     ["↑"] call CBA_fnc_keyPressedQTE // return
 }, {}, [DIK_UP, [false, true, false]]] call CBA_fnc_addKeybind;

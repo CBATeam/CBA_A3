@@ -61,6 +61,9 @@ GVAR(QTEHistory) = [];
 GVAR(QTEResetCount) = 0;
 GVAR(QTERunning) = true;
 private _startTime = CBA_missionTime;
+if(GVAR(qteShorten)) then {
+    _qteSequence = _qteSequence select [0, 1];
+};
 private _qteArgsArray = [
     ["args", _args],
     ["failCondition", _failCondition],
