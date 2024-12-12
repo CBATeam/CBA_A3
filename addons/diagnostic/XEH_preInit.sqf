@@ -27,9 +27,9 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
         private _timeStart = diag_tickTime;
         private _returnString = _statementText call {
             private ["_clientID", "_statementText", "_varName", "_timeStart", "_x"]; // prevent these variables from being overwritten
-            _this = ([nil] apply compile _this) select 0;
-            if (isNil "_this") exitWith {"<any>"};
-            str _this
+            private _str = ([nil] apply compile _this) select 0;
+            if (isNil "_str") exitWith {"<any>"};
+            str _str
         };
         _returnString = _returnString select [0, 1000]; // limit string length
         private _duration = diag_tickTime - _timeStart;

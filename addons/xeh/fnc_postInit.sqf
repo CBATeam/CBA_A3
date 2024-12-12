@@ -45,11 +45,11 @@ isNil {
 
     // do InitPost
     {
-        _x params ["_this"];
+        _x params ["_object"];
 
         {
-            [_this] call _x;
-        } forEach (_this getVariable QGVAR(initPost));
+            [_object] call _x;
+        } forEach (_object getVariable QGVAR(initPost));
     } forEach GVAR(initPostStack);
 
     GVAR(initPostStack) = nil;

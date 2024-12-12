@@ -21,19 +21,19 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params ["_this"];
+params ["_object"];
 
-if (_this call CBA_fnc_isTerrainObject) exitWith {
-    INFO_2("Abort init event for terrain object %1. Class: %2.",_this,typeOf _this);
+if (_object call CBA_fnc_isTerrainObject) exitWith {
+    INFO_2("Abort init event for terrain object %1. Class: %2.",_object,typeOf _object);
 };
 
-if !(ISINITIALIZED(_this)) then {
-    SETINITIALIZED(_this);
+if !(ISINITIALIZED(_object)) then {
+    SETINITIALIZED(_object);
 
     // run Init
     {
-        [_this] call _x;
-    } forEach (_this getVariable QGVAR(init));
+        [_object] call _x;
+    } forEach (_object getVariable QGVAR(init));
 
     // run InitPost or put on stack
     if (SLX_XEH_MACHINE select 8) then {
@@ -41,13 +41,13 @@ if !(ISINITIALIZED(_this)) then {
             {
                 [_this] call _x;
             } forEach (_this getVariable QGVAR(initPost));
-        }, _this] call CBA_fnc_execNextFrame;
+        }, _object] call CBA_fnc_execNextFrame;
     } else {
-        GVAR(initPostStack) pushBack _this;
+        GVAR(initPostStack) pushBack _object;
     };
 
     // fix for respawnVehicle clearing the object namespace
-    _this addEventHandler ["Respawn", {
+    _object addEventHandler ["Respawn", {
         params ["_vehicle", "_wreck"];
 
         if (ISINITIALIZED(_vehicle)) exitWith {}; // Exit if unit respawned normaly with copied variables (e.g. humans)

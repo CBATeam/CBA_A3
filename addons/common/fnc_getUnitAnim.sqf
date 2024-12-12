@@ -32,7 +32,7 @@ private _anim = toArray(toLower(animationState _unit));
 private _upos = "unknown";
 private _umov = "stop";
 
-if (vehicle _unit!= _unit) then {
+if (!isNull objectParent _unit) then {
     _upos = "vehicle";
 } else {
     if (count _anim < 12) exitWith {};
