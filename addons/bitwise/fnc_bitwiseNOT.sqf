@@ -32,6 +32,6 @@ Author:
 params [["_num",1,[0]],"_base"];
 _num = floor abs _num;
 private _exp = floor BASE2LOG(_num);
-if (!isNil "_base" && {_base isEqualType 0}) then {_exp = floor abs _base};
+if (!isNil "_base" && {_base isEqualType 0 && {_base > _exp}}) then {_exp = floor abs _base};
 if (_exp >= 24) exitWith {false};
 (2^(_exp+1))-1-_num

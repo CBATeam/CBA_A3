@@ -4,6 +4,7 @@ Function: CBA_fnc_bitflagsCheck
 Description:
     Checks if a given flagset has at least one of the specified flags set.
 
+    * This function assumes the larger number is the flagset and the smaller number is the flags for calculation parity.
     * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:

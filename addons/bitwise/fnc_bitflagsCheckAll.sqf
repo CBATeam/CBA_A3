@@ -11,7 +11,7 @@ Parameters:
     _flagset    - flagset to check for flags within <NUMBER>
 
 Returns:
-    True on success, sum of unset bits on failure, false otherwise. <BOOLEAN>
+    True on success, sum of not-set bits on failure, false otherwise. <BOOLEAN>
 
 Examples:
     (begin example)
@@ -33,8 +33,9 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-_this sort true;
-params ["_flags","_flagset"];
-private _res = [_flags,_flagset call CBA_fnc_bitwiseNOT] call CBA_fnc_bitwiseAND;
+#define BASE2LOG(num) ((ln num)*1.44269502162933349609)
+params ["_flagset","_flags"];
+_flagset = [_flagset,floor BASE2LOG(_flagset max _flags)] call CBA_fnc_bitwiseNOT;
+private _res = [_flags,_flagset] call CBA_fnc_bitwiseAND;
 if (_res isEqualTo 0) exitWith {true};
 _res
