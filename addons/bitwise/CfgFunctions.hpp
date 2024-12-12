@@ -1,6 +1,6 @@
 class CfgFunctions {
-    class PREFIX {
-        class COMPONENT {
+    class CBA {
+        class Bitwise {
             PATHTO_FNC(bitflagsCheck);
             PATHTO_FNC(bitflagsCheckAll);
             PATHTO_FNC(bitflagsFlip);
