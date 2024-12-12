@@ -12,16 +12,23 @@ Parameters:
     _num2   -   another number to compare to the first <NUMBER>
 
 Returns:
-    Sum of set bits as a decimal number on success, false otherwise. <NUMBER or BOOLEAN>
+    Resulting number on success, false otherwise. <NUMBER or BOOLEAN>
 
 Examples:
     (begin example)
-        captive addaction ["rescue",CBA_fnc_actionargument_path,[[],{[_target] join (group _caller)},true]] //captive joins action callers group, action is removed (true)
+        [55,15] call CBA_fnc_bitwiseXOR; // returns 56
+        // 55's set bits   = 110111 (32,16,4,2,1)
+        // 15's set bits   = 001111 (8,4,2,1)
+        // common set bits = 000111 (4,2,1)
+        // unique set bits = 111000 (32,16,8)
+        // sum of unique bits = 56
     (end)
 
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
+#define BITREP(num,pow) ((floor (num / pow)) mod 2)
+#define BASE2LOG(num) ((ln num)*1.44269502162933349609)
 _this sort true;
 params [["_min",0,[0]],["_max",1,[0]]];
 _min = floor abs _min;
@@ -32,6 +39,6 @@ private _power = 0;
 private _return = 0;
 for "_i" from 0 to _end do {
 	_power = 2^_i;
-	_return = _return + (_power * ((((floor (_max / _power)) % 2) + ((floor (_min / _power)) % 2)) % 2));
+	_return = _return + (_power * ((BITREP(_max,_power) + BITREP(_min,_power)) % 2));
 };  
 _return

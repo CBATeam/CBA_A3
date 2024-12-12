@@ -2,27 +2,28 @@
 Function: CBA_fnc_bitflagsCheck
 
 Description:
-    Checks if a given flagset has the specified flags set.
+    Checks if a given flagset has at least one of the specified flags set.
 
-    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will be clamped.
+    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:
-    _flagset    - flagset to check for flags within <NUMBER>
     _flags      - flags to check for <NUMBER>
+    _flagset    - flagset to check for flags within <NUMBER>
 
 Returns:
-    Sum of set bits as a decimal number on success, false otherwise. <NUMBER or BOOLEAN>
+    True on success, false otherwise. <BOOLEAN>
 
 Examples:
     (begin example)
-        [47,6] call CBA_fnc_bitflagsCheck // returns 6
-        // 47's set bits = 32+8+4+2+1
-        // 6's set bits = 4+2
-        // set bits in common = 4, 2
-        // sum of common set bits = 6 
+        [70,47] call CBA_fnc_bitflagsCheck // returns true:
+        // 70's set bits   = 1000110 (64,4,2)
+        // 47's set bits   = 0101111 (32,8,4,2,1)
+        // common set bits = 0000110 (4,2)
+        // sum of common set bits = 6
+        // 6 > 0 so return true
     (end)
 
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-_this call CBA_fnc_bitwiseAND;
+_this call CBA_fnc_bitwiseAND > 0

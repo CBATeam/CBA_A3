@@ -16,7 +16,10 @@ Returns:
 
 Examples:
     (begin example)
-        captive addaction ["rescue",CBA_fnc_actionargument_path,[[],{[_target] join (group _caller)},true]] //captive joins action callers group, action is removed (true)
+        25 call CBA_fnc_bitwiseLSHFT; // returns 50
+        // 25's set bits                                    =  11001 (16+8+1) 
+        // shift bits left by 1, fill one's place with 0    = 110010 (32+16+2)
+        // sum of shifted bits = 50
     (end)
 
 Author:

@@ -17,34 +17,25 @@ Returns:
 Examples:
     (begin example)
         17 call CBA_fnc_bitwiseRROT; // returns 24
-        // 17's set bits = 16+1
-        // 17's set bits (binary) = 10001
-        // shift right by 1, move rightmost bit to front = 11000
-        // new bits = (2^4)+(2^3) OR 16+8
+        // 17's set bits                                 = 10001 (16+1)
+        // shift right by 1, move rightmost bit to front = 11000 (16+8)
         // sum of rotated bits = 24
 
         [17,2] call CBA_fnc_bitwiseRROT; // returns 12
-        // rotates once to 11000 (24)
+        // rotates once to  11000 (24)
         // rotates again to 01100 (12)
     (end)
 
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
+#define BASE2LOG(number) ((ln number)*1.44269502162933349609)
 params [["_num",1,[0]],["_numRot",1,[0]]];
 _num = floor abs _num;
 _numRot = floor abs _numRot;
-private _exp = floor((ln _num)*1.44269502162933349609);
-if (_numRot > _exp) then {_numRot = _numRot % _exp;};
-for "_i" from 1 to _numRot do {
-	_num = (floor (_num / 2)) + ((_num % 2) * 2^_exp);
-};
-_num
-// bitwiseRSROT
-params [["_num",1,[0]],["_numRot",1,[0]]];
-_num = floor abs _num;
-_numRot = floor abs _numRot;
-private _power = 2^(floor((ln _num)*1.44269502162933349609));
+private _exp = floor BASE2LOG(_num);
+private _power = 2^_exp;
+if (_numRot > _exp) then {_numRot = _numRot % _exp};
 for "_i" from 1 to _numRot do {
 	_num = (floor (_num / 2)) + ((_num % 2) * _power);
 };
