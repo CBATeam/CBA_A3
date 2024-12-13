@@ -7,11 +7,11 @@ Description:
     * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:
-    _flagset    - a number representing currently set bitflags <NUMBER>
+    _flagset    - flagset to set flags within <NUMBER>
     _flags      - the flags to unset <NUMBER>
 
 Returns:
-    Sum of set bits on success, false otherwise. <NUMBER or BOOLEAN>
+    Sum of set bits on success, -1 otherwise. <NUMBER>
 
 Examples:
     (begin example)
@@ -28,5 +28,5 @@ Author:
 ---------------------------------------------------------------------------- */
 params ["_flagset","_flags"];
 private _andReturn = [_flagset,_flags] call CBA_fnc_bitwiseAND;
-if (_andReturn isEqualType false) exitWith {false};
+if (_andReturn < 0) exitWith {-1};
 (floor abs _flagset) - _andReturn

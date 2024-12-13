@@ -4,6 +4,7 @@ Function: CBA_fnc_logBase2
 Description:
     Returns the Base-2 (binary) logarithm of the specified number.
 
+    * This function converts all inputs into positive numbers. 
     * This function returns a non-negative number (with the exception of negative infinity for an input of 0).
 
 Parameters:

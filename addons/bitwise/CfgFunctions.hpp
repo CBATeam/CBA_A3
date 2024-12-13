@@ -14,6 +14,7 @@ class CfgFunctions {
             PATHTO_FNC(bitwiseRROT);
             PATHTO_FNC(bitwiseRSHFT);
             PATHTO_FNC(bitwiseXOR);
+            PATHTO_FNC(logBase2);
         };
     };
 };

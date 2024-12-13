@@ -3,9 +3,10 @@ Function: CBA_fnc_bitwiseNOT
 
 Description:
     Performs a bitwise NOT operation on a number. All bits are flipped.
-    By default, this function assumes that the largest power of 2 that _num stores is the number of bits it occupies.
+    
+    The _base argument is limited to numbers greater than the largest power of 2 stored within _num.
 
-    * This function returns a non-negative integer.
+    * This function converts all inputs into positive integers.
     * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:
@@ -13,16 +14,16 @@ Parameters:
     _base  -   the number of bits this number occupies (optional) <NUMBER>
 
 Returns:
-    Resulting number on success, false otherwise. <NUMBER or BOOLEAN>
+    Resulting number on success, -1 otherwise. <NUMBER>
 
 Examples:
     (begin example)
         12 call CBA_fnc_bitwiseNOT; // returns 1
         // 12's set bits = 110 (8,4)
         // flip all bits = 001 (1)
-        [12] call CBA_fnc_bitwiseNOT; // returns 1
-        // 12's set bits = 110 (8,4)
-        // flip all bits = 001 (1)
+        [12,6] call CBA_fnc_bitwiseNOT; // returns 57
+        // 12's set bits = 000110 (8,4)
+        // flip all bits = 111001 (32,16,8,1) or 57
     (end)
 
 Author:
@@ -33,5 +34,5 @@ params [["_num",1,[0]],"_base"];
 _num = floor abs _num;
 private _exp = floor BASE2LOG(_num);
 if (!isNil "_base" && {_base isEqualType 0 && {_base > _exp}}) then {_exp = floor abs _base};
-if (_exp >= 24) exitWith {false};
+if (_exp >= 24) exitWith {-1};
 (2^(_exp+1))-1-_num
