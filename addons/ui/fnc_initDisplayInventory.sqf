@@ -257,7 +257,7 @@ if !(isNil QGVAR(renamedItems)) then {
             private _control = _x;
 
             if (ctrlShown _control) then {
-                for [{_i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do {
+                for [{private _i = 0}, {_i < (lbSize _control)}, {_i = _i + 1}] do {
                     private _classname = ([_control, _i] call FUNC(getInventoryItemData)) select 0;
                     if (!isNil "_classname") then {
                         private _renameParams = GVAR(renamedItems) getOrDefault [_classname, []];
