@@ -45,6 +45,8 @@
     "AnimChanged", \
     "AnimDone", \
     "AnimStateChanged", \
+    "Assembled", \
+    "Attached", \
     "CargoLoaded", \
     "CargoUnloaded", \
     "ContainerClosed", \
@@ -52,6 +54,7 @@
     "ControlsShifted", \
     "Dammaged", \
     "Deleted", \
+    "Detached", \
     "Disassembled", \
     "Engine", \
     "EpeContact", \
@@ -70,6 +73,7 @@
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
+    "HandleHeal", \
     "Hit", \
     "HitPart", \
     "IncomingMissile", \
@@ -80,7 +84,10 @@
     "Killed", \
     "LandedTouchDown", \
     "LandedStopped", \
+    "LeaningChanged", \
     "Local", \
+    "MagazineReloading", \
+    "MagazineUnloaded", \
     "OpticsModeChanged", \
     "OpticsSwitch", \
     "Put", \
@@ -98,6 +105,7 @@
     "TurnOut", \
     "VisionModeChanged", \
     "WeaponAssembled", \
+    "WeaponChanged", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
     "WeaponRested"
