@@ -101,7 +101,7 @@ private _cache = [];
         private _listItem = _list select _index;
 
         if (_isPublic) then {
-            _displayName = getText (_weaponConfig >> "displayName");
+            private _displayName = getText (_weaponConfig >> "displayName");
 
             // append display name with attachment names
             {

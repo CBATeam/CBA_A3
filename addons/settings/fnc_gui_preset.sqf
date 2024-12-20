@@ -3,7 +3,7 @@
 // get button
 params ["_parentDisplay", "_mode"];
 
-_display = _parentDisplay createDisplay QGVAR(presets);
+private _display = _parentDisplay createDisplay QGVAR(presets);
 
 private _ctrlPresetsGroup = _display displayCtrl IDC_PRESETS_GROUP;
 private _ctrlTitle = _display displayCtrl IDC_PRESETS_TITLE;

@@ -37,7 +37,7 @@ private _return = [];
 private _pos = [];
 
 for "_i" from 0 to (_2Ddistance / _resolution) do {
-    _adj = _resolution * _i;
+    private _adj = _resolution * _i;
     _pos = [_posA, _adj, _angle] call BIS_fnc_relPos;
     _logic setPosATL _pos;
     private _alt = ((getPosASL _logic) select 2) - _z;
