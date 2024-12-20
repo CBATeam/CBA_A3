@@ -1,3 +1,6 @@
+[config.file_type]
+options.allow_no_extension = true
+
 [sqf.banned_commands]
 options.ignore = [
     "addPublicVariableEventHandler", # Alt syntax is broken, we are using main syntax
@@ -7,17 +10,3 @@ options.ignore = [
 options.ignore = [
     "SLX_*"
 ]
-
-[sqf.undefined]
-enabled = true
-options.check_orphan_code = false
-
-[sqf.unused]
-enabled = false
-options.check_params = false
-
-[sqf.shadowed]
-enabled = false
-
-[sqf.not_private]
-enabled = false
