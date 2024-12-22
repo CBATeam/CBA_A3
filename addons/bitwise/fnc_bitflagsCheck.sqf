@@ -35,6 +35,7 @@ Author:
 ---------------------------------------------------------------------------- */
 #define BASE2LOG(num) ((ln num)*1.44269502162933349609)
 #define BITQUANT(num) floor BASE2LOG(num) + 1
+
 params ["_flagset","_flags"];
 _flagset = [_flagset,BITQUANT(_flagset max _flags)] call CBA_fnc_bitwiseNOT;
 [_flagset,_flags] call CBA_fnc_bitwiseAND;

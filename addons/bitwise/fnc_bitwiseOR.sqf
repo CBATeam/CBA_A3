@@ -5,11 +5,12 @@ Description:
     Performs a bitwise OR operation between two numbers. Bits that are both zero are not summed.
 
     * This function converts all inputs into positive integers.
+    * This function also sorts the input array. Despite the naming of _min and _max, the input array does not have to be presorted.
     * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:
-    _num1   -   a number <NUMBER>
-    _num2   -   another number to compare to the first <NUMBER>
+    _min   -   a number <NUMBER>
+    _max   -   another number to compare to the first <NUMBER>
 
 Returns:
     Resulting number on success, -1 otherwise. <NUMBER>
