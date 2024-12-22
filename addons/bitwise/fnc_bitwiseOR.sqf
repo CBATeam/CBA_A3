@@ -26,21 +26,26 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-#define BITREP(num,pow) ((floor (num / pow)) mod 2)
+#define BITGRAB(num,pow) ((floor (num / pow)) mod 2)
 #define BASE2LOG(num) ((ln num)*1.44269502162933349609)
+
 _this = _this apply {floor abs _x};
 _this sort true;
 params [["_min",0,[0]],["_max",1,[0]]];
-private _end = BASE2LOG(_max); //1/ln(2) = 1.44269502162933349609
-if (_end >= 24) exitWith {-1}; // precision drop after 2^24 (16777216)
+
+private _end = floor BASE2LOG(_max); //1/ln(2) = 1.44269502162933349609
+if (_end > 24) exitWith {-1}; // precision drop after 2^24 (16777216)
+
 private _power = 0;
 private _return = 0;
 private _maxBit = 0;
 private _minBit = 0;
+
 for "_i" from 0 to _end do { 
 	_power = 2^_i;
-	_maxBit = BITREP(_max,_power);
-	_minBit = BITREP(_min,_power);
+	_maxBit = BITGRAB(_max,_power);
+	_minBit = BITGRAB(_min,_power);
 	_return = _return + (_power * ((_maxBit + _minBit) - (_maxBit * _minBit)));
 };
+
 _return

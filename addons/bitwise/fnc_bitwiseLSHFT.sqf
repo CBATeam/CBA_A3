@@ -22,7 +22,7 @@ Examples:
         // sum of shifted bits = 50
         [25,3] call CBA_fnc_bitwiseLSHFT; // returns 200
         // 25's set bits                                  =     11001 (16,8,1) 
-        // shift bits left by 3, fill one's place with 0  =  11001000 (128,64,8)
+        // shift bits left by 3, fill blank places with 0 =  11001000 (128,64,8)
         // sum of shifted bits = 200
     (end)
 

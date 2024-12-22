@@ -7,8 +7,8 @@ Description:
     * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
 
 Parameters:
-    _flags      - flags to check for <NUMBER>
     _flagset    - flagset to check for flags within <NUMBER>
+    _flags      - flags to check for <NUMBER>
 
 Returns:
     True on success, false otherwise. <BOOLEAN>

@@ -26,7 +26,7 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-params ["_flagset","_flags"];
+params [["_flagset",0,[0]],"_flags"];
 private _andReturn = [_flagset,_flags] call CBA_fnc_bitwiseAND;
 if (_andReturn < 0) exitWith {-1};
 (floor abs _flagset) - _andReturn
