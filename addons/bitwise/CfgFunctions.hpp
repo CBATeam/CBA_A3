@@ -2,7 +2,7 @@ class CfgFunctions {
     class CBA {
         class Bitwise {
             PATHTO_FNC(bitflagsCheck);
-            PATHTO_FNC(bitflagsCheckAll);
+            PATHTO_FNC(bitflagsCheckBool);
             PATHTO_FNC(bitflagsFlip);
             PATHTO_FNC(bitflagsSet);
             PATHTO_FNC(bitflagsUnset);

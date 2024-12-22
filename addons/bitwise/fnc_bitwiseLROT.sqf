@@ -35,8 +35,6 @@ Examples:
 
 Author:
     Daisy
-
-    [1645,634]
 ---------------------------------------------------------------------------- */
 #define BITGRAB(num,pow) ((floor (num / pow)) mod 2)
 #define BASE2LOG(num) ((ln num)*1.44269502162933349609)

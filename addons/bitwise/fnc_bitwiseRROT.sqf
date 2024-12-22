@@ -45,7 +45,7 @@ params [["_num",0,[0]],["_numRot",0,[0]],"_numBits"];
 _num = floor abs _num;
 _numRot = floor abs _numRot;
 
-private _bitCount = BITQUANT(num);
+private _bitCount = BITQUANT(_num);
 if (!isNil "_numBits" && {_numBits isEqualType 0 && {_numBits > _bitCount}}) then {_bitCount = (floor abs _numBits)};
 if (_bitCount > 24) exitWith {-1};
 if (_numRot > _bitCount) then {_numRot = _numRot % _bitCount;}; // trim excess rotations
