@@ -9,8 +9,8 @@ Description:
 
 Parameters:
     _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
-    _params  - [sound, maxTitlesDistance,speed] or "sound" <STRING, ARRAY>
-    _range   - Maximum distance from camera to execute command (optional) <NUMBER>
+    _params  - classname or parameter array - see biki: say3d <STRING, ARRAY>
+    _range   - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
 
 Returns:
     Nothing
@@ -30,8 +30,7 @@ if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
-if (_params isEqualType "") then { _params = [_params]; };
-if (!isNil "_distance") then { _params set [1, _distance]; };
+if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
 
 {
     [_x, _params] remoteExecCall ["say3D"];
