@@ -30,9 +30,8 @@ if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
-if (!isNil "_distance") then {
-    _params = [_params, _distance];
-};
+if (_params isEqualType "") then { _params = [_params]; };
+if (!isNil "_distance") then { _params set [1, _distance]; };
 
 {
     [_x, _params] remoteExecCall ["say3D"];
