@@ -30,9 +30,11 @@ Author:
 #define BITGRAB(num,pow) ((floor (num / pow)) mod 2)
 #define BASE2LOG(num) ((ln num)*1.44269502162933349609)
 
-private _input = _this apply {floor abs _x};
+private _input = _this;
+_input resize 2;
+_input = _input apply {floor abs _x};
 _input sort true;
-_input params [["_min",0,[0]],["_max",1,[0]]];
+_input params [["_min",0,[0]],["_max",1,[1]]];
 
 private _end = floor BASE2LOG(_max); //1/ln(2) = 1.44269502162933349609
 if (_end > 24) exitWith {-1}; // precision drop after 2^24 (16777216)
