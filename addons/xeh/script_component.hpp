@@ -87,7 +87,6 @@
     "LeaningChanged", \
     "Local", \
     "MagazineReloading", \
-    "MagazineUnloaded", \
     "OpticsModeChanged", \
     "OpticsSwitch", \
     "Put", \
