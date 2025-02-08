@@ -18,7 +18,8 @@ class CfgPatches {
             "gm_weapons_attachments_optics_pgo7",
             "gm_weapons_attachments_optics_pka",
             "gm_weapons_attachments_optics_zfk4x25",
-            "gm_weapons_attachments_optics_zln1k"
+            "gm_weapons_attachments_optics_zln1k",
+            "gm_weapons_attachments_optics_pso1"
         };
         author = "$STR_CBA_Author";
         authors[] = {};
