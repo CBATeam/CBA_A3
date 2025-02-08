@@ -1,7 +1,6 @@
 class asdg_OpticRail;
 
-// Picatinny rails for optic mounts
-class asdg_OpticRail1913: asdg_OpticRail { // the "medium" rail, long enough to fit any optic, but not enough to attach a clip-on NVS in front of a long scope.
+class asdg_OpticRail1913: asdg_OpticRail {
     class compatibleItems {
         gm_blits_ris_blk = 1;
         gm_c79a1_blk = 1;
