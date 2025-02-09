@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 // since 2.19 "server:port" is stored on the display in "guid" variable, makes password filling compatible with "connectToServer" command
-#define GET_SERVER (if (productVersion#2 > 218) then {_display getVariable "guid"} else {_ctrlServerList lbData lbCurSel _ctrlServerList})
+#define GET_SERVER (_display getVariable ["guid", _ctrlServerList lbData lbCurSel _ctrlServerList])
 
 if (profileNamespace getVariable [QGVAR(StorePasswords), 1] < 1) exitWith {};
 
