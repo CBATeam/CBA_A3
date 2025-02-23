@@ -5,8 +5,6 @@ Function: CBA_fnc_globalSay
 Description:
     Says sound on all clients.
 
-    DEPRECATED. Use <remoteExec at https://community.bistudio.com/wiki/remoteExec> ["say"] instead.
-
 Parameters:
     _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
     _params  - [sound, maxTitlesDistance,speed] or "sound" <ARRAY, STRING>
@@ -20,7 +18,7 @@ Example:
     (end)
 
 Author:
-    Sickboy, commy2
+    Sickboy, commy2, DartRuffian
 ---------------------------------------------------------------------------- */
 
 params [["_objects", [], [[], objNull]], ["_params", "", ["", []]]];
@@ -30,7 +28,7 @@ if (_objects isEqualType objNull) then {
 };
 
 {
-    [_x, _params] remoteExecCall ["say"];
+    [QGVAR(say), [_x, _params]] call CBA_fnc_globalEvent;
 } forEach _objects;
 
 nil

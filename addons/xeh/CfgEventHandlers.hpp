@@ -71,7 +71,7 @@ class Extended_LandedTouchDown_EventHandlers {};
 class Extended_LeaningChanged_EventHandlers {};
 class Extended_Local_EventHandlers {};
 class Extended_MagazineReloading_EventHandlers {};
-class Extended_MagazineUnloaded_EventHandlers {};
+// class Extended_MagazineUnloaded_EventHandlers {}; // disabled due to bug (try to re-enable in 2.20)
 class Extended_OpticsModeChanged_EventHandlers {};
 class Extended_OpticsSwitch_EventHandlers {};
 class Extended_Put_EventHandlers {};
