@@ -17,7 +17,7 @@ Example:
     [car,
     {
         params ["_args", "_elapsedTime", "_resetCount"];
-        player distance _args > 10 || _elapsedTime > 10 || _resetCount > 3;
+        player distance _args > 10 || _elapsedTime > 10 || _resetCount >= 3;
     }, 
     { 
         params ["_args", "_qteSequence", "_qteHistory", "_resetCount"];
