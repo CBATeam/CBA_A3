@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="bitwise">
+        <Key ID="STR_CBA_bitwise_Component">
+            <English>Community Base Addons - Bitwise</English>
+        </Key>
+    </Package>
+</Project>
