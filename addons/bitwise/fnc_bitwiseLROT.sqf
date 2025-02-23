@@ -54,9 +54,9 @@ private _power = 0;
 private _amend = 0;
 
 if (_numRot > (_bitCount / 2)) exitWith {
-	_numRot = _numRot - (floor (_bitCount / 2));
+    _numRot = _numRot - (floor (_bitCount / 2));
 
-	for "_i" from 0 to _numRot-1 do {
+    for "_i" from 0 to _numRot-1 do {
         _power = 2^_i;
         _amend = _amend + (BITGRAB(_num,_power) * (_power * 2^_numBits)); // _pow * 2^_numBits == 2^(_i + _numBits)
     };
@@ -66,8 +66,8 @@ if (_numRot > (_bitCount / 2)) exitWith {
 
 _num = 2^_numRot * _num; // bitshift left by numRot
 for "_i" from _bitCount to (_bitCount + _numRot) do { // check bits over limit
-	_power = 2^_i;
-	_amend = _amend + (BITGRAB(_num,_power) * (_power - 2^(_i - _bitCount)));
+    _power = 2^_i;
+    _amend = _amend + (BITGRAB(_num,_power) * (_power - 2^(_i - _bitCount)));
 };
 
 _num - _amend

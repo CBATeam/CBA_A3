@@ -44,8 +44,8 @@ private _power = 0;
 private _return = 0;
 
 for "_i" from 0 to _end do {
-	_power = 2^_i;
-	_return = _return + (_power * ((BITGRAB(_max,_power) + BITGRAB(_min,_power)) % 2));
+    _power = 2^_i;
+    _return = _return + (_power * ((BITGRAB(_max,_power) + BITGRAB(_min,_power)) % 2));
 };  
 
 _return
