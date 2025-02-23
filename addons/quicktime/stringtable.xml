@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="Quicktime">
+        <Key ID="STR_cba_quicktime_Component">
+            <English>Community Base Addons - Quick-Time Events</English>
+        </Key>
+        <Key ID="STR_cba_quicktime_QTETitle">
+            <English>Quick-Time Events</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEKeybindGroup">
+            <English>CBA Quick-Time Events</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEKeybindUpTooltip">
+            <English>Up key used in Quick-Time Events.</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEKeybindDownTooltip">
+            <English>Down key used in Quick-Time Events.</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEKeybindLeftTooltip">
+            <English>Left key used in Quick-Time Events.</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEKeybindRightTooltip">
+            <English>Right key used in Quick-Time Events.</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKey">
+            <English>Single Key press</English>  
+        </Key>
+        <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKeyTooltip">
+            <English>When enabled, all Quick-Time Events will be shortened to a single key press.</English>
+        </Key>
+    </Package>
+</Project>
