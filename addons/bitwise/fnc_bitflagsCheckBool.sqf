@@ -27,4 +27,4 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-(_this call CBA_fnc_bitflagsCheck) isEqualTo 0
+(call CBA_fnc_bitflagsCheck) isEqualTo 0
