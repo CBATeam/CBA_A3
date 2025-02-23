@@ -7,8 +7,8 @@ Description:
 
 Parameters:
     _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
-    _params  - [sound, maxTitlesDistance,speed] or "sound" <STRING, ARRAY>
-    _range   - Maximum distance from camera to execute command (optional) <NUMBER>
+    _params  - classname or parameter array - see biki: say3d <STRING, ARRAY>
+    _range   - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
     _attach  - Attach created sound to _object (optional, default: false) <BOOL>
 
 Returns:
@@ -29,9 +29,7 @@ if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
-if (!isNil "_distance") then {
-    _params = [_params, _distance];
-};
+if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
 
 {
     [QGVAR(say3D), [_x, _params, _attach]] call CBA_fnc_globalEvent;
