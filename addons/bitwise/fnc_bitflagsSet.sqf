@@ -25,4 +25,4 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-_this call CBA_fnc_bitwiseOR;
+call CBA_fnc_bitwiseOR

@@ -26,4 +26,4 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-_this call CBA_fnc_bitwiseXOR;
+call CBA_fnc_bitwiseXOR

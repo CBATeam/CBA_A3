@@ -38,4 +38,4 @@ Author:
 
 params ["_flagset","_flags"];
 _flagset = [_flagset,BITQUANT(_flagset max _flags)] call CBA_fnc_bitwiseNOT;
-[_flagset,_flags] call CBA_fnc_bitwiseAND;
+[_flagset,_flags] call CBA_fnc_bitwiseAND

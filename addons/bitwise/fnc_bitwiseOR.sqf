@@ -45,10 +45,10 @@ private _maxBit = 0;
 private _minBit = 0;
 
 for "_i" from 0 to _end do { 
-	_power = 2^_i;
-	_maxBit = BITGRAB(_max,_power);
-	_minBit = BITGRAB(_min,_power);
-	_return = _return + (_power * ((_maxBit + _minBit) - (_maxBit * _minBit)));
+    _power = 2^_i;
+    _maxBit = BITGRAB(_max,_power);
+    _minBit = BITGRAB(_min,_power);
+    _return = _return + (_power * ((_maxBit + _minBit) - (_maxBit * _minBit)));
 };
 
 _return
