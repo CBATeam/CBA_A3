@@ -43,7 +43,7 @@ if (_item isEqualTo "") exitWith {
 
 private _config = configFile >> "CfgMagazines" >> _item;
 
-if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
+if (!isClass _config || {getNumber (_config >> "scope") < 1}) exitWith {
     TRACE_2("Item does not exist in Config",_unit,_item);
     _return
 };
