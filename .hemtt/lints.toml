@@ -10,3 +10,6 @@ options.ignore = [
 options.ignore = [
     "SLX_*"
 ]
+
+[stringtables.usage]
+options.ignore_unused = true
