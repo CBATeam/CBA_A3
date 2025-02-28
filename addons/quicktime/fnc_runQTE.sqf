@@ -70,7 +70,6 @@ private _qteArgsArray = [
     ["onDisplay", _onDisplay],
     ["onFinish", _onFinish],
     ["onFail", _onFail],
-    ["maxDistance", _maxDistance],
     ["qteSequence", _qteSequence],
     ["startTime", _startTime]
 ];
