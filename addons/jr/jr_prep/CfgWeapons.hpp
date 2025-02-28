@@ -25,6 +25,11 @@ class CfgWeapons {
             delete PointerSlot;
         };
     };
+    class launch_RPG7_F: Launcher_Base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            delete CowsSlot;
+        };
+    };
 
     class EBR_base_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo;
