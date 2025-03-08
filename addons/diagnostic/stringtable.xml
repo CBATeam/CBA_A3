@@ -23,6 +23,7 @@
             <Spanish>4 Espacios</Spanish>
             <Italian>4 Spazi</Italian>
             <Polish>4 Spacje</Polish>
+            <German>4 Leerzeichen</German>
             <Korean>네 공간</Korean>
             <Japanese>スペース4個</Japanese>
             <Chinese>4 個空格</Chinese>
@@ -35,6 +36,7 @@
             <Spanish>Espaciado de la Consola de Depuración</Spanish>
             <Italian>Indentazione console di debug</Italian>
             <Polish>Indentacja w konsoli debugowania</Polish>
+            <German>Einrückungen in der Debug-Konsole</German>
             <Korean>디버그 콘솔 들여쓰기</Korean>
             <Japanese>デバッグコンソールのインデント</Japanese>
             <Chinese>調試控制台縮進</Chinese>
@@ -47,6 +49,7 @@
             <Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
             <Italian>Il tipo di intentazione che può essere aggiunta all'espressione nella console di debug premendo il tasto Tab o rimossa premendo Shift + Tab</Italian>
             <Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
+            <German>Art der Einrückung, die dem Ausdruck in der Debug-Konsole durch Drücken von Tab hinzugefügt oder durch Drücken von Shift + Tab entfernt werden kann.</German>
             <Korean>Tab 키를 눌러서 디버그 콘솔의 식에 추가하거나 Shift + Tab을 눌러 제거할 수 있는 들여쓰기 유형입니다.</Korean>
             <Japanese>デバッグコンソールでのインデントのタイプ。 インデントはTabキーを押して追加、Shift + Tabキーを押して削除できる。</Japanese>
             <Chinese>可以通過按 Tab 鍵為添加到調試控制台中的表達式縮進或通過按 Shift + Tab 鍵為其刪除縮進。</Chinese>
@@ -146,6 +149,7 @@
             <English>Refresh rate target watcher field</English>
             <Czech>Pole cílového sledování obnovovací frekvence</Czech>
             <French>Taux de rafraîchissement champ de l'observateur cible</French>
+            <German>Aktualisierungsrate für Zielüberwachungfelder</German>
             <Korean>대상 관찰자 필드 새로 고침 빈도</Korean>
             <Japanese>目標監視フィールドのリフレッシュレート</Japanese>
             <Chinese>刷新率</Chinese>
@@ -155,6 +159,7 @@
             <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
             <Czech>Obnovovací frekvence (v sekundách) pro pole sledování cíle CBA napravo od konzole ladění.</Czech>
             <French>Taux de rafraîchissement (en secondes) des champs d'observation de la cible CBA à droite de la console de débogage.</French>
+            <German>Aktualisierungsrate (in Sekunden) für die CBA-Zielüberwachungsfelder auf der rechten Seite der Debug-Konsole.</German>
             <Korean>디버그 콘솔 오른쪽에 있는 CBA의 대상 관찰자 필드의 새로 고침 빈도입니다. (초 단위)</Korean>
             <Japanese>デバッグコンソールの右側にあるCBA目標監視フィールドのリフレッシュレート(秒単位)。</Japanese>
             <Chinese>調試控制台右側的 CBA 目標監視器字段的刷新率（以秒為單位）。</Chinese>
