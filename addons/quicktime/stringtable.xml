@@ -3,30 +3,39 @@
     <Package name="Quicktime">
         <Key ID="STR_cba_quicktime_Component">
             <English>Community Base Addons - Quick-Time Events</English>
+            <Japanese>Community Base Addons - QTE(クイック タイム イベント)</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKey">
             <English>Single Key press</English>
+            <Japanese>キー押下を1回に</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKeyTooltip">
             <English>When enabled, all Quick-Time Events will be shortened to a single key press.</English>
+            <Japanese>有効にすると、すべてのQTEを1回のキー押下へと短縮します。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindDownTooltip">
             <English>Down key used in Quick-Time Events.</English>
+            <Japanese>QTEで使用される下キー。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindGroup">
             <English>CBA Quick-Time Events</English>
+            <Japanese>CBA QTE</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindLeftTooltip">
             <English>Left key used in Quick-Time Events.</English>
+            <Japanese>QTEで使用される左キー。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindRightTooltip">
             <English>Right key used in Quick-Time Events.</English>
+            <Japanese>QTEで使用される右キー。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindUpTooltip">
             <English>Up key used in Quick-Time Events.</English>
+            <Japanese>Qで使用される上キー。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTETitle">
             <English>Quick-Time Events</English>
+            <Japanese>QTE</Japanese>
         </Key>
     </Package>
 </Project>
