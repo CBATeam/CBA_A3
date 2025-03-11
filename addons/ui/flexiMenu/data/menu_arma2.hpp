@@ -14,7 +14,7 @@
 #define _LBH_overlap 0.0375 * safeZoneH // button height with 1 pixel overlap for type "popup" menu
 #define _listButtonsPerRow 10
 //#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 // BIS mid green (button over colour)
-#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" // BIS greenish text
+#define _captionColorFG (138 / 256), (146 / 256), (105 / 256) //BIS greenish text
 #define _captionHgt 0.85
 #define _gapW 0.01 * safeZoneW // Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH / 2 - 2 * _BH) * 2 / 3) // Button "height" vertical spacing
@@ -123,7 +123,7 @@ class CBA_flexiMenu_rscArma2 {
         };
 
         class button01: button {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 0);
+            idc = _flexiMenu_baseIDC_button + 0;
             x = QUOTE(_SX - _CW / 2 + _CX_correction);
             y = QUOTE(_SY - _CH / 2);
             w = QUOTE(_CW);
@@ -153,7 +153,7 @@ class CBA_flexiMenu_rscArma2 {
             animTextureNoShortcut = _imagePath(mid_button_normal); // used?
         };
         class button02: button {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 1);
+            idc = _flexiMenu_baseIDC_button + 1;
             x = QUOTE(_SX - _BW / 2);
             y = QUOTE(_SY - (_CH / 2 + _gapH) - _BH);
             animTextureNormal = _imagePathUI(normal_ca);
@@ -165,55 +165,55 @@ class CBA_flexiMenu_rscArma2 {
             animTextureNoShortcut = _imagePathUI(normal_ca);
         };
         class button03: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 2);
+            idc = _flexiMenu_baseIDC_button + 2;
             x = QUOTE(_SX - _BW / 2);
             y = QUOTE(_SY + (_CH / 2 + _gapH));
         };
         //---------------------------------
         class button04: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 3);
+            idc = _flexiMenu_baseIDC_button + 3;
             x = QUOTE(_leftButtonLevel1X);
             y = QUOTE(_SY - _gapH / 2 - _BH - _gapH - _BH);
         };
         class button05: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 4);
+            idc = _flexiMenu_baseIDC_button + 4;
             x = QUOTE(_leftButtonLevel2X);
             y = QUOTE(_SY - _gapH / 2 - _BH);
         };
         class button06: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 5);
+            idc = _flexiMenu_baseIDC_button + 5;
             x = QUOTE(_leftButtonLevel2X);
             y = QUOTE(_SY + _gapH / 2);
         };
         class button07: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 6);
+            idc = _flexiMenu_baseIDC_button + 6;
             x = QUOTE(_leftButtonLevel1X);
             y = QUOTE(_SY + _gapH / 2 + _BH + _gapH);
         };
         //---------------------------------
         class button08: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 7);
+            idc = _flexiMenu_baseIDC_button + 7;
             x = QUOTE(_rightButtonLevel1X);
             y = QUOTE(_SY - _gapH / 2 - _BH - _gapH - _BH);
         };
         class button09: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 8);
+            idc = _flexiMenu_baseIDC_button + 8;
             x = QUOTE(_rightButtonLevel2X);
             y = QUOTE(_SY - _gapH / 2 - _BH);
         };
         class button10: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 9);
+            idc = _flexiMenu_baseIDC_button + 9;
             x = QUOTE(_rightButtonLevel2X);
             y = QUOTE(_SY + _gapH / 2);
         };
         class button11: button02 {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 10);
+            idc = _flexiMenu_baseIDC_button + 10;
             x = QUOTE(_rightButtonLevel1X);
             y = QUOTE(_SY + _gapH / 2 + _BH + _gapH);
         };
         //-----------------------
         class caption2: caption {
-            idc = QUOTE(_flexiMenu_IDC_listMenuDesc);
+            idc = _flexiMenu_IDC_listMenuDesc;
             x = QUOTE(_SX-(_SMW/2));
             y = QUOTE(_SY + (_CH/2 + _gapH) + _BH + _gapH + 0*_LBH);
             w = 0; // flexiMenu_subMenuCaptionWidth; // hide initially
@@ -223,7 +223,7 @@ class CBA_flexiMenu_rscArma2 {
         // Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
         #define ExpandMacro_ListControls(ID)\
         class listButton##ID: listButton {\
-            idc = QUOTE(_flexiMenu_baseIDC_listButton+ID);\
+            idc = _flexiMenu_baseIDC_listButton+ID;\
             x = QUOTE(_SX - ((_SMW+_gapW) * 1.5) + floor (((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW));\
             y = QUOTE(_SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH);\
         }
