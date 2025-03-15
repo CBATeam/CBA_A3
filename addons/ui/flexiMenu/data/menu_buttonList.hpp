@@ -10,8 +10,8 @@
 #define _LBH 0.033 * safeZoneH // list button height
 #define _gapH 0.01 * safeZoneH
 #define _buttonsBeforeCenter 7 // buttons above screen centre, allowing menu to appear centred.
-#define _captionColorBG "58 / 256", "80 / 256", "55 / 256" // BIS mid green (button over colour)
-#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" // BIS greenish text
+#define _captionColorBG (58 / 256), (80 / 256), (55 / 256) //BIS mid green (button over colour)
+#define _captionColorFG (138 / 256), (146 / 256), (105 / 256) //BIS greenish text
 #define _captionHgt 0.75
 
 class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
@@ -114,7 +114,7 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
 
     #define ExpandMacro_RowControls(ID) \
     class button##ID: button {\
-        idc = QUOTE(_flexiMenu_baseIDC_button + ID);\
+        idc = _flexiMenu_baseIDC_button + ID;\
         y = QUOTE(_SY-_buttonsBeforeCenter * _BH + ID * _BH);\
     }
 
@@ -147,7 +147,7 @@ class CBA_flexiMenu_rscButtonList { //: _flexiMenu_rscRose
     //#include "common_listControls.hpp"
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
-        idc = QUOTE(_flexiMenu_baseIDC_listButton + ID);\
+        idc = _flexiMenu_baseIDC_listButton + ID;\
         x = QUOTE(_SX);\
         y = QUOTE(_SY - _buttonsBeforeCenter * _BH + ID * _LBH);\
     }
