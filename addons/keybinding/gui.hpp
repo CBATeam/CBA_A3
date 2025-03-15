@@ -17,7 +17,7 @@ class GVAR(key): RscControlsGroupNoScrollbars {
     class controls {
         class EditButton: RscButton {
             idc = IDC_KEY_EDIT;
-            onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_editKey)'));
+            onButtonClick = QUOTE(call (uiNamespace getVariable 'FUNC(gui_editKey)'));
             onMouseEnter = "(_this select 0) ctrlSetTextColor [0,0,0,1]";
             onMouseExit = "(_this select 0) ctrlSetTextColor [1,1,1,1]";
             style = ST_LEFT;
@@ -87,7 +87,7 @@ class GVAR(subCat): RscControlsGroupNoScrollbars {
 class RscDisplayConfigure {
     class controls {
         class CBA_ButtonConfigureAddons: RscButtonMenu {
-            onButtonClick = QUOTE(_this call (uiNamespace getVariable 'FUNC(gui_configure)'));
+            onButtonClick = QUOTE(call (uiNamespace getVariable 'FUNC(gui_configure)'));
             idc = IDC_BTN_CONFIGURE_ADDONS;
             text = CSTRING(configureAddons);
             x = QUOTE(POS_X(20.15));

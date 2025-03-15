@@ -24,7 +24,7 @@ if (_length <= 0) exitWith {[]};
 
 private _code = [];
 
-for "_i" from 0 to _length do {
+for "_i" from 1 to _length do {
     _code pushBack (selectRandom ["↑", "↓", "→", "←"]);
 };
 

@@ -3,6 +3,10 @@
     <Package name="bitwise">
         <Key ID="STR_CBA_bitwise_Component">
             <English>Community Base Addons - Bitwise</English>
+            <French>Community Base Addons - Bit par bit</French>
+            <German>Community Base Addons - Bitweise</German>
+            <Korean>커뮤니티 베이스 애드온 - 비트 연산</Korean>
+            <Japanese>Community Base Addons - ビット演算</Japanese>
         </Key>
     </Package>
 </Project>
