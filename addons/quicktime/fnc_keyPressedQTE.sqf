@@ -25,7 +25,6 @@ if !(missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {
     false
 };
 
-
 private _args = GVAR(QTEArgs) get "args";
 private _qteSequence = GVAR(QTEArgs) get "qteSequence";
 private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "startTime");
