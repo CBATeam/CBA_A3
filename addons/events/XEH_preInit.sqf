@@ -81,7 +81,7 @@ GVAR(keyUpActiveList) = [];
 GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 
 [QFUNC(handleKeyDownUp), {
-    private _xUp = _this select (count _this - 1);
+    private _xUp = _this select -1;
 
     GVAR(keyUpActiveList) deleteAt (GVAR(keyUpActiveList) find _xUp);
     GVAR(keyHoldTimers) setVariable [_xUp, nil];
