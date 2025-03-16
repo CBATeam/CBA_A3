@@ -12,6 +12,7 @@ Parameters:
     _onFinish - Code or event callback on Quick-Time Event completed; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
     _onFail - Code or event callback on Quick-Time Event timeout/outranged; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
     _qteSequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
+    _resetUponIncorrectInput - Reset Quick-Time keystroke history if input is incorrect <BOOLEAN>
 
 Example:
     [car,
@@ -36,7 +37,11 @@ Example:
         params ["_args", "_elapsedTime", "_resetCount"];
         hint format ["Failure! %1s %2", _elapsedTime, _resetCount];
     },
-    ["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
+    {
+        params ["_args", "_elapsedTime", "_resetCount"];
+        hint format ["Failure! %1s %2", _elapsedTime, _resetCount];
+    },
+    ["^", "v", ">", "<"]] call CBA_fnc_runQTE
 
 Returns:
     true if the QTE was started, false if it was already running <BOOLEAN>
@@ -55,7 +60,8 @@ params [
     ["_onDisplay", {}, ["", {}]],
     ["_onFinish", {}, ["", {}]],
     ["_onFail", {}, ["", {}]],
-    ["_qteSequence", [], [[]]]
+    ["_qteSequence", [], [[]]],
+    ["_resetUponIncorrectInput", true, [false]]
 ];
 
 GVAR(QTEHistory) = [];
@@ -74,7 +80,8 @@ private _qteArgsArray = [
     ["onFinish", _onFinish],
     ["onFail", _onFail],
     ["qteSequence", _qteSequence],
-    ["startTime", _startTime]
+    ["startTime", _startTime],
+    ["resetUponIncorrectInput", _resetUponIncorrectInput]
 ];
 GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 
@@ -102,9 +109,9 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 }, []] call CBA_fnc_waitUntilAndExecute;
 
 if (_onDisplay isEqualType "") then {
-    [_onDisplay, [_args, _qteSequence, [], GVAR(QTEResetCount)]] call CBA_fnc_localEvent;
+    [_onDisplay, [_args, _qteSequence, [], GVAR(QTEResetCount), false]] call CBA_fnc_localEvent;
 } else {
-    [_args, _qteSequence, [], GVAR(QTEResetCount)] call _onDisplay;
+    [_args, _qteSequence, [], GVAR(QTEResetCount), false] call _onDisplay;
 };
 
 true
