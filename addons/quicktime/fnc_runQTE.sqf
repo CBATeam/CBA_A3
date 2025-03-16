@@ -6,11 +6,11 @@ Description:
     Runs a Quick-Time Event.
 
 Parameters:
-    _args - Extra arguments passed to the _on... functions<ARRAY>
-    _failCondition - Code condition to fail the Quick-Time Event passed [_args, _elapsedTime, _resetCount]. <CODE, STRING> (default: {false})
-    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qteHistory, _resetCount, _incorrectInput]. <CODE, STRING>
-    _onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime, _resetCount]. <CODE, STRING>
-    _onFail - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime, _resetCount]. <CODE, STRING>
+    _args - Extra arguments passed to the _on... callbacks <ARRAY>
+    _failCondition - Code condition to fail the Quick-Time Event; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING> (default: {false})
+    _onDisplay - Code or event callback on keypress; arguments passed: [_args, _qteSequence, _qteHistory, _resetCount, _incorrectInput] <CODE, STRING>
+    _onFinish - Code or event callback on Quick-Time Event completed; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
+    _onFail - Code or event callback on Quick-Time Event timeout/outranged; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
     _qteSequence - Quick-Time sequence made up of ["^", "v", ">", "<"] <ARRAY>
     _resetUponIncorrectInput - Reset Quick-Time keystroke history if input is incorrect <BOOLEAN>
 
@@ -40,21 +40,22 @@ Example:
     ["^", "v", ">", "<"]] call CBA_fnc_runQTE
 
 Returns:
-    True if the QTE was started, false if it was already running <BOOLEAN>
+    true if the QTE was started, false if it was already running <BOOLEAN>
 
 Author:
     john681611
 ---------------------------------------------------------------------------- */
+
 if (missionNamespace getVariable [QGVAR(QTERunning), false]) exitWith {
     false
 };
 
 params [
     "_args",
-    ["_failCondition",{false}, ["", {}]],
-    ["_onDisplay",{}, ["", {}]],
-    ["_onFinish",{}, ["", {}]],
-    ["_onFail",{}, ["", {}]],
+    ["_failCondition", {false}, ["", {}]],
+    ["_onDisplay", {}, ["", {}]],
+    ["_onFinish", {}, ["", {}]],
+    ["_onFail", {}, ["", {}]],
     ["_qteSequence", [], [[]]],
     ["_resetUponIncorrectInput", true, [false]]
 ];
@@ -62,10 +63,12 @@ params [
 GVAR(QTEHistory) = [];
 GVAR(QTEResetCount) = 0;
 GVAR(QTERunning) = true;
+
 private _startTime = CBA_missionTime;
-if(GVAR(qteShorten)) then {
+if (GVAR(qteShorten)) then {
     _qteSequence = _qteSequence select [0, 1];
 };
+
 private _qteArgsArray = [
     ["args", _args],
     ["failCondition", _failCondition],
