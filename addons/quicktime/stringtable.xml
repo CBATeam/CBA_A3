@@ -6,7 +6,7 @@
             <French>Community Base Addons - Quick-Time-Events</French>
             <German>Community Base Addons - Quick-Time-Events</German>
             <Korean>커뮤니티 베이스 애드온 - 퀵 타임 이벤트 (QTE)</Korean>
-            <Japanese>Community Base Addons - QTE(クイック タイム イベント)</Japanese>
+            <Japanese>Community Base Addons - QTE (クイック タイム イベント)</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKey">
             <English>Single Key press</English>
@@ -34,7 +34,7 @@
             <French>Événements CBA Quick-Time</French>
             <German>CBA Quick-Time-Events</German>
             <Korean>CBA 퀵 타임 이벤트 (QTE)</Korean>
-            <Japanese>CBA QTE</Japanese>
+            <Japanese>CBA QTE (クイック タイム イベント)</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindLeftTooltip">
             <English>Left key used in Quick-Time Events.</English>
@@ -55,7 +55,7 @@
             <French>Touche du haut utilisée dans les événements Quick-Time.</French>
             <German>Taste in Quick-Time-Events für oben.</German>
             <Korean>QTE에 사용되는 위쪽 키입니다.</Korean>
-            <Japanese>Qで使用される上キー。</Japanese>
+            <Japanese>QTEで使用される上キー。</Japanese>
         </Key>
         <Key ID="STR_cba_quicktime_QTETitle">
             <English>Quick-Time Events</English>
