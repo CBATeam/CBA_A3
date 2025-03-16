@@ -8,10 +8,10 @@ Description:
 Parameters:
     _args - Extra arguments passed to the _on... callbacks <ARRAY>
     _failCondition - Code condition to fail the Quick-Time Event; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING> (default: {false})
-    _onDisplay - Code or event callback on keypress; arguments passed: [_args, _qteSequence, _qteHistory, _resetCount] <CODE, STRING>
+    _onDisplay - Code or event callback on keypress; arguments passed: [_args, _qteSequence, _qteHistory, _resetCount, _incorrectInput] <CODE, STRING>
     _onFinish - Code or event callback on Quick-Time Event completed; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
     _onFail - Code or event callback on Quick-Time Event timeout/outranged; arguments passed: [_args, _elapsedTime, _resetCount] <CODE, STRING>
-    _qteSequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
+    _qteSequence - Quick-Time sequence made up of ["^", "v", ">", "<"] <ARRAY>
     _resetUponIncorrectInput - Reset Quick-Time keystroke history if input is incorrect <BOOLEAN>
 
 Example:
@@ -32,10 +32,6 @@ Example:
     {
         params ["_args", "_elapsedTime", "_resetCount"];
         hint format ["Finished! %1s %2", _elapsedTime, _resetCount];
-    },
-    {
-        params ["_args", "_elapsedTime", "_resetCount"];
-        hint format ["Failure! %1s %2", _elapsedTime, _resetCount];
     },
     {
         params ["_args", "_elapsedTime", "_resetCount"];
