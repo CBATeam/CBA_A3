@@ -19,6 +19,12 @@ Author:
     john681611
 ---------------------------------------------------------------------------- */
 
-params ["_code"];
+params [["_code", [], [[]]]];
 
-_code joinString "     " // Arma doesn't know how to space ↑ so we need loads of spaces between
+_code = _code joinString "     "; // Arma doesn't know how to space ↑ so we need loads of spaces between
+
+{
+    _code = _code regexReplace [_x select 0, _x select 1];
+} forEach [["\^", "↑"], ["v", "↓"], [">", "→"], ["<", "←"]];
+
+_code

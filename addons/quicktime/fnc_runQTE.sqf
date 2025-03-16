@@ -8,18 +8,19 @@ Description:
 Parameters:
     _args - Extra arguments passed to the _on... functions<ARRAY>
     _failCondition - Code condition to fail the Quick-Time Event passed [_args, _elapsedTime, _resetCount]. <CODE, STRING> (default: {false})
-    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qteHistory, _resetCount]. <CODE, STRING>
+    _onDisplay - Code callback on displayable event passed [_args, _qteSequence, _qteHistory, _resetCount, _incorrectInput]. <CODE, STRING>
     _onFinish - Code callback on Quick-Time Event completed passed [_args, _elapsedTime, _resetCount]. <CODE, STRING>
     _onFail - Code callback on Quick-Time Event timeout/outranged passed [_args, _elapsedTime, _resetCount]. <CODE, STRING>
-    _qteSequence - Quick-Time sequence made up of ["↑", "↓", "→", "←"] <ARRAY>
+    _qteSequence - Quick-Time sequence made up of ["^", "v", ">", "<"] <ARRAY>
+    _resetUponIncorrectInput - Reset Quick-Time keystroke history if input is incorrect <BOOLEAN>
 
 Example:
     [car,
     {
         params ["_args", "_elapsedTime", "_resetCount"];
         player distance _args > 10 || _elapsedTime > 10 || _resetCount >= 3;
-    }, 
-    { 
+    },
+    {
         params ["_args", "_qteSequence", "_qteHistory", "_resetCount"];
         hint format [
             "%3/3 \n %1 \n %2",
@@ -27,16 +28,16 @@ Example:
             [_qteHistory] call CBA_fnc_getFormattedQTESequence,
             _resetCount
         ]
-    }, 
-    { 
-        params ["_args", "_elapsedTime", "_resetCount"];
-        hint format ["Finished! %1s %2", _elapsedTime, _resetCount]; 
     },
-    {   
+    {
         params ["_args", "_elapsedTime", "_resetCount"];
-        hint format ["Failure! %1s %2", _elapsedTime, _resetCount]; 
+        hint format ["Finished! %1s %2", _elapsedTime, _resetCount];
     },
-    ["↑", "↓", "→", "←"]] call CBA_fnc_runQTE
+    {
+        params ["_args", "_elapsedTime", "_resetCount"];
+        hint format ["Failure! %1s %2", _elapsedTime, _resetCount];
+    },
+    ["^", "v", ">", "<"]] call CBA_fnc_runQTE
 
 Returns:
     True if the QTE was started, false if it was already running <BOOLEAN>
@@ -53,8 +54,9 @@ params [
     ["_failCondition",{false}, ["", {}]],
     ["_onDisplay",{}, ["", {}]],
     ["_onFinish",{}, ["", {}]],
-    ["_onFail",{}, ["", {}]], 
-    ["_qteSequence", [], [[]]]
+    ["_onFail",{}, ["", {}]],
+    ["_qteSequence", [], [[]]],
+    ["_resetUponIncorrectInput", true, [false]]
 ];
 
 GVAR(QTEHistory) = [];
@@ -71,16 +73,17 @@ private _qteArgsArray = [
     ["onFinish", _onFinish],
     ["onFail", _onFail],
     ["qteSequence", _qteSequence],
-    ["startTime", _startTime]
+    ["startTime", _startTime],
+    ["resetUponIncorrectInput", _resetUponIncorrectInput]
 ];
 GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 
-// Setup 
+// Setup
 [{
     private _args = GVAR(QTEArgs) get "args";
     private _failCondition = GVAR(QTEArgs) get "failCondition";
     private _elapsedTime = CBA_missionTime - (GVAR(QTEArgs) get "startTime");
-    
+
     !GVAR(QTERunning) || [_args, _elapsedTime, GVAR(QTEResetCount)] call _failCondition;
 }, {
     TRACE_1("QTE ended",GVAR(QTERunning));
@@ -99,9 +102,9 @@ GVAR(QTEArgs) = createHashMapFromArray _qteArgsArray;
 }, []] call CBA_fnc_waitUntilAndExecute;
 
 if (_onDisplay isEqualType "") then {
-    [_onDisplay, [_args, _qteSequence, [], GVAR(QTEResetCount)]] call CBA_fnc_localEvent;
+    [_onDisplay, [_args, _qteSequence, [], GVAR(QTEResetCount), false]] call CBA_fnc_localEvent;
 } else {
-    [_args, _qteSequence, [], GVAR(QTEResetCount)] call _onDisplay;
+    [_args, _qteSequence, [], GVAR(QTEResetCount), false] call _onDisplay;
 };
 
 true
