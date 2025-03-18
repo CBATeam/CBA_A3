@@ -12,7 +12,7 @@ Example:
     [5] call CBA_fnc_generateQTESequence;
 
 Returns:
-    Quick-Time sequence of requested length made up of ["↑", "↓", "→", "←"] <ARRAY>
+    Quick-Time sequence of requested length made up of ["^", "v", ">", "<"] <ARRAY>
 
 Author:
     john681611
@@ -25,7 +25,7 @@ if (_length <= 0) exitWith {[]};
 private _code = [];
 
 for "_i" from 1 to _length do {
-    _code pushBack (selectRandom ["↑", "↓", "→", "←"]);
+    _code pushBack (selectRandom ["^", "v", ">", "<"]);
 };
 
 _code
