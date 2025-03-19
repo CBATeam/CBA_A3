@@ -46,8 +46,8 @@ if !(_this isEqualType []) then {
     _args = [_this];
 };
 
-if !(_this select 0 isEqualType []) then {
-    _args = [_this];
+if !(_args select 0 isEqualType []) then {
+    _args = [_args];
 };
 
 private _composition = [];
