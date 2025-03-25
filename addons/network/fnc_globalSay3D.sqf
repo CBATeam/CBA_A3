@@ -21,7 +21,7 @@ Example:
     (end)
 
 Author:
-    Sickboy, commy2, DartRuffian
+    Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
 params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]]];
