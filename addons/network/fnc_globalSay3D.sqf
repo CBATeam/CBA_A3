@@ -11,7 +11,7 @@ Parameters:
     _range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
     _attach   - Attach created sound to _object (optional, default: false) <BOOL>
     _instant  - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
-    _rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>
+    _rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 0.15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>
 
 Returns:
     Nothing
@@ -19,7 +19,7 @@ Returns:
 Example:
     (begin example)
         [player, "Alarm", 500] call CBA_fnc_globalSay3D;
-        [player, "Alarm", 500, false, false, 15] call CBA_fnc_globalSay3D; // Dynamic Range of 15, resulting in +- 7,5%
+        [player, "Alarm", 500, false, false, 0.15] call CBA_fnc_globalSay3D; // Dynamic Range of 15%, resulting in +- 7,5%
     (end)
 
 Author:
@@ -41,8 +41,8 @@ if (_rndPitch isEqualTo true || { _rndPitch isEqualType 0 } ) then {
     } else {
         if (count _params > 2) then { _defaultPitch = _params#2; };
     };
-    private _dynamicRange = [10, _rndPitch] select (_rndPitch isEqualType 0);
-    _params set [2, _defaultPitch + ceil random (_dynamicRange/2) / 100 * selectRandom [-1,1] ];
+    private _dynamicRange = [0.1, _rndPitch] select (_rndPitch isEqualType 0);
+    _params set [2, _defaultPitch + random (_dynamicRange/2) * selectRandom [-1,1] ];
 };
 
 {
