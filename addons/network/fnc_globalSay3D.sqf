@@ -6,11 +6,12 @@ Description:
     Says sound on all clients in 3D.
 
 Parameters:
-    _objects - Object or array of objects that perform Say <OBJECT, ARRAY>
-    _params  - classname or parameter array - see biki: say3d <STRING, ARRAY>
-    _range   - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
-    _attach  - Attach created sound to _object (optional, default: false) <BOOL>
-    _instant - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
+    _objects  - Object or array of objects that perform Say <OBJECT, ARRAY>
+    _params   - classname or parameter array - see biki: say3d <STRING, ARRAY>
+    _range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
+    _attach   - Attach created sound to _object (optional, default: false) <BOOL>
+    _instant  - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
+    _rndPitch - Randomizes Pitch by +- 5% (optional, default: false) <BOOL>
 
 Returns:
     Nothing
@@ -24,7 +25,7 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_randomPitch", false, [false]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
@@ -32,7 +33,7 @@ if (_objects isEqualType objNull) then {
 
 if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
 
-if (_randomPitch) then {
+if (_rndPitch) then {
     private _defaultPitch = 1;
     if (_params isEqualType "") then {
         _params = [_params, 100];
