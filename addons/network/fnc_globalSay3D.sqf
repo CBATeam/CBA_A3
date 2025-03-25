@@ -10,6 +10,7 @@ Parameters:
     _params  - classname or parameter array - see biki: say3d <STRING, ARRAY>
     _range   - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
     _attach  - Attach created sound to _object (optional, default: false) <BOOL>
+    _instant - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
 
 Returns:
     Nothing
@@ -23,7 +24,7 @@ Author:
     Sickboy, commy2, DartRuffian
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
@@ -32,7 +33,7 @@ if (_objects isEqualType objNull) then {
 if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
 
 {
-    [QGVAR(say3D), [_x, _params, _attach]] call CBA_fnc_globalEvent;
+    [QGVAR(say3D), [_x, _params, _attach, _instant]] call CBA_fnc_globalEvent;
 } forEach _objects;
 
 nil
