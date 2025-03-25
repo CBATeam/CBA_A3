@@ -24,13 +24,23 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_randomPitch", false, [false]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
 if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
+
+if (_randomPitch) then {
+    private _defaultPitch = 1;
+    if (_params isEqualType "") then {
+        _params = [_params, 100];
+    } else {
+        if (count _params > 2) then { _defaultPitch = _params#2; };
+    };
+    _params set [2, _defaultPitch + ceil random 5 / 100 * selectRandom [-1,1] ];
+};
 
 {
     [QGVAR(say3D), [_x, _params, _attach, _instant]] call CBA_fnc_globalEvent;
