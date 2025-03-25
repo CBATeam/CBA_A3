@@ -42,7 +42,7 @@ if (_rndPitch isNotEqualTo false ) then {
         if (count _params > 2) then { _defaultPitch = _params#2; };
     };
     private _dynamicRange = [0.1, _rndPitch] select (_rndPitch isEqualType 0);
-    _params set [2, _defaultPitch + random (_dynamicRange/2) * selectRandom [-1,1] ];
+    _params set [2, ( _defaultPitch + random (_dynamicRange/2) * selectRandom [-1,1] ) max 0 ];
 };
 
 {
