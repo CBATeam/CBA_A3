@@ -6,7 +6,7 @@ if (hasInterface) then {
 
         // Delete previously attached sounds so the new sound can be played instantly
         if (_instant) then {
-            attachedObjects _object select { typeOf _x isEqualTo "#soundonvehicle" } apply { deleteVehicle _x };
+            { deleteVehicle _x } forEach (attachedObjects _object select { typeOf _x isEqualTo "#soundonvehicle" });
         };
 
         // Attaching is mainly meant for vehicles in motion
