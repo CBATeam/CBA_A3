@@ -35,7 +35,6 @@ if (_objects isEqualType objNull) then {
 if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
 
 if (_rndPitch isEqualTo true || { _rndPitch isEqualType 0 } ) then {
-
     private _defaultPitch = 1;
     if (_params isEqualType "") then {
         _params = [_params, 100];
