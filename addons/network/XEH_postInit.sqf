@@ -2,7 +2,12 @@
 
 if (hasInterface) then {
     [QGVAR(say3D), {
-        params ["_object", "_params", "_attach"];
+        params ["_object", "_params", "_attach", "_instant"];
+
+        // Delete previously attached sounds so the new sound can be played instantly
+        if (_instant) then {
+            attachedObjects _object select { typeOf _x isEqualTo "#soundonvehicle" } apply { deleteVehicle _x };
+        };
 
         // Attaching is mainly meant for vehicles in motion
         private _source = _object say3D _params;
