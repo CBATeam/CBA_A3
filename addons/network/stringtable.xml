@@ -33,6 +33,7 @@
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidation">
             <English>Loadout Validation</English>
+            <Czech>Ověření výbavy</Czech>
             <French>Vérification de l'équipement</French>
             <Italian>Verifica l'equipaggiamento</Italian>
             <Polish>Sprawdzenie wyposażenia</Polish>

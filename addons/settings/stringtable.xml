@@ -517,6 +517,7 @@
         </Key>
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
+            <Czech>Změny nebudou trvalé po restartu serveru</Czech>
             <French>Les modifications ne persistent pas après le redémarrage du serveur</French>
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
@@ -525,6 +526,7 @@
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
+            <Czech>Server je nastaven tak, aby nezachovával změny v nastavení mezi restarty serveru.\nZměny budou zachovány mezi restarty mise.</Czech>
             <French>Le serveur est configuré pour ne pas conserver les modifications apportées aux paramètres entre les redémarrages du serveur.\nLes modifications seront conservées entre les redémarrages de la mission.</French>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
