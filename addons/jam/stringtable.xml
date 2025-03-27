@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="JAM">
-        <Key ID="STR_CBA_JAM_Component">
-            <English>Community Base Addons - Joint Ammo Magazines</English>
-            <German>Community Base Addons - Gemeinsame Munition und Magazine</German>
-            <Polish>Community Base Addons - Wspólna Amunicja oraz Magazynki</Polish>
-            <French>Community Base Addons - Munitions et chargeurs</French>
-            <Turkish>Community Base Addons - Birleştirilmiş Cephane Şarjörleri</Turkish>
-            <Japanese>Community Base Addons - 統合的弾倉</Japanese>
-            <Czech>Community Base Addons - Společné zásobníky a munice</Czech>
-            <Chinese>社群基礎模組 - 聯合彈匣</Chinese>
-            <Chinesesimp>社区基础插件—通用弹匣</Chinesesimp>
-            <Russian>Community Base Addons - Общие патроны и магазины</Russian>
-            <Korean>커뮤니티 베이스 애드온 - 탄약 및 탄창 통합</Korean>
-        </Key>
-        <Key ID="STR_CBA_JAM_150rnd_762x51_box_tracer_description">
-            <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
-            <Chinese>口徑：7.62x51 毫米 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
-            <French>Calibre: 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions: 150</French>
-            <Spanish>Calibre: 7,62x51 mm trazadora (verde)&lt;br/&gt;Cargas: 150</Spanish>
-            <Italian>Calibro: tracciante 7,62x51 mm - verde&lt;br /&gt;Munizioni: 150</Italian>
-            <Polish>Kaliber: 7,62x51 mm smugowy - zielony&lt;br/&gt;Pociski: 150</Polish>
-            <Russian>Калибр: 7,62x51 мм Трассер - зеленый&lt;br/&gt;Количество патронов: 150</Russian>
-            <German>Kaliber: 7,62x51 mm Leuchtspur - grün&lt;br/&gt;Patronen: 150</German>
-            <Czech>Ráže: 7.62x51 mm stopovky - zelené&lt;br/&gt;Munice: 150</Czech>
-            <Portuguese>Calibre: Traçante 7,62 x 51 mm – Verde&lt;br/&gt;Balas: 150r</Portuguese>
-            <Korean>구경: 7.62x51mm 예광탄 - 녹색&lt;br /&gt;탄 수: 150</Korean>
-            <Chinesesimp>口径：7.62x51 毫米曳光弹 - 绿色&lt;br/&gt;容弹量：150</Chinesesimp>
-            <Japanese>口径：7.62x51 mm トレーサー - 緑&lt;br/&gt;弾薬：150</Japanese>
-            <Turkish>Kalibre: 7.62x51 mm İzli - Yeşil&lt;br/&gt;Mermi: 150</Turkish>
-        </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_description">
             <English>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</English>
-            <Chinese>口徑：7.62x51 毫米&lt;br/&gt;個數：150</Chinese>
+            <Czech>Ráže: 7.62x51 mm&lt;br/&gt;Munice: 150</Czech>
             <French>Calibre: 7,62x51 mm&lt;br/&gt;Munitions: 150</French>
             <Spanish>Calibre: 7,62x51 mm&lt;br/&gt;Cargas: 150</Spanish>
             <Italian>Calibro: 7,62x51 mm&lt;br/&gt;Munizioni: 150</Italian>
             <Polish>Kaliber: 7,62x51 mm&lt;br/&gt;Pociski: 150</Polish>
+            <Portuguese>Calibre: 7,62 x 51 mm&lt;br/&gt;Balas: 150r</Portuguese>
             <Russian>Калибр: 7,62x51 мм&lt;br/&gt;Количество патронов: 150</Russian>
             <German>Kaliber: 7,62x51 mm&lt;br/&gt;Patronen: 150</German>
-            <Czech>Ráže: 7.62x51 mm&lt;br/&gt;Munice: 150</Czech>
-            <Portuguese>Calibre: 7,62 x 51 mm&lt;br/&gt;Balas: 150r</Portuguese>
             <Korean>구경: 7.62x51mm&lt;br /&gt;탄 수: 150</Korean>
-            <Chinesesimp>口径：7.62x51 毫米&lt;br/&gt;容弹量：150</Chinesesimp>
             <Japanese>口径：7.62x51 mm&lt;br/&gt;弾薬：150</Japanese>
+            <Chinese>口徑：7.62x51 毫米&lt;br/&gt;個數：150</Chinese>
+            <Chinesesimp>口径：7.62x51 毫米&lt;br/&gt;容弹量：150</Chinesesimp>
             <Turkish>Kalibre: 7.62x51 mm&lt;br/&gt;Mermi: 150</Turkish>
+        </Key>
+        <Key ID="STR_CBA_JAM_150rnd_762x51_box_tracer_description">
+            <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
+            <Czech>Ráže: 7.62x51 mm stopovky - zelené&lt;br/&gt;Munice: 150</Czech>
+            <French>Calibre: 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions: 150</French>
+            <Spanish>Calibre: 7,62x51 mm trazadora (verde)&lt;br/&gt;Cargas: 150</Spanish>
+            <Italian>Calibro: tracciante 7,62x51 mm - verde&lt;br /&gt;Munizioni: 150</Italian>
+            <Polish>Kaliber: 7,62x51 mm smugowy - zielony&lt;br/&gt;Pociski: 150</Polish>
+            <Portuguese>Calibre: Traçante 7,62 x 51 mm – Verde&lt;br/&gt;Balas: 150r</Portuguese>
+            <Russian>Калибр: 7,62x51 мм Трассер - зеленый&lt;br/&gt;Количество патронов: 150</Russian>
+            <German>Kaliber: 7,62x51 mm Leuchtspur - grün&lt;br/&gt;Patronen: 150</German>
+            <Korean>구경: 7.62x51mm 예광탄 - 녹색&lt;br /&gt;탄 수: 150</Korean>
+            <Japanese>口径：7.62x51 mm トレーサー - 緑&lt;br/&gt;弾薬：150</Japanese>
+            <Chinese>口徑：7.62x51 毫米 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
+            <Chinesesimp>口径：7.62x51 毫米曳光弹 - 绿色&lt;br/&gt;容弹量：150</Chinesesimp>
+            <Turkish>Kalibre: 7.62x51 mm İzli - Yeşil&lt;br/&gt;Mermi: 150</Turkish>
+        </Key>
+        <Key ID="STR_CBA_JAM_Component">
+            <English>Community Base Addons - Joint Ammo Magazines</English>
+            <Czech>Community Base Addons - Společné zásobníky a munice</Czech>
+            <French>Community Base Addons - Munitions et chargeurs</French>
+            <Polish>Community Base Addons - Wspólna Amunicja oraz Magazynki</Polish>
+            <Russian>Community Base Addons - Общие патроны и магазины</Russian>
+            <German>Community Base Addons - Gemeinsame Munition und Magazine</German>
+            <Korean>커뮤니티 베이스 애드온 - 탄약 및 탄창 통합</Korean>
+            <Japanese>Community Base Addons - 統合的弾倉</Japanese>
+            <Chinese>社群基礎模組 - 聯合彈匣</Chinese>
+            <Chinesesimp>社区基础插件—通用弹匣</Chinesesimp>
+            <Turkish>Community Base Addons - Birleştirilmiş Cephane Şarjörleri</Turkish>
         </Key>
     </Package>
 </Project>

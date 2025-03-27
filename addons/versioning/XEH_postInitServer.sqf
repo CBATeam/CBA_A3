@@ -34,8 +34,8 @@ QGVAR(mismatch) addPublicVariableEventHandler { (_this select 1) call FUNC(handl
 private "_str";
 _str = 'if(isServer)exitWith{};if (isNil "CBA_display_ingame_warnings") then { CBA_display_ingame_warnings = true; };LOG("cba_versioning_check");0 = objNull spawn { sleep 1; sleep 1; _func={GVAR(mismatch)=[format["%2 (%1)",name player, player],_this];publicVariable QGVAR(mismatch);_this spawn{_t=format["You are missing the following mod: %1",_this];diag_log text _t;sleep 2;if (CBA_display_ingame_warnings) then {player globalChat _t}}};';
 [GVAR(versions_serv), {
-    _cfg = (configFile >> "CfgSettings" >> "CBA" >> "Versioning" >> _key);
-    _addon = if (isClass _cfg) then { if (isText (_cfg >> "main_addon")) then { getText (_cfg >> "main_addon") } else { _key + "_main" }; } else { _key + "_main" };
+    private _cfg = (configFile >> "CfgSettings" >> "CBA" >> "Versioning" >> _key);
+    private _addon = if (isClass _cfg) then { if (isText (_cfg >> "main_addon")) then { getText (_cfg >> "main_addon") } else { _key + "_main" }; } else { _key + "_main" };
     // TODO: Make sensitive to level, if -2, do not check for mod
     _str = _str + format['if !(isClass(configFile >> "CfgPatches" >> "%1"))exitWith{"%1" call _func};', _addon];
 }] call CBA_fnc_hashEachPair;

@@ -12,9 +12,9 @@ class Extended_PreInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayInterrupt {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
     };
     class RscDisplayMPInterrupt {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
     };
 };

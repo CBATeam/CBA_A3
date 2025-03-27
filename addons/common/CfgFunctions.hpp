@@ -131,6 +131,7 @@ class CfgFunctions {
             PATHTO_FNC(deleteNamespace);
             PATHTO_FNC(allNamespaces);
             PATHTO_FNC(directCall);
+            PATHTO_FNC(getMacro);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);
             PATHTO_FNC(execAfterNFrames);
@@ -139,6 +140,15 @@ class CfgFunctions {
             PATHTO_FNC(compileFinal);
             PATHTO_FNC(createUUID);
             PATHTO_FNC(escapeRegex);
+            PATHTO_FNC(colorHEXtoDecimal);
+            PATHTO_FNC(colorHEXAtoDecimal);
+            PATHTO_FNC(colorAHEXtoDecimal);
+            PATHTO_FNC(colorRGBtoDecimal);
+            PATHTO_FNC(colorRGBAtoDecimal);
+            PATHTO_FNC(colorARGBtoDecimal);
+            PATHTO_FNC(cssColorToDecimal);
+            PATHTO_FNC(cssColorToHEX);
+            PATHTO_FNC(cssColorToTexture);
         };
 
         class Broken {

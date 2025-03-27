@@ -38,8 +38,8 @@ SCRIPT(parseYAML);
 private _raiseError = {
     params ["_message", "_yaml", "_pos", "_lines"];
 
-    private _lastLine = _lines select ((count _lines) - 1);
-    private _lastChar = _lastLine select ((count _lastLine) - 1);
+    private _lastLine = _lines select -1;
+    private _lastChar = _lastLine select -1;
 
     _lastLine resize ((count _lastLine) - 1);
 
@@ -101,7 +101,7 @@ private _parse = {
                 _currentIndent = 0;
                 _lines pushBack [];
             } else {
-                (_lines select ((count _lines) - 1)) pushBack _char;
+                (_lines select -1) pushBack _char;
             };
 
             switch (_mode) do {
@@ -120,6 +120,7 @@ private _parse = {
                         };
 
                         if !(_error) then {
+                            //IGNORE_PRIVATE_WARNING ["_data"];
                             _data pushBack _value;
                             _mode = YAML_MODE_STRING;
                         };
@@ -263,14 +264,14 @@ private _lineBreaks = [ASCII_NEWLINE, ASCII_CR];
 // Ensure input ends with a newline.
 if (count _yaml > 0) then
 {
-    if !((_yaml select ((count _yaml) - 1)) in _lineBreaks) then {
+    if !((_yaml select -1) in _lineBreaks) then {
         _yaml pushBack ASCII_NEWLINE;
     };
 };
 
 _pos = -1;
 
-_retVal = ([_yaml, _pos, -1, [[]]] call _parse);
+private _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
 _pos = _retVal select 0;
 _value = _retVal select 1;
 _error = _retVal select 2;

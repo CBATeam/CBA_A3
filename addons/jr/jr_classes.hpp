@@ -194,6 +194,12 @@ class asdg_OpticSideRail_AKSVD: asdg_OpticSideMount {
     };
 };
 
+class asdg_OpticSideRail_RPG7: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        // side plate that fits RPG-7
+    };
+};
+
 // Muzzle slots
 
 class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount suppressors

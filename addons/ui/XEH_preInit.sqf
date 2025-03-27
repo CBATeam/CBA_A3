@@ -15,6 +15,7 @@ if (hasInterface) then {
     }];
 
     PREP(openItemContextMenu);
+    PREP(getInventoryItemData);
 };
 
 // legacy function names

@@ -39,13 +39,15 @@ if (canSuspend) exitWith {
 
 if (!hasInterface) exitWith {};
 
+private _args = _this;
+
 // compose structured text
 if !(_this isEqualType []) then {
-    _this = [_this];
+    _args = [_this];
 };
 
-if !(_this select 0 isEqualType []) then {
-    _this = [_this];
+if !(_args select 0 isEqualType []) then {
+    _args = [_args];
 };
 
 private _composition = [];
@@ -83,7 +85,7 @@ private _skippable = false;
     } else {
         _composition pushBack parseText format ["<t align='center' size='%2' color='%3'>%1</t>", _text, _size, _color];
     };
-} forEach _this;
+} forEach _args;
 
 _composition deleteAt 0;
 

@@ -77,6 +77,8 @@ class CfgMagazineWells {
     // AT and AA Launchers, ordered lexicographically
 
     class CBA_Bazooka {};                           // M1, M1A1 Bazooka
+    class CBA_M47_Dragon {};                        // M47 Dragon
+    class CBA_M67 {};                               // M67 Recoilless Rifle
     class CBA_Panzerschreck {};                     // Panzerschreck RPzB 54
     class CBA_PIAT {};                              // PIAT
     class CBA_SMAW {};                              // Mk 153 Shoulder-Launched Multipurpose Assault Weapon

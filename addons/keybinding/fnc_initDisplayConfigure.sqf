@@ -65,7 +65,7 @@ _ctrlButtonOK ctrlAddEventHandler ["ButtonClick", {
 
         // overwrite with new keyhandlers
         {
-            _keybind = _x;
+            private _keybind = _x;
 
             if (_downCode isNotEqualTo {}) then {
                 [_keybind select 0, _keybind select 1, _downCode, "keyDown", format ["%1_down_%2", _action, _forEachIndex], _holdKey, _holdDelay] call CBA_fnc_addKeyHandler;
