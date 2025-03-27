@@ -31,7 +31,6 @@ params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_skipAnim", false,
 private _return = [_unit, _item] call CBA_fnc_removeItem;
 
 if (_return) then {
-    
     if (!_skipAnim) then {
         _unit switchMove "ainvpknlmstpslaywrfldnon_1";
     };
