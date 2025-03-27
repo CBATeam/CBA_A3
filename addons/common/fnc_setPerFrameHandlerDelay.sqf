@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_updatePerFrameHandlerDelay
+Function: CBA_fnc_setPerFrameHandlerDelay
 
 Description:
     Updates the delay of an existing perFrameHandler.
@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-        _wasSuccessful = [_handle, _newDelay] call CBA_fnc_updatePerFrameHandlerDelay;
+        _wasSuccessful = [_handle, _newDelay] call cba_fnc_setPerFrameHandlerDelay ;
     (end)
 
 Author:
