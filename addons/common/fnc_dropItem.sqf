@@ -11,7 +11,7 @@ Description:
 Parameters:
     _unit - the unit that should drop the item <OBJECT>
     _item - class name of the item to drop <STRING>
-    _skipAnim - does not play the animation when true <BOOLEAN>
+    _skipAnim - does not play the animation when true <optional - Default: false> <BOOLEAN>
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
