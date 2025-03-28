@@ -26,7 +26,7 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false,0]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
