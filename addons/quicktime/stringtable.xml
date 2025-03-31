@@ -3,6 +3,7 @@
     <Package name="Quicktime">
         <Key ID="STR_cba_quicktime_Component">
             <English>Community Base Addons - Quick-Time Events</English>
+            <Czech>Community Base Addons - Quick-Time Events</Czech>
             <French>Community Base Addons - Quick-Time-Events</French>
             <German>Community Base Addons - Quick-Time-Events</German>
             <Korean>커뮤니티 베이스 애드온 - 퀵 타임 이벤트 (QTE)</Korean>
@@ -10,6 +11,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKey">
             <English>Single Key press</English>
+            <Czech>Jednoduchý stisk klávesy</Czech>
             <French>Appui d'une seule touche</French>
             <German>Einmaliger Tastendruck</German>
             <Korean>한 번만 누르기</Korean>
@@ -17,6 +19,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKeyTooltip">
             <English>When enabled, all Quick-Time Events will be shortened to a single key press.</English>
+            <Czech>Pokud je povoleno, všechny události Quick-Time budou zkráceny na jedno stisknutí klávesy.</Czech>
             <French>Lorsqu'ils sont activés, tous les événements Quick Time ne nécessitent qu'une seule pression de touche.</French>
             <German>Wenn aktiviert, benötigen alle Quick-Time-Events nur einen einzigen Tastendruck.</German>
             <Korean>활성화 시 모든 QTE가 한 번의 키 입력으로 단축됩니다.</Korean>
@@ -24,6 +27,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindDownTooltip">
             <English>Down key used in Quick-Time Events.</English>
+            <Czech>Dolní klávesa použitá v událostech Quick-Time.</Czech>
             <French>Touche du bas utilisée dans les Quick-Time Events.</French>
             <German>Taste in Quick-Time-Events für unten.</German>
             <Korean>QTE에 사용되는 아래쪽 키입니다.</Korean>
@@ -31,6 +35,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindGroup">
             <English>CBA Quick-Time Events</English>
+            <Czech>CBA Quick-Time Events</Czech>
             <French>Événements CBA Quick-Time</French>
             <German>CBA Quick-Time-Events</German>
             <Korean>CBA 퀵 타임 이벤트 (QTE)</Korean>
@@ -38,6 +43,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindLeftTooltip">
             <English>Left key used in Quick-Time Events.</English>
+            <Czech>Levá klávesa použitá v událostech Quick-Time.</Czech>
             <French>Touche de gauche utilisée dans les Quick-Time Events.</French>
             <German>Taste in Quick-Time-Events für links.</German>
             <Korean>QTE에 사용되는 왼쪽 키입니다.</Korean>
@@ -45,6 +51,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindRightTooltip">
             <English>Right key used in Quick-Time Events.</English>
+            <Czech>Pravá klávesa použitá v událostech Quick-Time.</Czech>
             <French>Touche de droite utilisée dans les Quick-Time Events.</French>
             <German>Taste in Quick-Time-Events für rechts.</German>
             <Korean>QTE에 사용되는 오른쪽 키입니다.</Korean>
@@ -52,6 +59,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindUpTooltip">
             <English>Up key used in Quick-Time Events.</English>
+            <Czech>Horní klávesa použitá v událostech Quick-Time.</Czech>
             <French>Touche du haut utilisée dans les événements Quick-Time.</French>
             <German>Taste in Quick-Time-Events für oben.</German>
             <Korean>QTE에 사용되는 위쪽 키입니다.</Korean>
@@ -59,6 +67,7 @@
         </Key>
         <Key ID="STR_cba_quicktime_QTETitle">
             <English>Quick-Time Events</English>
+            <Czech>Quick-Time Events</Czech>
             <French>Quick-Time-Events</French>
             <German>Quick-Time-Events</German>
             <Korean>퀵 타임 이벤트 (QTE)</Korean>

@@ -3,6 +3,7 @@
     <Package name="Characters">
         <Key ID="STR_CBA_Characters_Component">
             <English>Community Base Addons - Characters</English>
+            <Czech>Community Base Addons - Postavy</Czech>
             <French>Community Base Addons - Personnages</French>
             <Italian>Community Base Addons - Personaggi</Italian>
             <Polish>Community Base Addons - Postacie</Polish>
@@ -14,6 +15,7 @@
         </Key>
         <Key ID="STR_CBA_Characters_MenMalariaInfected">
             <English>Men (Malaria-Infected)</English>
+            <Czech>Muži (Nakažení malárií)</Czech>
             <French>Hommes (Infectés par la malaria)</French>
             <Italian>Uomo (Infetto da malaria)</Italian>
             <Polish>Ludzie (Zainfekowani malarią)</Polish>
