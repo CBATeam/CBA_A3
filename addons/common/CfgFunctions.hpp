@@ -121,6 +121,8 @@ class CfgFunctions {
         class Misc {
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
+            PATHTO_FNC(setPerFrameHandlerDelay);
+            PATHTO_FNC(getPerFrameHandlerDelay);
             PATHTO_FNC(createPerFrameHandlerObject);
             PATHTO_FNC(deletePerFrameHandlerObject);
             PATHTO_FNC(addPlayerAction);
