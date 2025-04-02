@@ -11,6 +11,6 @@ jobs:
     if: github.repository == 'CBATeam/CBA_A3'
     steps:
     - name: Release Drafter
-      uses: release-drafter/release-drafter@v5
+      uses: release-drafter/release-drafter@v6
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

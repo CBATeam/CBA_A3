@@ -96,8 +96,8 @@ _msg = "";
 _msg = format ["%1: Invalid params type: %2", __FILE__, _this];
 
 if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
-if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log _msg};
-TRACE_2("INPUT Params",_this select 0, _this select 1);
+if !(typeName _this in ["ARRAY", "STRING"]) exitWith {diag_log _msg};
+TRACE_2("INPUT Params",_this select 0,_this select 1);
 
 _menuDefs = _this call FUNC(getMenuDef);
 TRACE_1("Get Menu Defs",_menuDefs);
@@ -105,7 +105,7 @@ TRACE_1("Get Menu Defs",_menuDefs);
 
 //Array must be returned.
 if (isNil "_menuDefs") then {diag_log format ["%1: Nil Warning: Expected type array from _menuDefs from target: %2 from source: %3", __FILE__, _this select 0, _this select 1]};
-if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
+if (typeName _menuDefs != "ARRAY") exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
 
 // Empty Array is allowed to signify that nothing should happen
 if (count _menuDefs == 0) exitWith {
@@ -120,7 +120,7 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; //
 
 TRACE_2("Determined which dialog to show",_flexiMenu_menuProperty_ID_menuResource,_menuRsc);
 
-if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
+if (typeName _menuRsc != "STRING") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
     _menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
@@ -138,9 +138,9 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["KeyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
-_disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
+_disp displayAddEventHandler ["MouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 
@@ -195,7 +195,7 @@ _commitList = [];
             _ctrl ctrlCommit 0; // commit pos/size before showing
 
             _ctrl ctrlSetStructuredText parseText _caption;
-            _ctrl ctrlSetToolTip _tooltip;
+            _ctrl ctrlSetTooltip _tooltip;
             buttonSetAction [_idc, _action];
 
             _commitList pushBack [_idc, _enabled, _visible];

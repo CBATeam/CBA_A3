@@ -94,7 +94,7 @@ private _cache = [];
 
 {
     private _patchConfig = _cfgPatches >> _x;
-    _addon = toLower _x;
+    private _addon = toLower _x;
 
     private _addonList = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
@@ -109,7 +109,7 @@ private _cache = [];
             private _listItem = _addonList select _index;
 
             if (_isPublic) then {
-                _displayName = getText (_weaponConfig >> "displayName");
+                private _displayName = getText (_weaponConfig >> "displayName");
 
                 // append display name with attachment names
                 {

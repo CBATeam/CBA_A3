@@ -51,6 +51,7 @@ class CfgFunctions {
             PATHTO_FNC(notify);
             PATHTO_FNC(openLobbyManager);
             PATHTO_FNC(progressBar);
+            PATHTO_FNC(renameInventoryItem);
         };
 
         class ItemContextMenu {

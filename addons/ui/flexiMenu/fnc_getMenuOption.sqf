@@ -17,7 +17,7 @@ IfCountDefault(_fastPartialResult,_this,2,false); // return a faster partial res
 IfCountDefault(_iconFolder,_menuDefs0,_flexiMenu_menuProperty_ID_iconFolder,""); // base icon folder (eg: "\ca\ui\data\")
 IfCountDefault(_multiReselect,_menuDefs0,_flexiMenu_menuProperty_ID_multiReselect,0); // menuStayOpenUponSelect: 0/1 type boolean
 
-if (typeName _multiReselect == typeName true) then {_multiReselect = if (_multiReselect) then {1} else {0}}; // convert boolean to integer
+if (typeName _multiReselect == "BOOL") then {_multiReselect = parseNumber _multiReselect}; // convert boolean to integer
 
 _caption = "";
 IfCountDefault(_action,_menuDef,_flexiMenu_menuDef_ID_action,"");
@@ -36,17 +36,17 @@ IfCountDefault(_tooltip,_menuDef,_flexiMenu_menuDef_ID_tooltip,"");
 IfCountDefault(_enabled,_menuDef,_flexiMenu_menuDef_ID_enabled,1);
 if (isNil "_enabled") then {
     hint ("Error logged: 'enabled' menu property returned nil.\n\n" + format ["Source data: %1", _this]);
-    ERROR_WITH_TITLE("'enabled' menu property returned nil.", str _this);
+    ERROR_WITH_TITLE("'enabled' menu property returned nil.",str _this);
     _enabled = 0;
     _caption = "Error: " + _caption;
 };
-if (typeName _enabled != typeName 2) then {
+if (typeName _enabled != "SCALAR") then {
     switch (true) do {
-        case (typeName _enabled == typeName ""): {
+        case (typeName _enabled == "STRING"): {
             _enabled = parseNumber _enabled; // allow "0"/"1" like BIS does
         };
-        case (typeName _enabled == typeName true): {
-            _enabled = if (_enabled) then {1} else {0}; // convert boolean to number
+        case (typeName _enabled == "BOOL"): {
+            _enabled = parseNumber _enabled; // convert boolean to number
         };
     };
 };
@@ -55,17 +55,17 @@ if (typeName _enabled != typeName 2) then {
 IfCountDefault(_visible,_menuDef,_flexiMenu_menuDef_ID_visible,1);
 if (isNil "_visible") then {
     hint ("Error logged: 'visible' menu property returned nil.\n\n" + format["Source data: %1", _this]);
-    ERROR_WITH_TITLE("'visible' menu property returned nil.", str _this);
+    ERROR_WITH_TITLE("'visible' menu property returned nil.",str _this);
     _visible = 0;
     _caption = "Error: " + _caption;
 };
-if (typeName _visible != typeName 2) then {
+if (typeName _visible != "SCALAR") then {
     switch (true) do {
-        case (typeName _visible == typeName ""): {
+        case (typeName _visible == "STRING"): {
             _visible = parseNumber _visible; // allow "0"/"1"/"2" like BIS does
         };
-        case (typeName _visible == typeName true): {
-            _visible = if (_visible) then {1} else {0};
+        case (typeName _visible == "BOOL"): {
+            _visible = parseNumber _visible;
         };
     };
 };
@@ -109,15 +109,15 @@ if (_enabled != 0 && {_visible > 0}) then {
     };
 } else {
     _shortcut_DIK = -1; // disable shortcut for disabled menu options
-    if (_shortcut_DIK != -1) then {player sidechat str [_caption, _shortcut_DIK, _enabled, _visible]};
+    if (_shortcut_DIK != -1) then {player sideChat str [_caption, _shortcut_DIK, _enabled, _visible]};
 };
 
 // remove "^" from caption and substitute coloured shortcut letter if enabled.
 if (_index >= 0) then {
-    if (_enabled != 0) then {  
+    if (_enabled != 0) then {
         // TODO: Read an appropriate color from the menu class.
 
-        private _offset = (if (_containCaret) then {1} else {0});
+        private _offset = parseNumber _containCaret;
         if (!_fastPartialResult) then {
             _caption = [_array, _index, _offset, format ["<t color='%1'>", GVAR(hotKeyColor)]] call FUNC(highlightCaretKey);
         };

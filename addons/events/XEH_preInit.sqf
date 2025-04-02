@@ -27,12 +27,13 @@ if (isServer) then {
     };
 };
 
-#include "backwards_comp.sqf"
-#include "initSettings.sqf"
+#include "backwards_comp.inc.sqf"
+#include "initSettings.inc.sqf"
 
-ADDON = true;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
-if (!hasInterface) exitWith {};
 PREP(playerEvent);
 
 GVAR(skipCheckingUserActions) = true;
@@ -80,7 +81,7 @@ GVAR(keyUpActiveList) = [];
 GVAR(keyHoldTimers) = call CBA_fnc_createNamespace;
 
 [QFUNC(handleKeyDownUp), {
-    private _xUp = _this select (count _this - 1);
+    private _xUp = _this select -1;
 
     GVAR(keyUpActiveList) deleteAt (GVAR(keyUpActiveList) find _xUp);
     GVAR(keyHoldTimers) setVariable [_xUp, nil];
@@ -95,3 +96,5 @@ GVAR(alt) = false;
 private _states = [];
 _states resize 20;
 GVAR(userKeyStates) = _states apply {false};
+
+ADDON = true;

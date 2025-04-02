@@ -15,7 +15,9 @@
     class CBA_9x19_HiPower {};      // Browning HiPower
     class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MAB38 {};        // Beretta Model 38
-    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28, MP35
+    class CBA_9x19_MAC10 {};        // MAC-10, M-10, M10, Military Armament Corporation Model 10 in 9x19mm
+    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28
+    class CBA_9x19_MP35 {};         // MP35
     class CBA_9x19_MP40 {};         // MP40, MP38
     class CBA_9x19_MP443 {};        // MP-443 Grach
     class CBA_9x19_MP5 {            // H&K MP5
@@ -48,10 +50,14 @@
             "30Rnd_9x21_Green_Mag"
         };
     };
-    class CBA_9x19_STEN {};         // STEN
+    class CBA_9x19_STEN {};         // STEN, Lanchester SMG
+    class CBA_9x19_Sterling {};     // Sterling SMG
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9
+    class CBA_9x19_USP {};          // HK USP, USP9, USP Tactical, P8, P8A1 in 9x19mm
+    class CBA_9x19_USP_C {};        // HK USP Compact, P10 in 9x19mm
+    class CBA_9x19_USP_E {};        // HK USP Match/Expert/Elite in 9x19mm
     class CBA_9x19_UZI {};          // UZI
     class CBA_9x19_UZI_Pro {};      // UZI Pro
     class CBA_9x19_Vis {};          // wz. 35 Vis (Radom)

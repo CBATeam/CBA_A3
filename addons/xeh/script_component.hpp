@@ -14,7 +14,7 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo, diag_tickTime, time)], msg); }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo,diag_tickTime,time)],msg); }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
@@ -45,6 +45,8 @@
     "AnimChanged", \
     "AnimDone", \
     "AnimStateChanged", \
+    "Assembled", \
+    "Attached", \
     "CargoLoaded", \
     "CargoUnloaded", \
     "ContainerClosed", \
@@ -52,6 +54,7 @@
     "ControlsShifted", \
     "Dammaged", \
     "Deleted", \
+    "Detached", \
     "Disassembled", \
     "Engine", \
     "EpeContact", \
@@ -70,6 +73,7 @@
     "GetInMan", \
     "GetOut", \
     "GetOutMan", \
+    "HandleHeal", \
     "Hit", \
     "HitPart", \
     "IncomingMissile", \
@@ -80,7 +84,9 @@
     "Killed", \
     "LandedTouchDown", \
     "LandedStopped", \
+    "LeaningChanged", \
     "Local", \
+    "MagazineReloading", \
     "OpticsModeChanged", \
     "OpticsSwitch", \
     "Put", \
@@ -98,6 +104,7 @@
     "TurnOut", \
     "VisionModeChanged", \
     "WeaponAssembled", \
+    "WeaponChanged", \
     "WeaponDisassembled", \
     "WeaponDeployed", \
     "WeaponRested"

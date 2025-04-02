@@ -70,7 +70,7 @@ class CfgWeapons {
 
     class US85_MachinegunBase_7_62: US85_MachinegunBase_5_56 {};
 
-    class US85_M60: US85_MachinegunBase_7_62 {
+    class US85_M60_base: US85_MachinegunBase_7_62 {
         magazineWell[] += {"CBA_762x51_LINKS"};
     };
 

@@ -33,7 +33,7 @@ if (isNil "_return") then {
 
     // Normally, full caching is enabled. If not, log an informative message.
     if (_return) then {
-        XEH_LOG(PFORMAT_1("CBA CACHE DISABLED? (Disable caching with cba_cache_disable.pbo)", _compileType));
+        XEH_LOG(PFORMAT_1("CBA CACHE DISABLED? (Disable caching with cba_cache_disable.pbo)",_compileType));
     };
 };
 

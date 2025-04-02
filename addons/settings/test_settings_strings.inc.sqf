@@ -23,3 +23,7 @@ test10 = "[ '  item_1  ' , ""  item_2  "" ]";
 test11 = "[ '""  item_1  ""' , '  item_2  ' ]";
 
 test12 = "[ '  item_1  ' , ""'  item_2  '"" ]";
+
+test13 = "'";
+
+test14 = "''";

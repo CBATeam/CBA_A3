@@ -15,7 +15,7 @@
 #define _LBH_overlap 0.0375 * safeZoneH //button height with 1 pixel overlap for type "popup" menu
 #define _listButtonsPerRow 10
 //#define _captionColorBG 58 / 256, 80 / 256, 55 / 256 //BIS mid green (button over colour)
-#define _captionColorFG "138 / 256", "146 / 256", "105 / 256" //BIS greenish text
+#define _captionColorFG (138 / 256), (146 / 256), (105 / 256) //BIS greenish texts
 #define _captionHgt 0.85
 #define _gapW 0.01 * safeZoneW //Horizontal gap "width" between circle button and side buttons
 #define _gapH ((_CH / 2-2 * _BH) * 2 / 3) //Button "height" vertical spacing
@@ -117,7 +117,7 @@ class CBA_flexiMenu_rscRose {
         };
 
         class button01: button {
-            idc = QUOTE(_flexiMenu_baseIDC_button + 0);
+            idc = _flexiMenu_baseIDC_button + 0;
             x = QUOTE(_SX-_CW / 2 + _CX_correction);
             y = QUOTE(_SY-_CH / 2);
             w = QUOTE(_CW);
@@ -141,7 +141,7 @@ class CBA_flexiMenu_rscRose {
 
         #define ExpandMacro_RowControls(ID,newX,newY,imageTag)\
         class button##ID: button {\
-            idc = QUOTE(_flexiMenu_baseIDC_button + (ID-1));\
+            idc = _flexiMenu_baseIDC_button + (ID-1);\
             x = QUOTE(newX);\
             y = QUOTE(newY);\
             text = "";\
@@ -177,7 +177,7 @@ class CBA_flexiMenu_rscRose {
     //Note: x pos will be 3 columns, with first column centred, 2nd on right, 3rd on left.
     #define ExpandMacro_ListControls(ID)\
     class listButton##ID: listButton {\
-        idc = QUOTE(_flexiMenu_baseIDC_listButton + ID);\
+        idc = _flexiMenu_baseIDC_listButton + ID;\
         x = QUOTE(_SX - ((_SMW + _gapW) * 1.5) + floor(((##ID + _listButtonsPerRow) / _listButtonsPerRow) mod 3) * (_SMW + _gapW));\
         y = QUOTE(_SY + (_CH / 2 + _gapH) + _BH + _gapH + (1 + (##ID mod _listButtonsPerRow)) * _LBH);\
     }

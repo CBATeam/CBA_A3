@@ -111,11 +111,11 @@
 
 #define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
-#define CAN_SET_MISSION_SETTINGS is3den // in editor
+#define CAN_SET_MISSION_SETTINGS is3DEN // in editor
 
 #define CAN_VIEW_SERVER_SETTINGS !isNull GVAR(server) // everyone can peak at those in multiplayer
 #define CAN_VIEW_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
-#define CAN_VIEW_MISSION_SETTINGS (is3den || {missionVersion >= 15}) // can view those in 3den or 3den missions
+#define CAN_VIEW_MISSION_SETTINGS (is3DEN || {missionVersion >= 15}) // can view those in 3den or 3den missions
 
 #define HASH_NULL ([] call CBA_fnc_hashCreate)
 #define NAMESPACE_NULL objNull
@@ -124,7 +124,7 @@
 #define GET_TEMP_NAMESPACE_VALUE(setting,source)    (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 0)
 #define GET_TEMP_NAMESPACE_PRIORITY(setting,source) (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 1)
 
-#define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart) && {!is3den}) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
+#define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart) && {!is3DEN}) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
 #define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 #define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 

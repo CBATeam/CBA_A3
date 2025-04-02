@@ -2,17 +2,21 @@
 
 ADDON = false;
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 if (configProperties [configFile >> "CBA_PIPItems"] isEqualTo [] && {
     configProperties [configFile >> "CBA_CarryHandleTypes"] isEqualTo []
-}) exitWith {};
+}) exitWith {
+    ADDON = true;
+};
 
-#include "XEH_PREP.sqf"
+#include "XEH_PREP.hpp"
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
-#include "initKeybinds.sqf"
+#include "initKeybinds.inc.sqf"
 
 QGVAR(pauseOpticLayer) cutText ["", "PLAIN"];
 
@@ -75,7 +79,7 @@ GVAR(disableTilt) = false;
     [_unit, _camera isEqualTo ""] call FUNC(restartCamera);
 }] call CBA_fnc_addPlayerEventHandler;
 
-["CAManBase", "Fired", FUNC(animateScriptedOpticRecoil)] call CBA_fnc_addClassEventHandler;
+[QUOTE(ADDON), "Fired", FUNC(animateScriptedOpticRecoil), true] call CBA_fnc_addBISPlayerEventHandler;
 
 // Handle Arsenal: Switch back to normal classes.
 GVAR(inArsenal) = false;

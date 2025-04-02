@@ -23,7 +23,7 @@ Author:
 
 params [["_item", "", [""]], ["_condition", {true}, [{}]]];
 
-if (!isClass (configfile >> "CfgWeapons" >> _item)) exitWith { ERROR_1("Item not found [%1]", _item); };
+if (!isClass (configFile >> "CfgWeapons" >> _item)) exitWith { ERROR_1("Item not found [%1]",_item); };
 
 private _usageArray = GVAR(usageHash) getOrDefault [_item, [], true];
 _usageArray pushBack _condition;

@@ -1,5 +1,5 @@
 /*
-	Author: 
+	Author:
 		Killzone_Kid
 
 	Description:
@@ -19,7 +19,7 @@ if (is3DEN || is3DENMultiplayer) exitWith {true}; // allowed in 3DEN or 3DEN tes
 // == SP MODE ==
 
 if (!isMultiplayer) exitWith
-{ 
+{
 	allDisplays find findDisplay 313 in [0, 1] // 3DEN preview
 	||
 	{allDisplays find findDisplay 26 in [0, 1]} // 2DEN
@@ -43,23 +43,23 @@ private _fnc_getConfigValue =
 };
 
 private _enableDebugConsole = call
-{	
+{
 	// --- mission param (0 - disabled, 1 - enabled for admin)
-	private _chk = ["DebugConsole", nil] call (missionNamespace getVariable "BIS_fnc_getParamValue"); 
+	private _chk = ["DebugConsole", nil] call (missionNamespace getVariable "BIS_fnc_getParamValue");
 	if (!isNil "_chk") exitWith {_chk};
-	
+
 	// --- mission config (0 - disabled, 1 - enabled for admin, 2 - enabled for anyone, [...] - enabled for admin and whitelist)
-	private _cfg = missionConfigFile >> "enableDebugConsole"; 
+	private _cfg = missionConfigFile >> "enableDebugConsole";
 	if (!isNull _cfg) exitWith {_cfg call _fnc_getConfigValue};
-	
+
 	// --- mission attribute (1 - enabled for admin, 2 - enabled for anyone)
-	_chk = getMissionConfigValue ["enableDebugConsole", 0]; 
+	_chk = getMissionConfigValue ["enableDebugConsole", 0];
 	if !(_chk isEqualTo 0) exitWith {_chk};
-	
+
 	// --- mod config (0 - disabled, 1 - enabled for admin, 2 - enabled for anyone, [...] - enabled for admin and whitelist)
-	_cfg = configFile >> "enableDebugConsole"; 
+	_cfg = configFile >> "enableDebugConsole";
 	if (!isNull _cfg) exitWith {_cfg call _fnc_getConfigValue};
-	
+
 	//--- disabled
 	0
 };
@@ -78,8 +78,8 @@ if !(_enableDebugConsole isEqualTo 1) exitWith {false}; // only admin or whiteli
 
 // --- Client check
 if (
-	hasInterface 
-	&& 
+	hasInterface
+	&&
 	isUIContext
 	&&
 	{
@@ -94,7 +94,7 @@ if (
 			&&
 			{
 				getPlayerUID player in _whitelist // whitelisted caller
-			}			
+			}
 		}
 	}
 )
@@ -102,26 +102,26 @@ exitWith {true};
 
 // --- Server check
 if (
-	isServer 
-	&& 
+	isServer
+	&&
 	isRemoteExecuted
 	&&
 	{
-		remoteExecutedOwner isEqualto 2 // server host
+		remoteExecutedOwner isEqualTo 2 // server host
 		||
 		{
 			admin remoteExecutedOwner isEqualTo 2 // logged in admin
 		}
 		||
-		{ 
+		{
 			!(_whitelist isEqualTo []) // non-empty whitelist check
 			&&
 			{
 				getPlayerUID (allPlayers select {owner _x isEqualTo remoteExecutedOwner} param [0, objNull]) in _whitelist // whitelisted caller
 			}
-		} 
+		}
 	}
 )
 exitWith {true};
 
-false 
+false

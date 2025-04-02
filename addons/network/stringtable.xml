@@ -1,122 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
     <Package name="Network">
-        <Key ID="STR_CBA_Network_Component">
-            <English>CBA Network</English>
-            <German>CBA Netzwerk</German>
-            <Japanese>CBA ネットワーク</Japanese>
-            <Chinese>CBA 網路</Chinese>
-            <Chinesesimp>CBA 网路</Chinesesimp>
-            <Portuguese>CBA Rede</Portuguese>
-            <Russian>CBA Сеть</Russian>
-            <French>CBA Réseau</French>
-            <Polish>CBA Sieć</Polish>
-            <Turkish>CBA Ağ</Turkish>
-            <Italian>CBA Rete</Italian>
-            <Czech>CBA Síť</Czech>
-            <Korean>CBA 네트워크</Korean>
-        </Key>
         <Key ID="STR_CBA_Network_Category">
             <English>Network</English>
+            <Czech>Síť</Czech>
+            <French>Réseau</French>
+            <Italian>Rete</Italian>
+            <Polish>Sieć</Polish>
+            <Portuguese>Rede</Portuguese>
+            <Russian>Сеть</Russian>
             <German>Netzwerk</German>
+            <Korean>네트워크</Korean>
             <Japanese>ネットワーク</Japanese>
             <Chinese>網路</Chinese>
             <Chinesesimp>网路</Chinesesimp>
-            <Portuguese>Rede</Portuguese>
-            <Russian>Сеть</Russian>
-            <French>Réseau</French>
-            <Polish>Sieć</Polish>
             <Turkish>Ağ</Turkish>
-            <Italian>Rete</Italian>
-            <Czech>Síť</Czech>
-            <Korean>네트워크</Korean>
+        </Key>
+        <Key ID="STR_CBA_Network_Component">
+            <English>Community Base Addons - Network</English>
+            <Czech>Community Base Addons - Síť</Czech>
+            <French>Community Base Addons - Réseau</French>
+            <Italian>Community Base Addons - Rete</Italian>
+            <Polish>Community Base Addons - Sieć</Polish>
+            <Portuguese>Extensões de Base Comunitária - Rede</Portuguese>
+            <Russian>Community Base Addons - Сеть</Russian>
+            <German>Community Base Addons - Netzwerk</German>
+            <Korean>커뮤니티 베이스 애드온 - 네트워크</Korean>
+            <Japanese>Community Base Addons - ネットワーク</Japanese>
+            <Chinese>社群基礎模組 - 網路</Chinese>
+            <Chinesesimp>社群基础模组 - 网路</Chinesesimp>
+            <Turkish>Community Base Addons - Ağ</Turkish>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidation">
             <English>Loadout Validation</English>
-            <German>Überprüfung von Ausrüstungen</German>
+            <Czech>Ověření výbavy</Czech>
             <French>Vérification de l'équipement</French>
+            <Italian>Verifica l'equipaggiamento</Italian>
             <Polish>Sprawdzenie wyposażenia</Polish>
+            <German>Überprüfung von Ausrüstungen</German>
+            <Korean>로드아웃 검사</Korean>
+            <Japanese>ロードアウトの検証</Japanese>
             <Chinese>驗證加載</Chinese>
             <Chinesesimp>验证加载</Chinesesimp>
-            <Italian>Verifica l'equipaggiamento</Italian>            
-            <Korean>로드아웃 검사</Korean>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
-            <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
+            <Czech>Ověřovat výbavu jednotek. Opravuje problém s nahými jednotkami když mění lokálnost.</Czech>
             <French>Vérifie l'équipement des unités. Correction d'un bug où les unités se retrouvaient nues après avoir changé de localité.</French>
+            <Italian>Verifica l'equipaggiamento delle unità. Corregge un bug che faceva apparire un'unità nuda dopo aver cambiato località.</Italian>
             <Polish>Sprawdza wyposażenie jednostek. Naprawia problem, który powodował pojawianie się jednostek nagich, przy zmianie lokalności.</Polish>
+            <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
+            <Korean>유닛의 로드아웃을 확인합니다. 위치를 변경한 후 유닛이 알몸인 상태로 나타나는 문제를 해결합니다.</Korean>
+            <Japanese>ユニットのロードアウトを検証します。 ローカルでの変更後にユニットが裸で表示される問題を修正します。</Japanese>
             <Chinese>驗證單位加載。修復單位在更改大廳位置後顯示為裸體的問題。</Chinese>
             <Chinesesimp>验证单位加载。修复单位在更改大厅位置后显示为裸体的问题。</Chinesesimp>
-            <Czech>Ověřovat výbavu jednotek. Opravuje problém s nahými jednotkami když mění lokálnost.</Czech>
-            <Italian>Verifica l'equipaggiamento delle unità. Corregge un bug che faceva apparire un'unità nuda dopo aver cambiato località.</Italian>            
-            <Korean>유닛의 로드아웃을 확인합니다. 위치를 변경한 후 유닛이 알몸인 상태로 나타나는 문제를 해결합니다.</Korean>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
-            <German>Niemals</German>
+            <Czech>Nikdy</Czech>
             <French>Jamais</French>
+            <Italian>Mai</Italian>
             <Polish>Nigdy</Polish>
+            <German>Niemals</German>
+            <Korean>없음</Korean>
+            <Japanese>行わない</Japanese>
             <Chinese>從不</Chinese>
             <Chinesesimp>从不</Chinesesimp>
-            <Czech>Nikdy</Czech>
-            <Italian>Mai</Italian>            
-            <Korean>없음</Korean>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
-            <German>Überprüfe niemals Ausrüstungen</German>
+            <Czech>Nikdy neověřovat výbavu</Czech>
             <French>Ne jamais vérifier les équipements</French>
+            <Italian>Non validare mai gli equipaggiamenti</Italian>
             <Polish>Nigdy nie sprawdzaj wyposażenia</Polish>
+            <German>Überprüfe niemals Ausrüstungen</German>
+            <Korean>로드아웃 검사하지 않음</Korean>
+            <Japanese>ロードアウトを検証しません</Japanese>
             <Chinese>從不驗證加載</Chinese>
             <Chinesesimp>从不验证加载</Chinesesimp>
-            <Czech>Nikdy neověřovat výbavu</Czech>
-            <Italian>Non validare mai gli equipaggiamenti</Italian>                        
-            <Korean>로드아웃 검사하지 않음</Korean>
-        </Key>
-        <Key ID="STR_CBA_Network_ValidatePlayableOnly">
-            <English>Playable units only</English>
-            <German>Nur spielbare Einheiten</German>
-            <French>Pour les unités jouables</French>
-            <Polish>Tylko grywalne jednostki</Polish>
-            <Chinese>僅可玩單位</Chinese>
-            <Chinesesimp>仅可玩单位</Chinesesimp>
-            <Czech>Pouze hratelné jednotky</Czech>
-            <Italian>Solo unità giocabili</Italian>                        
-            <Korean>플레이 가능 유닛만</Korean>
-        </Key>
-        <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
-            <English>Validate only loadout of playable units</English>
-            <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
-            <French>Vérifier uniquement l'équipement des unités jouables</French>
-            <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
-            <Chinese>僅驗證可玩單位的加載</Chinese>
-            <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
-            <Czech>Ověřovat pouze výbavu hratelných jednotek</Czech>
-            <Italian>Valida solo le unità giocabili</Italian>
-            <Korean>플레이 가능 유닛만 로드아웃 검사</Korean>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
-            <German>Alle Einheiten</German>
+            <Czech>Všechny jednotky</Czech>
             <French>Pour toutes les unités</French>
+            <Italian>Tutte le unità</Italian>
             <Polish>Wszystkie jednostki</Polish>
+            <German>Alle Einheiten</German>
+            <Korean>모든 유닛</Korean>
+            <Japanese>全ユニット</Japanese>
             <Chinese>所有單位</Chinese>
             <Chinesesimp>所有单位</Chinesesimp>
-            <Czech>Všechny jednotky</Czech>
-            <Italian>Tutte le unità</Italian>            
-            <Korean>모든 유닛</Korean>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
-            <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
+            <Czech>Ověřovat výbavu všech jednotek</Czech>
             <French>Vérifier l'équipement de toutes les unités</French>
+            <Italian>Valida l'equipaggiamento di tutte unità</Italian>
             <Polish>Sprawdza wyposażenie wszystkich jednostek</Polish>
+            <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
+            <Korean>모든 유닛의 로드아웃 검사</Korean>
+            <Japanese>すべてのユニットのロードアウトを検証する</Japanese>
             <Chinese>驗證所有單位的加載</Chinese>
             <Chinesesimp>验证所有单位的加载</Chinesesimp>
-            <Czech>Ověřovat výbavu všech jednotek</Czech>
-            <Italian>Valida l'equipaggiamento di tutte unità</Italian>                        
-            <Korean>모든 유닛의 로드아웃 검사</Korean>
+        </Key>
+        <Key ID="STR_CBA_Network_ValidatePlayableOnly">
+            <English>Playable units only</English>
+            <Czech>Pouze hratelné jednotky</Czech>
+            <French>Pour les unités jouables</French>
+            <Italian>Solo unità giocabili</Italian>
+            <Polish>Tylko grywalne jednostki</Polish>
+            <German>Nur spielbare Einheiten</German>
+            <Korean>플레이 가능 유닛만</Korean>
+            <Japanese>プレイ可能なユニットのみ</Japanese>
+            <Chinese>僅可玩單位</Chinese>
+            <Chinesesimp>仅可玩单位</Chinesesimp>
+        </Key>
+        <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
+            <English>Validate only loadout of playable units</English>
+            <Czech>Ověřovat pouze výbavu hratelných jednotek</Czech>
+            <French>Vérifier uniquement l'équipement des unités jouables</French>
+            <Italian>Valida solo le unità giocabili</Italian>
+            <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
+            <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
+            <Korean>플레이 가능 유닛만 로드아웃 검사</Korean>
+            <Japanese>プレイ可能なユニットのロードアウトのみを検証する</Japanese>
+            <Chinese>僅驗證可玩單位的加載</Chinese>
+            <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
         </Key>
     </Package>
 </Project>

@@ -17,3 +17,5 @@ PREP(preload3DEN);
 PREP(preloadCurator);
 
 PREP(openItemContextMenu);
+
+PREP(getInventoryItemData);

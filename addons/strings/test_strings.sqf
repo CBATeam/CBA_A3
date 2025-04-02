@@ -42,51 +42,51 @@ TEST_DEFINED("CBA_fnc_split","");
 
 _array = ["", "\"] call CBA_fnc_split;
 _expected = [];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["", ""] call CBA_fnc_split;
 _expected = [];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["\", "\"] call CBA_fnc_split;
 _expected = ["", ""];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["\frog", "\"] call CBA_fnc_split;
 _expected = ["", "frog"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["\frog\", "\"] call CBA_fnc_split;
 _expected = ["", "frog", ""];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["cheese\frog\fish", "\"] call CBA_fnc_split;
 _expected = ["cheese", "frog", "fish"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["peas", ""] call CBA_fnc_split;
 _expected = ["p", "e", "a", "s"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["abc", "abc"] call CBA_fnc_split;
 _expected = ["", ""];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["abc", "long"] call CBA_fnc_split;
 _expected = ["abc"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["this\is\a\path\to\fnc_test.sqf","\fnc_"] call CBA_fnc_split;
 _expected = ["this\is\a\path\to", "test.sqf"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["babab", "bab"] call CBA_fnc_split;
 _expected = ["", "ab"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 _array = ["BbabTabAbabbabababab", "bab"] call CBA_fnc_split;
 _expected = ["B","TabA","","a","ab"];
-TEST_OP(str _array, ==, str _expected, _fn);
+TEST_OP(str _array,==,str _expected,_fn);
 
 // ----------------------------------------------------------------------------
 // UNIT TESTS (stringReplace)
@@ -275,28 +275,28 @@ _fn = "CBA_fnc_compare";
 TEST_DEFINED("CBA_fnc_compare","");
 
 _result = ["", ""] call CBA_fnc_compare;
-TEST_OP(_result, ==, 0, _fn);
+TEST_OP(_result,==,0,_fn);
 
 _result = ["", "a"] call CBA_fnc_compare;
-TEST_OP(_result, ==, -1, _fn);
+TEST_OP(_result,==,-1,_fn);
 
 _result = ["a", ""] call CBA_fnc_compare;
-TEST_OP(_result, ==, +1, _fn);
+TEST_OP(_result,==,+1,_fn);
 
 _result = ["a", "a"] call CBA_fnc_compare;
-TEST_OP(_result, ==, 0, _fn);
+TEST_OP(_result,==,0,_fn);
 
 _result = ["a", "b"] call CBA_fnc_compare;
-TEST_OP(_result, ==, -1, _fn);
+TEST_OP(_result,==,-1,_fn);
 
 _result = ["b", "a"] call CBA_fnc_compare;
-TEST_OP(_result, ==, +1, _fn);
+TEST_OP(_result,==,+1,_fn);
 
 _result = ["aardvark", "aardwolf"] call CBA_fnc_compare;
-TEST_OP(_result, ==, -1, _fn);
+TEST_OP(_result,==,-1,_fn);
 
 _result = ["aardwolf", "aardvark"] call CBA_fnc_compare;
-TEST_OP(_result, ==, +1, _fn);
+TEST_OP(_result,==,+1,_fn);
 */
 
 // ----------------------------------------------------------------------------

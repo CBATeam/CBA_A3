@@ -12,36 +12,36 @@ class Extended_PreInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayInterrupt {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
     };
     class RscDisplayMPInterrupt {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayInterrupt)'));
     };
     class RscDisplayMultiplayerSetup {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMultiplayerSetup)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayMultiplayerSetup)'));
     };
     class RscDisplayOptionsLayout {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayOptionsLayout)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayOptionsLayout)'));
     };
     class RscDisplayPassword {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayPassword)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayPassword)'));
     };
     class RscDisplayRemoteMissions {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayRemoteMissions)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayRemoteMissions)'));
     };
     class RscDiary {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayDiary)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayDiary)'));
     };
     class Display3DEN {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
     };
     class RscDisplayCurator {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayCurator)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayCurator)'));
     };
     class RscMsgBox {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMessageBox)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayMessageBox)'));
     };
     class RscDisplayInventory {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayInventory)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayInventory)'));
     };
 };

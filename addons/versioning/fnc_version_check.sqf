@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 
 // _key, _value  are injected by the CBA_fnc_hashEachPair
+//IGNORE_PRIVATE_WARNING ["_key", "_value"];
 
 private _localValue = [GVAR(versions), _key] call CBA_fnc_hashGet;
 TRACE_3("Version Check",_key,_value,_localValue);
@@ -11,7 +12,7 @@ _value params ["_remoteVersion", "_level"];
 private _lc = count _localVersion; private _rc = count _remoteVersion;
 switch _level do {
     case -1: { _level = _rc }; // All must match
-    case -2: { _level = if (_lc == 0) then { 0 } else { _rc } }; // All must match, IF the addon is installed, otherwise ignore
+    case -2: { _level = [_rc, 0] select (_lc == 0) }; // All must match, IF the addon is installed, otherwise ignore
 };
 if (_level == 0) exitWith {};
 

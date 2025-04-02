@@ -42,7 +42,8 @@ jobs:
     - name: Rename build folder
       run: mv .hemttout/build .hemttout/@CBA_A3
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: CBA_A3_${{ github.sha }}-nobin
         path: .hemttout/@*
+        include-hidden-files: true # Because .hemttout is a hidden directory

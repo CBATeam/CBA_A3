@@ -3,14 +3,16 @@
     <Package name="Legacy_JR">
         <Key ID="STR_CBA_Legacy_JR_Component">
             <English>Community Base Addons - Legacy Joint Rails</English>
-            <German>Community Base Addons - Legacy-Joint Rails</German>
             <Czech>Community Base Addons - Legacy Joint Rails</Czech>
-            <Turkish>Community Base Addons - Legacy Joint Rails</Turkish>
+            <French>Community Base Addons - Legacy Joint Rails</French>
+            <Polish>Community Base Addons - Legacy Joint Rails</Polish>
+            <Russian>Community Base Addons - Legacy Joint Rails</Russian>
+            <German>Community Base Addons - Legacy-Joint Rails</German>
+            <Korean>커뮤니티 베이스 애드온 - 레거시 조인트 레일</Korean>
+            <Japanese>Community Base Addons - レガシー ジョイント レール</Japanese>
             <Chinese>社群基礎模組 - Legacy版共用導軌</Chinese>
             <Chinesesimp>社区基础插件-传统共用导轨</Chinesesimp>
-            <Russian>Community Base Addons - Legacy Joint Rails</Russian>
-            <Polish>Community Base Addons - Legacy Joint Rails</Polish>
-            <Korean>커뮤니티 베이스 애드온 - 레거시 조인트 레일</Korean>
+            <Turkish>Community Base Addons - Legacy Joint Rails</Turkish>
         </Key>
     </Package>
 </Project>

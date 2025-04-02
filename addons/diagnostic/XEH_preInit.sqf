@@ -5,8 +5,8 @@ LOG(MSG_INIT);
 
 ADDON = false;
 
-#include "XEH_PREP.sqf"
-#include "initSettings.sqf"
+#include "XEH_PREP.hpp"
+#include "initSettings.inc.sqf"
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
@@ -16,8 +16,6 @@ GVAR(projectileIndex) = 0;
 GVAR(projectileMaxLines) = 20;
 GVAR(projectileStartedDrawing) = false;
 GVAR(projectileTrackedUnits) = [];
-
-ADDON = true;
 
 if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFile >> "EnableTargetDebug") == 1}) then {
     INFO("EnableTargetDebug is enabled.");
@@ -29,9 +27,9 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
         private _timeStart = diag_tickTime;
         private _returnString = _statementText call {
             private ["_clientID", "_statementText", "_varName", "_timeStart", "_x"]; // prevent these variables from being overwritten
-            _this = ([nil] apply compile _this) select 0;
-            if (isNil "_this") exitWith {"<any>"};
-            str _this
+            private _str = ([nil] apply compile _this) select 0;
+            if (isNil "_str") exitWith {"<any>"};
+            str _str
         };
         _returnString = _returnString select [0, 1000]; // limit string length
         private _duration = diag_tickTime - _timeStart;
@@ -71,3 +69,5 @@ if (getMissionConfigValue ["EnableTargetDebug", 0] == 1 || {getNumber (configFil
         }];
     };
 };
+
+ADDON = true;
