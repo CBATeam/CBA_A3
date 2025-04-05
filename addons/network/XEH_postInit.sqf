@@ -6,7 +6,7 @@ if (hasInterface) then {
 
         // Delete previously attached sounds so the new sound can be played instantly
         if (_instant) then {
-            { deleteVehicle _x } forEach (attachedObjects _object select { typeOf _x isEqualTo "#soundonvehicle" });
+            [QGVAR(stopSounds), _object] call CBA_fnc_localEvent;
         };
 
         // Attaching is mainly meant for vehicles in motion
@@ -14,6 +14,11 @@ if (hasInterface) then {
         if (_attach) then {
             _source attachTo [_object];
         };
+    }] call CBA_fnc_addEventHandler;
+
+    [QGVAR(stopSounds), {
+        params ["_object"];
+        { deleteVehicle _x } forEach (attachedObjects _object select { typeOf _x isEqualTo "#soundonvehicle" });
     }] call CBA_fnc_addEventHandler;
 
     [QGVAR(say), {
