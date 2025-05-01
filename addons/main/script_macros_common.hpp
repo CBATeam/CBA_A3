@@ -1849,8 +1849,16 @@ Examples:
 Author:
     OverlordZorn
 ------------------------------------------- */
-#define Q(var1) QUOTE(var1)
-#define QQ(var1) QUOTE(QUOTE(var1))
+#ifndef Q
+    #define Q(var1) QUOTE(var1)
+#endif
+#ifndef QQ
+    #define QQ(var1) QUOTE(QUOTE(var1))
+#endif
 
-#define QADDON Q(ADDON)
-#define QQADDON QQ(ADDON)
+#ifndef QADDON
+    #define QADDON Q(ADDON)
+#endif
+#ifndef QQADDON
+    #define QQADDON QQ(ADDON)
+#endif
