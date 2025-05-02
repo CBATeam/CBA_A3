@@ -4,7 +4,7 @@ Function: CBA_fnc_getCfgDataRandom
 
 Description:
     This function extracts data from a config property.
-    If it is an Array, it will select a random entry from the array, otherwise it will simply return the provided data.
+    If it is an Array, it will select a random entry from the array (nil if empty), otherwise it will simply return the provided data.
 
     Will check if _cfg exists, if not, returns nil.
 
