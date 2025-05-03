@@ -3,6 +3,7 @@ class CfgFunctions {
     class CBA {
         class Config {
             PATHTO_FNC(getConfigEntry);
+            PATHTO_FNC(getCfgDataRandom);
             PATHTO_FNC(getObjectConfig);
             PATHTO_FNC(getItemConfig);
             PATHTO_FNC(getMuzzles);
