@@ -108,6 +108,11 @@ Parameters:
     _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
 
+    _allowInheritance       - if true, then option will be available for all items
+                              that inherit from the given _item class.
+                              Does nothing if _item is a type or wildcard
+                              (optional, default: true) <BOOLEAN>
+
 Returns:
     Nothing/Undefined.
 
@@ -117,11 +122,11 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2], false] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:
-    commy2
+    commy2 & 10Dozen
 ---------------------------------------------------------------------------- */
 
 // Force unscheduled environment to prevent race conditions.
@@ -133,7 +138,8 @@ if (!hasInterface) exitWith {};
 
 // Initialize system on first execution.
 if (isNil QGVAR(ItemContextMenuOptions)) then {
-    GVAR(ItemContextMenuOptions) = false call CBA_fnc_createNamespace;
+    GVAR(ItemContextMenuOptions) = createHashMap;
+    GVAR(ItemContextMenuUniqueOptions) = createHashMap;
 
     ["CAManBase", "InventoryOpened", {
         params ["_unit", "_container1", "_container2"];
@@ -157,7 +163,8 @@ params [
     ["_condition", [], [{}, []]],
     ["_statement", {}, [{}]],
     ["_consume", false, [false]],
-    ["_params", []]
+    ["_params", []],
+    ["_allowInheritance", true, [false]]
 ];
 
 if (_item isEqualTo "") exitWith {};
@@ -222,11 +229,16 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-private _options = GVAR(ItemContextMenuOptions) getVariable _item;
+private _contextMenuOptions = GVAR(ItemContextMenuOptions);
+if (!_allowInheritance) then {
+    _contextMenuOptions = GVAR(ItemContextMenuUniqueOptions);
+};
+
+private _options = _contextMenuOptions get _item;
 
 if (isNil "_options") then {
     _options = [];
-    GVAR(ItemContextMenuOptions) setVariable [_item, _options];
+    _contextMenuOptions set [_item, _options];
 };
 
 _options pushBack [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params];
