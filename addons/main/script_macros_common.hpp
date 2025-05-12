@@ -1834,31 +1834,24 @@ Author:
 #define FILE_EXISTS(FILE) (fileExists (FILE))
 
 /* -------------------------------------------
-Macro: Q()
+Macro: QADDON, QQADDON
 
 Description:
-    Introduces a shortend version of QUOTE() and other frequently used quoted MARCOs
+    Quoted Variant of ADDON
 
 Parameters:
 
 Examples:
     (begin example)
-    Q(configName _x isEqualTo QQ(abe_banana)) configClasses (configFile >> QADDON)
+    QUOTE(configName _x isEqualTo QUOTE(QUOTE(abe_banana))) configClasses (configFile >> QADDON)
     (end)
 
 Author:
     OverlordZorn
 ------------------------------------------- */
-#ifndef Q
-    #define Q(var1) QUOTE(var1)
-#endif
-#ifndef QQ
-    #define QQ(var1) QUOTE(QUOTE(var1))
-#endif
-
 #ifndef QADDON
-    #define QADDON Q(ADDON)
+    #define QADDON QUOTE(ADDON)
 #endif
 #ifndef QQADDON
-    #define QQADDON QQ(ADDON)
+    #define QQADDON QUOTE(QUOTE(ADDON))
 #endif
