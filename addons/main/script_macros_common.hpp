@@ -1837,7 +1837,7 @@ Author:
 Macro: Q()
 
 Description:
-    Introduces a shortend version of QUOTE() and other frequently used quoted MARCOs
+    Introduces a shortend version of QUOTE()
 
 Parameters:
 
@@ -1854,11 +1854,4 @@ Author:
 #endif
 #ifndef QQ
     #define QQ(var1) QUOTE(QUOTE(var1))
-#endif
-
-#ifndef QADDON
-    #define QADDON Q(ADDON)
-#endif
-#ifndef QQADDON
-    #define QQADDON QQ(ADDON)
 #endif
