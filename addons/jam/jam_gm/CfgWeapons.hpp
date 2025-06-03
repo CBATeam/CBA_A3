@@ -36,7 +36,7 @@ class CfgWeapons {
     };
 
     class gm_svd_base: gm_rifle_base {
-        magazineWell[] += {"CBA_9x18_PM63"};
+        magazineWell[] += {"CBA_762x54R_SVD"};
     };
 
     class gm_machineGun_base: gm_rifle_base {};
