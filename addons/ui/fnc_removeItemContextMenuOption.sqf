@@ -17,7 +17,7 @@ Parameters:
                               Wildcard:
                                 #All
 
-    _ident                  - ID of the option. Can be used to remove an option.
+    _id                  - ID of the option. Can be used to remove an option.
                               If none provided, generic ID will be generated.
                               An already existing ID will overwrite the previous settings.
                               (optional, default: "") <STRING>
@@ -36,7 +36,7 @@ Author:
 
 params [
     ["_item", "All", [""]],
-    ["_ident", "", [""]]
+    ["_id", "", [""]]
 ];
 
 // Force unscheduled environment to prevent race conditions.
@@ -52,8 +52,8 @@ if (isNil QGVAR(ItemContextMenuOptions)) exitWith { false };
 if !(_item in keys GVAR(ItemContextMenuOptions)) exitWith { false };
 private _options = GVAR(ItemContextMenuOptions) get _item;
 
-if !(_ident in keys _options) exitWith { false };
+if !(_id in keys _options) exitWith { false };
 
-_options deleteAt _ident;
+_options deleteAt _id;
 
 true

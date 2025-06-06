@@ -108,7 +108,7 @@ Parameters:
     _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
     
-    _ident                  - ID of the option. Can be used to remove an option.
+    _id                  - ID of the option. Can be used to remove an option.
                               If none provided, generic ID will be generated.
                               An already existing ID will overwrite the previous settings.
                               (optional, default: "") <STRING>
@@ -163,7 +163,7 @@ params [
     ["_statement", {}, [{}]],
     ["_consume", false, [false]],
     ["_params", []],
-    ["_ident", "", [""]]
+    ["_id", "", [""]]
 ];
 
 if (_item isEqualTo "") exitWith {};
@@ -235,17 +235,17 @@ if (isNil "_options") then {
     GVAR(ItemContextMenuOptions) set [_item, _options];
 };
 
-if (_ident isEqualTo "") then {
+if (_id isEqualTo "") then {
     private _keys = keys _options;
     private _index = count _keys;
 
     while { str _index in _keys } do { _index = _index + 1; };
-    _ident = _item + "_" + str _index;
+    _id = _item + "_" + str _index;
 };
 
 _options set [
-    _ident,
+    _id,
     [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]
 ];
 
-_ident
+_id
