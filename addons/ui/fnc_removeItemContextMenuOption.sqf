@@ -46,8 +46,7 @@ if (canSuspend) exitWith {
 
 if (!hasInterface) exitWith {};
 
-if (_id == "") exitWith { false };
-if (isNil QGVAR(ItemContextMenuOptions)) exitWith { false };
+if (isNil QGVAR(ItemContextMenuOptions) || _id == "") exitWith { false };
 
 if !(_item in keys GVAR(ItemContextMenuOptions)) exitWith { false };
 private _options = GVAR(ItemContextMenuOptions) get _item;
