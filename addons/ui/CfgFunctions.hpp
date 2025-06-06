@@ -56,6 +56,7 @@ class CfgFunctions {
 
         class ItemContextMenu {
             PATHTO_FNC(addItemContextMenuOption);
+            PATHTO_FNC(removeItemContextMenuOption);
             PATHTO_FNC(consumeItem);
         };
     };

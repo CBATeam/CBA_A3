@@ -18,7 +18,7 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, Zorn
 ---------------------------------------------------------------------------- */
 
 params ["_display", "_container", "_item", "_slot"];
@@ -28,17 +28,17 @@ if (_item isEqualTo "") exitWith {};
 // Read context menu options.
 private _config = _item call CBA_fnc_getItemConfig;
 
-private _options = [];
+private _options = createHashMap;
 while {
-    _options append (GVAR(ItemContextMenuOptions) getVariable configName _config);
+    _options merge (GVAR(ItemContextMenuOptions) get configName _config);
     _config = inheritsFrom _config;
     !isNull _config
 } do {};
 
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["##%1", _itemType2], []]);
-_options append (GVAR(ItemContextMenuOptions) getVariable [format ["#%1", _itemType1], []]);
-_options append (GVAR(ItemContextMenuOptions) getVariable ["#All", []]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["##%1", _itemType2], createHashMap]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["#%1", _itemType1], createHashMap]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault ["#All", createHashMap]);
 
 // Skip menu if no options.
 if (_options isEqualTo []) exitWith {};
@@ -56,7 +56,7 @@ private _unit = call CBA_fnc_currentUnit;
 // ---
 // Populate context menu with options.
 {
-    _x params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
+    _y params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
 
     private _args = [_unit, _container, _item, _slot, _params];
     if (isLocalized _displayName) then {
