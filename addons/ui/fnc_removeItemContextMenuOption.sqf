@@ -46,7 +46,7 @@ if (canSuspend) exitWith {
 
 if (!hasInterface) exitWith {};
 
-// Initialize system on first execution.
+if (_id == "") exitWith { false };
 if (isNil QGVAR(ItemContextMenuOptions)) exitWith { false };
 
 if !(_item in keys GVAR(ItemContextMenuOptions)) exitWith { false };
