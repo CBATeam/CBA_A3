@@ -56,9 +56,10 @@ private _unit = call CBA_fnc_currentUnit;
 // ---
 // Populate context menu with options.
 {
+    _x params ["_id"];
     _y params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
 
-    private _args = [_unit, _container, _item, _slot, _params];
+    private _args = [_unit, _container, _item, _slot, _params, _id];
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
     };
@@ -115,7 +116,7 @@ _list setVariable [QFUNC(activate), {
 
     if (_args call _condition) then {
         if (_consume) then {
-            _args params ["_unit", "_container", "_item", "_slot"];
+            _args params ["_unit", "_container", "_item", "_slot", "_id"];
 
             if !([_unit, _item, _slot, _container] call CBA_fnc_consumeItem) then {
                 ERROR_2("Cannot consume item %1 from %2.",_item,_slot);

@@ -90,13 +90,13 @@ Parameters:
                               reports 'true'. (optional, default: {true}) <CODE>
 
                             - Passed arguments:
-                              params ["_unit", "_container", "_item", "_slot", "_params"];
+                              params ["_unit", "_container", "_item", "_slot", "_params", "_id"];
 
     _statement              - Option statement (default: {}) <CODE>
                               Return true to keep context menu opened.
 
                             - Passed arguments:
-                              params ["_unit", "_container", "_item", "_slot", "_params"];
+                              params ["_unit", "_container", "_item", "_slot", "_params", "_id"];
 
     _consume                - Remove the item before executing the statement
                               code. (default: false) <BOOLEAN>
@@ -108,7 +108,7 @@ Parameters:
     _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
     
-    _id                  - ID of the option. Can be used to remove an option.
+    _id                     - ID of the option. Can be used to remove an option.
                               If none provided, generic ID will be generated.
                               An already existing ID will overwrite the previous settings.
                               (optional, default: "") <STRING>
