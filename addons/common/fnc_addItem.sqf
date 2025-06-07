@@ -27,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addItem);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]], ["_animate", true, [true]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]], ["_animate", true, [true]]];
 
 private _return = false;
 
