@@ -236,11 +236,9 @@ if (isNil "_options") then {
 };
 
 if (_id isEqualTo "") then {
-    private _keys = keys _options;
-    private _index = count _keys;
-
-    while { str _index in _keys } do { _index = _index + 1; };
-    _id = _item + "_" + str _index;
+    private _index = missionNamespace getVariable [QGVAR(contextMenuOptionIndex), 0];
+    _id = str _index;
+    GVAR(contextMenuOptionIndex) = _index + 1;
 };
 
 _options set [
