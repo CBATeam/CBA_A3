@@ -9,9 +9,10 @@ Description:
     case of trouble, or when able to add _item to _unit true in case of success.
 
 Parameters:
-    _unit   - the unit <OBJECT>
-    _item   - name of the weapon to add <STRING>
-    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    _unit    - the unit <OBJECT>
+    _item    - name of the weapon to add <STRING>
+    _verify  - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    _animate - if true, an animation will play while the item is added <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -26,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addItem);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]], ["_animate", true, [true]];
 
 private _return = false;
 
@@ -54,7 +55,7 @@ if (_verify) then {
     } else {
         private _vehicle = vehicle _unit;
         if (_vehicle isEqualTo _unit) then {
-            _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+            if (_animate) then { _unit switchMove "ainvpknlmstpslaywrfldnon_1"; };
 
             private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
