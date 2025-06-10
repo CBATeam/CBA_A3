@@ -12,6 +12,7 @@ Parameters:
     _unit - the unit that should drop a magazine <OBJECT>
     _item - class name of the magazine to drop <STRING>
     _ammo - ammo count (optional). If not specified a random magazine is chosen <NUMBER>
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
@@ -26,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(dropMagazine);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]], ["_skipAnim", false, [true]]];
 
 // random mag mode
 if (_ammo < 0) then {
@@ -42,7 +43,7 @@ if (_ammo isEqualTo "null") exitWith {
 private _return = [_unit, _item, _ammo] call CBA_fnc_removeMagazine;
 
 if (_return) then {
-    _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+    if (!_skipAnim) then { _unit switchMove "ainvpknlmstpslaywrfldnon_1"; };
 
     private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 

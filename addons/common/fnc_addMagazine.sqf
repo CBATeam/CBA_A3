@@ -13,6 +13,7 @@ Parameters:
     _item   - name of the magazine to add <STRING>
     _ammo   - ammo count <NUMBER>
     _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -27,7 +28,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addMagazine);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]], ["_verify", false, [false]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_ammo", -1, [0]], ["_verify", false, [false]], ["_skipAnim", false, [true]]];
 
 private _return = false;
 
@@ -60,7 +61,7 @@ if (_verify) then {
     } else {
         private _vehicle = vehicle _unit;
         if (_vehicle isEqualTo _unit) then {
-            _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+            if (!_skipAnim) then { _unit switchMove "ainvpknlmstpslaywrfldnon_1"; };
 
             private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 
