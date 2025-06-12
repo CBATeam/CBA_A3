@@ -90,13 +90,13 @@ Parameters:
                               reports 'true'. (optional, default: {true}) <CODE>
 
                             - Passed arguments:
-                              params ["_unit", "_container", "_item", "_slot", "_params"];
+                              params ["_unit", "_container", "_item", "_slot", "_params", "_id"];
 
     _statement              - Option statement (default: {}) <CODE>
                               Return true to keep context menu opened.
 
                             - Passed arguments:
-                              params ["_unit", "_container", "_item", "_slot", "_params"];
+                              params ["_unit", "_container", "_item", "_slot", "_params", "_id"];
 
     _consume                - Remove the item before executing the statement
                               code. (default: false) <BOOLEAN>
@@ -107,9 +107,14 @@ Parameters:
 
     _params                 - Arguments passed as '_this select 4' to condition and
                               statement (optional, default: []) <ANY>
+    
+    _id                     - ID of the option. Can be used to remove an option.
+                              If none provided, generic ID will be generated.
+                              An already existing ID will overwrite the previous settings.
+                              (optional, default: "") <STRING>
 
 Returns:
-    Nothing/Undefined.
+    ID <STRING>.
 
 Examples:
     (begin example)
@@ -121,7 +126,7 @@ Examples:
     (end)
 
 Author:
-    commy2
+    commy2, Zorn
 ---------------------------------------------------------------------------- */
 
 // Force unscheduled environment to prevent race conditions.
@@ -133,7 +138,7 @@ if (!hasInterface) exitWith {};
 
 // Initialize system on first execution.
 if (isNil QGVAR(ItemContextMenuOptions)) then {
-    GVAR(ItemContextMenuOptions) = false call CBA_fnc_createNamespace;
+    GVAR(ItemContextMenuOptions) = createHashMap;
 
     ["CAManBase", "InventoryOpened", {
         params ["_unit", "_container1", "_container2"];
@@ -157,7 +162,8 @@ params [
     ["_condition", [], [{}, []]],
     ["_statement", {}, [{}]],
     ["_consume", false, [false]],
-    ["_params", []]
+    ["_params", []],
+    ["_id", "", [""]]
 ];
 
 if (_item isEqualTo "") exitWith {};
@@ -222,11 +228,22 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-private _options = GVAR(ItemContextMenuOptions) getVariable _item;
+private _options = GVAR(ItemContextMenuOptions) get _item;
 
 if (isNil "_options") then {
-    _options = [];
-    GVAR(ItemContextMenuOptions) setVariable [_item, _options];
+    _options = createHashMap;
+    GVAR(ItemContextMenuOptions) set [_item, _options];
 };
 
-_options pushBack [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params];
+if (_id isEqualTo "") then {
+    private _index = missionNamespace getVariable [QGVAR(contextMenuOptionIndex), 0];
+    _id = str _index;
+    GVAR(contextMenuOptionIndex) = _index + 1;
+};
+
+_options set [
+    _id,
+    [_slots, _displayName, _tooltip, _color, _icon, _conditionEnable, _conditionShow, _statement, _consume, _params]
+];
+
+_id
