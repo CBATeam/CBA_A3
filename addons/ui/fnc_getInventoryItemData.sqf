@@ -18,7 +18,7 @@ Examples:
     (end)
 
 Author:
-    commy2, SynixeBrett
+    commy2, Brett Mayson
 ---------------------------------------------------------------------------- */
 
 params ["_control", "_index"];
