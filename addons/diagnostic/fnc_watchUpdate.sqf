@@ -3,7 +3,7 @@
 Internal Function: CBA_diagnostic_fnc_watchStart
 
 Description:
-    Start watching an input
+    Updates the currently displayed watch controls with the latest values.
 
 Parameters:
     _index - The index in the watch list
