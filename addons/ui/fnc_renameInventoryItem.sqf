@@ -12,15 +12,15 @@ Parameters:
 
 Examples:
     (begin example)
-        ["DocumentsSecret", "SynixeBrett's secret documents"] call CBA_fnc_renameInventoryItem;
-        ["DocumentsSecret", "SynixeBrett's secret documents", "\a3\Missions_F_Oldman\Props\data\FilesSecret_ca.paa"] call CBA_fnc_renameInventoryItem;
+        ["DocumentsSecret", "Brett's secret documents"] call CBA_fnc_renameInventoryItem;
+        ["DocumentsSecret", "Brett's secret documents", "\a3\Missions_F_Oldman\Props\data\FilesSecret_ca.paa"] call CBA_fnc_renameInventoryItem;
     (end)
 
 Returns:
     Nothing
 
 Authors:
-    SynixeBrett
+    Brett Mayson
 ---------------------------------------------------------------------------- */
 
 params [
