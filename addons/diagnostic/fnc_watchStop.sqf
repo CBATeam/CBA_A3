@@ -22,7 +22,7 @@ Author:
 
 params ["_index"];
 
-private _ctrl = GVAR(watchControls) select _index;
+private _ctrl = GVAR(watchControls) param [_index, controlNull];
 if (!isNull _ctrl) then {
     ctrlDelete _ctrl;
     GVAR(watchControls) set [_index, controlNull];
