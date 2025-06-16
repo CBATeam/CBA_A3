@@ -22,6 +22,15 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_event", "_args"];
+
+if (_event == "start") exitWith {
+    if (isNil QGVAR(watchControls)) then {
+        GVAR(watchControls) = [controlNull, controlNull, controlNull, controlNull];
+        GVAR(watchStatements) = ["","", "", ""];
+        addMissionEventHandler ["Draw2D", {call FUNC(watchUpdate)}];
+    };
+};
+
 _args params ["_ctrl"];
 
 private _ctrlCheckbox = _ctrl;

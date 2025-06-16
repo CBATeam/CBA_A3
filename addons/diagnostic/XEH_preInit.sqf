@@ -8,9 +8,6 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 #include "initSettings.inc.sqf"
 
-GVAR(watchControls) = [controlNull, controlNull, controlNull, controlNull];
-GVAR(watchStatements) = ["","", "", ""];
-addMissionEventHandler ["Draw2D", {call FUNC(watchUpdate)}];
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
