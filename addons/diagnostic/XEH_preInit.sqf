@@ -8,6 +8,7 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 #include "initSettings.inc.sqf"
 
+
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
 GVAR(projectileData) = [];
