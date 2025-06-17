@@ -21,12 +21,13 @@ Author:
 ---------------------------------------------------------------------------- */
 
 {
+    if (isNull _x) then { continue; };
     private _statement = GVAR(watchStatements) select _forEachIndex;
-    if (_statement isEqualTo "") then {
+    if (_statement isEqualTo [] || {_statement select 0 == ""}) then {
         [_forEachIndex] call CBA_diagnostic_fnc_watchStop;
         continue;
     };
     (allControls _x) params ["", "_ctrlExpression", "_ctrlResult"];
     _ctrlExpression ctrlSetText (_statement select 0);
     _ctrlResult ctrlSetText format ["%1", (0 call (_statement select 1))];
-} forEach (GVAR(watchControls) select {!isNull _x});
+} forEach (GVAR(watchControls));

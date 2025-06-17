@@ -26,7 +26,7 @@ params ["_event", "_args"];
 if (_event == "start") exitWith {
     if (isNil QGVAR(watchControls)) then {
         GVAR(watchControls) = [controlNull, controlNull, controlNull, controlNull];
-        GVAR(watchStatements) = ["","", "", ""];
+        GVAR(watchStatements) = [[], [], [], []];
         addMissionEventHandler ["Draw2D", {call FUNC(watchUpdate)}];
     };
 };
