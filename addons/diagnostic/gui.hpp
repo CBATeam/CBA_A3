@@ -78,17 +78,14 @@ class RscDebugConsole: RscControlsGroupNoScrollbars {
         };
         class WatchInputView2: WatchInput1View {
             idc = IDC_DEBUGCONSOLE_WATCHINPUT_2;
-            checked = QUOTE(!isNull (GVAR(watchControls) select 1));
             y = QUOTE(13 * GUI_GRID_H);
         };
         class WatchInputView3: WatchInput1View {
             idc = IDC_DEBUGCONSOLE_WATCHINPUT_3;
-            checked = QUOTE(!isNull (GVAR(watchControls) select 2));
             y = QUOTE(15 * GUI_GRID_H);
         };
         class WatchInputView4: WatchInput1View {
             idc = IDC_DEBUGCONSOLE_WATCHINPUT_4;
-            checked = QUOTE(!isNull (GVAR(watchControls) select 3));
             y = QUOTE(17 * GUI_GRID_H);
         };
     };
