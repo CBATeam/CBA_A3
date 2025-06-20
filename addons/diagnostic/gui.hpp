@@ -50,8 +50,8 @@ class GVAR(watchOutput): RscEdit {
 };
 
 class RscCheckBox;
-class RscControlsGroup;
-class RscDebugConsole: RscControlsGroup {
+class RscControlsGroupNoScrollbars;
+class RscDebugConsole: RscControlsGroupNoScrollbars {
     class controls {
         class WatchInput1: RscEdit {
             onKillFocus = QUOTE([ARR_2('killFocus',_this)] call FUNC(watchInput););
@@ -95,7 +95,6 @@ class RscDebugConsole: RscControlsGroup {
 };
 
 class RscText;
-class RscControlsGroupNoScrollbars;
 class GVAR(watchedInput): RscControlsGroupNoScrollbars {
     idc = -1;
     class controls {
