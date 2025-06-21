@@ -80,8 +80,9 @@ _display setVariable [QGVAR(lists),[]];
 private _categories = [];
 {
     (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
+    private _categoryLower = toLower _category;
 
-    if !(_category in _categories) then {
+    if !(_categoryLower in _categories) then {
         private _categoryLocalized = _category;
         if (isLocalized _category) then {
             _categoryLocalized = localize _category;
@@ -89,9 +90,9 @@ private _categories = [];
 
         private _index = _ctrlAddonList lbAdd _categoryLocalized;
         _ctrlAddonList lbSetData [_index, str _index];
-        _display setVariable [str _index, _category];
+        _display setVariable [str _index, _categoryLower];
 
-        _categories pushBack _category;
+        _categories pushBack _categoryLower;
     };
 } forEach GVAR(allSettings);
 
