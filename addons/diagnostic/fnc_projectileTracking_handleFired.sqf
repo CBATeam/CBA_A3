@@ -43,3 +43,8 @@ GVAR(projectileIndex) = _index + 1;
 if (GVAR(projectileIndex) >= _maxLines) then {
     GVAR(projectileIndex) = 0;
 };
+
+_projectile addEventHandler ["SubmunitionCreated", {
+    params ["", "_subProj"];
+    [nil, nil, nil, nil, nil, nil, _subProj] call FUNC(projectileTracking_handleFired);
+}];
