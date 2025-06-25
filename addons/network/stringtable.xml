@@ -42,7 +42,7 @@
             <Japanese>ロードアウトの検証</Japanese>
             <Chinese>驗證加載</Chinese>
             <Chinesesimp>验证加载</Chinesesimp>
-            <Russian>Проверять снаряжения</Russian>
+            <Russian>Проверять снаряжение</Russian>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
