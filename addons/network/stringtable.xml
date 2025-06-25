@@ -42,6 +42,7 @@
             <Japanese>ロードアウトの検証</Japanese>
             <Chinese>驗證加載</Chinese>
             <Chinesesimp>验证加载</Chinesesimp>
+            <Russian>Проверять снаряжения</Russian>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
@@ -54,6 +55,7 @@
             <Japanese>ユニットのロードアウトを検証します。 ローカルでの変更後にユニットが裸で表示される問題を修正します。</Japanese>
             <Chinese>驗證單位加載。修復單位在更改大廳位置後顯示為裸體的問題。</Chinese>
             <Chinesesimp>验证单位加载。修复单位在更改大厅位置后显示为裸体的问题。</Chinesesimp>
+            <Russian>Проверять снаряжение юнитов. Исправляет проблемы, когда юниты становятся голыми после смены локальности.</Russian>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
             <English>Never</English>
@@ -66,6 +68,7 @@
             <Japanese>行わない</Japanese>
             <Chinese>從不</Chinese>
             <Chinesesimp>从不</Chinesesimp>
+            <Russian>Никогда</Russian>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidateTooltip">
             <English>Never validate loadouts</English>
@@ -78,6 +81,7 @@
             <Japanese>ロードアウトを検証しません</Japanese>
             <Chinese>從不驗證加載</Chinese>
             <Chinesesimp>从不验证加载</Chinesesimp>
+            <Russian>Никогда не проверять снаряжение</Russian>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
             <English>All units</English>
@@ -90,6 +94,7 @@
             <Japanese>全ユニット</Japanese>
             <Chinese>所有單位</Chinese>
             <Chinesesimp>所有单位</Chinesesimp>
+            <Russian>Все юниты</Russian>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAllTooltip">
             <English>Validate loadout of all units</English>
@@ -102,6 +107,7 @@
             <Japanese>すべてのユニットのロードアウトを検証する</Japanese>
             <Chinese>驗證所有單位的加載</Chinese>
             <Chinesesimp>验证所有单位的加载</Chinesesimp>
+            <Russian>Проверять снаряжение всех юнитов</Russian>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
             <English>Playable units only</English>
@@ -114,6 +120,7 @@
             <Japanese>プレイ可能なユニットのみ</Japanese>
             <Chinese>僅可玩單位</Chinese>
             <Chinesesimp>仅可玩单位</Chinesesimp>
+            <Russian>Только игровые юниты</Russian>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnlyTooltip">
             <English>Validate only loadout of playable units</English>
@@ -126,6 +133,7 @@
             <Japanese>プレイ可能なユニットのロードアウトのみを検証する</Japanese>
             <Chinese>僅驗證可玩單位的加載</Chinese>
             <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
+            <Russian>Проверять снаряжение только игровых юнитов</Russian>
         </Key>
     </Package>
 </Project>
