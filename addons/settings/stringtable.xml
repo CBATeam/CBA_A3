@@ -8,7 +8,7 @@
             <Italian>Opzioni per gli addon ...</Italian>
             <Polish>Ustawienia addonów...</Polish>
             <Portuguese>Opções ded Extensão...</Portuguese>
-            <Russian>Настройки Дополнений...</Russian>
+            <Russian>Настройки дополнений...</Russian>
             <German>Addon-Optionen...</German>
             <Korean>애드온 설정...</Korean>
             <Japanese>アドオン オプション...</Japanese>
@@ -158,7 +158,7 @@
             <Italian>Visualizza le impostazioni della missione.</Italian>
             <Polish>Zobacz ustawienia misji.</Polish>
             <Portuguese>Olhe as configurações de missão.</Portuguese>
-            <Russian>Смотреть настройки миссии.</Russian>
+            <Russian>Смотрите настройки миссии.</Russian>
             <German>Missionseinstellungen ansehen.</German>
             <Korean>임무의 설정을 확인합니다.</Korean>
             <Japanese>ミッションの設定を確認します。</Japanese>
@@ -173,7 +173,7 @@
             <Italian>Cambia le impostazioni della missione.</Italian>
             <Polish>Edytuj ustawienia misji.</Polish>
             <Portuguese>Edite as configurações de missões.</Portuguese>
-            <Russian>Редактировать настройки миссии.</Russian>
+            <Russian>Измените настройки миссии.</Russian>
             <German>Missionseinstellungen bearbeiten.</German>
             <Korean>임무의 설정을 편집합니다.</Korean>
             <Japanese>ミッションの設定を編集します。</Japanese>
@@ -188,7 +188,7 @@
             <Italian>Salva le impostazioni attuali come predefinite</Italian>
             <Polish>Zapisz obecne ustawienia do szablonu.</Polish>
             <Portuguese>Salvar as configurações atuais como padrões.</Portuguese>
-            <Russian>Сохранить текущие настройки как предустановки.</Russian>
+            <Russian>Сохранить текущие настройки как предустановку.</Russian>
             <German>Derzeitige Einstellungen als Vorlage speichern.</German>
             <Korean>현재 설정을 프리셋으로 저장합니다.</Korean>
             <Japanese>現在の設定をプリセットとして保存します。</Japanese>
@@ -218,7 +218,7 @@
             <Italian>Visualizza le impostazioni del server. Entra come amministratore per cambiarle.</Italian>
             <Polish>Zobacz ustawienia serwera. Zaloguj się jako administrator aby zmienić.</Polish>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
-            <Russian>Смотреть настройки сервера. Войдите под администратором, чтобы менять.</Russian>
+            <Russian>Смотрите настройки сервера. Войдите как администратор, чтобы менять.</Russian>
             <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
             <Korean>서버의 설정을 확인합니다. 관리자로 로그인해서 변경합니다.</Korean>
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
@@ -233,7 +233,7 @@
             <Italian>Community Base Addons - Impostazioni</Italian>
             <Polish>Community Base Addons - Komponent Ustawień</Polish>
             <Portuguese>Extensões de Base Comunitária - Componente das Configurações</Portuguese>
-            <Russian>Community Base Addons - Компонент Настроек</Russian>
+            <Russian>Community Base Addons - Настройки</Russian>
             <German>Community Base Addons - Einstellungen</German>
             <Korean>커뮤니티 베이스 애드온 - 설정</Korean>
             <Japanese>Community Base Addons - 設定要素</Japanese>
@@ -262,7 +262,7 @@
             <Italian>Configura gli addon</Italian>
             <Polish>Konfiguracja addonów</Polish>
             <Portuguese>Configurar as Extensões</Portuguese>
-            <Russian>Настроить Дополнения</Russian>
+            <Russian>Настроить дополнения</Russian>
             <German>Modifikationen anpassen</German>
             <Korean>애드온 설정</Korean>
             <Japanese>アドオンの設定</Japanese>
@@ -277,7 +277,7 @@
             <Italian>Configura il gioco base</Italian>
             <Polish>Konfiguracja bazy</Polish>
             <Portuguese>Configurar as Bases</Portuguese>
-            <Russian>Основные Настройки</Russian>
+            <Russian>Основные настройки</Russian>
             <German>Hauptspiel anpassen</German>
             <Korean>기본 설정</Korean>
             <Japanese>基本設定</Japanese>
@@ -321,7 +321,7 @@
             <Italian>Opzioni degli addon</Italian>
             <Polish>Ustawienia addonów</Polish>
             <Portuguese>Opções de Extensão</Portuguese>
-            <Russian>Настройки Дополнений</Russian>
+            <Russian>Настройки дополнений</Russian>
             <German>Addon-Optionen</German>
             <Korean>애드온 설정</Korean>
             <Japanese>アドオン オプション</Japanese>
@@ -335,7 +335,7 @@
             <French>Permet d'ajuster les paramètres des addons.</French>
             <Italian>Aggiusta le impostazioni per gli addon</Italian>
             <Polish>Zmień ustawienia addonów.</Polish>
-            <Russian>Отрегулировать настройки дополнений.</Russian>
+            <Russian>Изменить настройки дополнений.</Russian>
             <German>Addon-Einstellungen anpassen.</German>
             <Korean>애드온 설정을 조정합니다.</Korean>
             <Japanese>アドオンの設定を調整します。</Japanese>
@@ -523,6 +523,7 @@
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
             <Korean>서버를 재시작한 후 변경 사항 유지 안함</Korean>
             <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
+            <Russian>Изменения не будут сохранены после рестарта сервера</Russian>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
@@ -532,6 +533,7 @@
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
+            <Russian>Сервер настроен не сохранять изменения настроек между рестартами сервера.\nИзменения будут сохранены между рестартами миссий.</Russian>
         </Key>
     </Package>
 </Project>
