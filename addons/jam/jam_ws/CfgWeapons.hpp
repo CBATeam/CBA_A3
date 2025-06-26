@@ -34,10 +34,10 @@ class CfgWeapons {
             magazineWell[] += {"CBA_12g_6rnds", "CBA_12g_5rnds", "CBA_12g_4rnds", "CBA_12g_3rnds", "CBA_12g_2rnds", "CBA_12g_1rnd"};
         };
     };
+     
+    /*class DMR_06_base_F;
 
-    class DMR_06_base_F;
-
-    /* WS FAL proxy is different compared to CUP FAL proxy
+    WS FAL proxy is different compared to CUP FAL proxy
     class arifle_SLR_lxWS: DMR_06_base_F {
         magazineWell[] += {"CBA_762x51_FAL", "CBA_762x51_FAL_L"};
     };
