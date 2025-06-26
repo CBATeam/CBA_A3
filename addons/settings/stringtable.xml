@@ -520,20 +520,20 @@
             <Czech>Změny nebudou trvalé po restartu serveru</Czech>
             <French>Les modifications ne persistent pas après le redémarrage du serveur</French>
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
+            <Russian>Изменения не будут сохранены после рестарта сервера</Russian>
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
             <Korean>서버를 재시작한 후 변경 사항 유지 안함</Korean>
             <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
-            <Russian>Изменения не будут сохранены после рестарта сервера</Russian>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
             <Czech>Server je nastaven tak, aby nezachovával změny v nastavení mezi restarty serveru.\nZměny budou zachovány mezi restarty mise.</Czech>
             <French>Le serveur est configuré pour ne pas conserver les modifications apportées aux paramètres entre les redémarrages du serveur.\nLes modifications seront conservées entre les redémarrages de la mission.</French>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
+            <Russian>Сервер настроен не сохранять изменения настроек между рестартами сервера.\nИзменения будут сохранены между рестартами миссий.</Russian>
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
-            <Russian>Сервер настроен не сохранять изменения настроек между рестартами сервера.\nИзменения будут сохранены между рестартами миссий.</Russian>
         </Key>
     </Package>
 </Project>

@@ -38,12 +38,12 @@
             <Spanish>Avión objetivo invisible</Spanish>
             <Italian>Obiettivo invisibile - Velivolo</Italian>
             <Polish>Samolot - niewidoczny cel</Polish>
+            <Russian>Невидимая цель - самолет</Russian>
             <German>Unsichtbares Ziel - Flugzeug</German>
             <Korean>보이지 않는 표적 항공기</Korean>
             <Japanese>不可視の標的飛行機</Japanese>
             <Chinese>隱形目標（飛機）</Chinese>
             <Chinesesimp>隐形目标（飞机）</Chinesesimp>
-            <Russian>Невидимая цель - самолет</Russian>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
@@ -68,12 +68,12 @@
             <Spanish>Vehículo objetivo invisible</Spanish>
             <Italian>Obiettivo invisibile - Veicolo</Italian>
             <Polish>Pojazd - niewidoczny cel</Polish>
+            <Russian>Невидимая цель - транспорт</Russian>
             <German>Unsichtbares Ziel - Fahrzeug</German>
             <Korean>보이지 않는 표적 차량</Korean>
             <Japanese>不可視の標的車両</Japanese>
             <Chinese>隱形目標（車輛）</Chinese>
             <Chinesesimp>隐形目标（车辆）</Chinesesimp>
-            <Russian>Невидимая цель - транспорт</Russian>
         </Key>
     </Package>
 </Project>

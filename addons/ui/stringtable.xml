@@ -8,12 +8,12 @@
             <Spanish>Ajustar el orden del grupo...</Spanish>
             <Italian>Riordinando il gruppo...</Italian>
             <Polish>Dostosowywanie kolejności w lobby...</Polish>
+            <Russian>Изменение порядка групп...</Russian>
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
             <Korean>그룹 순서 조정 중...</Korean>
             <Japanese>グループ順の調整...</Japanese>
             <Chinese>調整小隊順序</Chinese>
             <Chinesesimp>调整小队顺序</Chinesesimp>
-            <Russian>Изменение порядка групп...</Russian>
         </Key>
         <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
@@ -144,12 +144,12 @@
             <Spanish>Gerente de lobby</Spanish>
             <Italian>Gestore lobby.</Italian>
             <Polish>Menadżer Lobby</Polish>
+            <Russian>Менеджер лобби</Russian>
             <German>Lobby Manager</German>
             <Korean>로비 매니저</Korean>
             <Japanese>ロビーマネージャー</Japanese>
             <Chinese>角色大廳管理</Chinese>
             <Chinesesimp>角色大厅管理</Chinesesimp>
-            <Russian>Менеджер лобби</Russian>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -158,12 +158,12 @@
             <Spanish>Haga una copia de seguridad de la misión antes de usar esta herramienta</Spanish>
             <Italian>Salva una copia della missione prima di usare questo strumento.</Italian>
             <Polish>Wykonaj kopię zapasową misji przed użyciem tego narzędzia.</Polish>
+            <Russian>Создайте резервную копию мисии перед использованием этого инструмента.</Russian>
             <German>Erstelle vor Gebrauch eine Sicherungskopie.</German>
             <Korean>이 도구를 사용하기 전에 임무를 백업하십시오.</Korean>
             <Japanese>このツールを使用する前にミッションのバックアップを取ってください。</Japanese>
             <Chinese>使用此工具前，請備份任務。</Chinese>
             <Chinesesimp>使用此工具之前，请备份任务。</Chinesesimp>
-            <Russian>Создайте резервную копию мисии перед использованием этого инструмента.</Russian>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
