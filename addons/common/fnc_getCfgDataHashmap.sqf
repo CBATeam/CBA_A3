@@ -45,7 +45,7 @@ private _returnHashMap = createHashMap;
 
 {
     private _config = _x;
-    private _value = _x fnc BIS_fnc_getCfgData;
+    private _value = _x call BIS_fnc_getCfgData;
 
     if (_convert) then {
         _value = switch (_value) do {
