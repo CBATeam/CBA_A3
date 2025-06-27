@@ -50,7 +50,9 @@ private _returnHashMap = createHashMap;
     if (_convert) then {
         _value = switch (_value) do {
             case "true": { true };
+            case "(true)": { true };
             case "false": { false };
+            case "(false)": { false };
             default { _value };
         };
     };
