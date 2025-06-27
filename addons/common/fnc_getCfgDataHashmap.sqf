@@ -14,6 +14,7 @@ Parameters:
     _cfg        - Entry to get value of <CONFIG>
     _condition  - Condition for configProperties (optional, default: "true") <STRING>
     _inherit    - include inherited properties (optional, default: true) <BOOL>
+    _convert    - convert certain values - see above (optional, default: true) <BOOL>
 
 Returns:
     properties <HASHMAP>
