@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: CBA_fnc_getCfgDataRandom
+Function: cba_fnc_convertStringCode
 
 Description:
     Converts a String into Code - Also checks for existing Functions with that name.
@@ -13,7 +13,7 @@ Returns:
 
 Examples:
     (begin example)
-        getText (_cfg >> "statement") call cvo_common_fnc_convertStringCode
+        getText (_cfg >> "statement") call cba_fnc_convertStringCode
     (end)
 
 Author:
