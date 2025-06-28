@@ -14,7 +14,7 @@ Parameters:
     _params    - Parameters to pass to the event handlers. <ANY>
     _jipID     - Unique event ID or object. [optional] (default: create unique id) <STRING, OBJECT>
                  STRING:
-                    Custom ID - can be used to remove or overwrite the event later.
+                    Unique, custom ID - can be used to remove or overwrite the event later.
                  OBJECT:
                     Will remove JIP EH when object is deleted.
         
