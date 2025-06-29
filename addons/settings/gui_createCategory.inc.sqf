@@ -29,7 +29,8 @@ private _categorySettings = [];
         if (isLocalized _subCategory) then {
             _subCategory = localize _subCategory;
         };
-        _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
+        // Make sure empty-subcategory is always sorted first (fixing unicode)
+        _categorySettings pushBack [parseNumber (_subCategory != ""), _subCategory, _forEachIndex, _setting];
     };
 } forEach GVAR(allSettings);
 
@@ -37,7 +38,7 @@ _categorySettings sort true;
 private _lastSubCategory = "$START";
 
 {
-    _x params ["_subCategory", "", "_setting"];
+    _x params ["", "_subCategory", "", "_setting"];
     private _createHeader = false;
     if (_subCategory != _lastSubCategory) then {
         _lastSubCategory = _subCategory;
