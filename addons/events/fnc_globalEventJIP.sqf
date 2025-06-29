@@ -27,11 +27,15 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(globalEventJIP);
 
-params [["_eventName", "", [""]], ["_params", []], ["_jipID", "", ["", objNull]]];
+params [["_eventName", "", [""]], ["_params", []], ["_jipOrObj", "", ["", objNull]]];
 
-// store obj, reset jipID.
-private "_obj";
-if (_jipID isEqualType objNull) then { _obj = _jipID; _jipID = ""; };
+private ["_obj", "_jipID"];
+if (_jipOrObj isEqualType "") then {
+    _jipID = _jipOrObj;
+} else {
+    _jipID = "";
+    _obj = _jipOrObj;
+};
 
 
 // generate string
@@ -52,6 +56,6 @@ GVAR(eventNamespaceJIP) setVariable [_jipID, [EVENT_PVAR_STR, [_eventName, _para
 [QGVAR(eventJIP), [_eventName, _params]] call CBA_fnc_globalEvent;
 
 // Remove JIP once obj is deleted
-if (!isNil "_obj") then { [_jipID, _obj] call FUNC(removeGlobalEventJIP); };
+if (!isNil "_obj") then { [_jipID, _obj] call FUNCMAIN(removeGlobalEventJIP); };
 
 _jipID
