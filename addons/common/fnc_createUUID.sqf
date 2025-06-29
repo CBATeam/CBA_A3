@@ -35,6 +35,6 @@ for "_i" from 0 to 29 do {
 
 _uuid insert [8, ["-"]];
 _uuid insert [13, ["-", _versionByte]];
-_uuid insert [17, ["-", _variantByte]];
-_uuid insert [22, ["-"]];
+_uuid insert [18, ["-", _variantByte]];
+_uuid insert [23, ["-"]];
 _uuid joinString ""
