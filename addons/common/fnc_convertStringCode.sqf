@@ -24,6 +24,5 @@ params [["_stringCode", "", [""]]];
 switch (true) do {
     case (_stringCode isEqualTo ""): {{}};
     case (!(missionNamespace isNil _stringCode)): {missionNamespace getVariable _stringCode};
-    case (!(uiNamespace isNil _stringCode)): {uiNamespace getVariable _stringCode};
     default {compile _stringCode};
 }
