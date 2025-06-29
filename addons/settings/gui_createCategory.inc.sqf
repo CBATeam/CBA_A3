@@ -25,7 +25,7 @@ private _categorySettings = [];
 
 {
     (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
-    if (_category == _selectedAddon) then {
+    if (toLower _category == _selectedAddon) then {
         if (isLocalized _subCategory) then {
             _subCategory = localize _subCategory;
         };
@@ -84,7 +84,7 @@ private _lastSubCategory = "$START";
         };
 
         // ----- create or retrieve options "list" controls group
-        private _list = [QGVAR(list), _category, _source] joinString "$";
+        private _list = [QGVAR(list), toLower _category, _source] joinString "$";
 
         private _ctrlOptionsGroup = controlNull;
 
