@@ -1,33 +1,5 @@
 #include "script_component.hpp"
 
-#ifndef DIK_F16
-#define DIK_F16 0x67
-#endif
-#ifndef DIK_F17
-#define DIK_F17 0x68
-#endif
-#ifndef DIK_F18
-#define DIK_F18 0x69
-#endif
-#ifndef DIK_F19
-#define DIK_F19 0x6a
-#endif
-#ifndef DIK_F20
-#define DIK_F20 0x6b
-#endif
-#ifndef DIK_F21
-#define DIK_F21 0x6c
-#endif
-#ifndef DIK_F22
-#define DIK_F22 0x6d
-#endif
-#ifndef DIK_F23
-#define DIK_F23 0x6e
-#endif
-#ifndef DIK_F24
-#define DIK_F24 0x76
-#endif
-
 if (!hasInterface) exitWith {};
 
 #include "XEH_PREP.hpp"
