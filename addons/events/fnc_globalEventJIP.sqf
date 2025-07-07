@@ -54,6 +54,6 @@ GVAR(eventNamespaceJIP) setVariable [_jipID, [EVENT_PVAR_STR, [_eventName, _para
 [QGVAR(eventJIP), [_eventName, _params]] call CBA_fnc_globalEvent;
 
 // Remove JIP once obj is deleted
-if (!isNil "_obj") then { [_jipID, _obj] call FUNCMAIN(removeGlobalEventJIP); };
+if (!isNil "_obj") then { [_jipID, _obj] call CBA_fnc_removeGlobalEventJIP; };
 
 _jipID
