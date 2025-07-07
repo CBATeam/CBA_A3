@@ -121,6 +121,7 @@ class CfgFunctions {
         };
 
         class Misc {
+            PATHTO_FNC(convertStringCode);
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
             PATHTO_FNC(setPerFrameHandlerDelay);
