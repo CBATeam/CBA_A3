@@ -29,13 +29,11 @@ SCRIPT(globalEventJIP);
 
 params [["_eventName", "", [""]], ["_params", []], ["_jipOrObj", "", ["", objNull]]];
 
-private ["_obj", "_jipID"];
-if (_jipOrObj isEqualType "") then {
-    _jipID = _jipOrObj;
+(if (_jipOrObj isEqualType "") then {
+    [_jipOrObj, nil]
 } else {
-    _jipID = "";
-    _obj = _jipOrObj;
-};
+    ["", _jipOrObj]
+}) params ["_jipID", "_obj"];
 
 
 // generate string
