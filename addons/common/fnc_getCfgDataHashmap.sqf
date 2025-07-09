@@ -47,9 +47,9 @@ private _convertApply = [
     {
         switch (true) do {
             case (_x isEqualType [] ): { _x apply _convertApply };
-            case (_x isEqualTo "true"): { true };
-            case (_x isEqualTo "false"): { false };
+            case (_x isEqualTo "true");
             case (_x isEqualTo "(true)"): { true };
+            case (_x isEqualTo "false");
             case (_x isEqualTo "(false)"): { false };
             default { _x };
         }
