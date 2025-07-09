@@ -64,9 +64,9 @@ private _convertCall = [
     {
         switch (true) do {
             case (_this isEqualType [] ): { _this apply _convertApply };
-            case (_this isEqualTo "true"): { true };
-            case (_this isEqualTo "false"): { false };
+            case (_this isEqualTo "true");
             case (_this isEqualTo "(true)"): { true };
+            case (_this isEqualTo "false");
             case (_this isEqualTo "(false)"): { false };
             default { _this };
         };
