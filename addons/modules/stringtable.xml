@@ -469,7 +469,7 @@
             <French>Point central</French>
             <Italian>Punto Centrale</Italian>
             <Polish>Punkt Centralny</Polish>
-            <Russian>Центральная Точка</Russian>
+            <Russian>Центральная точка</Russian>
             <German>Patrouillenzentrum</German>
             <Korean>중앙 지점</Korean>
             <Japanese>中央地点</Japanese>
@@ -497,7 +497,7 @@
             <French>Rayon de patrouille</French>
             <Italian>Raggio di Pattugliamento</Italian>
             <Polish>Obszar Patrolu</Polish>
-            <Russian>Радиус Патрулирования</Russian>
+            <Russian>Радиус патрулирования</Russian>
             <German>Patrouillenradius</German>
             <Korean>순찰 반경</Korean>
             <Japanese>巡回範囲</Japanese>
@@ -525,7 +525,7 @@
             <French>Rechercher et détruire</French>
             <Italian>Cercare e Distruggere</Italian>
             <Polish>Znajdź i zniszcz</Polish>
-            <Russian>Найти и Уничтожить</Russian>
+            <Russian>Найти и уничтожить</Russian>
             <German>Suchen und Zerstören</German>
             <Korean>수색격멸</Korean>
             <Japanese>索敵と破壊</Japanese>
@@ -539,7 +539,7 @@
             <French>Rayon de recherche</French>
             <Italian>Raggio di ricerca</Italian>
             <Polish>Obszar Przeszukania</Polish>
-            <Russian>Радиус Поиска</Russian>
+            <Russian>Радиус поиска</Russian>
             <German>Suchradius</German>
             <Korean>반경 수색</Korean>
             <Japanese>捜索範囲</Japanese>
@@ -567,7 +567,7 @@
             <French>Configurer la position</French>
             <Italian>Posiziona</Italian>
             <Polish>Ustaw Pozycję</Polish>
-            <Russian>Укажите Позицию</Russian>
+            <Russian>Укажите позицию</Russian>
             <German>Position bestimmen</German>
             <Korean>지정 위치</Korean>
             <Japanese>設定位置</Japanese>
@@ -581,7 +581,7 @@
             <French>Chance de tenir</French>
             <Italian>Probabilità di tenuta</Italian>
             <Polish>Szansa na Utrzymanie</Polish>
-            <Russian>Шанс Удерживания</Russian>
+            <Russian>Шанс удерживания</Russian>
             <German>Halten-Wahrscheinlichkeit</German>
             <Korean>위치 사수 확률</Korean>
             <Japanese>停止率</Japanese>
@@ -623,7 +623,7 @@
             <French>Seuil de taille du bâtiment</French>
             <Italian>Soglia Dimensione Edificio</Italian>
             <Polish>Próg Rozmiaru Budynku</Polish>
-            <Russian>Порог Размера Здания</Russian>
+            <Russian>Порог размера здания</Russian>
             <German>Größenschwelle der Gebäudes</German>
             <Korean>건물 크기 임계값</Korean>
             <Japanese>建物の大きさのしきい値</Japanese>
@@ -679,7 +679,7 @@
             <French>Nombre de points de passage</French>
             <Italian>Numero di destinazioni</Italian>
             <Polish>Ilosć punktów nawigacyjnych</Polish>
-            <Russian>Количество Путевых Точек</Russian>
+            <Russian>Количество путевых точек</Russian>
             <German>Wegpunktanzahl</German>
             <Korean>경유지 수</Korean>
             <Japanese>ウェイポイント数</Japanese>
@@ -707,7 +707,7 @@
             <French>Type de point de passage</French>
             <Italian>Tipo di destinazioni</Italian>
             <Polish>Rodzaj Punktu nawigacyjnego</Polish>
-            <Russian>Тип Путевой Точки</Russian>
+            <Russian>Тип путевой точки</Russian>
             <German>Wegpunkttyp</German>
             <Korean>경유지 유형</Korean>
             <Japanese>ウェイポイントの種類</Japanese>

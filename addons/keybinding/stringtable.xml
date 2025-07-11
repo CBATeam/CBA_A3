@@ -8,7 +8,7 @@
             <Italian>Community Base Addons - Configurazione Tasti</Italian>
             <Polish>Community Base Addons - Klawisze</Polish>
             <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
-            <Russian>Community Base Addons - Назначения Клавиш</Russian>
+            <Russian>Community Base Addons - Назначения клавиш</Russian>
             <German>Community Base Addons - Tastenbelegung</German>
             <Korean>커뮤니티 베이스 애드온 - 키 설정</Korean>
             <Japanese>Community Base Addons - キー割り当て</Japanese>
@@ -23,7 +23,7 @@
             <Italian>Configura gli addon</Italian>
             <Polish>Konfiguracja addonów</Polish>
             <Portuguese>Configure as Extensões</Portuguese>
-            <Russian>Настроить Дополнения</Russian>
+            <Russian>Настроить дополнения</Russian>
             <German>Modifikationen anpassen</German>
             <Korean>애드온 설정</Korean>
             <Japanese>アドオンの設定</Japanese>
@@ -38,7 +38,7 @@
             <Italian>Configura il gioco base</Italian>
             <Polish>Konfiguracja bazy</Polish>
             <Portuguese>Configure as Bases</Portuguese>
-            <Russian>Основные Настройки</Russian>
+            <Russian>Основные настройки</Russian>
             <German>Hauptspiel anpassen</German>
             <Korean>기본 설정</Korean>
             <Japanese>基本設定</Japanese>
@@ -53,7 +53,7 @@
             <Italian>"%1" è un tasto sconosciuto</Italian>
             <Polish>Nieznany klawisz %1</Polish>
             <Portuguese>Chave desconhecida %1</Portuguese>
-            <Russian>Неизвестная Клавиша %1</Russian>
+            <Russian>Неизвестная клавиша %1</Russian>
             <German>Unbekannte Taste %1</German>
             <Korean>%1 키는 미지정입니다</Korean>
             <Japanese>%1キーは不明です</Japanese>

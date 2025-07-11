@@ -12,6 +12,7 @@
             <Japanese>Community Base Addons - キャラクター</Japanese>
             <Chinese>社區基礎插件 - 角色</Chinese>
             <Chinesesimp>社区基础插件-角色</Chinesesimp>
+            <Russian>Community Base Addons - Персонажи</Russian>
         </Key>
         <Key ID="STR_CBA_Characters_MenMalariaInfected">
             <English>Men (Malaria-Infected)</English>
@@ -24,6 +25,7 @@
             <Japanese>人間 (マラリア罹患)</Japanese>
             <Chinese>男子(瘧疾感染者)</Chinese>
             <Chinesesimp>男子(疟疾感染者)</Chinesesimp>
+            <Russian>Люди (зараженные малярией)</Russian>
         </Key>
     </Package>
 </Project>

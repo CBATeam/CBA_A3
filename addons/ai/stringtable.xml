@@ -8,7 +8,7 @@
             <Spanish>Posición del edificio de IA</Spanish>
             <Italian>Posizione edificio AI</Italian>
             <Polish>Pozycja AI w budynku</Polish>
-            <Russian>ИИ Позиция в здании</Russian>
+            <Russian>Позиция ИИ в здании</Russian>
             <German>KI Gebäudeposition</German>
             <Korean>인공지능 건물 위치</Korean>
             <Japanese>AI の建物内での位置</Japanese>
@@ -23,7 +23,7 @@
             <Spanish>Community Base Addons - Inteligencia artificial</Spanish>
             <Italian>Community Base Addons - Intelligenza Artificiale</Italian>
             <Polish>Community Base Addons - Sztuczna Inteligencja</Polish>
-            <Russian>Community Base Addons - Искуственный Интеллект</Russian>
+            <Russian>Community Base Addons - Искуственный интеллект</Russian>
             <German>Community Base Addons - Künstliche Intelligenz</German>
             <Korean>커뮤니티 베이스 애드온- 인공지능</Korean>
             <Japanese>Community Base Addons - 人工知能</Japanese>
@@ -43,6 +43,7 @@
             <Japanese>不可視の標的飛行機</Japanese>
             <Chinese>隱形目標（飛機）</Chinese>
             <Chinesesimp>隐形目标（飞机）</Chinesesimp>
+            <Russian>Невидимая цель - самолет</Russian>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
@@ -72,6 +73,7 @@
             <Japanese>不可視の標的車両</Japanese>
             <Chinese>隱形目標（車輛）</Chinese>
             <Chinesesimp>隐形目标（车辆）</Chinesesimp>
+            <Russian>Невидимая цель - транспорт</Russian>
         </Key>
     </Package>
 </Project>

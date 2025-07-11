@@ -4,6 +4,7 @@ class CfgFunctions {
         class Config {
             PATHTO_FNC(getConfigEntry);
             PATHTO_FNC(getCfgDataRandom);
+            PATHTO_FNC(getCfgDataHashmap);
             PATHTO_FNC(getObjectConfig);
             PATHTO_FNC(getItemConfig);
             PATHTO_FNC(getMuzzles);
@@ -120,6 +121,7 @@ class CfgFunctions {
         };
 
         class Misc {
+            PATHTO_FNC(convertStringCode);
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
             PATHTO_FNC(setPerFrameHandlerDelay);
