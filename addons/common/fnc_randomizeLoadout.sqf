@@ -59,20 +59,17 @@ private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomiz
 
 if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
 
-private ["_headgearList", "_uniformList", "_vestList", "_backpackList", "_nvgList", "_facewearList", "_primaryList", "_secondaryList", "_launcherList"];
-
 private _cache = GVAR(randomLoadoutUnits) getOrDefaultCall [typeOf _unit, {
     private _unitConfig = configOf _unit;
-    _headgearList = getArray (_unitConfig >> "CBA_headgearList");
-    _uniformList = getArray (_unitConfig >> "CBA_uniformList");
-    _vestList = getArray (_unitConfig >> "CBA_vestList");
-    _backpackList = getArray (_unitConfig >> "CBA_backpackList");
-    _nvgList = getArray (_unitConfig >> "CBA_nvgList");
-    _facewearList = getArray (_unitConfig >> "CBA_facewearList");
-
-    _primaryList = getArray (_unitConfig >> "CBA_primaryList");
-    _secondaryList = getArray (_unitConfig >> "CBA_secondaryList");
-    _launcherList = getArray (_unitConfig >> "CBA_launcherList");
+    private _headgearList = getArray (_unitConfig >> "CBA_headgearList");
+    private _uniformList = getArray (_unitConfig >> "CBA_uniformList");
+    private _vestList = getArray (_unitConfig >> "CBA_vestList");
+    private _backpackList = getArray (_unitConfig >> "CBA_backpackList");
+    private _nvgList = getArray (_unitConfig >> "CBA_nvgList");
+    private _facewearList = getArray (_unitConfig >> "CBA_facewearList");
+    private _primaryList = getArray (_unitConfig >> "CBA_primaryList");
+    private _secondaryList = getArray (_unitConfig >> "CBA_secondaryList");
+    private _launcherList = getArray (_unitConfig >> "CBA_launcherList");
 
     // If all arrays are empty, just cache `[false]` to not save a bunch of empty arrays
     if (_headgearList isEqualTo [] &&
@@ -91,6 +88,7 @@ private _cache = GVAR(randomLoadoutUnits) getOrDefaultCall [typeOf _unit, {
 
 // Exit if unit has no randomization
 if (!(_cache select 0)) exitWith {};
+_cache params ["", "_headgearList", "_uniformList", "_vestList", "_backpackList", "_nvgList", "_facewearList", "_primaryList", "_secondaryList", "_launcherList"];
 
 (_unit call CBA_fnc_getLoadout) params ["_loadout", "_extendedInfo"];
 
@@ -111,13 +109,15 @@ if (_nvgList isNotEqualTo []) then {
     _loadout select INDEX_LINKEDITEMS set [INDEX_NVG, selectRandomWeighted _nvgList];
 };
 
+// Set loadout and then add weapons to avoid issues with conflicting weapon items
+[_unit, [_loadout, _extendedInfo]] call CBA_fnc_setLoadout;
+
 {
-    _x params ["_loadoutIndex", "_items"];
+    private _items = _x;
     if (_items isEqualTo []) then { continue };
 
+    // Add magazines first so gun comes pre-loaded
     (selectRandomWeighted _items) params ["_weapon", "_magazineCounts"];
-    _loadout set [_loadoutIndex, _weapon];
-
     {
         _x params ["_magazine", "_count"];
         for "_" from 1 to _count do {
@@ -125,11 +125,12 @@ if (_nvgList isNotEqualTo []) then {
             if !([_unit, _magazine] call CBA_fnc_addMagazine) exitWith {};
         };
     } forEach _magazineCounts;
+
+    _unit addWeapon _weapon;
 } forEach [
-    [INDEX_PRIMARY, _primaryList],
-    [INDEX_HANDGUN, _secondaryList],
-    [INDEX_LAUNCHER, _launcherList]
+    _primaryList,
+    _secondaryList,
+    _launcherList
 ];
 
-[_unit, [_loadout, _extendedInfo]] call CBA_fnc_setLoadout;
 true;
