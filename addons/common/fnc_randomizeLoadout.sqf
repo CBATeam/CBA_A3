@@ -59,8 +59,6 @@ private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomiz
 
 if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
 
-if (isNull _unit || !(_unit getVariable ["BIS_enableRandomization", true])) exitWith {};
-
 private ["_headgearList", "_uniformList", "_vestList", "_backpackList", "_nvgList", "_facewearList", "_primaryList", "_secondaryList", "_launcherList"];
 
 private _cache = GVAR(randomLoadoutUnits) getOrDefaultCall [typeOf _unit, {
