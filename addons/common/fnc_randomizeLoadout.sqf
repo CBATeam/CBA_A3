@@ -30,9 +30,6 @@ Author:
     DartRuffian
 ---------------------------------------------------------------------------- */
 
-#define INDEX_PRIMARY 0
-#define INDEX_LAUNCHER 1
-#define INDEX_HANDGUN 2
 #define INDEX_UNIFORM 3
 #define INDEX_VEST 4
 #define INDEX_BACKPACK 5
