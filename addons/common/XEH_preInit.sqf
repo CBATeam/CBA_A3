@@ -74,8 +74,9 @@ activateAddons GVAR(addons);
     }];
 }] call CBA_fnc_addClassEventHandler;
 
-// Facewear randomization
-["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
+// Loadout randomization
+GVAR(randomLoadoutUnits) = createHashMap;
+["CAManBase", "InitPost", CBA_fnc_randomizeLoadout] call CBA_fnc_addClassEventHandler;
 
 // Load preStart css color array
 GVAR(cssColorNames) = uiNamespace getVariable QGVAR(cssColorNames);
