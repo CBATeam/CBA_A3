@@ -34,7 +34,11 @@
             "UGL_FlareGreen_F",
             "UGL_FlareRed_F",
             "UGL_FlareYellow_F",
-            "UGL_FlareCIR_F"
+            "UGL_FlareCIR_F",
+            "UGL_FlareGreen_Illumination_F",
+            "UGL_FlareRed_Illumination_F",
+            "UGL_FlareWhite_Illumination_F",
+            "UGL_FlareYellow_Illumination_F"
         };
     };
     class CBA_40mm_M203_6rnds {};   // 6 loose M203 type grenades for M32 MGL

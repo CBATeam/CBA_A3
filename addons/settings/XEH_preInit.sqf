@@ -18,7 +18,7 @@ if (isNil QFUNC(init)) then {
     };
 
     ["Test_Setting_0", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call CBA_fnc_addSetting;
-    ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My Category", ["null", false, _fnc_sanitizeValue]] call CBA_fnc_addSetting;
+    ["Test_Setting_1", "EDITBOX",  ["-test editbox-",  "-tooltip-"], "My CategorY", ["null", false, _fnc_sanitizeValue]] call CBA_fnc_addSetting;
     ["Test_Setting_2", "LIST",     ["-test list-",     "-tooltip-"], "My Category", [[1, 0], [["enabled", "tooltip 1"], ["disabled", "tooltip 2"]], 1]] call CBA_fnc_addSetting;
     ["Test_Setting_3", "SLIDER",   ["-test slider-",   "-tooltip-"], "My Category", [0, 10, 5, 0]] call CBA_fnc_addSetting;
     ["Test_Setting_4", "COLOR",    ["-test color-",    "-tooltip-"], "My Category", [1, 1 ,0], false, {diag_log text format ["Color Setting Changed: %1", _this];}] call CBA_fnc_addSetting;
@@ -34,6 +34,14 @@ if (isNil QFUNC(init)) then {
     ["Test_5", "EDITBOX", "setting 5", "Test Category", "null",   1, {systemChat str [5, _this]}] call CBA_fnc_addSetting;
     ["Test_6", "EDITBOX", "setting 6", ["Test Category", "Evens"], "null",   2, {systemChat str [6, _this]}] call CBA_fnc_addSetting;
     ["Test_7", "EDITBOX", "setting 7", ["Test Category", "Seven"], "null",   2, {systemChat str [7, _this]}] call CBA_fnc_addSetting;
+
+    ["Test_b1", "CHECKBOX", "setting b1", ["Test йййй"], false, 2, {systemChat str ["b1", _this]}] call CBA_fnc_addSetting;
+    ["Test_b2", "CHECKBOX", "setting b2л", ["Test йййй", "ллл"], false, 2, {systemChat str ["b2", _this]}] call CBA_fnc_addSetting;
+    ["Test_b3", "CHECKBOX", "setting b3ф", ["Test йййй", "ффф"], true, 2, {systemChat str ["b3", _this]}] call CBA_fnc_addSetting;
+
+    ["Test_c1", "CHECKBOX", "setting c1", ["Test nnnn"], false, 2, {systemChat str ["c1", _this]}] call CBA_fnc_addSetting;
+    ["Test_c2", "CHECKBOX", "setting c2r", ["Test nnnn", "rrr"], false, 2, {systemChat str ["c2", _this]}] call CBA_fnc_addSetting;
+    ["Test_c3", "CHECKBOX", "setting c3o", ["Test nnnn", "ooo"], true, 2, {systemChat str ["c3", _this]}] call CBA_fnc_addSetting;
 
     ["Test_A", "EDITBOX", "setting 1", "Test Category 1", "a", nil, {systemChat str [1, _this]}] call CBA_fnc_addSetting;
     ["Test_B", "EDITBOX", "setting 2", "Test Category 1", "b", nil, {systemChat str [2, _this]}] call CBA_fnc_addSetting;

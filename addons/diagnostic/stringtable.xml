@@ -28,6 +28,7 @@
             <Japanese>スペース4個</Japanese>
             <Chinese>4 個空格</Chinese>
             <Chinesesimp>4 个空格</Chinesesimp>
+            <Russian>4 пробела</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentType">
             <English>Debug Console Indentation</English>
@@ -41,6 +42,7 @@
             <Japanese>デバッグコンソールのインデント</Japanese>
             <Chinese>調試控制台縮進</Chinese>
             <Chinesesimp>调试控制台缩进</Chinesesimp>
+            <Russian>Отступ консоли отладки</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_ConsoleIndentTypeTooltip">
             <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
@@ -54,6 +56,7 @@
             <Japanese>デバッグコンソールでのインデントのタイプ。 インデントはTabキーを押して追加、Shift + Tabキーを押して削除できる。</Japanese>
             <Chinese>可以通過按 Tab 鍵為添加到調試控制台中的表達式縮進或通過按 Shift + Tab 鍵為其刪除縮進。</Chinese>
             <Chinesesimp>可以通过按 Tab 键为添加到调试控制台中的表达式缩进或通过按 Shift + Tab 键为其删除缩进。</Chinesesimp>
+            <Russian>Тип отступа, который может быть добавлен к коду в консоли отладки нажатием клавиши Tab или убран нажатием клавиш Shift + Tab.</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
             <English>Enable Target Debugging</English>
@@ -62,7 +65,7 @@
             <Spanish>Activar Depuración de Objetivo</Spanish>
             <Italian>Attiva il debug remoto</Italian>
             <Polish>Włącz debugowanie na celu</Polish>
-            <Russian>Включить Отладку Цели</Russian>
+            <Russian>Включить отладку цели</Russian>
             <German>Ziel-Debugging aktivieren</German>
             <Korean>대상 디버깅 활성화</Korean>
             <Japanese>対象デバッキングを有効化</Japanese>
@@ -77,7 +80,7 @@
             <Spanish>[CBA] Permite la depuración de objetivos remotos. Requiere consola de depuración.</Spanish>
             <Italian>[CBA] Abilita il debug remoto. Richiede la console di debug.</Italian>
             <Polish>[CBA] Włącza debugowanie zdalnego celu. Konsola Debugowania musi być dostęna.</Polish>
-            <Russian>[CBA] Разрешает отладку дистанционной цели. Требуется Консоль Отладки.</Russian>
+            <Russian>[CBA] Разрешает отладку удаленной цели. Требуется консоль отладки.</Russian>
             <German>[CBA] Erlaubt Remote-Ziel-Debugging. Benötigt Debug-Konsole.</German>
             <Korean>[CBA] 원격 대상 디버깅을 허용합니다. 디버그 콘솔 필요</Korean>
             <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
@@ -92,7 +95,7 @@
             <Spanish>Consola Extendida de Depuración</Spanish>
             <Italian>Console debug estesa</Italian>
             <Polish>Rozszerzona Konsola Debugowania</Polish>
-            <Russian>Расширенная Консоль Отладки</Russian>
+            <Russian>Расширенная консоль отладки</Russian>
             <German>Erweiterte Debug-Konsole</German>
             <Korean>확장 디버그 콘솔</Korean>
             <Japanese>拡張デバッグコンソール</Japanese>
@@ -154,6 +157,7 @@
             <Japanese>目標監視フィールドのリフレッシュレート</Japanese>
             <Chinese>刷新率</Chinese>
             <Chinesesimp>刷新率</Chinesesimp>
+            <Russian>Частота обновления поля отслеживания цели</Russian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
             <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
@@ -164,6 +168,7 @@
             <Japanese>デバッグコンソールの右側にあるCBA目標監視フィールドのリフレッシュレート(秒単位)。</Japanese>
             <Chinese>調試控制台右側的 CBA 目標監視器字段的刷新率（以秒為單位）。</Chinese>
             <Chinesesimp>调试控制台右侧的 CBA 目标监视器字段的刷新率（以秒为单位）。</Chinesesimp>
+            <Russian>Частота обновления в секундах для CBA полей отслеживания справа от консоли отладки.</Russian>
         </Key>
     </Package>
 </Project>

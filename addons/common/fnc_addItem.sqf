@@ -9,9 +9,10 @@ Description:
     case of trouble, or when able to add _item to _unit true in case of success.
 
 Parameters:
-    _unit   - the unit <OBJECT>
-    _item   - name of the weapon to add <STRING>
-    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    _unit    - the unit <OBJECT>
+    _item    - name of the weapon to add <STRING>
+    _verify  - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -26,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(addItem);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]], ["_skipAnim", false, [true]]];
 
 private _return = false;
 
@@ -48,13 +49,13 @@ if (isNull _config || {getNumber (_config >> "scope") < 1}) exitWith {
 };
 
 if (_verify) then {
-    if (_unit canAdd _item) then {
+    if (_unit canAdd [_item, 1, true]) then {
         _unit addItem _item;
         _return = true;
     } else {
         private _vehicle = vehicle _unit;
         if (_vehicle isEqualTo _unit) then {
-            _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+            if (!_skipAnim) then { _unit switchMove "ainvpknlmstpslaywrfldnon_1"; };
 
             private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 

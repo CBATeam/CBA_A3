@@ -25,11 +25,12 @@ private _categorySettings = [];
 
 {
     (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
-    if (_category == _selectedAddon) then {
+    if (toLower _category == _selectedAddon) then {
         if (isLocalized _subCategory) then {
             _subCategory = localize _subCategory;
         };
-        _categorySettings pushBack [_subCategory, _forEachIndex, _setting];
+        // Make sure empty-subcategory is always sorted first (fixing unicode)
+        _categorySettings pushBack [parseNumber (_subCategory != ""), _subCategory, _forEachIndex, _setting];
     };
 } forEach GVAR(allSettings);
 
@@ -37,7 +38,7 @@ _categorySettings sort true;
 private _lastSubCategory = "$START";
 
 {
-    _x params ["_subCategory", "", "_setting"];
+    _x params ["", "_subCategory", "", "_setting"];
     private _createHeader = false;
     if (_subCategory != _lastSubCategory) then {
         _lastSubCategory = _subCategory;
@@ -84,7 +85,7 @@ private _lastSubCategory = "$START";
         };
 
         // ----- create or retrieve options "list" controls group
-        private _list = [QGVAR(list), _category, _source] joinString "$";
+        private _list = [QGVAR(list), toLower _category, _source] joinString "$";
 
         private _ctrlOptionsGroup = controlNull;
 

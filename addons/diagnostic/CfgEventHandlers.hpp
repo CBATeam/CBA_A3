@@ -19,9 +19,11 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayInterrupt {
         GVAR(extendedDebug) = QUOTE(call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
         GVAR(targetDebug) = QUOTE(call (uiNamespace getVariable 'FUNC(initTargetDebugConsole)'));
+        GVAR(watchInput) = QUOTE([ARR_2('start',[])] call (uiNamespace getVariable 'FUNC(watchInput)'));
     };
     class RscDisplayMPInterrupt {
         GVAR(extendedDebug) = QUOTE(call (uiNamespace getVariable 'FUNC(initExtendedDebugConsole)'));
         GVAR(targetDebug) = QUOTE(call (uiNamespace getVariable 'FUNC(initTargetDebugConsole)'));
+        GVAR(watchInput) = QUOTE([ARR_2('start',[])] call (uiNamespace getVariable 'FUNC(watchInput)'));
     };
 };

@@ -332,6 +332,10 @@ class CfgVehicles {
     class gm_deployablebridge_base: gm_logistics_object_base {
         XEH_ENABLED;
     };
+    class gm_pallet_base: gm_logistics_object_base {};
+    class gm_fuelpallet_01_base: gm_pallet_base {
+        XEH_ENABLED;
+    };
 
     class gm_staticWeapon_base: StaticWeapon {};
     class gm_staticMG_base: gm_staticWeapon_base {};

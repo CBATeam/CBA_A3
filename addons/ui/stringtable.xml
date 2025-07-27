@@ -13,6 +13,7 @@
             <Japanese>グループ順の調整...</Japanese>
             <Chinese>調整小隊順序</Chinese>
             <Chinesesimp>调整小队顺序</Chinesesimp>
+            <Russian>Изменение порядка групп...</Russian>
         </Key>
         <Key ID="STR_CBA_UI_AllMissions">
             <English>Show all missions</English>
@@ -53,7 +54,7 @@
             <Italian>Community Base Addons - Interfaccia utente</Italian>
             <Polish>Community Base Addons - Interfejs Użytkownika</Polish>
             <Portuguese>Extensões de Base Comunitária - Interface ao Usuário</Portuguese>
-            <Russian>Community Base Addons - Пользовательский Интерфейс</Russian>
+            <Russian>Community Base Addons - Пользовательский интерфейс</Russian>
             <German>Community Base Addons - Benutzeroberfläche</German>
             <Korean>커뮤니티 베이스 애드온 - 유저 인터페이스</Korean>
             <Japanese>Community Base Addons - ユーザー インターフェイス</Japanese>
@@ -148,6 +149,7 @@
             <Japanese>ロビーマネージャー</Japanese>
             <Chinese>角色大廳管理</Chinese>
             <Chinesesimp>角色大厅管理</Chinesesimp>
+            <Russian>Менеджер лобби</Russian>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
             <English>Back up mission before using this tool.</English>
@@ -161,6 +163,7 @@
             <Japanese>このツールを使用する前にミッションのバックアップを取ってください。</Japanese>
             <Chinese>使用此工具前，請備份任務。</Chinese>
             <Chinesesimp>使用此工具之前，请备份任务。</Chinesesimp>
+            <Russian>Создайте резервную копию мисии перед использованием этого инструмента.</Russian>
         </Key>
         <Key ID="STR_CBA_UI_NotificationPositionDescription">
             <English>Textual feedback to the player.</English>
