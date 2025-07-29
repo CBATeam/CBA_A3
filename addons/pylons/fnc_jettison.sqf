@@ -37,7 +37,7 @@ params ["_vehicle", ["_mode", 0]];
         && {_missileLockMaxSpeed > 100}
     ) then { continue; };
 
-    private _pylonDummy = QGVAR(pylon_detached) createVehicle [0, 0, 0];
+    private _pylonDummy = QGVAR(pylon_base) createVehicle [0, 0, 0];
     _pylonDummy setPylonLoadout [1, _magazine, true];
     _pylonDummy setAmmoOnPylon [1, _ammo];
     _pylonDummy hideObject true;

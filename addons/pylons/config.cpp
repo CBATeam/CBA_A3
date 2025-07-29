@@ -4,14 +4,7 @@ class CfgPatches {
     class ADDON {
         name = CSTRING(component);
         units[] = {
-            QGVAR(camera_tgp),
-            QGVAR(camera_turret),
-            QGVAR(camera_fixed),
-            QGVAR(pylon_single_tgp),
-            QGVAR(pylon_single_turret),
-            QGVAR(pylon_single_fixed),
-            QGVAR(pylon_turret),
-            QGVAR(pylon_turret_tgp)
+            QGVAR(pylon_base)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -23,10 +16,5 @@ class CfgPatches {
     };
 };
 
-#include "CfgAmmo.hpp"
-#include "CfgEditorSubcategories.hpp"
 #include "CfgEventHandlers.hpp"
-#include "CfgMagazines.hpp"
-#include "CfgNonAIVehicles.hpp"
 #include "CfgVehicles.hpp"
-#include "CfgWeapons.hpp"
