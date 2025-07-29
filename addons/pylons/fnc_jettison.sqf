@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Vehicle <OBJECT>
  * 1: Mode <NUMBER>
- *     0 - Jettison all pylons
+ *     0 - Jettison all pylons (default)
  *     1 - Jettison only currently selected pylon
  *     2 - Jettison all pylons which are not guns or Air-to-Air missiles
  *
