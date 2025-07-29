@@ -193,6 +193,9 @@ class CfgVehicles {
                 magazines[] = {"Laserbatteries"};
             };
         };
+        class Library {
+            libTextDesc = "Pylons: 0. Slewable: Yes. Laser Designator: Yes.";
+        };
     }; // camera_tgp
 
     class GVAR(camera_turret): GVAR(camera_tgp) {
@@ -205,6 +208,9 @@ class CfgVehicles {
                 magazines[] = {};
             };
         };
+        class Library {
+            libTextDesc = "Pylons: 0. Slewable: Yes. Laser Designator: No.";
+        };
     }; // camera_turret
 
     class GVAR(camera_fixed): GVAR(camera_turret) {
@@ -215,24 +221,36 @@ class CfgVehicles {
                 animationSourceGun = "";
             };
         };
+        class Library {
+            libTextDesc = "Pylons: 0. Slewable: No. Laser Designator: No.";
+        };
     }; // camera_fixed
 
     class GVAR(pylon_single_tgp): GVAR(camera_tgp) {
         displayName = "Remote Pylon (TGP)";
         #include "AnimationSources.hpp"
         #include "Components_single.hpp"
+        class Library {
+            libTextDesc = "Pylons: 1 Fixed. Slewable: Yes. Laser Designator: Yes.";
+        };
     }; // pylon_single_turret
 
     class GVAR(pylon_single_turret): GVAR(camera_turret) {
         displayName = "Remote Pylon (Camera)";
         #include "AnimationSources.hpp"
         #include "Components_single.hpp"
+        class Library {
+            libTextDesc = "Pylons: 1 Fixed. Slewable: Yes. Laser Designator: No.";
+        };
     }; // pylon_single
 
     class GVAR(pylon_single_fixed): GVAR(camera_fixed) {
         displayName = "Remote Pylon";
         #include "AnimationSources.hpp"
         #include "Components_single.hpp"
+        class Library {
+            libTextDesc = "Pylons: 1 Fixed. Slewable: No. Laser Designator: No.";
+        };
     }; // pylon_single
 
     class GVAR(pylon_detached): GVAR(pylon_single_fixed)
@@ -246,6 +264,9 @@ class CfgVehicles {
         model = QPATHTOF(pylon_turret.p3d);
         #include "AnimationSources.hpp"
         #include "Components_single.hpp"
+        class Library {
+            libTextDesc = "Pylons: 1 turreted. Slewable: Yes. Laser Designator: No.";
+        };
     }; // pylon_turret
 
     class GVAR(pylon_turret_tgp): GVAR(camera_tgp) {
@@ -253,6 +274,9 @@ class CfgVehicles {
         model = QPATHTOF(pylon_turret.p3d);
         #include "AnimationSources.hpp"
         #include "Components_single.hpp"
+        class Library {
+            libTextDesc = "Pylons: 1 turreted. Slewable: Yes. Laser Designator: Yes.";
+        };
     }; // pylon_turret_tgp
 
 };
