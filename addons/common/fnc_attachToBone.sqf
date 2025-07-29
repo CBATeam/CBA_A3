@@ -10,7 +10,7 @@ Parameters:
     _parent            - Parent object to which child will be attached <STRING>
     _bone              - Bone name <STRING>
     _matchOrientation  - Orientation <BOOLEAN> (Default: true) True: match bone orientation, False: maintain relative orientation
-    _lod               - LOD in which to check for bone <BOOLEAN> (Default: 1e15 for Memeory LOD)
+    _lod               - LOD in which to check for bone <BOOLEAN> (Default: 1e15 for Memory LOD)
 
 Returns:
 
