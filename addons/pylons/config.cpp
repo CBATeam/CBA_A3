@@ -2,7 +2,7 @@
 
 class CfgPatches {
     class ADDON {
-        name = CSTRING(component);
+        name = "Community Base Addons - Pylons";
         units[] = {
             QGVAR(pylon_base)
         };
