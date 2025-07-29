@@ -22,7 +22,7 @@ Examples:
         private _pylon = "cba_pylons_pylon_single_fixed" createVehicle [0, 0, 0];
         _pylon setPylonLoadout [1, "PylonRack_12Rnd_PG_missiles", true];
         _pylon setPosASL eyePos player;
-        _pylon setDir (getDir player);
+        _pylon setDir getDir player;
         [_pylon, player, "Launcher", false] call cba_fnc_attachToBone;
     (end)
 
