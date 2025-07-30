@@ -38,7 +38,7 @@ params [
     ["_parent", objNull, [objNull]],
     ["_bone", "", [""]],
     ["_matchOrientation", true, [false]],
-    ["_lod", LOD_MEMORY]
+    ["_lod", LOD_MEMORY, [0, ""]]
 ];
 
 if (!isNull attachedTo _child) then {detach _child;}; // Get vectors in world space
