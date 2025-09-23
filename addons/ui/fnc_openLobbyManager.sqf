@@ -49,7 +49,7 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
             private _description = _unit get3DENAttribute "description" select 0;
 
             if (_description isEqualTo "") then {
-                _description = format ["%1: %2", _forEachIndex + 1, getText (configFile >> "CfgVehicles" >> typeOf _unit >> "displayName")];
+                _description = format ["%1: %2", _forEachIndex + 1, getText (configOf _unit >> "displayName")];
             };
 
             _unit setVariable [QGVAR(description), _description];
@@ -88,7 +88,7 @@ private _ctrlSlots = _display displayCtrl IDC_LM_SLOTS;
 
             _description splitString SEPARATORS params [["_unitName", ""]];
 
-            private _iconType = getText (configFile >> "CfgVehicles" >> typeOf _unit >> "icon");
+            private _iconType = getText (configOf _unit >> "icon");
             private _icon = getText (configFile >> "CfgVehicleIcons" >> _iconType);
 
             private _unitIndex = _ctrlSlots tvAdd [_groupPath, _unitName];
