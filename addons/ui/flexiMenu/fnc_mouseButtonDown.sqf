@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 #define _rightMouseButton 1
 
-params ["_display", "_button", "_x", "_y", "_shiftKey", "_ctrlKey", "_altKey"];;
+params ["_display", "_button", "_x", "_y", "_shiftKey", "_ctrlKey", "_altKey"];
 
-_handled = false;
+private _handled = false;
 
 // right click to close menu
 if (dialog && {!GVAR(holdKeyDown)} && {_button == _rightMouseButton} && {!_shiftKey}) then {

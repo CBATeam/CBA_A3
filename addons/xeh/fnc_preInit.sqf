@@ -192,7 +192,7 @@ if (!isServer) then { // only on client
     if (!isNil QGVAR(expectedLoadingScreens)) then {
         GVAR(expectedLoadingScreens) deleteAt (GVAR(expectedLoadingScreens) find _loadingScreen);
 
-        if (count GVAR(expectedLoadingScreens) == 0) then {
+        if (GVAR(expectedLoadingScreens) isEqualTo []) then {
             GVAR(expectedLoadingScreens) = nil;
             ["CBA_loadingScreenDone", []] call CBA_fnc_localEvent;
         };

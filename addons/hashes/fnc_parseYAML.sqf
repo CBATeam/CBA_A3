@@ -61,7 +61,7 @@ private _raiseError = {
 
     private _errorBlock = "";
 
-    for [{_i = 0 max ((count _lines) - 6)}, {_i < count _lines}, {_i = _i + 1}] do {
+    for [{private _i = 0 max ((count _lines) - 6)}, {_i < count _lines}, {_i = _i + 1}] do {
         _errorBlock = _errorBlock + format ["\n%1: %2", [_i + 1, 3] call CBA_fnc_formatNumber,
             toString (_lines select _i)];
     };
@@ -86,7 +86,7 @@ private _parse = {
 
     while {_pos < ((count _yaml) - 1) && !_error && !_return} do {
         _pos = _pos + 1;
-        _char = _yaml select _pos;
+        private _char = _yaml select _pos;
 
         if (_char == ASCII_YAML_COMMENT) then {
             // Trim comments.
@@ -262,19 +262,19 @@ private _yaml = toArray _yamlString;
 private _lineBreaks = [ASCII_NEWLINE, ASCII_CR];
 
 // Ensure input ends with a newline.
-if (count _yaml > 0) then
+if (_yaml isNotEqualTo []) then
 {
     if !((_yaml select -1) in _lineBreaks) then {
         _yaml pushBack ASCII_NEWLINE;
     };
 };
 
-_pos = -1;
+private _pos = -1;
 
 private _retVal = ([_yaml, _pos, -1, [[]]] call _parse);
 _pos = _retVal select 0;
-_value = _retVal select 1;
-_error = _retVal select 2;
+private _value = _retVal select 1;
+private _error = _retVal select 2;
 
 if (_error) then {
     nil // Return.

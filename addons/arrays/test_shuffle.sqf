@@ -6,7 +6,7 @@ SCRIPT(test_shuffle);
 
 // ----------------------------------------------------------------------------
 
-private ["_expected", "_result", "_fn"];
+private ["_expected", "_result", "_fn", "_original"];
 
 _fn = "CBA_fnc_shuffle";
 LOG("Testing " + _fn);

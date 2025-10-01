@@ -8,10 +8,10 @@ private [
 ];
 
 // Call this function with the exact parameter set passed to fleximenu_fnc_add.
-_addParameters = _this;
+private _addParameters = _this;
 
 // Return true if menu was found, false if not.
-_opened = false;
+private _opened = false;
 
 // Code reuse from fnc_keyDown below, recommented.
 
@@ -20,7 +20,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
     _opened = true;
 
     // Check if a menu is already open.
-    _active = (!isNil {uiNamespace getVariable QGVAR(display)});
+    private _active = (!isNil {uiNamespace getVariable QGVAR(display)});
     if (_active) then {
         _active = (!isNull (uiNamespace getVariable QGVAR(display)));
     };
@@ -38,7 +38,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
         _isTypeTarget = false;
 
         // Get near objects into an array.
-        _objects = nearestObjects [player, [], 1.5];
+        private _objects = nearestObjects [player, [], 1.5];
         {
             (group player) reveal _x;
         } forEach _objects;
@@ -85,7 +85,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
                 _menuSources pushBack _x;
             } forEach _potentialMenuSources;
 
-            if (count _menuSources > 0) then {
+            if (_menuSources isNotEqualTo []) then {
                 GVAR(target) = _target;
                 [_target, _menuSources] call FUNC(menu);
             };
