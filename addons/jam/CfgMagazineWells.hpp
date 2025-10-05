@@ -17,7 +17,7 @@ class CfgMagazineWells {
     #include "magwells_762x39.hpp"                  // 7.62x39mm | 7.62 Soviet | .30 Russian Short
     #include "magwells_762x51.hpp"                  // 7.62x51mm | .308
     #include "magwells_762x54.hpp"                  // 7.62x54mmR
-    #include "magwells_77x58.hpp"                   // 7.7x58mm Arisaka | Type 99 rimless 7.7mm | 7.7mm Japanese
+    #include "magwells_77x58.hpp"                   // 7.7x58mm Arisaka | Type 99 rimless 7.7 mm | 7.7mm Japanese
     #include "magwells_792x107mmDS.hpp"             // 7.92x107mm DS
     #include "magwells_792x33.hpp"                  // 7.92x33mm Kurz | 7.92 x 33 kurz | 7.9mm Kurz | 7.9 Kurz | 7.9mmK | 8x33 Polte
     #include "magwells_792x57.hpp"                  // 7.92x57mm Mauser | 8mm Mauser | 8x57mm | 8 x 57 IS
@@ -40,9 +40,9 @@ class CfgMagazineWells {
     #include "magwells_10mmAuto.hpp"                // 10mm Auto | 10mm Automatic | 10x25mm
     #include "magwells_57x28.hpp"                   // 5.7x28mm
     #include "magwells_762x25.hpp"                  // 7.62x25mm Tokarev
-    #include "magwells_762x38R.hpp"                 // 7.62x38mmR | 7.62mm Nagant
+    #include "magwells_762x38R.hpp"                 // 7.62x38mmR | 7.62 mm Nagant
     #include "magwells_763x25.hpp"                  // 7.63x25mm Mauser | .30 Mauser Automatic
-    #include "magwells_765x20Longue.hpp"            // 7.65x20mm Longue | 7.65mm French Longue | 7.65mm Long | 7.65mm MAS | 7.65x20mm | 7.65L | .30-18 Auto
+    #include "magwells_765x20Longue.hpp"            // 7.65x20mm Longue | 7.65mm French Longue | 7.65 mm Long | 7.65mm MAS | 7.65x20mm | 7.65L | .30-18 Auto
     #include "magwells_765x21.hpp"                  // 7.65x21mm Parabellum | 7,65 Parabellum | 7.65mm Luger | .30 Luger
     #include "magwells_8x22.hpp"                    // 8x22mm Nambu
     #include "magwells_9x18.hpp"                    // 9x18mm Makarov | 9mm Makarov | 9x18mm PM
@@ -51,10 +51,10 @@ class CfgMagazineWells {
 
     #include "magwells_22LR.hpp"                    // .22 LR | .22 Long Rifle | 5.6x15mmR
     #include "magwells_25ACP.hpp"                   // .25 ACP | 6.35x16mmSR
-    #include "magwells_32ACP.hpp"                   // .32 ACP | .32 Automatic | 7.65x17mmSR Browning | 7.65mm Browning Short
+    #include "magwells_32ACP.hpp"                   // .32 ACP | .32 Automatic | 7.65x17mmSR Browning | 7.65 mm Browning Short
     #include "magwells_357Mag.hpp"                  // .375 Magnum | .357 S&W Magnum | 9x33mmR
     #include "magwells_357SIG.hpp"                  // .357 SIG
-    #include "magwells_380ACP.hpp"                  // .380 ACP | .380 Auto | 9mm Browning | 9mm Corto | 9mm Kurz | 9mm Short | 9x17mm | 9mm Browning Court
+    #include "magwells_380ACP.hpp"                  // .380 ACP | .380 Auto | 9mm Browning | 9mm Corto | 9mm Kurz | 9mm Short | 9x17mm | 9 mm Browning Court
     #include "magwells_38Spec.hpp"                  // .38 Smith & Wesson Special | .38 Special | .38 Spl | .38 Spc | 9x29.5mmR | 9.1x29mmR
     #include "magwells_38_200.hpp"                  // .38/200 | 9x20mmR
     #include "magwells_40SW.hpp"                    // .40 S&W
