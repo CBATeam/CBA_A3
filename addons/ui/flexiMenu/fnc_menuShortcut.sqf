@@ -35,7 +35,7 @@ private _menuDefs = (_this select 1) call FUNC(getMenuDef);
 
     if (_dikCode == _shortcut && {_enabled != 0} && {_visible > 0}) exitWith {
         _menuOption = [_menuDefs select 0, _x, false] call FUNC(getMenuOption); // get complete same record
-        _action = _menuOption select _flexiMenu_menuDef_ID_action;
+        private _action = _menuOption select _flexiMenu_menuDef_ID_action;
 
         if (typeName _action == "CODE") then {call _action} else {call compile _action};
         _handled = true;

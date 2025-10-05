@@ -6,7 +6,7 @@ SCRIPT(test_hashFilter);
 
 // ----------------------------------------------------------------------------
 
-private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations", "_removeOddValues"];
+private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations", "_removeOddValues", "_ret", "_fn"];
 
 _fn = "CBA_fnc_hashFilter";
 LOG("Testing " + _fn);

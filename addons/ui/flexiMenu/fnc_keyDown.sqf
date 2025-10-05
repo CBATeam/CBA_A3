@@ -64,7 +64,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
         _isTypeTarget = false;
 
         // check for [cursorTarget or "player" or "vehicle"] types in typeMenuSources list
-        _objects = nearestObjects [player, [], 1.5];
+        private _objects = nearestObjects [player, [], 1.5];
         {
             (group player) reveal _x;
         } forEach _objects;
@@ -119,7 +119,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             } forEach _potentialMenuSources;
 
             TRACE_2("",_target,_menuSources);
-            if (count _menuSources > 0) then {
+            if (_menuSources isNotEqualTo []) then {
                 // show menu dialog and load menu data
                 GVAR(target) = _target; // global variable used since passing an object as a string is too difficult.
                 [_target, _menuSources] call FUNC(menu);

@@ -44,7 +44,7 @@ private _return = if (isDedicated) then {
             if (isNull player) exitWith {};
             if (GVAR(actionListUpdated) || {_curVic != _prevVic}) then {
                 TRACE_4("update",GVAR(actionListUpdated),_curVic,_prevVic,GVAR(actionIndexes));
-                if (count GVAR(actionIndexes) > 0) then {
+                if (GVAR(actionIndexes) isNotEqualTo []) then {
                     { _prevVic removeAction _x; } forEach GVAR(actionIndexes);
                     GVAR(actionIndexes) = [];
                 };

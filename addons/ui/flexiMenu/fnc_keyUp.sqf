@@ -10,9 +10,9 @@ if (!GVAR(holdKeyDown)) exitWith {_handled}; // key release monitoring not requi
 private _potentialKeyMatch = false;
 {
     // syntax of _keys: [[_dikCode1, [_shift, _ctrlKey, _alt]], [_dikCode2, [...]], ...]
-    _keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
+    private _keys = (_x select _flexiMenu_typeMenuSources_ID_DIKCodes);
     {
-        _settings = _x select 1;
+        private _settings = _x select 1;
         if (
             _x select 0 == _dikCode &&
             {!_shift   && {!(_settings select 0)} || {_shift   && {_settings select 0}}} &&

@@ -57,7 +57,7 @@ private _menuDefs = [];
 
     // merge menuDef's - keeping original header array [0] and merging data array [1]
     if !(isNil "_menuDef") then {
-        if (count _menuDefs == 0) then {
+        if (_menuDefs isEqualTo []) then {
             _menuDefs = _menuDef;
         } else {
             if (count _menuDef > 0) then {

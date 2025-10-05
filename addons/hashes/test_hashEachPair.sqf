@@ -6,7 +6,7 @@ SCRIPT(test_hashEachPair);
 
 // ----------------------------------------------------------------------------
 
-private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations"];
+private ["_hash", "_expected", "_sumKeys", "_sumValues", "_totalIterations", "_fn"];
 
 _fn = "CBA_fnc_hashEachPair";
 LOG("Testing " + _fn);

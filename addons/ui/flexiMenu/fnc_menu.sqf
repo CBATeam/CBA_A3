@@ -179,7 +179,7 @@ _commitList = [];
         _visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
         if (_caption != "" && {(_caption != "No options" || {_idcIndex == 0})}) then {
-            _ctrl = _disp displayCtrl _idc;
+            private _ctrl = _disp displayCtrl _idc;
             _array = ctrlPosition _ctrl;
             if ({_x == 0} count _array == 4) then {
                 if (!isNull _disp) exitWith {
@@ -214,7 +214,7 @@ _commitList = [];
 if (_idcIndex == 0) then {
     // TODO: This block is duplicate code from above. Find a tidy way to merge this back with code above, by adding fake "No options" menu option.
     _idc = _flexiMenu_baseIDC_button + _idcIndex;
-    _ctrl = _disp displayCtrl _idc;
+    private _ctrl = _disp displayCtrl _idc;
     _array = ctrlPosition _ctrl;
 
     if (_array select 2 == 0) then {
@@ -245,7 +245,7 @@ if (_idcIndex == 0) then {
 // Note: BIS bug: you still need to disable hidden RscShortcutButton(s) because you can tab to them otherwise!
 for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
     _idc = _flexiMenu_baseIDC_button + _i;
-    _ctrl = _disp displayCtrl _idc;
+    private _ctrl = _disp displayCtrl _idc;
     _ctrl ctrlShow false;
     _ctrl ctrlEnable false;
 };

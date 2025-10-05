@@ -52,7 +52,7 @@ if (_vehicle != _unit) then {
             if (_assignedRole select 0 == "Cargo") then {
                 private _attenuateCargo = getArray (_cfg >> "soundAttenuationCargo");
 
-                if (count _attenuateCargo > 0) then {
+                if (_attenuateCargo isNotEqualTo []) then {
                     private _index = count _attenuateCargo - 1; // wait for command to get cargo index
 
                     if (_index > -1) then {

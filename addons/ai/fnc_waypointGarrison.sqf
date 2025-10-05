@@ -34,11 +34,11 @@ private _staticWeapons = _position nearObjects ["StaticWeapon", 50] select {lock
 private _buildings = (_position nearObjects ["Building", 50]) apply {_x buildingPos -1} select {count _x > 0};
 
 {
-    if (count _staticWeapons > 0 && {random 1 < 0.31}) then {
+    if (_staticWeapons isNotEqualTo [] && {random 1 < 0.31}) then {
         _x assignAsGunner (_staticWeapons deleteAt 0);
         [_x] orderGetIn true;
     } else {
-        if (count _buildings > 0 && {random 1 < 0.90}) then {
+        if (_buildings isNotEqualTo [] && {random 1 < 0.90}) then {
             private _building = selectRandom _buildings;
             private _position = POP_RAND(_building);
 
