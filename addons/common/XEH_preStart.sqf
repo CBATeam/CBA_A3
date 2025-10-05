@@ -4,7 +4,7 @@
 private _cfgPatches = configFile >> "CfgPatches";
 private _allComponents = "true" configClasses _cfgPatches apply {configName _x};
 uiNamespace setVariable [QGVAR(addons), compileFinal str _allComponents];
-//https://www.w3.org/TR/css-color-3/#svg-color
+//https://www.w3.org/TR/css-color-4/#named-colors
 uiNamespace setVariable [QGVAR(cssColorNames), compileFinal createHashMapFromArray [
     ["aliceblue", [[0.941, 0.973, 1], "#F0F8FF", "#(rgb,8,8,3)color(0.941,0.973,1)"]],
     ["antiquewhite", [[0.98, 0.922, 0.843], "#FAEBD7", "#(rgb,8,8,3)color(0.98,0.922,0.843)"]],
@@ -125,6 +125,7 @@ uiNamespace setVariable [QGVAR(cssColorNames), compileFinal createHashMapFromArr
     ["plum", [[0.867, 0.627, 0.867], "#DDA0DD", "#(rgb,8,8,3)color(0.867,0.627,0.867)"]],
     ["powderblue", [[0.69, 0.878, 0.902], "#B0E0E6", "#(rgb,8,8,3)color(0.69,0.878,0.902)"]],
     ["purple", [[0.502, 0, 0.502], "#800080", "#(rgb,8,8,3)color(0.502,0,0.502)"]],
+    ["rebeccapurple", [[0.4, 0.2, 0.6], "#663399", "#(rgb,8,8,3)color(0.4,0.2,0.6)"]],
     ["red", [[1, 0, 0], "#FF0000", "#(rgb,8,8,3)color(1,0,0)"]],
     ["rosybrown", [[0.737, 0.561, 0.561], "#BC8F8F", "#(rgb,8,8,3)color(0.737,0.561,0.561)"]],
     ["royalblue", [[0.255, 0.412, 0.882], "#4169E1", "#(rgb,8,8,3)color(0.255,0.412,0.882)"]],
