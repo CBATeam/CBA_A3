@@ -1,3 +1,14 @@
+    class CBA_9x19_1rnd {};       // 1 loose round of 9x19mm Parabellum
+    class CBA_9x19_2rnds {};      // 2 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_3rnds {};      // 3 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_4rnds {};      // 4 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_5rnds {};      // 5 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_6rnds {};      // 6 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_7rnds {};      // 7 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_8rnds {};      // 8 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_9rnds {};      // 9 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_10rnds {};     // 10 loose rounds of 9x19mm Parabellum
+
     class CBA_9x19_C96 {};          // Mauser C-96 in 9x19mm
     class CBA_9x19_CZ2075 {};       // Subcompact CZ 2075 in 9x19mm
     class CBA_9x19_CZ75_Cpct {};    // Compact CZ 75, CZ 85 in 9x19mm

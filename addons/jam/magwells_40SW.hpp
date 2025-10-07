@@ -1,3 +1,14 @@
+    class CBA_40SW_1rnd {};       // 1 loose round of .40 S&W
+    class CBA_40SW_2rnds {};      // 2 loose rounds of .40 S&W
+    class CBA_40SW_3rnds {};      // 3 loose rounds of .40 S&W
+    class CBA_40SW_4rnds {};      // 4 loose rounds of .40 S&W
+    class CBA_40SW_5rnds {};      // 5 loose rounds of .40 S&W
+    class CBA_40SW_6rnds {};      // 6 loose rounds of .40 S&W
+    class CBA_40SW_7rnds {};      // 7 loose rounds of .40 S&W
+    class CBA_40SW_8rnds {};      // 8 loose rounds of .40 S&W
+    class CBA_40SW_9rnds {};      // 9 loose rounds of .40 S&W
+    class CBA_40SW_10rnds {};     // 10 loose rounds of .40 S&W
+
     class CBA_40SW_CZ2075 {};       // Subcompact CZ 2075 in .40 S&W
     class CBA_40SW_CZ75_Cpct {};    // Compact CZ 75, CZ 85 in .40 S&W
     class CBA_40SW_CZ75_Full {};    // Fullsize CZ 75, CZ 85 in .40 S&W

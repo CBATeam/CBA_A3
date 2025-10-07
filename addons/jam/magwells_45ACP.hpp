@@ -1,9 +1,17 @@
+    class CBA_45ACP_1rnd {};       // 1 loose round of .45 ACP
+    class CBA_45ACP_2rnds {};      // 2 loose rounds of .45 ACP
+    class CBA_45ACP_3rnds {};      // 3 loose rounds of .45 ACP
+    class CBA_45ACP_4rnds {};      // 4 loose rounds of .45 ACP
+    class CBA_45ACP_5rnds {};      // 5 loose rounds of .45 ACP
+    class CBA_45ACP_6rnds {};      // 6 loose rounds of .45 ACP
+    class CBA_45ACP_7rnds {};      // 7 loose rounds of .45 ACP
+    class CBA_45ACP_8rnds {};      // 8 loose rounds of .45 ACP
+    class CBA_45ACP_9rnds {};      // 9 loose rounds of .45 ACP
+    class CBA_45ACP_10rnds {};     // 10 loose rounds of .45 ACP
+
     class CBA_45ACP_Clip_6rnds {};      // 6 round .45 ACP moon clip or speed loader
     class CBA_45ACP_Clip_5rnds {};      // 5 round .45 ACP moon clip or speed loader
 
-    class CBA_45ACP_6rnds {};           // 6 loose rounds of .45 ACP
-    class CBA_45ACP_5rnds {};           // 5 loose rounds of .45 ACP
- 
     class CBA_45ACP_1911 {              // Colt M1911
         BI_mags[] = {
             "9Rnd_45ACP_Mag"

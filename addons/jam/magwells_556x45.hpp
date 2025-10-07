@@ -1,3 +1,14 @@
+    class CBA_556x45_1rnd {};       // 1 loose round of 5.56x45mm
+    class CBA_556x45_2rnds {};      // 2 loose rounds of 5.56x45mm
+    class CBA_556x45_3rnds {};      // 3 loose rounds of 5.56x45mm
+    class CBA_556x45_4rnds {};      // 4 loose rounds of 5.56x45mm
+    class CBA_556x45_5rnds {};      // 5 loose rounds of 5.56x45mm
+    class CBA_556x45_6rnds {};      // 6 loose rounds of 5.56x45mm
+    class CBA_556x45_7rnds {};      // 7 loose rounds of 5.56x45mm
+    class CBA_556x45_8rnds {};      // 8 loose rounds of 5.56x45mm
+    class CBA_556x45_9rnds {};      // 9 loose rounds of 5.56x45mm
+    class CBA_556x45_10rnds {};     // 10 loose rounds of 5.56x45mm
+
     class CBA_556x45_AK {};             // AK mags for 5.56 AK type rifles, AK-101, AK-102, etc.
     class CBA_556x45_RPK {};            // 45rnd RPK mags for 5.56 RPK-201
     class CBA_556x45_FAMAS {};          // FAMAS F1
