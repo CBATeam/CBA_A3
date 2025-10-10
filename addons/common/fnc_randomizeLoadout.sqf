@@ -96,10 +96,18 @@ _cache params ["", "_headgearList", "_uniformList", "_vestList", "_backpackList"
     _loadout set [_loadoutIndex, selectRandomWeighted _items];
 } forEach [
     [INDEX_HELMET, _headgearList],
+    [INDEX_FACEWEAR, _facewearList]
+];
+
+{
+    _x params ["_loadoutIndex", "_items"];
+    if (_items isEqualTo []) then { continue };
+
+    (_loadout select _loadoutIndex) set [0, selectRandomWeighted _items];
+} forEach [
     [INDEX_UNIFORM, _uniformList],
     [INDEX_VEST, _vestList],
-    [INDEX_BACKPACK, _backpackList],
-    [INDEX_FACEWEAR, _facewearList]
+    [INDEX_BACKPACK, _backpackList]
 ];
 
 if (_nvgList isNotEqualTo []) then {
