@@ -103,7 +103,12 @@ _cache params ["", "_headgearList", "_uniformList", "_vestList", "_backpackList"
     _x params ["_loadoutIndex", "_items"];
     if (_items isEqualTo []) then { continue };
 
-    (_loadout select _loadoutIndex) set [0, selectRandomWeighted _items];
+    // Handle no item being equipped in the current slot, e.g. ["UniformClass"] would be invalid
+    private _section = _loadout select _loadoutIndex;
+    if (_section isEqualTo []) then { _section = ["", []] };
+
+    _section set [0, selectRandomWeighted _items];
+    _loadout set [_loadoutIndex, _section];
 } forEach [
     [INDEX_UNIFORM, _uniformList],
     [INDEX_VEST, _vestList],

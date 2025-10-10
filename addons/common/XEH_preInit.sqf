@@ -76,7 +76,7 @@ activateAddons GVAR(addons);
 
 // Loadout randomization
 GVAR(randomLoadoutUnits) = createHashMap;
-["CAManBase", "InitPost", CBA_fnc_randomizeLoadout] call CBA_fnc_addClassEventHandler;
+["CAManBase", "Init", CBA_fnc_randomizeLoadout] call CBA_fnc_addClassEventHandler;
 
 // Load preStart css color array
 GVAR(cssColorNames) = uiNamespace getVariable QGVAR(cssColorNames);
