@@ -3,3 +3,5 @@
 
     class CBA_357_6rnds {};             // 6 loose rounds of .357 Magnum
     class CBA_357_5rnds {};             // 5 loose rounds of .357 Magnum
+
+    class CBA_357_DEagle {};            // Desert Eagle in .357 Magnum
