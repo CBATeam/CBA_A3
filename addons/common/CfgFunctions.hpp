@@ -84,6 +84,7 @@ class CfgFunctions {
             PATHTO_FNC(addRandomizedMagazines);
             PATHTO_FNC(fixAnimation3DEN);
             PATHTO_FNC(getRandomizedEquipment);
+            PATHTO_FNC(setIdentity3DEN);
             PATHTO_FNC(canAddItem);
         };
 
