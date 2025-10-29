@@ -5,7 +5,7 @@ Description:
     Sets Eden attributes relating to the given identity.
 
 Parameters:
-    _unit  - Unit <OBJECT>
+    _unit      - Unit <OBJECT>
     _identity  - Class in CfgIdentities (optional, defaults to CBA_identity property in unit's config) <STRING>
 
 Returns:
