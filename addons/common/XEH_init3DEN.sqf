@@ -2,7 +2,7 @@
 
 add3DENEventHandler ["OnEditableEntityAdded", {
     params ["_entity"];
-    if (typeName _entity != "OBJECT") exitWith {};
+    if !(_entity isEqualType objNull) exitWith {};
 
     {
         _x call CBA_fnc_setIdentity3DEN;
