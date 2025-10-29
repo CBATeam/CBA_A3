@@ -57,7 +57,7 @@ private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomiz
 
 if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith { true };
 
-private _cache = _unit call FUNC(getRandomizedEquipment);
+private _cache = _unit call CBA_fnc_getRandomizedEquipment;
 
 // Exit if unit has no randomization
 if (!(_cache select 0)) exitWith { true };
