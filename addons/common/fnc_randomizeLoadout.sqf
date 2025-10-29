@@ -35,6 +35,7 @@ Author:
 #define INDEX_BACKPACK 5
 #define INDEX_HELMET 6
 #define INDEX_FACEWEAR 7
+#define INDEX_BINOCULARS 8
 #define INDEX_LINKEDITEMS 9
 
 // Note that this is specifically for a loadout array
@@ -54,38 +55,13 @@ private _randomizationDisabled = getArray (missionConfigFile >> "disableRandomiz
     _unit isKindOf _x || {(vehicleVarName _unit) isEqualTo _x}
 } != -1;
 
-if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith {true};
+if (_randomizationDisabled || {!(_unit getVariable ["BIS_enableRandomization", true])}) exitWith { true };
 
-private _cache = GVAR(randomLoadoutUnits) getOrDefaultCall [typeOf _unit, {
-    private _unitConfig = configOf _unit;
-    private _headgearList = getArray (_unitConfig >> "CBA_headgearList");
-    private _uniformList = getArray (_unitConfig >> "CBA_uniformList");
-    private _vestList = getArray (_unitConfig >> "CBA_vestList");
-    private _backpackList = getArray (_unitConfig >> "CBA_backpackList");
-    private _nvgList = getArray (_unitConfig >> "CBA_nvgList");
-    private _facewearList = getArray (_unitConfig >> "CBA_facewearList");
-    private _primaryList = getArray (_unitConfig >> "CBA_primaryList");
-    private _secondaryList = getArray (_unitConfig >> "CBA_secondaryList");
-    private _launcherList = getArray (_unitConfig >> "CBA_launcherList");
-
-    // If all arrays are empty, just cache `[false]` to not save a bunch of empty arrays
-    if (_headgearList isEqualTo [] &&
-        _uniformList isEqualTo [] &&
-        _vestList isEqualTo [] &&
-        _backpackList isEqualTo [] &&
-        _nvgList isEqualTo [] &&
-        _facewearList isEqualTo [] &&
-        _primaryList isEqualTo [] &&
-        _secondaryList isEqualTo [] &&
-        _launcherList isEqualTo []
-    ) then { [false] } else {
-        [true, _headgearList, _uniformList, _vestList, _backpackList, _nvgList, _facewearList, _primaryList, _secondaryList, _launcherList];
-    };
-}, true];
+private _cache = _unit call FUNC(getRandomizedEquipment);
 
 // Exit if unit has no randomization
-if (!(_cache select 0)) exitWith {};
-_cache params ["", "_headgearList", "_uniformList", "_vestList", "_backpackList", "_nvgList", "_facewearList", "_primaryList", "_secondaryList", "_launcherList"];
+if (!(_cache select 0)) exitWith { true };
+_cache params ["", "_primaryList", "_launcherList", "_handgunList", "_uniformList", "_vestList", "_backpackList", "_headgearList", "_facewearList", "_binocularList", "_nvgList"];
 
 (_unit call CBA_fnc_getLoadout) params ["_loadout", "_extendedInfo"];
 
@@ -122,25 +98,36 @@ if (_nvgList isNotEqualTo []) then {
 // Set loadout and then add weapons to avoid issues with conflicting weapon items
 [_unit, [_loadout, _extendedInfo]] call CBA_fnc_setLoadout;
 
+if (_binocularList isNotEqualTo []) then {
+    private _item = selectRandomWeighted _binocularList;
+    private _magazine = (_item call CBA_fnc_compatibleMagazines) param [0, ""]; // For laser designators
+    _unit addWeapon _item;
+    if (_magazine != "") then {
+        _unit addBinocularItem _magazine
+    };
+};
+
 {
     private _items = _x;
     if (_items isEqualTo []) then { continue };
 
-    // Add magazines first so gun comes pre-loaded
+    // Add a single magazine so the gun is pre-loaded
+    // The rest of the magazines are added in PostInit to preserve changes made in Eden
     (selectRandomWeighted _items) params ["_weapon", "_magazineCounts"];
-    {
-        _x params ["_magazine", "_count"];
-        for "_" from 1 to _count do {
-            // Exit if magazine can't be added
-            if !([_unit, _magazine] call CBA_fnc_addMagazine) exitWith {};
-        };
-    } forEach _magazineCounts;
-
+    [_unit, _magazineCounts select 0 select 0] call CBA_fnc_addMagazine;
     _unit addWeapon _weapon;
 } forEach [
     _primaryList,
-    _secondaryList,
-    _launcherList
+    _launcherList,
+    _handgunList
 ];
+
+if (is3DEN) then {
+    // CBA's frame functions don't work in Eden
+    _unit spawn {
+        sleep 0.1;
+        save3DENInventory [get3DENEntityID _this];
+    };
+};
 
 true;

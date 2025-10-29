@@ -81,6 +81,9 @@ class CfgFunctions {
             PATHTO_FNC(removeBinocularMagazine);
             PATHTO_FNC(randomizeFacewear);
             PATHTO_FNC(randomizeLoadout);
+            PATHTO_FNC(addRandomizedMagazines);
+            PATHTO_FNC(fixAnimation3DEN);
+            PATHTO_FNC(getRandomizedEquipment);
             PATHTO_FNC(canAddItem);
         };
 
