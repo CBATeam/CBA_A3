@@ -11,7 +11,7 @@ class CfgWeapons {
     };
 
     class CSLA_Sa58_Base: CSLA_baseWeapon {
-        magazineWell[] += {"CBA_762x39_AK"};
+        magazineWell[] += {"CBA_762x39_VZ58"};
     };
 
     class CSLA_MachinegunBase_7_62;
@@ -23,7 +23,7 @@ class CfgWeapons {
     class CSLA_PistolBase;
 
     class CSLA_Pi52: CSLA_PistolBase {
-        magazineWell[] += {"CBA_762x25_TT"};
+        magazineWell[] += {"CBA_762x25_CZ52"};
     };
 
     class CSLA_Pi75sr: CSLA_PistolBase {
@@ -88,6 +88,10 @@ class CfgWeapons {
 
     class US85_MAAWS: US85_Launcher_AT {
         magazineWell[] += {"CBA_Carl_Gustaf"};
+    };
+
+    class US85_SMAW: US85_Launcher_AT {
+        magazineWell[] += {"CBA_SMAW"};
     };
 
 };
