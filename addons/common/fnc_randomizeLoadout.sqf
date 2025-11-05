@@ -149,5 +149,4 @@ if (is3DEN) then {
     [_fnc_fixAnimation, _unit] call CBA_fnc_execNextFrame;
 };
 
-
 true;
