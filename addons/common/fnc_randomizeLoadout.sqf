@@ -130,4 +130,24 @@ if (is3DEN) then {
     };
 };
 
+// Immediately select weapon and set animation
+private _fnc_fixAnimation = {
+    private _weapons = [primaryWeapon _this, handgunWeapon _this, secondaryWeapon _this];
+    private _weaponIndex = _weapons findIf { _x != "" };
+    if (_weaponIndex != -1) then {
+        _this switchMove (["amovpercmstpsraswrfldnon", "amovpercmstpsraswpstdnon", "amovpercmstpsnonwnondnon"] select _weaponIndex);
+        _this selectWeapon (_weapons select _weaponIndex);
+    };
+};
+
+if (is3DEN) then {
+    [_unit, _fnc_fixAnimation] spawn {
+        sleep 0.1;
+        (_this select 0) call (_this select 1);
+    };
+} else {
+    [_fnc_fixAnimation, _unit] call CBA_fnc_execNextFrame;
+};
+
+
 true;
