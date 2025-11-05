@@ -122,14 +122,6 @@ if (_binocularList isNotEqualTo []) then {
     _handgunList
 ];
 
-if (is3DEN) then {
-    // CBA's frame functions don't work in Eden
-    _unit spawn {
-        sleep 0.1;
-        save3DENInventory [get3DENEntityID _this];
-    };
-};
-
 // Immediately select weapon and set animation
 private _fnc_fixAnimation = {
     private _weapons = [primaryWeapon _this, handgunWeapon _this, secondaryWeapon _this];
@@ -141,9 +133,12 @@ private _fnc_fixAnimation = {
 };
 
 if (is3DEN) then {
+    // CBA's frame functions don't work in Eden
     [_unit, _fnc_fixAnimation] spawn {
         sleep 0.1;
-        (_this select 0) call (_this select 1);
+        params ["_unit", "_function"];
+        save3DENInventory [get3DENEntityID _unit];
+        _unit call _function;
     };
 } else {
     [_fnc_fixAnimation, _unit] call CBA_fnc_execNextFrame;
