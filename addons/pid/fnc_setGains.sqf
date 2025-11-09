@@ -10,12 +10,15 @@ Parameters:
     _pGain      - the new proportional gain <NUMBER>
                   OR
                   `nil`, to keep the current gain <NIL>
+                  (Default: `nil`)
     _iGain      - the new integral gain <NUMBER>
                   OR
                   `nil`, to keep the current gain <NIL>
+                  (Default: `nil`)
     _dGain      - the new derivative gain <NUMBER>
                   OR
                   `nil`, to keep the current gain <NIL>
+                  (Default: `nil`)
 Returns:
     Nothing
 
