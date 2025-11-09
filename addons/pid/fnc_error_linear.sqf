@@ -15,6 +15,7 @@ Returns:
 Examples:
     (begin example)
         private _error = [2, 5] call CBA_pid_fnc_error_linear;
+        // _error == 3
     (end)
 
 Author:
