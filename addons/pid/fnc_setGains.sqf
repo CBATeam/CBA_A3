@@ -9,13 +9,13 @@ Parameters:
     _pid        - a pid controller <LOCATION>
     _pGain      - the new proportional gain <NUMBER>
                   OR
-                  `nil`, to keep the current gain <NONE>
+                  `nil`, to keep the current gain <NIL>
     _iGain      - the new integral gain <NUMBER>
                   OR
-                  `nil`, to keep the current gain <NONE>
+                  `nil`, to keep the current gain <NIL>
     _dGain      - the new derivative gain <NUMBER>
                   OR
-                  `nil`, to keep the current gain <NONE>
+                  `nil`, to keep the current gain <NIL>
 Returns:
     Nothing
 
