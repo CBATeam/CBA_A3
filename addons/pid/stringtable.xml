@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="CBA_A3">
-    <Package name="Statemachine">
-        <Key ID="STR_cba_statemachine_Component">
+    <Package name="PID">
+        <Key ID="STR_cba_pid_Component">
             <English>Community Base Addons - PID</English>
         </Key>
     </Package>
