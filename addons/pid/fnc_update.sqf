@@ -79,6 +79,6 @@ private _tn_prev = 0;
 
 private _delta = _error * _pGain + _integral * _iGain + _derivative * _dGain;
 
-(_pid getVariable [QGVAR(bounds), [-1e99, 1e99]]) params ["_min", "_max"];
+(_pid getVariable [QGVAR(bounds), [-1e38, 1e38]]) params ["_min", "_max"];
 
 _max min (_delta max _min)

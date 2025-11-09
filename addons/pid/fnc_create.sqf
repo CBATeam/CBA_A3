@@ -41,8 +41,8 @@ params [
     ["_dGain", 0, [0]],
     ["_setpoint", 0, [0]],
     ["_errorFunction", FUNC(error_linear), [{}]],
-    ["_min", -1e99, [0]],
-    ["_max",  1e99, [0]],
+    ["_min", -1e38, [0]],
+    ["_max",  1e38, [0]],
     ["_historyLength", 10, [0]]
 ];
 
