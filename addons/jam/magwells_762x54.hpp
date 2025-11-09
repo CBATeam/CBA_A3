@@ -1,3 +1,14 @@
+    class CBA_762x54R_1rnd {};       // 1 loose round of 7.62x54mmR
+    class CBA_762x54R_2rnds {};      // 2 loose rounds of 7.62x54mmR
+    class CBA_762x54R_3rnds {};      // 3 loose rounds of 7.62x54mmR
+    class CBA_762x54R_4rnds {};      // 4 loose rounds of 7.62x54mmR
+    class CBA_762x54R_5rnds {};      // 5 loose rounds of 7.62x54mmR
+    class CBA_762x54R_6rnds {};      // 6 loose rounds of 7.62x54mmR
+    class CBA_762x54R_7rnds {};      // 7 loose rounds of 7.62x54mmR
+    class CBA_762x54R_8rnds {};      // 8 loose rounds of 7.62x54mmR
+    class CBA_762x54R_9rnds {};      // 9 loose rounds of 7.62x54mmR
+    class CBA_762x54R_10rnds {};     // 10 loose rounds of 7.62x54mmR
+
     class CBA_762x54R_DPM {};           // DP-27, DP-28, DPM, Degtyaryov LMG
     class CBA_762x54R_DT {};            // DT, DTM LMG
 

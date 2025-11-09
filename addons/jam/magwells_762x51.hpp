@@ -3,6 +3,11 @@
     class CBA_762x51_3rnds {};      // 3 loose rounds of 7.62x51mm NATO
     class CBA_762x51_4rnds {};      // 4 loose rounds of 7.62x51mm NATO
     class CBA_762x51_5rnds {};      // 5 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_6rnds {};      // 6 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_7rnds {};      // 7 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_8rnds {};      // 8 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_9rnds {};      // 9 loose rounds of 7.62x51mm NATO
+    class CBA_762x51_10rnds {};     // 10 loose rounds of 7.62x51mm NATO
 
     class CBA_762x51_AICS {};       // AICS short action mag (5/10 rounds)
 
@@ -41,7 +46,7 @@
 
     class CBA_762x51_MG3 {};        // MG3 DM1 link belts
 
-    class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62 mm magazines
+    class CBA_762x51_MkI_EMR {      // Mk-I EMR 7.62mm magazines
         BI_mags[] = {
             "20Rnd_762x51_Mag"
         };
