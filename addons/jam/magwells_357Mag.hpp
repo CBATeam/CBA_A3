@@ -11,3 +11,5 @@
 
     class CBA_357_Clip_6rnds {};        // 6 round .357 Magnum moon clip
     class CBA_357_Clip_5rnds {};        // 5 round .357 Magnum moon clip
+
+    class CBA_357_DEagle {};            // Desert Eagle in .357 Magnum
