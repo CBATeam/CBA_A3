@@ -73,7 +73,7 @@ private _tn_prev = 0;
     private _stride = _tn - _tn_prev;
     _integral = _integral + (_error * _stride);
     _tn_prev = _tn;
-} forEach _errorHistory;
+} forEach _history;
 
 (_pid getVariable [QGVAR(gains), [0, 0, 0]]) params ["_pGain", "_iGain", "_dGain"];
 
