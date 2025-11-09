@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(reset);
 params [
-    ["_pid", locationNull, [locationNull]],
+    ["_pid", locationNull, [locationNull]]
 ];
 
 if (isNull _pid) exitWith {};

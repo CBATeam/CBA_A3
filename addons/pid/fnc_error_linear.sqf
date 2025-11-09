@@ -24,7 +24,7 @@ Author:
 SCRIPT(error_linear);
 params [
     ["_observed", 0, [0]],
-    ["_setpoint", 0, [0]],
+    ["_setpoint", 0, [0]]
 ];
 
 _setpoint - _observed

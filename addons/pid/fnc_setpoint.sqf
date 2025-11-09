@@ -23,7 +23,7 @@ Author:
 SCRIPT(setpoint);
 params [
     ["_pid", locationNull, [locationNull]],
-    ["_setpoint", 0, [0]],
+    ["_setpoint", 0, [0]]
 ];
 
 if (isNull _pid) exitWith {};

@@ -25,7 +25,7 @@ Author:
 SCRIPT(error_degree);
 params [
     ["_observed", 0, [0]],
-    ["_setpoint", 0, [0]],
+    ["_setpoint", 0, [0]]
 ];
 
 private _absoluteError =_setpoint - _observed;

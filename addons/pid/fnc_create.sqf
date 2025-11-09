@@ -43,7 +43,7 @@ params [
     ["_errorFunction", FUNC(error_linear), [{}]],
     ["_min", -1e99, [0]],
     ["_max",  1e99, [0]],
-    ["_historyLength", 10, [0]],
+    ["_historyLength", 10, [0]]
 ];
 
 private _pid = call CBA_fnc_createNamespace;
