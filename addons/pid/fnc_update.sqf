@@ -31,9 +31,9 @@ params [
 
 if (isNull _pid) exitWith {};
 
-private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getVariable [QGVAR(errorFunction), {0}]);
+private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getVariable [QGVAR(errorFunction), FUNC(error_linear)]);
 private _history = _pid getVariable [QGVAR(history), []];
-private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), 2];
+private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), DEFAULT_HISTORY_LENGTH];
 
 _history pushBack [_time, _value];
 if (count _history > _maxHistoryLength) then {
@@ -79,6 +79,6 @@ private _tn_prev = 0;
 
 private _delta = _error * _pGain + _integral * _iGain + _derivative * _dGain;
 
-(_pid getVariable [QGVAR(bounds), [-1e38, 1e38]]) params ["_min", "_max"];
+(_pid getVariable [QGVAR(bounds), [-LARGE_NUMBER, LARGE_NUMBER]]) params ["_min", "_max"];
 
 _max min (_delta max _min)

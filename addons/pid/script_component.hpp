@@ -13,3 +13,6 @@
 #endif
 
 #include "\x\cba\addons\main\script_macros.hpp"
+
+#define DEFAULT_HISTORY_LENGTH 10
+#define LARGE_NUMBER (1e38)
