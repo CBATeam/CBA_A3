@@ -28,7 +28,7 @@ params [
     ["_setpoint", 0, [0]]
 ];
 
-private _absoluteError =_setpoint - _observed;
+private _absoluteError = _setpoint - _observed;
 private _error = _absoluteError;
 if (_absoluteError < -180) then {
     _error = 360 + _absoluteError;
