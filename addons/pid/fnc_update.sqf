@@ -35,7 +35,17 @@ private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getV
 private _history = _pid getVariable [QGVAR(history), []];
 private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), DEFAULT_HISTORY_LENGTH];
 
-_history pushBack [_time, _value];
+if (_history isNotEqualTo []) then {
+    // We need a continuous function, so if two measurements are for the same measured time we ignore the new measurements
+    // This also gets rid of any potential divide-by-zero errors due to the stride being 0
+    (_history select -1) params ["_x"];
+    if (_x != _time) then {
+        _history pushBack [_time, _value];
+    };
+} else {
+    _history pushBack [_time, _value];
+};
+
 if (count _history > _maxHistoryLength) then {
     _history deleteAt 0;
 };
