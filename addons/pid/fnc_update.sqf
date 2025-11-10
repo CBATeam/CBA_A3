@@ -66,11 +66,13 @@ switch (true) do {
         private _xn0 = _history select -1;
         private _xn1 = _history select -2;
         private _xn2 = _history select -3;
-        private _stride = (_xn0 select 0) - (_xn1 select 0);
+        private _stride0 = (_xn0 select 0) - (_xn1 select 0);
+        private _stride1 = (_xn1 select 0) - (_xn2 select 0);
+        private _stride = _stride0 + _stride1;
         if (_stride == 0) then { break };
 
         private _sum = -3 * (_xn2 select 1) + 4 * (_xn1 select 1) - (_xn0 select 1);
-        _derivative = _sum / (2 * _stride);
+        _derivative = _sum / _stride;
     };
     default {};
 };
