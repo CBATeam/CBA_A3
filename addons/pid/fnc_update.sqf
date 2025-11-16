@@ -38,8 +38,9 @@ private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), DEFAULT_HIST
 if (_history isNotEqualTo []) then {
     // We need a continuous function, so if two measurements are for the same measured time we ignore the new measurements
     // This also gets rid of any potential divide-by-zero errors due to the stride being 0
+    // The inverse must also be monotonic, so we assume time is always increasing
     (_history select -1) params ["_x"];
-    if (_x != _time) then {
+    if (_time - _x > 0) then {
         _history pushBack [_time, _value];
     };
 } else {
