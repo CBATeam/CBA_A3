@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _unit     - Unit to check <OBJECT>
-    _magazine - Magazines to check <OBJECT>
+    _magazine - Magazines to check <STRING>
 
 Returns:
     Magazine IDs <ARRAY of STRINGS>

@@ -7,9 +7,10 @@ Description:
 
 Parameters:
     _key     - DIK code <NUMBER>
-    _shift   - Shift pressed? <BOOL>
-    _control - Control pressed? <BOOL>
-    _alt     - Alt pressed? <BOOL>
+    _modifier - Modifier keys <ARRAY, BOOL>
+        _shift   - Shift pressed? <BOOL>
+        _control - Control pressed? <BOOL>
+        _alt     - Alt pressed? <BOOL>
 
 Returns:
     _keyName - Translated key <STRING>

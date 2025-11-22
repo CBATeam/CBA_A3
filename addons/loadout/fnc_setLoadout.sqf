@@ -4,7 +4,7 @@ Function: CBA_fnc_setLoadout
 Description:
     Set a unit's extended loadout
 Parameters:
-    _unit - The unit to set the loadout on. <UNIT>
+    _unit - The unit to set the loadout on. <OBJECT>
     _loadout - The extended loadout to set. <ARRAY>
     _fullMagazines - Partially emptied magazines will be refilled when the loadout is applied. <BOOL>
 Returns:

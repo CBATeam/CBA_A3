@@ -45,9 +45,9 @@ Description:
 Parameters:
     _addon          - Name of the registering mod + optional sub-category <STRING, ARRAY>
     _action         - Id of the key action. <STRING>
-    _title          - Pretty name, or an array of pretty name and tooltip <STRING>
-    _downCode       - Code for down event, empty string for no code. <CODE>
-    _upCode         - Code for up event, empty string for no code. <CODE>
+    _title          - Pretty name, or an array of pretty name and tooltip <STRING or ARRAY>
+    _downCode       - Code for down event, empty string for no code. <CODE or STRING>
+    _upCode         - Code for up event, empty string for no code. <CODE or STRING>
 
 Optional:
     _defaultKeybind - The keybinding data in the format [DIK, [shift, ctrl, alt]] <ARRAY>
@@ -56,7 +56,7 @@ Optional:
     _overwrite      - Overwrite any previously stored default keybind <BOOLEAN>
 
 Returns:
-    Returns the current keybind for the action <ARRAY>
+    Returns the current keybind for the action <ARRAY> (or <NIL> on error)
 
 Examples:
     (begin example)

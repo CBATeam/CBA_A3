@@ -44,7 +44,7 @@ if (canSuspend) exitWith {
     [CBA_fnc_removeItemContextMenuOption, _this] call CBA_fnc_directCall;
 };
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith { false };
 
 if (isNil QGVAR(ItemContextMenuOptions) || _id == "") exitWith { false };
 

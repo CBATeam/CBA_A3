@@ -11,7 +11,7 @@ Parameters:
                       <CONFIG>
 
 Returns:
-    _stateMachine   - a state machine <LOCATION>
+    _stateMachine   - a state machine <LOCATION> (or <NIL> if config was invalid)
 
 Examples:
     (begin example)

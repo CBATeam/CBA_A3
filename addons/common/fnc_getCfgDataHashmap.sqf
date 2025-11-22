@@ -17,7 +17,7 @@ Parameters:
     _convert    - convert certain values - see above (optional, default: true) <BOOL>
 
 Returns:
-    properties <HASHMAP>
+    properties <HASHMAP> (or <NIL> if _cfg is invalid)
 
 Examples:
     (begin example)
