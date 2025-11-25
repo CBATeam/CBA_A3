@@ -48,12 +48,10 @@ Parameters:
     _title          - Pretty name, or an array of pretty name and tooltip <STRING or ARRAY>
     _downCode       - Code for down event, empty string for no code. <CODE or STRING>
     _upCode         - Code for up event, empty string for no code. <CODE or STRING>
-
-Optional:
-    _defaultKeybind - The keybinding data in the format [DIK, [shift, ctrl, alt]] <ARRAY>
-    _holdKey        - Will the key fire every frame while down <BOOLEAN>
-    _holdDelay      - How long after keydown will the key event fire, in seconds. <NUMBER>
-    _overwrite      - Overwrite any previously stored default keybind <BOOLEAN>
+    _defaultKeybind - The keybinding data in the format [DIK, [shift, ctrl, alt]] <ARRAY> (optional)
+    _holdKey        - Will the key fire every frame while down <BOOLEAN> (optional)
+    _holdDelay      - How long after keydown will the key event fire, in seconds. <NUMBER> (optional)
+    _overwrite      - Overwrite any previously stored default keybind <BOOLEAN> (optional)
 
 Returns:
     Returns the current keybind for the action <ARRAY> (or <NIL> on error)

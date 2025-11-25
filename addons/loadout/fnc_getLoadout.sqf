@@ -4,7 +4,7 @@ Function: CBA_fnc_getLoadout
 Description:
     Get a unit's extended loadout
 Parameters:
-    _unit - The unit to set the loadout on. <UNIT>
+    _unit - The unit to set the loadout on. <OBJECT>
 Returns:
     Extended Loadout <ARRAY>
 Examples:

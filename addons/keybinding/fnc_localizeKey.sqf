@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _key     - DIK code <NUMBER>
-    _modifier - Modifier keys <ARRAY, BOOL>
+    _modifier - Modifier keys <ARRAY, BOOL> (optional)
         _shift   - Shift pressed? <BOOL>
         _control - Control pressed? <BOOL>
         _alt     - Alt pressed? <BOOL>

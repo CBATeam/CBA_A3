@@ -6,7 +6,7 @@ Description:
 Parameters:
     _unit - The unit to set the loadout on. <OBJECT>
     _loadout - The extended loadout to set. <ARRAY>
-    _fullMagazines - Partially emptied magazines will be refilled when the loadout is applied. <BOOL>
+    _fullMagazines - Partially emptied magazines will be refilled when the loadout is applied. <BOOL> (Default: false)
 Returns:
     Nothing
 Examples:

@@ -8,7 +8,7 @@ Description:
 Parameters:
     _class - Item classname. <STRING>
     _name - New item name. <STRING>
-    _picture - New item picture. <STRING>
+    _picture - New item picture. <STRING> (default: "")
 
 Examples:
     (begin example)

@@ -9,7 +9,7 @@ Parameters:
     _command      - Chat command <STRING>
     _code         - Code to execute after command was entered. <CODE>
     _availableFor - "all", "admin" or "adminLogged" (optional, default: "admin") <STRING>
-    _thisArgs     - Arguments to pass to event chat handler code <ANY>
+    _thisArgs     - Arguments to pass to event chat handler code <ANY> (optional, default: [])
 
 Returns:
     _return - true: Success, false: Error <BOOLEAN>

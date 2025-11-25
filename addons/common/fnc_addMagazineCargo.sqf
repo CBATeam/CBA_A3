@@ -12,7 +12,7 @@ Parameters:
     _container - the vehicle <OBJECT>
     _item      - name of magazine to <STRING>
     _count     - number of magazines to add <NUMBER> (Default: 1)
-    _verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify    - if true, then put item on the ground if it can't be added <BOOLEAN> (Default: false)
     _ammo      - ammo count <NUMBER> (Default: 1E6)
 
 Returns:
