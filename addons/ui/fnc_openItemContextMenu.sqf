@@ -7,7 +7,9 @@ Description:
 
 Parameters:
     _display - RscDisplayInventory display <DISPLAY>
+    _container - Container <OBJECT>
     _item    - Item classname <STRING>
+    _slot    - Slot type <STRING>
 
 Returns:
     Nothing/Undefined.

@@ -11,7 +11,7 @@ Parameters:
     Default- what to return if nothing found
 
 Returns:
-    data entry for requested music class (or default if nothing found)
+    <ANY> data entry for requested music class (or default if nothing found)
 
 Example:
     (begin example)
