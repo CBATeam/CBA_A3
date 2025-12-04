@@ -61,7 +61,7 @@ switch (true) do {
         private _stride = (_x1 select 0) - (_x0 select 0);
         if (_stride == 0) then { break };
 
-        _derivative = ((_x0 select 1) - (_x1 select 1)) / _stride;
+        _derivative = ((_x1 select 1) - (_x0 select 1)) / _stride;
     };
     case (count _history >= 3): {
         private _xn0 = _history select -1;
