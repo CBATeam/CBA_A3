@@ -25,7 +25,7 @@ SCRIPT(setpoint);
 params [
     ["_pid", locationNull, [locationNull]],
     ["_setpoint", 0, [0]],
-    ["_reset", true, [true]],
+    ["_reset", true, [true]]
 ];
 
 if (isNull _pid) exitWith {};
