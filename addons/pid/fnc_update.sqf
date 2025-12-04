@@ -29,7 +29,7 @@ params [
     ["_time", CBA_missionTime, [0]]
 ];
 
-if (isNull _pid) exitWith {};
+if (isNull _pid) exitWith { 0 };
 
 private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getVariable [QGVAR(errorFunction), FUNC(error_linear)]);
 private _history = _pid getVariable [QGVAR(history), []];
