@@ -8,6 +8,7 @@ Description:
 Parameters:
     _pid        - a pid controller <LOCATION>
     _setpoint   - the new target setpoint for the controller <NUMBER>
+    _reset      - if we want to reset the PID for the new setpoint <BOOL> (Default: true)
 
 Returns:
     Nothing
@@ -23,10 +24,13 @@ Author:
 SCRIPT(setpoint);
 params [
     ["_pid", locationNull, [locationNull]],
-    ["_setpoint", 0, [0]]
+    ["_setpoint", 0, [0]],
+    ["_reset", true, [true]],
 ];
 
 if (isNull _pid) exitWith {};
 
 _pid setVariable [QGVAR(setpoint), _setpoint];
-_pid setVariable [QGVAR(history), []];
+if (_reset) then {
+    _pid setVariable [QGVAR(history), []];
+};
