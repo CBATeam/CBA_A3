@@ -79,16 +79,20 @@ switch (true) do {
 };
 
 private _integral = 0;
+private _error_prev = 0;
 private _tn_prev = 0;
 {
-    if (_forEachIndex == 0) then {
-        _tn_prev = (_x select 0);
-        continue
-    };
     _x params ["_tn", "_error"];
-    private _stride = _tn - _tn_prev;
-    _integral = _integral + (_error * _stride);
+    if (_forEachIndex > 0) then {
+        // Trapezoidal rule for numerical integration
+        // (1 / 2) * (b - a) * (f(a) + f(b))
+        // O(h^2) error
+        private _stride = _tn - _tn_prev;
+        private _sum = _error + _error_prev;
+        _integral = _integral + 0.5 * _stride * _sum;
+    };
     _tn_prev = _tn;
+    _error_prev = _error;
 } forEach _history;
 
 (_pid getVariable [QGVAR(gains), [0, 0, 0]]) params ["_pGain", "_iGain", "_dGain"];
