@@ -7,18 +7,15 @@ Description:
 
 Parameters:
     _pid        - a pid controller <LOCATION>
-    _pGain      - the new proportional gain <NUMBER>
+    _pGain      - the new proportional gain <NUMBER><NIL> (Default: `nil`)
                   OR
-                  `nil`, to keep the current gain <NIL>
-                  (Default: `nil`)
-    _iGain      - the new integral gain <NUMBER>
+                  `nil`, to keep the current gain
+    _iGain      - the new integral gain <NUMBER><NIL> (Default: `nil`)
                   OR
-                  `nil`, to keep the current gain <NIL>
-                  (Default: `nil`)
-    _dGain      - the new derivative gain <NUMBER>
+                  `nil`, to keep the current gain 
+    _dGain      - the new derivative gain <NUMBER><NIL> (Default: `nil`)
                   OR
-                  `nil`, to keep the current gain <NIL>
-                  (Default: `nil`)
+                  `nil`, to keep the current gain
 Returns:
     Nothing
 
