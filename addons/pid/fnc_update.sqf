@@ -81,7 +81,10 @@ switch (true) do {
 private _integral = 0;
 private _tn_prev = 0;
 {
-    if (_forEachIndex == 0) then { continue };
+    if (_forEachIndex == 0) then {
+        _tn_prev = (_x select 0);
+        continue
+    };
     _x params ["_tn", "_error"];
     private _stride = _tn - _tn_prev;
     _integral = _integral + (_error * _stride);
