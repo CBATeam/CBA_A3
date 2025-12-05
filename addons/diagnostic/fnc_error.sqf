@@ -14,7 +14,7 @@ Parameters:
     _title     - Title of the error <STRING>
     _message   - Error message (use "\n" for newline) <STRING>
     _file      - Name of file <STRING>
-    _lineNum   - Line of file <NUMEBR>
+    _lineNum   - Line of file <NUMBER>
 
 Returns:
     nil

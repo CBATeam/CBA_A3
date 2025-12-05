@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     - Type (Classname or Object) <STRING, OBJECT>
-    - Position <OBJECT, LOCATION, GROUP, TASK, MARKER, POSITION>
+    - Position <OBJECT, LOCATION, GROUP, TASK, MARKER, ARRAY>
 
 Optional:
     - Radius <NUMBER>
