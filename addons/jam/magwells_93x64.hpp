@@ -3,3 +3,5 @@ class CBA_93x64_LINKS {
         "150Rnd_93x64_Mag"
     };
 };
+
+class CBA_93x64_CZ550 {};        // CZ-550 in 9.3x64mm Brenneke
