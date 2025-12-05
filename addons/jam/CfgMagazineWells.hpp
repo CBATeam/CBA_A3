@@ -2,6 +2,7 @@ class CfgMagazineWells {
 
     // Rifle calibre magwells, ordered lexicographically in metric and imperial groups
     #include "magwells_11x59R.hpp"                  // 11x59mmR Gras | 11mm Vickers
+    #include "magwells_127x55.hpp"                  // 12.7x55mm | 12.7x55mm STs-130
     #include "magwells_127x108.hpp"                 // 12.7x108mm (Russian .50 Cal)
     #include "magwells_145x114.hpp"                 // 14.5x114mm
     #include "magwells_46x30.hpp"                   // 4.6x30mm
@@ -58,9 +59,11 @@ class CfgMagazineWells {
     #include "magwells_38Spec.hpp"                  // .38 Smith & Wesson Special | .38 Special | .38 Spl | .38 Spc | 9x29.5mmR | 9.1x29mmR
     #include "magwells_38_200.hpp"                  // .38/200 | 9x20mmR
     #include "magwells_40SW.hpp"                    // .40 S&W
+    #include "magwells_44Mag.hpp"                   // .44 Magnum | .44 Remington Magnum | 10.9x33mmR
     #include "magwells_455W.hpp"                    // .455 Webley | .455 Eley | .455 Colt
     #include "magwells_45ACP.hpp"                   // .45 ACP | .45 Automatic Colt Pistol | .45 Auto | 11.43x23mm
     #include "magwells_45GAP.hpp"                   // .45 GAP | .45 "GAP" | .45 Glock Auto Pistol
+    #include "magwells_50AE.hpp"                    // .50 AE | .50 Action Express | 12.7×33mmRB
 
     // Shotgun calibre magwells, ordered lexicographically
     #include "magwells_10gauge.hpp"                 // 10 Gauge

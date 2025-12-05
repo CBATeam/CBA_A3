@@ -45,7 +45,7 @@ class CfgMagazineWells {
         };
     };
 
-    class CBA_762x25_TT {
+    class CBA_762x25_CZ52 {
         CSLA_mags[] = {
             "CSLA_Pi52_8rnd_7_62Pi52",
             "CSLA_Pi52_8rnd_7_62PiCv52"

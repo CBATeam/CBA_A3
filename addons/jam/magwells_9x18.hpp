@@ -1,3 +1,14 @@
+    class CBA_9x18_1rnd {};       // 1 loose round of 9x18mm
+    class CBA_9x18_2rnds {};      // 2 loose rounds of 9x18mm
+    class CBA_9x18_3rnds {};      // 3 loose rounds of 9x18mm
+    class CBA_9x18_4rnds {};      // 4 loose rounds of 9x18mm
+    class CBA_9x18_5rnds {};      // 5 loose rounds of 9x18mm
+    class CBA_9x18_6rnds {};      // 6 loose rounds of 9x18mm
+    class CBA_9x18_7rnds {};      // 7 loose rounds of 9x18mm
+    class CBA_9x18_8rnds {};      // 8 loose rounds of 9x18mm
+    class CBA_9x18_9rnds {};      // 9 loose rounds of 9x18mm
+    class CBA_9x18_10rnds {};     // 10 loose rounds of 9x18mm
+
     class CBA_9x18_APS {};      // Stechkin automatic pistol (APS)
     class CBA_9x18_CZ82 {};     // CZ 82, CZ 83
     class CBA_9x18_Fort12 {};   // Fort-12
