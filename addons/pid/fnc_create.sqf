@@ -14,12 +14,12 @@ Parameters:
                       (Default: 0)
     _setpoint       - initial setpoint for the controller <NUMBER>
                       (Default: 0)
+    _min            - the minimum value the controller can return <NUMBER>
+                      (Default: -1e30)
+    _max            - the maximum value the controller can return <NUMBER>
+                      (Default: 1e30)
     _errorFunction  - the function which calculates the error which the controller operators <CODE>
                       (Default: <CBA_pid_fnc_error_linear>)
-    _min            - the minimum value the controller can return <NUMBER>
-                      (Default: -1e99)
-    _max            - the maximum value the controller can return <NUMBER>
-                      (Default: 1e99)
     _historyLength  - how many past errors are stored and used to calculate the derivative/integral <NUMBER>
                       (Default: 10)
 
@@ -40,9 +40,9 @@ params [
     ["_iGain", 0, [0]],
     ["_dGain", 0, [0]],
     ["_setpoint", 0, [0]],
-    ["_errorFunction", FUNC(error_linear), [{}]],
     ["_min", -LARGE_NUMBER, [0]],
     ["_max",  LARGE_NUMBER, [0]],
+    ["_errorFunction", FUNC(error_linear), [{}]],
     ["_historyLength", DEFAULT_HISTORY_LENGTH, [0]]
 ];
 
