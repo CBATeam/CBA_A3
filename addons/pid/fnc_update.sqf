@@ -58,7 +58,7 @@ switch (true) do {
         private _x1 = _history select 1;
 
         private _stride = (_x1 select 0) - (_x0 select 0);
-        if (_stride == 0) then { break };
+        if (_stride == 0) exitWith {};
 
         _derivative = ((_x1 select 1) - (_x0 select 1)) / _stride;
     };
@@ -69,7 +69,7 @@ switch (true) do {
         private _stride0 = (_xn0 select 0) - (_xn1 select 0);
         private _stride1 = (_xn1 select 0) - (_xn2 select 0);
         private _stride = _stride0 + _stride1;
-        if (_stride == 0) then { break };
+        if (_stride == 0) exitWith {};
 
         private _sum = -3 * (_xn2 select 1) + 4 * (_xn1 select 1) - (_xn0 select 1);
         _derivative = _sum / _stride;
