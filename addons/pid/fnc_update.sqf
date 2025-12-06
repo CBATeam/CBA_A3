@@ -30,7 +30,6 @@ params [
 ];
 
 if (isNull _pid) exitWith { 0 };
-
 private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getVariable [QGVAR(errorFunction), FUNC(error_linear)]);
 private _history = _pid getVariable [QGVAR(history), []];
 private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), DEFAULT_HISTORY_LENGTH];
@@ -41,10 +40,10 @@ if (_history isNotEqualTo []) then {
     // The inverse must also be monotonic, so we assume time is always increasing
     (_history select -1) params ["_x"];
     if (_time - _x > 0) then {
-        _history pushBack [_time, _value];
+        _history pushBack [_time, _error];
     };
 } else {
-    _history pushBack [_time, _value];
+    _history pushBack [_time, _error];
 };
 
 if (count _history > _maxHistoryLength) then {
