@@ -18,10 +18,10 @@ Parameters:
                       (Default: -1e30)
     _max            - the maximum value the controller can return <NUMBER>
                       (Default: 1e30)
-    _errorFunction  - the function which calculates the error which the controller operators <CODE>
-                      (Default: <CBA_pid_fnc_error_linear>)
     _historyLength  - how many past errors are stored and used to calculate the derivative/integral <NUMBER>
                       (Default: 10)
+    _errorFunction  - the function which calculates the error which the controller operators <CODE>
+                      (Default: <CBA_pid_fnc_error_linear>)
 
 Returns:
     _pid            - a PID controller <LOCATION>
