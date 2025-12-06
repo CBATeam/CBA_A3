@@ -28,7 +28,7 @@ Returns:
 
 Examples:
     (begin example)
-        private _pid = [1, 0.05, 0.2, 5, CBA_pid_fnc_error_linear, 0, 10, 15] call CBA_pid_fnc_create;
+        private _pid = [1, 0.05, 0.2, 5, 0, 10, 15, CBA_pid_fnc_error_linear] call CBA_pid_fnc_create;
     (end)
 
 Author:
