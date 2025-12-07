@@ -42,7 +42,7 @@ CBA_common_randomLoadoutUnits getOrDefaultCall [typeOf _unit, {
             _uniformList, _vestList, _backpackList,
             _headgearList, _facewearList, _binocularList,
             _nvgList
-        ] findIf { _x isEqualTo [] } >= -1
+        ] findIf { _x isEqualTo [] } > -1
     ) then {
         [
             true, _primaryList, _launcherList,
