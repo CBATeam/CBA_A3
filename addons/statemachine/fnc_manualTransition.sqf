@@ -10,10 +10,8 @@ Parameters:
     _stateMachine   - a state machine <LOCATION>
     _thisOrigin     - state the transition origins from <STRING>
     _thisTarget     - state the transition goes to <STRING>
-    _onTransition   - code that gets executed once transition happens <CODE>
-                      (Default: {})
-    _thisTransition - name for this specific transition <STRING>
-                      (Default: "MANUAL")
+    _onTransition   - code that gets executed once transition happens <CODE> (Default: {})
+    _thisTransition - name for this specific transition <STRING> (Default: "MANUAL")
 
 Returns:
     Nothing

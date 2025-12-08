@@ -6,7 +6,7 @@ Description:
     A function used to find out the distance between two positions.
 
 Parameters:
-    Array containing two of <MARKER, OBJECT, LOCATION, GROUP, TASK, POSITION>
+    Array containing two of <MARKER, OBJECT, LOCATION, GROUP, TASK, ARRAY>
 
 Example:
     (begin example)

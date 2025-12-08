@@ -12,7 +12,7 @@ Parameters:
     _cfg  - Entry to get value of <CONFIG>
 
 Returns:
-    Value found <STRING or NUMBER>
+    Value found <STRING or NUMBER or NIL>
 
 Examples:
     (begin example)

@@ -11,9 +11,9 @@ Description:
 Parameters:
     _unit   - the unit or vehicle <OBJECT>
     _item   - name of the magazine to add <STRING>
-    _ammo   - ammo count <NUMBER>
-    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN>
-    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>
+    _ammo   - ammo count <NUMBER> (Default: -1, which means full magazine)
+    _verify - if true, then put item in vehicle or on the ground if it can't be added <BOOLEAN> (Default: false)
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN> (Default: false)
 
 Returns:
     true on success, false otherwise <BOOLEAN>

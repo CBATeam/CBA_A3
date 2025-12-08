@@ -70,7 +70,7 @@ if (_key in GVAR(playerEventsHash)) exitWith { ERROR_1("bad key %1",_this); fals
 GVAR(playerEventsHash) set [_key, [_type, _code, _ignoreVirtual]];
 
 private _player = call CBA_fnc_currentUnit;
-if (_ignoreVirtual && {(unitIsUAV _player) || {getNumber (configOf _player >> "isPlayableLogic") == 1}}) exitWith {};
+if (_ignoreVirtual && {(unitIsUAV _player) || {getNumber (configOf _player >> "isPlayableLogic") == 1}}) exitWith { false };
 
 // Add event now
 private _newEH = _player addEventHandler [_type, _code];

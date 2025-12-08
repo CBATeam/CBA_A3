@@ -6,14 +6,14 @@ Description:
     Handles firing a disposable weapon.
 
 Parameters:
-    _unit       - Unit that fired the disposable weapon <OBEJCT>
+    _unit       - Unit that fired the disposable weapon <OBJECT>
     _launcher   - Disposable weapon <STRING>
     _muzzle     - Muzzle fired by the disposable weapon <STRING>
     _mode       - Current weapon mode of the disposable weapon <STRING>
     _ammo       - Ammo fired by the disposable weapon <STRING>
     _magazine   - Current magazine of the disposable weapon <STRING>
-    _projectile - Fired projectile <OBEJCT>
-    _unit       - Always same as element 0 <OBEJCT>
+    _projectile - Fired projectile <OBJECT>
+    _unit       - Always same as element 0 <OBJECT>
 
 Returns:
     Nothing.

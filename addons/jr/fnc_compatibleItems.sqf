@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _weapon     - A weapons class name <STRING>
-    _typefilter - Optional filter. Can be "muzzle", "optic", "pointer" or "bipod". <STRING, NUMBER>
+    _typefilter - Optional filter. Can be "muzzle", "optic", "pointer" or "bipod". <STRING, NUMBER> (default: "")
 
 Returns:
     Class names of attachments compatible with weapon <ARRAY>

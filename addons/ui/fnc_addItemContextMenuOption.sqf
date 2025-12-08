@@ -114,7 +114,7 @@ Parameters:
                               (optional, default: "") <STRING>
 
 Returns:
-    ID <STRING>.
+    ID <STRING> (or <NIL> on error)
 
 Examples:
     (begin example)
@@ -166,7 +166,7 @@ params [
     ["_id", "", [""]]
 ];
 
-if (_item isEqualTo "") exitWith {};
+if (_item isEqualTo "") exitWith { ERROR_1("no item specified [%1]",_item); nil };
 
 if (_slots isEqualType "") then {
     _slots = [_slots];

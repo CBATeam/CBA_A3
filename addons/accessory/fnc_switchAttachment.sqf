@@ -23,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_itemType", "_switchTo"];
-if (!isNull curatorCamera) exitWith {};
+if (!isNull curatorCamera) exitWith {false};
 
 private ["_currItem", "_switchItem"];
 private _unit = call CBA_fnc_currentUnit;

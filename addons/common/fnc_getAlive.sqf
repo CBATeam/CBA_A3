@@ -6,7 +6,7 @@ Description:
     A function used to find out who is alive in an array or a group.
 
 Parameters:
-    _entities - Array or Group <GROUP, ARRAY>
+    _entities - Array or Group <GROUP, ARRAY, OBJECT>
 
 Example:
     (begin example)
@@ -14,7 +14,7 @@ Example:
     (end)
 
 Returns:
-    <ARRAY>
+    <ARRAY> (or <BOOL> if a single object is passed)
 
 Author:
     Rommel
