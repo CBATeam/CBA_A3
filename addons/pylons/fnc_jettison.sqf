@@ -48,7 +48,7 @@ params ["_vehicle", ["_mode", 0]];
         if (_model != "") then { // exitWith doesn't work inside getOrDefaultCall
             private _magObj = createSimpleObject [_model, [0, 0, 0], false];
 
-            _selection = selectionNames _magObj select {"proxy" in _x} param [0, ""];
+            private _selection = selectionNames _magObj select {"proxy" in _x} param [0, ""];
             if ("proxy" in _selection) then {
                 _offset = _magObj selectionPosition _selection;
             };
