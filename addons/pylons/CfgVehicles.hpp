@@ -1,6 +1,4 @@
 #include "hardpoints.hpp"
-class DefaultVehicleSystemsDisplayManagerLeft;
-class DefaultVehicleSystemsDisplayManagerRight;
 
 class CfgVehicles {
     class LandVehicle;
