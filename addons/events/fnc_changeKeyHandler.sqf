@@ -9,7 +9,7 @@ Parameters:
     _hashKey  - Key handler identifier. <STRING>
     _key      - New key (DIK-Code). <NUMBER>
     _settings - New Settings. Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>
-    _type     - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
+    _type     - "keydown" or "keyup". (optional) (default: "keydown") <STRING>
 
 Returns:
     None

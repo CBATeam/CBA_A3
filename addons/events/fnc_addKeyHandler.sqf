@@ -9,10 +9,10 @@ Parameters:
     _key       - Key (DIK-Code) to attach action to. <NUMBER>
     _settings  - Shift, Ctrl, Alt required. (default: [false, false, false]) <ARRAY>
     _code      - Code to execute upon event. <CODE>
-    _type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
-    _hashKey   - Key handler identifier. Randomly generated if not supplied. [optional] <STRING>
-    _allowHold - Will the key fire every frame while hold down? [optional] (default: true) <BOOLEAN>
-    _holdDelay - How long after keydown will the key event fire, in seconds. [optional] <NUMBER>
+    _type      - "keydown" or "keyup". (optional) (default: "keydown") <STRING>
+    _hashKey   - Key handler identifier. Randomly generated if not supplied. (optional) <STRING>
+    _allowHold - Will the key fire every frame while hold down? (optional) (default: true) <BOOLEAN>
+    _holdDelay - How long after keydown will the key event fire, in seconds. (optional) <NUMBER>
 
 Returns:
     _hashKey - Key handler identifier. Used to remove or change the key handler. <STRING>

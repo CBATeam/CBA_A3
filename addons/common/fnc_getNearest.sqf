@@ -10,8 +10,8 @@ Description:
 Parameters:
     _position - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
     _array    - <ARRAY> of <MARKER, OBJECT, LOCATION, GROUP, TASK and/or POSITION>
-    _radius   - Maximum distance from _position <NUMBER>
-    _code     - Condition to meet, object is stored in _x variable <CODE>
+    _radius   - Maximum distance from _position <NUMBER> (default: infinity)
+    _code     - Condition to meet, object is stored in _x variable <CODE> (default: no condition)
 
 Example:
     (begin example)

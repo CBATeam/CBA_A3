@@ -7,8 +7,7 @@ Description:
 
 Parameters:
     _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
-    _exportDefault - true: export all settings,
-                    false: only changed settings (optional, default: false) <BOOL>
+    _exportDefault - true: export all settings, false: only changed settings (optional, default: false) <BOOL>
 
 Returns:
     Formatted setting info. <STRING>

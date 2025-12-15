@@ -11,10 +11,10 @@ Description:
 Parameters:
     _prefix    - Addon name (optional, defaut: "cba") <STRING>
     _component - Component name (optional, default: "diagnostic") <STRING>
-    _title     - Title of the error <STRING>
-    _message   - Error message (use "\n" for newline) <STRING>
-    _file      - Name of file <STRING>
-    _lineNum   - Line of file <NUMBER>
+    _title     - Title of the error (optional) <STRING>
+    _message   - Error message (use "\n" for newline) (optional) <STRING>
+    _file      - Name of file (optional) <STRING>
+    _lineNum   - Line of file (optional) <NUMBER>
 
 Returns:
     nil
