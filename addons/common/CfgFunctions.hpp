@@ -152,6 +152,7 @@ class CfgFunctions {
             PATHTO_FNC(cssColorToDecimal);
             PATHTO_FNC(cssColorToHEX);
             PATHTO_FNC(cssColorToTexture);
+            PATHTO_FNC(attachToBone);
         };
 
         class Broken {
