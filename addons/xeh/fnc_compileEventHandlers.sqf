@@ -36,7 +36,7 @@ if (_allowRecompile) then {
     };
 };
 
-// note: format is never used for config parsing here, because of it's 8192 character limitation.
+// note: format is never used for config parsing here, because of its 8192 character limitation.
 
 {
     private _eventName = _x;
