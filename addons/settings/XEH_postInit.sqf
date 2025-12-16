@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-// --- refresh all settings after postInit to guarantee that events are added and settings are recieved from server
+// --- refresh all settings after postInit to guarantee that events are added and settings are received from server
 {
     if (isNull GVAR(server)) then {
         ERROR("No server settings after postInit phase.");

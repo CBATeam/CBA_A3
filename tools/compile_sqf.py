@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-# Handle script being called from either base or /tools folder (e.g. hemmt will run from base)
+# Handle script being called from either base or /tools folder (e.g. hemtt will run from base)
 addon_base_path = os.getcwd()
 if os.path.basename(addon_base_path) == "tools":
     addon_base_path = os.path.dirname(addon_base_path)

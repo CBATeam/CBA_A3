@@ -21,7 +21,7 @@ disableSerialization;
 // TODO: _minObjectInteractionDistance: Find a very fast way to determine vehicle size and orientation to calc suitable dist.
 
 // Desc: Determine which menu resource to display. Create and init the menu using menu def's param.
-// Pass optional paramters (if used) to determine which menu to use and/or alter it's properties.
+// Pass optional parameters (if used) to determine which menu to use and/or alter it's properties.
 
 // Note: Side effect of merging menus is that only the header of the first menu is retained.
 // TODO: Losing secondary headers will lose things like iconFolder. Perhaps auto merge into menuOptions in advance.
@@ -43,7 +43,7 @@ disableSerialization;
 // Syntax 3: [_source, _params]
 //   _this select 0 = menu definition source string
 //   _this select 1 = optional menu script parameters (type: any, syntax: any). Eg: ['menu name', 'menu resource name']
-//   Eg 3: array: [menu definition source string, paramters]. Eg: ["mission\ammoCrate_menuDef.sqf", ["main", _menuRsc]]
+//   Eg 3: array: [menu definition source string, parameters]. Eg: ["mission\ammoCrate_menuDef.sqf", ["main", _menuRsc]]
 //-----------------------------------------------------------------------------
 /* submenu is either:
     a menuDef array variable, - typeName "array"
@@ -71,7 +71,7 @@ disableSerialization;
 Note: visible allows value -1 (instead of 0) to make the current button be re-used for the next menu item, rather than hidden and left as a gap. It is dependent on the design of the menu dialog used.
 */
 
-// For each menu option, only the caption and action are required paramters. The other parameters are optional.
+// For each menu option, only the caption and action are required parameters. The other parameters are optional.
 /*
 [
     ["Menu Name": type Any, "Menu Caption": string, "menu dialog class or suffix id": string, "\ca\ui\data\": string, "menuStayOpenUponSelect": boolean],

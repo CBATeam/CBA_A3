@@ -65,7 +65,7 @@ if (_global) then {
     [QGVAR(debug), [_message, _title, [_useChat, _useLog, false]]] call CBA_fnc_remoteEvent;
 };
 
-// if string, split into seperate lines marked by "\n"
+// if string, split into separate lines marked by "\n"
 if (_message isEqualType "") then {
     _message = [_message, "\n"] call CBA_fnc_split;
 };
