@@ -27,12 +27,12 @@ jobs:
       env:
         ARMA3_DATA_URL: ${{ secrets.ARMA3_DATA_URL }}
     - name: Checkout CBA A3
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         path: x\cba
         persist-credentials: false
     - name: Checkout pull request
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       if: ${{ github.event_name == 'pull_request_target' }}
       with:
         path: pullrequest
@@ -44,6 +44,10 @@ jobs:
         rm -r x\cba\optionals\
         xcopy /e /h /q pullrequest\addons x\cba\addons\
         xcopy /e /h /q pullrequest\optionals x\cba\optionals\
+    - name: Add dummy p3d
+      run: |
+        mkdir "P:\a3\weapons_f\dynamicloadout"
+        type nul > "P:\a3\weapons_f\dynamicloadout\pylonpod_3x_missile_agm_02_f.p3d"
     - name: Setup build environment
       run: |
         subst P: .
@@ -53,13 +57,13 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
     - name: Archive logs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       if: ${{ always() }}
       with:
         name: logs
         path: temp/*.log
     - name: Archive @cba_a3
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: '@cba_a3-${{ github.sha }}'
         path: x\cba\release\@cba_a3
