@@ -48,10 +48,6 @@ jobs:
       run: |
         subst P: .
         pboproject -P
-    - name: Add dummy p3d
-      run: |
-        mkdir "P:\a3\weapons_f\dynamicloadout"
-        type nul > "P:\a3\weapons_f\dynamicloadout\pylonpod_3x_missile_agm_02_f.p3d"
     - name: Build
       run: py P:\x\cba\tools\make.py ci
       env:
