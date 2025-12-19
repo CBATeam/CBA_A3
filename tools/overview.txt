@@ -6,7 +6,7 @@ The CBA functions library comprises a number of categories of functions such
 as arrays, hashes, strings and vectors. There are also functions for managing
 UI elements, custom events and key binds.
 
-As a support for the function libray, CBA also provides a number of preprocessor
+As a support for the function library, CBA also provides a number of preprocessor
 macros to aid in development.
 
 Features:

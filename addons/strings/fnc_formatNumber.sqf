@@ -10,7 +10,7 @@ Description:
     the number 1.234e9 would be given as "1234000000").
 
     Additionally, if required, it will separate the integer part of the number
-    with the appropriate thousands seperators as, for example,
+    with the appropriate thousands separators as, for example,
     "21,002" or "1,000,000".
 
 Limitations:

@@ -5,7 +5,7 @@ if (isDedicated) exitWith {false};
 // list of all menu activation keys and associated types
 GVAR(typeMenuSources) = []; // types, keys and menu sources data
 GVAR(target) = objNull; // current object for interaction
-GVAR(holdKeyDown) = false; // default global behaviour of requiring holding key down. Can be overriden by menus.
+GVAR(holdKeyDown) = false; // default global behaviour of requiring holding key down. Can be overridden by menus.
 GVAR(hotKeyColor) = ""; // override colour of hotkey. It is set from rsc menu file, upon opening either the "menu" or "list". If not present, a default will be used.
 
 // prevent instant reactivation of menu after selection was made, while key still held down. Value is reset upon key release.

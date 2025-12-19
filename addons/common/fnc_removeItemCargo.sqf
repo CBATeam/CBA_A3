@@ -6,7 +6,7 @@ Description:
     Removes specific item(s) from cargo space.
 
     Warning: All weapon attachments/magazines in containers in container will become detached.
-    Warning: Preset weapons without non-preset parents will get their attachments readded (engine limitation).
+    Warning: Preset weapons without non-preset parents will get their attachments re-added (engine limitation).
 
 Parameters:
     _container    - Object with cargo <OBJECT>
@@ -82,7 +82,7 @@ private _containerData = [];
     };
 } forEach _allItemsType;
 
-// Clear cargo space and readd the items as long it's not the type in question
+// Clear cargo space and re-add the items as long as it's not the type in question
 clearItemCargoGlobal _container;
 
 TRACE_1("Old cargo",_containerData);
@@ -135,7 +135,7 @@ private _fnc_addContents = {
             // Non-container item
             // Add with new count
             _container addItemCargoGlobal [_itemClass, _itemCargoOrCount - _count]; // Silently fails on 'count < 1'
-            TRACE_2("Readding",_itemClass,_itemCargoOrCount - _count);
+            TRACE_2("Re-adding",_itemClass,_itemCargoOrCount - _count);
 
             _count = 0;
         } else {
@@ -147,17 +147,17 @@ private _fnc_addContents = {
             };
         };
     } else {
-        // Readd only
+        // Re-add only
         if (count _x < 4) then {
             // Non-container item
             _container addItemCargoGlobal [_itemClass, _itemCargoOrCount];
-            TRACE_2("Readding",_itemClass,_itemCargoOrCount);
+            TRACE_2("Re-adding",_itemClass,_itemCargoOrCount);
         } else {
             // Container item
-            // Save all containers for finding the one we readd after this
+            // Save all containers for finding the one we re-add after this
             private _addedContainers = ((everyContainer _container) apply {_x select 1}) - everyBackpack _container;
 
-            // Readd
+            // Re-add
             private _addedContainer = [_itemClass] call CBA_fnc_getNonPresetClass;
             _container addItemCargoGlobal [_addedContainer, 1];
 
