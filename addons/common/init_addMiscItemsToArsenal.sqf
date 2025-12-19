@@ -73,7 +73,7 @@ Author:
                     _ctrlList lbSetTooltip [_lbAdd * _columns,format ["%1\n%2",getText (_xCfg >> "displayName"),_x]];
                 };
 
-                // Add item to main list (will be used on next arsenalOpened automaticly)
+                // Add item to main list (will be used on next arsenalOpened automatically)
                 (bis_fnc_arsenal_data select IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC) pushBack _x;
             } forEach _cbaMiscItems;
 

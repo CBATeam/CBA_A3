@@ -6,7 +6,7 @@ Description:
     Removes specific weapon(s) from cargo space.
 
     Warning: All weapon attachments/magazines in container will become detached.
-    Warning: Preset weapons without non-preset parents will get their attachments readded (engine limitation).
+    Warning: Preset weapons without non-preset parents will get their attachments re-added (engine limitation).
 
 Parameters:
     _container       - Object with cargo <OBJECT>
@@ -64,7 +64,7 @@ _count = round _count;
 // Returns array in weaponsItems format
 private _weaponsItemsCargo = weaponsItemsCargo _container;
 
-// Clear cargo space and readd the items as long it's not the type in question
+// Clear cargo space and re-add the items as long as it's not the type in question
 clearWeaponCargoGlobal _container;
 
 {

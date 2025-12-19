@@ -18,7 +18,7 @@ params ["_display"];
 private _buttons = [];
 _display setVariable [QGVAR(MenuButtons), _buttons];
 
-// inital button placement
+// initial button placement
 private _offset = -1.1 * (count GVAR(MenuButtons) + 4);
 if (!isMultiplayer && {getNumber (missionConfigFile >> "replaceAbortButton") > 0}) then {
     _offset = _offset - 1.1;
