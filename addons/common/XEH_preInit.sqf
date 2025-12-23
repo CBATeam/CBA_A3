@@ -74,8 +74,26 @@ activateAddons GVAR(addons);
     }];
 }] call CBA_fnc_addClassEventHandler;
 
-// Facewear randomization
-["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
+// Loadout randomization
+GVAR(randomLoadoutUnits) = createHashMap;
+if (is3DEN) then {
+    add3DENEventHandler ["OnEditableEntityAdded", {
+        params ["_entity"];
+        if !(_entity isEqualType objNull) exitWith {};
+
+        {
+            _x call CBA_fnc_setIdentity3DEN;
+            _x call CBA_fnc_randomizeLoadout;
+        } forEach (crew _entity); // Returns [_unit] when running on a unit
+    }];
+
+    add3DENEventHandler ["OnPaste", {
+        {
+            _x call CBA_fnc_setIdentity3DEN;
+            _x call CBA_fnc_randomizeLoadout;
+        } forEach flatten (get3DENSelected "object" apply { crew _x });
+    }];
+};
 
 // Load preStart css color array
 GVAR(cssColorNames) = uiNamespace getVariable QGVAR(cssColorNames);
