@@ -6,7 +6,7 @@ Description:
     Display a text message. Multiple incoming messages are queued.
 
 Parameters:
-    _content   - Notifications content (lines). <ARRAY>
+    _content   - Notifications content (lines). <ARRAY><STRING><NUMBER>
         _line1 - First content line. <ARRAY>
         _line2 - Second content line. <ARRAY>
         ...

@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _hashKey - Key handler identifier. <STRING>
-    _type    - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
+    _type    - "keydown" or "keyup". (optional) (default: "keydown") <STRING>
 
 Returns:
     None

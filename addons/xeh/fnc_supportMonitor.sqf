@@ -6,10 +6,10 @@ Description:
     Iterate through all vehicle classes and find those who don't support extended event handlers.
 
 Parameters:
-    0: _addAddonToOutput  - false: simple list of classnames - true: include addon in output [optional] <BOOLEAN> (default: false)
-    1: _includeDuplicates - Include classes that inherit class EventHandlers? [optional] <BOOLEAN> (default: false)
-    2: _includeDisabled   - Include classes that have XEH explicitly disabled? [optional] <BOOLEAN> (default: false)
-    3: _classFilter       - Only include children of this class. "" to disable filter [optional] <STRING> (default: "")
+    0: _addAddonToOutput  - false: simple list of classnames - true: include addon in output (optional) <BOOLEAN> (default: false)
+    1: _includeDuplicates - Include classes that inherit class EventHandlers? (optional) <BOOLEAN> (default: false)
+    2: _includeDisabled   - Include classes that have XEH explicitly disabled? (optional) <BOOLEAN> (default: false)
+    3: _classFilter       - Only include children of this class. "" to disable filter (optional) <STRING> (default: "")
 
 Returns:
     List of addons not supporting XEH <ARRAY>
