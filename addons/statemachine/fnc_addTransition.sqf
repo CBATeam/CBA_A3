@@ -38,7 +38,8 @@ params [
     ["_targetState", "", [""]],
     ["_condition", {}, [{}]],
     ["_onTransition", {}, [{}]],
-    ["_name", "NONAME", [""]]
+    ["_name", "NONAME", [""]],
+    ["_conditionFrequency", 0, [0]]
 ];
 
 private _states = _stateMachine getVariable QGVAR(states);
@@ -48,6 +49,26 @@ if (isNull _stateMachine
     || {!(_targetState in _states)}
     || {_condition isEqualTo {}}
 ) exitWith {false};
+
+if (_conditionFrequency > 0) then {
+    _condition = compile format [QUOTE(\
+        private _return = false;\
+        if ((_current getVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), '')]) isEqualTo _thisState) then {\
+            private _lastCheckedTime = _current getVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+            if (CBA_MissionTime >= (_lastCheckedTime + %2)) then {\
+                _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+                _return = true;\
+            } else {\
+                _return = false;\
+            };\
+        } else {\
+            _current setVariable [ARR_2((QQGVAR(lastCheckedState) + str _id), _thisState)];\
+            _current setVariable [ARR_2((QQGVAR(lastCheckedTime) + str _id), CBA_MissionTime)];\
+            _return = false;\
+        };\
+        _return && %1\
+    ), _condition, _conditionFrequency];
+};
 
 private _transitions = _stateMachine getVariable TRANSITIONS(_originalState);
 _transitions pushBack [_name, _condition, _targetState, _onTransition];
