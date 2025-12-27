@@ -91,7 +91,7 @@ private _tokenize = {
     private _symbols = "{}[]:," splitString "";
     private _consts  = "tfn" splitString "";
 
-    while {count _input > 0} do {
+    while {_input isNotEqualTo []} do {
         private _c = _input deleteAt 0;
 
         switch (true) do {

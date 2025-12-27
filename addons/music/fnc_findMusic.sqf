@@ -51,8 +51,8 @@ private _results = [];
         private _type = getText (_config >> 'type');
         if (_type isEqualTo "") then {_type = DEFAULT_SONG_TYPE;};
 
-        if (count _searchType == 0 || {(toLower _type) in _searchType}) then {
-            if (count _searchTags > 0) then {
+        if (_searchType isEqualTo [] || {(toLower _type) in _searchType}) then {
+            if (_searchTags isNotEqualTo []) then {
                 private _tags = getArray (_config >> 'tags');
                 if (_tags isEqualTo []) then {_tags = DEFAULT_SONG_TAGS;};
 
@@ -63,7 +63,7 @@ private _results = [];
 
                 for [{private _i=0}, {_i < (count _tags)}, {_i = _i + 1}] do {
                     private _tag = toLower (_tags select _i);
-                    if (count _searchTags == 0 || {_tag in _searchTags}) then {
+                    if (_searchTags isEqualTo [] || {_tag in _searchTags}) then {
                         _i = count _tags;
                         _results pushBackUnique _track;
                     };
