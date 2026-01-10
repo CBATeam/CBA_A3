@@ -31,14 +31,14 @@ Author:
 SCRIPT(randPosArea);
 
 params [
-    ["_zRef", [], ["",objNull,locationNull,[]], 5],
+    ["_zRef", [], ["",objNull,locationNull,[]], [3,4,5,6,7]],
     ["_perimeter", false, [true]]
 ];
 private _area = [_zRef] call CBA_fnc_getArea;
 
 if (_area isEqualTo []) exitWith {[]};
 
-_area params ["_center","_a","_b","_angle","_isRect"];
+_area params ["_center","_a","_b",["_angle", 0],["_isRect", false]]; // since 2.20 last 2 args are optional
 
 private _posVector = [0,0,0];
 if (_isRect) then {

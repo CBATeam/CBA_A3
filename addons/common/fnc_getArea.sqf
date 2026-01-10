@@ -27,7 +27,7 @@ Author:
     SilentSpike
 ---------------------------------------------------------------------------- */
 
-params [ ["_zRef", [], ["",objNull,locationNull,[]], 5] ];
+params [ ["_zRef", [], ["",objNull,locationNull,[]], [3,4,5,6,7]] ];
 
 private _area = [];
 if (_zRef isEqualType "") then {
@@ -54,8 +54,8 @@ if (_zRef isEqualType "") then {
             _area pushBack (rectangular _zRef);
         } else {
             // Validate that area is of correct form
-            if (_zRef isEqualTypeArray [[],0,0,0,true]) then {
-                _area = _zRef;
+            if ((_zRef select [0, 3]) isEqualTypeArray [[],0,0]) then {
+                _area = (_zRef select [0, 3]) + [_zRef param [3, 0], _zRef param [4, false]];
             };
         };
     };
