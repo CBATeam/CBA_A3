@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_common", "cba_settings", "cba_events"};
+        requiredAddons[] = {"cba_common", "cba_events"};
         author = "$STR_CBA_Author";
         authors[] = {"commy2"};
         url = "$STR_CBA_URL";
