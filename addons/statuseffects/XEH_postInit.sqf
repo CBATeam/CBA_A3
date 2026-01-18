@@ -10,7 +10,7 @@
 ["setHidden", true, ["ace_unconscious"]] call CBA_fnc_addStatusEffectType;
 ["blockRadio", false, ["ace_captives_handcuffed", "ace_captives_surrendered", "ace_unconscious"]] call CBA_fnc_addStatusEffectType;
 ["blockSpeaking", false, ["ace_unconscious"]] call CBA_fnc_addStatusEffectType;
-["disableWeaponAssembly", false, ["ace_common", "ace_common_lockVehicle", "ace_csw"]] call CBA_fnc_addStatusEffectType;
+["disableWeaponAssembly", false, ["CBA_lockVehicle", "ace_common", "ace_csw"]] call CBA_fnc_addStatusEffectType;
 ["lockInventory", true, [], true] call CBA_fnc_addStatusEffectType;
 ["disableCollision", true, [], true] call CBA_fnc_addStatusEffectType;
 
@@ -121,14 +121,14 @@
     _this setVariable ["CBA_lockStatus", locked _this];
     _this lock 2;
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
-        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", true] call CBA_fnc_setStatusEffect;
+        [_this, "disableWeaponAssembly", "CBA_lockVehicle", true] call CBA_fnc_setStatusEffect;
     };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(unlockVehicle), {
     _this lock (_this getVariable ["CBA_lockStatus", locked _this]);
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
-        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", false] call CBA_fnc_setStatusEffect;
+        [_this, "disableWeaponAssembly", "CBA_lockVehicle", false] call CBA_fnc_setStatusEffect;
     };
 }] call CBA_fnc_addEventHandler;
 
