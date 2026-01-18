@@ -30,9 +30,9 @@ params [
 ];
 
 // Only run this after the settings are initialized
-if !(GVAR(settingsInitFinished)) exitWith { // TODO: Switch to CBA equivalent, was ace_common_...
+if !(missionNamespace getVariable [QGVAR(ready), false]) exitWith {
     TRACE_1("pushing to runAtSettingsInitialized",_this);
-    GVAR(runAtSettingsInitialized) pushBack [CBA_fnc_setStatusEffect, _this];
+    EGVAR(settings,runAtSettingsInitialized) pushBack [CBA_fnc_setStatusEffect, _this];
 };
 
 if (isNull _object) exitWith {TRACE_1("null",_object);};

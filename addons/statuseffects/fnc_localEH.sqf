@@ -24,9 +24,9 @@ params ["_object", "_isLocal"];
 
 // Only run this after the settings are initialized
 // Need to wait for all EH to be installed (local event will happen between pre and post init)
-if !(GVAR(settingsInitFinished)) exitWith { // TODO: Switch to CBA equivalent, was ace_common_...
+if !(missionNamespace getVariable [QGVAR(ready), false]) exitWith {
     TRACE_1("pushing to runAtSettingsInitialized",_this);
-    GVAR(runAtSettingsInitialized) pushBack [FUNC(localEH), _this];
+    EGVAR(settings,runAtSettingsInitialized) pushBack [FUNC(localEH), _this];
 };
 
 if (!_isLocal) exitWith { TRACE_1("object no longer local",_this) };

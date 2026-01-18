@@ -118,4 +118,11 @@ private _ctrlAddonOptions = (uiNamespace getVariable "RscDisplayMain") displayCt
 _ctrlAddonOptions ctrlEnable true;
 _ctrlAddonOptions ctrlSetTooltip LLSTRING(menu_button_tooltip);
 
+GVAR(runAtSettingsInitialized) = [];
+["CBA_settingsInitialized", {
+    {
+        (_this select 1) call (_this select 0);
+    } forEach GVAR(runAtSettingsInitialized);
+}] call CBA_fnc_addEventHandler;
+
 ADDON = true;
