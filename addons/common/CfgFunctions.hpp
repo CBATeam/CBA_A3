@@ -153,6 +153,8 @@ class CfgFunctions {
             PATHTO_FNC(cssColorToHEX);
             PATHTO_FNC(cssColorToTexture);
             PATHTO_FNC(attachToBone);
+            PATHTO_FNC(binarizeNumber);
+            PATHTO_FNC(toBitMask);
         };
 
         class Broken {

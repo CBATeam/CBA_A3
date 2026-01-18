@@ -54,7 +54,7 @@ if (_effectNumber == 0) exitWith { // Empty array - false effect
 };
 
 // If no change: skip sending publicVar and events
-private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber); // TODO: ACE Function
+private _effectBoolArray = [_effectNumber, count _statusReasons] call CBA_fnc_binarizeNumber;
 TRACE_1("bitArray",_effectBoolArray);
 
 private _activeEffects = [];

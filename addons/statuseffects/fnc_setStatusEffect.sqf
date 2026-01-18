@@ -61,7 +61,7 @@ if ((_effectNumber == -1) && {!_set}) exitWith {
 if (_effectNumber == -1) then {_effectNumber = 0}; // Reset (-1/nil) to 0
 
 // If no change: skip sending publicVar and events
-private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber); // TODO: ACE function
+private _effectBoolArray = [_effectNumber, count _statusReasons] call CBA_fnc_binarizeNumber;
 TRACE_2("bitArray",_statusIndex,_effectBoolArray);
 if (_set isEqualTo (_effectBoolArray select _statusIndex)) exitWith {
     TRACE_2("No Change, exiting",_set,_effectBoolArray select _statusIndex);
@@ -69,7 +69,7 @@ if (_set isEqualTo (_effectBoolArray select _statusIndex)) exitWith {
 
 TRACE_2("Setting to new value",_set,_effectBoolArray select _statusIndex);
 _effectBoolArray set [_statusIndex, _set];
-private _newEffectNumber = _effectBoolArray call FUNC(toBitmask); // Convert array back to number // TODO: ACE function
+private _newEffectNumber = _effectBoolArray call CBA_fnc_toBitmask; // Convert array back to number
 
 TRACE_2("Saving globally",_effectVarName,_newEffectNumber);
 _object setVariable [_effectVarName, _newEffectNumber, true];
