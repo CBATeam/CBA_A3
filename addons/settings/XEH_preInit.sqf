@@ -123,6 +123,7 @@ GVAR(runAtSettingsInitialized) = [];
     {
         (_this select 1) call (_this select 0);
     } forEach GVAR(runAtSettingsInitialized);
+    GVAR(runAtSettingsInitialized) = nil;
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;
