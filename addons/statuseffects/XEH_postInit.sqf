@@ -88,16 +88,16 @@
     params ["_object", "_set"];
     if ((_object isKindOf "CAManBase") && { "ace_medical" call CBA_fnc_isModLoaded }) then {
         TRACE_2("blockDamage EH (using medical)",_object,_set);
-       _object setVariable ["ace_medical_allowDamage", (_set == 0), true];
+        _object setVariable ["ace_medical_allowDamage", (_set == 0), true];
     } else {
         TRACE_2("blockDamage EH (using allowDamage)",_object,_set);
-       _object allowDamage (_set == 0);
+        _object allowDamage (_set == 0);
     };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(blockEngine), {
     params ["_vehicle", "_set"];
-    _vehicle setVariable ["ace_common_blockEngine", _set > 0, true];
+    _vehicle setVariable ["CBA_blockEngine", _set > 0, true];
     _vehicle engineOn false;
 }] call CBA_fnc_addEventHandler;
 
@@ -118,7 +118,7 @@
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(lockVehicle), {
-    _this setVariable [QGVAR(lockStatus), locked _this];
+    _this setVariable ["CBA_lockStatus", locked _this];
     _this lock 2;
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
         [_this, "disableWeaponAssembly", "ace_common_lockVehicle", true] call CBA_fnc_setStatusEffect;
@@ -126,7 +126,7 @@
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(unlockVehicle), {
-    _this lock (_this getVariable ["ace_common_lockStatus", locked _this]);
+    _this lock (_this getVariable ["CBA_lockStatus", locked _this]);
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
         [_this, "disableWeaponAssembly", "ace_common_lockVehicle", false] call CBA_fnc_setStatusEffect;
     };
