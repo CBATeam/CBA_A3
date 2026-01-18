@@ -61,14 +61,15 @@
 [QGVAR(blockRadio), {
     params ["_object", "_set"];
     TRACE_2("blockRadio EH",_object,_set);
-    if (_object isEqualTo ACE_Player && {_set > 0}) then {
-        call FUNC(endRadioTransmission); // TODO: ACE function
+    private _disable = _set > 0;
+    if (_disable && { _object isEqualTo ([] call CBA_fnc_currentUnit) }) then {
+        [] call CBA_fnc_endRadioTransmission;
     };
     if ("task_force_radio" call CBA_fnc_isModLoaded) then {
-        _object setVariable ["tf_unable_to_use_radio", _set > 0, true];
+        _object setVariable ["tf_unable_to_use_radio", _disable, true];
     };
     if ("acre_main" call CBA_fnc_isModLoaded) then {
-        _object setVariable ["acre_sys_core_isDisabledRadio", _set > 0, true];
+        _object setVariable ["acre_sys_core_isDisabledRadio", _disable, true];
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -85,7 +86,7 @@
 
 [QGVAR(blockDamage), { // Name reversed from `allowDamage` because we want NOR logic
     params ["_object", "_set"];
-    if ((_object isKindOf "CAManBase") && {("ace_medical" call CBA_fnc_isModLoaded)}) then {
+    if ((_object isKindOf "CAManBase") && { "ace_medical" call CBA_fnc_isModLoaded }) then {
         TRACE_2("blockDamage EH (using medical)",_object,_set);
        _object setVariable ["ace_medical_allowDamage", (_set == 0), true];
     } else {
