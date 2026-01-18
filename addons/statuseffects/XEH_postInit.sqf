@@ -12,6 +12,7 @@
 ["blockSpeaking", false, ["ace_unconscious"]] call CBA_fnc_addStatusEffectType;
 ["disableWeaponAssembly", false, ["ace_common", "ace_common_lockVehicle", "ace_csw"]] call CBA_fnc_addStatusEffectType;
 ["lockInventory", true, [], true] call CBA_fnc_addStatusEffectType;
+["disableCollision", true, [], true] call CBA_fnc_addStatusEffectType;
 
 [QGVAR(forceWalk), {
     params ["_object", "_set"];
@@ -63,10 +64,10 @@
     if (_object isEqualTo ACE_Player && {_set > 0}) then {
         call FUNC(endRadioTransmission); // TODO: ACE function
     };
-    if ("task_force_radio" call FUNC(isModLoaded)) then { // TODO: ACE function
+    if ("task_force_radio" call CBA_fnc_isModLoaded) then {
         _object setVariable ["tf_unable_to_use_radio", _set > 0, true];
     };
-    if ("acre_main" call FUNC(isModLoaded)) then {
+    if ("acre_main" call CBA_fnc_isModLoaded) then {
         _object setVariable ["acre_sys_core_isDisabledRadio", _set > 0, true];
     };
 }] call CBA_fnc_addEventHandler;
@@ -74,17 +75,17 @@
 [QGVAR(blockSpeaking), {
     params ["_object", "_set"];
     TRACE_2("blockSpeaking EH",_object,_set);
-    if ("task_force_radio" call FUNC(isModLoaded)) then {
+    if ("task_force_radio" call CBA_fnc_isModLoaded) then {
         _object setVariable ["tf_voiceVolume", parseNumber (_set == 0), true];
     };
-    if ("acre_main" call FUNC(isModLoaded)) then {
+    if ("acre_main" call CBA_fnc_isModLoaded) then {
         _object setVariable ["acre_sys_core_isDisabled", _set > 0, true];
     };
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(blockDamage), { //Name reversed from `allowDamage` because we want NOR logic
+[QGVAR(blockDamage), { // Name reversed from `allowDamage` because we want NOR logic
     params ["_object", "_set"];
-    if ((_object isKindOf "CAManBase") && {("ace_medical" call FUNC(isModLoaded))}) then {
+    if ((_object isKindOf "CAManBase") && {("ace_medical" call CBA_fnc_isModLoaded)}) then {
         TRACE_2("blockDamage EH (using medical)",_object,_set);
        _object setVariable ["ace_medical_allowDamage", (_set == 0), true];
     } else {
@@ -128,4 +129,10 @@
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
         [_this, "disableWeaponAssembly", "ace_common_lockVehicle", false] call CBA_fnc_setStatusEffect;
     };
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(disableCollision), { // Name "reversed" from `setPhysicsCollisionFlag` because we want NOR logic
+    params ["_object", "_set"];
+    TRACE_2("disableCollision EH",_object,_set);
+    _object setPhysicsCollisionFlag (_set < 1);
 }] call CBA_fnc_addEventHandler;

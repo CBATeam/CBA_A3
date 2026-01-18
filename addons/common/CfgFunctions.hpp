@@ -12,6 +12,7 @@ class CfgFunctions {
             PATHTO_FNC(inheritsFrom);
             PATHTO_FNC(getTurret);
             PATHTO_FNC(getNonPresetClass);
+            PATHTO_FNC(isModLoaded);
         };
 
         class Entities {
