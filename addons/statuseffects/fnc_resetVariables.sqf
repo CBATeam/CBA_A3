@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_statusEffects_fnc_resetVariables
 Description:

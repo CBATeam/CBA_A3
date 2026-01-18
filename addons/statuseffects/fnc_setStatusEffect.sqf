@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_setStatusEffect
 Description:
@@ -32,7 +32,7 @@ params [
 // Only run this after the settings are initialized
 if !(GVAR(settingsInitFinished)) exitWith { // TODO: Switch to CBA equivalent, was ace_common_...
     TRACE_1("pushing to runAtSettingsInitialized",_this);
-    GVAR(runAtSettingsInitialized) pushBack [FUNC(setStatusEffect), _this];
+    GVAR(runAtSettingsInitialized) pushBack [CBA_fnc_setStatusEffect, _this];
 };
 
 if (isNull _object) exitWith {TRACE_1("null",_object);};
@@ -61,7 +61,7 @@ if ((_effectNumber == -1) && {!_set}) exitWith {
 if (_effectNumber == -1) then {_effectNumber = 0}; // Reset (-1/nil) to 0
 
 // If no change: skip sending publicVar and events
-private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber);
+private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber); // TODO: ACE function
 TRACE_2("bitArray",_statusIndex,_effectBoolArray);
 if (_set isEqualTo (_effectBoolArray select _statusIndex)) exitWith {
     TRACE_2("No Change, exiting",_set,_effectBoolArray select _statusIndex);
@@ -69,7 +69,7 @@ if (_set isEqualTo (_effectBoolArray select _statusIndex)) exitWith {
 
 TRACE_2("Setting to new value",_set,_effectBoolArray select _statusIndex);
 _effectBoolArray set [_statusIndex, _set];
-private _newEffectNumber = _effectBoolArray call FUNC(toBitmask); // Convert array back to number
+private _newEffectNumber = _effectBoolArray call FUNC(toBitmask); // Convert array back to number // TODO: ACE function
 
 TRACE_2("Saving globally",_effectVarName,_newEffectNumber);
 _object setVariable [_effectVarName, _newEffectNumber, true];

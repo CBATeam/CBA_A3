@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_getStatusEffect
 Description:
@@ -54,7 +54,7 @@ if (_effectNumber == 0) exitWith { // Empty array - false effect
 };
 
 // If no change: skip sending publicVar and events
-private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber);
+private _effectBoolArray = [_effectNumber, count _statusReasons] call FUNC(binarizeNumber); // TODO: ACE Function
 TRACE_1("bitArray",_effectBoolArray);
 
 private _activeEffects = [];

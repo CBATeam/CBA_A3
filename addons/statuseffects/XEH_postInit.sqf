@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-[QGVAR(setStatusEffect), LINKFUNC(statusEffect_set)] call CBA_fnc_addEventHandler;
+[QGVAR(setStatusEffect), CBA_fnc_setStatusEffect] call CBA_fnc_addEventHandler;
 ["forceWalk", false, ["ace_advanced_fatigue", "ace_attach", "ace_dragging", "ace_explosives", "ace_medical_fracture", "ace_rearm", "ace_refuel", "ace_sandbag", "ace_switchunits", "ace_tacticalladder", "ace_trenches"]] call CBA_fnc_addStatusEffectType;
 ["blockSprint", false, ["ace_advanced_fatigue", "ace_dragging", "ace_medical_fracture"]] call CBA_fnc_addStatusEffectType;
 ["setCaptive", true, ["ace_captives_handcuffed", "ace_captives_surrendered"]] call CBA_fnc_addStatusEffectType;
@@ -19,7 +19,7 @@
     _object forceWalk (_set > 0);
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(blockSprint), { //Name reversed from `allowSprint` because we want NOR logic
+[QGVAR(blockSprint), { // Name reversed from `allowSprint` because we want NOR logic
     params ["_object", "_set"];
     TRACE_2("blockSprint EH",_object,_set);
     _object allowSprint (_set == 0);
@@ -61,9 +61,9 @@
     params ["_object", "_set"];
     TRACE_2("blockRadio EH",_object,_set);
     if (_object isEqualTo ACE_Player && {_set > 0}) then {
-        call FUNC(endRadioTransmission);
+        call FUNC(endRadioTransmission); // TODO: ACE function
     };
-    if ("task_force_radio" call FUNC(isModLoaded)) then {
+    if ("task_force_radio" call FUNC(isModLoaded)) then { // TODO: ACE function
         _object setVariable ["tf_unable_to_use_radio", _set > 0, true];
     };
     if ("acre_main" call FUNC(isModLoaded)) then {
@@ -119,13 +119,13 @@
     _this setVariable [QGVAR(lockStatus), locked _this];
     _this lock 2;
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
-        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", true] call FUNC(setStatusEffect);
+        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", true] call CBA_fnc_setStatusEffect;
     };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(unlockVehicle), {
     _this lock (_this getVariable ["ace_common_lockStatus", locked _this]);
     if ([] isNotEqualTo getArray (configOf _this >> "assembleInfo" >> "dissasembleTo")) then {
-        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", false] call FUNC(setStatusEffect);
+        [_this, "disableWeaponAssembly", "ace_common_lockVehicle", false] call CBA_fnc_setStatusEffect;
     };
 }] call CBA_fnc_addEventHandler;
