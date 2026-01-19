@@ -12,6 +12,7 @@ Parameters:
     _attach   - Attach created sound to _object (optional, default: false) <BOOL>
     _instant  - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
     _rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 0.15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>
+    _parallel - Allows for multiple sounds to be played at once. (optional, default: false) <BOOL>
 
 Returns:
     Nothing
@@ -26,7 +27,7 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]], ["_parallel", false, [true]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
@@ -47,7 +48,7 @@ if (_rndPitch isNotEqualTo false) then {
 };
 
 {
-    [QGVAR(say3D), [_x, _params, _attach, _instant]] call CBA_fnc_globalEvent;
+    [QGVAR(say3D), [_x, _params, _attach, _instant, _parallel]] call CBA_fnc_globalEvent;
 } forEach _objects;
 
 nil
