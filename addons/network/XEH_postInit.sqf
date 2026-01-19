@@ -11,7 +11,7 @@ if (hasInterface) then {
 
         private _source = _object;
 
-        // create helper to allow for multiple sounds be played from one object at once
+        // Create helper to allow for multiple sounds be played from one object at once
         if (_parallel) then {
             private _helper = "Helper_Base_F" createVehicleLocal (getPos _object);
             _helper attachTo [_object, [0,0,0]];
@@ -29,7 +29,7 @@ if (hasInterface) then {
             [
                 { ! alive (_this#0) || { ! alive (_this#1) } },
                 { deleteVehicle (_this#2) },
-                [_sound, _source, _helper]
+                [_sound, _object, _source]
             ] call CBA_fnc_waitUntilAndExecute;
         };
 
