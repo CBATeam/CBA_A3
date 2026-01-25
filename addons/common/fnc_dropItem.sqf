@@ -11,6 +11,7 @@ Description:
 Parameters:
     _unit - the unit that should drop the item <OBJECT>
     _item - class name of the item to drop <STRING>
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN>
 
 Returns:
     true if successful, false otherwise <BOOLEAN>
@@ -25,12 +26,14 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(dropItem);
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_skipAnim", false, [true]]];
 
 private _return = [_unit, _item] call CBA_fnc_removeItem;
 
 if (_return) then {
-    _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+    if (!_skipAnim) then {
+        _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+    };
 
     private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 

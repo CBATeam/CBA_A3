@@ -66,7 +66,7 @@ _args params ["_area", "_behaviour", "_combat", "_speed", "_formation", "_onComp
 private _pos = [_area] call CBA_fnc_randPosArea;
 
 // Exit if any bad input was used (has to run after all the above code)
-if ((_pos isEqualTo []) || {_area isEqualTo ""} || {isNull _group}) exitWith {ERROR_3("Bad Input [_pos: %1][_area: %2][_group: %3]", _pos, _area, _group);};
+if ((_pos isEqualTo []) || {_area isEqualTo ""} || {isNull _group}) exitWith {ERROR_3("Bad Input [_pos: %1][_area: %2][_group: %3]",_pos,_area,_group);};
 
 // Prepare recursive function call statement
 private _statements = ["[this] call CBA_fnc_taskSearchArea"];

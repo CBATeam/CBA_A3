@@ -2,7 +2,7 @@
 
 // Perform menu action execution along with related menu behaviour changes.
 //-----------------------------------------------------------------------------
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 private _arrayID = _this;
 private _actionData = GVAR(menuActionData) select _arrayID;
@@ -59,7 +59,7 @@ if (_subMenuSource != "") then {
     // TODO: Find a way to combine the menu and list scripts together.
     #define PATHTO_SUB(var1,var2,var3,var4) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3\##var4.sqf
     private _pathName = QUOTE(PATHTO_SUB(PREFIX,COMPONENT_F,flexiMenu,%1));
-    _pathName = format [_pathName, if (_useListBox == 0) then {'fnc_menu'} else {'fnc_list'}];
+    _pathName = format [_pathName, ["fnc_list", "fnc_menu"] select (_useListBox == 0)];
 
     [GVAR(target), [[_subMenuSource, _params]]] call COMPILE_FILE2_SYS(_pathName);
     // TODO: DEBUG switch to recompile menus always?

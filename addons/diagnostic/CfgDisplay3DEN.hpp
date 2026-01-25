@@ -5,13 +5,13 @@ class Display3DEN {
         class MenuStrip: ctrlMenuStrip {
             class Items {
                 class DebugConsole {
-                    shortcuts[] = {INPUT_CTRL_OFFSET + DIK_D};
+                    shortcuts[] = {QUOTE(INPUT_CTRL_OFFSET + DIK_D)};
                 };
                 class FunctionsViewer {
-                    shortcuts[] = {INPUT_ALT_OFFSET + DIK_F};
+                    shortcuts[] = {QUOTE(INPUT_ALT_OFFSET + DIK_F)};
                 };
                 class ConfigViewer {
-                    shortcuts[] = {INPUT_ALT_OFFSET + DIK_G};
+                    shortcuts[] = {QUOTE(INPUT_ALT_OFFSET + DIK_G)};
                 };
             };
         };

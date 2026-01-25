@@ -18,12 +18,12 @@ class Extended_PostInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayMain {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayMain)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayMain)'));
     };
     class RscDisplayGameOptions {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplayGameOptions)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayGameOptions)'));
     };
     class Display3DEN {
-        ADDON = QUOTE(_this call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
+        ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplay3DEN)'));
     };
 };

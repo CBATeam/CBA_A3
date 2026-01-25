@@ -28,7 +28,7 @@ while {_countA > 0} do {
      private _var = _array select 0;
      _array = _array - [_var];
      private _countB = count _array;
-     _return = _return + [_var, _countA - _countB];
+     _return append [_var, _countA - _countB];
      _countA = _countB;
 };
 

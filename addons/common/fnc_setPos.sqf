@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _entity   - <MARKER, OBJECT, LOCATION, GROUP, TASK>
-    _position - <MARKER, OBJECT, LOCATION, GROUP, TASK, POSITION>
+    _position - <MARKER, OBJECT, LOCATION, GROUP, TASK, ARRAY>
     _radius   - random Radius (optional) <NUMBER>
 
 Example:

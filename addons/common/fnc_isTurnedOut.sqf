@@ -38,7 +38,6 @@ private _cfg = configOf _vehicle;
 
 if (_vehicle != _unit) then {
     if (driver _vehicle == _unit) then {
-        private _forceHideDriver = getNumber (_cfg >> "forceHideDriver");
         _out = _vehicle animationPhase "hatchDriver" > 0;
     } else {
         private _assignedRole = assignedVehicleRole _unit;
@@ -47,16 +46,13 @@ if (_vehicle != _unit) then {
             private _turretPath = _assignedRole select 1;
             private _turret = [_vehicle, _turretPath] call CBA_fnc_getTurret;
 
-            private _canHideGunner = getNumber (_turret >> "canHideGunner");
-            private _forceHideGunner = getNumber (_turret >> "forceHideGunner");
-
             private _hatchAnimation = getText (_turret >> "animationSourceHatch");
             _out = (_vehicle animationPhase _hatchAnimation) > 0;
         } else {
             if (_assignedRole select 0 == "Cargo") then {
                 private _attenuateCargo = getArray (_cfg >> "soundAttenuationCargo");
 
-                if (count _attenuateCargo > 0) then {
+                if (_attenuateCargo isNotEqualTo []) then {
                     private _index = count _attenuateCargo - 1; // wait for command to get cargo index
 
                     if (_index > -1) then {

@@ -11,7 +11,8 @@ Description:
 Parameters:
     _unit   - the unit <OBJECT>
     _item   - name of the weapon to add <STRING>
-    _verify - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify - if true, then put item on the ground if it can't be added <BOOLEAN> (Default: false)
+    _skipAnim - does not play the animation when true (optional, default: false) <BOOLEAN> (Default: false)
 
 Returns:
     true on success, false otherwise <BOOLEAN>
@@ -31,7 +32,7 @@ SCRIPT(addWeapon);
 #define TYPE_LAUNCHER 4
 #define TYPE_BINOCULAR 4096
 
-params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]]];
+params [["_unit", objNull, [objNull]], ["_item", "", [""]], ["_verify", false, [false]], ["_skipAnim", false, [true]]];
 
 private _return = false;
 
@@ -74,7 +75,7 @@ if (_verify) then {
         _unit addWeapon _item;
         _return = true;
     } else {
-        _unit switchMove "ainvpknlmstpslaywrfldnon_1";
+        if (!_skipAnim) then { _unit switchMove "ainvpknlmstpslaywrfldnon_1"; };
 
         private _weaponHolder = nearestObject [_unit, "WeaponHolder"];
 

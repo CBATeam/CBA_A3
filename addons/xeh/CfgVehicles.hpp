@@ -332,6 +332,10 @@ class CfgVehicles {
     class gm_deployablebridge_base: gm_logistics_object_base {
         XEH_ENABLED;
     };
+    class gm_pallet_base: gm_logistics_object_base {};
+    class gm_fuelpallet_01_base: gm_pallet_base {
+        XEH_ENABLED;
+    };
 
     class gm_staticWeapon_base: StaticWeapon {};
     class gm_staticMG_base: gm_staticWeapon_base {};
@@ -368,28 +372,6 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    // Contact
-    class VirtualAISquad: Logic {
-        XEH_ENABLED;
-    };
-
-    class Particle_Base_F: Thing {
-        XEH_ENABLED;
-    };
-
-    // Class does not exist without optional Contact component. Recreate inheritance tree up to existing base class.
-    class Alien_Extractor_01_base_F: Items_base_F {};
-    class Alien_Extractor_01_generic_base_F: Alien_Extractor_01_base_F {
-        XEH_ENABLED;
-    };
-
-    class Alien_MatterBall_01_base_F: ThingX {
-        XEH_ENABLED;
-    };
-    class Alien_MatterBall_01_falling_F: Alien_MatterBall_01_base_F {
-        XEH_ENABLED;
-    };
-
     class O_R_Soldier_Base_F;
     class O_R_Story_Capitan_01_F: O_R_Soldier_Base_F {
         XEH_ENABLED;
@@ -397,7 +379,6 @@ class CfgVehicles {
     class O_R_Story_TL_01_F: O_R_Soldier_Base_F {
         XEH_ENABLED;
     };
-
     class C_Story_Scientist_01_F: Civilian_F {
         XEH_ENABLED;
     };
@@ -428,57 +409,11 @@ class CfgVehicles {
         XEH_ENABLED;
     };
 
-    // SOG PF
-    class vn_object_b_base_02: Items_base_F {};
-    class Land_vn_candle_01: vn_object_b_base_02 {
+    // Decade (2.14)
+    class Lantern_01_base_F: ThingX {
         XEH_ENABLED;
     };
-
-    class vn_krait: Snake_random_F {
-        XEH_ENABLED;
-    };
-
-    class vn_parachute_02_base: ParachuteBase {};
-    class vn_b_parachute_02: vn_parachute_02_base {};
-    class vn_b_parachute_02_blu82: vn_b_parachute_02 {};
-    class vn_b_parachute_02_blu82_airdrop: vn_b_parachute_02_blu82 {
-        XEH_ENABLED;
-    };
-
-    class vn_o_static_rsna75_wreck: PlaneWreck {
-        XEH_ENABLED;
-    };
-
-    // CSLA
-    class StaticATWeapon;
-    class CSLA_9K113_Stat: StaticATWeapon {
-        XEH_ENABLED;
-    };
-
-    class CSLA_M52_Stat: Mortar_01_base_F {
-        XEH_ENABLED;
-    };
-
-    class CSLA_CIV_AN2_wreck: PlaneWreck {
-        XEH_ENABLED;
-    };
-
-    class CSLA_Plane_base_F: Plane_Base_F {};
-    class CSLA_CIV_Plane_base_F: CSLA_Plane_base_F {};
-    class CSLA_CIV_Plane_base: CSLA_CIV_Plane_base_F {
-        XEH_ENABLED;
-    };
-
-    class StaticMGWeapon;
-    class CSLA_UK59L_Stat: StaticMGWeapon {
-        XEH_ENABLED;
-    };
-
-    class CSLA_UK59T_Stat: StaticMGWeapon {
-        XEH_ENABLED;
-    };
-
-    class US85_M252_Stat: Mortar_01_base_F {
+    class SpaceshipCapsule_01_F: ThingX {
         XEH_ENABLED;
     };
 };

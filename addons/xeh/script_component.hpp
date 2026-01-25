@@ -14,7 +14,7 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros.hpp"
 
-#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo, diag_tickTime, time)], msg); }
+#define XEH_LOG(msg) if (!SLX_XEH_DisableLogging) then { INFO_2("%1 %2",[ARR_3(diag_frameNo,diag_tickTime,time)],msg); }
 
 #define SYS_EVENTHANDLERS(type,class) format [QGVAR(%1:%2), type, class]
 #define EVENTHANDLERS(type,class) (missionNamespace getVariable [SYS_EVENTHANDLERS(type,class), []])
@@ -43,12 +43,19 @@
 
 #define XEH_EVENTS \
     "AnimChanged", \
-    "AnimStateChanged", \
     "AnimDone", \
+    "AnimStateChanged", \
+    "Assembled", \
+    "Attached", \
+    "CargoLoaded", \
+    "CargoUnloaded", \
     "ContainerClosed", \
     "ContainerOpened", \
     "ControlsShifted", \
     "Dammaged", \
+    "Deleted", \
+    "Detached", \
+    "Disassembled", \
     "Engine", \
     "EpeContact", \
     "EpeContactEnd", \
@@ -56,9 +63,12 @@
     "Explosion", \
     "Fired", \
     "FiredBis", \
+    "FiredMan", \
     "FiredNear", \
     "Fuel", \
     "Gear", \
+    "GestureChanged", \
+    "GestureDone", \
     "GetIn", \
     "GetInMan", \
     "GetOut", \
@@ -74,23 +84,27 @@
     "Killed", \
     "LandedTouchDown", \
     "LandedStopped", \
+    "LeaningChanged", \
     "Local", \
-    "Respawn", \
+    "MagazineReloading", \
+    "OpticsModeChanged", \
+    "OpticsSwitch", \
     "Put", \
-    "Take", \
+    "Reloaded", \
+    "Respawn", \
+    "RopeAttach", \
+    "RopeBreak", \
     "SeatSwitched", \
     "SeatSwitchedMan", \
+    "SlotItemChanged", \
     "SoundPlayed", \
-    "WeaponAssembled", \
-    "WeaponDisassembled", \
-    "WeaponDeployed", \
-    "WeaponRested", \
-    "Reloaded", \
-    "FiredMan", \
+    "Suppressed", \
+    "Take", \
     "TurnIn", \
     "TurnOut", \
-    "Deleted", \
-    "Disassembled", \
-    "Suppressed", \
-    "GestureChanged", \
-    "GestureDone"
+    "VisionModeChanged", \
+    "WeaponAssembled", \
+    "WeaponChanged", \
+    "WeaponDisassembled", \
+    "WeaponDeployed", \
+    "WeaponRested"

@@ -28,7 +28,7 @@ if (_className isEqualTo "") exitWith {WARNING("No class given"); false};
 
 if ((!_overWrite) && {call CBA_fnc_isMusicPlaying}) exitWith {false};
 
-if (IS_CONFIG(_className)) then {_className = configname _className;};
+if (IS_CONFIG(_className)) then {_className = configName _className;};
 
 private _return = false;
 

@@ -1,4 +1,4 @@
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 #define _minObjDist(_var) (if (_var isKindOf "CAManBase") then {3} else {(2 max (1.4 + (sizeOf typeOf _var) / 2))}) // minimum object interaction distance: arbitrary distance. Might not work with very long/large vehicles. TODO: Find a very fast way to determine vehicle size.
 
@@ -8,10 +8,10 @@ private [
 ];
 
 // Call this function with the exact parameter set passed to fleximenu_fnc_add.
-_addParameters = _this;
+private _addParameters = _this;
 
 // Return true if menu was found, false if not.
-_opened = false;
+private _opened = false;
 
 // Code reuse from fnc_keyDown below, recommented.
 
@@ -20,7 +20,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
     _opened = true;
 
     // Check if a menu is already open.
-    _active = (!isNil {uiNamespace getVariable QGVAR(display)});
+    private _active = (!isNil {uiNamespace getVariable QGVAR(display)});
     if (_active) then {
         _active = (!isNull (uiNamespace getVariable QGVAR(display)));
     };
@@ -38,7 +38,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
         _isTypeTarget = false;
 
         // Get near objects into an array.
-        _objects = nearestObjects [player, [], 1.5];
+        private _objects = nearestObjects [player, [], 1.5];
         {
             (group player) reveal _x;
         } forEach _objects;
@@ -66,8 +66,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
             if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
                 if (count _potentialMenuSources == 0) then {
                     _isTypeTarget = true;
-                    _target = if ((_vehicleTarget != player) &&
-                        {({_vehicleTarget isKindOf _x} count _typesList > 0)}) then {_vehicleTarget} else {_potentialTarget};
+                    _target = [_potentialTarget, _vehicleTarget] select ((_vehicleTarget != player) && {({_vehicleTarget isKindOf _x} count _typesList > 0)});
                     if ("player" in _typesList) then {
                         _target = player;
                     };
@@ -86,7 +85,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
                 _menuSources pushBack _x;
             } forEach _potentialMenuSources;
 
-            if (count _menuSources > 0) then {
+            if (_menuSources isNotEqualTo []) then {
                 GVAR(target) = _target;
                 [_target, _menuSources] call FUNC(menu);
             };

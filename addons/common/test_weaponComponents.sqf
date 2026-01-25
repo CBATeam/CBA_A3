@@ -9,10 +9,10 @@ private _fnc_name = "CBA_fnc_weaponComponents";
 private _fnc = call compile _fnc_name;
 
 LOGF ["========== TEST ========== - %1 -", _fnc_name];
-if (!isNil "_fnc") then {LOGF ["TEST: OK - %1 defined", _fnc_name]} else {LOGF ["TEST: FAIL - %1 undefined"]};
+if (!isNil "_fnc") then {LOGF ["TEST: OK - %1 defined", _fnc_name]} else {LOGF ["TEST: FAIL - %1 undefined", _fnc_name]};
 
-_result = "" call _fnc;
-_expected = [];
+private _result = "" call _fnc;
+private _expected = [];
 TESTEXP;
 
 _result = "arifle_MX_F" call _fnc;

@@ -22,6 +22,7 @@ Examples:
     (end)
 
 Author:
+    esteldunedain, johnb43 (from ACE)
 
 ---------------------------------------------------------------------------- */
 SCRIPT(removeMagazine);
@@ -42,81 +43,59 @@ if (_item isEqualTo "") exitWith {
 
 private _config = configFile >> "CfgMagazines" >> _item;
 
-if (!isClass _config || {getNumber (_config >> "scope") < 2}) exitWith {
+if (!isClass _config || {getNumber (_config >> "scope") < 1}) exitWith {
     TRACE_2("Item does not exist in Config",_unit,_item);
     _return
 };
 
-if !(configName _config in magazines _unit) exitWith {
-    TRACE_2("Item not available on Unit",_unit,_item);
-    _return
-};
+// Make sure magazine is in config case
+_item = configName _config;
+
+// Ensure proper ammo
+_ammo = round _ammo;
 
 if (_ammo < 0) then {
-    _unit removeMagazineGlobal _item; // removeMagazine fails on remote units
-    _return = true;
+    if (_unit isKindOf "CAManBase") then {
+        if !(_item in magazines _unit) exitWith {
+            TRACE_2("Item not available on Unit",_unit,_item);
+        };
+
+        _unit removeMagazineGlobal _item; // removeMagazine fails on remote units
+
+        _return = true;
+    } else {
+        if !(_item in magazineCargo _unit) exitWith {
+            TRACE_2("Item not available on Unit",_unit,_item);
+        };
+
+        _unit addMagazineCargoGlobal [_item, -1];
+
+        _return = true;
+    };
 } else {
-    private _uniformMagazines = [];
-    private _vestMagazines = [];
-    private _backpackMagazines = [];
+    private _magArray = [_item, _ammo];
 
-    private _uniform = uniformContainer _unit;
-    private _vest = vestContainer _unit;
-    private _backpack = backpackContainer _unit;
+    private _fnc_removeMagazine = {
+        params ["_container"];
 
-    // magazinesAmmoCargo bugged. returns nil for objNull.
-    if (!isNull _uniform) then {
-        _uniformMagazines = magazinesAmmoCargo _uniform select {_x select 0 == _item};
+        if (_magArray in (magazinesAmmoCargo _container)) exitWith {
+            _container addMagazineAmmoCargo [_item, -1, _ammo];
+
+            true
+        };
+
+        false
     };
 
-    if (!isNull _vest) then {
-        _vestMagazines = magazinesAmmoCargo _vest select {_x select 0 == _item};
-    };
-
-    if (!isNull _backpack) then {
-        _backpackMagazines = magazinesAmmoCargo _backpack select {_x select 0 == _item};
+    private _containerArray = if (_unit isKindOf "CAManBase") then {
+        [uniformContainer _unit, vestContainer _unit, backpackContainer _unit]
+    } else {
+        [_unit]
     };
 
     {
-        if (_x select 1 == _ammo) exitWith {
-            _uniformMagazines deleteAt _forEachIndex;
-            _return = true;
-        };
-    } forEach _uniformMagazines;
-
-    if !(_return) then {
-        {
-            if (_x select 1 == _ammo) exitWith {
-                _vestMagazines deleteAt _forEachIndex;
-                _return = true;
-            };
-        } forEach _vestMagazines;
-    };
-
-    if !(_return) then {
-        {
-            if (_x select 1 == _ammo) exitWith {
-                _backpackMagazines deleteAt _forEachIndex;
-                _return = true;
-            };
-        } forEach _backpackMagazines;
-    };
-
-    if (_return) then {
-        _unit removeMagazines _item; // doc wrong. works on remote units
-
-        {
-            _uniform addMagazineAmmoCargo [_item, 1, _x select 1];
-        } forEach _uniformMagazines;
-
-        {
-            _vest addMagazineAmmoCargo [_item, 1, _x select 1];
-        } forEach _vestMagazines;
-
-        {
-            _backpack addMagazineAmmoCargo [_item, 1, _x select 1];
-        } forEach _backpackMagazines;
-    };
+        if (_x call _fnc_removeMagazine) exitWith {_return = true};
+    } forEach _containerArray;
 };
 
 _return

@@ -35,7 +35,7 @@ if (isNil QGVAR(weaponComponentsCache)) then {
 private _components = GVAR(weaponComponentsCache) getVariable _weapon;
 
 if (isNil "_components") then {
-    private _config = configfile >> "CfgWeapons" >> _weapon;
+    private _config = configFile >> "CfgWeapons" >> _weapon;
 
     // Return empty array if the weapon doesn't exist
     if (!isClass _config) exitWith {

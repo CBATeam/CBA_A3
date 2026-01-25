@@ -21,7 +21,7 @@ for "_i" from 0 to (_index - 1) do {
 };
 
 // format ["<t color='%1'>%2</t>", _hotKeyColor_ST, [_caption, _index + _offset, 1] call KRON_StrMid]+
-_array2 = toArray _hotKeyColor_ST;
+private _array2 = toArray _hotKeyColor_ST;
 for "_i" from 0 to (count _array2 - 1) do {
     _captionArray set [_len, _array2 select _i];
     _len = _len + 1;
@@ -32,7 +32,7 @@ for "_i" from (_index + _offset) to (_index + _offset) do {
     _len = _len + 1;
 };
 
-private _array2 = toArray "</t>";
+_array2 = toArray "</t>";
 for "_i" from 0 to (count _array2 - 1) do {
     _captionArray set [_len, _array2 select _i];
     _len = _len + 1;

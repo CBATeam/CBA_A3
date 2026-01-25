@@ -44,13 +44,13 @@ private _return = if (isDedicated) then {
             if (isNull player) exitWith {};
             if (GVAR(actionListUpdated) || {_curVic != _prevVic}) then {
                 TRACE_4("update",GVAR(actionListUpdated),_curVic,_prevVic,GVAR(actionIndexes));
-                if (count GVAR(actionIndexes) > 0) then {
+                if (GVAR(actionIndexes) isNotEqualTo []) then {
                     { _prevVic removeAction _x; } forEach GVAR(actionIndexes);
                     GVAR(actionIndexes) = [];
                 };
                 GVAR(actionListUpdated) = false;
                 [GVAR(actionList), {
-                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes), _value);
+                    TRACE_3("Inside the code for the hashPair",(vehicle player),GVAR(actionIndexes),_value);
                     if ((!isNil "_value") && {_value isEqualType []}) then {
                         GVAR(actionIndexes) pushBack (_curVic addAction _value);
                     };

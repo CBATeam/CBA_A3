@@ -1,4 +1,4 @@
-Format: 1.51
+Format: 1.52
 
 
 Title: CBA
@@ -62,6 +62,7 @@ Group: Functions  {
    Group: Accessory  {
 
       File: CBA_accessory_fnc_switchAttachment  (accessory/fnc_switchAttachment.sqf)
+      File: CBA_fnc_addAttachmentCondition  (accessory/fnc_addAttachmentCondition.sqf)
       File: CBA_fnc_switchableAttachments  (accessory/fnc_switchableAttachments.sqf)
       }  # Group: Accessory
 
@@ -119,12 +120,22 @@ Group: Functions  {
       File: CBA_fnc_binocularMagazine  (common/fnc_binocularMagazine.sqf)
       File: CBA_fnc_canAddItem  (common/fnc_canAddItem.sqf)
       File: CBA_fnc_canUseWeapon  (common/fnc_canUseWeapon.sqf)
+      File: CBA_fnc_colorAHEXtoDecimal  (common/fnc_colorAHEXtoDecimal.sqf)
+      File: CBA_fnc_colorARGBtoDecimal  (common/fnc_colorARGBtoDecimal.sqf)
+      File: CBA_fnc_colorHEXAtoDecimal  (common/fnc_colorHEXAtoDecimal.sqf)
+      File: CBA_fnc_colorHEXtoDecimal  (common/fnc_colorHEXtoDecimal.sqf)
+      File: CBA_fnc_colorRGBAtoDecimal  (common/fnc_colorRGBAtoDecimal.sqf)
+      File: CBA_fnc_colorRGBtoDecimal  (common/fnc_colorRGBtoDecimal.sqf)
       File: CBA_fnc_compatibleMagazines  (common/fnc_compatibleMagazines.sqf)
       File: CBA_fnc_compileFinal  (common/fnc_compileFinal.sqf)
       File: CBA_fnc_createMarker  (common/fnc_createMarker.sqf)
       File: CBA_fnc_createNamespace  (common/fnc_createNamespace.sqf)
       File: CBA_fnc_createPerFrameHandlerObject  (common/fnc_createPerFrameHandlerObject.sqf)
       File: CBA_fnc_createTrigger  (common/fnc_createTrigger.sqf)
+      File: CBA_fnc_createUUID  (common/fnc_createUUID.sqf)
+      File: CBA_fnc_cssColorToDecimal  (common/fnc_cssColorToDecimal.sqf)
+      File: CBA_fnc_cssColorToHEX  (common/fnc_cssColorToHEX.sqf)
+      File: CBA_fnc_cssColorToTexture  (common/fnc_cssColorToTexture.sqf)
       File: CBA_fnc_currentMagazineIndex  (common/fnc_currentMagazineIndex.sqf)
       File: CBA_fnc_currentUnit  (common/fnc_currentUnit.sqf)
       File: CBA_fnc_deleteEntity  (common/fnc_deleteEntity.sqf)
@@ -134,6 +145,8 @@ Group: Functions  {
       File: CBA_fnc_dropItem  (common/fnc_dropItem.sqf)
       File: CBA_fnc_dropMagazine  (common/fnc_dropMagazine.sqf)
       File: CBA_fnc_dropWeapon  (common/fnc_dropWeapon.sqf)
+      File: CBA_fnc_escapeRegex  (common/fnc_escapeRegex.sqf)
+      File: CBA_fnc_execAfterNFrames  (common/fnc_execAfterNFrames.sqf)
       File: CBA_fnc_execNextFrame  (common/fnc_execNextFrame.sqf)
       File: CBA_fnc_findEntity  (common/fnc_findEntity.sqf)
       File: CBA_fnc_getActiveFeatureCamera  (common/fnc_getActiveFeatureCamera.sqf)
@@ -205,6 +218,7 @@ Group: Functions  {
       File: CBA_fnc_waitAndExecute  (common/fnc_waitAndExecute.sqf)
       File: CBA_fnc_waitUntilAndExecute  (common/fnc_waitUntilAndExecute.sqf)
       File: CBA_fnc_weaponComponents  (common/fnc_weaponComponents.sqf)
+      File: CBA_fnc_weekDay  (common/fnc_weekDay.sqf)
       }  # Group: Common
 
    Group: Diagnostic  {
@@ -225,6 +239,7 @@ Group: Functions  {
 
       File: CBA_events_fnc_playerEvent  (events/fnc_playerEvent.sqf)
       File: CBA_fnc_addBISEventHandler  (events/fnc_addBISEventHandler.sqf)
+      File: CBA_fnc_addBISPlayerEventHandler  (events/fnc_addBISPlayerEventHandler.sqf)
       File: CBA_fnc_addDisplayHandler  (events/fnc_addDisplayHandler.sqf)
       File: CBA_fnc_addEventHandler  (events/fnc_addEventHandler.sqf)
       File: CBA_fnc_addEventHandlerArgs  (events/fnc_addEventHandlerArgs.sqf)
@@ -240,6 +255,7 @@ Group: Functions  {
       File: CBA_fnc_readKeyFromConfig  (events/fnc_readKeyFromConfig.sqf)
       File: CBA_fnc_registerChatCommand  (events/fnc_registerChatCommand.sqf)
       File: CBA_fnc_remoteEvent  (events/fnc_remoteEvent.sqf)
+      File: CBA_fnc_removeBISPlayerEventHandler  (events/fnc_removeBISPlayerEventHandler.sqf)
       File: CBA_fnc_removeDisplayHandler  (events/fnc_removeDisplayHandler.sqf)
       File: CBA_fnc_removeEventHandler  (events/fnc_removeEventHandler.sqf)
       File: CBA_fnc_removeGlobalEventJIP  (events/fnc_removeGlobalEventJIP.sqf)
@@ -287,6 +303,12 @@ Group: Functions  {
       File: CBA_fnc_registerKeybindModPrettyName  (keybinding/fnc_registerKeybindModPrettyName.sqf)
       File: CBA_fnc_registerKeybindToFleximenu  (keybinding/fnc_registerKeybindToFleximenu.sqf)
       }  # Group: Keybinding
+
+   Group: Loadout  {
+
+      File: CBA_fnc_getLoadout  (loadout/fnc_getLoadout.sqf)
+      File: CBA_fnc_setLoadout  (loadout/fnc_setLoadout.sqf)
+      }  # Group: Loadout
 
    Group: Modules  {
 
@@ -354,6 +376,7 @@ Group: Functions  {
       File: CBA_fnc_formatElapsedTime  (strings/fnc_formatElapsedTime.sqf)
       File: CBA_fnc_formatNumber  (strings/fnc_formatNumber.sqf)
       File: CBA_fnc_leftTrim  (strings/fnc_leftTrim.sqf)
+      File: CBA_fnc_prettyFormat  (strings/fnc_prettyFormat.sqf)
       File: CBA_fnc_removeWhitespace  (strings/fnc_removeWhitespace.sqf)
       File: CBA_fnc_replace  (strings/fnc_replace.sqf)
       File: CBA_fnc_rightTrim  (strings/fnc_rightTrim.sqf)
@@ -374,7 +397,9 @@ Group: Functions  {
       File: CBA_fnc_getFov  (ui/fnc_getFov.sqf)
       File: CBA_fnc_getUISize  (ui/fnc_getUISize.sqf)
       File: CBA_fnc_notify  (ui/fnc_notify.sqf)
+      File: CBA_fnc_openLobbyManager  (ui/fnc_openLobbyManager.sqf)
       File: CBA_fnc_progressBar  (ui/fnc_progressBar.sqf)
+      File: CBA_fnc_renameInventoryItem  (ui/fnc_renameInventoryItem.sqf)
       }  # Group: Ui
 
    Group: Vectors  {

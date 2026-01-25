@@ -8,7 +8,7 @@ Description:
 
 Parameters:
     _string   - Any String <STRING>
-    _seperate - Seperate leftovers with spaces? (optional, default: false) <BOOLEAN>
+    _seperate - Separate leftovers with spaces? (optional, default: false) <BOOLEAN>
 
 Returns:
     String without whitespace <STRING>

@@ -15,7 +15,7 @@
    - Provide a solid structure that can be dynamic and easy editable (Which sometimes means we cannot adhere to Aim #1 ;-)
      An example is the path that is built from defines. Some available in this file, others in mods and addons.
 
- Follows  Standard:
+ Follows Standard:
    Object variables: PREFIX_COMPONENT
    Main-object variables: PREFIX_main
    Paths: MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\SCRIPTNAME.sqf
@@ -28,6 +28,10 @@
    Then in your addons, add a component.hpp, define the COMPONENT,
    and include your mod's script_macros.hpp
    In your scripts you can then include the addon's component.hpp with relative path)
+
+   use in subcomponents (subconfigs)
+   define SUBCOMPONENT and include parent component's script_component.hpp
+   currently only supported by SUBADDON, additional macros may be added in the future
 
  TODO:
    - Try only to use 1 string type " vs '
@@ -53,6 +57,10 @@
 
 #define ADDON DOUBLES(PREFIX,COMPONENT)
 #define MAIN_ADDON DOUBLES(PREFIX,main)
+
+#ifdef SUBCOMPONENT
+    #define SUBADDON DOUBLES(ADDON,SUBCOMPONENT)
+#endif
 
 /* -------------------------------------------
 Macro: VERSION_CONFIG
@@ -456,8 +464,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define PFORMAT_1(MESSAGE,A) \
-    format ['%1: A=%2', MESSAGE, RETNIL(A)]
+#define PFORMAT_1(MESSAGE,A) format ['%1: A=%2', MESSAGE, RETNIL(A)]
 
 #define PFORMAT_2(MESSAGE,A,B) \
     format ['%1: A=%2, B=%3', MESSAGE, RETNIL(A), RETNIL(B)]
@@ -857,15 +864,10 @@ Author:
 #define COMPILE_SCRIPT(var1) compileScript ['PATHTO_SYS(PREFIX,COMPONENT_F,var1)']
 
 
-#define VERSIONING_SYS(var1) class CfgSettings \
-{ \
-    class CBA \
-    { \
-        class Versioning \
-        { \
-            class var1 \
-            { \
-            }; \
+#define VERSIONING_SYS(var1) class CfgSettings { \
+    class CBA { \
+        class Versioning { \
+            class var1 {}; \
         }; \
     }; \
 };
@@ -962,8 +964,8 @@ Author:
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 
 #ifdef DISABLE_COMPILE_CACHE
-    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
-    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
+    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preprocessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
+    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preprocessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))'
 #else
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
@@ -1032,12 +1034,9 @@ Author:
 #define QQEFUNC(var1,var2) QUOTE(QEFUNC(var1,var2))
 
 #ifndef PRELOAD_ADDONS
-    #define PRELOAD_ADDONS class CfgAddons \
-{ \
-    class PreloadAddons \
-    { \
-        class ADDON \
-        { \
+    #define PRELOAD_ADDONS class CfgAddons { \
+    class PreloadAddons { \
+        class ADDON { \
             list[]={ QUOTE(ADDON) }; \
         }; \
     }; \
@@ -1275,9 +1274,11 @@ Author:
     #define ELSTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
     #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
+    #define SUBCSTRING(var1) QUOTE(TRIPLES($STR,SUBADDON,var1))
 
     #define LLSTRING(var1) localize QUOTE(TRIPLES(STR,ADDON,var1))
     #define LELSTRING(var1,var2) localize QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
+    #define LSUBLSTRING(var1) localize QUOTE(TRIPLES(STR,SUBADDON,var1))
 #endif
 
 
@@ -1333,7 +1334,7 @@ Author:
 
 /* -------------------------------------------
 Macro: DEFAULT_PARAM()
-    DEPRECATED - Use param/params commands added in Arma 3 1.48
+    DEPRECATED - Use param/params commands added in Arma 3 1.48 - Will not work with HEMTT 1.13.2+
 
     Getting a default function parameter. This may be used together with <PARAMS_n()> to have a mix of required and
     optional parameters.
@@ -1831,3 +1832,26 @@ Author:
     commy2
 ------------------------------------------- */
 #define FILE_EXISTS(FILE) (fileExists (FILE))
+
+/* -------------------------------------------
+Macro: QADDON, QQADDON
+
+Description:
+    Quoted Variant of ADDON
+
+Parameters:
+
+Examples:
+    (begin example)
+    QUOTE(configName _x isEqualTo QUOTE(QUOTE(abe_banana))) configClasses (configFile >> QADDON)
+    (end)
+
+Author:
+    OverlordZorn
+------------------------------------------- */
+#ifndef QADDON
+    #define QADDON QUOTE(ADDON)
+#endif
+#ifndef QQADDON
+    #define QQADDON QUOTE(QUOTE(ADDON))
+#endif

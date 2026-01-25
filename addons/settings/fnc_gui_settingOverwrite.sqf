@@ -70,7 +70,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
         _ctrlOverwriteClient cbSetChecked _wasChecked;
         _ctrlOverwriteClient ctrlEnable (_ctrlOverwriteClient getVariable [QGVAR(enabled), true]);
 
-        _state = [0, 1] select _wasChecked;
+        _state = parseNumber _wasChecked;
         SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
     };
 

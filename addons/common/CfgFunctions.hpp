@@ -3,6 +3,8 @@ class CfgFunctions {
     class CBA {
         class Config {
             PATHTO_FNC(getConfigEntry);
+            PATHTO_FNC(getCfgDataRandom);
+            PATHTO_FNC(getCfgDataHashmap);
             PATHTO_FNC(getObjectConfig);
             PATHTO_FNC(getItemConfig);
             PATHTO_FNC(getMuzzles);
@@ -114,9 +116,16 @@ class CfgFunctions {
             PATHTO_FNC(getNearestBuilding);
         };
 
+        class DateTime {
+            PATHTO_FNC(weekDay);
+        };
+
         class Misc {
+            PATHTO_FNC(convertStringCode);
             PATHTO_FNC(addPerFrameHandler);
             PATHTO_FNC(removePerFrameHandler);
+            PATHTO_FNC(setPerFrameHandlerDelay);
+            PATHTO_FNC(getPerFrameHandlerDelay);
             PATHTO_FNC(createPerFrameHandlerObject);
             PATHTO_FNC(deletePerFrameHandlerObject);
             PATHTO_FNC(addPlayerAction);
@@ -125,11 +134,25 @@ class CfgFunctions {
             PATHTO_FNC(deleteNamespace);
             PATHTO_FNC(allNamespaces);
             PATHTO_FNC(directCall);
+            PATHTO_FNC(getMacro);
             PATHTO_FNC(objectRandom);
             PATHTO_FNC(execNextFrame);
+            PATHTO_FNC(execAfterNFrames);
             PATHTO_FNC(waitAndExecute);
             PATHTO_FNC(waitUntilAndExecute);
             PATHTO_FNC(compileFinal);
+            PATHTO_FNC(createUUID);
+            PATHTO_FNC(escapeRegex);
+            PATHTO_FNC(colorHEXtoDecimal);
+            PATHTO_FNC(colorHEXAtoDecimal);
+            PATHTO_FNC(colorAHEXtoDecimal);
+            PATHTO_FNC(colorRGBtoDecimal);
+            PATHTO_FNC(colorRGBAtoDecimal);
+            PATHTO_FNC(colorARGBtoDecimal);
+            PATHTO_FNC(cssColorToDecimal);
+            PATHTO_FNC(cssColorToHEX);
+            PATHTO_FNC(cssColorToTexture);
+            PATHTO_FNC(attachToBone);
         };
 
         class Broken {

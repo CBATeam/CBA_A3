@@ -6,7 +6,7 @@ Description:
     A function used to randomize a position around a given center
 
 Parameters:
-    _position  - <MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION>
+    _position  - <MARKER, OBJECT, LOCATION, GROUP, TASK or ARRAY>
     _radius    - random Radius <NUMBER>
     _direction - randomization direction (optional, default: 0) <NUMBER>
     _angle     - the angle of the circular arc in which the random position will end up. (optional, default: 360) <NUMBER>

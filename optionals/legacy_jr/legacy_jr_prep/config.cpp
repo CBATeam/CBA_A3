@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-    class ADDON {
+    class SUBADDON {
         author = "$STR_CBA_Author";
-        name = ECSTRING(legacy_jr,component);
+        name = CSTRING(component);
         url = "$STR_CBA_URL";
         units[] = {};
         weapons[] = {};

@@ -9,7 +9,7 @@ GVAR(lastTickTime) = diag_tickTime;
 
 GVAR(waitAndExecArray) = [];
 GVAR(waitAndExecArrayIsSorted) = false;
-GVAR(nextFrameNo) = diag_frameno + 1;
+GVAR(nextFrameNo) = diag_frameNo + 1;
 GVAR(nextFrameBufferA) = [];
 GVAR(nextFrameBufferB) = [];
 GVAR(waitUntilAndExecArray) = [];
@@ -22,9 +22,9 @@ GVAR(waitUntilAndExecArray) = [];
 
     // frame number does not match expected; can happen between pre and postInit, save-game load and on closing map
     // need to manually set nextFrameNo, so new items get added to buffer B and are not executed this frame
-    if (diag_frameno != GVAR(nextFrameNo)) then {
-        TRACE_2("frame mismatch",diag_frameno,GVAR(nextFrameNo));
-        GVAR(nextFrameNo) = diag_frameno;
+    if (diag_frameNo != GVAR(nextFrameNo)) then {
+        TRACE_2("frame mismatch",diag_frameNo,GVAR(nextFrameNo));
+        GVAR(nextFrameNo) = diag_frameNo;
     };
 
     // Execute per frame handlers
@@ -67,7 +67,7 @@ GVAR(waitUntilAndExecArray) = [];
     // Swap double-buffer:
     GVAR(nextFrameBufferA) = GVAR(nextFrameBufferB);
     GVAR(nextFrameBufferB) = [];
-    GVAR(nextFrameNo) = diag_frameno + 1;
+    GVAR(nextFrameNo) = diag_frameNo + 1;
 
 
     // Execute the waitUntilAndExec functions:
@@ -108,6 +108,7 @@ if (isMultiplayer) then {
         [QFUNC(missionTimePFH), {
             SCRIPT(missionTimePFH_server);
             if (time != GVAR(lastTime)) then {
+                //IGNORE_PRIVATE_WARNING ["_tickTime"];
                 CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
                 GVAR(lastTime) = time; // used to detect paused game
             };

@@ -81,7 +81,7 @@ switch (toLower _source) do {
 
         if (_store) then {
             if (!is3DEN) exitWith {
-                WARNING_1("Source is mission, but not in 3DEN editor. Setting: %1",_setting);
+                WARNING_1("Source is mission,but not in 3DEN editor. Setting: %1",_setting);
             };
 
             if (!isNil {GVAR(missionConfig) getVariable _setting}) exitWith {
@@ -118,7 +118,7 @@ switch (toLower _source) do {
                 private _defaultValue = [_setting, "default"] call FUNC(get);
                 private _defaultPriority = SANITIZE_PRIORITY(_setting,0,_source);
 
-                private _settingsHash = profileNamespace getVariable [QGVAR(hash), HASH_NULL];
+                private _settingsHash = GET_LOCAL_SETTINGS_NAMESPACE getVariable [QGVAR(hash), HASH_NULL];
 
                 if ([_value, _priority] isEqualTo [_defaultValue, _defaultPriority]) then {
                     [_settingsHash, toLower _setting] call CBA_fnc_hashRem;
@@ -126,7 +126,7 @@ switch (toLower _source) do {
                     [_settingsHash, toLower _setting, [_value, _priority]] call CBA_fnc_hashSet;
                 };
 
-                profileNamespace setVariable [QGVAR(hash), _settingsHash];
+                GET_LOCAL_SETTINGS_NAMESPACE setVariable [QGVAR(hash), _settingsHash];
                 saveProfileNamespace;
             };
 
@@ -135,7 +135,7 @@ switch (toLower _source) do {
             if ([] call FUNC(whitelisted)) then {
                 [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
             } else {
-                WARNING_1("Source is server, but no admin access. Setting: %1",_setting);
+                WARNING_1("Source is server,but no admin access. Setting: %1",_setting);
                 _return = false;
             };
         };

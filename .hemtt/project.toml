@@ -1,0 +1,31 @@
+name = "CBA_A3"
+mainprefix = "x"
+prefix = "cba"
+author = "CBATeam"
+
+[files]
+include = [
+    "mod.cpp",
+    "README.md",
+    "LICENSE.md",
+    "logo_cba_ca.paa",
+    "meta.cpp",
+    "userconfig/**",
+]
+
+[version]
+git_hash = 0
+
+# Unused in HEMTT v1.11 or higher, kept for backwards compatibility
+[asc]
+enabled = true
+exclude = [
+    ".inc.sqf",
+    "/test_"
+]
+
+[hemtt.config]
+preset = "Hemtt"
+
+[hemtt.release]
+folder = "CBA_A3"

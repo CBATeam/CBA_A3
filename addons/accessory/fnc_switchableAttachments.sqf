@@ -22,7 +22,7 @@ Author:
 
 params ["_item"];
 
-private _cfgWeapons = configfile >> "CfgWeapons";
+private _cfgWeapons = configFile >> "CfgWeapons";
 private _config = _cfgWeapons >> _item;
 
 private _forward = [];
@@ -39,4 +39,10 @@ while {
 } do {};
 
 _forward = _forward + _backward;
-_forward arrayIntersect _forward // return
+_forward = _forward arrayIntersect _forward;
+_forward select {
+    private _item = _x;
+    private _usageArray = GVAR(usageHash) getOrDefault [_x, []];
+    (_usageArray findIf {([_item] call _x) isEqualTo false}) == -1 // none returned false
+} // return
+

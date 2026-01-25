@@ -6,14 +6,14 @@ Description:
     Handles firing a disposable weapon.
 
 Parameters:
-    _unit       - Unit that fired the disposable weapon <OBEJCT>
+    _unit       - Unit that fired the disposable weapon <OBJECT>
     _launcher   - Disposable weapon <STRING>
     _muzzle     - Muzzle fired by the disposable weapon <STRING>
     _mode       - Current weapon mode of the disposable weapon <STRING>
     _ammo       - Ammo fired by the disposable weapon <STRING>
     _magazine   - Current magazine of the disposable weapon <STRING>
-    _projectile - Fired projectile <OBEJCT>
-    _unit       - Always same as element 0 <OBEJCT>
+    _projectile - Fired projectile <OBJECT>
+    _unit       - Always same as element 0 <OBJECT>
 
 Returns:
     Nothing.
@@ -33,7 +33,7 @@ if (!GVAR(replaceDisposableLauncher)) exitWith {};
 
 params ["_unit", "_launcher", "_muzzle", "", "", "", "_projectile"];
 
-private _usedLauncher = GVAR(UsedLaunchers) getVariable _launcher;
+private _usedLauncher = GVAR(UsedLaunchers) get _launcher;
 if (isNil "_usedLauncher") exitWith {};
 
 [{

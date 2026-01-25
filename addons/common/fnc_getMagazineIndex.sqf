@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _unit     - Unit to check <OBJECT>
-    _magazine - Magazines to check <OBJECT>
+    _magazine - Magazines to check <STRING>
 
 Returns:
     Magazine IDs <ARRAY of STRINGS>
@@ -23,4 +23,4 @@ private _displayName = getText (configFile >> "CfgMagazines" >> _magazine >> "di
 
 if (_displayName isEqualTo "") exitWith {[]};
 
-magazinesDetail _unit select {_x find _displayName == 0} apply {_x = _x splitString "[:]"; _x select (count _x - 1)};
+magazinesDetail _unit select {_x find _displayName == 0} apply {_x = _x splitString "[:]"; _x select -1};

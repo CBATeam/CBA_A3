@@ -6,7 +6,7 @@ Description:
     Removes specific backpack(s) from cargo space.
 
     Warning: All weapon attachments/magazines in all backpacks in container will become detached.
-    Warning: Preset weapons without non-preset parents will get their attachments readded (engine limitation).
+    Warning: Preset weapons without non-preset parents will get their attachments re-added (engine limitation).
 
 Parameters:
     _container    - Object with cargo <OBJECT>
@@ -67,7 +67,7 @@ private _backpackData = [];
     _backpackData pushBack [typeOf _x, getItemCargo _x, magazinesAmmoCargo _x, weaponsItemsCargo _x];
 } forEach (everyBackpack _container); // [object1, object2, ...]
 
-// Clear cargo space and readd the items as long it's not the type in question
+// Clear cargo space and re-add the items as long as it's not the type in question
 clearBackpackCargoGlobal _container;
 
 
@@ -120,10 +120,10 @@ private _fnc_addContents = {
             [_container, _itemCargo, _magazinesAmmoCargo, _weaponsItemsCargo] call _fnc_addContents;
         };
     } else {
-        // Save all backpacks for finding the one we readd after this
+        // Save all backpacks for finding the one we re-add after this
         private _addedBackpacks = everyBackpack _container;
 
-        // Readd
+        // Re-add
         private _backpack = [_backpackClass, "CfgVehicles"] call CBA_fnc_getNonPresetClass;
         _container addBackpackCargoGlobal [_backpack, 1];
 

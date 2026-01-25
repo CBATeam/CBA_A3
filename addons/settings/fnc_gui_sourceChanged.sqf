@@ -32,6 +32,7 @@ private _selectedAddon = uiNamespace getVariable QGVAR(addon);
 
 (_display displayCtrl IDC_TXT_OVERWRITE_CLIENT) ctrlShow (_selectedSource isNotEqualTo "client");
 (_display displayCtrl IDC_TXT_OVERWRITE_MISSION) ctrlShow (_selectedSource isEqualTo "server");
+(_display displayCtrl IDC_TXT_VOLATILE_WARNING) ctrlShow (_selectedSource isEqualTo "server" && GVAR(volatile));
 
 // enable / disable IMPORT and LOAD buttons
 private _ctrlButtonImport = _display displayCtrl IDC_BTN_IMPORT;

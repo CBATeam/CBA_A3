@@ -13,15 +13,15 @@ class CfgFunctions {
 
             class preStart {
                 preStart = 1;
-                file = PATHTOF(fnc_preStart.sqf);
+                file = QPATHTOF(fnc_preStart.sqf);
             };
             class preInit {
                 preInit = 1;
-                file = PATHTOF(fnc_preInit.sqf);
+                file = QPATHTOF(fnc_preInit.sqf);
             };
             class postInit {
                 postInit = 1;
-                file = PATHTOF(fnc_postInit.sqf);
+                file = QPATHTOF(fnc_postInit.sqf);
             };
         };
     };
@@ -29,15 +29,15 @@ class CfgFunctions {
     class A3 {
         class GUI {
             class initDisplay {
-                file = PATHTOF(fnc_initDisplay.sqf);
+                file = QPATHTOF(fnc_initDisplay.inc.sqf);
             };
         };
         class Misc {
             class startLoadingScreen {
-                file = PATHTOF(fnc_startLoadingScreen.sqf);
+                file = QPATHTOF(fnc_startLoadingScreen.inc.sqf);
             };
             class endLoadingScreen {
-                file = PATHTOF(fnc_endLoadingScreen.sqf);
+                file = QPATHTOF(fnc_endLoadingScreen.inc.sqf);
             };
         };
     };

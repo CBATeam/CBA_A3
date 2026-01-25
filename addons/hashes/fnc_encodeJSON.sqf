@@ -16,6 +16,7 @@ Description:
     - STRING
     - TASK
     - TEAM_MEMBER
+    - HASHMAP
     - Everything else will simply be stringified.
 
 Parameters:
@@ -77,6 +78,19 @@ switch (typeName _object) do {
         };
     };
 
+    case "HASHMAP": {
+        private _json = ((_object toArray false) apply {
+            _x params ["_key", ["_value", objNull]];
+
+            if !(_key isEqualType "") then {
+                _key = str _key;
+            };
+
+            format ["%1: %2", [_key] call CBA_fnc_encodeJSON, [_value] call CBA_fnc_encodeJSON]
+        }) joinString ", ";
+        "{" + _json + "}"
+    };
+
     default {
         if !(typeName _object in (supportInfo "u:allVariables*" apply {_x splitString " " select 1})) exitWith {
             [str _object] call CBA_fnc_encodeJSON
@@ -86,7 +100,7 @@ switch (typeName _object) do {
 
         private _json = ((allVariables _object) apply {
             private _name = _x;
-            private _value = _object getVariable _name;
+            private _value = _object getVariable [_name, objNull];
 
             format ["%1: %2", [_name] call CBA_fnc_encodeJSON, [_value] call CBA_fnc_encodeJSON]
         }) joinString ", ";

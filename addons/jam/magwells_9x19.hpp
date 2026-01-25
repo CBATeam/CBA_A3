@@ -1,3 +1,14 @@
+    class CBA_9x19_1rnd {};       // 1 loose round of 9x19mm Parabellum
+    class CBA_9x19_2rnds {};      // 2 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_3rnds {};      // 3 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_4rnds {};      // 4 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_5rnds {};      // 5 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_6rnds {};      // 6 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_7rnds {};      // 7 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_8rnds {};      // 8 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_9rnds {};      // 9 loose rounds of 9x19mm Parabellum
+    class CBA_9x19_10rnds {};     // 10 loose rounds of 9x19mm Parabellum
+
     class CBA_9x19_C96 {};          // Mauser C-96 in 9x19mm
     class CBA_9x19_CZ2075 {};       // Subcompact CZ 2075 in 9x19mm
     class CBA_9x19_CZ75_Cpct {};    // Compact CZ 75, CZ 85 in 9x19mm
@@ -15,7 +26,9 @@
     class CBA_9x19_HiPower {};      // Browning HiPower
     class CBA_9x19_M9 {};           // Beretta M9
     class CBA_9x19_MAB38 {};        // Beretta Model 38
-    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28, MP35
+    class CBA_9x19_MAC10 {};        // MAC-10, M-10, M10, Military Armament Corporation Model 10 in 9x19mm
+    class CBA_9x19_MP28 {};         // MP18 Straight Magazines, MP28
+    class CBA_9x19_MP35 {};         // MP35
     class CBA_9x19_MP40 {};         // MP40, MP38
     class CBA_9x19_MP443 {};        // MP-443 Grach
     class CBA_9x19_MP5 {            // H&K MP5
@@ -48,10 +61,14 @@
             "30Rnd_9x21_Green_Mag"
         };
     };
-    class CBA_9x19_STEN {};         // STEN
+    class CBA_9x19_STEN {};         // STEN, Lanchester SMG
+    class CBA_9x19_Sterling {};     // Sterling SMG
     class CBA_9x19_STEYR {};        // AUG SMG, MPi, TMP
     class CBA_9x19_TT {};           // TT-33 Tokarev in 9x19mm (M48, Tokagypt 58, Type 54)
     class CBA_9x19_UMP {};          // HK UMP 9
+    class CBA_9x19_USP {};          // HK USP, USP9, USP Tactical, P8, P8A1 in 9x19mm
+    class CBA_9x19_USP_C {};        // HK USP Compact, P10 in 9x19mm
+    class CBA_9x19_USP_E {};        // HK USP Match/Expert/Elite in 9x19mm
     class CBA_9x19_UZI {};          // UZI
     class CBA_9x19_UZI_Pro {};      // UZI Pro
     class CBA_9x19_Vis {};          // wz. 35 Vis (Radom)

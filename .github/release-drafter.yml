@@ -26,8 +26,6 @@ exclude-labels:
 
 change-template: '- $TITLE (#$NUMBER) **$AUTHOR**'
 template: |
-  DESCRIPTION HERE
-
   $CHANGES
 
   Change log for [CBA v$NEXT_PATCH_VERSION](https://github.com/CBATeam/CBA_A3/milestone/00?closed=1)

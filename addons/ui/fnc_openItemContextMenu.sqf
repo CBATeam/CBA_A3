@@ -7,7 +7,9 @@ Description:
 
 Parameters:
     _display - RscDisplayInventory display <DISPLAY>
+    _container - Container <OBJECT>
     _item    - Item classname <STRING>
+    _slot    - Slot type <STRING>
 
 Returns:
     Nothing/Undefined.
@@ -18,7 +20,7 @@ Examples:
     (end)
 
 Author:
-    commy2 & 10Dozen
+    commy2, Zorn, 10Dozen
 ---------------------------------------------------------------------------- */
 
 params ["_display", "_container", "_item", "_slot"];
@@ -28,21 +30,21 @@ if (_item isEqualTo "") exitWith {};
 // Read context menu options.
 private _config = _item call CBA_fnc_getItemConfig;
 
-private _options = [];
+private _options = createHashMap;
 while {
-    _options append (GVAR(ItemContextMenuOptions) get configName _config);
+    _options merge (GVAR(ItemContextMenuOptions) get configName _config);
     _config = inheritsFrom _config;
     !isNull _config
 } do {};
 
 // Read unique class options (not inherited)
-_options append (GVAR(ItemContextMenuUniqueOptions) getOrDefault [_item, []]);
+_options merge (GVAR(ItemContextMenuUniqueOptions) getOrDefault [_item, []]);
 
 // Read type and wildcard options
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
-_options append (GVAR(ItemContextMenuOptions) getOrDefault [format ["##%1", _itemType2], []]);
-_options append (GVAR(ItemContextMenuOptions) getOrDefault [format ["#%1", _itemType1], []]);
-_options append (GVAR(ItemContextMenuOptions) getOrDefault ["#All", []]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["##%1", _itemType2], createHashMap]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["#%1", _itemType1], createHashMap]);
+_options merge (GVAR(ItemContextMenuOptions) getOrDefault ["#All", createHashMap]);
 
 // Skip menu if no options.
 if (_options isEqualTo []) exitWith {};
@@ -52,12 +54,18 @@ if (_options isEqualTo []) exitWith {};
 // ctrlSetBackgroundColor command does not seem to work for RscListBox.
 private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 
+private _font = getText (configFile >> QGVAR(ItemContextMenu) >> "font");
+private _fontSize = getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _longestName = "";
+private _unit = call CBA_fnc_currentUnit;
+
 // ---
 // Populate context menu with options.
 {
-    _x params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
+    _x params ["_id"];
+    _y params ["_slots", "_displayName", "_tooltip", "_color", "_icon", "_conditionEnable", "_conditionShow", "_statement", "_consume", "_params"];
 
-    private _args = [_unit, _container, _item, _slot, _params];
+    private _args = [_unit, _container, _item, _slot, _params, _id];
     if (isLocalized _displayName) then {
         _displayName = localize _displayName;
     };
@@ -67,8 +75,12 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
     };
 
     if ((_slot in _slots || {"ALL" in _slots}) && {_args call _conditionShow}) then {
+        if (count _longestName < count _displayName) then {
+            _longestName = _displayName;
+        };
+
         private _index = _list lbAdd _displayName;
-        _list lbSetTooltip [_index, "_tooltip"]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
+        _list lbSetTooltip [_index, _tooltip]; // Does not seem to work for RscDisplayInventory controls? Hard coded overwrite?
 
         private _key = format [QGVAR(OptionData%1), _index];
 
@@ -106,11 +118,11 @@ private _list = _display ctrlCreate [QGVAR(ItemContextMenu), -1];
 // Execute context menu option statement on selection.
 _list setVariable [QFUNC(activate), {
     params ["_list", "_index"];
-    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_this"];
+    _list getVariable (_list lbData _index) params ["_condition", "_statement", "_consume", "_args"];
 
-    if (_this call _condition) then {
+    if (_args call _condition) then {
         if (_consume) then {
-            params ["_unit", "_container", "_item", "_slot"];
+            _args params ["_unit", "_container", "_item", "_slot", "_id"];
 
             if !([_unit, _item, _slot, _container] call CBA_fnc_consumeItem) then {
                 ERROR_2("Cannot consume item %1 from %2.",_item,_slot);
@@ -120,9 +132,9 @@ _list setVariable [QFUNC(activate), {
 
         // Call statement and safe check return value.
         private _keepOpen = [nil] apply {
-            private _this = [_this, _statement];
+            private _args = [_args, _statement];
             private ["_list", "_index", "_condition", "_statement", "_consume"];
-            (_this select 0) call (_this select 1) // return
+            (_args select 0) call (_args select 1) // return
         } param [0, false] isEqualTo true;
 
         // If statement returned true, keep context menu open, otherwise close.
@@ -135,19 +147,17 @@ _list setVariable [QFUNC(activate), {
     };
 }];
 
-_list ctrlAddEventHandler ["lbDblClick", {
-    params ["_list"];
-    _this call (_list getVariable QFUNC(activate));
+_list ctrlAddEventHandler ["LBSelChanged", {
+    [{
+        params ["_list"];
+        _this call (_list getVariable QFUNC(activate));
+    }, _this] call CBA_fnc_execNextFrame;
 }];
-
 _list ctrlAddEventHandler ["KeyDown", {
-    params ["_list", "_key"];
-    if (_key in [DIK_RETURN, DIK_NUMPADENTER]) then {
-        [_list getVariable QFUNC(activate), [_list, lbCurSel _list]] call CBA_fnc_execNextFrame;
-
-        // Set focus on background to prevent the inventory menu from auto closing.
-        ctrlSetFocus (ctrlParent _list displayCtrl IDC_FG_GROUND_TAB);
-    };
+    params ["", "_key"];
+    // keyboard's Up/Down events intercepted to prevent LBSelChanged event
+    if !(_key in [DIK_UP, DIK_DOWN]) exitWith {};
+    true
 }];
 
 // ---
@@ -158,8 +168,8 @@ getMousePosition params ["_left", "_top"];
 _left = _left - pixelW;
 _top = _top - pixelH;
 
-private _width = ctrlPosition _list select 2;
-private _height = lbSize _list * getNumber (configFile >> ctrlClassName _list >> "sizeEx");
+private _width = (ctrlPosition _list select 2) max ((_longestName getTextWidth [_font, _fontSize]) + TEXT_MARGINS_WIDTH + RSCLISTBOX_PICTURE_WIDTH);
+private _height = lbSize _list * _fontSize;
 
 _list ctrlSetPosition [_left, _top, _width, _height];
 _list ctrlCommit 0;

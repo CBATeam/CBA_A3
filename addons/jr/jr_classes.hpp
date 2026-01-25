@@ -1,7 +1,7 @@
 //ASDG prefixed original classes preserved to ensure compatibility
 
 class asdg_SlotInfo { // Base class
-    scope = private;
+    scope = 0;
     linkProxy = "defaultProxy";
     iconPosition[] = {0.0, 0.0};
     iconScale = 0.0;
@@ -194,6 +194,12 @@ class asdg_OpticSideRail_AKSVD: asdg_OpticSideMount {
     };
 };
 
+class asdg_OpticSideRail_RPG7: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        // side plate that fits RPG-7
+    };
+};
+
 // Muzzle slots
 
 class asdg_MuzzleSlot_762: asdg_MuzzleSlot { // for 7.62x51 universal mount suppressors
@@ -280,7 +286,7 @@ class asdg_MuzzleSlot_762R: asdg_MuzzleSlot { // for 7.62x39 suppressors
     class compatibleItems {};
 };
 
-class asdg_MuzzleSLot_762R_VZ58: asdg_MuzzleSlot { // for 7.62x39 Sa vz. 58 (M14x1 threading)
+class asdg_MuzzleSlot_762R_VZ58: asdg_MuzzleSlot { // for 7.62x39 Sa vz. 58 (M14x1 threading)
     class compatibleItems {};
 };
 

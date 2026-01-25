@@ -6,7 +6,7 @@ Description:
     Find the nearest building and number of building positions available.
 
 Parameters:
-    _position - <OBJECT, POSITION>
+    _position - <OBJECT, ARRAY>
 
 Example:
     (begin example)

@@ -51,10 +51,13 @@ class CfgFunctions {
             PATHTO_FNC(notify);
             PATHTO_FNC(openLobbyManager);
             PATHTO_FNC(progressBar);
+            PATHTO_FNC(renameInventoryItem);
         };
 
         class ItemContextMenu {
             PATHTO_FNC(addItemContextMenuOption);
+            PATHTO_FNC(removeItemContextMenuOption);
+            PATHTO_FNC(getItemContextMenuOptionIDs);
             PATHTO_FNC(consumeItem);
         };
     };

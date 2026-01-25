@@ -28,10 +28,10 @@ private _weapon = format["%1", currentWeapon _man];
 private _pos = "";
 
 if (_weapon != "") then {
-    _class = configFile >> "CfgWeapons" >> _weapon;
+    private _class = configFile >> "CfgWeapons" >> _weapon;
 
     if (isClass _class) then {
-        _temp = "";
+        private _temp = "";
         while { isClass _class && {_temp == ""} } do {
             _temp = switch (configName _class) do {
                 case "RifleCore": {"rfl"};
@@ -50,7 +50,7 @@ if (_weapon != "") then {
 };
 
 if (typeName (_array select 0) == "ARRAY") then {
-    _stance = (_man call CBA_fnc_getUnitAnim) select 0;
+    private _stance = (_man call CBA_fnc_getUnitAnim) select 0;
     _pos = switch ( _stance ) do {
         case "stand": {0};
         case "kneel": {1};

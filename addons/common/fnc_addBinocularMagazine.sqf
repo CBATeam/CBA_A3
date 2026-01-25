@@ -5,8 +5,6 @@ Function: CBA_fnc_addBinocularMagazine
 Description:
     Adds a magazine to the units rangefinder.
 
-    Note that this breaks the unique magazine ids due to the usage of setUnitLoadout.
-
 Parameters:
     _unit     - A unit <OBJECT>
     _magazine - The magazine to add <STRING>
@@ -30,11 +28,4 @@ params [["_unit", objNull, [objNull]], ["_magazine", "", [""]], ["_ammo", nil, [
 
 if (!local _unit) exitWith {};
 
-if (isNil "_ammo") then {
-    _ammo = getNumber (configFile >> "CfgMagazines" >> _magazine >> "count");
-};
-
-private _loadout = getUnitLoadout _unit;
-(_loadout select 8) set [4, [_magazine, _ammo]];
-
-_unit setUnitLoadout _loadout;
+_unit addWeaponItem [binocular _unit, [_magazine, _ammo], true];

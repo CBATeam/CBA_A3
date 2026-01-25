@@ -1,3 +1,14 @@
+    class CBA_380ACP_1rnd {};       // 1 loose round of .380 ACP
+    class CBA_380ACP_2rnds {};      // 2 loose rounds of .380 ACP
+    class CBA_380ACP_3rnds {};      // 3 loose rounds of .380 ACP
+    class CBA_380ACP_4rnds {};      // 4 loose rounds of .380 ACP
+    class CBA_380ACP_5rnds {};      // 5 loose rounds of .380 ACP
+    class CBA_380ACP_6rnds {};      // 6 loose rounds of .380 ACP
+    class CBA_380ACP_7rnds {};      // 7 loose rounds of .380 ACP
+    class CBA_380ACP_8rnds {};      // 8 loose rounds of .380 ACP
+    class CBA_380ACP_9rnds {};      // 9 loose rounds of .380 ACP
+    class CBA_380ACP_10rnds {};     // 10 loose rounds of .380 ACP
+
     class CBA_380ACP_CZ82 {};           // CZ 82, CZ-83
     class CBA_380ACP_Fort12 {};         // Fort-12
     class CBA_380ACP_Glock_Slim {};     // Slimline Glock in .380 ACP (Glock 42)

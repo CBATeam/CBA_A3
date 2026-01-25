@@ -12,7 +12,7 @@ Parameters:
     _container - the vehicle <OBJECT>
     _item      - name of weapon <STRING>
     _count     - number of weapons to add <NUMBER> (Default: 1)
-    _verify    - if true, then put item on the ground if it can't be added <BOOLEAN>
+    _verify    - if true, then put item on the ground if it can't be added <BOOLEAN> (Default: false)
 
 Returns:
     true on success, false otherwise <BOOLEAN>

@@ -23,7 +23,7 @@ SCRIPT(isAlive);
 
 [_this] params [["_entity", objNull, [objNull, grpNull, []]]];
 
-switch (typename _entity) do {
+switch (typeName _entity) do {
     case "ARRAY" : {
         private _return = false;
 
@@ -39,7 +39,7 @@ switch (typename _entity) do {
         alive _entity;
     };
     case "GROUP" : {
-        if (isnull (leader _entity)) then {
+        if (isNull (leader _entity)) then {
             false
         } else {
             (units _entity) call CBA_fnc_isAlive

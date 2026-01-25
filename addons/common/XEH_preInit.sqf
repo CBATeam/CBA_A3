@@ -54,7 +54,7 @@ GVAR(addons) = call (uiNamespace getVariable [QGVAR(addons), {[]}]);
 activateAddons GVAR(addons);
 
 // BWC
-#include "backwards_comp.sqf"
+#include "backwards_comp.inc.sqf"
 
 // fix changing direction of remote units not working with zeus
 ["ModuleCurator_F", "init", {
@@ -76,5 +76,8 @@ activateAddons GVAR(addons);
 
 // Facewear randomization
 ["CAManBase", "InitPost", CBA_fnc_randomizeFacewear] call CBA_fnc_addClassEventHandler;
+
+// Load preStart css color array
+GVAR(cssColorNames) = uiNamespace getVariable QGVAR(cssColorNames);
 
 ADDON = true;

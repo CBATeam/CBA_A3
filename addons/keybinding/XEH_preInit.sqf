@@ -1,11 +1,13 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-if (!hasInterface) exitWith {};
-
-#include "XEH_PREP.sqf"
-
 ADDON = false;
+
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
+
+#include "XEH_PREP.hpp"
 
 // Load DIK to string conversion table.
 with uiNamespace do {

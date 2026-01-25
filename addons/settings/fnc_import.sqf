@@ -6,7 +6,7 @@ Description:
     Import all setting info from string.
 
 Parameters:
-    _info   - Formated settings info, (from CBA_settings_fnc_export) <STRING>
+    _info   - Formatted settings info, (from CBA_settings_fnc_export) <STRING>
     _source - Can be "client", "mission" or "server" (optional, default: "client") <STRING>
 
 Returns:
@@ -18,7 +18,7 @@ Author:
 
 params [["_info", "", [""]], ["_source", "client", [""]]];
 
-_info = [_info, true, _source] call FUNC(parse);
+_info = [_info, true, _source, false] call FUNC(parse);
 
 {
     _x params ["_setting", "_value", "_priority"];

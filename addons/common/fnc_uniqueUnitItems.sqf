@@ -3,7 +3,7 @@
 Function: CBA_fnc_uniqueUnitItems
 
 Description:
-    Retrievs a unique list of items in the units inventory.
+    Retrieves a unique list of items in the units inventory.
 
 Parameters:
     _unit           - Unit to retrieve the items from
@@ -16,7 +16,7 @@ Parameters:
 
 Example:
     (begin example)
-    _allItems = [player, true, false] call CBA_fnc_uniqueUnitItems
+        _allItems = [player, true, false] call CBA_fnc_uniqueUnitItems
     (end)
 
 Returns:

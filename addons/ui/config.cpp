@@ -60,7 +60,7 @@ class _flexiMenu_RscShortcutButton: RscShortcutButton {
         left = -0.006;
         top = -0.007;
         w = 0.0392157;
-        h = 2*(safeZoneH/36); //0.0522876;
+        h = QUOTE(2*(safeZoneH/36)); //0.0522876;
     };
     class TextPos {
         left = 0.01; // indent

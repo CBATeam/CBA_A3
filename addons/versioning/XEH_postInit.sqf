@@ -11,7 +11,7 @@ if (!SLX_XEH_DisableLogging) then {
     [GVAR(versions), { _logMsgs pushBack format["%1=%2", _key, ([_value select 0, _filter] call CBA_fnc_filter) joinString "."]}] call CBA_fnc_hashEachPair;
     private _logMsg = _logMsgs joinString ", ";
 
-    INFO_2("%1 VERSIONING:%2", [ARR_3(diag_frameNo, diag_tickTime, time)], _logMsg);
+    INFO_2("%1 VERSIONING:%2",[ARR_3(diag_frameNo,diag_tickTime,time)],_logMsg);
 };
 
 // Dependency check and warn
@@ -27,7 +27,7 @@ if (!SLX_XEH_DisableLogging) then {
         private _class = (configFile >> "CfgPatches" >> (_dependencyInfo select 0));
         private _dependencyIsPresent = call compile format ["%1", (_dependencyInfo select 2)];
         if ((isNil "_dependencyIsPresent") || {!(_dependencyIsPresent isEqualType false)}) then {
-            //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" durring binarization
+            //https://dev.withsix.com/issues/74516 - The code could return non-bool, if "true" is converted to "1" during binarization
             WARNING("Versioning conditional return is bad" + str _x);
             _dependencyIsPresent = true;
         };

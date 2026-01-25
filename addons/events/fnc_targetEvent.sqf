@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _eventName - Type of event to publish. <STRING>
-    _params    - Parameters to pass to the event handlers. <ANY>
+    _params    - Parameters to pass to the event handlers. <ANY> (optional)
     _targets   - Where to execute events. <OBJECT, GROUP, ARRAY>
 
 Returns:

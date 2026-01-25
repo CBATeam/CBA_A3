@@ -6,7 +6,7 @@ Description:
     Deletes a namespace created with CBA_fnc_createNamespace.
 
 Parameters:
-    _namespace - a namespace <LOCATION>
+    _namespace - a namespace <LOCATION or OBJECT>
 
 Returns:
     None

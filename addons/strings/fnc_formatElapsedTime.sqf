@@ -34,7 +34,7 @@ private _minutes = floor (_seconds / 60);
 _seconds = _seconds - (_minutes * 60);
 
 // Add the milliseconds if required.
-_elapsed = switch (_format) do {
+private _elapsed = switch (_format) do {
     case "H:MM:SS": {
         format ["%1:%2:%3",
             _hours,

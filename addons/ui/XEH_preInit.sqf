@@ -2,7 +2,7 @@
 
 ADDON = false;
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 if (hasInterface) then {
     call COMPILE_FILE(flexiMenu\init);
@@ -15,6 +15,7 @@ if (hasInterface) then {
     }];
 
     PREP(openItemContextMenu);
+    PREP(getInventoryItemData);
 };
 
 // legacy function names

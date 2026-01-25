@@ -1,12 +1,12 @@
 disableSerialization;
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 //-----------------------------------------------------------------------------
 // TODO: Menu string parameter substitutions. Eg: _action="[%ID%] call func". Eg: %ID%,<ID>
 // TODO: Consider adding: a base IDC override value.
 // TODO: Consider adding: a max buttons override value.
 // TODO: Consider adding: x,y menu offsets override values.
-// TODO: Consider adding: auto centering x,y menu offsets. Each menu dialog may need it's own center.sqf script.
+// TODO: Consider adding: auto centering x,y menu offsets. Each menu dialog may need its own center.sqf script.
 // TODO: Consider adding: menu properties source value.
 // TODO: Consider adding: "stay open" menu or menu option property (see menuStayOpenUponSelect), eg: for NV adjustment or VD adjustment, etc. TODO: Clarify: presumably upon releasing interact key. Close with right click.
 // TODO: Consider adding: pass parameters [object, caller] to action
@@ -21,7 +21,7 @@ disableSerialization;
 // TODO: _minObjectInteractionDistance: Find a very fast way to determine vehicle size and orientation to calc suitable dist.
 
 // Desc: Determine which menu resource to display. Create and init the menu using menu def's param.
-// Pass optional paramters (if used) to determine which menu to use and/or alter it's properties.
+// Pass optional parameters (if used) to determine which menu to use and/or alter its properties.
 
 // Note: Side effect of merging menus is that only the header of the first menu is retained.
 // TODO: Losing secondary headers will lose things like iconFolder. Perhaps auto merge into menuOptions in advance.
@@ -43,7 +43,7 @@ disableSerialization;
 // Syntax 3: [_source, _params]
 //   _this select 0 = menu definition source string
 //   _this select 1 = optional menu script parameters (type: any, syntax: any). Eg: ['menu name', 'menu resource name']
-//   Eg 3: array: [menu definition source string, paramters]. Eg: ["mission\ammoCrate_menuDef.sqf", ["main", _menuRsc]]
+//   Eg 3: array: [menu definition source string, parameters]. Eg: ["mission\ammoCrate_menuDef.sqf", ["main", _menuRsc]]
 //-----------------------------------------------------------------------------
 /* submenu is either:
     a menuDef array variable, - typeName "array"
@@ -71,7 +71,7 @@ disableSerialization;
 Note: visible allows value -1 (instead of 0) to make the current button be re-used for the next menu item, rather than hidden and left as a gap. It is dependent on the design of the menu dialog used.
 */
 
-// For each menu option, only the caption and action are required paramters. The other parameters are optional.
+// For each menu option, only the caption and action are required parameters. The other parameters are optional.
 /*
 [
     ["Menu Name": type Any, "Menu Caption": string, "menu dialog class or suffix id": string, "\ca\ui\data\": string, "menuStayOpenUponSelect": boolean],
@@ -96,8 +96,8 @@ _msg = "";
 _msg = format ["%1: Invalid params type: %2", __FILE__, _this];
 
 if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_menu.sqf"};
-if !(typeName _this in [typeName [], typeName ""]) exitWith {diag_log _msg};
-TRACE_2("INPUT Params",_this select 0, _this select 1);
+if !(typeName _this in ["ARRAY", "STRING"]) exitWith {diag_log _msg};
+TRACE_2("INPUT Params",_this select 0,_this select 1);
 
 _menuDefs = _this call FUNC(getMenuDef);
 TRACE_1("Get Menu Defs",_menuDefs);
@@ -105,7 +105,7 @@ TRACE_1("Get Menu Defs",_menuDefs);
 
 //Array must be returned.
 if (isNil "_menuDefs") then {diag_log format ["%1: Nil Warning: Expected type array from _menuDefs from target: %2 from source: %3", __FILE__, _this select 0, _this select 1]};
-if (typeName _menuDefs != typeName []) exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
+if (typeName _menuDefs != "ARRAY") exitWith {diag_log format ["%1: Invalid params c5: %2", __FILE__, _this]};
 
 // Empty Array is allowed to signify that nothing should happen
 if (count _menuDefs == 0) exitWith {
@@ -120,7 +120,7 @@ _menuRsc = _menuDefs select 0 select _flexiMenu_menuProperty_ID_menuResource; //
 
 TRACE_2("Determined which dialog to show",_flexiMenu_menuProperty_ID_menuResource,_menuRsc);
 
-if (typeName _menuRsc != typeName "") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
+if (typeName _menuRsc != "STRING") exitWith {diag_log format ["%1: Invalid params c4: %2", __FILE__, _this]};
 if (!isClass (configFile >> _menuRsc) && {!isClass (missionConfigFile >> _menuRsc)}) then { // if not a full class name
     _menuRsc = __menuRscPrefix + _menuRsc; // attach standard flexi menu prefix
 };
@@ -138,9 +138,9 @@ IfCountDefault(_caption,(_menuDefs select 0),_flexiMenu_menuProperty_ID_menuDesc
 (_disp displayCtrl _flexiMenu_IDC_listMenuDesc) ctrlShow false;
 
 _menuSources = _this select 1;
-GVAR(keyDownEHID) = _disp displayAddEventHandler ["keyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
+GVAR(keyDownEHID) = _disp displayAddEventHandler ["KeyDown", format ["[_this, [%1, %2]] call %3", QGVAR(target), _menuSources, QUOTE(FUNC(menuShortcut))]];
 
-_disp displayAddEventHandler ["mouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
+_disp displayAddEventHandler ["MouseButtonDown", format ["_this call %1", QUOTE(FUNC(mouseButtonDown))]];
 
 _idcIndex = 0;
 
@@ -179,7 +179,7 @@ _commitList = [];
         _visible = _menuOption select _flexiMenu_menuDef_ID_visible;
 
         if (_caption != "" && {(_caption != "No options" || {_idcIndex == 0})}) then {
-            _ctrl = _disp displayCtrl _idc;
+            private _ctrl = _disp displayCtrl _idc;
             _array = ctrlPosition _ctrl;
             if ({_x == 0} count _array == 4) then {
                 if (!isNull _disp) exitWith {
@@ -195,7 +195,7 @@ _commitList = [];
             _ctrl ctrlCommit 0; // commit pos/size before showing
 
             _ctrl ctrlSetStructuredText parseText _caption;
-            _ctrl ctrlSetToolTip _tooltip;
+            _ctrl ctrlSetTooltip _tooltip;
             buttonSetAction [_idc, _action];
 
             _commitList pushBack [_idc, _enabled, _visible];
@@ -214,7 +214,7 @@ _commitList = [];
 if (_idcIndex == 0) then {
     // TODO: This block is duplicate code from above. Find a tidy way to merge this back with code above, by adding fake "No options" menu option.
     _idc = _flexiMenu_baseIDC_button + _idcIndex;
-    _ctrl = _disp displayCtrl _idc;
+    private _ctrl = _disp displayCtrl _idc;
     _array = ctrlPosition _ctrl;
 
     if (_array select 2 == 0) then {
@@ -245,7 +245,7 @@ if (_idcIndex == 0) then {
 // Note: BIS bug: you still need to disable hidden RscShortcutButton(s) because you can tab to them otherwise!
 for "_i" from _idcIndex to (_flexiMenu_maxButtons - 1) do {
     _idc = _flexiMenu_baseIDC_button + _i;
-    _ctrl = _disp displayCtrl _idc;
+    private _ctrl = _disp displayCtrl _idc;
     _ctrl ctrlShow false;
     _ctrl ctrlEnable false;
 };

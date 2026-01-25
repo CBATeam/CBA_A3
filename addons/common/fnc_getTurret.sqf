@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _vehicle    - Vehicle or vehicle class name or vehicle config <STRING, OBJECT, CONFIG>
-    _turretPath - Turret path <ARRAY>
+    _turretPath - Turret path <ARRAY> (Default: [])
 
 Example:
     (begin example)

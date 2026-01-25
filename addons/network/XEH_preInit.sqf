@@ -2,7 +2,7 @@
 
 ADDON = false;
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 // Restore loadouts lost by the naked unit bug
 [QGVAR(validateLoadout), {

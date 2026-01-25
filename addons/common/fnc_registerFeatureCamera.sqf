@@ -25,15 +25,15 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(registerFeatureCamera);
 
-params [["_name", "", [""]], ["_callback", false, [{}]]];
+params [["_name", "", [""]], ["_callback", {}, [{}]]];
 
 if (_name isEqualTo "") exitWith {
     TRACE_1("Name empty",_name);
     false
 };
 
-if (_callback isEqualTo false) exitWith {
-    TRACE_1("Callback not code",_name);
+if (_callback isEqualTo {}) exitWith {
+    TRACE_1("Callback not code/empty",_name);
     false
 };
 

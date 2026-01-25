@@ -1,5 +1,5 @@
 //#define DEBUG_MODE_FULL
-#include "\x\cba\addons\ui\script_component.hpp"
+#include "..\script_component.hpp"
 
 TRACE_1("",_this);
 
@@ -14,12 +14,12 @@ _msg = format ["Error: invalid params. %1 (%2)", _this, __FILE__];
 
 if (isNil "_msg") then  {_msg = "FLEXIMENU: Unknown Error in fnc_add.sqf"};
 if (isNil QUOTE(GVAR(typeMenuSources))) exitWith {diag_log "Error: TypeMenuSources invalid"};
-if (typeName _this != typeName []) exitWith {diag_log _msg};
+if (typeName _this != "ARRAY") exitWith {diag_log _msg};
 if (count _this < 4 || {count _this > 5}) exitWith {diag_log "Error: Too few or too many arguments"};
-if !(toLower typeName (_this select _flexiMenu_typeMenuSources_ID_type) in [toLower typeName "", toLower typeName []]) exitWith {diag_log _msg};
-if (typeName (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != typeName []) exitWith {diag_log _msg};
-if (typeName (_this select _flexiMenu_typeMenuSources_ID_priority) != typeName 2) exitWith {diag_log _msg};
-if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in [typeName [], typeName ""]) exitWith {diag_log _msg};
+if !(toLower typeName (_this select _flexiMenu_typeMenuSources_ID_type) in [toLower "STRING", toLower "ARRAY"]) exitWith {diag_log _msg};
+if (typeName (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != "ARRAY") exitWith {diag_log _msg};
+if (typeName (_this select _flexiMenu_typeMenuSources_ID_priority) != "SCALAR") exitWith {diag_log _msg};
+if !(typeName (_this select _flexiMenu_typeMenuSources_ID_menuSource) in ["ARRAY", "STRING"]) exitWith {diag_log _msg};
 
 // common bug: invalid DIK code (type any) when missing #include "dikCodes.h"
 //TODO: still not detecting nil?
@@ -32,7 +32,7 @@ if (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) != 0) then {
     for "_i" from 0 to (count (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) - 1) do {
         _key = (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) select _i;
         // if not an already an array (eg: simple DIK integer)
-        if (typeName _key != typeName []) then {
+        if (typeName _key != "ARRAY") then {
             _key = [_key, [false, false, false]];
             (_this select _flexiMenu_typeMenuSources_ID_DIKCodes) set [_i, _key];
         };

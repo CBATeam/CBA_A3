@@ -27,17 +27,17 @@ private _r = 0;
 
 if !(isNull _o) then {
     private _v = velocity (vehicle _o);
-    private _s = sqrt ((_v select 0) ^ 2 + (_v select 1) ^ 2 + (_v select 2) ^ 2);
+    private _s = vectorMagnitude _v;
     if (_s > 0) then {
         private _a = acos ((_v select 0) / _s);
         private _b = acos ((_v select 1) / _s);
         private _c = acos ((_v select 2) / _s);
 
         _r = (_a + _b + _c) % 10;
-        _r = _r - (_r % 1);
+        _r = floor _r;
     } else {
         _r = (getDir _o) % 10;
-        _r = _r - (_r % 1);
+        _r = floor _r;
     };
 };
 

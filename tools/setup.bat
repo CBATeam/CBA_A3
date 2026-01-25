@@ -1,19 +1,16 @@
 ;@Findstr -bv ;@F "%~f0" | powershell -Command - & pause & goto:eof
 
-# Unzip backwards compatibility (Windows 8)
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-function Unzip {
-    param([string]$zipfile, [string]$outpath)
-
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
-}
-
+Write-Output "=> Downloading ..."
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$client = New-Object Net.WebClient
 
-Write-Output "=> Downloading HEMTT (Windows) ..."
-$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/y3p6cb7av05f83fo/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
-$client.dispose()
+$url = "https://github.com/BrettMayson/HEMTT/releases/latest/download/windows-x64.zip"
+(New-Object Net.WebClient).DownloadFile($url, "hemtt.zip"); Write-Output "$url => hemtt.zip"
 
-Write-Output ("=> Version: {0}`n" -f (iex "..\hemtt.exe --version"))
-Write-Output "=> HEMTT successfully installed to project!"
+Write-Output "`n=> Extracting ..."
+Expand-Archive -Path "hemtt.zip" -DestinationPath "..\." -Force; Write-Output "hemtt.zip"
+Remove-Item "hemtt.zip"
+
+Write-Output "`n=> Verifying ..."
+Start-Process -FilePath ..\hemtt.exe -ArgumentList --version -NoNewWindow -Wait
+
+Write-Output "`nTools successfully installed to project!"

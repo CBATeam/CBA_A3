@@ -13,7 +13,7 @@ Parameters:
     _parameters - Parameter to pass in the _this variable. (optional) <ANY>
 
 Returns:
-    Magazine of the units binocular <STRING>
+    None
 
 Example:
     (begin example)

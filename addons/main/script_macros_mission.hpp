@@ -43,6 +43,9 @@
 
 */
 
+#undef PATHTO_SYS
+#undef PATHTOF_SYS
+#undef PATHTOF2_SYS
 #ifdef CUSTOM_FOLDER
     #define PATHTO_SYS(var1,var2,var3) ##CUSTOM_FOLDER\##var3.sqf
     #define PATHTOF_SYS(var1,var2,var3) ##CUSTOM_FOLDER\##var3

@@ -11,10 +11,6 @@ class RscDisplayMain: RscStandardDisplay {
             h = "(6 *   1.5) *  (pixelH * pixelGrid * 2)";
 
             class Controls: Controls {
-                class Video;
-                class Audio;
-                class Controls;
-                class Game;
                 class GVAR(AddonOptions): Campaigns {
                     idc = IDC_MAIN_ADDONOPTIONS;
                     text = CSTRING(menu_button);

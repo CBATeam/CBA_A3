@@ -108,16 +108,16 @@ private _testCases = [
 ];
 
 {
-    private _useHashes = _x;
+    private _objectType = _x;
 
     {
         diag_log _x;
         private _input  = _x;
-        private _object = [_x, _useHashes] call CBA_fnc_parseJSON;
+        private _object = [_x, _objectType] call CBA_fnc_parseJSON;
         private _output = [_object] call CBA_fnc_encodeJSON;
         TEST_OP(_input,==,_output,_fn);
     } forEach _testCases;
-} forEach [true, false];
+} forEach [true, false, 0, 1, 2];
 
 // Special test for complex object because properties are unordered
 private _json = "{""OBJECT"": null, ""BOOL"": true, ""SCALAR"": 1.2, ""STRING"": ""Hello, World!"", ""ARRAY"": [], ""LOCATION"": {}}";

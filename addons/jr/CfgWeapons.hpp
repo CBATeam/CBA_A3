@@ -34,6 +34,15 @@ class CfgWeapons {
         };
     };
 
+    class launch_RPG7_F: Launcher_Base_F {
+        class WeaponSlotsInfo: WeaponSlotsInfo {
+            class CowsSlot: asdg_OpticSideRail_RPG7 {
+                iconPosition[] = {0.45,0.38};
+                iconScale = 0.2;
+            };
+        };
+    };
+
     class EBR_base_F: Rifle_Long_Base_F {
         class WeaponSlotsInfo;
     };

@@ -1,6 +1,10 @@
+#define SUBCOMPONENT a3
+#include "..\script_component.hpp"
+
 class CfgPatches {
-    class cba_xeh_a3 {
+    class SUBADDON {
         requiredAddons[] = {"cba_xeh"};
         units[] = {};
+        requiredVersion = REQUIRED_VERSION;
     };
 };

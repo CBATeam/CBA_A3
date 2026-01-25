@@ -63,15 +63,24 @@ GVAR(camera) camCommitPrepared 0;
 
 // @todo, check if that needs to be done at all
 if (cameraView == "GUNNER") then {
-    GVAR(camera) camSetFOV 0.75;
+    GVAR(camera) camSetFov 0.75;
     GVAR(camera) camCommit 0;
 } else {
-    GVAR(camera) camSetFOV 0.01;
+    GVAR(camera) camSetFov 0.01;
     GVAR(camera) camCommit 0;
 };
 
 // Add magnification to zeroing control.
 private _zoom = 0.25 call CBA_fnc_getFov select 1;
+
+// To avoid flickering of the magnification text, cache magnification and only modify magnification if change is big enough
+if (abs (GVAR(magnificationCache) - _zoom) <= 0.005) then {
+    _zoom = GVAR(magnificationCache);
+} else {
+    if (_zoom >= 1) then {
+        GVAR(magnificationCache) = _zoom;
+    };
+};
 
 _ctrlMagnification ctrlSetText format [
     "(%1x)",
@@ -88,7 +97,7 @@ _ctrlMagnification ctrlCommit 0;
 
 // Calculate lighting.
 private _dayOpacity = AMBIENT_BRIGHTNESS;
-private _nightOpacity = [1,0] select (_dayOpacity == 1);
+private _nightOpacity = parseNumber (_dayOpacity != 1);
 
 private _useReticleNight = GVAR(useReticleNight);
 
@@ -114,7 +123,7 @@ _display setVariable [QGVAR(DetailScaleFactor), _detailScaleFactor];
 _ctrlReticle ctrlSetText _texture;
 _ctrlBody ctrlSetTextColor [1,1,1,_dayOpacity];
 _ctrlBodyNight ctrlSetTextColor [1,1,1,_nightOpacity];
-_ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPipEnabled);
+_ctrlBlackScope ctrlShow (GVAR(usePipOptics) && !isPiPEnabled);
 
 // tilt while leaning
 private _bank = 0;
@@ -129,10 +138,6 @@ _ctrlBodyNight ctrlSetAngle [_bank, 0.5, 0.5];
 
 // zooming reticle
 if (isNull (_display displayCtrl IDC_ENABLE_ZOOM)) exitWith {};
-
-if (_zoom >= 1) then {
-    GVAR(magnificationCache) = _zoom;
-};
 
 GVAR(ReticleAdjust) set [2, _zoom];
 private _reticleAdjust = linearConversion GVAR(ReticleAdjust);
