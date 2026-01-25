@@ -43,17 +43,17 @@ if (_effectNumber != -1) then {
     (GVAR(statusEffects) get toLowerANSI _effectName) params ["_isGlobal", "_sendJIP", "_eventName"];
     switch (true) do {
         case (_sendJIP): {
-            TRACE_2("Sending Global JIP Event",_object,_effectNumber);
+            TRACE_3("Sending Global JIP Event",_object,_effectNumber,_eventName);
             private _jipID = format [QGVAR(effect_%1_%2), _eventName, hashValue _object];
             [_eventName, [_object, _effectNumber], _jipID] call CBA_fnc_globalEventJIP;
             [_jipID, _object] call CBA_fnc_removeGlobalEventJIP;
         };
         case (_isGlobal): {
-            TRACE_2("Sending Global Event",_object,_effectNumber);
+            TRACE_3("Sending Global Event",_object,_effectNumber,_eventName);
             [_eventName, [_object, _effectNumber]] call CBA_fnc_globalEvent;
         };
         default {
-            TRACE_2("Sending Target Event",_object,_effectNumber);
+            TRACE_3("Sending Target Event",_object,_effectNumber,_eventName);
             [_eventName, [_object, _effectNumber], _object] call CBA_fnc_targetEvent;
         };
     };

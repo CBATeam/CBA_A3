@@ -24,7 +24,7 @@ params ["_object", "_isLocal"];
 
 // Only run this after the settings are initialized
 // Need to wait for all EH to be installed (local event will happen between pre and post init)
-if !(missionNamespace getVariable [QGVAR(ready), false]) exitWith {
+if !(missionNamespace getVariable [QEGVAR(settings,ready), false]) exitWith {
     TRACE_1("pushing to runAtSettingsInitialized",_this);
     EGVAR(settings,runAtSettingsInitialized) pushBack [FUNC(localEH), _this];
 };

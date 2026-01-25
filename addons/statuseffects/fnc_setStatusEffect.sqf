@@ -30,7 +30,7 @@ params [
 ];
 
 // Only run this after the settings are initialized
-if !(missionNamespace getVariable [QGVAR(ready), false]) exitWith {
+if !(missionNamespace getVariable [QEGVAR(settings,ready), false]) exitWith {
     TRACE_1("pushing to runAtSettingsInitialized",_this);
     EGVAR(settings,runAtSettingsInitialized) pushBack [CBA_fnc_setStatusEffect, _this];
 };
@@ -69,12 +69,12 @@ if (_set isEqualTo (_effectBoolArray select _statusIndex)) exitWith {
 
 TRACE_2("Setting to new value",_set,_effectBoolArray select _statusIndex);
 _effectBoolArray set [_statusIndex, _set];
-private _newEffectNumber = _effectBoolArray call CBA_fnc_toBitmask; // Convert array back to number
+private _newEffectNumber = [_effectBoolArray] call CBA_fnc_toBitmask; // Convert array back to number
 
 TRACE_2("Saving globally",_effectVarName,_newEffectNumber);
 _object setVariable [_effectVarName, _newEffectNumber, true];
 
-if (_effectNumber == 0 || {_newEffectNumber == 0}) then {
+if (_effectNumber == 0 || _newEffectNumber == 0) then {
     [_object, _effectName] call FUNC(sendEffects);
 } else {
     LOG("not sending more than once");
