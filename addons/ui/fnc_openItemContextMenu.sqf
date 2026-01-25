@@ -38,7 +38,7 @@ while {
 } do {};
 
 // Read unique class options (not inherited)
-_options merge (GVAR(ItemContextMenuUniqueOptions) getOrDefault [_item, []]);
+_options merge (GVAR(ItemContextMenuUniqueOptions) getOrDefault [_item, createHashMap]);
 
 // Read type and wildcard options
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];

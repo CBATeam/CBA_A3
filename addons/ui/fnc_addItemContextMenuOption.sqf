@@ -127,7 +127,7 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2], false] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2], "DebugAction", false] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:
@@ -243,7 +243,7 @@ if (!_allowInheritance) then {
 private _options = _contextMenuOptions get _item;
 
 if (isNil "_options") then {
-    _options = [];
+    _options = createHashMap;
     _contextMenuOptions set [_item, _options];
 };
 
