@@ -155,7 +155,6 @@ class CfgFunctions {
             PATHTO_FNC(cssColorToTexture);
             PATHTO_FNC(attachToBone);
             PATHTO_FNC(binarizeNumber);
-            PATHTO_FNC(toBitMask);
             PATHTO_FNC(endRadioTransmission);
         };
 
