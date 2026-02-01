@@ -13,6 +13,8 @@
 ["disableWeaponAssembly", false, ["CBA_lockVehicle", "ace_common", "ace_csw"]] call CBA_fnc_addStatusEffectType;
 ["lockInventory", true, [], true] call CBA_fnc_addStatusEffectType;
 ["disableCollision", true, [], true] call CBA_fnc_addStatusEffectType;
+["disableNVGEquipment", false, []] call CBA_fnc_addStatusEffectType;
+["disableTIEquipment", false, []] call CBA_fnc_addStatusEffectType;
 
 [QGVAR(forceWalk), {
     params ["_object", "_set"];
@@ -24,11 +26,6 @@
     params ["_object", "_set"];
     TRACE_2("blockSprint EH",_object,_set);
     _object allowSprint (_set == 0);
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(setAnimSpeedCoef), {
-    params ["_object", "_set"];
-    _object setAnimSpeedCoef _set;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(setCaptive), {
@@ -101,11 +98,6 @@
     _vehicle engineOn false;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(setMass), {
-    params ["_object", "_mass"];
-    _object setMass _mass;
-}] call CBA_fnc_addEventHandler;
-
 [QGVAR(disableWeaponAssembly), {
     params ["_object", "_set"];
     _object enableWeaponDisassembly (_set < 1);
@@ -136,4 +128,18 @@
     params ["_object", "_set"];
     TRACE_2("disableCollision EH",_object,_set);
     _object setPhysicsCollisionFlag (_set < 1);
+}] call CBA_fnc_addEventHandler;
+
+// TODO: disableNVG/TIEquipment only work on vehicles, but we could make the status effects work for units as well
+// One possible solution would be hooking into VisionModeChanged and using `player action ["NvGogglesOff", player]`
+[QGVAR(disableNVGEquipment), {
+    params ["_object", "_set"];
+    _object disableNVGEquipment (_set > 0);
+    TRACE_2("disableNVGEquipment EH",_object,_set);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(disableTIEquipment), {
+    params ["_object", "_set"];
+    TRACE_2("disableTIEquipment EH",_object,_set);
+    _object disableTIEquipment (_set > 0);
 }] call CBA_fnc_addEventHandler;
