@@ -122,27 +122,4 @@ if (_binocularList isNotEqualTo []) then {
     _handgunList
 ];
 
-// Immediately select weapon and set animation
-private _fnc_fixAnimation = {
-    private _weapons = [primaryWeapon _this, handgunWeapon _this, secondaryWeapon _this];
-    private _weaponIndex = _weapons findIf { _x != "" };
-    if (_weaponIndex != -1) then {
-        _this switchMove (["amovpercmstpsraswrfldnon", "amovpercmstpsraswpstdnon", "amovpercmstpsnonwnondnon"] select _weaponIndex);
-        _this selectWeapon (_weapons select _weaponIndex);
-    };
-};
-
-if (is3DEN) then {
-    // CBA's frame functions don't work in Eden
-    // And we need a decently sized delay to not mess with creating editorPreviews
-    [_unit, _fnc_fixAnimation] spawn {
-        sleep 1.2;
-        params ["_unit", "_function"];
-        save3DENInventory [get3DENEntityID _unit];
-        _unit call _function;
-    };
-} else {
-    [_fnc_fixAnimation, _unit] call CBA_fnc_execNextFrame;
-};
-
 true;
