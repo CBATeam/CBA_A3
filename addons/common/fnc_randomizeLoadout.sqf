@@ -134,8 +134,9 @@ private _fnc_fixAnimation = {
 
 if (is3DEN) then {
     // CBA's frame functions don't work in Eden
+    // And we need a decently sized delay to not mess with creating editorPreviews
     [_unit, _fnc_fixAnimation] spawn {
-        sleep 0.1;
+        sleep 1.2;
         params ["_unit", "_function"];
         save3DENInventory [get3DENEntityID _unit];
         _unit call _function;
