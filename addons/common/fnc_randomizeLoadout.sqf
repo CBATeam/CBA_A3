@@ -122,4 +122,12 @@ if (_binocularList isNotEqualTo []) then {
     _handgunList
 ];
 
+if (is3DEN) then {
+    // CBA's frame functions don't work in Eden
+    _unit spawn {
+        sleep 0.01;
+        save3DENInventory [get3DENEntityID _this];
+    };
+};
+
 true;
