@@ -6,10 +6,9 @@ Description:
     Updates a PID controller and returns the controller output.
 
 Parameters:
-    _pid    - a pid controller <LOCATION>
+    _pid    - a pid controller <HASHMAP>
     _value  - the measured value for this update <NUMBER>
-    _time   - the time for which the value was measured <NUMBER>
-              (Default: CBA_missionTime)
+    _time   - the time for which the value was measured <NUMBER> (Default: CBA_missionTime)
 
 Returns:
     The output of the controller <NUMBER>
@@ -24,15 +23,14 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(update);
 params [
-    ["_pid", locationNull, [locationNull]],
+    ["_pid", createHashMap, [createHashMap]],
     ["_value", 0, [0]],
     ["_time", CBA_missionTime, [0]]
 ];
 
-if (isNull _pid) exitWith { 0 };
-private _error = [_value, _pid getVariable [QGVAR(setpoint), 0]] call (_pid getVariable [QGVAR(errorFunction), FUNC(error_linear)]);
-private _history = _pid getVariable [QGVAR(history), []];
-private _maxHistoryLength = _pid getVariable [QGVAR(historyLength), DEFAULT_HISTORY_LENGTH];
+private _error = [_value, _pid getOrDefault [QGVAR(setpoint), 0]] call (_pid getOrDefault [QGVAR(errorFunction), FUNC(error_linear)]);
+private _history = _pid getOrDefault [QGVAR(history), []];
+private _maxHistoryLength = _pid getOrDefault [QGVAR(historyLength), DEFAULT_HISTORY_LENGTH];
 
 if (_history isNotEqualTo []) then {
     // We need a continuous function, so if two measurements are for the same measured time we ignore the new measurements
@@ -49,7 +47,7 @@ if (_history isNotEqualTo []) then {
 if (count _history > _maxHistoryLength) then {
     _history deleteAt 0;
 };
-_pid setVariable [QGVAR(history), _history];
+_pid set [QGVAR(history), _history];
 
 private _derivative = 0;
 switch (true) do {
@@ -94,10 +92,10 @@ private _tn_prev = 0;
     _error_prev = _error;
 } forEach _history;
 
-(_pid getVariable [QGVAR(gains), [0, 0, 0]]) params ["_pGain", "_iGain", "_dGain"];
+(_pid getOrDefault [QGVAR(gains), [0, 0, 0]]) params ["_pGain", "_iGain", "_dGain"];
 
 private _delta = _error * _pGain + _integral * _iGain + _derivative * _dGain;
 
-(_pid getVariable [QGVAR(bounds), [-LARGE_NUMBER, LARGE_NUMBER]]) params ["_min", "_max"];
+(_pid getOrDefault [QGVAR(bounds), [-LARGE_NUMBER, LARGE_NUMBER]]) params ["_min", "_max"];
 
 _max min (_delta max _min)
