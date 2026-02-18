@@ -26,13 +26,15 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [nil, 0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
-if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
+if ( !isNil "_distance" ) then {
+    if (_params isEqualType "") then { _params = [_params, _distance]; } else { _params set [1, _distance]; };
+};
 
 if (_rndPitch isNotEqualTo false) then {
     private _defaultPitch = 1;
