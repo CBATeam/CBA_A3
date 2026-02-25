@@ -8,7 +8,7 @@ Description:
 Parameters:
     _objects  - Object or array of objects that perform Say <OBJECT, ARRAY>
     _params   - classname or parameter array - see biki: say3d <STRING, ARRAY>
-    _range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER>
+    _range    - Maximum distance from camera to execute command - will be ignored if _params is an array (optional, default: nil) <NUMBER, NIL>
     _attach   - Attach created sound to _object (optional, default: false) <BOOL>
     _instant  - Deletes all previously attached sounds to play the current sound immediately (optional, default: false) <BOOL>
     _rndPitch - Randomizes Pitch. True for a Dynamic Range of 10% - Alternative Number of Dynamic Range in Pecentage. Example: 0.15 -> +- 7.5% (optional, default: false) <BOOL, NUMBER>
@@ -27,13 +27,15 @@ Author:
     Sickboy, commy2, DartRuffian, OverlordZorn
 ---------------------------------------------------------------------------- */
 
-params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]], ["_parallel", false, [true]]];
+params [["_objects", [], [[], objNull]], ["_params", "", ["", []]], ["_distance", nil, [nil, 0]], ["_attach", false, [false]], ["_instant", false, [false]], ["_rndPitch", false, [false, 0]], ["_parallel", false, [true]]];
 
 if (_objects isEqualType objNull) then {
     _objects = [_objects];
 };
 
-if (!isNil "_distance" && { _params isEqualType "" } ) then { _params = [_params, _distance]; };
+if ( !isNil "_distance" ) then {
+    if (_params isEqualType "") then { _params = [_params, _distance]; } else { _params set [1, _distance]; };
+};
 
 if (_rndPitch isNotEqualTo false) then {
     private _defaultPitch = 1;
