@@ -10,9 +10,8 @@ class CfgWeapons {
     };
 
     class Rifle_Base_F;
-
     class arifle_ash12_base_RF : Rifle_Base_F {
-        magazineWell[] += {"CBA_9x19_Glock_Cpct", "CBA_9x19_Glock_Full"};
+        magazineWell[] += {"CBA_127x55_ASh12"};
     };
 
     class Rifle_Long_Base_F;
