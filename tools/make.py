@@ -1580,6 +1580,10 @@ if __name__ == "__main__":
     print("\nTotal Program time elapsed: {0:2}h {1:2}m {2:4.5f}s".format(h,m,s))
 
     if ciBuild:
+        if "pylons" in failedBuilds:
+            print_yellow(" - Ignoring `pylons` build failure for CI since it is currently broken in pboProject")
+            failedBuilds.remove("pylons")
+
         if len(failedBuilds) > 0:
             sys.exit(1)
         else:
