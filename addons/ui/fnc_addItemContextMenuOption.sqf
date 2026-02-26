@@ -113,6 +113,11 @@ Parameters:
                               An already existing ID will overwrite the previous settings.
                               (optional, default: "") <STRING>
 
+    _allowInheritance       - if true, then option will be available for all items
+                              that inherit from the given _item class.
+                              Does nothing if _item is a type or wildcard
+                              (optional, default: true) <BOOLEAN>
+
 Returns:
     ID <STRING> (or <NIL> on error)
 
@@ -122,11 +127,11 @@ Examples:
             params ["_unit", "_container", "_item", "_slot", "_params"];
             systemChat str [name _unit, typeOf _container, _item, _slot, _params];
             true
-        }, false, [0,1,2]] call CBA_fnc_addItemContextMenuOption;
+        }, false, [0,1,2], "DebugAction", false] call CBA_fnc_addItemContextMenuOption;
     (end)
 
 Author:
-    commy2, Zorn
+    commy2, Zorn, 10Dozen
 ---------------------------------------------------------------------------- */
 
 // Force unscheduled environment to prevent race conditions.
@@ -139,6 +144,7 @@ if (!hasInterface) exitWith {};
 // Initialize system on first execution.
 if (isNil QGVAR(ItemContextMenuOptions)) then {
     GVAR(ItemContextMenuOptions) = createHashMap;
+    GVAR(ItemContextMenuUniqueOptions) = createHashMap;
 
     ["CAManBase", "InventoryOpened", {
         params ["_unit", "_container1", "_container2"];
@@ -163,7 +169,8 @@ params [
     ["_statement", {}, [{}]],
     ["_consume", false, [false]],
     ["_params", []],
-    ["_id", "", [""]]
+    ["_id", "", [""]],
+    ["_allowInheritance", true, [false]]
 ];
 
 if (_item isEqualTo "") exitWith { ERROR_1("no item specified [%1]",_item); nil };
@@ -228,11 +235,16 @@ _condition params [
     ["_conditionShow", {true}, [{}]]
 ];
 
-private _options = GVAR(ItemContextMenuOptions) get _item;
+private _contextMenuOptions = GVAR(ItemContextMenuOptions);
+if (!_allowInheritance) then {
+    _contextMenuOptions = GVAR(ItemContextMenuUniqueOptions);
+};
+
+private _options = _contextMenuOptions get _item;
 
 if (isNil "_options") then {
     _options = createHashMap;
-    GVAR(ItemContextMenuOptions) set [_item, _options];
+    _contextMenuOptions set [_item, _options];
 };
 
 if (_id isEqualTo "") then {

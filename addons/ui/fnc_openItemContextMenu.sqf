@@ -20,7 +20,7 @@ Examples:
     (end)
 
 Author:
-    commy2, Zorn
+    commy2, Zorn, 10Dozen
 ---------------------------------------------------------------------------- */
 
 params ["_display", "_container", "_item", "_slot"];
@@ -37,6 +37,10 @@ while {
     !isNull _config
 } do {};
 
+// Read unique class options (not inherited)
+_options merge (GVAR(ItemContextMenuUniqueOptions) getOrDefault [_item, createHashMap]);
+
+// Read type and wildcard options
 _item call BIS_fnc_itemType params ["_itemType1", "_itemType2"];
 _options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["##%1", _itemType2], createHashMap]);
 _options merge (GVAR(ItemContextMenuOptions) getOrDefault [format ["#%1", _itemType1], createHashMap]);
