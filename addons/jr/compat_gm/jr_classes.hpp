@@ -44,7 +44,7 @@ class asdg_OpticSideRail_AK: asdg_OpticSideMount {
         gm_nspu_dovetail_gry = 1;
         gm_pgo7v_blk = 1;
         gm_pka_dovetail_blk = 1;
-        gm_pka_dovetail_gry = 1;~
+        gm_pka_dovetail_gry = 1;
         gm_zfk4x25_blk = 1;
         gm_zln1k_grn_dovetail_blk = 1;
         gm_zln1k_grn_dovetail_gry = 1;
