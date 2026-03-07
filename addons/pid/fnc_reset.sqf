@@ -6,7 +6,7 @@ Description:
     Reset a PID controller's history.
 
 Parameters:
-    _pid           - the controller <LOCATION>
+    _pid           - the controller <HASHMAP>
 
 Returns:
     Nothing
@@ -21,9 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(reset);
 params [
-    ["_pid", locationNull, [locationNull]]
+    ["_pid", createHashMap, [createHashMap]]
 ];
 
-if (isNull _pid) exitWith {};
-
-_pid setVariable [QGVAR(history), []];
+_pid set [QGVAR(history), []];

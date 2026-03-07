@@ -6,7 +6,7 @@ Description:
     Set new gains for a PID controller.
 
 Parameters:
-    _pid        - a pid controller <LOCATION>
+    _pid        - a pid controller <HASHMAP>
     _pGain      - the new proportional gain <NUMBER><NIL> (Default: `nil`)
                   OR
                   `nil`, to keep the current gain
@@ -29,15 +29,13 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(setGains);
 params [
-    ["_pid", locationNull, [locationNull]],
+    ["_pid", createHashMap, [createHashMap]],
     ["_pGain", nil, [0, nil]],
     ["_iGain", nil, [0, nil]],
     ["_dGain", nil, [0, nil]]
 ];
 
-if (isNull _pid) exitWith {};
-
-(_pid getVariable [QGVAR(gains), [0, 0, 0]]) params ["_currentPGain", "_currentIGain", "_currentDGain"];
+(_pid getOrDefault [QGVAR(gains), [0, 0, 0]]) params ["_currentPGain", "_currentIGain", "_currentDGain"];
 if !(isNil "_pGain") then {
     _currentPGain = _pGain;
 };
@@ -47,4 +45,4 @@ if !(isNil "_iGain") then {
 if !(isNil "_dGain") then {
     _currentDGain = _dGain;
 };
-_pid setVariable [QGVAR(gains), [_currentPGain, _currentIGain, _currentDGain]];
+_pid set [QGVAR(gains), [_currentPGain, _currentIGain, _currentDGain]];

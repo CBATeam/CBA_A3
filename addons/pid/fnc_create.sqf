@@ -6,25 +6,17 @@ Description:
     Creates a PID controller.
 
 Parameters:
-    _pGain          - gain for the immediate error <NUMBER>
-                      (Default: 0)
-    _iGain          - gain for the persistent error over time <NUMBER>
-                      (Default: 0)
-    _dGain          - gain for the error rate over time <NUMBER>
-                      (Default: 0)
-    _setpoint       - initial setpoint for the controller <NUMBER>
-                      (Default: 0)
-    _min            - the minimum value the controller can return <NUMBER>
-                      (Default: -1e30)
-    _max            - the maximum value the controller can return <NUMBER>
-                      (Default: 1e30)
-    _historyLength  - how many past errors are stored and used to calculate the derivative/integral <NUMBER>
-                      (Default: 10)
-    _errorFunction  - the function which calculates the error which the controller operators <CODE>
-                      (Default: <CBA_pid_fnc_error_linear>)
+    _pGain          - gain for the immediate error <NUMBER> (Default: 0)
+    _iGain          - gain for the persistent error over time <NUMBER> (Default: 0)
+    _dGain          - gain for the error rate over time <NUMBER> (Default: 0)
+    _setpoint       - initial setpoint for the controller <NUMBER> (Default: 0)
+    _min            - the minimum value the controller can return <NUMBER> (Default: -1e30)
+    _max            - the maximum value the controller can return <NUMBER> (Default: 1e30)
+    _historyLength  - how many past errors are stored and used to calculate the derivative/integral <NUMBER> (Default: 10)
+    _errorFunction  - the function which calculates the error which the controller operators <CODE> (Default: <CBA_pid_fnc_error_linear>)
 
 Returns:
-    _pid            - a PID controller <LOCATION>
+    _pid            - a PID controller <HASHMAP>
 
 Examples:
     (begin example)
@@ -46,12 +38,12 @@ params [
     ["_errorFunction", FUNC(error_linear), [{}]]
 ];
 
-private _pid = call CBA_fnc_createNamespace;
-_pid setVariable [QGVAR(gains), [_pGain, _iGain, _dGain]];
-_pid setVariable [QGVAR(bounds), [_min, _max]];
-_pid setVariable [QGVAR(history), []];
-_pid setVariable [QGVAR(historyLength), _historyLength];
-_pid setVariable [QGVAR(setpoint), _setpoint];
-_pid setVariable [QGVAR(errorFunction), _errorFunction];
-
+private _pid = createHashMapFromArray [
+    [QGVAR(gains), [_pGain, _iGain, _dGain]],
+    [QGVAR(bounds), [_min, _max]],
+    [QGVAR(history), []],
+    [QGVAR(historyLength), _historyLength],
+    [QGVAR(setpoint), _setpoint],
+    [QGVAR(errorFunction), _errorFunction]
+];
 _pid
