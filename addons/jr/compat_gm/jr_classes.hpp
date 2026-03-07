@@ -26,6 +26,18 @@ class asdg_OpticSideMount: asdg_OpticRail {
     class compatibleItems {};
 };
 
+class asdg_OpticSideRail_AKSVD: asdg_OpticSideMount {
+    class compatibleItems: compatibleItems {
+        gm_nspu_dovetail_blk = 1;
+        gm_nspu_dovetail_gry = 1;
+        gm_pka_dovetail_blk = 1;
+        gm_pka_dovetail_gry = 1;
+        gm_pso6x36_1_dovetail_blk = 1;
+        gm_pso6x36_1_dovetail_gry = 1;
+        gm_pso1_dovetail_blk = 1;
+        gm_pso1_dovetail_gry = 1;
+    };
+};
 class asdg_OpticSideRail_AK: asdg_OpticSideMount {
     class compatibleItems: compatibleItems {
         gm_nspu_dovetail_blk = 1;
