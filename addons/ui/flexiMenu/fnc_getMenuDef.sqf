@@ -27,7 +27,7 @@ private _menuDefs = [];
     if (typeName _params == "ARRAY" && {count _params > 0}) then {
         _menuSource = _params select 0;
         if (typeName _menuSource == "STRING") then { // check for syntax: function, code string or sqf filename
-            _menuParams = if (count _params > 1) then {[_target, _params select 1]};
+            if (count _params > 1) then { _menuParams = [_target, _params select 1] };
         } else {
             _menuSource = _params;
         };
