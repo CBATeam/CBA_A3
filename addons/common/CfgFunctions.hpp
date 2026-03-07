@@ -12,6 +12,7 @@ class CfgFunctions {
             PATHTO_FNC(inheritsFrom);
             PATHTO_FNC(getTurret);
             PATHTO_FNC(getNonPresetClass);
+            PATHTO_FNC(isModLoaded);
         };
 
         class Entities {
@@ -153,6 +154,8 @@ class CfgFunctions {
             PATHTO_FNC(cssColorToHEX);
             PATHTO_FNC(cssColorToTexture);
             PATHTO_FNC(attachToBone);
+            PATHTO_FNC(binarizeNumber);
+            PATHTO_FNC(endRadioTransmission);
         };
 
         class Broken {
