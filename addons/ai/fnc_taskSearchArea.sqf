@@ -33,7 +33,7 @@ Author:
 ---------------------------------------------------------------------------- */
 params [
     ["_group", objNull, [objNull,grpNull]],
-    ["_area", "", ["",objNull, locationNull,[]], 5],
+    ["_area", "", ["",objNull, locationNull,[]], [3,4,5,6,7]],
     ["_behaviour", "UNCHANGED", [""]],
     ["_combat", "NO CHANGE", [""]],
     ["_speed", "UNCHANGED", [""]],
