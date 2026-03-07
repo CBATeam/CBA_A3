@@ -10,7 +10,7 @@ Description:
 Parameters:
     _unit   - Unit object to perform function on. <OBJECT>
     _weapon - Weapon or muzzle to select <STRING>
-    _mode   - Weapon mode to switch to [optional] <STRING> (default: "")
+    _mode   - Weapon mode to switch to (optional) <STRING> (default: "")
 
 Returns:
     Success or Failed <BOOLEAN>

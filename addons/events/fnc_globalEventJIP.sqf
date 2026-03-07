@@ -12,7 +12,7 @@ Description:
 Parameters:
     _eventName - Type of event to publish. <STRING>
     _params    - Parameters to pass to the event handlers. <ANY>
-    _jipID     - Unique event ID or object. [optional] (default: create unique id) <STRING, OBJECT>
+    _jipID     - Unique event ID or object. (optional) (default: create unique id) <STRING, OBJECT>
                  STRING:
                     Unique, custom ID - can be used to remove or overwrite the event later.
                  OBJECT:

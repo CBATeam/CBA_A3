@@ -5,7 +5,7 @@
 
 #include "script_component.hpp"
 
-#define TESTS ["compatibleItems"]
+#define TESTS ["compatibleItems.inc"]
 
 SCRIPT(test-jr);
 

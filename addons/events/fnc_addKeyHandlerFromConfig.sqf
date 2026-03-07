@@ -9,7 +9,7 @@ Parameters:
     _component - Classname under "CfgSettings" >> "CBA" >> "events" <STRING>
     _action    - Action name <STRING>
     _code      - Code to execute upon event. <CODE>
-    _type      - "keydown" or "keyup". [optional] (default: "keydown") <STRING>
+    _type      - "keydown" or "keyup". (optional) (default: "keydown") <STRING>
 
 Returns:
     _hashKey - Key handler identifier. Used to remove or change the key handler. <STRING>

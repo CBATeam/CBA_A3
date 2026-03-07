@@ -9,9 +9,9 @@ Parameters:
     0: _className        - The classname of objects you wish to add the eventhandler too. Can be a base class. <STRING>
     1: _eventName        - The type of the eventhandler. E.g. "init", "fired", "killed" etc. <STRING>
     2: _eventFunc        - Function to execute when event happens. <CODE>
-    3: _allowInheritance - Allow event for objects that only inherit from the given classname? [optional] <BOOLEAN> (default: true)
-    4: _excludedClasses  - Exclude these classes from this event including their children [optional] <ARRAY> (default: [])
-    5: _applyInitRetroactively - Apply "init" event type on existing units that have already been initilized. [optional] <BOOLEAN> ((default: false)
+    3: _allowInheritance - Allow event for objects that only inherit from the given classname? (optional) <BOOLEAN> (default: true)
+    4: _excludedClasses  - Exclude these classes from this event including their children (optional) <ARRAY> (default: [])
+    5: _applyInitRetroactively - Apply "init" event type on existing units that have already been initilized. (optional) <BOOLEAN> ((default: false)
 
 Returns:
     _success - Whether adding the event was successful or not. <BOOLEAN>

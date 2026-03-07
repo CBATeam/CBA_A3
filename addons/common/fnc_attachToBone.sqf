@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _child             - Child object to be attached to parent <OBJECT>
-    _parent            - Parent object to which child will be attached <STRING>
+    _parent            - Parent object to which child will be attached <OBJECT>
     _bone              - Bone name <STRING>
     _matchOrientation  - Orientation <BOOLEAN> (Default: true) True: match bone orientation, False: maintain relative orientation
     _lod               - LOD in which to check for bone <NUMBER><STRING> (Default: 1e15 for Memory LOD)

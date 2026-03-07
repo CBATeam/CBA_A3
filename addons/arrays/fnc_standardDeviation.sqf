@@ -8,7 +8,7 @@ Description:
 
 Parameters:
     _numbers - The array from which the standard deviation is computed <ARRAY>
-    _ddof    - The delta degrees of freedom [optional] <SCALAR> (default: 0)
+    _ddof    - The delta degrees of freedom (optional) <SCALAR> (default: 0)
                _ddof = 0 - Population standard deviation
                _ddof = 1 - Sample standard deviation
 
