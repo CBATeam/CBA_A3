@@ -23,4 +23,8 @@ SCRIPT(isTerrainObject);
 
 params [["_object", objNull, [objNull]]];
 
-_object in nearestTerrainObjects [_object, [], 1, false, true] // return
+if (isNull _object) exitWith { false };
+
+// Terrain objects always have an owner of 1, but `owner` command is server exec. So we just check first character of netId
+// They also have a negative netId, but Dedmen said not to rely on it in the case that BI fixes it
+(netId _object) select [0, 1] == "1"
