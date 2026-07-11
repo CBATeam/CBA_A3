@@ -33,7 +33,7 @@ GVAR(waitUntilAndExecArray) = [];
 
         if (diag_tickTime > _delta) then {
             _x set [2, _delta + _delay];
-            [_args, _handle] call _function;
+            isNil {[_args, _handle] call _function};
         };
     } forEach GVAR(perFrameHandlerArray);
 
