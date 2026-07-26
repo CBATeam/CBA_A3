@@ -4,7 +4,7 @@ Function: CBA_fnc_getCfgDataHashmap
 
 Description:
     This function extracts all config properties of a class and returns them as a Hashmap with the properties as keys (string).
-    
+
     The following Values will be converted:
     Boolean as String ("true", "false") will be converted to boolean data-type.
 
@@ -15,6 +15,7 @@ Parameters:
     _condition  - Condition for configProperties (optional, default: "true") <STRING>
     _inherit    - include inherited properties (optional, default: true) <BOOL>
     _convert    - convert certain values - see above (optional, default: true) <BOOL>
+    _toLower    - applies toLowerANSI to keys of hashmap (optional, default: false) <BOOL>
 
 Returns:
     properties <HASHMAP> (or <NIL> if _cfg is invalid)
@@ -33,7 +34,8 @@ params [
     ["_cfg", configNull, [configNull]],
     ["_condition", "true", [""]],
     ["_inherit", true, [true]],
-    ["_convert", true, [true]]
+    ["_convert", true, [true]],
+    ["_toLower", false, [true]]
 ];
 
 if !(isClass _cfg || { isNull _cfg } ) exitWith { nil };
@@ -75,15 +77,15 @@ private _convertCall = [
 
 
 {
-    private _config = _x;
-    
-    private _value = _x call BIS_fnc_getCfgData call _convertCall;
+    private _cfg = _x;
+    private _key = if (_toLower) then { toLowerANSI configName _cfg } else { configName _cfg };
+    private _value = _cfg call BIS_fnc_getCfgData call _convertCall;
 
     _returnHashMap set [
-        configName _x,
+        _key,
         _value
     ];
-    
+
 } forEach _properties;
 
 _returnHashMap // return
