@@ -8,6 +8,11 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 #include "initSettings.inc.sqf"
 
+// Remove stale controls
+private _missionDisplay = findDisplay 46;
+for "_index" from 0 to 3 do {
+    ctrlDelete (_missionDisplay displayCtrl (1000 + IDC_DEBUGCONSOLE_WATCHINPUT_1 + _index));
+};
 
 [QGVAR(debug), {_this call CBA_fnc_debug}] call CBA_fnc_addEventHandler;
 
