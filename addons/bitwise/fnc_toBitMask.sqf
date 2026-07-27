@@ -6,7 +6,7 @@ Description:
     Takes Input <ARRAY of BOOLs> (limited to float precision)
 
 Parameters:
-    _input - Boolean (least significant bit) <BOOL>
+    _input - Array of bools (0 index is least significant bit) <ARRAY>
 
 Returns:
     Bitmask <NUMBER>

@@ -25,7 +25,7 @@ params [
     ["_minLength", 8, [0]]
 ];
 
-if (isNil "_number") exitWith {};
+if (isNil "_number") exitWith { [] };
 
 _number = round _number;
 
