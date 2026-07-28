@@ -106,7 +106,7 @@ clearBackpackCargoGlobal _container;
 _container addBackpackCargoGlobal ["B_AssaultPack_mcamo_Ammo", 1];
 _result = [_container, "B_AssaultPack_mcamo_Ammo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (itemCargo _container) == 4 && count (magazineCargo _container) == 20,_funcName);
+TEST_TRUE((backpackCargo _container) isEqualTo [] && count (itemCargo _container) == 4 && count (magazineCargo _container) == 20,_funcName);
 clearBackpackCargoGlobal _container;
 clearItemCargoGlobal _container;
 clearMagazineCargoGlobal _container;
@@ -124,7 +124,7 @@ _container addBackpackCargoGlobal ["B_AssaultPack_mcamo", 1];
 ((everyBackpack _container) select 0) addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
 _result = [_container, "B_AssaultPack_mcamo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (weaponCargo _container) == 1 && (itemCargo _container) isEqualTo [],_funcName);
+TEST_TRUE((backpackCargo _container) isEqualTo [] && count (weaponCargo _container) == 1 && (itemCargo _container) isEqualTo [],_funcName);
 clearBackpackCargoGlobal _container;
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;
@@ -133,7 +133,7 @@ _container addBackpackCargoGlobal ["B_AssaultPack_mcamo", 1];
 ((everyBackpack _container) select 0) addWeaponCargoGlobal ["arifle_MX_SW_F", 1]; // arifle_MX_SW_F has no non-preset parent class
 _result = [_container, "B_AssaultPack_mcamo", 1, true] call CBA_fnc_removeBackpackCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (backpackCargo _container) == 0 && count (weaponCargo _container) == 1,_funcName);
+TEST_TRUE((backpackCargo _container) isEqualTo [] && count (weaponCargo _container) == 1,_funcName);
 clearBackpackCargoGlobal _container;
 clearWeaponCargoGlobal _container;
 
@@ -254,13 +254,13 @@ TEST_FALSE(_result,_funcName);
 _container addWeaponCargoGlobal ["srifle_EBR_F", 5];
 _result = [_container, "srifle_EBR_F", 3] call CBA_fnc_removeWeaponCargo;
 TEST_TRUE(_result,_funcName);
-TEST_TRUE(count (weaponCargo _container) == 2 && count (itemCargo _container) == 0,_funcName);
+TEST_TRUE(count (weaponCargo _container) == 2 && (itemCargo _container) isEqualTo [],_funcName);
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;
 
 _container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
 _result = [_container, "arifle_MX_F"] call CBA_fnc_removeWeaponCargo;
-TEST_TRUE((weaponCargo _container) isEqualTo [] && count (itemCargo _container) == 0,_funcName);
+TEST_TRUE((weaponCargo _container) isEqualTo [] && (itemCargo _container) isEqualTo [],_funcName);
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;
 
@@ -279,7 +279,7 @@ clearItemCargoGlobal _container;
 _container addWeaponCargoGlobal ["arifle_MX_ACO_pointer_F", 1];
 _container addWeaponCargoGlobal ["arifle_MX_SW_F", 1]; // arifle_MX_SW_F has no non-preset parent class
 _result = [_container, "arifle_MX_ACO_pointer_F", 1] call CBA_fnc_removeWeaponCargo;
-TEST_TRUE(count (weaponCargo _container) == 1 && count (itemCargo _container) == 0,_funcName);
+TEST_TRUE(count (weaponCargo _container) == 1 && (itemCargo _container) isEqualTo [],_funcName);
 clearWeaponCargoGlobal _container;
 clearItemCargoGlobal _container;
 

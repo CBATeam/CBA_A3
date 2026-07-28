@@ -2,7 +2,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-SCRIPT(test_Makro_IS_x);
+SCRIPT(test_macro_is_x);
 
 // ----------------------------------------------------------------------------
 

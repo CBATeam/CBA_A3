@@ -13,7 +13,7 @@ Parameters:
     _end           - Function that is executed when the PFH is removed. (optional) <CODE>
     _runCondition  - Condition that has to return true for the PFH to be executed. (optional, default {true}) <CODE>
     _exitCondition - Condition that has to return true to delete the PFH object. (optional, default {false}) <CODE>
-    _private       - List of local variables that are serialized between executions. (optional) <CODE>
+    _private       - List of local variables that are serialized between executions. (optional) <STRING><ARRAY>
 
 Passed Arguments:
     _this          - The PFH logic. <LOCATION>
