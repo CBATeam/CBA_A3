@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="CBA_A3">
+    <Package name="StatusEffects">
+        <Key ID="STR_CBA_StatusEffects_Component">
+            <English>Community Base Addons - Status Effects Component</English>
+        </Key>
+    </Package>
+</Project>

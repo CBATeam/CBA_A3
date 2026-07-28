@@ -17,6 +17,8 @@ CBA_logic = objNull;
     };
 }] call CBA_fnc_compileFinal;
 
+GVAR(isModLoadedCache) = createHashMap;
+
 // FSM
 GVAR(delayless) = QUOTE(PATHTOF(delayless.fsm));
 GVAR(delayless_loop) = QUOTE(PATHTOF(delayless_loop.fsm));
@@ -41,7 +43,7 @@ GVAR(featureCamerasNames) = [
     "animViewer", // Animation viewer camera
     "classic" // Classic camera
 ];
-if (isClass (configFile >> "CfgPatches" >> "missions_f_vietnam")) then { // Add SOG Cinematic module camera if CDLC loaded
+if ("missions_f_vietnam" call CBA_fnc_isModLoaded) then { // Add SOG Cinematic module camera if CDLC loaded
     ["vn_cinematic", {missionNamespace getVariable ["vn_cinematic_running", false]}] call CBA_fnc_registerFeatureCamera;
 };
 
