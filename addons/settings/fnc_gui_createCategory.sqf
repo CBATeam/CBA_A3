@@ -1,28 +1,58 @@
-// inline function, don't include script_component.hpp
+#include "script_component.hpp"
+/* ----------------------------------------------------------------------------
+Internal Function: CBA_settings_fnc_gui_createCategory
+
+Description:
+    Creates the controls of one category of the Addon Options menu. Categories are
+    created the first time they are selected and kept for as long as the menu is
+    open.
+
+    The settings and the position of their sub-category headers are read from the
+    indices FUNC(gui_index) builds, so this doesn't have to look at any setting
+    outside the category.
+
+Parameters:
+    _display  - Addon Options dialog <DISPLAY>
+    _category - Lower case category to create <STRING>
+
+Returns:
+    None
+
+Examples:
+    (begin example)
+        [_display, "cba_ui"] call CBA_settings_fnc_gui_createCategory;
+    (end)
+
+Author:
+    commy2, kymckay, LinkIsGrim
+---------------------------------------------------------------------------- */
+
+params ["_display", "_category"];
+
+call FUNC(gui_index);
 
 private _lists = _display getVariable QGVAR(lists);
 
-private _categorySettings = [];
+private _categorySettings = GVAR(categorySettings) getOrDefault [_category, ["", []]];
+_categorySettings params ["", "_settings"];
+
+// [sub-category, index of its first setting], in order
+private _subCategoryRuns = GVAR(subCategories) getOrDefault [_category, []];
+private _runIndex = 0;
 
 {
-    (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
+    private _setting = _x;
 
-    if (toLower _category == _selectedAddon) then {
-        // Make sure empty-subcategory is always sorted first (fixing unicode)
-        _categorySettings pushBack [parseNumber (_subCategory != ""), _subCategory, _forEachIndex, _setting];
-    };
-} forEach GVAR(allSettings);
+    // ----- a header goes in front of the first setting of every sub-category
+    private _subCategory = "";
 
-_categorySettings sort true;
-private _lastSubCategory = "$START";
+    if (_runIndex < count _subCategoryRuns) then {
+        (_subCategoryRuns select _runIndex) params ["_runSubCategory", "_runFirstIndex"];
 
-{
-    _x params ["", "_subCategory", "", "_setting"];
-    private _createHeader = false;
-    if (_subCategory != _lastSubCategory) then {
-        _lastSubCategory = _subCategory;
-        if (_subCategory == "") exitWith {};
-        _createHeader = true;
+        if (_forEachIndex isEqualTo _runFirstIndex) then {
+            _subCategory = _runSubCategory;
+            _runIndex = _runIndex + 1;
+        };
     };
 
     (GVAR(default) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData", "", "_displayName", "_tooltip", "_isGlobal"];
@@ -57,8 +87,7 @@ private _lastSubCategory = "$START";
         };
 
         // ----- create or retrieve options "list" controls group
-        // _selectedAddon is the lower case localized category, every setting here is in it
-        private _list = [QGVAR(list), _selectedAddon, _source] joinString "$";
+        private _list = [QGVAR(list), _category, _source] joinString "$";
 
         private _ctrlOptionsGroup = controlNull;
 
@@ -79,7 +108,7 @@ private _lastSubCategory = "$START";
         private _rowOrder = _ctrlOptionsGroup getVariable QGVAR(rowOrder);
 
         // Add sub-category header
-        if (_createHeader) then {
+        if (_subCategory isNotEqualTo "") then {
             private _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
             private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
             _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
@@ -200,12 +229,12 @@ private _lastSubCategory = "$START";
             case "client": {CAN_SET_CLIENT_SETTINGS && {isNil {GVAR(userconfig) getVariable _setting}}};
             case "mission": {CAN_SET_MISSION_SETTINGS && {isNil {GVAR(missionConfig) getVariable _setting}}};
             case "server": {CAN_SET_SERVER_SETTINGS && {isNil {GVAR(serverConfig) getVariable _setting}}};
+            default {false};
         };
 
         if !(_enabled) then {
             _ctrlSettingName ctrlSetTextColor COLOR_TEXT_DISABLED;
 
-            //private _ctrlSettingGroupControls = allControls ctrlParent _ctrlSettingGroup select {ctrlParentControlsGroup _x == _ctrlSettingGroup};
             private _ctrlSettingGroupControls = "true" configClasses (configFile >> ctrlClassName _ctrlSettingGroup >> "controls") apply {_ctrlSettingGroup controlsGroupCtrl getNumber (_x >> "idc")};
 
             {
@@ -213,4 +242,4 @@ private _lastSubCategory = "$START";
             } forEach _ctrlSettingGroupControls;
         };
     } forEach ["client", "mission", "server"];
-} forEach _categorySettings;
+} forEach _settings;

@@ -12,6 +12,7 @@ PREP(whitelisted);
 if (hasInterface) then {
     PREP(openSettingsMenu);
     PREP(gui_addonChanged);
+    PREP(gui_createCategory);
     PREP(gui_sourceChanged);
     PREP(gui_configure);
     PREP(gui_refresh);

@@ -21,7 +21,7 @@ private _selectedSource = uiNamespace getVariable QGVAR(source);
 private _created = [QGVAR(created), _selectedAddon] joinString "$";
 
 if !(_display getVariable [_created, false]) then {
-    #include "gui_createCategory.inc.sqf"
+    [_display, _selectedAddon] call FUNC(gui_createCategory);
     _display setVariable [_created, true];
 };
 
