@@ -3,18 +3,22 @@ class CfgMagazineWells {
     class CBA_545x39_AK {
         GM_mags[] = {
             "gm_30Rnd_545x39mm_b_7N6_ak74_org",
-            "gm_30Rnd_545x39mm_b_7N6_ak74_prp",
             "gm_30Rnd_545x39mm_b_t_7T3_ak74_org",
-            "gm_30Rnd_545x39mm_b_t_7T3_ak74_prp"
+            "gm_30Rnd_545x39mm_b_7N6_ak74_prp",
+            "gm_30Rnd_545x39mm_b_t_7T3_ak74_prp",
+            "gm_30Rnd_545x39mm_b_7N6_ak74_blk",
+            "gm_30Rnd_545x39mm_b_t_7T3_ak74_blk"
         };
     };
 
     class CBA_545x39_RPK {
         GM_mags[] = {
-            "gm_45Rnd_545x39mm_b_7N6_ak74_org",
             "gm_45Rnd_545x39mm_b_7N6_ak74_prp",
-            "gm_45Rnd_545x39mm_b_t_7T3_ak74_org",
-            "gm_45Rnd_545x39mm_b_t_7T3_ak74_prp"
+            "gm_45Rnd_545x39mm_b_t_7T3_ak74_prp",
+            "gm_45Rnd_545x39mm_b_7N6_ak74_blk",
+            "gm_45Rnd_545x39mm_b_t_7T3_ak74_blk",
+            "gm_45Rnd_545x39mm_b_7N6_ak74_org",
+            "gm_45Rnd_545x39mm_b_t_7T3_ak74_org"
         };
     };
 
@@ -24,6 +28,17 @@ class CfgMagazineWells {
             "gm_30Rnd_556x45mm_b_dm11_g36_des",
             "gm_30Rnd_556x45mm_b_t_dm21_g36_blk",
             "gm_30Rnd_556x45mm_b_t_dm21_g36_des"
+        };
+    };
+
+    class CBA_556x45_HK33 {
+        GM_mags[] = {
+            "gm_30Rnd_556x45mm_b_DM11_hk33_blk",
+            "gm_30Rnd_556x45mm_b_t_DM21_hk33_blk",
+            "gm_40Rnd_556x45mm_b_DM11_hk33_blk",
+            "gm_40Rnd_556x45mm_b_t_DM21_hk33_blk",
+            "gm_60Rnd_556x45mm_b_DM11_hk33_blk",
+            "gm_60Rnd_556x45mm_b_t_DM21_hk33_blk"
         };
     };
 
@@ -42,38 +57,91 @@ class CfgMagazineWells {
 
     class CBA_762x39_AK {
         GM_mags[] = {
-            "gm_30Rnd_762x39mm_ap_7N23_ak47_blk",
             "gm_30Rnd_762x39mm_b_57N231_ak47_blk",
-            "gm_30Rnd_762x39mm_b_M43_ak47_blk",
+            "gm_30Rnd_762x39mm_bsd_57N231U_ak47_blk",
             "gm_30Rnd_762x39mm_b_t_57N231P_ak47_blk",
-            "gm_30Rnd_762x39mm_b_t_M43_ak47_blk"
+            "gm_30Rnd_762x39mm_ap_7N23_ak47_blk",
+            "gm_30Rnd_762x39mm_b_M43_ak47_blk",
+            "gm_30Rnd_762x39mm_b_t_M43_ak47_blk",
+            "gm_30Rnd_762x39mm_b_57N231_mpikm_blk",
+            "gm_30Rnd_762x39mm_bsd_57N231U_mpikm_blk",
+            "gm_30Rnd_762x39mm_b_t_57N231P_mpikm_blk",
+            "gm_30Rnd_762x39mm_ap_7N23_mpikm_blk",
+            "gm_30Rnd_762x39mm_b_57N231_akm_blk",
+            "gm_30Rnd_762x39mm_bsd_57N231U_akm_blk",
+            "gm_30Rnd_762x39mm_b_t_57N231P_akm_blk",
+            "gm_30Rnd_762x39mm_ap_7N23_akm_blk",
+            "gm_30Rnd_762x39mm_b_57N231_akm_org",
+            "gm_30Rnd_762x39mm_bsd_57N231U_akm_org",
+            "gm_30Rnd_762x39mm_b_t_57N231P_akm_org",
+            "gm_30Rnd_762x39mm_ap_7N23_akm_org",
+            "gm_40Rnd_762x39mm_b_t_57N231P_ak47_blk",
+            "gm_40Rnd_762x39mm_ap_7N23_ak47_blk",
+            "gm_40Rnd_762x39mm_b_M43_ak47_blk",
+            "gm_40Rnd_762x39mm_b_t_M43_ak47_blk",
+            "gm_40Rnd_762x39mm_b_57N231_mpikm_blk",
+            "gm_40Rnd_762x39mm_bsd_57N231U_mpikm_blk",
+            "gm_40Rnd_762x39mm_b_t_57N231P_mpikm_blk",
+            "gm_40Rnd_762x39mm_ap_7N23_mpikm_blk",
+            "gm_40Rnd_762x39mm_b_57N231_akm_blk",
+            "gm_40Rnd_762x39mm_bsd_57N231U_akm_blk",
+            "gm_40Rnd_762x39mm_b_t_57N231P_akm_blk",
+            "gm_40Rnd_762x39mm_ap_7N23_akm_blk",
+            "gm_40Rnd_762x39mm_b_57N231_akm_org",
+            "gm_40Rnd_762x39mm_bsd_57N231U_akm_org",
+            "gm_40Rnd_762x39mm_b_t_57N231P_akm_org",
+            "gm_40Rnd_762x39mm_ap_7N23_akm_org"
         };
     };
 
     class CBA_762x39_RPK {
         GM_mags[] = {
-            "gm_75Rnd_762x39mm_ap_7N23_ak47_blk",
             "gm_75Rnd_762x39mm_b_57N231_ak47_blk",
-            "gm_75Rnd_762x39mm_b_M43_ak47_blk",
+            "gm_75Rnd_762x39mm_bsd_57N231U_ak47_blk",
             "gm_75Rnd_762x39mm_b_t_57N231P_ak47_blk",
-            "gm_75Rnd_762x39mm_b_t_M43_ak47_blk"
+            "gm_75Rnd_762x39mm_ap_7N23_ak47_blk",
+            "gm_75Rnd_762x39mm_b_M43_ak47_blk",
+            "gm_75Rnd_762x39mm_b_t_M43_ak47_blk",
+            "gm_75Rnd_762x39mm_b_57N231_mpikm_blk",
+            "gm_75Rnd_762x39mm_bsd_57N231U_mpikm_blk",
+            "gm_75Rnd_762x39mm_b_t_57N231P_mpikm_blk",
+            "gm_75Rnd_762x39mm_ap_7N23_mpikm_blk"
         };
     };
 
     class CBA_762x51_G3 {
         GM_mags[] = {
-            "gm_20Rnd_762x51mm_ap_DM151_g3_blk",
-            "gm_20Rnd_762x51mm_ap_DM151_g3_des",
-            "gm_20Rnd_762x51mm_b_DM111_g3_blk",
-            "gm_20Rnd_762x51mm_b_DM111_g3_des",
-            "gm_20Rnd_762x51mm_b_DM41_g3_blk",
-            "gm_20Rnd_762x51mm_b_DM41_g3_des",
             "gm_20Rnd_762x51mm_b_t_DM21_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21_g3_des",
             "gm_20Rnd_762x51mm_b_t_DM21A1_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21A1_g3_des",
             "gm_20Rnd_762x51mm_b_t_DM21A2_g3_blk",
-            "gm_20Rnd_762x51mm_b_t_DM21A2_g3_des"
+            "gm_20Rnd_762x51mm_b_DM111_g3_blk",
+            "gm_20Rnd_762x51mm_b_DM41_g3_blk",
+            "gm_20Rnd_762x51mm_ap_DM151_g3_blk",
+            "gm_20Rnd_762x51mm_b_t_DM21_g3_des",
+            "gm_20Rnd_762x51mm_b_t_DM21A1_g3_des",
+            "gm_20Rnd_762x51mm_b_t_DM21A2_g3_des",
+            "gm_20Rnd_762x51mm_b_DM111_g3_des",
+            "gm_20Rnd_762x51mm_b_DM41_g3_des",
+            "gm_20Rnd_762x51mm_ap_DM151_g3_des",
+            "gm_40Rnd_762x51mm_b_t_DM21_g3_blk",
+            "gm_40Rnd_762x51mm_b_t_DM21A1_g3_blk",
+            "gm_40Rnd_762x51mm_b_t_DM21A2_g3_blk",
+            "gm_40Rnd_762x51mm_b_DM111_g3_blk",
+            "gm_40Rnd_762x51mm_b_DM41_g3_blk",
+            "gm_40Rnd_762x51mm_ap_DM151_g3_blk",
+            "gm_20Rnd_762x51mm_b_t_DM21_g3_gold",
+            "gm_10Rnd_762x51mm_b_t_DM21_g3_blk",
+            "gm_10Rnd_762x51mm_b_t_DM21A1_g3_blk",
+            "gm_10Rnd_762x51mm_b_t_DM21A2_g3_blk",
+            "gm_10Rnd_762x51mm_b_DM111_g3_blk",
+            "gm_10Rnd_762x51mm_b_DM41_g3_blk",
+            "gm_10Rnd_762x51mm_ap_DM151_g3_blk",
+            "gm_5Rnd_762x51mm_b_t_DM21_g3_blk",
+            "gm_5Rnd_762x51mm_b_t_DM21A1_g3_blk",
+            "gm_5Rnd_762x51mm_b_t_DM21A2_g3_blk",
+            "gm_5Rnd_762x51mm_b_DM111_g3_blk",
+            "gm_5Rnd_762x51mm_b_DM41_g3_blk",
+            "gm_5Rnd_762x51mm_ap_DM151_g3_blk"
         };
     };
 
@@ -117,12 +185,18 @@ class CfgMagazineWells {
 
     class CBA_9x19_MP5 {
         GM_mags[] = {
-            "gm_30Rnd_9x19mm_ap_DM91_mp5_blk",
-            "gm_30Rnd_9x19mm_ap_DM91_mp5a3_blk",
-            "gm_30Rnd_9x19mm_b_DM11_mp5_blk",
-            "gm_30Rnd_9x19mm_b_DM11_mp5a3_blk",
             "gm_30Rnd_9x19mm_b_DM51_mp5_blk",
-            "gm_30Rnd_9x19mm_b_DM51_mp5a3_blk"
+            "gm_30Rnd_9x19mm_b_DM11_mp5_blk",
+            "gm_30Rnd_9x19mm_ap_DM91_mp5_blk",
+            "gm_30Rnd_9x19mm_bsd_DM81_mp5_blk",
+            "gm_30Rnd_9x19mm_b_DM51_mp5a3_blk",
+            "gm_30Rnd_9x19mm_b_DM11_mp5a3_blk",
+            "gm_30Rnd_9x19mm_ap_DM91_mp5a3_blk",
+            "gm_30Rnd_9x19mm_bsd_DM81_mp5a3_blk",
+            "gm_60Rnd_9x19mm_b_DM51_mp5a3_blk",
+            "gm_60Rnd_9x19mm_b_DM11_mp5a3_blk",
+            "gm_60Rnd_9x19mm_ap_DM91_mp5a3_blk",
+            "gm_60Rnd_9x19mm_bsd_DM81_mp5a3_blk"
         };
     };
 
