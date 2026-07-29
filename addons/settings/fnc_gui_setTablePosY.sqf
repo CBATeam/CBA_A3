@@ -28,14 +28,12 @@ Author:
 
 params ["_control", "_tablePosY", "_height"];
 
-private _config = configFile >> ctrlClassName _control;
+(_control call FUNC(gui_rowClassInfo) select 0) params ["_posX", "_configPosY", "_width", "_configHeight"];
 
-private _posX = getNumber (_config >> "x");
-private _posY = getNumber (_config >> "y") + _tablePosY;
-private _width = getNumber (_config >> "w");
+private _posY = _configPosY + _tablePosY;
 
 if (isNil "_height") then {
-    _height = getNumber (_config >> "h");
+    _height = _configHeight;
 };
 
 _control ctrlSetPosition [_posX, _posY, _width, _height];

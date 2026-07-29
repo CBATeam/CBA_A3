@@ -235,11 +235,9 @@ private _runIndex = 0;
         if !(_enabled) then {
             _ctrlSettingName ctrlSetTextColor COLOR_TEXT_DISABLED;
 
-            private _ctrlSettingGroupControls = "true" configClasses (configFile >> ctrlClassName _ctrlSettingGroup >> "controls") apply {_ctrlSettingGroup controlsGroupCtrl getNumber (_x >> "idc")};
-
             {
-                _x ctrlEnable false;
-            } forEach _ctrlSettingGroupControls;
+                (_ctrlSettingGroup controlsGroupCtrl _x) ctrlEnable false;
+            } forEach (_ctrlSettingGroup call FUNC(gui_rowClassInfo) select 1);
         };
     } forEach ["client", "mission", "server"];
 } forEach _settings;

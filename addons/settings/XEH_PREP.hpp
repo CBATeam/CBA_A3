@@ -22,6 +22,7 @@ if (hasInterface) then {
     PREP(gui_fillAddonList);
     PREP(gui_filterSettings);
     PREP(gui_setTablePosY);
+    PREP(gui_rowClassInfo);
     PREP(gui_onKeyDown);
     PREP(gui_preset);
     PREP(gui_saveTempData);
