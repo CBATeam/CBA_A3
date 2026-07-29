@@ -133,7 +133,7 @@
 
 // Rows are banded so a long setting name can be followed across to its control
 #define COLOR_ROW [0, 0, 0, 0.4]
-#define COLOR_ROW_ALT [0.3, 0.31, 0.34, 0.4]
+#define COLOR_ROW_ALT [0.1, 0.11, 0.13, 0.4]
 
 #define COLOR_TEXT_ENABLED [1, 1, 1, 1]
 #define COLOR_TEXT_ENABLED_WAS_EDITED [0.95, 0.95, 0.1, 1]
