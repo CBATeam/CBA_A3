@@ -16,7 +16,7 @@ if (hasInterface) then {
     PREP(gui_configure);
     PREP(gui_refresh);
     PREP(gui_search);
-    PREP(gui_searchIndex);
+    PREP(gui_index);
     PREP(gui_searchSelect);
     PREP(gui_fillAddonList);
     PREP(gui_filterSettings);

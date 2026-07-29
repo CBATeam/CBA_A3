@@ -188,8 +188,10 @@ if (isNil {GVAR(default) getVariable _setting}) then {
 
 GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script, _subCategory]];
 
-// --- settings menu search index is stale now, it is rebuilt on the next search
+// --- settings menu indices are stale now, they are rebuilt when it is next opened
 GVAR(searchIndex) = nil;
+GVAR(categorySettings) = nil;
+GVAR(subCategories) = nil;
 
 // --- read previous setting values from profile
 private _settingInfo = GVAR(userconfig) getVariable _setting;

@@ -27,7 +27,7 @@ Author:
 
 params ["_ctrlAddonList", ["_categories", []]];
 
-call FUNC(gui_searchIndex);
+call FUNC(gui_index);
 
 // deleting the selected entry fires LBSelChanged, which would create a category we're about to filter out
 LOCK;
@@ -41,7 +41,7 @@ for "_index" from (lbSize _ctrlAddonList) - 1 to 0 step -1 do {
         private _index = _ctrlAddonList lbAdd (_y select 0);
         _ctrlAddonList lbSetData [_index, _x];
     };
-} forEach GVAR(searchCategories);
+} forEach GVAR(categorySettings);
 
 lbSort _ctrlAddonList;
 
