@@ -33,6 +33,9 @@ call FUNC(gui_index);
 
 private _lists = _display getVariable QGVAR(lists);
 
+// nothing here is positioned, FUNC(gui_reflow) lays the table out once afterwards
+private _createdGroups = [];
+
 private _categorySettings = GVAR(categorySettings) getOrDefault [_category, ["", []]];
 _categorySettings params ["", "_settings"];
 
@@ -98,9 +101,13 @@ private _runIndex = 0;
 
             _lists pushBack _list;
             _display setVariable [_list, _ctrlOptionsGroup];
+            _createdGroups pushBack _ctrlOptionsGroup;
 
             // order of headers and settings in the table, used to re-flow it when searching
             _ctrlOptionsGroup setVariable [QGVAR(rowOrder), []];
+
+            // the settings alone, without the headers between them
+            _ctrlOptionsGroup setVariable [QGVAR(rows), []];
         } else {
             _ctrlOptionsGroup = _display getVariable _list;
         };
@@ -112,10 +119,6 @@ private _runIndex = 0;
             private _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
             private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
             _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
-
-            private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
-            _tablePosY = [_ctrlHeaderGroup, _tablePosY] call FUNC(gui_setTablePosY);
-            _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
 
             // the settings below this header, used to hide it when they are all filtered out
             _ctrlHeaderGroup setVariable [QGVAR(members), []];
@@ -183,25 +186,17 @@ private _runIndex = 0;
         _settingControlsGroups pushBack _ctrlSettingGroup;
 
         _rowOrder pushBack _ctrlSettingGroup;
+        (_ctrlOptionsGroup getVariable QGVAR(rows)) pushBack _ctrlSettingGroup;
 
         private _ctrlHeaderGroup = _ctrlOptionsGroup getVariable [QGVAR(currentHeader), controlNull];
         if (!isNull _ctrlHeaderGroup) then {
             (_ctrlHeaderGroup getVariable QGVAR(members)) pushBack _ctrlSettingGroup;
         };
 
-        // ----- adjust y position in table
-        private _tablePosY = _ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2];
-        _tablePosY = [_ctrlSettingGroup, _tablePosY] call FUNC(gui_setTablePosY);
-        _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
-
-        // ----- padding to make listboxes work
-        if (_settingType == "LIST") then {
-            private _ctrlEmpty = _display ctrlCreate [QGVAR(Row_Empty), -1, _ctrlOptionsGroup];
-            private _height = POS_H(count (_settingData select 0)) + TABLE_LINE_SPACING;
-            [_ctrlEmpty, _tablePosY, _height] call FUNC(gui_setTablePosY);
-
-            // the height has to be kept, hiding the padding sets it to zero
-            _ctrlSettingGroup setVariable [QGVAR(spacer), [_ctrlEmpty, _height]];
+        // ----- how far an open dropdown reaches below its row, so the table can
+        // ----- keep the scroll area tall enough for it
+        if (toUpper _settingType == "LIST") then {
+            _ctrlSettingGroup setVariable [QGVAR(dropdownHeight), POS_H(count (_settingData select 0)) + TABLE_LINE_SPACING];
         };
 
         // ----- set setting name
@@ -241,3 +236,8 @@ private _runIndex = 0;
         };
     } forEach ["client", "mission", "server"];
 } forEach _settings;
+
+// ----- created after every row so it is drawn below them
+{
+    _x setVariable [QGVAR(pad), _display ctrlCreate [QGVAR(ScrollPad), -1, _x]];
+} forEach _createdGroups;

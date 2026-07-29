@@ -21,6 +21,7 @@ if (hasInterface) then {
     PREP(gui_searchSelect);
     PREP(gui_fillAddonList);
     PREP(gui_filterSettings);
+    PREP(gui_reflow);
     PREP(gui_setTablePosY);
     PREP(gui_rowClassInfo);
     PREP(gui_onKeyDown);

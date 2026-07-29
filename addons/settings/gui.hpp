@@ -214,7 +214,9 @@ class GVAR(CheckboxSound): RscCheckBox {
     soundEscape[] = {"\a3\ui_f\data\Sound\RscButtonMenu\soundEscape",0.090000004,1};
 };
 
-class GVAR(Row_Empty): RscText {
+// sits below the last setting of a category, stretched to keep the scroll area
+// tall enough for an open dropdown
+class GVAR(ScrollPad): RscText {
     GVAR(script) = "";
     x = QUOTE(POS_W(1));
     y = QUOTE(POS_H(0));
