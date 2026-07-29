@@ -5,17 +5,8 @@ params ["_controlsGroup", "_setting", "_source", "_currentPriority", "_isGlobal"
 private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
 private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
 
-// where the checkboxes belong, so FUNC(gui_setOverwriteVisible) can put them back
-{
-    _x setVariable [QGVAR(position), ctrlPosition _x];
-} forEach [_ctrlOverwriteClient, _ctrlOverwriteMission];
-
-// which of them a row has depends on the source it is showing
-[_ctrlOverwriteClient, _source isNotEqualTo "client" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
-[_ctrlOverwriteMission, _source isEqualTo "server" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
-
-// "overwrite clients" is forced for global settings, so it can't be unticked
-_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal > 0 && {_source isNotEqualTo "mission"})];
+// which checkboxes the row has, and whether they can be ticked, depends on the
+// source it is showing. FUNC(gui_retargetRow) owns that.
 
 _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
     _this call ((_this select 0) getVariable QFUNC(event));
@@ -121,63 +112,61 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
     private _priority = TEMP_PRIORITY(_setting);
     private _tempValue = TEMP_VALUE(_setting);
 
-    {
-        private _source = _x getVariable QGVAR(source);
-        private _sourceValue = TEMP_VALUE_SOURCE(_setting,_source);
-        private _ctrlLocked = _x controlsGroupCtrl IDC_SETTING_LOCKED;
+    private _source = ROW_SOURCE(_controlsGroup);
+    private _sourceValue = TEMP_VALUE_SOURCE(_setting,_source);
+    private _ctrlLocked = _controlsGroup controlsGroupCtrl IDC_SETTING_LOCKED;
 
-        if (_source isEqualTo _priority) then {
-            if (toLower _setting in GVAR(awaitingRestartTemp)) then {
-                _ctrlLocked ctrlSetText ICON_NEED_RESTART;
-                _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
-                _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
-            } else {
-                _ctrlLocked ctrlSetText ICON_APPLIES;
-                _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
-                _ctrlLocked ctrlSetTooltip LLSTRING(applies);
-            };
+    if (_source isEqualTo _priority) then {
+        if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+            _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+            _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+            _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
         } else {
-            private _overwriteEqual = _sourceValue isEqualTo _tempValue;
-            private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select _overwriteEqual;
+            _ctrlLocked ctrlSetText ICON_APPLIES;
+            _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+            _ctrlLocked ctrlSetTooltip LLSTRING(applies);
+        };
+    } else {
+        private _overwriteEqual = _sourceValue isEqualTo _tempValue;
+        private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select _overwriteEqual;
 
-            switch [_source, _priority] do {
-                case ["client", "server"];
-                case ["mission", "server"]: {
-                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                    _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual);
-                };
-                case ["client", "mission"];
-                case ["server", "mission"]: {
-                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                    _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual);
-                };
-                case ["mission", "client"]: {
-                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                    _ctrlLocked ctrlSetTextColor _overwriteColor;
-                    _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual);
-                };
-                case ["server", "client"]: {
-                    if (isServer) then {
-                        if (toLower _setting in GVAR(awaitingRestartTemp)) then {
-                            _ctrlLocked ctrlSetText ICON_NEED_RESTART;
-                            _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
-                            _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
-                        } else {
-                            _ctrlLocked ctrlSetText ICON_APPLIES;
-                            _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
-                            _ctrlLocked ctrlSetTooltip LLSTRING(applies);
-                        };
+        switch [_source, _priority] do {
+            case ["client", "server"];
+            case ["mission", "server"]: {
+                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetTextColor _overwriteColor;
+                _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual);
+            };
+            case ["client", "mission"];
+            case ["server", "mission"]: {
+                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetTextColor _overwriteColor;
+                _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual);
+            };
+            case ["mission", "client"]: {
+                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetTextColor _overwriteColor;
+                _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual);
+            };
+            case ["server", "client"]: {
+                if (isServer) then {
+                    if (toLower _setting in GVAR(awaitingRestartTemp)) then {
+                        _ctrlLocked ctrlSetText ICON_NEED_RESTART;
+                        _ctrlLocked ctrlSetTextColor COLOR_NEED_RESTART;
+                        _ctrlLocked ctrlSetTooltip LLSTRING(need_restart);
                     } else {
-                        _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
-                        _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
-                        _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
+                        _ctrlLocked ctrlSetText ICON_APPLIES;
+                        _ctrlLocked ctrlSetTextColor COLOR_APPLIES;
+                        _ctrlLocked ctrlSetTooltip LLSTRING(applies);
                     };
+                } else {
+                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                    _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
+                    _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                 };
             };
         };
-    } forEach (_controlsGroup getVariable QGVAR(groups));
+    };
 }];
 
 [_controlsGroup, _currentPriority] call (_controlsGroup getVariable QFUNC(updateUI_priority));

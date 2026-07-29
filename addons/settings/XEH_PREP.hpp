@@ -26,6 +26,7 @@ if (hasInterface) then {
     PREP(gui_rowClassInfo);
     PREP(gui_setRowEnabled);
     PREP(gui_setOverwriteVisible);
+    PREP(gui_retargetRow);
     PREP(gui_onKeyDown);
     PREP(gui_preset);
     PREP(gui_saveTempData);

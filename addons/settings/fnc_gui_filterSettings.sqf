@@ -27,12 +27,10 @@ Author:
 params ["_display"];
 
 private _category = uiNamespace getVariable [QGVAR(addon), ""];
-private _source = uiNamespace getVariable [QGVAR(source), ""];
 
-if (_category isEqualTo "" || {_source isEqualTo ""}) exitWith {};
+if (_category isEqualTo "") exitWith {};
 
-private _list = [QGVAR(list), _category, _source] joinString "$";
-private _ctrlOptionsGroup = _display getVariable [_list, controlNull];
+private _ctrlOptionsGroup = (_display getVariable [QGVAR(optionsGroups), createHashMap]) getOrDefault [_category, controlNull];
 
 // category hasn't been created yet, it is filtered when it is
 if (isNull _ctrlOptionsGroup) exitWith {};

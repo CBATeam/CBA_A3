@@ -13,27 +13,27 @@ private _selectedAddon = _control lbData _index;
 // fix error when no addons present
 if (_selectedAddon isEqualTo "") exitWith {};
 
+// commit anything half typed before the rows are pointed somewhere else
+ctrlSetFocus _control;
+
 uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 
-// toggle lists
-private _selectedSource = uiNamespace getVariable QGVAR(source);
+private _optionsGroups = _display getVariable QGVAR(optionsGroups);
 
-private _created = [QGVAR(created), _selectedAddon] joinString "$";
-
-if !(_display getVariable [_created, false]) then {
+if !(_selectedAddon in _optionsGroups) then {
     [_display, _selectedAddon] call FUNC(gui_createCategory);
-    _display setVariable [_created, true];
 };
 
+// toggle lists
 {
-    (_x splitString "$") params ["", "_addon", "_source"];
+    private _isSelected = _x isEqualTo _selectedAddon;
 
-    private _ctrlOptionsGroup = _display getVariable _x;
-    private _isSelected = _source == _selectedSource && {_addon == _selectedAddon};
+    (_optionsGroups get _x) ctrlEnable _isSelected;
+    (_optionsGroups get _x) ctrlShow _isSelected;
+} forEach (keys _optionsGroups);
 
-    _ctrlOptionsGroup ctrlEnable _isSelected;
-    _ctrlOptionsGroup ctrlShow _isSelected;
-} forEach (_display getVariable QGVAR(lists));
+// the category was built for whichever source was shown when it was created
+call FUNC(gui_refresh);
 
 // the category may have just been created, or created while a different search was active
 [_display] call FUNC(gui_filterSettings);
