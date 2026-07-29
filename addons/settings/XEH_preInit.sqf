@@ -121,7 +121,7 @@ _ctrlAddonOptions ctrlSetTooltip LLSTRING(menu_button_tooltip);
 GVAR(runAtSettingsInitialized) = [];
 ["CBA_settingsInitialized", {
     {
-        (_this select 1) call (_this select 0);
+        (_x select 1) call (_x select 0);
     } forEach GVAR(runAtSettingsInitialized);
     GVAR(runAtSettingsInitialized) = nil;
 }] call CBA_fnc_addEventHandler;
