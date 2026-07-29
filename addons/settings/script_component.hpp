@@ -126,9 +126,17 @@
 #define GET_TEMP_NAMESPACE_VALUE(setting,source)    (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 0)
 #define GET_TEMP_NAMESPACE_PRIORITY(setting,source) (GET_TEMP_NAMESPACE(source) getVariable [setting, [nil, nil]] select 1)
 
+// Editing a value leaves the priority alone and the other way around, but both
+// are stored as one pair, so the half that isn't being written has to be filled
+// in with what is in effect right now. Reading it back with the getters above
+// would write a nil, and everything that compares the three sources reads the
+// stored nil instead of falling back to the setting's real value.
+#define GET_TEMP_NAMESPACE_VALUE_OR_CURRENT(setting,source)    (GET_TEMP_NAMESPACE(source) getVariable [setting, []] param [0, [setting, source] call FUNC(get)])
+#define GET_TEMP_NAMESPACE_PRIORITY_OR_CURRENT(setting,source) (GET_TEMP_NAMESPACE(source) getVariable [setting, []] param [1, [setting, source] call FUNC(priority)])
+
 #define SET_TEMP_NAMESPACE_AWAITING_RESTART(setting) if (toLower setting in GVAR(needRestart) && {!is3DEN}) then {GVAR(awaitingRestartTemp) pushBackUnique toLower setting}
-#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
-#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
+#define SET_TEMP_NAMESPACE_VALUE(setting,value,source)       GET_TEMP_NAMESPACE(source) setVariable [setting, [value, GET_TEMP_NAMESPACE_PRIORITY_OR_CURRENT(setting,source)]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
+#define SET_TEMP_NAMESPACE_PRIORITY(setting,priority,source) GET_TEMP_NAMESPACE(source) setVariable [setting, [GET_TEMP_NAMESPACE_VALUE_OR_CURRENT(setting,source), priority]]; SET_TEMP_NAMESPACE_AWAITING_RESTART(setting)
 
 #define GET_LOCAL_SETTINGS_NAMESPACE (with missionNamespace do {if (isDedicated && {GVAR(volatile)}) then {uiNamespace} else {profileNamespace}})
 

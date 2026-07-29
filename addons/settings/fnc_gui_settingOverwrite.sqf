@@ -92,6 +92,14 @@ _controlsGroup setVariable [QFUNC(updateUI_priority), {
 
         _ctrlOverwriteClient cbSetChecked true;
         _ctrlOverwriteClient ctrlEnable false;
+
+        // A setting saved as overwriting the mission comes back with no memory of
+        // what "overwrite clients" was before that. Overwriting the mission
+        // includes overwriting the clients, so unticking it drops back to just
+        // the clients rather than to nothing.
+        if (isNil {_ctrlOverwriteClient getVariable QGVAR(state)}) then {
+            _ctrlOverwriteClient setVariable [QGVAR(state), true];
+        };
     } else {
         _ctrlOverwriteMission cbSetChecked false;
 
