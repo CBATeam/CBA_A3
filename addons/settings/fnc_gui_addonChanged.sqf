@@ -1,28 +1,28 @@
 #include "script_component.hpp"
 
+EXIT_LOCKED;
+
 // get button
 params ["_control", "_index"];
 
 // get dialog
 private _display = ctrlParent _control;
 
-private _selectedAddon = _display getVariable (_control lbData _index);
+private _selectedAddon = _control lbData _index;
 
 // fix error when no addons present
-if (isNil "_selectedAddon") exitWith {};
+if (_selectedAddon isEqualTo "") exitWith {};
 
-if (_selectedAddon isEqualType "") then {
-    uiNamespace setVariable [QGVAR(addon), _selectedAddon];
-};
-
-uiNamespace setVariable [QGVAR(addonIndex), _index];
+uiNamespace setVariable [QGVAR(addon), _selectedAddon];
 
 // toggle lists
 private _selectedSource = uiNamespace getVariable QGVAR(source);
 
-if !(_display getVariable [_selectedAddon, false]) then {
+private _created = [QGVAR(created), _selectedAddon] joinString "$";
+
+if !(_display getVariable [_created, false]) then {
     #include "gui_createCategory.inc.sqf"
-    _display setVariable [_selectedAddon, true];
+    _display setVariable [_created, true];
 };
 
 {
@@ -34,3 +34,6 @@ if !(_display getVariable [_selectedAddon, false]) then {
     _ctrlOptionsGroup ctrlEnable _isSelected;
     _ctrlOptionsGroup ctrlShow _isSelected;
 } forEach (_display getVariable QGVAR(lists));
+
+// the category may have just been created, or created while a different search was active
+[_display] call FUNC(gui_filterSettings);

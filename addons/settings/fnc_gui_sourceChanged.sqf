@@ -46,3 +46,6 @@ private _enabled = switch (_selectedSource) do {
 
 _ctrlButtonImport ctrlEnable _enabled;
 _ctrlButtonLoad ctrlEnable _enabled;
+
+// every source has its own controls, the ones just shown were never filtered
+[_display] call FUNC(gui_filterSettings);

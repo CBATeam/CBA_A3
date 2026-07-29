@@ -75,8 +75,26 @@ if (_category isEqualTo "") exitWith {
     1
 };
 
+// --- everything shown in the settings menu is localized here, so that a stringtable
+// --- key and the string it resolves to are never treated as two different things
+if (isLocalized _category) then {
+    _category = localize _category;
+};
+
+if (isLocalized _subCategory) then {
+    _subCategory = localize _subCategory;
+};
+
 // --- setting title and tooltip
 _title params [["_displayName", "", [""]], ["_tooltip", "", [""]]];
+
+if (isLocalized _displayName) then {
+    _displayName = localize _displayName;
+};
+
+if (isLocalized _tooltip) then {
+    _tooltip = localize _tooltip;
+};
 
 if (_displayName isEqualTo "") then {
     _displayName = _setting;
@@ -125,6 +143,14 @@ switch (toUpper _settingType) do {
                 _tooltip = str _tooltip;
             };
 
+            if (isLocalized _label) then {
+                _label = localize _label;
+            };
+
+            if (isLocalized _tooltip) then {
+                _tooltip = localize _tooltip;
+            };
+
             _labels set [_forEachIndex, _label];
             _tooltips pushBack _tooltip;
         } forEach _labels;
@@ -161,6 +187,9 @@ if (isNil {GVAR(default) getVariable _setting}) then {
 };
 
 GVAR(default) setVariable [_setting, [_defaultValue, _setting, _settingType, _settingData, _category, _displayName, _tooltip, _isGlobal, _script, _subCategory]];
+
+// --- settings menu search index is stale now, it is rebuilt on the next search
+GVAR(searchIndex) = nil;
 
 // --- read previous setting values from profile
 private _settingInfo = GVAR(userconfig) getVariable _setting;

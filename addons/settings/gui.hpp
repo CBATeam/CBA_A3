@@ -1,6 +1,8 @@
 class RscButtonMenu;
 class RscControlsGroupNoScrollbars;
 class RscText;
+class RscEdit;
+class RscButtonSearch;
 
 class RscDisplayGameOptions {
     // pause game in SP while this menu is shown
@@ -67,6 +69,30 @@ class RscDisplayGameOptions {
                     w = QUOTE(POS_W(4));
                     h = QUOTE(POS_H(1));
                     sizeEx = QUOTE(POS_H(1));
+                };
+                class Search: RscEdit {
+                    idc = IDC_SEARCH_EDIT;
+                    tooltip = CSTRING(Search_tooltip);
+                    onEditChanged = QUOTE([ctrlParent (_this select 0)] call FUNC(gui_search));
+                    onSetFocus = QUOTE((ctrlParent (_this select 0)) setVariable [ARR_2(QQGVAR(searchFocus),true)]);
+                    onKillFocus = QUOTE((ctrlParent (_this select 0)) setVariable [ARR_2(QQGVAR(searchFocus),false)]);
+                    // right click clears the search
+                    onMouseButtonClick = QUOTE(if ((_this select 1) == 1) then {(_this select 0) ctrlSetText ''; [ctrlParent (_this select 0)] call FUNC(gui_search)});
+                    x = QUOTE(POS_W(26));
+                    y = QUOTE(POS_H(1));
+                    w = QUOTE(POS_W(9.4));
+                    h = QUOTE(POS_H(1));
+                    sizeEx = QUOTE(POS_H(1));
+                };
+                class SearchButton: RscButtonSearch {
+                    idc = -1;
+                    tooltip = CSTRING(ButtonSearch_tooltip);
+                    colorBackground[] = {0,0,0,0.4};
+                    onButtonClick = QUOTE(ctrlSetFocus ((ctrlParentControlsGroup (_this select 0)) controlsGroupCtrl IDC_SEARCH_EDIT));
+                    x = QUOTE(POS_W(35.6));
+                    y = QUOTE(POS_H(0.92));
+                    w = QUOTE(POS_W(1));
+                    h = QUOTE(POS_H(1.1));
                 };
                 class OverwriteClientText: RscText {
                     // Set tooltip per script to avoid it being all upper case.
@@ -300,8 +326,6 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
         class OverwriteMission: OverwriteMission {};
     };
 };
-
-class RscEdit;
 
 class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);
