@@ -204,10 +204,9 @@ private _runIndex = 0;
         _ctrlSettingName ctrlSetText format ["%1:", _displayName];
         _ctrlSettingName ctrlSetTooltip _tooltip;
 
-        // change color if setting was edited
-        if (_wasEdited) then {
-            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
-        };
+        // ----- check if setting can be altered. Has to be known before the scripts
+        // ----- below run, they only switch their controls back on if it can be.
+        private _enabled = _ctrlSettingGroup call FUNC(gui_setRowEnabled);
 
         // ----- execute setting script
         private _script = getText (configFile >> ctrlClassName _ctrlSettingGroup >> QGVAR(script));
@@ -219,20 +218,9 @@ private _runIndex = 0;
         // ----- priority list
         [_ctrlSettingGroup, _setting, _source, _currentPriority, _isGlobal] call FUNC(gui_settingOverwrite);
 
-        // ----- check if setting can be altered
-        private _enabled = switch (_source) do {
-            case "client": {CAN_SET_CLIENT_SETTINGS && {isNil {GVAR(userconfig) getVariable _setting}}};
-            case "mission": {CAN_SET_MISSION_SETTINGS && {isNil {GVAR(missionConfig) getVariable _setting}}};
-            case "server": {CAN_SET_SERVER_SETTINGS && {isNil {GVAR(serverConfig) getVariable _setting}}};
-            default {false};
-        };
-
-        if !(_enabled) then {
-            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_DISABLED;
-
-            {
-                (_ctrlSettingGroup controlsGroupCtrl _x) ctrlEnable false;
-            } forEach (_ctrlSettingGroup call FUNC(gui_rowClassInfo) select 1);
+        // change color if setting was edited
+        if (_wasEdited && {_enabled}) then {
+            _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
         };
     } forEach ["client", "mission", "server"];
 } forEach _settings;

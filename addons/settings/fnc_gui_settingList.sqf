@@ -41,9 +41,8 @@ _ctrlList ctrlAddEventHandler ["LBSelChanged", {
     SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
 
     // if new value is same as default value, grey out the default button
-    private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
+    ROW_ENABLE(_controlsGroup,IDC_SETTING_DEFAULT,_value isNotEqualTo _defaultValue);
 
     // automatically check "overwrite client" for mission makers qol
     [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
@@ -67,7 +66,6 @@ _controlsGroup setVariable [QFUNC(updateUI), {
     UNLOCK;
 
     // if new value is same as default value, grey out the default button
-    private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
+    ROW_ENABLE(_controlsGroup,IDC_SETTING_DEFAULT,_value isNotEqualTo _defaultValue);
 }];

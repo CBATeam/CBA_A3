@@ -169,6 +169,12 @@
 #define ROW_SETTING(group) (group getVariable QGVAR(setting))
 #define ROW_SOURCE(group) (group getVariable QGVAR(source))
 
+// A control of a row can only be switched on if the setting can be edited from
+// the source the row is showing in the first place. FUNC(gui_setRowEnabled)
+// works that part out.
+#define ROW_ENABLED(group) (group getVariable [ARR_2(QGVAR(enabled),true)])
+#define ROW_ENABLE(group,idc,condition) (group controlsGroupCtrl idc) ctrlEnable (ROW_ENABLED(group) && {condition})
+
 // Keep quote marks for strings, but also print "<any>" if undefined.
 // str and format ["%1", ] on their own can only do either.
 #define TO_STRING(var) (call {private _str = var; if (_str isEqualType "") then {_str = str _str}; format ["%1", _str]})

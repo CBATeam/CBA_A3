@@ -24,6 +24,8 @@ if (hasInterface) then {
     PREP(gui_reflow);
     PREP(gui_setTablePosY);
     PREP(gui_rowClassInfo);
+    PREP(gui_setRowEnabled);
+    PREP(gui_setOverwriteVisible);
     PREP(gui_onKeyDown);
     PREP(gui_preset);
     PREP(gui_saveTempData);

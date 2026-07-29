@@ -5,17 +5,17 @@ params ["_controlsGroup", "_setting", "_source", "_currentPriority", "_isGlobal"
 private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
 private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
 
-if (_source isEqualTo "client") then {
-    _ctrlOverwriteClient ctrlEnable false;
-    _ctrlOverwriteClient ctrlSetPosition [0, 0, -1, -1];
-    _ctrlOverwriteClient ctrlCommit 0;
-};
+// where the checkboxes belong, so FUNC(gui_setOverwriteVisible) can put them back
+{
+    _x setVariable [QGVAR(position), ctrlPosition _x];
+} forEach [_ctrlOverwriteClient, _ctrlOverwriteMission];
 
-if (_source isNotEqualTo "server") then {
-    _ctrlOverwriteMission ctrlEnable false;
-    _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
-    _ctrlOverwriteMission ctrlCommit 0;
-};
+// which of them a row has depends on the source it is showing
+[_ctrlOverwriteClient, _source isNotEqualTo "client" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
+[_ctrlOverwriteMission, _source isEqualTo "server" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
+
+// "overwrite clients" is forced for global settings, so it can't be unticked
+_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal > 0 && {_source isNotEqualTo "mission"})];
 
 _ctrlOverwriteClient ctrlAddEventHandler ["CheckedChanged", {
     _this call ((_this select 0) getVariable QFUNC(event));
@@ -68,7 +68,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
     } else {
         private _wasChecked = _ctrlOverwriteClient getVariable QGVAR(state);
         _ctrlOverwriteClient cbSetChecked _wasChecked;
-        _ctrlOverwriteClient ctrlEnable (_ctrlOverwriteClient getVariable [QGVAR(enabled), true]);
+        ROW_ENABLE(_controlsGroup,IDC_SETTING_OVERWRITE_CLIENT,_ctrlOverwriteClient getVariable [ARR_2(QGVAR(cbEnabled),true)]);
 
         _state = parseNumber _wasChecked;
         SET_TEMP_NAMESPACE_PRIORITY(_setting,_state,_source);
@@ -96,7 +96,11 @@ _controlsGroup setVariable [QFUNC(updateUI_priority), {
         _ctrlOverwriteMission cbSetChecked false;
 
         _ctrlOverwriteClient cbSetChecked (_priority > 0);
-        _ctrlOverwriteClient ctrlEnable (_ctrlOverwriteClient getVariable [QGVAR(enabled), true]);
+        ROW_ENABLE(_controlsGroup,IDC_SETTING_OVERWRITE_CLIENT,_ctrlOverwriteClient getVariable [ARR_2(QGVAR(cbEnabled),true)]);
+
+        // what to go back to when "overwrite mission" is unticked again. Only kept
+        // while it is unticked, so it always belongs to the source being shown.
+        _ctrlOverwriteClient setVariable [QGVAR(state), _priority > 0];
     };
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
@@ -169,24 +173,3 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
 }];
 
 [_controlsGroup, _currentPriority] call (_controlsGroup getVariable QFUNC(updateUI_priority));
-_ctrlOverwriteClient setVariable [QGVAR(state), cbChecked _ctrlOverwriteClient];
-
-// disable certain checkboxes
-if (_isGlobal > 0) then {
-    if (_source != "mission") then {
-        _ctrlOverwriteClient ctrlEnable false;
-        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
-    };
-
-    if (_isGlobal > 1) then {
-        _ctrlOverwriteClient ctrlEnable false;
-        _ctrlOverwriteClient ctrlSetPosition [0, 0, -1, -1];
-        _ctrlOverwriteClient ctrlCommit 0;
-
-        _ctrlOverwriteClient setVariable [QGVAR(enabled), false];
-
-        _ctrlOverwriteMission ctrlEnable false;
-        _ctrlOverwriteMission ctrlSetPosition [0, 0, -1, -1];
-        _ctrlOverwriteMission ctrlCommit 0;
-    };
-};
