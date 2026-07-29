@@ -102,7 +102,7 @@ private _ctrlButtonSave = _display ctrlCreate ["RscButtonMenu", IDC_BTN_SAVE];
 
 _ctrlButtonSave ctrlSetPosition [
     POS_X(1.5),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -118,7 +118,7 @@ private _ctrlButtonLoad = _display ctrlCreate ["RscButtonMenu", IDC_BTN_LOAD];
 
 _ctrlButtonLoad ctrlSetPosition [
     POS_X(7.6),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -135,7 +135,7 @@ private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT
 
 _ctrlButtonImport ctrlSetPosition [
     POS_X(26.4),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -153,7 +153,7 @@ private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT
 
 _ctrlButtonExport ctrlSetPosition [
     POS_X(32.5),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];

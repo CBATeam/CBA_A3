@@ -320,6 +320,9 @@
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_general">
+            <English>General</English>
+        </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
             <Czech>Možnosti addonu</Czech>
@@ -378,6 +381,9 @@
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Turkish>Oyunculara\nAyar Zorla</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_overwrite_clients_short">
+            <English>Clients</English>
+        </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <Czech>Přepsat \nMission</Czech>
@@ -393,6 +399,9 @@
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Turkish>Göreve\nAyar Zorla</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_overwrite_mission_short">
+            <English>Mission</English>
+        </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <Czech>Přepsat \nServer</Czech>
@@ -407,6 +416,9 @@
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n服务器</Chinesesimp>
             <Turkish>Sunucuya\nAyar Zorla</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_overwrites">
+            <English>Overwrites:</English>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by client with the same value.</English>
@@ -520,6 +532,9 @@
             <Chinese>顯示預設值:</Chinese>
             <Chinesesimp>显示预设值:</Chinesesimp>
             <Turkish>Varsayılan değerleri göster:</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_subCategory_tooltip">
+            <English>Show or hide the settings in this group.</English>
         </Key>
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
