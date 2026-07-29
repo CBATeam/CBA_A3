@@ -163,6 +163,12 @@
 #define UNLOCK GVAR(lock) = nil
 #define EXIT_LOCKED if (!isNil QGVAR(lock)) exitWith {}
 
+// A settings menu row is only ever pointed at one setting and one source at a
+// time, and both are read back from the row itself so that nothing has to be
+// rebuilt when it is pointed somewhere else.
+#define ROW_SETTING(group) (group getVariable QGVAR(setting))
+#define ROW_SOURCE(group) (group getVariable QGVAR(source))
+
 // Keep quote marks for strings, but also print "<any>" if undefined.
 // str and format ["%1", ] on their own can only do either.
 #define TO_STRING(var) (call {private _str = var; if (_str isEqualType "") then {_str = str _str}; format ["%1", _str]})

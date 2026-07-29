@@ -4,7 +4,6 @@ params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"
 _settingData params ["_min", "_max"];
 
 private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SLIDER;
-_ctrlSlider setVariable [QGVAR(params), [_setting, _source]];
 
 _ctrlSlider sliderSetRange [_min, _max];
 _ctrlSlider sliderSetPosition _currentValue;
@@ -13,10 +12,11 @@ _ctrlSlider sliderSetSpeed [0.05 * _range, 0.1 * _range];
 
 _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     params ["_ctrlSlider", "_value"];
-    (_ctrlSlider getVariable QGVAR(params)) params ["_setting", "_source"];
     _value = round _value;
 
     private _controlsGroup = ctrlParentControlsGroup _ctrlSlider;
+    private _setting = ROW_SETTING(_controlsGroup);
+    private _source = ROW_SOURCE(_controlsGroup);
     (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_HOURS) ctrlSetText ([floor (_value / 3600), 2] call CBA_fnc_formatNumber);
     (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_MINUTES) ctrlSetText ([floor (_value / 60 % 60), 2] call CBA_fnc_formatNumber);
     (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SECONDS) ctrlSetText ([floor (_value % 60), 2] call CBA_fnc_formatNumber);
@@ -38,14 +38,15 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
     _x params ["_idc", "_value"];
 
     private _ctrlEdit = _controlsGroup controlsGroupCtrl _idc;
-    _ctrlEdit setVariable [QGVAR(params), [_setting, _source]];
     _ctrlEdit ctrlSetText ([_value, 2] call CBA_fnc_formatNumber);
 
     _ctrlEdit ctrlAddEventHandler ["KillFocus", {
         params ["_ctrlEdit"];
-        (_ctrlEdit getVariable QGVAR(params)) params ["_setting", "_source"];
 
         private _controlsGroup = ctrlParentControlsGroup _ctrlEdit;
+        private _setting = ROW_SETTING(_controlsGroup);
+        private _source = ROW_SOURCE(_controlsGroup);
+
         private _ctrlSlider = _controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SLIDER;
         private _ctrlEditHours = _controlsGroup controlsGroupCtrl IDC_SETTING_TIME_HOURS;
         private _ctrlEditMinutes = _controlsGroup controlsGroupCtrl IDC_SETTING_TIME_MINUTES;
@@ -80,6 +81,8 @@ _ctrlSlider ctrlAddEventHandler ["SliderPosChanged", {
 // set setting ui manually to new value
 _controlsGroup setVariable [QFUNC(updateUI), {
     params ["_controlsGroup", "_value"];
+
+    private _setting = ROW_SETTING(_controlsGroup);
 
     (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_SLIDER) sliderSetPosition _value;
     (_controlsGroup controlsGroupCtrl IDC_SETTING_TIME_HOURS) ctrlSetText ([floor (_value / 3600), 2] call CBA_fnc_formatNumber);

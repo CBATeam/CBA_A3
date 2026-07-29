@@ -181,7 +181,7 @@ private _runIndex = 0;
 
         _ctrlSettingGroup setVariable [QGVAR(setting), _setting];
         _ctrlSettingGroup setVariable [QGVAR(source), _source];
-        _ctrlSettingGroup setVariable [QGVAR(params), _settingData];
+        _ctrlSettingGroup setVariable [QGVAR(settingData), _settingData];
         _ctrlSettingGroup setVariable [QGVAR(groups), _settingControlsGroups];
         _settingControlsGroups pushBack _ctrlSettingGroup;
 
