@@ -60,7 +60,7 @@ if (_hidden > 0) then {
 
 // One line per setting, plus the sentence above them. Nothing in a controls group reflows on
 // its own, so the panel and the buttons are moved to match
-private _lines = 1 + (count _shown) + ([0, 1] select (_hidden > 0));
+private _lines = 1 + (count _shown) + (parseNumber (_hidden > 0));
 private _height = POS_H(CONFIRM_BASE_HEIGHT) + (_lines * POS_H(CONFIRM_LINE_HEIGHT));
 
 private _ctrlGroup = _dialog displayCtrl IDC_CONFIRM_GROUP;
