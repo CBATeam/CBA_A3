@@ -81,7 +81,7 @@
 #define IDC_CONFIRM_OK 8011
 
 // Listing every changed setting would run off the screen, the rest are counted instead
-#define CONFIRM_LIST_MAX 8
+#define CONFIRM_LIST_MAX 6
 #define CONFIRM_BASE_HEIGHT 3.5
 #define CONFIRM_LINE_HEIGHT 0.75
 
