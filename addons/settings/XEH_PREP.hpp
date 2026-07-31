@@ -25,6 +25,7 @@ if (hasInterface) then {
     PREP(gui_toggleSubCategory);
     PREP(gui_setTablePosY);
     PREP(gui_rowClassInfo);
+    PREP(gui_setRowEdited);
     PREP(gui_setRowEnabled);
     PREP(gui_setOverwriteVisible);
     PREP(gui_retargetRow);

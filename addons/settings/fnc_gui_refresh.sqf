@@ -34,32 +34,11 @@ if (isNull _ctrlOptionsGroup) exitWith {};
 {
     private _setting = ROW_SETTING(_x);
 
-    private _enabled = [_x, _setting, _source] call FUNC(gui_retargetRow);
+    [_x, _setting, _source] call FUNC(gui_retargetRow);
 
-    private _value = GET_TEMP_NAMESPACE_VALUE(_setting,_source);
-    private _wasEdited = false;
-
-    if (isNil "_value") then {
-        _value = [_setting, _source] call FUNC(get);
-    } else {
-        _wasEdited = true;
-    };
-
-    [_x, _value] call (_x getVariable QFUNC(updateUI));
-
-    private _priority = GET_TEMP_NAMESPACE_PRIORITY(_setting,_source);
-
-    if (isNil "_priority") then {
-        _priority = [_setting, _source] call FUNC(priority);
-    } else {
-        _wasEdited = true;
-    };
-
-    [_x, _priority] call (_x getVariable QFUNC(updateUI_priority));
+    [_x, GET_TEMP_NAMESPACE_VALUE_OR_CURRENT(_setting,_source)] call (_x getVariable QFUNC(updateUI));
+    [_x, GET_TEMP_NAMESPACE_PRIORITY_OR_CURRENT(_setting,_source)] call (_x getVariable QFUNC(updateUI_priority));
 
     // the row is shared by the sources, so this has to be set back as well as set
-    if (_enabled) then {
-        private _ctrlSettingName = _x controlsGroupCtrl IDC_SETTING_NAME;
-        _ctrlSettingName ctrlSetTextColor ([COLOR_TEXT_ENABLED, COLOR_TEXT_ENABLED_WAS_EDITED] select _wasEdited);
-    };
+    _x call FUNC(gui_setRowEdited);
 } forEach (_ctrlOptionsGroup getVariable [QGVAR(rows), []]);

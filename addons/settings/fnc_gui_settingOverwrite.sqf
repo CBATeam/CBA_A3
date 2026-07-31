@@ -23,8 +23,7 @@ _ctrlOverwriteClient setVariable [QFUNC(event), {
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
@@ -39,8 +38,7 @@ _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
         };
     };
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
@@ -67,8 +65,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 // update overwrite checkboxes
