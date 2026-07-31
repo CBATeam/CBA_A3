@@ -140,13 +140,6 @@ private _source = uiNamespace getVariable [QGVAR(source), "client"];
         default {controlNull};
     };
 
-    // ----- where the overwrite checkboxes belong. Has to be read before anything
-    // ----- can move them, hiding one puts it off screen and it can't be read back.
-    {
-        private _ctrlOverwrite = _ctrlSettingGroup controlsGroupCtrl _x;
-        _ctrlOverwrite setVariable [QGVAR(position), ctrlPosition _ctrlOverwrite];
-    } forEach [IDC_SETTING_OVERWRITE_CLIENT, IDC_SETTING_OVERWRITE_MISSION];
-
     // ----- determine display string for default value
     private _defaultValueTooltip = switch (toUpper _settingType) do {
         case "LIST": {
