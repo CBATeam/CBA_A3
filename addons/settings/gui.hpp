@@ -3,6 +3,7 @@ class RscControlsGroupNoScrollbars;
 class RscText;
 class RscEdit;
 class RscButtonSearch;
+class RscStructuredText;
 
 class RscDisplayGameOptions {
     // pause game in SP while this menu is shown
@@ -629,6 +630,75 @@ class GVAR(Row_Time): GVAR(Row_Base) {
 
 class RscTitle;
 class RscListBox;
+
+class GVAR(confirmDiscard) {
+    idd = -1;
+    movingEnable = 0;
+    enableSimulation = 0;
+
+    class controls {
+        class Confirm: RscControlsGroupNoScrollbars {
+            idc = IDC_CONFIRM_GROUP;
+            x = QUOTE(POS_X(12));
+            y = QUOTE(POS_Y(9.5));
+            w = QUOTE(POS_W(16));
+            h = QUOTE(POS_H(4.6));
+
+            class controls {
+                class Title: RscTitle {
+                    colorBackground[] = {
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
+                    };
+                    idc = -1;
+                    text = CSTRING(discardChanges_title);
+                    x = QUOTE(POS_W(0));
+                    y = QUOTE(POS_H(0));
+                    w = QUOTE(POS_W(16));
+                    h = QUOTE(POS_H(1));
+                };
+                class Background: RscText {
+                    // grown per script with the group, the list decides how tall this is
+                    idc = IDC_CONFIRM_BACKGROUND;
+                    colorBackground[] = {0,0,0,0.8};
+                    x = QUOTE(POS_W(0));
+                    y = QUOTE(POS_H(1.1));
+                    w = QUOTE(POS_W(16));
+                    h = QUOTE(POS_H(3.5));
+                };
+                class Message: RscStructuredText {
+                    // set per script, it lists what is pending
+                    idc = IDC_CONFIRM_TEXT;
+                    text = "";
+                    x = QUOTE(POS_W(0.5));
+                    y = QUOTE(POS_H(1.4));
+                    w = QUOTE(POS_W(15));
+                    h = QUOTE(POS_H(1));
+                    size = QUOTE(POS_H(0.8));
+                };
+                class ButtonDiscard: RscButtonMenu {
+                    idc = IDC_CONFIRM_OK;
+                    text = CSTRING(discardChanges_confirm);
+                    x = QUOTE(POS_W(0.5));
+                    y = QUOTE(POS_H(3.2));
+                    w = QUOTE(POS_W(7));
+                    h = QUOTE(POS_H(1));
+                };
+                class ButtonKeep: RscButtonMenu {
+                    // carries the cancel idc, so it closes this prompt and nothing else
+                    idc = IDC_CANCEL;
+                    text = CSTRING(discardChanges_keep);
+                    x = QUOTE(POS_W(8.5));
+                    y = QUOTE(POS_H(3.2));
+                    w = QUOTE(POS_W(7));
+                    h = QUOTE(POS_H(1));
+                };
+            };
+        };
+    };
+};
 
 class GVAR(presets) {
     idd = -1;

@@ -75,6 +75,15 @@
 #define IDC_PRESETS_OK 8005
 #define IDC_PRESETS_CANCEL 8006
 #define IDC_PRESETS_DELETE 8007
+#define IDC_CONFIRM_GROUP 8009
+#define IDC_CONFIRM_BACKGROUND 8012
+#define IDC_CONFIRM_TEXT 8010
+#define IDC_CONFIRM_OK 8011
+
+// Listing every changed setting would run off the screen, the rest are counted instead
+#define CONFIRM_LIST_MAX 8
+#define CONFIRM_BASE_HEIGHT 3.5
+#define CONFIRM_LINE_HEIGHT 0.75
 
 #define IDC_EXPORT_GROUP 8100
 #define IDC_EXPORT_TITLE 8101
