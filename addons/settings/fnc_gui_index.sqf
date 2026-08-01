@@ -77,7 +77,7 @@ private _sortable = createHashMap;
     {
         _x params ["", "_subCategory", "", "_setting"];
 
-        if (_subCategory isNotEqualTo "" && {_subCategory isNotEqualTo _lastSubCategory}) then {
+        if (_subCategory isNotEqualTo "" && _subCategory isNotEqualTo _lastSubCategory) then {
             _runs pushBack [_subCategory, count _settings];
         };
 

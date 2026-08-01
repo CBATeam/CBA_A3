@@ -50,7 +50,7 @@ _controlsGroup setVariable [QFUNC(updateUI), {
     // mask back over the real one. Has to happen every time the value is set, not
     // just when the row is created, or importing puts the real one on screen.
     if ((_controlsGroup getVariable QGVAR(settingData)) param [0, false]) then {
-        if ((_source isEqualTo "server" && {!CAN_SET_SERVER_SETTINGS}) || {_source isEqualTo "mission" && {!CAN_SET_MISSION_SETTINGS}}) then {
+        if ((_source isEqualTo "server" && !CAN_SET_SERVER_SETTINGS) || _source isEqualTo "mission" && !CAN_SET_MISSION_SETTINGS) then {
             _value = "********";
         };
     };

@@ -47,7 +47,7 @@ private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVE
 [_ctrlOverwriteMission, _source isEqualTo "server" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
 
 // "overwrite clients" is forced for global settings, so it can't be unticked
-_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal > 0 && {_source isNotEqualTo "mission"})];
+_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal > 0 && _source isNotEqualTo "mission")];
 
 // what "overwrite clients" goes back to belongs to the source that was shown
 _ctrlOverwriteClient setVariable [QGVAR(state), nil];

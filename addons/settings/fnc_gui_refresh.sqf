@@ -25,7 +25,7 @@ private _category = uiNamespace getVariable [QGVAR(addon), ""];
 private _source = uiNamespace getVariable [QGVAR(source), ""];
 
 // no category is shown before the menu is switched to the addon options
-if (_category isEqualTo "" || {_source isEqualTo ""}) exitWith {};
+if (_category isEqualTo "" || _source isEqualTo "") exitWith {};
 
 private _ctrlOptionsGroup = (_display getVariable [QGVAR(optionsGroups), createHashMap]) getOrDefault [_category, controlNull];
 

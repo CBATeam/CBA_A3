@@ -27,9 +27,10 @@ if !(_selectedAddon in _optionsGroups) then {
 // toggle lists
 {
     private _isSelected = _x isEqualTo _selectedAddon;
-
-    (_optionsGroups get _x) ctrlEnable _isSelected;
-    (_optionsGroups get _x) ctrlShow _isSelected;
+    private _optionsGroup = _optionsGroups get _x;
+    
+    _optionsGroup ctrlEnable _isSelected;
+    _optionsGroup ctrlShow _isSelected;
 } forEach (keys _optionsGroups);
 
 // the category was built for whichever source was shown when it was created
