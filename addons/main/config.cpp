@@ -25,7 +25,6 @@ class CfgPatches {
             "cba_jr_prep",
             "cba_keybinding",
             "cba_loadout",
-            "cba_main",
             "cba_modules",
             "cba_music",
             "cba_network",
