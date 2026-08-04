@@ -416,4 +416,9 @@ class CfgVehicles {
     class SpaceshipCapsule_01_F: ThingX {
         XEH_ENABLED;
     };
+
+    // pylons (2.24)
+    class Land_FuelTank_UH80_F: ThingX {
+        XEH_ENABLED;
+    };
 };
