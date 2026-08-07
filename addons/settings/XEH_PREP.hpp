@@ -15,6 +15,13 @@ if (hasInterface) then {
     PREP(gui_sourceChanged);
     PREP(gui_configure);
     PREP(gui_refresh);
+    PREP(gui_search);
+    PREP(gui_searchIndex);
+    PREP(gui_searchSelect);
+    PREP(gui_fillAddonList);
+    PREP(gui_filterSettings);
+    PREP(gui_setTablePosY);
+    PREP(gui_onKeyDown);
     PREP(gui_preset);
     PREP(gui_saveTempData);
     PREP(gui_export);

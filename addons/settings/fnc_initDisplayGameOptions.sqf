@@ -69,35 +69,33 @@ with uiNamespace do {
 GVAR(awaitingRestartTemp) = + GVAR(awaitingRestart);
 
 // ----- create addons list (filled later)
-private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), -1, _ctrlAddonsGroup];
+private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), IDC_ADDONS_LIST, _ctrlAddonsGroup];
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
 // ----- Add lists
 _display setVariable [QGVAR(lists),[]];
 
+// ----- search bar starts out empty
+_display setVariable [QGVAR(searchText), ""];
+_display setVariable [QGVAR(searchMatches), createHashMap];
+
+_display displayAddEventHandler ["KeyDown", {_this call FUNC(gui_onKeyDown)}];
+
 // ----- fill addons list
-private _categories = [];
-{
-    (GVAR(default) getVariable _x) params ["", "", "", "", "_category"];
-    private _categoryLower = toLower _category;
+[_ctrlAddonList] call FUNC(gui_fillAddonList);
 
-    if !(_categoryLower in _categories) then {
-        private _categoryLocalized = _category;
-        if (isLocalized _category) then {
-            _categoryLocalized = localize _category;
-        };
+// the list can be filtered, so the previous index means nothing, look the category up instead
+private _index = 0;
+private _lastAddon = uiNamespace getVariable [QGVAR(addon), ""];
 
-        private _index = _ctrlAddonList lbAdd _categoryLocalized;
-        _ctrlAddonList lbSetData [_index, str _index];
-        _display setVariable [str _index, _categoryLower];
-
-        _categories pushBack _categoryLower;
+for "_lbIndex" from 0 to (lbSize _ctrlAddonList) - 1 do {
+    if (_ctrlAddonList lbData _lbIndex == _lastAddon) exitWith {
+        _index = _lbIndex;
     };
-} forEach GVAR(allSettings);
+};
 
-lbSort _ctrlAddonList;
-_ctrlAddonList lbSetCurSel (uiNamespace getVariable [QGVAR(addonIndex), 0]);
+_ctrlAddonList lbSetCurSel _index;
 
 // ----- create save and load presets buttons
 private _ctrlButtonSave = _display ctrlCreate ["RscButtonMenu", IDC_BTN_SAVE];

@@ -1,34 +1,13 @@
 // inline function, don't include script_component.hpp
 
-private _fnc_controlSetTablePosY = {
-    params ["_control", "_tablePosY", "_height"];
-
-    private _config = configFile >> ctrlClassName _control;
-
-    private _posX = getNumber (_config >> "x");
-    private _posY = getNumber (_config >> "y") + _tablePosY;
-    private _width = getNumber (_config >> "w");
-
-    if (isNil "_height") then {
-        _height = getNumber (_config >> "h");
-    };
-
-    _control ctrlSetPosition [_posX, _posY, _width, _height];
-    _control ctrlCommit 0;
-
-    _posY + _height
-};
-
 private _lists = _display getVariable QGVAR(lists);
 
 private _categorySettings = [];
 
 {
     (GVAR(default) getVariable _x) params ["", "_setting", "", "", "_category", "", "", "", "", "_subCategory"];
+
     if (toLower _category == _selectedAddon) then {
-        if (isLocalized _subCategory) then {
-            _subCategory = localize _subCategory;
-        };
         // Make sure empty-subcategory is always sorted first (fixing unicode)
         _categorySettings pushBack [parseNumber (_subCategory != ""), _subCategory, _forEachIndex, _setting];
     };
@@ -46,15 +25,8 @@ private _lastSubCategory = "$START";
         _createHeader = true;
     };
 
-    (GVAR(default) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData", "_category", "_displayName", "_tooltip", "_isGlobal"];
+    (GVAR(default) getVariable _setting) params ["_defaultValue", "", "_settingType", "_settingData", "", "_displayName", "_tooltip", "_isGlobal"];
 
-    if (isLocalized _displayName) then {
-        _displayName = localize _displayName;
-    };
-
-    if (isLocalized _tooltip) then {
-        _tooltip = localize _tooltip;
-    };
     if (_tooltip != _setting) then { // Append setting name to bottom line
         if (_tooltip isEqualTo "") then {
             _tooltip = _setting;
@@ -85,7 +57,8 @@ private _lastSubCategory = "$START";
         };
 
         // ----- create or retrieve options "list" controls group
-        private _list = [QGVAR(list), toLower _category, _source] joinString "$";
+        // _selectedAddon is the lower case localized category, every setting here is in it
+        private _list = [QGVAR(list), _selectedAddon, _source] joinString "$";
 
         private _ctrlOptionsGroup = controlNull;
 
@@ -96,9 +69,14 @@ private _lastSubCategory = "$START";
 
             _lists pushBack _list;
             _display setVariable [_list, _ctrlOptionsGroup];
+
+            // order of headers and settings in the table, used to re-flow it when searching
+            _ctrlOptionsGroup setVariable [QGVAR(rowOrder), []];
         } else {
             _ctrlOptionsGroup = _display getVariable _list;
         };
+
+        private _rowOrder = _ctrlOptionsGroup getVariable QGVAR(rowOrder);
 
         // Add sub-category header
         if (_createHeader) then {
@@ -107,8 +85,15 @@ private _lastSubCategory = "$START";
             _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
 
             private _tablePosY = (_ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2]);
-            _tablePosY = [_ctrlHeaderGroup, _tablePosY] call _fnc_controlSetTablePosY;
+            _tablePosY = [_ctrlHeaderGroup, _tablePosY] call FUNC(gui_setTablePosY);
             _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
+
+            // the settings below this header, used to hide it when they are all filtered out
+            _ctrlHeaderGroup setVariable [QGVAR(members), []];
+            _rowOrder pushBack _ctrlHeaderGroup;
+
+            // settings without a sub-category are sorted first, so this is nil for them
+            _ctrlOptionsGroup setVariable [QGVAR(currentHeader), _ctrlHeaderGroup];
         };
 
         // ----- create setting group
@@ -139,13 +124,7 @@ private _lastSubCategory = "$START";
             case "LIST": {
                 _settingData params ["_values", "_labels"];
 
-                private _label = _labels param [_values find _defaultValue, ""];
-
-                if (isLocalized _label) then {
-                    _label = localize _label;
-                };
-
-                _label
+                _labels param [_values find _defaultValue, ""]
             };
             case "SLIDER": {
                 if (_settingData param [3, false]) then {
@@ -174,16 +153,26 @@ private _lastSubCategory = "$START";
         _ctrlSettingGroup setVariable [QGVAR(groups), _settingControlsGroups];
         _settingControlsGroups pushBack _ctrlSettingGroup;
 
+        _rowOrder pushBack _ctrlSettingGroup;
+
+        private _ctrlHeaderGroup = _ctrlOptionsGroup getVariable [QGVAR(currentHeader), controlNull];
+        if (!isNull _ctrlHeaderGroup) then {
+            (_ctrlHeaderGroup getVariable QGVAR(members)) pushBack _ctrlSettingGroup;
+        };
+
         // ----- adjust y position in table
         private _tablePosY = _ctrlOptionsGroup getVariable [QGVAR(tablePosY), TABLE_LINE_SPACING/2];
-        _tablePosY = [_ctrlSettingGroup, _tablePosY] call _fnc_controlSetTablePosY;
+        _tablePosY = [_ctrlSettingGroup, _tablePosY] call FUNC(gui_setTablePosY);
         _ctrlOptionsGroup setVariable [QGVAR(tablePosY), _tablePosY];
 
         // ----- padding to make listboxes work
         if (_settingType == "LIST") then {
             private _ctrlEmpty = _display ctrlCreate [QGVAR(Row_Empty), -1, _ctrlOptionsGroup];
             private _height = POS_H(count (_settingData select 0)) + TABLE_LINE_SPACING;
-            [_ctrlEmpty, _tablePosY, _height] call _fnc_controlSetTablePosY;
+            [_ctrlEmpty, _tablePosY, _height] call FUNC(gui_setTablePosY);
+
+            // the height has to be kept, hiding the padding sets it to zero
+            _ctrlSettingGroup setVariable [QGVAR(spacer), [_ctrlEmpty, _height]];
         };
 
         // ----- set setting name

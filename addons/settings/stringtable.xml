@@ -196,6 +196,9 @@
             <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
             <Turkish>Şuanki ayaları şablon olarak kaydet.</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_ButtonSearch_tooltip">
+            <English>Search settings.</English>
+        </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
             <Czech>Server</Czech>
@@ -240,6 +243,9 @@
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
             <Turkish>Community Base Addons - Ayarlar</Turkish>
+        </Key>
+        <Key ID="STR_cba_settings_Search_tooltip">
+            <English>Filter addons and settings. Matches names, descriptions, setting variable names and option labels.\nCtrl + F to focus, right click to clear.</English>
         </Key>
         <Key ID="STR_cba_settings_applies">
             <English>This setting applies.</English>
