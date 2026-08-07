@@ -2,130 +2,110 @@
 
 params ["_controlsGroup", "_setting", "_source", "_currentValue", "_settingData"];
 
-_currentValue params [
-    ["_r", 0, [0]],
-    ["_g", 0, [0]],
-    ["_b", 0, [0]],
-    ["_a", 1, [0]]
-];
+private _channels = count _currentValue max 3 min 4;
+_controlsGroup setVariable [QGVAR(channels), _channels];
 
-private _color = [_r, _g, _b, _a];
+// The sliders hold the value. Reading it back off them means nothing has to be
+// kept in step with them, and the row can be pointed at another source without
+// dragging a stale copy along.
+_controlsGroup setVariable [QFUNC(readColor), {
+    params ["_controlsGroup"];
 
-for "_index" from 0 to ((count _currentValue max 3 min 4) - 1) do {
+    (IDCS_SETTING_COLOR select [0, _controlsGroup getVariable QGVAR(channels)]) apply {
+        sliderPosition (_controlsGroup controlsGroupCtrl _x)
+    }
+}];
+
+// ----- store the value and tell the rest of the row about it
+_controlsGroup setVariable [QFUNC(commitColor), {
+    params ["_controlsGroup"];
+
+    private _setting = ROW_SETTING(_controlsGroup);
+    private _source = ROW_SOURCE(_controlsGroup);
+    private _value = _controlsGroup call (_controlsGroup getVariable QFUNC(readColor));
+
+    private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
+    _ctrlColorPreview ctrlSetBackgroundColor [_value param [0, 0], _value param [1, 0], _value param [2, 0], _value param [3, 1]];
+
+    SET_TEMP_NAMESPACE_VALUE(_setting,_value,_source);
+
+    // if new value is same as default value, grey out the default button
+    private _defaultValue = [_setting, "default"] call FUNC(get);
+    ROW_ENABLE(_controlsGroup,IDC_SETTING_DEFAULT,_value isNotEqualTo _defaultValue);
+
+    // automatically check "overwrite client" for mission makers qol
+    [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
+    // refresh priority to update overwrite color if current value is equal to overwrite
+    [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
+}];
+
+for "_index" from 0 to (_channels - 1) do {
     private _ctrlColor = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR select _index);
+    private _ctrlColorEdit = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _index);
 
     _ctrlColor sliderSetRange [0, 1];
     _ctrlColor sliderSetPosition (_currentValue param [_index, 0]);
     _ctrlColor sliderSetSpeed [0.05, 0.1];
 
-    _ctrlColor setVariable [QGVAR(params), [_setting, _source, _currentValue, _color, _index]];
+    _ctrlColor setVariable [QGVAR(index), _index];
+    _ctrlColorEdit setVariable [QGVAR(index), _index];
+
     _ctrlColor ctrlAddEventHandler ["SliderPosChanged", {
         params ["_ctrlColor", "_value"];
-        (_ctrlColor getVariable QGVAR(params)) params ["_setting", "_source", "_currentValue", "_color", "_index"];
 
         private _controlsGroup = ctrlParentControlsGroup _ctrlColor;
-        private _ctrlColorEdit = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _index);
-        _ctrlColorEdit ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
+        private _index = _ctrlColor getVariable QGVAR(index);
 
-        _currentValue set [_index, _value];
-        _color set [_index, _value];
+        (_controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _index)) ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
 
-        private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
-        _ctrlColorPreview ctrlSetBackgroundColor _color;
-
-        SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
-
-        // if new value is same as default value, grey out the default button
-        private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
-        private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
-
-        // automatically check "overwrite client" for mission makers qol
-        [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
-        // refresh priority to update overwrite color if current value is equal to overwrite
-        [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
+        _controlsGroup call (_controlsGroup getVariable QFUNC(commitColor));
     }];
 
-    private _ctrlColorEdit = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _index);
     _ctrlColorEdit ctrlSetText ([_currentValue param [_index, 0], 1, 2] call CBA_fnc_formatNumber);
 
-    _ctrlColorEdit setVariable [QGVAR(params), [_setting, _source, _currentValue, _color, _index]];
     _ctrlColorEdit ctrlAddEventHandler ["KeyUp", {
         params ["_ctrlColorEdit"];
-        (_ctrlColorEdit getVariable QGVAR(params)) params ["_setting", "_source", "_currentValue", "_color", "_index"];
-
-        private _value = parseNumber ctrlText _ctrlColorEdit;
 
         private _controlsGroup = ctrlParentControlsGroup _ctrlColorEdit;
+        private _index = _ctrlColorEdit getVariable QGVAR(index);
         private _ctrlColor = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR select _index);
 
-        _ctrlColor sliderSetPosition _value;
-        _value = sliderPosition _ctrlColor;
+        _ctrlColor sliderSetPosition (parseNumber ctrlText _ctrlColorEdit);
 
-        _currentValue set [_index, _value];
-        _color set [_index, _value];
-
-        private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
-        _ctrlColorPreview ctrlSetBackgroundColor _color;
-
-        SET_TEMP_NAMESPACE_VALUE(_setting,_currentValue,_source);
-
-        // if new value is same as default value, grey out the default button
-        private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
-        private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
-
-        // automatically check "overwrite client" for mission makers qol
-        [_controlsGroup, _source] call (_controlsGroup getVariable QFUNC(auto_check_overwrite));
-        // refresh priority to update overwrite color if current value is equal to overwrite
-        [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
+        _controlsGroup call (_controlsGroup getVariable QFUNC(commitColor));
     }];
 
     _ctrlColorEdit ctrlAddEventHandler ["KillFocus", {
         params ["_ctrlColorEdit"];
-        (_ctrlColorEdit getVariable QGVAR(params)) params ["_setting", "_source", "_currentValue", "_color", "_index"];
 
         private _controlsGroup = ctrlParentControlsGroup _ctrlColorEdit;
+        private _index = _ctrlColorEdit getVariable QGVAR(index);
         private _ctrlColor = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR select _index);
 
-        private _value = sliderPosition _ctrlColor;
+        // put the box back in step with the slider, it clamps what was typed
+        _ctrlColorEdit ctrlSetText ([sliderPosition _ctrlColor, 1, 2] call CBA_fnc_formatNumber);
 
-        _currentValue set [_index, _value];
-        _color set [_index, _value];
-
-        _ctrlColorEdit ctrlSetText ([_value, 1, 2] call CBA_fnc_formatNumber);
-
-        // if new value is same as default value, grey out the default button
-        private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
-        private _defaultValue = [_setting, "default"] call FUNC(get);
-        _ctrlDefault ctrlEnable (_currentValue isNotEqualTo _defaultValue);
+        _controlsGroup call (_controlsGroup getVariable QFUNC(commitColor));
     }];
 };
 
 private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
-_ctrlColorPreview ctrlSetBackgroundColor _color;
-_ctrlColorPreview setVariable [QGVAR(color), _color];
+_ctrlColorPreview ctrlSetBackgroundColor [_currentValue param [0, 0], _currentValue param [1, 0], _currentValue param [2, 0], _currentValue param [3, 1]];
 
 // set setting ui manually to new value
 _controlsGroup setVariable [QFUNC(updateUI), {
     params ["_controlsGroup", "_value"];
 
-    private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
-    private _color = _ctrlColorPreview getVariable QGVAR(color);
+    private _setting = ROW_SETTING(_controlsGroup);
 
     {
-        _color set [_forEachIndex, _x];
-
-        private _ctrlColor = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR select _forEachIndex);
-        _ctrlColor sliderSetPosition _x;
-
-        private _ctrlColorEdit = _controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _forEachIndex);
-        _ctrlColorEdit ctrlSetText ([_x, 1, 2] call CBA_fnc_formatNumber);
+        (_controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR select _forEachIndex)) sliderSetPosition _x;
+        (_controlsGroup controlsGroupCtrl (IDCS_SETTING_COLOR_EDIT select _forEachIndex)) ctrlSetText ([_x, 1, 2] call CBA_fnc_formatNumber);
     } forEach _value;
 
-    _ctrlColorPreview ctrlSetBackgroundColor _color;
+    private _ctrlColorPreview = _controlsGroup controlsGroupCtrl IDC_SETTING_COLOR_PREVIEW;
+    _ctrlColorPreview ctrlSetBackgroundColor [_value param [0, 0], _value param [1, 0], _value param [2, 0], _value param [3, 1]];
 
-    private _ctrlDefault = _controlsGroup controlsGroupCtrl IDC_SETTING_DEFAULT;
     private _defaultValue = [_setting, "default"] call FUNC(get);
-    _ctrlDefault ctrlEnable (_value isNotEqualTo _defaultValue);
+    ROW_ENABLE(_controlsGroup,IDC_SETTING_DEFAULT,_value isNotEqualTo _defaultValue);
 }];

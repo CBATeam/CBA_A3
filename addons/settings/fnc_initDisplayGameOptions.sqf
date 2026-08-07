@@ -73,8 +73,8 @@ private _ctrlAddonList = _display ctrlCreate [QGVAR(AddonsList), IDC_ADDONS_LIST
 
 _ctrlAddonList ctrlAddEventHandler ["LBSelChanged", {_this call FUNC(gui_addonChanged)}];
 
-// ----- Add lists
-_display setVariable [QGVAR(lists),[]];
+// ----- one options controls group per category, created when it is first selected
+_display setVariable [QGVAR(optionsGroups), createHashMap];
 
 // ----- search bar starts out empty
 _display setVariable [QGVAR(searchText), ""];

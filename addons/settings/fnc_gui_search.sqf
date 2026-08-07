@@ -50,7 +50,7 @@ if (_searchParts isEqualTo []) exitWith {
 
 private _searchPattern = ".*?" + ((_searchParts apply {_x call CBA_fnc_escapeRegex}) joinString ".*?") + ".*?/io";
 
-call FUNC(gui_searchIndex);
+call FUNC(gui_index);
 
 // ----- adding to the search can only ever remove results, so only search through those again
 private _searchScope = createHashMap;
@@ -60,7 +60,7 @@ if (_lastSearchText isNotEqualTo "" && {(_searchText find _lastSearchText) == 0}
 } else {
     {
         _searchScope set [_x, _y select 1];
-    } forEach GVAR(searchCategories);
+    } forEach GVAR(categorySettings);
 };
 
 private _searchMatches = createHashMap;

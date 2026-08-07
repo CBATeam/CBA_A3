@@ -8,20 +8,10 @@ private _display = ctrlParent _control;
 
 private _selectedSource = ["server", "mission", "client"] param [[IDC_BTN_SERVER, IDC_BTN_MISSION, IDC_BTN_CLIENT] find ctrlIDC _control];
 
+// commit anything half typed before the rows are pointed somewhere else
+ctrlSetFocus _control;
+
 uiNamespace setVariable [QGVAR(source), _selectedSource];
-
-private _selectedAddon = uiNamespace getVariable QGVAR(addon);
-
-// toggle lists
-{
-    (_x splitString "$") params ["", "_addon", "_source"];
-
-    private _ctrlOptionsGroup = _display getVariable _x;
-    private _isSelected = _source == _selectedSource && {_addon == _selectedAddon};
-
-    _ctrlOptionsGroup ctrlEnable _isSelected;
-    _ctrlOptionsGroup ctrlShow _isSelected;
-} forEach (_display getVariable QGVAR(lists));
 
 // toggle source buttons
 {
@@ -47,5 +37,6 @@ private _enabled = switch (_selectedSource) do {
 _ctrlButtonImport ctrlEnable _enabled;
 _ctrlButtonLoad ctrlEnable _enabled;
 
-// every source has its own controls, the ones just shown were never filtered
-[_display] call FUNC(gui_filterSettings);
+// every setting has one row shared by the sources, point them at the new one.
+// Which settings are shown doesn't depend on the source, so nothing is re-filtered.
+call FUNC(gui_refresh);
