@@ -102,7 +102,7 @@ private _ctrlButtonSave = _display ctrlCreate ["RscButtonMenu", IDC_BTN_SAVE];
 
 _ctrlButtonSave ctrlSetPosition [
     POS_X(1.5),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -118,7 +118,7 @@ private _ctrlButtonLoad = _display ctrlCreate ["RscButtonMenu", IDC_BTN_LOAD];
 
 _ctrlButtonLoad ctrlSetPosition [
     POS_X(7.6),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -135,7 +135,7 @@ private _ctrlButtonImport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_IMPORT
 
 _ctrlButtonImport ctrlSetPosition [
     POS_X(26.4),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -153,7 +153,7 @@ private _ctrlButtonExport = _display ctrlCreate ["RscButtonMenu", IDC_BTN_EXPORT
 
 _ctrlButtonExport ctrlSetPosition [
     POS_X(32.5),
-    POS_Y(20.5),
+    POS_Y(BUTTON_ROW_Y),
     POS_W(6),
     POS_H(1)
 ];
@@ -177,3 +177,22 @@ _ctrlButtonExport ctrlAddEventHandler ["ButtonClick", {
 
 // ----- scripted OK button
 (_display displayCtrl 999) ctrlAddEventHandler ["ButtonClick", {call FUNC(gui_saveTempData)}];
+
+// ----- cancel has to ask before throwing away pending changes. A control carrying IDC_CANCEL
+// ----- closes the display the moment it is clicked, so the replacement cannot have it.
+// ----- Runs before FUNC(openSettingsMenu) creates its own IDC_CANCEL button, so this is BI's
+private _ctrlCancel = _display displayCtrl IDC_CANCEL;
+
+if (!isNull _ctrlCancel) then {
+    // Plain RscButtonMenu, the Cancel variant carries an action that closes the display by itself
+    private _ctrlConfirmCancel = _display ctrlCreate ["RscButtonMenu", -1];
+    _ctrlConfirmCancel ctrlSetPosition ctrlPosition _ctrlCancel;
+    _ctrlConfirmCancel ctrlSetText ctrlText _ctrlCancel;
+    _ctrlConfirmCancel ctrlCommit 0;
+    _ctrlConfirmCancel ctrlAddEventHandler ["ButtonClick", {
+        [ctrlParent (_this select 0)] call FUNC(gui_confirmDiscard);
+    }];
+
+    _ctrlCancel ctrlEnable false;
+    _ctrlCancel ctrlShow false;
+};

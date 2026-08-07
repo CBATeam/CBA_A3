@@ -31,6 +31,13 @@ if !(ctrlShown (_display displayCtrl IDC_ADDONS_GROUP)) exitWith {false};
 private _handled = false;
 
 switch (_key) do {
+    // ----- escape closes with IDC_CANCEL whatever buttons the display has, so it walks
+    // ----- straight past a cancel button that asks first
+    case DIK_ESCAPE: {
+        // Swallowed either way: the prompt is up, or the close already happened here
+        [_display] call FUNC(gui_confirmDiscard);
+        _handled = true;
+    };
     // ----- focus the search bar
     case DIK_F: {
         if (_ctrl) then {

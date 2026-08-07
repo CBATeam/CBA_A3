@@ -23,8 +23,7 @@ _ctrlOverwriteClient setVariable [QFUNC(event), {
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
@@ -39,8 +38,7 @@ _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
         };
     };
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
@@ -67,8 +65,7 @@ _ctrlOverwriteMission ctrlAddEventHandler ["CheckedChanged", {
 
     _controlsGroup call (_controlsGroup getVariable QFUNC(updateUI_locked));
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 // update overwrite checkboxes
@@ -130,21 +127,26 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
         private _overwriteEqual = _sourceValue isEqualTo _tempValue;
         private _overwriteColor = [COLOR_OVERWRITTEN, COLOR_OVERWRITTEN_EQUAL] select _overwriteEqual;
 
+        // Three states, three shapes, so none of them rely on colour alone to be
+        // told apart. Another source winning with the same value leaves this value
+        // in effect either way, which is what the tilde says.
+        private _overwriteIcon = [ICON_OVERWRITTEN, ICON_OVERWRITTEN_EQUAL] select _overwriteEqual;
+
         switch [_source, _priority] do {
             case ["client", "server"];
             case ["mission", "server"]: {
-                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetText _overwriteIcon;
                 _ctrlLocked ctrlSetTextColor _overwriteColor;
                 _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_server_tooltip), LLSTRING(overwritten_by_server_equal_tooltip)] select _overwriteEqual);
             };
             case ["client", "mission"];
             case ["server", "mission"]: {
-                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetText _overwriteIcon;
                 _ctrlLocked ctrlSetTextColor _overwriteColor;
                 _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_mission_tooltip), LLSTRING(overwritten_by_mission_equal_tooltip)] select _overwriteEqual);
             };
             case ["mission", "client"]: {
-                _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                _ctrlLocked ctrlSetText _overwriteIcon;
                 _ctrlLocked ctrlSetTextColor _overwriteColor;
                 _ctrlLocked ctrlSetTooltip ([LLSTRING(overwritten_by_client_tooltip), LLSTRING(overwritten_by_client_equal_tooltip)] select _overwriteEqual);
             };
@@ -160,7 +162,7 @@ _controlsGroup setVariable [QFUNC(updateUI_locked), {
                         _ctrlLocked ctrlSetTooltip LLSTRING(applies);
                     };
                 } else {
-                    _ctrlLocked ctrlSetText ICON_OVERWRITTEN;
+                    _ctrlLocked ctrlSetText _overwriteIcon;
                     _ctrlLocked ctrlSetTextColor COLOR_OVERWRITTEN;
                     _ctrlLocked ctrlSetTooltip LLSTRING(overwritten_by_client_tooltip_server);
                 };

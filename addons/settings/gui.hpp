@@ -3,6 +3,7 @@ class RscControlsGroupNoScrollbars;
 class RscText;
 class RscEdit;
 class RscButtonSearch;
+class RscStructuredText;
 
 class RscDisplayGameOptions {
     // pause game in SP while this menu is shown
@@ -49,23 +50,23 @@ class RscDisplayGameOptions {
             x = QUOTE(POS_X(1));
             y = QUOTE(POS_Y(3.1));
             w = QUOTE(POS_W(38));
-            h = QUOTE(POS_H(17.3));
+            h = QUOTE(POS_H(GROUP_HEIGHT));
 
             class controls {
                 class Background: RscText {
                     idc = -1;
                     colorBackground[] = {0,0,0,0.4};
                     x = QUOTE(POS_W(0.5));
-                    y = QUOTE(POS_H(3.5));
+                    y = QUOTE(POS_H(TABLE_TOP));
                     w = QUOTE(POS_W(37));
-                    h = QUOTE(POS_H(13.8));
+                    h = QUOTE(POS_H(GROUP_HEIGHT - TABLE_TOP));
                 };
                 class AddonText: RscText {
                     idc = -1;
                     style = ST_RIGHT;
                     text = ECSTRING(main,AddonText);
                     x = QUOTE(POS_W(0.5));
-                    y = QUOTE(POS_H(1));
+                    y = QUOTE(POS_H(0.6));
                     w = QUOTE(POS_W(4));
                     h = QUOTE(POS_H(1));
                     sizeEx = QUOTE(POS_H(1));
@@ -79,7 +80,7 @@ class RscDisplayGameOptions {
                     // right click clears the search
                     onMouseButtonClick = QUOTE(if ((_this select 1) == 1) then {(_this select 0) ctrlSetText ''; [ctrlParent (_this select 0)] call FUNC(gui_search)});
                     x = QUOTE(POS_W(26));
-                    y = QUOTE(POS_H(1));
+                    y = QUOTE(POS_H(0.6));
                     w = QUOTE(POS_W(9.4));
                     h = QUOTE(POS_H(1));
                     sizeEx = QUOTE(POS_H(1));
@@ -90,26 +91,39 @@ class RscDisplayGameOptions {
                     colorBackground[] = {0,0,0,0.4};
                     onButtonClick = QUOTE(ctrlSetFocus ((ctrlParentControlsGroup (_this select 0)) controlsGroupCtrl IDC_SEARCH_EDIT));
                     x = QUOTE(POS_W(35.6));
-                    y = QUOTE(POS_H(0.92));
+                    y = QUOTE(POS_H(0.52));
                     w = QUOTE(POS_W(1));
                     h = QUOTE(POS_H(1.1));
+                };
+                class OverwritesText: RscText {
+                    // names the two columns below, so "Clients" has a noun
+                    idc = IDC_TXT_OVERWRITES;
+                    style = ST_RIGHT;
+                    text = CSTRING(overwrites);
+                    x = QUOTE(POS_W(COL_OVERWRITE_CLIENT + ROW_X - 4.5));
+                    y = QUOTE(POS_H(1.85));
+                    w = QUOTE(POS_W(3.6));
+                    h = QUOTE(POS_H(3/4));
+                    sizeEx = QUOTE(POS_H(3/4));
                 };
                 class OverwriteClientText: RscText {
                     // Set tooltip per script to avoid it being all upper case.
                     // Disable multiline text to make in unselectable.
-                    onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(overwrite_clients)); (_this select 0) ctrlEnable false;);
+                    onLoad = QUOTE((_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(overwrite_clients)); (_this select 0) ctrlEnable false;);
                     idc = IDC_TXT_OVERWRITE_CLIENT;
-                    style = ST_MULTI + ST_CENTER;
-                    x = QUOTE(POS_W(30));
-                    y = QUOTE(POS_H(2));
-                    w = QUOTE(POS_W(4));
-                    h = QUOTE(POS_H(2*3/4));
+                    style = ST_CENTER;
+                    text = CSTRING(overwrite_clients_short);
+                    x = QUOTE(POS_W(COL_OVERWRITE_CLIENT + ROW_X - 0.7));
+                    y = QUOTE(POS_H(1.85));
+                    w = QUOTE(POS_W(2.4));
+                    h = QUOTE(POS_H(3/4));
                     sizeEx = QUOTE(POS_H(3/4));
                 };
                 class OverwriteMissionText: OverwriteClientText {
-                    onLoad = QUOTE((_this select 0) ctrlSetText localize QUOTE(LSTRING(overwrite_mission)); (_this select 0) ctrlEnable false;);
+                    onLoad = QUOTE((_this select 0) ctrlSetTooltip localize QUOTE(LSTRING(overwrite_mission)); (_this select 0) ctrlEnable false;);
                     idc = IDC_TXT_OVERWRITE_MISSION;
-                    x = QUOTE(POS_W(33));
+                    text = CSTRING(overwrite_mission_short);
+                    x = QUOTE(POS_W(COL_OVERWRITE_MISSION + ROW_X - 0.7));
                 };
                 class VolatileWarningText: OverwriteClientText {
                     onLoad = QUOTE((_this select 0) ctrlEnable true;);
@@ -118,7 +132,8 @@ class RscDisplayGameOptions {
                     text = CSTRING(volatile);
                     tooltip = CSTRING(volatile_tooltip);
                     x = QUOTE(POS_W(1));
-                    w = QUOTE(POS_W(24));
+                    y = QUOTE(POS_H(1.85));
+                    w = QUOTE(POS_W(22));
                 };
             };
         };
@@ -161,9 +176,9 @@ class RscControlsGroupNoHScrollbars: RscControlsGroup {
 
 class GVAR(OptionsGroup): RscControlsGroupNoHScrollbars {
     x = QUOTE(POS_W(0));
-    y = QUOTE(POS_H(3.5));
+    y = QUOTE(POS_H(TABLE_TOP));
     w = QUOTE(POS_W(37.5));
-    h = QUOTE(POS_H(13.8));
+    h = QUOTE(POS_H(GROUP_HEIGHT - TABLE_TOP));
     lineHeight = QUOTE(POS_H(1));
 
     class VScrollbar: VScrollbar {
@@ -198,7 +213,7 @@ class GVAR(AddonsList): GVAR(RscCombo) {
     text = "";
     wholeHeight = QUOTE(POS_H(12));
     x = QUOTE(POS_W(4.5));
-    y = QUOTE(POS_H(1));
+    y = QUOTE(POS_H(0.6));
     w = QUOTE(POS_W(21));
     h = QUOTE(POS_H(1));
 };
@@ -225,40 +240,55 @@ class GVAR(ScrollPad): RscText {
 };
 
 class GVAR(subCat): RscControlsGroupNoScrollbars {
-    x = QUOTE(POS_W(1));
+    x = QUOTE(POS_W(ROW_X));
     y = QUOTE(POS_H(0));
     w = QUOTE(POS_W(37));
-    h = QUOTE(POS_H(1));
+    h = QUOTE(POS_H(SUBCAT_HEIGHT));
     class controls {
         class Background: RscText {
             colorBackground[] = {0.15,0.15,0.15,0.4};
             x = QUOTE(POS_W(0));
             y = QUOTE(POS_H(0));
             w = QUOTE(POS_W(36));
-            h = QUOTE(POS_H(1));
+            h = QUOTE(POS_H(SUBCAT_HEIGHT));
         };
         class Name: RscText {
             idc = IDC_SETTING_NAME;
             style = ST_LEFT;
-            SizeEx = QUOTE(POS_H(1));
+            SizeEx = QUOTE(POS_H(SUBCAT_HEIGHT));
             x = QUOTE(POS_W(0));
             y = QUOTE(POS_H(0));
-            w = QUOTE(POS_W(15.5));
-            h = QUOTE(POS_H(1));
+            w = QUOTE(POS_W(24));
+            h = QUOTE(POS_H(SUBCAT_HEIGHT));
         };
         class Bar: RscText {
             colorBackground[] = {1,1,1,1};
             style = ST_LEFT;
             x = QUOTE(POS_W(0));
-            y = QUOTE(POS_H(1) - 2 * pixelH);
+            y = QUOTE(POS_H(SUBCAT_HEIGHT) - 2 * pixelH);
             w = QUOTE(POS_W(36));
             h = QUOTE(pixelH);
+        };
+        // sits on top of the header so the whole strip folds the settings below it
+        class Toggle: RscButton {
+            idc = IDC_SETTING_SUBCAT_TOGGLE;
+            style = ST_LEFT;
+            text = "";
+            tooltip = CSTRING(subCategory_tooltip);
+            colorBackground[] = {0,0,0,0};
+            colorBackgroundActive[] = {1,1,1,0.1};
+            colorFocused[] = {0,0,0,0};
+            onButtonClick = QUOTE([ctrlParentControlsGroup (_this select 0)] call FUNC(gui_toggleSubCategory));
+            x = QUOTE(POS_W(0));
+            y = QUOTE(POS_H(0));
+            w = QUOTE(POS_W(36));
+            h = QUOTE(POS_H(SUBCAT_HEIGHT));
         };
     };
 };
 class GVAR(Row_Base): RscControlsGroupNoScrollbars {
     GVAR(script) = "";
-    x = QUOTE(POS_W(1));
+    x = QUOTE(POS_W(ROW_X));
     y = QUOTE(POS_H(0));
     w = QUOTE(POS_W(37));
     h = QUOTE(POS_H(1) + TABLE_LINE_SPACING);
@@ -274,38 +304,39 @@ class GVAR(Row_Base): RscControlsGroupNoScrollbars {
         };
         class Name: RscText {
             idc = IDC_SETTING_NAME;
-            style = ST_RIGHT;
-            x = QUOTE(POS_W(0));
+            style = ST_LEFT;
+            x = QUOTE(POS_W(COL_NAME));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(15.5));
+            w = QUOTE(POS_W(COL_NAME_W));
             h = QUOTE(POS_H(1));
         };
         class Default: RscButton {
             idc = IDC_SETTING_DEFAULT;
             style = ST_PICTURE;
             text = ICON_DEFAULT;
-            x = QUOTE(POS_W(27));
+            x = QUOTE(POS_W(COL_DEFAULT));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
             w = QUOTE(POS_W(1));
             h = QUOTE(POS_H(1));
         };
+        // the state of the setting reads down the left edge of the table
         class Locked: RscPicture {
             idc = IDC_SETTING_LOCKED;
-            x = QUOTE(POS_W(28.5));
+            x = QUOTE(POS_W(COL_STATUS));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
             w = QUOTE(POS_W(1));
             h = QUOTE(POS_H(1));
         };
         class OverwriteClients: GVAR(CheckboxSound) {
             idc = IDC_SETTING_OVERWRITE_CLIENT;
-            x = QUOTE(POS_W(30.5));
+            x = QUOTE(POS_W(COL_OVERWRITE_CLIENT));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
             w = QUOTE(POS_W(1));
             h = QUOTE(POS_H(1));
         };
         class OverwriteMission: OverwriteClients {
             idc = IDC_SETTING_OVERWRITE_MISSION;
-            x = QUOTE(POS_W(33.5));
+            x = QUOTE(POS_W(COL_OVERWRITE_MISSION));
         };
     };
 };
@@ -314,10 +345,11 @@ class GVAR(Row_Checkbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingCheckbox);
 
     class controls: controls {
+        class Background: Background {};
         class Name: Name {};
         class Checkbox: GVAR(CheckboxSound) {
             idc = IDC_SETTING_CHECKBOX;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
             w = QUOTE(POS_W(1));
             h = QUOTE(POS_H(1));
@@ -333,12 +365,13 @@ class GVAR(Row_Editbox): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingEditbox);
 
     class controls: controls {
+        class Background: Background {};
         class Name: Name {};
         class Editbox: RscEdit {
             idc = IDC_SETTING_EDITBOX;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(10.5));
+            w = QUOTE(POS_W(COL_CONTROL_W));
             h = QUOTE(POS_H(1));
         };
         class Default: Default {};
@@ -352,12 +385,13 @@ class GVAR(Row_List): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingList);
 
     class controls: controls {
+        class Background: Background {};
         class Name: Name {};
         class List: GVAR(RscCombo) {
             idc = IDC_SETTING_LIST;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(10.5));
+            w = QUOTE(POS_W(COL_CONTROL_W));
             h = QUOTE(POS_H(1));
         };
         class Default: Default {};
@@ -373,19 +407,20 @@ class GVAR(Row_Slider): GVAR(Row_Base) {
     GVAR(script) = QFUNC(gui_settingSlider);
 
     class controls: controls {
+        class Background: Background {};
         class Name: Name {};
         class Slider: ctrlXSliderH {
             idc = IDC_SETTING_SLIDER;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(8.2));
+            w = QUOTE(POS_W(COL_CONTROL_SLIDER_W));
             h = QUOTE(POS_H(1));
         };
         class Edit: RscEdit {
             idc = IDC_SETTING_SLIDER_EDIT;
-            x = QUOTE(POS_W(24.3));
+            x = QUOTE(POS_W(COL_CONTROL_EDIT));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(2.2));
+            w = QUOTE(POS_W(COL_CONTROL_EDIT_W));
             h = QUOTE(POS_H(1));
         };
         class Default: Default {};
@@ -400,31 +435,38 @@ class GVAR(Row_Color): GVAR(Row_Base) {
     h = QUOTE(POS_H(3) + TABLE_LINE_SPACING);
 
     class controls: controls {
-        class Name: Name {
-            y = QUOTE(POS_H(0.5) + TABLE_LINE_SPACING/2);
+        // the row is taller than the base one, the banding has to cover all of it
+        class Background: Background {
+            h = QUOTE(POS_H(3));
         };
+        class Name: Name {
+            y = QUOTE(POS_H(1) + TABLE_LINE_SPACING/2);
+            w = QUOTE(POS_W(COL_NAME_W_COLOR));
+        };
+        // a swatch next to the channels it previews. A wide slab here would run
+        // into the setting name, which is left aligned now.
         class Preview: RscText {
             idc = IDC_SETTING_COLOR_PREVIEW;
-            x = QUOTE(POS_W(9.5));
-            y = QUOTE(POS_H(1.5) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(6));
-            h = QUOTE(POS_H(1));
+            x = QUOTE(POS_W(COL_SWATCH));
+            y = QUOTE(POS_H(0.8) + TABLE_LINE_SPACING/2);
+            w = QUOTE(POS_W(COL_SWATCH_W));
+            h = QUOTE(POS_H(COL_SWATCH_W));
         };
         class Red: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_RED;
             color[] = {1,0,0,0.6};
             colorActive[] = {1,0,0,1};
             colorDisable[] = {1,0,0,0.4};
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(8.2));
+            w = QUOTE(POS_W(COL_CONTROL_SLIDER_W));
             h = QUOTE(POS_H(1));
         };
         class Red_Edit: RscEdit {
             idc = IDC_SETTING_COLOR_RED_EDIT;
-            x = QUOTE(POS_W(24.3));
+            x = QUOTE(POS_W(COL_CONTROL_EDIT));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(2.2));
+            w = QUOTE(POS_W(COL_CONTROL_EDIT_W));
             h = QUOTE(POS_H(1));
         };
         class Green: Red {
@@ -468,11 +510,14 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
     h = QUOTE(POS_H(4) + TABLE_LINE_SPACING);
 
     class controls: controls {
+        class Background: Background {
+            h = QUOTE(POS_H(4));
+        };
         class Name: Name {
-            y = QUOTE(POS_H(1) + TABLE_LINE_SPACING/2);
+            y = QUOTE(POS_H(1.5) + TABLE_LINE_SPACING/2);
         };
         class Preview: Preview {
-            y = QUOTE(POS_H(2) + TABLE_LINE_SPACING/2);
+            y = QUOTE(POS_H(1.3) + TABLE_LINE_SPACING/2);
         };
         class Red: Red {};
         class Red_Edit: Red_Edit {};
@@ -482,16 +527,16 @@ class GVAR(Row_ColorAlpha): GVAR(Row_Color) {
         class Blue_Edit: Blue_Edit {};
         class Alpha: ctrlXSliderH {
             idc = IDC_SETTING_COLOR_ALPHA;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(3) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(8.2));
+            w = QUOTE(POS_W(COL_CONTROL_SLIDER_W));
             h = QUOTE(POS_H(1));
         };
         class Alpha_Edit: RscEdit {
             idc = IDC_SETTING_COLOR_ALPHA_EDIT;
-            x = QUOTE(POS_W(24.3));
+            x = QUOTE(POS_W(COL_CONTROL_EDIT));
             y = QUOTE(POS_H(3) + TABLE_LINE_SPACING/2);
-            w = QUOTE(POS_W(2.2));
+            w = QUOTE(POS_W(COL_CONTROL_EDIT_W));
             h = QUOTE(POS_H(1));
         };
         class Default: Default {
@@ -516,18 +561,21 @@ class GVAR(Row_Time): GVAR(Row_Base) {
     h = QUOTE(POS_H(2) + TABLE_LINE_SPACING);
 
     class controls: controls {
+        class Background: Background {
+            h = QUOTE(POS_H(2));
+        };
         class Name: Name {
             y = QUOTE(POS_H(0.5) + TABLE_LINE_SPACING / 2);
         };
         class Slider: ctrlXSliderH {
             idc = IDC_SETTING_TIME_SLIDER;
-            x = QUOTE(POS_W(16));
+            x = QUOTE(POS_W(COL_CONTROL));
             y = QUOTE(POS_H(0) + TABLE_LINE_SPACING / 2);
-            w = QUOTE(POS_W(10.5));
+            w = QUOTE(POS_W(COL_CONTROL_W));
             h = QUOTE(POS_H(1));
         };
         class Frame: RscFrame {
-            x = QUOTE(POS_W(18.25));
+            x = QUOTE(POS_W(COL_CONTROL + 2.25));
             y = QUOTE(POS_H(1.1) + TABLE_LINE_SPACING / 2);
             w = QUOTE(POS_W(6));
             h = QUOTE(POS_H(0.9));
@@ -536,7 +584,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
             style = ST_CENTER;
             text = ":   :";
             font = "EtelkaMonospaceProBold";
-            x = QUOTE(POS_W(18.25));
+            x = QUOTE(POS_W(COL_CONTROL + 2.25));
             y = QUOTE(POS_H(1.1) + TABLE_LINE_SPACING / 2);
             w = QUOTE(POS_W(6));
             h = QUOTE(POS_H(0.9));
@@ -548,7 +596,7 @@ class GVAR(Row_Time): GVAR(Row_Base) {
             style = ST_CENTER + ST_NO_RECT;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Hour_tooltip";
             font = "EtelkaMonospaceProBold";
-            x = QUOTE(POS_W(18.25));
+            x = QUOTE(POS_W(COL_CONTROL + 2.25));
             y = QUOTE(POS_H(1.1) + TABLE_LINE_SPACING / 2);
             w = QUOTE(POS_W(2));
             h = QUOTE(POS_H(0.9));
@@ -558,12 +606,12 @@ class GVAR(Row_Time): GVAR(Row_Base) {
         class Minutes: Hours {
             idc = IDC_SETTING_TIME_MINUTES;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Minute_tooltip";
-            x = QUOTE(POS_W(20.25));
+            x = QUOTE(POS_W(COL_CONTROL + 4.25));
         };
         class Seconds: Hours {
             idc = IDC_SETTING_TIME_SECONDS;
             tooltip = "$STR_3DEN_Attributes_SliderTime_Second_tooltip";
-            x = QUOTE(POS_W(22.25));
+            x = QUOTE(POS_W(COL_CONTROL + 6.25));
         };
         class Default: Default {
             y = QUOTE(POS_H(0.5) + TABLE_LINE_SPACING / 2);
@@ -582,6 +630,75 @@ class GVAR(Row_Time): GVAR(Row_Base) {
 
 class RscTitle;
 class RscListBox;
+
+class GVAR(confirmDiscard) {
+    idd = -1;
+    movingEnable = 0;
+    enableSimulation = 0;
+
+    class controls {
+        class Confirm: RscControlsGroupNoScrollbars {
+            idc = IDC_CONFIRM_GROUP;
+            x = QUOTE(POS_X(12));
+            y = QUOTE(POS_Y(9.5));
+            w = QUOTE(POS_W(16));
+            h = QUOTE(POS_H(4.6));
+
+            class controls {
+                class Title: RscTitle {
+                    colorBackground[] = {
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_R',0.77])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_G',0.51])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_B',0.08])",
+                        "(profileNamespace getVariable ['GUI_BCG_RGB_A',0.8])"
+                    };
+                    idc = -1;
+                    text = CSTRING(discardChanges_title);
+                    x = QUOTE(POS_W(0));
+                    y = QUOTE(POS_H(0));
+                    w = QUOTE(POS_W(16));
+                    h = QUOTE(POS_H(1));
+                };
+                class Background: RscText {
+                    // grown per script with the group, the list decides how tall this is
+                    idc = IDC_CONFIRM_BACKGROUND;
+                    colorBackground[] = {0,0,0,0.8};
+                    x = QUOTE(POS_W(0));
+                    y = QUOTE(POS_H(1.1));
+                    w = QUOTE(POS_W(16));
+                    h = QUOTE(POS_H(3.5));
+                };
+                class Message: RscStructuredText {
+                    // set per script, it lists what is pending
+                    idc = IDC_CONFIRM_TEXT;
+                    text = "";
+                    x = QUOTE(POS_W(0.5));
+                    y = QUOTE(POS_H(1.4));
+                    w = QUOTE(POS_W(15));
+                    h = QUOTE(POS_H(1));
+                    size = QUOTE(POS_H(0.8));
+                };
+                class ButtonDiscard: RscButtonMenu {
+                    idc = IDC_CONFIRM_OK;
+                    text = CSTRING(discardChanges_confirm);
+                    x = QUOTE(POS_W(0.5));
+                    y = QUOTE(POS_H(3.2));
+                    w = QUOTE(POS_W(7));
+                    h = QUOTE(POS_H(1));
+                };
+                class ButtonKeep: RscButtonMenu {
+                    // carries the cancel idc, so it closes this prompt and nothing else
+                    idc = IDC_CANCEL;
+                    text = CSTRING(discardChanges_keep);
+                    x = QUOTE(POS_W(8.5));
+                    y = QUOTE(POS_H(3.2));
+                    w = QUOTE(POS_W(7));
+                    h = QUOTE(POS_H(1));
+                };
+            };
+        };
+    };
+};
 
 class GVAR(presets) {
     idd = -1;

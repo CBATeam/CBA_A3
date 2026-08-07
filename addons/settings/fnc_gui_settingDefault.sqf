@@ -25,8 +25,7 @@ _ctrlDefault ctrlAddEventHandler ["ButtonClick", {
     // refresh priority to update overwrite color if current value is equal to overwrite
     [_controlsGroup] call (_controlsGroup getVariable QFUNC(updateUI_locked));
 
-    private _ctrlSettingName = _controlsGroup controlsGroupCtrl IDC_SETTING_NAME;
-    _ctrlSettingName ctrlSetTextColor COLOR_TEXT_ENABLED_WAS_EDITED;
+    _controlsGroup call FUNC(gui_setRowEdited);
 }];
 
 if (_currentValue isEqualTo _defaultValue) then {

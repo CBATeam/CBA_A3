@@ -12,6 +12,7 @@ Description:
 
 Parameters:
     _ctrlOptionsGroup - Options controls group of a category <CONTROL>
+    _resetScroll      - Scroll back to the top afterwards <BOOL> (default: false)
 
 Returns:
     None
@@ -25,7 +26,7 @@ Author:
     LinkIsGrim
 ---------------------------------------------------------------------------- */
 
-params ["_ctrlOptionsGroup"];
+params ["_ctrlOptionsGroup", ["_resetScroll", false]];
 
 private _tablePosY = TABLE_LINE_SPACING/2;
 
@@ -33,22 +34,43 @@ private _tablePosY = TABLE_LINE_SPACING/2;
 // past the lowest one of them
 private _scrollPosY = 0;
 
+private _stripe = false;
+
 {
-    private _members = _x getVariable QGVAR(members);
+    private _ctrlRow = _x;
+    private _members = _ctrlRow getVariable QGVAR(members);
 
     if (!isNil "_members") then {
-        // ----- hide sub-category headers that have no settings left
-        private _show = (_members findIf {ctrlShown _x}) != -1;
+        // ----- hide sub-category headers the search left nothing in. A folded one
+        // ----- stays, it is the only way to unfold it again.
+        private _show = (_members findIf {_x getVariable [QGVAR(matched), true]}) != -1;
 
-        _x ctrlShow _show;
+        _ctrlRow ctrlShow _show;
 
         if (_show) then {
-            _tablePosY = [_x, _tablePosY] call FUNC(gui_setTablePosY);
+            private _collapsed = _ctrlRow getVariable [QGVAR(collapsed), false];
+
+            (_ctrlRow controlsGroupCtrl IDC_SETTING_NAME) ctrlSetText format [
+                "%1 %2:",
+                [SUBCAT_OPEN, SUBCAT_CLOSED] select _collapsed,
+                _ctrlRow getVariable [QGVAR(subCategory), ""]
+            ];
+
+            _tablePosY = [_ctrlRow, _tablePosY] call FUNC(gui_setTablePosY);
+
+            // every group bands the same way, so folding one doesn't invert the next
+            _stripe = false;
         } else {
-            [_x, 0, 0] call FUNC(gui_setTablePosY);
+            [_ctrlRow, 0, 0] call FUNC(gui_setTablePosY);
         };
     } else {
         if (ctrlShown _x) then {
+            // every row class declares Background itself, an inherited child that
+            // is never redeclared doesn't get created and this would find nothing
+            (_x controlsGroupCtrl IDC_SETTING_BACKGROUND) ctrlSetBackgroundColor ([COLOR_ROW, COLOR_ROW_ALT] select _stripe);
+
+            _stripe = !_stripe;
+
             _tablePosY = [_x, _tablePosY] call FUNC(gui_setTablePosY);
             _scrollPosY = _scrollPosY max (_tablePosY + (_x getVariable [QGVAR(dropdownHeight), 0]));
         } else {
@@ -69,5 +91,8 @@ if (!isNull _ctrlPad) then {
 _ctrlOptionsGroup ctrlSetPosition (ctrlPosition _ctrlOptionsGroup);
 _ctrlOptionsGroup ctrlCommit 0;
 
-// ----- this only moves the scroll bar, it does not size the scroll area
-_ctrlOptionsGroup ctrlSetScrollValues [0, 0];
+// ----- this only moves the scroll bar, it does not size the scroll area. Folding
+// ----- a sub-category away shouldn't throw the reader back to the top.
+if (_resetScroll) then {
+    _ctrlOptionsGroup ctrlSetScrollValues [0, 0];
+};

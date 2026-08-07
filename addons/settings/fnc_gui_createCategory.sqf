@@ -38,8 +38,15 @@ private _categorySettings = GVAR(categorySettings) getOrDefault [_category, ["",
 _categorySettings params ["", "_settings"];
 
 // [sub-category, index of its first setting], in order
-private _subCategoryRuns = GVAR(subCategories) getOrDefault [_category, []];
+private _subCategoryRuns = + (GVAR(subCategories) getOrDefault [_category, []]);
 private _runIndex = 0;
+
+// Settings registered without a sub-category come first and had no header, so
+// they were the one block that couldn't be folded away. Give them one, but only
+// where there is something else to fold them against.
+if (_subCategoryRuns isNotEqualTo [] && {(_subCategoryRuns select 0 select 1) > 0}) then {
+    _subCategoryRuns insert [0, [[localize LSTRING(general), 0]]];
+};
 
 // nothing here is positioned, FUNC(gui_reflow) lays the table out once afterwards
 private _ctrlOptionsGroup = _display ctrlCreate [QGVAR(OptionsGroup), -1, _display displayCtrl IDC_ADDONS_GROUP];
@@ -91,11 +98,22 @@ private _source = uiNamespace getVariable [QGVAR(source), "client"];
     // Add sub-category header
     if (_subCategory isNotEqualTo "") then {
         _ctrlHeaderGroup = _display ctrlCreate [QGVAR(subCat), -1, _ctrlOptionsGroup];
-        private _ctrlHeaderName = _ctrlHeaderGroup controlsGroupCtrl IDC_SETTING_NAME;
-        _ctrlHeaderName ctrlSetText format ["%1:", _subCategory];
 
-        // the settings below this header, used to hide it when they are all filtered out
+        // FUNC(gui_reflow) writes the name, it carries the folded marker
+        _ctrlHeaderGroup setVariable [QGVAR(subCategory), _subCategory];
+
+        // the settings below this header, used to hide it when they are all
+        // filtered out and to fold them away
         _ctrlHeaderGroup setVariable [QGVAR(members), []];
+
+        // folding a sub-category away holds for as long as the menu is open. Keyed
+        // by category too, two addons can both have a "Blood" group.
+        _ctrlHeaderGroup setVariable [QGVAR(foldKey), [_category, _subCategory] joinString "$"];
+        _ctrlHeaderGroup setVariable [
+            QGVAR(collapsed),
+            (uiNamespace getVariable [QGVAR(collapsedSubCategories), createHashMap]) getOrDefault [[_category, _subCategory] joinString "$", false]
+        ];
+
         _rowOrder pushBack _ctrlHeaderGroup;
     };
 
@@ -121,13 +139,6 @@ private _source = uiNamespace getVariable [QGVAR(source), "client"];
         };
         default {controlNull};
     };
-
-    // ----- where the overwrite checkboxes belong. Has to be read before anything
-    // ----- can move them, hiding one puts it off screen and it can't be read back.
-    {
-        private _ctrlOverwrite = _ctrlSettingGroup controlsGroupCtrl _x;
-        _ctrlOverwrite setVariable [QGVAR(position), ctrlPosition _ctrlOverwrite];
-    } forEach [IDC_SETTING_OVERWRITE_CLIENT, IDC_SETTING_OVERWRITE_MISSION];
 
     // ----- determine display string for default value
     private _defaultValueTooltip = switch (toUpper _settingType) do {
@@ -165,6 +176,9 @@ private _source = uiNamespace getVariable [QGVAR(source), "client"];
 
     if (!isNull _ctrlHeaderGroup) then {
         (_ctrlHeaderGroup getVariable QGVAR(members)) pushBack _ctrlSettingGroup;
+
+        // so a row knows whether the group it belongs to is folded away
+        _ctrlSettingGroup setVariable [QGVAR(header), _ctrlHeaderGroup];
     };
 
     // ----- how far an open dropdown reaches below its row, so the table can

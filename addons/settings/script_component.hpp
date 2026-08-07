@@ -32,6 +32,7 @@
 #define IDC_BTN_SAVE 9020
 #define IDC_BTN_LOAD 9021
 #define IDC_BTN_CONFIGURE 9030
+#define IDC_TXT_OVERWRITES 9043
 #define IDC_TXT_OVERWRITE_CLIENT 9040
 #define IDC_TXT_OVERWRITE_MISSION 9041
 #define IDC_TXT_VOLATILE_WARNING 9042
@@ -39,6 +40,7 @@
 #define IDC_SETTING_CONTROLS_GROUP 5000
 #define IDC_SETTING_BACKGROUND 5001
 #define IDC_SETTING_NAME 5010
+#define IDC_SETTING_SUBCAT_TOGGLE 5011
 #define IDC_SETTING_DEFAULT 5020
 #define IDC_SETTING_LOCKED 5030
 #define IDC_SETTING_OVERWRITE_CLIENT 5040
@@ -73,6 +75,15 @@
 #define IDC_PRESETS_OK 8005
 #define IDC_PRESETS_CANCEL 8006
 #define IDC_PRESETS_DELETE 8007
+#define IDC_CONFIRM_GROUP 8009
+#define IDC_CONFIRM_BACKGROUND 8012
+#define IDC_CONFIRM_TEXT 8010
+#define IDC_CONFIRM_OK 8011
+
+// Listing every changed setting would run off the screen, the rest are counted instead
+#define CONFIRM_LIST_MAX 6
+#define CONFIRM_BASE_HEIGHT 3.5
+#define CONFIRM_LINE_HEIGHT 0.75
 
 #define IDC_EXPORT_GROUP 8100
 #define IDC_EXPORT_TITLE 8101
@@ -93,7 +104,45 @@
 #define POS_X_LOW(N) ((N) * GUI_GRID_W + GUI_GRID_X)
 #define POS_Y_LOW(N) ((N) * GUI_GRID_H + GUI_GRID_Y)
 
-#define TABLE_LINE_SPACING POS_H(0.4)
+#define TABLE_LINE_SPACING POS_H(0.2)
+
+// Columns of a settings table row, in grid units. A row is 37 wide.
+// A row sits at POS_W(ROW_X) inside the table, so anything outside the table that
+// has to line up with a column has to add it.
+#define ROW_X 1
+#define COL_STATUS 0.3
+#define COL_NAME 1.5
+#define COL_NAME_W 15
+// colour settings put a swatch at the end of the name, so their name is shorter
+#define COL_NAME_W_COLOR 13.6
+#define COL_SWATCH 15.3
+#define COL_SWATCH_W 1.4
+#define COL_CONTROL 16.9
+#define COL_CONTROL_W 12.6
+#define COL_CONTROL_SLIDER_W 10
+#define COL_CONTROL_EDIT (COL_CONTROL + 10.3)
+#define COL_CONTROL_EDIT_W 2.3
+#define COL_DEFAULT 30
+// the two checkboxes only need to clear each other. Their labels are wider than
+// they are, but the text inside is centred and narrow enough not to touch.
+#define COL_OVERWRITE_CLIENT 32.2
+#define COL_OVERWRITE_MISSION 34.2
+
+// A sub-category header, where the table starts below the addon list, and how far
+// it reaches down. The buttons below it sit at BUTTON_ROW_Y, and the dialog's own
+// OK and Cancel are at POS_Y(23).
+#define SUBCAT_HEIGHT 0.8
+#define TABLE_TOP 2.8
+#define GROUP_HEIGHT 18.5
+#define BUTTON_ROW_Y 21.7
+
+// Marks whether a sub-category is folded away
+#define SUBCAT_OPEN "-"
+#define SUBCAT_CLOSED "+"
+
+// Rows are banded so a long setting name can be followed across to its control
+#define COLOR_ROW [0, 0, 0, 0.4]
+#define COLOR_ROW_ALT [0.1, 0.11, 0.13, 0.4]
 
 #define COLOR_TEXT_ENABLED [1, 1, 1, 1]
 #define COLOR_TEXT_ENABLED_WAS_EDITED [0.95, 0.95, 0.1, 1]
@@ -104,6 +153,7 @@
 #define ICON_DEFAULT "\a3\3den\Data\Displays\Display3DEN\ToolBar\undo_ca.paa"
 #define ICON_APPLIES QPATHTOF(applies_ca.paa)
 #define ICON_OVERWRITTEN QPATHTOF(overwritten_ca.paa)
+#define ICON_OVERWRITTEN_EQUAL QPATHTOF(overwritten_equal_ca.paa)
 #define ICON_NEED_RESTART QPATHTOF(need_restart_ca.paa)
 
 #define COLOR_APPLIES [0, 0.95, 0, 1]

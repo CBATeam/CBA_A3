@@ -10,7 +10,8 @@ Description:
     every combination of the two has its own set of controls.
 
 Parameters:
-    _display - Addon Options dialog <DISPLAY>
+    _display      - Addon Options dialog <DISPLAY>
+    _resetScroll  - Scroll back to the top afterwards <BOOL> (default: true)
 
 Returns:
     None
@@ -24,7 +25,7 @@ Author:
     LinkIsGrim
 ---------------------------------------------------------------------------- */
 
-params ["_display"];
+params ["_display", ["_resetScroll", true]];
 
 private _category = uiNamespace getVariable [QGVAR(addon), ""];
 
@@ -42,8 +43,18 @@ private _matches = createHashMapFromArray (((_display getVariable [QGVAR(searchM
 private _shownRows = [];
 
 {
-    private _show = !_isFiltered || {_matches getOrDefault [_x getVariable QGVAR(setting), false]};
+    private _matched = !_isFiltered || {_matches getOrDefault [_x getVariable QGVAR(setting), false]};
 
+    // a folded sub-category stays folded, unless the search found something in it
+    private _ctrlHeaderGroup = _x getVariable [QGVAR(header), controlNull];
+    private _folded = !isNull _ctrlHeaderGroup
+        && {_ctrlHeaderGroup getVariable [QGVAR(collapsed), false]}
+        && {!_isFiltered};
+
+    private _show = _matched && !_folded;
+
+    // a header is kept for as long as the search left it anything, folded or not
+    _x setVariable [QGVAR(matched), _matched];
     _x ctrlShow _show;
 
     if (_show) then {
@@ -56,4 +67,4 @@ if (_shownRows isEqualTo (_ctrlOptionsGroup getVariable [QGVAR(shownRows), false
 
 _ctrlOptionsGroup setVariable [QGVAR(shownRows), _shownRows];
 
-_ctrlOptionsGroup call FUNC(gui_reflow);
+[_ctrlOptionsGroup, _resetScroll] call FUNC(gui_reflow);

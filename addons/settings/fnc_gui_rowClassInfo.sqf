@@ -46,10 +46,12 @@ if (isNil "_info") then {
     private _config = configFile >> _class;
 
     // a child without an idc reads as 0, which resolves to controlNull and is
-    // silently skipped by the callers
+    // silently skipped by the callers.
+
+    // skip the background so it doesn't get enabled
     _info = [
         [getNumber (_config >> "x"), getNumber (_config >> "y"), getNumber (_config >> "w"), getNumber (_config >> "h")],
-        ("true" configClasses (_config >> "controls")) apply {getNumber (_x >> "idc")}
+        (("true" configClasses (_config >> "controls")) apply {getNumber (_x >> "idc")}) select {_x != IDC_SETTING_BACKGROUND}
     ];
 
     _cache set [_class, _info];
