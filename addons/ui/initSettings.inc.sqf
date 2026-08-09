@@ -26,3 +26,12 @@
     [1, 10, 4, 1], // default value
     2 // global
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(autoExpandOptions),
+    "CHECKBOX",
+    LLSTRING(AutoExpandOptions),
+    [LELSTRING(main,DisplayName), LLSTRING(Category)],
+    false,
+    2
+] call CBA_fnc_addSetting;

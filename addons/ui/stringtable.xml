@@ -30,6 +30,10 @@
             <Chinesesimp>显示所有任务</Chinesesimp>
             <Turkish>Tüm görevleri göster</Turkish>
         </Key>
+        <Key ID="STR_CBA_UI_AutoExpandOptions">
+            <English>Automatically expand Options menu</English>
+            <Russian>Автоматически раскрывать меню Настройки</Russian>
+        </Key>
         <Key ID="STR_CBA_UI_Category">
             <English>User Interface</English>
             <Czech>Uživatelské rozhraní</Czech>
