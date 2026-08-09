@@ -29,9 +29,9 @@ GVAR(waitUntilAndExecArray) = [];
 
     // Execute per frame handlers
     {
-        _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
+        if (diag_tickTime > (_x select 2)) then {
+            _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
 
-        if (diag_tickTime > _delta) then {
             _x set [2, _delta + _delay];
             [_args, _handle] call _function;
         };
