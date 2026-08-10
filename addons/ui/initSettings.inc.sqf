@@ -32,6 +32,6 @@
     "CHECKBOX",
     LLSTRING(AutoExpandOptions),
     [LELSTRING(main,DisplayName), LLSTRING(Category)],
-    false,
+    true,
     2
 ] call CBA_fnc_addSetting;
