@@ -298,6 +298,39 @@ Author:
 #endif
 
 /* -------------------------------------------
+Macro: DEBUG()
+    Log a debug message into the RPT log.
+
+    Only run if <DEBUG_MODE_FULL> is defined OR -debug command line parameter is used.
+    This has a small runtime cost but is usable in scripts compiled at build-time (sqfc).
+
+Parameters:
+    MESSAGE - Message to record <STRING>
+
+Example:
+    (begin example)
+        DEBUG("You want to see what's happening");
+    (end)
+
+Author:
+    PabstMirror
+------------------------------------------- */
+#ifdef DEBUG_MODE_FULL
+#define DEBUG(MESSAGE) LOG_SYS('DEBUG',MESSAGE)
+#else
+#define DEBUG(MESSAGE) if (QUOTE(__A3_DIAG__) call CBA_fnc_getMacro) then { LOG_SYS('DEBUG',MESSAGE) }
+#endif
+
+#define DEBUG_1(MESSAGE,ARG1) DEBUG(FORMAT_1(MESSAGE,ARG1))
+#define DEBUG_2(MESSAGE,ARG1,ARG2) DEBUG(FORMAT_2(MESSAGE,ARG1,ARG2))
+#define DEBUG_3(MESSAGE,ARG1,ARG2,ARG3) DEBUG(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
+#define DEBUG_4(MESSAGE,ARG1,ARG2,ARG3,ARG4) DEBUG(FORMAT_4(MESSAGE,ARG1,ARG2,ARG3,ARG4))
+#define DEBUG_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5) DEBUG(FORMAT_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5))
+#define DEBUG_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) DEBUG(FORMAT_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6))
+#define DEBUG_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) DEBUG(FORMAT_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7))
+#define DEBUG_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) DEBUG(FORMAT_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8))
+
+/* -------------------------------------------
 Macro: ERROR()
     Record a critical error in the RPT log.
 
