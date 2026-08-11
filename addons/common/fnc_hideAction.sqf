@@ -24,7 +24,7 @@ Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
 
-if (!hasInterface || {(productVersion # 2) < 222}) exitWith { [[], []] };
+if (!hasInterface) exitWith { [[], []] };
 
 params [["_index", 0, [0]], ["_key", "", [""]], ["_hide", false, [false]], ["_forceAdd", false, [false]]];
 
@@ -54,10 +54,8 @@ private _fnc_update = {
             _hideSelected pushBack _x;
         };
     } forEach GVAR(hideActionHash);
-    call compile "
     hideActions [false, _unhideSelected];
     hideActions [true, _hideSelected];
-    "; // adds soft 2.22 req, remove after release
     [_hideSelected, _unhideSelected] // final return
 };
 
