@@ -320,6 +320,24 @@
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_discardChanges">
+            <English>There are %1 unsaved setting changes.</English>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_confirm">
+            <English>Discard</English>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_keep">
+            <English>Keep Editing</English>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_more">
+            <English>...and %1 more</English>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_one">
+            <English>There is 1 unsaved setting change.</English>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_title">
+            <English>Unsaved Changes</English>
+        </Key>
         <Key ID="STR_cba_settings_general">
             <English>General</English>
         </Key>
@@ -555,24 +573,6 @@
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges">
-            <English>There are %1 unsaved setting changes.</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_one">
-            <English>There is 1 unsaved setting change.</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_confirm">
-            <English>Discard</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_more">
-            <English>...and %1 more</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_keep">
-            <English>Keep Editing</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_title">
-            <English>Unsaved Changes</English>
         </Key>
     </Package>
 </Project>
