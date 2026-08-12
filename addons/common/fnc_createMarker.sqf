@@ -6,10 +6,10 @@ Description:
     Creates a marker all at once.
 
 Parameters:
-    _markerName - Name of marker to create [String]
-    _position - [Array: [x, y]]
-    _shape - "ICON", "RECTANGLE" or "ELLIPSE" [String]
-    _size - [Array: [width, height]]
+    _markerName - Name of marker to create <STRING>
+    _position - <ARRAY> of [x,y]
+    _shape - "ICON", "RECTANGLE" or "ELLIPSE" <STRING>
+    _size - <ARRAY> of [width, height]
 
 Optional Parameters:
     "GLOBAL" - Add for a global marker, but leave out for a local marker.
@@ -20,7 +20,7 @@ Optional Parameters:
     "TYPE:" - e.g. "Pickup"
 
 Returns:
-    Name of the marker [String]
+    Name of the marker <STRING>
 
 Examples:
     (begin example)

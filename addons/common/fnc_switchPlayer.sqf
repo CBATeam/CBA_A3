@@ -6,7 +6,7 @@ Description:
     Switch player to another unit.
 
 Parameters:
-    [type] The type of the new unit the player should switch to [String]
+    _type: The type of the new unit the player should switch to <STRING>
 
     Optional:
     [type, "LEAVEWEAPS"] - switch to new unit of the given type, but keep

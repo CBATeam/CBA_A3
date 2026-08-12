@@ -7,8 +7,8 @@ Description:
     Creates a new Hash
 
 Parameters:
-    _array - Array of key-value pairs to create Hash from [Array, defaults to []]
-    _defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    _array - Array of key-value pairs to create Hash from <ARRAY> (default: [])
+    _defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default <ANY> (default: nil)
 
 Returns:
     Newly created Hash [Hash]

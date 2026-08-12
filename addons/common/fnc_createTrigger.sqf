@@ -6,7 +6,7 @@ Description:
     Create a trigger all at once.
 
 Parameters:
-    _pos - Position [Array]
+    _pos - Position <ARRAY>
 
 Optional Parameters:
     "AREA:" - e.g. [5, 5, 0, false]

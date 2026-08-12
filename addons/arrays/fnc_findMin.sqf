@@ -6,14 +6,14 @@ Description:
     Find smallest numeric value with index in an array.
 
 Parameters:
-    _array: Array with Numbers
+    _array: Array with Numbers <ARRAY> 
 
 Example:
     (begin example)
     _result = [0, 4, 3, -2] call CBA_fnc_findMin
     (end)
 
-Returns:
+Returns: <ARRAY><NIL>
     _min: smallest value in array
     _index: index of the smallest value in array
     nil on failure

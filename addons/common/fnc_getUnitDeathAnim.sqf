@@ -6,10 +6,10 @@ Description:
     Get death animation for a unit.
 
 Parameters:
-    _unit - the unit to get the death animation for. [Object]
+    _unit - the unit to get the death animation for. <OBJECT>
 
 Returns:
-    _deathAnim - the name of the animation. [String]
+    _deathAnim - the name of the animation. <STRING>
 
 Examples:
     (begin example)

@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["filter", "inject", "join", "shuffle", "findNil", "findNull", "findTypeName", "findTypeOf", "findMax", "findMin", "insert", "standardDeviation"]
+#define TESTS ["filter", "inject", "join", "shuffle", "findNil.inc", "findNull.inc", "findTypeName.inc", "findTypeOf.inc", "findMax.inc", "findMin.inc", "insert", "standardDeviation"]
 SCRIPT(test-arrays);
 
 // ----------------------------------------------------------------------------

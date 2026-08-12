@@ -5,15 +5,16 @@ Description:
     A function used to return the element counts in an array.
 
 Parameters:
-    Array
+    _input: <ARRAY>
+
+Returns:
+    Array element counts <ARRAY>
+    flat pairs of [elementX, countX, elementY, countY, ...]
 
 Example:
     (begin example)
-    _types = [0, 0, 1, 1, 1, 1] call CBA_fnc_getArrayElements
+    _types = [0, 0, 1, 1, 1, 1] call CBA_fnc_getArrayElements // return would be [0, 2, 1, 4])
     (end)
-
-Returns:
-    Array element counts (for above example, return would be [0, 2, 1, 4])
 
 Author:
     Rommel && sbsmac

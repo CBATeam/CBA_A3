@@ -6,13 +6,12 @@ Description:
     Finds a string within another string.
 
 Parameters:
-    _haystack - String in which to search [String or ASCII char array]
-    _needle - String to search for [String or ASCII char array]
-    _initialIndex - Initial character index within _haystack to start the
-    search at [Number: 0+, defaults to 0].
+    _haystack - String in which to search or ASCII char array <STRING or ARRAY>
+    _needle - String to search for <STRING or ARRAY>
+    _initialIndex - Initial character index (0+) within _haystack to start the search at <NUMBER> (defaults to 0)
 
 Returns:
-    First position of string. Returns -1 if not found [Number]
+    First position of string. Returns -1 if not found <NUMBER>
 
 Examples:
     (begin example)

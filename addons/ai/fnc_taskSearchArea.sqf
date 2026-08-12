@@ -8,16 +8,16 @@ Description:
     Will also perform random building searches.
 
 Parameters:
-    _group - The group that will search [Group or Object]
-    _area - The area to search [Marker, Trigger or Area Array]
+    _group - The group that will search <GROUP or OBJECT>
+    _area - The area to search [Marker, Trigger or Area Array] <STRING or OBJECT or ARRAY or LOCATION>
 
 Optional:
-    _behaviour - Waypoint behaviour [String, defaults to "UNCHANGED"]
-    _combat - Waypoint combat mode [String, defaults to "NO CHANGE"]
-    _speed - Waypoint speed [String, defaults to "UNCHANGED"]
-    _formation - Waypoint formation [String, defaults to "NO CHANGE"]
-    _onComplete - Waypoint completion code [String, defaults to ""]
-    _timeout - Waypoint timeout [Array, defaults to [0,0,0]]
+    _behaviour - Waypoint behaviour <STRING> (defaults to "UNCHANGED")
+    _combat - Waypoint combat mode <STRING> (defaults to "NO CHANGE")
+    _speed - Waypoint speed <STRING> (defaults to "UNCHANGED")
+    _formation - Waypoint formation <STRING> (defaults to "NO CHANGE")
+    _onComplete - Waypoint completion code <STRING> (defaults to "")
+    _timeout - Waypoint timeout <ARRAY> (defaults to [0,0,0])
 
 Returns:
     None

@@ -6,9 +6,8 @@ Description:
     Runs unit tests for an addon or component.
 
 Parameters:
-    _addon - Prefix of addon to test [String, defaulting to "cba"].
-    _component - Name of component to test. If "main", will
-        test the whole addon [String, defaulting to "main"].
+    _addon - Prefix of addon to test <STRING> (default: "cba")
+    _component - Name of component to test. If "main", will test the whole addon <STRING> (default: "main").
 
 Returns:
     nil

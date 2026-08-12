@@ -9,12 +9,12 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to use [Hash]
-    _key - Key to set in Hash [Any]
-    _value - Value to set [Any]
+    _hash - Hash to use <ARRAY>(CBA HASH)
+    _key - Key to set in Hash <ANY>
+    _value - Value to set <ANY>
 
 Returns:
-    The hash [Hash]
+    The hash <ARRAY>(CBA HASH)
 
 Author:
     Spooner

@@ -6,12 +6,12 @@ Description:
     Select best element from an array
 
 Parameters:
-    _array - Input Array [Array]
-    _criteria - Code that is passed element and should return an integer value [Code]
-    _return - default return value if array is empty (optional, default nil) [Any]
+    _array - Input Array <ARRAY>
+    _criteria - Code that is passed element and should return an integer value <CODE>
+    _return - default return value if array is empty (optional, default nil) <ANY>
 
 Returns:
-    Element that scores the highest [Any]
+    Element that scores the highest <ANY>
 
 Example:
     (begin example)

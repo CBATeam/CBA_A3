@@ -7,11 +7,11 @@ Description:
  specified action.
 
 Parameters:
- _modName           - Name of the registering mod [String]
- _actionName        - Name of the action to get [String]
+ _modName           - Name of the registering mod <STRING>
+ _actionName        - Name of the action to get <STRING>
 
 Returns:
- Keyboard entry - array of parameters of the same form as used for CBA_fnc_addKeybind
+ Keyboard entry - array of parameters of the same form as used for CBA_fnc_addKeybind (or nil if not found) <ARRAY><NIL>
 
 Examples:
     (begin example)

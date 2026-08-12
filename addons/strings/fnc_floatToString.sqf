@@ -14,10 +14,10 @@ Limitations:
 
 
 Parameters:
-    _number - Number to format [Number]
+    _number - Number to format <NUMBER>
 
 Returns:
-    The number formatted into a string.
+    The number formatted into a string <STRING>.
 
 Examples:
     (begin example)

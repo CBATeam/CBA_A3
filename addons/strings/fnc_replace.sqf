@@ -6,12 +6,12 @@ Description:
     Replaces substrings within a string. Case-dependent.
 
 Parameters:
-    _string - String to make replacement in [String]
-    _pattern - Substring to replace [String]
-    _replacement - String to replace the _pattern with [String]
+    _string - String to make replacement in <STRING>
+    _pattern - Substring to replace <STRING>
+    _replacement - String to replace the _pattern with <STRING>
 
 Returns:
-    String with replacements made [String]
+    String with replacements made <STRING>
 
 Example:
     (begin example)

@@ -6,11 +6,11 @@ Description:
     Select array elements for which the block returns true
 
 Parameters:
-    _array - Input Array [Array]
-    _block - Block [Code]
+    _array - Input Array <ARRAY>
+    _block - Block <CODE>
 
 Returns:
-    New array with elements included for which the block returns true [Array]
+    New array with elements included for which the block returns true <ARRAY>
 
 Example:
     (begin example)
