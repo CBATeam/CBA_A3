@@ -69,7 +69,11 @@
     class CBA_556x45_STANAG_2D_XL {     // STANAG mags, extra large twin-drums (150rnd Armatac SAW-MAG)
         BI_mags[] = {
             "150Rnd_556x45_Drum_Mag_F",
-            "150Rnd_556x45_Drum_Mag_Tracer_F"
+            "150Rnd_556x45_Drum_Mag_Tracer_F",
+            "150Rnd_556x45_Drum_Green_Mag_F",
+            "150Rnd_556x45_Drum_Sand_Mag_F",
+            "150Rnd_556x45_Drum_Green_Mag_TracerF",
+            "150Rnd_556x45_Drum_Sand_Mag_Tracer_F"
         };
     };
 
