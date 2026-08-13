@@ -28,25 +28,24 @@ SCRIPT(addEventHandler);
     if (_eventName isEqualTo "" || isNil "_eventFunc") exitWith {-1};
 
     private _events = GVAR(eventNamespace) getVariable _eventName;
-    private _eventHash = GVAR(eventHashes) getVariable _eventName;
+    private _eventIds = GVAR(eventHashes) getVariable _eventName;
 
     // generate event name on logic
     if (isNil "_events") then {
         _events = [];
         GVAR(eventNamespace) setVariable [_eventName, _events];
 
-        _eventHash = [[], -1] call CBA_fnc_hashCreate;
-        GVAR(eventHashes) setVariable [_eventName, _eventHash];
+        _eventIds = createHashMap;
+        GVAR(eventHashes) setVariable [_eventName, _eventIds];
     };
 
     private _internalId = _events pushBack _eventFunc;
 
     // get new id
-    private _eventId = [_eventHash, "#lastId"] call CBA_fnc_hashGet;
-    INC(_eventId);
+    private _eventId = (_eventIds getOrDefault [LAST_ID_KEY, -1]) + 1;
 
-    [_eventHash, "#lastId", _eventId] call CBA_fnc_hashSet;
-    [_eventHash, _eventId, _internalId] call CBA_fnc_hashSet;
+    _eventIds set [LAST_ID_KEY, _eventId];
+    _eventIds set [_eventId, _internalId];
 
     _eventId
 }, _this] call CBA_fnc_directCall;

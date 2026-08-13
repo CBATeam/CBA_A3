@@ -3,6 +3,7 @@
     <Package name="StatusEffects">
         <Key ID="STR_CBA_StatusEffects_Component">
             <English>Community Base Addons - Status Effects Component</English>
+            <Japanese>Community Base Addons - ステータス効果コンポーネント</Japanese>
         </Key>
     </Package>
 </Project>

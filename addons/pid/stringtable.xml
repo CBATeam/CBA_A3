@@ -3,6 +3,7 @@
     <Package name="PID">
         <Key ID="STR_cba_pid_Component">
             <English>Community Base Addons - PID</English>
+            <Japanese>Community Base Addons - PID</Japanese>
         </Key>
     </Package>
 </Project>

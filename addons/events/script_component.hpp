@@ -37,6 +37,8 @@
 
 #define SEND_TUEVENT_TO_SERVER(params,name,vehicle,turret) TUEVENT_PVAR = [name, params, vehicle, turret]; publicVariableServer TUEVENT_PVAR_STR
 
+#define LAST_ID_KEY "#lastId"
+
 #define CALL_EVENT(args,event) {\
     if !(isNil "_x") then {\
         args call _x;\
