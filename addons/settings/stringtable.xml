@@ -198,6 +198,7 @@
         </Key>
         <Key ID="STR_cba_settings_ButtonSearch_tooltip">
             <English>Search settings.</English>
+            <Japanese>検索設定</Japanese>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -246,6 +247,7 @@
         </Key>
         <Key ID="STR_cba_settings_Search_tooltip">
             <English>Filter addons and settings. Matches names, descriptions, setting variable names and option labels.\nCtrl + F to focus, right click to clear.</English>
+            <Japanese>アドオンと設定をフィルタリングします。名前、説明、設定変数名、オプションラベルに一致するものを検索します。\nCtrl + F でフォーカス、右クリックでクリア。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_applies">
             <English>This setting applies.</English>
@@ -322,6 +324,7 @@
         </Key>
         <Key ID="STR_cba_settings_general">
             <English>General</English>
+            <Japanese>全般</Japanese>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -383,6 +386,7 @@
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients_short">
             <English>Clients</English>
+            <Japanese>クライアント</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
@@ -401,6 +405,7 @@
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission_short">
             <English>Mission</English>
+            <Japanese>ミッション</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
@@ -419,6 +424,7 @@
         </Key>
         <Key ID="STR_cba_settings_overwrites">
             <English>Overwrites:</English>
+            <Japanese>上書き:</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by client with the same value.</English>
@@ -535,6 +541,7 @@
         </Key>
         <Key ID="STR_cba_settings_subCategory_tooltip">
             <English>Show or hide the settings in this group.</English>
+            <Japanese>このグループの設定を表示または非表示にします。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
@@ -558,21 +565,27 @@
         </Key>
         <Key ID="STR_cba_settings_discardChanges">
             <English>There are %1 unsaved setting changes.</English>
+            <Japanese>保存されていない設定変更が%1件あります。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_one">
             <English>There is 1 unsaved setting change.</English>
+            <Japanese>保存されていない設定変更が1件あります。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_confirm">
             <English>Discard</English>
+            <Japanese>破棄</Japanese>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_more">
             <English>...and %1 more</English>
+            <Japanese>... 他 %1 件</Japanese>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_keep">
             <English>Keep Editing</English>
+            <Japanese>編集を継続</Japanese>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_title">
             <English>Unsaved Changes</English>
+            <Japanese>保存されていない変更</Japanese>
         </Key>
     </Package>
 </Project>
