@@ -45,7 +45,7 @@ if (_hide || _forceAdd || {_index in GVAR(hideActionHash)}) then {
 };
 
 private _fnc_update = {
-    private _hideSelected= [];
+    private _hideSelected = [];
     private _unhideSelected = [];
     {
         if (count _y == 0) then {
