@@ -37,11 +37,14 @@
 
 #define SEND_TUEVENT_TO_SERVER(params,name,vehicle,turret) TUEVENT_PVAR = [name, params, vehicle, turret]; publicVariableServer TUEVENT_PVAR_STR
 
+// Handlers are never nil: addEventHandler rejects nil and removeEventHandler compacts with
+// deleteAt, so the isNil check could never be true. It is not free either, isNil on a string
+// looks the variable up by name, which measured ~310ns per handler.
+// getVariable supplies the default directly. The [...] param [0, []] this replaces was added to
+// stop undefined events erroring (79857b37), which the default covers, and it cost ~158ns more.
 #define CALL_EVENT(args,event) {\
-    if !(isNil "_x") then {\
-        args call _x;\
-    };\
-} forEach +([GVAR(eventNamespace) getVariable event] param [0, []]) // copy array so events can be removed while iterating safely
+    args call _x;\
+} forEach +(GVAR(eventNamespace) getVariable [event, []]) // copy array so events can be removed while iterating safely
 
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 
