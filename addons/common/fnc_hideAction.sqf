@@ -10,10 +10,11 @@ Parameters:
     _index        - The action index. <NUMBER>
     _key          - The key (case-sensitive). <STRING>
     _hide         - Whether to hide the action. <BOOL>
-    _forceAdd     - Force add (even if hide is false and action is not hidden). (optional, default: false) <BOOL>
+    _forceRemove  - Force remove if all keys have been removed. (optional, default: false) <BOOL>
+                    This can cause unexpected behavior if the action was hidden on a previous unit and the player switches back to it.
 
 Returns:
-    [hiddenIndices, unhiddenIndices] <ARRAY>
+    <ARRAY> [hiddenIndices, unhiddenIndices] or empty array if no changes were made.
 
 Examples:
     (begin example)
@@ -24,25 +25,9 @@ Author:
     PabstMirror
 ---------------------------------------------------------------------------- */
 
-if (!hasInterface) exitWith { [[], []] };
+if (!hasInterface) exitWith { [] };
 
-params [["_index", 0, [0]], ["_key", "", [""]], ["_hide", false, [false]], ["_forceAdd", false, [false]]];
-
-private _addEH = if (isNil QGVAR(hideActionHash)) then {
-    GVAR(hideActionHash) = createHashMap;
-    true
-} else {
-    false
-};
-
-if (_hide || _forceAdd || {_index in GVAR(hideActionHash)}) then {
-    private _actionIndex = GVAR(hideActionHash) getOrDefault [_index, createHashMap, true];
-    if (_hide) then {
-        _actionIndex set [_key, true];
-    } else {
-        _actionIndex deleteAt _key;
-    };
-};
+params [["_index", 0, [0]], ["_key", "", [""]], ["_hide", false, [false]], ["_forceRemove", false, [false]]];
 
 private _fnc_update = {
     private _hideSelected = [];
@@ -59,8 +44,24 @@ private _fnc_update = {
     [_hideSelected, _unhideSelected] // final return
 };
 
-if (_addEH) then {
+if (isNil QGVAR(hideActionHash)) then {
+    GVAR(hideActionHash) = createHashMap;
     // need to update whenever the focusOn changes (player or UAV)
     addMissionEventHandler ["PlayerViewChanged", _fnc_update];
 };
-call _fnc_update
+
+if (!_hide && {!(_index in (GVAR(hideActionHash)))}) exitWith { [] }; // index has never been set, just exit
+private _actionIndex = GVAR(hideActionHash) getOrDefault [_index, createHashMap, true];
+if (_hide) then {
+    _actionIndex set [_key, true];
+} else {
+    _actionIndex deleteAt _key;
+};
+
+private _return = call _fnc_update;
+
+if (_forceRemove && {(count _actionIndex) == 0}) then {
+    GVAR(hideActionHash) deleteAt _index;
+};
+
+_return
