@@ -77,7 +77,7 @@ if (!hasInterface) exitWith {};
     // delete last line breaks
     _keys = _keys select [0, count _keys - 10];
 
-    GVAR(DiaryRecordKeys) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Help_Keys", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Help_Keys", _keys]], taskNull, "", false];
+    GVAR(DiaryRecordKeys) = _unit createDiaryRecord [QGVAR(docs), [LLSTRING(Keys), format ["<font size=20>%1</font><br/>%2", LLSTRING(Keys), _keys]], taskNull, "", false];
     GVAR(DiaryRecordCredits) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Credits", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Credits", call (uiNamespace getVariable QGVAR(credits))]], taskNull, "", false];
     GVAR(DiaryRecordAddons) = _unit createDiaryRecord [QGVAR(docs), [localize "STR_CBA_Addons", format ["<font size=20>%1</font><br/>%2", localize "STR_CBA_Addons", call (uiNamespace getVariable QGVAR(mods))]], taskNull, "", false];
 } call CBA_fnc_execNextFrame;

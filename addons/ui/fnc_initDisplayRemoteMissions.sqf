@@ -83,11 +83,11 @@ _ctrlShowStockMissions ctrlAddEventHandler ["ButtonClick", {
     profileNamespace setVariable [QGVAR(ShowStockMissions), _showStockMissions];
     saveProfileNamespace;
 
-    _ctrlShowStockMissions ctrlSetText toUpper localize (["STR_CBA_Ui_CustomMissions", "STR_CBA_Ui_AllMissions"] select _showStockMissions);
+    _ctrlShowStockMissions ctrlSetText toUpper localize ([LSTRING(CustomMissions), LSTRING(AllMissions)] select _showStockMissions);
 }];
 
 private _showStockMissions = true isEqualTo (profileNamespace getVariable [QGVAR(ShowStockMissions), true]);
-_ctrlShowStockMissions ctrlSetText toUpper localize (["STR_CBA_Ui_CustomMissions", "STR_CBA_Ui_AllMissions"] select _showStockMissions);
+_ctrlShowStockMissions ctrlSetText toUpper localize ([LSTRING(CustomMissions), LSTRING(AllMissions)] select _showStockMissions);
 
 _ctrlMissions ctrlSetPosition [
     _left,
