@@ -102,12 +102,19 @@ private _fnc_storeMapMissions = {_this spawn {isNil { // delay a frame
     params ["_ctrlMaps"];
     private _display = ctrlParent _ctrlMaps;
     private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
+    private _map = _ctrlMaps lbData lbCurSel _ctrlMaps;
 
     private _missions = [];
     for "_i" from 0 to (lbSize _ctrlMissions - 1) do {
         private _name = _ctrlMissions lbText _i;
         with uiNamespace do {
             _name = _name call CBA_fnc_decodeURL;
+        };
+        // delete map suffix
+        private _nameArray = _name splitString ".";
+        if (count _nameArray > 1 && {_nameArray select -1 == _map}) then {
+            _nameArray resize (count _nameArray - 1);
+            _name = _nameArray joinString ".";
         };
 
         private _value = _ctrlMissions lbValue _i;
