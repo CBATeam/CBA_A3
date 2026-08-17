@@ -73,9 +73,9 @@ private _buttonType = ["RscButtonMenu", "RscButtonMenuLeft"] select isClass (con
 private _button = _display displayCtrl 101;
 
 _button ctrlRemoveEventHandler ["ButtonClick", 0]; // remove vanilla button
-_button ctrlAddEventHandler ["ButtonClick", {
+private _buttonOnClick = {
     // this is an edit of a BI script, don't change unnecessarily
-    params ["_ctrl"];
+    params ["_ctrl", ["_forceFast", false]];
     private _display = ctrlParent _ctrl;
 
     if (!ctrlCommitted _ctrl) exitWith {};
@@ -87,7 +87,7 @@ _button ctrlAddEventHandler ["ButtonClick", {
         _offset = 1.1;
     };
 
-    private _upperPartTime = 0.05 * count _buttons;
+    private _upperPartTime = [0.05 * count _buttons, 0] select _forceFast;
     private _buttonsTime = 0.05;
 
     //hide buttons and collapse accordion
@@ -227,26 +227,40 @@ _button ctrlAddEventHandler ["ButtonClick", {
             } forEach _buttons;
         };
 
-        //From bottom to top
-        reverse _buttons;
+        if (_forceFast) then {
+            {
+                private _button = _x;
+                _button ctrlSetFade 0;
+                _button ctrlCommit 0;
+                _button ctrlEnable true;
+            } forEach _buttons;
+        } else {
+            //From bottom to top
+            reverse _buttons;
 
-        private _fnc_showButton = {
-            private _button = (_this select 0) deleteAt 0;
+            private _fnc_showButton = {
+                private _button = (_this select 0) deleteAt 0;
 
-            if (isNil "_button") exitWith {
-                (_this select 1) call CBA_fnc_removePerFrameHandler;
+                if (isNil "_button") exitWith {
+                    (_this select 1) call CBA_fnc_removePerFrameHandler;
+                };
+
+                _button ctrlSetFade 0;
+                _button ctrlCommit 0.15;
+                _button ctrlEnable true;
             };
 
-            _button ctrlSetFade 0;
-            _button ctrlCommit 0.15;
-            _button ctrlEnable true;
+            [_buttons, -1] call _fnc_showButton;
+            [_fnc_showButton, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
         };
-
-        [_buttons, -1] call _fnc_showButton;
-        [_fnc_showButton, _buttonsTime, _buttons] call CBA_fnc_addPerFrameHandler;
 
         uiNamespace setVariable ["BIS_DisplayInterrupt_isOptionsExpanded", true];
     };
 
-    ctrlSetFocus _ctrl;
-}];
+    if (!_forceFast) then {ctrlSetFocus _ctrl};
+};
+_button ctrlAddEventHandler ["ButtonClick", _buttonOnClick];
+
+if (GVAR(autoExpandOptions) && {!(uiNamespace getVariable "BIS_DisplayInterrupt_isOptionsExpanded")}) then {
+    [_button, true] call _buttonOnClick;
+};
