@@ -24,3 +24,6 @@ options.check_params = false
 
 [sqf.not_private]
 enabled = true
+
+[sqf.direct_private]
+enabled = "pedantic"
