@@ -25,18 +25,60 @@ private _fnc_findMissions = {
 
 _display setVariable [QGVAR(stockMissions), _stockMissions];
 
-// Show worldnames as tooltips on map list
 private _worldNames = createHashMap;
+private _worldFeatures = createHashMap;
+private _defaultPicture = getText (configFile >> "display3DENNew" >> "defaultPicture");
+private _defaultAuthor = localize "STR_AUTHOR_UNKNOWN";
+private _authorFullLocalized = localize "STR_FORMAT_AUTHOR_SCRIPTED";
 {
     private _worldName = configName _x;
-    private _description = getText (configFile >> "CfgWorlds" >> _worldName >> "description");
+    private _worldConfig = configFile >> "CfgWorlds" >> _worldName;
+
+    private _description = getText (_worldConfig >> "description");
     _worldNames set [_description, _worldname];
+
+    private _pictureMap = getText (_worldConfig >> "pictureMap");
+    if (_pictureMap == "") then {_pictureMap = _defaultPicture}; // can be empty
+    private _author = getText (_worldConfig >> "author");
+    if (_author == "") then {_author = _defaultAuthor};
+    _author = format [_authorFullLocalized, _author];
+
+    _worldFeatures set [_worldName, [_pictureMap, _author]];
 } forEach (configProperties [configFile >> "CfgWorldList", "isClass _x"]);
+
+// Show worldnames as tooltips on map list
 for "_index" from 0 to ((lbSize _ctrlMaps) - 1) do {
     private _description = _ctrlMaps lbText _index;
     private _worldName = _worldNames getOrDefault [_description, ""];
     _ctrlMaps lbSetTooltip [_index, _worldName];
 };
+
+_ctrlMaps setVariable [QGVAR(worldFeatures), _worldFeatures];
+
+ctrlPosition _ctrlMaps params ["_mapsLeft", "_mapsTop", "_mapsWidth", "_mapsHeight"];
+private _squareWidth = _mapsHeight * 3 / 4;
+private _mapsWidthNew = _mapsWidth - _squareWidth;
+_ctrlMaps ctrlSetPositionW _mapsWidthNew;
+_ctrlMaps ctrlCommit 0;
+
+private _ctrlIslandPanorama = _display ctrlCreate ["RscPicture", IDC_RSCDISPLAYSELECTISLAND_ISLANDPANORAMA];
+_ctrlIslandPanorama ctrlSetPosition [
+    _mapsLeft + _mapsWidthNew,
+    _mapsTop,
+    _squareWidth,
+    _mapsHeight
+];
+_ctrlIslandPanorama ctrlCommit 0;
+
+_ctrlMaps ctrlAddEventHandler ["LBSelChanged", {
+    params ["_ctrlMaps", "_lbCurSel"];
+    private _worldFeatures = _ctrlMaps getVariable QGVAR(worldFeatures);
+    _worldFeatures getOrDefault [_ctrlMaps lbData _lbCurSel, []] params [["_picture", ""], ["_author", ""]];
+    private _display = ctrlParent _ctrlMaps;
+    private _ctrlIslandPanorama = _display displayCtrl IDC_RSCDISPLAYSELECTISLAND_ISLANDPANORAMA;
+    _ctrlIslandPanorama ctrlSetText _picture;
+    _ctrlIslandPanorama ctrlSetTooltip _author;
+}];
 
 lbSort _ctrlMaps;
 _ctrlMaps lbSetCurSel 0;
