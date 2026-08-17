@@ -9,11 +9,11 @@ Description:
     For objects, it is probably simpler to use the *isKindOf* command.
 
 Parameters:
-    _config - Class to check if it is a descendent of _baseConfig [Config]
-    _baseConfig - Ancestor config class [Config]
+    _config - Class to check if it is a descendent of _baseConfig <CONFIG>
+    _baseConfig - Ancestor config class <CONFIG>
 
 Returns:
-    true if _config is a decendent of _baseConfig [Boolean]
+    true if _config is a decendent of _baseConfig <BOOL>
 
 Examples:
     (begin example)

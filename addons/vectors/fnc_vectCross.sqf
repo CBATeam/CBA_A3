@@ -7,11 +7,11 @@ Description:
    Vectors must both be three dimensional.
 
 Parameters:
-    _u the first vector.
-    _v the second vector.
+    _u the first vector. <ARRAY>
+    _v the second vector. <ARRAY>
 
 Returns:
-    The cross product (vector) of the two vectors.
+    The cross product (vector) of the two vectors. <ARRAY>
 
 Examples:
     (begin example)

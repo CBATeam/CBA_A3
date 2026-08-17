@@ -6,7 +6,7 @@ Description:
     A function that returns the index of the first null entry in an array.
 
 Parameters:
-    The array to search in.
+    _array: to search in. <ARRAY>
 
 Example:
     (begin example)

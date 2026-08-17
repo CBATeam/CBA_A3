@@ -6,12 +6,12 @@ Description:
     Extracts the index-based substring from a string.
 
 Parameters:
-    _string - String to extract from [String]
-    _startIndex - Index to start the substring extraction [Number]
-    _endIndex - Index to end the substring extraction [Number]
+    _string - String to extract from <STRING>
+    _startIndex - Index to start the substring extraction <NUMBER>
+    _endIndex - Index to end the substring extraction <NUMBER>
 
 Returns:
-    String extracted [String]
+    String extracted <STRING>
 
 Example:
     (begin example)

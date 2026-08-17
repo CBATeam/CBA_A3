@@ -6,12 +6,12 @@ Description:
     Creates a state machine.
 
 Parameters:
-    _list           - list of anything over which the state machine will run
-                      (type needs to support setVariable) <ARRAY>
+    _list           - list of anything over which the state machine will run <ARRAY or CODE>
+                      (type needs to support setVariable)
                       OR
                       code that will generate this list, called once the list
-                      has been cycled through <CODE>
-    _skipNull       - skip list items that are null
+                      has been cycled through
+    _skipNull       - skip list items that are null <BOOL>(default: false)
 
 Returns:
     _stateMachine   - a state machine <LOCATION>

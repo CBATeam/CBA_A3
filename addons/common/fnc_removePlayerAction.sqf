@@ -6,11 +6,10 @@ Description:
     Removes player action previously added with <CBA_fnc_addPlayerAction>.
 
 Parameters:
-    _actionIndex - Index of action to remove [Number]
+    _actionIndex - Index of action to remove <NUMBER>
 
 Returns:
-    True if removed. False if a dedicated server or where the action was not
-    defined [Boolean]
+    True if removed. False if a dedicated server or where the action was not defined <BOOL> 
 
 Example:
     (begin example)

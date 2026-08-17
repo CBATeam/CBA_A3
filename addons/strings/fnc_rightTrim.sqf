@@ -9,11 +9,12 @@ Description:
     See <CBA_fnc_leftTrim> and <CBA_fnc_trim>.
 
 Parameters:
-    _string - String to trim [String]
-    _trim - Characters to trim [String] (default: "")
+    _string - String to trim <STRING>
+    _trim - Characters to trim <STRING> (default: "")
+    _trim - Characters to trim <STRING> (default: "")
 
 Returns:
-    Trimmed string [String]
+    Trimmed string <STRING>
 
 Example:
     (begin example)

@@ -6,10 +6,10 @@ Description:
     Counts the number of characters in a string.
 
 Parameters:
-    _string - String to measure [String]
+    _string - String to measure <STRING>
 
 Returns:
-    Number of characters in string [Number]
+    Number of characters in string <NUMBER>
 
 Examples:
     (begin example)

@@ -6,10 +6,10 @@ Description:
     Checks whether a unit is turned out in a vehicle or not.
 
 Parameters:
-    _unit - Unit to check [Object]
+    _unit - Unit to check <OBJECT>
 
 Returns:
-    "true" for turned out or "false" for not turned out [Boolean]
+    "true" for turned out or "false" for not turned out <BOOL>
     Cargo in exposed vehicles are "turned out" if they lack a
     cargoSoundAttenuation matching index. Do NOT assume that because
     this function returns false that the unit is generally exposed.

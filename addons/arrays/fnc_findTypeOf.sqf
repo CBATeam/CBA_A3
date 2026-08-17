@@ -8,16 +8,16 @@ Description:
    The type argument is either an object or a class name string.
 
 Parameters:
-    0: Array
-    1: Entry type, can be either Object or class name string (as returned by typeOf)
+    _array <ARRAY>
+    _entryType, can be either Object or class name string (as returned by typeOf) <OBJECT or STRING>
+
+Returns:
+    Index of the first entry of the indicated type in the array or -1 if no entry of the type could be found. <NUMBER>
 
 Example:
     (begin example)
     _index = [["", Player, "test", nil, VARIABLE, nil], player] call CBA_fnc_findTypeOf
     (end)
-
-Returns:
-    Index of the first entry of the indicated type in the array or -1 if no entry of the type could be found.
 
 Author:
     joko // Jonas

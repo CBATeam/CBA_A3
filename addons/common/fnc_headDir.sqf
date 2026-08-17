@@ -9,9 +9,8 @@ Description:
     straight forward.
 
 Parameters:
-    _unit - Unit to check [Object]
-    _object - Relative object/position to get direction to [Object or
-        Position Array, defaults to getting compass direction]
+    _unit - Unit to check <OBJECT>
+    _offset - Relative object/position to get direction to <OBJECT or ARRAY or STRING> (defaults to getting compass direction)
 
 Returns:
     [<NUMBER>, <NUMBER>, <BOOL>, <BOOL>]

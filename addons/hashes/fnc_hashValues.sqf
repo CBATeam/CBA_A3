@@ -9,10 +9,10 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to get values for [Array which is a Hash structure]
+    _hash - Hash to get values for <ARRAY>(CBA HASH)
 
 Returns:
-    Array of all values [Array]
+    Array of all values <ARRAY>
 
 Author:
     Fusselwurm

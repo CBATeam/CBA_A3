@@ -13,8 +13,8 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to iterate [Array which is a Hash structure]
-    _code - Function to call with each pair [Any]
+    _hash - Hash to iterate <ARRAY>(CBA HASH)
+    _code - Function to call with each pair <CODE>
 
 Returns:
     nil

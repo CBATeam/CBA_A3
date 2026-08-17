@@ -6,10 +6,10 @@ Description:
     Upper case the first letter of the string, lower case the rest.
 
 Parameters:
-    _string - String to capitalize [String]
+    _string - String to capitalize <STRING>
 
 Returns:
-    Capitalized string [String].
+    Capitalized string <STRING>.
 
 Examples:
     (begin example)

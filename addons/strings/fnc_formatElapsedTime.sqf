@@ -7,12 +7,11 @@ Description:
     Intended to show time elapsed, rather than time-of-day.
 
 Parameters:
-    _seconds - Number of seconds to format, for example from 'time' command [number]
-    _format - Format to put time into [String: "H:MM:SS", "M:SS",
-        "H:MM:SS.mmm" or "M:SS.mmm"; defaults to "H:MM:SS"]
+    _seconds - Number of seconds to format, for example from 'time' command <NUMBER>
+    _format - Format to put time into [one of "H:MM:SS", "M:SS", "H:MM:SS.mmm" or "M:SS.mmm"] <STRING> (defaults to "H:MM:SS")
 
 Returns:
-    Formatted time [String]
+    Formatted time <STRING>
 
 Author:
     Spooner

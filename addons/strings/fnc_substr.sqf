@@ -8,12 +8,12 @@ Description:
     The substring starts at a specified character position and has a specified length.
 
 Parameters:
-    _string - String to extract from [String]
-    _startIndex - Index to start the substring extraction [Number]
-    _length - length of the extracted substring [Number](Optional) if is not set than from _startIndex to end
+    _string - String to extract from <STRING>
+    _startIndex - Index to start the substring extraction <NUMBER>
+    _length - length of the extracted substring <NUMBER> (Optional) if is not set than from _startIndex to end
 
 Returns:
-    String extracted [String]
+    String extracted <STRING>
 
 Example:
     (begin example)
