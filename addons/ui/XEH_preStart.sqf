@@ -18,4 +18,5 @@ PREP(preloadCurator);
 
 PREP(openItemContextMenu);
 
+PREP(addMissionsButton);
 PREP(getInventoryItemData);
