@@ -19,6 +19,7 @@ class Extended_DisplayLoad_EventHandlers {
     };
     class RscDisplayMultiplayerSetup {
         ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayMultiplayerSetup)'));
+        GVAR(addMissionsButton) = QUOTE(call (uiNamespace getVariable 'FUNC(addMissionsButton)'));
     };
     class RscDisplayOptionsLayout {
         ADDON = QUOTE(call (uiNamespace getVariable 'FUNC(initDisplayOptionsLayout)'));
