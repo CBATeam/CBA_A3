@@ -55,7 +55,9 @@ private _shownRows = [];
 
     // a header is kept for as long as the search left it anything, folded or not
     _x setVariable [QGVAR(matched), _matched];
-    _x ctrlShow _show;
+    if ((ctrlShown _x) isNotEqualTo _show) then {
+        _x ctrlShow _show;
+    };
 
     if (_show) then {
         _shownRows pushBack _x;
