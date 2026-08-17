@@ -46,13 +46,6 @@ private _authorFullLocalized = localize "STR_FORMAT_AUTHOR_SCRIPTED";
     _worldFeatures set [_worldName, [_pictureMap, _author]];
 } forEach (configProperties [configFile >> "CfgWorldList", "isClass _x"]);
 
-// Show worldnames as tooltips on map list
-for "_index" from 0 to ((lbSize _ctrlMaps) - 1) do {
-    private _description = _ctrlMaps lbText _index;
-    private _worldName = _worldNames getOrDefault [_description, ""];
-    _ctrlMaps lbSetTooltip [_index, _worldName];
-};
-
 _ctrlMaps setVariable [QGVAR(worldFeatures), _worldFeatures];
 
 ctrlPosition _ctrlMaps params ["_mapsLeft", "_mapsTop", "_mapsWidth", "_mapsHeight"];
@@ -80,8 +73,41 @@ _ctrlMaps ctrlAddEventHandler ["LBSelChanged", {
     _ctrlIslandPanorama ctrlSetTooltip _author;
 }];
 
+private _mapSelected = uiNamespace getVariable [QGVAR(lastMap), ""];
+if (_mapSelected isEqualTo "") then {
+    _mapSelected = _ctrlMaps lbText lbCurSel _ctrlMaps; // get selected map before sort
+};
+
 lbSort _ctrlMaps;
-_ctrlMaps lbSetCurSel 0;
+
+// Show worldnames as tooltips on map list
+for "_index" from 0 to ((lbSize _ctrlMaps) - 1) do {
+    private _description = _ctrlMaps lbText _index;
+    private _worldName = _worldNames getOrDefault [_description, ""];
+    _ctrlMaps lbSetTooltip [_index, _worldName];
+    if (_description == _mapSelected) then {
+        _ctrlMaps lbSetCurSel _index;
+    };
+};
+
+private _fnc_onMissionSelected = {
+    params ["_ctrl"];
+    private _display = ctrlParent _ctrl;
+
+    private _ctrlMaps = _display displayCtrl IDC_SERVER_ISLAND;
+    private _mapSelected = _ctrlMaps lbText lbCurSel _ctrlMaps;
+    uiNamespace setVariable [QGVAR(lastMap), _mapSelected];
+
+    private _ctrlMissions = _display displayCtrl IDC_SERVER_MISSION;
+    private _missionSelected = _ctrlMissions lbData lbCurSel _ctrlMissions;
+    uiNamespace setVariable [QGVAR(lastMission), _missionSelected];
+
+    false
+};
+private _ctrlOK = _display displayCtrl IDC_OK;
+_ctrlOK ctrlAddEventHandler ["ButtonClick", _fnc_onMissionSelected];
+_ctrlMissions ctrlAddEventHandler ["LBDblClick", _fnc_onMissionSelected];
+
 
 ctrlPosition _ctrlMissions params ["_left", "_top", "_width", "_height"];
 
@@ -188,6 +214,8 @@ _display setVariable [QFUNC(filter), {
     private _showStockMissions = profileNamespace getVariable [QGVAR(ShowStockMissions), true];
 
     lbClear _ctrlMissions;
+    private _selectIndex = -1;
+    private _lastMission = uiNamespace getVariable [QGVAR(lastMission), ""];
 
     {
         _x params ["_name", "_value", "_data", "_color", "_picture", "_pictureRight"];
@@ -201,10 +229,15 @@ _display setVariable [QFUNC(filter), {
             _ctrlMissions lbSetPicture [_index, _picture];
             _ctrlMissions lbSetPictureRight [_index, _pictureRight];
             _ctrlMissions lbSetTooltip [_index, format ["%1", _data]];
+            if (_selectIndex == -1 || {_data isEqualTo _lastMission}) then {
+                _selectIndex = _index;
+            };
         };
     } forEach _missions;
 
-    _ctrlMissions lbSetCurSel 0;
+    if (_selectIndex > -1) then {
+        _ctrlMissions lbSetCurSel _selectIndex;
+    };
 }];
 
 // update every time search parameters are changed
