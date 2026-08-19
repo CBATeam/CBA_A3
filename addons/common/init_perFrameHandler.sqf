@@ -33,7 +33,7 @@ GVAR(waitUntilAndExecArray) = [];
             _x params ["_function", "_delay", "_delta", "", "_args", "_handle"];
 
             _x set [2, _delta + _delay];
-            [_args, _handle] call _function;
+            isNil {[_args, _handle] call _function};
         };
     } forEach GVAR(perFrameHandlerArray);
 
