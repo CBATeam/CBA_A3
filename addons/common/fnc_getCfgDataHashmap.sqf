@@ -80,9 +80,8 @@ private _returnHashMap = createHashMap;
     private _cfg = _x;
     private _key = if (_toLower) then { toLowerANSI configName _cfg } else { configName _cfg };
 
-        private _value = if ( isClass _cfg ) then {
+    private _value = if ( isClass _cfg ) then {
         [_cfg, _condition, _inherit, _convert, _toLower] call CBA_fnc_getCfgDataHashmap;
-
     } else {
         _cfg call BIS_fnc_getCfgData call _convertCall
     };
