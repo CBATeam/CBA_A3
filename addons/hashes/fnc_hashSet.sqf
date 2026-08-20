@@ -35,7 +35,7 @@ private _default = _hash select HASH_DEFAULT_VALUE;
 if (isNil "_default") then {
     _isDefault = isNil "_value";
 } else {
-    if (!isNil "_value") then {
+    if (!isNil "_value" && {_hash param [HASH_CLEARONDEFAULT, true]}) then {
         _isDefault = _value isEqualTo _default;
     };
 };
