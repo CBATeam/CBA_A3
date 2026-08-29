@@ -5,6 +5,7 @@
             <English>Community Base Addons - Optics</English>
             <Czech>Community Base Addons - Optika</Czech>
             <French>Community Base Addons - Optiques</French>
+            <Spanish>Community Base Addons - Ópticas</Spanish>
             <Italian>Community Base Addons - Ottiche</Italian>
             <Polish>Community Base Addons - Optyka</Polish>
             <Russian>Community Base Addons - Оптика</Russian>
@@ -19,6 +20,7 @@
             <English>Use Picture-in-Picture Optics</English>
             <Czech>Používat PiP (obraz-v-obrazu) optiky</Czech>
             <French>Utiliser les optiques "picture in picture"</French>
+            <Spanish>Usar ópticas de imagen en imagen (PiP)</Spanish>
             <Italian>Usa ottiche on Picture-in-Picture</Italian>
             <Polish>Używaj optyki typu Obraz w obrazie (PIP)</Polish>
             <Russian>Использовать оптические прицелы в режиме "Картинка в картинке" (PIP)</Russian>
@@ -33,6 +35,7 @@
             <English>Toggle Reticle</English>
             <Czech>Zapnout retikulum</Czech>
             <French>Commuter le réticule</French>
+            <Spanish>Cambiar retícula</Spanish>
             <Italian>Cambia reticolo</Italian>
             <Polish>Przełącz siatke przyrządu</Polish>
             <Russian>Переключение сетки</Russian>
@@ -47,6 +50,7 @@
             <English>Manually switch the reticle of the optic.</English>
             <Czech>Manuálně přepnout retikulum optiky</Czech>
             <French>Commuter manuellement le réticule de l'optique.</French>
+            <Spanish>Cambia manualmente la retícula de la óptica.</Spanish>
             <Italian>Cambia manualmente il reticolo dell'ottica.</Italian>
             <Polish>Ręcznie przełącz siatkę przyrządu optycznego</Polish>
             <Russian>Вручную переключать сетку оптического прицела.</Russian>

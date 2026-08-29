@@ -5,7 +5,7 @@
             <English>Community Base Addons - Accessory Functions</English>
             <Czech>Community Base Addons - Funkce doplňků</Czech>
             <French>Community Base Addons - Fonctions des accessoires</French>
-            <Spanish>Community Base Addons - Funciones accesorias</Spanish>
+            <Spanish>Community Base Addons - Funciones de accesorios</Spanish>
             <Italian>Community Base Addons - Funzioni per Accessori</Italian>
             <Polish>Community Base Addons - Funkcje Akcesoriów</Polish>
             <Russian>Community Base Addons - Функционал аксессуаров</Russian>
@@ -35,7 +35,7 @@
             <English>Cycles to the next mode available for your optics slot attachment</English>
             <Czech>Přepíná na další možný režim doplňku slotu pro zaměřovač</Czech>
             <French>Basculer sur le mode suivant de l'optique.</French>
-            <Spanish>Pasa al siguiente modo disponible para su accesorio de ranura óptica</Spanish>
+            <Spanish>Pasa al siguiente modo disponible del accesorio de la ranura óptica.</Spanish>
             <Italian>Passa alla modalità successiva della tua ottica</Italian>
             <Polish>Przełącza na następny dostępny tryb optyki</Polish>
             <Russian>Переключает на следующий режим доступный для оптики на оружии</Russian>
@@ -50,7 +50,7 @@
             <English>Prev optics state</English>
             <Czech>Předchozí režim zaměřovače</Czech>
             <French>Mode précédent de l'optique</French>
-            <Spanish>Estado de la óptica anterior</Spanish>
+            <Spanish>Estado anterior de la óptica</Spanish>
             <Italian>Stato precedente dell'ottica</Italian>
             <Polish>Poprzedni tryb optyki</Polish>
             <Russian>Предыдущее состояние оптики</Russian>
@@ -65,7 +65,7 @@
             <English>Cycles to the previous mode available for your optics slot attachment</English>
             <Czech>Přepíná na předchozí možný režim doplňku slotu pro zaměřovač</Czech>
             <French>Basculer sur le mode précédent de l'optique.</French>
-            <Spanish>Cambia al modo anterior disponible para su accesorio de ranura óptica.</Spanish>
+            <Spanish>Pasa al modo anterior disponible del accesorio de la ranura óptica.</Spanish>
             <Italian>Passa alla modalità precedente della tua ottica</Italian>
             <Polish>Przełącza na poprzedni dostępny tryb optyki</Polish>
             <Russian>Переключает на предыдущий режим доступный для оптики на оружии</Russian>
@@ -80,7 +80,7 @@
             <English>Next rail item state</English>
             <Czech>Další režim doplňku na liště</Czech>
             <French>Mode suivant de l'accessoire sur rail</French>
-            <Spanish>Estado de la siguiente posición del riel</Spanish>
+            <Spanish>Siguiente estado del accesorio del riel</Spanish>
             <Italian>Stato successivo dell'oggetto sulla slitta</Italian>
             <Polish>Następny tryb akcesoria na szynie</Polish>
             <Russian>Следующее состояние приспособления на оружии</Russian>
@@ -95,7 +95,7 @@
             <English>Cycles to the next mode available for your rail slot attachment</English>
             <Czech>Přepíná na další možný režim doplňku na liště</Czech>
             <French>Basculer sur le mode suivant de l'accessoire du rail.</French>
-            <Spanish>Pasa al siguiente modo disponible para el accesorio de la ranura del riel.</Spanish>
+            <Spanish>Pasa al siguiente modo disponible del accesorio de la ranura del riel.</Spanish>
             <Italian>Passa alla modalità successiva del tuo accessorio sulla slitta</Italian>
             <Polish>Przełącza na następny tryb akcesoria na szynie</Polish>
             <Russian>Переключает на следующий режим, доступный для приспособления на планке</Russian>
@@ -110,7 +110,7 @@
             <English>Prev rail item state</English>
             <Czech>Předchozí režim doplňku na liště</Czech>
             <French>Mode précédent de l'accessoire sur rail</French>
-            <Spanish>Estado anterior del riel</Spanish>
+            <Spanish>Estado anterior del accesorio del riel</Spanish>
             <Italian>Stato precedente dell'oggetto sulla slitta</Italian>
             <Polish>Poprzedni tryb akcesoria na szynie</Polish>
             <Russian>Предыдущее состояние приспособления на планке</Russian>
@@ -125,7 +125,7 @@
             <English>Cycles to the previous mode available for your rail slot attachment</English>
             <Czech>Přepíná na předchozí možný režim doplňku na liště</Czech>
             <French>Basculer sur le mode précédent de l'accessoire du rail.</French>
-            <Spanish>Pasa al modo anterior disponible para su accesorio de ranura de riel</Spanish>
+            <Spanish>Pasa al modo anterior disponible del accesorio de la ranura del riel.</Spanish>
             <Italian>Passa alla modalità precedente del tuo accessorio sulla slitta</Italian>
             <Polish>Przełącza na poprzedni tryb akcesoria na szynie</Polish>
             <Russian>Переключает на предыдущий режим, доступный для приспособления на планке</Russian>

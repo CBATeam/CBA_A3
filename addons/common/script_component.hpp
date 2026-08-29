@@ -18,3 +18,10 @@
     name = QUOTE(x);\
     value = x;\
 }
+
+// Zero delay per frame handlers live in their own array so they never pay for an ETA check.
+// Which array a handle points at is encoded in the sign of its stored index: non negative
+// indexes the delayed array, negative indexes the zero delay one.
+#define PFH_EACHFRAME_ENCODE(idx) (-(idx) - 1)
+#define PFH_EACHFRAME_DECODE(val) (-(val) - 1)
+#define PFH_IS_EACHFRAME(val) ((val) < 0)

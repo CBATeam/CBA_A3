@@ -5,6 +5,7 @@
             <English>Community Base Addons - Events</English>
             <Czech>Community Base Addons - Události</Czech>
             <French>Community Base Addons - Événements</French>
+            <Spanish>Community Base Addons - Eventos</Spanish>
             <Italian>Community Base Addons - Eventi</Italian>
             <Polish>Community Base Addons - Zdarzenia</Polish>
             <Russian>Community Base Addons - События</Russian>
@@ -19,6 +20,7 @@
             <English>Weapon Repetition Mode</English>
             <Czech>Mód opakování zbraně</Czech>
             <French>Mode de réarmement</French>
+            <Spanish>Modo de repetición del arma</Spanish>
             <Italian>Modalità di ricarica dell'arma</Italian>
             <Polish>Tryb powtarzania strzału</Polish>
             <Russian>Режим повторной стрельбы</Russian>
@@ -33,6 +35,7 @@
             <English>Leave Optics View</English>
             <Czech>Opustit pohled optiky</Czech>
             <French>Maintenir vue lunette</French>
+            <Spanish>Salir de la vista de la óptica</Spanish>
             <Italian>Esci dalla vista ottica</Italian>
             <Polish>Opuszczenie optyki</Polish>
             <Russian>Выход из прицела</Russian>
@@ -47,6 +50,7 @@
             <English>Bolt or rack weapon by leaving optics view.</English>
             <Czech>Natáhnout zbraň opuštěním pohledu optiky.</Czech>
             <French>Réarme l'arme tout en maintenant la visée dans la lunette.</French>
+            <Spanish>Acciona el cerrojo o la corredera del arma al salir de la vista de la óptica.</Spanish>
             <Italian>Ricarica l'arma uscendo dalla vista dell'ottica.</Italian>
             <Polish>Przeładowanie/ryglowanie broni nastąpi po opuszczeniu widoku optyki.</Polish>
             <Russian>Перезаряжать оружие после выхода из прицела.</Russian>
@@ -61,6 +65,7 @@
             <English>Mode of bolting or pumping weapons.</English>
             <Czech>Mód natahování nebo pumpování zbraní.</Czech>
             <French>Mode de réarmement des armes à verrou et à pompe.</French>
+            <Spanish>Modo de accionamiento del cerrojo o de la corredera de las armas.</Spanish>
             <Italian>Modalità di ricarica o riarmo delle armi.</Italian>
             <Polish>Tryb przeładowania/ryglowania broni po wystrzale.</Polish>
             <Russian>Режим повторной стрельбы помпового оружия или оружия с продольно-скользящим затвором.</Russian>
@@ -75,6 +80,7 @@
             <English>Press Trigger</English>
             <Czech>Zmáčknout spoušť</Czech>
             <French>Presser la détente</French>
+            <Spanish>Apretar el gatillo</Spanish>
             <Italian>Premi il grilletto</Italian>
             <Polish>Wciśnięcie spustu</Polish>
             <Russian>Нажатие курка</Russian>
@@ -89,6 +95,7 @@
             <English>Bolt or rack weapon by pressing the trigger again.</English>
             <Czech>Natáhnout zbraň dalším zmáčkutím spouště.</Czech>
             <French>Réarme l'arme en pressant la détente encore une fois.</French>
+            <Spanish>Acciona el cerrojo o la corredera del arma al volver a apretar el gatillo.</Spanish>
             <Italian>Ricarica l'arma premendo nuovamente il grilletto</Italian>
             <Polish>Przeładowanie/ryglowanie nastąpi po ponownym wciśnięciu spustu.</Polish>
             <Russian>Перезаряжать оружие повторным нажатием на курок.</Russian>
@@ -103,6 +110,7 @@
             <English>Release Trigger</English>
             <Czech>Pustit spoušť</Czech>
             <French>Relâcher la détente</French>
+            <Spanish>Soltar el gatillo</Spanish>
             <Italian>Rilascia il grilletto</Italian>
             <Polish>Puszczenie spustu</Polish>
             <Russian>Отпускание курка</Russian>
@@ -117,6 +125,7 @@
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
             <Czech>Natáhnout zbraň puštěním spouště (podržte spoušť k zabránění okamžitému natáhnutí zbraně).</Czech>
             <French>Réarme l'arme au relâchement de la détente (maintenir la détente enfoncée pour éviter le réarmement immédiat).</French>
+            <Spanish>Acciona el cerrojo o la corredera del arma al soltar el gatillo (mantener el gatillo apretado para evitar el accionamiento inmediato).</Spanish>
             <Italian>Ricarica l'arma rilasciando il grilletto (mantieni premuto il grilletto per prevenire la ricarica immediata).</Italian>
             <Polish>Przeładowanie/ryglowanie nastąpi po puszczeniu spustu (przytrzymaj spust aby nie przełdowywać).</Polish>
             <Russian>Перезаряжать оружие после отпускания курка (держите курок чтобы не перезаряжать).</Russian>

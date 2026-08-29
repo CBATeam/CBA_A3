@@ -1,3 +1,5 @@
+#define DEBUG_MODE_NORMAL
+#include "script_component.hpp"
 /* -----------------------------------------------------------------------------
 Function: CBA_fnc_formatElapsedTime
 
@@ -16,17 +18,11 @@ Returns:
 Author:
     Spooner
 ---------------------------------------------------------------------------- */
-
-#define DEBUG_MODE_NORMAL
-#include "script_component.hpp"
-
 SCRIPT(formatElapsedTime);
-
-// -----------------------------------------------------------------------------
 
 params ["_seconds", ["_format", "H:MM:SS"]];
 
-// Discover all the digits to use.
+// Discover all the digits to use
 private _hours = floor (_seconds / 3600);
 _seconds = _seconds - (_hours * 3600);
 private _minutes = floor (_seconds / 60);
@@ -38,30 +34,34 @@ private _elapsed = switch (_format) do {
         format ["%1:%2:%3",
             _hours,
             [_minutes, 2] call CBA_fnc_formatNumber,
-            [floor _seconds, 2] call CBA_fnc_formatNumber];
+            [floor _seconds, 2] call CBA_fnc_formatNumber
+        ]
     };
     case "M:SS": {
         format ["%1:%2",
             _minutes,
-            [floor _seconds, 2] call CBA_fnc_formatNumber];
+            [floor _seconds, 2] call CBA_fnc_formatNumber
+        ]
     };
     case "H:MM:SS.mmm": {
         format ["%1:%2:%3",
             _hours,
             [_minutes, 2] call CBA_fnc_formatNumber,
-            [_seconds, 2, 3] call CBA_fnc_formatNumber];
+            [_seconds, 2, 3] call CBA_fnc_formatNumber
+        ]
     };
     case "M:SS.mmm": {
         format ["%1:%2",
             _minutes,
-            [_seconds, 2, 3] call CBA_fnc_formatNumber];
+            [_seconds, 2, 3] call CBA_fnc_formatNumber
+        ]
     };
     default {
         private "_msg";
         _msg = format ["%1: %2", _msg, _format];
         ERROR(_msg);
-        _msg;
+        _msg
     };
 };
 
-_elapsed; // Return.
+_elapsed // return

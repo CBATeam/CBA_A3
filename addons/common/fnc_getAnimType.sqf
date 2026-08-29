@@ -65,7 +65,7 @@ if (typeName (_array select 0) == "ARRAY") then {
         default {3};
     };
     _array = (_array select _num) select _pos;
-    _anim = _array call BIS_fnc_selectRandom;
+    _anim = selectRandom _array;
 
     if ( _anim == "") then { _anim = "AdthPercMstpSnonWnonDnon_1"; };
 } else {

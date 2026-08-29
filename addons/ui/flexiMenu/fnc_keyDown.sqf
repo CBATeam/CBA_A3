@@ -97,7 +97,7 @@ if (!GVAR(optionSelected) || !GVAR(holdKeyDown)) then {
                 if (typeName _typesList == "String") then {_typesList = [_typesList]}; // single string type
 
                 if (({_potentialTarget isKindOf _x} count _typesList > 0) || {({_vehicleTarget isKindOf _x} count _typesList > 0)} || {("player" in _typesList)}) then {
-                    if (count _potentialMenuSources == 0) then {
+                    if (_potentialMenuSources isEqualTo []) then {
                         _isTypeTarget = true;
                         _target = [_potentialTarget, _vehicleTarget] select ((_vehicleTarget != player) && {({_vehicleTarget isKindOf _x} count _typesList > 0)});
                         if ("player" in _typesList) then {

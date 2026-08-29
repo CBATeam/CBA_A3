@@ -41,6 +41,15 @@ if (count GVAR(PFHhandles) >= 9999999) exitWith {
     -1
 };
 
+// zero delay handlers go in their own array, they run unconditionally every frame
+if (_delay isEqualTo 0) exitWith {
+    private _handle = GVAR(PFHhandles) pushBack PFH_EACHFRAME_ENCODE(count GVAR(eachFrameHandlerArray));
+
+    GVAR(eachFrameHandlerArray) pushBack [_function, 0, diag_tickTime, diag_tickTime, _args, _handle];
+
+    _handle
+};
+
 private _handle = GVAR(PFHhandles) pushBack count GVAR(perFrameHandlerArray);
 
 GVAR(perFrameHandlerArray) pushBack [_function, _delay, diag_tickTime, diag_tickTime, _args, _handle];

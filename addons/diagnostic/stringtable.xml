@@ -20,7 +20,7 @@
             <English>4 Spaces</English>
             <Czech>4 mezery</Czech>
             <French>4 espaces</French>
-            <Spanish>4 Espacios</Spanish>
+            <Spanish>4 espacios</Spanish>
             <Italian>4 Spazi</Italian>
             <Polish>4 Spacje</Polish>
             <Russian>4 пробела</Russian>
@@ -34,7 +34,7 @@
             <English>Debug Console Indentation</English>
             <Czech>Odsazení ladící konzole</Czech>
             <French>Indentation dans la console de débogage</French>
-            <Spanish>Espaciado de la Consola de Depuración</Spanish>
+            <Spanish>Sangría de la consola de depuración</Spanish>
             <Italian>Indentazione console di debug</Italian>
             <Polish>Indentacja w konsoli debugowania</Polish>
             <Russian>Отступ консоли отладки</Russian>
@@ -48,7 +48,7 @@
             <English>Type of indentation that can be added to expression in the debug console by pressing Tab key or removed by pressing Shift + Tab.</English>
             <Czech>Typ odsazení, které lze přidat do výrazu v ladicí konzoli stisknutím klávesy Tab nebo odstranit stisknutím Shift + Tab.</Czech>
             <French>Type d'indentation qui peut être employée dans la console de débogage.\nTab ajoute une indentation, et Shift + Tab en supprime une.</French>
-            <Spanish>Tipo de sangría que se puede agregar a la expresión en la consola de depuración presionando la tecla Tab o eliminar presionando Shift + Tab</Spanish>
+            <Spanish>Tipo de sangría que se puede añadir a las expresiones de la consola de depuración pulsando la tecla Tab, o eliminar pulsando Mayús + Tab.</Spanish>
             <Italian>Il tipo di intentazione che può essere aggiunta all'espressione nella console di debug premendo il tasto Tab o rimossa premendo Shift + Tab</Italian>
             <Polish>Rodzaj indentacji która może być dodana do wyrażenia w konsoli debugowania za pomocą klawisza Tab lub usunięta za pomocą Shift + Tab.</Polish>
             <Russian>Тип отступа, который может быть добавлен к коду в консоли отладки нажатием клавиши Tab или убран нажатием клавиш Shift + Tab.</Russian>
@@ -62,7 +62,7 @@
             <English>Enable Target Debugging</English>
             <Czech>Zapnout cílové ladění</Czech>
             <French>Activer le débogage de la cible</French>
-            <Spanish>Activar Depuración de Objetivo</Spanish>
+            <Spanish>Activar la depuración de objetivos</Spanish>
             <Italian>Attiva il debug remoto</Italian>
             <Polish>Włącz debugowanie na celu</Polish>
             <Russian>Включить отладку цели</Russian>
@@ -92,7 +92,7 @@
             <English>Extended Debug Console</English>
             <Czech>Rozšířená ladící konzole</Czech>
             <French>Console de débogage étendue</French>
-            <Spanish>Consola Extendida de Depuración</Spanish>
+            <Spanish>Consola de depuración extendida</Spanish>
             <Italian>Console debug estesa</Italian>
             <Polish>Rozszerzona Konsola Debugowania</Polish>
             <Russian>Расширенная консоль отладки</Russian>
@@ -107,7 +107,7 @@
             <English>Next Statement</English>
             <Czech>Následující zpráva</Czech>
             <French>Déclaration suivante</French>
-            <Spanish>Expresión Siguiente</Spanish>
+            <Spanish>Expresión siguiente</Spanish>
             <Italian>Espressione Succ.</Italian>
             <Polish>Następne polecenie</Polish>
             <Russian>След. команда</Russian>
@@ -122,7 +122,7 @@
             <English>Previous Statement</English>
             <Czech>Předchozí zpráva</Czech>
             <French>Déclaration précédente</French>
-            <Spanish>Expresión Anterior</Spanish>
+            <Spanish>Expresión anterior</Spanish>
             <Italian>Espressione Prec.</Italian>
             <Polish>Poprzednie polecenie</Polish>
             <Russian>Пред. команда</Russian>
@@ -137,7 +137,7 @@
             <English>Target Exec</English>
             <Czech>Cílový exec</Czech>
             <French>Cible Exec</French>
-            <Spanish>Ejecutiva de Objetivo</Spanish>
+            <Spanish>Ejec. objetivo</Spanish>
             <Italian>Esegui Remoto</Italian>
             <Polish>Wykonaj na celu</Polish>
             <Russian>На цели</Russian>
@@ -152,6 +152,7 @@
             <English>Refresh rate target watcher field</English>
             <Czech>Pole cílového sledování obnovovací frekvence</Czech>
             <French>Taux de rafraîchissement champ de l'observateur cible</French>
+            <Spanish>Frecuencia de actualización de los campos de observación de objetivos</Spanish>
             <Russian>Частота обновления поля отслеживания цели</Russian>
             <German>Aktualisierungsrate für Zielüberwachungfelder</German>
             <Korean>대상 관찰자 필드 새로 고침 빈도</Korean>
@@ -163,6 +164,7 @@
             <English>Refresh rate (in seconds) for the CBA target watcher fields to the right of the debug console.</English>
             <Czech>Obnovovací frekvence (v sekundách) pro pole sledování cíle CBA napravo od konzole ladění.</Czech>
             <French>Taux de rafraîchissement (en secondes) des champs d'observation de la cible CBA à droite de la console de débogage.</French>
+            <Spanish>Frecuencia de actualización (en segundos) de los campos de observación de objetivos de CBA situados a la derecha de la consola de depuración.</Spanish>
             <Russian>Частота обновления в секундах для CBA полей отслеживания справа от консоли отладки.</Russian>
             <German>Aktualisierungsrate (in Sekunden) für die CBA-Zielüberwachungsfelder auf der rechten Seite der Debug-Konsole.</German>
             <Korean>디버그 콘솔 오른쪽에 있는 CBA의 대상 관찰자 필드의 새로 고침 빈도입니다. (초 단위)</Korean>

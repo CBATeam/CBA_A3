@@ -28,22 +28,22 @@ params [["_eventName", "", [""]], ["_eventId", -1, [0]]];
     if (_eventId < 0) exitWith {};
 
     private _events = GVAR(eventNamespace) getVariable _eventName;
-    private _eventHash = GVAR(eventHashes) getVariable _eventName;
+    private _eventIds = GVAR(eventHashes) getVariable _eventName;
 
     if (isNil "_events") exitWith {};
 
-    private _internalId = [_eventHash, _eventId] call CBA_fnc_hashGet;
+    private _internalId = _eventIds getOrDefault [_eventId, -1];
 
     if (_internalId != -1) then {
         _events deleteAt _internalId;
-        [_eventHash, _eventId] call CBA_fnc_hashRem;
+        _eventIds deleteAt _eventId;
 
-        // decrement all higher internal ids, to adjust to new array position, _key == _eventId, _value == _internalId
-        [_eventHash, {
-            if (_value > _internalId && {_key isNotEqualTo "#lastId"}) then {
-                [_eventHash, _key, _value - 1] call CBA_fnc_hashSet;
+        // decrement all higher internal ids, to adjust to new array position, _x == _eventId, _y == _internalId
+        {
+            if ((_y > _internalId) && (_x isNotEqualTo LAST_ID_KEY)) then {
+                _eventIds set [_x, _y - 1];
             };
-        }] call CBA_fnc_hashEachPair;
+        } forEach _eventIds;
     };
 } call CBA_fnc_directCall;
 

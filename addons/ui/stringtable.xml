@@ -5,7 +5,7 @@
             <English>Adjusting group order...</English>
             <Czech>Upravuji pořadí skupiny...</Czech>
             <French>Modification de l'ordre des groupes...</French>
-            <Spanish>Ajustar el orden del grupo...</Spanish>
+            <Spanish>Ajustando el orden del grupo...</Spanish>
             <Italian>Riordinando il gruppo...</Italian>
             <Polish>Dostosowywanie kolejności w lobby...</Polish>
             <Russian>Изменение порядка групп...</Russian>
@@ -29,6 +29,10 @@
             <Chinese>顯示所有任務</Chinese>
             <Chinesesimp>显示所有任务</Chinesesimp>
             <Turkish>Tüm görevleri göster</Turkish>
+        </Key>
+        <Key ID="STR_CBA_UI_AutoExpandOptions">
+            <English>Automatically expand Options menu</English>
+            <Russian>Автоматически раскрывать меню Настройки</Russian>
         </Key>
         <Key ID="STR_CBA_UI_Category">
             <English>User Interface</English>
@@ -61,6 +65,21 @@
             <Chinese>社群基礎模組 - 使用者介面</Chinese>
             <Chinesesimp>社群基础模组 - 玩家界面</Chinesesimp>
             <Turkish>Community Base Addons - Kullanıcı Arayüzü</Turkish>
+        </Key>
+        <Key ID="STR_CBA_UI_ContactServerAdmin">
+            <English>Contact the server admin.</English>
+            <Czech>Kontaktujte správce serveru.</Czech>
+            <French>Contacter l'administrateur du serveur.</French>
+            <Spanish>Contacta con el administrador del servidor.</Spanish>
+            <Italian>Contatta l'amministratore del server.</Italian>
+            <Polish>Kontakt z administratorem serwera</Polish>
+            <Russian>Уведомить администратора сервера.</Russian>
+            <German>Serveradministrator benachrichtigen.</German>
+            <Korean>서버 관리자에게 문의하십시오.</Korean>
+            <Japanese>サーバー管理者に連絡をして下さい。</Japanese>
+            <Chinese>聯絡伺服器的管理員</Chinese>
+            <Chinesesimp>联系服务器管理员</Chinesesimp>
+            <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
         </Key>
         <Key ID="STR_CBA_UI_CustomMissions">
             <English>Show custom missions</English>
@@ -96,7 +115,7 @@
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords are deleted from the profile.</English>
             <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, jsou smazána z profilu.</Czech>
             <French>Les mots de passe ne sont pas stockés lors de la connexion à un serveur multijoueur. Les mots de passe déjà enregistrés sont supprimés du profil.</French>
-            <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas se eliminan del perfil.</Spanish>
+            <Spanish>Las contraseñas no se almacenan al conectarse a un servidor multijugador. Las contraseñas ya almacenadas se eliminan del perfil.</Spanish>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Non saranno usate password precedentemente salvate.</Italian>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła zostaną usunięte z profilu.</Polish>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли будут удалены.</Russian>
@@ -111,7 +130,7 @@
             <English>Do not save passwords</English>
             <Czech>Neukládat hesla</Czech>
             <French>Ne pas sauvegarder les mots de passe</French>
-            <Spanish>No guarde las contraseñas</Spanish>
+            <Spanish>No guardar las contraseñas</Spanish>
             <Italian>Non salvare le password</Italian>
             <Polish>Nie zapisuj haseł</Polish>
             <Russian>Не сохранять пароли</Russian>
@@ -126,7 +145,7 @@
             <English>Passwords are not stored when connecting to a multiplayer server. Already stored passwords will not be automatically entered.</English>
             <Czech>Hesla nejsou ukládána, když se připojujete k multiplayerovému serveru. Hesla, která již byla uložena, nebudou automaticky zadávána.</Czech>
             <French>Les mots de passe ne sont pas stockés lors de la connexion à un serveur multijoueur. Les mots de passe déjà enregistrés ne seront pas automatiquement entrés.</French>
-            <Spanish>Las contraseñas no se almacenan cuando se conecta a un servidor multijugador. Las contraseñas ya almacenadas no se ingresarán automáticamente.</Spanish>
+            <Spanish>Las contraseñas no se almacenan al conectarse a un servidor multijugador. Las contraseñas ya almacenadas no se introducirán automáticamente.</Spanish>
             <Italian>Quando ci si collega ad un server multiplayer, le password non verranno salvate. Le password precedentemente salvate non verranno immesse automaticamente.</Italian>
             <Polish>Hasła nie są zapisywane podczas łączenia do serwerów. Już zapisane hasła nie bedą wykorzystywane.</Polish>
             <Russian>Пароли не сохраняются при входе на сервера. Уже сохранённые пароли не будут автоматически вставлены.</Russian>
@@ -141,7 +160,7 @@
             <English>Lobby Manager</English>
             <Czech>Manažer lobby</Czech>
             <French>Gestionnaire de Lobby</French>
-            <Spanish>Gerente de lobby</Spanish>
+            <Spanish>Gestor del lobby</Spanish>
             <Italian>Gestore lobby.</Italian>
             <Polish>Menadżer Lobby</Polish>
             <Russian>Менеджер лобби</Russian>
@@ -155,7 +174,7 @@
             <English>Back up mission before using this tool.</English>
             <Czech>Zálohujte misi před použitím tohoto nástroje.</Czech>
             <French>Sauvegardez la mission avant d'utiliser cet outil.</French>
-            <Spanish>Haga una copia de seguridad de la misión antes de usar esta herramienta</Spanish>
+            <Spanish>Haz una copia de seguridad de la misión antes de usar esta herramienta.</Spanish>
             <Italian>Salva una copia della missione prima di usare questo strumento.</Italian>
             <Polish>Wykonaj kopię zapasową misji przed użyciem tego narzędzia.</Polish>
             <Russian>Создайте резервную копию мисии перед использованием этого инструмента.</Russian>
@@ -169,7 +188,7 @@
             <English>Textual feedback to the player.</English>
             <Czech>Textová zpětná vazba hráči.</Czech>
             <French>Notification textuelle au joueur.</French>
-            <Spanish>Comentarios textuales para el jugador</Spanish>
+            <Spanish>Información textual para el jugador.</Spanish>
             <Italian>Notifica testuale al giocatore.</Italian>
             <Polish>Tekstowa informacja dla gracza.</Polish>
             <Russian>Текстовая информация для игрока.</Russian>
@@ -214,7 +233,7 @@
             <English>Notification display duration in seconds.</English>
             <Czech>Jak dlouho bude upozornění ukázáno (v sekundách).</Czech>
             <French>Durée d'affichage des notifications, en secondes.</French>
-            <Spanish>Duración de la visualización de notificaciones en segundos</Spanish>
+            <Spanish>Duración en pantalla de las notificaciones, en segundos.</Spanish>
             <Italian>Durata della notifica in secondi.</Italian>
             <Polish>Ilość czasu przez który widoczne jest powiadomienie</Polish>
             <Russian>Время в секундах, в течении которого будет видно уведомление.</Russian>
@@ -274,7 +293,7 @@
             <English>Passwords are stored when connecting to a multiplayer server.</English>
             <Czech>Hesla jsou uložena, když se připojujete k multiplayerovému serveru.</Czech>
             <French>Les mots de passe sont stockés lors de la connexion à un serveur multijoueur.</French>
-            <Spanish>Las contraseñas se almacenan cuando se conecta a un servidor multijugador</Spanish>
+            <Spanish>Las contraseñas se almacenan al conectarse a un servidor multijugador.</Spanish>
             <Italian>Quando ci si connette ad un server multiplayer, le password verranno salvate.</Italian>
             <Polish>Hasła są zapisywane podczas łaczenia do serwerów.</Polish>
             <Russian>Пароли будут сохраняться при входе на сервера.</Russian>
@@ -304,7 +323,7 @@
             <English>Setting to store the passwords entered when connecting to a multiplayer server.</English>
             <Czech>Uloží zadané heslo, když se připojujete k multiplayerovému serveru.</Czech>
             <French>Paramètre permettant de stocker les mots de passe saisis lors de la connexion à un serveur multijoueur.</French>
-            <Spanish>Configuración para almacenar las contraseñas ingresadas al conectarse a un servidor multijugador.</Spanish>
+            <Spanish>Configuración para almacenar las contraseñas introducidas al conectarse a un servidor multijugador.</Spanish>
             <Italian>Impostazione per salvare le password immesse quando ci si collega a server multiplayer.</Italian>
             <Polish>Opcja zapamiętywania wprowadzonych haseł do serwerów.</Polish>
             <Russian>Параметр запоминания паролей сервера при входе на них.</Russian>
@@ -314,21 +333,6 @@
             <Chinese>設定是否當連線到伺服器時儲存密碼</Chinese>
             <Chinesesimp>设置是否存储连接服务器时输入的密码。</Chinesesimp>
             <Turkish>Çok oyunculu bir sunucuya bağlanırken girilen şifreleri kaydetme ayarı.</Turkish>
-        </Key>
-        <Key ID="STR_CBA_Ui_ContactServerAdmin">
-            <English>Contact the server admin.</English>
-            <Czech>Kontaktujte správce serveru.</Czech>
-            <French>Contacter l'administrateur du serveur.</French>
-            <Spanish>Póngase en contacto con el administrador del servidor</Spanish>
-            <Italian>Contatta l'amministratore del server.</Italian>
-            <Polish>Kontakt z administratorem serwera</Polish>
-            <Russian>Уведомить администратора сервера.</Russian>
-            <German>Serveradministrator benachrichtigen.</German>
-            <Korean>서버 관리자에게 문의하십시오.</Korean>
-            <Japanese>サーバー管理者に連絡をして下さい。</Japanese>
-            <Chinese>聯絡伺服器的管理員</Chinese>
-            <Chinesesimp>联系服务器管理员</Chinesesimp>
-            <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
         </Key>
     </Package>
 </Project>

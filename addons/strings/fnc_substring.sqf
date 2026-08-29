@@ -4,11 +4,12 @@ Function: CBA_fnc_substring
 
 Description:
     Extracts the index-based substring from a string.
+    Reliably supports strings with ANSI characters only.
 
 Parameters:
-    _string - String to extract from <STRING>
+    _string     - String to extract from <STRING>
     _startIndex - Index to start the substring extraction <NUMBER>
-    _endIndex - Index to end the substring extraction <NUMBER>
+    _endIndex   - Index to end the substring extraction <NUMBER>
 
 Returns:
     String extracted <STRING>
@@ -26,11 +27,11 @@ SCRIPT(substring);
 
 params ["_string", "_startIndex", "_endIndex"];
 
-// Check if _start is Larger than _endIndex to Prevent Issues
+// Check if _start is larger than _endIndex to prevent issues
 if (_startIndex > _endIndex) exitWith {""};
 
-// Calculate Differenz between _start and _end for select lenth value
+// Calculate difference between _start and _end for select length value
 _endIndex = _endIndex + 1 - _startIndex;
 
-// Cut out String
+// Cut out string
 _string select [_startIndex, _endIndex] // return

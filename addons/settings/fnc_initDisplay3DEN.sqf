@@ -47,7 +47,12 @@ private _fnc_resetMissionSettings = {
         };
     } forEach GVAR(allSettings);
 
-    QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
+    // shared by the OnMissionPreview and OnMissionPreviewEnd handlers, both of which cross a
+    // missionNamespace reset, so this can run before the events addon preInit has made the
+    // registry. Nothing can be listening yet either, so the raise is a no-op.
+    if (!isNil QEGVAR(events,eventNamespace)) then {
+        QGVAR(refreshAllSettings) call CBA_fnc_localEvent;
+    };
 };
 
 add3DENEventHandler ["OnMissionPreview", _fnc_resetMissionSettings];

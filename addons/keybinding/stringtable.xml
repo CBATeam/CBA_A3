@@ -5,6 +5,7 @@
             <English>Community Base Addons - Keybinding</English>
             <Czech>Community Base Addons - Klávesy</Czech>
             <French>Community Base Addons - Configuration des touches</French>
+            <Spanish>Community Base Addons - Atajos de teclado</Spanish>
             <Italian>Community Base Addons - Configurazione Tasti</Italian>
             <Polish>Community Base Addons - Klawisze</Polish>
             <Portuguese>Extensões de Base Comunitária - Configuração de Chaves</Portuguese>
@@ -20,6 +21,7 @@
             <English>Configure Addons</English>
             <Czech>Konfigurovat addony</Czech>
             <French>Configurer les addons</French>
+            <Spanish>Configurar los addons</Spanish>
             <Italian>Configura gli addon</Italian>
             <Polish>Konfiguracja addonów</Polish>
             <Portuguese>Configure as Extensões</Portuguese>
@@ -35,6 +37,7 @@
             <English>Configure Base</English>
             <Czech>Konfigurovat základ</Czech>
             <French>Configurer la base</French>
+            <Spanish>Configurar el juego base</Spanish>
             <Italian>Configura il gioco base</Italian>
             <Polish>Konfiguracja bazy</Polish>
             <Portuguese>Configure as Bases</Portuguese>
@@ -50,6 +53,7 @@
             <English>Unknown Key %1</English>
             <Czech>Neznámá klávesa %1</Czech>
             <French>Touche inconnue %1</French>
+            <Spanish>Tecla desconocida %1</Spanish>
             <Italian>"%1" è un tasto sconosciuto</Italian>
             <Polish>Nieznany klawisz %1</Polish>
             <Portuguese>Chave desconhecida %1</Portuguese>

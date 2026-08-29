@@ -4,6 +4,7 @@ Function: CBA_fnc_find
 
 Description:
     Finds a string within another string.
+    Reliably supports strings with ANSI characters only.
 
 Parameters:
     _haystack - String in which to search or ASCII char array <STRING or ARRAY>
@@ -35,19 +36,4 @@ params ["_haystack", "_needle", ["_initialIndex", 0]];
 if !(_haystack isEqualType "") exitWith {-1};
 if !(_needle isEqualType "") exitWith {-1};
 
-private _return = -1;
-
-if (_initialIndex < 1) then {
-    _return = _haystack find _needle;
-} else {
-    if (_initialIndex > count _haystack) exitWith {};
-
-    private _tempString = [_haystack, _initialIndex] call CBA_fnc_substr;
-    _return = _tempString find _needle;
-
-    if (_return > -1) then {
-        _return = _return + _initialIndex;
-    };
-};
-
-_return
+_haystack find [_needle, _initialIndex max 0] // return

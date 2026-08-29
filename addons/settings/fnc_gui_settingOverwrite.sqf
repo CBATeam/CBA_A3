@@ -29,7 +29,10 @@ _ctrlOverwriteClient setVariable [QFUNC(event), {
 _controlsGroup setVariable [QFUNC(auto_check_overwrite), {
     params ["_controlsGroup", "_source"];
 
-    if (_source isEqualTo "mission") then {
+    // a local only setting has no "overwrite clients" to tick, and a priority
+    // ticked in here would be sanitized away again the moment it is saved
+    private _isLocalOnly = ROW_IS_LOCAL_ONLY(_controlsGroup);
+    if (_source isEqualTo "mission" && !_isLocalOnly) then {
         private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
 
         if (!cbChecked _ctrlOverwriteClient) then {

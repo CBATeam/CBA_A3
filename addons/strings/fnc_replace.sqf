@@ -6,8 +6,8 @@ Description:
     Replaces substrings within a string. Case-dependent.
 
 Parameters:
-    _string - String to make replacement in <STRING>
-    _pattern - Substring to replace <STRING>
+    _string      - String to make replacement in <STRING>
+    _pattern     - Substring to replace <STRING>
     _replacement - String to replace the _pattern with <STRING>
 
 Returns:
@@ -25,16 +25,29 @@ Author:
 SCRIPT(replace);
 
 params [["_string", "", [""]], ["_find", "", [""]], ["_replace", "", [""]]];
-if (_find == "") exitWith {_string}; // "1" find "" -> 0
 
-private _result = "";
-private _offset = count (_find splitString "");
+// "1" find "" -> 0
+if (_find == "") exitWith {_string};
 
-while {_string find _find != -1} do {
-    private _index = _string find _find;
+// building the pattern costs more than this check, and most calls don't match
+if (_string find _find == -1) exitWith {_string};
 
-    _result = _result + (_string select [0, _index]) + _replace;
-    _string = _string select [_index + _offset];
+// what is searched for is a literal, regexReplace wants a pattern
+private _pattern = _find call CBA_fnc_escapeRegex;
+
+// and what it is replaced with is a literal too, but the replacement is not a
+// pattern - it is Perl format, where "$" starts a substitution ($&, $1) and "\"
+// starts an escape (\U, \L). Doubling both is what writes them out as themselves.
+private _format = _replace;
+
+if (_format find "\" != -1) then {
+    _format = _format regexReplace ["\\", "\\\\"];
 };
 
-_result + _string
+if (_format find "$" != -1) then {
+    _format = _format regexReplace ["\$", "$$$$"];
+};
+
+// with no flags the engine defaults to "gi", and this function is case-dependent,
+// so global has to be asked for explicitly to get case-sensitive with it
+_string regexReplace [_pattern + "/g", _format] // return

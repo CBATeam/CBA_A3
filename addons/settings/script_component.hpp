@@ -237,8 +237,18 @@
 // str and format ["%1", ] on their own can only do either.
 #define TO_STRING(var) (call {private _str = var; if (_str isEqualType "") then {_str = str _str}; format ["%1", _str]})
 
-#define IS_GLOBAL_SETTING(setting) (GVAR(default) getVariable [setting, []] param [7, 0] == 1)
-#define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == 2)
+// A setting's _isGlobal, as it is registered and as a settings menu row stores it.
+// Every client has their own value unless something overwrites it, GLOBAL_ONLY is
+// always overwritten for everyone, LOCAL_ONLY can't be overwritten at all.
+#define SETTING_LOCAL_OVERRIDABLE 0
+#define SETTING_GLOBAL_ONLY 1
+#define SETTING_LOCAL_ONLY 2
+
+#define IS_GLOBAL_SETTING(setting) (GVAR(default) getVariable [setting, []] param [7, 0] == SETTING_GLOBAL_ONLY)
+#define IS_LOCAL_SETTING(setting)  (GVAR(default) getVariable [setting, []] param [7, 0] == SETTING_LOCAL_ONLY)
+
+// the same question asked of a row, which keeps its setting's _isGlobal
+#define ROW_IS_LOCAL_ONLY(group) ((group getVariable [ARR_2(QGVAR(isGlobal),SETTING_LOCAL_OVERRIDABLE)]) == SETTING_LOCAL_ONLY)
 
 #define SANITIZE_PRIORITY(setting,priority,source) (call {\
     private _priority = priority;\

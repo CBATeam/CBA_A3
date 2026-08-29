@@ -5,6 +5,7 @@
             <English>Addon Options...</English>
             <Czech>Možnosti addonu...</Czech>
             <French>Ajuster les paramètres des addons...</French>
+            <Spanish>Opciones de addons...</Spanish>
             <Italian>Opzioni per gli addon ...</Italian>
             <Polish>Ustawienia addonów...</Polish>
             <Portuguese>Opções ded Extensão...</Portuguese>
@@ -20,6 +21,7 @@
             <English>Client</English>
             <Czech>Klient</Czech>
             <French>Client</French>
+            <Spanish>Cliente</Spanish>
             <Italian>Client</Italian>
             <Polish>Klient</Polish>
             <Portuguese>Cliente</Portuguese>
@@ -35,6 +37,7 @@
             <English>Edit your local settings.</English>
             <Czech>Upravit vaše lokální nastavení.</Czech>
             <French>Modifier vos paramètres locaux.</French>
+            <Spanish>Editar la configuración local.</Spanish>
             <Italian>Cambia le tue impostazioni locali.</Italian>
             <Polish>Edytuj swoje lokalne ustawienia.</Polish>
             <Portuguese>Edite as configurações locais.</Portuguese>
@@ -50,6 +53,7 @@
             <English>Export</English>
             <Czech>Export</Czech>
             <French>Exporter</French>
+            <Spanish>Exportar</Spanish>
             <Italian>Esporta</Italian>
             <Polish>Eksport</Polish>
             <Portuguese>Exportar</Portuguese>
@@ -65,6 +69,7 @@
             <English>Export settings to clipboard.</English>
             <Czech>Exportovat nastavení do schránky.</Czech>
             <French>Exporter les paramètres dans le presse-papier.</French>
+            <Spanish>Exportar la configuración al portapapeles.</Spanish>
             <Italian>Esporta le impostazioni negli appunti.</Italian>
             <Polish>Eksport ustawień do schowka.</Polish>
             <Portuguese>Exportar configurações para a prancheta.</Portuguese>
@@ -80,6 +85,7 @@
             <English>Import</English>
             <Czech>Import</Czech>
             <French>Importer</French>
+            <Spanish>Importar</Spanish>
             <Italian>Importa</Italian>
             <Polish>Import</Polish>
             <Portuguese>Importar</Portuguese>
@@ -95,6 +101,7 @@
             <English>Import settings from clipboard.</English>
             <Czech>Importovat nastavení ze schránky.</Czech>
             <French>Importer les paramètres depuis le presse-papier.</French>
+            <Spanish>Importar la configuración desde el portapapeles.</Spanish>
             <Italian>Importa le impostazioni dagli appunti.</Italian>
             <Polish>Import ustawień ze schowka.</Polish>
             <Portuguese>Importar configurações da prancheta.</Portuguese>
@@ -110,6 +117,7 @@
             <English>Load settings from preset.</English>
             <Czech>Načíst nastavení z předvolby.</Czech>
             <French>Charger les paramètres à partir d'un préréglage.</French>
+            <Spanish>Cargar la configuración desde un preajuste.</Spanish>
             <Italian>Carica le impostazioni da quelle predefinite</Italian>
             <Polish>Załaduj ustawienia z szablonu.</Polish>
             <Portuguese>Carregue as configurações padrão.</Portuguese>
@@ -125,6 +133,7 @@
             <English>Local</English>
             <Czech>Lokální</Czech>
             <French>Local</French>
+            <Spanish>Local</Spanish>
             <Italian>Locale</Italian>
             <Polish>Lokalne</Polish>
             <Portuguese>Local</Portuguese>
@@ -140,6 +149,7 @@
             <English>Mission</English>
             <Czech>Mise</Czech>
             <French>Mission</French>
+            <Spanish>Misión</Spanish>
             <Italian>Missione</Italian>
             <Polish>Misja</Polish>
             <Portuguese>Missão</Portuguese>
@@ -155,6 +165,7 @@
             <English>Look at the mission's settings.</English>
             <Czech>Podívejte se na nastavení mise.</Czech>
             <French>Permet de visualiser les paramètres de la mission.</French>
+            <Spanish>Consultar la configuración de la misión.</Spanish>
             <Italian>Visualizza le impostazioni della missione.</Italian>
             <Polish>Zobacz ustawienia misji.</Polish>
             <Portuguese>Olhe as configurações de missão.</Portuguese>
@@ -170,6 +181,7 @@
             <English>Edit the mission's settings.</English>
             <Czech>Upravit nastavení mise.</Czech>
             <French>Editer les paramètres de la mission.</French>
+            <Spanish>Editar la configuración de la misión.</Spanish>
             <Italian>Cambia le impostazioni della missione.</Italian>
             <Polish>Edytuj ustawienia misji.</Polish>
             <Portuguese>Edite as configurações de missões.</Portuguese>
@@ -185,6 +197,7 @@
             <English>Save current settings as preset.</English>
             <Czech>Uložit nynější nastavení jako předvolbu.</Czech>
             <French>Enregistrer un préréglage des paramètres actuels.</French>
+            <Spanish>Guardar la configuración actual como preajuste.</Spanish>
             <Italian>Salva le impostazioni attuali come predefinite</Italian>
             <Polish>Zapisz obecne ustawienia do szablonu.</Polish>
             <Portuguese>Salvar as configurações atuais como padrões.</Portuguese>
@@ -198,11 +211,14 @@
         </Key>
         <Key ID="STR_cba_settings_ButtonSearch_tooltip">
             <English>Search settings.</English>
+            <Spanish>Buscar ajustes.</Spanish>
+            <Japanese>検索設定</Japanese>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
             <Czech>Server</Czech>
             <French>Serveur</French>
+            <Spanish>Servidor</Spanish>
             <Italian>Server</Italian>
             <Polish>Serwer</Polish>
             <Portuguese>Servidor</Portuguese>
@@ -218,6 +234,7 @@
             <English>Look at the server's settings. Log in as admin to change.</English>
             <Czech>Podívejte se na nastavení serveru. Přihlaste se jako admin pro změnu.</Czech>
             <French>Permet de visualiser les paramètres du serveur. Se connecter en tant qu'administrateur pour les changer.</French>
+            <Spanish>Consultar la configuración del servidor. Iniciar sesión como administrador para modificarla.</Spanish>
             <Italian>Visualizza le impostazioni del server. Entra come amministratore per cambiarle.</Italian>
             <Polish>Zobacz ustawienia serwera. Zaloguj się jako administrator aby zmienić.</Polish>
             <Portuguese>Olhe as configurações dos servidores. Acesse como administrador para alterá-las.</Portuguese>
@@ -233,6 +250,7 @@
             <English>Community Base Addons - Settings</English>
             <Czech>Community Base Addons - Nastavení</Czech>
             <French>Community Base Addons - Paramètres</French>
+            <Spanish>Community Base Addons - Ajustes</Spanish>
             <Italian>Community Base Addons - Impostazioni</Italian>
             <Polish>Community Base Addons - Komponent Ustawień</Polish>
             <Portuguese>Extensões de Base Comunitária - Componente das Configurações</Portuguese>
@@ -246,11 +264,14 @@
         </Key>
         <Key ID="STR_cba_settings_Search_tooltip">
             <English>Filter addons and settings. Matches names, descriptions, setting variable names and option labels.\nCtrl + F to focus, right click to clear.</English>
+            <Spanish>Filtra addons y ajustes. Busca coincidencias en nombres, descripciones, nombres de variables de ajustes y etiquetas de opciones.\nCtrl + F para enfocar, clic derecho para borrar.</Spanish>
+            <Japanese>アドオンと設定をフィルタリングします。名前、説明、設定変数名、オプションラベルに一致するものを検索します。\nCtrl + F でフォーカス、右クリックでクリア。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_applies">
             <English>This setting applies.</English>
             <Czech>Toto nastavení je aktuální.</Czech>
             <French>Ce paramètre s'applique.</French>
+            <Spanish>Este ajuste se aplica.</Spanish>
             <Italian>Prevale questa impostazione.</Italian>
             <Polish>To ustawienie dotyczy.</Polish>
             <Russian>Этот параметр применён.</Russian>
@@ -265,6 +286,7 @@
             <English>Configure Addons</English>
             <Czech>Konfigurovat addony</Czech>
             <French>Configurer les addons</French>
+            <Spanish>Configurar los addons</Spanish>
             <Italian>Configura gli addon</Italian>
             <Polish>Konfiguracja addonów</Polish>
             <Portuguese>Configurar as Extensões</Portuguese>
@@ -280,6 +302,7 @@
             <English>Configure Base</English>
             <Czech>Konfigurovat základ</Czech>
             <French>Configurer la base</French>
+            <Spanish>Configurar el juego base</Spanish>
             <Italian>Configura il gioco base</Italian>
             <Polish>Konfiguracja bazy</Polish>
             <Portuguese>Configurar as Bases</Portuguese>
@@ -295,6 +318,7 @@
             <English>Copy to clipboard</English>
             <Czech>Kopírovat do schránky</Czech>
             <French>Copier</French>
+            <Spanish>Copiar al portapapeles</Spanish>
             <Italian>Copia negli appunti</Italian>
             <Polish>Skopiuj do schowka</Polish>
             <Russian>Скопировать в буфер обмена</Russian>
@@ -309,6 +333,7 @@
             <English>Reset to default value.</English>
             <Czech>Resetovat na původní hodnotu.</Czech>
             <French>Réinitialiser à la valeur par défaut.</French>
+            <Spanish>Restablecer el valor predeterminado.</Spanish>
             <Italian>Reimposta ai valori originali.</Italian>
             <Polish>Przywróć domyślne wartości.</Polish>
             <Portuguese>Resetar para os valores padrões.</Portuguese>
@@ -320,13 +345,46 @@
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
         </Key>
+        <Key ID="STR_cba_settings_discardChanges">
+            <English>There are %1 unsaved setting changes.</English>
+            <Spanish>Hay %1 cambios de ajustes sin guardar.</Spanish>
+            <Japanese>保存されていない設定変更が%1件あります。</Japanese>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_confirm">
+            <English>Discard</English>
+            <Spanish>Descartar</Spanish>
+            <Japanese>破棄</Japanese>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_keep">
+            <English>Keep Editing</English>
+            <Spanish>Seguir editando</Spanish>
+            <Japanese>編集を継続</Japanese>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_more">
+            <English>...and %1 more</English>
+            <Spanish>...y %1 más</Spanish>
+            <Japanese>... 他 %1 件</Japanese>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_one">
+            <English>There is 1 unsaved setting change.</English>
+            <Spanish>Hay 1 cambio de ajuste sin guardar.</Spanish>
+            <Japanese>保存されていない設定変更が1件あります。</Japanese>
+        </Key>
+        <Key ID="STR_cba_settings_discardChanges_title">
+            <English>Unsaved Changes</English>
+            <Spanish>Cambios sin guardar</Spanish>
+            <Japanese>保存されていない変更</Japanese>
+        </Key>
         <Key ID="STR_cba_settings_general">
             <English>General</English>
+            <Spanish>General</Spanish>
+            <Japanese>全般</Japanese>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
             <Czech>Možnosti addonu</Czech>
             <French>Options des addons</French>
+            <Spanish>Opciones de addons</Spanish>
             <Italian>Opzioni degli addon</Italian>
             <Polish>Ustawienia addonów</Polish>
             <Portuguese>Opções de Extensão</Portuguese>
@@ -342,6 +400,7 @@
             <English>Adjust addon settings.</English>
             <Czech>Upravit nastavení addonu.</Czech>
             <French>Permet d'ajuster les paramètres des addons.</French>
+            <Spanish>Ajustar la configuración de los addons.</Spanish>
             <Italian>Aggiusta le impostazioni per gli addon</Italian>
             <Polish>Zmień ustawienia addonów.</Polish>
             <Russian>Изменить настройки дополнений.</Russian>
@@ -356,6 +415,7 @@
             <English>This setting applies after the next mission restart.</English>
             <Czech>Toto nastavení bude aplikováno po restartu mise.</Czech>
             <French>Ce paramètre s'appliquera au prochain redémarrage de la mission.</French>
+            <Spanish>Este ajuste se aplicará tras reiniciar la misión.</Spanish>
             <Italian>Questa impostazione sarà valida dopo il riavvio della missione.</Italian>
             <Polish>To ustawienie zostanie zastosowanie po restarcie misji.</Polish>
             <Russian>Этот параметр будет применён после рестарта миссии.</Russian>
@@ -370,6 +430,7 @@
             <English>Overwrite\nClients</English>
             <Czech>Přepsat \nClients</Czech>
             <French>Ecraser\nClients</French>
+            <Spanish>Sobrescribir\nclientes</Spanish>
             <Italian>Sovrascrive\ni client</Italian>
             <Polish>Nadpisz\nKlienci</Polish>
             <Portuguese>Sobrescrever \nClientes</Portuguese>
@@ -383,11 +444,14 @@
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients_short">
             <English>Clients</English>
+            <Spanish>Clientes</Spanish>
+            <Japanese>クライアント</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
             <Czech>Přepsat \nMission</Czech>
             <French>Ecraser\nMission</French>
+            <Spanish>Sobrescribir\nmisión</Spanish>
             <Italian>Sovrascrive\nla missione</Italian>
             <Polish>Nadpisz\nMisja</Polish>
             <Portuguese>Sobrescrever \nMissão</Portuguese>
@@ -401,11 +465,14 @@
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission_short">
             <English>Mission</English>
+            <Spanish>Misión</Spanish>
+            <Japanese>ミッション</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
             <Czech>Přepsat \nServer</Czech>
             <French>Ecraser\nServeur</French>
+            <Spanish>Sobrescribir\nservidor</Spanish>
             <Italian>Sovrascrive\nil server</Italian>
             <Polish>Nadpisz\nSerwer</Polish>
             <Portuguese>Sobrescrever \nServidor</Portuguese>
@@ -419,11 +486,14 @@
         </Key>
         <Key ID="STR_cba_settings_overwrites">
             <English>Overwrites:</English>
+            <Spanish>Sobrescribe:</Spanish>
+            <Japanese>上書き:</Japanese>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by client with the same value.</English>
             <Czech>Toto nastavení je přepsáno klienty stejnou hodnotou.</Czech>
             <French>Écrasé par le client, avec la même valeur.</French>
+            <Spanish>Sobrescrito por el cliente con el mismo valor.</Spanish>
             <Italian>Sovrascritto dal client con lo stesso valore.</Italian>
             <Polish>Nadpisane przez klienta z taką samą wartością.</Polish>
             <Russian>Перезаписано клиентом с таким же значением.</Russian>
@@ -437,6 +507,7 @@
             <English>This setting is overwritten by the clients.</English>
             <Czech>Toto nastavení je přepsáno klienty.</Czech>
             <French>Ce paramètre est écrasé par les clients.</French>
+            <Spanish>Este ajuste lo sobrescriben los clientes.</Spanish>
             <Italian>I client sovrascrivono questa impostazione.</Italian>
             <Polish>Ta wartość została nadpisana przez klientów.</Polish>
             <Portuguese>Esta configuração é sobrescrita pelos clientes.</Portuguese>
@@ -452,6 +523,7 @@
             <English>This setting is overwritten by the clients and only applies to the server.</English>
             <Czech>Toto nastavení je přepsáno klienty a platí pouze na serveru.</Czech>
             <French>Ce paramètre est écrasé par les clients et ne s'applique qu'au serveur.</French>
+            <Spanish>Este ajuste lo sobrescriben los clientes y solo se aplica al servidor.</Spanish>
             <Italian>Questa impostazione è sovrascritta dai client e si applica solo al server.</Italian>
             <Polish>Ta wartość została nadpisana przez klientów i ma zastosowanie tylko na serwerze.</Polish>
             <Portuguese>Esta configuração é sobrescrita pelos clientes e é apenas aplicada no servidor.</Portuguese>
@@ -467,6 +539,7 @@
             <English>Overwritten by mission with the same value.</English>
             <Czech>Toto nastavení je přepsáno misí stejnou hodnotou.</Czech>
             <French>Écrasé par la mission, avec la même valeur.</French>
+            <Spanish>Sobrescrito por la misión con el mismo valor.</Spanish>
             <Italian>Sovrascritto dalla missione con lo stesso valore.</Italian>
             <Polish>Nadpisane przez misję z taką samą wartością.</Polish>
             <Russian>Перезаписано миссией с таким же значением.</Russian>
@@ -480,6 +553,7 @@
             <English>This setting is overwritten by the mission.</English>
             <Czech>Toto nastavení je přepsáno misí.</Czech>
             <French>Ce paramètre est écrasé par la mission.</French>
+            <Spanish>Este ajuste lo sobrescribe la misión.</Spanish>
             <Italian>La missione sovrascrive questa impostazione.</Italian>
             <Polish>Ta wartośc została nadpisana przez misję.</Polish>
             <Portuguese>Esta configuração é sobrescrita pela missão.</Portuguese>
@@ -495,6 +569,7 @@
             <English>Overwritten by server with the same value.</English>
             <Czech>Toto nastavení je přepsáno serverem stejnou hodnotou.</Czech>
             <French>Écrasé par le serveur, avec la même valeur.</French>
+            <Spanish>Sobrescrito por el servidor con el mismo valor.</Spanish>
             <Italian>Sovrascritto dal server con lo stesso valore.</Italian>
             <Polish>Nadpisane przez serwer z taką samą wartością.</Polish>
             <Russian>Перезаписано сервером с таким же значением.</Russian>
@@ -508,6 +583,7 @@
             <English>This setting is overwritten by the server.</English>
             <Czech>Toto nastavení je přepsáno serverem.</Czech>
             <French>Ce paramètre est écrasé par le serveur.</French>
+            <Spanish>Este ajuste lo sobrescribe el servidor.</Spanish>
             <Italian>Il server sovrascrive questa impostazione.</Italian>
             <Polish>Ta wartość została nadpisana przez serwer.</Polish>
             <Portuguese>Esta configuração é sobrescrita pelo servidor.</Portuguese>
@@ -523,6 +599,7 @@
             <English>Show default values:</English>
             <Czech>Ukázat původní hodnoty:</Czech>
             <French>Afficher les valeurs par défaut:</French>
+            <Spanish>Mostrar valores predeterminados:</Spanish>
             <Italian>Mostra i valori originali:</Italian>
             <Polish>Pokaż domyślnę wartości:</Polish>
             <Russian>Показать настройки по умолчанию:</Russian>
@@ -535,11 +612,14 @@
         </Key>
         <Key ID="STR_cba_settings_subCategory_tooltip">
             <English>Show or hide the settings in this group.</English>
+            <Spanish>Mostrar u ocultar los ajustes de este grupo.</Spanish>
+            <Japanese>このグループの設定を表示または非表示にします。</Japanese>
         </Key>
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
             <Czech>Změny nebudou trvalé po restartu serveru</Czech>
             <French>Les modifications ne persistent pas après le redémarrage du serveur</French>
+            <Spanish>Los cambios no se conservarán tras reiniciar el servidor</Spanish>
             <Polish>Zmiany nie zostaną zachowane po restarcie serwera</Polish>
             <Russian>Изменения не будут сохранены после рестарта сервера</Russian>
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
@@ -550,29 +630,12 @@
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
             <Czech>Server je nastaven tak, aby nezachovával změny v nastavení mezi restarty serveru.\nZměny budou zachovány mezi restarty mise.</Czech>
             <French>Le serveur est configuré pour ne pas conserver les modifications apportées aux paramètres entre les redémarrages du serveur.\nLes modifications seront conservées entre les redémarrages de la mission.</French>
+            <Spanish>El servidor está configurado para no conservar los cambios de los ajustes entre reinicios del servidor.\nLos cambios sí se conservarán entre reinicios de misión.</Spanish>
             <Polish>Serwer jest skonfigurowany tak, aby odrzucać wszystkie zmiany w ustawieniach gdy zostanie zrestartowany.\nZmiany zostaną zachowane między restartami misji.</Polish>
             <Russian>Сервер настроен не сохранять изменения настроек между рестартами сервера.\nИзменения будут сохранены между рестартами миссий.</Russian>
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges">
-            <English>There are %1 unsaved setting changes.</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_one">
-            <English>There is 1 unsaved setting change.</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_confirm">
-            <English>Discard</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_more">
-            <English>...and %1 more</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_keep">
-            <English>Keep Editing</English>
-        </Key>
-        <Key ID="STR_cba_settings_discardChanges_title">
-            <English>Unsaved Changes</English>
         </Key>
     </Package>
 </Project>

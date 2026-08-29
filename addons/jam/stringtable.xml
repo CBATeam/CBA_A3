@@ -5,7 +5,7 @@
             <English>Caliber: 7.62x51 mm&lt;br/&gt;Rounds: 150</English>
             <Czech>Ráže: 7.62x51 mm&lt;br/&gt;Munice: 150</Czech>
             <French>Calibre: 7,62x51 mm&lt;br/&gt;Munitions: 150</French>
-            <Spanish>Calibre: 7,62x51 mm&lt;br/&gt;Cargas: 150</Spanish>
+            <Spanish>Calibre: 7,62x51 mm&lt;br/&gt;Cartuchos: 150</Spanish>
             <Italian>Calibro: 7,62x51 mm&lt;br/&gt;Munizioni: 150</Italian>
             <Polish>Kaliber: 7,62x51 mm&lt;br/&gt;Pociski: 150</Polish>
             <Portuguese>Calibre: 7,62 x 51 mm&lt;br/&gt;Balas: 150r</Portuguese>
@@ -21,7 +21,7 @@
             <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
             <Czech>Ráže: 7.62x51 mm stopovky - zelené&lt;br/&gt;Munice: 150</Czech>
             <French>Calibre: 7,62x51 mm traçant - Vert&lt;br/&gt;Munitions: 150</French>
-            <Spanish>Calibre: 7,62x51 mm trazadora (verde)&lt;br/&gt;Cargas: 150</Spanish>
+            <Spanish>Calibre: 7,62x51 mm trazadora - verde&lt;br/&gt;Cartuchos: 150</Spanish>
             <Italian>Calibro: tracciante 7,62x51 mm - verde&lt;br /&gt;Munizioni: 150</Italian>
             <Polish>Kaliber: 7,62x51 mm smugowy - zielony&lt;br/&gt;Pociski: 150</Polish>
             <Portuguese>Calibre: Traçante 7,62 x 51 mm – Verde&lt;br/&gt;Balas: 150r</Portuguese>
@@ -37,6 +37,7 @@
             <English>Community Base Addons - Joint Ammo Magazines</English>
             <Czech>Community Base Addons - Společné zásobníky a munice</Czech>
             <French>Community Base Addons - Munitions et chargeurs</French>
+            <Spanish>Community Base Addons - Munición y cargadores compartidos</Spanish>
             <Polish>Community Base Addons - Wspólna Amunicja oraz Magazynki</Polish>
             <Russian>Community Base Addons - Общие патроны и магазины</Russian>
             <German>Community Base Addons - Gemeinsame Munition und Magazine</German>

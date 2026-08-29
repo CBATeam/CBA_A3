@@ -19,6 +19,7 @@ Example:
 Author:
     commy2
 --------------------------------------------------------------------------- */
+SCRIPT(sanitizeHTML);
 
 params ["_string"];
 

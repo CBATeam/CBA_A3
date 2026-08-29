@@ -5,7 +5,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-#define TESTS ["parse"]
+#define TESTS ["parse", "gui"]
 
 SCRIPT(test-settings);
 

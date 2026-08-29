@@ -55,7 +55,14 @@ private _shownRows = [];
 
     // a header is kept for as long as the search left it anything, folded or not
     _x setVariable [QGVAR(matched), _matched];
-    _x ctrlShow _show;
+
+    // showing a row shows every control inside it, so the overwrite checkboxes
+    // the source it is pointed at doesn't use have to be hidden again. Rows that
+    // stay where they are keep theirs, this runs on every keystroke of the search.
+    if (_show isNotEqualTo (ctrlShown _x)) then {
+        _x ctrlShow _show;
+        _x call FUNC(gui_setOverwriteVisible);
+    };
 
     if (_show) then {
         _shownRows pushBack _x;

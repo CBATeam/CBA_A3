@@ -115,6 +115,27 @@ TEST_OP(_str,==,"Teast",_fn);
 _str = ["Mörser", "ö", "oe"] call CBA_fnc_replace;
 TEST_OP(_str,==,"Moerser",_fn);
 
+// What is searched for is a literal, not a pattern
+_str = ["a.b.c", ".", "-"] call CBA_fnc_replace;
+TEST_OP(_str,==,"a-b-c",_fn);
+
+_str = ["a|b", "|", "-"] call CBA_fnc_replace;
+TEST_OP(_str,==,"a-b",_fn);
+
+// And so is what it is replaced with
+_str = ["aaa", "a", "$&"] call CBA_fnc_replace;
+TEST_OP(_str,==,"$&$&$&",_fn);
+
+_str = ["cost 5", "5", "$5"] call CBA_fnc_replace;
+TEST_OP(_str,==,"cost $5",_fn);
+
+_str = ["path", "path", "C:\dir\file"] call CBA_fnc_replace;
+TEST_OP(_str,==,"C:\dir\file",_fn);
+
+// Case-dependent
+_str = ["Fish FRO frog", "fro", "pi"] call CBA_fnc_replace;
+TEST_OP(_str,==,"Fish FRO pig",_fn);
+
 // ----------------------------------------------------------------------------
 // UNIT TESTS (leftTrim)
 _fn = "CBA_fnc_leftTrim";

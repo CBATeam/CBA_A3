@@ -72,6 +72,14 @@ if !(ctrlShown _ctrlAddonsGroup) then {
     //--- change button text
     _ctrlToggleButton ctrlSetText LLSTRING(configureBase);
 
+    //--- showing the addons group shows every category built inside it, only the
+    //--- selected one may stay. Its own rows are put back once the source is known.
+    private _selectedCategory = uiNamespace getVariable [QGVAR(addon), ""];
+
+    {
+        _y ctrlShow (_x isEqualTo _selectedCategory);
+    } forEach (_display getVariable [QGVAR(optionsGroups), createHashMap]);
+
     //--- emulate scope selection
     private _previousSelectedSource = uiNamespace getVariable QGVAR(source);
 
@@ -109,8 +117,13 @@ if !(ctrlShown _ctrlAddonsGroup) then {
         _ctrlServerButton
     ];
 
+    //--- points the rows at that source again, which is also what hides the
+    //--- overwrite checkboxes showing the group above brought back
     _ctrlPreviousButton call FUNC(gui_sourceChanged);
     ctrlSetFocus _ctrlPreviousButton;
+
+    //--- and so are the rows a search or a folded sub-category had hidden
+    [_display, false] call FUNC(gui_filterSettings);
 } else {
     //--- enable and show default menu
     _ctrlGeneralGroup ctrlEnable true;

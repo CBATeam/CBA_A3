@@ -38,16 +38,13 @@ _controlsGroup setVariable [QGVAR(source), _source];
 private _enabled = _controlsGroup call FUNC(gui_setRowEnabled);
 
 // ----- which overwrite checkboxes a row has depends on the source it shows
-private _isGlobal = _controlsGroup getVariable [QGVAR(isGlobal), 0];
+_controlsGroup call FUNC(gui_setOverwriteVisible);
 
+private _isGlobal = _controlsGroup getVariable [QGVAR(isGlobal), SETTING_LOCAL_OVERRIDABLE];
 private _ctrlOverwriteClient = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_CLIENT;
-private _ctrlOverwriteMission = _controlsGroup controlsGroupCtrl IDC_SETTING_OVERWRITE_MISSION;
-
-[_ctrlOverwriteClient, _source isNotEqualTo "client" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
-[_ctrlOverwriteMission, _source isEqualTo "server" && {_isGlobal < 2}] call FUNC(gui_setOverwriteVisible);
 
 // "overwrite clients" is forced for global settings, so it can't be unticked
-_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal > 0 && _source isNotEqualTo "mission")];
+_ctrlOverwriteClient setVariable [QGVAR(cbEnabled), !(_isGlobal isNotEqualTo SETTING_LOCAL_OVERRIDABLE && _source isNotEqualTo "mission")];
 
 // what "overwrite clients" goes back to belongs to the source that was shown
 _ctrlOverwriteClient setVariable [QGVAR(state), nil];

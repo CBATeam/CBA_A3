@@ -27,6 +27,9 @@ SCRIPT(trim);
 
 params ["_string", ["_trim", "", [""]]];
 
-_string = [_string, _trim] call CBA_fnc_rightTrim;
+// Trim all whitespace characters by default
+if (_trim == "") exitWith {
+    trim _string // return
+};
 
-[_string, _trim] call CBA_fnc_leftTrim
+_string trim [_trim, 0] // return

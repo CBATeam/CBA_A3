@@ -5,6 +5,7 @@
             <English>Allow Override</English>
             <Czech>Povolit přepsání</Czech>
             <French>Autoriser l'écrasement</French>
+            <Spanish>Permitir anulación</Spanish>
             <Italian>Permettere Sovrascrittura</Italian>
             <Polish>Zezwalaj na nadpisanie</Polish>
             <Russian>Разрешить Переопределение</Russian>
@@ -19,6 +20,7 @@
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
             <Czech>Povolit modulu odstranit staré waypointy a přiřadit waypoint k útoku</Czech>
             <French>Permettre au module de supprimer les anciens points de passage et à attribuer un point de passage d'attaque.</French>
+            <Spanish>Permite que el módulo elimine los puntos de ruta anteriores y asigne un punto de ruta de ataque</Spanish>
             <Italian>Permette al modulo di togliere waypoint precedenti e assegnarne uno di attacco.</Italian>
             <Polish>Zezwalaj aby moduł nadpisał stare punkty nawigacyjnych rozkazem ataku</Polish>
             <Russian>Разрешить модулю удалять старые путевые точки и назначать путевую точку атаки</Russian>
@@ -33,6 +35,7 @@
             <English>Array</English>
             <Czech>Pole</Czech>
             <French>Tableau</French>
+            <Spanish>Array</Spanish>
             <Italian>Array</Italian>
             <Polish>Tablica</Polish>
             <Russian>Массив</Russian>
@@ -47,6 +50,7 @@
             <English>Attack</English>
             <Czech>Útok</Czech>
             <French>Attaquer</French>
+            <Spanish>Ataque</Spanish>
             <Italian>Attaccare</Italian>
             <Polish>Atak</Polish>
             <Russian>Атака</Russian>
@@ -61,6 +65,7 @@
             <English>Attack Location Type</English>
             <Czech>Typ lokace útoku</Czech>
             <French>Type du lieu d'attaque</French>
+            <Spanish>Tipo de posición de ataque</Spanish>
             <Italian>Tipo di posizione per l'attacco</Italian>
             <Polish>Typ lokalizacji ataku</Polish>
             <Russian>Тип Местоположения Атаки</Russian>
@@ -75,6 +80,7 @@
             <English>Set what kind of object is being passed as the center point</English>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
             <French>Définit quel type d'objet est passé comme point central.</French>
+            <Spanish>Define qué tipo de objeto se pasa como punto central</Spanish>
             <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny</Polish>
             <Russian>Укажите, какой объект передаётся как центральная точка</Russian>
@@ -89,6 +95,7 @@
             <English>Sync to leader of group to attack a parsed location</English>
             <Czech>Synchronizovat s velitelem skupiny k útoku na danou lokaci</Czech>
             <French>Synchroniser avec un chef du groupe pour attaquer un emplacement désigné.</French>
+            <Spanish>Sincronizar con el líder del grupo para atacar la posición indicada</Spanish>
             <Italian>Sincronizza con un capogruppo per attaccare una posizione designata.</Italian>
             <Polish>Zsynchronizuj z liderem grupy aby zaatakować określoną lokalizacje</Polish>
             <Russian>Синхронизируйте с лидером группы, чтобы атаковать указанное местоположение</Russian>
@@ -103,6 +110,7 @@
             <English>Attack Position</English>
             <Czech>Pozice útoku</Czech>
             <French>Position de l'attaque</French>
+            <Spanish>Posición de ataque</Spanish>
             <Italian>Posizione per l'attacco</Italian>
             <Polish>Pozycja Ataku</Polish>
             <Russian>Позиция Атаки</Russian>
@@ -117,6 +125,7 @@
             <English>Enter an array with brackets or name without quotes</English>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
             <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
+            <Spanish>Introducir un array entre corchetes o un nombre sin comillas</Spanish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
@@ -131,6 +140,7 @@
             <English>Patrol Chance</English>
             <Czech>Šance hlídky</Czech>
             <French>Chance de patrouiller</French>
+            <Spanish>Probabilidad de patrullar</Spanish>
             <Italian>Probabilità di pattugliare</Italian>
             <Polish>Szasna na Patrol</Polish>
             <Russian>Шанс Патрулирования</Russian>
@@ -145,6 +155,7 @@
             <English>Chance for each unit to patrol instead of garrison</English>
             <Czech>Šance, že bude jednotka hlídkovat (místo tvorby opevnění)</Czech>
             <French>Probabilité pour chaque unité de patrouiller au lieu de rester en garnison.</French>
+            <Spanish>Probabilidad de que cada unidad patrulle en lugar de guarnecerse</Spanish>
             <Italian>Probabilità per ogni unità di pattugliare invece che presidiare.</Italian>
             <Polish>Szansa dla każdej jednostki na to że przeprowadzi patrol zamiast garnizonowania budynku</Polish>
             <Russian>Шанс для каждого подразделения пойти патрулировать, вместо того, чтобы находиться в гарнизоне</Russian>
@@ -159,6 +170,7 @@
             <English>CBA Modules</English>
             <Czech>CBA Moduly</Czech>
             <French>CBA - Modules</French>
+            <Spanish>Módulos de CBA</Spanish>
             <Italian>CBA - Moduli</Italian>
             <Polish>Moduły CBA</Polish>
             <Russian>Модули CBA</Russian>
@@ -173,6 +185,7 @@
             <English>Community Base Addons - Modules</English>
             <Czech>Community Base Addons - Moduly</Czech>
             <French>Community Base Addons - Modules</French>
+            <Spanish>Community Base Addons - Módulos</Spanish>
             <Italian>Community Base Addons - Moduli</Italian>
             <Polish>Community Base Addons - Komponent Modułów</Polish>
             <Russian>Community Base Addons - Компонент Модулей</Russian>
@@ -187,6 +200,7 @@
             <English>Defend</English>
             <Czech>Bránit</Czech>
             <French>Défendre</French>
+            <Spanish>Defensa</Spanish>
             <Italian>Difendere</Italian>
             <Polish>Obrona</Polish>
             <Russian>Оборона</Russian>
@@ -201,6 +215,7 @@
             <English>Sync to leader of group to defend a parsed location</English>
             <Czech>Synchronizovat s velitelem skupiny k obraně dané lokace</Czech>
             <French>Synchroniser avec un chef du groupe pour défendre un emplacement désigné.</French>
+            <Spanish>Sincronizar con el líder del grupo para defender la posición indicada</Spanish>
             <Italian>Sincronizza con un capogruppo per difendere una posizione designata.</Italian>
             <Polish>Zsynchronizuj z liderem grupy aby bronić określonej lokalizacji</Polish>
             <Russian>Синхронизируйте с лидером группы, чтобы защищать указанное местоположение</Russian>
@@ -215,6 +230,7 @@
             <English>Defend Position</English>
             <Czech>Bránit pozici</Czech>
             <French>Position de la défense</French>
+            <Spanish>Posición a defender</Spanish>
             <Italian>Difendere Posizione</Italian>
             <Polish>Pozycja Obronna</Polish>
             <Russian>Защищать Позицию</Russian>
@@ -229,6 +245,7 @@
             <English>Defend Position Type</English>
             <Czech>Typ pozice útoku</Czech>
             <French>Type du lieu à défendre</French>
+            <Spanish>Tipo de posición a defender</Spanish>
             <Italian>Tipo di posizione per la difesa</Italian>
             <Polish>Rodzaj Pozycji Obronnej</Polish>
             <Russian>Тип Позиции Защиты</Russian>
@@ -243,6 +260,7 @@
             <English>Set what kind of object is being passed as the center point</English>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
             <French>Définit quel type d'objet est passé comme point central.</French>
+            <Spanish>Define qué tipo de objeto se pasa como punto central</Spanish>
             <Italian>Scegliere quale oggetto passare al punto centrale</Italian>
             <Polish>Określ jaki obiekt jest przekazywany jako punkt centralny obrony</Polish>
             <Russian>Установить, какой тип объекта будет передан как центральная точка</Russian>
@@ -257,6 +275,7 @@
             <English>Enter an array with brackets or name without quotes</English>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
             <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
+            <Spanish>Introducir un array entre corchetes o un nombre sin comillas</Spanish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
@@ -271,6 +290,7 @@
             <English>Defend Radius</English>
             <Czech>Rádius obrany</Czech>
             <French>Rayon de défense</French>
+            <Spanish>Radio de defensa</Spanish>
             <Italian>Raggio di Difesa</Italian>
             <Polish>Obszar Obrony</Polish>
             <Russian>Радиус Защиты</Russian>
@@ -285,6 +305,7 @@
             <English>The max distance to defend from the center point</English>
             <Czech>Maximální vzdálenost obrany od centrálního bodu</Czech>
             <French>Définit la distance maximale à défendre, en partant du point central.</French>
+            <Spanish>Distancia máxima a la que defender desde el punto central</Spanish>
             <Italian>Distanza massima dal punto centrale entro cui difendere.</Italian>
             <Polish>Maksymalny dystans od punktu centralnego na jakim będzie prowadzona obrona</Polish>
             <Russian>Максимальное расстояние для защиты от центральной точки</Russian>
@@ -299,6 +320,7 @@
             <English>Code to Execute</English>
             <Czech>Kód k vykonání</Czech>
             <French>Code à exécuter</French>
+            <Spanish>Código a ejecutar</Spanish>
             <Italian>Codice da eseguire</Italian>
             <Polish>Kod do wykonania</Polish>
             <Russian>Код для Выполнения</Russian>
@@ -313,6 +335,7 @@
             <English>Any code to run at waypoints</English>
             <Czech>Jakýkoliv kód, který bude vykonán na waypointech</Czech>
             <French>Tout code à exécuter aux points de passage.</French>
+            <Spanish>Código que se ejecutará en los puntos de ruta</Spanish>
             <Italian>Codice da eseguire alla destinazione.</Italian>
             <Polish>Kod do wykonania po osiągnięciu punktów nawigacyjnych</Polish>
             <Russian>Любой код для запуска в путевых точках</Russian>
@@ -327,6 +350,7 @@
             <English>Group</English>
             <Czech>Skupina</Czech>
             <French>Groupe</French>
+            <Spanish>Grupo</Spanish>
             <Italian>Gruppo</Italian>
             <Polish>Grupa</Polish>
             <Russian>Группа</Russian>
@@ -341,6 +365,7 @@
             <English>Loiter</English>
             <Czech>Postávat</Czech>
             <French>Flâner</French>
+            <Spanish>Merodear</Spanish>
             <Italian>Indugiare</Italian>
             <Polish>Krąż</Polish>
             <Russian>Слоняться без дела</Russian>
@@ -355,6 +380,7 @@
             <English>Marker</English>
             <Czech>Značka</Czech>
             <French>Marqueur</French>
+            <Spanish>Marcador</Spanish>
             <Italian>Indicatore</Italian>
             <Polish>Marker</Polish>
             <Russian>Маркер</Russian>
@@ -369,6 +395,7 @@
             <English>Module Position</English>
             <Czech>Pozice modulu</Czech>
             <French>Position du module</French>
+            <Spanish>Posición del módulo</Spanish>
             <Italian>Posizione del modulo</Italian>
             <Polish>Pozycja Modułu</Polish>
             <Russian>Расположение Модуля</Russian>
@@ -383,6 +410,7 @@
             <English>Move</English>
             <Czech>Pohyb</Czech>
             <French>Se déplacer</French>
+            <Spanish>Mover</Spanish>
             <Italian>Muovere</Italian>
             <Polish>Przemieść</Polish>
             <Russian>Выдвинуться</Russian>
@@ -397,6 +425,7 @@
             <English>Object/Location</English>
             <Czech>Objekt/Lokace</Czech>
             <French>Objet/Lieu</French>
+            <Spanish>Objeto/Localización</Spanish>
             <Italian>Posizione oggetto</Italian>
             <Polish>Obiekt/Lokacja</Polish>
             <Russian>Объект/Локация</Russian>
@@ -411,6 +440,7 @@
             <English>Patrol</English>
             <Czech>Hlídka</Czech>
             <French>Patrouille</French>
+            <Spanish>Patrulla</Spanish>
             <Italian>Pattugliare</Italian>
             <Polish>Patrol</Polish>
             <Russian>Патрулирование</Russian>
@@ -425,6 +455,7 @@
             <English>Patrol Center Type</English>
             <Czech>Typ centra hlídky</Czech>
             <French>Type du centre de patrouille</French>
+            <Spanish>Tipo de punto central de la patrulla</Spanish>
             <Italian>Tipo del centro del pattugliamento</Italian>
             <Polish>Patrol - rodzaj centrum</Polish>
             <Russian>Патрулирование - Тип Центра</Russian>
@@ -439,6 +470,7 @@
             <English>Set what kind of object is being passed as the center point</English>
             <Czech>Určit, jaký typ objektu je nastaven jako centrální bod</Czech>
             <French>Définit quel type d'objet est passé comme point central.</French>
+            <Spanish>Define qué tipo de objeto se pasa como punto central</Spanish>
             <Italian>Imposta il tipo di oggetto che viene usato come punto centrale.</Italian>
             <Polish>Określ jaki obiekt jest przekazowany jako punkt centralny patrolu</Polish>
             <Russian>Укажите, какой тип объекта будет передан как центральная точка</Russian>
@@ -453,6 +485,7 @@
             <English>Sync to leader of group to patrol a parsed location</English>
             <Czech>Synchronizovat s velitelem skupiny k hlídkování v dané lokaci</Czech>
             <French>Synchroniser avec un chef du groupe pour défendre un emplacement désigné.</French>
+            <Spanish>Sincronizar con el líder del grupo para patrullar la posición indicada</Spanish>
             <Italian>Sincronizza con un capogruppo per pattugliare una posizione designata.</Italian>
             <Polish>Zsynchronizuj z liderem grupy aby patrolować określoną lokalizację</Polish>
             <Russian>Синхронизируйте с лидером группы, чтобы патрулировать указанное местоположение</Russian>
@@ -467,6 +500,7 @@
             <English>Center Point</English>
             <Czech>Centrální bod</Czech>
             <French>Point central</French>
+            <Spanish>Punto central</Spanish>
             <Italian>Punto Centrale</Italian>
             <Polish>Punkt Centralny</Polish>
             <Russian>Центральная точка</Russian>
@@ -481,6 +515,7 @@
             <English>Enter an array with brackets or name without quotes</English>
             <Czech>Zadejte pole hodnot se závorkami nebo jméno bez závorek</Czech>
             <French>Entrer un tableau avec des crochets ou un nom sans guillemets.</French>
+            <Spanish>Introducir un array entre corchetes o un nombre sin comillas</Spanish>
             <Italian>Inserire un array in parentesi quadre o nome in doppi apici.</Italian>
             <Polish>Wprowadź tablicę wraz z nawiasami lub nazwę bez cudzysłowów</Polish>
             <Russian>Введите массив с помощью скобок или имя без кавычек</Russian>
@@ -495,6 +530,7 @@
             <English>Patrol Radius</English>
             <Czech>Rádius hlídky</Czech>
             <French>Rayon de patrouille</French>
+            <Spanish>Radio de patrulla</Spanish>
             <Italian>Raggio di Pattugliamento</Italian>
             <Polish>Obszar Patrolu</Polish>
             <Russian>Радиус патрулирования</Russian>
@@ -509,6 +545,7 @@
             <English>The distance to patrol from the center point</English>
             <Czech>Nastavit vzdálenost od centrálního bodu k hlídce</Czech>
             <French>La distance à parcourir en patrouille depuis le point central.</French>
+            <Spanish>Distancia a la que patrullar desde el punto central</Spanish>
             <Italian>La distanza da pattugliare dal punto centrale.</Italian>
             <Polish>Rozmar obszaru do Patrolowania w okół punktu centralnego</Polish>
             <Russian>На какое расстояние будет происходить патрулирование от центральной точки</Russian>
@@ -523,6 +560,7 @@
             <English>Seek and Destroy</English>
             <Czech>Najít a zničit</Czech>
             <French>Rechercher et détruire</French>
+            <Spanish>Buscar y destruir</Spanish>
             <Italian>Cercare e Distruggere</Italian>
             <Polish>Znajdź i zniszcz</Polish>
             <Russian>Найти и уничтожить</Russian>
@@ -537,6 +575,7 @@
             <English>Search Radius</English>
             <Czech>Rádius hledání</Czech>
             <French>Rayon de recherche</French>
+            <Spanish>Radio de búsqueda</Spanish>
             <Italian>Raggio di ricerca</Italian>
             <Polish>Obszar Przeszukania</Polish>
             <Russian>Радиус поиска</Russian>
@@ -551,6 +590,7 @@
             <English>Enter a number for size of the radius to search</English>
             <Czech>Vložte číslo pro velikost rádiu hledání</Czech>
             <French>Définit la taille du rayon de recherche.</French>
+            <Spanish>Introducir un número para el tamaño del radio de búsqueda</Spanish>
             <Italian>Immettere un numero per la dimensione del raggio in cui cercare</Italian>
             <Polish>Wprowadź liczbę jako rozmiar obszaru do przeszukania</Polish>
             <Russian>Введите число для задания размера радиуса поиска</Russian>
@@ -565,6 +605,7 @@
             <English>Set Position</English>
             <Czech>Nastavit pozici</Czech>
             <French>Configurer la position</French>
+            <Spanish>Posición definida</Spanish>
             <Italian>Posiziona</Italian>
             <Polish>Ustaw Pozycję</Polish>
             <Russian>Укажите позицию</Russian>
@@ -579,6 +620,7 @@
             <English>Hold Chance</English>
             <Czech>Šance držení</Czech>
             <French>Chance de tenir</French>
+            <Spanish>Probabilidad de mantener la posición</Spanish>
             <Italian>Probabilità di tenuta</Italian>
             <Polish>Szansa na Utrzymanie</Polish>
             <Russian>Шанс удерживания</Russian>
@@ -593,6 +635,7 @@
             <English>Chance for each unit to hold their garrison in combat</English>
             <Czech>Šance, že bude jednotka držet své opevnění v boji</Czech>
             <French>Possibilité pour chaque unité de maintenir sa garnison au combat.</French>
+            <Spanish>Probabilidad de que cada unidad mantenga su guarnición en combate</Spanish>
             <Italian>Probabilità per ogni unità di tenere il presidio durante il combattimento.</Italian>
             <Polish>Szansa dla każdej jednostki że będzie utrzymywać swój garnizon w trakcie walki</Polish>
             <Russian>Шанс для каждого подразделения удерживать свой гарнизон в бою</Russian>
@@ -607,6 +650,7 @@
             <English>Task</English>
             <Czech>Úkol</Czech>
             <French>Tâche</French>
+            <Spanish>Tarea</Spanish>
             <Italian>Incarico</Italian>
             <Polish>Zadanie</Polish>
             <Russian>Задача</Russian>
@@ -621,6 +665,7 @@
             <English>Building Size Threshold</English>
             <Czech>Práh velikosti stavby</Czech>
             <French>Seuil de taille du bâtiment</French>
+            <Spanish>Umbral de tamaño de edificio</Spanish>
             <Italian>Soglia Dimensione Edificio</Italian>
             <Polish>Próg Rozmiaru Budynku</Polish>
             <Russian>Порог размера здания</Russian>
@@ -635,6 +680,7 @@
             <English>Smaller the number the more buildings available</English>
             <Czech>Čím menší číslo tím více budov je k dispozici</Czech>
             <French>Plus le nombre est petit, plus il y'a de bâtiments disponibles.</French>
+            <Spanish>Cuanto menor sea el número, más edificios estarán disponibles</Spanish>
             <Italian>Più piccolo il numero più edifici saranno disponibili</Italian>
             <Polish>Im mniejsza wartość tym więcej budynków będzie dostępnych</Polish>
             <Russian>Чем меньше число, тем больше доступных зданий</Russian>
@@ -649,6 +695,7 @@
             <English>Timeout</English>
             <Czech>Přestávka</Czech>
             <French>Temporisation</French>
+            <Spanish>Tiempo de espera</Spanish>
             <Italian>Tempo di attesa</Italian>
             <Polish>Czas przerwania</Polish>
             <Russian>Тайм-аут</Russian>
@@ -663,6 +710,7 @@
             <English>[Min, Med, Max] Time to wait at waypoints</English>
             <Czech>[Min., Stř., Max.] Čas čekání na waypointech</Czech>
             <French>[Min, Moy, Max] Temps d'attente aux points de passage.</French>
+            <Spanish>[Mín., Med., Máx.] Tiempo de espera en los puntos de ruta</Spanish>
             <Italian>[Min, Med, Mass] Tempo di attesa alla destinazione.</Italian>
             <Polish>[Minimalny, Średni, Maksymalny] Czas oczekiwania na punktach nawigacyjnych</Polish>
             <Russian>[Минимум, Средний, Максимум] Тайм-аут ожидания на путевых точках</Russian>
@@ -677,6 +725,7 @@
             <English>Waypoint Count</English>
             <Czech>Počet waypointů</Czech>
             <French>Nombre de points de passage</French>
+            <Spanish>Número de puntos de ruta</Spanish>
             <Italian>Numero di destinazioni</Italian>
             <Polish>Ilosć punktów nawigacyjnych</Polish>
             <Russian>Количество путевых точек</Russian>
@@ -691,6 +740,7 @@
             <English>The amount of waypoints to create</English>
             <Czech>Kolik waypointů bude vytvořeno</Czech>
             <French>La quantité de points de passage à créer.</French>
+            <Spanish>Cantidad de puntos de ruta que se crearán</Spanish>
             <Italian>Quantità di destinazioni da creare.</Italian>
             <Polish>Ilość punktu nawigacyjnych do utworzenia</Polish>
             <Russian>Сколько создать путевых точек</Russian>
@@ -705,6 +755,7 @@
             <English>Waypoint Type</English>
             <Czech>Typ waypointu</Czech>
             <French>Type de point de passage</French>
+            <Spanish>Tipo de punto de ruta</Spanish>
             <Italian>Tipo di destinazioni</Italian>
             <Polish>Rodzaj Punktu nawigacyjnego</Polish>
             <Russian>Тип путевой точки</Russian>
@@ -719,6 +770,7 @@
             <English>The type of waypoint to be used</English>
             <Czech>Typ waypointu, který bude použit</Czech>
             <French>Le type de point de passage à utiliser.</French>
+            <Spanish>Tipo de punto de ruta que se utilizará</Spanish>
             <Italian>Il tipo di destinazione da usare.</Italian>
             <Polish>Rodzaj Punktu nawigacyjnego do wykorzystania</Polish>
             <Russian>Тип используемой путевой точки</Russian>

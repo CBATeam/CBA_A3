@@ -18,7 +18,6 @@ Author:
 
 params [["_source", "client", [""]], ["_exportDefault", true, [false]]];
 
-private _info = "";
 private _temp = [];
 
 {
@@ -47,6 +46,7 @@ private _temp = [];
 
 _temp sort true;
 
+private _outputArr = [];
 private _last = "";
 
 {
@@ -54,10 +54,10 @@ private _last = "";
 
     if (_category != _last) then {
         _last = _category;
-        _info = _info + NEWLINE + "// " + _category + NEWLINE;
+        _outputArr pushBack (NEWLINE + "// " + _category);
     };
 
-    _info = _info + ((["", "force ", "force force "] select _priority) + _setting + " = " + str _value + ";" + NEWLINE);
+    _outputArr pushBack ((["", "force ", "force force "] select _priority) + _setting + " = " + str _value + ";");
 } forEach _temp;
 
-_info select [1] // return
+(_outputArr joinString NEWLINE) select [1] // return

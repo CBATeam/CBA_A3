@@ -4,6 +4,7 @@ Function: CBA_fnc_strLen
 
 Description:
     Counts the number of characters in a string.
+    Reliably supports strings with ANSI characters only.
 
 Parameters:
     _string - String to measure <STRING>

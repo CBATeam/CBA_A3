@@ -42,7 +42,7 @@ switch (toUpper _settingType) do {
     };
     case "TIME": {
         _settingData params ["_min", "_max"];
-        _value isEqualType 0 && {_value >= _min} && {_value <= _max} && {round _value == _value} 
+        _value isEqualType 0 && {_value >= _min} && {_value <= _max} && {round _value == _value}
     };
     default {false};
 };

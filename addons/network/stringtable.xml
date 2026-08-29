@@ -5,6 +5,7 @@
             <English>Network</English>
             <Czech>Síť</Czech>
             <French>Réseau</French>
+            <Spanish>Red</Spanish>
             <Italian>Rete</Italian>
             <Polish>Sieć</Polish>
             <Portuguese>Rede</Portuguese>
@@ -20,6 +21,7 @@
             <English>Community Base Addons - Network</English>
             <Czech>Community Base Addons - Síť</Czech>
             <French>Community Base Addons - Réseau</French>
+            <Spanish>Community Base Addons - Red</Spanish>
             <Italian>Community Base Addons - Rete</Italian>
             <Polish>Community Base Addons - Sieć</Polish>
             <Portuguese>Extensões de Base Comunitária - Rede</Portuguese>
@@ -35,6 +37,7 @@
             <English>Loadout Validation</English>
             <Czech>Ověření výbavy</Czech>
             <French>Vérification de l'équipement</French>
+            <Spanish>Validación del equipamiento</Spanish>
             <Italian>Verifica l'equipaggiamento</Italian>
             <Polish>Sprawdzenie wyposażenia</Polish>
             <Russian>Проверять снаряжение</Russian>
@@ -48,6 +51,7 @@
             <English>Validate loadout of units. Fixes an issue where units appear naked after changing locality.</English>
             <Czech>Ověřovat výbavu jednotek. Opravuje problém s nahými jednotkami když mění lokálnost.</Czech>
             <French>Vérifie l'équipement des unités. Correction d'un bug où les unités se retrouvaient nues après avoir changé de localité.</French>
+            <Spanish>Valida el equipamiento de las unidades. Corrige un problema por el que las unidades aparecen desnudas tras un cambio de localidad de red.</Spanish>
             <Italian>Verifica l'equipaggiamento delle unità. Corregge un bug che faceva apparire un'unità nuda dopo aver cambiato località.</Italian>
             <Polish>Sprawdza wyposażenie jednostek. Naprawia problem, który powodował pojawianie się jednostek nagich, przy zmianie lokalności.</Polish>
             <Russian>Проверять снаряжение юнитов. Исправляет проблемы, когда юниты становятся голыми после смены локальности.</Russian>
@@ -61,6 +65,7 @@
             <English>Never</English>
             <Czech>Nikdy</Czech>
             <French>Jamais</French>
+            <Spanish>Nunca</Spanish>
             <Italian>Mai</Italian>
             <Polish>Nigdy</Polish>
             <Russian>Никогда</Russian>
@@ -74,6 +79,7 @@
             <English>Never validate loadouts</English>
             <Czech>Nikdy neověřovat výbavu</Czech>
             <French>Ne jamais vérifier les équipements</French>
+            <Spanish>No validar nunca los equipamientos</Spanish>
             <Italian>Non validare mai gli equipaggiamenti</Italian>
             <Polish>Nigdy nie sprawdzaj wyposażenia</Polish>
             <Russian>Никогда не проверять снаряжение</Russian>
@@ -87,6 +93,7 @@
             <English>All units</English>
             <Czech>Všechny jednotky</Czech>
             <French>Pour toutes les unités</French>
+            <Spanish>Todas las unidades</Spanish>
             <Italian>Tutte le unità</Italian>
             <Polish>Wszystkie jednostki</Polish>
             <Russian>Все юниты</Russian>
@@ -100,6 +107,7 @@
             <English>Validate loadout of all units</English>
             <Czech>Ověřovat výbavu všech jednotek</Czech>
             <French>Vérifier l'équipement de toutes les unités</French>
+            <Spanish>Validar el equipamiento de todas las unidades</Spanish>
             <Italian>Valida l'equipaggiamento di tutte unità</Italian>
             <Polish>Sprawdza wyposażenie wszystkich jednostek</Polish>
             <Russian>Проверять снаряжение всех юнитов</Russian>
@@ -113,6 +121,7 @@
             <English>Playable units only</English>
             <Czech>Pouze hratelné jednotky</Czech>
             <French>Pour les unités jouables</French>
+            <Spanish>Solo unidades jugables</Spanish>
             <Italian>Solo unità giocabili</Italian>
             <Polish>Tylko grywalne jednostki</Polish>
             <Russian>Только игровые юниты</Russian>
@@ -126,6 +135,7 @@
             <English>Validate only loadout of playable units</English>
             <Czech>Ověřovat pouze výbavu hratelných jednotek</Czech>
             <French>Vérifier uniquement l'équipement des unités jouables</French>
+            <Spanish>Validar solo el equipamiento de las unidades jugables</Spanish>
             <Italian>Valida solo le unità giocabili</Italian>
             <Polish>Sprawdza wyposażenie tylko jednostek oznaczonych jako grywalne</Polish>
             <Russian>Проверять снаряжение только игровых юнитов</Russian>

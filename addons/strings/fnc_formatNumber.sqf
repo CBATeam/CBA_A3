@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /* -----------------------------------------------------------------------------
 Function: CBA_fnc_formatNumber
 
@@ -52,8 +53,6 @@ Examples:
 Author:
     Spooner, PabstMirror
 ---------------------------------------------------------------------------- */
-#define DEBUG_MODE_NORMAL
-#include "script_component.hpp"
 
 #define DEFAULT_INTEGER_WIDTH 1
 #define DEFAULT_DECIMAL_PLACES 0
@@ -67,25 +66,30 @@ private _isNegative = _number < 0;
 private _return = (abs _number) toFixed _decimalPlaces;
 private _dotIndex = if (_decimalPlaces == 0) then {count _return} else {_return find "."};
 
-
-while {_integerWidth > _dotIndex} do { // pad with leading zeros
+// Pad with leading zeros
+while {_integerWidth > _dotIndex} do {
     _return = "0" + _return;
     _dotIndex = _dotIndex + 1;
 };
+
+// toFixed always adds zero left of decimal point, remove it
 if ((_integerWidth == 0) && {_return select [0, 1] == "0"}) then {
-    _return = _return select [1]; // toFixed always adds zero left of decimal point, remove it
+    _return = _return select [1];
 };
-if (_separateThousands) then { // add localized thousands seperator "1,000"
+
+// Add localized thousands seperator "1,000"
+if (_separateThousands) then {
     private _thousandsSeparator = localize "STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR";
+
     for "_index" from (_dotIndex - 3) to 1 step -3 do {
         _return = (_return select [0, _index]) + _thousandsSeparator + (_return select [_index]);
         _dotIndex = _dotIndex + 1;
     };
 };
 
-// Re-add negative sign if there is at least one decimal place != 0.
-if (_isNegative && {toArray _return arrayIntersect toArray "123456789" isNotEqualTo []}) then {
+// Re-add negative sign if there is at least one decimal place != 0
+if (_isNegative && {((toArray _return) arrayIntersect (toArray "123456789")) isNotEqualTo []}) then {
     _return = "-" + _return;
 };
 
-_return
+_return // return

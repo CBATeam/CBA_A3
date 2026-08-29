@@ -5,6 +5,7 @@
             <English>Community Base Addons - Disposable Weapons</English>
             <Czech>Community Base Addons - Jednorázové zbraně</Czech>
             <French>Community Base Addons - Armes à usage unique</French>
+            <Spanish>Community Base Addons - Armas de un solo uso</Spanish>
             <Italian>Community Base Addons - Armi monouso</Italian>
             <Polish>Community Base Addons - Bronie jednorazowe</Polish>
             <Russian>Community Base Addons - Одноразовое оружие</Russian>
@@ -19,6 +20,7 @@
             <English>AI Only</English>
             <Czech>Pouze AI</Czech>
             <French>IA seulement</French>
+            <Spanish>Solo la IA</Spanish>
             <Italian>Solo AI</Italian>
             <Polish>Tylko AI</Polish>
             <Russian>Только ИИ</Russian>
@@ -33,6 +35,7 @@
             <English>Only AI drops the used disposable launcher.</English>
             <Czech>Pouze AI odhodí použitý jednorázový raketomet.</Czech>
             <French>Seules les unités IA lâchent leur lanceur après emploi.</French>
+            <Spanish>Solo la IA suelta el lanzador de un solo uso ya utilizado.</Spanish>
             <Italian>Solo le unità AI buttano il lanciatore usato.</Italian>
             <Polish>Tylko AI wyrzuca wyrzutnie jednorazową.</Polish>
             <Russian>Только ИИ выбрасывает использованный одноразовый гранатомёт.</Russian>
@@ -47,6 +50,7 @@
             <English>Never</English>
             <Czech>Nikdy</Czech>
             <French>Jamais</French>
+            <Spanish>Nunca</Spanish>
             <Italian>Mai</Italian>
             <Polish>Nigdy</Polish>
             <Russian>Никогда</Russian>
@@ -61,6 +65,7 @@
             <English>Don't automatically drop the used disposable launcher.</English>
             <Czech>Automaticky neodhazovat použitý jednorázový raketomet.</Czech>
             <French>Ne lâche jamais automatiquement le lanceur usagé.</French>
+            <Spanish>No soltar automáticamente el lanzador de un solo uso ya utilizado.</Spanish>
             <Italian>Non buttare automaticamente il lanciatore usato.</Italian>
             <Polish>Nie wyrzucaj automatycznie wyrzutni jednorazowej.</Polish>
             <Russian>Не выбрасывать автоматически использованный одноразовый гранатомёт.</Russian>
@@ -75,6 +80,7 @@
             <English>Selected Another Weapon</English>
             <Czech>Vybrána jiná zbraň</Czech>
             <French>Si autre arme sélectionnée</French>
+            <Spanish>Al seleccionar otra arma</Spanish>
             <Italian>Seleziona un'altra arma</Italian>
             <Polish>Wybierz inną Broń</Polish>
             <Russian>Выбрано другое оружие</Russian>
@@ -89,6 +95,7 @@
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
             <Czech>Automaticky odhodit použitý jednorázový raketomet, jakmile je zvolena jiná zbraň.</Czech>
             <French>Lâche automatiquement le lanceur usagé dès qu'une autre arme est sélectionnée.</French>
+            <Spanish>Suelta automáticamente el lanzador de un solo uso ya utilizado en cuanto se selecciona otra arma.</Spanish>
             <Italian>Butta automaticamente il lanciatore usato non appena un'altra arma viene selezionata</Italian>
             <Polish>Automatycznie wyrzucaj wyrzutnie jednorazową gdy tylko zostanie wybrana kolejna broń.</Polish>
             <Russian>Автоматически выбрасывать использованный одноразовый гранатомёт, как только будет выбрано другие оружие.</Russian>
@@ -103,6 +110,7 @@
             <English>Drop Used Disposable Launcher</English>
             <Czech>Odhodit použitý jednorázový raketomet</Czech>
             <French>Lâcher le lanceur usagé</French>
+            <Spanish>Soltar el lanzador de un solo uso utilizado</Spanish>
             <Italian>Butta lanciatore usato</Italian>
             <Polish>Wyrzuć zużyty przedmiot</Polish>
             <Russian>Выбрасывать использованный одноразовый гранатомёт</Russian>
@@ -117,6 +125,7 @@
             <English>Replace Disposable Launcher</English>
             <Czech>Vyměnit jednorázový raketomet</Czech>
             <French>Remplacer le lanceur à usage unique</French>
+            <Spanish>Sustituir los lanzadores de un solo uso</Spanish>
             <Italian>Sostituisci lanciatore monouso</Italian>
             <Polish>Zamien wyrzutnie jednorazową</Polish>
             <Russian>Заменять одноразовые гранатомёты</Russian>
@@ -131,6 +140,7 @@
             <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
             <Czech>Pokud je tato možnost zapnuta, jednorázové raketomety mohou být použity pouze jednou. Munice pro jednorázové raketomety v bednách a vozidlech budou vyměněny za nabité jednorázové raketomety. Pokud je tato možnost vypnuta, jednorázové raketomety mohou být přebity po použití.</Czech>
             <French>Si activé, les lanceurs à usage unique ne peuvent être utilisés qu'une seule fois. Les munitions pour lanceurs à usage unique situés dans les conteneurs et les véhicules seront remplacées par des lanceurs à usage unique chargés. Si désactivé, les lanceurs à usage unique peuvent être rechargés après emploi.</French>
+            <Spanish>Si se activa, los lanzadores de un solo uso solo pueden emplearse una vez. La munición para lanzadores de un solo uso que haya en contenedores y vehículos se sustituirá por lanzadores de un solo uso cargados. Si se desactiva, los lanzadores de un solo uso pueden recargarse tras su uso.</Spanish>
             <Italian>Se abilitato, i lanciatori monouso possono essere usati una sola volta. Le munizioni per i lanciatori monouso che si trovano nei contenitori e nei veicoli saranno sostituiti con lanciatori monouso carichi. Se disabilitato, i lanciatori monouso possono essere ricaricati dopo l'uso.</Italian>
             <Polish>Gdy ta opcja jest włączona wyrzutnie jednorazowe mogą być użyte tylko raz, Amunicja do wyrzutni jednorazowych dostępna w kontenerach i pojazdach zostanie zamieniona w załadowaną wyrzutnie jednorazową. Jeżeli ta opcja jest wyłączona, wtedy wyrzutnie jednorazowe nie zostaną przeładowane po użyciu.</Polish>
             <Russian>Если включено, одноразовые гранатомёты могут быть использованы лишь один раз. Боеприпасы для них в контейнерах и технике будут заменены на соответствующие им заряженные одноразовые гранатомёты. Если выключено, одноразовые гранатомёты могут быть перезаряжены и использованы повторно.</Russian>

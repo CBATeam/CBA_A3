@@ -10,9 +10,6 @@ Description:
     This function is as barebones as possible. Inline macro version of this
     function can be used with FLOAT_TO_STRING(num).
 
-Limitations:
-
-
 Parameters:
     _number - Number to format <NUMBER>
 
@@ -29,4 +26,4 @@ Author:
     Nou
 ---------------------------------------------------------------------------- */
 
-if (_this == 0) then {"0"} else {str parseNumber (str (_this % _this) + str floor abs _this) + "." + (str (abs _this - floor abs _this) select [2]) + "0"};
+if (_this == 0) then {"0"} else {str parseNumber (str (_this % _this) + str floor abs _this) + "." + (str (abs _this - floor abs _this) select [2]) + "0"}
