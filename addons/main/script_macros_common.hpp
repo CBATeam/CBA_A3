@@ -1855,3 +1855,26 @@ Author:
 #ifndef QQADDON
     #define QQADDON QUOTE(QUOTE(ADDON))
 #endif
+
+/* -------------------------------------------
+Macro: Q, QQ
+
+Description:
+    Short Variants of QUOTE
+
+Parameters:
+
+Examples:
+    (begin example)
+    Q(configName _x isEqualTo QQ(abe_banana)) configClasses (configFile >> QADDON)
+    (end)
+
+Author:
+    OverlordZorn
+------------------------------------------- */
+#ifndef Q
+    #define Q(var1) QUOTE(var1)
+#endif
+#ifndef QQ
+    #define QQ(var1) QUOTE(QUOTE(var1))
+#endif
