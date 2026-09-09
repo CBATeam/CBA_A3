@@ -46,7 +46,7 @@
 
 #define CALL_EVENT(args,event) {\
     args call _x;\
-} forEach +(GVAR(eventNamespace) getVariable [event, []]) // copy array so events can be removed while iterating safely
+} forEach +([GVAR(eventNamespace) getVariable event] param [0, []]) // copy array so events can be removed while iterating safely
 
 #define GETOBJ(obj) (if (obj isEqualType grpNull) then {leader obj} else {obj})
 
