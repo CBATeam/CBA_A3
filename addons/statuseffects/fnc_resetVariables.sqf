@@ -48,4 +48,4 @@ if (_object == _objectRef) exitWith {};
     };
 } forEach GVAR(statusEffects);
 
-_object setVariable [QGVAR(statusEffect_object), _object, true];
+_object setVariable [QGVAR(object), _object, true];
