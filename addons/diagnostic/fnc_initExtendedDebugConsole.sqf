@@ -116,7 +116,7 @@ _expression ctrlAddEventHandler ["KillFocus", {
 
     };
 
-    _expression setVariable [QGVAR(tabDown), nil];
+    _expression setVariable [QGVAR(tabKey), nil];
 }];
 
 private _expressionBackground = _display displayCtrl IDC_RSCDEBUGCONSOLE_EXPRESSIONBACKGROUND;
