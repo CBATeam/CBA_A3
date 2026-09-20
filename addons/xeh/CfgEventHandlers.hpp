@@ -4,7 +4,7 @@ class XEH_CLASS_BASE {
 
 class XEH_CLASS: XEH_CLASS_BASE {}; // bwc
 
-class DefaultEventhandlers {
+class DefaultEventHandlers {
     class XEH_CLASS: XEH_CLASS_BASE {};
 };
 
