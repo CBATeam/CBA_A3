@@ -191,7 +191,11 @@ GVAR(actions) setVariable [_action, [_displayName, _tooltip, _keybinds, _default
     };
 } forEach _keybinds;
 
-// Emit an event that a key has been registered.
-[QGVAR(registerKeybind), _this] call CBA_fnc_localEvent;
+// this can run before the events addon preInit has made the registry; no handler can be
+// listening yet either, so the raise is a no-op
+if (!isNil QEGVAR(events,eventNamespace)) then {
+    // Emit an event that a key has been registered.
+    [QGVAR(registerKeybind), _this] call CBA_fnc_localEvent;
+};
 
 _keybind // only return the last keybind for bwc
