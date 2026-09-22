@@ -298,6 +298,39 @@ Author:
 #endif
 
 /* -------------------------------------------
+Macro: RELEASE_DEBUG()
+    Log a debug message into the RPT log.
+
+    Only run if <DEBUG_MODE_FULL> is defined OR -debug command line parameter is used.
+    This has a small runtime cost but is usable in scripts compiled at build-time (sqfc).
+
+Parameters:
+    MESSAGE - Message to record <STRING>
+
+Example:
+    (begin example)
+        RELEASE_DEBUG("You want to see what's happening");
+    (end)
+
+Author:
+    PabstMirror
+------------------------------------------- */
+#ifdef DEBUG_MODE_FULL
+#define RELEASE_DEBUG(MESSAGE) LOG_SYS('RELEASE_DEBUG',MESSAGE)
+#else
+#define RELEASE_DEBUG(MESSAGE) if (QUOTE(__A3_DIAG__) call CBA_fnc_getMacro) then { LOG_SYS('RELEASE_DEBUG',MESSAGE) }
+#endif
+
+#define RELEASE_DEBUG_1(MESSAGE,ARG1) RELEASE_DEBUG(FORMAT_1(MESSAGE,ARG1))
+#define RELEASE_DEBUG_2(MESSAGE,ARG1,ARG2) RELEASE_DEBUG(FORMAT_2(MESSAGE,ARG1,ARG2))
+#define RELEASE_DEBUG_3(MESSAGE,ARG1,ARG2,ARG3) RELEASE_DEBUG(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
+#define RELEASE_DEBUG_4(MESSAGE,ARG1,ARG2,ARG3,ARG4) RELEASE_DEBUG(FORMAT_4(MESSAGE,ARG1,ARG2,ARG3,ARG4))
+#define RELEASE_DEBUG_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5) RELEASE_DEBUG(FORMAT_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5))
+#define RELEASE_DEBUG_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) RELEASE_DEBUG(FORMAT_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6))
+#define RELEASE_DEBUG_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) RELEASE_DEBUG(FORMAT_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7))
+#define RELEASE_DEBUG_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) RELEASE_DEBUG(FORMAT_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8))
+
+/* -------------------------------------------
 Macro: ERROR()
     Record a critical error in the RPT log.
 
