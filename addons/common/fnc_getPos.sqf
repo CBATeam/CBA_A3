@@ -14,6 +14,7 @@ Example:
     (end)
 
 Returns:
+    <ARRAY>
     Position (AGLS) - [X,Y,Z]
     Z will always be 0 for MARKER, LOCATION and TASK.
     If entity is GROUP, the position of the group leader will be reported.

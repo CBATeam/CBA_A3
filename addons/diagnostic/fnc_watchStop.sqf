@@ -6,7 +6,7 @@ Description:
     Stop watching an input
 
 Parameters:
-    _index - The index in the watch list
+    _index - The index in the watch list <NUMBER>
 
 Returns:
     nil

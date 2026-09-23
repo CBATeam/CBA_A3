@@ -6,7 +6,7 @@ Description:
     Used to determine the Aspect ratio of the screen.
 
 Parameters:
-    _output - string with one of ["ARRAY","NUMBER","STRING"]
+    _output - string with one of ["ARRAY","NUMBER","STRING"] <STRING>
 
 Returns:
     array, string or number of screenratio i.e. [16,9] or "16:9" or 1.333 ..

@@ -21,16 +21,13 @@ Limitations:
     output might not be as EXPECTED after about eight significant figures.
 
 Parameters:
-    _number - Number to format <SCALAR>
-    _integerWidth - Minimum width of integer part of number, padded with 0s,
-        should be >= 0 (optional, default: 1) <SCALAR>
-    _decimalPlaces - Number of decimal places, padded with trailing 0s,
-        if necessary, should be >= 0 (optional, default: 0) <SCALAR>
-    _separateThousands - True to separate each three digits with a comma
-        <BOOL> (default: false)
+    _number - Number to format <NUMBER>
+    _integerWidth - Minimum width of integer part of number, padded with 0s, <NUMBER> (default: 1)
+    _decimalPlaces - Number of decimal places, padded with trailing 0s, if necessary <NUMBER> (default: 0)
+    _separateThousands - True to separate each three digits with a comma <BOOL> (default: false)
 
 Returns:
-    The number formatted into a string <STRING>
+    The number formatted <STRING>
 
 Examples:
     (begin example)

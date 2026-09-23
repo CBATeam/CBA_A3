@@ -6,8 +6,9 @@ Description:
     Converts a 2, 4, 6, 8, or 10 digit grid reference into a Position.
 
 Parameters:
-    _pos - The position, either an array of strings for the northing & easting or a string.
-    _doOffSet - If true, return the center of the gridsquare, if false return upper left. Default false.
+    _pos - Position in 10 digit grid format [Easting, Northing] <ARRAY><STRING>
+        "EEEEENNNNN" or ["EEEEE", "NNNNN"] or [12345, 67890]
+    _doOffSet - If true, return the center of the gridsquare, if false return upper left. <BOOL> (Default: false)
 
 Returns:
     Position in internal gridspace.

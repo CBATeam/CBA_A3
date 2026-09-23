@@ -8,11 +8,11 @@ Description:
 
 Parameters:
     _string     - String to extract from <STRING>
-    _startIndex - Index to start the substring extraction <SCALAR>
-    _endIndex   - Index to end the substring extraction <SCALAR>
+    _startIndex - Index to start the substring extraction <NUMBER>
+    _endIndex   - Index to end the substring extraction <NUMBER>
 
 Returns:
-    Extracted string <STRING>
+    String extracted <STRING>
 
 Example:
     (begin example)

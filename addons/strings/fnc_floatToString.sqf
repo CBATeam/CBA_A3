@@ -11,10 +11,10 @@ Description:
     function can be used with FLOAT_TO_STRING(num).
 
 Parameters:
-    _number - Number to format <SCALAR>
+    _number - Number to format <NUMBER>
 
 Returns:
-    The number formatted into a string <STRING>
+    The number formatted into a string <STRING>.
 
 Examples:
     (begin example)

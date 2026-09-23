@@ -7,8 +7,8 @@ Description:
 
 Parameters:
     _stateMachine   - a state machine <LOCATION>
-    _list           - list of anything over which the state machine will run
-                      (type needs to support setVariable) <ARRAY>
+    _list           - list of anything over which the state machine will run <ARRAY>
+                      (type needs to support setVariable)
 
 Returns:
     Nothing

@@ -5,12 +5,12 @@ Function: CBA_fnc_vect2Polar
 Description:
     Converts a 3d vector to polar
 Parameters:
-    _vx - vector direction in x
-    _vy - vector direction in y
-    _vz - vector direction in z
+    _vx - vector direction in x <NUMBER>
+    _vy - vector direction in y <NUMBER>
+    _vz - vector direction in z <NUMBER>
 
 Returns:
-    a vector in the form [magnitude, azimuth, elevation].
+    <ARRAY> a vector in the form [magnitude, azimuth, elevation].
 
 Examples:
     (begin example)

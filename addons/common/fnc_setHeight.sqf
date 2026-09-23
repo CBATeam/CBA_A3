@@ -8,7 +8,7 @@ Description:
 Parameters:
     _object - <OBJECT, LOCATION>
     _height - Height in metres <NUMBER>
-    _type   - Mode (optional, default: 1), 0 is AGL, 1 is ASL, 2 is ATL (Default: 1)
+    _type   - Mode [0 is AGL, 1 is ASL, 2 is ATL] <NUMBER> (optional, default: 1)
 
 Example:
     (begin example)

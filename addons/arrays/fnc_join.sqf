@@ -10,12 +10,11 @@ Description:
     Eeach value is joined around a separator string. Inverse of <CBA_fnc_split>.
 
 Parameters:
-    _array - Array to join together as a string [Array]
-    _separator - String to put between each element of _array
-        [String, defaults to ""]
+    _array - Array to join together as a string <ARRAY>
+    _separator - String to put between each element of _array <STRING> (defaults to "")
 
 Returns:
-    The joined string [String]
+    The joined string <STRING>
 
 Example:
     (begin example)

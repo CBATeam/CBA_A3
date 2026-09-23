@@ -6,7 +6,7 @@ Description:
     Updates the currently displayed watch controls with the latest values.
 
 Parameters:
-    _index - The index in the watch list
+    _index - The index in the watch list <NUMBER>
 
 Returns:
     nil
