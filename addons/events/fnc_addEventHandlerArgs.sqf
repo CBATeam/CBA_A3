@@ -18,7 +18,7 @@ Parameters:
     _arguments - Arguments to pass to event handler. (optional) <Any>
 
 Returns:
-    _eventId - Unique ID of the event handler (can be used with CBA_fnc_removeEventHandler).
+    _eventId - Unique ID of the event handler (can be used with CBA_fnc_removeEventHandler). <NUMBER>
 
 Examples:
     (begin example)
