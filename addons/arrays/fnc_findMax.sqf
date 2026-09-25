@@ -26,7 +26,7 @@ SCRIPT(findMax);
 
 [_this] params [["_array", [], [[]]]];
 
-if !(_array isEqualTypeAll 0) exitWith {nil};
+if !(_array isEqualTypeAll 0) exitWith { nil };
 
 private _reverse = + _array;
 reverse _reverse;
