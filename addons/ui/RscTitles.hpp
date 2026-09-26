@@ -1,6 +1,6 @@
 class RscTitles {
     class GVAR(ProgressBar) {
-        onLoad = QUOTE(with uiNameSpace do { GVAR(ProgressBar) = _this select 0 };);
+        onLoad = QUOTE(with uiNamespace do { GVAR(ProgressBar) = _this select 0 };);
         idd = -1;
         duration = 1e+11;
         fadeIn = 0;

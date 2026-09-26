@@ -28,7 +28,7 @@ class Cfg3DEN {
                     class Callsign {
                         expression = QUOTE(\
                             if (isNil 'CBA_fnc_setCallsign') then {\
-                                _this setGroupID [ARR_1(_value)];\
+                                _this setGroupId [ARR_1(_value)];\
                             } else {\
                                 [ARR_2(_this,_value)] call CBA_fnc_setCallsign;\
                             };);
