@@ -9,10 +9,10 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _value - Data structure to check [Any]
+    _value - Data structure to check <ANY> (target is <ARRAY>(CBA Hash))
 
 Returns:
-    True if it is a Hash, otherwise false [Boolean]
+    True if it is a Hash, otherwise false <BOOL>
 
 Author:
     Spooner

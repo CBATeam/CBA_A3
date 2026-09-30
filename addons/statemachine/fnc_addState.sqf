@@ -7,18 +7,13 @@ Description:
 
 Parameters:
     _stateMachine   - a state machine <LOCATION>
-    _onState        - code that is executed when state is active (frequency
-                      depends on amount of objects active in state machine)
-                      <CODE>
-                      (Default: {})
-    _onStateEntered - code that is executed once when state was entered, after
-                      onTransition (also once for the intial state) <CODE>
-                      (Default: {})
-    _onStateLeaving - code that is executed once when exiting state, before
-                      onTransition <CODE>
-                      (Default: {})
-    _name           - unique state name <STRING>
-                      (Default: "stateX" with X being a unique number)
+    _onState        - code that is executed when state is active <CODE> (Default: {})
+                      (frequency depends on amount of objects active in state machine)
+    _onStateEntered - code that is executed once when state was entered <CODE> (Default: {})
+                      after onTransition (also once for the intial state) 
+    _onStateLeaving - code that is executed once when exiting state, <CODE> (Default: {})
+                      before onTransition 
+    _name           - unique state name <STRING> (Default: "stateX" with X being a unique number)
 
 Returns:
     _name           - unique state name or empty string on error <STRING>

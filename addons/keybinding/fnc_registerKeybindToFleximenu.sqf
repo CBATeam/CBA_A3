@@ -8,17 +8,17 @@ Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
 Parameters:
- _modName            - Name of the registering mod [String]
- _actionName        - Name of the action to register [String]
- _fleximenuDef        - Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] [Array]
- _defaultKeybind    - Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
+ _modName            - Name of the registering mod <STRING>
+ _actionName        - Name of the action to register <STRING>
+ _fleximenuDef        - Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] <ARRAY>
+ _defaultKeybind    - Default keybind [DIK code, [shift?, ctrl?, alt?]] <ARRAY>
 
 Optional:
- _overwrite            - Overwrite existing keybind data? [Bool] (Default: False)
- _keypressType        - "keydown" (Default) = keyDown, "keyup" = keyUp [String]
+ _overwrite            - Overwrite existing keybind data? <BOOL> (Default: False)
+ _keypressType        - "keydown" (Default) = keyDown, "keyup" = keyUp <STRING>
 
 Returns:
- Returns the current keybind for the Fleximenu [Array]
+ Returns the current keybind for the Fleximenu <ARRAY>
 
 Examples:
     (begin example)
@@ -30,7 +30,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 // Clients only.
-if (isDedicated) exitWith {};
+if (isDedicated) exitWith { [] };
 diag_log text format ["[CBA Keybinding] WARNING: %1=>%2 called CBA_fnc_registerKeybindToFleximenu is no longer a valid function and has been replaced with CBA_fnc_addKeybindToFleximenu. Contact the developer of mod %1 to change the code to use the new function.", _this select 0,_this select 1];
 
 private _nullKeybind = [-1, false, false, false];

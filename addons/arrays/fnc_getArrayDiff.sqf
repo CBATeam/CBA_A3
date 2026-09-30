@@ -6,15 +6,17 @@ Description:
     A function used to return the differences between two arrays.
 
 Parameters:
-    Two Arrays of strings (must not contain scalars)
+    _arrayA: First array of strings (must not contain scalars) <ARRAY>
+    _arrayB: Second array of strings (must not contain scalars) <ARRAY>
+
+Returns:
+    <ARRAY> Array Differences (pair of arrays)
 
 Example:
     (begin example)
-    _distance = [[0, 0, 1], [0, 0, 0]] call CBA_fnc_getArrayDiff
+    _distance = [[0, 0, 1], [0, 0, 0]] call CBA_fnc_getArrayDiff; // return is [[1], [0]]
     (end example)
 
-Returns:
-    Array Differences (for above example, return is [[1], [0]])
 
 Author:
     Rommel

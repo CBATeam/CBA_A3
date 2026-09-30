@@ -14,11 +14,11 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to iterate [Array which is a Hash structure]
-    _code - Function to call with each pair which returns a bool (false will remove key from hash) [Code]
+    _hash - Hash to iterate <ARRAY>(CBA HASH)
+    _code - Function to call with each pair which returns a bool (false will remove key from hash) <CODE>
 
 Returns:
-    Number of removed entrys [Number]
+    Number of removed entrys <NUMBER>
 
 Example:
     (begin example)

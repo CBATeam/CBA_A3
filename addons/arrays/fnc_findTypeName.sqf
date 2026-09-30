@@ -6,16 +6,16 @@ Description:
     Returns the index of the first entry of the given type in an array.
 
 Parameters:
-    0: Array
-    1: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwise typename of the variable will be used.
+    _array: Array to search in. <ARRAY>
+    _typeName: TypeName, if parameter is a string, that contains a case insensitive typename, it will be used. Otherwise typename of the variable will be used. <STRING><ANY>
+
+Returns:
+    Index of the first entry of the indicated type in the array or -1 if no entry of the type could be found. <NUMBER>
 
 Example:
     (begin example)
-    _index = ["OBJECT", ["", Player, "test", nil, VARIABLE, nil]] call CBA_fnc_findTypeName
+    _index = [["", Player, "test", nil, VARIABLE, nil], "OBJECT"] call CBA_fnc_findTypeName
     (end)
-
-Returns:
-    Index of the first entry of the indicated type in the array or -1 if no entry of the type could be found.
 
 Author:
     joko // Jonas

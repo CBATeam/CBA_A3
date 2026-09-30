@@ -9,9 +9,8 @@ Description:
     Intended to show time elapsed, rather than time-of-day.
 
 Parameters:
-    _seconds - Number of seconds to format, for example from 'time' command <SCALAR>
-    _format  - Format to put time into "H:MM:SS", "M:SS",
-        "H:MM:SS.mmm" or "M:SS.mmm" (optional, default: "H:MM:SS") <STRING>
+    _seconds - Number of seconds to format, for example from 'time' command <NUMBER>
+    _format - Format to put time into [one of "H:MM:SS", "M:SS", "H:MM:SS.mmm" or "M:SS.mmm"] <STRING> (defaults to "H:MM:SS")
 
 Returns:
     Formatted time <STRING>

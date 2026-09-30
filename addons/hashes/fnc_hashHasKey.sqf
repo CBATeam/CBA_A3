@@ -9,11 +9,11 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to look for key in [Array which is a Hash structure]
-    _key - Key to search for in Hash [Any]
+    _hash - Hash to look for key in <ARRAY>(CBA HASH)
+    _key - Key to search for in Hash <ANY>
 
 Returns:
-    True if key defined, false if not defined [Boolean]
+    True if key defined, false if not defined <BOOL>
 
 Author:
     Spooner

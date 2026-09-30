@@ -11,9 +11,9 @@ Description:
     This works for proxy models as well!
 
 Parameters:
-    _unit - Unit to check [Object]
+    _unit - Unit to check <OBJECT>
 
-Returns:
+Returns: <ARRAY>
     [<NUMBER>, <NUMBER>, <NUMBER>]
         * Direction of unit head
         * Difference angle (negative or positive), e.g how many degrees turning

@@ -6,8 +6,8 @@ Description:
     Handle events on the watch input controls
 
 Parameters:
-    _event - The event that triggered the function
-    _args - The arguments passed to the event
+    _event - The event that triggered the function <STRING>
+    _args - The arguments passed to the event <ARRAY>
 
 Returns:
     nil

@@ -9,12 +9,12 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to look for key in [Array which is a Hash structure]
-    _key - Key to search for in Hash [Any]
-    _defaultOverwrite - Default Overwrite if key is not defined [Any]
+    _hash - Hash to look for key in <ARRAY>(CBA HASH)
+    _key - Key to search for in Hash <ANY>
+    _defaultOverwrite - Default Overwrite if key is not defined <ANY>(optional)
 
 Returns:
-    Value associated with the key, or Hash default value if key missing [Any]
+    Value associated with the key, or Hash default value if key missing <ANY>
 
 Author:
     Spooner

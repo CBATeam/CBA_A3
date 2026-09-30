@@ -8,10 +8,10 @@ Description:
     If the input angle is in the range 0 to 360, it will be returned unchanged.
 
 Parameters:
-    _angle - The unadjusted angle [Number]
+    _angle - The unadjusted angle <NUMBER>
 
 Returns:
-    Simplified angle [Number]
+    Simplified angle <NUMBER>
 
 Examples:
    (begin example)

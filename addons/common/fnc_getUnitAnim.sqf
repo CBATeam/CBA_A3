@@ -6,11 +6,10 @@ Description:
     Get information about a unit's stance and speed.
 
 Parameters:
-    _unit - get stance and movement mode for this unit
+    _unit - get stance and movement mode for this unit <OBJECT>
 
 Returns:
-    An array containing two strings, [ stance, speed ] where
-
+    An <ARRAY> containing two strings, [ stance, speed ] where
     - stance is one of "prone", "kneel" or "stand"
     - speed is one of "stop", "slow", "normal" or "fast"
 

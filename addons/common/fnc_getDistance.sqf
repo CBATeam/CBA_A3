@@ -8,13 +8,13 @@ Description:
 Parameters:
     Array containing two of <MARKER, OBJECT, LOCATION, GROUP, TASK, ARRAY>
 
+Returns:
+    Number - Distance in meters <NUMBER>
+    
 Example:
     (begin example)
     _distance = [Player, [0,0,0]] call CBA_fnc_getDistance
     (end)
-
-Returns:
-    Number - Distance in meters
 
 Author:
     Rommel

@@ -8,12 +8,13 @@ Description:
     Passing strings in for the Northing and Easting is the preferred way.
 
 Parameters:
-    _pos - Position in 10 digit grid format [Easting, Northing] [Array]
-    _dist - Distance from the starting position [Number]
-    _dir  - Direction from the starting position [Number]
+    _pos - Position in 10 digit grid format [Easting, Northing] <ARRAY><STRING>
+        "EEEEENNNNN" or ["EEEEE", "NNNNN"] or [12345, 67890]
+    _dist - Distance from the starting position <NUMBER>
+    _dir  - Direction from the starting position <NUMBER>
 
 Returns:
-    New grid reference (10 digit) in format [Easting, Northing]
+    New grid reference (10 digit) in format [Easting, Northing] <ARRAY>
 
 Examples:
     (begin example)

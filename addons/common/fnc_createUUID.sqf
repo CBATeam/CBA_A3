@@ -9,7 +9,7 @@ Parameters:
     None
 
 Returns:
-    UUID [String]
+    UUID <STRING>
 
 Example:
     (begin example)

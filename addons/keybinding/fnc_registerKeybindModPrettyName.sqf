@@ -6,8 +6,8 @@ Description:
     Associates a pretty name to a keybinding mod entry.
 
 Parameters:
-    _addonName  - Name of the registering mod [String]
-    _prettyName - Pretty name of the mod (localized, etc) [String]
+    _addonName  - Name of the registering mod <STRING>
+    _prettyName - Pretty name of the mod (localized, etc) <STRING>
 
 Returns:
 

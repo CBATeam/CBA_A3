@@ -6,20 +6,20 @@ Description:
  Adds or updates the keybind handler for a defined Fleximenu and creates that Fleximenu.
 
 Parameters:
- _modName            - Name of the registering mod [String]
- _actionName        - Name of the action to register [String]
- _displayName        - Pretty name, or an array of strings for the pretty name and a tool tip [String]
- _fleximenuDef        - Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] [Array]
+ _modName           - Name of the registering mod <STRING>
+ _actionName        - Name of the action to register <STRING>
+ _displayName       - Pretty name, or an array of strings for the pretty name and a tool tip <STRING>
+ _fleximenuDef      - Parameter array for CBA_fnc_flexiMenu_Add, but with the keybind set to [] <ARRAY>
 
 Optional:
- _defaultKeybind    - Default keybind [DIK code, [shift?, ctrl?, alt?]] [Array]
- _holdKey           - Will the key fire every frame while down [Bool] (Default: true)
- _holdDelay         - How long after keydown will the key event fire, in seconds. [Float] (Default: 0)
- _overwrite            - Overwrite existing keybind data? [Bool] (Default: False)
+ _defaultKeybind    - Default keybind [DIK code, [shift?, ctrl?, alt?]] <ARRAY>
+ _holdKey           - Will the key fire every frame while down <BOOL> (Default: true)
+ _holdDelay         - How long after keydown will the key event fire, in seconds. <NUMBER> (Default: 0)
+ _overwrite            - Overwrite existing keybind data? <BOOL> (Default: False)
 
 
 Returns:
- Returns the current keybind for the Fleximenu [Array]
+ Returns the current keybind for the Fleximenu <ARRAY>
 
 Examples:
     (begin example)
@@ -33,7 +33,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 // Clients only.
-if (isDedicated) exitWith {};
+if (isDedicated) exitWith { [] };
 
 private _nullKeybind = [-1, [false, false, false]];
 

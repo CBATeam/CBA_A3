@@ -6,11 +6,11 @@ Description:
     Gets the direction between two map grid references.
 
 Parameters:
-    _pos1 - Origin position array in format [Easting, Northing] [Array]
-    _pos2 - End position in format [Easting, Northing] [Array]
+    _pos1 - Origin position array in format [Easting, Northing] <ARRAY>
+    _pos2 - End position in format [Easting, Northing] <ARRAY>
 
 Returns:
-    Direction from _pos1 to _pos2 [Number]
+    Direction from _pos1 to _pos2 <NUMBER>
 
 Examples:
     (begin example)

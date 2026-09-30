@@ -10,11 +10,11 @@ Description:
 
 Parameters:
     _string     - String to extract from <STRING>
-    _startIndex - Index to start the substring extraction <SCALAR>
-    _length     - Length of the extracted substring, <= 0 means whole string is selected (optional, default: 0) <SCALAR>
+    _startIndex - Index to start the substring extraction <NUMBER>
+    _length     - length of the extracted substring <NUMBER> (Optional) if is not set than from _startIndex to end
 
 Returns:
-    Extracted string <STRING>
+    String extracted <STRING>
 
 Example:
     (begin example)

@@ -10,14 +10,13 @@ Parameters:
     _totalTime  - Time for the progress bar to complete <NUMBER>
     _condition  - Execute every frame. If reports false, close the progress bar <CODE>
     _onSuccess  - Script to execute if the progress bar completed <CODE>
-    _onFailure  - Script to execute if the progress bar was aborted prematurely
-        (optional, default: {}) <CODE>
+    _onFailure  - Script to execute if the progress bar was aborted prematurely <CODE> (optional, default: {}) 
     _arguments  - Arguments passed to the scripts (optional, default: []) <ANY>
     _blockMouse - Block mouse input (optional, default: true) <BOOLEAN>
-    _blockKeys  - Block keyboard input
-        requires _blockMouse to be set to true (optional, default: true) <BOOLEAN>
-    _allowClose - Allow ESC key to abort the progress bar
-        requires _blockMouse to be set to true (optional, default: true) <BOOLEAN>
+    _blockKeys  - Block keyboard input <BOOLEAN> (optional, default: true) 
+                  requires _blockMouse to be set to true 
+    _allowClose - Allow ESC key to abort the progress bar <BOOL> (optional, default: true) 
+                  requires _blockMouse to be set to true 
 
 Arguments:
     _this:

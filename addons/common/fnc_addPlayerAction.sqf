@@ -11,10 +11,10 @@ Description:
     removeAction command with these player-action indices!
 
 Parameters:
-    _actionArray - Array that defines the action, as used in addAction command [Array]
+    _actionArray - Array that defines the action, as used in addAction command <ARRAY>
 
 Returns:
-    Index of action if added. -1 if used on a dedicated server [Number]
+    Index of action if added. -1 if used on a dedicated server <NUMBER>
 
 Example:
     (begin example)

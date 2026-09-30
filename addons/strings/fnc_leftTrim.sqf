@@ -10,7 +10,7 @@ Description:
 
 Parameters:
     _string - String to trim <STRING>
-    _trim   - Characters to trim (optional, default: "") <STRING>
+    _trim   - Characters to trim <STRING> (default: "")
 
 Returns:
     Trimmed string <STRING>

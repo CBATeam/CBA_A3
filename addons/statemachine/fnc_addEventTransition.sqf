@@ -10,12 +10,9 @@ Parameters:
     _originalState  - state the transition origins from <STRING>
     _targetState    - state the transition goes to <STRING>
     _events         - list of events that can trigger the transition <ARRAY>
-    _condition      - additional condition required for the transition to
-                      trigger <CODE>
-    _onTransition   - code that gets executed once transition happens <CODE>
-                      (Default: {})
-    _name           - name for this specific transition <STRING>
-                      (Default: "NONAME")
+    _condition      - additional condition required for the transition to trigger <CODE> (default: {true})
+    _onTransition   - code that gets executed once transition happens <CODE> (Default: {})
+    _name           - name for this specific transition <STRING> (Default: "NONAME")
 
 Returns:
     _wasCreated     - check if the transition was created <BOOL>
@@ -39,7 +36,7 @@ params [
     ["_originalState", "", [""]],
     ["_targetState", "", [""]],
     ["_events", [], [[]]],
-    ["_condition", {}, [{}, ""]],
+    ["_condition", {}, [{}]],
     ["_onTransition", {}, [{}]],
     ["_name", "NONAME", [""]]
 ];

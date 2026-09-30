@@ -7,10 +7,10 @@ Description:
    Get number of elements in a Hash.
 
 Parameters:
-    _hash - Hash to check size of [Array which is a Hash structure]
+    _hash - Hash to check size of <ARRAY>(CBA HASH)
 
 Returns:
-    Size of the Hash or -1 if the argument is not a Hash [Number]
+    Size of the Hash or -1 if the argument is not a Hash <NUMBER>
 
 Examples:
 (begin code)

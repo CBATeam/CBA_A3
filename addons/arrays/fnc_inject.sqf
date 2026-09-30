@@ -11,12 +11,12 @@ Description:
     * _x - Element of _array.
 
 Parameters:
-    _array - Array of key-value pairs to create Hash from [Array]
-    _initial - Initial value to pass into the function as _accumulator [Any]
-    _function - Code to pass values to [Function]
+    _array - Array of key-value pairs to create Hash from <ARRAY>
+    _initial - Initial value to pass into the function as _accumulator <ANY>
+    _function - Code to pass values to <CODE>
 
 Returns:
-    Accumlated value [Any]
+    Accumulated value <ANY>
 
 Examples:
     (begin example)

@@ -8,10 +8,10 @@ Description:
     DEPRECATED. Use isTurnedOut instead.
 
 Parameters:
-    _unit - Unit to check [Object]
+    _unit - Unit to check <OBJECT>
 
 Returns:
-    "true" for turned out or "false" for not turned out [Boolean]
+    "true" for turned out or "false" for not turned out <BOOL>
 
 Examples:
     (begin example)

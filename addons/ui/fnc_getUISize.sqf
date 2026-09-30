@@ -6,7 +6,7 @@ Description:
     Used to determine the UI size of the screen.
 
 Parameters:
-    _output - the desired output format, either "NUMBER" or "STRING".
+    _output - the desired output format, either ["NUMBER" or "STRING"] <STRING>
 
 Returns:
     If the desired output format is

@@ -10,7 +10,7 @@ Parameters:
     _string - String to measure <STRING>
 
 Returns:
-    Number of characters in string <SCALAR>
+    Number of characters in string <NUMBER>
 
 Examples:
     (begin example)

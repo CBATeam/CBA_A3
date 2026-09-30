@@ -9,11 +9,11 @@ Description:
     See <CBA_fnc_hashCreate>.
 
 Parameters:
-    _hash - Hash to use [Hash]
-    _key - Key to remove from Hash [Any]
+    _hash - Hash to use <ARRAY>(CBA HASH)
+    _key - Key to remove from Hash <ANY>
 
 Returns:
-    The hash [Hash]
+    The hash <ARRAY>(CBA HASH)
 
 Author:
     Sickboy

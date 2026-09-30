@@ -9,11 +9,11 @@ Description:
     magnitude of the height component.
 
 Parameters:
-    _u the first vector.
-    _v the second vector.
+    _u the first vector. <ARRAY>
+    _v the second vector. <ARRAY>
 
 Returns:
-    The cross product (scalar magnitude) of the two vectors.
+    The cross product (scalar magnitude) of the two vectors. <NUMBER>
 
 Examples:
     (begin example)

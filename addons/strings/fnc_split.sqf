@@ -6,12 +6,12 @@ Description:
     Splits a string into substrings using a separator. Inverse of <CBA_fnc_join>.
 
 Parameters:
-    _string    - String to split up <STRING>
-    _separator - String to split around. If an empty string, "", then split
-        every character into a separate string (optional, default: "") <STRING>
+    _string - String to split up <STRING>
+    _separator - String to split around. <STRING> (defaults to "")
+        If an empty string, "", then split every character into a separate string 
 
 Returns:
-    The split string <ARRAY of STRINGS>
+    The split string <ARRAY of STRING>
 
 Examples:
     (begin example)

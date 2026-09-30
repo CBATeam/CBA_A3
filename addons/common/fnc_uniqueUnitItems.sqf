@@ -6,13 +6,13 @@ Description:
     Retrieves a unique list of items in the units inventory.
 
 Parameters:
-    _unit           - Unit to retrieve the items from
-    _weaponItems    - Include weapons, attachments, loaded magazines (Default: false)
-    _backpack       - Include items in backpack    (Default: true)
-    _vest           - Include items in vest        (Default: true)
-    _uniform        - Include items in uniform     (Default: true)
-    _assignedItems  - Include assigned items       (Default: true)
-    _magazines      - Include not loaded magazines (Default: false)
+    _unit           - Unit to retrieve the items from <OBJECT>
+    _weaponItems    - Include weapons, attachments, loaded magazines <BOOL>(Default: false)
+    _backpack       - Include items in backpack <BOOL>(Default: true)
+    _vest           - Include items in vest <BOOL>(Default: true)
+    _uniform        - Include items in uniform <BOOL>(Default: true)
+    _assignedItems  - Include assigned items <BOOL>(Default: true)
+    _magazines      - Include not loaded magazines <BOOL>(Default: false)
 
 Example:
     (begin example)

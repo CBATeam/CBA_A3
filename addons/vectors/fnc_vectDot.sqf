@@ -6,11 +6,11 @@ Description:
     Vectors can be either two or three dimesions, but they must be the same dimension.
 
 Parameters:
-    _u the first vector.
-    _v the second vector.
+    _u the first vector. <ARRAY>
+    _v the second vector. <ARRAY>
 
 Returns:
-    The dot product (scalar) of the two vectors.
+    The dot product (scalar) of the two vectors. <NUMBER>
 
 Examples:
     (begin example)

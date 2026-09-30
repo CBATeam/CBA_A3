@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     _namespace - a namespace <LOCATION, OBJECT>
-    _defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default [Any, defaults to nil]
+    _defaultValue - Default value. Used when key doesn't exist. A key is also removed from the hash if the value is set to this default <ANY> (default: nil)
 
 Returns:
     _hash - a hash <ARRAY>

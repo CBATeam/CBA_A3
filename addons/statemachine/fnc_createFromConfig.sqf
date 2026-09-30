@@ -6,9 +6,8 @@ Description:
     Creates a state machine from a config class.
 
 Parameters:
-    _config         - config path that contains a valid state machine config
+    _config         - config path that contains a valid state machine config <CONFIG>
                       (check the example.hpp file for the required structure)
-                      <CONFIG>
 
 Returns:
     _stateMachine   - a state machine <LOCATION> (or <NIL> if config was invalid)

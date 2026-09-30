@@ -6,11 +6,11 @@ Description:
  Returns the difference of two vectors.  Vectors can be 2D or 3D.
 
 Parameters:
- _u the first vector.
- _v the second vector.
+ _u the first vector. <ARRAY>
+ _v the second vector. <ARRAY>
 
 Returns:
- the sum of the two vectors (u - v).
+ the sum of the two vectors (u - v). <ARRAY>
 
 Examples:
     (begin example)
