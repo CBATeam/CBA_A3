@@ -16,6 +16,7 @@
             <Chinese>社群基礎模組 - 按鍵綁定</Chinese>
             <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
             <Turkish>Community Base Addons - Klavye Tuşları</Turkish>
+            <Ukrainian>Community Base Addons - Призначення клавіш</Ukrainian>
         </Key>
         <Key ID="STR_cba_keybinding_configureAddons">
             <English>Configure Addons</English>
@@ -32,6 +33,7 @@
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
             <Turkish>Eklentileri Düzenle</Turkish>
+            <Ukrainian>Налаштувати аддони</Ukrainian>
         </Key>
         <Key ID="STR_cba_keybinding_configureBase">
             <English>Configure Base</English>
@@ -48,6 +50,7 @@
             <Chinese>基礎設定</Chinese>
             <Chinesesimp>基础设定</Chinesesimp>
             <Turkish>Temeli Düzenle</Turkish>
+            <Ukrainian>Основні налаштування</Ukrainian>
         </Key>
         <Key ID="STR_cba_keybinding_unkownKey">
             <English>Unknown Key %1</English>
@@ -64,6 +67,7 @@
             <Chinese>未知按鍵%1</Chinese>
             <Chinesesimp>未知按键%1</Chinesesimp>
             <Turkish>Bilinmeyen Tuş %1</Turkish>
+            <Ukrainian>Невідома клавіша %1</Ukrainian>
         </Key>
     </Package>
 </Project>

@@ -15,6 +15,7 @@
             <Chinese>社群基礎模組 - 事件</Chinese>
             <Chinesesimp>社群基础模组 - 事件</Chinesesimp>
             <Turkish>Community Base Addons - Durumlar</Turkish>
+            <Ukrainian>Community Base Addons - Події</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionMode">
             <English>Weapon Repetition Mode</English>
@@ -30,6 +31,7 @@
             <Chinese>武器反作模式</Chinese>
             <Chinesesimp>武器连发模式</Chinesesimp>
             <Turkish>Silah Tekrar Modu</Turkish>
+            <Ukrainian>Режим досилання патрона</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOptic">
             <English>Leave Optics View</English>
@@ -45,6 +47,7 @@
             <Chinese>放下瞄具</Chinese>
             <Chinesesimp>离开瞄准视野</Chinesesimp>
             <Turkish>Dürbünden Çık</Turkish>
+            <Ukrainian>Вихід із прицілу</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeOpticTooltip">
             <English>Bolt or rack weapon by leaving optics view.</English>
@@ -60,6 +63,7 @@
             <Chinese>當拉栓以及退膛武器時是否離開瞄準狀態</Chinese>
             <Chinesesimp>当武器拉栓以及退膛时是否离开瞄准视野</Chinesesimp>
             <Turkish>Silahı sürgülerken dürbünü kapat.</Turkish>
+            <Ukrainian>Досилати патрон при виході з прицілу.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTooltip">
             <English>Mode of bolting or pumping weapons.</English>
@@ -75,6 +79,7 @@
             <Chinese>設定武器如何拉栓及退膛</Chinese>
             <Chinesesimp>设置武器拉栓及退膛状态</Chinesesimp>
             <Turkish>Silahın sürgülü ya da pompalı modda olması.</Turkish>
+            <Ukrainian>Режим роботи затвора або помпи зброї.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPress">
             <English>Press Trigger</English>
@@ -90,6 +95,7 @@
             <Chinese>按下扳機</Chinese>
             <Chinesesimp>按下板机</Chinesesimp>
             <Turkish>Tetiğe Bas</Turkish>
+            <Ukrainian>Натискання спуску</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerPressTooltip">
             <English>Bolt or rack weapon by pressing the trigger again.</English>
@@ -105,6 +111,7 @@
             <Chinese>按下板機才拉栓或退膛</Chinese>
             <Chinesesimp>再次按下板机才能拉栓或退膛</Chinesesimp>
             <Turkish>Silahın sürgüsünü çekmek için tetiğe bas.</Turkish>
+            <Ukrainian>Досилати патрон повторним натисканням спуску.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerRelease">
             <English>Release Trigger</English>
@@ -120,6 +127,7 @@
             <Chinese>放開板機</Chinese>
             <Chinesesimp>松开板机</Chinesesimp>
             <Turkish>Tetiği Bırak</Turkish>
+            <Ukrainian>Відпускання спуску</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Events_RepetitionModeTriggerReleaseTooltip">
             <English>Bolt or rack weapon by releasing trigger (hold trigger to prevent immediate action).</English>
@@ -135,6 +143,7 @@
             <Chinese>當鬆開板機後拉栓或退膛（握住板機以避免突然的動作）。</Chinese>
             <Chinesesimp>当松开板机后拉栓或退膛（扣住板机以避免突然的动作）。</Chinesesimp>
             <Turkish>Silahın sürgüsünü çekmek için tetiği bırak (Tetiğe basılı tutarak sürgülemeyi engelle).</Turkish>
+            <Ukrainian>Досилати патрон при відпусканні спуску (тримайте спуск, щоб відкласти дію).</Ukrainian>
         </Key>
     </Package>
 </Project>

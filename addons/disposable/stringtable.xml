@@ -15,6 +15,7 @@
             <Chinese>社群基礎模組 - 一次性武器</Chinese>
             <Chinesesimp>社群基础模组 - 一次性武器</Chinesesimp>
             <Turkish>Community Base Addons - Tek Kullanımlık Silahlar</Turkish>
+            <Ukrainian>Community Base Addons - Одноразова зброя</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnly">
             <English>AI Only</English>
@@ -30,6 +31,7 @@
             <Chinese>只有AI</Chinese>
             <Chinesesimp>仅AI</Chinesesimp>
             <Turkish>Sadece AI</Turkish>
+            <Ukrainian>Лише ШІ</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropAIOnlyTooltip">
             <English>Only AI drops the used disposable launcher.</English>
@@ -45,6 +47,7 @@
             <Chinese>只有AI才會丟棄使用過的一次性發射器</Chinese>
             <Chinesesimp>只有AI会丢弃使用过的一次性发射器</Chinesesimp>
             <Turkish>Sadece yapay zeka tek kullanımlık roketleri atar.</Turkish>
+            <Ukrainian>Лише ШІ викидає використаний одноразовий гранатомет.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropNever">
             <English>Never</English>
@@ -60,6 +63,7 @@
             <Chinese>永不</Chinese>
             <Chinesesimp>从不</Chinesesimp>
             <Turkish>Asla</Turkish>
+            <Ukrainian>Ніколи</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropNeverTooltip">
             <English>Don't automatically drop the used disposable launcher.</English>
@@ -75,6 +79,7 @@
             <Chinese>不要自動丟棄一次性使用之發射器</Chinese>
             <Chinesesimp>不自动丢弃使用过的一次性发射器。</Chinesesimp>
             <Turkish>Otomatik olarak tek kullanımlık roketleri atma.</Turkish>
+            <Ukrainian>Не викидати автоматично використаний одноразовий гранатомет.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeapon">
             <English>Selected Another Weapon</English>
@@ -90,6 +95,7 @@
             <Chinese>選擇其他武器</Chinese>
             <Chinesesimp>选择其他武器</Chinesesimp>
             <Turkish>Başka Bir Silah Seçince</Turkish>
+            <Ukrainian>Вибрано іншу зброю</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropSelectedAnotherWeaponTooltip">
             <English>Automatically drop the used disposable launcher as soon as another weapon is selected.</English>
@@ -105,6 +111,7 @@
             <Chinese>當切換別的武器時自動丟棄一次性發射器。</Chinese>
             <Chinesesimp>当切换其他武器时，就会自动丢弃使用过的一次性发射器。</Chinesesimp>
             <Turkish>Başka bir silah seçildiği zaman otomatik olarak tek kullanımlık roketleri at.</Turkish>
+            <Ukrainian>Автоматично викидати використаний одноразовий гранатомет, щойно вибрано іншу зброю.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_DropUsedLauncher">
             <English>Drop Used Disposable Launcher</English>
@@ -120,6 +127,7 @@
             <Chinese>丟棄使用過的一次性發射器</Chinese>
             <Chinesesimp>丢弃使用过的一次性发射器</Chinesesimp>
             <Turkish>Kullanılan Tek Kullanımlık Roketleri At</Turkish>
+            <Ukrainian>Викидати використаний гранатомет</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncher">
             <English>Replace Disposable Launcher</English>
@@ -135,6 +143,7 @@
             <Chinese>替換掉一次性發射器</Chinese>
             <Chinesesimp>替换一次性发射器</Chinesesimp>
             <Turkish>Tek Kullanımlık Roketleri Değiştir</Turkish>
+            <Ukrainian>Заміна одноразових гранатометів</Ukrainian>
         </Key>
         <Key ID="STR_CBA_disposable_ReplaceDisposableLauncherTooltip">
             <English>If enabled, disposable launchers can only be used once. Ammunition for disposable launchers in containers and vehicles will be replaced with loaded disposable launchers. If disabled, disposable launchers can be reloaded after use.</English>
@@ -150,6 +159,7 @@
             <Chinese>啟用時，將會把載具或容器裡面給於一次性發射器的彈藥換成一次性發射器本身，並且使其只能使用一次。如果關閉，一次性發射器即可再度裝填</Chinese>
             <Chinesesimp>如果启用，一次性发射器将只能使用一次。库存和车辆中的一次性发射器的弹药将被替换为已装填的一次性发射器。如果禁用，一次性发射器在使用后可以重新装填。</Chinesesimp>
             <Turkish>Eğer bu ayar açıksa, tek kullanımlık roketler sadece bir kere kullanılabilir. Tek kullanımlık rokeyler için cephane başka tek kullanımlık roketler ile değiştirilir. Bu ayar kapalıyken tek kullanımlık roketler de birçok kez kullanılabilir.</Turkish>
+            <Ukrainian>Якщо увімкнено, одноразові гранатомети можна використати лише раз. Боєприпаси до них у контейнерах і техніці буде замінено на заряджені одноразові гранатомети. Якщо вимкнено, одноразові гранатомети можна перезаряджати після використання.</Ukrainian>
         </Key>
     </Package>
 </Project>

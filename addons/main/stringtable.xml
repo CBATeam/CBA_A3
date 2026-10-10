@@ -16,6 +16,7 @@
             <Chinese>CBA製作組</Chinese>
             <Chinesesimp>CBA制作组</Chinesesimp>
             <Turkish>CBA Takımı</Turkish>
+            <Ukrainian>Команда CBA</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Main_AddonText">
             <English>ADDON:</English>
@@ -31,6 +32,7 @@
             <Chinese>模組:</Chinese>
             <Chinesesimp>模组:</Chinesesimp>
             <Turkish>EKLENTİ:</Turkish>
+            <Ukrainian>АДДОН:</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Main_Component">
             <English>Community Base Addons - Main Component</English>
@@ -47,6 +49,7 @@
             <Chinese>社群基礎模組 - 主要組件</Chinese>
             <Chinesesimp>社群基础模组 - 主要组件</Chinesesimp>
             <Turkish>Community Base Addons - Ana Bileşenler</Turkish>
+            <Ukrainian>Community Base Addons - Основний компонент</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Main_DisplayName">
             <English>Community Base Addons</English>
@@ -63,6 +66,7 @@
             <Chinese>社群基礎模組</Chinese>
             <Chinesesimp>社群基础模组</Chinesesimp>
             <Turkish>Community Base Addons</Turkish>
+            <Ukrainian>Community Base Addons</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Optional_Component">
             <English>Community Base Addons - Optional Component</English>
@@ -79,6 +83,7 @@
             <Chinese>社群基礎模組 - 可選組件</Chinese>
             <Chinesesimp>社群基础模组 - 可选组件</Chinesesimp>
             <Turkish>Community Base Addons - Opsiyonel Bileşenler</Turkish>
+            <Ukrainian>Community Base Addons - Необов'язковий компонент</Ukrainian>
         </Key>
         <Key ID="STR_CBA_URL">
             <English>https://www.github.com/CBATeam/CBA_A3</English>
@@ -95,6 +100,7 @@
             <Chinese>https://www.github.com/CBATeam/CBA_A3</Chinese>
             <Chinesesimp>https://www.github.com/CBATeam/CBA_A3</Chinesesimp>
             <Turkish>https://www.github.com/CBATeam/CBA_A3</Turkish>
+            <Ukrainian>https://www.github.com/CBATeam/CBA_A3</Ukrainian>
         </Key>
     </Package>
 </Project>

@@ -15,6 +15,7 @@
             <Chinese>社群基礎模組 - 瞄具</Chinese>
             <Chinesesimp>社区基础插件—瞄具</Chinesesimp>
             <Turkish>Community Base Addons - Optikler</Turkish>
+            <Ukrainian>Community Base Addons - Оптика</Ukrainian>
         </Key>
         <Key ID="STR_cba_optics_UsePIP">
             <English>Use Picture-in-Picture Optics</English>
@@ -30,6 +31,7 @@
             <Chinese>使用PiP(畫中畫)鏡頭</Chinese>
             <Chinesesimp>使用画中画（PiP）瞄具</Chinesesimp>
             <Turkish>PIP optikler kullan</Turkish>
+            <Ukrainian>Використовувати PiP-оптику</Ukrainian>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch">
             <English>Toggle Reticle</English>
@@ -45,6 +47,7 @@
             <Chinese>切換瞄準線</Chinese>
             <Chinesesimp>切换瞄准线</Chinesesimp>
             <Turkish>Dürbün çizgilerini değiştir</Turkish>
+            <Ukrainian>Перемкнути сітку</Ukrainian>
         </Key>
         <Key ID="STR_cba_optics_manual_reticle_switch_tooltip">
             <English>Manually switch the reticle of the optic.</English>
@@ -60,6 +63,7 @@
             <Chinese>手動切換瞄具的瞄準線</Chinese>
             <Chinesesimp>手动切换瞄具的瞄准线</Chinesesimp>
             <Turkish>Dürbünün çizgilerini elle değiştirmek için.</Turkish>
+            <Ukrainian>Вручну перемикати сітку прицілу.</Ukrainian>
         </Key>
     </Package>
 </Project>

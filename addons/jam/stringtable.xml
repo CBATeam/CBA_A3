@@ -16,6 +16,7 @@
             <Chinese>口徑：7.62x51 毫米&lt;br/&gt;個數：150</Chinese>
             <Chinesesimp>口径：7.62x51 毫米&lt;br/&gt;容弹量：150</Chinesesimp>
             <Turkish>Kalibre: 7.62x51 mm&lt;br/&gt;Mermi: 150</Turkish>
+            <Ukrainian>Калібр: 7,62x51 мм&lt;br/&gt;Набоїв: 150</Ukrainian>
         </Key>
         <Key ID="STR_CBA_JAM_150rnd_762x51_box_tracer_description">
             <English>Caliber: 7.62x51 mm Tracer - Green&lt;br/&gt;Rounds: 150</English>
@@ -32,6 +33,7 @@
             <Chinese>口徑：7.62x51 毫米 曳光彈－綠&lt;br/&gt;個數：150</Chinese>
             <Chinesesimp>口径：7.62x51 毫米曳光弹 - 绿色&lt;br/&gt;容弹量：150</Chinesesimp>
             <Turkish>Kalibre: 7.62x51 mm İzli - Yeşil&lt;br/&gt;Mermi: 150</Turkish>
+            <Ukrainian>Калібр: 7,62x51 мм трасер - зелений&lt;br/&gt;Набоїв: 150</Ukrainian>
         </Key>
         <Key ID="STR_CBA_JAM_Component">
             <English>Community Base Addons - Joint Ammo Magazines</English>
@@ -46,6 +48,7 @@
             <Chinese>社群基礎模組 - 聯合彈匣</Chinese>
             <Chinesesimp>社区基础插件—通用弹匣</Chinesesimp>
             <Turkish>Community Base Addons - Birleştirilmiş Cephane Şarjörleri</Turkish>
+            <Ukrainian>Community Base Addons - Спільні набої та магазини</Ukrainian>
         </Key>
     </Package>
 </Project>

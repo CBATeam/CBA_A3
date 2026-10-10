@@ -16,6 +16,7 @@
             <Chinesesimp>模组</Chinesesimp>
             <Turkish>Modüller</Turkish>
             <Hungarian>Addons</Hungarian>
+            <Ukrainian>Аддони</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Credits">
             <English>Credits</English>
@@ -32,6 +33,7 @@
             <Chinesesimp>制作组</Chinesesimp>
             <Turkish>Yapımcılar</Turkish>
             <Hungarian>Credits</Hungarian>
+            <Ukrainian>Автори</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Help_Component">
             <English>Community Base Addons - Help</English>
@@ -48,6 +50,7 @@
             <Chinese>社群基礎模組 - 幫助</Chinese>
             <Chinesesimp>社群基础模组 - 帮助</Chinesesimp>
             <Turkish>Community Base Addons - Yardım</Turkish>
+            <Ukrainian>Community Base Addons - Довідка</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Help_Keys">
             <English>Keybindings</English>
@@ -64,6 +67,7 @@
             <Chinesesimp>按键绑定</Chinesesimp>
             <Turkish>Klavye Tuşları</Turkish>
             <Hungarian>Keybindings</Hungarian>
+            <Ukrainian>Клавіші</Ukrainian>
         </Key>
     </Package>
 </Project>

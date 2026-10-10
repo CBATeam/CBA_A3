@@ -16,6 +16,7 @@
             <Chinese>模組設定選項...</Chinese>
             <Chinesesimp>模组设定选项...</Chinesesimp>
             <Turkish>Eklenti Ayarları...</Turkish>
+            <Ukrainian>Налаштування аддонів...</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient">
             <English>Client</English>
@@ -32,6 +33,7 @@
             <Chinese>客戶端</Chinese>
             <Chinesesimp>客户端</Chinesesimp>
             <Turkish>Oyuncu</Turkish>
+            <Ukrainian>Клієнт</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonClient_tooltip">
             <English>Edit your local settings.</English>
@@ -48,6 +50,7 @@
             <Chinese>編輯你本地端的設定。</Chinese>
             <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
             <Turkish>Yerel ayarlarınızı değiştirin.</Turkish>
+            <Ukrainian>Змінити локальні налаштування.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport">
             <English>Export</English>
@@ -64,6 +67,7 @@
             <Chinese>匯出</Chinese>
             <Chinesesimp>导出</Chinesesimp>
             <Turkish>Export</Turkish>
+            <Ukrainian>Експорт</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonExport_tooltip">
             <English>Export settings to clipboard.</English>
@@ -80,6 +84,7 @@
             <Chinese>匯出設定到剪貼簿。</Chinese>
             <Chinesesimp>导出设定到剪贴板。</Chinesesimp>
             <Turkish>Ayarları panoya kopyala.</Turkish>
+            <Ukrainian>Експортувати налаштування в буфер обміну.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport">
             <English>Import</English>
@@ -96,6 +101,7 @@
             <Chinese>匯入</Chinese>
             <Chinesesimp>导入</Chinesesimp>
             <Turkish>Import</Turkish>
+            <Ukrainian>Імпорт</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonImport_tooltip">
             <English>Import settings from clipboard.</English>
@@ -112,6 +118,7 @@
             <Chinese>從剪貼簿匯入設定。</Chinese>
             <Chinesesimp>从剪贴板导入设定。</Chinesesimp>
             <Turkish>Ayarları panodan çek.</Turkish>
+            <Ukrainian>Імпортувати налаштування з буфера обміну.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLoad_tooltip">
             <English>Load settings from preset.</English>
@@ -128,6 +135,7 @@
             <Chinese>載入預設的設定。</Chinese>
             <Chinesesimp>载入预设的设定。</Chinesesimp>
             <Turkish>Şablondan ayarları yükle.</Turkish>
+            <Ukrainian>Завантажити налаштування з пресету.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonLocal">
             <English>Local</English>
@@ -144,6 +152,7 @@
             <Chinese>本地端</Chinese>
             <Chinesesimp>本地端</Chinesesimp>
             <Turkish>Yerel</Turkish>
+            <Ukrainian>Локальні</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission">
             <English>Mission</English>
@@ -160,6 +169,7 @@
             <Chinese>任務</Chinese>
             <Chinesesimp>任务</Chinesesimp>
             <Turkish>Görev</Turkish>
+            <Ukrainian>Місія</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip">
             <English>Look at the mission's settings.</English>
@@ -176,6 +186,7 @@
             <Chinese>查看任務的設定。</Chinese>
             <Chinesesimp>查看任务的设定。</Chinesesimp>
             <Turkish>Görev'in ayarlarına bak.</Turkish>
+            <Ukrainian>Переглянути налаштування місії.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonMission_tooltip_3den">
             <English>Edit the mission's settings.</English>
@@ -192,6 +203,7 @@
             <Chinese>編輯任務的設定。</Chinese>
             <Chinesesimp>编辑任务的设定。</Chinesesimp>
             <Turkish>Görev'in ayarlarını değiştir.</Turkish>
+            <Ukrainian>Змінити налаштування місії.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonSave_tooltip">
             <English>Save current settings as preset.</English>
@@ -208,11 +220,13 @@
             <Chinese>保存當前的設定為預設。</Chinese>
             <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
             <Turkish>Şuanki ayaları şablon olarak kaydet.</Turkish>
+            <Ukrainian>Зберегти поточні налаштування як пресет.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonSearch_tooltip">
             <English>Search settings.</English>
             <Spanish>Buscar ajustes.</Spanish>
             <Japanese>検索設定</Japanese>
+            <Ukrainian>Пошук налаштувань.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
             <English>Server</English>
@@ -229,6 +243,7 @@
             <Chinese>伺服器</Chinese>
             <Chinesesimp>服务器</Chinesesimp>
             <Turkish>Sunucu</Turkish>
+            <Ukrainian>Сервер</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer_tooltip">
             <English>Look at the server's settings. Log in as admin to change.</English>
@@ -245,6 +260,7 @@
             <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
             <Chinesesimp>查看服务器的设定。必须登入管理员才能编辑设定。</Chinesesimp>
             <Turkish>Sunucu ayarlarına bak. Değiştirmek için admin olarak giriş yapın.</Turkish>
+            <Ukrainian>Переглянути налаштування сервера. Увійдіть як адмін, щоб змінити.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_Component">
             <English>Community Base Addons - Settings</English>
@@ -261,11 +277,13 @@
             <Chinese>社群基礎模組 - 設定組件</Chinese>
             <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
             <Turkish>Community Base Addons - Ayarlar</Turkish>
+            <Ukrainian>Community Base Addons - Налаштування</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_Search_tooltip">
             <English>Filter addons and settings. Matches names, descriptions, setting variable names and option labels.\nCtrl + F to focus, right click to clear.</English>
             <Spanish>Filtra addons y ajustes. Busca coincidencias en nombres, descripciones, nombres de variables de ajustes y etiquetas de opciones.\nCtrl + F para enfocar, clic derecho para borrar.</Spanish>
             <Japanese>アドオンと設定をフィルタリングします。名前、説明、設定変数名、オプションラベルに一致するものを検索します。\nCtrl + F でフォーカス、右クリックでクリア。</Japanese>
+            <Ukrainian>Фільтр аддонів і налаштувань. Шукає в назвах, описах, іменах змінних і назвах опцій.\nCtrl + F - фокус, ПКМ - очистити.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_applies">
             <English>This setting applies.</English>
@@ -281,6 +299,7 @@
             <Chinese>設定已套用。</Chinese>
             <Chinesesimp>设置已套用。</Chinesesimp>
             <Turkish>Bu ayar geçerli.</Turkish>
+            <Ukrainian>Це налаштування діє.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_configureAddons">
             <English>Configure Addons</English>
@@ -297,6 +316,7 @@
             <Chinese>模組設定</Chinese>
             <Chinesesimp>模组设定</Chinesesimp>
             <Turkish>Eklenti Ayarları</Turkish>
+            <Ukrainian>Налаштувати аддони</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_configureBase">
             <English>Configure Base</English>
@@ -313,6 +333,7 @@
             <Chinese>基礎設定</Chinese>
             <Chinesesimp>基础设定</Chinesesimp>
             <Turkish>Oyun Ayarları</Turkish>
+            <Ukrainian>Основні налаштування</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_copy_to_clipboard">
             <English>Copy to clipboard</English>
@@ -328,6 +349,7 @@
             <Chinese>複製到剪貼簿</Chinese>
             <Chinesesimp>复制到剪贴板</Chinesesimp>
             <Turkish>Panoya kopyala</Turkish>
+            <Ukrainian>Копіювати в буфер обміну</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_default_tooltip">
             <English>Reset to default value.</English>
@@ -344,41 +366,49 @@
             <Chinese>重設成預設數值。</Chinese>
             <Chinesesimp>重设成预设数值。</Chinesesimp>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
+            <Ukrainian>Скинути до стандартного значення.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges">
             <English>There are %1 unsaved setting changes.</English>
             <Spanish>Hay %1 cambios de ajustes sin guardar.</Spanish>
             <Japanese>保存されていない設定変更が%1件あります。</Japanese>
+            <Ukrainian>Незбережених змін налаштувань: %1.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_confirm">
             <English>Discard</English>
             <Spanish>Descartar</Spanish>
             <Japanese>破棄</Japanese>
+            <Ukrainian>Відкинути</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_keep">
             <English>Keep Editing</English>
             <Spanish>Seguir editando</Spanish>
             <Japanese>編集を継続</Japanese>
+            <Ukrainian>Продовжити</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_more">
             <English>...and %1 more</English>
             <Spanish>...y %1 más</Spanish>
             <Japanese>... 他 %1 件</Japanese>
+            <Ukrainian>...та ще %1</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_one">
             <English>There is 1 unsaved setting change.</English>
             <Spanish>Hay 1 cambio de ajuste sin guardar.</Spanish>
             <Japanese>保存されていない設定変更が1件あります。</Japanese>
+            <Ukrainian>Є 1 незбережена зміна налаштувань.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_title">
             <English>Unsaved Changes</English>
             <Spanish>Cambios sin guardar</Spanish>
             <Japanese>保存されていない変更</Japanese>
+            <Ukrainian>Незбережені зміни</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_general">
             <English>General</English>
             <Spanish>General</Spanish>
             <Japanese>全般</Japanese>
+            <Ukrainian>Загальне</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
             <English>Addon Options</English>
@@ -395,6 +425,7 @@
             <Chinese>模組設定選項</Chinese>
             <Chinesesimp>模组设定选项</Chinesesimp>
             <Turkish>Eklenti Ayarları</Turkish>
+            <Ukrainian>Налаштування аддонів</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_menu_button_tooltip">
             <English>Adjust addon settings.</English>
@@ -410,6 +441,7 @@
             <Chinese>調整插件設定。</Chinese>
             <Chinesesimp>调整插件设置。</Chinesesimp>
             <Turkish>Eklenti ayarlarını değiştir.</Turkish>
+            <Ukrainian>Змінити налаштування аддонів.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_need_restart">
             <English>This setting applies after the next mission restart.</English>
@@ -425,6 +457,7 @@
             <Chinese>這個設定將會在任務重置後生效</Chinese>
             <Chinesesimp>该设定将在任务重启后生效。</Chinesesimp>
             <Turkish>Bu ayar oyun baştan başladıktan sonra geçerli olur.</Turkish>
+            <Ukrainian>Налаштування діятиме після перезапуску місії.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients">
             <English>Overwrite\nClients</English>
@@ -441,11 +474,13 @@
             <Chinese>覆寫\n客戶端</Chinese>
             <Chinesesimp>覆写\n客户端</Chinesesimp>
             <Turkish>Oyunculara\nAyar Zorla</Turkish>
+            <Ukrainian>Перезапис\nКлієнти</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_clients_short">
             <English>Clients</English>
             <Spanish>Clientes</Spanish>
             <Japanese>クライアント</Japanese>
+            <Ukrainian>Клієнти</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
             <English>Overwrite\nMission</English>
@@ -462,11 +497,13 @@
             <Chinese>覆寫\n任務</Chinese>
             <Chinesesimp>覆写\n任务</Chinesesimp>
             <Turkish>Göreve\nAyar Zorla</Turkish>
+            <Ukrainian>Перезапис\nМісія</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission_short">
             <English>Mission</English>
             <Spanish>Misión</Spanish>
             <Japanese>ミッション</Japanese>
+            <Ukrainian>Місія</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
             <English>Overwrite\nServer</English>
@@ -483,11 +520,13 @@
             <Chinese>覆寫\n伺服器</Chinese>
             <Chinesesimp>覆写\n服务器</Chinesesimp>
             <Turkish>Sunucuya\nAyar Zorla</Turkish>
+            <Ukrainian>Перезапис\nСервер</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrites">
             <English>Overwrites:</English>
             <Spanish>Sobrescribe:</Spanish>
             <Japanese>上書き:</Japanese>
+            <Ukrainian>Перезаписи:</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
             <English>Overwritten by client with the same value.</English>
@@ -502,6 +541,7 @@
             <Japanese>クライアントによって同じ値で上書きされています。</Japanese>
             <Chinese>被客戶端以相同的值覆蓋。</Chinese>
             <Chinesesimp>被客户端以相同的值覆盖。</Chinesesimp>
+            <Ukrainian>Перезаписано клієнтом тим самим значенням.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip">
             <English>This setting is overwritten by the clients.</English>
@@ -518,6 +558,7 @@
             <Chinese>此項設定被客戶端給覆寫。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Ukrainian>Налаштування перезаписано клієнтами.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_tooltip_server">
             <English>This setting is overwritten by the clients and only applies to the server.</English>
@@ -534,6 +575,7 @@
             <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
             <Chinesesimp>此项设定被客户端给覆写并仅适用于服务器。</Chinesesimp>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış, ayar sadece sunucuda geçerli.</Turkish>
+            <Ukrainian>Налаштування перезаписано клієнтами і діє лише для сервера.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_equal_tooltip">
             <English>Overwritten by mission with the same value.</English>
@@ -548,6 +590,7 @@
             <Japanese>ミッションによって同じ値で上書きされています。</Japanese>
             <Chinese>被任務以相同的值覆蓋。</Chinese>
             <Chinesesimp>被任务以相同的值覆盖。</Chinesesimp>
+            <Ukrainian>Перезаписано місією тим самим значенням.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_mission_tooltip">
             <English>This setting is overwritten by the mission.</English>
@@ -564,6 +607,7 @@
             <Chinese>此項設定被任務給覆寫。</Chinese>
             <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
             <Turkish>Görev tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Ukrainian>Налаштування перезаписано місією.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_equal_tooltip">
             <English>Overwritten by server with the same value.</English>
@@ -578,6 +622,7 @@
             <Japanese>サーバーによって同じ値で上書きされています。</Japanese>
             <Chinese>被伺服器以相同的值覆蓋。</Chinese>
             <Chinesesimp>被服务器以相同的值覆盖。</Chinesesimp>
+            <Ukrainian>Перезаписано сервером тим самим значенням.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_server_tooltip">
             <English>This setting is overwritten by the server.</English>
@@ -594,6 +639,7 @@
             <Chinese>此項設定被伺服器給覆寫。</Chinese>
             <Chinesesimp>此项设定被服务器给覆写。</Chinesesimp>
             <Turkish>Sunucu tarafından bu ayarın üstüne yazılmış.</Turkish>
+            <Ukrainian>Налаштування перезаписано сервером.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_show_default">
             <English>Show default values:</English>
@@ -609,11 +655,13 @@
             <Chinese>顯示預設值:</Chinese>
             <Chinesesimp>显示预设值:</Chinesesimp>
             <Turkish>Varsayılan değerleri göster:</Turkish>
+            <Ukrainian>Стандартні значення:</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_subCategory_tooltip">
             <English>Show or hide the settings in this group.</English>
             <Spanish>Mostrar u ocultar los ajustes de este grupo.</Spanish>
             <Japanese>このグループの設定を表示または非表示にします。</Japanese>
+            <Ukrainian>Показати або сховати налаштування цієї групи.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_volatile">
             <English>Changes will not persist after server restart</English>
@@ -625,6 +673,7 @@
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
             <Korean>서버를 재시작한 후 변경 사항 유지 안함</Korean>
             <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
+            <Ukrainian>Зміни не збережуться після перезапуску сервера</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
             <English>The server is configured to not persist changes to settings between server restarts.\nChanges will persist between mission restarts.</English>
@@ -636,6 +685,7 @@
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
+            <Ukrainian>Сервер налаштовано не зберігати зміни між перезапусками сервера.\nЗміни збережуться між перезапусками місії.</Ukrainian>
         </Key>
     </Package>
 </Project>

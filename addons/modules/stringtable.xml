@@ -15,6 +15,7 @@
             <Chinese>允許覆寫</Chinese>
             <Chinesesimp>允许覆写</Chinesesimp>
             <Turkish>Üstüne Yazmayı Etkinleştir</Turkish>
+            <Ukrainian>Дозволити перевизначення</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AllowOverride_Desc">
             <English>Allow the module to remove old waypoints and assign an attack waypoint</English>
@@ -30,6 +31,7 @@
             <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
             <Turkish>Modülün eski waypoint'leri silip saldırı waypoint'i koymasına izin ver</Turkish>
+            <Ukrainian>Дозволити модулю видаляти старі точки маршруту й призначати точку атаки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ArrayLoc">
             <English>Array</English>
@@ -45,6 +47,7 @@
             <Chinese>陣列</Chinese>
             <Chinesesimp>阵列</Chinesesimp>
             <Turkish>Liste</Turkish>
+            <Ukrainian>Масив</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Attack">
             <English>Attack</English>
@@ -60,6 +63,7 @@
             <Chinese>攻擊</Chinese>
             <Chinesesimp>攻击</Chinesesimp>
             <Turkish>Saldır</Turkish>
+            <Ukrainian>Атака</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType">
             <English>Attack Location Type</English>
@@ -75,6 +79,7 @@
             <Chinese>攻擊地點類型</Chinese>
             <Chinesesimp>攻击地点类型</Chinesesimp>
             <Turkish>Saldırı Konum Tipi</Turkish>
+            <Ukrainian>Тип місця атаки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackLocType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -90,6 +95,7 @@
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackModuleDescription">
             <English>Sync to leader of group to attack a parsed location</English>
@@ -105,6 +111,7 @@
             <Chinese>同步到群組的隊長身上，使該群組攻擊/搜索指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konuma saldırtın</Turkish>
+            <Ukrainian>Синхронізуйте з лідером групи для атаки вказаного місця</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition">
             <English>Attack Position</English>
@@ -120,6 +127,7 @@
             <Chinese>攻擊位置</Chinese>
             <Chinesesimp>攻击位置</Chinesesimp>
             <Turkish>Saldırı Konumu</Turkish>
+            <Ukrainian>Позиція атаки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_AttackPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -135,6 +143,7 @@
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol">
             <English>Patrol Chance</English>
@@ -150,6 +159,7 @@
             <Chinese>巡邏機率</Chinese>
             <Chinesesimp>巡逻机率</Chinesesimp>
             <Turkish>Devriye İhtimali</Turkish>
+            <Ukrainian>Шанс патрулювання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_CanPatrol_Desc">
             <English>Chance for each unit to patrol instead of garrison</English>
@@ -165,6 +175,7 @@
             <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
             <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
             <Turkish>Devriye İhtimali</Turkish>
+            <Ukrainian>Шанс, що кожен юніт патрулюватиме замість гарнізону</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Category_DisplayName">
             <English>CBA Modules</English>
@@ -180,6 +191,7 @@
             <Chinese>CBA模塊</Chinese>
             <Chinesesimp>CBA模块</Chinesesimp>
             <Turkish>CBA Modülleri</Turkish>
+            <Ukrainian>Модулі CBA</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Component">
             <English>Community Base Addons - Modules</English>
@@ -195,6 +207,7 @@
             <Chinese>社群基礎模組 - 模塊組件</Chinese>
             <Chinesesimp>社群基础模组 - 模块组件</Chinesesimp>
             <Turkish>Community Base Addons - Modüller</Turkish>
+            <Ukrainian>Community Base Addons - Модулі</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Defend">
             <English>Defend</English>
@@ -210,6 +223,7 @@
             <Chinese>防禦</Chinese>
             <Chinesesimp>防御</Chinesesimp>
             <Turkish>Savun</Turkish>
+            <Ukrainian>Оборона</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendModuleDescription">
             <English>Sync to leader of group to defend a parsed location</English>
@@ -225,6 +239,7 @@
             <Chinese>同步到群組的隊長身上，使該群組防禦指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu savundurun</Turkish>
+            <Ukrainian>Синхронізуйте з лідером групи для оборони вказаного місця</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition">
             <English>Defend Position</English>
@@ -240,6 +255,7 @@
             <Chinese>防禦位置</Chinese>
             <Chinesesimp>防御位置</Chinesesimp>
             <Turkish>Konumu Savun</Turkish>
+            <Ukrainian>Позиція оборони</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType">
             <English>Defend Position Type</English>
@@ -255,6 +271,7 @@
             <Chinese>防禦地點類型</Chinese>
             <Chinesesimp>防御地点类型</Chinesesimp>
             <Turkish>Savunma Konum Tipi</Turkish>
+            <Ukrainian>Тип позиції оборони</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPositionType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -270,6 +287,7 @@
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -285,6 +303,7 @@
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius">
             <English>Defend Radius</English>
@@ -300,6 +319,7 @@
             <Chinese>防禦半徑</Chinese>
             <Chinesesimp>防御半径</Chinesesimp>
             <Turkish>Belli Bir Çapı Savun</Turkish>
+            <Ukrainian>Радіус оборони</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_DefendRadius_Desc">
             <English>The max distance to defend from the center point</English>
@@ -315,6 +335,7 @@
             <Chinese>輸入一個數字來定義防禦區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义防御区域的半径大小</Chinesesimp>
             <Turkish>Merkez noktadan savunulacak maksimum uzaklık</Turkish>
+            <Ukrainian>Макс. відстань оборони від центральної точки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode">
             <English>Code to Execute</English>
@@ -330,6 +351,7 @@
             <Chinese>會執行的腳本代碼</Chinese>
             <Chinesesimp>会执行的脚本代码</Chinesesimp>
             <Turkish>Çalıştırılacak Kod</Turkish>
+            <Ukrainian>Код для виконання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ExecutableCode_Desc">
             <English>Any code to run at waypoints</English>
@@ -345,6 +367,7 @@
             <Chinese>在路徑點時會執行的腳本代碼</Chinese>
             <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
             <Turkish>Waypoint'lerde çalıştırılacak herhangi kod</Turkish>
+            <Ukrainian>Будь-який код для виконання в точках маршруту</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_GroupLoc">
             <English>Group</English>
@@ -360,6 +383,7 @@
             <Chinese>群組</Chinese>
             <Chinesesimp>群组</Chinesesimp>
             <Turkish>Grup</Turkish>
+            <Ukrainian>Група</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Loiter">
             <English>Loiter</English>
@@ -375,6 +399,7 @@
             <Chinese>盤旋</Chinese>
             <Chinesesimp>盘旋</Chinesesimp>
             <Turkish>Bekle</Turkish>
+            <Ukrainian>Барражування</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_MarkerLoc">
             <English>Marker</English>
@@ -390,6 +415,7 @@
             <Chinese>標誌</Chinese>
             <Chinesesimp>标志</Chinesesimp>
             <Turkish>İşaret</Turkish>
+            <Ukrainian>Маркер</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ModuleLoc">
             <English>Module Position</English>
@@ -405,6 +431,7 @@
             <Chinese>模塊的位置</Chinese>
             <Chinesesimp>模块的位置</Chinesesimp>
             <Turkish>Modül Konumu</Turkish>
+            <Ukrainian>Позиція модуля</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Move">
             <English>Move</English>
@@ -420,6 +447,7 @@
             <Chinese>移動</Chinese>
             <Chinesesimp>移动</Chinesesimp>
             <Turkish>Hareket Et</Turkish>
+            <Ukrainian>Рух</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ObjectLoc">
             <English>Object/Location</English>
@@ -435,6 +463,7 @@
             <Chinese>物件/地點</Chinese>
             <Chinesesimp>物件/地点</Chinesesimp>
             <Turkish>Obje/Konum</Turkish>
+            <Ukrainian>Об'єкт/Локація</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Patrol">
             <English>Patrol</English>
@@ -450,6 +479,7 @@
             <Chinese>巡邏</Chinese>
             <Chinesesimp>巡逻</Chinesesimp>
             <Turkish>Devriye</Turkish>
+            <Ukrainian>Патрулювання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType">
             <English>Patrol Center Type</English>
@@ -465,6 +495,7 @@
             <Chinese>巡邏區類型</Chinese>
             <Chinesesimp>巡逻区类型</Chinesesimp>
             <Turkish>Devriye Merkez Tipi</Turkish>
+            <Ukrainian>Тип центру патруля</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolCenterType_Desc">
             <English>Set what kind of object is being passed as the center point</English>
@@ -480,6 +511,7 @@
             <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
             <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
+            <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolModuleDescription">
             <English>Sync to leader of group to patrol a parsed location</English>
@@ -495,6 +527,7 @@
             <Chinese>同步到群組的隊長身上，使該群組巡邏指定的地點</Chinese>
             <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu devriye ettirin</Turkish>
+            <Ukrainian>Синхронізуйте з лідером групи для патрулювання вказаного місця</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition">
             <English>Center Point</English>
@@ -510,6 +543,7 @@
             <Chinese>中央地點</Chinese>
             <Chinesesimp>中央地点</Chinesesimp>
             <Turkish>Merkez Nokta</Turkish>
+            <Ukrainian>Центральна точка</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolPosition_Desc">
             <English>Enter an array with brackets or name without quotes</English>
@@ -525,6 +559,7 @@
             <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
             <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
+            <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius">
             <English>Patrol Radius</English>
@@ -540,6 +575,7 @@
             <Chinese>巡邏半徑</Chinese>
             <Chinesesimp>巡逻半径</Chinesesimp>
             <Turkish>Devriye Çapı</Turkish>
+            <Ukrainian>Радіус патрулювання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_PatrolRadius_Desc">
             <English>The distance to patrol from the center point</English>
@@ -555,6 +591,7 @@
             <Chinese>輸入一個數字來定義巡邏區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义巡逻区域的半径大小</Chinesesimp>
             <Turkish>Merkez noktadan devriyeye çıkılacak uzaklık</Turkish>
+            <Ukrainian>Відстань патрулювання від центральної точки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_SAD">
             <English>Seek and Destroy</English>
@@ -570,6 +607,7 @@
             <Chinese>搜索並摧毀</Chinese>
             <Chinesesimp>搜索并摧毁</Chinesesimp>
             <Turkish>Bul ve Yok Et</Turkish>
+            <Ukrainian>Знайти і знищити</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius">
             <English>Search Radius</English>
@@ -585,6 +623,7 @@
             <Chinese>搜索半徑</Chinese>
             <Chinesesimp>搜索半径</Chinesesimp>
             <Turkish>Arama Menzili</Turkish>
+            <Ukrainian>Радіус пошуку</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_SearchRadius_Desc">
             <English>Enter a number for size of the radius to search</English>
@@ -600,6 +639,7 @@
             <Chinese>輸入一個數字來定義搜索區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义搜索区域的半径大小</Chinesesimp>
             <Turkish>Aranıcak alanın çapı için bir sayı girin</Turkish>
+            <Ukrainian>Введіть число для розміру радіуса пошуку</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_SetLoc">
             <English>Set Position</English>
@@ -615,6 +655,7 @@
             <Chinese>設定位置</Chinese>
             <Chinesesimp>设定位置</Chinesesimp>
             <Turkish>Konum Belirle</Turkish>
+            <Ukrainian>Задана позиція</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold">
             <English>Hold Chance</English>
@@ -630,6 +671,7 @@
             <Chinese>停留機率</Chinese>
             <Chinesesimp>停留机率</Chinesesimp>
             <Turkish>Tutma İhtimali</Turkish>
+            <Ukrainian>Шанс утримання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_ShouldHold_Desc">
             <English>Chance for each unit to hold their garrison in combat</English>
@@ -645,6 +687,7 @@
             <Chinese>設定當駐軍開始交戰時每個單位有多少機率會原地不動</Chinese>
             <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
             <Turkish>Birimlerin çatışma sırasında konumlarını koruma şansı</Turkish>
+            <Ukrainian>Шанс, що кожен юніт утримає свій гарнізон у бою</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_TaskLoc">
             <English>Task</English>
@@ -660,6 +703,7 @@
             <Chinese>目標</Chinese>
             <Chinesesimp>目标</Chinesesimp>
             <Turkish>Görev</Turkish>
+            <Ukrainian>Завдання</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold">
             <English>Building Size Threshold</English>
@@ -675,6 +719,7 @@
             <Chinese>可使用的建築物大小</Chinese>
             <Chinesesimp>可使用的建筑物大小</Chinesesimp>
             <Turkish>Bina Boyutu Limiti</Turkish>
+            <Ukrainian>Поріг розміру будівлі</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Threshold_Desc">
             <English>Smaller the number the more buildings available</English>
@@ -690,6 +735,7 @@
             <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
             <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
             <Turkish>Sayı küçüldükçe daha fazla sayıda bina mümkün olur</Turkish>
+            <Ukrainian>Що менше число, то більше доступних будівель</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout">
             <English>Timeout</English>
@@ -705,6 +751,7 @@
             <Chinese>計時器</Chinese>
             <Chinesesimp>计时器</Chinesesimp>
             <Turkish>Zaman Aşımı</Turkish>
+            <Ukrainian>Тайм-аут</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_Timeout_Desc">
             <English>[Min, Med, Max] Time to wait at waypoints</English>
@@ -720,6 +767,7 @@
             <Chinese>[最小值, 中間值, 最大值] 用來設定在路徑點所需等待的時間</Chinese>
             <Chinesesimp>[最小值, 中间值, 最大值] 用来设定在路径点所需等待的时间</Chinesesimp>
             <Turkish>[Minimum, Orta, Maksimum] Waypoint'lerde beklenecek zaman</Turkish>
+            <Ukrainian>[Мін, Сер, Макс] Час очікування в точках маршруту</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount">
             <English>Waypoint Count</English>
@@ -735,6 +783,7 @@
             <Chinese>路徑點數量</Chinese>
             <Chinesesimp>路径点数量</Chinesesimp>
             <Turkish>Waypoint Sayısı</Turkish>
+            <Ukrainian>Кількість точок маршруту</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointCount_Desc">
             <English>The amount of waypoints to create</English>
@@ -750,6 +799,7 @@
             <Chinese>設定會產出多少個路徑點</Chinese>
             <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
             <Turkish>Oluşturulacak Waypoint Sayısı</Turkish>
+            <Ukrainian>Скільки точок маршруту створити</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType">
             <English>Waypoint Type</English>
@@ -765,6 +815,7 @@
             <Chinese>路徑點類型</Chinese>
             <Chinesesimp>路径点类型</Chinesesimp>
             <Turkish>Waypoint Tipi</Turkish>
+            <Ukrainian>Тип точки маршруту</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Modules_WaypointType_Desc">
             <English>The type of waypoint to be used</English>
@@ -780,6 +831,7 @@
             <Chinese>設定會被使用的路徑點類型</Chinese>
             <Chinesesimp>设定会被使用的路径点类型</Chinesesimp>
             <Turkish>Kullanılacak waypoint tipi</Turkish>
+            <Ukrainian>Тип точки маршруту, що використовується</Ukrainian>
         </Key>
     </Package>
 </Project>
