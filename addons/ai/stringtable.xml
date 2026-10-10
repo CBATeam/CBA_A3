@@ -15,6 +15,7 @@
             <Chinese>AI在建築物內位置</Chinese>
             <Chinesesimp>AI在建筑内部位置</Chinesesimp>
             <Turkish>AI Bina Pozisyonu</Turkish>
+            <Ukrainian>Позиція ШІ в будівлі</Ukrainian>
         </Key>
         <Key ID="STR_CBA_AI_Component">
             <English>Community Base Addons - Artificial Intelligence</English>
@@ -30,6 +31,7 @@
             <Chinese>社群基礎模組 - 人工智能</Chinese>
             <Chinesesimp>社群基础模组 - AI</Chinesesimp>
             <Turkish>Community Base Addons - Yapay Zeka</Turkish>
+            <Ukrainian>Community Base Addons - Штучний інтелект</Ukrainian>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetAir">
             <English>Invisible Target Airplane</English>
@@ -44,6 +46,7 @@
             <Japanese>不可視の標的飛行機</Japanese>
             <Chinese>隱形目標（飛機）</Chinese>
             <Chinesesimp>隐形目标（飞机）</Chinesesimp>
+            <Ukrainian>Невидима ціль - літак</Ukrainian>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetSoldier">
             <English>Invisible Target Soldier</English>
@@ -60,6 +63,7 @@
             <Chinese>隱形目標（士兵）</Chinese>
             <Chinesesimp>隐形目标（士兵）</Chinesesimp>
             <Turkish>Görünmez Hedef Asker</Turkish>
+            <Ukrainian>Невидима ціль - солдат</Ukrainian>
         </Key>
         <Key ID="STR_CBA_AI_InvisibleTargetVehicle">
             <English>Invisible Target Vehicle</English>
@@ -74,6 +78,7 @@
             <Japanese>不可視の標的車両</Japanese>
             <Chinese>隱形目標（車輛）</Chinese>
             <Chinesesimp>隐形目标（车辆）</Chinesesimp>
+            <Ukrainian>Невидима ціль - техніка</Ukrainian>
         </Key>
     </Package>
 </Project>

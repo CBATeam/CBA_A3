@@ -15,6 +15,7 @@
             <Chinese>社群基礎模組 - 附件功能</Chinese>
             <Chinesesimp>社群基础模组 - 附件功能</Chinesesimp>
             <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
+            <Ukrainian>Community Base Addons - Функції аксесуарів</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext">
             <English>Next optics state</English>
@@ -30,6 +31,7 @@
             <Chinese>下個瞄鏡模式</Chinese>
             <Chinesesimp>下个瞄镜模式</Chinesesimp>
             <Turkish>Sonraki nişangah modu</Turkish>
+            <Ukrainian>Наст. режим оптики</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_opticNext_tooltip">
             <English>Cycles to the next mode available for your optics slot attachment</English>
@@ -45,6 +47,7 @@
             <Chinese>循環切換到下個可用的瞄鏡模式</Chinese>
             <Chinesesimp>循环切换到下个可用的瞄镜模式</Chinesesimp>
             <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
+            <Ukrainian>Перемикає на наступний режим приладу в слоті оптики</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev">
             <English>Prev optics state</English>
@@ -60,6 +63,7 @@
             <Chinese>上個瞄鏡模式</Chinese>
             <Chinesesimp>上个瞄镜模式</Chinesesimp>
             <Turkish>Önceki nişangah modu</Turkish>
+            <Ukrainian>Попер. режим оптики</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_opticPrev_tooltip">
             <English>Cycles to the previous mode available for your optics slot attachment</English>
@@ -75,6 +79,7 @@
             <Chinese>循環切換到上個可用的瞄鏡模式</Chinese>
             <Chinesesimp>循环切换到上个可用的瞄镜模式</Chinesesimp>
             <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
+            <Ukrainian>Перемикає на попередній режим приладу в слоті оптики</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_railNext">
             <English>Next rail item state</English>
@@ -90,6 +95,7 @@
             <Chinese>下個導軌物品狀態</Chinese>
             <Chinesesimp>下个导轨物品状态</Chinesesimp>
             <Turkish>Sonraki ray aksesuarı</Turkish>
+            <Ukrainian>Наст. режим на планці</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_railNext_tooltip">
             <English>Cycles to the next mode available for your rail slot attachment</English>
@@ -105,6 +111,7 @@
             <Chinese>循環切換到下個可用的導軌物品模式</Chinese>
             <Chinesesimp>循环切换到下个可用的导轨物品模式</Chinesesimp>
             <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
+            <Ukrainian>Перемикає на наступний режим приладу в слоті планки</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev">
             <English>Prev rail item state</English>
@@ -120,6 +127,7 @@
             <Chinese>上個導軌物品狀態</Chinese>
             <Chinesesimp>上个导轨物品状态</Chinesesimp>
             <Turkish>Önceki ray aksesuarı</Turkish>
+            <Ukrainian>Попер. режим на планці</Ukrainian>
         </Key>
         <Key ID="STR_CBA_accessory_railPrev_tooltip">
             <English>Cycles to the previous mode available for your rail slot attachment</English>
@@ -135,6 +143,7 @@
             <Chinese>循環切換到上個可用的導軌物品模式</Chinese>
             <Chinesesimp>循环切换到上个可用的导轨物品模式</Chinesesimp>
             <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
+            <Ukrainian>Перемикає на попередній режим приладу в слоті планки</Ukrainian>
         </Key>
     </Package>
 </Project>
