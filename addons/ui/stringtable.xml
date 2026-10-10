@@ -167,6 +167,14 @@
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler otomatik olarak doldurulmaz.</Turkish>
             <Ukrainian>Паролі не зберігаються під час підключення до мережевого сервера. Уже збережені паролі не вводитимуться автоматично.</Ukrainian>
         </Key>
+        <Key ID="STR_CBA_UI_HideMissionWorldSuffix">
+            <English>Hide mission world name suffix</English>
+            <Russian>Убрать название мира у миссий</Russian>
+        </Key>
+        <Key ID="STR_CBA_UI_HideMissionWorldSuffixTooltip">
+            <English>Hide world name suffix in multiplayer mission list.</English>
+            <Russian>Убрать суффикс с названием мира в списке миссий в многопользовательской игре.</Russian>
+        </Key>
         <Key ID="STR_CBA_UI_LobbyManager">
             <English>Lobby Manager</English>
             <Czech>Manažer lobby</Czech>
