@@ -233,6 +233,9 @@ class CfgVehicles {
     class WeaponHolder: ReammoBox {
         XEH_ENABLED;
     };
+    class Bag_Base: ReammoBox {
+        XEH_ENABLED;
+    };
 
     class ThingX;
     class WeaponHolderSimulated: ThingX {
