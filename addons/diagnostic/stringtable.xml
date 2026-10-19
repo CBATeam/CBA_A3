@@ -12,8 +12,8 @@
             <German>Community Base Addons - Diagnose</German>
             <Korean>커뮤니티 베이스 애드온 - 진단</Korean>
             <Japanese>Community Base Addons - 診断</Japanese>
-            <Chinese>社群基礎模組 - 診斷</Chinese>
-            <Chinesesimp>社群基础模组 - 诊断</Chinesesimp>
+            <Chinese>社群基礎插件 - 診斷</Chinese>
+            <Chinesesimp>社区基础插件 - 诊断</Chinesesimp>
             <Turkish>Community Base Addons - Teşhis</Turkish>
             <Ukrainian>Community Base Addons - Діагностика</Ukrainian>
         </Key>
@@ -43,7 +43,7 @@
             <German>Einrückungen in der Debug-Konsole</German>
             <Korean>디버그 콘솔 들여쓰기</Korean>
             <Japanese>デバッグコンソールのインデント</Japanese>
-            <Chinese>調試控制台縮進</Chinese>
+            <Chinese>除錯主控台縮排</Chinese>
             <Chinesesimp>调试控制台缩进</Chinesesimp>
             <Ukrainian>Відступ консолі налагодження</Ukrainian>
         </Key>
@@ -58,8 +58,8 @@
             <German>Art der Einrückung, die dem Ausdruck in der Debug-Konsole durch Drücken von Tab hinzugefügt oder durch Drücken von Shift + Tab entfernt werden kann.</German>
             <Korean>Tab 키를 눌러서 디버그 콘솔의 식에 추가하거나 Shift + Tab을 눌러 제거할 수 있는 들여쓰기 유형입니다.</Korean>
             <Japanese>デバッグコンソールでのインデントのタイプ。 インデントはTabキーを押して追加、Shift + Tabキーを押して削除できる。</Japanese>
-            <Chinese>可以通過按 Tab 鍵為添加到調試控制台中的表達式縮進或通過按 Shift + Tab 鍵為其刪除縮進。</Chinese>
-            <Chinesesimp>可以通过按 Tab 键为添加到调试控制台中的表达式缩进或通过按 Shift + Tab 键为其删除缩进。</Chinesesimp>
+            <Chinese>在除錯主控台中，按 Tab 鍵可為表達式新增縮排，按 Shift + Tab 鍵可移除縮排。</Chinese>
+            <Chinesesimp>在调试控制台中，按 Tab 键可为表达式添加缩进，按 Shift + Tab 键可移除缩进。</Chinesesimp>
             <Ukrainian>Тип відступу, що додається до виразу в консолі налагодження клавішею Tab або прибирається клавішами Shift + Tab.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_EnableTargetDebug">
@@ -73,8 +73,8 @@
             <German>Ziel-Debugging aktivieren</German>
             <Korean>대상 디버깅 활성화</Korean>
             <Japanese>対象デバッキングを有効化</Japanese>
-            <Chinese>開啟目標除錯模式</Chinese>
-            <Chinesesimp>开启目标除错模式</Chinesesimp>
+            <Chinese>啟用目標除錯</Chinese>
+            <Chinesesimp>启用目标调试</Chinesesimp>
             <Turkish>Hedefte Çalıştırmayı Aktifleştir</Turkish>
             <Ukrainian>Увімкнути налагодження цілі</Ukrainian>
         </Key>
@@ -89,8 +89,8 @@
             <German>[CBA] Erlaubt Remote-Ziel-Debugging. Benötigt Debug-Konsole.</German>
             <Korean>[CBA] 원격 대상 디버깅을 허용합니다. 디버그 콘솔 필요</Korean>
             <Japanese>[CBA] リモート対象デバッキングを許可します。デバッグ コンソールが必要です。</Japanese>
-            <Chinese>[CBA] 允許遠程為目標進行除錯。需要開啟除錯控制台。</Chinese>
-            <Chinesesimp>[CBA] 允许远程为目标进行除错。需要开启除错控制台。</Chinesesimp>
+            <Chinese>[CBA] 允許對遠端目標進行除錯。需要除錯主控台。</Chinese>
+            <Chinesesimp>[CBA] 允许对远程目标进行调试。需要调试控制台。</Chinesesimp>
             <Turkish>[CBA] Başka hedefte çalıştırmayı aktifleştirir. Debug konsolu gerektirir.</Turkish>
             <Ukrainian>[CBA] Дозволяє віддалене налагодження цілі. Потрібна консоль налагодження.</Ukrainian>
         </Key>
@@ -105,8 +105,8 @@
             <German>Erweiterte Debug-Konsole</German>
             <Korean>확장 디버그 콘솔</Korean>
             <Japanese>拡張デバッグコンソール</Japanese>
-            <Chinese>擴展除錯控制台</Chinese>
-            <Chinesesimp>扩展除错控制台</Chinesesimp>
+            <Chinese>擴充除錯主控台</Chinese>
+            <Chinesesimp>扩展调试控制台</Chinesesimp>
             <Turkish>Geliştirilmiş Debug Konsolu</Turkish>
             <Ukrainian>Розширена консоль налагодження</Ukrainian>
         </Key>
@@ -121,8 +121,8 @@
             <German>Nächster Ausdruck</German>
             <Korean>다음 명령</Korean>
             <Japanese>次のコード</Japanese>
-            <Chinese>下個陳述式</Chinese>
-            <Chinesesimp>下个陈述式</Chinesesimp>
+            <Chinese>下一個陳述式</Chinese>
+            <Chinesesimp>下一个语句</Chinesesimp>
             <Turkish>Sonraki İfade</Turkish>
             <Ukrainian>Наст. команда</Ukrainian>
         </Key>
@@ -137,8 +137,8 @@
             <German>Vorheriger Ausdruck</German>
             <Korean>이전 명령</Korean>
             <Japanese>前のコード</Japanese>
-            <Chinese>上個陳述式</Chinese>
-            <Chinesesimp>上个陈述式</Chinesesimp>
+            <Chinese>上一個陳述式</Chinese>
+            <Chinesesimp>上一个语句</Chinesesimp>
             <Turkish>Önceki İfade</Turkish>
             <Ukrainian>Попер. команда</Ukrainian>
         </Key>
@@ -153,8 +153,8 @@
             <German>Ziel Ausf.</German>
             <Korean>대상 실행</Korean>
             <Japanese>対象へ実行</Japanese>
-            <Chinese>在目標執行</Chinese>
-            <Chinesesimp>目标执行</Chinesesimp>
+            <Chinese>執行目標</Chinese>
+            <Chinesesimp>执行目标</Chinesesimp>
             <Turkish>Hedefte Çalıştır</Turkish>
             <Ukrainian>ВИК. НА ЦІЛІ</Ukrainian>
         </Key>
@@ -167,8 +167,8 @@
             <German>Aktualisierungsrate für Zielüberwachungfelder</German>
             <Korean>대상 관찰자 필드 새로 고침 빈도</Korean>
             <Japanese>目標監視フィールドのリフレッシュレート</Japanese>
-            <Chinese>刷新率</Chinese>
-            <Chinesesimp>刷新率</Chinesesimp>
+            <Chinese>目標監看刷新率</Chinese>
+            <Chinesesimp>目标监视刷新率</Chinesesimp>
             <Ukrainian>Частота оновлення полів цілі</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Diagnostic_WatchInfoRefreshRateTooltip">
@@ -180,7 +180,7 @@
             <German>Aktualisierungsrate (in Sekunden) für die CBA-Zielüberwachungsfelder auf der rechten Seite der Debug-Konsole.</German>
             <Korean>디버그 콘솔 오른쪽에 있는 CBA의 대상 관찰자 필드의 새로 고침 빈도입니다. (초 단위)</Korean>
             <Japanese>デバッグコンソールの右側にあるCBA目標監視フィールドのリフレッシュレート(秒単位)。</Japanese>
-            <Chinese>調試控制台右側的 CBA 目標監視器字段的刷新率（以秒為單位）。</Chinese>
+            <Chinese>除錯主控台右側的 CBA 目標監看欄位的刷新率（以秒為單位）。</Chinese>
             <Chinesesimp>调试控制台右侧的 CBA 目标监视器字段的刷新率（以秒为单位）。</Chinesesimp>
             <Ukrainian>Частота оновлення (у секундах) полів стеження CBA за ціллю праворуч від консолі налагодження.</Ukrainian>
         </Key>

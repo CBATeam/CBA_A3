@@ -14,7 +14,7 @@
             <Korean>네트워크</Korean>
             <Japanese>ネットワーク</Japanese>
             <Chinese>網路</Chinese>
-            <Chinesesimp>网路</Chinesesimp>
+            <Chinesesimp>网络</Chinesesimp>
             <Turkish>Ağ</Turkish>
             <Ukrainian>Мережа</Ukrainian>
         </Key>
@@ -30,8 +30,8 @@
             <German>Community Base Addons - Netzwerk</German>
             <Korean>커뮤니티 베이스 애드온 - 네트워크</Korean>
             <Japanese>Community Base Addons - ネットワーク</Japanese>
-            <Chinese>社群基礎模組 - 網路</Chinese>
-            <Chinesesimp>社群基础模组 - 网路</Chinesesimp>
+            <Chinese>社群基礎插件 - 網路</Chinese>
+            <Chinesesimp>社区基础插件 - 网络</Chinesesimp>
             <Turkish>Community Base Addons - Ağ</Turkish>
             <Ukrainian>Community Base Addons - Мережа</Ukrainian>
         </Key>
@@ -46,8 +46,8 @@
             <German>Überprüfung von Ausrüstungen</German>
             <Korean>로드아웃 검사</Korean>
             <Japanese>ロードアウトの検証</Japanese>
-            <Chinese>驗證加載</Chinese>
-            <Chinesesimp>验证加载</Chinesesimp>
+            <Chinese>裝備配置驗證</Chinese>
+            <Chinesesimp>装备配置验证</Chinesesimp>
             <Ukrainian>Перевірка спорядження</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Network_LoadoutValidationTooltip">
@@ -61,8 +61,8 @@
             <German>Überprüfe die Ausrüstung von Einheiten. Korrigiert den Fehler, bei dem Einheiten nackt sind nach einer Änderung deren Lokalität.</German>
             <Korean>유닛의 로드아웃을 확인합니다. 위치를 변경한 후 유닛이 알몸인 상태로 나타나는 문제를 해결합니다.</Korean>
             <Japanese>ユニットのロードアウトを検証します。 ローカルでの変更後にユニットが裸で表示される問題を修正します。</Japanese>
-            <Chinese>驗證單位加載。修復單位在更改大廳位置後顯示為裸體的問題。</Chinese>
-            <Chinesesimp>验证单位加载。修复单位在更改大厅位置后显示为裸体的问题。</Chinesesimp>
+            <Chinese>驗證單位的裝備配置。修復單位在網路歸屬變更後顯示為裸身的問題。</Chinese>
+            <Chinesesimp>验证单位的装备配置。修复单位在网络归属变更后显示为裸身的问题。</Chinesesimp>
             <Ukrainian>Перевіряти спорядження юнітів. Виправляє проблему, коли юніти стають голими після зміни локальності.</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Network_NeverValidate">
@@ -76,7 +76,7 @@
             <German>Niemals</German>
             <Korean>없음</Korean>
             <Japanese>行わない</Japanese>
-            <Chinese>從不</Chinese>
+            <Chinese>永不</Chinese>
             <Chinesesimp>从不</Chinesesimp>
             <Ukrainian>Ніколи</Ukrainian>
         </Key>
@@ -91,8 +91,8 @@
             <German>Überprüfe niemals Ausrüstungen</German>
             <Korean>로드아웃 검사하지 않음</Korean>
             <Japanese>ロードアウトを検証しません</Japanese>
-            <Chinese>從不驗證加載</Chinese>
-            <Chinesesimp>从不验证加载</Chinesesimp>
+            <Chinese>永不驗證裝備配置</Chinese>
+            <Chinesesimp>从不验证装备配置</Chinesesimp>
             <Ukrainian>Ніколи не перевіряти спорядження</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Network_ValidateAll">
@@ -121,8 +121,8 @@
             <German>Überprüfe die Ausrüstungen von allen Einheiten</German>
             <Korean>모든 유닛의 로드아웃 검사</Korean>
             <Japanese>すべてのユニットのロードアウトを検証する</Japanese>
-            <Chinese>驗證所有單位的加載</Chinese>
-            <Chinesesimp>验证所有单位的加载</Chinesesimp>
+            <Chinese>驗證所有單位的裝備配置</Chinese>
+            <Chinesesimp>验证所有单位的装备配置</Chinesesimp>
             <Ukrainian>Перевіряти спорядження всіх юнітів</Ukrainian>
         </Key>
         <Key ID="STR_CBA_Network_ValidatePlayableOnly">
@@ -151,8 +151,8 @@
             <German>Überprüfe nur die Ausrüstung von spielbaren Einheiten</German>
             <Korean>플레이 가능 유닛만 로드아웃 검사</Korean>
             <Japanese>プレイ可能なユニットのロードアウトのみを検証する</Japanese>
-            <Chinese>僅驗證可玩單位的加載</Chinese>
-            <Chinesesimp>仅验证可玩单位的加载</Chinesesimp>
+            <Chinese>僅驗證可玩單位的裝備配置</Chinese>
+            <Chinesesimp>仅验证可玩单位的装备配置</Chinesesimp>
             <Ukrainian>Перевіряти спорядження лише ігрових юнітів</Ukrainian>
         </Key>
     </Package>

@@ -12,8 +12,8 @@
             <German>Reihenfolge der Gruppen wird angepasst ...</German>
             <Korean>그룹 순서 조정 중...</Korean>
             <Japanese>グループ順の調整...</Japanese>
-            <Chinese>調整小隊順序</Chinese>
-            <Chinesesimp>调整小队顺序</Chinesesimp>
+            <Chinese>正在調整小隊順序...</Chinese>
+            <Chinesesimp>正在调整小队顺序...</Chinesesimp>
             <Ukrainian>Зміна порядку груп...</Ukrainian>
         </Key>
         <Key ID="STR_CBA_UI_AllMissions">
@@ -35,6 +35,8 @@
         <Key ID="STR_CBA_UI_AutoExpandOptions">
             <English>Automatically expand Options menu</English>
             <Russian>Автоматически раскрывать меню Настройки</Russian>
+            <Chinese>自動展開選項選單</Chinese>
+            <Chinesesimp>自动展开选项菜单</Chinesesimp>
             <Ukrainian>Автоматично розгортати меню «Опції»</Ukrainian>
         </Key>
         <Key ID="STR_CBA_UI_Category">
@@ -49,8 +51,8 @@
             <German>Benutzeroberfläche</German>
             <Korean>사용자 인터페이스</Korean>
             <Japanese>ユーザ インタフェイス</Japanese>
-            <Chinese>玩家界面</Chinese>
-            <Chinesesimp>使用者介面</Chinesesimp>
+            <Chinese>使用者介面</Chinese>
+            <Chinesesimp>用户界面</Chinesesimp>
             <Turkish>Kullanıcı Arayüzü</Turkish>
             <Ukrainian>Інтерфейс</Ukrainian>
         </Key>
@@ -66,8 +68,8 @@
             <German>Community Base Addons - Benutzeroberfläche</German>
             <Korean>커뮤니티 베이스 애드온 - 유저 인터페이스</Korean>
             <Japanese>Community Base Addons - ユーザー インターフェイス</Japanese>
-            <Chinese>社群基礎模組 - 使用者介面</Chinese>
-            <Chinesesimp>社群基础模组 - 玩家界面</Chinesesimp>
+            <Chinese>社群基礎插件 - 使用者介面</Chinese>
+            <Chinesesimp>社区基础插件 - 用户界面</Chinesesimp>
             <Turkish>Community Base Addons - Kullanıcı Arayüzü</Turkish>
             <Ukrainian>Community Base Addons - Інтерфейс користувача</Ukrainian>
         </Key>
@@ -82,8 +84,8 @@
             <German>Serveradministrator benachrichtigen.</German>
             <Korean>서버 관리자에게 문의하십시오.</Korean>
             <Japanese>サーバー管理者に連絡をして下さい。</Japanese>
-            <Chinese>聯絡伺服器的管理員</Chinese>
-            <Chinesesimp>联系服务器管理员</Chinesesimp>
+            <Chinese>聯絡伺服器管理員。</Chinese>
+            <Chinesesimp>联系服务器管理员。</Chinesesimp>
             <Turkish>Sunucu yöneticisiyle iletişime geç.</Turkish>
             <Ukrainian>ЗВЕРНІТЬСЯ ДО АДМІНА СЕРВЕРА.</Ukrainian>
         </Key>
@@ -98,8 +100,8 @@
             <German>Eigene Missionen anzeigen</German>
             <Korean>커스텀 미션 보이기</Korean>
             <Japanese>カスタム ミッションを表示</Japanese>
-            <Chinese>顯示目前任務</Chinese>
-            <Chinesesimp>显示当前任务</Chinesesimp>
+            <Chinese>顯示自訂任務</Chinese>
+            <Chinesesimp>显示自定义任务</Chinesesimp>
             <Turkish>Sonradan eklenen görevleri göster</Turkish>
             <Ukrainian>Показати власні місії</Ukrainian>
         </Key>
@@ -130,8 +132,8 @@
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden aus dem Profil gelöscht.</German>
             <Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 프로필에서 삭제됩니다.</Korean>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードはプロフィールから削除します。</Japanese>
-            <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將會刪除。</Chinese>
-            <Chinesesimp>当连接到服务器时将不保存密码。已保存的密码将会删除。</Chinesesimp>
+            <Chinese>連線至多人遊戲伺服器時不會儲存密碼。已儲存的密碼將從個人檔案中刪除。</Chinese>
+            <Chinesesimp>连接多人游戏服务器时不保存密码。已保存的密码将从档案中删除。</Chinesesimp>
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler bilgisayardan silinir.</Turkish>
             <Ukrainian>Паролі не зберігаються під час підключення до мережевого сервера. Уже збережені паролі видаляються з профілю.</Ukrainian>
         </Key>
@@ -146,7 +148,7 @@
             <German>Passwörter nicht speichern</German>
             <Korean>암호 저장하지 않음</Korean>
             <Japanese>パスワードを保存しない</Japanese>
-            <Chinese>不保存密碼</Chinese>
+            <Chinese>不儲存密碼</Chinese>
             <Chinesesimp>不保存密码</Chinesesimp>
             <Turkish>Şifreleri kaydetme</Turkish>
             <Ukrainian>Не зберігати паролі</Ukrainian>
@@ -162,8 +164,8 @@
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver nicht gespeichert. Bereits gespeicherte Passwörter werden nicht automatisch eingegeben.</German>
             <Korean>멀티플레이어 서버에 연결할 때 암호가 저장되지 않습니다. 이미 저장된 암호는 자동으로 입력되지 않습니다.</Korean>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存しません。既に保存されているパスワードも自動的に入力されません。</Japanese>
-            <Chinese>當連線到伺服器時將不保存密碼。已有的保存密碼將不會自動填入。</Chinese>
-            <Chinesesimp>当连接到服务器时将不保存密码。已保存的密码将不自动填写。</Chinesesimp>
+            <Chinese>連線至多人遊戲伺服器時不會儲存密碼。已儲存的密碼將不會自動填入。</Chinese>
+            <Chinesesimp>连接多人游戏服务器时不保存密码。已保存的密码将不会自动填入。</Chinesesimp>
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilmez. Zaten kayıtlı olan şifreler otomatik olarak doldurulmaz.</Turkish>
             <Ukrainian>Паролі не зберігаються під час підключення до мережевого сервера. Уже збережені паролі не вводитимуться автоматично.</Ukrainian>
         </Key>
@@ -178,8 +180,8 @@
             <German>Lobby Manager</German>
             <Korean>로비 매니저</Korean>
             <Japanese>ロビーマネージャー</Japanese>
-            <Chinese>角色大廳管理</Chinese>
-            <Chinesesimp>角色大厅管理</Chinesesimp>
+            <Chinese>大廳管理</Chinese>
+            <Chinesesimp>大厅管理</Chinesesimp>
             <Ukrainian>Менеджер лобі</Ukrainian>
         </Key>
         <Key ID="STR_CBA_UI_LobbyManager_Warning">
@@ -208,8 +210,8 @@
             <German>Textrückmeldung an den Spieler.</German>
             <Korean>플레이어에 대한 텍스트 피드백입니다,</Korean>
             <Japanese>文章でプレイヤーに通知します。</Japanese>
-            <Chinese>回饋文字給玩家</Chinese>
-            <Chinesesimp>反馈文本给玩家。</Chinesesimp>
+            <Chinese>向玩家顯示的文字回饋。</Chinese>
+            <Chinesesimp>向玩家显示的文字反馈。</Chinesesimp>
             <Turkish>Yazıyla geri bildirim.</Turkish>
             <Ukrainian>Текстові повідомлення для гравця.</Ukrainian>
         </Key>
@@ -225,7 +227,7 @@
             <Korean>알림</Korean>
             <Japanese>通知</Japanese>
             <Chinese>通知</Chinese>
-            <Chinesesimp>提示</Chinesesimp>
+            <Chinesesimp>通知</Chinesesimp>
             <Turkish>Bildirim</Turkish>
             <Ukrainian>Сповіщення</Ukrainian>
         </Key>
@@ -240,8 +242,8 @@
             <German>Benachrichtigung-Anzeigedauer</German>
             <Korean>알림 지속시간</Korean>
             <Japanese>通知の表示時間</Japanese>
-            <Chinese>通知時長</Chinese>
-            <Chinesesimp>提示显示时长</Chinesesimp>
+            <Chinese>通知顯示時長</Chinese>
+            <Chinesesimp>通知显示时长</Chinesesimp>
             <Turkish>Bildirim Süresi</Turkish>
             <Ukrainian>Тривалість сповіщення</Ukrainian>
         </Key>
@@ -256,8 +258,8 @@
             <German>Anzeigedauer der Benachrichtigungen in Sekunden.</German>
             <Korean>알림이 표시되는 시간입니다. (초 단위)</Korean>
             <Japanese>通知が表示される時間を秒で変更できます。</Japanese>
-            <Chinese>設定通知的顯示時間（秒數）。</Chinese>
-            <Chinesesimp>设置提示的显示时长（秒）</Chinesesimp>
+            <Chinese>設定通知的顯示時長（秒）。</Chinese>
+            <Chinesesimp>设定通知的显示时长（秒）。</Chinesesimp>
             <Turkish>Bildirim gözükme süresi (saniye olarak)</Turkish>
             <Ukrainian>Тривалість показу сповіщення в секундах.</Ukrainian>
         </Key>
@@ -273,7 +275,7 @@
             <Korean>상태 표시줄 위치</Korean>
             <Japanese>プログレス バーの位置。</Japanese>
             <Chinese>進度條的位置。</Chinese>
-            <Chinesesimp>进度条位置。</Chinesesimp>
+            <Chinesesimp>进度条的位置。</Chinesesimp>
             <Turkish>Yükleme çubuğunun konumu.</Turkish>
             <Ukrainian>Позиція смуги прогресу.</Ukrainian>
         </Key>
@@ -320,8 +322,8 @@
             <German>Passwörter werden beim Verbinden mit einem Mehrspielerserver gespeichert.</German>
             <Korean>암호는 멀티플레이어 서버에 연결할 때 저장됩니다.</Korean>
             <Japanese>マルチプレイヤーのサーバーへ接続時にパスワードを保存します。</Japanese>
-            <Chinese>連線到伺服器時將記住密碼</Chinese>
-            <Chinesesimp>连接到服务器时将记住密码</Chinesesimp>
+            <Chinese>連線至多人遊戲伺服器時會記住密碼。</Chinese>
+            <Chinesesimp>连接多人游戏服务器时将记住密码。</Chinesesimp>
             <Turkish>Çok oyunculu bir sunucuya girerken şifreler kaydedilir.</Turkish>
             <Ukrainian>Паролі зберігаються під час підключення до мережевого сервера.</Ukrainian>
         </Key>
@@ -352,8 +354,8 @@
             <German>Einstellung zum Speichern der beim Betreten eines Mehrspielerservers eingegebenen Passwörter.</German>
             <Korean>멀티플레이어 서버에 연결할 때 입력한 암호를 저장하도록 설정합니다.</Korean>
             <Japanese>マルチプレイヤーのサーバーへ接続時に入力されたパスワードの保存設定を行います。</Japanese>
-            <Chinese>設定是否當連線到伺服器時儲存密碼</Chinese>
-            <Chinesesimp>设置是否存储连接服务器时输入的密码。</Chinesesimp>
+            <Chinese>設定是否在連線至多人遊戲伺服器時儲存密碼。</Chinese>
+            <Chinesesimp>设定是否保存连接多人游戏服务器时输入的密码。</Chinesesimp>
             <Turkish>Çok oyunculu bir sunucuya bağlanırken girilen şifreleri kaydetme ayarı.</Turkish>
             <Ukrainian>Зберігання паролів, введених під час підключення до мережевого сервера.</Ukrainian>
         </Key>

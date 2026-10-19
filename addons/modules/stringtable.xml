@@ -13,7 +13,7 @@
             <Korean>덮어쓰기 허용</Korean>
             <Japanese>上書きを許可</Japanese>
             <Chinese>允許覆寫</Chinese>
-            <Chinesesimp>允许覆写</Chinesesimp>
+            <Chinesesimp>允许覆盖</Chinesesimp>
             <Turkish>Üstüne Yazmayı Etkinleştir</Turkish>
             <Ukrainian>Дозволити перевизначення</Ukrainian>
         </Key>
@@ -28,7 +28,7 @@
             <German>Ermöglicht dem Modul, alte Wegpunkte zu entfernen und einen Angreifen-Wegpunkt zuzuweisen.</German>
             <Korean>모듈이 이전 경유지를 제거하고 공격 경유지를 할당하도록 허용합니다</Korean>
             <Japanese>モジュールにより古いウェイポイントの削除と、新しい攻撃ウェイポイントの指定を許可します</Japanese>
-            <Chinese>允許模塊移除原有的路徑點並指派新的攻擊路徑點</Chinese>
+            <Chinese>允許模組移除原有的路徑點並指派新的攻擊路徑點</Chinese>
             <Chinesesimp>允许模块移除原有的路径点并指派新的攻击路径点</Chinesesimp>
             <Turkish>Modülün eski waypoint'leri silip saldırı waypoint'i koymasına izin ver</Turkish>
             <Ukrainian>Дозволити модулю видаляти старі точки маршруту й призначати точку атаки</Ukrainian>
@@ -92,8 +92,8 @@
             <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Korean>중앙 지점으로 통과시킬 개체 종류를 설정합니다</Korean>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
-            <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
-            <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Chinese>設定要傳入哪種類型的物件作為中心點</Chinese>
+            <Chinesesimp>设定要传入哪种类型的对象作为中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
@@ -108,8 +108,8 @@
             <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort anzugreifen.</German>
             <Korean>분석된 위치를 공격할 그룹의 리더와 동기화합니다</Korean>
             <Japanese>グループのリーダーに同期し、攻撃地点を捜索させます</Japanese>
-            <Chinese>同步到群組的隊長身上，使該群組攻擊/搜索指定的地點</Chinese>
-            <Chinesesimp>同步到群组的队长身上，使该群组攻击/搜索指定的地点</Chinesesimp>
+            <Chinese>與組長同步，讓該小組攻擊指定位置</Chinese>
+            <Chinesesimp>与组长同步，让该小组攻击指定位置</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konuma saldırtın</Turkish>
             <Ukrainian>Синхронізуйте з лідером групи для атаки вказаного місця</Ukrainian>
         </Key>
@@ -140,8 +140,8 @@
             <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Korean>대괄호가 있는 어레이 또는 따옴표가 없이 이름 입력합니다</Korean>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
-            <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
-            <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Chinese>輸入以方括號表示的陣列，或不帶引號的名稱</Chinese>
+            <Chinesesimp>输入以方括号表示的数组，或不带引号的名称</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
@@ -157,7 +157,7 @@
             <Korean>순찰 확률</Korean>
             <Japanese>巡回率</Japanese>
             <Chinese>巡邏機率</Chinese>
-            <Chinesesimp>巡逻机率</Chinesesimp>
+            <Chinesesimp>巡逻概率</Chinesesimp>
             <Turkish>Devriye İhtimali</Turkish>
             <Ukrainian>Шанс патрулювання</Ukrainian>
         </Key>
@@ -172,8 +172,8 @@
             <German>Wahrscheinlichkeit jeder Einheit zu patrouillieren, anstatt ein Gebäude zu besetzen.</German>
             <Korean>각 유닛이 주둔 대신 순찰할 확률</Korean>
             <Japanese>各ユニットが歩哨のために巡回する確率を設定</Japanese>
-            <Chinese>設定駐軍的每個單位有多少機率會做巡邏</Chinese>
-            <Chinesesimp>设定驻军的每个单位有多少机率会做巡逻</Chinesesimp>
+            <Chinese>設定每個單位放棄駐守、改為巡邏的機率</Chinese>
+            <Chinesesimp>设定每个单位放弃驻守、改为巡逻的概率</Chinesesimp>
             <Turkish>Devriye İhtimali</Turkish>
             <Ukrainian>Шанс, що кожен юніт патрулюватиме замість гарнізону</Ukrainian>
         </Key>
@@ -188,8 +188,8 @@
             <German>CBA Module</German>
             <Korean>CBA 모듈</Korean>
             <Japanese>CBA モジュール</Japanese>
-            <Chinese>CBA模塊</Chinese>
-            <Chinesesimp>CBA模块</Chinesesimp>
+            <Chinese>CBA 模組</Chinese>
+            <Chinesesimp>CBA 模块</Chinesesimp>
             <Turkish>CBA Modülleri</Turkish>
             <Ukrainian>Модулі CBA</Ukrainian>
         </Key>
@@ -204,8 +204,8 @@
             <German>Community Base Addons - Module</German>
             <Korean>커뮤니티 베이스 애드온 - 모듈</Korean>
             <Japanese>Community Base Addons - モジュール要素</Japanese>
-            <Chinese>社群基礎模組 - 模塊組件</Chinese>
-            <Chinesesimp>社群基础模组 - 模块组件</Chinesesimp>
+            <Chinese>社群基礎插件 - 模組</Chinese>
+            <Chinesesimp>社区基础插件 - 模块</Chinesesimp>
             <Turkish>Community Base Addons - Modüller</Turkish>
             <Ukrainian>Community Base Addons - Модулі</Ukrainian>
         </Key>
@@ -236,8 +236,8 @@
             <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort zu verteidigen.</German>
             <Korean>분석된 위치를 방어할 그룹의 리더와 동기화합니다</Korean>
             <Japanese>グループのリーダーに同期し、防衛地点を捜索させます</Japanese>
-            <Chinese>同步到群組的隊長身上，使該群組防禦指定的地點</Chinese>
-            <Chinesesimp>同步到群组的队长身上，使该群组防御指定的地点</Chinesesimp>
+            <Chinese>與組長同步，讓該小組防禦指定位置</Chinese>
+            <Chinesesimp>与组长同步，让该小组防御指定位置</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu savundurun</Turkish>
             <Ukrainian>Синхронізуйте з лідером групи для оборони вказаного місця</Ukrainian>
         </Key>
@@ -284,8 +284,8 @@
             <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Korean>중앙 지점으로 통과시킬 개체 종류를 설정합니다</Korean>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
-            <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
-            <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Chinese>設定要傳入哪種類型的物件作為中心點</Chinese>
+            <Chinesesimp>设定要传入哪种类型的对象作为中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
@@ -300,8 +300,8 @@
             <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Korean>대괄호가 있는 어레이 또는 따옴표가 없이 이름 입력합니다</Korean>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
-            <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
-            <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Chinese>輸入以方括號表示的陣列，或不帶引號的名稱</Chinese>
+            <Chinesesimp>输入以方括号表示的数组，或不带引号的名称</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
@@ -348,8 +348,8 @@
             <German>Auszuführendes Skript</German>
             <Korean>실행할 코드</Korean>
             <Japanese>コードの実行</Japanese>
-            <Chinese>會執行的腳本代碼</Chinese>
-            <Chinesesimp>会执行的脚本代码</Chinesesimp>
+            <Chinese>要執行的腳本程式碼</Chinese>
+            <Chinesesimp>要执行的脚本代码</Chinesesimp>
             <Turkish>Çalıştırılacak Kod</Turkish>
             <Ukrainian>Код для виконання</Ukrainian>
         </Key>
@@ -364,8 +364,8 @@
             <German>Skript, das an den Wegpunkten ausgeführt wird.</German>
             <Korean>경유지에서 실행할 코드</Korean>
             <Japanese>ウェイポイントで実行されるコード</Japanese>
-            <Chinese>在路徑點時會執行的腳本代碼</Chinese>
-            <Chinesesimp>在路径点时会执行的脚本代码</Chinesesimp>
+            <Chinese>在路徑點執行的腳本程式碼</Chinese>
+            <Chinesesimp>在路径点执行的脚本代码</Chinesesimp>
             <Turkish>Waypoint'lerde çalıştırılacak herhangi kod</Turkish>
             <Ukrainian>Будь-який код для виконання в точках маршруту</Ukrainian>
         </Key>
@@ -412,8 +412,8 @@
             <German>Marker</German>
             <Korean>마커</Korean>
             <Japanese>マーカー</Japanese>
-            <Chinese>標誌</Chinese>
-            <Chinesesimp>标志</Chinesesimp>
+            <Chinese>標記</Chinese>
+            <Chinesesimp>标记</Chinesesimp>
             <Turkish>İşaret</Turkish>
             <Ukrainian>Маркер</Ukrainian>
         </Key>
@@ -428,8 +428,8 @@
             <German>Modulposition</German>
             <Korean>모듈 위치</Korean>
             <Japanese>モジュール位置</Japanese>
-            <Chinese>模塊的位置</Chinese>
-            <Chinesesimp>模块的位置</Chinesesimp>
+            <Chinese>模組位置</Chinese>
+            <Chinesesimp>模块位置</Chinesesimp>
             <Turkish>Modül Konumu</Turkish>
             <Ukrainian>Позиція модуля</Ukrainian>
         </Key>
@@ -461,7 +461,7 @@
             <Korean>개체/위치</Korean>
             <Japanese>オブジェクト/場所</Japanese>
             <Chinese>物件/地點</Chinese>
-            <Chinesesimp>物件/地点</Chinesesimp>
+            <Chinesesimp>对象/地点</Chinesesimp>
             <Turkish>Obje/Konum</Turkish>
             <Ukrainian>Об'єкт/Локація</Ukrainian>
         </Key>
@@ -508,8 +508,8 @@
             <German>Wähle, welches Objekt als Mittelpunkt verwendet wird.</German>
             <Korean>중앙 지점으로 통과시킬 개체 종류를 설정합니다</Korean>
             <Japanese>オブジェクトの位置を中央地点として設定します</Japanese>
-            <Chinese>設定要使用甚麼類型的東西來當作中心點</Chinese>
-            <Chinesesimp>设定要使用什么类型的东西来当作中心点</Chinesesimp>
+            <Chinese>設定要傳入哪種類型的物件作為中心點</Chinese>
+            <Chinesesimp>设定要传入哪种类型的对象作为中心点</Chinesesimp>
             <Turkish>Merkez noktası olarak nasıl bir objenin verildiğini gör</Turkish>
             <Ukrainian>Вкажіть, який тип об'єкта передається як центральна точка</Ukrainian>
         </Key>
@@ -524,8 +524,8 @@
             <German>Mit Gruppenführer synchronisieren, um einen ausgewählten Standort zu überwachen.</German>
             <Korean>분석된 위치를 방어할 그룹의 리더와 동기화합니다</Korean>
             <Japanese>グループのリーダーに同期し、地点を捜索させます</Japanese>
-            <Chinese>同步到群組的隊長身上，使該群組巡邏指定的地點</Chinese>
-            <Chinesesimp>同步到群组的队长身上，使该群组巡逻指定的地点</Chinesesimp>
+            <Chinese>與組長同步，讓該小組巡邏指定位置</Chinese>
+            <Chinesesimp>与组长同步，让该小组巡逻指定位置</Chinesesimp>
             <Turkish>Bir grup liderine senkronize ederek taranmış bir konumu devriye ettirin</Turkish>
             <Ukrainian>Синхронізуйте з лідером групи для патрулювання вказаного місця</Ukrainian>
         </Key>
@@ -540,8 +540,8 @@
             <German>Patrouillenzentrum</German>
             <Korean>중앙 지점</Korean>
             <Japanese>中央地点</Japanese>
-            <Chinese>中央地點</Chinese>
-            <Chinesesimp>中央地点</Chinesesimp>
+            <Chinese>中心點</Chinese>
+            <Chinesesimp>中心点</Chinesesimp>
             <Turkish>Merkez Nokta</Turkish>
             <Ukrainian>Центральна точка</Ukrainian>
         </Key>
@@ -556,8 +556,8 @@
             <German>Array mit eckigen Klammern oder Name ohne Anführungszeichen eingeben.</German>
             <Korean>대괄호가 있는 어레이 또는 따옴표가 없이 이름 입력합니다</Korean>
             <Japanese>空白のアレイか、引用符を付けずに名前を入力します</Japanese>
-            <Chinese>輸入一個使用括號或不帶引號的名稱所組成的陣列</Chinese>
-            <Chinesesimp>输入一个使用括号或不带引号的名称所组成的阵列</Chinesesimp>
+            <Chinese>輸入以方括號表示的陣列，或不帶引號的名稱</Chinese>
+            <Chinesesimp>输入以方括号表示的数组，或不带引号的名称</Chinesesimp>
             <Turkish>Parantezler olmadan bir liste ya da tırnaklar olmadan bir isim girin</Turkish>
             <Ukrainian>Введіть масив у дужках або ім'я без лапок</Ukrainian>
         </Key>
@@ -620,7 +620,7 @@
             <German>Suchradius</German>
             <Korean>반경 수색</Korean>
             <Japanese>捜索範囲</Japanese>
-            <Chinese>搜索半徑</Chinese>
+            <Chinese>搜尋半徑</Chinese>
             <Chinesesimp>搜索半径</Chinesesimp>
             <Turkish>Arama Menzili</Turkish>
             <Ukrainian>Радіус пошуку</Ukrainian>
@@ -636,7 +636,7 @@
             <German>Zahl für die Größe des zu durchsuchenden Umkreises eingeben.</German>
             <Korean>수색할 반경의 크기에 대한 숫자를 입력합니다</Korean>
             <Japanese>捜索する範囲の大きさを数値で入力します</Japanese>
-            <Chinese>輸入一個數字來定義搜索區域的半徑大小</Chinese>
+            <Chinese>輸入一個數字來定義搜尋區域的半徑大小</Chinese>
             <Chinesesimp>输入一个数字来定义搜索区域的半径大小</Chinesesimp>
             <Turkish>Aranıcak alanın çapı için bir sayı girin</Turkish>
             <Ukrainian>Введіть число для розміру радіуса пошуку</Ukrainian>
@@ -669,7 +669,7 @@
             <Korean>위치 사수 확률</Korean>
             <Japanese>停止率</Japanese>
             <Chinese>停留機率</Chinese>
-            <Chinesesimp>停留机率</Chinesesimp>
+            <Chinesesimp>停留概率</Chinesesimp>
             <Turkish>Tutma İhtimali</Turkish>
             <Ukrainian>Шанс утримання</Ukrainian>
         </Key>
@@ -685,7 +685,7 @@
             <Korean>각 유닛이 전투 시 주둔지에 위치 사수할 확률</Korean>
             <Japanese>各ユニットが戦闘中に歩哨所で留まる確率を設定</Japanese>
             <Chinese>設定當駐軍開始交戰時每個單位有多少機率會原地不動</Chinese>
-            <Chinesesimp>设定当驻军开始交战时每个单位有多少机率会原地不动</Chinesesimp>
+            <Chinesesimp>设定当驻军开始交战时每个单位有多少概率会原地不动</Chinesesimp>
             <Turkish>Birimlerin çatışma sırasında konumlarını koruma şansı</Turkish>
             <Ukrainian>Шанс, що кожен юніт утримає свій гарнізон у бою</Ukrainian>
         </Key>
@@ -716,8 +716,8 @@
             <German>Größenschwelle der Gebäudes</German>
             <Korean>건물 크기 임계값</Korean>
             <Japanese>建物の大きさのしきい値</Japanese>
-            <Chinese>可使用的建築物大小</Chinese>
-            <Chinesesimp>可使用的建筑物大小</Chinesesimp>
+            <Chinese>建築物大小門檻</Chinese>
+            <Chinesesimp>建筑物大小门槛</Chinesesimp>
             <Turkish>Bina Boyutu Limiti</Turkish>
             <Ukrainian>Поріг розміру будівлі</Ukrainian>
         </Key>
@@ -732,8 +732,8 @@
             <German>Je kleiner die Zahl, desto mehr Gebäude sind verfügbar.</German>
             <Korean>숫자가 작을수록 더 많은 건물을 사용할 수 있습니다</Korean>
             <Japanese>小さい数字でより多くの建物を利用できます</Japanese>
-            <Chinese>設定越小的數值，駐軍就能使用越多的房子</Chinese>
-            <Chinesesimp>设定越小的数值，驻军就能使用越多的房子</Chinesesimp>
+            <Chinese>數值越小，可使用的建築物越多</Chinese>
+            <Chinesesimp>数值越小，可使用的建筑物越多</Chinesesimp>
             <Turkish>Sayı küçüldükçe daha fazla sayıda bina mümkün olur</Turkish>
             <Ukrainian>Що менше число, то більше доступних будівель</Ukrainian>
         </Key>
@@ -748,8 +748,8 @@
             <German>Zeitüberschreitung</German>
             <Korean>대기</Korean>
             <Japanese>時間設定</Japanese>
-            <Chinese>計時器</Chinese>
-            <Chinesesimp>计时器</Chinesesimp>
+            <Chinese>等待時間</Chinese>
+            <Chinesesimp>等待时间</Chinesesimp>
             <Turkish>Zaman Aşımı</Turkish>
             <Ukrainian>Тайм-аут</Ukrainian>
         </Key>
@@ -796,8 +796,8 @@
             <German>Die Menge der zu erstellenden Wegpunkte.</German>
             <Korean>생성할 경유지의 양</Korean>
             <Japanese>作成するウェイポイント数</Japanese>
-            <Chinese>設定會產出多少個路徑點</Chinese>
-            <Chinesesimp>设定会产出多少个路径点</Chinesesimp>
+            <Chinese>設定要產生多少個路徑點</Chinese>
+            <Chinesesimp>设定要产生多少个路径点</Chinesesimp>
             <Turkish>Oluşturulacak Waypoint Sayısı</Turkish>
             <Ukrainian>Скільки точок маршруту створити</Ukrainian>
         </Key>
@@ -828,8 +828,8 @@
             <German>Die Art des zu verwendenden Wegpunkts.</German>
             <Korean>사용할 경유지의 유형</Korean>
             <Japanese>使用されるウェイポイントの種類</Japanese>
-            <Chinese>設定會被使用的路徑點類型</Chinese>
-            <Chinesesimp>设定会被使用的路径点类型</Chinesesimp>
+            <Chinese>設定要使用的路徑點類型</Chinese>
+            <Chinesesimp>设定要使用的路径点类型</Chinesesimp>
             <Turkish>Kullanılacak waypoint tipi</Turkish>
             <Ukrainian>Тип точки маршруту, що використовується</Ukrainian>
         </Key>

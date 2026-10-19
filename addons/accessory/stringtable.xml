@@ -12,8 +12,8 @@
             <German>Community Base Addons - Zubehörfunktionen</German>
             <Korean>커뮤니티 베이스 애드온 - 부착물 기능</Korean>
             <Japanese>Community Base Addons - アクセサリー機能</Japanese>
-            <Chinese>社群基礎模組 - 附件功能</Chinese>
-            <Chinesesimp>社群基础模组 - 附件功能</Chinesesimp>
+            <Chinese>社群基礎插件 - 附件功能</Chinese>
+            <Chinesesimp>社区基础插件 - 附件功能</Chinesesimp>
             <Turkish>Community Base Addons - Aksesuar Fonksiyonları</Turkish>
             <Ukrainian>Community Base Addons - Функції аксесуарів</Ukrainian>
         </Key>
@@ -28,8 +28,8 @@
             <German>Nächster Zustand der Optik</German>
             <Korean>다음 광학장치 상태</Korean>
             <Japanese>照準器を次モード</Japanese>
-            <Chinese>下個瞄鏡模式</Chinese>
-            <Chinesesimp>下个瞄镜模式</Chinesesimp>
+            <Chinese>下一個瞄具模式</Chinese>
+            <Chinesesimp>下一个瞄具模式</Chinesesimp>
             <Turkish>Sonraki nişangah modu</Turkish>
             <Ukrainian>Наст. режим оптики</Ukrainian>
         </Key>
@@ -44,8 +44,8 @@
             <German>Wechselt zum nächsten verfügbaren Modus des Optikaufsatzes.</German>
             <Korean>광학장치 부착물에 이용 가능한 다음 모드로 전환</Korean>
             <Japanese>照準器アイテムを次のモードに変更します</Japanese>
-            <Chinese>循環切換到下個可用的瞄鏡模式</Chinese>
-            <Chinesesimp>循环切换到下个可用的瞄镜模式</Chinesesimp>
+            <Chinese>循環切換到下一個可用的瞄具模式</Chinese>
+            <Chinesesimp>循环切换到下一个可用的瞄具模式</Chinesesimp>
             <Turkish>Varolan nişangahınızı sonraki moduna geçirir</Turkish>
             <Ukrainian>Перемикає на наступний режим приладу в слоті оптики</Ukrainian>
         </Key>
@@ -60,8 +60,8 @@
             <German>Vorheriger Zustand der Optik</German>
             <Korean>이전 광학장치 상태</Korean>
             <Japanese>照準器を前モード</Japanese>
-            <Chinese>上個瞄鏡模式</Chinese>
-            <Chinesesimp>上个瞄镜模式</Chinesesimp>
+            <Chinese>上一個瞄具模式</Chinese>
+            <Chinesesimp>上一个瞄具模式</Chinesesimp>
             <Turkish>Önceki nişangah modu</Turkish>
             <Ukrainian>Попер. режим оптики</Ukrainian>
         </Key>
@@ -76,8 +76,8 @@
             <German>Wechselt zum vorherigen verfügbaren Modus des Optikaufsatzes.</German>
             <Korean>광학장치 부착물에 이용 가능한 이전 모드로 전환</Korean>
             <Japanese>照準器アイテムを前のモードに変更します</Japanese>
-            <Chinese>循環切換到上個可用的瞄鏡模式</Chinese>
-            <Chinesesimp>循环切换到上个可用的瞄镜模式</Chinesesimp>
+            <Chinese>循環切換到上一個可用的瞄具模式</Chinese>
+            <Chinesesimp>循环切换到上一个可用的瞄具模式</Chinesesimp>
             <Turkish>Varolan nişangahınızı önceki moduna geçirir</Turkish>
             <Ukrainian>Перемикає на попередній режим приладу в слоті оптики</Ukrainian>
         </Key>
@@ -92,8 +92,8 @@
             <German>Nächster Zustand des Schienenaufsatzes</German>
             <Korean>다음 레일 아이템 상태</Korean>
             <Japanese>レイル アイテムを次モード</Japanese>
-            <Chinese>下個導軌物品狀態</Chinese>
-            <Chinesesimp>下个导轨物品状态</Chinesesimp>
+            <Chinese>下一個導軌附件狀態</Chinese>
+            <Chinesesimp>下一个导轨附件状态</Chinesesimp>
             <Turkish>Sonraki ray aksesuarı</Turkish>
             <Ukrainian>Наст. режим на планці</Ukrainian>
         </Key>
@@ -108,8 +108,8 @@
             <German>Wechselt zum nächsten verfügbaren Modus des Schienenaufsatzes.</German>
             <Korean>레일 부착물에 이용 가능한 다음 모드로 전환</Korean>
             <Japanese>レイルにあるアイテムを次のモードに変更します</Japanese>
-            <Chinese>循環切換到下個可用的導軌物品模式</Chinese>
-            <Chinesesimp>循环切换到下个可用的导轨物品模式</Chinesesimp>
+            <Chinese>循環切換到下一個可用的導軌附件模式</Chinese>
+            <Chinesesimp>循环切换到下一个可用的导轨附件模式</Chinesesimp>
             <Turkish>Ray aksesuarınızı sonraki moda geçirir</Turkish>
             <Ukrainian>Перемикає на наступний режим приладу в слоті планки</Ukrainian>
         </Key>
@@ -124,8 +124,8 @@
             <German>Vorheriger Zustand des Schienenaufsatzes</German>
             <Korean>이전 레일 아이템 상태</Korean>
             <Japanese>レイル アイテムを前モード</Japanese>
-            <Chinese>上個導軌物品狀態</Chinese>
-            <Chinesesimp>上个导轨物品状态</Chinesesimp>
+            <Chinese>上一個導軌附件狀態</Chinese>
+            <Chinesesimp>上一个导轨附件状态</Chinesesimp>
             <Turkish>Önceki ray aksesuarı</Turkish>
             <Ukrainian>Попер. режим на планці</Ukrainian>
         </Key>
@@ -140,8 +140,8 @@
             <German>Wechselt zum vorherigen verfügbaren Modus des Schienenaufsatzes.</German>
             <Korean>레일 부착물에 이용 가능한 이전 모드로 전환</Korean>
             <Japanese>レイルにあるアイテムを前のモードに変更します</Japanese>
-            <Chinese>循環切換到上個可用的導軌物品模式</Chinese>
-            <Chinesesimp>循环切换到上个可用的导轨物品模式</Chinesesimp>
+            <Chinese>循環切換到上一個可用的導軌附件模式</Chinese>
+            <Chinesesimp>循环切换到上一个可用的导轨附件模式</Chinesesimp>
             <Turkish>Ray aksesuarınızı önceki moda geçirir</Turkish>
             <Ukrainian>Перемикає на попередній режим приладу в слоті планки</Ukrainian>
         </Key>

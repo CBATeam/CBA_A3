@@ -13,8 +13,8 @@
             <German>Community Base Addons - Tastenbelegung</German>
             <Korean>커뮤니티 베이스 애드온 - 키 설정</Korean>
             <Japanese>Community Base Addons - キー割り当て</Japanese>
-            <Chinese>社群基礎模組 - 按鍵綁定</Chinese>
-            <Chinesesimp>社群基础模组 - 按键绑定</Chinesesimp>
+            <Chinese>社群基礎插件 - 按鍵綁定</Chinese>
+            <Chinesesimp>社区基础插件 - 按键绑定</Chinesesimp>
             <Turkish>Community Base Addons - Klavye Tuşları</Turkish>
             <Ukrainian>Community Base Addons - Призначення клавіш</Ukrainian>
         </Key>
@@ -64,8 +64,8 @@
             <German>Unbekannte Taste %1</German>
             <Korean>%1 키는 미지정입니다</Korean>
             <Japanese>%1キーは不明です</Japanese>
-            <Chinese>未知按鍵%1</Chinese>
-            <Chinesesimp>未知按键%1</Chinesesimp>
+            <Chinese>未知按鍵 %1</Chinese>
+            <Chinesesimp>未知按键 %1</Chinesesimp>
             <Turkish>Bilinmeyen Tuş %1</Turkish>
             <Ukrainian>Невідома клавіша %1</Ukrainian>
         </Key>
