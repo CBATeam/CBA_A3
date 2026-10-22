@@ -10,6 +10,8 @@
             <German>Community Base Addons - Quick-Time-Events</German>
             <Korean>커뮤니티 베이스 애드온 - 퀵 타임 이벤트 (QTE)</Korean>
             <Japanese>Community Base Addons - QTE (クイック タイム イベント)</Japanese>
+            <Chinese>社群基礎插件 - 快速反應事件（QTE）</Chinese>
+            <Chinesesimp>社区基础插件 - 快速反应事件（QTE）</Chinesesimp>
             <Ukrainian>Community Base Addons - Quick-Time Events</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKey">
@@ -21,6 +23,8 @@
             <German>Einmaliger Tastendruck</German>
             <Korean>한 번만 누르기</Korean>
             <Japanese>キー押下を1回に</Japanese>
+            <Chinese>單次按鍵輸入</Chinese>
+            <Chinesesimp>单次按键输入</Chinesesimp>
             <Ukrainian>Одне натискання клавіші</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEAccessabilitySingleKeyTooltip">
@@ -32,6 +36,8 @@
             <German>Wenn aktiviert, benötigen alle Quick-Time-Events nur einen einzigen Tastendruck.</German>
             <Korean>활성화 시 모든 QTE가 한 번의 키 입력으로 단축됩니다.</Korean>
             <Japanese>有効にすると、すべてのQTEを1回のキー押下へと短縮します。</Japanese>
+            <Chinese>啟用後，所有快速反應事件將簡化為單次按鍵輸入。</Chinese>
+            <Chinesesimp>启用后，所有快速反应事件将简化为单次按键输入。</Chinesesimp>
             <Ukrainian>Якщо увімкнено, усі QTE буде скорочено до одного натискання клавіші.</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindDownTooltip">
@@ -43,6 +49,8 @@
             <German>Taste in Quick-Time-Events für unten.</German>
             <Korean>QTE에 사용되는 아래쪽 키입니다.</Korean>
             <Japanese>QTEで使用される下キー。</Japanese>
+            <Chinese>快速反應事件中使用的「下」方向鍵。</Chinese>
+            <Chinesesimp>快速反应事件中使用的“下”方向键。</Chinesesimp>
             <Ukrainian>Клавіша вниз для QTE.</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindGroup">
@@ -54,6 +62,8 @@
             <German>CBA Quick-Time-Events</German>
             <Korean>CBA 퀵 타임 이벤트 (QTE)</Korean>
             <Japanese>CBA QTE (クイック タイム イベント)</Japanese>
+            <Chinese>CBA 快速反應事件（QTE）</Chinese>
+            <Chinesesimp>CBA 快速反应事件（QTE）</Chinesesimp>
             <Ukrainian>CBA Quick-Time Events</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindLeftTooltip">
@@ -65,6 +75,8 @@
             <German>Taste in Quick-Time-Events für links.</German>
             <Korean>QTE에 사용되는 왼쪽 키입니다.</Korean>
             <Japanese>QTEで使用される左キー。</Japanese>
+            <Chinese>快速反應事件中使用的「左」方向鍵。</Chinese>
+            <Chinesesimp>快速反应事件中使用的“左”方向键。</Chinesesimp>
             <Ukrainian>Клавіша вліво для QTE.</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindRightTooltip">
@@ -76,6 +88,8 @@
             <German>Taste in Quick-Time-Events für rechts.</German>
             <Korean>QTE에 사용되는 오른쪽 키입니다.</Korean>
             <Japanese>QTEで使用される右キー。</Japanese>
+            <Chinese>快速反應事件中使用的「右」方向鍵。</Chinese>
+            <Chinesesimp>快速反应事件中使用的“右”方向键。</Chinesesimp>
             <Ukrainian>Клавіша вправо для QTE.</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTEKeybindUpTooltip">
@@ -87,6 +101,8 @@
             <German>Taste in Quick-Time-Events für oben.</German>
             <Korean>QTE에 사용되는 위쪽 키입니다.</Korean>
             <Japanese>QTEで使用される上キー。</Japanese>
+            <Chinese>快速反應事件中使用的「上」方向鍵。</Chinese>
+            <Chinesesimp>快速反应事件中使用的“上”方向键。</Chinesesimp>
             <Ukrainian>Клавіша вгору для QTE.</Ukrainian>
         </Key>
         <Key ID="STR_cba_quicktime_QTETitle">
@@ -98,6 +114,8 @@
             <German>Quick-Time-Events</German>
             <Korean>퀵 타임 이벤트 (QTE)</Korean>
             <Japanese>QTE</Japanese>
+            <Chinese>快速反應事件（QTE）</Chinese>
+            <Chinesesimp>快速反应事件（QTE）</Chinesesimp>
             <Ukrainian>Quick-Time Events</Ukrainian>
         </Key>
     </Package>

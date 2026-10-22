@@ -47,8 +47,8 @@
             <German>Lokale Einstellungen bearbeiten.</German>
             <Korean>당신의 로컬 설정을 편집합니다.</Korean>
             <Japanese>ローカル設定を編集します。</Japanese>
-            <Chinese>編輯你本地端的設定。</Chinese>
-            <Chinesesimp>编辑你本地端的设定。</Chinesesimp>
+            <Chinese>編輯你的本機設定。</Chinese>
+            <Chinesesimp>编辑你的本地设定。</Chinesesimp>
             <Turkish>Yerel ayarlarınızı değiştirin.</Turkish>
             <Ukrainian>Змінити локальні налаштування.</Ukrainian>
         </Key>
@@ -149,8 +149,8 @@
             <German>Lokal</German>
             <Korean>로컬</Korean>
             <Japanese>ローカル</Japanese>
-            <Chinese>本地端</Chinese>
-            <Chinesesimp>本地端</Chinesesimp>
+            <Chinese>本機</Chinese>
+            <Chinesesimp>本地</Chinesesimp>
             <Turkish>Yerel</Turkish>
             <Ukrainian>Локальні</Ukrainian>
         </Key>
@@ -217,8 +217,8 @@
             <German>Derzeitige Einstellungen als Vorlage speichern.</German>
             <Korean>현재 설정을 프리셋으로 저장합니다.</Korean>
             <Japanese>現在の設定をプリセットとして保存します。</Japanese>
-            <Chinese>保存當前的設定為預設。</Chinese>
-            <Chinesesimp>保存当前的设定为预设。</Chinesesimp>
+            <Chinese>將目前的設定儲存為預設。</Chinese>
+            <Chinesesimp>将当前的设定保存为预设。</Chinesesimp>
             <Turkish>Şuanki ayaları şablon olarak kaydet.</Turkish>
             <Ukrainian>Зберегти поточні налаштування як пресет.</Ukrainian>
         </Key>
@@ -226,6 +226,8 @@
             <English>Search settings.</English>
             <Spanish>Buscar ajustes.</Spanish>
             <Japanese>検索設定</Japanese>
+            <Chinese>搜尋設定。</Chinese>
+            <Chinesesimp>搜索设定。</Chinesesimp>
             <Ukrainian>Пошук налаштувань.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_ButtonServer">
@@ -257,8 +259,8 @@
             <German>Server-Einstellungen ansehen. Als Admin einloggen, um zu ändern.</German>
             <Korean>서버의 설정을 확인합니다. 관리자로 로그인해서 변경합니다.</Korean>
             <Japanese>サーバー設定を確認します。管理者が変更すると記録します。</Japanese>
-            <Chinese>查看伺服器的設定。必須登入成管理員才能編輯設定。</Chinese>
-            <Chinesesimp>查看服务器的设定。必须登入管理员才能编辑设定。</Chinesesimp>
+            <Chinese>查看伺服器的設定。必須以管理員身分登入才能變更。</Chinese>
+            <Chinesesimp>查看服务器的设定。必须以管理员身份登录才能更改。</Chinesesimp>
             <Turkish>Sunucu ayarlarına bak. Değiştirmek için admin olarak giriş yapın.</Turkish>
             <Ukrainian>Переглянути налаштування сервера. Увійдіть як адмін, щоб змінити.</Ukrainian>
         </Key>
@@ -274,8 +276,8 @@
             <German>Community Base Addons - Einstellungen</German>
             <Korean>커뮤니티 베이스 애드온 - 설정</Korean>
             <Japanese>Community Base Addons - 設定要素</Japanese>
-            <Chinese>社群基礎模組 - 設定組件</Chinese>
-            <Chinesesimp>社群基础模组 - 设定组件</Chinesesimp>
+            <Chinese>社群基礎插件 - 設定</Chinese>
+            <Chinesesimp>社区基础插件 - 设定</Chinesesimp>
             <Turkish>Community Base Addons - Ayarlar</Turkish>
             <Ukrainian>Community Base Addons - Налаштування</Ukrainian>
         </Key>
@@ -283,6 +285,8 @@
             <English>Filter addons and settings. Matches names, descriptions, setting variable names and option labels.\nCtrl + F to focus, right click to clear.</English>
             <Spanish>Filtra addons y ajustes. Busca coincidencias en nombres, descripciones, nombres de variables de ajustes y etiquetas de opciones.\nCtrl + F para enfocar, clic derecho para borrar.</Spanish>
             <Japanese>アドオンと設定をフィルタリングします。名前、説明、設定変数名、オプションラベルに一致するものを検索します。\nCtrl + F でフォーカス、右クリックでクリア。</Japanese>
+            <Chinese>篩選模組與設定。會比對名稱、描述、設定變數名稱與選項標籤。\n按 Ctrl + F 聚焦，按右鍵清除。</Chinese>
+            <Chinesesimp>筛选模组与设定。匹配名称、描述、设定变量名和选项标签。\n按 Ctrl + F 聚焦，右键清除。</Chinesesimp>
             <Ukrainian>Фільтр аддонів і налаштувань. Шукає в назвах, описах, іменах змінних і назвах опцій.\nCtrl + F - фокус, ПКМ - очистити.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_applies">
@@ -297,7 +301,7 @@
             <Korean>이 설정을 적용합니다.</Korean>
             <Japanese>設定を適用します。</Japanese>
             <Chinese>設定已套用。</Chinese>
-            <Chinesesimp>设置已套用。</Chinesesimp>
+            <Chinesesimp>设定已应用。</Chinesesimp>
             <Turkish>Bu ayar geçerli.</Turkish>
             <Ukrainian>Це налаштування діє.</Ukrainian>
         </Key>
@@ -363,8 +367,8 @@
             <German>Zur Standardeinstellung zurücksetzen.</German>
             <Korean>기본값으로 초기화합니다.</Korean>
             <Japanese>標準値へ初期化します。</Japanese>
-            <Chinese>重設成預設數值。</Chinese>
-            <Chinesesimp>重设成预设数值。</Chinesesimp>
+            <Chinese>重設為預設值。</Chinese>
+            <Chinesesimp>重设为预设值。</Chinesesimp>
             <Turkish>Varsayılan ayarlara geri dön.</Turkish>
             <Ukrainian>Скинути до стандартного значення.</Ukrainian>
         </Key>
@@ -372,42 +376,56 @@
             <English>There are %1 unsaved setting changes.</English>
             <Spanish>Hay %1 cambios de ajustes sin guardar.</Spanish>
             <Japanese>保存されていない設定変更が%1件あります。</Japanese>
+            <Chinese>有 %1 項設定變更尚未儲存。</Chinese>
+            <Chinesesimp>有 %1 项设定更改尚未保存。</Chinesesimp>
             <Ukrainian>Незбережених змін налаштувань: %1.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_confirm">
             <English>Discard</English>
             <Spanish>Descartar</Spanish>
             <Japanese>破棄</Japanese>
+            <Chinese>捨棄</Chinese>
+            <Chinesesimp>放弃</Chinesesimp>
             <Ukrainian>Відкинути</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_keep">
             <English>Keep Editing</English>
             <Spanish>Seguir editando</Spanish>
             <Japanese>編集を継続</Japanese>
+            <Chinese>繼續編輯</Chinese>
+            <Chinesesimp>继续编辑</Chinesesimp>
             <Ukrainian>Продовжити</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_more">
             <English>...and %1 more</English>
             <Spanish>...y %1 más</Spanish>
             <Japanese>... 他 %1 件</Japanese>
+            <Chinese>...以及其他 %1 項</Chinese>
+            <Chinesesimp>...以及其他 %1 项</Chinesesimp>
             <Ukrainian>...та ще %1</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_one">
             <English>There is 1 unsaved setting change.</English>
             <Spanish>Hay 1 cambio de ajuste sin guardar.</Spanish>
             <Japanese>保存されていない設定変更が1件あります。</Japanese>
+            <Chinese>有 1 項設定變更尚未儲存。</Chinese>
+            <Chinesesimp>有 1 项设定更改尚未保存。</Chinesesimp>
             <Ukrainian>Є 1 незбережена зміна налаштувань.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_discardChanges_title">
             <English>Unsaved Changes</English>
             <Spanish>Cambios sin guardar</Spanish>
             <Japanese>保存されていない変更</Japanese>
+            <Chinese>未儲存的變更</Chinese>
+            <Chinesesimp>未保存的更改</Chinesesimp>
             <Ukrainian>Незбережені зміни</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_general">
             <English>General</English>
             <Spanish>General</Spanish>
             <Japanese>全般</Japanese>
+            <Chinese>一般</Chinese>
+            <Chinesesimp>通用</Chinesesimp>
             <Ukrainian>Загальне</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_menu_button">
@@ -438,8 +456,8 @@
             <German>Addon-Einstellungen anpassen.</German>
             <Korean>애드온 설정을 조정합니다.</Korean>
             <Japanese>アドオンの設定を調整します。</Japanese>
-            <Chinese>調整插件設定。</Chinese>
-            <Chinesesimp>调整插件设置。</Chinesesimp>
+            <Chinese>調整模組設定。</Chinese>
+            <Chinesesimp>调整模组设定。</Chinesesimp>
             <Turkish>Eklenti ayarlarını değiştir.</Turkish>
             <Ukrainian>Змінити налаштування аддонів.</Ukrainian>
         </Key>
@@ -454,7 +472,7 @@
             <German>Diese Einstellung gilt nach dem nächsten Neustart der Mission.</German>
             <Korean>이 설정은 다음 미션 재시작 후에 적용됩니다.</Korean>
             <Japanese>この設定は次のミッション開始後に適用されます。</Japanese>
-            <Chinese>這個設定將會在任務重置後生效</Chinese>
+            <Chinese>這個設定將會在任務重新開始後生效。</Chinese>
             <Chinesesimp>该设定将在任务重启后生效。</Chinesesimp>
             <Turkish>Bu ayar oyun baştan başladıktan sonra geçerli olur.</Turkish>
             <Ukrainian>Налаштування діятиме після перезапуску місії.</Ukrainian>
@@ -472,7 +490,7 @@
             <Korean>클라이언트로\n덮어쓰기</Korean>
             <Japanese>ｸﾗｲｱﾝﾄ側で\n上書き</Japanese>
             <Chinese>覆寫\n客戶端</Chinese>
-            <Chinesesimp>覆写\n客户端</Chinesesimp>
+            <Chinesesimp>覆盖\n客户端</Chinesesimp>
             <Turkish>Oyunculara\nAyar Zorla</Turkish>
             <Ukrainian>Перезапис\nКлієнти</Ukrainian>
         </Key>
@@ -480,6 +498,8 @@
             <English>Clients</English>
             <Spanish>Clientes</Spanish>
             <Japanese>クライアント</Japanese>
+            <Chinese>客戶端</Chinese>
+            <Chinesesimp>客户端</Chinesesimp>
             <Ukrainian>Клієнти</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_mission">
@@ -495,7 +515,7 @@
             <Korean>미션으로\n덮어쓰기</Korean>
             <Japanese>ﾐｯｼｮﾝ側で\n上書き</Japanese>
             <Chinese>覆寫\n任務</Chinese>
-            <Chinesesimp>覆写\n任务</Chinesesimp>
+            <Chinesesimp>覆盖\n任务</Chinesesimp>
             <Turkish>Göreve\nAyar Zorla</Turkish>
             <Ukrainian>Перезапис\nМісія</Ukrainian>
         </Key>
@@ -503,6 +523,8 @@
             <English>Mission</English>
             <Spanish>Misión</Spanish>
             <Japanese>ミッション</Japanese>
+            <Chinese>任務</Chinese>
+            <Chinesesimp>任务</Chinesesimp>
             <Ukrainian>Місія</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwrite_server">
@@ -518,7 +540,7 @@
             <Korean>서버로\n덮어쓰기</Korean>
             <Japanese>ｻｰﾊﾞｰ側で\n上書き</Japanese>
             <Chinese>覆寫\n伺服器</Chinese>
-            <Chinesesimp>覆写\n服务器</Chinesesimp>
+            <Chinesesimp>覆盖\n服务器</Chinesesimp>
             <Turkish>Sunucuya\nAyar Zorla</Turkish>
             <Ukrainian>Перезапис\nСервер</Ukrainian>
         </Key>
@@ -526,6 +548,8 @@
             <English>Overwrites:</English>
             <Spanish>Sobrescribe:</Spanish>
             <Japanese>上書き:</Japanese>
+            <Chinese>覆寫:</Chinese>
+            <Chinesesimp>覆盖:</Chinesesimp>
             <Ukrainian>Перезаписи:</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_overwritten_by_client_equal_tooltip">
@@ -539,7 +563,7 @@
             <German>Mit gleichem Wert durch Client überschrieben.</German>
             <Korean>동일한 값을 가진 클라이언트에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>クライアントによって同じ値で上書きされています。</Japanese>
-            <Chinese>被客戶端以相同的值覆蓋。</Chinese>
+            <Chinese>被客戶端以相同的值覆寫。</Chinese>
             <Chinesesimp>被客户端以相同的值覆盖。</Chinesesimp>
             <Ukrainian>Перезаписано клієнтом тим самим значенням.</Ukrainian>
         </Key>
@@ -555,8 +579,8 @@
             <German>Diese Einstellung wird von den Clients überschrieben.</German>
             <Korean>이 설정은 클라이언트에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>この設定はクライアントによって上書きされます。</Japanese>
-            <Chinese>此項設定被客戶端給覆寫。</Chinese>
-            <Chinesesimp>此项设定被客户端给覆写。</Chinesesimp>
+            <Chinese>此項設定被客戶端覆寫。</Chinese>
+            <Chinesesimp>此项设定被客户端覆盖。</Chinesesimp>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış.</Turkish>
             <Ukrainian>Налаштування перезаписано клієнтами.</Ukrainian>
         </Key>
@@ -572,8 +596,8 @@
             <German>Diese Einstellung wird von den Clients überschrieben und betrifft nur den Server.</German>
             <Korean>이 설정은 클라이언트에 의해 덮어씌워졌고 서버에만 적용됩니다.</Korean>
             <Japanese>この設定はクライアントによって上書きされ、サーバーにのみ適用されます。</Japanese>
-            <Chinese>此項設定被客戶端給覆寫並僅適用於伺服器。</Chinese>
-            <Chinesesimp>此项设定被客户端给覆写并仅适用于服务器。</Chinesesimp>
+            <Chinese>此項設定被客戶端覆寫，並僅適用於伺服器。</Chinese>
+            <Chinesesimp>此项设定被客户端覆盖，且仅适用于服务器。</Chinesesimp>
             <Turkish>Oyuncular tarafından bu ayarın üstüne yazılmış, ayar sadece sunucuda geçerli.</Turkish>
             <Ukrainian>Налаштування перезаписано клієнтами і діє лише для сервера.</Ukrainian>
         </Key>
@@ -588,7 +612,7 @@
             <German>Mit gleichem Wert durch Mission überschrieben.</German>
             <Korean>동일한 값을 가진 임무에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>ミッションによって同じ値で上書きされています。</Japanese>
-            <Chinese>被任務以相同的值覆蓋。</Chinese>
+            <Chinese>被任務以相同的值覆寫。</Chinese>
             <Chinesesimp>被任务以相同的值覆盖。</Chinesesimp>
             <Ukrainian>Перезаписано місією тим самим значенням.</Ukrainian>
         </Key>
@@ -604,8 +628,8 @@
             <German>Diese Einstellung wird von der Mission überschrieben.</German>
             <Korean>이 설정은 미션에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>この設定はミッションによって上書きされます。</Japanese>
-            <Chinese>此項設定被任務給覆寫。</Chinese>
-            <Chinesesimp>此项设定被任务给覆写。</Chinesesimp>
+            <Chinese>此項設定被任務覆寫。</Chinese>
+            <Chinesesimp>此项设定被任务覆盖。</Chinesesimp>
             <Turkish>Görev tarafından bu ayarın üstüne yazılmış.</Turkish>
             <Ukrainian>Налаштування перезаписано місією.</Ukrainian>
         </Key>
@@ -620,7 +644,7 @@
             <German>Mit gleichem Wert durch Server überschrieben.</German>
             <Korean>동일한 값을 가진 서버에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>サーバーによって同じ値で上書きされています。</Japanese>
-            <Chinese>被伺服器以相同的值覆蓋。</Chinese>
+            <Chinese>被伺服器以相同的值覆寫。</Chinese>
             <Chinesesimp>被服务器以相同的值覆盖。</Chinesesimp>
             <Ukrainian>Перезаписано сервером тим самим значенням.</Ukrainian>
         </Key>
@@ -636,8 +660,8 @@
             <German>Diese Einstellung wird vom Server überschrieben.</German>
             <Korean>이 설정은 서버에 의해 덮어씌워졌습니다.</Korean>
             <Japanese>この設定はサーバーによって上書きされます。</Japanese>
-            <Chinese>此項設定被伺服器給覆寫。</Chinese>
-            <Chinesesimp>此项设定被服务器给覆写。</Chinesesimp>
+            <Chinese>此項設定被伺服器覆寫。</Chinese>
+            <Chinesesimp>此项设定被服务器覆盖。</Chinesesimp>
             <Turkish>Sunucu tarafından bu ayarın üstüne yazılmış.</Turkish>
             <Ukrainian>Налаштування перезаписано сервером.</Ukrainian>
         </Key>
@@ -661,6 +685,8 @@
             <English>Show or hide the settings in this group.</English>
             <Spanish>Mostrar u ocultar los ajustes de este grupo.</Spanish>
             <Japanese>このグループの設定を表示または非表示にします。</Japanese>
+            <Chinese>顯示或隱藏此群組中的設定。</Chinese>
+            <Chinesesimp>显示或隐藏此分组中的设定。</Chinesesimp>
             <Ukrainian>Показати або сховати налаштування цієї групи.</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_volatile">
@@ -673,6 +699,8 @@
             <German>Änderungen bleiben nach einem Serverneustart nicht erhalten</German>
             <Korean>서버를 재시작한 후 변경 사항 유지 안함</Korean>
             <Japanese>サーバーの再起動後、変更は保持されません</Japanese>
+            <Chinese>變更不會在伺服器重新啟動後保留</Chinese>
+            <Chinesesimp>更改不会在服务器重启后保留</Chinesesimp>
             <Ukrainian>Зміни не збережуться після перезапуску сервера</Ukrainian>
         </Key>
         <Key ID="STR_cba_settings_volatile_tooltip">
@@ -685,6 +713,8 @@
             <German>Der Server ist so konfiguriert, dass Änderungen an den Einstellungen zwischen Serverneustarts nicht erhalten bleiben.\nDie Änderungen zwischen Missionsneustarts bleiben erhalten.</German>
             <Korean>서버가 다시 시작될 때까지 설정 변경 사항이 유지되지 않도록 서버가 구성어 있습니다.\n임무가 다시 시작될 때까지 변경 사항이 유지됩니다.</Korean>
             <Japanese>このサーバーは、サーバーの再起動後に設定への変更が保持されないように構成されています。\n再起動無くミッションを再スタートする場合では変更は保持されます。</Japanese>
+            <Chinese>伺服器已設定為在伺服器重新啟動後不保留設定變更。\n變更會在任務重新開始後保留。</Chinese>
+            <Chinesesimp>服务器已配置为在服务器重启后不保留设定更改。\n更改会在任务重启后保留。</Chinesesimp>
             <Ukrainian>Сервер налаштовано не зберігати зміни між перезапусками сервера.\nЗміни збережуться між перезапусками місії.</Ukrainian>
         </Key>
     </Package>
