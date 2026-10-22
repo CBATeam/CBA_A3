@@ -47,3 +47,7 @@ for "_i" from 0 to (count _config - 1) do {
     _oldVeh setVehicleVarName "";
     _newVeh setVehicleVarName _vehName;
 }] call CBA_fnc_addEventHandler;
+
+// Check missionTime so Eden placed units don't have their loadouts randomized twice
+["CAManBase", "InitPost", { if (CBA_missionTime > 0.1) then { call CBA_fnc_randomizeLoadout } }] call CBA_fnc_addClassEventHandler;
+["CAManBase", "InitPost", CBA_fnc_addRandomizedMagazines, true, [], true] call CBA_fnc_addClassEventHandler;
