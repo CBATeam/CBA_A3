@@ -156,6 +156,7 @@ class CfgFunctions {
             PATHTO_FNC(attachToBone);
             PATHTO_FNC(binarizeNumber);
             PATHTO_FNC(endRadioTransmission);
+            PATHTO_FNC(hideAction);
         };
 
         class Broken {
