@@ -38,6 +38,7 @@ params ["_flagset","_flags"];
 _flagset = floor abs _flagset;
 _flags = floor abs _flags;
 if ((_flagset max _flags) >= 16777216) exitWith {-1}; // precision drop after 2^24
+if (_flagset == 0 || {_flags == 0}) exitWith {_flags}; // no common bits, CBA_fnc_bitwiseAND can't take 0
 
 // bits of _flags that are not set in _flagset
 _flags - ([_flagset,_flags] call CBA_fnc_bitwiseAND)
