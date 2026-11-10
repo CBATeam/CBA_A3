@@ -24,8 +24,14 @@ if (_userKeyStates isNotEqualTo GVAR(userKeyStates)) then {
     {
         if (_x isNotEqualTo (GVAR(userKeyStates) select _forEachIndex)) then {
             GVAR(userKeyStates) set [_forEachIndex, _x];
-            // pass the stored modifier key states, so they are not reset while a modifier is held
-            [_display, USERACTION_OFFSET + _forEachIndex, GVAR(shift), GVAR(control), GVAR(alt)] call ([FUNC(keyHandlerUp), FUNC(keyHandlerDown)] select _x);
+            // user actions are bound without modifiers, but the key handler stores the modifiers it gets:
+            // restore the real modifier key states afterwards, so they are not reset while a modifier is held
+            private _modifiers = [GVAR(shift), GVAR(control), GVAR(alt)];
+            [_display, USERACTION_OFFSET + _forEachIndex, false, false, false] call ([FUNC(keyHandlerUp), FUNC(keyHandlerDown)] select _x);
+            _modifiers params ["_shift", "_control", "_alt"];
+            GVAR(shift) = _shift;
+            GVAR(control) = _control;
+            GVAR(alt) = _alt;
         };
     } forEach _userKeyStates;
 };
