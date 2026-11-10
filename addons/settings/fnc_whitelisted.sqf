@@ -49,6 +49,9 @@ if (_owner < 0) exitWith {
 // remote client, admin state and user info are only available on the server
 if (!isServer) exitWith {false};
 
+// 0 is what remoteExecutedOwner returns outside of remote execution, it is never a client
+if (_owner == 0) exitWith {false};
+
 // admin wildcard and client is logged in (not voted) admin
 if (_adminWildcard && {admin _owner == 2}) exitWith {true};
 
