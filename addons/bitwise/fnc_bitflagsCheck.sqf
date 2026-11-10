@@ -38,7 +38,16 @@ params ["_flagset","_flags"];
 _flagset = floor abs _flagset;
 _flags = floor abs _flags;
 if ((_flagset max _flags) >= 16777216) exitWith {-1}; // precision drop after 2^24
-if (_flagset == 0 || {_flags == 0}) exitWith {_flags}; // no common bits, CBA_fnc_bitwiseAND can't take 0
 
-// bits of _flags that are not set in _flagset
-_flags - ([_flagset,_flags] call CBA_fnc_bitwiseAND)
+// sum of the bits of _flags that are not set in _flagset, bit by bit (exact below 2^24, unlike ln based bit counts)
+private _return = 0;
+private _power = 1;
+
+while {_power <= _flags} do {
+    if ((floor (_flags / _power)) mod 2 == 1 && {(floor (_flagset / _power)) mod 2 == 0}) then {
+        _return = _return + _power;
+    };
+    _power = _power * 2;
+};
+
+_return
