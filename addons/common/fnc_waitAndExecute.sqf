@@ -5,6 +5,7 @@ Function: CBA_fnc_waitAndExecute
 Description:
     Executes a code once in unscheduled environment with a given game time delay.
     Note that unlike PFEH, the delay is in CBA_missionTime not diag_tickTime (will be adjusted for time accl).
+    In Eden Editor, where time does not advance, CBA_missionTime advances in real time.
 
 Parameters:
     _function - The function you wish to execute. <CODE>
