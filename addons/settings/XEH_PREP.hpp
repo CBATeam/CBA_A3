@@ -1,5 +1,6 @@
 PREP(init);
 PREP(set);
+PREP(setServerRequest);
 PREP(get);
 PREP(check);
 PREP(parse);
