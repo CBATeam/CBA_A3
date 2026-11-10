@@ -33,9 +33,11 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-#define BASE2LOG(num) ((ln num)*1.44269502162933349609)
-#define BITQUANT(num) floor BASE2LOG(num) + 1
-
 params ["_flagset","_flags"];
-_flagset = [_flagset,BITQUANT(_flagset max _flags)] call CBA_fnc_bitwiseNOT;
-[_flagset,_flags] call CBA_fnc_bitwiseAND
+
+_flagset = floor abs _flagset;
+_flags = floor abs _flags;
+if ((_flagset max _flags) >= 16777216) exitWith {-1}; // precision drop after 2^24
+
+// bits of _flags that are not set in _flagset
+_flags - ([_flagset,_flags] call CBA_fnc_bitwiseAND)
