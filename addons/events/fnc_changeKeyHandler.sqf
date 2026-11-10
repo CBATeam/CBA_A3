@@ -62,6 +62,13 @@ if (count _keyHandlers > _oldKey) then {
     _keyHandlers set [_oldKey, (_keyHandlers select _oldKey) - [_hashKey]];
 };
 
+// forget that the handler is held on the old key, its release would not be matched to the new key anymore
+GVAR(keyDownActiveList) = GVAR(keyDownActiveList) - [_hashKey];
+if (_type == "keyup") then {
+    GVAR(keyUpActiveList) = GVAR(keyUpActiveList) - [_hashKey];
+    GVAR(keyHoldTimers) setVariable [_hashKey, nil];
+};
+
 // add to new key
 private _hashKeys = _keyHandlers param [_key, []];
 _hashKeys pushBackUnique _hashKey;
