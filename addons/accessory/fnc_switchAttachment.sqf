@@ -44,7 +44,10 @@ if (_currWeaponType < 0) exitWith {false};
 private _cfgWeapons = configFile >> "CfgWeapons";
 
 private _testItem = _currItem;
-while {_testItem != ""} do {
+private _visitedItems = createHashMap; // stop on loops that don't return to the start item
+while {_testItem != "" && {isNil "_switchItem"}} do {
+    _visitedItems set [toLowerANSI _testItem, true];
+
     // Get the next/previous item from the attachment's config, but ignore inherited values
     private _configs = if (_switchTo == "next") then {
         configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
@@ -57,7 +60,7 @@ while {_testItem != ""} do {
     } else {
         _testItem = getText (_configs select 0);
         if (_testItem == "") exitWith {};
-        if (_testItem == _currItem) exitWith { _testItem = ""; }; // same as start (full loop)
+        if ((toLowerANSI _testItem) in _visitedItems) exitWith { _testItem = ""; }; // already visited (full loop)
         private _usageArray = GVAR(usageHash) getOrDefault [_testItem, []];
         if ((_usageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
             _switchItem = _testItem;
