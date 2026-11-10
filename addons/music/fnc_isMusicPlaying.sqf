@@ -20,4 +20,4 @@ Author:
     Dedmen, Commy2, Fishy
 ---------------------------------------------------------------------------- */
 
-!isNil QGVAR(track)
+(missionNamespace getVariable [QGVAR(playing), ""]) != ""
