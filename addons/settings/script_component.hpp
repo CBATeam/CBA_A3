@@ -161,7 +161,7 @@
 #define COLOR_OVERWRITTEN_EQUAL [0.95, 0.55, 0, 1]
 #define COLOR_NEED_RESTART [0.95, 0.95, 0, 1]
 
-#define CAN_SET_SERVER_SETTINGS ((isServer || FUNC(whitelisted)) && {!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
+#define CAN_SET_SERVER_SETTINGS ((isServer || {[] call FUNC(whitelisted)}) &&{!isNull GVAR(server)}) // in single player, as host (local server) or as logged in (not voted) admin connected to a dedicated server
 #define CAN_SET_CLIENT_SETTINGS !isServer // in multiplayer as dedicated client
 #define CAN_SET_MISSION_SETTINGS is3DEN // in editor
 

@@ -133,7 +133,8 @@ switch (toLower _source) do {
             [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
         } else {
             if ([] call FUNC(whitelisted)) then {
-                [QGVAR(setSettingServer), [_setting, _value, _priority, _store]] call CBA_fnc_serverEvent;
+                // remote execution lets the server verify the sender, see CBA_settings_fnc_setServerRequest
+                [_setting, _value, _priority, _store] remoteExecCall [QFUNC(setServerRequest), 2];
             } else {
                 WARNING_1("Source is server,but no admin access. Setting: %1",_setting);
                 _return = false;
