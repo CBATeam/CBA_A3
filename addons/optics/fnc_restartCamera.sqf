@@ -21,6 +21,9 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
+// A full-screen scripted camera (e.g. a mission cutscene camera) is the primary camera and is not a unit or vehicle.
+#define FULLSCREEN_CAMERA_ACTIVE ((allCameras findIf {(_x select 2) && {!((_x select 0) isKindOf "AllVehicles")}}) != -1)
+
 if (
     !GVAR(usePipOptics)
     || {configProperties [configFile >> "CBA_PIPItems"] isEqualTo []}
@@ -31,7 +34,19 @@ if (
 params ["_unit", ["_reset", true]];
 
 if (_reset) then {
-    GVAR(camera) cameraEffect ["TERMINATE", "BACK"];
+    // Render-to-texture cameras can't be combined with a full-screen camera: starting ours would end it.
+    // Restart once that camera is gone instead.
+    if (FULLSCREEN_CAMERA_ACTIVE) exitWith {
+        if (isNil QGVAR(restartPending)) then {
+            GVAR(restartPending) = true;
+            [{!FULLSCREEN_CAMERA_ACTIVE}, {
+                GVAR(restartPending) = nil;
+                _this call FUNC(restartCamera);
+            }, [_unit, true]] call CBA_fnc_waitUntilAndExecute;
+        };
+    };
+
+    GVAR(camera) cameraEffect ["TERMINATE", "BACK", QGVAR(rendertarget0)];
     camDestroy GVAR(camera);
 
     // PIP technique by BadBenson
