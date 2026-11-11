@@ -45,6 +45,18 @@ private _cfgWeapons = configFile >> "CfgWeapons";
 
 private _testItem = _currItem;
 private _visitedItems = createHashMap; // stop on loops that don't return to the start item
+
+// A PIP optic class is only swapped in by CBA optics for its normal class, so walk the chain of the normal class.
+// e.g. CUP: Optic -> Optic_3D -> Optic, and Optic_PIP -> Optic. With Optic_PIP mounted, "next" must give Optic_3D, not Optic.
+private _nonPIPOptics = missionNamespace getVariable QEGVAR(optics,NonPIPOptics);
+if (!isNil "_nonPIPOptics") then {
+    private _normalItem = _nonPIPOptics getVariable [_currItem, ""];
+    if (_normalItem != "") then {
+        _visitedItems set [toLowerANSI _currItem, true];
+        _testItem = _normalItem;
+    };
+};
+
 while {_testItem != "" && {isNil "_switchItem"}} do {
     _visitedItems set [toLowerANSI _testItem, true];
 
