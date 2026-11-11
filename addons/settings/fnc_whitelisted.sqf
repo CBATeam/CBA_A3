@@ -24,7 +24,10 @@ Author:
     commy2
 ---------------------------------------------------------------------------- */
 
-params [["_owner", -1, [0]]];
+// Before the owner parameter existed this function took no arguments, and some callers still pass their own _this.
+// Anything that isn't a number checks the local machine, without a params type error.
+private _owner = param [0, -1];
+if !(_owner isEqualType 0) then {_owner = -1};
 
 private _whitelist = getArray (configFile >> QGVAR(whitelist));
 
