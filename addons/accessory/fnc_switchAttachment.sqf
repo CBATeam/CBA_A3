@@ -43,41 +43,52 @@ if (_currWeaponType < 0) exitWith {false};
 
 private _cfgWeapons = configFile >> "CfgWeapons";
 
-private _testItem = _currItem;
-private _visitedItems = createHashMap; // stop on loops that don't return to the start item
+// Walk the next/previous chain from _testItem and stop at the first usable item (sets _switchItem).
+// _visitedItems stops loops that don't return to the start item.
+private _fnc_walkChain = {
+    params ["_testItem", "_visitedItems"];
 
-// A PIP optic class is only swapped in by CBA optics for its normal class, so walk the chain of the normal class.
-// e.g. CUP: Optic -> Optic_3D -> Optic, and Optic_PIP -> Optic. With Optic_PIP mounted, "next" must give Optic_3D, not Optic.
-private _nonPIPOptics = missionNamespace getVariable QEGVAR(optics,NonPIPOptics);
-if (!isNil "_nonPIPOptics") then {
-    private _normalItem = _nonPIPOptics getVariable [_currItem, ""];
-    if (_normalItem != "") then {
-        _visitedItems set [toLowerANSI _currItem, true];
-        _testItem = _normalItem;
+    while {_testItem != "" && {isNil "_switchItem"}} do {
+        _visitedItems set [toLowerANSI _testItem, true];
+
+        // Get the next/previous item from the attachment's config, but ignore inherited values
+        private _configs = if (_switchTo == "next") then {
+            configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
+        } else {
+            configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
+        };
+
+        if (_configs isEqualTo []) then {
+            _testItem = "";
+        } else {
+            _testItem = getText (_configs select 0);
+            if (_testItem == "") exitWith {};
+            if ((toLowerANSI _testItem) in _visitedItems) exitWith { _testItem = ""; }; // already visited (full loop)
+            private _usageArray = GVAR(usageHash) getOrDefault [_testItem, []];
+            if ((_usageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
+                _switchItem = _testItem;
+            };
+        };
     };
 };
 
-while {_testItem != "" && {isNil "_switchItem"}} do {
-    _visitedItems set [toLowerANSI _testItem, true];
+// A PIP optic class is only swapped in by CBA optics for its normal class, so walk the chain of the normal class.
+// e.g. CUP: Optic -> Optic_3D -> Optic, and Optic_PIP -> Optic. With Optic_PIP mounted, "next" must give Optic_3D, not Optic.
+private _normalItem = "";
+private _nonPIPOptics = missionNamespace getVariable QEGVAR(optics,NonPIPOptics);
+if (!isNil "_nonPIPOptics") then {
+    _normalItem = _nonPIPOptics getVariable [_currItem, ""];
+};
 
-    // Get the next/previous item from the attachment's config, but ignore inherited values
-    private _configs = if (_switchTo == "next") then {
-        configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemNextClass'", false];
-    } else {
-        configProperties [_cfgWeapons >> _testItem, "configName _x == 'MRT_SwitchItemPrevClass'", false];
-    };
+if (_normalItem != "") then {
+    [_normalItem, createHashMapFromArray [[toLowerANSI _currItem, true]]] call _fnc_walkChain;
 
-    if (_configs isEqualTo []) then {
-        _testItem = "";
-    } else {
-        _testItem = getText (_configs select 0);
-        if (_testItem == "") exitWith {};
-        if ((toLowerANSI _testItem) in _visitedItems) exitWith { _testItem = ""; }; // already visited (full loop)
-        private _usageArray = GVAR(usageHash) getOrDefault [_testItem, []];
-        if ((_usageArray findIf {([_testItem] call _x) isEqualTo false}) == -1) then { // none returned false
-            _switchItem = _testItem;
-        };
+    // fall back to a chain of the PIP class itself, but never switch to its normal class (CBA optics would swap it straight back)
+    if (isNil "_switchItem") then {
+        [_currItem, createHashMapFromArray [[toLowerANSI _normalItem, true]]] call _fnc_walkChain;
     };
+} else {
+    [_currItem, createHashMap] call _fnc_walkChain;
 };
 TRACE_3("",_currItem,_switchTo,_switchItem);
 
