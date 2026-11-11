@@ -63,8 +63,9 @@ if (count _keyHandlers > _oldKey) then {
 };
 
 // forget that the handler is held on the old key, its release would not be matched to the new key anymore
-GVAR(keyDownActiveList) = GVAR(keyDownActiveList) - [_hashKey];
+// (held state is stored under the keyup ids, for a keydown handler under its "_cbadefaultuphandler")
 if (_type == "keyup") then {
+    GVAR(keyDownActiveList) = GVAR(keyDownActiveList) - [_hashKey];
     GVAR(keyUpActiveList) = GVAR(keyUpActiveList) - [_hashKey];
     GVAR(keyHoldTimers) setVariable [_hashKey, nil];
 };
