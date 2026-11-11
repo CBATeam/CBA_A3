@@ -4,7 +4,7 @@ Function: CBA_fnc_bitflagsCheck
 Description:
     Checks if a given flagset has the specified flags set.
 
-    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
+    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs of 2^24 or more return -1.
 
 Parameters:
     _flagset    - flagset to check for flags within <NUMBER>
