@@ -38,6 +38,7 @@
             <Chinese>自動展開選項選單</Chinese>
             <Chinesesimp>自动展开选项菜单</Chinesesimp>
             <Ukrainian>Автоматично розгортати меню «Опції»</Ukrainian>
+            <Japanese>オプションメニューを自動的に展開</Japanese>
         </Key>
         <Key ID="STR_CBA_UI_Category">
             <English>User Interface</English>
