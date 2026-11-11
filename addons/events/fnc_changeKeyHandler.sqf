@@ -49,18 +49,42 @@ _hashKey = toLower _hashKey;
 
 private _hash = [GVAR(keyHandlersDown), GVAR(keyHandlersUp)] select (_type == "keyup");
 private _keyData = _hash getVariable _hashKey;
-private _key = _keyData select 0;
+
+if (isNil "_keyData") exitWith {
+    WARNING_2("Key handler %1 (%2) does not exist",_hashKey,_type);
+};
+
+private _oldKey = _keyData select 0;
 private _keyHandlers = [GVAR(keyDownStates), GVAR(keyUpStates)] select (_type == "keyup");
 
-if (count _keyHandlers > _key) then {
-    private _hashKeys = _keyHandlers select _key;
+// remove from old key
+if (count _keyHandlers > _oldKey) then {
+    _keyHandlers set [_oldKey, (_keyHandlers select _oldKey) - [_hashKey]];
+};
 
-    _hashKeys = _hashKeys - [_hashKey];
-    _hashKeys pushBack _hashKey;
-    _keyHandlers set [_key, _hashKeys];
+// forget that the handler is held on the old key, its release would not be matched to the new key anymore
+// (held state is stored under the keyup ids, for a keydown handler under its "_cbadefaultuphandler")
+if (_type == "keyup") then {
+    GVAR(keyDownActiveList) = GVAR(keyDownActiveList) - [_hashKey];
+    GVAR(keyUpActiveList) = GVAR(keyUpActiveList) - [_hashKey];
+    GVAR(keyHoldTimers) setVariable [_hashKey, nil];
+};
 
-    _keyData set [0, _key];
-    _keyData set [1, _settings];
+// add to new key
+private _hashKeys = _keyHandlers param [_key, []];
+_hashKeys pushBackUnique _hashKey;
+_keyHandlers set [_key, _hashKeys];
+
+_keyData set [0, _key];
+_keyData set [1, _settings];
+
+// keep the default keyup handler of a keydown handler on the same key
+if (_type == "keydown") then {
+    [_hashKey + "_cbadefaultuphandler", _key, _settings, "keyup"] call CBA_fnc_changeKeyHandler;
+};
+
+if ((_oldKey >= USERACTION_OFFSET && {_oldKey <= USERACTION_OFFSET + 19}) || {_key >= USERACTION_OFFSET && {_key <= USERACTION_OFFSET + 19}}) then {
+    GVAR(skipCheckingUserActions) = {count _x > 0} count (GVAR(keyDownStates) select [USERACTION_OFFSET, 20]) == 0;
 };
 
 nil
