@@ -16,6 +16,7 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgFunctions.hpp"
+#include "CfgRemoteExec.hpp"
 #include "Cfg3DEN.hpp"
 #include "Display3DEN.hpp"
 #include "gui.hpp"
