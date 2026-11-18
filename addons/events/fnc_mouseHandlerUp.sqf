@@ -10,6 +10,11 @@ Author:
 ---------------------------------------------------------------------------- */
 SCRIPT(mouseHandlerUp);
 
-params ["_display", "_inputButton"];
+params ["_display", "_inputButton", "", "", "_shift", "_control", "_alt"];
 
-[_display, MOUSE_OFFSET + _inputButton, GVAR(shift), GVAR(control), GVAR(alt)] call FUNC(keyHandlerUp);
+// use the modifier key states reported by the event itself
+GVAR(shift) = _shift;
+GVAR(control) = _control;
+GVAR(alt) = _alt;
+
+[_display, MOUSE_OFFSET + _inputButton, _shift, _control, _alt] call FUNC(keyHandlerUp);
