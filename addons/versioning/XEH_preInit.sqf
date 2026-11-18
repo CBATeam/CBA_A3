@@ -48,15 +48,16 @@ FUNC(version_compare) = {
 
     //Handle non-number arrays - eg. {"mod", {"1.0"}, "(true)"}
     if ((_value isNotEqualTo []) && {!(_value isEqualTypeAll 0)}) exitWith {true};
-    if ((_localValue isNotEqualTo []) && {!(_localValue isEqualTypeAll 0)}) exitWith {true};
 
     private _failed = false;
     private _c = count _localValue;
 
     for "_i" from 0 to ((count _value) - 1) do {
         if (_i == _c) exitWith { _failed = true}; // Woobs
-        if ((_localValue select _i) > (_value select _i)) exitWith {}; // All good
-        if ((_localValue select _i) < (_value select _i)) exitWith {_failed = true}; // Woobs
+        private _local = _localValue select _i;
+        if !(_local isEqualType 0) exitWith {}; // Not comparable, eg. a build like "1024-tac1"
+        if (_local > (_value select _i)) exitWith {}; // All good
+        if (_local < (_value select _i)) exitWith {_failed = true}; // Woobs
     };
     _failed;
 };
