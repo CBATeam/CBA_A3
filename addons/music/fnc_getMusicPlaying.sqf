@@ -3,7 +3,7 @@
 Function: CBA_fnc_getMusicPlaying
 
 Description:
-    A function used to return the current time on playing music. Must have been started with CBA_fnc_playMusic
+    A function used to return the current time on playing music
 
 Parameters:
     none
@@ -20,18 +20,11 @@ Author:
     Fishy, Dedmen
 ---------------------------------------------------------------------------- */
 
-if (isNil QGVAR(track)) exitWith {["", 0, 0]};
+if !(call CBA_fnc_isMusicPlaying) exitWith {["", 0, 0]};
 
-GVAR(track) params ["_class", "_startTime", "_playPos", "_duration"];
+GVAR(track) params ["_class", "_startTime", "_startPos", "_duration"];
 
-private _trackTime = (CBA_missionTime - _startTime) + _playPos;
-private _remainingTime = _duration - _trackTime;
+private _currentPos = getMusicPlayedTime min _duration;
+private _remainingTime = _duration - _currentPos;
 
-if (_remainingTime <= 0) then {
-    _remainingTime = 0;
-    _trackTime = 0;
-    _class = "";
-    GVAR(track) = nil;
-};
-
-[_class, _trackTime, _remainingTime]
+[_class, _currentPos, _remainingTime]
