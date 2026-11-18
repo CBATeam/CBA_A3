@@ -241,10 +241,14 @@ if (!isNil "_settingInfo") then {
 };
 
 // --- refresh
-if (isServer) then {
-    [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
-} else {
-    [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+// this can run before the events addon preInit has made the registry; no handler can be
+// listening yet either, so the raise is a no-op
+if (!isNil QEGVAR(events,eventNamespace)) then {
+    if (isServer) then {
+        [QGVAR(refreshSetting), _setting] call CBA_fnc_globalEvent;
+    } else {
+        [QGVAR(refreshSetting), _setting] call CBA_fnc_localEvent;
+    };
 };
 
 if (_needRestart) then {
