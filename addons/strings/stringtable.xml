@@ -18,7 +18,7 @@
             <Turkish>,</Turkish>
             <Ukrainian>,</Ukrainian>
         </Key>
-        <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR">
+        <Key ID="STR_CBA_FORMAT_NUMBER_THOUSANDS_SEPARATOR" allow-empty="true">
             <English>,</English>
             <Czech></Czech>
             <French></French>
