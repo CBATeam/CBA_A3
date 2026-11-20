@@ -21,7 +21,7 @@ Author:
 ---------------------------------------------------------------------------- */
 
 params ["_unit", ["_identity", ""]];
-TRACE_2("fnc_setIdentity3DEN",_unity,_identity);
+TRACE_2("fnc_setIdentity3DEN",_unit,_identity);
 
 if (_identity == "") then {
     _identity = getText (configOf _unit >> "CBA_identity");
