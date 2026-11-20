@@ -46,7 +46,7 @@ if (!(_cache select 0)) exitWith { true };
     if (_weaponSlot isEqualTo []) then { continue };
 
     private _weaponClass = _weaponSlot select 0;
-    private _weaponCache = (_cache select _x + 1);
+    private _weaponCache = _cache select (_x + 1);
     if (_weaponCache isEqualTo []) then { continue };
 
     private _weaponIndex = _weaponCache findIf { _x param [0, ""] isEqualTo _weaponClass};

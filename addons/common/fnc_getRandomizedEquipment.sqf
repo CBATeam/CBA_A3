@@ -22,7 +22,7 @@ Author:
 params ["_unit"];
 TRACE_1("fnc_getRandomizedEquipment",_unit);
 
-CBA_common_randomLoadoutUnits getOrDefaultCall [typeOf _unit, {
+GVAR(randomLoadoutUnits) getOrDefaultCall [typeOf _unit, {
     private _unitConfig = configOf _unit;
     private _primaryList = getArray (_unitConfig >> "CBA_primaryList");
     private _launcherList = getArray (_unitConfig >> "CBA_launcherList");
