@@ -84,7 +84,11 @@ private _magazines = [];
 } forEach (magazinesAmmoCargo _object);
 _return pushBack _magazines;
 
-_return pushBack ((getItemCargo _object) call _fnc_formatCounts);
+// Need to filter out uniforms and vests, since they're included in everyContainer
+private _items = (getItemCargo _object) call _fnc_formatCounts;
+_return pushBack (_items select {
+    !(((_x select 0) call _fnc_getItemType) in ["Uniform", "Vest"]);
+});
 
 // Not sure how deep inventories can go
 private _containers = [];

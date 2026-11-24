@@ -35,47 +35,47 @@ clearItemCargoGlobal _object;
 clearBackpackCargoGlobal _object;
 
 {
-	_object addWeaponWithAttachmentsCargoGlobal _x;
+    _object addWeaponWithAttachmentsCargoGlobal _x;
 } forEach _weapons;
 
 {
-	// Global effect, despite not being in the name
-	_object addMagazineAmmoCargo _x;
+    // Global effect, despite not being in the name
+    _object addMagazineAmmoCargo _x;
 } forEach _magazines;
 
 {
-	// Global effect, despite not being in the name
-	_object addMagazineAmmoCargo _x;
+    // Global effect, despite not being in the name
+    _object addMagazineAmmoCargo _x;
 } forEach _magazines;
 
 {
-	_object addItemCargoGlobal _x;
+    _object addItemCargoGlobal _x;
 } forEach _items;
 
 // Not an easy way to get the given container object after being added
 // Instead we have to track them ourselves and poll everyContainer
 private _trackedContainers = [];
 {
-	_x params ["_class", "_type", "_containerInventory"];
-	if (_type == "Backpack") then {
-		_object addBackpackCargoGlobal [_class, 1];
-	} else {
-		_object addItemCargoGlobal [_class, 1];
-	};
+    _x params ["_class", "_type", "_containerInventory"];
+    if (_type == "Backpack") then {
+        _object addBackpackCargoGlobal [_class, 1];
+    } else {
+        _object addItemCargoGlobal [_class, 1];
+    };
 
-	private _containers = (everyContainer _object) select {
-		!((_x select 1) in _trackedContainers);
-	};
+    private _containers = (everyContainer _object) select {
+        !((_x select 1) in _trackedContainers);
+    };
 
-	if (count _containers > 1) then {
+    if (count _containers > 1) then {
         WARNING_1("More than one counter found, assuming first container: _containers='%1'",_containers);
-	};
-	private _newContainer = (_containers param [0, []]) param [1, objNull];
-	if (isNull _newContainer) then {
+    };
+    private _newContainer = (_containers param [0, []]) param [1, objNull];
+    if (isNull _newContainer) then {
         ERROR_2("Could not find new container: _containers=%1, _trackedContainers=%2",_containers,_trackedContainers);
-		continue;
-	};
+        continue;
+    };
 
-	_trackedContainers pushBack _newContainer;
-	[_newContainer, _containerInventory] call CBA_fnc_setCargoDeep;
+    _trackedContainers pushBack _newContainer;
+    [_newContainer, _containerInventory] call CBA_fnc_setCargoDeep;
 } forEach _containers;
