@@ -26,7 +26,7 @@ params [
 ];
 TRACE_2("fnc_setCargoDeep",_object,_inventory);
 
-if (_inventory isEqualTo []) exitWith {};
+if (isNull _object || _inventory isEqualTo []) exitWith {};
 _inventory params ["_weapons", "_magazines", "_items", "_containers"];
 
 clearWeaponCargoGlobal _object;

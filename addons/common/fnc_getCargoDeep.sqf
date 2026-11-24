@@ -24,6 +24,8 @@ params [
 ];
 TRACE_1("fnc_getCargoDeep",_object);
 
+if (isNull _object) exitWith { [] };
+
 // Formats [["abc", "def"], [1, 2]] as [["abc", 1], ["def", 2]]
 private _fnc_formatCounts = {
     params ["_classes", "_counts"];
