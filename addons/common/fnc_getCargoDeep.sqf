@@ -8,11 +8,11 @@ Parameters:
     _object  - Object to get the inventory of <OBJECT>
 
 Returns:
-    TODO
+    Object's inventory <ARRAY>
 
 Examples
     (begin example)
-        TODO call CBA_fnc_getCargoDeep
+        cursorObject call CBA_fnc_getCargoDeep
     (end)
 
 Author:
