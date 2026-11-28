@@ -4,7 +4,7 @@ Function: CBA_fnc_bitflagsCheck
 Description:
     Checks if a given flagset has the specified flags set.
 
-    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs exceeding this value will error.
+    * Values above 2^24 suffer inaccuracy at the hands of the Virtual Reality Engine. Inputs of 2^24 or more return -1.
 
 Parameters:
     _flagset    - flagset to check for flags within <NUMBER>
@@ -33,9 +33,21 @@ Examples:
 Author:
     Daisy
 ---------------------------------------------------------------------------- */
-#define BASE2LOG(num) ((ln num)*1.44269502162933349609)
-#define BITQUANT(num) floor BASE2LOG(num) + 1
-
 params ["_flagset","_flags"];
-_flagset = [_flagset,BITQUANT(_flagset max _flags)] call CBA_fnc_bitwiseNOT;
-[_flagset,_flags] call CBA_fnc_bitwiseAND
+
+_flagset = floor abs _flagset;
+_flags = floor abs _flags;
+if ((_flagset max _flags) >= 16777216) exitWith {-1}; // precision drop after 2^24
+
+// sum of the bits of _flags that are not set in _flagset, bit by bit (exact below 2^24, unlike ln based bit counts)
+private _return = 0;
+private _power = 1;
+
+while {_power <= _flags} do {
+    if ((floor (_flags / _power)) mod 2 == 1 && {(floor (_flagset / _power)) mod 2 == 0}) then {
+        _return = _return + _power;
+    };
+    _power = _power * 2;
+};
+
+_return
