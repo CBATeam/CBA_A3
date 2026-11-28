@@ -93,12 +93,13 @@ addMissionEventHandler ["Loaded", {
     }] call CBA_fnc_addEventHandler;
 #endif
 
-// --- event to modify settings on a dedicated server as admin
+// --- server settings are changed by clients via CBA_settings_fnc_setServerRequest, which verifies the sender
+// the old event cannot tell who raised it, so it is ignored. Code on the server should use CBA_settings_fnc_set.
 if (isServer) then {
     [QGVAR(setSettingServer), {
-        params ["_setting", "_value", ["_priority", 0], ["_store", false]];
+        params [["_setting", ""]];
 
-        [_setting, _value, _priority, "server", _store] call FUNC(set);
+        WARNING_2("Ignored event %1, use CBA_settings_fnc_set instead. Setting: %2",QGVAR(setSettingServer),_setting);
     }] call CBA_fnc_addEventHandler;
 };
 
