@@ -110,6 +110,21 @@ addMissionEventHandler ["Loaded", {
 CBA_missionTime = 0;
 GVAR(lastTime) = time;
 
+// Eden Editor: only preInit runs (see CBA_fnc_initDisplay3DEN) and time does not advance
+if (is3DEN) exitWith {
+    // increase CBA_missionTime in real time, so delays and timeouts still work
+    [QFUNC(missionTimePFH), {
+        SCRIPT(missionTimePFH_3DEN);
+        //IGNORE_PRIVATE_WARNING ["_tickTime"];
+        CBA_missionTime = CBA_missionTime + (_tickTime - GVAR(lastTickTime));
+        GVAR(lastTickTime) = _tickTime;
+    }] call CBA_fnc_compileFinal;
+
+    // install the frame handler here, as postInit never runs in Eden
+    // preInit runs once per missionNamespace, so this is added only once
+    GVAR(onFrameEH) = addMissionEventHandler ["EachFrame", {call FUNC(onFrame)}];
+};
+
 // increase CBA_missionTime variable every frame
 if (isMultiplayer) then {
     // multiplayer - no accTime in MP

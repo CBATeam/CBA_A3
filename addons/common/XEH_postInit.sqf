@@ -1,8 +1,10 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-//Install PFEH:
-addMissionEventHandler ["EachFrame", {call FUNC(onFrame)}];
+//Install PFEH (unless already installed in Eden Editor, see init_perFrameHandler):
+if (isNil QGVAR(onFrameEH)) then {
+    GVAR(onFrameEH) = addMissionEventHandler ["EachFrame", {call FUNC(onFrame)}];
+};
 
 LOG(MSG_INIT);
 
